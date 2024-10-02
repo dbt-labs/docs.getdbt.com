@@ -138,10 +138,8 @@ The flag is `False` by default.
 
 Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
 
-### Source definitions and variables for state:modified
+### Source definitions for state:modified
 
-The flags are `False` by default.
+The flags is `False` by default.
 
 Set `state_modified_compare_more_unrendered` to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks. Setting the flag to `True` reduces false positives during `state:modified` checks when `prod` and `dev` environments have different configs.
-
-Set the `state_modified_compare_vars` to `True` if a model uses a `var` or `env_var` in its definition. dbt will be able to identify its lineage to include the model in `state:modified` because the `var` or `env_var` value has changed.
