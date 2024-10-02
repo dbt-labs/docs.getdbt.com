@@ -2987,6 +2987,11 @@
       "permanent": true
     },
     {
+      "source": "/dbt-cloud/api-v2-legacy",
+      "destination": "/dbt-cloud/api-v2",
+      "permanent": true
+    },
+    {
       "source": "/dbt-cloud/api-v4",
       "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
       "permanent": true
