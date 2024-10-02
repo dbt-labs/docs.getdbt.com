@@ -59,45 +59,7 @@ To avoid any uninentional data modification, dbt will **not** automatically appl
 
 :::
 
-## Examples
-
-Suppose your organization standarizes on the following column names instead of the default values:
-- `start_date`
-- `end_date`
-- `scd_id`
-- `modified_date`
-
-Then your configuration in a SQL snapshot file would look like:
-
-`snapshots/dim_customers.sql`
-
-```sql
-{{
-    config(
-      snapshot_meta_column_names={
-        dbt_valid_from: start_date,
-        dbt_valid_to: end_date,
-        dbt_scd_id: scd_id,
-        dbt_updated_at: modified_date
-      }
-    )
-}}
-```
-
-Alternatively, your configuration in a YAML snapshot configuration file would look like:
-
-```yaml
-snapshots:
-  - name: snapshot_name
-    config:
-      snapshot_meta_column_names:
-        dbt_valid_from: start_date
-        dbt_valid_to: end_date
-        dbt_scd_id: scd_id
-        dbt_updated_at: modified_date
-```
-
-Here's a more fleshed out example:
+## Example
 
 <File name='snapshots/schema.yml'>
 
@@ -117,3 +79,10 @@ snapshots:
 ```
 
 </File>
+
+The resulting snapshot table contains the configured meta column names:
+
+| id | scd_id               |        modified_date |           start_date |             end_date |
+| -- | -------------------- | -------------------- | -------------------- | -------------------- |
+|  1 | 60a1f1dbdf899a4dd... | 2024-10-02 ...       | 2024-10-02 ...       | 2024-10-02 ...       |
+|  2 | b1885d098f8bcff51... | 2024-10-02 ...       | 2024-10-02 ...       |                      |
