@@ -56,7 +56,7 @@ snapshots:
 
 ## Description
 
-In order to align with an organization's naming conventions, the `snapshot_meta_column_names` config can be used to customize the names of the metadata columns within each dbt snapshot.
+In order to align with an organization's naming conventions, the `snapshot_meta_column_names` config can be used to customize the names of the metadata columns within each [dbt snapshot](/docs/build/snapshots).
 
 ## Default
 
