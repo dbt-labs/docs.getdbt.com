@@ -12,7 +12,7 @@ Dimensions represent the non-aggregatable columns in your data set, which are th
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique wihtin the same semantic model.
+All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |

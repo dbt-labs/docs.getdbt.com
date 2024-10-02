@@ -50,7 +50,7 @@ The dbt Cloud CLI offers additional flexibility by letting you choose the source
 
 <File name="dbt_cloud.yml">
 
-  ```yml
+```yml
 context:
   active-host: ...
   active-project: ...
