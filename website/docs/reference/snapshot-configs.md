@@ -115,7 +115,6 @@ snapshots:
 <VersionBlock lastVersion="1.8">
 
 ```jinja
-
 {{ config(
     [target_schema](/reference/resource-configs/target_schema)="<string>",
     [target_database](/reference/resource-configs/target_database)="<string>",
