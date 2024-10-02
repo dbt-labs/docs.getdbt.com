@@ -57,7 +57,7 @@ dbt test -s "state:modified" --exclude "test_name:relationships"
 
 <VersionBlock firstVersion="1.9">
 
-To reduces false positives during `state:modified` checks when production and development environments have different configurations, you can set the `state_modified_compare_more_unrendered` behavior flag to `True`. Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
+To reduce false positives during `state:modified` checks due to env-aware logic, you can set the `state_modified_compare_more_unrendered` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`. 
 
 </VersionBlock>
 
@@ -65,9 +65,9 @@ To reduces false positives during `state:modified` checks when production and de
 State comparison works by identifying discrepancies between two manifests.  Those discrepancies could be the result of:
 
 1. Changes made to a project in development
-2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to dbt Core 1.9 and set the `state_modified_compare_more_unrendered` behavior flag to `True`. Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
+2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to dbt Core 1.9 and set the `state_modified_compare_more_unrendered` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`. 
 
-State comparison detects env-aware config in `dbt_project.yml`. This target-based config registers as a modification:
+State comparison detects env-aware config in `dbt_project.yml`. This target-based config won't register as a modification:
 
 <File name='dbt_project.yml'>
 
