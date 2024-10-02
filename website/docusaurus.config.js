@@ -160,10 +160,6 @@ var siteSettings = {
               label: "Developer blog",
               to: "/blog",
             },
-            {
-              label: "Glossary",
-              to: "/glossary",
-            },
           ],
         },
         {
@@ -246,6 +242,9 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
+          exclude: [
+            'hover-terms.md'
+          ]
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
