@@ -44,7 +44,7 @@ exports.versions = [
 exports.versionedPages = [
   {
     page: "docs/build/incremental-microbatch",
-    lastVersion: "1.9",
+    firstVersion: "1.9",
   },
   {
     page: "reference/resource-configs/target_database",

@@ -8,7 +8,7 @@ id: "incremental-microbatch"
 
 :::info Microbatch
 
-The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. To enable this feature,  set the environment variable `DBT_EXPERIMENTAL_MICROBATCH` to true in your project.
+The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. We have been developing it behind a flag to prevent unintended interactions with existing custom incremental strategies, so to enable this feature, set the environment variable `DBT_EXPERIMENTAL_MICROBATCH` to `True` in your dbt Cloud environments or wherever you're running dbt Core.
 
 Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672)
 
@@ -18,9 +18,108 @@ Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-
 
 Incremental models in dbt are a [materialization](/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models append, update, or replace rows in the existing table with the new data just processed. This can significantly reduce the time and resources required for your data transformations.
 
-Microbatch incremental models make it possible to process transformations on large time-series datasets with efficiency and resiliency. When dbt runs a microbatch model — whether for the first time, during incremental runs, or during manual backfills — it will split the processing into multiple queries (or "batches"), based on the `event_time` column you configure.
+Microbatch incremental models make it possible to process transformations on large time-series datasets with efficiency and resiliency. When dbt runs a microbatch model — whether for the first time, during incremental runs, or during manual backfills — it will split the processing into multiple queries (or "batches"), based on the `event_time` and `batch_size` you configure.
 
-Where other incremental strategies operate only on "old" and "new" data, microbatch models treat each "batch" of data as a unit that can be built or replaced on its own. Each batch is independent and <Term id="idempotent" />. This is a powerful abstraction that makes it possible for dbt to run batches separately — in the future, concurrently — and to retry them independently.
+Each "batch" corresponds to a single bounded time period — by default, it is a single day of data. The underlying data platform can more quickly process the transformation for that batch, and update it within the larger table.
+
+Where other incremental strategies operate only on "old" and "new" data, microbatch models treat every batch as an atomic unit that can be built or replaced on its own. Each batch is independent and <Term id="idempotent" />. This is a powerful abstraction that makes it possible for dbt to run batches separately — in the future, concurrently — and to retry them independently.
+
+### Example
+
+A `sessions` model transforming data that comes from two other models: `page_views` (very large, time-based) and `customers` (small, not time-based).
+
+The `page_views` model configures `event_time: page_view_start`. The `customers` model does not configure an `event_time`.
+
+We run the `sessions` model on 2024-10-01 and then again on 2024-10-02. It produces the following queries:
+
+<Tabs>
+
+<TabItem value="Source">
+
+<File name="models/sessions.sql">
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='microbatch',
+        event_time='session_start',
+        begin='2020-01-01'
+    )
+}}
+
+with page_views as (
+
+    select * from {{ ref('page_views') }}  -- this ref will be auto-filtered
+
+),
+
+customers as (
+
+    select * from {{ ref('customers') }}  -- this ref won't
+
+),
+
+...
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="Compiled for '2024-10-01'">
+
+```sql
+with page_views as (
+
+    select * from (
+        select * from "analytics"."page_views"
+        where page_view_start >= '2024-10-01 00:00:00'
+        and page_view_start < '2024-10-02 00:00:00'
+    )
+
+),
+
+customers as (
+
+    select * from "analytics"."customers"
+
+),
+
+...
+```
+
+</TabItem>
+
+<TabItem value="Compiled for '2024-10-02'">
+
+```sql
+with page_views as (
+
+    select * from (
+        select * from "analytics"."page_views"
+        where page_view_start >= '2024-10-02 00:00:00'
+        and page_view_start < '2024-10-03 00:00:00'
+    )
+
+),
+
+customers as (
+
+    select * from "analytics"."customers"
+
+),
+
+...
+```
+
+</TabItem>
+
+</Tabs>
+
+dbt will instruct the data platform to insert, update, or replace the contents of the `analytics.sessions` table for the same day of data with the results of the query. To perform this operation, dbt will use the most efficient atomic mechanism for "full batch" replacement that is available on each data platform.
+
+It does not matter whether the table already contains data for that day, or not — given the same input data, no matter how many times the query runs, the resulting table is the same.
 
 ### Available configs
 
@@ -45,13 +144,11 @@ dbt will then evaluate which batches need to be loaded, break them up into a SQL
 
 dbt will automatically filter upstream inputs (`source` or `ref`) that define `event_time`, based on the `lookback` and `batch_size` configs for this model.
 
-During standard incremental runs, dbt will process new batches and any according to the configured `lookback` (with one query per batch)
-    
-<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_lookback.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
+During standard incremental runs, dbt will process batches according to the current timestamp and the configured `lookback`, with one query per batch.
 
 If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering.
 
-dbt will evaluate which batches need to be loaded **by processing the current batch (current_timestamp) + any batches in your configured lookback**, break them up into a SQL query per batch, and load them all independently. 
+<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_lookback.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 
 ### Backfills
 
@@ -114,6 +211,8 @@ For this incremental model:
 
 Let’s take our same example from before, and instead use the new `microbatch` incremental strategy:
 
+<File name="models/staging/stg_events.sql">
+
 ```sql
 {{
     config(
@@ -127,10 +226,14 @@ Let’s take our same example from before, and instead use the new `microbatch` 
     )
 }}
 
-select * from {{ ref('stg_events') }} # this ref will be auto-filtered
+select * from {{ ref('stg_events') }} -- this ref will be auto-filtered
 ```
 
+</File>
+
 Where you’ve also set an `event_time` for the model’s direct parents - in this case `stg_events`:
+
+<File name="models/staging/stg_events.yml">
 
 ```yaml
 models:
@@ -139,12 +242,20 @@ models:
        event_time: my_time_field
 ```
 
+</File>
+
 And that’s it! When you run the model, each batch templates a separate query. The batch for `2024-10-01` would template:
+
+<File name="target/compiled/staging/stg_events.sql">
 
 ```sql
 select * from (
-    select * from {{ ref('stg_events') }}
+    select * from "analytics"."stg_events"
     where my_time_field >= '2024-10-01 00:00:00'
       and my_time_field < '2024-10-02 00:00:00'
-) # this ref will be auto-filtered
+)
 ```
+
+</File>
+
+Based on your data platform, dbt will choose the most efficient atomic mechanism to insert, update, or replace the '2024-10-01' batch in the existing table.

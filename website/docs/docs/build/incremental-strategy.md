@@ -20,13 +20,11 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table represents the availability of each incremental strategy 
+This table represents the availability of each incremental strategy, based on the latest version of dbt Core and each adapter.
 
 Click the name of the adapter in the below table for more information about supported incremental strategies.
 
-The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
-
-| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |  `microbatch` |
+| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |  `microbatch` <Lifecycle status="beta" /> |
 |-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|: ------------:|
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅       |                    |      ✅       |
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅       |                    |      ✅       |
