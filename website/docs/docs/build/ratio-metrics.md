@@ -45,6 +45,11 @@ For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine
 
 ## Ratio metrics example
 
+These examples demonstrate how to create ratio metrics in your model. They cover basic and advanced use cases, including applying filters to the numerator and denominator metrics.
+
+#### Example 1 
+This example is a basic ratio metric that calculates the ratio of food orders to total orders:
+
 ```yaml
 metrics:
   - name: food_order_pct
@@ -55,6 +60,27 @@ metrics:
       numerator: food_orders
       denominator: orders
 ```
+
+#### Example 2 
+This eample is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator:
+
+```yaml
+metrics:
+  - name: food_order_pct
+    description: "The food order count as a ratio of the total order count, filtered by location"
+    label: Food order ratio by location
+    type: ratio
+    type_params:
+      numerator:
+        name: food_orders
+        filter: location = 'New York'
+        alias: ny_food_orders
+      denominator:
+        name: orders
+        filter: location = 'New York'
+        alias: ny_orders
+```
+
 
 ## Ratio metrics using different semantic models
 
