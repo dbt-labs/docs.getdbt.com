@@ -16,7 +16,18 @@ dbt will mark modified any resource that depends on a changed macro, or on a mac
 
 ### Vars
 
-If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+<VersionBlock lastVersion="1.8">
+
+If a model uses a `var` or `env_var` in its definition, dbt Core 1.8 and earlier are unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Beginning in db Core 1.9, when you set the `state_modified_compare_vars` behavior flag to `True` and a model uses a `var` or `env_var` in its definition, dbt will identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed.
+
+Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
+
+</VersionBlock>
 
 ### Tests
 
@@ -44,10 +55,17 @@ dbt test -s "state:modified" --exclude "test_name:relationships"
 
 ### False positives
 
+<VersionBlock firstVersion="1.9">
+
+To reduces false positives during `state:modified` checks when production and development environments have different configurations, you can set the `state_modified_compare_more_unrendered` behavior flag to `True`. Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 State comparison works by identifying discrepancies between two manifests.  Those discrepancies could be the result of:
 
 1. Changes made to a project in development
-2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
+2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to dbt Core 1.9 and set the `state_modified_compare_more_unrendered` behavior flag to `True`. Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
 
 State comparison detects env-aware config in `dbt_project.yml`. This target-based config registers as a modification:
 
@@ -60,7 +78,7 @@ models:
 
 </File>
 
-Of course, if the raw Jinja expression is modified, it will be marked as a modification unless you set the `state_modified_compare_more_unrendered` behavior flag to `True`. Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
+Of course, if the raw Jinja expression is modified, it will be marked as a modification.
 
 Note that, as of now, this improved detection is true _only_ for `dbt_project.yml` configuration. It does not apply to:
 - `.yml` resource properties (including `sources`)
@@ -73,6 +91,7 @@ That means the following config—functionally identical to the snippet above—
     materialized = ('table' if target.name == 'prod' else 'view')
 ) }}
 ```
+</VersionBlock>
 
 ### Final note
 
