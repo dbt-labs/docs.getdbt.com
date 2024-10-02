@@ -69,6 +69,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
     [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
     [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
+    [+](/reference/resource-configs/plus-prefix)[snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
 
 ```
 
@@ -100,7 +101,7 @@ snapshots:
       strategy: timestamp | check
       updated_at: <column_name>
       check_cols: [<column_name>] | all
-      snapshot_meta_column_names: {<dictionary>}
+      [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
 
 ```
 </File>
@@ -140,6 +141,7 @@ snapshots:
     [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
     [updated_at](/reference/resource-configs/updated_at)="<column_name>",
     [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
+    [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names)={<dictionary>}
 ) }}
 
 ```
