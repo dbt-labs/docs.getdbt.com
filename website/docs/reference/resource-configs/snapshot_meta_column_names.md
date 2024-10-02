@@ -14,7 +14,7 @@ By default, dbt snapshots use the following column names to track change history
 | Field          | Meaning | Notes |
 | -------------- | ------- | ----- |
 | `dbt_valid_from` | The timestamp when this snapshot row was first inserted and became valid. | The value is affected by the [`strategy`](/reference/resource-configs/strategy). |
-| `dbt_valid_to`   | The timestamp when this row is no longer valid. | The value is affected by the [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) config. |
+| `dbt_valid_to`   | The timestamp when this row is no longer valid. |  |
 | `dbt_scd_id`     | A unique key generated for each snapshot row. | This is used internally by dbt. |
 | `dbt_updated_at` | The `updated_at` timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt. |
 
