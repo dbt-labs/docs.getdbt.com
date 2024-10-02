@@ -65,9 +65,7 @@ select * from {{ ref('raw_orders') }}
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDEL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string that follows the below convention:
-
-`_dbt/{SCHEMA_NAME}/{MODEL_NAME} `
+Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`
 
 #### Base Location Subpath
 We recommend using dbt's auto-generated `base_location`. However, if you need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, the subpath concatenates to the end of the previously described pattern for `base_location` string generation.
