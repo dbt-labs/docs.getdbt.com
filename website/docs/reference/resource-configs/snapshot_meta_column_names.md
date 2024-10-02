@@ -66,13 +66,15 @@ snapshots:
 
 Here's a more fleshed out example:
 
+<File name='snapshots/schema.yml'>
+
 ```yaml
 snapshots:
   - name: orders_snapshot
-    relation: ref("my_model")
+    relation: ref("orders")
     config:
       unique_key: id
-      strategy: timestamp_with_deletes
+      strategy: check
       check_cols: all
       snapshot_meta_column_names:
         dbt_valid_from: start_date
@@ -80,3 +82,5 @@ snapshots:
         dbt_scd_id: scd_id
         dbt_updated_at: modified_date
 ```
+
+</File>
