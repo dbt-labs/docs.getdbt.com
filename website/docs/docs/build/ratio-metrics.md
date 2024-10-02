@@ -143,6 +143,8 @@ on
 
 Users can define constraints on input metrics for a ratio metric by applying a filter directly to the input metric, like so:
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: frequent_purchaser_ratio
@@ -157,6 +159,7 @@ metrics:
       denominator:
         name: distinct_purchasers
 ```
+</File>
 
 Note the `filter` and `alias` parameters for the metric referenced in the numerator. 
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 
