@@ -20,6 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
 
+- **Enhancement**: In dbt Cloud Versionless, you can now specify snapshot configurations in YAML files, including `schema.yml` or `dbt_project.yml`, for snapshots defined in SQL files. This update resolves the previous limitation that required snapshot properties to be defined exclusively in the SQL file. This enhancement will soon be released in the upcoming dbt Core v1.9 release
 - **New:** dbt Explorer now includes trust signal icons, which is currently available as a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Trust signals offer a quick, at-a-glance view of data health when browsing your dbt models in Explorer. These icons indicate whether a model is **Healthy**, **Caution**, **Degraded**, or **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run. Refer to [Trust signals](/docs/collaborate/explore-projects#trust-signals-for-resources) for more information. 
 - **New:** Auto exposures are now available in Preview in dbt Cloud. Auto-exposures helps users understand how their models are used in downstream analytics tools to inform investments and reduce incidents. It imports and auto-generates exposures based on Tableau dashboards, with user-defined curation. To learn more, refer to [Auto exposures](/docs/collaborate/auto-exposures).
 
