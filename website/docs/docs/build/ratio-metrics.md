@@ -24,6 +24,8 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 
 The following displays the complete specification for ratio metrics, along with an example.
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: The metric name # Required
@@ -40,6 +42,7 @@ metrics:
         filter: Filter for the denominator # Optional
         alias: Alias for the denominator # Optional
 ```
+</File>
 
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
@@ -50,6 +53,8 @@ These examples demonstrate how to create ratio metrics in your model. They cover
 #### Example 1 
 This example is a basic ratio metric that calculates the ratio of food orders to total orders:
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: food_order_pct
@@ -60,10 +65,13 @@ metrics:
       numerator: food_orders
       denominator: orders
 ```
+</File>
 
 #### Example 2 
 This eample is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator:
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: food_order_pct
@@ -80,7 +88,7 @@ metrics:
         filter: location = 'New York'
         alias: ny_orders
 ```
-
+</File>
 
 ## Ratio metrics using different semantic models
 
