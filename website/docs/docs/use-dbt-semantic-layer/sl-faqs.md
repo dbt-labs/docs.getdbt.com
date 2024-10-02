@@ -174,7 +174,8 @@ No, the dbt Semantic Layer is flexible enough to work with many data modeling ap
 
 <Expandable alt_header="How are queries optimized to not scan more data than they should?">
 
-MetricFlow always tries to generate SQL in the most performant way, while ensuring the metric value is correct. It generates SQL in a way that allows us to add optimizations, like predicate pushdown, to ensure we don’t perform full table scans.
+
+MetricFlow always tries to generate SQL in the most performant way, while ensuring the metric value is correct. It generates SQL in a way that allows us to add optimizations, like <Term id="predicate-pushdown"  />, to ensure we don’t perform full table scans for faster query time.
 
 </Expandable>
 

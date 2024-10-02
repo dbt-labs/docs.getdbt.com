@@ -22,7 +22,6 @@ The dbt Semantic Layer includes the following components:
 | **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through dbt Cloud and is available to all users on dbt version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
 | **[Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)** | The interfaces allow users to submit metric queries using GraphQL and JDBC APIs. They also serve as the foundation for building first-class integrations with various tools. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise)|
 
-
 ## Feature comparison
 
 The following table compares the features available in dbt Cloud and source available in dbt Core:
