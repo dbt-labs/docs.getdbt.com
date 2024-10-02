@@ -31,13 +31,14 @@ In this guide, you will learn how to:
 
 ## Setup
 Now we’ll be creating your dbt Cloud account and connecting it to a data warehouse. 
-1. Go to this URL (sign out if you're already logged in.):  https://cloud.getdbt.com/coalesce-workshop-signup
+1. Go to this URL (sign out if you're already logged in):  https://cloud.getdbt.com/coalesce-workshop-signup
 2. Enter your first name and last name.
 3. Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
-6. Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
-7. Go to the Deploy tab and select Jobs from the dropdown menu. Run each job you see by clicking on the job and then selecting 'Run'.
+6. Wait about 30 seconds, you’ll be in the dbt Cloud account for this workshop and already connected to a data warehouse.
+7. Toggle into the Platform project. Go to the Deploy tab and select Jobs from the dropdown menu. 
+8. Run each job you see by clicking on the job and then selecting 'Run'. This will run the upstream project job in both a production and staging environment.
  <Lightbox src="/img/quickstarts/dbt-cloud/go_to_jobs.png" width="80%" title="Click on the Jobs tab" />
  <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="80%" title="Run the jobs" />
    
@@ -51,7 +52,7 @@ dbt Explorer will show you your project's most executed models, longest model ex
 - Explore the **Performance** tab on the **Project details** page
   - Which model took the longest over the last two weeks? Over the last month? 
   - Which model failed the most tests? 
-  - Click on the model that took the longest to run in the Longest model executions graph
+  - Click on the model that took the longest to run in the _Longest model executions_ graph
     - What is the average duration time over the last two weeks? Over the last month?
     - How often is the model being built? What is the Model Test Failure Rate?
 
@@ -69,9 +70,8 @@ With dbt Explorer, you can view your project's resources (such as models, tests,
   - What tests do we see? Which tests have warnings? Failures?
 - Explore the **Sources** tab
   - What sources can we see? Which sources have stale data? Which sources have fresh data?
-- Explore Exposures 
+- Explore Exposures
   - Use the lineage graph to find an exposure. Which  models and metrics does the Exposure reference?
-
  
 ## Lineage
 
@@ -83,7 +83,10 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
 
  <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="100%" title="dbt Explorer's lineage graph" />
   
-- Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. Perform hard searches and keyword searches. All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. Apply filters to fully refine your search
+- Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. 
+  - Perform hard searches and keyword searches. 
+  - All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. 
+  - Apply filters to fully refine your search.
 - When searching for a column name, the results show all relational nodes containing that column in their schemas. 
 
  <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="100%" title="dbt Explorer's advanced search feature" />
@@ -99,7 +102,7 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
   - Navigate to the model’s **Model resource** page and explore the primary key column’s **Column-Level Lineage**
 
 ## Multi-project
-Use dbt Explorer to gain a deeper understanding of *all* your dbt Cloud projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects). 
+Use dbt Explorer to gain a deeper understanding of *all* your dbt Cloud projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects).
 - See the number of public, protected, and private models, as well as metrics for each project.
 - View cross-project lineage and navigate between individual projects’ lineage graphs.
 - Explore column-level lineage across projects.
@@ -108,7 +111,8 @@ Use dbt Explorer to gain a deeper understanding of *all* your dbt Cloud projects
 - In the lineage graph, filter the Platform Project’s Project-Level Lineage for Public models using the `access:public` filter
   - Make a note of which models are referenced by the analytics project.
 - Explore the Analytics Project’s lineage
-  - Choose a model in the Platform project referenced by the Analytics project. Look at the multi-project column-level lineage of its primary key column.
+  - Choose a model in the Platform project referenced by the Analytics project.
+  - Look at the multi-project column-level lineage of its primary key column.
   - Open the Analytics project’s lineage graph. Which models does it reference? 
 
 
@@ -121,7 +125,7 @@ To learn more about the specific suggestions and the reasons behind them, check 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
 ### Hands-On
-- Review your project recommendations. Find the project recommendation for the model agg_daily_returned_orders. Add documentation to this model in the aggregates.yml file.
+- Review your project recommendations. Find the project recommendation for the model `agg_daily_returned_orders`. Add documentation to this model in the aggregates.yml file.
 
 ## What's next
 
@@ -140,7 +144,7 @@ You've learned how to:
 For the next steps, you can check out the [dbt Explorer documentation](/docs/collaborate/explore-projects) and [FAQs](/docs/collaborate/dbt-explorer-faqs) to learn more about how to use dbt Explorer.
 
 Keep an eye out for new features coming out soon, like:
-- More [auto-exposure](/docs/collaborate/auto-exposures) integrations (like PowerBI).
+- More [auto-exposure](/docs/collaborate/auto-exposures) integrations (like PowerBI and Tableau).
 - [Model query history](/docs/collaborate/model-query-history) for additional warehouses (like Redshift and Databricks)
 - Improvements to [data health tiles](/docs/collaborate/data-tile)
 
