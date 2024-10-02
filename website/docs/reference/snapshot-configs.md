@@ -91,7 +91,6 @@ snapshots:
 <File name='snapshots/schema.yml'>
 
 ```yml
-
 snapshots:
   - name: <string>
     config:
@@ -101,6 +100,7 @@ snapshots:
       strategy: timestamp | check
       updated_at: <column_name>
       check_cols: [<column_name>] | all
+
 ```
 </File>
 
