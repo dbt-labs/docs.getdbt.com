@@ -512,11 +512,7 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-<VersionBlock firstVersion="1.9">
-
 In Versionless and v1.9, these column names can be customized to your team or organizational conventions via the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
-
-</VersionBlock>
 
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
