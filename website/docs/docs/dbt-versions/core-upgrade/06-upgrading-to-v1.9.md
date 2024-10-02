@@ -68,7 +68,7 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives and negatives. Read more about [the `state:modified` behavior flags](#managing-changes-to-legacy-behaviors) that leverage these improvements:
 
 - Added environment-aware enhancements for environments where the logic purposefully differs (for example, materializing as a table in `prod` but a `view` in dev).
-- Enhanced performance so that models that use `var` or `env_var` are included in `state:modified`.
+- Models that use `var` or `env_var` are included in `state:modified`.
 
 ### Managing changes to legacy behaviors
 
@@ -77,7 +77,7 @@ dbt Core v1.9 has a handful of new flags for [managing changes to legacy behavi
 You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values` and  `state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags) .
-- (Introduced, disabled by default) new [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped
+- (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time
 
 ## Adapter specific features and functionalities
@@ -105,6 +105,7 @@ You can read more about each of these behavior changes in the following links:
 
 We also made some quality-of-life improvements in Core 1.9, enabling you to:
 
+- dbt now returns an an error (versioned models) or warning (unversioned models) when you [remove a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
 - Document [singular data tests](/docs/build/data-tests#document-singular-tests).
 - Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
-- `dbt test` supports the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
+- Use `dbt test` with the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
