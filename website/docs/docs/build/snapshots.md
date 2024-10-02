@@ -514,7 +514,7 @@ Snapshot <Term id="table">tables</Term> will be created as a clone of your sourc
 
 <VersionBlock firstVersion="1.9">
 
-In Versionless and v1.9, these column names can be customized to your team or organizational conventions via the `snapshot_meta_column_names` config.
+In Versionless and v1.9, these column names can be customized to your team or organizational conventions via the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 
 </VersionBlock>
 
