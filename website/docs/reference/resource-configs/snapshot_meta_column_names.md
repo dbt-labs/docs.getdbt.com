@@ -3,6 +3,22 @@ resource_types: [snapshots]
 description: "Snapshot meta column names"
 ---
 
+<File name='snapshots/schema.yml'>
+
+```yaml
+snapshots:
+  - name: <snapshot_name>
+    config:
+      snapshot_meta_column_names:
+        dbt_valid_from: <string>
+        dbt_valid_to: <string>
+        dbt_scd_id: <string>
+        dbt_updated_at: <string>
+
+```
+
+</File>
+
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2
