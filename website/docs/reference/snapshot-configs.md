@@ -100,6 +100,7 @@ snapshots:
       strategy: timestamp | check
       updated_at: <column_name>
       check_cols: [<column_name>] | all
+      snapshot_meta_column_names: {<dictionary>}
 
 ```
 </File>
