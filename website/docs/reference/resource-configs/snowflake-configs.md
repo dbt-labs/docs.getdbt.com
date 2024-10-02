@@ -85,7 +85,7 @@ dbt manages `base_location` on behalf of users to enforce best practices. With S
 
 To maintain best practices,  we enforce an input. Currently, we do not support overriding the default `base location` input but will consider it based on user feedback. 
 
-In summary, dbt-snowflake does not support arbitrary definition of base_location for Iceberg tables. Instead, dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}` prefix to ensure easier object-store observability and auditability.
+In summary, dbt-snowflake does not support arbitrary definition of `base_location` for Iceberg tables. Instead, dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
 
 ### Limitations
 
