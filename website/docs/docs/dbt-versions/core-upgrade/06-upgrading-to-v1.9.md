@@ -28,7 +28,7 @@ Features and functionality new in dbt v1.9.
 
 ### Microbatch `incremental_strategy`
 
-Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`.
+Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`. Learn more about [incremental models](/docs/build/incremental-models-overview).
 
 Historically, managing incremental models involved several manual steps and responsibilities, including:
 
@@ -48,10 +48,10 @@ While microbatch is in "beta", this functionality is still gated behind an env v
 
 - Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` in your project
 Currently microbatch is supported on these adapters with more to come:
-* postgres
-* snowflake
-* bigquery
-* spark
+ * postgres
+ * snowflake
+ * bigquery
+ * spark
   
 ### Snapshots improvements
 
@@ -62,6 +62,8 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 - `target_schema` is now optional for snapshots: When omitted, snapshots will use the schema defined for the current environment.
 - Standard `schema` and `database` configs supported: Snapshots will now be consistent with other dbt resource types. You can specify where environment-aware snapshots should be stored.
 - Warning for incorrect `updated_at` data type: To ensure data integrity, you'll see a warning if the `updated_at` field specified in the snapshot configuration is not the proper data type or timestamp.
+
+Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fields).
 
 ### `state:modified` improvements
 
@@ -76,15 +78,15 @@ dbt Core v1.9 has a handful of new flags for [managing changes to legacy behavi
 
 You can read more about each of these behavior changes in the following links:
 
-- (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values` and  `state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags) .
-- (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped
-    - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time
+- (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `True` to start persisting unrendered_database and unrendered_schema configs during source parsing, and do comparison on unrendered values during `state:modified` checks.
+- (Introduced, disabled by default) [`state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `True` if a model uses a `var` or `env_var` in its definition. dbt will be able to identify its lineage to include the model in `state:modified` because the var or env_var value has changed.
+- (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped.
+    - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time.
+- (Introduced, disabled by default) [[Redshift] `restrict_direct_pg_catalog_access`](/reference/global-configs/behavior-changes#redshift-restrict_direct_pg_catalog_access). If the flag is set the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead of using `pg_` tables.
 
 ## Adapter specific features and functionalities
 
 ### Redshift
-
-- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a [behavior flag](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) to mitigate any breaking changes. There are no expected impacts to the user experience. 
 
 - Support IAM Role auth
 
