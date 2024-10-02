@@ -497,6 +497,7 @@ const sidebarSettings = {
             "docs/deploy/run-visibility",
             "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
+            "docs/deploy/model-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
