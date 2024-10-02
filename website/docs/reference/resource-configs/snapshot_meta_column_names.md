@@ -3,6 +3,8 @@ resource_types: [snapshots]
 description: "Snapshot meta column names"
 ---
 
+Available in v1.9 or with [versionless (/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud.
+
 <File name='snapshots/schema.yml'>
 
 ```yaml
