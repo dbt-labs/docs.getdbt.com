@@ -65,7 +65,7 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 
 ### `state:modified` improvements
 
-We’ve made a number of improvements to `state:modified` behaviors to help reduce the risk of false positives/negatives, including:
+We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives/negatives. Read more about [the `state:modified` behavior flags](#managing-changes-to-legacy-behaviors) that leverage these improvements:
 
 - Added environment-aware enhancements for environments where the logic purposefully differs (for example, materializing as a table in `prod` but a `view` in dev).
 - Enhanced performance so that models that use `var` or `env_var` are included in `state:modified`.
