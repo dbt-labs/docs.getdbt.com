@@ -96,7 +96,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 
 ### Example of full lineage graph
 
-Example of exploring the `order_items` model in the project's lineage graph:
+Example of exploring a model in the project's lineage graph:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
 
@@ -162,11 +162,63 @@ Under the the **Models** option, you can filter on model properties (access or m
 
 </Expandable>
 
+<Expandable alt_header="Trust signals for resources" lifecycle="preview">
+
+Trust signal icons offer a quick, at-a-glance view of data health when browsing your models in dbt Explorer. These icons keep you informed on the status of your model's health using the indicators **Healthy**, **Caution**, **Degraded**, and **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run.
+
+Each trust signal icon reflects key data health components, such as test success status, missing resource descriptions, absence of builds in 30-day windows, and more. 
+
+To access trust signals:
+- Use the search function or click on **Models** or **Sources** under the **Resource** tab. 
+- View the icons under the **Health** column. 
+- Hover over or click the trust signal to see detailed information. 
+- For sources, the trust signal also indicates the source freshness status.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-health.jpg" width="60%" title="View trust signals for your models."/>
+
+<!-- commenting out until further iteration on the content
+
+<Tabs>
+<TabItem value="healthy" label="Healthy">
+A resource is considered Healthy if it meets the following criteria:
+- Ran all tests successfully
+- Successfully built in its last run
+- Has a description and tests configured
+- Has been built in the past 30 days 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-healthy.png" title="Healthy trust signal icon"/>
+</TabItem>
+
+<TabItem value="caution" label="Caution">
+Any of the following conditions can trigger a caution status:
+- Successfully built in its last run
+- Is missing a description
+- Does not have any tests configured
+- Has not been built in the past 30 day
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-caution.png" title="Caution trust signal icon"/>
+</TabItem>
+
+<TabItem value="degraded" label="Degraded">
+A resource is considered Degraded if it meets any of the following criteria:
+- Last run failed or source freshness error
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signals-degraded.jpg" width="35%" title="Degraded trust signal icon"/>
+</TabItem>
+
+<TabItem value="unknown" label="Unknown">
+The Unknown trust signal icon indicates that:
+- Health information is unknown because the resource hasn't been run recently. 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-unknown.png" title="Unknown trust signal icon"/>
+
+</TabItem>
+</Tabs>
+
+-->
+
+ </Expandable>
+
 ### Example of keyword search
-Example of results from searching on the keyword `item` and applying the filters models, description, and code:
+Example of results from searching on the keyword `customers` and applying the filters models, description, and code. Trust signals are visible to the right of the model name in the search results.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-keyword-search.png" width="100%" title="Example of keyword search" />
-
 
 ## Browse with the sidebar
 
@@ -201,6 +253,7 @@ In the upper right corner of the resource details page, you can:
 
 <Expandable alt_header="What details are available for a model?">
 
+- Trust signal icon &mdash; Icons offering a quick, at-a-glance view of data health. These icons indicate whether a model is Healthy, Caution, Degraded, or Unknown. Hover over an icon to view detailed information about the model's health.
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
