@@ -48,11 +48,11 @@ While microbatch is in "beta", this functionality is still gated behind an env v
 
 - Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` in your project
 Currently microbatch is supported on these adapters with more to come:
-
-• postgres
-• snowflake
-• bigquery
-• spark
+* postgres
+* snowflake
+* bigquery
+* spark
+  
 ### Snapshots improvements
 
 Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a handful of new configurations to make dbt **snapshots easier to configure, run, and customize.** These improvements include:
