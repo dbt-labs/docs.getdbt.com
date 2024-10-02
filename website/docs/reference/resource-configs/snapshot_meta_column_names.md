@@ -2,6 +2,7 @@
 resource_types: [snapshots]
 description: "Snapshot meta column names"
 datatype: "{<dictionary>}"
+default_value: {"dbt_valid_from": "dbt_valid_from", "dbt_valid_to": "dbt_valid_to", "dbt_scd_id": "dbt_scd_id", "dbt_updated_at": "dbt_updated_at"}
 id: "snapshot_meta_column_names"
 ---
 
