@@ -76,6 +76,19 @@ When the dbt Cloud Maturity is "TBD," it means we have not yet determined the ex
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
+### On-run-start hook
+
+The flag is `False` by default.
+
+Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
+
+### Source definitions for state:modified
+
+The flags is `False` by default.
+
+Set `state_modified_compare_more_unrendered` to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks. Setting the flag to `True` reduces false positives during `state:modified` checks when `prod` and `dev` environments have different configs.
+
+
 ###  Package override for built-in materialization 
 
 Setting the `require_explicit_package_overrides_for_builtin_materializations` flag to `True` prevents this automatic override. 
@@ -131,15 +144,3 @@ on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
 </File>
-
-### On-run-start hook
-
-The flag is `False` by default.
-
-Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
-
-### Source definitions for state:modified
-
-The flags is `False` by default.
-
-Set `state_modified_compare_more_unrendered` to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks. Setting the flag to `True` reduces false positives during `state:modified` checks when `prod` and `dev` environments have different configs.
