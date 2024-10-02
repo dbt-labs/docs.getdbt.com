@@ -13,7 +13,7 @@ test-paths: [directorypath]
 
 ## Definition
 
-Optionally specify a custom list of directories where [singular tests](/docs/build/data-tests) are located.
+Optionally specify a custom list of directories where [singular tests](/docs/build/data-tests#singular-data-tests) and [custom generic tests](/docs/build/data-tests#generic-data-tests) are located.
 
 
 ## Default
