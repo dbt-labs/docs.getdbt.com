@@ -383,10 +383,9 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
 
     snapshots:
       - name: orders_snapshot
-        config:
-          persist_docs:
-            relation: true
-            columns: true
+        +persist_docs:
+          relation: true
+          columns: true
     ```
 
     </File>
