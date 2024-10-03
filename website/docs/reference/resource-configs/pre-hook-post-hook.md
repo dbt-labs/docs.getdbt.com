@@ -192,7 +192,9 @@ See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest
 
 </File>
 
-import SQLcompilationerror from '/snippets/_About-dbt-build-command.md';
+import SQLCompilationError from '/snippets/_render-method.md';
+
+<SQLCompilationError />
 
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
