@@ -277,7 +277,7 @@ Note that in Versionless and dbt v1.9 and later, snapshots are defined in an upd
 
 </VersionBlock>
 
-Snapshot configurations are applied hierarchically in the order above.
+Snapshot configurations are applied hierarchically in the order above with higher taking precedence.
 
 ### Examples
 The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file, a `config` block within a snapshot, and a `.yml` file.
