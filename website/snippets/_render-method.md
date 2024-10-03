@@ -8,7 +8,6 @@ When using the `--empty flag`, dbt may skip processing `ref()` or `source()` for
 <File name='models.sql'>
 
 ```Jinja
--- models/staging/stg_sys__customers.sql
 {{ config(
     pre_hook = [
         "alter external table {{ source('sys', 'customers').render() }} refresh"
