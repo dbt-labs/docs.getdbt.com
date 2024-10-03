@@ -190,7 +190,7 @@ from {{ source('erp', 'transactions') }}
 
 </File>
 
-In this example, we create an ephemeral model `transaction_items_ephemeral` that creates the unique key id, and then references it in our snapshot.
+In this example, we create an ephemeral model `transaction_items_ephemeral` that creates an `id` column that can be used as the `unique_key` our snapshot configuration.
 
 </VersionBlock>
 
