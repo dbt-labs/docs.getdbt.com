@@ -21,6 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## October 2024
 
 - **New**: Introducing the [microbatch incremental model strategy](/docs/build/incremental-microbatch) (beta), available in dbt Cloud Versionless and will soon be supported in dbt Core 1.9. The microbatch strategy allows for efficient, batch-based processing of large time-series datasets for improved performance and resiliency, especially when you're working with data that changes over time (like new records being added daily). To enable this feature in dbt Cloud, set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` in your project.
+- **New**: The dbt Semantic Layer supports custom calendar configurations in MetricFlow, available in [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Custom calendar configurations allow you to query data using non-standard time periods like `fiscal_year` or `retail_month`. Refer to [custom calendar](/docs/build/metricflow-time-spine#custom-calendar) to learn how to define these custom granularities in your MetricFlow timespine YAML configuration.
 - **New**: In dbt Cloud Versionless, [Snapshots](/docs/build/snapshots) have been updated to use YAML configuration files instead of SQL snapshot blocks. This new feature simplifies snapshot management and improves performance, and will soon be released in dbt Core 1.9.
   - Who does this affect? New user on Versionless can define snapshots using the new YAML specification. Users upgrading to Versionless who use snapshots can keep their existing configuration or can choose to migrate their snapshot definitions to YAML. 
   - Users on dbt 1.8 and earlier: No action is needed; existing snapshots will continue to work as before. However, we recommend upgrading to Versionless to take advantage of the new snapshot features.
@@ -32,6 +33,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 Read about the [order dbt infers columns can be used as primary key of a model](https://github.com/dbt-labs/dbt-core/blob/7940ad5c7858ff11ef100260a372f2f06a86e71f/core/dbt/contracts/graph/nodes.py#L534-L541). 
 - **New:** dbt Explorer now includes trust signal icons, which is currently available as a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Trust signals offer a quick, at-a-glance view of data health when browsing your dbt models in Explorer. These icons indicate whether a model is **Healthy**, **Caution**, **Degraded**, or **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run. Refer to [Trust signals](/docs/collaborate/explore-projects#trust-signals-for-resources) for more information. 
 - **New:** Auto exposures are now available in Preview in dbt Cloud. Auto-exposures helps users understand how their models are used in downstream analytics tools to inform investments and reduce incidents. It imports and auto-generates exposures based on Tableau dashboards, with user-defined curation. To learn more, refer to [Auto exposures](/docs/collaborate/auto-exposures).
+
 
 ## September 2024
 
