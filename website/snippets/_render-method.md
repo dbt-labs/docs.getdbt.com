@@ -25,3 +25,5 @@ select * from cus
 ```
 
 </File>
+
+From there, run dbt run `--select stg_jaffle__customers --empty`
