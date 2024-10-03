@@ -112,7 +112,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 2. Since snapshots focus on configuration, the transformation logic is minimal. Typically, you'd select all data from the source. If you need to apply transformations (like filters, deduplication), it's best practice to define an ephemeral model and reference it in your snapshot configuration.
 
-    <File name="models/ephemeral_orders.sql" />
+    <File name="models/ephemeral_orders.sql" >
 
     ```yaml
     {{ config(materialized='ephemeral') }}
