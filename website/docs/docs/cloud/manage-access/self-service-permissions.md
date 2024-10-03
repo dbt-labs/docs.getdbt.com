@@ -5,11 +5,15 @@ sidebar_label: "Team permissions"
 id: "self-service-permissions"
 ---
 
-Self-service Team accounts are a quick and easy way to get dbt Cloud up and running for a small team. Team accounts have limited access to features and advanced settings like SSO, group management, and larger user bases will require an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) account. If you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact)!
+Self-service Team accounts are a quick and easy way to get dbt Cloud up and running for a small team. For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) account unlocks these capabilities. 
+
+If you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact)
 
 ## Groups and permissions
 
-Groups determine a users permission and there are three groups are available for Team plan dbt Cloud accounts: Owner, Member, and Everyone. The first Owner user is the person who created the dbt Cloud account. New users are added to the Member and Everyone groups when they onboardbut this can be changed when the invitation is created. These groups only affect users with a [Developer license](#licenses) assigned. 
+Groups determine a user's permission and there are three groups are available for Team plan dbt Cloud accounts: Owner, Member, and Everyone. The first Owner user is the person who created the dbt Cloud account. 
+
+New users are added to the Member and Everyone groups when they onboard but this can be changed when the invitation is created. These groups only affect users with a [Developer license](#licenses) assigned. 
 
 The group access permissions are as follows:
 
@@ -25,7 +29,7 @@ There are three license types:
 
 - **Developer** &mdash; The default license. Developer licenses don't restrict access to any features, so users with this license should be assigned to either the Owner or Member group. You're allotted up to 8 developer licenses per account.
 - **Read-Only** &mdash; Read-only access to your project, including environments dbt Explorer. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
-- **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments.
+- **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments. You're allocated 1 seat per account.
 
 See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
 
