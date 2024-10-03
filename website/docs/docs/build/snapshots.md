@@ -409,6 +409,8 @@ Basically – keep your query as simple as possible! Some reasonable exceptions 
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
+Starting in 1.9 or with [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), these column names can be customized to your team or organizational conventions via the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
+
 | Field          | Meaning | Usage |
 | -------------- | ------- | ----- |
 | dbt_valid_from | The timestamp when this snapshot row was first inserted | This column can be used to order the different "versions" of a record. |
