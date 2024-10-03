@@ -12,7 +12,6 @@ When using the `--empty flag`, dbt may skip processing `ref()` or `source()` for
     pre_hook = [
         "alter external table {{ source('sys', 'customers').render() }} refresh"
     ]
-) }}
 with cus as (
     select * from {{ source("sys", "customers") }} -- leave this as is!
 )
