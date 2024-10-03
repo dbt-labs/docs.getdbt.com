@@ -83,8 +83,7 @@ snapshots:
     relation: source('my_source', 'my_table')
     config:
       strategy: check
-      check_cols: 
-        - [column_name] | "all"
+      check_cols: [column_name] | "all"
   ```
 </File>
 </VersionBlock>
