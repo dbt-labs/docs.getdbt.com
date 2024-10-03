@@ -104,12 +104,12 @@ Refer to [configuring snapshots](/docs/build/snapshots#configuring-snapshots) fo
 snapshots:
   - name: <string>
     config:
-      database: <string>
-      schema: <string>
-      unique_key: <column_name_or_expression>
-      strategy: timestamp | check
-      updated_at: <column_name>
-      check_cols: [<column_name>] | all
+      [database](/reference/resource-configs/database): <string>
+      [schema](/reference/resource-configs/schema): <string>
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [strategy](/reference/resource-configs/strategy): timestamp | check
+      [updated_at](/reference/resource-configs/updated_at): <column_name>
+      [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
 </File>
