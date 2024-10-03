@@ -67,7 +67,7 @@ https://code.visualstudio.com/download
 
 Let's get setup with a dbt Cloud sandbox already connected to a Snowflake account for the workshop.
 
-1. Go to [bit.ly/coalesce-24-sandboxes](bit.ly/coalesce-24-sandboxes) to create an account (make sure you log out of any other dbt Cloud accounts)
+1. Go to [bit.ly/coalesce-24-sandboxes](https://bit.ly/coalesce-24-sandboxes) to create an account (make sure you log out of any other dbt Cloud accounts)
     
     a. Type in **first name** and **last name**
     
