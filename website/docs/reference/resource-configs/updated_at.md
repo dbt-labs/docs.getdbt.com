@@ -145,7 +145,7 @@ Since the `updated_at` configuration only takes a column name, rather than an ex
     ```yaml
     snapshots:
       - name: orders_snapshot
-        relation: {{ ref('staging_orders') }}
+        relation: ref('staging_orders')
         config:
           schema: snapshots
           unique_key: id
