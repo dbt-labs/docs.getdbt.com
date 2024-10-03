@@ -120,7 +120,7 @@ snapshots:
 
 <TabItem value="config-resource">
 
-<VersionBlock firsttVersion="1.9">
+<VersionBlock firstVersion="1.9">
 
 Configurations can be applied to snapshots using the more performant [YAML syntax](/docs/build/snapshots), aavilable in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
 
