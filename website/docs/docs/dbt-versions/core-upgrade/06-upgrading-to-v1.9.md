@@ -46,7 +46,7 @@ Starting in Core 1.9, you can use the new microbatch strategy to optimize your l
 
 While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA. To use microbatch:
 
-- Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` in your project
+- Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` wherever you're running dbt Core
 
 Currently microbatch is supported on these adapters with more to come:
  * postgres
