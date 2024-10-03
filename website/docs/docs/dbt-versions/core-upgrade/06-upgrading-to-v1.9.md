@@ -28,6 +28,10 @@ Features and functionality new in dbt v1.9.
 
 ### Microbatch `incremental_strategy`
 
+:::info 
+While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA.
+:::
+
 Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`. Learn more about [incremental models](/docs/build/incremental-models-overview).
 
 Historically, managing incremental models involved several manual steps and responsibilities, including:
@@ -44,7 +48,7 @@ Starting in Core 1.9, you can use the new microbatch strategy to optimize your l
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
 - Targeted reprocessing: To load a *specific* batch or batches, you can use the CLI arguments `--event-time-start` and `--event-time-end`.
 
-While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA. To use microbatch:
+To use microbatch:
 
 - Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` wherever you're running dbt Core
 
