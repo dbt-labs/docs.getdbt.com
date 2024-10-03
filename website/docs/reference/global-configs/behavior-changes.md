@@ -85,7 +85,9 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 The flag is `False` by default.
 
-Set `state_modified_compare_more_unrendered` to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks. Setting the flag to `True` reduces false positives during `state:modified` checks when `prod` and `dev` environments have different configs.
+Set `state_modified_compare_more_unrendered` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
+
+Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during parsing of models and `unrendered_database` and `unrendered_schema` configs during parsing of sources.
 
 
 ###  Package override for built-in materialization 
