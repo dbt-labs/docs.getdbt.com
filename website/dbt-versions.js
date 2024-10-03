@@ -19,6 +19,10 @@ exports.versions = [
     customDisplay: "Cloud (Versionless)",
   },
   {
+    version: "1.9",
+    isPrerelease: true,
+  },
+  {
     version: "1.8",
     EOLDate: "2025-04-15",
   },
@@ -42,6 +46,10 @@ exports.versions = [
  * @property {string} lastVersion The last version the page is visible in the sidebar
  */
 exports.versionedPages = [
+  {
+    page: "reference/resource-configs/snapshot_meta_column_names",
+    firstVersion: "1.9",
+  },
   {
     page: "reference/resource-configs/target_database",
     lastVersion: "1.8",
