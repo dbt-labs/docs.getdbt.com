@@ -43,11 +43,15 @@ You will need to have git installed locally and a code editor (preferably VS Cod
 
 Run `git --version` in your terminal to check if git is installed.
 
-(add an image here of a terminal)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/terminal-git-check.png" title="Verifying git installation" />
+</div>
 
 Check your installed applications for VSCode or another editor.
 
-(add an image here of VSCode installed)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/finder-vscode-check.png" title="Verifying git installation" />
+</div>
 
 ### Install git and VSCode
 
@@ -170,16 +174,22 @@ Let's get dbt Power User installed to super charge our workflow.
 
 1. Within VS Code, click on extensions and search for Power User for dbt.
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/setup-poweruser-01.png" title="Find the VS Code Extension for dbt Power User" />
+</div>
 
 2. Click on install.
 3. Choose switch to dbt Cloud (you might need to refresh).
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/setup-poweruser-02.png" title="Switch to dbt Cloud" />
+</div>
 
 4. Complete the setup steps. (click on welcome in VSCode and choose dbt Poweruser)
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/setup-poweruser-03.png" title="Complete the setup flow" />
+</div>
 
 5. Go make an account to sign up and get an API Key: https://app.myaltimate.com/register
 
@@ -195,25 +205,33 @@ There is a ton you can do to super charge your workflow with dbt Cloud. Let's co
 
 Open the Power User extension on the left hand side. You can see the upstream and downstream projects
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/using-poweruser-01.png" title="See upstream and downstream dependencies" />
+</div>
 
 ### Preview Results
 
 Hit cmd+enter (or ctrl+enter on PC) and instantly see the results of your model below.
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/using-poweruser-02.png" title="Preview results" />
+</div>
 
 ### SQL Visualization
 
 While looking at a model file, click the Altimate logo in the top right and click Visualize SQL to see a break down of your SQL model.
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/using-poweruser-03.png" title="Visualize SQL processing" />
+</div>
 
 ### Generate test and documentation YML with user friendly UX and AI
 
 At the top of your model file, click on generate documentation for a UI to rapidly create documentation and tests with AI
 
-(add image)
+<div style={{maxWidth: '400px'}}>
+<Lightbox src="/img/cloud-cli-guide/using-poweruser-04.png" title="Generate tests and documentation" />
+</div>
 
 There is a whole lot more too! Check out the dbt Power User docs here: https://docs.myaltimate.com/
 
