@@ -29,7 +29,7 @@ Features and functionality new in dbt v1.9.
 ### Microbatch `incremental_strategy`
 
 :::info 
-While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA.
+While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA. To use microbatch, set `DBT_EXPERIMENTAL_MICROBATCH` to `true` wherever you're running dbt Core.
 :::
 
 Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`. Learn more about [incremental models](/docs/build/incremental-models-overview).
@@ -47,10 +47,6 @@ Starting in Core 1.9, you can use the new microbatch strategy to optimize your l
 - Simplified query design: Write your model query for a single batch of data. dbt will use your `event_time`, `lookback`, and `batch_size` configurations to automatically generate the necessary filters for you, making the process more streamlined and reducing the need for you to manage these details.
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
 - Targeted reprocessing: To load a *specific* batch or batches, you can use the CLI arguments `--event-time-start` and `--event-time-end`.
-
-To use microbatch:
-
-- Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` wherever you're running dbt Core
 
 Currently microbatch is supported on these adapters with more to come:
  * postgres
