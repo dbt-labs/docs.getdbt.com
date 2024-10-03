@@ -1,27 +1,25 @@
-#### SQL compilation error when running the `--empty` flag on a model
+#### The render method
 
-If you encounter a SQL compilation error when running a model with the `--empty` flag, explicitly call the `.render()` method on that relation. The error occurs because dbt processes certain parts of the workflow differently when the `--empty flag` is used, leading to confusion when it encounters the table reference (`{{ source(...) }}`) in the pre-hook. The error you're seeing is a result of dbt not handling the reference as you anticipated.
+The `.render()` method is generally used to resolve or evaluate Jinja expressions (such as `{{ source(...) }}`) during runtime. When a pre-hook or post-hook contains a dynamic reference, such as a table or column, dbt might not automatically resolve the reference correctly, particularly when certain flags (such as `--empty`) are applied.
 
-The recommended solution is to explicitly instruct dbt on how to interpret the reference in the pre-hook by using the `.render()` method. This approach ensures that dbt properly prepares the reference before executing it.
+When using the `--empty flag`, dbt may skip processing `ref()` or `source()` for optimization. To avoid compilation errors and to explicitly tell dbt to process a specific relation (`ref()` or `source()`), use the `.render()` method in your model file. For example:
 
 
 <File name='models.sql'>
 
 ```Jinja
-
 -- models/staging/stg_sys__customers.sql
 {{ config(
     pre_hook = [
         "alter external table {{ source('sys', 'customers').render() }} refresh"
     ]
 ) }}
-
 with cus as (
     select * from {{ source("sys", "customers") }} -- leave this as is!
 )
-
 select * from cus
-
 ```
 
 </File>
+
+From there, run `dbt run --select stg_jaffle__customers --empty`

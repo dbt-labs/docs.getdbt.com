@@ -151,6 +151,10 @@ Pre- and post-hooks can also call macros that return SQL statements. If your mac
 
 dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
+import SQLCompilationError from '/snippets/_render-method.md';
+
+<SQLCompilationError />
+
 ## Examples
 
 <Snippet path="hooks-to-grants" />
@@ -191,10 +195,6 @@ models:
 See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest/sql-ref-syntax-aux-analyze-table.html)
 
 </File>
-
-import SQLCompilationError from '/snippets/_render-method.md';
-
-<SQLCompilationError />
 
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
