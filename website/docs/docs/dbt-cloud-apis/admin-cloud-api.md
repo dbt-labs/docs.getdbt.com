@@ -18,20 +18,14 @@ Many endpoints of the Administrative API can also be called through the [dbt Clo
 <div className="grid--2-col">
 
 <Card
-    title="API v2 (legacy docs)"
+    title="API v2"
     body="Our legacy API version, with limited endpoints and features. Contains information not available in v3."
-link="/dbt-cloud/api-v2-legacy"
-    icon="pencil-paper"/>
-
-<Card
-    title="API v2 (beta docs)"
-    body="Our legacy API version, with limited endpoints and features. Contains information not available in v3. These docs are in beta and may not be complete."
 link="/dbt-cloud/api-v2"
     icon="pencil-paper"/>
 
 <Card
-    title="API v3 (beta docs)"
-    body="Our latest API version, with new endpoints and features. These docs are in beta and may not be complete."
+    title="API v3"
+    body="Our latest API version, with new endpoints and features."
 link="/dbt-cloud/api-v3"
     icon="pencil-paper"/>
 

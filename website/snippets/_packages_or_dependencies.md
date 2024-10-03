@@ -1,16 +1,23 @@
 
 ## Use cases
 
-Starting from dbt v1.6, we added a new configuration file called `dependencies.yml`. The file can contain both types of dependencies: "package" and "project" dependencies.
-- ["Package" dependencies](/docs/build/packages#how-do-i-add-a-package-to-my-project) lets you add source code from someone else's dbt project into your own, like a library.
-- ["Project" dependencies](/docs/collaborate/govern/project-dependencies) provide a different way to build on top of someone else's work in dbt.
+The following setup will work for every dbt project:
+
+- Add [any package dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-project-dependencies) to `packages.yml`
+- Add [any project dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-package-dependencies) to `dependencies.yml`
+
+However, you may be able to consolidate both into a single `dependencies.yml` file. Read the following section to learn more.
+
+#### About packages.yml and dependencies.yml
+The `dependencies.yml`. file can contain both types of dependencies: "package" and "project" dependencies.
+- [Package dependencies](/docs/build/packages#how-do-i-add-a-package-to-my-project) lets you add source code from someone else's dbt project into your own, like a library.
+- Project dependencies provide a different way to build on top of someone else's work in dbt.
 
 If your dbt project doesn't require the use of Jinja within the package specifications, you can simply rename your existing `packages.yml` to `dependencies.yml`. However, something to note is if your project's package specifications use Jinja, particularly for scenarios like adding an environment variable or a [Git token method](/docs/build/packages#git-token-method) in a private Git package specification, you should continue using the `packages.yml` file name.
 
-Examine the following tabs to understand the differences and determine when should use to `dependencies.yml` or `packages.yml`.
+Use the following toggles to understand the differences and determine when to use `dependencies.yml` or `packages.yml` (or both). Refer to the [FAQs](#faqs) for more info.
 
-<Tabs>
-<TabItem value="project" label="When to use Project dependencies">
+<Expandable alt_header="When to use Project dependencies" >
 
 Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) and [cross-project reference](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) workflow:
 
@@ -19,9 +26,9 @@ Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh
   - Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like dbt Cloud.
 - Use `dependencies.yml` for organization and maintainability if you're using both [cross-project refs](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) and [dbt Hub packages](https://hub.getdbt.com/). This reduces the need for multiple YAML files to manage dependencies.
 
-</TabItem>
+</Expandable>
 
-<TabItem value="packages" label="When to use Package dependencies">
+<Expandable alt_header="When to use Package dependencies" >
 
 Package dependencies allow you to add source code from someone else's dbt project into your own, like a library:
 
@@ -31,5 +38,5 @@ Package dependencies allow you to add source code from someone else's dbt projec
 - `packages.yml` supports Jinja rendering for historical reasons, allowing dynamic configurations. This can be useful if you need to insert values, like a [Git token method](/docs/build/packages#git-token-method) from an environment variable, into your package specifications.
 
 Currently, to use private git repositories in dbt, you need to use a workaround that involves embedding a git token with Jinja. This is not ideal as it requires extra steps like creating a user and sharing a git token. We're planning to introduce a simpler method soon that won't require Jinja-embedded secret environment variables. For that reason, `dependencies.yml` does not support Jinja.
-</TabItem>
-</Tabs>
+
+</Expandable>

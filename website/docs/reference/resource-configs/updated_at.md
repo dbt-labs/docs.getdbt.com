@@ -27,6 +27,17 @@ snapshots:
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+
+:::caution
+
+You will get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
+
+:::
+
+</VersionBlock>
+
+
 ## Description
 A column within the results of your snapshot query that represents when the record row was last updated.
 
