@@ -6,10 +6,9 @@ datatype: timestamp | check
 
 <VersionBlock lastVersion="1.8">
 
-:::info Use the latest snapshot syntax
+import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
 
-In Versionless and dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt Core v1.9 and later](/docs/dbt-versions/core).
-:::
+<SnapshotYaml/>
 </VersionBlock>
 
 <Tabs
@@ -179,7 +178,6 @@ snapshots:
 <File name='snapshots/check_example.yml'>
 
 ```yaml
-# snapshots/check_example.yml
 snapshots:
   - name: orders_snapshot_check
     relation: source('jaffle_shop', 'orders')
