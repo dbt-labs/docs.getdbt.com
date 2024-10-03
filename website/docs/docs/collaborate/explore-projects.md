@@ -20,7 +20,7 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 - You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer.
 - You are on the dbt Explorer page. To do this, select **Explore** from the navigation in dbt Cloud.
 
-## Overview page <Lifecycle status="preview">
+## Overview page <Lifecycle status="preview" />
 
 Navigate the dbt Explorer overview page to access your project's resources and metadata. The page includes the following sections:
 
