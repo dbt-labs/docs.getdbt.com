@@ -73,7 +73,7 @@ The following tables outline the access that users have if they are assigned a D
 | Develop (IDE or dbt Cloud CLI)| W |  W    |           |             |
 | Environments            |   W   |    W    |    R      |             |
 | Jobs                    |   W   |    W    |    R      |             |
-| Metadata                |   R   |    R    |    R      |             |
+| Explorer               |   W   |    W   |    R      |             |
 | Permissions             |   W   |    R    |           |             |
 | Profile                 |   W   |    W    |    R      |             |
 | Projects                |   W   |    W    |    R      |             |
