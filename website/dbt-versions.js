@@ -48,6 +48,9 @@ exports.versions = [
 exports.versionedPages = [
   {
     page: "docs/build/incremental-microbatch",
+    firstVersion: "1.9",
+  },
+    {
     page: "reference/resource-configs/snapshot_meta_column_names",
     firstVersion: "1.9",
   },
