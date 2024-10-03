@@ -421,6 +421,7 @@ const sidebarSettings = {
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
+                "docs/build/incremental-microbatch",
               ],
             },
           ],
