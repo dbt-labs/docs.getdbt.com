@@ -112,12 +112,14 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 2. Since snapshots focus on configuration, the transformation logic is minimal. Typically, you'd select all data from the source. If you need to apply transformations (like filters, deduplication), it's best practice to define an ephemeral model and reference it in your snapshot configuration.
 
+    <File name="models/ephemeral_orders.sql" />
+
     ```yaml
-    -- models/ephemeral_orders.sql
     {{ config(materialized='ephemeral') }}
 
     select * from {{ source('jaffle_shop', 'orders') }}
     ```
+    </File>
 
 3. Check whether the result set of your query includes a reliable timestamp column that indicates when a record was last updated. For our example, the `updated_at` column reliably indicates record changes, so we can use the `timestamp` strategy. If your query result set does not have a reliable timestamp, you'll need to instead use the `check` strategy — more details on this below.
 
