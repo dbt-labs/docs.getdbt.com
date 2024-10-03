@@ -70,7 +70,6 @@ The following tables outline the access that users have if they are assigned a D
 | Connections             |   W   |    W    |    R      |             |
 | Credentials             |   W   |    W    |    R      |             |
 | Custom env. variables   |   W   |    W    |    R      |             |
-| dbt adapters            |   W   |    W    |           |             |
 | Develop (IDE or dbt Cloud CLI)| W |  W    |           |             |
 | Environments            |   W   |    W    |    R      |             |
 | Jobs                    |   W   |    W    |    R      |             |
