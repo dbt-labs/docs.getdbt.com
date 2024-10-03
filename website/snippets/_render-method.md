@@ -1,6 +1,6 @@
 #### The render method
 
-The `.render()` method is generally used to resolve or evaluate Jinja expressions (such as `{{ source(...) }}`) during runtime. When a pre-hook or post-hook contains a dynamic reference, such as a table or column, dbt might not automatically resolve the reference correctly, particularly when certain flags (such as --empty) are applied.
+The `.render()` method is generally used to resolve or evaluate Jinja expressions (such as `{{ source(...) }}`) during runtime. When a pre-hook or post-hook contains a dynamic reference, such as a table or column, dbt might not automatically resolve the reference correctly, particularly when certain flags (such as `--empty`) are applied.
 
 The recommended solution is to explicitly instruct dbt on how to interpret the reference in the pre-hook by using the `.render()` method. This approach ensures that dbt properly prepares the reference before executing it.
 
