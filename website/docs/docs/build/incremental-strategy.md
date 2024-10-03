@@ -199,6 +199,7 @@ Before diving into [custom strategies](#custom-strategies), it's important to un
 | `delete+insert`        | `get_incremental_delete_insert_sql`    |
 | `merge`                | `get_incremental_merge_sql`            |
 | `insert_overwrite`     | `get_incremental_insert_overwrite_sql` |
+| `microbatch`  <Lifecycle status="beta"/>         | `get_incremental_microbatch_sql`       |
 
 
 For example, a built-in strategy for the `append` can be defined and used with the following files:
