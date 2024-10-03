@@ -19,6 +19,10 @@ exports.versions = [
     customDisplay: "Cloud (Versionless)",
   },
   {
+    version: "1.9",
+    isPrerelease: true,
+  },
+  {
     version: "1.8",
     EOLDate: "2025-04-15",
   },
@@ -44,6 +48,7 @@ exports.versions = [
 exports.versionedPages = [
   {
     page: "docs/build/incremental-microbatch",
+    page: "reference/resource-configs/snapshot_meta_column_names",
     firstVersion: "1.9",
   },
   {
