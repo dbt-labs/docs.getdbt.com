@@ -8,7 +8,7 @@ id: "incremental-microbatch"
 
 :::info Microbatch
 
-The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. We have been developing it behind a flag to prevent unintended interactions with existing custom incremental strategies, so to enable this feature, set the environment variable `DBT_EXPERIMENTAL_MICROBATCH` to `True` in your dbt Cloud environments or wherever you're running dbt Core.
+The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. We have been developing it behind a flag to prevent unintended interactions with existing custom incremental strategies. To enable this feature, set the environment variable `DBT_EXPERIMENTAL_MICROBATCH` to `True` in your dbt Cloud environments or wherever you're running dbt Core.
 
 Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672)
 
@@ -73,12 +73,6 @@ customers as (
 
 ```sql
 
-
-
-
-
-
-
 with page_views as (
 
     select * from (
@@ -108,12 +102,6 @@ customers as (
 <File name="target/compiled/sessions.sql">
 
 ```sql
-
-
-
-
-
-
 
 with page_views as (
 
@@ -145,7 +133,7 @@ dbt will instruct the data platform to take the result of each batch query and i
 
 It does not matter whether the table already contains data for that day, or not. Given the same input data, no matter how many times a batch is reprocessed, the resulting table is the same.
 
-<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="The event_time column configures the real-world time of this record"/>
+<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter sessions, performing a full scan for each batch."/>
 
 ### Relevant configs
 
@@ -153,8 +141,8 @@ Several configurations are relevant to microbatch models, and some are required:
 
 | Config   | Type | Description   | Default |
 |----------|------|---------------|---------|
-| `event_time` | Column             | The column indicating "at what time did the row occur." Required for your microbatch model and any direct parents that should be filtered.          | N/A     |
-| `begin`      | Date    | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
+| `event_time` | Column  (required)   | The column indicating "at what time did the row occur." Required for your microbatch model and any direct parents that should be filtered.          | N/A     |
+| `begin`      | Date (required)   | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
 | `batch_size` | String (optional)  | The granularity of your batches. The default is `day` (and currently this is the only granularity supported).             | `day`   |
 | `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `0`     |
 
@@ -164,7 +152,7 @@ As a best practice, we recommend configuring `full_refresh: False` on microbatch
 
 ### Usage
 
-**You must write your model query to process (read and return) exactly one "batch" of data**. This is a simplifying assumption, and a powerful one:
+**You must write your model query to process (read and return) exactly one "batch" of data**. This is a simplifying assumption and a powerful one:
 - You don’t need to think about `is_incremental` filtering
 - You don't need to pick among DML strategies (upserting/merging/replacing)
 - You can preview your model, and see the exact records for a given batch that will appear when that batch is processed and written to the table
@@ -208,9 +196,11 @@ For now, dbt assumes that all values supplied are in UTC:
 
 While we may consider adding support for custom timezones in the future, we also believe that defining these values in UTC makes everyone's lives easier.
 
-## How does `microbatch` compare to other incremental strategies?
+## How `microbatch` compares to other incremental strategies?
 
-Most incremental models rely on the end user (you) to explicitly tell dbt what "new" means, in the context of each model, by writing a filter in an `{% if is_incremental() %}` conditional block. You are responsibly for crafting this SQL in a way that queries `{{ this }}` to check when the most recent record was last loaded, with an optional look-back window for late-arriving records. Other incremental strategies will control _how_ the data is being added into the table — whether append-only `insert`, `delete` + `insert`, `merge`, `insert overwrite`, etc — but they all have this in common.
+Most incremental models rely on the end user (you) to explicitly tell dbt what "new" means, in the context of each model, by writing a filter in an `{% if is_incremental() %}` conditional block. You are responsible for crafting this SQL in a way that queries [`{{ this }}`](/reference/dbt-jinja-functions/this) to check when the most recent record was last loaded, with an optional look-back window for late-arriving records. 
+
+Other incremental strategies will control _how_ the data is being added into the table — whether append-only `insert`, `delete` + `insert`, `merge`, `insert overwrite`, etc — but they all have this in common.
 
 As an example:
 
