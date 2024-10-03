@@ -149,4 +149,4 @@ on-run-start:
 
 ### State comparison
 
-Set the `state_modified_compare_vars` ... TOOD
+Set the `state_modified_compare_vars` to `True` if a model uses a `var` or `env_var` in its definition. dbt will be able to identify its lineage to include the model in `state:modified` because the `var` or `env_var` value has changed.
