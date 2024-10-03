@@ -64,9 +64,9 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
-| require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.06.192         | 1.6.14, 1.7.14  | 1.8.0             |
-| require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
-| source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
+| require_explicit_package_overrides_for_builtin_materializations | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
+| require_resource_names_without_spaces                           | 2024.05          | TBD*                | 1.8.0           | 1.9.0             |
+| source_freshness_run_project_hooks                              | 2024.03          | TBD*                | 1.8.0           | 1.9.0             |
 | [Redshift] [restrict_direct_pg_catalog_access](#redshift-restrict_direct_pg_catalog_access)    | 2024.09.242      | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
