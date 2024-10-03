@@ -83,7 +83,7 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 ### Source definitions for state:modified
 
-The flags is `False` by default.
+The flag is `False` by default.
 
 Set `state_modified_compare_more_unrendered` to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks. Setting the flag to `True` reduces false positives during `state:modified` checks when `prod` and `dev` environments have different configs.
 
