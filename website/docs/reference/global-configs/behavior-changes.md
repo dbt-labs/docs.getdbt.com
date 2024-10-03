@@ -75,7 +75,7 @@ When the dbt Cloud Maturity is "TBD," it means we have not yet determined the ex
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
-### On-run-start hook
+### Failures in on-run-start hooks
 
 The flag is `False` by default.
 
