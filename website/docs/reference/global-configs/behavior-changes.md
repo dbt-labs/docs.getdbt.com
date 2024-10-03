@@ -87,7 +87,7 @@ The flag is `False` by default.
 
 Set `state_modified_compare_more_unrendered` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
 
-Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during parsing of models and `unrendered_database` and `unrendered_schema` configs during parsing of sources.
+Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 
 
 ###  Package override for built-in materialization 
