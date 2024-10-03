@@ -15,7 +15,7 @@ recently_updated: true
 
 Unlock the power of [dbt Explorer](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
 
-This quickstart guide accompanies the Explorer hands-on workshop and help you dive into a production-level dbt Mesh implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
+This quickstart guide accompanies the Explorer hands-on workshop and helps you dive into a production-level dbt Mesh implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
 
 By the end of the guide and workshop, you'll understand how to leverage dbt Explorer and have the confidence to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
 
@@ -37,10 +37,10 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
 6. Wait about 30 seconds, you’ll be in the dbt Cloud account for this workshop and already connected to a data warehouse.
-7. Toggle into the *Platform project*. Go to the Deploy tab and select Jobs from the dropdown menu. 
-8. Run each job you see by clicking on the job and then selecting 'Run'. This will run the *upstream* project job in both a production and staging environment.
-9. Toggle into the *Analytics project*. Go to the Deploy tab and select Jobs from the dropdown menu. 
-10. Run each job you see by clicking on the job and then selecting 'Run'. This will run the *downstream* project job in both a production and staging environment.
+7. Toggle into the **Platform project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
+8. Run each job you see by clicking on the job and then selecting **Run**. This will run the *upstream* project job in both a production and staging environment.
+9. Toggle into the **Analytics project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
+10. Run each job you see by clicking on the job and then selecting **Run**. This will run the *downstream* project job in both a production and staging environment.
  <Lightbox src="/img/quickstarts/dbt-cloud/go_to_jobs.png" width="80%" title="Click on the Jobs tab" />
  <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="80%" title="Run the jobs" />
    
@@ -60,19 +60,21 @@ dbt Explorer will show you your project's most executed models, longest model ex
 
 ## Resources
 
-With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. 
+
+Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Models tab" />
 
 ### Hands-On
-- Explore the Model tab 
+- Explore the **Model** tab 
   - Pick a model. What’s its row count?
   - Use the test results drop down to see if  this model’s tests passed. What other models does it depend on?
 - Explore the **Tests** tab
   - What tests do we see? Which tests have warnings? Failures?
 - Explore the **Sources** tab
   - What sources can we see? Which sources have stale data? Which sources have fresh data?
-- Explore Exposures
+- Explore **Exposures**
   - Use the lineage graph to find an exposure. Which  models and metrics does the Exposure reference?
  
 ## Lineage
@@ -97,7 +99,7 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
 - Explore **Project-Level lineage**
   - Pick a model and review its upstream and downstream dependencies
   - Which sources does this model depend on? Which models depend on this model?
-- Explore Lenses
+- Explore **Lenses**
   - Apply the Test Status Lenses. Which models passed tests? Which had warnings?
   - Explore different lenses (Model Layer, Materialization Type, Resource). What information do you see?
 - Explore **Column-Level Lineage**
@@ -127,7 +129,9 @@ To learn more about the specific suggestions and the reasons behind them, check 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
 ### Hands-On
-- Review your project recommendations. Find the project recommendation for the model `agg_daily_returned_orders`. Add documentation to this model in the aggregates.yml file.
+- Review your project recommendations.
+- Find the project recommendation for the model `agg_daily_returned_orders`.
+- Add documentation to this model in the `aggregates.yml` file.
 
 ## What's next
 
