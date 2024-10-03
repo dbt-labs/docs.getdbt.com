@@ -44,7 +44,7 @@ Key:
 Permissions:
 
 * Account-level permissions &mdash; Permissions related to management of the dbt Cloud account. For example, billing and account settings.
-* Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, Explorer and the IDE.
+* [Project-level permissions](#project-permissions-for-account-roles) &mdash; Permissions related to the projects in dbt Cloud. For example, Explorer and the IDE.
 
 The following tables outline the access that users have if they are assigned a Developer license and the Owner or Member group, Read-only license, or IT license.
 
