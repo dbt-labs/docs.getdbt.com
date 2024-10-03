@@ -39,7 +39,7 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable partial parsing between deployment runs option" />
 
-## Account access to Advanced CI features <Lifecycle status="beta" />
+## Account access to Advanced CI features <Lifecycle status="enterprise" />
 
 [Advanced CI](/docs/deploy/advanced-ci) features, such as [compare changes](/docs/deploy/advanced-ci#compare-changes), allow dbt Cloud account members to view details about the changes between what's in the production environment and the pull request.
 
