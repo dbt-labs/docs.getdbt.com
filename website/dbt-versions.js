@@ -43,6 +43,10 @@ exports.versions = [
  */
 exports.versionedPages = [
   {
+    page: "reference/resource-configs/snapshot_meta_column_names",
+    firstVersion: "1.9",
+  },
+  {
     page: "reference/resource-configs/target_database",
     lastVersion: "1.8",
   },

@@ -91,8 +91,8 @@ const sidebarSettings = {
                   },
                   items: [
                     "docs/cloud/manage-access/seats-and-users",
-                    "docs/cloud/manage-access/self-service-permissions",
                     "docs/cloud/manage-access/enterprise-permissions",
+                    "docs/cloud/manage-access/self-service-permissions",
                   ],
                 },
                 {
@@ -975,6 +975,7 @@ const sidebarSettings = {
             "reference/resource-configs/unique_key",
             "reference/resource-configs/updated_at",
             "reference/resource-configs/invalidate_hard_deletes",
+            "reference/resource-configs/snapshot_meta_column_names",
           ],
         },
         {
