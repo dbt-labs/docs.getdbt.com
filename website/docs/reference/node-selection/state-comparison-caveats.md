@@ -16,7 +16,16 @@ dbt will mark modified any resource that depends on a changed macro, or on a mac
 
 ### Vars
 
-If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+<VersionBlock lastVersion="1.8">
+
+If a model uses a `var` or `env_var` in its definition, dbt Core 1.8 and earlier are unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Beginning in dbt Core 1.9, when you set the `state_modified_compare_vars` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True` and a model uses a `var` or `env_var` in its definition, dbt will identify that lineage in such a way that it will include the model in `state:modified` when the `var` or `env_var` value has changed. 
+
+</VersionBlock>
 
 ### Tests
 
