@@ -196,7 +196,7 @@ Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots i
 
 <Expandable alt_header="Use ephemeral model to clean or transform data before snapshotting">
 
- If you need to clean or transform your data before snapshotting, create an ephemeral model (or a staging model) that applies the necessary transformations. Then, reference this model in your snapshot configuration. This approach keeps your snapshot definitions clean and allows you to test and run transformations separately.
+ If you need to clean or transform your data before snapshotting, create an ephemeral model or a staging model that applies the necessary transformations. Then, reference this model in your snapshot configuration. This approach keeps your snapshot definitions clean and allows you to test and run transformations separately.
 
 </Expandable>
 </VersionBlock>
