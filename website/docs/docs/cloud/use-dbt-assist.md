@@ -12,8 +12,8 @@ Use dbt Copilot to generate documentation, tests, and semantic models from scrat
 
 2. In the **Console** section (under the **File Editor**), click **dbt Copilot** to view the available AI options.
 
-3. Select the available options: **Generate Documentation**, **Generate Tests**, or **Generate Semantic Model** to generate the YAML config.
-   - To generate all for the same model, click each option separately. dbt Copilot intelligently saves the YAML config in the same file.
+3. Select the available options to generate the YAML config: **Generate Documentation**, **Generate Tests**, or **Generate Semantic Model**.
+   - To generate multiple YAML configs for the same model, click each option separately. dbt Copilot intelligently saves the YAML config in the same file.
 
 4. Verify the AI-generated code. You can update or fix the code as needed.
 

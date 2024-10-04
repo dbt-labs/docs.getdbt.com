@@ -8,7 +8,7 @@ pagination_prev: null
 
 # About dbt Copilot <Lifecycle status='beta'/> 
 
-dbt Copilot is a powerful artificial intelligence (AI) engine that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. dbt Copilot embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. With automatic code generation, you can let the AI engine generate the documentation, data tests, and semantic models for you. 
+dbt Copilot is a powerful artificial intelligence (AI) engine that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. dbt Copilot embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. With automatic code generation, you can let the AI engine generate the [documentation](/docs/build/documentation), [tests](/docs/build/data-tests), and [semantic models](/docs/build/semantic-models) for you. 
 
 :::tip Beta feature
 dbt Copilot is designed to _help_ developers generate documentation and tests in dbt Cloud. It's available in beta, in the dbt Cloud IDE only.
