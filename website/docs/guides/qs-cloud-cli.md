@@ -1,9 +1,9 @@
 ---
 title: "Coalesce: Quickstart for dbt Cloud CLI"
-id: "cloud_cli"
+id: "dbt-cloud-cli"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Beginner'
-icon: 'bigquery'
+icon: 'guides'
 hide_table_of_contents: true
 tags: ['Cloud CLI', 'dbt Cloud','Quickstart']
 recently_updated: true
@@ -17,9 +17,9 @@ In this quickstart guide, you'll learn how to configure and use dbt Cloud CLI as
 
 It will show you how to: 
 
-- Setup a dbt Cloud sandbox.
-- Install dbt Cloud CLI and connect to dbt Cloud.
-- Run commands locally through dbt Cloud CLI.
+- Set up a dbt Cloud sandbox.
+- Install the dbt Cloud CLI and connect to dbt Cloud.
+- Run commands locally using the dbt Cloud CLI.
 - Defer to different production environments.
 - Leverage cross project ref.
 - Install dbt Power User.
@@ -27,69 +27,69 @@ It will show you how to:
 
 ### Prerequisites​
 
-- Familiarity with dbt project and common commands (e.g. `dbt build`)
-- Git installed
-- VSCode (preferred) or other code editor of choice
+- Familiarity with dbt projects and common commands (for example, `dbt build`)
+- Git is installed
+- An editor, such as Visual Studio Code (preferred), is installed
 
 ### Related content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
 
-## Installing Git and VS Code (Prerequisites)
+## Install Git and Visual Studio Code (Prerequisites)
 
-You will need to have git installed locally and a code editor (preferably VS Code).
+You will need to have Git installed locally and a code editor (preferably Visual Studio Code).
 
 ### Check your installation status
 
-Run `git --version` in your terminal to check if git is installed.
+Run `git --version` in your terminal to check if it's installed. For example:
 
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/cloud-cli-guide/terminal-git-check.png" title="Verifying git installation" />
+<Lightbox src="/img/cloud-cli-guide/terminal-git-check.png" title="Example of verifying installation of Git" />
 </div>
 
-Check your installed applications for VSCode or another editor.
+Check your installed applications for Visual Studio Code (vscode) or another editor. For example:
 
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/cloud-cli-guide/finder-vscode-check.png" title="Verifying git installation" />
+<Lightbox src="/img/cloud-cli-guide/finder-vscode-check.png" title="Example of verifying installation of Visual Studio Code on macOS" />
 </div>
 
-### Install git and VSCode
+### Install Git and VSCode
 
-Navigate to the following git installation page and install git for your operating system.
+Navigate to the following Git installation page and install it for your operating system:
 
 https://git-scm.com/downloads
 
-Navigate to the following git installation page and install git for your operating system.
+Navigate to the following Visual Studio Code installation page and install it for your operating system.
 
 https://code.visualstudio.com/download
 
-## dbt Cloud Setup (Coalesce Workshop Only)
+## Set up dbt Cloud (Coalesce Workshop Only)
 
-Let's get setup with a dbt Cloud sandbox already connected to a Snowflake account for the workshop.
+Let's get set up with a dbt Cloud sandbox that's already connected to a Snowflake account for the workshop.
 
-1. Go to [bit.ly/coalesce-24-sandboxes](https://bit.ly/coalesce-24-sandboxes) to create an account (make sure you log out of any other dbt Cloud accounts)
+1. Go to [bit.ly/coalesce-24-sandboxes](https://bit.ly/coalesce-24-sandboxes) to create an account. Make sure you log out of any other dbt Cloud accounts.
     
-    a. Type in **first name** and **last name**
+    a. Enter your **First Name** and **Last Name**
     
-    b. Select workshop **“Test driving dbt Cloud CLI and dbt power user”**
+    b. For **Workshop**, choose **Test driving dbt Cloud CLI and dbt power user** from the dropdown
     
-    c. **Password** will be provided by your facilitators
+    c. The **Passcode** will be provided by your facilitators
     
-    d. Accept terms and click complete registration
+    d. Accept the terms and click **Complete Registration**
 
-2. Navigate to the **platform project** by selecting project on the left hand navigation and choosing platform
+1. Navigate to the platform project by selecting **Project** form the left sidebar and choosing **Platform Analytics**.
 
-3. Select **Deploy >> Runs** to find the created jobs.  For each job, click on the job and click **run**.
+1. Select **Deploy >> Runs** to find the created jobs. For each job, click on the job and click **run**.
 
-4. Now repeat for the **analytics project**. Toggle into the analytics project.
+1. Now repeat for the **analytics project**. Toggle into the analytics project.
 
-5. Select **Deploy >> Runs** to find the created jobs.  For the one job, click on the job and click **run**.
+1. Select **Deploy >> Runs** to find the created jobs. For the one job, click on the job and click **run**.
 
-6. Select **Explore** from the navigation and choose XX. Now you can visualize your dbt Mesh. Click into each project to see project level lineage.
+1. Select **Explore** from the navigation and choose XX. Now you can visualize your dbt Mesh. Click into each project to see project level lineage.
 
-You've now successfully run your project in deployment environments to use cross project ref and deferral later in the workshop. 
+You've now successfully run your project in deployment environments so you can use cross project ref and deferral later in the workshop. 
 
-## Configuring dbt Cloud CLI
+## Configure dbt Cloud CLI
 
 Now we'll clone the project repository and configure dbt Cloud CLI to connect to your sandbox.
 
@@ -97,40 +97,42 @@ Now we'll clone the project repository and configure dbt Cloud CLI to connect to
 
 1. Navigate to a folder on your computer to clone the repository.
 
-2. In your terminal, run the following command to clone the downstream (analytics) project.
+1. In your terminal, run the following command to clone the downstream (analytics) project:
 
-    `git clone https://github.com/dbt-labs/c24-workshops-analytics.git`
+    ```shell
+    git clone https://github.com/dbt-labs/c24-workshops-analytics.git
+    ```
 
 ### Install Cloud CLI
 
-3. In dbt Cloud, select Platform Analytics and choose Develop >> Configure Cloud CLI
+1. In dbt Cloud, select Platform Analytics and choose **Develop >> Configure Cloud CLI**.
 
-4. Based on your current local setup, use the following guidance to determine your installation approach
+1. Based on your current local setup, use the following guidance to determine your installation approach:
 
     a. Check if you have dbt in your path by running `dbt --version`
 
     b. If you don't have dbt in your path, we recommend the macOS or Windows installation method.
 
-    c. If you do have dbt in your path (or a virtual environment) we recommend a) uninstalling dbt globally and b) installing dbt Cloud CLI with a python virtual environment.
+    c. If you do have dbt in your path (or a virtual environment) we recommend a) uninstalling dbt globally and b) installing dbt Cloud CLI with a Python virtual environment.
 
-5. Download the CLI configuration file from the dbt Cloud UI.  Store this in your `.dbt` folder.
+1. Download the CLI configuration file from the dbt Cloud UI. Save it in your `.dbt` folder.
 
-6. Navigate to the dbt project folder that you cloned earlier and open the `dbt_project.yml` file with your project_id.
+1. Navigate to the dbt project folder that you cloned earlier and open the `dbt_project.yml` file with your `project_id`.
 
-### Confirm installation
+### Confirm the installation
 
-7. Run `dbt compile` to verify your installation
+Run `dbt compile` to verify your installation.
 
 There you go! You've installed the dbt Cloud CLI! Let's dive in!
 
-## Leveraging dbt Cloud CLI
+## Leverage dbt Cloud CLI
 
-Let's run a few commands together to get comfortable with dbt Cloud CLI:
-* `dbt debug` - Shows you your connection details and information
-* `dbt compile --select stg_campaigns` - Compiles your dbt project
-* `dbt run --select stg_campaigns` - Materialized your dbt models
-* `dbt run --select stg_campaigns` - Preview the results of a model
-* `dbt test --select stg_campaigns` - Execute tests against your materialized models
+Let's run a few commands together to get comfortable with the dbt Cloud CLI:
+* `dbt debug` &mdash; Displays your connection details and information
+* `dbt compile --select stg_campaigns` &mdash; Compiles your dbt project
+* `dbt run --select stg_campaigns` &mdash; Materialized your dbt models
+* `dbt run --select stg_campaigns` &mdash; Preview the results of a model
+* `dbt test --select stg_campaigns` &mdash; Execute tests against your materialized models
 
 Now let's dive into some more advanced components of dbt Cloud CLI.
 
@@ -140,92 +142,92 @@ Now let's dive into some more advanced components of dbt Cloud CLI.
 
 ### dbt Mesh
 
-You have access to cross-project ref's powered by the metadata of dbt Cloud.
+You have access to cross-project ref's that's powered by the metadata of dbt Cloud.
 
 1. Open the `agg_campaign_customer_contacts` model.
-2. Find the reference called `{{ ref('platform', 'dim_customers', v=1) }}`
-3. Run the command `dbt run --select agg_campaign_customer_contacts`
-4. Navigate to dbt Cloud explorer and find a public model. Let's use the `fct_order_items` model.
-5. Create a new model in your project with the following code
-```
-insert some code here
-```
+1. Find the reference called `{{ ref('platform', 'dim_customers', v=1) }}`
+1. Run this command:
+    ```shell
+    dbt run --select agg_campaign_customer_contacts
+    ```
+1. Navigate to dbt Cloud Explorer and find a public model. Let's use the `fct_order_items` model.
+1. Create a new model in your project with the following code:
+    ```sql
+    insert some code here
+    ```
 
-### Linting and Fixing with sqlfluff
+### Linting and fixing SQL files
 
-With sqlfluff built-in, you can check your code against a style guide and automatically make fixes.
+With SQLFluff built in, you can check your code against a style guide and automatically make fixes.
 
 1. Run `dbt sqlfluff lint models/core/???`. This will identify tweaks to make in the model.
-2. Run `dbt sqlfluff fix models/core/???`. This will proactively try to make direct fixes in the model.
+1. Run `dbt sqlfluff fix models/core/???`. This will proactively try to make direct fixes in the model.
 
 ### Change branches
 
-You can quickly change branches without fully pushing to your git provider (i.e. Github)
+You can quickly change branches without fully pushing to your git provider (such as GitHub):
 
-`git checkout -b my-new-branch`
+```shell
+git checkout -b my-new-branch
 
-`git checkout main`
+git checkout main
+```
 
 Now you've taken a tour of what you can do with dbt Cloud CLI. Let's dive into dbt Power User next.
 
-## Installing dbt Power User
+## Install dbt Power User
 
 Let's get dbt Power User installed to super charge our workflow.
 
-1. Within VS Code, click on extensions and search for Power User for dbt.
+1. Within vscode, click on extensions and search for "Power User for dbt".
 
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/cloud-cli-guide/setup-poweruser-01.png" title="Find the VS Code Extension for dbt Power User" />
-</div>
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/cloud-cli-guide/setup-poweruser-01.png" title="Find the VS Code Extension for dbt Power User" />
+    </div>
+1. Click on install.
+1. Click **Switch to dbt Cloud**. You might need to refresh.
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/cloud-cli-guide/setup-poweruser-02.png" title="Switch to dbt Cloud" />
+    </div>
+1. Complete the setup steps. (click on welcome in VSCode and choose dbt Poweruser)
+    <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/cloud-cli-guide/setup-poweruser-03.png" title="Complete the setup flow" />
+    </div>
+1. Make an account to sign up and get an API Key: https://app.myaltimate.com/register
 
-2. Click on install.
-3. Choose switch to dbt Cloud (you might need to refresh).
-
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/cloud-cli-guide/setup-poweruser-02.png" title="Switch to dbt Cloud" />
-</div>
-
-4. Complete the setup steps. (click on welcome in VSCode and choose dbt Poweruser)
-
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/cloud-cli-guide/setup-poweruser-03.png" title="Complete the setup flow" />
-</div>
-
-5. Go make an account to sign up and get an API Key: https://app.myaltimate.com/register
-
-6. Copy your API key and enter this into the dbt Power User extension settings.
+1. Copy your API key and enter this into the dbt Power User extension settings.
 
 Now let's dive in!
 
-## Leveraging dbt Power User
+## Leverage dbt Power User
 
 There is a ton you can do to super charge your workflow with dbt Cloud. Let's cover some highlights.
 
 ### Preview your upstream/downstream changes
 
-Open the Power User extension on the left hand side. You can see the upstream and downstream projects
+Open the Power User extension on the left-hand side. You can see the upstream and downstream projects.
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/cloud-cli-guide/using-poweruser-01.png" title="See upstream and downstream dependencies" />
 </div>
 
-### Preview Results
+### Preview results
 
-Hit cmd+enter (or ctrl+enter on PC) and instantly see the results of your model below.
+Press Command-Enter (or Control-Enter for Windows) and instantly see the results of your model below.
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/cloud-cli-guide/using-poweruser-02.png" title="Preview results" />
 </div>
 
-### SQL Visualization
+### SQL visualization
 
-While looking at a model file, click the Altimate logo in the top right and click Visualize SQL to see a break down of your SQL model.
+While looking at a model file, click the Altimate logo in the top right and click **Visualize SQL** to see a breakdown of your SQL model.
 
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/cloud-cli-guide/using-poweruser-03.png" title="Visualize SQL processing" />
 </div>
 
-### Generate test and documentation YML with user friendly UX and AI
+### Generate test and documentation YML with user-friendly UX and AI
 
 At the top of your model file, click on generate documentation for a UI to rapidly create documentation and tests with AI
 
@@ -237,7 +239,7 @@ There is a whole lot more too! Check out the dbt Power User docs here: https://d
 
 ## Conclusion
 
-You've successfully installed dbt Cloud CLI and dbt Power User! Now you can get the benefits of local development AND dbt Cloud working together.
+You've successfully installed dbt Cloud CLI and dbt Power User! Now you can get the benefits of local development _and_ dbt Cloud working together.
 
 Be on the look out for the following enhancements to dbt Cloud CLI:
 - Deeper integration with dbt Explorer for visual interaction
