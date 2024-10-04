@@ -421,6 +421,7 @@ const sidebarSettings = {
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
+                "docs/build/incremental-microbatch",
               ],
             },
           ],
@@ -974,6 +975,7 @@ const sidebarSettings = {
             "reference/resource-configs/unique_key",
             "reference/resource-configs/updated_at",
             "reference/resource-configs/invalidate_hard_deletes",
+            "reference/resource-configs/snapshot_meta_column_names",
           ],
         },
         {

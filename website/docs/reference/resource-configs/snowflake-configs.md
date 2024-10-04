@@ -9,6 +9,8 @@ To-do:
 - use the reference doc structure for this article / split into separate articles
 --->
 
+<VersionBlock firstVersion="1.9">
+
 ## Iceberg table format <Lifecycle status="beta"/>
 
 The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
@@ -95,6 +97,7 @@ There are some limitations to the implementation you need to be aware of:
 -  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
 - You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
 
+</VersionBlock>
 
 ## Dynamic tables
 
