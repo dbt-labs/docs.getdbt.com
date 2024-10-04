@@ -586,9 +586,6 @@ Custom constraints allow you to add configuration to specific columns. For examp
 
 You can implement constraints in a couple of different ways:
 
-- [Custom constraints with tags](#custom-constraints-with-tags)
-- [Custom constraints without tags](#custom-constraints-without-tags)
-
 <Expandable alt_header="Custom constraints with tags">
 
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
