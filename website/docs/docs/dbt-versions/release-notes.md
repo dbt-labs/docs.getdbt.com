@@ -104,7 +104,7 @@ Read about the [order dbt infers columns can be used as primary key of a model](
 
 The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
 
-- **New:** [dbt Copilot](/docs/cloud/dbt-assist) is a powerful AI engine helping you generate documentation and tests, saving you time as you deliver high-quality data. Available in private beta for a subset of dbt Cloud Enterprise users and in the dbt Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
+- **New:** [dbt Copilot](/docs/cloud/dbt-assist) is a powerful AI engine helping you generate documentation, tests, and semantic models, saving you time as you deliver high-quality data. Available in private beta for a subset of dbt Cloud Enterprise users and in the dbt Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
 
 - **New:** The new low-code editor, now in private beta, enables less SQL-savvy analysts to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud. These models compile directly to SQL and are indistinguishable from other dbt models in your projects: they are version-controlled, can be accessed across projects in dbt Mesh, and integrate with dbt Explorer and the Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
 
