@@ -142,11 +142,11 @@ jobs:
             // Build the deployment content without leading whitespace
             const deploymentContent = [
               `${startMarker}`,
+              '---',
               '🚀 Deployment available! Here are the direct links to the updated files:',
               '',
               `${links}`,
               '',
-              '---',
               `${endMarker}`
             ].join('\n');
 
