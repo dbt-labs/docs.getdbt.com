@@ -42,7 +42,7 @@ Historically, managing incremental models involved several manual steps and resp
 
 While this works for many use-cases, there’s a clear limitation with this approach: *Some datasets are just too big to fit into one query.*
 
-Starting in Core 1.9, you can use the new microbatch strategy to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
+Starting in Core 1.9, you can use the new [microbatch strategy](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
 
 - Simplified query design: Write your model query for a single batch of data. dbt will use your `event_time`, `lookback`, and `batch_size` configurations to automatically generate the necessary filters for you, making the process more streamlined and reducing the need for you to manage these details.
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
