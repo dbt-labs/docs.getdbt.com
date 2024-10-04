@@ -619,7 +619,7 @@ Using this syntax requires configuring all the columns and their types as it’s
 To generate a YAML with all the columns, you can use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
 </Expandable>
 
-<Expandable alt_header="Custom constraints without tags"/>
+<Expandable alt_header="Custom constraints without tags">
 
 Alternatively, you can add a masking policy without tags:
 
