@@ -63,7 +63,7 @@ snapshots:
     config:
       [database](/reference/resource-configs/database): string
       [schema](/reference/resource-configs/schema): string
-      [alias](/reference/resource-configs/alias):string
+      [alias](/reference/resource-configs/alias): string
       [strategy](/reference/resource-configs/strategy): timestamp | check
       [unique_key](/reference/resource-configs/unique_key): column_name_or_expression
       [check_cols](/reference/resource-configs/check_cols): [column_name] | all
