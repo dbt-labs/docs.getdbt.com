@@ -12,7 +12,7 @@ Your environment(s) must be on ["Versionless"](/docs/dbt-versions/versionless-cl
 | Field                         | Description                                                                                   | Type           | Required? | Example |
 | ----------------------------- | --------------------------------------------------------------------------------------------- | -------------- | --------- | ------- |
 | Host                          | Host name of your Teradata environment.                                                        | String         | Required  | host-name.env.clearscape.teradata.com |
-| Port                          | The database port number. Equivalent to the Teradata JDBC Driver DBS_PORT connection parameter.| Quoted integer | Optional  | "1025 |
+| Port                          | The database port number. Equivalent to the Teradata JDBC Driver DBS_PORT connection parameter.| Quoted integer | Optional  | 1025 |
 | Retries                       | Number of times to retry to connect to database upon error.                                   | Integer        | optional  | 10 |
 | Request timeout               | The waiting period between connections attempts in seconds. Default is "1" second.            | Quoted integer | Optional  | 3 |
 
