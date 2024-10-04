@@ -291,9 +291,9 @@ const sidebarSettings = {
             {
               type: "category",
               label: "dbt Copilot",
-              link: { type: "doc", id: "docs/cloud/dbt-assist" },
+              link: { type: "doc", id: "docs/cloud/dbt-copilot" },
               items: [
-                "docs/cloud/dbt-assist",
+                "docs/cloud/dbt-copilot",
                 "docs/cloud/enable-dbt-assist",
                 "docs/cloud/use-dbt-assist",
                 "docs/cloud/dbt-assist-data",
