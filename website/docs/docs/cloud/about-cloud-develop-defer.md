@@ -50,8 +50,11 @@ The dbt Cloud CLI offers additional flexibility by letting you choose the source
 
 <File name="dbt_cloud.yml">
 
-  ```yml
-defer-env-id: '123456'
+```yml
+context:
+  active-host: ...
+  active-project: ...
+  defer-env-id: '123456'
 ```
 
 </File>
@@ -60,7 +63,7 @@ defer-env-id: '123456'
 <File name="dbt_project.yml"> 
 
 ```yml
-dbt_cloud:
+dbt-cloud:
   defer-env-id: '123456'
 ```
 
