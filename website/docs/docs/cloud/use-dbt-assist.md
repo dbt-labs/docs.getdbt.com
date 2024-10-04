@@ -6,7 +6,7 @@ description: "Use dbt Copilot to generate documentation and tests from scratch, 
 
 # Use dbt Copilot <Lifecycle status='beta'/> 
 
-Use dbt Copilot to generate documentation and tests from scratch, giving you the flexibility to modify or fix generated code. To access and use the dbt Copilot experience:
+Use dbt Copilot to generate documentation and tests from scratch, giving you the flexibility to modify or fix generated code. To access and use dbt Copilot:
 
 1. Navigate to the dbt Cloud IDE and select a SQL model file under the **File Explorer**.
 

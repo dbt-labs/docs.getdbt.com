@@ -1,12 +1,12 @@
 --- 
 title: "dbt Copilot privacy and data" 
 sidebar_label: "dbt Copilot privacy" 
-description: "The dbt Copilot experience is a powerful AI feature to help you deliver data that works." 
+description: "dbt Copilot is a powerful AI feature to help you deliver data that works." 
 ---
 
 # dbt Copilot privacy and data <Lifecycle status='beta'/>
 
-dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Labs handles your data when you use the dbt Copilot experience.
+dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Copilot handles your data.
 
 #### Is my data used by dbt Labs to train AI models?
   
@@ -26,4 +26,4 @@ dbt Copilot utilizes metadata, including column names, model SQL, the model's na
 
 #### Can dbt Copilot data be deleted upon client written request?
 
-The data from the dbt Copilot experience, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. dbt Labs does not have possession of any personal or sensitive data. To the extent client identifies personal or sensitive information uploaded by or on behalf of client to dbt Labs systems, such data can be deleted within 30 days of written request.
+The data from using dbt Copilot, aside from usage data, _doesn't_ persist on dbt Labs systems. Usage data is retained by dbt Labs. dbt Labs doesn't have possession of any personal or sensitive data. To the extent client identifies personal or sensitive information uploaded by or on behalf of client to dbt Labs systems, such data can be deleted within 30 days of written request.
