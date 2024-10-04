@@ -18,18 +18,18 @@ This page explains how to enable the dbt Copilot engine in dbt Cloud, leveraging
 
 ## Enable dbt Copilot
 
-dbt Copilot is only available at an account level after your organization has signed the legal requirements. It's disabled by default. Your dbt Cloud admin(s) will enable it by following these steps:
+dbt Copilot is only available at an account level after your organization has signed the legal requirements. It's disabled by default. Your dbt Cloud admin(s) can enable it by following these steps:
 
-1. Navigate to **Account Settings** in the navigation menu.
+1. Navigate to **Account settings** in the navigation menu.
 
 2. Under **Settings**, confirm the account you're enabling.
 
 3. Click **Edit** in the top right corner.
 
-4. To turn on dbt Copilot, toggle the **Enable account access to AI-powered features** switch to the right. The toggle will slide to the right side, activating dbt Copilot.
+4. Enable the **Enable account access to AI-powered features** option.
 
 5. Click **Save**. You should now have the dbt Copilot AI engine enabled for use.
 
 Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4, and repeat step 5.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-assist-toggle.jpg" width="90%" title="Example of the 'Enable account access to AI-powered feature' option in Account settings" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="90%" title="Example of the 'Enable account access to AI-powered feature' option in Account settings" />
