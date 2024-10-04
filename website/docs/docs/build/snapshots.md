@@ -52,20 +52,25 @@ It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud
 
 <VersionBlock firstVersion="1.9">
 
-In dbt Cloud Versionless and dbt Core v1.9 and later, snapshots are configurations defined in YAML files (typically in your snapshots directory). You'll configure your snapshot to tell dbt how to detect record changes.
+Configure your snapshots in YAML files to tell dbt how to detect record changes. Define snapshots configurations in YAML files, alongside your models, for a cleaner, faster, and more consistent set up. 
 
 <File name='snapshots/orders_snapshot.yml'>
-  
+
 ```yaml
 snapshots:
-  - name: orders_snapshot
-    relation: source('jaffle_shop', 'orders')
+  - name: string
+    relation: relation # source('my_source', 'my_table') or ref('my_model')
     config:
-      schema: snapshots
-      database: analytics
-      unique_key: id
-      strategy: timestamp
-      updated_at: updated_at
+      [database](/reference/resource-configs/database): string
+      [schema](/reference/resource-configs/schema): string
+      [alias](/reference/resource-configs/alias): string
+      [strategy](/reference/resource-configs/strategy): timestamp | check
+      [unique_key](/reference/resource-configs/unique_key): column_name_or_expression
+      [check_cols](/reference/resource-configs/check_cols): [column_name] | all
+      [updated_at](/reference/resource-configs/updated_at): column_name
+      [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes): true | false
+      [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): dictionary
+
 ```
 
 </File>
@@ -82,6 +87,7 @@ The following table outlines the configurations available for snapshots:
 | [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source and set `dbt_valid_to` to current time if the record no longer exists | No | True |
+| [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names) | Customize the names of the snapshot meta fields | No | dictionary |
 
 - In versions prior to v1.9, the `target_schema` (required) and `target_database` (optional) configurations defined a single schema or database to build a snapshot across users and environment. This created problems when testing or developing a snapshot, as there was no clear separation between development and production environments.  In v1.9, `target_schema` became optional, allowing snapshots to be environment-aware. By default, without `target_schema` or `target_database` defined, snapshots now use the `generate_schema_name` or `generate_database_name` macros to determine where to build. Developers can still set a custom location with [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database)  configs, consistent with other resource types.
 - A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).
@@ -160,7 +166,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 ### Configuration best practices
 
-<Expandable alt_header="Use thetimestamp strategy where possible">
+<Expandable alt_header="Use the timestamp strategy where possible">
 
 This strategy handles column additions and deletions better than the `check` strategy.
 
@@ -188,9 +194,9 @@ Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots i
 
 </Expandable>
 
-<Expandable alt_header="Use ephemeral model to clean or tranform data before snapshotting">
+<Expandable alt_header="Use ephemeral model to clean or transform data before snapshotting">
 
- If you need to clean or transform your data before snapshotting, create an ephemeral model (or a staging model) that applies the necessary transformations. Then, reference this model in your snapshot configuration. This approach keeps your snapshot definitions clean and allows you to test and run transformations separately.
+ If you need to clean or transform your data before snapshotting, create an ephemeral model or a staging model that applies the necessary transformations. Then, reference this model in your snapshot configuration. This approach keeps your snapshot definitions clean and allows you to test and run transformations separately.
 
 </Expandable>
 </VersionBlock>
@@ -202,6 +208,8 @@ When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 * **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
   - The `dbt_valid_to` column will be updated for any existing records that have changed
   - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null`
+
+Note, these column names can be customized to your team or organizational conventions using the [snapshot_meta_column_names](#snapshot-meta-fields) config.
 
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](/reference/dbt-jinja-functions/ref) function.
 
