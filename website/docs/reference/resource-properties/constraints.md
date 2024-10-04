@@ -15,7 +15,7 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
-If you are defining multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+If you define multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
 
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
@@ -588,7 +588,8 @@ You can implement constraints in a couple of different ways:
 
 - [Custom constraints with tags](#custom-constraints-with-tags)
 - [Custom constraints without tags](#custom-constraints-without-tags)
-### Custom constraints with tags
+
+<Expandable alt_header="Custom constraints with tags">
 
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
@@ -616,9 +617,9 @@ models:
 Using this syntax requires configuring all the columns and their types as it’s the only way to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
 
 To generate a YAML with all the columns, you can use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
+</Expandable>
 
-
-### Custom constraints without tags
+<Expandable alt_header="Custom constraints without tags"/>
 
 Alternatively, you can add a masking policy without tags:
 
@@ -642,5 +643,5 @@ models:
 ```
 
 </File>
-
+</Expandable>
 
