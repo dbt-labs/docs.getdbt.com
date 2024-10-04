@@ -1,12 +1,12 @@
 --- 
 title: "dbt Copilot privacy and data" 
 sidebar_label: "dbt Copilot privacy" 
-description: "dbt Copilot is a powerful AI feature to help you deliver data that works." 
+description: "dbt Copilot is a powerful AI engine to help you deliver data that works." 
 ---
 
 # dbt Copilot privacy and data <Lifecycle status='beta'/>
 
-dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Copilot handles your data.
+dbt Labs is committed to protecting your privacy and data. This page provides information about how the dbt Copilot AI engine handles your data.
 
 #### Is my data used by dbt Labs to train AI models?
   
