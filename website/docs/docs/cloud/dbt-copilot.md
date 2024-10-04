@@ -2,7 +2,7 @@
 title: "About dbt Copilot" 
 sidebar_label: "About dbt Copilot" 
 description: "dbt Copilot is a powerful AI engine designed to accelerate your analytics workflows throughout your entire ADLC." 
-pagination_next: "docs/cloud/enable-dbt-assist"
+pagination_next: "docs/cloud/enable-dbt-copilot"
 pagination_prev: null
 ---
 

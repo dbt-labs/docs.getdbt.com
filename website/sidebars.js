@@ -294,9 +294,9 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/dbt-copilot" },
               items: [
                 "docs/cloud/dbt-copilot",
-                "docs/cloud/enable-dbt-assist",
-                "docs/cloud/use-dbt-assist",
-                "docs/cloud/dbt-assist-data",
+                "docs/cloud/enable-dbt-copilot",
+                "docs/cloud/use-dbt-copilot",
+                "docs/cloud/dbt-copilot-data",
               ],
             },
           ],
