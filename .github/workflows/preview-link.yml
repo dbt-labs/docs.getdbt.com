@@ -76,18 +76,12 @@ jobs:
       - name: Get changed files
         id: files
         run: |
-          # Get the list of changed files in the specified directories
           CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '^website/docs/(docs|best-practices|guides|faqs|reference)/.*\.md$' || true)
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
-
-          # Check if any files were changed
           if [ -z "$CHANGED_FILES" ]; then
             echo "No documentation files were changed."
             echo "changed_files=" >> $GITHUB_OUTPUT
           else
-            # Convert line-separated files to space-separated for easier handling
-            CHANGED_FILES="$(echo "$CHANGED_FILES" | tr '\n' ' ')"
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr '\n' ' ')
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
           fi
 
