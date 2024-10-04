@@ -59,14 +59,13 @@ The following table lists the commands compatible with the dbt Cloud IDE and dbt
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
 |---------|-------------|---------------|---------------|
-| [`list`](#list) | Retrieves metadata values. | ✅ | ✅ |
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
+| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
 | [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. | ✅ | ✅ |
+| [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ |
 | [`list saved-queries`](#list-saved-queries) | Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query or `--show-parameters` to show the full query parameters each saved query uses. |  ✅ | ✅ |
 | [`query`](#query) | Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.  |  ✅ | ✅ |
 | [`validate`](#validate) | Validates semantic model configurations. |  ✅ | ✅ |
-| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
-| [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ |
 | [`export`](#export) |  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. |  ❌ | ✅ |
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
 
@@ -94,7 +93,6 @@ Check out the following video for a short video demo of how to query or preview 
 
 Use the `mf` prefix before the command name to execute them in dbt Core. For example, to list all metrics, run `mf list metrics`.
 
-- [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
@@ -107,17 +105,7 @@ Use the `mf` prefix before the command name to execute them in dbt Core. For exa
 </TabItem>
 </Tabs>
 
-### List
-
-This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
-
-
 ### List metrics
-
-```bash
-dbt sl list # In dbt Cloud
-mf list # In dbt Core
-```
 This command lists the metrics with their available dimensions:
 
 ```bash
@@ -213,23 +201,23 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate # dbt Cloud users
-mf validate-configs # In dbt Core
+dbt sl validate # For dbt Cloud users
+mf validate-configs # For dbt Core users
 
 Options:
-  --dw-timeout INTEGER            Optional timeout for data warehouse
+  --timeout                       # dbt Cloud only
+                                  Optional timeout for data warehouse validation in dbt Cloud.
+  --dw-timeout INTEGER            # dbt Core only
+                                  Optional timeout for data warehouse
                                   validation steps. Default None.
-  --skip-dw                       If specified, skips the data warehouse
-                                  validations
-  --show-all                      If specified, prints warnings and future-
-                                  errors
-  --verbose-issues                If specified, prints any extra details
-                                  issues might have
-  --semantic-validation-workers INTEGER
-                                  Optional. Uses the number of workers
-                                  specified to run the semantic validations.
-                                  Should only be used for exceptionally large
-                                  configs
+  --skip-dw                       # dbt Core only
+                                  Skips the data warehouse validations.
+  --show-all                      # dbt Core only
+                                  Prints warnings and future errors.
+  --verbose-issues                # dbt Core only
+                                  Prints extra details about issues.
+  --semantic-validation-workers INTEGER  # dbt Core only
+                                  Uses specified number of workers for large configs.
   --help                          Show this message and exit.
 ```
 
@@ -350,13 +338,13 @@ mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 
 <TabItem value="eg2" label="Dimensions">
 
-You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not. 
+You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not.  Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time,is_food_order # In dbt Cloud
+dbt sl query --metrics order_total --group-by order_id__is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Core
+mf query --metrics order_total --group-by order_id__is_food_order # In dbt Core
 ```
 
 **Result**
@@ -380,13 +368,15 @@ mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Cor
 
 You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending. Note that using the `-` prefix will sort the query in descending order. Without the `-` prefix sorts the query in ascending order.
 
+ Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
+
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
+mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 ```
 
 **Result**
@@ -406,15 +396,15 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 
 <TabItem value="eg4" label="where clause">
 
-You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `metric_time` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024):
+You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `is_food_order` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024). Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
 
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
+dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
+mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
 ```
 
 **Result**
@@ -440,16 +430,16 @@ mf query --metrics order_total --group-by metric_time --where "{{ Dimension('ord
 
 To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
-
+ Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
 <!--
 bash not support in cloud yet
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
 ```bash
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
 
  **Result**
