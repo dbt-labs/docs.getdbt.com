@@ -25,18 +25,11 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Teradata Vantag
 You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
-## Create a new Teradata Clearscape instance
-
-- If you need a test instance of Vantage, you can provision one for free at https://clearscape.teradata.com
-- Here is the quickstart guide for creating a Clearscape enviroment [getting-started-with-csae](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/)
-
 ### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
-- Access to a Teradata Vantage instance.
+- You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
-:::tip Test instance of Vantage
-If you need a test instance of Vantage, you can provision one for free at https://clearscape.teradata.com
 
 ### Related content
 
@@ -49,20 +42,67 @@ If you need a test instance of Vantage, you can provision one for free at https:
 
 ## Load data 
 
-- The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to insert these data into the tables.
+The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to insert these data into the tables.
 
-1. Download these CSV files (the Jaffle Shop sample data) that you will need for this guide:
-    - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
-    - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
-    - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+:::tip SQL IDE
 
-2. Here we use Jupyter Notebook for creating two databases one for jaffle_shop data, the other for stripe data
+If you are using a Teradata Vantage database instance created at https://clearscape.teradata.com and you don't have an SQL IDE handy, you can execute SQL from within JupyterLab that is bundled with your database:
+1. Go back to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click on `Run Demos` button. This will launch JupyterLab.
 
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_create_databases.png" title="dbt Cloud - Teradata Creating Databases" />
+2. In JupyterLab, go to Launcher by pressing the blue `+` button in the top left corner. Go to `Notebooks` section and choose `Teradata SQL`.
 
-3. In the databases jaffle_shop and stripe, create three tables and load relevant data into them:
+3. In the first cell of the notebook connect to the database using `connect` magic. You will be prompted to enter your database password when you execute it:
+    ```ipynb
+    %connect local
+    ```
+4. Use additional cells to type and run SQL statements.
 
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_create_tables.png" title="dbt Cloud - Teradata Creating Tables" />
+:::
+
+1. Use your favorite SQL IDE editor to create 2 databases: `jaffle_shop` and `stripe`:
+
+    ```sql
+    CREATE DATABASE jaffle_shop AS PERM = 1e9;
+    CREATE DATABASE stripe AS PERM = 1e9;
+    ```
+
+2. In the databases `jaffle_shop` and `stripe`, create 3 foreign tables and reference the respective csv files located in object storage:
+
+   ```sql
+   CREATE FOREIGN TABLE jaffle_shop.customers (
+        id integer,
+        first_name varchar (100),
+        last_name varchar (100)
+    )
+    USING (
+        LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/jaffle_shop_customers.csv')
+    )
+    NO PRIMARY INDEX;
+
+    CREATE FOREIGN TABLE jaffle_shop.orders (
+        id integer,
+        user_id integer,
+        order_date date,
+        status varchar(100)
+    )
+    USING (
+        LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/jaffle_shop_orders.csv')
+    )
+    NO PRIMARY INDEX;
+
+    CREATE FOREIGN TABLE stripe.payment (
+        id integer,
+        orderid integer,
+        paymentmethod varchar (100),
+        status varchar (100),
+        amount integer,
+        created date
+    )
+    USING (
+        LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/stripe_payments.csv')
+    )
+    NO PRIMARY INDEX;    
+   ```
 
 ## Connect dbt cloud to Teradata
 
