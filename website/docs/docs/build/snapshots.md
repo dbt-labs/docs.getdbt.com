@@ -52,7 +52,7 @@ It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud
 
 <VersionBlock firstVersion="1.9">
 
-Configure your snapshots in YAML files (typically in your snapshots directory) to tell dbt how to detect record changes. Define snapshots configurations. Configuring in YAML files (alongside your models) provides a cleaner and more consistent set up. 
+Configure your snapshots in YAML files to tell dbt how to detect record changes. Define snapshots configurations in YAML files, alongside your models, for a cleaner, faster, and more consistent set up. 
 
 <File name='snapshots/orders_snapshot.yml'>
 
