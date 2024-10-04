@@ -59,17 +59,17 @@ Configure your snapshots in YAML files (typically in your snapshots directory) t
 ```yaml
 snapshots:
   - name: <string>
-    relation: <source> # source('my_source', 'my_table')
+    relation: source> # source('my_source', 'my_table')
     config:
-      [database](/reference/resource-configs/database): <string>
-      [schema](/reference/resource-configs/schema): <string>
-      [alias](/reference/resource-configs/alias): <string>
+      [database](/reference/resource-configs/database): string
+      [schema](/reference/resource-configs/schema): string
+      [alias](/reference/resource-configs/alias):string
       [strategy](/reference/resource-configs/strategy): timestamp | check
-      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-      [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
-      [updated_at](/reference/resource-configs/updated_at): <column_name>
+      [unique_key](/reference/resource-configs/unique_key): column_name_or_expression
+      [check_cols](/reference/resource-configs/check_cols): [column_name] | all
+      [updated_at](/reference/resource-configs/updated_at): column_name
       [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes): true | false
-      [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
+      [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {dictionary}
 
 ```
 
