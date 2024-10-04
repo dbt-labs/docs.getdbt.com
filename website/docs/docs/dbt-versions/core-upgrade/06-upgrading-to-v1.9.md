@@ -71,6 +71,7 @@ Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fiel
 We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives and negatives. Read more about [the `state:modified` behavior flag](#managing-changes-to-legacy-behaviors) that unlocks this improvement:
 
 - Added environment-aware enhancements for environments where the logic purposefully differs (for example, materializing as a table in `prod` but a `view` in dev).
+- Models that use `var` or `env_var` in their definition are included in `state:modified` when their values change.
 
 ### Managing changes to legacy behaviors
 
@@ -79,6 +80,7 @@ dbt Core v1.9 has a handful of new flags for [managing changes to legacy behavi
 You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks to reduce false positives due to environment-aware logic when selecting `state:modified`.
+- (Introduced, disabled by default) [`state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `True` if a model uses a `var` or `env_var` in its definition. dbt will be able to identify its lineage to include the model in `state:modified` because the var or env_var value has changed.
 - (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped.
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time.
 - (Introduced, disabled by default) [[Redshift] `restrict_direct_pg_catalog_access`](/reference/global-configs/behavior-changes#redshift-restrict_direct_pg_catalog_access). If the flag is set the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead of using `pg_` tables.
