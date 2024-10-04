@@ -1,11 +1,8 @@
 .term {
-  cursor: pointer;
   position: relative;
   text-decoration: underline dotted var(--ifm-font-color-base);
-  color: var(--ifm-font-color-base);
 }
 .term:hover {
-  color: var(--ifm-link-color);
   text-decoration: underline dotted var(--ifm-link-color);
 }
 .termToolTip {

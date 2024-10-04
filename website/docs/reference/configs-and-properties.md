@@ -26,9 +26,18 @@ Whereas you can use **configurations** to:
 
 Depending on the resource type, configurations can be defined in the dbt project and also in an installed package by:
 
+<VersionBlock firstVersion="1.9">
+
+1. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file in the `models/`, `snapshots/`, `seeds/`, `analyses`, or `tests/` directory
+2. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
 1. Using a [`config()` Jinja macro](/reference/dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
-2. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file
+2. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file in the `models/`, `snapshots/`, `seeds/`, `analyses/`, or `tests/` directory.
 3. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+</VersionBlock>
 
 ### Config inheritance
 

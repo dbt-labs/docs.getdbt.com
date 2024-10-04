@@ -69,7 +69,7 @@ When you make updates to a model's source code &mdash; its logical definition, i
 
 **Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
-Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned: Multiple versions are live simultaneously, two or three, and not more). Over time, newer versions come online, and older versions are sunsetted .
+Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned: Multiple versions live simultaneously, two or three, and not more). Over time, newer versions come online, and older versions are sunsetted .
 
 ## How is this different from just creating a new model?
 

@@ -33,7 +33,8 @@ Starting July 2024, connection management has moved from the project level to th
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="55%" title="Previous connection model"/>
 
-The following connection management section describes these changes.
+Connections created with APIs before this change cannot be accessed with the [latest APIs](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/List%20Account%20Connections). dbt Labs recommends [recreating the connections](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Account%20Connection) with the latest APIs.
+
 
 :::
 
@@ -95,4 +96,4 @@ dbt Cloud will always connect to your data platform from the IP addresses specif
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API. Using the dbt Cloud API requires allowing the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).

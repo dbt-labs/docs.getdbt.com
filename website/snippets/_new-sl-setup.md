@@ -1,4 +1,6 @@
-You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to set up the Semantic Layer at the environment and project level.
+import SLEnvVars from '/snippets/_sl-env-vars.md';
+
+You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to set up the Semantic Layer at the environment and project level.
 - Enterprise plan:
   - Developer license with Account Admin permissions, or
   - Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
@@ -37,7 +39,7 @@ This credential controls the physical access to underlying data accessed by the 
 2. Click the **Add Semantic Layer credential** button. 
 3. In the **1. Add credentials** section, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
-   - Note, environment variables such as  `{{env_var('DBT_WAREHOUSE') }}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
+   - <SLEnvVars/>
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials and map them to a service token. " />
 
@@ -68,7 +70,7 @@ We recommend configuring credentials and service tokens to reflect your teams an
 Note that: 
 - Admins can link multiple service tokens to a single credential within a project, but each service token can only be linked to one credential per project.
 - When you send a request through the APIs, the service token of the linked credential will follow access policies of the underlying view and tables used to build your semantic layer requests.
-- [Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren't supported in the dbt Semantic Layer yet. You must use the actual credentials instead.
+- <SLEnvVars/>
 
 To add multiple credentials and map them to service tokens:
 

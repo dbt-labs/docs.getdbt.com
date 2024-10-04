@@ -30,9 +30,6 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 <UseCaseInfo/>
 
-Refer to the [FAQs](#faqs) for more info.
-
-
 ## Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
@@ -105,7 +102,9 @@ For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide
 
 ### Safeguarding production data with staging environments
 
-When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. With a staging environment integrated into the project, any references from external projects during development workflows resolve to the Staging environment. This adds a layer of security between your Deployment and Production environments by limiting access to production data.
+When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. 
+
+With a staging environment integrated into the project, dbt Mesh automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, dbt Mesh fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
 
