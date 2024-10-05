@@ -18,7 +18,7 @@ dbt Labs only shares client personal information as needed to perform the servic
 
 #### Does dbt Copilot store or use personal data?
 
-The user clicks the AI assist button, and the user does not otherwise enter data. 
+The user clicks the dbt Copilot button, and the user does not otherwise enter data. 
 
 #### Does dbt Copilot access my warehouse data?
 
