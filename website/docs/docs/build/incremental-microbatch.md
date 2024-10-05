@@ -28,7 +28,7 @@ A `sessions` model is aggregating and enriching data that comes from two other m
 - `page_views` is a large, time-series table. It contains many rows, new records almost always arrive after existing ones, and existing records rarely update.
 - `customers` is a relatively small dimensional table. Customer attributes update often, and not in a time-based manner — that is, older customers are just as likely to change column values as newer customers.
 
-The `page_view_start` column in `page_views` is configured as that model's `event_time`. The `customers` model does not configure an `event_time`. Therefore, each batch of `sessions` will filter `page_views` to the equivalent time-bounded batch, and it will not filter `sessions` (a full scan for every batch).
+The `page_view_start` column in `page_views` is configured as that model's `event_time`. The `customers` model does not configure an `event_time`. Therefore, each batch of `sessions` will filter `page_views` to the equivalent time-bounded batch, and it will not filter `customers` (a full scan for every batch).
 
 We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
 
