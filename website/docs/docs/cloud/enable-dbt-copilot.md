@@ -18,7 +18,7 @@ This page explains how to enable the dbt Copilot engine in dbt Cloud, leveraging
 
 ## Enable dbt Copilot
 
-dbt Copilot is only available at an account level after your organization has signed the legal requirements. It's disabled by default. Your dbt Cloud admin(s) can enable it by following these steps:
+dbt Copilot is only available at an account level after your organization has signed the legal requirements. It's disabled by default. A dbt Cloud admin(s) can enable it by following these steps:
 
 1. Navigate to **Account settings** in the navigation menu.
 
