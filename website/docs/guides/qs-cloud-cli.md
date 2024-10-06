@@ -81,7 +81,7 @@ Let's get set up with a dbt Cloud sandbox that's already connected to a Snowflak
 
 1. Select **Deploy >> Runs** to find the created jobs. For each job, click on the job and click **run**.
 
-1. Now repeat for the **analytics project**. Toggle into the analytics project.
+1. Now repeat for the **Analytics project**. Toggle into the Analytics project.
 
 1. Select **Deploy >> Runs** to find the created jobs. For the one job, click on the job and click **run**.
 
@@ -138,7 +138,25 @@ Now let's dive into some more advanced components of dbt Cloud CLI.
 
 ### Deferral
 
-!!!!! need to complete this section !!!!!
+Deferral is a powerful functionality that lets users leverage upstream assets that exist outside of a user's personal development environment. As a result user's can speed up their development workflows and save on warehouse compute. Let's run a few commands using deferral:
+
+* `dbt compile -s stg_campaigns` &mdash; Notice how we are able to resolve dependencies in the compiled SQL without seeding campaigns.csv
+
+Now let's modify the `stg_campaigns` model by adding a timestamp:
+```sql
+    current_timestamp() as updated_at
+```
+Let's build that model:
+* `dbt build --select stg_campaigns` &mdash; We're utilizing deferral and the concept of "statefulness" to check with objects have been modified, and resolve depencies of upstream assets if they exist.
+
+By default, the dbt Cloud CLI will defer to a [Staging](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) environment if one exists. If not, assets from the Production environment will be used.
+
+To override which environment the dbt Cloud CLI will defer to, you can manually set a `defer-env-id` key in either your `dbt_project.yml` or `dbt_cloud.yml`.
+
+```yml
+dbt-cloud:
+  defer-env-id: '123456'
+```
 
 ### dbt Mesh
 
@@ -151,17 +169,37 @@ You have access to cross-project ref's that's powered by the metadata of dbt Clo
     dbt run --select agg_campaign_customer_contacts
     ```
 1. Navigate to dbt Cloud Explorer and find a public model. Let's use the `fct_order_items` model.
-1. Create a new model in your project with the following code:
+1. Create a new model called `agg_orders` in your project with the following code:
     ```sql
-    insert some code here
+    with orders as (
+    
+        select * from {{ ref('platform', 'fct_order_items') }}
+
+    ),
+
+    final as (
+    
+        select
+            customer_key as customer_id,
+            is_return as return_status,
+            count(*) as count_orders
+
+        from
+            orders
+        group by
+            customer_key,
+            is_return
+    )
+
+    select * from final
     ```
 
 ### Linting and fixing SQL files
 
 With SQLFluff built in, you can check your code against a style guide and automatically make fixes.
 
-1. Run `dbt sqlfluff lint models/core/???`. This will identify tweaks to make in the model.
-1. Run `dbt sqlfluff fix models/core/???`. This will proactively try to make direct fixes in the model.
+1. Run `dbt sqlfluff lint models/staging/campaigns/stg_campaigns.sql --dialect snowflake`. This will identify tweaks to make in the `stg_campaigns` model.
+2. Run `dbt sqlfluff fix models/staging/campaigns/stg_campaigns.sql --dialect snowflake`. This will proactively try to make direct fixes in the `stg_campaigns` model.
 
 ### Change branches
 
