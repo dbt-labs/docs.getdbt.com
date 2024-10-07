@@ -9,6 +9,8 @@ To-do:
 - use the reference doc structure for this article / split into separate articles
 --->
 
+<VersionBlock firstVersion="1.9">
+
 ## Iceberg table format <Lifecycle status="beta"/>
 
 The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
@@ -71,7 +73,7 @@ Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provid
 #### Base Location Subpath
 We recommend using dbt's auto-generated `base_location`. However, if you need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, the subpath concatenates to the end of the previously described pattern for `base_location` string generation.
 
-For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
+For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}/prod/`.
 
 A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
 
@@ -95,6 +97,7 @@ There are some limitations to the implementation you need to be aware of:
 -  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
 - You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
 
+</VersionBlock>
 
 ## Dynamic tables
 

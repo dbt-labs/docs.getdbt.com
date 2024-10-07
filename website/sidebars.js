@@ -60,15 +60,16 @@ const sidebarSettings = {
               },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-apache-spark",
                 "docs/cloud/connect-data-platform/connect-amazon-athena",
                 "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
-                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
-                "docs/cloud/connect-data-platform/connect-starburst-trino",
-                "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
                 "docs/cloud/connect-data-platform/connect-databricks",
+                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb",
-                "docs/cloud/connect-data-platform/connect-apache-spark",
+                "docs/cloud/connect-data-platform/connect-starburst-trino",
+                "docs/cloud/connect-data-platform/connect-snowflake",
+                "docs/cloud/connect-data-platform/connect-teradata",
               ],
             },
             {
@@ -91,8 +92,8 @@ const sidebarSettings = {
                   },
                   items: [
                     "docs/cloud/manage-access/seats-and-users",
-                    "docs/cloud/manage-access/self-service-permissions",
                     "docs/cloud/manage-access/enterprise-permissions",
+                    "docs/cloud/manage-access/self-service-permissions",
                   ],
                 },
                 {
@@ -421,6 +422,7 @@ const sidebarSettings = {
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
+                "docs/build/incremental-microbatch",
               ],
             },
           ],
@@ -974,6 +976,7 @@ const sidebarSettings = {
             "reference/resource-configs/unique_key",
             "reference/resource-configs/updated_at",
             "reference/resource-configs/invalidate_hard_deletes",
+            "reference/resource-configs/snapshot_meta_column_names",
           ],
         },
         {
@@ -1095,6 +1098,14 @@ const sidebarSettings = {
           items: [
             "reference/global-configs/about-global-configs",
             "reference/global-configs/behavior-changes",
+            { type: "category",
+              label: "Adapter behavior changes",
+              link: { type: "doc", id: "reference/global-configs/adapter-behavior-changes" },
+              items: [
+                "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/redshift-changes",
+              ],
+            },
             {
               type: "category",
               label: "Setting flags",
