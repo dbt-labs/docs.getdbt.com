@@ -127,7 +127,7 @@ Run `dbt compile` to verify your installation.
 
 There you go! You've installed the dbt Cloud CLI! Let's dive in!
 
-### Additional Resources
+### Additional resources
 Consult the docs below if you run into specific blocker related to dbt Cloud CLI installation:
 - [Install dbt Cloud CLI](https://docs.getdbt.com/docs/cloud/cloud-cli-installation)
 - [Configure and use dbt Cloud CLI](https://docs.getdbt.com/docs/cloud/configure-cloud-cli)
