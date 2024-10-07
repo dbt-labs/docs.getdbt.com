@@ -145,7 +145,7 @@ Now let's dive into some more advanced components of dbt Cloud CLI.
 
 ### Deferral
 
-Deferral is a powerful functionality that lets users leverage upstream assets that exist outside of a user's personal development environment. As a result user's can speed up their development workflows and save on warehouse compute. Let's run a few commands using deferral:
+Deferral is a powerful functionality, allowing you to leverage upstream assets that exist outside of your personal development environment. As a result, you can speed up your development workflows and save on warehouse compute costs. Let's run a few commands using deferral:
 
 * `dbt compile -s stg_campaigns` &mdash; Notice how we are able to resolve dependencies in the compiled SQL without seeding campaigns.csv
 
