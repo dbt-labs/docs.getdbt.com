@@ -68,7 +68,7 @@ metrics:
 </File>
 
 #### Example 2 
-This eample is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator:
+This example is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator. Note that in order to add these attributes, you'll need to use an explicit key for the name attribute too.
 
 <File name="models/metrics/file_name.yml">
  
