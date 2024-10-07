@@ -56,7 +56,7 @@ One of the biggest hurdles is managing Iceberg’s metadata layer. This metadata
 
 With support for Iceberg Table Format, it is now easier to convert your dbt models using proprietary table formats to Iceberg by updating your configuration. After you have set up your external storage for Iceberg and connected it to your platforms, you will be able to jump into your dbt model and update the configuration to look something like this:
 
-<Lightbox src="img/blog/2024-10-04-iceberg-blog/iceberg_materialization.png" width="85%" title="Iceberg Table Format Support on dbt for Snowflake" />
+<Lightbox src="/img/blog/2024-10-04-iceberg-blog/iceberg_materialization.png" width="85%" title="Iceberg Table Format Support on dbt for Snowflake" />
 
 It is available on these adapters:
 
