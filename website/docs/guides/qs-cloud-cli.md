@@ -227,7 +227,7 @@ With SQLFluff built in, you can check your code against a style guide and automa
 
 ### Change branches
 
-You can quickly change branches without fully pushing to your git provider (such as GitHub):
+You can quickly change branches without fully pushing to your Git provider (such as GitHub):
 
 ```shell
 git checkout -b my-new-branch
