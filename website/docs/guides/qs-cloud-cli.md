@@ -21,9 +21,9 @@ It will show you how to:
 - Install the dbt Cloud CLI and connect to dbt Cloud.
 - Run commands locally using the dbt Cloud CLI.
 - Defer to different production environments.
-- Leverage cross project ref.
+- Leverage cross-project ref.
 - Install dbt Power User.
-- Use dbt Power User to super charge development.
+- Use dbt Power User to supercharge development.
 
 ### Prerequisites​
 
@@ -53,7 +53,7 @@ Check your installed applications for Visual Studio Code (vscode) or another edi
 <Lightbox src="/img/cloud-cli-guide/finder-vscode-check.png" title="Example of verifying installation of Visual Studio Code on macOS" />
 </div>
 
-### Install Git and VSCode
+### Install Git and Visual Studio Code
 
 Navigate to the following Git installation page and install it for your operating system:
 
@@ -113,7 +113,9 @@ Now we'll clone the project repository and configure dbt Cloud CLI to connect to
 
     b. If you don't have dbt in your PATH, we recommend the macOS or Windows installation method.
 
-    c. If you do have dbt in your PATH (global environment) we recommend i) uninstalling dbt globally and ii) installing dbt Cloud CLI with a Python virtual environment.
+    c. If you do have dbt in your PATH (global environment), we recommend:
+        1. Uninstalling dbt globally
+        2. Installing dbt Cloud CLI with a Python virtual environment
 
     d. If you have dbt in a virtual environment, install dbt Cloud CLI with a separate Python virtual environment. Be sure to activate it with `source <path to env>/bin/activate`.
 
@@ -147,36 +149,39 @@ Now let's dive into some more advanced components of dbt Cloud CLI.
 
 Deferral is a powerful functionality, allowing you to leverage upstream assets that exist outside of your personal development environment. As a result, you can speed up your development workflows and save on warehouse compute costs. Let's run a few commands using deferral:
 
-* `dbt compile -s stg_campaigns` &mdash; Notice how we are able to resolve dependencies in the compiled SQL without seeding campaigns.csv
-
-Now let's modify the `stg_campaigns` model by adding a timestamp:
-```sql
+1. Run `dbt compile -s stg_campaigns`. Notice how we're able to resolve dependencies in the compiled SQL without seeding `campaigns.csv`.
+1. Now let's modify the `stg_campaigns` model by adding a timestamp:
+    ```sql
     current_timestamp() as updated_at
-```
-Let's build that model:
-* `dbt build --select stg_campaigns` &mdash; We're utilizing deferral and the concept of "statefulness" to check with objects have been modified, and resolve depencies of upstream assets if they exist.
+    ```
 
-By default, the dbt Cloud CLI will defer to a [Staging](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) environment if one exists. If not, assets from the Production environment will be used.
+    Let's build that model with the next command.
+1. Run `dbt build --select stg_campaigns`. We're utilizing deferral and the concept of "statefulness" to check with objects that have been modified and resolve dependencies of upstream assets if they exist.
 
-To override which environment the dbt Cloud CLI will defer to, you can manually set a `defer-env-id` key in either your `dbt_project.yml` or `dbt_cloud.yml`.
+    By default, the dbt Cloud CLI defers to a [Staging](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) environment if one exists. If not, dbt uses the assets from the Production environment.
 
-```yml
-dbt-cloud:
-  defer-env-id: '123456'
-```
+    To override which environment the dbt Cloud CLI defers to, you can set a `defer-env-id` key in either your `dbt_project.yml` or `dbt_cloud.yml` file. For example:
+
+    ```yml
+    dbt-cloud:
+        defer-env-id: '123456'
+    ```
 
 ### dbt Mesh
 
 You have access to cross-project ref's that's powered by the metadata of dbt Cloud.
 
 1. Open the `agg_campaign_customer_contacts` model.
-1. Find the reference called `{{ ref('platform', 'dim_customers', v=1) }}`
-1. Run this command:
+1. Find the reference called `{{ ref('platform', 'dim_customers', v=1) }}`.
+1. Run the command:
+
     ```shell
     dbt run --select agg_campaign_customer_contacts
     ```
+
 1. Navigate to dbt Cloud Explorer and find a public model. Let's use the `fct_order_items` model.
 1. Create a new model called `agg_orders` in your project with the following code:
+
     ```sql
     with orders as (
     
@@ -205,8 +210,20 @@ You have access to cross-project ref's that's powered by the metadata of dbt Clo
 
 With SQLFluff built in, you can check your code against a style guide and automatically make fixes.
 
-1. Run `dbt sqlfluff lint models/staging/campaigns/stg_campaigns.sql --dialect snowflake`. This will identify tweaks to make in the `stg_campaigns` model.
-2. Run `dbt sqlfluff fix models/staging/campaigns/stg_campaigns.sql --dialect snowflake`. This will proactively try to make direct fixes in the `stg_campaigns` model.
+1. Run the SQLFluff command `lint`:
+
+    ```shell
+    dbt sqlfluff lint models/staging/campaigns/stg_campaigns.sql --dialect snowflake
+    ```
+
+    This identifies tweaks to make in the `stg_campaigns` model.
+2. Run the SQLFluff command `fix`:
+
+    ```shell
+    dbt sqlfluff fix models/staging/campaigns/stg_campaigns.sql --dialect snowflake
+    ```
+
+    This attempts to directly make fixes in the `stg_campaigns` model.
 
 ### Change branches
 
@@ -222,9 +239,9 @@ Now you've taken a tour of what you can do with dbt Cloud CLI. Let's dive into d
 
 ## Install dbt Power User
 
-Let's get dbt Power User installed to super charge our workflow.
+Let's get dbt Power User installed to supercharge our workflow.
 
-1. Within vscode, click on extensions and search for "Power User for dbt".
+1. From Visual Studio Code, click on extensions and search for "Power User for dbt".
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/cloud-cli-guide/setup-poweruser-01.png" title="Find the VS Code Extension for dbt Power User" />
@@ -246,7 +263,7 @@ Now let's dive in!
 
 ## Leverage dbt Power User
 
-There is a ton you can do to super charge your workflow with dbt Cloud. Let's cover some highlights.
+There is a ton you can do to supercharge your workflow with dbt Cloud. Let's cover some highlights.
 
 ### Preview your upstream/downstream changes
 
