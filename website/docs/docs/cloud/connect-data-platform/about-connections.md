@@ -18,7 +18,6 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
-- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="Preview" />
 
 You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 
