@@ -115,7 +115,7 @@ Now we'll clone the project repository and configure dbt Cloud CLI to connect to
 
     c. If you do have dbt in your PATH (global environment) we recommend i) uninstalling dbt globally and ii) installing dbt Cloud CLI with a Python virtual environment.
 
-    d. If you have dbt in a virtual environment, install dbt Cloud CLI with a separate python virtual environment. Be sure to activate it with `source <path to env>/bin/activate`.
+    d. If you have dbt in a virtual environment, install dbt Cloud CLI with a separate Python virtual environment. Be sure to activate it with `source <path to env>/bin/activate`.
 
 1. Download the CLI configuration file from the dbt Cloud UI. Save it in your `.dbt` folder.
 
