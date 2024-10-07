@@ -27,6 +27,9 @@ dbt Cloud jobs support the `dbt sl validate` command to [automatically test your
 In dbt Cloud, run MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 For dbt Cloud CLI users, MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately. You don't need to manage versioning because your dbt Cloud account will automatically manage the versioning for you.
+
+<!--remove when fixed -->
+Note: The **Defer to staging/production** [toggle](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) is currently not available when running Semantic Layer commands in the dbt Cloud IDE.  To use defer for Semantic layer commands in the IDE, manually add the `--defer` flag to the command. This is a temporary workaround and will be available soon.
 </TabItem>
 
 <TabItem value="core" label="MetricFlow with dbt Core">  
