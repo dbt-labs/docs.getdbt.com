@@ -109,11 +109,13 @@ Now we'll clone the project repository and configure dbt Cloud CLI to connect to
 
 1. Based on your current local setup, use the following guidance to determine your installation approach:
 
-    a. Check if you have dbt in your path by running `dbt --version`
+    a. Check if you have dbt in your PATH by running `dbt --version`
 
-    b. If you don't have dbt in your path, we recommend the macOS or Windows installation method.
+    b. If you don't have dbt in your PATH, we recommend the macOS or Windows installation method.
 
-    c. If you do have dbt in your path (or a virtual environment) we recommend a) uninstalling dbt globally and b) installing dbt Cloud CLI with a Python virtual environment.
+    c. If you do have dbt in your PATH (global environment) we recommend i) uninstalling dbt globally and ii) installing dbt Cloud CLI with a python virtual environment.
+
+    d. If you have dbt in a virtual environment, install dbt Cloud CLI with a separate python virtual environment. Be sure to activate it with `source <path to env>/bin/activate`.
 
 1. Download the CLI configuration file from the dbt Cloud UI. Save it in your `.dbt` folder.
 
