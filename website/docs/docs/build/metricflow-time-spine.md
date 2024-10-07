@@ -298,7 +298,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 </File>
 
 
-## Custom calendar
+## Custom calendar <Lifecycle status="Preview"/>
 
 <VersionBlock lastVersion="1.8">
 
