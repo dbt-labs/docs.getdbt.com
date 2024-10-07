@@ -94,8 +94,8 @@
 
 <Card
     title="Teradata"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-teradata'>Set up in dbt Cloud  </a> <br /></li> <li><a href='/docs/core/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li> </ul><br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a>"
-    pills='["dbt Cloud", "dbt Core"]'
+    body="<ul><li><a href='/docs/core/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li> </ul><br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a>"
+    pills='["dbt Core"]'
     icon="teradata"/>
 
 </div>
