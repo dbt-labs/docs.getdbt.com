@@ -18,7 +18,7 @@ The dbt Semantic Layer offers a seamless integration with Excel Online and Deskt
 
 :::tip
 
-📹 For on-demand video learning, explore the [Querying the Semantic Layer with Excel](https://learn.getdbt.com/courses/querying-the-semantic-layer-with-excel) course to learn how to query metrics in Excel.
+📹 For on-demand video learning, explore the [Querying the Semantic Layer with Excel](https://learn.getdbt.com/courses/querying-the-semantic-layer-with-excel) course to learn how to query metrics with Excel.
 
 :::
 
