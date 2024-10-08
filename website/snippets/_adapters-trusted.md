@@ -14,7 +14,7 @@
 
  <Card
     title="Athena"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-amazon-athena'>Set up in dbt Cloud (beta) </a><br /></li><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-amazon-athena'>Set up in dbt Cloud </a><br /></li><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a>"
     pills='["dbt Cloud", "dbt Core"]'
     icon="athena"/>
 
