@@ -101,7 +101,7 @@ models:
 
 - This example configuration shows a time spine model called  `time_spine_hourly` and `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. 
 - The `standard_granularity_column` is the column that maps to one of our [standard granularities](/docs/build/dimensions?dimension=time_gran). This column must be set under the `columns` key and should have a grain that is finer or equal to any custom granularity columns defined in the same model.
-  - It needs to reference a column defined under the `columns` key, in this case, date_hour and date_day, respectively.
+  - It needs to reference a column defined under the `columns` key, in this case, `date_hour` and `date_day`, respectively.
   - It sets the granularity at the column-level using the `granularity` key, in this case, `hour` and `day`, respectively. 
 - MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to other source table.
 
