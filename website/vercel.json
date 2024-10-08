@@ -3,6 +3,26 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-assist-data",
+      "destination": "/docs/cloud/dbt-copilot-data",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/use-dbt-assist",
+      "destination": "/docs/cloud/use-dbt-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/enable-dbt-assist",
+      "destination": "/docs/cloud/enable-dbt-copilot",
+      "permanent": true
+    },    
+    {
+      "source": "/docs/cloud/dbt-assist",
+      "destination": "/docs/cloud/dbt-copilot",
+      "permanent": true
+    },
+    {
       "source": "/faqs/Troubleshooting/access_token_error",
       "destination": "/faqs/Troubleshooting/auth-expired-error",
       "permanent": true

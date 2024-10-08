@@ -24,7 +24,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 <Card
     title="dbt Cloud IDE"
-    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser. Use dbt Assist, a powerful AI co-pilot feature that automatically generates documentation and tests."
+    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser. Use dbt Copilot, a powerful AI engine that automatically generates documentation, tests, and semantic models."
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="dbt-bit"/>
 
