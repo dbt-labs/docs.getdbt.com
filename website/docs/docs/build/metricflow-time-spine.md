@@ -21,41 +21,47 @@ To see the generated SQL for the metric and dimension types that use time spine 
 
 ## Configuring time spine in YAML
 
-- The [`models` key](/reference/model-properties) for the time spine must be in your `models/` directory.
-- Each time spine is a normal dbt model with extra configurations that tell dbt and MetricFlow how to use specific columns by defining their properties.
-- You likely already have a calendar table in your project which you can use. If you don't, review the [example time-spine tables](#example-time-spine-tables) for sample code.
-- You add the configurations under the `time_spine` key for that [model's properties](/reference/model-properties), just as you would add a description or tests.
+ Time spine models are normal dbt models with extra configurations that tell dbt and MetricFlow how to use specific columns by defining their properties. Add the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. If your project already includes a calendar table or date dimension, you can configure that table as a time spine. Otherwise, review the [example time-spine tables](#example-time-spine-tables) to create one.
+ 
+ Some things to note when configuring time spine models:
+
+- Add the configurations under the `time_spine` key for that [model's properties](/reference/model-properties), just as you would add a description or tests.
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
 - You can optionally define additional time-spine tables for different granularities, like hourly. Review the [granularity considerations](#granularity-considerations) when deciding which tables to create.
 - If you're looking to specify the grain of a time dimension so that MetricFlow can transform the underlying column to the required granularity, refer to the [Time granularity documentation](/docs/build/dimensions?dimension=time_gran)
 
-For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`.  MetricFlow supports granularities ranging from milliseconds to years. Refer to the [Dimensions page](/docs/build/dimensions?dimension=time_gran#time) (time_granularity tab) to find the full list of supported granularities.
-
 :::tip
-Previously, you had to create a model called `metricflow_time_spine` in your dbt project. Now, if your project already includes a date dimension or time spine table, you can simply configure MetricFlow to use that table by updating the `model` setting in the Semantic Layer.
+If you previously used a model called `metricflow_time_spine`, you no longer need to create this specific model. You can now configure MetricFlow to use any date dimension or time spine table already in your project by updating the `model` setting in the Semantic Layer.
 
-If you don’t have a date dimension table, you can still create one by using the following code snippet to build your time spine model.
-
+If you don’t have a date dimension table, you can still create one by using the code snippet in the [next section](#creating-a-time-spine-table) to build your time spine model.
 :::
 
-<Lightbox src="/img/time_spines.png" title="Time spine directory structure" />
+### Creating a time spine table  
+
+MetricFlow supports granularities ranging from milliseconds to years. Refer to the [Dimensions page](/docs/build/dimensions?dimension=time_gran#time) (time_granularity tab) to find the full list of supported granularities.
+
+To create a time spine table from scratch, you can do so by adding the following code to your dbt project. 
+This example creates a time spine at an hourly grain and a daily grain: `time_spine_hourly` and `time_spine_daily`.
 
 <VersionBlock firstVersion="1.9">
 <File name="models/_models.yml">
   
 ```yaml
-[models:](/reference/model-properties)
-  - name: time_spine_hourly
-    description: "my favorite time spine"
+[models:](/reference/model-properties) 
+# Hourly time spine
+  - name: time_spine_hourly 
+    description: my favorite time spine
     time_spine:
-      standard_granularity_column: date_hour # column for the standard grain of your table, must be date time type."
+      standard_granularity_column: date_hour # column for the standard grain of your table, must be date time type.
       custom_granularities:
         - name: fiscal_year
           column_name: fiscal_year_column
     columns:
       - name: date_hour
         granularity: hour # set granularity at column-level for standard_granularity_column
+
+# Daily time spine
   - name: time_spine_daily
     time_spine:
       standard_granularity_column: date_day # column for the standard grain of your table
@@ -65,6 +71,8 @@ If you don’t have a date dimension table, you can still create one by using th
 ```
 </File>
 </VersionBlock>
+
+<Lightbox src="/img/time_spines.png" width="50%" title="Time spine directory structure" />
 
 <VersionBlock lastVersion="1.8">
 <File name="models/_models.yml">
@@ -91,30 +99,14 @@ models:
 </File>
 </VersionBlock>
 
+- This example configuration shows a time spine model called  `time_spine_hourly` and `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. 
+- The `standard_granularity_column` is the column that maps to one of our [standard granularities](/docs/build/dimensions?dimension=time_gran). This column must be set under the `columns` key and should have a grain that is finer or equal to any custom granularity columns defined in the same model.
+  - It needs to reference a column defined under the `columns` key, in this case, `date_hour` and `date_day`, respectively.
+  - It sets the granularity at the column-level using the `granularity` key, in this case, `hour` and `day`, respectively. 
+- MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to another source table.
+- [The `custom_granularities` field](#custom-calendar), (available in Versionless and dbt v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
+
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
-
-<Expandable alt_header="Understanding time spine and granularity">
-
-- The previous configuration demonstrates a time spine model called `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. 
-- The `standard_granularity_column` is the column that maps to one of our [standard granularities](/docs/build/dimensions?dimension=time_gran). The grain of this column must be finer or equal in size to the granularity of all custom granularity columns in the same model. In this case, it's hourly. 
-- It needs to reference a column defined under the `columns` key, in this case, `date_hour`. 
-- MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to other source table.
-- Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`. 
-
-Additionally, [the `custom_granularities` field](#custom-calendar), (available in dbt v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
-
-</Expandable>
-
-<Expandable alt_header="Creating a time spine table">
-
-If you need to create a time spine table from scratch, you can do so by adding the following code to your dbt project. 
-The example creates a time spine at a daily grain and an hourly grain. A few things to note when creating time spine models:
-* MetricFlow will use the time spine with the largest compatible granularity for a given query to ensure the most efficient query possible. For example, if you have a time spine at a monthly grain, and query a dimension at a monthly grain, MetricFlow will use the monthly time spine. If you only have a daily time spine, MetricFlow will use the daily time spine and date_trunc to month.
-* You can add a time spine for each granularity you intend to use if query efficiency is more important to you than configuration time, or storage constraints. For most engines, the query performance difference should be minimal and transforming your time spine to a coarser grain at query time shouldn't add significant overhead to your queries.
-* We recommend having a time spine at the finest grain used in any of your dimensions to avoid unexpected errors. i.e., if you have dimensions at an hourly grain, you should have a time spine at an hourly grain.
-</Expandable>
-  
-Now, break down the configuration above. It's pointing to a model called `time_spine_daily`, and all the configuration is colocated with the rest of the [model's properties](/reference/model-properties). It sets the time spine configurations under the `time_spine` key. The `standard_granularity_column` is the lowest grain of the table, in this case, it's hourly. It needs to reference a column defined under the columns key, in this case, `date_hour`. Use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`.
 
 ### Considerations when choosing which granularities to create{#granularity-considerations}
 
@@ -302,9 +294,9 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 <VersionBlock lastVersion="1.8">
 
-Being able to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or dbt Core [v1.9 and above](/docs/dbt-versions/core). 
+The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
 
-To access this feature, [upgrade to Versionless](/docs/dbt-versions/versionless-cloud) or dbt Core v1.9 and above.
+To access this feature, [upgrade to Versionless](/docs/dbt-versions/versionless-cloud) or your dbt Core version to v1.9 or higher.
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
@@ -337,6 +329,6 @@ models:
 </File>
 
 #### Coming soon
-Note that features like calculating offsets and period-over-period will be supported soon.
+Note that features like calculating offsets and period-over-period will be supported soon!
 
 </VersionBlock>
