@@ -7,7 +7,7 @@ meta:
   github_repo: 'Microsoft/dbt-synapse'
   pypi_package: 'dbt-synapse'
   min_core_version: 'v0.18.0'
-  cloud_support: Not Supported
+  cloud_support: Supported
   min_supported_version: 'Azure Synapse 10'
   slack_channel_name: '#db-synapse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
