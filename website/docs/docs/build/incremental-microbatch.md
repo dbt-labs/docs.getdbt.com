@@ -38,7 +38,7 @@ models:
      config:
        event_time: page_view_start
 ```
-
+</File>
 We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
 
 <Tabs>
