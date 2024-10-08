@@ -16,10 +16,11 @@ The dbt Semantic Layer offers a seamless integration with Excel Online and Deskt
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
-import SLCourses from '/snippets/_sl-course.md';
+:::tip
 
-<SLCourses/>
+📹 For on-demand video learning, explore the [Querying the Semantic Layer with Excel](https://learn.getdbt.com/courses/querying-the-semantic-layer-with-excel) course to learn how to query metrics with Excel.
 
+:::
 
 ## Installing the add-on
 
