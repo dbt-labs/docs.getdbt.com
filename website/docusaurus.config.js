@@ -205,7 +205,7 @@ var siteSettings = {
           <script 
             src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="9d421bf3-96b8-403e-9900-6fb059132264" 
             data-ft-workflow-tag="docs" 
-            config-ft-greeting-message="Welcome to the dbt Product documentation site! Need help? Ask the Docs widget any questions about dbt – we're happy to help!"
+            config-ft-greeting-message="Ask a question!"
           ></script>
 
           <div class='footer__items'>
