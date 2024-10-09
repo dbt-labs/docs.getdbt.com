@@ -48,10 +48,4 @@ plan="dbt Cloud Team or Enterprise"
     link="/docs/dbt-cloud-apis/sl-python"
     icon="dbt-bit"/>
 
-<Card
-    title="Semantic manifest"
-    body="Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
-    link="/reference/artifacts/sl-manifest"
-    icon="dbt-bit"/>
-
 </div>

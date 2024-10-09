@@ -7,7 +7,7 @@ sidebar_label: "Semantic manifest"
 pagination_next: null
 ---
 
-#### Produced  by:  Any command that parses your project. This includes all commands _except_ [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), and [`init`](/reference/commands/init).
+**Produced by:**  Any command that parses your project. This includes all commands _except_ [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), and [`init`](/reference/commands/init).
 
 dbt creates an [artifact](/reference/artifacts/dbt-artifacts) file called the _Semantic Manifest_ (`semantic_manifest.json`), which MetricFlow requires to build and run metric queries properly for the dbt Semantic Layer. This artifact contains comprehensive information about your dbt Semantic Layer. It is an internal file that acts as the integration point with MetricFlow. 
 
@@ -110,7 +110,7 @@ Top-level keys for the semantic manifest are:
 }
 ```
 
-</File>>
+</File>
 
 ## Related docs
 
