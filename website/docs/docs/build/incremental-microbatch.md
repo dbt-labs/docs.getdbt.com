@@ -51,7 +51,7 @@ We run the `sessions` model on October 1, 2024, and then again on October 2. It 
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
-    event_time='session_start',
+    event_time='page_view_start',
     begin='2020-01-01',
     batch_size='day'
 ) }}
