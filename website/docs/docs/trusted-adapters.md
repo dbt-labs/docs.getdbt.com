@@ -14,6 +14,14 @@ Free and open-source tools for the data professional are increasingly abundant. 
 Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for more information, particularly if you are an adapter maintainer considering having your adapter be added to the trusted list.
 
 
+<!-- vale off -->
+
+## Header Test To Test COmments
+more text here...
+
+<!-- vale on -->
+
+
 ### Trusted adapters
 
 import AdaptersTrusted from '/snippets/_adapters-trusted.md';
