@@ -52,7 +52,8 @@ We run the `sessions` model on October 1, 2024, and then again on October 2. It 
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='session_start',
-    begin='2020-01-01'
+    begin='2020-01-01',
+    batch_size='day'
 ) }}
 
 with page_views as (
