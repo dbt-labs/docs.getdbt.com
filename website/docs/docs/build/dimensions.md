@@ -161,6 +161,8 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
+<VersionBlock firstVersion="1.9">
+
 `time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
 Our supported granularities are:
@@ -203,6 +205,49 @@ measures:
     expr: 1
     agg: sum
 ```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+`time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add daily granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to daily. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from daily to monthly. However, you can't go from a coarser grain to a finer grain (monthly to daily).
+
+Our supported granularities are:
+* day
+* week
+* quarter
+* year
+
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+
+```yaml
+dimensions: 
+  - name: created_at
+    type: time
+    label: "Date of creation"
+    expr: ts_created # ts_created is the underlying column name from the table 
+    is_partition: True 
+    type_params:
+      time_granularity: day 
+  - name: deleted_at
+    type: time
+    label: "Date of deletion"
+    expr: ts_deleted # ts_deleted is the underlying column name from the table 
+    is_partition: True 
+    type_params:
+      time_granularity: day 
+
+measures:
+  - name: users_deleted
+    expr: 1
+    agg: sum 
+    agg_time_dimension: deleted_at
+  - name: users_created
+    expr: 1
+    agg: sum
+```
+
+</VersionBlock>
 
 </TabItem>
 
