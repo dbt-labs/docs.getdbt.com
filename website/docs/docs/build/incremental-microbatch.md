@@ -35,8 +35,8 @@ The `page_view_start` column in `page_views` is configured as that model's `even
 ```yaml
 models:
   - name: page_views
-     config:
-       event_time: page_view_start
+    config:
+      event_time: page_view_start
 ```
 </File>
 We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
@@ -268,8 +268,8 @@ Where you’ve also set an `event_time` for the model’s direct parents - in th
 ```yaml
 models:
   - name: stg_events
-     config:
-       event_time: my_time_field
+    config:
+      event_time: my_time_field
 ```
 
 </File>
