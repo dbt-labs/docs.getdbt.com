@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](/docs/cloud/git/setup-azure#connect-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
 
 Once the Microsoft Entra ID app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
@@ -89,7 +89,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connect a service user](#connect-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.
@@ -372,6 +372,16 @@ A dbt Cloud account admin with access to the service user's Azure DevOps account
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
+
+### Using Azure AD for SSO with dbt Cloud and Microsoft tools
+
+If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flow may sometimes direct your account admin to their personal user account instead of the service user. If this happens, follow these steps to resolve it:
+
+1. Sign in to the service user's Azure DevOps account (ensure they are also connected to dbt Cloud through SSO).
+2. When connected to dbt Cloud, sign out of Azure AD through the [Azure portal](https://portal.azure.com/).
+3. Disconnect the service user in dbt Cloud, and follow the steps to set it up again.
+4. You should then be prompted to enter service user credentials.
+
 
 :::info Personal Access Tokens (PATs)
 dbt Cloud leverages the service user to generate temporary access tokens called [PATs](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?toc=%2Fazure%2Fdevops%2Fmarketplace-extensibility%2Ftoc.json&view=azure-devops&tabs=Windows). 

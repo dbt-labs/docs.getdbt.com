@@ -76,6 +76,15 @@ This results in the generated relation being located in the `snapshots` schema s
 
 </TabItem>
 
+<TabItem value="saved-queries" label="Saved queries">
+
+<File name='dbt_project.yml'>
+```yml
+saved-queries:
+  +schema: metrics
+```
+</File>
+</TabItem>
 <TabItem value="tests" label="Test">
 
 Customize the schema for storing test results in your `dbt_project.yml` file. 

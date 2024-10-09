@@ -8,12 +8,12 @@ pagination_next: "docs/dbt-cloud-apis/service-tokens"
 
 :::note Announcement
 
-_User tokens will be deprecated on September 18th, 2024._
+_User tokens will be deprecated on October 22nd, 2024._
 
-The [user API tokens](/docs/dbt-cloud-apis/user-tokens#user-api-tokens) are being replaced by [account-scoped personal access tokens(PATs)](#account-scoped-personal-access-tokens). If you do not rotate your existing user tokens with PATs by September 18th, the services using the tokens will encounter errors. 
+The [user API tokens](/docs/dbt-cloud-apis/user-tokens#user-api-tokens) are being replaced by [account-scoped personal access tokens(PATs)](#account-scoped-personal-access-tokens). If you do not rotate your existing user tokens with PATs by October 22nd, the services using the tokens will encounter errors. 
 
 
-Cloud CLI config files need to be re-downloaded before September 18th, 2024.
+Cloud CLI config files need to be re-downloaded before October 22nd, 2024.
 
 The current API key is located under **Personal Settings → API Key.** 
 
