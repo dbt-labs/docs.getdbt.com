@@ -7,26 +7,24 @@ sidebar_label: "Semantic manifest"
 pagination_next: null
 ---
 
+#### Produced  by:  Any command that parses your project. This includes all commands _except_ [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), and [`init`](/reference/commands/init).
+
 dbt creates an [artifact](/reference/artifacts/dbt-artifacts) file called the _Semantic Manifest_ (`semantic_manifest.json`), which MetricFlow requires to build and run metric queries properly for the dbt Semantic Layer. This artifact contains comprehensive information about your dbt Semantic Layer. It is an internal file that acts as the integration point with MetricFlow. 
 
 By using the semantic manifest produced by dbt Core, MetricFlow will instantiate a data flow plan and generate SQL from Semantic Layer query requests. It's a valuable reference that you can use to understand the structure and details of your data models.
 
 Similar to the [`manifest.json` file](/reference/artifacts/manifest-json), the `semantic_manifest.json` file also lives in the [target directory](/reference/global-configs/json-artifacts) of your dbt project where dbt stores various artifacts (such as compiled models and tests) generated during the execution of your project.
 
-## How it's produced 
-
-Just like `manifest.json`, the `semantic_manifest.json` is produced whenever your dbt project is parsed. All dbt commands will parse your project and create a `semantic_manifest.json` file, _except_ [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), and [`init`](/reference/commands/init).
-
-
-## Top level keys
+## Top-level keys
 
 Top-level keys for the semantic manifest are:
 -  `semantic_models` &mdash; Starting points of data with entities, dimensions, and measures, and correspond to models in your dbt project. 
 -  `metrics` &mdash; Functions combining measures, constraints, and so on to define quantitative indicators.
 - `project_configuration` &mdash; Contains information around your project configurations 
 
-<details>
-<summary>Example <code>target/semantic_manifest.json</code> file </summary>
+### Example
+
+<File name="target/semantic_manifest.json"> 
 
 ```json
 {
@@ -112,7 +110,7 @@ Top-level keys for the semantic manifest are:
 }
 ```
 
-</details>
+</File>>
 
 ## Related docs
 
