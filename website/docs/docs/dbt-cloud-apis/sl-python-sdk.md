@@ -7,7 +7,6 @@ keywords: [dbt Cloud, API, dbt Semantic Layer, python, sdk]
 sidebar_label: "Python SDK"
 ---
 
-# Python SDK <Lifecycle status="Preview"/>
 The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. 
 
 ## Installation

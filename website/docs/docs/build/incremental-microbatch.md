@@ -28,8 +28,17 @@ A `sessions` model is aggregating and enriching data that comes from two other m
 - `page_views` is a large, time-series table. It contains many rows, new records almost always arrive after existing ones, and existing records rarely update.
 - `customers` is a relatively small dimensional table. Customer attributes update often, and not in a time-based manner — that is, older customers are just as likely to change column values as newer customers.
 
-The `page_view_start` column in `page_views` is configured as that model's `event_time`. The `customers` model does not configure an `event_time`. Therefore, each batch of `sessions` will filter `page_views` to the equivalent time-bounded batch, and it will not filter `sessions` (a full scan for every batch).
+The `page_view_start` column in `page_views` is configured as that model's `event_time`. The `customers` model does not configure an `event_time`. Therefore, each batch of `sessions` will filter `page_views` to the equivalent time-bounded batch, and it will not filter `customers` (a full scan for every batch).
 
+<File name="models/staging/page_views.yml">
+
+```yaml
+models:
+  - name: page_views
+    config:
+      event_time: page_view_start
+```
+</File>
 We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
 
 <Tabs>
@@ -43,7 +52,8 @@ We run the `sessions` model on October 1, 2024, and then again on October 2. It 
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='session_start',
-    begin='2020-01-01'
+    begin='2020-01-01',
+    batch_size='day'
 ) }}
 
 with page_views as (
@@ -143,7 +153,7 @@ Several configurations are relevant to microbatch models, and some are required:
 |----------|------|---------------|---------|
 | `event_time` | Column  (required)   | The column indicating "at what time did the row occur." Required for your microbatch model and any direct parents that should be filtered.          | N/A     |
 | `begin`      | Date (required)   | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
-| `batch_size` | String (optional)  | The granularity of your batches. The default is `day` (and currently this is the only granularity supported).             | `day`   |
+| `batch_size` | String (required)  | The granularity of your batches. The default is `day` (and currently this is the only granularity supported).             | `day`   |
 | `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `0`     |
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
@@ -258,8 +268,8 @@ Where you’ve also set an `event_time` for the model’s direct parents - in th
 ```yaml
 models:
   - name: stg_events
-     config:
-       event_time: my_time_field
+    config:
+      event_time: my_time_field
 ```
 
 </File>
