@@ -1,7 +1,7 @@
 ---
 title: MetricFlow time spine
 id: metricflow-time-spine
-description: "MetricFlow expects a default timespine table called metricflow_time_spine"
+description: "MetricFlow expects a default time spine table called metricflow_time_spine"
 sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
 ---
@@ -300,7 +300,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 <!-- this whole section is for 1.8 and and lower -->
 
-MetricFlow uses a timespine table to construct cumulative metrics. By default, MetricFlow expects the timespine table to be named `metricflow_time_spine` and doesn't support using a different name.
+MetricFlow uses a time spine table to construct cumulative metrics. By default, MetricFlow expects the time spine table to be named `metricflow_time_spine` and doesn't support using a different name. For supported granularities, refer to the [dimensions](/docs/build/dimensions?dimension=time_gran#time) page.
 
 To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
 
@@ -442,48 +442,8 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but finer grains are only supported in versions 1.9 and higher.
 
-## Hourly time spine
-
-<File name='time_spine_hourly.sql'>
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with hours as (
-
-    {{
-        dbt.date_spine(
-            'hour',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_hour as timestamp) as date_hour
-    from hours
-)
-
-select * from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-
-</File>
 </VersionBlock>
 
-## Considerations when choosing which granularities to create
-* MetricFlow will use the time spine with the largest compatible granularity for a given query to ensure the most efficient query possible. For example, if you have a time spine at a monthly grain, and query a dimension at a monthly grain, MetricFlow will use the monthly time spine. If you only have a daily time spine, MetricFlow will use the daily time spine and date_trunc to month.
-* You can add a time spine for each granularity you intend to use if query efficiency is more important to you than configuration time, or storage constraints. For most engines, the query performance difference should be minimal and transforming your time spine to a coarser grain at query time shouldn't add significant overhead to your queries.
-* We recommend having a time spine at the finest grain used in any of your dimensions to avoid unexpected errors. For example, if you have dimensions at an daily grain, you should have a time spine at an daily grain.
-* If you're looking to specify the grain of a time dimension so that MetricFlow can transform the underlying column to the required granularity, refer to the [dimensions](/docs/build/dimensions?dimension=time_gran#time) page for the supported granularities.
 
 ## Custom calendar <Lifecycle status="Preview"/>
 
