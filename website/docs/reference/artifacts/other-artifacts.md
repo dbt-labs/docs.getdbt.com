@@ -39,7 +39,7 @@ Each of those points in time contains the `name` and `type` of each node and `su
 
 ### semantic_manifest.json
 
-The [`semantic_manifest.json`](/docs/dbt-cloud-apis/sl-manifest) file is useful as an internal interface between `dbt-core` and MetricFlow. As such, it functions as a behind-the-scenes bridge for interaction between the two systems. You can find all of the `semantic_manifest.json` information in the [`semantic_manifest.json`](/docs/dbt-cloud-apis/sl-manifest).
+The [`semantic_manifest.json`](/reference/artifacts/sl-manifest) file is useful as an internal interface between `dbt-core` and MetricFlow. As such, it functions as a behind-the-scenes bridge for interaction between the two systems. You can find all of the `semantic_manifest.json` information in the [`semantic_manifest.json`](/reference/artifacts/sl-manifest).
 
 There are two reasons why `semantic_manifest.json` exists alongside `manifest.json`:
 
