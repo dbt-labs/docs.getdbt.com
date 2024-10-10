@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/dbt-cloud-apis/sl-manifest",
+      "destination": "/reference/artifacts/sl-manifest",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/dbt-assist-data",
       "destination": "/docs/cloud/dbt-copilot-data",
       "permanent": true
