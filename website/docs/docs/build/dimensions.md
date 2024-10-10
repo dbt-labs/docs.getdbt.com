@@ -41,7 +41,7 @@ Refer to the following example to see how dimensions are used in a semantic mode
 semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
-    model: {{ ref("fact_transactions") }}
+    model: {{ ref('fact_transactions') }}
     defaults:
       agg_time_dimension: order_date
 # --- entities --- 
@@ -122,7 +122,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (hourly, daily, weekly, and so on).
+You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).
 
 <Tabs queryString="dimension">
 
@@ -174,6 +174,7 @@ Our supported granularities are:
 * hour
 * day
 * week
+* month
 * quarter
 * year
 
@@ -215,6 +216,7 @@ measures:
 Our supported granularities are:
 * day
 * week
+* month
 * quarter
 * year
 
@@ -358,7 +360,7 @@ Additionally, the entity is tagged as `natural` to differentiate it from a `prim
 semantic_models:
   - name: sales_person_tiers
     description: SCD Type II table of tiers for salespeople 
-    model: {{ref(sales_person_tiers)}}
+    model: {{ ref('sales_person_tiers') }}
     defaults:
       agg_time_dimension: tier_start
 
@@ -400,7 +402,7 @@ semantic_models:
       There is a transaction, product, sales_person, and customer id for 
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
-    model: {{ ref(fact_transactions) }}
+    model: {{ ref('fact_transactions') }}
     defaults:
       agg_time_dimension: metric_time
 
