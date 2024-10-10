@@ -1,13 +1,15 @@
 ---
 title: MetricFlow time spine
 id: metricflow-time-spine
-description: "MetricFlow expects a default timespine table called metricflow_time_spine"
+description: "MetricFlow expects a default time spine table called metricflow_time_spine"
 sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
 ---
+<VersionBlock firstVersion="1.9">
+
+<!-- this whole section is for 1.9 and higher + Versionless -->
 
 It's common in analytics engineering to have a date dimension or "time spine" table as a base table for different types of time-based joins and aggregations. The structure of this table is typically a base column of daily or hourly dates, with additional columns for other time grains, like fiscal quarters, defined based on the base column. You can join other tables to the time spine on the base column to calculate metrics like revenue at a point in time, or to aggregate to a specific time grain.
-
 
 MetricFlow requires you to define at least one dbt model which provides a time-spine, and then specify (in YAML) the columns to be used for time-based joins. MetricFlow will join against the time-spine model for the following types of metrics and dimensions:
 
@@ -74,6 +76,7 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
 
 <Lightbox src="/img/time_spines.png" width="50%" title="Time spine directory structure" />
 
+<!--
 <VersionBlock lastVersion="1.8">
 <File name="models/_models.yml">
   
@@ -98,6 +101,7 @@ models:
 
 </File>
 </VersionBlock>
+-->
 
 - This example configuration shows a time spine model called  `time_spine_hourly` and `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. 
 - The `standard_granularity_column` is the column that maps to one of our [standard granularities](/docs/build/dimensions?dimension=time_gran). This column must be set under the `columns` key and should have a grain that is finer or equal to any custom granularity columns defined in the same model.
@@ -290,13 +294,165 @@ and date_hour < dateadd(day, 30, current_timestamp())
 </File>
 
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+<!-- this whole section is for 1.8 and and lower -->
+
+MetricFlow uses a time spine table to construct cumulative metrics. By default, MetricFlow expects the time spine table to be named `metricflow_time_spine` and doesn't support using a different name. For supported granularities, refer to the [dimensions](/docs/build/dimensions?dimension=time_gran#time) page.
+
+To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
+
+### Daily
+
+<VersionBlock lastVersion="1.6">
+<File name='metricflow_time_spine.sql'>
+
+```sql
+{{
+    config(
+        materialized = 'table',
+    )
+}}
+
+with days as (
+
+    {{
+        dbt_utils.date_spine(
+            'day',
+            "to_date('01/01/2000','mm/dd/yyyy')",
+            "to_date('01/01/2025','mm/dd/yyyy')"
+        )
+    }}
+
+),
+
+final as (
+    select cast(date_day as date) as date_day
+    from days
+)
+
+select * from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
+```
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+<File name='metricflow_time_spine.sql'>
+
+
+```sql
+{{
+    config(
+        materialized = 'table',
+    )
+}}
+
+with days as (
+
+    {{
+        dbt.date_spine(
+            'day',
+            "to_date('01/01/2000','mm/dd/yyyy')",
+            "to_date('01/01/2025','mm/dd/yyyy')"
+        )
+    }}
+
+),
+
+final as (
+    select cast(date_day as date) as date_day
+    from days
+)
+
+select * from final
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
+```
+
+</File>
+</VersionBlock>
+
+### Daily (BigQuery)
+
+Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
+
+<VersionBlock lastVersion="1.6">
+
+<File name="metricflow_time_spine.sql">
+
+```sql
+{{config(materialized='table')}}
+with days as (
+    {{dbt_utils.date_spine(
+        'day',
+        "DATE(2000,01,01)",
+        "DATE(2025,01,01)"
+    )
+    }}
+),
+
+final as (
+    select cast(date_day as date) as date_day
+    from days
+)
+
+select *
+from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
+```
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name="metricflow_time_spine.sql">
+
+```sql
+{{config(materialized='table')}}
+with days as (
+    {{dbt.date_spine(
+        'day',
+        "DATE(2000,01,01)",
+        "DATE(2025,01,01)"
+    )
+    }}
+),
+
+final as (
+    select cast(date_day as date) as date_day
+    from days
+)
+
+select *
+from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
+```
+
+</File>
+</VersionBlock>
+
+You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but finer grains are only supported in versions 1.9 and higher.
+
+</VersionBlock>
+
+
 ## Custom calendar <Lifecycle status="Preview"/>
 
 <VersionBlock lastVersion="1.8">
 
-The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
+The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/versionless-cloud) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
 
-To access this feature, [upgrade to Versionless](/docs/dbt-versions/versionless-cloud) or your dbt Core version to v1.9 or higher.
+To access this feature, [upgrade to Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or your dbt Core version to v1.9 or higher.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
