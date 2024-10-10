@@ -31,7 +31,7 @@ dbt test --models [...] --defer --state path/to/artifacts
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
-2. Does the reference node exist as a database object in the current environment?
+2. Does the referenced node exist as a database object in the current environment?
 
 If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.
 
