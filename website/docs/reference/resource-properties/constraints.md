@@ -47,7 +47,7 @@ models:
         columns: [first_column, second_column, ...]
       - type: foreign_key # multi_column
         columns: [first_column, second_column, ...]
-        to: "{{ ref('other_model_name') }}"
+        to: ref('other_model_name')
         to_columns: [other_model_first_column, other_model_second_columns, ...]
       - type: check
         columns: [first_column, second_column, ...]
@@ -64,7 +64,7 @@ models:
           - type: not_null
           - type: unique
           - type: foreign_key
-            to: "{{ ref('other_model_name') }}"
+            to: ref('other_model_name')
             to_columns: other_model_column
           - type: ...
 ```
