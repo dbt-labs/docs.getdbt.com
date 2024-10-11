@@ -10,10 +10,12 @@ function Collapsible({children, header, description, expand}) {
   return (
     <>
         <h2 onClick={toggleExpanded}>
+            <span style={{ color: expanded ? 'orange' : 'orange' }}>
+              { expanded ?  ' ^ '  : ' > ' }
+            </span>
             {header}
-            { expanded ?  ' -'  : ' +' }
         </h2>
-        { expanded ? children : <span>{ description ? description : "Click to expand" }</span> }
+        { expanded ? children : <span>{ description ? description : "Click above for details" }</span> }
     </>
   );
 }
