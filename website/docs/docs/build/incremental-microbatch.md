@@ -51,7 +51,7 @@ We run the `sessions` model on October 1, 2024, and then again on October 2. It 
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
-    event_time='page_view_start',
+    event_time='session_start',
     begin='2020-01-01',
     batch_size='day'
 ) }}
@@ -70,7 +70,13 @@ customers as (
 
 ),
 
-...
+select
+  page_views.id as session_id,
+  page_views.page_view_start as session_start,
+  customers.*
+  from page_views
+  left join customers
+    on page_views.customer_id = customer.id
 ```
 
 </File>
