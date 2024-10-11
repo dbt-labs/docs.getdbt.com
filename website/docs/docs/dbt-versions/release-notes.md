@@ -32,14 +32,14 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - Advanced CI [features](https://docs.getdbt.com/docs/deploy/advanced-ci)
   - [Linting with CI jobs](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting)
   - dbt Assist is now [dbt Copilot](https://docs.getdbt.com/docs/cloud/dbt-copilot)
-  - Developer blog on [Snowflake Feature Store and dbt](https://docs.getdbt.com/blog/snowflake-feature-store)
+  - Developer blog on [Snowflake Feature Store and dbt: A bridge between data pipelines and ML](https://docs.getdbt.com/blog/snowflake-feature-store)
   - New [Quickstart for dbt Cloud CLI](https://docs.getdbt.com/guides/dbt-cloud-cli?step=1)
   - [Auto-exposures with Tableau](https://docs.getdbt.com/docs/collaborate/auto-exposures)
   - Semantic Layer integration with [Excel desktop and M365](https://docs.getdbt.com/docs/cloud-integrations/semantic-layer/excel)
   - [Data health tiles](https://docs.getdbt.com/docs/collaborate/data-tile)
   - [Semantic Layer and Cloud IDE integration](https://docs.getdbt.com/docs/build/metricflow-commands#metricflow-commands)
   - Query history in [Explorer](https://docs.getdbt.com/docs/collaborate/model-query-history#view-query-history-in-explorer)
-  - Semantic Layer Metricflow improvements, including [sub-daily granularity and custom calendar (Preview)](https://docs.getdbt.com/docs/build/metricflow-time-spine#custom-calendar) 
+  - Semantic Layer Metricflow improvements, including [sub-daily granularity and custom calendar](https://docs.getdbt.com/docs/build/metricflow-time-spine#custom-calendar) 
   - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) generally avaialble. 
 
 </Expandable>
