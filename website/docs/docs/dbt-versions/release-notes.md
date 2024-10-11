@@ -25,7 +25,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   Documentation for new features and functionality announced at Coalesce 2024:
 
   - Iceberg table support for [Snowflake](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#iceberg-table-format)
-  - [Athena](https://docs.getdbt.com/reference/resource-configs/athena-configs) and [Teradata](https://docs.getdbt.com/reference/resource-configs/teradata-configs) adapter support in dbt Cloud.
+  - [Athena](https://docs.getdbt.com/reference/resource-configs/athena-configs) and [Teradata](https://docs.getdbt.com/reference/resource-configs/teradata-configs) adapter support in dbt Cloud
   - dbt Cloud now hosted on [Azure](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses)
   - Get comfortable with [Versionless dbt Cloud](https://docs.getdbt.com/docs/dbt-versions/versionless-cloud)
   - Scalable [microbatch incremental models](https://docs.getdbt.com/docs/build/incremental-microbatch)
@@ -40,7 +40,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - [Semantic Layer and Cloud IDE integration](https://docs.getdbt.com/docs/build/metricflow-commands#metricflow-commands)
   - Query history in [Explorer](https://docs.getdbt.com/docs/collaborate/model-query-history#view-query-history-in-explorer)
   - Semantic Layer Metricflow improvements, including [sub-daily granularity and custom calendar](https://docs.getdbt.com/docs/build/metricflow-time-spine#custom-calendar) 
-  - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) is now generally available. 
+  - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) is now generally available 
 
 </Expandable>
 
