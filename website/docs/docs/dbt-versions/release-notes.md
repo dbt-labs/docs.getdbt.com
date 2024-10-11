@@ -18,30 +18,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
-<Collapsible header="Coalesce 2024 announcements">
-
-Documentation for new features and functionality announced at Coalesce 2024:
-
-- Iceberg table support for [Snowflake](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#iceberg-table-format)
-- [Athena](https://docs.getdbt.com/reference/resource-configs/athena-configs) and [Teradata](https://docs.getdbt.com/reference/resource-configs/teradata-configs) adapter support in dbt Cloud.
-- dbt Cloud now hosted on [Azure](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses)
-- Get comfortable with [Versionless dbt Cloud](https://docs.getdbt.com/docs/dbt-versions/versionless-cloud)
-- Scalable [microbatch incremental models](https://docs.getdbt.com/docs/build/incremental-microbatch)
-- Advanced CI [features](https://docs.getdbt.com/docs/deploy/advanced-ci)
-- [Linting with CI jobs](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting)
-- dbt Assist is now [dbt Copilot](https://docs.getdbt.com/docs/cloud/dbt-copilot)
-- Developer blog on [Snowflake Feature Store and dbt](https://docs.getdbt.com/blog/snowflake-feature-store)
-- New [Quickstart for dbt Cloud CLI](https://docs.getdbt.com/guides/dbt-cloud-cli?step=1)
-- [Auto-exposures with Tableau](https://docs.getdbt.com/docs/collaborate/auto-exposures)
-- Semantic Layer integration with [Excel desktop and M365](https://docs.getdbt.com/docs/cloud-integrations/semantic-layer/excel)
-- [Data health tiles](https://docs.getdbt.com/docs/collaborate/data-tile)
-- [Semantic Layer and Cloud IDE integration](https://docs.getdbt.com/docs/build/metricflow-commands#metricflow-commands)
-- Query history in [Explorer](https://docs.getdbt.com/docs/collaborate/model-query-history#view-query-history-in-explorer)
-- Semantic Layer Metricflow improvements, including [sub-daily granularity and custom calendar (Preview)](https://docs.getdbt.com/docs/build/metricflow-time-spine#custom-calendar) 
-- [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) generally avaialble. 
-
-</Collapsible>
-
 ## October 2024
 
 <Expandable alt_header="Coalesce 2024 announcements">
