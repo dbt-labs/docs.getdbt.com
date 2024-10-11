@@ -24,7 +24,7 @@ Each "batch" corresponds to a single bounded time period (by default, a single d
 
 ### Example
 
-A `sessions` model is aggregating and enriching data that comes from two other models:
+A `sessions` model aggregates and enriches data that comes from two other models.
 - `page_views` is a large, time-series table. It contains many rows, new records almost always arrive after existing ones, and existing records rarely update.
 - `customers` is a relatively small dimensional table. Customer attributes update often, and not in a time-based manner — that is, older customers are just as likely to change column values as newer customers.
 
@@ -39,12 +39,15 @@ models:
       event_time: page_view_start
 ```
 </File>
+
 We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
 
 <Tabs>
 
 <TabItem value="Model definition">
 
+The `event_time` for the `sessions` model is set to `session_start`, which marks the beginning of a user’s session on the website. This setting allows dbt to combine multiple page views (each tracked by their own `page_view_start` timestamps) into a single session. This way, `session_start` differentiates the timing of individual page views from the broader timeframe of the entire user session.
+  
 <File name="models/sessions.sql">
 
 ```sql
@@ -147,7 +150,7 @@ customers as (
 
 dbt will instruct the data platform to take the result of each batch query and insert, update, or replace the contents of the `analytics.sessions` table for the same day of data. To perform this operation, dbt will use the most efficient atomic mechanism for "full batch" replacement that is available on each data platform.
 
-It does not matter whether the table already contains data for that day, or not. Given the same input data, no matter how many times a batch is reprocessed, the resulting table is the same.
+It does not matter whether the table already contains data for that day. Given the same input data, the resulting table is the same no matter how many times a batch is reprocessed.
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter sessions, performing a full scan for each batch."/>
 
@@ -181,11 +184,11 @@ During standard incremental runs, dbt will process batches according to the curr
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_lookback.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 
-**Note:** If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This isn't generally recommended — most models which configure `event_time` are fairly large, and if the reference is not filtered, each batch will perform a full scan of this input table.
+**Note:** If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This isn't generally recommended — most models that configure `event_time` are fairly large, and if the reference is not filtered, each batch will perform a full scan of this input table.
 
 ### Backfills
 
-Whether to fix erroneous source data, or retroactively apply a change in business logic, you may need to reprocess a large amount of historical data.
+Whether to fix erroneous source data or retroactively apply a change in business logic, you may need to reprocess a large amount of historical data.
 
 Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. As always, dbt will process the batches between the start and end as independent queries.
 
@@ -210,7 +213,7 @@ For now, dbt assumes that all values supplied are in UTC:
 - `--event-time-start`
 - `--event-time-end`
 
-While we may consider adding support for custom timezones in the future, we also believe that defining these values in UTC makes everyone's lives easier.
+While we may consider adding support for custom time zones in the future, we also believe that defining these values in UTC makes everyone's lives easier.
 
 ## How `microbatch` compares to other incremental strategies?
 
@@ -267,7 +270,7 @@ select * from {{ ref('stg_events') }} -- this ref will be auto-filtered
 
 </File>
 
-Where you’ve also set an `event_time` for the model’s direct parents - in this case `stg_events`:
+Where you’ve also set an `event_time` for the model’s direct parents - in this case, `stg_events`:
 
 <File name="models/staging/stg_events.yml">
 
