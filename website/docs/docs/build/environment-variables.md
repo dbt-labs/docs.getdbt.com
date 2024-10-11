@@ -113,26 +113,26 @@ Use case &mdash; This is useful in cases where you want to dynamically use the G
 
 The following environment variables are set automatically: 
 
-- `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'. For deployment runs only.
-- `DBT_CLOUD_ENVIRONMENT_NAME`: The name of the dbt Cloud environment in which `dbt` is running. 
-- `DBT_CLOUD_ENVIRONMENT_TYPE`: The type of dbt Cloud environment in which `dbt` is running. The valid values are `development` or `deployment`.
+- `DBT_ENV` &mdash; This key is reserved for the dbt Cloud application and will always resolve to 'prod'. For deployment runs only.
+- `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the dbt Cloud environment in which `dbt` is running. 
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of dbt Cloud environment in which `dbt` is running. The valid values are `development` or `deployment`.
 
 #### Run details
 
-- `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
-- `DBT_CLOUD_JOB_ID`: The ID of the dbt Cloud Job for this run
-- `DBT_CLOUD_RUN_ID`: The ID of this particular run
-- `DBT_CLOUD_RUN_REASON_CATEGORY`: The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
-- `DBT_CLOUD_RUN_REASON`: The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
-- `DBT_CLOUD_ENVIRONMENT_ID`: The ID of the environment for this run
-- `DBT_CLOUD_ACCOUNT_ID`: The ID of the dbt Cloud account for this run
+- `DBT_CLOUD_PROJECT_ID` &mdash; The ID of the dbt Cloud Project for this run
+- `DBT_CLOUD_JOB_ID` &mdash; The ID of the dbt Cloud Job for this run
+- `DBT_CLOUD_RUN_ID` &mdash; The ID of this particular run
+- `DBT_CLOUD_RUN_REASON_CATEGORY` &mdash; The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
+- `DBT_CLOUD_RUN_REASON` &mdash; The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
+- `DBT_CLOUD_ENVIRONMENT_ID` &mdash; The ID of the environment for this run
+- `DBT_CLOUD_ACCOUNT_ID` &mdash; The ID of the dbt Cloud account for this run
 
 #### Git details
 
 _The following variables are currently only available for GitHub, GitLab, and Azure DevOps PR builds triggered via a webhook_
 
-- `DBT_CLOUD_PR_ID`: The Pull Request ID in the connected version control system
-- `DBT_CLOUD_GIT_SHA`: The git commit SHA which is being run for this Pull Request build
+- `DBT_CLOUD_PR_ID` &mdash; The Pull Request ID in the connected version control system
+- `DBT_CLOUD_GIT_SHA` &mdash; The git commit SHA which is being run for this Pull Request build
 
 
 ### Example usage
