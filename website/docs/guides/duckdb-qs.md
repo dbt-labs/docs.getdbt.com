@@ -38,7 +38,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - [Schedule a job](/guides/manual-install?step=5)
 
 
-### Prerequisites
+## Prerequisites
 
 - When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in dbt Cloud.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
