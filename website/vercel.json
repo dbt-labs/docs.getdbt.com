@@ -3,6 +3,26 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/guides/codespace?step=4",
+      "destination": "/guides/duckdb?step=3",
+      "permanent": true
+    },
+    {
+      "source": "/guides/codespace?step=3",
+      "destination": "/guides/duckdb?step=2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/codespace?step=2",
+      "destination": "/guides/duckdb?step=1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/codespace?step=1",
+      "destination": "/guides/duckdb?step=1",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-cloud-apis/sl-manifest",
       "destination": "/reference/artifacts/sl-manifest",
       "permanent": true
