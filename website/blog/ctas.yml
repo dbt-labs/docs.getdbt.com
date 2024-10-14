@@ -25,3 +25,8 @@
   subheader: Coalesce is the premiere analytics engineering conference! Sign up now for innovation, collaboration, and inspiration. Don't miss out!
   button_text: Register now
   url: https://coalesce.getdbt.com/register
+- name: coalesce_2024_catchup
+  header: Missed Coalesce 2024?
+  subheader: Catch up on Coalesce 2024 and register to access a select number of on-demand sessions.
+  button_text: Register and watch
+  url: https://coalesce.getdbt.com/register/online 
