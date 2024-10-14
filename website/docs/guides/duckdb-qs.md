@@ -174,7 +174,7 @@ The steps will fail if you decide to run this project in your data warehouse (ou
  
 <TabItem value="web" label="Web browser">
 
-1. Go to the `jaffle-shop-template` [repository](https://github.com/dbt-labs/jaffle-shop-template) after you log in to your GitHub account. 
+1. Go to the `jaffle-shop-template` [repository](https://github.com/gwenwindflower/octocatalog) after you log in to your GitHub account. 
 1. Click **Use this template** at the top of the page and choose **Create new repository**.
 1. Click **Create repository from template** when you’re done setting the options for your new repository.
 1. Click **Code** (at the top of the new repository’s page). Under the **Codespaces** tab,  choose **Create codespace on main**. Depending on how you've configured your computer's settings, this either opens a new browser tab with the Codespace development environment with VSCode running in it or opens a new VSCode window with the codespace in it. 
