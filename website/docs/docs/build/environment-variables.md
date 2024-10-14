@@ -101,7 +101,7 @@ dbt Cloud has a number of pre-defined variables built in. Variables are set auto
 
 The following environment variable is set automatically for the dbt Cloud IDE:
 
-- `DBT_CLOUD_GIT_BRANCH`: Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - Available in dbt v 1.6 and later.
   - The variable changes when the branch is changed.
   - Doesn't require restarting the IDE after a branch change.
