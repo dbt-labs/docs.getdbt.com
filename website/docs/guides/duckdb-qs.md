@@ -141,7 +141,29 @@ For more information on the setup of DuckDB, you can refer to [DuckDB setup](/do
     - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
     - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
     - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
+Here's what a successful output will look like:
 
+```jinja
+
+(venv) ➜  jaffle_shop_duckdb git:(duckdb) dbt build
+15:10:12  Running with dbt=1.8.1
+15:10:13  Registered adapter: duckdb=1.8.1
+15:10:13  Found 5 models, 3 seeds, 20 data tests, 416 macros
+15:10:13  
+15:10:14  Concurrency: 24 threads (target='dev')
+15:10:14  
+15:10:14  1 of 28 START seed file main.raw_customers ..................................... [RUN]
+15:10:14  2 of 28 START seed file main.raw_orders ........................................ [RUN]
+15:10:14  3 of 28 START seed file main.raw_payments ...................................... [RUN]
+....
+
+15:10:15  27 of 28 PASS relationships_orders_customer_id__customer_id__ref_customers_ .... [PASS in 0.32s]
+15:10:15  
+15:10:15  Finished running 3 seeds, 3 view models, 20 data tests, 2 table models in 0 hours 0 minutes and 1.52 seconds (1.52s).
+15:10:15  
+15:10:15  Completed successfully
+15:10:15  
+15:10:15  Done. PASS=28 WARN=0 ERROR=0 SKIP=0 TOTAL=28
     For complete details, refer to the [dbt command reference](/reference/dbt-commands).
 
 :::note
