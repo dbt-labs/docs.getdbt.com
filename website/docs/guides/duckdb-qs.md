@@ -76,7 +76,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDB setup](/do
 
 
     ```bash
-    git clone https://github.com.dbt-labs/jaffle_shop_duckdb.git
+    git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
 
     ```
 
