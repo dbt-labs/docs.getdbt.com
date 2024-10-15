@@ -51,7 +51,7 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check  # Use GitHub PR check reporter for detailed annotations
+          reporter: github-pr-review  # Use GitHub PR check reporter for detailed annotations
           level: warning  # Flag warnings as issues
           filter_mode: added  # Only analyze changed lines
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
