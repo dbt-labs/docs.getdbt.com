@@ -58,40 +58,21 @@ jobs:
             fi
           done
 
-      - name: Check for Vale issues
-        id: check-vale
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        shell: bash
-        run: |
-          set +e
-          vale --errorLevel=warning ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
-          exit_code=$?
-          echo "Exit code: $exit_code"
-          if [ $exit_code -ne 0 ]; then
-            echo "issues_found=true" >> $GITHUB_OUTPUT
-          else
-            echo "issues_found=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Run Vale (annotations)
+      - name: Run Vale
+        id: run-vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check  # Use 'github-check' to post annotations without failing the check
+          reporter: github-check
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: true  # Ensure the step doesn't fail even if issues are found
-          level: warning
-        continue-on-error: true
+          fail_on_error: true  # Make the step fail on linting errors
+        continue-on-error: true  # Continue the workflow even if this step fails
 
-
-      - name: Install GitHub CLI
-        run: sudo apt-get install -y gh
-             
       - name: Post summary comment
-        if: steps.run-vale.outcome == 'failure'
+        if: steps.run-vale.outcome == 'failure'  # Run only if the "Run Vale" step failed
         run: |
           COMMENT="❗️Oh no, Vale linting found some issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n\n'
