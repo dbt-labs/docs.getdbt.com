@@ -63,19 +63,22 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
+          level: warning # Adjust this to "error" or "warning" based on the issues you want to catch
 
-      # Capture the exit code of Reviewdog to see if any issues were found
+      # Capture the conclusion from Reviewdog
       - name: Check for Vale issues
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
-          if [ "${{ steps.run-vale.outcome }}" == "success" ]; then
-            echo "issues_found=false" >> $GITHUB_ENV
-          else
+          if grep -q '"conclusion":"neutral"' $GITHUB_WORKSPACE/../_temp/_github_workflow/*/annotations.json; then
+            echo "Vale found issues."
             echo "issues_found=true" >> $GITHUB_ENV
+          else
+            echo "No Vale issues found."
+            echo "issues_found=false" >> $GITHUB_ENV
           fi
 
       - name: Post summary comment
-        if: ${{ env.issues_found == 'true' }}
+        if: env.issues_found == 'true'
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
