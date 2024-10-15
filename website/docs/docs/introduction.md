@@ -16,7 +16,6 @@ Read more about why we want to enable analysts to work more like software engine
 ##  dbt products
 
 
-## This Is A Test
 
 This is a test.
 
