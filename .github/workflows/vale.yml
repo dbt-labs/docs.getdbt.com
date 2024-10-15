@@ -58,30 +58,31 @@ jobs:
             fi
           done
 
-      - name: Run Vale on changed lines
+      - name: Run Vale on changed lines and capture output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check  # Annotations will be posted in the PR
-          level: error  # Report as errors to make issues clearer
-          filter_mode: added  # Only analyze changed lines
-          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
-          separator: ' '
-          version: '2.27.0'
-        continue-on-error: true  # Ensure workflow continues even if Vale finds issues
+        run: |
+          /home/runner/vale --output=vale-output.json website/docs/docs/introduction.md || true
+
+      - name: Check Vale output for warnings/issues
+        id: check-vale-output
+        run: |
+          if grep -q '"severity": "WARNING"' vale-output.json; then
+            echo "Vale found warnings or issues."
+            echo "has_warnings=true" >> $GITHUB_ENV
+          else
+            echo "No warnings or issues found."
+            echo "has_warnings=false" >> $GITHUB_ENV
+          fi
 
       - name: Post summary comment if Vale finds issues
-        if: always()  # Always evaluate the step
+        if: ${{ env.has_warnings == 'true'}}
         run: |
-          CHECK_RUN_URL="${{ steps.vale-lint.outputs.check_run_url }}"
-          if [[ "$CHECK_RUN_URL" == *"warning"* ]]; then
-            COMMENT="❗️Oh no, some Vale linting issues were found! Please check the **Files changed** tab for detailed results and make the necessary updates."
-            COMMENT+=$'\n'
-            COMMENT+=$'\n\n'
-            COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
-            gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
-          fi
+          COMMENT="❗️Oh no, some Vale linting issues were found! Please check the **Files changed** tab for detailed results and make the necessary updates."
+          COMMENT+=$'\n'
+          COMMENT+=$'\n\n'
+          COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          has_warnings: ${{ env.has_warnings }}
