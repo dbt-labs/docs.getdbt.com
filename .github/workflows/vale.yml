@@ -58,22 +58,22 @@ jobs:
             fi
           done
 
-      - name: Run Vale and report errors but don't fail
+      - name: Run Vale on changed lines
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          level: error  # Report as errors instead of warnings
-          fail_on_error: false  # Ensure the check won't fail the entire CI
+          reporter: github-check  # Annotations will be posted in the PR
+          level: error  # Report as errors to make issues clearer
+          filter_mode: added  # Only analyze changed lines
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          filter_mode: added
+        continue-on-error: true  # Ensure workflow continues even if Vale finds issues
 
-      - name: Post summary comment
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+      - name: Post summary comment if Vale finds issues
+        if: steps.vale-lint.outcome == 'failure'  # Check if Vale found any linting issues
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
