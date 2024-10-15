@@ -58,7 +58,7 @@ jobs:
             fi
           done
       
-      - name: Run Vale with reviewdog
+      - name: Run Vale with reviewdog and capture output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
@@ -71,8 +71,16 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Add PR comment if Vale found issues
-        if: failure()  # This will run only if the Vale step fails (warnings are treated as failures)
+      - name: Check Vale output for warnings
+        if: ${{ steps.vale-lint.conclusion == 'neutral' }}  # Reviewdog treats warnings as 'neutral' conclusion
+        run: |
+          echo "Vale found warnings!"
+          echo "vale_issues=true" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Post comment if warnings were found
+        if: ${{ env.vale_issues == 'true' }}
         run: |
           COMMENT="❗️ Vale linting found warnings. Please check the **Files changed** tab for details."
           COMMENT+=$'\n\n'
@@ -80,3 +88,4 @@ jobs:
           gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          vale_issues: ${{ env.vale_issues }}
