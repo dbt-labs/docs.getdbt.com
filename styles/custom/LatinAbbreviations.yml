@@ -1,20 +1,15 @@
+# LatinAbbreviations.yml
 extends: substitution
-message: "Avoid latin abbreviations: '%s'. Consider using '%s' instead."
+message: "Avoid Latin abbreviations: '%s'. Consider using '%s' instead."
 level: warning
 
 swap:
-  - e.g.: for example
-  - eg: for example
-  - e.g: for example
-  - i.e.: for example
-  - i.e.: that is
-  - etc.: and so on
-  - N.B.: Note
-
-action:
-  name: replace
-  params:
-    - for example
-    - that is
-    - and so on
-    - Note
+  'e.g.': 'for example'
+  'e.g': 'for example'
+  'eg': 'for example'
+  'i.e.': 'that is'
+  'i.e': 'that is'
+  'etc.': 'and so on'
+  'etc': 'and so on'
+  'N.B.': 'Note'
+  'NB': 'Note'
