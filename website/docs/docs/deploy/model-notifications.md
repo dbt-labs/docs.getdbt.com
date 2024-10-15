@@ -1,6 +1,6 @@
 ---
 title: "Model notifications"
-description: "Receive email notifications in real time about any issues with your models. "
+description: "While a job is running, receive email notifications in real time about any issues with your models. "
 ---
 
 # Model notifications <Lifecycle status="beta" />
