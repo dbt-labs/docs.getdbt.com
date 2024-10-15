@@ -52,7 +52,8 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Post warning in the job output if Vale issues found
+      - name: Add custom summary with warnings
         if: ${{ steps.vale-lint.outputs.github_check.conclusion != 'success' }}
         run: |
-          echo "::warning::Vale linting has detected warnings. Please check the details in the **Files changed** tab or the **Checks** tab."
+          echo "## Vale Linting Summary" >> $GITHUB_STEP_SUMMARY
+          echo "❗️ Vale linting detected warnings. Please check the **Files changed** or **Checks** tabs." >> $GITHUB_STEP_SUMMARY
