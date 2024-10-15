@@ -17,7 +17,7 @@ Read more about why we want to enable analysts to work more like software engine
 
 This is a test.
 
-Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
+Use use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
 
 <!-- removing per Leona's feedback and pending review
 To cater to the diverse needs of data teams, dbt offers two primary solutions:
