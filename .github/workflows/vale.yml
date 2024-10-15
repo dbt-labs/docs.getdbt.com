@@ -44,7 +44,12 @@ jobs:
         run: |
           echo "Changed files:"
           echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
-
+      
+      - name: Debugging - Show reviewdog diff output
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          gh pr view ${{ github.event.pull_request.number }} --json changedFiles
+          
       - name: Run Vale with reviewdog
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
