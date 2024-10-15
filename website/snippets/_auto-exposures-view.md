@@ -1,4 +1,4 @@
-## View auto-exposures in dbt Explorer <Lifecycle status="enterprise"/>
+## View auto-exposures in dbt Explorer
 
 After setting up auto-exposures in dbt Cloud, you can view them in dbt Explorer for a richer experience:
 1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.

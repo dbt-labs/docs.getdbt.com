@@ -11,7 +11,7 @@ slug: /sql-reference/sum
 
 The SQL SUM function is handy and ever-present in data work. Let’s unpack what it is, how to use it, and why it's valuable.
 
-Jumping into it, the SUM aggregate function allows you to calculate the sum of a numeric column or across a set of rows for a column. Ultimately, the SUM function is incredibly useful for calculating meaningful business metrics, such as Lifetime Value (LTV), and creating key numeric fields in [`fct_` and `dim_` models](/terms/dimensional-modeling).
+Jumping into it, the SUM aggregate function allows you to calculate the sum of a numeric column or across a set of rows for a column. Ultimately, the SUM function is incredibly useful for calculating meaningful business metrics, such as Lifetime Value (LTV), and creating key numeric fields in [`fct_` and `dim_` models](https://www.getdbt.com/blog/guide-to-dimensional-modeling).
 
 ## How to use the SUM function in a query
 

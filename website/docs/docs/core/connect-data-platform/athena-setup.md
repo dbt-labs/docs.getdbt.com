@@ -7,7 +7,7 @@ meta:
   github_repo: 'dbt-labs/dbt-athena'
   pypi_package: 'dbt-athena-community'
   min_core_version: 'v1.3.0'
-  cloud_support: Not Supported
+  cloud_support: Supported
   min_supported_version: 'engine version 2 and 3'
   slack_channel_name: '#db-athena'
   slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'

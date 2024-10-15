@@ -178,14 +178,14 @@ Currently, `not_null` and `check` constraints are enforced only after a model is
 ### Which models should have contracts?
 
 Any model meeting the criteria described above _can_ define a contract. We recommend defining contracts for ["public" models](model-access) that are being relied on downstream.
-- Inside of dbt: Shared with other groups, other teams, and (in the future) other dbt projects.
+- Inside of dbt: Shared with other groups, other teams, and [other dbt projects](/best-practices/how-we-mesh/mesh-1-intro).
 - Outside of dbt: Reports, dashboards, or other systems & processes that expect this model to have a predictable structure. You might reflect these downstream uses with [exposures](/docs/build/exposures).
 
 ### How are contracts different from tests?
 
 A model's contract defines the **shape** of the returned dataset. If the model's logic or input data doesn't conform to that shape, the model does not build.
 
-[Data Tests](/docs/build/data-tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the data test. Data tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
+[Data Tests](/docs/build/data-tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the data test. Data tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
 
 In some cases, you can replace a data test with its equivalent constraint. This has the advantage of guaranteeing the validation at build time, and it probably requires less compute (cost) in your data platform. The prerequisites for replacing a data test with a constraint are:
 - Making sure that your data platform can support and enforce the constraint that you need. Most platforms only enforce `not_null`.
@@ -206,9 +206,12 @@ At the same time, for models with many columns, we understand that this can mean
 When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
 
 Breaking changes include:
-- Removing an existing column
-- Changing the `data_type` of an existing column
-- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
+- Removing an existing column.
+- Changing the `data_type` of an existing column.
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher).
+- Removing a contracted model by deleting, renaming, or disabling it (dbt v1.9 or higher).
+  - versioned models will raise an error.
+  - unversioned models will raise a warning.
 
 More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
 

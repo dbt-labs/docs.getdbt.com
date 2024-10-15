@@ -6,12 +6,10 @@ description: "Import and auto-generate exposures from dashboards and understand 
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Configure auto-exposures <Lifecycle status='beta' />
+# Configure auto-exposures <Lifecycle status="preview,enterprise" />
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. [Auto-exposures](/docs/collaborate/auto-exposures) integrates natively with Tableau and [auto-generates downstream lineage](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer for a richer experience.
-:::info Available in beta
-Auto-exposures are currently available in beta to a limited group of users and are gradually being rolled out. If you're interested in gaining access or learning more, stay tuned for updates!
-:::
+
 Auto-exposures help data teams optimize their efficiency and ensure data quality by:
 
 - Helping users understand how their models are used in downstream analytics tools to inform investments and reduce incidents — ultimately building trust and confidence in data products.
