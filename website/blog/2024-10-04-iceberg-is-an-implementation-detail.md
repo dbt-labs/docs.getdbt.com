@@ -16,6 +16,8 @@ If you haven’t paid attention to the data industry news cycle, you might have 
 
 But I have to be honest: **I don’t care**. But not for the reasons you think.
 
+<!-- truncate -->
+
 ## What is Iceberg?
 
 To have this conversation, we need to start with the same foundational understanding of Iceberg. Apache Iceberg is a high-performance open table format developed for modern data lakes. It was designed for large-scale datasets, and within the project, there are many ways to interact with it. When people talk about Iceberg, it often means multiple components including but not limited to:
