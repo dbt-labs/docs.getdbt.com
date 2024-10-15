@@ -12,6 +12,12 @@ Set up dbt to notify the appropriate model owners through email about issues as 
 
 With model-level notifications, model owners can be the first ones to know about issues before anyone else (like the stakeholders). 
 
+:::info Beta feature
+
+This feature is currently available in [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) to a limited group of users and is gradually being rolled out. If you're in the beta, please contact the Support team at support@getdbt.com for assistance or questions.
+
+:::
+
 To be timely and keep the number of notifications to a reasonable amount when multiple models fail, dbt observes the following guidelines when notifying the owners:  
 
 - Send a notification to each unique owner/email during a job run about any models (with status of failure/success) or tests (with status of warning/failure/success). Each owner receives only one notification, the initial one.
@@ -19,12 +25,6 @@ To be timely and keep the number of notifications to a reasonable amount when mu
 - At the end of a job run, each owner receives a notification, for each of the statuses they specified to be notified about, with a list of models and tests that have that status. 
 
 Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests.
-
-:::info Beta feature
-
-This feature is currently available in [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) to a limited group of users and is gradually being rolled out. If you're in the beta, please contact the Support team at support@getdbt.com for assistance or questions.
-
-:::
 
 ## Prerequisites
 - Your dbt Cloud administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
