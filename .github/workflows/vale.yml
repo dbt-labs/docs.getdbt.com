@@ -82,15 +82,16 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: false  # Ensure the step doesn't fail even if issues are found
+          fail_on_error: true  # Ensure the step doesn't fail even if issues are found
           level: warning
+        continue-on-error: true
 
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
              
       - name: Post summary comment
-        if: ${{ steps.check-vale.outputs.issues_found == 'true' }}
+        if: steps.run-vale.outcome == 'failure'
         run: |
           COMMENT="❗️Oh no, Vale linting found some issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n\n'
