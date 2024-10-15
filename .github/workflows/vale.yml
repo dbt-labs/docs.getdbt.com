@@ -64,7 +64,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          vale --minAlertLevel=warning ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          vale --errorLevel=warning ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           exit_code=$?
           echo "Exit code: $exit_code"
           if [ $exit_code -ne 0 ]; then
@@ -73,7 +73,7 @@ jobs:
             echo "issues_found=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Run Vale (Annotations)
+      - name: Run Vale (annotations)
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
         with:
@@ -83,7 +83,7 @@ jobs:
           separator: ' '
           version: '2.27.0'
           fail_on_error: false  # Ensure the step doesn't fail even if issues are found
-          level: 'warning'  # Set the level to 'warning' to post annotations as warnings
+          level: warning
 
       - name: Post summary comment
         if: ${{ steps.check-vale.outputs.issues_found == 'true' }}
