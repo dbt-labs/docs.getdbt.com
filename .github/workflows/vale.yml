@@ -57,12 +57,12 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          output: 'json'  # Output the Vale results in JSON format for parsing
 
       - name: Check for Vale warnings
         id: check-vale-warnings
         run: |
-          if [[ $(jq '.warnings | length' < vale-output.json) -gt 0 ]]; then
+          vale_result=$(grep -c 'warning' <(cat /home/runner/reviewdog_issues.txt || true))
+          if [ "$vale_result" -gt 0 ]; then
             echo "Vale found warnings or linting issues."
             echo "has_warnings=true" >> $GITHUB_ENV
           else
@@ -70,6 +70,7 @@ jobs:
             echo "has_warnings=false" >> $GITHUB_ENV
           fi
         continue-on-error: true
+
 
       - name: Post comment if Vale finds issues
         if: ${{ env.has_warnings == 'true' }}
