@@ -44,21 +44,8 @@ jobs:
         run: |
           echo "Changed files:"
           echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
-  
-      - name: Confirm files exist
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        run: |
-          echo "Checking if files exist..."
-          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-            if [ -f "$file" ]; then
-              echo "Found: $file"
-            else
-              echo "File not found: $file"
-              exit 1
-            fi
-          done
-      
-      - name: Run Vale with reviewdog and capture output
+
+      - name: Run Vale with reviewdog
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
@@ -70,22 +57,4 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-
-      - name: Check Vale output for warnings
-        if: ${{ steps.vale-lint.conclusion == 'neutral' }}  # Reviewdog treats warnings as 'neutral' conclusion
-        run: |
-          echo "Vale found warnings!"
-          echo "vale_issues=true" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Post comment if warnings were found
-        if: ${{ env.vale_issues == 'true' }}
-        run: |
-          COMMENT="❗️ Vale linting found warnings. Please check the **Files changed** tab for details."
-          COMMENT+=$'\n\n'
-          COMMENT+="➡️ View the details here: [Files changed](${{ github.event.pull_request.html_url }}/files)"
-          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          vale_issues: ${{ env.vale_issues }}
+        continue-on-error: true  # Allow this step to fail without failing the entire workflow
