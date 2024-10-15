@@ -85,6 +85,10 @@ jobs:
           fail_on_error: false  # Ensure the step doesn't fail even if issues are found
           level: warning
 
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+             
       - name: Post summary comment
         if: ${{ steps.check-vale.outputs.issues_found == 'true' }}
         run: |
