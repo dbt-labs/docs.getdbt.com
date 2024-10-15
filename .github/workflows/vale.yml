@@ -60,9 +60,13 @@ jobs:
 
       - name: Run Vale on changed lines and capture output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        id: vale-lint
-        run: |
-          /home/runner/vale --output=vale-output.json website/docs/docs/introduction.md || true
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-check
+          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          separator: ' '
+          version: '2.27.0'
 
       - name: Check Vale output for warnings/issues
         id: check-vale-output
