@@ -58,8 +58,22 @@ jobs:
             fi
           done
 
-      - name: Run Vale
-        id: run-vale
+      - name: Check for Vale issues
+        id: check-vale
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        shell: bash
+        run: |
+          set +e
+          vale --exit-level=warning ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          exit_code=$?
+          echo "Exit code: $exit_code"
+          if [ $exit_code -ne 0 ]; then
+            echo "issues_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "issues_found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Vale (annotations)
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
         with:
@@ -68,15 +82,14 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: true  # Make the step fail on linting errors
-          level: warning
-        continue-on-error: true  # Continue the workflow even if this step fails
+          fail_on_error: false  # Do not fail the step
+          level: warning        # Include warnings in annotations
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
 
       - name: Post summary comment
-        if: steps.run-vale.outcome == 'failure'  # Run only if the "Run Vale" step failed
+        if: ${{ steps.check-vale.outputs.issues_found == 'true' }}
         run: |
           COMMENT="❗️Oh no, Vale linting found some issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n\n'
