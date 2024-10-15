@@ -13,6 +13,8 @@ Flying home into Detroit this past week working on this blog post on a plane and
 
 Think of the manufacturing materials needed as our data and the building of the bridge as the building of our ML models. There are thousands of engineers and construction workers taking materials from all over the world, pulling only the specific pieces needed for each part of the project. However, to make this project truly work at this scale, we need the warehousing and logistics to ensure that each load of concrete rebar and steel meets the standards for quality and safety needed and is available to the right people at the right time &mdash; as even a single fault can have catastrophic consequences or cause serious delays in project success. This warehouse and the associated logistics play the role of the feature store, ensuring that data is delivered consistently where and when it is needed to train and run ML models.
 
+<!-- truncate -->
+
 ## What is a feature? 
 
 A feature is a transformed or enriched data that serves as an input into a machine learning model to make predictions.  In machine learning, a data scientist derives features from various data sources to build a model that makes predictions based on historical data. To capture the value from this model, the enterprise must operationalize the data pipeline, ensuring that the features being used in production at inference time match those being used in training and development.
