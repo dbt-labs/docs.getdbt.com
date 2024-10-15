@@ -70,11 +70,10 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Check Vale issues and set output
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+      - name: Check if Vale found any issues
+        id: check-vale-issues
         run: |
-          vale_output=$(cat /home/runner/vale_output.txt)
-          if grep -q "WARNING" <<< "$vale_output"; then
+          if [[ "$(gh run view --json conclusion --jq '.conclusion')" != "success" ]]; then
             echo "Issues found."
             echo "vale_issues=true" >> $GITHUB_ENV
           else
