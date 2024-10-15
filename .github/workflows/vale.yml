@@ -58,7 +58,7 @@ jobs:
             fi
           done
 
-      - name: Run Vale with reviewdog
+      - name: Run Vale with reviewdog and capture output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
@@ -70,32 +70,15 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Check if Vale output file exists
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        run: |
-          if [ -f "/home/runner/work/_actions/errata-ai/vale-action/reviewdog/lib/rdjsonl.tmpl" ]; then
-            echo "Vale output file exists."
-            cat /home/runner/work/_actions/errata-ai/vale-action/reviewdog/lib/rdjsonl.tmpl
-          else
-            echo "Vale output file not found."
-            exit 1
-          fi
-
-      - name: Check Vale JSON output for issues
+      - name: Check for Vale issues based on stderr output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: check-vale-issues
         run: |
-          if [ -f "/home/runner/work/_actions/errata-ai/vale-action/reviewdog/lib/rdjsonl.tmpl" ]; then
-            vale_output=$(jq '.[] | select(.severity=="WARNING" or .severity=="ERROR")' /home/runner/work/_actions/errata-ai/vale-action/reviewdog/lib/rdjsonl.tmpl)
-            if [[ -n "$vale_output" ]]; then
-              echo "Vale found issues."
-              echo "vale_issues=true" >> $GITHUB_ENV
-            else
-              echo "No Vale issues found."
-              echo "vale_issues=false" >> $GITHUB_ENV
-            fi
+          if grep -q "WARNING" <(echo "${{ steps.vale-lint.outcome }}"); then
+            echo "Vale found issues."
+            echo "vale_issues=true" >> $GITHUB_ENV
           else
-            echo "Vale output file not found, skipping JSON check."
+            echo "No Vale issues found."
             echo "vale_issues=false" >> $GITHUB_ENV
           fi
 
