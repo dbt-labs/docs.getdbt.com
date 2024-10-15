@@ -73,7 +73,7 @@ jobs:
         continue-on-error: true  # Ensure workflow continues even if Vale finds issues
 
       - name: Post summary comment if Vale finds issues
-        if: steps.vale-lint.conclusion == 'neutral'  # Check if Vale found any linting issues
+        if: steps.vale-lint.outcome == 'neutral'  # Check if Vale found any linting issues
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
