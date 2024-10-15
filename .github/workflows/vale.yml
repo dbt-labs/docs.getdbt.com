@@ -63,7 +63,8 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_level: warning  # Fail on warnings or higher levels
+          fail_on_error: true
+          level: warning
 
       # Check the exit code of Reviewdog
       - name: Set issues_found
