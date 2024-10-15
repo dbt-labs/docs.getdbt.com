@@ -18,11 +18,6 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: List repository contents
-        run: |
-          pwd
-          ls -R
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -64,24 +59,21 @@ jobs:
         id: run-vale
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check
+          reporter: github-pr-check
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
 
-      - name: Check for Vale issues
+      - name: Check if issues were found
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
-          echo "::set-output name=issues_found::$(gh api -X GET \
-            repos/${{ github.repository }}/check-runs \
-            --paginate -F status=completed -F conclusion=neutral,failure,timed_out \
-            | jq '.check_runs | length > 0')"
+          echo "::set-output name=issues_found::$(grep -c '::error' $GITHUB_WORKSPACE/../_temp/_github_workflow/*/annotations.json || true)"
         id: vale-issues
 
       - name: Post summary comment
-        if: ${{ steps.vale-issues.outputs.issues_found == 'true' }}
+        if: ${{ steps.vale-issues.outputs.issues_found != '0' }}
         run: |
-          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
+          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
           COMMENT+=$'\n\n'
           COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
