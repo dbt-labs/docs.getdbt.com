@@ -45,16 +45,15 @@ jobs:
           echo "Changed files:"
           echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
 
-      - name: Run Vale with reviewdog
+      - name: Run Vale with reviewdog and show detailed annotations
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check
-          level: warning  # Only flag warnings
-          filter_mode: added  # Run on changed lines only
+          reporter: github-pr-check  # Use GitHub PR check reporter for detailed annotations
+          level: warning  # Flag warnings as issues
+          filter_mode: added  # Only analyze changed lines
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-        continue-on-error: true  # Allow this step to fail without failing the entire workflow
