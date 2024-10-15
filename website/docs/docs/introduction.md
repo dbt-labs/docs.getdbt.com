@@ -13,7 +13,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 Read more about why we want to enable analysts to work more like software engineers in [The dbt Viewpoint](/community/resources/viewpoint). Learn how other data practitioners around the world are using dbt by [joining the dbt Community](https://www.getdbt.com/community/join-the-community).
 
-##  Dbt Products
+##  dbt products
 
 This is a test.
 
