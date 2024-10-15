@@ -58,41 +58,31 @@ jobs:
             fi
           done
 
-      - name: Check for Vale issues
-        id: check-vale
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        shell: bash
-        run: |
-          set +e
-          vale --exit-level=warning ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
-          exit_code=$?
-          echo "Exit code: $exit_code"
-          if [ $exit_code -ne 0 ]; then
-            echo "issues_found=true" >> $GITHUB_OUTPUT
-          else
-            echo "issues_found=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Run Vale (annotations)
+      - name: Run vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
+        id: run-vale
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-check
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: true  # Do not fail the step
-          level: warning        # Include warnings in annotations
-        continue-on-error: true
 
-      - name: Install GitHub CLI
-        run: sudo apt-get install -y gh
+      - name: Check for Vale issues
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          echo "::set-output name=issues_found::$(gh api -X GET \
+            repos/${{ github.repository }}/check-runs \
+            --paginate -F status=completed -F conclusion=neutral,failure,timed_out \
+            | jq '.check_runs | length > 0')"
+        id: vale-issues
 
       - name: Post summary comment
-        if: ${{ steps.check-vale.outputs.issues_found == 'true' }}
+        if: ${{ steps.vale-issues.outputs.issues_found == 'true' }}
         run: |
-          COMMENT="❗️Oh no, Vale linting found some issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
+          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
+          COMMENT+=$'\n'
           COMMENT+=$'\n\n'
           COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
           gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
