@@ -64,14 +64,21 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Check if issues were found
+      # Check if Reviewdog has returned any issues
+      - name: Check if Vale found issues
+        id: check-vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
-          echo "::set-output name=issues_found::$(grep -c '::error' $GITHUB_WORKSPACE/../_temp/_github_workflow/*/annotations.json || true)"
-        id: vale-issues
+          if grep -q '"conclusion":"neutral"' $GITHUB_WORKSPACE/../_temp/_github_workflow/*/annotations.json; then
+            echo "Vale found issues."
+            echo "issues_found=true" >> $GITHUB_ENV
+          else
+            echo "No Vale issues found."
+            echo "issues_found=false" >> $GITHUB_ENV
+          fi
 
       - name: Post summary comment
-        if: ${{ steps.vale-issues.outputs.issues_found != '0' }}
+        if: env.issues_found == 'true'
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
