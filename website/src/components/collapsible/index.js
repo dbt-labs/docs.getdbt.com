@@ -10,13 +10,16 @@ function Collapsible({children, header, description, expand}) {
   return (
     <>
         <h2 onClick={toggleExpanded}>
+          <React.Fragment>
+            <span style={{ color: expanded ? 'orange' : 'orange' }} aria-hidden="true">
+              { expanded ?  ' ^ '  : ' > ' }
+            </span>
             {header}
-            { expanded ?  ' -'  : ' +' }
+          </React.Fragment>
         </h2>
-        { expanded ? children : <span>{ description ? description : "Click to expand" }</span> }
+        { expanded ? children : <span>{ description ? description : "Click above for details" }</span> }
     </>
   );
 }
 
 export default Collapsible;
-
