@@ -72,15 +72,14 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content:
-        "Register now for Coalesce 2024 ✨ The Analytics Engineering Conference!",
-      backgroundColor: "#7444FD",
+      content: "Join our biweekly demos and see dbt Cloud in action!",
+      backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://coalesce.getdbt.com/register/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2025_coalesce-2024_aw&utm_content=coalesce____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=i[…]ly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "meagan-palmer",
