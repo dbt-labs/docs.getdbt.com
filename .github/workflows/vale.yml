@@ -76,7 +76,7 @@ jobs:
         if: always()  # Always evaluate the step
         run: |
           CHECK_RUN_URL="${{ steps.vale-lint.outputs.check_run_url }}"
-          if [[ "$CHECK_RUN_URL" == *"neutral"* ]]; then
+          if [[ "$CHECK_RUN_URL" == *"warning"* ]]; then
             COMMENT="❗️Oh no, some Vale linting issues were found! Please check the **Files changed** tab for detailed results and make the necessary updates."
             COMMENT+=$'\n'
             COMMENT+=$'\n\n'
