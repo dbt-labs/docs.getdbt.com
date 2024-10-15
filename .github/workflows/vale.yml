@@ -71,7 +71,7 @@ jobs:
       - name: Check Vale output for warnings/issues
         id: check-vale-output
         run: |
-          if grep -q '"severity": "WARNING"' vale-output.json; then
+          if grep -i 'warning' vale-output.json; then
             echo "Vale found warnings or issues."
             echo "has_warnings=true" >> $GITHUB_ENV
           else
