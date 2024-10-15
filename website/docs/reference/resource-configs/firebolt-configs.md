@@ -38,8 +38,8 @@ models:
     +table_type: fact
     +primary_index: [ <column-name>, ... ]
     +indexes:
-      - type: aggregating
-        key_column: [ <column-name>, ... ]
+      - index_type: aggregating
+        key_columns: [ <column-name>, ... ]
         aggregation: [ <agg-sql>, ... ]
       ...
 ```
@@ -58,8 +58,8 @@ models:
       table_type: fact
       primary_index: [ <column-name>, ... ]
       indexes:
-        - type: aggregating
-          key_column: [ <column-name>, ... ]
+        - index_type: aggregating
+          key_columns: [ <column-name>, ... ]
           aggregation: [ <agg-sql>, ... ]
         ...
 ```
@@ -77,9 +77,9 @@ models:
     primary_index = [ "<column-name>", ... ],
     indexes = [
       {
-        type = "aggregating"
-        key_column = [ "<column-name>", ... ],
-        aggregation = [ "<agg-sql>", ... ],
+        "index_type": "aggregating"
+        "key_columns": [ "<column-name>", ... ],
+        "aggregation": [ "<agg-sql>", ... ],
       },
       ...
     ]
@@ -99,8 +99,8 @@ models:
 | `table_type`      | Whether the materialized table will be a [fact or dimension](https://docs.firebolt.io/godocs/Overview/working-with-tables/working-with-tables.html#fact-and-dimension-tables) table. |
 | `primary_index`   | Sets the primary index for the fact table using the inputted list of column names from the model. Required for fact tables. |
 | `indexes`         | A list of aggregating indexes to create on the fact table. |
-| `type`            | Specifies that the index is an [aggregating index](https://docs.firebolt.io/godocs/Guides/working-with-indexes/using-aggregating-indexes.html). Should be set to `aggregating`. |
-| `key_column`      | Sets the grouping of the aggregating index using the inputted list of column names from the model. |
+| `index_type`            | Specifies that the index is an [aggregating index](https://docs.firebolt.io/godocs/Guides/working-with-indexes/using-aggregating-indexes.html). Should be set to `aggregating`. |
+| `key_columns`      | Sets the grouping of the aggregating index using the inputted list of column names from the model. |
 | `aggregation`     | Sets the aggregations on the aggregating index using the inputted list of SQL agg expressions. |
 
 
@@ -113,9 +113,9 @@ models:
     primary_index = "id",
     indexes = [
       {
-        type: "aggregating",
-        key_column: "order_id",
-        aggregation: ["COUNT(DISTINCT status)", "AVG(customer_id)"]
+        "index_type": "aggregating",
+        "key_columns": "order_id",
+        "aggregation": ["COUNT(DISTINCT status)", "AVG(customer_id)"]
       }
     ]
 ) }}

@@ -109,6 +109,8 @@ snapshots:
 
 </File>
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
@@ -125,13 +127,14 @@ select ...
 ```
 
 </File>
+</VersionBlock>
 
-<File name='snapshots/properties.yml'>
+<File name='snapshots/snapshot.yml'>
 
 ```yml
 snapshots:
   - name: [<snapshot_name>]
-    config:
+    [config](/reference/resource-properties/config):
       [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
 ```

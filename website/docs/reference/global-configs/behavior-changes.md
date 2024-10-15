@@ -67,11 +67,28 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | require_explicit_package_overrides_for_builtin_materializations | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
 | require_resource_names_without_spaces                           | 2024.05          | TBD*                | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03          | TBD*                | 1.8.0           | 1.9.0             |
-| [Redshift] [restrict_direct_pg_catalog_access](#redshift-restrict_direct_pg_catalog_access)    | 2024.09          | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
+| [Redshift] [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag)    | 2024.09          | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
+| skip_nodes_if_on_run_start_fails                                | 2024.10          | TBD*                | 1.9.0           | TBD*              |
+| state_modified_compare_more_unrendered_values                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
+
+### Failures in on-run-start hooks
+
+The flag is `False` by default.
+
+Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
+
+### Source definitions for state:modified
+
+The flag is `False` by default.
+
+Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
+
+Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+
 
 ###  Package override for built-in materialization 
 
@@ -128,4 +145,3 @@ on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
 </File>
-

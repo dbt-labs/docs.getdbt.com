@@ -1,0 +1,10 @@
+content_dir: /docs
+authorized_users:
+  - mirnawong1
+  - matthewshaver
+  - nghi-ly
+  - runleonarun
+  - nataliefiann
+
+vale:
+  enabled: true
