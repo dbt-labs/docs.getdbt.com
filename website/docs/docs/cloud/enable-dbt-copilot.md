@@ -46,6 +46,6 @@ A dbt Cloud admin can provide their API key by following these steps:
 
 2. Find the **Settings** section and click on **Integrations**.
 
-3. Scroll to **AI**.  Select the toggle for **OpenAI**
+3. Scroll to **AI** and select the toggle for **OpenAI**
 
 4. Enter your API key and click **Save**.
