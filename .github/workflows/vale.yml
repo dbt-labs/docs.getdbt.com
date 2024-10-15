@@ -69,7 +69,11 @@ jobs:
           separator: ' '
           version: '2.27.0'
           fail_on_error: true  # Make the step fail on linting errors
+          level: warning
         continue-on-error: true  # Continue the workflow even if this step fails
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
 
       - name: Post summary comment
         if: steps.run-vale.outcome == 'failure'  # Run only if the "Run Vale" step failed
