@@ -42,10 +42,10 @@ Note that Azure OpenAI is not currently supported, but will be in the future.
 
 A dbt Cloud admin can provide their API key by following these steps:
 
-1. Navigate to **Account settings** in the navigation menu.
+1. Navigate to **Account settings** in the side menu.
 
-2. Under **Settings**, click on **Integrations**.
+2. Find the **Settings** section and click on **Integrations**.
 
 3. Scroll to **AI**.  Select the toggle for **OpenAI**
 
-4. Enter your API key and save.
+4. Enter your API key and click **Save**.
