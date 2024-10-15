@@ -70,20 +70,20 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Check for Vale issues
+      - name: Check Vale issues and set output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        id: check-vale-issues
         run: |
-          if grep -q "WARNING" <<< "${{ steps.vale-lint.outputs.github_check }}"; then
+          vale_output=$(cat /home/runner/vale_output.txt)
+          if grep -q "WARNING" <<< "$vale_output"; then
             echo "Issues found."
-            echo "::set-output name=vale_issues::true"
+            echo "vale_issues=true" >> $GITHUB_ENV
           else
             echo "No issues found."
-            echo "::set-output name=vale_issues::false"
+            echo "vale_issues=false" >> $GITHUB_ENV
           fi
 
       - name: Post summary comment if issues found
-        if: ${{ steps.check-vale-issues.outputs.vale_issues == 'true' }}
+        if: ${{ env.vale_issues == 'true' }}
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
@@ -92,3 +92,4 @@ jobs:
           gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          vale_issues: ${{ env.vale_issues }}
