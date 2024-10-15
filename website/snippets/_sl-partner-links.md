@@ -54,9 +54,9 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Lightdash"
     body="Check out how to connect, query, and consume reliable dbt metrics in real time "
-    link="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    link="https://docs.lightdash.com/references/dbt-semantic-layer"
     icon="lightdash"/>
-    <a href="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    <a href="https://docs.lightdash.com/references/dbt-semantic-layer"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
