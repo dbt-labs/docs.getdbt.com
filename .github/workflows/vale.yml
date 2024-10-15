@@ -74,7 +74,7 @@ jobs:
         id: check_vale_issues
         run: |
           # Check if any warnings are present in the output
-          if grep -q '"Severity":"warning"' vale_output.json; then
+          if grep -qi '"severity": *"warning"' vale_output.json; then
             echo "issues_found=true" >> $GITHUB_OUTPUT
           else
             echo "issues_found=false" >> $GITHUB_OUTPUT
