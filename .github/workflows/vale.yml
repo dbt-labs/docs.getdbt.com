@@ -58,34 +58,34 @@ jobs:
             fi
           done
 
-      - name: Run Vale with reviewdog
+      - name: Run Vale with reviewdog and capture output
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         id: vale-lint
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-check
+          level: warning
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
 
-      - name: Check Vale issues and set output
+      - name: Check for Vale issues
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        id: check-vale-issues
         run: |
-          # Checking if reviewdog reported any issues
-          vale_issues=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[].body' | grep 'reviewdog')
-          if [[ -n "$vale_issues" ]]; then
-            echo "Vale issues found!"
+          if grep -q "WARNING" <<< "${{ steps.vale-lint.outputs.github_check }}"; then
+            echo "Issues found."
             echo "::set-output name=vale_issues::true"
           else
-            echo "No Vale issues found."
+            echo "No issues found."
             echo "::set-output name=vale_issues::false"
           fi
 
       - name: Post summary comment if issues found
-        if: ${{ steps.vale-lint.outputs.vale_issues == 'true' }}
+        if: ${{ steps.check-vale-issues.outputs.vale_issues == 'true' }}
         run: |
-          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files changed** tab for detailed results and make the necessary updates."
+          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
           COMMENT+=$'\n'
           COMMENT+=$'\n\n'
           COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
