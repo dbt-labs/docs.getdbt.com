@@ -434,7 +434,7 @@ The `incremental_strategy` config can be set to one of two values:
 ### Performance and cost
 
 The operations performed by dbt while building a BigQuery incremental model can
-be made cheaper and faster by using [clustering keys](#clustering-keys) in your
+be made cheaper and faster by using a [clustering clause](#clustering-clause) in your
 model configuration. See [this guide](https://discourse.getdbt.com/t/benchmarking-incremental-strategies-on-bigquery/981) for more information on performance tuning for BigQuery incremental models.
 
 **Note:** These performance and cost benefits are applicable to incremental models
