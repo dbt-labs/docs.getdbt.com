@@ -1,0 +1,21 @@
+extends: substitution
+message: "Avoid latin abbreviations: '%s'. Consider using '%s' instead."
+level: warning
+ignorecase: false
+
+swap:
+  - e.g.: for example
+  - eg: for example
+  - e.g: for example
+  - i.e.: for example
+  - i.e.: that is
+  - etc.: and so on
+  - N.B.: Note
+
+action:
+  name: replace
+  params:
+    - for example
+    - that is
+    - and so on
+    - Note
