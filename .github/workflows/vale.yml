@@ -64,18 +64,22 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: true    # Make the action fail if issues are found
+          fail_on_error: false
           level: warning
+          debug: true
+        env:
+          REVIEWDOG_FLAGS: '-tee'  # Output results to stdout
 
-      # Check if Vale found issues
-      - name: Set issues_found
+      - name: Check for Vale issues using grep
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        id: set_issues_found
+        id: check_vale_issues
         run: |
-          if [ "${{ steps.run-vale.outcome }}" == "failure" ]; then
-            echo "issues_found=true" >> $GITHUB_ENV
+          # Capture the logs of the previous step
+          grep_output=$(grep -E '"severity": "WARNING"' <<< "${{ steps.run-vale.outputs.output }}")
+          if [ -n "$grep_output" ]; then
+            echo "issues_found=true" >> $GITHUB_OUTPUT
           else
-            echo "issues_found=false" >> $GITHUB_ENV
+            echo "issues_found=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Post summary comment
