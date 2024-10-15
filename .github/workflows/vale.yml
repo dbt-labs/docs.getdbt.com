@@ -82,8 +82,9 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
-          fail_on_error: false  # Do not fail the step
+          fail_on_error: true  # Do not fail the step
           level: warning        # Include warnings in annotations
+        continue-on-error: true
 
       - name: Install GitHub CLI
         run: sudo apt-get install -y gh
