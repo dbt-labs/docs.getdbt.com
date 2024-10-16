@@ -12,6 +12,8 @@ The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs
 
 Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672)
 
+Refer to [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for a list of supported adapters. 
+
 :::
 
 ## What is "microbatch" in dbt?
