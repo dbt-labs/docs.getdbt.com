@@ -59,7 +59,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 :::
 
-1. Use your preferred SQL IDE editor to create database `jaffle_shop`:
+1. Use your preferred SQL IDE editor to create the database, `jaffle_shop`:
 
    ```sql
    CREATE DATABASE jaffle_shop AS PERM = 1e9;
