@@ -21,7 +21,7 @@ This will allow you to read and write from multiple BigQuery projects. Same for 
 
 ### Partition clause
 
-BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
+BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#use_a_constant_filter_expression) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
 
 The `partition_by` config can be supplied as a dictionary with the following format:
 
@@ -265,7 +265,7 @@ If your model has `partition_by` configured, you may optionally specify two addi
 
 </File>
 
-### Clustering Clause
+### Clustering clause
 
 BigQuery tables can be [clustered](https://cloud.google.com/bigquery/docs/clustered-tables) to colocate related data.
 
@@ -286,7 +286,7 @@ select * from ...
 
 </File>
 
-Clustering on a multiple columns:
+Clustering on multiple columns:
 
 <File name='bigquery_table.sql'>
 
@@ -303,11 +303,11 @@ select * from ...
 
 </File>
 
-## Managing KMS Encryption
+## Managing KMS encryption
 
 [Customer managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption) can be configured for BigQuery tables using the `kms_key_name` model configuration.
 
-### Using KMS Encryption
+### Using KMS encryption
 
 To specify the KMS key name for a model (or a group of models), use the `kms_key_name` model configuration. The following example sets the `kms_key_name` for all of the models in the `encrypted/` directory of your dbt project.
 
@@ -328,7 +328,7 @@ models:
 
 </File>
 
-## Labels and Tags
+## Labels and tags
 
 ### Specifying labels
 
@@ -372,8 +372,6 @@ models:
 ```
 
 </File>
-
-
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
 
@@ -434,7 +432,7 @@ The `incremental_strategy` config can be set to one of two values:
 ### Performance and cost
 
 The operations performed by dbt while building a BigQuery incremental model can
-be made cheaper and faster by using [clustering keys](#clustering-keys) in your
+be made cheaper and faster by using a [clustering clause](#clustering-clause) in your
 model configuration. See [this guide](https://discourse.getdbt.com/t/benchmarking-incremental-strategies-on-bigquery/981) for more information on performance tuning for BigQuery incremental models.
 
 **Note:** These performance and cost benefits are applicable to incremental models
@@ -673,7 +671,7 @@ select ...
 
 </File>
 
-## Authorized Views
+## Authorized views
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets

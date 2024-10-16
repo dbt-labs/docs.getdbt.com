@@ -43,15 +43,9 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Python SDK (Preview)"
+    title="Python SDK"
     body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
     link="/docs/dbt-cloud-apis/sl-python"
-    icon="dbt-bit"/>
-
-<Card
-    title="Semantic manifest"
-    body="Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
-    link="/docs/dbt-cloud-apis/sl-manifest"
     icon="dbt-bit"/>
 
 </div>
