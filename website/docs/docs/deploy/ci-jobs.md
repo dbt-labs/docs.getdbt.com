@@ -14,7 +14,7 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 - You have a dbt Cloud account. 
 - CI features:
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-   - The [SQL linting](/docs/deploy/continuous-integration#sql-linting) feature is currently available in beta to a limited group of users and is gradually being rolled out. If you're in the beta, the **Linting** option is available for use. 
+   - The [SQL linting](/docs/deploy/continuous-integration#sql-linting) feature is currently available in [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) to a limited group of users and is gradually being rolled out. If you're in the beta, the **Linting** option is available for use. 
 - [Advanced CI](/docs/deploy/advanced-ci) features:
    - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feauture for you. After enablement, the **Run compare changes** option becomes available in the CI job settings.
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
