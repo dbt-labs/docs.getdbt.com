@@ -107,6 +107,6 @@ You can read more about each of these behavior changes in the following links:
 We also made some quality-of-life improvements in Core 1.9, enabling you to:
 
 - Maintain data quality now that dbt returns an an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
-- Document [singular data tests](/docs/build/data-tests#document-singular-tests).
+- Document [singular data tests](/docs/build/data-tests#singular-data-tests).
 - Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
 - Use `dbt test` with the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
