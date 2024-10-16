@@ -19,7 +19,7 @@ Find the **Settings** section and click on **Integrations**.
 
 Scroll to AI and select the toggle for OpenAI
 
-Enter your API key and click Save.
+Enter your API key and click `Save`
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
