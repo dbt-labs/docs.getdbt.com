@@ -71,8 +71,6 @@ group by 1
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
-### test
-
 </File>
 
 <Tabs
@@ -138,6 +136,8 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
+
+### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
