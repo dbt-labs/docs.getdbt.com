@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/src/pages/styles.js",
+      "source": "/styles",
       "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
       "permanent": true
     },
