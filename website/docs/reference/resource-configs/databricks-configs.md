@@ -62,6 +62,13 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+### Python Model Config
+
+ 
+</VersionBlock>
+
 ## Incremental models
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of four values:
@@ -553,7 +560,12 @@ Databricks adapter ... using compute resource <name of compute>.
 
 Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
+<VersionBlock lastVersion="1.8">
 The python code needs to run on an all purpose cluster, while the SQL code can run on an all purpose cluster or a SQL Warehouse.
+</VersionBlock>
+<VersionBlock firstVersion="1.9">
+The python code needs to run on an all purpose cluster (or serverless cluster, see [Python Model Config](#python-model-config)), while the SQL code can run on an all purpose cluster or a SQL Warehouse.
+</VersionBlock>
 When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
 If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model. Please note that declaring a separate SQL compute and a python compute for your python dbt models is optional. If you wish to do this:
 
