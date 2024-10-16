@@ -388,6 +388,26 @@ my-profile:
       execution_project: buck-stops-here-456
 ```
 
+### Quota project
+
+By default, dbt will use the `quota_project_id` set within the credentials of the account you are using to authenticate to BigQuery.
+
+Optionally, you may specify `quota_project` to bill for query execution instead of the default quota project specified for the account from the environment.
+
+This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project in which they are defined. Without overriding the quota project, it will fail to connect.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      quota_project: my-bg-quota-project
+```
+
 ### Running Python models on Dataproc
 
 To run dbt Python models on GCP, dbt uses companion services, Dataproc and Cloud Storage, that offer tight integrations with BigQuery. You may use an existing Dataproc cluster and Cloud Storage bucket, or create new ones:
