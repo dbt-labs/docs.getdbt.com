@@ -33,6 +33,8 @@ Create configuration YAML files in your project for dbt to send notifications ab
 
 ## Configure groups
 
+Add your group configuration in either the `dbt_project.yml` or `groups.yml` file. For example: 
+
 ```yml
 version: 2
 
@@ -55,6 +57,8 @@ groups:
 
 ## Set up models
 
+Set up your model configuration in either the `dbt_project.yml` or `groups.yml` file. For example: 
+
 ```yml
 version: 2
 
@@ -62,12 +66,12 @@ models:
   - name: sales
     description: "Sales data model"
     config:
-	    group: finance
+      group: finance
 
   - name: campaigns
     description: "Campaigns data model"
     config:
-	    group: marketing
+      group: marketing
 
 ```
 
