@@ -102,7 +102,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
     NO PRIMARY INDEX;
     ```
 
-## Connect dbt cloud to Teradata
+## Connect dbt Cloud to Teradata
 
 1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **New Project**. 
 2. Enter a project name and click **Continue**.
