@@ -51,11 +51,13 @@ Here's an example of the available behavior change flags with their default valu
 <File name='dbt_project.yml'>
 
 ```yml
+
 flags:
   require_explicit_package_overrides_for_builtin_materializations: False
   require_model_names_without_spaces: False
   source_freshness_run_project_hooks: False
   restrict_direct_pg_catalog_access: False
+
 ```
 
 </File>
