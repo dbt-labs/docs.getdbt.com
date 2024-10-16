@@ -13,7 +13,7 @@ Click Save to update the title and description of this page.
 
 Navigate to **Account Settings** to change the title and description of this page.
 
-Navigate to Account settings in the side menu.
+## Navigate to Account settings in the side menu.
 
 Find the **Settings** section and click on **Integrations**.
 
