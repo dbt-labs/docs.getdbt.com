@@ -9,9 +9,17 @@ pagination_prev: null
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
 
-Click Save to update the title and description of this page..
+Click Save to update the title and description of this page.
 
 Navigate to **Account Settings** to change the title and description of this page.
+
+Navigate to Account settings in the side menu.
+
+Find the **Settings** section and click on **Integrations**.
+
+Scroll to AI and select the toggle for OpenAI
+
+Enter your API key and click Save.
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
