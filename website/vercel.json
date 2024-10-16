@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/styles",
+      "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-cloud-apis/sl-manifest",
       "destination": "/reference/artifacts/sl-manifest",
       "permanent": true
