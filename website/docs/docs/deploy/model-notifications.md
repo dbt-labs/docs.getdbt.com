@@ -1,6 +1,6 @@
 ---
 title: "Model notifications"
-description: "While a job is running, receive email notifications in real time about any issues with your models. "
+description: "While a job is running, receive email notifications in real time about any issues with your models and tests. "
 ---
 
 # Model notifications <Lifecycle status="beta" />
@@ -18,7 +18,7 @@ This feature is currently available in [beta](/docs/dbt-versions/product-lifecyc
 
 :::
 
-To be timely and keep the number of notifications to a reasonable amount when multiple models fail, dbt observes the following guidelines when notifying the owners:  
+To be timely and keep the number of notifications to a reasonable amount when multiple models or tests trigger them, dbt observes the following guidelines when notifying the owners:  
 
 - Send a notification to each unique owner/email during a job run about any models (with status of failure/success) or tests (with status of warning/failure/success). Each owner receives only one notification, the initial one.
 - Don't send any notifications about subsequent models or tests while a dbt job is still running.
@@ -40,7 +40,7 @@ groups:
   - name: finance
     description: "Models related to the finance department"
     owner:
-	    # 'name' or 'email' is required
+      # 'name' or 'email' is required
       name: "Finance Team"
       email: finance@dbtlabs.com
       slack: finance-data
@@ -73,9 +73,8 @@ models:
 
 ## Enable access to model notifications 
 
-As a dbt Cloud administrator, perform these steps to enable the model-level notifications feature for account members:  
+Provide dbt Cloud account members the ability to configure and receive alerts about issues with models or tests that are encountered during job runs.  
 
-1. Navigate to **Notification settings** from your profile name in the sidebar (lower left-hand side). 
-1. From **Email notications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and Fails). 
+To use model-level notifications, your dbt Cloud account must have access to the feature. Ask your dbt Cloud administrator to enable the setting **Enable group/owner notifications on models** under the **Model notifications** section, which is available from the notification settings (under the account's profile name in the sidebar on the lower left-hand side). Then, specify which statuses to receive notifications about (Success, Warning, and Fails).
 
   <Lightbox src="/img/docs/dbt-cloud/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
