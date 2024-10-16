@@ -60,7 +60,7 @@ flags:
 
 </File>
 
-When we use dbt Cloud in the following table, we're referring to accounts that have gone "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)."
+When we use dbt Cloud in the following table, we're referring to accounts that have gone "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)." You can use this table to understand which dbt version introduced or matured a behavior change in dbt Core or dbt Cloud. Note that dbt versions use different numbering conventions in each product because their contents may differ.
 
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
