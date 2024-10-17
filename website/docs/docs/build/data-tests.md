@@ -271,7 +271,7 @@ where {{ column_name }} is null
 
 ## Document data test descriptions
 
-The details of data tests are available to view in dbt Explorer (Cloud) or by executing `dbt docs generate` and `dbt docs view` (Core). In addition to general details such as date, time run, and last run status, you can add a custom description using the `description` configuration in project .yml files. The description field can contain plain text or macro configurations and can be added to the `/test` directory in a .yml file (for example, `schema.yml`). Additionally, if you add the `description` config to the test in a model's .yml file, it will be documented as well. 
+The details of data tests are available to view in dbt Explorer (Cloud) or by executing `dbt docs generate` and `dbt docs view` (Core). In addition to general details such as date, time run, and last run status, you can add a custom description using the `description` configuration in project .yml files. The description field can contain plain text or macro configurations and can be added to the `/test` directory in a .yml file (for example, `schema.yml`). Additionally, it will be documented if you add the `description` config to the test in a model's .yml file.
 
 </VersionBlock>
 
