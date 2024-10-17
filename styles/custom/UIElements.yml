@@ -15,5 +15,6 @@ tokens:
   - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
 
 scope: 
-  - summary
-  
+  - raw
+  - text
+  - sentence
