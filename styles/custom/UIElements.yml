@@ -13,5 +13,4 @@ tokens:
   - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
   - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
   - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
-  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
-  - '(?<!\*\*)\bNotification settings\b(?!\*\*)'  
+  - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
