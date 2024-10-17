@@ -2,15 +2,12 @@ extends: existence
 message: "UI elements like '%s' should be bold."
 level: warning
 tokens:
-  # Match UI elements that are not bolded (i.e., not within **)
-  - '(?<!\*\*)\bSave\b(?!\*\*)'
-  - '(?<!\*\*)\bSave as\b(?!\*\*)'
-  - '(?<!\*\*)\bCancel\b(?!\*\*)'
-  - '(?<!\*\*)\bSubmit\b(?!\*\*)'
-  - '(?<!\*\*)\bEdit\b(?!\*\*)'
-  - '(?<!\*\*)\bAccount settings\b(?!\*\*)'
-  - '(?<!\*\*)\bProject details\b(?!\*\*)'
-  - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
-  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
-
-scope: text.paragraph
+  - '^(?!\s*#).*?(?<!\*\*)\bSave\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bSave as\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bCancel\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bSubmit\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bEdit\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bAccount settings\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bProject details\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bProfile settings\b(?!\*\*)'
+  - '^(?!\s*#).*?(?<!\*\*)\bPersonal profile\b(?!\*\*)'
