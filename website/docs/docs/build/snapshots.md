@@ -70,6 +70,7 @@ snapshots:
       [updated_at](/reference/resource-configs/updated_at): column_name
       [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes): true | false
       [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): dictionary
+      [dbt_valid_to_current](/reference/resource-configs/dbt_valid_to_current): string
 
 ```
 
@@ -88,6 +89,7 @@ The following table outlines the configurations available for snapshots:
 | [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source and set `dbt_valid_to` to current time if the record no longer exists | No | True |
 | [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names) | Customize the names of the snapshot meta fields | No | dictionary |
+| [dbt_valid_to_current](/reference/resource-configs/dbt_valid_to_current) | Set a custom future date for `dbt_valid_to` in new snapshot columns. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` in the snapshot table. | No | string |
 
 - In versions prior to v1.9, the `target_schema` (required) and `target_database` (optional) configurations defined a single schema or database to build a snapshot across users and environment. This created problems when testing or developing a snapshot, as there was no clear separation between development and production environments.  In v1.9, `target_schema` became optional, allowing snapshots to be environment-aware. By default, without `target_schema` or `target_database` defined, snapshots now use the `generate_schema_name` or `generate_database_name` macros to determine where to build. Developers can still set a custom location with [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database)  configs, consistent with other resource types.
 - A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).

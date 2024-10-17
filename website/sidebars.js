@@ -976,6 +976,7 @@ const sidebarSettings = {
             "reference/resource-configs/updated_at",
             "reference/resource-configs/invalidate_hard_deletes",
             "reference/resource-configs/snapshot_meta_column_names",
+            "reference/resource-configs/dbt_valid_to_current",
           ],
         },
         {
