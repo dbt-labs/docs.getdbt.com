@@ -15,4 +15,4 @@ tokens:
   - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
   - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
 
-scope: raw
+scope: raw & ~heading
