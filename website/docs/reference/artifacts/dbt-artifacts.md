@@ -22,7 +22,7 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ### When are artifacts produced? <Lifecycle status="team,enterprise"/>
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [semantic manifest](/docs/dbt-cloud-apis/sl-manifest): produced whenever your dbt project is parsed
+- [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`

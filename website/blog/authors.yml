@@ -1,7 +1,7 @@
 ---
 amy_chen:
   image_url: /img/blog/authors/achen.png
-  job_title: Product Ecosystem Manager
+  job_title: Product Manager
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/yuanamychen/
@@ -386,6 +386,14 @@ lucas_bergodias:
   job_title: Analytics Engineer
   name: Lucas Bergo Dias
   organization: Indicium Tech
+luis_leon:
+  image_url: /img/blog/authors/luis-leon.png
+  job_title: Partner Solutions Architect
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/luis-leon-03965463/
+  name: Luis Leon
+  organization: dbt Labs
 matt_winkler:
   description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
   image_url: /img/blog/authors/matt-winkler.jpeg
@@ -449,6 +457,14 @@ pedro_brito_de_sa:
       url: https://www.linkedin.com/in/pbritosa/
   name: Pedro Brito de Sa
   organization: Sage
+randy_pettus:
+  image_url: /img/blog/authors/randy-pettus.png
+  job_title: Senior Partner Sales Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/randypettus/
+  name: Randy Pettus
+  organization: Snowflake
 rastislav_zdechovan:
   image_url: /img/blog/authors/rastislav-zdechovan.png
   job_title: Analytics Engineer

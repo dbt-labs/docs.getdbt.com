@@ -5,12 +5,18 @@ sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
 ---
 
-# Advanced CI <Lifecycle status="preview" />
+# Advanced CI <Lifecycle status="enterprise"/>
 
-[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
 
-:::tip Preview feature
-The compare changes feature is currently available as a [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) in dbt Cloud. dbt Labs plans to provide additional Advanced CI features in the near future. More info coming soon.
+:::info How to enable this feature
+
+You can opt into Advanced CI in dbt Cloud. Please refer to [Account access to Advance CI features](/docs/cloud/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your dbt Cloud account.
+
+:::
+
+:::tip More features
+dbt Labs plans to provide additional Advanced CI features in the near future. More info coming soon.
 
 :::
 

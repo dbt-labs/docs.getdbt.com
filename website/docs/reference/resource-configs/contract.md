@@ -2,7 +2,7 @@
 resource_types: [models]
 description: "When the contract configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml, such as name and data_type, as well as any additional constraints supported by the data platform."
 datatype: "{<dictionary>}"
-default_value: {contract: false}
+default_value: {enforced: false}
 id: "contract"
 ---
 
