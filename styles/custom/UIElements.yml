@@ -16,5 +16,4 @@ tokens:
   - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
 
 scope: 
-  - raw 
-  - ~heading
+  - raw
