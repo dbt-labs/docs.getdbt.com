@@ -15,4 +15,9 @@ tokens:
   - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
   - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
 
-scope: raw & ~heading
+scope: 
+  - raw 
+  - ~heading.h1
+  - ~heading.h2
+  - ~heading.h3
+  - ~heading.h4
