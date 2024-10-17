@@ -1,4 +1,3 @@
-# styles/custom/BoldUIElements.yml
 extends: existence
 message: "UI elements like '%s' should be bold."
 level: warning
@@ -14,8 +13,4 @@ tokens:
   - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
   - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
 
-scope: 
-  - raw
-  - text
-  - sentence
-  - paragraph
+scope: text.paragraph
