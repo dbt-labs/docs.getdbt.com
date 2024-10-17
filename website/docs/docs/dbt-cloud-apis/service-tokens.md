@@ -36,36 +36,36 @@ You can assign service account tokens to any permission set available in dbt Clo
 
 ### Team plans using service account tokens
 
-The following permissions can be assigned to a service account token on a Team plan.
+The following permissions can be assigned to a service account token on a Team plan. See the [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) article for more information about what these roles are able to do. 
 
-- Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role." For more information, see the [Account permissions page](/docs/cloud/manage-access/enterprise-permissions).
-- Metadata Only &mdash; Metadata-only service tokens authorize requests to the Discovery API.
-- Semantic Layer Only &mdash; Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
-- Job Admin
+- Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
+- Job Admin 
 - Job Runner
-- Member &mdash; Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service Team plan permissions](/docs/cloud/manage-access/self-service-permissions)".
-- Read-only &mdash; Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports. This token can access and retrieve account-level information endpoints on the [Admin API](/docs/dbt-cloud-apis/admin-cloud-api) and authorize requests to the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
+- Metadata Only
+- Member
+- Read-only 
+- Semantic Layer Only 
 
 ### Enterprise plans using service account tokens
 
 The following permissions can be assigned to a service account token on an Enterprise plan. For more details about these permissions, see "[Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions)."
 
 - Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution. 
-- Security Admin
-- Billing Admin
-- Manage marketplace apps &mdash; Used only for service tokens assigned to marketplace apps (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
-- Metadata Only &mdash; Metadata-only service tokens authorize requests to the Discovery API.
-- Semantic Layer Only &mdash; Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
-- Job Admin
 - Account Viewer
-- Admin &mdash; Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects.
-- Git Admin
-- Database Admin
-- Team Admin
-- Job Viewer
-- Developer
+- Admin
 - Analyst
+- Billing Admin
+- Database Admin
+- Developer
+- Git Admin
+- Job Admin
+- Job Viewer
+- Manage marketplace apps
+- Metadata Only 
+- Semantic Layer Only 
+- Security Admin
 - Stakeholder
+- Team Admin
 
 
 ## Service token update
