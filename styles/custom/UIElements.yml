@@ -14,3 +14,5 @@ tokens:
   - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
   - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
   - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
+
+scope: raw
