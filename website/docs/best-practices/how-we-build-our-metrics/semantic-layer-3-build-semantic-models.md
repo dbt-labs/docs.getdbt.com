@@ -241,7 +241,9 @@ measures:
 
 ## Reviewing our work
 
-Our completed code will look like this, our first semantic model!
+Our completed code will look like this, our first semantic model! Here are two examples showing different organizational approaches:
+
+### Co-located approach
 
 <File name="models/marts/orders.yml" />
 
@@ -288,6 +290,66 @@ semantic_models:
         description: The total tax paid on each order.
         agg: sum
 ```
+
+### Parallel subfoldering approach
+
+<File name="models/semantic_models/sem_orders.yml" />
+
+```yml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: ordered_at
+    description: |
+      Order fact table. This table is at the order grain with one row per order.
+
+    model: ref('stg_orders')
+
+    entities:
+      - name: order_id
+        type: primary
+      - name: location
+        type: foreign
+        expr: location_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+
+    dimensions:
+      - name: ordered_at
+        expr: date_trunc('day', ordered_at)
+        # use date_trunc(ordered_at, DAY) if using BigQuery
+        type: time
+        type_params:
+          time_granularity: day
+      - name: is_large_order
+        type: categorical
+        expr: case when order_total > 50 then true else false end
+
+    measures:
+      - name: order_total
+        description: The total revenue for each order.
+        agg: sum
+      - name: order_count
+        description: The count of individual orders.
+        expr: 1
+        agg: sum
+      - name: tax_paid
+        description: The total tax paid on each order.
+        agg: sum
+```
+
+As you can see, the content of the semantic model is identical in both approaches. The key differences are:
+
+1. **File location**: 
+   - Co-located approach: `models/marts/orders.yml`
+   - Parallel subfoldering approach: `models/semantic_models/sem_orders.yml`
+
+2. **File naming**:
+   - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
+   - Parallel subfoldering approach: Prefixes the file with `sem_` (`sem_orders.yml`)
+
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel subfoldering approach can be clearer for large existing projects being migrated to use the Semantic Layer.
 
 ## Next steps
 
