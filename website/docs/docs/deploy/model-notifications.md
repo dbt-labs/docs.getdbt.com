@@ -57,7 +57,7 @@ groups:
 
 ## Set up models
 
-Set up your model configuration in either the `dbt_project.yml` or `groups.yml` file. For example: 
+Set up your model configuration in either the `dbt_project.yml` or `groups.yml` file; doing this automatically sets up notifications for tests, too. For example: 
 
 ```yml
 version: 2
