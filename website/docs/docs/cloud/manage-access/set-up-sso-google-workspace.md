@@ -117,7 +117,7 @@ If the verification information looks appropriate, then you have completed the c
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up
-[RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
+[RBAC groups](/docs/cloud/manage-access/about-user-access#role-based-access-control-) to complete your access control configuration.
 
 ## Troubleshooting
 

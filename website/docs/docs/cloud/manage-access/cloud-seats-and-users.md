@@ -55,7 +55,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 - To add a user, go to **Account Settings** and select **Users**. 
   - Click the [**Invite Users**](/docs/cloud/manage-access/invite-users) button. 
-  - For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
+  - For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-).
 
 
 </TabItem>
