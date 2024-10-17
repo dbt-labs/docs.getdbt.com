@@ -22,7 +22,7 @@ The following roles and permission sets are available for assignment in dbt Clou
 
 :::tip Licenses or Permission sets
 
-The user's [license](/docs/cloud/manage-access/about-access) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
 :::
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
