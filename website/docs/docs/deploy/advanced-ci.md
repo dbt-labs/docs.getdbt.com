@@ -11,7 +11,7 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 
 :::info How to enable this feature
 
-Advanced CI is available in dbt Cloud via opt-in. Please refer to https://docs.getdbt.com/docs/cloud/account-settings#account-access-to-advanced-ci-features on how to enable it in your dbt Cloud account.
+Advanced CI is available in dbt Cloud via opt-in. Please refer to [Account access to Advance CI features](/docs/cloud/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your dbt Cloud account.
 
 :::
 
