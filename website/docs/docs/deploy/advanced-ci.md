@@ -7,7 +7,13 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 
 # Advanced CI <Lifecycle status="enterprise"/>
 
-[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
+
+:::info How to enable this feature
+
+Advanced CI is available in dbt Cloud via opt-in. Please refer to https://docs.getdbt.com/docs/cloud/account-settings#account-access-to-advanced-ci-features on how to enable it in your dbt Cloud account.
+
+:::
 
 :::tip More features
 dbt Labs plans to provide additional Advanced CI features in the near future. More info coming soon.
