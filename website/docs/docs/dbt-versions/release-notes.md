@@ -44,7 +44,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 </Expandable>
 
-
+- **New**: Use the [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) config to set a custom future date for `dbt_valid_to` in new snapshot columns. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` in the snapshot table.
 - **New**: The [dbt Semantic Layer Python software development kit](/docs/dbt-cloud-apis/sl-python) is now [generally available](/docs/dbt-versions/product-lifecycles). It provides users with easy access to the dbt Semantic Layer with Python and enables developers to interact with the dbt Semantic Layer APIs to query metrics/dimensions in downstream tools.
 - **Enhancement**: You can now add a description to a singular data test in dbt Cloud Versionless. Use the [`description` property](/reference/resource-properties/description) to document [singular data tests](/docs/build/data-tests#singular-data-tests). You can also use [docs block](/docs/build/documentation#using-docs-blocks) to capture your test description. The enhancement will be included in upcoming dbt Core 1.9 release.
 - **New**: Introducing the [microbatch incremental model strategy](/docs/build/incremental-microbatch) (beta), available in dbt Cloud Versionless and will soon be supported in dbt Core 1.9. The microbatch strategy allows for efficient, batch-based processing of large time-series datasets for improved performance and resiliency, especially when you're working with data that changes over time (like new records being added daily). To enable this feature in dbt Cloud, set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` in your project.
