@@ -14,4 +14,10 @@ tokens:
   - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
   - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
 
+scope: text
+ignoredScopes:
+  - heading
+  - code
+  - link
 
+  
