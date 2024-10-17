@@ -17,17 +17,19 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 ## dbt Cloud support
 
-The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or using the in-product live chat (💬). 
+The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the dbt Cloud navigation.
 
 We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? Our Support team is here to `dbt help` you!
 
 - **Enterprise plans** &mdash; Priority [support](#severity-level-for-enterprise-support), options for custom support coverage hours, implementation assistance, dedicated management, and dbt Labs security reviews depending on price point.
 - **Developer and Team plans** &mdash; 24x5 support (no service level agreement (SLA); [contact Sales](https://www.getdbt.com/pricing/) for Enterprise plan inquiries).
-- **Support team help** &mdash; Assistance with dbt Cloud questions, like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, and so on.
+- **Support team help** &mdash; Assistance with [common dbt Cloud questions](/category/troubleshooting), like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, [how to generate a har file](/faqs/Troubleshooting/generate-har-file), and so on.
 - **Resource guide** &mdash; Check the [guide](/community/resources/getting-help) for effective help-seeking strategies.
 
 <details>
+
 <summary>Example of common support questions</summary>
+
 Types of dbt Cloud-related questions our Support team can assist you with, regardless of your dbt Cloud plan:<br /><br />
 <b>How do I...</b><br />
     - set up a dbt Cloud project?<br />
@@ -60,7 +62,7 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
 
 Basic assistance with dbt project troubleshooting.
 Help with errors and issues in macros, models, and dbt Labs' packages.
-For strategic advice, expansion, and project setup, consult Solutions Architect and Sales Director.
+For strategic advice, best practices, or expansion conversations, consult your Account Team.
 
 For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt project:
 - **Something isn't working the way I would expect it to...**
@@ -74,7 +76,7 @@ For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance
     - `Compilation Error Error reading name_of_folder/name_of_file.yml - Runtime Error Syntax
         error near line 9`
 
-Types of questions you should ask your Solutions Architect and Sales Director:
+Types of questions you should ask your Account Team:
 - How should we think about setting up our dbt projects, environments, and jobs based on our company structure and needs?
 - I want to expand my account! How do I add more people and train them?
 - Here is our data road map for the next year - can we talk through how dbt fits into it and what features we may not be utilizing that can help us achieve our goals?

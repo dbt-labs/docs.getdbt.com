@@ -31,6 +31,9 @@ In DAG order, for selected resources or an entire project.
 
 The `build` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
+import SQLCompilationError from '/snippets/_render-method.md';
+
+<SQLCompilationError />
 
 ## Tests
 

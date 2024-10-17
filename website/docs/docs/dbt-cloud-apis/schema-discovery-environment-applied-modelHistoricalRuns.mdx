@@ -25,7 +25,7 @@ query {
   environment(id: 834) {
     applied {
       modelHistoricalRuns(
-        uniqueId: "model.marketing.customers"
+        uniqueId: "model.marketing.customers" # Use this format for unique ID: RESOURCE_TYPE.PACKAGE_NAME.RESOURCE_NAME
         lastRunCount: 20
       ) {
         runId # Get historical results for a particular model

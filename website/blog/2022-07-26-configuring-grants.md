@@ -204,6 +204,6 @@ This is just a sample of the issues we've seen:
 - [Post hooks that call macros get parsed with execute = False #2370](https://github.com/dbt-labs/dbt-core/issues/2370)
 - [get_relation returns none in hook context #2938](https://github.com/dbt-labs/dbt-core/issues/2938)
 - [this.is_view and this.is_table not working in BigQuery inside a hook #3529](https://github.com/dbt-labs/dbt-core/issues/3529)
-- [custom table schema path of {{ this }} parsed in correctly in post-hook macro #3985](https://github.com/dbt-labs/dbt-core/issues/3985)
+- [custom table schema path of \{\{ this \}\} parsed in correctly in post-hook macro #3985](https://github.com/dbt-labs/dbt-core/issues/3985)
 - [Post-hook doesn't resolve custom schema #4023](https://github.com/dbt-labs/dbt-core/issues/4023)
 - [[CT-80] [Bug] post-hook macro generates SQL with incorrect source table #4606](https://github.com/dbt-labs/dbt-core/issues/4606)

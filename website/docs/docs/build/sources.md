@@ -44,7 +44,7 @@ sources:
 
 *By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](/reference/configs-and-properties) before proceeding.
+If you're not already familiar with these files, be sure to check out [the documentation on properties.yml files](/reference/configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
@@ -155,7 +155,7 @@ sources:
           warn_after: {count: 6, period: hour}
           error_after: {count: 12, period: hour}
 
-      - name: customers # this will use the freshness defined above
+      - name: customers # this inherits the default freshness defined in the jaffle_shop source block at the beginning
 
 
       - name: product_skus
@@ -177,7 +177,7 @@ To snapshot freshness information for your sources, use the `dbt source freshnes
 $ dbt source freshness
 ```
 
-Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/runs/checking-logs).
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/Runs/checking-logs).
 
 ```sql
 select

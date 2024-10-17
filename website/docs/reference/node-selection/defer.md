@@ -4,15 +4,13 @@ title: "Defer"
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
+<Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
+
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/syntax#about-node-selection).
 
 An alternative command that accomplishes similar functionality for different use cases is `dbt clone` - see the docs for [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral) for more information.
 
-<VersionBlock firstVersion="1.6">
-
 It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time. If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both: compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
-
-</VersionBlock>
 
 ### Usage
 
@@ -33,7 +31,7 @@ dbt test --models [...] --defer --state path/to/artifacts
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
-2. Does the reference node exist as a database object in the current environment?
+2. Does the referenced node exist as a database object in the current environment?
 
 If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.
 
@@ -43,11 +41,8 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-<VersionBlock firstVersion="1.5">
-
 Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
 
-</VersionBlock>
 
 #### Favor state
 
@@ -75,8 +70,6 @@ group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
-
-### test
 
 </File>
 
@@ -143,6 +136,8 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
+
+### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
@@ -228,4 +223,5 @@ dbt will check to see if `dev_alice.model_a` exists. If it doesn't exist, dbt wi
 ## Related docs
 
 - [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer)
+- [on_configuration_change](/reference/resource-configs/on_configuration_change)
 

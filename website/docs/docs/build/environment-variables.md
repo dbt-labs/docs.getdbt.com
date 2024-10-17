@@ -8,7 +8,9 @@ Environment variables can be used to customize the behavior of a dbt project dep
 [env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing
-Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+
+Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET` or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+
 :::
 
 ### Setting and overriding environment variables
@@ -20,11 +22,11 @@ Environment variable values can be set in multiple places within dbt Cloud. As a
  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
 There are four levels of environment variables:
- 1. the optional default argument supplied to the `env_var` Jinja function in code
- 2. a project-wide default value, which can be overridden at
- 3. the environment level, which can in turn be overridden again at
- 4. the job level (job override) or in the IDE for an individual dev (personal override).
 
+ 1. The optional default argument supplied to the `env_var` Jinja function in code, which can be overridden at (_lowest precedence_)
+ 2. The project-wide level by its default value, which can be overridden at
+ 3. The environment level, which can in turn be overridden again at
+ 4. The job level (job override) or in the IDE for an individual dev (personal override). (_highest precedence_)
 
 **Setting environment variables at the project and environment level**
 
@@ -36,10 +38,11 @@ To set environment variables at the project and environment level, click **Deplo
 
 You'll notice there is a `Project Default` column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
-To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project-level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as an example.
+
+To the right of the `Project Default` column are all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as an example.
+
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
-
 
 
 **Overriding environment variables at the job level**
@@ -59,7 +62,7 @@ Every job runs in a specific, deployment environment, and by default, a job will
 **Overriding environment variables at the personal level**
 
 
-You can also set a personal value override for an environment variable when you develop in the dbt integrated developer environment (IDE). By default, dbt Cloud uses environment variable values set in the project's development environment. To see and override these values, click the gear icon in the top right. Under "Your Profile," click **Credentials** and select your project. Click **Edit** and make any changes in "Environment Variables."
+You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (IDE). By default, dbt Cloud uses environment variable values set in the project's development environment. To see and override these values, click the gear icon in the top right. Under "Your Profile," click **Credentials** and select your project. Click **Edit** and make any changes in "Environment Variables."
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.gif" title="Navigating to environment variables personal override settings"/>
 
@@ -83,7 +86,7 @@ There are some known issues with partial parsing of a project and changing envir
 
 ### Handling secrets
 
-While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. This functionality is supported from `dbt v1.0` and on.
+While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
@@ -94,13 +97,11 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 dbt Cloud has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
 
-<VersionBlock firstVersion="1.6">
-
-**dbt Cloud IDE details**
+#### dbt Cloud IDE details
 
 The following environment variable is set automatically for the dbt Cloud IDE:
 
-- `DBT_CLOUD_GIT_BRANCH`: Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - Available in dbt v 1.6 and later.
   - The variable changes when the branch is changed.
   - Doesn't require restarting the IDE after a branch change.
@@ -108,39 +109,44 @@ The following environment variable is set automatically for the dbt Cloud IDE:
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
 
-</VersionBlock>
+#### dbt Cloud context
 
-**dbt Cloud context**
+The following environment variables are set automatically: 
 
-The following environment variables are set automatically for deployment runs:
+- `DBT_ENV` &mdash; This key is reserved for the dbt Cloud application and will always resolve to 'prod'. For deployment runs only.
+- `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the dbt Cloud environment in which `dbt` is running. 
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of dbt Cloud environment in which `dbt` is running. The valid values are `development` or `deployment`.
 
-- `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
+#### Run details
 
-**Run details**
-- `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
-- `DBT_CLOUD_JOB_ID`: The ID of the dbt Cloud Job for this run
-- `DBT_CLOUD_RUN_ID`: The ID of this particular run
-- `DBT_CLOUD_RUN_REASON_CATEGORY`: The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
-- `DBT_CLOUD_RUN_REASON`: The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
-- `DBT_CLOUD_ENVIRONMENT_ID`: The ID of the environment for this run
-- `DBT_CLOUD_ACCOUNT_ID`: The ID of the dbt Cloud account for this run
+- `DBT_CLOUD_PROJECT_ID` &mdash; The ID of the dbt Cloud Project for this run
+- `DBT_CLOUD_JOB_ID` &mdash; The ID of the dbt Cloud Job for this run
+- `DBT_CLOUD_RUN_ID` &mdash; The ID of this particular run
+- `DBT_CLOUD_RUN_REASON_CATEGORY` &mdash; The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
+- `DBT_CLOUD_RUN_REASON` &mdash; The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
+- `DBT_CLOUD_ENVIRONMENT_ID` &mdash; The ID of the environment for this run
+- `DBT_CLOUD_ACCOUNT_ID` &mdash; The ID of the dbt Cloud account for this run
 
-**Git details**
+#### Git details
 
 _The following variables are currently only available for GitHub, GitLab, and Azure DevOps PR builds triggered via a webhook_
 
-- `DBT_CLOUD_PR_ID`: The Pull Request ID in the connected version control system
-- `DBT_CLOUD_GIT_SHA`: The git commit SHA which is being run for this Pull Request build
+- `DBT_CLOUD_PR_ID` &mdash; The Pull Request ID in the connected version control system
+- `DBT_CLOUD_GIT_SHA` &mdash; The git commit SHA which is being run for this Pull Request build
 
 
 ### Example usage
 
 Environment variables can be used in many ways, and they give you the power and flexibility to do what you want to do more easily in dbt Cloud.
 
-#### Clone private packages
+<Expandable alt_header="Clone private packages">
+
 Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/docs/build/packages#private-packages).
 
-#### Dynamically set your warehouse in your Snowflake connection
+</Expandable>
+
+<Expandable alt_header="Dynamically set your warehouse in your Snowflake connection">
+
 Environment variables make it possible to dynamically change the Snowflake virtual warehouse size depending on the job. Instead of calling the warehouse name directly in your project connection, you can reference an environment variable which will get set to a specific virtual warehouse at runtime. 
 
 For example, suppose you'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same dbt Cloud environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('DBT_WAREHOUSE')}}`. Then in the job settings, you can set a different value for the `DBT_WAREHOUSE` environment variable depending on the job's workload.
@@ -161,7 +167,10 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so dbt Cloud simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
 :::
 
-#### Audit your run metadata
+</Expandable>
+
+<Expandable alt_header="Audit your run metadata">
+
 Here's another motivating example that uses the dbt Cloud run ID, which is set automatically at each run. This additional data field can be used for auditing and debugging:
 
 ```sql
@@ -187,3 +196,13 @@ select *,
 
 from users_aggregated
 ```
+
+</Expandable>
+
+<Expandable alt_header="Configure Semantic Layer credentials">
+
+import SLEnvVars from '/snippets/_sl-env-vars.md';
+
+<SLEnvVars/>
+
+</Expandable>

@@ -5,15 +5,6 @@ description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
 ---
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
-
-
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
@@ -636,3 +627,16 @@ mutation {
   }
 }
 ```
+
+### Multi-hop joins
+
+In cases where you need to query across multiple related tables (multi-hop joins), use the `entity_path` argument to specify the path between related entities. The following are examples of how you can define these joins:
+
+- In this example, you're querying the `location_name` dimension but specifying that it should be joined using the `order_id` field.
+	```sql
+	{{Dimension('location__location_name', entity_path=['order_id'])}}
+	```
+- In this example, the `salesforce_account_owner` dimension is joined to the `region` field, with the path going through `salesforce_account`.
+	```sql
+	{{ Dimension('salesforce_account_owner__region',['salesforce_account']) }}
+	```

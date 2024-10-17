@@ -19,7 +19,7 @@ keywords:
 
 :::important
 
-In dbt v1.8, what was previously known as "tests" are now called "data tests" with the addition of [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+From dbt v1.8, "tests" are now called "data tests" to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
 
@@ -59,18 +59,32 @@ These tests are defined in `.sql` files, typically in your `tests` directory (as
 select
     order_id,
     sum(amount) as total_amount
-from {{ ref('fct_payments' )}}
+from {{ ref('fct_payments') }}
 group by 1
 having total_amount < 0
 ```
 
 </File>
 
-The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
+The name of this test is the name of the file: `assert_total_payment_amount_is_positive`.
 
-Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+To add a data test to your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 
+<File name='tests/schema.yml'>
 
+```yaml
+version: 2
+data_tests:
+  - name: assert_total_payment_amount_is_positive
+    description: >
+      Refunds have a negative amount, so the total amount should always be >= 0.
+      Therefore return records where total amount < 0 to make the test fail.
+
+```
+
+</File>
+
+Singular data tests are so easy that you may find yourself writing the same basic structure repeatedly, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend generic data tests.
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
@@ -275,13 +289,11 @@ In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For de
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
+<VersionBlock firstVersion="1.8">
   
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. 
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
 
-As of v1.8, `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
-
-As we progress towards this deprecation, we'll update the examples in our docs pages to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
 <File name='models/schema.yml'>
 
@@ -306,11 +318,12 @@ data_tests:
 
 </File>
 
+
 </VersionBlock>
 
 ## FAQs
 
-<FAQ path="/Tests/available-tests" />
+<FAQ path="Tests/available-tests" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Tests/recommended-tests" />

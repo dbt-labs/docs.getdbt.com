@@ -145,20 +145,6 @@ This wouldn’t solve for the ML engineer and her desire to inject custom ML mod
 
 It may be worth having python scripts live side by side dbt jobs and configurations. I can get better lineage and have one less tool to context switch to.
 
-#### fal
-
-- [fal](https://github.com/fal-ai/fal): Makes dbt and python interoperable. Read in a dbt model as a pandas dataframe using a [ref statement](https://github.com/fal-ai/fal/blob/b20874ab957f8eb0f65c56d82e6bb85c717de4c6/examples/write_jupyter_notebook.md#example-9-use-dbt-from-a-jupyter-notebook)!
-
-#### How would this change my story?
-
-**A ref statement would mean the same thing to both my ML engineer and me.**
-
-We would work in the same dbt project for the entire workflow, not just part of it. We would align python scripts to dbt configurations for better lineage (see below).
-
-![Screenshot of fal installation instructions](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/fal-install-1.png)
-
-![Second screenshot of fal installation instructions](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/fal-install-2.png)
-
 #### What are the tradeoffs of this tool path?
 
 When things would go wrong, it’d still be a messy jumble to figure out how SQL changes inform python changes and vice versa. And I would need to care about which infrastructure my python code is running on. But my gut tells me the tradeoff would be worth it because there’d be less notebooks to schedule, and it’d be easier to align machine learning logic to dbt logic.

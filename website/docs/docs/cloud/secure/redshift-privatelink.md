@@ -6,6 +6,8 @@ sidebar_label: "PrivateLink for Redshift"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
+import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
@@ -78,8 +80,15 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - Target Group protocol: **TCP** 
 
 - **Network Load Balancer (NLB)** &mdash; Requires creating a Listener that attaches to the newly created Target Group for port `5439`
+    - **Scheme:** Internal
+    - **IP address type:** IPv4
+    - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate dbt Cloud **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the dbt Cloud [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
+    - **Listeners:** Create one listener per target group that maps the appropriate incoming port to the corresponding target group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **VPC Endpoint Service** &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests) after dbt creates the endpoint.
+
+<PrivateLinkCrossZone features={'/snippets/_privatelink-cross-zone-load-balancing.md'}/>
 
 ### 2. Grant dbt AWS Account access to the VPC Endpoint Service
 
@@ -115,3 +124,5 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
+
+<PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>

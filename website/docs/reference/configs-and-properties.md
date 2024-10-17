@@ -26,9 +26,18 @@ Whereas you can use **configurations** to:
 
 Depending on the resource type, configurations can be defined in the dbt project and also in an installed package by:
 
+<VersionBlock firstVersion="1.9">
+
+1. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file in the `models/`, `snapshots/`, `seeds/`, `analyses`, or `tests/` directory
+2. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
 1. Using a [`config()` Jinja macro](/reference/dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
-2. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file
+2. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file in the `models/`, `snapshots/`, `seeds/`, `analyses/`, or `tests/` directory.
 3. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, etc)
+</VersionBlock>
 
 ### Config inheritance
 
@@ -36,7 +45,7 @@ The most specific config always takes precedence. This generally follows the ord
 
 Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
-Within the project file, configurations are also applied hierarchically. The most specific config always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](reference/resource-configs/resource-path) as nested dictionary keys.
+Within the project file, configurations are also applied hierarchically. The most specific config always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](/reference/resource-configs/resource-path) as nested dictionary keys.
 
 Configurations in your root dbt project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control over your dbt runs. 
 
@@ -44,7 +53,7 @@ Configurations in your root dbt project have _higher_ precedence than configurat
 ### Combining configs
 
 Most configurations are "clobbered" when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
-- [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
+- [`tags`](/tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
 - [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
 

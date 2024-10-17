@@ -110,7 +110,7 @@ Archived release notes for dbt Cloud from 2023
 
     Now available for dbt Cloud Enterprise plans is a new option to enable Git repository caching for your job runs. When enabled, dbt Cloud caches your dbt project's Git repository and uses the cached copy instead if there's an outage with the Git provider. This feature improves the reliability and stability of your job runs. 
 
-    To learn more, refer to [Repo caching](/docs/deploy/deploy-environments#git-repository-caching).
+    To learn more, refer to [Repo caching](/docs/cloud/account-settings#git-repository-caching).
 
     <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
 
@@ -326,7 +326,7 @@ Archived release notes for dbt Cloud from 2023
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
     * Check out how these community members use the dbt community in the [Community spotlight](/community/spotlight). 
-    * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-chatgpt) 
+    * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-ChatGPT) 
     - We now have two new best practice guides: [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/set-up-ci).
 
   </Expandable>
@@ -618,7 +618,7 @@ Archived release notes for dbt Cloud from 2023
     ## 🎯 Core projects
 
     - We launched the new [MetricFlow docs](/docs/build/build-metrics-intro) on dbt Core v1.6 beta.
-    - Split [Global configs](reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
+    - Split [Global configs](/reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -691,7 +691,7 @@ Archived release notes for dbt Cloud from 2023
 
     **Beginning June 1, 2023,** developers on the dbt Cloud multi-tenant application will be able to self-serve access to their account’s run history through the dbt Cloud user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
 
-    Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#tag/Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
+    Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/List%20Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
 
     <Lightbox src="/img/docs/dbt-cloud/rn-run-history.jpg" width="100%" title="The dbt Cloud UI displaying a Run History"/>
 
@@ -800,7 +800,7 @@ Archived release notes for dbt Cloud from 2023
     - `created_at` and `-created_at`
     - `finished_at` and `-finished_at`
 
-    We recommend that you change your API requests to https://<YOUR_ACCESS_URL>/api/v2/accounts/{accountId}/runs/ to use a supported `order_by` before this date. 
+    We recommend that you change your API requests to https://&lt;YOUR_ACCESS_URL&gt;/api/v2/accounts/\{accountId\}/runs/ to use a supported `order_by` before this date. 
 
     :::info Access URLs
  
@@ -808,9 +808,9 @@ Archived release notes for dbt Cloud from 2023
 
     :::
 
-    For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
+    For more info, refer to our [documentation](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/List%20Runs).
 
- </Expandable>
+  </Expandable>
 
 - <Expandable alt_header='Scheduler optmization'>
 
@@ -936,7 +936,7 @@ Archived release notes for dbt Cloud from 2023
 
     This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
-    Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#section/Pagination) section for more information on this change. 
+    Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) section of the overview for more information on this change. 
 
     </Expandable>
 

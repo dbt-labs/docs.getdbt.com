@@ -7,7 +7,11 @@ dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt
 
 CLL is available to dbt Cloud Enterprise accounts that can use Explorer. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="70%" title="Overview of column level lineage"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="95%" title="Overview of column level lineage"/>
+
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
+
+<ExplorerCourse />
 
 ## Access the column-level lineage
 
@@ -22,14 +26,17 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="80%" title="Example of the Column evolution lens"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="90%" title="Example of the Column evolution lens"/>
 
 ### Inherited column descriptions
 
-A reused column, labeled as *passthrough* or *rename*, inherits its description from source and upstream model columns. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. Passthrough and rename columns are clearly labeled and color-coded.
+A reused column, labeled as **Passthrough** or **Rename** in the lineage, automatically inherits its description from the source and upstream model columns. The inheritance goes as far back as possible. As long as the column isn't transformed, you don't need to manually define the description; it'll automatically propagate downstream.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="70%" title="Example of propagate and inherit column descriptiions"/>
+Passthrough and rename columns are clearly labeled and color-coded in the lineage.
 
+In the following `dim_salesforce_accounts` model example (located at the end of the lineage), the description for a column inherited from the `stg_salesforce__accounts` model (located second to the left) indicates its origin. This helps developers quickly identify the original source of the column, making it easier to know where to make documentation changes.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.jpg" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
 
 ## Column-level lineage use cases {#use-cases}
 

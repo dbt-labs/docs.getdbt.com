@@ -38,8 +38,14 @@ models:
           - <test>
           - ... # declare additional data tests
         [tags](/reference/resource-configs/tags): [<string>]
+        
+        # only required in conjunction with time_spine key
+        granularity: <[any supported time granularity](/docs/build/dimensions?dimension=time_gran)> 
 
       - name: ... # declare properties of additional columns
+
+    [time_spine](/docs/build/metricflow-time-spine):
+      standard_granularity_column: <column_name>
 
     [versions](/reference/resource-properties/versions):
       - [v](/reference/resource-properties/versions#v): <version_identifier> # required
@@ -74,7 +80,3 @@ models:
 
 </File>
 
-<!---
-FAQs
-- Do I need to declare every column for it to render in documentation?
---->

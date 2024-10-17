@@ -7,7 +7,7 @@ datatype: test
 
 :::note 
 
-This functionality is only supported in dbt Core v1.8+ or dbt Cloud accounts that have gone versionless by opting to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+This functionality is only supported in dbt Core v1.8+ or dbt Cloud accounts that have gone ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless).
 
 :::
 

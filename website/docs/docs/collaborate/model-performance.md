@@ -6,7 +6,11 @@ description: "Learn about the performance of your models so you can make improve
 
 dbt Explorer provides metadata on dbt Cloud runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
 
-<LoomVideo id='98f33b3b7a374df0b7c04747eae6ef44' />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
+
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
+
+<ExplorerCourse />
 
 ## The Performance overview page 
 
@@ -18,7 +22,7 @@ You can pinpoint areas for performance enhancement by using the Performance over
 
 Each data point links to individual models in Explorer. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-performance-overview-page.png" width="80%" title="Example of Performance overview page"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-performance-overview-page.png" width="90%" title="Example of Performance overview page"/>
 
 You can view historical metadata for up to the past three months. Select the time horizon using the filter, which defaults to a two-week lookback.
 

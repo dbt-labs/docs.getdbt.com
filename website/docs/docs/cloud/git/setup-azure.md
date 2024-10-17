@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](/docs/cloud/git/setup-azure#connect-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
 
 Once the Microsoft Entra ID app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
@@ -68,7 +68,7 @@ A Microsoft Entra ID admin needs to add another redirect URI to your Entra ID ap
 
 2. Select the link next to **Redirect URIs**
 3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
-`https://YOUR_ACCESS_URL/complete/microsoft_entra_id_service_user`
+`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
@@ -89,7 +89,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connect a service user](#connect-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.
@@ -112,7 +112,7 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
 4. Complete the form:
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
-    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should not the expiration date for rotation.
+    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding a Microsoft Entra ID app to dbt Cloud"/>
 
@@ -200,7 +200,7 @@ To re-enable MFA for the user, select them again and click **Enable**. Note, you
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -233,7 +233,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -268,7 +268,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -305,8 +305,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for per project access
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
+- repoV2/&lt;azure_devops_project_object_id&gt; for per project access
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for per repo access
 
 
 **UI/API/CLI:** UI, API, and CLI
@@ -345,8 +345,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for access to a single project at a time
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
+- repoV2/&lt;azure_devops_project_object_id&gt; for access to a single project at a time
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for access to a single repo at a time
 
 
 **UI/API/CLI:** UI, API, and CLI
@@ -373,8 +373,23 @@ A dbt Cloud account admin with access to the service user's Azure DevOps account
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 
-:::info Personal Access Tokens (PATs)
-dbt Cloud generates temporary access tokens called Full-scoped PATs for service users to access APIs related to their dbt Cloud project. These tokens are only valid for a short period of 5 minutes and become invalid after they are used to make an API call.
+### Using Azure AD for SSO with dbt Cloud and Microsoft tools
 
-The Azure DevOps Administrator can limit the creation of full-scoped PATs by enabling a policy that restricts users to a custom-defined set of scopes. By default, this policy is set to **off**, but enabling it will cause project setup to fail with an error. After disabling this policy and successfully setting up your project, if you wish to use finer-scoped permissions, some features such as webhooks for CI may be lost, so we recommend the service user has full-scoped PATs.  To exclude the dbt Cloud service user from the global PAT policy, add them to the allow list as part of your security policy.
+If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flow may sometimes direct your account admin to their personal user account instead of the service user. If this happens, follow these steps to resolve it:
+
+1. Sign in to the service user's Azure DevOps account (ensure they are also connected to dbt Cloud through SSO).
+2. When connected to dbt Cloud, sign out of Azure AD through the [Azure portal](https://portal.azure.com/).
+3. Disconnect the service user in dbt Cloud, and follow the steps to set it up again.
+4. You should then be prompted to enter service user credentials.
+
+
+:::info Personal Access Tokens (PATs)
+dbt Cloud leverages the service user to generate temporary access tokens called [PATs](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?toc=%2Fazure%2Fdevops%2Fmarketplace-extensibility%2Ftoc.json&view=azure-devops&tabs=Windows). 
+
+These tokens are limited in scope, are only valid for 5 minutes, and become invalid after a single API call.
+
+These tokens are limited to the following [scopes](https://learn.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/oauth?view=azure-devops):
+- `vso.code_full`: Grants full access to source code and version control metadata (commits, branches, and so on). Also grants the ability to create and manage code repositories, create and manage pull requests and code reviews, and receive notifications about version control events with service hooks. Also includes limited support for Client OM APIs.
+- `vso.project`: Grants the ability to read projects and teams.
+- `vso.build_execute`: Grants the ability to access build artifacts, including build results, definitions, and requests, and the ability to queue a build, update build properties, and the ability to receive notifications about build events with service hooks.
 :::

@@ -11,6 +11,8 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 
 Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to production metadata directly in their development workflows. 
 
+<Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
+
 By default, dbt follows these rules:
 
 - dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
@@ -38,6 +40,9 @@ To enable defer in the dbt Cloud IDE, toggle the **Defer to production** button 
 
 For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the production location of the referenced models.
 
+<!--remove when fixed -->
+Note: The **Defer to staging/production** toggle button doesn't apply when running [dbt Semantic Layer commands](/docs/build/metricflow-commands) in the dbt Cloud IDE. To use defer for Semantic layer commands in the IDE, toggle the button on and manually add the `--defer` flag to the command. This is a temporary workaround and will be available soon.
+
 <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
 
 ### Defer in dbt Cloud CLI
@@ -48,8 +53,11 @@ The dbt Cloud CLI offers additional flexibility by letting you choose the source
 
 <File name="dbt_cloud.yml">
 
-  ```yml
-defer-env-id: '123456'
+```yml
+context:
+  active-host: ...
+  active-project: ...
+  defer-env-id: '123456'
 ```
 
 </File>
@@ -58,7 +66,7 @@ defer-env-id: '123456'
 <File name="dbt_project.yml"> 
 
 ```yml
-dbt_cloud:
+dbt-cloud:
   defer-env-id: '123456'
 ```
 

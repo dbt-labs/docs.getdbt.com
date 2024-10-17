@@ -31,7 +31,8 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 - For `write` access to webhooks: 
     - **Enterprise plan accounts** &mdash; Permission sets are the same for both API service tokens and the dbt Cloud UI. You, or the API service token, must have the [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin), [Admin](/docs/cloud/manage-access/enterprise-permissions#admin), or [Developer](/docs/cloud/manage-access/enterprise-permissions#developer) permission set.  
     - **Team plan accounts** &mdash; For the dbt Cloud UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions). For API service tokens, you must assign the service token to have the [Account Admin or Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
-- You have a multi-tenant or an AWS single-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
+- You have a multi-tenant or an AWS single-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+- Your destination system supports [Authorization headers](#troubleshooting).
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 
@@ -72,6 +73,12 @@ return signature == auth_header
 
 ```
 
+Note that the destination system must support [Authorization headers](#troubleshooting) for the webhook to work correctly. You can test your endpoint's support by sending a request with curl and an Authorization header, like this:
+
+```shell
+curl -H 'Authorization: 123' -X POST https://<your-webhook-endpoint>
+```
+
 ## Inspect HTTP requests 
 When working with webhooks, it’s good practice to use tools like [RequestBin](https://requestbin.com/) and [Requestly](https://requestly.io/). These tools allow you to inspect your HTML requests, response payloads, and response headers so you can debug and test webhooks before incorporating them into your systems. 
 
@@ -82,7 +89,7 @@ An example of a webhook payload for a run that's started:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6Z3l8uPedXKPq9D2nWbPIip7Z",
   "timestamp": "2023-01-31T19:28:15.742843678Z",
   "eventType": "job.run.started",
@@ -110,7 +117,7 @@ An example of a webhook payload for a completed run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6ZDoilyiWzKkSA59Gmc2d7FDD",
   "timestamp": "2023-01-31T19:29:35.789265936Z",
   "eventType": "job.run.completed",
@@ -139,7 +146,7 @@ An example of a webhook payload for an errored run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6m5BggBw9uPNuSmtg4MUiW4Re",
   "timestamp": "2023-01-31T21:15:20.419714619Z",
   "eventType": "job.run.errored",
@@ -551,3 +558,10 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 - [dbt Cloud CI](/docs/deploy/continuous-integration)
 - [Use dbt Cloud's webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
 
+## Troubleshooting
+
+If your destination system isn't receiving dbt Cloud webhooks, ensure it allows Authorization headers. dbt Cloud webhooks send an Authorization header, and if your endpoint doesn't support this, it may be incompatible. Services like Azure Logic Apps and Power Automate may not accept Authorization headers, so they won't work with dbt Cloud webhooks. You can test your endpoint's support by sending a request with curl and an Authorization header, like this:
+
+```shell
+curl -H 'Authorization: 123' -X POST https://<your-webhook-endpoint>
+```

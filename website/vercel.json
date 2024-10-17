@@ -3,6 +3,101 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/styles",
+      "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/sl-manifest",
+      "destination": "/reference/artifacts/sl-manifest",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-assist-data",
+      "destination": "/docs/cloud/dbt-copilot-data",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/use-dbt-assist",
+      "destination": "/docs/cloud/use-dbt-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/enable-dbt-assist",
+      "destination": "/docs/cloud/enable-dbt-copilot",
+      "permanent": true
+    },    
+    {
+      "source": "/docs/cloud/dbt-assist",
+      "destination": "/docs/cloud/dbt-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Troubleshooting/access_token_error",
+      "destination": "/faqs/Troubleshooting/auth-expired-error",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Models/unique-model-names",
+      "destination": "/faqs/Project/unique-resource-names",
+      "permanent": true
+    },
+    {
+      "source":  "/docs/deploy/dashboard-status-tiles",
+      "destination":  "/docs/collaborate/data-tile",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
+      "source": "/reference/warehouse-setups/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
+      "source":  "docs/cloud/secure/environment-permissions",
+      "destination":  "docs/cloud/manage-access/environment-permissions",
+      "permanent": true
+    },
+    {
+      "source":  "docs/cloud/secure/environment-permissions-setup",
+      "destination": "docs/cloud/manage-access/environment-permissions-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4",
+      "permanent": true
+    },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true
@@ -14,8 +109,8 @@
     },
     {
       "source": "/docs/collaborate/documentation",
-      "destination":"/docs/build/documentation",
-      "permanent": true      
+      "destination": "/docs/build/documentation",
+      "permanent": true
     },
     {
       "source": "/docs/use-dbt-semantic-layer/tableau",
@@ -64,12 +159,12 @@
     },
     {
       "source": "/docs/build/sl-getting-started",
-      "destination": "/guides/sl-snowflake-qs", 
+      "destination": "/guides/sl-snowflake-qs",
       "permanent": true
     },
     {
       "source": "/docs/use-dbt-semantic-layer/quickstart-sl",
-      "destination": "/guides/sl-snowflake-qs", 
+      "destination": "/guides/sl-snowflake-qs",
       "permanent": true
     },
     {
@@ -171,36 +266,36 @@
       "source": "/dbt-cli/cli-overview",
       "destination": "/docs/core/about-dbt-core",
       "permanent": true
-    },  
-    {
-    "source": "/guides/advanced/creating-new-materializations",
-    "destination": "/guides/create-new-materializations",
-    "permanent": true
     },
     {
-        "source": "/guides/advanced/using-jinja",
-        "destination": "/guides/using-jinja",
-        "permanent": true
+      "source": "/guides/advanced/creating-new-materializations",
+      "destination": "/guides/create-new-materializations",
+      "permanent": true
     },
     {
-        "source": "/guides/best-practices/debugging-errors",
-        "destination": "/guides/debug-errors",
-        "permanent": true
+      "source": "/guides/advanced/using-jinja",
+      "destination": "/guides/using-jinja",
+      "permanent": true
     },
     {
-        "source": "/guides/best-practices/:path*",
-        "destination": "/best-practices/:path*",
-        "permanent": true
+      "source": "/guides/best-practices/debugging-errors",
+      "destination": "/guides/debug-errors",
+      "permanent": true
     },
     {
-        "source": "/guides/dbt-ecosystem",
-        "destination": "/guides",
-        "permanent": true
+      "source": "/guides/best-practices/:path*",
+      "destination": "/best-practices/:path*",
+      "permanent": true
     },
     {
-        "source": "/guides/dbt-ecosystem/adapter-development/:path*",
-        "destination": "/guides/adapter-creation",
-        "permanent": true
+      "source": "/guides/dbt-ecosystem",
+      "destination": "/guides",
+      "permanent": true
+    },
+    {
+      "source": "/guides/dbt-ecosystem/adapter-development/:path*",
+      "destination": "/guides/adapter-creation",
+      "permanent": true
     },
     {
       "source": "/guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
@@ -234,44 +329,44 @@
       "permanent": true
     },
     {
-        "source": "/guides/legacy/best-practices",
-        "destination": "/best-practices/best-practice-workflows",
-        "permanent": true
+      "source": "/guides/legacy/best-practices",
+      "destination": "/best-practices/best-practice-workflows",
+      "permanent": true
     },
     {
-        "source": "/guides/legacy/building-packages",
-        "destination": "/guides/building-packages",
-        "permanent": true
+      "source": "/guides/legacy/building-packages",
+      "destination": "/guides/building-packages",
+      "permanent": true
     },
     {
-        "source": "/guides/legacy/creating-date-partitioned-tables",
-        "destination": "/docs/build/incremental-models",
-        "permanent": true
+      "source": "/guides/legacy/creating-date-partitioned-tables",
+      "destination": "/docs/build/incremental-models",
+      "permanent": true
     },
     {
-        "source": "/guides/legacy/debugging-schema-names",
-        "destination": "/guides/debug-schema-names",
-        "permanent": true
+      "source": "/guides/legacy/debugging-schema-names",
+      "destination": "/guides/debug-schema-names",
+      "permanent": true
     },
     {
-        "source": "/guides/legacy/videos",
-        "destination": "/guides",
-        "permanent": true
+      "source": "/guides/legacy/videos",
+      "destination": "/guides",
+      "permanent": true
     },
     {
-        "source": "/guides/migration/sl-migration",
-        "destination": "/guides/sl-migration",
-        "permanent": true
+      "source": "/guides/migration/sl-migration",
+      "destination": "/guides/sl-migration",
+      "permanent": true
     },
     {
-        "source": "/guides/migration/tools",
-        "destination": "/guides",
-        "permanent": true
+      "source": "/guides/migration/tools",
+      "destination": "/guides",
+      "permanent": true
     },
     {
-        "source": "/guides/migration/tools/migrating-from-spark-to-databricks",
-        "destination": "/guides/migrate-from-spark-to-databricks",
-        "permanent": true
+      "source": "/guides/migration/tools/migrating-from-spark-to-databricks",
+      "destination": "/guides/migrate-from-spark-to-databricks",
+      "permanent": true
     },
     {
       "source": "/guides/migration/tools/migrating-from-stored-procedures/:path*",
@@ -280,14 +375,14 @@
     },
 
     {
-        "source": "/guides/migration/tools/refactoring-legacy-sql",
-        "destination": "/guides/refactoring-legacy-sql",
-        "permanent": true
+      "source": "/guides/migration/tools/refactoring-legacy-sql",
+      "destination": "/guides/refactoring-legacy-sql",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration",
-        "destination": "/guides",
-        "permanent": true
+      "source": "/guides/orchestration",
+      "destination": "/guides",
+      "permanent": true
     },
     {
       "source": "/guides/orchestration/airflow-and-dbt-cloud/:path*",
@@ -300,9 +395,9 @@
       "permanent": true
     },
     {
-        "source": "/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
-        "destination": "/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
-        "permanent": true
+      "source": "/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+      "destination": "/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+      "permanent": true
     },
     {
       "source": "/guides/orchestration/set-up-ci/:path*",
@@ -310,49 +405,49 @@
       "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks",
-        "destination": "/guides",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks",
+      "destination": "/guides",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/serverless-datadog",
-        "destination": "/guides/serverless-datadog",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/serverless-datadog",
+      "destination": "/guides/serverless-datadog",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/serverless-pagerduty",
-        "destination": "/guides/serverless-pagerduty",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/serverless-pagerduty",
+      "destination": "/guides/serverless-pagerduty",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/zapier-ms-teams",
-        "destination": "/guides/zapier-ms-teams",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/zapier-ms-teams",
+      "destination": "/guides/zapier-ms-teams",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
-        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
+      "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+      "permanent": true
     },
     {
-        "source": "/guides/zapier-new-cloud-job",
-        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
-        "permanent": true
+      "source": "/guides/zapier-new-cloud-job",
+      "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/zapier-refresh-mode-report",
-        "destination": "/guides/zapier-refresh-mode-report",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/zapier-refresh-mode-report",
+      "destination": "/guides/zapier-refresh-mode-report",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/zapier-refresh-tableau-workbook",
-        "destination": "/guides/zapier-refresh-tableau-workbook",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/zapier-refresh-tableau-workbook",
+      "destination": "/guides/zapier-refresh-tableau-workbook",
+      "permanent": true
     },
     {
-        "source": "/guides/orchestration/webhooks/zapier-slack",
-        "destination": "/guides/zapier-slack",
-        "permanent": true
+      "source": "/guides/orchestration/webhooks/zapier-slack",
+      "destination": "/guides/zapier-slack",
+      "permanent": true
     },
     {
       "source": "/faqs/Project/docs-for-multiple-projects",
@@ -537,6 +632,11 @@
     {
       "source": "/reference/global-configs/command-line-flags",
       "destination": "/reference/global-configs/command-line-options",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/legacy-behaviors",
+      "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
     },
     {
@@ -1014,7 +1114,6 @@
       "destination": "/docs/get-started/develop-in-the-cloud",
       "permanent": true
     },
-
 
     {
       "source": "/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
@@ -2442,9 +2541,6 @@
       "permanent": true
     },
 
-
-
-
     {
       "source": "/docs/running-a-dbt-project/using-the-command-line-interface",
       "destination": "/docs/running-a-dbt-project/using-the-cli",
@@ -2921,6 +3017,11 @@
       "permanent": true
     },
     {
+      "source": "/dbt-cloud/api-v2-legacy",
+      "destination": "/dbt-cloud/api-v2",
+      "permanent": true
+    },
+    {
       "source": "/dbt-cloud/api-v4",
       "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
       "permanent": true
@@ -3267,17 +3368,17 @@
     },
     {
       "source": "/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/dbt-cloud/cloud-ide/ide-beta",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/running-a-dbt-project/using-the-dbt-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/running-a-dbt-project/using-the-dbt-ide",
       "permanent": true
     },
     {
@@ -3443,6 +3544,86 @@
     {
       "source": "/docs/building-a-dbt-project/building-models/:path*",
       "destination": "/reference/resource-configs/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+      "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-8-refactor-a-rollup",
+      "permanent": true
+    },
+    {
+      "source": "/best-practices/how-we-build-our-metrics/6-the-rest-of-the-project",
+      "destination": "/best-practices/how-we-structure/5-the-rest-of-the-project",
+      "permanent": true
+    },
+    {
+      "source": "/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+      "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-9-conclusion",
+      "permanent": true
+    },
+    {
+      "source": "/best-practices/how-we-structure/5-semantic-layer-marts",
+      "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure",
+      "permanent": true
+    },
+    {
+      "source": "/terms/cte",
+      "destination": "https://www.getdbt.com/blog/guide-to-cte",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dag",
+      "destination": "https://www.getdbt.com/blog/guide-to-dag",
+      "permanent": true
+    },
+    {
+      "source": "/terms/data-lineage",
+      "destination": "https://www.getdbt.com/blog/guide-to-data-lineage",
+      "permanent": true
+    },
+    {
+      "source": "/terms/ddl",
+      "destination": "https://www.getdbt.com/blog/guide-to-ddl",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dimensional-modeling",
+      "destination": "https://www.getdbt.com/blog/guide-to-dimensional-modeling",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dml",
+      "destination": "https://www.getdbt.com/blog/guide-to-dml",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dry",
+      "destination": "https://www.getdbt.com/blog/guide-to-dry",
+      "permanent": true
+    },
+    {
+      "source": "/terms/grain",
+      "destination": "https://www.getdbt.com/blog/guide-to-data-grain",
+      "permanent": true
+    },
+    {
+      "source": "/terms/subquery",
+      "destination": "https://www.getdbt.com/blog/guide-to-subquery",
+      "permanent": true
+    },
+    {
+      "source": "/terms/surrogate-key",
+      "destination": "https://www.getdbt.com/blog/guide-to-surrogate-key",
+      "permanent": true
+    },
+    {
+      "source": "/glossary",
+      "destination": "https://www.getdbt.com/blog",
+      "permanent": true
+    },
+    {
+      "source": "/terms/:path((?!elt|etl|reverse-etl).*)",
+      "destination": "https://www.getdbt.com/blog",
       "permanent": true
     }
   ],

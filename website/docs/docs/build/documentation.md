@@ -59,12 +59,12 @@ models:
 
 The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use dbt Explorer to view your project's resources (such as models, tests, and metrics), its [metadata](/docs/collaborate/explore-projects#generate-metadata), and their lineage to gain a better understanding of its latest production state.
 
-dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
+dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation, but doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
 
-Generate documentation for you project by following these steps:
+Generate documentation for your project by following these steps:
 
 1. Run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
-2. Ensure that you have created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
+2. Ensure you've created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
 3. Run `dbt docs serve` if you're developing locally to use these `.json` files to populate a local website.
 
 To view a resource, its metadata, and what commands are needed in dbt Explorer, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
@@ -101,7 +101,18 @@ The events in this table are recorded by [Snowplow](http://github.com/snowplow/s
 In the above example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters and does not start with a numeric character.
 
 ### Placement
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths) and [snapshot-paths](/reference/project-configs/snapshot-paths)) — you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+<VersionBlock firstVersion="1.9">
+
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+</VersionBlock>
 
 
 ### Usage

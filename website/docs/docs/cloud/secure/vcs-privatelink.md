@@ -6,6 +6,8 @@ sidebar_label: "PrivateLink for VCS"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
+import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
@@ -43,11 +45,14 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated Security Group, or the Security Group must have a rule that allows requests from the appropriate dbt Cloud **private CIDR(s)**. Note that **this is different** than the static public IPs listed on the dbt Cloud [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. The correct private CIDR(s) can be provided by dbt Support upon request. If necessary, temporarily adding an allow rule of `10.0.0.0/8` should allow connectivity until the rule can be refined to the smaller dbt provided CIDR.
     - **Listeners:** Create one Listener per Target Group that maps the appropriate incoming port to the corresponding Target Group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **Endpoint Service** - The VPC Endpoint Service is what allows for the VPC to VPC connection, routing incoming requests to the configured load balancer.
     - **Load balancer type:** Network.
     - **Load balancer:** Attach the NLB created in the previous step.
     - **Acceptance required (recommended)**:  When enabled, requires a new connection request to the VPC Endpoint Service to be accepted by the customer before connectivity is allowed ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests)).
+
+<PrivateLinkCrossZone features={'/snippets/_privatelink-cross-zone-load-balancing.md'}/>
 
 ### 2. Grant dbt AWS account access to the VPC Endpoint Service
 
@@ -106,3 +111,5 @@ Once dbt confirms that the PrivateLink integration is complete, you can use it i
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration with PrivateLink" />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="80%" title="Editing an existing git integration with PrivateLink" />
+
+<PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>

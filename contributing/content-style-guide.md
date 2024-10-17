@@ -359,10 +359,10 @@ There won't be many instances where you need to display 4 or 5 cards on the docs
 
 Otherwise, the text will appear squished and provide users with a bad experience.
 
-- `<divclassName="grid--2-col">`: creates 2 column cards
-- `<divclassName="grid--3-col">`: creates 3 columns cards
-- `<divclassName="grid--4-col">`: creates 4 columns cards (use sparingly)
-- `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
+- `<div className="grid--2-col">`: creates 2 column cards
+- `<div className="grid--3-col">`: creates 3 columns cards
+- `<div className="grid--4-col">`: creates 4 columns cards (use sparingly)
+- `<div className="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
 Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
@@ -456,7 +456,7 @@ In general, when the spelling of English words varies by locale &mdash; use the 
 standardize  | standardise 
 license | licence
 color | colour
-</div></b>
+<b>
 
 Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
 
@@ -533,7 +533,7 @@ terminal | shell
 username | login
 dbt Cloud CLI | CLI, dbt CLI
 dbt Core | CLI, dbt CLI
-</div></b>
+</b>
 
 Note, let's make sure we're talking to our readers and keep them close to the content and documentation (second person). 
 
@@ -623,6 +623,12 @@ When describing icons that appear on-screen, use the [_Google Material Icons_](h
 :x:Click on the hamburger menu icon
 
 :white_check_mark:Click on the menu icon
+
+#### Upload icons
+If you're using icons to document things like [third-party vendors](https://docs.getdbt.com/docs/cloud-integrations/avail-sl-integrations), etc. &mdash; you need to add the icon file in the following locations to ensure the icons render correctly in light and dark mode:
+
+- website/static/img/icons
+- website/static/img/icons/white
 
 ### Image names
 

@@ -102,24 +102,7 @@ saved_queries:
 ```
 </File>
 
-Note, you can set `export_as` to both the saved query and the exports [config](/reference/resource-properties/config), with the exports config value taking precedence. If a key isn't set in the exports config, it will inherit the saved query config value.
-
-#### Project-level saved queries
-
-To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saves you time in configuring saved queries in each file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-saved-queries:
-  my_saved_query:
-    config:
-      +cache:
-        enabled: true
-```
-</File>
-
-For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
+Note, that you can set `export_as` to both the saved query and the exports [config](/reference/resource-properties/config), with the exports config value taking precedence. If a key isn't set in the exports config, it will inherit the saved query config value.
 
 #### Where clause
 
@@ -171,6 +154,25 @@ saved_queries:
 </File>
 </VersionBlock>
 
+<VersionBlock firstVersion="1.7">
+
+#### Project-level saved queries
+
+To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saves you time in configuring saved queries in each file:
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  my_saved_query:
+    +cache:
+      enabled: true
+```
+</File>
+
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
+</VersionBlock>
+
 To build `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
 ## Configure exports
@@ -218,17 +220,17 @@ For more information on how to run exports, refer to the [Exports](/docs/use-dbt
 
 ## FAQs
 
-<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
+<DetailsToggle alt_header="Can I have multiple exports in a single saved query?">
 
 Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How can I select saved_queries by their resource type?">
+<DetailsToggle alt_header="How can I select saved_queries by their resource type?">
 
 To include all saved queries in the dbt build run, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
-
+- [Validate semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)

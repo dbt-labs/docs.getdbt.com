@@ -22,7 +22,7 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-:::info Keep on latest version 
+:::info Versionless 
 
 <Snippet path="_config-dbt-version-check" />
 
@@ -93,7 +93,7 @@ In the following example, the project will only run with dbt v1.5:
 <File name='dbt_project.yml'>
 
 ```yml
-require-dbt-version: 1.5
+require-dbt-version: "1.5.0"
 ```
 
 </File>

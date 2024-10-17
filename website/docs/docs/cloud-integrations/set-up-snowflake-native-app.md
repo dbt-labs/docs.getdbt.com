@@ -65,9 +65,10 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
-Collect three pieces of information from dbt Cloud to set up the application. 
+Collect the following pieces of information from dbt Cloud to set up the application. 
 
 1. From the gear menu in dbt Cloud, select **Account settings**. In the left sidebar, select **API tokens > Service tokens**. Create a service token with access to all the projects you want to access in the dbt Snowflake Native App. Grant these permission sets: 
+    - **Manage marketplace apps**
     - **Job Admin**
     - **Metadata Only**
     - **Semantic Layer Only**
@@ -143,5 +144,10 @@ Check that the SL user has been granted access to the `dbt_sl_llm` schema and ma
 
 <Expandable alt_header="Need to update the dbt configuration options used by the Native App" >
 
-If there's been an update to the dbt Cloud account ID, access URL, or API service token, you need to update the configuration for the dbt Snowflake Native App. In Snowflake, navigate to the app's configuration page and delete the existing configurations. Add the new configuration and then run `CALL app_public.restart_ap ();` in the application database in Snowsight. 
+If there's been an update to the dbt Cloud account ID, access URL, or API service token, you need to update the configuration for the dbt Snowflake Native App. In Snowflake, navigate to the app's configuration page and delete the existing configurations. Add the new configuration and then run `CALL app_public.restart_app();` in the application database in Snowsight. 
+</Expandable>
+
+<Expandable alt_header="Are environment variables supported in the Native App?" >
+
+[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the dbt Semantic Layer yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
 </Expandable>

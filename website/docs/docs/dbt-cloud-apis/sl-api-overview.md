@@ -6,14 +6,6 @@ tags: [Semantic Layer, API]
 hide_table_of_contents: true
 pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 
@@ -51,9 +43,9 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic manifest"
-    body="Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
-    link="/docs/dbt-cloud-apis/sl-manifest"
+    title="Python SDK"
+    body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
+    link="/docs/dbt-cloud-apis/sl-python"
     icon="dbt-bit"/>
 
 </div>

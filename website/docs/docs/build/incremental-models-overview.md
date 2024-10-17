@@ -12,7 +12,7 @@ Incremental models in dbt is a [materialization](/docs/build/materializations) s
 
 This page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in dbt.
 
-<Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title=<a href="https://docs.getdbt.com/best-practices/materializations/1-guide-overview"> A visual representation of how incremental models work. Source: Materialization best practices guide.</a> />
+<Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices guide (https://docs.getdbt.com/best-practices/materializations/1-guide-overview)" />
 
 ## Understand incremental models
 
@@ -42,4 +42,5 @@ Transaction management, a process used in certain data platforms, ensures that a
 ## Related docs
 - [Incremental models](/docs/build/incremental-models) to learn how to configure incremental models in dbt.
 - [Incremental strategies](/docs/build/incremental-strategy) to understand how dbt implements incremental models on different databases.
+- [Microbatch](/docs/build/incremental-strategy) <Lifecycle status="beta" /> to understand a new incremental strategy intended for efficient and resilient processing of very large time-series datasets.
 - [Materializations best practices](/best-practices/materializations/1-guide-overview) to learn about the best practices for using materializations in dbt.

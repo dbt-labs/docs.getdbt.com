@@ -6,7 +6,7 @@ sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
 ---
 
-Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. 
+Measures are aggregations performed on columns in your model. They can be used as final metrics or as building blocks for more complex metrics. 
 
 Measures have several inputs, which are described in the following table along with their field types.
 
@@ -31,7 +31,7 @@ measures:
 
 ### Name
 
-When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the `name` of the measure is different from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
+When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the measure's `name` differs from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
 
 Measure names must be unique across all semantic models in a project and can not be the same as an existing `entity` or `dimension` within that same model.
 
@@ -88,7 +88,7 @@ If the `name` you specified for a measure doesn't match a column name in your mo
 **Notes**: When using SQL functions in the `expr` parameter, **always use data platform-specific SQL**. This is because outputs may differ depending on your specific data platform.
 
 :::tip For Snowflake users
-For Snowflake users, if you use a week-level function in the `expr` parameter, it'll now return Monday as the default week start day based on ISO standards. If you have any account or session level overrides for the `WEEK_START` parameter that fix it to a value other than 0 or 1, you will still see Monday as the week start. 
+For Snowflake users, if you use a week-level function in the `expr` parameter, it'll now return Monday as the default week start day based on ISO standards. If you have any account or session level overrides for the `WEEK_START` parameter that fixes it to a value other than 0 or 1, you will still see Monday as the week starts. 
 
 If you use the `dayofweek` function in the `expr` parameter with the legacy Snowflake default of `WEEK_START = 0`, it will now return ISO-standard values of 1 (Monday) through 7 (Sunday) instead of Snowflake's legacy default values of 0 (Monday) through 6 (Sunday).
 :::
@@ -141,13 +141,13 @@ semantic_models:
         description: Distinct count of transactions 
         expr: transaction_id
         agg: count_distinct
-      - name: transactions 
+      - name: transaction_amount_avg 
         description: The average value of transactions 
         expr: transaction_amount_usd
         agg: average 
       - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
         description: The total USD value of valid transactions only
-        expr: CASE WHEN is_valid = True then 1 else 0 end 
+        expr: CASE WHEN is_valid = True then transaction_amount_usd else 0 end 
         agg: sum
       - name: transactions
         description: The average value of transactions.
@@ -200,7 +200,7 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 ```yaml
 semantic_models:
-  - name: subscription_table
+  - name: subscription_id
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
     defaults:
@@ -209,6 +209,7 @@ semantic_models:
     entities:
       - name: user_id
         type: foreign
+        primary_entity: subscription_table
 
     dimensions:
       - name: metric_time
@@ -218,22 +219,22 @@ semantic_models:
           time_granularity: day
 
     measures: 
-      - name: count_users_end_of_month 
+      - name: count_users
         description: Count of users at the end of the month 
-        expr: 1
-        agg: sum 
+        expr: user_id
+        agg: count_distinct
         non_additive_dimension: 
           name: metric_time
-          window_choice: min 
-      - name: mrr_end_of_month
-        description: Aggregate by summing all users' active subscription plans at the end of month 
+          window_choice: max 
+      - name: mrr
+        description: Aggregate by summing all users' active subscription plans
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
           name: metric_time
           window_choice: max
-      - name: mrr_by_user_end_of_month
-        description: Group by user_id to achieve each user's MRR at the end of the month 
+      - name: user_mrr
+        description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
@@ -243,10 +244,10 @@ semantic_models:
             - user_id 
 
 metrics:
-  - name: mrr_end_of_month
+  - name: mrr_metrics
     type: simple
     type_params:
-        measure: mrr_end_of_month
+        measure: mrr
 ```
 
 We can query the semi-additive metrics using the following syntax:
@@ -254,15 +255,15 @@ We can query the semi-additive metrics using the following syntax:
 For dbt Cloud:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 For dbt Core:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';

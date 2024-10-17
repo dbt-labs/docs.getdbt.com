@@ -1,5 +1,5 @@
 import React from 'react';
-import MDXHead from '@theme/MDXComponents/Head';
+import Head from "@docusaurus/Head";
 import MDXCode from '@theme/MDXComponents/Code';
 import MDXPre from '@theme/MDXComponents/Pre';
 import MDXDetails from '@theme/MDXComponents/Details';
@@ -20,7 +20,6 @@ import CloudCore from '@site/src/components/cloudcore';
 import WHCode from '@site/src/components/whcode';
 import Collapsible from '@site/src/components/collapsible';
 import FAQ from '@site/src/components/faqs';
-import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
@@ -28,7 +27,6 @@ import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
-import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
 import EventsFeed from '@site/src/components/events';
 import { DiscourseFeed, DiscourseHelpFeed } from '@site/src/components/discourse';
@@ -43,16 +41,17 @@ import CommunitySpotlightList from '@site/src/components/communitySpotlightList'
 import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
-import detailsToggle from '@site/src/components/detailsToggle';
+import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
 
 const MDXComponents = {
-  head: MDXHead,
+  Head,
   code: MDXCode,
   a: MDXA,
   pre: MDXPre,
-  details: MDXDetails,
+  details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274
+  Details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
   h1: (props) => <MDXHeading as="h1" {...props} />,
@@ -72,7 +71,6 @@ const MDXComponents = {
   Collapsible: Collapsible,
   DocCarousel: DocCarousel,
   FAQ: FAQ,
-  FAQList: FAQList,
   File: File,
   Hero: Hero,
   Lightbox: Lightbox,
@@ -85,7 +83,6 @@ const MDXComponents = {
   WHCode: WHCode,
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
-  Var: Var,
   Term: Term,
   EventsFeed: EventsFeed,
   DiscourseFeed: DiscourseFeed,
@@ -95,7 +92,7 @@ const MDXComponents = {
   dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
-  detailsToggle: detailsToggle,
+  DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
 };

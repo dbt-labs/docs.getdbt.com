@@ -4,12 +4,17 @@ sidebar_label: "Project recommendations"
 description: "dbt Explorer provides recommendations that you can take to improve the quality of your dbt project."
 ---
  
-dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the Discovery API.
+dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
-Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing. 
+- Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing.
+- These recommendations provide insight into how you can create a better-documented, better-tested, and better-built dbt project, creating more trust and less confusion.
+- For a seamless and consistent experience, recommendations use `dbt_project_evaluator`'s pre-defined settings and don't import customizations applied to your package or project.
 
-These recommendations provide insight into how you can build a more well documented, well tested, and well built project, leading to less confusion and more trust.
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
+<ExplorerCourse />
+
+## Recommendations page
 The Recommendations overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 
 
 - **Model test coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with at least one dbt test configured on them.
@@ -18,6 +23,7 @@ The Recommendations overview page includes two top-level metrics measuring the t
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-overview.png" width="80%" title="Example of the Recommendations overview page with project metrics and the recommendations for all resources in the project"/>
 
 ## List of rules
+The following table lists the rules currently defined in the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/). 
 
 | Category | Name | Description | Package Docs Link |
 | --- | --- | --- | --- |
@@ -37,7 +43,7 @@ The Recommendations overview page includes two top-level metrics measuring the t
 
 ## The Recommendations tab
 
-Models, sources and exposures each also have a Recommendations tab on their resource details page, with the specific recommendations that correspond to that resource:
+Models, sources, and exposures each also have a **Recommendations** tab on their resource details page, with the specific recommendations that correspond to that resource:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-tab.png" width="80%" title="Example of the Recommendations tab "/>
 

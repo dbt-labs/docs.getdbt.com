@@ -41,36 +41,33 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ## Create a Databricks workspace
 
-1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information and click **Continue**.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
     </div>
 
-2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
-3. Check your email to complete the verification process.
-4. After setting up your password, you will be guided to choose a subscription plan. Select the `Premium` or `Enterprise` plan to access the SQL Compute functionality required for using the SQL warehouse for dbt. We have chosen `Premium` for this tutorial. Click **Continue** after selecting your plan.
+2. On the next screen, select your cloud provider. This tutorial uses AWS as the cloud provider, but if you use Azure or GCP internally, please select your platform. The setup process will be similar. Do not select the **Get started with Community Edition** option, as this will not provide the required compute for this guide. 
+
+        <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/choose_provider.png" title="Choose cloud provider" />
+    </div>
+
+3. Check your email and complete the verification process.
+
+4. After completing the verification processes, you will be brought to the first setup screen. Databricks defaults to the `Premium` plan and you can change the trial to `Enterprise` on this page.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
     </div>
 
-5. Click **Get Started** when you come to this below page and then **Confirm** after you validate that you have everything needed.
+5. Now, it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, and more so into one place.  Provide the name of your workspace, choose the appropriate AWS region, and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_1.png" />
-    </div>
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
+    <Lightbox src="/img/databricks_tutorial/images/start_quickstart.png" title="Create AWS resources" />
     </div>
 
-6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for the purpose of this tutorial. 
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
-    </div>
-
-7. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
+6. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
@@ -80,7 +77,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 If you get a session error and don’t get redirected to this page, you can go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
 :::
 
-8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
+7. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/parameters.png" title="Parameters" />
     </div>    
@@ -89,11 +86,11 @@ If you get a session error and don’t get redirected to this page, you can go b
     <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
     </div>    
 
-10. Go back to the Databricks tab. You should see that your workspace is ready to use.
+8. Go back to the Databricks tab. You should see that your workspace is ready to use.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/workspaces.png" title="A Databricks Workspace" />
     </div>
-11. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
+9. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
 
 ## Load data
 
@@ -169,16 +166,63 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
 
-If you want to use Partner Connect, refer to [Connect to dbt Cloud using Partner Connect](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-using-partner-connect) in the Databricks docs for instructions. 
+## Set up the integration from Partner Connect
 
-If you want to connect manually, refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+:::note
+ Partner Connect is intended for trial partner accounts. If your organization already has a dbt Cloud account, connect manually. Refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+:::
 
-## Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+To connect dbt Cloud to Databricks using Partner Connect, do the following:
+
+1. In the sidebar of your Databricks account, click **Partner Connect**.
+
+2. Click the **dbt tile**.
+
+3. Select a catalog from the drop-down list, and then click **Next**. The drop-down list displays catalogs you have read and write access to. If your workspace isn't `<UC>-enabled`, the legacy Hive metastore (`hive_metastore`) is used.
+
+5. If there are SQL warehouses in your workspace, select a SQL warehouse from the drop-down list. If your SQL warehouse is stopped, click **Start**.
+
+6. If there are no SQL warehouses in your workspace:
+
+   1. Click **Create warehouse**. A new tab opens in your browser that displays the **New SQL Warehouse** page in the Databricks SQL UI.
+   2. Follow the steps in [Create a SQL warehouse](https://docs.databricks.com/en/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse) in the Databricks docs.
+   3. Return to the Partner Connect tab in your browser, and then close the **dbt tile**.
+   4. Re-open the **dbt tile**.
+   5. Select the SQL warehouse you just created from the drop-down list.
+
+7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you have read and write access to. You can repeat this step to add multiple schemas.
+
+   Partner Connect creates the following resources in your workspace:
+
+   - A Databricks service principal named **DBT_CLOUD_USER**.
+   - A Databricks personal access token that is associated with the **DBT_CLOUD_USER** service principal.
+  
+   Partner Connect also grants the following privileges to the **DBT_CLOUD_USER** service principal:
+
+   - (Unity Catalog) **USE CATALOG**: Required to interact with objects within the selected catalog.
+   - (Unity Catalog) **USE SCHEMA**: Required to interact with objects within the selected schema.
+   - (Unity Catalog) **CREATE SCHEMA**: Grants the ability to create schemas in the selected catalog.
+   - (Hive metastore) **USAGE**: Required to grant the **SELECT** and **READ_METADATA** privileges for the schemas you selected.
+   - **SELECT**: Grants the ability to read the schemas you selected.
+   - (Hive metastore) **READ_METADATA**: Grants the ability to read metadata for the schemas you selected.
+   - **CAN_USE**: Grants permissions to use the SQL warehouse you selected.
+
+8. Click **Next**.
+
+   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial dbt Cloud account.
+
+9. Click **Connect to dbt Cloud**.
+
+   A new tab opens in your web browser, which displays the getdbt.com website.
+
+10. Complete the on-screen instructions on the getdbt.com website to create your trial dbt Cloud account.
+
+## Set up a dbt Cloud managed repository
 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
+
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
@@ -378,7 +422,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 #### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
-<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/unique-resource-names" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 </div>

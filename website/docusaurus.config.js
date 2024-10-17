@@ -1,6 +1,7 @@
-const path = require("path");
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import path from "path";
+import math from "remark-math";
+import katex from "rehype-katex";
+const { themes } = require('prism-react-renderer')
 
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
@@ -78,13 +79,13 @@ var siteSettings = {
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_biweekly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=i[…]ly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "tyler-rouze",
+    communitySpotlightMember: "meagan-palmer",
     prism: {
       theme: (() => {
-        var theme = require("prism-react-renderer/themes/nightOwl");
+        var theme = themes.nightOwl;
         // Add additional rule to nightowl theme in order to change
         // the color of YAML keys (to be different than values).
         // There weren't many Prism themes that differentiated
@@ -115,20 +116,20 @@ var siteSettings = {
           position: "left",
           items: [
             {
-              label: "Product Docs",
+              label: "Product docs",
               to: "/docs/introduction",
               activeBaseRegex: "docs/(?!(dbt-cloud))",
             },
             {
-              label: "API Docs",
+              label: "API docs",
               to: "/docs/dbt-cloud-apis/overview",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Release Notes",
+              label: "Release notes",
               to: "/docs/dbt-versions/dbt-cloud-release-notes",
             },
           ],
@@ -153,16 +154,12 @@ var siteSettings = {
               href: "https://learn.getdbt.com",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Developer Blog",
+              label: "Developer blog",
               to: "/blog",
-            },
-            {
-              label: "Glossary",
-              to: "/glossary",
             },
           ],
         },
@@ -171,7 +168,7 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Join the Community",
+              label: "Join the dbt Community",
               to: "/community/join",
             },
             {
@@ -179,7 +176,7 @@ var siteSettings = {
               to: "/community/contribute",
             },
             {
-              label: "Community Forum",
+              label: "Community forum",
               to: "/community/forum",
             },
             {
@@ -204,6 +201,13 @@ var siteSettings = {
       links: [
         {
           html: `
+          <script 
+            src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="9d421bf3-96b8-403e-9900-6fb059132264" 
+            data-ft-workflow-tag="docs" 
+            config-ft-greeting-message="Welcome to dbt Product docs! Ask a question."
+            config-ft-widget-header-title = "Ask a question"
+          ></script>
+
           <div class='footer__items'>
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
@@ -246,11 +250,14 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
+          exclude: [
+            'hover-terms.md'
+          ]
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
           blogDescription:
-            "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
+            "Find tutorials, product updates, and developer insights in the dbt Developer blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,

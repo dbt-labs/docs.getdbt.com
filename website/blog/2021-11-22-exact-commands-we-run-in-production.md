@@ -42,7 +42,7 @@ Some projects can afford to have older data in the warehouse, others can’t.
 
 ### 3) Simplify your regularly scheduled runs
 
-The more complex your run commands are, the harder it gets to maintain this in the long run. Feel free to rely on dbt’s DAG (more info on why we <3 DAGs in my colleagues Christine + Randy’s [modular data modeling technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/) post).
+The more complex your run commands are, the harder it gets to maintain this in the long run. Feel free to rely on dbt’s DAG (more info on why we &lt;3 DAGs in my colleagues Christine + Randy’s [modular data modeling technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/) post).
 
 Given those principles, we’ll now take a look at the most common run commands for production jobs, and why we think they could work for your organization! Do note that yours may vary slightly (depending on your team’s specific needs), but as long as you stick to the principles mentioned above, your project should be in good shape!
 

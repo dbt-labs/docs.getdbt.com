@@ -40,26 +40,41 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
    
+    - North America: https://YOUR_ACCESS_URL/cloud-cli
+    - EMEA: https://emea.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
+    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
+    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
+  
+3. Follow the banner instructions and download the config file to:
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
 
   The config file looks like this:
 
-    ```yaml
-    version: "1"
-    context:
-        active-project: "<project id from the list below>"
-        active-host: "<active host from the list>"
-        defer-env-id: "<optional defer environment id>"
-    projects:
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-    ```
+  ```yaml
+  version: "1"
+  context:
+    active-project: "<project id from the list below>"
+    active-host: "<active host from the list>"
+    defer-env-id: "<optional defer environment id>"
+  projects:
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"
+  
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"  
+  ```
 
 3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
@@ -79,7 +94,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         project-id: PROJECT_ID
     ```
 
-   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
+   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
 
 5. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
 
@@ -93,7 +108,6 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 2. Then select **Profile Settings**, then **Credentials**.
 3. Click on your project and scroll to the **Environment Variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
-   - Note, when setting up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), using [environment variables](/docs/build/environment-variables) like `{{env_var('DBT_WAREHOUSE')}}` is not supported. You should use the actual credentials instead.
 
 ## Use the dbt Cloud CLI
 
@@ -103,12 +117,41 @@ The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) a
 - Automatically defers build artifacts to your Cloud project's production environment.
 - Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
-
+ 
 :::tip Use the <code>--help</code> flag
 As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+ 
+### Lint SQL files 
+
+From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI.
+
+The available SQLFluff commands are: 
+
+- `lint` &mdash; Lint SQL files by passing a list of files or from standard input (stdin).
+- `fix` &mdash; Fix SQL files.
+- `format` &mdash; Autoformat SQL files.
+
+
+To lint SQL files, run the command as follows:  
+
+```shell
+dbt sqlfluff lint [PATHS]... [flags]
+```
+
+When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
+
+To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command. 
+
+#### Considerations
+
+When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
+
+- dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
+- For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
+- An SQLFluff command will return an exit code of 0 if it ran with any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">
@@ -119,7 +162,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 <TabItem value="Create a .dbt directory">
 
   1. Clone your dbt project repository locally.
-  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
 
      ```bash
      mkdir ~/.dbt
@@ -151,5 +194,12 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 </Tabs>
 
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+</Expandable>
+
+<Expandable alt_header="How to skip artifacts from being downloaded">
+
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+
 
 </Expandable>

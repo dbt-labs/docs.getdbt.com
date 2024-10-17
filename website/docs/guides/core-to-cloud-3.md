@@ -36,7 +36,7 @@ You may have already started your move to dbt Cloud and are looking for tips to 
 In dbt Cloud, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to dbt Cloud or are looking to streamline their connection setup. Here are some tips and caveats to consider:
 
 ### Tips
-- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, eliminating the need for manual updates and version discrepancies.  You can go versionless and **[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)** to always get the latest features and early access to new functionality for your dbt project.
+- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, eliminating the need for manual updates and version discrepancies.  You can go [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) to always get the latest features and early access to new functionality for your dbt project.
 - dbt Cloud supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
 - Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your dbt Cloud environment settings. It gives you more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the dbt Cloud adapter user interface, you can use Extended Attributes to set it.
@@ -99,11 +99,11 @@ dbt Cloud provides robust orchestration that enables you to schedule, run, and m
 
 ### Tips
 
-- Enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
+- Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - dbt Cloud automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/deploy/deploy-environments#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
-- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion--) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
+- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats

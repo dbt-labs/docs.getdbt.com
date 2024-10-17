@@ -9,12 +9,12 @@ pagination_prev: "docs/cloud/manage-access/about-user-access"
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
-You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
+You must be an **Account Admin** or an **Account Viewer** to access the audit log and this feature is only available on Enterprise plans.
 
 The dbt Cloud audit log stores all the events that occurred in your organization in real-time, including:
 
 - For events within 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
-- For events beyond 90 days, **Account Admins** can [export all events](#exporting-logs) by using **Export All**.
+- For events beyond 90 days, **Account Admins** and **Account Viewers** can [export all events](#exporting-logs) by using **Export All**.
 
 ## Accessing the audit log
 
@@ -60,7 +60,6 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | Event Name                 | Event Type                               | Description                                            |
 | -------------------------- | ---------------------------------------- | ------------------------------------------------------ |
 | Auth Provider Changed      | auth_provider.Changed          | Authentication provider settings changed               |
-| Credential Login Failed    | auth.CredentialsLoginFailed    | User login via username and password failed            |
 | Credential Login Succeeded | auth.CredentialsLoginSucceeded | User successfully logged in with username and password |
 | SSO Login Failed           | auth.SsoLoginFailed            | User login via SSO failed                              |
 | SSO Login Succeeded        | auth.SsoLoginSucceeded         | User successfully logged in via SSO  
@@ -170,13 +169,6 @@ You can use the audit log to export all historical audit results for security, c
 
 - **For events within 90 days** &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 
-- **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
+- **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin or Account Viewer will receive an email link to download a CSV file of all the events that occurred in your organization.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="95%" title="View audit log export options"/>
-
-### Azure Single-tenant
-
-For users deployed in [Azure single tenant](/docs/cloud/about-cloud/tenancy), while the **Export All** button isn't available, you can conveniently use specific APIs to access all events:
-
-- [Get recent audit log events CSV](/dbt-cloud/api-v3#/operations/Get%20Recent%20Audit%20Log%20Events%20CSV) &mdash; This API returns all events in a single CSV without pagination.
-- [List recent audit log events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) &mdash; This API returns a limited number of events at a time, which means you will need to paginate the results.

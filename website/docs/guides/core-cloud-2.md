@@ -20,6 +20,20 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
+<Expandable alt_header="What is dbt Cloud and dbt Core?">
+
+   - dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+     - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+     - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
+     - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+     - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
+     - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+
+   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+- dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+
+</Expandable>
+
 ## What you'll learn
 Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on dbt Cloud to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
@@ -35,7 +49,7 @@ The guide outlines the following steps:
 
 ## Considerations
 
-If your team has is using dbt Core today, you could be reading this guide because:
+If your team is using dbt Core today, you could be reading this guide because:
 - You’ve realized the burden of maintaining that deployment.
 - The person who set it up has since left.
 - You’re interested in what dbt Cloud could do to better manage the complexity of your dbt deployment, democratize access to more contributors, or improve security and governance practices.
@@ -46,13 +60,13 @@ The most important things you need to think about when moving from dbt Core to d
 
 - How is your team structured? Are there natural divisions of domain?
 - Should you have one project or multiple? Which dbt resources do you want to standardize & keep central?
-- Who should have permissions to view, develop, administer?
+- Who should have permission to view, develop, and administer?
 - How are you scheduling your dbt models to run in production?
 - How are you currently managing Continuous integration/Continuous deployment (CI/CD) of logical changes (if at all)?
 - How do your data developers prefer to work?
 - How do you manage different data environments and the different behaviors in those environments?
 
-dbt Cloud provides standard mechanisms for tackling these considerations, all of which delivers long-term benefits to your organization:
+dbt Cloud provides standard mechanisms for tackling these considerations, all of which deliver long-term benefits to your organization:
 - Cross-team collaboration
 - Access control
 - Orchestration
@@ -141,7 +155,7 @@ After [setting the foundations of dbt Cloud](https://docs.getdbt.com/guides/core
 Once you’ve confirmed that dbt Cloud orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you’re still using an external orchestrator (such as Airflow), and you’ve swapped out `dbt-core` execution for dbt Cloud execution (through the [API](/docs/dbt-cloud-apis/overview)).
 
 Familiarize your team with dbt Cloud's [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
-- **Version management:** Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, removing the hassle of manual updates and version discrepancies. You can go versionless by opting to **[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)** to always get the latest features and early access to new functionality for your dbt project.
+- **Version management:** Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, removing the hassle of manual updates and version discrepancies. You can go [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) to always get the latest features and early access to new functionality for your dbt project.
 - **Development tools**: Use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your dbt projects.
 - **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in dbt Cloud, which streamlines project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to the job details. Access comprehensive logs for all job runs to help with troubleshooting.
@@ -181,6 +195,7 @@ This guide should now have given you some insight and equipped you with a framew
 ## What’s next?
 
 <ConfettiTrigger>
+
 
 Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to dbt Cloud.
 

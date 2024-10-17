@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Cloud and Azure Synapse Analytics (Preview)"
+title: "Quickstart for dbt Cloud and Azure Synapse Analytics"
 id: "azure-synapse-analytics"
 level: 'Beginner'
 icon: 'azure-synapse-analytics'
@@ -297,7 +297,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 #### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
-<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/unique-resource-names" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 </div>

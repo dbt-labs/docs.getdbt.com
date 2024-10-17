@@ -46,7 +46,6 @@ flags:
     error: # Previously called "include"
     warn: # Previously called "exclude"
     silence: # To silence or ignore warnings
-      - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
 
@@ -82,6 +81,7 @@ DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
 ...
 ```
 
+Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run` not `dbt --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}' run`.
 
 
 <File name='profiles.yml'>
@@ -130,7 +130,6 @@ config:
     warn: # Previously called "exclude"
       - NoNodesForSelectionCriteria
     silence: # Silence or ignore warnings
-      - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
 

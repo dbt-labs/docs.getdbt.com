@@ -7,20 +7,7 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.5">
-
-| Option              | Description                                                                                                                              | Required?                               | Example                  |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).      | Optional                                | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                     | Optional                                | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                         | Optional                                | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                               | Optional                                | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                         | Required if `clustered_by` is specified | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table | Optional                                | `{'this.is.my.key': 12}` |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -30,8 +17,9 @@ When materializing a model as `table`, you may include several optional configs 
 | partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
 | liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | SQL, Python   | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL           | `{'this.is.my.key': 12}` |
+| buckets             | The number of buckets to create while clustering.                                                                                                                                                                  | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
+| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table.                                                                          | Optional                                  | SQL           | `{'this.is.my.key': 12}` |
+| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python   | `zstd`                   |
 
 </VersionBlock>
 
@@ -66,7 +54,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
 | buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
 | tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*  | `{'this.is.my.key': 12}` |
-| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL+, Python+ | `{'my_tag': 'my_value'}  | 
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL+, Python+ | `{'my_tag': 'my_value'}`  | 
 
 \* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
@@ -423,31 +411,31 @@ To take advantage of this capability, you will need to add compute blocks to you
 
 ```yaml
 
-<profile-name>:
-  target: <target-name> # this is the default target
+profile-name:
+  target: target-name # this is the default target
   outputs:
-    <target-name>:
+    target-name:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required        
-      host: [yourorg.databrickshost.com] # Required
+      catalog: optional catalog name if you are using Unity Catalog
+      schema: schema name # Required        
+      host: yourorg.databrickshost.com # Required
 
       ### This path is used as the default compute
-      http_path: [/sql/your/http/path] # Required        
+      http_path: /sql/your/http/path # Required        
       
       ### New compute section
       compute:
 
         ### Name that you will use to refer to an alternate compute
        Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: '/sql/your/http/path' # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: '/some/other/path' # Required of each alternate compute
       ...
 
-    <target-name>: # additional targets
+    target-name: # additional targets
       ...
       ### For each target, you need to define the same compute,
       ### but you can specify different paths
@@ -455,11 +443,11 @@ To take advantage of this capability, you will need to add compute blocks to you
 
         ### Name that you will use to refer to an alternate compute
         Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: '/sql/your/http/path' # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: '/some/other/path' # Required of each alternate compute
       ...
 
 ```
@@ -621,7 +609,7 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.6" lastVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
 ## Materialized views and streaming tables
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
@@ -788,6 +776,15 @@ These properties are sent directly to Databricks without validation in dbt, so b
 :::
 
 One application of this feature is making `delta` tables compatible with `iceberg` readers using the [Universal Format](https://docs.databricks.com/en/delta/uniform.html).
+
+```sql
+{{ config(
+    tblproperties={
+      'delta.enableIcebergCompatV2' = 'true'
+      'delta.universalFormat.enabledFormats' = 'iceberg'
+    }
+ ) }}
+```
 
 <VersionBlock firstVersion="1.7">
 

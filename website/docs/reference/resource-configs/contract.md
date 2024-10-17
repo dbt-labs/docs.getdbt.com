@@ -2,7 +2,7 @@
 resource_types: [models]
 description: "When the contract configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml, such as name and data_type, as well as any additional constraints supported by the data platform."
 datatype: "{<dictionary>}"
-default_value: {contract: false}
+default_value: {enforced: false}
 id: "contract"
 ---
 
@@ -13,6 +13,8 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 - Additional [`constraints`](/reference/resource-properties/constraints), as supported for this materialization and data platform
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
+
+## Data type aliasing
 
 <VersionBlock lastVersion="1.6">
 
@@ -42,11 +44,13 @@ models:
 </File>
 </VersionBlock>
 
+## Size, precision, and scale
+
 When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/best-practices/writing-custom-generic-tests).
 
 Note that you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides a warning if you don't specify precision and scale when providing a numeric data type.
 
-## Example
+### Example
 
 <File name='models/dim_customers.yml'>
 

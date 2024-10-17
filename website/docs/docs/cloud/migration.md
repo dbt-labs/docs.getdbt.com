@@ -7,33 +7,45 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Labs is in the process of migrating dbt Cloud to a new _cell-based architecture_. This architecture will be the foundation of dbt Cloud for years to come, and will bring improved scalability, reliability, and security to all customers and users of dbt Cloud.
+dbt Labs is in the process of rolling out a new cell-based architecture for dbt Cloud. This architecture provides the foundation of dbt Cloud for years to come, and brings improved reliability, performance, and consistency to users of dbt Cloud.
 
-There is some preparation required to ensure a successful migration.
+We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
-Migrations are being scheduled on a per-account basis. _If you haven't received any communication (either with a banner or by email) about a migration date, you don't need to take any action at this time._ dbt Labs will share migration date information with you, with appropriate advance notice, before we complete any migration steps in the dbt Cloud backend.
+Your account will be automatically migrated on or after its scheduled date. However, if you use certain features, you must take action before that date to avoid service disruptions.
 
-This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
+## Recommended actions
 
-## Pre-migration checklist
+We highly recommended you take these actions:
 
-Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account. Most of your configurations will be migrated automatically, but a few will require manual intervention. 
+- Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations might be voided during the migration. You can resend user invitations after the migration is complete.
+- Commit unsaved changes in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes might be lost during migration.
+- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be unavailable from dbt Cloud after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
 
-If your account is scheduled for migration, you will see a banner indicating your migration date when you log in. If you don't see a banner, you don't need to take any action.
+## Required actions
 
-1. **IP addresses** &mdash; dbt Cloud will be using new IPs to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall and include it in any database grants. All six of the IPs below should be added to allowlists.
-    * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
-    * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
-2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations after the migration is complete.
-3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you haven't completed the Auth0 migration, dbt Labs recommends doing that before starting the mult-cell migration to avoid service disruptions.
+These actions are required to prevent users from losing access dbt Cloud:
 
-## Post-migration
+- If you still need to, complete [Auth0 migration for SSO](/docs/cloud/manage-access/auth0-migration) before your scheduled migration date to avoid service disruptions. If you've completed the Auth0 migration, your account SSO configurations will be transferred automatically. 
+- Update your IP allow lists. dbt Cloud will be using new IPs to access your warehouse post-migration. Allow inbound traffic from all of the following new IPs in your firewall and include them in any database grants:
 
-After migration, if you completed all the [Pre-migration checklist](#pre-migration-checklist) items, your dbt Cloud resources and jobs will continue to work as they did before. 
+    - `52.3.77.232` 
+    - `3.214.191.130`
+    - `34.233.79.135`
 
-You have the option to log in to dbt Cloud at a different URL:
- * If you were previously logging in at `cloud.getdbt.com`, you should instead plan to login at `us1.dbt.com`. The original URL will still work, but you’ll have to click through to be redirected upon login.
- * You may also log in directly with your account’s unique [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account).
+    Keep the old dbt Cloud IPs listed until the migration is complete.
 
-:::info Login with GitHub
-Users who previously used the "Login with GitHub" functionality will no longer be able to use this method to login to dbt Cloud after migration. To continue accessing your account, you can use your existing email and password.
+## Post-migration​
+
+Complete all of these items to ensure your dbt Cloud resources and jobs will continue working without interruption.
+
+Use one of these two URL login options:
+
+- `us1.dbt.com.` If you were previously logging in at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login.
+- `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
+Check out [access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information.
+
+Remove the following old IP addresses from your firewall and database grants: 
+
+- `52.45.144.63` 
+- `54.81.134.249`
+- `52.22.161.231`

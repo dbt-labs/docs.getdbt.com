@@ -1,7 +1,4 @@
-This section will guide you on how to use the Google Sheets integration. Query metrics using other tools:
-- [First-class integrations](/docs/cloud-integrations/avail-sl-integrations) with Tableau, Hex, and more.
-- The [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview).
-- [Exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
+The Google Sheets integration allows you to query your metrics using Google Sheets. This section will guide you on how to connect and use the Google Sheets integration. 
 
 To query your metrics using Google Sheets:
 1. Make sure you have a [Gmail](http://gmail.com/) account.

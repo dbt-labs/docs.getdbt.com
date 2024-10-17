@@ -4,16 +4,7 @@ id: sl-architecture
 description: "dbt Semantic Layer product architecture and related questions."
 sidebar_label: "Semantic Layer architecture"
 tags: [Semantic Layer]
-pagination_next: null
 ---
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
- </VersionBlock>
 
 The dbt Semantic Layer allows you to define metrics and use various interfaces to query them. The Semantic Layer does the heavy lifting to find where the queried data exists in your data platform and generates the SQL to make the request (including performing joins). 
 
@@ -25,7 +16,7 @@ The dbt Semantic Layer includes the following components:
 
 
 | Components | Information | dbt Core users | Developer plans |  Team plans | Enterprise plans | License |
-| --- | --- | :---: | :---: | :---: | :---: |
+| --- | --- | :---: | :---: | :---: | :---: | :---: |
 | **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in dbt allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | BSL package (code is source available) |
 | **dbt Semantic interfaces**| A configuration spec for defining metrics, dimensions, how they link to each other, and how to query them. The [dbt-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) is available under Apache 2.0. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise)|
 | **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through dbt Cloud and is available to all users on dbt version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
