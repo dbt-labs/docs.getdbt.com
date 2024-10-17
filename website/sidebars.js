@@ -301,9 +301,9 @@ const sidebarSettings = {
             },
           ],
         },
-      ],
-    },
-    {
+        ],
+      },
+      {
       type: "category",
       label: "Build dbt projects",
       collapsed: true,

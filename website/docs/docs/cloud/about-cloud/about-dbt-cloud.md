@@ -29,6 +29,12 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
     icon="dbt-bit"/>
 
 <Card
+    title="Visual editor (beta)"
+    body="Develop with the visual editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    link="/docs/cloud/visual-editor"
+    icon="dbt-bit"/>
+
+<Card
     title="Manage environments"
     body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
     link="/docs/environments-in-dbt"
@@ -99,6 +105,6 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/guides)
+- [Quickstart guides](/docs/get-started-dbt)
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 
