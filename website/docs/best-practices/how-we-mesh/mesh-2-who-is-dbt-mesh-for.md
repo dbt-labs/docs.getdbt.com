@@ -25,7 +25,7 @@ Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to sh
   Additionally, prioritize teams that manage strategic data assets that need to be shared widely. This ensures that dbt Mesh will help your teams deliver concrete value quickly.
 - Bi-directional project dependencies -- currently, projects in dbt Mesh are treated like dbt resources in that they cannot depend on each other. However, many teams may want to be able to share data assets back and forth between teams. 
   
-  We've added support for [enabling bidirectional dependencies](/best-practices/how-we-mesh/mesh-3-structures#cycle-detection) across projects. <Lifecycle status="beta"/>
+  We've added support for [enabling bidirectional dependencies](/best-practices/how-we-mesh/mesh-3-structures#cycle-detection) across projects.
 
 If this sounds like your organization, dbt Mesh is the architecture you should pursue. ✅
 

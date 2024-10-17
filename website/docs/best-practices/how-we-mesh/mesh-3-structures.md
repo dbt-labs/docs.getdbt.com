@@ -66,7 +66,7 @@ Since the launch of dbt Mesh, the most common pattern we've seen is one where pr
 
 Users may need to contribute models across multiple projects and this is fine. There will be some friction doing this, versus a single repo, but this is _useful_ friction, especially if upstreaming a change from a “spoke” to a “hub.” This should be treated like making an API change, one that the other team will be living with for some time to come. You should be concerned if your teammates find they need to make a coordinated change across multiple projects very frequently (every week), or as a key prerequisite for ~20%+ of their work.
 
-### Cycle detection <Lifecycle status="beta"/>
+### Cycle detection
 
 import CycleDetection from '/snippets/_mesh-cycle-detection.md';
 
