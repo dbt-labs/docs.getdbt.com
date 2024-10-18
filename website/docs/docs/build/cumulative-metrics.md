@@ -29,7 +29,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `measure::name`    | The name of the measure being referenced. Required if using object syntax for `type_params::measure`.  | Optional  |
 | `measure::fill_nulls_with`     | Sets a value (e.g., zero) to replace nulls in the metric definition.    | Optional  |
 | `measure::join_to_timespine` | Boolean indicating if the aggregated measure should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  |
-| `type_params::cumulative_type_params`     | Allows configuration of attributes like `window`, `period_agg`, and `grain_to_date` for cumulative metrics. | Optional  |
+| `type_params::cumulative_type_params`     | Configures the attributes like `window`, `period_agg`, and `grain_to_date` for cumulative metrics. | Optional  |
 | `cumulative_type_params::window`      | Specifies the accumulation window, such as 1 month, 7 days, or 1 year. Cannot be used with `grain_to_date`.   | Optional  |
 | `cumulative_type_params::grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  |
 | `cumulative_type_params::period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  |
