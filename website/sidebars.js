@@ -37,9 +37,8 @@ const sidebarSettings = {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
-      link: { type: "doc", id: "docs/about-setup" },
+      link: { type: "doc", id: "docs/environments-in-dbt" },
       items: [
-        "docs/about-setup",
         "docs/environments-in-dbt",
         {
           type: "category",
