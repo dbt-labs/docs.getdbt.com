@@ -1,17 +1,19 @@
-# styles/custom/BoldUIElements.yml
 extends: existence
 message: "UI elements like '%s' should be bold."
 level: warning
 tokens:
-  # Match UI elements that are not bolded (i.e., not within **), but exclude those starting a sentence or following a list number
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bSave\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bSave as\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bCancel\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bSubmit\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bEdit\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bAccount settings\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bProject details\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bProfile settings\b'
-  - '(?<!^)(?<![.!?]\s)(?<!\d\.\s)\bPersonal profile\b'
+  # Match UI elements that are not bolded (i.e., not within **)
+  - '(?<!\*\*)\bSave\b(?!\*\*)'
+  - '(?<!\*\*)\bSave as\b(?!\*\*)'
+  - '(?<!\*\*)\bCancel\b(?!\*\*)'
+  - '(?<!\*\*)\bSubmit\b(?!\*\*)'
+  - '(?<!\*\*)\bEdit\b(?!\*\*)'
+  - '(?<!\*\*)\bAccount settings\b(?!\*\*)'
+  - '(?<!\*\*)\bProject details\b(?!\*\*)'
+  - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
+  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
+  - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
+  - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
 
-scope: raw  # Ensure the rule is applied before formatting
+scope: 
+  - raw
