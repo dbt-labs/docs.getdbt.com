@@ -36,7 +36,7 @@ You can assign service account tokens to any permission set available in dbt Clo
 
 ### Team plans using service account tokens
 
-The following permissions can be assigned to a service account token on a Team plan. See the [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) article for more information about what these roles are able to do. 
+The following permissions can be assigned to a service account token on a Team plan. Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
 
 - Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
 - Job Admin 
@@ -48,7 +48,7 @@ The following permissions can be assigned to a service account token on a Team p
 
 ### Enterprise plans using service account tokens
 
-The following permissions can be assigned to a service account token on an Enterprise plan. For more details about these permissions, see "[Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions)."
+Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
 
 - Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution. 
 - Account Viewer
