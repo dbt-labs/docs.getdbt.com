@@ -19,6 +19,8 @@ You can configure dbt Cloud to sign your Git commits when using the IDE for deve
 
 
 
+<Lightbox src="/img/docs/dbt-cloud/example-git-signed-commits-setting.png" title="Example of profile setting Signed commits" />
+
 
 ## Upload public key to Git provider 
 
@@ -28,5 +30,5 @@ You can configure dbt Cloud to sign your Git commits when using the IDE for deve
 
 ## Considerations
 
-- The keypair is not tied to any specific account - it exists at the user level. There is a 1:1 relationship between the user and keypair. The same key will be used for signing commits on any accounts the user is a member of.
+- The keypair is not tied to any specific account. It exists at the user level. There is a 1:1 relationship between the user and keypair. The same key will be used for signing commits on any accounts the user is a member of.
 - In order for your Git commits to be marked as "verified", your dbt Cloud email address must be a verified email address with your Git provider.
