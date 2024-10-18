@@ -15,12 +15,12 @@ You can configure dbt Cloud to sign your Git commits when using the IDE for deve
 - GitHub or GitLab is your Git provider. Currently, Azure DevOps is not supported.
 - You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
 
-## Generate GPG keypair 
+## Generate GPG keypair in dbt Cloud
 
 
 
 
-## Upload to Git provider 
+## Upload public key to Git provider 
 
 - GitHub instructions: https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account
 - GitLab instructions: https://docs.gitlab.com/ee/user/project/repository/signed_commits/gpg.html
@@ -28,5 +28,5 @@ You can configure dbt Cloud to sign your Git commits when using the IDE for deve
 
 ## Considerations
 
-- The keypair is not tied to any specific account - it exists at the user level. There is a 1:1 relationship between user and keypair. The same key will be used for signing commits on any accounts the user is a member of
-- In order for commit’s to be marked as verified, the user’s dbt cloud email address must be a verified email address within their git provider
+- The keypair is not tied to any specific account - it exists at the user level. There is a 1:1 relationship between the user and keypair. The same key will be used for signing commits on any accounts the user is a member of.
+- In order for your Git commits to be marked as "verified", your dbt Cloud email address must be a verified email address with your Git provider.
