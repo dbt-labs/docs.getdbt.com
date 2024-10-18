@@ -61,7 +61,7 @@ function QuickstartList({ quickstartData }) {
 
     // Update the URL with the new search parameters
     history.replace({ search: params.toString() });
-};
+  };
 
   // Handle all filters
   const handleDataFilter = () => {
@@ -98,6 +98,30 @@ function QuickstartList({ quickstartData }) {
     handleDataFilter();
   }, [selectedTags, selectedLevel, searchInput]); // Added searchInput to dependency array
 
+  // Set the featured guides that will show as CTAs in the hero section
+  // The value of the tag must match a tag in the frontmatter of the guides in order for the filter to apply after clicking
+  const heroCTAs = [
+    {
+      title: 'Quickstart guides',
+      value: 'Quickstart'
+    },
+    {
+      title: 'Use Jinja to improve your SQL code',
+      value: 'Jinja'
+    },
+    {
+      title: 'Orchestration',
+      value: 'Orchestration'
+    },
+  ];
+
+  // Function to handle CTA clicks
+  const handleCallToActionClick = (value) => {
+    const params = new URLSearchParams(location.search);
+    params.set('tags', value);
+    history.replace({ search: params.toString() });
+  };
+
   return (
     <Layout>
       <Head>
@@ -111,6 +135,13 @@ function QuickstartList({ quickstartData }) {
         showGraphic={false}
         customStyles={{ marginBottom: 0 }}
         classNames={styles.quickstartHero}
+        callToActions={heroCTAs.map(guide => ({
+          title: guide.title,
+          href: guide.href,
+          onClick: () => handleCallToActionClick(guide.value),
+          newTab: guide.newTab
+        }))}
+        callToActionsTitle={'Popular guides'}
       />
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
@@ -135,7 +166,7 @@ function QuickstartList({ quickstartData }) {
         </div>
       </section>
     </Layout>
-  )
+  );
 }
 
 export default QuickstartList;
