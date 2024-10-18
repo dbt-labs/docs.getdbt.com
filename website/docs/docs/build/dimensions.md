@@ -41,7 +41,7 @@ Refer to the following example to see how dimensions are used in a semantic mode
 semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
-    model: {{ ref("fact_transactions") }}
+    model: {{ ref('fact_transactions') }}
     defaults:
       agg_time_dimension: order_date
 # --- entities --- 
@@ -122,7 +122,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (hourly, daily, weekly, and so on).
+You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).
 
 <Tabs queryString="dimension">
 
@@ -161,6 +161,8 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
+<VersionBlock firstVersion="1.9">
+
 `time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
 Our supported granularities are:
@@ -172,6 +174,7 @@ Our supported granularities are:
 * hour
 * day
 * week
+* month
 * quarter
 * year
 
@@ -203,6 +206,50 @@ measures:
     expr: 1
     agg: sum
 ```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+`time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add daily granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to daily. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from daily to monthly. However, you can't go from a coarser grain to a finer grain (monthly to daily).
+
+Our supported granularities are:
+* day
+* week
+* month
+* quarter
+* year
+
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+
+```yaml
+dimensions: 
+  - name: created_at
+    type: time
+    label: "Date of creation"
+    expr: ts_created # ts_created is the underlying column name from the table 
+    is_partition: True 
+    type_params:
+      time_granularity: day 
+  - name: deleted_at
+    type: time
+    label: "Date of deletion"
+    expr: ts_deleted # ts_deleted is the underlying column name from the table 
+    is_partition: True 
+    type_params:
+      time_granularity: day 
+
+measures:
+  - name: users_deleted
+    expr: 1
+    agg: sum 
+    agg_time_dimension: deleted_at
+  - name: users_created
+    expr: 1
+    agg: sum
+```
+
+</VersionBlock>
 
 </TabItem>
 
@@ -313,7 +360,7 @@ Additionally, the entity is tagged as `natural` to differentiate it from a `prim
 semantic_models:
   - name: sales_person_tiers
     description: SCD Type II table of tiers for salespeople 
-    model: {{ref(sales_person_tiers)}}
+    model: {{ ref('sales_person_tiers') }}
     defaults:
       agg_time_dimension: tier_start
 
@@ -355,7 +402,7 @@ semantic_models:
       There is a transaction, product, sales_person, and customer id for 
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
-    model: {{ ref(fact_transactions) }}
+    model: {{ ref('fact_transactions') }}
     defaults:
       agg_time_dimension: metric_time
 

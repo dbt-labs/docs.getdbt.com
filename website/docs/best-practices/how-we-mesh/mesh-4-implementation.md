@@ -80,7 +80,7 @@ models:
 ## Split your projects
 
 1. **Move your grouped models into a subfolder**. This will include any model in the selected group, it's associated YAML entry, as well as its parent or child resources as appropriate depending on where this group sits in your DAG.
-   1. Note that just like in your dbt project, circular refereneces are not allowed! Project B cannot have parents and children in Project A, for example.
+   1. Note that just like in your dbt project, circular references are not allowed! Project B cannot have parents and children in Project A, for example.
 2. **Create a new `dbt_project.yml` file** in the subdirectory.
 3. **Copy any macros** used by the resources you moved.
 4. **Create a new `packages.yml` file** in your subdirectory with the packages that are used by the resources you moved.

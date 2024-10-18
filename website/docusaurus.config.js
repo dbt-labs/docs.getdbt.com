@@ -72,19 +72,20 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Register now for Coalesce 2024 ✨ The Analytics Engineering Conference!",
-      backgroundColor: "#7444FD",
+      content: "Join our biweekly demos and see dbt Cloud in action!",
+      backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://coalesce.getdbt.com/register/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2025_coalesce-2024_aw&utm_content=coalesce____&utm_term=all_all__",
+    announcementBarLink:
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=i[…]ly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "meagan-palmer",
     prism: {
       theme: (() => {
-        var theme = themes.nightOwl; 
+        var theme = themes.nightOwl;
         // Add additional rule to nightowl theme in order to change
         // the color of YAML keys (to be different than values).
         // There weren't many Prism themes that differentiated
@@ -200,6 +201,13 @@ var siteSettings = {
       links: [
         {
           html: `
+          <script 
+            src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="9d421bf3-96b8-403e-9900-6fb059132264" 
+            data-ft-workflow-tag="docs" 
+            config-ft-greeting-message="Welcome to dbt Product docs! Ask a question."
+            config-ft-widget-header-title = "Ask a question"
+          ></script>
+
           <div class='footer__items'>
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
