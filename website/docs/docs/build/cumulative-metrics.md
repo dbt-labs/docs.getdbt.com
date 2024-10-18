@@ -1,6 +1,5 @@
 ---
 title: "Cumulative metrics"
-id: cumulative
 description: "Use Cumulative metrics to aggregate a measure over a given window."
 sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
@@ -58,20 +57,19 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
   
 When reading about `type_params::measure`, you may notice there are different ways of writing it:
 - Shorthand syntax &mdash;  To only specify the name of the measure, use a simple string value. This is a shorthand approach when no other attributes are required.
-```
-yaml
-type_params:
-  measure: revenue
-```
+  ```yaml
+  type_params:
+    measure: revenue
+  ```
 - Object syntax &mdash; To add more details or attributes to the measure (such as adding a filter, handling `null` values, or specifying whether to join to a time spine), you must use the object syntax. This allows for additional configuration beyond just the measure's name.
-```
-yaml
-type_params:
-  measure:
-    name: order_total
-    fill_nulls_with: 0
-    join_to_timespine: true
-```
+
+  ```yaml
+  type_params:
+    measure:
+      name: order_total
+      fill_nulls_with: 0
+      join_to_timespine: true
+  ```
 </Expandable>
 
 ### Complete specification
