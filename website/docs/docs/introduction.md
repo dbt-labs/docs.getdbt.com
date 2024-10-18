@@ -13,7 +13,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 ## Test the lint
 
-The the the linting is for a test
+The the linting is for a test
 
 ## Test The Lint
 
