@@ -12,9 +12,7 @@ const sidebarSettings = {
       type: "category",
       label: "Supported data platforms",
       collapsed: true,
-      link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
-        "docs/supported-data-platforms",
         "docs/connect-adapters",
         "docs/trusted-adapters",
         "docs/community-adapters",
