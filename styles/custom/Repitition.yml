@@ -3,4 +3,4 @@ message: "'%s' is repeated!"
 level: warning
 alpha: true
 tokens:
-  - '[^\s]+'
+  - '\b(\w+)\b'
