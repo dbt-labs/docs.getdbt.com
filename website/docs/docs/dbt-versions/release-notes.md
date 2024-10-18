@@ -20,6 +20,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
 
+- **New:** With dbt Mesh, you can now enable bidirectional dependencies across your projects. Previously, dbt enforced dependencies to only go in one direction. dbt checks for cycles across projects and raises errors if any are detected. For details, refer to [Cycle detection](/docs/collaborate/govern/project-dependencies#cycle-detection). There's also the [Intro to dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide to help you learn more best practices. 
+
 <Expandable alt_header="Coalesce 2024 announcements">
 
   Documentation for new features and functionality announced at Coalesce 2024:
