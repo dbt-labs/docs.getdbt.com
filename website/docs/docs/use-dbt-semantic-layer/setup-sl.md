@@ -44,6 +44,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.
 - Learn about commonly asked [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs).
+- [dbt Semantic Layer cookbook recipes](/guides/sl-cookbook-recipes) for more advanced use cases.
 
 ## FAQs
 
