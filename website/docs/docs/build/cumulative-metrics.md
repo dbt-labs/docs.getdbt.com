@@ -27,7 +27,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params`    | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`.  | Required  |
 | `type_params::measure`   | The measure associated with the metric. Supports both shorthand (string) and object syntax. The shorthand is used if only the name is needed, while the object syntax allows specifying additional attributes. | Required  |
 | `measure::name`    | The name of the measure being referenced. Required if using object syntax for `type_params::measure`.  | Optional  |
-| `measure::fill_nulls_with`     | Sets a value (for example, zero) to replace nulls in the metric definition.    | Optional  |
+| `measure::fill_nulls_with`     | Sets a value (for example, 0) to replace nulls in the metric definition.    | Optional  |
 | `measure::join_to_timespine` | Boolean indicating if the aggregated measure should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  |
 | `type_params::cumulative_type_params`     | Configures the attributes like `window`, `period_agg`, and `grain_to_date` for cumulative metrics. | Optional  |
 | `cumulative_type_params::window`      | Specifies the accumulation window, such as 1 month, 7 days, or 1 year. Cannot be used with `grain_to_date`.   | Optional  |
