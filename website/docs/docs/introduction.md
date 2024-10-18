@@ -14,7 +14,7 @@ TEST TEST LIN
 
 ## Test the lint
 
-The the linting is for a test
+The the the linting is for a test
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
