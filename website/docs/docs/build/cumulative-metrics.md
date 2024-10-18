@@ -62,7 +62,7 @@ When reading about `type_params::measure`, you may notice there are different wa
   type_params:
     measure: revenue
   ```
-- Object syntax &mdash; To add more details or attributes to the measure (such as adding a filter, handling `null` values, or specifying whether to join to a time spine), you must use the object syntax. This allows for additional configuration beyond just the measure's name.
+- Object syntax &mdash; To add more details or attributes to the measure (such as adding a filter, handling `null` values, or specifying whether to join to a time spine), you need to use the object syntax. This allows for additional configuration beyond just the measure's name.
 
   ```yaml
   type_params:
