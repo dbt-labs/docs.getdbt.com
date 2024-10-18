@@ -291,7 +291,7 @@ semantic_models:
         agg: sum
 ```
 
-### Parallel subfoldering approach
+### Parallel sub-folder approach
 
 <File name="models/semantic_models/sem_orders.yml" />
 
@@ -341,15 +341,15 @@ semantic_models:
 
 As you can see, the content of the semantic model is identical in both approaches. The key differences are:
 
-1. **File location**: 
+1. **File location**
    - Co-located approach: `models/marts/orders.yml`
-   - Parallel subfoldering approach: `models/semantic_models/sem_orders.yml`
+   - Parallel sub-folder approach: `models/semantic_models/sem_orders.yml`
 
-2. **File naming**:
+2. **File naming**
    - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
-   - Parallel subfoldering approach: Prefixes the file with `sem_` (`sem_orders.yml`)
+   - Parallel sub-folder approach: Prefixes the file with `sem_` (`sem_orders.yml`)
 
-Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel subfoldering approach can be clearer for large existing projects being migrated to use the Semantic Layer.
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the Semantic Layer.
 
 ## Next steps
 
