@@ -1,5 +1,6 @@
 ---
 title: "Cumulative metrics"
+id: cumulative
 description: "Use Cumulative metrics to aggregate a measure over a given window."
 sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
