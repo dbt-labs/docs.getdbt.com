@@ -77,5 +77,6 @@
 .callToAction:hover, .callToAction:active, .callToAction:focus {
   text-decoration: none;
   outline: rgb(4, 115, 119) solid 1px;
+  background-color: rgb(4, 115, 119);
   color: #fff;
 }
