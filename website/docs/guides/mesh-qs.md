@@ -300,6 +300,8 @@ To run your first deployment dbt Cloud job, you will need to create a new dbt Cl
 
 5. After the run is complete, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
 
+For details on how dbt Cloud uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/collaborate/govern/project-dependencies#staging-with-downstream-dependencies).
+
 ## Reference a public model in your downstream project
 
 In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/collaborate/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
