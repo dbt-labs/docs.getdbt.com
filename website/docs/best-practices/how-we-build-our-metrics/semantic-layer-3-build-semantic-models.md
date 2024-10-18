@@ -243,7 +243,7 @@ measures:
 
 Our completed code will look like this, our first semantic model! Here are two examples showing different organizational approaches:
 
-### Co-located approach
+<Expandable alt_header="Co-located approach">
 
 <File name="models/marts/orders.yml" />
 
@@ -290,8 +290,9 @@ semantic_models:
         description: The total tax paid on each order.
         agg: sum
 ```
+</Expandable>
 
-### Parallel sub-folder approach
+<Expandable alt_header="Parallel sub-folder approach">
 
 <File name="models/semantic_models/sem_orders.yml" />
 
@@ -338,6 +339,7 @@ semantic_models:
         description: The total tax paid on each order.
         agg: sum
 ```
+</Expandable>
 
 As you can see, the content of the semantic model is identical in both approaches. The key differences are:
 
