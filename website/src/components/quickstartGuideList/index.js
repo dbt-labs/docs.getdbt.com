@@ -102,7 +102,7 @@ function QuickstartList({ quickstartData }) {
   // The value of the tag must match a tag in the frontmatter of the guides in order for the filter to apply after clicking
   const heroCTAs = [
     {
-      title: 'Quickstart Guides',
+      title: 'Quickstart guides',
       value: 'Quickstart'
     },
     {
