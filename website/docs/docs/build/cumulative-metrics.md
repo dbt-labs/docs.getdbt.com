@@ -18,7 +18,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 <VersionBlock firstVersion="1.9">
 
-| Parameter   | <div style="width:350px">Description</div>    | Type      |
+| Parameter   | <div style={{width:'350px'}}>Description</div>   | Type      |
 |-------------|---------------------------------------------------|-----------|
 | `name`  | The name of the metric.       | Required  |
 | `description`       | The description of the metric.     | Optional  |
