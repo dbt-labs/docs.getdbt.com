@@ -6,7 +6,7 @@ sidebar_label: Git commit signing
 
 # Git commit signing <Lifecycle status="Enterprise" />
 
-To prevent impersonation and enhance security, you can sign your Git commits when pushing them to the repository. Using your signature, a Git provider can cryptographically verify it and mark the commit as "verified", giving people increased confidence about the origin of the commit.
+To prevent impersonation and enhance security, you can sign your Git commits before pushing them to your repository. Using your signature, a Git provider can cryptographically verify a commit and mark it as "verified", providing increased confidence about its origin.
 
 You can configure dbt Cloud to sign your Git commits when using the IDE for development. To set up, enable the feature in dbt Cloud, follow the flow to generate a keypair, and upload the public key to your Git provider to use for signature verification.  
 
