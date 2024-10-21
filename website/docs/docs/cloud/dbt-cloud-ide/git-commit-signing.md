@@ -74,7 +74,7 @@ be displayed by the provider.
 <DetailsToggle alt_header="What if my Git provider requires that all commits are signed?">
 
 If your Git provider is configured to enforce commit verification, then unsigned commits
-will be rejected. To avoid this, ensure that you have follow all previous steps to generate
-a keypair, and upload the public key to the provider.
+will be rejected. To avoid this, ensure that you have followed all previous steps to generate
+a keypair, and uploaded the public key to the provider.
 
 </DetailsToggle>
