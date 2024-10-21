@@ -6,9 +6,9 @@ sidebar_label: Git commit signing
 
 # Git commit signing <Lifecycle status="Enterprise" />
 
-To improve identity protection/impersonation and enhance security, you can sign your Git commits when pushing them to the repository. Using your signature, a Git provider can cryptographically verify it and mark the commit as "verified", giving people increased confidence about the origin of the commit. 
+To prevent impersonation and enhance security, you can sign your Git commits when pushing them to the repository. Using your signature, a Git provider can cryptographically verify it and mark the commit as "verified", giving people increased confidence about the origin of the commit.
 
-You can configure dbt Cloud to sign your Git commits when using the IDE for development. To set up, enable the feature in dbt Cloud, generate a GPG keypair, and upload the public key to your Git provider to use for signature verification.  
+You can configure dbt Cloud to sign your Git commits when using the IDE for development. To set up, enable the feature in dbt Cloud, follow the flow to generate a keypair, and upload the public key to your Git provider to use for signature verification.  
 
 
 ## Prerequisites 
@@ -59,6 +59,7 @@ If you delete your GPG keypair in dbt Cloud, your Git commits will no longer be 
 
 <DetailsToggle alt_header="What if my Git provider doesn't support GPG keys?">
 
-Currently, GitHub or GitLab are supported Git providers for git commit signing (Azure DevOps is not supported). If your Git provider doesn't support GPG keys, you won't be able to sign your Git commits. You can still commit code to your repository, but the commits won't be marked as "verified".
+GitHub or GitLab are supported Git providers for git commit signing (Azure DevOps is not supported). If your git provider requires commit verification, unsigned or unverified commits might be rejected. You can configure commit verification requirements in your git provider. If your git provider doesn't enforce commit verification and doesn't support GPG keys, then you can commit but your commits will be marked unverified because there’s no GPG key available to verify them.
+
 </DetailsToggle>
 
