@@ -59,10 +59,8 @@ If you delete your GPG keypair in dbt Cloud, your Git commits will no longer be 
 
 <DetailsToggle alt_header="What Git providers support GPG keys?">
 
-Commit signing is a [git feature](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work),
-and is independent of any specific provider. However, not all providers support the upload of public
-keys, or the display of verification badges on commits. GitHub and GitLab support these features,
-while Azure DevOps does not.
+GitHub and GitLab support commit signing, while Azure DevOps does not. Commit signing is a [git feature](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work), and is independent of any specific provider. However, not all providers support the upload of public keys, or the display of verification badges on commits.
+
 </DetailsToggle>
 
 <DetailsToggle alt_header="What if my Git provider doesn't support GPG keys?">
