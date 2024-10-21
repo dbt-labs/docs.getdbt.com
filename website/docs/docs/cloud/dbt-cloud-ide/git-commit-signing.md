@@ -65,7 +65,7 @@ GitHub and GitLab support commit signing, while Azure DevOps does not. Commit si
 
 <DetailsToggle alt_header="What if my Git provider doesn't support GPG keys?">
 
-If your Git Provider does not explicitly support the upload of public GPG keys, then
+If your Git Provider does not explicitly support the uploading of public GPG keys, then
 commits will still be signed using the private key, but no verification information will
 be displayed by the provider.
 
@@ -74,7 +74,7 @@ be displayed by the provider.
 <DetailsToggle alt_header="What if my Git provider requires that all commits are signed?">
 
 If your Git provider is configured to enforce commit verification, then unsigned commits
-will be be rejected. To avoid this, ensure that you have follow all previous steps to generate
+will be rejected. To avoid this, ensure that you have follow all previous steps to generate
 a keypair, and upload the public key to the provider.
 
 </DetailsToggle>
