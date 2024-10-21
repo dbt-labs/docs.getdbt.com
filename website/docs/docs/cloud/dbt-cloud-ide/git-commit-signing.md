@@ -21,8 +21,8 @@ You can configure dbt Cloud to sign your Git commits when using the IDE for deve
 To generate a GPG keypair in dbt Cloud, follow these steps:
 1. Go to your **Personal profile** page in dbt Cloud.
 2. Navigate to **Signed Commits** section.
-3. Enable the **Sign commits originating from this user** toggle to generate a GPG key.
-4. This will generate a GPG keypair and display the public key. You can copy the public key to upload it to your Git provider. Make sure to keep the private key secure.
+3. Enable the **Sign commits originating from this user** toggle.
+4. This will generate a GPG keypair. The private key will be used to sign all future Git commits. The public key will be displayed, allowing you to upload it to your Git provider.
 
 <Lightbox src="/img/docs/dbt-cloud/example-git-signed-commits-setting.png" width="95%" title="Example of profile setting Signed commits" />
 
@@ -33,18 +33,18 @@ To upload the public key to your Git provider, follow the detailed documentation
 - [GitHub instructions](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account) 
 - [GitLab instructions](https://docs.gitlab.com/ee/user/project/repository/signed_commits/gpg.html) 
 
-Once you have uploaded the public key to your Git provider, your Git commits will be signed with the GPG keypair generated in dbt Cloud after you push the changes to the repository.
+Once you have uploaded the public key to your Git provider, your Git commits will be marked as "Verified" after you push the changes to the repository.
 
 <Lightbox src="/img/docs/dbt-cloud/git-sign-verified.jpg" width="95%" title="Example of a verified Git commit in a Git provider." />
 
 ## Considerations
 
 - The GPG keypair is tied to the user, not a specific account. There is a 1:1 relationship between the user and keypair. The same key will be used for signing commits on any accounts the user is a member of.
-- The GPG key generated in dbt Cloud is linked to the email address associated with your account at the time of key creation. This email identifies the author of signed commits.
+- The GPG keypair generated in dbt Cloud is linked to the email address associated with your account at the time of keypair creation. This email identifies the author of signed commits.
 - For your Git commits to be marked as "verified", your dbt Cloud email address must be a verified email address with your Git provider. The Git provider (such as, GitHub, GitLab) checks that the commit's signed email matches a verified email in your Git provider account. If they don’t match, the commit won't be marked as "verified."
 - Keep your dbt Cloud email and Git provider's verified email in sync to avoid verification issues. If you change your email address:
   - Generate a new GPG keypair with the updated email, following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
-  - Or add and verify the new email in your Git provider.
+  - Add and verify the new email in your Git provider.
 
 <!-- vale off -->
 
