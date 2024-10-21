@@ -57,9 +57,26 @@ Once you have uploaded the public key to your Git provider, your Git commits wil
 If you delete your GPG keypair in dbt Cloud, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
 </DetailsToggle>
 
+<DetailsToggle alt_header="What Git providers support GPG keys?">
+
+Commit signing is a [git feature](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work),
+and is independent of any specific provider. However, not all providers support the upload of public
+keys, or the display of verification badges on commits. GitHub and GitLab support these features,
+while Azure DevOps does not.
+</DetailsToggle>
+
 <DetailsToggle alt_header="What if my Git provider doesn't support GPG keys?">
 
-GitHub or GitLab are supported Git providers for git commit signing (Azure DevOps is not supported). If your git provider requires commit verification, unsigned or unverified commits might be rejected. You can configure commit verification requirements in your git provider. If your git provider doesn't enforce commit verification and doesn't support GPG keys, then you can commit but your commits will be marked unverified because there’s no GPG key available to verify them.
+If your Git Provider does not explicitly support the upload of public GPG keys, then
+commits will still be signed using the private key, but no verification information will
+be displayed by the provider.
 
 </DetailsToggle>
 
+<DetailsToggle alt_header="What if my Git provider requires that all commits are signed?">
+
+If your Git provider is configured to enforce commit verification, then unsigned commits
+will be be rejected. To avoid this, ensure that you have follow all previous steps to generate
+a keypair, and upload the public key to the provider.
+
+</DetailsToggle>
