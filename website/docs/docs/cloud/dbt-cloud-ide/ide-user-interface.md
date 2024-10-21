@@ -193,7 +193,7 @@ Use menus and modals to interact with IDE and access useful options to help your
 
   * Toggling between dark or light mode for a better viewing experience
   * Restarting the IDE
-  * Rollback your repo to remote to refresh your git state and view status details
+  * Rollback your repo to remote, to refresh your git state and view status details
   * Viewing status details, including the IDE Status modal.
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.jpg" width="90%" title="Access the IDE Options menu to switch to dark or light mode, restart the IDE, rollback to remote, or view the IDE status"/>
