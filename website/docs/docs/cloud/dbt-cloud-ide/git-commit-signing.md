@@ -45,8 +45,12 @@ Once you have uploaded the public key to your Git provider, your Git commits wil
 - Keep you dbt Cloud email and Git provider's verified email in sync to avoid verification issues. If you change your email address:
   - Generate a new GPG keypair with the updated email, following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
   - Or add and verify the new email in your Git provider.
- 
+
+<!-- vale off -->
+
 ## FAQs
+
+<!-- vale on -->
 
 <DetailsToggle alt_header="What happens if I delete my GPG keypair in dbt Cloud?">
 
