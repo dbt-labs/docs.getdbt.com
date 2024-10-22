@@ -13,7 +13,7 @@ import Mermaid from '@theme/Mermaid';
 /* dbt Customizations:
  * Imports the following components below for export
  */
-import SortableTable from '@site/src/components/SortableTable';
+import SortableTable from '@site/src/components/sortableTable';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
