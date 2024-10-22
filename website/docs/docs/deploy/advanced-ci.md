@@ -33,7 +33,7 @@ dbt reports the comparison differences in:
 
 ## About the cached data
 
-When [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
+To create the preview for [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
 
 You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
