@@ -476,7 +476,7 @@ When working with custom calendars in MetricFlow, it's important to ensure:
 
 For example:
 If your time spine column is `TIMESTAMP` type and your dimension column is `DATE` type, comparisons between these columns might not work as intended. To fix this, convert your `DATE` column to `TIMESTAMP`, or make sure both columns are the same data type.
-
+</Expandable>
 ### Add custom granularities
 
 To add custom granularities, the Semantic Layer supports custom calendar configurations that allow users to query data using non-standard time periods like `fiscal_year` or `retail_month`. You can define these custom granularities (all lowercased) by modifying your model's YAML configuration like this:
