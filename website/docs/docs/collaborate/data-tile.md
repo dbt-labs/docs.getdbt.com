@@ -120,8 +120,10 @@ Follow these steps to embed the data health tile in Tableau:
 3. Insert a **Web Page** object.
 4. Insert the URL and click **Ok**.
 
-    `https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=220370&token=<YOUR_METADATA_TOKEN>`
-    
+    ```html
+    https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=220370&token=<YOUR_METADATA_TOKEN>
+    ```
+
     *Note, replace the placeholders with your actual values.*
 5. You should now see the data health tile embedded in your Tableau dashboard.
 
@@ -131,13 +133,15 @@ Follow these steps to embed the data health tile in Tableau:
 
 Follow these steps to embed the data health tile in Sigma:
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/tableau-example.png" width="80%" title="Embed data health tile iFrame in Tableau"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/sigma-example.jpg" width="90%" title="Embed data health tile in Sigma"/>
 
 1. Create a dashboard in Sigma and connect to your database to pull in the data.
 2. Ensure you've copied the URL or iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
 3. Add a new embedded UI element in your Sigma Workbook in the following format:
 
-    `https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=ENV_ID_NUMBER&token=<YOUR_METADATA_TOKEN>`
+    ```html
+    https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=ENV_ID_NUMBER&token=<YOUR_METADATA_TOKEN>
+    ```
 
     *Note, replace the placeholders with your actual values.*
 4. You should now see the data health tile embedded in your Sigma dashboard.
