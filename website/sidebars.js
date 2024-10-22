@@ -288,6 +288,7 @@ const sidebarSettings = {
             "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
             "docs/cloud/dbt-cloud-ide/ide-user-interface",
             "docs/cloud/dbt-cloud-ide/lint-format",
+            "docs/cloud/dbt-cloud-ide/git-commit-signing",
             {
               type: "category",
               label: "dbt Copilot",
