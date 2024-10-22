@@ -465,7 +465,7 @@ For example, if you use a custom calendar in your organization, such as a fiscal
 - Use the `custom_granularities` key to define a non-standard time period for querying data, such as a `retail_month` or `fiscal_week`, instead of standard options like `day`, `month`, or `year`.
 - This feature provides more control over how time-based metrics are calculated.
 
-### Data types and time zone considerations
+<Expandable alt_header="Data types and time zone considerations">
 When working with custom calendars in MetricFlow, it's important to ensure:
 
 - Consistent data types &mdash; Both your dimension column and the time spine column should use the same data type to allow accurate comparisons. Functions like `DATE_TRUNC` don't change the data type of the input in some databases (like Snowflake). Using different data types can lead to mismatches and inaccurate results.
