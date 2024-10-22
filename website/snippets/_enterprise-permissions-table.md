@@ -14,9 +14,11 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 
 #### Account permissions for account roles
 
-<SortableTable columnAlignments={['center', 'center', 'center','center', 'center', 'center','center']} >
+<SortableTable >
+
 {`
 | Account-level permission| Account Admin | Billing admin |  Manage marketplace apps | Project creator | Security admin | Viewer | 
+|:-----------------------:|:-------------:|:--------------:|:------------------------:|:---------------:|:--------------:|:-------:|
 | Account settings        |     W         |       -        |        -                  |        R        |       R        |   R    |
 | Audit logs              |     R         |        -       |        -                  |        -        |       R        |   R    |
 | Auth provider           |     W         |       -        |        -                  |        -        |       W        |   R    |
@@ -33,6 +35,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Service tokens          |     W         |       -        |        -                  |        -        |       R        |   R    |
 | Webhooks                |     W         |       -        |        -                  |        -        |       -        |   -    |
 `}
+
 </SortableTable>
 
 #### Project permissions for account roles

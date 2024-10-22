@@ -3,12 +3,29 @@ import React, { useState } from 'react';
 const parseMarkdownTable = (markdown) => {
   const rows = markdown.trim().split('\n');
   const headers = rows[0].split('|').map((header) => header.trim()).filter(Boolean);
-  const data = rows.slice(1).map(row => row.split('|').map(cell => cell.trim()).filter(Boolean));
-  return { headers, data };
+
+  // Parse the alignment row
+  const alignmentsRow = rows[1].split('|').map((align) => align.trim()).filter(Boolean);
+  const columnAlignments = alignmentsRow.map((alignment) => {
+    if (alignment.startsWith(':') && alignment.endsWith(':')) {
+      return 'center';  // :-----:
+    } else if (alignment.startsWith(':')) {
+      return 'left';    // :-----
+    } else if (alignment.endsWith(':')) {
+      return 'right';   // -----:
+    } else {
+      return 'left';    // Default alignment
+    }
+  });
+
+  // Get the table data
+  const data = rows.slice(2).map(row => row.split('|').map(cell => cell.trim()).filter(Boolean));
+
+  return { headers, data, columnAlignments };
 };
 
-const SortableTable = ({ children, columnAlignments }) => {
-  const { headers, data: initialData } = parseMarkdownTable(children);
+const SortableTable = ({ children }) => {
+  const { headers, data: initialData, columnAlignments } = parseMarkdownTable(children);
 
   const [data, setData] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: 'asc' });
@@ -36,11 +53,19 @@ const SortableTable = ({ children, columnAlignments }) => {
             <th 
               key={index} 
               onClick={() => sortTable(index)} 
-              style={{ cursor: 'pointer', position: 'relative', textAlign: columnAlignments[index] || 'left', padding: '10px' }} // Apply alignment
+              style={{ 
+                cursor: 'pointer', 
+                position: 'relative', 
+                textAlign: columnAlignments[index],  // Use detected alignment
+                padding: '10px' 
+              }} 
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: columnAlignments[index] === 'center' ? 'center' : columnAlignments[index] }}>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: columnAlignments[index] === 'center' ? 'center' : columnAlignments[index] 
+              }}>
                 <span style={{ marginRight: '5px' }}>{header}</span>
-                {/* Always show both carets */}
                 <span style={{ 
                   opacity: sortConfig.key === index && sortConfig.direction === 'asc' ? 1 : (sortConfig.key === index ? 0.5 : 0.5) 
                 }}>
@@ -61,7 +86,15 @@ const SortableTable = ({ children, columnAlignments }) => {
         {data.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {row.map((cell, cellIndex) => (
-              <td key={cellIndex} style={{ textAlign: columnAlignments[cellIndex] || 'left', padding: '8px' }}>{cell || '\u00A0'}</td> // Apply alignment to cells
+              <td 
+                key={cellIndex} 
+                style={{ 
+                  textAlign: columnAlignments[cellIndex],  // Use detected alignment
+                  padding: '8px' 
+                }}
+              >
+                {cell || '\u00A0'}
+              </td>
             ))}
           </tr>
         ))}
