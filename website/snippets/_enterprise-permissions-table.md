@@ -1,4 +1,3 @@
-import SortableTable from '@site/src/components/SortableTable';
 
 Key:
 
