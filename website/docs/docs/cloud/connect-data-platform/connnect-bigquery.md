@@ -102,7 +102,7 @@ When a `maximum_bytes_billed` value is configured for a BigQuery profile, that a
 
 By default, dbt will use the specified `project`/`database` as both:
 
-1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom project/database config
+1. The location to materialize resources (models, seeds, snapshots, and so on), unless they specify a custom project/database config
 2. The GCP project that receives the bill for query costs or slot usage
 
 Optionally, you may specify an execution_project to bill for query execution, instead of the project/database where you materialize most resources.
