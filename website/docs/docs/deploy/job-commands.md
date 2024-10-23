@@ -48,10 +48,14 @@ Use [selectors](/reference/node-selection/syntax) as a powerful way to select an
 
 :::
 
-#### Advanced CI compare changes
-For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled, you can use custom dbt syntax to exclude specific large models (or groups of models with tags) to optimize running the comparison. Running comparisons on large models can significantly increase the time it takes for CI jobs to complete. 
+#### Advanced CI compare changes syntaxs
+For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled, you can use custom dbt syntax to exclude specific large models (or groups of models with tags) to optimize running the comparison. Running comparisons on large models can significantly increase the time it takes for CI jobs to complete.
 
-For example, to exclude the large `fct_orders` model from the comparison, use the `--select state:modified --exclude fct_orders` syntax.
+Here are some examples of how you can customize the comparison command:
+
+- To exclude the large `fct_orders` model from the comparison, use the `--select state:modified --exclude fct_orders` syntax.
+- To exclude models based on tags, use `--select state modified --exclude tag:tagname_a tag:tagname_b`.
+- To include models that were directly modified and also those one step downstream, use  `--select state:modified+1`.
 
 #### Job outcome
 During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
