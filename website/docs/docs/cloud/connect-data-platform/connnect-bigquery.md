@@ -109,7 +109,7 @@ Optionally, you may specify an execution project to bill for query execution, in
 
 #### Impersonate service account
 
-This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
+This feature allows users authenticating using local OAuth to access BigQuery resources based on the permissions of a service account.
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct).
 
