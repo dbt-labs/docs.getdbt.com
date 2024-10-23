@@ -216,6 +216,103 @@ dbt test --select test_is_valid_email_address
 
 Your model is now ready for production! Adding this unit test helped catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
+## Caveats to unit test configuration
+As you start to unit test logic in models that contain complex joins or conditions, there are a few things to consider:
+
+All references in your tested model must be declared in the configuration regardless if they're directly relevant to the core unit test logic or not.
+
+In addition, when mocking data for your unit test, ensure it satisfies all conditions in your model's SQL, including those that may not be directly related to the specific logic that you're testing. 
+
+This includes:
+- WHERE clause conditions
+- JOIN conditions
+- Any other logic that affects row selection or transformations
+
+Continuing the example above, we can create an updated version of the customers table called `dim_customers_with_orders`. Here, we join an additional orders table and add a condition in the WHERE clause:
+<file name='dim_customers_with_transactions.sql'>
+
+```sql
+with customers as (
+
+    select * from {{ ref('stg_customers') }}
+
+),
+
+-- Addition of a ref() that is not used in core unit test
+orders as (
+
+  select
+      customer_id,
+      count(distinct order_id) as num_orders,
+      sum(order_total) as total_order_value
+  from {{ ref('stg_orders') }}
+  group by customer_id
+
+),
+
+accepted_email_domains as (
+
+    select * from {{ ref('top_level_email_domains') }}
+
+)
+	
+select
+    customers.customer_id,
+    customers.first_name,
+    customers.last_name,
+    customers.email,
+    coalesce(regexp_like(
+		customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+		)
+	= true
+	and accepted_email_domains.tld is not null,
+	false) as is_valid_email_address
+    orders.num_orders,
+    orders.total_order_value
+from customers
+left join orders
+    on customers.customer_id = orders.customer_id
+left join accepted_email_domains
+    on customers.email_top_level_domain = lower(accepted_email_domains.tld)
+-- Addition of WHERE condition
+where customers.age is >= 21
+```
+</file>
+
+With the added CTE (orders) and the additional statement in the WHERE clause, we now need to add mock data that satifies `where age >= 21` as well as add an empty input reference to `stg_orders`. The resulting unit test configuration will now be:
+
+<file name='unit_test.yml'> 
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains."
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com,  age: 21}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com,  age: 21}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com,    age: 21}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com,    age: 21}
+      - input: ref('top_level_email_domains')
+        rows:
+          - {tld: example.com}
+          - {tld: gmail.com}
+      - input: ref('stg_orders')
+        rows:
+          - {}
+    expect:
+      rows:
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: cool@unknown.com,    is_valid_email_address: false}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
+
+```
+</file>
+
+While the unit test in this example was for a specific column, it’s important to remember that mock inputs are going to be passed through the entire model as a whole and therefore, must be declared as such and configured properly to meet all the model’s expectations.
 
 ## Unit testing incremental models
 
