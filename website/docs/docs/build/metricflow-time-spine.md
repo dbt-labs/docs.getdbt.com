@@ -473,7 +473,7 @@ When working with custom calendars in MetricFlow, it's important to ensure:
 
   We recommend using `DATETIME` or `TIMESTAMP` data types for your time dimensions and time spine, as they support all granularities. The `DATE` data type may not support smaller granularities like hours or minutes.
 
-- Consistent time zones &mdash; Ensure that all your time-related data uses the same time zone. MetricFlow supports UTC and currently doesn't perform any timezone manipulation. This means inconsistent time zones can cause unexpected results during aggregations and comparisons.
+- Time zones &mdash; MetricFlow currently doesn't perform any timezone manipulation. When working with timezone-aware data, inconsistent time zones may lead to unexpected results during aggregations and comparisons.
 
 For example, if your time spine column is `TIMESTAMP` type and your dimension column is `DATE` type, comparisons between these columns might not work as intended. To fix this, convert your `DATE` column to `TIMESTAMP`, or make sure both columns are the same data type.
 
