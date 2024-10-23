@@ -79,7 +79,7 @@ Retries in BigQuery help to ensure that jobs complete successfully by trying aga
 
 #### Location
 
-The `location` of BigQuery datasets can be set using the `location` setting in a BigQuery profile. As per the [BigQuery documentation](https://cloud.google.com/bigquery/docs/locations), `location` may be either a multi-regional location (e.g. `EU`, `US`), or a regional location (e.g. `us-west2`).
+The `location` of BigQuery datasets can be set using the `location` setting in a BigQuery profile. As per the [BigQuery documentation](https://cloud.google.com/bigquery/docs/locations), `location` may be either a multi-regional location (for example, `EU`, `US`), or a regional location (like `us-west2`).
 
 You can specify the `location` parameter in your `dbt_project.yml` file or in your `models'` configuration. You can set the `location` to either a multi-regional location (e.g., `US`, `EU`) or a regional location such as `us-west2`.
 
