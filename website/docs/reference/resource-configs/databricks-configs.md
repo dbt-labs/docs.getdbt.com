@@ -67,7 +67,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 <VersionBlock firstVersion="1.9">
 
-### Python Submission Method
+### Python submission methods
 
 As of 1.9, there are four options for `submission_method`: 
 
