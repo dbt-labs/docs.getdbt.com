@@ -16,7 +16,7 @@ This functionality is only supported in dbt Core v1.8+ or accounts that have opt
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-With dbt Core v1.8 and dbt Cloud environments that have gone versionless by selecting the **Versionless** option, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability.
+With dbt Core v1.8 and dbt Cloud environments that have gone versionless by selecting the **Versionless** option, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
 ## Before you begin
 
@@ -28,7 +28,7 @@ With dbt Core v1.8 and dbt Cloud environments that have gone versionless by sele
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 - Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
-- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
+- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround. 
 - All references (`ref()`) used in your model must be included in the unit test configuration as input fixtures, even if they do not directly affect the logic being tested. If these references are missing, you may encounter "node not found" errors during compilation.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
@@ -84,7 +84,7 @@ check_valid_emails as (
         customers.last_name,
         customers.email,
 	      coalesce (regexp_like(
-            customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+            customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
         )
         = true
         and accepted_email_domains.tld is not null,
