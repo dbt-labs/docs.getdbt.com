@@ -97,7 +97,6 @@ When a `maximum_bytes_billed` value is configured for a BigQuery profile, that a
 
 
 
-```
 
 #### Execution project
 
