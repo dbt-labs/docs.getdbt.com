@@ -54,7 +54,7 @@ To learn how to optimize performance with data platform-specific configurations 
 
 ### Optional configurations
 
-In BigQuery, optional configurations let you tailor settings for tasks such as running queries, loading or exporting data, and creating tables. While not necessary for basic operations, these options give you greater control over how BigQuery functions behind the scenes to meet your requirements.
+In BigQuery, optional configurations let you tailor settings for tasks such as query priority, dataset location, job timeout, and more. These options give you greater control over how BigQuery functions behind the scenes to meet your requirements.
 
 To customize your optional configurations in dbt Cloud:
 
