@@ -96,7 +96,6 @@ When a `maximum_bytes_billed` value is configured for a BigQuery profile, that a
 
 
 
-  compiled SQL at target/run/bq_project/models/debug_table.sql
 
 ```
 
