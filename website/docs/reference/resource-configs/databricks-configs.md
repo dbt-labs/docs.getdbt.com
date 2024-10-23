@@ -79,18 +79,18 @@ As of 1.9, there are four options for `submission_method`:
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 As such, the supported config matrix is somewhat complicated:
 
-| Config                | Use                                                                  | Default          | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
-| --------------------- | -------------------------------------------------------------------- | ---------------- | ---------------------- | ------------- | -------------------- | -------------- |
-| `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | false            | ✅                     | ❌             | ❌                   | ❌             |
-| `timeout`             | maximum time to wait for command/job to run                          | 0 (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
-| `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | {} | ❌ | ✅ | ❌            | ✅             |
-| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | {} | ✅ | ✅ | ✅          | ✅             |
-| `packages`            | list of packages to install on the executing cluster                 | []               | ✅                     | ✅             | ✅                   | ✅             |
-| `index_url`           | url to install `packages` from                                       | None (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
-| `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | [] | ✅ | ✅             | ✅                   | ✅             |
-| `python_job_config`   | additional configuration for jobs/workflows (see table below)        | {}               | ✅                     | ✅             | ✅                   | ✅             |
-| `cluster_id`          | id of existing all purpose cluster to execute against                | None             | ✅                     | ❌             | ❌                   | ✅             |
-| `http_path`           | path to existing all purpose cluster to execute against              | None             | ✅                     | ❌             | ❌                   | ❌             |
+| Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
+| --------------------- | -------------------------------------------------------------------- | ------------------ | ---------------------- | ------------- | -------------------- | -------------- |
+| `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | `false`            | ✅                     | ❌             | ❌                   | ❌             |
+| `timeout`             | maximum time to wait for command/job to run                          | `0` (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
+| `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | `{}` | ❌ | ✅ | ❌            | ✅             |
+| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `packages`            | list of packages to install on the executing cluster                 | `[]`               | ✅                     | ✅             | ✅                   | ✅             |
+| `index_url`           | url to install `packages` from                                       | `None` (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
+| `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | `[]` | ✅ | ✅             | ✅                   | ✅             |
+| `python_job_config`   | additional configuration for jobs/workflows (see table below)        | `{}`               | ✅                     | ✅             | ✅                   | ✅             |
+| `cluster_id`          | id of existing all purpose cluster to execute against                | `None`             | ✅                     | ❌             | ❌                   | ✅             |
+| `http_path`           | path to existing all purpose cluster to execute against              | `None`             | ✅                     | ❌             | ❌                   | ❌             |
 
 \* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
 
@@ -101,13 +101,13 @@ Each config option listed must be nested under `python_job_config`:
 
 | Config                     | Use                                                                                                                     | Default | `workflow_job` | All others |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------- | -------------- | ---------- |
-| `name`                     | The name to give (or used to look up) the created workflow                                                              | None    | ✅             | ❌          |
-| `grants`                   | A simplified way to specify access control for the workflow                                                             | {}      | ✅             | ✅          |
-| `existing_job_id`          | Id to use to look up the created workflow (in place of `name`)                                                          | None    | ✅             | ❌          |
-| `post_hook_tasks`          | [Tasks](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include after the model notebook execution      | []      | ✅             | ❌          |
-| `additional_task_settings` | Additional [task config])(https://docs.databricks.com/api/workspace/jobs/create#tasks) to include in the model task     | {}      | ✅             | ❌          |
-| [Other job run settings](https://docs.databricks.com/api/workspace/jobs/submit) | Config will be copied into the request, outside of the model task  | None    | ❌             | ✅          |
-| [Other workflow settings](https://docs.databricks.com/api/workspace/jobs/create) | Config will be copied into the request, outside of the model task | None    | ✅             | ❌          |
+| `name`                     | The name to give (or used to look up) the created workflow                                                              | `None`  | ✅             | ❌          |
+| `grants`                   | A simplified way to specify access control for the workflow                                                             | `{}`    | ✅             | ✅          |
+| `existing_job_id`          | Id to use to look up the created workflow (in place of `name`)                                                          | `None`  | ✅             | ❌          |
+| `post_hook_tasks`          | [Tasks](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include after the model notebook execution      | `[]`    | ✅             | ❌          |
+| `additional_task_settings` | Additional [task config])(https://docs.databricks.com/api/workspace/jobs/create#tasks) to include in the model task     | `{}`    | ✅             | ❌          |
+| [Other job run settings](https://docs.databricks.com/api/workspace/jobs/submit) | Config will be copied into the request, outside of the model task  | `None`  | ❌             | ✅          |
+| [Other workflow settings](https://docs.databricks.com/api/workspace/jobs/create) | Config will be copied into the request, outside of the model task | `None`  | ✅             | ❌          |
 
 Here is an example using these new configuration options:
 
