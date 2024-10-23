@@ -74,7 +74,7 @@ As of 1.9 (or versionless if you're on dbt Cloud), there are four options for `s
 * `all_purpose_cluster`: execute the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: creates a new job cluster to execute an uploaded notebook as a one-off job run
 * `serverless_cluster`: uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
-* `workflow_job`: creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.  :::caution This approach gives you maximum flexibility, but will create persistent artifacts (i.e. the workflow) in Databricks that users could run outside of dbt.
+* `workflow_job`: creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.  :::caution This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 As such, the supported config matrix is somewhat complicated:
