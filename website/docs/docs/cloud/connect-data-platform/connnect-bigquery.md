@@ -83,7 +83,6 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 
 
 
-    +location: 'us-west2'  # Set the BigQuery dataset location
 
 ```
 
