@@ -92,7 +92,6 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshhold. This configuration should be supplied as an integer number of bytes.
 
 
-      type: bigquery
       method: oauth
       project: abc-123
       dataset: my_dataset
