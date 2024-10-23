@@ -96,7 +96,6 @@ When a `maximum_bytes_billed` value is configured for a BigQuery profile, that a
 
 
 
-Database Error in model debug_table (models/debug_table.sql)
   Query exceeded limit for bytes billed: 1000000000. 2000000000 or higher required.
   compiled SQL at target/run/bq_project/models/debug_table.sql
 
