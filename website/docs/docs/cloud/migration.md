@@ -15,6 +15,13 @@ Your account will be automatically migrated on or after its scheduled date. Howe
 
 ## Recommended actions
 
+:::info Rescheduling your migration
+
+If you're on the dbt Cloud Enterprise tier, you can postpone your account migration by up to 45 days. To reschedule your migration, navigate to **Account Settings** → **Migration guide**.
+
+For help, contact the dbt Support Team at [support@getdbt.com](mailto:support@getdbt.com).
+:::
+
 We highly recommended you take these actions:
 
 - Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations might be voided during the migration. You can resend user invitations after the migration is complete.
