@@ -94,7 +94,7 @@ As such, the supported config matrix is somewhat complicated:
 
 \* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
 
-With the 1.9's introduction of the `workflow_job` submission method we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`.
+With the introduction of the `workflow_job` submission method we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`.
 This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
 The support matrix for this feature is divided into `workflow_job` and all others (assuming `all_purpose_cluster` with `create_notebook`==true).
 Each config option listed must be nested under `python_job_config`:
