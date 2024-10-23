@@ -55,7 +55,7 @@ Here are some examples of how you can customize the comparison command:
 
 - To exclude the large `fct_orders` model from the comparison, use the `--select state:modified --exclude fct_orders` syntax.
 - To exclude models based on tags, use `--select state modified --exclude tag:tagname_a tag:tagname_b`.
-- To include models that were directly modified and also those one step downstream, use  `--select state:modified+`.
+- To include models that were directly modified and also those one step downstream, use  `--select state:modified+1`.
 
 #### Job outcome
 During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
