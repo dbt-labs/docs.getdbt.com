@@ -69,7 +69,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 ### Python submission methods
 
-As of 1.9, there are four options for `submission_method`: 
+As of 1.9 (or versionless if you're on dbt Cloud), there are four options for `submission_method`: 
 
 * `all_purpose_cluster`: execute the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: creates a new job cluster to execute an uploaded notebook as a one-off job run
