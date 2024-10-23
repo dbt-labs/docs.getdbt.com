@@ -29,6 +29,7 @@ With dbt Core v1.8 and dbt Cloud environments that have gone versionless by sele
 - Unit tests must be defined in a YML file in your `models/` directory.
 - Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
 - Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround. 
+- All references (`ref()`) used in your model must be included in the unit test configuration as input fixtures, even if they do not directly affect the logic being tested. If these references are missing, you may encounter "node not found" errors during compilation.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -55,6 +56,8 @@ dbt Labs strongly recommends only running unit tests in development or CI enviro
 Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
+
+When defining mock data for a unit test, it's crucial to include all necessary input values that satisfy the entire model logic. This means including values that fulfill any `WHERE` clauses, `JOIN` conditions, or other constraints present in the model, even if they do not seem directly related to the specific logic being tested. Failing to do so may lead to errors or unexpected null values in the unit test results.
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
 
@@ -317,6 +320,36 @@ Unit test successes and failures are represented by two exit codes:
 Exit codes differ from data test success and failure outputs because they don't directly reflect failing data tests. Data tests are queries designed to check specific conditions in your data, and they return one row per failed test case (for example, the number of values with duplicates for the `unique` test). dbt reports the number of failing records as failures. Whereas, each unit test represents one 'test case', so results are always 0 (pass) or 1 (fail) regardless of how many records failed within that test case.
 
 Learn about [exit codes](/reference/exit-codes) for more information.
+
+
+### Common Pitfalls
+> - **Missing Fixtures for Referenced Models**: When creating a unit test, all referenced models must be declared as mock inputs. Missing any referenced model, even if it isn't directly involved in the specific logic being tested, will lead to compilation errors such as "node not found."
+> - **Not Satisfying `WHERE` or `JOIN` Logic**: Ensure that the mock data meets all conditions in the model, such as `WHERE` clauses or `JOIN` requirements. If these conditions are not met, the unit test will either return null rows or fail to execute properly. This often involves adding rows for auxiliary data tables, like locations or transactions, to satisfy joins and filters.
+
+### How Unit Tests Compile
+> During a unit test, dbt creates Common Table Expressions (CTEs) for all dependencies of the model using the mock input data you provide. These CTEs replace the actual references (`ref()`) in the model and allow dbt to run your SQL logic against the mock data.
+>
+> For example, when you provide a reference such as `ref('stg_transactions')`, dbt creates a CTE named `__dbt__cte__stg_transactions` that contains the mocked data. The entire compiled SQL might look something like this:
+> ```sql
+> with
+>  __dbt__cte__stg_transactions as (
+>   -- fixture for stg_transactions
+>   -- contains unions to create "test inputs" corresponding to all rows
+> ),
+>  __dbt__cte__stg_locations as (
+>   -- fixture for stg_locations
+>   -- contains select statement that "mocks" stg_locations
+> ),
+> applied_donations as (
+>  select
+>    transaction_id,
+>    sum(cash_value) as donated_cash
+>  from __dbt__cte__stg_donations
+>  group by transaction_id
+> )
+> select * from __dbt__cte__stg_transactions;
+> ```
+> Understanding this process will help ensure you configure your unit tests correctly and avoid common issues.
 
 
 ## Additional resources
