@@ -23,7 +23,7 @@ pagination_prev: null
 
 ## Types of API access tokens
 
-**Personal access tokens:** Personal access tokens (PATs) are the preferred and secure way of accessing dbt Cloud APIs on behalf of a user. PATs are scoped to an account and can be enhanced with more granularity and control. 
+**Personal access tokens:** Preferred and secure way of accessing dbt Cloud APIs on behalf of a user. PATs are scoped to an account and can be enhanced with more granularity and control. 
 
 **Service tokens:** Service tokens are similar to service accounts and are the preferred method to enable access on behalf of the dbt Cloud account.
 
