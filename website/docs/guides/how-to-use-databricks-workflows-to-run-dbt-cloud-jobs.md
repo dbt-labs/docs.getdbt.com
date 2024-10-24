@@ -33,7 +33,7 @@ Using Databricks workflows to call the dbt Cloud job API can be useful for sever
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[User API Token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#user-api-tokens) **or **[Service Account Token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from dbt Cloud
+1. Retrieve **[personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from dbt Cloud
 2. Set up a **Databricks secret scope**, which is used to securely store your dbt Cloud API key. 
 
 3. Enter the **following commands** in your terminal:

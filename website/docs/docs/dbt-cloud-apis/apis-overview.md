@@ -20,4 +20,4 @@ If you want to learn more about webhooks, refer to [Webhooks for your jobs](/doc
 
 ## How to Access the APIs
 
-dbt Cloud supports two types of API Tokens: [user tokens](/docs/dbt-cloud-apis/user-tokens) and [service account tokens](/docs/dbt-cloud-apis/service-tokens). Requests to the dbt Cloud APIs can be authorized using these tokens.
+dbt Cloud supports two types of API Tokens: [personal access tokens](/docs/dbt-cloud-apis/user-tokens) and [service account tokens](/docs/dbt-cloud-apis/service-tokens). Requests to the dbt Cloud APIs can be authorized using these tokens.
