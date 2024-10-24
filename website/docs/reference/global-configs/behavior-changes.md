@@ -83,12 +83,19 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 ### Source definitions for state:modified
 
+:::note
+
+The state directory needs to be built with v1.9 or higher [Versionless](/docs/dbt-versions/versionless-cloud) dbt Cloud along with `state_modified_compare_more_unrendered_values: true` within your dbt_project.yml.
+
+If the state directory was built with an older version or if the `state_modified_compare_more_unrendered_values` behavior change flag was not set (or set to '`false`), you need to rebuild it to avoid false positives during state comparison with `state:modified`.
+
+:::
+
 The flag is `False` by default.
 
 Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
 
 Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
-
 
 ###  Package override for built-in materialization 
 
