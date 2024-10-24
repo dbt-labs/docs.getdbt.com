@@ -18,7 +18,7 @@ PATs inherit the permissions of the user that created them. For example, if a de
 
 ## Create a personal access token
 
-Creating an account scoped PAT requires only a few steps.
+Creating an account-scoped personal access token (PAT) requires only a few steps.
 1. Navigate to your **Account Settings**, expand **API tokens** and click **Personal tokens**.
 2. Click **Create personal access token**.
 3. Give the token a descriptive name and click **Save**. 
