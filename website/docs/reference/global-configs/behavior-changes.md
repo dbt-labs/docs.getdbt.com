@@ -83,13 +83,13 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 ### Source definitions for state:modified
 
-```note
+:::note
 
 The state directory needs to be built with v1.9 or higher [Versionless](/docs/dbt-versions/versionless-cloud) dbt Cloud along with `state_modified_compare_more_unrendered_values: true` within your dbt_project.yml.
 
 If the state directory was built with an older version or if the `state_modified_compare_more_unrendered_values` behavior change flag was not set (or set to '`false`), you need to rebuild it to avoid false positives during state comparison with `state:modified`.
 
-```
+:::
 
 The flag is `False` by default.
 
