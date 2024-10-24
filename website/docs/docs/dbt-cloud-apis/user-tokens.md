@@ -27,7 +27,7 @@ Creating an account scoped PAT requires only a few steps.
 
 ### Rotate your tokens
 
-It's recommended that you rotate your PATs at regular intervals for security purposes. To rotate your PATs, create a new token and, once it's in place, delete the old token.
+To maintain best security practices, it's recommended that you regularly rotate your PATs. To do so, create a new token and delete the old one once it's in place.
 
 To delete a token:
 
