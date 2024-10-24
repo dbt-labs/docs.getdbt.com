@@ -12,7 +12,7 @@ User API tokens have been deprecated and will no longer work. [Migrate](#migrate
 
 :::
 
-Each dbt Cloud user with a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a new personal access token (PAT) to access the dbt Cloud API and dbt Cloud CLI. This token can execute queries against the dbt Cloud API on the user's behalf. To access dbt Cloud APIs and resources on behalf of the _account_, we recommend using service Tokens instead. Learn more about [which token type you should use](/docs/dbt-cloud-apis/authentication#which-token-type-should-you-use) to understand the token differences.
+Each dbt Cloud user with a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a new personal access token (PAT) to access the dbt Cloud API and dbt Cloud CLI. This token can execute queries against the dbt Cloud API on the user's behalf. To access dbt Cloud APIs and resources on behalf of the _account_, we recommend using service tokens instead. Learn more about [which token type you should use](/docs/dbt-cloud-apis/authentication#which-token-type-should-you-use) to understand the token differences.
 
 PATs inherit the permissions of the user that created them. For example, if a developer-licensed user with Project Admin role access to specific projects creates a PAT, the token will get the Project Admin role with access to the same projects as the user. These tokens are also account-specific, so if a user has access to more than one dbt Cloud account with the same email address, they need to create a unique PAT for each one of these accounts. 
 
