@@ -64,5 +64,5 @@ Are you using a user API key today to access dbt Cloud APIs in any of your workf
 1. Make a list of all the places where you’re making a call to the dbt Cloud API using the dbt Cloud user API key. 
 2. Create a new personal access token under **Account Settings → API Tokens → Personal Tokens.** 
 3. Create and copy the new PAT to replace the old user API key. 
-4. Ensure that you’re using a PAT only where it's needed. For any flows that requires a service account, please use a service token. Read the section below for more information.
+4. Ensure that you’re using a PAT only where it's needed. For flows that require a service account, please use a service token. 
 
