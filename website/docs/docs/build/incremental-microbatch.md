@@ -192,11 +192,14 @@ During standard incremental runs, dbt will process batches according to the curr
 
 Whether to fix erroneous source data or retroactively apply a change in business logic, you may need to reprocess a large amount of historical data.
 
-Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. As always, dbt will process the batches between the start and end as independent queries.
+Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. Note that `--event-time-start` and --event-time-end are mutually necessary, meaning that if you specify one, you must specify the other. 
+
+As always, dbt will process the batches between the start and end as independent queries.
 
 ```bash
 dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 ```
+
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 
