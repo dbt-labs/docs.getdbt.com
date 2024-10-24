@@ -80,9 +80,9 @@ dbt_modules/
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
 7. Commit (save) the deletions to the main branch.
 8. Switch to the dbt Cloud IDE, and open the project that you're fixing.
-9. Reclone your repo in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Reclone Repo**.
-    * **Note** &mdash; Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of dbt Cloud.
-10. Once you reclone the repo, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
+9. [Rollback your repo to remote](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide)  in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Rollback to remote**.
+    * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of dbt Cloud.
+10. Once you rollback to remote, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
 11. Go to the **File Explorer** to verify the `.gitignore` file contains the correct entries and make sure the untracked files/folders in the .gitignore file are in *italics*. 
 12. Great job 🎉! You've configured the `.gitignore` correctly and can continue with your development!
 
@@ -111,9 +111,9 @@ dbt_modules/
 8. Open a merge request using the git provider web interface.  The merge request should attempt to merge the changes into the 'main' branch that all development branches are created from.
 9. Follow the necessary procedures to get the branch approved and merged into the 'main' branch.  You can delete the branch after the merge is complete. 
 10. Once the merge is complete, go back to the dbt Cloud IDE, and open the project that you're fixing.
-11. Reclone your repo in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Reclone Repo**. 
-    * **Note** &mdash; Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of dbt Cloud.
-12. Once you reclone the repo, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
+11. [Rollback your repo to remote](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide) in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Rollback to remote**. 
+    * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of dbt Cloud.
+12. Once you rollback to remote, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
 13. Go to the **File Explorer** to verify the `.gitignore` file contains the correct entries and make sure the untracked files/folders in the .gitignore file are in *italics*. 
 14. Great job 🎉! You've configured the `.gitignore` correctly and can continue with your development!
 

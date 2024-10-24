@@ -25,7 +25,6 @@ To access the features, you should meet the following:
 3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 4. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
 5. Use Tableau as your BI tool and enable metadata permissions or work with an admin to do so. Compatible with Tableau Cloud or Tableau Server with the Metadata API enabled. 
-6. Run a production job _after_ saving the Tableau collections.
 
 ## Set up in Tableau
 
@@ -63,7 +62,6 @@ To set up [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens#using
    dbt Cloud automatically imports and syncs any workbook within the selected collections. New additions to the collections will be added to the lineage in dbt Cloud during the next automatic sync (usually once per day).
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.jpg" title="Select the collections you want to include for auto exposures."/>
 5. Click **Save**. 
-6. Run a production job _after_ saving the Tableau collections.
 
 dbt Cloud imports everything in the collection(s) and you can continue to view them in Explorer. For more information on how to view and use auto-exposures, refer to [View auto-exposures from dbt Explorer](/docs/collaborate/auto-exposures) page.
 
@@ -72,5 +70,5 @@ dbt Cloud imports everything in the collection(s) and you can continue to view t
 ## Refresh auto-exposures in jobs
 
 :::info Coming soon
-Soon, you’ll also be able to use auto-exposures trigger refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
+Soon, you’ll also be able to use auto-exposures to trigger the refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
 :::
