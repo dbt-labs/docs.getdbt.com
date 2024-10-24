@@ -13,23 +13,30 @@ Permissions:
 Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
 
 #### Account permissions for account roles
-| Account-level permission| Account Admin | Billing admin |  Manage <br></br> marketplace <br></br> apps | Project creator | Security admin | Viewer | 
-|:-------------------------|:-------------:|:------------:|:-------------------------:|:---------------:|:--------------:|:------:| 
-| Account settings        |     W         |               |                           |        R        |       R        |   R    |
-| Audit logs              |     R         |               |                           |                 |       R        |   R    |
-| Auth provider           |     W         |               |                           |                 |       W        |   R    |
-| Billing                 |     W         |       W       |                           |                 |                |   R    |
-| Connections             |     W         |               |                           |        W        |                |        |
-| Groups                  |     W         |               |                           |        R        |       W        |   R    |
-| Invitations             |     W         |               |                           |        W        |       W        |   R    |
-| IP restrictions         |     W         |               |                           |                 |       W        |   R    |
-| Licenses                |     W         |               |                           |        W        |       W        |   R    |
-| Marketplace app         |               |               |            W              |                 |                |        |
-| Members                 |     W         |               |                           |        W        |       W        |   R    |
-| Project (create)        |     W         |               |                           |        W        |                |        |
-| Public models           |     R         |       R       |                           |        R        |       R        |   R    |
-| Service tokens          |     W         |               |                           |                 |       R        |   R    |
-| Webhooks                |     W         |               |                           |                 |                |        |
+
+<SortableTable >
+
+{`
+| Account-level permission| Account Admin | Billing admin |  Manage marketplace apps | Project creator | Security admin | Viewer | 
+|:-----------------------:|:-------------:|:--------------:|:------------------------:|:---------------:|:--------------:|:-------:|
+| Account settings        |     W         |       -        |        -                  |        R        |       R        |   R    |
+| Audit logs              |     R         |        -       |        -                  |        -        |       R        |   R    |
+| Auth provider           |     W         |       -        |        -                  |        -        |       W        |   R    |
+| Billing                 |     W         |       W       |         -                 |         -       |        -        |   R    |
+| Connections             |     W         |       -        |        -                  |        W        |       -        |   -     |
+| Groups                  |     W         |       -        |        -                  |        R        |       W        |   R    |
+| Invitations             |     W         |       -        |        -                  |        W        |       W        |   R    |
+| IP restrictions         |     W         |       -        |        -                  |        -        |       W        |   R    |
+| Licenses                |     W         |       -        |        -                  |        W        |       W        |   R    |
+| Marketplace app         |     -          |       -        |            W              |       -         |      -         |  -     |
+| Members                 |     W         |       -        |        -                  |        W        |       W        |   R    |
+| Project (create)        |     W         |       -        |        -                  |        W        |       -        |   -    |
+| Public models           |     R         |       R       |         -                 |        R        |       R        |   R    |
+| Service tokens          |     W         |       -        |        -                  |        -        |       R        |   R    |
+| Webhooks                |     W         |       -        |        -                  |        -        |       -        |   -    |
+`}
+
+</SortableTable>
 
 #### Project permissions for account roles
  
