@@ -25,7 +25,6 @@ Creating an account scoped PAT requires only a few steps.
 
 4. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
 
-### Rotate your tokens
 
 To maintain best security practices, it's recommended that you regularly rotate your PATs. To do so, create a new token and delete the old one once it's in place.
 
