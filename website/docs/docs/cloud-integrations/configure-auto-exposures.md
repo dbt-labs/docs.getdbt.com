@@ -70,5 +70,5 @@ dbt Cloud imports everything in the collection(s) and you can continue to view t
 ## Refresh auto-exposures in jobs
 
 :::info Coming soon
-Soon, you’ll also be able to use auto-exposures trigger refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
+Soon, you’ll also be able to use auto-exposures to trigger the refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
 :::
