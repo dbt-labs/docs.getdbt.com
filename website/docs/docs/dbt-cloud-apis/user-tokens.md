@@ -23,7 +23,7 @@ Creating an account scoped PAT requires only a few steps.
 2. Click **Create personal access token**.
 3. Give the token a descriptive name and click **Save**. 
 
-Copy the token prior to closing the window. _It will not be available after and you will have to create a new token if you lose it._ 
+4. Copy the token before closing the window. _It will not be available after, and you will have to create a new token if you lose it._ 
 
 ### Rotate your tokens
 
