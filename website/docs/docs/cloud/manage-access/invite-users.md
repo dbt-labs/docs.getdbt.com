@@ -18,15 +18,15 @@ You must have proper permissions to invite new users:
 ## Invite new users
 
 1. In your dbt Cloud account, select your account name in the bottom left corner. Then select **Account settings**.
-2. Then select **Users**.
-3. Click on **Invite Users**.
+2. Under **Settings**, select **Users**.
+3. Click on **Invite users**.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/invite-users.png" width="60%" title="The invite users pane"/>
 
-4. In the **Email Addresses** field, enter the email addresses of the users you would like to invite separated by comma, semicolon, or a new line.
+4. In the **Email Addresses** field, enter the email addresses of the users you want to invite separated by a comma, semicolon, or a new line.
 5. Select the license type for the batch of users from the **License** dropdown.
-6. Select the group(s) you would like the invitees to belong to.
-7. Click **Send Invitations**.
+6. Select the group(s) you want the invitees to belong to.
+7. Click **Send invitations**.
     - If the list of invitees exceeds the number of licenses your account has available, you will receive a warning when you click **Send Invitations** and the invitations will not be sent. 
 
 
