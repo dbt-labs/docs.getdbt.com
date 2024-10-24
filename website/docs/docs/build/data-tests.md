@@ -267,14 +267,6 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.9">
-
-## Document data test descriptions
-
-The details of data tests are available to view in dbt Explorer (Cloud) or by executing `dbt docs generate` and `dbt docs view` (Core). In addition to general details such as date, time run, and last run status, you can add a custom description using the `description` configuration in project .yml files. The description field can contain plain text or macro configurations and can be added to the `/test` directory in a .yml file (for example, `schema.yml`). Additionally, it will be documented if you add the `description` config to the test in a model's .yml file.
-
-</VersionBlock>
-
 ## Storing test failures
 
 Normally, a data test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag,  the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
