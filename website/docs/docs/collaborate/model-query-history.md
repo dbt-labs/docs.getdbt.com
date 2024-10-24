@@ -25,7 +25,7 @@ So for example, if `model_super_santi` was queried 10 times in the past week, it
 
 To access the features, you should meet the following:
 
-1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
+1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
 4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so. Support for additional data platforms coming soon.
