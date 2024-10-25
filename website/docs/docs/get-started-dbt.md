@@ -64,6 +64,12 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
     link="https://docs.getdbt.com/guides/starburst-galaxy"
     icon="starburst"/>
 
+<Card
+    title="Quickstart for dbt Cloud and Teradata"
+    body="Discover and use dbt Cloud with Teradata to enhance your data transformation workflows."
+    link="https://docs.getdbt.com/guides/teradata"
+    icon="teradata"/>
+
 </div>
 
 ## dbt Core
