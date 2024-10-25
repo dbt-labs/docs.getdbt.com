@@ -346,66 +346,6 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Build your metrics",
-          link: { type: "doc", id: "docs/build/build-metrics-intro" },
-          collapsed: true,
-          items: [
-            "docs/build/build-metrics-intro",
-            {
-              type: "link",
-              label: "Quickstart with the dbt Cloud Semantic Layer",
-              href: `/guides/sl-snowflake-qs`,
-            },
-            {
-              type: "category",
-              label: "About MetricFlow",
-              link: { type: "doc", id: "docs/build/about-metricflow" },
-              items: [
-                "docs/build/about-metricflow",
-                "docs/build/join-logic",
-                "docs/build/validation",
-                "docs/build/metricflow-time-spine",
-                "docs/build/metricflow-commands",
-              ],
-            },
-            {
-              type: "category",
-              label: "Semantic models",
-              link: { type: "doc", id: "docs/build/semantic-models" },
-              items: [
-                "docs/build/semantic-models",
-                "docs/build/dimensions",
-                "docs/build/entities",
-                "docs/build/measures",
-              ],
-            },
-            {
-              type: "category",
-              label: "Metrics",
-              link: { type: "doc", id: "docs/build/metrics-overview" },
-              items: [
-                "docs/build/metrics-overview",
-                "docs/build/conversion",
-                "docs/build/cumulative",
-                "docs/build/derived",
-                "docs/build/ratio",
-                "docs/build/simple",
-              ],
-            },
-            "docs/build/saved-queries",
-            {
-              type: "category",
-              label: "Advanced data modeling",
-              link: { type: "doc", id: "docs/build/advanced-topics" },
-              items: [
-                "docs/build/fill-nulls-advanced",
-                "docs/build/ref-metrics-in-filters",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
           label: "Enhance your models",
           collapsed: true,
           link: { type: "doc", id: "docs/build/enhance-your-models" },
@@ -583,7 +523,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Use the dbt Semantic Layer",
+      label: "Metrics and Semantic Layer",
       collapsed: true,
       link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
@@ -595,22 +535,76 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "MetricFlow",
+          link: { type: "doc", id: "docs/build/about-metricflow" },
+          items: [
+            "docs/build/about-metricflow",
+            "docs/build/join-logic",
+            "docs/build/validation",
+            "docs/build/metricflow-time-spine",
+            "docs/build/metricflow-commands",
+          ],
+        },
+        {
+          type: "category",
+          label: "Semantic models",
+          link: { type: "doc", id: "docs/build/semantic-models" },
+          items: [
+            "docs/build/semantic-models",
+            "docs/build/dimensions",
+            "docs/build/entities",
+            "docs/build/measures",
+          ],
+        },
+        {
+          type: "category",
+          label: "Build metrics",
+          link: { type: "doc", id: "docs/build/build-metrics-intro" },
+          collapsed: true,
+          items: [
+            "docs/build/build-metrics-intro",
+            {
+              type: "category",
+              label: "Metric types",
+              link: { type: "doc", id: "docs/build/metrics-overview" },
+              items: [
+                "docs/build/metrics-overview",
+                "docs/build/simple",
+                "docs/build/derived",
+                "docs/build/cumulative",
+                "docs/build/conversion",
+                "docs/build/ratio",
+              ],
+            },
+            {
+              type: "category",
+              label: "Advanced data modeling",
+              link: { type: "doc", id: "docs/build/advanced-topics" },
+              items: [
+                "docs/build/fill-nulls-advanced",
+                "docs/build/ref-metrics-in-filters",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Configure",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/setup-sl" },
           items: [
             "docs/use-dbt-semantic-layer/setup-sl",
-            "docs/use-dbt-semantic-layer/sl-architecture",  
-          ]
+            "docs/use-dbt-semantic-layer/sl-architecture",
+          ],
         },
         {
           type: "category",
           label: "Deploy metrics",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/deploy-sl" },
           items: [
-            "docs/use-dbt-semantic-layer/deploy-sl", 
-            "docs/use-dbt-semantic-layer/exports", 
-            "docs/use-dbt-semantic-layer/sl-cache" 
-          ]
+            "docs/use-dbt-semantic-layer/deploy-sl",
+            "docs/use-dbt-semantic-layer/exports",
+            "docs/use-dbt-semantic-layer/sl-cache",
+          ],
         },
         {
           type: "category",
@@ -618,11 +612,11 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/consume-metrics" },
           items: [
             "docs/use-dbt-semantic-layer/consume-metrics",
-          ]
+          ],
         },
         "docs/use-dbt-semantic-layer/sl-faqs",
       ],
-    },
+    },    
     {
       type: "category",
       label: "dbt Cloud APIs",
