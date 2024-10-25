@@ -110,11 +110,11 @@ Each config option listed must be nested under `python_job_config`:
 | `grants`                   | A simplified way to specify access control for the workflow                                                             | `{}`    | ✅             | ✅          |
 | `existing_job_id`          | Id to use to look up the created workflow (in place of `name`)                                                          | `None`  | ✅             | ❌          |
 | `post_hook_tasks`          | [Tasks](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include after the model notebook execution      | `[]`    | ✅             | ❌          |
-| `additional_task_settings` | Additional [task config])(https://docs.databricks.com/api/workspace/jobs/create#tasks) to include in the model task     | `{}`    | ✅             | ❌          |
+| `additional_task_settings` | Additional [task config](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include in the model task     | `{}`    | ✅             | ❌          |
 | [Other job run settings](https://docs.databricks.com/api/workspace/jobs/submit) | Config will be copied into the request, outside of the model task  | `None`  | ❌             | ✅          |
 | [Other workflow settings](https://docs.databricks.com/api/workspace/jobs/create) | Config will be copied into the request, outside of the model task | `None`  | ✅             | ❌          |
 
-Here is an example using these new configuration options:
+This example uses the new configuration options in the previous table:
 
 <File name='schema.yml'>
 
