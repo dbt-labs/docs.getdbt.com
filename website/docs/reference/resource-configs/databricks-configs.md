@@ -75,10 +75,9 @@ In dbt v1.9 and higher, or in [Versionless](/docs/dbt-versions/versionless-cloud
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
 * `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
 * `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
-
-  :::caution 
-  This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
-  :::
+   :::caution 
+   This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
+   :::
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 
@@ -99,8 +98,8 @@ As such, the supported config matrix is somewhat complicated:
 
 \* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
 
-With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`.
-This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
+With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`. This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
+
 The support matrix for this feature is divided into `workflow_job` and all others (assuming `all_purpose_cluster` with `create_notebook`==true).
 Each config option listed must be nested under `python_job_config`:
 
