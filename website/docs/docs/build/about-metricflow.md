@@ -283,5 +283,7 @@ Yes, but because a dimension is considered an attribute of the primary or unique
 </DetailsToggle>
 
 ## Related docs
+
+- [dbt Semantic Layer cookbook recipes](/guides/sl-cookbook-recipes) 
 - [Joins](/docs/build/join-logic)
 - [Validations](/docs/build/validation)

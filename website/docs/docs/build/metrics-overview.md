@@ -341,3 +341,4 @@ You can set more metadata for your metrics, which can be used by other tools lat
 - [Semantic models](/docs/build/semantic-models)
 - [Fill null values for metrics](/docs/build/fill-nulls-advanced)
 - [Metrics as dimensions with metric filters](/docs/build/ref-metrics-in-filters)
+- [dbt Semantic Layer cookbook recipes](/guides/sl-cookbook-recipes) 
