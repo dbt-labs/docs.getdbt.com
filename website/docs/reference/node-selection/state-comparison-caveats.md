@@ -2,6 +2,8 @@
 title: "Caveats to state comparison"
 ---
 
+import StateModified from '/snippets/_state-modified-compare.md';
+
 The [`state:` selection method](/reference/node-selection/methods#the-state-method) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
 ### Seeds
@@ -47,6 +49,8 @@ dbt test -s "state:modified" --exclude "test_name:relationships"
 <VersionBlock firstVersion="1.9">
 
 To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
+
+<StateModified features={'/snippets/_state-modified-compare.md'}/>
 
 </VersionBlock>
 
