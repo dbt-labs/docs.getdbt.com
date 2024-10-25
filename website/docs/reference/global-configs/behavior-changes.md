@@ -85,7 +85,7 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 ### Source definitions for state:modified
 
-:::note
+:::info
 
 <StateModified features={'/snippets/_state-modified-compare.md'}/>
 
