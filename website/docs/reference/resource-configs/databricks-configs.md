@@ -71,15 +71,17 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 In dbt v1.9 and higher, or in [Versionless](/docs/dbt-versions/versionless-cloud) dbt Cloud, you can use these four options for `submission_method`: 
 
-* `all_purpose_cluster`: execute the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
-* `job_cluster`: creates a new job cluster to execute an uploaded notebook as a one-off job run
-* `serverless_cluster`: uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
-* `workflow_job`: creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.  :
-::caution 
-This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
-:::
+* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
+* `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
+* `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
+* `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
+
+  :::caution 
+  This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
+  :::
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
+
 As such, the supported config matrix is somewhat complicated:
 
 | Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
