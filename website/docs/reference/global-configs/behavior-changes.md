@@ -4,6 +4,8 @@ id: "behavior-changes"
 sidebar: "Behavior changes"
 ---
 
+import StateModified from '/snippets/_state-modified-compare.md';
+
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
 
 Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension, by:
@@ -85,7 +87,7 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 :::note
 
-import StateModified from '/snippets/_state-modified-compare.md';
+<StateModified features={'/snippets/_state-modified-compare.md'}/>
 
 :::
 
