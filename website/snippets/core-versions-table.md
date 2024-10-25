@@ -3,7 +3,7 @@
 |                      dbt Core                                 | Initial release |      Support level and end date      |
 |:-------------------------------------------------------------:|:---------------:|:-------------------------------------:|
 | [**v1.8**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8) | May 9 2024    | <b>Active Support &mdash; May 8, 2025</b>                    |
-| [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023   | dbt Core and dbt Cloud Developer/Team customers: Critical Support until Nov 1, 2024\  
+| [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023   | dbt Core and dbt Cloud Developer/Team customers: Critical Support until Nov 1, 2024 <span><br /></span>
 dbt Cloud Enterprise customers: Critical Support until further notice <sup>1</sup> | 
 | [**v1.6**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.6) | Jul 31, 2023  | End of Life ⚠️ |  
 | [**v1.5**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5) | Apr 27, 2023  | End of Life ⚠️ |
