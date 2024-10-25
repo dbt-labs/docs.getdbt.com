@@ -30,12 +30,12 @@ To access the features, you should meet the following:
 
 This section of the document explains the steps you need to set up the auto-exposures integration with Tableau. Once you've set this up in Tableau and dbt Cloud, you can view the [auto-exposures](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer.
 
-To set up [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens#using-the-new-personal-access-tokens) needed for auto exposures, ask a site admin to configure it for the account.
+To set up [personal access tokens (PATs)](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) needed for auto exposures, ask a site admin to configure it for the account.
 
 1. Ensure you or a site admin enables PATs for the account in Tableau.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/tableau-enable-pat.jpg" title="Enable PATs for the account in Tableau"/>
 
-2. Create a PAT that you can add to dbt Cloud to pull in Tableau metadata for auto exposures.
+2. Create a PAT that you can add to dbt Cloud to pull in Tableau metadata for auto exposures. Ensure the user creating the PAT has access to collections/folders, as the PAT only grants access matching the creator's existing privileges.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/tableau-create-pat.jpg" title="Create PATs for the account in Tableau"/>
 
 3. Copy the **Secret** and the **Token name** and enter them in dbt Cloud. The secret is only displayed once, so store it in a safe location (like a password manager).
@@ -70,5 +70,5 @@ dbt Cloud imports everything in the collection(s) and you can continue to view t
 ## Refresh auto-exposures in jobs
 
 :::info Coming soon
-Soon, you’ll also be able to use auto-exposures trigger refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
+Soon, you’ll also be able to use auto-exposures to trigger the refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
 :::
