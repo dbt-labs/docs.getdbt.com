@@ -3,6 +3,7 @@ title: "Advanced CI"
 id: "advanced-ci"
 sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
+image: /img/docs/dbt-cloud/example-ci-compare-changes-tab.png
 ---
 
 # Advanced CI <Lifecycle status="enterprise"/>

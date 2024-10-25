@@ -42,14 +42,23 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 
 You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Cloud CLI" or "dbt Core" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in dbt Core or dbt Cloud CLI, and not in dbt Cloud IDE.
 
-
 :::tip Using selectors
 
-Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
+Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one _specific_ model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
 
 :::
 
-**Job outcome** &mdash; During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
+#### Compare changes custom commands
+For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled, you can use a custom dbt syntax to exclude specific large models (or groups of models with tags) to optimize running the comparison. Running comparisons on large models can significantly increase the time it takes for CI jobs to complete. 
+
+Here are some examples of how you can customize the comparison command:
+
+- To exclude the large `fct_orders` model from the comparison, use the `--select state:modified --exclude fct_orders` syntax.
+- To exclude models based on tags, use `--select state modified --exclude tag:tagname_a tag:tagname_b`.
+- To include models that were directly modified and also those one step downstream, use  `--select state:modified+1`.
+
+#### Job outcome
+During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
