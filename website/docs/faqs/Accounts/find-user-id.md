@@ -5,7 +5,7 @@ sidebar_label: 'Where can I find my user ID'
 id: find-user-id
 ---
 
-Knowing your dbt Cloud user ID can help with actions related to [rotating your API token](/faqs/API/rotate-token), interacting with support, and more. 
+Knowing your dbt Cloud user ID can help with interacting with support. 
 
 To find your user ID in dbt Cloud, read the following steps:
 

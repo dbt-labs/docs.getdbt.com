@@ -13,7 +13,7 @@ Many data applications integrate with dbt Cloud, enabling you to leverage the po
 <div className="grid--3-col">
 
 <Card
-    title="Configure auto-exposures (beta)"
+    title="Configure auto-exposures (preview)"
     body="Import and auto-generate exposures from dashboards to understand how models are used in downstream tools for a richer downstream lineage."
     link="/docs/cloud-integrations/configure-auto-exposures"
     icon="dbt-bit"/>
