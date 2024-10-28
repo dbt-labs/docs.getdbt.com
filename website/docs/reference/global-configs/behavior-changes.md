@@ -4,6 +4,8 @@ id: "behavior-changes"
 sidebar: "Behavior changes"
 ---
 
+import StateModified from '/snippets/_state-modified-compare.md';
+
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
 
 Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension, by:
@@ -83,12 +85,17 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 ### Source definitions for state:modified
 
+:::info
+
+<StateModified features={'/snippets/_state-modified-compare.md'}/>
+
+:::
+
 The flag is `False` by default.
 
 Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
 
 Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
-
 
 ###  Package override for built-in materialization 
 
