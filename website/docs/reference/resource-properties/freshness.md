@@ -37,8 +37,6 @@ A freshness block is used to define the acceptable amount of time between the mo
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
-<VersionBlock firstVersion="1.7">
-
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`.
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
@@ -62,29 +60,9 @@ To exclude a source from freshness calculations, you have two options:
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`.
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.6">
-
-Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
-
-Freshness blocks are applied hierarchically:
-- A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
-- A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
-
-This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
-</VersionBlock>
-
 ## loaded_at_field
 
-<VersionBlock firstVersion="1.7">
-(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
-</VersionBlock>
-
-<VersionBlock lastVersion="1.6">
-(Required)
-</VersionBlock>
-
+Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.
 <br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
 If using a date field, you may have to cast it to a timestamp:

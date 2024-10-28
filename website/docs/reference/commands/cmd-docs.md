@@ -20,8 +20,6 @@ The command is responsible for generating your project's documentation website b
 dbt docs generate
 ```
 
-<VersionBlock firstVersion="1.7">
-
 Use the `--select` argument to limit the nodes included within `catalog.json`. When this flag is provided, step (3) will be restricted to the selected nodes. All other nodes will be excluded. Step (2) is unaffected.
 
 **Example**:
@@ -29,8 +27,6 @@ Use the `--select` argument to limit the nodes included within `catalog.json`. W
 ```shell
 dbt docs generate --select +orders
 ```
-
-</VersionBlock>
 
 Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above.
 

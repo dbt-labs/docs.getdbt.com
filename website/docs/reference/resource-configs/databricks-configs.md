@@ -7,23 +7,7 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.6">
-
- 
-| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
-| buckets             | The number of buckets to create while clustering.                                                                                                                                                                  | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table.                                                                          | Optional                                  | SQL           | `{'this.is.my.key': 12}` |
-| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python   | `zstd`                   |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7" lastVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -492,8 +476,6 @@ insert into analytics.replace_where_incremental
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.7">
-
 ## Selecting compute per model
 
 Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis.
@@ -681,8 +663,6 @@ def model(dbt, session):
 </File>
 
 If your default compute is a SQL Warehouse, you will need to specify an all purpose cluster `http_path` in this way.
-
-</VersionBlock>
 
 ## Persisting model descriptions
 
@@ -895,9 +875,5 @@ One application of this feature is making `delta` tables compatible with `iceber
  ) }}
 ```
 
-<VersionBlock firstVersion="1.7">
-
 `tblproperties` can be specified for python models, but they will be applied via an `ALTER` statement after table creation.
 This is due to a limitation in PySpark.
-
-</VersionBlock>
