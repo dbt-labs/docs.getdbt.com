@@ -55,6 +55,6 @@ pip install cryptography~=3.4
 
 Windows requires Python and git to successfully install and run dbt Core.
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8 or higher for Windows](https://www.python.org/downloads/windows/).
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.9 or higher for Windows](https://www.python.org/downloads/windows/).
 
 For further questions, please see the [Python compatibility FAQ](/faqs/Core/install-python-compatibility)
