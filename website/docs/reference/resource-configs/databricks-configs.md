@@ -711,7 +711,6 @@ insert into analytics.replace_where_incremental
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.7">
 
 ## Selecting compute per model
 
