@@ -25,5 +25,5 @@ This flag cannot be considered for maturity until we no longer need to add this 
 
 The `use_user_folder_for_python` flag is `False` by default, and results in writing uploaded python model notebooks to `/Shared/dbt_python_models/{{schema}}/`.
 Setting this flag to `True` will instead write notebooks to `/Users/{{current user}}/{{catalog}}/{{schema}}/`
-Writing to the `Shared` folder is being deprecated by Databricks as not following governance best practices.
+Writing to the `Shared` folder is being deprecated by Databricks as it does not align with governance best practices.
 We plan to promote this flag to maturity in 1.10.0.
