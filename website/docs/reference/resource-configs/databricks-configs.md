@@ -187,6 +187,7 @@ Each of these strategies has its pros and cons, which we'll discuss below. As wi
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
+
 ## Incremental models
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of five values:
