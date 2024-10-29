@@ -20,7 +20,6 @@ Some adapters can display behavior changes when certain flags are enabled. The f
     link="reference/global-configs/databricks-changes"
     icon="databricks"/>
 
-</div>
 
 <Card
     title="Redshift"
