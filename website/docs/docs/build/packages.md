@@ -83,7 +83,7 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 ```
 
-Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
+`dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
 
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
 * Your project uses both the dbt-utils and Snowplow packages, and the Snowplow package _also_ uses the dbt-utils package.
