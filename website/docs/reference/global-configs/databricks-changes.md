@@ -17,9 +17,9 @@ Here are the current [behavior change flags](/docs/reference/global-configs/beha
 
 The `use_info_schema_for_columns` flag is `False` by default.
 Setting this flag to `True` will use `information_schema`, rather than `describe extended`, to get column metadata for Unity Catalog tables.
-This setting is to avoid issues where `describe extended` truncates type information when the type is a complex struct;
-however, this setting is not ready to be default behavior, as in order to ensure that `information_schema` is complete, we must run `REPAIR TABLE {{relation}} SYNC METADATA` prior to querying, which adds overhead.
-This flag cannot be considered for maturity until we no longer need to add this overhead to every incremental materialization.
+This setting is to avoid issues where `describe extended` truncates type information when the type is a complex struct. However, this setting is not ready to be the default behavior, as there is a performance impact due to a Databricks metadata limitation. This is due to 
+the need to run `REPAIR TABLE {{relation}} SYNC METADATA` prior to querying in order to ensure the `information_schema` is complete. 
+This flag will become the default behavior when this additional query is no longer needed. 
 
 ### Use user's folder for Python model notebooks
 
