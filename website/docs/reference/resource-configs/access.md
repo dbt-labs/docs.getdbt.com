@@ -15,14 +15,6 @@ models:
 
 </File>
 
-<VersionBlock lastVersion="1.6">
-
-Access modifiers may be applied to models one-by-one in YAML properties. In v1.5 and v1.6, you are unable to configure `access` for multiple models at once. Upgrade to v1.7 for additional configuration options. A group or subfolder contains models with varying access levels, so when you designate a model with `access: public`, make sure you intend for this behavior. 
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
 
 There are multiple approaches to configuring access:
@@ -82,8 +74,6 @@ There are multiple approaches to configuring access:
   select ...
   ```
   </File>
-
-</VersionBlock>
 
 After you define `access`, rerun a production job to apply the change. 
 

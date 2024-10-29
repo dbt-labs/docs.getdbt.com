@@ -14,8 +14,6 @@ Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — thi
 
 The following example is a list of all available configurations in the `dbt_project.yml` file:
 
-<VersionBlock firstVersion="1.7">
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -94,77 +92,6 @@ vars:
 ```
 
 </File>
-</VersionBlock>
-
-<VersionBlock lastVersion="1.6">
-
-<File name='dbt_project.yml'>
-
-```yml
-[name](/reference/project-configs/name): string
-
-[config-version](/reference/project-configs/config-version): 2
-[version](/reference/project-configs/version): version
-
-[profile](/reference/project-configs/profile): profilename
-
-[model-paths](/reference/project-configs/model-paths): [directorypath]
-[seed-paths](/reference/project-configs/seed-paths): [directorypath]
-[test-paths](/reference/project-configs/test-paths): [directorypath]
-[analysis-paths](/reference/project-configs/analysis-paths): [directorypath]
-[macro-paths](/reference/project-configs/macro-paths): [directorypath]
-[snapshot-paths](/reference/project-configs/snapshot-paths): [directorypath]
-[docs-paths](/reference/project-configs/docs-paths): [directorypath]
-[asset-paths](/reference/project-configs/asset-paths): [directorypath]
-
-[packages-install-path](/reference/project-configs/packages-install-path): directorypath
-
-[clean-targets](/reference/project-configs/clean-targets): [directorypath]
-
-[query-comment](/reference/project-configs/query-comment): string
-
-[require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
-
-[dbt-cloud](/docs/cloud/cloud-cli-installation):
-  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
-  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
-
-[quoting](/reference/project-configs/quoting):
-  database: true | false
-  schema: true | false
-  identifier: true | false
-
-models:
-  [<model-configs>](/reference/model-configs)
-
-seeds:
-  [<seed-configs>](/reference/seed-configs)
-
-snapshots:
-  [<snapshot-configs>](/reference/snapshot-configs)
-
-sources:
-  [<source-configs>](source-configs)
-  
-tests:
-  [<test-configs>](/reference/data-test-configs)
-
-vars:
-  [<variables>](/docs/build/project-variables)
-
-[on-run-start](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
-[on-run-end](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
-
-[dispatch](/reference/project-configs/dispatch-config):
-  - macro_namespace: packagename
-    search_order: [packagename]
-
-[restrict-access](/docs/collaborate/govern/model-access): true | false
-
-```
-
-</File>
-</VersionBlock>
 
 ## Naming convention
 

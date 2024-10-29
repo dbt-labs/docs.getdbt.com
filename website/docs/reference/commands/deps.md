@@ -58,8 +58,6 @@ Updates available for packages: ['tailsdotcom/dbt_artifacts', 'dbt-labs/snowplow
 Update your versions in packages.yml, then run dbt deps
 ```
 
-<VersionBlock firstVersion="1.7">
-
 ## Predictable package installs
 
 Starting in dbt Core v1.7, dbt generates a `package-lock.yml` file in the root of your project. This contains the complete set of resolved packages based on the `packages` configuration in `dependencies.yml` or `packages.yml`. Each subsequent invocation of `dbt deps` will install from the _locked_ set of packages specified in this file. Storing the complete set of required packages (with pinned versions) in version-controlled code ensures predictable installs in production and consistency across all developers and environments. 
@@ -97,5 +95,3 @@ dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source
 # add package from local
 dbt deps --add-package /opt/dbt/redshift --source local
 ```
-
-</VersionBlock>
