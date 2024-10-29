@@ -175,7 +175,7 @@ Please to update variables between **`<>`**, here are explanations of these argu
 
 ### Configuration of the local environment
 
-Because **`dbt`** and **`dbt-glue`** adapters are compatible with Python versions 3.7, 3.8, and 3.9, check the version of Python:
+Because **`dbt`** and **`dbt-glue`** adapters are compatible with Python versions 3.9 or higher, check the version of Python:
 
 ```bash
 $ python3 --version
