@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
  
-- **Fix:** Previously, POST requests to the Jobs API with invalid cron strings would return 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid cron strings will result in 400s, without the underlying entity being updated.
+- **Fix:** Previously, POST requests to the Jobs API with invalid `cron` strings would return HTTP response status code 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid `cron` strings will result in status code 400s, without the underlying entity being updated.
 - **Fix:** Fixed an issue where the `Source` view page in dbt Explorer did not correctly display source freshness status if older than 30 days.
 - **Fix:** The UI now indicates when the description of a model is inherited from a catalog comment.
 - **Behavior change:** User API tokens have been deprecated. Update to [personal access tokens](/docs/dbt-cloud-apis/user-tokens) if you have any still in use.
