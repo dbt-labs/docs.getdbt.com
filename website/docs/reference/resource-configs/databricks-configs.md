@@ -636,11 +636,9 @@ insert into analytics.replace_where_incremental
 
 ### The `microbatch` strategy
 
-The Databricks adapter implements the `microbatch` strategy using `replace_where`.
-As such, please take note of the requirements and caution statements for `replace_where` above.
-For general discussion of using this strategy, please see the [microbatch reference page](/docs/build/incremental-microbatch).
+The Databricks adapter implements the `microbatch` strategy using `replace_where`. Note the requirements and caution statements for `replace_where` above. For more information about this strategy, see the [microbatch reference page](/docs/build/incremental-microbatch).
 
-In the example below, the upstream table `events` has been annotated with an `event_time` column called `ts` in its schema file.
+In the following example, the upstream table `events` have been annotated with an `event_time` column called `ts` in its schema file.
 
 <Tabs
   defaultValue="source"
