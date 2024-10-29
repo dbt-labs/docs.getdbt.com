@@ -431,17 +431,18 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 
 Beginning with 1.9, `merge` behavior can be modified with the following additional configuration options:
 
-* `target_alias`, `source_alias`: aliases for the target and source to allow you to describe your merge conditions more naturally.  These default to `tgt` and `src` respectively.
-* `skip_matched_step`: if set to `true`, the 'matched' clause of the merge statement will not be included.
-* `skip_not_matched_step`: if set to `true` the 'not matched' clause will not be included.
-* `matched_condition`: condition to apply to the `WHEN MATCHED` clause.  You should use the `target_alias` and `source_alias` to write a conditional expression, such as `tgt.col1 = hash(src.col2, src.col3)`.  This condition further restricts the matched set of rows.
-* `not_matched_condition`: condition to apply to the `WHEN NOT MATCHED [BY TARGET]` clause.  This condition further restricts the set of rows in the target that do not match the source that will be inserted into the merged table.
-* `not_matched_by_source_condition`: condition to apply to the further filter `WHEN NOT MATCHED BY SOURCE` clause.  Only used in conjunction with `not_matched_by_source_action: delete`.
-* `not_matched_by_source_action`: if set to `delete` a `DELETE` clause is added to the merge statement for `WHEN NOT MATCHED BY SOURCE`.
-* `merge_with_schema_evolution`: if set to `true`, the merge statement includes the `WITH SCHEMA EVOLUTION` clause.
+- `target_alias`, `source_alias`: Aliases for the target and source to allow you to describe your merge conditions more naturally.  These default to `tgt` and `src`, respectively.
+- `skip_matched_step`: If set to `true`, the 'matched' clause of the merge statement will not be included.
+- `skip_not_matched_step`: If set to `true`, the 'not matched' clause will not be included.
+- `matched_condition`: Condition to apply to the `WHEN MATCHED` clause.  You should use the `target_alias` and `source_alias` to write a conditional expression, such as `tgt.col1 = hash(src.col2, src.col3)`.  This condition further restricts the matched set of rows.
+- `not_matched_condition`: Condition to apply to the `WHEN NOT MATCHED [BY TARGET]` clause.  This condition further restricts the set of rows in the target that do not match the source that will be inserted into the merged table.
+- `not_matched_by_source_condition`: Condition to apply to the further filter `WHEN NOT MATCHED BY SOURCE` clause.  Only used in conjunction with `not_matched_by_source_action: delete`.
+- `not_matched_by_source_action`: If set to `delete`, a `DELETE` clause is added to the merge statement for `WHEN NOT MATCHED BY SOURCE`.
+- `merge_with_schema_evolution`: If set to `true`, the merge statement includes the `WITH SCHEMA EVOLUTION` clause.
 
 For more details on the meaning of each merge clause, please see [the Databricks documentation](https://docs.databricks.com/en/sql/language-manual/delta-merge-into.html).
-Here is an example demonstrating the use of these new options:
+
+The following is an example demonstrating the use of these new options:
 
 <Tabs
   defaultValue="source"
