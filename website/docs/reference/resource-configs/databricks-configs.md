@@ -7,23 +7,7 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.6">
-
- 
-| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
-| buckets             | The number of buckets to create while clustering.                                                                                                                                                                  | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table.                                                                          | Optional                                  | SQL           | `{'this.is.my.key': 12}` |
-| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python   | `zstd`                   |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7" lastVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -62,6 +46,107 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
 
 \+ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+### Python submission methods
+
+In dbt v1.9 and higher, or in [Versionless](/docs/dbt-versions/versionless-cloud) dbt Cloud, you can use these four options for `submission_method`: 
+
+* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
+* `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
+* `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
+* `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
+   :::caution 
+   This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
+   :::
+
+We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
+
+As such, the supported config matrix is somewhat complicated:
+
+| Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
+| --------------------- | -------------------------------------------------------------------- | ------------------ | ---------------------- | ------------- | -------------------- | -------------- |
+| `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | `false`            | ✅                     | ❌             | ❌                   | ❌             |
+| `timeout`             | maximum time to wait for command/job to run                          | `0` (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
+| `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | `{}` | ❌ | ✅ | ❌            | ✅             |
+| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `packages`            | list of packages to install on the executing cluster                 | `[]`               | ✅                     | ✅             | ✅                   | ✅             |
+| `index_url`           | url to install `packages` from                                       | `None` (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
+| `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | `[]` | ✅ | ✅             | ✅                   | ✅             |
+| `python_job_config`   | additional configuration for jobs/workflows (see table below)        | `{}`               | ✅                     | ✅             | ✅                   | ✅             |
+| `cluster_id`          | id of existing all purpose cluster to execute against                | `None`             | ✅                     | ❌             | ❌                   | ✅             |
+| `http_path`           | path to existing all purpose cluster to execute against              | `None`             | ✅                     | ❌             | ❌                   | ❌             |
+
+\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
+
+With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`. This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
+
+The support matrix for this feature is divided into `workflow_job` and all others (assuming `all_purpose_cluster` with `create_notebook`==true).
+Each config option listed must be nested under `python_job_config`:
+
+| Config                     | Use                                                                                                                     | Default | `workflow_job` | All others |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------- | -------------- | ---------- |
+| `name`                     | The name to give (or used to look up) the created workflow                                                              | `None`  | ✅             | ❌          |
+| `grants`                   | A simplified way to specify access control for the workflow                                                             | `{}`    | ✅             | ✅          |
+| `existing_job_id`          | Id to use to look up the created workflow (in place of `name`)                                                          | `None`  | ✅             | ❌          |
+| `post_hook_tasks`          | [Tasks](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include after the model notebook execution      | `[]`    | ✅             | ❌          |
+| `additional_task_settings` | Additional [task config](https://docs.databricks.com/api/workspace/jobs/create#tasks) to include in the model task     | `{}`    | ✅             | ❌          |
+| [Other job run settings](https://docs.databricks.com/api/workspace/jobs/submit) | Config will be copied into the request, outside of the model task  | `None`  | ❌             | ✅          |
+| [Other workflow settings](https://docs.databricks.com/api/workspace/jobs/create) | Config will be copied into the request, outside of the model task | `None`  | ✅             | ❌          |
+
+This example uses the new configuration options in the previous table:
+
+<File name='schema.yml'>
+
+```yaml
+models:
+  - name: my_model
+    config:
+      submission_method: workflow_job
+
+      # Define a job cluster to create for running this workflow
+      # Alternately, could specify cluster_id to use an existing cluster, or provide neither to use a serverless cluster
+      job_cluster_config:
+        spark_version: "15.3.x-scala2.12"
+        node_type_id: "rd-fleet.2xlarge"
+        runtime_engine: "{{ var('job_cluster_defaults.runtime_engine') }}"
+        data_security_mode: "{{ var('job_cluster_defaults.data_security_mode') }}"
+        autoscale: { "min_workers": 1, "max_workers": 4 }
+
+      python_job_config:
+        # These settings are passed in, as is, to the request
+        email_notifications: { on_failure: ["me@example.com"] }
+        max_retries: 2
+
+        name: my_workflow_name
+
+        # Override settings for your model's dbt task. For instance, you can
+        # change the task key
+        additional_task_settings: { "task_key": "my_dbt_task" }
+
+        # Define tasks to run before/after the model
+        # This example assumes you have already uploaded a notebook to /my_notebook_path to perform optimize and vacuum
+        post_hook_tasks:
+          [
+            {
+              "depends_on": [{ "task_key": "my_dbt_task" }],
+              "task_key": "OPTIMIZE_AND_VACUUM",
+              "notebook_task":
+                { "notebook_path": "/my_notebook_path", "source": "WORKSPACE" },
+            },
+          ]
+
+        # Simplified structure, rather than having to specify permission separately for each user
+        grants:
+          view: [{ "group_name": "marketing-team" }]
+          run: [{ "user_name": "other_user@example.com" }]
+          manage: []
+```
+
+</File>
 
 </VersionBlock>
 
@@ -391,8 +476,6 @@ insert into analytics.replace_where_incremental
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.7">
-
 ## Selecting compute per model
 
 Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis.
@@ -556,9 +639,15 @@ Databricks adapter ... using compute resource <name of compute>.
 
 Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
+<VersionBlock lastVersion="1.8">
 The python code needs to run on an all purpose cluster, while the SQL code can run on an all purpose cluster or a SQL Warehouse.
+</VersionBlock>
+<VersionBlock firstVersion="1.9">
+The python code needs to run on an all purpose cluster (or serverless cluster, see [Python Submission Methods](#python-submission-methods)), while the SQL code can run on an all purpose cluster or a SQL Warehouse.
+</VersionBlock>
 When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
-If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model. Please note that declaring a separate SQL compute and a python compute for your python dbt models is optional. If you wish to do this:
+If you wish to use a different compute for executing the python itself, you must specify an alternate compute in the config for the model.
+For example:
 
 <File name="model.py">
 
@@ -574,8 +663,6 @@ def model(dbt, session):
 </File>
 
 If your default compute is a SQL Warehouse, you will need to specify an all purpose cluster `http_path` in this way.
-
-</VersionBlock>
 
 ## Persisting model descriptions
 
@@ -788,9 +875,5 @@ One application of this feature is making `delta` tables compatible with `iceber
  ) }}
 ```
 
-<VersionBlock firstVersion="1.7">
-
 `tblproperties` can be specified for python models, but they will be applied via an `ALTER` statement after table creation.
 This is due to a limitation in PySpark.
-
-</VersionBlock>

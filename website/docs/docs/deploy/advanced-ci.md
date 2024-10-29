@@ -22,7 +22,7 @@ dbt Labs plans to provide additional Advanced CI features in the near future. Mo
 
 ## Compare changes feature {#compare-changes}
 
-For [CI jobs](/docs/deploy/ci-jobs) that have the **Run compare changes** option enabled, dbt Cloud compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
+For [CI jobs](/docs/deploy/ci-jobs) that have the **dbt compare** option enabled, dbt Cloud compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
 dbt reports the comparison differences in:
 
@@ -33,7 +33,7 @@ dbt reports the comparison differences in:
 
 ## About the cached data
 
-When [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
+After [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model for preview purposes. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
 
 You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
