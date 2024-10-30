@@ -10,7 +10,7 @@ sidebar: null
 :::important
 
 
-dbt Cloud enforces multi-factor authentication (MFA) for all users with username and password credentials. Users who have not set up MFA will see a notification asking them to configure one of the supported methods when they log in. If they do not, they will have to configure MFA on the next login or be unable to access dbt Cloud.
+dbt Cloud enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access dbt Cloud.
 
 :::
 
