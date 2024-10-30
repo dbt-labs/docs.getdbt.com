@@ -165,7 +165,7 @@ If no substring is provided, the query returns all metrics.
 
 In the case when you don't want to return the full result set from a metadata call, you can paginate the results for both `semantic_layer.metrics()` and `semantic_layer.dimensions()` calls using the `page_size` and `page_number` parameters.
 
-- `page_size`: This is an optional feature which sets the number of records per page. If left as `None`, there is no page limit.
+- `page_size`: This is an optional variable which sets the number of records per page. If left as None, there is no page limit.
 - `page_number`: This is another optional feature which specifies the page number to retrieve. Defaults to `1` (first page) if not specified.
 
 Examples:
