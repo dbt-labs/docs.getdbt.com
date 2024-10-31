@@ -19,18 +19,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## October 2024
- 
-- **Behavior change:** [Multi-factor authentication](/docs/cloud/manage-access/mfa) is now enforced on all users who log in with username and password credentials. 
-- **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
-- **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
-- **Fix**: The [dbt Semantic Layer Excel integration](/docs/cloud-integrations/semantic-layer/excel) now correctly surfaces errors when a query fails to execute. Previously, it was not clear why a query failed to run.
-- **Fix:** Previously, POST requests to the Jobs API with invalid `cron` strings would return HTTP response status code 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid `cron` strings will result in status code 400s, without the underlying entity being updated.
-- **Fix:** Fixed an issue where the `Source` view page in dbt Explorer did not correctly display source freshness status if older than 30 days.
-- **Fix:** The UI now indicates when the description of a model is inherited from a catalog comment.
-- **Behavior change:** User API tokens have been deprecated. Update to [personal access tokens](/docs/dbt-cloud-apis/user-tokens) if you have any still in use.
-- **New**: The dbt Cloud IDE supports signed commits for Git, available for Enterprise plans. You can sign your Git commits when pushing them to the repository to prevent impersonation and enhance security. Supported Git providers are GitHub and GitLab. Refer to [Git commit signing](/docs/cloud/dbt-cloud-ide/git-commit-signing.md) for more information.
-- **New:** With dbt Mesh, you can now enable bidirectional dependencies across your projects. Previously, dbt enforced dependencies to only go in one direction. dbt checks for cycles across projects and raises errors if any are detected. For details, refer to [Cycle detection](/docs/collaborate/govern/project-dependencies#cycle-detection). There's also the [Intro to dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide to help you learn more best practices. 
-
 <Expandable alt_header="Coalesce 2024 announcements">
 
   Documentation for new features and functionality announced at Coalesce 2024:
@@ -54,8 +42,17 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) is now generally available 
 
 </Expandable>
-
-
+ 
+- **Behavior change:** [Multi-factor authentication](/docs/cloud/manage-access/mfa) is now enforced on all users who log in with username and password credentials. 
+- **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
+- **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
+- **Fix**: The [dbt Semantic Layer Excel integration](/docs/cloud-integrations/semantic-layer/excel) now correctly surfaces errors when a query fails to execute. Previously, it was not clear why a query failed to run.
+- **Fix:** Previously, POST requests to the Jobs API with invalid `cron` strings would return HTTP response status code 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid `cron` strings will result in status code 400s, without the underlying entity being updated.
+- **Fix:** Fixed an issue where the `Source` view page in dbt Explorer did not correctly display source freshness status if older than 30 days.
+- **Fix:** The UI now indicates when the description of a model is inherited from a catalog comment.
+- **Behavior change:** User API tokens have been deprecated. Update to [personal access tokens](/docs/dbt-cloud-apis/user-tokens) if you have any still in use.
+- **New**: The dbt Cloud IDE supports signed commits for Git, available for Enterprise plans. You can sign your Git commits when pushing them to the repository to prevent impersonation and enhance security. Supported Git providers are GitHub and GitLab. Refer to [Git commit signing](/docs/cloud/dbt-cloud-ide/git-commit-signing.md) for more information.
+- **New:** With dbt Mesh, you can now enable bidirectional dependencies across your projects. Previously, dbt enforced dependencies to only go in one direction. dbt checks for cycles across projects and raises errors if any are detected. For details, refer to [Cycle detection](/docs/collaborate/govern/project-dependencies#cycle-detection). There's also the [Intro to dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide to help you learn more best practices. 
 - **New**: The [dbt Semantic Layer Python software development kit](/docs/dbt-cloud-apis/sl-python) is now [generally available](/docs/dbt-versions/product-lifecycles). It provides users with easy access to the dbt Semantic Layer with Python and enables developers to interact with the dbt Semantic Layer APIs to query metrics/dimensions in downstream tools.
 - **Enhancement**: You can now add a description to a singular data test in dbt Cloud Versionless. Use the [`description` property](/reference/resource-properties/description) to document [singular data tests](/docs/build/data-tests#singular-data-tests). You can also use [docs block](/docs/build/documentation#using-docs-blocks) to capture your test description. The enhancement will be included in upcoming dbt Core 1.9 release.
 - **New**: Introducing the [microbatch incremental model strategy](/docs/build/incremental-microbatch) (beta), available in dbt Cloud Versionless and will soon be supported in dbt Core 1.9. The microbatch strategy allows for efficient, batch-based processing of large time-series datasets for improved performance and resiliency, especially when you're working with data that changes over time (like new records being added daily). To enable this feature in dbt Cloud, set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` in your project.

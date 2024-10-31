@@ -209,7 +209,7 @@ var siteSettings = {
           ></script>
 
           <div class='footer__items'>
-            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
+            <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
             <button id="ot-sdk-btn" onclick="openPreferenceCenter()">Cookie Settings</button>
