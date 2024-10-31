@@ -236,7 +236,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
+Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the `snapshot` directory file.
 
 </VersionBlock>
 

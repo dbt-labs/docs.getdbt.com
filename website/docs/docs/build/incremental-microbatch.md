@@ -165,7 +165,7 @@ Several configurations are relevant to microbatch models, and some are required:
 | `event_time` | Column  (required)   | The column indicating "at what time did the row occur." Required for your microbatch model and any direct parents that should be filtered.          | N/A     |
 | `begin`      | Date (required)   | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
 | `batch_size` | String (required)  | The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`             | N/A     |
-| `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `0`     |
+| `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `1`     |
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
@@ -192,11 +192,14 @@ During standard incremental runs, dbt will process batches according to the curr
 
 Whether to fix erroneous source data or retroactively apply a change in business logic, you may need to reprocess a large amount of historical data.
 
-Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. As always, dbt will process the batches between the start and end as independent queries.
+Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. Note that `--event-time-start` and `--event-time-end` are mutually necessary, meaning that if you specify one, you must specify the other. 
+
+As always, dbt will process the batches between the start and end as independent queries.
 
 ```bash
 dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 ```
+
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 

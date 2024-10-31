@@ -20,6 +20,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
  
+- **Behavior change:** [Multi-factor authentication](/docs/cloud/manage-access/mfa) is now enforced on all users who log in with username and password credentials. 
+- **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
+- **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
+- **Fix**: The [dbt Semantic Layer Excel integration](/docs/cloud-integrations/semantic-layer/excel) now correctly surfaces errors when a query fails to execute. Previously, it was not clear why a query failed to run.
 - **Fix:** Previously, POST requests to the Jobs API with invalid `cron` strings would return HTTP response status code 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid `cron` strings will result in status code 400s, without the underlying entity being updated.
 - **Fix:** Fixed an issue where the `Source` view page in dbt Explorer did not correctly display source freshness status if older than 30 days.
 - **Fix:** The UI now indicates when the description of a model is inherited from a catalog comment.
@@ -70,6 +74,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## September 2024
 
+- **Fix**: MetricFlow updated `get_and_expire` to replace the unsupported `GETEX` command with a `GET` and conditional expiration, ensuring compatibility with Azure Redis 6.0.
+- **Enhancement**: The [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) now supports `TimeGranularity` custom grain for metrics. This feature allows you to define custom time granularities for metrics, such as `fiscal_year` or `retail_month`, to query data using non-standard time periods.
 - **New**: Use the dbt Copilot AI engine to generate semantic model for your models, now available in beta. dbt Copilot automatically generates documentation, tests, and now semantic models based on the data in your model, . To learn more, refer to [dbt Copilot](/docs/cloud/dbt-copilot).
 - **New**: Use the new recommended syntax for [defining `foreign_key` constraints](/reference/resource-properties/constraints) using `refs`, available in dbt Cloud Versionless. This will soon be released in dbt Core v1.9. This new syntax will capture dependencies and works across different environments.
 - **Enhancement**: You can now run [Semantic Layer commands](/docs/build/metricflow-commands) commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The supported commands are `dbt sl list`, `dbt sl list metrics`, `dbt sl list dimension-values`, `dbt sl list saved-queries`, `dbt sl query`, `dbt sl list dimensions`, `dbt sl list entities`, and `dbt sl validate`. 
@@ -118,6 +124,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New:** Enabled `where` filters  on dimensions (included in saved queries) to use the cache during query time. This means you can now dynamically filter your dashboards without losing the performance benefits of caching. Refer to [caching](/docs/use-dbt-semantic-layer/sl-cache#result-caching) for more information.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. Click on the **Info** icon button to view a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
+- **Enhancement**: MetricFlow time spine warnings now prompt users to configure missing or small-grain-time spines. An error message is displayed for multiple time spines per granularity.
+- **Enhancement**: Errors now display if no time spine is configured at the requested or smaller granularity. 
 - **Enhancement:** Improved querying error message when no semantic layer credentials were set.
 - **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
 - **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
