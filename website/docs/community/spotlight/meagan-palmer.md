@@ -14,9 +14,10 @@ companyName: Altis Consulting
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/meaganpalmer/
-dateCreated: 2024-07-29
+dateCreated: 2024-11-04
 hide_table_of_contents: true
-communityAward: false
+communityAward: true
+communityAwardYear: 2024 
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
@@ -27,9 +28,9 @@ I was fortunate that Jon Bradley at Nearmap had the vision to engage the then Fi
 
 Being in Australia, I often see replies from <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jeremyyeo/">Jeremy Yeo</a> to people in the dbt Slack. His clarity of communication is impressive. 
 
-For growth, I'm hoping that others can benefit from the wide range of experience I have. My newsletter, Analytics Engineering Today on LinkedIn aims to upskill the dbt Community and shed some light on some useful features that might not be well known.
+For growth, I'm hoping that others can benefit from the wide range of experience I have. My LinkedIn Newsletter, <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/newsletters/analytics-engineering-today-7210968984693690370/">Analytics Engineering Today</a> aims to upskill the dbt Community and shed some light on some useful features that might not be well known.
 
-I'll be at <a target="_blank" rel="noopener noreferrer" href="https://coalesce.getdbt.com/">Coalesce</a> and am doing some webinars/events later in the year. Come say hi, I love talking dbt and analytics engineering with people.
+I was at <a target="_blank" rel="noopener noreferrer" href="https://coalesce.getdbt.com/">Coalesce Online</a>and am doing some webinars/events later in the year. Come say hi, I love talking dbt and analytics engineering with people.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
