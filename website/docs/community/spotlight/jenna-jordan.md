@@ -8,7 +8,6 @@ pronouns: she/her
 location: Asheville, USA
 jobTitle: Senior Data Management Consultant
 companyName: Analytics8
-organization: ""
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/jennajordan1/
