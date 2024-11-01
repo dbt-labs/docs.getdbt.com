@@ -90,7 +90,7 @@ In 2023 (and earlier), customers were expected to manage their own upgrades by s
 
 In 2024, we've changed the way that new dbt functionality is made available for dbt Cloud customers. Behavior or breaking changes are gated behind opt-in flags. Users don't need to spend valuable time managing their own upgrades. Currently, it is possible to receive continuous (daily) updates. We are adding other release cadence options for managed customers of dbt Cloud by the end of the year.
 
-Opting into a release cadence with automated upgrades is required for accessing any new functionality that we've put out in 2024+.
+Opting into a release cadence with automated upgrades is required for accessing any new functionality that we've released in 2024, and going forward.
 
 We continue to release new minor versions of dbt Core (OSS), including v1.9 which will be available later this year. When we do, it will be a subset of the functionality that's already available to dbt Cloud customers, and always after the functionality has been available in dbt Cloud.
 
