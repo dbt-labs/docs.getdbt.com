@@ -20,9 +20,12 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
 - [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="Preview" />
 
-You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
+To connect to your database in dbt Cloud:
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choose-a-connection.png" title="Choose a connection"/>
+1. Click your account name at the bottom of the left-side menu and click **Account settings**
+2. Select **Projects** from the top left, and from there click **New Project**
+
+<Lightbox src="/img/docs/connect-data-platform/choose-a-connection.png" title="Choose a connection"/>
 
 These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/guides)
 
@@ -41,7 +44,7 @@ Connections created with APIs before this change cannot be accessed with the [la
 
 Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-list.png" width="60%" title="Connection list"/>
+<Lightbox src="/img/docs/connect-data-platform/connection-list.png" width="100%" title="Connection list"/>
 
 Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
 

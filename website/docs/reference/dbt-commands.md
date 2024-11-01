@@ -11,7 +11,7 @@ A key distinction with the tools mentioned, is that dbt Cloud CLI and IDE are de
 
 ## Parallel execution
 
-dbt Cloud allows for parallel execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time, however it's important to understand which commands can be run in parallel and which can't.
+dbt Cloud allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 

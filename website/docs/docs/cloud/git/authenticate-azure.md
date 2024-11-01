@@ -13,9 +13,9 @@ If you use the dbt Cloud IDE or dbt Cloud CLI to collaborate on your team's Azur
 
 Connect your dbt Cloud profile to Azure DevOps using OAuth:
 
-1. Click the gear icon at the top right and select **Profile settings**.
-2. Click **Linked Accounts**.
-3. Next to  Azure DevOps, click **Link**.
+1. Click your account name at the bottom of the left-side menu and click **Account settings**
+2. Scroll down to **Your profile** and select **Personal profile**.
+3. Go to the **Linked accounts** section in the middle of the page.
    <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/LinktoAzure.png" title="Azure DevOps Authorization Screen"/>
 
 4. Once you're redirected to Azure DevOps, sign into your account.
