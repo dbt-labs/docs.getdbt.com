@@ -14,9 +14,10 @@ socialLinks:
     link: https://www.linkedin.com/in/jennajordan1/
   - name: Personal website
     link: https://jennajordan.me/
-dateCreated: 2023-07-18
+dateCreated: 2024-11-01
 hide_table_of_contents: true
 communityAward: true
+communityAwardYear: 2024
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
