@@ -8,7 +8,7 @@ description: |
 image: /img/community/spotlight/fabiyi-opeyemi.jpg
 pronouns: he/him
 location: Lagos, Nigeria
-jobTitle: Analytics Manager
+jobTitle: Analytics Manager 
 companyName: Data Culture
 organization: Young Data Professionals (YDP)
 socialLinks:
