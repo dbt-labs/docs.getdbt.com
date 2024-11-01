@@ -13,7 +13,7 @@ socialLinks:
     link: https://x.com/Kayrnt
   - name: LinkedIn
     link: https://www.linkedin.com/in/christopheoudar/
- - name: Substack
+  - name: Substack
     link: https://smallbigdata.substack.com/
 dateCreated: 2024-11-08
 hide_table_of_contents: true
