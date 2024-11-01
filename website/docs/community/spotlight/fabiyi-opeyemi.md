@@ -8,7 +8,7 @@ description: |
 image: /img/community/spotlight/fabiyi-opeyemi.jpg
 pronouns: he/him
 location: Lagos, Nigeria
-jobTitle: Senior Analytics Engineer
+jobTitle: Analytics Manager
 companyName: Data Culture
 organization: Young Data Professionals (YDP)
 socialLinks:
@@ -16,10 +16,10 @@ socialLinks:
     link: https://twitter.com/Opiano_1
   - name: LinkedIn
     link: https://www.linkedin.com/in/opeyemifabiyi/
-dateCreated: 2023-11-06
+dateCreated: 2024-11-02
 hide_table_of_contents: true
 communityAward: true
-communityAwardYear: 2023
+communityAwardYear: 2024
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
