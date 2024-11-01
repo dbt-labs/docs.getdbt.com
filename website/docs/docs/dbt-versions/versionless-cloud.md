@@ -52,7 +52,7 @@ The legacy dbt Semantic Layer was deprecated in the second half of 2023. We reco
 
 If you are upgrading from a very old unsupported version of dbt Core, you may run into one of these edge cases after the upgrade to a newer version:
 - [v1.3] Customers with non-dbt `.py` files defined within their project directories, such as `models/`. Since v1.3, dbt expects these files be valid [Python models](/docs/build/python-models). The customer needs to move these files out of their `models/` directory, or ignore them via `.dbtignore`
-- [v1.5] Customers who have `--m` in their job definitions, instead of `-m` or `--models`. This autocompletion" (`--m[odels]` for `--models`) has never been officially documented or supported. It was an implicit behavior of argparse (CLI library used in dbt-core v1.0-1.4) that is not supported by `click` (the CLI library used in dbt-core since v1.5+).
+- [v1.5] Customers who have `--m` in their job definitions, instead of `-m` or `--models`. This autocompletion (`--m[odels]` for `--models`) has never been officially documented or supported. It was an implicit behavior of argparse (CLI library used in dbt-core v1.0-1.4) that is not supported by `click` (the CLI library used in dbt-core since v1.5+).
 - [v1.5] Empty invalid `tests` config start raising a validation error](https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
 - [v1.6] Performance optimization to `load_result` means you cannot call it on the same query result multiple times (https://github.com/dbt-labs/dbt-core/pull/7371)
 
@@ -84,7 +84,7 @@ If the package you’ve installed relies on _undocumented_ functionality of db
 
 <Expandable alt_header="I see that dbt Core version 1.8 was released in April 2024. Will a version 1.8 become available in dbt Cloud?" >
 
-No. Going forward, customers will access new functionality and ongoing support in dbt Cloud by receiving automatic updates. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt.
+No. Going forward, customers will access new functionality and ongoing support in dbt Cloud by receiving automatic updates. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt, and for you as dbt users to be able to consistently take advantage of new features.
 
 In 2023 (and earlier), customers were expected to manage their own upgrades by selecting dbt Core versions, up to and including dbt Core v1.7, which was released in October 2023. (Way back in 2021, dbt Cloud customers would pick specific _patch releases_ of dbt Core, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
 
