@@ -15,6 +15,6 @@
 
 All functionality in dbt Core since the v1.7 release is available in dbt Cloud, early and continuously, by selecting ["Versionless"](https://docs.getdbt.com/docs/dbt-versions/versionless-cloud).
 
-<sup>1</sup> Starting in November 2024, "Versionless" will be required for the Developer and Teams plans on dbt Cloud. After that point, accounts on older versions will be migrated to "Versionless."
+<sup>1</sup> "Versionless" is now required for the Developer and Teams plans on dbt Cloud. Accounts using older dbt versions will be migrated to "Versionless."
 
 For customers of dbt Cloud Enterprise, dbt v1.7 will continue to be available as an option while dbt Labs rolls out a mechanism for "extended" upgrades. In the meantime, dbt Labs strongly recommends migrating any environments that are still running on older unsupported versions to "Versionless" dbt or dbt v1.7.
