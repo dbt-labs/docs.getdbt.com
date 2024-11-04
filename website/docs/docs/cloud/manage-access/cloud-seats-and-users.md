@@ -124,7 +124,7 @@ Great work! After completing these steps, your dbt Cloud user count and billing 
 
 ## Managing license types
 
-Licenses can be assigned to users either individually or by group. Assigning a user a license with group membership can be done manually by adding a user to a group during the invitation process or assigning them a group after they've enrolled in dbt Cloud. Additionally, you can assign users to groups automatically with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only). By default, new users in an account will be assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in dbt Cloud. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
