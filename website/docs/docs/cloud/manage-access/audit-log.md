@@ -93,7 +93,7 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | ------------- | ----------------------------- | ------------------------------ |
 | Group Added   | user_group.Added   | New Group successfully created |
 | Group Changed | user_group.Changed | Group settings changed         |
-| Group Removed | user_group.Changed | Group successfully removed     |
+| Group Removed | user_group.Removed | Group successfully removed     |
 
 ### User
 
@@ -149,11 +149,21 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 
 ### Credentials
 
-| Event Name                       | Event Type                    | Description                      |
-| -------------------------------- | ----------------------------- | -------------------------------- |
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
 | Credentials Added to Project     | credentials.Added   | Project credentials added        |
 | Credentials Changed in Project   | credentials.Changed | Credentials changed in project   |
 | Credentials Removed from Project | credentials.Removed | Credentials removed from project |
+
+
+### Git integration
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| GitLab Repository Added          | repository.gitlab.Added       | GitLab repository configuration added  |
+| GitLab Repository Changed        | repository.gitlab.Changed     | GitLab repository configuration changed |
+| GitLab Repository Removed        | repository.gitlab.Removed     | GitLab repository configuration deleted |
+
 
 ## Searching the audit log
 
