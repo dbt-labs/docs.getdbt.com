@@ -3,9 +3,11 @@ id: original-dbt-athena-maintainers
 title: The Original dbt-athena Maintainers
 description: |
   The original dbt-athena Maintainers is a group of 5 people—Jérémy Guiselin, Mattia, Jesse Dobbelaere, Serhii Dimchenko, and Nicola Corda—who met via dbt Slack in the #db-athena channel, with the aim to make make <a target="_blank" rel="noopener noreferrer" href="https://docs.getdbt.com/docs/core/connect-data-platform/athena-setup">dbt-athena</a> a production-ready adapter.
+
   In the first periods, Winter 2022 and Spring 2023, we focused on contributing directly to the adapter, adding relevant features like Iceberg and Lake Formation support, and stabilizing some internal behaviour.
+ 
   On a second iteration our role was triaging, providing community support and bug fixing. We encouraged community members to make their first contributions, and helped them to merge their PRs.
-image: /img/community/spotlight/dbt-athena-groupheadshot.png
+image: /img/community/spotlight/dbt-athena-groupheadshot.jpg
 location: Europe
 jobTitle: A group of data-engineers
 companyName: Mix of companies

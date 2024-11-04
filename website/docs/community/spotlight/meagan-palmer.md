@@ -3,8 +3,11 @@ id: meagan-palmer
 title: Meagan Palmer
 description: |
   I first started using dbt in 2016 or 2017 (I can't remember exactly). Since then, I have moved into data and analytics consulting and have dipped in and out of the dbt Community. 
+  
   Late last year, I started leading dbt Cloud training courses and spending more time in the <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a>. 
+  
   In consulting, I get to use a range of stacks. I've used dbt with Redshift, Snowflake, and Databricks in production settings with a range of loaders & reporting tools, and I've been enjoying using DuckDB for some home experimentation. 
+ 
   To share some of the experiences, I regularly post to LinkedIn and have recently started <a href="https://www.linkedin.com/newsletters/analytics-engineering-today-7210968984693690370/" rel="noopener noreferrer" target="_blank">Analytics Engineering Today</a>, a twice monthly newsletter about dbt in practice.
 image: /img/community/spotlight/Meagan-Palmer.png
 pronouns: she/her
