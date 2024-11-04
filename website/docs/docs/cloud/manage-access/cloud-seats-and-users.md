@@ -140,16 +140,9 @@ change.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Mapped configuration
+### Mapped configuration <Lifecycle status="enterprise"/> 
 
-**Note:** This feature is only available on the Enterprise plan.
-
-If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
-groups to specific license types in dbt Cloud. To configure license mappings,
-navigate to the Account Settings &gt; Team &gt; License Mappings page. From
-here, you can create or edit SSO mappings for both Read-Only and Developer
-license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in dbt Cloud and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
 By default, all new members of a dbt Cloud account will be assigned a Developer
 license. To assign Read-Only licenses to certain groups of users, create a new
