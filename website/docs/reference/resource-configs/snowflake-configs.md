@@ -337,33 +337,6 @@ For dbt limitations, these dbt features are not supported:
 - [Model contracts](/docs/collaborate/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
-<VersionBlock lastVersion="1.6">
-
-#### Changing materialization to and from "dynamic_table"
-
-Version `1.6.x` does not support altering the materialization from a non-dynamic table be a dynamic table and vice versa.
-Re-running with the `--full-refresh` does not resolve this either.
-The workaround is manually dropping the existing model in the warehouse prior to calling `dbt run`.
-This only needs to be done once for the conversion.
-
-For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
-If the model config is updated to `materialized="dynamic_table"`, dbt will return an error.
-The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
-
-<File name='my_model.sql'>
-
-```yaml
-
-{{ config(
-    materialized="table" # or any model type (e.g. view, incremental)
-) }}
-
-```
-
-</File>
-
-</VersionBlock>
-
 ## Temporary tables
 
 Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 

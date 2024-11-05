@@ -44,7 +44,7 @@ So what does this mean for the example from above? Instead of writing out all 55
 
 ```sql
 select
-	{{ dbt_utils.star(from=ref('table_a'), except=['column_56'] }}
+	{{ dbt_utils.star(from=ref('table_a'), except=['column_56']) }}
 from {{ ref('table_a') }}
 ```
 

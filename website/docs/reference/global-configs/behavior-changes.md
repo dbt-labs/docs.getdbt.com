@@ -58,6 +58,7 @@ flags:
   require_model_names_without_spaces: False
   source_freshness_run_project_hooks: False
   restrict_direct_pg_catalog_access: False
+  require_yaml_configuration_for_mf_time_spines: False
 ```
 
 </File>
@@ -66,12 +67,13 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
-| require_explicit_package_overrides_for_builtin_materializations | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
-| require_resource_names_without_spaces                           | 2024.05          | TBD*                | 1.8.0           | 1.9.0             |
-| source_freshness_run_project_hooks                              | 2024.03          | TBD*                | 1.8.0           | 1.9.0             |
+| [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
+| [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | TBD*                | 1.8.0           | 1.9.0             |
+| [source_freshness_run_project_hooks](#project-hooks-with-source-freshness)                              | 2024.03          | TBD*                | 1.8.0           | 1.9.0             |
 | [Redshift] [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag)    | 2024.09          | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
-| skip_nodes_if_on_run_start_fails                                | 2024.10          | TBD*                | 1.9.0           | TBD*              |
-| state_modified_compare_more_unrendered_values                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
+| [skip_nodes_if_on_run_start_fails](#failures-in-on-run-start-hooks)                                | 2024.10          | TBD*                | 1.9.0           | TBD*              |
+| [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
+| [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
@@ -143,7 +145,7 @@ The names of dbt resources (models, sources, etc) should contain letters, number
 
 Set the `source_freshness_run_project_hooks` flag to `True` to include "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution.
 
-If you have specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
+If you have a specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
 
 <File name='dbt_project.yml'>
 
@@ -152,3 +154,13 @@ on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
 </File>
+
+
+### MetricFlow time spine YAML
+The `require_yaml_configuration_for_mf_time_spines` flag is set to `False` by default.
+
+In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
+
+When the flag is set to `True`, dbt will continue to support the SQL file configuration. When the flag is set to `False`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a SQL file. 
+
+The MetricFlow YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details. 

@@ -15,6 +15,13 @@ Some adapters can display behavior changes when certain flags are enabled. The f
 <div className="grid--3-col">
 
 <Card
+    title="Databricks"
+    body="Behavior changes for the Databricks adapter."
+    link="reference/global-configs/databricks-changes"
+    icon="databricks"/>
+
+
+<Card
     title="Redshift"
     body="Behavior changes for the Amazon Redshift adapter."
     link="reference/global-configs/redshift-changes"

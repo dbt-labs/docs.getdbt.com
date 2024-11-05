@@ -60,6 +60,6 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 When enabled for your CI job, dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the changed SQL files in your project (compared to the last deferred production state). 
 
-If the linter runs into errors, you can specify whether dbt should fail the job or continue running it. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check. 
+If the linter runs into errors, you can specify whether dbt should stop running the job on error or continue running it on error. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check. 
 
 You can use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in dbt. Create an `.sqlfluff` configuration file in your project, add your linting rules to it, and dbt Cloud will use them when linting. For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation. 

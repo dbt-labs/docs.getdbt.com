@@ -3,8 +3,11 @@ id: meagan-palmer
 title: Meagan Palmer
 description: |
   I first started using dbt in 2016 or 2017 (I can't remember exactly). Since then, I have moved into data and analytics consulting and have dipped in and out of the dbt Community. 
+  
   Late last year, I started leading dbt Cloud training courses and spending more time in the <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a>. 
+  
   In consulting, I get to use a range of stacks. I've used dbt with Redshift, Snowflake, and Databricks in production settings with a range of loaders & reporting tools, and I've been enjoying using DuckDB for some home experimentation. 
+ 
   To share some of the experiences, I regularly post to LinkedIn and have recently started <a href="https://www.linkedin.com/newsletters/analytics-engineering-today-7210968984693690370/" rel="noopener noreferrer" target="_blank">Analytics Engineering Today</a>, a twice monthly newsletter about dbt in practice.
 image: /img/community/spotlight/Meagan-Palmer.png
 pronouns: she/her
@@ -14,9 +17,10 @@ companyName: Altis Consulting
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/meaganpalmer/
-dateCreated: 2024-07-29
+dateCreated: 2024-11-04
 hide_table_of_contents: true
-communityAward: false
+communityAward: true
+communityAwardYear: 2024 
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
@@ -27,9 +31,9 @@ I was fortunate that Jon Bradley at Nearmap had the vision to engage the then Fi
 
 Being in Australia, I often see replies from <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jeremyyeo/">Jeremy Yeo</a> to people in the dbt Slack. His clarity of communication is impressive. 
 
-For growth, I'm hoping that others can benefit from the wide range of experience I have. My newsletter, Analytics Engineering Today on LinkedIn aims to upskill the dbt Community and shed some light on some useful features that might not be well known.
+For growth, I'm hoping that others can benefit from the wide range of experience I have. My LinkedIn Newsletter, <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/newsletters/analytics-engineering-today-7210968984693690370/">Analytics Engineering Today</a> aims to upskill the dbt Community and shed some light on some useful features that might not be well known.
 
-I'll be at <a target="_blank" rel="noopener noreferrer" href="https://coalesce.getdbt.com/">Coalesce</a> and am doing some webinars/events later in the year. Come say hi, I love talking dbt and analytics engineering with people.
+I was at <a target="_blank" rel="noopener noreferrer" href="https://coalesce.getdbt.com/">Coalesce Online</a>and am doing some webinars/events later in the year. Come say hi, I love talking dbt and analytics engineering with people.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

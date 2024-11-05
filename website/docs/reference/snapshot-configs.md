@@ -57,7 +57,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
     [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
     [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
-
+    [+](/reference/resource-configs/plus-prefix)[invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ```
 
 </File>
@@ -79,7 +79,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
     [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
     [+](/reference/resource-configs/plus-prefix)[snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
-
+    [+](/reference/resource-configs/plus-prefix)[invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ```
 
 </File>
@@ -113,7 +113,7 @@ snapshots:
       [updated_at](/reference/resource-configs/updated_at): <column_name>
       [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
       [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
-
+      [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ```
 </File>
 
@@ -125,7 +125,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
+Configurations can be applied to snapshots using the [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the `snapshot` directory file.
 
 </VersionBlock>
 
@@ -140,7 +140,7 @@ Configurations can be applied to snapshots using [YAML syntax](/docs/build/snaps
     [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
     [updated_at](/reference/resource-configs/updated_at)="<column_name>",
     [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
-    [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names)={<dictionary>}
+    [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ) }}
 
 ```
@@ -236,7 +236,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
+Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the `snapshot` directory file.
 
 </VersionBlock>
 

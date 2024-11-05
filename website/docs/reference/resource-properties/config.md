@@ -170,14 +170,6 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.6">
-
-Support for the `config` property on `semantic_models` was added in dbt Core v1.7
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -193,19 +185,9 @@ semantic_models:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="saved queries">
-
-<VersionBlock lastVersion="1.6">
-
-Support for the `config` property on `saved queries` was added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name='models/<filename>.yml'>
 
@@ -225,8 +207,6 @@ saved-queries:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
