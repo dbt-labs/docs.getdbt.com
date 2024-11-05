@@ -78,8 +78,4 @@ exports.versionedCategories = [
     category: "Model governance",
     firstVersion: "1.5",
   },
-  {
-    category: "Build your metrics",
-    firstVersion: "1.6",
-  },
 ];
