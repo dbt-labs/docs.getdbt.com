@@ -74,8 +74,5 @@ exports.versionedPages = [
  * @property {string} firstVersion The first version the category is visible in the sidebar
  */
 exports.versionedCategories = [
-  {
-    category: "Model governance",
-    firstVersion: "1.5",
-  },
+
 ];
