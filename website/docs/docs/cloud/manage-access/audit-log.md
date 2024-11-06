@@ -62,7 +62,7 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | Auth Provider Changed      | auth_provider.Changed          | Authentication provider settings changed               |
 | Credential Login Succeeded | auth.CredentialsLoginSucceeded | User successfully logged in with username and password |
 | SSO Login Failed           | auth.SsoLoginFailed            | User login via SSO failed                              |
-| SSO Login Succeeded        | auth.SsoLoginSucceeded         | User successfully logged in via SSO  
+| SSO Login Succeeded        | auth.SsoLoginSucceeded         | User successfully logged in via SSO                    |
 
 ### Environment
 
@@ -160,9 +160,42 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 
 | Event Name                       | Event Type                    | Description            |
 | -------------------------------- | ----------------------------- | -----------------------|
-| GitLab Repository Added          | repository.gitlab.Added       | GitLab repository configuration added  |
-| GitLab Repository Changed        | repository.gitlab.Changed     | GitLab repository configuration changed |
-| GitLab Repository Removed        | repository.gitlab.Removed     | GitLab repository configuration deleted |
+| GitLab Application Changed        | gitlab_application.changed    | GitLab configuration in dbt Cloud changed |
+
+### Webhooks
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| Webhook Subscriptions Added      | webhook_subscription.added    | New webhook configured in settings |
+| Webhook Subscriptions Changed    | webhook_subscription.changed  | Existing webhook configuration altered |
+| Webhook Subscriptions Removed    | webhook_subscription.removed  | Existing webhook deleted  |
+
+
+### Semantic Layer
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| Semantic Layer Config Added      | semantic_layer_config.added   | A Semantic Layer config was added |
+| Semantic Layer Config Changed      | semantic_layer_config.changed  | A Semantic Layer config (not related to credentials) was changed |
+| Semantic Layer Config Removed    | semantic_layer_config.removed   | A Semantic Layer config was removed |
+| Semantic Layer Credentials Added | semantic_layer_credentials.added   | Semantic Layer credentials added |
+| Semantic Layer Credentials Changed| semantic_layer_credentials.changed   | Semantic Layer credentials changed. Does not trigger semantic_layer_config.changed|
+| Semantic Layer Credentials Removed| semantic_layer_credentials.removed   | A Semantic Layer credentials were removed |
+
+### Extended attributes
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| Extended Attribute Added         | extended_attributes.added     | Extended attribute added to a project |
+| Extended Attribute Changed       | extended_attributes.changed   | Extended attribute changed or removed |
+
+
+### Account-scoped personal access token
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| Account Scoped Personal Access Token Created | account_scoped_pat.created | An account-scoped PAT was created |
+| Account Scoped Personal Access Token Deleted | account_scoped_pat.deleted | An account-scoped PAT was deleted | 
 
 
 ## Searching the audit log
