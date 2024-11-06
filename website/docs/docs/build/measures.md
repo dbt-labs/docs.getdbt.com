@@ -224,21 +224,21 @@ semantic_models:
         expr: user_id
         agg: count_distinct
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max 
       - name: mrr
         description: Aggregate by summing all users' active subscription plans
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
       - name: user_mrr
         description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
           window_groupings: 
             - user_id 
@@ -255,15 +255,15 @@ We can query the semi-additive metrics using the following syntax:
 For dbt Cloud:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription_date__month --order subscription_date__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription_date__week --order subscription_date__week 
 ```
 
 For dbt Core:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by subscription_date__month --order subscription_date__month 
+mf query --metrics mrr_by_end_of_month --group-by subscription_date__week --order subscription_date__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
