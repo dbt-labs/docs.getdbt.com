@@ -197,6 +197,16 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | Account Scoped Personal Access Token Created | account_scoped_pat.created | An account-scoped PAT was created |
 | Account Scoped Personal Access Token Deleted | account_scoped_pat.deleted | An account-scoped PAT was deleted | 
 
+### IP restrictions
+
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| IP Restrictions Toggled          | ip_restrictions.toggled       | IP restrictions feature enabled or disabled |
+| IP Restrictions Rule Added       | ip_restrictions.rule.added    | IP restriction rule created |
+| IP Restrictions Rule Changed     | ip_restrictions.rule.changed   | IP restriction rule edited |
+| IP Restrictions Rule Removed     | ip_restrictions.rule.removed   | IP restriction rule deleted |
+
+
 
 ## Searching the audit log
 
