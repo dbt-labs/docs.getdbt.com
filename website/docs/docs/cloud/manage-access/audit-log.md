@@ -175,9 +175,9 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 
 | Event Name                       | Event Type                    | Description            |
 | -------------------------------- | ----------------------------- | -----------------------|
-| Semantic Layer Config Added      | semantic_layer_config.added   | A Semantic Layer config was added |
-| Semantic Layer Config Changed      | semantic_layer_config.changed  | A Semantic Layer config (not related to credentials) was changed |
-| Semantic Layer Config Removed    | semantic_layer_config.removed   | A Semantic Layer config was removed |
+| Semantic Layer Config Added      | semantic_layer_config.added   | Semantic Layer config added |
+| Semantic Layer Config Changed      | semantic_layer_config.changed  | Semantic Layer config (not related to credentials) changed |
+| Semantic Layer Config Removed    | semantic_layer_config.removed   | Semantic Layer config removed |
 | Semantic Layer Credentials Added | semantic_layer_credentials.added   | Semantic Layer credentials added |
 | Semantic Layer Credentials Changed| semantic_layer_credentials.changed   | Semantic Layer credentials changed. Does not trigger semantic_layer_config.changed|
 | Semantic Layer Credentials Removed| semantic_layer_credentials.removed   | Semantic Layer credentials were removed |
