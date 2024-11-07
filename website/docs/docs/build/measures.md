@@ -200,9 +200,9 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 ```yaml
 semantic_models:
-  - name: subscription
+  - name: subscriptions
     description: A subscription table with one row per date for each active user and their subscription plans. 
-    model: ref('your_schema.subscription')
+    model: ref('your_schema.subscription_table')
     defaults:
       agg_time_dimension: subscription_date
 
