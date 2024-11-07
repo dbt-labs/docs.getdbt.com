@@ -124,9 +124,7 @@ Great work! After completing these steps, your dbt Cloud user count and billing 
 
 ## Managing license types
 
-Licenses can be assigned manually, or automatically based on IdP configuration
-(enterprise only). By default, new users in an account will be assigned a
-Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in dbt Cloud. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
@@ -142,16 +140,9 @@ change.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Mapped configuration
+### Mapped configuration <Lifecycle status="enterprise"/> 
 
-**Note:** This feature is only available on the Enterprise plan.
-
-If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
-groups to specific license types in dbt Cloud. To configure license mappings,
-navigate to the Account Settings &gt; Team &gt; License Mappings page. From
-here, you can create or edit SSO mappings for both Read-Only and Developer
-license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in dbt Cloud and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
 By default, all new members of a dbt Cloud account will be assigned a Developer
 license. To assign Read-Only licenses to certain groups of users, create a new
