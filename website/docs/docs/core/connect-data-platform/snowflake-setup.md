@@ -423,7 +423,7 @@ Refer to the [Snowflake docs](https://docs.snowflake.com/en/sql-reference/parame
 
 ### OAuth authorization
 
-See the Snowflake [docs](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview) for configuring OAuth. Your Snowflake admin needs to generate an [OAuth token](https://community.snowflake.com/s/article/HOW-TO-OAUTH-TOKEN-GENERATION-USING-SNOWFLAKE-CUSTOM-OAUTH) for your configuration to work.
+To learn how to configure OAuth in Snowflake, refer to their [documentation](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview). Your Snowflake admin needs to generate an [OAuth token](https://community.snowflake.com/s/article/HOW-TO-OAUTH-TOKEN-GENERATION-USING-SNOWFLAKE-CUSTOM-OAUTH) for your configuration to work.
 
 The OAUTH_REDIRECT_URI you provide in Snowflake is `http://localhost:PORT_NUMBER`. For example, `http://localhost:8080`.
 
