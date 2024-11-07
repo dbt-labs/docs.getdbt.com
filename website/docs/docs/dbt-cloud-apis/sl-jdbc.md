@@ -519,7 +519,7 @@ select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
   limit=10,
-  order_by=[-'order_gross_profit'])
+  order_by=['-order_gross_profit'])
   }}
 ```
 
