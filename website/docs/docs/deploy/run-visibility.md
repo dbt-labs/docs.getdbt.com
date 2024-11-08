@@ -33,7 +33,7 @@ An example of a completed run with a configuration for a [job completion trigger
 
 You can view or download in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.png" width="85%" title="Access logs for run steps" />
 
 ### Lineage tab
 
