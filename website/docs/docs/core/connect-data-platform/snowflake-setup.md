@@ -211,7 +211,7 @@ my-snowflake-db:
 
 </File>
 
-### SSO Authentication
+### SSO authentication
 
 To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
 `authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
@@ -332,7 +332,7 @@ my-snowflake-db:
 
 </File>
 
-### SSO Authentication
+### SSO authentication
 
 To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
 `authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
@@ -420,6 +420,30 @@ my-snowflake-db:
 **Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
 
 Refer to the [Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for info on how to enable this feature in your account.
+
+### OAuth authorization
+
+To learn how to configure OAuth in Snowflake, refer to their [documentation](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview). Your Snowflake admin needs to generate an [OAuth token](https://community.snowflake.com/s/article/HOW-TO-OAUTH-TOKEN-GENERATION-USING-SNOWFLAKE-CUSTOM-OAUTH) for your configuration to work.
+
+Provide the OAUTH_REDIRECT_URI in Snowflake:`http://localhost:PORT_NUMBER`. For example, `http://localhost:8080`.
+
+Once your Snowflake admin has configured OAuth, add the following to your `profiles.yml` file:
+
+```yaml
+
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id]
+      
+      # The following fields are retrieved from the Snowflake configuration
+      authenticator: oauth
+      oauth_client_id: [OAuth client id]
+      oauth_client_secret: [OAuth client secret]
+      token: [OAuth refresh token]
+```
 
 ## Configurations
 
