@@ -64,6 +64,10 @@ However, to fully utilize the value of account-level connections, you may have t
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" width="60%" title="Typical connection setup post rollout"/>
 
+:::warning Renaming connections changes the public SSH key if connecting via a SSH tunnel
+For Redshift, PostgreSQL, and AlloyDB databases, for which you might need to [connect via a SSH tunnel](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb#connecting-via-an-ssh-tunnel), you need to copy the auto-generated public SSH key to the Bastion server to authorize dbt Cloud to connect to your database via the Bastion server. The Bastion server could be an instance running on AWS EC2 in the case of Redshift. Renaming a connection in dbt Cloud will change the public SSH key for this connection. Meaning **your dbt Cloud jobs will all fail as long as you don't copy the newly generated public SSH key to the Bastion server.** If you don't have access to that Bastion server, don't rename the connections in dbt Cloud. Otherwise your jobs won't be able to run anymore.
+:::
+
 Please consider the following actions, as the steps you take will depend on the desired outcome.
 
 - The initial clean-up of your connection list
