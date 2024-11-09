@@ -390,29 +390,6 @@ snapshots:
 
 </VersionBlock>
 
-## Snapshot query best practices
-
-This section outlines some best practices for writing snapshot queries:
-
-- #### Snapshot source data
-  Your models should then select from these snapshots, treating them like regular data sources. As much as possible, snapshot your source data in its raw form and use downstream models to clean up the data
-
-- #### Use the `source` function in your query
-  This helps when understanding <Term id="data-lineage">data lineage</Term> in your project.
-
-- #### Include as many columns as possible
-  In fact, go for `select *` if performance permits! Even if a column doesn't feel useful at the moment, it might be better to snapshot it in case it becomes useful – after all, you won't be able to recreate the column later.
-
-- #### Avoid joins in your snapshot query
-  Joins can make it difficult to build a reliable `updated_at` timestamp. Instead, snapshot the two tables separately, and join them in downstream models.
-
-- #### Limit the amount of transformation in your query
-  If you apply business logic in a snapshot query, and this logic changes in the future, it can be impossible (or, at least, very difficult) to apply the change in logic to your snapshots.
-
-Basically – keep your query as simple as possible! Some reasonable exceptions to these recommendations include:
-* Selecting specific columns if the table is wide.
-* Doing light transformation to get data into a reasonable shape, for example, unpacking a <Term id="json" /> blob to flatten your source data into columns.
-
 ## Snapshot meta-fields
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.

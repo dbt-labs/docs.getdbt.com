@@ -8,7 +8,7 @@ id: "incremental-microbatch"
 
 :::info Microbatch
 
-The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. We have been developing it behind a flag to prevent unintended interactions with existing custom incremental strategies. To enable this feature, set the environment variable `DBT_EXPERIMENTAL_MICROBATCH` to `True` in your dbt Cloud environments or wherever you're running dbt Core.
+The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. We have been developing it behind a flag to prevent unintended interactions with existing custom incremental strategies. To enable this feature, [set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) `DBT_EXPERIMENTAL_MICROBATCH` to `True` in your dbt Cloud environments or wherever you're running dbt Core.
 
 Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672)
 

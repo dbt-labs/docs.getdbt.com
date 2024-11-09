@@ -28,7 +28,7 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.jpg" width="85%" title="A failed job that had an error during the dbt deps run step."/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.png" width="85%" title="A failed job that had an error during the dbt deps run step."/>
 
 ### Checkbox commands
 
