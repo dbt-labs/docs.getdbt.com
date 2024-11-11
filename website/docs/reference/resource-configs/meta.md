@@ -56,7 +56,7 @@ See [configs and properties](/reference/configs-and-properties) for details.
 ```yml
 version: 2
 
-sources:
+[sources](/reference/source-properties):
   - name: model_name
     config:
       meta: {<dictionary>}
@@ -110,7 +110,7 @@ version: 2
 snapshots:
   - name: snapshot_name
     config:
-      meta: {<dictionary>}
+      [meta](/reference/snapshot-properties): {<dictionary>}
 
     columns:
       - name: column_name
@@ -147,7 +147,7 @@ The `meta` config is not currently supported for analyses.
 ```yml
 version: 2
 
-macros:
+[macros](/reference/macro-properties):
   - name: macro_name
     meta: {<dictionary>}
 
@@ -287,7 +287,7 @@ models:
 ```yml
 version: 2
 
-sources:
+[sources](/reference/source-properties):
   - name: salesforce
 
     tables:
