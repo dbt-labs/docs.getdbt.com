@@ -124,42 +124,6 @@ For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/j
 
 <File name="metricflow_time_spine.sql">
 
-<VersionBlock lastVersion="1.6">
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with days as (
-
-    {{
-        dbt_utils.date_spine(
-            'day',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select * from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 ```sql
 {{
     config(
@@ -186,45 +150,12 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
-
-</VersionBlock>
 
 ### Daily (BigQuery)
 
 Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
-<VersionBlock lastVersion="1.6">
-
-<File name="metricflow_time_spine.sql">
-  
-```sql
-{{config(materialized='table')}}
-with days as (
-    {{dbt_utils.date_spine(
-        'day',
-        "DATE(2000,01,01)",
-        "DATE(2025,01,01)"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name="metricflow_time_spine.sql">
 
@@ -249,11 +180,10 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 </File>
 
@@ -306,42 +236,6 @@ To create this table, you need to create a model in your dbt project called `met
 
 ### Daily
 
-<VersionBlock lastVersion="1.6">
-<File name='metricflow_time_spine.sql'>
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with days as (
-
-    {{
-        dbt_utils.date_spine(
-            'day',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select * from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 <File name='metricflow_time_spine.sql'>
 
 
@@ -371,46 +265,14 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day  < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 ### Daily (BigQuery)
 
 Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
-
-<VersionBlock lastVersion="1.6">
-
-<File name="metricflow_time_spine.sql">
-
-```sql
-{{config(materialized='table')}}
-with days as (
-    {{dbt_utils.date_spine(
-        'day',
-        "DATE(2000,01,01)",
-        "DATE(2025,01,01)"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name="metricflow_time_spine.sql">
 
@@ -434,11 +296,10 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but finer grains are only supported in versions 1.9 and higher.
 
@@ -463,8 +324,21 @@ For example, if you use a custom calendar in your organization, such as a fiscal
 
 - This is useful for calculating metrics based on a custom calendar, such as fiscal quarters or weeks. 
 - Use the `custom_granularities` key to define a non-standard time period for querying data, such as a `retail_month` or `fiscal_week`, instead of standard options like `day`, `month`, or `year`.
-- Ensure the the `standard_granularity_column` is a date time type.
 - This feature provides more control over how time-based metrics are calculated.
+
+<Expandable alt_header="Data types and time zone considerations">
+ 
+When working with custom calendars in MetricFlow, it's important to ensure:
+
+- Consistent data types &mdash; Both your dimension column and the time spine column should use the same data type to allow accurate comparisons. Functions like `DATE_TRUNC` don't change the data type of the input in some databases (like Snowflake). Using different data types can lead to mismatches and inaccurate results.
+
+  We recommend using `DATETIME` or `TIMESTAMP` data types for your time dimensions and time spine, as they support all granularities. The `DATE` data type may not support smaller granularities like hours or minutes.
+
+- Time zones &mdash; MetricFlow currently doesn't perform any timezone manipulation. When working with timezone-aware data, inconsistent time zones may lead to unexpected results during aggregations and comparisons.
+
+For example, if your time spine column is `TIMESTAMP` type and your dimension column is `DATE` type, comparisons between these columns might not work as intended. To fix this, convert your `DATE` column to `TIMESTAMP`, or make sure both columns are the same data type.
+
+</Expandable>
 
 ### Add custom granularities
 

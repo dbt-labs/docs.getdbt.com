@@ -20,9 +20,10 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
   * Models to understand [Redshift](https://hub.getdbt.com/dbt-labs/redshift/latest/) privileges.
   * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/dbt-labs/stitch_utils/latest/).
 
-dbt _packages_ are in fact standalone dbt projects, with models and macros that tackle a specific problem area. As a dbt user, by adding a package to your project, the package's models and macros will become part of your own project. This means:
+dbt _packages_ are in fact standalone dbt projects, with models, macros, and other resources that tackle a specific problem area. As a dbt user, by adding a package to your project, all of the package's resources will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
+* You can use `source` to refer to sources in the package.
 * You can use macros in the package in your own project.
 * It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
@@ -82,11 +83,7 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 ```
 
-<VersionBlock firstVersion="1.7">
-
-Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
-
-</VersionBlock>
+`dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
 
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
 * Your project uses both the dbt-utils and Snowplow packages, and the Snowplow package _also_ uses the dbt-utils package.
@@ -145,17 +142,7 @@ packages:
     revision: 4e28d6da126e2940d17f697de783a717f2503188
 ```
 
-<VersionBlock lastVersion="1.6">
-
-We **strongly recommend** ["pinning" your packages](#pinning-packages) to a specific release by specifying a release name.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-packages) for details.
-
-</VersionBlock>
 
 ### Internally hosted tarball URL
 
@@ -318,26 +305,12 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 
 ### Pinning packages
 
-<VersionBlock lastVersion="1.6">
-
-We **strongly recommend** "pinning" your package to a specific release by specifying a tagged release name or a specific commit hash.
-
-If you do not provide a revision, or if you use the main branch, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
-
-To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
 
 - The `package-lock.yml` file contains a record of all packages installed.
 - If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
 For example, if you use a branch name, the `package-lock.yml` file pins to the head commit. If you use a version range, it pins to the latest release. In either case, subsequent commits or versions will **not** be installed. To get new commits or versions, run `dbt deps --upgrade` or add `package-lock.yml` to your .gitignore file.
-
-</VersionBlock>
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a revision (see below).
 

@@ -18,21 +18,21 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 <VersionBlock firstVersion="1.9">
 
-| Parameter | <div style={{width:'350px'}}>Description</div> | Type |
-| --------- | ----------- | ---- |
-| `name` | The name of the metric. | Required |
-| `description` | The description of the metric. | Optional |
-| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
-| `type_params` | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`. | Required |
-| `type_params::cumulative_type_params` | Allows you to add a `window`, `period_agg`, and `grain_to_date` configuration. Nested under `type_params`. | Optional |
-| `cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional |
-| `cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Can be used with grain_to_date. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `average` (Calculates the average value within the period). <br /> <br /> Defaults to `first` if no `window` is specified. | Optional |
-| `type_params::measure` | A dictionary describing the measure you will use. | Required |
-| `measure::name` | The measure you are referencing. | Optional |
-| `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `measure::join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| Parameter   | <div style={{width:'350px'}}>Description</div>   | Type      |
+|-------------|---------------------------------------------------|-----------|
+| `name`  | The name of the metric.       | Required  |
+| `description`       | The description of the metric.     | Optional  |
+| `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  |
+| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required  |
+| `type_params`    | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`.  | Required  |
+| `type_params::measure`   | The measure associated with the metric. Supports both shorthand (string) and object syntax. The shorthand is used if only the name is needed, while the object syntax allows specifying additional attributes. | Required  |
+| `measure::name`    | The name of the measure being referenced. Required if using object syntax for `type_params::measure`.  | Optional  |
+| `measure::fill_nulls_with`     | Sets a value (for example, 0) to replace nulls in the metric definition.    | Optional  |
+| `measure::join_to_timespine` | Boolean indicating if the aggregated measure should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  |
+| `type_params::cumulative_type_params`     | Configures the attributes like `window`, `period_agg`, and `grain_to_date` for cumulative metrics. | Optional  |
+| `cumulative_type_params::window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  |
+| `cumulative_type_params::grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  |
+| `cumulative_type_params::period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  |
 
 </VersionBlock>
 
@@ -45,14 +45,33 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`. | Required |
-| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
+| `window` | The accumulation window, such as `1 month`, `7 days`, or `1 year`. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
 | `type_params::measure` | A list of measure inputs | Required |
-| `measure:name` | The measure you are referencing. | Optional  |
+| `measure:name` | The name of the measure being referenced. Required if using object syntax for `type_params::measure`.  | Optional  |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 | `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 </VersionBlock>
+
+<Expandable alt_header="Explanation of type_params::measure">
+  
+The`type_params::measure` configuration can be written in different ways:
+- Shorthand syntax &mdash;  To only specify the name of the measure, use a simple string value. This is a shorthand approach when no other attributes are required.
+  ```yaml
+  type_params:
+    measure: revenue
+  ```
+- Object syntax &mdash; To add more details or attributes to the measure (such as adding a filter, handling `null` values, or specifying whether to join to a time spine), you need to use the object syntax. This allows for additional configuration beyond just the measure's name.
+
+  ```yaml
+  type_params:
+    measure:
+      name: order_total
+      fill_nulls_with: 0
+      join_to_timespine: true
+  ```
+</Expandable>
 
 ### Complete specification
 The following displays the complete specification for cumulative metrics, along with an example:

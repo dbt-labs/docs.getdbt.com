@@ -288,6 +288,7 @@ const sidebarSettings = {
             "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
             "docs/cloud/dbt-cloud-ide/ide-user-interface",
             "docs/cloud/dbt-cloud-ide/lint-format",
+            "docs/cloud/dbt-cloud-ide/git-commit-signing",
             {
               type: "category",
               label: "dbt Copilot",
@@ -499,6 +500,7 @@ const sidebarSettings = {
             "docs/deploy/run-visibility",
             "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
+            "docs/deploy/model-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
@@ -1102,6 +1104,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "reference/global-configs/adapter-behavior-changes" },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
               ],
             },

@@ -710,8 +710,6 @@ models:
 
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
-<VersionBlock firstVersion="1.7">
-
 ## Materialized views
 
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
@@ -894,10 +892,6 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 ## Python models
 
 The BigQuery adapter supports Python models with the following additional configuration parameters:
@@ -914,4 +908,3 @@ By default, this is set to `True` to support the default `intermediate_format` o
 ### The `intermediate_format` parameter
 The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
 
-</VersionBlock>

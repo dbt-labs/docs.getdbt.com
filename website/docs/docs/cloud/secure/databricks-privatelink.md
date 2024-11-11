@@ -8,10 +8,13 @@ pagination_next: null
 
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
 import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+import CloudProviders from '/snippets/_privatelink-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
 The following steps will walk you through the setup of a Databricks AWS PrivateLink or Azure Private Link endpoint in the dbt Cloud multi-tenant environment.
+
+<CloudProviders type='Databricks'/>
 
 ## Configure AWS PrivateLink
 

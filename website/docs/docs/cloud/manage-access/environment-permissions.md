@@ -77,4 +77,4 @@ If the user has the same roles across projects, you can apply environment access
 
 
 ## Related docs
--[Environment-level permissions setup](/docs/cloud/manage-access/environment-permissions-setup)
+- [Environment-level permissions setup](/docs/cloud/manage-access/environment-permissions-setup)

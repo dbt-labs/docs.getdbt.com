@@ -55,7 +55,7 @@ Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a
 | `DeprecatedReference`          | Referencing a model with a past deprecation date   | Producer and consumers |
 | `UpcomingReferenceDeprecation` | Referencing a model with a future deprecation date | Producer and consumers |
 
-** Example **
+**Example**
 
 Example output for an `UpcomingReferenceDeprecation` warning:
 ```

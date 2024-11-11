@@ -102,7 +102,7 @@ semantic_models:
     description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
     defaults:
-      agg_time_dimensions: metric_time
+      agg_time_dimension: transaction_date
 
 # --- entities ---
     entities:
@@ -167,7 +167,7 @@ semantic_models:
         
 # --- dimensions ---
     dimensions:
-      - name: metric_time
+      - name: transaction_date
         type: time
         expr: date_trunc('day', ts) # expr refers to underlying column ts
         type_params:
@@ -200,19 +200,19 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 ```yaml
 semantic_models:
-  - name: subscription_id
+  - name: subscriptions
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
     defaults:
-      agg_time_dimension: metric_time 
+      agg_time_dimension: subscription_date
 
     entities:
       - name: user_id
         type: foreign
-        primary_entity: subscription_table
+    primary_entity: subscription
 
     dimensions:
-      - name: metric_time
+      - name: subscription_date
         type: time
         expr: date_transaction
         type_params:
@@ -224,21 +224,21 @@ semantic_models:
         expr: user_id
         agg: count_distinct
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max 
       - name: mrr
         description: Aggregate by summing all users' active subscription plans
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
       - name: user_mrr
         description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
           window_groupings: 
             - user_id 
@@ -255,15 +255,15 @@ We can query the semi-additive metrics using the following syntax:
 For dbt Cloud:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
 For dbt Core:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
+mf query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';

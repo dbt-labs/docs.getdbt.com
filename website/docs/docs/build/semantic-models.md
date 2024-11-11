@@ -119,8 +119,6 @@ semantic_models:
         type: categorical
 ```
 
-<VersionBlock firstVersion="1.7">
-
 Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) [`config`](/reference/resource-properties/config) property in either the schema file or at the project level:
 
 - Semantic model config in `models/semantic.yml`:
@@ -147,8 +145,6 @@ Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/r
   ```
 
 For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
-
-</VersionBlock>
 
 ### Name
 

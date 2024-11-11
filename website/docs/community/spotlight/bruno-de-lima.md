@@ -2,41 +2,38 @@
 id: bruno-de-lima
 title: Bruno de Lima
 description: |
-  Hi all! I'm a Data Engineer, deeply fascinated by the awesomeness dbt. I love talking about dbt,           creating content from daily tips to blogposts and engaging with this vibrant community!
-
-  Started my career at the beginning of 2022 at Indicium as an Analytics Engineer, working with dbt from     day 1. By 2023, my path took a global trajectory as I joined phData as a Data Engineer, expanding my       experiences and forging connections beyond Brazil. While dbt is at the heart of my expertise, I've also    delved into data warehouses such as Snowflake, Databricks, and BigQuery; visualization tools like Power    BI and Tableau; and several minor modern data stack tools.
-
-  I actively participate in the dbt community, having attended two <a href="https://www.meetup.com/en-AU/florianopolis-dbt-meetup" rel="noopener noreferrer" target="_blank">dbt Meetups in Brazil</a> organized by Indicium; writing about dbt-related    topics in my Medium and LinkedIn profiles; contributing to the code; and frequently checking <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a> and <a href="https://discourse.getdbt.com/" rel="noopener noreferrer" target="_blank">Discourse</a>, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
-image: /img/community/spotlight/bruno-de-lima.jpg
+  Hey all! I was born and raised in Florianopolis, Brazil, and I'm a Senior Data Engineer at phData. I live with my fiancée and I enjoy music, photography, and powerlifting.
+  
+  I started my career in early 2022 at Indicium as an Analytics Engineer, working with dbt from day 1. By 2023, my path took a global trajectory as I joined phData as a Data Engineer, expanding my experiences and creating connections beyond Brazil. While dbt is my main expertise, because of my work in consultancy I have experience with a large range of tools, specially the ones related to Snowflake, Databricks, AWS and GCP; but I have already tried several other modern data stack tools too. 
+  
+  I actively participate in the dbt community, having organized dbt Meetups in Brazil (in <a href="https://www.meetup.com/en-AU/florianopolis-dbt-meetup" rel="noopener noreferrer" target="_blank">Floripa</a> and <a href="https://www.meetup.com/sao-paulo-dbt-meetup-group/" target="_blank">São Paulo</a>); writing about dbt-related topics in my Medium and LinkedIn profiles; contributing to the dbt Core code and to the docs; and frequently checking <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a> and <a href="https://discourse.getdbt.com/" rel="noopener noreferrer" target="_blank">Discourse</a>, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
+image: /img/community/spotlight/bruno-souza-de-lima-newimage.jpg
 pronouns: he/him
 location: Florianópolis, Brazil
-jobTitle: Data Engineer
+jobTitle: Senior Data Engineer
 companyName: phData
-organization: ""
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/brunoszdl/
   - name: Medium
     link: https://medium.com/@bruno.szdl
-dateCreated: 2023-11-05
+dateCreated: 2024-11-03
 hide_table_of_contents: true
 communityAward: true
-communityAwardYear: 2023
+communityAwardYear: 2024
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I was not truly happy with my academic life. My career took a new turn when I enrolled in the Analytics Engineer course by Indicium. That was my first contact with dbt, and I didn't realize how much it would transform my career. After that, I was hired at the company as an Analytics Engineer and worked extensively with dbt from day one. 
+I was not truly happy with my academic life. My career took a new turn when I enrolled in the Analytics Engineer course by Indicium. That was my first contact with dbt, and I didn't realize how much it would transform my career. After that, I was hired at the company as an Analytics Engineer and worked extensively with dbt from day one.
 
 It took me some time to become an active member of the dbt community. I started working with dbt at the beginning of 2022 and became more involved towards the end of that year, encouraged by Daniel Avancini. I regret not doing this earlier, because being an active community member has been a game-changer for me, as my knowledge of dbt has grown exponentially just by participating in daily discussions on Slack. I have found #advice-dbt-help and #advice-dbt-for-power-users channels particularly useful, as well as the various database-specific channels. Additionally, the #i-made-this and #i-read-this channels have allowed me to learn about the innovative things that community members are doing.
 
 Inspired by other members, especially Josh Devlin and Owen Prough, I began answering questions on Slack and Discourse. For questions I couldn't answer, I would try engaging in discussions about possible solutions or provide useful links. I also started posting dbt tips on LinkedIn to help practitioners learn about new features or to refresh their memories about existing ones.
 
-By being more involved in the community, I felt more connected and supported. I received help from other members, and now, I could help others, too. I was happy with this arrangement, but more unexpected surprises came my way. My active participation in Slack, Discourse, and LinkedIn opened doors to new connections and career opportunities. I had the pleasure of meeting a lot of incredible people and receiving exciting job offers, including the one for working at phData.
+By being more involved in the community, I felt more connected and supported. I received help from other members, and now, I could help others, too. I was happy with this arrangement, but more unexpected surprises came my way. My active participation in Slack, Discourse, and LinkedIn opened doors to new connections and career opportunities. I had the pleasure of meeting a lot of incredible people and receiving exciting job offers, including the ones for working at phData and teaching at Zach Wilson's data engineering bootcamp.
 
 Thanks to the dbt community, I went from feeling uncertain about my career prospects to having a solid career and being surrounded by incredible people.
-
-I would like to thank the Indicium folks for opening the first door for me for this career in data, and not just for me but for lots of people in Brazil trying to migrate from different fields who would not have this opportunity otherwise.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 

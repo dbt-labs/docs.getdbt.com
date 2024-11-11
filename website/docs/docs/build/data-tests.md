@@ -68,7 +68,7 @@ having total_amount < 0
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`.
 
-To add a data test to your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
+To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 
 <File name='tests/schema.yml'>
 

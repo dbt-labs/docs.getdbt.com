@@ -299,7 +299,7 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
-Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag). Please note that Snowflake supports a target lag of 1 minute or longer.
 
 <VersionBlock firstVersion="1.9">
 
@@ -336,33 +336,6 @@ Find more information about dynamic table limitations in Snowflake's [docs](http
 For dbt limitations, these dbt features are not supported:
 - [Model contracts](/docs/collaborate/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
-
-<VersionBlock lastVersion="1.6">
-
-#### Changing materialization to and from "dynamic_table"
-
-Version `1.6.x` does not support altering the materialization from a non-dynamic table be a dynamic table and vice versa.
-Re-running with the `--full-refresh` does not resolve this either.
-The workaround is manually dropping the existing model in the warehouse prior to calling `dbt run`.
-This only needs to be done once for the conversion.
-
-For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
-If the model config is updated to `materialized="dynamic_table"`, dbt will return an error.
-The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
-
-<File name='my_model.sql'>
-
-```yaml
-
-{{ config(
-    materialized="table" # or any model type (e.g. view, incremental)
-) }}
-
-```
-
-</File>
-
-</VersionBlock>
 
 ## Temporary tables
 
@@ -705,3 +678,27 @@ Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/in
   >- DDL operations.
   >- DML operations (for tables only).
   >- Background maintenance operations on metadata performed by Snowflake.
+
+<VersionBlock firstVersion="1.9">
+
+## Pagination for object results
+
+By default, when dbt encounters a schema with up to 100,000 objects, it will paginate the results from `show objects` at 10,000 per page for up to 10 pages.
+
+Environments with more than 100,000 objects in a schema can customize the number of results per page and the page limit using the following [flags](/reference/global-configs/about-global-configs) in the `dbt_project.yml`:
+
+- `list_relations_per_page` &mdash; The number of relations on each page (Max 10k as this is the most Snowflake allows).
+- `list_relations_page_limit` &mdash; The maximum number of pages to include in the results.
+
+For example, if you wanted to include 10,000 objects per page and include up to 100 pages (1 million objects), configure the flags as follows:
+
+
+```yml
+
+flags:
+  list_relations_per_page: 10000
+  list_relations_page_limit: 100
+
+```
+
+</VersionBlock>

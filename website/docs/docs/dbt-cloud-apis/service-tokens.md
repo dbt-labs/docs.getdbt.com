@@ -12,7 +12,7 @@ If you have service tokens created on or before July 18, 2023, please read [this
 
 :::
 
-Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
+Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
 
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in dbt Cloud to your service account token, which can vary slightly depending on your plan:
 
@@ -36,80 +36,37 @@ You can assign service account tokens to any permission set available in dbt Clo
 
 ### Team plans using service account tokens
 
-The following permissions can be assigned to a service account token on a Team plan.
+The following permissions can be assigned to a service account token on a Team plan. Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
 
-**Account Admin**<br/>
-Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role." For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
-
-**Metadata Only**<br/>
-Metadata-only service tokens authorize requests to the Discovery API.
-
-**Semantic Layer Only**<br/>
-Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
-
-**Job Admin**<br/>
-Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. 
-
-**Job Runner**<br/>
-Job runner service tokens can authorize requests for triggering runs and viewing historical runs.
-
-**Member** <br/>
-Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service Team plan permissions](/docs/cloud/manage-access/self-service-permissions)".
-
-**Read-only**<br/>
-Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports. This token can access and retrieve account-level information endpoints on the [Admin API](/docs/dbt-cloud-apis/admin-cloud-api) and authorize requests to the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
+- Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
+- Billing Admin
+- Job Admin 
+- Metadata Only
+- Member
+- Read-only 
+- Semantic Layer Only 
 
 ### Enterprise plans using service account tokens
 
-The following permissions can be assigned to a service account token on an Enterprise plan. For more details about these permissions, see "[Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions)."
+Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
 
-**Account Admin** <br/>
-Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
-
-**Security Admin** <br/>
-Security Admin service tokens have certain account-level permissions.  For more on these permissions, see [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin).
-
-**Billing Admin** <br/>
-Billing Admin service tokens have certain account-level permissions.  For more on these permissions, see [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin).
-
-**Manage marketplace apps** <br/>
-Used only for service tokens assigned to marketplace apps (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
-
-**Metadata Only**<br/>
-Metadata-only service tokens authorize requests to the Discovery API.
-
-**Semantic Layer Only**<br/>
-Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
-
-**Job Admin**<br/>
-Job Admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Job Admin](/docs/cloud/manage-access/enterprise-permissions#job-admin).
-
-**Account Viewer**<br/>
-Account Viewer service tokens have read-only access to dbt Cloud accounts. For more on these permissions, see [Account Viewer](/docs/cloud/manage-access/enterprise-permissions#account-viewer) on the Enterprise Permissions page.
-
-**Admin** <br/>
-Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects. For more on these permissions, see [Admin Service](/docs/cloud/manage-access/enterprise-permissions#admin-service) on the Enterprise Permissions page.
-
-**Git Admin**<br/>
-Git admin service tokens have all the permissions listed in [Git admin](/docs/cloud/manage-access/enterprise-permissions#git-admin) on the Enterprise Permissions page.
-
-**Database Admin**<br/>
-Database admin service tokens have all the permissions listed in [Database admin](/docs/cloud/manage-access/enterprise-permissions#database-admin) on the Enterprise Permissions page.
-
-**Team Admin**<br/>
-Team admin service tokens have all the permissions listed in [Team admin](/docs/cloud/manage-access/enterprise-permissions#team-admin) on the Enterprise Permissions page.
-
-**Job Viewer**<br/>
-Job viewer admin service tokens have all the permissions listed in [Job viewer](/docs/cloud/manage-access/enterprise-permissions#job-viewer) on the Enterprise Permissions page.
-
-**Developer**<br/>
-Developer service tokens have all the permissions listed in [Developer](/docs/cloud/manage-access/enterprise-permissions#developer) on the Enterprise Permissions page.
- 
-**Analyst**<br/>
-Analyst admin service tokens have all the permissions listed in [Analyst](/docs/cloud/manage-access/enterprise-permissions#analyst) on the Enterprise Permissions page.
-
-**Stakeholder**<br/>
-Stakeholder service tokens have all the permissions listed in [Stakeholder](/docs/cloud/manage-access/enterprise-permissions#stakeholder) on the Enterprise Permissions page.
+- Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution. 
+- Account Viewer
+- Admin
+- Analyst
+- Billing Admin
+- Database Admin
+- Developer
+- Git Admin
+- Job Admin
+- Job Runner
+- Job Viewer
+- Manage marketplace apps
+- Metadata Only 
+- Semantic Layer Only 
+- Security Admin
+- Stakeholder
+- Team Admin
 
 
 ## Service token update

@@ -43,7 +43,6 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Jobs                    |       W       |               |       W         |                |   R    |
 | Metadata GraphQL API access    |       R       |               |       R         |                |   R    |
 | Permissions             |       W       |               |       W         |       W        |   R    |
-| Profile                 |       W       |               |       W         |                |   R    |
 | Projects                |       W       |               |       W         |       R        |   R    |
 | Repositories            |       W       |               |       W         |                |   R    |
 | Runs                    |       W       |               |       W         |                |   R    |
@@ -75,15 +74,14 @@ The project roles enable you to work within the projects in various capacities. 
  
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
-| Environment credentials (deployment)        |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Environment credentials (deployment) |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |             |      R      |          |                |     R       |     W      |         |
-| Data platform configurations            |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Data platform configurations|   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |             |          |                |             |            |         |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
 | Jobs                     |   W   |    R    |       R        |     R     |     R     |     W     |      R      |      R      |          |                |     R       |     R      |         |
 | Metadata GraphQL API access    |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
-| Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |
-| Profile (Credentials)                 |   W   |    R    |                |     R     |     R     |     R     |             |             |          |                |     R       |             |         |
+| Permissions (Groups & Licenses)  |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |             |          |                |     R       |             |         |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
 | Repositories             |   W   |         |       R        |     R     |     W     |           |             |             |          |                |     R       |     R      |         |
 | Runs                     |   W   |    R    |       R        |     R     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |

@@ -13,7 +13,7 @@ description: "This guide explains how to use the description key to add YAML des
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
-    { label: 'Singular data tests', value: 'singular_data_tests', },
+    { label: 'Data tests', value: 'data_tests', },
   ]
 }>
 <TabItem value="models">
@@ -146,17 +146,17 @@ macros:
 
 </TabItem>
 
-<TabItem value="singular_data_tests">
+<TabItem value="data_tests">
 
 <VersionBlock firstVersion="1.9">
 
-<File name='tests/singular/schema.yml'>
+<File name='tests/schema.yml'>
 
 ```yml
 version: 2
 
 data_tests:
-  - name: singular_data_test_name
+  - name: data_test_name
     description: markdown_string
 
 ```
@@ -167,12 +167,11 @@ data_tests:
 
 <VersionBlock lastVersion="1.8">
 
-The `description` property is available for singular data tests beginning in dbt v1.9.
+The `description` property is available for generic and singular data tests beginning in dbt v1.9.
 
 </VersionBlock>
 
 </TabItem>
-
 
 </Tabs>
 

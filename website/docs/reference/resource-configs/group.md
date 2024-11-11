@@ -218,14 +218,6 @@ metrics:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.6">
-
-Support for grouping semantic models has been added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -247,19 +239,9 @@ semantic_models:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="saved queries">
-
-<VersionBlock lastVersion="1.6">
-
-Support for grouping saved queries has been added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name='dbt_project.yml'>
 
@@ -281,8 +263,6 @@ saved_queries:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
