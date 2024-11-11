@@ -475,7 +475,9 @@ Snapshot results:
 
 <VersionBlock firstVersion="1.9">
 
-This section is for users on dbt versions 1.8 and earlier. To configure snapshots in versions 1.9 and later, refer to [Configuring snapshots](#configuring-snapshots). The latest versions use an updated snapshot configuration syntax that optimizes performance.
+For information about configuring snapshots in dbt versions 1.8 and earlier, select **1.8** from the documentation version picker, and it will appear in this section.
+
+To configure snapshots in versions 1.9 and later, refer to [Configuring snapshots](#configuring-snapshots). The latest versions use an updated snapshot configuration syntax that optimizes performance.
 
 </VersionBlock>
 
