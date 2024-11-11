@@ -6,7 +6,7 @@ sidebar: "Cache"
 
 ### Cache population
 
-At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt populates the cache with information on all schemas related to the project.
+At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt populates the relational cache with information on all schemas related to the project.
 
 There are two ways to optionally modify this behavior:
 - `POPULATE_CACHE` (default: `True`): Whether to populate the cache at all. To skip cache population entirely, use the `--no-populate-cache` flag or `DBT_POPULATE_CACHE: False`. Note that this does not _disable_ the cache; missed cache lookups will run queries, and update the cache afterward.
@@ -26,3 +26,11 @@ Or, to improve speed and performance while focused on developing Salesforce mode
 dbt --cache-selected-only run --select salesforce
 
 ```
+
+### Logging relational cache events
+
+import LogLevel from '/snippets/_log-relational-cache.md';
+
+<LogLevel
+event="relational cache"
+/>

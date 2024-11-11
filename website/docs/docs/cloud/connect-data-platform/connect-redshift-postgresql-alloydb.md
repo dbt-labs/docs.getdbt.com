@@ -118,7 +118,7 @@ Once the connection is saved, a public key will be generated and displayed for t
 To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
 
 - Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
-- Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud:`
+- Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud`:
     
 ```shell
 sudo groupadd dbtcloud
