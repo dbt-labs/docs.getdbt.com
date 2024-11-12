@@ -38,7 +38,7 @@ To access the visual editor:
 
   - `https://cloud.getdbt.com/visual-editor/10/env/100/`
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="80%" title="Visual editor interface that contains a node toolbar and canvas." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.png" width="80%" title="Visual editor interface that contains a node toolbar and canvas." />
 
 ## Create a model
 To create a dbt SQL model, click on **Create a new model** and perform the following steps. Note that you can't create source models in the visual editor. This is because you need to have production run with sources already created.
@@ -68,9 +68,9 @@ To create a dbt SQL model, click on **Create a new model** and perform the follo
 -->
 
 ## Edit an existing model
-To edit an existing model, navigate to the visual editor and click on the **Edit a model** button on the upper right. This will allow you to select the model you'd like to edit.
+To edit an existing model, navigate to the Visual Editor, click on the **Get Started** button on the upper right, and click **Edit existing model**. This will allow you to select the model you'd like to edit.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/edit-model.jpg" width="90%" title="Edit a model iin the visual editor using the 'Edit a model' button." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/edit-model.png" width="90%" title="Edit a model in the visual editor using the 'Edit a model' button." />
 
 ## Version control
 

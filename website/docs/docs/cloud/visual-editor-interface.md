@@ -33,7 +33,7 @@ The visual editor interface is composed of:
 
 The operator toolbar above the canvas contains the different transformation operators available to use. Use each operator to configure or perform specific tasks, like adding filters or joining models by dragging an operator onto the canvas. You can connect operators using the connector line, which allows you to form a complete dbt model for your data transformation.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/edit-model.jpg" width="90%" title="Use the operator toolbar to perform different transformation operations." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/edit-model.png" width="90%" title="Use the operator toolbar to perform different transformation operations." />
 
 Here the following operators are available:
 - **Model**: This represents a data model. Use this to select the source table and the columns you want to include. There are no limits to the number of models you can have in a session.
@@ -47,7 +47,7 @@ Here the following operators are available:
 
 When you click on each operator, it opens a configuration panel. The configuration panel allows you to configure the operator, review the current model, preview changes to the model, view the SQL code for the node, and delete the operator.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="90%" title="Visual editor interface that contains a node toolbar and canvas." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.png" width="90%" title="Visual editor interface that contains a node toolbar and canvas." />
 
 If you have any feedback on additional operators that you might need, we'd love to hear it! Please contact your dbt Labs account team and share your thoughts.
 
@@ -61,7 +61,7 @@ The visual editor has a sleek drag-and-drop canvas interface that allows you to 
 - Version-control your dbt models
 - [Coming soon] Test and document your created models
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/operator.jpg" width="90%" title="The operator toolbar allows you to select different nodes to configure or perform specific tasks, like adding filters or joining models." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/operator.png" width="90%" title="The operator toolbar allows you to select different nodes to configure or perform specific tasks, like adding filters or joining models." />
 
 ### Connector
 
@@ -70,7 +70,7 @@ Connectors allow you to connect your operators to create dbt models. Once you've
 - Drag your cursor between the operator's "+" start point to the other node you want to connect to. This should create a connector line.
 - As an example, to create a join, connect one operator to the "L" (Left) and the other to the "R" (Right). The endpoints are located to the left of the operator so you can easily drag the connectors to the endpoint.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/connector.jpg" width="100%" title="Click and drag your cursor to connect operators." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/connector.png" width="100%" title="Click and drag your cursor to connect operators." />
 
 ## Configuration panel
 Each operator has a configuration side panel that opens when you click on it. The configuration panel allows you to configure the operator, review the current model, preview changes, view the SQL code for the operator, and delete the operator.
@@ -81,4 +81,4 @@ The configuration side panel has the following:
 - Output tab &mdash; This section allows you to preview the data for the modified source model.
 - Code &mdash; This section allows you to view the underlying SQL code for the data transformation.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/config-panel.jpg" width="90%" title="A sleek drag-and-drop canvas interface that allows you to create or modify dbt SQL models." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/config-panel.png" width="90%" title="A sleek drag-and-drop canvas interface that allows you to create or modify dbt SQL models." />
