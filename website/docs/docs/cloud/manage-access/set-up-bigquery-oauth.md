@@ -25,13 +25,14 @@ To use BigQuery in the dbt Cloud IDE, all developers must:
 
 ### Locate the redirect URI value
 To get started, locate the connection's redirect URI for configuring BigQuery OAuth. To do so:
- - Select the gear menu in the upper left corner and choose **Account settings**
+ - Navigate to your account name, above your profile icon on the left side panel  
+ - Select **Account settings** from the menu 
  - From the left sidebar, select **Projects** 
  - Choose the project from the list
  - Select **Connection** to edit the connection details
  - Locate the **Redirect URI** field under the **OAuth 2.0 Settings** section. Copy this value to your clipboard to use later on.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.gif" title="Accessing the BigQuery OAuth configuration in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt Cloud" />
 
 ### Creating a BigQuery OAuth 2.0 client ID and secret
 To get started, you need to create a client ID and secret for [authentication](https://cloud.google.com/bigquery/docs/authentication) with BigQuery. This client ID and secret will be stored in dbt Cloud to manage the OAuth connection between dbt Cloud users and BigQuery.
@@ -64,10 +65,12 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
 ### Authenticating to BigQuery
 Once the BigQuery OAuth app is set up for a dbt Cloud project, each dbt Cloud user will need to authenticate with BigQuery in order to use the IDE. To do so:
 
-- Select the gear menu in the upper left corner and choose **Profile settings**
+- Navigate to your account name, above your profile icon on the left side panel
+- Select **Account settings** from the menu
 - From the left sidebar, select **Credentials**
 - Choose the project from the list
 - Select **Authenticate BigQuery Account**
+
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/developer-bq-auth.gif" title="Authenticating to BigQuery" />
 
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
