@@ -23,7 +23,7 @@ To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admi
 
 Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
 
-1. From the gear menu, select **Profile settings**. 
+1. Click your account name from the left side panel and select **Account settings**. 
 1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
 1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**.
 
