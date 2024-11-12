@@ -267,3 +267,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 6. `Application ID URI`: Copy the `Application ID URI` field from the resource server’s Overview screen.
 
 </Expandable>
+
+## FAQs
+
+<FAQ path="Troubleshooting/failed-snowflake-oauth-connection" />
