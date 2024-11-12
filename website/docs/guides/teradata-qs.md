@@ -104,7 +104,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Connect dbt Cloud to Teradata
 
-1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **New Project**. 
+1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In **Configure your development environment**, click **Add new connection**.
 4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.

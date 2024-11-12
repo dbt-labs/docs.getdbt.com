@@ -203,7 +203,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 3. Click **Clusters** on the left sidebar.
 4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in dbt Cloud.
 5. In another browser tab, log in to [dbt Cloud](/docs/cloud/about-cloud/access-regions-ip-addresses).
-6. Create a new project in dbt Cloud. From Account settings (using the gear menu in the top right corner), click **+ New Project**.
+6. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 7. Enter a project name and click **Continue**.
 8. Choose **Starburst** as your connection and click **Next**.
 9. Enter the **Settings** for your new project:
