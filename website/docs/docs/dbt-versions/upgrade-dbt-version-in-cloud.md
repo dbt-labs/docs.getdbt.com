@@ -23,7 +23,7 @@ To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admi
 
 Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
 
-1. From the gear menu, select **Profile settings**. 
+1. Click your account name from the left side panel and select **Account settings**. 
 1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
 1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**.
 
@@ -41,7 +41,7 @@ Configure your project to use a different dbt Core version than what's configure
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="65%" title="Settings of a dbt Cloud job"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="200%" title="Settings of a dbt Cloud job"/>
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 

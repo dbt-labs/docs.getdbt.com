@@ -27,7 +27,7 @@ Click the name of the adapter in the below table for more information about supp
 | Data platform adapter | `append` | `merge` | `delete+insert` | `insert_overwrite` | `microbatch` <Lifecycle status="beta"/> |
 |-----------------------|:--------:|:-------:|:---------------:|:------------------:|:-------------------:|
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅   |        ✅        |                    |      ✅            |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |        ✅        |                    |                    |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |        ✅        |                    |      ✅        |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |           |    ✅   |                 |          ✅         |      ✅            |
 | [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅   |                 |          ✅         |      ✅            |
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |                 |          ✅         |                    |
@@ -288,6 +288,8 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 ```
 
 </File>
+
+If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy. 
 
 ### Custom strategies from a package
 
