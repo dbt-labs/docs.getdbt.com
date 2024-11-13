@@ -143,7 +143,7 @@ snapshots:
 
 ### Use a combination of two columns as a unique key
 
-This configuration accepts a valid column expression. As such, you can concatenate two columns together as a unique key if required. It's a good idea to use a separator (e.g. `'-'`) to ensure uniqueness.
+This configuration accepts a valid column expression. As such, you can concatenate two columns together as a unique key if required. It's a good idea to use a separator (for example, `'-'`) to ensure uniqueness.
 
 <File name='snapshots/transaction_items_snapshot.sql'>
 
