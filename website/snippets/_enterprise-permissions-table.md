@@ -41,7 +41,7 @@ Key:
 | Environment credentials |       W       |      -        |       W         |       -        |   R    |
 | Custom env. variables   |       W       |      -        |       W         |       -        |   R    |
 | Data platform configurations|   W       |      -        |       W         |       -        |   R    |
-| Develop (IDE or dbt Cloud CLI)| W       |      -        |       W         |       -        |   -    |
+| Develop (IDE or CLI)       | W       |      -        |       W         |       -        |   -    |
 | Environments            |       W       |      -        |       W         |       -        |   R    |
 | Jobs                    |       W       |      -        |       W         |       -        |   R    |
 | Metadata GraphQL API access |   R       |      -        |       R         |       -        |   R    |
