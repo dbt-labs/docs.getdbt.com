@@ -104,16 +104,17 @@ Key:
 | Custom env. variables    |   W  |    W     |       W        |     W     |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |   -     |
 | Data platform configs    |   W   |    W    |       W        |     W     |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |    -    |
 | Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |    -    |
-| Environments             |   W   |    R[^1]|       R[^1]    |     R[^1] |     R[^1] |     W     |      -      |      R      |                  -                      |       -        |     R       |     R[^1]  |    -    |
-| Jobs                     |   W   |    R[^1]|       R[^1]    |     R[^1] |     R[^1] |     W     |      R      |      R      |                  -                      |       -        |     R       |     R[^1]  |    -    |
+| Environments             |   W   |    R*   |       R*       |     R*    |     R*    |     W     |      -      |      R      |                  -                      |       -        |     R       |     R*     |    -    |
+| Jobs                     |   W   |    R*   |       R*       |     R*    |     R*    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R*     |    -    |
 | Metadata GraphQL API access| R   |    R    |       R        |     R     |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |    -    |
 | Permissions              |   W   |    -    |       R        |     R     |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |    -    |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |    -    |
 | Repositories             |   W   |   -     |       R        |     R     |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |    -    |
-| Runs                     |   W   |    R[^1]|       R[^1]    |     R[^1] |     R[^1] |     W     |      W      |      R      |                  -                      |       -        |     R       |     R[^1]  |    -    |
+| Runs                     |   W   |    R*   |       R*       |     R*    |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |    -    |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |    -    |
+
 `}
 
 </SortableTable>
 
-[^1]: These values are `R`ead only by default, but can be customized to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
+\* These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
