@@ -65,7 +65,7 @@ models:
           - type: unique
           - type: foreign_key
             to: ref('other_model_name')
-            to_columns: other_model_column
+            to_columns: [other_model_column]
           - type: ...
 ```
 

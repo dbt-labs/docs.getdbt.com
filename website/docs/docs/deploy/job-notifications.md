@@ -56,7 +56,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 :::
 
 ### Prerequisites 
-- You must be an administrator of the Slack workspace. 
+- You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in dbt Cloud. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 

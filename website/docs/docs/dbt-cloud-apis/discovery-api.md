@@ -32,7 +32,7 @@ Use the API to look at historical information like model build time to determine
 
 You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt Cloud"/>
 
 </TabItem>
 
@@ -50,7 +50,7 @@ Use the API to find and understand dbt assets in integrated tools using informat
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="75%" title="Data lineage produced by dbt" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="200%" title="Data lineage produced by dbt" />
 
 </TabItem>
 
@@ -65,7 +65,6 @@ Use the API to review who developed the models and who uses them to help establi
 Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective dbt projects. For more details, refer to [Development](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#development).
 
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/data-freshness-metadata.jpg" width="25%" title="Quality and freshness dashboard status tile defined via exposures"/>
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Use exposures to embed data health tiles in your dashboards to distill trust signals for data consumers." />
 

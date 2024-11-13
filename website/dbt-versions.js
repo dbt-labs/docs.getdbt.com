@@ -15,7 +15,7 @@
  */
 exports.versions = [
   {
-    version: "1.9.1",
+    version: "1.10",
     customDisplay: "Cloud (Versionless)",
   },
   {
@@ -74,12 +74,5 @@ exports.versionedPages = [
  * @property {string} firstVersion The first version the category is visible in the sidebar
  */
 exports.versionedCategories = [
-  {
-    category: "Model governance",
-    firstVersion: "1.5",
-  },
-  {
-    category: "Build your metrics",
-    firstVersion: "1.6",
-  },
+
 ];
