@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Markdown from 'markdown-to-jsx';
 
 const stripMarkdown = (text) => {
-
   let strippedText = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-
   strippedText = strippedText.replace(/[_*`~]/g, '');
   return strippedText;
 };
@@ -18,11 +16,11 @@ const parseMarkdownTable = (markdown) => {
     if (alignment.startsWith(':') && alignment.endsWith(':')) {
       return 'center';
     } else if (alignment.startsWith(':')) {
-      return 'left';  
+      return 'left';
     } else if (alignment.endsWith(':')) {
-      return 'right';  
+      return 'right';
     } else {
-      return 'left';  
+      return 'left';
     }
   });
 
@@ -32,7 +30,10 @@ const parseMarkdownTable = (markdown) => {
 };
 
 const SortableTable = ({ children }) => {
-  const { headers, data: initialData, columnAlignments } = parseMarkdownTable(children);
+  const { headers, data: initialData, columnAlignments } = useMemo(
+    () => parseMarkdownTable(children),
+    [children]
+  );
 
   const [data, setData] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: 'asc' });
@@ -42,7 +43,6 @@ const SortableTable = ({ children }) => {
     setSortConfig({ key: keyIndex, direction: newDirection });
 
     const sortedData = [...data].sort((a, b) => {
-      
       const aVal = stripMarkdown(a[keyIndex]);
       const bVal = stripMarkdown(b[keyIndex]);
       if (aVal < bVal) return newDirection === 'asc' ? -1 : 1;
