@@ -19,7 +19,7 @@ The following fields are required when creating a Snowflake connection
 
 ## Authentication methods
 
-This section describes the different authentication methods available for connecting dbt Cloud to Snowflake.
+This section describes the different authentication methods available for connecting dbt Cloud to Snowflake. Deployment environment (Production, Staging, General) credentials are globally configured in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of your **Account settings**. Development credentials are configured by individual users in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) section of their user profile. 
 
 ### Username / Password
 
