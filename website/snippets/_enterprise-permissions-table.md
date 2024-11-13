@@ -14,6 +14,9 @@ Key:
 
 #### Account permissions for account roles
 
+<SortableTable>
+
+{`
 | Account-level permission| Account Admin | Billing admin |  Manage <br></br> marketplace <br></br> apps | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:------------:|:-------------------------:|:---------------:|:--------------:|:------:| 
 | Account settings        |     W         |      -        |            -              |        R        |       R        |   R    |
@@ -31,11 +34,15 @@ Key:
 | Public models           |     R         |       R       |            -              |        R        |       R        |   R    |
 | Service tokens          |     W         |      -        |            -              |        -        |       R        |   R    |
 | Webhooks                |     W         |      -        |            -              |        -        |       -        |   -    |
+`}
 
-[^1]: These values are `R`ead only by default, but can be customized to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
+</SortableTable>
 
 #### Project permissions for account roles
  
+ <SortableTable>
+
+{`
 |Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Environment credentials |       W       |      -        |       W         |       -        |   R    |
@@ -50,7 +57,9 @@ Key:
 | Repositories            |       W       |      -        |       W         |       -        |   R    |
 | Runs                    |       W       |      -        |       W         |       -        |   R    |
 | Semantic Layer config   |       W       |      -        |       W         |       v        |   R    |
+`}
 
+</SortableTable>
 
 ### Project role permissions
  
@@ -63,6 +72,9 @@ Key:
 
 #### Account permissions for project roles
  
+<SortableTable>
+
+{`
 | Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br>(Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |    -    |
@@ -77,10 +89,15 @@ Key:
 | Public models            |   R   |    R    |      R         |     R     |     R     |     R     |     -       |      R      |     R    |        R       |      R      |     R      |    R    |
 | Service tokens           |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |    -    |
 | Webhooks                 |   W   |    -    |      -         |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |    W    |
+`}
+
+</SortableTable>
 
 #### Project permissions for project roles
 
- 
+<SortableTable> 
+
+{`
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Environment credentials  |   W  |    W     |       W        |     W     |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |   -     |
@@ -95,5 +112,8 @@ Key:
 | Repositories             |   W   |   -     |       R        |     R     |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |    -    |
 | Runs                     |   W   |    R[^1]|       R[^1]    |     R[^1] |     R[^1] |     W     |      W      |      R      |                  -                      |       -        |     R       |     R[^1]  |    -    |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |    -    |
+`}
+
+</SortableTable>
 
 [^1]: These values are `R`ead only by default, but can be customized to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
