@@ -6,6 +6,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Continuous integration jobs   | ✅               | ✅                     | ✅                  | ✅                  |
 | dbt Cloud CLI                 | ✅               | ✅                     | ✅                  | ✅                  |
 | dbt Cloud IDE                 | ✅               | ✅                     | ✅                  | ✅                  |
+| dbt Copilot                   | ✅               | ✅                     | ✅                  | ✅                  |
 | dbt Explorer                  | ✅               | ✅                     | ✅                  | ✅                  |
 | dbt Mesh                      | ✅               | ✅                     | ✅                  | ✅                  |
 | dbt Semantic Layer            | ✅               | ✅ (Upon request)      | ✅                  | ❌                  |
