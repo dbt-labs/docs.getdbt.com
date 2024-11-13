@@ -18,7 +18,7 @@ It's been a few years since dbt-core turned 1.0! Since then, we've committed to 
 
 In 2024, we're taking this promise further by:
 - Stabilizing interfaces for everyone — adapter maintainers, metadata consumers, and (of course) people writing dbt code everywhere — as discussed in [our November 2023 roadmap update](https://github.com/dbt-labs/dbt-core/blob/main/docs/roadmap/2023-11-dbt-tng.md).
-- Introducing **Versionless** in dbt Cloud. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- Introducing **Latest** release track in dbt Cloud. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 We're leaving the rest of this post as is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
 

@@ -7,7 +7,7 @@ sidebar_label: "Connect Amazon Athena"
 
 # Connect Amazon Athena
 
-Your environment(s) must be on ["Versionless"](/docs/dbt-versions/versionless-cloud) to use the Amazon Athena connection.
+Your environment(s) must be on a [Release Track](/docs/dbt-versions/cloud-release-tracks) to use the Amazon Athena connection.
 
 Connect dbt Cloud to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:
 

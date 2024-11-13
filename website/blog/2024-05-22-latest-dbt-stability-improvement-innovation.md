@@ -1,5 +1,5 @@
 ---
-title: "How we're making sure you can confidently go \"Versionless\" in dbt Cloud"
+title: "How we're making sure you can confidently go \"Latest\" in dbt Cloud"
 description: "Over the past 6 months, we've laid a stable foundation for continuously improving dbt."
 slug: latest-dbt-stability
 
@@ -16,19 +16,19 @@ As long as dbt Cloud has existed, it has required users to select a version of d
 
 However, this came at a cost. While bumping a project's dbt version *appeared* as simple as selecting from a dropdown, there was real effort required to test the compatibility of the new version against existing projects, package dependencies, and adapters. On the other hand, putting this off meant foregoing access to new features and bug fixes in dbt.
 
-But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**"Versionless."**](https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)
+But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**"Latest."**](https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#latest)
 
 <!--truncate-->
 
 For customers, this means less maintenance overhead, faster access to bug fixes and features, and more time to focus on what matters most: building trusted data products. This will be our stable foundation for improvement and innovation in dbt Cloud. 
 
-But we wanted to go a step beyond just making this option available to you. In this blog post, we aim to shed a little light on the extensive work we've done to ensure that using "Versionless" is a stable, reliable experience for the thousands of customers who rely daily on dbt Cloud.
+But we wanted to go a step beyond just making this option available to you. In this blog post, we aim to shed a little light on the extensive work we've done to ensure that using "Latest" is a stable, reliable experience for the thousands of customers who rely daily on dbt Cloud.
 
 ## How we safely deploy dbt upgrades to Cloud
 
 We've put in place a rigorous, best-in-class suite of tests and control mechanisms to ensure that all changes to dbt under the hood are fully vetted before they're deployed to customers of dbt Cloud.
 
-This pipeline has in fact been in place since January! It's how we've already been shipping continuous changes to the hundreds of customers who've selected "Versionless" while it's been in Beta and Preview. In that time, this process has enabled us to prevent multiple regressions before they were rolled out to any customers.
+This pipeline has in fact been in place since January! It's how we've already been shipping continuous changes to the hundreds of customers who've selected "Latest" while it's been in Beta and Preview. In that time, this process has enabled us to prevent multiple regressions before they were rolled out to any customers.
 
 We're very confident in the robustness of this process**. We also know that we'll need to continue building trust with time.** We're sharing details about this work in the spirit of transparency and to build that trust.
 
@@ -82,9 +82,9 @@ All incidents are retrospected to make sure we not only identify and fix the roo
 
 :::
 
-The outcome of this process is that, when you select "Versionless" in dbt Cloud, the time between an improvement being made to dbt Core and you *safely* getting access to it in your projects is a matter of days — rather than months of waiting for the next dbt Core release, on top of any additional time it may have taken to actually carry out the upgrade.
+The outcome of this process is that, when you select "Latest" in dbt Cloud, the time between an improvement being made to dbt Core and you *safely* getting access to it in your projects is a matter of days — rather than months of waiting for the next dbt Core release, on top of any additional time it may have taken to actually carry out the upgrade.
 
-We’re pleased to say that since the beta launch of “Versionless” in dbt Cloud in March, **we have not had any functional regressions reach customers**, while we’ve also been shipping multiple improvements to dbt functionality every day. This is a foundation that we aim to build on for the foreseeable future.
+We’re pleased to say that since the beta launch of "Latest" in dbt Cloud in March, **we have not had any functional regressions reach customers**, while we’ve also been shipping multiple improvements to dbt functionality every day. This is a foundation that we aim to build on for the foreseeable future.
 
 ## Stability as a feature
 
@@ -98,7 +98,7 @@ The adapter interface — i.e. how dbt Core actually connects to a third-party d
 
 To solve that, we've released a new set of interfaces that are entirely independent of the `dbt-core` library: [`dbt-adapters==1.0.0`](https://github.com/dbt-labs/dbt-adapters). From now on, any changes to `dbt-adapters` will be backward and forward-compatible. This also decouples adapter maintenance from the regular release cadence of dbt Core — meaning maintainers get full control over when they ship implementations of new adapter-powered features.
 
-Note that adapters running in dbt Cloud **must** be [migrated to the new decoupled architecture](https://github.com/dbt-labs/dbt-adapters/discussions/87) as a baseline in order to support the new "Versionless" option.
+Note that adapters running in dbt Cloud **must** be [migrated to the new decoupled architecture](https://github.com/dbt-labs/dbt-adapters/discussions/87) as a baseline in order to support the new "Latest" option.
 
 ### Managing behavior changes: stability as a feature
 
@@ -118,7 +118,7 @@ We’ve now [formalized our development best practices](https://github.com/dbt-l
 
 In conclusion, we’re putting a lot of new muscle behind our commitments to dbt Cloud customers, the dbt Community, and the broader ecosystem:
 
-- **Continuous updates**: "Versionless" dbt Cloud simplifies the update process, ensuring you always have the latest features and bug fixes without the maintenance overhead.
+- **Continuous updates**: "Latest" dbt Cloud simplifies the update process, ensuring you always have the latest features and bug fixes without the maintenance overhead.
 - **A rigorous new testing and deployment process**: Our new testing pipeline ensures that every update is carefully vetted against documented interfaces, Cloud-supported adapters, and popular packages before it reaches you. This process minimizes the risk of regressions — and has now been successful at entirely preventing them for hundreds of customers over multiple months.
 - **A commitment to stability**: We’ve reworked our approaches to adapter interfaces, behaviour change management, and metadata artifacts to give you more stability and control.
 

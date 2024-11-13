@@ -12,7 +12,7 @@ This page explains how to enable the dbt Copilot engine in dbt Cloud, leveraging
 
 - Available in the dbt Cloud IDE only.
 - Must have an active [dbt Cloud Enterprise account](https://www.getdbt.com/pricing).
-- Development environment has been upgraded to ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless).
+- Development environment is on a supported ["Release Track"](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
 - By default, dbt Copilot deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [provide your own OpenAI API key](#bringing-your-own-openai-api-key-byok).
 - Accept and sign legal agreements. Reach out to your Account team to begin this process.
 

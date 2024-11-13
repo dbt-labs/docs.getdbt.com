@@ -114,6 +114,6 @@ Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/t
 
 In order to get this functionality shipped quickly, EQT opened a pull request, Snowflake helped with some problems we had with CI and a member of dbt Labs helped write the tests and merge the code in!  
 
-dbt now features this functionality in dbt 1.8+ or the “Versionless” option of dbt Cloud (dbt overview [here](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)). 
+dbt now features this functionality in dbt 1.8+ or the "Latest" option of dbt Cloud (dbt overview [here](/docs/dbt-versions/upgrade-dbt-version-in-cloud#latest)). 
 
 dbt Labs staff and community members would love to chat more about it in the [#db-snowflake](https://getdbt.slack.com/archives/CJN7XRF1B) slack channel.

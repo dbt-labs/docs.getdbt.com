@@ -80,7 +80,7 @@ All you need to do is configure an environment as staging and enable the **Defer
 
 ## Upgrading on a curve
 
-Lastly, let’s consider a more specialized use case. Imagine we have a "tiger team" (consisting of a lone analytics engineer named Dave) tasked with upgrading from dbt version 1.6 to the new **Versionless** setting, to take advantage of added stability and feature access. We want to keep the rest of the data team being productive in dbt 1.6 for the time being, while enabling Dave to upgrade and do his work in the new versionless mode.
+Lastly, let’s consider a more specialized use case. Imagine we have a "tiger team" (consisting of a lone analytics engineer named Dave) tasked with upgrading from dbt version 1.6 to the new **Latest** setting, to take advantage of added stability and feature access. We want to keep the rest of the data team being productive in dbt 1.6 for the time being, while enabling Dave to upgrade and do his work in the new Latest mode.
 
 ### Development environment
 

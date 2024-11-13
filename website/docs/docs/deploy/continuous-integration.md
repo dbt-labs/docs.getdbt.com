@@ -58,7 +58,7 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 ### SQL linting <Lifecycle status="team,enterprise" />
 
-Available for [dbt Cloud Versionless](/docs/dbt-versions/versionless-cloud) and dbt Cloud Team or Enterprise accounts.
+Available on [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks) and dbt Cloud Team or Enterprise accounts.
 
 When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the changed SQL files in your project (compared to the last deferred production state). 
 

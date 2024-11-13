@@ -95,7 +95,7 @@ import SLCourses from '/snippets/_sl-course.md';
 <VersionBlock lastVersion="1.8">
 Default time granularity for metrics is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. 
 
-To set the default time granularity for metrics, you need to be on dbt Cloud Versionless or dbt v1.9 and higher. 
+Default time granularity for metrics is available now in dbt Cloud Latest, and it will be available in dbt Core v1.9+.
 
 </VersionBlock>
 

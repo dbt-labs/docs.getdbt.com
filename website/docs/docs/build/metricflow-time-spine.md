@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 ---
 <VersionBlock firstVersion="1.9">
 
-<!-- this whole section is for 1.9 and higher + Versionless -->
+<!-- this whole section is for 1.9 and higher + Release Tracks -->
 
 It's common in analytics engineering to have a date dimension or "time spine" table as a base table for different types of time-based joins and aggregations. The structure of this table is typically a base column of daily or hourly dates, with additional columns for other time grains, like fiscal quarters, defined based on the base column. You can join other tables to the time spine on the base column to calculate metrics like revenue at a point in time, or to aggregate to a specific time grain.
 
@@ -108,7 +108,7 @@ models:
   - It needs to reference a column defined under the `columns` key, in this case, `date_hour` and `date_day`, respectively.
   - It sets the granularity at the column-level using the `granularity` key, in this case, `hour` and `day`, respectively. 
 - MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to another source table.
-- [The `custom_granularities` field](#custom-calendar), (available in Versionless and dbt v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
+- [The `custom_granularities` field](#custom-calendar), (available in dbt Cloud Latest and dbt Core v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
 
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
@@ -310,9 +310,9 @@ You only need to include the `date_day` column in the table. MetricFlow can hand
 
 <VersionBlock lastVersion="1.8">
 
-The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/versionless-cloud) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
+The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Latest](/docs/dbt-versions/cloud-release-tracks) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
 
-To access this feature, [upgrade to Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or your dbt Core version to v1.9 or higher.
+To access this feature, [upgrade to dbt Cloud Latest](/docs/dbt-versions/cloud-release-tracks) or your dbt Core version to v1.9 or higher.
 
 </VersionBlock>
 
