@@ -137,11 +137,11 @@ You can use either of these parameters to ensure clean output that's compatible 
 
 ### Logging relational cache events
 
-The `LOG_CACHE_EVENTS` config allows detailed logging for [relational cache](/reference/global-configs/cache) events, which are disabled by default.
+import LogLevel from '/snippets/_log-relational-cache.md';
 
-```text
-dbt --log-cache-events compile
-```
+<LogLevel
+event={<a href="https://docs.getdbt.com/reference/global-configs/cache">relational cache</a>}
+/>
 
 ### Color
 

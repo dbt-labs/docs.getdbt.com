@@ -302,9 +302,9 @@ const sidebarSettings = {
             },
           ],
         },
-      ],
-    },
-    {
+        ],
+      },
+      {
       type: "category",
       label: "Build dbt projects",
       collapsed: true,
@@ -1104,6 +1104,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "reference/global-configs/adapter-behavior-changes" },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
               ],
             },

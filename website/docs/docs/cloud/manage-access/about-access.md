@@ -79,7 +79,7 @@ Refer to [role-based access control](#role-based-access-control) for more inform
 
 ## Grant access
 
-dbt Cloud users have both a license (individually or by group) and permissions (by group only) that determine what actions they can take. Licenses are account-wide, and permissions provide more granular access or restrictions to specific features.
+dbt Cloud users have both a license (assigned to an individual user or by group membership) and permissions (by group membership only) that determine what actions they can take. Licenses are account-wide, and permissions provide more granular access or restrictions to specific features.
 
 ### Licenses
 

@@ -35,7 +35,7 @@ The IDE streamlines your workflow, and features a popular user interface layout 
       * Added (A) — The IDE detects added files
       * Deleted (D) — The IDE detects deleted files.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="90%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
 5. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
@@ -107,15 +107,19 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 
-4. **Format button &mdash;** The editor has a **Format** button that can reformat the contents of your files. For SQL files, it uses either `sqlfmt` or `sqlfluff`, and for Python files, it uses `black`.
+4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/dbt-cloud-ide/lint-format) on the active file in the File Editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **Results tab &mdash;** The Results console tab displays the most recent Preview results in tabular format. 
+5. **dbt Copilot** <Lifecycle status="enterprise"/> &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that can generate documentation, tests, and semantic models for you. dbt Copilot is available in the IDE for Enterprise plans.
+
+6. **Results tab &mdash;** The Results console tab displays the most recent Preview results in tabular format. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/results-console-tab.jpg" width="90%" title="Preview results show up in the Results console tab"/>
 
-6. **Compiled Code tab &mdash;** The Compile button triggers a compile invocation that generates compiled code, which is displayed in the Compiled Code tab.
+7. **Code quality tab** &mdash; The Code Quality tab displays the results of the linter on the active file in the File Editor. It allows you to view code errors, provides code quality visibility and management, and displays the SQLFluff version used.
+
+8. **Compiled Code tab &mdash;** The Compile generates the compiled code when the Compile button is executed. The Compiled Code tab displays the compiled SQL code for the active file in the File Editor.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/compiled-code-console-tab.jpg" width="90%" title="Compile results show up in the Compiled Code tab"/>
 
-7. **Lineage tab &mdash;** The Lineage tab in the File Editor displays the active model's lineage or  <Term id="dag" />. By default, it shows two degrees of lineage in both directions (`2+model_name+2`), however, you can change it to +model+ (full DAG).
+9. **Lineage tab &mdash;** The Lineage tab in the File Editor displays the active model's lineage or  <Term id="dag" />. By default, it shows two degrees of lineage in both directions (`2+model_name+2`), however, you can change it to +model+ (full DAG). To use the lineage:
     - Double-click a node in the DAG to open that file in a new tab
     - Expand or shrink the DAG using node selection syntax.
     - Note, the `--exclude` flag isn't supported.
@@ -158,11 +162,11 @@ Use menus and modals to interact with IDE and access useful options to help your
 
 - #### File Search
   You can easily search for and navigate between files using the File Navigation menu, which can be accessed by pressing Command-O or Control-O or clicking on the 🔍 icon in the File Explorer.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 - #### Global Command Palette
   The Global Command Palette provides helpful shortcuts to interact with the IDE, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 - #### IDE Status modal
   The IDE Status modal shows the current error message and debug logs for the server. This also contains an option to restart the IDE. Open this by clicking on the IDE Status button.

@@ -89,7 +89,7 @@ export default function DocRootLayoutMain({
       if (new Date() > new Date(EOLDate)) {
         setEOLData({
           showEOLBanner: true,
-          EOLBannerText: `This version of dbt Core is <a href="/docs/dbt-versions/core">no longer supported</a>. There will be no more patches or security fixes. For improved performance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>.`,
+          EOLBannerText: `This version of dbt Core is <a href="/docs/dbt-versions/core">no longer supported</a>. There will be no more patches or security fixes. For improved performance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>. Some dbt Cloud customers might have an extended <a href="/docs/dbt-versions/core">critical support window</a>. `,
         });
       } else if (new Date() > threeMonths) {
         setEOLData({

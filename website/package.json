@@ -30,6 +30,7 @@
     "gray-matter": "^4.0.3",
     "hast-util-is-element": "^1.1.0",
     "js-yaml": "^4.1.0",
+    "markdown-to-jsx": "^7.5.0",
     "mobx": "^6.3.9",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "papaparse": "^5.3.2",

@@ -18,7 +18,7 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 
 ## Prerequisites
 - Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). If you have an Enterprise account, you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref). <Lifecycle status="enterprise"/>
-- Use a supported version of dbt (v1.6, v1.7, or go versionless with "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)") for both the upstream ("producer") project and the downstream ("consumer") project.
+- Use a supported version of dbt (v1.6 or newer or go versionless with "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)") for both the upstream ("producer") project and the downstream ("consumer") project.
 - Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). You need at least one successful job run after defining their `access`.
 - Define a deployment environment in the upstream ("producer") project [that is set to be your Production environment](/docs/deploy/deploy-environments#set-as-production-environment), and ensure it has at least one successful job run in that environment.
 - If the upstream project has a Staging environment, run a job in that Staging environment to ensure the downstream cross-project ref resolves.

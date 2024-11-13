@@ -124,42 +124,6 @@ For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/j
 
 <File name="metricflow_time_spine.sql">
 
-<VersionBlock lastVersion="1.6">
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with days as (
-
-    {{
-        dbt_utils.date_spine(
-            'day',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select * from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 ```sql
 {{
     config(
@@ -186,45 +150,12 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
-
-</VersionBlock>
 
 ### Daily (BigQuery)
 
 Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
-<VersionBlock lastVersion="1.6">
-
-<File name="metricflow_time_spine.sql">
-  
-```sql
-{{config(materialized='table')}}
-with days as (
-    {{dbt_utils.date_spine(
-        'day',
-        "DATE(2000,01,01)",
-        "DATE(2025,01,01)"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name="metricflow_time_spine.sql">
 
@@ -249,11 +180,10 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 </File>
 
@@ -306,42 +236,6 @@ To create this table, you need to create a model in your dbt project called `met
 
 ### Daily
 
-<VersionBlock lastVersion="1.6">
-<File name='metricflow_time_spine.sql'>
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with days as (
-
-    {{
-        dbt_utils.date_spine(
-            'day',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select * from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 <File name='metricflow_time_spine.sql'>
 
 
@@ -371,46 +265,14 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day  < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 ### Daily (BigQuery)
 
 Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
-
-<VersionBlock lastVersion="1.6">
-
-<File name="metricflow_time_spine.sql">
-
-```sql
-{{config(materialized='table')}}
-with days as (
-    {{dbt_utils.date_spine(
-        'day',
-        "DATE(2000,01,01)",
-        "DATE(2025,01,01)"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
-```
-</File>
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name="metricflow_time_spine.sql">
 
@@ -434,11 +296,10 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
-</VersionBlock>
 
 You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but finer grains are only supported in versions 1.9 and higher.
 

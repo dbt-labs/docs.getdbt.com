@@ -8,7 +8,7 @@ meta:
   github_repo: 'Teradata/dbt-teradata'
   pypi_package: 'dbt-teradata'
   min_core_version: 'v0.21.0'
-  cloud_support: Not Supported
+  cloud_support: Supported
   min_supported_version: 'n/a'
   slack_channel_name: '#db-teradata'
   slack_channel_link: 'https://getdbt.slack.com/archives/C027B6BHMT3'
@@ -18,6 +18,7 @@ meta:
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code in the repository listed in the next section.
 
+<Snippet path="warehouse-setups-cloud-callout" />
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -26,20 +27,17 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Python compatibility
 
-| Plugin version | Python 3.6  | Python 3.7  | Python 3.8  | Python 3.9  | Python 3.10 | Python 3.11  |
-| -------------- | ----------- | ----------- | ----------- | ----------- | ----------- | ------------ |
-| 0.19.0.x           | ✅          | ✅          | ✅          | ❌          | ❌          | ❌
-| 0.20.0.x           | ✅          | ✅          | ✅          | ✅          | ❌          | ❌
-| 0.21.1.x           | ✅          | ✅          | ✅          | ✅          | ❌          | ❌
-| 1.0.0.x           | ❌           | ✅          | ✅          | ✅          | ❌          | ❌
-|1.1.x.x            | ❌           | ✅          | ✅          | ✅          | ✅          | ❌
-|1.2.x.x            | ❌           | ✅          | ✅          | ✅          | ✅          | ❌
-|1.3.x.x            | ❌           | ✅          | ✅          | ✅          | ✅          | ❌
-|1.4.x.x            | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
-|1.5.x              | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
-|1.6.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
-|1.7.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
-|1.8.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
+| Plugin version | Python 3.9 | Python 3.10 | Python 3.11 | Python 3.12 |
+|----------------|------------|-------------|-------------|-------------|
+| 1.0.0.x        | ✅          | ❌           | ❌           | ❌           |
+| 1.1.x.x        | ✅          | ✅           | ❌           | ❌           |
+| 1.2.x.x        | ✅          | ✅           | ❌           | ❌           |
+| 1.3.x.x        | ✅          | ✅           | ❌           | ❌           |
+| 1.4.x.x        | ✅          | ✅           | ✅           | ❌           |
+| 1.5.x          | ✅          | ✅           | ✅           | ❌           |
+| 1.6.x          | ✅          | ✅           | ✅           | ❌           |
+| 1.7.x          | ✅          | ✅           | ✅           | ❌           |
+| 1.8.x          | ✅          | ✅           | ✅           | ✅           |
 
 ## dbt dependent packages version compatibility
 
@@ -49,6 +47,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
 | 1.7.x        | 1.7.x      | 1.1.1             | 1.1.1          |
 | 1.8.x        | 1.8.x      | 1.1.1             | 1.1.1          |
+| 1.8.x        | 1.8.x      | 1.2.0             | 1.2.0          |
+| 1.8.x        | 1.8.x      | 1.3.0             | 1.3.0          |
 
 
 ### Connecting to Teradata

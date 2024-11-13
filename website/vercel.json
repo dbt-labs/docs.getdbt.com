@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/API/rotate-token",
+      "destination": "/docs/dbt-cloud-apis/service-tokens#service-token-update",
+      "permanent": true
+    },
+    {
       "source": "/styles",
       "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
       "permanent": true

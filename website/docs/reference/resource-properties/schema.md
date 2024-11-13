@@ -10,7 +10,7 @@ datatype: schema_name
 ```yml
 version: 2
 
-sources:
+[sources](/reference/source-properties):
   - name: <source_name>
     database: <database_name>
     schema: <schema_name>
@@ -25,7 +25,7 @@ sources:
 ## Definition
 The schema name as stored in the database.
 
-This parameter is useful if you want to use a source name that differs from the schema name.
+This parameter is useful if you want to use a [source](/reference/source-properties) name that differs from the schema name.
 
 
 :::info BigQuery terminology
