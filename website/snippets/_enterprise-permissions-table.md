@@ -84,5 +84,5 @@ The project roles enable you to work within the projects in various capacities. 
 | Permissions (Groups & Licenses)  |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |             |          |                |     R       |             |         |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
 | Repositories             |   W   |         |       R        |     R     |     W     |           |             |             |          |                |     R       |     R      |         |
-| Runs                     |   W   |    R    |       R        |     R     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |
+| Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |        W       |     R       |     R      |         |
