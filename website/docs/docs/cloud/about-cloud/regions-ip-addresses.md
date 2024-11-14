@@ -45,7 +45,7 @@ dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructu
 
 * Dynamic IP addresses &mdash; dbt Cloud infrastructure uses Amazon Web Services (AWS). dbt Cloud offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. AWS manages the IP ranges and may change them according to their operational and security needs.
 
-* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you dbt Cloud services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
+* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use dbt Cloud services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
 
 * Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to dbt Cloud. By employing a proxy and a VPN, you can direct traffic through the VPN and then to dbt Cloud. It's crucial to set up the proxy if you need to integrate with additional services.
 

@@ -24,6 +24,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - Improved handling of queries when multiple tables are selected in a data source.
   - Fixed a bug when an IN filter contained a lot of values.
   - Better error messaging for queries that can't be parsed correctly.
+- **Enhancement**: The dbt Semantic Layer supports creating new credentials for users who don't have permissions to create service tokens.  In the **Credentials & service tokens** side panel, the **+Add Service Token** option is unavailable for those users who don't have permission. Instead, the side panel displays a message indicating that the user doesn't have permission to create a service token and should contact their administration. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for more details.
 
 ## October 2024
 <Expandable alt_header="Coalesce 2024 announcements">
