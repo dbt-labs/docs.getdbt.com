@@ -2116,7 +2116,7 @@ h2.anchor.clicked a.hash-link:before {
 .markdown table th,
 .markdown table td {
     padding: 8px;
-    border: 1.5px solid var(--table-border-color);
+    border: 1px solid var(--table-border-color);
     word-wrap: break-word;
     white-space: normal;
     text-align: left;
@@ -2133,4 +2133,14 @@ table th {
 /* Dark mode border */
 [data-theme="dark"] {
     --table-border-color: #ddd; /* Dark mode table border color */
+}
+table th {
+  color: #ffffff; /* White text on lighter background */
+  font-weight: bold;
+}
+
+/* Dark mode table header text */
+[data-theme='dark'] table th {
+  color: #000000; /* Black text on darker background */
+  font-weight: bold;
 }
