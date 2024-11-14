@@ -64,15 +64,11 @@ However, to fully utilize the value of account-level connections, you may have t
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" width="60%" title="Typical connection setup post rollout"/>
 
-:::warning Renaming connections changes the public SSH key if connecting via a SSH tunnel
-For Redshift, PostgreSQL, and AlloyDB databases, for which you might need to [connect via a SSH tunnel](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb#connecting-via-an-ssh-tunnel), you need to copy the auto-generated public SSH key to the Bastion server to authorize dbt Cloud to connect to your database via the Bastion server. The Bastion server could be an instance running on AWS EC2 in the case of Redshift. Renaming a connection in dbt Cloud will change the public SSH key for this connection. Meaning **your dbt Cloud jobs will all fail as long as you don't copy the newly generated public SSH key to the Bastion server.** If you don't have access to that Bastion server, don't rename the connections in dbt Cloud. Otherwise your jobs won't be able to run anymore.
-:::
-
 Please consider the following actions, as the steps you take will depend on the desired outcome.
 
 - The initial clean-up of your connection list
   - Delete unused connections with 0 environments. 
-  - Rename connections with a temporary, descriptive naming scheme to better understand where each is used
+  - Rename connections with a temporary, descriptive naming scheme to better understand where each is used [^1]
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-2.png" width="60%" title="Post initial clean-up"/>
 
@@ -105,3 +101,5 @@ dbt Cloud will always connect to your data platform from the IP addresses specif
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API. Using the dbt Cloud API requires allowing the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).
+
+[^1] Renaming Redshift, PostgreSQL, and AlloyDB connections that use an [SSH tunnel](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb#connecting-via-an-ssh-tunnel) changes the public SSH key. You must copy the new SSH key to the Bastion server, or your jobs will fail. We recommend against renaming connections in this scenario to prevent service disruptions. 
