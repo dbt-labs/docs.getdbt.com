@@ -278,9 +278,7 @@ tests:
 
 #### Specify custom configurations for generic data tests
 
-_Currently available in dbt Cloud only. Specifying custom configurations for data tests will become available in dbt Core later this year._
-
-Use any custom config key to specify custom configurations for data tests. For example, the following specifies the `snowflake_warehouse` custom config that dbt should use when executing the `accepted_values` data test:
+Beginning in dbt v1.9, you can use any custom config key to specify custom configurations for data tests. For example, the following specifies the `snowflake_warehouse` custom config that dbt should use when executing the `accepted_values` data test:
 
 ```yml
 
