@@ -198,8 +198,8 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
@@ -221,8 +221,8 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
