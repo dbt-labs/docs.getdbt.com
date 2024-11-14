@@ -17,7 +17,7 @@ Key:
 <SortableTable>
 
 {`
-| Account-level permission| Account Admin | Billing admin |  Manage <br></br> marketplace <br></br> apps | Project creator | Security admin | Viewer | 
+| Account-level permission| Account Admin | Billing admin |  Manage marketplace apps | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:------------:|:-------------------------:|:---------------:|:--------------:|:------:| 
 | Account settings        |     W         |      -        |            -              |        R        |       R        |   R    |
 | Audit logs              |     R         |      -        |            -              |        -        |       R        |   R    |
@@ -75,7 +75,7 @@ Key:
 <SortableTable>
 
 {`
-| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br>(Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
+| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |    -    |
 | Auth provider            |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |    -    |
@@ -98,7 +98,7 @@ Key:
 <SortableTable> 
 
 {`
-|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Environment credentials  |   W  |    W     |       W        |     W     |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |   -     |
 | Custom env. variables    |   W  |    W     |       W        |     W     |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |   -     |
