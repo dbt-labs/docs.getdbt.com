@@ -118,7 +118,7 @@ snapshots:
 
 ### Use multiple unique keys
 
-You can configure snapshots to use multiple unique keys for primary_key columns.
+You can configure snapshots to use multiple unique keys for `primary_key` columns.
 
 <File name='snapshots/transaction_items_snapshot.yml'>
 
