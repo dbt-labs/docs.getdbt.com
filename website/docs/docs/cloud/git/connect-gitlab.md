@@ -23,7 +23,7 @@ To connect your GitLab account:
 3. Scroll down to **Linked accounts**.
 4. Click **Link** to the right of your GitLab account.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect.png" title="Navigated to Linked Accounts under your profile"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect.png" title="The Personal profile settings with the Linked Accounts section of the user profile"/>
 
 When you click **Link**, you will be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization:
 
