@@ -49,7 +49,7 @@ The following tabs detail steps on how to modify your user license count:
 
 If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
-- To remove a user, click on your account name in the left side menu and select **Account settings** and select **Users**.
+- To remove a user, click on your account name in the left side menu, click **Account settings** and select **Users**.
   - Select the user you want to remove, click **Edit**, and then **Delete**. 
   - This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
