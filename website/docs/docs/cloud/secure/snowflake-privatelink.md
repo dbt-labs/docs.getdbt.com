@@ -99,6 +99,12 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 
 ### Enable the connection in Snowflake hosted on Azure
 
+:::note
+
+AWS private internal stages are not not currently supported.
+
+:::
+
 To complete the setup, follow the remaining steps from the Snowflake setup guides. The instructions vary based on the platform:
 
 - [Snowflake Azure Private Link](https://docs.snowflake.com/en/user-guide/privatelink-azure)
