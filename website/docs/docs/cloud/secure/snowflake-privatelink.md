@@ -97,7 +97,7 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Enable the connection in Snowflake (Azure)
+### Enable the connection in Snowflake hosted on Azure
 
 To complete the setup, follow the remaining steps from the Snowflake setup guides. The instructions vary based on the platform:
 
