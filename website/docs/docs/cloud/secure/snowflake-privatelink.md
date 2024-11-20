@@ -101,7 +101,7 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 
 :::note
 
-AWS private internal stages are not not currently supported.
+AWS private internal stages are not currently supported.
 
 :::
 
