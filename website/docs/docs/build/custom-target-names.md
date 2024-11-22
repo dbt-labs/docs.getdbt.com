@@ -24,6 +24,6 @@ To set a custom target name for a job in dbt Cloud, configure the **Target Name*
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/jobs-settings-target-name.png" title="Overriding the target name to 'prod'"/>
 
 ## dbt Cloud IDE
-When developing in dbt Cloud, you can set a custom target name in your development credentials. Go to your account (from the gear menu in the top right hand corner), select the project under **Credentials**, and update the target name.
+When developing in dbt Cloud, you can set a custom target name in your development credentials. Click your account name above the profile icon in the left panel, select **Account settings**, then go to **Credentials**. Choose the project to update the target name.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/development-credentials.png" title="Overriding the target name to 'dev'"/>

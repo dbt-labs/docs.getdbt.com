@@ -149,7 +149,7 @@ dbt Labs may institute use limits if reasonable use is exceeded. Additional feat
 
 ## Managing usage
 
-From anywhere in the dbt Cloud account, click the **gear icon** and click **Account settings**. The **Billing** option will be on the left side menu under the **Account Settings** heading. Here, you can view individual available plans and the features provided for each. 
+From dbt Cloud, click on your account name in the left side menu and select **Account settings**. The **Billing** option will be on the left side menu under the **Settings** heading. Here, you can view individual available plans and the features provided for each. 
 
 ### Usage notifications 
 

@@ -51,7 +51,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 <VersionBlock firstVersion="1.9">
 
-dbt Core v.9 and Versionless dbt Clouyd support for `table_format: iceberg`, in addition to all previous table configurations supported in 1.8.
+dbt Core v.9 and Versionless dbt Cloud support for `table_format: iceberg`, in addition to all previous table configurations supported in 1.8.
 
 | Option              | Description                 | Required?                                 | Model Support   | Example                  |
 |---------------------|-----------------------------|-------------------------------------------|-----------------|--------------------------|
@@ -1031,7 +1031,7 @@ The following table summarizes our configuration support:
     partition_by='id',
     schedule = {
         'cron': '0 0 * * * ? *',
-        'time_zone': 'Etc/UTC'
+        'time_zone_value': 'Etc/UTC'
     },
     tblproperties={
         'key': 'value'

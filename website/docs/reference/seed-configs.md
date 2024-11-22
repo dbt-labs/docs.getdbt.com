@@ -79,6 +79,8 @@ seeds:
 
 <File name='dbt_project.yml'>
 
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 seeds:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -95,7 +97,28 @@ seeds:
     [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
 
 ```
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+seeds:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
+    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
+
+```
+</VersionBlock>
 </File>
 
 </TabItem>
@@ -104,6 +127,8 @@ seeds:
 <TabItem value="property-yaml">
 
 <File name='seeds/properties.yml'>
+
+<VersionBlock firstVersion="1.9">
 
 ```yaml
 version: 2
@@ -122,13 +147,36 @@ seeds:
       [full_refresh](/reference/resource-configs/full_refresh): <boolean>
       [meta](/reference/resource-configs/meta): {<dictionary>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
+      [event_time](/reference/resource-configs/event-time): my_time_field
 
 ```
+</VersionBlock>
 
+<VersionBlock lastVersion="1.8">
+
+```yaml
+version: 2
+
+seeds:
+  - name: [<seed-name>]
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [database](/reference/resource-configs/database): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
+      [persist_docs](/reference/resource-configs/persist_docs): <dict>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
+```
+
+</VersionBlock>
 </File>
 
 </TabItem>
-
 </Tabs>
 
 ## Configuring seeds

@@ -18,11 +18,12 @@ The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
 ## For dbt Cloud Developer and Team tiers
 
 To connect your GitLab account:
-1. Navigate to Your Profile settings by clicking the gear icon in the top right.
-2. Select **Linked Accounts** in the left menu.
-3. Click **Link** to the right of your GitLab account.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**. 
+2. Select **Personal profile** under the **Your profile** section.
+3. Scroll down to **Linked accounts**.
+4. Click **Link** to the right of your GitLab account.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab redirect.gif" title="Link your GitLab" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect.png" title="The Personal profile settings with the Linked Accounts section of the user profile"/>
 
 When you click **Link**, you will be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization:
 
@@ -99,7 +100,13 @@ Once you've accepted, you should be redirected back to dbt Cloud, and your integ
 ### Personally authenticating with GitLab
 dbt Cloud developers on the Enterprise plan must each connect their GitLab profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE or dbt Cloud CLI.
 
-To connect a personal GitLab account, dbt Cloud developers should navigate to Your Profile settings by clicking the gear icon in the top right, then select **Linked Accounts** in the left menu.
+To connect a personal GitLab account:
+
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+
+2. Select **Personal profile** under the **Your profile** section.
+
+3. Scroll down to **Linked accounts**.
 
 If your GitLab account is not connected, you’ll see "No connected account". Select **Link** to begin the setup process. You’ll be redirected to GitLab, and asked to authorize dbt Cloud in a grant screen.
 

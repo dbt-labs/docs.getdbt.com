@@ -1,6 +1,6 @@
 ---
 resource_types: [snapshots]
-description: "Unique_key - Read this in-depth guide to learn about configurations in dbt."
+description: "Learn more about unique_key configurations in dbt."
 datatype: column_name_or_expression
 ---
 
@@ -14,7 +14,7 @@ snapshots:
   - name: orders_snapshot
     relation: source('my_source', 'my_table')
     [config](/reference/snapshot-configs):
-      unique_key: id
+      unique_key: order_id
 
 ```
 
@@ -52,7 +52,7 @@ snapshots:
 ## Description
 A column name or expression that is unique for the inputs of a snapshot. dbt uses this to match records between a result set and an existing snapshot, so that changes can be captured correctly.
 
-In Versionless and dbt v1.9 and later, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. The `unique_key` is specified within the `config` block of your snapshot YAML file.
+In Versionless and dbt v1.9 and later, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 
 :::caution 
 
@@ -114,28 +114,36 @@ snapshots:
 
 </File>
 
-### Use a combination of two columns as a unique key
-This configuration accepts a valid column expression. As such, you can concatenate two columns together as a unique key if required. It's a good idea to use a separator (e.g. `'-'`) to ensure uniqueness.
-
 <VersionBlock firstVersion="1.9">
+
+### Use multiple unique keys
+
+You can configure snapshots to use multiple unique keys for `primary_key` columns.
 
 <File name='snapshots/transaction_items_snapshot.yml'>
 
 ```yaml
 snapshots:
-  - name: transaction_items_snapshot
-    relation: source('erp', 'transactions')
+  - name: orders_snapshot
+    relation: source('jaffle_shop', 'orders')
     config:
       schema: snapshots
-      unique_key: "transaction_id || '-' || line_item_id"
+      unique_key: 
+        - order_id
+        - product_id
       strategy: timestamp
       updated_at: updated_at
-
+      
 ```
+
 </File>
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
+
+### Use a combination of two columns as a unique key
+
+This configuration accepts a valid column expression. As such, you can concatenate two columns together as a unique key if required. It's a good idea to use a separator (for example, `'-'`) to ensure uniqueness.
 
 <File name='snapshots/transaction_items_snapshot.sql'>
 
@@ -159,25 +167,9 @@ from {{ source('erp', 'transactions') }}
 ```
 
 </File>
-</VersionBlock>
 
 Though, it's probably a better idea to construct this column in your query and use that as the `unique_key`:
 
-<VersionBlock firstVersion="1.9">
-
-<File name='snapshots/transaction_items_snapshot.yml'>
-
-```yaml
-snapshots:
-  - name: transaction_items_snapshot
-    relation: {{ ref('transaction_items_ephemeral') }}
-    config:
-      schema: snapshots
-      unique_key: id
-      strategy: timestamp
-      updated_at: updated_at
-```
-</File>
 
 <File name='models/transaction_items_ephemeral.sql'>
 
@@ -195,9 +187,6 @@ from {{ source('erp', 'transactions') }}
 
 In this example, we create an ephemeral model `transaction_items_ephemeral` that creates an `id` column that can be used as the `unique_key` our snapshot configuration.
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
 <File name='snapshots/transaction_items_snapshot.sql'>
 
 ```jinja2

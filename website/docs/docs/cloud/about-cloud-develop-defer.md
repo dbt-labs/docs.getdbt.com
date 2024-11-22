@@ -13,11 +13,13 @@ Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to p
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-By default, dbt follows these rules:
+When using `--defer`, dbt Cloud will follow this order of execution for resolving the `{{ ref() }}` functions.
 
-- dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
-- If a development version of a deferred model exists, dbt preferentially uses the development database location when resolving the reference.
-- Passing the [`--favor-state`](/reference/node-selection/defer#favor-state) flag overrides the default behavior and _always_ resolve refs using production metadata, regardless of the presence of a development relation.
+1. If a development version of a deferred relation exists, dbt preferentially uses the development database location when resolving the reference.
+2. If a development version doesn't exist, dbt uses the staging locations of parent relations based on metadata from the staging environment.
+3. If both a development and staging version doesn't exist, dbt uses the production locations of parent relations based on metadata from the production environment.
+
+**Note:** Passing the `--favor-state` flag will always resolve refs using production metadata, regardless of the presence of a development relation, skipping step #1.
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 

@@ -18,7 +18,11 @@ To view a resource, its metadata, and what commands are needed, refer to [genera
 
 The following steps are for legacy dbt Docs only. For the current documentation experience, see [dbt Explorer](/docs/collaborate/explore-projects).
 
-While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection on the **Project details** page. To access this page, click the gear icon in the upper right, select **Account Settings**, select your project, and click **Edit** in the lower right. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
+While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection on the **Project details** page. To access this page:
+
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+2. Select your project, and click **Edit** in the lower right. 
+3. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 

@@ -104,9 +104,9 @@ With your repo recloned, you can add, edit, and sync files with your repo.
 
 To set environment variables in the dbt Cloud CLI for your dbt project:
 
-1. Select the gear icon on the upper right of the page.
-2. Then select **Profile Settings**, then **Credentials**.
-3. Click on your project and scroll to the **Environment Variables** section.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+2. Under the **Your profile** section, select **Credentials**.
+3. Click on your project and scroll to the **Environment variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
 
 ## Use the dbt Cloud CLI

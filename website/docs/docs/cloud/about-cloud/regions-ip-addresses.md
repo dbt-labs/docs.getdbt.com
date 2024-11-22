@@ -13,6 +13,7 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 | Region | Location | Access URL | IP addresses | Developer plan | Team plan | Enterprise plan |
 |--------|----------|------------|--------------|----------------|-----------|-----------------|
 | North America [^1] | AWS us-east-1 (N. Virginia) | **Multi-tenant:** cloud.getdbt.com <br /> **Cell based:** ACCOUNT_PREFIX.us1.dbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | ✅ | ✅ | ✅ |
+| North America [^1] | Azure <br /> East US 2 (Virginia) | **Cell based:** ACCOUNT_PREFIX.us2.dbt.com | 20.10.67.192/26 | ❌ | ❌ | ✅ |
 | EMEA [^1] | AWS eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | ❌ | ❌ | ✅ |
 | EMEA [^1] | Azure <br /> North Europe (Ireland)  |    **Cell based:** ACCOUNT_PREFIX.eu2.dbt.com  | 20.13.190.192/26                                     | ❌ | ❌ | ✅ |
 | APAC  [^1] | 	AWS ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />| ❌ | ❌ | ✅ |
@@ -45,7 +46,7 @@ dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructu
 
 * Dynamic IP addresses &mdash; dbt Cloud infrastructure uses Amazon Web Services (AWS). dbt Cloud offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. AWS manages the IP ranges and may change them according to their operational and security needs.
 
-* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you dbt Cloud services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
+* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use dbt Cloud services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
 
 * Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to dbt Cloud. By employing a proxy and a VPN, you can direct traffic through the VPN and then to dbt Cloud. It's crucial to set up the proxy if you need to integrate with additional services.
 

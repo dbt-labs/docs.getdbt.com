@@ -120,8 +120,9 @@ To complete setup, follow the steps below in the dbt Cloud application.
 
 ### Supplying credentials
 
-25. Click the gear icon at the top right and select **Profile settings**. To the left, select **Single Sign On** under **Account Settings**.
-26. Click the **Edit** button and supply the following SSO details:
+25. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+26. Click **Single sign-on** from the menu.
+27. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |

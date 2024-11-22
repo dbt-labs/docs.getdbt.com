@@ -18,7 +18,8 @@ You can access experimental features to preview beta features that haven’t yet
 
 To enable or disable experimental features:
 
-1. Navigate to **Profile settings** by clicking the gear icon in the top right.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**
+2. Go to **Personal profile** under the **Your profile** header.
 2. Find Experimental features at the bottom of Your Profile page.
 3. Click **Beta** to toggle the features on or off as shown in the following image.
    ![Experimental features](/img/docs/dbt-versions/experimental-feats.png)

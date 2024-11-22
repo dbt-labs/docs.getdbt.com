@@ -88,7 +88,7 @@ Please consider the following actions, as the steps you take will depend on the 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-4.png" width="60%"title="Connections de-duplicated"/>
 
 - Normalization
-  - Undertsand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
+  - Understand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
   - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
   - Test the new wiring by triggering jobs or starting IDE sessions
 

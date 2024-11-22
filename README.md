@@ -62,18 +62,3 @@ You can click a link available in a Vercel bot PR comment to see and review your
 
 Advisory:
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
-
-## Running the Cypress tests locally
-
-Method 1: Utilizing the Cypress GUI
-1. `cd` into the repo: `cd docs.getdbt.com`
-2. `cd` into the `website` subdirectory: `cd website`
-3. Install the required node packages: `npm install`
-4. Run `npx cypress open` to open the Cypress GUI, and choose `E2E Testing` as the Testing Type, before finally selecting your browser and clicking `Start E2E testing in {broswer}`
-5. Click on a test and watch it run!
-
-Method 2: Running the Cypress E2E tests headlessly
-1. `cd` into the repo: `cd docs.getdbt.com`
-2. `cd` into the `website` subdirectory: `cd website`
-3. Install the required node packages: `npm install`
-4. Run `npx cypress run`

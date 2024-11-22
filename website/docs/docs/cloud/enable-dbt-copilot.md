@@ -36,7 +36,7 @@ Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4
 
 ### Bringing your own OpenAI API key (BYOK)
 
-Once AI features have been enabled, you can provide your organization's OpenAI API key. dbt Cloud will then leverage your OpenAI account and terms to power dbt CoPilot. This will incur billing charges to your organization from OpenAI for requests made by dbt CoPilot.
+Once AI features have been enabled, you can provide your organization's OpenAI API key. dbt Cloud will then leverage your OpenAI account and terms to power dbt Copilot. This will incur billing charges to your organization from OpenAI for requests made by dbt Copilot.
 
 Note that Azure OpenAI is not currently supported, but will be in the future.
 

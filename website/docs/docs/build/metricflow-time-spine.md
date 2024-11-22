@@ -150,7 +150,7 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 ### Daily (BigQuery)
@@ -180,7 +180,7 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
@@ -265,7 +265,7 @@ final as (
 
 select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day  < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
@@ -296,7 +296,7 @@ select *
 from final
 -- filter the time spine to a specific range
 where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+and date_day < dateadd(day, 30, current_timestamp())
 ```
 
 </File>
