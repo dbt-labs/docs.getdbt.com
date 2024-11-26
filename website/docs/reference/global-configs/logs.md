@@ -66,19 +66,28 @@ See [structured logging](/reference/events-logging#structured-logging) for more 
 
 The `LOG_LEVEL` config sets the minimum severity of events captured in the console and file logs. This is a more flexible alternative to the `--debug` flag. The available options for the log levels are `debug`, `info`, `warn`, `error`, or `none`.
 
-Setting the `--log-level` will configure console and file logs. 
+- Setting the `--log-level` will configure console and file logs. 
 
+  ```text
+  dbt --log-level debug run
+  ```
 
-```text
-dbt --log-level debug run
-```
+- Setting the `LOG_LEVEL` to `none` will disable information from being sent to either the console or file logs. 
+  
+  ```text
+  dbt --log-level none
+  ```
 
-To set the file log level as a different value than the console, use the `--log-level-file` flag. 
+- To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
+  ```text
+  dbt --log-level-file error run
+  ```
 
-```text
-dbt --log-level-file error run
-```
+- To only disable writing to the logs file but keep console logs, set `LOG_LEVEL_FILE` config to none.
+  ```text
+  dbt --log-level-file none
+  ```
 
 ### Debug-level logging
 

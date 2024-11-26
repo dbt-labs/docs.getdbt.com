@@ -26,18 +26,18 @@ import SLCourses from '/snippets/\_sl-course.md';
 
 Here we describe the Semantic model components with examples:
 
-| Component                         | Description                                                                                                                                                                                                                                                                    | Type     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| [Name](#name)                     | Choose a unique name for the semantic model. Avoid using double underscores (\_\_) in the name as they're not supported.                                                                                                                                                       | Required |
-| [Description](#description)       | Includes important details in the description                                                                                                                                                                                                                                  | Optional |
-| [Model](#model)                   | Specifies the dbt model for the semantic model using the `ref` function                                                                                                                                                                                                        | Required |
-| [Defaults](#defaults)             | The defaults for the model, currently only `agg_time_dimension` is supported.                                                                                                                                                                                                  | Required |
-| [Entities](#entities)             | Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter                                                                                                                                              | Required |
-| [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required.                                                                                                                                           | Optional |
-| [Dimensions](#dimensions)         | Different ways to group or slice data for a metric, they can be `time` or `categorical`                                                                                                                                                                                        | Required |
-| [Measures](#measures)             | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics                                                                                                                                           | Optional |
-| Label                             | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures`                                                                                                                                                                                      | Optional |
-| `config`                          | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs. | Optional |
+| Component    | Description      | Required     |  Type     | 
+| ------------ | ---------------- | -------- | -------- | 
+| [Name](#name)     | Choose a unique name for the semantic model. Avoid using double underscores (\_\_) in the name as they're not supported.   | Required | String |
+| [Description](#description)    | 	Includes important details in the description.   | Optional | String |
+| [Model](#model)     | Specifies the dbt model for the semantic model using the `ref` function.    | Required | String |
+| [Defaults](#defaults)      | The defaults for the model, currently only `agg_time_dimension` is supported.    | Required |  Dict |
+| [Entities](#entities)         | Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter.  | Required | List | 
+| [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required.    | Optional | String | 
+| [Dimensions](#dimensions)     | Different ways to group or slice data for a metric, they can be `time` or `categorical`.  | Required | List |
+| [Measures](#measures)     | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics.  | Optional | List |
+| [Label](#label)     | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures`.   | Optional | String |
+| `config`   | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs. | Optional | Dict |
 
 ## Semantic models components
 

@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.9 (beta)"
+title: "Upgrading to v1.9"
 id: upgrading-to-v1.9
 description: New features and changes in dbt Core v1.9
 displayed_sidebar: "docs"
@@ -29,7 +29,8 @@ Features and functionality new in dbt v1.9.
 ### Microbatch `incremental_strategy`
 
 :::info 
-While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA. To use microbatch, set `DBT_EXPERIMENTAL_MICROBATCH` to `true` wherever you're running dbt Core.
+
+If you use a custom microbatch macro, set the [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-changes#custom-microbatch-strategy) behavior flag in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the microbatch strategy.
 :::
 
 Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`. Learn more about [incremental models](/docs/build/incremental-models-overview).
@@ -63,6 +64,7 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 - `target_schema` is now optional for snapshots: When omitted, snapshots will use the schema defined for the current environment.
 - Standard `schema` and `database` configs supported: Snapshots will now be consistent with other dbt resource types. You can specify where environment-aware snapshots should be stored.
 - Warning for incorrect `updated_at` data type: To ensure data integrity, you'll see a warning if the `updated_at` field specified in the snapshot configuration is not the proper data type or timestamp.
+- Set a custom current indicator for the value of `dbt_valid_to`: Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date). By default, this value is `NULL`. When configured, dbt will use the specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table. 
 
 Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fields).
 
@@ -82,6 +84,7 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped.
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time.
 - (Introduced, disabled by default) [[Redshift] `restrict_direct_pg_catalog_access`](/reference/global-configs/behavior-changes#redshift-restrict_direct_pg_catalog_access). If the flag is set the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead of using `pg_` tables.
+- (Introduced, disabled by default) [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-changes#custom-microbatch-strategy). Set to `True` if you use a custom microbatch macro to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the microbatch strategy.
 
 ## Adapter specific features and functionalities
 
@@ -91,7 +94,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- Iceberg Table Format support will be available on three out of the box materializations: table, incremental, dynamic tables. 
+- Iceberg Table Format support will be available on three out-of-the-box materializations: table, incremental, dynamic tables. 
 
 ### Bigquery
 
@@ -106,7 +109,7 @@ You can read more about each of these behavior changes in the following links:
 
 We also made some quality-of-life improvements in Core 1.9, enabling you to:
 
-- Maintain data quality now that dbt returns an an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
-- Document [singular data tests](/docs/build/data-tests#singular-data-tests).
+- Maintain data quality now that dbt returns an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
+- Document [data tests](/reference/resource-properties/description).
 - Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
 - Use `dbt test` with the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
