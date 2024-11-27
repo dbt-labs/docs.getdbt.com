@@ -76,6 +76,7 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
+| [cumulative_type_params](#cumulative-metrics-parameter)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
@@ -175,3 +176,52 @@ Set the flag is set to `True` if you have a custom microbatch macro set up in yo
 If you have a custom microbatch macro and the flag is left as `False`, dbt will issue a deprecation warning.
 
 Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `True` to prevent unintended interactions with existing custom incremental strategies. But this is no longer necessary, as setting `DBT_EXPERMINENTAL_MICROBATCH` will no longer have an effect on runtime functionality.
+
+### Cumulative metrics
+
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in Versionless dbt Cloud, dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+
+Use the following metric configured with the syntax before v1.9 as an example:
+
+```yaml
+
+    type: cumulative
+    type_params:
+      measure: order_count
+      window: 7 days
+
+```
+
+If you run `dbt parse` with that syntax on Core v1.9 or Versionless dbt Cloud, you will receive a warning like: 
+
+```bash
+
+15:36:22  [WARNING]: Cumulative fields `type_params.window` and
+`type_params.grain_to_date` has been moved and will soon be deprecated. Please
+nest those values under `type_params.cumulative_type_params.window` and
+`type_params.cumulative_type_params.grain_to_date`. See documentation on
+behavior changes:
+https://docs.getdbt.com/reference/global-configs/behavior-changes.
+
+```
+
+If you set `require_nested_cumulative_type_params` to `True` and re-run `dbt parse` you will now receive an error like:
+
+```bash
+
+21:39:18  Cumulative fields `type_params.window` and `type_params.grain_to_date` should be nested under `type_params.cumulative_type_params.window` and `type_params.cumulative_type_params.grain_to_date`. Invalid metrics: orders_last_7_days. See documentation on behavior changes: https://docs.getdbt.com/reference/global-configs/behavior-changes.
+
+```
+
+Once the metric is updated, it will work as expected:
+
+```yaml
+
+    type: cumulative
+    type_params:
+      measure:
+        name: order_count
+      cumulative_type_params:
+        window: 7 days
+
+```

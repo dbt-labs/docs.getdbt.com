@@ -33,7 +33,9 @@ Create configuration YAML files in your project for dbt to send notifications ab
 
 ## Configure groups
 
-Add your group configuration in either the `dbt_project.yml` or `groups.yml` file. For example: 
+Define your groups in any .yml file in your [models directory](/reference/project-configs/model-paths). For example: 
+
+<File name='models/groups.yml'>
 
 ```yml
 version: 2
@@ -42,22 +44,26 @@ groups:
   - name: finance
     description: "Models related to the finance department"
     owner:
-      # 'name' or 'email' is required
+      # Email is required to receive model-level notifications, additional properties are also allowed.
       name: "Finance Team"
       email: finance@dbtlabs.com
-      slack: finance-data
+      favorite_food: donuts
 
   - name: marketing
     description: "Models related to the marketing department"
     owner:
       name: "Marketing Team"
       email: marketing@dbtlabs.com
-      slack: marketing-data
+      favorite_food: jaffles
 ```
 
-## Set up models
+</File>
 
-Set up your model configuration in either the `dbt_project.yml` or `groups.yml` file; doing this automatically sets up notifications for tests, too. For example: 
+## Attach groups to models
+
+Attach groups to models as you would any other config, in either the `dbt_project.yml` or `whatever.yml` files. For example: 
+
+<File name='models/marts.yml'>
 
 ```yml
 version: 2
@@ -74,6 +80,34 @@ models:
       group: marketing
 
 ```
+</File>
+
+By assigning groups in the `dbt_project.yml` file, you can capture all models in a subdirectory at once. 
+
+In this example, model notifications related to staging models go to the data engineering group, `marts/sales` models to the finance team, and `marts/campaigns` models to the marketing team.
+
+<File name='dbt_project.yml'>
+
+```yml
+config-version: 2
+name: "jaffle_shop"
+
+[...]
+
+models:
+  jaffle_shop:
+    staging:
+      +group: data_engineering
+    marts:
+      sales:
+        +group: finance
+      campaigns:
+        +group: marketing
+    
+```
+
+</File>
+Attaching a group to a model also encompasses its tests, so you will also receive notifications for a model's test failures. 
 
 ## Enable access to model notifications 
 

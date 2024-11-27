@@ -30,6 +30,25 @@ By default, dbt will search in all resource paths for docs blocks (i.e. the comb
 
 </VersionBlock>
 
+import RelativePath from '/snippets/_relative-path.md';
+
+<RelativePath 
+path="docs-paths"
+absolute="/Users/username/project/docs"
+/>
+
+- ✅ **Do**
+  - Use relative path:
+    ```yml
+    docs-paths: ["docs"]
+    ```
+
+- ❌ **Don't**
+  - Avoid absolute paths:
+    ```yml
+    docs-paths: ["/Users/username/project/docs"]
+    ```
+
 ## Example
 
 Use a subdirectory named `docs` for docs blocks:

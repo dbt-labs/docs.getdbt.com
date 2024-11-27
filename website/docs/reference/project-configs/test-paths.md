@@ -21,6 +21,25 @@ Without specifying this config, dbt will search for tests in the `tests` directo
 - Generic test definitions in the `tests/generic` subdirectory
 - Singular tests (all other files)
 
+import RelativePath from '/snippets/_relative-path.md';
+
+<RelativePath 
+path="test-paths"
+absolute="/Users/username/project/test"
+/>
+
+- ✅ **Do**
+  - Use relative path:
+    ```yml
+    test-paths: ["test"]
+    ```
+
+- ❌ **Don't:**
+  - Avoid absolute paths:
+    ```yml
+    test-paths: ["/Users/username/project/test"]
+    ```
+
 ## Examples
 ### Use a subdirectory named `custom_tests` instead of `tests` for data tests
 
