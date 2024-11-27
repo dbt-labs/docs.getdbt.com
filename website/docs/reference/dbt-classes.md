@@ -98,9 +98,14 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 ### Properties
 
-- **name**: Returns the name of the column
+- **char_size**: Returns the maximum size for character varying columns
+- **column**: Returns the name of the column
+- **data_type**: Returns the data type of the column (with size/precision/scale included)
+- **dtype**: Returns the data type of the column (without any size/precision/scale included)
+- **name**: Returns the name of the column (identical to `column`, provided as an alias).
+- **numeric_precision**: Returns the maximum precision for fixed decimal columns
+- **numeric_scale**: Returns the maximum scale for fixed decimal columns
 - **quoted**: Returns the name of the column wrapped in quotes
-- **data_type**: Returns the data type of the column
 
 ### Instance methods
 
