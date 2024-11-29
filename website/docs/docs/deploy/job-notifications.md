@@ -52,6 +52,8 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the dbt Cloud Slack notification settings. dbt Cloud integrates with Slack via OAuth to ensure secure authentication.
 
 :::note 
+Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
+
 If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@getdbt.com) for assistance. 
 :::
 

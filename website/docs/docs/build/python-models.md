@@ -598,6 +598,34 @@ Python models have capabilities that SQL models do not. They also have some draw
 - **These capabilities are very new.** As data warehouses develop new features, we expect them to offer cheaper, faster, and more intuitive mechanisms for deploying Python transformations. **We reserve the right to change the underlying implementation for executing Python models in future releases.** Our commitment to you is around the code in your model `.py` files, following the documented capabilities and guidance we're providing here.
 - **Lack of `print()` support.** The data platform runs and compiles your Python model without dbt's oversight. This means it doesn't display the output of commands such as Python's built-in [`print()`](https://docs.python.org/3/library/functions.html#print) function in dbt's logs.
 
+- <Expandable alt_header="Alternatives to using print() in Python models">
+
+    The following explains other methods you can use for debugging, such as writing messages to a dataframe column:
+    
+    - Using platform logs: Use your data platform's logs to debug your Python models.
+    - Return logs as a dataframe: Create a dataframe containing your logs and build it into the warehouse.
+    - Develop locally with DuckDB: Test and debug your models locally using DuckDB before deploying them.
+    
+    Here's an example of debugging in a Python model:
+
+    ```python
+    def model(dbt, session):
+        dbt.config(
+            materialized = "table"
+        )
+    
+        df = dbt.ref("my_source_table").df()
+    
+        # One option for debugging: write messages to temporary table column
+        # Pros: visibility
+        # Cons: won't work if table isn't building for some reason
+        msg = "something"
+        df["debugging"] = f"My debug message here: {msg}"
+    
+        return df
+    ```
+    </Expandable>
+
 As a general rule, if there's a transformation you could write equally well in SQL or Python, we believe that well-written SQL is preferable: it's more accessible to a greater number of colleagues, and it's easier to write code that's performant at scale. If there's a transformation you _can't_ write in SQL, or where ten lines of elegant and well-annotated Python could save you 1000 lines of hard-to-read Jinja-SQL, Python is the way to go.
 
 ## Specific data platforms {#specific-data-platforms}
@@ -645,18 +673,7 @@ def model(dbt, session: snowpark.Session):
 
 </VersionBlock>
 
-**About "sprocs":** dbt submits Python models to run as _stored procedures_, which some people call _sprocs_ for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then _call_ it to execute. Snowpark has an Open Preview feature for _temporary_ or _anonymous_ stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and leave a cleaner query history. You can switch this feature on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
-
-<File name='dbt_project.yml'>
-
-```yml
-# I asked Snowflake Support to enable this Private Preview feature,
-# and now my dbt-py models run even faster!
-models:
-  use_anonymous_sproc: True
-```
-
-</File>
+**About "sprocs":** dbt submits Python models to run as _stored procedures_, which some people call _sprocs_ for short. By default, dbt will use Snowpark's _temporary_ or _anonymous_ stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and keep query history cleaner than named sprocs containing your model's compiled Python code. To disable this feature, set `use_anonymous_sproc: False` in your model configuration. 
 
 **Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
 

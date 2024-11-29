@@ -17,8 +17,8 @@ Environment-level permissions give dbt Cloud admins more flexibility to protect 
 
 - Environment-level permissions do not allow you to create custom roles and permissions for each resource type in dbt Cloud.
 - You can only select environment types, and can’t specify a particular environment within a project.
-- You can't select specific resources within environments. dbt Cloud jobs, runs, and environment variables are all environment resources.
-    - For example, you can't specify that a user only has access to jobs but not environment variables. Access to a given environment gives the user access to everything within that environment.
+- You can't select specific resources within environments. dbt Cloud jobs and runs are environment resources.
+    - For example, you can't specify that a user only has access to jobs but not runs. Access to a given environment gives the user access to everything within that environment.
 
 ## Environments and roles
 

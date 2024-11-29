@@ -20,7 +20,6 @@ exports.versions = [
   },
   {
     version: "1.9",
-    isPrerelease: true,
   },
   {
     version: "1.8",

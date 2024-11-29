@@ -926,6 +926,7 @@ const sidebarSettings = {
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
+            "reference/resource-configs/event-time",
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
             "reference/resource-configs/grants",
@@ -978,6 +979,7 @@ const sidebarSettings = {
             "reference/resource-configs/updated_at",
             "reference/resource-configs/invalidate_hard_deletes",
             "reference/resource-configs/snapshot_meta_column_names",
+            "reference/resource-configs/dbt_valid_to_current",
           ],
         },
         {

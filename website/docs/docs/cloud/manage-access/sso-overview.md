@@ -12,7 +12,7 @@ dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You 
 
 - You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
 
-## Auth0 Multi-tenant URIs
+## Auth0 URIs
 
 <Snippet path="auth0-uri" />
 

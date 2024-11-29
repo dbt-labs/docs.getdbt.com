@@ -16,7 +16,7 @@ Currently supported features include:
 This document details the steps to integrate dbt Cloud with an identity
 provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control).
 
-## Auth0 Multi-tenant URIs
+## Auth0 URIs
 
 <Snippet path="auth0-uri" />
 

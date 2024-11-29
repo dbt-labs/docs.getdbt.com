@@ -104,6 +104,8 @@ models:
 
 <File name='dbt_project.yml'>
 
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -121,7 +123,29 @@ models:
     [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
 
 ```
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
+    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
+
+```
+</VersionBlock>
 </File>
 
 </TabItem>
@@ -130,6 +154,8 @@ models:
 <TabItem value="property-yaml">
 
 <File name='models/properties.yml'>
+
+<VersionBlock lastVersion="1.8">
 
 ```yaml
 version: 2
@@ -150,16 +176,41 @@ models:
       [grants](/reference/resource-configs/grants): {<dictionary>}
       [contract](/reference/resource-configs/contract): {<dictionary>}
 ```
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [database](/reference/resource-configs/database): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
+      [persist_docs](/reference/resource-configs/persist_docs): <dict>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
+      [contract](/reference/resource-configs/contract): {<dictionary>}
+      [event_time](/reference/resource-configs/event-time): my_time_field
+```
+
+</VersionBlock>
 </File>
 
 </TabItem>
 
-
-
 <TabItem value="config">
 
 <File name='models/<model_name>.sql'>
+
+<VersionBlock lastVersion="1.8">
 
 ```jinja
 
@@ -178,6 +229,29 @@ models:
 ) }}
 
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+```jinja
+
+{{ config(
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
+    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [database](/reference/resource-configs/database)="<string>",
+    [schema](/reference/resource-properties/schema)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
+    [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
+    [meta](/reference/resource-configs/meta)={<dict>},
+    [grants](/reference/resource-configs/grants)={<dict>},
+    [contract](/reference/resource-configs/contract)={<dictionary>}
+    [event_time](/reference/resource-configs/event-time): my_time_field
+) }}
+
+```
+</VersionBlock>
 
 </File>
 

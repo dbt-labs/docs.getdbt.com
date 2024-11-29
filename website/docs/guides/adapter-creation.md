@@ -1345,8 +1345,6 @@ Breaking this down:
    <Lightbox src="/img/adapter-guide/3-additional-resources.png" title="more resources"/>
 - Implementation instructions:
     <Lightbox src="/img/adapter-guide/4-installation.png" title="more installation"/>
-- Future plans
-    <Lightbox src="/img/adapter-guide/5-coming-up.png" title="coming soon"/>
 - Contributor recognition (if applicable)
     <Lightbox src="/img/adapter-guide/6-thank-contribs.png" title="thank yous"/>
 

@@ -19,6 +19,12 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## November 2024
+- **Fix**: Job environment variable overrides in credentials are now respected for Exports. Previously, they were ignored.
+- **Behavior change**: If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+- **Enhancement**: For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled, you can optimize performance when running comparisons by using custom dbt syntax to customize deferral usage, exclude specific large models (or groups of models with tags), and more. Refer to [Compare changes custom commands](/docs/deploy/job-commands#compare-changes-custom-commands) for examples of how to customize the comparison command.
+- **New**: SQL linting in CI jobs is now generally available in dbt Cloud. You can enable SQL linting in your CI jobs, using [SQLFluff](https://sqlfluff.com/), to automatically lint all SQL files in your project as a run step before your CI job builds. SQLFluff linting is available on [dbt Cloud Versionless](/docs/dbt-versions/versionless-cloud) and to dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting) for more information.
+- **New**: Use the [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) config to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date). By default, this value is `NULL`. When configured, dbt will use the specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table. This feature is available in dbt Cloud Versionless and dbt Core v1.9 and later.
+- **New**: Use the [`event_time`](/reference/resource-configs/event-time) configuration to specify "at what time did the row occur." This configuration is required for [Incremental microbatch](/docs/build/incremental-microbatch) and can be added to ensure you're comparing overlapping times in [Advanced CI's compare changes](/docs/deploy/advanced-ci). Available in dbt Cloud Versionless and dbt Core v1.9 and higher.
 - **Fix**: This update improves [dbt Semantic Layer Tableau integration](/docs/cloud-integrations/semantic-layer/tableau) making query parsing more reliable. Some key fixes include:
   - Error messages for unsupported joins between saved queries and ALL tables.
   - Improved handling of queries when multiple tables are selected in a data source.
@@ -27,6 +33,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement**: The dbt Semantic Layer supports creating new credentials for users who don't have permissions to create service tokens.  In the **Credentials & service tokens** side panel, the **+Add Service Token** option is unavailable for those users who don't have permission. Instead, the side panel displays a message indicating that the user doesn't have permission to create a service token and should contact their administration. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for more details.
 
 ## October 2024
+
 <Expandable alt_header="Coalesce 2024 announcements">
 
   Documentation for new features and functionality announced at Coalesce 2024:
@@ -50,7 +57,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) is now generally available 
 
 </Expandable>
- 
+
 - **Behavior change:** [Multi-factor authentication](/docs/cloud/manage-access/mfa) is now enforced on all users who log in with username and password credentials. 
 - **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
 - **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.

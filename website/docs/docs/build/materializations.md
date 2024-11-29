@@ -111,7 +111,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 
 ### Materialized View
 
-The `materialized view` materialization allows the creation and maintenance of materialized views in the target database.
+The `materialized_view` materialization allows the creation and maintenance of materialized views in the target database.
 Materialized views are a combination of a view and a table, and serve use cases similar to incremental models.
 
 * **Pros:**

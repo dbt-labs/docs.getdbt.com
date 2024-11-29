@@ -168,6 +168,24 @@ Configurations can be applied to snapshots using the [YAML syntax](/docs/build/s
 
 <File name='dbt_project.yml'>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 snapshots:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -179,6 +197,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
     [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
 ```
+</VersionBlock>
 </File>
 
 </TabItem>
@@ -198,8 +217,8 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
@@ -221,10 +240,11 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
+      [event_time](/reference/resource-configs/event-time): my_time_field
 ```
 
 </File>
@@ -292,7 +312,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     <File name='dbt_project.yml'>
 
     ```yml
-
     snapshots:
       +unique_key: id
     ```
@@ -307,7 +326,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     <File name='dbt_project.yml'>
 
     ```yml
-
     snapshots:
       jaffle_shop:
         +unique_key: id

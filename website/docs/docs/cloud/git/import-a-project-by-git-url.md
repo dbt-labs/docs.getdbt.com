@@ -14,8 +14,8 @@ You must use the `git@...` or `ssh:..`. version of your git URL, not the `https:
 
 After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. To find the deploy key in dbt Cloud:
 
-1. Click the gear icon in the upper right-hand corner.
-2. Click **Account Settings** --> **Projects** and select a project.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+2. Go to **Projects** and select a project.
 3. Click the **Repository** link to the repository details page.
 4. Copy the key under the **Deploy Key** section. 
 

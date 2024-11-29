@@ -179,8 +179,8 @@ final as (
 select *
 from final
 -- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_day < dateadd(day, 30, current_timestamp())
+where date_day > date_add(DATE(current_timestamp()), INTERVAL -4 YEAR)
+and date_day < date_add(DATE(current_timestamp()), INTERVAL 30 DAY)
 ```
 
 </File>

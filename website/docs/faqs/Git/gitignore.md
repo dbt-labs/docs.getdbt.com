@@ -47,9 +47,9 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 
 11. Return to the dbt Cloud IDE and use the **Change Branch** button, to switch to the main branch of the project.
 12. Once the branch has changed, click the **Pull from remote** button to pull in all the changes. 
-13. Verify the changes by making sure the files/folders in the `.gitignore `file are in italics. 
+13. Verify the changes by making sure the files/folders in the `.gitignore` file are in italics. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
 ### Fix in the git provider
 
