@@ -9,7 +9,7 @@ sidebar_label: "Connect Snowflake"
 
 A crucial part of working with dbt atop Snowflake is ensuring that users in development environments and/or service accounts in deployment to production environments have the correct permissions to take actions on Snowflake.
 
-The roles and associated permissions in Snowflake can be customized to fit your company's requirements and fine-tune access to database objects in your account. See [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
+You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account. See [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
 
 :::
 
