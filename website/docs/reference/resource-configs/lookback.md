@@ -19,7 +19,7 @@ Set the `lookback` to an integer greater than or equal to zero. The default valu
 
 <TabItem value="model" label="Models">
 
-Here's an example in the `dbt_project.yml` file:
+Example in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
