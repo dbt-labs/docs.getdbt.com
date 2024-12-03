@@ -19,7 +19,7 @@ The`batch_size` config determines how large batches are when running a microbatc
 
 <TabItem value="model" label="Models">
 
-Here's an example in the `dbt_project.yml` file:
+Example of the `batch_size` config in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
