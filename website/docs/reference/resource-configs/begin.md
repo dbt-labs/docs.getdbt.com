@@ -56,6 +56,5 @@ Example in sql model config block:
 
 </File> 
 
-This setup sets `2024-01-01 00:00:00` as the `begin` for the `user_sessions` model.
 </TabItem> 
 </Tabs>
