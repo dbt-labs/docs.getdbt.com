@@ -15,6 +15,8 @@ The`batch_size` config determines how large batches are when running a microbatc
 
 ## Examples
 
+The following examples set `day` as the `batch_size` for the `user_sessions` model.
+
 <Tabs> 
 
 <TabItem value="model" label="Models">
