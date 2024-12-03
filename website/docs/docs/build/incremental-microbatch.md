@@ -61,7 +61,7 @@ models:
 ```
 </File>
 
-We run the `sessions` model on October 1, 2024, and then again on October 2. It produces the following queries:
+We run the `sessions` model for October 1, 2024, and then again for October 2. It produces the following queries:
 
 <Tabs>
 

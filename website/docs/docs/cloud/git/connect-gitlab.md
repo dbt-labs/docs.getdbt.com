@@ -61,8 +61,8 @@ In GitLab, when creating your Group Application, input the following:
 | ------ | ----- |
 | **Name** | dbt Cloud |
 | **Redirect URI** | `https://YOUR_ACCESS_URL/complete/gitlab` |
-| **Confidential** | ✔️ |
-| **Scopes** | ✔️ api |
+| **Confidential** | ✅ |
+| **Scopes** | ✅ api |
 
 Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 

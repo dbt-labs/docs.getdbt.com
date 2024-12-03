@@ -73,13 +73,13 @@ Note that the value of `defined_in` and the `alias` configuration of a model are
 
 When you use the `state:modified` selection method in Slim CI, dbt will detect changes to versioned model contracts, and raise an error if any of those changes could be breaking for downstream consumers.
 
-Breaking changes include:
-- Removing an existing column
-- Changing the `data_type` of an existing column
-- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
-- Changing unversioned, contracted models. 
-  - dbt also warns if a model has or had a contract but isn't versioned
-  
+import BreakingChanges from '/snippets/_versions-contracts.md';
+
+<BreakingChanges 
+value="Changing unversioned, contracted models."
+value2="dbt also warns if a model has or had a contract but isn't versioned."
+/>
+
 <Tabs>
 
 <TabItem value="unversioned" label="Example message for unversioned models">

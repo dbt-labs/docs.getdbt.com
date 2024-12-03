@@ -52,33 +52,33 @@ The following tables outline the access that users have if they are assigned a D
 
 | Account-level permission| Owner | Member | Read-only license|  IT license  |
 |:------------------------|:-----:|:------:|:----------------:|:------------:|
-| Account settings        |   W   |   W    |                  |       W      |
-| Billing                 |   W   |        |                  |       W      |
-| Invitations             |   W   |   W    |                  |       W      |
-| Licenses                |   W   |   R    |                  |       W      |
-| Users                   |   W   |   R    |                  |       W      |
-| Project (create)        |   W   |   W    |                  |       W      |
-| Connections             |   W   |   W    |                  |       W      |
-| Service tokens          |   W   |        |                  |       W      |
-| Webhooks                |   W   |   W    |                  |              |
+| Account settings        |   W   |   W    |         -        |       W      |
+| Billing                 |   W   |   -    |         -        |       W      |
+| Invitations             |   W   |   W    |         -        |       W      |
+| Licenses                |   W   |   R    |         -        |       W      |
+| Users                   |   W   |   R    |         -        |       W      |
+| Project (create)        |   W   |   W    |         -        |       W      |
+| Connections             |   W   |   W    |         -        |       W      |
+| Service tokens          |   W   |   -    |         -        |       W      |
+| Webhooks                |   W   |   W    |         -        |       -      |
  
 #### Project permissions for account roles
 
 |Project-level permission | Owner | Member  | Read-only | IT license |
 |:------------------------|:-----:|:-------:|:---------:|:----------:|
-| Adapters                |   W   |    W    |    R      |             |
-| Connections             |   W   |    W    |    R      |             |
-| Credentials             |   W   |    W    |    R      |             |
-| Custom env. variables   |   W   |    W    |    R      |             |
-| Develop (IDE or dbt Cloud CLI)| W |  W    |           |             |
-| Environments            |   W   |    W    |    R      |             |
-| Jobs                    |   W   |    W    |    R      |             |
-| dbt Explorer            |   W   |    W   |    R      |             |
-| Permissions             |   W   |    R    |           |             |
-| Profile                 |   W   |    W    |    R      |             |
-| Projects                |   W   |    W    |    R      |             |
-| Repositories            |   W   |    W    |    R      |             |
-| Runs                    |   W   |    W    |    R      |             |
-| Semantic Layer Config   |   W   |    W    |    R      |             |
+| Adapters                |   W   |    W    |    R      |      -      |
+| Connections             |   W   |    W    |    R      |      -      |
+| Credentials             |   W   |    W    |    R      |      -      |
+| Custom env. variables   |   W   |    W    |    R      |      -      |
+| Develop (IDE or dbt Cloud CLI)| W |  W    |    -      |      -      |
+| Environments            |   W   |    W    |    R      |      -      |
+| Jobs                    |   W   |    W    |    R      |      -      |
+| dbt Explorer            |   W   |    W    |    R      |      -      |
+| Permissions             |   W   |    R    |    -      |      -      |
+| Profile                 |   W   |    W    |    R      |      -      |
+| Projects                |   W   |    W    |    R      |      -      |
+| Repositories            |   W   |    W    |    R      |      -      |
+| Runs                    |   W   |    W    |    R      |      -      |
+| Semantic Layer Config   |   W   |    W    |    R      |      -      |
 
 

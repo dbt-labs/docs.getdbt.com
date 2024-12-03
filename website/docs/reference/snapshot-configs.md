@@ -347,6 +347,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
         {{
             config(
               unique_key='id',
+              target_schema='snapshots',
               strategy='timestamp',
               updated_at='updated_at'
             )

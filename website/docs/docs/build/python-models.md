@@ -641,7 +641,8 @@ In their initial launch, Python models are supported on three of the most popula
 **Installing packages:** Snowpark supports several popular packages via Anaconda. Refer to the [complete list](https://repo.anaconda.com/pkgs/snowflake/) for more details. Packages are installed when your model is run. Different models can have different package dependencies. If you use third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
 
 **Python version:** To specify a different python version, use the following configuration:
-```
+
+```python
 def model(dbt, session):
     dbt.config(
         materialized = "table",
@@ -653,7 +654,7 @@ def model(dbt, session):
 
 **External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
 
-```
+```python
 import pandas
 import snowflake.snowpark as snowpark
 
