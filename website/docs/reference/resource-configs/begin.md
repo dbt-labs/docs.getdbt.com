@@ -11,7 +11,7 @@ Available in dbt Cloud Versionless and dbt Core v1.9 and higher.
 
 ## Definition
 
-Set the `begin` to the timestamp value which for which your microbatch model data should begin -- "at what point does data become relevant for the microbatch model" --.  You can configure `begin` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block. The value for `begin` must be a string representing an ISO formatted date OR date and time.
+Set the `begin` config to the timestamp value at which your microbatch model data should begin &mdash; at the point the data becomes relevant for the microbatch model.  You can configure `begin` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block. The value for `begin` must be a string representing an ISO formatted date OR date and time.
 
 ## Examples
 
