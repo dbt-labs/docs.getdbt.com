@@ -3,7 +3,7 @@ title: "batch_size"
 id: "batch-size"
 sidebar_label: "batch_size"
 resource_types: [models]
-description: "dbt uses `batch_size` to detrmine how large batches are when running a microbatch incremental model."
+description: "dbt uses `batch_size` to determine how large batches are when running a microbatch incremental model."
 datatype: hour | day | month | year
 ---
 
