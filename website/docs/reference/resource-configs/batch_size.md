@@ -56,6 +56,5 @@ Example in sql model config block:
 
 </File> 
 
-This setup sets `day` as the `batch_size` for the `user_sessions` model.
 </TabItem> 
 </Tabs>
