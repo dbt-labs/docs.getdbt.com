@@ -56,6 +56,5 @@ Example in sql model config block:
 
 </File> 
 
-This setup sets `2` as the `lookback` for the `user_sessions` model.
 </TabItem> 
 </Tabs>
