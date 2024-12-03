@@ -19,7 +19,7 @@ Set the `begin` to the timestamp value which for which your microbatch model dat
 
 <TabItem value="model" label="Models">
 
-Here's an example in the `dbt_project.yml` file:
+Example in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
