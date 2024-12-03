@@ -11,7 +11,7 @@ Available in dbt Cloud Versionless and dbt Core v1.9 and higher.
 
 ## Definition
 
-Set the `batch_size` either `hour`, `day`, `month`, or `year`. You can configure `batch_size` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block.
+The`batch_size` config determines how large batches are when running a microbatch. Accepted values are `hour`, `day`, `month`, or `year`. You can configure `batch_size` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block.
 
 ## Examples
 
