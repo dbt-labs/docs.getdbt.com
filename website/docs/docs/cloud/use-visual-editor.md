@@ -22,7 +22,7 @@ To join the private beta, [register your interest](https://docs.google.com/forms
 - You have a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account
 - You have a [developer license](/docs/cloud/manage-access/seats-and-users) with developer credentials set up
 - You have an existing dbt Cloud project already created
-- Your Development environment is on a supported [Release Track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
+- Your Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
 - Have AI-powered features toggle enabled
 
 ## Access visual editor

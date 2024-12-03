@@ -310,9 +310,7 @@ You only need to include the `date_day` column in the table. MetricFlow can hand
 
 <VersionBlock lastVersion="1.8">
 
-The ability to configure custom calendars, such as a fiscal calendar, is available in [dbt Cloud Latest](/docs/dbt-versions/cloud-release-tracks) or dbt Core [v1.9 and higher](/docs/dbt-versions/core). 
-
-To access this feature, [upgrade to dbt Cloud Latest](/docs/dbt-versions/cloud-release-tracks) or your dbt Core version to v1.9 or higher.
+The ability to configure custom calendars, such as a fiscal calendar, is available now in [the "Latest" release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks), and it will be available in [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
 
 </VersionBlock>
 

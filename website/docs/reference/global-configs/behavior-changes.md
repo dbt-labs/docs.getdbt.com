@@ -64,7 +64,7 @@ flags:
 
 </File>
 
-This table outlines which month of dbt Cloud "Latest" or version of dbt Core contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the "Latest" release track in dbt Cloud and which version of dbt Core contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
 | Flag                                                            | dbt Cloud "Latest": Intro | dbt Cloud "Latest": Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
