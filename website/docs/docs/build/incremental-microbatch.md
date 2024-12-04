@@ -294,7 +294,6 @@ To enable parallel execution when possible, users can check the model's `concurr
 ### Sequential execution Conditions
 
 
-1. The database adapter does not support concurrent batches.
 2. The relation in the data warehouse for the model doesn't exist.
 
 ### Supported adapters
