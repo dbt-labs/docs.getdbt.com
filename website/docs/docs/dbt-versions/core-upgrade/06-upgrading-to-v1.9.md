@@ -51,9 +51,11 @@ Starting in Core 1.9, you can use the new [microbatch strategy](/docs/build/incr
 
 Currently microbatch is supported on these adapters with more to come:
  * postgres
+ * redshift
  * snowflake
  * bigquery
  * spark
+ * databricks
   
 ### Snapshots improvements
 
@@ -67,6 +69,8 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 - Set a custom current indicator for the value of `dbt_valid_to`: Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date). By default, this value is `NULL`. When configured, dbt will use the specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table. 
 
 Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fields).
+
+To learn how to safely migrate existing snapshots, refer to [Snapshot configuration migration](/reference/snapshot-configs#snapshot-configuration-migration) for more information. 
 
 ### `state:modified` improvements
 

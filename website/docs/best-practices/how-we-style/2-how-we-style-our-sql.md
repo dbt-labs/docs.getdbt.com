@@ -8,8 +8,8 @@ id: 2-how-we-style-our-sql
 - ☁️ Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
   - Customize `.sqlfluff` configuration files to your needs.
   - Refer to our [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use in our own projects. 
-
-  - Exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2).
+  - Exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration/index.html).
+    - Excluding unnecessary folders and files (such as `target/`, `dbt_packages/`, and `macros/`) can speed up linting, improve run times, and help you avoid irrelevant logs.
 - 👻 Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
 - ⏭️ Use trailing commas.
 - 4️⃣ Indents should be four spaces.
