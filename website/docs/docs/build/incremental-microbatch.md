@@ -291,7 +291,6 @@ To enable parallel execution when possible, users can check the model's `concurr
 | `False`                    |Batches will run sequentially.|
 | `None` (not explicitly set)|dbt will evaluate the model's Jinja logic and evaluate if it contains a reference to `this`. If it references `this`, the batches will run sequentially. This is because Jinja represents states of table. Otherwise, the batches will run in parallel.|
 
-### Sequential execution Conditions
 
 
 
