@@ -293,7 +293,6 @@ To enable parallel execution when possible, users can check the model's `concurr
 
 ### Sequential execution Conditions
 
-If any of the following conditions are met, the batches will execute sequentially:
 
 1. The database adapter does not support concurrent batches.
 2. The relation in the data warehouse for the model doesn't exist.
