@@ -185,7 +185,7 @@ Several configurations are relevant to microbatch models, and some are required:
 | `begin`      | Date (required)   | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
 | `batch_size` | String (required)  | The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`             | N/A     |
 | `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `1`     |
-|[`concurrent_batches`](docs/build/incremental-microbatch#concurrent-execution-with-the-concurrent_batches-configuration)|Boolean|Determines whether batches should be run concurrently (at the same time) or sequentially (one after the other)|`True` or `False`|
+|`concurrent_batches`| Boolean | Configures whether batches can run concurrently (at the same time) or sequentially (one after the other). When set to `True` and conditions are met, batches run in parallel. |`True` or `False`|
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
