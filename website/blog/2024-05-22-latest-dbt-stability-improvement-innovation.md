@@ -16,7 +16,7 @@ As long as dbt Cloud has existed, it has required users to select a version of d
 
 However, this came at a cost. While bumping a project's dbt version *appeared* as simple as selecting from a dropdown, there was real effort required to test the compatibility of the new version against existing projects, package dependencies, and adapters. On the other hand, putting this off meant foregoing access to new features and bug fixes in dbt.
 
-But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**the "Latest" release track.**](https://docs.getdbt.com/docs/dbt-versions/cloud-release-tracks)
+But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**the "Latest" release track.**](/docs/dbt-versions/cloud-release-tracks)
 
 <!--truncate-->
 

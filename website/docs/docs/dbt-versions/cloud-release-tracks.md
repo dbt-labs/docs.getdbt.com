@@ -10,7 +10,7 @@ Previously, customers would pin to a minor version of dbt Core, and receive only
 
 This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
 
-By moving your environments and jobs to release tracjs you can get all the functionality in dbt Cloud as soon as it's ready. On the "Latest" release track, this includes access to features _before_ they're available in final releases of dbt Core OSS.
+By moving your environments and jobs to release tracks you can get all the functionality in dbt Cloud as soon as it's ready. On the "Latest" release track, this includes access to features _before_ they're available in final releases of dbt Core OSS.
 
 ## Which release tracks are available?
 
