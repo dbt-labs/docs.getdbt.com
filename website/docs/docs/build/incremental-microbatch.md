@@ -294,7 +294,6 @@ To enable parallel execution when possible, users can check the model's `concurr
 ### Sequential execution Conditions
 
 
-2. The relation in the data warehouse for the model doesn't exist.
 
 ### Supported adapters
 
