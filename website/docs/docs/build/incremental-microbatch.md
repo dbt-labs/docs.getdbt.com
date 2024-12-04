@@ -275,6 +275,8 @@ select ...
 ```
 
 </File>
+### Sequential execution Conditions
+
 If any of the following conditions are met, the batches will execute sequentially:
 
 1. The database adapter does not support concurrent batches.
