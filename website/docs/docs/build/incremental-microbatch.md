@@ -253,7 +253,7 @@ To run batches in parallel, use the `concurrent_batches` configuration:
 
 ```yaml
 models:
-  +incremental_strategy: "concurrent_batches"
+  +incremental_strategy: "microbatch"
 ```
 
 </File>
