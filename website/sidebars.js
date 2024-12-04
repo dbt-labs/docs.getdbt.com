@@ -924,6 +924,8 @@ const sidebarSettings = {
           items: [
             "reference/resource-configs/access",
             "reference/resource-configs/alias",
+            "reference/resource-configs/batch-size",
+            "reference/resource-configs/begin",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
             "reference/resource-configs/event-time",
@@ -932,6 +934,7 @@ const sidebarSettings = {
             "reference/resource-configs/grants",
             "reference/resource-configs/group",
             "reference/resource-configs/docs",
+            "reference/resource-configs/lookback",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
