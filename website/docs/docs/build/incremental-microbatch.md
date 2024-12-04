@@ -266,6 +266,7 @@ or:
 {{
   config(
     materialized='incremental',
+    unique_key='concurrent_batches',
     incremental_strategy='microbatch'
     
     ...
