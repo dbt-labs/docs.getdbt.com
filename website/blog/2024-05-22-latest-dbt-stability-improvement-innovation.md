@@ -12,6 +12,10 @@ date: 2024-05-02
 is_featured: true
 ---
 
+import Latest from '/snippets/_release-stages-from-versionless.md'
+
+<Latest/>
+
 As long as dbt Cloud has existed, it has required users to select a version of dbt Core to use under the hood in their jobs and environments. This made sense in the earliest days, when dbt Core minor versions often included breaking changes. It provided a clear way for everyone to know which version of the underlying runtime they were getting.
 
 However, this came at a cost. While bumping a project's dbt version *appeared* as simple as selecting from a dropdown, there was real effort required to test the compatibility of the new version against existing projects, package dependencies, and adapters. On the other hand, putting this off meant foregoing access to new features and bug fixes in dbt.

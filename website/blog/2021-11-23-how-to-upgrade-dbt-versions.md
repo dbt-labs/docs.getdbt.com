@@ -12,6 +12,10 @@ date: 2021-11-29
 is_featured: true
 ---
 
+import Latest from '/snippets/_release-stages-from-versionless.md'
+
+<Latest/>
+
 :::tip February 2024 Update
 
 It's been a few years since dbt-core turned 1.0! Since then, we've committed to releasing zero breaking changes whenever possible and it's become much easier to upgrade dbt Core versions.

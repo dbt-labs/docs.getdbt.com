@@ -12,6 +12,10 @@ date: 2024-04-22
 is_featured: true
 ---
 
+import Latest from '/snippets/_release-stages-from-versionless.md'
+
+<Latest/>
+
 dbt Cloud now includes a suite of new features that enable configuring precise and unique connections to data platforms at the environment and user level. These enable more sophisticated setups, like connecting a project to multiple warehouse accounts, first-class support for [staging environments](/docs/deploy/deploy-environments#staging-environment), and user-level [overrides for specific dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). This gives dbt Cloud developers the features they need to tackle more complex tasks, like Write-Audit-Publish (WAP) workflows and safely testing dbt version upgrades. While you still configure a default connection at the project level and per-developer, you now have tools to get more advanced in a secure way. Soon, dbt Cloud will take this even further allowing multiple connections to be set globally and reused with _global connections_.
 
 <!--truncate-->

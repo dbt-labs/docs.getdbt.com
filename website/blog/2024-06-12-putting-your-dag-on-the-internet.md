@@ -12,6 +12,10 @@ date: 2024-06-14
 is_featured: true
 ---
 
+import Latest from '/snippets/_release-stages-from-versionless.md'
+
+<Latest/>
+
 **New in dbt: allow Snowflake Python models to access the internet**
 
 With dbt 1.8, dbt released support for Snowflake’s [external access integrations](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, [EQT AB](https://eqtgroup.com/). Learn about why they needed it and how they helped build the feature and get it shipped!
