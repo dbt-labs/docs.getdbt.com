@@ -280,7 +280,7 @@ It's not possible to run batches concurrently when the model definition contains
 
 ### Configure `concurrent_batches`
 
-To enable parallel execution when possible, users can check the model's concurrent_batches configuration:
+To enable parallel execution when possible, users can check the model's `concurrent_batches` configuration:
 
 | `concurrent_batches`       | Description                | 
 |----------------------------|----------------------------|
