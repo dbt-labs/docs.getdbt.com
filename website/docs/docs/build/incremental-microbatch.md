@@ -185,6 +185,7 @@ Several configurations are relevant to microbatch models, and some are required:
 | `begin`      | Date (required)   | The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     |
 | `batch_size` | String (required)  | The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`             | N/A     |
 | `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `1`     |
+|[`concurrent_batches`](docs/build/incremental-microbatch#concurrent-execution-with-the-concurrent_batches-configuration)|Boolean|Determines whether batches should be run concurrently (at the same time) or sequentially (one after the other)|`True` or `False`|
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
@@ -238,6 +239,68 @@ For now, dbt assumes that all values supplied are in UTC:
 - `--event-time-end`
 
 While we may consider adding support for custom time zones in the future, we also believe that defining these values in UTC makes everyone's lives easier.
+
+## Parallel batch execution
+
+The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. Within dbt, these microbatches can often run at the same time (in parallel), enhancing efficiency.
+
+Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially). For example, if you have a micro-batch model with 12 batches, those batches can be executed in parallel. Specifically they'll run in parallel limited by the number of [available threads](docs/running-a-dbt-project/using-threads).
+
+To run batches in parallel you can use the `concurrent_batches` configuation:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  +incremental_strategy: "concurrent_batches"
+```
+
+</File>
+
+or:
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized='incremental',
+    incremental_strategy='concurrent_batches'
+    
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
+
+It's not possible to run batches concurrently when the model definition contains [`{{ this }}`](/reference/dbt-jinja-functions/this). This is because Jinja represents the state of a table.
+
+### Concurrent Execution with the `concurrent_batches` configuration
+
+To enable parallel execution when possible, users can check the model's concurrent_batches configuration:
+
+| `concurrent_batches`       | Description                | 
+|----------------------------|----------------------------|
+| `True`                     |Batches will run in parallel.|
+| `False`                    |Batches will run sequentially.|
+| `None` (not explicitly set)|dbt will evaluate the model's Jinja logic and evaluate if it contains a reference to `this`. If it references `this`, the batches will run sequentially. This is because Jinja represents states of table. Otherwise, the batches will run in parallel.|
+
+### Sequential Execution Conditions
+
+If any of the following conditions are met, the batches will execute sequentially:
+
+1. The database adapter does not support concurrent batches.
+2. The relation in the data warehouse for the model doesn't exist.
+
+### Supported adapters
+
+The following adapters support parallel batch execution:
+
+- dbt-snowflake 
+- dbt-databricks
 
 ## How `microbatch` compares to other incremental strategies?
 
