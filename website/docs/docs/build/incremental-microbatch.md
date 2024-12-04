@@ -275,7 +275,10 @@ select ...
 ```
 
 </File>
+If any of the following conditions are met, the batches will execute sequentially:
 
+1. The database adapter does not support concurrent batches.
+2. The relation in the data warehouse for the model doesn't exist.
 It's not possible to run batches concurrently when the model definition contains [`{{ this }}`](/reference/dbt-jinja-functions/this). This is because Jinja represents the state of a table.
 
 ### Configure `concurrent_batches`
