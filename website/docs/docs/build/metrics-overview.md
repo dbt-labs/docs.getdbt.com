@@ -97,7 +97,6 @@ Default time granularity for metrics is useful if your time dimension has a very
 
 Default time granularity for metrics is available now in [the "Latest" release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks), and it will be available in [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
 
-</VersionBlock>
 
 </VersionBlock>
 
