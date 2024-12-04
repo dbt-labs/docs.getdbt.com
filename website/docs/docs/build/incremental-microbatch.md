@@ -246,7 +246,7 @@ The microbatch strategy offers the benefit of updating a model in smaller, more 
 
 Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially). For example, if you have a microbatch model with 12 batches, you can execute those batches in parallel. Specifically they'll run in parallel limited by the number of [available threads](/docs/running-a-dbt-project/using-threads).
 
-To run batches in parallel you can use the `concurrent_batches` configuation:
+To run batches in parallel, use the `concurrent_batches` configuration:
 
 <File name='dbt_project.yml'>
 
