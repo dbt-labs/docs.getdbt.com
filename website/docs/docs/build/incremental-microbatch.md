@@ -278,7 +278,7 @@ select ...
 
 It's not possible to run batches concurrently when the model definition contains [`{{ this }}`](/reference/dbt-jinja-functions/this). This is because Jinja represents the state of a table.
 
-### Concurrent Execution with the `concurrent_batches` configuration
+### Configure `concurrent_batches`
 
 To enable parallel execution when possible, users can check the model's concurrent_batches configuration:
 
