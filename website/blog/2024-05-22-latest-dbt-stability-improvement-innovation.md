@@ -84,7 +84,7 @@ All incidents are retrospected to make sure we not only identify and fix the roo
 
 The outcome of this process is that, when you select the "Latest" release track in dbt Cloud, the time between an improvement being made to dbt Core and you *safely* getting access to it in your projects is a matter of days — rather than months of waiting for the next dbt Core release, on top of any additional time it may have taken to actually carry out the upgrade.
 
-We’re pleased to say that, at the time of writing (May 2, 2025), since the beta launch of the "Latest" release track in dbt Cloud in March, **we have not had any functional regressions reach customers**, while we’ve also been shipping multiple improvements to dbt functionality every day. This is a foundation that we aim to build on for the foreseeable future.
+We’re pleased to say that, at the time of writing (May 2, 2024), since the beta launch of the "Latest" release track in dbt Cloud in March, **we have not had any functional regressions reach customers**, while we’ve also been shipping multiple improvements to dbt functionality every day. This is a foundation that we aim to build on for the foreseeable future.
 
 ## Stability as a feature
 
