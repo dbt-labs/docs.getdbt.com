@@ -19,6 +19,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## November 2024
+- **Bug**: Identified and fixed an error with Semantic Layer queries that take longer than 10 minutes to complete.
 - **Fix**: Job environment variable overrides in credentials are now respected for Exports. Previously, they were ignored.
 - **Behavior change**: If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 - **Enhancement**: For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled, you can optimize performance when running comparisons by using custom dbt syntax to customize deferral usage, exclude specific large models (or groups of models with tags), and more. Refer to [Compare changes custom commands](/docs/deploy/job-commands#compare-changes-custom-commands) for examples of how to customize the comparison command.
