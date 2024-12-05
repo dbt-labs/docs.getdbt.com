@@ -298,7 +298,6 @@ To enable parallel execution, you must meet the following conditions:
   - Snowflake
   - Databricks
   - More adapters coming soon!
-- The relation in the data warehouse for the model doesn't exist
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
 ### How parallel batch execution works
