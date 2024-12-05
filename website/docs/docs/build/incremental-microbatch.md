@@ -245,7 +245,16 @@ While we may consider adding support for custom time zones in the future, we als
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. 
 
 Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially). For example, if you have a microbatch model with 12 batches, you can execute those batches in parallel. Specifically they'll run in parallel limited by the number of [available threads](/docs/running-a-dbt-project/using-threads).
+### How it's determined if a batch will run in parallel
 
+A batch can only run in parallel if:
+1. It's **not** the first batch
+2. It's **not** the last batch
+3. The [adapter supports](/docs/build/incremental-microbatch#supported-adapters) concurrent batches
+
+After [1], [2], and [3] we check if the [`this` jinja function](https://docs.getdbt.com/reference/dbt-jinja-functions/this) is invoked in the model. If `this` is used, then the batch will be run sequentially, as it may be that your batch depends on the existence of prior batches. If `this` isn't used, the batch will be run in parallel.
+
+You can override the check for `this` by setting `concurrent_batches` to either `True` or `False`. If set to `False`, the batch will be run sequentially. If set to `True` the batch will be run in parallel (assuming [1], [2], and [3])
 To run batches in parallel, use the `concurrent_batches` configuration:
 
 <File name='dbt_project.yml'>
