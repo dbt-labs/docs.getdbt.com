@@ -37,7 +37,8 @@ For that reason, the dbt-spark plugin leans heavily on the [`incremental_strateg
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
  - **`merge`** (Delta, Iceberg and Hudi file format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
- 
+- `microbatch` Implements the [microbatch strategy](/docs/build/incremental-microbatch) using `event_time` to define time-based ranges for filtering data. 
+
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
 ### The `append` strategy
