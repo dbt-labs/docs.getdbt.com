@@ -186,7 +186,6 @@ Several configurations are relevant to microbatch models, and some are required:
 | `batch_size` | String (required)  | The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`             | N/A     |
 | `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `1`     |
 |`concurrent_batches`| Boolean | Configures whether batches can run concurrently (at the same time) or sequentially (one after the other). When set to `True` and conditions are met, batches run in parallel. |`True` or `False`|
-| `{{this}}` | Macro | When the model definition contains `{{ this }}`, batches can't be ran concurrently | Refer to [Concurrent Execution with the `concurrent_batches` configuration](/docs/build/incremental-microbatch#concurrent-execution-with-the-concurrent_batches-configuration) for more information |
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
