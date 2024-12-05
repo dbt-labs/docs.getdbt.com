@@ -329,7 +329,7 @@ Sequential processing isn't as performant and is slower however, it enables calc
 
 ### Parallel batch execution or sequential?
 
-- parallel is more performant / faster, but means your logic needs to be independent to the order the batches are executed
+- Parallel batch execution is faster but requires logic that is independent of batch execution order. For example, if you are developing a data processing pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction must not depend on the order of how batches are executed or completed.
 - sequential is slower, but means you can calculate things like cumulative metrics in your microbatch models
 
 <!-- You can override the check for `this` by setting `concurrent_batches` to either `True` or `False`. If set to `False`, the batch will be run sequentially. If set to `True` the batch will be run in parallel (assuming [1], [2], and [3])
