@@ -255,7 +255,7 @@ A batch can only run in parallel if:
 After [1], [2], and [3] we check if the [`this` jinja function](https://docs.getdbt.com/reference/dbt-jinja-functions/this) is invoked in the model. If `this` is used, then the batch will be run sequentially, as it may be that your batch depends on the existence of prior batches. If `this` isn't used, the batch will be run in parallel.
 
 You can override the check for `this` by setting `concurrent_batches` to either `True` or `False`. If set to `False`, the batch will be run sequentially. If set to `True` the batch will be run in parallel (assuming [1], [2], and [3])
-To run batches in parallel, use the `concurrent_batches` configuration:
+To override the `this` check, use the `concurrent_batches` configuration:
 
 <File name='dbt_project.yml'>
 
