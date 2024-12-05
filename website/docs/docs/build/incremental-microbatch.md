@@ -320,7 +320,6 @@ Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't 
 ### Parallel or sequential execution?
 
 
-Sequential processing isn't as performant and is slower however, it enables calculations such as cumulative metrics in microbatch models. Since cumulative metrics require data to be processed in the correct order to ensure each step builds on the previous one, sequential processing is ideal. 
 </Expandable>
 
 ### Parallel batch execution or sequential processing?
