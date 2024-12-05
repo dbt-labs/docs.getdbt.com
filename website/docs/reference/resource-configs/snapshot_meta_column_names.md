@@ -19,6 +19,7 @@ snapshots:
         dbt_valid_to: <string>
         dbt_scd_id: <string>
         dbt_updated_at: <string>
+        dbt_is_deleted: <boolean>
 
 ```
 
@@ -34,6 +35,7 @@ snapshots:
         "dbt_valid_to": "<string>",
         "dbt_scd_id": "<string>",
         "dbt_updated_at": "<string>",
+        "dbt_is_deleted": "<boolean>",
       }
     )
 }}
@@ -52,7 +54,7 @@ snapshots:
       dbt_valid_to: <string>
       dbt_scd_id: <string>
       dbt_updated_at: <string>
-
+      dbt_is_deleted: <boolean>
 ```
 
 </File>
@@ -71,6 +73,7 @@ By default, dbt snapshots use the following column names to track change history
 | `dbt_valid_to`   | The timestamp when this row is no longer valid. |  |
 | `dbt_scd_id`     | A unique key generated for each snapshot row. | This is used internally by dbt. |
 | `dbt_updated_at` | The `updated_at` timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt. |
+| `dbt_is_deleted` | A boolean value indicating if the record has been deleted. `True` if deleted, `False` otherwise. | Added when `hard_deletes='new_record'` is configured. |
 
 However, these column names can be customized using the `snapshot_meta_column_names` config.
 
@@ -92,18 +95,21 @@ snapshots:
       unique_key: id
       strategy: check
       check_cols: all
+      hard_deletes: new_record
       snapshot_meta_column_names:
         dbt_valid_from: start_date
         dbt_valid_to: end_date
         dbt_scd_id: scd_id
         dbt_updated_at: modified_date
+        dbt_is_deleted: is_deleted
 ```
 
 </File>
 
 The resulting snapshot table contains the configured meta column names:
 
-| id | scd_id               |        modified_date |           start_date |             end_date |
-| -- | -------------------- | -------------------- | -------------------- | -------------------- |
-|  1 | 60a1f1dbdf899a4dd... | 2024-10-02 ...       | 2024-10-02 ...       | 2024-10-02 ...       |
-|  2 | b1885d098f8bcff51... | 2024-10-02 ...       | 2024-10-02 ...       |                      |
+| id | scd_id               |        modified_date |           start_date |             end_date | is_deleted |
+| -- | -------------------- | -------------------- | -------------------- | -------------------- | ---------- |
+|  1 | 60a1f1dbdf899a4dd... | 2024-10-02 ...       | 2024-10-02 ...       | 2024-10-03 ...       | False      |
+|  1 | 60a1f1dbdf899a4dd... | 2024-10-03 ...       | 2024-10-03 ...       |                      | True      |
+|  2 | b1885d098f8bcff51... | 2024-10-02 ...       | 2024-10-02 ...       |                      | False     |

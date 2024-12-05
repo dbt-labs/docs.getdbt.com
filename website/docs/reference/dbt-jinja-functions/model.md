@@ -20,9 +20,9 @@ To view the contents of `model` for a given model:
 
 <Tabs>
 
-<TabItem value="cli" label="CLI">
+<TabItem value="cli" label="Command line interface">
 
-If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log) to print the full contents:
+If you're using the command line interface (CLI), use [log()](/reference/dbt-jinja-functions/log) to print the full contents:
 
 ```jinja
 {{ log(model, info=True) }}
@@ -41,6 +41,48 @@ If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log) to prin
 </TabItem>
 
 </Tabs>
+
+## Batch properties for microbatch models
+
+Starting in dbt Core v1.9, the model object includes a `batch` property (`model.batch`), which provides details about the current batch when executing an [incremental microbatch](/docs/build/incremental-microbatch) model. This property is only populated during the batch execution of a microbatch model.
+
+The following table describes the properties of the `batch` object. Note that dbt appends the property to the `model` and `batch` objects. 
+
+| Property | Description | Example |  
+| -------- | ----------- | ------- |
+| `id` | The unique identifier for the batch within the context of the microbatch model. | `model.batch.id` |
+| `event_time_start` | The start time of the batch's [`event_time`](/reference/resource-configs/event-time) filter (inclusive). | `model.batch.event_time_start` |
+| `event_time_end` | The end time of the batch's `event_time` filter (exclusive). | `model.batch.event_time_end` |
+
+### Usage notes
+
+`model.batch` is only available during the execution of a microbatch model batch. Outside of the microbatch execution, `model.batch` is `None`, and its sub-properties aren't accessible.
+
+#### Example of safeguarding access to batch properties
+
+We recommend to always check if `model.batch` is populated before accessing its properties. To do this, use an `if` statement for safe access to `batch` properties:
+
+```jinja
+{% if model.batch %}
+  {{ log(model.batch.id) }}  # Log the batch ID #
+  {{ log(model.batch.event_time_start) }}  # Log the start time of the batch #
+  {{ log(model.batch.event_time_end) }}  # Log the end time of the batch #
+{% endif %}
+```
+
+In this example, the `if model.batch` statement makes sure that the code only runs during a batch execution. `log()` is used to print the `batch` properties for debugging.
+
+#### Example of log batch details
+
+This is a practical example of how you might use `model.batch` in a microbatch model to log batch details for the `batch.id`:
+
+```jinja
+{% if model.batch %}
+  {{ log("Processing batch with ID: " ~ model.batch.id, info=True) }}
+  {{ log("Batch event time range: " ~ model.batch.event_time_start ~ " to " ~ model.batch.event_time_end, info=True) }}
+{% endif %}
+```
+In this example, the `if model.batch` statement makes sure that the code only runs during a batch execution. `log()` is used to print the `batch` properties for debugging.
 
 ## Model structure and JSON schema
 
