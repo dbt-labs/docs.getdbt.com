@@ -363,7 +363,7 @@ select ...
 If you meet all the [conditions](#prerequisites), set the `concurrent_batches` config in your `dbt_project.yml` or incremental microbatch model `.sql` file to run batches in parallel:
 
 <Tabs>
-<TabItem value="yaml" label="dbt_project.yml"
+<TabItem value="yaml" label="dbt_project.yml">
 
 <File name='dbt_project.yml'>
 
@@ -375,7 +375,7 @@ models:
 </File>
 </TabItem>
 
-<TabItem value="sql" label="my_model.sql"
+<TabItem value="sql" label="my_model.sql">
 
 <File name='models/my_model.sql'>
 
