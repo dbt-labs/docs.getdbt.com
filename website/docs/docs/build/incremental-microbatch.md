@@ -319,7 +319,6 @@ After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_
 Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
 ### Parallel or sequential execution?
 
-<Expandable alt_header="Parallel batch execution">
 Parallel batch execution is faster but requires logic that is independent of batch execution order. For example, if you are developing a data processing pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction must not depend on the order of how batches are executed or completed.
 </Expandable>
 
