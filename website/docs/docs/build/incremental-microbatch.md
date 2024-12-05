@@ -321,7 +321,7 @@ Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't 
 
 EXPANDABLE IDEA OR H3/H4
 
-ADD GUIDE/INFORMATION ON WHEN TO USE PARALLEL AND WHEN TO USE SEQUENTIAL FOR USERS. 
+Parallel batch execution or sequential?
 
 - parallel is more performant / faster, but means your logic needs to be independent to the order the batches are executed
 - sequential is slower, but means you can calculate things like cumulative metrics in your microbatch models
