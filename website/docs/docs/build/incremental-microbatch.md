@@ -327,7 +327,7 @@ Parallel batch execution is faster but requires logic that is independent of bat
 Sequential processing isn't as performant and is slower however, it enables calculations such as cumulative metrics in microbatch models. Since cumulative metrics require data to be processed in the correct order to ensure each step builds on the previous one, sequential processing is ideal. 
 </Expandable>
 
-### Parallel batch execution or sequential?
+### Parallel batch execution or sequential processing?
 
 - Parallel batch execution is faster but requires logic that is independent of batch execution order. For example, if you are developing a data processing pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction must not depend on the order of how batches are executed or completed.
 - Sequential processing isn't as performant and is slower however, it enables calculations such as cumulative metrics in microbatch models. Since cumulative metrics require data to be processed in the correct order to ensure each step builds on the previous one, sequential processing is ideal. 
