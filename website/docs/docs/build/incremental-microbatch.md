@@ -261,7 +261,7 @@ To override the `this` check, use the `concurrent_batches` configuration:
 
 ```yaml
 models:
-  +incremental_strategy: "microbatch"
+  +concurrent_batches: True
 ```
 
 </File>
