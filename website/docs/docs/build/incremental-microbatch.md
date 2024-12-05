@@ -320,7 +320,6 @@ Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't 
 ### Parallel or sequential execution?
 
 
-</Expandable>
 
 ### Parallel batch execution or sequential processing?
 
