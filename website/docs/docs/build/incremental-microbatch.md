@@ -319,7 +319,6 @@ After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_
 Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
 ### Parallel or sequential execution?
 
-</Expandable>
 
 <Expandable alt_header="Sequential">
 Sequential processing isn't as performant and is slower however, it enables calculations such as cumulative metrics in microbatch models. Since cumulative metrics require data to be processed in the correct order to ensure each step builds on the previous one, sequential processing is ideal. 
