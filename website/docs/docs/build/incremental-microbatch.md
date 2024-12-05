@@ -309,7 +309,6 @@ A batch can only run in parallel if:
 | 1.   | **Not** the first batch |  ✅         | -            |
 | 2.   | **Not** the last batch  |  ✅         | -            |
 | 3.   | [Adapter supports](#prerequisites) parallel batches | ✅  | -         |
-| 4.   | `concurrent_batches` set to `True`  |  ✅     |   -  |
 | 5.   | `concurrent_batches` set to `False` |     -   |   ✅ |
 
 
