@@ -305,7 +305,7 @@ To enable parallel execution, you must meet the following conditions:
 
 A batch can only run in parallel if:
 
-| Step | Condition     |  Parallel execution   | Sequentially |
+| Step | Condition     |  Parallel execution   | Sequential execution|
 | ---- | ---------------| :------------------: | :----------: |
 | 1.   | **Not** the first batch |  ✅         | -            |
 | 2.   | **Not** the last batch  |  ✅         | -            |
@@ -313,9 +313,11 @@ A batch can only run in parallel if:
 | 4.   | `concurrent_batches` set to `True`  |  ✅     |   -  |
 | 5.   | `concurrent_batches` set to `False` |     -   |   ✅ |
 
-:::info
-After checking for 1, 2, and 3 &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
-:::
+
+- After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 
+
+- Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
+
 
 EXPANDABLE IDEA OR H3/H4
 
@@ -398,7 +400,7 @@ select ...
 </TabItem>
 </Tabs>
 
-Depending on your use case, configuring your microbatch models to run in parallel offer faster processing, in comparison to having models run sequentially, which is slower.
+Depending on your use case, configuring your microbatch models to run in parallel offer faster processing, in comparison to running batches sequentially.
 
 ## How `microbatch` compares to other incremental strategies?
 
