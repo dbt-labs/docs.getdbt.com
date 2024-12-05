@@ -16,11 +16,11 @@ snapshot-paths: [directorypath]
 Optionally specify a custom list of directories where [snapshots](/docs/build/snapshots) are located. 
 
 <VersionBlock firstVersion="1.9">
-In [Versionless](/docs/dbt-versions/versionless-cloud) and on dbt v1.9 and higher, you can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots). 
+In dbt Core v1.9+, you can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots). 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
-Note that you cannot co-locate models and snapshots. However, in [Versionless](/docs/dbt-versions/versionless-cloud) and on dbt v1.9 and higher, you can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots).
+Note that you cannot co-locate models and snapshots. However, in dbt Core v1.9+, you can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots).
 </VersionBlock>
 
 ## Default

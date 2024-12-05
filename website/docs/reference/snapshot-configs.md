@@ -257,7 +257,6 @@ snapshots:
 
 <LegacySnapshotConfig />
 
-
 <VersionBlock lastVersion="1.8">
 
 ```jinja
@@ -285,13 +284,13 @@ Snapshots can be configured in multiple ways:
 
 <VersionBlock firstVersion="1.9">
 
-1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [the dbt Cloud release track](/docs/dbt-versions/cloud-release-tracks) and dbt v1.9 and higher).
 2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
-1. Defined in a YAML file using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher). The latest snapshot YAML syntax provides faster and more efficient management.
+1. Defined in a YAML file using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in  [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt v1.9 and higher). The latest snapshot YAML syntax provides faster and more efficient management.
 2. Using a `config` block within a snapshot defined in Jinja SQL.
 3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 

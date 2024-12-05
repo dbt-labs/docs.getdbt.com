@@ -7,7 +7,7 @@ sidebar_label: "Connect Teradata"
 
 # Connect Teradata <Lifecycle status="preview" />
 
-Your environment(s) must be on ["Versionless"](/docs/dbt-versions/versionless-cloud) to use the Teradata connection.
+Your environment(s) must be on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to use the Teradata connection.
 
 | Field                         | Description                                                                                   | Type           | Required? | Example |
 | ----------------------------- | --------------------------------------------------------------------------------------------- | -------------- | --------- | ------- |

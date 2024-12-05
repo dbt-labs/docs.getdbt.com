@@ -58,8 +58,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Prerequisites
 
-- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A [supported version](/docs/dbt-versions/core) of dbt or select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) of dbt. 
+- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections). 
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ## Account setup
@@ -147,8 +146,8 @@ The most common data environments are production, staging, and development. The 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
 
-2. **dbt Core version** &mdash; In your dbt Cloud environment and credentials, use the same dbt Core version you use locally. You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
-   - When using dbt Core, you need to think about which version you’re using and manage your own upgrades. When using dbt Cloud, leverage ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) so you don’t have to.
+2. **dbt Core version** &mdash; In your dbt Cloud environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and dbt Cloud for developing or deploying your dbt project,   You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
+   - When using dbt Core, you need to think about which version you’re using and manage your own upgrades. When using dbt Cloud, leverage [release tracks](/docs/dbt-versions/cloud-release-tracks) so you don’t have to.
 
 3. **Connect to your data platform** &mdash; When using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
@@ -210,7 +209,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
-   - Once your full migration is complete, we recommend upgrading your environments to ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) to always get the latest features and more. You only need to do this once.
+   - Once your full migration is complete, we recommend upgrading your environments to [release tracks](/docs/dbt-versions/cloud-release-tracks) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for scheduled or event-driven dbt jobs. You can use cron execution, manual, pull requests, or trigger on the completion of another job.
    - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.

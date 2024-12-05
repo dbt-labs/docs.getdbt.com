@@ -1,5 +1,5 @@
 
-Starting in 2024, when you select **Versionless** in dbt Cloud, dbt will ignore the `require-dbt-version` config. Refer to [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) for more details. 
+Starting in 2024, when you select a [release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades, dbt will ignore the `require-dbt-version` config.
 
 dbt Labs is committed to zero breaking changes for code in dbt projects, with ongoing releases to dbt Cloud and new versions of dbt Core. We also recommend these best practices:
 

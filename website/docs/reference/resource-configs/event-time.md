@@ -7,7 +7,7 @@ description: "dbt uses event_time to understand when an event occurred. When def
 datatype: string
 ---
 
-Available in dbt Cloud Versionless and dbt Core v1.9 and higher.
+Available in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9 and higher.
 
 <Tabs>
 <TabItem value="model" label="Models">

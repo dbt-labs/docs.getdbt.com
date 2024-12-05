@@ -1,18 +1,61 @@
 ---
-title: "Upgrade to \"Versionless\" in dbt Cloud"
-sidebar_label: "Upgrade to \"Versionless\" "
-description: "Learn how to go versionless in dbt Cloud. You never have to perform an upgrade again. Plus, you'll be able to access new features and enhancements as soon as they become available. "
+title: "Release tracks in dbt Cloud"
+sidebar_label: "dbt Cloud Release Tracks"
+description: "Learn how to get automatic upgrades to dbt in dbt Cloud. Access new features and enhancements as soon as they become available."
 ---
 
-Since May 2024, new capabilities in dbt are delivered continuously to dbt Cloud. We call this "versionless dbt," because your projects and environments are upgraded automatically.
+Since May 2024, new capabilities in the dbt framework are delivered continuously to dbt Cloud. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your dbt Cloud plan.
+
+Previously, customers would pin to a minor version of dbt Core, and receive only patch updates during that specific version's active support period. Release tracks ensure that your project stays up-to-date with the modern capabilities of dbt Cloud and recent versions of dbt Core.
 
 This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
 
-By moving your environments and jobs to "Versionless," you can get all the functionality in the latest features before they're in dbt Core &mdash; and more! &mdash; along with access to the new features and fixes as soon as they’re released.
+By moving your environments and jobs to release tracks you can get all the functionality in dbt Cloud as soon as it's ready. On the "Latest" release track, this includes access to features _before_ they're available in final releases of dbt Core OSS.
 
-## Tips for upgrading {#upgrade-tips}
+## Which release tracks are available?
 
-If you regularly develop your dbt project in dbt Cloud and this is your first time trying “Versionless,” dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the IDE or Cloud CLI and do your development work as usual. Everything should work as you expect.
+- **"Latest"** (available to all plans, formerly called "Versionless"): Provides a continuous release of the latest functionality in dbt Cloud. Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core.
+- <Lifecycle status="coming soon"/> **"Compatible"** (available to Team + Enterprise): Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in dbt Cloud.
+- <Lifecycle status="coming soon"/> **"Extended"** (available to Enterprise): Provides a delayed release of the previous month's "Compatible" release.
+
+The first "Compatible" release will be in December 2024, after the final release of dbt Core v1.9.0. For December 2024 only, the "Extended" release is the same as "Compatible." Starting in January 2025, "Extended" will be one month behind "Compatible."
+
+To configure an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
+- `latest` (formerly called `versionless`; the old name is still supported)
+- `compatible` (available to Team + Enterprise)
+- `extended` (available to Enterprise)
+
+## Which release track should I choose?
+
+Choose the "Latest" release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on dbt Cloud.
+
+Choose the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of dbt Core.
+
+### Common architectures
+
+**Default** - majority of customers on all plans
+- Prioritize immediate access to fixes and features
+- Leave all environments on the "Latest" release track (default configuration)
+
+**Hybrid** - Team, Enterprise
+- Prioritize ongoing compatibility between dbt Cloud and dbt Core for development & deployment using both products in the same dbt projects
+- Configure all environments to use the "Compatible" release track
+- Understand that new features will not be available until they are first released in dbt Core OSS (several months after the "Latest" release track)
+
+**Cautious** - Enterprise, Business Critical
+- Prioritize "bake in" time for new features & fixes
+- Configure development & test environments to use the "Compatible" release track
+- Configure pre-production & production environments to use the "Extended" release track
+- Understand that new features will not be available until they are first released in dbt Core OSS + Compatible track
+
+**Virtual Private dbt or Single Tenant**
+- Changes to all release tracks roll out as part of dbt Cloud instance upgrades once per week
+
+## Upgrading from older versions
+
+### How to upgrade {#upgrade-tips}
+
+If you regularly develop your dbt project in dbt Cloud, and you're still running on a legacy version of dbt Core, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the IDE or Cloud CLI and do your development work as usual. Everything should work as you expect.
 
 If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact dbt Cloud support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
 
@@ -20,25 +63,23 @@ Next, we recommend that you try upgrading your project’s [deployment environme
 
 If your organization has multiple dbt projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
 
-## Considerations
+### Considerations
 
-The following is our guidance on some important considerations regarding dbt projects as part of the upgrade.
-
-To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to dbt Cloud, we recommend that you read our blog post [How we're making sure you can confidently go "Versionless" in dbt Cloud](https://docs.getdbt.com/blog/latest-dbt-stability) for details.
+To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to dbt Cloud, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in dbt Cloud](https://docs.getdbt.com/blog/latest-dbt-stability).
 
 If you're running dbt version 1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
-dbt Labs has extended the critical support period of dbt Core v1.7 for dbt Cloud Enterprise customers.
+dbt Labs has extended the critical support period of dbt Core v1.7 for dbt Cloud Enterprise customers to January 31, 2024. At that point, we will be asking all customers to select a Release Track for receiving ongoing updates to dbt in dbt Cloud.
 
 <Expandable alt_header="I'm using an older version of dbt in dbt Cloud. What should I do? What happens if I do nothing?" >
 
 If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
-dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Cloud Enterprise customers while we work through the migration with those customers to automatic upgrades. In the meantime, this means that v1.7 will continue to be accessible in dbt Cloud for Enteprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Versionless," and dbt Labs will continue to fix critical bugs and security issues.
+dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Cloud Enterprise customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt Cloud for Enteprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-dbt Cloud accounts on the Developer and Team plans will be migrated to "Versionless" dbt after November 1, 2024. If you know that your project will not be compatible with the upgrade, for one of the reasons described here, or a different reason in your own testing, you should [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
+dbt Cloud accounts on the Developer and Team plans will be migrated to the "Latest" release track after November 1, 2024. If you know that your project will not be compatible with the upgrade, for one of the reasons described here, or a different reason in your own testing, you should [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
 
-If your account has been migrated to "Versionless," and you are seeing net-new failures in your scheduled dbt jobs, you should also [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
+If your account has been migrated to the "Latest" release track, and you are seeing net-new failures in your scheduled dbt jobs, you should also [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
 
 </Expandable>
 
@@ -61,7 +102,7 @@ You should [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#
 
 </Expandable>
 
-<Expandable alt_header="I see that my account was migrated to Versionless. What should I do?" >
+<Expandable alt_header="I see that my account was migrated to Latest. What should I do?" >
 
 For the vast majority of customers, there is no further action needed.
 
@@ -75,9 +116,9 @@ When we talk about _latest version_, we’re referring to the underlying runtime
 
 If a new version of a dbt package includes a breaking change (for example, a change to one of the macros in `dbt_utils`), you don’t have to immediately use the new version. In your `packages` configuration (in `dependencies.yml` or  `packages.yml`), you can still specify which versions or version ranges of packages you want dbt to install. If you're not already doing so, we strongly recommend [checking `package-lock.yml` into version control](/reference/commands/deps#predictable-package-installs) for predictable package installs in deployment environments and a clear change history whenever you install upgrades.
 
-If you upgrade to “Versionless” and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
+If you upgrade to the "Latest" release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
 
-If you’re already on “Versionless” and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt Cloud). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
+If you’re already on the "Latest" release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt Cloud). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
 
 If the package you’ve installed relies on _undocumented_ functionality of dbt, it doesn't have the same guarantees as functionality that we’ve documented and tested. However, we will still do our best to avoid breaking them.
 
