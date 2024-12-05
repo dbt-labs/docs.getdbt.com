@@ -103,8 +103,8 @@
       "permanent": true
     },
     {
-      "source": "docs/dbt-versions/versionless-cloud",
-      "destination": "docs/dbt-versions/cloud-release-tracks",
+      "source": "/docs/dbt-versions/versionless-cloud",
+      "destination": "/docs/dbt-versions/cloud-release-tracks",
       "permanent": true
     },
     {
