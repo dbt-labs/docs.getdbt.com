@@ -186,7 +186,7 @@ Several configurations are relevant to microbatch models, and some are required:
 | `begin`      |  The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     | Date   | Required |
 | `batch_size` |  The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`    | N/A     | String  | Required |
 | `lookback`   | Process X batches prior to the latest bookmark to capture late-arriving records.    | `1`     | Integer | Optional |
-|`concurrent_batches`| Configures whether batches can run concurrently (at the same time) or sequentially (one after the other). Can set to `True` or `False`. When set to `True` and conditions are met, batches run in parallel. | `None` | Boolean | Optional |
+|`concurrent_batches`| An override for whether batches run concurrently (at the same time) or sequentially (one after the other). | `None` | Boolean | Optional |
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
@@ -298,7 +298,6 @@ To enable parallel execution, you must meet the following conditions:
   - Snowflake
   - Databricks
   - More adapters coming soon!
-- The relation in the data warehouse for the model doesn't exist
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
 ### How parallel batch execution works
@@ -310,8 +309,6 @@ A batch can only run in parallel if:
 | 1.   | **Not** the first batch |  ✅         | -            |
 | 2.   | **Not** the last batch  |  ✅         | -            |
 | 3.   | [Adapter supports](#prerequisites) parallel batches | ✅  | -         |
-| 4.   | `concurrent_batches` set to `True`  |  ✅     |   -  |
-| 5.   | `concurrent_batches` set to `False` |     -   |   ✅ |
 
 
 After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 

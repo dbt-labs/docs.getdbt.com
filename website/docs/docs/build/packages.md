@@ -162,7 +162,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 #### SSH Key Method (Command Line only)
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
 
-When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/ssh/).
+When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 
 
 <File name='packages.yml'>

@@ -8,7 +8,7 @@ id: "hard-deletes"
 sidebar_label: "hard_deletes"
 ---
 
-Available from dbt v1.9 or with [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud.
+Available from dbt v1.9 or with [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 
 
 <File name='snapshots/schema.yml'>
