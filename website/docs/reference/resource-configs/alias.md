@@ -100,7 +100,7 @@ models:
               alias: unique_order_id_test
 ```
 
-When using `--store-failures`, this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
+When using [`store_failures_as`](/reference/resource-configs/store_failures_as), this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
 
 </File>
 </TabItem>

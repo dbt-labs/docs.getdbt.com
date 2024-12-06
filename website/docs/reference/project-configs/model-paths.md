@@ -12,7 +12,7 @@ model-paths: [directorypath]
 </File>
 
 ## Definition
-Optionally specify a custom list of directories where [models](/docs/build/models) and [sources](/docs/build/sources) are located.
+Optionally specify a custom list of directories where [models](/docs/build/models), [sources](/docs/build/sources), and [unit tests](/docs/build/unit-tests) are located.
 
 ## Default
 By default, dbt will search for models and sources in the `models` directory. For example, `model-paths: ["models"]`. 
