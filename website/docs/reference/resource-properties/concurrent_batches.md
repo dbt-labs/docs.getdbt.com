@@ -47,7 +47,7 @@ select ...
 `concurrent_batches` is an override which allows users to decide whether or not they want to run their batches in parallel or sequentially (one at a time).
 
 For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works).
-## Parallel batch execution
+## Example
 
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches.
 
