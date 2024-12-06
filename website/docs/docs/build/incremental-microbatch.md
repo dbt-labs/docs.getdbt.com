@@ -286,7 +286,9 @@ While we may consider adding support for custom time zones in the future, we als
 
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. 
 
-Parallel batch execution means that multiple batches are processed at the same time using the `concurrent_batches` config, instead of one after the other (sequentially) for faster processing of your microbatch models. 
+Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.  
+
+dbt automatically detects whether a batch can be run in parallel in most cases, which means you don’t need to configure this setting. However, the `concurrent_batches` config is available as an override (not a gate), allowing you to specify whether batches should or shouldn’t be run in parallel in specific cases.
 
 For example, if you have a microbatch model with 12 batches, you can execute those batches to run in parallel. Specifically they'll run in parallel limited by the number of [available threads](/docs/running-a-dbt-project/using-threads).
 
@@ -314,11 +316,11 @@ A batch can only run in parallel if:
 After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 
 
 Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
-### Parallel or sequential execution?
+### Parallel or sequential execution
 
 
 
-Choosing between parallel batch execution and sequential processing depends on the specific requirements of your application. 
+Choosing between parallel batch execution and sequential processing depends on the specific requirements of your use case. 
 
 - Parallel batch execution is faster but requires logic that's independent of batch execution order. For example, if you're developing a data pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction shouldn't depend on the order of how batches are executed or completed.
 - Sequential processing is slower but essential for calculations like [cumulative metrics](/docs/build/cumulative)  in microbatch models. It processes data in the correct order, allowing each step to build on the previous one.
@@ -359,7 +361,7 @@ select ...
 
 ### Configure `concurrent_batches` 
 
-If you meet all the [conditions](#prerequisites), set the `concurrent_batches` config in your `dbt_project.yml` or incremental microbatch model `.sql` file to run batches in parallel:
+By default, dbt auto-detects whether batches can run in parallel for microbatch models, and this works correctly in most cases. However, you can override dbt's detection by setting the `concurrent_batches` config in your `dbt_project.yml` or model `.sql` file to specify parallel or sequential execution, given you meet all the [conditions](#prerequisites):
 
 <Tabs>
 <TabItem value="yaml" label="dbt_project.yml">
