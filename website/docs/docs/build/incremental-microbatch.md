@@ -301,6 +301,8 @@ To enable parallel execution, you must meet the following conditions:
   - Snowflake
   - Databricks
   - More adapters coming soon! 
+     - We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
+  
   
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
