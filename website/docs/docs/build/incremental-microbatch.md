@@ -296,9 +296,9 @@ For example, if you have a microbatch model with 12 batches, you can execute tho
 
 ### Prerequisites
 
-To enable parallel execution, you must meet the following conditions:
+To enable parallel execution, you must:
 
-- You use the following supported adapters:
+- Use a supported adapter:
   - Snowflake
   - Databricks
   - More adapters coming soon!
@@ -306,7 +306,7 @@ To enable parallel execution, you must meet the following conditions:
     
   
   
-- You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
+- Meet [additional conditions](#how-parallel-batch-execution-works) described in the next section.
 
 ### How parallel batch execution works
 
