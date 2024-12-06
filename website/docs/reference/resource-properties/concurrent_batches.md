@@ -49,7 +49,9 @@ select ...
 For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works).
 ## Example
 
-The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches.
+By default, dbt auto-detects whether batches can run in parallel for microbatch models. However, you can override dbt's detection by setting the concurrent_batches config in your dbt_project.yml or model .sql file to specify parallel or sequential execution, given you meet all the conditions. 
+
+If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: false. 
 
 Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.
 
