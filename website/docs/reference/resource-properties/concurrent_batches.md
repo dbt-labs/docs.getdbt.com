@@ -19,7 +19,7 @@ Available in dbt Core v1.9+ or the [dbt Cloud "Latest" release tracks](/docs/dbt
 
 ```yaml
 models:
-  +concurrent_batches: True
+  +concurrent_batches: true
 ```
 
 </File>
@@ -35,7 +35,7 @@ models:
 {{
   config(
     materialized='incremental',
-    concurrent_batches=True,
+    concurrent_batches=true,
     incremental_strategy='microbatch'
         ...
   )
@@ -79,7 +79,7 @@ models:
   config(
     materialized='incremental',
     incremental_strategy='microbatch'
-    concurrent_batches=False
+    concurrent_batches=false
   )
 }}
 select ...
