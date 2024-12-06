@@ -956,6 +956,7 @@ const sidebarSettings = {
             "reference/resource-configs/materialized",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/sql_header",
+            "reference/resource-properties/concurrent_batches",
           ],
         },
         {
