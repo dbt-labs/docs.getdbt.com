@@ -61,7 +61,8 @@ models:
   my_project:
     cumulative_metrics_model:
       +concurrent_batches: false
-
+```
+</File>
 
 
 <File name='models/my_model.sql'>
@@ -76,5 +77,8 @@ models:
 }}
 select ...
 
+```
+</File>
 
+This ensures that batches are processed sequentially.
 
