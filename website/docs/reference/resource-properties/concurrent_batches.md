@@ -53,7 +53,6 @@ By default, dbt auto-detects whether batches can run in parallel for microbatch 
 
 If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: false. 
 
-Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.
 
 dbt automatically detects whether a batch can be run in parallel in most cases, which means you don’t need to configure this setting. However, the concurrent_batches config is available as an override (not a gate), allowing you to specify whether batches should or shouldn’t be run in parallel in specific cases.
 
