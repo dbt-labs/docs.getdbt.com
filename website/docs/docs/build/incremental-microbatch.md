@@ -286,7 +286,7 @@ While we may consider adding support for custom time zones in the future, we als
 
 ## Parallel batch execution
 
-The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. 
+The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. Depending on your use case, configuring your microbatch models to run in parallel offers faster processing, in comparison to running batches sequentially.
 
 Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.  
 
@@ -401,8 +401,6 @@ select ...
 </File>
 </TabItem>
 </Tabs>
-
-Depending on your use case, configuring your microbatch models to run in parallel offer faster processing, in comparison to running batches sequentially.
 
 ## How microbatch compares to other incremental strategies
 
