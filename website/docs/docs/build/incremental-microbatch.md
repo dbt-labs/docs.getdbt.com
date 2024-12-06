@@ -302,6 +302,10 @@ To enable parallel execution, you must meet the following conditions:
   - Snowflake
   - Databricks
   - More adapters coming soon!
+    - We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
+    
+  
+  
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
 ### How parallel batch execution works
@@ -317,7 +321,7 @@ A batch can only run in parallel if:
 
 After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 
 
-Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
+Otherwise, if `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel. This can be overriden by setting a value for `concurrent_batches`.
 ### Parallel or sequential execution
 
 
@@ -402,7 +406,9 @@ select ...
 </Tabs>
 
 Depending on your use case, configuring your microbatch models to run in parallel offer faster processing, in comparison to running batches sequentially.
+### How microbatch compares to other incremental strategies
 
+As data warehouses roll out new operations for concurrently replacing/upserting data partitions, we may find that the new operation for the data warehouse is more efficient than what the adapter uses for microbatch. In such instances we reserve the right the update the default operation for microbatch, so long as it works as intended/documented for models that fit the microbatch paradigm.
 ## How `microbatch` compares to other incremental strategies?
 
 Most incremental models rely on the end user (you) to explicitly tell dbt what "new" means, in the context of each model, by writing a filter in an `{% if is_incremental() %}` conditional block. You are responsible for crafting this SQL in a way that queries [`{{ this }}`](/reference/dbt-jinja-functions/this) to check when the most recent record was last loaded, with an optional look-back window for late-arriving records. 
