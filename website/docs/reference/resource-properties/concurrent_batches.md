@@ -54,7 +54,6 @@ By default, dbt auto-detects whether batches can run in parallel for microbatch 
 If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: false. 
 
 
-dbt automatically detects whether a batch can be run in parallel in most cases, which means you don’t need to configure this setting. However, the concurrent_batches config is available as an override (not a gate), allowing you to specify whether batches should or shouldn’t be run in parallel in specific cases.
 
 For example, if you have a microbatch model with 12 batches, you can execute those batches to run in parallel. Specifically they'll run in parallel limited by the number of [available threads](https://docs-getdbt-com-git-nfiann-rbip-dbt-labs.vercel.app/docs/running-a-dbt-project/using-threads).
 
