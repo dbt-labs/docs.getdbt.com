@@ -506,7 +506,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 </TabItem>
 <TabItem value="bitbucket">
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png)" title="dbt run on merge job in Bitbucket" width="80%" />
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png" title="dbt run on merge job in Bitbucket" width="80%" />
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt Cloud job showing it was triggered by Bitbucket" width="80%" />
 

@@ -109,7 +109,7 @@ lf_grants={
 There are some limitations and recommendations that should be considered: 
 
 - `lf_tags` and `lf_tags_columns` configs support only attaching lf tags to corresponding resources.
-- We recommend managing LF Tags permissions somewhere outside dbt. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v1/docs/aws-lakeformation-readme.html).
+- We recommend managing LF Tags permissions somewhere outside dbt. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lakeformation-readme.html).
 - `data_cell_filters` management can't be automated outside dbt because the filter can't be attached to the table, which doesn't exist. Once you `enable` this config, dbt will set all filters and their permissions during every dbt run. Such an approach keeps the actual state of row-level security configuration after every dbt run and applies changes if they occur: drop, create, and update filters and their permissions.
 - Any tags listed in `lf_inherited_tags` should be strictly inherited from the database level and never overridden at the table and column level.
 - Currently, `dbt-athena` does not differentiate between an inherited tag association and an override it made previously.
