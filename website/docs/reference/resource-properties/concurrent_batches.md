@@ -63,7 +63,17 @@ models:
 
 
 
+<File name='models/my_model.sql'>
 
+```sql
+{{
+  config(
+    materialized='incremental',
+    incremental_strategy='microbatch'
+    concurrent_batches=False
+  )
+}}
+select ...
 
 
 
