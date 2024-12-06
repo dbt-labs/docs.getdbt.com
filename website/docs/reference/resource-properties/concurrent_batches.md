@@ -4,7 +4,12 @@ resource_types: [models]
 datatype: model_name
 description: "concurrent_batches - Read this in-depth guide to learn about concurrent_batches in dbt."
 ---
-Available from dbt v1.9 or with [the dbt Cloud "Latest" release track](https://docs.getdbt.com/docs/dbt-versions/cloud-release-tracks) dbt Cloud.
+
+:::note
+
+Available in dbt Core v1.9+ or the [dbt Cloud "Latest" release tracks](/docs/dbt-versions/cloud-release-tracks).
+
+:::
 
 <Tabs>
 <TabItem value="Project file">
@@ -50,9 +55,11 @@ select ...
 For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works).
 ## Example
 
-By default, dbt auto-detects whether batches can run in parallel for microbatch models. However, you can override dbt's detection by setting the concurrent_batches config in your dbt_project.yml or model .sql file to specify parallel or sequential execution, given you meet all the conditions. 
+By default, dbt auto-detects whether batches can run in parallel for microbatch models. However, you can override dbt's detection by setting the `concurrent_batches` config to `false` in your `dbt_project.yml` or model `.sql` file to specify parallel or sequential execution, given you meet these conditions: 
+* You've configured a microbatch incremental strategy.
+* You're working with cumulative metrics or any logic that depends on batch order.
 
-If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: false. 
+Set `concurrent_batches` config to `false` to ensure batches are processed sequentially. For example: 
 
 <File name='dbt_project.yml'>
 
@@ -80,5 +87,4 @@ select ...
 ```
 </File>
 
-This ensures that batches are processed sequentially.
 
