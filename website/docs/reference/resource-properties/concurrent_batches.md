@@ -58,7 +58,6 @@ If you've configured a microbatch incremental strategy and you're working with c
 
 
 
-dbt automatically detects if a model uses the `{{ this }}` Jinja function. When `{{ this }}` is referenced, the batches execute sequentially because `{{ this }}` points to the current model's database relation, and referencing the same relation can lead to conflicts. If `{{ this }}` is not detected, and the concurrent_batches value is not explicitly set (along with other conditions being met), the batches will execute in parallel.
 
 
 
