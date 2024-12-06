@@ -5,6 +5,8 @@ datatype: model_name
 description: "concurrent_batches - Read this in-depth guide to learn about concurrent_batches in dbt."
 ---
 
+Available from dbt v1.9 or with [the dbt Cloud "Latest" release track](https://docs.getdbt.com/docs/dbt-versions/cloud-release-tracks) dbt Cloud.
+
 <Tabs>
 <TabItem value="Project file">
 
@@ -46,10 +48,36 @@ select ...
 
 `concurrent_batches` is an override which allows users to decide whether or not they want to run their batches in parallel or sequentially (one at a time).
 
-## [`{{ this }}`](/reference/dbt-jinja-functions/this)
+## Example
 
-dbt automatically detects if a model uses the `{{ this }}` Jinja function. When `{{ this }}` is referenced, the batches execute sequentially because `{{ this }}` points to the current model's database relation, and referencing the same relation can lead to conflicts. If `{{ this }}` is not detected, and the concurrent_batches value is not explicitly set (along with other conditions being met), the batches will execute in parallel.
+By default, dbt auto-detects whether batches can run in parallel for microbatch models. However, you can override dbt's detection by setting the `concurrent_batches` config in your `dbt_project.yml` or `model .sql` file to specify parallel or sequential execution, given you meet all the [conditions](/docs/build/incremental-microbatch#prerequisites). 
 
-For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works)
+If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: `false`.
 
+<File name='dbt_project.yml'>
 
+```yaml
+models:
+  my_project:
+    cumulative_metrics_model:
+      +concurrent_batches: false
+```
+
+</File>
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized='incremental',
+    incremental_strategy='microbatch'
+    concurrent_batches=False
+  )
+}}
+select ...
+```
+
+</File>
+
+This ensures that batches are processed sequentially.
