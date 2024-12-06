@@ -2,7 +2,7 @@
 title: "concurrent_batches"
 resource_types: [models]
 datatype: model_name
-description: "concurrent_batches - Read this in-depth guide to learn about concurrent_batches in dbt."
+description: "Learn about concurrent_batches in dbt."
 ---
 
 :::note
@@ -50,7 +50,7 @@ select ...
 
 ## Definition
 
-`concurrent_batches` is an override which allows users to decide whether or not they want to run their batches in parallel or sequentially (one at a time).
+`concurrent_batches` is an override which allows you to decide whether or not you want to run batches in parallel or sequentially (one at a time).
 
 For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works).
 ## Example
