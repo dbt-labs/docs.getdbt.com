@@ -286,7 +286,9 @@ While we may consider adding support for custom time zones in the future, we als
 
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. 
 
-Parallel batch execution means that multiple batches are processed at the same time using the `concurrent_batches` config, instead of one after the other (sequentially) for faster processing of your microbatch models. 
+Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.  
+
+dbt automatically detects whether a batch can be run in parallel in most cases, which means you don’t need to configure this setting. However, the `concurrent_batches` config is available as an override (not a gate), allowing you to specify whether batches should or shouldn’t be run in parallel in specific cases.
 
 For example, if you have a microbatch model with 12 batches, you can execute those batches to run in parallel. Specifically they'll run in parallel limited by the number of [available threads](/docs/running-a-dbt-project/using-threads).
 
