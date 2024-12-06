@@ -188,6 +188,7 @@ Several configurations are relevant to microbatch models, and some are required:
 | `lookback`   | Process X batches prior to the latest bookmark to capture late-arriving records.    | `1`     | Integer | Optional |
 |[`concurrent_batches`](/reference/resource-properties/concurrent_batches)| An override for whether batches run concurrently (at the same time) or sequentially (one after the other). | `None` | Boolean | Optional |
 
+
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
 ### Required configs for specific adapters
