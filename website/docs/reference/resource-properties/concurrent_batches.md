@@ -57,7 +57,6 @@ If you've configured a microbatch incremental strategy and you're working with c
 
 
 
-- It is not the last batch.
 - The adapter supports parallel batch execution.
 ## [`{{ this }}`](/reference/dbt-jinja-functions/this)
 
