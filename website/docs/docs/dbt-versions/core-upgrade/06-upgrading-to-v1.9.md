@@ -51,7 +51,6 @@ Starting in Core 1.9, you can use the new [microbatch strategy](/docs/build/incr
 - Targeted reprocessing: To load a *specific* batch or batches, you can use the CLI arguments `--event-time-start` and `--event-time-end`.
 - [Automatic parallel batch execution](#parallel-batch-execution): Process multiple batches at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models. dbt intelligently auto-runs batches in parallel, while also allowing you to manually override parallel execution with the `concurrent_batches` config.
 
-For example, if you have a microbatch model with 12 batches, you can execute those batches to run in parallel. Specifically they'll run in parallel limited by the number of available threads.
 
 Currently microbatch is supported on these adapters with more to come:
  * postgres
