@@ -12,17 +12,14 @@ date: 2021-11-29
 is_featured: true
 ---
 
-import Latest from '/snippets/_release-stages-from-versionless.md'
-
-<Latest/>
-
 :::tip February 2024 Update
 
 It's been a few years since dbt-core turned 1.0! Since then, we've committed to releasing zero breaking changes whenever possible and it's become much easier to upgrade dbt Core versions.
 
 In 2024, we're taking this promise further by:
+
 - Stabilizing interfaces for everyone — adapter maintainers, metadata consumers, and (of course) people writing dbt code everywhere — as discussed in [our November 2023 roadmap update](https://github.com/dbt-labs/dbt-core/blob/main/docs/roadmap/2023-11-dbt-tng.md).
-- Introducing **Latest** release track in dbt Cloud. No more manual upgrades and no need for _a second sandbox project_ just to try out new features in development. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- Introducing [Release tracks](/docs/dbt-versions/cloud-release-tracks) (formerly known as Versionless) to dbt Cloud. No more manual upgrades and no need for _a second sandbox project_ just to try out new features in development. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 We're leaving the rest of this post as is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
 
