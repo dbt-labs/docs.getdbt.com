@@ -4,7 +4,7 @@ resource_types: [models]
 datatype: model_name
 description: "concurrent_batches - Read this in-depth guide to learn about concurrent_batches in dbt."
 ---
-
+Available from dbt v1.9 or with [the dbt Cloud "Latest" release track](https://docs.getdbt.com/docs/dbt-versions/cloud-release-tracks) dbt Cloud.
 <Tabs>
 <TabItem value="Project file">
 
