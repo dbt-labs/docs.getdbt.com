@@ -361,7 +361,7 @@ select ...
 
 ### Configure `concurrent_batches` 
 
-If you meet all the [conditions](#prerequisites), set the `concurrent_batches` config in your `dbt_project.yml` or incremental microbatch model `.sql` file to run batches in parallel:
+By default, dbt auto-detects whether batches can run in parallel for microbatch models, and this works correctly in most cases. However, you can override dbt's detection by setting the `concurrent_batches` config in your `dbt_project.yml` or model `.sql` file to specify parallel or sequential execution, given you meet all the [conditions](#prerequisites):
 
 <Tabs>
 <TabItem value="yaml" label="dbt_project.yml">
