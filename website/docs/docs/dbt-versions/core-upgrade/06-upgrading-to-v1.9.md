@@ -49,6 +49,8 @@ Starting in Core 1.9, you can use the new [microbatch strategy](/docs/build/incr
 - Simplified query design: Write your model query for a single batch of data. dbt will use your `event_time`, `lookback`, and `batch_size` configurations to automatically generate the necessary filters for you, making the process more streamlined and reducing the need for you to manage these details.
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
 - Targeted reprocessing: To load a *specific* batch or batches, you can use the CLI arguments `--event-time-start` and `--event-time-end`.
+- [Automatic parallel batch execution](/docs/build/incremental-microbatch#parallel-batch-execution): Process multiple batches at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models. dbt intelligently auto-detects if your batches can run in parallel, while also allowing you to manually override parallel execution with the `concurrent_batches` config.
+
 
 Currently microbatch is supported on these adapters with more to come:
  * postgres

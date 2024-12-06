@@ -25,7 +25,8 @@ Incremental models in dbt are a [materialization](/docs/build/materializations)
 Microbatch is an incremental strategy designed for large time-series datasets:
 - It relies solely on a time column ([`event_time`](/reference/resource-configs/event-time)) to define time-based ranges for filtering. Set the `event_time` column for your microbatch model and its direct parents (upstream models). Note, this is different to `partition_by`, which groups rows into partitions.
 - It complements, rather than replaces, existing incremental strategies by focusing on efficiency and simplicity in batch processing.
-- Unlike traditional incremental strategies, microbatch doesn't require implementing complex conditional logic for [backfilling](#backfills). 
+- Unlike traditional incremental strategies, microbatch enables you to [reprocess failed batches](/docs/build/incremental-microbatch#retry), auto-detect [parallel batch execution](#parallel-batch-execution), and eliminate the need to implement complex conditional logic for [backfilling](#backfills).
+
 - Note, microbatch might not be the best strategy for all use cases. Consider other strategies for use cases such as not having a reliable `event_time` column or if you want more control over the incremental logic. Read more in [How `microbatch` compares to other incremental strategies](#how-microbatch-compares-to-other-incremental-strategies).
 
 ### How microbatch works
@@ -300,9 +301,11 @@ To enable parallel execution, you must meet the following conditions:
 - You use the following supported adapters:
   - Snowflake
   - Databricks
-  - More adapters coming soon! 
+  - More adapters coming soon!
+    - We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
+    
   
-We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
+  
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
 ### How parallel batch execution works
