@@ -666,7 +666,7 @@ In order to enable the [`dbt init` command](/reference/commands/init) to prompt 
 
 See examples:
 
-- [dbt-postgres](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml)
+- [dbt-postgres](https://github.com/dbt-labs/dbt-postgres/blob/main/dbt/include/postgres/profile_template.yml)
 - [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
 - [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
 - [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)

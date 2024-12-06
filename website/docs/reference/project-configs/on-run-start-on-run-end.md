@@ -27,8 +27,6 @@ A SQL statement (or list of SQL statements) to be run at the start or end of the
 
 ## Examples
 
-<Snippet path="hooks-to-grants" />
-
 ### Grant privileges on all schemas that dbt uses at the end of a run
 This leverages the [schemas](/reference/dbt-jinja-functions/schemas) variable that is only available in an `on-run-end` hook.
 

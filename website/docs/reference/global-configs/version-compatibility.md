@@ -14,7 +14,7 @@ Running with dbt=1.0.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
 
-:::info Versionless
+:::info dbt Cloud release tracks
 <Snippet path="_config-dbt-version-check" />
 
 :::

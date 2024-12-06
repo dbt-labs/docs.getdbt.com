@@ -160,8 +160,6 @@ import SQLCompilationError from '/snippets/_render-method.md';
 
 ## Examples
 
-<Snippet path="hooks-to-grants" />
-
 ### [Redshift] Unload one model to S3
 
 <File name='model.sql'>

@@ -8,7 +8,7 @@ id: "incremental-microbatch"
 
 :::info Microbatch
 
-The new `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. 
+The new `microbatch` strategy is available in beta for [dbt Cloud "Latest"](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9. 
 
 If you use a custom microbatch macro, set a [distinct behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](#how-microbatch-compares-to-other-incremental-strategies).
 
@@ -36,7 +36,7 @@ Each "batch" corresponds to a single bounded time period (by default, a single d
 
 This is a powerful abstraction that makes it possible for dbt to run batches [separately](#backfills), concurrently, and [retry](#retry) them independently.
 
-### Example
+## Example
 
 A `sessions` model aggregates and enriches data that comes from two other models:
 - `page_views` is a large, time-series table. It contains many rows, new records almost always arrive after existing ones, and existing records rarely update. It uses the `page_view_start` column as its `event_time`.
@@ -175,7 +175,7 @@ It does not matter whether the table already contains data for that day. Given t
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter sessions, performing a full scan for each batch."/>
 
-### Relevant configs
+## Relevant configs
 
 Several configurations are relevant to microbatch models, and some are required:
 
@@ -188,9 +188,50 @@ Several configurations are relevant to microbatch models, and some are required:
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
+### Required configs for specific adapters
+Some adapters require additional configurations for the microbatch strategy. This is because each adapter implements the microbatch strategy differently.
+
+The following table lists the required configurations for the specific adapters, in addition to the standard microbatch configs:
+
+| Adapter  | `unique_key` config | `partition_by` config |
+|----------|------------------|--------------------|
+| [`dbt-postgres`](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | ✅ Required | N/A |
+| [`dbt-spark`](/reference/resource-configs/spark-configs#incremental-models)    | N/A | ✅ Required |
+| [`dbt-bigquery`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models) | N/A | ✅ Required |
+
+For example, if you're using `dbt-postgres`, configure `unique_key` as follows:
+
+<File name="models/sessions.sql">
+
+```sql
+{{ config(
+    materialized='incremental',
+    incremental_strategy='microbatch',
+    unique_key='sales_id', ## required for dbt-postgres
+    event_time='transaction_date',
+    begin='2023-01-01',
+    batch_size='day'
+) }}
+
+select
+    sales_id,
+    transaction_date,
+    customer_id,
+    product_id,
+    total_amount
+from {{ source('sales', 'transactions') }}
+
+```
+
+ In this example, `unique_key` is required because `dbt-postgres` microbatch uses the `merge` strategy, which needs a `unique_key` to identify which rows in the data warehouse need to get merged. Without a `unique_key`, dbt won't be able to match rows between the incoming batch and the existing table.
+
+</File>
+
+### Full refresh
+
 As a best practice, we recommend configuring `full_refresh: False` on microbatch models so that they ignore invocations with the `--full-refresh` flag. If you need to reprocess historical data, do so with a targeted backfill that specifies explicit start and end dates.
 
-### Usage
+## Usage
 
 **You must write your model query to process (read and return) exactly one "batch" of data**. This is a simplifying assumption and a powerful one:
 - You don’t need to think about `is_incremental` filtering
@@ -207,7 +248,7 @@ During standard incremental runs, dbt will process batches according to the curr
 
 **Note:** If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This isn't generally recommended — most models that configure `event_time` are fairly large, and if the reference is not filtered, each batch will perform a full scan of this input table.
 
-### Backfills
+## Backfills
 
 Whether to fix erroneous source data or retroactively apply a change in business logic, you may need to reprocess a large amount of historical data.
 
@@ -222,13 +263,13 @@ dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 
-### Retry
+## Retry
 
 If one or more of your batches fail, you can use `dbt retry` to reprocess _only_ the failed batches.
 
 ![Partial retry](https://github.com/user-attachments/assets/f94c4797-dcc7-4875-9623-639f70c97b8f)
 
-### Timezones
+## Timezones
 
 For now, dbt assumes that all values supplied are in UTC:
 

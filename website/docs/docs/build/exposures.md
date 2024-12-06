@@ -69,7 +69,7 @@ dbt test -s +exposure:weekly_jaffle_report
 
 ```
 
-When we generate the dbt Explorer site, you'll see the exposure appear:
+When we generate the [dbt Explorer site](/docs/collaborate/explore-projects), you'll see the exposure appear:
 
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-explorer-exposures.jpg" title="Exposures has a dedicated section, under the 'Resources' tab in dbt Explorer,  which lists each exposure in your project."/>
 <Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as nodes in the dbt Explorer DAG. It displays an orange 'EXP' indicator within the node. "/>

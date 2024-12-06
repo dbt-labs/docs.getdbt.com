@@ -31,7 +31,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `port`  | 5439 |  |
 | `dbname`  | my_db | Database name|
 | `schema`  | my_schema | Schema name|
-| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out|
+| `connect_timeout`  | 30 | Number of seconds before connection times out. Default is `None`|
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below|
 | `role`  | None | Optional, user identifier of the current session|
 | `autocreate`  | false | Optional, default false. Creates user if they do not exist |

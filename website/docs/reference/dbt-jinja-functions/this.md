@@ -20,8 +20,6 @@ meta:
 
 ## Examples
 
-<Snippet path="hooks-to-grants" />
-
 ### Configuring incremental models
 
 <File name='models/stg_events.sql'>

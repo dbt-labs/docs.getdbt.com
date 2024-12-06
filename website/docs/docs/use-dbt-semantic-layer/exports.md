@@ -176,7 +176,7 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVE
 
 </VersionBlock>
 
-<!-- for Versionless -->
+<!-- for Release Tracks -->
 <VersionBlock firstVersion="1.8">
 
 1. Click **Deploy** in the top navigation bar and choose **Environments**.

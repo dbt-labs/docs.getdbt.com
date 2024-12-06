@@ -22,7 +22,7 @@ While you can use caching to speed up your queries and reduce compute time, know
 
 ## Prerequisites
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
-- dbt Cloud environments that are ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless).
+- dbt Cloud environments must be on [release tracks](/docs/dbt-versions/cloud-release-tracks) and not legacy dbt Core versions.
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
