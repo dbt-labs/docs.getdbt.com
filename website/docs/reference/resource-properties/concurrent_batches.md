@@ -53,7 +53,13 @@ By default, dbt auto-detects whether batches can run in parallel for microbatch 
 
 If you've configured a microbatch incremental strategy and you're working with cumulative metrics or any logic that depends on batch order, you can override the default by setting concurrent_batches: false. 
 
+<File name='dbt_project.yml'>
 
+```yaml
+models:
+  my_project:
+    cumulative_metrics_model:
+      +concurrent_batches: false
 
 
 
