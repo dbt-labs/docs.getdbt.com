@@ -56,7 +56,6 @@ If you've configured a microbatch incremental strategy and you're working with c
 
 
 
-A batch can run in parallel only if it meets the [following conditions](/docs/build/incremental-microbatch#how-parallel-batch-execution-works):
 
 - It is not the first batch.
 - It is not the last batch.
