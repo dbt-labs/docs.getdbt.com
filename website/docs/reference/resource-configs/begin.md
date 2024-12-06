@@ -17,10 +17,6 @@ Set the `begin` config to the timestamp value at which your microbatch model dat
 
 The following examples set `2024-01-01 00:00:00` as the `begin` config for the `user_sessions` model.
 
-<Tabs> 
-
-<TabItem value="model" label="Models">
-
 Example in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
@@ -57,6 +53,3 @@ Example in sql model config block:
 ```
 
 </File> 
-
-</TabItem> 
-</Tabs>

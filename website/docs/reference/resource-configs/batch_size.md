@@ -17,10 +17,6 @@ The`batch_size` config determines how large batches are when running a microbatc
 
 The following examples set `day` as the `batch_size` for the `user_sessions` model.
 
-<Tabs> 
-
-<TabItem value="model" label="Models">
-
 Example of the `batch_size` config in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
@@ -58,5 +54,3 @@ Example in sql model config block:
 
 </File> 
 
-</TabItem> 
-</Tabs>

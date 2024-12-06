@@ -15,11 +15,7 @@ Set the `lookback` to an integer greater than or equal to zero. The default valu
 
 ## Examples
 
-
 The following examples set `2` as the `lookback` config for the `user_sessions` model.
-<Tabs> 
-
-<TabItem value="model" label="Models">
 
 Example in the `dbt_project.yml` file:
 
@@ -57,6 +53,3 @@ Example in sql model config block:
 ```
 
 </File> 
-
-</TabItem> 
-</Tabs>
