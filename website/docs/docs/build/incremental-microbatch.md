@@ -320,7 +320,7 @@ Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't 
 
 
 
-Choosing between parallel batch execution and sequential processing depends on the specific requirements of your application. 
+Choosing between parallel batch execution and sequential processing depends on the specific requirements of your use case. 
 
 - Parallel batch execution is faster but requires logic that's independent of batch execution order. For example, if you're developing a data pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction shouldn't depend on the order of how batches are executed or completed.
 - Sequential processing is slower but essential for calculations like [cumulative metrics](/docs/build/cumulative)  in microbatch models. It processes data in the correct order, allowing each step to build on the previous one.
