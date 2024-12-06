@@ -4,6 +4,8 @@ id: "connect-azure-devops"
 pagination_next: "docs/cloud/git/setup-azure"
 ---
 
+# Connect to Azure DevOps <Lifecycle status="enterprise" />
+
 <Snippet path="available-enterprise-tier-only" />
 
 

@@ -186,7 +186,8 @@ Several configurations are relevant to microbatch models, and some are required:
 | `begin`      |  The "beginning of time" for the microbatch model. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches (it's a leap year!) plus the batch for "today."        | N/A     | Date   | Required |
 | `batch_size` |  The granularity of your batches. Supported values are `hour`, `day`, `month`, and `year`    | N/A     | String  | Required |
 | `lookback`   | Process X batches prior to the latest bookmark to capture late-arriving records.    | `1`     | Integer | Optional |
-|`concurrent_batches`| Configures whether batches can run concurrently (at the same time) or sequentially (one after the other). Can set to `True` or `False`. When set to `True` and conditions are met, batches run in parallel. | `None` | Boolean | Optional |
+| `concurrent_batches` | An override for whether batches run concurrently (at the same time) or sequentially (one after the other). | `None` | Boolean | Optional |
+
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
 
@@ -286,7 +287,9 @@ While we may consider adding support for custom time zones in the future, we als
 
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. 
 
-Parallel batch execution means that multiple batches are processed at the same time using the `concurrent_batches` config, instead of one after the other (sequentially) for faster processing of your microbatch models. 
+Parallel batch execution means that multiple batches are processed at the same time, instead of one after the other (sequentially) for faster processing of your microbatch models.  
+
+dbt automatically detects whether a batch can be run in parallel in most cases, which means you don’t need to configure this setting. However, the `concurrent_batches` config is available as an override (not a gate), allowing you to specify whether batches should or shouldn’t be run in parallel in specific cases.
 
 For example, if you have a microbatch model with 12 batches, you can execute those batches to run in parallel. Specifically they'll run in parallel limited by the number of [available threads](/docs/running-a-dbt-project/using-threads).
 
@@ -297,8 +300,9 @@ To enable parallel execution, you must meet the following conditions:
 - You use the following supported adapters:
   - Snowflake
   - Databricks
-  - More adapters coming soon!
-- The relation in the data warehouse for the model doesn't exist
+  - More adapters coming soon! 
+  
+We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
 - You meet [additional conditions](#how-parallel-batch-execution-works) mentioned in the next section
 
 ### How parallel batch execution works
@@ -310,21 +314,19 @@ A batch can only run in parallel if:
 | 1.   | **Not** the first batch |  ✅         | -            |
 | 2.   | **Not** the last batch  |  ✅         | -            |
 | 3.   | [Adapter supports](#prerequisites) parallel batches | ✅  | -         |
-| 4.   | `concurrent_batches` set to `True`  |  ✅     |   -  |
-| 5.   | `concurrent_batches` set to `False` |     -   |   ✅ |
 
 
 After checking for 1, 2, and 3 in the previous table &mdash; and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 
 
-Otherwise, if the `concurrent_batches` value isn't set _and_ `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel.  
-### Parallel or sequential execution?
+Otherwise, if `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel. This can be overriden by setting a value for `concurrent_batches`.
+### Parallel or sequential execution
 
 
 
-Choosing between parallel batch execution and sequential processing depends on the specific requirements of your application. 
+Choosing between parallel batch execution and sequential processing depends on the specific requirements of your use case. 
 
-- Parallel batch execution is faster but requires logic that is independent of batch execution order. For example, if you are developing a data processing pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction must not depend on the order of how batches are executed or completed.
-- Sequential processing isn't as performant and is slower however, it enables calculations such as cumulative metrics in microbatch models. Since cumulative metrics require data to be processed in the correct order to ensure each step builds on the previous one, sequential processing is ideal. 
+- Parallel batch execution is faster but requires logic that's independent of batch execution order. For example, if you're developing a data pipeline for a system that processes user transactions in batches, each batch is executed in parallel for better performance. However, the logic used to process each transaction shouldn't depend on the order of how batches are executed or completed.
+- Sequential processing is slower but essential for calculations like [cumulative metrics](/docs/build/cumulative)  in microbatch models. It processes data in the correct order, allowing each step to build on the previous one.
 
 <!-- You can override the check for `this` by setting `concurrent_batches` to either `True` or `False`. If set to `False`, the batch will be run sequentially. If set to `True` the batch will be run in parallel (assuming [1], [2], and [3])
 To override the `this` check, use the `concurrent_batches` configuration:
@@ -362,7 +364,7 @@ select ...
 
 ### Configure `concurrent_batches` 
 
-If you meet all the [conditions](#prerequisites), set the `concurrent_batches` config in your `dbt_project.yml` or incremental microbatch model `.sql` file to run batches in parallel:
+By default, dbt auto-detects whether batches can run in parallel for microbatch models, and this works correctly in most cases. However, you can override dbt's detection by setting the `concurrent_batches` config in your `dbt_project.yml` or model `.sql` file to specify parallel or sequential execution, given you meet all the [conditions](#prerequisites):
 
 <Tabs>
 <TabItem value="yaml" label="dbt_project.yml">
@@ -401,7 +403,9 @@ select ...
 </Tabs>
 
 Depending on your use case, configuring your microbatch models to run in parallel offer faster processing, in comparison to running batches sequentially.
+### How microbatch compares to other incremental strategies
 
+As data warehouses roll out new operations for concurrently replacing/upserting data partitions, we may find that the new operation for the data warehouse is more efficient than what the adapter uses for microbatch. In such instances we reserve the right the update the default operation for microbatch, so long as it works as intended/documented for models that fit the microbatch paradigm.
 ## How `microbatch` compares to other incremental strategies?
 
 Most incremental models rely on the end user (you) to explicitly tell dbt what "new" means, in the context of each model, by writing a filter in an `{% if is_incremental() %}` conditional block. You are responsible for crafting this SQL in a way that queries [`{{ this }}`](/reference/dbt-jinja-functions/this) to check when the most recent record was last loaded, with an optional look-back window for late-arriving records. 
