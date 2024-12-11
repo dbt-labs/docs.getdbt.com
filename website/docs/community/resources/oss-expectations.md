@@ -16,7 +16,7 @@ There's a very practical reason, too: OSS prioritizes our collective knowledge a
 
 ### We take seriously our role as maintainers of a standard
 
-As a standard, dbt must be reliable and consistent. Our first priority is ensuring the continued high quality of existing dbt capabilities, before we introduce net-new capabilities.
+As a standard, dbt must be reliable and consistent. Our first priority is ensuring the continued high quality of existing dbt capabilities before we introduce net-new capabilities.
 
 We also believe dbt as a framework should be extensible enough to ["make the easy things easy, and the hard things possible"](https://en.wikipedia.org/wiki/Perl#Philosophy). To that end, we _don't_ believe it's appropriate for dbt to have an out-of-the-box solution for every niche problem. Users have the flexibility to achieve many custom behaviors by defining their own macros, materializations, hooks, and more. We view it as our responsibility as maintainers to decide when something should be "possible" — via macros, packages, etc. — and when something should be "easy" — built into the dbt Core standard.
 
@@ -28,7 +28,7 @@ So when will we say "yes" to new capabilities for dbt Core? The signals we look 
 In the meantime — we'll do our best to respond to new issues with:
 - Clarity about whether the proposed feature falls into the intended scope of dbt Core
 - Context (including links to related issues)
-- Alternatives/workarounds
+- Alternatives and workarounds
 - When possible, pointers to code that would aid a community contributor
 
 ### Initiative is everything
@@ -47,11 +47,11 @@ Sometimes, this can feel like shouting into the void, especially if you aren't m
 
 ### Discussions
 
-A discussion is best suited to propose a Big Idea, such as brand-new capability in dbt Core or an adapter. Anyone can open a discussion, add a comment to an existing one, or reply in a thread.
+A discussion is best suited to propose a Big Idea, such as brand-new capability in dbt Core or an adapter. Anyone can open a discussion, comment on an existing one, or reply in a thread.
 
-When you open a new discussion, you're looking for validation from other members of the community — folks who identify with your problem statement, who like your proposed idea, and who may have their own ideas for how it could be improved. The most helpful comments are ones that propose nuances or desirable user experiences to be considered in design and refinement. Unlike an **issue**, there is no specific code change that would “resolve” a Discussion.
+When you open a new discussion, you might be looking for validation from other members of the community — folks who identify with your problem statement, who like your proposed idea, and who may have their own ideas for how it could be improved. The most helpful comments propose nuances or desirable user experiences to be considered in design and refinement. Unlike an **issue**, there is no specific code change that would “resolve” a discussion.
 
-If, over the course of a discussion, we manage to reach consensus on specific elements of a proposed design, we can open new implementation issues that reference the discussion for context. Those issues will connect desired user outcomes to specific implementation details, acceptance testing, and remaining questions that need answering.
+If, over the course of a discussion, we reach a consensus on specific elements of a proposed design, we can open new implementation issues that reference the discussion for context. Those issues will connect desired user outcomes to specific implementation details, acceptance testing, and remaining questions that need answering.
 
 ### Issues
 
@@ -61,7 +61,7 @@ An issue could be a bug you've identified while using the product or reading the
 
 - Issues are **not** for support / troubleshooting / debugging help. Please see [dbt support](/docs/dbt-support) for more details and suggestions on how to get help.
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
-- Many dbt repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This information helps us (and others) understand your issue.
+- Many dbt repositories offer templates for creating issues, such as reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This information helps us (and others) understand your issue.
 
 ##### You've found an existing issue that interests you. What should you do?
 
@@ -71,9 +71,9 @@ Comment on it! Explain that you've run into the same bug, or had a similar idea 
 
 In our most critical repositories (such as `dbt-core`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What if I'm opening an issue in a different repository?** We have engineering teams dedicated to active maintainence of [`dbt-core`](https://github.com/dbt-labs/dbt-core) and its component libraries ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters)), as well as several platform-specific adapters ([`dbt-snowflake`](https://github.com/dbt-labs/dbt-snowflake), [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery), [`dbt-redshift`](https://github.com/dbt-labs/dbt-redshift), [`dbt-postgres`](https://github.com/dbt-labs/dbt-postgres)). We've open sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
+**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) and its component libraries ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters)), as well as several platform-specific adapters ([`dbt-snowflake`](https://github.com/dbt-labs/dbt-snowflake), [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery), [`dbt-redshift`](https://github.com/dbt-labs/dbt-redshift), [`dbt-postgres`](https://github.com/dbt-labs/dbt-postgres)). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
-**I'm not sure about the status of my issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
+**You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
 - The intended scope or user experience of a proposed feature requires further refinement from a maintainer
 - We believe the required code change is too tricky for an external contributor
 
