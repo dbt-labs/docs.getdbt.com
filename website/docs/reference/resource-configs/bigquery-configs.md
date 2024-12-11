@@ -425,9 +425,10 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
-The `incremental_strategy` config can be set to one of two values:
- - `merge` (default)
- - `insert_overwrite`
+The `incremental_strategy` config can be set to one of the following values:
+- `merge` (default)
+- `insert_overwrite`
+- [`microbatch`](/docs/build/incremental-microbatch)
 
 ### Performance and cost
 
@@ -561,7 +562,7 @@ If no `partitions` configuration is provided, dbt will instead:
 3. Query the destination table to find the _max_ partition in the database
 
 When building your model SQL, you can take advantage of the introspection performed
-by dbt to filter for only _new_ data. The max partition in the destination table
+by dbt to filter for only _new_ data. The maximum value in the partitioned field in the destination table
 will be available using the `_dbt_max_partition` BigQuery scripting variable. **Note:**
 this is a BigQuery SQL variable, not a dbt Jinja variable, so no jinja brackets are
 required to access this variable.
@@ -908,3 +909,10 @@ By default, this is set to `True` to support the default `intermediate_format` o
 ### The `intermediate_format` parameter
 The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
 
+<VersionBlock firstVersion="1.8">
+
+## Unit test limitations
+
+You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
+
+</VersionBlock>

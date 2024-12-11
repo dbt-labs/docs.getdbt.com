@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud or dbt Core with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [dbt Cloud](#dbt-cloud) or [dbt Core](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
 ## dbt Cloud
 
@@ -76,13 +76,23 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 [dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data practitioners to transform data using analytics engineering best practices. It suits individuals and small technical teams who prefer manual setup and customization, supports community adapters, and open-source standards.
 
-Refer to the following quickstarts to get started with dbt Core:
+<div className="grid--3-col">
 
-- [dbt Core from a manual install](/guides/manual-install) to learn how to install dbt Core and set up a project.
-- [dbt Core using GitHub Codespace](/guides/codespace?step=1) to learn how to create a codespace and execute the `dbt build` command.
+<Card
+    title="dbt Core from a manual install"
+    body="Learn how to install dbt Core and set up a project."
+    link="https://docs.getdbt.com/guides/manual-install"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Core using GitHub Codespace"
+    body="Learn how to create a codespace and execute the dbt build command."
+    link="https://docs.getdbt.com/guides/codespace?step=1"
+    icon="dbt-bit"/>
+</div>
 
 ## Related docs
-<!-- use as an op to link to other useful guides when the query params pr is merged -->
+
 Expand your dbt knowledge and expertise with these additional resources:
 
 - [Join the bi-weekly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.

@@ -156,15 +156,17 @@ Building this model incrementally without the `unique_key` parameter would resul
 ## How do I rebuild an incremental model?
 If your incremental model logic has changed, the transformations on your new rows of data may diverge from the historical transformations, which are stored in your target table. In this case, you should rebuild your incremental model.
 
-To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time.
+To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time. 
 
 ```bash
 $ dbt run --full-refresh --select my_incremental_model+
 ```
+
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
-For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation.
+You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 
+For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation. 
 
 ## What if the columns of my incremental model change?
 

@@ -17,6 +17,7 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 - `append` (default when `unique_key` is not defined)
 - `merge`
 - `delete+insert` (default when `unique_key` is defined)
+- [`microbatch`](/docs/build/incremental-microbatch)
 
 All of these strategies are inherited from dbt-postgres.
 

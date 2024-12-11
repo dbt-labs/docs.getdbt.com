@@ -103,6 +103,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/versionless-cloud",
+      "destination": "/docs/dbt-versions/cloud-release-tracks",
+      "permanent": true
+    },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true

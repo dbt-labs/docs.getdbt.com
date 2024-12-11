@@ -40,8 +40,6 @@ Hooks are snippets of SQL that are executed at different times:
 
 Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 
-<Snippet path="hooks-to-grants" />
-
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
 
 * Need to apply `grants` in a more complex way, which the dbt Core `grants` config doesn't (yet) support.

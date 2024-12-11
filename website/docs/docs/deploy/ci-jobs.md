@@ -10,7 +10,7 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 - You have a dbt Cloud account. 
 - CI features:
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [dbt Cloud Versionless](/docs/dbt-versions/versionless-cloud) and to dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project.
+   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks) and to dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project.
 - [Advanced CI](/docs/deploy/advanced-ci) features:
    - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
@@ -188,6 +188,8 @@ To validate _all_ semantic nodes in your project, add the following command to d
 
 ## Troubleshooting
 
+<FAQ path="Troubleshooting/gitlab-webhook"/>
+
 <DetailsToggle alt_header="Temporary schemas aren't dropping">
 If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
 - You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.
@@ -200,6 +202,7 @@ To resolve this, change your macro so that the temporary PR schema name contains
 A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
 
 </DetailsToggle>
+
 
 <DetailsToggle alt_header="Error messages that refer to schemas from previous PRs">
 

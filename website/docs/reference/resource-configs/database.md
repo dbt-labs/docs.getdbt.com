@@ -49,7 +49,7 @@ This would result in the generated relation being located in the `staging` datab
 
 <VersionBlock lastVersion="1.8">
 
-Available for versionless dbt Cloud or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
 
 </VersionBlock>
 
@@ -79,22 +79,19 @@ This results in the generated relation being located in the `snapshots` database
 
 <TabItem value="test" label="Tests">
 
-Configure a database in your `dbt_project.yml` file. 
+Customize the database for storing test results in your `dbt_project.yml` file.
 
-For example, to load a test into a database called `reporting` instead of the target database, you can configure it like this:
+For example, to save test results in a specific database, you can configure it like this:
 
 <File name='dbt_project.yml'>
 
 ```yml
 tests:
-  - my_not_null_test:
-      column_name: order_id
-      type: not_null
-      +database: reporting
+  +store_failures: true
+  +database: test_results
 ```
 
-This would result in the generated relation being located in the `reporting` database, so the full relation name would be `reporting.finance.my_not_null_test`.
-
+This would result in the test results being stored in the `test_results` database.
 </File>
 </TabItem>
 </Tabs>

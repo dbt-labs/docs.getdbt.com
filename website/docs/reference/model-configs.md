@@ -36,8 +36,10 @@ models:
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
+
 
 </File>
 
@@ -57,6 +59,7 @@ models:
       [materialized](/reference/resource-configs/materialized): <materialization_name>
       [sql_header](/reference/resource-configs/sql_header): <string>
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
 
@@ -69,12 +72,13 @@ models:
 
 <File name='models/<model_name>.sql'>
 
-```jinja
+```sql
 
 {{ config(
     [materialized](/reference/resource-configs/materialized)="<materialization_name>",
     [sql_header](/reference/resource-configs/sql_header)="<string>"
     [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
 ) }}
 
 ```
@@ -212,7 +216,7 @@ models:
 
 <VersionBlock lastVersion="1.8">
 
-```jinja
+```sql
 
 {{ config(
     [enabled](/reference/resource-configs/enabled)=true | false,
@@ -233,7 +237,7 @@ models:
 
 <VersionBlock firstVersion="1.9">
 
-```jinja
+```sql
 
 {{ config(
     [enabled](/reference/resource-configs/enabled)=true | false,
@@ -246,8 +250,9 @@ models:
     [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
     [meta](/reference/resource-configs/meta)={<dict>},
     [grants](/reference/resource-configs/grants)={<dict>},
-    [contract](/reference/resource-configs/contract)={<dictionary>}
-    [event_time](/reference/resource-configs/event-time): my_time_field
+    [contract](/reference/resource-configs/contract)={<dictionary>},
+    [event_time](/reference/resource-configs/event-time)='my_time_field',
+
 ) }}
 
 ```

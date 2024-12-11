@@ -10,6 +10,7 @@ Connecting your GitLab account to dbt Cloud provides convenience and another lay
 - Clone repos using HTTPS rather than SSH.
 - Carry GitLab user permissions through to dbt Cloud or dbt Cloud CLI's git actions.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
+  - GitLab automatically registers a webhook in your GitLab repository to enable seamless integration with dbt Cloud.
 
 The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
 - the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
@@ -61,8 +62,8 @@ In GitLab, when creating your Group Application, input the following:
 | ------ | ----- |
 | **Name** | dbt Cloud |
 | **Redirect URI** | `https://YOUR_ACCESS_URL/complete/gitlab` |
-| **Confidential** | ✔️ |
-| **Scopes** | ✔️ api |
+| **Confidential** | ✅ |
+| **Scopes** | ✅ api |
 
 Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
@@ -114,20 +115,10 @@ If your GitLab account is not connected, you’ll see "No connected account". Se
 
 Once you approve authorization, you will be redirected to dbt Cloud, and you should see your connected account. You're now ready to start developing in the dbt Cloud IDE or dbt Cloud CLI.
 
-
 ## Troubleshooting
 
-### Errors when importing a repository on dbt Cloud project set up
-If you do not see your repository listed, double-check that:
-- Your repository is in a Gitlab group you have access to. dbt Cloud will not read repos associated with a user.
-
-If you do see your repository listed, but are unable to import the repository successfully, double-check that:
-- You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.
-
-If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above.
-
-## FAQs
-
+<FAQ path="Troubleshooting/gitlab-webhook"/>
+<FAQ path="Troubleshooting/error-importing-repo"/>
 <FAQ path="Git/gitignore"/>
 <FAQ path="Git/gitlab-authentication"/>
 <FAQ path="Git/gitlab-selfhosted"/>

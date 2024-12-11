@@ -1,11 +1,64 @@
 ---
-resource_types: [snapshots]
+resource_types: [snapshots, models]
 description: "Learn more about unique_key configurations in dbt."
 datatype: column_name_or_expression
 ---
 
 
+<Tabs>
+
+<TabItem value="models" label="Models">
+
+Configure the `unique_key` in the `config` block of your [incremental model's](/docs/build/incremental-models) SQL file, in your `models/properties.yml` file, or in your `dbt_project.yml` file.
+
+<File name='models/my_incremental_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='id'
+    )
+}}
+
+```
+
+</File>
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: my_incremental_model
+    description: "An incremental model example with a unique key."
+    config:
+      materialized: incremental
+      unique_key: id
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: jaffle_shop
+
+models:
+  jaffle_shop:
+    staging:
+      +unique_key: id
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
+
 <VersionBlock firstVersion="1.9">
+
+For [snapshots](/docs/build/snapshots), configure the `unique_key` in the your `snapshot/filename.yml` file or in your `dbt_project.yml` file.
 
 <File name='snapshots/<filename>.yml'>
 
@@ -22,6 +75,8 @@ snapshots:
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
+
+Configure the `unique_key` in the `config` block of your snapshot SQL file or in your `dbt_project.yml` file.
 
 import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
 
@@ -49,10 +104,13 @@ snapshots:
 
 </File>
 
-## Description
-A column name or expression that is unique for the inputs of a snapshot. dbt uses this to match records between a result set and an existing snapshot, so that changes can be captured correctly.
+</TabItem>
+</Tabs>
 
-In Versionless and dbt v1.9 and later, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
+## Description
+A column name or expression that is unique for the inputs of a snapshot or incremental model. dbt uses this to match records between a result set and an existing snapshot or incremental model, so that changes can be captured correctly.
+
+In dbt Cloud "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 
 :::caution 
 
@@ -66,6 +124,32 @@ This is a **required parameter**. No default is provided.
 
 ## Examples
 ### Use an `id` column as a unique key
+
+<Tabs>
+
+<TabItem value="models" label="Models">
+
+In this example, the `id` column is the unique key for an incremental model.
+
+<File name='models/my_incremental_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='id'
+    )
+}}
+
+select * from ..
+```
+
+</File>
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
+
+In this example, the `id` column is used as a unique key for a snapshot.
 
 <VersionBlock firstVersion="1.9">
 
@@ -114,9 +198,37 @@ snapshots:
 
 </File>
 
+</TabItem>
+</Tabs>
+
 <VersionBlock firstVersion="1.9">
 
 ### Use multiple unique keys
+
+<Tabs>
+<TabItem value="models" label="Models">
+
+Configure multiple unique keys for an incremental model as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …]`. 
+
+Columns must not contain null values, otherwise the incremental model will fail to match rows and generate duplicate rows. Refer to [Defining a unique key](/docs/build/incremental-models#defining-a-unique-key-optional) for more information.
+
+<File name='models/my_incremental_model.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    unique_key=['order_id', 'location_id']
+) }}
+
+with...
+
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
 
 You can configure snapshots to use multiple unique keys for `primary_key` columns.
 
@@ -137,11 +249,34 @@ snapshots:
 ```
 
 </File>
+</TabItem>
+</Tabs>
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
 ### Use a combination of two columns as a unique key
+
+<Tabs>
+<TabItem value="models" label="Models">
+
+<File name='models/my_incremental_model.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    unique_key=['order_id', 'location_id']
+) }}
+
+with...
+
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
 
 This configuration accepts a valid column expression. As such, you can concatenate two columns together as a unique key if required. It's a good idea to use a separator (for example, `'-'`) to ensure uniqueness.
 
@@ -169,7 +304,6 @@ from {{ source('erp', 'transactions') }}
 </File>
 
 Though, it's probably a better idea to construct this column in your query and use that as the `unique_key`:
-
 
 <File name='models/transaction_items_ephemeral.sql'>
 
@@ -211,4 +345,6 @@ from {{ source('erp', 'transactions') }}
 ```
 
 </File>
+</TabItem>
+</Tabs>
 </VersionBlock>

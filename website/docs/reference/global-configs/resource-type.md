@@ -6,7 +6,7 @@ sidebar: "resource type"
 
 <VersionBlock lastVersion="1.8">
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands. In Versionless and from dbt v1.9 onwards, these flags are also supported in the `dbt test` command.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands. In dbt v1.9 onwards, these flags are also supported in the `dbt test` command.
 
 </VersionBlock>
 

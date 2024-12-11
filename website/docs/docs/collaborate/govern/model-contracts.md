@@ -205,13 +205,11 @@ At the same time, for models with many columns, we understand that this can mean
 
 When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
 
-Breaking changes include:
-- Removing an existing column.
-- Changing the `data_type` of an existing column.
-- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher).
-- Removing a contracted model by deleting, renaming, or disabling it (dbt v1.9 or higher).
-  - versioned models will raise an error.
-  - unversioned models will raise a warning.
+import BreakingChanges from '/snippets/_versions-contracts.md';
+
+<BreakingChanges 
+value="Removing a contracted model by deleting, renaming, or disabling it (dbt v1.9 or higher)."
+value2="versioned models will raise an error. unversioned models will raise a warning."
+/>
 
 More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
-

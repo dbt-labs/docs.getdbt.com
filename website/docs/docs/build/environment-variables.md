@@ -83,7 +83,7 @@ If you change the value of an environment variable mid-session while using the I
 
 To refresh the IDE mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the IDE. A new modal will pop up, and you should select the Refresh IDE button. This will load your environment variables values into your development environment.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.gif" title="Refreshing IDE mid-session"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.png" title="Refreshing IDE mid-session"/>
 
 There are some known issues with partial parsing of a project and changing environment variables mid-session in the IDE. If you find that your dbt project is not compiling to the values you've set, try deleting the `target/partial_parse.msgpack` file in your dbt project which will force dbt to re-compile your whole project.
 

@@ -11,7 +11,12 @@ sidebar_label: "Connect BigQuery"
 
 :::info Uploading a service account JSON keyfile
 
-While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account <Term id="json" /> keyfile to quickly and accurately configure a connection to BigQuery.
+While the fields in a BigQuery connection can be specified manually, we recommend uploading a service account <Term id="json" /> keyfile to quickly and accurately configure a connection to BigQuery. 
+
+You can provide the JSON keyfile in one of two formats:
+
+- JSON keyfile upload &mdash; Upload the keyfile directly in its normal JSON format.
+- Base64-encoded string &mdash; Provide the keyfile as a base64-encoded string. When you provide a base64-encoded string, dbt decodes it automatically and populates the necessary fields.
 
 :::
 

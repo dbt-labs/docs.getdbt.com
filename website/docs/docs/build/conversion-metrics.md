@@ -34,6 +34,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `base_measure:name` | The base conversion event measure. |  Required | String |
 | `base_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | String |
 | `base_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
+| `base_measure:filter` | Optional `filter` used to apply to the base measure. | Optional | String |
 | `conversion_measure` | A list of conversion measure inputs. | Required | Dict |
 | `conversion_measure:name` | The base conversion event measure.| Required | String |
 | `conversion_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | String |
@@ -61,6 +62,7 @@ metrics:
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
           join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+          filter: The filter used to apply to the base measure. # Optional
         conversion_measure:
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
@@ -105,12 +107,13 @@ Next, define a conversion metric as follows:
 - name: visit_to_buy_conversion_rate_7d
   description: "Conversion rate from visiting to transaction in 7 days"
   type: conversion
-  label: Visit to Buy Conversion Rate (7-day window)
+  label: Visit to buy conversion rate (7-day window)
   type_params:
     conversion_type_params:
       base_measure:
         name: visits
         fill_nulls_with: 0
+        filter: {{ Dimension('visits__referrer_id') }} = 'facebook'
       conversion_measure:
         name: sellers
       entity: user
