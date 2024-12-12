@@ -4,7 +4,7 @@ title: "Caveats to state comparison"
 
 import StateModified from '/snippets/_state-modified-compare.md';
 
-The [`state:` selection method](/reference/node-selection/methods#the-state-method) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
+The [`state:` selection method](/reference/node-selection/methods#state) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
 ### Seeds
 

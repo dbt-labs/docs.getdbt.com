@@ -77,5 +77,5 @@ When we generate the [dbt Explorer site](/docs/collaborate/explore-projects), yo
 ## Related docs
 
 * [Exposure properties](/reference/exposure-properties)
-* [`exposure:` selection method](/reference/node-selection/methods#the-exposure-method)
+* [`exposure:` selection method](/reference/node-selection/methods#exposure)
 * [Data health tiles](/docs/collaborate/data-tile)

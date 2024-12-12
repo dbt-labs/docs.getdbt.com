@@ -146,7 +146,7 @@ For semantic nodes and models that aren't downstream of modified models, dbt Clo
 
 <Expandable alt_header="Semantic nodes that are modified or affected by downstream modified nodes.">
 
-To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#stateful-selection)):
+To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#state-selection)):
 
 ```bash
 dbt sl validate --select state:modified+

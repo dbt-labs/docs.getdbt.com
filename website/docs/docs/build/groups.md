@@ -119,4 +119,4 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 * [Model Access](/docs/collaborate/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)
-* [Group selection](/reference/node-selection/methods#the-group-method)
+* [Group selection](/reference/node-selection/methods#group)
