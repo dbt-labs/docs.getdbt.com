@@ -63,10 +63,10 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check
+          reporter: github-pr-review
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
-          version: '2.27.0'
+          version: '3.9.1.0'
 
 #      - name: Post summary comment
 #        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
