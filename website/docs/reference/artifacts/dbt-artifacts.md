@@ -7,7 +7,7 @@ With every invocation, dbt generates and saves one or more *artifacts*. Several 
 
 - [documentation](/docs/collaborate/build-and-view-your-docs)
 - [state](/reference/node-selection/syntax#about-node-selection)
-- [visualizing source freshness](/docs/build/sources#snapshotting-source-data-freshness)
+- [visualizing source freshness](/docs/build/sources#source-data-freshness)
 
 They could also be used to:
 

@@ -75,4 +75,4 @@ Snapshots of source freshness can be used to understand:
 
 This command can be run manually to determine the state of your source data freshness at any time. It is also recommended that you run this command on a schedule, storing the results of the freshness snapshot at regular intervals. These longitudinal snapshots will make it possible to be alerted when source data freshness SLAs are violated, as well as understand the trend of freshness over time.
 
-dbt Cloud makes it easy to snapshot source freshness on a schedule, and provides a dashboard out of the box indicating the state of freshness for all of the sources defined in your project. For more information on snapshotting freshness in dbt Cloud, check out the [docs](/docs/build/sources#snapshotting-source-data-freshness).
+dbt Cloud makes it easy to snapshot source freshness on a schedule, and provides a dashboard out of the box indicating the state of freshness for all of the sources defined in your project. For more information on snapshotting freshness in dbt Cloud, check out the [docs](/docs/build/sources#source-data-freshness).

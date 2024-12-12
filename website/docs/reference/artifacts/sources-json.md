@@ -7,7 +7,7 @@ sidebar_label: "Sources"
 
 **Produced by:** [`source freshness`](/reference/commands/source)
 
-This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](/docs/build/sources#snapshotting-source-data-freshness).
+This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](/docs/build/sources#source-data-freshness).
 
 ### Top-level keys
 

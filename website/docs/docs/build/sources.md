@@ -130,11 +130,11 @@ You can find more details on the available properties for sources in the [refere
 <FAQ path="Tests/testing-sources" />
 <FAQ path="Runs/running-models-downstream-of-source" />
 
-## Snapshotting source data freshness
-With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
+## Source data freshness
+With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
 
 ### Declaring source freshness
-To configure sources to snapshot freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:
+To configure source freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:
 
 <File name='models/<filename>.yml'>
 
@@ -164,14 +164,14 @@ sources:
 
 </File>
 
-In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
+In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness for the tables in this source.
 
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
 
 These configs are applied hierarchically, so `freshness` and `loaded_at_field` values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
 ### Checking source freshness
-To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
+To obtain freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
 
 ```
 $ dbt source freshness
@@ -182,7 +182,7 @@ Behind the scenes, dbt uses the freshness properties to construct a `select` que
 ```sql
 select
   max(_etl_loaded_at) as max_loaded_at,
-  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+  convert_timezone('UTC', current_timestamp()) as calculated_at
 from raw.jaffle_shop.orders
 
 ```
@@ -198,7 +198,7 @@ Some databases can have tables where a filter over certain columns are required,
 ```sql
 select
   max(_etl_loaded_at) as max_loaded_at,
-  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+  convert_timezone('UTC', current_timestamp()) as calculated_at
 from raw.jaffle_shop.orders
 where _etl_loaded_at >= date_sub(current_date(), interval 1 day)
 ```
