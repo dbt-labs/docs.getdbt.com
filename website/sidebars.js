@@ -1087,6 +1087,7 @@ const sidebarSettings = {
           type: "category",
           label: "Node selection",
           items: [
+            "reference/node-selection/node-selection",
             "reference/node-selection/syntax",
             "reference/node-selection/graph-operators",
             "reference/node-selection/set-operators",
