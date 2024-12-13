@@ -18,7 +18,7 @@ You can also configure [custom materializations](/guides/create-new-materializat
 
 
 ## Configuring materializations
-By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the `materialized` configuration parameter as shown below.
+By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the [`materialized` configuration](/reference/resource-configs/materialized) parameter as shown in the following tabs.
 
 <Tabs>
 
