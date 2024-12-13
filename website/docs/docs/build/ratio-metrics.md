@@ -10,17 +10,17 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 
  The parameters, description, and type for ratio metrics are:
 
-| Parameter | Description | Type |
-| --------- | ----------- | ---- |
-| `name` | The name of the metric. | Required |
-| `description` | The description of the metric. | Optional |
-| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
-| `type_params` | The type parameters of the metric. | Required |
-| `numerator` | The name of the metric used for the numerator, or structure of properties. | Required |
-| `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
-| `filter` | Optional filter for the numerator or denominator. | Optional |
-| `alias` | Optional alias for the numerator or denominator. | Optional |
+| Parameter | Description | Required | Type | 
+| --------- | ----------- | ---- | ---- |
+| `name` | The name of the metric. | Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `type_params` | The type parameters of the metric. | Required | Dict |
+| `numerator` | The name of the metric used for the numerator, or structure of properties. | Required | String or dict |
+| `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  | String  or dict |
+| `filter` | Optional filter for the numerator or denominator. | Optional | String |
+| `alias` | Optional alias for the numerator or denominator. | Optional | String |
 
 The following displays the complete specification for ratio metrics, along with an example.
 

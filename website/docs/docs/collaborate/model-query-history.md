@@ -13,22 +13,30 @@ Model query history allows you to:
 - Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
-Model query history is powered by a single consumption query of the query log table in your data warehouse aggregated on a daily basis. It currently supports Snowflake and BigQuery only, with additional platforms coming soon.
+Model query history is powered by a single consumption query of the query log table in your data warehouse aggregated on a daily basis. 
 
-:::info What is a consumption query?
+<Expandable alt_header="What is a consumption query?">
+
 Consumption query is a metric of queries in your dbt project that has used the model in a given time. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
 
 So for example, if `model_super_santi` was queried 10 times in the past week, it would count as having 10 consumption queries for that particular time period.
+</Expandable>
+
+
+:::info Support for Snowflake (Enterprise tier or higher) and BigQuery
+
+Model query history for Snowflake users is **only available for Enterprise tier or higher**. The feature also supports BigQuery. Additional platforms coming soon.
 :::
 
 ## Prerequisites
 
 To access the features, you should meet the following:
 
-1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
+1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
 4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so. Support for additional data platforms coming soon.
+   - For Snowflake users: You **must** have a Snowflake Enterprise tier or higher subscription.
 
 ## Enable query history in dbt Cloud
 

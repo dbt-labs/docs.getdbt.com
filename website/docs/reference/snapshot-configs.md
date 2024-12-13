@@ -8,29 +8,15 @@ meta:
 import ConfigResource from '/snippets/_config-description-resource.md';
 import ConfigGeneral from '/snippets/_config-description-general.md';
 
-
 ## Related documentation
 * [Snapshots](/docs/build/snapshots)
 * The `dbt snapshot` [command](/reference/commands/snapshot)
 
-<!--
-Parts of a snapshot:
-- name
-- query
--->
 
 ## Available configurations
 ### Snapshot-specific configurations
 
 <ConfigResource meta={frontMatter.meta} />
-
-<VersionBlock lastVersion="1.8">
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-
-</VersionBlock>
 
 <Tabs
   groupId="config-languages"
@@ -57,7 +43,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
     [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
     [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
-
+    [+](/reference/resource-configs/plus-prefix)[invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ```
 
 </File>
@@ -79,7 +65,8 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
     [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
     [+](/reference/resource-configs/plus-prefix)[snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
-
+    [+](/reference/resource-configs/plus-prefix)[dbt_valid_to_current](/reference/resource-configs/dbt_valid_to_current): <string> 
+    [+](/reference/resource-configs/plus-prefix)[hard_deletes](/reference/resource-configs/hard-deletes): string
 ```
 
 </File>
@@ -113,7 +100,8 @@ snapshots:
       [updated_at](/reference/resource-configs/updated_at): <column_name>
       [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
       [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names): {<dictionary>}
-
+      [hard_deletes](/reference/resource-configs/hard-deletes): string
+      [dbt_valid_to_current](/reference/resource-configs/dbt_valid_to_current): <string>
 ```
 </File>
 
@@ -123,11 +111,9 @@ snapshots:
 
 <TabItem value="config-resource">
 
-<VersionBlock firstVersion="1.9">
+import LegacySnapshotConfig from '/snippets/_legacy-snapshot-config.md';
 
-Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
-
-</VersionBlock>
+<LegacySnapshotConfig />
 
 <VersionBlock lastVersion="1.8">
 
@@ -140,7 +126,7 @@ Configurations can be applied to snapshots using [YAML syntax](/docs/build/snaps
     [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
     [updated_at](/reference/resource-configs/updated_at)="<column_name>",
     [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
-    [snapshot_meta_column_names](/reference/resource-configs/snapshot_meta_column_names)={<dictionary>}
+    [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) : true | false
 ) }}
 
 ```
@@ -150,10 +136,24 @@ Configurations can be applied to snapshots using [YAML syntax](/docs/build/snaps
 
 </Tabs>
 
+### Snapshot configuration migration
+
+The latest snapshot configurations introduced in dbt Core v1.9 (such as [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names), [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current), and `hard_deletes`) are best suited for new snapshots. For existing snapshots, we recommend the following to avoid any inconsistencies in your snapshots:
+
+#### For existing snapshots
+- Migrate tables &mdash; Migrate the previous snapshot to the new table schema and values:
+  - Create a backup copy of your snapshots.
+  - Use `alter` statements as needed (or a script to apply `alter` statements) to ensure table consistency.
+- New configurations &mdash; Convert the configs one at a time, testing as you go. 
+
+:::warning
+If you use one of the latest configs, such as `dbt_valid_to_current`, without migrating your data, you may have mixed old and new data, leading to an incorrect downstream result.
+:::
 
 ### General configurations
 
 <ConfigGeneral />
+
 
 <Tabs
   groupId="config-languages"
@@ -168,6 +168,25 @@ Configurations can be applied to snapshots using [YAML syntax](/docs/build/snaps
 
 <File name='dbt_project.yml'>
 
+<VersionBlock firstVersion="1.9">
+
+
+```yaml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 snapshots:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -179,6 +198,7 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
     [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
 ```
+</VersionBlock>
 </File>
 
 </TabItem>
@@ -198,8 +218,8 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
@@ -221,10 +241,11 @@ snapshots:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [alias](/reference/resource-configs/alias): <string>
-      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
+      [event_time](/reference/resource-configs/event-time): my_time_field
 ```
 
 </File>
@@ -234,11 +255,7 @@ snapshots:
 
 <TabItem value="config">
 
-<VersionBlock firstVersion="1.9">
-
-Configurations can be applied to snapshots using [YAML syntax](/docs/build/snapshots), available in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
-
-</VersionBlock>
+<LegacySnapshotConfig />
 
 <VersionBlock lastVersion="1.8">
 
@@ -267,24 +284,29 @@ Snapshots can be configured in multiple ways:
 
 <VersionBlock firstVersion="1.9">
 
-1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [the dbt Cloud release track](/docs/dbt-versions/cloud-release-tracks) and dbt v1.9 and higher).
 2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
-1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
-2. Using a `config` block within a snapshot defined in Jinja SQL
+1. Defined in a YAML file using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in  [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt v1.9 and higher). The latest snapshot YAML syntax provides faster and more efficient management.
+2. Using a `config` block within a snapshot defined in Jinja SQL.
 3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
-
-Note that in Versionless and dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt Core v1.9 and later](/docs/dbt-versions/core).
 
 </VersionBlock>
 
 Snapshot configurations are applied hierarchically in the order above with higher taking precedence.
 
 ### Examples
-The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file, a `config` block within a snapshot, and a `.yml` file.
+
+<VersionBlock firstVersion="1.9">
+The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file and a `.yml` file.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file, a `config` block within a snapshot (legacy method), and a `.yml` file.
+</VersionBlock>
 
 - #### Apply configurations to all snapshots
   To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
@@ -292,7 +314,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     <File name='dbt_project.yml'>
 
     ```yml
-
     snapshots:
       +unique_key: id
     ```
@@ -307,7 +328,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     <File name='dbt_project.yml'>
 
     ```yml
-
     snapshots:
       jaffle_shop:
         +unique_key: id
@@ -329,6 +349,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
         {{
             config(
               unique_key='id',
+              target_schema='snapshots',
               strategy='timestamp',
               updated_at='updated_at'
             )
@@ -378,7 +399,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
 
     </File>
 
-  You can also define some common configs in a snapshot's `config` block. We don't recommend this for a snapshot's required configuration, however.
+  You can also define some common configs in a snapshot's `config` block. However, we don't recommend this for a snapshot's required configuration.
 
     <File name='dbt_project.yml'>
 

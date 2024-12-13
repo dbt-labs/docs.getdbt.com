@@ -66,9 +66,27 @@ having total_amount < 0
 
 </File>
 
-The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
+The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
 
-Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+Note, you won't need to include semicolons (;) at the end of the SQL statement in your singular test files as it can cause your test to fail.
+
+To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
+
+<File name='tests/schema.yml'>
+
+```yaml
+version: 2
+data_tests:
+  - name: assert_total_payment_amount_is_positive
+    description: >
+      Refunds have a negative amount, so the total amount should always be >= 0.
+      Therefore return records where total amount < 0 to make the test fail.
+
+```
+
+</File>
+
+Singular data tests are so easy that you may find yourself writing the same basic structure repeatedly, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend generic data tests.
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:

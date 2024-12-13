@@ -16,14 +16,6 @@ This is to ensure that the people querying your model downstream—both inside a
 
 ## Data type aliasing
 
-<VersionBlock lastVersion="1.6">
-
-The `data_type` defined in your YAML file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 dbt uses built-in type aliasing for the `data_type` defined in your YAML. For example, you can specify `string` in your contract, and on Postgres/Redshift, dbt will convert it to `text`. If dbt doesn't recognize the `data_type` name among its known aliases, it will pass it through as-is. This is enabled by default, but you can opt-out by setting `alias_types` to `false`.
 
 Example for disabling: 
@@ -42,7 +34,6 @@ models:
 ```
 
 </File>
-</VersionBlock>
 
 ## Size, precision, and scale
 

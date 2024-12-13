@@ -28,6 +28,8 @@ The primary value of the dbt Semantic Layer is to centralize and bring consisten
 - **Simplify your code** by not duplicating metric logic and allowing MetricFlow to perform complex calculations for you.
 - **Empower stakeholders** with rich context and flexible, yet governed experiences.
 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
+
 </Expandable>
 
 <Expandable alt_header="What's the main difference between the dbt Semantic Layer and dbt Metrics?">
@@ -110,6 +112,9 @@ You can use tables and dbt models to calculate metrics as an option, but it's a 
 If you create a table with a metric, you’ll need to create numerous other tables derived from that table to show the desired metric cut by the desired dimension or time grain. Mature data models have thousands of dimensions, so you can see how this will quickly result in unnecessary duplication, maintenance, and costs. It's also incredibly hard to predict all the slices of data that a user is going to need ahead of time.
 
 With the dbt Semantic Layer, you don’t need to pre-join or build any tables; rather, you can simply add a few lines of code to your semantic model, and that data will only be computed upon request.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
+
 </Expandable>
 
 <Expandable alt_header="Do I materialize anything when I define a semantic model?">

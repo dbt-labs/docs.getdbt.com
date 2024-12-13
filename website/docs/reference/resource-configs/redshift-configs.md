@@ -17,6 +17,7 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 - `append` (default when `unique_key` is not defined)
 - `merge`
 - `delete+insert` (default when `unique_key` is defined)
+- [`microbatch`](/docs/build/incremental-microbatch)
 
 All of these strategies are inherited from dbt-postgres.
 
@@ -229,21 +230,6 @@ As with most data platforms, there are limitations associated with materialized 
 - Auto-refresh cannot be used if the materialized view references mutable functions, external schemas, or another materialized view.
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
-
-<VersionBlock lastVersion="1.6">
-
-#### Changing materialization from "materialized_view" to "table" or "view"
-
-Swapping a materialized view to a table or view is not supported.
-You must manually drop the existing materialized view in the data warehouse before calling `dbt run`.
-Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
-This would only need to be done once as the existing object would then be a materialized view.
-
-For example, assume that a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`.
-If the user changes the model's config to `materialized="table"`, they will get an error.
-The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data warehouse before trying the model again.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.8">
 

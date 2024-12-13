@@ -20,28 +20,29 @@ The specification for conversion metrics is as follows:
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
-| Parameter | Description | Type |
-| --- | --- | --- | 
-| `name` | The name of the metric. |  Required |
-| `description` | The description of the metric. | Optional |
-| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | Required |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
-| `type_params` | Specific configurations for each metric type. |  Required |
-| `conversion_type_params` | Additional configuration specific to conversion metrics. | Required |
-| `entity` | The entity for each conversion event. | Required |
-| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`.  | Optional |
-| `base_measure` | A list of base measure inputs | Required |
-| `base_measure:name` | The base conversion event measure. |  Required |
-| `base_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `base_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
-| `conversion_measure` | A list of conversion measure inputs. | Required |
-| `conversion_measure:name` | The base conversion event measure.| Required |
-| `conversion_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `conversion_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
-| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity. | Optional |
-| `constant_properties` | List of constant properties.  | Optional |
-| `base_property` | The property from the base semantic model that you want to hold constant.  |  Optional |
-| `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Optional |
+| Parameter | Description | Required | Type |
+| --- | --- | --- | --- |
+| `name` | The name of the metric. |  Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion'. | Required | String |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `type_params` | Specific configurations for each metric type. |  Required | Dict |
+| `conversion_type_params` | Additional configuration specific to conversion metrics. | Required | Dict |
+| `entity` | The entity for each conversion event. | Required | String |  
+| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`.  | Optional | String |
+| `base_measure` | A list of base measure inputs. | Required | Dict |
+| `base_measure:name` | The base conversion event measure. |  Required | String |
+| `base_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | String |
+| `base_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
+| `base_measure:filter` | Optional `filter` used to apply to the base measure. | Optional | String |
+| `conversion_measure` | A list of conversion measure inputs. | Required | Dict |
+| `conversion_measure:name` | The base conversion event measure.| Required | String |
+| `conversion_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | String |
+| `conversion_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |  
+| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity. | Optional | String |
+| `constant_properties` | List of constant properties.  | Optional | List |
+| `base_property` | The property from the base semantic model that you want to hold constant.  |  Optional | String |
+| `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Optional | String |
 
 Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
@@ -61,6 +62,7 @@ metrics:
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
           join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+          filter: The filter used to apply to the base measure. # Optional
         conversion_measure:
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
@@ -105,13 +107,14 @@ Next, define a conversion metric as follows:
 - name: visit_to_buy_conversion_rate_7d
   description: "Conversion rate from visiting to transaction in 7 days"
   type: conversion
-  label: Visit to Buy Conversion Rate (7-day window)
+  label: Visit to buy conversion rate (7-day window)
   type_params:
     conversion_type_params:
       base_measure:
         name: visits
         fill_nulls_with: 0
-      conversion_measure: sellers
+        filter: {{ Dimension('visits__referrer_id') }} = 'facebook'
+      conversion_measure:
         name: sellers
       entity: user
       window: 7 days

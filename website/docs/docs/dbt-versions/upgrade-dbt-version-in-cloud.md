@@ -7,23 +7,28 @@ In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or go [**Versionless**](#versionless) (recommended). Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a [release track](#release-tracks) to receive ongoing updates (recommended), or a legacy version of dbt Core. Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-### Versionless
+### Release Tracks
 
-By choosing to go **Versionless**, you opt for an experience that provides the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application. Versionless always includes the most recent features before they're in dbt Core, and more.
+Starting in 2024, your project will be upgraded automatically on a cadence that you choose
 
-You can upgrade to the **Versionless** experience no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
+The **Latest** track ensures you have up-to-date dbt Cloud functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of dbt Core.
 
-To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `versionless`.
+As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
+
+To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
+- `latest` (formerly called `versionless`; the old name is still supported)
+- `compatible` (available to Team + Enterprise)
+- `extended` (available to Enterprise)
 
 ### Override dbt version
 
 Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
 
-1. From the gear menu, select **Profile settings**. 
+1. Click your account name from the left side panel and select **Account settings**. 
 1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
 1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**.
 
@@ -41,7 +46,7 @@ Configure your project to use a different dbt Core version than what's configure
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="65%" title="Settings of a dbt Cloud job"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="200%" title="Settings of a dbt Cloud job"/>
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 

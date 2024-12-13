@@ -49,13 +49,13 @@ The following tabs detail steps on how to modify your user license count:
 
 If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
-- To remove a user, go to **Account Settings** and select **Users**.
+- To remove a user, click on your account name in the left side menu, click **Account settings** and select **Users**.
   - Select the user you want to remove, click **Edit**, and then **Delete**. 
   - This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
 - To add a user, go to **Account Settings** and select **Users**. 
   - Click the [**Invite Users**](/docs/cloud/manage-access/invite-users) button. 
-  - For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
+  - For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-).
 
 
 </TabItem>
@@ -64,7 +64,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
 
-- Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. AND
+- Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. 
 - Adjust your developer billing seat count, which manages the number of billable seats. 
 
 
@@ -75,7 +75,7 @@ You can add or remove developers by increasing or decreasing the number of users
 
 To add a user in dbt Cloud, you must be an account owner or have admin privileges. 
 
-1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="75%" title="Navigate to Account Settings" />
 
@@ -95,11 +95,11 @@ Great work! After completing those these steps, your dbt Cloud user count and bi
 
 To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
-1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
+1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
-2. In **Account Settings** and select **Users**.
+2. In **Account Settings**, select **Users**.
 3. Select the user you want to delete, then click **Edit**. 
 4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
 
@@ -124,9 +124,7 @@ Great work! After completing these steps, your dbt Cloud user count and billing 
 
 ## Managing license types
 
-Licenses can be assigned manually, or automatically based on IdP configuration
-(enterprise only). By default, new users in an account will be assigned a
-Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in dbt Cloud. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
@@ -142,16 +140,9 @@ change.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Mapped configuration
+### Mapped configuration <Lifecycle status="enterprise"/> 
 
-**Note:** This feature is only available on the Enterprise plan.
-
-If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
-groups to specific license types in dbt Cloud. To configure license mappings,
-navigate to the Account Settings &gt; Team &gt; License Mappings page. From
-here, you can create or edit SSO mappings for both Read-Only and Developer
-license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in dbt Cloud and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
 By default, all new members of a dbt Cloud account will be assigned a Developer
 license. To assign Read-Only licenses to certain groups of users, create a new

@@ -6,7 +6,7 @@ sidebar: "resource type"
 
 <VersionBlock lastVersion="1.8">
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands. In Versionless and from dbt v1.9 onwards, these flags are also supported in the `dbt test` command.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands. In dbt v1.9 onwards, these flags are also supported in the `dbt test` command.
 
 </VersionBlock>
 
@@ -24,20 +24,7 @@ The `--exclude-resource-type` flag is only available in dbt version 1.8 and high
 
 The available resource types are:
 
-<VersionBlock lastVersion="1.6">
-
-- [`analysis`](/docs/build/analyses)
-- [`exposure`](/docs/build/exposures)
-- [`metric`](/docs/build/metrics-overview)
-- [`model`](/docs/build/models)
-- [`seed`](/docs/build/seeds)
-- [`snapshot`](/docs/build/snapshots)
-- [`source`](/docs/build/sources)
-- [`test`](/docs/build/data-tests)
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7" firstVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
 - [`analysis`](/docs/build/analyses)
 - [`exposure`](/docs/build/exposures)
@@ -82,7 +69,6 @@ Instead of targeting specific resources, use the `--resource-flag` or `--exclude
 
     </File>
 
-<VersionBlock firstVersion="1.7">
 
 - In this example, run the following command to include _all_ saved queries with the `--resource-type` flag:
 
@@ -93,8 +79,6 @@ Instead of targeting specific resources, use the `--resource-flag` or `--exclude
     ```
 
     </File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.8">
 

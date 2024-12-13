@@ -11,7 +11,7 @@ A key distinction with the tools mentioned, is that dbt Cloud CLI and IDE are de
 
 ## Parallel execution
 
-dbt Cloud allows for parallel execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time, however it's important to understand which commands can be run in parallel and which can't.
+dbt Cloud allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
@@ -34,10 +34,10 @@ Commands with a ('❌') indicate write commands, commands with a ('✅') indicat
 
 | Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
-| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
+| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, snapshots, tests) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
 | cancel | Cancels the most recent invocation. | N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [clone](/reference/commands/clone) | Clone selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | dbt Cloud IDE, dbt Core <br /> All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
@@ -50,9 +50,9 @@ Commands with a ('❌') indicate write commands, commands with a ('✅') indicat
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [run-operation](/reference/commands/run-operation) | Invokes a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [seed](/reference/commands/seed) | Loads CSV files into the database |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [show](/reference/commands/show) | Preview table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [show](/reference/commands/show) | Previews table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |

@@ -34,7 +34,7 @@ The following profile fields are always required except for `user`, which is als
 
 | Field     | Example | Description |
 | --------- | ------- | ----------- |
-|   `host`   | `mycluster.mydomain.com` | The hostname of your cluster.<br/><br/>Don't include the `http://` or `https://` prefix.  |
+|   `host`   | `mycluster.mydomain.com`<br/><br/>Format for Starburst Galaxy:<br/><ul><li>`mygalaxyaccountname-myclustername.trino.galaxy.starburst.io`</li></ul> | The hostname of your cluster.<br/><br/>Don't include the `http://` or `https://` prefix.  |
 | `database` | `my_postgres_catalog` | The name of a catalog in your cluster. |
 |  `schema`  | `my_schema`  | The name of a schema within your cluster's catalog. <br/><br/>It's _not recommended_ to use schema names that have upper case or mixed case letters.  |
 |   `port`   | `443`  | The port to connect to your cluster. By default, it's 443 for TLS enabled clusters. |

@@ -81,7 +81,7 @@ To configure your own linting rules:
 
 :::tip Configure dbtonic linting rules
 
-Refer to the [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) to add the dbt code (or dbtonic) rules we use for our own projects:
+Refer to the [Jaffle shop SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for dbt-specific (or dbtonic) linting rules we use for our own projects:
 
 <details>
 <summary>dbtonic config code example provided by dbt Labs</summary>
@@ -231,3 +231,4 @@ To avoid this, break up your model into smaller models (files) so that they are 
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)
+- [SQL linting in CI jobs](/docs/deploy/continuous-integration#sql-linting) 

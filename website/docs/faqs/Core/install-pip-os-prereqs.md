@@ -33,7 +33,7 @@ python --version
 
 ```
 
-If you need a compatible version, you can download and install [Python version 3.8 or higher for MacOS](https://www.python.org/downloads/macos).
+If you need a compatible version, you can download and install [Python version 3.9 or higher for MacOS](https://www.python.org/downloads/macos).
 
 If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 ### Ubuntu/Debian
@@ -55,6 +55,6 @@ pip install cryptography~=3.4
 
 Windows requires Python and git to successfully install and run dbt Core.
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8 or higher for Windows](https://www.python.org/downloads/windows/).
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.9 or higher for Windows](https://www.python.org/downloads/windows/).
 
 For further questions, please see the [Python compatibility FAQ](/faqs/Core/install-python-compatibility)

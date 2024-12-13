@@ -13,11 +13,13 @@ Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to p
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-By default, dbt follows these rules:
+When using `--defer`, dbt Cloud will follow this order of execution for resolving the `{{ ref() }}` functions.
 
-- dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
-- If a development version of a deferred model exists, dbt preferentially uses the development database location when resolving the reference.
-- Passing the [`--favor-state`](/reference/node-selection/defer#favor-state) flag overrides the default behavior and _always_ resolve refs using production metadata, regardless of the presence of a development relation.
+1. If a development version of a deferred relation exists, dbt preferentially uses the development database location when resolving the reference.
+2. If a development version doesn't exist, dbt uses the staging locations of parent relations based on metadata from the staging environment.
+3. If both a development and staging version doesn't exist, dbt uses the production locations of parent relations based on metadata from the production environment.
+
+**Note:** Passing the `--favor-state` flag will always resolve refs using production metadata, regardless of the presence of a development relation, skipping step #1.
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
@@ -39,9 +41,6 @@ To enable defer in the dbt Cloud IDE, toggle the **Defer to production** button 
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
 
 For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the production location of the referenced models.
-
-<!--remove when fixed -->
-Note: The **Defer to staging/production** toggle button doesn't apply when running [dbt Semantic Layer commands](/docs/build/metricflow-commands) in the dbt Cloud IDE. To use defer for Semantic layer commands in the IDE, toggle the button on and manually add the `--defer` flag to the command. This is a temporary workaround and will be available soon.
 
 <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
 

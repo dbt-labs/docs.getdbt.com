@@ -11,7 +11,7 @@ The following are the required fields for setting up a connection with a [Starbu
 | **Host** | The hostname of your cluster. Don't include the HTTP protocol prefix. | `mycluster.mydomain.com` |
 | **Port** | The port to connect to your cluster. By default, it's 443 for TLS enabled clusters. | `443` |
 | **User** | The username (of the account) to log in to your cluster. When connecting to Starburst Galaxy clusters, you must include the role of the user as a suffix to the username.<br/><br/> | Format for Starburst Enterprise or Trino depends on your configured authentication method. <br/>Format for Starburst Galaxy:<br/> <ul><li>`user.name@mydomain.com/role`</li></ul> |
-| **Password** | The user's password. |   |
+| **Password** | The user's password. |  -  |
 | **Database** | The name of a catalog in your cluster. | `example_catalog` |
 | **Schema** | The name of a schema that exists within the specified catalog.  | `example_schema` |
 

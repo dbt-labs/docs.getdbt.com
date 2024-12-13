@@ -170,7 +170,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically.
 
-6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
+6. Go to the left side menu and click your account name, then select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
 
@@ -180,7 +180,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 <TabItem value="manual-connect" label="Connect manually">
 
 
-1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+1. Create a new project in dbt Cloud. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
 
@@ -229,6 +229,26 @@ Now that you have a repository configured, you can initialize your project and s
         select * from raw.jaffle_shop.customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
+
+:::info
+If you receive an insufficient privileges error on Snowflake at this point, it may be because your Snowflake role doesn't have permission to access the raw source data, to build target tables and views, or both. 
+
+To troubleshoot, use a role with sufficient privileges (like `ACCOUNTADMIN`) and run the following commands in Snowflake. 
+
+**Note**: Replace `snowflake_role_name` with the role you intend to use. If you launched dbt Cloud with Snowflake Partner Connect, use `pc_dbt_role` as the role.
+
+```
+grant all on database raw to role snowflake_role_name;
+grant all on database analytics to role snowflake_role_name;
+
+grant all on schema raw.jaffle_shop to role snowflake_role_name;
+grant all on schema raw.stripe to role snowflake_role_name;
+
+grant all on all tables in database raw to role snowflake_role_name;
+grant all on future tables in database raw to role snowflake_role_name;
+```
+
+:::
 
 ## Build your first model
 

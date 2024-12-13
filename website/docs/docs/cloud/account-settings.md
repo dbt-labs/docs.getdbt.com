@@ -45,6 +45,6 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 To use Advanced CI features, your dbt Cloud account must have access to them. Ask your dbt Cloud administrator to enable Advanced CI features on your account, which they can do by choosing the **Enable account access to Advanced CI** option from the account settings.
 
-Once enabled, the **Run compare changes** option becomes available in the CI job settings for you to select.
+Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable account access to Advanced CI option" />

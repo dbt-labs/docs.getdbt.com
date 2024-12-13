@@ -5,6 +5,14 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
+:::note
+
+dbt Cloud connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account. See [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
+
+Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
+
+:::
+
 The following fields are required when creating a Snowflake connection
 
 | Field | Description | Examples |
@@ -14,12 +22,9 @@ The following fields are required when creating a Snowflake connection
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
-
-**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](/reference/database-permissions/snowflake-permissions).
-
 ## Authentication methods
 
-This section describes the different authentication methods available for connecting dbt Cloud to Snowflake.
+This section describes the different authentication methods for connecting dbt Cloud to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username / Password
 

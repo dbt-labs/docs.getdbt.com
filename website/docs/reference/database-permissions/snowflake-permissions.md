@@ -83,6 +83,7 @@ grant role reporter to user looker_user; -- or mode_user, periscope_user
 ```
 
 5. Let  loader load data
+
 Give the role unilateral permission to operate on the raw database
 ```
 use role sysadmin;
@@ -90,6 +91,7 @@ grant all on database raw to role loader;
 ```
 
 6. Let transformer transform data
+
 The transformer role needs to be able to read raw data.
 
 If you do this before you have any data loaded, you can run:
@@ -110,6 +112,7 @@ transformer also needs to be able to create in the analytics database:
 grant all on database analytics to role transformer;
 ```
 7. Let reporter read the transformed data
+
 A previous version of this article recommended this be implemented through hooks in dbt, but this way lets you get away with a one-off statement.
 ```
 grant usage on database analytics to role reporter;
@@ -120,10 +123,11 @@ grant select on future views in database analytics to role reporter;
 Again, if you already have data in your analytics database, make sure you run:
 ```
 grant usage on all schemas in database analytics to role reporter;
-grant select on all tables in database analytics to role transformer;
-grant select on all views in database analytics to role transformer;
+grant select on all tables in database analytics to role reporter;
+grant select on all views in database analytics to role reporter;
 ```
 8. Maintain
+
 When new users are added, make sure you add them to the right role! Everything else should be inherited automatically thanks to those `future` grants.
 
 For more discussion and legacy information, refer to [this Discourse article](https://discourse.getdbt.com/t/setting-up-snowflake-the-exact-grant-statements-we-run/439).

@@ -24,8 +24,14 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 <Card
     title="dbt Cloud IDE"
-    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser. Use dbt Copilot, a powerful AI engine that automatically generates documentation, tests, and semantic models."
+    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser. Use dbt Copilot, a powerful AI engine that automatically generates code, documentation, tests, and semantic models."
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
+    icon="dbt-bit"/>
+
+<Card
+    title="Visual editor (beta)"
+    body="Develop with the visual editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    link="/docs/cloud/visual-editor"
     icon="dbt-bit"/>
 
 <Card
@@ -99,6 +105,6 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/guides)
+- [Quickstart guides](/docs/get-started-dbt)
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 

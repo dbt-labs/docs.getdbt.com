@@ -15,15 +15,15 @@ This article explains the different supported metric types you can add to your d
 
 <VersionBlock firstVersion="1.8">
 
-| Parameter | Description | Type |
-| --------- | ----------- | ---- |
-| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required |
-| `description` | Describe your metric.   | Optional |
-| `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
-| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
-| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
-| `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional |
+| Parameter | Description | Required | Type |
+| --------- | ----------- | ---- | ---- |
+| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required | String |
+| `description` | Describe your metric.   | Optional | String |
+| `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required | String |
+| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required | Dict |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required | String |
+| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional | Dict |
+| `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional | String |
 
 Here's a complete example of the metrics spec configuration:
 
@@ -52,16 +52,16 @@ metrics:
 
 <VersionBlock lastVersion="1.7">
 
-| Parameter | Description | Type |
-| --------- | ----------- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `description` | Describe your metric.   | Optional |
-| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
-| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `config` | Provide the specific configurations for your metric.   | Optional |
-| `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required |
-| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
+| Parameter | Description | Required | Type  |
+| --------- | ----------- | ---- | ---- |
+| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required | String |
+| `description` | Describe your metric.   | Optional | String |
+| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required | String |
+| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required | Dict |
+| `config` | Provide the specific configurations for your metric.   | Optional | Dict |
+| `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional | String |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required | String |
+| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional | String |
 
 Here's a complete example of the metrics spec configuration:
 
@@ -95,7 +95,8 @@ import SLCourses from '/snippets/_sl-course.md';
 <VersionBlock lastVersion="1.8">
 Default time granularity for metrics is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. 
 
-To set the default time granularity for metrics, you need to be on dbt Cloud Versionless or dbt v1.9 and higher. 
+Default time granularity for metrics is available now in [the "Latest" release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks), and it will be available in [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
+
 
 </VersionBlock>
 

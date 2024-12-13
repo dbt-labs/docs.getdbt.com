@@ -7,10 +7,13 @@ sidebar_label: "About PrivateLink"
 
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
 import PrivateLinkHostnameWarning from '/snippets/_privatelink-hostname-restriction.md';
+import CloudProviders from '/snippets/_privatelink-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
-PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environment to your data platform hosted on AWS using [AWS PrivateLink](https://aws.amazon.com/privatelink/) technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it allows connectivity between dbt Cloud and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
+PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/) or [Azure](https://azure.microsoft.com/en-us/products/private-link), using that provider’s PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it allows connectivity between dbt Cloud and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
+
+<CloudProviders type='a data platform' />
 
 ### Cross-region PrivateLink
 

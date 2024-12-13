@@ -25,7 +25,7 @@ For performance use cases, people typically query the historical or latest appli
 
 It’s helpful to understand how long it takes to build models (tables) and tests to execute during a dbt run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt Cloud"/>
 
 <details>
 <summary>Example query with code</summary>

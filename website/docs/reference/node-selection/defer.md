@@ -29,11 +29,12 @@ dbt test --models [...] --defer --state path/to/artifacts
 
 </VersionBlock>
 
-When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
-1. Is the referenced node included in the model selection criteria of the current run?
-2. Does the referenced node exist as a database object in the current environment?
+By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
 
-If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.
+When `--defer` is enabled, dbt resolves ref calls using the state manifest instead, but only if:
+
+1. The node isn’t among the selected nodes, _and_
+2. It doesn’t exist in the database (or `--favor-state` is used).
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
 
@@ -46,7 +47,7 @@ Deferral requires both `--defer` and `--state` to be set, either by passing flag
 
 #### Favor state
 
-You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
+When `--favor-state` is passed, dbt prioritizes node definitions from the `--state directory`. However, this doesn’t apply if the node is also part of the selected nodes.
 
 ### Example
 

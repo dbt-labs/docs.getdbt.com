@@ -4,14 +4,14 @@
 *      @dbt-labs/product-docs
 
 # Adapter & Package Development Docs
-/website/docs/docs/supported-data-platforms.md                @dbt-labs/product-docs @dataders
-/website/docs/reference/warehouse-setups                      @dbt-labs/product-docs @dataders
+/website/docs/docs/supported-data-platforms.md                @dbt-labs/product-docs @amychen1776 
+/website/docs/reference/warehouse-setups                      @dbt-labs/product-docs @amychen1776 
 # `resource-configs` contains more than just warehouse setups
-/website/docs/reference/resource-configs/*-configs.md           @dbt-labs/product-docs @dataders
-/website/docs/guides/advanced/adapter-development              @dbt-labs/product-docs @dataders @dbeatty10
+/website/docs/reference/resource-configs/*-configs.md           @dbt-labs/product-docs @amychen1776 
+/website/docs/guides/advanced/adapter-development              @dbt-labs/product-docs @amychen1776
 
-/website/docs/guides/building-packages                          @dbt-labs/product-docs @amychen1776 @dataders @dbeatty10
-/website/docs/guides/creating-new-materializations              @dbt-labs/product-docs @dataders @dbeatty10
+/website/docs/guides/building-packages                          @dbt-labs/product-docs @amychen1776
+/website/docs/guides/creating-new-materializations              @dbt-labs/product-docs
 
 # Require approval from the Multicell team when making
 # changes to the public facing migration documentation.

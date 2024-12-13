@@ -108,7 +108,7 @@ Wrote config file fly.toml<br/>
 ## Store secrets
 
 The application requires four secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the dbt Cloud webhook you created earlier.
 - `DD_API_KEY`: the API key you created earlier.
 - `DD_SITE`: The Datadog site for your organisation, e.g. `datadoghq.com`.

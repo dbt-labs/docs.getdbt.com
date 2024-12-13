@@ -40,7 +40,7 @@ Disconnect the GitHub and dbt Cloud integration in dbt Cloud.
 6. Return to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
 7. Configure your repository and click **Save**
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/repository-details-faq.jpg" title="Disconnect your GitHub connection in the 'Repository details' page."/>
+<Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Cloud Account Settings pages."/>
 
 ## Support
 If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@getdbt.com) team and we'll be happy to help!

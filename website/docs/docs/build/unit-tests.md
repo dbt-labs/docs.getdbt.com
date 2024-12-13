@@ -10,13 +10,13 @@ keywords:
 
 :::note 
 
-This functionality is only supported in dbt Core v1.8+ or accounts that have opted for a ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud experience.
+Unit testing functionality is available in [dbt Cloud Release Tracks](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.8+
 
 :::
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-With dbt Core v1.8 and dbt Cloud environments that have gone versionless by selecting the **Versionless** option, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+Starting in dbt Core v1.8, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
 ## Before you begin
 
@@ -24,11 +24,15 @@ With dbt Core v1.8 and dbt Cloud environments that have gone versionless by sele
 - We currently only support adding unit tests to models in your _current_ project.
 - We currently _don't_ support unit testing models that use the [`materialized view`](/docs/build/materializations#materialized-view) materialization.
 - We currently _don't_ support unit testing models that use recursive SQL.
-- You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
+- We currently _don't_ support unit testing models that use introspective queries.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
-- Unit tests must be defined in a YML file in your `models/` directory.
-- Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
-- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround. 
+- Unit tests must be defined in a YML file in your [`models/` directory](/reference/project-configs/model-paths).
+- Table names must be aliased in order to unit test `join` logic.
+- Include all [`ref`](/reference/dbt-jinja-functions/ref) or [`source`](/reference/dbt-jinja-functions/source) model references in the unit test configuration as `input`s to avoid "node not found" errors during compilation.
+
+#### Adapter-specific caveats
+- You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
+- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 

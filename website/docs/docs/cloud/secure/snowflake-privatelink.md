@@ -6,10 +6,13 @@ sidebar_label: "PrivateLink for Snowflake"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+import CloudProviders from '/snippets/_privatelink-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
 The following steps walk you through the setup of a Snowflake AWS PrivateLink or Azure Private Link endpoint in a dbt Cloud multi-tenant environment.
+
+<CloudProviders type='Snowflake' />
 
 :::note Snowflake SSO with PrivateLink
 Users connecting to Snowflake using SSO over a PrivateLink connection from dbt Cloud will also require access to a PrivateLink endpoint from their local workstation.
@@ -94,12 +97,18 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Enable the connection in Snowflake
+### Enable the connection in Snowflake hosted on Azure
+
+:::note
+
+AWS private internal stages are not currently supported.
+
+:::
 
 To complete the setup, follow the remaining steps from the Snowflake setup guides. The instructions vary based on the platform:
 
-- [Snowflake AWS PrivateLink](https://docs.snowflake.com/en/user-guide/admin-security-privatelink)
 - [Snowflake Azure Private Link](https://docs.snowflake.com/en/user-guide/privatelink-azure)
+- [Azure private endpoints for internal stages](https://docs.snowflake.com/en/user-guide/private-internal-stages-azure)
 
 There are some nuances for each connection and you will need a Snowflake administrator. As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS` function using the privateEndpointResourceID value as the function argument. This authorizes access to the Snowflake internal stage through the private endpoint. 
 
@@ -107,13 +116,11 @@ There are some nuances for each connection and you will need a Snowflake adminis
 
 USE ROLE ACCOUNTADMIN;
 
--- AWS PrivateLink
-SELECT SYSTEMS$AUTHORIZE_STATE_PRIVATELINK_ACCESS ( `AWS VPC ID` );
-
 -- Azure Private Link
-SELECT SYSTEMS$AUTHORIZE_STATE_PRIVATELINK_ACCESS ( `AZURE PRIVATE ENDPOINT RESOURCE ID` );
+SELECT SYSTEMS$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( `AZURE PRIVATE ENDPOINT RESOURCE ID` );
 
 ```
+
 
 ## Configuring Network Policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for dbt Cloud. 

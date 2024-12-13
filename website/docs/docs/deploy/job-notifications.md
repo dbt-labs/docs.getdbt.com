@@ -23,7 +23,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 
 ### Configure email notifications
 
-1. From the gear menu, choose **Notification settings**.
+1. Select your profile icon and then click **Notification settings**.
 1. By default, dbt Cloud sends notifications to the email address that's in your **User profile** page.
 
     If you're an account admin, you can choose a different email address to receive notifications. Select the **Notification email** dropdown and choose another address from the list. The list includes **Internal Users** with access to the account and **External Emails** that have been added. 
@@ -44,25 +44,27 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
     <Lightbox src="/img/docs/deploy/example-email-notification-settings-page.png" width="100%" title="Example of the Email notifications page"/>
 
 ### Unsubscribe from email notifications
-1. From the gear menu, choose **Notification settings**.
+1. Select your profile icon and click on **Notification settings**.
 1. On the **Email notifications** page, click **Unsubscribe from all email notifications**. 
 
 ## Slack notifications
 
-You can receive Slack alerts about jobs by setting up the Slack integration, then configuring the dbt Cloud Slack notification settings. dbt Cloud integrates with Slack via OAuth to ensure secure authentication.
+You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the dbt Cloud Slack notification settings. dbt Cloud integrates with Slack via OAuth to ensure secure authentication.
 
 :::note 
+Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
+
 If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@getdbt.com) for assistance. 
 :::
 
 ### Prerequisites 
-- You must be an administrator of the Slack workspace. 
+- You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in dbt Cloud. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 
 ### Set up the Slack integration
 
-1. From the gear menu, select **Account settings** and then select **Integrations** from the left sidebar. 
+1. Select **Account settings** and then select **Integrations** from the left sidebar. 
 1. Locate the **OAuth** section with the Slack application and click **Link**.
    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
@@ -76,13 +78,13 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt Cloud.
     <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
-2. Sign in with an existing identity or use email address and password. 
+2. Sign in with an existing identity or use the email address and password. 
 3. Once you have authenticated successfully, accept the permissions.
     <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
 
 ### Configure Slack notifications
 
-1. From the gear menu, choose **Notification settings**. 
+1. Select your profile icon and then click on **Notification settings**. 
 1. Select **Slack notifications** in the left sidebar. 
 1. Select the **Notification channel** you want to receive the job run notifications from the dropdown. 
     <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="100%" title="Example of the Notification channel dropdown"/>
@@ -98,5 +100,5 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 
 ### Disable the Slack integration
 
-1. From the gear menu, select **Account settings**. On the **Integrations** page, scroll to the **OAuth** section.
+1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
 1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.

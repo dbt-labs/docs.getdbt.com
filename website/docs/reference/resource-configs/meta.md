@@ -56,7 +56,7 @@ See [configs and properties](/reference/configs-and-properties) for details.
 ```yml
 version: 2
 
-sources:
+[sources](/reference/source-properties):
   - name: model_name
     config:
       meta: {<dictionary>}
@@ -110,7 +110,7 @@ version: 2
 snapshots:
   - name: snapshot_name
     config:
-      meta: {<dictionary>}
+      [meta](/reference/snapshot-properties): {<dictionary>}
 
     columns:
       - name: column_name
@@ -147,7 +147,7 @@ The `meta` config is not currently supported for analyses.
 ```yml
 version: 2
 
-macros:
+[macros](/reference/macro-properties):
   - name: macro_name
     meta: {<dictionary>}
 
@@ -179,14 +179,6 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.6">
-
-Support for grouping semantic models was added in dbt Core v1.7
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7"> 
-
 <File name='models/semantic_models.yml'>
 
 ```yml
@@ -200,8 +192,6 @@ semantic_models:
 </File>
 
 The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
-
-</VersionBlock>
 
 </TabItem>
 
@@ -249,14 +239,6 @@ metrics:
 
 <TabItem value="saved queries">
 
-<VersionBlock lastVersion="1.6">
-
-Support for saved queries has been added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7"> 
-
 <File name='models/semantic_models.yml'>
 
 ```yml
@@ -267,8 +249,6 @@ saved_queries:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -307,7 +287,7 @@ models:
 ```yml
 version: 2
 
-sources:
+[sources](/reference/source-properties):
   - name: salesforce
 
     tables:

@@ -6,50 +6,56 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your dbt Git repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
-## Set up CI jobs {#set-up-ci-jobs}
-
-dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
-
-### Prerequisites
+## Prerequisites
 - You have a dbt Cloud account. 
 - CI features:
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-   - The [SQL linting](/docs/deploy/continuous-integration#sql-linting) feature is currently available in beta to a limited group of users and is gradually being rolled out. If you're in the beta, the **Linting** option is available for use. 
+   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks) and to dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project.
 - [Advanced CI](/docs/deploy/advanced-ci) features:
-   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feauture for you. After enablement, the **Run compare changes** option becomes available in the CI job settings.
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
+## Set up CI jobs {#set-up-ci-jobs}
+
+dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
 1. On your deployment environment page, click **Create job** > **Continuous integration job** to create a new CI job. 
 
-1. Options in the **Job settings** section:
+2. Options in the **Job settings** section:
     - **Job name** &mdash; Specify the name for this CI job.
     - **Description** &mdash; Provide a description about the CI job.
-    - **Environment** &mdash; By default, it’s set to the environment you created the CI job from. Use the dropdown to change the default setting. 
+    - **Environment** &mdash; By default, this will be set to the environment you created the CI job from. Use the dropdown to change the default setting. 
 
-1. Options in the **Git trigger** section:
+3. Options in the **Git trigger** section:
     - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
       - **Run on draft pull request** &mdash; Enable this option if you want to also trigger the job to run every time a developer opens up a draft pull request or pushes a commit to that draft pull request. 
 
-1. Options in the **Execution settings** section:
-    - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
-    - **Linting**<Lifecycle status="beta" /> &mdash; Enable this option for dbt to [lint the SQL files](/docs/deploy/continuous-integration#sql-linting) in your project as the first step in `dbt run`. If this check runs into an error, dbt can either **Fail job run** or **Continue running job**. 
-    - **Run compare changes**<Lifecycle status="enterprise" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
+4. Options in the **Execution settings** section:
+    - **Commands** &mdash; By default, this includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
+    - **Linting** &mdash; Enable this option for dbt to [lint the SQL files](/docs/deploy/continuous-integration#sql-linting) in your project as the first step in `dbt run`. If this check runs into an error, dbt can either **Stop running on error** or **Continue running on error**. 
+    - **dbt compare**<Lifecycle status="enterprise" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
     
       To review the comparison report, navigate to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your Git provider (see the [CI report example](#example-ci-report)). 
+
+      :::info Optimization tip 
+      When you enable the **dbt compare** checkbox, you can customize the comparison command to optimize your CI job. For example, if you have large models that take a long time to compare, you can exclude them to speed up the process using the [`--exclude` flag](/reference/node-selection/exclude). Refer to [compare changes custom commands](/docs/deploy/job-commands#compare-changes-custom-commands) for more details.
+
+      Additionally, if you set [`event_time`](/reference/resource-configs/event-time) in your models/seeds/snapshots/sources, it allows you to compare matching date ranges between tables by filtering to overlapping date ranges. This is useful for faster CI workflow or custom sampling set ups.
+      :::
+
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
       :::info
       Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. Deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ [deploy jobs](/docs/deploy/deploy-jobs) that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
       :::
 
-    - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **Run compare changes** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons. 
+    - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **dbt compare** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons. 
 
 
-1. (optional) Options in the **Advanced settings** section: 
+5. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
@@ -65,7 +71,7 @@ The following is an example of a CI check in a GitHub pull request. The green ch
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
 
 ### Example of CI report in pull request <Lifecycle status="preview" /> {#example-ci-report}
-The following is an example of a CI report in a GitHub pull request, which is shown when the **Run compare changes** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
+The following is an example of a CI report in a GitHub pull request, which is shown when the **dbt compare** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
 
@@ -95,11 +101,15 @@ Automatically test your semantic nodes (metrics, semantic models, and saved quer
 
 To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures the validation of modified semantic nodes and their downstream dependencies.
 
+<Lightbox src="/img/docs/dbt-cloud/deployment/sl-ci-job.png" width="90%" title="Semantic validations in CI workflow" />
+
+#### Benefits
 - Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
 - It allows you to catch issues early in the development process and deliver high-quality data to your end users.
 - Semantic validation executes an explain query in the data warehouse for semantic nodes to ensure the generated SQL will execute.
 - For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models
 
+### Set up semantic validations in your CI job
 To learn how to set this up, refer to the following steps:
 
 1. Navigate to the **Job setting** page and click **Edit**.
@@ -178,6 +188,8 @@ To validate _all_ semantic nodes in your project, add the following command to d
 
 ## Troubleshooting
 
+<FAQ path="Troubleshooting/gitlab-webhook"/>
+
 <DetailsToggle alt_header="Temporary schemas aren't dropping">
 If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
 - You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.
@@ -190,6 +202,7 @@ To resolve this, change your macro so that the temporary PR schema name contains
 A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
 
 </DetailsToggle>
+
 
 <DetailsToggle alt_header="Error messages that refer to schemas from previous PRs">
 

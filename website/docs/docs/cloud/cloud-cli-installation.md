@@ -21,8 +21,6 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 ## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- You are on dbt version 1.5 or higher. Alternatively, set it to [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) to automatically stay up to date.
-
 ## Install dbt Cloud CLI
 
 You can install the dbt Cloud CLI on the command line by using one of these methods. 
@@ -319,5 +317,12 @@ This alias will allow you to use the <code>dbt-cloud</code> command to invoke th
 
 
 If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Why am I receiving a `Stuck session` error when trying to run a new command?">
+
+
+The Cloud CLI allows only one command that writes to the data warehouse at a time. If you attempt to run multiple write commands simultaneously (for example, `dbt run` and `dbt build`), you will encounter a `stuck session` error. To resolve this, cancel the specific invocation by passing its ID to the cancel command. For more information, refer to [parallel execution](/reference/dbt-commands#parallel-execution).
 
 </DetailsToggle>

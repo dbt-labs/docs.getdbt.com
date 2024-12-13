@@ -80,6 +80,12 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     icon="dbt-bit"/>
 
 <Card
+    title="Model notifications"
+    body="Receive email notifications in real time about issues encountered by your models and tests while a job is running. "
+    link="/docs/deploy/model-notifications"
+    icon="dbt-bit"/>
+
+<Card
     title="Webhooks"
     body="Create outbound webhooks to send events about your dbt jobs' statuses to other systems in your organization."
     link="/docs/deploy/webhooks"

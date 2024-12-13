@@ -1,11 +1,11 @@
 
-The URI used for SSO connections on multi-tenant dbt Cloud instances will vary based on your dbt Cloud hosted region. Use your login URL (also referred to as your Access URL) to determine the correct Auth0 URI for your environment.
+The URI used for SSO connections on multi-tenant dbt Cloud instances will vary based on your dbt Cloud hosted region. To find the URIs for your environment in dbt Cloud: 
 
-| Region | dbt Cloud Access URL | Auth0 SSO URI &lt;YOUR_AUTH0_URI&gt; | Auth0 Entity ID &lt;YOUR_AUTH0_ENTITYID&gt;* |
-|--------|-----------------------|-------------------------------|----------------------------------------|
-| US multi-tenant   | cloud.getdbt.com      | auth.cloud.getdbt.com | us-production-mt                       |
-| US cell 1 | \{account prefix\}.us1.dbt.com | auth.cloud.getdbt.com | us-production-mt |
-| EMEA   | emea.dbt.com         | auth.emea.dbt.com     | emea-production-mt                     |
-| APAC   | au.dbt.com           | auth.au.dbt.com       | au-production-mt                       |
+1. Navigate to your **Account settings** and click **Single sign-on** on the left menu.
+1. Click **Edit** in the **Single sign-on** pane.
+1. Select the appropriate **Identity provider** from the dropdown and the **Login slug** and **Identity provider values** will populate for that provider. 
 
-*Only applicable to SAML and Okta configurations.
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-uri.png" title="Example of the identity provider values for a SAML 2.0 provider" />
+
+
+

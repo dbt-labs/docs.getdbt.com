@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/API/rotate-token",
+      "destination": "/docs/dbt-cloud-apis/service-tokens#service-token-update",
+      "permanent": true
+    },
+    {
+      "source": "/styles",
+      "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-cloud-apis/sl-manifest",
       "destination": "/reference/artifacts/sl-manifest",
       "permanent": true
@@ -90,6 +100,11 @@
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
       "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/versionless-cloud",
+      "destination": "/docs/dbt-versions/cloud-release-tracks",
       "permanent": true
     },
     {
@@ -3636,7 +3651,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:;"
+          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.mutinyhq.com https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",

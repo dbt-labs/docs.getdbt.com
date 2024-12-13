@@ -7,6 +7,13 @@ sidebar: null
 
 # Multi-factor authentication
 
+:::important
+
+
+dbt Cloud enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access dbt Cloud.
+
+:::
+
 dbt Cloud provides multiple options for multi-factor authentication (MFA). MFA provides an additional layer of security to username and password logins for Developer and Team plan accounts. The available MFA methods are:
 
 - SMS verification code (US-based phone numbers only)

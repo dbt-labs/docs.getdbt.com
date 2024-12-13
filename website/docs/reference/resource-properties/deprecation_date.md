@@ -53,11 +53,11 @@ Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a
 |--------------------------------|----------------------------------------------------|------------------------|
 |        `DeprecatedModel`       | Parsing a project that defines a deprecated model  | Producer               |
 | `DeprecatedReference`          | Referencing a model with a past deprecation date   | Producer and consumers |
-| `UpcomingDeprecationReference` | Referencing a model with a future deprecation date | Producer and consumers |
+| `UpcomingReferenceDeprecation` | Referencing a model with a future deprecation date | Producer and consumers |
 
-** Example **
+**Example**
 
-Example output for an `UpcomingDeprecationReference` warning:
+Example output for an `UpcomingReferenceDeprecation` warning:
 ```
 $ dbt parse
 15:48:14  Running with dbt=1.6.0

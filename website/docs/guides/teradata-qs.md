@@ -59,54 +59,52 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 :::
 
-1. Use your preferred SQL IDE editor to create two databases: `jaffle_shop` and `stripe`:
+1. Use your preferred SQL IDE editor to create the database, `jaffle_shop`:
 
    ```sql
    CREATE DATABASE jaffle_shop AS PERM = 1e9;
-   CREATE DATABASE stripe AS PERM = 1e9;
    ```
 
-2. In the databases `jaffle_shop` and `stripe`, create three foreign tables and reference the respective csv files located in object storage:
+2. In `jaffle_shop` database, create three foreign tables and reference the respective csv files located in object storage:
 
-  ```sql
-  CREATE FOREIGN TABLE jaffle_shop.customers (
-      id integer,
-      first_name varchar (100),
-      last_name varchar (100)
-   )
-   USING (
-      LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/jaffle_shop_customers.csv')
-   )
-   NO PRIMARY INDEX;
+    ```sql
+    CREATE FOREIGN TABLE jaffle_shop.customers (
+        id integer,
+        first_name varchar (100),
+        last_name varchar (100),
+        email varchar (100)
+    )
+    USING (
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_customers.csv')
+    )
+    NO PRIMARY INDEX;
 
-   CREATE FOREIGN TABLE jaffle_shop.orders (
-      id integer,
-      user_id integer,
-      order_date date,
-      status varchar(100)
-   )
-   USING (
-      LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/jaffle_shop_orders.csv')
-   )
-   NO PRIMARY INDEX;
+    CREATE FOREIGN TABLE jaffle_shop.orders (
+        id integer,
+        user_id integer,
+        order_date date,
+        status varchar(100)
+    )
+    USING (
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_orders.csv')
+    )
+    NO PRIMARY INDEX;
 
-   CREATE FOREIGN TABLE stripe.payment (
-      id integer,
-      orderid integer,
-      paymentmethod varchar (100),
-      status varchar (100),
-      amount integer,
-      created date
-   )
-   USING (
-      LOCATION ('/s3/dbt-tutorial-public.s3.amazonaws.com/stripe_payments.csv')
-   )
-   NO PRIMARY INDEX;   
-  ```
+    CREATE FOREIGN TABLE jaffle_shop.payments (
+        id integer,
+        orderid integer,
+        paymentmethod varchar (100),
+        amount integer
+    )
+    USING (
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_payments.csv')
+    )
+    NO PRIMARY INDEX;
+    ```
 
-## Connect dbt cloud to Teradata
+## Connect dbt Cloud to Teradata
 
-1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **New Project**. 
+1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In **Configure your development environment**, click **Add new connection**.
 4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
@@ -136,12 +134,46 @@ Now that you have a repository configured, you can initialize your project and s
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
-4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-   - Click **Create new file**, add this query to the new file, and click **Save as** to save the new file:
-       ```sql
-       select * from jaffle_shop.customers
-       ```
-   - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
+
+## Delete the example models
+
+You can now delete the files that dbt created when you initialized the project:
+
+1. Delete the `models/example/` directory.
+2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it.
+
+    <File name='dbt_project.yml'>
+
+    ```yaml
+    # before
+    models:
+      my_new_project:
+        +materialized: table
+        example:
+          +materialized: view
+    ```
+
+    </File>
+
+    <File name='dbt_project.yml'>
+
+    ```yaml
+    # after
+    models:
+      my_new_project:
+        +materialized: table
+    ```
+
+    </File>
+
+3. Save your changes.
+4. Commit your changes and merge to the main branch.
+
+#### FAQs
+
+<FAQ path="Models/removing-deleted-models" />
+<FAQ path="Troubleshooting/unused-model-configurations" />
+
 
 ## Build your first model
 
@@ -153,7 +185,7 @@ You have two options for working with files in the dbt Cloud IDE:
 Name the new branch `add-customers-model`.
 
 1. Click the **...** next to the `models` directory, then select **Create file**. 
-2. Name the file `customers.sql`, then click **Create**.
+2. Name the file `bi_customers.sql`, then click **Create**.
 3. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -208,7 +240,7 @@ final as (
 
    from customers
 
-   left join customer_orders using (customer_id)
+   left join customer_orders on customers.customer_id = customer_orders.customer_id
 
 )
 
@@ -222,19 +254,73 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
 ## Change the way your model is materialized
 
-<Snippet path="quickstarts/change-way-model-materialized" />
+One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
-## Delete the example models
+By default, everything gets created as a view. You can override that at the directory level so everything in that directory will materialize to a different materialization.
 
-<Snippet path="quickstarts/delete-example-models" />
+1. Edit your `dbt_project.yml` file.
+    - Update your project `name` to:
+      <File name='dbt_project.yml'>
+
+      ```yaml
+      name: 'jaffle_shop'
+      ```
+
+      </File>
+    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config block to:
+
+      <File name='dbt_project.yml'>
+
+      ```yaml
+      models:
+        jaffle_shop:
+          +materialized: table
+      ```
+
+      </File>
+    - Click **Save**.
+
+2. Enter the `dbt run` command. Your `bi_customers` model should now be built as a table!
+    :::info
+    To do this, dbt had to first run a `drop view` statement (or API call on BigQuery), then a `create table as` statement.
+    :::
+
+3. Edit `models/bi_customers.sql`  to override the `dbt_project.yml` for the `customers` model only by adding the following snippet to the top, and click **Save**:  
+
+    <File name='models/bi_customers.sql'>
+
+    ```sql
+    {{
+      config(
+        materialized='view'
+      )
+    }}
+
+    with customers as (
+
+        select
+            id as customer_id
+            ...
+
+    )
+
+    ```
+
+    </File>
+
+4. Enter the `dbt run` command. Your model, `bi_customers`, should now build as a view. 
+
+### FAQs
+
+<FAQ path="Models/available-materializations" />
+<FAQ path="Project/which-materialization" />
+<FAQ path="Models/available-configurations" />
 
 ## Build models on top of other models
 
 <Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in your original query.
-2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in your original query.
-
    <File name='models/stg_customers.sql'>
 
    ```sql
@@ -248,6 +334,7 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
    </File>
 
+2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in your original query.
    <File name='models/stg_orders.sql'>
 
    ```sql
@@ -262,9 +349,9 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
    </File>
 
-3. Edit the SQL in your `models/customers.sql` file as follows:
+3. Edit the SQL in your `models/bi_customers.sql` file as follows:
 
-   <File name='models/customers.sql'>
+   <File name='models/bi_customers.sql'>
 
    ```sql
    with customers as (
@@ -306,7 +393,7 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
       from customers
 
-      left join customer_orders using (customer_id)
+      left join customer_orders on customers.customer_id = customer_orders.customer_id
 
    )
 
@@ -395,6 +482,192 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 </div>
 
-<Snippet path="quickstarts/test-and-document-your-project" />
+## Add tests to your models
 
-<Snippet path="quickstarts/schedule-a-job" />
+Adding [tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
+
+To add tests to your project:
+
+1. Create a new YAML file in the `models` directory, named `models/schema.yml`
+2. Add the following contents to the file:
+
+    <File name='models/schema.yml'>
+
+    ```yaml
+    version: 2
+
+    models:
+      - name: bi_customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+
+      - name: stg_customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+
+      - name: stg_orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_customers')
+                  field: customer_id
+
+    ```
+
+    </File>
+
+3. Run `dbt test`, and confirm that all your tests passed.
+
+When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
+
+#### FAQs
+
+<FAQ path="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ path="Tests/test-one-model" />
+<FAQ path="Runs/failed-tests" />
+<FAQ path="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
+<FAQ path="Project/why-version-2" />
+<FAQ path="Tests/recommended-tests" />
+<FAQ path="Tests/when-to-test" />
+
+
+## Document your models
+
+Adding [documentation](/docs/build/documentation) to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
+
+1. Update your `models/schema.yml` file to include some descriptions, such as those below.
+
+    <File name='models/schema.yml'>
+
+    ```yaml
+    version: 2
+
+    models:
+      - name: bi_customers
+        description: One record per customer
+        columns:
+          - name: customer_id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: first_order_date
+            description: NULL when a customer has not yet placed an order.
+
+      - name: stg_customers
+        description: This model cleans up customer data
+        columns:
+          - name: customer_id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+
+      - name: stg_orders
+        description: This model cleans up order data
+        columns:
+          - name: order_id
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_customers')
+                  field: customer_id
+    ```
+
+    </File>
+
+2. Run `dbt docs generate` to generate the documentation for your project. dbt introspects your project and your warehouse to generate a <Term id="json" /> file with rich documentation about your project.
+
+
+3. Click the book icon in the Develop interface to launch documentation in a new tab.
+
+#### FAQs
+
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
+
+
+
+## Commit your changes
+
+Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
+
+**If you edited directly in the protected primary branch:**<br />
+1. Click the **Commit and sync git** button. This action prepares your changes for commit.
+2. A modal titled **Commit to a new branch** will appear.
+3. In the modal window, name your new branch `add-customers-model`. This branches off from your primary branch with your new changes.
+4. Add a commit message, such as "Add customers model, tests, docs" and commit your changes.
+5. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+
+
+**If you created a new branch before editing:**<br />
+1. Since you already branched out of the primary protected branch, go to  **Version Control** on the left.
+2. Click **Commit and sync** to add a message.
+3. Add a commit message, such as "Add customers model, tests, docs."
+4. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+
+## Deploy dbt
+
+Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+
+### Create a deployment environment
+
+1. In the upper left, select **Deploy**, then click **Environments**.
+2. Click **Create Environment**.
+3. In the **Name** field, write the name of your deployment environment. For example, "Production."
+4. In the **dbt Version** field, select the latest version from the dropdown.
+5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as `jaffle_shop_prod`. This will allow dbt to build and work with that dataset.
+6. Click **Save**.
+
+### Create and run a job
+
+Jobs are a set of dbt commands that you want to run on a schedule. For example, `dbt build`.
+
+As the `jaffle_shop` business gains more customers, and those customers create more orders, you will see more records added to your source data. Because you materialized the `bi_customers` model as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date. This update will happen when you run a job.
+
+1. After creating your deployment environment, you should be directed to the page for a new environment. If not, select **Deploy** in the upper left, then click **Jobs**.
+2. Click **+ Create job** and then select **Deploy job**. Provide a name, for example, "Production run", and link it to the Environment you just created.
+3. Scroll down to the **Execution Settings** section.
+4. Under **Commands**, add this command as part of your job if you don't see it:
+   * `dbt build`
+5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/collaborate/build-and-view-your-docs) each time your job runs. 
+6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
+7. Select **Save**, then click **Run now** to run your job.
+8. Click the run and watch its progress under "Run history."
+9. Once the run is complete, click **View Documentation** to see the docs for your project.
+
+
+Congratulations 🎉! You've just deployed your first dbt project!
+
+
+#### FAQs
+
+<FAQ path="Runs/failed-prod-run" />
+
+
+
