@@ -14,16 +14,18 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 ## Which release tracks are available?
 
-- **"Latest"** (available to all plans, formerly called "Versionless"): Provides a continuous release of the latest functionality in dbt Cloud. Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core.
-- <Lifecycle status="coming soon"/> **"Compatible"** (available to Team + Enterprise): Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in dbt Cloud.
-- <Lifecycle status="coming soon"/> **"Extended"** (available to Enterprise): Provides a delayed release of the previous month's "Compatible" release.
+| Release track | Description | Plan availability | API value |
+| ------------- | ----------- | ----------------- | --------- |
+| **Latest** <br /> <Lifecycle status="GA"/> |  Formerly called "Versionless", provides a continuous release of the latest functionality in dbt Cloud. Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
+| **Compatible** <Lifecycle status="preview"/>  | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in dbt Cloud. |  Team + Enterprise | `compatible` |
+| **Extended** <Lifecycle status="preview"/> | The previous month's "Compatible" release. | Enterprise | `extended` |
 
-The first "Compatible" release will be in December 2024, after the final release of dbt Core v1.9.0. For December 2024 only, the "Extended" release is the same as "Compatible." Starting in January 2025, "Extended" will be one month behind "Compatible."
+The first "Compatible" release was on December 12, 2024, after the final release of dbt Core v1.9.0. For December 2024 only, the "Extended" release is the same as "Compatible." Starting in January 2025, "Extended" will be one month behind "Compatible."
 
 To configure an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
-- `latest` (formerly called `versionless`; the old name is still supported)
-- `compatible` (available to Team + Enterprise)
-- `extended` (available to Enterprise)
+- `latest` (or `versionless`, the old name is still supported)
+- `compatible`
+- `extended`
 
 ## Which release track should I choose?
 
@@ -69,7 +71,7 @@ To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to
 
 If you're running dbt version 1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
-dbt Labs has extended the critical support period of dbt Core v1.7 for dbt Cloud Enterprise customers to January 31, 2024. At that point, we will be asking all customers to select a Release Track for receiving ongoing updates to dbt in dbt Cloud.
+dbt Labs has extended the critical support period of dbt Core v1.7 for dbt Cloud Enterprise customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in dbt Cloud.
 
 <Expandable alt_header="I'm using an older version of dbt in dbt Cloud. What should I do? What happens if I do nothing?" >
 
@@ -77,9 +79,7 @@ If you're running dbt version v1.6 or older, please know that your version of db
 
 dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Cloud Enterprise customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt Cloud for Enteprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-dbt Cloud accounts on the Developer and Team plans will be migrated to the "Latest" release track after November 1, 2024. If you know that your project will not be compatible with the upgrade, for one of the reasons described here, or a different reason in your own testing, you should [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
-
-If your account has been migrated to the "Latest" release track, and you are seeing net-new failures in your scheduled dbt jobs, you should also [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension.
+Starting in October 2024, dbt Cloud accounts on the Developer and Team plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the "Latest" release track and you notice new failures in scheduled jobs, please [contact dbt Cloud support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
 
 </Expandable>
 
@@ -134,7 +134,7 @@ In 2024, we've changed the way that new dbt functionality is made available for 
 
 Opting into a release cadence with automated upgrades is required for accessing any new functionality that we've released in 2024, and going forward.
 
-We continue to release new minor versions of dbt Core (OSS), including v1.9 which will be available later this year. When we do, it will be a subset of the functionality that's already available to dbt Cloud customers, and always after the functionality has been available in dbt Cloud.
+We continue to release new minor versions of dbt Core (OSS). We most recently released dbt Core v1.9 on December 9, 2024. These releases always include a subset of the functionality that's already available to dbt Cloud customers, and always after the functionality has been available in dbt Cloud.
 
 </Expandable>
 
