@@ -86,7 +86,6 @@ models:
   - name: events
     config:
       materialized: table
-
 ```
 
 </File>
