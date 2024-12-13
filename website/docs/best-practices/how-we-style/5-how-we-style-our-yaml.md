@@ -7,6 +7,7 @@ id: 5-how-we-style-our-yaml
 
 - 2️⃣ Indents should be two spaces
 - ➡️ List items should be indented
+- 🔠 List items with a single entry can be a string. For example, `'select': 'other_user'`, but it's best practice to provide the argument as an explicit list. For example, `'select': ['other_user']`
 - 🆕 Use a new line to separate list items that are dictionaries where appropriate
 - 📏 Lines of YAML should be no longer than 80 characters.
 - 🛠️ Use the [dbt JSON schema](https://github.com/dbt-labs/dbt-jsonschema) with any compatible IDE and a YAML formatter (we recommend [Prettier](https://prettier.io/)) to validate your YAML files and format them automatically.
