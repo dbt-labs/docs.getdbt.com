@@ -80,7 +80,6 @@ Materializations can also be configured in the model's `properties.yml` file.
 <File name='models/properties.yml'>
 
 ```yaml
-
 version: 2
 
 models:
