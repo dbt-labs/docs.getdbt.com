@@ -75,7 +75,7 @@ from ...
 
 <TabItem value="Property file">
 
-Materializations can also be configured in the model's `properties.yml` file. 
+Materializations can also be configured in the model's `properties.yml` file.  The following example shows the `table` materialization type. For a complete list of materialization types, refer to [materializations](/docs/build/materializations#materializations).
 
 <File name='models/properties.yml'>
 
