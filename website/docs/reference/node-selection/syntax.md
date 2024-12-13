@@ -1,7 +1,6 @@
 ---
 title: "Syntax overview"
 sidebar_label: "Syntax overview"
-pagination_prev: "docs/reference/node-selection/node-selection"
 ---
 
 dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:

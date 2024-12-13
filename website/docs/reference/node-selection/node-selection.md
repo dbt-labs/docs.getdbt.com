@@ -2,18 +2,15 @@
 title: "Node selection"
 description: "Learn how to select and exclude resources in dbt."
 sidebar_label: "About node selection"
-id: node-selection
 ---
 
-dbt's resource selection process is consistent across commands but can feel counterintuitive in certain cases. To clarify this, let's outline the steps dbt follows when selecting resources.
+This page outlines the steps dbt follows when selecting resources. To understand dbt resource selection:
 
-To understand dbt resource selection:
-
-- Think of selection and exclusion as two filtering steps applied sequentially.
+- Think of `--select` and `--exclude` as two filtering steps applied sequentially.
 - Recognize that the type of command determines the final resources executed.
 - Understand that edge cases like `dbt test` or `source:` aren't exceptions but logical outcomes of this schematic.
 
-### Initial resource selection
+### Resource selection
 
 dbt selects any resource that matches one or more `--models` or `--select` criteria in the order of:
 
