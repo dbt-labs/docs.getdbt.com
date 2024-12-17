@@ -180,10 +180,9 @@ Use the `private` block in your `packages.yml` or `dependencies.yml` to clone pa
 
 ```yaml
 packages:
-	- private: dbt-labs/awesome_repo
-		
-	- package: normal packages
-	
+  - private: dbt-labs/awesome_repo
+  - package: normal packages
+
 	[...]
 ```
 
@@ -193,8 +192,8 @@ You can pin private packages similar to regular dbt packages:
 
 ```yaml
 packages:
-	- private: dbt-labs/awesome_repo
-	  revision: branch name | tagged git release | a specific commit (full 40-character hash}
+  - private: dbt-labs/awesome_repo
+    revision: branch name | tagged git release | a specific commit (full 40-character hash}
   
 ```
 
@@ -202,8 +201,8 @@ If you are using multiple Git integrations, disambiguate by adding the provider 
 
 ```yaml
 packages:
-	- private: dbt-labs/awesome_repo
-	  provider: "github" | "azure" 
+  - private: dbt-labs/awesome_repo
+    provider: "github" | "azure" 
 
 ```
 
