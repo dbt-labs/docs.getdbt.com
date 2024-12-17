@@ -170,7 +170,6 @@ To use native private packages, you must have one of the following Git providers
 - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
 - Support for GitLab is coming soon.
 
-To use this feature, you must have a supported Git provider configured in the **Integrations** section of your **Account settings**.
 
 #### Configuration
 
