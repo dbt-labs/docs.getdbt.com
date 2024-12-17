@@ -168,7 +168,7 @@ dbt Cloud supports private packages from [supported](#prerequisites) Git repos l
 dbt Cloud natively supports private packages for the following services:
 - [GitHub](/docs/cloud/git/connect-github)
 - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
-
+- Support for GitLab is coming soon.
 Support for Gitlab is coming soon. 
 
 To use this feature, you must have a supported Git provider configured in the **Integrations** section of your **Account settings**.
