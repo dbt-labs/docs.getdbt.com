@@ -20,6 +20,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## December 2024
 
+- **New**: The dbt Semantic Layer supports Sigma as a [partner integration](/docs/cloud-integrations/avail-sl-integrations), available in Preview. Refer to [Sigma](https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration) for more information.
+- **New**: The dbt Semantic Layer now supports Azure Single-tenant deployments. Refer to [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for more information on how to get started.
+- **Fix**: Resolved intermittent issues in Single-tenant environments affecting Semantic Layer and query history.
 - **Fix**: [The dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now respects the BigQuery [`execution_project` attribute](/docs/core/connect-data-platform/bigquery-setup#execution-project), including for exports.
 - **New**: [Model notifications](/docs/deploy/model-notifications) are now generally available in dbt Cloud. These notifications alert model owners through email about any issues encountered by models and tests as soon as they occur while running a job.
 - **New**: You can now use your [Azure OpenAI key](/docs/cloud/account-integrations?ai-integration=azure#ai-integrations) (available in beta) to use dbt Cloud features like [dbt Copilot](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app) . Additionally, you can use your own [OpenAI API key](/docs/cloud/account-integrations?ai-integration=openai#ai-integrations) or use [dbt Labs-managed OpenAI](/docs/cloud/account-integrations?ai-integration=dbtlabs#ai-integrations) key. Refer to [AI integrations](/docs/cloud/account-integrations#ai-integrations) for more information.

@@ -7,6 +7,10 @@ id: "documentation"
 Good documentation for your dbt models will help downstream consumers discover and understand the datasets you curate for them.
 dbt provides a way to generate documentation for your dbt project and render it as a website.
 
+import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
+
+<CopilotBeta resource='documentation' />
+
 ## Related documentation
 
 * [Declaring properties](/reference/configs-and-properties)

@@ -1,5 +1,6 @@
-- Have a dbt Cloud Team or Enterprise account. Single-tenant accounts should contact their account representative for setup.
-- Ensure your production and development environments use [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- Have a dbt Cloud Team or Enterprise account.
+   - Available on all [tenant configurations](/docs/cloud/about-cloud/tenancy). Single-tenant accounts should contact your account representative for setup.
+- Ensure your production and development environments are on a [supported dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - Use Snowflake, BigQuery, Databricks, or Redshift.
 -  Create a successful run in the environment where you configure the Semantic Layer. 
    - **Note:** Semantic Layer supports querying in Deployment environments; development querying is coming soon.

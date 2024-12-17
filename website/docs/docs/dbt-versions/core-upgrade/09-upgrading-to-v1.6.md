@@ -101,7 +101,7 @@ The ability for installed packages to override built-in materializations without
 
 ### Quick hits
 
-- [`state:unmodified` and `state:old`](/reference/node-selection/methods#the-state-method) for [MECE](https://en.wikipedia.org/wiki/MECE_principle) stateful selection
+- [`state:unmodified` and `state:old`](/reference/node-selection/methods#state) for [MECE](https://en.wikipedia.org/wiki/MECE_principle) stateful selection
 - [`invocation_args_dict`](/reference/dbt-jinja-functions/flags#invocation_args_dict) includes full `invocation_command` as string
 - [`dbt debug --connection`](/reference/commands/debug) to test just the data platform connection specified in a profile
 - [`dbt docs generate --empty-catalog`](/reference/commands/cmd-docs) to skip catalog population while generating docs
