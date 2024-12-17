@@ -173,7 +173,7 @@ To use native private packages, you must have one of the following Git providers
 
 #### Configuration
 
-Use the `private` block in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable:
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable:
 
 <File name="packages.yml">
 
