@@ -229,7 +229,7 @@ If you're using dbt Cloud, the SSH key method will not work, but you can use the
 
 :::note
 
-dbt Cloud has [native support](#native-private-packages) for Git hosted private packages for Github and Azure DevOps (GitLab coming soon). If you are using a supported [integrated Git environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure Git tokens to retrieve private packages. 
+dbt Cloud has [native support](#native-private-packages) for Git hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated Git environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure Git tokens to retrieve private packages. 
 
 :::
 
