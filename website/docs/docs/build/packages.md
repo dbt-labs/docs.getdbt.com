@@ -193,7 +193,7 @@ You can pin private packages similar to regular dbt packages:
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    revision: branch name | tagged git release | a specific commit (full 40-character hash}
+    revision: "0.9.5" # Pin to a tag, branch, or complete 40-character commit hash
   
 ```
 
