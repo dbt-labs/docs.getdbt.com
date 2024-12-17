@@ -202,7 +202,7 @@ If you are using multiple Git integrations, disambiguate by adding the provider 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" | "azure" 
+    provider: "github" # GitHub and Azure are currently supported. GitLab is coming soon.
 
 ```
 
