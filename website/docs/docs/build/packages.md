@@ -205,7 +205,6 @@ packages:
 If you are using multiple Git integrations, disambiguate by adding the provider key:
 
 ```yaml
-
 packages:
 	- private: dbt-labs/awesome_repo
 	  provider: "github" | "azure" 
