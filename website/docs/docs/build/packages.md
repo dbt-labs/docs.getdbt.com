@@ -180,7 +180,6 @@ Use the `private` block in your `packages.yml` or `dependencies.yml` to clone pa
 <File name="packages.yml">
 
 ```yaml
-
 packages:
 	- private: dbt-labs/awesome_repo
 		
