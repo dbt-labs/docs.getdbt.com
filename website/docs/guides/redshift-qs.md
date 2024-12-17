@@ -118,8 +118,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
         id integer,
         user_id integer,
         order_date date,
-        status varchar(50),
-        _etl_loaded_at timestamp default current_timestamp
+        status varchar(50)
     );
 
     create table stripe.payment(
@@ -128,8 +127,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
         paymentmethod varchar(50),
         status varchar(50),
         amount integer,
-        created date,
-        _batched_at timestamp default current_timestamp
+        created date
     );
     ```
 
