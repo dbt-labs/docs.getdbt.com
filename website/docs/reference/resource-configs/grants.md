@@ -15,7 +15,7 @@ You should define grants as resource configs whenever possible, but you might oc
 
 * Apply grants on other database objects besides views and tables.
 * Create more granular row- and column-level access, use masking policies, or apply future grants.
-* Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not offer out-of-the-box support using resource configuration.
+* Take advantage of more advanced permission capabilities offered by your data platform, for which dbt does not offer out-of-the-box support using resource configuration.
 * Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 
 For more information on hooks, see [Hooks & operations](/docs/build/hooks-operations).
