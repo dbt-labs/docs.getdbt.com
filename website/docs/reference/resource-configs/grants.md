@@ -170,7 +170,7 @@ models:
 
 ## Revoking grants
 
-dbt will only modify grants on a node (including revocation) when a `grants` configuration is attached to that node. For example, imagine you had originally specified the following grants in `dbt_project.yml`:
+dbt only modifies grants on a node (including revocation) when a `grants` configuration is attached to that node. For example, imagine you had originally specified the following grants in `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -182,7 +182,7 @@ models:
 
 </File>
 
-If you delete the `+grants` section altogether, dbt will assume you no longer want it to manage grants, and will not change anything. To have dbt revoke all existing grants from a node, provide an empty list of grantees instead.
+If you delete the entire `+grants` section, dbt assumes you no longer want it to manage grants and doesn't change anything. To have dbt revoke all existing grants from a node, provide an empty list of grantees.
 
     <Tabs
     defaultValue="revoke-one"
