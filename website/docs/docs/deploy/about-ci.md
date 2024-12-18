@@ -19,7 +19,7 @@ Refer to the guide [Get started with continuous integration tests](/guides/set-u
     icon="dbt-bit"/>
 
   <Card
-    title="Advanced CI (preview)"
+    title="Advanced CI"
     body="Compare the differences between what's in the production environment and the pull request before merging those changes, ensuring that you're always shipping trusted data products."
     link="/docs/deploy/advanced-ci"
     icon="dbt-bit"/>
