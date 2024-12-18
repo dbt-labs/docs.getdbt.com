@@ -13,7 +13,7 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
-You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days) or enter a [custom cron schedule](#cron-schedule).
+You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days), enter a [custom cron schedule](#cron-schedule), or [trigger the job after another job completes](#trigger-on-job-completion).
 
 
 ## Prerequisites
@@ -115,11 +115,18 @@ Examples of cron job schedules:
 
 ### Trigger on job completion  <Lifecycle status="team,enterprise" />
 
-To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream (parent) job that, when it completes, will trigger your job. You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
+To _chain_ deploy jobs together:
+1. In the **Triggers** section, enable the **Run when another job finishes** option.
+2. Select the project that has the deploy job you want to run after completion.
+3. Specify the upstream (parent) job that, when completed, will trigger your job.
+   - You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
+4. In the **Completes on** option, select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.
 
-You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/cloud/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
+<Lightbox src="/img/docs/deploy/deploy-job-completion.jpg" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
 
-For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details).
+5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/cloud/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
+
+If another job triggers your job to run, you can find a link to the upstream job in the [run details section](/docs/deploy/run-visibility#job-run-details).
 
 ## Related docs
 
