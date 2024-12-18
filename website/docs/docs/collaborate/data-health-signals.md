@@ -19,7 +19,7 @@ Data health signals offer a quick, at-a-glance view of data health when browsing
 
 Access data health signals in the following places:
 - In the [search function](/docs/collaborate/explore-projects#search-resources) or under **Models**, **Sources**, or **Exposures** in the **Resource** tab.  
-  - For sources, the data health signal also indicates the source freshness status.
+  - For sources, the data health signal also indicates the [source freshness](/docs/deploy/source-freshness) status.
 - In the **Health** column on [each resource's details page](/docs/collaborate/explore-projects#view-resource-details). Hover over or click the signal to view detailed information.
 - In the **Health** column of public models tables.
 - In the [DAG lineage graph](/docs/collaborate/explore-projects#project-lineage). Click any node to open the node details panel where you can view it and its details.
