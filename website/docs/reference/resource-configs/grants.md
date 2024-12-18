@@ -11,12 +11,12 @@ The grant resource configs enable you to apply permissions at build time to a sp
 
 dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
 
-dbt encourages you to use grants as resource configs whenever possible. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
+You should define grants as resource configs whenever possible, but you might occasionally need to write grants statements manually and run them using [hooks](/docs/build/hooks-operations). For example, hooks may be appropriate if you want to:
 
-* Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 * Apply grants on other database objects besides views and tables.
-* Take advantage of more-advanced permission capabilities offered by your data platform, for which dbt does not (yet!) offer out-of-the-box support using resource configuration.
 * Create more granular row- and column-level access, use masking policies, or apply future grants.
+* Take advantage of more advanced permission capabilities offered by your data platform, for which dbt does not offer out-of-the-box support using resource configuration.
+* Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 
 For more information on hooks, see [Hooks & operations](/docs/build/hooks-operations).
 
@@ -154,6 +154,83 @@ Now, the model will grant select to `user_a`, `user_b`, AND `user_c`!
 - This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](https://docs.getdbt.com/reference/resource-configs/plus-prefix).
 - `grants` is the first config to support a `+` prefix for controlling config merge behavior. Currently, it's the only one. If it proves useful, we may extend this capability to new and existing configs in the future.
 
+### Conditional grants
+
+Like any other config, you can use Jinja to vary the grants in different contexts. For example, you might grant different permissions in prod than dev:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  +grants:
+    select: "{{ ['user_a', 'user_b'] if target.name == 'prod' else ['user_c'] }}"
+```
+
+</File>
+
+## Revoking grants
+
+dbt only modifies grants on a node (including revocation) when a `grants` configuration is attached to that node. For example, imagine you had originally specified the following grants in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  +grants:
+    select: ['user_a', 'user_b']
+```
+
+</File>
+
+If you delete the entire `+grants` section, dbt assumes you no longer want it to manage grants and doesn't change anything. To have dbt revoke all existing grants from a node, provide an empty list of grantees.
+
+    <Tabs
+    defaultValue="revoke-one"
+    values={[
+        { label: 'Revoke from one user', value: 'revoke-one', },
+        { label: 'Revoke from all users', value:'revoke-all', },
+        { label: 'Stop dbt from managing grants', value:'stop-managing', },
+    ]
+    }>
+
+    <TabItem value="revoke-one">
+    <File name='dbt_project.yml'>
+
+    ```yml
+    models:
+      +grants:
+        select: ['user_b']
+    ```
+
+    </File>
+    </TabItem>
+
+    <TabItem value="revoke-all">
+    <File name='dbt_project.yml'>
+
+    ```yml
+    models:
+      +grants:
+        select: []
+    ```
+
+    </File>
+    </TabItem>
+
+    <TabItem value="stop-managing">
+    <File name='dbt_project.yml'>
+
+    ```yml
+    models:
+
+      # this section intentionally left blank
+    ```
+
+    </File>
+    </TabItem>
+
+    </Tabs>
+
 ## General examples
 
 You can grant each permission to a single grantee, or a set of multiple grantees. In this example, we're granting `select` on this model to just `bi_user`, so that it can be queried in our Business Intelligence (BI) tool.
@@ -249,7 +326,7 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)).
+* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)). See [dbt-redshift#415](https://github.com/dbt-labs/dbt-redshift/issues/415) for the corresponding issue.
 
 </div>
 
