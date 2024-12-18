@@ -36,17 +36,17 @@ version: 2
 
 groups:
   - name: finance
-    description: "Models related to the finance department"
     owner:
       # Email is required to receive model-level notifications, additional properties are also allowed.
       name: "Finance Team"
+      description: "Models related to the finance department"
       email: finance@dbtlabs.com
       favorite_food: donuts
 
   - name: marketing
-    description: "Models related to the marketing department"
     owner:
       name: "Marketing Team"
+      description: "Models related to the marketing department"
       email: marketing@dbtlabs.com
       favorite_food: jaffles
 ```
