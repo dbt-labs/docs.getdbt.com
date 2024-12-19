@@ -7,7 +7,7 @@ pagination_next:  "docs/collaborate/data-tile"
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 ---
 
-# Auto-exposures <Lifecycle status="preview,enterprise" />
+# Auto-exposures <Lifecycle status="enterprise" />
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. Auto-exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in dbt Explorer for a richer experience.
 

@@ -271,9 +271,9 @@ metrics:
       measure:
         name: cancellations_usd  # Specify the measure you are creating a proxy for.
         fill_nulls_with: 0
+        join_to_timespine: true
     filter: |
       {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
-    join_to_timespine: true
 ```
 </File>
 

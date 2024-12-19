@@ -6,7 +6,7 @@ description: "Import and auto-generate exposures from dashboards and understand 
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Configure auto-exposures <Lifecycle status="preview,enterprise" />
+# Configure auto-exposures <Lifecycle status="enterprise" />
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. [Auto-exposures](/docs/collaborate/auto-exposures) integrates natively with Tableau and [auto-generates downstream lineage](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer for a richer experience.
 
