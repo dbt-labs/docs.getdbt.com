@@ -185,11 +185,12 @@ In `tests/unique_order_id_test.sql` file:
 ```sql
 {{ config(
     alias="unique_order_id_test",
-    severity="error",
+    severity="error"
+) }}
 ```
 </File>
 
-When using [`store_failures_as`](/reference/resource-configs/store_failures_as), this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
+When using [`store_failures_as`](/reference/resource-configs/store_failures_as), this would return the name `analytics.dbt_test__audit.orders_order_id_unique_order_id_test` in the database.
 
 
 </TabItem>
