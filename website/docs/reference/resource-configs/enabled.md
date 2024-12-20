@@ -78,7 +78,9 @@ snapshots:
 
 </File>
 
-<File name='snapshots/properties.yml'>
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/snapshot_name.yml'>
 
 ```yaml
 version: 2
@@ -91,9 +93,13 @@ snapshots:
 
 </File>
 
+</VersionBlock>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
+# Configuring in a SQL file is a legacy method and not recommended. Use the YAML file instead.
+
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
@@ -103,10 +109,9 @@ snapshots:
 select ...
 
 {% endsnapshot %}
-
 ```
-
 </File>
+
 
 </TabItem>
 
