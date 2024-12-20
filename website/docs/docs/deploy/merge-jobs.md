@@ -20,7 +20,7 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 1. On your deployment environment page, click **Create job** > **Merge job**. 
 1. Options in the **Job settings** section:
     - **Job name** &mdash; Specify the name for the merge job.
-    - **Description** &mdash; Provide a descripion about the job. 
+    - **Description** &mdash; Provide a description about the job.
     - **Environment** &mdash; By default, it’s set to the environment you created the job from.
 1. In the **Git trigger** section, the **Run on merge** option is enabled by default. Every time a PR merges (to a base
 branch configured in the environment) in your Git repo, this job will get triggered to run. 

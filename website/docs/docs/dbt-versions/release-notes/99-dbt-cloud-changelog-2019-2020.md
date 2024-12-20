@@ -464,7 +464,7 @@ This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and
 - Fixed issue preventing temporary PR schemas from being dropped when PR is closed.
 - Fix issues with IDE tabs not updating query compile and run results.
 - Fix issues with query runtime timer in IDE for compile and run query functions.
-- Fixed what settings are displayed on the account settings page to allign with the user's permissions.
+- Fixed what settings are displayed on the account settings page to align with the user's permissions.
 - Fixed bug with checking user's permissions in frontend when user belonged to more than one project.
 - Fixed bug with access control around environments and file system/git interactions that occurred when using IDE.
 - Fixed a bug with Environments too generously matching repository.

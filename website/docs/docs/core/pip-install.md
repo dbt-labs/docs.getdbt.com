@@ -29,9 +29,9 @@ dbt-env\Scripts\activate			# activate the environment for Windows
 
 #### Create an alias
 
-To activate your dbt environment with every new shell window or session, you can create an alias for the source command in your $HOME/.bashrc, $HOME/.zshrc, or whichever config file your shell draws from. 
+To activate your dbt environment with every new shell window or session, you can create an alias for the source command in your `$HOME/.bashrc`, `$HOME/.zshrc`, or whichever config file your shell draws from. 
 
-For example, add the following to your rc file, replacing &lt;PATH_TO_VIRTUAL_ENV_CONFIG&gt; with the path to your virtual environment configuration.
+For example, add the following to your rc file, replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration.
 
 ```shell
 alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'

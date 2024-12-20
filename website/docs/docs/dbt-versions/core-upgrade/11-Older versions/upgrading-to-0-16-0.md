@@ -80,7 +80,7 @@ The `snowflake__list_schemas` macro should now return an Agate dataframe with a
 column named `"name"`. If you are overriding the `snowflake__list_schemas` macro in your
 project, you can find more information about this change in [this pull request](https://github.com/dbt-labs/dbt-core/pull/2171).
 
-### Snowflake databases wih 10,000 schemas
+### Snowflake databases with 10,000 schemas
 dbt no longer supports running against Snowflake databases containing more than
 10,000 schemas. This is due limitations of the `show schemas in database` query
 that dbt now uses to find schemas in a Snowflake database. If your dbt project

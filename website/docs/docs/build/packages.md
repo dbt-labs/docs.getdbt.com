@@ -161,7 +161,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ### Native private packages <Lifecycle status='beta'/> 
 
-dbt Cloud supports private packages from [supported](#prerequisites) Git repos leveraging an exisiting [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.  
+dbt Cloud supports private packages from [supported](#prerequisites) Git repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
 
 #### Prerequisites
 

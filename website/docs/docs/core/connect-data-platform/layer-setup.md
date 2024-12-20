@@ -83,7 +83,7 @@ _Parameters:_
 
 | Syntax    | Description                                                                                                                                                                                                                                 |
 | --------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `MODEL_TYPE`    | Type of the model your want to train. There are two options: <br/> - `classifier`: A model to predict classes/labels or categories such as spam detection<br/>- `regressor`: A model to predict continious outcomes such as CLV prediction. |
+| `MODEL_TYPE`    | Type of the model your want to train. There are two options: <br/> - `classifier`: A model to predict classes/labels or categories such as spam detection<br/>- `regressor`: A model to predict continuous outcomes such as CLV prediction. |
 | `FEATURES`    | Input column names as a list to train your AutoML model.                                                                                                                                                                                    |
 | `TARGET`    | Target column that you want to predict.                                                                                                                                                                                                     |
 
