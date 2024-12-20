@@ -51,7 +51,7 @@ packages:
 </File>
 
 
-## Novemver 2022
+## November 2022
 
 ### The dbt Cloud + Databricks experience is getting even better
 
