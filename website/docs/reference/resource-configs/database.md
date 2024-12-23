@@ -22,6 +22,7 @@ models:
 ```
 </File>
 
+
 This would result in the generated relation being located in the `reporting` database, so the full relation name would be `reporting.finance.sales_metrics` instead of the default target database.
 </TabItem>
 
@@ -55,7 +56,7 @@ Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer f
 
 <VersionBlock firstVersion="1.9">
 
-Specify a custom database for a snapshot in your `dbt_project.yml` or config file. 
+Specify a custom database for a snapshot in your `dbt_project.yml`, snapshot.yml file, or config file. 
 
 For example, if you have a snapshot that you want to load into a database other than the target database, you can configure it like this:
 
@@ -66,6 +67,20 @@ snapshots:
   your_project:
     your_snapshot:
       +database: snapshots
+```
+</File>
+
+Or in a `snapshot_name.yml` file:
+
+<File name='snapshots/snapshot_name.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      database: snapshots
 ```
 </File>
 

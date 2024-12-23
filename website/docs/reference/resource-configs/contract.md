@@ -6,8 +6,6 @@ default_value: {enforced: false}
 id: "contract"
 ---
 
-Supported in dbt v1.5 and higher.
-
 When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
 - Additional [`constraints`](/reference/resource-properties/constraints), as supported for this materialization and data platform
