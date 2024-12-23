@@ -5,11 +5,8 @@ resource_types: [models]
 datatype: test
 ---
 
-:::note 
+<VersionCallout version="1.8" />
 
-This functionality is available in dbt Core v1.8+ and [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks).
-
-:::
 
 Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
 

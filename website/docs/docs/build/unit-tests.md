@@ -8,11 +8,10 @@ keywords:
   - unit test, unit tests, unit testing, dag
 ---
 
-:::note 
+<VersionCallout version="1.8" />
 
-Unit testing functionality is available in [dbt Cloud Release Tracks](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.8+
 
-:::
+
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 

@@ -7,7 +7,7 @@ description: "dbt uses `begin` to determine when a microbatch incremental model 
 datatype: string
 ---
 
-Available in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9 and higher.
+<VersionCallout version="1.9" />
 
 ## Definition
 
