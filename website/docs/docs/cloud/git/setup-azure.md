@@ -155,7 +155,7 @@ The service user's permissions will also power which repositories a team can sel
 
 While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
 
-As a result, MFA must be explicity disabled in the Office 365 or Microsoft Entra ID administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
+As a result, MFA must be explicitly disabled in the Office 365 or Microsoft Entra ID administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
 
 
 **To disable MFA for a single user using the Office 365 Administration console:**

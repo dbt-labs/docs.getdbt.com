@@ -144,7 +144,7 @@ Adjust the other settings as needed to meet your organization's configurations i
 1. Navigate back to the dbt Cloud **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields.
    1. `Integration name`: Give the integration a descriptive name that includes identifying information about the Okta environment so future users won’t have to guess where it belongs.
    2. `Client ID` and `Client secrets`: Retrieve these from the Okta application page.
-   <Lightbox src="/img/docs/dbt-cloud/gather-clientid-secret.png" width="60%" title="TThe client ID and secret highlighted in the Okta app" />
+   <Lightbox src="/img/docs/dbt-cloud/gather-clientid-secret.png" width="60%" title="The client ID and secret highlighted in the Okta app" />
    3. Authorize URL and Token URL: Found in the metadata URI.
    <Lightbox src="/img/docs/dbt-cloud/gather-authorization-token-endpoints.png" width="60%" title="The authorize and token URLs highlighted in the metadata URI" />
 

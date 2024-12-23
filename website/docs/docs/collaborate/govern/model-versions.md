@@ -14,7 +14,7 @@ This functionality is new in v1.5 — if you have thoughts, participate in [the 
 
 </VersionBlock>
 
-import VersionsCallout from '/snippets/_version-callout.md';
+import VersionsCallout from '/snippets/_model-version-callout.md';
 
 <VersionsCallout />
 

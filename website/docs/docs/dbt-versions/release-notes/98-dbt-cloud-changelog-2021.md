@@ -326,7 +326,7 @@ Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not f
 - Fix NoSuchKey error
 - Guarantee unique notification settings per account, user, and type
 - Fix for account notification settings
-- Dont show deleted projects on notifications page
+- Don't show deleted projects on notifications page
 - Fix unicode error while decoding last_chunk
 - Show more relevant errors to customers
 - Groups are now editable by non-sudo requests

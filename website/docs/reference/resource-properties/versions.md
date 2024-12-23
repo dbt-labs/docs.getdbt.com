@@ -5,7 +5,7 @@ required: no
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
-import VersionsCallout from '/snippets/_version-callout.md';
+import VersionsCallout from '/snippets/_model-version-callout.md';
 
 <VersionsCallout />
 

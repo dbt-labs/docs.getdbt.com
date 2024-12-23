@@ -55,7 +55,7 @@ Microsoft made several changes related to connection encryption. Read more about
 ### Authentication methods
 
 This adapter is based on the adapter for Microsoft SQL Server.
-Therefor, the same authentication methods are supported.
+Therefore, the same authentication methods are supported.
 
 The configuration is the same except for 1 major difference:
 instead of specifying `type: sqlserver`, you specify `type: synapse`.

@@ -96,6 +96,21 @@ snapshots:
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+<File name='snapshots/properties.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      group: GROUP_NAME
+```
+
+</File>
+</VersionBlock>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql

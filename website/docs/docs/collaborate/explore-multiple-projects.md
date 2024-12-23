@@ -27,7 +27,7 @@ When viewing a downstream (child) project that imports and refs public models fr
 - Clicking on a model opens a side panel containing general information about the model, such as the specific dbt Cloud project that produces that model, description, package, and more.
 - Double-clicking on a model from another project opens the resource-level lineage graph of the parent project, if you have the permissions to do so.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-child.png" width="100%" height="100" title="View a downstream (child) project that importants and refs public models from the upstream (parent) project."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-child.png" width="100%" height="100" title="View a downstream (child) project that imports and refs public models from the upstream (parent) project."/>
 
 ## Explore the project-level lineage graph
 

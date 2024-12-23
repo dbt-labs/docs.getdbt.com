@@ -84,6 +84,23 @@ snapshots:
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+<File name='snapshots/snapshot_name.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      persist_docs:
+        relation: true
+        columns: true
+```
+
+</File>
+</VersionBlock>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
