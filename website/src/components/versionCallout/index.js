@@ -13,7 +13,7 @@ const VersionCallout = ({ version }) => {
         Available from dbt v{version} or with the{' '}
         <a href="/docs/dbt-versions/cloud-release-tracks">
         dbt Cloud "Latest" release track
-        </a>{' '}.
+        </a>{''}.
       </span>
     </Admonition>
   </div>

@@ -437,8 +437,8 @@ Beginning with 1.9, `merge` behavior can be modified with the following addition
 - `skip_not_matched_step`: If set to `true`, the 'not matched' clause will not be included.
 - `matched_condition`: Condition to apply to the `WHEN MATCHED` clause.  You should use the `target_alias` and `source_alias` to write a conditional expression, such as `DBT_INTERNAL_DEST.col1 = hash(DBT_INTERNAL_SOURCE.col2, DBT_INTERNAL_SOURCE.col3)`.  This condition further restricts the matched set of rows.
 - `not_matched_condition`: Condition to apply to the `WHEN NOT MATCHED [BY TARGET]` clause.  This condition further restricts the set of rows in the target that do not match the source that will be inserted into the merged table.
-- `not_matched_by_source_condition`: Condition to apply to the further filter `WHEN NOT MATCHED BY SOURCE` clause.  Only used in conjunction with `not_matched_by_source_action: delete`.
-- `not_matched_by_source_action`: If set to `delete`, a `DELETE` clause is added to the merge statement for `WHEN NOT MATCHED BY SOURCE`.
+- `not_matched_by_source_condition`: Condition to apply to the further filter `WHEN NOT MATCHED BY SOURCE` clause.  Only used in conjunction with `not_matched_by_source_action`.
+- `not_matched_by_source_action`: The action to apply when the condition is met. Configure as an expression. For example: `not_matched_by_source_action: "update set t.attr1 = 'deleted', t.tech_change_ts = current_timestamp()"`.
 - `merge_with_schema_evolution`: If set to `true`, the merge statement includes the `WITH SCHEMA EVOLUTION` clause.
 
 For more details on the meaning of each merge clause, please see [the Databricks documentation](https://docs.databricks.com/en/sql/language-manual/delta-merge-into.html).

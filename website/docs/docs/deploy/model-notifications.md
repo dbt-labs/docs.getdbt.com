@@ -38,20 +38,28 @@ groups:
   - name: finance
     owner:
       # Email is required to receive model-level notifications, additional properties are also allowed.
-      name: "Finance Team"
-      description: "Models related to the finance department"
+      name: "Finance team"
       email: finance@dbtlabs.com
       favorite_food: donuts
 
   - name: marketing
     owner:
-      name: "Marketing Team"
-      description: "Models related to the marketing department"
+      name: "Marketing team"
       email: marketing@dbtlabs.com
       favorite_food: jaffles
+
+  - name: docs
+    owner:
+      name: "Documentation team"
+      email: docs@dbtlabs.com
+      favorite_food: pizza
 ```
 
 </File>
+
+:::tip
+The `owner` key is flexible and accepts arbitrary inputs in addition to the required `email` field. For example, you could include a custom field like `favorite_food` to add context about the team.
+:::
 
 ## Attach groups to models
 

@@ -7,7 +7,7 @@ description: "dbt uses `batch_size` to determine how large batches are when runn
 datatype: hour | day | month | year
 ---
 
-Available in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9 and higher.
+<VersionCallout version="1.9" />
 
 ## Definition
 
