@@ -176,7 +176,6 @@ dbt Cloud supports private packages from [supported](#prerequisites) Git repos l
 
 Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable. 
 
-The private key supports a two-layered-path: `org/repo`. dbt inherits the project path from your source repository.
 
 <File name="packages.yml">
 
