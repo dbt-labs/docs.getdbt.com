@@ -24,21 +24,22 @@ Essentially, exports are like any other table in your data platform &mdash; they
 
 ## Benefits of exports
 
-The following section explains the main benefits of using exports, including:
-- [DRY representation](#dry-representation)
-- [Easier changes](#easier-changes)
-- [Caching](#caching)
+The following section explains the main benefits of using exports:
 
-#### DRY representation
+<Expandable alt_header="DRY representation">
 
 Currently, creating tables often involves generating tens, hundreds, or even thousands of tables that denormalize data into summary or metric mart tables. The main benefit of exports is creating a "Don't Repeat Yourself (DRY)" representation of the logic to construct each metric, dimension, join, filter, and so on. This allows you to reuse those components for long-term scalability, even if you're replacing manually written SQL models with references to the metrics or dimensions in saved queries.
+</Expandable>
 
-#### Easier changes
+<Expandable alt_header="Easier changes">
 
 Exports ensure that changes to metrics and dimensions are made in one place and then cascade to those various destinations seamlessly. This prevents the problem of needing to update a metric across every model that references that same concept.
+</Expandable>
 
-#### Caching 
+<Expandable alt_header="Caching"> 
+
 Use exports to pre-populate the cache, so that you're pre-computing what you need to serve users through the dynamic Semantic Layer APIs.
+</Expandable>
 
 #### Considerations
 
