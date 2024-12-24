@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/collaborate/git/managed-repository",
+      "destination": "/docs/cloud/git/managed-repository",
+      "permanent": true
+    },
+    {
       "source": "/faqs/API/rotate-token",
       "destination": "/docs/dbt-cloud-apis/service-tokens#service-token-update",
       "permanent": true
@@ -1372,7 +1377,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
-      "destination": "/docs/collaborate/git/managed-repository",
+      "destination": "/docs/cloud/git/managed-repository",
       "permanent": true
     },
     {

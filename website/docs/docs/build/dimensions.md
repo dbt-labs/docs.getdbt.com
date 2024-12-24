@@ -22,6 +22,7 @@ All dimensions require a `name`, `type`, and can optionally include an `expr` pa
 | `description` | A clear description of the dimension. | Optional | String |  
 | `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name itself to input a SQL expression. | Optional | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional | String |
+| [`meta`](/reference/resource-configs/meta) |  Set metadata for a resource and organize resources. Accepts plain text, spaces, and quotes. | Optional | Dictionary | 
 
 Refer to the following for the complete specification for dimensions:
 
@@ -36,6 +37,44 @@ dimensions:
 ```
 
 Refer to the following example to see how dimensions are used in a semantic model:
+
+<VersionBlock firstVersion="1.9">
+
+```yaml
+semantic_models:
+  - name: transactions
+    description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
+    model: {{ ref('fact_transactions') }}
+    defaults:
+      agg_time_dimension: order_date
+# --- entities --- 
+  entities: 
+    - name: transaction
+      type: primary
+      ...
+# --- measures --- 
+  measures: 
+      ... 
+# --- dimensions ---
+  dimensions:
+    - name: order_date
+      type: time
+      type_params:
+        time_granularity: day
+      label: "Date of transaction" # Recommend adding a label to provide more context to users consuming the data
+      config: 
+        meta:
+          data_owner: "Finance team"
+      expr: ts
+    - name: is_bulk
+      type: categorical
+      expr: case when quantity > 10 then true else false end
+    - name: type
+      type: categorical
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 ```yaml
 semantic_models:
@@ -66,6 +105,7 @@ semantic_models:
     - name: type
       type: categorical
 ```
+</VersionBlock>
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
@@ -101,12 +141,28 @@ This section further explains the dimension definitions, along with examples. Di
 
 Categorical dimensions are used to group metrics by different attributes, features, or characteristics such as product type. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a categorical dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+dimensions: 
+  - name: is_bulk_transaction
+    type: categorical
+    expr: case when quantity > 10 then true else false end
+    config:
+      meta:
+        usage: "Filter to identify bulk transactions, like where quantity > 10."
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 dimensions: 
   - name: is_bulk_transaction
     type: categorical
     expr: case when quantity > 10 then true else false end
 ```
+</VersionBlock>
 
 ## Time
 
@@ -129,6 +185,41 @@ You can set `is_partition` for time to define specific time spans. Additionally,
 <TabItem value="is_partition" label="is_partition">
 
 Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
+
+<VersionBlock firstVersion="1.9">
+
+```yaml
+dimensions: 
+  - name: created_at
+    type: time
+    label: "Date of creation"
+    expr: ts_created # ts_created is the underlying column name from the table 
+    config:
+      meta:
+        notes: "Only valid for orders from 2022 onward"
+    is_partition: True
+    type_params:
+      time_granularity: day
+  - name: deleted_at
+    type: time
+    label: "Date of deletion"
+    expr: ts_deleted # ts_deleted is the underlying column name from the table
+    is_partition: True 
+    type_params:
+      time_granularity: day
+
+measures:
+  - name: users_deleted
+    expr: 1
+    agg: sum
+    agg_time_dimension: deleted_at
+  - name: users_created
+    expr: 1
+    agg: sum
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 ```yaml
 dimensions: 
@@ -156,6 +247,7 @@ measures:
     expr: 1
     agg: sum
 ```
+</VersionBlock>
 
 </TabItem>
 

@@ -7,9 +7,11 @@ id: gitignore
 
 A `.gitignore` file specifies which files git should intentionally ignore or 'untrack'. dbt Cloud indicates untracked files in the project file explorer pane by putting the file or folder name in *italics*.
 
-If you encounter issues like problems reverting changes, checking out or creating a new branch, or not being prompted to open a pull request after a commit in the dbt Cloud IDE &mdash; this usually indicates a problem with the [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) file. The file may be missing or lacks the required entries for dbt Cloud to work correctly. 
+If you encounter issues like problems reverting changes, checking out or creating a new branch, or not being prompted to open a pull request after a commit in the dbt Cloud IDE &mdash; this usually indicates a problem with the [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) file. The file may be missing or lacks the required entries for dbt Cloud to work correctly.
 
-### Fix in the dbt Cloud IDE
+The following sections describe how to fix the `.gitignore` file in:
+
+<Expandable alt_header="Fix in the dbt Cloud IDE">
 
 To resolve issues with your `gitignore` file, adding the correct entries won't automatically remove (or 'untrack') files or folders that have already been tracked by git. The updated `gitignore` will only prevent new files or folders from being tracked. So you'll need to first fix the `gitignore` file, then perform some additional git operations to untrack any incorrect files or folders.  
 
@@ -51,7 +53,9 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
-### Fix in the git provider
+</Expandable>
+
+<Expandable alt_header="Fix in the Git provider">
 
 Sometimes it's necessary to use the git providers web interface to fix a broken `.gitignore` file. Although the specific steps may vary across providers, the general process remains the same.
 
@@ -121,3 +125,4 @@ dbt_modules/
 </Tabs>
 
 For more info, refer to this [detailed video](https://www.loom.com/share/9b3b8e2b617f41a8bad76ec7e42dd014) for additional guidance. 
+</Expandable>

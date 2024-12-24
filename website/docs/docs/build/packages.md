@@ -165,27 +165,44 @@ dbt Cloud supports private packages from [supported](#prerequisites) Git repos l
 
 #### Prerequisites
 
-To use native private packages, you must have one of the following Git providers configured in the **Integrations** section of your **Account settings**:
-- [GitHub](/docs/cloud/git/connect-github)
-- [Azure DevOps](/docs/cloud/git/connect-azure-devops)
-- Support for GitLab is coming soon.
-
+- To use native private packages, you must have one of the following Git providers configured in the **Integrations** section of your **Account settings**:
+  - [GitHub](/docs/cloud/git/connect-github)
+  - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
+    - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
+    - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
+  - Support for GitLab is coming soon.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable:
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable. 
+
 
 <File name="packages.yml">
 
 ```yaml
 packages:
-  - private: dbt-labs/awesome_repo
+  - private: dbt-labs/awesome_repo # your-org/your-repo path
   - package: normal packages
-
-	[...]
+  [...]
 ```
-
 </File>
+
+:::tip Azure DevOps considerations
+
+- Private packages currently only work if the package repository is in the same Azure DevOps project as the source repo.
+- Use the `org/repo` path (not the normal ADO `org_name/project_name/repo_name` path) in the `private` key. 
+- Repositories in different Azure DevOps projects is currently not supported until a future update.
+
+You can use private packages by specifying `org/repo` in the `private` key:
+
+<File name="packages.yml">
+
+```yaml
+packages:
+  - private: my-org/my-repo # Works if your ADO source repo and package repo are in the same project
+```
+</File>
+:::
 
 You can pin private packages similar to regular dbt packages:
 

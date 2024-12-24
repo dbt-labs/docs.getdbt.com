@@ -1,3 +1,4 @@
+
 | Parameter | Description | Required | Type | 
 | --- | --- | --- | --- | 
 | [`name`](/docs/build/measures#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required | String | 
@@ -9,3 +10,4 @@
 | `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model.  | Optional | String |
 | `label` | String that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). Available in dbt version 1.7 or higher. | Optional | String |
 | `create_metric` | Create a `simple` metric from a measure by setting `create_metric: True`. The `label` and `description` attributes will be automatically propagated to the created metric. Available in dbt version 1.7 or higher. | Optional | Boolean |
+| `config`  | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports the [`meta`](/reference/resource-configs/meta) property, nested under `config`. | Optional |
