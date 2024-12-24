@@ -41,7 +41,6 @@ The following table identifies which joins are allowed based on specific entity 
 | Foreign                   | Unique                    | ✅ Left                 |
 | Foreign                   | Foreign                   | ❌ Fan-out (Not allowed) |
 
-This table primarily represents left joins unless otherwise specified. For scenarios involving multiple `fct` models, MetricFlow uses full outer joins.
 
 ### Explanation of joins
 
