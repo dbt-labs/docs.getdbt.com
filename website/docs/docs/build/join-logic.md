@@ -27,7 +27,7 @@ This section explains the different types of joins that can be used with entitie
 - For queries that involve multiple `fct` models, MetricFlow uses full outer joins. 
 - It restricts the use of fan-out and chasm joins. 
 
-Refer to the following table to identify which joins are or aren't allowed based on specific entity types to prevent the creation of risky joins.
+The following table identifies which joins are allowed based on specific entity types to prevent the creation of risky joins. This table primarily represents left joins unless otherwise specified. For scenarios involving multiple `fct` models, MetricFlow uses full outer joins.
 
 | entity type - Table A | entity type - Table B | Join type            |
 |---------------------------|---------------------------|----------------------|
