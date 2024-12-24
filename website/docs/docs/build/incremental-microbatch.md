@@ -232,7 +232,7 @@ from {{ source('sales', 'transactions') }}
 
 ### Full refresh
 
-As a best practice, we recommend configuring `full_refresh: False` on microbatch models so that they ignore invocations with the `--full-refresh` flag. If you need to reprocess historical data, do so with a targeted backfill that specifies explicit start and end dates.
+As a best practice, we recommend [configuring `full_refresh: false`](/reference/resource-configs/full_refresh) on microbatch models so that they ignore invocations with the `--full-refresh` flag. If you need to reprocess historical data, do so with a targeted backfill that specifies explicit start and end dates.
 
 ## Usage
 

@@ -113,7 +113,7 @@ Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to fin
 
 A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
 
-- **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
+- **Resource type**: Organizes resources by resource type, such as models, tests, seeds, saved query, and [more](/docs/build/projects). Resource type uses the `resource_type` selector.
 - **Materialization type**: Identifies the strategy for building the dbt models in your data platform.
 - **Latest status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
 - **Model layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
@@ -121,13 +121,13 @@ A resource in your project is characterized by resource type, materialization ty
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
 - **Test status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
-- **Usage queries**: The number of queries against this resource over a given time period.
+- **Consumption query history**: The number of queries against this resource over a given time period.
 
 </Expandable>
 
 ### Example of lenses
 
-Example of applying the **Materialization Type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
+Example of applying the **Materialization type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
 
@@ -141,7 +141,7 @@ You can locate resources in your project by performing a keyword search in the s
 
 <Expandable alt_header="Search features">
 
-- **Partial keyword search** &mdash; This is also referred to as fuzzy search.
+- **Partial keyword search** &mdash; Also referred to as fuzzy search. Explorer uses a "contains" logic to improve your search results. This means you can search for partial terms without knowing the exact root word of your search term.
 - **Exclude keywords** &mdash; Prepend a minus sign (-) to the keyword you want to exclude from search results. For example, `-user` will exclude all matches of that keyword from search results.
 - **Boolean operators** &mdash; Use Boolean operators to enhance your keyword search. For example, the search results for `users OR github` will include matches for either keyword.
 - **Phrase search** &mdash; Surround a string of keywords with double quotation marks to search for that exact phrase (for example, `"stg users"`). To learn more, refer to [Phrase search](https://en.wikipedia.org/wiki/Phrase_search) on Wikipedia.

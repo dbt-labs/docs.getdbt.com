@@ -22,12 +22,16 @@ dbt Cloud Enterprise supports [external OAuth authentication](https://docs.snow
 
 The process of setting up external OAuth will require a little bit of back-and-forth between your dbt Cloud, IdP, and Snowflake accounts, and having them open in multiple browser tabs will help speed up the configuration process:
 
-- **dbt Cloud:** You’ll primarily be working in the **Account Settings** —> **Integrations** page. You will need [proper permission](/docs/cloud/manage-access/enterprise-permissions) to set up the integration and create the connections.
+- **dbt Cloud:** You’ll primarily be working in the **Account settings** —> **Integrations** page. You will need [proper permission](/docs/cloud/manage-access/enterprise-permissions) to set up the integration and create the connections.
 - **Snowflake:** Open a worksheet in an account that has permissions to [create a security integration](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration).
 - **Okta:** You’ll be working in multiple areas of the Okta account, but you can start in the **Applications** section. You will need permissions to [create an application](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Application_permissions) and an [authorization server](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Authorization_server_permissions).
 - **Entra ID** An admin with access to create [Entra ID apps](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-available-permissions) who is also a user in Snowflake is required. 
 
 If the admins that handle these products are all different people, it’s better to have them coordinating simultaneously to reduce friction.
+
+:::info Snowflake and IdP username matching required
+Ensure that the username/email address entered by the IdP admin matches the Snowflake credentials username. If the email address used in the dbt Cloud setup is different from the Snowflake email address, the connection will fail or you may run into issues.
+:::
 
 ### Snowflake commands
 
@@ -45,18 +49,22 @@ external_oauth_audience_list = ('')
 external_oauth_token_user_mapping_claim = 'sub'
 external_oauth_snowflake_user_mapping_attribute = 'email_address'
 external_oauth_any_role_mode = 'ENABLE'
-
 ```
 
 The `external_oauth_token_user_mapping_claim` and `external_oauth_snowflake_user_mapping_attribute` can be modified based on the your organizations needs. These values point to the claim in the users’ token. In the example, Snowflake will look up the Snowflake user whose `email` matches the value in the `sub` claim. 
 
-**Note:** The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external OAuth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
+**Notes:** 
+- The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external OAuth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
+- The value for `external_oauth_snowflake_user_mapping_attribute` must map correctly to the Snowflake username. For example, if `email_address` is used, the email in the token from the IdP must match the Snowflake username exactly.
 
 ## Identity provider configuration
 
-Select a supported identity provider (IdP) for instructions on configuring external OAuth in their environment and completing the integration in dbt Cloud.
+Select a supported identity provider (IdP) for instructions on configuring external OAuth in their environment and completing the integration in dbt Cloud:
 
-<Expandable alt_header="Okta">
+- [Okta](#okta)
+- [Entra ID](#entra-id)
+
+## Okta
 
 ### 1. Initialize the dbt Cloud settings
 
@@ -139,6 +147,11 @@ Adjust the other settings as needed to meet your organization's configurations i
 
 3. Run the steps to create the integration in Snowflake.
 
+:::info Username consistency
+Ensure that the username (for example, email address) entered in the IdP matches the Snowflake credentials for all users. Mismatched usernames will result in authentication failures.
+:::
+
+
 ### 5. Configuring the integration in dbt Cloud
 
 1. Navigate back to the dbt Cloud **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields.
@@ -169,9 +182,9 @@ Adjust the other settings as needed to meet your organization's configurations i
 
 4. **Save** the connection, and you have now configured External OAuth with Okta and Snowflake!
 
-</Expandable>
 
-<Expandable alt_header="Entra ID">
+
+## Entra ID
 
 ### 1. Initialize the dbt Cloud settings
 
@@ -179,21 +192,19 @@ Adjust the other settings as needed to meet your organization's configurations i
 2. Scroll down to **Custom integrations** and click **Add integrations**.
 3. Leave this window open. You can set the **Integration type** to Entra ID and note the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
-### Entra ID
+### 2. Create the Entra ID apps
 
-You’ll create two apps in the Azure portal: A resource server and a client app.
+- You’ll create two apps in the Azure portal: A resource server and a client app.
+- In your Azure portal, open the **Entra ID** and click **App registrations** from the left menu.
 
 :::important
 
-The admin who creates the apps in the Microsoft Entra ID account must also be a user in Snowflake.
-
-The `value` field gathered in these steps is only displayed once. When created, record it immediately.
-
+- The admin who creates the apps in the Microsoft Entra ID account must also be a user in Snowflake.
+- The `value` field gathered in these steps is only displayed once. When created, record it immediately.
+- Ensure that the username (for example, email address) entered in the IdP matches the Snowflake credentials for all users. Mismatched usernames will result in authentication failures.
 :::
 
-In your Azure portal, open the **Entra ID** and click **App registrations** from the left menu.
-
-### 1. Create a resource server
+### 3. Create a resource server
 
 1. From the app registrations screen, click **New registration**.
    1. Give the app a name.
@@ -209,7 +220,7 @@ In your Azure portal, open the **Entra ID** and click **App registrations** from
    4. Ensure **State** is set to **Enabled**.
    5. Click **Add scope**.
 
-### 2. Create a client app
+### 4. Create a client app
 
 1. From the **App registration page**, click **New registration**.
    1. Give the app a name that uniquely identifies it as the client app.
@@ -225,7 +236,7 @@ In your Azure portal, open the **Entra ID** and click **App registrations** from
 7. Record the `value` for use in a future step and record it immediately.
 **Note**: Entra ID will not display this value again once you navigate away from this screen.
 
-### 3. Snowflake configuration
+### 5. Snowflake configuration
 
 You'll be switching between the Entra ID site and Snowflake. Keep your Entra ID account open for this process.
 
@@ -257,7 +268,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
    - The **Application ID URI** maps to the `external_oauth_audience_list` field in Snowflake.
 4. Run the configurations. Be sure the admin who created the Microsoft apps is also a user in Snowflake, or the configuration will fail.
 
-### 4. Configuring the integration in dbt Cloud
+### 6. Configuring the integration in dbt Cloud
 
 1. Navigate back to the dbt Cloud **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields. There will be some back-and-forth between the Entra ID account and dbt Cloud.
 2. `Integration name`: Give the integration a descriptive name that includes identifying information about the Entra ID environment so future users won’t have to guess where it belongs.
@@ -266,7 +277,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 5. `Authorization URL` and `Token URL`: From the client ID app, open the `Endpoints` tab. These URLs map to the `OAuth 2.0 authorization endpoint (v2)` and `OAuth 2.0 token endpoint (v2)` fields. *You must use v2 of the `OAuth 2.0 authorization endpoint`. Do not use V1.* You can use either version of the `OAuth 2.0 token endpoint`.
 6. `Application ID URI`: Copy the `Application ID URI` field from the resource server’s Overview screen.
 
-</Expandable>
+
 
 ## FAQs
 
