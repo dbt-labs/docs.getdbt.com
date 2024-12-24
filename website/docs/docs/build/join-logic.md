@@ -23,9 +23,13 @@ MetricFlow automatically generates the necessary joins to the defined semantic o
 This section explains the different types of joins that can be used with entities and how to query them.
 :::
 
-- MetricFlow primarily uses left joins for joins. 
-- For queries that involve multiple `fct` models, MetricFlow uses full outer joins. 
-- It restricts the use of fan-out and chasm joins. 
+Metricflow uses these specific join strategies:
+
+- Primarily uses left joins when joining `fct` and `dim` models. Left joins make sure all rows from the "base" table are retained, while matching rows are included from the joined table.
+- For queries that involve multiple `fct` models, MetricFlow uses full outer joins to ensure all data points are captured, even when some `dim` or `fct` models are missing in certain tables. 
+- MetricFlow restricts the use of fan-out and chasm joins. 
+
+Refer to [SQL examples](#sql-examples) for more information on how MetricFlow handles joins in practice.
 
 The following table identifies which joins are allowed based on specific entity types to prevent the creation of risky joins. This table primarily represents left joins unless otherwise specified. For scenarios involving multiple `fct` models, MetricFlow uses full outer joins.
 
@@ -40,14 +44,6 @@ The following table identifies which joins are allowed based on specific entity 
 | Foreign                   | Primary                   | ✅ Left                 |
 | Foreign                   | Unique                    | ✅ Left                 |
 | Foreign                   | Foreign                   | ❌ Fan-out (Not allowed) |
-
-
-### Explanation of joins
-
-- **Left joins** &mdash; MetricFlow defaults to left joins when joining `fct` and `dim` models. Left joins make sure all rows from the "base" table are retained, while matching rows are included from the joined table. 
-- **Full outer joins** &mdash; For queries that involve multiple `fct` models, MetricFlow uses full outer joins to ensure all data points are captured, even when some `dim` or `fct` models are missing in certain tables. 
-
-Refer to [SQL examples](#sql-examples) for more information on how MetricFlow handles joins in practice.
 
 ### Semantic validation
 
