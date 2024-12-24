@@ -66,7 +66,7 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 
 ### dbt clean
 
-Starting in v1.7, `dbt clean` will only clean paths within the current working directory. The `--no-clean-project-files-only` flag will delete all paths specified in `clean-paths`, even if they're outside the dbt project.
+Starting in v1.7, `dbt clean` will only clean paths within the current working directory. The `--no-clean-project-files-only` flag will delete all paths specified in the `clean-targets` section of `dbt_project.yml`, even if they're outside the dbt project.
 
 Supported flags:
 -  `--clean-project-files-only` (default) 
