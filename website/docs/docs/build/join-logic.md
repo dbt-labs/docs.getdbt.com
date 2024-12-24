@@ -104,7 +104,7 @@ mf query --metrics average_purchase_price --group-by metric_time,user_id__type #
 
 #### SQL examples
 
-The following tabs provide SQL examples for both left joins and full outer joins, showing how MetricFlow handles these scenarios in practice.
+These SQL examples show how MetricFlow handles both left join and full outer join scenarios in practice:
 
 <Tabs>
 <TabItem value="SQL example for left join"> 
