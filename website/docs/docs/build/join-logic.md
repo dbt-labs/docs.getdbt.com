@@ -109,7 +109,7 @@ The following tabs provide SQL examples for both left joins and full outer joins
 <Tabs>
 <TabItem value="SQL example for left join"> 
 
-Following the previous example using the `transactions` and `user_signup` semantic models, this shows a left join between those two semantic models.
+Using the previous example for `transactions` and `user_signup` semantic models, this shows a left join between those two semantic models.
 
 ```sql
 select
