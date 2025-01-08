@@ -260,6 +260,18 @@ Be mindful of YAML semantics when providing a description. If your description c
 
 ## Examples
 
+This section contains examples of how to add descriptions to various resources:
+
+- [Add a simple description to a model and column](#add-a-simple-description-to-a-model-and-column) <br />
+- [Add a multiline description to a model](#add-a-multiline-description-to-a-model) <br />
+- [Use some markdown in a description](#use-some-markdown-in-a-description) <br />
+- [Use a docs block in a description](#use-a-docs-block-in-a-description) <br />
+- [Link to another model in a description](#link-to-another-model-in-a-description)
+- [Include an image from your repo in your descriptions](#include-an-image-from-your-repo-in-your-descriptions) <br />
+- [Include an image from the web in your descriptions](#include-an-image-from-the-web-in-your-descriptions) <br />
+- [Add a description to a data test](#add-a-description-to-a-data-test) <br />
+- [Add a description to a unit test](#add-a-description-to-a-unit-test) <br />
+
 ### Add a simple description to a model and column
 
 <File name='models/schema.yml'>
