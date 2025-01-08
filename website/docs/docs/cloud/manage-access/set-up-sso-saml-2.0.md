@@ -312,7 +312,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
 12.   Click **Edit** in the Basic SAML Configuration section.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the the 'Basic SAML Configuration' card"  />
+<Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the 'Basic SAML Configuration' card"  />
 
 13. Use the following table to complete the required fields and connect to dbt:
 
