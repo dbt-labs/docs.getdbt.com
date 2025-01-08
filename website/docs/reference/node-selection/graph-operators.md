@@ -3,7 +3,7 @@ title: "Graph operators"
 ---
 
 ### The "plus" operator
-The `+` operator expands your selection to include ancestors (upstream dependencies) or descendants (downstream dependencies) of a resource. This operator works for individual models, tags, or other resources.
+The `+` operator expands your selection to include ancestors (upstream dependencies) or descendants (downstream dependencies) of a resource. This operator works for individual models, tags, and other resources.
 
 - Placed after a model/resource &mdash; Includes the resource itself and all its descendants (downstream dependencies).
 - Placed before a model/resource &mdash; Includes the resource itself and all its ancestors (upstream dependencies).
