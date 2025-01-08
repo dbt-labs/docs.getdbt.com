@@ -163,7 +163,6 @@ version: 2
 data_tests:
   - name: data_test_name
     description: markdown_string
-```
 
 </File>
 
@@ -181,7 +180,6 @@ models:
         tests:
           - unique
             description: markdown_string
-```
 
 </File>
 
