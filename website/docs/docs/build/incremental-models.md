@@ -34,8 +34,7 @@ To use incremental models, you also need to tell dbt:
 
 The `is_incremental()` macro powers incremental materializations. It will return `True` if _all_ of the following conditions are met:
 
-- The model must already exist in the database
-- The destination table already exists in the database
+- The model must already exist as a table in the database
 - The `full-refresh` flag _is not_ passed
 - The running model is configured with `materialized='incremental'`
 
