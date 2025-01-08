@@ -124,6 +124,7 @@ You can use the [`+` operator](/reference/node-selection/graph-operators#the-plu
 - `dbt run --select tag:my_tag+` &mdash; Run models tagged with `my_tag` and all their downstream dependencies (children).
 - `dbt run --select +tag:my_tag` &mdash; Run models tagged with `my_tag` and all their upstream dependencies (parents).
 - `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies (parents), and its downstream dependencies (children).
+- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run model tagged with `my_tag` and their downstream dependencies and exclude models tagged with `exclude_tag`, regardless of their dependencies.
 
 ## Examples
 ### Use tags to run parts of your project
