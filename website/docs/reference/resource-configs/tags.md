@@ -113,11 +113,17 @@ resource_type:
 Apply a tag (or list of tags) to a resource.
 
 These tags can be used as part of the [resource selection syntax](/reference/node-selection/syntax), when running the following commands:
-- `dbt run --select tag:my_tag`
-- `dbt build --select tag:my_tag`
-- `dbt seed --select tag:my_tag`
-- `dbt snapshot --select tag:my_tag`
-- `dbt test --select tag:my_tag` (indirectly runs all tests associated with the models that are tagged)
+- `dbt run --select tag:my_tag` &mdash; Run all models tagged with a specific tag.
+- `dbt build --select tag:my_tag` &mdash; Build all resources tagged with a specific tag.
+- `dbt seed --select tag:my_tag` &mdash; Seed all resources tagged with a specific tag.
+- `dbt snapshot --select tag:my_tag` &mdash; Snapshot all resources tagged with a specific tag.
+- `dbt test --select tag:my_tag` &mdash; Indirectly runs all tests associated with the models that are tagged.
+
+#### Using tags with the `+` operator
+You can use the [`+` operator](/reference/node-selection/graph-operators#the-plus-operator) to include upstream or downstream dependencies in your `tag` selection:
+- `dbt run --select tag:my_tag+` &mdash; Run models tagged with `my_tag` and all their downstream dependencies (children).
+- `dbt run --select +tag:my_tag` &mdash; Run models tagged with `my_tag` and all their upstream dependencies (parents).
+- `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies (parents), and its downstream dependencies (children).
 
 ## Examples
 ### Use tags to run parts of your project
