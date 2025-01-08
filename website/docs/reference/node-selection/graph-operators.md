@@ -15,7 +15,7 @@ dbt run --select "+my_model"         # select my_model and all ancestors
 dbt run --select "+my_model+"        # select my_model, and all of its ancestors and descendants
 ```
 
-You can use it with selectors for a more specific scope in your commands. You can also combine it with [`--exclude`](/reference/node-selection/exclude) for even more finer control over what gets included in your command.
+You can use it with selectors for a more specific scope in your commands. You can also combine it with [`--exclude`](/reference/node-selection/exclude) flag for even more finer control over what gets included in your command.
 
 ### The "n-plus" operator
 
