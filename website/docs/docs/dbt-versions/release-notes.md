@@ -18,6 +18,11 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
+## January 2025
+- **Enhancement**: The [`dbt_version` format](/reference/commands/version#versioning) in dbt Cloud now better aligns with [semantic versioning rules](https://semver.org/). Leading zeroes have been removed from the month and day (`YYYY.M.D+<suffix>`). For example:
+  - New format: `2024.10.8+996c6a8`
+  - Previous format: `2024.10.08+996c6a8`
+
 ## December 2024
 
 - **New**: Saved queries now support [tags](/reference/resource-configs/tags), which allow you to categorize your resources and filter them. Add tags to your [saved queries](/docs/build/saved-queries) in the `semantic_model.yml` file or `dbt_project.yml` file. For example:

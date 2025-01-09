@@ -12,7 +12,6 @@ The following example provides you with the SQL statements you can use to manage
 
 
 ```
-grant usage on database database_name to user_name;
 grant create schema on database database_name to user_name;
 grant usage on schema database.schema_name to user_name;
 grant create table on schema database.schema_name to user_name;
@@ -21,5 +20,7 @@ grant usage on all schemas in database database_name to user_name;
 grant select on all tables in database database_name to user_name;
 grant select on all views in database database_name to user_name;
 ```
+
+To connect to the database, confirm with an admin that your user role or group has been added to the database.
 
 Check out the [official documentation](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html) for more information.
