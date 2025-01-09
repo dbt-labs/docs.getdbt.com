@@ -187,7 +187,7 @@ models:
 
 <VersionBlock lastVersion="1.8">
 
-The `description` property is available for generic and singular data tests beginning in dbt v1.8.
+The `description` property is available for generic and singular data tests beginning in dbt v1.9.
 
 </VersionBlock>
 
