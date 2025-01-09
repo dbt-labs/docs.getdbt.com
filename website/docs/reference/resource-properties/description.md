@@ -163,7 +163,7 @@ version: 2
 data_tests:
   - name: data_test_name
     description: markdown_string
-
+```
 </File>
 
 <File name='tests/schema.yml'>
@@ -180,7 +180,7 @@ models:
         tests:
           - unique
             description: markdown_string
-
+```
 </File>
 
 </VersionBlock>
@@ -189,7 +189,7 @@ models:
 
 The `description` property is available for generic and singular data tests beginning in dbt v1.9.
 
-</VersionBlock>
+</VersionBlock> 
 
 </TabItem>
 
@@ -476,6 +476,15 @@ If mixing images and text, also consider using a docs block.
 
 ### Add a description to a data test
 
+<VersionBlock lastVersion="1.8">
+
+:::tip
+The `description` property is available for generic and singular data tests beginning in dbt v1.9.
+:::
+
+</VersionBlock> 
+
+  
 You can add a `description` property to a generic or singular data test. 
 
 #### Generic data test
