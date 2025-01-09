@@ -501,7 +501,7 @@ models:
 
 This example shows a singular data test that checks to ensure all values in the `payments` model are not negative (≥ 0).
 
-<File name='test/<filename>.yml'>
+<File name='tests/<filename>.yml'>
 
 ```yaml
 version: 2
