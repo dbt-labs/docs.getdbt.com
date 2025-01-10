@@ -59,7 +59,9 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | email | Unspecified | user.email | The user's email address |
 | first_name | Unspecified | user.first_name | The user's first name |
 | last_name | Unspecified | user.last_name | The user's last name |
-| NameID (if applicable) | Unspecified | user.email | The user's email address |
+| NameID | Unspecified | ID | The user's unchanging ID |
+
+`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but dbt Cloud creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
@@ -144,6 +146,9 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
    * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
    * **Relay State**: `<login slug>`
+   * **Name ID format**: `Unspecified`
+   * **Application username**: `Custom` / `user.getInternalProperty("id")`
+   * **Update Application username on**: `Create and update`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
@@ -245,7 +250,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
    - **Start URL**: `<login slug>`
 5. Select the **Signed response** checkbox.
-6. The default **Name ID** is the primary email. Multi-value input is not supported.
+6. The default **Name ID** is the primary email. Multi-value input is not supported.  If your user profile has a unique, stable value that will persist across email address changes, it's best to use that; otherwise, email will work.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
 dbt Cloud expects.
 8. Click **Add another mapping** to map additional attributes.
@@ -329,9 +334,11 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 From the Set up Single Sign-On with SAML page:
 
 1. Click **Edit** in the User Attributes & Claims section.
-2. Leave the claim under "Required claim" as is.
-3. Delete all claims under "Additional claims."
-4. Click **Add new claim** and add these three new claims:
+2. Click **Unique User Identifier (Name ID)** under **Required claim.**
+3. Set **Name identifier format** to **Unspecified**.
+4. Set **Source attribute** to **user.objectid**.
+5. Delete all claims under **Additional claims.**
+6. Click **Add new claim** and add the following new claims:
 
    | Name | Source attribute |
    | ----- | ----- |
@@ -339,10 +346,10 @@ From the Set up Single Sign-On with SAML page:
    | **first_name** | user.givenname |
    | **last_name** | user.surname |
 
-5. Click **Add a group claim** from User Attributes and Claims.
-6. If you'll assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
-7. Set **Source attribute** to **Group ID**.
-8. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
+7. Click **Add a group claim** from **User Attributes and Claims.**
+8. If you assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
+9. Set **Source attribute** to **Group ID**.
+10. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
 
 **Note:** Keep in mind that the Group ID in Entra ID maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
@@ -386,7 +393,7 @@ We recommend using the following values:
 
 | name | name format | value |
 | ---- | ----------- | ----- |
-| NameID | Unspecified | Email |
+| NameID | Unspecified | OneLogin ID |
 | email | Unspecified | Email |
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
