@@ -179,6 +179,7 @@ metrics:
         name: active_users
         fill_nulls_with: 0
         join_to_timespine: true
+      cumulative_type_params:
         window: 7 days
 ```
 </File>

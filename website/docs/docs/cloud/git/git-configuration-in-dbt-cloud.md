@@ -43,4 +43,9 @@ Whether you use a Git integration that natively connects with dbt Cloud or prefe
     link="/docs/cloud/git/connect-azure-devops"
     icon="dbt-bit"/>
 
+<Card
+    title="Availability of CI features by Git provider"
+    body="Learn which Git providers have native support for Continuous Integration workflows"
+    link="/docs/deploy/continuous-integration#git-providers-who-support-ci"
+    icon="dbt-bit"/>
 </div>
