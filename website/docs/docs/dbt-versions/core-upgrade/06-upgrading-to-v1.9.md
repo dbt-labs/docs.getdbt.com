@@ -103,7 +103,8 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- Iceberg Table Format support will be available on three out-of-the-box materializations: table, incremental, dynamic tables. 
+- Iceberg Table Format &mdash; Support will be available on three out-of-the-box materializations: table, incremental, dynamic tables.
+- Breaking change &mdash; When upgrading from dbt 1.8 to 1.9 `{{ target.account }}` replaces underscores with dashes. For example, if the `target.account` is set to `sample_company`, then the compiled code now generates `sample-company`. [Refer to the `dbt-snowflake` issue](https://github.com/dbt-labs/dbt-snowflake/issues/1286) for more information. 
 
 ### Bigquery
 
