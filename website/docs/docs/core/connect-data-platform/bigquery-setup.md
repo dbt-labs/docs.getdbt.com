@@ -388,6 +388,28 @@ my-profile:
       execution_project: buck-stops-here-456
 ```
 
+### Quota project
+
+By default, dbt will use the `quota_project_id` set within the credentials of the account you are using to authenticate to BigQuery.
+
+Optionally, you may specify `quota_project` to bill for query execution instead of the default quota project specified for the account from the environment.
+
+This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project in which they are defined. Without overriding the quota project, it will fail to connect.
+
+If you choose to set a quota project, the account you use to authenticate must have the `Service Usage Consumer` role on that project.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      quota_project: my-bq-quota-project
+```
+
 ### Running Python models on Dataproc
 
 import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';

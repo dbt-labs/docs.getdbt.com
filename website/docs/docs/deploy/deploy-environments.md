@@ -250,6 +250,12 @@ Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to o
 
 </WHCode>
 
+## Delete an environment
+
+import DeleteEnvironment from '/snippets/_delete-environment.md';
+
+<DeleteEnvironment />
+
 ## Related docs
 
 - [dbt Cloud environment best practices](/guides/set-up-ci)

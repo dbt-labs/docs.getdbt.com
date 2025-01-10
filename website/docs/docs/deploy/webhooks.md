@@ -217,7 +217,7 @@ GET https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscription
         {
             "id": "wsu_12345abcde",
             "account_identifier": "act_12345abcde",
-            "name": "Notication Webhook",
+            "name": "Notification Webhook",
             "description": "Webhook used to trigger notifications in Slack",
             "job_ids": [],
             "event_types": [

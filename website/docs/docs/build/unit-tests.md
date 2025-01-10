@@ -8,11 +8,10 @@ keywords:
   - unit test, unit tests, unit testing, dag
 ---
 
-:::note 
+<VersionCallout version="1.8" />
 
-Unit testing functionality is available in [dbt Cloud Release Tracks](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.8+
 
-:::
+
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
@@ -293,7 +292,7 @@ unit_tests:
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
 
-## Unit testing a model that depend on ephemeral model(s)
+## Unit testing a model that depends on ephemeral model(s)
 
 If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 

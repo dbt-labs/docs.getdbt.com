@@ -4,6 +4,8 @@ description: "Setting the full_refresh config to false prevents a model or seed 
 datatype: boolean
 ---
 
+The `full_refresh` config allows you to control whether a resource will always or never perform a full-refresh. This config overrides the `--full-refresh` command-line flag.
+
 <Tabs
   defaultValue="models"
   values={[
@@ -19,8 +21,7 @@ datatype: boolean
 ```yml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
-    +full_refresh: false
-
+    +full_refresh: false | true 
 ```
 
 </File>
@@ -30,16 +31,13 @@ models:
 ```sql
 
 {{ config(
-    full_refresh = false
+    full_refresh = false | true
 ) }}
 
 select ...
-
 ```
 
 </File>
-
-The configured model(s) will not full-refresh when `dbt run --full-refresh` is invoked.
 
 </TabItem>
 
@@ -50,27 +48,34 @@ The configured model(s) will not full-refresh when `dbt run --full-refresh` is i
 ```yml
 seeds:
   [<resource-path>](/reference/resource-configs/resource-path):
-    +full_refresh: false
+    +full_refresh: false | true
 
 ```
 
 </File>
 
-The configured seed(s) will not full-refresh when `dbt seed --full-refresh` is invoked.
-
 </TabItem>
 
 </Tabs>
 
+- If `full_refresh:true` &mdash; the configured resources(s) will full-refresh when `dbt run --full-refresh` is invoked. 
+- If `full_refresh:false` &mdash; the configured resources(s) will _not_ full-refresh when `dbt run --full-refresh` is invoked.
+
+
 ## Description
-Optionally set a resource to always or never full-refresh.
-- If specified as `true` or `false`, the
-`full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
-- If the `full_refresh` config is `none` or omitted, the resource will use the value of the `--full-refresh` flag.
 
-**Note:** The `--full-refresh` flag also supports a short name, `-f`.
+The `full_refresh` config allows you to optionally configure whether a resource will always or never perform a full-refresh. This config is an override for the `--full-refresh` command line flag used when running dbt commands. 
 
-This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/materializations/configs.sql) macro.
+
+| `full_refresh` value | Behavior |
+| ---------------------------- | -------- |
+| `true` | The resource always full-refreshes, regardless of the presence or absence of the `--full-refresh` flag. |
+| `false` | The resource never full-refreshes, even if the `--full-refresh` flag is provided. |
+| `none` or omitted | The resource follows the behavior of the `--full-refresh` flag. If the flag is used, the resource will full-refresh; otherwise, it won't. |
+
+#### Note
+- The `--full-refresh` flag also supports a short name, `-f`.
+- The [`should_full_refresh()`](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/materializations/configs.sql) macro has logic encoded.
 
 ## Usage
 

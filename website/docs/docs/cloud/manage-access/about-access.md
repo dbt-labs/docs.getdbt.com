@@ -8,12 +8,12 @@ pagination_prev: null
 
 :::info "User access" is not "Model access"
 
-This page is specific to user groups and access, which includes:
+This page covers user groups and access, including:
 - User licenses, permissions, and group memberships
 - Role-based access controls for projects and environments
-- Single sign-on and secure authentication
+- Single sign-on, and secure authentication
 
-"Model groups and access" is a feature specific to models and their availability across projects. Refer to [Model access](/docs/collaborate/govern/model-access) for more info on what it means for your dbt projects.
+For model-specific access and their availability across projects, refer to [Model access](/docs/collaborate/govern/model-access).
 
 :::
 
@@ -21,7 +21,7 @@ This page is specific to user groups and access, which includes:
 
 You can regulate access to dbt Cloud by various measures, including licenses, groups, permissions, and role-based access control (RBAC). To understand the possible approaches to user access to dbt Cloud features and functionality, you should first know how we approach users and groups.
 
-### Users
+## Users
 
 Individual users in dbt Cloud can be people you [manually invite](/docs/cloud/manage-access/invite-users) or grant access via an external identity provider (IdP), such as Microsoft Entra ID, Okta, or Google Workspace.
 
@@ -33,10 +33,15 @@ You can edit an existing user's license by navigating to the **Users** section o
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="60%" title="Example of the user information window in the user directory" />
 
+## Groups
 
-### Groups
+Groups in dbt Cloud serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignments of permissions easier. 
 
-Groups in dbt Cloud serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignment of permissions easier. Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). The permissions are more granular than licenses, and you only assign them at the group level; _you can’t assign permissions at the user level._ Every user in dbt Cloud must be assigned to at least one group.
+The permissions available depends on whether you're on an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) or [self-service Team](/docs/cloud/manage-access/self-service-permissions) plan.
+
+- Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). 
+- The permissions are more granular than licenses, and you only assign them at the group level; _you can’t assign permissions at the user level._
+- Every user in dbt Cloud must be assigned to at least one group.
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
@@ -46,7 +51,10 @@ There are three default groups available as soon as you create your dbt Cloud ac
 
 We recommend deleting the default `Owner`, `Member`, and `Everyone` groups before deploying and replacing them with your organizational groups. This prevents users from receiving more elevated privileges than they should and helps admins ensure they are properly placed.
 
-Create new groups from the **Groups & Licenses** section of the **Account settings**. If you use an external IdP for SSO, you can sync those SSO groups to dbt Cloud from the **Group details** pane when creating or editing existing groups.
+### Create new groups <Lifecycle status='enterprise'/>
+
+- Create new groups from the **Groups & Licenses** section of the **Account settings**.
+- If you use an external IdP for SSO, you can sync those SSO groups to dbt Cloud from the **Group details** pane when creating or editing existing groups.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
 
@@ -56,7 +64,7 @@ If a user is assigned licenses and permissions from multiple groups, the group t
 
 :::
 
-#### SSO mappings
+### SSO mappings <Lifecycle status='enterprise'/>
 
 SSO Mappings connect an identity provider (IdP) group membership to a dbt Cloud group. When users log into dbt Cloud via a supported identity provider, their IdP group memberships sync with dbt Cloud. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within dbt Cloud.
 

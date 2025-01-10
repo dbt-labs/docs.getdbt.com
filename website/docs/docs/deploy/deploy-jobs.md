@@ -128,6 +128,12 @@ To _chain_ deploy jobs together:
 
 If another job triggers your job to run, you can find a link to the upstream job in the [run details section](/docs/deploy/run-visibility#job-run-details).
 
+## Delete a job
+
+import DeleteJob from '/snippets/_delete-job.md';
+
+<DeleteJob/>
+
 ## Related docs
 
 - [Artifacts](/docs/deploy/artifacts)

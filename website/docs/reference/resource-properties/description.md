@@ -14,6 +14,7 @@ description: "This guide explains how to use the description key to add YAML des
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
     { label: 'Data tests', value: 'data_tests', },
+    { label: 'Unit tests', value: 'unit_tests', },
   ]
 }>
 <TabItem value="models">
@@ -150,24 +151,81 @@ macros:
 
 <VersionBlock firstVersion="1.9">
 
+You can add a description to a [singular data test](/docs/build/data-tests#singular-data-tests) or a [generic data test](/docs/build/data-tests#generic-data-tests).
+
 <File name='tests/schema.yml'>
 
 ```yml
+# Singular data test example
+
 version: 2
 
 data_tests:
   - name: data_test_name
     description: markdown_string
-
 ```
+</File>
 
+<File name='tests/schema.yml'>
+
+```yml
+# Generic data test example
+
+version: 2
+
+models:
+  - name: model_name
+    columns:
+      - name: column_name
+        tests:
+          - unique:
+            description: markdown_string
+```
 </File>
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
-The `description` property is available for generic and singular data tests beginning in dbt v1.9.
+The `description` property is available for [singular data tests](/docs/build/data-tests#singular-data-tests) or [generic data tests](/docs/build/data-tests#generic-data-tests) beginning in dbt v1.9.
+
+</VersionBlock> 
+
+</TabItem>
+
+<TabItem value="unit_tests">
+
+<VersionBlock firstVersion="1.8">
+
+<File name='models/schema.yml'>
+
+```yml
+unit_tests:
+  - name: unit_test_name
+    description: "markdown_string"
+    model: model_name 
+    given: ts
+      - input: ref_or_source_call
+        rows:
+         - {column_name: column_value}
+         - {column_name: column_value}
+         - {column_name: column_value}
+         - {column_name: column_value}
+      - input: ref_or_source_call
+        format: csv
+        rows: dictionary | string
+    expect: 
+      format: dict | csv | sql
+      fixture: fixture_name
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
+The `description` property is available for [unit tests](/docs/build/unit-tests) beginning in dbt v1.8.
 
 </VersionBlock>
 
@@ -176,13 +234,17 @@ The `description` property is available for generic and singular data tests begi
 </Tabs>
 
 ## Definition
-A user-defined description. Can be used to document:
+
+A user-defined description used to document:
+
 - a model, and model columns
 - sources, source tables, and source columns
 - seeds, and seed columns
 - snapshots, and snapshot columns
 - analyses, and analysis columns
 - macros, and macro arguments
+- data tests, and data test columns
+- unit tests for models
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
 
@@ -195,6 +257,18 @@ Be mindful of YAML semantics when providing a description. If your description c
 :::
 
 ## Examples
+
+This section contains examples of how to add descriptions to various resources:
+
+- [Add a simple description to a model and column](#add-a-simple-description-to-a-model-and-column) <br />
+- [Add a multiline description to a model](#add-a-multiline-description-to-a-model) <br />
+- [Use some markdown in a description](#use-some-markdown-in-a-description) <br />
+- [Use a docs block in a description](#use-a-docs-block-in-a-description) <br />
+- [Link to another model in a description](#link-to-another-model-in-a-description)
+- [Include an image from your repo in your descriptions](#include-an-image-from-your-repo-in-your-descriptions) <br />
+- [Include an image from the web in your descriptions](#include-an-image-from-the-web-in-your-descriptions) <br />
+- [Add a description to a data test](#add-a-description-to-a-data-test) <br />
+- [Add a description to a unit test](#add-a-description-to-a-unit-test) <br />
 
 ### Add a simple description to a model and column
 
@@ -400,3 +474,80 @@ models:
 
 If mixing images and text, also consider using a docs block.
 
+### Add a description to a data test
+
+<VersionBlock lastVersion="1.8">
+
+<VersionCallout version="1.9" />
+
+</VersionBlock>
+
+You can add a `description` property to a generic or singular data test.
+
+#### Generic data test
+
+This example shows a generic data test that checks for unique values in a column for the `orders` model.
+
+<File name='models/<filename>.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        tests:
+            - unique:
+              description: "The order_id is unique for every row in the orders model"
+```
+</File>
+
+#### Singular data test
+
+This example shows a singular data test that checks to ensure all values in the `payments` model are not negative (≥ 0).
+
+<File name='tests/<filename>.yml'>
+
+```yaml
+version: 2
+data_tests:
+  - name: assert_total_payment_amount_is_positive
+    description: >
+      Refunds have a negative amount, so the total amount should always be >= 0.
+      Therefore return records where total amount < 0 to make the test fail.
+
+```
+</File>
+
+Note that in order for the test to run, the `tests/assert_total_payment_amount_is_positive.sql` SQL file has to exist in the `tests` directory.
+
+### Add a description to a unit test
+
+<VersionBlock lastVersion="1.7">
+
+<VersionCallout version="1.8" />
+
+</VersionBlock>
+
+This example shows a unit test that checks to ensure the `opened_at` timestamp is properly truncated to a date for the `stg_locations` model.
+
+<File name='models/<filename>.yml'>
+
+```yaml
+unit_tests:
+  - name: test_does_location_opened_at_trunc_to_date
+    description: "Check that opened_at timestamp is properly truncated to a date."
+    model: stg_locations
+    given:
+      - input: source('ecom', 'raw_stores')
+        rows:
+          - {id: 1, name: "Rego Park", tax_rate: 0.2, opened_at: "2016-09-01T00:00:00"}
+          - {id: 2, name: "Jamaica", tax_rate: 0.1, opened_at: "2079-10-27T23:59:59.9999"}
+    expect:
+      rows:
+        - {location_id: 1, location_name: "Rego Park", tax_rate: 0.2, opened_date: "2016-09-01"}
+        - {location_id: 2, location_name: "Jamaica", tax_rate: 0.1, opened_date: "2079-10-27"}
+```
+
+</File>

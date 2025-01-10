@@ -223,7 +223,7 @@ group by 1
 
 ### Caveats and pro-tips
 
-See the docs for [helpful information before you begin](https://docs.getdbt.com/docs/build/unit-tests#before-you-begin), including unit testing [incremental models](https://docs.getdbt.com/docs/build/unit-tests#unit-testing-incremental-models), [models that depend on ephemeral model(s)](https://docs.getdbt.com/docs/build/unit-tests#unit-testing-a-model-that-depend-on-ephemeral-models), and platform-specific considerations like `STRUCT`s in BigQuery. In many cases, the [`sql` format](https://docs.getdbt.com/reference/resource-properties/data-formats#sql) can help solve tricky edge cases that come up.
+See the docs for [helpful information before you begin](https://docs.getdbt.com/docs/build/unit-tests#before-you-begin), including unit testing [incremental models](https://docs.getdbt.com/docs/build/unit-tests#unit-testing-incremental-models), [models that depend on ephemeral model(s)](https://docs.getdbt.com/docs/build/unit-tests#unit-testing-a-model-that-depends-on-ephemeral-models), and platform-specific considerations like `STRUCT`s in BigQuery. In many cases, the [`sql` format](https://docs.getdbt.com/reference/resource-properties/data-formats#sql) can help solve tricky edge cases that come up.
 
 Another advanced topic is overcoming issues when non-deterministic factors are involved, such as a current timestamp. To ensure that the output remains consistent regardless of when the test is run, you can set a fixed, predetermined value by using the [`overrides`](https://docs.getdbt.com/reference/resource-properties/unit-test-overrides) configuration.
 

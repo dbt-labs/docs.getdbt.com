@@ -64,7 +64,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right-click edited files to access Version Control Options menu"/>
 
 
-  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that this won't delete the branch you're currently on. Pruning branches isn't available for [managed repositories](/docs/collaborate/git/managed-repository) because they don't have a typical remote setup, which prevents remote branch deletion. 
+  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that this won't delete the branch you're currently on. Pruning branches isn't available for [managed repositories](/docs/cloud/git/managed-repository) because they don't have a typical remote setup, which prevents remote branch deletion. 
 
 ## Additional editing features
 

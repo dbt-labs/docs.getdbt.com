@@ -29,7 +29,7 @@ In this article, we’ll take a deeper look at why model naming conventions are 
 
 >“[Data folks], what we [create in the database]… echoes in eternity.”   -Max(imus, Gladiator)
 
-Analytics Engineers are often centrally located in the company, sandwiched between data analysts and data engineers. This means everything AEs create might be read and need to be understood by both an analytics or customer-facing team and by teams who spend most of their time in code and the database. Depending on the audience, the scope of access differs, which means the user experience and context changes. Let’s elaborate on what that experience might look like by breaking end-users into two buckets: 
+Analytics Engineers are often centrally located in the company, sandwiched between data analysts and data engineers. This means everything AEs create might be read and need to be understood by both an analytics or customer-facing team and by teams who spend most of their time in code and the database. Depending on the audience, the scope of access differs, which means the user experience and context changes. Let’s elaborate on what that experience might look like by breaking end-users into two buckets:
 
 - Analysts / BI users
 - Analytics engineers / Data engineers
@@ -49,13 +49,13 @@ Here we have drag and drop functionality and a skin over top of the underlying `
 **How model names can make this painful:**
 The end users might not even know what tables the data refers to, as potentially everything is joined by the system and they don’t need to write their own queries. If model names are chosen poorly, there is a good chance that the BI layer on top of the database tables has been renamed to something more useful for the analysts. This adds an extra step of mental complexity in tracing the <Term id="data-lineage">lineage</Term> from data model to BI.
 
-#### Read only access to the dbt Cloud IDE docs 
+#### Read only access to the dbt Cloud IDE docs
 If Analysts want more context via documentation, they may traverse back to the dbt layer and check out the data models in either the context of the Project or Database. In the Project view, they will see the data models in the folder hierarchy present in your project’s repository. In the Database view you will see the output of the data models as present in your database, ie. `database / schema / object`.
 
 ![A screenshot depicting the dbt Cloud IDE menu's Database view which shows you the output of your data models. Next to this view, is the Project view.](/img/blog/2022-05-17-stakeholder-friendly-model-names/project-view.png)
 
 **How model names can make this painful:**
-For the Project view, generally abstracted department or organizational structures as folder names presupposes the reader/engineer knows what is contained within the folder beforehand or what that department actually does, or promotes haphazard clicking to open folders to see what is within. Organizing the final outputs by business unit or analytics function is great for end users but doesn't accurately represent all the sources and references that had to come together to build this output, as they often live in another folder. 
+For the Project view, generally abstracted department or organizational structures as folder names presupposes the reader/engineer knows what is contained within the folder beforehand or what that department actually does, or promotes haphazard clicking to open folders to see what is within. Organizing the final outputs by business unit or analytics function is great for end users but doesn't accurately represent all the sources and references that had to come together to build this output, as they often live in another folder.
 
 For the Database view, pray your team has been declaring a logical schema bucketing, or a logical model naming convention, otherwise you will have a long, alphabetized list of database objects to scroll through, where staging, intermediate, and final output models are all intermixed. Clicking into a data model and viewing the documentation is helpful, but you would need to check out the DAG to see where the model lives in the overall flow.
 
@@ -63,7 +63,7 @@ For the Database view, pray your team has been declaring a logical schema bucket
 
 If they have access to Worksheets, SQL runner, or another way to write ad hoc sql queries, then they will have access to the data models as present in your database, ie. `database / schema / object`, but with less documentation attached, and more proclivity towards querying tables to check out their contents, which costs time and money.
 
-![A screenshot of the the SQL Runner menu within Looker showcasing the dropdown list of all data models present in the database.](/img/blog/2022-05-17-stakeholder-friendly-model-names/data-warehouse-dropdown.png)
+![A screenshot of the SQL Runner menu within Looker showcasing the dropdown list of all data models present in the database.](/img/blog/2022-05-17-stakeholder-friendly-model-names/data-warehouse-dropdown.png)
 
 **How model names can make this painful:**
 Without proper naming conventions, you will encounter `analytics.order`, `analytics.orders`, `analytics.orders_new` and not know which one is which, so you will open up a scratch statement tab and attempt to figure out which is correct:
@@ -73,9 +73,9 @@ Without proper naming conventions, you will encounter `analytics.order`, `analyt
 -- select * from analytics.orders  limit 10
 select * from analytics.orders_new  limit 10
 ```
-Hopefully you get it right via sampling queries, or eventually find out there is a true source of truth defined in a totally separate area: `core.dim_orders`. 
+Hopefully you get it right via sampling queries, or eventually find out there is a true source of truth defined in a totally separate area: `core.dim_orders`.
 
-The problem here is the only information you can use to determine what data is within an object or the purpose of the object is within the schema and model name. 
+The problem here is the only information you can use to determine what data is within an object or the purpose of the object is within the schema and model name.
 
 ### The engineer’s user experience
 
@@ -98,7 +98,7 @@ There is not much worse than spending all week developing on a task, submitting 
 This is largely the same as the Analyst experience above, except they created the data models or are aware of their etymologies. They are likely more comfortable writing ad hoc queries, but also have the ability to make changes, which adds a layer of thought processing when working.
 
 **How model names can make this painful:**
-It takes time to become a subject matter expert in the database. You will need to know which schema a subject lives in, what tables are the source of truth and/or output models, versus experiments, outdated objects, or building blocks used along the way. Working within this context, engineers know the history and company lore behind why a table was named that way or how its purpose may differ slightly from its name, but they also have the ability to make changes. 
+It takes time to become a subject matter expert in the database. You will need to know which schema a subject lives in, what tables are the source of truth and/or output models, versus experiments, outdated objects, or building blocks used along the way. Working within this context, engineers know the history and company lore behind why a table was named that way or how its purpose may differ slightly from its name, but they also have the ability to make changes.
 
 Change management is hard; how many places would you need to update, rename, re-document, and retest to fix a poor naming choice from long ago? It is a daunting position, which can create internal strife when constrained for time over whether we should continually revamp and refactor for maintainability or focus on building new models in the same pattern as before.
 

@@ -26,14 +26,33 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
 
-
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets.
+This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets. 
 
-**For users on different data platforms**
+If you're on different data platforms, you can also follow this guide and will need to modify the setup for the specific platform. See the [users on different platforms](#for-users-on-different-data-platforms) section for more information.
+
+### Prerequisites
+
+- You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
+- Have the correct [dbt Cloud license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
+  <DetailsToggle alt_header="More info on license and permissions">  
+  
+  - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
+  - Team &mdash; "Owner" access with a Developer license.
+  - Trial &mdash; Automatic "Owner" access under a Team plan trial.
+  
+  </DetailsToggle>
+
+- Create a [trial Snowflake account](https://signup.snowflake.com/):
+  - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
+  - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
+- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
+
+
+### For users on different data platforms
 
 If you're using a data platform other than Snowflake, this guide is also applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
 
@@ -94,41 +113,6 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 </Tabs>
 
-## Prerequisites
-
-- You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
-- Have the correct [dbt Cloud license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
-  <DetailsToggle alt_header="More info on license and permissions">  
-  
-  - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
-  - Team &mdash; "Owner" access with a Developer license.
-  - Trial &mdash; Automatic "Owner" access under a Team plan trial.
-  
-  </DetailsToggle>
-
-- Create a [trial Snowflake account](https://signup.snowflake.com/):
-  - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
-  - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
-
-### What you'll learn
-
-This guide will cover the following topics:
-
-- [Create a new Snowflake worksheet and set up your environment](/guides/sl-snowflake-qs?step=3)
-- [Load sample data into your Snowflake account](/guides/sl-snowflake-qs?step=4)
-- [Connect dbt Cloud to Snowflake](/guides/sl-snowflake-qs?step=5)
-- [Set up a dbt Cloud managed repository](/guides/sl-snowflake-qs?step=6)
-- [Initialize a dbt Cloud project and start developing](/guides/sl-snowflake-qs?step=7)
-- [Build your dbt Cloud project](/guides/sl-snowflake-qs?step=8)
-- [Create a semantic model in dbt Cloud](/guides/sl-snowflake-qs?step=9)
-- [Define metrics in dbt Cloud](/guides/sl-snowflake-qs?step=10)
-- [Add second semantic model](/guides/sl-snowflake-qs?step=11)
-- [Test and query metrics in dbt Cloud](/guides/sl-snowflake-qs?step=12)
-- [Run a production job in dbt Cloud](/guides/sl-snowflake-qs?step=13)
-- [Set up dbt Semantic Layer in dbt Cloud](/guides/sl-snowflake-qs?step=14)
-- [Connect and query metrics with Google Sheets](/guides/sl-snowflake-qs?step=15)
-
 ## Create new Snowflake worksheet and set up environment
 
 1. Log in to your [trial Snowflake account](https://signup.snowflake.com).
@@ -158,7 +142,7 @@ create schema raw.jaffle_shop;
 create schema raw.stripe;
 ```
 
-## Load data into Snowflake
+### Load data into Snowflake
 Now that your environment is set up, you can start loading data into it. You will be working within the raw database, using the `jaffle_shop` and stripe schemas to organize your tables.
 
 1. Create customer table. First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
@@ -262,7 +246,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
 
-Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
+Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/cloud/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
 1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
@@ -332,12 +316,16 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </TabItem>
 </Tabs>
 
-## Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/collaborate/git/managed-repository). Otherwise, you will need to create your repository connection. 
+## Set up dbt Cloud project
+
+In this section, you will set up a dbt Cloud managed repository and initialize your dbt project to start developing.
+
+### Set up a dbt Cloud managed repository 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/cloud/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 
-## Initialize your dbt project and start developing
+### Initialize your dbt project
 This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud using the IDE:
@@ -637,11 +625,14 @@ semantic_models:
 
 </File>
 
+### Semantic model components
+
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
 - [Entities](#entities) act as unique identifiers (like ID columns) that link data together from different tables.
 - [Dimensions](#dimensions) categorize and filter data, making it easier to organize.
 - [Measures](#measures) calculates data, providing valuable insights through aggregation.
+
 
 ### Entities
 
@@ -753,7 +744,11 @@ semantic_models:
 
 </File>
 
-## Define metrics
+## Define metrics and add a second semantic model
+
+In this section, you will [define metrics](#define-metrics) and [add a second semantic model](#add-second-semantic-model-to-your-project) to your project.
+
+### Define metrics
 
 [Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. They are an aggregation over a column in your warehouse that you enrich with dimensional cuts.
 
@@ -870,7 +865,7 @@ metrics:
 
 </File>
 
-## Add second semantic model to your project
+### Add second semantic model to your project
 
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
 
@@ -954,6 +949,14 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 
 ## Set up dbt Semantic Layer
+
+In this section, you will learn how to set up the dbt Semantic Layer, add credentials, and create service tokens. This section goes over the following topics:
+
+- [Select environment](#1-select-environment)
+- [Add a credential and create service tokens](#2-add-a-credential-and-create-service-tokens)
+- [View connection detail](#3-view-connection-detail)
+- [Add more credentials](#4-add-more-credentials)
+- [Delete configuration](#delete-configuration)
 
 <!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
 

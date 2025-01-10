@@ -237,7 +237,7 @@ modules, please be mindful of the following changes to dbt's Python
 dependencies:
 
 Core:
-- Pinned `Jinja2` depdendency to `2.11.2`
+- Pinned `Jinja2` dependency to `2.11.2`
 - Pinned `hologram` to `0.0.7`
 - Require Python >= `3.6.3`
 

@@ -18,8 +18,24 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
+## January 2025
+- **Enhancement**: The [`dbt_version` format](/reference/commands/version#versioning) in dbt Cloud now better aligns with [semantic versioning rules](https://semver.org/). Leading zeroes have been removed from the month and day (`YYYY.M.D+<suffix>`). For example:
+  - New format: `2024.10.8+996c6a8`
+  - Previous format: `2024.10.08+996c6a8`
+
 ## December 2024
 
+- **New**: Saved queries now support [tags](/reference/resource-configs/tags), which allow you to categorize your resources and filter them. Add tags to your [saved queries](/docs/build/saved-queries) in the `semantic_model.yml` file or `dbt_project.yml` file. For example:
+  <File name='dbt_project.yml'>
+
+  ```yml
+  [saved-queries](/docs/build/saved-queries):
+    jaffle_shop:
+      customer_order_metrics:
+        +tags: order_metrics
+  ```
+  </File>
+- **New**: [Dimensions](/reference/resource-configs/meta) now support the `meta` config property in [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and from dbt Core 1.9. You can add metadata to your dimensions to provide additional context and information about the dimension. Refer to [meta](/reference/resource-configs/meta) for more information.
 - **New**: [Auto exposures](/docs/collaborate/auto-exposures) are now generally available to dbt Cloud Enterprise plans. Auto-exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in dbt Explorer for a richer experience.
 - **New**: The dbt Semantic Layer supports Sigma as a [partner integration](/docs/cloud-integrations/avail-sl-integrations), available in Preview. Refer to [Sigma](https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration) for more information.
 - **New**: The dbt Semantic Layer now supports Azure Single-tenant deployments. Refer to [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for more information on how to get started.
@@ -29,8 +45,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: You can now use your [Azure OpenAI key](/docs/cloud/account-integrations?ai-integration=azure#ai-integrations) (available in beta) to use dbt Cloud features like [dbt Copilot](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app) . Additionally, you can use your own [OpenAI API key](/docs/cloud/account-integrations?ai-integration=openai#ai-integrations) or use [dbt Labs-managed OpenAI](/docs/cloud/account-integrations?ai-integration=dbtlabs#ai-integrations) key. Refer to [AI integrations](/docs/cloud/account-integrations#ai-integrations) for more information.
 - **New**: The [`hard_deletes`](/reference/resource-configs/hard-deletes) config gives you more control on how to handle deleted rows from the source. Supported options are `ignore` (default), `invalidate` (replaces the legacy `invalidate_hard_deletes=true`), and `new_record`. Note that `new_record` will create a new metadata column in the snapshot table.
 
-
 ## November 2024
+
 - **Enhancement**: Data health signals in dbt Explorer are now available for Exposures, providing a quick view of data health while browsing resources. To view trust signal icons, go to dbt Explorer and click **Exposures** under the **Resource** tab. Refer to [Data health signals for resources](/docs/collaborate/data-health-signals) for more info.
 - **Bug**: Identified and fixed an error with Semantic Layer queries that take longer than 10 minutes to complete.
 - **Fix**: Job environment variable overrides in credentials are now respected for Exports. Previously, they were ignored.
@@ -45,6 +61,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - Fixed a bug when an IN filter contained a lot of values.
   - Better error messaging for queries that can't be parsed correctly.
 - **Enhancement**: The dbt Semantic Layer supports creating new credentials for users who don't have permissions to create service tokens.  In the **Credentials & service tokens** side panel, the **+Add Service Token** option is unavailable for those users who don't have permission. Instead, the side panel displays a message indicating that the user doesn't have permission to create a service token and should contact their administration. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for more details.
+
 
 ## October 2024
 

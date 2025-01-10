@@ -101,7 +101,7 @@ seeds:
 
 <TabItem value="snapshot" label="Snapshots">
 
-Configure a snapshots's alias in your `dbt_project.yml` file or config block. 
+Configure a snapshots's alias in your `dbt_project.yml` file, `snapshots/snapshot_name.yml` file, or config block. 
 
 The following examples demonstrate how to `alias` a snapshot named `your_snapshot` to `the_best_snapshot`.
 
@@ -117,18 +117,17 @@ snapshots:
 ```
 </File>
 
-In the `snapshots/properties.yml` file:
+In the `snapshots/snapshot_name.yml` file:
 
-<File name='snapshots/properties.yml'>
+<File name='snapshots/snapshot_name.yml'>
 
 ```yml
 version: 2
 
 snapshots:
-  - name: your_snapshot
+  - name: your_snapshot_name
     config:
       alias: the_best_snapshot
-```
 </File>
 
 In `snapshots/your_snapshot.sql` file:
@@ -185,11 +184,12 @@ In `tests/unique_order_id_test.sql` file:
 ```sql
 {{ config(
     alias="unique_order_id_test",
-    severity="error",
+    severity="error"
+) }}
 ```
 </File>
 
-When using [`store_failures_as`](/reference/resource-configs/store_failures_as), this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
+When using [`store_failures_as`](/reference/resource-configs/store_failures_as), this would return the name `analytics.dbt_test__audit.orders_order_id_unique_order_id_test` in the database.
 
 
 </TabItem>

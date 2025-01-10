@@ -152,7 +152,7 @@ the integration between Okta and dbt Cloud.
 
 ## Configuration in dbt Cloud
 
-To complete setup, follow the steps below in dbt Cloud. 
+To complete setup, follow the steps below in dbt Cloud.
 
 ### Supplying credentials
 
@@ -182,7 +182,7 @@ configured in the steps above.
 
 21. Click **Save** to complete setup for the Okta integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
-    test logging in with Okta. Additionally, users added the the Okta app
+    test logging in with Okta. Additionally, users added the Okta app
     will be able to log in to dbt Cloud from Okta directly.
 
 <Snippet path="login_url_note" />

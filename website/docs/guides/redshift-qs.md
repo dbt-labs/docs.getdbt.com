@@ -21,7 +21,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Redshift. It wi
 - Document your models
 - Schedule a job to run
 
-:::tips Videos for you
+:::tip Videos for you
 Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
