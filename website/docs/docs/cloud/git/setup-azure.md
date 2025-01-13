@@ -62,13 +62,11 @@ An Entra ID admin needs to provide your new app access to Azure DevOps:
 
 ## Add another redirect URI
 
-A Microsoft Entra ID admin needs to add another redirect URI to your Entra ID application. This redirect URI will be used to authenticate the service principal for headless actions in deployment environments.
 
 1. Navigate to your Microsoft Entra ID application.
 
 2. Select the link next to **Redirect URIs**
 3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
-`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_principal`
 4. Click **Save**.
 
 ## Create a client secret
