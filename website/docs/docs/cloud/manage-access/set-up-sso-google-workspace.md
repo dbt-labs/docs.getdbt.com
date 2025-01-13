@@ -56,7 +56,7 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` and `YOUR_AUTH0_URI`, which need to be replaced with the [appropriate Access URL and Auth0 URI](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan.
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` and `YOUR_AUTH0_URI`, which need to be replaced with the appropriate Access URL and Auth0 URI from your [account settings](/docs/cloud/manage-access/sso-overview#auth0-uris).
 
 | Config | Value |
 | ------ | ----- |

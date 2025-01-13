@@ -29,11 +29,11 @@ jobs:
           python-version: '3.x'
 
       - name: Install Vale
-        run: pip install vale==2.27.0  # Install a stable version of Vale
+        run: pip install vale==3.9.1.0  # Install a stable version of Vale
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v34
+        uses: tj-actions/changed-files@v45
         with:
           files: |
             website/**/*.md
@@ -63,10 +63,9 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check
+          reporter: github-pr-review
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
-          version: '2.27.0'
 
 #      - name: Post summary comment
 #        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}

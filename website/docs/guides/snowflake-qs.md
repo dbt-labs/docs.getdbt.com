@@ -46,7 +46,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ## Create a new Snowflake worksheet 
 1. Log in to your trial Snowflake account. 
-2. In the Snowflake UI, click **+ Worksheet** in the upper right corner to create a new worksheet.
+2. In the Snowflake UI, click **+ Create** in the left-hand corner, underneath the Snowflake logo, which opens a dropdown. Select the first option, **SQL Worksheet**. 
 
 ## Load data 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
@@ -142,7 +142,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
 
-Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
+Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/cloud/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
 1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 

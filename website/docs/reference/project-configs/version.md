@@ -4,7 +4,7 @@ required: True
 keyword: project version, project versioning, dbt project versioning
 ---
 
-import VersionsCallout from '/snippets/_version-callout.md';
+import VersionsCallout from '/snippets/_model-version-callout.md';
 
 <VersionsCallout />
 

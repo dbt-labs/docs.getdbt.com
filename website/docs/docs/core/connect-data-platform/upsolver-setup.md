@@ -10,7 +10,7 @@ meta:
   min_core_version: 'v1.5.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
-  slack_channel_name: 'Upsolver Comunity'
+  slack_channel_name: 'Upsolver Community'
   slack_channel_link: 'https://join.slack.com/t/upsolvercommunity/shared_invite/zt-1zo1dbyys-hj28WfaZvMh4Z4Id3OkkhA'
   platform_name: 'Upsolver'
   config_page: '/reference/resource-configs/upsolver-configs'

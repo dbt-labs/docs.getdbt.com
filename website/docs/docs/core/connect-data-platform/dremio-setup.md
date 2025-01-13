@@ -3,14 +3,14 @@ title: "Dremio setup"
 description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:
   maintained_by: Dremio
-  authors: 'Dremio (formerly Fabrice Etanchaud)'
+  authors: 'Dremio'
   github_repo: 'dremio/dbt-dremio'
   pypi_package: 'dbt-dremio'
-  min_core_version: 'v1.2.0'
+  min_core_version: 'v1.8.0'
   cloud_support: Not Supported
   min_supported_version: 'Dremio 22.0'
-  slack_channel_name: 'n/a'
-  slack_channel_link: 'https://www.getdbt.com/community'
+  slack_channel_name: 'db-dremio'
+  slack_channel_link: '[https://www.getdbt.com/community](https://getdbt.slack.com/archives/C049G61TKBK)'
   platform_name: 'Dremio'
   config_page: '/reference/resource-configs/no-configs'
 ---
@@ -36,10 +36,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 
 * Ensure that you are using version 22.0 or later.
 * Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
-* Enable these support keys in your Dremio cluster:
-  * `dremio.iceberg.enabled`
-  * `dremio.iceberg.ctas.enabled`
-  * `dremio.execution.support_unlimited_splits`
 
   See <a target="_blank" rel="noopener noreferrer" href="https://docs.dremio.com/software/advanced-administration/support-settings/#support-keys">Support Keys</a> in the Dremio documentation for the steps.
 * If you want to use TLS to secure the connection between dbt and Dremio Software, configure full wire encryption in your Dremio cluster. For instructions, see <a target="_blank" rel="noopener noreferrer" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
@@ -55,10 +51,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
     * `software_with_pat` for working with a Dremio Software cluster and authenticating to the cluster with a personal access token
 
 Next, configure the profile for your project.
-
-## Profiles
-
-When you initialize a project, you create one of these three profiles. You must configure it before trying to connect to Dremio Cloud or Dremio Software.
 
 ## Profiles
 
@@ -88,7 +80,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 [project name]:
   outputs:
     dev:
-      cloud_host: https://api.dremio.cloud
+      cloud_host: api.dremio.cloud
       cloud_project_id: [project ID]
       object_storage_source: [name]
       object_storage_path: [path]
@@ -149,9 +141,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 </TabItem>
 </Tabs>
 
-## Configurations
-
-### Configurations Common to Profiles for Dremio Cloud and Dremio Software
+## Configurations Common to Profiles for Dremio Cloud and Dremio Software
 
 
 | Configuration | Required? | Default Value | Description |
@@ -167,7 +157,7 @@ For descriptions of the configurations in these profiles, see [Configurations](#
 
 | Configuration | Required? | Default Value | Description |
 | --- | --- | --- | --- |
-| `cloud_host` | Yes | `https://api.dremio.cloud` | US Control Plane: `https://api.dremio.cloud`<br></br>EU Control Plane: `https://api.eu.dremio.cloud` |
+| `cloud_host` | Yes | `api.dremio.cloud` | US Control Plane: `api.dremio.cloud`<br></br>EU Control Plane: `api.eu.dremio.cloud` |
 | `user` | Yes | None | Email address used as a username in Dremio Cloud | 
 | `pat` | Yes | None | The personal access token to use for authentication. See [Personal Access Tokens](https://docs.dremio.com/cloud/security/authentication/personal-access-token/) for instructions about obtaining a token. | 
 | `cloud_project_id` | Yes | None | The ID of the Sonar project in which to run transformations. | 

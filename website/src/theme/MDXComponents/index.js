@@ -45,6 +45,7 @@ import Lifecycle from '@site/src/components/lifeCycle';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
+import VersionCallout from '@site/src/components/versionCallout';
 
 const MDXComponents = {
   Head,
@@ -97,5 +98,6 @@ const MDXComponents = {
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
   SortableTable: SortableTable,
+  VersionCallout: VersionCallout,
 };
 export default MDXComponents;

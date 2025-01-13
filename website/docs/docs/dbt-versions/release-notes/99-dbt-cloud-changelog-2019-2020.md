@@ -27,7 +27,7 @@ and adds two new permission sets for Enterprise acccounts.
 
 ## dbt Cloud v1.1.15 (December 10, 2020)
 
-Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs. 
+Lots of great stuff to confer about this go-round: things really coalesced this week! Lots of excitement around adding Spark to the connection family, as well as knocking out some longstanding bugs.
 
 #### Enhancements
 
@@ -45,7 +45,7 @@ Lots of great stuff to confer about this go-round: things really coalesced this 
 
 ## dbt Cloud v1.1.14 (November 25, 2020)
 
-This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved IDE users, and some improved piping for observability into log management and API usage. 
+This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved IDE users, and some improved piping for observability into log management and API usage.
 
 #### Enhancements
 
@@ -464,7 +464,7 @@ This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and
 - Fixed issue preventing temporary PR schemas from being dropped when PR is closed.
 - Fix issues with IDE tabs not updating query compile and run results.
 - Fix issues with query runtime timer in IDE for compile and run query functions.
-- Fixed what settings are displayed on the account settings page to allign with the user's permissions.
+- Fixed what settings are displayed on the account settings page to align with the user's permissions.
 - Fixed bug with checking user's permissions in frontend when user belonged to more than one project.
 - Fixed bug with access control around environments and file system/git interactions that occurred when using IDE.
 - Fixed a bug with Environments too generously matching repository.
@@ -712,7 +712,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - Fix console warning presented when updating React state from unmounted component
 - Fix issue where closed tabs would continue to be shown, though the content was removed correctly
 - Fix issue that prevented opening an adjacent tab when a tab was closed
-- Fix issue creating BigQuery connections causing the the account connections list to not load correctly.
+- Fix issue creating BigQuery connections causing the account connections list to not load correctly.
 - Fix for locked accounts that have downgraded to the developer plan at trial end
 - Fix for not properly showing server error messages on the user invite page
 

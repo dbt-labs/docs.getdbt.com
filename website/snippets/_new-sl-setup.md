@@ -97,7 +97,7 @@ We recommend configuring credentials and service tokens to reflect your teams an
 
    When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
-## Delete configuration
+### Delete configuration
 You can delete the entire Semantic Layer configuration for a project. Note that deleting the Semantic Layer configuration will remove all credentials and unlink all service tokens to the project. It will also cause all queries to the Semantic Layer to fail.
 
 Follow these steps to delete the Semantic Layer configuration for a project:

@@ -495,7 +495,7 @@ Graph example:
 
 ### Are my data sources fresh?
 
-Checking [source freshness](/docs/build/sources#snapshotting-source-data-freshness) allows you to ensure that sources loaded and used in your dbt project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
+Checking [source freshness](/docs/build/sources#source-data-freshness) allows you to ensure that sources loaded and used in your dbt project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt Cloud"/>
 

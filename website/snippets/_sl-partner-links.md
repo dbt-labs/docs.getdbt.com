@@ -108,6 +108,21 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
+    title="Sigma (Preview)"
+    body="Connect Sigma to the dbt Semantic Layer to allow you to leverage your predefined dbt metrics in Sigma workbooks."
+    link="https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration"
+    icon="sigma"/>
+    <a href="https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+</div>
+
+
+<div className="card-container">
+  <Card
     title="Steep"
     body="Connect Steep to the dbt Semantic Layer for centralized, scalable analytics."
     link="https://help.steep.app/integrations/dbt-cloud"

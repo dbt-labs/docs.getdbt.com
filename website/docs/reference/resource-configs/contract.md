@@ -6,13 +6,18 @@ default_value: {enforced: false}
 id: "contract"
 ---
 
-Supported in dbt v1.5 and higher.
-
 When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
 - Additional [`constraints`](/reference/resource-properties/constraints), as supported for this materialization and data platform
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
+
+## Support
+
+At present, model contracts are supported for:
+- SQL models (not yet Python)
+- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns` or `on_schema_change: fail`)
+- The most popular data platforms — though support and enforcement of different [constraint types](/reference/resource-properties/constraints) vary by platform
 
 ## Data type aliasing
 
@@ -91,12 +96,6 @@ When you `dbt run` your model, _before_ dbt has materialized it as a table in th
 20:53:45    > in macro assert_columns_equivalent (macros/materializations/models/table/columns_spec_ddl.sql)
 ```
 
-## Support
-
-At present, model contracts are supported for:
-- SQL models (not yet Python)
-- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
-- The most popular data platforms — though support and enforcement of different [constraint types](/reference/resource-properties/constraints) vary by platform
 
 ### Incremental models and `on_schema_change`
 

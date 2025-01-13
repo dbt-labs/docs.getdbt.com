@@ -25,7 +25,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta} />
 
 
-If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
+If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it separately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
 
 If connecting to a Spark cluster via the generic thrift or http methods, it requires `PyHive`.
 

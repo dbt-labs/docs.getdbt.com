@@ -2,24 +2,24 @@
 title: "Data health tile"
 id: "data-tile"
 sidebar_label: "Data health tile"
-description: "Embed data health tiles in your dashboards to distill trust signals for data consumers."
+description: "Embed data health tiles in your dashboards to distill data health signals for data consumers."
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 ---
 
-With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. This trust signal allows teams to immediately go back into Explorer to see more details and investigate issues.
+With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into Explorer to see more details and investigate issues.
 
 The data health tile:
 
-- Distills trust signals for data consumers.
+- Distills [data health signals](/docs/collaborate/data-health-signals) for data consumers.
 - Deep links you into dbt Explorer where you can further dive into upstream data issues.
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
 
-Data health tiles rely on [exposures](/docs/build/exposures) to surface trust signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
+Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill data health signals for data consumers." />
 </DocCarousel>
 
 ## Prerequisites
@@ -63,7 +63,7 @@ Follow these steps to set up your data health tile:
 6. Navigate back to dbt Explorer and select an exposure.
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embded data health tile into your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 

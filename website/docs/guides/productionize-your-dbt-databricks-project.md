@@ -57,7 +57,7 @@ Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in dbt
     - This will allow the job to inherit the catalog, schema, credentials, and environment variables defined in [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project).
 4. Under **Execution Settings**
     - Check the **Generate docs on run** checkbox to configure the job to automatically generate project docs each time this job runs. This will ensure your documentation stays evergreen as models are added and modified.
-    - Select the **Run on source freshness** checkbox to configure dbt [source freshness](/docs/deploy/source-freshness) as the first step of this job. Your sources will need to be configured to [snapshot freshness information](/docs/build/sources#snapshotting-source-data-freshness) for this to drive meaningful insights.
+    - Select the **Run on source freshness** checkbox to configure dbt [source freshness](/docs/deploy/source-freshness) as the first step of this job. Your sources will need to be configured to [snapshot freshness information](/docs/build/sources#source-data-freshness) for this to drive meaningful insights.
     
     Add the following three **Commands:**
     - `dbt source freshness`

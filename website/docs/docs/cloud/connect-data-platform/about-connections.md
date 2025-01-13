@@ -8,7 +8,7 @@ pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)<Lifecycle status="Preview" />
+- [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
 - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)

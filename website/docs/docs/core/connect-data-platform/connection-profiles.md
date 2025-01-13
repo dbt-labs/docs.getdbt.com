@@ -39,16 +39,27 @@ jaffle_shop:
       dbname: jaffle_shop
       schema: dbt_alice
       threads: 4
+
+    prod:  # additional prod target
+      type: postgres
+      host: prod.db.example.com
+      user: alice
+      password: <prod_password>
+      port: 5432
+      dbname: jaffle_shop
+      schema: analytics
+      threads: 8
 ```
 
 </File>
 
+To add an additional target (like `prod`) to your existing `profiles.yml`, you can add another entry under the `outputs` key. 
 
 ## About the `profiles.yml` file
 
-In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile.
+In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile. 
 
-For information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml).
+or information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml).
 
 ## About profiles
 

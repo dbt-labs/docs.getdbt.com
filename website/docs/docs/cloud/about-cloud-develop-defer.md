@@ -19,7 +19,7 @@ When using `--defer`, dbt Cloud will follow this order of execution for resolvin
 2. If a development version doesn't exist, dbt uses the staging locations of parent relations based on metadata from the staging environment.
 3. If both a development and staging version doesn't exist, dbt uses the production locations of parent relations based on metadata from the production environment.
 
-**Note:** Passing the `--favor-state` flag will always resolve refs using production metadata, regardless of the presence of a development relation, skipping step #1.
+**Note:** Passing the `--favor-state` flag will always resolve refs using staging metadata if available; otherwise, it defaults to production metadata regardless of the presence of a development relation, skipping step #1.
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 

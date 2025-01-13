@@ -9,6 +9,11 @@ id: "data-tests"
 keywords:
   - test, tests, testing, dag
 ---
+
+import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
+
+<CopilotBeta resource='data tests' />
+
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Data test properties](/reference/resource-properties/data-tests)

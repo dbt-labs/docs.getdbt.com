@@ -21,7 +21,7 @@ models:
 
 The latest version of this model. The "latest" version is relevant for:
 1. Resolving `ref()` calls to this model that are "unpinned" (a version is not explicitly specified)
-2. Selecting model versions using the [`version:` selection method](/reference/node-selection/methods#the-version-method), based on whether a given model version is `latest`, `prerelease`, or `old`
+2. Selecting model versions using the [`version:` selection method](/reference/node-selection/methods#version), based on whether a given model version is `latest`, `prerelease`, or `old`
 
 This value can be a string or a numeric (integer or float) value. It must be one of the [version identifiers](/reference/resource-properties/versions#v) specified in this model's list of `versions`.
 

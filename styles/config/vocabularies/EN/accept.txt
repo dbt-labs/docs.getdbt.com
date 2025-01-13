@@ -65,3 +65,5 @@ N/A
 pseudocolumn
 yml
 values=
+dbt v\\d+\\.\\d+
+v\\d+\\.\\d+
