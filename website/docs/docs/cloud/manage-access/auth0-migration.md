@@ -82,7 +82,7 @@ The new values for these fields can be found in dbt Cloud by navigating to **Acc
 
 3. Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable-entra.png" title="Enable new SSO for SAML/Okta"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
 
 4. Save the settings and test the new configuration using the SSO login URL provided on the settings page.
 
