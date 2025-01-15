@@ -32,7 +32,7 @@ And that’s it! 🎉 Your chosen selected theme will follow you across all dev
 To disable dark mode in the dbt Cloud UI, follow these steps:
 
 1. Navigate to the three dots at the bottom right of the IDE.
-2. Under **Theme**, select **Light**.
+2. Select "Switch to Light mode" from the menu.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/theme-selection-in-the-ide.png" width="90%" title="Enable light mode" />
 
