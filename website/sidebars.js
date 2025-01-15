@@ -31,6 +31,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/browsers",
+        "docs/cloud/about-cloud/dark-mode",
       ],
     }, // About dbt Cloud directory
     {

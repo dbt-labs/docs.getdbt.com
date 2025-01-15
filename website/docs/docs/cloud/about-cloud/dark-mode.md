@@ -1,0 +1,45 @@
+---
+title: "dbt Cloud UI dark mode"
+id: dark-mode
+description: "About dbt Cloud UI dark mode"
+sidebar_label: dbt Cloud UI dark mode
+---
+
+dbt Cloud supports **Light mode** (default), **Dark mode**, and **System mode** (automatic theme switching based on your browser’s preferences set) under the **Themes** section of your user profile. You can seamlessly switch between these modes directly from the profile menu, customizing your viewing experience.
+
+Your selected theme is stored in your user profile, ensuring a consistent experience across dbt Cloud.
+
+Theme selection applies across all areas of dbt Cloud, including the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Explorer](/docs/collaborate/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Enable dark mode in the dbt Cloud UI](add link)
+
+## Prerequisites
+
+- You have a dbt Cloud account. If you don’t, try [dbt Cloud for free!](https://www.getdbt.com/signup)
+- Access to dbt Cloud.
+
+## Enable dark mode in the dbt Cloud UI
+
+To switch to dark mode in the dbt Cloud UI, follow these steps:
+
+1. Navigate to your account name at the bottom left of your account.
+2. Under **Theme**, select **Dark**.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dark-mode.png" width="70%" title="Enable dark mode" />
+
+And that’s it! 🎉 Your chosen selected theme will follow you across all devices.
+
+## Disable dark mode in the dbt Cloud UI
+
+To disable dark mode in the dbt Cloud UI, follow these steps:
+
+1. Navigate to your account name at the bottom left of your account.
+2. Under **Theme**, select **Light**.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/theme-selection-in-the-ide.png" width="90%" title="Enable light mode" />
+
+### Dark mode setting in the IDE
+
+The 'Switch to Dark Mode' menu item in the IDE will soon be deprecated. All users will default to **Light mode** upon signing in, but can easily switch to **Dark mode** from the user menu in the navigation. Once you switch across to your new theme, it will apply to all of your devices.
+
+:::info Rollout of **Dark mode**
+Dark mode will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates.
+:::
