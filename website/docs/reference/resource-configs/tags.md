@@ -93,6 +93,21 @@ resource_type:
 ```
 
 </File>
+
+To apply tags to a model in your `models/` directory, add the `config` property similar to the following example:
+
+<File name='models/model.yml'>
+
+```yaml
+models:
+  - name: my_model
+    description: A model description
+    config:
+      tags: ['example_tag']
+```
+
+</File>
+
 </TabItem>
 
 <TabItem value="config">
@@ -126,10 +141,24 @@ You can use the [`+` operator](/reference/node-selection/graph-operators#the-plu
 - `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies, and its downstream dependencies.
 - `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run model tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
 
+
+:::tip Usage notes about tags
+
+When using tags, consider the following: 
+
+- Tags are additive across project hierarchy.
+- Some resource types (like sources, exposures) require tags at the top level.
+
+Refer to [usage notes](#usage-notes) for more information.
+:::
+
 ## Examples
+
+The following examples show how to apply tags to resources in your project. You can configure tags in the `dbt_project.yml`, `schema.yml`, or SQL files.
+
 ### Use tags to run parts of your project
 
-Apply tags in your `dbt_project.yml` as a single value or a string:
+Apply tags in your `dbt_project.yml` as a single value or a string. In the following example, one of the models, the `jaffle_shop` model, is tagged with `contains_pii`. 
 
 <File name='dbt_project.yml'>
 
@@ -153,16 +182,52 @@ models:
         - "published"
 
 ```
+</File>
+
+
+### Apply tags to models
+
+This section demonstrates applying tags to models in the `dbt_project.yml`, `schema.yml`, and SQL files. 
+
+To apply tags to a model in your `dbt_project.yml` file, you would add the following:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  jaffle_shop:
+    +tags: finance # jaffle_shop model is tagged with 'finance'.
+```
 
 </File>
 
-You can also apply tags to individual resources using a config block:
+To apply tags to a model in your `models/` directory YAML file, you would add the following using the `config` property:
+
+<File name='models/stg_customers.yml'>
+
+```yaml
+models:
+  - name: stg_customers
+    description: Customer data with basic cleaning and transformation applied, one row per customer.
+    config:
+      tags: ['santi'] # stg_customers.yml model is tagged with 'santi'.
+    columns:
+      - name: customer_id
+        description: The unique key for each customer.
+        data_tests:
+          - not_null
+          - unique
+```
+
+</File>
+
+To apply tags to a model in your SQL file, you would add the following:
 
 <File name='models/staging/stg_payments.sql'>
 
 ```sql
 {{ config(
-    tags=["finance"]
+    tags=["finance"] # stg_payments.sql model is tagged with 'finance'.
 ) }}
 
 select ...
@@ -211,14 +276,10 @@ seeds:
 
 <VersionBlock lastVersion="1.8">
 
-:::tip Upgrade to dbt Core 1.9
-
-Applying tags to saved queries is only available in dbt Core versions 1.9 and later.
-:::
+<VersionCallout version="1.9" />
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
 
 This following example shows how to apply a tag to a saved query in the `dbt_project.yml` file. The saved query is then tagged with `order_metrics`.
 
@@ -263,7 +324,6 @@ Run resources with multiple tags using the following commands:
 # Run all resources tagged "order_metrics" and "hourly"
   dbt build --select tag:order_metrics tag:hourly
 ```
-</VersionBlock>
 
 ## Usage notes
 

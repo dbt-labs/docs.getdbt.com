@@ -36,7 +36,7 @@ import Tools from '/snippets/_sl-excel-gsheets.md';
 
 <Tools 
 type="Microsoft Excel"
-bullet_1="There's a timeout of 1 minute for queries."
+bullet_1="Results that take longer than one minute to load into Excel will fail. This limit only applies to the loading process, not the time it takes for the data platform to run the query."
 bullet_2="If you're using this extension, make sure you're signed into Microsoft with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
 queryBuilder="/img/docs/dbt-cloud/semantic-layer/query-builder.png"
 />
