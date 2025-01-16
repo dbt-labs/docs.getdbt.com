@@ -17,7 +17,7 @@ Theme selection applies across all areas of dbt Cloud, including the [IDE](/docs
 - You have a dbt Cloud account. If you don’t, try [dbt Cloud for free!](https://www.getdbt.com/signup)
 - Dark mode is currently available on the Developer plan. It will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates.
 
-## Enable dark mode in dbt Cloud
+## Change themes in dbt Cloud
 
 To switch to dark mode in the dbt Cloud UI, follow these steps:
 
