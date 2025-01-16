@@ -1,8 +1,9 @@
 ---
 title: "dbt Cloud dark mode"
 id: dark-mode
-description: "About dbt Cloud dark mode"
+description: "Learn about theme switching in dbt Cloud"
 sidebar_label: dbt Cloud dark mode
+image: /img/docs/dbt-cloud/using-dbt-cloud/dark-mode.png
 ---
 
 dbt Cloud supports **Light mode** (default), **Dark mode**, and **System mode** (automatic theme switching based on your browser’s preferences set) under the **Theme** section of your user profile. You can seamlessly switch between these modes directly from the profile menu, customizing your viewing experience.
