@@ -9,7 +9,7 @@ dbt Cloud supports **Light mode** (default), **Dark mode**, and **System mode** 
 
 Your selected theme is stored in your user profile, ensuring a consistent experience across dbt Cloud.
 
-Theme selection applies across all areas of dbt Cloud, including the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Explorer](/docs/collaborate/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Enable dark mode in the dbt Cloud UI](add link)
+Theme selection applies across all areas of dbt Cloud, including the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Explorer](/docs/collaborate/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Enable dark mode in dbt Cloud](/docs/cloud/about-cloud/dark-mode#enable-dark-mode-in-dbt-cloud).
 
 ## Prerequisites
 
