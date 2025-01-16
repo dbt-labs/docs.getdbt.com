@@ -85,15 +85,13 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connect a service principal](#connect-a-service-principal). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+1. From your Azure DevOps account organization screen, click **Organization settings** in the bottom left.
+2. Under **General** settings, click **Users**.
+3. Click **Add users**, and in the resulting panel, enter the service principal's name in the first field. Then, click the name when it appears below the field.
+4. In the **Add to projects** field, click the boxes for any projects you want to include (or select all).
+5. Set the **Azure DevOps Groups** to **Project Administrator**.
 
-1. From your Azure DevOps account, select **Organization settings** in the bottom left.
-2. Navigate to Microsoft Entra ID.
-3. Click **Connect directory**.
-4. Select the directory you want to connect.
-5. Click **Connect**.
-
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Microsoft Entra ID"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/service-principal.png" title="Example setup with the service principal added as a user"/>
 
 ## Configure the Entra ID connection
 
@@ -132,13 +130,13 @@ In your Azure account:
 5. Click the **Members** tab. You must set **Assign access to** to **User, group, or service principal**.
 6. Click **Select members** and search for your app name in the window. Once it appears, click your app, which will appear in the **Selected members** section. Click **Select** at the bottom to save your selection.
 
-    <Lightbox src="/img/docs/cloud-integrations/assign-app-to-members.png" width="80%" title="The dbt Cloud ADO app in the members section."/>
+    <Lightbox src="/img/docs/cloud-integrations/assign-app-to-members.png" width="80%" title="The dbt Cloud ADO app in the member’s section."/>
 
-5. Confirm the details are correct and click **Review + assign**.
+5. Confirm the correct details and click **Review + assign**.
 
     <Lightbox src="/img/docs/cloud-integrations/review-and-assign.png" width="80%" title="Review screen with the app service principal and permissions."/>
 
-Navigate back to the **App registrations** screen and click the app. On the left menu, click **Roles and administrators** and you will see the app role assignment. 
+Navigate back to the **App registrations** screen and click the app. On the left menu, click **Roles and administrators**, and you will see the app role assignment. 
 
 
 ### Migrate to service principal
