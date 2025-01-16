@@ -91,7 +91,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 4. In the **Add to projects** field, click the boxes for any projects you want to include (or select all).
 5. Set the **Azure DevOps Groups** to **Project Administrator**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/service-principal.png" title="Example setup with the service principal added as a user"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/service-principal.png" title="Example setup with the service principal added as a user."/>
 
 ## Configure the Entra ID connection
 
