@@ -361,8 +361,7 @@ The materialization also supports invalidating hard deletes. For usage details, 
 
 ### Snapshots known issues
 
-- Incremental Iceberg models - Sync all columns on schema change. Columns used for partitioning can't be removed. From a dbt perspective, the only way is to fully refresh the incremental model.
-- Tables, schemas and database names should only be lowercase
+- Tables, schemas and database names should only be lowercase.
 - To avoid potential conflicts, make sure [`dbt-athena-adapter`](https://github.com/Tomme/dbt-athena) is not installed in the target environment.
 - Snapshot does not support dropping columns from the source table. If you drop a column, make sure to drop the column from the snapshot as well. Another workaround is to NULL the column in the snapshot definition to preserve the history.
 
