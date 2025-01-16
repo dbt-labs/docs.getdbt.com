@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## January 2025
 
 - **New**: Users can now switch themes directly from the user menu. We have added support for **Light mode** (default), **Dark mode**, and automatic theme switching based on system preferences. The selected theme is stored in the user profile and will follow users across all devices.
-- Dark mode will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates.
+- Dark mode is currently available on the Developer plan and will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates. For more information, refer to [dbt Cloud dark mode](/docs/cloud/about-cloud/dark-mode).
 
 - **Enhancement**: The [`dbt_version` format](/reference/commands/version#versioning) in dbt Cloud now better aligns with [semantic versioning rules](https://semver.org/). Leading zeroes have been removed from the month and day (`YYYY.M.D+<suffix>`). For example:
   - New format: `2024.10.8+996c6a8`
