@@ -13,9 +13,8 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 
 1. [Register an Entra ID app](#register-a-microsoft-entra-id-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
-3. [Add another redirect URI](#add-another-redirect-uri).
-4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-5. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
+3. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
+4. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
 Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also connect a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
@@ -38,15 +37,11 @@ A Microsoft Entra ID admin needs to perform the following steps:
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps app".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Entra ID application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
-7. Click **Register**.
-
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Entra ID app registrations"/>
+6. Click **Register**.
 
 Here's what your app should look like before registering it:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering a Microsoft Entra ID app"/>
-
 
 ## Add permissions to your new app
 
@@ -59,15 +54,6 @@ An Entra ID admin needs to provide your new app access to Azure DevOps:
 5. Select the **user_impersonation** permission. This is the only permission available for Azure DevOps.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
-
-## Add another redirect URI
-
-
-1. Navigate to your Microsoft Entra ID application.
-
-2. Select the link next to **Redirect URIs**
-3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
-4. Click **Save**.
 
 ## Create a client secret
 
@@ -84,6 +70,13 @@ A Microsoft Entra ID admin needs to complete the following steps:
 An Azure admin will need one of the following permissions in both the Microsoft Entra ID and Azure DevOps environments:
 - Azure Service Administrator
 - Azure Co-administrator
+
+:::note
+
+You can only add a managed identity or service principal for the tenant to which your organization is connected. You need to add a directory to your organization so that it can access all the service principals and other identities.
+Navigate to **Organization settings** --> **Microsoft Entra** --> **Connect Directory** to connect.
+
+:::
 
 1. From your Azure DevOps account organization screen, click **Organization settings** in the bottom left.
 2. Under **General** settings, click **Users**.
@@ -137,7 +130,6 @@ In your Azure account:
     <Lightbox src="/img/docs/cloud-integrations/review-and-assign.png" width="80%" title="Review screen with the app service principal and permissions."/>
 
 Navigate back to the **App registrations** screen and click the app. On the left menu, click **Roles and administrators**, and you will see the app role assignment. 
-
 
 ### Migrate to service principal
 
