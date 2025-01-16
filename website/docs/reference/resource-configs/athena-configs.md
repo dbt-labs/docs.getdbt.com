@@ -143,7 +143,7 @@ The following [incremental models](https://docs.getdbt.com/docs/build/incrementa
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
 - `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
 
-You should consider this limitation:
+You should consider this known issue:
 
 - Incremental Iceberg models - Sync all columns on schema change. Columns used for partitioning can't be removed. From a dbt perspective, the only way is to fully refresh the incremental model.
 
