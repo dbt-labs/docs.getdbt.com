@@ -25,7 +25,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## December 2024
 
-- **Enhancement**: [Service principal](/docs/cloud/git/setup-azure#configure-the-entra-id-connection) is now available as an authentication type for the Azure DevOps integration. Service principals offer a level of security and reliability above service users, so talk to your teams about migrating.
 - **New**: Saved queries now support [tags](/reference/resource-configs/tags), which allow you to categorize your resources and filter them. Add tags to your [saved queries](/docs/build/saved-queries) in the `semantic_model.yml` file or `dbt_project.yml` file. For example:
   <File name='dbt_project.yml'>
 
