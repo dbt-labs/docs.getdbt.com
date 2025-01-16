@@ -32,9 +32,9 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - (Optional) **Description** &mdash; Provide a description of what the job does (for example, what the job consumes and what the job produces). 
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
 3. Options in the **Execution settings** section:
-    - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
-    - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs.
-    - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
+    - [**Commands**](/docs/deploy/job-commands#built-in-commands) &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs. During a job run, [built-in commands](/docs/deploy/job-commands#built-in-commands) are "chained" together and if one run step fails, the entire job fails with an "Error" status. 
+    - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass. 
+    - [**Run source freshness**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).

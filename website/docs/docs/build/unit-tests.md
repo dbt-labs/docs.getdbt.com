@@ -10,9 +10,6 @@ keywords:
 
 <VersionCallout version="1.8" />
 
-
-
-
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
 Starting in dbt Core v1.8, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
@@ -219,10 +216,19 @@ dbt test --select test_is_valid_email_address
 
 Your model is now ready for production! Adding this unit test helped catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
-
 ## Unit testing incremental models
 
-When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes. 
+When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes.
+
+:::note
+Incremental models need to exist in the database first before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
+
+  ```shell
+  dbt run --select "config.materialized:incremental" --empty
+  ```
+
+  After running the command, you can then perform a regular `dbt build` for that model and then run your unit test.
+:::
 
 When testing an incremental model, the expected output is the __result of the materialization__ (what will be merged/inserted), not the resulting model itself (what the final table will look like after the merge/insert).
 
