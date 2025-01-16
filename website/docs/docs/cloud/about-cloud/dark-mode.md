@@ -1,7 +1,7 @@
 ---
 title: "dbt Cloud dark mode"
 id: dark-mode
-description: "About dbt Cloud UI dark mode"
+description: "About dbt Cloud dark mode"
 sidebar_label: dbt Cloud UI dark mode
 ---
 
