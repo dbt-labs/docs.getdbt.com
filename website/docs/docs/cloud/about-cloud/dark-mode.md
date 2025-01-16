@@ -27,7 +27,7 @@ To switch to dark mode in the dbt Cloud UI, follow these steps:
 
 And that’s it! 🎉 Your chosen selected theme will follow you across all devices.
 
-## Disable dark mode in the dbt Cloud UI
+## Disable dark mode in dbt Cloud
 
 To disable dark mode in the dbt Cloud UI, follow these steps:
 
