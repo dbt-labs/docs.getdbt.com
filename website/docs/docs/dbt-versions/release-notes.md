@@ -19,6 +19,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2025
 
+- **Enhancement**: Added support to automatically refresh access tokens when Snowflake's SSO connection expires. Previously, users would get the following error: `Connection is not available, request timed out after 30000ms` and would have to wait 10 minutes to try again.
 - **Enhancement**: The [`dbt_version` format](/reference/commands/version#versioning) in dbt Cloud now better aligns with [semantic versioning rules](https://semver.org/). Leading zeroes have been removed from the month and day (`YYYY.M.D+<suffix>`). For example:
   - New format: `2024.10.8+996c6a8`
   - Previous format: `2024.10.08+996c6a8`
