@@ -33,6 +33,7 @@ Key:
 | Project (create)        |     W         |      -        |            -              |        W        |       -        |   -    |
 | Public models           |     R         |       R       |            -              |        R        |       R        |   R    |
 | Service tokens          |     W         |      -        |            -              |        -        |       R        |   R    |
+| Slack notifications     |     W         |      -        |            -              |        -        |       -        |   -    |
 | Webhooks                |     W         |      -        |            -              |        -        |       -        |   -    |
 `}
 
