@@ -12,9 +12,8 @@ sidebar_label: "Set up Azure DevOps"
 To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Microsoft Entra ID app. We recommend setting up a separate [Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id).
 
 1. [Register an Entra ID app](#register-a-microsoft-entra-id-app).
-2. [Add permissions to your new app](#add-permissions-to-your-new-app).
-3. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-4. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
+2. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
+3. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
 Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also connect a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
@@ -42,18 +41,6 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 Here's what your app should look like before registering it:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering a Microsoft Entra ID app"/>
-
-## Add permissions to your new app
-
-An Entra ID admin needs to provide your new app access to Azure DevOps:
-
-1. Select **API permissions** in the left navigation panel.
-2. Remove the **Microsoft Graph / User Read** permission.
-3. Click **Add a permission**.
-4. Select **Azure DevOps**.
-5. Select the **user_impersonation** permission. This is the only permission available for Azure DevOps.
-
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
 ## Create a client secret
 
@@ -101,15 +88,6 @@ There are two connection methods currently available for dbt Cloud and Azure Dev
 The application's service principal represents the Entra ID application object. Whereas a service user represents a real user in Azure with an Entra ID (and an applicable license), the service principal is a secure identity used by an application to access Azure resources unattended. The service principal authenticates with a client ID and secret rather than a username and password (or any other form of user auth). Service principals are the [Microsoft recommended method](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for authenticating apps. 
 
 ### Add a role to the Service Principal
-
-You can create a new role or assign an existing one to the service principal app. It must have the following permissions:
-
-- **Project Reader**
-- **ViewSubscriptions**
-- **EditSubscriptions**
-- **DeleteSubscriptions** *
-- **PullRequestContribute**
-- **GenericContribute**
 
 In your Azure account:
 
@@ -448,5 +426,6 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
     - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt Cloud."/>
+    - **Redirect URI (Service users only)**: Copy this field to **Redirect URIs** field in your Entra ID app.
 
 Your Microsoft Entra ID app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
