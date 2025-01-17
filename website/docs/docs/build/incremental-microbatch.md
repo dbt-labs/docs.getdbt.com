@@ -29,13 +29,26 @@ Microbatch is an incremental strategy designed for large time-series datasets:
 
 - Note, microbatch might not be the best strategy for all use cases. Consider other strategies for use cases such as not having a reliable `event_time` column or if you want more control over the incremental logic. Read more in [How `microbatch` compares to other incremental strategies](#how-microbatch-compares-to-other-incremental-strategies).
 
-### How microbatch works
+## How microbatch works
 
 When dbt runs a microbatch model — whether for the first time, during incremental runs, or in specified backfills — it will split the processing into multiple queries (or "batches"), based on the `event_time` and `batch_size` you configure.
 
 Each "batch" corresponds to a single bounded time period (by default, a single day of data). Where other incremental strategies operate only on "old" and "new" data, microbatch models treat every batch as an atomic unit that can be built or replaced on its own. Each batch is independent and <Term id="idempotent" />. 
 
 This is a powerful abstraction that makes it possible for dbt to run batches [separately](#backfills), concurrently, and [retry](#retry) them independently.
+
+### Adapter-specific behavior
+
+dbt's microbatch strategy uses the most efficient mechanism available for "full batch" replacement on each adapter. This can vary depending on the adapter:
+
+- `dbt-postgres`: Uses the `merge` strategy, which performs "update" or "insert" operations.
+- `dbt-redshift`: Uses the `delete+insert` strategy, which "inserts" or "replaces."
+- `dbt-snowflake`: Uses the `delete+insert` strategy, which "inserts" or "replaces."
+- `dbt-bigquery`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
+- `dbt-spark`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
+- `dbt-databricks`: Uses the `replace_where` strategy, which "inserts" or "replaces." 
+
+Check out the [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more info.
 
 ## Example
 
@@ -170,7 +183,7 @@ customers as (
 
 </Tabs>
 
-dbt will instruct the data platform to take the result of each batch query and insert, update, or replace the contents of the `analytics.sessions` table for the same day of data. To perform this operation, dbt will use the most efficient atomic mechanism for "full batch" replacement that is available on each data platform.
+dbt will instruct the data platform to take the result of each batch query and [insert, update, or replace](#adapter-specific-behavior) the contents of the `analytics.sessions` table for the same day of data. To perform this operation, dbt will use the most efficient atomic mechanism for "full batch" replacement that is available on each data platform. For details, see [How microbatch works](#how-microbatch-works).
 
 It does not matter whether the table already contains data for that day. Given the same input data, the resulting table is the same no matter how many times a batch is reprocessed.
 

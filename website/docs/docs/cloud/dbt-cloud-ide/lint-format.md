@@ -74,7 +74,7 @@ To configure your own linting rules:
 
 1. Create a new file in the root project directory (the parent or top-level directory for your files). Note: The root project directory is the directory where your `dbt_project.yml` file resides.
 2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`).
-3. [Create](https://docs.sqlfluff.com/en/stable/configuration.html#new-project-configuration) and add your custom config code. 
+3. [Create](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#new-project-configuration) and add your custom config code. 
 4. Save and commit your changes.
 5. Restart the IDE.
 6. Test it out and happy linting!
