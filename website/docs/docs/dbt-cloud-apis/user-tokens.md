@@ -1,5 +1,6 @@
 ---
 title: "User tokens"
+sidebar_label: "Personal access tokens "
 id: "user-tokens"
 pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---

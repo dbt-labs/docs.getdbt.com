@@ -8,20 +8,16 @@ pagination_prev: null
 <div className="grid--2-col">
 
 <Card
-    title="Project variables"
-    body="Learn how to use project variables to provide data to models for compilation."
-    link="/docs/build/project-variables"
-    icon="dbt-bit"/>
-
-<Card
     title="Environment variables"
     body="Learn how you can use environment variables to customize the behavior of a dbt project."
     link="/docs/build/environment-variables"
     icon="dbt-bit"/>
 
-</div>
-<br />
-<div className="grid--2-col">
+<Card
+    title="Hooks and operations"
+    body="Learn how to use hooks to trigger actions and operations to invoke macros."
+    link="/docs/build/hooks-operations"
+    icon="dbt-bit"/>
 
 <Card
     title="Packages"
@@ -30,9 +26,9 @@ pagination_prev: null
     icon="dbt-bit"/>
 
 <Card
-    title="Hooks and operations"
-    body="Learn how to use hooks to trigger actions and operations to invoke macros."
-    link="/docs/build/hooks-operations"
-    icon="dbt-bit"/>
+    title="Project variables"
+    body="Learn how to use project variables to provide data to models for compilation."
+    link="/docs/build/project-variables"
+    icon="dbt-bit"/>    
 
 </div>
