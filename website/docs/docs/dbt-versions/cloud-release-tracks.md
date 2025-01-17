@@ -16,8 +16,8 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
-| **Latest** <br /> <Lifecycle status="GA"/> |  Formerly called "Versionless", provides a continuous release of the latest functionality in dbt Cloud. Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
-| **Compatible** <Lifecycle status="preview"/>  | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in dbt Cloud. |  Team + Enterprise | `compatible` |
+| **Latest** <br /> <Lifecycle status="GA"/> |  Formerly called "Versionless", provides a continuous release of the latest functionality in dbt Cloud.<br /><br />Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
+| **Compatible** <Lifecycle status="preview"/>  | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in dbt Cloud.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Team + Enterprise | `compatible` |
 | **Extended** <Lifecycle status="preview"/> | The previous month's "Compatible" release. | Enterprise | `extended` |
 
 The first "Compatible" release was on December 12, 2024, after the final release of dbt Core v1.9.0. For December 2024 only, the "Extended" release is the same as "Compatible." Starting in January 2025, "Extended" will be one month behind "Compatible."
