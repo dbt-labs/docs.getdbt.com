@@ -809,6 +809,7 @@ const sidebarSettings = {
           items: [
             "docs/dbt-versions/dbt-cloud-release-notes",
             "docs/dbt-versions/compatible-track-changelog",
+            "docs/dbt-versions/2024-release-notes",
             "docs/dbt-versions/2023-release-notes",
             "docs/dbt-versions/2022-release-notes",
             {
