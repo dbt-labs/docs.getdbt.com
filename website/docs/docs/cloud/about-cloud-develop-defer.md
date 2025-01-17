@@ -2,7 +2,7 @@
 title: Using defer in dbt Cloud
 id: about-cloud-develop-defer
 description: "Learn how to leverage defer to prod when developing with dbt Cloud."
-sidebar_label: "Using defer in dbt Cloud"
+sidebar_label: "Defer in dbt Cloud"
 pagination_next: "docs/cloud/cloud-cli-installation"
 ---
 

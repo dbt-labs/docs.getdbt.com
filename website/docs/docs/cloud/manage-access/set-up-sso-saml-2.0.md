@@ -355,7 +355,13 @@ From the Set up Single Sign-On with SAML page:
 
 ### Finish setup
 
-9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
+9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in dbt Cloud vary from those in the Entra ID app. They're mapped as follows:
+
+   | dbt Cloud field | Corresponding Entra ID field |
+   | ----- | ----- |
+   | **Identity Provider SSO URL** | Login URL |
+   | **Identity Provider Issuer** | Microsoft Entra Identifier |
+
 
 ## OneLogin integration
 
