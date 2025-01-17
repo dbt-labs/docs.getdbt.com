@@ -37,6 +37,6 @@ To disable dark mode in the dbt Cloud UI, follow these steps:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/theme-selection-in-the-ide.png" width="90%" title="Enable light mode" />
 
-### Legacy Dark Mode
+### Legacy dark mode
 
 The **Switch to Dark Mode** menu item in the IDE will soon be deprecated. All users who have access to the IDE will default to **Light mode** upon signing in, but can easily switch to **Dark mode** from the user menu in the navigation. Once you switch to your new theme, it will apply to all of your devices.
