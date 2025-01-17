@@ -106,7 +106,7 @@ lf_grants={
 
 </Tabs>
 
-You should consider these limitations and recommendations: 
+Consider these limitations and recommendations: 
 
 - `lf_tags` and `lf_tags_columns` configs support only attaching lf tags to corresponding resources.
 - We recommend managing LF Tags permissions somewhere outside dbt. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lakeformation-readme.html).
@@ -143,9 +143,9 @@ The following [incremental models](https://docs.getdbt.com/docs/build/incrementa
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
 - `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
 
-You should consider this known issue:
+Consider this limitation when using Iceberg models:
 
-- Incremental Iceberg models - Sync all columns on schema change. Columns used for partitioning can't be removed. From a dbt perspective, the only way is to fully refresh the incremental model.
+- Incremental Iceberg models &mdash; Sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
 
 ### On schema change
 
@@ -363,7 +363,7 @@ The materialization also supports invalidating hard deletes. For usage details, 
 
 ### Snapshots known issues
 
-- Tables, schemas and database names should only be lowercase.
+- Tables, schemas, and database names should only be lowercase.
 - To avoid potential conflicts, make sure [`dbt-athena-adapter`](https://github.com/Tomme/dbt-athena) is not installed in the target environment.
 - Snapshot does not support dropping columns from the source table. If you drop a column, make sure to drop the column from the snapshot as well. Another workaround is to NULL the column in the snapshot definition to preserve the history.
 
