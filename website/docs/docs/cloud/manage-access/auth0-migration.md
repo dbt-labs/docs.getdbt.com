@@ -19,6 +19,12 @@ Alternatively, you can start the process from the **Settings** page in the **Sin
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
 
+There are two fields in these settings that you will need for the migration:
+- **Single sign-on URL:** This will be in the format of your login URL `https://<YOUR_AUTH0_URI>/login/callback?connection=<SLUG>`
+- **Audience URI (SP Entity ID):** This will be in the format `urn:auth0:<YOUR_AUTH0_ENTITYID>:<SLUG>`
+
+Replace `<SLUG>` with your accounts login slug. 
+
 Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
 
 :::warning Login \{slug\}
