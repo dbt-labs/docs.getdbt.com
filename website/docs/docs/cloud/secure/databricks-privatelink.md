@@ -56,6 +56,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
     - Databricks instance name:
     - Databricks Azure resource ID:
     - dbt Cloud multi-tenant environment: EMEA
+    - Azure region: Region that hosts your Databricks workspace (like, WestEurope, NorthEurope)
     ```
 5. Once our Support team confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and browse to **Networking** > **Private Endpoint Connections**. Then, highlight the `dbt` named option and select **Approve**.
 
