@@ -106,7 +106,7 @@ lf_grants={
 
 </Tabs>
 
-There are some limitations and recommendations that should be considered: 
+Consider these limitations and recommendations: 
 
 - `lf_tags` and `lf_tags_columns` configs support only attaching lf tags to corresponding resources.
 - We recommend managing LF Tags permissions somewhere outside dbt. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lakeformation-readme.html).
@@ -114,8 +114,7 @@ There are some limitations and recommendations that should be considered:
 - Any tags listed in `lf_inherited_tags` should be strictly inherited from the database level and never overridden at the table and column level.
 - Currently, `dbt-athena` does not differentiate between an inherited tag association and an override it made previously.
    - For example,  If a `lf_tags_config` value overrides an inherited tag in one run, and that override is removed before a subsequent run, the prior override will linger and no longer be encoded anywhere (for example, Terraform where the inherited value is configured nor in the DBT project where the override previously existed but now is gone).
-
-
+  
 ### Table location
 
 The saved location of a table is determined in precedence by the following conditions:
@@ -144,6 +143,9 @@ The following [incremental models](https://docs.getdbt.com/docs/build/incrementa
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
 - `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
 
+Consider this limitation when using Iceberg models:
+
+- Incremental Iceberg models &mdash; Sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
 
 ### On schema change
 
@@ -361,8 +363,7 @@ The materialization also supports invalidating hard deletes. For usage details, 
 
 ### Snapshots known issues
 
-- Incremental Iceberg models - Sync all columns on schema change. Columns used for partitioning can't be removed. From a dbt perspective, the only way is to fully refresh the incremental model.
-- Tables, schemas and database names should only be lowercase
+- Tables, schemas, and database names should only be lowercase.
 - To avoid potential conflicts, make sure [`dbt-athena-adapter`](https://github.com/Tomme/dbt-athena) is not installed in the target environment.
 - Snapshot does not support dropping columns from the source table. If you drop a column, make sure to drop the column from the snapshot as well. Another workaround is to NULL the column in the snapshot definition to preserve the history.
 
