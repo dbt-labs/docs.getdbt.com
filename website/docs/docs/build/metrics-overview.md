@@ -120,14 +120,15 @@ semantic_models:
     - name: orders
       expr: 1
       agg: sum
-  metrics:
-    - name: orders
-      type: simple
-      label: Count of Orders
-      type_params:
-        measure:
-          name: orders
-      time_granularity: month -- Optional, defaults to day
+
+metrics:
+  - name: orders
+    type: simple
+    label: Count of Orders
+    type_params:
+      measure:
+        name: orders
+    time_granularity: month -- Optional, defaults to day
 ```
 </VersionBlock>
 

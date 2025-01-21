@@ -623,3 +623,11 @@ yu_ishikawa:
       url: https://www.linkedin.com/in/yuishikawa0301
   name: Yu Ishikawa
   organization: Ubie
+mark_wan:
+  image_url: /img/blog/authors/mwan.png
+  job_title: Senior Solutions Architect
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/markwwan/
+  name: Mark Wan
+  organization: dbt Labs
