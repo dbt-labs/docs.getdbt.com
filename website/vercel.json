@@ -3632,12 +3632,27 @@
       "permanent": true
     },
     {
+      "source": "/terms/elt",
+      "destination": "https://www.getdbt.com/blog/extract-load-transform",
+      "permanent": true
+    },
+    {
+      "source": "/terms/etl",
+      "destination": "https://www.getdbt.com/blog/extract-transform-load",
+      "permanent": true
+    },
+    {
+      "source": "/terms/reverse-etl",
+      "destination": "https://www.getdbt.com/blog/reverse-etl-playbook",
+      "permanent": true
+    },
+    {
       "source": "/glossary",
       "destination": "https://www.getdbt.com/blog",
       "permanent": true
     },
     {
-      "source": "/terms/:path((?!elt|etl|reverse-etl).*)",
+      "source": "/terms/:path*",
       "destination": "https://www.getdbt.com/blog",
       "permanent": true
     }

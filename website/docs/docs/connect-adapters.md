@@ -1,5 +1,5 @@
 ---
-title: "How to connect to adapters"
+title: "Connect to adapters"
 id: "connect-adapters"
 ---
 
