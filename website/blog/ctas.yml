@@ -30,3 +30,8 @@
   subheader: Catch up on Coalesce 2024 and register to access a select number of on-demand sessions.
   button_text: Register and watch
   url: https://coalesce.getdbt.com/register/online 
+- name: sdf_webinar_2025
+  header: Accelerating dbt with SDF
+  subheader: Join leaders from dbt Labs and SDF Labs for insights and a live Q&A.
+  button_text: Save your seat
+  url: https://www.getdbt.com/resources/webinars/accelerating-dbt-with-sdf
