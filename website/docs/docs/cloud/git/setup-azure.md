@@ -15,6 +15,8 @@ These instructions are for creating a service principal app. This feature is slo
 
 :::
 
+The application's service principal represents the Entra ID application object. Whereas a service user represents a real user in Azure with an Entra ID (and an applicable license), the service principal is a secure identity used by an application to access Azure resources unattended. The service principal authenticates with a client ID and secret rather than a username and password (or any other form of user auth). Service principals are the [Microsoft recommended method](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for authenticating apps. 
+
 To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Microsoft Entra ID app. We recommend setting up a separate [Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id).
 
 1. [Register an Entra ID app](#register-a-microsoft-entra-id-app).
@@ -22,7 +24,6 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 3. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
 Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also connect a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
-
 
 Once the Microsoft Entra ID app is added to dbt Cloud and the service principal is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 
@@ -79,31 +80,15 @@ Navigate to **Organization settings** --> **Microsoft Entra** --> **Connect Dire
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/add-service-principal.png" width="90%" title="Example setup with the service principal added as a user."/>
 
-## Create a service principal
+### Add permissions to your new app
 
-The application's service principal represents the Entra ID application object. Whereas a service user represents a real user in Azure with an Entra ID (and an applicable license), the service principal is a secure identity used by an application to access Azure resources unattended. The service principal authenticates with a client ID and secret rather than a username and password (or any other form of user auth). Service principals are the [Microsoft recommended method](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for authenticating apps. 
+An Entra ID admin needs to provide your new app access to Azure DevOps:
 
-### Add a role to the Service Principal
-
-In your Azure account:
-
-1. Navigate to **Subscriptions** and click on the appropriate subscription name for the application environment. 
-2. From the left-side menu of the subscription window, click **Access control (IAM)**.
-3. From the top menu, click **Add** and select **Add role assignment** from the dropdown.
-
-<Lightbox src="/img/docs/cloud-integrations/azure-subscription.png" width="60%" title="The 'Access control (IAM)' window in the 'Subscriptions' section of Azure."/>
-
-4. In the **Role** tab, select a role with appropriate permissions to assign the service principal. 
-5. Click the **Members** tab. You must set **Assign access to** to **User, group, or service principal**.
-6. Click **Select members** and search for your app name in the window. Once it appears, click your app, which will appear in the **Selected members** section. Click **Select** at the bottom to save your selection.
-
-    <Lightbox src="/img/docs/cloud-integrations/assign-app-to-members.png" width="80%" title="The dbt Cloud ADO app in the member's section."/>
-
-5. Confirm the correct details and click **Review + assign**.
-
-    <Lightbox src="/img/docs/cloud-integrations/review-and-assign.png" width="80%" title="Review screen with the app service principal and permissions."/>
-
-Navigate back to the **App registrations** screen and click the app. On the left menu, click **Roles and administrators**, and you will see the app role assignment. 
+1. Select **API permissions** in the left navigation panel.
+2. Remove the **Microsoft Graph / User Read** permission.
+3. Click **Add a permission**.
+4. Select **Azure DevOps**.
+5. Select the **user_impersonation** permission. This is the only permission available for Azure DevOps.
 
 ## Migrate to service principal
 
