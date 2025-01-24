@@ -11,7 +11,7 @@ sidebar_label: "Set up Azure DevOps"
 
 :::note
 
-These instructions are for creating a service principal app. This feature is slowly being rolled out to accounts. If you need to configure dbt Cloud and Azure DevOps but don't see the **service principal** option in your account settings, use the [**service user**](#set-up-service-user) option for now. You can easily [migrate to a service principal](#migrate-to-service-principal) when it is available for your account.
+The instructions in this section are for creating a service principal app. This feature is being slowly rolled out to dbt Cloud accounts. If you need to configure dbt Cloud and Azure DevOps but don't see the **Service principal** option in your account settings, use the [**Service user**](#set-up-service-user) configuration for now. You can easily [migrate to a service principal](#migrate-to-service-principal) when it is available for your account.
 
 :::
 
