@@ -100,7 +100,7 @@ If your dbt Cloud app does not have a service principal, take the following acti
 
     <Lightbox src="/img/docs/cloud-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
 
-5. Follow the instructions in [Add role to service principal](#add-permissions-to-your-service-principal) if the app doesn't already have them assigned.
+5. Follow the instructions in [Add permissions to service principal](#add-permissions-to-your-service-principal) if the app doesn't already have them assigned.
 6. In dbt Cloud, navigate to **Account settings** --> **Integrations** and edit the **Azure DevOps** integration.
 7. Click the **Service principal** option, fill out the fields, and click **Save**. The services will continue to function uninterrupted. 
 
