@@ -24,9 +24,7 @@ The application's service principal represents the Entra ID application object. 
 2. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 3. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also connect a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
-
-Once the Microsoft Entra ID app is added to dbt Cloud and the service principal is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
+Once the Microsoft Entra ID app is added to dbt Cloud, it will act as a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in dbt Cloud such as deployment runs and CI. The dbt Cloud developers can then personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 
 The following personas are required to complete the steps on this page:
 - Microsoft Entra ID admin
