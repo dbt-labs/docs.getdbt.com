@@ -80,7 +80,7 @@ Navigate to **Organization settings** --> **Microsoft Entra** --> **Connect Dire
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/add-service-principal.png" width="90%" title="Example setup with the service principal added as a user."/>
 
-### Add permissions to your new app
+### Add permissions to your service principal
 
 An Entra ID admin needs to provide your new app access to Azure DevOps:
 
@@ -101,7 +101,7 @@ If your dbt Cloud app does not have a service principal, take the following acti
 
     <Lightbox src="/img/docs/cloud-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
 
-5. Follow the instructions in [Add role to service principal](#add-a-role-to-the-service-principal) if the app doesn't already have them assigned.
+5. Follow the instructions in [Add role to service principal](#add-permissions-to-your-service-principal) if the app doesn't already have them assigned.
 6. In dbt Cloud, navigate to **Account settings** --> **Integrations** and edit the **Azure DevOps** integration.
 7. Click the **Service principal** option, fill out the fields, and click **Save**. The services will continue to function uninterrupted. 
 
@@ -120,7 +120,6 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
     - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt Cloud."/>
-    - **Redirect URI (Service users only)**: Copy this field to **Redirect URIs** field in your Entra ID app.
 
 Your Microsoft Entra ID app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
