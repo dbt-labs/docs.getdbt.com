@@ -135,7 +135,9 @@ Migrate from a service user to service principal using the existing app. It will
 
 ### Verify the service principal
 
-To confirm whether your existing app already has a service principal (and Entra ID admin will need to do this):
+You will need an Entra ID admin to complete these steps.
+
+To confirm whether your existing app already has a service principal:
  
 1. In the Azure account, navigate to **Microsoft Entra ID** -> **Manage** -> **App registrations**.
 2. Click on the application used for the service user integration with dbt Cloud. 
