@@ -8,7 +8,7 @@ The following table outlines the available integration options and their corresp
 
 | **Git provider** | **Native dbt Cloud integration** | **Automated CI job**|**Git clone**| **Information**|
 | -----------------| ---------------------------------| -------------------------------------------|-----------------------|---------|
-|[Azure DevOps](/docs/cloud/git/setup-azure)<br /> <Lifecycle status="enterprise" />|  ✅|  ✅ |  ✅  | Organizations on the Team  and Developer plans can connect to Azure DeveOps using a deploy key. Note, you won’t be able to configure automated CI jobs but you can still develop.|
+|[Azure DevOps](/docs/cloud/git/connect-azure-devops)<br /> <Lifecycle status="enterprise" />|  ✅|  ✅ |  ✅  | Organizations on the Team  and Developer plans can connect to Azure DeveOps using a deploy key. Note, you won’t be able to configure automated CI jobs but you can still develop.|
 |[GitHub](/docs/cloud/git/connect-github)<br /> <Lifecycle status="developer,team,enterprise" /> | ✅ | ✅ |  ✅         |                                  
 |[GitLab](/docs/cloud/git/connect-gitlab)<br /> <Lifecycle status="developer,team,enterprise" /> | ✅ | ✅ |  ✅         |
 |All other git providers using [Git clone](/docs/cloud/git/import-a-project-by-git-url) ([BitBucket](/docs/cloud/git/import-a-project-by-git-url#bitbucket), [AWS CodeCommit](/docs/cloud/git/import-a-project-by-git-url#aws-codecommit), and others)| ❌    | ❌    | ✅   | Refer to the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines?step=1) guide to set up continuous integration and continuous deployment (CI/CD).|
