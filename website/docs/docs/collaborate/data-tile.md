@@ -27,7 +27,8 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 - You must have a dbt Cloud account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
-- Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
+- Have [exposures](/docs/build/exposures) defined in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
+   - The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
 
 ## View exposure in dbt Explorer
 
@@ -61,15 +62,22 @@ Follow these steps to set up your data health tile:
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
+
+   :::tip
+      The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
+   :::
+
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 
+
+
 If your analytics tool supports iFrames, you can embed the dashboard tile within it. 
 
-### Examples
+## Examples
 The following examples show how to embed the data health tile in Tableau and PowerBI.
 
 <Tabs>

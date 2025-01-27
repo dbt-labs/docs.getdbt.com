@@ -18,7 +18,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2025
 
-
+- **Enhancement**: The dbt Semantic Layer now fully supports the [`--favor-state` flag](/docs/cloud/about-cloud-develop-defer) when used with `defer` in the dbt Cloud IDE. This enhancement allows you to always resolve `{{ ref() }}` functions using staging or production metadata, ignoring any development version.
+- **New**: Added the `dbt invocation` command to the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). This command allows you to view and manage active invocations, which are long-running sessions in the dbt Cloud CLI. For more information, see [dbt invocation](/reference/commands/invocation).
 - **New**: Users can now switch themes directly from the user menu, available [in Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). We have added support for **Light mode** (default), **Dark mode**, and automatic theme switching based on system preferences. The selected theme is stored in the user profile and will follow users across all devices.
   - Dark mode is currently available on the Developer plan and will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates. For more information, refer to [Change your dbt Cloud theme](/docs/cloud/about-cloud/change-your-dbt-cloud-theme).
 - **Fix**: dbt Semantic Layer errors in the Cloud IDE are now displayed with proper formatting, fixing an issue where newlines appeared broken or difficult to read. This fix ensures error messages are more user-friendly and easier to parse.

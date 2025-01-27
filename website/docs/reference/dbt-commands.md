@@ -45,6 +45,7 @@ Commands with a ('❌') indicate write commands, commands with a ('✅') indicat
 | [environment](/reference/commands/dbt-environment) | Enables you to interact with your dbt Cloud environment. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
 | help | Displays help information for any command | N/A | dbt Core, dbt Cloud CLI <br /> All [supported versions](/docs/dbt-versions/core) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | dbt Core<br /> All [supported versions](/docs/dbt-versions/core) |
+| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | dbt Cloud CLI<br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |

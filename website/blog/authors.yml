@@ -137,7 +137,7 @@ colin_rogers:
   organization: dbt Labs
 dave_connors:
   image_url: /img/blog/authors/dconnors.jpeg
-  job_title: Senior Developer Experience Advocate
+  job_title: Staff Developer Experience Advocate
   links:
     - icon: fa-github
       url: https://github.com/dave-connors-3

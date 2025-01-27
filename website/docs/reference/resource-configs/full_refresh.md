@@ -58,20 +58,17 @@ seeds:
 
 </Tabs>
 
-- If `full_refresh:true` &mdash; the configured resources(s) will full-refresh when `dbt run --full-refresh` is invoked. 
-- If `full_refresh:false` &mdash; the configured resources(s) will _not_ full-refresh when `dbt run --full-refresh` is invoked.
-
-
 ## Description
 
 The `full_refresh` config allows you to optionally configure whether a resource will always or never perform a full-refresh. This config is an override for the `--full-refresh` command line flag used when running dbt commands. 
 
+You can set the `full_refresh` config in the `dbt_project.yml` file or in a resource config. 
 
 | `full_refresh` value | Behavior |
 | ---------------------------- | -------- |
-| `true` | The resource always full-refreshes, regardless of the presence or absence of the `--full-refresh` flag. |
-| `false` | The resource never full-refreshes, even if the `--full-refresh` flag is provided. |
-| `none` or omitted | The resource follows the behavior of the `--full-refresh` flag. If the flag is used, the resource will full-refresh; otherwise, it won't. |
+| If set to `true` | The resource _always_ performs a full refresh, regardless of whether you pass the `--full-refresh` flag in the dbt command. |
+| If set to `false` | The resource _never_ performs a full refresh, regardless of whether you pass the `--full-refresh` flag in the dbt command. |
+| If set to `none` or omitted | The resource follows the behavior of the `--full-refresh` flag. If the flag is used, the resource will perform a full refresh; otherwise, it will not. |
 
 #### Note
 - The `--full-refresh` flag also supports a short name, `-f`.

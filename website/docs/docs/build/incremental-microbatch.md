@@ -310,11 +310,9 @@ For example, if you have a microbatch model with 12 batches, you can execute tho
 
 To enable parallel execution, you must:
 
-- Use a supported adapter:
-  - Snowflake
-  - Databricks
+- Use Snowflake as a supported adapter.
   - More adapters coming soon!
-    - We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 initial release.
+  - We'll be continuing to test and add concurrency support for adapters. This means that some adapters might get concurrency support _after_ the 1.9 release.
     
 - Meet [additional conditions](#how-parallel-batch-execution-works) described in the following section.
 
