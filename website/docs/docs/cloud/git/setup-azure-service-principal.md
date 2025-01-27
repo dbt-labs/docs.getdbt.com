@@ -161,6 +161,6 @@ If your dbt Cloud app does not have a service principal, take the following acti
 
 5. Follow the instructions in [Add permissions to service principal](#add-permissions-to-your-service-principal) if the app doesn't already have them assigned.
 6. In dbt Cloud, navigate to **Account settings** --> **Integrations** and edit the **Azure DevOps** integration.
-7. Click the **Service principal** option, fill out the fields, and click **Save**. The services will continue to function uninterrupted. 
+7. Click the **Service principal** option (if you used the same Entra ID app, you won't need to fill out any fields) and click **Save**. The services will continue to function uninterrupted. 
 
 Continue on from the [add role to your service principal](#add-a-role-to-service-principal) section on this page and follow the remaining instructions.
