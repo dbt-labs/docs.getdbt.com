@@ -156,7 +156,8 @@ const sidebarSettings = {
                   },
                   items: [
                     "docs/cloud/git/connect-azure-devops",
-                    "docs/cloud/git/setup-azure",
+                    "docs/cloud/git/setup-service-principal",
+                    "docs/cloud/git/setup-service-user",
                     "docs/cloud/git/authenticate-azure",
                   ],
                 },

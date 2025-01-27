@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/git/setup-azure",
+      "destination": "/docs/cloud/git/connect-azure-devops",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/about-cloud/dark-mode",
       "destination": "/docs/cloud/about-cloud/change-your-dbt-cloud-theme",
       "permanent": true
