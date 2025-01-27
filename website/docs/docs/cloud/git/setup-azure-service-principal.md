@@ -113,8 +113,9 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
 To create the configuration: 
 1. Navigate to your account settings in dbt Cloud.
 2. Select **Integrations**.
-3. Scroll to the Azure DevOps section.
-4. Complete/edit the form (if you are migrating, the existing configurations carry over):
+3. Scroll to the Azure DevOps section and click the **Edit icon**.
+4. Select the **Service principal** option (service user configurations will auto complete the fields, if applicable).
+5. Complete/edit the form (if you are migrating, the existing configurations carry over):
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
     - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
