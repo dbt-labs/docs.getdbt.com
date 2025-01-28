@@ -25,7 +25,7 @@ Don't use vanity URLs when configuring the SSO settings. You need to use the gen
 
 :::
 
-There are two fields in the SSO settings that you will need for the migration:
+There are two fields in the SSO settings that you need for the migration:
 - **Single sign-on URL:** This will be in the format of your login URL `https://<YOUR_AUTH0_URI>/login/callback?connection=<SLUG>`
 - **Audience URI (SP Entity ID):** This will be in the format `urn:auth0:<YOUR_AUTH0_ENTITYID>:<SLUG>`
 
