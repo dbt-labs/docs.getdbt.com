@@ -176,9 +176,9 @@ If your dbt Cloud app does not have a service principal, take the following acti
 
     <Lightbox src="/img/docs/cloud-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
 
-4. Follow the instructions to [add permissions](#add-permissions-to-your-service-principal) to your service principal.
-5. Follow the instructions to [connect DevOps to your app](#connect-azure-devops-to-your-new-app).
-6. In your dbt Cloud account:
+5. Follow the instructions to [add permissions](#add-permissions-to-your-service-principal) to your service principal.
+6. Follow the instructions to [connect DevOps to your app](#connect-azure-devops-to-your-new-app).
+7. In your dbt Cloud account:
     1. Navigate to **Account settings** and click **Integrations**
     2. Click the **edit icon** to the right of the **Azure DevOps** settings.
     3. Change **Service user** to **Service principal** and click **Save**. You do not need to edit any existing fields.
