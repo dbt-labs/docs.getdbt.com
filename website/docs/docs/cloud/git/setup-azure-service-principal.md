@@ -44,7 +44,11 @@ A Microsoft Entra ID admin needs to perform the following steps:
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps app".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single Tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID separate tenants, and for the Entra ID application to work properly, you must select Multitenant.
-6. Click **Register**.
+6. Set **Redirect URI (optional)** to **Web**. Copy the value from dbt Cloud to the next field:
+    1. In dbt Cloud, navigate to **Account Settings** -> **Integrations**.
+    2. Click the **edit icon** next to **Azure DevOps**.
+    3. Copy the first **Redirect URIs** value to the field in Azure (not the value that ends with azure_active_directory_service_user). It will look something like `https://<YOUR_ACCESS_URL>/complete/azure_active_directory`.
+7. Click **Register**.
 
 Here's what your app should look like before registering it:
 
