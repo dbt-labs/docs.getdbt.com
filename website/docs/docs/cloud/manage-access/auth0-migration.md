@@ -19,19 +19,27 @@ Alternatively, you can start the process from the **Settings** page in the **Sin
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
 
-There are two fields in these settings that you will need for the migration:
+:::warning vanity urls
+
+Don't use vanity URLs when configuring the SSO settings. You need to use the generic URL provided in the SSO settings for your environment. For example, if your vanity URL is `cloud.MY_COMPANY.getdbt.com`, configure `auth.cloud.getdbt.com` as `<YOUR_AUTH0_URI>`.
+
+:::
+
+There are two fields in the SSO settings that you need for the migration:
 - **Single sign-on URL:** This will be in the format of your login URL `https://<YOUR_AUTH0_URI>/login/callback?connection=<SLUG>`
 - **Audience URI (SP Entity ID):** This will be in the format `urn:auth0:<YOUR_AUTH0_ENTITYID>:<SLUG>`
 
 Replace `<SLUG>` with your accounts login slug. 
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-uris.png" title="The SSO information in account settings." />
 
 Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
 
 :::warning Login \{slug\}
 
 Slugs should contain only letters, numbers, and dashes. Make sure to remove underscores (if they exist) from login slugs: 
-* before migrating on the **Account Settings** page, or 
-* while migrating (before enabling), as shown in the Migrate authentication screenshots for your respective setup. 
+* Before migrating on the **Account Settings** page, or 
+* While migrating (before enabling), as shown in the migrate authentication screenshots for your respective setup. 
 After changing the slug, admins must share the new login URL with their dbt Cloud users.
 
 :::
