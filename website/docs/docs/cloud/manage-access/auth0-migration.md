@@ -21,7 +21,7 @@ Alternatively, you can start the process from the **Settings** page in the **Sin
 
 :::warning vanity urls
 
-Don't use vanity URLs when configuring the SSO settings. You need to use the generic URL provided in the SSO settings for your environment. For example, if your vanity URL is `cloud.MY_COMPANY.getdbt.com`, configure `auth.cloud.getdbt.com` as `<YOUR_AUTH0_URI`>`.
+Don't use vanity URLs when configuring the SSO settings. You need to use the generic URL provided in the SSO settings for your environment. For example, if your vanity URL is `cloud.MY_COMPANY.getdbt.com`, configure `auth.cloud.getdbt.com` as `<YOUR_AUTH0_URI>`.
 
 :::
 
