@@ -37,7 +37,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you are using version 22.0 or later.
 * Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
 
-  See <a target="_blank" rel="noopener noreferrer" href="https://docs.dremio.com/software/advanced-administration/support-settings/#support-keys">Support Keys</a> in the Dremio documentation for the steps.
 * If you want to use TLS to secure the connection between dbt and Dremio Software, configure full wire encryption in your Dremio cluster. For instructions, see <a target="_blank" rel="noopener noreferrer" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
 
 
