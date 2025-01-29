@@ -82,6 +82,11 @@ callum_mccann:
       url: https://twitter.com/callumpmccann
   name: Callum McCann
   organization: dbt Labs
+carol_ohms:
+  image_url: /img/blog/authors/carol-ohms.jpeg
+  job_title: Resident Architect
+  name: Carol Ohms
+  organization: dbt Labs
 charlie_summers:
   description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
   image_url: /img/blog/authors/charlie-summers.jpeg
@@ -107,7 +112,7 @@ christian_vanbellen:
   organization: Indicium Tech
 christine_berger:
   image_url: /img/blog/authors/christine-berger.jpeg
-  job_title: Senior Analytics Engineer
+  job_title: Resident Architect
   name: Christine Berger
   organization: dbt Labs
 christophe_oudar:
@@ -585,6 +590,11 @@ sterling_paramore:
       url: https://www.linkedin.com/in/sterlingparamore/
   name: Sterling Paramore
   organization: Mainspring Energy
+steve_dowling:
+  name: Steve Dowling
+  image_url: img/blog/authors/steve-dowling.jpeg
+  job_title: Senior Solutions Architect
+  organization: dbt Labs
 sung_chung:
   image_url: /img/blog/authors/sung.jpeg
   job_title: Solutions Architect
@@ -592,6 +602,11 @@ sung_chung:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/sungwonchung1/
   name: Sung Won Chung
+  organization: dbt Labs
+taylor_dunlap:
+  image_url: /img/blog/authors/taylor-dunlap.jpeg
+  job_title: Senior Solutions Architect
+  name: Taylor Dunlap
   organization: dbt Labs
 viraj_parekh:
   image_url: /img/blog/authors/viraj-parekh.jpeg
