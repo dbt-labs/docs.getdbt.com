@@ -47,7 +47,7 @@ Many customers ask why they need to select Multitenant instead of Single Tenant,
 6. Set **Redirect URI (optional)** to **Web**. Copy and paste the Redirect URI from dbt Cloud into the next field.  To find the Redirect URI in dbt Cloud:
     1. In dbt Cloud, navigate to **Account Settings** -> **Integrations**.
     2. Click the **edit icon** next to **Azure DevOps**.
-    3. Copy the first **Redirect URIs** value to the field in Azure (not the value that ends with azure_active_directory_service_user). It will look like `https://<YOUR_ACCESS_URL>/complete/azure_active_directory`.
+    3. Copy the first **Redirect URIs** value which looks like `https://<YOUR_ACCESS_URL>/complete/azure_active_directory` and does NOT end with `service_user`.
 7. Click **Register**.
 
 Here's what your app should look like before registering it:
