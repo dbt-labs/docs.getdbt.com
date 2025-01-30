@@ -10,7 +10,7 @@ function slugify(text) {
     .replace(/[\u0300-\u036f]/g, '') // remove diacritics
     .replace(/\s+/g, '-') // replace spaces with -
     .replace(/[^\w\-]+/g, '') // remove all non-word chars
-    .replace(/\-\-+/g, '-') // replace multipl - with a single -
+    .replace(/\-\-+/g, '-') // replace multiple - with a single -
     .replace(/^-+/, '') // trim - from the start
     .replace(/-+$/, ''); // trim - from the end
 }
@@ -39,43 +39,46 @@ function Expandable({ children, alt_header = null, lifecycle }) {
     popup.classList.add('copy-popup');
     popup.innerText = 'Link copied!';
 
-  // Add close button ('x')
-  const closeButton = document.createElement('span');
-  closeButton.classList.add('close-button');
-  closeButton.innerHTML = ' &times;'; // '×' symbol for 'x'
-  closeButton.addEventListener('click', () => {
-    if (document.body.contains(popup)) {
-      document.body.removeChild(popup);
-    }
-  });
-  popup.appendChild(closeButton);
+    // Add close button ('x')
+    const closeButton = document.createElement('span');
+    closeButton.classList.add('close-button');
+    closeButton.innerHTML = ' &times;'; // '×' symbol for 'x'
+    closeButton.addEventListener('click', () => {
+      if (document.body.contains(popup)) {
+        document.body.removeChild(popup);
+      }
+    });
+    popup.appendChild(closeButton);
 
-  document.body.appendChild(popup);
+    document.body.appendChild(popup);
 
-  setTimeout(() => {
-    if (document.body.contains(popup)) {
-      document.body.removeChild(popup);
-    }
-  }, 3000);
-};
+    setTimeout(() => {
+      if (document.body.contains(popup)) {
+        document.body.removeChild(popup);
+      }
+    }, 3000);
+  };
 
-useEffect(() => {
-  if (window.location.hash === `#${anchorId}`) {
-    setOn(true);
-    const element = document.getElementById(anchorId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    if (window.location.hash === `#${anchorId}`) {
+      setOn(true);
+      const element = document.getElementById(anchorId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }
-}, [anchorId]);
+  }, [anchorId]);
 
   return (
-    <div id={anchorId} className={`${styles.expandableContainer} `}>
+    <div id={anchorId} className={`${styles.expandableContainer}`}>
       <div className={styles.header} onClick={handleToggleClick}>
         <span className={`${styles.toggle} ${isOn ? styles.toggleDown : styles.toggleRight}`}></span>
         &nbsp;
         <span className={styles.headerText}>
-          {alt_header}<Lifecycle status={lifecycle} />
+          {alt_header}
+          <span onClick={(e) => e.stopPropagation()}>
+            <Lifecycle status={lifecycle} />
+          </span>
         </span>
         <span onClick={handleCopyClick} className={styles.copyIcon}></span>
       </div>

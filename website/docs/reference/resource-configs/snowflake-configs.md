@@ -17,7 +17,7 @@ The dbt-snowflake adapter supports the Iceberg table format. It is available for
 
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
-- [Dynamic](#dynamic-tables) 
+- [Dynamic Table](#dynamic-tables) 
 
 For now, to create Iceberg tables, you must implement a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the `Show Objects` query, which dbt depends on for metadata.
 

@@ -95,7 +95,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 Expand your dbt knowledge and expertise with these additional resources:
 
-- [Join the bi-weekly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.
+- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.
 - [dbt Cloud AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy dbt Cloud on AWS, user reviews, and more.
 - [Best practices](https://docs.getdbt.com/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
