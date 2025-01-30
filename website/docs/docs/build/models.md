@@ -1,6 +1,6 @@
 ---
 title: "About dbt models"
-description: "Learn how to use models when building in dbt."
+description: "About the dbt model's role in transforming your data."
 id: "models"
 pagination_next: "docs/build/sql-models"
 pagination_prev: null

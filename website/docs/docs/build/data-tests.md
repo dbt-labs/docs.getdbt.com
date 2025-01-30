@@ -1,7 +1,7 @@
 ---
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
-description: "Learn how to use data tests when building in dbt."
+description: "Configure data tests in dbt to assess the quality of your input data or the resulting datasets."
 pagination_next: "docs/build/unit-tests"
 pagination_prev: null
 search_weight: "heavy"

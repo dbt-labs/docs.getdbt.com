@@ -1,6 +1,6 @@
 ---
 title: "Python models"
-description: "Enhance your dbt project with Python models."
+description: "Python models further enhance your dbt project."
 id: "python-models"
 ---
 

@@ -1,6 +1,6 @@
 ---
 resource_types: [models, seeds]
-description: "Set the full_refresh config for models and other resources."
+description: "Set the full_refresh config for models and other resources in dbt."
 datatype: boolean
 ---
 

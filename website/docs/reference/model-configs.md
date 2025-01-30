@@ -1,6 +1,6 @@
 ---
 title: Model configurations
-description: "Reference guide for the available model configs in dbt."
+description: "Reference guide for the model configs available in dbt."
 meta:
   resource_type: Models
 ---

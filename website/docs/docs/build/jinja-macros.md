@@ -1,6 +1,6 @@
 ---
 title: "Jinja and macros"
-description: "Learn how to use jinja and macros when building in dbt."
+description: "Use Jinja and macros when developing in dbt to create reusable assets."
 id: "jinja-macros"
 ---
 
