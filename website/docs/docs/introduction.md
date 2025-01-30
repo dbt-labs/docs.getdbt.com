@@ -1,6 +1,7 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+description: "Welcome to dbt!"
 pagination_next: null
 pagination_prev: null
 ---

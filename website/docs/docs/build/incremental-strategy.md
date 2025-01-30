@@ -1,7 +1,7 @@
 ---
 title: "About incremental strategy"
 sidebar_label: "About incremental strategy"
-description: "Learn about the various ways (strategies) to implement incremental materializations."
+description: "Implement incremental materializations and the supported dbt adapters."
 id: "incremental-strategy"
 ---
 

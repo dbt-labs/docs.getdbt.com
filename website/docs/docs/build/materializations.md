@@ -1,6 +1,6 @@
 ---
 title: "Materializations"
-description: "Read this tutorial to learn how to use materializations when building in dbt."
+description: "Learn how to use materializations when building in dbt."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
 ---

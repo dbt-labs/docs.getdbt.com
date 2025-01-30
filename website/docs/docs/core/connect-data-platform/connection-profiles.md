@@ -1,7 +1,7 @@
 ---
 title: "Connection profiles"
 id: "connection-profiles"
-description: "Configure your profile using the command line."
+description: "Configure the connection profile for your dbt project."
 ---
 
 When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
