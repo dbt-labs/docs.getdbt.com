@@ -1,6 +1,6 @@
 ---
 title: "Analyses"
-description: "Configure SQL files to create compiled code used for analyses."
+description: "Configure SQL files in dbt to create compiled code used for analyses."
 id: "analyses"
 pagination_next: null
 ---

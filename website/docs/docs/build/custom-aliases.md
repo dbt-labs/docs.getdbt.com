@@ -1,6 +1,6 @@
 ---
 title: "Custom aliases"
-description: "Learn how to use custom aliases when building in dbt."
+description: "Configure custom aliases to override default naming conventions in dbt."
 id: "custom-aliases"
 ---
 
