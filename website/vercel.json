@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/blog/making-dbt-cloud-api-calls-using-dbt-cloud-cli",
+      "destination": "/docs/dbt-cloud-apis/overview",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/git/setup-azure",
       "destination": "/docs/cloud/git/connect-azure-devops",
       "permanent": true
