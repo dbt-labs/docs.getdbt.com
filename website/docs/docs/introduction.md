@@ -1,7 +1,7 @@
 ---
 title: "What is dbt?"
 id: "introduction"
-description: ""dbt is the industry standard for data transformation."
+description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
 ---
