@@ -151,7 +151,7 @@ At a minimum, we like to set up:
   - pull requests must have at least 1 reviewer's approval
 - **A PR template** ([such as our boiler-plate PR template](https://docs.getdbt.com/blog/analytics-pull-request-template)) for `feature` PRs against `main`
 
-### **dbt Cloud Processes and Environments**
+### **dbt Cloud processes and environments**
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
 
