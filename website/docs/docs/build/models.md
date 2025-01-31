@@ -1,6 +1,6 @@
 ---
 title: "About dbt models"
-description: "About the dbt model's role in transforming your data."
+description: "Understand the role of dbt models transforming your data into analytics-ready datasets."
 id: "models"
 pagination_next: "docs/build/sql-models"
 pagination_prev: null

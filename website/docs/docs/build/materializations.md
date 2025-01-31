@@ -1,6 +1,6 @@
 ---
 title: "Materializations"
-description: "Configure materializations in dbt to determine how the SQL is run and resulting data is stored."
+description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
 ---
