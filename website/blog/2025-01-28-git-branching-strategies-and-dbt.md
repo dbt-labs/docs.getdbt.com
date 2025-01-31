@@ -144,7 +144,7 @@ Workflow:
 - **Promotion**: After all required approvals and checks, I merge my changes to `main`
 - **Deployment**: Others can see and use my changes in `main` after I merge and `main` is deployed
 
-### Repository Branching Rules and Helpers
+### Repository branching rules and helpers
 At a minimum, we like to set up:
 - **Branch protection** on `main` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring:
   - a pull request (no direct commits to `main`) 
