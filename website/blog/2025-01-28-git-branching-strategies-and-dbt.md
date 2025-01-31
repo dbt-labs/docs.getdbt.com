@@ -87,7 +87,7 @@ that will result in months of breaking development for re-configuration if you
 don’t get it right immediately. Truly, changing your git strategy can be done in 
 a matter of minutes in dbt Cloud.
 
-## Branching Strategies
+## Branching strategies
 Once a repository has its initial commit, it always starts with one default 
 branch which is typically called `main` or `master` — we’ll be calling the 
 default branch `main` in our upcoming examples. The `main` branch is *always the 
