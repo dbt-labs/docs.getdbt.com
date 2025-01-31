@@ -165,7 +165,7 @@ In order to create the jobs in our diagram, we need dbt Cloud environments. Here
 | Continuous Integration | deployment | General | `main` | A continuous integration job |
 | Production | deployment | Production | `main` | A deployment job |
 
-### Data Platform Organization
+### Data platform organization
 Now we need to focus on where we want to build things in our data platform. For that, 
 we need to set our **database** and **schema** settings on the environments.
 Here’s our diagram again, but now mapping how we want our objects to populate
@@ -304,7 +304,7 @@ We are showing environment configurations here, but a default database will be s
     | Release CI | `qa` | A safe default |
     | Production | `production` | `analytics` |
 
-### Indirect Promotion Example
+### Indirect promotion example
 
 *In this example, Steve uses the term “UAT” to define the automatic deployment of the middle branch and “QA” to define what’s built from feature branch pull requests. He also defines a database for each (with four databases total - one for development schemas, one for CI schemas, one for middle branch deployments, and one for production deployments) — we wanted to show you this example as it speaks to how configurable these processes are apart from our standard examples.*
 
@@ -526,7 +526,7 @@ In our experience, using more than one middle branch is rarely needed. The more 
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/13_more_branches.png" title="A git strategy with more branches" width="85%" />
 
-This structure is mostly desired when there are requirements for using different versions data (i.e, scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example:
+This structure is mostly desired when there are requirements for using different versions data (i.e scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example:
 
 1. Developers work off of mocked data for their `feature` branches and merge to `qa` for end-to-end and over-time testing of all merged changes before releasing to `preproduction`.
 2. Once `qa` is merged to `preproduction`, the underlying data being used switches to using scrubbed production data and other personas can start looking at and reviewing how this data is functioning before it hits production.
