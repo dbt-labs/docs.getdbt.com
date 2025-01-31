@@ -123,14 +123,14 @@ and exercise left to the reader!
 
 :::
 
-## **Direct promotion**
+## Direct promotion
 
 **Direct promotion** means we only keep one long-lived branch 
 in our repository — in our case, `main`. Here’s the workflow for this strategy:
 
 <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/2_direct_git.png" title="Direct promotion branching strategy" width="85%" />
 
-### **How does the development workflow look to a team?**
+### How does the development workflow look to a team?
 
 Layout:
 
@@ -151,7 +151,7 @@ At a minimum, we like to set up:
   - pull requests must have at least 1 reviewer's approval
 - **A PR template** ([such as our boiler-plate PR template](https://docs.getdbt.com/blog/analytics-pull-request-template)) for `feature` PRs against `main`
 
-### **dbt Cloud processes and environments**
+### dbt Cloud processes and environments
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
 
@@ -186,13 +186,13 @@ map environment configurations to our data platform:
 We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/cloud/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
 :::
 
-### Direct Promotion Example
+### Direct promotion example
 
 *In this example, Steve uses the term “QA” for defining the environment which builds the changed code from feature branch pull requests. This is equivalent to our ‘Continuous Integration’ environment — this is a great example of defining names which make the most sense for your team!*
 
 <LoomVideo id="59c71a9549b5497f99ef86622aad945e" />
 
-## Indirect Promotion
+## Indirect promotion
 
 :::info[A note about Indirect Promotion]
 
@@ -225,7 +225,7 @@ We’ll be calling our middle branch `qa` from throughout the rest of this artic
 Here’s the workflow for this strategy:
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy"width="85%" />
 
-### **How does the development workflow look to a developer?**
+### How does the development workflow look to a developer?
 Changes from our direct promotion workflow are highlighted in <mark style={{backgroundColor:"#d6eaf8"}}>blue</mark>.
 
 Layout:
@@ -242,7 +242,7 @@ Workflow:
 - <mark style={{backgroundColor:"#d6eaf8"}}>**Promotion:** Once QA specialists give their approval of <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s version of data, a **release manager** opens a pull request using <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s branch targeting <code style={{backgroundColor: "#aed6f1"}}>main</code> (we define this as a **“release”**)</mark>
 - **Deployment**: Others can see and use my changes (<mark style={{backgroundColor:"#d6eaf8"}}>and other’s changes</mark>) in `main` <mark style={{backgroundColor:"#d6eaf8"}}>after <code style={{backgroundColor: "#aed6f1"}}>qa</code> is merged to <code style={{backgroundColor: "#aed6f1"}}>main</code></mark> and `main` is deployed
 
-### Repository Branching Rules and Helpers
+### Repository branching rules and helpers
 At a minimum, we like to set up:
 - **Branch protection** on `main` and `qa` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring:
   - a pull request (no direct commits to `main` or `qa`) 
@@ -250,7 +250,7 @@ At a minimum, we like to set up:
 - **A PR template** ([such as our boiler-plate PR template](https://docs.getdbt.com/blog/analytics-pull-request-template)) for `feature` PRs against `qa`
 - **A PR template** ([such as our boiler-plate PR template for releases](https://github.com/dbt-labs/dbt-proserv/blob/main/.github/release_pull_request_template.md)) for `qa` PRs against `main`
 
-### **dbt Cloud Processes and Environments**
+### dbt Cloud processes and environments
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
 
@@ -266,7 +266,7 @@ In order to create the jobs in our diagram, we need dbt Cloud environments. Here
 | Release CI | deployment | General | `main` | A continuous integration job |
 | Production | deployment | Production | `main` | A deployment job |
 
-### Data Platform Organization
+### Data platform organization
 Now we need to focus on where we want to build things in our data platform. For that, 
 we need to set our **database** and **schema** settings on the environments.
 There are two common setups for mapping code, but before we get in to those 
@@ -310,7 +310,7 @@ We are showing environment configurations here, but a default database will be s
 
 <LoomVideo id="0e03faf9f8f7434fbe01eaf7b818e507" />
 
-## **What did Indirect Promotion change?**
+## What did indirect promotion change?
 
 You’ve probably noticed there is one overall theme of adding our additional branch, and that’s supporting our *Quality Assurance* initiative. Let’s break it down:
 
@@ -349,7 +349,7 @@ You’ve probably noticed there is one overall theme of adding our additional br
     promotion) to continuous delivery (”batched” changes to `main`). 
     Julia Schottenstein does a great job explaining the differences [here](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud).
     
-## Comparing Branching Strategies
+## Comparing branching strategies
 
 Since most teams can make **direct promotion** work, we’ll list some key flags for when we start thinking about **indirect promotion** with a team:
 
@@ -399,7 +399,7 @@ We highly recommend that you choose your branching strategy based on which *best
     - There’s extra management of any new trunks, which will need ownership - without someone (or a group of people) who are knowledgeable, it can be confusing understanding what needs to be done how to do it when things get out of sync.
     - Requires additional compute in the form of scheduled jobs in the qa environment as well as an additional CI job from qa > main
 
-# Further Enhancements
+# Further enhancements
 
 Once you have your basic configurations in place, you can further tweak your project by considering which other features will be helpful for your needs:
 
@@ -410,7 +410,7 @@ Once you have your basic configurations in place, you can further tweak your pro
     - Using [schema configurations](https://docs.getdbt.com/docs/build/custom-schemas) in the project to add more separation in a database
     - Using [database configurations](https://docs.getdbt.com/docs/build/custom-databases) in the project to switch databases for model builds
 
-# Frequently Asked git Questions
+# Frequently asked git questions
 
 **General**
 
@@ -451,7 +451,7 @@ This is an action performed outside of dbt through git operations - however, we 
 </p>
 </details>
 
-**Indirect Promotion Specific**
+**Indirect promotion-specific**
 
 <details>
 
@@ -556,7 +556,7 @@ By answering these questions, you should be able to follow our same guidance fro
 </p>
 </details> 
 
-**Direct Promotion Specific** 
+**Direct promotion-specific** 
 
 <details>
 
