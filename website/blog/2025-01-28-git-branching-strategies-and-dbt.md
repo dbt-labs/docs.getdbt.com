@@ -57,7 +57,7 @@ code corresponds to populating your data platform, and the common dbt configurat
 we implement to make this happen. We’ll also be pinning ourselves to the steps of 
 the development workflow throughout.
 
-## Why focus on git?
+## Why we should focus on git
 Source control (and git in particular) is foundational to modern development with 
 or without dbt. It facilitates collaboration between teams of any size and makes 
 it easy to maintain oversight of the code changes in your project. Understanding 
@@ -123,7 +123,7 @@ and exercise left to the reader!
 
 :::
 
-## **Direct Promotion**
+## **Direct promotion**
 
 **Direct promotion** means we only keep one long-lived branch 
 in our repository — in our case, `main`. Here’s the workflow for this strategy:
