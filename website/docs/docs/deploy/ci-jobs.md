@@ -16,6 +16,10 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
+import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
+
+<GitProvidersCI />   
+
 ## Set up CI jobs {#set-up-ci-jobs}
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
@@ -146,7 +150,7 @@ For semantic nodes and models that aren't downstream of modified models, dbt Clo
 
 <Expandable alt_header="Semantic nodes that are modified or affected by downstream modified nodes.">
 
-To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#stateful-selection)):
+To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#state-selection)):
 
 ```bash
 dbt sl validate --select state:modified+
@@ -189,6 +193,20 @@ To validate _all_ semantic nodes in your project, add the following command to d
 ## Troubleshooting
 
 <FAQ path="Troubleshooting/gitlab-webhook"/>
+
+<DetailsToggle alt_header="CI jobs aren't triggering occasionally when opening a PR using the Azure DevOps (ADO) integration">
+
+dbt Cloud won't trigger a CI job run if the latest commit in a pull or merge request has already triggered a run for that job. However, some providers (like GitHub) will enforce the result of the existing run on multiple pull/merge requests.
+
+Scenarios where dbt Cloud does not trigger a CI job with Azure DevOps:
+
+1. Reusing a branch in a new PR
+   - If you abandon a previous PR (PR 1) that triggered a CI job for the same branch (`feature-123`) merging into `main`, and then open a new PR (PR 2) with the same branch merging into`main` &mdash; dbt Cloud won't trigger a new CI job for PR 2.
+
+2. Reusing the same commit
+   - If you create a new PR (PR 2) on the same commit (`#4818ceb`) as a previous PR (PR 1) that triggered a CI job &mdash; dbt Cloud won't trigger a new CI job for PR 2.
+
+</DetailsToggle>
 
 <DetailsToggle alt_header="Temporary schemas aren't dropping">
 If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:

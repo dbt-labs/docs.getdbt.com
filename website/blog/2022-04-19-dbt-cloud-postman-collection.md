@@ -19,7 +19,7 @@ is_featured: true
 
 The dbt Cloud API has well-documented endpoints for creating, triggering and managing dbt Cloud jobs. But there are other endpoints that aren’t well documented yet, and they’re extremely useful for end-users. These endpoints exposed by the API enable organizations not only to orchestrate jobs, but to manage their dbt Cloud accounts programmatically. This creates some really interesting capabilities for organizations to scale their dbt Cloud implementations.
 
-The main goal of this article is to spread awareness of these endpoints as the docs are being built & show you how to use them. 
+The main goal of this article is to spread awareness of these endpoints as the docs are being built & show you how to use them.
 
 <!--truncate-->
 
@@ -45,7 +45,7 @@ Beyond the day-to-day process of managing their dbt Cloud accounts, many organiz
 
 *Below this you’ll find a series of example requests - use these to guide you or [check out the Postman Collection](https://dbtlabs.postman.co/workspace/Team-Workspace~520c7ac4-3895-4779-8bc3-9a11b5287c1c/request/12491709-23cd2368-aa58-4c9a-8f2d-e8d56abb6b1dlinklink) to try it out yourself.*
 
-## Appendix 
+## Appendix
 
 ### Examples of how to use the Postman Collection
 
@@ -55,7 +55,7 @@ Let’s run through some examples on how to make good use of this Postman Collec
 
 One common question we hear from customers is “How can we migrate resources from one dbt Cloud project to another?” Often, they’ll create a development project, in which users have access to the UI and can manually make changes, and then migrate selected resources from the development project to a production project once things are ready.
 
-There are several reasons one might want to do this, including: 
+There are several reasons one might want to do this, including:
 
 - Probably the most common is separating dev/test/prod environments across dbt Cloud projects to enable teams to build manually in a development project, and then automatically migrate those environments & jobs to a production project.
 - Building “starter projects” they can deploy as templates for new teams onboarding to dbt from a learning standpoint.
@@ -90,10 +90,10 @@ https://cloud.getdbt.com/api/v3/accounts/28885/projects/86704/environments/75286
 
 #### Push the environment to the production project
 
-We take the response from the GET request above, and then to the following: 
+We take the response from the GET request above, and then to the following:
 
 1. Adjust some of the variables for the new environment:
-    - Change the the value of the “project_id” field from 86704 to 86711
+    - Change the value of the “project_id” field from 86704 to 86711
     - Change the value of the “name” field from “dev-staging” to “production–api-generated”
     - Set the “custom_branch” field to “main”
 
@@ -116,7 +116,7 @@ We take the response from the GET request above, and then to the following:
 }
 ```
 
-3. Note the environment ID returned in the response, as we’ll use to create a dbt Cloud job in the next step 
+3. Note the environment ID returned in the response, as we’ll use to create a dbt Cloud job in the next step
 
 #### Pull the job definition from the dev project
 

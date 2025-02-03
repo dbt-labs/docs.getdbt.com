@@ -14,8 +14,8 @@ is_featured: false
 
 ---
 
-:::note You can now use a Staging environment!
-This blog post was written before Staging environments. You can now use dbt Cloud can to support the patterns discussed here. Read more about [Staging environments](/docs/deploy/deploy-environments#staging-environment).
+:::note You can now specify a Staging environment too!
+This blog post was written before dbt Cloud added full support for Staging environments. Now that they exist, you should mark your CI environment as Staging as well. Read more about [Staging environments](/docs/deploy/deploy-environments#staging-environment).
 :::
 
 :::tip The Bottom Line:

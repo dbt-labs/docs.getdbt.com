@@ -33,8 +33,8 @@ Connect your dbt Cloud account to an OAuth provider that are integrated with dbt
 To configure an OAuth account integration:
 1. Navigate to **Account settings** in the side menu.
 2. Under the **Settings** section, click on **Integrations**.
-3. Under **OAuth**, and click on **Link** to connect your Slack account.
-4. For custom OAuth providers, under **Custom OAuth integrations**, click on **Add integration** and select the OAuth provider from the list. Fill in the required fields and click **Save**.
+3. Under **OAuth**, click on **Link** to [connect your Slack account](/docs/deploy/job-notifications#set-up-the-slack-integration).
+4. For custom OAuth providers, under **Custom OAuth integrations**, click on **Add integration** and select the [OAuth provider](/docs/cloud/manage-access/sso-overview) from the list. Fill in the required fields and click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/account-integration-oauth.jpg" width="85%" title="Example of the OAuth integration page" />
 

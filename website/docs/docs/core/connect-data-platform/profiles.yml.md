@@ -13,6 +13,8 @@ If you're using dbt Cloud, you can [connect to your data platform](/docs/cloud/c
 
 This section identifies the parts of your `profiles.yml` that aren't specific to a particular data platform. For specific connection details, refer to the relevant page for your data platform.
 
+To add an additional target (like `prod`) to your existing `profiles.yml`, you can add another entry under the `outputs` key.
+
 <VersionBlock lastVersion="1.7">
 
 :::warning Global configs

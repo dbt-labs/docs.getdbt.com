@@ -18,7 +18,11 @@ You can also configure [custom materializations](/guides/create-new-materializat
 
 
 ## Configuring materializations
-By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the `materialized` configuration parameter as shown below.
+By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the [`materialized` configuration](/reference/resource-configs/materialized) parameter as shown in the following tabs.
+
+<Tabs>
+
+<TabItem value="Project file">
 
 <File name='dbt_project.yml'>
 
@@ -49,6 +53,10 @@ models:
 
 </File>
 
+</TabItem>
+
+<TabItem value="Model file">
+
 Alternatively, materializations can be configured directly inside of the model sql files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](/reference/resource-configs/redshift-configs) or [BigQuery specific configurations](/reference/resource-configs/bigquery-configs)).
 
 <File name='models/events/stg_event_log.sql'>
@@ -62,6 +70,29 @@ from ...
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="Property file">
+
+Materializations can also be configured in the model's `properties.yml` file.  The following example shows the `table` materialization type. For a complete list of materialization types, refer to [materializations](/docs/build/materializations#materializations).
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: events
+    config:
+      materialized: table
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 ## Materializations
 

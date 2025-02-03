@@ -9,6 +9,11 @@ id: "data-tests"
 keywords:
   - test, tests, testing, dag
 ---
+
+import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
+
+<CopilotBeta resource='data tests' />
+
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Data test properties](/reference/resource-properties/data-tests)
@@ -68,7 +73,9 @@ having total_amount < 0
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
 
-Note, you won't need to include semicolons (;) at the end of the SQL statement in your singular test files as it can cause your test to fail.
+Note:
+- Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your test to fail.
+- Singular tests placed in the tests directory are automatically executed when running `dbt test`. Don't reference singular tests in `model_name.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
 
 To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 

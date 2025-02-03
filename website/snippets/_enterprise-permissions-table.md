@@ -19,7 +19,7 @@ Key:
 {`
 | Account-level permission| Account Admin | Billing admin |  Manage marketplace apps | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:------------:|:-------------------------:|:---------------:|:--------------:|:------:| 
-| Account settings        |     W         |      -        |            -              |        R        |       R        |   R    |
+| Account settings*       |     W         |      -        |            -              |        R        |       R        |   R    |
 | Audit logs              |     R         |      -        |            -              |        -        |       R        |   R    |
 | Auth provider           |     W         |      -        |            -              |        -        |       W        |   R    |
 | Billing                 |     W         |       W       |            -              |        -        |       -        |   R    |
@@ -37,6 +37,9 @@ Key:
 `}
 
 </SortableTable>
+
+\* Roles with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
+
 
 #### Project permissions for account roles
  

@@ -25,7 +25,6 @@ import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
 <CloudEnvInfo setup={'/snippets/_cloud-environments-info.md'} />
 
-
 ## Create a development environment
 
 To create a new dbt Cloud development environment:
@@ -48,5 +47,10 @@ Deployment environments in dbt Cloud are necessary to execute scheduled jobs and
 
 Even though you can have many environments, only one of them can be the "main" deployment environment. This would be considered your "production" environment and represents your project's "source of truth", meaning it's where your most reliable and final data transformations live.
 
-
 To learn more about dbt Cloud deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [dbt Cloud environment best practices](/guides/set-up-ci) for more info.
+
+## Delete an environment
+
+import DeleteEnvironment from '/snippets/_delete-environment.md';
+
+<DeleteEnvironment />

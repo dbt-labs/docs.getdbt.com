@@ -38,17 +38,19 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | 1.6.x          | ✅          | ✅           | ✅           | ❌           |
 | 1.7.x          | ✅          | ✅           | ✅           | ❌           |
 | 1.8.x          | ✅          | ✅           | ✅           | ✅           |
+| 1.9.x          | ✅          | ✅           | ✅           | ✅           |
 
 ## dbt dependent packages version compatibility
 
-| dbt-teradata |  dbt-core  | dbt-teradata-util |  dbt-util      |
-|--------------|------------|-------------------|----------------|
-| 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
-| 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
-| 1.7.x        | 1.7.x      | 1.1.1             | 1.1.1          |
-| 1.8.x        | 1.8.x      | 1.1.1             | 1.1.1          |
-| 1.8.x        | 1.8.x      | 1.2.0             | 1.2.0          |
-| 1.8.x        | 1.8.x      | 1.3.0             | 1.3.0          |
+| dbt-teradata | dbt-core | dbt-teradata-util |  dbt-util      |
+|--------------|----------|-------------------|----------------|
+| 1.2.x        | 1.2.x    | 0.1.0             | 0.9.x or below |
+| 1.6.7        | 1.6.7    | 1.1.1             | 1.1.1          |
+| 1.7.x        | 1.7.x    | 1.1.1             | 1.1.1          |
+| 1.8.x        | 1.8.x    | 1.1.1             | 1.1.1          |
+| 1.8.x        | 1.8.x    | 1.2.0             | 1.2.0          |
+| 1.8.x        | 1.8.x    | 1.3.0             | 1.3.0          |
+| 1.9.x        | 1.9.x    | 1.3.0             | 1.3.0          |
 
 
 ### Connecting to Teradata
@@ -95,7 +97,6 @@ Parameter               | Default     | Type           | Description
 `browser_tab_timeout`   |   `"5"`     | quoted integer | Specifies the number of seconds to wait before closing the browser tab after Browser Authentication is completed. The default is 5 seconds. The behavior is under the browser's control, and not all browsers support automatic closing of browser tabs.
 `browser_timeout`       |   `"180"`   | quoted integer | Specifies the number of seconds that the driver will wait for Browser Authentication to complete. The default is 180 seconds (3 minutes).
 `column_name`           | `"false"`   | quoted boolean | Controls the behavior of cursor `.description` sequence `name` items. Equivalent to the Teradata JDBC Driver `COLUMN_NAME` connection parameter. False specifies that a cursor `.description` sequence `name` item provides the AS-clause name if available, or the column name if available, or the column title. True specifies that a cursor `.description` sequence `name` item provides the column name if available, but has no effect when StatementInfo parcel support is unavailable.
-`connect_failure_ttl`   | `"0"`       | quoted integer | Specifies the time-to-live in seconds to remember the most recent connection failure for each IP address/port combination. The driver subsequently skips connection attempts to that IP address/port for the duration of the time-to-live. The default value of zero disables this feature. The recommended value is half the database restart time. Equivalent to the Teradata JDBC Driver `CONNECT_FAILURE_TTL` connection parameter.
 `connect_timeout`       |  `"10000"`  | quoted integer | Specifies the timeout in milliseconds for establishing a TCP socket connection. Specify 0 for no timeout. The default is 10 seconds (10000 milliseconds).
 `cop`                   | `"true"`    | quoted boolean | Specifies whether COP Discovery is performed. Equivalent to the Teradata JDBC Driver `COP` connection parameter.
 `coplast`               | `"false"`   | quoted boolean | Specifies how COP Discovery determines the last COP hostname. Equivalent to the Teradata JDBC Driver `COPLAST` connection parameter. When `coplast` is `false` or omitted, or COP Discovery is turned off, then no DNS lookup occurs for the coplast hostname. When `coplast` is `true`, and COP Discovery is turned on, then a DNS lookup occurs for a coplast hostname.
@@ -110,7 +111,7 @@ Parameter               | Default     | Type           | Description
 `log`                   | `"0"`       | quoted integer | Controls debug logging. Somewhat equivalent to the Teradata JDBC Driver `LOG` connection parameter. This parameter's behavior is subject to change in the future. This parameter's value is currently defined as an integer in which the 1-bit governs function and method tracing, the 2-bit governs debug logging, the 4-bit governs transmit and receive message hex dumps, and the 8-bit governs timing. Compose the value by adding together 1, 2, 4, and/or 8.
 `logdata`               |             | string         | Specifies extra data for the chosen logon authentication method. Equivalent to the Teradata JDBC Driver `LOGDATA` connection parameter.
 `logon_timeout`         | `"0"`       | quoted integer | Specifies the logon timeout in seconds. Zero means no timeout.
-`logmech`               | `"TD2"`     | string         | Specifies the logon authentication method. Equivalent to the Teradata JDBC Driver `LOGMECH` connection parameter. Possible values are `TD2` (the default), `JWT`, `LDAP`, `KRB5` for Kerberos, or `TDNEGO`.
+`logmech`               | `"TD2"`     | string         | Specifies the logon authentication method. Equivalent to the Teradata JDBC Driver `LOGMECH` connection parameter. Possible values are `TD2` (the default), `JWT`, `LDAP`, `BROWSER`, `KRB5` for Kerberos, or `TDNEGO`.
 `max_message_body`      | `"2097000"` | quoted integer | Specifies the maximum Response Message size in bytes. Equivalent to the Teradata JDBC Driver `MAX_MESSAGE_BODY` connection parameter.
 `partition`             | `"DBC/SQL"` | string         | Specifies the database partition. Equivalent to the Teradata JDBC Driver `PARTITION` connection parameter.
 `request_timeout`       |   `"0"`     | quoted integer | Specifies the timeout for executing each SQL request. Zero means no timeout.
@@ -210,7 +211,9 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
   ##### <a name="hash"></a>hash
 
-  `Hash` macro needs an `md5` function implementation. Teradata doesn't support `md5` natively. You need to install a User Defined Function (UDF):
+  `Hash` macro needs an `md5` function implementation. Teradata doesn't support `md5` natively. You need to install a User Defined Function (UDF) and optionally specify `md5_udf` [variable](/docs/build/project-variables).
+   
+  If not specified the code defaults to using `GLOBAL_FUNCTIONS.hash_md5`. See the following instructions on how to install the custom UDF:
   1. Download the md5 UDF implementation from Teradata (registration required): https://downloads.teradata.com/download/extensibility/md5-message-digest-udf.
   1. Unzip the package and go to `src` directory.
   1. Start up `bteq` and connect to your database.
@@ -228,6 +231,12 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
       ```sql
       GRANT EXECUTE FUNCTION ON GLOBAL_FUNCTIONS TO PUBLIC WITH GRANT OPTION;
       ```
+  Instruction on how to add md5_udf variable in dbt_project.yml for custom hash function:
+  ```yaml
+  vars:
+    md5_udf: Custom_database_name.hash_method_function
+  ```
+ 
   ##### <a name="last_day"></a>last_day
 
   `last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
@@ -240,6 +249,15 @@ dbt-teradata 1.8.0 and later versions support unit tests, enabling you to valida
 </VersionBlock>
 
 ## Limitations
+
+### Browser authentication
+
+* When running a dbt job with logmech set to "browser", the initial authentication opens a browser window where you must enter your username and password.
+* After authentication, this window remains open, requiring you to manually switch back to the dbt console.
+* For every subsequent connection, a new browser tab briefly opens, displaying the message "TERADATA BROWSER AUTHENTICATION COMPLETED," and silently reuses the existing session.
+* However, the focus stays on the browser window, so you’ll need to manually switch back to the dbt console each time.
+* This behavior is the default functionality of the teradatasql driver and cannot be avoided at this time.
+* To prevent session expiration and the need to re-enter credentials, ensure the authentication browser window stays open until the job is complete.
 
 ### Transaction mode
 Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
@@ -254,4 +272,4 @@ The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10
 
 ## License
 
-The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/License.md) to understand items such as creating derivative work and the support model. 
+The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/License.md) to understand items such as creating derivative work and the support model.  

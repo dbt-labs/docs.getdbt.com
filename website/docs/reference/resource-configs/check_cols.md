@@ -122,8 +122,7 @@ snapshots:
       schema: snapshots
       unique_key: id
       strategy: check
-      check_cols:
-        - all
+      check_cols: all
   ```
 </File>
 

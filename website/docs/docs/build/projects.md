@@ -22,6 +22,8 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [metrics](/docs/build/build-metrics-intro) | A way for you to define metrics for your project. |
 | [groups](/docs/build/groups) | Groups enable collaborative node organization in restricted collections. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
+| [semantic models](/docs/build/semantic-models) | Semantic models define the foundational data relationships in [MetricFlow](/docs/build/about-metricflow) and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), enabling you to query metrics using a semantic graph. |
+| [saved queries](/docs/build/saved-queries) | Saved queries organize reusable queries by grouping metrics, dimensions, and filters into nodes visible in the dbt DAG. |
 
 When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
@@ -74,6 +76,12 @@ To use the Project subdirectory option in dbt Cloud, follow these steps:
 5. Click **Save** when you've finished.
 
 After configuring the Project subdirectory option, dbt Cloud will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no `dbt_project.yml` file in the Project subdirectory, you will be prompted to initialize the dbt project.
+
+:::info Project support in dbt Cloud plans
+
+Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while [Enterprise plans](https://www.getdbt.com/contact) allow multiple projects and [cross-project references](/best-practices/how-we-mesh/mesh-1-intro) with dbt Mesh.
+
+:::
 
 ## New projects
 

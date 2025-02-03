@@ -75,15 +75,15 @@ so pick a slug that uniquely identifies your company.
 * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
 * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
 * **Relay State**: `<login slug>`
+* **Name ID format**: `Unspecified`
+* **Application username**: `Custom` / `user.getInternalProperty("id")`
+* **Update Application username on**: `Create and update`
 
 <Lightbox
     collapsed={false}
     src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
     title="Configure the app's SAML Settings"
 />
-
-<!-- TODO : Will users need to change the Name ID format and Application
-username on this screen? -->
 
 Use the **Attribute Statements** and **Group Attribute Statements** forms to
 map your organization's Okta User and Group Attributes to the format that
@@ -152,7 +152,7 @@ the integration between Okta and dbt Cloud.
 
 ## Configuration in dbt Cloud
 
-To complete setup, follow the steps below in dbt Cloud. 
+To complete setup, follow the steps below in dbt Cloud.
 
 ### Supplying credentials
 
@@ -182,7 +182,7 @@ configured in the steps above.
 
 21. Click **Save** to complete setup for the Okta integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
-    test logging in with Okta. Additionally, users added the the Okta app
+    test logging in with Okta. Additionally, users added the Okta app
     will be able to log in to dbt Cloud from Okta directly.
 
 <Snippet path="login_url_note" />

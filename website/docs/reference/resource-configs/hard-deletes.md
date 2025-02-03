@@ -8,8 +8,7 @@ id: "hard-deletes"
 sidebar_label: "hard_deletes"
 ---
 
-Available from dbt v1.9 or with [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
-
+<VersionCallout version="1.9" />
 
 <File name='snapshots/schema.yml'>
 
@@ -49,7 +48,9 @@ snapshots:
 
 ## Description
 
-The `hard_deletes` config gives you more control on how to handle deleted rows from the source. Supported options are `ignore` (default), `invalidate` (replaces the legacy `invalidate_hard_deletes=true`), and `new_record`. Note that `new_record` will create a new metadata column in the snapshot table.
+The `hard_deletes` config gives you more control on how to handle deleted rows from the source. Supported options are `ignore` (default), `invalidate` (replaces the legacy `invalidate_hard_deletes=true`), and `new_record`. Note that `new_record` will create a new metadata column in the snapshot table. 
+
+You can use `hard_deletes` with dbt-postgres, dbt-bigquery, dbt-snowflake, and dbt-redshift adapters.
 
 import HardDeletes from '/snippets/_hard-deletes.md';
 

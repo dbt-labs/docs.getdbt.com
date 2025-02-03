@@ -95,17 +95,42 @@ Natural keys are columns or combinations of columns in a table that uniquely ide
 
 The following is the complete spec for entities:
 
+<VersionBlock firstVersion="1.9">
+
 ```yaml
-entities:
-  - name: transaction     ## Required
-    type: Primary or natural or foreign or unique ## Required
-    description: A description of the field or role the entity takes in this table ## Optional
-    expr: The field that denotes that entity (transaction_id).  ## Optional
-          Defaults to name if unspecified.
+semantic_models:
+  - name: semantic_model_name
+   ..rest of the semantic model config
+    entities:
+      - name: entity_name  ## Required
+        type: Primary, natural, foreign, or unique ## Required
+        description: A description of the field or role the entity takes in this table  ## Optional
+        expr: The field that denotes that entity (transaction_id).  ## Optional
+              Defaults to name if unspecified.  
+        [config](/reference/resource-properties/config): Specify configurations for entity.  ## Optional
+          [meta](/reference/resource-configs/meta): {<dictionary>} Set metadata for a resource and organize resources. Accepts plain text, spaces, and quotes.  ## Optional
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+```yaml
+semantic_models:
+  - name: semantic_model_name
+   ..rest of the semantic model config
+    entities:
+      - name: entity_name     ## Required
+        type: Primary, or natural, or foreign, or unique ## Required
+        description: A description of the field or role the entity takes in this table ## Optional
+        expr: The field that denotes that entity (transaction_id).  ## Optional
+              Defaults to name if unspecified.
+```
+</VersionBlock>
 
 Here's an example of how to define entities in a semantic model:
-  
+
+<VersionBlock firstVersion="1.9"> 
+
 ```yaml
 entities:
   - name: transaction
@@ -117,11 +142,43 @@ entities:
   - name: user
     type: foreign
     expr: substring(id_order from 2)
+    entities:
+  - name: transaction
+    type: 
+    description: A description of the field or role the entity takes in this table ## Optional
+    expr: The field that denotes that entity (transaction_id).  
+          Defaults to name if unspecified.
+    [config](/reference/resource-properties/config):
+      [meta](/reference/resource-configs/meta):
+        data_owner: "Finance team"
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8"> 
+
+```yaml
+entities:
+  - name: transaction
+    type: primary
+    expr: id_transaction
+  - name: order
+    type: foreign
+    expr: id_order
+  - name: user
+    type: foreign
+    expr: substring(id_order from 2)
+    entities:
+  - name: transaction
+    type: 
+    description: A description of the field or role the entity takes in this table ## Optional
+    expr: The field that denotes that entity (transaction_id).  
+          Defaults to name if unspecified.
+```
+</VersionBlock>
 
 ## Combine columns with a key
 
-If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs/build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
+If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs/build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator.
 
 ```yaml
 

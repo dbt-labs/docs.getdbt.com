@@ -5,11 +5,7 @@ datatype: model_name
 description: "Learn about concurrent_batches in dbt."
 ---
 
-:::note
-
-Available in dbt Core v1.9+ or the [dbt Cloud "Latest" release tracks](/docs/dbt-versions/cloud-release-tracks).
-
-:::
+<VersionCallout version="1.9" />
 
 <Tabs>
 <TabItem value="Project file">

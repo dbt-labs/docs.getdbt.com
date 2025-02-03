@@ -35,7 +35,7 @@ Archived release notes for dbt Cloud from 2023
 
     To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
-    The **Extended Atrributes** text box is available from your environment's settings page: 
+    The **Extended Attributes** text box is available from your environment's settings page: 
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="85%" title="Example of the Extended Attributes text box" />
 
@@ -183,7 +183,7 @@ Archived release notes for dbt Cloud from 2023
 
     Previously in dbt Cloud, you could only rerun an errored job from start but now you can also rerun it from its point of failure. 
 
-    You can view which job failed to complete successully, which command failed in the run step, and choose how to rerun it. To learn more, refer to [Retry jobs](/docs/deploy/retry-jobs).
+    You can view which job failed to complete successfully, which command failed in the run step, and choose how to rerun it. To learn more, refer to [Retry jobs](/docs/deploy/retry-jobs).
 
     <Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
@@ -812,7 +812,7 @@ Archived release notes for dbt Cloud from 2023
 
   </Expandable>
 
-- <Expandable alt_header='Scheduler optmization'>
+- <Expandable alt_header='Scheduler optimization'>
 
     The dbt Cloud Scheduler now prevents queue clog by canceling unnecessary runs of over-scheduled jobs. 
 

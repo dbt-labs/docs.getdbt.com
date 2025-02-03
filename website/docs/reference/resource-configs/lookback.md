@@ -7,8 +7,7 @@ description: "dbt uses `lookback` to detrmine how many 'batches' of `batch_size`
 datatype: int
 ---
 
-Available in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9 and higher.
-
+<VersionCallout version="1.9" />
 ## Definition
 
 Set the `lookback` to an integer greater than or equal to zero. The default value is `1`.  You can configure `lookback` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block.
