@@ -2,6 +2,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+      {
+      "source": "/blog/2022-04-19-dbt-cloud-postman-collection",
+      "destination": "/docs/dbt-cloud-apis/overview",
+      "permanent": true
+    },
     {
       "source": "/docs/cloud/git/setup-azure",
       "destination": "/docs/cloud/git/connect-azure-devops",
