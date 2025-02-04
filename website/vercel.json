@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "redirects": [
       {
-      "source": "/blog/2022-04-19-dbt-cloud-postman-collection",
+      "source": "/blog/dbt-cloud-api-postman-collection-announcement",
       "destination": "/docs/dbt-cloud-apis/overview",
       "permanent": true
     },
