@@ -2152,8 +2152,8 @@ table th {
 
 /* Default color and border for tabs */
 .tabs__item {
-  background-color: #f9fbfc; /* Sets the tab color the same as the file borders */
-  border: 2px solid #ccc;
+  background-color: var(--color-white); /* Sets the tab color the same as the file borders */
+  border: 2px solid var(--color-nav-text);
   padding: 5px 10px;
   margin-right: 5px;
   border-radius: 4px;
@@ -2163,8 +2163,8 @@ table th {
 
 /* Default color and border for tabs in dark mode */
 [data-theme='dark'] .tabs__item {
-  background-color: #000000;
-  border: 1px solid #ccc;
+  background-color: var(--color-primary-blue);
+  border: 1px solid var(--color-nav-text);
   padding: 5px 10px;
   margin-right: 5px;
   border-radius: 4px;
@@ -2174,25 +2174,31 @@ table th {
 
 /*Color when hovering over tabs */
 .tabs__item:hover {
-  background-color: #D95B3B;
+  background-color: var(--color-orange);
+  color: var(--color-primary-blue);
+}
+
+[data-theme='dark'] .tabs__item:hover {
+  background-color: var(--color-orange);
+  color: var(--color-white);
 }
 
 /* Color when the tab is clicked*/
 .tabs__item--active {
-  background-color: #D95B3B;
-  color: rgb(0, 0, 0);
-  border-color: #D95B3B;
+  background-color: var(--color-orange);
+  color: var(--color-primary-blue);
+  border-color: var(--color-orange);
 }
 
 [data-theme='dark'] .tabs__item--active {
-  background-color: #D95B3B;
-  color: white;
-  border-color: #D95B3B;
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-color: var(--color-orange);
 }
 
 /* Sets the tab content border and background color */
 [data-theme='dark'] .tabs-container{
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-nav-text);
   padding: 15px;
   border-radius: 10px;
   margin-top: 10px;
@@ -2200,7 +2206,7 @@ table th {
 }
 
 [data-theme='light'] .tabs-container{
-  border: 1px solid #000000;
+  border: 1px solid var(--ifm-toc-border-color);
   padding: 15px;
   border-radius: 10px;
   margin-top: 10px;
