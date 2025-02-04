@@ -298,7 +298,7 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 :::
 
-**Example usage**
+#### Example usage
 
 <VersionBlock lastVersion="1.8">
 
@@ -345,6 +345,32 @@ snapshots:
 </File>
 
 </VersionBlock>
+
+####  Example usage with `check_cols: updated_at`
+
+When using the `check` strategy, dbt tracks changes by comparing values in `check_cols`. You can use an `updated_at` column to detect when a row has changed.
+
+- If `check_cols: updated_at` is set, dbt only tracks changes in that column.
+- If `updated_at` isn't included, dbt defaults to using the current timestamp.
+
+Check out the following example, which shows how to use the `check` strategy with `updated_at` using `check_cols`:
+
+```yaml
+snapshots:
+  - name: orders_snapshot
+    relation: ref('stg_orders')
+    config:
+      schema: snapshots
+      unique_key: order_id
+      strategy: check
+      check_cols:
+        - updated_at
+```
+
+In this example:
+
+- `check_cols: updated_at` makes sure that only the `updated_at` column triggers new snapshots.
+- If `updated_at` isn’t set, then dbt automatically falls back to [using the current timestamp](#sample-results-for-the-check-strategy) to track changes.
 
 ### Hard deletes (opt-in)
 
