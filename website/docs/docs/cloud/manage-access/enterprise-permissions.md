@@ -20,6 +20,215 @@ control (RBAC).
 
 The following roles and permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group can be associated with more than one role and permission set. Roles with more access take precedence. 
 
+### Roles
+
+The following is a list of the roles in dbt Cloud and a high-level overview of their access to features and functionality. 
+
+Role access is split into `account-level` and `project-level` features. Account-level roles are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level roles are mainly for configuration and maintenance of the projects themselves (for example, configuring environments, accessing IDE, and running jobs). Account roles may have access to project features, and project roles may have access to account features. Check out the [roles and permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-roles) to compare roles and their access. 
+
+<Expandable alt_header="Account admin">
+
+The Account admin role is the highest level of access and control over your dbt Cloud account and projects. We recommend limiting the number of users and groups assigned the account admin role.
+
+Notable features:
+- Account admin is an account role.
+- Unrestricted access to every feature.
+- The default role for every user who creates a new dbt Cloud account.
+- The default role assigned to the `Owner` group.
+
+</Expandable>
+<Expandable alt_header="Admin">
+
+The Admin role is intended for project administration but with limited account-level access to invite and assign users. 
+
+Notable features:
+- Admin is a project role.
+- Unrestricted access to existing projects, but can't create new projects.
+- Can invite new members and assign access but can't create groups.
+
+</Expandable>
+<Expandable alt_header="Analyst">
+
+The Analyst role is designed for users who need to run and analyze dbt models in the IDE but can't create or edit anything outside the IDE. 
+
+Notable features:
+- Analyst is a project role.
+- Full access to the IDE and the ability to configure personal credentials for adapters and Git. 
+- Read-only access to environment configs.
+- Can view jobs but can't edit them.
+
+</Expandable>
+<Expandable alt_header="Billing admin">
+
+The Billing admin role can review product usage information that impacts the final billing of dbt Cloud (for example, models run).
+
+Notable features:
+- Billing admin is a project role.
+- Unrestricted access to the **Billing** section of your **Account settings**. 
+- Read access to public models. 
+- No other access. 
+
+</Expandable>
+<Expandable alt_header="Database admin">
+
+Database admins manage the connections and configurations between dbt Cloud and the underlying databases. 
+
+Notable features: 
+- Database admin is a project role. 
+- Can set up and maintain database connections, environment variables, and Semantic Layer configs.
+- Helpful for scenarios where your data warehouse admins only need access to dbt Cloud to configure connections. 
+- Read-only access to Git repo, job, and run settings. 
+
+</Expandable>
+<Expandable alt_header="Developer">
+
+The Developer role is intended for users who build and maintain dbt models under development and manage production behavior. 
+
+Notable features:
+- Developer is a project role.
+- Can create, edit, and test dbt code in the IDE.
+- Read-only access to the underlying configs for environments, jobs, runs, and Git.
+- Users manage their credentials to data warehouses and Git. 
+
+</Expandable>
+<Expandable alt_header="Git admin">
+
+Git admins manage Git repository integrations and cloning.
+
+Notable features:
+- Git admin is a project role.
+- Can create new Git integrations and environment variables.
+- Can edit project settings.
+- Read-only access to account settings (including users and groups). 
+- No access to the IDE.
+
+</Expandable>
+<Expandable alt_header="Job admin">
+Job admin is an administrative role for users who create, run, and manage jobs in dbt Cloud.
+
+Notable features:
+- Job admin is a project role.
+- Job admins can create and edit jobs, runs, environment variables, and data warehouse configs. 
+- Read-only access to project configs. 
+- Read-only access to connections and public models.
+
+</Expandable>
+<Expandable alt_header="Job runner">
+
+Job runner is a specialized role for users who need access to run jobs and view the outcomes. 
+
+Notable features:
+- Job runner is a project role.
+- Can run jobs.
+- Has read-only access to jobs, including status and results.
+- No other access to dbt Cloud features. 
+
+</Expandable>
+<Expandable alt_header="Job viewer">
+
+Job viewer enables users to monitor and review job executions within dbt Cloud. Users with this role can see jobs’ status, logs, and outcomes but cannot initiate or modify them. 
+
+Notable features:
+- Job viewer is a project role.
+- Can run jobs.
+- Read-only access to job results, status, and logs.
+- No other access to dbt Cloud features. 
+
+</Expandable>
+
+<Expandable alt_header="Manage marketplace apps">
+Manage marketplace apps is a specialized role associated with dbt Cloud marketplace apps. Usually implemented for the Snowflake Native App.
+
+Notable features:
+- Manage marketplace apps is a project role.
+- Used exclusively for marketplace app integrations. 
+- Not intended for general user/group assignment.
+
+</Expandable>
+<Expandable alt_header="Metadata (Discovery API only)">
+
+Metadata is intended to be read-only [Discovery API](/docs/dbt-cloud-apis/discovery-api) integration role. 
+
+Notable features:
+- Metadata is a project role.
+- Grants read-only access to metadata related to dbt models, runs, sources, and tests.
+- No access to modify, execute, or manage dbt jobs, repositories, or users.
+- No other access to dbt Cloud features.
+
+</Expandable>
+<Expandable alt_header="Project creator">
+
+The Project creator role can create, configure, and set up new projects. It is recommended for the admin of teams that will own a project. 
+
+Notable features:
+- Project creator is an account role
+- Only role other than Account admin that can create projects
+- Limited account settings access, including creating and editing connections, inviting users, creating groups, and assigning licenses.
+- Unrestricted access to project configurations. 
+
+</Expandable>
+<Expandable alt_header="Security admin">
+
+Security admins have limited access to the security settings and policies for the dbt Cloud account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account.
+
+Notable features:
+- Security admin is an account role. 
+- Can create and edit users and groups and assign licenses.
+- Can create and edit authentication and SSO settings. 
+- Can create and edit IP restrictions and service tokens and manage user access controls. 
+- No access to jobs, runs, environments, or the IDE.
+
+</Expandable>
+<Expandable alt_header="Semantic Layer">
+
+A specialized role with strict access to only the Semantic Layer configuration (credentials and service tokens) for projects. 
+
+Notable features:
+- Semantic Layer is a project role.
+- Can only access Semantic Layer configs.
+- No other access to dbt Cloud features. 
+
+</Expandable>
+<Expandable alt_header="Stakeholder">
+
+Stakeholder is a read-only role, similar to viewer, but without access to sensitive content such as account settings or billing information. Useful for personas who need to monitor projects and their configurations.
+
+Notable features: 
+- Stakeholder is a project role.
+- Read-only access to projects, environments, jobs, and runs.
+- Read-only access to user and group information.
+- No access to the IDE. 
+
+</Expandable>
+<Expandable alt_header="Team admin">
+Team admin is an administrative role intended for team leaders or similar personas. The role grants the ability to manage projects for the team. 
+
+Notable features: 
+- Team admin is a project role. 
+- Access to manage the project(s) for a team of users. Limited scope and access can be extended via environment permissions. 
+- Read-only access to many account settings (excluding sensitive content like billing and auth providers).
+
+</Expandable>
+<Expandable alt_header="Viewer">
+The Account Viewer role provides read-only access to the dbt Cloud account. Useful for any persona who needs insights into your dbt Cloud account without access to create or change configurations.
+
+Notable features:
+- Viewer is an account role.
+- Read-only access to all settings, projects, environments, and runs.
+- No access to the IDE. 
+
+</Expandable>
+<Expandable alt_header="Webhook">
+
+The Webhook role manages webhooks in the dbt Cloud.
+
+Notable features:
+- Webhooks is a project role
+- Create, edit, and manage webhooks.
+- No other access to dbt Cloud features.
+
+</Expandable>
+
 :::tip Licenses or Permission sets
 
 The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
