@@ -283,6 +283,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .lifecycle {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }

@@ -1,7 +1,7 @@
 ---
 title: "About incremental strategy"
 sidebar_label: "About incremental strategy"
-description: "Learn about the various ways (strategies) to implement incremental materializations."
+description: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 id: "incremental-strategy"
 ---
 

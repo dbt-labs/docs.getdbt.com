@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import clsx from "clsx";
-import {
-  useDocsSidebar,
-  useLocalPathname,
-} from "@docusaurus/theme-common/internal";
+import { useDocsSidebar } from "@docusaurus/plugin-content-docs/client";
+import { useLocalPathname } from "@docusaurus/theme-common/internal";
 import styles from "./styles.module.css";
 
 /* dbt Customizations:

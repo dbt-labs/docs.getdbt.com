@@ -251,9 +251,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: [
-            'hover-terms.md'
-          ]
+          exclude: ["hover-terms.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -270,7 +268,6 @@ var siteSettings = {
   ],
   plugins: [
     [path.resolve("plugins/insertMetaTags"), { metatags }],
-    path.resolve("plugins/svg"),
     path.resolve("plugins/customWebpackConfig"),
     [
       path.resolve("plugins/buildGlobalData"),
@@ -313,6 +310,21 @@ var siteSettings = {
     { rel: "icon", href: "/img/favicon.png", type: "image/png" },
     { rel: "icon", href: "/img/favicon.svg", type: "image/svg+xml" },
   ],
+  future: {
+    // Enables all Docusaurus Faster features
+    // experimental_faster: true,
+    experimental_faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: true,
+
+      // Coming in v3.8.0
+      // ssgWorkerThreads: true,
+    },
+  },
 };
 
 // If versions json file found, add versions dropdown to nav

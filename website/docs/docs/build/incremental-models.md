@@ -1,6 +1,6 @@
 ---
 title: "Configure incremental models"
-description: "Learn how to configure incremental models when building in dbt."
+description: "Learn how to configure and optimize incremental models when developing in dbt."
 id: "incremental-models"
 keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
 ---

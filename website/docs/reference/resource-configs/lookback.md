@@ -3,14 +3,16 @@ title: "lookback"
 id: "lookback"
 sidebar_label: "lookback"
 resource_types: [models]
-description: "dbt uses `lookback` to detrmine how many 'batches' of `batch_size` to reprocesses when a microbatch incremental model is running incrementally."
+description: "Configure `lookback` to determine how many 'batches' of `batch_size` to reprocess when a dbt microbatch incremental model runs incrementally" 
 datatype: int
 ---
 
 <VersionCallout version="1.9" />
 ## Definition
 
-Set the `lookback` to an integer greater than or equal to zero. The default value is `1`.  You can configure `lookback` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block.
+Configure a `lookback` window to reprocess additional batches during [microbatch incremental model](/docs/build/incremental-microbatch) runs. It processes X batches up to the latest bookmark (the last successfully processed data point) to capture late-arriving records.  
+
+Set the `lookback` to an integer greater than or equal to zero. The default value is `1`.  You can configure `lookback` for a [microbatch incremental model](/docs/build/incremental-microbatch) in your `dbt_project.yml` file, property YAML file, or config block.
 
 ## Examples
 

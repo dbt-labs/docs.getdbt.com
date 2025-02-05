@@ -1,7 +1,7 @@
 ---
 title: "Packages"
 id: "packages"
-description:  "Discover how dbt packages help modularize code and transform data efficiently. Learn about git packages, hub packages, private packages, and advanced package configurations."
+description:  "dbt packages help modularize code and transform data efficiently."
 keywords: [dbt package, private package, dbt private package, dbt data transformation, dbt clone, add dbt package]
 ---
 

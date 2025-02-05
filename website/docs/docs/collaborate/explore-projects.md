@@ -33,7 +33,7 @@ Navigate the dbt Explorer overview page to access your project's resources and m
 - **Auto-exposures** &mdash; [Set up and view auto-exposures](/docs/collaborate/auto-exposures) to automatically expose relevant data models from Tableau to enhance visibility.
 - **Data health signals** &mdash; View the [data-health-signals](/docs/collaborate/data-health-signals) for each resource to understand its health and performance.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Navigate dbt Explorer to discover your project's resources and lineage."/>
 
 ## Generate metadata
 
@@ -44,6 +44,8 @@ dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-a
     - Note that CI jobs don't update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
 - To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment.
 - The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
+
+Note that dbt Explorer automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
