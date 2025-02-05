@@ -1,5 +1,6 @@
 ---
 title: "Syntax overview"
+description: "Node selection syntax enables you to execute dbt commands for specific models and resources."
 ---
 
 dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:

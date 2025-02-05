@@ -283,6 +283,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .lifecycle {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }
@@ -2145,6 +2149,8 @@ table th {
   font-weight: bold;
 }
 
+/* Begin tab borders */
+
 .tabs {
   background-color: transparent;
   padding: 10px;
@@ -2212,3 +2218,4 @@ table th {
   margin-top: 10px;
   background-color: transparent;
 }
+/* End tab borders */

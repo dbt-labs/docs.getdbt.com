@@ -2,8 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/blog/making-dbt-cloud-api-calls-using-dbt-cloud-cli",
+      {
+      "source": "/blog/dbt-cloud-api-postman-collection-announcement",
       "destination": "/docs/dbt-cloud-apis/overview",
       "permanent": true
     },
@@ -3297,17 +3297,17 @@
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/1-env-guide-overview",
-      "destination": "/guides/orchestration/set-up-ci/overview",
+      "source": "/best-practices/environment-setup/1-env-guide-overview",
+      "destination": "guides/set-up-ci?step=1",
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/2-one-deployment-environment",
+      "source": "/best-practices/environment-setup/2-one-deployment-environment",
       "destination": "/guides/orchestration/set-up-ci/in-15-minutes",
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/3-many-deployment-environments",
+      "source": "/best-practices/environment-setup/3-many-deployment-environments",
       "destination": "/guides/orchestration/set-up-ci/multiple-environments",
       "permanent": true
     },

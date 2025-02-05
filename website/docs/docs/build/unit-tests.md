@@ -1,7 +1,7 @@
 ---
 title: "Unit tests"
 sidebar_label: "Unit tests"
-description: "Learn how to use unit tests on your SQL models."
+description: "Implement unit tests to validate your dbt code."
 search_weight: "heavy"
 id: "unit-tests"
 keywords:
