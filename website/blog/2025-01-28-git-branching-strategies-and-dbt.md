@@ -119,7 +119,7 @@ There are *many* ways to configure each tool (especially dbt) to accomplish what
 strategy details were written intently to provide what we think are the minimal standards 
 to get teams up and running quickly. These are starter configurations and practices which 
 are easy to tweak and adjust later on. Expanding on these configurations is
-and exercise left to the reader!
+an exercise left to the reader!
 
 :::
 
