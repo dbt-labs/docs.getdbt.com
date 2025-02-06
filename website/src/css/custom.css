@@ -2180,26 +2180,26 @@ table th {
 
 /*Color when hovering over tabs */
 .tabs__item:hover {
-  background-color: var(--color-orange);
-  color: var(--color-primary-blue);
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
 }
 
 [data-theme='dark'] .tabs__item:hover {
-  background-color: var(--color-orange);
+  background-color: var(--ifm-color-primary);
   color: var(--color-white);
 }
 
 /* Color when the tab is clicked*/
 .tabs__item--active {
-  background-color: var(--color-orange);
-  color: var(--color-primary-blue);
-  border-color: var(--color-orange);
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] .tabs__item--active {
-  background-color: var(--color-orange);
+  background-color: var(--ifm-color-primary);
   color: var(--color-white);
-  border-color: var(--color-orange);
+  border-color: var(--ifm-color-primary);
 }
 
 /* Sets the tab content border and background color */
