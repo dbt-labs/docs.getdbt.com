@@ -16,11 +16,10 @@ help manage access controls within a dbt Cloud account. See the docs on [access
 control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
-## User access
+
+## Permission sets
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group can be associated with more than one permission set. Permissions assignments with more access take precedence. 
-
-### Permission sets
 
 Access to dbt Cloud features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-roles) to compare sets and their access. 
 
