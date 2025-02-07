@@ -4,16 +4,16 @@ Permissions:
 * **Account-level permissions** &mdash; Permissions related to the management of the dbt Cloud account. For example, billing and account settings.
 * **Project-level permissions** &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the dbt Cloud IDE or dbt Cloud CLI. 
 
-### Account roles
+### Account permissions
 
-Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
+Account permission sets enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.  
 
 Key:
 
 * **(W)rite** &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `develop`.
 * **(R)ead** &mdash; Can view but can not create or change any fields.
 
-#### Account permissions for account roles
+#### Account access for account permissions
 
 <SortableTable>
 
@@ -39,10 +39,10 @@ Key:
 
 </SortableTable>
 
-\* Roles with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
+\* Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
 
 
-#### Project permissions for account roles
+#### Project access for account permissions
  
  <SortableTable>
 
@@ -65,16 +65,16 @@ Key:
 
 </SortableTable>
 
-### Project role permissions
+### Project permissions
  
-The project roles enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the IDE or dbt Cloud CLI, but may also provide some account-level permissions.
+The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the IDE or dbt Cloud CLI, but may also provide some account-level permissions.
 
 Key:
 
 * **(W)rite** &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `develop`.
 * **(R)ead** &mdash; Can view but can not create or change any fields.
 
-#### Account permissions for project roles
+#### Account access for project permissions
  
 <SortableTable>
 
@@ -97,7 +97,7 @@ Key:
 
 </SortableTable>
 
-#### Project permissions for project roles
+#### Project access for project permissions
 
 <SortableTable> 
 
