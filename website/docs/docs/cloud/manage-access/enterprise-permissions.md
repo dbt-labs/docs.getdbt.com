@@ -60,7 +60,7 @@ Notable features:
 The Billing admin permission set can review product usage information that impacts the final billing of dbt Cloud (for example, models run).
 
 Notable features:
-- Billing admin is a account-level set.
+- Billing admin is an account-level set.
 - Unrestricted access to the **Billing** section of your **Account settings**. 
 - Read access to public models. 
 - No other access. 
@@ -137,7 +137,7 @@ Notable features:
 Manage marketplace apps is a specialized permission set associated with dbt Cloud marketplace apps. Usually implemented for the Snowflake Native App.
 
 Notable features:
-- Manage marketplace apps is a account-level set.
+- Manage marketplace apps is an account-level set.
 - Used exclusively for marketplace app integrations. 
 - Not intended for general user/group assignment.
 
