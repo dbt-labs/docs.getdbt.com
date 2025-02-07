@@ -82,7 +82,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Developer">
 
-The Developer role is intended for users who build and maintain dbt models under development and manage production behavior. 
+The Developer role is intended for users who build and maintain dbt models under development and manage production behavior. This is the primary role for users working in the IDE and should not be conflated with the [Developer license](/docs/cloud/manage-access/seats-and-users#licenses).
 
 Notable features:
 - Developer is a project role.
@@ -169,7 +169,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Security admin">
 
-Security admins have limited access to the security settings and policies for the dbt Cloud account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account.
+Security admins have limited access to the security settings and policies for the dbt Cloud account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. This role is frequently paired with the [IT license](/docs/cloud/manage-access/seats-and-users#licenses). 
 
 Notable features:
 - Security admin is an account role. 
