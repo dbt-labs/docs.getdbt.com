@@ -266,9 +266,9 @@ Python models can't be materialized as `view` or `ephemeral`. Python isn't suppo
 
 For incremental models, like SQL models, you need to filter incoming tables to only new rows of data:
 
-<WHCode>
+<Tabs>
 
-<div warehouse="Snowpark">
+<TabItem value="Snowpark">
 
 <File name='models/my_python_model.py'>
 
@@ -295,9 +295,9 @@ def model(dbt, session):
 
 </File>
 
-</div>
+</TabItem>
 
-<div warehouse="PySpark">
+<TabItem value="PySpark">
 
 <File name='models/my_python_model.py'>
 
@@ -324,9 +324,9 @@ def model(dbt, session):
 
 </File>
 
-</div>
+</TabItem>
 
-</WHCode>
+</Tabs>
 
 ## Python-specific functionality
 
@@ -632,9 +632,9 @@ As a general rule, if there's a transformation you could write equally well in S
 
 In their initial launch, Python models are supported on three of the most popular data platforms: Snowflake, Databricks, and BigQuery/GCP (via Dataproc). Both Databricks and GCP's Dataproc use PySpark as the processing framework. Snowflake uses its own framework, Snowpark, which has many similarities to PySpark.
 
-<WHCode>
+<Tabs>
 
-<div warehouse="Snowflake">
+<TabItem value="Snowflake">
 
 **Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
 
@@ -712,9 +712,9 @@ def model(dbt, session):
 For more information on using this configuration, refer to [Snowflake's documentation](https://community.snowflake.com/s/article/how-to-use-other-python-packages-in-snowpark) on uploading and using other python packages in Snowpark not published on Snowflake's Anaconda channel.
 
 
-</div>
+</TabItem>
 
-<div warehouse="Databricks">
+<TabItem value="Databricks">
 
 **Submission methods:** Databricks supports a few different mechanisms to submit PySpark code, each with relative advantages. Some are better for supporting iterative development, while others are better for supporting lower-cost production deployments. The options are:
 - `all_purpose_cluster` (default): dbt will run your Python model using the cluster ID configured as `cluster` in your connection profile or for this specific model. These clusters are more expensive but also much more responsive. We recommend using an interactive all-purpose cluster for quicker iteration in development.
@@ -762,9 +762,9 @@ If not configured, `dbt-spark` will use the built-in defaults: the all-purpose c
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 - [Databricks: Introduction to DataFrames - Python](https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html)
 
-</div>
+</TabItem>
 
-<div warehouse="BigQuery">
+<TabItem value="BigQuery">
 
 The `dbt-bigquery` adapter uses a service called Dataproc to submit your Python models as PySpark jobs. That Python/PySpark code will read from your tables and views in BigQuery, perform all computation in Dataproc, and write the final result back to BigQuery.
 
@@ -859,7 +859,7 @@ Installation of third-party packages on Dataproc varies depending on whether it'
 - [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets)
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 
-</div>
+</TabItem>
 
-</WHCode>
+</Tabs>
 
