@@ -358,10 +358,9 @@ Currently, Python functions defined in one dbt model can't be imported and reuse
 You can also define functions that depend on third-party packages so long as those packages are installed and available to the Python runtime on your data platform. See notes on "Installing Packages" for [specific data platforms](#specific-data-platforms).
 
 In this example, we use the `holidays` package to determine if a given date is a holiday in France. The code below uses the pandas API for simplicity and consistency across platforms. The exact syntax, and the need to refactor for multi-node processing, still vary.
+<Tabs>
 
-<WHCode>
-
-<div warehouse="Snowpark">
+<TabItem value="Snowpark">
 
 <File name='models/my_python_model.py'>
 
@@ -395,9 +394,9 @@ def model(dbt, session):
 
 </File>
 
-</div>
+</TabItem>
 
-<div warehouse="PySpark">
+<TabItem value="PySpark">
 
 <File name='models/my_python_model.py'>
 
@@ -434,9 +433,9 @@ def model(dbt, session):
 
 </File>
 
-</div>
+</TabItem>
 
-</WHCode>
+</Tabs>
 
 #### Configuring packages
 
@@ -474,9 +473,9 @@ You can use the `@udf` decorator or `udf` function to define an "anonymous" func
 - [Snowpark Python: Creating UDFs](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html)
 - [PySpark functions: udf](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
-<WHCode>
+<Tabs>
 
-<div warehouse="Snowpark">
+<TabItem value="Snowpark">
 
 <File name='models/my_python_model.py'>
 
@@ -516,9 +515,9 @@ def model(dbt, session):
 - Writing [`create function`](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html) inside a SQL macro, to run as a hook or run-operation
 - [Registering from a staged file](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs#creating-a-udf-from-a-python-source-file) within your Python model code
 
-</div>
+</TabItem>
 
-<div warehouse="PySpark">
+<TabItem value="PySpark">
 
 <File name='models/my_python_model.py'>
 
@@ -548,9 +547,9 @@ def model(dbt, session):
 
 </File>
 
-</div>
+</TabItem>
 
-</WHCode>
+</Tabs>
 
 #### Code reuse
 
