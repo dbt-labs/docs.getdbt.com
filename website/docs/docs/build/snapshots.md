@@ -1,7 +1,7 @@
 ---
 title: "Add snapshots to your DAG"
 sidebar_label: "Snapshots"
-description: "Read this tutorial to learn how to use snapshots when building in dbt."
+description: "Configure snapshots in dbt to track changes to your data over time."
 id: "snapshots"
 ---
 
@@ -346,14 +346,14 @@ snapshots:
 
 </VersionBlock>
 
-####  Example usage with `check_cols: updated_at`
+####  Example usage with `updated_at`
 
-When using the `check` strategy, dbt tracks changes by comparing values in `check_cols`. You can use an `updated_at` column to detect when a row has changed.
+When using the `check` strategy, dbt tracks changes by comparing values in `check_cols`. By default, dbt uses the timestamp to update `dbt_updated_at`, `dbt_valid_from` and `dbt_valid_to` fields. Optionally you can set an `updated_at` column:
 
-- If `check_cols: updated_at` is set, dbt only tracks changes in that column.
-- If `updated_at` isn't included, dbt defaults to using the current timestamp.
+- If `updated_at` is configured, the `check` strategy uses this column instead, as with the timestamp strategy.
+- If `updated_at` value is null, dbt defaults to using the current timestamp.
 
-Check out the following example, which shows how to use the `check` strategy with `updated_at` using `check_cols`:
+Check out the following example, which shows how to use the `check` strategy with `updated_at`:
 
 ```yaml
 snapshots:
@@ -364,13 +364,16 @@ snapshots:
       unique_key: order_id
       strategy: check
       check_cols:
-        - updated_at
+        - status
+        - is_cancelled
+      updated_at: updated_at
 ```
 
 In this example:
 
-- `check_cols: updated_at` makes sure that only the `updated_at` column triggers new snapshots.
+- If at least one of the specified `check_cols `changes, the snapshot creates a new row. If the `updated_at` column has a value (is not null), the snapshot uses it; otherwise, it defaults to the timestamp.
 - If `updated_at` isn’t set, then dbt automatically falls back to [using the current timestamp](#sample-results-for-the-check-strategy) to track changes.
+- Use this approach when your `updated_at` column isn't reliable for tracking record updates, but you still want to use it &mdash; rather than the snapshot's execution time &mdash; whenever row changes are detected.
 
 ### Hard deletes (opt-in)
 

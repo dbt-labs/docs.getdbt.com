@@ -1,3 +1,6 @@
+---
+description: "Reference guide for configuring the dbt_project.yml file."
+---
 
 Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project.
 

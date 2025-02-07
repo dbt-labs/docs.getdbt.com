@@ -1,5 +1,6 @@
 ---
 title: "About data tests property"
+description: "Reference guide for the resource properties available for data tests in dbt."
 sidebar_label: "Data tests"
 resource_types: all
 datatype: data-test

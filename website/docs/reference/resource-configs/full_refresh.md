@@ -1,6 +1,6 @@
 ---
 resource_types: [models, seeds]
-description: "Setting the full_refresh config to false prevents a model or seed from being rebuilt, even when the `--full-refresh` flag is included in an invocation."
+description: "Set the full_refresh config for models and other resources in dbt."
 datatype: boolean
 ---
 

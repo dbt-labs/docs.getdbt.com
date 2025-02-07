@@ -1,6 +1,6 @@
 ---
 title: "Hooks and operations"
-description: "Read this tutorial to learn how to use hooks and operations when building in dbt."
+description: "Customize dbt workflows using hooks and operations."
 id: "hooks-operations"
 ---
 

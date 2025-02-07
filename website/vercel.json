@@ -1,9 +1,45 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "headers": [
     {
-      "source": "/blog/making-dbt-cloud-api-calls-using-dbt-cloud-cli",
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.mutinyhq.com https://*.getdbt.com"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, s-maxage=86400 stale-while-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/:path*.(jpg|jpeg|png|svg|gif|webp)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=2678400, s-maxage=604800 stale-while-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+      {
+      "source": "/blog/dbt-cloud-api-postman-collection-announcement",
       "destination": "/docs/dbt-cloud-apis/overview",
       "permanent": true
     },
@@ -3297,17 +3333,17 @@
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/1-env-guide-overview",
-      "destination": "/guides/orchestration/set-up-ci/overview",
+      "source": "/best-practices/environment-setup/1-env-guide-overview",
+      "destination": "guides/set-up-ci?step=1",
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/2-one-deployment-environment",
+      "source": "/best-practices/environment-setup/2-one-deployment-environment",
       "destination": "/guides/orchestration/set-up-ci/in-15-minutes",
       "permanent": true
     },
     {
-      "source": "/guides/best-practices/environment-setup/3-many-deployment-environments",
+      "source": "/best-practices/environment-setup/3-many-deployment-environments",
       "destination": "/guides/orchestration/set-up-ci/multiple-environments",
       "permanent": true
     },
@@ -3670,29 +3706,6 @@
       "source": "/terms/:path*",
       "destination": "https://www.getdbt.com/blog",
       "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.mutinyhq.com https://*.getdbt.com"
-        },
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=63072000; includeSubDomains; preload"
-        }
-      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 title: "SQL models"
-description: "Read this tutorial to learn how to use SQL models when building in dbt."
+description: "SQL models are the building blocks of your dbt project."
 id: "sql-models"
 ---
 

@@ -22,7 +22,7 @@ To see the generated SQL for the metric and dimension types that use time spine 
 
 ## Configuring time spine in YAML
 
- Time spine models are normal dbt models with extra configurations that tell dbt and MetricFlow how to use specific columns by defining their properties. Add the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. If your project already includes a calendar table or date dimension, you can configure that table as a time spine. Otherwise, review the [example time-spine tables](#example-time-spine-tables) to create one. If the relevant model file (`util/_models.yml`) doesn't exist, create it and add the configuration mentioned in the [next section](#creating-a-time-spine-table).
+ Time spine models are normal dbt models with extra configurations that tell dbt and MetricFlow how to use specific columns by defining their properties. Add the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. If your project already includes a calendar table or date dimension, you can configure that table as a time spine. Otherwise, review the [example time-spine tables](#example-time-spine-tables) to create one. If the relevant model file doesn't exist, create it and add the configuration mentioned in the [next section](#creating-a-time-spine-table).
  
  Some things to note when configuring time spine models:
 
@@ -72,8 +72,6 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
 ```
 </File>
 </VersionBlock>
-
-<Lightbox src="/img/time_spines.png" width="50%" title="Time spine directory structure" />
 
 <!--
 <VersionBlock lastVersion="1.8">

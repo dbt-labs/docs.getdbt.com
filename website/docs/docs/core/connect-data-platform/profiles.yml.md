@@ -1,5 +1,6 @@
 ---
 title: "About profiles.yml"
+description: "The dbt profiles.yml file contains the connection details for your data warehouse."
 id: profiles.yml
 ---
 
