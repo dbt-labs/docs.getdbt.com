@@ -1,4 +1,5 @@
 ---
+description: "Configure tags to label and organize your dbt models and resources."
 sidebar_label: "tags"
 resource_types: all
 datatype: string | [string]

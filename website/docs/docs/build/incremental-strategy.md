@@ -1,7 +1,7 @@
 ---
 title: "About incremental strategy"
 sidebar_label: "About incremental strategy"
-description: "Learn about the various ways (strategies) to implement incremental materializations."
+description: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 id: "incremental-strategy"
 ---
 
@@ -13,7 +13,7 @@ There are various strategies to implement the concept of incremental materializa
 
 An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses to build incremental models.
 
-:::info Microbatch <Lifecycle status="beta" />
+:::info Microbatch
 
 The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is intended for large time-series datasets. dbt will process the incremental model in multiple queries (or "batches") based on a configured `event_time` column. Depending on the volume and nature of your data, this can be more efficient and resilient than using a single query for adding new data.
 
@@ -25,7 +25,7 @@ This table represents the availability of each incremental strategy, based on th
 
 Click the name of the adapter in the below table for more information about supported incremental strategies.
 
-| Data platform adapter | `append` | `merge` | `delete+insert` | `insert_overwrite` | `microbatch` <Lifecycle status="beta"/> |
+| Data platform adapter | `append` | `merge` | `delete+insert` | `insert_overwrite` | `microbatch`        |
 |-----------------------|:--------:|:-------:|:---------------:|:------------------:|:-------------------:|
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅   |        ✅        |                    |      ✅            |
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |        ✅        |                    |      ✅        |
@@ -200,7 +200,7 @@ Before diving into [custom strategies](#custom-strategies), it's important to un
 | `delete+insert`        | `get_incremental_delete_insert_sql`    |
 | `merge`                | `get_incremental_merge_sql`            |
 | `insert_overwrite`     | `get_incremental_insert_overwrite_sql` |
-| `microbatch`  <Lifecycle status="beta"/>         | `get_incremental_microbatch_sql`       |
+| `microbatch`           | `get_incremental_microbatch_sql`       |
 
 
 For example, a built-in strategy for the `append` can be defined and used with the following files:

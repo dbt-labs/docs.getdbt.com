@@ -1,5 +1,6 @@
 ---
 title: "Custom schemas"
+description: "Configure custom schemas for your dbt model's tables and views in the database."
 id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
 ---

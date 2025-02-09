@@ -1,6 +1,6 @@
 ---
 title: "Install with pip"
-description: "You can use pip to install dbt Core and adapter plugins from the command line."
+description: "Install dbt Core and adapter plugins from the command line with pip."
 ---
 
 You need to use `pip` to install dbt Core on Windows, Linux, or MacOS operating systems.

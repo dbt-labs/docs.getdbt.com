@@ -63,6 +63,11 @@ dbt Explorer reflects all the lineage defined within the dbt project. Our vision
 
 </Expandable>
 
+<Expandable alt_header="Why did previously visible data in dbt Explorer disappear?" >
+
+dbt Explorer automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
+
+</Expandable>
 
 ## Key features 
 

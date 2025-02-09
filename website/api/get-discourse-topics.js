@@ -9,10 +9,12 @@ async function getDiscourseTopics(request, response) {
     // Set API endpoint and headers
     let discourse_endpoint = `https://discourse.getdbt.com`
     let headers = {
-      'Accept': 'application/json',
-      'Api-Key': DISCOURSE_API_KEY,
-      'Api-Username': DISCOURSE_USER,
-    }
+      Accept: "application/json",
+      "Api-Key": DISCOURSE_API_KEY,
+      "Api-Username": DISCOURSE_USER,
+      // Cache topics in the browser (max-age) & CDN (s-maxage) for 1 day
+      "Cache-Control": "max-age=86400, s-maxage=86400 stale-while-revalidate",
+    };
 
     const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')

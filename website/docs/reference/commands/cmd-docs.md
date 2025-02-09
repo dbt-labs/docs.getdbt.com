@@ -1,5 +1,6 @@
 ---
 title: "About dbt docs commands"
+description: "Generate and serve the docs for your dbt project."
 sidebar_label: "docs"
 id: "cmd-docs"
 ---

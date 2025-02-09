@@ -1,6 +1,6 @@
 ---
 title: "Materializations"
-description: "Read this tutorial to learn how to use materializations when building in dbt."
+description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
 ---

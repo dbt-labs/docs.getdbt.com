@@ -283,6 +283,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .lifecycle {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }
@@ -2144,3 +2148,74 @@ table th {
   color: #000000; /* Black text on darker background */
   font-weight: bold;
 }
+
+/* Begin tab borders */
+
+.tabs {
+  background-color: transparent;
+  padding: 10px;
+}
+
+/* Default color and border for tabs */
+.tabs__item {
+  background-color: var(--color-white); /* Sets the tab color the same as the file borders */
+  border: 2px solid var(--color-nav-text);
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Default color and border for tabs in dark mode */
+[data-theme='dark'] .tabs__item {
+  background-color: var(--color-primary-blue);
+  border: 1px solid var(--color-nav-text);
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/*Color when hovering over tabs */
+.tabs__item:hover {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .tabs__item:hover {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+}
+
+/* Color when the tab is clicked*/
+.tabs__item--active {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .tabs__item--active {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Sets the tab content border and background color */
+[data-theme='dark'] .tabs-container{
+  border: 1px solid var(--color-nav-text);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+[data-theme='light'] .tabs-container{
+  border: 1px solid var(--ifm-toc-border-color);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+/* End tab borders */

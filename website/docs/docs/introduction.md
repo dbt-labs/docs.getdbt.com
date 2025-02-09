@@ -1,6 +1,7 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
 ---
@@ -25,7 +26,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/docs/get-started-dbt).
 
-### dbt Core
+### dbt Core 
 
 [dbt Core](/docs/core/about-core-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install dbt Core](/docs/core/installation-overview) through the command line. Learn more with the [quickstart for dbt Core](https://docs.getdbt.com/guides/codespace?step=1).
 
