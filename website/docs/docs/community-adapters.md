@@ -16,4 +16,4 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)| [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup) | [SQLite](/docs/core/connect-data-platform/sqlite-setup) |
 | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup)| [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) |
 | [Upsolver](/docs/core/connect-data-platform/upsolver-setup) | [Vertica](/docs/core/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/core/connect-data-platform/watsonx-presto-setup) | 
-| [Yellowbrick](/docs/core/connect-data-platform/yellowbrick-setup) | 
+| [Yellowbrick](/docs/core/connect-data-platform/yellowbrick-setup) | [Watsonx-Spark](/docs/core/connect-data-platform/watsonx-spark-setup) |
