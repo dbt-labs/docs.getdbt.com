@@ -131,3 +131,4 @@ Despite its extensive capabilities, the `dbt-watsonx-spark` adapter has some lim
   - Some transformations may be expensive due to Spark’s in-memory processing model.
 
 By understanding these capabilities and constraints, users can maximize the effectiveness of dbt with Watsonx.data Spark for scalable data transformations and analytics.
+
