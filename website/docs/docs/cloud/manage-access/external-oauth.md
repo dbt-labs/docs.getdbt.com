@@ -11,21 +11,26 @@ pagination_prev: null
 
 :::note 
 
-This feature is currently only available for the Okta and Entra ID identity providers and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
+This feature is currently only available for the Okta and Entra ID identity providers with [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
 
 :::
 
 
-dbt Cloud Enterprise supports [external OAuth authentication](https://docs.snowflake.com/en/user-guide/oauth-ext-overview) with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP).  This grants users authorization to access multiple applications, including dbt Cloud, without their credentials being shared with the service. Not only does this make the process of authenticating for development environments easier on the user, it provides an additional layer of security to your dbt Cloud account. 
+dbt Cloud Enterprise supports external OAuth authentication with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP).  This grants users authorization to access multiple applications, including dbt Cloud, without their credentials being shared with the service. Not only does this make the process of authenticating for development environments easier on the user, it provides an additional layer of security to your dbt Cloud account. 
 
 ## Getting started
 
-The process of setting up external OAuth will require a little bit of back-and-forth between your dbt Cloud, IdP, and Snowflake accounts, and having them open in multiple browser tabs will help speed up the configuration process:
+The process of setting up external OAuth will require a little bit of back-and-forth between your dbt Cloud, IdP, and data warehouse accounts, and having them open in multiple browser tabs will help speed up the configuration process:
 
 - **dbt Cloud:** You’ll primarily be working in the **Account settings** —> **Integrations** page. You will need [proper permission](/docs/cloud/manage-access/enterprise-permissions) to set up the integration and create the connections.
-- **Snowflake:** Open a worksheet in an account that has permissions to [create a security integration](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration).
+
+**Identity providers:**
 - **Okta:** You’ll be working in multiple areas of the Okta account, but you can start in the **Applications** section. You will need permissions to [create an application](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Application_permissions) and an [authorization server](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Authorization_server_permissions).
-- **Entra ID** An admin with access to create [Entra ID apps](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-available-permissions) who is also a user in Snowflake is required. 
+- **Entra ID** An admin with access to create [Entra ID apps](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-available-permissions) who is also a user in the data warehouse is required. 
+
+**Data warehouses:**
+- **Snowflake:** Open a worksheet in an account that has permissions to [create a security integration](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration).
+- **Redshift:** TBD
 
 If the admins that handle these products are all different people, it’s better to have them coordinating simultaneously to reduce friction.
 
@@ -33,7 +38,13 @@ If the admins that handle these products are all different people, it’s better
 Ensure that the username/email address entered by the IdP admin matches the Snowflake credentials username. If the email address used in the dbt Cloud setup is different from the Snowflake email address, the connection will fail or you may run into issues.
 :::
 
-### Snowflake commands
+## Data warehouse configurations
+
+Select the configuration for your supported data warehouse:
+
+<Tabs>
+
+<TabItem value="Snowflake">
 
 The following is a template for creating the OAuth configurations in the Snowflake environment:
 
@@ -56,6 +67,16 @@ The `external_oauth_token_user_mapping_claim` and `external_oauth_snowflake_u
 **Notes:** 
 - The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external OAuth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
 - The value for `external_oauth_snowflake_user_mapping_attribute` must map correctly to the Snowflake username. For example, if `email_address` is used, the email in the token from the IdP must match the Snowflake username exactly.
+
+</TabItem>
+
+<TabItem value="Redshift">
+
+Coming soon
+
+</TabItem>
+
+</Tabs>
 
 ## Identity provider configuration
 
@@ -92,7 +113,7 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 ### 3. Create the Okta API
 
 1. Expand the **Security** section and click **API** from the Okta sidebar menu.
-2. On the API screen, click **Add authorization server**. Give the authorization server a name (a nickname for your Snowflake account would be appropriate). For the **Audience** field, copy and paste your Snowflake login URL (for example, https://abdc-ef1234.snowflakecomputing.com). Give the server an appropriate description and click **Save**.
+2. On the API screen, click **Add authorization server**. Give the authorization server a name (a nickname for your data warehouse account would be appropriate). For the **Audience** field, copy and paste your data warehouse login URL (for example, https://abdc-ef1234.snowflakecomputing.com). Give the server an appropriate description and click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/create-okta-api.png" width="60%" title="The Okta API window with the Audience value set to the Snowflake URL" />
 
@@ -120,7 +141,13 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 8. Navigate back to the **Settings** tab and leave it open in your browser. You’ll need some of the information in later steps.
 
-### 4. Create the OAuth settings in Snowflake
+### 4. Create the OAuth settings in the data warehouse
+
+Select the instructions for your data warehouse:
+
+<Tabs>
+
+<TabItem value="Snowflake">
 
 1. Open up a Snowflake worksheet and copy/paste the following:
 
@@ -151,6 +178,15 @@ Adjust the other settings as needed to meet your organization's configurations i
 Ensure that the username (for example, email address) entered in the IdP matches the Snowflake credentials for all users. Mismatched usernames will result in authentication failures.
 :::
 
+</TabItem>
+
+<TabItem value="Redshift">
+
+Coming soon
+
+</TabItem>
+
+</Tabs>
 
 ### 5. Configuring the integration in dbt Cloud
 
@@ -179,10 +215,7 @@ Ensure that the username (for example, email address) entered in the IdP matches
 
 <Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box" />
 
-
-4. **Save** the connection, and you have now configured External OAuth with Okta and Snowflake!
-
-
+4. **Save** the connection, and you have now configured External OAuth with Okta!
 
 ## Entra ID
 
@@ -199,9 +232,9 @@ Ensure that the username (for example, email address) entered in the IdP matches
 
 :::important
 
-- The admin who creates the apps in the Microsoft Entra ID account must also be a user in Snowflake.
+- The admin who creates the apps in the Microsoft Entra ID account must also be a user in Snowflake or Redshift.
 - The `value` field gathered in these steps is only displayed once. When created, record it immediately.
-- Ensure that the username (for example, email address) entered in the IdP matches the Snowflake credentials for all users. Mismatched usernames will result in authentication failures.
+- Ensure that the username (for example, email address) entered in the IdP matches the Snowflake or Redshift credentials for all users. Mismatched usernames will result in authentication failures.
 :::
 
 ### 3. Create a resource server
@@ -236,7 +269,13 @@ Ensure that the username (for example, email address) entered in the IdP matches
 7. Record the `value` for use in a future step and record it immediately.
 **Note**: Entra ID will not display this value again once you navigate away from this screen.
 
-### 5. Snowflake configuration
+### 5. Data warehouse configuration
+
+Select the instructions for the appropriate data warehouse:
+
+<Tabs>
+
+<TabItem value="Snowflake">
 
 You'll be switching between the Entra ID site and Snowflake. Keep your Entra ID account open for this process.
 
@@ -267,6 +306,17 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 3. Navigate to the resource server in previous steps.
    - The **Application ID URI** maps to the `external_oauth_audience_list` field in Snowflake.
 4. Run the configurations. Be sure the admin who created the Microsoft apps is also a user in Snowflake, or the configuration will fail.
+
+</TabItem>
+
+<TabItem value="Redshift">
+
+Coming soon
+
+</TabItem>
+
+</Tabs>
+
 
 ### 6. Configuring the integration in dbt Cloud
 
