@@ -7,7 +7,7 @@ sidebar_label: "Connect Snowflake"
 
 :::note
 
-dbt Cloud connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account. See [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
+dbt Cloud connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
 
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
 

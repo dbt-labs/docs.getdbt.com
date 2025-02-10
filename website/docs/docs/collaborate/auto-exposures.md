@@ -25,3 +25,8 @@ For more information on how to set up auto-exposures, prerequisites, and more &m
 import ViewExposures from '/snippets/_auto-exposures-view.md';
 
 <ViewExposures/>
+
+## Considerations
+import ConsiderationsTableau from '/snippets/_auto-exposures-considerations-tb.md';
+
+<ConsiderationsTableau/>
