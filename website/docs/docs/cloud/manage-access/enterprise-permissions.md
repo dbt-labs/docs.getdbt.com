@@ -167,7 +167,7 @@ The Project creator permission set can create, configure, and set up new project
 Notable features:
 - Project creator is an account-level set.
 - Only permission set other than Account admin that can create projects.
-- Limited account settings access, including creating and editing connections, inviting users, creating groups, and assigning licenses.
+- Limited account settings access. The project creator can create and edit connections, invite users, create groups, and assign licenses.
 - Unrestricted access to project configurations. 
 - Can access dbt Explorer
 
