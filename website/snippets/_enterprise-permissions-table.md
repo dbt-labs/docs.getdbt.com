@@ -11,7 +11,7 @@ Account permission sets enable you to manage the dbt Cloud account and manage th
 Key:
 
 * **(W)rite** &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `develop`.
-* **(R)ead** &mdash; Can view but can not create or change any fields.
+* **(R)ead** &mdash; Can view but cannot create or change any fields.
 
 #### Account access for account permissions
 
