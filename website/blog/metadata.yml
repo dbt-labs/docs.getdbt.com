@@ -1,8 +1,8 @@
 # Set custom blog metadata
 featured_image: ""
 
-# This CTA lives in right sidebar on blog index
-featured_cta: "spring_launch_2025"
+# This CTA lives in right sidebar on blog index (removing for now)
+# featured_cta: "spring_launch_2025"
 
 # Show or hide hero title, description, cta from blog index
 show_title: true

@@ -30,8 +30,3 @@
   subheader: Catch up on Coalesce 2024 and register to access a select number of on-demand sessions.
   button_text: Register and watch
   url: https://coalesce.getdbt.com/register/online 
-- name: spring_launch_2025
-  header: 2025 dbt Cloud Launch Showcase
-  subheader: Join us on March 19th or 20th to hear from our executives and product leaders about the latest features landing in dbt.
-  button_text: Save your seat
-  url: https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase
