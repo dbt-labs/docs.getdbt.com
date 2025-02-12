@@ -1,5 +1,7 @@
 ---
 title: "Caveats to state comparison"
+description: "Learn about caveats to state comparison in dbt."
+pagination_prev: "reference/node-selection/configure-state"
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
@@ -89,3 +91,7 @@ That means the following config—functionally identical to the snippet above—
 ### Final note
 
 State comparison is complex. We hope to reach eventual consistency between all configuration options, as well as providing users with the control they need to reliably return all modified resources, and only the ones they expect. If you're interested in learning more, read [open issues tagged "state"](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Astate) in the dbt repository.
+
+## Related docs
+- [About state in dbt](/reference/node-selection/state-selection)
+- [Configure state selection](/reference/node-selection/configure-state)

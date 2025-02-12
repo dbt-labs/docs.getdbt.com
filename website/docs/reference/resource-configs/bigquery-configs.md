@@ -219,7 +219,7 @@ from {{ ref('events') }}
 ```sql
 create table analytics.bigquery_table
 partition by range_bucket(
-  customer_id,
+  user_id,
   generate_array(0, 100, 10)
 )
 as (
