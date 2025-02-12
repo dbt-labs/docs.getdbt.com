@@ -12,7 +12,7 @@ The following sections describe the different **Account settings** available fro
 
 :::important repo caching enabled by default
 
-dbt Cloud Git repository caching is enabled by default for all new Enterprise accounts. Repos are cached only after a successful production run. Disabling repo caching after a completed run will result in the cache expiring after 8 days. 
+dbt Cloud Git repository caching is enabled by default for all new Enterprise accounts. Repos are cached only after a successful production run. If you disable repo caching after a successful production run, the cache will be deleted after 8 days. 
 
 :::
 
