@@ -71,7 +71,7 @@ select * from {{ ref('raw_orders') }}
 
 Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
 
-However, if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the `base_location_root` and `base_location_subpath`. 
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the `base_location_root` and `base_location_subpath`. 
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
