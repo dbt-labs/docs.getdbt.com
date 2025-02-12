@@ -11,7 +11,7 @@ pagination_prev: null
 
 :::note 
 
-This feature is currently only available for the Okta and Entra ID identity providers with [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
+This feature is currently only available for Okta and Entra ID identity providers with [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
 
 :::
 
