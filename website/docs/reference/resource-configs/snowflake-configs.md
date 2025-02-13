@@ -89,7 +89,7 @@ By default, dbt manages `base_location` on behalf of users to enforce best pract
 - Grant schema-specific access to tables via object store
 - Use a crawler pointed at the tables within the external volume to build a new catalog with another tool
 
-To maintain best practices,  we enforce an input. dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
+To maintain best practices,  dbt enforces an input and, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
 
 ### Limitations
 
