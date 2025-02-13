@@ -6,4 +6,4 @@ sidebar: "Snowflake"
 
 ## The enable_truthy_nulls_equals_macro flag
 
-text here
+The `enable_truthy_nulls_equals_macro` flag is `False` by default.
