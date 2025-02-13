@@ -11,7 +11,7 @@ To-do:
 
 <VersionBlock firstVersion="1.9">
 
-## Iceberg table format <Lifecycle status="beta"/>
+## Iceberg table format
 
 The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
 
@@ -42,6 +42,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 | ------ | ----- | -------- | ------------- | ------------ | ------ |
 | `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
 | `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
+| `base_location_root` | String  | No  | If provided, the input will override the default dbt base_location value of `_dbt` |
 | `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you do not specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
 
 ### Example configuration
@@ -68,27 +69,27 @@ select * from {{ ref('raw_orders') }}
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`
+Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
 
-#### Base Location Subpath
-We recommend using dbt's auto-generated `base_location`. However, if you need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, the subpath concatenates to the end of the previously described pattern for `base_location` string generation.
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the `base_location_root` and `base_location_subpath`. 
 
-For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}/prod/`.
+- If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
+- If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
+- If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
+- If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
 A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
 
 #### Rationale
 
-dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_ location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
+By default, dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_ location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
 
 - Navigate the underlying object store (S3/Azure blob)
 - Read Iceberg tables via an object-store integration
 - Grant schema-specific access to tables via object store
 - Use a crawler pointed at the tables within the external volume to build a new catalog with another tool
 
-To maintain best practices,  we enforce an input. Currently, we do not support overriding the default `base location` input but will consider it based on user feedback. 
-
-In summary, dbt-snowflake does not support arbitrary definition of `base_location` for Iceberg tables. Instead, dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
+To maintain best practices,  dbt enforces an input and, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
 
 ### Limitations
 
