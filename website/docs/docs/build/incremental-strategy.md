@@ -36,6 +36,7 @@ Click the name of the adapter in the below table for more information about supp
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅        |                    |                    |
 | [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         |        ✅          |                    |                    |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |                 |          ✅         |                    |
+| [dbt-clickhouse](/reference/resource-configs/clickhouse-configs#incremental-table-configuration)                    |     ✅    |       |       ✅          |          ✅         |                    |
 
 ### Configuring incremental strategy
 
