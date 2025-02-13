@@ -10,6 +10,12 @@ The following sections describe the different **Account settings** available fro
 
 ## Git repository caching <Lifecycle status="enterprise" />
 
+:::important repo caching enabled by default
+
+dbt Cloud Git repository caching is enabled by default for all new Enterprise accounts. Repos are cached only after a successful production run. If you disable repo caching after a successful production run, the cache will be deleted after 8 days. 
+
+:::
+
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
 For improved reliability and performance on your job runs, you can enable dbt Cloud to keep a cache of the project's Git repository. So, if there's a third-party outage that causes the cloning operation to fail, dbt Cloud will instead use the cached copy of the repo so your jobs can continue running as scheduled. 

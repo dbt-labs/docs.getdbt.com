@@ -45,7 +45,7 @@ To create a dbt SQL model, click on **Create a new model** and perform the follo
 	- **Join**: Define the join conditions and choose columns from both tables.
 	- **Select**: Pick the columns you need from the model.
 	- **Aggregate**: Specify the aggregation functions and the columns they apply to.
-	- **Formula**: Add the formula to create a new column. Use the built-AI code generator to help generate SQL code by clicking on the question mark (?) icon. Enter your prompt and wait to see the results.
+	- **Formula**: Add the formula to create a new column. Includes support for Jinja expressions and macros normally called in `SELECT` statements. Use the built-AI code generator to help generate SQL code by clicking on the question mark (?) icon. Enter your prompt and wait to see the results.
 	- **Filter**: Set the conditions to filter data.
 	- **Order**: Select the columns to sort by and the sort order.
 	- **Limit**: Set the maximum number of rows you want to return.
