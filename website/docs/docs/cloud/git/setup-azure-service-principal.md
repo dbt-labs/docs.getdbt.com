@@ -11,7 +11,7 @@ sidebar_label: "Set up service principal"
 
 :::note
 
-If this is your first time setting up an Entra app as a service principal, refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) for any steps you may need to take to prepare. 
+If this is your first time setting up an Entra app as a service principal, refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) for any prerequisite steps you may need to take to prepare. 
 
 :::
 
