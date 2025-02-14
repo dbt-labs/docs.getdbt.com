@@ -5,7 +5,7 @@ meta:
   maintained_by: dbt Labs
   authors: dbt Labs
   github_repo: 'dbt-labs/dbt-athena'
-  pypi_package: 'dbt-athena-community'
+  pypi_package: 'dbt-athena'
   min_core_version: 'v1.3.0'
   cloud_support: Supported
   min_supported_version: 'engine version 2 and 3'
