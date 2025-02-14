@@ -2,6 +2,7 @@
 resource_types: [models, seeds, snapshots, tests]
 description: "Aliasing a resource lets you give it a custom name in the database instead of using the filename."
 datatype: string
+intro_text: Specify a custom alias for a model, data test, snapshot, or seed and give it a more user-friendly name in the database.
 ---
 
 
