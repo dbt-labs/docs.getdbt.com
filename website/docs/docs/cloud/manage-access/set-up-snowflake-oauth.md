@@ -87,7 +87,7 @@ from
 ```
 
 To complete the creation of your connection in dbt Cloud:
-1. From dbt Cloud's Account Settings, click **Connections** and select a connection.
+1. Navigate to your **Account Settings**, click **Connections**, and select a connection.
 2. Edit the connection and enter the Client ID and Client Secret.
 3. Click **Save**.
 
