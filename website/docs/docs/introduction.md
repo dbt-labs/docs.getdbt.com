@@ -4,6 +4,7 @@ id: "introduction"
 description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
+intro_text: "dbt is the industry standard for data transformation. Learn how it can help you transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation."
 ---
 
 <Snippet path="what-is-dbt-intro" />
