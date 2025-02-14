@@ -11,7 +11,7 @@ pagination_prev: null
 
 :::note 
 
-This feature is currently only available for Okta and Entra ID identity providers with [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
+This feature is currently only available for Okta and Entra ID identity providers with [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) and [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake) connections.
 
 :::
 
@@ -30,7 +30,7 @@ The process of setting up external OAuth will require a little bit of back-and-f
 
 **Data warehouses:**
 - **Snowflake:** Open a worksheet in an account that has permissions to [create a security integration](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration).
-- **Redshift:** TBD
+- **Redshift:** Create and manage the [Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with your identity provider.
 
 If the admins that handle these products are all different people, it’s better to have them coordinating simultaneously to reduce friction.
 
@@ -72,7 +72,7 @@ The `external_oauth_token_user_mapping_claim` and `external_oauth_snowflake_u
 
 <TabItem value="Redshift">
 
-Coming soon
+Ensure your Amazon admins have completed the [Amazon Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with Okta or Entra ID.
 
 </TabItem>
 
@@ -93,20 +93,20 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 2. Scroll down to **Custom integrations** and click **Add integrations**
 3. Leave this window open. You can set the **Integration type** to Okta and note the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
-<Lightbox src="/img/docs/dbt-cloud/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt Cloud." />
 
 ### 2. Create the Okta app
 
 1. Expand the **Applications** section from the Okta dashboard and click **Applications.** Click the **Create app integration** button.
 2. Select **OIDC** as the sign-in method and **Web applications** as the application type. Click **Next**.
 
-<Lightbox src="/img/docs/dbt-cloud/create-okta-app.png" width="60%" title="The Okta app creation window with OIDC and Web Application selected" />
+<Lightbox src="/img/docs/dbt-cloud/create-okta-app.png" width="60%" title="The Okta app creation window with OIDC and Web Application selected." />
 
 3. Give the application an appropriate name, something like “External OAuth app for dbt Cloud,” that will make it easily identifiable.
 4. In the **Grant type** section, enable the **Refresh token** option.
 5. Scroll down to the **Sign-in redirect URIs** option. You’ll need to paste the redirect URI you gathered from dbt Cloud in step 1.3.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt Cloud value" />
+<Lightbox src="/img/docs/dbt-cloud/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt Cloud value." />
 
 6. Save the app configuration. You’ll come back to it, but move on to the next steps for now.
 
@@ -115,29 +115,29 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 1. Expand the **Security** section and click **API** from the Okta sidebar menu.
 2. On the API screen, click **Add authorization server**. Give the authorization server a name (a nickname for your data warehouse account would be appropriate). For the **Audience** field, copy and paste your data warehouse login URL (for example, https://abdc-ef1234.snowflakecomputing.com). Give the server an appropriate description and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/create-okta-api.png" width="60%" title="The Okta API window with the Audience value set to the Snowflake URL" />
+<Lightbox src="/img/docs/dbt-cloud/create-okta-api.png" width="60%" title="The Okta API window with the Audience value set." />
 
 3. On the authorization server config screen, open the **Metadata URI** in a new tab. You’ll need information from this screen in later steps.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-uri.png" width="60%" title="The Okta API settings page with the metadata URI highlighted" />
+<Lightbox src="/img/docs/dbt-cloud/metadata-uri.png" width="60%" title="The Okta API settings page with the metadata URI highlighted." />
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-example.png" width="60%" title="Sample output of the metadata URI" />
+<Lightbox src="/img/docs/dbt-cloud/metadata-example.png" width="60%" title="Sample output of the metadata URI." />
 
 4. Click on the **Scopes** tab and **Add scope**. In the **Name** field, add `session:role-any`. (Optional) Configure **Display phrase** and **Description** and click **Create**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-scope.png" width="60%" title="API scope configured in the Add Scope window" />
+<Lightbox src="/img/docs/dbt-cloud/add-api-scope.png" width="60%" title="API scope configured in the Add Scope window." />
 
 5. Open the **Access policies** tab and click **Add policy**. Give the policy a **Name** and **Description** and set **Assign to** as **The following clients**. Start typing the name of the app you created in step 2.3, and you’ll see it autofill. Select the app and click **Create Policy**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-assignment.png" width="60%" title="Assignment field autofilling the value" />
+<Lightbox src="/img/docs/dbt-cloud/add-api-assignment.png" width="60%" title="Assignment field autofilling the value." />
 
 6. On the **access policy** screen, click **Add rule**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-rule.png" width="60%" title="API Add rule button highlighted" />
+<Lightbox src="/img/docs/dbt-cloud/add-api-rule.png" width="60%" title="API Add rule button highlighted." />
 
 7. Give the rule a descriptive name and scroll down to **token lifetimes**. Configure the **Access token lifetime is**, **Refresh token lifetime is**, and **but will expire if not used every** settings according to your organizational policies. We recommend the defaults of 1 hour and 90 days. Stricter rules increase the odds of your users having to re-authenticate.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-token-lifetime.png" width="60%" title="Toke lifetime settings in the API rule window" />
+<Lightbox src="/img/docs/dbt-cloud/configure-token-lifetime.png" width="60%" title="Toke lifetime settings in the API rule window." />
 
 8. Navigate back to the **Settings** tab and leave it open in your browser. You’ll need some of the information in later steps.
 
@@ -182,7 +182,7 @@ Ensure that the username (for example, email address) entered in the IdP matches
 
 <TabItem value="Redshift">
 
-Coming soon
+Ensure your Amazon admins have completed the [Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with Okta. 
 
 </TabItem>
 
@@ -193,9 +193,9 @@ Coming soon
 1. Navigate back to the dbt Cloud **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields.
    1. `Integration name`: Give the integration a descriptive name that includes identifying information about the Okta environment so future users won’t have to guess where it belongs.
    2. `Client ID` and `Client secrets`: Retrieve these from the Okta application page.
-   <Lightbox src="/img/docs/dbt-cloud/gather-clientid-secret.png" width="60%" title="The client ID and secret highlighted in the Okta app" />
+   <Lightbox src="/img/docs/dbt-cloud/gather-clientid-secret.png" width="60%" title="The client ID and secret highlighted in the Okta app." />
    3. Authorize URL and Token URL: Found in the metadata URI.
-   <Lightbox src="/img/docs/dbt-cloud/gather-authorization-token-endpoints.png" width="60%" title="The authorize and token URLs highlighted in the metadata URI" />
+   <Lightbox src="/img/docs/dbt-cloud/gather-authorization-token-endpoints.png" width="60%" title="The authorize and token URLs highlighted in the metadata URI." />
 
 2. **Save** the configuration
 
@@ -207,13 +207,13 @@ Coming soon
 2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `OAuth method`, select the external OAuth you just created.
 
 
-<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt Cloud with the External OAuth showing as an option" />
+<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt Cloud with the External OAuth showing as an option." />
 
 
 3. Scroll down to the **External OAuth** configurations box and select the config from the list.
 
 
-<Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box" />
+<Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box." />
 
 4. **Save** the connection, and you have now configured External OAuth with Okta!
 
@@ -232,9 +232,9 @@ Coming soon
 
 :::important
 
-- The admin who creates the apps in the Microsoft Entra ID account must also be a user in Snowflake or Redshift.
+- The admin who creates the apps in the Microsoft Entra ID account must also be a user in your data warehouse.
 - The `value` field gathered in these steps is only displayed once. When created, record it immediately.
-- Ensure that the username (for example, email address) entered in the IdP matches the Snowflake or Redshift credentials for all users. Mismatched usernames will result in authentication failures.
+- Ensure that the username (for example, email address) entered in the IdP matches the data warehouse credentials for all users. Mismatched usernames will result in authentication failures.
 :::
 
 ### 3. Create a resource server
@@ -311,7 +311,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 
 <TabItem value="Redshift">
 
-Coming soon
+Ensure your Amazon admins have completed the [Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with Entra ID. 
 
 </TabItem>
 
