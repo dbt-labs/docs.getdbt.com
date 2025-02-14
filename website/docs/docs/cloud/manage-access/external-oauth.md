@@ -184,6 +184,8 @@ Ensure that the username (for example, email address) entered in the IdP matches
 
 Ensure your Amazon admins have completed the [Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with Okta. 
 
+Configure the Okta application and APIs in accordance with your Amazon configs.
+
 </TabItem>
 
 </Tabs>
@@ -312,6 +314,8 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 <TabItem value="Redshift">
 
 Ensure your Amazon admins have completed the [Identity Center integration](https://aws.amazon.com/blogs/big-data/integrate-identity-provider-idp-with-amazon-redshift-query-editor-v2-and-sql-client-using-aws-iam-identity-center-for-seamless-single-sign-on/) with Entra ID. 
+
+Configure the Entra ID application and in accordance with your Amazon configs.
 
 </TabItem>
 
