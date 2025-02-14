@@ -24,7 +24,7 @@ To use Snowflake in the dbt Cloud IDE, all developers must [authenticate with Sn
 To get started, copy the connection's redirect URI from dbt Cloud:
 1. Navigate to **Account settings**.
 1. Select **Projects** and choose a project from the list. 
-1. Select the connection to view its details and set the **OAuth method** to "Snowflake SSO".
+1. Select the development connection to view its details and set the **OAuth method** to "Snowflake SSO".
 1. Copy the **Redirect URI** to use in the later steps.
 
 <Lightbox
@@ -70,7 +70,7 @@ Additional configuration options may be specified for the security integration a
 
 ### Configure a Connection in dbt Cloud
 
-The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. When configuring a Connection in dbt Cloud, select the "Allow SSO Login" checkbox. Once this checkbox is selected, you will be prompted to enter an OAuth Client ID and OAuth Client Secret. These values can be determined by running the following query in Snowflake:
+The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
 with
@@ -86,7 +86,10 @@ from
   integration_secrets;
 ```
 
-Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection.
+To complete the creation of your connection:
+1. From dbt Cloud's Account Settings, click **Connections** and select a connection.
+2. Edit the connection and enter the Client ID and Client Secret.
+3. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt Cloud" />
 
