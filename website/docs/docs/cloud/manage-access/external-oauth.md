@@ -16,7 +16,7 @@ This feature is currently only available for Okta and Entra ID identity provider
 :::
 
 
-dbt Cloud Enterprise supports external OAuth authentication with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP).  This grants users authorization to access multiple applications, including dbt Cloud, without their credentials being shared with the service. Not only does this make the process of authenticating for development environments easier on the user, it provides an additional layer of security to your dbt Cloud account. 
+dbt Cloud Enterprise supports OAuth authentication with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP). External OAuth authorizes users to access multiple applications, including dbt Cloud, without sharing their credentials with the service. This makes the process of authenticating for development environments easier for the user and provides an additional layer of security to your dbt Cloud account. 
 
 ## Getting started
 
