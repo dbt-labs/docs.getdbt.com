@@ -6,6 +6,8 @@ description: "Access and use the visual editor to create or edit dbt models thro
 pagination_prev: "docs/cloud/visual-editor-interface"
 ---
 
+import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
+
 # Edit and create dbt models <Lifecycle status='beta'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
@@ -18,13 +20,6 @@ The visual editor provides users with a seamless and drag-and-drop experience in
 To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
 :::
 
-## Prerequisites
-- You have a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account
-- You have a [developer license](/docs/cloud/manage-access/seats-and-users) with developer credentials set up
-- You have an existing dbt Cloud project already created
-- Your Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
-- Have AI-powered features toggle enabled
-
 ## Access visual editor
 
 Before accessing the editor, you should have a dbt Cloud project already set up. This includes a Git repository, data platform connection, environments, and developer credentials. If you don't have this set up, please contact your dbt Cloud Admin.
@@ -35,6 +30,8 @@ To access the visual editor:
 - Click **Develop** and then select **Visual Editor**.
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/access-visual-editor.png" width="80%" title="Access the Visual Editor by selecting 'Develop' from the navigation menu." />
+
+<Prerequisites feature={'/snippets/_visual-editor-prerequisites.md'} />
 
 ## Create a model
 To create a dbt SQL model, click on **Create a new model** and perform the following steps. Note that you can't create source models in the visual editor. This is because you need to have production run with sources already created.
