@@ -16,9 +16,15 @@ The scheduler enables both cron-based and event-driven execution of dbt commands
 - Event-driven execution of dbt Cloud jobs triggered by API
 - Event-driven execution of dbt Cloud jobs manually triggered by a user to **Run now**
 
-The scheduler handles various tasks including queuing jobs, creating temporary environments to run the dbt commands required for those jobs, providing logs for debugging and remediation, and storing dbt artifacts for direct consumption/ingestion by the Discovery API. 
+The scheduler handles various tasks including:
+- Queuing jobs
+- Creating temporary environments to run the dbt commands required for those jobs
+- Providing logs for debugging and remediation
+- Storing dbt artifacts for direct consumption/ingestion by the Discovery API
 
-The scheduler powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
+The scheduler also:
+- Uses [dbt Cloud's Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="enterprise" />
+- Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 
 ## Scheduler terms
 
