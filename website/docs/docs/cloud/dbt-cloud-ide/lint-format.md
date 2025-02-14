@@ -79,7 +79,14 @@ To configure your own linting rules:
 5. Restart the IDE.
 6. Test it out and happy linting!
 
-:::tip Configure dbtonic linting rules
+#### Snapshot linting
+By default, dbt Cloud lints all modified `.sql` files in your project, including snapshots. [Snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but their SQL isn't lintable and can cause errors during linting.
+
+To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`).
+
+Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file since dbt Cloud doesn't automatically ignore snapshots on the backend.
+
+### Configure dbtonic linting rules
 
 Refer to the [Jaffle shop SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for dbt-specific (or dbtonic) linting rules we use for our own projects:
 
@@ -129,7 +136,6 @@ group_by_and_order_by_style = implicit
 </details>
 
 For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
-:::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="90%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
