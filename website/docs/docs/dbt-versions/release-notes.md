@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## February 2025
 
-- **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for Git now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on dbt Cloud Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout and dbt Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
+- **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for Git now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on dbt Cloud Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and dbt Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
 
 ## January 2025
 
