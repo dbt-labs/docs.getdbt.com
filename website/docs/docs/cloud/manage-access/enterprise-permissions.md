@@ -219,6 +219,8 @@ Notable features:
 <Expandable alt_header="Viewer">
 The Account Viewer permissions set provides read-only access to the dbt Cloud account. Useful for any persona who needs insights into your dbt Cloud account without access to create or change configurations.
 
+The Viewer permission set is frequently paired with the [Read-only license-type](/docs/cloud/manage-access/seats-and-users).
+
 Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
