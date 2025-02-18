@@ -12,6 +12,10 @@ date: 2025-01-23
 is_featured: true
 ---
 
+:::note
+This is part one of a series, for the second article, see [The key technologies behind SQL Comprehension](/blog/sql-comprehension-technologies) 
+:::
+
 
 Ever since [dbt Labs acquired SDF Labs last week](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), I've been head-down diving into their technology and making sense of it all. The main thing I knew going in was "SDF understands SQL". It's a nice pithy quote, but the specifics are *fascinating.*
 
@@ -145,6 +149,8 @@ In introducing these concepts, we’re still just scratching the surface. There'
 - How this is all going to roll into a step change in the experience of working with data
 - What it means for doing great data work
 
-Over the coming days, you'll be hearing more about all of this from the dbt Labs team - both familiar faces and our new friends from SDF Labs.
+To learn more, check out [The key technologies behind SQL Comprehension](/blog/sql-comprehension-technologies). 
+
+Over the coming days, you'll hear more about all of this from the dbt Labs team - both familiar faces and our new friends from SDF Labs.
 
 This is a special moment for the industry and the community. It's alive with possibilities, with ideas, and with new potential. We're excited to navigate this new frontier with all of you.
