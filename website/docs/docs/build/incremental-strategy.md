@@ -1,8 +1,9 @@
 ---
 title: "About incremental strategy"
-sidebar_label: "About incremental strategy"
+sidebar_label: "Incremental strategy"
 description: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 id: "incremental-strategy"
+intro_text: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 ---
 
 There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:

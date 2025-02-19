@@ -1,7 +1,11 @@
 .inputContainer {
-  padding: 0 1rem;
-  border-radius: 0.3125rem;
+  padding: 8px 12px;
+  border-radius: 8px;
   border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  margin: 1rem auto 0;
 }
 
 .inputContainer:active, .input:focus {
@@ -12,24 +16,26 @@
 .input::placeholder {
   all: unset;
   -webkit-text-security: initial;
+  opacity: .5;
 }
 
 .inputContainer .input {
   border: none;
-  min-height: 38px;
   font-size: .975rem;
   color: var(--ifm-font-color-base);
   font-family: var(--ifm-font-family-base);
+  background: none;
+  padding-left: .5rem;
 }
 
 [data-theme='dark'] .input{
-  background: #1b1b1d;
+  background: transparent;
   color: #e3e3e3;
 }
 
 .inputContainer > svg {
   fill: var(--ifm-font-color-base);
   width: 16px;
-  height: 16px;
-  margin-bottom: -2px;
+  height: 25px;
+  opacity: .5;
 }
