@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Set up external OAuth <Lifecycle status="enteprise" />
+# Set up external OAuth <Lifecycle status="enterprise" />
 
 :::note 
 
