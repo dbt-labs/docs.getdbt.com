@@ -5,8 +5,8 @@ featured_image: ""
 # featured_cta: "spring_launch_2025"
 
 # Show or hide hero title, description, cta from blog index
-show_title: true
-show_description: true
+show_title: false
+show_description: false
 hero_button_url: "/blog/welcome"
 hero_button_text: "Start here"
 hero_button_new_tab: false

@@ -12,11 +12,6 @@ date: 2025-01-23
 is_featured: true
 ---
 
-:::note
-This is part one of a series, for the second article, see [The key technologies behind SQL Comprehension](/blog/sql-comprehension-technologies) 
-:::
-
-
 Ever since [dbt Labs acquired SDF Labs last week](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), I've been head-down diving into their technology and making sense of it all. The main thing I knew going in was "SDF understands SQL". It's a nice pithy quote, but the specifics are *fascinating.*
 
 For the next era of Analytics Engineering to be as transformative as the last, dbt needs to move beyond being a [string preprocessor](https://en.wikipedia.org/wiki/Preprocessor) and into fully comprehending SQL. **For the first time, SDF provides the technology necessary to make this possible.** Today we're going to dig into what SQL comprehension actually means, since it's so critical to what comes next.
