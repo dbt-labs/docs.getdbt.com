@@ -47,15 +47,15 @@ This is not the post for a deep dive on *why* Rust and Python have such differen
 
 Our analysis in the leadup to dbt v1.0 showed that the static analyzer could handle 60% of models. Evaluating refs 30x faster in 60% of models would itself be great.
 
-But recall that static analysis was the workaround for evaluating Jinja being slow. Since **we can now evaluate Jinja faster than we can statically analyze it**, let's just* evaluate everything!
+But recall that static analysis was the workaround for evaluating Jinja being slow. Since **we can now evaluate Jinja faster than we can statically analyze it**, let's just<sup>†</sup> evaluate everything!
 
-\*The word "just" is doing a *lot* of heavy lifting here. In practice, there's a lot happening behind the scenes to get both the performance of minijinja and the ability to process the full range of capabilities of a dbt project. Another story for another day.
+<sup>†</sup>The word "just" is doing a *lot* of heavy lifting here. In practice, there's a lot happening behind the scenes to get both the performance of minijinja and the ability to process the full range of capabilities of a dbt project. Another story for another day.
 
 ## What does this mean in practice?
 
 As you saw at the top of the post, I've been running some synthetic projects against an early build of the new dbt engine, and it's pretty snappy - **parsing a 10,000 model project in under 600ms**. Let's see how it goes with some other common project sizes:
 
-<Lightbox src="/img/blog/2025-02-19-faster-project-parsing-with-rust/parse_time_comparison_linear.png" width="100%" />
+<Lightbox src="/img/blog/2025-02-19-faster-project-parsing-with-rust/parse_time_comparison_linear.png" width="100%" title="You might have to squint, but I promise there's a yellow line on each of those groups" />
 
 Even a 20,000-model project finished parsing in about a second. The equivalent cold parse takes well over a minute, and a partial parse (with no changed files) took about 12 seconds.
 
