@@ -40,7 +40,7 @@ python -m pip install dbt-core dbt-watsonx-spark
 ```
 
 ## Configuring `dbt-watsonx-spark`
-For IBM watsonx.data-specific configuration, refer to [IBM watsonx.data configs.](/reference/resource-configs/watsonx-Spark-config)
+For IBM watsonx.data-specific configuration, refer to [IBM watsonx.data configs.](https://docs.getdbt.com/reference/resource-configs/watsonx-Spark-config)
 
 ## Connecting to IBM watsonx.data Spark
 
