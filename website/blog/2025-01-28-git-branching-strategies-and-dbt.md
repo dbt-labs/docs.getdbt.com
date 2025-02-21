@@ -36,7 +36,7 @@ stops momentum on development. If you feel this, we’re hoping our guidance wil
 give you a great sense of comfort in taking steps to unblock development - even 
 when you don’t have everything figured out yet!
 
-There are three major tools that play an important role in dbt development:
+There are three major tools that play an important role in dbt development\:
 - **A repository**  
   Contains the code we want to change or deploy, along with tools for change management processes.
 - **A data platform**  
@@ -46,11 +46,11 @@ There are three major tools that play an important role in dbt development:
 
 <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/1_dbt_eco.png" title="dbt's relationship to git and the data platform" width="85%" />
 
-No matter how you end up **defining** your development workflow, these major steps are always present:
-- **Development**: How teams make and test changes to code
-- **Quality** Assurance: How teams ensure changes work and produce expected outputs
-- **Promotion**: How teams move changes to the next stage
-- **Deployment**: How teams surface changes to others
+No matter how you end up **defining** your development workflow, these major steps are always present\:
+- **Development**\: How teams make and test changes to code
+- **Quality Assurance**\: How teams ensure changes work and produce expected outputs
+- **Promotion**\: How teams move changes to the next stage
+- **Deployment**\: How teams surface changes to others
 
 This article will be focusing mainly on the topic of git and your repository, how 
 code corresponds to populating your data platform, and the common dbt configurations 
@@ -96,14 +96,14 @@ corresponds to the term "production"* - another term you'll see us use throughou
 
 ***How we want our workflow to look getting our changes from development to 
 `main` is the big discussion***. Our process needs to consider all the steps in our 
-workflow: development, quality assurance, promotion, and deployment. 
+workflow\: development, quality assurance, promotion, and deployment. 
 **Branching Strategies** define what this process looks like. We at dbt are not 
 reinventing the wheel - a number of common strategies have already been defined, 
 implemented, iterated on, and tested for at least a decade.
 
-There are two major strategies that encompass all forms of branching strategies: 
+There are two major strategies that encompass all forms of branching strategies\: 
 **Direct Promotion** and **Indirect Promotion**. We’ll start by laying these two 
-out simply:
+out simply\:
 
 - What is the strategy?
 - How does the development workflow of the strategy look to a team?
@@ -126,38 +126,38 @@ an exercise left to the reader!
 ## Direct promotion
 
 **Direct promotion** means we only keep one long-lived branch 
-in our repository — in our case, `main`. Here’s the workflow for this strategy:
+in our repository — in our case, `main`. Here’s the workflow for this strategy\:
 
 <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/2_direct_git.png" title="Direct promotion branching strategy" width="85%" />
 
 ### How does the development workflow look to a team?
 
-Layout:
+Layout\:
 
 - `feature` is the developer’s unique branch where task-related changes happen
 - `main` is the branch that contains our “production” version of code
 
-Workflow:
+Workflow\:
 
-- **Development**: I create a `feature` branch from `main` to make, test, and personally review changes
-- **Quality Assurance**: I open a pull request comparing my `feature` against `main`, which is then reviewed by peers (required), stakeholders, or subject matter experts (SMEs). We highly recommend including stakeholders or SMEs for feedback during PR in this strategy because the next step changes `main`.
-- **Promotion**: After all required approvals and checks, I merge my changes to `main`
-- **Deployment**: Others can see and use my changes in `main` after I merge and `main` is deployed
+- **Development**\: I create a `feature` branch from `main` to make, test, and personally review changes
+- **Quality Assurance**\: I open a pull request comparing my `feature` against `main`, which is then reviewed by peers (required), stakeholders, or subject matter experts (SMEs). We highly recommend including stakeholders or SMEs for feedback during PR in this strategy because the next step changes `main`.
+- **Promotion**\: After all required approvals and checks, I merge my changes to `main`
+- **Deployment**\: Others can see and use my changes in `main` after I merge and `main` is deployed
 
 ### Repository branching rules and helpers
-At a minimum, we like to set up:
-- **Branch protection** on `main` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring:
+At a minimum, we like to set up\:
+- **Branch protection** on `main` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring\:
   - a pull request (no direct commits to `main`) 
   - pull requests must have at least 1 reviewer's approval
 - **A PR template** ([such as our boiler-plate PR template](https://docs.getdbt.com/blog/analytics-pull-request-template)) for `feature` PRs against `main`
 
 ### dbt Cloud processes and environments
 
-Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
+Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate\:
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/3_direct_dbt_deployment.png" title="Direct Promotion strategy with dbt cloud processes denoted" width="85%" />
 
-In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup: 
+In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
 | Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
@@ -169,12 +169,12 @@ In order to create the jobs in our diagram, we need dbt Cloud environments. Here
 Now we need to focus on where we want to build things in our data platform. For that, 
 we need to set our **database** and **schema** settings on the environments.
 Here’s our diagram again, but now mapping how we want our objects to populate
-from our branches to our data platform:
+from our branches to our data platform\:
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/4_direct_data_population.png" title="Direct Promotion strategy with branch relations to data platform objects" width="85%" />
 
 Taking the table we created previously for our dbt Cloud environment, let's further
-map environment configurations to our data platform:
+map environment configurations to our data platform\:
 
 | Environment Name | **Database** | **Schema** |
 | --- | --- | --- |
@@ -209,42 +209,42 @@ as this is where we see unprepared teams struggle most.
 The most simple version of indirect promotion is a two-trunk *hierarchical* structure 
 — this is the one we see implemented most commonly in indirect workflows.
 
-*Hierarchical promotion* is promoting changes back the same way we derived the branches. Example:
+*Hierarchical promotion* is promoting changes back the same way we derived the branches. Example\:
 - a middle branch is derived from `main`
 - feature branches derive from the middle branch
 - feature branches merge back to the middle branch
 - the middle branch merges back to `main`
 
-Some common names for a middle branch as seen in the wild are:
-- `qa` : Quality Assurance
-- `uat` : User Acceptance Testing
-- `staging` or `preprod` : Common software development terminology
+Some common names for a middle branch as seen in the wild are\:
+- `qa`\: Quality Assurance
+- `uat`\: User Acceptance Testing
+- `staging` or `preprod`\: Common software development terminology
 
 We’ll be calling our middle branch `qa` from throughout the rest of this article.
 
-Here’s the workflow for this strategy:
+Here’s the workflow for this strategy\:
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy" width="85%" />
 
 ### How does the development workflow look to a developer?
 Changes from our direct promotion workflow are highlighted in <mark style={{backgroundColor:"#d6eaf8"}}>blue</mark>.
 
-Layout:
+Layout\:
 - `feature` is the developer’s unique branch where task-related changes happen
 - <mark style={{backgroundColor:"#d6eaf8"}}><code style={{backgroundColor: "#aed6f1"}}>qa</code> contains approved changes from developers’ <code style={{backgroundColor: "#aed6f1"}}>feature</code> branches, which will be merged to main and enter production together once additional testing is complete.<code style={{backgroundColor: "#aed6f1"}}>qa</code> is always ahead of <code style={{backgroundColor: "#aed6f1"}}>main</code> in changes.</mark>
 - `main` is the branch that contains our “production” version of code
 
-Workflow:
+Workflow\:
 
-- **Development**: I create a `feature` branch from `qa` to make, test, and personally review changes
-- **Quality Assurance:** I open a pull request comparing my `feature` branch to `qa`, which is then reviewed by peers and <mark style={{backgroundColor:"#d6eaf8"}}>*optionally*</mark> subject matter experts or stakeholders
-- **Promotion**: After all required approvals and checks, I can merge my changes to `qa`
-- <mark style={{backgroundColor:"#d6eaf8"}}>**Quality Assurance**: SMEs or other stakeholders can review my changes in <code style={{backgroundColor: "#aed6f1"}}>qa</code> when I merge my <code style={{backgroundColor: "#aed6f1"}}>feature</code></mark>
-- <mark style={{backgroundColor:"#d6eaf8"}}>**Promotion:** Once QA specialists give their approval of <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s version of data, a **release manager** opens a pull request using <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s branch targeting <code style={{backgroundColor: "#aed6f1"}}>main</code> (we define this as a **“release”**)</mark>
-- **Deployment**: Others can see and use my changes (<mark style={{backgroundColor:"#d6eaf8"}}>and other’s changes</mark>) in `main` <mark style={{backgroundColor:"#d6eaf8"}}>after <code style={{backgroundColor: "#aed6f1"}}>qa</code> is merged to <code style={{backgroundColor: "#aed6f1"}}>main</code></mark> and `main` is deployed
+- **Development**\: I create a `feature` branch from `qa` to make, test, and personally review changes
+- **Quality Assurance\:** I open a pull request comparing my `feature` branch to `qa`, which is then reviewed by peers and <mark style={{backgroundColor:"#d6eaf8"}}>*optionally*</mark> subject matter experts or stakeholders
+- **Promotion**\: After all required approvals and checks, I can merge my changes to `qa`
+- <mark style={{backgroundColor:"#d6eaf8"}}>**Quality Assurance**\: SMEs or other stakeholders can review my changes in <code style={{backgroundColor: "#aed6f1"}}>qa</code> when I merge my <code style={{backgroundColor: "#aed6f1"}}>feature</code></mark>
+- <mark style={{backgroundColor:"#d6eaf8"}}>**Promotion\:** Once QA specialists give their approval of <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s version of data, a **release manager** opens a pull request using <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s branch targeting <code style={{backgroundColor: "#aed6f1"}}>main</code> (we define this as a **“release”**)</mark>
+- **Deployment**\: Others can see and use my changes (<mark style={{backgroundColor:"#d6eaf8"}}>and other’s changes</mark>) in `main` <mark style={{backgroundColor:"#d6eaf8"}}>after <code style={{backgroundColor: "#aed6f1"}}>qa</code> is merged to <code style={{backgroundColor: "#aed6f1"}}>main</code></mark> and `main` is deployed
 
 ### Repository branching rules and helpers
-At a minimum, we like to set up:
-- **Branch protection** on `main` and `qa` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring:
+At a minimum, we like to set up\:
+- **Branch protection** on `main` and `qa` ([like these settings for GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)), requiring\:
   - a pull request (no direct commits to `main` or `qa`) 
   - pull requests must have at least 1 reviewer's approval
 - **A PR template** ([such as our boiler-plate PR template](https://docs.getdbt.com/blog/analytics-pull-request-template)) for `feature` PRs against `qa`
@@ -252,11 +252,11 @@ At a minimum, we like to set up:
 
 ### dbt Cloud processes and environments
 
-Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
+Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate\:
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/7_indirect_dbt_deployment.png" title="Indirect Promotion strategy with dbt cloud processes denoted" width="85%" />
 
-In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup: 
+In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
 | Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
@@ -270,17 +270,17 @@ In order to create the jobs in our diagram, we need dbt Cloud environments. Here
 Now we need to focus on where we want to build things in our data platform. For that, 
 we need to set our **database** and **schema** settings on the environments.
 There are two common setups for mapping code, but before we get in to those 
-remember this note from direct promotion:
+remember this note from direct promotion\:
 :::note
 We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/cloud/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
 ::: 
 
-- **Configuration 1**: A 1:1 of `qa` and `main` assets
+- **Configuration 1**\: A 1\:1 of `qa` and `main` assets
     In this pattern, the CI schemas are populated in a database *outside* of Production and QA. This is usually done to keep the databases aligned to what’s been merged on their corresponding branches.
-    Here’s our diagram, now mapping to the data platform with this pattern:
-    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/8_indirect_data_population.png" title="Indirect Promotion branches and how they relate to 1:1 organization in the data platform" width="85%" />
+    Here’s our diagram, now mapping to the data platform with this pattern\:
+    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/8_indirect_data_population.png" title="Indirect Promotion branches and how they relate to 1\:1 organization in the data platform" width="85%" />
 
-    Here are our configurations for this pattern:
+    Here are our configurations for this pattern\:
     | Environment Name | **Database** | **Schema** |
     | --- | --- | --- |
     | Development | `development` | User-specified in Profile Settings > Credentials |
@@ -289,13 +289,13 @@ We are showing environment configurations here, but a default database will be s
     | Release CI | `development` | A safe default |
     | Production | `production` | `analytics` |
 
-- **Configuration 2**: A reflection of the workflow initiative
+- **Configuration 2**\: A reflection of the workflow initiative
     
     In this pattern, the CI schemas populate in a `qa` database because it’s a step in quality assurance.
-    Here’s our diagram, now mapping to the data platform with this pattern:
+    Here’s our diagram, now mapping to the data platform with this pattern\:
     <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/9_alt_indirect_data_population.png" title="Indirect Promotion branches and how they relate to workflow initiative organization in the data platform" width="85%" />
 
-    Here are our configurations for this pattern:    
+    Here are our configurations for this pattern\:    
     | Environment Name | **Database** | **Schema** |
     | --- | --- | --- |
     | Development | `development` | User-specified in Profile Settings > Credentials |
@@ -312,7 +312,7 @@ We are showing environment configurations here, but a default database will be s
 
 ## What did indirect promotion change?
 
-You’ve probably noticed there is one overall theme of adding our additional branch, and that’s supporting our *Quality Assurance* initiative. Let’s break it down:
+You’ve probably noticed there is one overall theme of adding our additional branch, and that’s supporting our *Quality Assurance* initiative. Let’s break it down\:
 
 - **Development**
   
@@ -320,9 +320,9 @@ You’ve probably noticed there is one overall theme of adding our additional br
     
 - **Quality Assurance**
 
-  There are now *two places* where quality can be reviewed (`feature` and `qa`) before changes hit production. `qa` is typically leveraged in at least one of these ways for more quality assurance work:
+  There are now *two places* where quality can be reviewed (`feature` and `qa`) before changes hit production. `qa` is typically leveraged in at least one of these ways for more quality assurance work\:
     - Testing and reviewing how end-to-end changes are performing over time
-    - Deploying the full image of the `qa` changes to a centralized location. Some common reasons to deploy `qa` code are:
+    - Deploying the full image of the `qa` changes to a centralized location. Some common reasons to deploy `qa` code are\:
         - Testing builds from environment-specific data sets (dynamic sources)
         - Creating staging versions of workbooks in your BI tool.
         This is most relevant when your BI tool doesn’t do well with changing underlying schemas. For instance, some tools have better controls for grabbing a production workbook for development, switching the underlying schema to a `dbt_cloud_pr_#` schema, and reflecting those changes without breaking things. Other tools will break every column selection you have in your workbook, even if the structure is the same. For this reason, it is sometimes easier to create one “staging” version workbook and always point it to a database built from QA code - the changes then can always be reflected and reviewed from that workbook before the code changes in production.
@@ -330,7 +330,7 @@ You’ve probably noticed there is one overall theme of adding our additional br
         For instance, you may have a subject matter expert reviewing and approving alongside developers, who understands the process of looking at `dbt_cloud_pr` schemas. However, if this person now communicates that they have just approved some changes with development to their teammates who will use those changes, the team might ask if there is a way they can also see the changes. Since the CI schema is dropped after merge, they would need to wait see this change in production if there is no process deploying the middle branch.
 - **Promotion**
 
-  There are now two places where code needs to be promoted:
+  There are now two places where code needs to be promoted\:
     
   - From `feature` to `qa` by a developer and peer (and optionally SMEs or stakeholders)
   - From `qa` to `main` by a release manager and SMEs or stakeholders
@@ -339,10 +339,10 @@ You’ve probably noticed there is one overall theme of adding our additional br
     
 - **Deployment**
     
-    There are now major branches code can be deployed from:
+    There are now major branches code can be deployed from\:
     
-    - `qa` : The “working” version with changes, `features` merge here
-    - `main` : The “production” version
+    - `qa`\: The “working” version with changes, `features` merge here
+    - `main`\: The “production” version
     
     Due to our changes collecting on the `qa` branch, our deployment process 
     changes from continuous deployment (”streaming” changes to `main` in direct 
@@ -351,7 +351,7 @@ You’ve probably noticed there is one overall theme of adding our additional br
     
 ## Comparing branching strategies
 
-Since most teams can make **direct promotion** work, we’ll list some key flags for when we start thinking about **indirect promotion** with a team:
+Since most teams can make **direct promotion** work, we’ll list some key flags for when we start thinking about **indirect promotion** with a team\:
 
 - They speak about having a dedicated environment for a QA, UAT, staging, or pre-production work.
 - They ask how they can test changes end-to-end and over time before things hit production.
@@ -401,12 +401,12 @@ We highly recommend that you choose your branching strategy based on which *best
 
 # Further enhancements
 
-Once you have your basic configurations in place, you can further tweak your project by considering which other features will be helpful for your needs:
+Once you have your basic configurations in place, you can further tweak your project by considering which other features will be helpful for your needs\:
 
-- Continuous Integration:
+- Continuous Integration\:
     - [Only running and testing changed models](https://docs.getdbt.com/docs/deploy/ci-jobs#set-up-ci-jobs) and their dependencies
     - Using [dbt clone](https://docs.getdbt.com/reference/commands/clone) to get a copy of large incrementals in CI
-- Development and Deployment:
+- Development and Deployment\:
     - Using [schema configurations](https://docs.getdbt.com/docs/build/custom-schemas) in the project to add more separation in a database
     - Using [database configurations](https://docs.getdbt.com/docs/build/custom-databases) in the project to switch databases for model builds
 
@@ -442,7 +442,7 @@ Other checks are usually implemented through git pipelines (such as GitHub Actio
 <summary>How do you revert changes?</summary>
 <p>
 
-This is an action performed outside of dbt through git operations - however, we recommend instead using an immediate solution with git tags/releases until your code is fixed to your liking:
+This is an action performed outside of dbt through git operations - however, we recommend instead using an immediate solution with git tags/releases until your code is fixed to your liking\:
 
 - Apply a git tag (an available feature on most git platforms) on the commit SHA that you want to roll back to
 - Use the tag as your `custom branch` on your production environment in dbt Cloud. Your jobs will now check out the code at this point in time.
@@ -460,7 +460,7 @@ This is an action performed outside of dbt through git operations - however, we 
 
 For our examples, a release is just a pull request to get changes into `main` from `qa`, opened from the git platform. 
 
-**You should be aware that having the source branch as `qa` on your pull request will also incorporate any new merges to `qa` since you opened the pull request, until it’s merged.** Because of this it’s important that the person opening a release is aware of what the latest changes were and when a job last ran to indicate the success of all the release’s changes. There are two options we like to implement to make this easier:
+**You should be aware that having the source branch as `qa` on your pull request will also incorporate any new merges to `qa` since you opened the pull request, until it’s merged.** Because of this it’s important that the person opening a release is aware of what the latest changes were and when a job last ran to indicate the success of all the release’s changes. There are two options we like to implement to make this easier\:
 
 - A CI job for pull requests to `main` - this will catch and rerun our CI job if there’s any new commits on our `qa` branch
 - An [on-merge job](https://docs.getdbt.com/docs/deploy/merge-jobs) using our `qa` environment. This will run a job any time someone merges. You may opt for this if you’d rather not wait on a CI pipeline to finish when you open a release. If this option is used, the latest job that ran should be successful and linked on the release’s PR.
@@ -481,7 +481,7 @@ You may be tempted to change to a less standard branching strategy to avoid this
 
 dbt does not perform cherry picking operations and needs to be done from a command line interface or your git platform’s user interface, if the option is available. We align with Grace on this one — not only does cherry picking require a very good understanding of git operations and the state of the branches, but when it isn’t done with care it introduces a host of other issues that can be hard to resolve. What we tend to see is that the CI processes we’ve exemplified instead shift what the definition of the first PR’s approval is - not only can it be approved for coding and syntax by a peer, but it can also be approved for it’s output by selecting from objects built within the CI schema. This  eliminates a lot of the issues with code that can’t be merged to production.
 
-We also implement other features that can help us omit offending models or introduce more quality:
+We also implement other features that can help us omit offending models or introduce more quality\:
 
 - The [`--exclude`](https://docs.getdbt.com/reference/node-selection/exclude) command flag helps us omit building models in a job
 - The [`enabled`](https://docs.getdbt.com/reference/resource-configs/enabled) configuration helps us keep models from being executed in any job for a longer-term solution
@@ -501,16 +501,16 @@ If you are seeing a need to cherry-pick regularly, assessing your review and qua
 
 The process of fixing `main` directly is called a **hotfix**. This needs to be done with git locally or with your git platform’s user interface because dbt’s IDE is based on the branch you set for your developer to base from (in our case, `qa`).
 
-The pattern for hotfixes in hierarchical promotion looks like this:
+The pattern for hotfixes in hierarchical promotion looks like this\:
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/12_hotfixes.png" title="Hotfix diagram" width="85%" />
 
-Here’s how it’s typically performed:
+Here’s how it’s typically performed\:
 
 1. Create a branch from `main`, test and review the fix
 2. Open a PR to `main`, get the fix approved, then merge. The fix is now live.
 3. Check out `qa`, and `git pull` to ensure it’s up to date with what’s on the remote
-4. Merge `main` into `qa`: `git merge main`
+4. Merge `main` into `qa`\: `git merge main`
 5. `git push` the changes back to the remote
 6. At this point in our example, developers will be flagged in dbt Cloud’s IDE that there is a change on their base branch and can ”Pull from remote”. However, if you implement more than one middle branch you will need to continue resolving your branches hierarchically until you update the branch that developers base from.
 
@@ -526,23 +526,23 @@ In our experience, using more than one middle branch is rarely needed. The more 
 
 <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/13_more_branches.png" title="A git strategy with more branches" width="85%" />
 
-This structure is mostly desired when there are requirements for using different versions data (i.e scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example:
+This structure is mostly desired when there are requirements for using different versions data (i.e scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example\:
 
 1. Developers work off of mocked data for their `feature` branches and merge to `qa` for end-to-end and over-time testing of all merged changes before releasing to `preproduction`.
 2. Once `qa` is merged to `preproduction`, the underlying data being used switches to using scrubbed production data and other personas can start looking at and reviewing how this data is functioning before it hits production.
 3. One `preproduction` is merged to `main`, the underlying data being used switches to production data sets. 
 
-This use case can be covered with a more simple branching strategy through the use of git tags and [dbt environment variables](https://docs.getdbt.com/docs/build/environment-variables) to switch source data:
+This use case can be covered with a more simple branching strategy through the use of git tags and [dbt environment variables](https://docs.getdbt.com/docs/build/environment-variables) to switch source data\:
 
-- Indirect Promotion:
+- Indirect Promotion\:
     
     <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/14_indirect_tagging.png" title="Tagging in Indirect Promotion" width="85%" />
 
-- Direct Promotion:
+- Direct Promotion\:
     
     <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/15_direct_tagging.png" title="Tagging in Direct Promotion" width="85%" />
 
-No matter the reason for more branches, these points are always relevant to plan out:
+No matter the reason for more branches, these points are always relevant to plan out\:
 
 - Can we accurately describe the use case of each branch?
 - Who owns the oversight of any new branches?
@@ -565,7 +565,7 @@ By answering these questions, you should be able to follow our same guidance fro
 
 git releases/tags are a mechanism which help you label a specific commit SHA. *Deployment* *environments* in dbt Cloud can use these just like they can a custom branch. Teams will leverage this either to pin their environments to code at a certain point in time or to keep as a roll-back option if needed. 
 
-We can use the pinning method to create our middle environment. Example:
+We can use the pinning method to create our middle environment. Example\:
 
 - We create a release tag, `v2`, from our repository.
 - We specify `v2` as our branch in our Production environment’s **custom branch** setting.
@@ -584,18 +584,18 @@ Jobs using Production will now check out code at `v2`.
 <summary>How do we change from a direct promotion strategy to an indirect promotion strategy?</summary>
 <p>
 
-Here’s the additional setup steps in a nutshell - for more details be sure to read through the indirect promotion section:
+Here’s the additional setup steps in a nutshell - for more details be sure to read through the indirect promotion section\:
 
 - git Platform
     - Create a new branch derived from `main` for your middle branch.
     - Protect the branch with branch protection rules
 - dbt Cloud
-    - Development: Switch your environment to use the **custom branch** option and specify your new middle branch’s name. This will base developers off of the middle branch.
-    - Continous Integration: If you have an existing environment for this, ensure the **custom branch** is also changed to the middle branch’s name. This will change the CI job’s trigger to occur on pull requests to your middle branch.
+    - Development\: Switch your environment to use the **custom branch** option and specify your new middle branch’s name. This will base developers off of the middle branch.
+    - Continous Integration\: If you have an existing environment for this, ensure the **custom branch** is also changed to the middle branch’s name. This will change the CI job’s trigger to occur on pull requests to your middle branch.
 
-**At this point, your developers will be following the indirect promotion workflow and you can continue working on things in the background.** You may still need to set up a database, database permissions, environments, deployment jobs, etc. Here is a short checklist to help you out! Refer back to our section on indirect promotion for many more details:
+**At this point, your developers will be following the indirect promotion workflow and you can continue working on things in the background.** You may still need to set up a database, database permissions, environments, deployment jobs, etc. Here is a short checklist to help you out! Refer back to our section on indirect promotion for many more details\:
 
-- **Decide if you want to deploy your middle branch’s code. If so:**
+- **Decide if you want to deploy your middle branch’s code. If so\:**
     - If needed, create the database where the objects will build
     - Set up a service and give it all the proper permissions. For example, if that will be in a database,
         
@@ -603,7 +603,7 @@ Here’s the additional setup steps in a nutshell - for more details be sure to 
         
     - Set up an environment for your middle branch in dbt Cloud, being sure to connect it to the location you want your deployments to build in.
     - Set up any deployment jobs using your middle branch’s environment
-- **Decide if you want CI on release pull requests (from your middle branch to main). If so:**
+- **Decide if you want CI on release pull requests (from your middle branch to main). If so\:**
     - Set up an environment called “Release CI”
     - Set up the continuous integration job using the “Release CI” environment
 
