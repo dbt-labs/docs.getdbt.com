@@ -44,7 +44,7 @@ There are three major tools that play an important role in dbt development:
 - **A dbt project**  
   Helps us manage development and deployment processes of our code to our data platform (and other cool stuff!)
 
-<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/1_dbt_eco.png" title="dbt's relationship to git and the data platform"width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/1_dbt_eco.png" title="dbt's relationship to git and the data platform" width="85%" />
 
 No matter how you end up **defining** your development workflow, these major steps are always present:
 - **Development**: How teams make and test changes to code
@@ -155,7 +155,7 @@ At a minimum, we like to set up:
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/3_direct_dbt_deployment.png" title="Direct Promotion strategy with dbt cloud processes denoted"width="85%" />
+<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/3_direct_dbt_deployment.png" title="Direct Promotion strategy with dbt cloud processes denoted" width="85%" />
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup: 
 
@@ -171,7 +171,7 @@ we need to set our **database** and **schema** settings on the environments.
 Here’s our diagram again, but now mapping how we want our objects to populate
 from our branches to our data platform:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/4_direct_data_population.png" title="Direct Promotion strategy with branch relations to data platform objects"width="85%" />
+<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/4_direct_data_population.png" title="Direct Promotion strategy with branch relations to data platform objects" width="85%" />
 
 Taking the table we created previously for our dbt Cloud environment, let's further
 map environment configurations to our data platform:
@@ -223,7 +223,7 @@ Some common names for a middle branch as seen in the wild are:
 We’ll be calling our middle branch `qa` from throughout the rest of this article.
 
 Here’s the workflow for this strategy:
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy"width="85%" />
+<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy" width="85%" />
 
 ### How does the development workflow look to a developer?
 Changes from our direct promotion workflow are highlighted in <mark style={{backgroundColor:"#d6eaf8"}}>blue</mark>.
@@ -254,7 +254,7 @@ At a minimum, we like to set up:
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/7_indirect_dbt_deployment.png" title="Indirect Promotion strategy with dbt cloud processes denoted"width="85%" />
+<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/7_indirect_dbt_deployment.png" title="Indirect Promotion strategy with dbt cloud processes denoted" width="85%" />
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup: 
 
