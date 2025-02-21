@@ -12,7 +12,6 @@ date: 2025-01-23
 is_featured: true
 ---
 
-
 Ever since [dbt Labs acquired SDF Labs last week](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), I've been head-down diving into their technology and making sense of it all. The main thing I knew going in was "SDF understands SQL". It's a nice pithy quote, but the specifics are *fascinating.*
 
 For the next era of Analytics Engineering to be as transformative as the last, dbt needs to move beyond being a [string preprocessor](https://en.wikipedia.org/wiki/Preprocessor) and into fully comprehending SQL. **For the first time, SDF provides the technology necessary to make this possible.** Today we're going to dig into what SQL comprehension actually means, since it's so critical to what comes next.
@@ -145,6 +144,8 @@ In introducing these concepts, we’re still just scratching the surface. There'
 - How this is all going to roll into a step change in the experience of working with data
 - What it means for doing great data work
 
-Over the coming days, you'll be hearing more about all of this from the dbt Labs team - both familiar faces and our new friends from SDF Labs.
+To learn more, check out [The key technologies behind SQL Comprehension](/blog/sql-comprehension-technologies). 
+
+Over the coming days, you'll hear more about all of this from the dbt Labs team - both familiar faces and our new friends from SDF Labs.
 
 This is a special moment for the industry and the community. It's alive with possibilities, with ideas, and with new potential. We're excited to navigate this new frontier with all of you.

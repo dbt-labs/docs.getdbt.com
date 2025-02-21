@@ -19,9 +19,20 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the dbt Cloud navigation.
 
+### Ask dbt Support Assistant
+dbt Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to dbt Cloud users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
+
+The dbt Support Assistant AI widget is separate from [dbt Copilot](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in dbt Cloud won't affect the dbt Support Assistant's availability.
+
+:::info
+We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@getdbt.com) to report incorrect information provided by the Support Assistant.
+:::
+
+### Support plans and resources
+
 We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? Our Support team is here to `dbt help` you!
 
-- **Enterprise plans** &mdash; Priority [support](#severity-level-for-enterprise-support), options for custom support coverage hours, implementation assistance, dedicated management, and dbt Labs security reviews depending on price point.
+- **Enterprise plans** &mdash; Priority [support](#severity-level-for-enterprise-support), optional premium plans, enhanced SLAs, implementation assistance, dedicated management, and dbt Labs security reviews depending on price point.
 - **Developer and Team plans** &mdash; 24x5 support (no service level agreement (SLA); [contact Sales](https://www.getdbt.com/pricing/) for Enterprise plan inquiries).
 - **Support team help** &mdash; Assistance with [common dbt Cloud questions](/category/troubleshooting), like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, [how to generate a har file](/faqs/Troubleshooting/generate-har-file), and so on.
 - **Resource guide** &mdash; Check the [guide](/community/resources/getting-help) for effective help-seeking strategies.

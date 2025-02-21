@@ -16,6 +16,11 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## February 2025
+
+- **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
+- **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for Git now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on dbt Cloud Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and dbt Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
+
 ## January 2025
 
 - **Enhancement**: The dbt Semantic Layer now fully supports the [`--favor-state` flag](/docs/cloud/about-cloud-develop-defer) when used with `defer` in the dbt Cloud IDE. This enhancement allows you to always resolve `{{ ref() }}` functions using staging or production metadata, ignoring any development version.

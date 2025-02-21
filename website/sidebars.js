@@ -255,6 +255,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/vertica-setup",
                 "docs/core/connect-data-platform/watsonx-presto-setup",
+                "docs/core/connect-data-platform/watsonx-spark-setup",
                 "docs/core/connect-data-platform/yellowbrick-setup",
               ],
             },
@@ -306,6 +307,17 @@ const sidebarSettings = {
                 "docs/cloud/dbt-copilot-data",
               ],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud Visual Editor",
+          collapsed: true,
+          link: { type: "doc", id: "docs/cloud/visual-editor" },
+          items: [
+            "docs/cloud/visual-editor",
+            "docs/cloud/visual-editor-interface", 
+            "docs/cloud/use-visual-editor",
           ],
         },
         ],
@@ -438,6 +450,7 @@ const sidebarSettings = {
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
                 "docs/build/incremental-microbatch",
+                "docs/build/parallel-batch-execution",
               ],
             },
           ],
@@ -883,6 +896,13 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Platform-specific configs",
+      link: {
+        type: "generated-index",
+        title: "Platform-specific configs",
+        description:
+          "Platform-specific configs are used to configure the dbt project for a specific database platform.",
+        slug: "/reference/resource-configs/resource-configs",
+      },
       items: [
         "reference/resource-configs/athena-configs",
         "reference/resource-configs/impala-configs",
@@ -910,6 +930,7 @@ const sidebarSettings = {
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/vertica-configs",
         "reference/resource-configs/watsonx-presto-config",
+        "reference/resource-configs/watsonx-spark-config",
         "reference/resource-configs/yellowbrick-configs",
       ],
     },
@@ -1109,9 +1130,21 @@ const sidebarSettings = {
             "reference/node-selection/set-operators",
             "reference/node-selection/methods",
             "reference/node-selection/putting-it-together",
-            "reference/node-selection/state-comparison-caveats",
             "reference/node-selection/yaml-selectors",
             "reference/node-selection/test-selection-examples",
+            {
+              type: "category",
+              label: "About state selection",
+              link: {
+                type: "doc",
+                id: "reference/node-selection/state-selection",
+              },
+              items: [
+                "reference/node-selection/state-selection",
+                "reference/node-selection/configure-state",
+                "reference/node-selection/state-comparison-caveats",
+              ],
+            },
           ],
         },
         {
@@ -1129,8 +1162,9 @@ const sidebarSettings = {
               link: { type: "doc", id: "reference/global-configs/adapter-behavior-changes" },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
-                "reference/global-configs/redshift-changes",
                 "reference/global-configs/databricks-changes",
+                "reference/global-configs/redshift-changes",                      
+                "reference/global-configs/snowflake-changes",
               ],
             },
             {

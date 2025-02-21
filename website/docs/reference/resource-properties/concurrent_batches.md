@@ -48,7 +48,7 @@ select ...
 
 `concurrent_batches` is an override which allows you to decide whether or not you want to run batches in parallel or sequentially (one at a time).
 
-For more information, refer to [how batch execution works](/docs/build/incremental-microbatch#how-parallel-batch-execution-works).
+For more information, refer to [how batch execution works](/docs/build/parallel-batch-execution#how-parallel-batch-execution-works).
 ## Example
 
 By default, dbt auto-detects whether batches can run in parallel for microbatch models. However, you can override dbt's detection by setting the `concurrent_batches` config to `false` in your `dbt_project.yml` or model `.sql` file to specify parallel or sequential execution, given you meet these conditions: 
