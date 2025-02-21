@@ -31,7 +31,7 @@
   button_text: Register and watch
   url: https://coalesce.getdbt.com/register/online 
 - name: developer_day_2025
-  header: dht Developer Day 
+  header: dbt Developer Day 
   subheader: Join us on March 19th or 20th to hear from dbt Labs product leads about exciting new and coming-soon features designed to supercharge data developer workflows.
   button_text: Save your seat
   url: https://www.getdbt.com/resources/webinars/dbt-developer-day
