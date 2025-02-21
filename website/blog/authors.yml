@@ -592,7 +592,7 @@ sterling_paramore:
   organization: Mainspring Energy
 steve_dowling:
   name: Steve Dowling
-  image_url: img/blog/authors/steve-dowling.jpeg
+  image_url: /img/blog/authors/steve-dowling.jpeg
   job_title: Senior Solutions Architect
   organization: dbt Labs
 sung_chung:
