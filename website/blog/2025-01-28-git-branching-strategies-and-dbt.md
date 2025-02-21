@@ -155,7 +155,7 @@ At a minimum, we like to set up\:
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate\:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/3_direct_dbt_deployment.png" title="Direct Promotion strategy with dbt cloud processes denoted" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/3_direct_dbt_deployment.png" title="Direct Promotion strategy with dbt cloud processes denoted" width="85%" />
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
@@ -171,7 +171,7 @@ we need to set our **database** and **schema** settings on the environments.
 Here’s our diagram again, but now mapping how we want our objects to populate
 from our branches to our data platform\:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/4_direct_data_population.png" title="Direct Promotion strategy with branch relations to data platform objects" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/4_direct_data_population.png" title="Direct Promotion strategy with branch relations to data platform objects" width="85%" />
 
 Taking the table we created previously for our dbt Cloud environment, let's further
 map environment configurations to our data platform\:
@@ -223,7 +223,7 @@ Some common names for a middle branch as seen in the wild are\:
 We’ll be calling our middle branch `qa` from throughout the rest of this article.
 
 Here’s the workflow for this strategy\:
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/6_indirect_git.png" title="Indirect Promotion branching strategy" width="85%" />
 
 ### How does the development workflow look to a developer?
 Changes from our direct promotion workflow are highlighted in <mark style={{backgroundColor:"#d6eaf8"}}>blue</mark>.
@@ -254,7 +254,7 @@ At a minimum, we like to set up\:
 
 Here’s our branching strategy again, but now with the dbt Cloud processes we want to incorporate\:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/7_indirect_dbt_deployment.png" title="Indirect Promotion strategy with dbt cloud processes denoted" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/7_indirect_dbt_deployment.png" title="Indirect Promotion strategy with dbt cloud processes denoted" width="85%" />
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
@@ -278,7 +278,7 @@ We are showing environment configurations here, but a default database will be s
 - **Configuration 1**\: A 1\:1 of `qa` and `main` assets
     In this pattern, the CI schemas are populated in a database *outside* of Production and QA. This is usually done to keep the databases aligned to what’s been merged on their corresponding branches.
     Here’s our diagram, now mapping to the data platform with this pattern\:
-    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/8_indirect_data_population.png" title="Indirect Promotion branches and how they relate to 1\:1 organization in the data platform" width="85%" />
+    <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/8_indirect_data_population.png" title="Indirect Promotion branches and how they relate to 1\:1 organization in the data platform" width="85%" />
 
     Here are our configurations for this pattern\:
     | Environment Name | **Database** | **Schema** |
@@ -293,7 +293,7 @@ We are showing environment configurations here, but a default database will be s
     
     In this pattern, the CI schemas populate in a `qa` database because it’s a step in quality assurance.
     Here’s our diagram, now mapping to the data platform with this pattern\:
-    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/9_alt_indirect_data_population.png" title="Indirect Promotion branches and how they relate to workflow initiative organization in the data platform" width="85%" />
+    <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/9_alt_indirect_data_population.png" title="Indirect Promotion branches and how they relate to workflow initiative organization in the data platform" width="85%" />
 
     Here are our configurations for this pattern\:    
     | Environment Name | **Database** | **Schema** |
@@ -475,7 +475,7 @@ For our examples, a release is just a pull request to get changes into `main` fr
 
 The process of choosing specific commits to move to another branch is called **Cherry Picking**. 
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/11_cherry_picking.png" title="Cherry Picking diagram" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/11_cherry_picking.png" title="Cherry Picking diagram" width="85%" />
 
 You may be tempted to change to a less standard branching strategy to avoid this - our colleague Grace Goheen has [written some thoughts on this](https://docs.getdbt.com/blog/the-case-against-git-cherry-picking) and provided examples - it’s a worthwhile read!
 
@@ -503,7 +503,7 @@ The process of fixing `main` directly is called a **hotfix**. This needs to be d
 
 The pattern for hotfixes in hierarchical promotion looks like this\:
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/12_hotfixes.png" title="Hotfix diagram" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/12_hotfixes.png" title="Hotfix diagram" width="85%" />
 
 Here’s how it’s typically performed\:
 
@@ -524,7 +524,7 @@ Here’s how it’s typically performed\:
 
 In our experience, using more than one middle branch is rarely needed. The more steps you are away from main, the more hurdles you’ll need to jump through getting back to it. If your team isn’t properly equipped, this ends up putting a lot of overhead on development operations. For this reason, we don’t recommend more branches if you can help it. The teams who are successful with more trunks are built with plenty of folks who can properly dedicate the time and management to these processes. 
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/13_more_branches.png" title="A git strategy with more branches" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/13_more_branches.png" title="A git strategy with more branches" width="85%" />
 
 This structure is mostly desired when there are requirements for using different versions data (i.e scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example\:
 
@@ -536,11 +536,11 @@ This use case can be covered with a more simple branching strategy through the u
 
 - Indirect Promotion\:
     
-    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/14_indirect_tagging.png" title="Tagging in Indirect Promotion" width="85%" />
+    <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/14_indirect_tagging.png" title="Tagging in Indirect Promotion" width="85%" />
 
 - Direct Promotion\:
     
-    <Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/15_direct_tagging.png" title="Tagging in Direct Promotion" width="85%" />
+    <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/15_direct_tagging.png" title="Tagging in Direct Promotion" width="85%" />
 
 No matter the reason for more branches, these points are always relevant to plan out\:
 
@@ -572,7 +572,7 @@ We can use the pinning method to create our middle environment. Example\:
 Jobs using Production will now check out code at `v2`.
 - We set up an environment called “QA”, with the **custom branch** setting as `main`. For the database and schema, we specify the `qa` database and `analytics` schema. Jobs created using this environment will check out code from `main` and built it to `qa.analytics`.
 
-<Lightbox src="img/blog/2025-01-28-git-branching-strategies-and-dbt/16_direct_tagging_middle_env.png" title="Tagging in Direct Promotion to create a middle environment" width="85%" />
+<Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/16_direct_tagging_middle_env.png" title="Tagging in Direct Promotion to create a middle environment" width="85%" />
 
 <LoomVideo id="dfe057bf92b2498eb1e653c32fc72e93" />
 
