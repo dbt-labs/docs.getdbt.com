@@ -6,12 +6,12 @@ const { themes } = require('prism-react-renderer')
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
-/* Debugging */
-var SITE_URL;
-if (!process.env.CONTEXT || process.env.CONTEXT == "production") {
-  SITE_URL = "https://docs.getdbt.com";
-} else {
-  SITE_URL = process.env.DEPLOY_URL;
+/* Set SITE_URL by environment */
+var SITE_URL = "https://docs.getdbt.com";
+if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
+  SITE_URL = `https://${process.env.VERCEL_BRANCH_URL}`;
+} else if (process?.env?.VERCEL_ENV === "development") {
+  SITE_URL = `http://localhost:3000`;
 }
 
 var GIT_BRANCH;
@@ -37,6 +37,8 @@ if (GIT_BRANCH !== "current") {
 
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
+console.log("DEBUG: VERCEL_ENV =", process.env.VERCEL_ENV);
+console.log("DEBUG: VERCEL_BRANCH_URL =", process.env.VERCEL_BRANCH_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
@@ -273,7 +275,6 @@ var siteSettings = {
       path.resolve("plugins/buildGlobalData"),
       { versionedPages, versionedCategories },
     ],
-    path.resolve("plugins/buildAuthorPages"),
     path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
