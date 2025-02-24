@@ -71,7 +71,7 @@ callum_mccann:
   socials:
     linkedin: callum-mccann-38628a89
   name: Callum McCann
-  organization: dbt Labs
+  page: true
 carol_ohms:
   image_url: /img/blog/authors/carol-ohms.jpeg
   title: Resident Architect at dbt Labs
@@ -515,6 +515,7 @@ sterling_paramore:
   socials:
     linkedin: sterlingparamore
   name: Sterling Paramore
+  page: true
 steve_dowling:
   name: Steve Dowling
   image_url: /img/blog/authors/steve-dowling.jpeg
