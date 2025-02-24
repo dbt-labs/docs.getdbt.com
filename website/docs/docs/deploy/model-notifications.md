@@ -1,9 +1,10 @@
 ---
 title: "Model notifications"
 description: "While a job is running, receive email notifications in real time about any issues with your models and tests. "
+intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
 ---
 
-Set up dbt to notify the appropriate model owners through email about issues as soon as they occur, while the job is still running. Model owners can specify which statuses to receive notifications about: 
+Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
 - `Success` and `Fails` for models
 - `Warning`, `Success`, and `Fails` for tests
@@ -17,11 +18,11 @@ To be timely and keep the number of notifications to a reasonable amount when mu
 - Each owner/user who subscribes to notifications for one or more statuses (like failure, success, warning) will receive only _one_ email notification at the end of the job run.
 - The email includes a consolidated list of all models or tests that match the statuses the user subscribed to, instead of sending separate emails for each status.
 
-Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests.
+Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests in your deployment environments.
 
 ## Prerequisites
 - Your dbt Cloud administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
-- Your environment(s) must be on a [release track](/docs/dbt-versions/cloud-release-tracks) instead of a legacy dbt Core version.
+- Your deployment environment(s) must be on a [release track](/docs/dbt-versions/cloud-release-tracks) instead of a legacy dbt Core version.
 
 ## Configure groups
 
