@@ -1,7 +1,7 @@
 ---
 title: "Add Seeds to your DAG"
 sidebar_label: "Seeds"
-description: "Read this tutorial to learn how to use seeds when building in dbt."
+description: "Provide seed data files for your dbt models."
 id: "seeds"
 ---
 ## Related reference docs

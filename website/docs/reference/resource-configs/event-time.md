@@ -21,7 +21,6 @@ models:
 ```
 </File>
 
-
 <File name='models/properties.yml'>
 
 ```yml
@@ -139,20 +138,28 @@ sources:
 
 ## Definition
 
-Set the `event_time` to the name of the field that represents the timestamp of the event -- "at what time did the row occur" -- as opposed to an event ingestion date.  You can configure `event_time` for a [model](/docs/build/models), [seed](/docs/build/seeds), or [source](/docs/build/sources) in your `dbt_project.yml` file, property YAML file, or config block. 
+You can configure `event_time` for a [model](/docs/build/models), [seed](/docs/build/seeds), or [source](/docs/build/sources) in your `dbt_project.yml` file, property YAML file, or config block.
 
-Here are some examples of good and bad `event_time` columns:
+`event_time` is required for the [incremental microbatch](/docs/build/incremental-microbatch) strategy and highly recommended for [Advanced CI's compare changes](/docs/deploy/advanced-ci#optimizing-comparisons) in CI/CD workflows, where it ensures the same time-slice of data is correctly compared between your CI and production environments.
 
-- ✅ Good:
-  - `account_created_at` &mdash; This represents the specific time when an account was created, making it a fixed event in time.
-  - `session_began_at` &mdash; This captures the exact timestamp when a user session started, which won’t change and directly ties to the event.
+### Best practices
 
-- ❌ Bad:
+Set the `event_time` to the name of the field that represents the actual timestamp of the event (like `account_created_at`). The timestamp of the event should represent "at what time did the row occur" rather than an event ingestion date. Marking a column as the `event_time` when it isn't, diverges from the semantic meaning of the column which may result in user confusion when other tools make use of the metadata.
 
-  - `_fivetran_synced` &mdash; This isn't the time that the event happened, it's the time that the event was ingested.
-  - `last_updated_at` &mdash; This isn't a good use case as this will keep changing over time. 
+However, if an ingestion date (like `loaded_at`, `ingested_at`, or `last_updated_at`) are the only timestamps you use, you can set `event_time` to these fields. Here are some considerations to keep in mind if you do this:
 
-`event_time` is required for [Incremental microbatch](/docs/build/incremental-microbatch) and highly recommended for [Advanced CI's compare changes](/docs/deploy/advanced-ci#optimizing-comparisons) in CI/CD workflows, where it ensures the same time-slice of data is correctly compared between your CI and production environments.
+- Using `last_updated_at` or `loaded_at` &mdash; May result in duplicate entries in the resulting table in the data warehouse over multiple runs. Setting an appropriate [lookback](/reference/resource-configs/lookback) value can reduce duplicates but it can't fully eliminate them since some updates outside the lookback window won't be processed.
+- Using `ingested_at` &mdash; Since this column is created by your ingestion/EL tool instead of coming from the original source, it will change if/when you need to resync your connector for some reason. This means that data will be reprocessed and loaded into your warehouse for a second time against a second date. As long as this never happens (or you run a full refresh when it does), microbatches will be processed correctly when using `ingested_at`. 
+
+Here are some examples of recommended and not recommended `event_time` columns:
+
+
+| <div style={{width:'200px'}}>Status</div>      | Column name     | Description    |
+|--------------------|---------------------|----------------------|
+| ✅ Recommended | `account_created_at` | Represents the specific time when an account was created, making it a fixed event in time.                       |
+| ✅ Recommended | `session_began_at`    | Captures the exact timestamp when a user session started, which won’t change and directly ties to the event.     |
+| ❌ Not recommended | `_fivetran_synced`    | This represents the time the event was ingested, not when it happened.                                           |
+| ❌ Not recommended | `last_updated_at`    | Changes over time and isn't tied to the event itself. If used, note the considerations mentioned earlier in [best practices](#best-practices).    |
 
 ## Examples
 

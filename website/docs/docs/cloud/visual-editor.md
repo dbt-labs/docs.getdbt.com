@@ -7,6 +7,8 @@ pagination_next: "docs/cloud/visual-editor-interface"
 pagination_prev: null
 ---
 
+import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
+
 # About the visual editor <Lifecycle status='beta'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
@@ -28,6 +30,8 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 - Integrate with [dbt Explorer](/docs/collaborate/explore-projects) and the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.png" width="90%" title="Create or edit dbt models with the Visual editor, enabling everyone to develop with dbt through a drag-and-drop experience inside of dbt Cloud." />
+
+<Prerequisites feature={'/snippets/_visual-editor-prerequisites.md'} />
 
 ## Feedback
 

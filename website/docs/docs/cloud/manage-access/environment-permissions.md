@@ -41,7 +41,7 @@ Depending on your current group mappings, you may have to update roles to ensure
 
 Determine what personas need updated environment access and the roles they should be mapped to. The personas below highlight a few scenarios for environment permissions: 
 
-- **Developer** &mdash; Write access to create/run jobs in development environment
+- **Developer** &mdash; Write access to create/run jobs in non-production environments
 - **Testing/QA** &mdash; Write access to staging and development environments to test
 - **Production deployment** &mdash; Write access to all environments, including production, for deploying
 - **Analyst** &mdash; Doesn't need environmental write access but read-only access for discovery and troubleshooting

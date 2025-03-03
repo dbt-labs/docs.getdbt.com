@@ -1,6 +1,6 @@
 ---
 title: "About dbt Core and installation"
-description: "You can install dbt Core using a few different tested methods."
+description: "Install dbt Core locally to begin transforming your data."
 pagination_next: "docs/core/pip-install"
 pagination_prev: null
 ---

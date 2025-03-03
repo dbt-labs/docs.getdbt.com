@@ -27,6 +27,10 @@ When the CI run completes, you can view the run status directly from within the 
 
 dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
+import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
+
+<GitProvidersCI />
+
 ## Differences between CI jobs and other deployment jobs
 
 The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes CI jobs differently from other deployment jobs in these important ways:
@@ -60,7 +64,9 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 Available on [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks) and dbt Cloud Team or Enterprise accounts.
 
-When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the changed SQL files in your project (compared to the last deferred production state). 
+When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. 
+
+By default, SQL linting lints all the changed SQL files in your project (compared to the last deferred production state). Note that [snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but its SQL isn't lintable and can cause errors during linting. To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`). Refer to [snapshot linting](/docs/cloud/dbt-cloud-ide/lint-format#snapshot-linting) for more information.
 
 If the linter runs into errors, you can specify whether dbt should stop running the job on error or continue running it on error. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check.
 

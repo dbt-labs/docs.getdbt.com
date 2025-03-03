@@ -36,17 +36,23 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 
-Navigate to **Account settings** in dbt Cloud (by clicking your account name from the left side panel), and click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+1. Navigate to **Account settings** in dbt Cloud (by clicking your account name from the left side panel)
+2. Go to the **Webhooks** section and click **Create webhook**. 
+3. To configure your new webhook: 
+   - **Webhook name** &mdash; Enter a name for your outbound webhook.
+   - **Description** &mdash; Enter a description of the webhook.
+   - **Events** &mdash; Choose the event you want to trigger this webhook. You can subscribe to more than one event.
+   - **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on. Or, you can leave this field empty for the webhook to trigger on all jobs in your account. By default, dbt Cloud configures your webhook at the account level. 
+   - **Endpoint** &mdash; Enter your application's endpoint URL, where dbt Cloud can send the event(s) to.
+4. When done, click **Save**. 
+   
+   dbt Cloud provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
-To configure your new webhook: 
+:::info
+Note that dbt Cloud automatically deactivates a webhook after 5 consecutive failed attempts to send events to your endpoint. To re-activate the webhook, locate it in the webhooks list and click the reactivate button to enable it and continue receiving events.
+:::
 
-- **Name** &mdash; Enter a name for your outbound webhook.
-- **Description** &mdash; Enter a description of the webhook.
-- **Events** &mdash; Choose the event you want to trigger this webhook. You can subscribe to more than one event.
-- **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on. Or, you can leave this field empty for the webhook to trigger on all jobs in your account. By default, dbt Cloud configures your webhook at the account level. 
-- **Endpoint** &mdash; Enter your application's endpoint URL, where dbt Cloud can send the event(s) to.
-
-When done, click **Save**. dbt Cloud provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
+To find the appropriate dbt Cloud access URL for your region and plan, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 ### Differences between completed and errored webhook events {#completed-errored-event-difference}
 The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, dbt Cloud triggers the two events at different times:

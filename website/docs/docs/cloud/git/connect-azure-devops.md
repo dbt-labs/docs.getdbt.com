@@ -1,7 +1,7 @@
 ---
 title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
-pagination_next: "docs/cloud/git/setup-azure"
+pagination_next: "docs/cloud/git/setup-service-principal"
 ---
 
 # Connect to Azure DevOps <Lifecycle status="enterprise" />
@@ -20,12 +20,10 @@ Connect your Azure DevOps cloud account in dbt Cloud to unlock new product exper
 - Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps.
 
 
-To connect Azure DevOps in dbt Cloud:
+Currently, there are multiple methods for integrating Azure DevOps with dbt Cloud: 
 
-1. An Entra ID admin role (or role with proper permissions) needs to [set up an Active Directory application](/docs/cloud/git/setup-azure#register-an-azure-ad-app).
-2. An Azure DevOps admin needs to [connect the accounts](/docs/cloud/git/setup-azure#connect-azure-devops-to-your-new-app). 
-3. A dbt Cloud account admin needs to [add the app to dbt Cloud](/docs/cloud/git/setup-azure#add-your-azure-ad-app-to-dbt-cloud).    
-4. dbt Cloud developers need to [personally authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure) from dbt Cloud.
+- [**Service principal (recommended)**](/docs/cloud/git/setup-service-principal): Currently, this feature is in a phased rollout and not widely available to all accounts.
+- [**Service user (legacy)**](/docs/cloud/git/setup-service-user): Available to all accounts.
+- [**Service user to service principal migration**](/docs/cloud/git/setup-service-principal#migrate-to-service-principal): Once the **Service principal** option is available, you can migrate to the new service. 
 
-
-If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate Azure DevOps CIDRs to your IP restriction rules, or else the Azure DevOps connection will fail.
+No matter which approach you take, you will need admins for dbt Cloud, Azure Entra ID, and Azure DevOps to complete the integration. For more information, follow the setup guide that's right for you. 

@@ -12,8 +12,9 @@ id: "dbt_valid_to_current"
 
 ```yaml
 snapshots:
-  my_project:
-    +dbt_valid_to_current: "to_date('9999-12-31')"
+  - name: my_snapshot
+    config:
+      dbt_valid_to_current: "string"
 
 ```
 
@@ -27,7 +28,7 @@ snapshots:
         unique_key='id',
         strategy='timestamp',
         updated_at='updated_at',
-        dbt_valid_to_current='to_date('9999-12-31')'
+        dbt_valid_to_current='string'
     )
 }}
 ```
@@ -39,7 +40,7 @@ snapshots:
 ```yml
 snapshots:
   [<resource-path>](/reference/resource-configs/resource-path):
-    +dbt_valid_to_current: "to_date('9999-12-31')"
+    +dbt_valid_to_current: "string"
 ```
 
 </File>

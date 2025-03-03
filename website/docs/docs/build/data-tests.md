@@ -1,7 +1,7 @@
 ---
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
-description: "Read this tutorial to learn how to use data tests when building in dbt."
+description: "Configure dbt data tests to assess the quality of your input data and ensure accuracy in resulting datasets."
 pagination_next: "docs/build/unit-tests"
 pagination_prev: null
 search_weight: "heavy"
@@ -73,7 +73,9 @@ having total_amount < 0
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
 
-Note, you won't need to include semicolons (;) at the end of the SQL statement in your singular test files as it can cause your test to fail.
+Note:
+- Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your test to fail.
+- Singular tests placed in the tests directory are automatically executed when running `dbt test`. Don't reference singular tests in `model_name.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
 
 To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 
@@ -143,7 +145,7 @@ In plain English, these data tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
+You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests). You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
 ### More generic data tests
 

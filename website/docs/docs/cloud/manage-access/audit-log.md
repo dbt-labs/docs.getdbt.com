@@ -102,9 +102,11 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | Invite Added                 | invite.Added              | User invitation added and sent to the user      |
 | Invite Redeemed              | invite.Redeemed           | User redeemed invitation                        |
 | User Added to Account        | account.UserAdded         | New user added to the account                   |
-| User Added to Group          | user_group_user.Added     | An existing user is added to a group            |
-| User Removed from Account    | account.UserRemoved       | User removed from the account
-| User Removed from Group      | user_group_user.Removed   | An existing user is removed from a group        |
+| User Added to Group          | user_group_user.Added     | An existing user was added to a group            |
+| User Removed from Account    | account.UserRemoved       | User removed from the account                  |
+| User Removed from Group      | user_group_user.Removed   | An existing user was removed from a group        |
+| User License Created         | user_license.added        | A new user license was consumed                  |
+| User License Removed         | user_license.removed      | A user license was removed from the seat count   |
 | Verification Email Confirmed | user.jit.email.Confirmed  | Email verification confirmed by user            |
 | Verification Email Sent      | user.jit.email.Sent       | Email verification sent to user created via JIT |
 

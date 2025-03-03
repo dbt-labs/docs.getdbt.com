@@ -80,3 +80,8 @@ dbt Cloud imports everything in the collection(s) and you can continue to view t
 :::info Coming soon
 Soon, you’ll also be able to use auto-exposures to trigger the refresh of the data used in your Tableau dashboards from within dbt Cloud. Stay tuned for more on this soon!
 :::
+
+## Considerations
+import ConsiderationsTableau from '/snippets/_auto-exposures-considerations-tb.md';
+
+<ConsiderationsTableau/>

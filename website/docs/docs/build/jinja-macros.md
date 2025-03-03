@@ -1,6 +1,6 @@
 ---
 title: "Jinja and macros"
-description: "Read this tutorial to learn how to use jinja and macros when building in dbt."
+description: "Enhance your SQL with Jinja and macros when developing in dbt to create reusable, modular logic."
 id: "jinja-macros"
 ---
 

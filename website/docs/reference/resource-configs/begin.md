@@ -11,13 +11,15 @@ datatype: string
 
 ## Definition
 
-Set the `begin` config to the timestamp value at which your microbatch model data should begin &mdash; at the point the data becomes relevant for the microbatch model.  You can configure `begin` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block. The value for `begin` must be a string representing an ISO formatted date OR date and time.
+Set the `begin` config to the timestamp value at which your [microbatch incremental model](/docs/build/incremental-microbatch) data should begin &mdash; at the point the data becomes relevant for the microbatch model.  
+
+You can configure `begin` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block. The value for `begin` must be a string representing an ISO-formatted date, _or_ date and time, _or_ [relative dates](#set-begin-to-use-relative-dates). Check out the [examples](#examples) in the next section for more details.
 
 ## Examples
 
 The following examples set `2024-01-01 00:00:00` as the `begin` config for the `user_sessions` model.
 
-Example in the `dbt_project.yml` file:
+#### Example in the `dbt_project.yml` file
 
 <File name='dbt_project.yml'>
 
@@ -29,7 +31,7 @@ models:
 ```
 </File>
 
-Example in a properties YAML file:
+#### Example in a properties YAML file
 
 <File name='models/properties.yml'>
 
@@ -42,7 +44,7 @@ models:
 
 </File>
 
-Example in sql model config block:
+#### Example in sql model config block
 
 <File name="models/user_sessions.sql">
 
@@ -53,3 +55,22 @@ Example in sql model config block:
 ```
 
 </File> 
+
+#### Set `begin` to use relative dates
+
+To configure `begin` to use relative dates, you can use modules variables [`modules.datetime`](/reference/dbt-jinja-functions/modules#datetime) and [`modules.pytz`](/reference/dbt-jinja-functions/modules#pytz) to dynamically specify relative timestamps, such as yesterday's date or the start of the current week.
+
+For example, to set `begin` to yesterday's date:
+
+```sql
+{{
+    config(
+        materialized = 'incremental',
+        incremental_strategy='microbatch',
+        unique_key = 'run_id',
+        begin=(modules.datetime.datetime.now() - modules.datetime.timedelta(1)).isoformat(),
+        event_time='created_at',
+        batch_size='day',
+    )
+}}
+```

@@ -15,7 +15,13 @@ The data health tile:
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
 
-Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
+Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. An exposure defines how specific outputs &mdash; like dashboards or reports &mdash; depend on your data models. Exposures in dbt can be configured in two ways:
+
+- Manual exposures &mdash; Defined manually and explicitly in your project’s YAML files.
+- Auto exposures &mdash; Pulled automatically from your BI tool as long as your BI tool integrates with dbt Cloud and you have access to [auto-exposures](/docs/collaborate/auto-exposures). 
+  - dbt Cloud creates auto exposures automatically for dbt Cloud users with access to this feature, removing the need for manual YAML definitions.
+  - dbt Cloud pulls exposure metadata from your BI tool and integrates it into dbt Explorer.
+  - These auto exposures are stored in dbt’s metadata system, appear in dbt Explorer, and behave like manual exposures, however they don’t exist in YAML files.
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
@@ -27,7 +33,11 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 - You must have a dbt Cloud account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
-- Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
+- You have [exposures](/docs/build/exposures) defined in your project:
+  -  If using manual exposures, they must be explicitly defined in your YAML files.
+  -  If using auto exposures, ensure your BI tool is [configured](/docs/cloud-integrations/configure-auto-exposures) with dbt Cloud.
+- You have [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
+- The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
 
 ## View exposure in dbt Explorer
 
@@ -61,15 +71,22 @@ Follow these steps to set up your data health tile:
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
+
+   :::tip
+      The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
+   :::
+
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 
+
+
 If your analytics tool supports iFrames, you can embed the dashboard tile within it. 
 
-### Examples
+## Examples
 The following examples show how to embed the data health tile in Tableau and PowerBI.
 
 <Tabs>

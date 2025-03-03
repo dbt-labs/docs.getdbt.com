@@ -59,6 +59,10 @@
     margin-right: 8px;
 }
 
+details[open] :local(.toggle)::before {
+  transform: rotate(225deg); /* this rotates the chevron down */
+}
+
 :local(.toggleDown)::before {
     transform: rotate(225deg); /* Downward arrow */
 }
@@ -113,8 +117,8 @@
 }
 
 :local(html[data-theme='dark'] details .headerText) {
-    color: rgba(18, 12, 12, 0.862); /* this adds black text inside details in dark mode */
-  }
+  color: rgba(255, 255, 255, 0.9); /* Change to white text in dark mode */
+}
 
 :local(.body > p:last-child) {
     margin-bottom: 0px;
@@ -146,4 +150,3 @@
   display: flex;
   align-items: center;
 }
-

@@ -30,3 +30,8 @@
   subheader: Catch up on Coalesce 2024 and register to access a select number of on-demand sessions.
   button_text: Register and watch
   url: https://coalesce.getdbt.com/register/online 
+- name: developer_day_2025
+  header: dbt Developer Day 
+  subheader: Join us on March 19th or 20th to hear from dbt Labs product leads about exciting new and coming-soon features designed to supercharge data developer workflows.
+  button_text: Save your seat
+  url: https://www.getdbt.com/resources/webinars/dbt-developer-day

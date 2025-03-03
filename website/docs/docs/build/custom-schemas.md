@@ -1,5 +1,6 @@
 ---
 title: "Custom schemas"
+description: "Configure custom schemas for your dbt model's tables and views in the database."
 id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
 ---
@@ -160,7 +161,7 @@ See docs on macro `dispatch`: ["Managing different global overrides across packa
 
 ## A built-in alternative pattern for generating schema names
 
-A common customization is to ignore the target schema in production environments, and ignore the custom schema configurations in other environments (such as development and CI).
+A common customization is to use the custom schema in production when provided, with the target schema serving only as a fallback if no custom schema is specified. In other environments, such as development and CI, custom schema configurations are ignored, defaulting to the target schema instead.
 
 Production Environment (`target.name == 'prod'`)
 
@@ -207,3 +208,9 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
 For more information, consult the [managing environments in dbt Core](/docs/core/dbt-core-environments) guide.
+
+## Related docs
+
+- [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
+- [Custom database](/docs/build/custom-databases) to learn how to customize dbt model database
+- [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

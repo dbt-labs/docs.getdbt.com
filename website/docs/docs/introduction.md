@@ -1,8 +1,10 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
+intro_text: "dbt is the industry standard for data transformation. Learn how it can help you transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation."
 ---
 
 <Snippet path="what-is-dbt-intro" />
@@ -17,13 +19,6 @@ Read more about why we want to enable analysts to work more like software engine
 
 Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
 
-<!-- removing per Leona's feedback and pending review
-To cater to the diverse needs of data teams, dbt offers two primary solutions:
-
-- [**dbt Cloud**](#dbt-cloud) &mdash; A comprehensive, full managed service enabling teams to develop, test, deploy, and explore data products safely and reliably.
-- [**dbt Core**](#dbt-core) &mdash; An open-source CLI tool that's suitable for users who prefer a manual setup.
--->
-
 ### dbt Cloud
 
 dbt Cloud offers the fastest, most reliable, and scalable way to deploy dbt. Allowing data teams to optimize their data transformation by developing, testing, scheduling, and investigating data models using a single, fully managed service through a web-based user interface (UI).
@@ -32,7 +27,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/docs/get-started-dbt).
 
-### dbt Core
+### dbt Core 
 
 [dbt Core](/docs/core/about-core-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install dbt Core](/docs/core/installation-overview) through the command line. Learn more with the [quickstart for dbt Core](https://docs.getdbt.com/guides/codespace?step=1).
 

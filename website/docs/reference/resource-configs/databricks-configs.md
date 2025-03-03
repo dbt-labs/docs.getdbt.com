@@ -10,19 +10,18 @@ When materializing a model as `table`, you may include several optional configs 
 <VersionBlock lastVersion="1.7">
 
  
-| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | SQL, Python   | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*  | `{'this.is.my.key': 12}` |
-| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python   | `zstd`                   |
+| Option    | Description    | Required?  | Model support | Example     |
+|-----------|---------|-------------------|---------------|-------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).       | Optional       | SQL, Python   | `delta`   |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.   | Optional    | SQL, Python   | `/mnt/root`   |
+| partition_by   | Partition the created table by the specified columns. A directory is created for each partition.| Optional | SQL, Python   | `date_day` |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional   | SQL           | `date_day`   |
+| clustered_by   | Each partition in the created table will be split into a fixed number of buckets by the specified columns.   | Optional    | SQL, Python   | `country_code`           |
+| buckets    | The number of buckets to create while clustering  | Required if `clustered_by` is specified | SQL, Python   | `8`    |
+| tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional          | SQL, Python<sup>*</sup> | `{'this.is.my.key': 12}` |
+| compression      | Set the compression algorithm.    | Optional      | SQL, Python   | `zstd`   |
 
-\* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
-We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+\* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation. There is not yet a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
 
 </VersionBlock>
 
@@ -30,45 +29,47 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 1.8 introduces support for [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) at the table level, in addition to all table configuration supported in 1.7.
 
-| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL, Python   | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*  | `{'this.is.my.key': 12}` |
-| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL+, Python+ | `{'my_tag': 'my_value'}`  |
-| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python   | `zstd`                   |
+| Option    | Description   | Required?| Model support | Example  |
+|-----------|---------------|----------|---------------|----------|
+| file_format     | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).  | Optional  | SQL, Python     | `delta`     |
+| location_root | The created table uses the specified directory to store its data. The table alias is appended to it.  | Optional | SQL, Python   | `/mnt/root`  |
+| partition_by    | Partition the created table by the specified columns. A directory is created for each partition.  | Optional   | SQL, Python   | `date_day`   |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional    | SQL, Python   | `date_day` |
+| clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns. | Optional  | SQL, Python   | `country_code`   |
+| buckets    | The number of buckets to create while clustering  | Required if `clustered_by` is specified   | SQL, Python   | `8`  |
+| tblproperties  | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional   | SQL, Python<sup>*</sup>  | `{'this.is.my.key': 12}` |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table    | Optional    |  SQL<sup>†</sup>, Python<sup>†</sup> | `{'my_tag': 'my_value'}`  |
+| compression   | Set the compression algorithm.  | Optional     | SQL, Python   | `zstd`   |
 
 \* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
 
-\+ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
-
+† `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+ 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
 dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
 
-| Option              | Description                 | Required?                                 | Model Support   | Example                  |
-|---------------------|-----------------------------|-------------------------------------------|-----------------|--------------------------|
-| table_format        | Whether or not to provision [Iceberg](https://docs.databricks.com/en/delta/uniform.html) compatibility for the materialization                                                                                     | Optional                                  | SQL, Python     | `iceberg`                |
-| file_format+        | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python     | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python     | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python     | `date_day`               |
+| Option    | Description| Required?     | Model support   | Example      |
+|-------------|--------|-----------|-----------------|---------------|
+| table_format   | Whether or not to provision [Iceberg](https://docs.databricks.com/en/delta/uniform.html) compatibility for the materialization     | Optional     | SQL, Python     | `iceberg`    |
+| file_format <sup>†</sup>        | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).   | Optional     | SQL, Python     | `delta`     |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.     | Optional  | SQL, Python     | `/mnt/root`  |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition. | Optional   | SQL, Python     | `date_day`  |
 | liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional          | SQL, Python     | `date_day` |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python     | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified   | SQL, Python     | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*    | `{'this.is.my.key': 12}` |
-| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL++, Python++ | `{'my_tag': 'my_value'}` |
-| compression         | Set the compression algorithm.                                                                                                                                                                                     | Optional                                  | SQL, Python     | `zstd`                   |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.      | Optional     | SQL, Python     | `country_code`           |
+| buckets    | The number of buckets to create while clustering   | Required if `clustered_by` is specified   | SQL, Python     | `8`        |
+| tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional     | SQL, Python*    | `{'this.is.my.key': 12}` |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table     | Optional    | SQL <sup>‡</sup> , Python <sup>‡</sup> | `{'my_tag': 'my_value'}` |
+| compression   | Set the compression algorithm.   | Optional    | SQL, Python     | `zstd`    |
 
 \* We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
-\+ When `table_format` is `iceberg`, `file_format` must be `delta`.
-\++ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+
+† When `table_format` is `iceberg`, `file_format` must be `delta`.
+
+‡ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
 
 </VersionBlock>
 
@@ -260,7 +261,7 @@ This strategy is currently only compatible with All Purpose Clusters, not SQL Wa
 
 This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/3.0.0-preview/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
 
-If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` + `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
+If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
 <Tabs
   defaultValue="source"
@@ -1072,7 +1073,7 @@ This is due to limitations in the Databricks SQL API.
 
 #### Streaming Tables
 For streaming tables, only changes to the partitioning currently requires the table be dropped and recreated.
-For any other supported configuration change, we use `CREATE OR REFRESH` (+ an `ALTER` statement for changes to the schedule) to apply the changes.
+For any other supported configuration change, we use `CREATE OR REFRESH` (plus an `ALTER` statement for changes to the schedule) to apply the changes.
 There is currently no mechanism for the adapter to detect if the streaming table query has changed, so in this case, regardless of the behavior requested by on_configuration_change, we will use a `create or refresh` statement (assuming `partitioned by` hasn't changed); this will cause the query to be applied to future rows without rerunning on any previously processed rows.
 If your source data is still available, running with '--full-refresh' will reprocess the available data with the updated current query.
 

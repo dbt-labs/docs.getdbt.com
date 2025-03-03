@@ -46,7 +46,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ## Create a new Snowflake worksheet 
 1. Log in to your trial Snowflake account. 
-2. In the Snowflake UI, click **+ Worksheet** in the upper right corner to create a new worksheet.
+2. In the Snowflake UI, click **+ Create** in the left-hand corner, underneath the Snowflake logo, which opens a dropdown. Select the first option, **SQL Worksheet**. 
 
 ## Load data 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.

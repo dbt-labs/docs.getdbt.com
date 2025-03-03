@@ -266,6 +266,13 @@ Visual Studio (VS) Code extensions enhance command line tools by adding extra fu
 You can use the dbt Cloud CLI with Power User for dbt Core and dbt Cloud by following the instructions [here](https://docs.myaltimate.com/setup/reqdConfigCloud/). 
 
 The Power User extension will handle installing the Cloud CLI on your behalf.
+  
+  
+## Considerations
+
+import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
+
+<CloudCliRelativePath />
 
 ## FAQs
 
@@ -313,16 +320,12 @@ This alias will allow you to use the <code>dbt-cloud</code> command to invoke th
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why am I receiving a `Session occupied` error?">
-
-
-If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
-
-</DetailsToggle>
-
 <DetailsToggle alt_header="Why am I receiving a `Stuck session` error when trying to run a new command?">
 
-
-The Cloud CLI allows only one command that writes to the data warehouse at a time. If you attempt to run multiple write commands simultaneously (for example, `dbt run` and `dbt build`), you will encounter a `stuck session` error. To resolve this, cancel the specific invocation by passing its ID to the cancel command. For more information, refer to [parallel execution](/reference/dbt-commands#parallel-execution).
+The dbt Cloud CLI allows only one command that writes to the data warehouse at a time. If you attempt to run multiple write commands simultaneously (for example, `dbt run` and `dbt build`), you will encounter a `stuck session` error. To resolve this, cancel the specific invocation by passing its ID to the cancel command. For more information, refer to [parallel execution](/reference/dbt-commands#parallel-execution).
 
 </DetailsToggle>
+
+<FAQ path="Troubleshooting/long-sessions-cloud-cli" />
+  
+  

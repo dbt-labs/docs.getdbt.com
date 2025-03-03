@@ -59,7 +59,9 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | email | Unspecified | user.email | The user's email address |
 | first_name | Unspecified | user.first_name | The user's first name |
 | last_name | Unspecified | user.last_name | The user's last name |
-| NameID (if applicable) | Unspecified | user.email | The user's email address |
+| NameID | Unspecified | ID | The user's unchanging ID |
+
+`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but dbt Cloud creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
@@ -85,7 +87,29 @@ them to complete setup in dbt Cloud.
 
 - Identity Provider Issuer
 - Identity Provider SSO Url
-- X.509 Certificate
+- X.509 Certificate (PEM format required)
+  <!-- vale off -->
+    - <Expandable alt_header="Example of PEM format" >
+      ```text
+      -----BEGIN CERTIFICATE-----
+      MIIC8DCCAdigAwIBAgIQSANTIKwxA1221kqhkiG9w0dbtLabsBAQsFADA0MTIwMAYDVQQD
+      EylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMzEyMjIwMDU1
+      MDNaFw0yNjEyMjIwMDU1MDNaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQg
+      U1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAEFAAFRANKIEMIIBCgKCAQEAqfXQGc/D8ofK
+      aXbPXftPotqYLEQtvqMymgvhFuUm+bQ9YSpS1zwNQ9D9hWVmcqis6gO/VFw61e0lFnsOuyx+XMKL
+      rJjAIsuWORavFqzKFnAz7hsPrDw5lkNZaO4T7tKs+E8N/Qm4kUp5omZv/UjRxN0XaD+o5iJJKPSZ
+      PBUDo22m+306DE6ZE8wqxT4jTq4g0uXEitD2ZyKaD6WoPRETZELSl5oiCB47Pgn/mpqae9o0Q2aQ
+      LP9zosNZ07IjKkIfyFKMP7xHwzrl5a60y0rSIYS/edqwEhkpzaz0f8QW5pws668CpZ1AVgfP9TtD
+      Y1EuxBSDQoY5TLR8++2eH4te0QIDAQABMA0GCSqGSIb3DmAKINgAA4IBAQCEts9ujwaokRGfdtgH
+      76kGrRHiFVWTyWdcpl1dNDvGhUtCRsTC76qwvCcPnDEFBebVimE0ik4oSwwQJALExriSvxtcNW1b
+      qvnY52duXeZ1CSfwHkHkQLyWBANv8ZCkgtcSWnoHELLOWORLD4aSrAAY2s5hP3ukWdV9zQscUw2b
+      GwN0/bTxxQgA2NLZzFuHSnkuRX5dbtrun21USPTHMGmFFYBqZqwePZXTcyxp64f3Mtj3g327r/qZ
+      squyPSq5BrF4ivguYoTcGg4SCP7qfiNRFyBUTTERFLYU0n46MuPmVC7vXTsPRQtNRTpJj/b2gGLk
+      1RcPb1JosS1ct5Mtjs41
+      -----END CERTIFICATE-----
+      ```
+      </Expandable>
+      <!-- vale on -->
 
 ### Finish setup
 
@@ -144,6 +168,9 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
    * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
    * **Relay State**: `<login slug>`
+   * **Name ID format**: `Unspecified`
+   * **Application username**: `Custom` / `user.getInternalProperty("id")`
+   * **Update Application username on**: `Create and update`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
@@ -245,7 +272,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
    - **Start URL**: `<login slug>`
 5. Select the **Signed response** checkbox.
-6. The default **Name ID** is the primary email. Multi-value input is not supported.
+6. The default **Name ID** is the primary email. Multi-value input is not supported.  If your user profile has a unique, stable value that will persist across email address changes, it's best to use that; otherwise, email will work.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
 dbt Cloud expects.
 8. Click **Add another mapping** to map additional attributes.
@@ -329,9 +356,11 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 From the Set up Single Sign-On with SAML page:
 
 1. Click **Edit** in the User Attributes & Claims section.
-2. Leave the claim under "Required claim" as is.
-3. Delete all claims under "Additional claims."
-4. Click **Add new claim** and add these three new claims:
+2. Click **Unique User Identifier (Name ID)** under **Required claim.**
+3. Set **Name identifier format** to **Unspecified**.
+4. Set **Source attribute** to **user.objectid**.
+5. Delete all claims under **Additional claims.**
+6. Click **Add new claim** and add the following new claims:
 
    | Name | Source attribute |
    | ----- | ----- |
@@ -339,16 +368,22 @@ From the Set up Single Sign-On with SAML page:
    | **first_name** | user.givenname |
    | **last_name** | user.surname |
 
-5. Click **Add a group claim** from User Attributes and Claims.
-6. If you'll assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
-7. Set **Source attribute** to **Group ID**.
-8. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
+7. Click **Add a group claim** from **User Attributes and Claims.**
+8. If you assign users directly to the enterprise application, select **Security Groups**. If not, select **Groups assigned to the application**.
+9. Set **Source attribute** to **Group ID**.
+10. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
 
 **Note:** Keep in mind that the Group ID in Entra ID maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
 ### Finish setup
 
-9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
+9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in dbt Cloud vary from those in the Entra ID app. They're mapped as follows:
+
+   | dbt Cloud field | Corresponding Entra ID field |
+   | ----- | ----- |
+   | **Identity Provider SSO URL** | Login URL |
+   | **Identity Provider Issuer** | Microsoft Entra Identifier |
+
 
 ## OneLogin integration
 
@@ -386,7 +421,7 @@ We recommend using the following values:
 
 | name | name format | value |
 | ---- | ----------- | ----- |
-| NameID | Unspecified | Email |
+| NameID | Unspecified | OneLogin ID |
 | email | Unspecified | Email |
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
@@ -408,7 +443,29 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 
 - Issuer URL
 - SAML 2.0 Endpoint (HTTP)
-- X.509 Certificate
+- X.509 Certificate (PEM format required)
+  <!-- vale off -->
+    - <Expandable alt_header="Example of PEM format" >
+      ```text
+      -----BEGIN CERTIFICATE-----
+      MIIC8DCCAdigAwIBAgIQSANTIKwxA1221kqhkiG9w0dbtLabsBAQsFADA0MTIwMAYDVQQD
+      EylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMzEyMjIwMDU1
+      MDNaFw0yNjEyMjIwMDU1MDNaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQg
+      U1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAEFAAFRANKIEMIIBCgKCAQEAqfXQGc/D8ofK
+      aXbPXftPotqYLEQtvqMymgvhFuUm+bQ9YSpS1zwNQ9D9hWVmcqis6gO/VFw61e0lFnsOuyx+XMKL
+      rJjAIsuWORavFqzKFnAz7hsPrDw5lkNZaO4T7tKs+E8N/Qm4kUp5omZv/UjRxN0XaD+o5iJJKPSZ
+      PBUDo22m+306DE6ZE8wqxT4jTq4g0uXEitD2ZyKaD6WoPRETZELSl5oiCB47Pgn/mpqae9o0Q2aQ
+      LP9zosNZ07IjKkIfyFKMP7xHwzrl5a60y0rSIYS/edqwEhkpzaz0f8QW5pws668CpZ1AVgfP9TtD
+      Y1EuxBSDQoY5TLR8++2eH4te0QIDAQABMA0GCSqGSIb3DmAKINgAA4IBAQCEts9ujwaokRGfdtgH
+      76kGrRHiFVWTyWdcpl1dNDvGhUtCRsTC76qwvCcPnDEFBebVimE0ik4oSwwQJALExriSvxtcNW1b
+      qvnY52duXeZ1CSfwHkHkQLyWBANv8ZCkgtcSWnoHELLOWORLD4aSrAAY2s5hP3ukWdV9zQscUw2b
+      GwN0/bTxxQgA2NLZzFuHSnkuRX5dbtrun21USPTHMGmFFYBqZqwePZXTcyxp64f3Mtj3g327r/qZ
+      squyPSq5BrF4ivguYoTcGg4SCP7qfiNRFyBUTTERFLYU0n46MuPmVC7vXTsPRQtNRTpJj/b2gGLk
+      1RcPb1JosS1ct5Mtjs41
+      -----END CERTIFICATE-----
+      ```
+      </Expandable>
+      <!-- vale on -->
 
 ### Finish setup
 

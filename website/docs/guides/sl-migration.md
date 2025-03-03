@@ -33,7 +33,7 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
     ```bash
     python -m pip install "dbt-metricflow[snowflake]"
     ```
-    **Note** - MetricFlow commands aren't yet supported in the dbt CLoud IDE at this time.
+    **Note** - MetricFlow commands aren't yet supported in the dbt Cloud IDE at this time.
 
 2. Run `dbt parse`. This parses your project and creates a `semantic_manifest.json` file in your target directory. MetricFlow needs this file to query metrics. If you make changes to your configs, you will need to parse your project again. 
 3. Run `mf list metrics` to view the metrics in your project.

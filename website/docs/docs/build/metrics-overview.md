@@ -7,9 +7,11 @@ tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
 ---
   
-Once you've created your semantic models, it's time to start adding metrics. Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
+After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project
 
-This article explains the different supported metric types you can add to your dbt project. The keys for metrics definitions are:
+Metrics must be defined in a YAML file &mdash; either within the same file as your semantic models or in a separate YAML file in a subdirectory of your dbt project. They shouldn't be defined in a `config` block on a model.
+
+The keys for metrics definitions are:
 
 <!-- for v1.8 and higher -->
 
@@ -107,7 +109,10 @@ It's possible to define a default time granularity for metrics if it's different
 The granularity can be set using the `time_granularity` parameter on the metric, and defaults to `day`. If day is not available because the dimension is defined at a coarser granularity, it will default to the defined granularity for the dimension.
 
 ### Example
-You have a semantic model called `orders` with a time dimension called `order_time`. You want the `orders` metric to roll up to `monthly` by default; however, you want the option to look at these metrics hourly. You can set the `time_granularity` parameter on the `order_time` dimension to `hour`, and then set the `time_granularity` parameter in the metric to `month`.
+- You have a semantic model called `orders` with a time dimension called `order_time`.
+- You want the `orders` metric to roll up to `monthly` by default; however, you want the option to look at these metrics hourly.
+- You can set the `time_granularity` parameter on the `order_time` dimension to `hour`, and then set the `time_granularity` parameter in the metric to `month`.
+
 ```yaml
 semantic_models:
   ...
@@ -120,15 +125,19 @@ semantic_models:
     - name: orders
       expr: 1
       agg: sum
-  metrics:
-    - name: orders
-      type: simple
-      label: Count of Orders
-      type_params:
-        measure:
-          name: orders
-      time_granularity: month -- Optional, defaults to day
+
+metrics:
+  - name: orders
+    type: simple
+    label: Count of Orders
+    type_params:
+      measure:
+        name: orders
+    time_granularity: month -- Optional, defaults to day
 ```
+
+Remember that metrics can be defined in the same YAML files as your semantic models but must be defined as a separate top-level section and not nested within the `semantic_models` key. Or you can define metrics in their dedicated separate YAML files located in any subdirectories within the same dbt project repository.
+
 </VersionBlock>
 
 ## Conversion metrics
@@ -179,6 +188,7 @@ metrics:
         name: active_users
         fill_nulls_with: 0
         join_to_timespine: true
+      cumulative_type_params:
         window: 7 days
 ```
 </File>
