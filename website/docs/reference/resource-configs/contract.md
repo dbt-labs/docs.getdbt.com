@@ -99,7 +99,7 @@ When you `dbt run` your model, _before_ dbt has materialized it as a table in th
 
 ### Incremental models and `on_schema_change`
 
-Why require that incremental models also set [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change), and why to `append_new_columns`?
+Why require that incremental models also set [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change), and why to `append_new_columns` or `fail`?
 
 Imagine:
 - You add a new column to both the SQL and the YAML spec
@@ -107,7 +107,7 @@ Imagine:
 - dbt doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
 
-Why `append_new_columns`, rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models!
+Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models! `sync_all_columns` works like `append_new_columns` but also removes deleted columns, which you're not suppose to do with contracted models unless you upgrade the version.
 
 ## Related documentation
 - [What is a model contract?](/docs/collaborate/govern/model-contracts)

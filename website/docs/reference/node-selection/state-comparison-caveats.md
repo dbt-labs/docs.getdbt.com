@@ -45,6 +45,17 @@ If you're a frequent user of `relationships` tests or data tests, or frequently 
 dbt run -s "state:modified"
 dbt test -s "state:modified" --exclude "test_name:relationships"
 ```
+### Overwrites the `manifest.json`
+
+import Overwritesthemanifest from '/snippets/_overwrites-the-manifest.md';
+
+<Overwritesthemanifest />
+
+#### Recommendation
+
+import Recommendationoverwritesthemanifest from '/snippets/_recommendation-overwriting-manifest.md'; 
+
+<Recommendationoverwritesthemanifest />
 
 ### False positives
 

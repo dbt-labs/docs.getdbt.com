@@ -254,6 +254,18 @@ There are two additional `state` selectors that complement `state:new` and `stat
 
 These selectors can help you shorten run times by excluding unchanged nodes. Currently, no subselectors are available at this time, but that might change as use cases evolve. 
 
+#### Overwrites the `manifest.json`
+
+import Overwritesthemanifest from '/snippets/_overwrites-the-manifest.md';
+
+<Overwritesthemanifest />
+
+#### Recommendation
+
+import Recommendationoverwritesthemanifest from '/snippets/_recommendation-overwriting-manifest.md'; 
+
+<Recommendationoverwritesthemanifest />
+
 ### tag
 The `tag:` method is used to select models that match a specified [tag](/reference/resource-configs/tags).
 
