@@ -439,7 +439,7 @@ Active voice provides the following advantages:
 - Some passive voice sentences omit an actor altogether, which forces the reader to guess the actor's identity.
 
 
-Sometimes, using passive voice is appropriate. Make sure it’s an intentional choice that communicates the idea clearer than active voice would. For example, when the system is the actor, rather than a person.
+Sometimes, using passive voice is appropriate. Make sure it’s an intentional choice that communicates the idea more clearly than active voice would. For example, when the system is the actor, rather than a person.
 
 
 ✅ Use |	❌ Avoid
@@ -462,7 +462,7 @@ Avoid regional idiomatic phrases as well.  For example, a common saying amongst 
 
 ### Abbreviations
 
-According to The American Heritage Dictionary, an abbreviation is "[a] shortened form of a word or phrase used chiefly in writing to represent the complete form" but, unlike the acronym, it's letters aren't pronounced together as one full word.
+According to The American Heritage Dictionary, an abbreviation is "[a] shortened form of a word or phrase used chiefly in writing to represent the complete form" but, unlike the acronym, its letters aren't pronounced together as one full word.
 
 ### Acronyms
 
@@ -471,7 +471,7 @@ Spell out acronyms the first time they’re used in an article, except in titles
 _Do_ provide the full word or phrase being abbreviated before the abbreviation itself and encapsulate within parentheses. <br />
  * *Example: Integrated Development Environment (IDE)*
 
-**DO NOT** use an acronym if its only used once. Please use the full word or phrase for its one-time use.
+**DO NOT** use an acronym if it's only used once. Please use the full word or phrase for its one-time use.
 
 ### Latin abbreviations
 
