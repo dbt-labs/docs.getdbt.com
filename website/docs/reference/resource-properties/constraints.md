@@ -26,7 +26,7 @@ The structure of a constraint is:
 <VersionBlock firstVersion="1.9">
 
 Foreign key constraints accept two additional inputs:
-- `to`: A relation input, likely `ref()`, indicating the referenced table.
+- `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
 This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [dbt Cloud "Latest""](/docs/dbt-versions/cloud-release-tracks) and [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
@@ -47,7 +47,7 @@ models:
         columns: [first_column, second_column, ...]
       - type: foreign_key # multi_column
         columns: [first_column, second_column, ...]
-        to: ref('other_model_name')
+        to: ref('my_model_to') | source('source', 'source_table')
         to_columns: [other_model_first_column, other_model_second_columns, ...]
       - type: check
         columns: [first_column, second_column, ...]
@@ -64,17 +64,26 @@ models:
           - type: not_null
           - type: unique
           - type: foreign_key
-            to: ref('other_model_name')
+            to: ref('my_model_to') | source('source', 'source_table')
             to_columns: [other_model_column]
           - type: ...
 ```
 
 </File>
+
+Supported dbt-adapters use these fields when populated, to render out the foreign key constraint instead of `expression`.
+
+For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support).
+
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
-In older versions of dbt Core, when defining a `foreign_key` constraint, you need to manually specify the referenced table in the `expression` field. You can use `{{ target }}` variables to make this expression environment-aware, but the dependency between this model and the referenced table is not captured. Starting in dbt Core v1.9, you can specify the referenced table using the `ref()` function.
+When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment:
+
+`expression: "{{ target.schema }}.customers(customer_id)"` 
+
+Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About dbt Core versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 <File name='models/schema.yml'>
 

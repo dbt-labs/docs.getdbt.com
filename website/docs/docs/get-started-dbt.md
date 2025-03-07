@@ -23,6 +23,12 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 <div className="grid--3-col">
 
 <Card
+    title="Quickstart for dbt Cloud and Amazon Athena"
+    body="Integrate dbt Cloud with Amazon Athena for your data transformations."
+    link="https://docs.getdbt.com/guides/athena"
+    icon="athena"/>
+
+<Card
     title="Quickstart for dbt Cloud and Azure Synapse Analytics"
     body="Discover how to integrate dbt Cloud with Azure Synapse Analytics for your data transformations."
     link="https://docs.getdbt.com/guides/azure-synapse-analytics"

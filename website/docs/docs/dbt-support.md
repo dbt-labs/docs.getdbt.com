@@ -104,6 +104,22 @@ Support tickets are assigned a severity level based on the impact of the issue o
 | Severity Level 3 | Feature failure, but a workaround exists. | 
 | Severity Level 4 | Error with low-to-no impact on Client’s access to or use of the Subscription, or Client has a general question or feature enhancement request. | 
 
+## Leave feedback
+
+Leave feedback or submit a feature request for dbt Cloud or dbt Core.
+
+#### Share feedback or feature request for dbt Cloud
+1. In the dbt Cloud navigation, click **Leave feedback**.
+2. In the **Leave feedback** pop up, fill out the form.
+3. Upload any relevant files to the feedback form (optional).
+4. Confirm if you'd like dbt Labs to contact you about the feedback (optional).
+5. Click **Send Feedback**.
+
+<Lightbox src="/img/docs/leave-feedback.gif" title="Leave feedback in dbt Cloud" />
+
+#### Share feedback or feature request for dbt Core
+- [Create a GitHub issue here](https://github.com/dbt-labs/dbt-core/issues).
+
 ## External help
 
 For SQL writing, project performance review, or project building, refer to dbt Preferred Consulting Providers and dbt Labs' Services.

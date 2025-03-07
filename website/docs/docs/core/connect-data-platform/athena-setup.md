@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-athena'
   slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'
   platform_name: 'Athena'
-  config_page: '/reference/resource-configs/no-configs'
+  config_page: '/reference/resource-configs/athena-configs'
 ---
 
 <!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed.  -->

@@ -100,6 +100,32 @@ models:
 
 With one line of code, you've just created a test! In this example, `users` will be passed to the `is_even` test as the `model` argument, and `favorite_number` will be passed in as the `column_name` argument. You could add the same line for other columns, other models—each will add a new test to your project, _using the same generic test definition_.
 
+### Add description to generic data test logic
+
+You can add a description to the Jinja macro that provides the core logic for a data test by including the `description` key under the `macros:` section. You can add descriptions directly to the macro, including descriptions for macro arguments.
+
+Here's an example:
+
+<File name="macros/generic/schema.yml">
+    
+```yaml
+macros:
+  - name: test_not_empty_string
+    description: Complementary test to default `not_null` test as it checks that there is not an empty string. It only accepts columns of type string.
+    arguments:
+      - name: model 
+        type: string
+        description: Model Name
+      - name: column_name
+        type: string
+        description: Column name that should not be an empty string
+```
+</File>
+
+In this example:
+- When documenting custom test macros in a `schema.yml` file, add the `test_` prefix to the macro name. For example, if the test block's name is `not_empty_string`, then the macro's name would be `test_not_empty_string`.
+- We've provided a description at the macro level, explaining what the test does and any relevant notes.
+- Each argument (like `model`, `column_name`) also includes a description to clarify its purpose.
 
 ### Generic tests with additional arguments
 

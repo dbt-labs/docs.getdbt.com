@@ -170,6 +170,17 @@ Currently, `not_null` and `check` constraints are enforced only after a model is
 | check           |	✅  | ❌ |
 
 </TabItem>
+<TabItem value="Athena" label="Athena">
+
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        |	❌  | ❌ |
+| primary_key     | ❌  | ❌ |
+| foreign_key     |	❌  | ❌ |
+| unique          |	❌  | ❌ |
+| check           |	❌  | ❌ |
+
+</TabItem>
 </Tabs>
 
 

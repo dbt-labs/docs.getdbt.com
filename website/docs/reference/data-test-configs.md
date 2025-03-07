@@ -323,6 +323,8 @@ models:
 ```
 </File>
 
+You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
+
 For a singular test, define it in the test's directory:
 
 <File name='tests/my_custom_test.yml'>

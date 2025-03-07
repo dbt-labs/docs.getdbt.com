@@ -123,3 +123,4 @@ We also made some quality-of-life improvements in Core 1.9, enabling you to:
 - Document [data tests](/reference/resource-properties/description).
 - Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
 - Use `dbt test` with the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
+- The [`enabled`](/reference/resource-configs/enabled) config is now available for unit tests. Defaults to `true` if not defined.
