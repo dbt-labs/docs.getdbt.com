@@ -8,7 +8,7 @@ authors: [christine_berger, carol_ohms, taylor_dunlap, steve_dowling]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2025-01-28
+date: 2025-03-10
 is_featured: true
 ---
 
@@ -35,6 +35,8 @@ stuck in heaps of planning and endless conversations, which slows down or even
 stops momentum on development. If you feel this, we’re hoping our guidance will 
 give you a great sense of comfort in taking steps to unblock development - even 
 when you don’t have everything figured out yet!
+
+<!-- truncate -->
 
 There are three major tools that play an important role in dbt development\:
 - **A repository**  
