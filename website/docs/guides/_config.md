@@ -4,11 +4,11 @@ description: dbt Cloud is the fastest and most reliable way to deploy dbt for sc
 categories:
   - title: dbt Quickstarts
     guides:
+      - snowflake
       - athena
       - azure-synapse-analytics
       - bigquery
       - starburst-galaxy
-      - snowflake
       - databricks
       - redshift
       - microsoft-fabric

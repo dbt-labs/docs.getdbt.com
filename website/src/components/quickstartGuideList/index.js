@@ -210,11 +210,21 @@ function QuickstartList({ quickstartData }) {
 
     // When no filters are active and no search term, use the original categorized view
     return CONFIG?.categories?.reduce((acc, category) => {
+      // Get the guides for this category
+      const categoryGuides = quickstartData.filter(guide => 
+        category.guides?.includes(guide.data.id)
+      );
+      
+      // Sort the guides based on their position in the category.guides array
+      const sortedGuides = categoryGuides.sort((a, b) => {
+        const indexA = category.guides.indexOf(a.data.id);
+        const indexB = category.guides.indexOf(b.data.id);
+        return indexA - indexB;
+      });
+      
       return {
         ...acc,
-        [normalizeTitle(category.title)]: quickstartData.filter(guide => 
-          category.guides?.includes(guide.data.id)
-        )
+        [normalizeTitle(category.title)]: sortedGuides
       };
     }, {}) || {};
   }, [filteredData, selectedFilters, quickstartData, searchInput, favorites]);
