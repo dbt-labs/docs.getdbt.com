@@ -2,6 +2,7 @@
 resource_types: [snapshots, models]
 description: "Learn more about unique_key configurations in dbt."
 datatype: column_name_or_expression
+intro_text: "unique_key identifies records for incremental models or snapshots, ensuring changes are captured or updated correctly."
 ---
 
 
