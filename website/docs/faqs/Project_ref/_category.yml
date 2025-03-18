@@ -1,0 +1,10 @@
+# position: 2.5 # float position is supported
+label: 'Project ref'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category collapsed by default
+className: red
+link:
+  type: generated-index
+  title: Project ref FAQs
+customProps:
+  description: Frequently asked questions about Project ref in dbt

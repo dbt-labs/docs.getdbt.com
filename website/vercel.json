@@ -38,7 +38,392 @@
     }
   ],
   "redirects": [
-      {
+    {
+      "source": "/guides/dbt-cloud-cli",
+      "destination": "/docs/cloud/cloud-cli-installation",
+      "permanent": true
+    },
+    {
+      "source": "/author/amy_chen",
+      "destination": "/blog/authors/amy-chen",
+      "permanent": true
+    },
+    {
+      "source": "/author/anders_swanson",
+      "destination": "/blog/authors/anders-swanson",
+      "permanent": true
+    },
+    {
+      "source": "/author/andrew_escay",
+      "destination": "/blog/authors/andrew-escay",
+      "permanent": true
+    },
+    {
+      "source": "/author/arthur_marcon",
+      "destination": "/blog/authors/arthur-marcon",
+      "permanent": true
+    },
+    {
+      "source": "/author/barr_yaron",
+      "destination": "/blog/authors/barr-yaron",
+      "permanent": true
+    },
+    {
+      "source": "/author/bennie_regenold",
+      "destination": "/blog/authors/bennie-regenold",
+      "permanent": true
+    },
+    {
+      "source": "/author/benoit_perigaud",
+      "destination": "/blog/authors/benoit-perigaud",
+      "permanent": true
+    },
+    {
+      "source": "/author/brittany_krauth",
+      "destination": "/blog/authors/brittany-krauth",
+      "permanent": true
+    },
+    {
+      "source": "/author/callie_white",
+      "destination": "/blog/authors/callie-white",
+      "permanent": true
+    },
+    {
+      "source": "/author/callum_mccann",
+      "destination": "/blog/authors/callum-mccann",
+      "permanent": true
+    },
+    {
+      "source": "/author/charlie_summers",
+      "destination": "/blog/authors/charlie-summers",
+      "permanent": true
+    },
+    {
+      "source": "/author/chenyu_li",
+      "destination": "/blog/authors/chenyu-li",
+      "permanent": true
+    },
+    {
+      "source": "/author/christian_vanbellen",
+      "destination": "/blog/authors/christian-vanbellen",
+      "permanent": true
+    },
+    {
+      "source": "/author/christine_berger",
+      "destination": "/blog/authors/christine-berger",
+      "permanent": true
+    },
+    {
+      "source": "/author/christophe_oudar",
+      "destination": "/blog/authors/christophe-oudar",
+      "permanent": true
+    },
+    {
+      "source": "/author/claire_carroll",
+      "destination": "/blog/authors/claire-carroll",
+      "permanent": true
+    },
+    {
+      "source": "/author/colin_rogers",
+      "destination": "/blog/authors/colin-rogers",
+      "permanent": true
+    },
+    {
+      "source": "/author/dave_connors",
+      "destination": "/blog/authors/dave-connors",
+      "permanent": true
+    },
+    {
+      "source": "/author/david_krevitt",
+      "destination": "/blog/authors/david-krevitt",
+      "permanent": true
+    },
+    {
+      "source": "/author/donny_flynn",
+      "destination": "/blog/authors/donny-flynn",
+      "permanent": true
+    },
+    {
+      "source": "/author/doug_beatty",
+      "destination": "/blog/authors/doug-beatty",
+      "permanent": true
+    },
+    {
+      "source": "/author/doug_guthrie",
+      "destination": "/blog/authors/doug-guthrie",
+      "permanent": true
+    },
+    {
+      "source": "/author/emily_riederer",
+      "destination": "/blog/authors/emily-riederer",
+      "permanent": true
+    },
+    {
+      "source": "/author/ernesto_ongaro",
+      "destination": "/blog/authors/ernesto-ongaro",
+      "permanent": true
+    },
+    {
+      "source": "/author/euan_johnston",
+      "destination": "/blog/authors/euan-johnston",
+      "permanent": true
+    },
+    {
+      "source": "/author/faith_mckenna",
+      "destination": "/blog/authors/faith-mckenna",
+      "permanent": true
+    },
+    {
+      "source": "/author/filip_byr%C3%A9n",
+      "destination": "/blog/authors/filip-byren",
+      "permanent": true
+    },
+    {
+      "source": "/author/grace_goheen",
+      "destination": "/blog/authors/grace-goheen",
+      "permanent": true
+    },
+    {
+      "source": "/author/gwen_windflower",
+      "destination": "/blog/authors/gwen-windflower",
+      "permanent": true
+    },
+    {
+      "source": "/author/ian_fahey",
+      "destination": "/blog/authors/ian-fahey",
+      "permanent": true
+    },
+    {
+      "source": "/author/izzy_erekson",
+      "destination": "/blog/authors/izzy-erekson",
+      "permanent": true
+    },
+    {
+      "source": "/author/jade_milaney",
+      "destination": "/blog/authors/jade-milaney",
+      "permanent": true
+    },
+    {
+      "source": "/author/jason_ganz",
+      "destination": "/blog/authors/jason-ganz",
+      "permanent": true
+    },
+    {
+      "source": "/author/jeremy_cohen",
+      "destination": "/blog/authors/jeremy-cohen",
+      "permanent": true
+    },
+    {
+      "source": "/author/jerrie_kumalah_kenney",
+      "destination": "/blog/authors/jerrie-kumalah-kenney",
+      "permanent": true
+    },
+    {
+      "source": "/author/jess_williams",
+      "destination": "/blog/authors/jess-williams",
+      "permanent": true
+    },
+    {
+      "source": "/author/joao_antunes",
+      "destination": "/blog/authors/joao-antunes",
+      "permanent": true
+    },
+    {
+      "source": "/author/joe_markiewicz",
+      "destination": "/blog/authors/joe-markiewicz",
+      "permanent": true
+    },
+    {
+      "source": "/author/joel_labes",
+      "destination": "/blog/authors/joel-labes",
+      "permanent": true
+    },
+    {
+      "source": "/author/jonathan_natkins",
+      "destination": "/blog/authors/jonathan-natkins",
+      "permanent": true
+    },
+    {
+      "source": "/author/jonathan_neo",
+      "destination": "/blog/authors/jonathan-neo",
+      "permanent": true
+    },
+    {
+      "source": "/author/jordan_stein",
+      "destination": "/blog/authors/jordan-stein",
+      "permanent": true
+    },
+    {
+      "source": "/author/josh_fell",
+      "destination": "/blog/authors/josh-fell",
+      "permanent": true
+    },
+    {
+      "source": "/author/kira_furuichi",
+      "destination": "/blog/authors/kira-furuichi",
+      "permanent": true
+    },
+    {
+      "source": "/author/kshitij_aranke",
+      "destination": "/blog/authors/kshitij-aranke",
+      "permanent": true
+    },
+    {
+      "source": "/author/lauren_benezra",
+      "destination": "/blog/authors/lauren-benezra",
+      "permanent": true
+    },
+    {
+      "source": "/author/lauren_craigie",
+      "destination": "/blog/authors/lauren-craigie",
+      "permanent": true
+    },
+    {
+      "source": "/author/lucas_bergodias",
+      "destination": "/blog/authors/lucas-bergodias",
+      "permanent": true
+    },
+    {
+      "source": "/author/luis_leon",
+      "destination": "/blog/authors/luis-leon",
+      "permanent": true
+    },
+    {
+      "source": "/author/matt_winkler",
+      "destination": "/blog/authors/matt-winkler",
+      "permanent": true
+    },
+    {
+      "source": "/author/michelle_ark",
+      "destination": "/blog/authors/michelle-ark",
+      "permanent": true
+    },
+    {
+      "source": "/author/mikael_thorup",
+      "destination": "/blog/authors/mikael-thorup",
+      "permanent": true
+    },
+    {
+      "source": "/author/nate_sooter",
+      "destination": "/blog/authors/nate-sooter",
+      "permanent": true
+    },
+    {
+      "source": "/author/nathaniel_burren",
+      "destination": "/blog/authors/nathaniel-burren",
+      "permanent": true
+    },
+    {
+      "source": "/author/noah_kennedy",
+      "destination": "/blog/authors/noah-kennedy",
+      "permanent": true
+    },
+    {
+      "source": "/author/pat_kearns",
+      "destination": "/blog/authors/pat-kearns",
+      "permanent": true
+    },
+    {
+      "source": "/author/pedro_brito_de_sa",
+      "destination": "/blog/authors/pedro-brito-de-sa",
+      "permanent": true
+    },
+    {
+      "source": "/author/randy_pettus",
+      "destination": "/blog/authors/randy-pettus",
+      "permanent": true
+    },
+    {
+      "source": "/author/rastislav_zdechovan",
+      "destination": "/blog/authors/rastislav-zdechovan",
+      "permanent": true
+    },
+    {
+      "source": "/author/ross_turk",
+      "destination": "/blog/authors/ross-turk",
+      "permanent": true
+    },
+    {
+      "source": "/author/roxi_dahlke",
+      "destination": "/blog/authors/roxi-dahlke",
+      "permanent": true
+    },
+    {
+      "source": "/author/sam_harting",
+      "destination": "/blog/authors/sam-harting",
+      "permanent": true
+    },
+    {
+      "source": "/author/sanjana_sen",
+      "destination": "/blog/authors/sanjana-sen",
+      "permanent": true
+    },
+    {
+      "source": "/author/santiago_jauregui",
+      "destination": "/blog/authors/santiago-jauregui",
+      "permanent": true
+    },
+    {
+      "source": "/author/sean_mcintyre",
+      "destination": "/blog/authors/sean-mcintyre",
+      "permanent": true
+    },
+    {
+      "source": "/author/sebastian_stan",
+      "destination": "/blog/authors/sebastian-stan",
+      "permanent": true
+    },
+    {
+      "source": "/author/seth_rosen",
+      "destination": "/blog/authors/seth-rosen",
+      "permanent": true
+    },
+    {
+      "source": "/author/simo_tumelius",
+      "destination": "/blog/authors/simo-tumelius",
+      "permanent": true
+    },
+    {
+      "source": "/author/simon_podhajsky",
+      "destination": "/blog/authors/simon-podhajsky",
+      "permanent": true
+    },
+    {
+      "source": "/author/sterling_paramore",
+      "destination": "/blog/authors/sterling-paramore",
+      "permanent": true
+    },
+    {
+      "source": "/author/sung_chung",
+      "destination": "/blog/authors/sung-chung",
+      "permanent": true
+    },
+    {
+      "source": "/author/viraj_parekh",
+      "destination": "/blog/authors/viraj-parekh",
+      "permanent": true
+    },
+    {
+      "source": "/author/wasila_quader",
+      "destination": "/blog/authors/wasila-quader",
+      "permanent": true
+    },
+    {
+      "source": "/author/yannick_misteli",
+      "destination": "/blog/authors/yannick-misteli",
+      "permanent": true
+    },
+    {
+      "source": "/author/yu_ishikawa",
+      "destination": "/blog/authors/yu-ishikawa",
+      "permanent": true
+    },
+    {
+      "source": "/author/mark_wan",
+      "destination": "/blog/authors/mark-wan",
+      "permanent": true
+    },
+    {
       "source": "/blog/dbt-cloud-api-postman-collection-announcement",
       "destination": "/docs/dbt-cloud-apis/overview",
       "permanent": true
@@ -66,6 +451,11 @@
     {
       "source": "/styles",
       "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
+      "permanent": true
+    },
+    {
+      "source": "/guides/codespace",
+      "destination": "/guides/duckdb",
       "permanent": true
     },
     {

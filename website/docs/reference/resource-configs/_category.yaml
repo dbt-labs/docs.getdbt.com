@@ -1,0 +1,10 @@
+# position: 2.5 # float position is supported
+label: 'Resource configs'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category collapsed by default
+className: red
+link:
+  type: generated-index
+  title: Resource configs
+customProps:
+  description: Platform-specific configs are used to configure the dbt project for a specific database platform.

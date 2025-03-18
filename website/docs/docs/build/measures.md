@@ -126,7 +126,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 ```yaml
 semantic_models:
   - name: transactions
-    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
+    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each sku.
     model: ref('schema.transactions')
     defaults:
       agg_time_dimension: transaction_date
@@ -145,22 +145,22 @@ semantic_models:
 # --- measures ---
     measures:
       - name: transaction_amount_usd
-        description: Total USD value of transactions
+        description: Total usd value of transactions
         expr: transaction_amount_usd
         agg: sum
         config:
           meta:
             used_in_reporting: true
       - name: transaction_amount_usd_avg
-        description: Average USD value of transactions
+        description: Average usd value of transactions
         expr: transaction_amount_usd
         agg: average
       - name: transaction_amount_usd_max
-        description: Maximum USD value of transactions
+        description: Maximum usd value of transactions
         expr: transaction_amount_usd
         agg: max
       - name: transaction_amount_usd_min
-        description: Minimum USD value of transactions
+        description: Minimum usd value of transactions
         expr: transaction_amount_usd
         agg: min
       - name: quick_buy_transactions 
@@ -176,8 +176,8 @@ semantic_models:
         expr: transaction_amount_usd
         agg: average 
       - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
-        description: The total USD value of valid transactions only
-        expr: CASE WHEN is_valid = True then transaction_amount_usd else 0 end 
+        description: The total usd value of valid transactions only
+        expr: case when is_valid = True then transaction_amount_usd else 0 end 
         agg: sum
       - name: transactions
         description: The average value of transactions.
@@ -214,7 +214,7 @@ semantic_models:
 ```yaml
 semantic_models:
   - name: transactions
-    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
+    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each sku.
     model: ref('schema.transactions')
     defaults:
       agg_time_dimension: transaction_date
@@ -233,19 +233,19 @@ semantic_models:
 # --- measures ---
     measures:
       - name: transaction_amount_usd
-        description: Total USD value of transactions
+        description: Total usd value of transactions
         expr: transaction_amount_usd
         agg: sum
       - name: transaction_amount_usd_avg
-        description: Average USD value of transactions
+        description: Average usd value of transactions
         expr: transaction_amount_usd
         agg: average
       - name: transaction_amount_usd_max
-        description: Maximum USD value of transactions
+        description: Maximum usd value of transactions
         expr: transaction_amount_usd
         agg: max
       - name: transaction_amount_usd_min
-        description: Minimum USD value of transactions
+        description: Minimum usd value of transactions
         expr: transaction_amount_usd
         agg: min
       - name: quick_buy_transactions 
@@ -261,8 +261,8 @@ semantic_models:
         expr: transaction_amount_usd
         agg: average 
       - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
-        description: The total USD value of valid transactions only
-        expr: CASE WHEN is_valid = True then transaction_amount_usd else 0 end 
+        description: The total usd value of valid transactions only
+        expr: case when is_valid = True then transaction_amount_usd else 0 end 
         agg: sum
       - name: transactions
         description: The average value of transactions.

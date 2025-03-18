@@ -5,7 +5,7 @@ id: "redshift-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-redshift'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-redshift'
   min_core_version: 'v0.10.0'
   cloud_support: Supported

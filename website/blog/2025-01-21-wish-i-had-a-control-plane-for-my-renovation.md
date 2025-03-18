@@ -47,7 +47,7 @@ Hereâ€™s the challenge: monitoring tools, by their nature, look backward. Theyâ€
 
 [dbt Cloud](https://www.getdbt.com/product/dbt-cloud) unifies these perspectives into a single [control plane](https://www.getdbt.com/blog/data-control-plane-introduction), bridging proactive and retrospective capabilities:
 
-- **Proactive planning**: In dbt, you declare the desired [state](https://docs.getdbt.com/reference/node-selection/syntax#state-selection) of your data before jobs even run &mdash; your architectural plans are baked into the pipeline.
+- **Proactive planning**: In dbt, you declare the desired [state](https://docs.getdbt.com/reference/node-selection/state-selection) of your data before jobs even run &mdash; your architectural plans are baked into the pipeline.
 - **Retrospective insights**: dbt Cloud surfaces [job logs](https://docs.getdbt.com/docs/deploy/run-visibility), performance metrics, and test results, providing the same level of insight as traditional monitoring tools.
 
 But the real power lies in how dbt integrates these two perspectives. Transformation logic (the plans) and monitoring (the inspections) are tightly connected, creating a continuous feedback loop where issues can be identified and resolved faster, and pipelines can be optimized more effectively.

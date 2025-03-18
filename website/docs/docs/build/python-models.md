@@ -650,6 +650,8 @@ def model(dbt, session):
     )
 ```
 
+You can use the `python_version` config to run a Snowpark model with [Python versions](https://docs.snowflake.com/en/developer-guide/snowpark/python/setup) 3.9, 3.10, or 3.11.
+
 <VersionBlock firstVersion="1.8">
 
 **External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
@@ -673,8 +675,6 @@ def model(dbt, session: snowpark.Session):
 ```
 
 </VersionBlock>
-
-**About "sprocs":** dbt submits Python models to run as _stored procedures_, which some people call _sprocs_ for short. By default, dbt will use Snowpark's _temporary_ or _anonymous_ stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and keep query history cleaner than named sprocs containing your model's compiled Python code. To disable this feature, set `use_anonymous_sproc: False` in your model configuration. 
 
 **Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
 

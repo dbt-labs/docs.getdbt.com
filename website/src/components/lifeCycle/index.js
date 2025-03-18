@@ -8,10 +8,10 @@ const statusColors = {
   enterprise: '#EBEDF0',
   team: '#EBEDF0',
   developer: '#EBEDF0',
-  new: '#047377',
-  beta: '#047377',
-  ga: '#047377',
-  preview: '#047377',
+  new: '#368f92',
+  beta: '#368f92',
+  ga: '#009999',
+  preview: '#009999',
 };
 
 const fontColors = {

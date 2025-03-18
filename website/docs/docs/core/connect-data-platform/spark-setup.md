@@ -5,7 +5,7 @@ id: "spark-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-spark'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-spark'
   min_core_version: 'v0.15.0'
   cloud_support: Supported

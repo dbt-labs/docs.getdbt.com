@@ -7,7 +7,7 @@ pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
 
-Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema.
+Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
 Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.
 
@@ -60,7 +60,6 @@ Every query will require an environment ID or job ID. You can get the ID from a 
 
 There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
-
 ## Discovery API endpoints
 
 The following are the endpoints for accessing the Discovery API. Use the one that's appropriate for your region and plan.
@@ -86,7 +85,7 @@ You can use the Discovery API to query data from the previous three months. For 
 
 You can run ad-hoc queries directly in the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and use the document explorer on the left-hand side to see all possible nodes and fields.
 
-Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization info.
+Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization information for GraphQL.
 
 1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you want to query.
 

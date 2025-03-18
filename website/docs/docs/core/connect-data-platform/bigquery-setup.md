@@ -4,7 +4,7 @@ description: "Read this guide to learn about the BigQuery warehouse setup in dbt
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-bigquery'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-bigquery'
   min_core_version: 'v0.10.0'
   cloud_support: Supported

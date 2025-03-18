@@ -29,6 +29,9 @@ dbt Cloud considers a Successful Model Built as any <Term id="model">model</Term
 
 Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
 
+When a dynamic table is initially created, the model is counted (if the creation is successful). However, in subsequent runs, dbt skips these models unless the definition of the dynamic table has changed. This refers not to changes in the SQL logic but to changes in dbt's logic, specifically those governed by [`on_configuration_change config`](/reference/resource-configs/on_configuration_change)). The dynamic table continues to update on a cadence because the adapter is orchestrating that refresh rather than dbt Cloud. 
+
+
 | What counts towards Successful Models Built |                     |
 |---------------------------------------------|---------------------|
 | View                                        | ✅                  |

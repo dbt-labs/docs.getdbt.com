@@ -98,13 +98,13 @@ Follow the steps outlined in [deployment credentials](#deployment-connection) to
 
 We recommend that the data warehouse credentials be for a dedicated user or service principal.
 
-
 ## Deployment connection
 
 :::info Warehouse Connections
 
- Warehouse connections are set at the Project level for dbt Cloud accounts, and each Project can have one connection (Snowflake account, Redshift host, Bigquery project, Databricks host, etc.). Some details of that connection (databases/schemas/etc.) can be overridden within this section of the dbt Cloud environment settings.
+Warehouse connections are created and managed at the account-level for dbt Cloud accounts and assigned to an environment. To change warehouse type, we recommend creating a new environment.
 
+Each project can have multiple connections (Snowflake account, Redshift host, Bigquery project, Databricks host, and so on.) of the same warehouse type. Some details of that connection (databases/schemas/and so on.) can be overridden within this section of the dbt Cloud environment settings.
 :::
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.

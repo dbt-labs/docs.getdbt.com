@@ -33,6 +33,17 @@ You can edit an existing user's license by navigating to the **Users** section o
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="60%" title="Example of the user information window in the user directory" />
 
+### User passwords
+
+By default, new users will be prompted to set a password for their account. All plan tiers support and enforce [multi-factor authentication](/docs/cloud/manage-access/mfa) for users with password logins. However, they will still need to configure their password before configuring MFA. Enterprise accounts can configure [SSO](#sso-mappings) and advanced authentication measures. Developer and Team plans only support user passwords with MFA. 
+
+User passwords must meet the following criteria:
+
+- Be at least nine characters in length
+- Contain at least one uppercase and one lowercase letter
+- Contain at least one number 0-9
+- Contain at least one special character
+
 ## Groups
 
 Groups in dbt Cloud serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignments of permissions easier. 

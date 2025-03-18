@@ -20,6 +20,10 @@ To view the project-level lineage graph, click the **View lineage** icon in the 
   - This includes all projects listing the upstream one as a dependency in its `dependencies.yml` file, even without a direct `{{ ref() }}`.
 - Selecting a project node from a public model opens its detailed lineage graph if you have the [permissions](/docs/cloud/manage-access/enterprise-permissions) to do so.
 
+:::tip Indirect dependencies
+When viewing a project's lineage, dbt Explorer shows only _directly_ [referenced](/docs/collaborate/govern/project-dependencies) public models. It doesn't show [indirect dependencies](/faqs/Project_ref/indirectly-reference-upstream-model). If a referenced model in your project depends on another upstream public model, the second-level model won't appear in Explorer, however it will appear in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) lineage view.
+:::
+
 <Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="100%" height="100" title="View your cross-project lineage in a parent project and the other projects that reference it by clicking the 'Relationships' tab."/>
 
 When viewing a downstream (child) project that imports and refs public models from upstream (parent) projects:

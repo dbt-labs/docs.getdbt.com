@@ -54,6 +54,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Databricks
     - Databricks instance name:
+    - Azure Databricks Workspace URL (e.g. adb-################.##.azuredatabricks.net)
     - Databricks Azure resource ID:
     - dbt Cloud multi-tenant environment: EMEA
     - Azure region: Region that hosts your Databricks workspace (like, WestEurope, NorthEurope)

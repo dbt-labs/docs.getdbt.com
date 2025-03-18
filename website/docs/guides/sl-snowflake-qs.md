@@ -594,6 +594,11 @@ select * from final
 
 ## Create semantic models
 
+In this section, you'll learn about [semantic model](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#about-semantic-models), [their components](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#semantic-model-components), and [how to configure a time spine](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#configure-a-time-spine).
+
+
+### About semantic models
+
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
 - Each semantic model will be 1:1 with a dbt SQL/Python model.
@@ -744,6 +749,15 @@ semantic_models:
 
 </File>
 
+### Configure a time spine
+
+To ensure accurate time-based aggregations, you must configure a [time spine](/docs/build/metricflow-time-spine). The time spine allows you to have accurate metric calculations over different time granularities.
+
+1. Add a time spine model to your project at whichever granularity needed for your metrics (like daily or hourly).
+2. Configure each time spine in a YAML file to define how MetricFlow recognizes and uses its columns. Follow the instructions in [Configuring time spine in YAML](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) documenation.
+
+For a step-by-step guide, refer to [MetricFlow time spine guide](/guides/mf-time-spine?step=1).
+
 ## Define metrics and add a second semantic model
 
 In this section, you will [define metrics](#define-metrics) and [add a second semantic model](#add-second-semantic-model-to-your-project) to your project.
@@ -840,8 +854,10 @@ metrics:
     description: "average value of each order"
     type: ratio
     type_params:
-      numerator: order_total
-      denominator: order_count
+      numerator: 
+        name: order_total
+      denominator: 
+        name: order_count
   # Cumulative type metrics
   - name: "cumulative_order_amount_mtd"
     label: "cumulative_order_amount_mtd"

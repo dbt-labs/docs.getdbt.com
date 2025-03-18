@@ -2127,7 +2127,7 @@ h2.anchor.clicked a.hash-link:before {
 }
 
 table th {
-  background-color: #ED7254; /* Table header background color */
+  background-color: var(--ifm-color-primary); /* Table header background color */
 }
 
 :root {

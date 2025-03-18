@@ -2,6 +2,7 @@
 resource_types: [snapshots, models]
 description: "Learn more about unique_key configurations in dbt."
 datatype: column_name_or_expression
+intro_text: "unique_key identifies records for incremental models or snapshots, ensuring changes are captured or updated correctly."
 ---
 
 
@@ -108,7 +109,9 @@ snapshots:
 </Tabs>
 
 ## Description
-A column name or expression that is unique for the inputs of a snapshot or incremental model. dbt uses this to match records between a result set and an existing snapshot or incremental model, so that changes can be captured correctly.
+A column name or expression that uniquely identifies each record in the inputs of a snapshot or incremental model. dbt uses this key to match incoming records to existing records in the target table (either a snapshot or an incremental model) so that changes can be captured or updated correctly:
+* In an incremental model, dbt replaces the old row (like a merge key or upsert).
+* In a snapshot, dbt keeps history, storing multiple rows for that same `unique_key` as it evolves over time.
 
 In dbt Cloud "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 

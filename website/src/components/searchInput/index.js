@@ -6,10 +6,11 @@ const SearchInput = ({
   value,
   onChange,
   placeholder = "Search...",
+  classNames,
   ...props
 }) => {
   return (
-    <label htmlFor="search-input" className={styles.inputContainer}>
+    <label htmlFor="search-input" className={`${styles.inputContainer} ${classNames ? classNames : ''}`}>
       {/* <!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
       {getSvgIcon("fa-magnifying-glass")}
       <input

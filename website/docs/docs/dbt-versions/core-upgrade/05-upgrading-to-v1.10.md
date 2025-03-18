@@ -25,7 +25,11 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
-**Coming soon**
+New features and functionality available in dbt Core v1.10
+
+### The `--sample` flag
+
+Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 
 ## Quick hits
 

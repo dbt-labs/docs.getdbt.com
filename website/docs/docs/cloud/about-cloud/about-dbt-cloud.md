@@ -30,7 +30,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 <Card
     title="Visual editor (beta)"
-    body="Develop with the visual editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    body="Develop with the Visual Editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
     link="/docs/cloud/visual-editor"
     icon="dbt-bit"/>
 

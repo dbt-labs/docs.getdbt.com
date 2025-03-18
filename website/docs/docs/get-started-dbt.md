@@ -23,6 +23,12 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 <div className="grid--3-col">
 
 <Card
+    title="Quickstart for dbt Cloud and Amazon Athena"
+    body="Integrate dbt Cloud with Amazon Athena for your data transformations."
+    link="https://docs.getdbt.com/guides/athena"
+    icon="athena"/>
+
+<Card
     title="Quickstart for dbt Cloud and Azure Synapse Analytics"
     body="Discover how to integrate dbt Cloud with Azure Synapse Analytics for your data transformations."
     link="https://docs.getdbt.com/guides/azure-synapse-analytics"
@@ -85,10 +91,10 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Core using GitHub Codespace"
-    body="Learn how to create a codespace and execute the dbt build command."
-    link="https://docs.getdbt.com/guides/codespace?step=1"
-    icon="dbt-bit"/>
+    title="Quickstart for dbt Core using DuckDB"
+    body="Learn how to connect to DuckDB."
+    link="https://docs.getdbt.com/guides/duckdb?step=1"
+    icon="duckdb"/>
 </div>
 
 ## Related docs

@@ -73,7 +73,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - [Linting with CI jobs](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting)
   - dbt Assist is now [dbt Copilot](https://docs.getdbt.com/docs/cloud/dbt-copilot)
   - Developer blog on [Snowflake Feature Store and dbt: A bridge between data pipelines and ML](https://docs.getdbt.com/blog/snowflake-feature-store)
-  - New [Quickstart for dbt Cloud CLI](https://docs.getdbt.com/guides/dbt-cloud-cli?step=1)
   - [Auto-exposures with Tableau](https://docs.getdbt.com/docs/collaborate/auto-exposures)
   - Semantic Layer integration with [Excel desktop and M365](https://docs.getdbt.com/docs/cloud-integrations/semantic-layer/excel)
   - [Data health tiles](https://docs.getdbt.com/docs/collaborate/data-tile)

@@ -9,7 +9,7 @@ Environment variables can be used to customize the behavior of a dbt project dep
 
 :::info Environment Variable Naming and Prefixing
 
-Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET` or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+Environment variables in dbt Cloud must be prefixed with either `DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 
 :::
 

@@ -35,7 +35,7 @@ To access the features, you should meet the following:
 1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
-4. Use Snowflake or BigQuery as your data warehouse and can enable [query history permissions](#for-snowflake) or work with an admin to do so. Support for additional data platforms coming soon.
+4. Use Snowflake or BigQuery as your data warehouse and can enable [query history permissions](#snowflake-model-query-history) or work with an admin to do so. Support for additional data platforms coming soon.
    - For Snowflake users: You **must** have a Snowflake Enterprise tier or higher subscription.
 
 ## Enable query history in dbt Cloud
@@ -67,23 +67,20 @@ The model query history feature uses the credentials in your production environm
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-credentials.jpg" width="50%" title="Confirm your deployment credentials in your environment settings page." />
 
 4. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
+   
+#### Snowflake model query history
+     Model query history makes use of metadata tables available to [Snowflake Enterprise tier](https://docs.snowflake.com/en/user-guide/intro-editions#enterprise-edition) accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The Snowflake user in the production environment must have the `GOVERNANCE_VIEWER` permission to view the data.
+     Before enabling Model query history, your `ACCOUNTADMIN` must run the following grant statement in Snowflake to ensure for access:
+     ```sql
+     GRANT DATABASE ROLE SNOWFLAKE.GOVERNANCE_VIEWER TO ROLE <YOUR_DBT_CLOUD_DEPLOYMENT_ROLE>;
+     ```
+     Without this grant, model query history won't display any data. For more details, view the snowflake docs [here](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-other-roles-to-use-schemas-in-the-snowflake-database). 
 
-    <Expandable alt_header="For Snowflake">
+##### BigQuery model query history
+Model query history uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your BigQuery project:
 
-    This feature makes use of metadata tables available to Snowflake Enterprise tier accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The Snowflake user used in the production environment must have `GOVERNANCE_VIEWER` permissions to view the data. 
-
-    This can be granted to this user by your `ACCOUNTADMIN` user in Snowflake. For more details, view the snowflake docs [here](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-other-roles-to-use-schemas-in-the-snowflake-database).
-
-    </Expandable>
-
-    <Expandable alt_header="For BigQuery">
-
-    This feature uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your BigQuery project:
-
-    - `roles/bigquery.resourceViewer`
-    - `roles/bigquery.jobs.create`
-
-    </Expandable>
+       - `roles/bigquery.resourceViewer`
+       - `roles/bigquery.jobs.create`
 
 ## View query history in Explorer
 

@@ -16,6 +16,8 @@ is_featured: false
 
 We’re announcing that [dbt Server](https://github.com/dbt-labs/dbt-server) is officially deprecated and will no longer be maintained by dbt Labs going forward. You can continue to use the repository and fork it for your needs. We’re also looking for a maintainer of the repository from our community! If you’re interested, please reach out by opening an issue in the [repository](https://github.com/dbt-labs/dbt-server/issues).
 
+
+<!-- truncate -->
 ## Why are we deprecating dbt Server?
 
 At dbt Labs, we are continually working to build rich experiences that help our users scale collaboration around data. To achieve this vision, we need to take moments to think about which products are contributing to this goal, and sometimes make hard decisions about the ones that are not, so that we can focus on enhancing the most impactful ones. 

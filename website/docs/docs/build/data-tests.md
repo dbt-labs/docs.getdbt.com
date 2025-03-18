@@ -145,7 +145,7 @@ In plain English, these data tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
+You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests). You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
 ### More generic data tests
 

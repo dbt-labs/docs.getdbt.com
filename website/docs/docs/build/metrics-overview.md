@@ -9,7 +9,7 @@ pagination_next: "docs/build/cumulative"
   
 After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project
 
-Metrics can be defined in the same YAML files as your semantic models, or defined in their dedicated separate YAML files located in any subdirectories within the same dbt project repository.
+Metrics must be defined in a YAML file &mdash; either within the same file as your semantic models or in a separate YAML file in a subdirectory of your dbt project. They shouldn't be defined in a `config` block on a model.
 
 The keys for metrics definitions are:
 

@@ -7,24 +7,25 @@ pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
+# Project dependencies <Lifecycle status='enterprise'/>
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
 While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
 
-This year, dbt Labs is introducing an expanded notion of `dependencies` across multiple dbt projects:
+dbt Labs supports an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
-- **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+- **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 ## Prerequisites
-- Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). If you have an Enterprise account, you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref). <Lifecycle status="enterprise"/>
-- Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). You need at least one successful job run after defining their `access`.
-- Define a deployment environment in the upstream ("producer") project [that is set to be your Production environment](/docs/deploy/deploy-environments#set-as-production-environment), and ensure it has at least one successful job run in that environment.
-- If the upstream project has a Staging environment, run a job in that Staging environment to ensure the downstream cross-project ref resolves.
-- Each project `name` must be unique in your dbt Cloud account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, you should not create separate projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`. That isolation should instead be handled at the environment level.
-  - We are adding support for environment-level permissions and data warehouse connections; please contact your dbt Labs account team for beta access.
-- The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, if your project name is `jaffle_marketing`, you should use `jaffle_marketing` (not `JAFFLE_MARKETING`) in all related files.
-
+- Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/collaborate/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
+- For the upstream ("producer") project setup:
+  - Configure models in upstream project with [`access: public`](/reference/resource-configs/access) and have at least one successful job run after defining `access`.
+  - Define a deployment environment in the upstream project as [Production environment](/docs/deploy/deploy-environments#set-as-production-environment), ensuring at least one successful job run in that environment.
+  - If the upstream project has a Staging environment, run a job in that Staging environment to ensure the downstream cross-project ref resolves.
+- Each project `name` must be unique in your dbt Cloud account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-cloud-environments#types-of-environments) instead.
+  - dbt Cloud supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all dbt Cloud users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
+- The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, `jaffle_marketing`, not `JAFFLE_MARKETING`.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
@@ -135,12 +136,8 @@ These are the exceptions, rather than the rule. Installing another team's projec
 
 ## FAQs
 
-<details>
-<summary>Can I define private packages in the <code>dependencies.yml</code> file?</summary>
-
-If you're using private packages with the [git token method](/docs/build/packages#git-token-method), you must define them in the `packages.yml` file instead of the `dependencies.yml` file. This is because conditional rendering (like Jinja-in-yaml) is not supported.
-</details>
-
+<FAQ path="Project_ref/define-private-packages" />
+<FAQ path="Project_ref/indirectly-reference-upstream-model" />
 
 ## Related docs
 - Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.

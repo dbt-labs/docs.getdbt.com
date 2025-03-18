@@ -153,3 +153,4 @@ Run `dbt --help` to see new & improved help documentation :)
 - [Events and logging](/reference/events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](/reference/dbt_project.yml)
 - More granular configurations for logging (to set [log format](/reference/global-configs/logs#log-formatting), [log levels](/reference/global-configs/logs#log-level), and [colorization](/reference/global-configs/logs#color)) and [cache population](/reference/global-configs/cache#cache-population)
+- [dbt overwrites the `manifest.json` file](/reference/node-selection/state-comparison-caveats#overwrites-the-manifestjson) during parsing, which means when you reference `--state` from the `target/ directory`, you may encounter a warning indicating that the saved manifest wasn't found.

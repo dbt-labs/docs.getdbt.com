@@ -3,7 +3,7 @@ title: "event_time"
 id: "event-time"
 sidebar_label: "event_time"
 resource_types: [models, seeds, source]
-description: "dbt uses event_time to understand when an event occurred. When defined, event_time enables microbatch incremental models and more refined comparison of datasets during Advanced CI."
+description: "dbt uses event_time to understand when an event occurred. When defined, event_time enables microbatch incremental models, the sample flag, and more refined comparison of datasets during Advanced CI."
 datatype: string
 ---
 
@@ -138,9 +138,11 @@ sources:
 
 ## Definition
 
-You can configure `event_time` for a [model](/docs/build/models), [seed](/docs/build/seeds), or [source](/docs/build/sources) in your `dbt_project.yml` file, property YAML file, or config block.
+dbt uses `event_time` to understand when an event occurred. Configure it in your `dbt_project.yml` file, property YAML file, or config block for [models](/docs/build/models), [seeds](/docs/build/seeds), or [sources](/docs/build/sources).
 
-`event_time` is required for the [incremental microbatch](/docs/build/incremental-microbatch) strategy and highly recommended for [Advanced CI's compare changes](/docs/deploy/advanced-ci#optimizing-comparisons) in CI/CD workflows, where it ensures the same time-slice of data is correctly compared between your CI and production environments.
+### Usage
+
+`event_time` is required for the [incremental microbatch](/docs/build/incremental-microbatch) strategy<VersionBlock firstVersion="1.10">, the [`--sample` flag](/docs/build/sample-flag),</VersionBlock> and highly recommended for [Advanced CI's compare changes](/docs/deploy/advanced-ci#optimizing-comparisons) in CI/CD workflows, where it ensures the same time-slice of data is correctly compared between your CI and production environments.
 
 ### Best practices
 

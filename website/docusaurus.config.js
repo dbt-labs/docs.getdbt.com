@@ -6,12 +6,12 @@ const { themes } = require('prism-react-renderer')
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
-/* Debugging */
-var SITE_URL;
-if (!process.env.CONTEXT || process.env.CONTEXT == "production") {
-  SITE_URL = "https://docs.getdbt.com";
-} else {
-  SITE_URL = process.env.DEPLOY_URL;
+/* Set SITE_URL by environment */
+var SITE_URL = "https://docs.getdbt.com";
+if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
+  SITE_URL = `https://${process.env.VERCEL_BRANCH_URL}`;
+} else if (process?.env?.VERCEL_ENV === "development") {
+  SITE_URL = `http://localhost:3000`;
 }
 
 var GIT_BRANCH;
@@ -37,6 +37,8 @@ if (GIT_BRANCH !== "current") {
 
 console.log("DEBUG: CONTEXT =", process.env.CONTEXT);
 console.log("DEBUG: DEPLOY_URL =", process.env.DEPLOY_URL);
+console.log("DEBUG: VERCEL_ENV =", process.env.VERCEL_ENV);
+console.log("DEBUG: VERCEL_BRANCH_URL =", process.env.VERCEL_BRANCH_URL);
 console.log("DEBUG: SITE_URL = ", SITE_URL);
 console.log("DEBUG: ALGOLIA_INDEX_NAME = ", ALGOLIA_INDEX_NAME);
 console.log("DEBUG: metatags = ", metatags);
@@ -72,7 +74,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "monthly-demos",
-      content: "Join our monthly demos and see dbt Cloud in action!",
+      content: "Join us for dbt Developer day on March 19th and March 20th for exciting new and coming-soon features to supercharge data developer workflows!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
@@ -209,6 +211,7 @@ var siteSettings = {
           ></script>
 
           <div class='footer__items'>
+            <a href='https://status.getdbt.com//'>dbt Cloud Status</a>
             <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
@@ -273,7 +276,6 @@ var siteSettings = {
       path.resolve("plugins/buildGlobalData"),
       { versionedPages, versionedCategories },
     ],
-    path.resolve("plugins/buildAuthorPages"),
     path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
@@ -292,6 +294,7 @@ var siteSettings = {
     "/js/gtm.js",
     "/js/onetrust.js",
     "/js/mutiny.js",
+    "/js/hide-forethought.js",
   ],
   stylesheets: [
     "/css/fonts.css",

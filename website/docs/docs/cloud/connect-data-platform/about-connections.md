@@ -33,7 +33,7 @@ These connection instructions provide the basic fields required for configuring 
 
 :::info Connection management now at account-level
 
-Starting July 2024, connection management has moved from the project level to the account level for all users in dbt Cloud. Previously, each dbt Cloud project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
+From July 2024, connection management has moved from the project level to the account level for all users in dbt Cloud. Previously, each dbt Cloud project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="55%" title="Previous connection model"/>
 

@@ -503,6 +503,8 @@ models:
 ```
 </File>
 
+You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
+
 #### Singular data test
 
 This example shows a singular data test that checks to ensure all values in the `payments` model are not negative (≥ 0).

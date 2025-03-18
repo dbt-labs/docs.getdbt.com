@@ -5,11 +5,10 @@ description: "Learn how to develop your dbt projects using dbt Cloud."
 sidebar_label: "About developing in dbt" 
 pagination_next: "docs/cloud/about-cloud-develop-defer"
 hide_table_of_contents: true
+intro_text: "Develop dbt projects using dbt Cloud, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 
-Develop dbt projects using dbt Cloud, which offers a fast and reliable way to work on your dbt project. It runs dbt Core in a hosted (single or multi-tenant) environment.
-
-You can develop in your browser using an integrated development environment (IDE), a dbt Cloud-powered command line interface (CLI), or visual editor.
+You can develop in your browser using a dbt Cloud-powered command line interface (CLI), an integrated development environment (IDE), or Visual editor.
 
 <div className="grid--3-col" >
 
@@ -27,7 +26,7 @@ You can develop in your browser using an integrated development environment (IDE
 
    <Card
     title="Visual editor (beta)"
-    body="Develop with the visual editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    body="Develop with the Visual Editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
     link="/docs/cloud/visual-editor"
     icon="dbt-bit"/>
 
