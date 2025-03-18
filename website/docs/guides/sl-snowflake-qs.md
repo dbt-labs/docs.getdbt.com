@@ -854,8 +854,10 @@ metrics:
     description: "average value of each order"
     type: ratio
     type_params:
-      numerator: order_total
-      denominator: order_count
+      numerator: 
+        name: order_total
+      denominator: 
+        name: order_count
   # Cumulative type metrics
   - name: "cumulative_order_amount_mtd"
     label: "cumulative_order_amount_mtd"
