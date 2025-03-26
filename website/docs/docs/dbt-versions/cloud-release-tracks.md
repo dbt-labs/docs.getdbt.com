@@ -46,7 +46,7 @@ Choose the "Compatible" and "Extended" release tracks if you need a less-frequen
 - Prioritize "bake in" time for new features & fixes
 - Configure development & test environments to use the "Compatible" release track
 - Configure pre-production & production environments to use the "Extended" release track
-- Understand that new features will not be available until they are first released in dbt Core OSS + Compatible track
+- Understand that new features will not be available until _a month after_ they are first released in dbt Core OSS and the Compatible track. Developers (on "Compatible") will get access to new features before they can leverage those capabilities in production (on "Extended"), and must be mindful of the additional delay.
 
 **Virtual Private dbt or Single Tenant**
 - Changes to all release tracks roll out as part of dbt Cloud instance upgrades once per week
