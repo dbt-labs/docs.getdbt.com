@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## March 2025
 
+- **Behavior change**: As of March 31st, 2025 dbt Core versions 1.0, 1.1, and 1.2 have been deprecated from dbt Cloud. They are no longer availabe to select as versions for new dbt projects. Projects currently on any of these versions will continue to run until April 30th, 2025, after which they will fail if they have not been update to v1.3 or higher.
 - **Enhancement**: Users assigned [read-only licenses](/docs/cloud/manage-access/about-user-access#licenses) are now able to view the [Deploy](/docs/deploy/deployments) section of their dbt Cloud account and click into the individual sections but not edit or otherwise make any changes. 
 
 #### dbt Developer day
