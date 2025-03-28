@@ -1,8 +1,8 @@
 ---
-title: "SCIM for SSO configurations"
+title: "Set up SCIM"
 description: "Configure SCIM for SSO"
 id: "scim"
-sidebar: "SCIM for SSO configurations"
+sidebar: "Set up SCIM"
 ---
 
 # SCIM for SSO configuration <Lifecycle status="beta" />
