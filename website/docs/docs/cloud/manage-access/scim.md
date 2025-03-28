@@ -5,7 +5,7 @@ id: "scim"
 sidebar: "Set up SCIM"
 ---
 
-# SCIM for SSO configuration <Lifecycle status="beta" />
+# Set up SCIM <Lifecycle status="beta" />
 
 The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in dbt Cloud.
 
