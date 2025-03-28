@@ -77,6 +77,7 @@ This table outlines which month of the "Latest" release track in dbt Cloud and w
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
 | [cumulative_type_params](#cumulative-metrics-parameter)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
+| [validate_macro_args](#macro-annotations-and-inference)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
@@ -225,3 +226,33 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 
 ```
+
+### Macro annotations and inference
+
+The `validate_macro_args` flag is set to `False` by default. 
+
+In the past, dbt hasn't had a controlled vocabulary for the [`type`](/reference/resource-properties/argument-type) annotations permitted on macro arguments in YAML, nor has it validated that the types annotated match the names and number of types in the Jinja definition.
+
+```yaml
+version: 2
+
+macros:
+  - name: <macro name>
+    arguments:
+      - name: <arg name>
+        type: <string>
+```
+
+When the `validate_macro_args` flag is set to `True`, dbt will validate these macro annotations and support any of the following values:
+- string (or str)
+- bool
+- integer (or int)
+- float
+- any
+- list[`<Type>`] (for example, list[string])
+- dict[`<Type>`, `<Type>`] (for example, dict[str, list[int]])
+- optional[`<Type>`] (for example, optional[integer])
+- relation
+- column
+
+dbt will raise a warning if the argument names you've added in YAML don't match the argument names in your macro or if the argument types you've added in YAML aren't valid according to the rules above. If no argument names are documented in the YAML, they are inferred based on what you have in the macro and included in the manifest.
