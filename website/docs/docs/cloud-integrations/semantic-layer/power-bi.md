@@ -21,8 +21,7 @@ The dbt Semantic Layer Power BI integration is currently in private beta. To joi
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
 - You need your [dbt Cloud host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-- You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
-  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
+- You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';
 

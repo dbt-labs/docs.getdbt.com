@@ -4,9 +4,9 @@ description: "Target_schema - Read this in-depth guide to learn about configurat
 datatype: string
 ---
 
-:::info
+:::note
 
-Starting in dbt Core v1.9+, this functionality is no longer utilized. Use the [database](/reference/resource-configs/database) config as an alternative to define a custom database while still respecting the `generate_database_name` macro. 
+Starting in dbt Core v1.9+, this functionality is no longer utilized. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
 
 Try it now in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 

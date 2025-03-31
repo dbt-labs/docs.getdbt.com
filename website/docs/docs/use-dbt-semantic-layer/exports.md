@@ -15,7 +15,7 @@ Essentially, exports are like any other table in your data platform &mdash; they
 ## Prerequisites
 
 - You have a dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. 
-- You use one of the following data platforms: Snowflake, BigQuery, Databricks, or Redshift.
+- You use one of the following data platforms: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 - You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.

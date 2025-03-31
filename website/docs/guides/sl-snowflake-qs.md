@@ -36,7 +36,7 @@ If you're on different data platforms, you can also follow this guide and will n
 
 ### Prerequisites
 
-- You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
+- You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. 
 - Have the correct [dbt Cloud license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
   <DetailsToggle alt_header="More info on license and permissions">  
   
