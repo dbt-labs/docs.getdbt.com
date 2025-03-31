@@ -36,19 +36,23 @@ To configure the SCIM settings for Okta:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the Okta configuration settings." />
 
-4. Log in to your Okta account and locate the app configured for the dbt Cloud SSO integration.
-5. Navigate to the **General** tab and ensure **Enable SCIM provisioning** is checked or the **Provisioning** tab will not be displayed. 
+4. Manual updates are disabled by default for all SCIM-managed entities, including the ability to manually invite new users. This ensures SCIM-managed entities stay in sync with the IdP, and we recommend keeping this setting disabled.
+   - However, if you need to make manual updates (for example, if you want to update group membership for a SCIM-managed group), you can enable this setting by clicking **Allow manual updates**.
+<Lightbox src="/img/docs/dbt-cloud/access-control/scim-manual-updates.png" width="60%" title="Enabling manual updates in SCIM settings." />
+
+5. Log in to your Okta account and locate the app configured for the dbt Cloud SSO integration.
+6. Navigate to the **General** tab and ensure **Enable SCIM provisioning** is checked or the **Provisioning** tab will not be displayed. 
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="60%" title="Enable SCIM provisioning in Okta." />
-6. Open the **Provisioning** tab and select **Integration**.
-7. Paste the **SCIM base URL** from dbt Cloud to the first field and enter your preferred **Unique identifier field for users** (such as _username_) next.
-8. Click the checkboxes for the following **Supported provisioning actions**:
+7. Open the **Provisioning** tab and select **Integration**.
+8. Paste the **SCIM base URL** from dbt Cloud to the first field and enter your preferred **Unique identifier field for users** (such as _username_) next.
+9. Click the checkboxes for the following **Supported provisioning actions**:
     - Push New Users
     - Push Profile Updates
     - Push Groups
-9. For **Authentication mode** select **HTTP Header** from the dropdown.
-10. In the **Authorization** section, paste the token from dbt Cloud into the **Bearer** field.
+10. For **Authentication mode** select **HTTP Header** from the dropdown.
+11. In the **Authorization** section, paste the token from dbt Cloud into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
 
-11. Test the connection and click **Save** once completed. 
+12. Test the connection and click **Save** once completed. 
 
 You've now configured SCIM for the Okta SSO integration in dbt Cloud.
