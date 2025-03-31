@@ -13,7 +13,6 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [dbt Cloud Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
-  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
 If you're using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added [Google’s IP addresses](https://www.gstatic.com/ipranges/goog.txt) to your IP allowlist. Otherwise, the Google Sheets connection will fail.
 
