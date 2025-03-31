@@ -21,7 +21,7 @@ The following IdPs are supported in the dbt Cloud UI:
 - Okta
 - Entra ID (_coming soon_)
 
-If your IDP isn’t on the list, it can be supported using dbt Cloud APIs (_docs coming soon_).
+If your IdP isn’t on the list, it can be supported using dbt Cloud APIs (_docs coming soon_).
 
 ## SCIM configuration for Okta <Lifecycle status="beta" />
 
@@ -49,7 +49,7 @@ To configure the SCIM settings for Okta:
     - Push New Users
     - Push Profile Updates
     - Push Groups
-10. For **Authentication mode** select **HTTP Header** from the dropdown.
+10. From the **Authentication mode** dropdown, select **HTTP Header**.
 11. In the **Authorization** section, paste the token from dbt Cloud into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
 
