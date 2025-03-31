@@ -62,17 +62,7 @@ models:
 
 <TabItem value="one_off">
 
-Configure a one-off (data) test:
-
-<File name='tests/<filename>.sql'>
-
-```sql
-{{ config(where = "date_column = current_date") }}
-
-select ...
-```
-
-</File>
+This config is ignored for one-off tests.
 
 </TabItem>
 

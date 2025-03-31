@@ -36,3 +36,11 @@ Access dbt Explorer directly from the **modeling timing tab**, which helps you i
 - Hover over a resource and click on **View on Explorer** to view the resource metadata directly in dbt Explorer. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.jpg" title="Access dbt Explorer from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
+
+### Query page <Lifecycle status="beta,enterprise" />
+
+Access dbt Explorer directly from the [Query page](/docs/collaborate/access-query-page) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
+
+To access dbt Explorer from the Query page, click on the **Explorer** icon in the Query console sidebar menu and search for the resource you're interested in.
+
+<Lightbox src="/img/docs/query-page/qp-explorer.png" width="90%" title="Query page integrated with dbt Explorer" />

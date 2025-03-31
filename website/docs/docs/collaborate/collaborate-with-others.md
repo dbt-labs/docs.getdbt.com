@@ -3,9 +3,10 @@ title: "Collaborate with others"
 description: "Learn how dbt Cloud makes it easier to collaborate with others"
 pagination_next:  "docs/collaborate/explore-projects"
 pagination_prev: null
+hide_table_of_contents: true
 ---
 
-<div className="grid--2-col">
+<div className="grid--3-col">
 
 <Card
     title="Discover data with dbt Explorer"
@@ -14,14 +15,16 @@ pagination_prev: null
     icon="dbt-bit"/>
 
 <Card
+    title="Analyze with Query page"
+    body="Learn how to query data and perform exploratory data analysis using the Query page."
+    link="/docs/collaborate/query-page"
+    icon="dbt-bit"/>
+
+<Card
     title="Git version control"
     body="Learn about Git and version control."
     link="/docs/collaborate/git-version-control"
     icon="dbt-bit"/>
-
-</div>
-<br />
-<div className="grid--2-col">
 
 <Card
     title="Document your dbt projects"

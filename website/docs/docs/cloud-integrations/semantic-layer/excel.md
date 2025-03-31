@@ -14,7 +14,6 @@ The dbt Semantic Layer offers a seamless integration with Excel Online and Deskt
 - You need a Microsoft Excel account with access to install add-ons.
 - You have a [dbt Cloud Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
-  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
 :::tip
 

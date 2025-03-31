@@ -15,7 +15,6 @@ The Tableau integration allows you to use worksheets to query the dbt Semantic L
 - Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
 - You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
-  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
 import SLCourses from '/snippets/_sl-course.md';
 

@@ -1,7 +1,6 @@
-- Have a dbt Cloud Team or Enterprise account.
-   - Available on all [tenant configurations](/docs/cloud/about-cloud/tenancy). Single-tenant accounts should contact your account representative for setup.
+- Have a dbt Cloud Team or Enterprise account. Available on all [tenant configurations](/docs/cloud/about-cloud/tenancy).
 - Ensure your production and development environments are on a [supported dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-- Use Snowflake, BigQuery, Databricks, or Redshift.
+- Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 -  Create a successful run in the environment where you configure the Semantic Layer. 
    - **Note:** Semantic Layer supports querying in Deployment environments; development querying is coming soon.
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the dbt Semantic Layer.  
