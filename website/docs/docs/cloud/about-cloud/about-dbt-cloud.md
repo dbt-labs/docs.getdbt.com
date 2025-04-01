@@ -111,6 +111,13 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
     body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
     link="/docs/collaborate/explore-projects"
     icon="dbt-bit"/>
+
+  <Card
+    title="Query page*"
+    body="Learn how to query data and perform exploratory data analysis using the Query page."
+    link="/docs/collaborate/query-page"
+    icon="dbt-bit"/>
+
 </div> <br />
 
 *These features are available on [selected plans](https://www.getdbt.com/pricing/).
@@ -120,4 +127,3 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
-

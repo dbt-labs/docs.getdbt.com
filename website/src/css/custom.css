@@ -1092,6 +1092,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 .footer__items--right {
   display: flex;
   gap: 1.5em;
+  align-items: center;
 }
 
 /* fontawesome icons in footer */

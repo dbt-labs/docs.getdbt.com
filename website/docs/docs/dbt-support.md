@@ -19,6 +19,15 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the dbt Cloud navigation.
 
+### Create a support ticket
+To create a support ticket in dbt Cloud:
+1. In the dbt Cloud navigation, click on **Help and Guides**.
+2. Click **Create a support ticket**.
+3. Fill out the form and click **Create Ticket**.
+4. A dbt Support team member will respond to your ticket through email.
+
+<Lightbox src="/img/create-support-ticket.gif" title="Create a support ticket in dbt Cloud" />
+
 ### Ask dbt Support Assistant
 dbt Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to dbt Cloud users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
 

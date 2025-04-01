@@ -1,9 +1,10 @@
 ---
-title: "Configuring test `severity`"
+title: severity, error_if, and warn_if
 id: "severity"
 description: "You can use error thresholds to configure the severity of test results and set when to produce an error or warning based on the number of failed tests."
 resource_types: [tests]
 datatype: string
+keywords: [severity, error_if, warn_if]
 ---
 
 Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, etc.
