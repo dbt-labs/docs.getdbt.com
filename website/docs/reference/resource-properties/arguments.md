@@ -29,7 +29,7 @@ The `arguments` property is used to define the parameters that a macro can acce
 
 You can use a [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) in v1.10; dbt will validate whether the `name` or `type` matches the marcro arguments in YAML.
 
-`arguments` can be defined in a [`properties.yml`](/reference/resource-properties/arguments) file but they are not enforced by dbt. The file can be named anything and placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`).
+`arguments` can be defined in a [`properties.yml`](/reference/resource-properties/arguments#macro-properties) file but they are not enforced by dbt. The file can be named anything and placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`).
 
 ## Macro properties
 
