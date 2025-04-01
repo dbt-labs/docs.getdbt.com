@@ -124,6 +124,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
                     "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+                    "docs/cloud/manage-access/scim",
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
@@ -575,6 +576,16 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Analyze with Query page",
+          link: { type: "doc", id: "docs/collaborate/query-page" },
+          items: [
+            "docs/collaborate/query-page", // main query page doc
+            "docs/collaborate/access-query-page", // info on how to access and use query page
+            "docs/collaborate/navigate-query-page", // navigate query page doc
+          ],
+        },
+        {
+          type: "category",
           label: "Git version control",
           link: { type: "doc", id: "docs/collaborate/git-version-control" },
           items: [
@@ -775,7 +786,7 @@ const sidebarSettings = {
         "docs/cloud/dbt-copilot-faqs",
         ],
       },
-    {
+      {
       type: "category",
       label: "dbt Cloud integrations",
       link: { type: "doc", id: "docs/cloud-integrations/overview" },
@@ -1146,10 +1157,9 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For macros",
-          link: { type: "doc", id: "reference/macro-properties" },
+          link: { type: "doc", id: "reference/resource-properties/arguments" },
           items: [
-            "reference/macro-properties",
-            "reference/resource-properties/argument-type",
+            "reference/resource-properties/arguments",
           ],
         },
       ],
