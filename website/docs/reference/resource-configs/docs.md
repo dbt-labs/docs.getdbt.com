@@ -142,7 +142,7 @@ analyses:
 
 <TabItem value="macros">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/resource-properties/arguments) for more info.
 
 <File name='macros/schema.yml'>
 

@@ -22,4 +22,4 @@ These properties are:
 - [`quote`](/reference/resource-properties/columns#quote)
 - [`source` properties](/reference/source-properties) (e.g. `loaded_at_field`, `freshness`)
 - [`exposure` properties](/reference/exposure-properties) (e.g. `type`, `maturity`)
-- [`macro` properties](/reference/macro-properties) (e.g. `arguments`)
+- [`macro` properties](/reference/resource-properties/arguments) (e.g. `arguments`)

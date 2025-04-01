@@ -7,7 +7,7 @@ id: "jinja-macros"
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
 * [dbt Jinja context](/reference/dbt-jinja-functions)
-* [Macro properties](/reference/macro-properties)
+* [Macro properties](/reference/resource-properties/arguments)
 
 ## Overview
 In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a templating language.
