@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## March 2025
 
-- **Behavior change**: As of March 31st, 2025, dbt Core versions 1.0, 1.1, and 1.2 have been deprecated from dbt Cloud. They are no longer available to select as versions for dbt projects. Workloads currently on these versions will be automatically upgraded to v1.3, and may lead to new failures.
+- **Behavior change**: As of March 31st, 2025, dbt Core versions 1.0, 1.1, and 1.2 have been deprecated from dbt Cloud. They are no longer available to select as versions for dbt projects. Workloads currently on these versions will be automatically upgraded to v1.3, which may cause new failures.
 - **Enhancement**: [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) users on single-tenant configurations no longer need to contact their account representative to enable this feature. Setup is now self-service and available across all tenant configurations.
 - **New**: The dbt Semantic Layer now supports Postgres as a data platform. For more details on how to set up the dbt Semantic Layer for Postgres, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
 - **New**: New [environment variable default](/docs/build/environment-variables#dbt-cloud-context) `DBT_CLOUD_INVOCATION_CONTEXT`. 
