@@ -4,7 +4,7 @@ description: "Learn how to query data and perform exploratory data analysis usin
 sidebar_label: "About the Query page"
 tags: [Semantic Layer]
 pagination_next:  "docs/collaborate/access-query-page"
-image: /img/docs/query-page/qp-results.jpg
+image: /img/docs/query-page/qp-chart.jpg
 ---
 
 # About the Query page <Lifecycle status="beta,enterprise" />

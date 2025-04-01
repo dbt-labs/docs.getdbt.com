@@ -43,11 +43,13 @@ In the `freshness` block, one or both of `warn_after` and `error_after` can be p
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
-- If `loaded_at_field` is provided, dbt will calculate freshness via a select query (behavior prior to v1.7).
-- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters).
+- If `loaded_at_field` is provided, dbt will calculate freshness via a select query.
+- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters). 
 <VersionBlock firstVersion="1.10"> 
+- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom sql query.
 - If `loaded_at_query` is provided, `loaded_at_field` should not be configured.
 </VersionBlock>
+
 
 Currently, calculating freshness from warehouse metadata tables is supported on the following adapters:
 - [Snowflake](/reference/resource-configs/snowflake-configs)
@@ -57,8 +59,8 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 Support is coming soon to the [Spark](/reference/resource-configs/spark-configs) adapter.
 
 Freshness blocks are applied hierarchically:
-- a `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
-- a `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
+- A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.
+- A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
 
@@ -102,8 +104,13 @@ sources:
     freshness:
       error_after:
         count: 2
-        period: hour 
-    loaded_at_query: "select max(ordered_at) from {{ this }}"
+        period: hour
+    loaded_at_query: |
+      select max(_sdc_batched_at) from (
+      select * from {{ this }}
+      where _sdc_batched_at > dateadd(day, -7, current_date)
+      qualify count(*) over (partition by _sdc_batched_at::date) > 2000
+      )
 
 ```
 

@@ -41,6 +41,6 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) field for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the built-in time stamp, which uses the `loaded_at_field`). You can not define `loaded_at_query` if the `loaded_at_field` config is also provided.
+- Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 
 **Coming soon**
