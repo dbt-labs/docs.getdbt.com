@@ -52,7 +52,7 @@ macros:
     [meta](/reference/resource-configs/meta): {<dictionary>}
     arguments:
       - name: <arg name>
-        [type](/reference/resource-properties/argument-type): <string>
+        [type](/reference/resource-properties/arguments): <string>
         [description](/reference/resource-properties/description): <markdown_string>
       - ... # declare properties of additional arguments
 
