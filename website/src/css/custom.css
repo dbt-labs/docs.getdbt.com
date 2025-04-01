@@ -2220,3 +2220,10 @@ table th {
   background-color: transparent;
 }
 /* End tab borders */
+
+/* Qualified chat widget button positioning when widget not opened */
+iframe#q-messenger-frame:not(.qlfd-maximized) {
+  right: 100px !important;
+  z-index: 100000 !important;
+  bottom: 6px !important;
+}

@@ -21,7 +21,7 @@ The global dbt Support team is available to dbt Cloud customers by [email](mailt
 
 ### Create a support ticket
 To create a support ticket in dbt Cloud:
-1. In the dbt Cloud navigation, click on **Help and Guides**.
+1. In the dbt Cloud navigation, click on **Help & Guides**.
 2. Click **Create a support ticket**.
 3. Fill out the form and click **Create Ticket**.
 4. A dbt Support team member will respond to your ticket through email.
