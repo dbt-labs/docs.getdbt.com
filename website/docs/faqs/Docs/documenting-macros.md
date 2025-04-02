@@ -4,6 +4,7 @@ description: "You can use a schema file to document macros"
 sidebar_label: 'Document macros'
 id: documenting-macros
 ---
+import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
 To document macros, use a [schema file](/reference/resource-properties/arguments#macro-properties) and nest the configurations under a `macros:` key
 
@@ -28,9 +29,12 @@ macros:
 
 </File>
 
+<MacroArgsNote />
+
 ## Document a custom materialization
 
 When you create a [custom materialization](/guides/create-new-materializations), dbt creates an associated macro with the following format:
+
 ```
 materialization_{materialization_name}_{adapter}
 ```

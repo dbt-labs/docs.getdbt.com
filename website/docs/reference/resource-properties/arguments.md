@@ -2,9 +2,9 @@
 title: arguments
 sidebar_label: "arguments"
 id: arguments
-pagination_next: "reference/resource-properties/arguments"
-pagination_prev: null
 ---
+
+import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
 <File name='macros/<filename>.yml'>
 
@@ -64,7 +64,18 @@ macros:
 
 ## type
 
-The data type of your argument. Note that this is only used for documentation purposes — there are no restrictions on the values you can use here.
+<VersionBlock lastVersion="1.9">
+
+The data type of your argument. This is only used for documentation purposes — there are no restrictions on the values you can use here.
+
+</VersionBlock>
+<VersionBlock firstVersion="1.10">
+
+The data type of your argument. Unless you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, `type` is only used for documentation purposes — there are no restrictions on the values you can use here.
+
+</VersionBlock>
+
+<MacroArgsNote />
 
 <File name='macros/<filename>.yml'>
 
@@ -81,7 +92,25 @@ macros:
 
 </File>
 
+## Supported types for macro argument validation
+
+From dbt Core v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, dbt supports the following types for macro arguments:
+
+- `string` or `str`
+- `boolean` or `bool`
+- `integer` or `int`
+- `float`
+- `any`
+- `list[<Type>]`, for example, `list[string]`
+- `dict[<Type>, <Type>]`, for example, `dict[str, list[int]]`
+- `optional[<Type>]`, for example, `optional[integer]`
+- [`relation`](/reference/dbt-classes#relation)
+- [`column`](/reference/dbt-classes#column)
+
+Note that the types follow a Python-like style but are used for documentation and validation only. They are not Python types.
+
 ## Examples
+
 ### Document a macro
 
 <File name='macros/cents_to_dollars.sql'>
