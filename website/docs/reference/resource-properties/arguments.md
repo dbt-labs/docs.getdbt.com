@@ -35,7 +35,7 @@ You can use a [behavior flag](/reference/global-configs/behavior-changes#behavio
 
 ## Macro properties
 
-Macro properties can be declared in any `properties.yml` file. Macro properties are "special properties" in that you can't configure them in the dbt_project.yml file or using config() blocks. Refer to [Configs and properties](/reference/define-properties#which-properties-are-not-also-configs) for more information.
+Macro properties can be declared in any `properties.yml` file. Macro properties are "special properties" in that you can't configure them in the dbt_project.yml file or using `config()` blocks. Refer to [Configs and properties](/reference/define-properties#which-properties-are-not-also-configs) for more information.
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
