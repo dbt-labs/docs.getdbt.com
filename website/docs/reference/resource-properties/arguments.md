@@ -25,17 +25,17 @@ macros:
 
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. This helps in documenting the macro and understanding what inputs it requires.
+The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. This helps in documenting the macro and understanding what inputs it requires.
 
-You can use a [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) in v1.10; dbt will validate whether the `name` or `type` matches the marcro arguments in YAML.
+You can use a [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) in v1.10. You can define `arguments` in a [`properties.yml`](/reference/resource-properties/arguments#macro-properties) file but they are not enforced by dbt. You can name this file anything and it can placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`).
 
-`arguments` can be defined in a [`properties.yml`](/reference/resource-properties/arguments#macro-properties) file but they are not enforced by dbt. The file can be named anything and placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`).
+- If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
+- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro.
+- If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file. There will be no changes to the manifest and no change to the schema. 
 
 ## Macro properties
 
-import PropsCallout from '/snippets/_config-prop-callout.md';
-
-Macro properties can be declared in any `properties.yml` file. <PropsCallout title={frontMatter.title}/> 
+Macro properties can be declared in any `properties.yml` file. Macro properties are "special properties" in that you can't configure them in the dbt_project.yml file or using config() blocks. Refer to [Configs and properties](/reference/define-properties#which-properties-are-not-also-configs) for more information.
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
@@ -64,6 +64,8 @@ macros:
 
 ## type
 
+The data type of your argument. Note that this is only used for documentation purposes — there are no restrictions on the values you can use here.
+
 <File name='macros/<filename>.yml'>
 
 ```yml
@@ -78,9 +80,6 @@ macros:
 ```
 
 </File>
-
-## Definition
-The data type of your argument. Note that this is only used for documentation purposes — there are no restrictions on the values you can use here.
 
 ## Examples
 ### Document a macro
