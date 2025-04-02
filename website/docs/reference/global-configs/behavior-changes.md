@@ -255,7 +255,7 @@ When you set the `validate_macro_args` flag to `True`, dbt will:
 - Check that all argument names in your YAML match those in the macro definition
 - Raise warnings if the names or types don't match
 - Validate that the `types` values follow the supported format explained in the next section
-- If no arguments are documented in the YAML, dbt will infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)
+- If you use this flag and no arguments are documented in the YAML, dbt will infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)
 
 #### Supported types
 dbt supports the following types for macro arguments:
