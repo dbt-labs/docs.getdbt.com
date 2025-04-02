@@ -45,5 +45,4 @@ You can read more about each of these behavior changes in the following links:
 
 - dbt provides validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/global-configs/behavior-changes#supported-types).
 
-**Coming soon**
  
