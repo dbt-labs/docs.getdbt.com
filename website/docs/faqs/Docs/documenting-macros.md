@@ -5,6 +5,8 @@ sidebar_label: 'Document macros'
 id: documenting-macros
 ---
 
+import MacroArgsNote from '/snippets/_validate-macro-args.md';
+
 To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
@@ -28,17 +30,12 @@ macros:
 
 </File>
 
-:::tip
-From dbt Core v1.10, you can opt into validating the arguments you define in macro documentation using the `validate_macro_args` behavior change flag. When enabled, dbt will:
-- Raise a warning if documented argument names don’t match the macro definition.
-- Raise a warning if `type` fields don’t follow supported formats (like `string`, `integer`, `optional[list[str]]`, and so on).
-
-Learn more about [macro argument validation](/reference/global-configs/behavior-changes#macro-argument-validation).
-:::
+<MacroArgsNote />
 
 ## Document a custom materialization
 
 When you create a [custom materialization](/guides/create-new-materializations), dbt creates an associated macro with the following format:
+
 ```
 materialization_{materialization_name}_{adapter}
 ```
