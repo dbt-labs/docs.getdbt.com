@@ -25,7 +25,8 @@ macros:
 
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. This helps in documenting the macro and understanding what inputs it requires.
+The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. 
+You add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
 You add `arguments` to a [macro property](/reference/macro-properties). 
 
