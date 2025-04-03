@@ -73,7 +73,7 @@ You can find an exhaustive list of each supported property and config, broken do
 * Seed [properties](/reference/seed-properties) and [configs](/reference/seed-configs)
 * Snapshot [properties](snapshot-properties)
 * Analysis [properties](analysis-properties)
-* Macro [properties](/reference/resource-properties/arguments)
+* Macro [properties](/reference/macro-properties)
 * Exposure [properties](/reference/exposure-properties)
 
 ## FAQs
