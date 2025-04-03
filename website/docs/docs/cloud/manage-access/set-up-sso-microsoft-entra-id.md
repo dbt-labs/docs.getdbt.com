@@ -98,6 +98,10 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | Microsoft Graph | Delegated | `Directory.Read.All` |
 | Microsoft Graph | Delegated | `User.Read` |
 
+:::info Why is `Directory.AccessAsUser.All` permission required?
+`Directory.Accessasuser.all` is required is because it lets dbt Cloud see what groups the user belongs to. dbt Cloud doesn't use the permission for anything else. This setup avoids asking users for extra consent when they log in.
+:::
+
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
