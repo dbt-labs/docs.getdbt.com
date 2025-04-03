@@ -6,7 +6,7 @@ id: documenting-macros
 ---
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
-To document macros, use a [schema file](/reference/resource-properties/macro-properties) and nest the configurations under a `macros:` key
+To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
 
