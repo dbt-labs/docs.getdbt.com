@@ -27,11 +27,14 @@ macros:
 
 The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. This helps in documenting the macro and understanding what inputs it requires.
 
-You can use a [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) in v1.10. You can define `arguments` in a [`properties.yml`](/reference/resource-properties/arguments#macro-properties) file but they are not enforced by dbt. You can name this file anything and it can placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`).
+You can define `arguments` in a [`properties.yml`](/reference/resource-properties/arguments#macro-properties) file. You can name this file anything and it can placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`). 
+
+You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag. 
 
 - If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
-- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro.
-- If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file. There will be no changes to the manifest and no change to the schema. 
+- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro or if the argument types aren't valid according to the [supported types](/reference/global-configs/behavior-changes#supported-types).
+
+If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file.
 
 ## Macro properties
 
@@ -134,8 +137,7 @@ macros:
     arguments:
       - name: column_name
         type: column name or expression
-        description: "The name of a column, or an expression — anything that can be `select`-ed as a column"
-
+        description: "The name of a column"
       - name: scale
         type: integer
         description: "The number of decimal places to round to. Default is 2."
