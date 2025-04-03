@@ -1157,8 +1157,9 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For macros",
-          link: { type: "doc", id: "reference/resource-properties/arguments" },
+          link: { type: "doc", id: "reference/macro-properties" },
           items: [
+            "reference/macro-properties",
             "reference/resource-properties/arguments",
           ],
         },

@@ -194,7 +194,7 @@ macros:
 ```yml
 version: 2
 
-[macros](/reference/resource-properties/arguments):
+[macros](/reference/macro-properties):
   - name: macro_name
     meta: {<dictionary>}
 

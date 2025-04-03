@@ -39,11 +39,6 @@
   ],
   "redirects": [
     {
-      "source": "/reference/macro-properties",
-      "destination": "/reference/resource-properties/arguments",
-      "permanent": true
-    },
-    {
       "source": "/reference/resource-properties/argument-type",
       "destination": "/reference/resource-properties/arguments",
       "permanent": true
