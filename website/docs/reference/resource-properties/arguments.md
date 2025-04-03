@@ -27,7 +27,6 @@ macros:
 
 The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`.  You add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
-
 You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag. 
 
 - If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
