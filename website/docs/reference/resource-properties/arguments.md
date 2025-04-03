@@ -27,7 +27,7 @@ macros:
 
 The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. This helps in documenting the macro and understanding what inputs it requires.
 
-You can define `arguments` in a [`properties.yml`](/reference/macro-properties) file. You can name this file anything and it can placed in the [`macro-paths`](/reference/project-configs/macro-paths) directory (defaults to `["macros"]`). 
+You add `arguments` to a [macro property](/reference/macro-properties). 
 
 You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag. 
 
