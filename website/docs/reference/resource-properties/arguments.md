@@ -36,35 +36,6 @@ You can validate your macro `arguments` using the [`validate_macro_args`](/refer
 
 If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file.
 
-## Macro properties
-
-Macro properties can be declared in any `properties.yml` file. Macro properties are "special properties" in that you can't configure them in the dbt_project.yml file or using `config()` blocks. Refer to [Configs and properties](/reference/define-properties#which-properties-are-not-also-configs) for more information.
-
-You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
-
-<File name='macros/<filename>.yml'>
-
-```yml
-version: 2
-
-macros:
-  - name: <macro name>
-    [description](/reference/resource-properties/description): <markdown_string>
-    [docs](/reference/resource-configs/docs):
-      show: true | false
-    [meta](/reference/resource-configs/meta): {<dictionary>}
-    arguments:
-      - name: <arg name>
-        [type](/reference/resource-properties/arguments): <string>
-        [description](/reference/resource-properties/description): <markdown_string>
-      - ... # declare properties of additional arguments
-
-  - name: ... # declare properties of additional macros
-
-```
-
-</File>
-
 ## type
 
 <VersionBlock lastVersion="1.9">
@@ -95,7 +66,7 @@ macros:
 
 </File>
 
-## Supported types for macro argument validation
+### Supported types for macro argument validation
 
 From dbt Core v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, dbt supports the following types for macro arguments:
 
