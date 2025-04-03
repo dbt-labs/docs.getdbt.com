@@ -41,7 +41,7 @@ The data type of your argument. This is only used for documentation purposes —
 </VersionBlock>
 <VersionBlock firstVersion="1.10">
 
-The data type of your argument. Setting [`validate_macro_args`](/reference/resource-properties/arguments#supported-types) to `true` ensures that documented macro argument names match those in the macro definition and validates their types against the [supported types](#supported-types). When set to `false`, `type` is only used for documentation purposes and there are no restrictions on the values you can specify.
+The data type of your argument. Setting [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) to `true` ensures that documented macro argument names match those in the macro definition and validates their types against the [supported types](#supported-types). When set to `false`, `type` is only used for documentation purposes and there are no restrictions on the values you can specify.
 
 </VersionBlock>
 
