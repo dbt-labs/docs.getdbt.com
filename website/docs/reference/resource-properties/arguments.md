@@ -28,7 +28,6 @@ macros:
 The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`. 
 You add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
-You add `arguments` to a [macro property](/reference/macro-properties). 
 
 You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag. 
 
