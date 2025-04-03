@@ -136,7 +136,7 @@ macros:
   - name: cents_to_dollars
     arguments:
       - name: column_name
-        type: column name or expression
+        type: column
         description: "The name of a column"
       - name: scale
         type: integer
