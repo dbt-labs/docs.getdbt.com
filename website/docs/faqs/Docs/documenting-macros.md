@@ -4,6 +4,7 @@ description: "You can use a schema file to document macros"
 sidebar_label: 'Document macros'
 id: documenting-macros
 ---
+
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
 To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
