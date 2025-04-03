@@ -75,7 +75,7 @@ dbt Cloud can work with dbt projects hosted on AWS CodeCommit, but there are som
 
 :::warning AWS discontinued CodeCommit git-hosting service
 
-AWS CodeCommit is no longer available to new customers and existing customers only receive security and performance improvements. Learn more about [migrating to another git provider](https://aws.amazon.com/blogs/devops/how-to-migrate-your-aws-codecommit-repository-to-another-git-provider/).
+AWS CodeCommit is no longer available to new customers, and existing customers only receive security and performance improvements. Learn more about [migrating to another git provider](https://aws.amazon.com/blogs/devops/how-to-migrate-your-aws-codecommit-repository-to-another-git-provider/).
 
 :::
 
