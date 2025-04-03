@@ -233,7 +233,7 @@ Once the metric is updated, it will work as expected:
 
 dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `False`, which means that dbt won't validate the names or types of documented macro arguments.
 
-In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/argument-type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
+In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
 - the argument names matched those in your macro
 - the argument types were valid or consistent with the macro's Jinja definition
 
@@ -254,21 +254,5 @@ macros:
 When you set the `validate_macro_args` flag to `True`, dbt will:
 - Check that all argument names in your YAML match those in the macro definition
 - Raise warnings if the names or types don't match
-- Validate that the `types` values follow the supported format explained in the next section
-- If you use this flag and no arguments are documented in the YAML, dbt will infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)
-
-#### Supported types
-dbt supports the following types for macro arguments:
-
-- `string` or `str`
-- `boolean` or `bool`
-- `integer` or `int`
-- `float`
-- `any`
-- `list[<Type>]`, for example, `list[string]`
-- `dict[<Type>, <Type>]`, for example, `dict[str, list[int]]`
-- `optional[<Type>]`, for example, `optional[integer]`
-- [`relation`](/reference/dbt-classes#relation)
-- [`column`](/reference/dbt-classes#column)
-
-Note that the types follow a Python-like style but are used for documentation and validation only. They are not Python types.
+- Validate that the [`type` values follow the supported format](/reference/resource-properties/arguments#supported-types).
+- If no arguments are documented in the YAML, infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)

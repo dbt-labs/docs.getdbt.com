@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/reference/resource-properties/argument-type",
+      "destination": "/reference/resource-properties/arguments",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-11-0",
       "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
