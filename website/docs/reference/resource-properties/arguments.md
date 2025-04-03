@@ -30,7 +30,7 @@ The `arguments` property is used to define the parameters that a macro can accep
 You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag:
 
 - If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
-- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro or if the argument types aren't valid according to the [supported types](/reference/global-configs/behavior-changes#supported-types).
+- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro or if the argument types aren't valid according to the [supported types](#supported-types-for-macro-argument-validation).
 
 If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file.
 
