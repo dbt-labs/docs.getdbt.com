@@ -9,7 +9,7 @@ sidebar_label: "Set up service user"
 
 :::important
 
-Service users are no longer a recommended method for authentication and dbt Cloud is rolling out a new [Entra ID service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals) option. Once the option is available in your account settings, you should plan to [migrate from service user to service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal). Service prinicpals are the [Microsoft recommended service account type](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for app authentication.
+Service users are no longer a recommended method for authentication and dbt Cloud is rolling out a new [Entra ID service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals) option. Once the option is available in your account settings, you should plan to [migrate from service user to service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal). Service principals are the [Microsoft recommended service account type](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for app authentication.
 
 :::
 
