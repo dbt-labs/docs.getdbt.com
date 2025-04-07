@@ -15,6 +15,7 @@ dbt --warn-error run
 
 </File>
 
+## About warning options
 
 Converting any warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot. The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly which types of warnings_ are treated as errors. 
 
@@ -24,6 +25,14 @@ Warnings that should be treated as errors can be specified through `include` and
 
 The `include` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When `include` is set to `"all"` or `"*"`, the optional `exclude` parameter can be set to exclude specific warnings from being treated as exceptions.
 
+:::caution Proceed with caution in production environments
+
+Using  `"include": "all"` in older versions will treat _all_ current and future warnings as errors.
+
+This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend explicitly listing only the warnings you want to treat as errors in production.
+
+:::
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.8">
@@ -31,6 +40,13 @@ The `include` parameter can be set to `"all"` or `"*"` to treat all warnings as 
 - Warnings that should be treated as errors can be specified through `error` and/or `warn` parameters. Warning names can be found in [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
 
 - The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
+  :::caution Proceed with caution in production environments
+
+  Using `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
+
+  This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend explicitly listing only the warnings you want to treat as errors in production.
+
+  :::
 
 - Use the `silence` parameter to ignore warnings through project flags, without needing to re-specify the silence list every time. For example, to silence deprecation warnings or certain warnings you want to ignore across your project, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
@@ -53,15 +69,72 @@ flags:
 
 </VersionBlock>
 
+## Configure warnings as errors
+
+You can configure warnings as errors, which can be set through CLI flags, environment variables, or configuration files like `dbt_project.yml` or `profiles.yml`.
+
+You can choose to:
+
+- Promote all warnings to errors (using `{"error": "all"}` or `--warn-error`)
+- Promote some warnings to errors using `error`, `warn`, and `silence`
 
 :::info `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive
 `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive. You can only specify one, even when you're specifying the config in multiple places (e.g. env var + CLI flag), otherwise, you'll see a usage error.
 :::
 
+To promote all warnings to errors, use the following:
+
+#### CLI flags
+
+<VersionBlock lastVersion="1.7"> 
+
+```bash 
+dbt --warn-error run 
+dbt --warn-error-options '{"include": "all"}' run 
+dbt --warn-error-options '{"include": "*"}' run 
+```
+</VersionBlock> 
+
+<VersionBlock firstVersion="1.8"> 
+
+```bash 
+dbt --warn-error run 
+dbt --warn-error-options '{"error": "all"}' run 
+dbt --warn-error-options '{"error": "*"}' run 
+```
+</VersionBlock>
+
+#### Environment variables
+
+<VersionBlock lastVersion="1.7"> 
+
+```bash 
+WARN_ERROR=true dbt run
+DBT_WARN_ERROR_OPTIONS='{"include": "all"}' dbt run 
+DBT_WARN_ERROR_OPTIONS='{"include": "*"}' dbt run 
+``` 
+
+</VersionBlock> 
+
+<VersionBlock firstVersion="1.8"> 
+
+```bash 
+WARN_ERROR=true dbt run 
+DBT_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run 
+DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
+``` 
+
+</VersionBlock>
+
+### Example
+Here are some examples that show you how to configure `warn_error_options` using flags or file-based configuration.
+
+Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warning that occurs when your `--select` flag doesn't match any nodes/resources in your dbt project:
+
 <VersionBlock lastVersion="1.7">
 
 ```text
-dbt --warn-error-options '{"include": "all"}' run
+dbt --warn-error-options '{"include": "all"}' run 
 ...
 ```
 
