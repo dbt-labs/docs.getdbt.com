@@ -16,13 +16,13 @@ recently_updated: true
 
 ## Introduction
 
-In this guide, you'll learn how to set up dbt so you can use it with BigQuery Dataframes (BigFrames):
+In this guide, you'll learn how to set up dbt so you can use it with [BigQuery Dataframes (BigFrames)](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) to:
 * Build scalable data transformation pipelines using dbt and Google Cloud, with SQL and Python.
-* Leverage BigFrames from dbt for scalable BigQuery SQL.
+* Leverage BigFrames from dbt for scalable Python on BigQuery.
 
-In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute pandas and scikit, which help you learn code at scale on the BigQuery SQL engine.
+In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with pandas-like and scikit-like APIs, without the need of any Spark setup or knowledge.
 
-BigQuery Dataframes is an open source python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the python client side code.
+BigQuery Dataframes is an open source python package that auto-transpiles pandas and scikit-learn-like APIs to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the BigQuert DataFrames python code.
 
 
 ### Prerequisites
@@ -95,7 +95,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    bq mk --location=${REGION} echo "${GOOGLE_CLOUD_PROJECT}" | tr '-' '_'_dataset
    ```
 
-4. *(Optional)* **Create a GCS bucket to stage the python code**
+4. **Create a GCS bucket to hold logs and stage python code**
 
    If you wish to store the python compiled code on a GCS bucket, create a new one:
 
@@ -104,11 +104,8 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    gcloud storage buckets create gs://${GOOGLE_CLOUD_PROJECT}-bucket --location=${REGION}
    #Grant Storage Admin over the bucket to your SA 
    xgcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
-   ```
 
-5. **Create a GCS bucket to hold the logs**
-   ```python
-   #Create GCS bucket
+   #Create GCS bucket for logs
    gcloud storage buckets create gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --location=${REGION}
    #Grant Storage Admin over the bucket to your SA 
    gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
@@ -124,8 +121,8 @@ The dbt BigFrames submission method supports both service account and OAuth cred
       1 as foo,
       2 as bar
    ```
-3. Now create a new model file in the models directory, named `my_first_python_model.py`. 
-4. Configure the BigFrames submission method by either:  
+   Now create a new model file in the models directory, named `my_first_python_model.py`. 
+3. Configure the BigFrames submission method by either:  
 
    a. Project level configuration via dbt_project.yml
 
@@ -138,16 +135,15 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    ```
    or 
 
-   b. The Python code via dbt.config
+   b. The Python code via dbt.config in the my_first_python_model.py file 
 
    ```python
    def model(dbt, session):
       dbt.config(submission_method="bigframes")
-      bdf = dbt.ref("my_sql_model") 
-      return bdf
+      # rest of the python code...
    ```
 
-3. Now in that file, add in this code:
+4. Now in that file, add in this code:
 
    ```python
    def model(dbt, session):
@@ -156,17 +152,9 @@ The dbt BigFrames submission method supports both service account and OAuth cred
       return bdf
    ```
 
-3. Create a new python model file named `my_second_python_model.py` 
+   Run `dbt run` 
 
-   ```python
-   def model(dbt, session):  
-      data = {"foo": [1, 2], "bar": [3, 4]}
-      return bpd.DataFrame(data=data)
-   ```
-
-4. Run `dbt run` 
-
-5. You can optionally view the codes and logs (including previous executions) from the Colab Enterprise Executions tab and GCS bucket from the GCP console.
+5. You can view the logs in [dbt logs](https://docs.getdbt.com/reference/events-logging). You can optionally view the codes and logs (including previous executions) from the [Colab Enterprise Executions](https://console.cloud.google.com/vertex-ai/colab/execution-jobs) tab and [GCS bucket](https://console.cloud.google.com/storage/browser) from the GCP console.
 
 6. Congrats! You just created your first two python models to run on BigFrames! 
 
