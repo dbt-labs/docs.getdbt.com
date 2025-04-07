@@ -27,7 +27,7 @@ By default, a test with `severity: warn` will only ever return a warning, and no
 * `--warn-error`: Promotes **all** dbt warnings (including test warnings, Jinja warnings, deprecations, etc.)
 * `--warn-error-options`: Promotes **only specific types** of warnings. 
 
-Learn more about [Warnings](/docs/reference/global-configs/warnings).
+Learn more about [Warnings](/reference/global-configs/warnings).
 
 <Tabs
   defaultValue="generic"

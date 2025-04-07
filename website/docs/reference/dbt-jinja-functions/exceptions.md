@@ -30,7 +30,7 @@ Use the `exceptions.warn` method to raise a compiler warning with the provided m
 * If you use the `--warn-error` flag, all warnings will be promoted to errors.
 * To promote only Jinja warnings to errors (and leave other warnings alone), use `--warn-error-options`. 
 
-Learn more about [Warnings](/docs/reference/global-configs/warnings).
+Learn more about [Warnings](/reference/global-configs/warnings).
 
 __Example usage__:
 
