@@ -232,7 +232,7 @@ To query metric values, here are the following parameters that are available. Yo
 | `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`  |
 | `saved_query` | A saved query you can use for frequently used queries. | `select * from {{ semantic_layer.query(saved_query="new_customer_orders"` |
 
-## Note on time dimensions and `metric_time`
+### Note on time dimensions and `metric_time`
 
 You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
@@ -246,20 +246,21 @@ Note that `metric_time` should be available in addition to any other time dimens
 
 The following sections provide examples of how to query metrics using the JDBC API:
 
-    - [Fetch metadata for metrics](#fetch-metadata-for-metrics)
-    - [Query common dimensions](#query-common-dimensions)
-    - [Query grouped by time](#query-grouped-by-time)
-    - [Query with a time grain](#query-with-a-time-grain)
-    - [Group by categorical dimension](#group-by-categorical-dimension)
-    - [Query only a dimension](#query-only-a-dimension)
-    - [Query by all dimensions](#query-by-all-dimensions)
-    - [Query with where filters](#query-with-where-filters)
-    - [Query with a limit](#query-with-a-limit)
-    - [Query with order by examples](#query-with-order-by-examples)
-    - [Query with compile keyword](#query-with-compile-keyword)
-    - [Query a saved query](#query-a-saved-query)
-    - [Query metric alias](#query-metric-alias)
-    - [Multi-hop joins](#multi-hop-joins)
+<!-- no toc -->
+- [Fetch metadata for metrics](#fetch-metadata-for-metrics) &mdash; Filter/add any SQL outside of the templating syntax.
+- [Query common dimensions](#query-common-dimensions) &mdash; Select common dimensions for multiple metrics.
+- [Query grouped by time](#query-grouped-by-time) &mdash; Fetch revenue and new customers grouped by time.
+- [Query with a time grain](#query-with-a-time-grain) &mdash; Fetch multiple metrics with a change in time dimension granularities.
+- [Group by categorical dimension](#group-by-categorical-dimension) &mdash; Group by a categorical dimension.
+- [Query only a dimension](#query-only-a-dimension) &mdash; Get the full list of dimension values for the chosen dimension.
+- [Query by all dimensions](#query-by-all-dimensions) &mdash; Query by all valid dimensions.
+- [Query with where filters](#query-with-where-filters) &mdash; Use the `where` parameter to filter on dimensions and entities using parameters.
+- [Query with a limit](#query-with-a-limit) &mdash; Query using a `limit` or `order_by` clause.
+- [Query with order by examples](#query-with-order-by-examples) &mdash; Query with `order_by`, accepts basic string that's a Dimension, Metric, or Entity. Defaults to ascending order. Add a `-` sign in front of the object for descending order.
+- [Query with compile keyword](#query-with-compile-keyword) &mdash; Query using a compile keyword to preview the final SQL before execution.
+- [Query a saved query](#query-a-saved-query) &mdash; Query using a saved query with optional parameters like `limit` or `where`.
+- [Query metric alias](#query-metric-alias) &mdash; Query metrics using aliases, which allow you to use simpler or more intuitive names for metrics instead of their full definitions.
+- [Multi-hop joins](#multi-hop-joins) &mdash; Query across multiple related tables (multi-hop joins) using the `entity_path` argument to specify the path between related entities.
 
 ### Fetch metadata for metrics
 
