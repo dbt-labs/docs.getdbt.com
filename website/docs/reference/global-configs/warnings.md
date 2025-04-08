@@ -28,7 +28,7 @@ Instead of using the `--warn-error` flag to promote _all_ warnings to errors, yo
 <VersionBlock lastVersion="1.7">
 
 :::caution Proceed with caution in production environments
-Using the `--warn-error` flag or `warn_error_options: include: "all"` will treat _all_ current and future warnings as errors.
+Using the `--warn-error` flag or `--warn-error-options '{"include": "all"}'` will treat _all_ current and future warnings as errors.
 
 This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
@@ -38,7 +38,7 @@ Instead of using the `--warn-error` flag to promote _all_ warnings to errors, yo
 - Test warnings with the `--warn-error-options '{"include": ["LogTestResults"]}'` flag.
 - Jinja-level warnings with the `--warn-error-options '{"include": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
 - Selection issues with the `--warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}'` flag.
-- Adapter deprecation warnings with the `--warn-error-options include": ["AdapterDeprecationWarning"]}'` flag.
+- Adapter deprecation warnings with the `--warn-error-options '{"include": ["AdapterDeprecationWarning"]}'` flag.
 
 </VersionBlock>
 
@@ -71,7 +71,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 
 - Warnings that should be treated as errors can be specified through `error` parameter. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
-  - Downloading the JSON output logs from a run and searching for the warning.
+  - Using the `--log-format json` flag.
 - The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as errors (this behavior is the same as using the `--warn-error` flag), or to a list of specific warning names to treat as exceptions.
   
   When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
@@ -86,10 +86,10 @@ You can configure warnings as errors or which warnings to silence, by warn error
 <VersionBlock lastVersion="1.7"> 
 
 - Promote all warnings to errors using `{"include": "all"}` or `--warn-error` flag.
-- Promote some warnings to errors using `include`.
-- Exclude warnings from being treated as errors using `exclude`.
+- Promote some warnings to errors using `include` with `--warn-error-options` flag.
+- Exclude warnings from being treated as errors using `exclude` with `--warn-error-options` flag
 
-In the following example, we're ignoring the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `profiles.yml` file by adding it to the `exclude` parameter:
+In the following example, we're promoting all warnings to errors except for the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `profiles.yml` file by adding it to the `exclude` parameter:
 
   <File name='profiles.yml'>
 
@@ -109,8 +109,8 @@ In the following example, we're ignoring the [`NoNodesForSelectionCriteria` warn
 You can choose to:
 
 - Promote all warnings to errors using `{"error": "all"}` or `--warn-error` flag.
-- Promote some warnings to errors using `error` and optionally exclude others from being treated as errors with `warn`. `warn` tells dbt to continue treating the warnings as warnings.
-- Ignore warnings using `silence`.
+- Promote some warnings to errors using `error` and optionally exclude others from being treated as errors with `warn` with `--warn-error-options` flag. `warn` tells dbt to continue treating the warnings as warnings.
+- Ignore warnings using `silence` with `--warn-error-options` flag.
 
 In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
 
@@ -192,16 +192,17 @@ Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For 
 
 <VersionBlock firstVersion="1.8">
 
-The following example shows how to silence or ignore warnings using the `silence` parameter in the `profiles.yml` file:
-  <File name='profiles.yml'>
+The following example shows how to promote all warnings to errors, except for the `NoNodesForSelectionCriteria` warning using the `silence` and `warn` parameters in the `dbt_project.yml` file:
+  <File name='dbt_project.yml'>
 
   ```yaml
-  config:
+  ....
+  flags:
     warn_error_options:
-      error: # Previously called "include"
-      warn: # Previously called "exclude"
+      error: all # Previously called "include"
+      warn:      # Previously called "exclude"
         - NoNodesForSelectionCriteria
-      silence: # Silence or ignore warnings
+      silence:   # To silence or ignore warnings
         - NoNodesForSelectionCriteria
   ```
 
