@@ -63,7 +63,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 - Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`) 
   - Downloading the JSON output logs from a run and searching for the warning.
-- The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional exclude parameter can be set to exclude specific warnings from being treated as exceptions.
+- The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional `exclude` parameter can be set to exclude specific warnings from being treated as exceptions.
 
 </VersionBlock>
 
