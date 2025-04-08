@@ -81,7 +81,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 
 ## Configuration
 
-You can configure warnings as errors or which warnings to silence, by setting the config through command flags, environment variables, or configuration files like `dbt_project.yml` or `profiles.yml`.
+You can configure warnings as errors or which warnings to silence, by warn error options through command flag, environment variable, or `dbt_project.yml`.
 
 <VersionBlock lastVersion="1.7"> 
 
