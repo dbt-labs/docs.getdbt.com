@@ -49,7 +49,7 @@ This means that if a new warning is introduced in a future version of dbt Core, 
 
 - Use the `silence` parameter to ignore warnings through project flags, without needing to re-specify the silence list every time. For example, to silence deprecation warnings or certain warnings you want to ignore across your project, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
-  In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file:
+  In the following example, we're ignoring the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
 
   <File name='dbt_project.yml'>
 
