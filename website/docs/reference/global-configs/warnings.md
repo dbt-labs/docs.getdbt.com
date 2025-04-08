@@ -69,7 +69,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 
 <VersionBlock firstVersion="1.8">
 
-- Warnings that should be treated as errors can be specified through `error` and/or `warn` parameters. Warning names can be found in:
+- Warnings that should be treated as errors can be specified through `error` parameter. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
   - Downloading the JSON output logs from a run and searching for the warning.
 - The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions (errors), or to a list of specific warning names to treat as exceptions. This behavior is the same as using the `--warn-error` flag.
