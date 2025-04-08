@@ -43,7 +43,7 @@ This means that if a new warning is introduced in a future version of dbt Core, 
 
   Using `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
 
-  This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend explicitly listing only the warnings you want to treat as errors in production.
+  This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 
   :::
 
@@ -139,7 +139,7 @@ DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run
 
 Note, as mentioned earlier, using <VersionBlock firstVersion="1.8">`warn_error_options: error: "all"`</VersionBlock> <VersionBlock lastVersion="1.7">`warn_error_options: include: "all"`</VersionBlock> will treat all current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 
 ## Example
 Here are some examples that show you how to configure `warn_error_options` using flags or file-based configuration.
