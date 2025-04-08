@@ -18,7 +18,7 @@ This means that if a new warning is introduced in a future version of dbt Core, 
 
 Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors, including:
 
-- Test warnings with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
+- [Test warnings](/reference/resource-configs/severity) with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
 - Jinja [exception warnings](/reference/dbt-jinja-functions/exceptions#warn) with `--warn-error-options '{"error": ["JinjaLogWarning"]}'`.
 - No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'`.
 - Adapter deprecation warnings with `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'`.
