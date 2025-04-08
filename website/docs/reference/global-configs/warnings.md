@@ -75,7 +75,7 @@ You can configure warnings as errors, which can be set through command flags, en
 
 <VersionBlock lastVersion="1.7"> 
 
-- Promote all warnings to errors using `{"include": "all"}` or `--warn-error-options` flag.
+- Promote all warnings to errors using `{"include": "all"}` or `--warn-error` flag.
 - Promote some warnings to errors using `include`.
 - Exclude warnings from being treated as errors using `exclude`.
 
