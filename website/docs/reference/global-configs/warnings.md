@@ -112,7 +112,7 @@ You can choose to:
 - Promote some warnings to errors using `error` and optionally exclude others from being treated as errors with `warn`. `warn` tells dbt to continue treating the warnings as warnings.
 - Ignore warnings using `silence`.
 
-In the following example, we're ignoring the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
+In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
 
   <File name='dbt_project.yml'>
 
