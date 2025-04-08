@@ -38,7 +38,7 @@ This means that if a new warning is introduced in a future version of dbt Core, 
 
 - Warnings that should be treated as errors can be specified through `error` and/or `warn` parameters. Warning names can be found in [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
 
-- The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
+- The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions (errors), or to a list of specific warning names to treat as exceptions. When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
   :::caution Proceed with caution in production environments
 
   Using `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
