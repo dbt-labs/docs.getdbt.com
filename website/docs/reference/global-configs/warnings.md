@@ -8,25 +8,51 @@ intro_text: "dbt's warnings can be converted to errors using the --warn-error fl
 
 Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _all_ dbt warnings into errors. Any time dbt would normally warn, it will instead raise an error. Examples include `--select` criteria that selects no resources, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
 
-You can use the `--warn-error` flag to promote all warnings to errors, such as:
-* Test warnings (for example, `LogTestResults`)
-* Jinja-level warnings (for example, `exceptions.warn`, or `JinjaLogWarning`)
-* Selection issues (for example, `NoNodesForSelectionCriteria`)
-* Adapter deprecation warnings (for example, `AdapterDeprecationWarning`)
+<VersionBlock firstVersion="1.8">
 
-Consider using [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) for more targeted control over which warnings are treated as errors.
+:::caution Proceed with caution in production environments
+Using the `--warn-error` flag or `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
+
+This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+:::
+
+Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors, including:
+
+- Test warnings with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
+- Jinja-level warnings with the `--warn-error-options '{"error": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
+- Selection issues with the `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'` flag.
+- Adapter deprecation warnings with the `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'` flag.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
+:::caution Proceed with caution in production environments
+Using the `--warn-error` flag or `warn_error_options: include: "all"` will treat _all_ current and future warnings as errors.
+
+This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+:::
+
+Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors, including:
+
+- Test warnings with the `--warn-error-options '{"include": ["LogTestResults"]}'` flag.
+- Jinja-level warnings with the `--warn-error-options '{"include": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
+- Selection issues with the `--warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}'` flag.
+- Adapter deprecation warnings with the `--warn-error-options include": ["AdapterDeprecationWarning"]}'` flag.
+
+</VersionBlock>
 
 <File name='Usage'>
 
-```text
-dbt --warn-error run
-```
+  ```text
+  dbt --warn-error run
+  ```
 
 </File>
 
 ## Use `--warn-error-options` for targeted warnings
 
-Converting any warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot. The `WARN_ERROR_OPTIONS` config or `--warn-error-options` flag gives you more granular control over _exactly which types of warnings_ are treated as errors. 
+In some cases, you may want to convert _all_ warnings to errors. However, when you want _some_ warnings to stay as warnings and only promote or silence specific warnings you can instead use `--warn-error-options`. The `WARN_ERROR_OPTIONS` config or `--warn-error-options` flag gives you more granular control over _exactly which types of warnings_ are treated as errors. 
 
 :::info `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive
 `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive. You can only specify one, even when you're specifying the config in multiple places (like env var or a flag), otherwise, you'll see a usage error.
@@ -34,44 +60,28 @@ Converting any warnings to errors may suit your needs perfectly, but there may b
 
 <VersionBlock lastVersion="1.7">
 
-Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in:
-- [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`) 
-- Downloading the JSON output logs from a run and searching for the warning.
-
-The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional exclude parameter can be set to exclude specific warnings from being treated as exceptions.
-
-  :::caution Proceed with caution in production environments
-
-  Using `warn_error_options: include: "all"` will treat _all_ current and future warnings as errors.
-
-  This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
-
-  :::
+- Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in:
+  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`) 
+  - Downloading the JSON output logs from a run and searching for the warning.
+- The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional exclude parameter can be set to exclude specific warnings from being treated as exceptions.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.8">
 
 - Warnings that should be treated as errors can be specified through `error` and/or `warn` parameters. Warning names can be found in:
-- [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
-- Downloading the JSON output logs from a run and searching for the warning.
-
-- The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions (errors), or to a list of specific warning names to treat as exceptions. When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
-  :::caution Proceed with caution in production environments
-
-  Using `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
-
-  This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
-
-  :::
-
+  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
+  - Downloading the JSON output logs from a run and searching for the warning.
+- The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions (errors), or to a list of specific warning names to treat as exceptions. This behavior is the same as using the `--warn-error` flag.
+  
+  When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions &mdash; similar to the [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag.
 - Use the `silence` parameter to ignore warnings. For example, to silence deprecation warnings or certain warnings you want to ignore across your project, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
 </VersionBlock>
 
 ## Configuration
 
-You can configure warnings as errors, which can be set through command flags, environment variables, or configuration files like `dbt_project.yml` or `profiles.yml`.
+You can configure warnings as errors or which warnings to silence, by setting the config through command flags, environment variables, or configuration files like `dbt_project.yml` or `profiles.yml`.
 
 <VersionBlock lastVersion="1.7"> 
 
