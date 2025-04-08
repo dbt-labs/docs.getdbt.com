@@ -20,8 +20,8 @@ Instead of using the `--warn-error` flag to promote _all_ warnings to errors, yo
 
 - Test warnings with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
 - Jinja-level warnings with the `--warn-error-options '{"error": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
-- No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'.
-- Adapter deprecation warnings with `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'.
+- No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'`.
+- Adapter deprecation warnings with `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'`.
 
 </VersionBlock>
 
