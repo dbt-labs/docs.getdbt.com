@@ -24,8 +24,8 @@ Here's how those play in practice:
 
 By default, a test with `severity: warn` will only ever return a warning, and not cause errors. However, you can promote warnings to errors using:
 
-* `--warn-error`: Promotes **all** dbt warnings (including test warnings, Jinja warnings, deprecations, etc.)
-* `--warn-error-options`: Promotes **only specific types** of warnings. 
+* `--warn-error`: Promotes _all_ dbt warnings (including test warnings, Jinja warnings, deprecations, and so on.) to errors.
+* `--warn-error-options`: Promotes _only specific types_ of warnings. 
 
 Learn more about [Warnings](/reference/global-configs/warnings).
 
