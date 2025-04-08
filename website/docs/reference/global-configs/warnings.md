@@ -87,7 +87,7 @@ You can configure warnings as errors or which warnings to silence, by warn error
 
 - Promote all warnings to errors using `{"include": "all"}` or `--warn-error` flag.
 - Promote some warnings to errors using `include` with `--warn-error-options` flag.
-- Exclude warnings from being treated as errors using `exclude` with `--warn-error-options` flag
+- Exclude warnings from being treated as errors using `exclude` with `--warn-error-options` flag.
 
 In the following example, we're promoting all warnings to errors except for the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `profiles.yml` file by adding it to the `exclude` parameter:
 
