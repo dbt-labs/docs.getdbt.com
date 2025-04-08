@@ -21,7 +21,7 @@ macros:
     description: A macro to convert cents to dollars
     arguments:
       - name: column_name
-        type: string
+        type: column
         description: The name of the column you want to convert
       - name: precision
         type: integer
