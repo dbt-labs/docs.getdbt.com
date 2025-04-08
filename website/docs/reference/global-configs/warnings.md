@@ -75,18 +75,18 @@ You can configure warnings as errors, which can be set through command flags, en
 
 <VersionBlock lastVersion="1.7"> 
 
-- Promote all warnings to errors (using `{"include": "all"}` or `--warn-error-options` flag)
-- Promote some warnings to errors using `include`
-- Exclude warnings from being treated as errors using `exclude`
+- Promote all warnings to errors using `{"include": "all"}` or `--warn-error-options` flag.
+- Promote some warnings to errors using `include`.
+- Exclude warnings from being treated as errors using `exclude`.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.8">
 You can choose to:
 
-- Promote all warnings to errors (using `{"error": "all"}` or `--warn-error` flag)
-- Promote some warnings to errors using `error` and optionally exclude others with `warn`
-- Silence or ignore warnings using `silence`
+- Promote all warnings to errors using `{"error": "all"}` or `--warn-error` flag.
+- Promote some warnings to errors using `error` and optionally exclude others from being treated as errors with `warn`. `warn` tells dbt to continue treating the warnings as warnings.
+- Ignore warnings using `silence`.
 
 </VersionBlock>
 
