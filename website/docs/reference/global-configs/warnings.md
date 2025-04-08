@@ -117,9 +117,7 @@ In the following example, we're silencing the [`NoNodesForSelectionCriteria` war
   <File name='dbt_project.yml'>
 
   ```yaml
-  name: "my_dbt_project"
-  tests:
-    +enabled: True
+...
   flags:
     warn_error_options:
       error: # Previously called "include"
