@@ -8,6 +8,14 @@ intro_text: "Use the --warn-error flag to promote all warnings to errors or --wa
 
 Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _all_ dbt warnings into errors. Any time dbt would normally warn, it will instead raise an error. Examples include `--select` criteria that selects no resources, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
 
+<File name='Usage'>
+
+  ```text
+  dbt --warn-error run
+  ```
+
+</File>
+
 <VersionBlock firstVersion="1.8">
 
 :::caution Proceed with caution in production environments
@@ -15,13 +23,6 @@ Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will 
 
 This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
-
-Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors, including:
-
-- [Test warnings](/reference/resource-configs/severity) with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
-- Jinja [exception warnings](/reference/dbt-jinja-functions/exceptions#warn) with `--warn-error-options '{"error": ["JinjaLogWarning"]}'`.
-- No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'`.
-- Adapter deprecation warnings with `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'`.
 
 </VersionBlock>
 
@@ -33,22 +34,9 @@ Using the `--warn-error` flag or `--warn-error-options '{"include": "all"}'` wil
 This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
-Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors, including:
-
-- Test warnings with the `--warn-error-options '{"include": ["LogTestResults"]}'` flag.
-- Jinja-level warnings with the `--warn-error-options '{"include": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
-- Selection issues with the `--warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}'` flag.
-- Adapter deprecation warnings with the `--warn-error-options '{"include": ["AdapterDeprecationWarning"]}'` flag.
-
 </VersionBlock>
 
-<File name='Usage'>
 
-  ```text
-  dbt --warn-error run
-  ```
-
-</File>
 
 ## Use `--warn-error-options` for targeted warnings
 
@@ -65,6 +53,13 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
   - Using the `--log-format json` flag.
 - The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional `exclude` parameter can be set to exclude specific warnings from being treated as exceptions.
 
+Here's how you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors:
+
+- Test warnings with the `--warn-error-options '{"include": ["LogTestResults"]}'` flag.
+- Jinja-level warnings with the `--warn-error-options '{"include": ["JinjaLogWarning"]}'` flag or [`exceptions.warn`](/reference/dbt-jinja-functions/exceptions#warn).
+- Selection issues with the `--warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}'` flag.
+- Adapter deprecation warnings with the `--warn-error-options '{"include": ["AdapterDeprecationWarning"]}'` flag.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.8">
@@ -76,6 +71,12 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
   
   When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
 - Use the `silence` parameter to ignore warnings. To silence certain warnings you want to ignore, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
+
+Here's how you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors:
+- [Test warnings](/reference/resource-configs/severity) with the `--warn-error-options '{"error": ["LogTestResults"]}'` flag.
+- Jinja [exception warnings](/reference/dbt-jinja-functions/exceptions#warn) with `--warn-error-options '{"error": ["JinjaLogWarning"]}'`.
+- No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'`.
+- Adapter deprecation warnings with `--warn-error-options '{"error": ["AdapterDeprecationWarning"]}'`.
 
 </VersionBlock>
 
@@ -106,10 +107,11 @@ In the following example, we're promoting all warnings to errors except for the 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.8">
+
 You can choose to:
 
 - Promote all warnings to errors using `{"error": "all"}` or `--warn-error` flag.
-- Promote some warnings to errors using `error` and optionally exclude others from being treated as errors with `warn` with `--warn-error-options` flag. `warn` tells dbt to continue treating the warnings as warnings.
+- Promote specific warnings to errors using `error` and optionally exclude others from being treated as errors with `--warn-error-options` flag. `warn` tells dbt to continue treating the warnings as warnings.
 - Ignore warnings using `silence` with `--warn-error-options` flag.
 
 In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
