@@ -65,7 +65,7 @@ The `include` parameter can be set to "all" or "*" to treat all warnings as exce
 
   :::
 
-- Use the `silence` parameter to ignore warnings through project flags, without needing to re-specify the silence list every time. For example, to silence deprecation warnings or certain warnings you want to ignore across your project, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
+- Use the `silence` parameter to ignore warnings. For example, to silence deprecation warnings or certain warnings you want to ignore across your project, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
 </VersionBlock>
 
