@@ -74,7 +74,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
   - Downloading the JSON output logs from a run and searching for the warning.
 - The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as exceptions (errors), or to a list of specific warning names to treat as exceptions. This behavior is the same as using the `--warn-error` flag.
   
-  When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions &mdash.
+  When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
 - Use the `silence` parameter to ignore warnings. To silence certain warnings you want to ignore, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
 </VersionBlock>
