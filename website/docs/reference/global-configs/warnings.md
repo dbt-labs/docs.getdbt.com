@@ -11,7 +11,7 @@ Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _al
 <VersionBlock firstVersion="1.8">
 
 :::caution Proceed with caution in production environments
-Using the `--warn-error` flag or `warn_error_options: error: "all"` will treat _all_ current and future warnings as errors.
+Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will treat _all_ current and future warnings as errors.
 
 This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
