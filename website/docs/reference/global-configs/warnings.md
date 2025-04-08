@@ -8,7 +8,7 @@ intro_text: "dbt's warnings can be converted to errors using --warn-error flag o
 
 Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _all_ dbt warnings into errors. Any time dbt would normally warn, it will instead raise an error. Examples include `--select` criteria that selects no resources, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.
 
- You would commonly use the `--warn-error` flag to promote test warnings from `severity: warn` to errors, but it actually affects all warning types, including:
+Instead of using the `--warn-error` flag to promote _all_ warnings to errors, you can use [`--warn-error-options`](#using-warn_error_options-for-targeted-warnings) flag to promote **specific** warnings to errors, including:
 * Test warnings (for example, `LogTestResults`)
 * Jinja-level warnings (for example, `exceptions.warn`, or `JinjaLogWarning`)
 * Selection issues (for example, `NoNodesForSelectionCriteria`)
