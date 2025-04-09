@@ -48,10 +48,11 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 
 <VersionBlock lastVersion="1.7">
 
-- Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in:
+Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`) 
   - Using the `--log-format json` flag.
-- The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional `exclude` parameter can be set to exclude specific warnings from being treated as exceptions.
+
+The `include` parameter can be set to "all" or "*" to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to "all" or "*", the optional `exclude` parameter can be set to exclude specific warnings from being treated as exceptions.
 
 Here's how you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors:
 
@@ -64,12 +65,12 @@ Here's how you can use [`--warn-error-options`](#use---warn-error-options-for-ta
 
 <VersionBlock firstVersion="1.8">
 
-- Warnings that should be treated as errors can be specified through `error` parameter. Warning names can be found in:
+Warnings that should be treated as errors can be specified through `error` parameter. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
   - Using the `--log-format json` flag.
-- The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as errors (this behavior is the same as using the `--warn-error` flag), or to a list of specific warning names to treat as exceptions.
-  
-  When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
+
+The `error` parameter can be set to `"all"` or `"*"` to treat all warnings as errors (this behavior is the same as using the `--warn-error` flag), or to a list of specific warning names to treat as exceptions.
+- When `error` is set to `"all"` or `"*"`, the optional `warn` parameter can be set to exclude specific warnings from being treated as exceptions.
 - Use the `silence` parameter to ignore warnings. To silence certain warnings you want to ignore, you can specify them in the `silence` parameter. This is useful in large projects where certain warnings aren't critical and can be ignored to keep the noise low and logs clean.
 
 Here's how you can use [`--warn-error-options`](#use---warn-error-options-for-targeted-warnings) flag to promote _specific_ warnings to errors:
