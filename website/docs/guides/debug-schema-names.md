@@ -27,7 +27,7 @@ You can also follow along via this video:
 Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
 
 ### You do not have a macro named `generate_schema_name` in your project
-This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql)
+This means that you are using <Constant name="dbt" />'s default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql)
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -46,7 +46,7 @@ This means that you are using dbt's default implementation of the macro, as defi
 {%- endmacro %}
 ```
 
-Note that this logic is designed so that two dbt users won't accidentally overwrite each other's work by writing to the same schema.
+Note that this logic is designed so that two <Constant name="dbt" /> users won't accidentally overwrite each other's work by writing to the same schema.
 
 ### You have a `generate_schema_name` macro in a project that calls another macro
 If your `generate_schema_name` macro looks like so:

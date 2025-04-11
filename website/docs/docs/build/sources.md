@@ -13,7 +13,7 @@ search_weight: "heavy"
 * [`source freshness` command](/reference/commands/source)
 
 ## Using sources
-Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
+Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in <Constant name="dbt" />, you can then
 - select from source tables in your models using the [`{{ source() }}` function,](/reference/dbt-jinja-functions/source) helping define the lineage of your data
 - test your assumptions about your source data
 - calculate the freshness of your source data
@@ -131,7 +131,7 @@ You can find more details on the available properties for sources in the [refere
 <FAQ path="Runs/running-models-downstream-of-source" />
 
 ## Source data freshness
-With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
+With a couple of extra configs, <Constant name="dbt" /> can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
 
 ### Declaring source freshness
 To configure source freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:
@@ -174,7 +174,7 @@ These configs are applied hierarchically, so `freshness` and `loaded_at_field` v
 To obtain freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
 
 ```
-$ dbt source freshness
+$ <Constant name="dbt" /> source freshness
 ```
 
 Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/Runs/checking-logs).
@@ -195,7 +195,7 @@ The results of this query are used to determine whether the source is fresh or n
 
 Our best practice recommendation is to use [data source freshness](/docs/build/sources#declaring-source-freshness). This will allow settings to be transfered into a `.yml` file where source freshness is defined on [model level](/reference/resource-properties/freshness).
 
-To build models based on source freshness in dbt:
+To build models based on source freshness in <Constant name="dbt" />:
 
 1. Run `dbt source freshness` to check the freshness of your sources.
 2. Use the `dbt build --select source_status:fresher+` command to build and test models downstream of fresher sources.

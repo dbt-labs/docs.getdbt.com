@@ -45,7 +45,7 @@ Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the OR o
 
 ## OR use cases
 
-We most commonly see OR operators used in queries and dbt models to:
+We most commonly see OR operators used in queries and <Constant name="dbt" /> models to:
 - Return results for fields of varying values
 - Joining tables on multiple fields using an OR operator (fair warning: this can be a bit scary and inefficient, so use OR operators in joins very carefully and consider refactoring your work to avoid these scenarios)
 

@@ -10,9 +10,9 @@ The `+` operator expands your selection to include ancestors (upstream dependenc
 - Placed on both sides of a model/resource &mdash; Includes the resource itself, all its ancestors, and all its descendants.
 
 ```bash
-dbt run --select "my_model+"         # select my_model and all descendants
-dbt run --select "+my_model"         # select my_model and all ancestors
-dbt run --select "+my_model+"        # select my_model, and all of its ancestors and descendants
+<Constant name="dbt" /> run --select "my_model+"         # select my_model and all descendants
+<Constant name="dbt" /> run --select "+my_model"         # select my_model and all ancestors
+<Constant name="dbt" /> run --select "+my_model+"        # select my_model, and all of its ancestors and descendants
 ```
 
 You can use it with selectors for a more specific scope in your commands. You can also combine it with [`--exclude`](/reference/node-selection/exclude) flag for even more finer control over what gets included in your command.
@@ -24,9 +24,9 @@ to step through.
 
 
   ```bash
-dbt run --select "my_model+1"        # select my_model and its first-degree descendants
-dbt run --select "2+my_model"        # select my_model, its first-degree ancestors ("parents"), and its second-degree ancestors ("grandparents")
-dbt run --select "3+my_model+4"      # select my_model, its ancestors up to the 3rd degree, and its descendants down to the 4th degree
+<Constant name="dbt" /> run --select "my_model+1"        # select my_model and its first-degree descendants
+<Constant name="dbt" /> run --select "2+my_model"        # select my_model, its first-degree ancestors ("parents"), and its second-degree ancestors ("grandparents")
+<Constant name="dbt" /> run --select "3+my_model+4"      # select my_model, its ancestors up to the 3rd degree, and its descendants down to the 4th degree
   ```
 
 
@@ -38,5 +38,5 @@ The selector `@snowplow_web_page_context` will build all three models shown in t
 <Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" title="@snowplow_web_page_context will select all of the models shown here"/>
 
 ```bash
-dbt run --select "@my_model"         # select my_model, its descendants, and the ancestors of its descendants
+<Constant name="dbt" /> run --select "@my_model"         # select my_model, its descendants, and the ancestors of its descendants
 ```

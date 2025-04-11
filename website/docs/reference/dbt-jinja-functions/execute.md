@@ -33,7 +33,7 @@ Any Jinja that relies on a result being returned from the database will error du
 
 </File>
 
-The error returned by dbt will look as follows:
+The error returned by <Constant name="dbt" /> will look as follows:
 ```
 Encountered an error:
 Compilation Error in model order_payment_methods (models/order_payment_methods.sql)

@@ -241,10 +241,10 @@ Run resources with specific tags (or exclude resources with specific tags) using
 
 ```shell
 # Run all models tagged "daily"
-  dbt run --select tag:daily
+  <Constant name="dbt" /> run --select tag:daily
 
 # Run all models tagged "daily", except those that are tagged hourly
-  dbt run --select tag:daily --exclude tag:hourly
+  <Constant name="dbt" /> run --select tag:daily --exclude tag:hourly
 ```
 
 ### Apply tags to seeds
@@ -299,7 +299,7 @@ Then run resources with a specific tag using the following commands:
 
 ```shell
 # Run all resources tagged "order_metrics"
-  dbt run --select tag:order_metrics
+  <Constant name="dbt" /> run --select tag:order_metrics
 ```
 
 The second example shows how to apply multiple tags to a saved query in the `semantic_model.yml` file. The saved query is then tagged with `order_metrics` and `hourly`.
@@ -323,7 +323,7 @@ Run resources with multiple tags using the following commands:
 
 ```shell
 # Run all resources tagged "order_metrics" and "hourly"
-  dbt build --select tag:order_metrics tag:hourly
+  <Constant name="dbt" /> build --select tag:order_metrics tag:hourly
 ```
 
 ## Usage notes
@@ -375,8 +375,8 @@ sources:
 
 In the example above, the `unique` test would be selected by any of these four tags:
 ```bash
-dbt test --select tag:top_level
-dbt test --select tag:table_level
-dbt test --select tag:column_level
-dbt test --select tag:test_level
+<Constant name="dbt" /> test --select tag:top_level
+<Constant name="dbt" /> test --select tag:table_level
+<Constant name="dbt" /> test --select tag:column_level
+<Constant name="dbt" /> test --select tag:test_level
 ```

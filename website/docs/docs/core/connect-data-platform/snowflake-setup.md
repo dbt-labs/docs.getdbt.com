@@ -83,7 +83,7 @@ my-snowflake-db:
       role: [user role]
       database: [database name]
       warehouse: [warehouse name]
-      schema: [dbt schema]
+      schema: [<Constant name="dbt" /> schema]
       threads: [1 or more]
       client_session_keep_alive: False
       query_tag: [anything]
@@ -152,7 +152,7 @@ my-snowflake-db:
       role: [user role]
       database: [database name]
       warehouse: [warehouse name]
-      schema: [dbt schema]
+      schema: [<Constant name="dbt" /> schema]
       threads: [1 or more]
       client_session_keep_alive: False
       query_tag: [anything]
@@ -417,7 +417,7 @@ my-snowflake-db:
 
 </VersionBlock>
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
+**Note**: By default, every connection that <Constant name="dbt" /> opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
 
 Refer to the [Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for info on how to enable this feature in your account.
 
@@ -455,12 +455,12 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | ------ | --------- | ----------- |
 | account | Yes | The account to connect to as per [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname). See notes [below](#account) |
 | user | Yes | The user to log in as |
-| database | Yes | The database that dbt should create models in |
+| database | Yes | The database that <Constant name="dbt" /> should create models in |
 | warehouse | Yes | The warehouse to use when building models |
 | schema | Yes | The schema to build models into by default. Can be overridden with [custom schemas](/docs/build/custom-schemas) |
 | role | No (but recommended) | The role to assume when running queries as the specified user. |
 | client_session_keep_alive | No | If `True`, the snowflake client will keep connections for longer than the default 4 hours. This is helpful when particularly long-running queries are executing (&gt; 4 hours). Default: False (see [note below](#client_session_keep_alive)) |
-| threads | No | The number of concurrent models dbt should build. Set this to a higher number if using a bigger warehouse. Default=1 |
+| threads | No | The number of concurrent models <Constant name="dbt" /> should build. Set this to a higher number if using a bigger warehouse. Default=1 |
 | query_tag | No | A value with which to tag all queries, for later searching in [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html) |
 | retry_all | No | A boolean flag indicating whether to retry on all [Snowflake connector errors](https://github.com/snowflakedb/snowflake-connector-python/blob/main/src/snowflake/connector/errors.py) |
 | retry_on_database_errors | No | A boolean flag indicating whether to retry after encountering errors of type [snowflake.connector.errors.DatabaseError](https://github.com/snowflakedb/snowflake-connector-python/blob/ffdd6b3339aa71885878d047141fe9a77c4a4ae3/src/snowflake/connector/errors.py#L361-L364) |

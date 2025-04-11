@@ -26,7 +26,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta} />
 
 ## Connecting to Decodable with **dbt-decodable**
-Do the following steps to connect to Decodable with dbt. 
+Do the following steps to connect to Decodable with <Constant name="dbt" />. 
 
 ### Prerequisites
 In order to properly connect to Decodable, you must have the Decodable CLI installed and have used it to login to Decodable at least once. See <a href="https://docs.decodable.co/docs/setup#install-the-cli-command-line-interface">Install the Decodable CLI</a> for more information. 
@@ -90,7 +90,7 @@ dbt-decodable:
 
 For example, the following command runs the `delete_streams` operation  
 ```
-dbt run-operation delete_streams --args '{streams: [stream1, stream2], skip_errors: True}'
+<Constant name="dbt" /> run-operation delete_streams --args '{streams: [stream1, stream2], skip_errors: True}'
 ```
 
 <b>stop_pipelines(pipelines)</b>

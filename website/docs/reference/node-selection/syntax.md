@@ -3,7 +3,7 @@ title: "Syntax overview"
 description: "Node selection syntax enables you to execute dbt commands for specific models and resources."
 ---
 
-dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
+<Constant name="dbt" />'s node selection syntax makes it possible to run only specific resources in a given invocation of <Constant name="dbt" />. This selection syntax is used for the following subcommands:
 
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ dbt run --select "path/to/my_model.sql"  # run a specific model by its path
 
 <TabItem value="subset" label="Examples of subsets of nodes">
 
-dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
+<Constant name="dbt" /> supports a shorthand language for defining subsets of nodes. This language uses the following characters:
 
 - plus operator [(`+`)](/reference/node-selection/graph-operators#the-plus-operator)
 - at operator [(`@`)](/reference/node-selection/graph-operators#the-at-operator)
@@ -83,19 +83,19 @@ Examples:
 
 ```bash
 # multiple arguments can be provided to --select
-dbt run --select "my_first_model my_second_model"
+<Constant name="dbt" /> run --select "my_first_model my_second_model"
 
 # select my_model and all of its children
-dbt run --select "my_model+"     
+<Constant name="dbt" /> run --select "my_model+"     
 
 # select my_model, its children, and the parents of its children
-dbt run --models @my_model          
+<Constant name="dbt" /> run --models @my_model          
 
 # these arguments can be projects, models, directory paths, tags, or sources
-dbt run --select "tag:nightly my_model finance.base.*"
+<Constant name="dbt" /> run --select "tag:nightly my_model finance.base.*"
 
 # use methods and intersections for more complex selectors
-dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
+<Constant name="dbt" /> run --select "path:marts/finance,tag:nightly,config.materialized:table"
 ```
 
 </TabItem>
@@ -113,9 +113,9 @@ The `--select` and `--selector` arguments are similar in that they both allow yo
 Constructing and debugging your selection syntax can be challenging.  To get a "preview" of what will be selected, we recommend using the [`list` command](/reference/commands/list).  This command, when combined with your selection syntax, will output a list of the nodes that meet that selection criteria.  The `dbt ls` command supports all types of selection syntax arguments, for example:
 
 ```bash
-dbt ls --select "path/to/my/models" # Lists all models in a specific directory.
-dbt ls --select "source_status:fresher+" # Shows sources updated since the last dbt source freshness run.
-dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
+<Constant name="dbt" /> ls --select "path/to/my/models" # Lists all models in a specific directory.
+<Constant name="dbt" /> ls --select "source_status:fresher+" # Shows sources updated since the last <Constant name="dbt" /> source freshness run.
+<Constant name="dbt" /> ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
 dbt ls --select "result:<status>+" state:modified+ --state ./<dbt-artifact-path> # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
 ```
 

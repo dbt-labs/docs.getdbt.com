@@ -16,8 +16,8 @@ By default, the dbt Cloud IDE will attempt a "partial" parse, which means it'll 
 As an option, you can tell dbt to check the entire project from scratch by using the `--no-partial-parse` flag. This makes dbt perform a full re-parse of the project, not just the recent changes.
 
 ```
-$ dbt parse
-13:02:52  Running with dbt=1.5.0
+$ <Constant name="dbt" /> parse
+13:02:52  Running with <Constant name="dbt" />=1.5.0
 13:02:53  Performance info: target/perf_info.json
 ```
 

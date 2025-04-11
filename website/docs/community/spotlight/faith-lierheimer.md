@@ -28,13 +28,13 @@ hide_table_of_contents: true
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the dbt community early in 2022 hoping to find technical help with dbt, and instead found a wide support network of career-minded data professionals. Being in the dbt community has helped me find my niche in the data world, and has helped me discover ways I can grow my career and technical acumen. Being in this community has been huge in easing my career transition from teaching into data.
+I joined the <Constant name="dbt" /> community early in 2022 hoping to find technical help with <Constant name="dbt" />, and instead found a wide support network of career-minded data professionals. Being in the <Constant name="dbt" /> community has helped me find my niche in the data world, and has helped me discover ways I can grow my career and technical acumen. Being in this community has been huge in easing my career transition from teaching into data.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 I primarily conceptualize of leadership as raising the floor beneath everyone, rather than enabling a few to touch its vaulted ceiling. As I gain more experience, I'd be delighted to be a resource for fellow career changers and teachers in transition. 
 
-And, I love to goof in #roast-my-graph in the dbt Slack. [Come join](https://www.getdbt.com/community/join-the-community/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_dbt-spotlight_aw&utm_content=____&utm_term=all___) that channel, it's a hoot and a holler.
+And, I love to goof in #roast-my-graph in the <Constant name="dbt" /> Slack. [Come join](https://www.getdbt.com/community/join-the-community/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_dbt-spotlight_aw&utm_content=____&utm_term=all___) that channel, it's a hoot and a holler.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

@@ -5,7 +5,7 @@ hoverSnippet: "dbt Mesh FAQs"
 sidebar_label: "dbt Mesh FAQs"
 ---
 
-dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better manage complexity by deploying multiple interconnected dbt projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
+<Constant name="dbt" /> <Constant name="mesh" /> is a new architecture enabled by <Constant name="cloud" />. It allows you to better manage complexity by deploying multiple interconnected <Constant name="dbt" /> projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
 
 ## Overview of Mesh
 

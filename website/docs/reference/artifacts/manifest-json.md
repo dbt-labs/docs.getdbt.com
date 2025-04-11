@@ -11,7 +11,7 @@ import ManifestVersions from '/snippets/_manifest-versions.md';
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
-Today, dbt uses this file to populate the [docs site](/docs/collaborate/build-and-view-your-docs), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
+Today, <Constant name="dbt" /> uses this file to populate the [docs site](/docs/collaborate/build-and-view-your-docs), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 
@@ -43,8 +43,8 @@ All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`
 Each has several additional properties related to its resource type.
 
 ### dbt JSON Schema
-You can refer to [dbt JSON Schema](https://schemas.getdbt.com/) for info on describing and consuming dbt generated artifacts. 
+You can refer to [<Constant name="dbt" /> JSON Schema](https://schemas.getdbt.com/) for info on describing and consuming <Constant name="dbt" /> generated artifacts. 
 
 **Note**: The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, select the dbt version on the top navigation (such as `v1.5`). 
 
-Refer to the table at the beginning of [this page](/reference/artifacts/manifest-json) to understand how the Manifest version matches the dbt version.
+Refer to the table at the beginning of [this page](/reference/artifacts/manifest-json) to understand how the Manifest version matches the <Constant name="dbt" /> version.

@@ -25,7 +25,7 @@ Let’s take a look at a practical example using MAX and GROUP BY below.
 
 ### MAX example
 
-The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+The following example is querying from a sample dataset created by <Constant name="dbt" /> Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
 
 ```sql
 select
@@ -57,4 +57,4 @@ We most commonly see queries using MAX to:
 - Create descriptive boolean values from case when statements (ex. `max(case when status = 'complete' then 1 else 0 end) as has_complete_order`).
 - Establish the most recent timestamp from a table to filter on rows appropriately for [incremental model builds](https://docs.getdbt.com/docs/build/incremental-models).
 
-This isn’t an extensive list of where your team may be using MAX throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using MAX throughout your development work, <Constant name="dbt" /> models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

@@ -18,7 +18,7 @@ The DATEDIFF function will return the difference in specified units (ex. days, w
 
 DATEDIFF is a little bit like your favorite pair of socks; you’ll usually find the first one easily and feel like the day is going to be great. But for some reason, the matching sock requires a little digging in the drawer. DATEDIFF is this pair of socks—you’ll inevitably find yourself Googling the syntax almost every time you use it, but you can’t go through your day without using it.
 
-This page will go over how to use the DATEDIFF function across different data warehouses and how to write more standardized DATEDIFF functions using a dbt macro (or successfully find your socks as a pair in one go).
+This page will go over how to use the DATEDIFF function across different data warehouses and how to write more standardized DATEDIFF functions using a <Constant name="dbt" /> macro (or successfully find your socks as a pair in one go).
 
 ## How to use the DATEDIFF function​
 
@@ -56,13 +56,13 @@ The syntax for using the DATEDIFF function in [Google BigQuery](https://cloud.go
 
 You may be able to memorize the syntax for the DATEDIFF function for the primary data warehouse you use. What happens when you switch to a different one for a new job or a new data stack? Remembering if there’s an underscore in the function name or which argument the `<date part>` is passed in as is… no fun and leads to the inevitable, countless “datediff in bigquery” Google searches.
 
-Luckily, [dbt-core](https://github.com/dbt-labs/dbt-core) has your back! dbt Core is the open source dbt product that helps data folks write their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) following software engineering best practices.
+Luckily, [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) has your back! <Constant name="core" /> is the open source <Constant name="dbt" /> product that helps data folks write their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) following software engineering best practices.
 
 [Adapters](https://docs.getdbt.com/docs/supported-data-platforms) support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like DATE_TRUNC and DATEDIFF, without having to memorize sticky function syntax.
 
 Using the DATEDIFF macro, you can calculate the difference between two dates without having to worry about finicky syntax. Specifically, this means you could successfully run the same code across multiple databases without having to worry about the finicky differences in syntax.
 
-Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and dbt project, we can calculate the difference between two dates using the dbt DATEDIFF macro:
+Using the [jaffle shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and <Constant name="dbt" /> project, we can calculate the difference between two dates using the <Constant name="dbt" /> DATEDIFF macro:
 
 ```sql
 select

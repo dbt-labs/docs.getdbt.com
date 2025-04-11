@@ -31,7 +31,7 @@ BigQuery targets can be specified using one of four methods:
 3. [service account file](#service-account-file)
 4. [service account json](#service-account-json)
 
-For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+For local development, we recommend using the OAuth method. If you're scheduling <Constant name="dbt" /> on a server, you should use the service account auth method instead.
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
@@ -68,7 +68,7 @@ See [docs](https://developers.google.com/identity/protocols/oauth2) on using OAu
 
 #### Refresh token
 
-Using the refresh token and client information, dbt will mint new access tokens as necessary.
+Using the refresh token and client information, <Constant name="dbt" /> will mint new access tokens as necessary.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -93,7 +93,7 @@ my-bigquery-db:
 
 #### Temporary token
 
-dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
+<Constant name="dbt" /> will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -254,13 +254,13 @@ In older versions of `dbt-bigquery`, the `job_retries` config was just called `r
 
 :::
 
-The default value is 1, meaning that dbt will retry failing queries exactly once. You can set the configuration to 0 to disable retries entirely.
+The default value is 1, meaning that <Constant name="dbt" /> will retry failing queries exactly once. You can set the configuration to 0 to disable retries entirely.
 
 #### job_retry_deadline_seconds
 
 After a query job times out, or encounters a transient error, dbt will wait one second before retrying the same query. In cases where queries are repeatedly timing out, this can add up to a long wait. You can set the `job_retry_deadline_seconds` configuration to set the total number of seconds you're willing to wait ("deadline") while retrying the same query. If dbt hits the deadline, it will give up and return an error.
 
-Combining the four configurations above, we can maximize our chances of mitigating intermittent query errors. In the example below, we will wait up to 30 seconds for initial job creation. Then, we'll wait up to 10 minutes (600 seconds) for the query to return results. If the query times out, or encounters a transient error, we will retry it up to 5 times. The whole process cannot take longer than 20 minutes (1200 seconds). At that point, dbt will raise an error.
+Combining the four configurations above, we can maximize our chances of mitigating intermittent query errors. In the example below, we will wait up to 30 seconds for initial job creation. Then, we'll wait up to 10 minutes (600 seconds) for the query to return results. If the query times out, or encounters a transient error, we will retry it up to 5 times. The whole process cannot take longer than 20 minutes (1200 seconds). At that point, <Constant name="dbt" /> will raise an error.
 
 <File name='profiles.yml'>
 
@@ -304,7 +304,7 @@ my-profile:
 ### Maximum Bytes Billed
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
-queries executed by dbt will fail if they exceed the configured maximum bytes
+queries executed by <Constant name="dbt" /> will fail if they exceed the configured maximum bytes
 threshhold. This configuration should be supplied as an integer number
 of bytes.
 
@@ -361,7 +361,7 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      impersonate_service_account: dbt-runner@yourproject.iam.gserviceaccount.com
+      impersonate_service_account: <Constant name="dbt" />-runner@yourproject.iam.gserviceaccount.com
 ```
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
@@ -429,9 +429,9 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       
-      # for dbt Python models to be run on a Dataproc cluster
-      gcs_bucket: dbt-python
-      dataproc_cluster_name: dbt-python
+      # for <Constant name="dbt" /> Python models to be run on a Dataproc cluster
+      gcs_bucket: <Constant name="dbt" />-python
+      dataproc_cluster_name: <Constant name="dbt" />-python
       dataproc_region: us-central1
 ```
 
@@ -447,16 +447,16 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       
-      # for dbt Python models to be run on Dataproc Serverless
-      gcs_bucket: dbt-python
+      # for <Constant name="dbt" /> Python models to be run on Dataproc Serverless
+      gcs_bucket: <Constant name="dbt" />-python
       dataproc_region: us-central1
       submission_method: serverless
       dataproc_batch:
         batch_id: MY_CUSTOM_BATCH_ID # Supported in v1.7+
         environment_config:
           execution_config:
-            service_account: dbt@abc-123.iam.gserviceaccount.com
-            subnetwork_uri: regions/us-central1/subnetworks/dataproc-dbt
+            service_account: <Constant name="dbt" />@abc-123.iam.gserviceaccount.com
+            subnetwork_uri: regions/us-central1/subnetworks/dataproc-<Constant name="dbt" />
         labels:
           project: my-project
           role: dev
@@ -471,7 +471,7 @@ For a full list of possible configuration fields that can be passed in `dataproc
 
 ## Required permissions
 
-BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
+BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for <Constant name="dbt" /> user accounts:
 - BigQuery Data Editor
 - BigQuery User
 
@@ -491,6 +491,6 @@ https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test
 ```
 
-A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
+A browser window should open, and you should be prompted to log into your Google account. Once you've done that, <Constant name="dbt" /> will use your OAuth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.

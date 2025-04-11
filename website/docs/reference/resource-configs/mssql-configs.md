@@ -137,7 +137,7 @@ models:
 
 ## Permissions
 
-The following permissions are required for the user executing dbt:
+The following permissions are required for the user executing <Constant name="dbt" />:
 
 * `CREATE SCHEMA` on the database level (or you can create the schema in advance)
 * `CREATE TABLE` on the database level (or on the user's own schema if the schema is already created)

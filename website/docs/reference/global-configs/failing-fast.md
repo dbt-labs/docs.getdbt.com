@@ -9,8 +9,8 @@ Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
 ```text
-dbt -x run --threads 1
-Running with dbt=1.0.0
+<Constant name="dbt" /> -x run --threads 1
+Running with <Constant name="dbt" />=1.0.0
 Found 4 models, 1 test, 1 snapshot, 2 analyses, 143 macros, 0 operations, 1 seed file, 0 sources
 
 14:47:39 | Concurrency: 1 threads (target='dev')

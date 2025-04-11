@@ -100,4 +100,4 @@ my-starrocks-db:
 2. When StarRocks Version >= 2.5, `Create table as` supports table_type='PRIMARY'
 3. When StarRocks Version < 3.1 distributed_by is required
 
-It is recommended to use the latest starrocks version and dbt-starrocks version for the best experience.
+It is recommended to use the latest starrocks version and <Constant name="dbt" />-starrocks version for the best experience.

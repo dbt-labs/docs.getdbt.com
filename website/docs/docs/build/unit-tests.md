@@ -10,9 +10,9 @@ keywords:
 
 <VersionCallout version="1.8" />
 
-Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
+Historically, <Constant name="dbt" />'s test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-Starting in dbt Core v1.8, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+Starting in <Constant name="core" /> v1.8, we have introduced an additional type of test to <Constant name="dbt" /> - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
 ## Before you begin
 
@@ -50,7 +50,7 @@ You should unit test a model:
 
 ### When to run unit tests
 
-dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+<Constant name="dbt" /> Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
 
 Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
 
@@ -138,7 +138,7 @@ Use the [`--empty`](/reference/commands/build#the---empty-flag) flag to build an
 
 ```bash
 
-dbt run --select "stg_customers top_level_email_domains" --empty
+<Constant name="dbt" /> run --select "stg_customers top_level_email_domains" --empty
 
 ```
 
@@ -158,8 +158,8 @@ Now you’re ready to run this unit test. You have a couple of options for comma
 
 ```shell
 
-dbt test --select test_is_valid_email_address
-16:03:49  Running with dbt=1.8.0-a1
+<Constant name="dbt" /> test --select test_is_valid_email_address
+16:03:49  Running with <Constant name="dbt" />=1.8.0-a1
 16:03:49  Registered adapter: postgres=1.8.0-a1
 16:03:50  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test
 16:03:50  
@@ -196,8 +196,8 @@ Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'`
 
 ```shell
 
-dbt test --select test_is_valid_email_address
-16:09:11  Running with dbt=1.8.0-a1
+<Constant name="dbt" /> test --select test_is_valid_email_address
+16:09:11  Running with <Constant name="dbt" />=1.8.0-a1
 16:09:12  Registered adapter: postgres=1.8.0-a1
 16:09:12  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test
 16:09:12  
@@ -224,7 +224,7 @@ When configuring your unit test, you can override the output of macros, vars, or
 Incremental models need to exist in the database first before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
 
   ```shell
-  dbt run --select "config.materialized:incremental" --empty
+  <Constant name="dbt" /> run --select "config.materialized:incremental" --empty
   ```
 
   After running the command, you can then perform a regular `dbt build` for that model and then run your unit test.
@@ -296,7 +296,7 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+There is currently no way to unit test whether the <Constant name="dbt" /> framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
 
 ## Unit testing a model that depends on ephemeral model(s)
 

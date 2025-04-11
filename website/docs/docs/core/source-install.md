@@ -4,11 +4,11 @@ description: "You can install dbt Core from its GitHub code source."
 pagination_next: null
 ---
 
-dbt Core and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
+<Constant name="core" /> and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install <Constant name="dbt" /> from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
 
 To download from source, you would clone the repositories from GitHub, making a local copy, and then install the local version using `pip`.
 
-Downloading and building dbt Core will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
+Downloading and building <Constant name="core" /> will enable you to contribute to the project by fixing a bug or implementing a sought-after feature. For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
 
 ### Installing dbt Core
 
@@ -19,8 +19,8 @@ Beginning in v1.8, installing an adapter does not automatically install `dbt-cor
 To install `dbt-core` only from the GitHub code source:
 
 ```shell
-git clone https://github.com/dbt-labs/dbt-core.git
-cd dbt-core
+git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="core" />.git
+cd <Constant name="core" />
 python -m pip install -r requirements.txt
 ```
 
@@ -31,8 +31,8 @@ python -m pip install -r requirements.txt
 To install `dbt-core` and `dbt-postgres` from the GitHub code source:
 
 ```shell
-git clone https://github.com/dbt-labs/dbt-core.git
-cd dbt-core
+git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="core" />.git
+cd <Constant name="core" />
 python -m pip install -r requirements.txt
 ```
 </VersionBlock>
@@ -60,8 +60,8 @@ You do _not_ need to install `dbt-core` before installing an adapter plugin -- t
 </VersionBlock>
 
 ```shell
-git clone https://github.com/dbt-labs/dbt-redshift.git
-cd dbt-redshift
+git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-redshift.git
+cd <Constant name="dbt" />-redshift
 python -m pip install .
 ```
 

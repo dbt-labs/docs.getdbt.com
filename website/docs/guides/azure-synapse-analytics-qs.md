@@ -11,23 +11,23 @@ tags: ['dbt Cloud','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by dbt Labs) into your Azure Synapse Analytics warehouse. 
-- Connect dbt Cloud to Azure Synapse Analytics.
-- Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
+- Load the Jaffle Shop sample data (provided by <Constant name="dbt" /> Labs) into your Azure Synapse Analytics warehouse. 
+- Connect <Constant name="cloud" /> to Azure Synapse Analytics.
+- Turn a sample query into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 
 ### Prerequisites
-- You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
+- You have a [<Constant name="cloud" />](https://www.getdbt.com/signup/) account.
 - You have an Azure Synapse Analytics account. For a free trial, refer to [Synapse Analytics](https://azure.microsoft.com/en-us/free/synapse-analytics/) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Azure Synapse Analytics.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Azure Synapse Analytics.
 
 ### Related content
-- [dbt Learn courses](https://learn.getdbt.com)
+- [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -51,7 +51,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
     );
 
     COPY INTO [dbo].[customers]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_customers.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_customers.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -65,7 +65,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
     );
 
     COPY INTO [dbo].[orders]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_orders.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_orders.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -81,7 +81,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
     );
 
     COPY INTO [dbo].[payments]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/stripe_payments.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/stripe_payments.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -91,7 +91,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
 
 ## Connect dbt Cloud to Azure Synapse Analytics
 
-1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
+1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Synapse** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
@@ -103,17 +103,17 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
-6. Click **Test connection**. This verifies that dbt Cloud can access your Azure Synapse Analytics account.
+6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Azure Synapse Analytics account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
 ## Set up a dbt Cloud managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit Changes**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.

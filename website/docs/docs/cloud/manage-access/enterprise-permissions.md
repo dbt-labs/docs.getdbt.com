@@ -11,15 +11,15 @@ import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 <SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
-The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
-help manage access controls within a dbt Cloud account. See the docs on [access
+The <Constant name="cloud" /> Enterprise plan supports a number of pre-built permission sets to
+help manage access controls within a <Constant name="cloud" /> account. See the docs on [access
 control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
 
 ## Permission sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups and then to users. A dbt Cloud group can be associated with more than one permission set. Permission assignments with more access take precedence. 
+The following permission sets are available for assignment in <Constant name="cloud" /> Enterprise accounts. They can be granted to <Constant name="cloud" /> groups and then to users. A <Constant name="cloud" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
 Access to dbt Cloud features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
@@ -240,7 +240,7 @@ Notable features:
 
 :::tip Licenses or Permission sets
 
-The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
 :::
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />

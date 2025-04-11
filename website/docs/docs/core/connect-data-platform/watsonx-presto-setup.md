@@ -16,13 +16,13 @@ meta:
   config_page: /reference/resource-configs/watsonx-presto-config
 ---
 
-The dbt-watsonx-presto adapter allows you to use dbt to transform and manage data on IBM watsonx.data Presto(Java), leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
+The <Constant name="dbt" />-watsonx-presto adapter allows you to use <Constant name="dbt" /> to transform and manage data on IBM watsonx.data Presto(Java), leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
 <ul>
   <li>An active IBM watsonx.data Presto(Java) engine with connection details (host, port, catalog, schema) in SaaS/Software.</li>
   <li>Authentication credentials: Username and password/apikey.</li>
   <li>For watsonx.data instances, SSL verification is required for secure connections. If the instance host uses HTTPS, there is no need to specify the SSL certificate parameter. However, if the instance host uses an unsecured HTTP connection, ensure you provide the path to the SSL certificate file.</li>
 </ul>
-Refer to [Configuring dbt-watsonx-presto](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x?topic=presto-configuration-setting-up-your-profile) for guidance on obtaining and organizing these details.
+Refer to [Configuring <Constant name="dbt" />-watsonx-presto](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x?topic=presto-configuration-setting-up-your-profile) for guidance on obtaining and organizing these details.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -85,7 +85,7 @@ The following profile fields are required to configure watsonx.data Presto(java)
 
 
 ### Schemas and databases
-When selecting the catalog and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized. In addition, the Presto connector used in the catalog must support creating tables. This default can be changed later from within your dbt project.
+When selecting the catalog and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized. In addition, the Presto connector used in the catalog must support creating tables. This default can be changed later from within your <Constant name="dbt" /> project.
 
 ### SSL verification
 - If the Presto instance uses an unsecured HTTP connection, you must set `ssl_verify` to the path of the SSL certificate file.
@@ -93,7 +93,7 @@ When selecting the catalog and the schema, make sure the user has read and write
 
 ## Additional parameters
 
-The following profile fields are optional to set up. They let you configure your instance session and dbt for your connection. 
+The following profile fields are optional to set up. They let you configure your instance session and <Constant name="dbt" /> for your connection. 
 
 
 | Profile field                 |  Description                                                                                                | Example                              |

@@ -21,7 +21,7 @@ Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _al
 :::caution Proceed with caution in production environments
 Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will treat _all_ current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
 </VersionBlock>
@@ -31,7 +31,7 @@ This means that if a new warning is introduced in a future version of dbt Core, 
 :::caution Proceed with caution in production environments
 Using the `--warn-error` flag or `--warn-error-options '{"include": "all"}'` will treat _all_ current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
 </VersionBlock>
@@ -147,22 +147,22 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
 
 - This command promotes all warnings to errors:
   ```text
-  dbt --warn-error-options '{"error": "all"}' run
+  <Constant name="dbt" /> --warn-error-options '{"error": "all"}' run
   ```
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
   ```text
-  dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run
+  <Constant name="dbt" /> --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This command promotes only `NoNodesForSelectionCriteria` as an error:
   ```text
-  dbt --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}' run
+  <Constant name="dbt" /> --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
   ```text
-  DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' dbt run
+  DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' <Constant name="dbt" /> run
   ```
 
 Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run` not `dbt --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}' run`.
@@ -172,22 +172,22 @@ Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For 
   
 - This command promotes all warnings to errors:
   ```text
-  dbt --warn-error-options '{"include": "all"}' run 
+  <Constant name="dbt" /> --warn-error-options '{"include": "all"}' run 
   ```
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
   ```text
-  dbt --warn-error-options '{"include": "all", "exclude": ["NoNodesForSelectionCriteria"]}' run
+  <Constant name="dbt" /> --warn-error-options '{"include": "all", "exclude": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This command promotes only `NoNodesForSelectionCriteria` as an error:
   ```text
-  dbt --warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}' run
+  <Constant name="dbt" /> --warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
   ```text
-  DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
+  DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' <Constant name="dbt" /> run
   ```
 
 </VersionBlock>
@@ -237,18 +237,18 @@ Some additional examples of how to promote all warnings to errors using the `WAR
 <VersionBlock lastVersion="1.7"> 
 
 ```bash 
-dbt --warn-error run 
-dbt --warn-error-options '{"include": "all"}' run 
-dbt --warn-error-options '{"include": "*"}' run 
+<Constant name="dbt" /> --warn-error run 
+<Constant name="dbt" /> --warn-error-options '{"include": "all"}' run 
+<Constant name="dbt" /> --warn-error-options '{"include": "*"}' run 
 ```
 </VersionBlock> 
 
 <VersionBlock firstVersion="1.8"> 
 
 ```bash 
-dbt --warn-error run 
-dbt --warn-error-options '{"error": "all"}' run 
-dbt --warn-error-options '{"error": "*"}' run 
+<Constant name="dbt" /> --warn-error run 
+<Constant name="dbt" /> --warn-error-options '{"error": "all"}' run 
+<Constant name="dbt" /> --warn-error-options '{"error": "*"}' run 
 ```
 </VersionBlock>
 
@@ -257,18 +257,18 @@ dbt --warn-error-options '{"error": "*"}' run
 <VersionBlock lastVersion="1.7"> 
 
 ```bash 
-WARN_ERROR=true dbt run
-DBT_WARN_ERROR_OPTIONS='{"include": "all"}' dbt run 
-DBT_WARN_ERROR_OPTIONS='{"include": "*"}' dbt run 
+WARN_ERROR=true <Constant name="dbt" /> run
+DBT_WARN_ERROR_OPTIONS='{"include": "all"}' <Constant name="dbt" /> run 
+DBT_WARN_ERROR_OPTIONS='{"include": "*"}' <Constant name="dbt" /> run 
 ```
 </VersionBlock> 
 
 <VersionBlock firstVersion="1.8"> 
 
 ```bash 
-WARN_ERROR=true dbt run 
-DBT_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run 
-DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
+WARN_ERROR=true <Constant name="dbt" /> run 
+DBT_WARN_ERROR_OPTIONS='{"error": "all"}' <Constant name="dbt" /> run 
+DBT_WARN_ERROR_OPTIONS='{"error": "*"}' <Constant name="dbt" /> run 
 ```
 
 </VersionBlock>
@@ -276,5 +276,5 @@ DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run
 :::caution
 Note, as mentioned earlier, using <VersionBlock firstVersion="1.8">`warn_error_options: error: "all"`</VersionBlock> <VersionBlock lastVersion="1.7">`warn_error_options: include: "all"`</VersionBlock> will treat all current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of dbt Core, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::

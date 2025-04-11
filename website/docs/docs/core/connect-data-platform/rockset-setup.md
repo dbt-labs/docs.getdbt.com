@@ -28,7 +28,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Rockset with **dbt-rockset**
 
-The dbt profile for Rockset is very simple and contains the following fields:
+The <Constant name="dbt" /> profile for Rockset is very simple and contains the following fields:
 
 <File name='profiles.yml'>
 

@@ -10,7 +10,7 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 ### Usage
 
 ```
-dbt ls
+<Constant name="dbt" /> ls
      [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
@@ -20,7 +20,7 @@ dbt ls
      [--output-keys KEY_NAME [KEY_NAME]]
 ```
 
-See [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in dbt
+See [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in <Constant name="dbt" />
 
 **Arguments**:
 - `--resource-type`: This flag restricts the "resource types" returned by dbt in the `dbt ls` command. By default, all resource types are included in the results of `dbt ls` except for the analysis type.
@@ -37,7 +37,7 @@ Note that the `dbt ls` command does not include models which are disabled or sch
 
 **Listing models by package**
 ```
-$ dbt ls --select snowplow.*
+$ <Constant name="dbt" /> ls --select snowplow.*
 snowplow.snowplow_base_events
 snowplow.snowplow_base_web_page_context
 snowplow.snowplow_id_map
@@ -48,7 +48,7 @@ snowplow.snowplow_sessions
 
 **Listing tests by tag name**
 ```
-$ dbt ls --select tag:nightly --resource-type test
+$ <Constant name="dbt" /> ls --select tag:nightly --resource-type test
 my_project.schema_test.not_null_orders_order_id
 my_project.schema_test.unique_orders_order_id
 my_project.schema_test.not_null_products_product_id
@@ -58,14 +58,14 @@ my_project.schema_test.unique_products_product_id
 
 **Listing schema tests of incremental models**
 ```
-$ dbt ls --select config.materialized:incremental,test_type:schema
+$ <Constant name="dbt" /> ls --select config.materialized:incremental,test_type:schema
 model.my_project.logs_parsed
 model.my_project.events_categorized
 ```
 
 **Listing JSON output**
 ```
-$ dbt ls --select snowplow.* --output json
+$ <Constant name="dbt" /> ls --select snowplow.* --output json
 {"name": "snowplow_events", "resource_type": "model", "package_name": "snowplow",  ...}
 {"name": "snowplow_page_views", "resource_type": "model", "package_name": "snowplow",  ...}
 ...
@@ -74,7 +74,7 @@ $ dbt ls --select snowplow.* --output json
 **Listing JSON output with custom keys**
 
 ```
-$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
+$ <Constant name="dbt" /> ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
@@ -84,12 +84,12 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 
 List all resources upstream of your orders semantic model:
 ```
-dbt ls -s +semantic_model:orders
+<Constant name="dbt" /> ls -s +semantic_model:orders
 ```
 
 **Listing file paths**
 ```
-dbt ls --select snowplow.* --output path
+<Constant name="dbt" /> ls --select snowplow.* --output path
 models/base/snowplow_base_events.sql
 models/base/snowplow_base_web_page_context.sql
 models/identification/snowplow_id_map.sql

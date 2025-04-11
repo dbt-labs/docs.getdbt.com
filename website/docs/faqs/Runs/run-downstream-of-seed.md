@@ -11,5 +11,5 @@ You can run models downstream of a seed using the [model selection syntax](/refe
 For example, the following would run all models downstream of a seed named `country_codes`:
 
 ```shell
-$ dbt run --select country_codes+
+$ <Constant name="dbt" /> run --select country_codes+
 ```

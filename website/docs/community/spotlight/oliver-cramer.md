@@ -22,11 +22,11 @@ communityAwardYear: 2023
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the dbt community in 2022. My current focus is on building modern data teams. There is no magic formula for structuring your analytics function. Given the pace of technological change in our industry, the structure of a data team must evolve over time.
+I joined the <Constant name="dbt" /> community in 2022. My current focus is on building modern data teams. There is no magic formula for structuring your analytics function. Given the pace of technological change in our industry, the structure of a data team must evolve over time.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-I like working with dbt Labs' Sean McIntyre to promote Data Vault in Europe and Victoria Perez Mola, also from dbt Labs, is always a great help when I have questions about dbt.
+I like working with <Constant name="dbt" /> Labs' Sean McIntyre to promote Data Vault in Europe and Victoria Perez Mola, also from <Constant name="dbt" /> Labs, is always a great help when I have questions about <Constant name="dbt" />.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
@@ -34,4 +34,4 @@ I just think it's good to have a community, to be able to ask questions and get 
 
 ## Anything else interesting you want to tell us?
 
-Data Vault is actively looking forward to supporting the messaging that dbt Cloud (+packages) is a real alternative that works.
+Data Vault is actively looking forward to supporting the messaging that <Constant name="cloud" /> (+packages) is a real alternative that works.

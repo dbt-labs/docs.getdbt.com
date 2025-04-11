@@ -3,13 +3,13 @@ title: "Connect to adapters"
 id: "connect-adapters"
 ---
 
-Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt &mdash; for more detail, refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
+Adapters are an essential component of <Constant name="dbt" />. At their most basic level, they are how <Constant name="dbt" /> connects with the various supported data platforms. At a higher-level, adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="dbt" /> &mdash; for more detail, refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
 
-This section provides more details on different ways you can connect dbt to an adapter, and explains what a maintainer is.
+This section provides more details on different ways you can connect <Constant name="dbt" /> to an adapter, and explains what a maintainer is.
 
 ### Set up in dbt Cloud
 
-Explore the fastest and most reliable way to deploy dbt using dbt Cloud, a hosted architecture that runs dbt Core across your organization. dbt Cloud lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the dbt Cloud UI.
+Explore the fastest and most reliable way to deploy <Constant name="dbt" /> using <Constant name="cloud" />, a hosted architecture that runs <Constant name="core" /> across your organization. <Constant name="cloud" /> lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="cloud" /> UI.
 
 ### Install with dbt Core
 

@@ -11,7 +11,7 @@ That said, dbt does store "state" &mdash; a detailed, point-in-time view of proj
 dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequisite for:
 - [The `state` selector](/reference/node-selection/methods#state), whereby dbt can identify resources that are new or modified
 by comparing code in the current project against the state manifest.
-- [Deferring](/reference/node-selection/defer) to another environment, whereby dbt can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
+- [Deferring](/reference/node-selection/defer) to another environment, whereby <Constant name="dbt" /> can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
 - The [`dbt clone` command](/reference/commands/clone), whereby dbt can clone nodes based on their location in the manifest provided to the `--state` flag.
 
 Together, the [`state`](/reference/node-selection/methods#state) selector and deferral enable ["slim CI"](/best-practices/best-practice-workflows#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.

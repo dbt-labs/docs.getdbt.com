@@ -11,7 +11,7 @@ slug: /sql-reference/concat
 
 There is no better or simpler way to join multiple string values in a query than by using the CONCAT function. Full stop.
 
-It’s a straightforward function with pretty straightforward use cases. Use this page to understand how to use the CONCAT function in your data warehouse and why analytics engineers use it throughout their dbt models.
+It’s a straightforward function with pretty straightforward use cases. Use this page to understand how to use the CONCAT function in your data warehouse and why analytics engineers use it throughout their <Constant name="dbt" /> models.
 
 ## How to use the CONCAT function
 

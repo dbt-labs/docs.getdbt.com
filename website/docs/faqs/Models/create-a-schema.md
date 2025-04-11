@@ -5,4 +5,4 @@ sidebar_label: 'Target schema before running dbt'
 id: create-a-schema
 
 ---
-Nope! dbt will check if the schema exists when it runs. If the schema does not exist, dbt will create it for you.
+Nope! <Constant name="dbt" /> will check if the schema exists when it runs. If the schema does not exist, <Constant name="dbt" /> will create it for you.

@@ -6,7 +6,7 @@ description: "Read this guide to understand the project_name Jinja function in d
 ---
 
 The `project_name` context variable returns the `name` for the root-level project
-which is being run by dbt. This variable can be used to defer execution to a
+which is being run by <Constant name="dbt" />. This variable can be used to defer execution to a
 root-level project macro if one exists.
 
 ### Example Usage

@@ -23,7 +23,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connection Methods
 
-dbt-impala can connect to Apache Impala and Cloudera Data Platform clusters.
+<Constant name="dbt" />-impala can connect to Apache Impala and Cloudera Data Platform clusters.
 
 The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Impala.
 
@@ -35,14 +35,14 @@ The default mechanism is `binary`. To use HTTP transport, use the boolean option
 
 ## Authentication Methods
 
-dbt-impala supports three authentication mechanisms:
+<Constant name="dbt" />-impala supports three authentication mechanisms:
 - [`insecure`](#Insecure) No authentication is used, only recommended for testing.
 - [`ldap`](#ldap) Authentication via LDAP
 - [`kerbros`](#kerbros) Authentication via Kerberos (GSSAPI)
 
 ### Insecure
 
-This method is only recommended if you have a local install of Impala and want to test out the dbt-impala adapter. 
+This method is only recommended if you have a local install of Impala and want to test out the <Constant name="dbt" />-impala adapter. 
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -119,7 +119,7 @@ your_profile_name:
 
 </File>
 
-Note: A typical setup of Cloudera EDH will involve the following steps to setup Kerberos before one can execute dbt commands:
+Note: A typical setup of Cloudera EDH will involve the following steps to setup Kerberos before one can execute <Constant name="dbt" /> commands:
 - Get the correct realm config file for your installation (krb5.conf)
 - Set environment variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
 - Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
@@ -130,7 +130,7 @@ Note: A typical setup of Cloudera EDH will involve the following steps to setup 
 
 By default, the adapter will send instrumentation events to Cloudera to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file.
 
-Relatedly, if you'd like to turn off dbt Lab's anonymous usage tracking, see [YAML Configurations: Send anonymous usage stats](https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats) for more info
+Relatedly, if you'd like to turn off <Constant name="dbt" /> Lab's anonymous usage tracking, see [YAML Configurations: Send anonymous usage stats](https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats) for more info
 
 ### Supported Functionality
 

@@ -19,7 +19,7 @@ meta:
 
 The following is a guide to using Azure Synapse Analytics dedicated SQL pools (formerly SQL DW). For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
 
-For Microsoft Fabric setup with dbt, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
+For Microsoft Fabric setup with <Constant name="dbt" />, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
 
 
 :::
@@ -48,7 +48,7 @@ sudo apt install unixodbc-dev
 Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
-:::tip Default settings change in dbt-synapse v1.2 / ODBC Driver 18
+:::tip Default settings change in <Constant name="dbt" />-synapse v1.2 / ODBC Driver 18
 Microsoft made several changes related to connection encryption. Read more about the changes [here](/docs/core/connect-data-platform/mssql-setup).
 :::
 
@@ -81,4 +81,4 @@ your_profile_name:
 
 </File>
 
-You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](/docs/core/connect-data-platform/mssql-setup).
+You can find all the available options and the documentation and how to configure them on [the documentation page for the <Constant name="dbt" />-sqlserver adapter](/docs/core/connect-data-platform/mssql-setup).

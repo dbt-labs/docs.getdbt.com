@@ -17,7 +17,7 @@ The original `DBT_NO_PRINT` environment variable has been deprecated, starting w
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
-dbt --no-print run
+<Constant name="dbt" /> --no-print run
 ```
 
 ### Printer width
@@ -47,8 +47,8 @@ config:
 </File>
 
 ```text
-dbt --use-colors run
-dbt --no-use-colors run
+<Constant name="dbt" /> --use-colors run
+<Constant name="dbt" /> --no-use-colors run
 ```
 
 You can set the color preferences for the file logs only within `profiles.yml` or using the `--use-colors-file / --no-use-colors-file` flags.
@@ -63,6 +63,6 @@ config:
 </File>
 
 ```text
-dbt --use-colors-file run
-dbt --no-use-colors-file run
+<Constant name="dbt" /> --use-colors-file run
+<Constant name="dbt" /> --no-use-colors-file run
 ```

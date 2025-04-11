@@ -11,7 +11,7 @@ slug: /sql-reference/cross-join
 
 A truly rarely seen, but important join: the cross join. The majority of your analytics engineering work will require you to join tables together to create robust, wide tables that will eventually be exposed to end business users. These models will usually be created using mostly [left](/sql-reference/left-join) (and some [inner](/sql-reference/inner-join)) joins.
 
-A cross join, on the other hand, typically takes two columns between two database objects and creates a table forming a combination of all rows across joined tables, called a cartesian product. Use this page to understand how to use cross joins and where you might leverage them in your dbt project.
+A cross join, on the other hand, typically takes two columns between two database objects and creates a table forming a combination of all rows across joined tables, called a cartesian product. Use this page to understand how to use cross joins and where you might leverage them in your <Constant name="dbt" /> project.
 
 ## How to create a cross join
 

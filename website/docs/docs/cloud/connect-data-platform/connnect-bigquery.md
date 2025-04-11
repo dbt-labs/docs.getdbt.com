@@ -16,7 +16,7 @@ While the fields in a BigQuery connection can be specified manually, we recommen
 You can provide the JSON keyfile in one of two formats:
 
 - JSON keyfile upload &mdash; Upload the keyfile directly in its normal JSON format.
-- Base64-encoded string &mdash; Provide the keyfile as a base64-encoded string. When you provide a base64-encoded string, dbt decodes it automatically and populates the necessary fields.
+- Base64-encoded string &mdash; Provide the keyfile as a base64-encoded string. When you provide a base64-encoded string, <Constant name="dbt" /> decodes it automatically and populates the necessary fields.
 
 :::
 
@@ -45,25 +45,25 @@ In addition to these fields, there are two other optional fields that can be con
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise plans only
 
-The OAuth auth method permits dbt Cloud to run development queries on behalf of
-a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
-more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
+The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
+a BigQuery user without the configuration of BigQuery service account keyfile in <Constant name="cloud" />. For
+more information on the initial configuration of a BigQuery OAuth connection in <Constant name="cloud" />, please see
 [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
 
-As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
+As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in <Constant name="cloud" />, like so:
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Configuration
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).
 
 ### Optional configurations
 
 In BigQuery, optional configurations let you tailor settings for tasks such as query priority, dataset location, job timeout, and more. These options give you greater control over how BigQuery functions behind the scenes to meet your requirements.
 
-To customize your optional configurations in dbt Cloud:
+To customize your optional configurations in <Constant name="cloud" />:
 
-1. Click your name at the bottom left-hand side bar menu in dbt Cloud
+1. Click your name at the bottom left-hand side bar menu in <Constant name="cloud" />
 2. Select **Your profile** from the menu
 3. From there, click **Projects** and select your BigQuery project
 5. Go to **Development Connection** and select BigQuery
@@ -71,7 +71,7 @@ To customize your optional configurations in dbt Cloud:
 
 <Lightbox src="/img/bigquery/bigquery-optional-config.png" width="70%" title="BigQuery optional configuration"/>
 
-The following are the optional configurations you can set in dbt Cloud:
+The following are the optional configurations you can set in <Constant name="cloud" />:
 
 | Configuration    | <div style={{width:'250'}}>Information</div>   | Type    | <div style={{width:'150'}}>Example</div>             |
 |---------------------------|-----------------------------------------|---------|--------------------|
@@ -178,7 +178,7 @@ Have a look at [Dataproc's document on Create a cluster](https://cloud.google.co
 
 You can re-use connections across multiple projects with [global connections](/docs/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can utilize multiple connections inside of a single project (to handle dev, staging, production, etc.).
 
-BigQuery connections in dbt Cloud currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
+BigQuery connections in <Constant name="cloud" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
 For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (you can't only override the secret key due to a constraint of extended attributes).
 

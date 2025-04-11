@@ -29,7 +29,7 @@ The biggest impact to my career is that I gained a lot of visibility! I got to k
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-Karen Hsieh is the best! She not only brought me in to the dbt Community by way of the #local-taipei channel in dbt Slack, but she also encouraged me to contribute to the community in many ways, without making me feel pressured. With her passion and leading style, Karen successfully built a friendly and diverse group of people in #local-taipei.
+Karen Hsieh is the best! She not only brought me in to the <Constant name="dbt" /> Community by way of the #local-taipei channel in <Constant name="dbt" /> Slack, but she also encouraged me to contribute to the community in many ways, without making me feel pressured. With her passion and leading style, Karen successfully built a friendly and diverse group of people in #local-taipei.
 
 I’d also like to recommend <a href="/community/spotlight/bruno-de-lima">Bruno de Lima</a>'s LinkedIn posts. His 'dbt Tips of the Day' effectively delivery knowledge in a user-friendly way. In addition, I really enjoyed the dbt exam practice polls. Learning dbt can be a challenge, but Bruno makes it both easy and fun!
 
@@ -39,4 +39,4 @@ I learned that there are many ways to contribute to the community, regardless of
 
 ## Anything else interesting you want to tell us?
 
-Although the #local-taipei channel in dbt Slack is not made up of many, many people, we still managed to assemble a team of 7 people to join the Iron Man Contest. We produced a total of 200 articles in 30 days in topics around dbt and data. I don’t know how many people will find them useful, but it's definitely a great start to raising awareness of dbt in Taiwan.
+Although the #local-taipei channel in <Constant name="dbt" /> Slack is not made up of many, many people, we still managed to assemble a team of 7 people to join the Iron Man Contest. We produced a total of 200 articles in 30 days in topics around <Constant name="dbt" /> and data. I don’t know how many people will find them useful, but it's definitely a great start to raising awareness of <Constant name="dbt" /> in Taiwan.

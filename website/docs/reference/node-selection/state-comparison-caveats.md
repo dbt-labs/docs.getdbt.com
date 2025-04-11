@@ -16,7 +16,7 @@ If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise
 
 ### Macros
 
-dbt will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
+<Constant name="dbt" /> will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
 
 ### Vars
 
@@ -31,8 +31,8 @@ The command `dbt test -s state:modified` will include both:
 As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect with "simple" state selection:
 
 ```shell
-dbt run -s "state:modified"
-dbt test -s "state:modified"
+<Constant name="dbt" /> run -s "state:modified"
+<Constant name="dbt" /> test -s "state:modified"
 ```
 
 This can get complicated, however. If you add a new test without modifying its underlying model, or add a test that selects from a new model and an old unmodified one, you may need to test a model without having first run it.
@@ -42,8 +42,8 @@ You can defer upstream references when testing. For example, if a test selects f
 If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking the selection criteria of your CI job. For instance:
 
 ```shell
-dbt run -s "state:modified"
-dbt test -s "state:modified" --exclude "test_name:relationships"
+<Constant name="dbt" /> run -s "state:modified"
+<Constant name="dbt" /> test -s "state:modified" --exclude "test_name:relationships"
 ```
 ### Overwrites the `manifest.json`
 
@@ -101,8 +101,8 @@ That means the following config—functionally identical to the snippet above—
 
 ### Final note
 
-State comparison is complex. We hope to reach eventual consistency between all configuration options, as well as providing users with the control they need to reliably return all modified resources, and only the ones they expect. If you're interested in learning more, read [open issues tagged "state"](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Astate) in the dbt repository.
+State comparison is complex. We hope to reach eventual consistency between all configuration options, as well as providing users with the control they need to reliably return all modified resources, and only the ones they expect. If you're interested in learning more, read [open issues tagged "state"](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Astate) in the <Constant name="dbt" /> repository.
 
 ## Related docs
-- [About state in dbt](/reference/node-selection/state-selection)
+- [About state in <Constant name="dbt" />](/reference/node-selection/state-selection)
 - [Configure state selection](/reference/node-selection/configure-state)

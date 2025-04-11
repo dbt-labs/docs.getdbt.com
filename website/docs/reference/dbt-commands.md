@@ -2,16 +2,16 @@
 title: "dbt Command reference"
 ---
 
-You can run dbt using the following tools:
+You can run <Constant name="dbt" /> using the following tools:
 
-- In your browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
-- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/installation-overview).
+- In your browser with the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
+- On the command line interface using the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/core/installation-overview).
   
 A key distinction with the tools mentioned, is that dbt Cloud CLI and IDE are designed to support safe parallel execution of dbt commands, leveraging dbt Cloud's infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, `dbt-core` _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
 ## Parallel execution
 
-dbt Cloud allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
+<Constant name="cloud" /> allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
@@ -30,7 +30,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of dbt commands.
+Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of <Constant name="dbt" /> commands.
 
 | Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |

@@ -6,11 +6,11 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-dbt Cloud natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line.
+<Constant name="cloud" /> natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The <Constant name="cloud" /> CLI allows you to run <Constant name="dbt" /> commands against your <Constant name="cloud" /> development environment from your local command line.
 
-dbt commands are run against dbt Cloud's infrastructure and benefit from:
+<Constant name="dbt" /> commands are run against <Constant name="cloud" />'s infrastructure and benefit from:
 
-* Secure credential storage in the dbt Cloud platform
+* Secure credential storage in the <Constant name="cloud" /> platform
 * [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment 
 * Speedier, lower-cost builds
 * Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies))
@@ -19,11 +19,11 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 <Lightbox src="/img/docs/dbt-cloud/cloud-cli-overview.jpg" title="Diagram of how the dbt Cloud CLI works with dbt Cloud's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites 
-The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
+The <Constant name="cloud" /> CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
 ## Install dbt Cloud CLI
 
-You can install the dbt Cloud CLI on the command line by using one of these methods. 
+You can install the <Constant name="cloud" /> CLI on the command line by using one of these methods. 
 
 <details>
 <summary>View a video tutorial for a step-by-step guide to installation.</summary>
@@ -93,7 +93,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by:
+Advanced users can configure multiple projects to use the same <Constant name="cloud" /> CLI by:
 
  1. Placing the executable file (`.exe`) in the "Program Files" folder
  2. [Adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53)
@@ -104,10 +104,10 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
 
 3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
       ```bash
-      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
+      The <Constant name="cloud" /> CLI - an ELT tool for running SQL transformations and data models in <Constant name="cloud" />...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
 
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -127,7 +127,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
   ```bash
   tar -xf dbt_0.29.9_linux_amd64.tar.gz
-  ./dbt --version
+  ./<Constant name="dbt" /> --version
   ```
 
 :::info
@@ -138,10 +138,10 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
       ```bash
-      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
+      The <Constant name="cloud" /> CLI - an ELT tool for running SQL transformations and data models in <Constant name="cloud" />...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -153,30 +153,30 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 <TabItem value="pip" label="Existing dbt Core users (pip)">
 
-If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are some considerations:
+If you already have <Constant name="core" /> installed, the <Constant name="cloud" /> CLI may conflict. Here are some considerations:
 
 - **Prevent conflicts** <br /> Use both the dbt Cloud CLI and dbt Core with `pip` and create a new virtual environment.<br /><br />
 - **Use both dbt Cloud CLI and dbt Core with brew or native installs** <br /> If you use Homebrew, consider aliasing the dbt Cloud CLI as "dbt-cloud" to avoid conflict. For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br /><br />
 - **Reverting to dbt Core from the dbt Cloud CLI** <br />
   If you've already installed the dbt Cloud CLI and need to switch back to dbt Core:<br />
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
-  - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
+  - Reinstall <Constant name="core" /> using the following command, replacing "adapter_name" with the appropriate adapter name:
     ```shell
-    python -m pip install dbt-adapter_name --force-reinstall
+    python -m pip install <Constant name="dbt" />-adapter_name --force-reinstall
     ```
     For example, if I used Snowflake as an adapter, I would run: `python -m pip install dbt-snowflake --force-reinstall`
 
 --------
 
-Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
+Before installing the <Constant name="cloud" /> CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
 
 ### Install a virtual environment
 
 We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
-1. Create a new virtual environment named "dbt-cloud" with this command:
+1. Create a new virtual environment named "<Constant name="dbt" />-cloud" with this command:
    ```shell
-   python3 -m venv dbt-cloud
+   python3 -m venv <Constant name="dbt" />-cloud
     ```
 
 2. Activate the virtual environment each time you create a shell window or session, depending on your operating system:
@@ -191,28 +191,28 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 ### Install dbt Cloud CLI in pip
 
-1. (Optional) If you already have dbt Core installed, this installation will override that package. Check your dbt Core version in case you need to reinstall it later by running the following command :
+1. (Optional) If you already have <Constant name="core" /> installed, this installation will override that package. Check your <Constant name="core" /> version in case you need to reinstall it later by running the following command :
 
   ```bash
-  dbt --version
+  <Constant name="dbt" /> --version
   ```
 
-2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
+2. Make sure you're in your virtual environment and run the following command to install the <Constant name="cloud" /> CLI:
 
   ```bash
-  pip install dbt --no-cache-dir
+  pip install <Constant name="dbt" /> --no-cache-dir
   ```
 
   If there are installation issues, running the command with the `--force-reinstall` argument might help:
    ```bash
-   pip install dbt --no-cache-dir --force-reinstall
+   pip install <Constant name="dbt" /> --no-cache-dir --force-reinstall
    ``` 
 
-3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
+3. (Optional) To revert to <Constant name="core" />, first uninstall both the <Constant name="cloud" /> CLI and <Constant name="core" />. Then reinstall <Constant name="core" />.
 
   ```bash
-  pip uninstall dbt-core dbt
-  pip install dbt-adapter_name --force-reinstall
+  pip uninstall <Constant name="core" /> <Constant name="dbt" />
+  pip install <Constant name="dbt" />-adapter_name --force-reinstall
   ```
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
@@ -226,7 +226,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system.
+The following instructions explain how to update the <Constant name="cloud" /> CLI to the latest version depending on your operating system.
 
 
 <Tabs>
@@ -283,10 +283,10 @@ For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `d
 If you have dbt Core installed locally, either:
 
 1. Install using the <code>pip3 install dbt</code> [pip](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli) command.
-2. Install natively, ensuring you either deactivate the virtual environment containing dbt Core or create an alias for the dbt Cloud CLI. 
-3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the dbt Cloud CLI binary to use both dbt Cloud CLI and dbt Core together.
+2. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="cloud" /> CLI. 
+3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="cloud" /> CLI binary to use both <Constant name="cloud" /> CLI and <Constant name="core" /> together.
 
-You can always uninstall the dbt Cloud CLI to return to using dbt Core.
+You can always uninstall the <Constant name="cloud" /> CLI to return to using <Constant name="core" />.
 
 </DetailsToggle>
 

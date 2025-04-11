@@ -23,7 +23,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Athena with dbt-athena
 
-This plugin does not accept any credentials directly. Instead, [credentials are determined automatically](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) based on AWS CLI/boto3 conventions and stored login info. You can configure the AWS profile name to use via aws_profile_name. Check out the dbt profile configuration below for details.
+This plugin does not accept any credentials directly. Instead, [credentials are determined automatically](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) based on AWS CLI/boto3 conventions and stored login info. You can configure the AWS profile name to use via aws_profile_name. Check out the <Constant name="dbt" /> profile configuration below for details.
 
 <File name='~/.dbt/profiles.yml'>
 

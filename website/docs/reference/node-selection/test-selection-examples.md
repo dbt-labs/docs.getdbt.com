@@ -21,14 +21,14 @@ Run generic tests only:
 
 
   ```bash
-    dbt test --select "test_type:generic"
+    <Constant name="dbt" /> test --select "test_type:generic"
   ```
 
 Run singular tests only:
 
 
   ```bash
-    dbt test --select "test_type:singular"
+    <Constant name="dbt" /> test --select "test_type:singular"
   ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
@@ -72,12 +72,12 @@ dbt build --select "orders"
 
 <TabItem value="buildable" label="Buildable mode">
 
-In this example, dbt executes tests that reference "orders" within the selected nodes (or their ancestors).
+In this example, <Constant name="dbt" /> executes tests that reference "orders" within the selected nodes (or their ancestors).
 
 
 ```shell
-dbt test --select "orders" --indirect-selection=buildable
-dbt build --select "orders" --indirect-selection=buildable
+<Constant name="dbt" /> test --select "orders" --indirect-selection=buildable
+<Constant name="dbt" /> build --select "orders" --indirect-selection=buildable
 ```
 
 </TabItem>
@@ -87,8 +87,8 @@ dbt build --select "orders" --indirect-selection=buildable
 In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
 
 ```shell
-dbt test --select "orders" --indirect-selection=cautious
-dbt build --select "orders" --indirect-selection=cautious
+<Constant name="dbt" /> test --select "orders" --indirect-selection=cautious
+<Constant name="dbt" /> build --select "orders" --indirect-selection=cautious
 
 ```
 
@@ -100,8 +100,8 @@ This mode does not execute any tests, whether they are directly attached to the 
 
 ```shell
 
-dbt test --select "orders" --indirect-selection=empty
-dbt build --select "orders" --indirect-selection=empty
+<Constant name="dbt" /> test --select "orders" --indirect-selection=empty
+<Constant name="dbt" /> build --select "orders" --indirect-selection=empty
 
 ```
 
@@ -120,25 +120,25 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```bash
   # Run tests on a model (indirect selection)
-  dbt test --select "customers"
+  <Constant name="dbt" /> test --select "customers"
   
   # Run tests on two or more specific models (indirect selection)
-  dbt test --select "customers orders"
+  <Constant name="dbt" /> test --select "customers orders"
 
   # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
-  dbt test --select "staging.jaffle_shop"
+  <Constant name="dbt" /> test --select "staging.jaffle_shop"
 
   # Run tests downstream of a model (note this will select those tests directly!)
-  dbt test --select "stg_customers+"
+  <Constant name="dbt" /> test --select "stg_customers+"
 
   # Run tests upstream of a model (indirect selection)
-  dbt test --select "+stg_customers"
+  <Constant name="dbt" /> test --select "+stg_customers"
 
   # Run tests on all models with a particular tag (direct + indirect)
-  dbt test --select "tag:my_model_tag"
+  <Constant name="dbt" /> test --select "tag:my_model_tag"
 
   # Run tests on all models with a particular materialization (indirect selection)
-  dbt test --select "config.materialized:table"
+  <Constant name="dbt" /> test --select "config.materialized:table"
 
   ```
 
@@ -148,19 +148,19 @@ The following examples should feel somewhat familiar if you're used to executing
   ```bash
   # tests on all sources
 
-  dbt test --select "source:*"
+  <Constant name="dbt" /> test --select "source:*"
 
   # tests on one source
-  dbt test --select "source:jaffle_shop"
+  <Constant name="dbt" /> test --select "source:jaffle_shop"
   
   # tests on two or more specific sources
-   dbt test --select "source:jaffle_shop source:raffle_bakery"
+   <Constant name="dbt" /> test --select "source:jaffle_shop source:raffle_bakery"
 
   # tests on one source table
-  dbt test --select "source:jaffle_shop.customers"
+  <Constant name="dbt" /> test --select "source:jaffle_shop.customers"
 
   # tests on everything _except_ sources
-  dbt test --exclude "source:*"
+  <Constant name="dbt" /> test --exclude "source:*"
   ```
 
  ### More complex selection
@@ -170,8 +170,8 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
 
-  dbt test --select "assert_total_payment_amount_is_positive" # directly select the test by name
-  dbt test --select "payments,test_type:singular" # indirect selection, v1.2
+  <Constant name="dbt" /> test --select "assert_total_payment_amount_is_positive" # directly select the test by name
+  <Constant name="dbt" /> test --select "payments,test_type:singular" # indirect selection, v1.2
 
   ```
 
@@ -181,17 +181,17 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
   # Run tests on all models with a particular materialization
-  dbt test --select "config.materialized:table"
+  <Constant name="dbt" /> test --select "config.materialized:table"
 
   # Run tests on all seeds, which use the 'seed' materialization
-  dbt test --select "config.materialized:seed"
+  <Constant name="dbt" /> test --select "config.materialized:seed"
 
   # Run tests on all snapshots, which use the 'snapshot' materialization
-  dbt test --select "config.materialized:snapshot"
+  <Constant name="dbt" /> test --select "config.materialized:snapshot"
 
   ```
 
- Note that this functionality may change in future versions of dbt.
+ Note that this functionality may change in future versions of <Constant name="dbt" />.
 
 ### Run tests on tagged columns
 
@@ -216,11 +216,11 @@ models:
 
 
   ```bash
-  dbt test --select "tag:my_column_tag"
+  <Constant name="dbt" /> test --select "tag:my_column_tag"
 
   ```
 
-Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
+Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of <Constant name="dbt" />.
 
 ### Run tagged tests only
 
@@ -245,6 +245,6 @@ models:
 
 
   ```bash
-  dbt test --select "tag:my_test_tag"
+  <Constant name="dbt" /> test --select "tag:my_test_tag"
 
   ```

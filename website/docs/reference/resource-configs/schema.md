@@ -51,7 +51,7 @@ This would result in the generated relation being located in the `mappings` sche
 
 <VersionBlock lastVersion="1.8">
 
-Available in dbt Core v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
+Available in <Constant name="core" /> v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 
 </VersionBlock>
 
@@ -137,7 +137,7 @@ For users on dbt Cloud v1.8 or earlier, use the [`target_schema` config](/refere
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
-The standard behavior of dbt is:
+The standard behavior of <Constant name="dbt" /> is:
 * If a custom schema is _not_ specified, the schema of the relation is the target schema (`{{ target.schema }}`).
 * If a custom schema is specified, by default, the schema of the relation is `{{ target.schema }}_{{ schema }}`.
 

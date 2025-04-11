@@ -12,9 +12,9 @@ recently_updated: true
 ---
 
 ## Introduction
-Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
 
-Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
@@ -35,44 +35,44 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 </Expandable>
 
 ## What you'll learn
-Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on dbt Cloud to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
+Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on <Constant name="cloud" /> to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between <Constant name="cloud" /> and your current Core deployment will help you strategize and plan for your move.
 
 The guide outlines the following steps:
 
 - [Considerations](https://docs.getdbt.com/guides/core-cloud-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
 - [Plan your move](https://docs.getdbt.com/guides/core-cloud-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
-- [Move to dbt Cloud](https://docs.getdbt.com/guides/core-cloud-2?step=5): Review the steps to move your dbt Core project to dbt Cloud, including setting up your account, data platform, and Git repository.
+- [Move to <Constant name="cloud" />](https://docs.getdbt.com/guides/core-cloud-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 - [Test and validate](https://docs.getdbt.com/guides/core-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move.
-- [Transition and training](https://docs.getdbt.com/guides/core-cloud-2?step=7): Learn how to fully transition to dbt Cloud and what training and support you may need. 
+- [Transition and training](https://docs.getdbt.com/guides/core-cloud-2?step=7): Learn how to fully transition to <Constant name="cloud" /> and what training and support you may need. 
 - [Summary](https://docs.getdbt.com//guides/core-cloud-2?step=8): Summarizes key takeaways and what you've learned in this guide.
 - [What's next?](https://docs.getdbt.com/guides/core-cloud-2?step=9): Introduces what to expect in the following guides.
 
 ## Considerations
 
-If your team is using dbt Core today, you could be reading this guide because:
+If your team is using <Constant name="core" /> today, you could be reading this guide because:
 - You’ve realized the burden of maintaining that deployment.
 - The person who set it up has since left.
-- You’re interested in what dbt Cloud could do to better manage the complexity of your dbt deployment, democratize access to more contributors, or improve security and governance practices.
+- You’re interested in what <Constant name="cloud" /> could do to better manage the complexity of your <Constant name="dbt" /> deployment, democratize access to more contributors, or improve security and governance practices.
 
-This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from dbt Core to dbt Cloud.  Each "build your own" deployment of dbt Core will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
+This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from <Constant name="core" /> to <Constant name="cloud" />.  Each "build your own" deployment of <Constant name="core" /> will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
 
-The most important things you need to think about when moving from dbt Core to dbt Cloud:
+The most important things you need to think about when moving from <Constant name="core" /> to <Constant name="cloud" />:
 
 - How is your team structured? Are there natural divisions of domain?
-- Should you have one project or multiple? Which dbt resources do you want to standardize & keep central?
+- Should you have one project or multiple? Which <Constant name="dbt" /> resources do you want to standardize & keep central?
 - Who should have permission to view, develop, and administer?
-- How are you scheduling your dbt models to run in production?
+- How are you scheduling your <Constant name="dbt" /> models to run in production?
 - How are you currently managing Continuous integration/Continuous deployment (CI/CD) of logical changes (if at all)?
 - How do your data developers prefer to work?
 - How do you manage different data environments and the different behaviors in those environments?
 
-dbt Cloud provides standard mechanisms for tackling these considerations, all of which deliver long-term benefits to your organization:
+<Constant name="cloud" /> provides standard mechanisms for tackling these considerations, all of which deliver long-term benefits to your organization:
 - Cross-team collaboration
 - Access control
 - Orchestration
 - Isolated data environments
 
-If you have rolled out your own dbt Core deployment, you have probably come up with different answers.
+If you have rolled out your own <Constant name="core" /> deployment, you have probably come up with different answers.
 
 ## Plan your move
 
@@ -134,36 +134,36 @@ This provides developers with the benefits of an enhanced workflow while ensurin
 
 ## Move to dbt Cloud
 
-This guide is your roadmap to help you think about migration strategies and what moving from dbt Core to dbt Cloud could look like.
+This guide is your roadmap to help you think about migration strategies and what moving from <Constant name="core" /> to <Constant name="cloud" /> could look like.
 
-After reviewing the considerations and planning your move, you may want to start moving your dbt Core project to dbt Cloud:
-- Check out the detailed [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth transition from dbt Core to dbt Cloud.
+After reviewing the considerations and planning your move, you may want to start moving your <Constant name="core" /> project to <Constant name="cloud" />:
+- Check out the detailed [Move to <Constant name="cloud" />: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth transition from <Constant name="core" /> to <Constant name="cloud" />.
 
-For a more detailed comparison of dbt Core and dbt Cloud, check out [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud).
+For a more detailed comparison of <Constant name="core" /> and <Constant name="cloud" />, check out [How <Constant name="cloud" /> compares with <Constant name="core" />](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud).
 
 ## Test and validate
 
-After [setting the foundations of dbt Cloud](https://docs.getdbt.com/guides/core-to-cloud-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
+After [setting the foundations of <Constant name="cloud" />](https://docs.getdbt.com/guides/core-to-cloud-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
 
-- **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
-- **Start cutover:** You can start the cutover to dbt Cloud by creating a dbt Cloud job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
+- **Review your <Constant name="dbt" /> project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
+- **Start cutover:** You can start the cutover to <Constant name="cloud" /> by creating a <Constant name="cloud" /> job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
 - **Precision testing:** Use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
-- **Access and permissions**: Review and adjust [access controls and permissions](/docs/cloud/manage-access/about-user-access) within dbt Cloud to maintain security protocols and safeguard your data.
+- **Access and permissions**: Review and adjust [access controls and permissions](/docs/cloud/manage-access/about-user-access) within <Constant name="cloud" /> to maintain security protocols and safeguard your data.
 
 ## Transition and training
 
 Once you’ve confirmed that dbt Cloud orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you’re still using an external orchestrator (such as Airflow), and you’ve swapped out `dbt-core` execution for dbt Cloud execution (through the [API](/docs/dbt-cloud-apis/overview)).
 
-Familiarize your team with dbt Cloud's [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
-- **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of dbt Core.
-- **Development tools**: Use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your dbt projects.
-- **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in dbt Cloud, which streamlines project maintenance.
+Familiarize your team with <Constant name="cloud" />'s [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
+- **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic <Constant name="dbt" /> version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
+- **Development tools**: Use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your <Constant name="dbt" /> projects.
+- **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in <Constant name="cloud" />, which streamlines project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to the job details. Access comprehensive logs for all job runs to help with troubleshooting.
-- **CI/CD:** Use dbt Cloud's [CI/CD](/docs/deploy/ci-jobs) feature to run your dbt projects in a temporary schema whenever new commits are pushed to open pull requests. This helps with catching bugs before deploying to production.
+- **CI/CD:** Use <Constant name="cloud" />'s [CI/CD](/docs/deploy/ci-jobs) feature to run your <Constant name="dbt" /> projects in a temporary schema whenever new commits are pushed to open pull requests. This helps with catching bugs before deploying to production.
 
 ### Beyond your move
 
-Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power of streamlining collaboration, enhancing workflow efficiency, and leveraging powerful [features](/docs/cloud/about-cloud/dbt-cloud-features) for analytics engineering teams. Here are some additional features you can use to unlock the full potential of dbt Cloud:
+Now that you’ve chosen <Constant name="cloud" /> as your platform, you’ve unlocked the power of streamlining collaboration, enhancing workflow efficiency, and leveraging powerful [features](/docs/cloud/about-cloud/dbt-cloud-features) for analytics engineering teams. Here are some additional features you can use to unlock the full potential of <Constant name="cloud" />:
 
 - **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/cloud/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in dbt Cloud). <Lifecycle status="enterprise"/>
 - **dbt Cloud APIs:** Use dbt Cloud's robust [APIs](/docs/dbt-cloud-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="team,enterprise"/>
@@ -173,41 +173,41 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 
 ### Additional help
 
-- **dbt Learn courses**: Access our free [Learn dbt Cloud](https://learn.getdbt.com) video courses for on-demand training.
-- **dbt Community:** Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
-- **dbt Support team:** Our [dbt Support team](/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues. Create a support ticket in dbt Cloud and we’ll be happy to help!
+- **<Constant name="dbt" /> Learn courses**: Access our free [Learn <Constant name="cloud" />](https://learn.getdbt.com) video courses for on-demand training.
+- **<Constant name="dbt" /> Community:** Join the [<Constant name="dbt" /> Community](https://community.getdbt.com/) to connect with other <Constant name="dbt" /> users, ask questions, and share best practices.
+- **<Constant name="dbt" /> Support team:** Our [<Constant name="dbt" /> Support team](/docs/dbt-support) is always available to help you troubleshoot your <Constant name="cloud" /> issues. Create a support ticket in <Constant name="cloud" /> and we’ll be happy to help!
 - **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="enterprise"/>
 
 ## Summary
 
-This guide should now have given you some insight and equipped you with a framework for moving from dbt Core to dbt Cloud. This guide has covered the following key areas:
+This guide should now have given you some insight and equipped you with a framework for moving from <Constant name="core" /> to <Constant name="cloud" />. This guide has covered the following key areas:
 
 - **Considerations:** Understanding the foundational steps required for a successful migration, including evaluating your current setup and identifying key considerations unique to your team's structure and workflow needs.
 
-- **Plan you move**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness dbt Cloud's collaborative and efficient environment.
+- **Plan you move**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness <Constant name="cloud" />'s collaborative and efficient environment.
 
-- **Move to dbt Cloud**: Linking to [the guide](https://docs.getdbt.com/guides/core-to-cloud-1?step=1) that outlines technical steps required to transition your dbt Core project to dbt Cloud, including setting up your account, data platform, and Git repository.
+- **Move to <Constant name="cloud" />**: Linking to [the guide](https://docs.getdbt.com/guides/core-to-cloud-1?step=1) that outlines technical steps required to transition your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 
-- **Test and validate**: Emphasizing technical transitions, including testing and validating your dbt projects within the dbt Cloud ecosystem to ensure data integrity and performance.
+- **Test and validate**: Emphasizing technical transitions, including testing and validating your <Constant name="dbt" /> projects within the <Constant name="cloud" /> ecosystem to ensure data integrity and performance.
 
-- **Transition and training**: Share useful transition, training, and onboarding information for your team. Fully leverage dbt Cloud's capabilities, from development tools (dbt Cloud CLI and dbt Cloud IDE) to advanced features such as dbt Explorer, the Semantic Layer, and dbt Mesh.
+- **Transition and training**: Share useful transition, training, and onboarding information for your team. Fully leverage <Constant name="cloud" />'s capabilities, from development tools (<Constant name="cloud" /> CLI and <Constant name="cloud" /> <Constant name="cloud_ide" />) to advanced features such as <Constant name="dbt" /> <Constant name="explorer" />, the <Constant name="semantic_layer" />, and <Constant name="dbt" /> <Constant name="mesh" />.
 
 ## What’s next?
 
 <ConfettiTrigger>
 
 
-Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to dbt Cloud.
+Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to <Constant name="cloud" />.
 
-For the next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
+For the next steps, you can continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />:
 
 <CoretoCloudTable/>
 
 ### Related content
-- [Learn dbt Cloud](https://learn.getdbt.com) courses
+- [Learn <Constant name="cloud" />](https://learn.getdbt.com) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
-- [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
-- Subscribe to the [dbt Cloud RSS alerts](https://status.getdbt.com/)
+- Work with the [<Constant name="dbt" /> Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- [How <Constant name="cloud" /> compares with <Constant name="core" />](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of <Constant name="core" /> and <Constant name="cloud" />.
+- Subscribe to the [<Constant name="cloud" /> RSS alerts](https://status.getdbt.com/)
 
 </ConfettiTrigger>

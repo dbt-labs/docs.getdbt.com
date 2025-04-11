@@ -31,7 +31,7 @@ communityAwardYear: 2024
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-The dbt community allowed the dbt-athena maintainers to meet each other, and share the common goal of making the dbt-athena adapter production-ready.
+The <Constant name="dbt" /> community allowed the <Constant name="dbt" />-athena maintainers to meet each other, and share the common goal of making the <Constant name="dbt" />-athena adapter production-ready.
 
 ## Which dbt Community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -39,6 +39,6 @@ As we grow, we are looking to embody democratic leadership.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-We learned that the power of the community was endless. People started to share best practises, and some of the best practises were incorporated directly in dbt-athena, allowing people to run the adapter smoothly in their production environment.
+We learned that the power of the community was endless. People started to share best practises, and some of the best practises were incorporated directly in <Constant name="dbt" />-athena, allowing people to run the adapter smoothly in their production environment.
 We reached a point where people started to ask advice for their AWS architecture, which we found pretty awesome.  
 

@@ -74,4 +74,4 @@ We most commonly see the RANK function used in data work to:
 - In [SELECT statements](/sql-reference/select) to add explicit ranking to rows
 - In QUALIFY statements to filter a query on a ranking without having to add the rank to the query result
 
-This isn’t an extensive list of where your team may be using the RANK function throughout your dbt models and BI tool logic, but contains some common scenarios analytics engineers face in a day-to-day.
+This isn’t an extensive list of where your team may be using the RANK function throughout your <Constant name="dbt" /> models and BI tool logic, but contains some common scenarios analytics engineers face in a day-to-day.

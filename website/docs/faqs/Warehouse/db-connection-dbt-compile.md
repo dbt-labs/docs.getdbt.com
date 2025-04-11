@@ -18,7 +18,7 @@ However, here are some things to consider:
 
 ### Introspective queries
 
-To generate the compiled SQL for many models, dbt needs to run introspective queries, (which is when dbt needs to run SQL in order to pull data back and do something with it) against the data platform.
+To generate the compiled SQL for many models, <Constant name="dbt" /> needs to run introspective queries, (which is when <Constant name="dbt" /> needs to run SQL in order to pull data back and do something with it) against the data platform.
 
 These introspective queries include:
 

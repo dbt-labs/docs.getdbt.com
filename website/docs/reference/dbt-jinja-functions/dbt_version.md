@@ -24,6 +24,6 @@ currently running. It can be used for debugging or auditing purposes. For detail
 
 
 ```
-$ dbt run-operation get_version
-The installed version of dbt is 1.6.0
+$ <Constant name="dbt" /> run-operation get_version
+The installed version of <Constant name="dbt" /> is 1.6.0
 ```

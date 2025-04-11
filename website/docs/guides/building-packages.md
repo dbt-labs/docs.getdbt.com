@@ -16,7 +16,7 @@ recently_updated: true
 
 ## Introduction
 
-Creating packages is an **advanced use of dbt**. If you're new to the tool, we recommend that you first use the product for your own analytics before attempting to create a package for others.
+Creating packages is an **advanced use of <Constant name="dbt" />**. If you're new to the tool, we recommend that you first use the product for your own analytics before attempting to create a package for others.
 
 ### Prerequisites
 
@@ -27,19 +27,19 @@ A strong understanding of:
 
 ### Assess whether a package is the right solution
 Packages typically contain either:
-- macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/dbt-labs/audit_helper/latest/), [generating code](https://hub.getdbt.com/dbt-labs/codegen/latest/), or [adding additional schema tests to a dbt project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
+- macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/dbt-labs/audit_helper/latest/), [generating code](https://hub.getdbt.com/dbt-labs/codegen/latest/), or [adding additional schema tests to a <Constant name="dbt" /> project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
 - models for a common dataset — for example a dataset for software products like [MailChimp](https://hub.getdbt.com/fivetran/mailchimp/latest/) or [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), or even models for metadata about your data stack like [Snowflake query spend](https://hub.getdbt.com/gitlabhq/snowflake_spend/latest/) and [the artifacts produced by `dbt run`](https://hub.getdbt.com/tailsdotcom/dbt_artifacts/latest/). In general, there should be a shared set of industry-standard metrics that you can model (e.g. email open rate).
 
 Packages are _not_ a good fit for sharing models that contain business-specific logic, for example, writing code for marketing attribution, or monthly recurring revenue. Instead, consider sharing a blog post and a link to a sample repo, rather than bundling this code as a package (here's our blog post on [marketing attribution](https://blog.getdbt.com/modeling-marketing-attribution/) as an example).
 
 ## Create your new project
 :::note Using the command line for package development
-We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
+We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another <Constant name="dbt" /> project — at present <Constant name="cloud" /> is not designed for this workflow.
 :::
 
-1. Use the [dbt init](/reference/commands/init) command to create a new dbt project, which will be your package:
+1. Use the [<Constant name="dbt" /> init](/reference/commands/init) command to create a new <Constant name="dbt" /> project, which will be your package:
 ```shell
-$ dbt init [package_name]
+$ <Constant name="dbt" /> init [package_name]
 ```
 2. Create a public GitHub¹ repo, named `dbt-<package-name>`, e.g. `dbt-mailchimp`. Follow the GitHub instructions to link this to the dbt project you just created.
 3. Update the `name:` of the project in `dbt_project.yml` to your package name, e.g. `mailchimp`.
@@ -48,16 +48,16 @@ $ dbt init [package_name]
 ¹Currently, our package registry only supports packages that are hosted in GitHub.
 
 ## Develop your package
-We recommend that first-time package authors first develop macros and models for use in their own dbt project. Once your new package is created, you can get to work on moving them across, implementing some additional package-specific design patterns along the way.
+We recommend that first-time package authors first develop macros and models for use in their own <Constant name="dbt" /> project. Once your new package is created, you can get to work on moving them across, implementing some additional package-specific design patterns along the way.
 
-When working on your package, we often find it useful to install a local copy of the package in another dbt project — this workflow is described [here](https://discourse.getdbt.com/t/contributing-to-an-external-dbt-package/657).
+When working on your package, we often find it useful to install a local copy of the package in another <Constant name="dbt" /> project — this workflow is described [here](https://discourse.getdbt.com/t/contributing-to-an-external-dbt-package/657).
 
 ### Follow best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](/best-practices) for all of our advice on how to build your dbt project.
+Use our [<Constant name="dbt" /> coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our <Constant name="dbt" /> projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](/best-practices) for all of our advice on how to build your <Constant name="dbt" /> project.
 
-This is where it comes in especially handy to have worked on your own dbt project previously.
+This is where it comes in especially handy to have worked on your own <Constant name="dbt" /> project previously.
 
 ### Make the location of raw data configurable
 _Modeling packages only_
@@ -68,7 +68,7 @@ We recommend using [sources](/docs/build/sources) and [variables](/docs/build/pr
 
 ### Install upstream packages from hub.getdbt.com
 
-If your package relies on another package (for example, you use some of the cross-database macros from [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)), we recommend you install the package from [hub.getdbt.com](https://hub.getdbt.com), specifying a version range like so:
+If your package relies on another package (for example, you use some of the cross-database macros from [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)), we recommend you install the package from [hub.getdbt.com](https://hub.getdbt.com), specifying a version range like so:
 
 <File name='packages.yml'>
 
@@ -80,7 +80,7 @@ packages:
 
 </File>
 
-When packages are installed from hub.getdbt.com, dbt is able to handle duplicate dependencies.
+When packages are installed from hub.getdbt.com, <Constant name="dbt" /> is able to handle duplicate dependencies.
 
 ### Implement cross-database compatibility
 
@@ -146,7 +146,7 @@ packages:
 
 5. Confirm that you can run `dbt run` and `dbt test` from your command line successfully.
 
-5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/main/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
+5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your <Constant name="dbt" /> project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/main/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [<Constant name="dbt" /> Slack](https://community.getdbt.com/).
 
 ## Deploy the docs for your package
 _Optional_

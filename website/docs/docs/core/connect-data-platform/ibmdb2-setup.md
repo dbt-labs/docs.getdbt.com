@@ -30,8 +30,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 This is an experimental plugin:
 - We have not tested it extensively
-- Tested with [dbt-adapter-tests](https://pypi.org/project/pytest-dbt-adapter/) and DB2 LUW on Mac OS+RHEL8
-- Compatibility with other [dbt packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)) is only partially tested
+- Tested with [<Constant name="dbt" />-adapter-tests](https://pypi.org/project/pytest-dbt-adapter/) and DB2 LUW on Mac OS+RHEL8
+- Compatibility with other [<Constant name="dbt" /> packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)) is only partially tested
 
 ## Connecting to IBM DB2 with dbt-ibmdb2
 
@@ -87,4 +87,4 @@ your_profile_name:
 | ✅ | 🤷 | Snapshots                   |
 
 ## Notes 
-- dbt-ibmdb2 is built on the ibm_db python package and there are some known encoding issues related to z/OS.
+- <Constant name="dbt" />-ibmdb2 is built on the ibm_db python package and there are some known encoding issues related to z/OS.

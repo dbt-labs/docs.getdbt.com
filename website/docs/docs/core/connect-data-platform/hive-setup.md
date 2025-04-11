@@ -24,9 +24,9 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connection Methods
 
-dbt-hive can connect to Apache Hive and Cloudera Data Platform clusters. The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Hive.
+<Constant name="dbt" />-hive can connect to Apache Hive and Cloudera Data Platform clusters. The [Impyla](https://github.com/cloudera/impyla/) library is used to establish connections to Hive.
 
-dbt-hive supports two transport mechanisms:
+<Constant name="dbt" />-hive supports two transport mechanisms:
 - binary
 - HTTP(S)
 
@@ -34,13 +34,13 @@ The default mechanism is `binary`. To use HTTP transport, use the boolean option
 
 ## Authentication Methods
 
-dbt-hive supports two authentication mechanisms:
+<Constant name="dbt" />-hive supports two authentication mechanisms:
 - [`insecure`](#Insecure) No authentication is used, only recommended for testing.
 - [`ldap`](#ldap) Authentication via LDAP
 
 ### Insecure
 
-This method is only recommended if you have a local install of Hive and want to test out the dbt-hive adapter. 
+This method is only recommended if you have a local install of Hive and want to test out the <Constant name="dbt" />-hive adapter. 
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -111,7 +111,7 @@ your_profile_name:
 
 </File>
 
-Note: A typical setup of Cloudera Private Cloud will involve the following steps to setup Kerberos before one can execute dbt commands:
+Note: A typical setup of Cloudera Private Cloud will involve the following steps to setup Kerberos before one can execute <Constant name="dbt" /> commands:
 - Get the correct realm config file for your installation (krb5.conf)
 - Set environment variable to point to the config file (export KRB5_CONFIG=/path/to/krb5.conf)
 - Set correct permissions for config file (sudo chmod 644 /path/to/krb5.conf)
@@ -124,14 +124,14 @@ By default, the adapter will collect instrumentation events to help improve func
 
 ## Installation and Distribution
 
-dbt's adapter for Apache Hive is managed in its own repository, [dbt-hive](https://github.com/cloudera/dbt-hive). To use it, 
+<Constant name="dbt" />'s adapter for Apache Hive is managed in its own repository, [<Constant name="dbt" />-hive](https://github.com/cloudera/dbt-hive). To use it, 
 you must install the `dbt-hive` plugin.
 
 ### Using pip
 The following commands will install the latest version of `dbt-hive` as well as the requisite version of `dbt-core` and `impyla` driver used for connections.
 
 ```
-python -m pip install dbt-hive
+python -m pip install <Constant name="dbt" />-hive
 ```
 
 ### Supported Functionality

@@ -25,7 +25,7 @@ The stack I used in my first data role was outdated and highly manual. Where I l
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-Christine Berger was my first ever (best ever!) data colleague, and the one who first introduced me to dbt.
+Christine Berger was my first ever (best ever!) data colleague, and the one who first introduced me to <Constant name="dbt" />.
 
 There are certain qualities I've always valued in her, that I've found in many others across the community, and strive to cultivate in myself — earnestness, curiosity, creativity, and consistently doing good work with deep care.
 

@@ -17,7 +17,7 @@ meta:
 
 :::info Vendor-supported plugin
 
-The dbt-mindsdb package allows dbt to connect to [MindsDB](https://github.com/mindsdb/mindsdb).
+The <Constant name="dbt" />-mindsdb package allows <Constant name="dbt" /> to connect to [MindsDB](https://github.com/mindsdb/mindsdb).
 
 :::
 

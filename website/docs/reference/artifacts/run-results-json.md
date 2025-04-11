@@ -74,7 +74,7 @@ select {{ dbt.current_timestamp() }} as created_at
 Compile the model:
 
 ```shell
-dbt compile -s my_model
+<Constant name="dbt" /> compile -s my_model
 ```
 
 Here's a printed snippet from the `run_results.json`:
@@ -131,7 +131,7 @@ models:
 Run the built-in `unique` test and store the failures as a table:
 
 ```shell
-dbt test -s my_model
+<Constant name="dbt" /> test -s my_model
 ```
 
 Here's a printed snippet from the `run_results.json`:

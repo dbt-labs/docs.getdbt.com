@@ -5,7 +5,7 @@ id: "project-variables"
 pagination_next: "docs/build/environment-variables"
 ---
 
-dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
+<Constant name="dbt" /> provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
 compilation. Variables can be used to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22),
 [avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
 or otherwise provide data to models to configure how they are compiled.
@@ -67,7 +67,7 @@ define (or override) variables for a run of dbt, use the `--vars` command line
 option. In practice, this looks like:
 
 ```
-$ dbt run --vars '{"key": "value"}'
+$ <Constant name="dbt" /> run --vars '{"key": "value"}'
 ```
 
 The `--vars` argument accepts a YAML dictionary as a string on the command line.
@@ -76,14 +76,14 @@ YAML is convenient because it does not require strict quoting as with <Term id="
 Both of the following are valid and equivalent:
 
 ```
-$ dbt run --vars '{"key": "value", "date": 20180101}'
-$ dbt run --vars '{key: value, date: 20180101}'
+$ <Constant name="dbt" /> run --vars '{"key": "value", "date": 20180101}'
+$ <Constant name="dbt" /> run --vars '{key: value, date: 20180101}'
 ```
 
 If only one variable is being set, the brackets are optional, eg:
 
 ```
-$ dbt run --vars 'key: value'
+$ <Constant name="dbt" /> run --vars 'key: value'
 ```
 
 You can find more information on defining dictionaries with YAML [here](https://github.com/Animosity/CraftIRC/wiki/Complete-idiot%27s-introduction-to-yaml).
@@ -100,7 +100,7 @@ The order of precedence for variable declaration is as follows (highest priority
 4. If this node is defined in a package: variable declarations in that package's `dbt_project.yml` file
 5. The variable's default argument (if one is provided)
 
-If dbt is unable to find a definition for a variable after checking all possible variable declaration places, then a compilation error will be raised.
+If <Constant name="dbt" /> is unable to find a definition for a variable after checking all possible variable declaration places, then a compilation error will be raised.
 
 **Note:** Variable scope is based on the node ultimately using that variable. Imagine the case where a model defined in the root project is calling a macro defined in an installed package. That macro, in turn, uses the value of a variable. The variable will be resolved based on the _root project's_ scope, rather than the package's scope.
 

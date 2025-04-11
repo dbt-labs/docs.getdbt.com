@@ -15,8 +15,8 @@ It is possible to use separate state for `state:modified` and `--defer`, by pass
 ### Usage
 
 ```shell
-dbt run --select [...] --defer --state path/to/artifacts
-dbt test --select [...] --defer --state path/to/artifacts
+<Constant name="dbt" /> run --select [...] --defer --state path/to/artifacts
+<Constant name="dbt" /> test --select [...] --defer --state path/to/artifacts
 ```
 
 By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
@@ -102,7 +102,7 @@ Unless I had previously run `model_a` into this development environment, `dev_al
 <TabItem value="yes_defer">
 
 ```shell
-dbt run --select "model_b" --defer --state prod-run-artifacts
+<Constant name="dbt" /> run --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/run/my_project/model_b.sql'>
@@ -187,7 +187,7 @@ The `relationships` test requires both `model_a` and `model_b`. Because I did no
 <TabItem value="yes_defer">
 
 ```shell
-dbt test --select "model_b" --defer --state prod-run-artifacts
+<Constant name="dbt" /> test --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>
@@ -213,6 +213,6 @@ dbt will check to see if `dev_alice.model_a` exists. If it doesn't exist, dbt wi
 
 ## Related docs
 
-- [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer)
+- [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer)
 - [on_configuration_change](/reference/resource-configs/on_configuration_change)
 

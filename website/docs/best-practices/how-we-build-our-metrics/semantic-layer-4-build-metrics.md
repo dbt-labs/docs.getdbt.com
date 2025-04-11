@@ -39,8 +39,8 @@ metrics:
 You can use the dbt Cloud CLI for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
 
 ```bash
-dbt sl query revenue --group-by metric_time__month
-dbt sl list dimensions --metrics revenue # list all dimensions available for the revenue metric
+<Constant name="dbt" /> sl query revenue --group-by metric_time__month
+<Constant name="dbt" /> sl list dimensions --metrics revenue # list all dimensions available for the revenue metric
 ```
 
 - It's best practice any time we're updating our Semantic Layer code to run `dbt parse` to update our development semantic manifest.

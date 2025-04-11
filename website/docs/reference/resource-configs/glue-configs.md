@@ -19,7 +19,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 ## Incremental models
 
-dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and materializations.
+<Constant name="dbt" /> seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and materializations.
 
 For that reason, the dbt-glue plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
@@ -186,7 +186,7 @@ Specifying `insert_overwrite` as the incremental strategy is optional, since it'
 You can add hudi libraries as extra jars in the classpath using extra_jars options in your profiles.yml.
 Here is an example:
 ```yml
-extra_jars: "s3://dbt-glue-hudi/Dependencies/hudi-spark.jar,s3://dbt-glue-hudi/Dependencies/spark-avro_2.11-2.4.4.jar"
+extra_jars: "s3://<Constant name="dbt" />-glue-hudi/Dependencies/hudi-spark.jar,s3://<Constant name="dbt" />-glue-hudi/Dependencies/spark-avro_2.11-2.4.4.jar"
 ```
 
 dbt will run an [atomic `merge` statement](https://hudi.apache.org/docs/writing_data#spark-datasource-writer) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
@@ -234,8 +234,8 @@ group by 1
 
 ## Persisting model descriptions
 
-Relation-level docs persistence is inherited from dbt-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#persisting-model-descriptions).
+Relation-level docs persistence is inherited from <Constant name="dbt" />-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#persisting-model-descriptions).
 
 ## Always `schema`, never `database`
 
-This section is also inherited from dbt-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#always-schema-never-database).
+This section is also inherited from <Constant name="dbt" />-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#always-schema-never-database).

@@ -62,7 +62,7 @@ default:
 To test the connection to RisingWave, run:
 
 ```bash
-dbt debug
+<Constant name="dbt" /> debug
 ```
 
 ## Materializations
@@ -83,5 +83,5 @@ The dbt models for managing data transformations in RisingWave are similar to ty
 
 ## Resources
 
-- [RisingWave's guide about using dbt for data transformations](https://docs.risingwave.com/integrations/other/dbt)
-- [A demo project using dbt to manage Nexmark benchmark queries in RisingWave](https://github.com/risingwavelabs/dbt_rw_nexmark)
+- [RisingWave's guide about using <Constant name="dbt" /> for data transformations](https://docs.risingwave.com/integrations/other/dbt)
+- [A demo project using <Constant name="dbt" /> to manage Nexmark benchmark queries in RisingWave](https://github.com/risingwavelabs/dbt_rw_nexmark)

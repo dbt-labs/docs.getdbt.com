@@ -40,7 +40,7 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 ## SQL connection
 
 Connections are used to provide Upsolver with the proper credentials to bring your data into SQLake as well as to write out your transformed data to various services. More details on ["Upsolver SQL connections"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-connections)
-As a dbt model connection is a model with materialized='connection'
+As a <Constant name="dbt" /> model connection is a model with materialized='connection'
 
 ```sql
 {{ config(
@@ -57,7 +57,7 @@ Running this model will compile CREATE CONNECTION(or ALTER CONNECTION if exists)
 
 A COPY FROM job allows you to copy your data from a given source into a table created in a metastore connection. This table then serves as your staging table and can be used with SQLake transformation jobs to write to various target locations. More details on ["Upsolver SQL copy-from"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-jobs/create-job/copy-from)
 
-As a dbt model copy job is model with materialized='incremental'
+As a <Constant name="dbt" /> model copy job is model with materialized='incremental'
 
 ```sql
 {{ config(  materialized='incremental',
@@ -78,7 +78,7 @@ Running this model will  compile CREATE TABLE SQL for target type Data lake (or 
 
 An INSERT job defines a query that pulls in a set of data based on the given SELECT statement and inserts it into the designated target. This query is then run periodically based on the RUN_INTERVAL defined within the job. More details on ["Upsolver SQL insert"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-jobs/create-job/sql-transformation-jobs/insert).
 
-As a dbt model insert job is model with materialized='incremental' and incremental_strategy='insert'
+As a <Constant name="dbt" /> model insert job is model with materialized='incremental' and incremental_strategy='insert'
 
 ```sql
 {{ config(  materialized='incremental',
@@ -104,7 +104,7 @@ Running this model will compile CREATE TABLE SQL for target type Data lake(or AL
 
 A MERGE job defines a query that pulls in a set of data based on the given SELECT statement and inserts into, replaces, or deletes the data from the designated target based on the job definition. This query is then run periodically based on the RUN_INTERVAL defined within the job. More details on ["Upsolver SQL merge"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-jobs/create-job/sql-transformation-jobs/merge).
 
-As a dbt model merge job is model with materialized='incremental' and incremental_strategy='merge'
+As a <Constant name="dbt" /> model merge job is model with materialized='incremental' and incremental_strategy='merge'
 
 ```sql
 {{ config(  materialized='incremental',
@@ -131,7 +131,7 @@ Running this model will compile CREATE TABLE SQL for target type Data lake(or AL
 When transforming your data, you may find that you need data from multiple source tables in order to achieve your desired result.
 In such a case, you can create a materialized view from one SQLake table in order to join it with your other table (which in this case is considered the main table). More details on ["Upsolver SQL materialized views"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-jobs/create-job/sql-transformation-jobs/sql-materialized-views).
 
-As a dbt model materialized views  is model with materialized='materializedview'.
+As a <Constant name="dbt" /> model materialized views  is model with materialized='materializedview'.
 
 ```sql
 {{ config(  materialized='materializedview',
@@ -156,7 +156,7 @@ WITH EXPECTATION <expectation_name> EXPECT <sql_predicate>
 ON VIOLATION WARN
 ```
 
-Expectations can be implemented with dbt constraints
+Expectations can be implemented with <Constant name="dbt" /> constraints
 Supported constraints: check and not_null
 
 ```yaml
@@ -190,7 +190,7 @@ models:
 
 ## Projects examples
 
-> projects examples link: [github.com/dbt-upsolver/examples/](https://github.com/Upsolver/dbt-upsolver/tree/main/examples)
+> projects examples link: [github.com/<Constant name="dbt" />-upsolver/examples/](https://github.com/Upsolver/dbt-upsolver/tree/main/examples)
 
 ## Connection options
 

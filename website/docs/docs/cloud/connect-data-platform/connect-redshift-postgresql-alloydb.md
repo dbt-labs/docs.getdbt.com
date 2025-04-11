@@ -13,13 +13,13 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
-**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs. 
+**Note**: When you set up a Redshift or Postgres connection in <Constant name="cloud" />, SSL-related parameters aren't available as inputs. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
 ### Authentication Parameters
 
-For authentication, dbt Cloud users can use either a **Database username and password**, or they can now use **IAM User authentication** to Redshift via [extended attributes](/docs/dbt-cloud-environments#extended-attributes).
+For authentication, <Constant name="cloud" /> users can use either a **Database username and password**, or they can now use **IAM User authentication** to Redshift via [extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
 <Tabs
   defaultValue="database"
@@ -91,7 +91,7 @@ Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be as
 
 To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the [bastion server](#about-the-bastion-server-in-aws).
 
-Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
+Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize <Constant name="cloud" /> to connect to your database via the bastion server.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="70%" title="A generated public key for a Redshift connection"/>
 
@@ -115,9 +115,9 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 ### Configuring the Bastion Server in AWS
 
-To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
+To configure the SSH tunnel in <Constant name="cloud" />, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that <Constant name="cloud" /> will connect to. Review the following steps:
 
-- Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
+- Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="cloud" /> IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
 - Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud`:
     
 ```shell
@@ -130,14 +130,14 @@ touch ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```  
 
-- Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
+- Copy and paste the <Constant name="cloud" /> generated public key, into the authorized_keys file.
 
-The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
+The Bastion server should now be ready for <Constant name="cloud" /> to use as a tunnel into the Redshift environment.
 
 
 ## Configuration
 
-To optimize performance with data platform-specific configurations in dbt Cloud, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
+To optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
 
 To grant users or roles database permissions (access rights and privileges), refer to the [Redshift permissions](/reference/database-permissions/redshift-permissions) page or [Postgres permissions](/reference/database-permissions/postgres-permissions) page.
 

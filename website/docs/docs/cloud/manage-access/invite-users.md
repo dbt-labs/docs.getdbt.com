@@ -5,7 +5,7 @@ id: "invite-users"
 sidebar: "Invite users"
 ---
 
-dbt Cloud makes it easy to invite new users to your environment out of the box. This feature is available to all dbt Cloud customers on Teams or Enterprise plans (Developer plans are limited to a single user).
+<Constant name="cloud" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="cloud" /> customers on Teams or Enterprise plans (Developer plans are limited to a single user).
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ You must have proper permissions to invite new users:
 
 ## Invite new users
 
-1. In your dbt Cloud account, select your account name in the bottom left corner. Then select **Account settings**.
+1. In your <Constant name="cloud" /> account, select your account name in the bottom left corner. Then select **Account settings**.
 2. Under **Settings**, select **Users**.
 3. Click on **Invite users**.
 
@@ -60,7 +60,7 @@ If SSO is configured for the environment, the user clicks the link, is brought t
 </Tabs>
 
 
-Once the user completes this process, their email and user information will populate in the **Users** screen in dbt Cloud.
+Once the user completes this process, their email and user information will populate in the **Users** screen in <Constant name="cloud" />.
 
 ## FAQ
 

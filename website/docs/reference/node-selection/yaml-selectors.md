@@ -6,7 +6,7 @@ Write resource selectors in YAML, save them with a human-friendly name, and refe
 By recording selectors in a top-level `selectors.yml` file:
 
 * **Legibility:** complex selection criteria are composed of dictionaries and arrays
-* **Version control:** selector definitions are stored in the same git repository as the dbt project
+* **Version control:** selector definitions are stored in the same git repository as the <Constant name="dbt" /> project
 * **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YAML anchors)
 
 Selectors live in a top-level file named `selectors.yml`. Each must have a `name` and a `definition`, and can optionally define a `description` and [`default` flag](#default).
@@ -143,7 +143,7 @@ Here are two ways to represent:
 
 
   ```bash
-  $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+  $ <Constant name="dbt" /> run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
 <Tabs
@@ -213,7 +213,7 @@ selectors:
 
 Then in our job definition:
 ```bash
-dbt run --selector nightly_diet_snowplow
+<Constant name="dbt" /> run --selector nightly_diet_snowplow
 ```
 
 ## Default
@@ -237,16 +237,16 @@ selectors:
 If I run an "unqualified" command, dbt will use the selection criteria defined in `root_project_only`—that is, dbt will only build / freshness check / generate compiled SQL for resources defined in my root project.
 
 ```
-dbt build
-dbt source freshness
-dbt docs generate
+<Constant name="dbt" /> build
+<Constant name="dbt" /> source freshness
+<Constant name="dbt" /> docs generate
 ```
 
 If I run a command that defines its own selection criteria (via `--select`, `--exclude`, or `--selector`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.
 
 ```bash
-dbt run --select  "model_a"
-dbt run --exclude model_a
+<Constant name="dbt" /> run --select  "model_a"
+<Constant name="dbt" /> run --exclude model_a
 ```
 
 Only one selector may set `default: true` for a given invocation; otherwise, dbt will return an error. You may use a Jinja expression to adjust the value of `default` depending on the environment, however:

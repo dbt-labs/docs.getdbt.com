@@ -22,11 +22,11 @@ communityAward: false
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-My colleague and I discovered dbt in mid-2020 while hunting down documentation for Jinja2 because we had just spent four months writing our own Jinja2-powered SQL templating tool. We immediately backtracked that project, migrated everything to dbt, and never looked back.
+My colleague and I discovered <Constant name="dbt" /> in mid-2020 while hunting down documentation for Jinja2 because we had just spent four months writing our own Jinja2-powered SQL templating tool. We immediately backtracked that project, migrated everything to <Constant name="dbt" />, and never looked back.
 
-I joined the dbt Slack community in shortly after we started our migration (fun fact, my first access log into the community Slack was on October 12, 2020). The tool, and the wonderful, supportive community around it, changed the way I work with data every single day and has helped me launch a career more successful and fulfilling than I could have imagined. 
+I joined the <Constant name="dbt" /> Slack community in shortly after we started our migration (fun fact, my first access log into the community Slack was on October 12, 2020). The tool, and the wonderful, supportive community around it, changed the way I work with data every single day and has helped me launch a career more successful and fulfilling than I could have imagined. 
 
-I have spoken at Coalesce and a local Meetup, made countless online and IRL friends that are a blast to run into each year at the various conferences and events, and paved a path for my career long-term that I did not know could have existed before I found dbt and became an Analytics Engineer.
+I have spoken at Coalesce and a local Meetup, made countless online and IRL friends that are a blast to run into each year at the various conferences and events, and paved a path for my career long-term that I did not know could have existed before I found <Constant name="dbt" /> and became an Analytics Engineer.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -36,7 +36,7 @@ Sometimes it feels hard to exist in this space as "just" a practitioner living i
 
 They say that there are builders and there are optimizers. I am firmly in the optimizer camp. Everything I do, I do to make my life easier, the lives of my collaborators or stakeholders easier, or to help others in the community do the same for themselves. 
 
-At least half of the expertise I have working with dbt or as an Analytics Engineer I learned from community members' blog posts, substacks, tweets, Coalesce talks, or even casual conversations at Meetups. The other half I earned out of curiosity about whether there was a better or more efficient way to accomplish the task at hand than the way I first learned to do it or first tried to complete it (and there usually is!). 
+At least half of the expertise I have working with <Constant name="dbt" /> or as an Analytics Engineer I learned from community members' blog posts, substacks, tweets, Coalesce talks, or even casual conversations at Meetups. The other half I earned out of curiosity about whether there was a better or more efficient way to accomplish the task at hand than the way I first learned to do it or first tried to complete it (and there usually is!). 
 
 It is my goal to help spread this sense of curiosity and wonder around the community, as well as to share some of my more substantive learnings and opinions in the form of articles or conference talks in the future! I still feel like a caterpillar in my cocoon, trying to figure out what shape I'll take before I make my imprint on the world, but I will emerge soon!
 

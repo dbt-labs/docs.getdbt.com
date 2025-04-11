@@ -109,15 +109,15 @@ snapshots:
 </Tabs>
 
 ## Description
-A column name or expression that uniquely identifies each record in the inputs of a snapshot or incremental model. dbt uses this key to match incoming records to existing records in the target table (either a snapshot or an incremental model) so that changes can be captured or updated correctly:
-* In an incremental model, dbt replaces the old row (like a merge key or upsert).
+A column name or expression that uniquely identifies each record in the inputs of a snapshot or incremental model. <Constant name="dbt" /> uses this key to match incoming records to existing records in the target table (either a snapshot or an incremental model) so that changes can be captured or updated correctly:
+* In an incremental model, <Constant name="dbt" /> replaces the old row (like a merge key or upsert).
 * In a snapshot, dbt keeps history, storing multiple rows for that same `unique_key` as it evolves over time.
 
 In dbt Cloud "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 
 :::caution 
 
-Providing a non-unique key will result in unexpected snapshot results. dbt **will not** test the uniqueness of this key, consider [testing](/blog/primary-key-testing#how-to-test-primary-keys-with-dbt) the source data to ensure that this key is indeed unique.
+Providing a non-unique key will result in unexpected snapshot results. <Constant name="dbt" /> **will not** test the uniqueness of this key, consider [testing](/blog/primary-key-testing#how-to-test-primary-keys-with-dbt) the source data to ensure that this key is indeed unique.
 
 :::
 

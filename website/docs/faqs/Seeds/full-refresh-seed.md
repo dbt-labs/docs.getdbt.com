@@ -42,8 +42,8 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 <TabItem value="redshift">
 
 ```shell
-$ dbt seed
-Running with dbt=1.6.0-rc2
+$ <Constant name="dbt" /> seed
+Running with <Constant name="dbt" />=1.6.0-rc2
 Found 0 models, 0 tests, 0 snapshots, 0 analyses, 149 macros, 0 operations, 1 seed file, 0 sources
 
 12:14:46 | Concurrency: 1 threads (target='dev_redshift')
@@ -68,7 +68,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 In this case, you should rerun the command with a `--full-refresh` flag, like so:
 
 ```shell
-dbt seed --full-refresh
+<Constant name="dbt" /> seed --full-refresh
 ```
 
 **Why is this the case?**

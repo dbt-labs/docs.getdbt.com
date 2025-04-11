@@ -6,7 +6,7 @@ id: "duckdb-configs"
 
 ## Profile
 
-dbt Cloud users don't have to create their own profiles.yml file. dbt-duckdb [profiles](/docs/core/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
+<Constant name="cloud" /> users don't have to create their own profiles.yml file. <Constant name="dbt" />-duckdb [profiles](/docs/core/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
 
 ```yml
 your_profile_name:
@@ -24,7 +24,7 @@ your_profile_name:
         s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
 ```
 
-This will run your dbt-duckdb pipeline against an in-memory [DuckDB](https://www.duckdb.org) database that will not be persisted after your run completes.
+This will run your <Constant name="dbt" />-duckdb pipeline against an in-memory [DuckDB](https://www.duckdb.org) database that will not be persisted after your run completes.
 
 To have your dbt pipeline persist relations in a DuckDB file, set the path field in your profile to the path of the DuckDB file that you would like to read and write on your local filesystem. (If the path is not specified, the path is automatically set to the special value `:memory:` and the database will run in-memory, without persistence).
 
@@ -36,10 +36,10 @@ To have your dbt pipeline persist relations in a DuckDB file, set the path field
 
 
 As of `dbt-duckdb 1.5.2`, you can connect to a DuckDB instance running on [MotherDuck](https://motherduck.com) by setting your path to use an `md:` connection string, just as you would with the DuckDB CLI or the Python API.
-MotherDuck databases generally work the same way as local DuckDB databases from the perspective of dbt, but there are a few differences to be aware of:
+MotherDuck databases generally work the same way as local DuckDB databases from the perspective of <Constant name="dbt" />, but there are a few differences to be aware of:
 1. Currently, MotherDuck requires a specific version of DuckDB, often the latest, as specified in MotherDuck's documentation.
 1. MotherDuck preloads a set of the most common DuckDB extensions for you, but does not support loading custom extensions or user-defined functions.
-1. A small subset of advanced SQL features are currently unsupported; the only impact of this on the dbt adapter is that the dbt.listagg macro and foreign-key constraints will work against a local DuckDB database, but will not work against a MotherDuck database.
+1. A small subset of advanced SQL features are currently unsupported; the only impact of this on the <Constant name="dbt" /> adapter is that the <Constant name="dbt" />.listagg macro and foreign-key constraints will work against a local DuckDB database, but will not work against a MotherDuck database.
 
 ## Extensions
 You can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field, including options that are supported in any loaded extensions.
@@ -51,7 +51,7 @@ default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: /tmp/<Constant name="dbt" />.duckdb
       filesystems:
         - fs: s3
           anon: false
@@ -73,7 +73,7 @@ default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: /tmp/<Constant name="dbt" />.duckdb
       extensions:
         - httpfs
         - parquet
@@ -94,7 +94,7 @@ default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: /tmp/<Constant name="dbt" />.duckdb
       extensions:
         - httpfs
         - parquet
@@ -113,7 +113,7 @@ default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: /tmp/<Constant name="dbt" />.duckdb
       attach:
         - path: /tmp/other.duckdb
         - path: ./yet/another.duckdb
@@ -124,7 +124,7 @@ default:
           type: sqlite
 ```
 
-The attached databases may be referred to in your dbt sources and models by either:
+The attached databases may be referred to in your <Constant name="dbt" /> sources and models by either:
 
 -  The basename of the database file, minus its suffix (for example `/tmp/other.duckdb` is the other database and `s3://yep/even/this/works.duckdb` is the works database). 
 
@@ -149,7 +149,7 @@ default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: /tmp/<Constant name="dbt" />.duckdb
       plugins:
         - module: gsheet
           config:
@@ -165,7 +165,7 @@ Every plugin must have a module property that indicates where the plugin class t
 
 Each plugin instance has a name for logging and reference purposes that defaults to the name of the module but that may be overridden by the user by setting the alias property in the configuration. Finally, modules may be initialized using an arbitrary set of key-value pairs that are defined in the config dictionary. In this example, the gsheet plugin is initialized with the setting method: oauth and the `sqlalchemy` plugin (aliased as "sql") is initialized with a `connection_url` that is set as an environment variable.
 
-Note, using plugins may require you to add additional dependencies to the Python environment that your dbt-duckdb pipeline runs in:
+Note, using plugins may require you to add additional dependencies to the Python environment that your <Constant name="dbt" />-duckdb pipeline runs in:
 
 - `excel` depends on `pandas`, and `openpyxl` or `xlsxwriter` to perform writes
 - `gsheet` depends on `gspread` and `pandas`
@@ -194,8 +194,8 @@ def batcher(batch_reader: pa.RecordBatchReader):
         # ...then yield back a new batch
         yield pa.RecordBatch.from_pandas(df)
 
-def model(dbt, session):
-    big_model = dbt.ref("big_model")
+def model(<Constant name="dbt" />, session):
+    big_model = <Constant name="dbt" />.ref("big_model")
     batch_reader = big_model.record_batch(100_000)
     batch_iter = batcher(batch_reader)
     return pa.RecordBatchReader.from_batches(batch_reader.schema, batch_iter)
@@ -225,7 +225,7 @@ sources:
 
 Here, the meta options on external_source defines `external_location` as an f-string that allows us to express a pattern that indicates the location of any of the tables defined for that source. 
 
-So a dbt model like:
+So a <Constant name="dbt" /> model like:
 
 ```sql
 SELECT *
@@ -255,7 +255,7 @@ sources:
 
 In this situation, the `external_location` setting on the source2 table will take precedence. 
 
-A dbt model like:
+A <Constant name="dbt" /> model like:
 
 ```sql
 SELECT *
@@ -285,9 +285,9 @@ Note, you will need to override the default `str.format` string formatting strat
 
 The formatter configuration option for the source indicates whether you should use newstyle string formatting (the default), oldstyle string formatting, or template string formatting. 
 
-You can read up on the strategies for different string formatting techniques and find examples, in this [discussion of dbt-duckdb's integration test](https://stackoverflow.com/questions/78821149/formatting-strings-in-dask-duckdb).
+You can read up on the strategies for different string formatting techniques and find examples, in this [discussion of <Constant name="dbt" />-duckdb's integration test](https://stackoverflow.com/questions/78821149/formatting-strings-in-dask-duckdb).
 
-You can also create dbt models that are backed by external files via the external materialization strategy:
+You can also create <Constant name="dbt" /> models that are backed by external files via the external materialization strategy:
 
 ```sql 
 {{

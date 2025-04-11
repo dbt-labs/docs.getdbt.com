@@ -22,23 +22,23 @@ Available flags in the command line interface (CLI) are [`help`](#dbt-invocation
 The `help` command provides you with the help output for the `invocation` command in the CLI, including the available flags.
 
 ```shell
-dbt invocation help
+<Constant name="dbt" /> invocation help
 ```
 
 or
 
 ```shell
-dbt help invocation
+<Constant name="dbt" /> help invocation
 ```
 
 The command returns the following information:
 
 ```bash
-dbt invocation help
+<Constant name="dbt" /> invocation help
 Manage invocations
 
 Usage:
-  dbt invocation [command]
+  <Constant name="dbt" /> invocation [command]
 
 Available Commands:
   list        List active invocations
@@ -52,7 +52,7 @@ Global Flags:
       --no-color               Disables colorization of the output.
   -q, --quiet                  Suppress all non-error logging to stdout.
 
-Use "dbt invocation [command] --help" for more information about a command.
+Use "<Constant name="dbt" /> invocation [command] --help" for more information about a command.
 ```
 
 ### dbt invocation list
@@ -60,13 +60,13 @@ Use "dbt invocation [command] --help" for more information about a command.
 The `list` command provides you with a list of active invocations in your dbt Cloud CLI. When a long-running session is active, you can use this command in a separate terminal window to view the active session to help debug the issue.
 
 ```shell
-dbt invocation list
+<Constant name="dbt" /> invocation list
 ```
 
 The command returns the following information, including the `ID`, `status`, `type`, `arguments`, and `started at` time of the active session:
 
 ```bash
-dbt invocation list
+<Constant name="dbt" /> invocation list
 
 Active Invocations:
   ID                             6dcf4723-e057-48b5-946f-a4d87e1d117a
@@ -86,7 +86,7 @@ To cancel an active session in the terminal, use the `Ctrl + Z` shortcut.
 
 ## Related docs
 
-- [Install dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
-- [Troubleshooting dbt Cloud CLI 'Session occupied' error](/faqs/Troubleshooting/long-sessions-cloud-cli)
+- [Install <Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)
+- [Troubleshooting <Constant name="cloud" /> CLI 'Session occupied' error](/faqs/Troubleshooting/long-sessions-cloud-cli)
 
 

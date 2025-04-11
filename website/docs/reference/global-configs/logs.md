@@ -6,7 +6,7 @@ sidebar: "logs"
 
 ### Log Formatting
 
-dbt outputs logs to two different locations: CLI console and the log file.
+<Constant name="dbt" /> outputs logs to two different locations: CLI console and the log file.
 
 The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
 
@@ -21,7 +21,7 @@ dbt --log-format json run
 The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
 
 ```
-23:30:16  Running with dbt=1.8.0
+23:30:16  Running with <Constant name="dbt" />=1.8.0
 23:30:17  Registered adapter: postgres=1.8.0
 ```
 
@@ -29,14 +29,14 @@ The `debug` format is the default for the log file and is the same as the `text`
 
 ```
 ============================== 16:12:08.555032 | 9089bafa-4010-4f38-9b42-564ec9106e07 ==============================
-16:12:08.555032 [info ] [MainThread]: Running with dbt=1.8.0
+16:12:08.555032 [info ] [MainThread]: Running with <Constant name="dbt" />=1.8.0
 16:12:08.751069 [info ] [MainThread]: Registered adapter: postgres=1.8.0
 ```
 
 The `json` format outputs fully structured logs in the <Term id="json" /> format:
 
 ```json
-{"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with dbt=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
+{"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with <Constant name="dbt" />=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
 {"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
 ```
 
@@ -55,7 +55,7 @@ dbt --log-format-file json run
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-dbt --debug --log-format json run
+<Constant name="dbt" /> --debug --log-format json run
 ```
 
 See [structured logging](/reference/events-logging#structured-logging) for more details.
@@ -69,24 +69,24 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 - Setting the `--log-level` will configure console and file logs. 
 
   ```text
-  dbt --log-level debug run
+  <Constant name="dbt" /> --log-level debug run
   ```
 
 - Setting the `LOG_LEVEL` to `none` will disable information from being sent to either the console or file logs. 
   
   ```text
-  dbt --log-level none
+  <Constant name="dbt" /> --log-level none
   ```
 
 - To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
   ```text
-  dbt --log-level-file error run
+  <Constant name="dbt" /> --log-level-file error run
   ```
 
 - To only disable writing to the logs file but keep console logs, set `LOG_LEVEL_FILE` config to none.
   ```text
-  dbt --log-level-file none
+  <Constant name="dbt" /> --log-level-file none
   ```
 
 ### Debug-level logging
@@ -129,7 +129,7 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-dbt --quiet run
+<Constant name="dbt" /> --quiet run
 ...
 ```
 
@@ -166,6 +166,6 @@ config:
 </File>
 
 ```text
-dbt --use-colors-file run
-dbt --no-use-colors-file run
+<Constant name="dbt" /> --use-colors-file run
+<Constant name="dbt" /> --no-use-colors-file run
 ```

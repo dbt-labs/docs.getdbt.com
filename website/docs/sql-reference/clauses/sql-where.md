@@ -36,8 +36,8 @@ Since the WHERE clause is a SQL fundamental, Google BigQuery, Amazon Redshift, S
 
 ## SQL WHERE clause use cases
 
-WHERE clauses are probably some of the most widely used SQL capabilities, right after SELECT and FROM statements. Below is a non-exhaustive list of where you’ll commonly see WHERE clauses throughout dbt projects and data work:
+WHERE clauses are probably some of the most widely used SQL capabilities, right after SELECT and FROM statements. Below is a non-exhaustive list of where you’ll commonly see WHERE clauses throughout <Constant name="dbt" /> projects and data work:
 - Removing source-deleted rows from staging models to increase accuracy and improve downstream model performance
 - Filtering out employee records from models
-- Performing ad-hoc analysis on specific rows or users, either in a dbt model, BI tool, or ad-hoc query
+- Performing ad-hoc analysis on specific rows or users, either in a <Constant name="dbt" /> model, BI tool, or ad-hoc query
 - Paired with IN, LIKE, NOT IN clauses to create more generalized or a group of specific requirements to filter on

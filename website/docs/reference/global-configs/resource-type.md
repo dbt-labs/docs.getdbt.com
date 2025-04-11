@@ -59,7 +59,7 @@ The available resource types are:
 
 Instead of targeting specific resources, use the `--resource-flag` or `--exclude-resource-type` flags to target all resources of a certain type: `dbt build --resource-type RESOURCE_TYPE` replacing `RESOURCE_TYPE` with the resource type you want to include.
 
-- For example, use the following command to include _all_ snapshots from your dbt build process:
+- For example, use the following command to include _all_ snapshots from your <Constant name="dbt" /> build process:
 
     <File name='Usage'>
 

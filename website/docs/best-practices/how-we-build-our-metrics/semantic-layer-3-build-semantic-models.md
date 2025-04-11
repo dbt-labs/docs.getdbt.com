@@ -351,7 +351,7 @@ As you can see, the content of the semantic model is identical in both approache
    - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
    - Parallel sub-folder approach: Prefixes the file with `sem_` (`sem_orders.yml`)
 
-Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the Semantic Layer.
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the <Constant name="semantic_layer" />.
 
 ## Next steps
 
@@ -359,6 +359,6 @@ Let's review the basics of semantic models:
 
 - 🧱 Consist of **entities, dimensions, and measures**.
 - 🫂 Describe the **semantics and relationships of objects** in the warehouse.
-- 1️⃣ Correspond to a **single logical model** in your dbt project.
+- 1️⃣ Correspond to a **single logical model** in your <Constant name="dbt" /> project.
 
 Next up, let's use our new semantic model to **build a metric**!

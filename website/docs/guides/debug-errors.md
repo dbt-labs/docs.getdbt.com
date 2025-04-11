@@ -16,7 +16,7 @@ recently_updated: true
 ## General process of debugging
 
 Learning how to debug is a skill, and one that will make you great at your role!
-1. Read the error message — when writing the code behind dbt, we try our best to make error messages as useful as we can. The error message dbt produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
+1. Read the error message — when writing the code behind <Constant name="dbt" />, we try our best to make error messages as useful as we can. The error message <Constant name="dbt" /> produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
 2. Inspect the file that was known to cause the issue, and see if there's an immediate fix.
 3. Isolate the problem — for example, by running one model a time, or by undoing the code that broke things.
 4. Get comfortable with compiled files and the logs.
@@ -41,15 +41,15 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the dbt Cloud IDE to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the <Constant name="cloud" /> <Constant name="cloud_ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
 ```
-Running with dbt=1.7.1
+Running with <Constant name="dbt" />=1.7.1
 Encountered an error:
 Runtime Error
-  fatal: Not a dbt project (or any of the parent directories). Missing dbt_project.yml file
+  fatal: Not a <Constant name="dbt" /> project (or any of the parent directories). Missing dbt_project.yml file
 ```
 <details>
 <summary>Debugging</summary>
@@ -63,11 +63,11 @@ Runtime Error
 ### Could not find profile
 
 ```
-Running with dbt=1.7.1
+Running with <Constant name="dbt" />=1.7.1
 
 Encountered an error:
 Runtime Error
-  Could not run dbt
+  Could not run <Constant name="dbt" />
   Could not find profile named 'jaffle_shops'
 ```
 <details>
@@ -102,11 +102,11 @@ jaffle_shop: # this does not match the profile: key
 - Update these so that they match.
 - If you can't find your `profiles.yml` file, run `dbt debug --config-dir` for help:
 ```
-$ dbt debug --config-dir
-Running with dbt=1.7.1
+$ <Constant name="dbt" /> debug --config-dir
+Running with <Constant name="dbt" />=1.7.1
 To view your profiles.yml file, run:
 
-open /Users/alice/.dbt
+open /Users/alice/.<Constant name="dbt" />
 ```
 
   - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
@@ -133,10 +133,10 @@ Runtime Error
 - After updating the credentials, run `dbt debug` to check you can connect
 
 ```
-$ dbt debug
-Running with dbt=1.7.1
-Using profiles.yml file at /Users/alice/.dbt/profiles.yml
-Using dbt_project.yml file at /Users/alice/jaffle-shop-dbt/dbt_project.yml
+$ <Constant name="dbt" /> debug
+Running with <Constant name="dbt" />=1.7.1
+Using profiles.yml file at /Users/alice/.<Constant name="dbt" />/profiles.yml
+Using dbt_project.yml file at /Users/alice/jaffle-shop-<Constant name="dbt" />/dbt_project.yml
 
 Configuration:
   profiles.yml file [OK found and valid]
@@ -159,10 +159,10 @@ Encountered an error while reading the project:
   ERROR: Runtime Error
   at path []: Additional properties are not allowed ('hello' was unexpected)
 
-Error encountered in /Users/alice/jaffle-shop-dbt/dbt_project.yml
+Error encountered in /Users/alice/jaffle-shop-<Constant name="dbt" />/dbt_project.yml
 Encountered an error:
 Runtime Error
-  Could not run dbt
+  Could not run <Constant name="dbt" />
 ```
 
 <details>
@@ -196,8 +196,8 @@ _Note: if you're using the dbt Cloud IDE to work on your dbt project, this error
 
 ### Invalid `ref` function
 ```
-$ dbt run -s customers
-Running with dbt=1.1.0
+$ <Constant name="dbt" /> run -s customers
+Running with <Constant name="dbt" />=1.1.0
 
 Encountered an error:
 Compilation Error in model customers (models/customers.sql)
@@ -216,8 +216,8 @@ Compilation Error in model customers (models/customers.sql)
 ### Invalid Jinja
 
 ```
-$ dbt run
-Running with dbt=1.7.1
+$ <Constant name="dbt" /> run
+Running with <Constant name="dbt" />=1.7.1
 Compilation Error in macro (macros/cents_to_dollars.sql)
   Reached EOF without finding a close tag for macro (searched from line 1)
 ```
@@ -240,11 +240,11 @@ To prevent this:
 </details>
 
 ### Invalid YAML
-dbt wasn't able to turn your YAML into a valid dictionary.
+<Constant name="dbt" /> wasn't able to turn your YAML into a valid dictionary.
 
 ```
-$ dbt run
-Running with dbt=1.7.1
+$ <Constant name="dbt" /> run
+Running with <Constant name="dbt" />=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -287,18 +287,18 @@ To fix this:
 - Find the mistake and fix it
 
 To prevent this:
-- (dbt Core users) Turn on indentation guides in your code editor to help you inspect your files
+- (<Constant name="core" /> users) Turn on indentation guides in your code editor to help you inspect your files
 - Use a YAML validator ([example](http://www.yamllint.com/)) to debug any issues
 
 </details>
 
 
 ### Incorrect YAML spec
-Slightly different error — the YAML structure is right (i.e. the YAML parser can turn this into a python dictionary), _but_ there's a key that dbt doesn't recognize.
+Slightly different error — the YAML structure is right (i.e. the YAML parser can turn this into a python dictionary), _but_ there's a key that <Constant name="dbt" /> doesn't recognize.
 
 ```
-$ dbt run
-Running with dbt=1.7.1
+$ <Constant name="dbt" /> run
+Running with <Constant name="dbt" />=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -317,8 +317,8 @@ Compilation Error
 
 ## Dependency Errors
 ```
-$ dbt run
-Running with dbt=1.7.1-rc
+$ <Constant name="dbt" /> run
+Running with <Constant name="dbt" />=1.7.1-rc
 
 Encountered an error:
 Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers --> model.jaffle_shop.customers
@@ -326,7 +326,7 @@ Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers -
 ```
 
 
-Your dbt DAG is not acyclic, and needs to be fixed!
+Your <Constant name="dbt" /> DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
 - If you need to reference the current model, use the [`{{ this }}` variable](/reference/dbt-jinja-functions/this) instead.
 
@@ -335,7 +335,7 @@ Your dbt DAG is not acyclic, and needs to be fixed!
 The thorniest errors of all! These errors come from your <Term id="data-warehouse" />, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
 
 ```
-$ dbt run
+$ <Constant name="dbt" /> run
 ...
 Completed with 1 error and 0 warnings:
 
@@ -351,17 +351,17 @@ Database Error in model customers (models/customers.sql)
     - **dbt Core:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
     - **dbt Cloud:** Use the `Preview` button from the model file
-    - **dbt Core:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
+    - **<Constant name="core" />:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
 
-In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These include:
+In some cases, these errors might occur as a result of queries that <Constant name="dbt" /> runs "behind-the-scenes". These include:
 - Introspective queries to list objects in your database
 - Queries to `create` schemas
 - `pre-hooks`s, `post-hooks`, `on-run-end` hooks and `on-run-start` hooks
 - For incremental models, and snapshots: merge, update and insert statements
 
-In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
+In these cases, you should check out the logs — this contains _all_ the queries <Constant name="dbt" /> has run.
 - **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
 - **dbt Core**: Open the `logs/dbt.log` file.
 
@@ -373,7 +373,7 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 ## Common pitfalls
 
 ### `Preview` vs. `dbt run`
-_(dbt Cloud IDE users only)_
+_(<Constant name="cloud" /> <Constant name="cloud_ide" /> users only)_
 
 There's two interfaces that look similar:
 - The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
@@ -386,13 +386,13 @@ Using the `Preview` button is useful when developing models and you want to visu
 We’ve all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the dbt Cloud IDE, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
 
 ### Editing compiled files
-_(More likely for dbt Core users)_
+_(More likely for <Constant name="core" /> users)_
 
 If you just opened a SQL file in the `target/` directory to help debug an issue, it's not uncommon to accidentally edit that file! To avoid this, try changing your code editor settings to grey out any files in the `target/` directory — the visual cue will help avoid the issue.
 
 ## FAQs
 
-Here are some useful FAQs to help you debug your dbt project:
+Here are some useful FAQs to help you debug your <Constant name="dbt" /> project:
 
 - <FAQ path="Troubleshooting/generate-har-file" />
 - <FAQ path="Troubleshooting/auth-expired-error" />  

@@ -28,8 +28,8 @@ group by 1
 **There's no need to explicitly define these dependencies.** dbt will understand that the `stg_orders` model needs to be built before the above model (`customer_orders`). When you execute `dbt run`, you will see these being built in order:
 
 ```txt
-$ dbt run
-Running with dbt=1.6.0
+$ <Constant name="dbt" /> run
+Running with <Constant name="dbt" />=1.6.0
 Found 2 models, 28 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 3 sources
 
 11:42:52 | Concurrency: 8 threads (target='dev_snowflake')
@@ -44,4 +44,4 @@ Found 2 models, 28 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 s
 Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 
-To learn more about building a dbt project, we recommend you complete the [quickstart guide](/guides).
+To learn more about building a <Constant name="dbt" /> project, we recommend you complete the [quickstart guide](/guides).

@@ -54,7 +54,7 @@ The available options depend on the resource (node) type:
 
 ### Combining `state` and `result` selectors
 
-The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
+The state and result selectors can also be combined in a single invocation of <Constant name="dbt" /> to capture errors from a previous run OR any new or modified models.
 
 ```bash
 dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artifact-path>
@@ -72,11 +72,11 @@ After issuing the `dbt source freshness` command, you can reference the source f
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-dbt source freshness # must be run again to compare current to previous state
-dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
+<Constant name="dbt" /> source freshness # must be run again to compare current to previous state
+<Constant name="dbt" /> build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
 
 ## Related docs
-- [About state in dbt](/reference/node-selection/state-selection)
+- [About state in <Constant name="dbt" />](/reference/node-selection/state-selection)
 - [State comparison caveats](/reference/node-selection/state-comparison-caveats)

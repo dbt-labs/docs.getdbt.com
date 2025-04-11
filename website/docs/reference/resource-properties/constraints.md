@@ -83,7 +83,7 @@ When using `foreign_key`, you need to specify the referenced table's schema manu
 
 `expression: "{{ target.schema }}.customers(customer_id)"` 
 
-Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About dbt Core versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+Note that later versions of <Constant name="dbt" /> will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About <Constant name="core" /> versions](/docs/dbt-versions/core) or [Upgrade <Constant name="dbt" /> version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 <File name='models/schema.yml'>
 
@@ -584,7 +584,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ## Custom constraints 
 
-In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+In <Constant name="cloud" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
 Custom constraints allow you to add configuration to specific columns. For example:
 

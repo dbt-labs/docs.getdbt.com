@@ -43,7 +43,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 ## Authentication Parameters
 
 
-The authentication methods that dbt Core supports on Redshift are: 
+The authentication methods that <Constant name="core" /> supports on Redshift are: 
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile

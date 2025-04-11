@@ -3,7 +3,7 @@ title: "Platform-specific data types"
 sidebar_label: "Data types"
 ---
 
-Unit tests are designed to test for the expected _values_, not for the data types themselves. dbt takes the value you provide and attempts to cast it to the data type as inferred from the input and output models. 
+Unit tests are designed to test for the expected _values_, not for the data types themselves. <Constant name="dbt" /> takes the value you provide and attempts to cast it to the data type as inferred from the input and output models. 
 
 How you specify input and expected values in your unit test YAML definitions are largely consistent across data warehouses, with some variation for more complex data types. The following are platform-specific data types:
 

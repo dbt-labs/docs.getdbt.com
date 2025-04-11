@@ -16,12 +16,12 @@ meta:
   config_page: /reference/resource-configs/ibm-netezza-config
 ---
 
-The dbt-ibm-netezza adapter allows you to use dbt to transform and manage data on IBM Netezza, leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
+The <Constant name="dbt" />-ibm-netezza adapter allows you to use <Constant name="dbt" /> to transform and manage data on IBM Netezza, leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
 <ul>
   <li>An active IBM Netezza engine with connection details (host, port, database, schema, etc) in SaaS/PaaS.</li>
   <li>Authentication credentials: Username and password.</li>
 </ul>
-Refer to [Configuring dbt-ibm-netezza](https://github.com/IBM/nz-dbt?tab=readme-ov-file#testing-sample-dbt-project) for guidance on obtaining and organizing these details.
+Refer to [Configuring <Constant name="dbt" />-ibm-netezza](https://github.com/IBM/nz-dbt?tab=readme-ov-file#testing-sample-dbt-project) for guidance on obtaining and organizing these details.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

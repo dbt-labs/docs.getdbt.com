@@ -6,13 +6,13 @@ id: access-gdrive-credential
 
 ---
 
-If you're seeing the below error when you try to query a dataset from a Google Drive document in the IDE,  the IDE due to the below error message, we'll do our best to get you unstuck with the below steps! 
+If you're seeing the below error when you try to query a dataset from a Google Drive document in the <Constant name="cloud_ide" />,  the <Constant name="cloud_ide" /> due to the below error message, we'll do our best to get you unstuck with the below steps! 
 
 ```
 Access denied: BigQuery BigQuery: Permission denied while getting Drive credentials
 ```
 
-Usually, this error indicates that you haven't granted the BigQuery service account access to the specific Google Drive document. If you're seeing this error, try giving the service account (Client email field seen [here](/docs/cloud/connect-data-platform/connect-bigquery)) you are using for your BigQuery connection in dbt Cloud, permission to your Google Drive or Google Sheet. You'll want to do this directly in your Google Document, click the **Share** button, and enter the client email. 
+Usually, this error indicates that you haven't granted the BigQuery service account access to the specific Google Drive document. If you're seeing this error, try giving the service account (Client email field seen [here](/docs/cloud/connect-data-platform/connect-bigquery)) you are using for your BigQuery connection in <Constant name="cloud" />, permission to your Google Drive or Google Sheet. You'll want to do this directly in your Google Document, click the **Share** button, and enter the client email. 
 
 If you are experiencing this error when using OAuth, and you have verified your access to the Google Sheet, you may need to grant permissions for gcloud to access Google Drive:
 

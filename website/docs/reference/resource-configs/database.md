@@ -50,7 +50,7 @@ This would result in the generated relation being located in the `staging` datab
 
 <VersionBlock lastVersion="1.8">
 
-Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+Available for <Constant name="cloud" /> release tracks or <Constant name="core" /> v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
 
 </VersionBlock>
 
@@ -118,7 +118,7 @@ Optionally specify a custom database for a [model](/docs/build/sql-models), [see
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
-The standard behavior of dbt is:
+The standard behavior of <Constant name="dbt" /> is:
 * If a custom database is _not_ specified, the database of the relation is the target database (`{{ target.database }}`).
 * If a custom database is specified, the database of the relation is the `{{ database }}` value.
 
