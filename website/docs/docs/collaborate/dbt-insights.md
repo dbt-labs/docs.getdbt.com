@@ -42,7 +42,6 @@ Some example use cases include:
 - Have a dbt Cloud [developer license](/docs/cloud/manage-access/seats-and-users) with access to dbt Insights.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide)
 - Your production and development [environments](/docs/dbt-cloud-environments) are on dbt Cloud’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
-- Configured the [Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) for your dbt project.
 - Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Note SSH tunneling for Postgres or Redshift connections is not supported. 
 	- Single sign-on (SSO) for development user accounts supported, however SSO for production credentials not yet supported.
