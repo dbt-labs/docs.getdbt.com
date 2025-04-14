@@ -31,7 +31,7 @@ To create a support ticket in <Constant name="cloud" />:
 ### Ask dbt Support Assistant
 <Constant name="dbt" /> Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to <Constant name="cloud" /> users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
 
-The <Constant name="dbt" /> Support Assistant AI widget is separate from [<Constant name="dbt" /> <Constant name="copilot" />](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The <Constant name="dbt" /> Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="cloud" /> won't affect the <Constant name="dbt" /> Support Assistant's availability.
+The <Constant name="dbt" /> Support Assistant AI widget is separate from [<Constant name="copilot" />](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The <Constant name="dbt" /> Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="cloud" /> won't affect the <Constant name="dbt" /> Support Assistant's availability.
 
 :::info
 We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@getdbt.com) to report incorrect information provided by the Support Assistant.

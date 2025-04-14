@@ -12,11 +12,11 @@ recently_updated: true
 
 ## Introduction
 
-This guide explains how to configure a time spine using the [<Constant name="dbt" /> <Constant name="semantic_layer" /> Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as a reference. 
+This guide explains how to configure a time spine using the [<Constant name="semantic_layer" /> Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as a reference. 
 
 ### What is a time spine model?
 
-A [time spine](/docs/build/metricflow-time-spine) is essential for time-based joins and aggregations in MetricFlow, the engine that powers the <Constant name="dbt" /> <Constant name="semantic_layer" />.
+A [time spine](/docs/build/metricflow-time-spine) is essential for time-based joins and aggregations in MetricFlow, the engine that powers the <Constant name="semantic_layer" />.
 
 To use MetricFlow with time-based metrics and dimensions, you must provide a time spine. This serves as the foundation for time-based joins and aggregations. You can either:
 
@@ -81,7 +81,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
     <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
     ```
 
-4. If developing in the <Constant name="cloud" /> <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
+4. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
    <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in dbt Cloud IDE" />
 
 ## Add YAML configuration for the time spine
@@ -149,7 +149,7 @@ For the time spine you created, let's run it and preview the output if you haven
    <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
    ```
 
-2. If developing in the <Constant name="cloud" /> <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
+2. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
     <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in dbt Cloud IDE" />
 
 3. Check that the model:
@@ -164,7 +164,7 @@ For the time spine you created, let's run it and preview the output if you haven
     <Constant name="dbt" /> sl query --metrics revenue --group-by metric_time
     ```
 
-    This will output results similar to the following in the <Constant name="cloud" /> <Constant name="cloud_ide" />:
+    This will output results similar to the following in the <Constant name="cloud_ide" />:
     <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.jpg" title="Validate the metrics and time spine output in dbt Cloud IDE" />
 
 5. Double check that the results are correct and returning the expected data.
@@ -246,7 +246,7 @@ To support multiple granularities (like hourly, yearly, monthly), create additio
    <Constant name="dbt" /> sl query --metrics orders --group-by metric_time__year
    ```
 
-If you're developing in the <Constant name="cloud" /> <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
+If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
    <Lightbox src="/img/mf-guide-query.jpg" title="Validate the metrics and time spine output in dbt Cloud IDE" />
 
 :::tip Extra credit!
@@ -332,7 +332,7 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
    <Constant name="dbt" /> show --select fiscal_calendar # Use this command to preview the model if developing locally
    ```
 
-   If you're developing in the <Constant name="cloud" /> <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
+   If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
 
 4. Validate the output by querying the generated model along with your metrics:
    ```bash
@@ -346,7 +346,7 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
 
 <ConfettiTrigger>
 
-Congratulations 🎉! You've set up a time spine and are ready to bring the benefits of MetricFlow and the <Constant name="dbt" /> <Constant name="semantic_layer" /> to your organization. You've learned:
+Congratulations 🎉! You've set up a time spine and are ready to bring the benefits of MetricFlow and the <Constant name="semantic_layer" /> to your organization. You've learned:
 
 - How to create a time spine or use an existing model.
 - How to configure a time spine in YAML.
@@ -355,9 +355,9 @@ Congratulations 🎉! You've set up a time spine and are ready to bring the bene
 Here are some additional resources to help you continue your journey:
 
 - [MetricFlow time spine](/docs/build/metricflow-time-spine)
-- [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl)
+- [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl)
 - [Build metrics](/docs/build/metrics-overview)
-- [Quickstart with <Constant name="dbt" /> <Constant name="semantic_layer" />](/guides/sl-snowflake-qs?step=1)
+- [Quickstart with <Constant name="semantic_layer" />](/guides/sl-snowflake-qs?step=1)
 
 </ConfettiTrigger>
 

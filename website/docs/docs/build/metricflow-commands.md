@@ -8,25 +8,25 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your <Constant name="dbt" /> project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
-MetricFlow allows you to define and query metrics in your <Constant name="dbt" /> project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your <Constant name="dbt" /> project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 ## MetricFlow
 
-MetricFlow is a <Constant name="dbt" /> package that allows you to define and query metrics in your <Constant name="dbt" /> project. You can use MetricFlow to query metrics in your <Constant name="dbt" /> project in the <Constant name="cloud" /> CLI, <Constant name="cloud" /> <Constant name="cloud_ide" />, or <Constant name="core" />.
+MetricFlow is a <Constant name="dbt" /> package that allows you to define and query metrics in your <Constant name="dbt" /> project. You can use MetricFlow to query metrics in your <Constant name="dbt" /> project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />.
 
 Using MetricFlow with <Constant name="cloud" /> means you won't need to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
 
-dbt Cloud jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+<Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 <Tabs>
 
 <TabItem value="cloud" label="MetricFlow with dbt Cloud">
 
-In dbt Cloud, run MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
+In dbt Cloud, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation). 
 
-For dbt Cloud CLI users, MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately. You don't need to manage versioning because your dbt Cloud account will automatically manage the versioning for you.
+For <Constant name="cloud_cli" /> users, MetricFlow commands are embedded in the <Constant name="cloud_cli" /> , which means you can immediately run them once you install the <Constant name="cloud_cli" />  and don't need to install MetricFlow separately. You don't need to manage versioning because your <Constant name="cloud" /> account will automatically manage the versioning for you.
 
 </TabItem>
 
@@ -64,13 +64,13 @@ MetricFlow provides the following commands to retrieve metadata and query metric
 <Tabs>
 <TabItem value="cloudcommands" label="Commands for dbt Cloud">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. 
+You can use the `dbt sl` prefix before the command name to execute them in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. For example, to list all metrics, run `dbt sl list metrics`. 
 
 dbt Cloud CLI users can run `dbt sl --help` in the terminal for a complete list of the MetricFlow commands and flags.
 
-The following table lists the commands compatible with the dbt Cloud IDE and dbt Cloud CLI:
+The following table lists the commands compatible with the <Constant name="cloud_ide" /> and <Constant name="cloud_cli" />:
 
-| <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
+| <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | <Constant name="cloud_ide" /> | <Constant name="cloud_cli" /> |
 |---------|-------------|---------------|---------------|
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
 | [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
@@ -89,7 +89,7 @@ The following table lists the commands compatible with the dbt Cloud IDE and dbt
 -->
 
 :::tip Run <Constant name="dbt" /> parse to reflect metric changes
-When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
 <Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">

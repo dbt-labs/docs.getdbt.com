@@ -28,7 +28,7 @@ You assign licenses to every user onboarded into <Constant name="cloud" />. You 
 There are three license types:
 
 - **Developer** &mdash; The default license. Developer licenses don't restrict access to any features, so users with this license should be assigned to either the Owner or Member group. You're allotted up to 8 developer licenses per account.
-- **Read-Only** &mdash; Read-only access to your project, including environments <Constant name="dbt" /> <Constant name="explorer" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
+- **Read-Only** &mdash; Read-only access to your project, including environments <Constant name="explorer" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
 - **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments. You're allocated 1 seat per account.
 
 See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
@@ -73,12 +73,10 @@ The following tables outline the access that users have if they are assigned a D
 | Develop (<Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI)| W |  W    |    -      |      -      |
 | Environments            |   W   |    W    |    R      |      -      |
 | Jobs                    |   W   |    W    |    R      |      -      |
-| <Constant name="dbt" /> <Constant name="explorer" />            |   W   |    W    |    R      |      -      |
+| <Constant name="explorer" />            |   W   |    W    |    R      |      -      |
 | Permissions             |   W   |    R    |    -      |      -      |
 | Profile                 |   W   |    W    |    R      |      -      |
 | Projects                |   W   |    W    |    R      |      -      |
 | Repositories            |   W   |    W    |    R      |      -      |
 | Runs                    |   W   |    W    |    R      |      -      |
 | <Constant name="semantic_layer" /> Config   |   W   |    W    |    R      |      -      |
-
-

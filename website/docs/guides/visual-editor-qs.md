@@ -18,7 +18,7 @@ The <Constant name="visual_editor" /> is currently in a limited beta. [Contact u
 
 :::
 
-The <Constant name="cloud" /> <Constant name="visual_editor" /> offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
+The <Constant name="visual_editor" /> offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
 
 - Accessing the <Constant name="visual_editor" /> and creating a new model
 - Navigating the interface
@@ -67,7 +67,7 @@ Click on an icon to expand its section or execute an action depending on its pur
 
 1. The main menu (click on the **<Constant name="dbt" /> logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
 2. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
-3. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="dbt" /> <Constant name="visual_editor" /> models.
+3. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
 4. The **SQL code** area displays the SQL that compiles your model.
 5. The **Runs and previews** that displays run data and previews data for individual operators.
 6. The **Commit history** display.
@@ -259,7 +259,7 @@ Have <Constant name="dbt" /> [<Constant name="copilot" />](/docs/cloud/dbt-copil
 
 ### Git commit
 
-The models built in the Visual Editor are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
+The models built in the <Constant name="visual_editor" /> are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-model-folder.png" width="90%" title="Example of the Visual Editor's model path in GitHub." />
 
@@ -279,7 +279,7 @@ The following example uses GitHub as the provider:
 6. Complete the **Add a title** and **Add a description** fields. If your description is split between both, copy all the contents to the description field and give it a shorter title.
 7. Click **Create pull request**.
 
-You've just submitted your first model from the Visual Editor for review. Once approved and merged, the model will be included in your organization’s project and run whenever `dbt run` is executed in any environment your model is in. You're now on your way to becoming an expert in data transformation!
+You've just submitted your first model from the <Constant name="visual_editor" /> for review. Once approved and merged, the model will be included in your organization’s project and run whenever `dbt run` is executed in any environment your model is in. You're now on your way to becoming an expert in data transformation!
 
 :::tip
 

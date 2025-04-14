@@ -44,7 +44,7 @@ When a dynamic table is initially created, the model is counted (if the creation
 
 ### What counts as a Queried Metric?
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" />, powered by MetricFlow, measures usage in distinct Queried Metrics.
+The <Constant name="semantic_layer" />, powered by MetricFlow, measures usage in distinct Queried Metrics.
 
 - Every successful request you make to render or run SQL to the <Constant name="semantic_layer" /> API counts as at least one queried metric, even if no data is returned. 
 - If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a queried metric.
@@ -192,7 +192,7 @@ If you have views that contain macros with case statements based on upstream tab
 
 Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](https://docs.getdbt.com/reference/node-selection/yaml-selectors) for your job command. 
 
-1. Open your <Constant name="dbt" /> project in the <Constant name="cloud" /> <Constant name="cloud_ide" />.
+1. Open your <Constant name="dbt" /> project in the <Constant name="cloud_ide" />.
 2. Add a file called `selectors.yml` in your top-level project folder.
 3. In the file, add the following code:
 
@@ -269,7 +269,7 @@ _Yes. Your <Constant name="cloud" /> account will be upgraded without impacting 
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Team plan._
 
 * What are the <Constant name="semantic_layer" /> trial terms?
-_Team and Enterprise customers can sign up for a free trial of the <Constant name="dbt" /> <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. <Constant name="dbt" /> Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. <Constant name="dbt" /> Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
+_Team and Enterprise customers can sign up for a free trial of the <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. <Constant name="dbt" /> Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. <Constant name="dbt" /> Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
 
-* What is the reasonable use limitation for the <Constant name="dbt" /> <Constant name="semantic_layer" /> powered by MetricFlow during the trial? 
+* What is the reasonable use limitation for the <Constant name="semantic_layer" /> powered by MetricFlow during the trial? 
 _Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of <Constant name="dbt" /> Labs._

@@ -76,5 +76,5 @@ You can optionally configure SQLFluff linting rules to override default linting 
 - Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in <Constant name="dbt" />.
 - Create a `.sqlfluff` configuration file in your project, add your linting rules to it, and dbt Cloud will use them when linting.
     - When configuring, you can use `dbt` as the templater (for example, `templater = dbt`)
-    - If you’re using the <Constant name="cloud" /> <Constant name="cloud_ide" />, <Constant name="cloud" /> CLI, or any other editor, refer to [Customize linting](/docs/cloud/dbt-cloud-ide/lint-format#customize-linting) for guidance on how to add the <Constant name="dbt" />-specific (or dbtonic) linting rules we use for own project.
+    - If you’re using the <Constant name="cloud_ide" />, <Constant name="cloud" /> CLI, or any other editor, refer to [Customize linting](/docs/cloud/dbt-cloud-ide/lint-format#customize-linting) for guidance on how to add the <Constant name="dbt" />-specific (or dbtonic) linting rules we use for own project.
 - For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.

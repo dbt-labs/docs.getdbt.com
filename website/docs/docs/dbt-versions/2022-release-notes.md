@@ -63,7 +63,7 @@ Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-databricks
 
 ### Extra features in new and refreshed IDE
 
-The refreshed version of the <Constant name="cloud" /> <Constant name="cloud_ide" /> has launched four brand-new additional features, making it easier and faster for you to develop in the <Constant name="cloud_ide" />.
+The refreshed version of the <Constant name="cloud_ide" /> has launched four brand-new additional features, making it easier and faster for you to develop in the <Constant name="cloud_ide" />.
 
 The new features are:
 
@@ -74,7 +74,7 @@ The new features are:
     - Use `source` to autocomplete your source name + table name
     - Use `macro` to autocomplete your arguments
     - Use `env var` to autocomplete env var
-- **Dark mode**	&mdash;  Use dark mode in the <Constant name="cloud" /> <Constant name="cloud_ide" /> for low-light environments.
+- **Dark mode**	&mdash;  Use dark mode in the <Constant name="cloud_ide" /> for low-light environments.
 
 Read more about all the [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#cloud-ide-features).
 
@@ -82,7 +82,7 @@ Read more about all the [Cloud <Constant name="cloud_ide" /> features](/docs/clo
 
 In December 2022, <Constant name="dbt" /> Labs will deprecate the classic <Constant name="cloud_ide" />. The [new and refreshed <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) will be available for _all_ <Constant name="cloud" /> users. You will no longer be able to access the classic <Constant name="cloud_ide" /> and <Constant name="dbt" /> Labs might introduce changes that break the classic <Constant name="cloud_ide" />.
 
-With deprecation, <Constant name="dbt" /> Labs will only support the refreshed version of the <Constant name="cloud" /> <Constant name="cloud_ide" />.
+With deprecation, <Constant name="dbt" /> Labs will only support the refreshed version of the <Constant name="cloud_ide" />.
 
 Virtual Private Cloud (VPC) customers with questions about when this change will affect your account can contact your account team or support contact for assistance.
 
@@ -94,7 +94,7 @@ Virtual Private Cloud (VPC) customers with questions about when this change will
 <Constant name="cloud" /> now offers a native integration with Azure DevOps for <Constant name="cloud" /> customers on the enterprise plan.  We built this integration to remove friction, increase security, and unlock net new product experiences for our customers. [Setting up the Azure DevOps integration](/docs/cloud/git/connect-azure-devops) in <Constant name="cloud" /> provides:
   - easy <Constant name="dbt" /> project set up,
   - an improved security posture,
-  - repo permissions enforcement in <Constant name="cloud" /> <Constant name="cloud_ide" />, and
+  - repo permissions enforcement in <Constant name="cloud_ide" />, and
   - <Constant name="cloud" /> Slim CI.
 
 Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-integration-azure-devops/) to learn more!

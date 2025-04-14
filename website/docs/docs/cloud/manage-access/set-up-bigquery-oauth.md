@@ -12,7 +12,7 @@ This guide describes a feature of the <Constant name="cloud" /> Enterprise plan.
 :::
 
 
-<Constant name="cloud" /> supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for <Constant name="dbt" /> enterprise users. When BigQuery OAuth is enabled for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with BigQuery in order to use the <Constant name="cloud" /> <Constant name="cloud_ide" />. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
+<Constant name="cloud" /> supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for <Constant name="dbt" /> enterprise users. When BigQuery OAuth is enabled for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
 
 
 To set up BigQuery OAuth in <Constant name="cloud" />, a BigQuery admin must:
@@ -20,7 +20,7 @@ To set up BigQuery OAuth in <Constant name="cloud" />, a BigQuery admin must:
 2. [Create a BigQuery OAuth 2.0 client ID and secret](#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
 3. [Configure the connection](#configure-the-connection-in-dbt-cloud) in <Constant name="cloud" />.
 
-To use BigQuery in the <Constant name="cloud" /> <Constant name="cloud_ide" />, all developers must:
+To use BigQuery in the <Constant name="cloud_ide" />, all developers must:
 1. [Authenticate to BigQuery](#authenticating-to-bigquery) in the their profile credentials.
 
 ### Locate the redirect URI value
@@ -76,7 +76,7 @@ Once the BigQuery OAuth app is set up for a <Constant name="cloud" /> project, e
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
 
-Select **Allow**. This redirects you back to <Constant name="cloud" />. You should now be an authenticated BigQuery user, ready to use the <Constant name="cloud" /> <Constant name="cloud_ide" />.
+Select **Allow**. This redirects you back to <Constant name="cloud" />. You should now be an authenticated BigQuery user, ready to use the <Constant name="cloud_ide" />.
 
 ## FAQs
 

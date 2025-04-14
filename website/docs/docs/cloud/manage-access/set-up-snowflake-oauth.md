@@ -17,7 +17,7 @@ To set up Snowflake OAuth in <Constant name="cloud" />, admins from both are req
 2. [Create a security integration](#create-a-security-integration) in Snowflake.
 3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in <Constant name="cloud" />.
 
-To use Snowflake in the <Constant name="cloud" /> <Constant name="cloud_ide" />, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
+To use Snowflake in the <Constant name="cloud_ide" />, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
 
 ### Locate the redirect URI value
 
@@ -98,13 +98,13 @@ To complete the creation of your connection in <Constant name="cloud" />:
 
 ### Authorize developer credentials
 
-Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to <Constant name="cloud" /> to complete the setup process. At this point, users should now be able to use the <Constant name="dbt" /> <Constant name="cloud_ide" /> with their development credentials.
+Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to <Constant name="cloud" /> to complete the setup process. At this point, users should now be able to use the <Constant name="cloud_ide" /> with their development credentials.
 
 ### SSO OAuth flow diagram
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
 
-Once a user has authorized <Constant name="cloud" /> with Snowflake via their identity provider, Snowflake will return a Refresh Token to the <Constant name="cloud" /> application. <Constant name="cloud" /> is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the <Constant name="cloud" /> <Constant name="cloud_ide" /> on behalf of users.
+Once a user has authorized <Constant name="cloud" /> with Snowflake via their identity provider, Snowflake will return a Refresh Token to the <Constant name="cloud" /> application. <Constant name="cloud" /> is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the <Constant name="cloud_ide" /> on behalf of users.
 
 **NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in <Constant name="cloud" />.
 

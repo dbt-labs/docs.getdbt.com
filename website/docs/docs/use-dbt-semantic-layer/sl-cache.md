@@ -7,7 +7,7 @@ sidebar_label: "Cache common queries"
 ---
 
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
+The <Constant name="semantic_layer" /> allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
 
 There are two different types of caching:
 
@@ -58,7 +58,7 @@ For configuration details, refer to [Declarative caching setup](#declarative-cac
 
 How declarative caching works:
 - Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
-- Running a saved query triggers the <Constant name="dbt" /> <Constant name="semantic_layer" /> to:
+- Running a saved query triggers the <Constant name="semantic_layer" /> to:
   - Build a cached table from a saved query, with exports defined, into your data platform.
   - Make sure any query requests that match the saved query's inputs use the cache, returning data more quickly.
   - Automatically invalidates the cache when it detects new and fresh data in any upstream models related to the metrics in your cached table.
@@ -74,7 +74,7 @@ This video demonstrates the concept of declarative caching, how to run it using 
 
 </details>
 
-Refer to the following diagram, which illustrates what happens when the <Constant name="dbt" /> <Constant name="semantic_layer" /> receives a query request:
+Refer to the following diagram, which illustrates what happens when the <Constant name="semantic_layer" /> receives a query request:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
 
@@ -146,4 +146,4 @@ In the future, we plan to clone credentials, identify the minimum access level n
 ## Related docs
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - [Saved queries](/docs/build/saved-queries)
-- [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

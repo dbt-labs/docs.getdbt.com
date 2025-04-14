@@ -16,7 +16,7 @@ Connect your Azure DevOps cloud account in <Constant name="cloud" /> to unlock n
 - Import new Azure DevOps repos with a couple clicks during <Constant name="cloud" /> project setup.
 - Clone repos using HTTPS rather than SSH
 - Enforce user authorization with OAuth 2.0.
-- Carry Azure DevOps user repository permissions (read / write access) through to <Constant name="cloud" /> <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI's git actions.
+- Carry Azure DevOps user repository permissions (read / write access) through to <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI's git actions.
 - Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps.
 
 

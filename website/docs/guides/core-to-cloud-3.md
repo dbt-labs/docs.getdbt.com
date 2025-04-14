@@ -27,9 +27,9 @@ You may have already started your move to <Constant name="cloud" /> and are look
 - [Adapters and connections](https://docs.getdbt.com/guides/core-to-cloud-3?step=3) 
 - [Development tools](https://docs.getdbt.com/guides/core-to-cloud-3?step=4) 
 - [Orchestration](https://docs.getdbt.com/guides/core-to-cloud-3?step=5)
-- [<Constant name="dbt" /> <Constant name="mesh" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=6)
-- [<Constant name="dbt" /> <Constant name="semantic_layer" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=7)
-- [<Constant name="dbt" /> <Constant name="explorer" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=8)
+- [<Constant name="mesh" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=6)
+- [<Constant name="semantic_layer" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=7)
+- [<Constant name="explorer" />](https://docs.getdbt.com/guides/core-to-cloud-3?step=8)
 
 ## Adapters and connections
 
@@ -47,14 +47,14 @@ In <Constant name="cloud" />, you can natively connect to your data platform an
 
 ## Development tools
 
-<Constant name="cloud" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your <Constant name="dbt" /> projects.
+<Constant name="cloud" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your <Constant name="dbt" /> projects.
 
-Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the <Constant name="cloud" /> <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
+Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
 
 ### dbt Cloud IDE
-A web-based interface for building, testing, running, and version-controlling <Constant name="dbt" /> projects. It compiles <Constant name="dbt" /> code into SQL and executes it directly on your database. The <Constant name="cloud" /> <Constant name="cloud_ide" /> makes developing fast and easy for new and seasoned data practitioners to build and test changes.
+A web-based interface for building, testing, running, and version-controlling <Constant name="dbt" /> projects. It compiles <Constant name="dbt" /> code into SQL and executes it directly on your database. The <Constant name="cloud_ide" /> makes developing fast and easy for new and seasoned data practitioners to build and test changes.
 
-**Who might prefer the <Constant name="cloud" /> <Constant name="cloud_ide" />?**
+**Who might prefer the <Constant name="cloud_ide" />?**
 
 - New <Constant name="dbt" /> users or those transitioning from other tools who appreciate a more guided experience through a browser-based interface.
 - Team members focused on speed and convenience for getting started with a new or existing project.
@@ -62,14 +62,14 @@ A web-based interface for building, testing, running, and version-controlling <C
 
 **Key features**
 
-- The <Constant name="cloud" /> <Constant name="cloud_ide" /> has simplified <Constant name="git" /> functionality:
+- The <Constant name="cloud_ide" /> has simplified <Constant name="git" /> functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the <Constant name="cloud_ide" />.
 - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
-The <Constant name="cloud" /> <Constant name="cloud_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="cloud" /> <Constant name="cloud_ide" /> due to its focus on simplicity and ease of use:
+The <Constant name="cloud_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="cloud_ide" /> due to its focus on simplicity and ease of use:
 
 - Pre-commit for automated checks before *committing* code is not available (yet).
 - Mass-generating files / interacting with the file system are not available.
@@ -114,14 +114,14 @@ When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` fil
 
 ## dbt Mesh
 
-[<Constant name="dbt" /> <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) helps organizations with mature, complex transformation workflows in <Constant name="dbt" /> increase the flexibility and performance of their <Constant name="dbt" /> projects. It allows you to make use of multiple interconnected <Constant name="dbt" /> projects instead of a single large, monolithic project.
+[<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) helps organizations with mature, complex transformation workflows in <Constant name="dbt" /> increase the flexibility and performance of their <Constant name="dbt" /> projects. It allows you to make use of multiple interconnected <Constant name="dbt" /> projects instead of a single large, monolithic project.
 
 It enables you to interface and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance.
 
-Here are some tips and caveats to consider when using <Constant name="dbt" /> <Constant name="mesh" />:
+Here are some tips and caveats to consider when using <Constant name="mesh" />:
 
 ### Tips
-- To dynamically resolve [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with <Constant name="cloud" /> (either with the <Constant name="cloud" /> CLI or <Constant name="cloud" /> <Constant name="cloud_ide" />). Cross-project references aren't natively supported in <Constant name="core" />, except by installing the source code from upstream projects [as packages](/docs/build/packages#how-do-i-add-a-package-to-my-project)
+- To dynamically resolve [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with <Constant name="cloud" /> (either with the <Constant name="cloud" /> CLI or <Constant name="cloud_ide" />). Cross-project references aren't natively supported in <Constant name="core" />, except by installing the source code from upstream projects [as packages](/docs/build/packages#how-do-i-add-a-package-to-my-project)
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your <Constant name="dbt" /> models both within and across projects using:
   - **[Groups](/docs/collaborate/govern/model-access#groups)** &mdash; Organize nodes in your <Constant name="dbt" /> DAG that share a logical connection and assign an owner to the entire group.
@@ -135,31 +135,31 @@ Here are some tips and caveats to consider when using <Constant name="dbt" /> <C
 - Project dependencies are uni-directional, meaning they go in one direction. This means <Constant name="dbt" /> checks for cycles across projects (circular dependencies) and raise errors if any are detected. However, we are considering support to allow projects to depend on each other in both directions in the future, with <Constant name="dbt" /> still checking for node-level cycles while allowing cycles at the project level.
 - Everyone in the account can view public model metadata, which helps users find data products more easily. This is separate from who can access the actual data, which is controlled by permissions in the data warehouse. For use cases where even metadata about a reusable data asset is sensitive, we are [considering](https://github.com/dbt-labs/dbt-core/issues/9340) an optional extension of protected models.
 
-Refer to the [<Constant name="dbt" /> <Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs) for more questions.
+Refer to the [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs) for more questions.
 
 ## dbt Semantic Layer
 
-Leverage the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using <Constant name="dbt" /> <Constant name="semantic_layer" />:
+Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using <Constant name="semantic_layer" />:
 
 ### Tips
-- Define semantic models and metrics once in <Constant name="cloud" /> with the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
-- Use the [<Constant name="dbt" /> <Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
+- Define semantic models and metrics once in <Constant name="cloud" /> with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
+- Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
 - Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/cloud-integrations/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
 - Use [exports](/docs/use-dbt-semantic-layer/exports) to write commonly used queries directly within your data platform, on a schedule.
 
 ### Caveats
-- <Constant name="dbt" /> <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
-- Run queries/semantic layer commands in the <Constant name="cloud" /> CLI, however running queries/semantic layer commands in the <Constant name="cloud" /> <Constant name="cloud_ide" /> isn’t supported *yet.*
-- <Constant name="dbt" /> <Constant name="semantic_layer" /> doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections. It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
+- <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
+- Run queries/semantic layer commands in the <Constant name="cloud" /> CLI, however running queries/semantic layer commands in the <Constant name="cloud_ide" /> isn’t supported *yet.*
+- <Constant name="semantic_layer" /> doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections. It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
-Refer to the [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
+Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 
 ## dbt Explorer
 
-[<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using <Constant name="dbt" /> <Constant name="explorer" />:
+[<Constant name="explorer" />](/docs/collaborate/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using <Constant name="explorer" />:
 
 ### Tips
-- Use the search and filter capabilities in <Constant name="dbt" /> <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
+- Use the search and filter capabilities in <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/collaborate/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
 - Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 - Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
@@ -167,9 +167,9 @@ Refer to the [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/
 ### Caveats
 - There must be at least one successful job run in the production deployment environment for <Constant name="explorer" /> to populate information. 
 
-Familiarize yourself with <Constant name="dbt" /> <Constant name="explorer" />’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
+Familiarize yourself with <Constant name="explorer" />’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
-Refer to the [<Constant name="dbt" /> <Constant name="explorer" /> FAQs](/docs/collaborate/dbt-explorer-faqs) for more information.
+Refer to the [<Constant name="explorer" /> FAQs](/docs/collaborate/dbt-explorer-faqs) for more information.
 
 ## What's next?
 

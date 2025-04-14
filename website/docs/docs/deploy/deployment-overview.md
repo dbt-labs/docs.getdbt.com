@@ -42,7 +42,7 @@ Learn how to use <Constant name="cloud" />'s features to help your team ship tim
     title="Deploy jobs"
     body="Create and schedule jobs for the job scheduler to run. <br /><br />Runs on a schedule, by API, or after another job completes."
     link="/docs/deploy/deploy-jobs"
-    icon="<Constant name="dbt" />-bit"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Continuous integration"

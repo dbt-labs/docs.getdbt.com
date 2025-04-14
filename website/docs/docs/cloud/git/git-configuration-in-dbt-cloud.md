@@ -41,7 +41,7 @@ Whether you use a <Constant name="git" /> integration that natively connects wit
     title="Connect to Azure DevOps"
     body="Learn how to connect to Azure DevOps using dbt Cloud's native integration. <br /><br />Available on dbt Cloud Enterprise plans."
     link="/docs/cloud/git/connect-azure-devops"
-    icon="<Constant name="dbt" />-bit"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Availability of CI features by Git provider"

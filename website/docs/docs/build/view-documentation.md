@@ -11,15 +11,15 @@ You can view documentation in two complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**<Constant name="dbt" /> Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="cloud" /> Developer plans |
-| [**<Constant name="dbt" /> <Constant name="explorer" />**](/docs/collaborate/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on <Constant name="dbt" /> Docs to provide a dynamic, real-time interface with rich [metadata](/docs/collaborate/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Team or Enterprise plans |
+| [**<Constant name="explorer" />**](/docs/collaborate/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on <Constant name="dbt" /> Docs to provide a dynamic, real-time interface with rich [metadata](/docs/collaborate/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Team or Enterprise plans |
 
 ## Navigating your documentation
-The following sections describe how to navigate your documentation in <Constant name="dbt" /> <Constant name="explorer" /> and <Constant name="dbt" /> Docs.
+The following sections describe how to navigate your documentation in <Constant name="explorer" /> and <Constant name="dbt" /> Docs.
 
 ### dbt Explorer <Lifecycle status="team,enterprise" />
 
-[<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
-To access <Constant name="dbt" /> <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
+[<Constant name="explorer" />](/docs/collaborate/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
+To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
 
 <DocCarousel slidesPerView={1}>
 
@@ -29,7 +29,7 @@ To access <Constant name="dbt" /> <Constant name="explorer" />, navigate to the 
 
 </DocCarousel>
 
-<Constant name="dbt" /> <Constant name="explorer" /> offers users a comprehensive suite of features to enhance data project navigation and understanding, like:
+<Constant name="explorer" /> offers users a comprehensive suite of features to enhance data project navigation and understanding, like:
 
 - Interactive lineage visualization for your project's DAG to understand relationships between resources. 
 - Resource search bar with comprehensive filters to help find project resources efficiently and quickly.
@@ -39,7 +39,7 @@ To access <Constant name="dbt" /> <Constant name="explorer" />, navigate to the 
 - Model query history to track consumption queries on your models to gain deeper insights into data usage. 
 - Downstream exposures to automatically expose relevant data models from tools like Tableau to enhance visibility.
 
-For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects).
+For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="explorer" />](/docs/collaborate/explore-projects).
 
 ### dbt Docs
 
@@ -59,7 +59,7 @@ In this example, the `fct_subscription_transactions` model only has one direct p
 
 ## Deploy the documentation site
 
-Effortlessly deploy documentation in <Constant name="dbt" /> <Constant name="explorer" /> or <Constant name="dbt" /> Docs to make it available to your teams.
+Effortlessly deploy documentation in <Constant name="explorer" /> or <Constant name="dbt" /> Docs to make it available to your teams.
 
 :::caution Security
 
@@ -70,7 +70,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 ### dbt Explorer <Lifecycle status="team,enterprise" />
 
 
-<Constant name="dbt" /> <Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="dbt" /> <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/collaborate/explore-projects#generate-metadata). 
+<Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/collaborate/explore-projects#generate-metadata). 
 
 To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs).
 
@@ -82,4 +82,4 @@ To learn how to deploy your documentation site, see [Build and view your docs wi
 * Use your own web server like Apache/Nginx
 * If you're on a <Constant name="cloud" /> Developer plan, see [Build and view your docs with <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
 
-Interested in using <Constant name="dbt" /> <Constant name="explorer" /> for the complete <Constant name="dbt" /> documentation experience, sign up for a free [<Constant name="cloud" /> trial](https://www.getdbt.com/signup) or [contact us](https://www.getdbt.com/contact). 
+Interested in using <Constant name="explorer" /> for the complete <Constant name="dbt" /> documentation experience, sign up for a free [<Constant name="cloud" /> trial](https://www.getdbt.com/signup) or [contact us](https://www.getdbt.com/contact). 

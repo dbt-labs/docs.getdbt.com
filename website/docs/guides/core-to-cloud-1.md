@@ -48,7 +48,7 @@ This guide outlines the steps you need to take to move from <Constant name="core
 - [Developer setup:](https://docs.getdbt.com/guides/core-to-cloud-1?step=7) Understand the setup needed for developing in <Constant name="cloud" />.
 - [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=8): Discover how to manage environment variables in <Constant name="cloud" />, including their priority.
 - [Orchestration setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=9): Learn how to prepare your <Constant name="cloud" /> environment and jobs for orchestration.
-- [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud" /> <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
+- [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
 - [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
@@ -152,7 +152,7 @@ The most common data environments are production, staging, and development. The 
 3. **Connect to your data platform** &mdash; When using <Constant name="cloud" />, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
 
-4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (command line interface or code editor) or [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your <Constant name="dbt" /> code in your tool of choice.
+4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (command line interface or code editor) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your <Constant name="dbt" /> code in your tool of choice.
    - If you've previously installed <Constant name="core" />, the [<Constant name="cloud" /> CLI installation doc](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli) has more information on how to install the <Constant name="cloud" /> CLI, create aliases, or uninstall <Constant name="core" /> for a smooth transition.
 
 ### Additional configuration
@@ -243,13 +243,13 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 ## Model development and discovery
 
-In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).
+In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).
 
 You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
 1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your <Constant name="dbt" /> project, ensure it's set up correctly, and run some [<Constant name="dbt" /> commands](/reference/dbt-commands):
    - Run `dbt compile` to make sure your project compiles correctly.
-   - Run a few models in the <Constant name="cloud" /> <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you’re experiencing accurate results in development.
+   - Run a few models in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you’re experiencing accurate results in development.
 
 2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 

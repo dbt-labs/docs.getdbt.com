@@ -13,7 +13,7 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+The <Constant name="semantic_layer" /> GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
 
 The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
 
@@ -28,9 +28,9 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 **Example**
 - If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
-<Constant name="dbt" /> Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="dbt" /> <Constant name="semantic_layer" />.
+<Constant name="dbt" /> Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="semantic_layer" />.
 
-Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Requirements to use the GraphQL API
 - A <Constant name="cloud" /> project on <Constant name="dbt" /> v1.6 or higher
@@ -40,9 +40,9 @@ Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. 
 
 ## Using the GraphQL API
 
-If you're a <Constant name="dbt" /> user or partner with access to <Constant name="cloud" /> and the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
+If you're a <Constant name="dbt" /> user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the <Constant name="dbt" /> <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 ### Authentication 
 
@@ -58,7 +58,7 @@ Each GQL request also requires a dbt Cloud `environmentId`. The API uses both th
 
 #### Fetch data platform dialect
 
-In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the dbt Semantic Layer connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
+In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the <Constant name="semantic_layer" /> connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
 
 The GraphQL API has an easy way to fetch this with the following query: 
 

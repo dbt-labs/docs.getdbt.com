@@ -35,12 +35,12 @@ link="/dbt-cloud/api-v3"
     link="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
     body="The Terraform provider maintained by dbt Labs which can be used to manage a dbt Cloud account."
     icon="pencil-paper"/>
-    <a href="https://registry.terraform.io/providers/<Constant name="dbt" />-labs/dbtcloud/latest"
-    className="external-link"      
+    <a href="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
+    className="external-link"
     target="_blank"
     rel="noopener noreferrer">
     <Icon name='fa-external-link' />
   </a>
 </div>
-    
+
 </div>

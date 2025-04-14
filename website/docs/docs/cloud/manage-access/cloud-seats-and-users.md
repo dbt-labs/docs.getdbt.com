@@ -17,12 +17,12 @@ The user's assigned license determines the specific capabilities they can access
 
 | Functionality | Developer User | Read-Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
-| Use the <Constant name="cloud" /> <Constant name="cloud_ide" /> | ✅ | ❌ | ❌ |
+| Use the <Constant name="cloud_ide" /> | ✅ | ❌ | ❌ |
 | Use the <Constant name="cloud" /> CLI | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
-| Use [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
+| Use [<Constant name="explorer" />](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 

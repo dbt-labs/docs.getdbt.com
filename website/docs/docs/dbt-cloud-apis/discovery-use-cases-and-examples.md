@@ -906,7 +906,7 @@ Graph example:
 
 ### Which metrics are available?
 
-You can define and query metrics using the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+You can define and query metrics using the [<Constant name="semantic_layer" />](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
 
 <details>
 <summary>Example query</summary>

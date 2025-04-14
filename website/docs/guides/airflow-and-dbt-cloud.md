@@ -13,7 +13,7 @@ recently_updated: true
 
 ## Introduction
 
-Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. <Constant name="cloud" /> works great with Airflow, letting you execute your <Constant name="dbt" /> code in <Constant name="cloud" /> while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like <Constant name="dbt" /> <Constant name="explorer" />) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
+Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. <Constant name="cloud" /> works great with Airflow, letting you execute your <Constant name="dbt" /> code in <Constant name="cloud" /> while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like <Constant name="explorer" />) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
 
 - Scheduling other processes outside of <Constant name="dbt" /> runs
 - Ensuring that a [<Constant name="dbt" /> job](/docs/deploy/job-scheduler) kicks off before or after another process outside of <Constant name="cloud" />

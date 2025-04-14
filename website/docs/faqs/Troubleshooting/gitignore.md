@@ -11,7 +11,7 @@ If you can't revert changes, check out a branch, or click commit &mdash; this is
 
 To fix this, complete the following steps:
 
-1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project `.gitignore` file:
+1. In the <Constant name="cloud_ide" />, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project `.gitignore` file:
 ```bash
 target/
 dbt_packages/

@@ -5,31 +5,31 @@ description: "Integrate and use the JDBC API to query your metrics."
 tags: [Semantic Layer, API]
 ---
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
+The <Constant name="semantic_layer" /> Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
 
 A JDBC driver is a software component enabling a Java application to interact with a data platform. Here's some more information about our JDBC API:
 
 - The <Constant name="semantic_layer" /> JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
 - You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
-- The <Constant name="dbt" /> <Constant name="semantic_layer" /> supports ArrowFlight SQL driver version 12.0.0 and higher. 
+- The <Constant name="semantic_layer" /> supports ArrowFlight SQL driver version 12.0.0 and higher. 
 - You can embed the driver into your application stack as needed, and you can use <Constant name="dbt" /> Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
 - If you’re a partner or user building a homegrown application, you’ll need to install an AWS root CA to the Java Trust [documentation](https://www.amazontrust.com/repository/) (specific to Java and JDBC call).
 
-<Constant name="dbt" /> Labs partners can use the JDBC API to build integrations in their tools with the <Constant name="dbt" /> <Constant name="semantic_layer" />
+<Constant name="dbt" /> Labs partners can use the JDBC API to build integrations in their tools with the <Constant name="semantic_layer" />
 
 ## Using the JDBC API
 
-If you are a <Constant name="dbt" /> user or partner with access to <Constant name="cloud" /> and the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right JDBC connection parameters described in this document.
+If you are a <Constant name="dbt" /> user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right JDBC connection parameters described in this document.
 
-You *may* be able to use our JDBC API with tools that do not have an official integration with the <Constant name="dbt" /> <Constant name="semantic_layer" />. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the <Constant name="semantic_layer" /> API.
+You *may* be able to use our JDBC API with tools that do not have an official integration with the <Constant name="semantic_layer" />. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the <Constant name="semantic_layer" /> API.
 
-Refer to [Get started with the <Constant name="dbt" /> <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
-Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Authentication
 
-<Constant name="cloud" /> authorizes requests to the <Constant name="dbt" /> <Constant name="semantic_layer" /> API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
+<Constant name="cloud" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
 
 ## Connection parameters
 
@@ -589,5 +589,5 @@ So for example, if the `time_dimension_name` is `ds` and the granularity level i
 
 ## Related docs
 
-- [<Constant name="dbt" /> <Constant name="semantic_layer" /> integration best practices](/guides/sl-partner-integration-guide)
+- [<Constant name="semantic_layer" /> integration best practices](/guides/sl-partner-integration-guide)
 

@@ -135,7 +135,7 @@ Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and err
 ## dbt Cloud v1.1.10 (October 8, 2020)
 
 This release adds support for repositories imported via GitLab (Enterprise)
-and contains a number of bugfixes and improvements in the <Constant name="cloud" /> <Constant name="cloud_ide" />.
+and contains a number of bugfixes and improvements in the <Constant name="cloud_ide" />.
 
 #### Enhancements
 
@@ -736,7 +736,7 @@ These fields need to be specified for your instance of <Constant name="cloud" />
 
 - Remove the "read only" role (this is now a "read only" license type)
 - Remove the "standard" license type
-- Remove "beta" tag from <Constant name="dbt" /> <Constant name="cloud_ide" />
+- Remove "beta" tag from <Constant name="cloud_ide" />
 - Remove unused frontend code (team page/create repository page and related services)
 
 ### Self-Service

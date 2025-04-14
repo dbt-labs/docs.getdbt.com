@@ -176,7 +176,7 @@ import BreakingChanges from '/snippets/_versions-contracts.md';
 
 <BreakingChanges 
 value="Changing unversioned, contracted models."
-value2="<Constant name="dbt" /> also warns if a model has or had a contract but isn't versioned."
+value2="dbt also warns if a model has or had a contract but isn't versioned."
 />
 
 <Tabs>

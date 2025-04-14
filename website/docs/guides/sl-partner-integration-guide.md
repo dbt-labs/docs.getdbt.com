@@ -25,11 +25,11 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ### Prerequisites
 
-To build a <Constant name="dbt" /> <Constant name="semantic_layer" /> integration: 
+To build a <Constant name="semantic_layer" /> integration: 
 
-- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [<Constant name="dbt" /> <Constant name="semantic_layer" /> API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [<Constant name="semantic_layer" /> API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
-- Familiarize yourself with the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
+- Familiarize yourself with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
   - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
   - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same <Constant name="dbt" /> project repo).
@@ -95,7 +95,7 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
-- **Using saved queries** &mdash; The <Constant name="dbt" /> <Constant name="semantic_layer" /> has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+- **Using saved queries** &mdash; The <Constant name="semantic_layer" /> has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -145,7 +145,7 @@ In the cases where our APIs support either a string or a filter list for the `wh
 These are recommendations on how to evolve a <Constant name="semantic_layer" /> integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [<Constant name="dbt" /> <Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in the project
@@ -169,10 +169,10 @@ These are recommendations on how to evolve a <Constant name="semantic_layer" /> 
 * Suggest metrics to users based on teams/identity, and so on.
 
 ### Related docs
-- [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [Use the <Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [Use the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
-- [<Constant name="dbt" /> <Constant name="semantic_layer" /> integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
+- [<Constant name="semantic_layer" /> integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
 
 
 </div>

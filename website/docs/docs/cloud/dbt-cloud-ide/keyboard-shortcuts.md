@@ -7,7 +7,7 @@ sidebar_label: "Keyboard shortcuts"
 
 The Cloud <Constant name="cloud_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
 
-Use this <Constant name="cloud" /> <Constant name="cloud_ide" />  page to help you quickly reference some common operations.
+Use this <Constant name="cloud_ide" />  page to help you quickly reference some common operations.
 
 | Shortcut description | macOS | Windows |
 |--------|----------------|------------------|

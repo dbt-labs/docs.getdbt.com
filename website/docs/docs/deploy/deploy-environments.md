@@ -33,13 +33,13 @@ To create a new <Constant name="cloud" /> deployment environment, navigate to **
 
 ### Set as production environment
 
-In <Constant name="cloud" />, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like <Constant name="dbt" /> <Constant name="explorer" /> and cross-project references. It acts as the source of truth for the project's production state in <Constant name="cloud" />.
+In <Constant name="cloud" />, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like <Constant name="explorer" /> and cross-project references. It acts as the source of truth for the project's production state in <Constant name="cloud" />.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 ### Semantic Layer
 
-For customers using the <Constant name="dbt" /> <Constant name="semantic_layer" />, the next section of environment settings is the <Constant name="semantic_layer" /> configurations. [The <Constant name="semantic_layer" /> setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
+For customers using the <Constant name="semantic_layer" />, the next section of environment settings is the <Constant name="semantic_layer" /> configurations. [The <Constant name="semantic_layer" /> setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
 
 You can also leverage the <Constant name="dbt" /> Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to <Constant name="dbt" /> models don't break these metrics.
 
@@ -82,7 +82,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 **Faster development enabled by deferral:** If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
-Finally, the Staging environment has its own view in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
+Finally, the Staging environment has its own view in [<Constant name="explorer" />](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 

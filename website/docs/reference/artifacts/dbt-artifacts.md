@@ -11,7 +11,7 @@ With every invocation, dbt generates and saves one or more *artifacts*. Several 
 
 They could also be used to:
 
-- gain insights into your [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl)
+- gain insights into your [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl)
 - calculate project-level test coverage
 - perform longitudinal analysis of run timing
 - identify historical changes in <Term id="table" /> structure

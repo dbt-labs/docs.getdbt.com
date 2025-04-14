@@ -8,9 +8,9 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 ## Create dbt Cloud Artifacts
 
-[<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
+[<Constant name="explorer" />](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
 
-<Constant name="dbt" /> <Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
+<Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
@@ -36,7 +36,7 @@ When you add a production job to a project, <Constant name="cloud" /> updates th
 
 ### Documentation
 
-Navigate to [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state.
+Navigate to [<Constant name="explorer" />](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state.
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
@@ -50,7 +50,7 @@ When set up, dbt Cloud updates the Documentation link in the header tab so it li
 
 ### Source Freshness
 
-To view the latest source freshness result, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more detail. Then navigate to <Constant name="dbt" /> <Constant name="explorer" /> through the **Explore** link.
+To view the latest source freshness result, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more detail. Then navigate to <Constant name="explorer" /> through the **Explore** link.
 
 <Expandable alt_header="For dbt Docs">
 

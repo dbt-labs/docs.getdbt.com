@@ -126,4 +126,4 @@ In addition to providing a hosted architecture for running <Constant name="dbt" 
 
 - [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)

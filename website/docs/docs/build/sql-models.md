@@ -23,7 +23,7 @@ If you're new to <Constant name="dbt" />, we recommend that you read a [quicksta
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
-- The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent <Constant name="dbt" /> from applying configurations correctly and may affect metadata in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects).
+- The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent <Constant name="dbt" /> from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/collaborate/explore-projects).
 - We strongly recommend using underscores for model names, not dots. For example, use `models/my_model.sql` instead of `models/my.model.sql`.
 - Models can be nested in subdirectories within the `models` directory.
 

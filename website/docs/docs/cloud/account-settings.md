@@ -12,7 +12,7 @@ The following sections describe the different **Account settings** available fro
 
 :::important repo caching enabled by default
 
-<Constant name="cloud" /> <Constant name="git" /> repository caching is enabled by default for all new Enterprise accounts, improving reliability by allowing <Constant name="cloud" /> to use a cached copy of your repo if cloning fails. 
+<Constant name="git" /> repository caching is enabled by default for all new Enterprise accounts, improving reliability by allowing <Constant name="cloud" /> to use a cached copy of your repo if cloning fails. 
 
 See the next section for more details on repo caching, retention, and more.
 :::

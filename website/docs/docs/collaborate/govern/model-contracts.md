@@ -222,7 +222,7 @@ When comparing to a previous project state, <Constant name="dbt" /> will look fo
 import BreakingChanges from '/snippets/_versions-contracts.md';
 
 <BreakingChanges 
-value="Removing a contracted model by deleting, renaming, or disabling it (<Constant name="dbt" /> v1.9 or higher)."
+value="Removing a contracted model by deleting, renaming, or disabling it (dbt v1.9 or higher)."
 value2="versioned models will raise an error. unversioned models will raise a warning."
 />
 

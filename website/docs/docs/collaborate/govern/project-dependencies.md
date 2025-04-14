@@ -99,13 +99,13 @@ import CycleDetection from '/snippets/_mesh-cycle-detection.md';
 
 <CycleDetection />
 
-For more guidance on how to use <Constant name="dbt" /> <Constant name="mesh" />, refer to the dedicated [<Constant name="dbt" /> <Constant name="mesh" /> guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [<Constant name="dbt" /> <Constant name="mesh" /> learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+For more guidance on how to use <Constant name="mesh" />, refer to the dedicated [<Constant name="mesh" /> guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [<Constant name="mesh" /> learning course](https://learn.getdbt.com/courses/dbt-mesh). 
 
 ### Safeguarding production data with staging environments
 
 When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. 
 
-With a staging environment integrated into the project, <Constant name="dbt" /> <Constant name="mesh" /> automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, <Constant name="dbt" /> <Constant name="mesh" /> fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
+With a staging environment integrated into the project, <Constant name="mesh" /> automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, <Constant name="mesh" /> fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
 
@@ -140,5 +140,5 @@ These are the exceptions, rather than the rule. Installing another team's projec
 <FAQ path="Project_ref/indirectly-reference-upstream-model" />
 
 ## Related docs
-- Refer to the [<Constant name="dbt" /> <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="dbt" /> <Constant name="mesh" />.
-- [Quickstart with <Constant name="dbt" /> <Constant name="mesh" />](/guides/mesh-qs)
+- Refer to the [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="mesh" />.
+- [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)

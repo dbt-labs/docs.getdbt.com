@@ -203,7 +203,7 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in <Constant name="cloud" /> <Constant name="cloud_ide" /> and <Constant name="core" /> CLI
+                Available in <Constant name="cloud_ide" /> and <Constant name="core" /> CLI
 
  --config-dir          
                 Print a system-specific command to access
@@ -252,7 +252,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.<Constant name="dbt" />
 ```
 
-Test the connection in the <Constant name="cloud" /> <Constant name="cloud_ide" />:
+Test the connection in the <Constant name="cloud_ide" />:
 
 ```text
 <Constant name="dbt" /> debug --connection

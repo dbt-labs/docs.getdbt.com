@@ -10,7 +10,7 @@ image: /img/docs/query-page/qp-chart.jpg
 # About the Query page <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to query data with the <Constant name="query_page" /> and view documentation in <Constant name="dbt" /> <Constant name="explorer" />.
+Learn how to query data with the <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
 </IntroText>
 
 :::tip
@@ -19,7 +19,7 @@ Learn how to query data with the <Constant name="query_page" /> and view documen
 
 The <Constant name="query_page" /> in <Constant name="cloud" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
-<Constant name="query_page" /> in <Constant name="cloud" /> integrates with [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="visual_editor" />](/docs/cloud/visual-editor), [<Constant name="dbt" /> <Constant name="copilot" />](/docs/cloud/dbt-copilot), and [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
+<Constant name="query_page" /> in <Constant name="cloud" /> integrates with [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="visual_editor" />](/docs/cloud/visual-editor), [<Constant name="copilot" />](/docs/cloud/dbt-copilot), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
 
 <Lightbox src="/img/docs/query-page/qp-main.gif" title="Overview of the Query page and its features" />
 
@@ -27,13 +27,13 @@ The <Constant name="query_page" /> in <Constant name="cloud" /> empowers users t
 
 Key benefits include:
 - Quickly write, run, and iterate on SQL queries with tools like syntax highlighting, tabbed editors, and query history.
-- Leverage <Constant name="dbt" /> metadata, trust signals, and lineage from <Constant name="dbt" /> <Constant name="explorer" /> for informed query construction.
+- Leverage <Constant name="dbt" /> metadata, trust signals, and lineage from <Constant name="explorer" /> for informed query construction.
 - Make data accessible to users of varied technical skill levels with SQL, <Constant name="semantic_layer" /> queries, and visual tools.
-- Use <Constant name="dbt" /> <Constant name="copilot" />'s AI-assistance to generate or edit SQL queries, descriptions, and more.
+- Use <Constant name="copilot" />'s AI-assistance to generate or edit SQL queries, descriptions, and more.
 
 Some example use cases include:
 - Analysts can quickly construct queries to analyze sales performance metrics across regions and view results.
-- All users have a rich development experience powered by <Constant name="dbt" /> <Constant name="explorer" />'s end-to-end exploration experience.
+- All users have a rich development experience powered by <Constant name="explorer" />'s end-to-end exploration experience.
 
 ## Prerequisites 
 

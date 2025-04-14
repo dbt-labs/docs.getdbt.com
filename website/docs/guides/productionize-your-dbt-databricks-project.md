@@ -37,7 +37,7 @@ In software engineering, environments play a crucial role in allowing engineers 
 In <Constant name="cloud" />, [environments](/docs/dbt-cloud-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
-- Development &mdash; Determine the settings used in the <Constant name="cloud" /> <Constant name="cloud_ide" /> for a particular <Constant name="cloud" /> project. 
+- Development &mdash; Determine the settings used in the <Constant name="cloud_ide" /> for a particular <Constant name="cloud" /> project. 
 
 Each <Constant name="cloud" /> project can have multiple deployment environments, but only one development environment per user.
 

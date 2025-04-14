@@ -102,9 +102,9 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 #### dbt Cloud IDE details
 
-The following environment variable is set automatically for the <Constant name="cloud" /> <Constant name="cloud_ide" />:
+The following environment variable is set automatically for the <Constant name="cloud_ide" />:
 
-- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - The variable changes when the branch is changed.
   - Doesn't require restarting the <Constant name="cloud_ide" /> after a branch change.
   - Currently not available in the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).

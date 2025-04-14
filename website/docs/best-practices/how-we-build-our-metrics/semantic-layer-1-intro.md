@@ -10,7 +10,7 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 
 ## Learning goals
 
-- ❓ Understand the **purpose and capabilities** of the **<Constant name="dbt" /> <Constant name="semantic_layer" />**, particularly MetricFlow as the engine that powers it.
+- ❓ Understand the **purpose and capabilities** of the ** <Constant name="semantic_layer" />**, particularly MetricFlow as the engine that powers it.
 - 🧱 Familiarity with the core components of MetricFlow — **semantic models and metrics** — and how they work together.
 - 🔁 Know how to **refactor** <Constant name="dbt" /> models for the <Constant name="semantic_layer" />.
 - 🏅 Aware of **best practices** to take maximum advantage of the <Constant name="semantic_layer" />.
@@ -28,7 +28,7 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 If you're ready to ship your users more power and flexibility with less code, let's dive in!
 
 :::info
-MetricFlow is the engine for defining metrics in <Constant name="dbt" /> and one of the key components of the [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for <Constant name="dbt" /> semantic models and metrics.
+MetricFlow is the engine for defining metrics in <Constant name="dbt" /> and one of the key components of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for <Constant name="dbt" /> semantic models and metrics.
 
-To fully experience the <Constant name="dbt" /> <Constant name="semantic_layer" />, including the ability to query <Constant name="dbt" /> metrics via external integrations, you'll need a [<Constant name="cloud" /> Team or Enterprise account](https://www.getdbt.com/pricing/). Refer to [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
+To fully experience the <Constant name="semantic_layer" />, including the ability to query <Constant name="dbt" /> metrics via external integrations, you'll need a [<Constant name="cloud" /> Team or Enterprise account](https://www.getdbt.com/pricing/). Refer to [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 :::

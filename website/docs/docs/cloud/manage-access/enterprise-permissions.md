@@ -74,7 +74,7 @@ Database admins manage the connections and configurations between dbt Cloud and 
 
 Notable features: 
 - Database admin is a project-level set. 
-- Can set up and maintain database connections, environment variables, and Semantic Layer configs.
+- Can set up and maintain database connections, environment variables, and <Constant name="semantic_layer" /> configs.
 - Helpful for scenarios where your data warehouse admins only need access to dbt Cloud to configure connections. 
 - Read-only access to Git repo, job, and run settings. 
 - Can access dbt Explorer.
@@ -185,11 +185,11 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Semantic Layer">
 
-A specialized permission set with strict access to only the Semantic Layer configuration (credentials and service tokens) for projects. 
+A specialized permission set with strict access to only the <Constant name="semantic_layer" /> configuration (credentials and service tokens) for projects. 
 
 Notable features:
-- Semantic Layer is a project-level set.
-- Can only access Semantic Layer configs.
+- <Constant name="semantic_layer" /> is a project-level set.
+- Can only access <Constant name="semantic_layer" /> configs.
 - No other access to dbt Cloud features. 
 
 </Expandable>

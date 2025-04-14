@@ -6,7 +6,7 @@ sidebar_label: User interface
 tags: [IDE]
 ---
 
-The [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is a tool for developers to effortlessly build, test, run, and version-control their <Constant name="dbt" /> projects, and enhance data governance — all from the convenience of your browser. Use the Cloud <Constant name="cloud_ide" /> to compile <Constant name="dbt" /> code into SQL and run it against your database directly -- no command line required!
+The [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is a tool for developers to effortlessly build, test, run, and version-control their <Constant name="dbt" /> projects, and enhance data governance — all from the convenience of your browser. Use the Cloud <Constant name="cloud_ide" /> to compile <Constant name="dbt" /> code into SQL and run it against your database directly -- no command line required!
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
 
@@ -49,7 +49,7 @@ The <Constant name="cloud_ide" /> features some delightful tools and layouts to 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
-1. **File Editor &mdash;** The File Editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute <Constant name="dbt" /> commands in your protected primary git branch. Since the <Constant name="cloud" /> <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+1. **File Editor &mdash;** The File Editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute <Constant name="dbt" /> commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
     * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help develop easier for you and your team.
 
@@ -92,7 +92,7 @@ The console section, located below the File editor, includes various console tab
 
 <details>
 <summary>Row limits in IDE</summary>
-The dbt Cloud IDE returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
+The <Constant name="cloud_ide" /> returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
 <ul>
 <li><b>500-row limit:</b> To prevent the IDE from returning too much data and causing browser problems, dbt automatically sets a 500-row limit when using the <b>Preview Button</b>. You can modify this by adding <code>limit your_number</code> at the end of your SQL statement. For example, <code>SELECT * FROM</code> table <code>limit 100</code> will return up to 100 rows. Remember that you must write the <code>limit your_number</code> explicitly and cannot derive it from a macro.</li>
 <li><b>Change row limit default:</b> In dbt version 1.6 or higher, you can change the default limit of 500 rows shown in the <b>Results</b> tab when you run a query. To adjust the setting you can click on <b>Change row display</b> next to the displayed rows. Keep in mind that you can't set it higher than 10,000 rows. If you refresh the page or close your development session, the default limit will go back to 500 rows.</li>
@@ -100,7 +100,7 @@ The dbt Cloud IDE returns default row limits, however, you can also specify the 
 </ul>
 </details>
 
-2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code and displays it in the **Compiled Code** tab.
+1. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code and displays it in the **Compiled Code** tab.
 
 
 Starting from dbt v1.6 or higher, when you save changes to a model, you can compile its code with the model's specific context. This context is similar to what you'd have when building the model and involves useful context variables like `{{ this }} `or `{{ is_incremental() }}`.

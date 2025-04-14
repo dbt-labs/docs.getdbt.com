@@ -5,7 +5,7 @@ description: "Learn about dbt Cloud's development environment to execute your pr
 pagination_next: null
 ---
 
-An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
+An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
 
 Critically, in order to execute <Constant name="dbt" />, environments define three variables:
 

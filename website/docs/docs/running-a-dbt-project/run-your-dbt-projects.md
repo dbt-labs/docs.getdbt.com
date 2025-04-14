@@ -5,11 +5,11 @@ pagination_prev: null
 ---
 You can run your <Constant name="dbt" /> projects with [<Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features) or [<Constant name="core" />](https://github.com/dbt-labs/dbt-core):
 
-- **<Constant name="cloud" />**: A hosted application where you can develop directly from a web browser using the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). It also natively supports developing using a command line interface, [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). Among other features, <Constant name="cloud" /> provides: 
+- **<Constant name="cloud" />**: A hosted application where you can develop directly from a web browser using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). It also natively supports developing using a command line interface, [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). Among other features, <Constant name="cloud" /> provides: 
 
   - Development environment to help you build, test, run, and [version control](/docs/collaborate/git-version-control) your project faster.
   - Share your [<Constant name="dbt" /> project's documentation](/docs/build/documentation) with your team.
-  - Integrates with the <Constant name="cloud" /> <Constant name="cloud_ide" />, allowing you to run development tasks and environment in the <Constant name="cloud" /> UI for a seamless experience.
+  - Integrates with the <Constant name="cloud_ide" />, allowing you to run development tasks and environment in the <Constant name="cloud" /> UI for a seamless experience.
   - The <Constant name="cloud" /> CLI to develop and run <Constant name="dbt" /> commands against your <Constant name="cloud" /> development environment from your local command line.
   - For more details, refer to [Develop <Constant name="dbt" />](/docs/cloud/about-develop-dbt).
 

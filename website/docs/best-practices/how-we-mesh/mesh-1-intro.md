@@ -10,12 +10,12 @@ Organizations of all sizes rely upon <Constant name="dbt" /> to manage their dat
 
 To date, there also hasn't been a first-class way to effectively manage the dependencies, governance, and workflows between multiple <Constant name="dbt" /> projects. 
 
-That's where **<Constant name="dbt" /> <Constant name="mesh" />** comes in - empowering data teams to work *independently and collaboratively*; sharing data, code, and best practices without sacrificing security or autonomy. 
+That's where **<Constant name="mesh" />** comes in - empowering data teams to work *independently and collaboratively*; sharing data, code, and best practices without sacrificing security or autonomy. 
 
-This guide will walk you through the concepts and implementation details needed to get started. <Constant name="dbt" /> <Constant name="mesh" /> is not a single product - it is a pattern enabled by a convergence of several features in <Constant name="dbt" />:
+This guide will walk you through the concepts and implementation details needed to get started. <Constant name="mesh" /> is not a single product - it is a pattern enabled by a convergence of several features in <Constant name="dbt" />:
 
 - **[Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)** - this is the foundational feature that enables the multi-project deployments. `{{ ref() }}`s now work across dbt Cloud projects on Enterprise plans.
-- **[<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects)** - <Constant name="cloud" />'s metadata-powered documentation platform, complete with full, cross-project lineage.
+- **[<Constant name="explorer" />](/docs/collaborate/explore-projects)** - <Constant name="cloud" />'s metadata-powered documentation platform, complete with full, cross-project lineage.
 - **Governance** - <Constant name="dbt" />'s governance features allow you to manage access to your <Constant name="dbt" /> models both within and across projects.
   - **[Groups](/docs/collaborate/govern/model-access#groups)** - With groups, you can organize nodes in your <Constant name="dbt" /> DAG that share a logical connection (for example, by functional area) and assign an owner to the entire group.
   - **[Access](/docs/collaborate/govern/model-access#access-modifiers)** - access configs allow you to control who can reference models.
@@ -35,10 +35,10 @@ The multi-project architecture helps organizations with mature, complex transfor
 
 If you're just starting your <Constant name="dbt" /> journey, don't worry about building a multi-project architecture right away. You can _incrementally_ adopt the features in this guide as you scale. The collection of features work effectively as independent tools. Familiarizing yourself with the tooling and features that make up a multi-project architecture, and how they can apply to your organization will help you make better decisions as you grow.
 
-For additional information, refer to the [<Constant name="dbt" /> <Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs).
+For additional information, refer to the [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs).
 
 ## Learning goals
 
 - Understand the **purpose and tradeoffs** of building a multi-project architecture.
-- Develop an intuition for various **<Constant name="dbt" /> <Constant name="mesh" /> patterns** and how to design a multi-project architecture for your organization.
+- Develop an intuition for various **<Constant name="mesh" /> patterns** and how to design a multi-project architecture for your organization.
 - Establish recommended steps to **incrementally adopt** these patterns in your <Constant name="dbt" /> implementation.

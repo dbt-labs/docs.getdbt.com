@@ -13,7 +13,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 
 <CopilotBeta resource='semantic models' />
 
-Semantic models are the foundation for data definition in MetricFlow, which powers the <Constant name="dbt" /> <Constant name="semantic_layer" />:
+Semantic models are the foundation for data definition in MetricFlow, which powers the <Constant name="semantic_layer" />:
 
 - Think of semantic models as nodes connected by entities in a semantic graph.
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.

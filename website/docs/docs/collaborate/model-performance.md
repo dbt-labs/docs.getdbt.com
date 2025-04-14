@@ -4,7 +4,7 @@ sidebar_label: "Model performance"
 description: "Learn about the performance of your models so you can make improvements to save time and money."
 ---
 
-<Constant name="dbt" /> <Constant name="explorer" /> provides metadata on <Constant name="cloud" /> runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
+<Constant name="explorer" /> provides metadata on <Constant name="cloud" /> runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
 

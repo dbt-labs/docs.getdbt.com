@@ -22,15 +22,15 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <Expandable alt_header="What is dbt Cloud and dbt Core?">
 
-   - dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
-     - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+   - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+     - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-     - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
-     - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
-     - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+     - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+     - Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups
+     - [<Constant name="explorer" />](/docs/collaborate/explore-projects) for easier data discovery and understanding
 
-   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
-- dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+   Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features).
+- <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
 </Expandable>
 
@@ -156,7 +156,7 @@ Once you’ve confirmed that dbt Cloud orchestration and CI/CD are working as ex
 
 Familiarize your team with <Constant name="cloud" />'s [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
 - **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic <Constant name="dbt" /> version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
-- **Development tools**: Use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your <Constant name="dbt" /> projects.
+- **Development tools**: Use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your <Constant name="dbt" /> projects.
 - **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in <Constant name="cloud" />, which streamlines project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to the job details. Access comprehensive logs for all job runs to help with troubleshooting.
 - **CI/CD:** Use <Constant name="cloud" />'s [CI/CD](/docs/deploy/ci-jobs) feature to run your <Constant name="dbt" /> projects in a temporary schema whenever new commits are pushed to open pull requests. This helps with catching bugs before deploying to production.
@@ -190,7 +190,7 @@ This guide should now have given you some insight and equipped you with a framew
 
 - **Test and validate**: Emphasizing technical transitions, including testing and validating your <Constant name="dbt" /> projects within the <Constant name="cloud" /> ecosystem to ensure data integrity and performance.
 
-- **Transition and training**: Share useful transition, training, and onboarding information for your team. Fully leverage <Constant name="cloud" />'s capabilities, from development tools (<Constant name="cloud" /> CLI and <Constant name="cloud" /> <Constant name="cloud_ide" />) to advanced features such as <Constant name="dbt" /> <Constant name="explorer" />, the <Constant name="semantic_layer" />, and <Constant name="dbt" /> <Constant name="mesh" />.
+- **Transition and training**: Share useful transition, training, and onboarding information for your team. Fully leverage <Constant name="cloud" />'s capabilities, from development tools (<Constant name="cloud" /> CLI and <Constant name="cloud_ide" />) to advanced features such as <Constant name="explorer" />, the <Constant name="semantic_layer" />, and <Constant name="mesh" />.
 
 ## What’s next?
 

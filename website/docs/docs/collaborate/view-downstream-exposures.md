@@ -10,7 +10,7 @@ image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 # Visualize downstream exposures <Lifecycle status="enterprise" />
 
 <IntroText>
-Downstream exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in <Constant name="dbt" /> <Constant name="explorer" /> for a richer experience.
+Downstream exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in <Constant name="explorer" /> for a richer experience.
 </IntroText>
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. By leveraging downstream [exposures](/docs/build/exposures) automatically, data teams can:

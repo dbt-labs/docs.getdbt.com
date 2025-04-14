@@ -8,7 +8,7 @@ hide_table_of_contents: true
 intro_text: "Develop dbt projects using dbt Cloud, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 
-You can develop in your browser using a <Constant name="cloud" />-powered command line interface (CLI), an integrated development environment (<Constant name="cloud_ide" />), or Visual editor.
+You can develop in your browser using a <Constant name="cloud" />-powered command line interface (CLI), an integrated development environment (<Constant name="cloud_ide" />), or <Constant name="visual_editor" />.
 
 <div className="grid--3-col" >
 

@@ -57,11 +57,11 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 ## Authenticate your personal GitHub account
 
-After the <Constant name="cloud" /> administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to <Constant name="cloud" /> to use the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
+After the <Constant name="cloud" /> administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to <Constant name="cloud" /> to use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
 
 :::info GitHub profile connection
 
-- <Constant name="cloud" /> developers on the [Enterprise plan](https://www.getdbt.com/pricing/) must each connect their GitHub profiles to <Constant name="cloud" />. This is because the <Constant name="cloud" /> <Constant name="cloud_ide" /> verifies every developer's read / write access for the <Constant name="dbt" /> repo. 
+- <Constant name="cloud" /> developers on the [Enterprise plan](https://www.getdbt.com/pricing/) must each connect their GitHub profiles to <Constant name="cloud" />. This is because the <Constant name="cloud_ide" /> verifies every developer's read / write access for the <Constant name="dbt" /> repo. 
 
 - <Constant name="cloud" /> developers on the [Team plan](https://www.getdbt.com/pricing/) don't need to each connect their profiles to GitHub, however, it's still recommended to do so.
 
@@ -80,7 +80,7 @@ To connect a personal GitHub account:
 
 5. Once you approve authorization, you will be redirected to <Constant name="cloud" />, and you should now see your connected account. 
 
-You can now use the <Constant name="cloud" /> <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
+You can now use the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
 
 
 ## FAQs

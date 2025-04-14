@@ -14,7 +14,7 @@ To specify a custom branch:
 
 ## Development
 
-In a development environment, the primary branch (usually named `main`) is protected in your connected repositories. You can directly edit, format, or lint files and execute dbt commands in your protected default git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch when you're ready.
+In a development environment, the primary branch (usually named `main`) is protected in your connected repositories. You can directly edit, format, or lint files and execute dbt commands in your protected default git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, you can commit those changes to a new branch when you're ready.
 
 Specifying a **Custom branch** overrides the default behavior. It makes the custom branch protected and enables you to create new development branches from it. You can directly edit, format, or lint files and execute <Constant name="dbt" /> commands in your custom branch, but you cannot make commits to it. <Constant name="cloud" /> prompts you to commit those changes to a new branch.
 

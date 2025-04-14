@@ -177,10 +177,10 @@ You can now delete the files that <Constant name="dbt" /> created when you initi
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud" /> <Constant name="cloud_ide" />:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud" /> <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

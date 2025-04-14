@@ -177,12 +177,12 @@ The audit log supports various events for different objects in <Constant name="c
 
 | Event Name                       | Event Type                    | Description            |
 | -------------------------------- | ----------------------------- | -----------------------|
-| <Constant name="semantic_layer" /> Config Added      | semantic_layer_config.added   | <Constant name="semantic_layer" /> config added |
-| <Constant name="semantic_layer" /> Config Changed      | semantic_layer_config.changed  | <Constant name="semantic_layer" /> config (not related to credentials) changed |
-| <Constant name="semantic_layer" /> Config Removed    | semantic_layer_config.removed   | <Constant name="semantic_layer" /> config removed |
-| <Constant name="semantic_layer" /> Credentials Added | semantic_layer_credentials.added   | <Constant name="semantic_layer" /> credentials added |
-| <Constant name="semantic_layer" /> Credentials Changed| semantic_layer_credentials.changed   | <Constant name="semantic_layer" /> credentials changed. Does not trigger semantic_layer_config.changed|
-| <Constant name="semantic_layer" /> Credentials Removed| semantic_layer_credentials.removed   | <Constant name="semantic_layer" /> credentials removed |
+| Semantic Layer Config Added      | semantic_layer_config.added   | <Constant name="semantic_layer" /> config added |
+| Semantic Layer Config Changed      | semantic_layer_config.changed  | <Constant name="semantic_layer" /> config (not related to credentials) changed |
+| Semantic Layer Config Removed    | semantic_layer_config.removed   | <Constant name="semantic_layer" /> config removed |
+| Semantic Layer Credentials Added | semantic_layer_credentials.added   | <Constant name="semantic_layer" /> credentials added |
+| Semantic Layer Credentials Changed| semantic_layer_credentials.changed   | <Constant name="semantic_layer" /> credentials changed. Does not trigger semantic_layer_config.changed|
+| Semantic Layer Credentials Removed| semantic_layer_credentials.removed   | <Constant name="semantic_layer" /> credentials removed |
 
 ### Extended attributes
 

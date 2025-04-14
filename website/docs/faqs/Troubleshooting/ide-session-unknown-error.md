@@ -5,7 +5,7 @@ sidebar_label: 'Receiving unknown error in the IDE'
 
 ---
 
-If you're seeing the following error when you launch the <Constant name="cloud" /> <Constant name="cloud_ide" />, it could be due to a few scenarios but, commonly, it indicates a missing repository:
+If you're seeing the following error when you launch the <Constant name="cloud_ide" />, it could be due to a few scenarios but, commonly, it indicates a missing repository:
 
 ```shell
 

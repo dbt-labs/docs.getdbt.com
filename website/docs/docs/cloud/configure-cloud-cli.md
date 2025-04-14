@@ -11,7 +11,7 @@ Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt c
 - Secure credential storage in the <Constant name="cloud" /> platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
 - Speedier, lower-cost builds.
-- Support for <Constant name="dbt" /> <Constant name="mesh" /> ([cross-project ref](/docs/collaborate/govern/project-dependencies)), and more.
+- Support for <Constant name="mesh" /> ([cross-project ref](/docs/collaborate/govern/project-dependencies)), and more.
 
 ## Prerequisites
 

@@ -23,8 +23,8 @@ The <Constant name="query_page" /> provides a rich console experience with edito
 - View the results of the query and its details using the **Results** or **Details** tabs
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** icon
-- Use <Constant name="dbt" /> <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="dbt" /> <Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
+- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the Query page
 
@@ -74,11 +74,11 @@ Let's use an example to illustrate how to run queries in the <Constant name="que
     ```
 
 ### Use dbt Copilot 
-To make things easier, Kimiko decides to use <Constant name="dbt" /> <Constant name="copilot" /> to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help her quickly update the query or generate a new one based on her prompt.
+To make things easier, Kimiko decides to use <Constant name="copilot" /> to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help her quickly update the query or generate a new one based on her prompt.
 
-1. She clicks the **<Constant name="dbt" /> <Constant name="copilot" />** icon in the Query console sidebar to open the prompt box.  
+1. She clicks the **<Constant name="copilot" />** icon in the Query console sidebar to open the prompt box.  
 2. She enters her prompt in natural language and asks for a yearly breakdown of unique customers and total revenue. Then clicks **Submit**.
-3. <Constant name="dbt" /> <Constant name="copilot" /> responds with:
+3. <Constant name="copilot" /> responds with:
    - A summary of the query
    - An explanation of the logic
    - The SQL it generated
@@ -89,15 +89,15 @@ To make things easier, Kimiko decides to use <Constant name="dbt" /> <Constant n
 <Lightbox src="/img/docs/query-page/qp-copilot.gif" width="95%" title="Query page dbt Copilot" />
 
 From here, Kimiko can:
-- Continue building or modifying the query using <Constant name="dbt" /> <Constant name="copilot" />
+- Continue building or modifying the query using <Constant name="copilot" />
 - Explore the [results](#view-results) in the **Results** tab
 - [View metadata and query details](#view-details) in the **Details** tab
 - [Visualize results](#chart-results) in the **Chart** tab
 - Check the [**Query history**](#query-history) for status and past runs
-- Use [**<Constant name="dbt" /> <Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
+- Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-query-page#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-query-page#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results
@@ -111,7 +111,7 @@ Using the same example, Kimiko can perform some exploratory data analysis by run
 
 ### View details
 Kimiko can also view the details of the query by clicking on the **Details** tab:
-- **Query metadata** &mdash; <Constant name="dbt" /> <Constant name="copilot" /> AI-generated title and description, the supplied SQL, and corresponding compiled SQL.
+- **Query metadata** &mdash; <Constant name="copilot" /> AI-generated title and description, the supplied SQL, and corresponding compiled SQL.
 - **Connection details** &mdash; Relevant data platform connection information.
 - **Query details** &mdash; Query duration, status, column count, row count.
 
@@ -139,14 +139,14 @@ The query history is stored indefinitely.
 
 ### Use dbt Explorer
 
-Kimiko accesses [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) directly in the <Constant name="query_page" /> to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
+Kimiko accesses [<Constant name="explorer" />](/docs/collaborate/explore-projects) directly in the <Constant name="query_page" /> to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
 
 This integrated view allows her and other users to maintain their query workflow, while getting more context on models, semantic models, metrics, macros, and more. The integrated <Constant name="explorer" /> view comes with:
 - Same search capabilities as <Constant name="explorer" />
 - Allows users to narrow down displayed objects by type
 - Hyperlink from SQL code `ref` to the corresponding Explorer page
 
-To access <Constant name="dbt" /> <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-query-page#query-console-sidebar-menu).
+To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-query-page#query-console-sidebar-menu).
 
 <Lightbox src="/img/docs/query-page/qp-explorer.png" width="90%" title="Query page integrated with dbt Explorer" />
 
@@ -160,7 +160,7 @@ To access <Constant name="dbt" /> <Constant name="explorer" />, click on the **<
 <!-- this can move to another page -->
 
 ## FAQs
-- What’s the difference between <Constant name="query_page" /> and <Constant name="dbt" /> <Constant name="explorer" />?
+- What’s the difference between <Constant name="query_page" /> and <Constant name="explorer" />?
   - That’s a great question! <Constant name="explorer" /> helps you understand your <Constant name="dbt" /> project's structure, resources, lineage, and metrics, offering context for your data.
   - The <Constant name="query_page" /> builds on that context, allowing you to write, run, and iterate on SQL queries directly in <Constant name="cloud" />. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
   - <Constant name="explorer" /> provides the context, while <Constant name="query_page" /> enables action.

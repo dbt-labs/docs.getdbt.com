@@ -37,7 +37,7 @@ You can view or download in-progress and historical logs for your <Constant name
 
 ### Lineage tab
 
-View the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), select it (double-click) from the graph. 
+View the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [<Constant name="explorer" />](/docs/collaborate/explore-projects), select it (double-click) from the graph. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" width="85%" title="Example of accessing dbt Explorer from the Lineage tab" />
 
@@ -66,7 +66,7 @@ From the **Modified** section, you can view the following:
 - **Modified rows** &mdash; Details about the modified rows. Click **Show full preview** to display all columns.
 - **Columns** &mdash; Details about the changes to the columns. 
 
-To view the dependencies and relationships of the resources in your project more closely, click **View in <Constant name="explorer" />** to launch [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects). 
+To view the dependencies and relationships of the resources in your project more closely, click **View in <Constant name="explorer" />** to launch [<Constant name="explorer" />](/docs/collaborate/explore-projects). 
 
 <Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
 

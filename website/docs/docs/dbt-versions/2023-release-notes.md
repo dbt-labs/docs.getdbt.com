@@ -236,7 +236,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>
 
-    The <Constant name="dbt" /> <Constant name="semantic_layer" /> is available to [<Constant name="cloud" /> Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on <Constant name="dbt" /> v1.6 or higher. 
+    The <Constant name="semantic_layer" /> is available to [<Constant name="cloud" /> Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on <Constant name="dbt" /> v1.6 or higher. 
     - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) for more information.
     - <Constant name="cloud" /> Developer plans and <Constant name="core" /> users can define metrics but won't be able to query them with integrated tools.
 

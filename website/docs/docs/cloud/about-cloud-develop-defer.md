@@ -9,7 +9,7 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 
 [Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves the `{{ ref() }}` function with upstream production artifacts. 
 
-Both the <Constant name="cloud" /> <Constant name="cloud_ide" /> and the <Constant name="cloud" /> CLI enable users to natively defer to production metadata directly in their development workflows. 
+Both the <Constant name="cloud_ide" /> and the <Constant name="cloud" /> CLI enable users to natively defer to production metadata directly in their development workflows. 
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
@@ -39,7 +39,7 @@ To use deferral in the <Constant name="cloud_ide" />, you must have production a
 
 The defer feature in the <Constant name="cloud_ide" /> won't work if a Staging environment exists but no deploy job has run. This is because the necessary metadata to power defer won't exist until a deploy job has run successfully in the Staging environment.
 
-To enable defer in the <Constant name="cloud" /> <Constant name="cloud_ide" />, toggle the **Defer to staging/production** button on the command bar. Once enabled, <Constant name="cloud" /> will:
+To enable defer in the <Constant name="cloud_ide" />, toggle the **Defer to staging/production** button on the command bar. Once enabled, <Constant name="cloud" /> will:
 
 1. Pull down the most recent manifest from the Staging or Production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)

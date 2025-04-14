@@ -24,4 +24,4 @@ To migrate from one git provider to another, refer to the following steps to avo
   
 6. That's it, you should now be connected to the new <Constant name="git" /> provider! 🎉
 
-Note &mdash; As a tip, we recommend you refresh your page and <Constant name="cloud" /> <Constant name="cloud_ide" /> before performing any actions. 
+Note &mdash; As a tip, we recommend you refresh your page and <Constant name="cloud_ide" /> before performing any actions. 

@@ -21,7 +21,7 @@ As a data team, it’s critical that you have context into the downstream use ca
 
 In <Constant name="cloud" />, you can configure downstream exposures in two ways:
 - Manually &mdash; Declared [explicitly](/docs/build/exposures#declaring-an-exposure) in your project’s YAML files.
-- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
+- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
 
 :::info Tableau Server
 If you're using Tableau Server, you need to add the [<Constant name="cloud" /> IP addresses for your region](/docs/cloud/about-cloud/access-regions-ip-addresses) to your allowlist.
@@ -50,7 +50,7 @@ Set up downstream exposures in [Tableau](#set-up-in-tableau) and [<Constant name
 
 This section explains the steps to configure the integration in Tableau. A Tableau site admin must complete these steps. 
 
-Once configured in both Tableau and [<Constant name="cloud" />](#set-up-in-dbt-cloud), you can [view downstream exposures](#view-downstream-exposures) in <Constant name="dbt" /> <Constant name="explorer" />. 
+Once configured in both Tableau and [<Constant name="cloud" />](#set-up-in-dbt-cloud), you can [view downstream exposures](#view-downstream-exposures) in <Constant name="explorer" />. 
 
 1. Enable [personal access tokens (PATs)](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) for your Tableau account.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/tableau-enable-pat.jpg" title="Enable PATs for the account in Tableau"/>

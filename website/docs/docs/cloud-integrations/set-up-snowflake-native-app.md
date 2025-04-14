@@ -7,7 +7,7 @@ pagination_next: null
 
 # Set up the dbt Snowflake Native App <Lifecycle status='preview' />
 
-The [<Constant name="dbt" /> Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="dbt" /> <Constant name="explorer" />, the **Ask <Constant name="dbt" />** chatbot, and <Constant name="cloud" />'s orchestration observability features. 
+The [<Constant name="dbt" /> Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="explorer" />, the **Ask <Constant name="dbt" />** chatbot, and <Constant name="cloud" />'s orchestration observability features. 
 
 Configure both <Constant name="cloud" /> and Snowflake to set up this integration. The high-level steps are described as follows: 
 
@@ -115,7 +115,7 @@ Collect the following pieces of information from <Constant name="cloud" /> to se
 
 To verify the app installed successfully, select any of the following from the sidebar:
 
-- **Explore** &mdash; Launch <Constant name="dbt" /> <Constant name="explorer" /> and make sure you can access your <Constant name="dbt" /> project information.
+- **Explore** &mdash; Launch <Constant name="explorer" /> and make sure you can access your <Constant name="dbt" /> project information.
 - **Jobs** &mdash; Review the run history of the <Constant name="dbt" /> jobs. 
 - **Ask <Constant name="dbt" />** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the <Constant name="dbt" /> project, it can take several minutes to load **Ask <Constant name="dbt" />** the first time because <Constant name="dbt" /> is building the Retrieval Augmented Generation (RAG). Subsequent launches will load faster.
 
@@ -152,5 +152,5 @@ If there's been an update to the dbt Cloud account ID, access URL, or API servic
 
 <Expandable alt_header="Are environment variables supported in the Native App?" >
 
-[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the dbt Semantic Layer yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
+[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the <Constant name="semantic_layer" /> yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
 </Expandable>

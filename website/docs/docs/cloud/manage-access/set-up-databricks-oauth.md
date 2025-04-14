@@ -6,7 +6,7 @@ id: "set-up-databricks-oauth"
 
 # Set up Databricks OAuth <Lifecycle status="enterprise" />
 
-<Constant name="cloud" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for <Constant name="dbt" /> enterprise users. When you enable Databricks OAuth for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with Databricks in order to use the <Constant name="cloud" /> <Constant name="cloud_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
+<Constant name="cloud" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for <Constant name="dbt" /> enterprise users. When you enable Databricks OAuth for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with Databricks in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 
 
 Current limitation:
@@ -66,4 +66,4 @@ Once the Databricks connection via OAuth is set up for a <Constant name="cloud" 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connecting to Databricks from an IDE user profile" />
 
-You will then be redirected to Databricks and asked to approve the connection. This redirects you back to <Constant name="cloud" />. You should now be an authenticated Databricks user, ready to use the <Constant name="cloud" /> <Constant name="cloud_ide" />.
+You will then be redirected to Databricks and asked to approve the connection. This redirects you back to <Constant name="cloud" />. You should now be an authenticated Databricks user, ready to use the <Constant name="cloud_ide" />.

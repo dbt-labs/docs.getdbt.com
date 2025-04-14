@@ -20,7 +20,7 @@ Another option would be to use an external code editor (for example, VS Code) to
 
 ### Manual migration with multiple browser tabs
 
-If you only have a couple of models or macros that you want to consolidate, copy the raw file contents from your git provider in `Smaller Subset Project`. Then, in the dbt Cloud IDE, paste the contents into a new file in your `Main Project`.
+If you only have a couple of models or macros that you want to consolidate, copy the raw file contents from your git provider in `Smaller Subset Project`. Then, in the <Constant name="cloud_ide" />, paste the contents into a new file in your `Main Project`.
 
 Alternatively, you can download those files from your git provider (`Smaller Subset Project` repo) and upload them back to your other repository (`Main Project` repo). This doesn’t scale well and could bypass change controls, so it might only be a viable solution for organizations with only a few files.
 

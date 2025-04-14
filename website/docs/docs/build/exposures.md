@@ -10,7 +10,7 @@ Exposures make it possible to define and describe a downstream use of your <Cons
 
 Exposures can be defined in two ways:
 - Manual &mdash; Declared [explicitly](/docs/build/exposures#declaring-an-exposure) in your project’s YAML files.
-- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
+- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
 
 ### Declaring an exposure
 
@@ -77,7 +77,7 @@ Once an exposure is defined, you can run commands that reference it:
 
 ```
 
-When we generate the [<Constant name="dbt" /> <Constant name="explorer" /> site](/docs/collaborate/explore-projects), you'll see the exposure appear:
+When we generate the [<Constant name="explorer" /> site](/docs/collaborate/explore-projects), you'll see the exposure appear:
 
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-explorer-exposures.jpg" title="Exposures has a dedicated section, under the 'Resources' tab in dbt Explorer,  which lists each exposure in your project."/>
 <Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as nodes in the dbt Explorer DAG. It displays an orange 'EXP' indicator within the node. "/>

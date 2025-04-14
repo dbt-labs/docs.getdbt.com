@@ -29,7 +29,7 @@ The following table summarizes the differences between visualizing and orchestra
 | ---- | ---- | ---- |
 | Purpose | Automatically brings downstream assets into your <Constant name="dbt" /> lineage. | Proactively refreshes the underlying data sources during scheduled <Constant name="dbt" /> jobs. |
 | Benefits | Provides visibility into data flow and dependencies. | Ensures BI tools always have up-to-date data without manual intervention. |
-| Location  | Exposed in [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) | Exposed in [<Constant name="cloud" /> scheduler](/docs/deploy/deployments) |
+| Location  | Exposed in [<Constant name="explorer" />](/docs/collaborate/explore-projects) | Exposed in [<Constant name="cloud" /> scheduler](/docs/deploy/deployments) |
 | Supported BI tool | Tableau | Tableau |
 | Use case | Helps users understand how models are used and reduces incidents. | Optimizes timeliness and reduces costs by running models when needed. |
 </Expandable>

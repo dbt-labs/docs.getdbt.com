@@ -41,7 +41,7 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the <Constant name="cloud" /> <Constant name="cloud_ide" /> to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the <Constant name="cloud_ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
@@ -373,7 +373,7 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 ## Common pitfalls
 
 ### `Preview` vs. `dbt run`
-_(<Constant name="cloud" /> <Constant name="cloud_ide" /> users only)_
+_(<Constant name="cloud_ide" /> users only)_
 
 There's two interfaces that look similar:
 - The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.

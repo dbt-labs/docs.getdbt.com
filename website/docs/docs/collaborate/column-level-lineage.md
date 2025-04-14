@@ -5,7 +5,7 @@ description: "Use dbt Explorer's column-level lineage to gain insights about you
 
 # Column-level lineage <Lifecycle status='enterprise' />
 
-<Constant name="dbt" /> <Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your <Constant name="dbt" /> project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a <Constant name="dbt" /> project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
+<Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your <Constant name="dbt" /> project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a <Constant name="dbt" /> project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
 
 CLL is available to <Constant name="cloud" /> Enterprise accounts that can use <Constant name="explorer" />. 
 
@@ -58,7 +58,7 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
-Refer to the following CLL caveats or limitations as you navigate <Constant name="dbt" /> <Constant name="explorer" />.
+Refer to the following CLL caveats or limitations as you navigate <Constant name="explorer" />.
 
 ### Column usage
 Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It doesn't reflect other usage like joins and filters. 

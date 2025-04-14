@@ -123,7 +123,7 @@ To create the configuration:
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt Cloud."/>
 
-Your Microsoft Entra ID app should now be added to your <Constant name="cloud" /> Account. People on your team who want to develop in the <Constant name="cloud" /> <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
+Your Microsoft Entra ID app should now be added to your <Constant name="cloud" /> Account. People on your team who want to develop in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
 
 ## Migrate to service principal

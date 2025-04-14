@@ -53,7 +53,7 @@ For more detailed information and to ask questions, please read and comment on t
 
 ### MetricFlow
 
-- [**Build your metrics**](/docs/build/build-metrics-intro) with MetricFlow, a key component of the <Constant name="dbt" /> <Constant name="semantic_layer" />. You can define your metrics and build semantic models with MetricFlow, available on the command line (CLI) for <Constant name="core" /> v1.6 beta or higher.
+- [**Build your metrics**](/docs/build/build-metrics-intro) with MetricFlow, a key component of the <Constant name="semantic_layer" />. You can define your metrics and build semantic models with MetricFlow, available on the command line (CLI) for <Constant name="core" /> v1.6 beta or higher.
 
 ### Materialized views
 

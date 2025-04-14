@@ -7,20 +7,20 @@ sidebar_label: "Power BI"
 
 # Power BI <Lifecycle status="enterprise,beta" />
 
-The Power BI integration enables you to query the <Constant name="dbt" /> <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="dbt" /> <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
+The Power BI integration enables you to query the <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
 
 :::tip
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> Power BI integration is currently in private beta. To join the beta, contact your account representative.
+The <Constant name="semantic_layer" /> Power BI integration is currently in private beta. To join the beta, contact your account representative.
 :::
 
 ## Prerequisites
 
 - Accept and sign the AI & beta addendum. Reach out to your account team to begin this process.
-- You have [configured the <Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) 
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) 
 - You are on a supported [<Constant name="cloud" /> release track](/docs/dbt-versions/cloud-release-tracks) or on <Constant name="dbt" /> v1.6 or higher.
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
-- You need your [<Constant name="cloud" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="dbt" /> <Constant name="semantic_layer" />.
+- You need your [<Constant name="cloud" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';
@@ -29,7 +29,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Install the connector
 
-The dbt Semantic Layer Power BI connector consists of a custom `.pqx` Power BI connector and an ODBC driver. Install both using our Windows installer by following these steps:
+The <Constant name="semantic_layer" /> Power BI connector consists of a custom `.pqx` Power BI connector and an ODBC driver. Install both using our Windows installer by following these steps:
 
 #### 1. Join the private beta
    - Contact your dbt Labs account representative to request access to the `.msi` installer.
@@ -75,7 +75,7 @@ To configure project credentials in Power BI Desktop:
 
 1. Create a blank report.
 2. On the top-left, click on **Get data**.
-3. Search for <Constant name="dbt" /> <Constant name="semantic_layer" />, then click **Connect**.
+3. Search for <Constant name="semantic_layer" />, then click **Connect**.
 4. Fill in your connection details. You can find your Host and Environment ID under the <Constant name="semantic_layer" /> configuration for your <Constant name="cloud" /> project.
    :::tip 
    Make sure you select **DirectQuery** under **Data Connectivity mode** since the <Constant name="semantic_layer" /> connector does not support **Import** mode. See [Considerations](#considerations) for more details. 
@@ -90,12 +90,12 @@ Now that you've configured the connector, you can configure published reports in
 
 ## Configure published reports
 
-After publishing a report and the first time you hit **Publish** on a given report, configure Power BI Service to use your organization’s On-premises Data Gateway to access data from the <Constant name="dbt" /> <Constant name="semantic_layer" />:
+After publishing a report and the first time you hit **Publish** on a given report, configure Power BI Service to use your organization’s On-premises Data Gateway to access data from the <Constant name="semantic_layer" />:
 
 1. On the top right, click on **Settings > Power BI settings**.
    <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-settings.jpg" title="Navigate to Settings > Power BI Settings" />
 2. Navigate to the **Semantic models** tab and select your report on the sidebar on the left.
-3. Under **Gateway and cloud connections**, select the **On-premises Data Gateway** where your IT admin has installed the <Constant name="dbt" /> <Constant name="semantic_layer" /> connector. 
+3. Under **Gateway and cloud connections**, select the **On-premises Data Gateway** where your IT admin has installed the <Constant name="semantic_layer" /> connector. 
    - If the Status is **Not configured correctly**, you’ll have to configure it.
    <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-gateway-cloud-connections.jpg" title="Configure the gateway connection" />
 4. Click on the arrow under **Actions** and then, click on **Manually add to gateway**.
@@ -109,9 +109,9 @@ You can now go back to your published report on Power BI Service to assert data 
 
 ## Use the connector
 
-This section describes how to use the <Constant name="dbt" /> <Constant name="semantic_layer" /> connector in Power BI.
+This section describes how to use the <Constant name="semantic_layer" /> connector in Power BI.
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> connector creates:
+The <Constant name="semantic_layer" /> connector creates:
 - A virtual table for each saved query.
 - A `METRICS.ALL` table containing all metrics, and dimensions and entities appear as regular dimension columns.
 

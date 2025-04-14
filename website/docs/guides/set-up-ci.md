@@ -62,7 +62,7 @@ If you've [built semantic nodes](/docs/build/build-metrics-intro) in your <Const
 
 That's it! There are other steps you can take to be even more confident in your work, such as validating your structure follows best practices and linting your code. For more information, refer to [Get started with Continuous Integration tests](/guides/set-up-ci).
 
-To test your new flow, create a new branch in the <Constant name="cloud" /> <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
+To test your new flow, create a new branch in the <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 
 ### Things to keep in mind
 

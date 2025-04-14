@@ -24,13 +24,13 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Introduction
 
-The [<Constant name="dbt" /> <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your <Constant name="dbt" /> project and query them in <Constant name="cloud" /> with [MetricFlow commands](/docs/build/metricflow-commands).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your <Constant name="dbt" /> project and query them in <Constant name="cloud" /> with [MetricFlow commands](/docs/build/metricflow-commands).
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-This quickstart guide is designed for <Constant name="cloud" /> users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the <Constant name="dbt" /> <Constant name="semantic_layer" /> in a <Constant name="cloud" /> project, and querying metrics in Google Sheets. 
+This quickstart guide is designed for <Constant name="cloud" /> users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the <Constant name="semantic_layer" /> in a <Constant name="cloud" /> project, and querying metrics in Google Sheets. 
 
 If you're on different data platforms, you can also follow this guide and will need to modify the setup for the specific platform. See the [users on different platforms](#for-users-on-different-data-platforms) section for more information.
 
@@ -56,7 +56,7 @@ If you're on different data platforms, you can also follow this guide and will n
 
 If you're using a data platform other than Snowflake, this guide is also applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
 
-The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the <Constant name="dbt" /> <Constant name="semantic_layer" />.
+The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the <Constant name="semantic_layer" />.
 
 <Tabs>
 
@@ -326,11 +326,11 @@ If you used Partner Connect, you can skip to [initializing your <Constant name="
 <Snippet path="tutorial-managed-repo" />
 
 ### Initialize your dbt project
-This guide assumes you use the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your <Constant name="dbt" /> project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your <Constant name="dbt" /> project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" /> using the <Constant name="cloud_ide" />:
 
-1. Click **Start developing in the <Constant name="cloud" /> <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add a new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -348,10 +348,10 @@ The next step is to build your project. This involves adding sources, staging mo
 
 [Sources](/docs/build/sources) in <Constant name="dbt" /> are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable.
 
-You have two options for working with files in the <Constant name="cloud" /> <Constant name="cloud_ide" />:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - **Create a new branch (recommended)** &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch, use this option. The <Constant name="cloud" /> <Constant name="cloud_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
+- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch, use this option. The <Constant name="cloud_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
 
 Name the new branch `build-project`.
 
@@ -966,7 +966,7 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 ## Set up dbt Semantic Layer
 
-In this section, you will learn how to set up the <Constant name="dbt" /> <Constant name="semantic_layer" />, add credentials, and create service tokens. This section goes over the following topics:
+In this section, you will learn how to set up the <Constant name="semantic_layer" />, add credentials, and create service tokens. This section goes over the following topics:
 
 - [Select environment](#1-select-environment)
 - [Add a credential and create service tokens](#2-add-a-credential-and-create-service-tokens)
@@ -988,7 +988,7 @@ This page will guide you on how to connect and use the following integrations to
 - [Connect and query with Google Sheets](#connect-and-query-with-google-sheets)
 - [Connect and query with Hex](#connect-and-query-with-hex)
 
-The <Constant name="dbt" /> <Constant name="semantic_layer" /> enables you to connect and query your metric with various available tools like Google Sheets, Hex, Tableau, and more. 
+The <Constant name="semantic_layer" /> enables you to connect and query your metric with various available tools like Google Sheets, Hex, Tableau, and more. 
 
 Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
 
@@ -1025,7 +1025,7 @@ This section will guide you on how to use the Hex integration to query your metr
    * Enter your service token 
    * Make sure to click on the **Use <Constant name="semantic_layer" />** toggle. This way, all queries are routed through <Constant name="dbt" />.
    * Click **Create connection** in the bottom right corner.
-9. Hover over **More** on the menu shown in the following image and select **<Constant name="dbt" /> <Constant name="semantic_layer" />**.
+9. Hover over **More** on the menu shown in the following image and select **<Constant name="semantic_layer" />**.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Hover over 'More' on the menu and select 'dbt Semantic Layer'."/>
 
 10. Now, you should be able to query metrics using Hex! Try it yourself: 
@@ -1044,7 +1044,7 @@ This section will guide you on how to use the Hex integration to query your metr
 3. Then click the purple Hex button in the top left corner.
 4. Click the **Collections** button on the menu on the left.
 5. Select the **<Constant name="semantic_layer" /> Workshop** collection. 
-6. Click the **Getting started with the <Constant name="dbt" /> <Constant name="semantic_layer" />** project collection.
+6. Click the **Getting started with the <Constant name="semantic_layer" />** project collection.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_collections.png" width="80%" title="Click 'Collections' to select the 'Semantic Layer Workshop' collection."/>
 
@@ -1071,7 +1071,7 @@ This section will guide you on how to use the Hex integration to query your metr
 
 <ConfettiTrigger>
 
-Great job on completing the comprehensive <Constant name="dbt" /> <Constant name="semantic_layer" /> guide 🎉! You should hopefully have gained a clear understanding of what the <Constant name="dbt" /> <Constant name="semantic_layer" /> is, its purpose, and when to use it in your projects.
+Great job on completing the comprehensive <Constant name="semantic_layer" /> guide 🎉! You should hopefully have gained a clear understanding of what the <Constant name="semantic_layer" /> is, its purpose, and when to use it in your projects.
 
 You've learned how to:
 
@@ -1080,11 +1080,11 @@ You've learned how to:
 - Build, test, and manage <Constant name="cloud" /> projects, focusing on metrics and semantic layers.
 - Run production jobs and query metrics with our available integrations.
 
-For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing <Constant name="dbt" /> <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.
+For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.
 
 Here are some additional resources to help you continue your journey:
 
-- [<Constant name="dbt" /> <Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Available integrations](/docs/cloud-integrations/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Join our live demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts)

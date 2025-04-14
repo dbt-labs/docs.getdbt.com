@@ -12,7 +12,7 @@ import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
 # About the Visual Editor <Lifecycle status='beta, enterprise'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
-The <Constant name="cloud" /> <Constant name="visual_editor" /> helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
+The <Constant name="visual_editor" /> helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
 </p>
 
 :::tip Beta feature
@@ -25,9 +25,9 @@ The <Constant name="visual_editor" /> allows organizations to enjoy the many ben
 
 These models compile directly to SQL and are indistinguishable from other <Constant name="dbt" /> models in your projects:
 - Visual models are version-controlled in your backing <Constant name="git" /> provider.
-- All models are accessible across projects in [<Constant name="dbt" /> <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro).
+- All models are accessible across projects in [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro).
 - Models can be materialized into production through [<Constant name="cloud" /> orchestration](/docs/deploy/deployments), or be built directly into a user's development schema.
-- Integrate with [<Constant name="dbt" /> <Constant name="explorer" />](/docs/collaborate/explore-projects) and the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- Integrate with [<Constant name="explorer" />](/docs/collaborate/explore-projects) and the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.png" width="90%" title="Create or edit dbt models with the Visual editor, enabling everyone to develop with dbt through a drag-and-drop experience inside of dbt Cloud." />
 

@@ -21,12 +21,12 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 - You have a <Constant name="cloud" /> account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
-- You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update <Constant name="dbt" /> <Constant name="explorer" />.
-- You are on the <Constant name="dbt" /> <Constant name="explorer" /> page. To do this, select **Explore** from the navigation in <Constant name="cloud" />.
+- You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update <Constant name="explorer" />.
+- You are on the <Constant name="explorer" /> page. To do this, select **Explore** from the navigation in <Constant name="cloud" />.
 
 ## Overview page <Lifecycle status="preview" />
 
-Navigate the <Constant name="dbt" /> <Constant name="explorer" /> overview page to access your project's resources and metadata. The page includes the following sections:
+Navigate the <Constant name="explorer" /> overview page to access your project's resources and metadata. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
 - **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/collaborate/model-performance), [project recommendations](/docs/collaborate/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
@@ -41,15 +41,15 @@ Navigate the <Constant name="dbt" /> <Constant name="explorer" /> overview page 
 
 ## Generate metadata
 
-<Constant name="dbt" /> <Constant name="explorer" /> uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your <Constant name="cloud" /> project.
+<Constant name="explorer" /> uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your <Constant name="cloud" /> project.
 
 - To ensure all metadata is available in dbt Explorer, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running those two commands ensure all relevant metadata (like lineage, test results, documentation, and more) is available in dbt Explorer.
-- <Constant name="dbt" /> <Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
-    - Note that CI jobs don't update <Constant name="dbt" /> <Constant name="explorer" />. This is because they don't reflect the production state and don't provide the necessary metadata updates.
+- <Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
+    - Note that CI jobs don't update <Constant name="explorer" />. This is because they don't reflect the production state and don't provide the necessary metadata updates.
 - To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment.
 - The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
 
-Note that <Constant name="dbt" /> <Constant name="explorer" /> automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
+Note that <Constant name="explorer" /> automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
 
 | To view in <Constant name="explorer" /> | You must successfully run |
 |---------------------|---------------------------|
@@ -71,9 +71,9 @@ If you don't see the project lineage graph immediately, click **Render Lineage**
 
 The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
-By default, <Constant name="dbt" /> <Constant name="explorer" /> shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
+By default, <Constant name="explorer" /> shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
-To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, <Constant name="dbt" /> <Constant name="explorer" /> excludes these resources from the full lineage graph unless a search query returns them as results.
+To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, <Constant name="explorer" /> excludes these resources from the full lineage graph unless a search query returns them as results.
 
 <Expandable alt_header="How can I interact with the full lineage graph?">
 
@@ -205,7 +205,7 @@ You can view the definition and latest run results of any resource in your proje
 The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment.
 
 In the upper right corner of the resource details page, you can:
-- Click the [Open in <Constant name="cloud_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="cloud" /> <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- Click the [Open in <Constant name="cloud_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - Click the Share icon to copy the page's link to your clipboard.
 
 <Expandable alt_header="What details are available for a model?">
@@ -285,7 +285,7 @@ Example of the details view for the model `customers`:<br /> <Lightbox src="/img
 
 ## Staging environment
 
-<Constant name="dbt" /> <Constant name="explorer" /> supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny.
+<Constant name="explorer" /> supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny.
 
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per <Constant name="cloud" /> project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in <Constant name="explorer" />. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 

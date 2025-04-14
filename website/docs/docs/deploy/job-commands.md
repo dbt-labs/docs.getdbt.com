@@ -40,7 +40,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 
 ### Command list
 
-You can add or remove as many <Constant name="dbt" /> commands as necessary for every job. However, you need to have at least one <Constant name="dbt" /> command. There are few commands listed as "<Constant name="cloud" /> CLI" or "<Constant name="core" />" in the [<Constant name="dbt" /> Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="cloud" /> CLI, and not in <Constant name="cloud" /> <Constant name="cloud_ide" />.
+You can add or remove as many <Constant name="dbt" /> commands as necessary for every job. However, you need to have at least one <Constant name="dbt" /> command. There are few commands listed as "<Constant name="cloud" /> CLI" or "<Constant name="core" />" in the [<Constant name="dbt" /> Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="cloud" /> CLI, and not in <Constant name="cloud_ide" />.
 
 :::tip Using selectors
 

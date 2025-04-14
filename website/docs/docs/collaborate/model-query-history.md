@@ -59,7 +59,7 @@ To enable model query history in <Constant name="cloud" />, follow these steps:
 
 ## Credential permissions
 
-This section explains the permissions and steps you need to enable and view model query history in <Constant name="dbt" /> <Constant name="explorer" />.
+This section explains the permissions and steps you need to enable and view model query history in <Constant name="explorer" />.
 
 The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="cloud" />:
 
@@ -87,14 +87,14 @@ Model query history uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in
 
 ## View query history in Explorer
 
-To enhance your discovery, you can view your model query history in various locations within <Constant name="dbt" /> <Constant name="explorer" />:
+To enhance your discovery, you can view your model query history in various locations within <Constant name="explorer" />:
 - [View from Performance charts](#view-from-performance-charts)
 * [View from Project lineage](#view-from-project-lineage)
 - [View from Model list](#view-from-model-list)
 
 ### View from Performance charts
 
-1. Navigate to <Constant name="dbt" /> <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
+1. Navigate to <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
