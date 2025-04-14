@@ -895,6 +895,17 @@ const sidebarSettings = {
     "docs/dbt-support",
     {
       type: "category",
+      label: "Cost management",
+      link: {
+        type: "doc",
+        id: "docs/cloud/cost-management/cost-management",
+      },
+      items: [
+          "docs/cloud/cost-management/cost-management",
+      ],
+    },
+    {
+      type: "category",
       label: "Frequently asked questions",
       link: {
         type: "generated-index",

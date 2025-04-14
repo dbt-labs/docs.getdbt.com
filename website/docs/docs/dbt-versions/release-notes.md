@@ -16,6 +16,10 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## April 2025
+
+- **Behavior change**: Users assigned the [`job admin` permission set](/docs/cloud/manage-access/enterprise-permissions#job-admin) now have access to set up integrations for projects, including the [Tableau](/docs/cloud-integrations/downstream-exposures-tableau) integration to populate downstream exposures.
+
 ## March 2025
 
 - **Behavior change**: As of March 31st, 2025, <Constant name="core" /> versions 1.0, 1.1, and 1.2 have been deprecated from <Constant name="cloud" />. They are no longer available to select as versions for <Constant name="dbt" /> projects. Workloads currently on these versions will be automatically upgraded to v1.3, which may cause new failures.

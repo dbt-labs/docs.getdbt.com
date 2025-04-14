@@ -27,22 +27,28 @@ To unlock your account and select a plan, review the following guidance per plan
 
 ### Developer plan
 
-1. To select a Developer plan, choose the Developer tab under **Billing**. 
-2. Click **Select Plan** on the right. 
-3. Confirm your plan selection on the pop up message. 
-4. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Developer plan. 🎉
+1. To select a Developer plan, click Select plan on the right.
+2. Confirm your plan selection on the pop up message.
+3. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Developer plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif"/>
+
+#### Plan allocation
+
+If you select a plan but have too many seats or projects for that plan (for example, if you select the Developer plan but have more than one developer seat), you'll be directed to the users & projects pages to make edits.
+
+<Lightbox src="/img/docs/dbt-cloud/developer-plan-allocation.png"/>
 
 ### Team plan
 
 1. When your trial expires, your account's default plan enrollment will be a Team plan. 
-2. To unlock your account and continue using the Team plan, you need to enter your payment details. 
-3. Go to **Payment Information** and click **Edit** on the right.
-4. Enter your payment details and click **Save**.
-5. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Team plan. 🎉
+2. To unlock your account and continue using the Team plan, click on **Select plan** under the Team column.
+3. Enter your payment information and seat purchases. Then click **Save**.
+4. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Team plan. 🎉
 
-<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif"/>
+<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.png"/>
+
+<Lightbox src="/img/docs/dbt-cloud/trial-team-payments-flow.png"/>
 
 ### Enterprise plan
 

@@ -10,8 +10,8 @@ meta:
   min_core_version: v1.8.0
   cloud_support: 'Not Supported'
   min_supported_version: 'n/a'
-  slack_channel_name: 
-  slack_channel_link: 
+  slack_channel_name: '#db-watsonx-presto'
+  slack_channel_link: https://getdbt.slack.com/archives/C08C7D53R40
   platform_name: IBM watsonx.data
   config_page: /reference/resource-configs/watsonx-presto-config
 ---
@@ -40,24 +40,24 @@ To connect dbt with watsonx.data Presto(java), you need to configure a profile i
 my_project:
   outputs:
     software:
-      type: presto
+      type: watsonx_presto
       method: BasicAuth
       user: [user]
       password: [password]
       host: [hostname]
-      database: [catalog name]
+      catalog: [catalog_name]
       schema: [your dbt schema]
       port: [port number]
       threads: [1 or more]
       ssl_verify: path/to/certificate
 
     saas:
-      type: presto
+      type: watsonx_presto
       method: BasicAuth
       user: [user]
       password: [api_key]
       host: [hostname]
-      database: [catalog name]
+      catalog: [catalog_name]
       schema: [your dbt schema]
       port: [port number]
       threads: [1 or more]
@@ -78,7 +78,7 @@ The following profile fields are required to configure watsonx.data Presto(java)
 |   `user`  | Required | Username or email address for authentication. | `user` |
 | `password`| Required | Password or API key for authentication | `password` |
 |   `host`  | Required | Hostname for connecting to Presto. | `127.0.0.1` |
-| `database`| Required | The catalog name in your Presto instance. | `Analytics` |
+| `catalog`| Required | The catalog name in your Presto instance. | `Analytics` |
 |  `schema` | Required | The schema name within your Presto instance catalog. | `my_schema`  |
 |   `port`  | Required | The port for connecting to Presto.  | `443`  |
 | `ssl_verify` | Optional (default: **true**) | Specifies the path to the SSL certificate or a boolean value. The SSL certificate path is required if the watsonx.data instance is not secure (HTTP).| `path/to/certificate` or `true` |

@@ -302,7 +302,7 @@ Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-
 
 While dbt Core defines several of the foundational elements for dbt Mesh, dbt Cloud offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in dbt Explorer that’s tailored to each user’s access.
 
-Several key components that underpin the dbt Mesh pattern, including model contracts, versions, and access modifiers, are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
+Several key components that underpin the dbt Mesh pattern, including [model contracts, versions, and access modifiers](/docs/collaborate/govern/about-model-governance), are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
 
 To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt Core. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/collaborate/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
 
@@ -312,7 +312,7 @@ The major distinction comes with dbt Cloud's metadata service, which is unique t
 
 <DetailsToggle alt_header="Does dbt Mesh require a specific dbt Cloud plan?">
 
-Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required to set up multiple projects and reference models across them.
+Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required to set up multiple projects and reference models across them. Refer to [model governance](/docs/collaborate/govern/about-model-governance) for more information on the features available across dbt Cloud plans.
 
 </DetailsToggle>
 

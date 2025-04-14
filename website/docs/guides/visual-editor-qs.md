@@ -10,6 +10,8 @@ recently_updated: true
 
 <div style={{maxWidth: '900px'}}>
 
+import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
+
 ## Introduction
 
 :::note beta feature
@@ -26,17 +28,7 @@ The <Constant name="visual_editor" /> offers a quick and straightforward way for
 - Committing your changes to <Constant name="git" />
 - Locating your <Constant name="visual_editor" /> model and data
 
-## Prerequisites
-
-To use the <Constant name="visual_editor" />, you must meet the following prerequisites:
-
-- Be on an [Enterprise <Constant name="cloud" /> account](/faqs/Accounts/cloud-upgrade-instructions#enterprise-plan)
-- You have the following configured on your account:
-    - A data warehouse connection
-    - Integration with a <Constant name="git" /> provider
-- Source models for the <Constant name="visual_editor" /> must have been run at least once in production
-- You have a `developer` license
-- You have credentials configured for your data warehouse and <Constant name="git" /> provider in the **Your profile** section of the **Account settings**
+<Prerequisites feature={'/snippets/_visual-editor-prerequisites.md'} />
 
 :::note Prerequisite for using the Jaffle Shop
 

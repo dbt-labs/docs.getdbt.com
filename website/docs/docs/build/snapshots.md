@@ -331,7 +331,15 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 <Expandable alt_header="Use the timestamp strategy where possible">
 
-This strategy handles column additions and deletions better than the `check` strategy.
+The timestamp strategy is recommended because it handles column additions and deletions more efficiently than the `check` strategy. This is because it's more robust to schema changes, especially when columns are added or removed over time. 
+
+The timestamp strategy relies on a single `updated_at` field, which means it avoids the need to constantly update your snapshot configuration as your source table evolves.
+
+Why timestamp is the preferred strategy:
+
+- Requires tracking only one column (`updated_at`)
+- Automatically handles new or removed columns in the source table
+- Less prone to errors when the table schema evolves over time (for example, if using the `check` strategy, you might need to update the `check_cols` configuration)
 
 </Expandable>
 
@@ -398,6 +406,12 @@ Snapshot "strategies" define how <Constant name="dbt" /> knows if a row has chan
 
 ### Timestamp strategy (recommended)
 The `timestamp` strategy uses an `updated_at` field to determine if a row has changed. If the configured `updated_at` column for a row is more recent than the last time the snapshot ran, then dbt will invalidate the old record and record the new one. If the timestamps are unchanged, then dbt will not take any action.
+
+Why timestamp is recommended?
+
+- Requires tracking only one column (`updated_at`)
+- Automatically handles new or removed columns in the source table
+- Less prone to errors when the table schema evolves over time (for example, if using the `check` strategy, you might need to update the `check_cols` configuration)
 
 The `timestamp` strategy requires the following configurations:
 

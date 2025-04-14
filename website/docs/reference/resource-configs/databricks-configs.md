@@ -59,6 +59,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 | location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.     | Optional  | SQL, Python     | `/mnt/root`  |
 | partition_by        | Partition the created table by the specified columns. A directory is created for each partition. | Optional   | SQL, Python     | `date_day`  |
 | liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional          | SQL, Python     | `date_day` |
+| auto_liquid_cluster\+ | The created table is [automatically clustered by Databricks](https://docs.databricks.com/aws/en/delta/clustering#automatic-liquid-clustering).  Available since dbt-databricks 1.10.0 | Optional | SQL, Python | `auto_liquid_cluster: true` |
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.      | Optional     | SQL, Python     | `country_code`           |
 | buckets    | The number of buckets to create while clustering   | Required if `clustered_by` is specified   | SQL, Python     | `8`        |
 | tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional     | SQL, Python*    | `{'this.is.my.key': 12}` |
@@ -70,6 +71,11 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 † When `table_format` is `iceberg`, `file_format` must be `delta`.
 
 ‡ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+
+\+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
+
+In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
+For full details, see the [documentation of Databricks behavior flags](/docs/reference/global-configs/databricks-changes).
 
 </VersionBlock>
 

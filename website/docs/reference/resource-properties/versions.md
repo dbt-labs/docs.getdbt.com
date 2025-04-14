@@ -68,13 +68,31 @@ Note that the value of `defined_in` and the `alias` configuration of a model are
 
 The specification of which columns are defined in a model's top-level `columns` property to include or exclude in a versioned implementation of that model.
 
-`include` is either:
-- a list of specific column names to include
-- `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
+- `include` is either:
+  - a list of specific column names to include
+  - `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
+- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`. 
 
-`exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`. 
+<VersionBlock lastVersion="1.7">
 
-The `columns` list of a versioned model can have _at most one_ `include/exclude` element.
+:::tip
+Not to be confused with:
+
+- The [`--warn-error-options` flag](/reference/global-configs/warnings#use---warn-error-options-for-targeted-warnings), which also uses `include`/`exclude` to control which warnings are treated as errors.
+- The `--select/--exclude` [syntax](/reference/node-selection/exclude) used for model selection.
+
+These features use similar syntax but apply to different contexts (model versioning, command behavior, and model selection).
+:::
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+:::tip
+Not to be confused with the `--select/--exclude` [syntax](/reference/node-selection/exclude), which is used for model selection.
+:::
+</VersionBlock>
+
+The `columns` list of a versioned model can have _at most one_ `include/exclude` element. However, if none of your model versions specify columns, you don't need to define columns at all and can omit the `columns/include`/`exclude` keys from the versioned model. In this case, dbt will automatically use all top-level columns for all versions. 
 
 You may declare additional columns within the version's `columns` list. If a version-specific column's `name` matches a column included from the top level, the version-specific entry will override that column for that version.
 
