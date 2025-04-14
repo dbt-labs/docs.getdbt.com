@@ -158,12 +158,12 @@ As a proprietary product, dbt Cloud's source code isn't available for community 
 </DetailsToggle>
 
 <DetailsToggle alt_header="What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?">
-You can develop dbt using the web-based IDE in dbt Cloud or on the command line interface using the dbt Cloud CLI or open-source dbt Core, all of which enable you to execute dbt commands. The key distinction between the dbt Cloud CLI and dbt Core is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its features:
+You can develop dbt using the web-based IDE in <Constant name="cloud" /> or on the command line interface using the <Constant name="cloud_cli" /> or open-source <Constant name="core" />, all of which enable you to execute dbt commands. The key distinction between the <Constant name="cloud_cli" /> and <Constant name="core" /> is the <Constant name="cloud_cli" /> is tailored for <Constant name="cloud" />'s infrastructure and integrates with all its features:
 
-- dbt Cloud IDE: <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
+- <Constant name="cloud_ide" />: <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
 
-- dbt Cloud CLI: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The dbt Cloud CLI</a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
+- <Constant name="cloud_cli" />: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The <Constant name="cloud_cli" /></a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
 
-- dbt Core: dbt Core is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
+- <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
 
 </DetailsToggle>

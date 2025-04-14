@@ -210,7 +210,7 @@ python -m pip install --upgrade <Constant name="core" />==1.9
 
 ## `pip install dbt`
 
-In the fall of 2023, the `dbt` package on PyPI became a supported method to install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli-in-pip).
+In the fall of 2023, the `dbt` package on PyPI became a supported method to install the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli-in-pip).
 
 If you have workflows or integrations that rely on installing the package named `dbt`, you can achieve the same behavior by installing the same five packages that it used:
 

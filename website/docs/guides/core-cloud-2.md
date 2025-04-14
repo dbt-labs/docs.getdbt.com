@@ -89,7 +89,7 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
 - **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in dbt Cloud, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
 - **Data consumers:** Discover data insights by using [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 
 </Expandable>
@@ -105,7 +105,7 @@ If you have multiple teams of dbt developers, think about how to start your onbo
 <Expandable alt_header="Analyze current workflows, review processes, and team structures">
 
 Discover how dbt Cloud can help simplify development, orchestration, and testing:
-- **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the dbt Cloud CLI (command line interface or code editor) or dbt Cloud IDE (browser-based).
+- **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the <Constant name="cloud_cli" /> (command line interface or code editor) or dbt Cloud IDE (browser-based).
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up [a CI job](/docs/deploy/ci-jobs) to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged.
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 

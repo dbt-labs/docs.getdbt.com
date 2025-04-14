@@ -4,15 +4,15 @@ The following table outlines which dbt Cloud features are supported on the diffe
 |-------------------------------|------------------|-----------------------|---------------------|---------------------|------------------|
 | Audit logs                    | ✅               | ✅                     | ✅                  | ✅                  | ✅                | 
 | Continuous integration jobs   | ✅               | ✅                     | ✅                  | ✅                  | ✅                | 
-| dbt Cloud CLI                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| dbt Cloud IDE                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| dbt Copilot                   | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| dbt Explorer                  | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| dbt Mesh                      | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| dbt Semantic Layer            | ✅               | ✅ (Upon request)      | ✅                  | ✅                  | ✅                |
+| <Constant name="cloud_cli" />                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="cloud_ide" />                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="copilot" />                   | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="explorer" />                  | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="mesh" />                      | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="semantic_layer" />            | ✅               | ✅ (Upon request)      | ✅                  | ✅                  | ✅                |
 | Discovery API                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
 | IP restrictions               | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
-| Job scheduler                 | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
+| <Constant name="orchestrator" />                | ✅               | ✅                     | ✅                  | ✅                  | ✅                |
 | PrivateLink egress            | ✅ (AWS only)    | ✅                     | ✅                  | ✅                  | ✅                |
 | PrivateLink ingress           | ❌               | ✅                     | ❌                  | ✅                  | ✅                |
 | Webhooks (Outbound)           | ✅               | ✅                     | ✅                  | ❌                  | ❌                |

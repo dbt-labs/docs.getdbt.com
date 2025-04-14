@@ -2,7 +2,7 @@
 Permissions: 
 
 * **Account-level permissions** &mdash; Permissions related to the management of the dbt Cloud account. For example, billing and account settings.
-* **Project-level permissions** &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the dbt Cloud IDE or dbt Cloud CLI. 
+* **Project-level permissions** &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. 
 
 ### Account permissions
 
@@ -67,7 +67,7 @@ Key:
 
 ### Project permissions
  
-The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the IDE or dbt Cloud CLI, but may also provide some account-level permissions.
+The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, but may also provide some account-level permissions.
 
 Key:
 

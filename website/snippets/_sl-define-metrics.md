@@ -1,4 +1,4 @@
-Now that you've created your first semantic model, it's time to define your first metric! You can define metrics with the dbt Cloud IDE or command line.
+Now that you've created your first semantic model, it's time to define your first metric! You can define metrics with the <Constant name="cloud_ide" /> or command line.
 
 MetricFlow supports different metric types like [conversion](/docs/build/conversion), [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](/docs/build/metrics-overview) before getting started.
 

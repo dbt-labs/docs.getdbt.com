@@ -269,7 +269,7 @@ For teams who prefer to isolate work based on the feature branch, you may want t
 
 :::note
 
-The `DBT_CLOUD_GIT_BRANCH` variable is only available within the dbt Cloud IDE and not the Cloud CLI.
+The `DBT_CLOUD_GIT_BRANCH` variable is only available within the <Constant name="cloud_ide" /> and not the <Constant name="cloud_cli" />.
 
 :::
 

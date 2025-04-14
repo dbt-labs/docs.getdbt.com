@@ -36,7 +36,7 @@ metrics:
 
 ## Query your metric
 
-You can use the dbt Cloud CLI for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
+You can use the <Constant name="cloud_cli" /> for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
 
 ```bash
 <Constant name="dbt" /> sl query revenue --group-by metric_time__month

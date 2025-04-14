@@ -7,7 +7,7 @@ sidebar_label: "Version control basics"
 
 # Version control basics
 
-When you develop in the command line interface (CLI) or Cloud integrated development environment (<Constant name="cloud_ide" />), you can leverage <Constant name="git" /> directly to version control your code. To use version control, make sure you are connected to a <Constant name="git" /> repository in the CLI or Cloud <Constant name="cloud_ide" />.
+When you develop in the command line interface (CLI) or Cloud integrated development environment (<Constant name="cloud_ide" />), you can leverage <Constant name="git" /> directly to version control your code. To use version control, make sure you are connected to a <Constant name="git" /> repository in the CLI or <Constant name="cloud_ide" />.
 
 You can create a separate branch to develop and make changes. The changes you make aren’t merged into the default branch in your connected repository (typically named the `main` branch) unless it successfully passes tests. This helps keep the code organized and improves productivity by making the development process smooth.
 
@@ -31,7 +31,7 @@ Check out some common git terms below that you might encounter when developing:
 
 ## The git button in the Cloud IDE
 
-You can perform git tasks with the git button in the [Cloud <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The following are descriptions of each git button command and what they do:
+You can perform git tasks with the git button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The following are descriptions of each git button command and what they do:
 
 | Name | Actions |
 | --- | --- |
@@ -43,7 +43,7 @@ You can perform git tasks with the git button in the [Cloud <Constant name="clou
 | Open pull request | This allows you to open a pull request in <Constant name="git" /> for peers to review changes before merging into the base branch. |
 | Pull changes from main | This option is available if you are on any local branch that is behind the remote version of the base branch or the remote version of the branch that you're currently on. |
 | Pull from remote | This option is available if you’re on the local base branch and changes have recently been pushed to the remote version of the branch. Pulling in changes from the remote repo allows you to pull in the most recent version of the base branch. |
-| Rollback to remote | Reset changes to your repository directly from the Cloud <Constant name="cloud_ide" />. You can rollback your repository back to an earlier clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the <Constant name="cloud_ide" /> and select **Rollback to remote**. |
+| Rollback to remote | Reset changes to your repository directly from the <Constant name="cloud_ide" />. You can rollback your repository back to an earlier clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the <Constant name="cloud_ide" /> and select **Rollback to remote**. |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
 ## Merge conflicts
@@ -64,15 +64,15 @@ target/
 
 This inclusion uses a trailing slash, making these lines in the `.gitignore` file act as 'folder wildcards' that prevent any files or folders within them from being tracked by git. You can also specify additional exclusions as needed for your project.
 
-However, this global `.gitignore` _does not_ apply to dbt Core and dbt Cloud CLI users directly. Therefore, if you're working with dbt Core or dbt Cloud CLI, you need to manually add the three lines mentioned previously to your project's `.gitignore` file.
+However, this global `.gitignore` _does not_ apply to dbt Core and <Constant name="cloud_cli" /> users directly. Therefore, if you're working with <Constant name="core" /> or <Constant name="cloud_cli" />, you need to manually add the three lines mentioned previously to your project's `.gitignore` file.
 
-It's worth noting that while some git providers generate a basic `.gitignore` file when the repository is created, these often lack the necessary exclusions for dbt Cloud. This means it's important to ensure you add the three lines mentioned previously in your `.gitignore` to ensure dbt Cloud operates smoothly.
+It's worth noting that while some git providers generate a basic `.gitignore` file when the repository is created, these often lack the necessary exclusions for <Constant name="cloud" />. This means it's important to ensure you add the three lines mentioned previously in your `.gitignore` to ensure <Constant name="cloud" /> operates smoothly.
 
 :::note
 
-- **dbt Cloud projects created after Dec 1, 2022** &mdash; If you use the **Initialize dbt Project** button in the dbt Cloud IDE to set up a new and empty dbt project, dbt Cloud will automatically add a `.gitignore` file with the required entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
+- **<Constant name="cloud" /> projects created after Dec 1, 2022** &mdash; If you use the **Initialize dbt Project** button in the <Constant name="cloud_ide" /> to set up a new and empty dbt project, <Constant name="cloud" /> will automatically add a `.gitignore` file with the required entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
 
-- **Migrating project from Core to dbt Cloud** &mdash; Make sure you check the `.gitignore` file contains the necessary entries. dbt Core doesn't interact with git so dbt Cloud doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, dbt Cloud won't add any missing entries to the .gitignore file.
+- **Migrating project from <Constant name="core" /> to <Constant name="cloud" />** &mdash; Make sure you check the `.gitignore` file contains the necessary entries. <Constant name="core" /> doesn't interact with git so <Constant name="cloud" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="cloud" /> won't add any missing entries to the .gitignore file.
 :::
 
 For additional info or troubleshooting tips please refer to the [detailed FAQ](/faqs/Git/gitignore).

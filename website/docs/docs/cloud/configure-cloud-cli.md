@@ -6,7 +6,7 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
+Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name="cloud" /> project to run <Constant name="dbt" /> commands, like `dbt environment show` to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the <Constant name="cloud" /> platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
@@ -16,7 +16,7 @@ Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt c
 ## Prerequisites
 
 - You must set up a project in <Constant name="cloud" />.
-  - **Note** &mdash; If you're using the dbt Cloud CLI, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud" /> CLI will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
 - You must be on <Constant name="dbt" /> version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 
@@ -24,7 +24,7 @@ Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt c
 
 Once you install the <Constant name="cloud" /> CLI, you need to configure it to connect to a <Constant name="cloud" /> project.
 
-1. In dbt Cloud, navigate to **Develop** and click **Configure dbt Cloud CLI** to download your `dbt_cloud.yml` credentials file.
+1. In dbt Cloud, navigate to **Develop** and click **Configure <Constant name="cloud_cli" />** to download your `dbt_cloud.yml` credentials file.
 
     <details>
     <summary>Region URLs to download credentials</summary>
@@ -38,7 +38,7 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
 
     </details>
 
-2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
+2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your <Constant name="cloud_cli" /> configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
    
     - North America: https://YOUR_ACCESS_URL/cloud-cli
     - EMEA: https://emea.<Constant name="dbt" />.com/cloud-cli
@@ -96,7 +96,7 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
 
    - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
 
-5. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
+5. You should now be able to [use the <Constant name="cloud_cli" />](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="cloud" /> configuration details or `dbt compile` to compile models in your dbt project.
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
@@ -111,7 +111,7 @@ To set environment variables in the <Constant name="cloud" /> CLI for your <Cons
 
 ## Use the dbt Cloud CLI
 
-The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details. With the dbt Cloud CLI, you can:
+The <Constant name="cloud_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your <Constant name="cloud" /> configuration details. With the <Constant name="cloud_cli" />, you can:
 
 - Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which is currently not guaranteed by `dbt-core`.
 - Automatically defers build artifacts to your Cloud project's production environment.
@@ -147,7 +147,7 @@ To show detailed information on all the dbt supported commands and flags, run th
 
 #### Considerations
 
-When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
+When running `dbt sqlfluff` from the <Constant name="cloud_cli" />, the following are important behaviors to consider:
 
 - dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
 - For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
@@ -206,7 +206,7 @@ This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt`
 
 <DetailsToggle alt_header="How to skip artifacts from being downloaded">
 
-By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the <Constant name="cloud_cli" />. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
 
 </DetailsToggle>
 

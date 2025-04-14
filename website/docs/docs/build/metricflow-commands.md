@@ -66,7 +66,7 @@ MetricFlow provides the following commands to retrieve metadata and query metric
 
 You can use the `dbt sl` prefix before the command name to execute them in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. For example, to list all metrics, run `dbt sl list metrics`. 
 
-dbt Cloud CLI users can run `dbt sl --help` in the terminal for a complete list of the MetricFlow commands and flags.
+<Constant name="cloud_cli" /> users can run `dbt sl --help` in the terminal for a complete list of the MetricFlow commands and flags.
 
 The following table lists the commands compatible with the <Constant name="cloud_ide" /> and <Constant name="cloud_cli" />:
 
@@ -94,7 +94,7 @@ When you make changes to metrics, make sure to run `dbt parse` at a minimum to u
 
 <Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
 
-Check out the following video for a short video demo of how to query or preview metrics with the dbt Cloud CLI:
+Check out the following video for a short video demo of how to query or preview metrics with the <Constant name="cloud_cli" />:
 
 <LoomVideo id='09e2b287f063497d888f4bed91469d79' />
 
@@ -632,7 +632,7 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 <DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
 
-The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
+The default `limit` for query issues from the <Constant name="cloud_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="cloud_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
 
 However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
 

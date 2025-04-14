@@ -200,7 +200,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 5. Enter your **Development Credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
     * **Password** &mdash; The password you set when creating your Snowflake account.
-    * **Schema** &mdash; You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
+    * **Schema** &mdash; You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="cloud_ide" />.
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="cloud" /> will make to build models concurrently.
 

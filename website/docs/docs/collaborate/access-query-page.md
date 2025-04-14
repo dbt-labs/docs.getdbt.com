@@ -153,7 +153,7 @@ To access <Constant name="explorer" />, click on the **<Constant name="explorer"
 ## Considerations 
 - You can save and bookmark frequently used queries for yourself.
 - Coming soon: Sharing those queries with others.
-- The query page uses your development credentials to query. You have the ability to query against any object in any environment.
+- The <Constant name="query_page" /> uses your development credentials to query. You have the ability to query against any object in any environment.
 - Every Jinja function uses [`defer --favor-state`](/reference/node-selection/defer) to resolve Jinja.
 - Coming soon: The ability to select the environment you use to resolve your `refs`.
 

@@ -119,8 +119,8 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 
 <Constant name="copilot" /> has the following considerations to keep in mind:
 
-- <Constant name="copilot" /> is not available in the dbt Cloud CLI.
-- <Constant name="copilot" /> is not available in the dbt Cloud API.
+- <Constant name="copilot" /> is not available in the <Constant name="cloud_cli" />.
+- <Constant name="copilot" /> is not available in the <Constant name="cloud" /> API.
 
 Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application.
 

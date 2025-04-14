@@ -363,8 +363,8 @@ Adding a regularly-scheduled job inside of the QA environment whose only command
 
 ### 5. Test your process
 
-When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the dbt Cloud IDE. Under this paradigm, that button will create PRs targeting your QA branch instead.
+When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the <Constant name="cloud_ide" />. Under this paradigm, that button will create PRs targeting your QA branch instead.
 
-To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
+To test your new flow, create a new branch in the <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
 
 </div>
