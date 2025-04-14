@@ -113,9 +113,9 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
     icon="dbt-bit"/>
 
   <Card
-    title="Query page*"
-    body="Learn how to query data and perform exploratory data analysis using the Query page."
-    link="/docs/collaborate/query-page"
+    title="dbt Insights"
+    body="Learn how to query data and perform exploratory data analysis using dbt Insights."
+    link="/docs/collaborate/dbt-insights"
     icon="dbt-bit"/>
 
 </div> <br />
