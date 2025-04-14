@@ -80,12 +80,6 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
    ```
 
-   Note: Considering reviewing these optional IAM requirements required to apply for using remote functions and ML remote models:
-
-   * [Remote Functions](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#remote-function-requirements)
-
-   * [ML Remote Models](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#remote-models)
-
 3. *(Optional)* **Create a test BigQuery Dataset**
 
    Create a new BigQuery Dataset if you don't already have one:
