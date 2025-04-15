@@ -163,7 +163,7 @@ By comparing to a `sources.json` artifact from a previous production run to a cu
 
 ```bash
 # job 1
-<Constant name="dbt" /> source freshness # must be run to get previous state
+dbt source freshness # must be run to get previous state
 ```
 
 Test all my sources that are fresher than the previous run, and run and test all models downstream of them:
