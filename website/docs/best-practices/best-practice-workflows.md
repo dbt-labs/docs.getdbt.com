@@ -142,7 +142,7 @@ For smarter reruns, use the `result:<status>` selector instead of manually overr
   - Rerun and retest all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 
 ```bash
-<Constant name="dbt" /> build --select state:modified+ result:error+ result:fail+ --defer --state path/to/prod/artifacts
+dbt build --select state:modified+ result:error+ result:fail+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND all my failed tests
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
