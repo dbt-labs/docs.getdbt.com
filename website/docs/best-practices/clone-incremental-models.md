@@ -44,7 +44,7 @@ You'll have two commands for your <Constant name="cloud" /> CI check to execute:
   ```
 1. Build all of the models that have been modified and their downstream dependencies:
   ```shell
-  <Constant name="dbt" /> build --select state:modified+
+  dbt build --select state:modified+
   ```
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
