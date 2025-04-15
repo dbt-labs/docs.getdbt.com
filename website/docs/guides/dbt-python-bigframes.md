@@ -22,7 +22,7 @@ In this guide, you'll learn how to set up dbt so you can use it with BigQuery Da
 
 In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
 
-BigQuery Dataframes is an open source python package that auth-transpiles pandas and scikit-learn like APIs to scalable BigQuery SQL. The dbt-bigquery adapter uses the BigQuery Studio Notebook Executor Service to run the BigQuery Dataframe python client side code.
+BigQuery Dataframes is an open source Python package that automatically transpiles pandas and scikit-learn-like APIs to scalable BigQuery SQL. The dbt-bigquery adapter uses the BigQuery Studio Notebook Executor Service to run the BigQuery Dataframe python client side code.
 
 
 ### Prerequisites
@@ -120,7 +120,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    ```
 3. Now create a new model file in the models directory, named `my_first_python_model.py`. 
 
-4. Now in that file, add in this code:
+4. In the `my_first_python_model.py` file, add this code:
 
    ```python
    def model(dbt, session):
@@ -129,7 +129,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
       return bdf
    ```
 
-5. Configure the BigFrames submission method by either:  
+5. Configure the BigFrames submission method by using either:  
 
    a. Project level configuration via dbt_project.yml
 
@@ -153,7 +153,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
 6. Run `dbt run` 
 
-7. You can view the logs in [dbt logs](https://docs.getdbt.com/reference/events-logging). You can optionally view the codes and logs (including previous executions) from the [Colab Enterprise Executions](https://console.cloud.google.com/vertex-ai/colab/execution-jobs) tab and [GCS bucket](https://console.cloud.google.com/storage/browser) from the GCP console.
+7. You can view the logs in [dbt logs](/reference/events-logging). You can optionally view the codes and logs (including previous executions) from the [Colab Enterprise Executions](https://console.cloud.google.com/vertex-ai/colab/execution-jobs) tab and [GCS bucket](https://console.cloud.google.com/storage/browser) from the GCP console.
 
 8. Congrats! You just created your first two python models to run on BigFrames! 
 
