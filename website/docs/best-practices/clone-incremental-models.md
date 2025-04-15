@@ -40,7 +40,7 @@ You can alleviate these problems by zero copy cloning the relevant, pre-existing
 You'll have two commands for your <Constant name="cloud" /> CI check to execute:
 1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified:
   ```shell
-  <Constant name="dbt" /> clone --select state:modified+,config.materialized:incremental,state:old
+  dbt clone --select state:modified+,config.materialized:incremental,state:old
   ```
 1. Build all of the models that have been modified and their downstream dependencies:
   ```shell
