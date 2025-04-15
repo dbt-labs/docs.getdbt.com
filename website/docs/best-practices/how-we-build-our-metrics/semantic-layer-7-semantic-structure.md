@@ -10,7 +10,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-8-refac
 The first thing you need to establish is how you’re going to consistently structure your code. There are two recommend best practices to choose from:
 
 - 🏡 **Co-locate your semantic layer code** in a one-YAML-file-per-marts-model system.
-  - Puts documentation, data tests, unit tests, semantic models, and metrics into a unified file that corresponds to a <Constant name="dbt" />-modeled mart.
+  - Puts documentation, data tests, unit tests, semantic models, and metrics into a unified file that corresponds to a dbt-modeled mart.
   - Trades larger file size for less clicking between files.
   - Simpler for greenfield projects that are building the <Constant name="semantic_layer" /> alongside <Constant name="dbt" /> models.
 - 🏘️**Create a sub-folder** called `models/semantic_models/`.
