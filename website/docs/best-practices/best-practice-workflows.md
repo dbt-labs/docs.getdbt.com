@@ -170,7 +170,7 @@ Test all my sources that are fresher than the previous run, and run and test all
 
 ```bash
 # job 2
-<Constant name="dbt" /> source freshness # must be run again to compare current to previous state
+dbt source freshness # must be run again to compare current to previous state
 dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
 
