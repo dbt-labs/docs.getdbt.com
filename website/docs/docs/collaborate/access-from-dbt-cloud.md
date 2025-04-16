@@ -39,7 +39,7 @@ Access <Constant name="explorer" /> directly from the **modeling timing tab**, w
 
 ### dbt Insights <Lifecycle status="beta,enterprise" />
 
-Access <Constant name="explorer" /> directly from [<Constant name="query_page" />](/docs/collaborate/access-query-page) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
+Access <Constant name="explorer" /> directly from [<Constant name="query_page" />](/docs/collaborate/access-dbt-insights) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
 
 To access <Constant name="explorer" /> from <Constant name="query_page" />, click on the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
 

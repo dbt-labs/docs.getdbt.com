@@ -28,7 +28,7 @@ The <Constant name="query_page" /> provides a rich console experience with edito
 
 ## Access the dbt Insights interface
 
-Before accessing <Constant name="query_page" />, ensure that the [prerequisites](/docs/collaborate/query-page#prerequisites) are met.
+Before accessing <Constant name="query_page" />, ensure that the [prerequisites](/docs/collaborate/dbt-insights#prerequisites) are met.
 
 1. To access the <Constant name="query_page" />, select the **Query** option in the navigation sidebar.
 2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, the <Constant name="query_page" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
@@ -97,7 +97,7 @@ From here, Kimiko can:
 - Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-query-page#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results
@@ -146,7 +146,7 @@ This integrated view allows her and other users to maintain their query workflow
 - Allows users to narrow down displayed objects by type
 - Hyperlink from SQL code `ref` to the corresponding Explorer page
 
-To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-query-page#query-console-sidebar-menu).
+To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-dbt-insights#query-console-sidebar-menu).
 
 <Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
 
