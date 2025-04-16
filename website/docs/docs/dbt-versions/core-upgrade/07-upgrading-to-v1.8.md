@@ -8,12 +8,12 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+<Constant name="dbt" /> Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ## Release tracks 
 
@@ -21,7 +21,7 @@ Starting in 2024, dbt Cloud provides the functionality from new versions of dbt 
 
 ## New and changed features and functionality
 
-Features and functionality new in dbt v1.8.
+Features and functionality new in <Constant name="dbt" /> v1.8.
 
 ### New dbt Core adapter installation procedure
 
@@ -30,19 +30,19 @@ Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter 
 Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. The new `pip` installation command should look like this:
 
 ```shell
-pip install dbt-core dbt-ADAPTER_NAME
+pip install <Constant name="core" /> <Constant name="dbt" />-ADAPTER_NAME
 ```
 
 For example, you would use the following command if you use Snowflake:
 ```shell
-pip install dbt-core dbt-snowflake
+pip install <Constant name="core" /> <Constant name="dbt" />-snowflake
 ```
 
 For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
 
 ### Unit Tests
 
-Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
+Historically, <Constant name="dbt" />'s test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
 
 In v1.8, we're introducing native support for [unit testing](/docs/build/unit-tests). Unit tests validate your SQL modeling logic on a small set of static inputs __before__ you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and the reliability of code.
 

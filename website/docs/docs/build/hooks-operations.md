@@ -28,7 +28,7 @@ Effective database administration sometimes requires additional SQL statements t
 - Create a share on Snowflake
 - Cloning a database on Snowflake
 
-dbt provides hooks and operations so you can version control and execute these statements as part of your dbt project.
+<Constant name="dbt" /> provides hooks and operations so you can version control and execute these statements as part of your <Constant name="dbt" /> project.
 
 ## About hooks
 
@@ -38,7 +38,7 @@ Hooks are snippets of SQL that are executed at different times:
   * `on-run-start`: executed at the _start_ of <OnRunCommands/>
   * `on-run-end`: executed at the _end_ of <OnRunCommands/>
 
-Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
+Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what <Constant name="dbt" /> makes available out-of-the-box with standard materializations and configurations.
 
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
 
@@ -110,7 +110,7 @@ models:
 Operations are [macros](/docs/build/jinja-macros#macros) that you can run using the [`run-operation`](/reference/commands/run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.
 
 :::info Explicitly execute the SQL in an operation
-Unlike hooks, you need to explicitly execute a query within a macro, by using either a [statement block](/reference/dbt-jinja-functions/statement-blocks) or a helper macro like the [run_query](/reference/dbt-jinja-functions/run_query) macro. Otherwise, dbt will return the query as a string without executing it.
+Unlike hooks, you need to explicitly execute a query within a macro, by using either a [statement block](/reference/dbt-jinja-functions/statement-blocks) or a helper macro like the [run_query](/reference/dbt-jinja-functions/run_query) macro. Otherwise, <Constant name="dbt" /> will return the query as a string without executing it.
 :::
 
 This macro performs a similar action as the above hooks:
@@ -149,7 +149,7 @@ Full usage docs for the `run-operation` command can be found [here](/reference/c
 
 These examples from the community highlight some of the use-cases for hooks and operations!
 
-* [In-depth discussion of granting privileges using hooks and operations, for dbt Core versions prior to 1.2](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
+* [In-depth discussion of granting privileges using hooks and operations, for <Constant name="core" /> versions prior to 1.2](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
 * [Staging external tables](https://github.com/dbt-labs/dbt-external-tables)
 * [Performing a zero copy clone on Snowflake to reset a dev environment](https://discourse.getdbt.com/t/creating-a-dev-environment-quickly-on-snowflake/1151/2)
 * [Running `vacuum` and `analyze` on a Redshift warehouse](https://github.com/dbt-labs/redshift/tree/0.2.3/#redshift_maintenance_operation-source)

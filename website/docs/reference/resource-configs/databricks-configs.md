@@ -90,7 +90,7 @@ In dbt-databricks v1.9 (try it now in [the dbt Cloud "Latest" release track](/do
 * `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
 * `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
    :::caution 
-   This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of dbt.
+   This approach gives you maximum flexibility, but will create persistent artifacts in Databricks (the workflow) that users could run outside of <Constant name="dbt" />.
    :::
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
@@ -792,7 +792,7 @@ You need to use the same set of names for compute across your outputs, though yo
 
 :::
 
-To configure this inside of dbt Cloud, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments:
+To configure this inside of <Constant name="cloud" />, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments:
 
 ```yaml
 
@@ -866,7 +866,7 @@ select * from {{ ref('seed') }}
 </File>
 
 
-To validate that the specified compute is being used, look for lines in your dbt.log like:
+To validate that the specified compute is being used, look for lines in your <Constant name="dbt" />.log like:
 
 ```
 Databricks adapter ... using default compute resource.
@@ -944,9 +944,9 @@ snapshots:
 <VersionBlock lastVersion="1.7">
 
 ## Materialized views and streaming tables
-Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
+Starting with version 1.6.0, the <Constant name="dbt" />-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
 See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
-These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
+These features are still in preview, and the support in the <Constant name="dbt" />-databricks adapter should, for now, be considered _experimental_.
 In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
 
 <File name='materialized_view.sql'>
@@ -981,7 +981,7 @@ At this time the following configuration options are not available:
 * Specifying a refresh schedule for these materializations
 * Specifying `on_configuration_change` settings.
 
-Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
+Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running <Constant name="dbt" /> again; otherwise, you will get a refresh error.
 
 Please see the latest documentation for updates on these limitations.
 
@@ -1064,7 +1064,7 @@ As with views and tables, adding a `description` to your configuration will lead
 #### schedule
 Use this to set the refresh schedule for the model.  If you use the `schedule` key, a `cron` key is required in the associated dictionary, but `time_zone_value` is optional (see the example above).  The `cron` value should be formatted as documented by Databricks.
 If a schedule is set on the materialization in Databricks and your dbt project does not specify a schedule for it (when `on_configuration_change` is set to `apply`), the refresh schedule will be set to manual when you next run the project.
-Even when schedules are set, dbt will request that the materialization be refreshed manually when run.
+Even when schedules are set, <Constant name="dbt" /> will request that the materialization be refreshed manually when run.
 
 #### query
 For materialized views, if the compiled query for the model differs from the query in the database, we will the take the configured `on_configuration_change` action.

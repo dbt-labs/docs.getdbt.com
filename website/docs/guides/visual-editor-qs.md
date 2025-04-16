@@ -16,17 +16,17 @@ import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
 
 :::note beta feature
 
-The Visual Editor is currently in a limited beta. [Contact us](https://www.getdbt.com/contact/) if you're interested in joining it. Features currently in the beta are subject to change or removal.
+The <Constant name="visual_editor" /> is currently in a limited beta. [Contact us](https://www.getdbt.com/contact/) if you're interested in joining it. Features currently in the beta are subject to change or removal.
 
 :::
 
-The dbt Cloud Visual Editor offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
+The <Constant name="visual_editor" /> offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
 
-- Accessing the Visual Editor and creating a new model
+- Accessing the <Constant name="visual_editor" /> and creating a new model
 - Navigating the interface
 - Building a model using operators
-- Committing your changes to Git
-- Locating your Visual Editor model and data
+- Committing your changes to <Constant name="git" />
+- Locating your <Constant name="visual_editor" /> model and data
 
 <Prerequisites feature={'/snippets/_visual-editor-prerequisites.md'} />
 
@@ -38,10 +38,10 @@ The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaf
 
 ## Access the Visual Editor
 
-To access the Visual Editor:
+To access the <Constant name="visual_editor" />:
 
 1. Click **Develop** from the main menu. If you do not see the **Develop** option, ensure you have selected a **Project** from the menu.
-2. Click **Visual Editor**.
+2. Click **<Constant name="visual_editor" />**.
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-main-menu.png" width="60%" title="Visual Editor in the Develop section of the main menu."/>
 
@@ -51,15 +51,15 @@ To access the Visual Editor:
 
 ## Navigating the interface
 
-The Visual Editor comprises a series of menus activated by clicking icons surrounding the border of the larger canvas. With none of the menu items activated, the workspace looks like this:
+The <Constant name="visual_editor" /> comprises a series of menus activated by clicking icons surrounding the border of the larger canvas. With none of the menu items activated, the workspace looks like this:
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-screen.png" width="90%" title="The Visual Editor canvas. The number of items is defined in this section." />
 
 Click on an icon to expand its section or execute an action depending on its purpose. The options are as follows:
 
-1. The main menu (click on the **dbt logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
+1. The main menu (click on the **<Constant name="dbt" /> logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
 2. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
-3. The [Copilot](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your dbt Visual Editor models.
+3. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
 4. The **SQL code** area displays the SQL that compiles your model.
 5. The **Runs and previews** that displays run data and previews data for individual operators.
 6. The **Commit history** display.
@@ -70,7 +70,7 @@ Click on an icon to expand its section or execute an action depending on its pur
     - Zoom to selection (the operator selected on or off screen will be zoomed and centered)
     - Auto-layout option for the individual operator tiles
 8. The **Run** command executes `dbt run` for the model.
-9. This button is initially a **Commit** command for your integrated Git provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
+9. This button is initially a **Commit** command for your integrated <Constant name="git" /> provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
 
 ## Create a model
 
@@ -85,7 +85,7 @@ Operators are divided into three types:
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/operators.png" width="90%" title="The operator’s menu on the side of the Visual Editor canvas." />
 
-Read more about the [individual operators](/docs/cloud/visual-editor-interface#operators) to understand the basic purpose of each. The dbt model created by the Visual Editor builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
+Read more about the [individual operators](/docs/cloud/visual-editor-interface#operators) to understand the basic purpose of each. The <Constant name="dbt" /> model created by the <Constant name="visual_editor" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
 
 <details>
 <summary>More about operator tiles</summary>
@@ -119,7 +119,7 @@ To get started:
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/one-model-operators.png" width="90%" title="A single model operator." />
 
-You now have your first input model in Visual Editor!
+You now have your first input model in <Constant name="visual_editor" />!
 
 4. Drag a new **Input Model** operator to the canvas below the first and repeat the previous steps, but this time set the source model to `stg_order_items`.
 
@@ -129,7 +129,7 @@ Now, you have two input models and are ready to transform the data!
 
 :::tip
 
-Don't see a pre-existing model you're looking for? Ask your dbt admins to ensure it's been run in your Production environment recently and hasn't gone stale.
+Don't see a pre-existing model you're looking for? Ask your <Constant name="dbt" /> admins to ensure it's been run in your Production environment recently and hasn't gone stale.
 
 :::
 
@@ -157,13 +157,13 @@ select the following columns:
 
 :::tip
 
-Your work in the Visual Editor is automatically saved as you progress, so if you need a break, you can always come back to a session later. Just be sure to give it a unique title!
+Your work in the <Constant name="visual_editor" /> is automatically saved as you progress, so if you need a break, you can always come back to a session later. Just be sure to give it a unique title!
 
 :::
 
 ## Enhance your model
 
-You've got the basics going with your Visual Editor model! It has successfully joined two pre-existing input models, but you want to transform the data further to get what you need: a list of customers who buy repeat items as you consider a loyalty club rewards program.
+You've got the basics going with your <Constant name="visual_editor" /> model! It has successfully joined two pre-existing input models, but you want to transform the data further to get what you need: a list of customers who buy repeat items as you consider a loyalty club rewards program.
 
 ### Aggregate data
 
@@ -211,9 +211,9 @@ Want to practice on your own? Try adding a **Filter** operator that removes item
 Now that you've built your model, you need to customize the output name and location:
 1. From **Output**, drag the **Output Model** operator to the right of your **Order** operator. 
 2. Connect the **Order** and **Output Model** operators.
-3. The **Output Model** configuration will default to the name of your Visual Editor project and the default models directory. Click the **pencil edit icon** to configure the optional fields:
+3. The **Output Model** configuration will default to the name of your <Constant name="visual_editor" /> project and the default models directory. Click the **pencil edit icon** to configure the optional fields:
     - Edit the **Model name** field if you want the name to be different than that of your project.
-    - Edit the **File path** if you have a custom directory for your Visual Editor models. 
+    - Edit the **File path** if you have a custom directory for your <Constant name="visual_editor" /> models. 
     - Hover over a column name and click the **-** icon to remove it from the output model.
 4. Click the **play icon** to preview your final model. 
 
@@ -221,21 +221,21 @@ Now that you've built your model, you need to customize the output name and loca
 
 :::tip Model locations
 
-You can customize the location for Visual Editor models to keep them separate from other dbt Cloud models. Check with your dbt admins for best practices and ideas for Visual Editor model locations and naming conventions.
+You can customize the location for <Constant name="visual_editor" /> models to keep them separate from other <Constant name="cloud" /> models. Check with your <Constant name="dbt" /> admins for best practices and ideas for <Constant name="visual_editor" /> model locations and naming conventions.
 
 :::
 
 ## Run and share your model
 
-Now that you've built a model that results in the data you want, it's time to run it and push it to your Git repo. Before you run your model, keep a few items in mind:
+Now that you've built a model that results in the data you want, it's time to run it and push it to your <Constant name="git" /> repo. Before you run your model, keep a few items in mind:
 
-- When you run previews (at any stage in the process), it does not affect the state of your warehouse. So, you can test and develop in the Visual Editor without impacting anything outside of the dbt Cloud Development environment.
+- When you run previews (at any stage in the process), it does not affect the state of your warehouse. So, you can test and develop in the <Constant name="visual_editor" /> without impacting anything outside of the <Constant name="cloud" /> Development environment.
 - When you're ready to use this model in a downstream tool, you can run it to materialize it in your data warehouse development schema.
 - Once your model is ready for production and ready to be used by others or orchestrated, commit it and open a pull request.
 
 ### Run
 
-To run your model, you only need to click the big **Run** button. With the Visual Editor, there is no command line and no need to memorize a list of commands; there is only **Run**. Click it to see the results populate in the **Runs and previews** pane.
+To run your model, you only need to click the big **Run** button. With the <Constant name="visual_editor" />, there is no command line and no need to memorize a list of commands; there is only **Run**. Click it to see the results populate in the **Runs and previews** pane.
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/run-results.png" width="90%" title="The results of a successful run in the 'Runs and previews' pane." />
 
@@ -245,23 +245,23 @@ This will [materialize](/docs/build/materializations) the data as a `view` in yo
 
 :::tip
 
-Have dbt [Copilot](/docs/cloud/dbt-copilot) enabled for your dbt Cloud Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
+Have <Constant name="dbt" /> [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your <Constant name="cloud" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
 
 :::
 
 ### Git commit
 
-The models built in the Visual Editor are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
+The models built in the <Constant name="visual_editor" /> are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-model-folder.png" width="90%" title="Example of the Visual Editor's model path in GitHub." />
 
-However, it won't be created in your Git repo until you commit your first model. So, back in the model's view:
+However, it won't be created in your <Constant name="git" /> repo until you commit your first model. So, back in the model's view:
 
 1. Click **Commit** in the top right.
     - If you've already created a commit and wish to make more, click the arrow next to **Create a pull request** to see the **Commit** option.
 2. Fill out the **Description** field with information about your model. If it's long, part of it will be included in the pull request title, and the rest will be in the body. That's okay! You can correct it during the PR creation process. 
 3. Click **Commit**. 
-4. The **Commit** button will change to **Create a pull request**. You can add more commits, but click the **Create a pull request** button for now. You will then be redirected to your Git provider in a new tab.
+4. The **Commit** button will change to **Create a pull request**. You can add more commits, but click the **Create a pull request** button for now. You will then be redirected to your <Constant name="git" /> provider in a new tab.
 
 The following example uses GitHub as the provider:
 
@@ -271,11 +271,11 @@ The following example uses GitHub as the provider:
 6. Complete the **Add a title** and **Add a description** fields. If your description is split between both, copy all the contents to the description field and give it a shorter title.
 7. Click **Create pull request**.
 
-You've just submitted your first model from the Visual Editor for review. Once approved and merged, the model will be included in your organization’s project and run whenever `dbt run` is executed in any environment your model is in. You're now on your way to becoming an expert in data transformation!
+You've just submitted your first model from the <Constant name="visual_editor" /> for review. Once approved and merged, the model will be included in your organization’s project and run whenever `dbt run` is executed in any environment your model is in. You're now on your way to becoming an expert in data transformation!
 
 :::tip
 
-Want to take your skills to the next level? Try taking the SQL output from your Visual Editor model and using it to create a model in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). 
+Want to take your skills to the next level? Try taking the SQL output from your <Constant name="visual_editor" /> model and using it to create a model in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). 
 
 :::
 

@@ -5,7 +5,7 @@ id: "trino-configs"
 
 ## Cluster requirements
 
-The designated cluster must have an attached catalog where objects such as tables and views can be created, renamed, altered, and dropped. Any user connecting to the cluster with dbt must also have these same permissions for the target catalog.
+The designated cluster must have an attached catalog where objects such as tables and views can be created, renamed, altered, and dropped. Any user connecting to the cluster with <Constant name="dbt" /> must also have these same permissions for the target catalog.
 
 ## Session properties
 
@@ -13,7 +13,7 @@ With a Starburst Enterprise, Starburst Galaxy, or Trino cluster, you can [set se
 
 The standard way to define session properties is with the `session_properties` field of your `profiles.yml`. This ensures that all dbt connections use these settings by default.
 
-However, to temporaily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set session properties on a specific dbt model. For example:
+However, to temporaily adjust these session properties for a specific <Constant name="dbt" /> model or group of models, you can use a [<Constant name="dbt" /> hook](/reference/resource-configs/pre-hook-post-hook) to set session properties on a specific <Constant name="dbt" /> model. For example:
 
 ```sql
 {{
@@ -60,7 +60,7 @@ The below configures the table to be materializes as a set of partitioned [Parqu
 
 ## Seeds and prepared statements
 
-The [dbt seed](/docs/build/seeds) command makes use of prepared statements in [Starburst](https://docs.starburst.io/latest/sql/prepare.html)/[Trino](https://trino.io/docs/current/sql/prepare.html).
+The [<Constant name="dbt" /> seed](/docs/build/seeds) command makes use of prepared statements in [Starburst](https://docs.starburst.io/latest/sql/prepare.html)/[Trino](https://trino.io/docs/current/sql/prepare.html).
 
 Prepared statements are templated SQL statements that you can execute repeatedly with high efficiency. The values are sent in a separate field rather than hard coded in the SQL string itself. This is often how application frontends structure their record `INSERT` statements in the OLTP database backend. Because of this, it's common for prepared statements to have as many placeholder variables (parameters) as there are columns in the destination table.
 
@@ -70,7 +70,7 @@ Most seed files have more than one row, and often thousands of rows. This makes 
 
 You might run into an error message about header line limit if your prepared statements have too many parameters. This is because the header line limit in Python's HTTP client is `65536` bytes. 
 
-You can avoid this upper limit by converting the large prepared statement into smaller statements. dbt already does this by batching an entire seed file into groups of rows &mdash; one group for a number of rows in the CSV. 
+You can avoid this upper limit by converting the large prepared statement into smaller statements. <Constant name="dbt" /> already does this by batching an entire seed file into groups of rows &mdash; one group for a number of rows in the CSV. 
 
 Let's say you have a seed file with 20 columns, 600 rows, and 12,000 parameters. Instead of creating a single prepared statement for this, you can have dbt create four prepared `INSERT` statements with 150 rows and 3,000 parameters.
 
@@ -353,7 +353,7 @@ To change timestamp precision, you can define your own [macro](/docs/build/jinja
 
 ## Grants
 
-Use [grants](/reference/resource-configs/grants) to manage access to the datasets you're producing with dbt. You can use grants with [Starburst Enterprise](https://docs.starburst.io/latest/security/biac-overview.html), [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/security/access-control.html), and Hive ([sql-standard](https://trino.io/docs/current/connector/hive-security.html)).
+Use [grants](/reference/resource-configs/grants) to manage access to the datasets you're producing with <Constant name="dbt" />. You can use grants with [Starburst Enterprise](https://docs.starburst.io/latest/security/biac-overview.html), [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/security/access-control.html), and Hive ([sql-standard](https://trino.io/docs/current/connector/hive-security.html)).
 
 
 To implement access permissions, define grants as resource configs on each model, seed, and snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml` and define model-specific grants within each model's SQL or YAML file.

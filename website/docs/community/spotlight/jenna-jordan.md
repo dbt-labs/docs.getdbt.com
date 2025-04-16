@@ -25,7 +25,7 @@ My dbt learning journey kicked off with the CoRise (now Uplimit) course <a href=
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-There are many leaders in the dbt community that I admire and identify with – I won’t list them all out because I will invariably miss someone (but… you probably know who you are). Technical prowess is always enviable, but I most admire those who bring the human element to data work: those who aren’t afraid to be their authentic selves, cultivate a practice of empathy and compassion, and are driven by curiosity and a desire to help others. I’ve never set out to be a leader, and I still don’t really consider myself to be a leader – I’m much more comfortable in the role of a librarian. I just want to help people by connecting them to the information and resources that they may need.
+There are many leaders in the <Constant name="dbt" /> community that I admire and identify with – I won’t list them all out because I will invariably miss someone (but… you probably know who you are). Technical prowess is always enviable, but I most admire those who bring the human element to data work: those who aren’t afraid to be their authentic selves, cultivate a practice of empathy and compassion, and are driven by curiosity and a desire to help others. I’ve never set out to be a leader, and I still don’t really consider myself to be a leader – I’m much more comfortable in the role of a librarian. I just want to help people by connecting them to the information and resources that they may need.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

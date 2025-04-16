@@ -3,16 +3,16 @@ title: "Best practices for workflows"
 id: "best-practice-workflows"
 ---
 
-This page contains the collective wisdom of experienced users of dbt on how to best use it in your analytics work. Observing these best practices will help your analytics team work as effectively as possible, while implementing the pro-tips will add some polish to your dbt projects!
+This page contains the collective wisdom of experienced users of <Constant name="dbt" /> on how to best use it in your analytics work. Observing these best practices will help your analytics team work as effectively as possible, while implementing the pro-tips will add some polish to your <Constant name="dbt" /> projects!
 
 ## Best practice workflows
 
 ### Version control your dbt project
 All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into your production branch, such as `main`. 
 
-:::info Git guide
+:::info <Constant name="git" /> guide
 
-We've codified our best practices in Git, in our [Git guide](https://github.com/dbt-labs/corp/blob/main/git-guide.md).
+We've codified our best practices in <Constant name="git" />, in our [<Constant name="git" /> guide](https://github.com/dbt-labs/corp/blob/main/git-guide.md).
 
 :::
 
@@ -20,7 +20,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. We recommend using a `dev` target when running dbt from your command line and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/environments-in-dbt).
 
 ### Use a style guide for your project
-SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
+SQL styles, field naming conventions, and other rules for your <Constant name="dbt" /> project should be codified, especially on projects where multiple <Constant name="dbt" /> users are writing code.
 
 :::info Our style guide
 
@@ -35,18 +35,18 @@ The [ref](/reference/dbt-jinja-functions/ref) function is what makes dbt so powe
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data
-Your dbt project will depend on raw data stored in your database. Since this data is normally loaded by third parties, the structure of it can change over time – tables and columns may be added, removed, or renamed. When this happens, it is easier to update models if raw data is only referenced in one place.
+Your <Constant name="dbt" /> project will depend on raw data stored in your database. Since this data is normally loaded by third parties, the structure of it can change over time – tables and columns may be added, removed, or renamed. When this happens, it is easier to update models if raw data is only referenced in one place.
 
 :::info Using sources for raw data references
 
-We recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects don't contain any direct relation references in any models.
+We recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our <Constant name="dbt" /> projects don't contain any direct relation references in any models.
 
 :::
 
 ### Rename and recast fields once
 Raw data is generally stored in a source-conformed structure, that is, following the schema and naming conventions that the source defines. Not only will this structure differ between different sources, it is also likely to differ from the naming conventions you wish to use for analytics.
 
-The first layer of transformations in a dbt project should:
+The first layer of transformations in a <Constant name="dbt" /> project should:
 * Select from only one source
 * Rename fields and tables to fit the conventions you wish to use within your project, for example, ensuring all timestamps are named `<event>_at`. These conventions should be declared in your project coding conventions (see above).
 * Recast fields into the correct data type, for example, changing dates into UTC and prices into dollar amounts.
@@ -58,7 +58,7 @@ All subsequent data models should be built on top of these models, reducing the 
 
 Earlier versions of this documentation recommended implementing “base models” as the first layer of transformation, and gave advice on the SQL within these models. We realized that while the reasons behind this convention were valid, the specific advice around "base models" represented an opinion, so we moved it out of the official documentation.
 
-You can instead find our opinions on [how we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview).
+You can instead find our opinions on [how we structure our <Constant name="dbt" /> projects](/best-practices/how-we-structure/1-guide-overview).
 
 :::
 
@@ -66,7 +66,7 @@ You can instead find our opinions on [how we structure our dbt projects](/best-p
 Complex models often include multiple Common Table Expressions (<Term id="cte">CTEs</Term>). In dbt, you can instead separate these CTEs into separate models that build on top of each other. It is often a good idea to break up complex models when:
 * A CTE is duplicated across two models. Breaking the CTE into a separate model allows you to reference the model from any number of downstream models, reducing duplicated code.
 * A CTE changes the <Term id="grain" /> of a the data it selects from. It's often useful to test any transformations that change the grain (as in, what one record represents) of your data. Breaking a CTE into a separate model allows you to test this transformation independently of a larger model.
-* The SQL in a query contains many lines. Breaking CTEs into separate models can reduce the cognitive load when another dbt user (or your future self) is looking at the code.
+* The SQL in a query contains many lines. Breaking CTEs into separate models can reduce the cognitive load when another <Constant name="dbt" /> user (or your future self) is looking at the code.
 
 ### Group your models in directories
 Within your `models/` directory, you can have any number of nested subdirectories. We leverage directories heavily, since using a nested structure within directories makes it easier to:
@@ -76,7 +76,7 @@ Within your `models/` directory, you can have any number of nested subdirectorie
 * Create conventions around the allowed upstream dependencies of a model, for example, "models in the `marts` directory can only select from other models in the `marts` directory, or from models in the `staging` directory".
 
 ### Add tests to your models
-dbt provides a framework to test assumptions about the results generated by a model. Adding tests to a project helps provide assurance that both:
+<Constant name="dbt" /> provides a framework to test assumptions about the results generated by a model. Adding tests to a project helps provide assurance that both:
 * your SQL is transforming data in the way you expect, and
 * your source data contains the values you expect
 
@@ -109,19 +109,19 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](/reference/node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and <Constant name="cloud" />, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-By comparing to artifacts from a previous production run, dbt can determine
+By comparing to artifacts from a previous production run, <Constant name="dbt" /> can determine
 which models are modified and build them on top of of their unmodified parents.
 
 ```bash
-dbt run -s state:modified+ --defer --state path/to/prod/artifacts
+dbt -s state:modified+ --defer --state path/to/prod/artifacts
 dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
-By comparing to artifacts from a previous production run, dbt can determine model and test result statuses.
+By comparing to artifacts from a previous production run, <Constant name="dbt" /> can determine model and test result statuses.
 
 - `result:fail`
 - `result:error`
@@ -132,7 +132,7 @@ By comparing to artifacts from a previous production run, dbt can determine mode
 
 For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
 ```bash
-dbt run --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
+dbt --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 
@@ -203,4 +203,4 @@ We find it most useful to separate these two types of transformations into diffe
 If you're using macros or other pieces of Jinja in your models, your compiled SQL (found in the `target/compiled` directory) may contain unwanted whitespace. Check out the [Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/#whitespace-control) to learn how to control generated whitespace.
 
 ## Related docs
-- [Updating our permissioning guidelines: grants as configs in dbt Core v1.2](https://docs.getdbt.com/blog/configuring-grants)
+- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](https://docs.getdbt.com/blog/configuring-grants)

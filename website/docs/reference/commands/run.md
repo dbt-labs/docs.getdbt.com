@@ -8,7 +8,7 @@ id: "run"
 ## Overview
 
 `dbt run` executes compiled sql model files against the current `target`
-database. dbt connects to the target database and runs the relevant SQL required
+database. <Constant name="dbt" /> connects to the target database and runs the relevant SQL required
 to materialize all data models using the specified <Term id="materialization" /> strategies.
 Models are run in the order defined by the dependency graph generated during
 compilation. Intelligent multi-threading is used to minimize execution time
@@ -59,7 +59,7 @@ select * from all_events
 
 ## Running specific models
 
-dbt will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
+<Constant name="dbt" /> will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
 
 For more information, see the [Model Selection Syntax Documentation](/reference/node-selection/syntax).
 

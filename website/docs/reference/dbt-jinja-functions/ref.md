@@ -42,7 +42,7 @@ from {{ref('model_a')}}
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
 The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [\{\{ this \}\} variable](/reference/dbt-jinja-functions/this).
-  - Note &mdash; Prior to dbt v1.6, the dbt Cloud IDE returns `request` as the result of `{{ ref.identifier }}`.
+  - Note &mdash; Prior to dbt v1.6, the <Constant name="cloud_ide" /> returns `request` as the result of `{{ ref.identifier }}`.
 
 ## Advanced ref usage
 
@@ -101,7 +101,7 @@ We especially recommend using two-argument `ref` to avoid ambiguity, in cases wh
 ### Forcing dependencies
 
 In normal usage, dbt knows the proper order to run all models based on the use of the `ref` function. There are some cases where dbt doesn't know when a model should be run. For example, when a model only references a macro:
-- In this case, dbt thinks the model can run first because no explicit references are made at compilation time.
+- In this case, <Constant name="dbt" /> thinks the model can run first because no explicit references are made at compilation time.
 - To address this, use a SQL comment along with the `ref` function &mdash; dbt will understand the dependency and the compiled query will still be valid:
 
 ```sql

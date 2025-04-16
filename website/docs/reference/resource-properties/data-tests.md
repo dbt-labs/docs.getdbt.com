@@ -163,7 +163,7 @@ Once these tests are defined, you can validate their correctness by running `dbt
 
 ## Out-of-the-box data tests
 
-There are four generic data tests that are available out of the box, for everyone using dbt.
+There are four generic data tests that are available out of the box, for everyone using <Constant name="dbt" />.
 
 ### `not_null`
 
@@ -308,17 +308,17 @@ Check out the guide on writing a [custom generic test](/best-practices/writing-c
 
 ### Custom data test name
 
-By default, dbt will synthesize a name for your generic test by concatenating:
+By default, <Constant name="dbt" /> will synthesize a name for your generic test by concatenating:
 - test name (`not_null`, `unique`, etc)
 - model name (or source/seed/snapshot)
 - column name (if relevant)
 - arguments (if relevant, e.g. `values` for `accepted_values`)
 
-It does not include any configurations for the test. If the concatenated name is too long, dbt will use a truncated and hashed version instead. The goal is to preserve unique identifiers for all resources in your project, including tests.
+It does not include any configurations for the test. If the concatenated name is too long, <Constant name="dbt" /> will use a truncated and hashed version instead. The goal is to preserve unique identifiers for all resources in your project, including tests.
 
 You may also define your own name for a specific test, via the `name` property.
 
-**When might you want this?** dbt's default approach can result in some wonky (and ugly) test names. By defining a custom name, you get full control over how the test will appear in log messages and metadata artifacts. You'll also be able to select the test by that name.
+**When might you want this?** <Constant name="dbt" />'s default approach can result in some wonky (and ugly) test names. By defining a custom name, you get full control over how the test will appear in log messages and metadata artifacts. You'll also be able to select the test by that name.
 
 <File name='models/<filename>.yml'>
 
@@ -358,7 +358,7 @@ $ dbt test --select unexpected_order_status_today
 
 A test's name must be unique for all tests defined on a given model-column combination. If you give the same name to tests defined on several different columns, or across several different models, then `dbt test --select <repeated_custom_name>` will select them all. 
 
-**When might you need this?** In cases where you have defined the same test twice, with only a difference in configuration, dbt will consider these tests to be duplicates:
+**When might you need this?** In cases where you have defined the same test twice, with only a difference in configuration, <Constant name="dbt" /> will consider these tests to be duplicates:
 
 <File name='models/<filename>.yml'>
 
@@ -385,9 +385,9 @@ models:
 
 ```sh
 Compilation Error
-  dbt found two tests with the name "accepted_values_orders_status__placed__shipped__completed__returned" defined on column "status" in "models.orders".
+  <Constant name="dbt" /> found two tests with the name "accepted_values_orders_status__placed__shipped__completed__returned" defined on column "status" in "models.orders".
 
-  Since these resources have the same name, dbt will be unable to find the correct resource
+  Since these resources have the same name, <Constant name="dbt" /> will be unable to find the correct resource
   when running tests.
 
   To fix this, change the name of one of these resources:
@@ -395,7 +395,7 @@ Compilation Error
   - test.testy.accepted_values_orders_status__placed__shipped__completed__returned.69dce9e5d5 (models/one_file.yml)
 ```
 
-By providing a custom name, you help dbt differentiate tests:
+By providing a custom name, you help <Constant name="dbt" /> differentiate tests:
 
 <File name='models/<filename>.yml'>
 

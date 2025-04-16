@@ -16,21 +16,23 @@ recently_updated: true
 
 ## Introduction
 
-In this guide, you'll learn how to set up dbt so you can use it with BigQuery Dataframes (BigFrames) to:
-* Build scalable data transformation pipelines using dbt and Google Cloud, with SQL and Python.
-* Leverage BigFrames from dbt for scalable Python on BigQuery.
+In this guide, you'll learn how to set up <Constant name="dbt" /> so you can use it with BigQuery Dataframes (BigFrames):
+* Build scalable data transformation pipelines using <Constant name="dbt" /> and Google Cloud, with SQL and Python.
+* Leverage BigFrames from <Constant name="dbt" /> for scalable BigQuery SQL.
+
 
 In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
 
-BigQuery Dataframes is an open source Python package that automatically transpiles pandas and scikit-learn-like APIs to scalable BigQuery SQL. The dbt-bigquery adapter uses the BigQuery Studio Notebook Executor Service to run the BigQuery Dataframe python client side code.
+
+BigQuery Dataframes is an open source python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The <Constant name="dbt" />-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the python client side code.
 
 
 ### Prerequisites
 
 - A [Google Cloud account](https://cloud.google.com/free) 
-- A [dbt Cloud account](https://www.getdbt.com/signup/) 
+- A [<Constant name="cloud" /> account](https://www.getdbt.com/signup/) 
 - Basic to intermediate SQL and python.
-- Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com).
+- Basic understanding of <Constant name="dbt" /> fundamentals. We recommend the [<Constant name="dbt" /> Fundamentals course](https://learn.getdbt.com).
 
 ### What you'll build
 
@@ -38,18 +40,18 @@ Here's what you'll build in two parts:
 - Google Cloud project setup
     - A one-time setup to configure the Google Cloud project you’ll be working with.
 - Build and Run the Python Model
-  - Create, configure, and execute a Python model using BigQuery DataFrames and dbt. 
+  - Create, configure, and execute a Python model using BigQuery DataFrames and <Constant name="dbt" />. 
 
-You will set up the environments, build scalable pipelines in dbt, and execute a python model.
+You will set up the environments, build scalable pipelines in <Constant name="dbt" />, and execute a python model.
 
 <Lightbox src="/img/guides/gcp-guides/gcp-bigframes-architecture.png" title="Implementation of the BigFrames submission method"/>
 
-**Figure 1** - Implementation of the BigFrames submission method for dbt python models
+**Figure 1** - Implementation of the BigFrames submission method for <Constant name="dbt" /> python models
 
 
 ## Configure Google Cloud
 
-The dbt BigFrames submission method supports both service account and OAuth credentials. You will use the service account in the following steps.
+The <Constant name="dbt" /> BigFrames submission method supports both service account and OAuth credentials. You will use the service account in the following steps.
 
 1. **Create a new Google Cloud Project**
 
@@ -63,21 +65,21 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
 2. **Create a service account and grant IAM permissions**
 
-   This service account will be used by dbt to read and write data on BigQuery and use BigQuery Studio Notebooks.
+   This service account will be used by <Constant name="dbt" /> to read and write data on BigQuery and use BigQuery Studio Notebooks.
 
    Create the service account with IAM permissions:
 
    ```python
    #Create Service Account
-   gcloud iam service-accounts create dbt-bigframes-sa
+   gcloud iam service-accounts create <Constant name="dbt" />-bigframes-sa
    #Grant BigQuery User Role
-   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.user
+   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.user
    #Grant BigQuery Data Editor role. This can be restricted at dataset level
-   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.dataEditor
+   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.dataEditor
    #Grant Service Account user 
-   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/iam.serviceAccountUser
+   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/iam.serviceAccountUser
    #Grant Colab Entperprise User
-   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
+   gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
    ```
 
 3. *(Optional)* **Create a test BigQuery Dataset**
@@ -97,6 +99,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    #Create GCS bucket
    gcloud storage buckets create gs://${GOOGLE_CLOUD_PROJECT}-bucket --location=${REGION}
    #Grant Storage Admin over the bucket to your SA 
+
    gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
 
@@ -105,12 +108,12 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    #Create GCS bucket
    gcloud storage buckets create gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --location=${REGION}
    #Grant Storage Admin over the bucket to your SA 
-   gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
+   gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
 
 ## Create, configure, and execute your Python models
 
-1. In your dbt project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
+1. In your <Constant name="dbt"/> project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
 2. In the file, copy this sql into it. 
 
    ```sql

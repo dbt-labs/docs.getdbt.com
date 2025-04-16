@@ -65,7 +65,7 @@ In order to align with an organization's naming conventions, the `snapshot_meta_
 
 ## Default
 
-By default, dbt snapshots use the following column names to track change history using [Type 2 slowly changing dimension](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) records:
+By default, <Constant name="dbt" /> snapshots use the following column names to track change history using [Type 2 slowly changing dimension](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) records:
 
 | Field          | <div style={{width:'250px'}}>Meaning</div> | Notes | Example |
 | -------------- | ------- | ----- | ------- |

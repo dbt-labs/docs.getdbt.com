@@ -9,7 +9,7 @@ slug: /sql-reference/strings
     <title>Working with the SQL Strings</title>
 </head>
 
-We can almost guarantee that there is not a single dbt model or table in your database that doesn’t have at least one column of a string type.
+We can almost guarantee that there is not a single <Constant name="dbt" /> model or table in your database that doesn’t have at least one column of a string type.
 
 Strings are everywhere in data—they allow folks to have descriptive text field columns, use regex in their data work, and honestly, they just make the data world go ‘round.
 
@@ -21,7 +21,7 @@ Strings are inherent in your data—they’re the name fields that someone input
 
 To formalize it a bit, a string type is a word, or the combination of characters that you’ll typically see encased in single quotes (ex. 'Jaffle Shop', '1234 Shire Lane', 'Plan A').
 
-Most often, when you’re working with strings in a dbt model or query, you’re:
+Most often, when you’re working with strings in a <Constant name="dbt" /> model or query, you’re:
 
 - Changing the casing (uppering/lowering) to create some standard for your string type columns in your data warehouse
 - Concatenating strings together to create more robust, uniform, or descriptive string values

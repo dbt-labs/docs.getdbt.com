@@ -5,11 +5,11 @@ sidebar: "About flags (global configs)"
 pagination_next: null
 ---
 
-In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
+In <Constant name="dbt" />, "flags" (also called "global configs") are configurations for fine-tuning _how_ <Constant name="dbt" /> runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell <Constant name="dbt" /> about _what_ to run.
 
-Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all dbt commands and they can be set in multiple places.
+Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all <Constant name="dbt" /> commands and they can be set in multiple places.
 
-There is a significant overlap between dbt's flags and dbt's command line options, but there are differences:
+There is a significant overlap between <Constant name="dbt" />'s flags and <Constant name="dbt" />'s command line options, but there are differences:
 - Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations via CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
 
@@ -18,7 +18,7 @@ There is a significant overlap between dbt's flags and dbt's command line option
 There are multiple ways of setting flags, which depend on the use case:
 - **[Project-level `flags` in `dbt_project.yml`](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Also, opt in or opt out of [behavior changes](/reference/global-configs/behavior-changes) to manage your migration off legacy functionality.
 - **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
-- **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
+- **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all <Constant name="dbt" /> commands.
 
 The most specific setting "wins." If you set the same flag in all three places, the CLI option will take precedence, followed by the environment variable, and finally, the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
 
@@ -58,7 +58,7 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 
 ## Available flags
 
-| Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in Cloud CLI? |
+| Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in <Constant name="cloud_cli" />? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
 | [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
 | [debug](/reference/global-configs/logs#debug-level-logging) | boolean | False | ✅ | `DBT_DEBUG` | `--debug`, `--no-debug` | ✅ |

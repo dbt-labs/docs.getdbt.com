@@ -13,7 +13,7 @@ My goodness, would there even be modern data teams without SQL SELECT statements
 
 Luckily, we live in a world of tabular data, cloud data warehouses, and SQL prowess. Analysts and analytics engineers are writing queries, creating data models, and leveraging SQL to power their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) and analysis. But what makes these queries possible? SELECT statements.
 
-The SQL SELECT statement is the fundamental building block of any query: it allows you to select specific columns (data) from a database schema object (table/view). In a dbt project, a SQL dbt model is technically a singular SELECT statement (often built leveraging CTEs or subqueries).
+The SQL SELECT statement is the fundamental building block of any query: it allows you to select specific columns (data) from a database schema object (table/view). In a <Constant name="dbt" /> project, a SQL <Constant name="dbt" /> model is technically a singular SELECT statement (often built leveraging CTEs or subqueries).
 
 ## How to use SELECT
 
@@ -39,10 +39,10 @@ This basic query is selecting three columns from the [jaffle shop’s](https://g
 You may also commonly see queries that `select * from table_name`. The asterisk or star is telling the compiler to select all columns from a specified table or view.
 
 :::tip Goodbye carpal tunnel
-Leverage [dbt utils’ star macro](/blog/star-sql-love-letter) to be able to both easily select many and specifically exclude certain columns.
+Leverage [<Constant name="dbt" /> utils’ star macro](/blog/star-sql-love-letter) to be able to both easily select many and specifically exclude certain columns.
 :::
 
-In a dbt project, analytics engineers will typically write models that contain multiple CTEs that build to one greater query. For folks that are newer to analytics engineering or dbt, we recommend they check out the [“How we structure our dbt projects” guide](/best-practices/how-we-structure/1-guide-overview) to better understand why analytics folks like modular data modeling and CTEs.
+In a <Constant name="dbt" /> project, analytics engineers will typically write models that contain multiple CTEs that build to one greater query. For folks that are newer to analytics engineering or <Constant name="dbt" />, we recommend they check out the [“How we structure our <Constant name="dbt" /> projects” guide](/best-practices/how-we-structure/1-guide-overview) to better understand why analytics folks like modular data modeling and CTEs.
 
 ## SELECT statement syntax in Snowflake, Databricks, BigQuery, and Redshift
 

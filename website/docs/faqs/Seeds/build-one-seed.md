@@ -9,7 +9,7 @@ You can use a `--select` option with the `dbt seed` command, like so:
 
 ```shell
 
-$ dbt seed --select country_codes
+$ <Constant name="dbt" /> seed --select country_codes
 
 ```
 

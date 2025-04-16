@@ -5,21 +5,21 @@ id: "upgrading-to-v1.6"
 displayed_sidebar: "docs"
 ---
 
-dbt Core v1.6 has three significant areas of focus:
+<Constant name="core" /> v1.6 has three significant areas of focus:
 1. Next milestone of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725): improvements to contracts, groups/access, versions; and building blocks for cross-project `ref`
-1. Semantic layer re-launch: dbt Core and [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) integration
+1. Semantic layer re-launch: <Constant name="core" /> and [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) integration
 1. Mechanisms to support mature deployment at scale (`dbt clone` and `dbt retry`)
 
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.6.latest/CHANGELOG.md)
-- [dbt Core installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+<Constant name="dbt" /> Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### Behavior changes
 
@@ -29,12 +29,12 @@ The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) ha
 
 :::
 
-If your dbt project defines metrics, you must migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
+If your <Constant name="dbt" /> project defines metrics, you must migrate to <Constant name="dbt" /> v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
 
-- dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
+- <Constant name="core" /> v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
 - As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
 - The manifest schema version is now v10.
-- dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
+- <Constant name="dbt" /> Labs is ending support for Homebrew installation of <Constant name="core" /> and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -47,13 +47,13 @@ The [manifest](/reference/artifacts/manifest-json) schema version has been updat
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/dbt-core#7958](https://github.com/dbt-labs/dbt-core/discussions/7958).
+For more detailed information and to ask questions, please read and comment on the GH discussion: [<Constant name="dbt" />-labs/<Constant name="core" />#7958](https://github.com/dbt-labs/dbt-core/discussions/7958).
 
 ## New and changed documentation
 
 ### MetricFlow
 
-- [**Build your metrics**](/docs/build/build-metrics-intro) with MetricFlow, a key component of the dbt Semantic Layer. You can define your metrics and build semantic models with MetricFlow, available on the command line (CLI) for dbt Core v1.6 beta or higher.
+- [**Build your metrics**](/docs/build/build-metrics-intro) with MetricFlow, a key component of the <Constant name="semantic_layer" />. You can define your metrics and build semantic models with MetricFlow, available on the command line (CLI) for <Constant name="core" /> v1.6 beta or higher.
 
 ### Materialized views
 
@@ -81,7 +81,7 @@ More consistency and flexibility around packages. Resources defined in a package
 - `vars` defined in a package's `dbt_project.yml` are now available in the resolution order when compiling nodes in that package, though CLI `--vars` and the root project's `vars` will still take precedence. See ["Variable Precedence"](/docs/build/project-variables#variable-precedence) for details.
 - `generate_x_name` macros (defining custom rules for database, schema, alias naming) follow the same pattern as other "global" macros for package-scoped overrides. See [macro dispatch](/reference/dbt-jinja-functions/dispatch) for an overview of the patterns that are possible.
 
-:::caution Closed Beta - dbt Cloud Enterprise
+:::caution Closed Beta - <Constant name="cloud" /> Enterprise
 [**Project dependencies**](/docs/collaborate/govern/project-dependencies): Introduces `dependencies.yml` and dependent `projects` as a feature of dbt Cloud Enterprise. Allows enforcing model access (public vs. protected/private) across project/package boundaries. Enables cross-project `ref` of public models, without requiring the installation of upstream source code.
 :::
 

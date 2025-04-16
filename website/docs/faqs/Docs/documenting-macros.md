@@ -34,7 +34,7 @@ macros:
 
 ## Document a custom materialization
 
-When you create a [custom materialization](/guides/create-new-materializations), dbt creates an associated macro with the following format:
+When you create a [custom materialization](/guides/create-new-materializations), <Constant name="dbt" /> creates an associated macro with the following format:
 
 ```
 materialization_{materialization_name}_{adapter}

@@ -11,28 +11,28 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Teradata Vantage. It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Teradata Vantage. It will show you how to:
 
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
-- Connect dbt Cloud to Teradata.
-- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Connect <Constant name="cloud" /> to Teradata.
+- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/).
+- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/).
 - You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
 ### Related content
 
-- Learn more with [dbt Learn courses](https://learn.getdbt.com)
+- Learn more with [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
 - [How we provision Teradata Clearscape Vantage instance](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
@@ -43,9 +43,9 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 The following steps will guide you through how to get the data stored as CSV files in a public S3 bucket and insert it into the tables.
 
-:::tip SQL IDE
+:::tip SQL <Constant name="cloud_ide" />
 
-If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL IDE handy, use the JupyterLab bundled with your database to execute SQL:
+If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="cloud_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
 
 1. Navigate to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click the **Run Demos** button. The demo will launch JupyterLab.
 
@@ -75,7 +75,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         email varchar (100)
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_customers.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_customers.csv')
     )
     NO PRIMARY INDEX;
 
@@ -86,7 +86,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         status varchar(100)
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_orders.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_orders.csv')
     )
     NO PRIMARY INDEX;
 
@@ -97,14 +97,14 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         amount integer
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_payments.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_payments.csv')
     )
     NO PRIMARY INDEX;
     ```
 
 ## Connect dbt Cloud to Teradata
 
-1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
+1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In **Configure your development environment**, click **Add new connection**.
 4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
@@ -120,7 +120,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
   
    <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
 
-6. Click **Test Connection** to verify that dbt Cloud can access your Teradata Vantage instance.
+6. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
 7. If the connection test succeeds, click **Next**. If it fails, check your Teradata settings and credentials.
 
 ## Set up a dbt Cloud managed repository
@@ -129,15 +129,15 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
 
 ## Delete the example models
 
-You can now delete the files that dbt created when you initialized the project:
+You can now delete the files that <Constant name="dbt" /> created when you initialized the project:
 
 1. Delete the `models/example/` directory.
 2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it.
@@ -177,10 +177,10 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -254,7 +254,7 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
 ## Change the way your model is materialized
 
-One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
+One of the most powerful features of <Constant name="dbt" /> is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
 By default, everything gets created as a view. You can override that at the directory level so everything in that directory will materialize to a different materialization.
 
@@ -415,7 +415,7 @@ By default, everything gets created as a view. You can override that at the dire
 
 ## Build models on top of sources
 
-Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in <Constant name="dbt" />, you can:
 - Select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
 - Test your assumptions about your source data
 - Calculate the freshness of your source data
@@ -633,14 +633,14 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
 1. In the upper left, select **Deploy**, then click **Environments**.
 2. Click **Create Environment**.
 3. In the **Name** field, write the name of your deployment environment. For example, "Production."
-4. In the **dbt Version** field, select the latest version from the dropdown.
+4. In the **<Constant name="dbt" /> Version** field, select the latest version from the dropdown.
 5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as `jaffle_shop_prod`. This will allow dbt to build and work with that dataset.
 6. Click **Save**.
 
@@ -662,7 +662,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 9. Once the run is complete, click **View Documentation** to see the docs for your project.
 
 
-Congratulations 🎉! You've just deployed your first dbt project!
+Congratulations 🎉! You've just deployed your first <Constant name="dbt" /> project!
 
 
 #### FAQs

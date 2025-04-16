@@ -4,20 +4,20 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A <Constant name="cloud" /> production job allows you to set up a system to run a <Constant name="dbt" /> job and job commands on a schedule, rather than running <Constant name="dbt" /> commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
 - Configure job commands
 - View job run details, including timing, artifacts, and detailed run steps
-- Access logs to view or help debug issues and historical invocations of dbt
+- Access logs to view or help debug issues and historical invocations of <Constant name="dbt" />
 - Set up notifications, and [more](/docs/deploy/deployments#dbt-cloud)
 
 ## Job command types
 
-Job commands are specific tasks executed by the job, and you can configure them seamlessly by either adding [dbt commands](/reference/dbt-commands) or using the checkbox option in the **Commands** section. 
+Job commands are specific tasks executed by the job, and you can configure them seamlessly by either adding [<Constant name="dbt" /> commands](/reference/dbt-commands) or using the checkbox option in the **Commands** section. 
 
-During a job run, the commands are "chained" together and executed as run steps. When you add a dbt command in the **Commands** section, you can expect different outcomes compared to the checkbox option.
+During a job run, the commands are "chained" together and executed as run steps. When you add a <Constant name="dbt" /> command in the **Commands** section, you can expect different outcomes compared to the checkbox option.
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" width="85%" title="Configuring checkbox and commands list"/>
 
@@ -40,7 +40,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 
 ### Command list
 
-You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Cloud CLI" or "dbt Core" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in dbt Core or dbt Cloud CLI, and not in dbt Cloud IDE.
+You can add or remove as many <Constant name="dbt" /> commands as necessary for every job. However, you need to have at least one <Constant name="dbt" /> command. There are few commands listed as "<Constant name="cloud" /> CLI" or "<Constant name="core" />" in the [<Constant name="dbt" /> Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="cloud" /> CLI, and not in <Constant name="cloud_ide" />.
 
 :::tip Using selectors
 
@@ -49,11 +49,11 @@ Use [selectors](/reference/node-selection/syntax) as a powerful way to select an
 :::
 
 #### Compare changes custom commands
-For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled and selected the **dbt compare** checkbox, you can add custom dbt commands to optimize running the comparison (for example, to exclude specific large models, or groups of models with tags). Running comparisons on large models can significantly increase the time it takes for CI jobs to complete. 
+For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled and selected the **<Constant name="dbt" /> compare** checkbox, you can add custom <Constant name="dbt" /> commands to optimize running the comparison (for example, to exclude specific large models, or groups of models with tags). Running comparisons on large models can significantly increase the time it takes for CI jobs to complete. 
 
 <Lightbox src="/img/docs/deploy/dbt-compare.jpg" width="90%" title="Add custom dbt commands to when using dbt compare." />
 
-The following examples highlight how you can customize the dbt compare command box:
+The following examples highlight how you can customize the <Constant name="dbt" /> compare command box:
 
 - Exclude the large `fct_orders` model from the comparison to run a CI job on fewer or smaller models and reduce job time/resource consumption. Use the following command:
   
@@ -95,7 +95,7 @@ Job command failures can mean different things for different commands. Some comm
 
 ## Related docs
 - [Job creation best practices](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980)
-- [dbt Command reference](/reference/dbt-commands)
+- [<Constant name="dbt" /> Command reference](/reference/dbt-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 - [Build and view your docs](/docs/collaborate/build-and-view-your-docs)

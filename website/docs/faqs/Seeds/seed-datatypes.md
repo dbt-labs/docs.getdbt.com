@@ -5,7 +5,7 @@ sidebar_label: 'Set a datatype for a column in seed'
 id: seed-datatypes
 
 ---
-dbt will infer the datatype for each column based on the data in your CSV.
+<Constant name="dbt" /> will infer the datatype for each column based on the data in your CSV.
 
 You can also explicitly set a datatype using the `column_types` [configuration](reference/resource-configs/column_types.md) like so:
 

@@ -5,14 +5,14 @@ tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
 ---
 
-The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets
+The <Constant name="semantic_layer" /> offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build <Constant name="semantic_layer" /> queries and return data on your metrics directly within Google Sheets
 
 ## Prerequisites
 
-- You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using <Constant name="dbt" /> v1.6 or higher.
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
-- You have a [dbt Cloud Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
-- You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
+- You have a [<Constant name="cloud" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a <Constant name="cloud" /> account.
+- You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 If you're using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added [Google’s IP addresses](https://www.gstatic.com/ipranges/goog.txt) to your IP allowlist. Otherwise, the Google Sheets connection will fail.
 
@@ -22,13 +22,13 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Installing the add-on
 
-1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
-2. After installing, open the **Extensions** menu and select **dbt Semantic Layer for Sheets**. This will open a custom menu on the right-hand side of your screen.
-3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) **Host** and **Environment ID** in dbt Cloud.
+1. Navigate to the [<Constant name="semantic_layer" /> for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
+2. After installing, open the **Extensions** menu and select **<Constant name="semantic_layer" /> for Sheets**. This will open a custom menu on the right-hand side of your screen.
+3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) **Host** and **Environment ID** in <Constant name="cloud" />.
    - Navigate to **Account Settings** and select **Projects** on the left sidebar.
-   - Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
-   - You can [generate your service token](/docs/dbt-cloud-apis/service-tokens) by clicking **Generate Service Token** within the Semantic Layer configuration page or navigating to **API tokens** in dbt Cloud.
-4. In Google Sheets, authenticate with your host, dbt Cloud environment ID, and service token.
+   - Select your project and then navigate to the **<Constant name="semantic_layer" />** settings.  You'll need this to authenticate in Google Sheets in the following step.
+   - You can [generate your service token](/docs/dbt-cloud-apis/service-tokens) by clicking **Generate Service Token** within the <Constant name="semantic_layer" /> configuration page or navigating to **API tokens** in <Constant name="cloud" />.
+4. In Google Sheets, authenticate with your host, <Constant name="cloud" /> environment ID, and service token.
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
 5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the "Cancel" button.
@@ -73,7 +73,7 @@ Public saved selections will refresh for anyone who edits the sheet while privat
 :::tip What's the difference between saved selections and saved queries?
 
 - Saved selections are saved components that you can create only when using the application.
-- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
+- Saved queries, explained in the next section, are code-defined sections of data you create in your <Constant name="dbt" /> project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
 ## Using saved queries
@@ -88,7 +88,7 @@ Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricF
 
 **Limited use policy disclosure**
 
-The dbt Semantic Layer for Sheet's use and transfer to any other app of information received from Google APIs will adhere to [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+The <Constant name="semantic_layer" /> for Sheet's use and transfer to any other app of information received from Google APIs will adhere to [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />

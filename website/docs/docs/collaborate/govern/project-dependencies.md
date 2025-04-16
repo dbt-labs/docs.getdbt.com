@@ -9,22 +9,22 @@ keyword: dbt mesh, project dependencies, ref, cross project ref, project depende
 
 # Project dependencies <Lifecycle status='enterprise'/>
 
-For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
+For a long time, <Constant name="dbt" /> has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
 While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
 
 dbt Labs supports an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
-- **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+- **Projects** &mdash; The <Constant name="dbt" /> method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="cloud" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 ## Prerequisites
-- Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/collaborate/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
+- Available in [<Constant name="cloud" /> Enterprise](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/collaborate/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
 - For the upstream ("producer") project setup:
   - Configure models in upstream project with [`access: public`](/reference/resource-configs/access) and have at least one successful job run after defining `access`.
   - Define a deployment environment in the upstream project as [Production environment](/docs/deploy/deploy-environments#set-as-production-environment), ensuring at least one successful _deployment_ job run in that environment. Make sure the deployment job run generates a [manifest.json](/reference/artifacts/manifest-json) file, as this contains necessary metadata information for downstream projects.
   - If the upstream project has a Staging environment, run a job in that Staging environment to ensure the downstream cross-project ref resolves.
 - Each project `name` must be unique in your dbt Cloud account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-cloud-environments#types-of-environments) instead.
-  - dbt Cloud supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all dbt Cloud users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
+  - <Constant name="cloud" /> supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all <Constant name="cloud" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
 - The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, `jaffle_marketing`, not `JAFFLE_MARKETING`.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
@@ -70,7 +70,7 @@ The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing 
 
 When you're building on top of another team's work, resolving the references in this way has several advantages:
 - You're using an intentional interface designated by the model's maintainer with `access: public`.
-- You're keeping the scope of your project narrow, and avoiding unnecessary resources and complexity. This is faster for you and faster for dbt.
+- You're keeping the scope of your project narrow, and avoiding unnecessary resources and complexity. This is faster for you and faster for <Constant name="dbt" />.
 - You don't need to mirror any conditional configuration of the upstream project such as `vars`, environment variables, or `target.name`. You can reference them directly wherever the Finance team is building their models in production. Even if the Finance team makes changes like renaming the model, changing the name of its schema, or [bumping its version](/docs/collaborate/govern/model-versions), your `ref` would still resolve successfully.
 - You eliminate the risk of accidentally building those models with `dbt run` or `dbt build`. While you can select those models, you can't actually build them. This prevents unexpected warehouse costs and permissions issues. This also ensures proper ownership and cost allocation for each team's models.
 
@@ -99,19 +99,19 @@ import CycleDetection from '/snippets/_mesh-cycle-detection.md';
 
 <CycleDetection />
 
-For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+For more guidance on how to use <Constant name="mesh" />, refer to the dedicated [<Constant name="mesh" /> guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [<Constant name="mesh" /> learning course](https://learn.getdbt.com/courses/dbt-mesh). 
 
 ### Safeguarding production data with staging environments
 
 When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. 
 
-With a staging environment integrated into the project, dbt Mesh automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, dbt Mesh fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
+With a staging environment integrated into the project, <Constant name="mesh" /> automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, <Constant name="mesh" /> fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
 
 #### Staging with downstream dependencies
 
-dbt Cloud begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. This means that dbt Cloud will consistently use metadata from the Staging environment to resolve references in downstream projects, even if there haven't been any successful runs in the configured Staging environment. 
+<Constant name="cloud" /> begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. This means that <Constant name="cloud" /> will consistently use metadata from the Staging environment to resolve references in downstream projects, even if there haven't been any successful runs in the configured Staging environment. 
 
 To avoid causing downtime for downstream developers, you should define and trigger a job before marking the environment as Staging:
 
@@ -123,7 +123,7 @@ To avoid causing downtime for downstream developers, you should define and trigg
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
-- dbt needs to parse and resolve more inputs (which is slower)
+- <Constant name="dbt" /> needs to parse and resolve more inputs (which is slower)
 - dbt expects you to configure these models as if they were your own (with `vars`, env vars, etc)
 - dbt will run these models as your own unless you explicitly `--exclude` them
 - You could be using the project's models in a way that their maintainer (the Finance team) hasn't intended
@@ -140,5 +140,5 @@ These are the exceptions, rather than the rule. Installing another team's projec
 <FAQ path="Project_ref/indirectly-reference-upstream-model" />
 
 ## Related docs
-- Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
-- [Quickstart with dbt Mesh](/guides/mesh-qs)
+- Refer to the [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="mesh" />.
+- [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)

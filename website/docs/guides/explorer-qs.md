@@ -13,15 +13,15 @@ recently_updated: true
 
 ## Introduction
 
-Unlock the power of [dbt Explorer](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
+Unlock the power of [<Constant name="explorer" />](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
 
-This quickstart guide accompanies the Explorer hands-on workshop and helps you dive into a production-level dbt Mesh implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
+This quickstart guide accompanies the <Constant name="explorer" /> hands-on workshop and helps you dive into a production-level <Constant name="mesh" /> implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your <Constant name="dbt" /> projects to the next level.
 
-By the end of the guide and workshop, you'll understand how to leverage dbt Explorer and have the confidence to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
+By the end of the guide and workshop, you'll understand how to leverage <Constant name="explorer" /> and have the confidence to navigate multiple <Constant name="dbt" /> projects, trace dependencies, and identify opportunities to improve performance and data quality.
 
 ### What you'll learn
 In this guide, you will learn how to:
-- Navigate multiple dbt projects using dbt Explorer
+- Navigate multiple <Constant name="dbt" /> projects using <Constant name="explorer" />
 - Self-serve on data documentation
 - Trace dependencies at the model and column level
 - Identify opportunities to improve performance and data quality
@@ -30,13 +30,13 @@ In this guide, you will learn how to:
 - Familiarity with data platforms
 
 ## Setup
-Now we’ll be creating your dbt Cloud account and connecting it to a data warehouse. 
+Now we’ll be creating your <Constant name="cloud" /> account and connecting it to a data warehouse. 
 1. Go to this URL (sign out if you're already logged in):  https://cloud.getdbt.com/coalesce-workshop-signup
 2. Enter your first name and last name.
-3. Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
+3. Select the **Exploring a <Constant name="mesh" /> implementation with <Constant name="explorer" />** option.
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
-6. Wait about 30 seconds, you’ll be in the dbt Cloud account for this workshop and already connected to a data warehouse.
+6. Wait about 30 seconds, you’ll be in the <Constant name="cloud" /> account for this workshop and already connected to a data warehouse.
 7. Toggle into the **Platform project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
 8. Run each job you see by clicking on the job and then selecting **Run**. This will run the *upstream* project job in both a production and staging environment.
 9. Toggle into the **Analytics project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
@@ -47,7 +47,7 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 
 ## Performance
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Performance tab" />
-dbt Explorer will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
+<Constant name="explorer" /> will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
 
 ### Hands-On
 - Trigger the Daily Prod job to run again
@@ -60,9 +60,9 @@ dbt Explorer will show you your project's most executed models, longest model ex
 
 ## Resources
 
-With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. 
+With <Constant name="explorer" />, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. 
 
-Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+Navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your <Constant name="dbt" /> resources.
 
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Models tab" />
 
@@ -106,7 +106,7 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
   - Navigate to the model’s **Model resource** page and explore the primary key column’s **Column-Level Lineage**
 
 ## Multi-project
-Use dbt Explorer to gain a deeper understanding of *all* your dbt Cloud projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects).
+Use <Constant name="explorer" /> to gain a deeper understanding of *all* your <Constant name="cloud" /> projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects).
 - See the number of public, protected, and private models, as well as metrics for each project.
 - View cross-project lineage and navigate between individual projects’ lineage graphs.
 - Explore column-level lineage across projects.
@@ -137,17 +137,17 @@ To learn more about the specific suggestions and the reasons behind them, check 
 
 <ConfettiTrigger>
 
-Congratulations! You've completed the dbt Explorer workshop. You now have the tools and knowledge to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
+Congratulations! You've completed the <Constant name="explorer" /> workshop. You now have the tools and knowledge to navigate multiple <Constant name="dbt" /> projects, trace dependencies, and identify opportunities to improve performance and data quality.
 
 You've learned how to:
-- Use dbt Explorer to visualize your project’s lineage and interact with the DAG
+- Use <Constant name="explorer" /> to visualize your project’s lineage and interact with the DAG
 - Search for resources in your project and apply filters to refine your search
 - Explore lenses and find table materializations in your current project
-- Navigate multiple dbt projects using dbt Explorer
+- Navigate multiple <Constant name="dbt" /> projects using <Constant name="explorer" />
 - Trace dependencies at the model and column level
 - Review project recommendations and implement improvements
 
-For the next steps, you can check out the [dbt Explorer documentation](/docs/collaborate/explore-projects) and [FAQs](/docs/collaborate/dbt-explorer-faqs) to learn more about how to use dbt Explorer.
+For the next steps, you can check out the [<Constant name="explorer" /> documentation](/docs/collaborate/explore-projects) and [FAQs](/docs/collaborate/dbt-explorer-faqs) to learn more about how to use <Constant name="explorer" />.
 
 Keep an eye out for new features coming out soon, like:
 - [Visualize downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) integrations (like Tableau).

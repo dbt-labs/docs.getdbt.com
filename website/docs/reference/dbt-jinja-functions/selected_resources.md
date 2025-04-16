@@ -6,13 +6,13 @@ description: "Contains a list of all the nodes selected by current dbt command."
 ---
 
 The `selected_resources` context variable contains a list of all the _nodes_ 
-selected by the current dbt command. 
+selected by the current <Constant name="dbt" /> command. 
 
 Currently, this variable is not accessible when using the command `run-operation`.
 
 :::danger Warning!
 
-dbt actively builds the graph during the [parsing phase](/reference/dbt-jinja-functions/execute) of
+<Constant name="dbt" /> actively builds the graph during the [parsing phase](/reference/dbt-jinja-functions/execute) of
 running dbt projects, so the `selected_resources` context variable will be
 empty during parsing. Please read the information on this page to effectively use this variable.
 
@@ -21,7 +21,7 @@ empty during parsing. Please read the information on this page to effectively us
 ### Usage
 
 The `selected_resources` context variable is a list of all the resources selected by 
-the current dbt command selector. Its value depends on the usage of parameters like
+the current <Constant name="dbt" /> command selector. Its value depends on the usage of parameters like
 `--select`, `--exclude` and `--selector`.
 
 For a given run it will look like:

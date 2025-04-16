@@ -61,7 +61,7 @@ defaultValue="thin"
 
 ### Install Oracle Instant Client libraries
 
-In thick mode, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
+In thick mode, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing <Constant name="dbt" />-oracle to access an Oracle Database instance.
 
 Oracle Client versions 23, 21, 19, 18, 12 and 11.2 are supported. It is recommended to use the latest client possible: Oracle’s standard client-server version interoperability allows connection to both older and newer databases.
 
@@ -155,8 +155,8 @@ Check the python-oracledb documentation for installation instructions on [MacOS 
 
 ## Configure wallet for Oracle Autonomous Database (ADB-S) in Cloud
 
-dbt can connect to Oracle Autonomous Database (ADB-S) in Oracle Cloud using either TLS (Transport Layer Security) or mutual TLS (mTLS). TLS and mTLS provide enhanced security for authentication and encryption.
-A database username and password is still required for dbt connections which can be configured as explained in the next section [Connecting to Oracle Database](#connecting-to-oracle-database).
+<Constant name="dbt" /> can connect to Oracle Autonomous Database (ADB-S) in Oracle Cloud using either TLS (Transport Layer Security) or mutual TLS (mTLS). TLS and mTLS provide enhanced security for authentication and encryption.
+A database username and password is still required for <Constant name="dbt" /> connections which can be configured as explained in the next section [Connecting to Oracle Database](#connecting-to-oracle-database).
 
 <Tabs
   defaultValue="tls"
@@ -262,7 +262,7 @@ Use the following query to retrieve the database name:
 SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
 ```
 
-An Oracle connection profile for dbt can be set using any one of the following methods
+An Oracle connection profile for <Constant name="dbt" /> can be set using any one of the following methods
 
 <Tabs
   defaultValue="tns_net_service_name"
@@ -400,7 +400,7 @@ From `dbt-oracle==1.8`, we detect that `database` key is missing from `profile.y
 
 ### Quoting configuration
 
-The default quoting configuration used by dbt-oracle is shown below:
+The default quoting configuration used by <Constant name="dbt" />-oracle is shown below:
 
 <File name='dbt_project.yaml'>
 
@@ -420,7 +420,7 @@ Often users have complained about an approximate relation match as shown below:
 
 ```
 Compilation Error in model <model>
-19:09:40    When searching for a relation, dbt found an approximate match. Instead of guessing
+19:09:40    When searching for a relation, <Constant name="dbt" /> found an approximate match. Instead of guessing
 19:09:40    which relation to use, dbt will move on. Please delete <model>, or rename it to be less ambiguous.
   Searched for: <model>
 ```
@@ -449,7 +449,7 @@ quoting:
 
 ## Python models using Oracle Autonomous Database (ADB-S)
 
-Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
+Oracle's Autonomous Database Serverless (ADB-S) users can run <Constant name="dbt" />-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
 
 ### Features
 - User Defined Python function is run in an ADB-S spawned Python 3.12.1 runtime
@@ -473,7 +473,7 @@ Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models usin
 OML Cloud Service URL is of the following format:
 
 ```text
-https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com
+https://tenant1-<Constant name="dbt" />.adb.us-sanjose-1.oraclecloudapps.com
 ```
 
 In this example:
@@ -511,8 +511,8 @@ dbt_test:
 | Timeout in seconds only to be used with **_async_** mode (`min: 1800` and `max: 43200`) | Integer    | `dbt.config(timeout=1800)`  |
 | Conda environment | String | `dbt.config(conda_env_name="dbt_py_env")` |
 
-In async mode, dbt-oracle will schedule a Python job, poll the job's status, and wait for it to complete.
-Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner.
+In async mode, <Constant name="dbt" />-oracle will schedule a Python job, poll the job's status, and wait for it to complete.
+Without async mode, <Constant name="dbt" />-oracle will immediately invoke the Python job in a blocking manner.
 
 :::warning Note
 Use `dbt.config(async_flag=True)` for long-running Python jobs.
@@ -525,11 +525,11 @@ Use `dbt.config(async_flag=True)` for long-running Python jobs.
 Use `dbt.ref(model_name)` to refer to either SQL or Python model
 
 ```python
-def model(dbt, session):
+def model(<Constant name="dbt" />, session):
     # Must be either table or incremental (view is not currently supported)
-    dbt.config(materialized="table")
-    # returns oml.core.DataFrame referring a dbt model
-    s_df = dbt.ref("sales_cost")
+    <Constant name="dbt" />.config(materialized="table")
+    # returns oml.core.DataFrame referring a <Constant name="dbt" /> model
+    s_df = <Constant name="dbt" />.ref("sales_cost")
     return s_df
 ```
 
@@ -538,11 +538,11 @@ def model(dbt, session):
 Use `dbt.source(source_schema, table_name)`
 
 ```python
-def model(dbt, session):
+def model(<Constant name="dbt" />, session):
     # Must be either table or incremental (view is not currently supported)
-    dbt.config(materialized="table")
+    <Constant name="dbt" />.config(materialized="table")
     # oml.core.DataFrame representing a datasource
-    s_df = dbt.source("sh_database", "channels")
+    s_df = <Constant name="dbt" />.source("sh_database", "channels")
     return s_df
 
 ```
@@ -550,15 +550,15 @@ def model(dbt, session):
 #### Incremental materialization
 
 ```python
-def model(dbt, session):
+def model(<Constant name="dbt" />, session):
     # Must be either table or incremental
-    dbt.config(materialized="incremental")
+    <Constant name="dbt" />.config(materialized="incremental")
     # oml.DataFrame representing a datasource
-    sales_cost_df = dbt.ref("sales_cost")
+    sales_cost_df = <Constant name="dbt" />.ref("sales_cost")
 
-    if dbt.is_incremental:
+    if <Constant name="dbt" />.is_incremental:
         cr = session.cursor()
-        result = cr.execute(f"select max(cost_timestamp) from {dbt.this.identifier}")
+        result = cr.execute(f"select max(cost_timestamp) from {<Constant name="dbt" />.this.identifier}")
         max_timestamp = result.fetchone()[0]
         # filter new rows
         sales_cost_df = sales_cost_df[sales_cost_df["COST_TIMESTAMP"] > max_timestamp]
@@ -570,10 +570,10 @@ def model(dbt, session):
 
 ```python
 
-def model(dbt, session):
-    dbt.config(materialized="table")
-    dbt.config(async_flag=True)
-    dbt.config(timeout=1800)
+def model(<Constant name="dbt" />, session):
+    <Constant name="dbt" />.config(materialized="table")
+    <Constant name="dbt" />.config(async_flag=True)
+    <Constant name="dbt" />.config(timeout=1800)
 
     sql = f"""SELECT customer.cust_first_name,
        customer.cust_last_name,
@@ -617,20 +617,20 @@ conda create -n dbt_py_env -c conda-forge --override-channels --strict-channel-p
 conda upload --overwrite dbt_py_env -t application OML4PY
 ```
 
-3. Use the environment in dbt Python models:
+3. Use the environment in <Constant name="dbt" /> Python models:
 
 ```python
 # Import custom packages from Conda environments
 import nltk
 import gensim
 
-def model(dbt, session):
-    dbt.config(materialized="table")
-    dbt.config(conda_env_name="dbt_py_env")  # Refer the conda environment
-    dbt.config(async_flag=True) # Use async mode for long running Python jobs
-    dbt.config(timeout=900)
-    # oml.core.DataFrame referencing a dbt-sql model
-    promotion_cost = dbt.ref("direct_sales_channel_promo_cost")
+def model(<Constant name="dbt" />, session):
+    <Constant name="dbt" />.config(materialized="table")
+    <Constant name="dbt" />.config(conda_env_name="dbt_py_env")  # Refer the conda environment
+    <Constant name="dbt" />.config(async_flag=True) # Use async mode for long running Python jobs
+    <Constant name="dbt" />.config(timeout=900)
+    # oml.core.DataFrame referencing a <Constant name="dbt" />-sql model
+    promotion_cost = <Constant name="dbt" />.ref("direct_sales_channel_promo_cost")
     return promotion_cost
 ```
 
@@ -649,9 +649,9 @@ def model(dbt, session):
 - Exposures
 - Document generation
 - Serve project documentation as a website
-- Python Models (from dbt-oracle version 1.5.1)
+- Python Models (from <Constant name="dbt" />-oracle version 1.5.1)
 - Integration with Conda to use any Python packages from Anaconda's repository
-- All dbt commands are supported
+- All <Constant name="dbt" /> commands are supported
 
 ## Not supported features
 - Ephemeral materialization

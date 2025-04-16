@@ -284,7 +284,7 @@ saved_queries:
 </Tabs>
 
 ## Definition
-An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
+An optional configuration for assigning a group to a resource. When a resource is grouped, <Constant name="dbt" /> will allow it to reference private models within the same group.
 
 For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 
@@ -314,7 +314,7 @@ select * from {{ ref('finance_model') }}
 ```shell
 $ dbt run -s marketing_model
 ...
-dbt.exceptions.DbtReferenceError: Parsing Error
+<Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```

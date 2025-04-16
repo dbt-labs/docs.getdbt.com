@@ -7,11 +7,11 @@ description: "Define model access with group capabilities"
 
 :::info "Model access" is not "User access"
 
-**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in dbt Cloud to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
+**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="cloud" /> to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
 
 The two concepts will be closely related, as we develop multi-project collaboration workflows this year:
-- Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
-- Users in the same dbt Cloud account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
+- Users with access to develop in a <Constant name="dbt" /> project can view and modify **all** models in that project, including private models.
+- Users in the same <Constant name="cloud" /> account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
 :::
 
 ## Related documentation
@@ -64,7 +64,7 @@ If you try to reference a model outside of its supported access, you will see an
 ```shell
 dbt run -s marketing_model
 ...
-dbt.exceptions.DbtReferenceError: Parsing Error
+<Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
@@ -135,7 +135,7 @@ models:
 It will lead to the following error:
 
 ```
-❯ dbt parse
+❯ <Constant name="dbt" /> parse
 02:19:30  Encountered an error:
 Parsing Error
   Node model.jaffle_shop.my_model with 'ephemeral' materialization has an invalid value (public) for the access field

@@ -13,16 +13,16 @@ recently_updated: true
 
 ## Introduction
 
-Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. dbt Cloud works great with Airflow, letting you execute your dbt code in dbt Cloud while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like dbt Explorer) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
+Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. <Constant name="cloud" /> works great with Airflow, letting you execute your <Constant name="dbt" /> code in <Constant name="cloud" /> while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like <Constant name="explorer" />) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
 
-- Scheduling other processes outside of dbt runs
-- Ensuring that a [dbt job](/docs/deploy/job-scheduler) kicks off before or after another process outside of dbt Cloud
-- Triggering a dbt job only after another has completed
+- Scheduling other processes outside of <Constant name="dbt" /> runs
+- Ensuring that a [<Constant name="dbt" /> job](/docs/deploy/job-scheduler) kicks off before or after another process outside of <Constant name="cloud" />
+- Triggering a <Constant name="dbt" /> job only after another has completed
 
 In this guide, you'll learn how to:
 
 1. Create a working local Airflow environment
-2. Invoke a dbt Cloud job with Airflow
+2. Invoke a <Constant name="cloud" /> job with Airflow
 3. Reuse tested and trusted Airflow code for your specific use cases
 
 You’ll also gain a better understanding of how this will:
@@ -33,7 +33,7 @@ You’ll also gain a better understanding of how this will:
 
 ## Prerequisites
 
-- [dbt Cloud Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+- [<Constant name="cloud" /> Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 
@@ -64,8 +64,8 @@ Follow the instructions [here](https://docs.docker.com/desktop/) to install Dock
 Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/dbt-labs/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
 
 ```bash
-git clone https://github.com/dbt-labs/airflow-dbt-cloud.git
-cd airflow-dbt-cloud
+git clone https://github.com/<Constant name="dbt" />-labs/airflow-<Constant name="dbt" />-cloud.git
+cd airflow-<Constant name="dbt" />-cloud
 ```
 
 For more information about cloning GitHub repositories, refer to "[Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)" in the GitHub documentation.
@@ -110,9 +110,9 @@ For more information about cloning GitHub repositories, refer to "[Cloning a rep
 
 ## Create a dbt Cloud job
 
-[Create a job in your dbt Cloud account](/docs/deploy/deploy-jobs#create-and-schedule-jobs), paying special attention to the information in the bullets below.
+[Create a job in your <Constant name="cloud" /> account](/docs/deploy/deploy-jobs#create-and-schedule-jobs), paying special attention to the information in the bullets below.
 
-- Configure the job with the full commands that you want to include when this job kicks off. This sample code has Airflow triggering the dbt Cloud job and all of its commands, instead of explicitly identifying individual models to run from inside of Airflow.
+- Configure the job with the full commands that you want to include when this job kicks off. This sample code has Airflow triggering the <Constant name="cloud" /> job and all of its commands, instead of explicitly identifying individual models to run from inside of Airflow.
 - Ensure that the schedule is turned **off** since we’ll be using Airflow to kick things off.
 - Once you hit `save` on the job, make sure you copy the URL and save it for referencing later. The url will look similar to this:
 
@@ -124,7 +124,7 @@ https://YOUR_ACCESS_URL/#/accounts/{account_id}/projects/{project_id}/jobs/{job_
 
 ## Connect dbt Cloud to Airflow
 
-Now you have all the working pieces to get up and running with Airflow + dbt Cloud. It's time to **set up a connection** and **run a DAG in Airflow** that kicks off a dbt Cloud job.
+Now you have all the working pieces to get up and running with Airflow + <Constant name="cloud" />. It's time to **set up a connection** and **run a DAG in Airflow** that kicks off a <Constant name="cloud" /> job.
 
 1. From the Airflow interface, navigate to Admin and click on **Connections**
 
@@ -160,7 +160,7 @@ Turn on the DAG and trigger it to run. Verify the job succeeded after running.
 
 ![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-dag.png)
 
-Click Monitor Job Run to open the run details in dbt Cloud.
+Click Monitor Job Run to open the run details in <Constant name="cloud" />.
 ![Task run instance](/img/guides/orchestration/airflow-and-dbt-cloud/task-run-instance.png)
 
 ## Cleaning up
@@ -171,9 +171,9 @@ At the end of this guide, make sure you shut down your docker container.  When y
 $ astrocloud dev stop
 
 [+] Running 3/3
- ⠿ Container airflow-dbt-cloud_e3fe3c-webserver-1  Stopped    7.5s
- ⠿ Container airflow-dbt-cloud_e3fe3c-scheduler-1  Stopped    3.3s
- ⠿ Container airflow-dbt-cloud_e3fe3c-postgres-1   Stopped    0.3s
+ ⠿ Container airflow-<Constant name="dbt" />-cloud_e3fe3c-webserver-1  Stopped    7.5s
+ ⠿ Container airflow-<Constant name="dbt" />-cloud_e3fe3c-scheduler-1  Stopped    3.3s
+ ⠿ Container airflow-<Constant name="dbt" />-cloud_e3fe3c-postgres-1   Stopped    0.3s
 ```
 
 To verify that the deployment has stopped, use the following command:
@@ -186,9 +186,9 @@ This should give you an output like this:
 
 ```bash
 Name                                    State   Ports
-airflow-dbt-cloud_e3fe3c-webserver-1    exited
-airflow-dbt-cloud_e3fe3c-scheduler-1    exited
-airflow-dbt-cloud_e3fe3c-postgres-1     exited
+airflow-<Constant name="dbt" />-cloud_e3fe3c-webserver-1    exited
+airflow-<Constant name="dbt" />-cloud_e3fe3c-scheduler-1    exited
+airflow-<Constant name="dbt" />-cloud_e3fe3c-postgres-1     exited
 ```
 
 <WistiaVideo id="u83nuqegn9" paddingTweak="62.25%"/>
@@ -197,7 +197,7 @@ airflow-dbt-cloud_e3fe3c-postgres-1     exited
 
 ### How can we run specific subsections of the dbt DAG in Airflow?
 
-Because the Airflow DAG references dbt Cloud jobs, your analytics engineers can take responsibility for configuring the jobs in dbt Cloud.
+Because the Airflow DAG references <Constant name="cloud" /> jobs, your analytics engineers can take responsibility for configuring the jobs in <Constant name="cloud" />.
 
 For example, to run some models hourly and others daily, there will be jobs like `Hourly Run` or `Daily Run` using the commands `dbt run --select tag:hourly` and `dbt run --select tag:daily` respectively. Once configured in dbt Cloud, these can be added as steps in an Airflow DAG as shown in this guide. Refer to our full [node selection syntax docs here](/reference/node-selection/syntax).
 
@@ -207,19 +207,19 @@ You can trigger re-run from point of failure with the `rerun` API endpoint. See 
 
 ### Should Airflow run one big dbt job or many dbt jobs?
 
-dbt jobs are most effective when a build command contains as many models at once as is practical. This is because dbt manages the dependencies between models and coordinates running them in order, which ensures that your jobs can run in a highly parallelized fashion. It also streamlines the debugging process when a model fails and enables re-run from point of failure.
+<Constant name="dbt" /> jobs are most effective when a build command contains as many models at once as is practical. This is because <Constant name="dbt" /> manages the dependencies between models and coordinates running them in order, which ensures that your jobs can run in a highly parallelized fashion. It also streamlines the debugging process when a model fails and enables re-run from point of failure.
 
-As an explicit example, it's not recommended to have a dbt job for every single node in your DAG. Try combining your steps according to desired run frequency, or grouping by department (finance, marketing, customer success...) instead.
+As an explicit example, it's not recommended to have a <Constant name="dbt" /> job for every single node in your DAG. Try combining your steps according to desired run frequency, or grouping by department (finance, marketing, customer success...) instead.
 
 ### We want to kick off our dbt jobs after our ingestion tool (such as Fivetran) / data pipelines are done loading data. Any best practices around that?
 
-Astronomer's DAG registry has a sample workflow combining Fivetran, dbt Cloud and Census [here](https://registry.astronomer.io/dags/fivetran-dbt_cloud-census/versions/3.0.0).
+Astronomer's DAG registry has a sample workflow combining Fivetran, <Constant name="cloud" /> and Census [here](https://registry.astronomer.io/dags/fivetran-dbt_cloud-census/versions/3.0.0).
   
 ### How do you set up a CI/CD workflow with Airflow?
 
 Check out these two resources for accomplishing your own CI/CD pipeline:
 
-- [Continuous Integration with dbt Cloud](/docs/deploy/continuous-integration)
+- [Continuous Integration with <Constant name="cloud" />](/docs/deploy/continuous-integration)
 - [Astronomer's CI/CD Example](https://docs.astronomer.io/software/ci-cd/#example-cicd-workflow)
 
 ### Can dbt dynamically create tasks in the DAG like Airflow can?
@@ -228,10 +228,10 @@ As discussed above, we prefer to keep jobs bundled together and containing as ma
 
 ### Can you trigger notifications if a dbt job fails with Airflow?
 
-Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/error-notifications-in-airflow/) functionality, or [dbt Cloud's notifications](/docs/deploy/job-notifications), which support email and Slack notifications. You could also create a [webhook](/docs/deploy/webhooks).
+Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/error-notifications-in-airflow/) functionality, or [<Constant name="cloud" />'s notifications](/docs/deploy/job-notifications), which support email and Slack notifications. You could also create a [webhook](/docs/deploy/webhooks).
 
 ### How should I plan my dbt Cloud + Airflow implementation?
 
-Check out [this recording](https://www.youtube.com/watch?v=n7IIThR8hGk) of a dbt meetup for some tips.
+Check out [this recording](https://www.youtube.com/watch?v=n7IIThR8hGk) of a <Constant name="dbt" /> meetup for some tips.
 
 </div>

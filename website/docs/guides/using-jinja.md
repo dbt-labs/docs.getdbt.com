@@ -20,7 +20,7 @@ In this guide, we're going to take a common pattern used in SQL, and then use Ji
 If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/core-v1.0.0/seeds/raw_payments.csv) to the `seeds/` folder of your dbt project, and then execute `dbt seed`.
 
 While working through the steps of this model, we recommend that you have your compiled SQL open as well, to check what your Jinja compiles to. To do this:
-* **Using dbt Cloud:** Click the compile button to see the compiled SQL in the right hand pane
+* **Using <Constant name="cloud" />:** Click the compile button to see the compiled SQL in the right hand pane
 * **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ## Write the SQL without Jinja
@@ -280,7 +280,7 @@ There's a few tricky pieces in here:
 Fortunately, our model code doesn't need to be updated, since we're already calling the macro to get the list of payment methods. And now, any new `payment_methods` added to the underlying data model will automatically be handled by the dbt model.
 
 ## Write modular macros
-You may wish to use a similar pattern elsewhere in your dbt project. As a result, you decide to break up your logic into two separate macros -- one to generically return a column from a relation, and the other that calls this macro with the correct arguments to get back the list of payment methods.
+You may wish to use a similar pattern elsewhere in your <Constant name="dbt" /> project. As a result, you decide to break up your logic into two separate macros -- one to generically return a column from a relation, and the other that calls this macro with the correct arguments to get back the list of payment methods.
 
 <File name='macros/get_payment_methods.sql'>
 
@@ -323,7 +323,7 @@ Macros let analysts bring software engineering principles to the SQL they write.
 
 A number of useful dbt macros have already been written in the [dbt-utils package](https://github.com/dbt-labs/dbt-utils). For example, the [get_column_values](https://github.com/dbt-labs/dbt-utils#get_column_values-source) macro from dbt-utils could be used instead of the `get_column_values` macro we wrote ourselves (saving us a lot of time, but at least we learnt something along the way!).
 
-Install the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package in your project (docs [here](/docs/build/packages)), and then update your model to use the macro from the package instead:
+Install the [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package in your project (docs [here](/docs/build/packages)), and then update your model to use the macro from the package instead:
 
 <File name='models/order_payment_method_amounts.sql'>
 
@@ -346,6 +346,6 @@ group by 1
 
 </File>
 
-You can then remove the macros that we built in previous steps. Whenever you're trying to solve a problem that you think others may have solved previously, it's worth checking the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package to see if someone has shared their code!
+You can then remove the macros that we built in previous steps. Whenever you're trying to solve a problem that you think others may have solved previously, it's worth checking the [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package to see if someone has shared their code!
 
 </div>

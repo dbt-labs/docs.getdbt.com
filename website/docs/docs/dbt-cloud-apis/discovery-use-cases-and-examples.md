@@ -3,7 +3,7 @@ title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
 ---
 
-With the Discovery API, you can query the metadata in dbt Cloud to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
+With the Discovery API, you can query the metadata in <Constant name="cloud" /> to learn more about your <Constant name="dbt" /> deployments and the data it generates to analyze them and make improvements.
 
 You can use the API in a variety of ways to get answers to your business questions. Below describes some of the uses of the API and is meant to give you an idea of the questions this API can help you answer.
 
@@ -23,7 +23,7 @@ For performance use cases, people typically query the historical or latest appli
 
 ### How long did each model take to run?
 
-It’s helpful to understand how long it takes to build models (tables) and tests to execute during a dbt run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
+It’s helpful to understand how long it takes to build models (tables) and tests to execute during a <Constant name="dbt" /> run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt Cloud"/>
 
@@ -495,7 +495,7 @@ Graph example:
 
 ### Are my data sources fresh?
 
-Checking [source freshness](/docs/build/sources#source-data-freshness) allows you to ensure that sources loaded and used in your dbt project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
+Checking [source freshness](/docs/build/sources#source-data-freshness) allows you to ensure that sources loaded and used in your <Constant name="dbt" /> project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt Cloud"/>
 
@@ -634,7 +634,7 @@ For discovery use cases, people typically query the latest applied or definition
 
 ### What does this dataset and its columns mean?
 
-Query the Discovery API to map a table/view in the data platform to the model in the dbt project; then, retrieve metadata about its meaning, including descriptive metadata from its YAML file and catalog information from its YAML file and the schema.
+Query the Discovery API to map a table/view in the data platform to the model in the <Constant name="dbt" /> project; then, retrieve metadata about its meaning, including descriptive metadata from its YAML file and catalog information from its YAML file and the schema.
 
 <details>
 <summary>Example query</summary>
@@ -906,7 +906,7 @@ Graph example:
 
 ### Which metrics are available?
 
-You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+You can define and query metrics using the [<Constant name="semantic_layer" />](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
 
 <details>
 <summary>Example query</summary>
@@ -1119,7 +1119,7 @@ query (
 
 ### Which nodes depend on this data source?
 
-dbt lineage begins with data sources. For a given source, you can look at which nodes are its children then iterate downstream to get the full list of dependencies.
+<Constant name="dbt" /> lineage begins with data sources. For a given source, you can look at which nodes are its children then iterate downstream to get the full list of dependencies.
 
 Currently, querying beyond 1 generation (defined as a direct parent-to-child) is not supported. To see the grandchildren of a node, you need to make two queries: one to get the node and its children, and another to get the children nodes and their children.
 

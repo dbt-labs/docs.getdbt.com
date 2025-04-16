@@ -18,7 +18,7 @@ quoting:
 </File>
 
 ## Definition
-Optionally configure whether dbt should quote databases, schemas, and identifiers when:
+Optionally configure whether <Constant name="dbt" /> should quote databases, schemas, and identifiers when:
 * creating relations (tables/views)
 * resolving a `ref` function to a direct relation reference
 

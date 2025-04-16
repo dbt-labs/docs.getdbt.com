@@ -72,7 +72,7 @@ dbt build --select "orders"
 
 <TabItem value="buildable" label="Buildable mode">
 
-In this example, dbt executes tests that reference "orders" within the selected nodes (or their ancestors).
+In this example, <Constant name="dbt" /> executes tests that reference "orders" within the selected nodes (or their ancestors).
 
 
 ```shell
@@ -191,7 +191,7 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```
 
- Note that this functionality may change in future versions of dbt.
+ Note that this functionality may change in future versions of <Constant name="dbt" />.
 
 ### Run tests on tagged columns
 
@@ -220,7 +220,7 @@ models:
 
   ```
 
-Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
+Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of <Constant name="dbt" />.
 
 ### Run tagged tests only
 

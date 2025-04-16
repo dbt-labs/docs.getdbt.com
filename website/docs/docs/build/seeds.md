@@ -14,21 +14,21 @@ Seeds are CSV files in your dbt project (typically in your `seeds` directory), t
 
 Seeds can be referenced in downstream models the same way as referencing models — by using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
-Because these CSV files are located in your dbt repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
+Because these CSV files are located in your <Constant name="dbt" /> repository, they are version controlled and code reviewable. Seeds are best suited to static data which changes infrequently.
 
 Good use-cases for seeds:
 * A list of mappings of country codes to country names
 * A list of test emails to exclude from analysis
 * A list of employee account IDs
 
-Poor use-cases of dbt seeds:
+Poor use-cases of <Constant name="dbt" /> seeds:
 * Loading raw data that has been exported to CSVs
 * Any kind of production data containing sensitive information. For example
 personal identifiable information (PII) and passwords.
 
 
 ## Example
-To load a seed file in your dbt project:
+To load a seed file in your <Constant name="dbt" /> project:
 1. Add the file to your `seeds` directory, with a `.csv` file extension, e.g. `seeds/country_codes.csv`
 
 <File name='seeds/country_codes.csv'>
@@ -45,7 +45,7 @@ GB,United Kingdom
 
 2. Run the `dbt seed` [command](/reference/commands/seed) — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
 ```
-$ dbt seed
+$ <Constant name="dbt" /> seed
 
 Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 1 seed file
 

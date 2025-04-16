@@ -6,19 +6,19 @@ description: "Embed data health tiles in your dashboards to distill data health 
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 ---
 
-With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into Explorer to see more details and investigate issues.
+With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into <Constant name="explorer" /> to see more details and investigate issues.
 
 The data health tile:
 
 - Distills [data health signals](/docs/collaborate/data-health-signals) for data consumers.
-- Deep links you into dbt Explorer where you can further dive into upstream data issues.
+- Deep links you into <Constant name="explorer" /> where you can further dive into upstream data issues.
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
 
-Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. An exposure defines how specific outputs &mdash; like dashboards or reports &mdash; depend on your data models. Exposures in dbt can be configured in two ways:
+Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. An exposure defines how specific outputs &mdash; like dashboards or reports &mdash; depend on your data models. Exposures in <Constant name="dbt" /> can be configured in two ways:
 
 - Manual &mdash; Defined [manually](/docs/build/exposures#declaring-an-exposure) and explicitly in your project’s YAML files.
-- Automatic &mdash; Pulled automatically for supported dbt Cloud integrations. dbt Cloud automatically [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures), removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [dbt Explorer](/docs/collaborate/explore-projects), and behave like manual exposures, however they don’t exist in YAML files.
+- Automatic &mdash; Pulled automatically for supported <Constant name="cloud" /> integrations. <Constant name="cloud" /> automatically [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures), removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures, however they don’t exist in YAML files.
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
@@ -27,12 +27,12 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 
 ## Prerequisites
 
-- You must have a dbt Cloud account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You must have a <Constant name="cloud" /> account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
 - You have [exposures](/docs/build/exposures) defined in your project:
   -  If using manual exposures, they must be explicitly defined in your YAML files.
-  - If using automatic downstream exposures, ensure your BI tool is [configured](/docs/cloud-integrations/downstream-exposures-tableau) with dbt Cloud.
+  - If using automatic downstream exposures, ensure your BI tool is [configured](/docs/cloud-integrations/downstream-exposures-tableau) with <Constant name="cloud" />.
 - You have [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
 - The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
 
@@ -40,7 +40,7 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 
 First, be sure to enable [source freshness](/docs/deploy/source-freshness) in the job that generates this exposure.
 
-1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
+1. Navigate to <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
 2. In the main **Overview** page, go to the left navigation.
 3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
@@ -56,18 +56,18 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the exposure in dbt Explorer, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
+Once you’ve navigated to the exposure in <Constant name="explorer" />, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
 
 Follow these steps to set up your data health tile:
 
-1. Go to **Account settings** in dbt Cloud.
+1. Go to **Account settings** in <Constant name="cloud" />.
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
 4. Select the [**Metadata Only**](/docs/dbt-cloud-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
-6. Navigate back to dbt Explorer and select an exposure.
+6. Navigate back to <Constant name="explorer" /> and select an exposure.
 
    :::tip
       The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
@@ -100,7 +100,7 @@ Follow these steps to embed the data health tile in PowerBI:
 2. Create a new PowerBI measure by right-clicking on your **Data**, **More options**, and then **New measure**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-measure.png" width="80%" title="Create a new PowerBI measure."/>
 
-3. Navigate to dbt Explorer, select the exposure, and expand the [**Embed data health into your dashboard**](/docs/collaborate/data-tile#embed-in-your-dashboard) toggle. 
+3. Navigate to <Constant name="explorer" />, select the exposure, and expand the [**Embed data health into your dashboard**](/docs/collaborate/data-tile#embed-in-your-dashboard) toggle. 
 4. Go to the **iFrame** tab and copy the iFrame code. Make sure the Metadata Only token is already set up.
 5. In PowerBI, paste the iFrame code you copied into your measure calculation window. The iFrame code should look like this:
 
@@ -114,7 +114,7 @@ Follow these steps to embed the data health tile in PowerBI:
 6. PowerBI desktop doesn't support HTML rendering by default, so you need to install an HTML component from the PowerBI Visuals Store.
 7. To do this, go to **Build visuals** and then **Get more visuals**.
 8. Login with your PowerBI account.
-9. There are several third-party HTML visuals. The one tested for this guide is [HTML content](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200001930?tab=Overview). Install it, but please keep in mind it's a third-party plugin not created or supported by dbt Labs.
+9. There are several third-party HTML visuals. The one tested for this guide is [HTML content](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200001930?tab=Overview). Install it, but please keep in mind it's a third-party plugin not created or supported by <Constant name="dbt" /> Labs.
 10. Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-final.png" width="80%" title="Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile."/>
@@ -166,7 +166,7 @@ Follow these steps to embed the data health tile in Sigma:
 
 ## Job-based data health <Lifecycle status="Legacy"/>
 
-The default experience is the [environment-based data health tile](#view-exposure-in-dbt-explorer) with dbt Explorer.
+The default experience is the [environment-based data health tile](#view-exposure-in-dbt-explorer) with <Constant name="explorer" />.
 
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
@@ -178,7 +178,7 @@ The dashboard status tile looks like this:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg"/>
 
-The data freshness check fails if any sources feeding into the exposure are stale. The data quality check fails if any dbt tests fail. A failure state could look like this:
+The data freshness check fails if any sources feeding into the exposure are stale. The data quality check fails if any <Constant name="dbt" /> tests fail. A failure state could look like this:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg"/>
 
@@ -193,7 +193,7 @@ In order to set up your dashboard status tile, here is what you need:
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 
-3. **Job iD.** Remember that you can select your job ID directly from the URL when looking at the relevant job in dbt Cloud.
+3. **Job iD.** Remember that you can select your job ID directly from the URL when looking at the relevant job in <Constant name="cloud" />.
 
 You can insert these three fields into the following iFrame, and then embed it **anywhere that you can embed an iFrame**:
 

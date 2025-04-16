@@ -23,7 +23,7 @@ Many of the methods below support Unix-style wildcards:
 | [a-z]    | matches one character from the range given in the bracket |
 
 For example:
-```
+```bash
 dbt list --select "*.folder_name.*"
 dbt list --select "package:*_source"
 ```
@@ -268,20 +268,20 @@ These selectors can help you shorten run times by excluding unchanged nodes. Cur
 
 If a node changes its group, downstream references may break, potentially causing build failures.
 
-As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it’s referenced will flag those nodes as "modified".
+As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it's referenced will flag those nodes as "modified".
 
 Depending on whether partial parsing is enabled, you will catch the breakage as part of CI workflows.
 
-- If you change a group name everywhere it’s referenced, and partial parsing is enabled, dbt may only re-parse the changed model.
+- If you change a group name everywhere it's referenced, and partial parsing is enabled, dbt may only re-parse the changed model.
 - If you update a group name in all its references without partial parsing enabled, dbt will re-parse all models and identify any invalid downstream references.
 
-An error along the lines of “there’s nothing to do” can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
+An error along the lines of "there's nothing to do" can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
 
 Certain factors can affect how references are used or resolved later on, including:
 
 - Modifying access: if permissions or access rules change, some references might stop working.
 - Modifying `deprecation_date`: if a reference or model version is marked  deprecated, new warnings might appear that affect how references are  processed.
-- Modifying `latest_version`: if there’s no tie to a specific version, the reference or model will point to the latest version.
+- Modifying `latest_version`: if there's no tie to a specific version, the reference or model will point to the latest version.
   -  If a newer version is released, the reference will automatically resolve to the new version, potentially changing the behavior or output of the system that relies on it.
 
 #### Overwrites the `manifest.json`

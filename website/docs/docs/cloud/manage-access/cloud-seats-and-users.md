@@ -9,20 +9,20 @@ pagination_prev: null
 
 import LicenseTypes from '/snippets/_cloud-license-types.md';
 
-In dbt Cloud, _licenses_ are used to allocate users to your account. 
+In <Constant name="cloud" />, _licenses_ are used to allocate users to your account. 
 
 <LicenseTypes/>
 
-The user's assigned license determines the specific capabilities they can access in dbt Cloud.
+The user's assigned license determines the specific capabilities they can access in <Constant name="cloud" />.
 
 | Functionality | Developer User | Read-Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
-| Use the dbt Cloud IDE | ✅ | ❌ | ❌ |
-| Use the dbt Cloud CLI | ✅ | ❌ | ❌ |
+| Use the <Constant name="cloud_ide" /> | ✅ | ❌ | ❌ |
+| Use the <Constant name="cloud" /> CLI | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
-| Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
+| Use [<Constant name="explorer" />](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
@@ -33,13 +33,13 @@ The user's assigned license determines the specific capabilities they can access
 
 :::tip Licenses or Permission sets
 
-The user's license type always overrides their assigned [Enterprise permission](/docs/cloud/manage-access/enterprise-permissions) set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+The user's license type always overrides their assigned [Enterprise permission](/docs/cloud/manage-access/enterprise-permissions) set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
 
 :::
 
-Each dbt Cloud plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each <Constant name="cloud" /> plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
-If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [<Constant name="dbt" /> Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
 The following tabs detail steps on how to modify your user license count:
 
@@ -64,7 +64,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
 
-- Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. 
+- Adjust your developer user seat count, which manages the users invited to your <Constant name="cloud" /> project. 
 - Adjust your developer billing seat count, which manages the number of billable seats. 
 
 
@@ -86,16 +86,16 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="75%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
 
-Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your dbt Cloud account:
+Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your <Constant name="cloud" /> account:
 
-Great work! After completing those these steps, your dbt Cloud user count and billing count should now be the same.
+Great work! After completing those these steps, your <Constant name="cloud" /> user count and billing count should now be the same.
 </TabItem>
 
 <TabItem value="deleteusers" label="Deleting users">
 
 To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
-1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
@@ -114,7 +114,7 @@ If you are on a **Teams** plan and you're deleting users to reduce the number of
         
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="75%" title="The Billing** page in your **Account Settings" />
 
-Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
+Great work! After completing these steps, your <Constant name="cloud" /> user count and billing count should now be the same.
 
 </TabItem>
 </Tabs>
@@ -124,7 +124,7 @@ Great work! After completing these steps, your dbt Cloud user count and billing 
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in dbt Cloud. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="cloud" />. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
@@ -142,9 +142,9 @@ change.
 
 ### Mapped configuration <Lifecycle status="enterprise"/> 
 
-If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in dbt Cloud and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
-By default, all new members of a dbt Cloud account will be assigned a Developer
+By default, all new members of a <Constant name="cloud" /> account will be assigned a Developer
 license. To assign Read-Only licenses to certain groups of users, create a new
 License Mapping for the Read-Only license type and include a comma separated
 list of IdP group names that should receive a Read-Only license at sign-in time.
@@ -156,9 +156,9 @@ Usage notes:
   mapping, a Developer license type will be assigned
 - If a user's IdP groups do not match _any_ license type mappings, a Developer
   license will be assigned
-- License types are adjusted when users sign into dbt Cloud via Single Sign On.
+- License types are adjusted when users sign into <Constant name="cloud" /> via Single Sign On.
   Changes made to license type mappings will take effect the next time users
-  sign in to dbt Cloud.
+  sign in to <Constant name="cloud" />.
 - License type mappings are based on _IdP Groups_, not _dbt Cloud groups_, so be
   sure to check group memberships in your identity provider when configuring
   this feature.
@@ -166,6 +166,6 @@ Usage notes:
 
 ## Granular permissioning
 
-The dbt Cloud Enterprise plan supports role-based access controls for
+The <Constant name="cloud" /> Enterprise plan supports role-based access controls for
 configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-user-access)
 for more information on Enterprise permissioning.

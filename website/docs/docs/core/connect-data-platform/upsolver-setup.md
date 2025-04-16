@@ -80,6 +80,6 @@ The configs for Upsolver targets are shown below.
 | ------ | --------- | ----------- |
 | token | Yes | The token to connect Upsolver [Upsolver's documentation](https://docs.upsolver.com/sqlake/api-integration) |
 | user | Yes | The user to log in as |
-| database | Yes | The database that dbt should create models in |
+| database | Yes | The database that <Constant name="dbt" /> should create models in |
 | schema | Yes | The schema to build models into by default |
 | api_url | Yes | The API url to connect. Common value ```https://mt-api-prod.upsolver.com``` |

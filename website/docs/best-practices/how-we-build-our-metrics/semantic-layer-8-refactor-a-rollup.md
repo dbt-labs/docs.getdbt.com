@@ -7,11 +7,11 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-9-concl
 
 ## A new approach
 
-Now that we've set the stage, it's time to dig in to the fun and messy part: how do we refactor an existing rollup in dbt into semantic models and metrics?
+Now that we've set the stage, it's time to dig in to the fun and messy part: how do we refactor an existing rollup in <Constant name="dbt" /> into semantic models and metrics?
 
-Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a Semantic Layer. These differences can then inform our structure.
+Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging <Constant name="dbt" /> versus how we work without a <Constant name="semantic_layer" />. These differences can then inform our structure.
 
-- 🍊 In dbt, we tend to create **highly denormalized datasets** that bring **everything you want around a certain entity or process into a single table**.
+- 🍊 In <Constant name="dbt" />, we tend to create **highly denormalized datasets** that bring **everything you want around a certain entity or process into a single table**.
 - 💜 The problem is, this **limits the dimensionality available to MetricFlow**. The more we pre-compute and 'freeze' into place, the less flexible our data is.
 - 🚰 In MetricFlow, we ideally want **highly normalized**, star schema-like data that then allows MetricFlow to shine as a **denormalization engine**.
 - ∞ Another way to think about this is that instead of moving down a list of requested priorities trying to pre-make as many combinations of our marts as possible — increasing lines of code and complexity — we can **let MetricFlow present every combination possible without specifically coding it**.
@@ -25,16 +25,16 @@ We recommend an incremental implementation process that looks something like thi
 2. 🔍 Examine all the **entities that are components** of this rollup (for instance, an `active_customers_per_week` rollup may include customers, shipping, and product data).
 3. 🛠️ **Build semantic models** for all the underlying component marts.
 4. 📏 **Build metrics** for the required aggregations in the rollup.
-5. 👯 Create a **clone of the output** on top of the Semantic Layer.
+5. 👯 Create a **clone of the output** on top of the <Constant name="semantic_layer" />.
 6. 💻 Audit to **ensure you get accurate outputs**.
-7. 👉 Identify **any other outputs** that point to the rollup and **move them to the Semantic Layer**.
+7. 👉 Identify **any other outputs** that point to the rollup and **move them to the <Constant name="semantic_layer" />**.
 8. ✌️ Put a **deprecation plan** in place for the now extraneous frozen rollup.
 
 You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
 
 ## Let's make a `revenue` metric
 
-So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
+So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field <Constant name="dbt" /> project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
 1. 📚 Per the above steps, let's say we've identified our target as a revenue rollup that is built on top of `orders` and `order_items`. Now we need to identify all the underlying components, these will be all the 'import' CTEs at the top of these marts. So in the Jaffle Shop project we'd need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
 2. 🗺️ We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
@@ -80,7 +80,7 @@ Now, let's tackle a thornier situation. Products and supplies both have dimensio
 So to calculate, for instance, the cost of ingredients and supplies for a given order, we'll need to do some joining and aggregating, but again we **lack a time dimension for products and supplies**. This is the signal to us that we'll **need to build a logical mart** and point our semantic model at that.
 
 :::tip
-**dbt 🧡 MetricFlow.** This is where integrating your semantic definitions into your dbt project really starts to pay dividends. The interaction between the logical and semantic layers is so dynamic, you either need to house them in one codebase or facilitate a lot of cross-project communication and dependency.
+**<Constant name="dbt" /> 🧡 MetricFlow.** This is where integrating your semantic definitions into your <Constant name="dbt" /> project really starts to pay dividends. The interaction between the logical and semantic layers is so dynamic, you either need to house them in one codebase or facilitate a lot of cross-project communication and dependency.
 :::
 
 1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. You can see example code, copied below, in `models/marts/order_items.sql`.
@@ -228,7 +228,7 @@ metrics:
 
 ### Example query
 
-```shell
+```
 dbt sl query --metrics revenue --group-by metric_time__month
 ```
 

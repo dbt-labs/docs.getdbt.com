@@ -4,7 +4,7 @@ id: "environment-variables"
 description: "Use environment variables to customize the behavior of your dbt project."
 ---
 
-Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on
+Environment variables can be used to customize the behavior of a <Constant name="dbt" /> project depending on where the project is running. See the docs on
 [env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing
@@ -17,7 +17,7 @@ Environment variables in dbt Cloud must be prefixed with either `DBT_`, `DBT_ENV
 
 **Order of precedence**
 
-Environment variable values can be set in multiple places within dbt Cloud. As a result, dbt Cloud will interpret environment variables according to the following order of precedence (lowest to highest):
+Environment variable values can be set in multiple places within <Constant name="cloud" />. As a result, <Constant name="cloud" /> will interpret environment variables according to the following order of precedence (lowest to highest):
 
  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
@@ -26,7 +26,7 @@ There are four levels of environment variables:
  1. The optional default argument supplied to the `env_var` Jinja function in code, which can be overridden at (_lowest precedence_)
  2. The project-wide level by its default value, which can be overridden at
  3. The environment level, which can in turn be overridden again at
- 4. The job level (job override) or in the IDE for an individual dev (personal override). (_highest precedence_)
+ 4. The job level (job override) or in the <Constant name="cloud_ide" /> for an individual dev (personal override). (_highest precedence_)
 
 **Setting environment variables at the project and environment level**
 
@@ -62,26 +62,26 @@ Every job runs in a specific, deployment environment, and by default, a job will
 **Overriding environment variables at the personal level**
 
 
-You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (IDE). By default, dbt Cloud uses environment variable values set in the project's development environment. To see and override these values, from dbt Cloud:
+You can also set a personal value override for an environment variable when you develop in the <Constant name="dbt" />-integrated developer environment (<Constant name="cloud_ide" />). By default, <Constant name="cloud" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="cloud" />:
 - Click on your account name in the left side menu and select **Account settings**. 
 - Under the **Your profile** section, click **Credentials** and then select your project. 
 - Scroll to the **Environment variables** section and click **Edit** to make the necessary changes.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.gif" title="Navigating to environment variables personal override settings"/>
 
-To supply an override, developers can edit and specify a different value to use. These values will be respected in the IDE both for the Results and Compiled SQL tabs.
+To supply an override, developers can edit and specify a different value to use. These values will be respected in the <Constant name="cloud_ide" /> both for the Results and Compiled SQL tabs.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.png" title="Setting a personal override value"/>
 
 :::info Appropriate coverage
-If you have not set a project level default value for every environment variable, it may be possible that dbt Cloud does not know how to interpret the value of an environment variable in all contexts. In such cases, dbt will throw a compilation error: "Env var required but not provided".
+If you have not set a project level default value for every environment variable, it may be possible that <Constant name="cloud" /> does not know how to interpret the value of an environment variable in all contexts. In such cases, <Constant name="dbt" /> will throw a compilation error: "Env var required but not provided".
 :::
 
-:::info Changing environment variables mid-session in the IDE
-If you change the value of an environment variable mid-session while using the IDE, you may have to refresh the IDE for the change to take effect.
+:::info Changing environment variables mid-session in the <Constant name="cloud_ide" />
+If you change the value of an environment variable mid-session while using the <Constant name="cloud_ide" />, you may have to refresh the <Constant name="cloud_ide" /> for the change to take effect.
 :::
 
-To refresh the IDE mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the IDE. A new modal will pop up, and you should select the Refresh IDE button. This will load your environment variables values into your development environment.
+To refresh the <Constant name="cloud_ide" /> mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the <Constant name="cloud_ide" />. A new modal will pop up, and you should select the Refresh <Constant name="cloud_ide" /> button. This will load your environment variables values into your development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.png" title="Refreshing IDE mid-session"/>
 
@@ -98,16 +98,16 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 ### Special environment variables
 
-dbt Cloud has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
+<Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
 
 #### dbt Cloud IDE details
 
-The following environment variable is set automatically for the dbt Cloud IDE:
+The following environment variable is set automatically for the <Constant name="cloud_ide" />:
 
-- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - The variable changes when the branch is changed.
-  - Doesn't require restarting the IDE after a branch change.
-  - Currently not available in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+  - Doesn't require restarting the <Constant name="cloud_ide" /> after a branch change.
+  - Currently not available in the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
 
@@ -140,7 +140,7 @@ _The following variables are currently only available for GitHub, GitLab, and Az
 
 ### Example usage
 
-Environment variables can be used in many ways, and they give you the power and flexibility to do what you want to do more easily in dbt Cloud.
+Environment variables can be used in many ways, and they give you the power and flexibility to do what you want to do more easily in <Constant name="cloud" />.
 
 <Expandable alt_header="Clone private packages">
 

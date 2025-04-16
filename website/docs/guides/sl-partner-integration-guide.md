@@ -15,7 +15,7 @@ recently_updated: true
 
 ## Introduction
 
-To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
+To fit your tool within the world of the <Constant name="semantic_layer" />, <Constant name="dbt" /> Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 
@@ -25,20 +25,20 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ### Prerequisites
 
-To build a dbt Semantic Layer integration: 
+To build a <Constant name="semantic_layer" /> integration: 
 
-- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [<Constant name="semantic_layer" /> API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
-- Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
+- Familiarize yourself with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
   - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
-  - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
+  - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same <Constant name="dbt" /> project repo).
 
 ### Connection parameters
 
 The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, and `host`.
 
-We recommend you provide users with separate input fields with these components for authentication (dbt Cloud will surface these parameters for the user). 
+We recommend you provide users with separate input fields with these components for authentication (<Constant name="cloud" /> will surface these parameters for the user). 
 
 ### Exposing metadata to dbt Labs 
 
@@ -64,7 +64,7 @@ Best practices for exposing metrics are summarized into five themes:
 
 When working with more governed data, it's essential to establish clear guardrails. Here are some recommendations:
 
-- **Aggregations control** &mdash; Users shouldn't generally be allowed to modify aggregations unless they perform post-processing calculations on Semantic Layer data (such as year-over-year analysis).
+- **Aggregations control** &mdash; Users shouldn't generally be allowed to modify aggregations unless they perform post-processing calculations on <Constant name="semantic_layer" /> data (such as year-over-year analysis).
 
 - **Time series alignment and using metric_time** &mdash; Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes.<br /><br />When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). <br /><br /> As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the other time dimensions is clarifying so that people do not confuse how metrics should be plotted. <br /><br /> Also, when a user requests a time granularity change for the main time series, the query that your application runs should use `metric_time` as this will always give you the correct slice. Related to this, we also strongly recommend that you have a way to expose what dimension `metric_time` actually maps to for users who may not be familiar. Our APIs allow you to fetch the actual underlying time dimensions that makeup metric_time (such as `transaction_date`) so you can expose them to your users.
 
@@ -95,7 +95,7 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
-- **Using saved queries** &mdash; The dbt Semantic Layer has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+- **Using saved queries** &mdash; The <Constant name="semantic_layer" /> has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -106,7 +106,7 @@ Allow users to query either one metric alone without dimensions or multiple metr
 - Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply. (Our APIs provide calls for you to get relevant dimensions for metrics, and vice versa).
 
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
-  * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
+  * For example, if a <Constant name="dbt" /> model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
 
 - We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). 
   
@@ -142,17 +142,17 @@ In the cases where our APIs support either a string or a filter list for the `wh
 
 ## Understand stages of an integration
 
-These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
+These are recommendations on how to evolve a <Constant name="semantic_layer" /> integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in the project
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
 * Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
-* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that <Constant name="semantic_layer" /> developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering
@@ -169,10 +169,10 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Suggest metrics to users based on teams/identity, and so on.
 
 ### Related docs
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [Use the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
-- [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
+- [<Constant name="semantic_layer" /> integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
 
 
 </div>

@@ -8,11 +8,11 @@ keywords: [dbt package, private package, dbt private package, dbt data transform
 
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
-In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
+In <Constant name="dbt" />, libraries like these are called _packages_. <Constant name="dbt" />'s packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
 * transforming data from a consistently structured SaaS dataset, for example:
   * turning [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/) or [Segment](https://hub.getdbt.com/dbt-labs/segment/latest/) pageviews into sessions
   * transforming [AdWords](https://hub.getdbt.com/dbt-labs/adwords/latest/) or [Facebook Ads](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/) spend data into a consistent format.
-* writing dbt macros that perform similar functions, for example:
+* writing <Constant name="dbt" /> macros that perform similar functions, for example:
   * [generating SQL](https://github.com/dbt-labs/dbt-utils#sql-helpers) to union together two relations, pivot columns, or construct a <Term id="surrogate-key" />
   * creating [custom schema tests](https://github.com/dbt-labs/dbt-utils#schema-tests)
   * writing [audit queries](https://hub.getdbt.com/dbt-labs/audit_helper/latest/)
@@ -20,12 +20,12 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
   * Models to understand [Redshift](https://hub.getdbt.com/dbt-labs/redshift/latest/) privileges.
   * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/dbt-labs/stitch_utils/latest/).
 
-dbt _packages_ are in fact standalone dbt projects, with models, macros, and other resources that tackle a specific problem area. As a dbt user, by adding a package to your project, all of the package's resources will become part of your own project. This means:
+<Constant name="dbt" /> _packages_ are in fact standalone <Constant name="dbt" /> projects, with models, macros, and other resources that tackle a specific problem area. As a <Constant name="dbt" /> user, by adding a package to your project, all of the package's resources will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use `source` to refer to sources in the package.
 * You can use macros in the package in your own project.
-* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
+* It's important to note that defining and installing <Constant name="dbt" /> packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
@@ -60,7 +60,7 @@ You can specify a package using one of the following methods, depending on where
 
 ### Hub packages (recommended)
 
-dbt Labs hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+<Constant name="dbt" /> Labs hosts the [Package hub](https://hub.getdbt.com), registry for <Constant name="dbt" /> packages, as a courtesy to the <Constant name="dbt" /> Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [<Constant name="dbt" /> Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
 
 You can install available hub packages in the following way:
 
@@ -74,22 +74,22 @@ packages:
 
 </File>
 
-Hub packages require a version to be specified – you can find the latest release number on dbt Hub. Since Hub packages use [semantic versioning](https://semver.org/), we recommend pinning your package to the latest patch version from a specific minor release, like so:
+Hub packages require a version to be specified – you can find the latest release number on <Constant name="dbt" /> Hub. Since Hub packages use [semantic versioning](https://semver.org/), we recommend pinning your package to the latest patch version from a specific minor release, like so:
 
 
 ```yaml
 packages:
-  - package: dbt-labs/snowplow
+  - package: <Constant name="dbt" />-labs/snowplow
     version: [">=0.7.0", "<0.8.0"]
 ```
 
 `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
 
-Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
-* Your project uses both the dbt-utils and Snowplow packages, and the Snowplow package _also_ uses the dbt-utils package.
-* Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
+Where possible, we recommend installing packages via <Constant name="dbt" /> Hub, since this allows <Constant name="dbt" /> to handle duplicate dependencies. This is helpful in situations such as:
+* Your project uses both the <Constant name="dbt" />-utils and Snowplow packages, and the Snowplow package _also_ uses the <Constant name="dbt" />-utils package.
+* Your project uses both the Snowplow and Stripe packages, both of which use the <Constant name="dbt" />-utils package.
 
-In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
+In comparison, other package installation methods are unable to handle the duplicate <Constant name="dbt" />-utils package. 
 
 Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
 
@@ -129,7 +129,7 @@ packages:
 
 </File>
 
-Add the Git URL for the package, and optionally specify a revision. The revision can be:
+Add the <Constant name="git" /> URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
 - a tagged release
 - a specific commit (full 40-character hash)
@@ -138,7 +138,7 @@ Example of a revision specifying a 40-character hash:
 
 ```yaml
 packages:
-  - git: "https://github.com/dbt-labs/dbt-utils.git"
+  - git: "https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-utils.git"
     revision: 4e28d6da126e2940d17f697de783a717f2503188
 ```
 
@@ -146,12 +146,12 @@ By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-pa
 
 ### Internally hosted tarball URL
 
-Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, <Constant name="core" /> enables you to install packages from internally-hosted tarball URLs. 
 
 
 ```yaml
 packages:
-  - tarball: https://codeload.github.com/dbt-labs/dbt-utils/tar.gz/0.9.6
+  - tarball: https://codeload.github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-utils/tar.gz/0.9.6
     name: 'dbt_utils'
 ```
 
@@ -161,11 +161,11 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ### Native private packages <Lifecycle status='beta'/> 
 
-dbt Cloud supports private packages from [supported](#prerequisites) Git repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
+<Constant name="cloud" /> supports private packages from [supported](#prerequisites) <Constant name="git" /> repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
 
 #### Prerequisites
 
-- To use native private packages, you must have one of the following Git providers configured in the **Integrations** section of your **Account settings**:
+- To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - [GitHub](/docs/cloud/git/connect-github)
   - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
@@ -204,25 +204,25 @@ packages:
 </File>
 :::
 
-You can pin private packages similar to regular dbt packages:
+You can pin private packages similar to regular <Constant name="dbt" /> packages:
 
 ```yaml
 packages:
-  - private: dbt-labs/awesome_repo
+  - private: <Constant name="dbt" />-labs/awesome_repo
     revision: "0.9.5" # Pin to a tag, branch, or complete 40-character commit hash
   
 ```
 
-If you are using multiple Git integrations, disambiguate by adding the provider key:
+If you are using multiple <Constant name="git" /> integrations, disambiguate by adding the provider key:
 
 ```yaml
 packages:
-  - private: dbt-labs/awesome_repo
+  - private: <Constant name="dbt" />-labs/awesome_repo
     provider: "github" # GitHub and Azure are currently supported. GitLab is coming soon.
 
 ```
 
-With this method, you can retrieve private packages from an integrated Git provider without any additional steps to connect. 
+With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect. 
 
 ### SSH key method (command line only)
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
@@ -239,21 +239,21 @@ packages:
 
 </File>
 
-If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
+If you're using <Constant name="cloud" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
 ### Git token method
 
 :::note
 
-dbt Cloud has [native support](#native-private-packages) for Git hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated Git environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure Git tokens to retrieve private packages. 
+<Constant name="cloud" /> has [native support](#native-private-packages) for <Constant name="git" /> hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated <Constant name="git" /> environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure <Constant name="git" /> tokens to retrieve private packages. 
 
 :::
 
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info dbt Cloud usage
+:::info <Constant name="cloud" /> usage
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
@@ -333,7 +333,7 @@ packages:
 </File>
 
 ### Local packages
-A "local" package is a dbt project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
+A "local" package is a <Constant name="dbt" /> project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
 
 <File name='packages.yml'>
 
@@ -364,7 +364,7 @@ There are a few specific use cases where we recommend using a "local" package:
 
 
 ## What packages are available?
-Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
+Check out [<Constant name="dbt" /> Hub](https://hub.getdbt.com) to see the library of published <Constant name="dbt" /> packages!
 
 ## Advanced package configuration
 ### Updating a package
@@ -419,9 +419,9 @@ For example, when using a dataset specific package, you may need to configure va
 Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
 
 ### Specifying unpinned Git packages
-If your project specifies an "unpinned" Git package, you may see a warning like:
+If your project specifies an "unpinned" <Constant name="git" /> package, you may see a warning like:
 ```
-The git package "https://github.com/dbt-labs/dbt-utils.git" is not pinned.
+The git package "https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-utils.git" is not pinned.
 This can introduce breaking changes into your project without warning!
 ```
 

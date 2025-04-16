@@ -5,7 +5,7 @@ id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
 
-:::caution The dbt-rpc plugin is deprecated
+:::caution The <Constant name="dbt" />-rpc plugin is deprecated
 
 
 dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. 
@@ -28,7 +28,7 @@ For more details, see the [`dbt-rpc` repository](https://github.com/dbt-labs/dbt
 
 ```
 
-$ dbt-rpc serve
+$ <Constant name="dbt" />-rpc serve
 Running with dbt=1.5.0
 
 16:34:31 | Concurrency: 8 threads (target='dev')
@@ -206,7 +206,7 @@ The `kill` method will terminate a running task. You can find a `task_id` for a 
 ```
 ## Running dbt projects
 
-The following methods make it possible to run dbt projects via the RPC server.
+The following methods make it possible to run <Constant name="dbt" /> projects via the RPC server.
 
 ### Common parameters
 
@@ -446,7 +446,7 @@ The resulting response will include a key called `table` with a value of `{'colu
 
 ## Reloading the RPC Server
 
-When the dbt RPC Server starts, it will load the dbt project into memory using the files present on disk at startup. If the files in the dbt project should change (either during development or in a deployment),  the dbt RPC Server can be updated live without cycling the server process. To reload the files present on disk, send a "hangup" signal to the running server process using the Process ID (pid) of the running process.
+When the <Constant name="dbt" /> RPC Server starts, it will load the <Constant name="dbt" /> project into memory using the files present on disk at startup. If the files in the <Constant name="dbt" /> project should change (either during development or in a deployment),  the <Constant name="dbt" /> RPC Server can be updated live without cycling the server process. To reload the files present on disk, send a "hangup" signal to the running server process using the Process ID (pid) of the running process.
 
 ### Finding the server PID
 
@@ -454,7 +454,7 @@ To find the server PID, either fetch the `.result.pid` value from the `status` m
 
 ```
 # Find the server PID using `ps`:
-ps aux | grep 'dbt-rpc serve' | grep -v grep
+ps aux | grep '<Constant name="dbt" />-rpc serve' | grep -v grep
 ```
 
 After finding the PID for the process (eg. 12345), send a signal to the running server using the `kill` command:

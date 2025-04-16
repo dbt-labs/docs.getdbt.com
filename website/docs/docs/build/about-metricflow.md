@@ -8,27 +8,27 @@ pagination_next: "docs/build/join-logic"
 pagination_prev: null
 ---
 
-This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
+This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the <Constant name="semantic_layer" />, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
-MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in dbt Cloud or dbt Core.
+MetricFlow handles SQL query construction and defines the specification for <Constant name="dbt" /> semantic models and metrics. It allows you to define metrics in your <Constant name="dbt" /> project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
 
 Before you start, consider the following guidelines:
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
-- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (dbt Core only), or Redshift. 
-- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
+- You must be on [<Constant name="dbt" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 ## MetricFlow
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with dbt version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
-- As a part of the dbt Semantic Layer, MetricFlow empowers organizations to define metrics using YAML abstractions.
+- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with <Constant name="dbt" /> version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
+- As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
 
-**Note** &mdash; MetricFlow doesn't support dbt [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
+**Note** &mdash; MetricFlow doesn't support <Constant name="dbt" /> [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
 
 MetricFlow abides by these principles:
 
@@ -43,11 +43,11 @@ We're introducing a new concept: a "semantic graph". It's the relationship betwe
 
 The semantic graph helps us decide which information is available to use for consumption and which is not. The connections between tables in the semantic graph are more about relationships between the information. This is different from the DAG, where the connections show dependencies between tasks.
 
-When MetricFlow generates a metric, it uses its SQL engine to figure out the best path between tables using the framework defined in YAML files for semantic models and metrics. When these models and metrics are correctly defined, they can be used downstream with dbt Semantic Layer's integrations.
+When MetricFlow generates a metric, it uses its SQL engine to figure out the best path between tables using the framework defined in YAML files for semantic models and metrics. When these models and metrics are correctly defined, they can be used downstream with <Constant name="semantic_layer" />'s integrations.
 
 ### Semantic models 
 
-Semantic models are the starting points of data and correspond to models in your dbt project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
+Semantic models are the starting points of data and correspond to models in your <Constant name="dbt" /> project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
 
 For a semantic model, there are three main pieces of metadata:
 
@@ -73,7 +73,7 @@ MetricFlow supports different metric types:
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data is based on the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
+The following example data is based on the Jaffle Shop repo. You can view the complete [<Constant name="dbt" /> project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
@@ -180,7 +180,7 @@ semantic_models:
   - name: orders
     description: |
       A model containing order data. The grain of the table is the order id.
-    model: ref('orders')  #The name of the dbt model and schema
+    model: ref('orders')  #The name of the <Constant name="dbt" /> model and schema
     defaults:
       agg_time_dimension: metric_time
     entities: # Entities, which usually correspond to keys in the table
@@ -249,9 +249,9 @@ metrics:
 
 Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. 
 
-It's recommended that you apply quality data consistency, such as filtering bad data, normalizing common objects, and data modeling of keys and tables, in upstream applications. The Semantic Layer is more efficient at doing data denormalization instead of normalization.
+It's recommended that you apply quality data consistency, such as filtering bad data, normalizing common objects, and data modeling of keys and tables, in upstream applications. The <Constant name="semantic_layer" /> is more efficient at doing data denormalization instead of normalization.
 
-If you have not invested in data consistency, that is okay. The Semantic Layer can take SQL queries or expressions to define consistent datasets.
+If you have not invested in data consistency, that is okay. The <Constant name="semantic_layer" /> can take SQL queries or expressions to define consistent datasets.
 
 </DetailsToggle>
 
@@ -269,7 +269,7 @@ Additionally, not all metrics are constructed off of measures. As an example, a 
 
 </DetailsToggle>
 <DetailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
-The dbt Semantic Layer, powered by MetricFlow,  builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.
+The dbt <Constant name="semantic_layer" />, powered by MetricFlow,  builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.
 
 Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
 </DetailsToggle>

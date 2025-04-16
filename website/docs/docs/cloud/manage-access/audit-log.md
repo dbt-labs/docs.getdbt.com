@@ -7,13 +7,13 @@ pagination_next: null
 pagination_prev: "docs/cloud/manage-access/about-user-access"
 ---
 
-To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
+To review actions performed by people in your organization, <Constant name="dbt" /> provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
 You must be an **Account Admin** or an **Account Viewer** to access the audit log and this feature is only available on Enterprise plans.
 
-The dbt Cloud audit log stores all the events that occurred in your organization in real-time, including:
+The <Constant name="cloud" /> audit log stores all the events that occurred in your organization in real-time, including:
 
-- For events within 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
+- For events within 90 days, the <Constant name="cloud" /> audit log has a selectable date range that lists events triggered.
 - For events beyond 90 days, **Account Admins** and **Account Viewers** can [export all events](#exporting-logs) by using **Export All**.
 
 ## Accessing the audit log
@@ -24,7 +24,7 @@ To access the audit log, click on your account name in the left side menu and se
 
 ## Understanding the audit log
 
-On the audit log page, you will see a list of various events and their associated event data. Each of these events show the following information in dbt:
+On the audit log page, you will see a list of various events and their associated event data. Each of these events show the following information in <Constant name="dbt" />:
 
 * **Event name**: Action that was triggered
 * **Agent**: User who triggered that action/event
@@ -49,11 +49,11 @@ The event details provide the key factors of an event:
 | event_context        | This key will be different for each event and will match the event_type. This data will include all the details about the object(s) that was changed. |
 | id                   | Unique ID of the event                        |
 | service              | Service that carried out the action           |
-| source               | Source of the event - dbt Cloud UI or API     |
+| source               | Source of the event - <Constant name="cloud" /> UI or API     |
 
 ## Audit log events
 
-The audit log supports various events for different objects in dbt Cloud. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
+The audit log supports various events for different objects in <Constant name="cloud" />. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
 
 ### Authentication
 
@@ -160,9 +160,9 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 
 ### Git integration
 
-| Event Name                       | Event Type                 | Description                               |
-| -------------------------------- | -------------------------- | ----------------------------------------- |
-| GitLab Application Changed       | gitlab_application.changed | GitLab configuration in dbt Cloud changed |
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| GitLab Application Changed        | gitlab_application.changed    | GitLab configuration in <Constant name="cloud" /> changed |
 
 ### Webhooks
 
@@ -175,14 +175,14 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 
 ### Semantic Layer
 
-| Event Name                        | Event Type                         | Description                                                                        |
-| --------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| Semantic Layer Config Added       | semantic_layer_config.added        | Semantic Layer config added                                                        |
-| Semantic Layer Config Changed     | semantic_layer_config.changed      | Semantic Layer config (not related to credentials) changed                         |
-| Semantic Layer Config Removed     | semantic_layer_config.removed      | Semantic Layer config removed                                                      |
-| Semantic Layer Credentials Added  | semantic_layer_credentials.added   | Semantic Layer credentials added                                                   |
-| Semantic Layer Credentials Changed| semantic_layer_credentials.changed | Semantic Layer credentials changed. Does not trigger semantic_layer_config.changed |
-| Semantic Layer Credentials Removed| semantic_layer_credentials.removed | Semantic Layer credentials removed                                                 |
+| Event Name                       | Event Type                    | Description            |
+| -------------------------------- | ----------------------------- | -----------------------|
+| Semantic Layer Config Added      | semantic_layer_config.added   | <Constant name="semantic_layer" /> config added |
+| Semantic Layer Config Changed      | semantic_layer_config.changed  | <Constant name="semantic_layer" /> config (not related to credentials) changed |
+| Semantic Layer Config Removed    | semantic_layer_config.removed   | <Constant name="semantic_layer" /> config removed |
+| Semantic Layer Credentials Added | semantic_layer_credentials.added   | <Constant name="semantic_layer" /> credentials added |
+| Semantic Layer Credentials Changed| semantic_layer_credentials.changed   | <Constant name="semantic_layer" /> credentials changed. Does not trigger semantic_layer_config.changed|
+| Semantic Layer Credentials Removed| semantic_layer_credentials.removed   | <Constant name="semantic_layer" /> credentials removed |
 
 ### Extended attributes
 
@@ -222,7 +222,7 @@ You can search the audit log to find a specific event or actor, which is limited
 
 You can use the audit log to export all historical audit results for security, compliance, and analysis purposes:
 
-- **For events within 90 days** &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
+- **For events within 90 days** &mdash; <Constant name="cloud" /> will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 
 - **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin or Account Viewer will receive an email link to download a CSV file of all the events that occurred in your organization.
 

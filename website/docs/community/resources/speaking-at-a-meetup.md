@@ -5,35 +5,35 @@ id: "speaking-at-a-meetup"
 
 # How to deliver a fantastic meetup talk
 
-**Speaking at a dbt meetup? Here’s all the details you’ll need to know. If you’re speaking at another event, check out our additional tips at the end of the article.**
+**Speaking at a <Constant name="dbt" /> meetup? Here’s all the details you’ll need to know. If you’re speaking at another event, check out our additional tips at the end of the article.**
 
 ## Understanding dbt meetups
 
-dbt meetups are an opportunity for the dbt community to learn from each other. We’re typically on the lookout for talks that last for ~15 minutes, and we reserve an additional 5-10 minutes for Q&A after your talk.
+<Constant name="dbt" /> meetups are an opportunity for the <Constant name="dbt" /> community to learn from each other. We’re typically on the lookout for talks that last for ~15 minutes, and we reserve an additional 5-10 minutes for Q&A after your talk.
 
-We’re not *just* looking for talks that feature dbt — if your topic feels relevant to analytics engineers, we’d love to chat.
+We’re not *just* looking for talks that feature <Constant name="dbt" /> — if your topic feels relevant to analytics engineers, we’d love to chat.
 
-In general, you can assume that around three quarters of the audience are dbt users. When shaping your talk, consider whether there’s something in there that might be new to an experienced dbt user, and, on the other end of the scale, something that feels relevant to a data practitioner that isn’t yet a dbt user.
+In general, you can assume that around three quarters of the audience are <Constant name="dbt" /> users. When shaping your talk, consider whether there’s something in there that might be new to an experienced <Constant name="dbt" /> user, and, on the other end of the scale, something that feels relevant to a data practitioner that isn’t yet a <Constant name="dbt" /> user.
 
-If you feel that your talk idea requires in-depth knowledge of dbt, consider speaking on Office Hours instead. Similarly, if you’re interested in giving a more introductory talk about dbt, consider reaching out to a local data meetup to see if it’s the right fit.
+If you feel that your talk idea requires in-depth knowledge of <Constant name="dbt" />, consider speaking on Office Hours instead. Similarly, if you’re interested in giving a more introductory talk about <Constant name="dbt" />, consider reaching out to a local data meetup to see if it’s the right fit.
 
-For topic inspiration, you can find videos of past dbt meetup presentations [here](https://www.youtube.com/playlist?list=PL0QYlrC86xQn-jxWmEqtQRbZoyjq_ffq5).
+For topic inspiration, you can find videos of past <Constant name="dbt" /> meetup presentations [here](https://www.youtube.com/playlist?list=PL0QYlrC86xQn-jxWmEqtQRbZoyjq_ffq5).
 
-If you want to present at a dbt meetup, let us know [here](https://docs.google.com/forms/d/e/1FAIpQLScU4c0UvXLsasc7uwFBrzt6YzuGiMzEH_EyFfXGnIYDmTBDfQ/viewform). If we haven’t met you before, we might book-in a call to say hi and help shape your topic! We’ll also book a meeting before the event for a dry-run of the presentation to give any additional feedback.
+If you want to present at a <Constant name="dbt" /> meetup, let us know [here](https://docs.google.com/forms/d/e/1FAIpQLScU4c0UvXLsasc7uwFBrzt6YzuGiMzEH_EyFfXGnIYDmTBDfQ/viewform). If we haven’t met you before, we might book-in a call to say hi and help shape your topic! We’ll also book a meeting before the event for a dry-run of the presentation to give any additional feedback.
 
 
 ## Recognize when you’re ready to give a talk
-Below, we’ve listed four signs that you’re ready to give a talk (originally based on [this article](https://thinkgrowth.org/how-to-write-about-your-work-652441747f41) from our Head of Marketing, Janessa — read that too!). We’ve also included examples for each category — where possible these are dbt meetup talks, but some of them are also links to blog posts from members in our community.
+Below, we’ve listed four signs that you’re ready to give a talk (originally based on [this article](https://thinkgrowth.org/how-to-write-about-your-work-652441747f41) from our Head of Marketing, Janessa — read that too!). We’ve also included examples for each category — where possible these are <Constant name="dbt" /> meetup talks, but some of them are also links to blog posts from members in our community.
 
 ### You recently finished a high-impact project
 These are a great option for first-time speakers as they mix together both big-picture thinking and tactics. For example:
 
 - "Improving data reliability" — Andrea Kopitz ([video](https://www.youtube.com/watch?v=M_cNspn2XsE), [slides](https://docs.google.com/presentation/d/1gHChax5aM3tqKkhepX7Mghmg0DTDbY5yoDBCfUR23lg/))
-- "Predicting customer conversions using dbt + machine learning" — Kenny Ning ([video](https://www.youtube.com/watch?v=BF7HH8JDUS0), [slides](https://docs.google.com/presentation/d/1iqVjzxxRggMnRoI40ku88miDKw795djpKV_v4bbLpPE/))
+- "Predicting customer conversions using <Constant name="dbt" /> + machine learning" — Kenny Ning ([video](https://www.youtube.com/watch?v=BF7HH8JDUS0), [slides](https://docs.google.com/presentation/d/1iqVjzxxRggMnRoI40ku88miDKw795djpKV_v4bbLpPE/))
 - "Migrating 387 models from Redshift to Snowflake" — Sam Swift and Travis Dunlop ([video](https://www.youtube.com/watch?v=VhH614WVufM), [slides](https://docs.google.com/presentation/d/1wE8NSkFPLFKGQ8fvFUUKoZFVoUhws_FhFip-9mDhoPU/))
 
 ### You hit an inflection point in your career
-Have you recently changed something about your career that you think others can learn from? Started a new job, grown in your role? These topics might not mention dbt at all, but will be relevant to many people in the audience. For example:
+Have you recently changed something about your career that you think others can learn from? Started a new job, grown in your role? These topics might not mention <Constant name="dbt" /> at all, but will be relevant to many people in the audience. For example:
 
 - “Getting hired as an analytics engineer: a candidate’s perspective” — Danielle Leong ([video](https://www.youtube.com/watch?v=6VCr30ZFxZ0))
 - “One analyst's guide for going from good to great” — Jason Ganz ([blog post](https://blog.getdbt.com/one-analysts-guide-for-going-from-good-to-great/))
@@ -109,7 +109,7 @@ Respondents to the team’s data survey said they no longer trusted the data.
 
 3. What tactics were used to solve the problem?
     1. Determine responsibility
-    2. Build more specific dbt tests
+    2. Build more specific <Constant name="dbt" /> tests
     3. Track progress
 
 4. What was the impact on the business problem?
@@ -149,7 +149,7 @@ Lesson: Send out a data survey to your company to inform your roadmap.
    A new Bowery Farming site had increased the amount of data the team were dealing with, which put a strain on their data stack.
 
 3. How did this manifest?
-   Charts show increased dbt run times, and increased Redshift costs.
+   Charts show increased dbt times, and increased Redshift costs.
 
 3. What tactics were used to solve the problem?
     1. Push Redshift to its limit: Leverage Athena, Redshift configurations, separate clusters, python pre-processing
@@ -179,7 +179,7 @@ As well as the slides that directly support your content, consider including:
     - A closing slide to prompt questions, and list your contact details.
     - If your company is hiring, mention that too!
 
-If available, use your corporate-branded slide deck. We also have dbt-branded slides if you want to use those.
+If available, use your corporate-branded slide deck. We also have <Constant name="dbt" />-branded slides if you want to use those.
 
 ### Making your presentation shine
 
@@ -208,19 +208,19 @@ For virtual events: is there a poll you can launch, or a question you can throw 
 
 ## Pair it with a blog post
 
-The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be featured on the [dbt Blog](https://blog.getdbt.com/), please email us at [community@dbtlabs.com](mailto:community@dbtlabs.com).
+The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be featured on the [<Constant name="dbt" /> Blog](https://blog.getdbt.com/), please email us at [community@dbtlabs.com](mailto:community@dbtlabs.com).
 
 We’ll also be adding more resources on how to write about your work soon!
 
 ## Speaking at a non-dbt event
 
-Above, we’ve given specific advice for speaking at a dbt meetup. If you’re a dbt community member who wants to speak at a non-dbt meetup or conference, there’s a few extra ways you can adjust your process.
+Above, we’ve given specific advice for speaking at a <Constant name="dbt" /> meetup. If you’re a <Constant name="dbt" /> community member who wants to speak at a non-<Constant name="dbt" /> meetup or conference, there’s a few extra ways you can adjust your process.
 
 ### Questions to ask the event organizer
 
 #### What is the technical baseline for the audience?
 
-Do they know about dbt? If not, are they familiar with SQL? You’ll likely have a range of people in the audience so there won’t be one exact answer, but gathering information about the median knowledge is useful. As a guideline, aim to teach something new to at least half of the audience.
+Do they know about <Constant name="dbt" />? If not, are they familiar with SQL? You’ll likely have a range of people in the audience so there won’t be one exact answer, but gathering information about the median knowledge is useful. As a guideline, aim to teach something new to at least half of the audience.
 
 #### What kind of talks have been the most successful?
 
@@ -244,4 +244,4 @@ Do any audience members use a communication device? Can you share your slides ah
 
 ### Responding to a conference Call for Speakers
 
-If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. You may email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.
+If you’re submitting a response for a Call for Speakers, and talking about <Constant name="dbt" />, we’re happy to work with you on this. You may email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.

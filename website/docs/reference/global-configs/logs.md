@@ -6,7 +6,7 @@ sidebar: "logs"
 
 ### Log Formatting
 
-dbt outputs logs to two different locations: CLI console and the log file.
+<Constant name="dbt" /> outputs logs to two different locations: CLI console and the log file.
 
 The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
 

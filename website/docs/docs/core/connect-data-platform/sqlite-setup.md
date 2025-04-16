@@ -26,9 +26,9 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
 
-Starting with the release of dbt-core 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of dbt-core.
-- versions 1.1.x of this adapter work with dbt-core 1.1.x
-- versions 1.0.x of this adapter work with dbt-core 1.0.x
+Starting with the release of <Constant name="core" /> 1.0.0, versions of <Constant name="dbt" />-sqlite are aligned to the same major+minor [version](https://semver.org/) of <Constant name="core" />.
+- versions 1.1.x of this adapter work with <Constant name="core" /> 1.1.x
+- versions 1.0.x of this adapter work with <Constant name="core" /> 1.0.x
 
 ## Connecting to SQLite with dbt-sqlite
 
@@ -78,7 +78,7 @@ your_profile_name:
 
   - If dbt needs to create a new schema, it will be created in `schema_directory` as `schema_name.db`. Dropping a schema results in dropping all its relations and detaching the database file from the session.
 
-  - Schema names are stored in view definitions, so when you access a non-'main' database file outside dbt, you'll need to attach it using the same name, or the views won't work.
+  - Schema names are stored in view definitions, so when you access a non-'main' database file outside <Constant name="dbt" />, you'll need to attach it using the same name, or the views won't work.
 
   - SQLite does not allow views in one schema (i.e. database file) to reference objects in another schema. You'll get this error from SQLite: "view [someview] cannot reference objects in database [somedatabase]". You must set `materialized='table'` in models that reference other schemas.
 

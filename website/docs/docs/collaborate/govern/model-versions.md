@@ -22,7 +22,7 @@ Versioning APIs is a hard problem in software engineering. The root of the chall
 - Producers of an API need the ability to modify its logic and structure. There is a real cost to maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
 - Consumers of an API need to trust in its stability: their queries will keep working, and won't break without warning. Although migrating to a newer API version incurs an expense, an unplanned migration is far costlier.
 
-When sharing a final dbt model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
+When sharing a final <Constant name="dbt" /> model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
 
 Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
 
@@ -38,7 +38,7 @@ If a model defines a ["contract"](/docs/collaborate/govern/model-contracts) (a s
 
 One approach is to force every model consumer to immediately handle the breaking change as soon as it's deployed to production. This is actually the appropriate answer at many smaller organizations, or while rapidly iterating on a not-yet-mature set of data models. But it doesn’t scale well beyond that.
 
-Instead, for mature models at larger organizations, powering queries inside & outside dbt, the model owner can use **model versions** to:
+Instead, for mature models at larger organizations, powering queries inside & outside <Constant name="dbt" />, the model owner can use **model versions** to:
 - Test "prerelease" changes (in production, in downstream systems)
 - Bump the latest version, to be used as the canonical source of truth
 - Offer a migration window off the "old" version
@@ -55,7 +55,7 @@ import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
 
 <ModelGovernanceRollback />
 
-By enforcing a model's contract, dbt can help you catch unintended changes to column names and data types that could cause a big headache for downstream queriers. If you're making these changes intentionally, you should create a new model version. If you're making a non-breaking change, you don't need a new version—such as adding a new column, or fixing a bug in an existing column's calculation.
+By enforcing a model's contract, <Constant name="dbt" /> can help you catch unintended changes to column names and data types that could cause a big headache for downstream queriers. If you're making these changes intentionally, you should create a new model version. If you're making a non-breaking change, you don't need a new version—such as adding a new column, or fixing a bug in an existing column's calculation.
 
 Of course, it's possible to change a model's definition in other ways—recalculating a column in a way that doesn't change its name, data type, or enforceable characteristics—but would substantially change the results seen by downstream queriers.
 
@@ -69,7 +69,7 @@ Rather than constantly adding a new version for each small change, you should op
 
 [Version control](/docs/collaborate/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
-When you make updates to a model's source code &mdash; its logical definition, in SQL or Python, or related configuration &mdash; dbt can [compare your project to the previous state](/reference/node-selection/syntax#about-node-selection), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production &mdash; all coordinated via your version control system.
+When you make updates to a model's source code &mdash; its logical definition, in SQL or Python, or related configuration &mdash; <Constant name="dbt" /> can [compare your project to the previous state](/reference/node-selection/syntax#about-node-selection), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production &mdash; all coordinated via your version control system.
 
 **Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
@@ -85,7 +85,7 @@ As the **producer** of a versioned model:
 - You keep track of all live versions in one place, rather than scattering them throughout the codebase
 - You can reuse the model's configuration, and highlight just the diffs between versions
 - You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
-- dbt will notify consumers of your versioned model when new versions become available, or when they are slated for deprecation
+- <Constant name="dbt" /> will notify consumers of your versioned model when new versions become available, or when they are slated for deprecation
 
 As the **consumer** of a versioned model:
 - You use a consistent `ref`, with the option of pinning to a specific live version
@@ -121,7 +121,7 @@ selectors:
 
 </File>
 
-Because dbt knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and as older versions are slated for deprecation.
+Because <Constant name="dbt" /> knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and as older versions are slated for deprecation.
 
 ```bash
 Found an unpinned reference to versioned model 'dim_customers'.
@@ -388,9 +388,9 @@ If your project has historically implemented [custom aliases](/docs/build/custom
 Your existing implementation of `generate_alias_name` should not encounter any errors upon first upgrading to v1.5. It's only when you create your first versioned model, that you may see an error like:
 
 ```sh
-dbt.exceptions.AmbiguousAliasError: Compilation Error
-  dbt found two resources with the database representation "database.schema.model_name".
-  dbt cannot create two resources with identical database representations. To fix this,
+<Constant name="dbt" />.exceptions.AmbiguousAliasError: Compilation Error
+  <Constant name="dbt" /> found two resources with the database representation "database.schema.model_name".
+  <Constant name="dbt" /> cannot create two resources with identical database representations. To fix this,
   change the configuration of one of these resources:
   - model.project_name.model_name.v1 (models/.../model_name.sql)
   - model.project_name.model_name.v2 (models/.../model_name_v2.sql)
@@ -423,7 +423,7 @@ To run a model with multiple versions, you can use the [`--select` flag](/refere
   dbt run -s dim_customers,version:latest # Run the latest version of the model
   ```
 
-These commands provide flexibility in managing and executing different versions of a dbt model.
+These commands provide flexibility in managing and executing different versions of a <Constant name="dbt" /> model.
 
 ### Optimizing model versions
 

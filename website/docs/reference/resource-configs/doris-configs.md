@@ -14,7 +14,7 @@ id: "doris-configs"
 
 ### View Materialization
 
-A dbt model can be created as a Doris view and configured using the following syntax:
+A <Constant name="dbt" /> model can be created as a Doris view and configured using the following syntax:
 
 <Tabs
 groupId="config-view"
@@ -50,7 +50,7 @@ models:
 
 ### Table Materialization
 
-A dbt model can be created as a [Doris table](https://doris.apache.org/docs/sql-manual/sql-reference/Data-Definition-Statements/Create/CREATE-TABLE/) and configured using the following syntax:
+A <Constant name="dbt" /> model can be created as a [Doris table](https://doris.apache.org/docs/sql-manual/sql-reference/Data-Definition-Statements/Create/CREATE-TABLE/) and configured using the following syntax:
 
 <Tabs
 groupId="config-table"

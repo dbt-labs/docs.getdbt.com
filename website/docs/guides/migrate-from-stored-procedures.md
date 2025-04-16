@@ -17,7 +17,7 @@ recently_updated: true
 
 ## Introduction
 
-One of the more common situations that new dbt adopters encounter is a historical codebase of transformations written as a hodgepodge of DDL and DML statements, or stored procedures. Going from DML statements to dbt models is often a challenging hump for new users to get over, because the process involves a significant paradigm shift between a procedural flow of building a dataset (e.g. a series of DDL and DML statements) to a declarative approach to defining a dataset (e.g. how dbt uses SELECT statements to express data models). This guide aims to provide tips, tricks, and common patterns for converting DML statements to dbt models.
+One of the more common situations that new <Constant name="dbt" /> adopters encounter is a historical codebase of transformations written as a hodgepodge of DDL and DML statements, or stored procedures. Going from DML statements to <Constant name="dbt" /> models is often a challenging hump for new users to get over, because the process involves a significant paradigm shift between a procedural flow of building a dataset (e.g. a series of DDL and DML statements) to a declarative approach to defining a dataset (e.g. how <Constant name="dbt" /> uses SELECT statements to express data models). This guide aims to provide tips, tricks, and common patterns for converting DML statements to <Constant name="dbt" /> models.
 
 ### Preparing to migrate
 
@@ -27,11 +27,11 @@ If your <Term id="data-warehouse" /> supports `SHOW CREATE TABLE`, that can be a
 
 As for ensuring that you have the right column types, since models materialized by dbt generally use `CREATE TABLE AS SELECT` or `CREATE VIEW AS SELECT` as the driver for object creation, tables can end up with unintended column types if the queries aren’t explicit. For example, if you care about `INT` versus `DECIMAL` versus `NUMERIC`, it’s generally going to be best to be explicit. The good news is that this is easy with dbt: you just cast the column to the type you intend.
 
-We also generally recommend that column renaming and type casting happen as close to the source tables as possible, typically in a layer of staging transformations, which helps ensure that future dbt modelers will know where to look for those transformations! See [How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview) for more guidance on overall project structure.
+We also generally recommend that column renaming and type casting happen as close to the source tables as possible, typically in a layer of staging transformations, which helps ensure that future <Constant name="dbt" /> modelers will know where to look for those transformations! See [How we structure our <Constant name="dbt" /> projects](/best-practices/how-we-structure/1-guide-overview) for more guidance on overall project structure.
 
 ### Operations we need to map
 
-There are four primary DML statements that you are likely to have to convert to dbt operations while migrating a procedure:
+There are four primary DML statements that you are likely to have to convert to <Constant name="dbt" /> operations while migrating a procedure:
 
 - `INSERT`
 - `UPDATE`
@@ -52,7 +52,7 @@ INSERT INTO returned_orders (order_id, order_date, total_return)
 SELECT order_id, order_date, total FROM orders WHERE type = 'return'
 ```
 
-Converting this with a first pass to a [dbt model](/guides/bigquery?step=8) (in a file called returned_orders.sql) might look something like:
+Converting this with a first pass to a [<Constant name="dbt" /> model](/guides/bigquery?step=8) (in a file called returned_orders.sql) might look something like:
 
 ```sql
 SELECT
@@ -83,7 +83,7 @@ INSERT INTO all_customers SELECT * FROM us_customers
 INSERT INTO all_customers SELECT * FROM eu_customers
 ```
 
-The dbt-ified version of this would end up looking something like:
+The <Constant name="dbt" />-ified version of this would end up looking something like:
 
 ```sql
 SELECT * FROM {{ ref('us_customers') }}
@@ -131,7 +131,7 @@ FROM {{ ref('stg_orders') }}
 
 Since the `UPDATE` statement doesn’t modify every value of the type column, we use a `CASE` statement to apply the contents’ `WHERE` clause. We still want to select all of the columns that should end up in the target table. If we left one of the columns out, it wouldn’t be passed through to the target table at all due to dbt’s declarative approach.
 
-Sometimes, you may not be sure what all the columns are in a table, or in the situation as above, you’re only modifying a small number of columns relative to the total number of columns in the table. It can be cumbersome to list out every column in the table, but fortunately dbt contains some useful utility macros that can help list out the full column list of a table.
+Sometimes, you may not be sure what all the columns are in a table, or in the situation as above, you’re only modifying a small number of columns relative to the total number of columns in the table. It can be cumbersome to list out every column in the table, but fortunately <Constant name="dbt" /> contains some useful utility macros that can help list out the full column list of a table.
 
 Another way I could have written the model a bit more dynamically might be:
 
@@ -158,13 +158,13 @@ Let’s consider a simple example query:
 DELETE FROM stg_orders WHERE order_status IS NULL
 ```
 
-In a dbt model, you’ll need to first identify the records that should be deleted and then filter them out. There are really two primary ways you might translate this query:
+In a <Constant name="dbt" /> model, you’ll need to first identify the records that should be deleted and then filter them out. There are really two primary ways you might translate this query:
 
 ```sql
 SELECT * FROM {{ ref('stg_orders') }} WHERE order_status IS NOT NULL
 ```
 
-This first approach just inverts the logic of the DELETE to describe the set of records that should remain, instead of the set of records that should be removed. This ties back to the way dbt declaratively describes datasets. You reference the data that should be in a dataset, and the table or view gets created with that set of data.
+This first approach just inverts the logic of the DELETE to describe the set of records that should remain, instead of the set of records that should be removed. This ties back to the way <Constant name="dbt" /> declaratively describes datasets. You reference the data that should be in a dataset, and the table or view gets created with that set of data.
 
 Another way you could achieve this is by marking the deleted records, and then filtering them out. For example:
 

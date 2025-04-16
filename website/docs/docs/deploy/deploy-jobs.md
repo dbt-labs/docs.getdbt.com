@@ -4,7 +4,7 @@ description: "Learn how to create and schedule deploy jobs in dbt Cloud for the 
 tags: [scheduler]
 ---
 
-You can use deploy jobs to build production data assets. Deploy jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have an entry in the job's run history and a detailed run overview, which provides you with:
+You can use deploy jobs to build production data assets. Deploy jobs make it easy to run <Constant name="dbt" /> commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in <Constant name="cloud" /> will have an entry in the job's run history and a detailed run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
@@ -18,9 +18,9 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ## Prerequisites
 
-- You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
-    - For the [Trigger on job completion](#trigger-on-job-completion) feature, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
+- You must have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+    - For the [Trigger on job completion](#trigger-on-job-completion) feature, your <Constant name="cloud" /> account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You must have a <Constant name="dbt" /> project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
@@ -50,13 +50,13 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
-    - **Compare changes against** &mdash; By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let dbt Cloud know what it should compare the changes against.  
+    - **Compare changes against** &mdash; By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="cloud" /> know what it should compare the changes against.  
 
     :::info
     Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
     :::
 
-    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
+    - **<Constant name="dbt" /> version** &mdash; By default, it’s set to inherit the [<Constant name="dbt" /> version](/docs/dbt-versions/core) from the environment. <Constant name="dbt" /> Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next <Constant name="dbt" /> version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
@@ -74,7 +74,7 @@ Under **Timing**, you can either use regular intervals for jobs that need to run
 
 :::info
 
-dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) and does not account for translations to your specific timezone or take into consideration daylight savings time. For example:
+<Constant name="cloud" /> uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) and does not account for translations to your specific timezone or take into consideration daylight savings time. For example:
 
 - 0 means 12am (midnight) UTC
 - 12 means 12pm (afternoon) UTC
@@ -88,9 +88,9 @@ To fully customize the scheduling of your job, choose the **Cron schedule** opti
 
 **Cron frequency**
 
-To enhance performance, job scheduling frequencies vary by dbt Cloud plan:
+To enhance performance, job scheduling frequencies vary by <Constant name="cloud" /> plan:
 
-- Developer plans: dbt Cloud sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
+- Developer plans: <Constant name="cloud" /> sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
 - Team and Enterprise plans: No restrictions on job execution frequency.
 
 **Examples**

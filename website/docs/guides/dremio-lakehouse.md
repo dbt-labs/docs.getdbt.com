@@ -17,15 +17,15 @@ recently_updated: true
 
 ## Introduction
 
-This guide will demonstrate how to build a data lakehouse with dbt Core 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with dbt's robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
+This guide will demonstrate how to build a data lakehouse with <Constant name="core" /> 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with <Constant name="dbt" />'s robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
 
 ### Prerequisites
 
 * You must have a [Dremio Cloud](https://docs.dremio.com/cloud/) account.
 * You must have Python 3 installed.
-* You must have dbt Core v1.5 or newer [installed](//docs/core/installation-overview). 
+* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/core/installation-overview). 
 * You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/core/connect-data-platform/dremio-setup) for Dremio Cloud.
-* You must have basic working knowledge of Git and the command line interface (CLI).
+* You must have basic working knowledge of <Constant name="git" /> and the command line interface (CLI).
 
 ## Validate your environment 
 
@@ -40,12 +40,12 @@ Python 3.11.4 # Must be Python 3
 
 ```shell
 
-$ dbt --version
+$ <Constant name="dbt" /> --version
 Core:
   - installed: 1.5.0 # Must be 1.5 or newer
   - latest:    1.6.3 - Update available!
 
-  Your version of dbt-core is out of date!
+  Your version of <Constant name="core" /> is out of date!
   You can find instructions for upgrading here:
   https://docs.getdbt.com/docs/installation
 
@@ -56,9 +56,9 @@ Plugins:
 
 ## Getting started
 
-1. Clone the Dremio dbt Core sample project from the [GitHub repo](https://github.com/dremio-brock/DremioDBTSample/tree/master/dremioSamples).
+1. Clone the Dremio <Constant name="core" /> sample project from the [GitHub repo](https://github.com/dremio-brock/DremioDBTSample/tree/master/dremioSamples).
 
-2. In your integrated development environment (IDE), open the relation.py file in the Dremio adapter directory:
+2. In your integrated development environment (<Constant name="cloud_ide" />), open the relation.py file in the Dremio adapter directory:
   `$HOME/Library/Python/3.9/lib/python/site-packages/dbt/adapters/dremio/relation.py`
 
 3. Find and update lines 51 and 52 to match the following syntax:
@@ -144,7 +144,7 @@ dremioSamples:
 
 ```
 
-Now that you have a running environment and a completed job, you can view the data in Dremio and expand your code. This is a snapshot of the project structure in an IDE:
+Now that you have a running environment and a completed job, you can view the data in Dremio and expand your code. This is a snapshot of the project structure in an <Constant name="cloud_ide" />:
 
 <Lightbox src="/img/guides/dremio/dremio-cloned-repo.png" title="Cloned repo in an IDE"/>
 
@@ -171,11 +171,11 @@ The sources can be found by navigating to the **Object Storage** section of the 
 
 ## The Job output
 
-When you run the dbt job, it will create a **dev** space folder that has all the data assets created. This is what you will see in Dremio Cloud UI. Spaces in Dremio is a way to organize data assets which map to business units or data products.
+When you run the <Constant name="dbt" /> job, it will create a **dev** space folder that has all the data assets created. This is what you will see in Dremio Cloud UI. Spaces in Dremio is a way to organize data assets which map to business units or data products.
 
 <Lightbox src="/img/guides/dremio/dremio-dev-space.png" title="Dremio Cloud dev space"/>
 
-Open the **Application folder** and you will see the output of the simple transformation we did using dbt.
+Open the **Application folder** and you will see the output of the simple transformation we did using <Constant name="dbt" />.
 
 <Lightbox src="/img/guides/dremio/dremio-dev-application.png" title="Application folder transformation output"/>
 

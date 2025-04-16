@@ -163,7 +163,7 @@ macros:
 ## Definition
 The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
 
-**Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
+**Note:** Hidden models will still appear in the <Constant name="dbt" /> DAG visualization but will be identified as "hidden.”
 
 ## Default
 The default value for `show` is `true`.
@@ -180,7 +180,7 @@ models:
 
 ### Mark a subfolder of models as hidden
 
-**Note:** This can also hide dbt packages.
+**Note:** This can also hide <Constant name="dbt" /> packages.
 
 <File name='dbt_project.yml'>
 
@@ -210,7 +210,7 @@ The `docs` attribute supports `node_color` to customize the display color of som
 
 Note, you need to run or re-run the `dbt docs generate` command to apply and view the customized colors.
 
-:::info Custom node colors not applicable in dbt Explorer
+:::info Custom node colors not applicable in <Constant name="explorer" />
 
 The custom `node_color` attribute isn't applicable in dbt Explorer. Instead, Explorer provides [lenses](/docs/collaborate/explore-projects#lenses), which are map layers for your <Term id="dag"/>. Lenses help you better understand your project's contextual metadata at scale and distinguish specific models or subsets of models.
 

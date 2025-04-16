@@ -9,7 +9,7 @@ sidebar_label: "Metrics as dimensions"
 
 To make informed business decisions, some metrics need the value of another metric as part of the metric definition, leading us to "metrics as dimensions".
 
-This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights. Available in dbt Cloud for versions 1.8 or higher.
+This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights. Available in <Constant name="cloud" /> for versions 1.8 or higher.
 
 ## Reference a metric in a filter
 

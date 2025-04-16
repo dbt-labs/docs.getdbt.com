@@ -8,17 +8,17 @@ image: /img/docs/dbt-cloud/using-dbt-cloud/light-vs-dark.png
 
 # Change your dbt Cloud theme 
 
-dbt Cloud supports **Light mode** (default), **Dark mode**, and **System mode** (respects your browser's theme for light or dark mode) under the **Theme** section of your user profile and is available for all [plans](https://www.getdbt.com/pricing). 
+<Constant name="cloud" /> supports **Light mode** (default), **Dark mode**, and **System mode** (respects your browser's theme for light or dark mode) under the **Theme** section of your user profile and is available for all [plans](https://www.getdbt.com/pricing). 
 
 You can seamlessly switch between these modes directly from the profile menu, customizing your viewing experience.
 
-Your selected theme is stored in your user profile, ensuring a consistent experience across dbt Cloud.
+Your selected theme is stored in your user profile, ensuring a consistent experience across <Constant name="cloud" />.
 
-Theme selection applies across all areas of dbt Cloud, including the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Explorer](/docs/collaborate/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in dbt Cloud](/docs/cloud/about-cloud/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
+Theme selection applies across all areas of <Constant name="cloud" />, including the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="cloud" />](/docs/cloud/about-cloud/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
 
 ## Change themes in dbt Cloud
 
-To switch to dark mode in the dbt Cloud UI, follow these steps:
+To switch to dark mode in the <Constant name="cloud" /> UI, follow these steps:
 
 1. Navigate to your account name at the bottom left of your account.
 2. Under **Theme**, select **Dark**.

@@ -325,7 +325,7 @@ Database Error in test source_not_null_stripe_payment_order_id (models/staging/s
   compiled SQL at target/compiled/jaffle_shop/schema_test/source_not_null_stripe_payment_orderID.sql
 ```
 
-This is because dbt is trying to run:
+This is because <Constant name="dbt" /> is trying to run:
 ```sql
 select count(*)
 from raw.stripe.payment

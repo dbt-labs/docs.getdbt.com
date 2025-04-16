@@ -276,7 +276,7 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 
 ## Persisting model descriptions
 
-Relation-level docs persistence is supported in dbt. For more
+Relation-level docs persistence is supported in <Constant name="dbt" />. For more
 information on configuring docs persistence, see [the docs](/reference/resource-configs/persist_docs).
 
 When the `persist_docs` option is configured appropriately, you'll be able to
@@ -285,11 +285,11 @@ or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
 
-Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
+Apache Spark uses the terms "schema" and "database" interchangeably. <Constant name="dbt" /> understands
 `database` to exist at a higher level than `schema`. As such, you should _never_
 use or set `database` as a node config or in the target profile when running dbt-spark.
 
-If you want to control the schema/database in which dbt will materialize models,
+If you want to control the schema/database in which <Constant name="dbt" /> will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
 
 ## Default file format configurations

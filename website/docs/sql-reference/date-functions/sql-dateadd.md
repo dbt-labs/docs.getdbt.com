@@ -11,7 +11,7 @@ slug: /sql-reference/dateadd
 
 If you’ve ever used the DATEADD SQL function across dialects (such as BigQuery, Postgres and Snowflake), you’ve probably had to google the syntax of the function every time. It's almost impossible to remember the argument order (or exact function name) of dateadd.
 
-This article will go over how the DATEADD function works, the nuances of using it across the major cloud warehouses, and how to standardize the syntax variances using dbt macro.
+This article will go over how the DATEADD function works, the nuances of using it across the major cloud warehouses, and how to standardize the syntax variances using <Constant name="dbt" /> macro.
 
 ## What is the DATEADD SQL function?
 
@@ -66,7 +66,7 @@ Switching back and forth between those SQL syntaxes usually requires a quick sca
 
 But couldn’t we be doing something better with those keystrokes, like typing out and then deleting a tweet?
 
-dbt helps smooth out these wrinkles of writing [SQL across data warehouses](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros).
+<Constant name="dbt" /> helps smooth out these wrinkles of writing [SQL across data warehouses](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros).
 
 Instead of looking up the syntax each time you use it, you can just write it the same way each time, and the macro compiles it to run on your chosen warehouse:
 

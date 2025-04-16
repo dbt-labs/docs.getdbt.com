@@ -9,7 +9,7 @@ The [`incremental_strategy` config](/docs/build/incremental-models#about-increme
 The `delete+insert` incremental strategy directs dbt to follow a two-step incremental approach. Initially, it identifies and removes the records flagged by the configured `is_incremental()` block. Subsequently, it re-inserts these records.
 
 ## Performance Optimizations
-[SingleStore Physical Database Schema Design documentation](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/concepts-of-physical-database-schema-design.html) is helpful if you want to use specific options (that are described below) in your dbt project.
+[SingleStore Physical Database Schema Design documentation](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/concepts-of-physical-database-schema-design.html) is helpful if you want to use specific options (that are described below) in your <Constant name="dbt" /> project.
 
 ### Storage type
 SingleStore supports two storage types: **In-Memory Rowstore** and **Disk-based Columnstore** (the latter is default). See [the docs](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/concepts-of-physical-database-schema-design/choosing-a-table-storage-type.html) for details. The dbt-singlestore adapter allows you to specify which storage type your table materialization would rely on using `storage_type` config parameter. 

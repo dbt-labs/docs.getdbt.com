@@ -5,10 +5,10 @@ sidebar_label: 'How to request your managed repository zipfile'
 id: managed-repo
 ---
 
-dbt Labs can send your managed repository through a ZIP file in its current state for you to push up to a git provider. After that, you'd just need to switch over to the [repo in your project](/docs/cloud/git/import-a-project-by-git-url) to point to the new repository.
+<Constant name="dbt" /> Labs can send your managed repository through a ZIP file in its current state for you to push up to a git provider. After that, you'd just need to switch over to the [repo in your project](/docs/cloud/git/import-a-project-by-git-url) to point to the new repository.
 
-When you're ready to do this, [contact the dbt Labs Support team](mailto:support@getdbt.com) with your request and your managed repo URL, which you can find by navigating to your project setting. To find project settings:
+When you're ready to do this, [contact the <Constant name="dbt" /> Labs Support team](mailto:support@getdbt.com) with your request and your managed repo URL, which you can find by navigating to your project setting. To find project settings:
 
-1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 2. Click **Projects**, and then select your project. 
 3. Under **Repository** in the project details page, you can find your managed repo URL.

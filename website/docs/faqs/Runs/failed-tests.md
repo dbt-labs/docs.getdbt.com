@@ -5,12 +5,12 @@ sidebar_label: 'Debug failed tests'
 id: failed-tests
 
 ---
-To debug a failing test, find the SQL that dbt ran by:
+To debug a failing test, find the SQL that <Constant name="dbt" /> ran by:
 
-* dbt Cloud:
+* <Constant name="cloud" />:
   * Within the test output, click on the failed test, and then select "Details"
 
-* dbt Core:
+* <Constant name="core" />:
   * Open the file path returned as part of the error message.
   * Navigate to the `target/compiled/schema_tests` directory for all compiled test queries
 

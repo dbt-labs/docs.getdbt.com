@@ -29,7 +29,7 @@ Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
-This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [dbt Cloud "Latest""](/docs/dbt-versions/cloud-release-tracks) and [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="cloud" /> "Latest""](/docs/dbt-versions/cloud-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
 <File name='models/schema.yml'>
 
@@ -83,7 +83,7 @@ When using `foreign_key`, you need to specify the referenced table's schema manu
 
 `expression: "{{ target.schema }}.customers(customer_id)"` 
 
-Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About dbt Core versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+Note that later versions of <Constant name="dbt" /> will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About <Constant name="core" /> versions](/docs/dbt-versions/core) or [Upgrade <Constant name="dbt" /> version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 <File name='models/schema.yml'>
 
@@ -294,7 +294,7 @@ select
 - Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
 - Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
 
-Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
+Snowflake supports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
 It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked at present.
 The rest of the constraints are purely metadata, not verified when inserting data. Although Snowflake does not validate `unique`, `primary`, or `foreign_key` constraints, you may optionally instruct Snowflake to use them for query optimization by specifying [`rely`](https://docs.snowflake.com/en/user-guide/join-elimination) in the constraint `expression` field.
@@ -584,7 +584,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ## Custom constraints 
 
-In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+In <Constant name="cloud" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
 Custom constraints allow you to add configuration to specific columns. For example:
 

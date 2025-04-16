@@ -36,7 +36,7 @@ Async installation means your program can start a task and then move on to other
 For more details, refer to [asyncio](https://docs.python.org/3/library/asyncio.html).
 
 ```bash
-pip install "dbt-sl-sdk[sync]"
+pip install "<Constant name="dbt" />-sl-sdk[sync]"
 ```
 
 Since the [Python ADBC driver](https://github.com/apache/arrow-adbc/tree/main/python/adbc_driver_manager) doesn't yet support asyncio natively, `dbt-sl-sdk` uses a [`ThreadPoolExecutor`](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/5e52e1ca840d20a143b226ae33d194a4a9bc008f/dbtsl/api/adbc/client/asyncio.py#L62) to run `query` and `list dimension-values` (all operations that are done with ADBC).  This is why you might see multiple Python threads spawning.
@@ -47,7 +47,7 @@ If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) o
 </Tabs>
 
 ## Usage
-To run operations against the Semantic Layer APIs, instantiate (create an instance of) a `SemanticLayerClient` with your specific [API connection parameters](/docs/dbt-cloud-apis/sl-api-overview):
+To run operations against the <Constant name="semantic_layer" /> APIs, instantiate (create an instance of) a `SemanticLayerClient` with your specific [API connection parameters](/docs/dbt-cloud-apis/sl-api-overview):
 
 ```python
 from dbtsl import SemanticLayerClient

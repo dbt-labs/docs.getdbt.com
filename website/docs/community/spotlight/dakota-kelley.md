@@ -25,7 +25,7 @@ I <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener n
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-This is a tough one. I know there are several, but the main qualities I resonate with are from those who dig in and help each other. There are always nuances to others situations, and it's good to dig in together, understand those, and seek a solution. The other quality I look for is someone who is trying to pull others up with them. At the end of the day we should all be striving to make all things better than they were when we arrived, regardless if that's the dbt Community or the local park we visit for rest and relaxation.
+This is a tough one. I know there are several, but the main qualities I resonate with are from those who dig in and help each other. There are always nuances to others situations, and it's good to dig in together, understand those, and seek a solution. The other quality I look for is someone who is trying to pull others up with them. At the end of the day we should all be striving to make all things better than they were when we arrived, regardless if that's the <Constant name="dbt" /> Community or the local park we visit for rest and relaxation.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

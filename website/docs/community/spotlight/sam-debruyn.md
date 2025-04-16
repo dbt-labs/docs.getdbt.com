@@ -28,7 +28,7 @@ I <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener n
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-It's hard to pick one person. There are lots of folks who inspired me along the way. There is Anders Swanson (known as dataders on Github), with whom I've spent countless hours discussing how we can bring two things I like together: dbt and the Microsoft SQL products. It's amazing to look back on what we achieved now that dbt Labs and Microsoft are working together to bring dbt support for Fabric and Synapse. There is also Jeremy Cohen (jerco) whose lengthy GitHub discussions bring inspiration to how you can do even more with dbt and what the future might hold. Cor Zuurmond (JCZuurmond) inspired me to start contributing to dbt-core, adapters, and related packages. He did an impressive amount of work by making dbt-spark even better, building pytest integration for dbt, and of course by bringing dbt to world's most used database: dbt-excel.
+It's hard to pick one person. There are lots of folks who inspired me along the way. There is Anders Swanson (known as dataders on Github), with whom I've spent countless hours discussing how we can bring two things I like together: <Constant name="dbt" /> and the Microsoft SQL products. It's amazing to look back on what we achieved now that <Constant name="dbt" /> Labs and Microsoft are working together to bring <Constant name="dbt" /> support for Fabric and Synapse. There is also Jeremy Cohen (jerco) whose lengthy GitHub discussions bring inspiration to how you can do even more with <Constant name="dbt" /> and what the future might hold. Cor Zuurmond (JCZuurmond) inspired me to start contributing to <Constant name="core" />, adapters, and related packages. He did an impressive amount of work by making <Constant name="dbt" />-spark even better, building pytest integration for <Constant name="dbt" />, and of course by bringing <Constant name="dbt" /> to world's most used database: <Constant name="dbt" />-excel.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
@@ -36,4 +36,4 @@ dbt doesn't only shine when you're using it, but also under the hood. dbt's code
 
 ## Anything else interesting you want to tell us?
 
-The dbt community is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.
+The <Constant name="dbt" /> community is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.

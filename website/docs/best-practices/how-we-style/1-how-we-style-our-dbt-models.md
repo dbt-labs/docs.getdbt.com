@@ -8,7 +8,7 @@ id: 1-how-we-style-our-dbt-models
 - 👥 Models should be pluralized, for example, `customers`, `orders`, `products`.
 - 🔑 Each model should have a primary key.
 - 🔑 The primary key of a model should be named `<object>_id`, for example, `account_id`. This makes it easier to know what `id` is being referenced in downstream joined models.
-- Use underscores for naming dbt models; avoid dots.
+- Use underscores for naming <Constant name="dbt" /> models; avoid dots.
   - ✅  `models_without_dots`
   - ❌ `models.with.dots`
   - Most data platforms use dots to separate `database.schema.object`, so using underscores instead of dots reduces your need for [quoting](/reference/resource-properties/quoting) as well as the risk of issues in certain parts of dbt Cloud. For more background, refer to [this GitHub issue](https://github.com/dbt-labs/dbt-core/issues/3246).

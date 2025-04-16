@@ -8,9 +8,9 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 ## Create dbt Cloud Artifacts
 
-[dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
+[<Constant name="explorer" />](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
 
-dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
+<Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
@@ -30,13 +30,13 @@ If you don't see your job listed, you might need to edit the job and select **Ru
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
 
-When you add a production job to a project, dbt Cloud updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
+When you add a production job to a project, <Constant name="cloud" /> updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
 
 </Expandable>
 
 ### Documentation
 
-Navigate to [dbt Explorer](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state.
+Navigate to [<Constant name="explorer" />](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state.
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
@@ -50,7 +50,7 @@ When set up, dbt Cloud updates the Documentation link in the header tab so it li
 
 ### Source Freshness
 
-To view the latest source freshness result, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more detail. Then navigate to dbt Explorer through the **Explore** link.
+To view the latest source freshness result, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more detail. Then navigate to <Constant name="explorer" /> through the **Explore** link.
 
 <Expandable alt_header="For dbt Docs">
 

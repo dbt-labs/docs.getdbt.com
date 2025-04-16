@@ -205,7 +205,7 @@ We've compiled some more in-depth examples [here](/docs/build/hooks-operations#a
 If you define hooks in both your `dbt_project.yml` and in the `config` block of a model, both sets of hooks will be applied to your model.
 
 ### Execution ordering
-If multiple instances of any hooks are defined, dbt will run each hook using the following ordering:
+If multiple instances of any hooks are defined, <Constant name="dbt" /> will run each hook using the following ordering:
 1. Hooks from dependent packages will be run before hooks in the active package.
 2. Hooks defined within the model itself will be run after hooks defined in `dbt_project.yml`.
 3. Hooks within a given context will be run in the order in which they are defined.
@@ -219,7 +219,7 @@ There may be occasions where you need to run these hooks _outside_ of a transact
 * You want to insert a record into an audit <Term id="table" /> at the start of a run and do not want that statement rolled back if the model creation fails.
 
 To achieve this behavior, you can use one of the following syntaxes:
-  - Important note: Do not use this syntax if you are using a database where dbt does not support transactions. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
+  - Important note: Do not use this syntax if you are using a database where <Constant name="dbt" /> does not support transactions. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
 
 <Tabs>
 <TabItem value="beforebegin" label="Use before_begin and after_commit">

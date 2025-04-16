@@ -11,17 +11,17 @@ import CloudProviders from '/snippets/_privatelink-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
-PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/) or [Azure](https://azure.microsoft.com/en-us/products/private-link), using that provider’s PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it allows connectivity between dbt Cloud and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
+PrivateLink enables a private connection from any <Constant name="cloud" /> Multi-Tenant environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/) or [Azure](https://azure.microsoft.com/en-us/products/private-link), using that provider’s PrivateLink technology. PrivateLink allows <Constant name="cloud" /> customers to meet security and compliance controls as it allows connectivity between <Constant name="cloud" /> and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
 
 <CloudProviders type='a data platform' />
 
 ### Cross-region PrivateLink
 
-dbt Labs has a worldwide network of regional VPCs. These VPCs are specifically used to host PrivateLink VPC endpoints, which are connected to dbt Cloud instance environments. To ensure security, access to these endpoints is protected by security groups, network policies, and application connection safeguards. The connected services are also authenticated. Currently, we have multiple customers successfully connecting to their PrivateLink endpoints in different AWS regions within dbt Cloud.
+<Constant name="dbt" /> Labs has a worldwide network of regional VPCs. These VPCs are specifically used to host PrivateLink VPC endpoints, which are connected to <Constant name="cloud" /> instance environments. To ensure security, access to these endpoints is protected by security groups, network policies, and application connection safeguards. The connected services are also authenticated. Currently, we have multiple customers successfully connecting to their PrivateLink endpoints in different AWS regions within <Constant name="cloud" />.
 
 ### Configuring PrivateLink
 
-dbt Cloud supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in dbt Cloud.
+<Constant name="cloud" /> supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [<Constant name="dbt" /> Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the <Constant name="dbt" /> private network and setting up the endpoint in <Constant name="cloud" />.
 
 - [Snowflake](/docs/cloud/secure/snowflake-privatelink)
 - [Databricks](/docs/cloud/secure/databricks-privatelink)

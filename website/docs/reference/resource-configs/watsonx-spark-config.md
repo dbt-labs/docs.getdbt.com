@@ -16,7 +16,7 @@ For detailed setup instructions, including setting up watsonx.data, adding the S
 
 With IBM watsonx.data SaaS/Software instance, you can [set session properties](https://sparkdb.io/docs/current/sql/set-session.html) to modify the current configuration for your user session.
 
-To temporarily adjust session properties for a specific dbt model or a group of models, use a [dbt hook](/reference/resource-configs/pre-hook-post-hook). For example:
+To temporarily adjust session properties for a specific <Constant name="dbt" /> model or a group of models, use a [<Constant name="dbt" /> hook](/reference/resource-configs/pre-hook-post-hook). For example:
 
 ```sql
 {{
@@ -75,7 +75,7 @@ The supported file formats depend on the catalog type:
 
 The plugin **automatically** detects the file format type based on the catalog specified in the configuration.
 
-By specifying file format dbt models. For example:
+By specifying file format <Constant name="dbt" /> models. For example:
 
 ```sql
 {{
@@ -89,13 +89,13 @@ By specifying file format dbt models. For example:
 **For more details**, refer to the [documentation.](https://spark.apache.org/docs/3.5.3/sql-ref-syntax.html#sql-syntax)
 
 ## Seeds and prepared statements
-You can configure column data types either in the dbt_project.yml file or in property files, as supported by dbt. For more details on seed configuration and best practices, refer to the [dbt seed configuration documentation](/reference/seed-configs).
+You can configure column data types either in the dbt_project.yml file or in property files, as supported by <Constant name="dbt" />. For more details on seed configuration and best practices, refer to the [<Constant name="dbt" /> seed configuration documentation](/reference/seed-configs).
 
 
 ## Materializations
 The `dbt-watsonx-spark` adapter supports table materializations, allowing you to manage how your data is stored and queried in watsonx.data Spark.
 
-For further information on configuring materializations, refer to the [dbt materializations documentation](/reference/resource-configs/materialized).
+For further information on configuring materializations, refer to the [<Constant name="dbt" /> materializations documentation](/reference/resource-configs/materialized).
 
 ### Table
 
@@ -124,4 +124,4 @@ Despite its extensive capabilities, the `dbt-watsonx-spark` adapter has some lim
   - Large datasets may require tuning of Spark configurations such as shuffle partitions and memory allocation.
   - Some transformations may be expensive due to Spark’s in-memory processing model.
 
-By understanding these capabilities and constraints, users can maximize the effectiveness of dbt with Watsonx.data Spark for scalable data transformations and analytics.
+By understanding these capabilities and constraints, users can maximize the effectiveness of <Constant name="dbt" /> with Watsonx.data Spark for scalable data transformations and analytics.

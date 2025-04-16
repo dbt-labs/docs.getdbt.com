@@ -10,16 +10,16 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 # About dbt Insights <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to query data with <Constant name="query_page" /> and view documentation in dbt Explorer.
+Learn how to query data with the <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
 </IntroText>
 
 :::tip
 <Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
 :::
 
-<Constant name="query_page" /> in dbt Cloud empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
+The <Constant name="query_page" /> in <Constant name="cloud" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
-<Constant name="query_page" /> integrates with [dbt Explorer](/docs/collaborate/explore-projects), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [Visual Editor](/docs/cloud/visual-editor), [dbt Copilot](/docs/cloud/dbt-copilot), and [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
+<Constant name="query_page" /> in <Constant name="cloud" /> integrates with [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="visual_editor" />](/docs/cloud/visual-editor), [<Constant name="copilot" />](/docs/cloud/dbt-copilot), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
 
 <Lightbox src="/img/docs/dbt-insights/insights-main.gif" title="Overview of the dbt Insights and its features" />
 
@@ -27,22 +27,23 @@ Learn how to query data with <Constant name="query_page" /> and view documentati
 
 Key benefits include:
 - Quickly write, run, and iterate on SQL queries with tools like syntax highlighting, tabbed editors, and query history.
-- Leverage dbt metadata, trust signals, and lineage from dbt Explorer for informed query construction.
-- Make data accessible to users of varied technical skill levels with SQL, Semantic Layer queries, and visual tools.
-- Use dbt Copilot's AI-assistance to generate or edit SQL queries, descriptions, and more.
+- Leverage <Constant name="dbt" /> metadata, trust signals, and lineage from <Constant name="explorer" /> for informed query construction.
+- Make data accessible to users of varied technical skill levels with SQL, <Constant name="semantic_layer" /> queries, and visual tools.
+- Use <Constant name="copilot" />'s AI-assistance to generate or edit SQL queries, descriptions, and more.
 
 Some example use cases include:
 - Analysts can quickly construct queries to analyze sales performance metrics across regions and view results.
-- All users have a rich development experience powered by dbt Explorer's end-to-end exploration experience.
+- All users have a rich development experience powered by <Constant name="explorer" />'s end-to-end exploration experience.
 
 ## Prerequisites 
 
-- Have a dbt Cloud [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
+- Have a <Constant name="cloud" /> [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about the <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
-- Have a dbt Cloud [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
+- Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to the <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide)
-- Your production and development [environments](/docs/dbt-cloud-environments) are on dbt Cloud’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
+- Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported <Constant name="dbt" /> version.
+- Configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for your <Constant name="dbt" /> project.
 - Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Note SSH tunneling for Postgres or Redshift connections is not supported. 
 	- Single sign-on (SSO) for development user accounts supported, however SSO for production credentials not yet supported.
-- Have a successful job run in the environment where you configured the [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
+- Have a successful job run in the environment where you configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).

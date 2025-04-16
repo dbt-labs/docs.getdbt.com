@@ -47,4 +47,4 @@ The IN operator, like most of the SQL operators, are not syntactically different
 
 ## IN operator use cases
 
-Use the IN condition to filter out inappropriate or inaccurate rows from a query or database schema object based on parameters you define and understand. We guarantee there’s an IN somewhere in your dbt project 😀
+Use the IN condition to filter out inappropriate or inaccurate rows from a query or database schema object based on parameters you define and understand. We guarantee there’s an IN somewhere in your <Constant name="dbt" /> project 😀

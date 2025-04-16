@@ -104,7 +104,7 @@ Why require that incremental models also set [`on_schema_change`](/docs/build/in
 Imagine:
 - You add a new column to both the SQL and the YAML spec
 - You don't set `on_schema_change`, or you set `on_schema_change: 'ignore'`
-- dbt doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
+- <Constant name="dbt" /> doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
 
 Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models! `sync_all_columns` works like `append_new_columns` but also removes deleted columns, which you're not suppose to do with contracted models unless you upgrade the version.

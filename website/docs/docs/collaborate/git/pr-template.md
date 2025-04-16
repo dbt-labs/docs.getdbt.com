@@ -4,7 +4,7 @@ id: "pr-template"
 ---
 ## Configure pull request (PR) template URLs
 
-When you commit changes to a branch in the IDE, dbt Cloud can prompt users to open a new Pull Request for the code changes. To enable this functionality, ensure that a PR Template URL is configured in the **Repository details** page in your **Account Settings**. If this setting is blank, the IDE will prompt users to merge the changes directly into their default branch.
+When you commit changes to a branch in the <Constant name="cloud_ide" />, <Constant name="cloud" /> can prompt users to open a new Pull Request for the code changes. To enable this functionality, ensure that a PR Template URL is configured in the **Repository details** page in your **Account Settings**. If this setting is blank, the <Constant name="cloud_ide" /> will prompt users to merge the changes directly into their default branch.
 
 <Lightbox src="/img/docs/collaborate/repo-details.jpg" width="90%" title="Configure a PR template in the 'Repository details' page." />
 
@@ -12,9 +12,9 @@ When you commit changes to a branch in the IDE, dbt Cloud can prompt users to op
 
 The PR Template URL setting will be automatically set for most repositories, depending on the connection method.
 
-- If you connect to your repository via in-app integrations with your git provider or the "Git Clone" method via SSH, this URL setting will be auto-populated and editable.
+- If you connect to your repository via in-app integrations with your git provider or the "<Constant name="git" /> Clone" method via SSH, this URL setting will be auto-populated and editable.
   - For AWS CodeCommit, this URL setting isn't auto-populated and must be [manually configured](/docs/cloud/git/import-a-project-by-git-url#step-5-configure-pull-request-template-urls-optional).
-- If you connect via a dbt Cloud [Managed repository](/docs/cloud/git/managed-repository), this URL will not be set, and the IDE will prompt users to merge the changes directly into their default branch.
+- If you connect via a <Constant name="cloud" /> [Managed repository](/docs/cloud/git/managed-repository), this URL will not be set, and the <Constant name="cloud_ide" /> will prompt users to merge the changes directly into their default branch.
 
 The PR template URL supports two variables that can be used to build a URL string.
 These variables, `{{source}}` and `{{destination}}` return branch names based on the
@@ -41,7 +41,7 @@ https://github.com/dbt-labs/jaffle_shop/compare/{{destination}}..{{source}}
 <TabItem value="rendered">
 
 ```
-https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
+https://github.com/<Constant name="dbt" />-labs/jaffle_shop/compare/master..my-branch
 ```
 
 </TabItem>

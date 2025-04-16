@@ -6,9 +6,9 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 ### Where should your mesh journey start?
 
-Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
+Moving to a <Constant name="mesh" /> represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
 
-1. Lack of buy-in that a dbt Mesh is the right long-term architecture
+1. Lack of buy-in that a <Constant name="mesh" /> is the right long-term architecture
 2. Lack of alignment on a well-scoped starting point
 
 Creating alignment on your architecture and starting point are major steps in ensuring a successful migration. Deciding on the right starting point will look different for every organization, but there are some heuristics that can help you decide where to start. In all likelihood, your organization already has logical components, and you may already be grouping, building, and deploying your project according to these interfaces.The goal is to define and formalize these organizational interfaces and use these boundaries to split your project apart by domain.
@@ -19,7 +19,7 @@ How do you find these organizational interfaces? Here are some steps to get you 
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
-  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto dbt Mesh as a consumer? 
+  - Is there a single team that is *downstream* of your current <Constant name="dbt" /> project, who could more easily migrate onto <Constant name="mesh" /> as a consumer? 
 
 When attempting to define your project interfaces, you should consider investigating:
 
@@ -29,7 +29,7 @@ When attempting to define your project interfaces, you should consider investiga
 
 Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
 
-To learn more, refer to our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+To learn more, refer to our freely available [<Constant name="mesh" /> learning course](https://learn.getdbt.com/courses/dbt-mesh). 
 
 
 ## Defining project interfaces with groups and access
@@ -80,7 +80,7 @@ models:
 ## Split your projects
 
 1. **Move your grouped models into a subfolder**. This will include any model in the selected group, it's associated YAML entry, as well as its parent or child resources as appropriate depending on where this group sits in your DAG.
-   1. Note that just like in your dbt project, circular references are not allowed! Project B cannot have parents and children in Project A, for example.
+   1. Note that just like in your <Constant name="dbt" /> project, circular references are not allowed! Project B cannot have parents and children in Project A, for example.
 2. **Create a new `dbt_project.yml` file** in the subdirectory.
 3. **Copy any macros** used by the resources you moved.
 4. **Create a new `packages.yml` file** in your subdirectory with the packages that are used by the resources you moved.
@@ -107,14 +107,14 @@ projects:
 
 ## Connecting existing projects
 
-Some organizations may already be coordinating across multiple dbt projects. Most often this is via:
+Some organizations may already be coordinating across multiple <Constant name="dbt" /> projects. Most often this is via:
 
-1. Installing parent projects as dbt packages
+1. Installing parent projects as <Constant name="dbt" /> packages
 2. Using `{{ source() }}` functions to read the outputs of a parent project as inputs to a child project. 
 
 This has a few drawbacks:
 
-1. If using packages, each project has to include *all* resources from *all* projects in its manifest, slowing down dbt and the development cycle.
+1. If using packages, each project has to include *all* resources from *all* projects in its manifest, slowing down <Constant name="dbt" /> and the development cycle.
 2. If using sources, there are breakages in the lineage, as there's no real connection between the parent and child projects.
 
 The migration steps here are much simpler than splitting up a monolith!
@@ -137,7 +137,7 @@ The migration steps here are much simpler than splitting up a monolith!
 ## Additional Resources
 ### Our example projects
 
-We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo dbt Mesh. Note that you'll need to leverage dbt Cloud to use multi-project architecture, as cross-project references are powered via dbt Cloud's APIs.
+We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo <Constant name="mesh" />. Note that you'll need to leverage <Constant name="cloud" /> to use multi-project architecture, as cross-project references are powered via <Constant name="cloud" />'s APIs.
 
 - **[Platform](https://github.com/dbt-labs/jaffle-shop-mesh-platform)** - containing our centralized staging models.
 - **[Marketing](https://github.com/dbt-labs/jaffle-shop-mesh-marketing)** - containing our marketing marts.
@@ -148,4 +148,4 @@ We've provided a set of example projects you can use to explore the topics cover
 We recommend using the `dbt-meshify` [command line tool](<https://dbt-labs.github.io/dbt-meshify/>) to help you do this. This comes with CLI operations to automate most of the above steps.
 
 ## Related docs
-- [Quickstart with dbt Mesh](/guides/mesh-qs)
+- [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)

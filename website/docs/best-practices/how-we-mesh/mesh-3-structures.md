@@ -7,16 +7,16 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 When adopting a multi-project architecture, where do you draw the lines between projects?
 
-How should you organize data workflows in a world where instead of having a single dbt DAG, you have multiple projects speaking to each other, each comprised of their own DAG?
+How should you organize data workflows in a world where instead of having a single <Constant name="dbt" /> DAG, you have multiple projects speaking to each other, each comprised of their own DAG?
 
-Adopting the dbt Mesh pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now you can mold your organizational knowledge graph to your organizational people graph, bringing people and data closer together rather than compromising one for the other.
+Adopting the <Constant name="mesh" /> pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now you can mold your organizational knowledge graph to your organizational people graph, bringing people and data closer together rather than compromising one for the other.
 
 While there is not a single best way to implement this pattern, there are some common decision points that will be helpful for you to consider.
 
 At a high level, you’ll need to decide:
 
-- Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
-- How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
+- Where to draw the lines between your <Constant name="dbt" /> Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
+- How to manage your code -- do you want multiple <Constant name="dbt" /> Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
 ## Define your project interfaces by splitting your DAG
 
@@ -62,7 +62,7 @@ A multi-project architecture can exist in a single repo (monorepo) or as multipl
 
 ## Projects, splits, and teams
 
-Since the launch of dbt Mesh, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
+Since the launch of <Constant name="mesh" />, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
 
 Users may need to contribute models across multiple projects and this is fine. There will be some friction doing this, versus a single repo, but this is _useful_ friction, especially if upstreaming a change from a “spoke” to a “hub.” This should be treated like making an API change, one that the other team will be living with for some time to come. You should be concerned if your teammates find they need to make a coordinated change across multiple projects very frequently (every week), or as a key prerequisite for ~20%+ of their work.
 
@@ -77,7 +77,7 @@ import CycleDetection from '/snippets/_mesh-cycle-detection.md';
 
 The [implementation](/best-practices/how-we-mesh/mesh-4-implementation) page provides more in-depth examples of how to split a monolithic project into multiple projects. Here are some tips to get you started when considering the splitting methods listed above on your own projects:
 
-1. Start by drawing a diagram of your teams doing data work. Map each team to a single dbt project. If you already have an existing monolithic project, and you’re onboarding _net-new teams,_ this could be as simple as declaring the existing project as your “hub” and creating new “spoke” sandbox projects for each team.
+1. Start by drawing a diagram of your teams doing data work. Map each team to a single <Constant name="dbt" /> project. If you already have an existing monolithic project, and you’re onboarding _net-new teams,_ this could be as simple as declaring the existing project as your “hub” and creating new “spoke” sandbox projects for each team.
 2. Split off common foundations when you know that multiple downstream teams will require the same data source. Those could be upstreamed into a centralized hub or split off into a separate foundational project. need some splits to facilitate other splits, for example, source staging models in A that are used in both B and C (lack of project cycles).
 3. Split again to introduce intentional friction and encapsulate a particular set of models (for example, for external export).
 4. Recombine if you have “hot path” subsets of the DAG that you need to deploy with low latency because it powers in-app reporting or operational analytics. It might make sense to have a different dedicated team own these data models (see principle 1), similar to how software services with significantly different performance characteristics often warrant dedicated infrastructure, architecture, and staffing.

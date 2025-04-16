@@ -6,8 +6,8 @@ description: "dbt Explorer provides recommendations that you can take to improve
  
 dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
-- Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing.
-- These recommendations provide insight into how you can create a better-documented, better-tested, and better-built dbt project, creating more trust and less confusion.
+- <Constant name="explorer" /> also offers a global view, showing all the recommendations across the project for easy sorting and summarizing.
+- These recommendations provide insight into how you can create a better-documented, better-tested, and better-built <Constant name="dbt" /> project, creating more trust and less confusion.
 - For a seamless and consistent experience, recommendations use `dbt_project_evaluator`'s pre-defined settings and don't import customizations applied to your package or project.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
@@ -17,8 +17,8 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 ## Recommendations page
 The Recommendations overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 
 
-- **Model test coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with at least one dbt test configured on them.
-- **Model documentation coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with a description.
+- **Model test coverage** &mdash; The percent of models in your project (models not from a package or imported via <Constant name="mesh" />) with at least one <Constant name="dbt" /> test configured on them.
+- **Model documentation coverage** &mdash; The percent of models in your project (models not from a package or imported via <Constant name="mesh" />) with a description.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-overview.png" width="100%" title="Example of the Recommendations overview page with project metrics and the recommendations for all resources in the project"/>
 

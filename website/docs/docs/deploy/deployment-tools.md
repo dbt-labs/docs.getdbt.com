@@ -5,13 +5,13 @@ sidebar_label: "Integrate with other tools"
 pagination_next: null
 ---
 
-Alongside [dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of tools such as the ones described on this page.
+Alongside [<Constant name="cloud" />](/docs/deploy/jobs), discover other ways to schedule and run your <Constant name="dbt" /> jobs with the help of tools such as the ones described on this page.
 
-Build and install these tools to automate your data workflows, trigger dbt jobs (including those hosted on dbt Cloud), and enjoy a hassle-free experience, saving time and increasing efficiency.
+Build and install these tools to automate your data workflows, trigger <Constant name="dbt" /> jobs (including those hosted on <Constant name="cloud" />), and enjoy a hassle-free experience, saving time and increasing efficiency.
 
 ## Airflow
 
-If your organization uses [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
+If your organization uses [Airflow](https://airflow.apache.org/), there are a number of ways you can run your <Constant name="dbt" /> jobs, including:
 
 <Tabs>
 
@@ -26,7 +26,7 @@ Installing the [dbt Cloud Provider](https://airflow.apache.org/docs/apache-airfl
 
 <TabItem value="airflowcore" label="dbt Core">
 
-Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
+Invoking <Constant name="core" /> jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install <Constant name="dbt" /> into a virtual environment to avoid issues with conflicting dependencies between Airflow and <Constant name="dbt" />.
 
 </TabItem>
 </Tabs>
@@ -35,27 +35,27 @@ For more details on both of these methods, including example implementations, ch
 
 ## Automation servers
 
-Automation servers (such as CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins) can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.
+Automation servers (such as CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins) can be used to schedule bash commands for <Constant name="dbt" />. They also provide a UI to view logging to the command line, and integrate with your git repository.
 
 ## Azure Data Factory
 
-Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF.
+Integrate <Constant name="cloud" /> and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger <Constant name="cloud" /> jobs upon completion of ingestion jobs by using the [<Constant name="dbt" /> API](/docs/dbt-cloud-apis/overview) in ADF.
 
 
-The following video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in Azure Data Factory.
+The following video provides you with a detailed overview of how to trigger a <Constant name="cloud" /> job via the API in Azure Data Factory.
 
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
 
 
-To use the dbt API to trigger a job in dbt Cloud through ADF:
+To use the <Constant name="dbt" /> API to trigger a job in <Constant name="cloud" /> through ADF:
 
-1. In dbt Cloud, go to the job settings of the daily production job and turn off the scheduled run in the **Trigger** section.
-2. You'll want to create a pipeline in ADF to trigger a dbt Cloud job.
-3. Securely fetch the dbt Cloud service token from a key vault in ADF, using a web call as the first step in the pipeline.
-4. Set the parameters in the pipeline, including the dbt Cloud account ID and  job ID, as well as the name of the key vault and secret that contains the service token. 
+1. In <Constant name="cloud" />, go to the job settings of the daily production job and turn off the scheduled run in the **Trigger** section.
+2. You'll want to create a pipeline in ADF to trigger a <Constant name="cloud" /> job.
+3. Securely fetch the <Constant name="cloud" /> service token from a key vault in ADF, using a web call as the first step in the pipeline.
+4. Set the parameters in the pipeline, including the <Constant name="cloud" /> account ID and  job ID, as well as the name of the key vault and secret that contains the service token. 
     * You can find the dbt Cloud job and account id in the URL, for example, if your URL is `https://YOUR_ACCESS_URL/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
-5. Trigger the pipeline in ADF to start the dbt Cloud job and monitor the status of the dbt Cloud job in ADF.
-6. In dbt Cloud, you can check the status of the job and how it was triggered in dbt Cloud.
+5. Trigger the pipeline in ADF to start the <Constant name="cloud" /> job and monitor the status of the <Constant name="cloud" /> job in ADF.
+6. In <Constant name="cloud" />, you can check the status of the job and how it was triggered in <Constant name="cloud" />.
 
 ## Cron
 
@@ -63,36 +63,36 @@ Cron is a decent way to schedule bash commands. However, while it may seem like 
 
 ## Dagster
 
-If your organization uses [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud or dbt Core. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
+If your organization uses [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate <Constant name="dbt" /> commands into your pipelines. This library supports the execution of <Constant name="dbt" /> through <Constant name="cloud" /> or <Constant name="core" />. Running <Constant name="dbt" /> from Dagster automatically aggregates metadata about your <Constant name="dbt" /> runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
 
 ## Databricks workflows 
 
-Use Databricks workflows to call the dbt Cloud job API, which has several benefits such as integration with other ETL processes, utilizing dbt Cloud job features, separation of concerns, and custom job triggering based on custom conditions or logic. These advantages lead to more modularity, efficient debugging, and flexibility in scheduling dbt Cloud jobs.
+Use Databricks workflows to call the <Constant name="cloud" /> job API, which has several benefits such as integration with other ETL processes, utilizing <Constant name="cloud" /> job features, separation of concerns, and custom job triggering based on custom conditions or logic. These advantages lead to more modularity, efficient debugging, and flexibility in scheduling <Constant name="cloud" /> jobs.
 
-For more info, refer to the guide on [Databricks workflows and dbt Cloud jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+For more info, refer to the guide on [Databricks workflows and <Constant name="cloud" /> jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
 
 ## Kestra
 
-If your organization uses [Kestra](http://kestra.io/), you can leverage the [dbt plugin](https://kestra.io/plugins/plugin-dbt) to orchestrate dbt Cloud and dbt Core jobs. Kestra's user interface (UI) has built-in [Blueprints](https://kestra.io/docs/user-interface-guide/blueprints), providing ready-to-use workflows. Navigate to the Blueprints page in the left navigation menu and [select the dbt tag](https://demo.kestra.io/ui/blueprints/community?selectedTag=36) to find several examples of scheduling dbt Core commands and dbt Cloud jobs as part of your data pipelines. After each scheduled or ad-hoc workflow execution, the Outputs tab in the Kestra UI allows you to download and preview all dbt build artifacts. The Gantt and Topology view additionally render the metadata to visualize dependencies and runtimes of your dbt models and tests. The dbt Cloud task provides convenient links to easily navigate between Kestra and dbt Cloud UI.
+If your organization uses [Kestra](http://kestra.io/), you can leverage the [<Constant name="dbt" /> plugin](https://kestra.io/plugins/plugin-dbt) to orchestrate <Constant name="cloud" /> and <Constant name="core" /> jobs. Kestra's user interface (UI) has built-in [Blueprints](https://kestra.io/docs/user-interface-guide/blueprints), providing ready-to-use workflows. Navigate to the Blueprints page in the left navigation menu and [select the <Constant name="dbt" /> tag](https://demo.kestra.io/ui/blueprints/community?selectedTag=36) to find several examples of scheduling <Constant name="core" /> commands and <Constant name="cloud" /> jobs as part of your data pipelines. After each scheduled or ad-hoc workflow execution, the Outputs tab in the Kestra UI allows you to download and preview all <Constant name="dbt" /> build artifacts. The Gantt and Topology view additionally render the metadata to visualize dependencies and runtimes of your <Constant name="dbt" /> models and tests. The <Constant name="cloud" /> task provides convenient links to easily navigate between Kestra and <Constant name="cloud" /> UI.
 
 ## Orchestra
 
-If your organization uses [Orchestra](https://getorchestra.io), you can trigger dbt jobs using the dbt Cloud API. Create an API token from your dbt Cloud account and use this to authenticate Orchestra in the [Orchestra Portal](https://app.getorchestra.io). For details, refer to the [Orchestra docs on dbt Cloud](https://orchestra-1.gitbook.io/orchestra-portal/integrations/transformation/dbt-cloud).
+If your organization uses [Orchestra](https://getorchestra.io), you can trigger <Constant name="dbt" /> jobs using the <Constant name="cloud" /> API. Create an API token from your <Constant name="cloud" /> account and use this to authenticate Orchestra in the [Orchestra Portal](https://app.getorchestra.io). For details, refer to the [Orchestra docs on <Constant name="cloud" />](https://orchestra-1.gitbook.io/orchestra-portal/integrations/transformation/dbt-cloud).
 
-Orchestra automatically collects metadata from your runs so you can view your dbt jobs in the context of the rest of your data stack.
+Orchestra automatically collects metadata from your runs so you can view your <Constant name="dbt" /> jobs in the context of the rest of your data stack.
 
-The following is an example of the run details in dbt Cloud for a job triggered by Orchestra:
+The following is an example of the run details in <Constant name="cloud" /> for a job triggered by Orchestra:
 
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_orchestra_trigger.png" title="Example of Orchestra triggering a dbt job"/>
 
-The following is an example of viewing lineage in Orchestra for dbt jobs:
+The following is an example of viewing lineage in Orchestra for <Constant name="dbt" /> jobs:
 
 <Lightbox src="/img/docs/running-a-dbt-project/orchestra_lineage_dbt_cloud.png" title="Example of a lineage view for dbt jobs in Orchestra"/>
 
 
 ## Prefect
 
-If your organization uses [Prefect](https://www.prefect.io/), the way you will run your jobs depends on the dbt version you're on, and whether you're orchestrating dbt Cloud or dbt Core jobs. Refer to the following variety of options:
+If your organization uses [Prefect](https://www.prefect.io/), the way you will run your jobs depends on the <Constant name="dbt" /> version you're on, and whether you're orchestrating <Constant name="cloud" /> or <Constant name="core" /> jobs. Refer to the following variety of options:
 
 <Lightbox src="/img/docs/running-a-dbt-project/prefect_dag_dbt_cloud.jpg" width="75%" title="Prefect DAG using a dbt Cloud job run flow"/> 
 
@@ -114,7 +114,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 <TabItem value="prefect2core" label="dbt Core">
 
 - Use the [trigger_dbt_cli_command](https://prefecthq.github.io/prefect-dbt/cli/commands/#prefect_dbt.cli.commands.trigger_dbt_cli_command) task. 
-- For details on both of these methods, see [prefect-dbt docs](https://prefecthq.github.io/prefect-dbt/).
+- For details on both of these methods, see [prefect-<Constant name="dbt" /> docs](https://prefecthq.github.io/prefect-dbt/).
 
 </TabItem>
 </Tabs>
@@ -134,8 +134,8 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 <TabItem value="prefect1core" label="dbt Core">
 
-- Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your dbt runs. 
-- Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
+- Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your <Constant name="dbt" /> runs. 
+- Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute <Constant name="dbt" /> commands through the shell.
 
 
 </TabItem>
@@ -144,7 +144,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 ## Related docs
 
-- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
+- [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/guides)
 - [Webhooks for your jobs](/docs/deploy/webhooks)
 - [Orchestration guides](https://docs.getdbt.com/guides/orchestration)

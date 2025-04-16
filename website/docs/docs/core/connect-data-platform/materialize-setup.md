@@ -62,10 +62,10 @@ materialize:
 To test the connection to Materialize, run:
 
 ```
-dbt debug
+<Constant name="dbt" /> debug
 ```
 
-If the output reads "All checks passed!", you’re good to go! Check the [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/) to learn more and get started.
+If the output reads "All checks passed!", you’re good to go! Check the [<Constant name="dbt" /> and Materialize guide](https://materialize.com/docs/guides/dbt/) to learn more and get started.
 
 ## Supported Features
 
@@ -97,4 +97,4 @@ Running [`dbt test`](/reference/commands/test) with the optional `--store-failur
 
 ## Resources
 
-- [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
+- [<Constant name="dbt" /> and Materialize guide](https://materialize.com/docs/guides/dbt/)

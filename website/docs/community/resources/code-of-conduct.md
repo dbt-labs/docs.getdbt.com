@@ -6,16 +6,16 @@ description: "Learn about the community values that shape our rules, and review 
 
 # dbt Community Code of Conduct
 
-This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (dbt Core, dbt packages, etc.), Office Hours, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
+This Code of Conduct applies to all <Constant name="dbt" /> Community spaces, both online and offline. This includes Slack, Discourse, code repositories (<Constant name="core" />, <Constant name="dbt" /> packages, etc.), Office Hours, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
 
 This Code of Conduct has two sections:
 
-- **dbt Community Values:** These values apply to all of our community spaces, and all of our guidelines are based on these values.
+- **<Constant name="dbt" /> Community Values:** These values apply to all of our community spaces, and all of our guidelines are based on these values.
 - **Anti-harassment policy:**  We are dedicated to providing a harassment-free experience for everyone in our community — here, we outline exactly what that means.
 
 We appreciate your support in continuing to build a community we’re all proud of.
 
-— The dbt Community Admin Team.
+— The <Constant name="dbt" /> Community Admin Team.
 
 ## dbt Community Values
 ### Create more value than you capture.
@@ -24,8 +24,8 @@ Each community member should strive to create more value in the community than t
 
 Ways to demonstrate this value:
 
-- [Coding contributions](/community/contributing/contributing-coding): Contribute to dbt Core, a package, or an adapter. Beyond implementing new functionality, you can also open issues or participate in discussions.
-- [Writing contributions](/community/contributing/contributing-writing): You can suggest edits to every page of the dbt documentation, or suggest a topic for the dbt Developer Blog. 
+- [Coding contributions](/community/contributing/contributing-coding): Contribute to <Constant name="core" />, a package, or an adapter. Beyond implementing new functionality, you can also open issues or participate in discussions.
+- [Writing contributions](/community/contributing/contributing-writing): You can suggest edits to every page of the <Constant name="dbt" /> documentation, or suggest a topic for the <Constant name="dbt" /> Developer Blog. 
 - [Join in online](/community/contributing/contributing-online-community): Ask and answer questions on the Discourse forum, kick off a lively discussion in Slack, or even maintain a Slack channel of your own. 
 - [Participate in events](/community/contributing/contributing-realtime-events): Organise a community Meetup, speak at an event, or provide office space/sponsorship for an existing event. 
 
@@ -35,7 +35,7 @@ Some developer communities allow and even encourage anonymity — we prefer it w
 
 Ways to demonstrate this value:
 
-- Update your profile on dbt Community platforms to include your name and a clear picture of yourself. Where available, use the "what I do" section to add your role, title and current company.
+- Update your profile on <Constant name="dbt" /> Community platforms to include your name and a clear picture of yourself. Where available, use the "what I do" section to add your role, title and current company.
 - Join your `#local-` channel in Slack, or if it doesn't exist then propose a new one. 
 - Write in your own voice, and offer your own advice, rather than speaking in your company’s marketing or support voice.
 
@@ -57,7 +57,7 @@ Ways to demonstrate this value:
 
 - Try solving a problem yourself before asking for help, e.g. rather than asking "what happens when I do X", experiment and observe the results!
 - When asking questions, explain the "why" behind your decisions, e.g. "I’m trying to solve X problem, by writing Y code. I’m getting Z problem"
-- When helping someone else, explain why you chose that solution, or if no solution exists, elaborate on the reason for that, e.g. "That’s not possible in dbt today — but here’s a workaround / check out this GitHub issue for a relevant discussion"
+- When helping someone else, explain why you chose that solution, or if no solution exists, elaborate on the reason for that, e.g. "That’s not possible in <Constant name="dbt" /> today — but here’s a workaround / check out this GitHub issue for a relevant discussion"
 
 ## Anti-harassment policy
 
@@ -84,7 +84,7 @@ Harassment includes:
 
 Be mindful that others may not want their image or name on social media. Ask permission prior to posting about another person at in-person events.
 
-The dbt Community prioritizes marginalized people’s safety over privileged people’s comfort. The dbt Community Admin team reserves the right not to act on complaints regarding:
+The <Constant name="dbt" /> Community prioritizes marginalized people’s safety over privileged people’s comfort. The <Constant name="dbt" /> Community Admin team reserves the right not to act on complaints regarding:
 
 - ‘Reverse’ -isms, including ‘reverse racism,’ ‘reverse sexism,’ and ‘cisphobia’
 - Reasonable communication of boundaries, such as "leave me alone," "go away," or "I’m not discussing this with you."
@@ -93,23 +93,23 @@ The dbt Community prioritizes marginalized people’s safety over privileged peo
 
 ### Reporting harassment
 
-If you are being harassed by a member of the dbt Community, notice that someone else is being harassed, or have any other concerns, please contact us at [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) on Slack.
+If you are being harassed by a member of the <Constant name="dbt" /> Community, notice that someone else is being harassed, or have any other concerns, please contact us at [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) on Slack.
 
-We will respect confidentiality requests for the purpose of protecting victims of abuse. At our discretion, we may publicly name a person about whom we’ve received harassment complaints, or privately warn third parties about them, if we believe that doing so will increase the safety of dbt community members or the general public. We will not name harassment victims without their affirmative consent.
+We will respect confidentiality requests for the purpose of protecting victims of abuse. At our discretion, we may publicly name a person about whom we’ve received harassment complaints, or privately warn third parties about them, if we believe that doing so will increase the safety of <Constant name="dbt" /> community members or the general public. We will not name harassment victims without their affirmative consent.
 
 ### Consequences
 Participants asked to stop any harassing behavior are expected to comply immediately.
 
-If a participant engages in harassing behavior, the dbt Community Admin team may take any action they deem appropriate, up to and including expulsion from all dbt Community spaces and identification of the participant as a harasser to other dbt Community members or the general public.
+If a participant engages in harassing behavior, the <Constant name="dbt" /> Community Admin team may take any action they deem appropriate, up to and including expulsion from all <Constant name="dbt" /> Community spaces and identification of the participant as a harasser to other <Constant name="dbt" /> Community members or the general public.
 
 ## Coalesce and other events
-We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring Coalesce and other dbt Labs-hosted events. 
+We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring Coalesce and other <Constant name="dbt" /> Labs-hosted events. 
 
-While we actively support the broader ecosystem around dbt, it is not the right business decision for us to allow directly competitive companies to market to or sell to our users and customers at events that we invest very significant company resources into hosting. 
+While we actively support the broader ecosystem around <Constant name="dbt" />, it is not the right business decision for us to allow directly competitive companies to market to or sell to our users and customers at events that we invest very significant company resources into hosting. 
 
 Any event declines will be handled directly with the individuals / companies in question, and full refunds will be issued.
 
-Events that are hosted by other members of the dbt community, such as most dbt Community Meetups, are free to make their own guidelines about attendance.
+Events that are hosted by other members of the <Constant name="dbt" /> community, such as most <Constant name="dbt" /> Community Meetups, are free to make their own guidelines about attendance.
 
 ## Credits
 

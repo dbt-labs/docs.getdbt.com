@@ -16,25 +16,25 @@ recently_updated: true
 
 ## Introduction
 
-Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
+Using Databricks workflows to call the <Constant name="cloud" /> job API can be useful for several reasons:
 
-1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a dbt Cloud job after those processes are done.
-2. **Utilizes dbt Cloud jobs features &mdash;** dbt Cloud gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
-3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for dbt jobs in the dbt Cloud environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
-4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger dbt Cloud jobs based on custom conditions or logic that aren't natively supported by dbt Cloud's scheduling feature. This can give you more flexibility in terms of when and how your dbt Cloud jobs run.
+1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a <Constant name="cloud" /> job after those processes are done.
+2. **Utilizes <Constant name="cloud" /> jobs features &mdash;** <Constant name="cloud" /> gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
+3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for <Constant name="dbt" /> jobs in the <Constant name="cloud" /> environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
+4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger <Constant name="cloud" /> jobs based on custom conditions or logic that aren't natively supported by <Constant name="cloud" />'s scheduling feature. This can give you more flexibility in terms of when and how your <Constant name="cloud" /> jobs run.
 
 ### Prerequisites
 
-- Active [Teams or Enterprise dbt Cloud account](https://www.getdbt.com/pricing/)
-- You must have a configured and existing [dbt Cloud deploy job](/docs/deploy/deploy-jobs)
+- Active [Teams or Enterprise <Constant name="cloud" /> account](https://www.getdbt.com/pricing/)
+- You must have a configured and existing [<Constant name="cloud" /> deploy job](/docs/deploy/deploy-jobs)
 - Active Databricks account with access to [Data Science and Engineering workspace](https://docs.databricks.com/workspace-index.html) and [Manage secrets](https://docs.databricks.com/security/secrets/index.html)
 - [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
   - **Note**: You only need to set up your authentication. Once you have set up your Host and Token and are able to run `databricks workspace ls /Users/<someone@example.com>`, you can proceed with the rest of this guide.
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from dbt Cloud
-2. Set up a **Databricks secret scope**, which is used to securely store your dbt Cloud API key. 
+1. Retrieve **[personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="cloud" />
+2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="cloud" /> API key. 
 
 3. Enter the **following commands** in your terminal:
 
@@ -51,7 +51,7 @@ databricks secrets put --scope  <YOUR_SECRET_SCOPE> --key  <YOUR_SECRET_KEY> --s
 
 ## Create a Databricks Python notebook
 
-1. [Create a **Databricks Python notebook**](https://docs.databricks.com/notebooks/notebooks-manage.html), which executes a Python script that calls the dbt Cloud job API. 
+1. [Create a **Databricks Python notebook**](https://docs.databricks.com/notebooks/notebooks-manage.html), which executes a Python script that calls the <Constant name="cloud" /> job API. 
 
 2. Write a **Python script** that utilizes the `requests` library to make an HTTP POST request to the dbt Cloud job API endpoint using the required parameters. Here's an example script:
 
@@ -84,7 +84,7 @@ def _trigger_job() -> int:
         url=f"https://{base_url}/api/v2/accounts/{account_id}/jobs/{job_id}/run/",
         headers={'Authorization': f"Token {api_key}"},
         json={
-            # Optionally pass a description that can be viewed within the dbt Cloud API.
+            # Optionally pass a description that can be viewed within the <Constant name="cloud" /> API.
             # See the API docs for additional parameters that can be passed in,
             # including `schema_override` 
             'cause': f"Triggered by Databricks Workflows.",
@@ -143,7 +143,7 @@ Your URL is structured `https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/project
 
 6. In the widget, **enter your `job_id`** from step 4.
 
-7. **Run the Notebook again** to trigger the dbt Cloud job. Your results should look similar to the following:
+7. **Run the Notebook again** to trigger the <Constant name="cloud" /> job. Your results should look similar to the following:
 
 ```bash
 job_run_id = 123456
@@ -162,7 +162,7 @@ DbtJobRunStatus.RUNNING
 DbtJobRunStatus.SUCCESS
 ```
 
-You can cancel the job from dbt Cloud if necessary.
+You can cancel the job from <Constant name="cloud" /> if necessary.
 
 ## Configure the workflows to run the dbt Cloud jobs
 
@@ -205,6 +205,6 @@ You can set up workflows directly from the notebook OR by adding this notebook t
 
 Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different dbt Cloud jobs. 
 
-Using Databricks workflows to access the dbt Cloud job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
+Using Databricks workflows to access the <Constant name="cloud" /> job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
 
 </div>

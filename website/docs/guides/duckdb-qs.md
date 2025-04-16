@@ -14,18 +14,18 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
+In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
 
 This guide will demonstrate how to: 
 
-- [Create a virtual development environment](/docs/core/pip-install#using-virtual-environments) using a template provided by dbt Labs.
-- We will set up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
+- [Create a virtual development environment](/docs/core/pip-install#using-virtual-environments) using a template provided by <Constant name="dbt" /> Labs.
+- We will set up a fully functional <Constant name="dbt" /> environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
 - Run through the steps outlined in the `jaffle_shop_duck_db` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
-- Run any dbt command from the environment’s terminal. 
+- Run any <Constant name="dbt" /> command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
 
-You can learn more through high-quality [dbt Learn courses and workshops](https://learn.getdbt.com). 
+You can learn more through high-quality [<Constant name="dbt" /> Learn courses and workshops](https://learn.getdbt.com). 
 
 
 ### Related content
@@ -39,7 +39,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Prerequisites
 
-- When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in dbt Cloud.
+- When using DuckDB with <Constant name="core" />, you'll need to use the <Constant name="dbt" /> command-line interface (CLI). Currently, DuckDB is not supported in <Constant name="cloud" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
@@ -131,17 +131,17 @@ For more information, refer to the [DuckDB setup](/docs/core/connect-data-platfo
     </Expandable>
 
 
-4. Ensure your profile is setup correctly from the command line by running the following [dbt commands](/reference/dbt-commands).
+4. Ensure your profile is setup correctly from the command line by running the following [<Constant name="dbt" /> commands](/reference/dbt-commands).
 
 
-    - [dbt compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
-    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
-    - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
+    - [<Constant name="dbt" /> compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
+    - [<Constant name="dbt" /> run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
+    - [<Constant name="dbt" /> test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
+    - [<Constant name="dbt" /> build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
+    - [<Constant name="dbt" /> docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
+    - [<Constant name="dbt" /> docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-For complete details, refer to the [dbt command reference](/reference/dbt-commands).
+For complete details, refer to the [<Constant name="dbt" /> command reference](/reference/dbt-commands).
 
 Here's what a successful output will look like:
 
@@ -212,7 +212,7 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 
     When this command completes, you can start using the codespace development environment. The terminal the command ran in will close and you will get a prompt in a brand new terminal. 
 
-1. At the terminal's prompt, you can execute any dbt command you want. For example:
+1. At the terminal's prompt, you can execute any <Constant name="dbt" /> command you want. For example:
 
     ```shell
     /workspaces/test (main) $ dbt build
@@ -220,12 +220,12 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 
     You can also use the [duckcli](https://duckdb.org/docs/api/cli/overview.html) to write SQL against the warehouse from the command line or build reports in the [Evidence](https://evidence.dev/) project provided in the `reports` directory.
     
-    For complete information, refer to the [dbt command reference](https://docs.getdbt.com/reference/dbt-commands). Common commands are:
+    For complete information, refer to the [<Constant name="dbt" /> command reference](https://docs.getdbt.com/reference/dbt-commands). Common commands are:
     
-    - [dbt compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
+    - [<Constant name="dbt" /> compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
+    - [<Constant name="dbt" /> run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
+    - [<Constant name="dbt" /> test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
+    - [<Constant name="dbt" /> build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
 
 
   </TabItem>
@@ -254,22 +254,22 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
     ``` 
     Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, you would run: `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/core/connect-data-platform/duckdb-setup) adapter.
 
-As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
+As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, <Constant name="dbt" /> Labs suggests a maximum of 6 years.
 ## Next steps
 
-Now that you have dbt Core, DuckDB, and the Jaffle Shop data up and running, you can explore dbt's capabilities. Refer to these materials to get a better understanding of dbt projects and commands:
+Now that you have <Constant name="core" />, DuckDB, and the Jaffle Shop data up and running, you can explore <Constant name="dbt" />'s capabilities. Refer to these materials to get a better understanding of <Constant name="dbt" /> projects and commands:
 
-- The [About projects](/docs/build/projects) page guides you through the structure of a dbt project and its components.
-- [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
-- [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
-- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [dbt Cloud](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
+- The [About projects](/docs/build/projects) page guides you through the structure of a <Constant name="dbt" /> project and its components.
+- [<Constant name="dbt" /> command reference](/reference/dbt-commands) explains the various commands available and what they do.
+- [<Constant name="dbt" /> Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a <Constant name="dbt" /> expert. 
+- Once you see the potential of <Constant name="dbt" /> and what it can do for your organization, sign up for a free trial of [<Constant name="cloud" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy <Constant name="dbt" /> today!
 - Check out the other [quickstart guides](/guides?tags=Quickstart) to begin integrating into your existing data warehouse.
 
 Additionally, with your new understanding of the basics of using DuckDB, consider optimizing your setup by [documenting your project](/guides/duckdb#document-your-project), [commit your changes](/guides/duckdb#commit-your-changes) and, [schedule a job](/guides/duckdb#schedule-a-job). 
 
 ### Document your project
 
-To document your dbt projects with DuckDB, follow the steps:
+To document your <Constant name="dbt" /> projects with DuckDB, follow the steps:
 
 - Use the `dbt docs generate` command to compile information about your dbt project and warehouse into `manifest.json` and `catalog.json` files
 - Run the [`dbt docs serve`](/reference/commands/cmd-docs#dbt-docs-serve) command to create a local website using the generated `.json` files. This allows you to view your project's documentation in a web browser.
@@ -291,9 +291,9 @@ git push
 
 ### Schedule a job
 
-1. Ensure dbt Core is installed and configured to connect to your DuckDB instance.
+1. Ensure <Constant name="core" /> is installed and configured to connect to your DuckDB instance.
 2. Create a dbt project and define your [`models`](/docs/build/models), [`seeds`](/reference/seed-properties), and [`tests`](/reference/commands/test).
-3. Use a scheduler such [Prefect](/docs/deploy/deployment-tools#prefect) to schedule your dbt runs. You can create a DAG (Directed Acyclic Graph) that triggers dbt commands at specified intervals.
+3. Use a scheduler such [Prefect](/docs/deploy/deployment-tools#prefect) to schedule your <Constant name="dbt" /> runs. You can create a DAG (Directed Acyclic Graph) that triggers <Constant name="dbt" /> commands at specified intervals.
 4. Write a script that runs your dbt commands, such as [`dbt run`](/reference/commands/run), `dbt test` and more so.
 5. Use your chosen scheduler to run the script at your desired frequency.
 

@@ -110,7 +110,7 @@ select * from {{ ref('finance_private_model') }}
 ```shell
 $ dbt run -s marketing_model
 ...
-dbt.exceptions.DbtReferenceError: Parsing Error
+<Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_private_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```

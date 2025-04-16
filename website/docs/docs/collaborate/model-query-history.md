@@ -30,25 +30,25 @@ Model query history for Snowflake users is **only available for Enterprise tier 
 
 To access the features, you should meet the following:
 
-1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
+1. You have a <Constant name="cloud" /> account on the [Enterprise plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
-3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
+3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="cloud" /> to edit project settings or production environment settings.
 4. Use Snowflake or BigQuery as your data warehouse and can enable [query history permissions](#snowflake-model-query-history) or work with an admin to do so. Support for additional data platforms coming soon.
    - For Snowflake users: You **must** have a Snowflake Enterprise tier or higher subscription.
 
 ## Enable query history in dbt Cloud
 
-To enable model query history in dbt Cloud, follow these steps:
+To enable model query history in <Constant name="cloud" />, follow these steps:
 
 1. Navigate to **Deploy** and then **Environments**.
 2. Select the environment marked **PROD** and click **Settings**.
 3. Click **Edit** and scroll to the **Query History** section to enable the query history toggle. When it’s green and to the right, it's enabled.
 4. Click the **Test Permissions** button to validate the deployment credentials permissions are sufficient to support query history.
-5. dbt Cloud automatically enables query history for brand new environments. If query history fails to retrieve data, dbt Cloud automatically disables it to prevent unintended warehouse costs.
-   - If the failure is temporary (like a network timeout), dbt Cloud may retry.
-   - If the issue is permanent (like a missing permissions), dbt Cloud disables query history immediately.
+5. <Constant name="cloud" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="cloud" /> automatically disables it to prevent unintended warehouse costs.
+   - If the failure is temporary (like a network timeout), <Constant name="cloud" /> may retry.
+   - If the issue is permanent (like a missing permissions), <Constant name="cloud" /> disables query history immediately.
    
-   To re-enable it, please reach out to [dbt Support](mailto:support@getdbt.com). 
+   To re-enable it, please reach out to [<Constant name="dbt" /> Support](mailto:support@getdbt.com). 
 
 <DocCarousel slidesPerView={1}>
 
@@ -59,9 +59,9 @@ To enable model query history in dbt Cloud, follow these steps:
 
 ## Credential permissions
 
-This section explains the permissions and steps you need to enable and view model query history in dbt Explorer.
+This section explains the permissions and steps you need to enable and view model query history in <Constant name="explorer" />.
 
-The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in dbt Cloud:
+The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="cloud" />:
 
 1. Navigate to **Deploy** and then **Environments**.
 2. Select the Environment marked **PROD** and click **Settings**.
@@ -87,14 +87,14 @@ Model query history uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in
 
 ## View query history in Explorer
 
-To enhance your discovery, you can view your model query history in various locations within dbt Explorer:
+To enhance your discovery, you can view your model query history in various locations within <Constant name="explorer" />:
 - [View from Performance charts](#view-from-performance-charts)
 * [View from Project lineage](#view-from-project-lineage)
 - [View from Model list](#view-from-model-list)
 
 ### View from Performance charts
 
-1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
+1. Navigate to <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 

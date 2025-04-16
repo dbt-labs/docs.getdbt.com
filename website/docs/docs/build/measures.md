@@ -368,14 +368,14 @@ metrics:
 
 We can query the semi-additive metrics using the following syntax:
 
-For dbt Cloud:
+For <Constant name="cloud" />:
 
 ```bash
 dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
 dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
-For dbt Core:
+For <Constant name="core" />:
 
 ```bash
 mf query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 

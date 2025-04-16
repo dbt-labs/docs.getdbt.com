@@ -17,7 +17,7 @@ For detailed setup instructions, including setting up watsonx.data, adding the P
 
 With IBM watsonx.data SaaS/Software instance, you can [set session properties](https://prestodb.io/docs/current/sql/set-session.html) to modify the current configuration for your user session.
 
-To temporarily adjust session properties for a specific dbt model or a group of models, use a [dbt hook](../../reference/resource-configs/pre-hook-post-hook). For example:
+To temporarily adjust session properties for a specific <Constant name="dbt" /> model or a group of models, use a [<Constant name="dbt" /> hook](../../reference/resource-configs/pre-hook-post-hook). For example:
 
 ```sql
 {{
@@ -38,11 +38,11 @@ For information on what is supported for each data source, refer to the followin
 
 ## File format configuration
 
-File-based connectors, such as Hive and Iceberg, allow customization of table materialization, data formats, and partitioning strategies in dbt models. The following examples demonstrate how to configure these options for each connector.
+File-based connectors, such as Hive and Iceberg, allow customization of table materialization, data formats, and partitioning strategies in <Constant name="dbt" /> models. The following examples demonstrate how to configure these options for each connector.
 
 ### Hive Configuration
 
-Hive supports specifying file formats and partitioning strategies using the properties parameter in dbt models. The example below demonstrates how to create a partitioned table stored in Parquet format:
+Hive supports specifying file formats and partitioning strategies using the properties parameter in <Constant name="dbt" /> models. The example below demonstrates how to create a partitioned table stored in Parquet format:
 
 ```sql
 {{
@@ -79,13 +79,13 @@ For more information about Iceberg table creation and supported configurations, 
 ## Seeds
 The `dbt-watsonx-presto` adapter offers comprehensive support for all [watsonx.data Presto datatypes](https://www.ibm.com/support/pages/node/7157339) in seed files. To leverage this functionality, you must explicitly define the data types for each column.
 
-You can configure column data types either in the dbt_project.yml file or in property files, as supported by dbt. For more details on seed configuration and best practices, refer to the [dbt seed configuration documentation](https://docs.getdbt.com/reference/seed-configs).
+You can configure column data types either in the dbt_project.yml file or in property files, as supported by <Constant name="dbt" />. For more details on seed configuration and best practices, refer to the [<Constant name="dbt" /> seed configuration documentation](https://docs.getdbt.com/reference/seed-configs).
 
 
 ## Materializations
 The `dbt-watsonx-presto` adapter supports both table and view materializations, allowing you to manage how your data is stored and queried in watsonx.data Presto(java).
 
-For further information on configuring materializations, refer to the [dbt materializations documentation](https://docs.getdbt.com/reference/resource-configs/materialized).
+For further information on configuring materializations, refer to the [<Constant name="dbt" /> materializations documentation](https://docs.getdbt.com/reference/resource-configs/materialized).
 
 ### Table
 

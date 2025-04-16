@@ -7,33 +7,34 @@ description: "Answers to common questions about dbt Copilot."
 # dbt Copilot FAQs <Lifecycle status="enterprise" /> 
 
 <IntroText>
-Read about common questions about dbt Copilot to understand how it works and how it can help you.
+Read about common questions about <Constant name="copilot" /> to understand how it works and how it can help you.
 </IntroText>
 
-dbt Copilot is an AI-powered assistant fully integrated into your dbt Cloud experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
+<Constant name="copilot" /> is an AI-powered assistant fully integrated into your <Constant name="cloud" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
 
-dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Copilot handles your data. For more information, check out the [dbt Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
+<Constant name="dbt" /> Labs is committed to protecting your privacy and data. This page provides information about how <Constant name="copilot" /> handles your data. For more information, check out the [<Constant name="dbt" /> Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
 
 ## Overview 
 
 <Expandable alt_header="What is dbt Copilot?">
-dbt Copilot is a powerful AI-powered assistant that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. dbt Copilot embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
 
-With automatic code generation, let dbt Copilot [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-copilot) and, now in beta, [Visual Editor](/docs/cloud/use-visual-editor).
+<Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
+
+With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot) and, now in beta, [<Constant name="visual_editor" />](/docs/cloud/use-visual-editor).
 
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Copilot?">
 
-dbt Copilot can currently be found in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-copilot). Future releases will bring dbt Copilot to the [Visual Editor](/docs/cloud/use-visual-editor) and even more parts of the dbt Cloud application.
+<Constant name="copilot" /> can currently be found in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot). Future releases will bring <Constant name="copilot" /> to the [<Constant name="visual_editor" />](/docs/cloud/use-visual-editor) and even more parts of the <Constant name="cloud" /> application.
 
-To use dbt Copilot, you must have a dbt Cloud [Enterprise account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
+To use <Constant name="copilot" />, you must have a <Constant name="cloud" /> [Enterprise account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
 
 </Expandable>
 
 <Expandable alt_header="What are the benefits of using dbt Copilot?">
 
-Use dbt Copilot to:
+Use <Constant name="copilot" /> to:
 
 - Generate code from scratch or edit existing code with natural language.
 - Generate documentation, tests, metrics, and semantic models for your models.
@@ -49,13 +50,13 @@ with a click of a button and ensuring data privacy and security.
 
 <Expandable alt_header="Who has access to dbt Copilot?" >
 
-When enabled by an admin, dbt Copilot is available on a dbt Cloud [Enterprise account](https://www.getdbt.com/contact) to all dbt Cloud [developer license users](/docs/cloud/manage-access/seats-and-users).
+When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="cloud" /> [Enterprise account](https://www.getdbt.com/contact) to all dbt Cloud [developer license users](/docs/cloud/manage-access/seats-and-users).
 
 </Expandable>
 
 <Expandable alt_header="Is dbt Copilot available for all deployment types?">
 
-Yes, dbt Copilot is powered by ai-codegen-api, which is deployed everywhere including [multi-tenant and single-tenant deployments](/docs/cloud/about-cloud/access-regions-ip-addresses).
+Yes, <Constant name="copilot" /> is powered by ai-codegen-api, which is deployed everywhere including [multi-tenant and single-tenant deployments](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 </Expandable>
 
@@ -63,19 +64,19 @@ Yes, dbt Copilot is powered by ai-codegen-api, which is deployed everywhere incl
 
 <Expandable alt_header="What data/code is used to train the model supporting dbt Copilot?">
 
-dbt Copilot is not used to train a large language model (LLM). dbt Labs does not train any models at all. Currently, we use OpenAI models, and our agreement with OpenAI prohibits OpenAI from retaining our data persistently. Refer our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
+<Constant name="copilot" /> is not used to train a large language model (LLM). dbt Labs does not train any models at all. Currently, we use OpenAI models, and our agreement with OpenAI prohibits OpenAI from retaining our data persistently. Refer our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
 
 </Expandable>
 
 <Expandable alt_header="Which model providers does dbt Copilot use?">
 
-dbt Labs works with OpenAI to build and operationalize dbt Copilot. Enterprise accounts can [supply their own OpenAI keys](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok)
+dbt Labs works with OpenAI to build and operationalize <Constant name="copilot" />. Enterprise accounts can [supply their own OpenAI keys](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok)
 
 </Expandable>
 
 <Expandable alt_header="Do we support BYOK (bring your own key) at the project level?">
 
-The dbt Copilot BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+The <Constant name="copilot" /> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
 
 </Expandable>
 
@@ -83,13 +84,13 @@ The dbt Copilot BYOK option is currently an account-only configuration. However,
 
 <Expandable alt_header="Does dbt Copilot store or use personal data?">
 
-The user clicks the dbt Copilot button. Aside from authentication, it works without personal data, but the user controls what is input into dbt Copilot.
+The user clicks the <Constant name="copilot" /> button. Aside from authentication, it works without personal data, but the user controls what is input into <Constant name="copilot" />.
 
 </Expandable>
 
 <Expandable alt_header="Does dbt Copilot access my warehouse data?">
 
-To provide the services, dbt Copilot utilizes the data entered by the user in addition to metadata, including column names, model SQL, the model's name, and model documentation. The row-level data from the warehouse is never used or sent by dbt Labs to a third-party provider without action by the user. The user is responsible for double-checking output for completeness and accuracy.
+To provide the services, <Constant name="copilot" /> utilizes the data entered by the user in addition to metadata, including column names, model SQL, the model's name, and model documentation. The row-level data from the warehouse is never used or sent by dbt Labs to a third-party provider without action by the user. The user is responsible for double-checking output for completeness and accuracy.
 
 </Expandable>
 
@@ -102,13 +103,13 @@ To the extent client identifies personal or sensitive information uploaded by or
 
 <Expandable alt_header="Does dbt Labs own the output generated by dbt Copilot?">
 
-No, dbt Labs will not dispute your ownership of any code or artifacts unique to your company that's generated when you use dbt Copilot. Your code will not be used to train AI models for the benefit of dbt Labs or other third parties, including other dbt Labs customers. 
+No, dbt Labs will not dispute your ownership of any code or artifacts unique to your company that's generated when you use <Constant name="copilot" />. Your code will not be used to train AI models for the benefit of dbt Labs or other third parties, including other dbt Labs customers. 
 
 </Expandable>
 
 <Expandable alt_header="Does dbt Labs have terms in place for dbt Copilot?">
 
-Clients who signed with terms after January 2024 don't need additional terms prior to enabling dbt Copilot. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event client prefer additional terms, clients may enter into the presigned AI & Beta Addendum available at [here](https://app.hellosign.com/s/LwqigFvP) (the dbt Labs signature will be dated as of the date the client signs).
+Clients who signed with terms after January 2024 don't need additional terms prior to enabling <Constant name="copilot" />. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event client prefer additional terms, clients may enter into the presigned AI & Beta Addendum available at [here](https://app.hellosign.com/s/LwqigFvP) (the dbt Labs signature will be dated as of the date the client signs).
 
 </Expandable>
 
@@ -116,11 +117,11 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 
 <Expandable alt_header="What are the considerations for using dbt Copilot?">
 
-dbt Copilot has the following considerations to keep in mind:
+<Constant name="copilot" /> has the following considerations to keep in mind:
 
-- dbt Copilot is not available in the dbt Cloud CLI.
-- dbt Copilot is not available in the dbt Cloud API.
+- <Constant name="copilot" /> is not available in the <Constant name="cloud_cli" />.
+- <Constant name="copilot" /> is not available in the <Constant name="cloud" /> API.
 
-Future releases are planned that may bring dbt Copilot to even more parts of the dbt Cloud application.
+Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application.
 
 </Expandable>

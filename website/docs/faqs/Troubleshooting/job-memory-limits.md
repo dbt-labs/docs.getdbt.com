@@ -10,8 +10,8 @@ If you're receiving a `This run exceeded your account's run memory limits` error
 
 Some common reasons for higher memory usage are:
 
-- dbt run/build:  Macros that capture large result sets from run query may not all be necessary and may be memory inefficient.
-- dbt docs generate: Source or model schemas with large numbers of tables (even if those tables aren't all used by dbt) cause the ingest of very large results for catalog queries.
+- <Constant name="dbt" /> run/build:  Macros that capture large result sets from run query may not all be necessary and may be memory inefficient.
+- <Constant name="dbt" /> docs generate: Source or model schemas with large numbers of tables (even if those tables aren't all used by <Constant name="dbt" />) cause the ingest of very large results for catalog queries.
 
 ### Resolution
 

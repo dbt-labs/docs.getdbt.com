@@ -4,13 +4,13 @@ id: "cloud-upgrade-instructions"
 description: "Instructions for upgrading a dbt Cloud account after the trial ends."
 ---
 
-dbt Cloud offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for dbt Cloud admins and explains how to select a plan in order to continue using dbt Cloud. 
+<Constant name="cloud" /> offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for <Constant name="cloud" /> admins and explains how to select a plan in order to continue using <Constant name="cloud" />. 
 
 ## Prerequisites 
 
 Before you begin: 
 - You _must_ be part of the [Owner](/docs/cloud/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
-- All amounts shown in dbt Cloud are in U.S. Dollars (USD)   
+- All amounts shown in <Constant name="cloud" /> are in U.S. Dollars (USD)   
 - When your trial expires, your account's default plan enrollment will be a Team plan.
 
 
@@ -20,16 +20,16 @@ When your [14 day trial](https://www.getdbt.com/signup/) ends or if your subscri
 
 - Upon logging in, you should see an "Account locked" pop up message with instructions to unlock your account and update your payment details
 - Click **Go to Billing** to go to the billing page
-- Under **Billing**, you can review the available dbt Cloud [plans](https://www.getdbt.com/pricing/) and their features
+- Under **Billing**, you can review the available <Constant name="cloud" /> [plans](https://www.getdbt.com/pricing/) and their features
 
 
 To unlock your account and select a plan, review the following guidance per plan type:
 
 ### Developer plan
 
-1. To select a Developer plan, click **Select plan** on the right. 
-2. Confirm your plan selection on the pop up message. 
-3. This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Developer plan. 🎉
+1. To select a Developer plan, click Select plan on the right.
+2. Confirm your plan selection on the pop up message.
+3. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Developer plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif"/>
 
@@ -42,9 +42,9 @@ If you select a plan but have too many seats or projects for that plan (for exam
 ### Team plan
 
 1. When your trial expires, your account's default plan enrollment will be a Team plan. 
-2. To unlock your account and continue using the Team plan, click on **Select plan** under the **Team** column.
+2. To unlock your account and continue using the Team plan, click on **Select plan** under the Team column.
 3. Enter your payment information and seat purchases. Then click **Save**.
-4. This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Team plan. 🎉
+4. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Team plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/trial-team-flow.png"/>
 
@@ -53,16 +53,16 @@ If you select a plan but have too many seats or projects for that plan (for exam
 ### Enterprise plan
 
 1. If you're interested in our Enterprise plan, select the Enterprise tab under **Billing**.
-2. Click **Contact Sales** on the right. This opens a chat window for you to contact the dbt Cloud Support team, who will connect you to our Sales team.
+2. Click **Contact Sales** on the right. This opens a chat window for you to contact the <Constant name="cloud" /> Support team, who will connect you to our Sales team.
 3. Once you submit your request, our Sales team will contact you with more information. 
 
 <Lightbox src="/img/docs/dbt-cloud/enterprise-upgrade.gif"/>
 
-4. Alternatively, you can [contact](https://www.getdbt.com/contact/) our Sales team directly to chat about how dbt Cloud can help you and your team. 
+4. Alternatively, you can [contact](https://www.getdbt.com/contact/) our Sales team directly to chat about how <Constant name="cloud" /> can help you and your team. 
 
 ## Related questions
 
-For commonly asked billings questions, refer to the dbt Cloud [pricing page](https://www.getdbt.com/pricing/).
+For commonly asked billings questions, refer to the <Constant name="cloud" /> [pricing page](https://www.getdbt.com/pricing/).
 
 <details>
   <summary>How does billing work?</summary>

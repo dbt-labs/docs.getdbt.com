@@ -4,9 +4,9 @@ id: "merge-conflicts"
 pagination_next: null
 ---
 
-[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for Git to decide what changes to incorporate in the final merge.  
+[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to decide what changes to incorporate in the final merge.  
 
-The merge conflict process provides users the ability to choose which lines of code they'd like to preserve and commit.  This document will show you how to resolve merge conflicts in the dbt Cloud IDE.
+The merge conflict process provides users the ability to choose which lines of code they'd like to preserve and commit.  This document will show you how to resolve merge conflicts in the <Constant name="cloud_ide" />.
 
 ## Identify merge conflicts
 
@@ -19,9 +19,9 @@ The way to [resolve](#resolve-merge-conflicts) either scenario will be exactly t
 
 For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and sync**. 
 
-The dbt Cloud IDE will display:
+The <Constant name="cloud_ide" /> will display:
 
-- **Commit and resolve** git action bar under **Version Control**  instead of **Commit** &mdash; This indicates that the Cloud IDE has detected some conflicts that you need to address.
+- **Commit and resolve** git action bar under **Version Control**  instead of **Commit** &mdash; This indicates that the Cloud <Constant name="cloud_ide" /> has detected some conflicts that you need to address.
 - A 2-split editor view &mdash; The left view includes your code changes and is read-only. The right view includes the additional changes, allows you to edit and marks the conflict with some flags:
 
 ```
@@ -31,9 +31,9 @@ The dbt Cloud IDE will display:
     conflicting code
 >>>>>> (some branch identifier)
 ```
-- The file and path colored in red in the **File Explorer**, with a warning icon to highlight files that you need to resolve.
+- The file and path colored in red in the **File <Constant name="explorer" />**, with a warning icon to highlight files that you need to resolve.
 - The file name colored in red in the **Changes** section, with a warning icon.
-- If you press commit without resolving the conflict, the dbt Cloud IDE will prompt a pop up box with a list which files need to be resolved.
+- If you press commit without resolving the conflict, the <Constant name="cloud_ide" /> will prompt a pop up box with a list which files need to be resolved.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/merge-conflict.jpg" title="Conflicting section that needs resolution will be highlighted"/>
 
@@ -41,9 +41,9 @@ The dbt Cloud IDE will display:
 
 
 ## Resolve merge conflicts
-You can seamlessly resolve merge conflicts that involve competing line changes in the Cloud IDE.
+You can seamlessly resolve merge conflicts that involve competing line changes in the Cloud <Constant name="cloud_ide" />.
 
-1. In the dbt Cloud IDE, you can edit the right-side of the conflict file, choose which lines of code you'd like to preserve, and delete the rest. 
+1. In the <Constant name="cloud_ide" />, you can edit the right-side of the conflict file, choose which lines of code you'd like to preserve, and delete the rest. 
     * Note: The left view editor is read-only and you cannot make changes.
 3. Delete the special flags or conflict markers `<<<<<<<`, `=======`, `>>>>>>>` that highlight the merge conflict and also choose which lines of code to preserve.
 4. If you have more than one merge conflict in your file, scroll down to the next set of conflict markers and repeat steps one and two to resolve your merge conflict.
@@ -55,7 +55,7 @@ You can seamlessly resolve merge conflicts that involve competing line changes i
 
 :::info Edit conflict files
 - If you open the conflict file under **Changes**, the file name will display something like `model.sql (last commit)` and is fully read-only and cannot be edited. <br />
-- If you open the conflict file under **File Explorer**, you can edit the file in the right view.
+- If you open the conflict file under **File <Constant name="explorer" />**, you can edit the file in the right view.
 :::
 
 ## Commit changes
@@ -64,7 +64,7 @@ When you've resolved all the merge conflicts, the last step would be to commit t
 
 1. Click the git action bar **Commit and resolve**. 
 2. The **Commit Changes** pop up box will confirm that all conflicts have been resolved. Write  your commit message and press **Commit Changes**
-3. The dbt Cloud IDE will return to its normal state and you can continue developing! 
+3. The <Constant name="cloud_ide" /> will return to its normal state and you can continue developing! 
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-resolve.jpg" title="Conflict has been resolved"/>

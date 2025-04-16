@@ -8,11 +8,11 @@ pagination_next: "docs/cloud/about-cloud/architecture"
 pagination_prev: null
 ---
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI. 
+<Constant name="cloud" /> is the fastest and most reliable way to deploy <Constant name="dbt" />. Develop, test, schedule, document, and investigate data models all in one browser-based UI. 
 
-In addition to providing a hosted architecture for running dbt across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (IDE), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
+In addition to providing a hosted architecture for running <Constant name="dbt" /> across your organization, <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (<Constant name="cloud_ide" />), and allows you to develop and run <Constant name="dbt" /> commands from your local command line interface (CLI) or code editor.
 
-dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
+<Constant name="cloud" />'s [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
 
 <div className="grid--3-col">
 
@@ -124,6 +124,6 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 ## Related docs
 
-- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
+- [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)

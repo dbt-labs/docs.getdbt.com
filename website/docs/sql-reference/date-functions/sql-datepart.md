@@ -61,4 +61,4 @@ We most commonly see the DATE_PART or EXTRACT function used in data work to anal
 - Fiscal calendars: If your business uses fiscal years, or calendars that differ from the normal 12-month cycle, DATE_PART functions can help create alignment between fiscal calendars and normal calendars
 - Ad hoc analysis: The DATE_PART function are useful in ad hoc analyses and queries when you need to look at values grouped by date periods or for period comparisons
 
-This isn’t an extensive list of where your team may be using the DATE_PART function throughout your dbt models and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using the DATE_PART function throughout your <Constant name="dbt" /> models and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

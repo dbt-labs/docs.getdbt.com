@@ -54,7 +54,7 @@ The available options depend on the resource (node) type:
 
 ### Combining `state` and `result` selectors
 
-The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
+The state and result selectors can also be combined in a single invocation of <Constant name="dbt" /> to capture errors from a previous run OR any new or modified models.
 
 ```bash
 dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artifact-path>
@@ -78,5 +78,5 @@ dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
 
 ## Related docs
-- [About state in dbt](/reference/node-selection/state-selection)
+- [About state in <Constant name="dbt" />](/reference/node-selection/state-selection)
 - [State comparison caveats](/reference/node-selection/state-comparison-caveats)

@@ -6,7 +6,7 @@ Write resource selectors in YAML, save them with a human-friendly name, and refe
 By recording selectors in a top-level `selectors.yml` file:
 
 * **Legibility:** complex selection criteria are composed of dictionaries and arrays
-* **Version control:** selector definitions are stored in the same git repository as the dbt project
+* **Version control:** selector definitions are stored in the same git repository as the <Constant name="dbt" /> project
 * **Reusability:** selectors can be referenced in multiple job definitions, and their definitions are extensible (via YAML anchors)
 
 Selectors live in a top-level file named `selectors.yml`. Each must have a `name` and a `definition`, and can optionally define a `description` and [`default` flag](#default).

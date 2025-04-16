@@ -6,22 +6,22 @@ id: "set-up-snowflake-oauth"
 
 :::info Enterprise Feature
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+This guide describes a feature of the <Constant name="cloud" /> Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 :::
 
-dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud. If Snowflake is set up with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the dbt Development credentials without any additional setup.
+<Constant name="cloud" /> Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to <Constant name="cloud" />. If Snowflake is set up with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the <Constant name="dbt" /> Development credentials without any additional setup.
 
-To set up Snowflake OAuth in dbt Cloud, admins from both are required for the following steps:
-1. [Locate the redirect URI value](#locate-the-redirect-uri-value) in dbt Cloud.
+To set up Snowflake OAuth in <Constant name="cloud" />, admins from both are required for the following steps:
+1. [Locate the redirect URI value](#locate-the-redirect-uri-value) in <Constant name="cloud" />.
 2. [Create a security integration](#create-a-security-integration) in Snowflake.
-3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in dbt Cloud.
+3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in <Constant name="cloud" />.
 
-To use Snowflake in the dbt Cloud IDE, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
+To use Snowflake in the <Constant name="cloud_ide" />, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
 
 ### Locate the redirect URI value
 
-To get started, copy the connection's redirect URI from dbt Cloud:
+To get started, copy the connection's redirect URI from <Constant name="cloud" />:
 1. Navigate to **Account settings**.
 1. Select **Projects** and choose a project from the list. 
 1. Click the **Development connection** field to view its details and set the **OAuth method** to "Snowflake SSO".
@@ -65,7 +65,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. Use the value in the [dbt Cloud account settings](#locate-the-redirect-uri-value). |
+| OAUTH_REDIRECT_URI  | Required. Use the value in the [<Constant name="cloud" /> account settings](#locate-the-redirect-uri-value). |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
@@ -73,7 +73,7 @@ Additional configuration options may be specified for the security integration a
 
 ### Configure a Connection in dbt Cloud
 
-The Database Admin is responsible for creating a Snowflake Connection in dbt Cloud. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
+The Database Admin is responsible for creating a Snowflake Connection in <Constant name="cloud" />. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```
 with
@@ -89,7 +89,7 @@ from
   integration_secrets;
 ```
 
-To complete the creation of your connection in dbt Cloud:
+To complete the creation of your connection in <Constant name="cloud" />:
 1. Navigate to your **Account Settings**, click **Connections**, and select a connection.
 2. Edit the connection and enter the Client ID and Client Secret.
 3. Click **Save**.
@@ -98,18 +98,18 @@ To complete the creation of your connection in dbt Cloud:
 
 ### Authorize developer credentials
 
-Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt IDE with their development credentials.
+Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to <Constant name="cloud" /> to complete the setup process. At this point, users should now be able to use the <Constant name="cloud_ide" /> with their development credentials.
 
 ### SSO OAuth flow diagram
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
 
-Once a user has authorized dbt Cloud with Snowflake via their identity provider, Snowflake will return a Refresh Token to the dbt Cloud application. dbt Cloud is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the dbt Cloud IDE on behalf of users.
+Once a user has authorized <Constant name="cloud" /> with Snowflake via their identity provider, Snowflake will return a Refresh Token to the <Constant name="cloud" /> application. <Constant name="cloud" /> is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the <Constant name="cloud_ide" /> on behalf of users.
 
-**NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in dbt Cloud.
+**NOTE**: The lifetime of the refresh token is dictated by the OAUTH_REFRESH_TOKEN_VALIDITY parameter supplied in the “create security integration” statement. When a user’s refresh token expires, the user will need to re-authorize with Snowflake to continue development in <Constant name="cloud" />.
 
 ### Setting up multiple dbt Cloud projects with Snowflake 0Auth
-If you are planning to set up the same Snowflake account to different dbt Cloud projects, you can use the same security integration for all of the projects.
+If you are planning to set up the same Snowflake account to different <Constant name="cloud" /> projects, you can use the same security integration for all of the projects.
 
 ### Troubleshooting
 

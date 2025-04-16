@@ -68,4 +68,4 @@ You may see the LIKE operator used in analytics engineering work to:
 - Bucket column values together based on general requirements using case statements and the LIKE operator (ex. `case when page_path like '/product%' then 'product_page' else 'non_product_page'`)
 - Filter out employee email records based on a similar email address pattern (ex. `where email_address not like '%@dbtlabs.com'`)
 
-This isn’t an extensive list of where your team may be using the LIKE operator throughout your dbt models, but contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using the LIKE operator throughout your <Constant name="dbt" /> models, but contains some common scenarios analytics engineers face day-to-day.

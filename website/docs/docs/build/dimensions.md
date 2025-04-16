@@ -6,11 +6,11 @@ sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
 ---
 
-Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the dbt Semantic Layer, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
+Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
-Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
+Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your <Constant name="dbt" /> model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
 All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
 
@@ -172,7 +172,7 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 
 ```bash
 # dbt Cloud users
-dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
+<Constant name="dbt" /> sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
 # dbt Core users
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
@@ -184,7 +184,7 @@ You can set `is_partition` for time to define specific time spans. Additionally,
 
 <TabItem value="is_partition" label="is_partition">
 
-Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
+Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the <Constant name="semantic_layer" /> uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
 <VersionBlock firstVersion="1.9">
 
@@ -270,7 +270,7 @@ Our supported granularities are:
 * quarter
 * year
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the <Constant name="semantic_layer" /> returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
@@ -312,7 +312,7 @@ Our supported granularities are:
 * quarter
 * year
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the <Constant name="semantic_layer" /> returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
@@ -411,7 +411,7 @@ Here are some guidelines to follow when implementing SCD Type II tables:
 - The `valid_from` and `valid_to` properties must be specified exactly once per SCD table configuration.
 - The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
 - The `valid_from` and `valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
-- We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
+- We recommend defining the underlying <Constant name="dbt" /> model with [<Constant name="dbt" /> snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
 
 This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
 

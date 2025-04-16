@@ -11,15 +11,15 @@ import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 <SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
-The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
-help manage access controls within a dbt Cloud account. See the docs on [access
+The <Constant name="cloud" /> Enterprise plan supports a number of pre-built permission sets to
+help manage access controls within a <Constant name="cloud" /> account. See the docs on [access
 control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
 
 ## Permission sets
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups and then to users. A dbt Cloud group can be associated with more than one permission set. Permission assignments with more access take precedence. 
+The following permission sets are available for assignment in <Constant name="cloud" /> Enterprise accounts. They can be granted to <Constant name="cloud" /> groups and then to users. A <Constant name="cloud" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
 Access to dbt Cloud features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
@@ -74,7 +74,7 @@ Database admins manage the connections and configurations between dbt Cloud and 
 
 Notable features: 
 - Database admin is a project-level set. 
-- Can set up and maintain database connections, environment variables, and Semantic Layer configs.
+- Can set up and maintain database connections, environment variables, and <Constant name="semantic_layer" /> configs.
 - Helpful for scenarios where your data warehouse admins only need access to dbt Cloud to configure connections. 
 - Read-only access to Git repo, job, and run settings. 
 - Can access dbt Explorer.
@@ -186,11 +186,11 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Semantic Layer">
 
-A specialized permission set with strict access to only the Semantic Layer configuration (credentials and service tokens) for projects. 
+A specialized permission set with strict access to only the <Constant name="semantic_layer" /> configuration (credentials and service tokens) for projects. 
 
 Notable features:
-- Semantic Layer is a project-level set.
-- Can only access Semantic Layer configs.
+- <Constant name="semantic_layer" /> is a project-level set.
+- Can only access <Constant name="semantic_layer" /> configs.
 - No other access to dbt Cloud features. 
 
 </Expandable>
@@ -241,7 +241,7 @@ Notable features:
 
 :::tip Licenses or Permission sets
 
-The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
 :::
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
