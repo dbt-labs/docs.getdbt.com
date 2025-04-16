@@ -151,7 +151,7 @@ Now that you've uploaded dbt Core artifacts into dbt Cloud and executed a `dbt r
 ## Benefits of using Hybrid projects
 
 
-Now that you've integrated <Constant name="core" /> artifacts with you <Constant name="cloud" /> project, you can now:
+Now that you've integrated <Constant name="core" /> artifacts with your <Constant name="cloud" /> project, you can now:
 
 
 - Collaborate with <Constant name="cloud" /> users by enabling them to visualize and perform [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) to <Constant name="dbt" /> models that live in Core projects.
