@@ -22,19 +22,19 @@ Available flags in the command line interface (CLI) are [`help`](#dbt-invocation
 The `help` command provides you with the help output for the `invocation` command in the CLI, including the available flags.
 
 ```shell
-<Constant name="dbt" /> invocation help
+dbt invocation help
 ```
 
 or
 
 ```shell
-<Constant name="dbt" /> help invocation
+dbt help invocation
 ```
 
 The command returns the following information:
 
 ```bash
-<Constant name="dbt" /> invocation help
+dbt invocation help
 Manage invocations
 
 Usage:
@@ -60,13 +60,13 @@ Use "<Constant name="dbt" /> invocation [command] --help" for more information a
 The `list` command provides you with a list of active invocations in your <Constant name="cloud_cli" />. When a long-running session is active, you can use this command in a separate terminal window to view the active session to help debug the issue.
 
 ```shell
-<Constant name="dbt" /> invocation list
+dbt invocation list
 ```
 
 The command returns the following information, including the `ID`, `status`, `type`, `arguments`, and `started at` time of the active session:
 
 ```bash
-<Constant name="dbt" /> invocation list
+dbt invocation list
 
 Active Invocations:
   ID                             6dcf4723-e057-48b5-946f-a4d87e1d117a

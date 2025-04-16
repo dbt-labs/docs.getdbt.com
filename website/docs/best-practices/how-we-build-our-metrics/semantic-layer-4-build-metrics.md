@@ -39,7 +39,7 @@ metrics:
 You can use the <Constant name="cloud_cli" /> for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
 
 ```bash
-<Constant name="dbt" /> sl query revenue --group-by metric_time__month
+dbt sl query revenue --group-by metric_time__month
 <Constant name="dbt" /> sl list dimensions --metrics revenue # list all dimensions available for the revenue metric
 ```
 

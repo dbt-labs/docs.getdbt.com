@@ -16,10 +16,10 @@ This guide lists all the commands and options you can use with `dbt environment`
 `show` command &mdash; To view your local and dbt Cloud configuration details. To run the command with the <Constant name="cloud_cli" />, type one of the following commands, including the shorthand:
 
 ```shell
-<Constant name="dbt" /> environment show
+dbt environment show
 ```
 ```shell
-<Constant name="dbt" /> env show
+dbt env show
 ```
 
 The command returns the following information:

@@ -228,8 +228,8 @@ metrics:
 
 ### Example query
 
-```shell
-<Constant name="dbt" /> sl query --metrics revenue --group-by metric_time__month
+```
+dbt sl query --metrics revenue --group-by metric_time__month
 ```
 
 ### Example query results

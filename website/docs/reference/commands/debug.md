@@ -240,13 +240,13 @@ Options:
 Only test the connection to the data platform and skip the other checks `dbt debug` looks for:
 
 ```shell
-<Constant name="dbt" /> debug --connection
+dbt debug --connection
 ```
 
 Show the configured location for the `profiles.yml` file and exit:
 
 ```text
-<Constant name="dbt" /> debug --config-dir
+dbt debug --config-dir
 To view your profiles.yml file, run:
 
 open /Users/alice/.<Constant name="dbt" />
@@ -255,7 +255,7 @@ open /Users/alice/.<Constant name="dbt" />
 Test the connection in the <Constant name="cloud_ide" />:
 
 ```text
-<Constant name="dbt" /> debug --connection
+dbt debug --connection
 ```
 
 <Lightbox src="/img/reference/dbt-debug-ide.jpg" title="Test the connection in the dbt Cloud IDE" />

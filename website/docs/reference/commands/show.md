@@ -25,7 +25,7 @@ or
 The following is an example of `dbt show` output for a model named `stg_orders`:
 
 ```bash
-<Constant name="dbt" /> show --select "stg_orders"
+dbt show --select "stg_orders"
 21:17:38 Running with <Constant name="dbt" />=1.5.0-b5
 21:17:38 Found 5 models, 20 tests, 0 snapshots, 0 analyses, 425 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
 21:17:38

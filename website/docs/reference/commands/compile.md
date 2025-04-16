@@ -28,14 +28,14 @@ This will log the compiled SQL to the terminal, in addition to writing to the `t
 For example:
 
 ```bash
-<Constant name="dbt" /> compile --select "stg_orders"                           
-<Constant name="dbt" /> compile --inline "select * from {{ ref('raw_orders') }}"
+dbt compile --select "stg_orders"                           
+dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
 returns the following:
 
 ```bash
-<Constant name="dbt" /> compile --select "stg_orders"                           
+dbt compile --select "stg_orders"                           
 
 21:17:09  Running with <Constant name="dbt" />=1.7.5
 21:17:09  Registered adapter: postgres=1.7.5
@@ -65,7 +65,7 @@ select * from renamed
 ```
 
 ```bash
-<Constant name="dbt" /> compile --inline "select * from {{ ref('raw_orders') }}"
+dbt compile --inline "select * from {{ ref('raw_orders') }}"
 
 18:15:49  Running with <Constant name="dbt" />=1.7.5
 18:15:50  Registered adapter: postgres=1.7.5

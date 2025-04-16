@@ -55,7 +55,7 @@ dbt --log-format-file json run
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-<Constant name="dbt" /> --debug --log-format json run
+dbt --debug --log-format json run
 ```
 
 See [structured logging](/reference/events-logging#structured-logging) for more details.
@@ -129,7 +129,7 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-<Constant name="dbt" /> --quiet run
+dbt --quiet run
 ...
 ```
 

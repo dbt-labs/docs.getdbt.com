@@ -76,7 +76,7 @@ This section explains the different commands and options available to run export
 Use the following command to run exports in the <Constant name="cloud" /> CLI:
 
 ```bash
-<Constant name="dbt" /> sl export
+dbt sl export
 ```
 
 The following table lists the options for `dbt sl export` command, using the `--` flag prefix to specify the parameters:  
@@ -94,7 +94,7 @@ The following table lists the options for `dbt sl export` command, using the `--
 You can also run any export defined for the saved query and write the table or view in your development environment. Refer to the following command example and output:
 
 ```bash
-<Constant name="dbt" /> sl export --saved-query sq_name
+dbt sl export --saved-query sq_name
 ```
 
 The output would look something like this: 
@@ -111,7 +111,7 @@ You can have multiple exports for a saved query and by default, all exports are 
 For example, the following command runs `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
 ```bash
-<Constant name="dbt" /> sl export --saved-query sq_name --select export_1,export2
+dbt sl export --saved-query sq_name --select export_1,export2
 ```
 
 <details>
@@ -128,7 +128,7 @@ Be careful. The `--select` flag _can't_ be used with `alias` or `schema`.
 For example, you can use the following command to create a new export named `new_export` as a table:
 
 ```bash
-<Constant name="dbt" /> sl export --saved-query sq_number1 --export-as table --alias new_export
+dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 ```
 </details>
 
@@ -137,7 +137,7 @@ For example, you can use the following command to create a new export named `new
 Use the command, `dbt sl export-all`, to run exports for multiple saved queries at once. This is different from the `dbt sl export` command, which only runs exports for a singular saved query.  For example, to run exports for multiple saved queries, you can use:
 
 ```bash
-<Constant name="dbt" /> sl export-all
+dbt sl export-all
 ```
 
 The output would look something like this: 

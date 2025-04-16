@@ -74,7 +74,7 @@ select {{ dbt.current_timestamp() }} as created_at
 Compile the model:
 
 ```shell
-<Constant name="dbt" /> compile -s my_model
+dbt compile -s my_model
 ```
 
 Here's a printed snippet from the `run_results.json`:

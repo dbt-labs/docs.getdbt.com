@@ -371,8 +371,8 @@ We can query the semi-additive metrics using the following syntax:
 For <Constant name="cloud" />:
 
 ```bash
-<Constant name="dbt" /> sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
-<Constant name="dbt" /> sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
 For <Constant name="core" />:

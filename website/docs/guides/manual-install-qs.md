@@ -47,13 +47,13 @@ To create your <Constant name="dbt" /> project:
 1. Make sure you have dbt Core installed and check the version using the `dbt --version` command:
 
 ```shell
-<Constant name="dbt" /> --version
+dbt --version
 ```
 
 2. Initiate the `jaffle_shop` project using the `init` command:
 
 ```shell
-<Constant name="dbt" /> init jaffle_shop
+dbt init jaffle_shop
 ```
 
 3. Navigate into your project's directory:

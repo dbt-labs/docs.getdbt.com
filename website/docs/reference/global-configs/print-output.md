@@ -17,7 +17,7 @@ The original `DBT_NO_PRINT` environment variable has been deprecated, starting w
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
-<Constant name="dbt" /> --no-print run
+dbt --no-print run
 ```
 
 ### Printer width
@@ -47,7 +47,7 @@ config:
 </File>
 
 ```text
-<Constant name="dbt" /> --use-colors run
+dbt --use-colors run
 <Constant name="dbt" /> --no-use-colors run
 ```
 
@@ -63,6 +63,6 @@ config:
 </File>
 
 ```text
-<Constant name="dbt" /> --use-colors-file run
+dbt --use-colors-file run
 <Constant name="dbt" /> --no-use-colors-file run
 ```

@@ -187,19 +187,19 @@ Options:
 This command lists all available saved queries:
 
 ```bash
-<Constant name="dbt" /> sl list saved-queries
+dbt sl list saved-queries
 ```
 
 You can also add the `--show-exports` flag (or option) to show each export listed under a saved query:
 
 ```bash
-<Constant name="dbt" /> sl list saved-queries --show-exports
+dbt sl list saved-queries --show-exports
 ```
 
 **Output**
 
 ```bash
-<Constant name="dbt" /> sl list saved-queries --show-exports
+dbt sl list saved-queries --show-exports
 
 The list of available saved queries:
 - new_customer_orders
@@ -214,7 +214,7 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-<Constant name="dbt" /> sl validate # For <Constant name="cloud" /> users
+dbt sl validate # For <Constant name="cloud" /> users
 mf validate-configs # For <Constant name="core" /> users
 
 Options:
@@ -336,7 +336,7 @@ Use the example to query multiple metrics by dimension and return the `order_tot
 
 **Query**
 ```bash
-<Constant name="dbt" /> sl query --metrics order_total,users_active --group-by metric_time # In <Constant name="cloud" />
+dbt sl query --metrics order_total,users_active --group-by metric_time # In <Constant name="cloud" />
 
 mf query --metrics order_total,users_active --group-by metric_time # In <Constant name="core" />
 ```
@@ -360,7 +360,7 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order # In <Constant name="cloud" />
+dbt sl query --metrics order_total --group-by order_id__is_food_order # In <Constant name="cloud" />
 
 mf query --metrics order_total --group-by order_id__is_food_order # In <Constant name="core" />
 ```
@@ -563,7 +563,7 @@ Optionally, you can specify the time granularity you want your data to be aggreg
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-<Constant name="dbt" /> sl query --metrics revenue --group-by metric_time__month # In <Constant name="cloud" />
+dbt sl query --metrics revenue --group-by metric_time__month # In <Constant name="cloud" />
 
 mf query --metrics revenue --group-by metric_time__month # In <Constant name="core" />
 ```
@@ -575,7 +575,7 @@ Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-<Constant name="dbt" /> sl export 
+dbt sl export 
 ```
 
 ## Export-all
@@ -585,7 +585,7 @@ Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-<Constant name="dbt" /> sl export-all 
+dbt sl export-all 
 ```
 
 

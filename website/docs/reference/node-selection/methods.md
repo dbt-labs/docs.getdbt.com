@@ -23,7 +23,7 @@ Many of the methods below support Unix-style wildcards:
 | [a-z]    | matches one character from the range given in the bracket |
 
 For example:
-```
+```bash
 dbt list --select "*.folder_name.*"
 dbt list --select "package:*_source"
 ```
@@ -68,11 +68,11 @@ select ...
 
  You can select using any of the following:
 ```bash
-<Constant name="dbt" /> ls -s config.materialized:incremental
-<Constant name="dbt" /> ls -s config.unique_key:column_a
-<Constant name="dbt" /> ls -s config.grants.select:reporter
-<Constant name="dbt" /> ls -s config.meta.contains_pii:true
-<Constant name="dbt" /> ls -s config.transient:true
+dbt ls -s config.materialized:incremental
+dbt ls -s config.unique_key:column_a
+dbt ls -s config.grants.select:reporter
+dbt ls -s config.meta.contains_pii:true
+dbt ls -s config.transient:true
 ```
 
 
@@ -84,7 +84,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
-<Constant name="dbt" /> ls --select "+exposure:*" --resource-type source    # list all source tables upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type source    # list all source tables upstream of all exposures
 ```
 
 ### file
@@ -126,7 +126,7 @@ The `metric` method is used to select parent resources of a specified [metric](/
 
 ```bash
 dbt build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric
-<Constant name="dbt" /> ls    --select "+metric:*" --resource-type source  # list all source tables upstream of all metrics
+dbt ls    --select "+metric:*" --resource-type source  # list all source tables upstream of all metrics
 ```
 
 ### package
@@ -181,7 +181,7 @@ The `result` method is related to the `state` method described above and can be 
 dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
 dbt test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
 dbt build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
-<Constant name="dbt" /> seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of <Constant name="dbt" /> seed.
+dbt seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
 
 ### saved_query
@@ -239,7 +239,7 @@ The `state` method is used to select nodes by comparing them against a previous 
   ```bash
 dbt test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
 dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
-<Constant name="dbt" /> ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
+dbt ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
@@ -268,20 +268,20 @@ These selectors can help you shorten run times by excluding unchanged nodes. Cur
 
 If a node changes its group, downstream references may break, potentially causing build failures.
 
-As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it’s referenced will flag those nodes as "modified".
+As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it's referenced will flag those nodes as "modified".
 
 Depending on whether partial parsing is enabled, you will catch the breakage as part of CI workflows.
 
-- If you change a group name everywhere it’s referenced, and partial parsing is enabled, <Constant name="dbt" /> may only re-parse the changed model.
-- If you update a group name in all its references without partial parsing enabled, <Constant name="dbt" /> will re-parse all models and identify any invalid downstream references.
+- If you change a group name everywhere it's referenced, and partial parsing is enabled, dbt may only re-parse the changed model.
+- If you update a group name in all its references without partial parsing enabled, dbt will re-parse all models and identify any invalid downstream references.
 
-An error along the lines of “there’s nothing to do” can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
+An error along the lines of "there's nothing to do" can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
 
 Certain factors can affect how references are used or resolved later on, including:
 
 - Modifying access: if permissions or access rules change, some references might stop working.
 - Modifying `deprecation_date`: if a reference or model version is marked  deprecated, new warnings might appear that affect how references are  processed.
-- Modifying `latest_version`: if there’s no tie to a specific version, the reference or model will point to the latest version.
+- Modifying `latest_version`: if there's no tie to a specific version, the reference or model will point to the latest version.
   -  If a newer version is released, the reference will automatically resolve to the new version, potentially changing the behavior or output of the system that relies on it.
 
 #### Overwrites the `manifest.json`

@@ -11,7 +11,7 @@ Environment variables contain a `DBT_` prefix.
 For example, instead of using:
 
 ```bash
-<Constant name="dbt" /> --no-populate-cache run
+dbt --no-populate-cache run
 ```
 
 You should use:

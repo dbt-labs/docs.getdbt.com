@@ -75,7 +75,7 @@ To bypass using `package-lock.yml` entirely, you can add it to your project's `.
 The `package-lock.yml` file includes a `sha1_hash` of your packages config. If you update `packages.yml`, dbt will detect the change and rerun dependency resolution during the next `dbt deps` command. To update the lock file without installing the new packages, use the `--lock` flag:
 
 ```shell
-<Constant name="dbt" /> deps --lock
+dbt deps --lock
 ```
 
 ### Forcing package updates
@@ -103,7 +103,7 @@ The `dbt deps` command can add or update package configurations directly, saving
 Hub packages are the default package types and the easiest to install.
 
 ```shell
-<Constant name="dbt" /> deps --add-package <Constant name="dbt" />-labs/dbt_utils@1.0.0
+dbt deps --add-package <Constant name="dbt" />-labs/dbt_utils@1.0.0
 
 # with semantic version range
 dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"

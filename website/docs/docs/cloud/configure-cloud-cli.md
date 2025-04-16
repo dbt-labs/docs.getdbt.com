@@ -137,8 +137,8 @@ The available SQLFluff commands are:
 
 To lint SQL files, run the command as follows:  
 
-```shell
-<Constant name="dbt" /> sqlfluff lint [PATHS]... [flags]
+```
+dbt sqlfluff lint [PATHS]... [flags]
 ```
 
 When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  

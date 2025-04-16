@@ -67,8 +67,8 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 
 In this case, you should rerun the command with a `--full-refresh` flag, like so:
 
-```shell
-<Constant name="dbt" /> seed --full-refresh
+```
+dbt seed --full-refresh
 ```
 
 **Why is this the case?**
