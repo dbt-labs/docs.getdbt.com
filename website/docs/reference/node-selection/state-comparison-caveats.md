@@ -71,7 +71,7 @@ To reduce false positives during `state:modified` selection due to env-aware log
 State comparison works by identifying discrepancies between two manifests.  Those discrepancies could be the result of:
 
 1. Changes made to a project in development
-2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to dbt Core 1.9 and set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
+2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to <Constant name="core" /> 1.9 and set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
 
 State comparison detects env-aware config in `dbt_project.yml`. This target-based config won't register as a modification:
 

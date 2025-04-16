@@ -4,7 +4,7 @@ sidebar_label: "init"
 id: "init"
 ---
 
-`dbt init` helps get you started using dbt Core!
+`dbt init` helps get you started using <Constant name="core" />!
 
 ## New project
 
