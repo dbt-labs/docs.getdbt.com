@@ -45,6 +45,6 @@ If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you�
 
 ### dbt Artifacts package
 
-- 🎨  Lastly, when it comes to examining your <Constant name="dbt" /> runs, you’re **not stuck without fancy visuals** if you’re using <Constant name="core" />. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [<Constant name="dbt" /> Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
+- 🎨  Lastly, when it comes to examining your dbt runs, you’re **not stuck without fancy visuals** if you’re using <Constant name="core" />. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [<Constant name="dbt" /> Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
 - 👩‍🎨  This provides models you can **visualize for every aspect of your project** at a very granular level.
 - ⌚  You can use it to **create your own model timing visualization** in your BI tool, and any other reports you need to keep an eye on your materialization strategy.

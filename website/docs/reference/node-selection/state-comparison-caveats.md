@@ -31,7 +31,7 @@ The command `dbt test -s state:modified` will include both:
 As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect with "simple" state selection:
 
 ```shell
-<Constant name="dbt" /> run -s "state:modified"
+dbt run -s "state:modified"
 <Constant name="dbt" /> test -s "state:modified"
 ```
 
@@ -42,7 +42,7 @@ You can defer upstream references when testing. For example, if a test selects f
 If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking the selection criteria of your CI job. For instance:
 
 ```shell
-<Constant name="dbt" /> run -s "state:modified"
+dbt run -s "state:modified"
 <Constant name="dbt" /> test -s "state:modified" --exclude "test_name:relationships"
 ```
 ### Overwrites the `manifest.json`

@@ -17,7 +17,7 @@ For example, instead of using:
 You should use:
 
 ```bash
-<Constant name="dbt" /> run --no-populate-cache
+dbt run --no-populate-cache
 ```
 
 Historically, passing flags (such as "global flags") _before_ the subcommand is a legacy functionality that <Constant name="dbt" /> Labs can remove at any time. We do not support using the same flag before and after the subcommand. 

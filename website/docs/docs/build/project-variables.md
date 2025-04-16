@@ -67,7 +67,7 @@ define (or override) variables for a run of dbt, use the `--vars` command line
 option. In practice, this looks like:
 
 ```
-$ <Constant name="dbt" /> run --vars '{"key": "value"}'
+$ dbt run --vars '{"key": "value"}'
 ```
 
 The `--vars` argument accepts a YAML dictionary as a string on the command line.
@@ -76,14 +76,14 @@ YAML is convenient because it does not require strict quoting as with <Term id="
 Both of the following are valid and equivalent:
 
 ```
-$ <Constant name="dbt" /> run --vars '{"key": "value", "date": 20180101}'
-$ <Constant name="dbt" /> run --vars '{key: value, date: 20180101}'
+$ dbt run --vars '{"key": "value", "date": 20180101}'
+$ dbt run --vars '{key: value, date: 20180101}'
 ```
 
 If only one variable is being set, the brackets are optional, eg:
 
 ```
-$ <Constant name="dbt" /> run --vars 'key: value'
+$ dbt run --vars 'key: value'
 ```
 
 You can find more information on defining dictionaries with YAML [here](https://github.com/Animosity/CraftIRC/wiki/Complete-idiot%27s-introduction-to-yaml).

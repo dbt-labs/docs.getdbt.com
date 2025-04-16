@@ -9,7 +9,7 @@ id: run-one-model
 To run one model, use the `--select` flag (or `-s` flag), followed by the name of the model:
 
 ```shell
-$ <Constant name="dbt" /> run --select customers
+$ dbt run --select customers
 ```
 
 Check out the [model selection syntax documentation](/reference/node-selection/syntax) for more operators and examples.

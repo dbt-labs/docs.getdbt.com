@@ -8,7 +8,7 @@ intro_text: "Learn how to configure and optimize incremental models when develop
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
-Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time <Constant name="dbt" /> ran. As such, on each <Constant name="dbt" /> run, your model gets built incrementally.
+Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time <Constant name="dbt" /> ran. As such, on each dbt run, your model gets built incrementally.
 
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
@@ -159,14 +159,14 @@ If your incremental model logic has changed, the transformations on your new row
 To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time. 
 
 ```bash
-$ <Constant name="dbt" /> run --full-refresh --select my_incremental_model+
+$ dbt run --full-refresh --select my_incremental_model+
 ```
 
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
 You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 
-For detailed usage instructions, check out the [<Constant name="dbt" /> run](/reference/commands/run) documentation. 
+For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation. 
 
 ## What if the columns of my incremental model change?
 

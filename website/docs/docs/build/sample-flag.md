@@ -40,19 +40,19 @@ There are two time-based sample specifications supported for sample mode:
 Let's say you want to run your `stg_customers` model and build the table in your development schema with a relative time spec sample size of three days. Your command in the IDE would look something like this:
 
 ```
-<Constant name="dbt" /> run --select path/to/stg_customers --sample="3 days"
+dbt run --select path/to/stg_customers --sample="3 days"
 ```
 
 If you have an even larger model, for example, `stg_orders` you can set sample mode to hours:
 
 ```
-<Constant name="dbt" /> run --select path/to/stg_customers --sample="6 hours"
+dbt run --select path/to/stg_customers --sample="6 hours"
 ```
 
 Next, let's say you want to validate data for your entire business from a sample size further in the past - your busiest week in July, from the first until closing time on the eighth. You can run the following: 
 
 ```
-<Constant name="dbt" /> run --sample="{'start': '2024-07-01', 'end': '2024-07-08 18:00:00'}"
+dbt run --sample="{'start': '2024-07-01', 'end': '2024-07-08 18:00:00'}"
 ```
 
 To prevent a `ref` from being sampled, append `.render()` to it:

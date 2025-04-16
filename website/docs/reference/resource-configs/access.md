@@ -91,7 +91,7 @@ Some models (not all) are designed to be referenced through the [ref](/reference
 If you try to reference a model outside of its supported access, you will see an error:
 
 ```shell
-<Constant name="dbt" /> run -s marketing_model
+dbt run -s marketing_model
 ...
 <Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 

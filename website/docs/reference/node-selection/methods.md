@@ -45,7 +45,7 @@ The `config` method is used to select models that match a specified [node config
 
 
   ```bash
-<Constant name="dbt" /> run --select "config.materialized:incremental"    # run all models that are materialized incrementally
+dbt run --select "config.materialized:incremental"    # run all models that are materialized incrementally
 dbt run --select "config.schema:audit"              # run all models that are created in the `audit` schema
 dbt run --select "config.cluster_by:geo_country"      # run all models clustered by `geo_country`
 ```
@@ -82,7 +82,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
 
 
   ```bash
-<Constant name="dbt" /> run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
+dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 <Constant name="dbt" /> test --select "+exposure:*"                         # test all resources upstream of all exposures
 <Constant name="dbt" /> ls --select "+exposure:*" --resource-type source    # list all source tables upstream of all exposures
 ```
@@ -93,9 +93,9 @@ The `file` method can be used to select a model by its filename, including the f
 
 ```bash
 # These are equivalent
-<Constant name="dbt" /> run --select "file:some_model.sql"
-<Constant name="dbt" /> run --select "some_model.sql"
-<Constant name="dbt" /> run --select "some_model"
+dbt run --select "file:some_model.sql"
+dbt run --select "some_model.sql"
+dbt run --select "some_model"
 ```
 
 ### fqn
@@ -103,11 +103,11 @@ The `file` method can be used to select a model by its filename, including the f
 The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN. The default FQN format is composed of the project name, subdirectories within the path, and the file name (without extension) separated by periods.
 
 ```bash
-<Constant name="dbt" /> run --select "fqn:some_model"
-<Constant name="dbt" /> run --select "fqn:your_project.some_model"
-<Constant name="dbt" /> run --select "fqn:some_package.some_other_model"
-<Constant name="dbt" /> run --select "fqn:some_path.some_model"
-<Constant name="dbt" /> run --select "fqn:your_project.some_path.some_model"
+dbt run --select "fqn:some_model"
+dbt run --select "fqn:your_project.some_model"
+dbt run --select "fqn:some_package.some_other_model"
+dbt run --select "fqn:some_path.some_model"
+dbt run --select "fqn:your_project.some_path.some_model"
 ```
 
 
@@ -117,7 +117,7 @@ The `group` method is used to select models defined within a [group](/reference/
 
 
 ```bash
-<Constant name="dbt" /> run --select "group:finance" # run all models that belong to the finance group.
+dbt run --select "group:finance" # run all models that belong to the finance group.
 ```
 
 ### metric
@@ -138,9 +138,9 @@ selectors unambiguous.
 
   ```bash
   # These three selectors are equivalent
-  <Constant name="dbt" /> run --select "package:snowplow"
-  <Constant name="dbt" /> run --select "snowplow"
-  <Constant name="dbt" /> run --select "snowplow.*"
+  dbt run --select "package:snowplow"
+  dbt run --select "snowplow"
+  dbt run --select "snowplow.*"
 ```
 
 Use the `this` package to select nodes from the current project. From the example, running `dbt run --select "package:this"` from the `snowplow` project runs the exact same set of models as the other three selectors.
@@ -156,12 +156,12 @@ selectors unambiguous.
 
   ```bash
   # These two selectors are equivalent
-  <Constant name="dbt" /> run --select "path:models/staging/github"
-  <Constant name="dbt" /> run --select "models/staging/github"
+  dbt run --select "path:models/staging/github"
+  dbt run --select "models/staging/github"
 
   # These two selectors are equivalent
-  <Constant name="dbt" /> run --select "path:models/staging/github/stg_issues.sql"
-  <Constant name="dbt" /> run --select "models/staging/github/stg_issues.sql"
+  dbt run --select "path:models/staging/github/stg_issues.sql"
+  dbt run --select "models/staging/github/stg_issues.sql"
   ```
 
 ### resource_type
@@ -178,7 +178,7 @@ Use the `resource_type` method to select nodes of a particular type (`model`, `t
 The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
 ```bash
-<Constant name="dbt" /> run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of <Constant name="dbt" /> run
+dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
 <Constant name="dbt" /> test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of <Constant name="dbt" /> test
 <Constant name="dbt" /> build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of <Constant name="dbt" /> build
 <Constant name="dbt" /> seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of <Constant name="dbt" /> seed.
@@ -207,7 +207,7 @@ The `source` method is used to select models that select from a specified [sourc
 
 
   ```bash
-<Constant name="dbt" /> run --select "source:snowplow+"    # run all models that select from Snowplow sources
+dbt run --select "source:snowplow+"    # run all models that select from Snowplow sources
 ```
 
 ### source_status
@@ -238,7 +238,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 
   ```bash
 <Constant name="dbt" /> test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
-<Constant name="dbt" /> run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
+dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
 <Constant name="dbt" /> ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
 

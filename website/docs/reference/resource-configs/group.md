@@ -312,7 +312,7 @@ select * from {{ ref('finance_model') }}
 </File>
 
 ```shell
-$ <Constant name="dbt" /> run -s marketing_model
+$ dbt run -s marketing_model
 ...
 <Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 

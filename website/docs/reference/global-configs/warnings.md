@@ -162,7 +162,7 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
   ```text
-  DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' <Constant name="dbt" /> run
+  DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' dbt run
   ```
 
 Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run` not `dbt --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}' run`.
@@ -187,7 +187,7 @@ Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For 
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
   ```text
-  DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' <Constant name="dbt" /> run
+  DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
   ```
 
 </VersionBlock>
@@ -257,18 +257,18 @@ Some additional examples of how to promote all warnings to errors using the `WAR
 <VersionBlock lastVersion="1.7"> 
 
 ```bash 
-WARN_ERROR=true <Constant name="dbt" /> run
-DBT_WARN_ERROR_OPTIONS='{"include": "all"}' <Constant name="dbt" /> run 
-DBT_WARN_ERROR_OPTIONS='{"include": "*"}' <Constant name="dbt" /> run 
+WARN_ERROR=true dbt run
+DBT_WARN_ERROR_OPTIONS='{"include": "all"}' dbt run 
+DBT_WARN_ERROR_OPTIONS='{"include": "*"}' dbt run 
 ```
 </VersionBlock> 
 
 <VersionBlock firstVersion="1.8"> 
 
 ```bash 
-WARN_ERROR=true <Constant name="dbt" /> run 
-DBT_WARN_ERROR_OPTIONS='{"error": "all"}' <Constant name="dbt" /> run 
-DBT_WARN_ERROR_OPTIONS='{"error": "*"}' <Constant name="dbt" /> run 
+WARN_ERROR=true dbt run 
+DBT_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run 
+DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
 ```
 
 </VersionBlock>

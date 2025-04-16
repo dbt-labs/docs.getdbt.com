@@ -112,7 +112,7 @@ dremioSamples:
 
   ```shell
 
-  $ <Constant name="dbt" /> run -t cloud_dev
+  $ dbt run -t cloud_dev
 
   ```
 

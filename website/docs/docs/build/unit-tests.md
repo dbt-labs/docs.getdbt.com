@@ -138,7 +138,7 @@ Use the [`--empty`](/reference/commands/build#the---empty-flag) flag to build an
 
 ```bash
 
-<Constant name="dbt" /> run --select "stg_customers top_level_email_domains" --empty
+dbt run --select "stg_customers top_level_email_domains" --empty
 
 ```
 
@@ -224,7 +224,7 @@ When configuring your unit test, you can override the output of macros, vars, or
 Incremental models need to exist in the database first before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
 
   ```shell
-  <Constant name="dbt" /> run --select "config.materialized:incremental" --empty
+  dbt run --select "config.materialized:incremental" --empty
   ```
 
   After running the command, you can then perform a regular `dbt build` for that model and then run your unit test.

@@ -32,11 +32,11 @@ flags:
 ```bash
 # set this environment variable to 'True' (bash syntax)
 export DBT_FAIL_FAST=1
-<Constant name="dbt" /> run
+dbt run
 ```
 ```bash
-<Constant name="dbt" /> run --fail-fast # set to True for this specific invocation
-<Constant name="dbt" /> run --no-fail-fast # set to False
+dbt run --fail-fast # set to True for this specific invocation
+dbt run --no-fail-fast # set to False
 ```
 
 There are two categories of exceptions:

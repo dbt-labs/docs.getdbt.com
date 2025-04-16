@@ -90,7 +90,7 @@ dbt-decodable:
 
 For example, the following command runs the `delete_streams` operation  
 ```
-<Constant name="dbt" /> run-operation delete_streams --args '{streams: [stream1, stream2], skip_errors: True}'
+dbt run-operation delete_streams --args '{streams: [stream1, stream2], skip_errors: True}'
 ```
 
 <b>stop_pipelines(pipelines)</b>

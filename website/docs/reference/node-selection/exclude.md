@@ -7,7 +7,7 @@ sidebar_label: "Exclude"
 dbt provides an `--exclude` flag with the same semantics as `--select`. Models specified with the `--exclude` flag will be removed from the set of models selected with `--select`.
 
 ```bash
-<Constant name="dbt" /> run --select "my_package".*+ --exclude "my_package.a_big_model+"    # select all models in my_package and their children except a_big_model and its children
+dbt run --select "my_package".*+ --exclude "my_package.a_big_model+"    # select all models in my_package and their children except a_big_model and its children
 ```
 
 Exclude a specific resource by its name or lineage:

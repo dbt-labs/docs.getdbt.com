@@ -24,6 +24,6 @@ currently running. It can be used for debugging or auditing purposes. For detail
 
 
 ```
-$ <Constant name="dbt" /> run-operation get_version
+$ dbt run-operation get_version
 The installed version of <Constant name="dbt" /> is 1.6.0
 ```

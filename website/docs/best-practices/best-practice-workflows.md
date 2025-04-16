@@ -117,7 +117,7 @@ By comparing to artifacts from a previous production run, <Constant name="dbt" /
 which models are modified and build them on top of of their unmodified parents.
 
 ```bash
-<Constant name="dbt" /> run -s state:modified+ --defer --state path/to/prod/artifacts
+dbt -s state:modified+ --defer --state path/to/prod/artifacts
 <Constant name="dbt" /> test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
@@ -132,7 +132,7 @@ By comparing to artifacts from a previous production run, <Constant name="dbt" /
 
 For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
 ```bash
-<Constant name="dbt" /> run --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
+dbt --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 

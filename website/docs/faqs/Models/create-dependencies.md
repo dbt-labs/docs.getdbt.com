@@ -28,7 +28,7 @@ group by 1
 **There's no need to explicitly define these dependencies.** dbt will understand that the `stg_orders` model needs to be built before the above model (`customer_orders`). When you execute `dbt run`, you will see these being built in order:
 
 ```txt
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.6.0
 Found 2 models, 28 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 3 sources
 

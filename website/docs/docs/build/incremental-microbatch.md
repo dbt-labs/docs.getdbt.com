@@ -251,12 +251,12 @@ Note that running `dbt run --full-refresh` on a microbatch model by itself will 
 
 ✅ Correct:
 ```bash
-<Constant name="dbt" /> run --full-refresh --event-time-start "2024-01-01" --event-time-end "2024-02-01"
+dbt run --full-refresh --event-time-start "2024-01-01" --event-time-end "2024-02-01"
 ```
 
 ❌ Incorrect:
 ```bash
-<Constant name="dbt" /> run --full-refresh
+dbt run --full-refresh
 ```
 
 If you need to reprocess historical data, we recommend using a targeted backfill with `--event-time-start` and `--event-time-end`.
@@ -290,7 +290,7 @@ Backfilling a microbatch model is as simple as selecting it to run or build, and
 As always, <Constant name="dbt" /> will process the batches between the start and end as independent queries.
 
 ```bash
-<Constant name="dbt" /> run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
+dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 ```
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>

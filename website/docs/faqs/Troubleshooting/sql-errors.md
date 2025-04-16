@@ -10,7 +10,7 @@ id: sql-errors
 If there's a mistake in your SQL, <Constant name="dbt" /> will return the error that your database returns.
 
 ```shell
-$ <Constant name="dbt" /> run --select customers
+$ dbt run --select customers
 Running with <Constant name="dbt" />=1.9.0
 Found 3 models, 9 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources
 

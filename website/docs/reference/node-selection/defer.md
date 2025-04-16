@@ -15,7 +15,7 @@ It is possible to use separate state for `state:modified` and `--defer`, by pass
 ### Usage
 
 ```shell
-<Constant name="dbt" /> run --select [...] --defer --state path/to/artifacts
+dbt run --select [...] --defer --state path/to/artifacts
 <Constant name="dbt" /> test --select [...] --defer --state path/to/artifacts
 ```
 
@@ -102,7 +102,7 @@ Unless I had previously run `model_a` into this development environment, `dev_al
 <TabItem value="yes_defer">
 
 ```shell
-<Constant name="dbt" /> run --select "model_b" --defer --state prod-run-artifacts
+dbt run --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/run/my_project/model_b.sql'>

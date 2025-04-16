@@ -77,7 +77,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
 
 3. Run and preview the model to create the model:
     ```bash
-    <Constant name="dbt" /> run --select time_spine_daily 
+    dbt run --select time_spine_daily 
     <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
     ```
 
@@ -145,7 +145,7 @@ For the time spine you created, let's run it and preview the output if you haven
 
 1. Run the following command:
    ```bash
-   <Constant name="dbt" /> run --select time_spine_daily
+   dbt run --select time_spine_daily
    <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
    ```
 
@@ -237,7 +237,7 @@ To support multiple granularities (like hourly, yearly, monthly), create additio
 
 3. Run or preview the model to create the model:
    ```bash
-   <Constant name="dbt" /> run --select time_spine_yearly
+   dbt run --select time_spine_yearly
    <Constant name="dbt" /> show --select time_spine_yearly # Use this command to preview the model if developing locally
    ```
 
@@ -328,7 +328,7 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
 
 3. Run or preview the model to create the model:
    ```bash
-   <Constant name="dbt" /> run --select fiscal_calendar
+   dbt run --select fiscal_calendar
    <Constant name="dbt" /> show --select fiscal_calendar # Use this command to preview the model if developing locally
    ```
 

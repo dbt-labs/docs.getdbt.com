@@ -275,10 +275,10 @@ The `stage_external_sources` macro is inherited from the [dbt-external-tables pa
 
 ```bash
 # iterate through all source nodes, create if missing, refresh metadata
-$ <Constant name="dbt" /> run-operation stage_external_sources
+$ dbt run-operation stage_external_sources
 
 # iterate through all source nodes, create or replace (no refresh command is required as data is fetched live from remote)
-$ <Constant name="dbt" /> run-operation stage_external_sources --vars "ext_full_refresh: true"
+$ dbt run-operation stage_external_sources --vars "ext_full_refresh: true"
 ```
 
 ## Incremental models

@@ -143,7 +143,7 @@ Here are two ways to represent:
 
 
   ```bash
-  $ <Constant name="dbt" /> run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
+  $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
 
 <Tabs
@@ -213,7 +213,7 @@ selectors:
 
 Then in our job definition:
 ```bash
-<Constant name="dbt" /> run --selector nightly_diet_snowplow
+dbt run --selector nightly_diet_snowplow
 ```
 
 ## Default
@@ -245,8 +245,8 @@ If I run an "unqualified" command, dbt will use the selection criteria defined i
 If I run a command that defines its own selection criteria (via `--select`, `--exclude`, or `--selector`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.
 
 ```bash
-<Constant name="dbt" /> run --select  "model_a"
-<Constant name="dbt" /> run --exclude model_a
+dbt run --select  "model_a"
+dbt run --exclude model_a
 ```
 
 Only one selector may set `default: true` for a given invocation; otherwise, dbt will return an error. You may use a Jinja expression to adjust the value of `default` depending on the environment, however:

@@ -116,7 +116,7 @@ Runtime Error
 
 To suppress failures to to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
 ```
-$ <Constant name="dbt" /> run --no-version-check
+$ dbt run --no-version-check
 Running with <Constant name="dbt" />=1.5.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```

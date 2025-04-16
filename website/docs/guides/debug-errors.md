@@ -196,7 +196,7 @@ _Note: if you're using the dbt Cloud IDE to work on your dbt project, this error
 
 ### Invalid `ref` function
 ```
-$ <Constant name="dbt" /> run -s customers
+$ dbt run -s customers
 Running with <Constant name="dbt" />=1.1.0
 
 Encountered an error:
@@ -216,7 +216,7 @@ Compilation Error in model customers (models/customers.sql)
 ### Invalid Jinja
 
 ```
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.7.1
 Compilation Error in macro (macros/cents_to_dollars.sql)
   Reached EOF without finding a close tag for macro (searched from line 1)
@@ -243,7 +243,7 @@ To prevent this:
 <Constant name="dbt" /> wasn't able to turn your YAML into a valid dictionary.
 
 ```
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.7.1
 
 Encountered an error:
@@ -297,7 +297,7 @@ To prevent this:
 Slightly different error — the YAML structure is right (i.e. the YAML parser can turn this into a python dictionary), _but_ there's a key that <Constant name="dbt" /> doesn't recognize.
 
 ```
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.7.1
 
 Encountered an error:
@@ -317,7 +317,7 @@ Compilation Error
 
 ## Dependency Errors
 ```
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.7.1-rc
 
 Encountered an error:
@@ -335,7 +335,7 @@ Your <Constant name="dbt" /> DAG is not acyclic, and needs to be fixed!
 The thorniest errors of all! These errors come from your <Term id="data-warehouse" />, and dbt passes the message on. You may need to use your warehouse docs (i.e. the Snowflake docs, or BigQuery docs) to debug these.
 
 ```
-$ <Constant name="dbt" /> run
+$ dbt run
 ...
 Completed with 1 error and 0 warnings:
 

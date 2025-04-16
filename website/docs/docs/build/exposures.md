@@ -72,7 +72,7 @@ _General properties (optional)_
 
 Once an exposure is defined, you can run commands that reference it:
 ```
-<Constant name="dbt" /> run -s +exposure:weekly_jaffle_report
+dbt run -s +exposure:weekly_jaffle_report
 <Constant name="dbt" /> test -s +exposure:weekly_jaffle_report
 
 ```

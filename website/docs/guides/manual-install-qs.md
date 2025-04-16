@@ -149,7 +149,7 @@ Our sample project has some example models in it. We're going to check that we c
 1. Enter the `run` command to build example models:
 
 ```shell
-<Constant name="dbt" /> run
+dbt run
 ```
 
 You should have an output that looks like this:

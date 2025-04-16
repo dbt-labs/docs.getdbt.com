@@ -406,21 +406,21 @@ To run a model with multiple versions, you can use the [`--select` flag](/refere
 - Run all versions of `dim_customers`:
 
   ```bash
-  <Constant name="dbt" /> run --select dim_customers # Run all versions of the model
+  dbt run --select dim_customers # Run all versions of the model
   ```
 - Run only version 2 of `dim_customers`:
 
   You can use either of the following commands (both achieve the same result):
 
   ```bash
-    <Constant name="dbt" /> run --select dim_customers.v2 # Run a specific version of the model
-    <Constant name="dbt" /> run --select dim_customers_v2 # Alternative syntax for the specific version
+    dbt run --select dim_customers.v2 # Run a specific version of the model
+    dbt run --select dim_customers_v2 # Alternative syntax for the specific version
   ```
 
 - Run the latest version of `dim_customers` using the `--select` flag shorthand:
 
   ```bash
-  <Constant name="dbt" /> run -s dim_customers,version:latest # Run the latest version of the model
+  dbt run -s dim_customers,version:latest # Run the latest version of the model
   ```
 
 These commands provide flexibility in managing and executing different versions of a <Constant name="dbt" /> model.

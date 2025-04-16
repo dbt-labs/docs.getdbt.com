@@ -9,7 +9,7 @@ id: why-so-many-macros
 The output of a <Constant name="dbt" /> run counts over 100 macros in your project!
 
 ```shell
-$ <Constant name="dbt" /> run
+$ dbt run
 Running with <Constant name="dbt" />=1.7.0
 Found 1 model, 0 tests, 0 snapshots, 0 analyses, 138 macros, 0 operations, 0 seed files, 0 sources
 ```

@@ -1119,7 +1119,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
 5. Build the model using the UI which will **execute**:
 
     ```bash
-    <Constant name="dbt" /> run --select fastest_pit_stops_by_constructor
+    dbt run --select fastest_pit_stops_by_constructor
     ```
 
     in the command bar.
@@ -1183,7 +1183,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
 11. Now, run this model by using the UI **Run model** or
 
     ```bash
-    <Constant name="dbt" /> run --select lap_times_moving_avg
+    dbt run --select lap_times_moving_avg
     ```
 
  in the command bar.
@@ -1306,7 +1306,7 @@ At a high level we’ll be:
 4. Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> run --select ml_data_prep
+    dbt run --select ml_data_prep
     ```
 
 5. There are more aspects we could consider for this project, such as normalizing the driver confidence by the number of races entered. Including this would help account for a driver’s history and consider whether they are a new or long-time driver. We’re going to keep it simple for now, but these are some of the ways we can expand and improve our machine learning <Constant name="dbt" /> projects. Breaking down our machine learning prep model:
@@ -1375,7 +1375,7 @@ In this next part, we’ll be performing covariate encoding. Breaking down this 
 2. Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> run --select covariate_encoding
+    dbt run --select covariate_encoding
     ```
 
 3. In this code, we are using a ton of functions from libraries! This is really cool, because we can utilize code other people have developed and bring it into our project simply by using the `import` function. [Scikit-learn](https://scikit-learn.org/stable/), “sklearn” for short, is an extremely popular data science library. Sklearn contains a wide range of machine learning techniques, including supervised and unsupervised learning algorithms, feature scaling and imputation, as well as tools model evaluation and selection. We’ll be using Sklearn for both preparing our covariates and creating models (our next section).
@@ -1445,7 +1445,7 @@ Now that we’ve cleaned and encoded our data, we are going to further split in 
 3. Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> run --select train_test_dataset hold_out_dataset_for_prediction
+    dbt run --select train_test_dataset hold_out_dataset_for_prediction
     ```
 
     To run our temporal data split models, we can use this syntax in the command line to run them both at once. Make sure you use a *space* [syntax](/reference/node-selection/syntax) between the model names to indicate you want to run both!
@@ -1545,7 +1545,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
 3. Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> run --select train_test_position
+    dbt run --select train_test_position
     ```
 
 4. Breaking down our Python script here:
@@ -1680,7 +1680,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
 2. Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> run --select predict_position
+    dbt run --select predict_position
     ```
 
 3. **Commit and push** our changes to keep saving our work as we go using the commit message `logistic regression model training and application` before moving on.

@@ -105,7 +105,7 @@ dbt_test:
          schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
          threads: 4
          session_info:
-            action: "<Constant name="dbt" /> run"
+            action: "dbt run"
             client_identifier: "<Constant name="dbt" />-unique-client-uuid"
             client_info: "<Constant name="dbt" /> Python3.9 thin driver"
             module: "<Constant name="dbt" />-oracle-1.8.x"

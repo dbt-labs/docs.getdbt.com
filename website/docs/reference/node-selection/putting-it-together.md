@@ -4,13 +4,13 @@ title: "Putting it together"
 
 
   ```bash
-<Constant name="dbt" /> run --select "my_package.*+"      # select all models in my_package and their children
-<Constant name="dbt" /> run --select "+some_model+"       # select some_model and all parents and children
+dbt run --select "my_package.*+"      # select all models in my_package and their children
+dbt run --select "+some_model+"       # select some_model and all parents and children
 
-<Constant name="dbt" /> run --select "tag:nightly+"      # select "nightly" models and all children
-<Constant name="dbt" /> run --select "+tag:nightly+"      # select "nightly" models and all parents and children
+dbt run --select "tag:nightly+"      # select "nightly" models and all children
+dbt run --select "+tag:nightly+"      # select "nightly" models and all parents and children
 
-<Constant name="dbt" /> run --select "@source:snowplow"   # build all models that select from snowplow sources, plus their parents
+dbt run --select "@source:snowplow"   # build all models that select from snowplow sources, plus their parents
 
 dbt test --select "config.incremental_strategy:insert_overwrite,test_name:unique"   # execute all `unique` tests that select from models using the `insert_overwrite` incremental strategy
 ```
@@ -22,7 +22,7 @@ and feed exports, while _excluding_ the biggest incremental models (and one othe
 
 
   ```bash
-<Constant name="dbt" /> run --select "@source:snowplow,tag:nightly models/export" --exclude "package:snowplow,config.materialized:incremental export_performance_timing"
+dbt run --select "@source:snowplow,tag:nightly models/export" --exclude "package:snowplow,config.materialized:incremental export_performance_timing"
 ```
 
 

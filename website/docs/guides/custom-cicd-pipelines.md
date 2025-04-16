@@ -610,7 +610,7 @@ Add this as a macro to your project. It takes 2 arguments that lets you control 
     This macro finds PR schemas older than a set date and drops them 
     The macro defaults to 10 days old, but can be configured with the input argument age_in_days
     Sample usage with different date:
-        <Constant name="dbt" /> run-operation pr_schema_cleanup --args "{'database_to_clean': 'analytics','age_in_days':'15'}"
+        dbt run-operation pr_schema_cleanup --args "{'database_to_clean': 'analytics','age_in_days':'15'}"
 #}
 {% macro pr_schema_cleanup(database_to_clean, age_in_days=10) %}
 

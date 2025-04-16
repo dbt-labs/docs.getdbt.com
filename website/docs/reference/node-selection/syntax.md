@@ -83,19 +83,19 @@ Examples:
 
 ```bash
 # multiple arguments can be provided to --select
-<Constant name="dbt" /> run --select "my_first_model my_second_model"
+dbt run --select "my_first_model my_second_model"
 
 # select my_model and all of its children
-<Constant name="dbt" /> run --select "my_model+"     
+dbt run --select "my_model+"     
 
 # select my_model, its children, and the parents of its children
-<Constant name="dbt" /> run --models @my_model          
+dbt run --models @my_model          
 
 # these arguments can be projects, models, directory paths, tags, or sources
-<Constant name="dbt" /> run --select "tag:nightly my_model finance.base.*"
+dbt run --select "tag:nightly my_model finance.base.*"
 
 # use methods and intersections for more complex selectors
-<Constant name="dbt" /> run --select "path:marts/finance,tag:nightly,config.materialized:table"
+dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
 ```
 
 </TabItem>

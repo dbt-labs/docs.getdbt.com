@@ -129,12 +129,12 @@ Once you have the values from the previous step, you can prepare your <Constant 
    ```
 5. Once you set the environment variables using the `export` command in the same dbt Core CLI session, you can execute a `dbt run` in the CLI. 
    ```bash
-    <Constant name="dbt" /> run
+    dbt run
     ```
 
    To override the environment variables set, execute a `dbt run` with the environment variable prefix. For example, to use a different account ID and environment ID:
    ```bash
-    DBT_CLOUD_ACCOUNT_ID=1 DBT_CLOUD_ENVIRONMENT_ID=123 <Constant name="dbt" /> run
+    DBT_CLOUD_ACCOUNT_ID=1 DBT_CLOUD_ENVIRONMENT_ID=123 dbt run
    ```
 
 6. After the run completes, you should see a `Artifacts uploaded successfully to artifact ingestion API: command run completed successfully` message and a run in dbt Cloud under your production environment.

@@ -108,7 +108,7 @@ To run your <Constant name="dbt" /> project with a different profile or target t
 These flags help when you're working with multiple profiles and targets and want to override defaults without changing your files.
 
 ```bash
-<Constant name="dbt" /> run --profile my-profile-name --target dev
+dbt run --profile my-profile-name --target dev
 ```
 In this example, the `dbt run` command will use the `my-profile-name` profile and the `dev` target.
 
@@ -180,7 +180,7 @@ There are multiple ways to direct dbt to a different location for your `profiles
 This option can be used as follows:
 
  ```
-$ <Constant name="dbt" /> run --profiles-dir path/to/directory
+$ dbt run --profiles-dir path/to/directory
  ```
 
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
