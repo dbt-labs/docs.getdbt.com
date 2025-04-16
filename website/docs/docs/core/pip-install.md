@@ -326,7 +326,6 @@ dbt --version
 ```shell
 python -m pip uninstall -y dbt-adapters
 python -m pip install --upgrade --pre dbt-core dbt-common dbt-adapters
-
 dbt --version
 ```
 
