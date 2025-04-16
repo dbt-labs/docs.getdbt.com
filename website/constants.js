@@ -13,7 +13,7 @@ export const CONSTANTS = {
   dbt: 'dbt',
   cloud_cli: 'Cloud CLI',
   explorer: 'Explorer',
-  visual_editor: 'Canvas',
+  visual_editor: 'Visual Editor',
   query_page: 'Insights',
   cloud_ide: 'Cloud IDE',
   mesh: 'Mesh',
