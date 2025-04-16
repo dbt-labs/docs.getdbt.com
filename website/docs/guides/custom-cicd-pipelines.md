@@ -183,7 +183,7 @@ In Bitbucket:
 
 ### 3. Create script to trigger dbt Cloud job via an API call
 
-In your dbt Cloud project, create a new folder at the root level named `python`. In that folder, create a file named `run_and_monitor_dbt_job.py`. You’ll copy/paste the contents from this [gist](https://gist.github.com/b-per/f4942acb8584638e3be363cb87769b48) into that file.
+In your project, create a new folder at the root level named `python`. In that folder, create a file named `run_and_monitor_dbt_job.py`. You'll copy/paste the contents from this [gist](https://gist.github.com/b-per/f4942acb8584638e3be363cb87769b48) into that file.
 
 ```yaml
 my_awesome_project
@@ -215,7 +215,7 @@ In order to call the <Constant name="cloud" /> API, there are a few pieces of in
 - `DBT_PROJECT_ID` - this is the number just after `projects/` in the URL
 - `DBT_PR_JOB_ID` - this is the number just after `jobs/` in the URL
 
-![Image of a <Constant name="cloud" /> job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
+![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
 
 ### 4. Update your project to include the new API call
 
@@ -230,7 +230,7 @@ In order to call the <Constant name="cloud" /> API, there are a few pieces of in
 }>
 <TabItem value="github">
 
-For this new job, we’ll add a file for the dbt Cloud API call named `dbt_run_on_merge.yml`.
+For this new job, we'll add a file for the <Constant name="cloud" /> API call named `dbt_run_on_merge.yml`.
 
 ```yaml
 my_awesome_project
@@ -374,7 +374,7 @@ Copy the below YAML file into your Azure pipeline and update the variables below
 Read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
 ```yaml
-name: Run <Constant name="cloud" /> Job
+name: Run dbt Cloud Job
 
 trigger: [ main ] # runs on pushes to main
 
@@ -445,14 +445,14 @@ pipelines:
   branches:
     '**': # this sets a wildcard to run on every branch unless specified by name below
       - step:
-          name: Lint <Constant name="dbt" /> project
+          name: Lint dbt project
           script:
             - python -m pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
     'main': # override if your default branch doesn't run on a branch named "main"
       - step:
-          name: 'Run <Constant name="cloud" /> Job'
+          name: 'Run dbt Cloud Job'
           script:
             - export DBT_URL="https://cloud.getdbt.com" # if you have a single-tenant deployment, adjust this accordingly
             - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
@@ -542,7 +542,7 @@ For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the
 The setup below will trigger a dbt Cloud job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
 For example: If you open a PR, it will run the pipeline. If you then decide additional changes are needed, and commit/push to the PR branch, a new pipeline will run with the updated code.  
 
-The following varibles control this job:
+The following variables control this job:
 
 - `DBT_JOB_BRANCH`: Tells the dbt Cloud job to run the code in the branch that created this PR
 - `DBT_JOB_SCHEMA_OVERRIDE`: Tells the dbt Cloud job to run this into a custom target schema

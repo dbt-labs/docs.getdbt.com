@@ -190,7 +190,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt Core users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the <Constant name="cloud_ide" /> to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For <Constant name="core" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
