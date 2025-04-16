@@ -987,14 +987,15 @@ This page will guide you on how to connect and use the following integrations to
 
 - [Connect and query with Google Sheets](#connect-and-query-with-google-sheets)
 - [Connect and query with Hex](#connect-and-query-with-hex)
+- [Connect and query with Sigma](#connect-and-query-with-sigma)
+  
+The dbt Semantic Layer enables you to connect and query your metric with various available tools like [PowerBI](/docs/cloud-integrations/semantic-layer/power-bi), [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), [Hex](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration), [Microsoft Excel](/docs/cloud-integrations/semantic-layer/excel), [Tableau](/docs/cloud-integrations/semantic-layer/tableau), and more. 
 
-The dbt Semantic Layer enables you to connect and query your metric with various available tools like Google Sheets, Hex, Tableau, and more. 
-
-Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
+Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integrations.
 
  ### Connect and query with Google Sheets
 
-<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
+<!-- The below snippet for gsheets (or reusables) can be found in the following file locations in the docs code repository) 
 
 https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-connect-and-query-api.md
 -->
@@ -1066,6 +1067,54 @@ This section will guide you on how to use the Hex integration to query your metr
 
 </TabItem>
 </Tabs>
+
+### Connect and query with Sigma
+This section will guide you on how to use the Sigma integration to query your metrics using Sigma. If you already have a Sigma account, simply log in and skip to step 6. Otherwise, you'll be using a Sigma account you'll create with Snowflake Partner Connect. 
+
+1. Go back to your Snowflake account. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the Sigma tile by scrolling or by searching for Sigma in the search bar. Click the tile to connect to Sigma.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-partner-connect.png" width="25%" title="Click the '+ New project' button on the top right"/>
+
+2. Select the Sigma tile from the list. Click the **Optional Grant** dropdown menu. Write **RAW** and **ANALYTICS** in the text box and then click **Connect**. 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-optional-grant.png" width="60%" title="Click the '+ New project' button on the top right"/>
+
+3. Make up a company name and URL to use. It doesn’t matter what URL you use, as long as it’s unique.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-company-name.png" width="50%" title="Click the '+ New project' button on the top right"/>
+
+4. Enter your name and email address. Choose a password for your account.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-create-profile.png" width="50%" title="Click the '+ New project' button on the top right"/>
+
+5. Great! You now have a Sigma account. Before we get started, go back to Snowlake and open a blank worksheet. Run these lines.
+- `grant all privileges on all views in schema analytics.SCHEMA to role pc_sigma_role;`
+- `grant all privileges on all tables in schema analytics.SCHEMA to role pc_sigma_role;`
+
+6. Click on your bubble in the top right corner. Click the **Administration** button from the dropdown menu.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-admin.png" width="40%" title="Click the '+ New project' button on the top right"/>
+
+7. Scroll down to the integrations section, then select **Add** next to the dbt integration.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-add-integration.png" width="70%" title="Click the '+ New project' button on the top right"/>
+
+8. In the **dbt Integration** section, fill out the required fields, and then hit save:
+- Your dbt [service account token](/docs/dbt-cloud-apis/service-tokens).
+- Your access URL of your existing Sigma dbt integration. Use `cloud.getdbt.com` as your access URL.
+- Your dbt environment ID.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-add-info.png" width="50%" title="Click the '+ New project' button on the top right"/>
+
+9. Return to the Sigma home page. Create a new workbook.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-make-workbook.png" width="50%" title="Click the '+ New project' button on the top right"/>
+
+10. Click on **Table**, then click on **SQL**. Select Snowflake `PC_SIGMA_WH` as your data connection.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-make-table.png" width="50%" title="Click the '+ New project' button on the top right"/>
+
+11. Query away! Try this one, for example:
+
+```sql
+select * from
+  {{ semantic_layer.query (
+    metrics = ['order_total', 'order_count', large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
+    group_by = 
+    [Dimension('metric_time').grain('day) ]
+) }}
+```
 
 ## What's next
 
