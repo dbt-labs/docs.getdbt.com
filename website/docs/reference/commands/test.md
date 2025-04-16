@@ -11,22 +11,22 @@ The tests to run can be selected using the `--select` flag discussed [here](/ref
 
 ```bash
 # run tests for one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model"
+dbt test --select "one_specific_model"
 
 # run tests for all models in package
-<Constant name="dbt" /> test --select "some_package.*"
+dbt test --select "some_package.*"
 
 # run only tests defined singularly
-<Constant name="dbt" /> test --select "test_type:singular"
+dbt test --select "test_type:singular"
 
 # run only tests defined generically
-<Constant name="dbt" /> test --select "test_type:generic"
+dbt test --select "test_type:generic"
 
 # run singular tests limited to one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model,test_type:singular"
+dbt test --select "one_specific_model,test_type:singular"
 
 # run generic tests limited to one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model,test_type:generic"
+dbt test --select "one_specific_model,test_type:generic"
 ```
 
 For more information on writing tests, see the [Testing Documentation](/docs/build/data-tests).
@@ -41,31 +41,31 @@ The tests to run can be selected using the `--select` flag discussed [here](/ref
 
 ```bash
 # run data and unit tests
-<Constant name="dbt" /> test
+dbt test
 
 # run only data tests
-<Constant name="dbt" /> test --select test_type:data
+dbt test --select test_type:data
 
 # run only unit tests
-<Constant name="dbt" /> test --select test_type:unit
+dbt test --select test_type:unit
 
 # run tests for one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model"
+dbt test --select "one_specific_model"
 
 # run tests for all models in package
-<Constant name="dbt" /> test --select "some_package.*"
+dbt test --select "some_package.*"
 
 # run only data tests defined singularly
-<Constant name="dbt" /> test --select "test_type:singular"
+dbt test --select "test_type:singular"
 
 # run only data tests defined generically
-<Constant name="dbt" /> test --select "test_type:generic"
+dbt test --select "test_type:generic"
 
 # run data tests limited to one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model,test_type:data"
+dbt test --select "one_specific_model,test_type:data"
 
 # run unit tests limited to one_specific_model
-<Constant name="dbt" /> test --select "one_specific_model,test_type:unit"
+dbt test --select "one_specific_model,test_type:unit"
 ```
 
 For more information on writing tests, read the [data testing](/docs/build/data-tests) and [unit testing](/docs/build/unit-tests) documentation.

@@ -237,9 +237,9 @@ selectors:
 If I run an "unqualified" command, dbt will use the selection criteria defined in `root_project_only`—that is, dbt will only build / freshness check / generate compiled SQL for resources defined in my root project.
 
 ```
-<Constant name="dbt" /> build
-<Constant name="dbt" /> source freshness
-<Constant name="dbt" /> docs generate
+dbt build
+dbt source freshness
+dbt docs generate
 ```
 
 If I run a command that defines its own selection criteria (via `--select`, `--exclude`, or `--selector`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.

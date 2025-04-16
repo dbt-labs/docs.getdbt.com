@@ -141,7 +141,7 @@ Compile and preview dbt models and `--inline` dbt-SQL queries on the CLI using:
 
 [Node selection methods](/reference/node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
 ```
-<Constant name="dbt" /> ls --select "tag:team_*"
+dbt ls --select "tag:team_*"
 ```
 
 And (!): a first-ever entry point for [programmatic invocations](/reference/programmatic-invocations), at parity with CLI commands.

@@ -102,7 +102,7 @@ An example of a webhook payload for a run that's started:
   "webhookName": "test",
   "data": {
     "jobId": "123",
-    "jobName": "Daily Job (<Constant name="dbt" /> build)",
+    "jobName": "Daily Job (dbt build)",
     "runId": "12345",
     "environmentId": "1234",
     "environmentName": "Production",
@@ -130,7 +130,7 @@ An example of a webhook payload for a completed run:
   "webhookName": "test",
   "data": {
     "jobId": "123",
-    "jobName": "Daily Job (<Constant name="dbt" /> build)",
+    "jobName": "Daily Job (dbt build)",
     "runId": "12345",
     "environmentId": "1234",
     "environmentName": "Production",

@@ -50,8 +50,8 @@ Starting from v1.8, when you execute the `dbt test` command, it will run both un
 
 ```shell
 
-<Constant name="dbt" /> test --select "test_type:unit"           # run all unit tests
-<Constant name="dbt" /> test --select "test_type:data"           # run all data tests
+dbt test --select "test_type:unit"           # run all unit tests
+dbt test --select "test_type:data"           # run all data tests
 
 ```
 

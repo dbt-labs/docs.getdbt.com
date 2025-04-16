@@ -174,7 +174,7 @@ These configs are applied hierarchically, so `freshness` and `loaded_at_field` v
 To obtain freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
 
 ```
-$ <Constant name="dbt" /> source freshness
+$ dbt source freshness
 ```
 
 Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/Runs/checking-logs).

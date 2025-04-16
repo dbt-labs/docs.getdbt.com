@@ -16,7 +16,7 @@ It is possible to use separate state for `state:modified` and `--defer`, by pass
 
 ```shell
 dbt run --select [...] --defer --state path/to/artifacts
-<Constant name="dbt" /> test --select [...] --defer --state path/to/artifacts
+dbt test --select [...] --defer --state path/to/artifacts
 ```
 
 By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
@@ -187,7 +187,7 @@ The `relationships` test requires both `model_a` and `model_b`. Because I did no
 <TabItem value="yes_defer">
 
 ```shell
-<Constant name="dbt" /> test --select "model_b" --defer --state prod-run-artifacts
+dbt test --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>

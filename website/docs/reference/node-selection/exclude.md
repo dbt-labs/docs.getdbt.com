@@ -14,8 +14,8 @@ Exclude a specific resource by its name or lineage:
 
 ```bash
 # test
-<Constant name="dbt" /> test --exclude "not_null_orders_order_id"   # test all models except the not_null_orders_order_id test
-<Constant name="dbt" /> test --exclude "orders"                     # test all models except tests associated with the orders model
+dbt test --exclude "not_null_orders_order_id"   # test all models except the not_null_orders_order_id test
+dbt test --exclude "orders"                     # test all models except tests associated with the orders model
 
 # seed
 <Constant name="dbt" /> seed --exclude "account_parent_mappings"    # load all seeds except account_parent_mappings

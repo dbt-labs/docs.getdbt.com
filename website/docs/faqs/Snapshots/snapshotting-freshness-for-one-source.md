@@ -11,13 +11,13 @@ Use the `--select` flag to snapshot freshness for specific sources. Eg:
 
 ```shell
 # Snapshot freshness for all Jaffle Shop tables:
-$ <Constant name="dbt" /> source freshness --select source:jaffle_shop
+$ dbt source freshness --select source:jaffle_shop
 
 # Snapshot freshness for a particular source <Term id="table" />:
-$ <Constant name="dbt" /> source freshness --select source:jaffle_shop.orders
+$ dbt source freshness --select source:jaffle_shop.orders
 
 # Snapshot freshness for multiple particular source tables:
-$ <Constant name="dbt" /> source freshness --select source:jaffle_shop.orders source:jaffle_shop.customers
+$ dbt source freshness --select source:jaffle_shop.orders source:jaffle_shop.customers
 ```
 
 See the [`source freshness` command reference](/reference/commands/source) for more information.

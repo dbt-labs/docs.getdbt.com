@@ -8,7 +8,7 @@ id: "clean"
 
 ## Example usage
 ```
-<Constant name="dbt" /> clean
+dbt clean
 ```
 
 ## Supported flags

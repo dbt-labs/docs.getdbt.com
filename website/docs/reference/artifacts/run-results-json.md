@@ -131,7 +131,7 @@ models:
 Run the built-in `unique` test and store the failures as a table:
 
 ```shell
-<Constant name="dbt" /> test -s my_model
+dbt test -s my_model
 ```
 
 Here's a printed snippet from the `run_results.json`:

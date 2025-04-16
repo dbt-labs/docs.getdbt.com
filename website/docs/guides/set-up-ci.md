@@ -99,8 +99,8 @@ Because these tests should only run after the rest of your project has been buil
 Update your steps to:
 
 ```bash
-<Constant name="dbt" /> build --select state:modified+ --exclude package:dbt_project_evaluator
-<Constant name="dbt" /> build --select package:dbt_project_evaluator
+dbt build --select state:modified+ --exclude package:dbt_project_evaluator
+dbt build --select package:dbt_project_evaluator
 ```
 
 ### 4. Apply any customizations

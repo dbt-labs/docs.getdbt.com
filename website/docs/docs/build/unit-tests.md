@@ -158,7 +158,7 @@ Now you’re ready to run this unit test. You have a couple of options for comma
 
 ```shell
 
-<Constant name="dbt" /> test --select test_is_valid_email_address
+dbt test --select test_is_valid_email_address
 16:03:49  Running with <Constant name="dbt" />=1.8.0-a1
 16:03:49  Registered adapter: postgres=1.8.0-a1
 16:03:50  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test
@@ -196,7 +196,7 @@ Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'`
 
 ```shell
 
-<Constant name="dbt" /> test --select test_is_valid_email_address
+dbt test --select test_is_valid_email_address
 16:09:11  Running with <Constant name="dbt" />=1.8.0-a1
 16:09:12  Registered adapter: postgres=1.8.0-a1
 16:09:12  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test

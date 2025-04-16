@@ -32,7 +32,7 @@ As long as you're adding or changing tests at the same time that you're adding o
 
 ```shell
 dbt run -s "state:modified"
-<Constant name="dbt" /> test -s "state:modified"
+dbt test -s "state:modified"
 ```
 
 This can get complicated, however. If you add a new test without modifying its underlying model, or add a test that selects from a new model and an old unmodified one, you may need to test a model without having first run it.
@@ -43,7 +43,7 @@ If you're a frequent user of `relationships` tests or data tests, or frequently 
 
 ```shell
 dbt run -s "state:modified"
-<Constant name="dbt" /> test -s "state:modified" --exclude "test_name:relationships"
+dbt test -s "state:modified" --exclude "test_name:relationships"
 ```
 ### Overwrites the `manifest.json`
 

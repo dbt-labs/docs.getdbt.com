@@ -147,7 +147,7 @@ Here's what a successful output will look like:
 
 ```jinja
 
-(venv) ➜  jaffle_shop_duckdb git:(duckdb) <Constant name="dbt" /> build
+(venv) ➜  jaffle_shop_duckdb git:(duckdb) dbt build
 15:10:12  Running with <Constant name="dbt" />=1.8.1
 15:10:13  Registered adapter: duckdb=1.8.1
 15:10:13  Found 5 models, 3 seeds, 20 data tests, 416 macros
@@ -215,7 +215,7 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 1. At the terminal's prompt, you can execute any <Constant name="dbt" /> command you want. For example:
 
     ```shell
-    /workspaces/test (main) $ <Constant name="dbt" /> build
+    /workspaces/test (main) $ dbt build
     ```
 
     You can also use the [duckcli](https://duckdb.org/docs/api/cli/overview.html) to write SQL against the warehouse from the command line or build reports in the [Evidence](https://evidence.dev/) project provided in the `reports` directory.

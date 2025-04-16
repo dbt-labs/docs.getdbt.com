@@ -118,7 +118,7 @@ which models are modified and build them on top of of their unmodified parents.
 
 ```bash
 dbt -s state:modified+ --defer --state path/to/prod/artifacts
-<Constant name="dbt" /> test -s state:modified+ --defer --state path/to/prod/artifacts
+dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
 By comparing to artifacts from a previous production run, <Constant name="dbt" /> can determine model and test result statuses.

@@ -72,8 +72,8 @@ After issuing the `dbt source freshness` command, you can reference the source f
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-<Constant name="dbt" /> source freshness # must be run again to compare current to previous state
-<Constant name="dbt" /> build --select "source_status:fresher+" --state path/to/prod/artifacts
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
 

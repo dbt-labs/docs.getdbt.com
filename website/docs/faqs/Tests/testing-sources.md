@@ -9,7 +9,7 @@ id: testing-sources
 To run tests on all sources, use the following command:
 
 ```shell
-  <Constant name="dbt" /> test --select "source:*"
+  dbt test --select "source:*"
 ```
 
 (You can also use the `-s` shorthand here instead of `--select`)
@@ -17,12 +17,12 @@ To run tests on all sources, use the following command:
 To run tests on one source (and all of its tables):
 
 ```shell
-$ <Constant name="dbt" /> test --select source:jaffle_shop
+$ dbt test --select source:jaffle_shop
 ```
 
 And, to run tests on one source <Term id="table" /> only:
 
 ```shell
-$ <Constant name="dbt" /> test --select source:jaffle_shop.orders
+$ dbt test --select source:jaffle_shop.orders
 ```
 

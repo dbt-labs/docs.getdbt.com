@@ -323,7 +323,7 @@ Run resources with multiple tags using the following commands:
 
 ```shell
 # Run all resources tagged "order_metrics" and "hourly"
-  <Constant name="dbt" /> build --select tag:order_metrics tag:hourly
+  dbt build --select tag:order_metrics tag:hourly
 ```
 
 ## Usage notes
@@ -375,8 +375,8 @@ sources:
 
 In the example above, the `unique` test would be selected by any of these four tags:
 ```bash
-<Constant name="dbt" /> test --select tag:top_level
-<Constant name="dbt" /> test --select tag:table_level
-<Constant name="dbt" /> test --select tag:column_level
-<Constant name="dbt" /> test --select tag:test_level
+dbt test --select tag:top_level
+dbt test --select tag:table_level
+dbt test --select tag:column_level
+dbt test --select tag:test_level
 ```

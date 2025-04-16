@@ -18,7 +18,7 @@ The command is responsible for generating your project's documentation website b
 **Example**:
 
 ```
-<Constant name="dbt" /> docs generate
+dbt docs generate
 ```
 
 Use the `--select` argument to limit the nodes included within `catalog.json`. When this flag is provided, step (3) will be restricted to the selected nodes. All other nodes will be excluded. Step (2) is unaffected.
@@ -26,7 +26,7 @@ Use the `--select` argument to limit the nodes included within `catalog.json`. W
 **Example**:
 
 ```shell
-<Constant name="dbt" /> docs generate --select +orders
+dbt docs generate --select +orders
 ```
 
 Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above.
@@ -34,7 +34,7 @@ Use the `--no-compile` argument to skip re-compilation. When this flag is provid
 **Example**:
 
 ```
-<Constant name="dbt" /> docs generate --no-compile
+dbt docs generate --no-compile
 ```
 
 Use the `--empty-catalog` argument to skip running the database queries to populate `catalog.json`. When this flag is provided, `dbt docs generate` will skip step (3) described above.
@@ -44,7 +44,7 @@ This is not recommended for production environments, as it means that your docum
 **Example**:
 
 ```
-<Constant name="dbt" /> docs generate --empty-catalog
+dbt docs generate --empty-catalog
 ```
 
 **Example**:
@@ -52,7 +52,7 @@ This is not recommended for production environments, as it means that your docum
 Use the `--static` flag to generate the docs as a static page for hosting on a cloud storage provider. The `catalog.json` and `manifest.json` files will be inserted into the `index.html` file, creating a single page easily shared via email or file-sharing apps. 
 
 ```
-<Constant name="dbt" /> docs generate --static
+dbt docs generate --static
 ```
 
 ### dbt docs serve
@@ -65,7 +65,7 @@ Use the `dbt docs serve` command if you're developing locally with the [<Constan
 
 <VersionBlock lastVersion="1.8.1">
 ```
-<Constant name="dbt" /> docs serve [--profiles-dir PROFILES_DIR]
+dbt docs serve [--profiles-dir PROFILES_DIR]
                [--profile PROFILE] [--target TARGET]
                [--port PORT]
                [--no-browser]
@@ -73,7 +73,7 @@ Use the `dbt docs serve` command if you're developing locally with the [<Constan
 </VersionBlock>
 <VersionBlock firstVersion="1.8.2">
 ```
-<Constant name="dbt" /> docs serve [--profiles-dir PROFILES_DIR]
+dbt docs serve [--profiles-dir PROFILES_DIR]
                [--profile PROFILE] [--target TARGET]
                [--host HOST]
                [--port PORT]
@@ -86,7 +86,7 @@ You may specify a different port using the `--port` flag.
 **Example**:
 
 ```
-<Constant name="dbt" /> docs serve --port 8001
+dbt docs serve --port 8001
 ```
 
 <VersionBlock firstVersion="1.8.2">
@@ -96,7 +96,7 @@ You may specify a different host using the `--host` flag.
 **Example**:
 
 ```shell
-<Constant name="dbt" /> docs serve --host ""
+dbt docs serve --host ""
 ```
 
 As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the default host was `""`.

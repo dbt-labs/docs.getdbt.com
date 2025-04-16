@@ -1840,7 +1840,7 @@ Let’s add a custom test that asserts that the moving average of the lap time o
     Execute the following in the command bar:
 
     ```bash
-    <Constant name="dbt" /> test --select fastest_pit_stops_by_constructor lap_times_moving_avg
+    dbt test --select fastest_pit_stops_by_constructor lap_times_moving_avg
     ```
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/5-running-tests-on-python-models.png" title="running tests on our python models"/>
@@ -1863,7 +1863,7 @@ To start, let’s look back at our `intermediate.md` file. We can see that we pr
 1. To see all these pieces come together, execute this in the command bar:
 
   ```bash
-  <Constant name="dbt" /> docs generate
+  dbt docs generate
   ```
 
   This will generate the documentation for your project. Click the book button, as shown in the screenshot below to access the docs.

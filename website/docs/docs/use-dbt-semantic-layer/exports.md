@@ -205,7 +205,7 @@ When you run a build job, any saved queries downstream of the <Constant name="db
    - This enables you to run any export that needs to be refreshed after a model is built.
    - Use the [selector syntax](/reference/node-selection/syntax) `--select` or `-s` option in your build command to specify a particular dbt model or saved query to run. For example, to run all saved queries downstream of the `orders` semantic model, use the following command:
     ```bash
-      <Constant name="dbt" /> build --select orders+
+      dbt build --select orders+
       ```
 
 </VersionBlock>
@@ -216,7 +216,7 @@ When you run a build job, any saved queries downstream of the <Constant name="db
    - This enables you to run any export that needs to be refreshed after a model is built.
    - Use the [selector syntax](/reference/node-selection/syntax) `--select` or `-s` option in your build command to specify a particular dbt model or saved query to run. For example, to run all saved queries downstream of the `orders` semantic model, use the following command:
     ```bash
-      <Constant name="dbt" /> build --select orders+
+      dbt build --select orders+
       ```
 
 </VersionBlock>

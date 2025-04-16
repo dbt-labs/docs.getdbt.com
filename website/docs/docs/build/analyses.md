@@ -45,7 +45,7 @@ order by account_id, id
 
 To compile this analysis into runnable sql, run:
 ```
-<Constant name="dbt" /> compile
+dbt compile
 ```
 
 Then, look for the compiled SQL file in `target/compiled/{project name}/analyses/running_total_by_account.sql`. This sql can then be pasted into a data visualization tool, for instance. Note that no `running_total_by_account` relation will be materialized in the database as this is an `analysis`, not a `model`.

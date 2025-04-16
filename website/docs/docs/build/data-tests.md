@@ -180,7 +180,7 @@ models:
 2. Run the [`dbt test` command](/reference/commands/test):
 
 ```
-$ <Constant name="dbt" /> test
+$ dbt test
 
 Found 3 models, 2 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 0 sources
 

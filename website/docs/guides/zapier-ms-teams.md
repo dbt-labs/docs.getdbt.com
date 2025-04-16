@@ -98,7 +98,7 @@ full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
 
 # Steps derived from these commands won't have their error details shown inline, as they're messy
-commands_to_skip_logs = ['<Constant name="dbt" /> source', '<Constant name="dbt" /> docs']
+commands_to_skip_logs = ['dbt source', 'dbt docs']
 
 # When testing, you will want to hardcode run_id and account_id to IDs that exist; the sample webhook won't work. 
 run_id = hook_data['runId']

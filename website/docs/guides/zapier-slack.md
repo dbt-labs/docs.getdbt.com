@@ -93,7 +93,7 @@ full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
 
 # Steps derived from these commands won't have their error details shown inline, as they're messy
-commands_to_skip_logs = ['<Constant name="dbt" /> source', '<Constant name="dbt" /> docs']
+commands_to_skip_logs = ['dbt source', 'dbt docs']
 
 # When testing, you will want to hardcode run_id and account_id to IDs that exist; the sample webhook won't work. 
 run_id = hook_data['runId']
@@ -257,7 +257,7 @@ secret_store = StoreClient('YOUR_SECRET_HERE')
 api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 
 # Steps derived from these commands won't have their error details shown inline, as they're messy
-commands_to_skip_logs = ['<Constant name="dbt" /> source', '<Constant name="dbt" /> docs']
+commands_to_skip_logs = ['dbt source', 'dbt docs']
 run_id = input_data['run_id']
 account_id = input_data['account_id']
 url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'

@@ -24,8 +24,8 @@ Many of the methods below support Unix-style wildcards:
 
 For example:
 ```
-<Constant name="dbt" /> list --select "*.folder_name.*"
-<Constant name="dbt" /> list --select "package:*_source"
+dbt list --select "*.folder_name.*"
+dbt list --select "package:*_source"
 ```
 
 ### access
@@ -33,9 +33,9 @@ For example:
 The `access` method selects models based on their [access](/reference/resource-configs/access) property.
 
 ```bash
-<Constant name="dbt" /> list --select "access:public"      # list all public models
-<Constant name="dbt" /> list --select "access:private"       # list all private models
-<Constant name="dbt" /> list --select "access:protected"       # list all protected models
+dbt list --select "access:public"      # list all public models
+dbt list --select "access:private"       # list all private models
+dbt list --select "access:protected"       # list all protected models
 ```
 
 ### config
@@ -83,7 +83,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
 
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
-<Constant name="dbt" /> test --select "+exposure:*"                         # test all resources upstream of all exposures
+dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
 <Constant name="dbt" /> ls --select "+exposure:*" --resource-type source    # list all source tables upstream of all exposures
 ```
 
@@ -125,7 +125,7 @@ dbt run --select "group:finance" # run all models that belong to the finance gro
 The `metric` method is used to select parent resources of a specified [metric](/docs/build/build-metrics-intro). Use in conjunction with the `+` operator.
 
 ```bash
-<Constant name="dbt" /> build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric
+dbt build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric
 <Constant name="dbt" /> ls    --select "+metric:*" --resource-type source  # list all source tables upstream of all metrics
 ```
 
@@ -168,9 +168,9 @@ selectors unambiguous.
 Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
 
   ```bash
-<Constant name="dbt" /> build --select "resource_type:exposure"    # build all resources upstream of exposures
-<Constant name="dbt" /> list --select "resource_type:test"         # list all tests in your project
-<Constant name="dbt" /> list --select "resource_type:source"       # list all sources in your project
+dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
+dbt list --select "resource_type:test"         # list all tests in your project
+dbt list --select "resource_type:source"       # list all sources in your project
 ```
 
 ### result
@@ -179,8 +179,8 @@ The `result` method is related to the `state` method described above and can be 
 
 ```bash
 dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
-<Constant name="dbt" /> test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of <Constant name="dbt" /> test
-<Constant name="dbt" /> build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of <Constant name="dbt" /> build
+dbt test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
+dbt build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
 <Constant name="dbt" /> seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of <Constant name="dbt" /> seed.
 ```
 
@@ -189,8 +189,8 @@ dbt run --select "result:error" --state path/to/artifacts # run all models that 
 The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 
 ```bash
-<Constant name="dbt" /> list --select "saved_query:*"                    # list all saved queries 
-<Constant name="dbt" /> list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
+dbt listry:*"                    # list all saved queries 
+dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 
 ### semantic_model
@@ -198,8 +198,8 @@ The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
 ```bash
-<Constant name="dbt" /> list --select "semantic_model:*"        # list all semantic models 
-<Constant name="dbt" /> list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
+dbt list --select "semantic_model:*"        # list all semantic models 
+dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
 ```
 
 ### source
@@ -222,8 +222,8 @@ After issuing one of the above commands, you can reference the source freshness 
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-<Constant name="dbt" /> source freshness # must be run again to compare current to previous state
-<Constant name="dbt" /> build --select "source_status:fresher+" --state path/to/prod/artifacts
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
 ### state
@@ -237,7 +237,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
   ```bash
-<Constant name="dbt" /> test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
+dbt test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
 dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
 <Constant name="dbt" /> ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
@@ -324,8 +324,8 @@ dbt test --select "test_name:range_min_max"     # run all instances of a custom 
 The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
 ```bash
-<Constant name="dbt" /> test --select "test_type:generic"        # run all generic tests
-<Constant name="dbt" /> test --select "test_type:singular"       # run all singular tests
+dbt test --select "test_type:generic"        # run all generic tests
+dbt test --select "test_type:singular"       # run all singular tests
 ```
 
 </VersionBlock>
@@ -341,10 +341,10 @@ The `test_type` method is used to select tests based on their type:
 
 
 ```bash
-<Constant name="dbt" /> test --select "test_type:unit"           # run all unit tests
-<Constant name="dbt" /> test --select "test_type:data"           # run all data tests
-<Constant name="dbt" /> test --select "test_type:generic"        # run all generic data tests
-<Constant name="dbt" /> test --select "test_type:singular"       # run all singular data tests
+dbt test --select "test_type:unit"           # run all unit tests
+dbt test --select "test_type:data"           # run all data tests
+dbt test --select "test_type:generic"        # run all generic data tests
+dbt test --select "test_type:singular"       # run all singular data tests
 ```
 
 </VersionBlock>
@@ -359,8 +359,8 @@ Supported in v1.8 or newer.
 The `unit_test` method selects [unit tests](/docs/build/unit-tests).
 
 ```bash
-<Constant name="dbt" /> list --select "unit_test:*"                        # list all unit tests 
-<Constant name="dbt" /> list --select "+unit_test:orders_with_zero_items"  # list your unit test named "orders_with_zero_items" and all upstream resources
+dbt list --select "unit_test:*"                        # list all unit tests 
+dbt list --select "+unit_test:orders_with_zero_items"  # list your unit test named "orders_with_zero_items" and all upstream resources
 ```
 
 </VersionBlock>
@@ -370,9 +370,9 @@ The `unit_test` method selects [unit tests](/docs/build/unit-tests).
 The `version` method selects [versioned models](/docs/collaborate/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
 
 ```bash
-<Constant name="dbt" /> list --select "version:latest"      # only 'latest' versions
-<Constant name="dbt" /> list --select "version:prerelease"  # versions newer than the 'latest' version
-<Constant name="dbt" /> list --select "version:old"         # versions older than the 'latest' version
+dbt list --select "version:latest"      # only 'latest' versions
+dbt list --select "version:prerelease"  # versions newer than the 'latest' version
+dbt list --select "version:old"         # versions older than the 'latest' version
 
-<Constant name="dbt" /> list --select "version:none"        # models that are *not* versioned
+dbt list --select "version:none"        # models that are *not* versioned
 ```

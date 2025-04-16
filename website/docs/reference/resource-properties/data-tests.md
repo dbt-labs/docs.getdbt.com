@@ -340,7 +340,7 @@ models:
 </File>
 
 ```sh
-$ <Constant name="dbt" /> test --select unexpected_order_status_today
+$ dbt test --select unexpected_order_status_today
 12:43:41  Running with <Constant name="dbt" />=1.1.0
 12:43:41  Found 1 model, 1 test, 0 snapshots, 0 analyses, 167 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics
 12:43:41
@@ -422,7 +422,7 @@ models:
 </File>
 
 ```sh
-$ <Constant name="dbt" /> test
+$ dbt test
 12:48:03  Running with <Constant name="dbt" />=1.1.0-b1
 12:48:04  Found 1 model, 2 tests, 0 snapshots, 0 analyses, 167 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics
 12:48:04

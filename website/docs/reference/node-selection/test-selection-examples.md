@@ -21,14 +21,14 @@ Run generic tests only:
 
 
   ```bash
-    <Constant name="dbt" /> test --select "test_type:generic"
+    dbt test --select "test_type:generic"
   ```
 
 Run singular tests only:
 
 
   ```bash
-    <Constant name="dbt" /> test --select "test_type:singular"
+    dbt test --select "test_type:singular"
   ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
@@ -76,8 +76,8 @@ In this example, <Constant name="dbt" /> executes tests that reference "orders" 
 
 
 ```shell
-<Constant name="dbt" /> test --select "orders" --indirect-selection=buildable
-<Constant name="dbt" /> build --select "orders" --indirect-selection=buildable
+dbt test --select "orders" --indirect-selection=buildable
+dbt build --select "orders" --indirect-selection=buildable
 ```
 
 </TabItem>
@@ -87,8 +87,8 @@ In this example, <Constant name="dbt" /> executes tests that reference "orders" 
 In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
 
 ```shell
-<Constant name="dbt" /> test --select "orders" --indirect-selection=cautious
-<Constant name="dbt" /> build --select "orders" --indirect-selection=cautious
+dbt test --select "orders" --indirect-selection=cautious
+dbt build --select "orders" --indirect-selection=cautious
 
 ```
 
@@ -100,8 +100,8 @@ This mode does not execute any tests, whether they are directly attached to the 
 
 ```shell
 
-<Constant name="dbt" /> test --select "orders" --indirect-selection=empty
-<Constant name="dbt" /> build --select "orders" --indirect-selection=empty
+dbt test --select "orders" --indirect-selection=empty
+dbt build --select "orders" --indirect-selection=empty
 
 ```
 
@@ -120,25 +120,25 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```bash
   # Run tests on a model (indirect selection)
-  <Constant name="dbt" /> test --select "customers"
+  dbt test --select "customers"
   
   # Run tests on two or more specific models (indirect selection)
-  <Constant name="dbt" /> test --select "customers orders"
+  dbt test --select "customers orders"
 
   # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
-  <Constant name="dbt" /> test --select "staging.jaffle_shop"
+  dbt test --select "staging.jaffle_shop"
 
   # Run tests downstream of a model (note this will select those tests directly!)
-  <Constant name="dbt" /> test --select "stg_customers+"
+  dbt test --select "stg_customers+"
 
   # Run tests upstream of a model (indirect selection)
-  <Constant name="dbt" /> test --select "+stg_customers"
+  dbt test --select "+stg_customers"
 
   # Run tests on all models with a particular tag (direct + indirect)
-  <Constant name="dbt" /> test --select "tag:my_model_tag"
+  dbt test --select "tag:my_model_tag"
 
   # Run tests on all models with a particular materialization (indirect selection)
-  <Constant name="dbt" /> test --select "config.materialized:table"
+  dbt test --select "config.materialized:table"
 
   ```
 
@@ -148,19 +148,19 @@ The following examples should feel somewhat familiar if you're used to executing
   ```bash
   # tests on all sources
 
-  <Constant name="dbt" /> test --select "source:*"
+  dbt test --select "source:*"
 
   # tests on one source
-  <Constant name="dbt" /> test --select "source:jaffle_shop"
+  dbt test --select "source:jaffle_shop"
   
   # tests on two or more specific sources
-   <Constant name="dbt" /> test --select "source:jaffle_shop source:raffle_bakery"
+   dbt test --select "source:jaffle_shop source:raffle_bakery"
 
   # tests on one source table
-  <Constant name="dbt" /> test --select "source:jaffle_shop.customers"
+  dbt test --select "source:jaffle_shop.customers"
 
   # tests on everything _except_ sources
-  <Constant name="dbt" /> test --exclude "source:*"
+  dbt test --exclude "source:*"
   ```
 
  ### More complex selection
@@ -170,8 +170,8 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
 
-  <Constant name="dbt" /> test --select "assert_total_payment_amount_is_positive" # directly select the test by name
-  <Constant name="dbt" /> test --select "payments,test_type:singular" # indirect selection, v1.2
+  dbt test --select "assert_total_payment_amount_is_positive" # directly select the test by name
+  dbt test --select "payments,test_type:singular" # indirect selection, v1.2
 
   ```
 
@@ -181,13 +181,13 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
   # Run tests on all models with a particular materialization
-  <Constant name="dbt" /> test --select "config.materialized:table"
+  dbt test --select "config.materialized:table"
 
   # Run tests on all seeds, which use the 'seed' materialization
-  <Constant name="dbt" /> test --select "config.materialized:seed"
+  dbt test --select "config.materialized:seed"
 
   # Run tests on all snapshots, which use the 'snapshot' materialization
-  <Constant name="dbt" /> test --select "config.materialized:snapshot"
+  dbt test --select "config.materialized:snapshot"
 
   ```
 
@@ -216,7 +216,7 @@ models:
 
 
   ```bash
-  <Constant name="dbt" /> test --select "tag:my_column_tag"
+  dbt test --select "tag:my_column_tag"
 
   ```
 
@@ -245,6 +245,6 @@ models:
 
 
   ```bash
-  <Constant name="dbt" /> test --select "tag:my_test_tag"
+  dbt test --select "tag:my_test_tag"
 
   ```

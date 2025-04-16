@@ -1384,7 +1384,7 @@ To be considered for the Trusted Adapter Program, the adapter must cover the ess
 Essential functionality includes (but is not limited to the following features):
 
 - table, view, and seed materializations
-- <Constant name="dbt" /> tests
+- dbt tests
 
 The adapter should have the required documentation for connecting and configuring the adapter. The <Constant name="dbt" /> docs site should be the single source of truth for this information. These docs should be kept up-to-date.
 
