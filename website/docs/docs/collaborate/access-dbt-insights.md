@@ -9,14 +9,14 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 # Access the dbt Insights interface <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to access the <Constant name="query_page" />, run queries, and view results.
+Learn how to access <Constant name="query_page" />, run queries, and view results.
 </IntroText>
 
 :::tip
 <Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager. 
 :::
 
-The <Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect the <Constant name="query_page" /> to:
+<Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect <Constant name="query_page" /> to:
 - Enable you to write SQL queries, with the option to open multiple tabs 
 - Have SQL + <Constant name="dbt" /> autocomplete suggestions and syntax highlighting
 - Bookmark SQL queries
@@ -30,8 +30,8 @@ The <Constant name="query_page" /> provides a rich console experience with edito
 
 Before accessing <Constant name="query_page" />, ensure that the [prerequisites](/docs/collaborate/dbt-insights#prerequisites) are met.
 
-1. To access the <Constant name="query_page" />, select the **Query** option in the navigation sidebar.
-2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, the <Constant name="query_page" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
+1. To access <Constant name="query_page" />, select the **Query** option in the navigation sidebar.
+2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, <Constant name="query_page" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
 3. Once your credentials are set up, you can write, run, and edit SQL queries in the <Constant name="query_page" /> editor for existing models in your project. 
 
 ## Run queries
