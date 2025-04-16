@@ -1,7 +1,7 @@
 ---
 title: "About the dbt Cloud IDE"
 id: develop-in-the-cloud
-description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
+description: "Develop, test, run, and build in the Cloud IDE. You can compile dbt code into SQL and run it against your database directly"
 sidebar_label: About the IDE
 tags: [IDE]
 pagination_next: "docs/cloud/dbt-cloud-ide/ide-user-interface"
@@ -127,7 +127,7 @@ Nice job, you're ready to start developing and building models 🎉!
 
 ## Build and document your projects
 
-- **Build, compile, and run projects** &mdash; You can *build*, *compile*, *run*, and *test* <Constant name="dbt" /> projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud <Constant name="cloud_ide" /> will update in real time when you run models, tests, seeds, and operations.
+- **Build, compile, and run projects** &mdash; You can *build*, *compile*, *run*, and *test* <Constant name="dbt" /> projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The <Constant name="cloud_ide" /> will update in real time when you run models, tests, seeds, and operations.
   - If a model or test fails, <Constant name="cloud" /> makes it easy for you to view and download the run logs for your <Constant name="dbt" /> invocations to fix the issue.
   - Use <Constant name="dbt" />'s [rich model selection syntax](/reference/node-selection/syntax) to [run <Constant name="dbt" /> commands](/reference/dbt-commands) directly within <Constant name="cloud" />.
   - Starting from <Constant name="dbt" /> v1.6, leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the <Constant name="git" /> branch name. For example, using the branch name as a prefix for a development schema.
@@ -164,6 +164,6 @@ You can develop dbt using the web-based IDE in <Constant name="cloud" /> or on t
 
 - <Constant name="cloud_cli" />: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The <Constant name="cloud_cli" /></a> allows you to run dbt commands against your dbt <Constant name="cloud" /> development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
 
-- <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
+- <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that's freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
 
 </DetailsToggle>

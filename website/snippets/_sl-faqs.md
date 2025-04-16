@@ -10,7 +10,7 @@ Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for mo
 
 <DetailsToggle alt_header="How can open-source users use the dbt Semantic Layer?">
 
-The dbt Semantic Layer requires the use of the dbt Cloud-provided service for coordinating query requests. Open source users who don’t use dbt Cloud can currently work around the lack of a service layer. They can do this by running `mf query --explain` in the command line. This command generates SQL code, which they can then use in their current systems for running and managing queries.
+The <Constant name="semantic_layer" /> requires the use of the <Constant name="cloud" />-provided service for coordinating query requests. Open source users who don't use <Constant name="cloud" /> can currently work around the lack of a service layer. They can do this by running `mf query --explain` in the command line. This command generates SQL code, which they can then use in their current systems for running and managing queries.
   
 As we refine MetricFlow’s API layers, some users may find it easier to set up their own custom service layers for managing query requests. This is not currently recommended, as the API boundaries around MetricFlow are not sufficiently well-defined for broad-based community use
 
