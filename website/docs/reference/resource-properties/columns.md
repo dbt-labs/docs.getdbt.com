@@ -307,7 +307,7 @@ Without `quote: true`, the following error will occur:
 
 ```
 $ dbt test -s source:stripe.*
-Running with <Constant name="dbt" />=0.16.1
+Running with dbt=0.16.1
 Found 7 models, 22 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 4 sources
 
 13:33:37 | Concurrency: 4 threads (target='learn')

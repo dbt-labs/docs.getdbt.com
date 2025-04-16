@@ -120,7 +120,7 @@ dremioSamples:
 
 ```shell
 
-17:24:16  Running with <Constant name="dbt" />=1.5.0
+17:24:16  Running with dbt=1.5.0
 17:24:17  Found 5 models, 0 tests, 0 snapshots, 0 analyses, 348 macros, 0 operations, 0 seed files, 2 sources, 0 exposures, 0 metrics, 0 groups
 17:24:17
 17:24:29  Concurrency: 1 threads (target='cloud_dev')

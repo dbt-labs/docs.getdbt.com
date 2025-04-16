@@ -66,7 +66,7 @@ prompts:
 
 ```
 $ <Constant name="dbt" /> init
-Running with <Constant name="dbt" />=1.0.0
+Running with dbt=1.0.0
 Setting up your profile.
 user (yourname@jaffleshop.com): summerintern@jaffleshop.com
 schema (usually dbt_<yourname>): dbt_summerintern

@@ -178,7 +178,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 ```
 $ <Constant name="dbt" /> snapshot
-Running with <Constant name="dbt" />=1.8.0
+Running with dbt=1.8.0
 
 15:07:36 | Concurrency: 8 threads (target='dev')
 15:07:36 |
@@ -296,7 +296,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
     ```
     $ <Constant name="dbt" /> snapshot
-    Running with <Constant name="dbt" />=1.9.0
+    Running with dbt=1.9.0
 
     15:07:36 | Concurrency: 8 threads (target='dev')
     15:07:36 |

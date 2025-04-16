@@ -45,7 +45,7 @@ _Note: If you're using the <Constant name="cloud_ide" /> to work on your project
 ### Not a dbt project
 
 ```
-Running with <Constant name="dbt" />=1.7.1
+Running with dbt=1.7.1
 Encountered an error:
 Runtime Error
   fatal: Not a <Constant name="dbt" /> project (or any of the parent directories). Missing dbt_project.yml file

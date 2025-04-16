@@ -60,7 +60,7 @@ Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a
 Example output for an `UpcomingReferenceDeprecation` warning:
 ```
 $ <Constant name="dbt" /> parse
-15:48:14  Running with <Constant name="dbt" />=1.6.0
+15:48:14  Running with dbt=1.6.0
 15:48:14  Registered adapter: postgres=1.6.0
 15:48:14  [WARNING]: While compiling 'my_model_ref': Found a reference to my_model, which is slated for deprecation on '2038-01-19T03:14:07-00:00'.
 ```

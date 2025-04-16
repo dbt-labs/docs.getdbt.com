@@ -148,7 +148,7 @@ Here's what a successful output will look like:
 ```jinja
 
 (venv) ➜  jaffle_shop_duckdb git:(duckdb) dbt build
-15:10:12  Running with <Constant name="dbt" />=1.8.1
+15:10:12  Running with dbt=1.8.1
 15:10:13  Registered adapter: duckdb=1.8.1
 15:10:13  Found 5 models, 3 seeds, 20 data tests, 416 macros
 15:10:13  

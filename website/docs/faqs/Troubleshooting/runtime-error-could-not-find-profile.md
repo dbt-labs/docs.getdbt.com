@@ -9,7 +9,7 @@ id: runtime-error-could-not-find-profile
 If you're unable to access the <Constant name="cloud_ide" /> due to the below error message, we'll do our best to get you unstuck with the below steps! 
 
 ```shell
-Running with <Constant name="dbt" />=1.9.0
+Running with dbt=1.9.0
 Encountered an error while reading the project:
   ERROR: Runtime Error
   Could not find profile named 'user'

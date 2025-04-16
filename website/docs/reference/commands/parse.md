@@ -17,7 +17,7 @@ As an option, you can tell dbt to check the entire project from scratch by using
 
 ```
 $ <Constant name="dbt" /> parse
-13:02:52  Running with <Constant name="dbt" />=1.5.0
+13:02:52  Running with dbt=1.5.0
 13:02:53  Performance info: target/perf_info.json
 ```
 

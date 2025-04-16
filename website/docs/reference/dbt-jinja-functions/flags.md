@@ -53,7 +53,7 @@ The `invocation_command` key within `invocation_args_dict` includes the entire s
 ```shell
 $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue <Constant name="dbt" /> compile -s my_model
 
-12:10:22  Running with <Constant name="dbt" />=1.6.0-b8
+12:10:22  Running with dbt=1.6.0-b8
 12:10:22  Registered adapter: postgres=1.6.0-b8
 12:10:22  Found 1 seed, 1 model, 349 macros
 12:10:22

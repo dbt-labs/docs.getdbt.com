@@ -32,7 +32,7 @@ These [features](#dbt-cloud-ide-features) create a powerful editing environment 
 
 :::tip Disable ad blockers
 
-To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+To improve your experience using <Constant name="cloud" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
 
 :::
 
@@ -55,7 +55,7 @@ To understand how to navigate the <Constant name="cloud_ide" /> and its user int
 | [** shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the <Constant name="cloud_ide" /> by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
 | **IDE version control** | The <Constant name="cloud_ide" /> version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the <Constant name="cloud_ide" />. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - Use the **Prune branches** [button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) (dbt v1.6 and higher) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.<br /> - Sign your [git commits](/docs/cloud/dbt-cloud-ide/git-commit-signing) to mark them as 'Verified'. <Lifecycle status="enterprise" /> |
 | **Preview and Compile button** | You can [compile or preview](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
-| [**dbt Copilot**](/docs/cloud/dbt-cloud-ide/develop-copilot) <Lifecycle status='beta' />| A powerful AI-powered assistant that can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. Available for dbt Cloud Enterprise plans. |
+| [**<Constant name="copilot" />**](/docs/cloud/dbt-cloud-ide/develop-copilot)| A powerful AI-powered assistant that can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. Available for <Constant name="cloud" /> Enterprise plans. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud <Constant name="cloud_ide" /> command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the <Constant name="cloud_ide" />. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [<Constant name="dbt" /> commands](/reference/dbt-commands) directly within <Constant name="cloud" />. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the <Constant name="cloud_ide" /> for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
@@ -114,7 +114,7 @@ Nice job, you're ready to start developing and building models 🎉!
 
   - #### Work retention
 
-    The Cloud <Constant name="cloud_ide" /> needs explicit action to save your changes. There are three ways your work is stored:
+    The <Constant name="cloud_ide" /> needs explicit action to save your changes. There are three ways your work is stored:
 
     - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 
@@ -133,7 +133,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - Starting from <Constant name="dbt" /> v1.6, leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the <Constant name="git" /> branch name. For example, using the branch name as a prefix for a development schema.
   - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
-- **Generate your YAML configurations with dbt Copilot** <Lifecycle status="enterprise"/>  &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in dbt Cloud. It can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="cloud_ide" />, so you can accomplish more in less time. Available for dbt Cloud Enterprise plans.
+- **Generate your YAML configurations with <Constant name="copilot" />** <Lifecycle status="enterprise"/>  &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in <Constant name="cloud" />. It can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="cloud_ide" />, so you can accomplish more in less time. Available for <Constant name="cloud" /> Enterprise plans.
 
 - **Build and view your project's docs** &mdash; The <Constant name="cloud_ide" /> makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs) documentation for your <Constant name="dbt" /> project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
@@ -148,13 +148,13 @@ Nice job, you're ready to start developing and building models 🎉!
 ## FAQs
 
 <DetailsToggle alt_header="Is there a cost to using the Cloud IDE?">
-Not at all! You can use dbt Cloud when you sign up for the <a href="https://www.getdbt.com/pricing/">Free Developer plan</a>, which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan.<br />
+Not at all! You can use <Constant name="cloud" /> when you sign up for the <a href="https://www.getdbt.com/pricing/">Free Developer plan</a>, which comes with one developer seat. If you'd like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan.<br />
 
 Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for more details.
 </DetailsToggle>
 
-<DetailsToggle alt_header="Can I be a contributor to dbt Cloud?">
-As a proprietary product, dbt Cloud's source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
+<DetailsToggle alt_header="Can I be a contributor to dbt Cloud">
+As a proprietary product, <Constant name="cloud" />'s source code isn't available for community contributions. If you want to build something in the <Constant name="dbt" /> ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a <Constant name="dbt" /> package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
 </DetailsToggle>
 
 <DetailsToggle alt_header="What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?">
@@ -162,7 +162,7 @@ You can develop dbt using the web-based IDE in <Constant name="cloud" /> or on t
 
 - <Constant name="cloud_ide" />: <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
 
-- <Constant name="cloud_cli" />: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The <Constant name="cloud_cli" /></a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
+- <Constant name="cloud_cli" />: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The <Constant name="cloud_cli" /></a> allows you to run dbt commands against your dbt <Constant name="cloud" /> development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
 
 - <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
 
