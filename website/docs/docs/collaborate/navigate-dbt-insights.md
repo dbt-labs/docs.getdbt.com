@@ -1,25 +1,25 @@
 ---
-title: "Navigate the Query page interface"
-description: "Learn how to navigate the Query page interface"
+title: "Navigate the dbt Insights interface"
+description: "Learn how to navigate the dbt Insights interface"
 sidebar_label: "Navigation interface"
-tags: [Query page]
-image: /img/docs/query-page/qp-results.jpg
+tags: [dbt Insights]
+image: /img/docs/dbt-insights/insights-results.jpg
 ---
 
-# Navigate the Query page interface <Lifecycle status="beta,enterprise" />
+# Navigate the dbt Insights interface <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to navigate the <Constant name="query_page" /> interface and use the main components.
+Learn how to navigate <Constant name="query_page" /> interface and use the main components.
 </IntroText>
 
 :::tip
 <Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
 :::
 
-The <Constant name="query_page" /> provides an interactive interface for writing, running, and analyzing SQL queries. This section highlights the main components of the <Constant name="query_page" />. 
+<Constant name="query_page" /> provides an interactive interface for writing, running, and analyzing SQL queries. This section highlights the main components of <Constant name="query_page" />. 
 
 ## Query console
-The query console is the main component of the <Constant name="query_page" />. It allows you to write, run, and analyze SQL queries. The Query console supports:
+The query console is the main component of <Constant name="query_page" />. It allows you to write, run, and analyze SQL queries. The Query console supports:
 - Query console editor, which allows you to write, run, and analyze SQL queries:
   - It supports syntax highlighting and autocomplete suggestions 
   - Hyperlink from SQL code `ref` to the corresponding Explorer page
@@ -29,7 +29,7 @@ The query console is the main component of the <Constant name="query_page" />. I
   - Has three tabs: **Results**, **Details**, and **Chart**, which allow you to analyze query execution and visualize results.
 - [Query console sidebar menu](#query-console-sidebar-menu), which contains the **<Constant name="explorer" />**, **Bookmark**, **Query history**, and **<Constant name="copilot" />** icons.
 
-<Lightbox src="/img/docs/query-page/qp-main.png" title="Query page main interface with blank query editor" />
+<Lightbox src="/img/docs/dbt-insights/insights-main.png" title="dbt Insights main interface with blank query editor" />
 
 ### Query console menu
 The Query console menu is located at the top right of the Query editor. It contains the **Bookmark** and **Run** buttons:
@@ -42,7 +42,7 @@ The Query console menu is located at the top right of the Query editor. It conta
 - ✨ Coming soon &mdash; Ability to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the Query console menu to develop your query and promote it to a reusable model.
 
 <!-- replace image when new UI changes are released. might use a gif here instead of jpg img  
-<Lightbox src="/img/docs/query-page/qp-ellipsis.jpg" title="Query page ellipsis button" />
+<Lightbox src="/img/docs/dbt-insights/insights-ellipsis.jpg" title="dbt Insights ellipsis button" />
 -->
 
 ## Query output panel
@@ -60,9 +60,9 @@ The Query output panel is below the query editor and displays the results of a q
 - **Ellipsis** (`...`) button &mdash; Allows you to export the results to CSV
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/query-page/qp-results.jpg" width="95%" title="Query page Results tab" />
-<Lightbox src="/img/docs/query-page/qp-details.jpg" width="95%" title="Query page Details tab" />
-<Lightbox src="/img/docs/query-page/qp-chart.jpg" width="95%" title="Query page Chart tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-results.jpg" width="95%" title="dbt Insights Results tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-details.jpg" width="95%" title="dbt Insights Details tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-chart.jpg" width="95%" title="dbt Insights Chart tab" />
 </DocCarousel>
 
 ## Query console sidebar menu
@@ -75,8 +75,8 @@ The Query console sidebar menu and icons contains the following options:
 - **<Constant name="copilot" /> icon** &mdash; Use [<Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts.
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/query-page/qp-explorer.png" width="90%" title="Query page dbt Explorer icon" />
-<Lightbox src="/img/docs/query-page/qp-ellipsis.gif" width="90%" title="Query page bookmark icon" />
-<Lightbox src="/img/docs/query-page/qp-query-history.png" width="90%" title="Query page Query history icon" />
-<Lightbox src="/img/docs/query-page/qp-copilot.gif" width="90%" title="Query page dbt Copilot" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights dbt Explorer icon" />
+<Lightbox src="/img/docs/dbt-insights/insights-ellipsis.gif" width="90%" title="dbt Insights bookmark icon" />
+<Lightbox src="/img/docs/dbt-insights/insights-query-history.png" width="90%" title="dbt Insights Query history icon" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="90%" title="dbt Insights dbt Copilot" />
 </DocCarousel>

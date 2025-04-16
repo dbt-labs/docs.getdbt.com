@@ -586,12 +586,12 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Analyze with Query page",
-          link: { type: "doc", id: "docs/collaborate/query-page" },
+          label: "Analyze with dbt Insights",
+          link: { type: "doc", id: "docs/collaborate/dbt-insights" },
           items: [
-            "docs/collaborate/query-page", // main query page doc
-            "docs/collaborate/access-query-page", // info on how to access and use query page
-            "docs/collaborate/navigate-query-page", // navigate query page doc
+            "docs/collaborate/dbt-insights", // main query page doc
+            "docs/collaborate/access-dbt-insights", // info on how to access and use query page
+            "docs/collaborate/navigate-dbt-insights", // navigate query page doc
           ],
         },
         {

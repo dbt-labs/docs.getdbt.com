@@ -15,9 +15,9 @@ hide_table_of_contents: true
     icon="dbt-bit"/>
 
 <Card
-    title="Analyze with Query page"
-    body="Learn how to query data and perform exploratory data analysis using the Query page."
-    link="/docs/collaborate/query-page"
+    title="Analyze with dbt Insights"
+    body="Learn how to query data and perform exploratory data analysis using dbt Insights."
+    link="/docs/collaborate/dbt-insights"
     icon="dbt-bit"/>
 
 <Card

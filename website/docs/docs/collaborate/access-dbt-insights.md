@@ -1,22 +1,22 @@
 ---
-title: "Access the Query page"
-description: "Learn how to access the Query page and run queries"
+title: "Access the dbt Insights interface"
+description: "Learn how to access the dbt Insights interface and run queries"
 sidebar_label: "Access and run queries"
-tags: [Query page]
-image: /img/docs/query-page/qp-chart.jpg
+tags: [dbt Insights]
+image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
-# Access the Query page interface <Lifecycle status="beta,enterprise" />
+# Access the dbt Insights interface <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to access the <Constant name="query_page" />, run queries, and view results.
+Learn how to access <Constant name="query_page" />, run queries, and view results.
 </IntroText>
 
 :::tip
 <Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager. 
 :::
 
-The <Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect the <Constant name="query_page" /> to:
+<Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect <Constant name="query_page" /> to:
 - Enable you to write SQL queries, with the option to open multiple tabs 
 - Have SQL + <Constant name="dbt" /> autocomplete suggestions and syntax highlighting
 - Bookmark SQL queries
@@ -26,17 +26,17 @@ The <Constant name="query_page" /> provides a rich console experience with edito
 - Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
 - Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
-## Access the Query page
+## Access the dbt Insights interface
 
-Before accessing the <Constant name="query_page" />, ensure that the [prerequisites](/docs/collaborate/query-page#prerequisites) are met.
+Before accessing <Constant name="query_page" />, ensure that the [prerequisites](/docs/collaborate/dbt-insights#prerequisites) are met.
 
-1. To access the <Constant name="query_page" />, select the **Query** option in the navigation sidebar.
-2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, the <Constant name="query_page" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
+1. To access <Constant name="query_page" />, select the **Query** option in the navigation sidebar.
+2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, <Constant name="query_page" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
 3. Once your credentials are set up, you can write, run, and edit SQL queries in the <Constant name="query_page" /> editor for existing models in your project. 
 
 ## Run queries
 
-To run queries in the <Constant name="query_page" />, you can use:
+To run queries in <Constant name="query_page" />, you can use:
 - Standard SQL  
 - Jinja ([`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source), [`is_incremental`](/docs/build/incremental-models#understand-the-is_incremental-macro))  
 - Links from SQL code `ref` to the corresponding Explorer page
@@ -46,7 +46,7 @@ To run queries in the <Constant name="query_page" />, you can use:
 
 ## Example
 
-Let's use an example to illustrate how to run queries in the <Constant name="query_page" />:
+Let's use an example to illustrate how to run queries in <Constant name="query_page" />:
 
 - A Jaffle shop wants to count unique orders and unique customers to understand whether they can expand their awesome Jaffle shop business to other parts of the world.
 - To express this logic in SQL, Kimiko (analyst assigned to this project) wants to understand yearly trends to help guide expansion decisions. She writes the following SQL query to calculate the number of unique customers, cities, and total order revenue: <br /><br />
@@ -86,7 +86,7 @@ To make things easier, Kimiko decides to use <Constant name="copilot" /> to save
 4. Kimiko then reviews the output and clicks **Replace** to use the <Constant name="copilot" />-generated SQL in her editor.
 5. Then, she clicks **Run** to preview the results.
 
-<Lightbox src="/img/docs/query-page/qp-copilot.gif" width="95%" title="Query page dbt Copilot" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="95%" title="dbt Insights with dbt Copilot" />
 
 From here, Kimiko can:
 - Continue building or modifying the query using <Constant name="copilot" />
@@ -97,7 +97,7 @@ From here, Kimiko can:
 - Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-query-page#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results
@@ -107,7 +107,7 @@ Using the same example, Kimiko can perform some exploratory data analysis by run
 - Viewing results in **Results** tab &mdash; View the paginated results of the query.
 - Sorting results &mdash; Click on the column header to sort the results by that column.
 - Exporting to CSV &mdash; On the top right of the table, click the three-dot ellipsis (`...`) button and select **Export to CSV** to export the dataset.
-<Lightbox src="/img/docs/query-page/qp-export-csv.jpg" width="95%" title="Query page Export to CSV" />
+<Lightbox src="/img/docs/dbt-insights/insights-export-csv.jpg" width="95%" title="dbt Insights Export to CSV" />
 
 ### View details
 Kimiko can also view the details of the query by clicking on the **Details** tab:
@@ -115,7 +115,7 @@ Kimiko can also view the details of the query by clicking on the **Details** tab
 - **Connection details** &mdash; Relevant data platform connection information.
 - **Query details** &mdash; Query duration, status, column count, row count.
 
-<Lightbox src="/img/docs/query-page/qp-details.jpg" width="95%" title="Query page Details tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-details.jpg" width="95%" title="dbt Insights Details tab" />
 
 ### Chart results
 
@@ -124,7 +124,7 @@ Kimiko can visualize the chart results of the query by clicking on the **Chart**
 - Choose from **line chart, bar chart, or scatterplot**.
 - Select the axis and columns to visualize using the **Chart settings** icon.
 
-<Lightbox src="/img/docs/query-page/qp-chart.jpg" width="95%" title="Query page Chart tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-chart.jpg" width="95%" title="dbt Insights Chart tab" />
 
 ### Query history
 
@@ -135,25 +135,25 @@ Kimiko can also view the history of queries and their statuses (like Success, Er
 
 The query history is stored indefinitely.
 
-<Lightbox src="/img/docs/query-page/qp-query-history.png" width="95%" title="Query page Query history icon" />
+<Lightbox src="/img/docs/dbt-insights/insights-query-history.png" width="95%" title="dbt Insights Query history icon" />
 
 ### Use dbt Explorer
 
-Kimiko accesses [<Constant name="explorer" />](/docs/collaborate/explore-projects) directly in the <Constant name="query_page" /> to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
+Kimiko accesses [<Constant name="explorer" />](/docs/collaborate/explore-projects) directly in <Constant name="query_page" /> to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
 
 This integrated view allows her and other users to maintain their query workflow, while getting more context on models, semantic models, metrics, macros, and more. The integrated <Constant name="explorer" /> view comes with:
 - Same search capabilities as <Constant name="explorer" />
 - Allows users to narrow down displayed objects by type
 - Hyperlink from SQL code `ref` to the corresponding Explorer page
 
-To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-query-page#query-console-sidebar-menu).
+To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/collaborate/navigate-dbt-insights#query-console-sidebar-menu).
 
-<Lightbox src="/img/docs/query-page/qp-explorer.png" width="90%" title="Query page integrated with dbt Explorer" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
 
 ## Considerations 
 - You can save and bookmark frequently used queries for yourself.
 - Coming soon: Sharing those queries with others.
-- The <Constant name="query_page" /> uses your development credentials to query. You have the ability to query against any object in any environment.
+- <Constant name="query_page" /> uses your development credentials to query. You have the ability to query against any object in any environment.
 - Every Jinja function uses [`defer --favor-state`](/reference/node-selection/defer) to resolve Jinja.
 - Coming soon: The ability to select the environment you use to resolve your `refs`.
 
@@ -162,5 +162,5 @@ To access <Constant name="explorer" />, click on the **<Constant name="explorer"
 ## FAQs
 - What’s the difference between <Constant name="query_page" /> and <Constant name="explorer" />?
   - That’s a great question! <Constant name="explorer" /> helps you understand your <Constant name="dbt" /> project's structure, resources, lineage, and metrics, offering context for your data.
-  - The <Constant name="query_page" /> builds on that context, allowing you to write, run, and iterate on SQL queries directly in <Constant name="cloud" />. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
+  - <Constant name="query_page" /> builds on that context, allowing you to write, run, and iterate on SQL queries directly in <Constant name="cloud" />. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
   - <Constant name="explorer" /> provides the context, while <Constant name="query_page" /> enables action.

@@ -37,10 +37,10 @@ Access <Constant name="explorer" /> directly from the **modeling timing tab**, w
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.jpg" title="Access dbt Explorer from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
 
-### Query page <Lifecycle status="beta,enterprise" />
+### dbt Insights <Lifecycle status="beta,enterprise" />
 
-Access <Constant name="explorer" /> directly from the [<Constant name="query_page" />](/docs/collaborate/access-query-page) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
+Access <Constant name="explorer" /> directly from [<Constant name="query_page" />](/docs/collaborate/access-dbt-insights) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
 
-To access <Constant name="explorer" /> from the <Constant name="query_page" />, click on the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
+To access <Constant name="explorer" /> from <Constant name="query_page" />, click on the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
 
-<Lightbox src="/img/docs/query-page/qp-explorer.png" width="90%" title="Query page integrated with dbt Explorer" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
