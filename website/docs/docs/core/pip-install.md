@@ -117,7 +117,7 @@ Once you decide [which adapter](/docs/supported-data-platforms) you're using, yo
 <VersionBlock firstVersion="1.8">
 
 ```shell
-python -m pip install <Constant name="core" /> <Constant name="dbt" />-ADAPTER_NAME
+python -m pip install dbt-core dbt-ADAPTER_NAME
 ```
 
 </VersionBlock>
@@ -125,7 +125,7 @@ python -m pip install <Constant name="core" /> <Constant name="dbt" />-ADAPTER_N
 <VersionBlock lastVersion="1.7">
 
 ```shell
-python -m pip install <Constant name="dbt" />-ADAPTER_NAME
+python -m pip install dbt-ADAPTER_NAME
 ```
 
 </VersionBlock>
@@ -135,13 +135,13 @@ For example, if using Postgres:
 <VersionBlock firstVersion="1.8">
 
 ```shell
-python -m pip install <Constant name="core" /> <Constant name="dbt" />-postgres
+python -m pip install dbt-core dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
 
 ```shell
-$ <Constant name="dbt" /> --version
+$ dbt --version
 installed version: 1.0.0
    latest version: 1.0.0
 
@@ -157,13 +157,13 @@ All adapters build on top of `dbt-core`. Some also depend on other adapters: for
 <VersionBlock lastVersion="1.7">
 
 ```shell
-python -m pip install <Constant name="dbt" />-postgres
+python -m pip install dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
 
 ```shell
-$ <Constant name="dbt" /> --version
+$ dbt --version
 installed version: 1.0.0
    latest version: 1.0.0
 
@@ -181,7 +181,7 @@ Some adapters depend on other adapters. For example, `dbt-redshift` builds on to
 To upgrade a specific adapter plugin:
 
 ```shell
-python -m pip install --upgrade <Constant name="dbt" />-ADAPTER_NAME
+python -m pip install --upgrade dbt-ADAPTER_NAME
 ```
 
 ### Install dbt-core only
@@ -189,7 +189,7 @@ python -m pip install --upgrade <Constant name="dbt" />-ADAPTER_NAME
 If you're building a tool that integrates with <Constant name="core" />, you may want to install the core library alone, without a database adapter. Note that you won't be able to use <Constant name="dbt" /> as a CLI tool.
 
 ```shell
-python -m pip install <Constant name="core" />
+python -m pip install dbt-core
 ```
 
 ## Change dbt Core versions
@@ -199,13 +199,13 @@ You can upgrade or downgrade versions of dbt Core by using the `--upgrade` optio
 To upgrade <Constant name="dbt" /> to the latest version:
 
 ```
-python -m pip install --upgrade <Constant name="core" />
+python -m pip install --upgrade dbt-core
 ```
 
 To downgrade to an older version, specify the version you want to use. This command can be useful when you're resolving package dependencies. As an example:
 
 ```
-python -m pip install --upgrade <Constant name="core" />==1.9
+python -m pip install --upgrade dbt-core==1.9
 ```
 
 ## `pip install dbt`
@@ -216,12 +216,12 @@ If you have workflows or integrations that rely on installing the package named 
 
 ```shell
 python -m pip install \
-  <Constant name="core" /> \
-  <Constant name="dbt" />-postgres \
-  <Constant name="dbt" />-redshift \
-  <Constant name="dbt" />-snowflake \
-  <Constant name="dbt" />-bigquery \
-  <Constant name="dbt" />-trino
+  dbt-core \
+  dbt-postgres \
+  dbt-redshift \
+  dbt-snowflake \
+  dbt-bigquery \
+  dbt-trino
 ```
 
 Or, better yet, just install the package(s) you need!
@@ -239,27 +239,27 @@ Note that using a prerelease version before the final, stable version means the 
 To install prerelease versions of dbt Core and your adapter, use this command (replace `dbt-adapter-name` with your adapter)
 
 ```shell
-python3 -m pip install --pre <Constant name="core" /> <Constant name="dbt" />-adapter-name
+python3 -m pip install --pre dbt-core dbt-adapter-name
 ```
 
 For example, if you’re using Snowflake, you would use the command:
 
 
 ```shell
-python3 -m pip install --pre <Constant name="core" /> <Constant name="dbt" />-snowflake
+python3 -m pip install --pre dbt-core dbt-snowflake
 
 ```
 
 We recommend you install prereleases in a [virtual Python environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/). For example, to install a prerelease in a `POSIX bash`/`zsh` virtual Python environment, use the following commands:
 
 ```shell
-<Constant name="dbt" /> --version
+dbt --version
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install --upgrade pip
-python3 -m pip install --pre <Constant name="core" /> <Constant name="dbt" />-adapter-name
+python3 -m pip install --pre dbt-core dbt-adapter-name
 source .venv/bin/activate
-<Constant name="dbt" /> --version
+dbt --version
 ```
 Note, this will also install any pre-releases of all dependencies.
 
@@ -324,9 +324,9 @@ dbt --version
 `dbt-adapters` is only compatible with dbt Core 1.8 and higher. If you're on dbt Core v1.7 or lower, follow these steps to upgrade to v1.8 or higher to install prereleases of `dbt-adapters`.
 
 ```shell
-python -m pip uninstall -y <Constant name="dbt" />-adapters
-python -m pip install --upgrade --pre <Constant name="core" /> <Constant name="dbt" />-common <Constant name="dbt" />-adapters
-<Constant name="dbt" /> --version
+python -m pip uninstall -y dbt-adapters
+python -m pip install --upgrade --pre dbt-core dbt-common dbt-adapters
+dbt --version
 ```
 
 </VersionBlock>
