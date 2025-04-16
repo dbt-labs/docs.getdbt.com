@@ -71,7 +71,7 @@ Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissio
 
 ## Service token update
 
-On July 18, 2023, <Constant name="dbt" /> Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 18, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
+On July 18, 2023, dbt Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 18, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
 
 To rotate your token:
 1. Navigate to **Account settings** and click **Service tokens** on the left side pane.

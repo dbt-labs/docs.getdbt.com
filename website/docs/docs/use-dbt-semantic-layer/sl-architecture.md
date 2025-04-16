@@ -19,9 +19,9 @@ The <Constant name="semantic_layer" /> includes the following components:
 
 | Components | Information | <Constant name="core" /> users | Developer plans |  Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
-| **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in <Constant name="dbt" /> allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | BSL package (code is source available) |
-| **<Constant name="dbt" /> Semantic interfaces**| A configuration spec for defining metrics, dimensions, how they link to each other, and how to query them. The [<Constant name="dbt" />-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) is available under Apache 2.0. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise)|
-| **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through <Constant name="cloud" /> and is available to all users on <Constant name="dbt" /> version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
+| **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in dbt allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | BSL package (code is source available) |
+| **dbt Semantic interfaces**| A configuration spec for defining metrics, dimensions, how they link to each other, and how to query them. The [dbt-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) is available under Apache 2.0. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise)|
+| **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through <Constant name="cloud" /> and is available to all users on dbt version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
 | **[<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview)** | The interfaces allow users to submit metric queries using GraphQL and JDBC APIs. They also serve as the foundation for building first-class integrations with various tools. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise)|
 
 ## Feature comparison
@@ -30,7 +30,7 @@ The following table compares the features available in <Constant name="cloud" />
 
 | Feature | MetricFlow Source available | <Constant name="semantic_layer" /> with <Constant name="cloud" /> |
 | ----- | :------: | :------: |
-| Define metrics and semantic models in <Constant name="dbt" /> using the MetricFlow spec | ✅ | ✅ |
+| Define metrics and semantic models in dbt using the MetricFlow spec | ✅ | ✅ |
 | Generate SQL from a set of config files | ✅ | ✅ |
 | Query metrics and dimensions through the command line interface (CLI) | ✅ | ✅ |
 | Query dimension, entity, and metric metadata  through the CLI | ✅ | ✅ |

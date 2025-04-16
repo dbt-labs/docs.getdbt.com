@@ -27,7 +27,7 @@ Let’s take a look at a practical example using MIN below.
 
 ### MIN example
 
-The following example is querying from a sample dataset created by <Constant name="dbt" /> Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
 
 ```sql
 select
@@ -57,4 +57,4 @@ We most commonly see queries using MIN to:
 - Perform initial data exploration on a dataset to understand the distribution of column values.
 - Identify the first timestamp for key events (ex. `min(login_timestamp_utc) as first_login`).
 
-This isn’t an extensive list of where your team may be using MIN throughout your development work, <Constant name="dbt" /> models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using MIN throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

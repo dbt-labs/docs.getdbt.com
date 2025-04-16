@@ -4,7 +4,7 @@ id: "environment-variables"
 description: "Use environment variables to customize the behavior of your dbt project."
 ---
 
-Environment variables can be used to customize the behavior of a <Constant name="dbt" /> project depending on where the project is running. See the docs on
+Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on
 [env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing
@@ -62,7 +62,7 @@ Every job runs in a specific, deployment environment, and by default, a job will
 **Overriding environment variables at the personal level**
 
 
-You can also set a personal value override for an environment variable when you develop in the <Constant name="dbt" />-integrated developer environment (<Constant name="cloud_ide" />). By default, <Constant name="cloud" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="cloud" />:
+You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (<Constant name="cloud_ide" />). By default, <Constant name="cloud" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="cloud" />:
 - Click on your account name in the left side menu and select **Account settings**. 
 - Under the **Your profile** section, click **Credentials** and then select your project. 
 - Scroll to the **Environment variables** section and click **Edit** to make the necessary changes.
@@ -74,7 +74,7 @@ To supply an override, developers can edit and specify a different value to use.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.png" title="Setting a personal override value"/>
 
 :::info Appropriate coverage
-If you have not set a project level default value for every environment variable, it may be possible that <Constant name="cloud" /> does not know how to interpret the value of an environment variable in all contexts. In such cases, <Constant name="dbt" /> will throw a compilation error: "Env var required but not provided".
+If you have not set a project level default value for every environment variable, it may be possible that <Constant name="cloud" /> does not know how to interpret the value of an environment variable in all contexts. In such cases, dbt will throw a compilation error: "Env var required but not provided".
 :::
 
 :::info Changing environment variables mid-session in the <Constant name="cloud_ide" />

@@ -25,10 +25,10 @@ For improved reliability and performance on your job runs, you can enable <Const
 
 <Constant name="cloud" /> will use the cached copy of your project's <Constant name="git" /> repo under these circumstances:
 
-- Outages from third-party services (for example, the [<Constant name="dbt" /> package hub](https://hub.getdbt.com/)).
+- Outages from third-party services (for example, the [dbt package hub](https://hub.getdbt.com/)).
 - <Constant name="git" /> authentication fails.
 - There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
-- If a package doesn't work with the current <Constant name="dbt" /> version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
+- If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
 - Note, <Constant name="git" /> repository caching should not be used for CI jobs. CI jobs are designed to test the latest code changes in a pull request and ensure your code is up to date. Using a cached copy of the repo in CI jobs could result in stale code being tested.
 
 To use, select the **Enable repository caching** option from your account settings. 
@@ -41,7 +41,7 @@ At the start of every dbt invocation, dbt reads all the files in your project, e
 
 Parsing projects can be time-consuming, especially for large projects with hundreds of models and thousands of files. To reduce the time it takes dbt to parse your project, use the partial parsing feature in dbt Cloud for your environment. When enabled, dbt Cloud uses the `partial_parse.msgpack` file to determine which files have changed (if any) since the project was last parsed, and then it parses _only_ the changed files and the files related to those changes.
 
-Partial parsing in <Constant name="cloud" /> requires <Constant name="dbt" /> version 1.4 or newer. The feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
+Partial parsing in <Constant name="cloud" /> requires dbt version 1.4 or newer. The feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
 
 To use, select the **Enable partial parsing between deployment runs** option from your account settings.
 
@@ -53,6 +53,6 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 To use Advanced CI features, your <Constant name="cloud" /> account must have access to them. Ask your <Constant name="cloud" /> administrator to enable Advanced CI features on your account, which they can do by choosing the **Enable account access to Advanced CI** option from the account settings.
 
-Once enabled, the **<Constant name="dbt" /> compare** option becomes available in the CI job settings for you to select.
+Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable account access to Advanced CI option" />

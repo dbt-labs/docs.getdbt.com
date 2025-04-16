@@ -28,7 +28,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 <!--
 1. Create a new environment in <Constant name="cloud" /> by selecting **Deploy** and then **Environments**.
-2. Select **<Constant name="dbt" /> Version 1.6** (or the latest) and enter your deployment credentials.
+2. Select **dbt Version 1.6** (or the latest) and enter your deployment credentials.
 3. To configure the new Semantic Layer, you must have a successful run in your new environment. We recommend running `dbt ls` since `dbt build` won’t succeed until you’ve created and defined semantic models and metrics.
 4. To enable the <Constant name="semantic_layer" />, go to the **Account Settings** page and then select the specific project you want to enable the <Constant name="semantic_layer" /> for.
 5. In the **Project Details** page, select **Configure <Constant name="semantic_layer" />.** This will prompt you to enter data platform connection credentials for the <Constant name="semantic_layer" /> and select the environment where you want to enable the <Constant name="semantic_layer" />. We recommend using a less privileged set of credentials when setting up your connection. The semantic layer requires SELECT and CREATE TABLE permissions.
@@ -41,7 +41,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 - Now that you've set up the <Constant name="semantic_layer" />, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
-- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to <Constant name="dbt" /> models don't break these metrics.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.
 - Learn about commonly asked [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs).
 

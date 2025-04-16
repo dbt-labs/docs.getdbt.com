@@ -23,7 +23,7 @@ To join the private beta, [register your interest](https://docs.google.com/forms
 
 The <Constant name="visual_editor" /> allows organizations to enjoy the many benefits of code-driven development—such as increased precision, ease of debugging, and ease of validation &mdash; while retaining the flexibility to have different contributors develop wherever they are most comfortable. Users can also take advantage of built-in AI for custom code generation, making it an end-to-end frictionless experience.
 
-These models compile directly to SQL and are indistinguishable from other <Constant name="dbt" /> models in your projects:
+These models compile directly to SQL and are indistinguishable from other dbt models in your projects:
 - Visual models are version-controlled in your backing <Constant name="git" /> provider.
 - All models are accessible across projects in [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro).
 - Models can be materialized into production through [<Constant name="cloud" /> orchestration](/docs/deploy/deployments), or be built directly into a user's development schema.
@@ -37,5 +37,5 @@ These models compile directly to SQL and are indistinguishable from other <Const
 
 Please note, always review AI-generated code and content as it may produce incorrect results. The <Constant name="visual_editor" /> features and/or functionality may be added or eliminated as part of the beta trial.
 
-To give feedback, please reach out to your <Constant name="dbt" /> Labs account team. We appreciate your feedback and suggestions as we improve the <Constant name="visual_editor" />.
+To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve the <Constant name="visual_editor" />.
 

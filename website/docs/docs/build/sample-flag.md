@@ -71,5 +71,5 @@ source as (
 
 ```
 
-<Constant name="dbt" /> will then execute the model SQL against the target data warehouse and build the tables with data from the sample sizes.
+dbt will then execute the model SQL against the target data warehouse and build the tables with data from the sample sizes.
  

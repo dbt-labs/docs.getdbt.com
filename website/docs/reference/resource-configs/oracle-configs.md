@@ -10,7 +10,7 @@ id: "oracle-configs"
 Table materialization supports specifying the number of parallel executions as shown below
 
 ```sql
--- Create a <Constant name="dbt" /> model using 4 parallel executions
+-- Create a dbt model using 4 parallel executions
 {{config(materialized='table', parallel=4}}
 SELECT c.cust_id, c.cust_first_name, c.cust_last_name
 from {{ source('sh_database', 'customers') }} c
@@ -106,12 +106,12 @@ dbt_test:
          threads: 4
          session_info:
             action: "dbt run"
-            client_identifier: "<Constant name="dbt" />-unique-client-uuid"
-            client_info: "<Constant name="dbt" /> Python3.9 thin driver"
-            module: "<Constant name="dbt" />-oracle-1.8.x"
+            client_identifier: "dbt-unique-client-uuid"
+            client_info: "dbt Python3.9 thin driver"
+            module: "dbt-oracle-1.8.x"
 ```
 
-This helps to track <Constant name="dbt" /> sessions in the Database view [V$SESSION](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/V-SESSION.html)
+This helps to track dbt sessions in the Database view [V$SESSION](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/V-SESSION.html)
 
 
 </VersionBlock>

@@ -134,14 +134,14 @@ select * from ...
 
 </File>
 
-Whichever one of these models runs second would "win", and generally, the output of <Constant name="dbt" /> would not be what you would expect. To avoid this failure mode, <Constant name="dbt" /> will check if your model names and aliases are ambiguous in nature. If they are, you will be presented with an error message like this:
+Whichever one of these models runs second would "win", and generally, the output of dbt would not be what you would expect. To avoid this failure mode, dbt will check if your model names and aliases are ambiguous in nature. If they are, you will be presented with an error message like this:
 
 ```
-$ <Constant name="dbt" /> compile
+$ dbt compile
 Encountered an error:
 Compilation Error
-  <Constant name="dbt" /> found two resources with the database representation "analytics.sessions".
-  <Constant name="dbt" /> cannot create two resources with identical database representations. To fix this,
+  dbt found two resources with the database representation "analytics.sessions".
+  dbt cannot create two resources with identical database representations. To fix this,
   change the "schema" or "alias" configuration of one of these resources:
   - model.my_project.snowplow_sessions (models/snowplow_sessions.sql)
   - model.my_project.sessions (models/sessions.sql)
@@ -159,6 +159,6 @@ By default, dbt will create versioned models with the alias `<model_name>_v<v>`,
 
 ## Related docs
 
-- [Customize <Constant name="dbt" /> models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize <Constant name="dbt" /> models database, schema, and alias
-- [Custom schema](/docs/build/custom-schemas) to learn how to customize <Constant name="dbt" /> schema 
-- [Custom database](/docs/build/custom-databases) to learn how to customize <Constant name="dbt" /> database
+- [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
+- [Custom schema](/docs/build/custom-schemas) to learn how to customize dbt schema 
+- [Custom database](/docs/build/custom-databases) to learn how to customize dbt database

@@ -29,11 +29,11 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 This is an experimental plugin:
 - It has not been tested extensively.
 - Storage engines other than the default of InnoDB are untested.
-- Only tested with [<Constant name="dbt" />-adapter-tests](https://github.com/dbt-labs/dbt-adapter-tests) with the following versions:
+- Only tested with [dbt-adapter-tests](https://github.com/dbt-labs/dbt-adapter-tests) with the following versions:
   - MySQL 5.7
   - MySQL 8.0
   - MariaDB 10.5
-- Compatibility with other [<Constant name="dbt" /> packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)) are also untested.
+- Compatibility with other [dbt packages](https://hub.getdbt.com/) (like [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)) are also untested.
 
 Please read these docs carefully and use at your own risk. [Issues](https://github.com/dbeatty10/dbt-mysql/issues/new) and [PRs](https://github.com/dbeatty10/dbt-mysql/blob/main/CONTRIBUTING.rst#contributing) welcome!
 

@@ -7,7 +7,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-3-build
 
 ## Getting started
 
-There are two options for developing a <Constant name="dbt" /> project, including the <Constant name="semantic_layer" />:
+There are two options for developing a dbt project, including the <Constant name="semantic_layer" />:
 
 - [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the <Constant name="cloud_cli" /> under the `dbt sl` subcommand. This is the easiest, most full-featured way to develop <Constant name="semantic_layer" /> code for the time being. You can use the editor of your choice and run commands from the terminal.
 

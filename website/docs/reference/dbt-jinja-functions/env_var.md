@@ -87,7 +87,7 @@ A dictionary of these prefixed env vars will also be available in a `dbt_metadat
 select 1 as id
 ```
 ```shell
-$ DBT_ENV_CUSTOM_ENV_MY_FAVORITE_COLOR=indigo DBT_ENV_CUSTOM_ENV_MY_FAVORITE_NUMBER=6 <Constant name="dbt" /> compile
+$ DBT_ENV_CUSTOM_ENV_MY_FAVORITE_COLOR=indigo DBT_ENV_CUSTOM_ENV_MY_FAVORITE_NUMBER=6 dbt compile
 ```
 Compiles to:
 ```sql

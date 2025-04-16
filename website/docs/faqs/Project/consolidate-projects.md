@@ -6,7 +6,7 @@ id: consolidate-projects
 
 ---
 
-Consolidating your <Constant name="dbt" /> projects can be an enormous task, and there is no universal solution. But, there are some common approaches to project consolidation in <Constant name="cloud" /> that you can follow, depending on the scope of the work that needs to be done.
+Consolidating your dbt projects can be an enormous task, and there is no universal solution. But, there are some common approaches to project consolidation in <Constant name="cloud" /> that you can follow, depending on the scope of the work that needs to be done.
 
 If you have multiple projects that contain production-worthy code, there are rarely straightforward solutions to merging them. Let's suppose you have `Main Project` and `Smaller Subset Project`.
 

@@ -14,9 +14,9 @@ recently_updated: true
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by <Constant name="dbt" /> Labs) into your Microsoft Fabric warehouse. 
+- Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
 - Connect <Constant name="cloud" /> to Microsoft Fabric.
-- Turn a sample query into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a SELECT statement.
+- Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
@@ -27,7 +27,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
-- [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -56,7 +56,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[customers]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_customers.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_customers.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -73,7 +73,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[orders]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_orders.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_orders.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -91,7 +91,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[payments]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/stripe_payments.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/stripe_payments.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -123,7 +123,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
 1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
@@ -133,7 +133,7 @@ Now that you have a repository configured, you can initialize your project and s
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

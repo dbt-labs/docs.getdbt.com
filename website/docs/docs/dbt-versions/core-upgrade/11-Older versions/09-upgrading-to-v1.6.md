@@ -19,7 +19,7 @@ displayed_sidebar: "docs"
 
 ## What to know before upgrading
 
-<Constant name="dbt" /> Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### Behavior changes
 
@@ -29,12 +29,12 @@ The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) ha
 
 :::
 
-If your <Constant name="dbt" /> project defines metrics, you must migrate to <Constant name="dbt" /> v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
+If your dbt project defines metrics, you must migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
 
 - <Constant name="core" /> v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
 - As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
 - The manifest schema version is now v10.
-- <Constant name="dbt" /> Labs is ending support for Homebrew installation of <Constant name="core" /> and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
+- dbt Labs is ending support for Homebrew installation of <Constant name="core" /> and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -47,7 +47,7 @@ The [manifest](/reference/artifacts/manifest-json) schema version has been updat
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask questions, please read and comment on the GH discussion: [<Constant name="dbt" />-labs/<Constant name="core" />#7958](https://github.com/dbt-labs/dbt-core/discussions/7958).
+For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/<Constant name="core" />#7958](https://github.com/dbt-labs/dbt-core/discussions/7958).
 
 ## New and changed documentation
 

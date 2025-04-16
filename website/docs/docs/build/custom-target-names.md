@@ -7,7 +7,7 @@ pagination_next: null
 
 ## dbt Cloud Scheduler
 
-You can define a custom target name for any <Constant name="cloud" /> job to correspond to settings in your <Constant name="dbt" /> project. This is helpful if you have logic in your <Constant name="dbt" /> project that behaves differently depending on the specified target, for example:
+You can define a custom target name for any <Constant name="cloud" /> job to correspond to settings in your dbt project. This is helpful if you have logic in your dbt project that behaves differently depending on the specified target, for example:
 
 ```sql
 select *

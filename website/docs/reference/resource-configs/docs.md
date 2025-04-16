@@ -163,7 +163,7 @@ macros:
 ## Definition
 The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
 
-**Note:** Hidden models will still appear in the <Constant name="dbt" /> DAG visualization but will be identified as "hidden.”
+**Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
 ## Default
 The default value for `show` is `true`.
@@ -180,7 +180,7 @@ models:
 
 ### Mark a subfolder of models as hidden
 
-**Note:** This can also hide <Constant name="dbt" /> packages.
+**Note:** This can also hide dbt packages.
 
 <File name='dbt_project.yml'>
 

@@ -20,9 +20,9 @@ hide_table_of_contents: true
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I committed dbt_project.yml to the company git repo in July 2021 so I've been hanging out with all of you for about 2 years. What I love the most about <Constant name="dbt" /> is how easy it is to write data tests. Writing data tests without <Constant name="dbt" /> was painful, but now with all the tests we have in <Constant name="dbt" /> I have a dramatically improved confidence in our data quality.
+I committed dbt_project.yml to the company git repo in July 2021 so I've been hanging out with all of you for about 2 years. What I love the most about dbt is how easy it is to write data tests. Writing data tests without dbt was painful, but now with all the tests we have in dbt I have a dramatically improved confidence in our data quality.
 
-The wider <Constant name="dbt" /> community is also a reliable and constant source of education. I only interact in a few Slack channels, but I read *many* Slack channels to see what others are doing in the Analytics Engineering space and to get ideas about how to improve the processes/pipelines at my company. Y'all are great.
+The wider dbt community is also a reliable and constant source of education. I only interact in a few Slack channels, but I read *many* Slack channels to see what others are doing in the Analytics Engineering space and to get ideas about how to improve the processes/pipelines at my company. Y'all are great.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -32,10 +32,10 @@ Also shout out to [Faith Lierheimer](./faith-lierheimer), whose contributions to
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-The [public documentation for <Constant name="dbt" />](https://docs.getdbt.com/docs/introduction) is quite good. You should bookmark it and make it a personal goal to read through it all. There are a lot of cool things that <Constant name="dbt" /> can do.
+The [public documentation for dbt](https://docs.getdbt.com/docs/introduction) is quite good. You should bookmark it and make it a personal goal to read through it all. There are a lot of cool things that dbt can do.
 
-Also I think it's really cool to see newcomers asking questions on Slack/[Discourse](https://discourse.getdbt.com/) and then see those same people answering others' questions. It speaks to the value we all get from <Constant name="dbt" /> that folks want to give back to the community.
+Also I think it's really cool to see newcomers asking questions on Slack/[Discourse](https://discourse.getdbt.com/) and then see those same people answering others' questions. It speaks to the value we all get from dbt that folks want to give back to the community.
 
 ## Anything else interesting you want to tell us?
 
-Did you notice how I avoided starting a sentence with "<Constant name="dbt" />"? That's because I know the standard is lowercase, but starting a sentence with a lowercase word looks weird to my eyes.
+Did you notice how I avoided starting a sentence with "dbt"? That's because I know the standard is lowercase, but starting a sentence with a lowercase word looks weird to my eyes.

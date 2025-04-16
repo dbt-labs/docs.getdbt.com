@@ -432,7 +432,7 @@ The `incremental_strategy` config can be set to one of the following values:
 
 ### Performance and cost
 
-The operations performed by <Constant name="dbt" /> while building a BigQuery incremental model can
+The operations performed by dbt while building a BigQuery incremental model can
 be made cheaper and faster by using a [clustering clause](#clustering-clause) in your
 model configuration. See [this guide](https://discourse.getdbt.com/t/benchmarking-incremental-strategies-on-bigquery/981) for more information on performance tuning for BigQuery incremental models.
 
@@ -503,7 +503,7 @@ For a complete writeup on the mechanics of this approach, see
 
 #### Determining partitions to overwrite
 
-<Constant name="dbt" /> is able to determine the partitions to overwrite dynamically from the values
+dbt is able to determine the partitions to overwrite dynamically from the values
 present in the temporary table, or statically using a user-supplied configuration.
 
 The "dynamic" approach is simplest (and the default), but the "static" approach
@@ -548,8 +548,8 @@ with events as (
 
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
-way to incrementally update a table using <Constant name="dbt" />. If we wanted this to run more dynamically—
-let’s say, always for the past 3 days—we could leverage <Constant name="dbt" />’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
+way to incrementally update a table using dbt. If we wanted this to run more dynamically—
+let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
 
 Think of this as "full control" mode. You must ensure that expressions or literal values in the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
@@ -562,9 +562,9 @@ If no `partitions` configuration is provided, dbt will instead:
 3. Query the destination table to find the _max_ partition in the database
 
 When building your model SQL, you can take advantage of the introspection performed
-by <Constant name="dbt" /> to filter for only _new_ data. The maximum value in the partitioned field in the destination table
+by dbt to filter for only _new_ data. The maximum value in the partitioned field in the destination table
 will be available using the `_dbt_max_partition` BigQuery scripting variable. **Note:**
-this is a BigQuery SQL variable, not a <Constant name="dbt" /> Jinja variable, so no jinja brackets are
+this is a BigQuery SQL variable, not a dbt Jinja variable, so no jinja brackets are
 required to access this variable.
 
 **Example model SQL:**
@@ -640,7 +640,7 @@ from {{ ref('events') }}
 
 ## Controlling table expiration
 
-By default, <Constant name="dbt" />-created tables never expire. You can configure certain model(s)
+By default, dbt-created tables never expire. You can configure certain model(s)
 to expire after a set number of hours by setting `hours_to_expiration`.
 
 :::info Note
@@ -675,7 +675,7 @@ select ...
 ## Authorized views
 
 If the `grant_access_to` config is specified for a model materialized as a
-view, <Constant name="dbt" /> will grant the view model access to select from the list of datasets
+view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
 

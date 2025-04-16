@@ -7,9 +7,9 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="dbt" /> Labs is in the process of rolling out a new cell-based architecture for <Constant name="cloud" />. This architecture provides the foundation of <Constant name="cloud" /> for years to come, and brings improved reliability, performance, and consistency to users of <Constant name="cloud" />.
+dbt Labs is in the process of rolling out a new cell-based architecture for <Constant name="cloud" />. This architecture provides the foundation of <Constant name="cloud" /> for years to come, and brings improved reliability, performance, and consistency to users of <Constant name="cloud" />.
 
-We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. <Constant name="dbt" /> Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
+We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
 Your account will be automatically migrated on or after its scheduled date. However, if you use certain features, you must take action before that date to avoid service disruptions.
 
@@ -19,14 +19,14 @@ Your account will be automatically migrated on or after its scheduled date. Howe
 
 If you're on the <Constant name="cloud" /> Enterprise tier, you can postpone your account migration by up to 45 days. To reschedule your migration, navigate to **Account Settings** → **Migration guide**.
 
-For help, contact the <Constant name="dbt" /> Support Team at [support@getdbt.com](mailto:support@getdbt.com).
+For help, contact the dbt Support Team at [support@getdbt.com](mailto:support@getdbt.com).
 :::
 
 We highly recommended you take these actions:
 
 - Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations might be voided during the migration. You can resend user invitations after the migration is complete.
 - Commit unsaved changes in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes might be lost during migration.
-- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be unavailable from <Constant name="cloud" /> after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the <Constant name="dbt" /> Labs Customer Support team to recover.
+- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be unavailable from <Constant name="cloud" /> after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
 
 ## Required actions
 

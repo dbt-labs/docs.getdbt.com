@@ -8,11 +8,11 @@ sidebar: "Legacy configuration"
 
 <IntroText>
 
-Use legacy SQL-based snapshot configurations with Jinja blocks in any <Constant name="dbt" /> version. <Constant name="dbt" /> v1.9 introduced YAML-based configs for better readability and environment awareness.
+Use legacy SQL-based snapshot configurations with Jinja blocks in any dbt version. dbt v1.9 introduced YAML-based configs for better readability and environment awareness.
 
 </IntroText>
 
-There are situations where you want to use the legacy syntax for [snapshots](/docs/build/snapshots) in any <Constant name="dbt" /> version or release track. This page details how you can use the legacy SQL-based configurations if you need to. 
+There are situations where you want to use the legacy syntax for [snapshots](/docs/build/snapshots) in any dbt version or release track. This page details how you can use the legacy SQL-based configurations if you need to. 
 
 In dbt v1.9, this syntax was replaced with a [YAML-based configuration](/reference/snapshot-configs#configuring-snapshots) in [dbt Cloud's "Latest" release track](/docs/dbt-versions/cloud-release-tracks). The benefits of YAML-based configurations are that the snapshots are environment aware, meaning you don't have to specify `schema` or `database`, and the syntax is more concise.
 
@@ -40,7 +40,7 @@ Snapshots can be configured in two main ways:
 
 These configurations allow you to control how dbt detects changes in your data and where snapshots are stored. Both types of configurations can coexist in your project in the same `config` block (or from your `dbt_project.yml` file or `properties.yaml` file). 
 
-One of the most important configs you can decide is [strategies](#snapshot-strategies), which tells <Constant name="dbt" /> how to detect modified rows.
+One of the most important configs you can decide is [strategies](#snapshot-strategies), which tells dbt how to detect modified rows.
 
 ### Snapshot specific configurations
 Snapshot-specific configurations are applicable to only one dbt resource type rather than multiple resource types. You can define these settings within the resource’s file using the `{{ config() }}` macro (as well as in the project file (`dbt_project.yml`) or a property file (`models/properties.yml` for models, similarly for other resources)).
@@ -201,8 +201,8 @@ The following table outlines the configurations available for snapshots:
 
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
-| [target_database](/reference/resource-configs/target_database) | The database that <Constant name="dbt" /> should render the snapshot table into | No | analytics |
-| [target_schema](/reference/resource-configs/target_schema) | The schema that <Constant name="dbt" /> should render the snapshot table into | Yes | snapshots |
+| [target_database](/reference/resource-configs/target_database) | The database that dbt should render the snapshot table into | No | analytics |
+| [target_schema](/reference/resource-configs/target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
 | [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
@@ -340,7 +340,7 @@ Completed successfully
 Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-1. Inspect the results by selecting from the table <Constant name="dbt" /> created. After the first run, you should see the results of your query, plus the [snapshot meta fields](/docs/build/snapshots#snapshot-meta-fields) as described earlier.
+1. Inspect the results by selecting from the table dbt created. After the first run, you should see the results of your query, plus the [snapshot meta fields](/docs/build/snapshots#snapshot-meta-fields) as described earlier.
 
 2. Run the `dbt snapshot` command again, and inspect the results. If any records have been updated, the snapshot should reflect this.
 

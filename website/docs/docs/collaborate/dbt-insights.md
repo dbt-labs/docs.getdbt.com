@@ -27,7 +27,7 @@ Learn how to query data with <Constant name="query_page" /> and view documentati
 
 Key benefits include:
 - Quickly write, run, and iterate on SQL queries with tools like syntax highlighting, tabbed editors, and query history.
-- Leverage <Constant name="dbt" /> metadata, trust signals, and lineage from <Constant name="explorer" /> for informed query construction.
+- Leverage dbt metadata, trust signals, and lineage from <Constant name="explorer" /> for informed query construction.
 - Make data accessible to users of varied technical skill levels with SQL, <Constant name="semantic_layer" /> queries, and visual tools.
 - Use <Constant name="copilot" />'s AI-assistance to generate or edit SQL queries, descriptions, and more.
 
@@ -41,8 +41,8 @@ Some example use cases include:
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
 - Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide)
-- Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported <Constant name="dbt" /> version.
-- Configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for your <Constant name="dbt" /> project.
+- Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
+- Configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for your dbt project.
 - Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Note SSH tunneling for Postgres or Redshift connections is not supported. 
 	- Single sign-on (SSO) for development user accounts supported, however SSO for production credentials not yet supported.

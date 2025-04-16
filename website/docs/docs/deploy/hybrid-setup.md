@@ -75,7 +75,7 @@ A [<Constant name="cloud" /> account admin](/docs/cloud/manage-access/enterprise
 <Lightbox src="/img/docs/deploy/hp-new-project.jpg" title="Hybrid project new project" />
 
 5. After creating a project, create a corresponding [production environment](/docs/deploy/deploy-environments#create-a-deployment-environment) and click **Save**. Note that you can leave the **Connection** field blank.
-6. (Optional) To update an existing <Constant name="dbt" /> project to a hybrid project, navigate to **Account settings** and then select the **Project**. Click **Edit** and then check the **Hybrid development** checkbox.
+6. (Optional) To update an existing dbt project to a hybrid project, navigate to **Account settings** and then select the **Project**. Click **Edit** and then check the **Hybrid development** checkbox.
 <Lightbox src="/img/docs/deploy/hp-existing-project.jpg" width="80%" title="Hybrid project for an existing project" />
 
 ### Generate service token and artifact upload values
@@ -121,10 +121,10 @@ Once you have the values from the previous step, you can prepare your <Constant 
    ```yaml
    name: "jaffle_shop"
    version: "3.0.0"
-   require-<Constant name="dbt" />-version: ">=1.5.0"
+   require-dbt-version: ">=1.5.0"
    ....rest of dbt_project.yml configuration...
 
-   <Constant name="dbt" />-cloud:
+   dbt-cloud:
      tenant_hostname: cloud.getdbt.com # Replace with your Tenant URL
    ```
 5. Once you set the environment variables using the `export` command in the same dbt Core CLI session, you can execute a `dbt run` in the CLI. 
@@ -154,6 +154,6 @@ Now that you've uploaded dbt Core artifacts into dbt Cloud and executed a `dbt r
 Now that you've integrated <Constant name="core" /> artifacts with your <Constant name="cloud" /> project, you can now:
 
 
-- Collaborate with <Constant name="cloud" /> users by enabling them to visualize and perform [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) to <Constant name="dbt" /> models that live in Core projects.
-- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/visual-editor) can build off of <Constant name="dbt" /> models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
+- Collaborate with <Constant name="cloud" /> users by enabling them to visualize and perform [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in Core projects.
+- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/visual-editor) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
 - <Constant name="core" /> users can navigate to [<Constant name="explorer" />](/docs/collaborate/explore-projects) and view their models and assets. To view <Constant name="explorer" />, you must have a [read-only seat](/docs/cloud/manage-access/seats-and-users).

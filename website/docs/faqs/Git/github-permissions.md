@@ -43,4 +43,4 @@ Disconnect the GitHub and <Constant name="cloud" /> integration in <Constant nam
 <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Cloud Account Settings pages."/>
 
 ## Support
-If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [<Constant name="dbt" /> Support](mailto:support@getdbt.com) team and we'll be happy to help!
+If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@getdbt.com) team and we'll be happy to help!

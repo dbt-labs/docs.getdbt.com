@@ -6,7 +6,7 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name="cloud" /> project to run <Constant name="dbt" /> commands, like `dbt environment show` to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
+Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name="cloud" /> project to run dbt commands, like `dbt environment show` to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the <Constant name="cloud" /> platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
@@ -18,7 +18,7 @@ Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name
 - You must set up a project in <Constant name="cloud" />.
   - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud" /> CLI will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
-- You must be on <Constant name="dbt" /> version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
+- You must be on dbt version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 
 ## Configure the dbt Cloud CLI
 
@@ -41,8 +41,8 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
 2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your <Constant name="cloud_cli" /> configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
    
     - North America: https://YOUR_ACCESS_URL/cloud-cli
-    - EMEA: https://emea.<Constant name="dbt" />.com/cloud-cli
-    - APAC: https://au.<Constant name="dbt" />.com/cloud-cli
+    - EMEA: https://emea.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
     - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
     - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
   
@@ -76,10 +76,10 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
       token-value: "<pat-or-service-token-value>"  
   ```
 
-3. After downloading the config file and creating your directory, navigate to a <Constant name="dbt" /> project in your terminal:
+3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
     ```bash
-    cd ~/<Constant name="dbt" />-projects/jaffle_shop
+    cd ~/dbt-projects/jaffle_shop
     ```
 
 4. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
@@ -90,7 +90,7 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
     version:
     # Your project configs...
 
-    <Constant name="dbt" />-cloud: 
+    dbt-cloud: 
         project-id: PROJECT_ID
     ```
 
@@ -102,7 +102,7 @@ With your repo recloned, you can add, edit, and sync files with your repo.
 
 ## Set environment variables
 
-To set environment variables in the <Constant name="cloud" /> CLI for your <Constant name="dbt" /> project:
+To set environment variables in the <Constant name="cloud" /> CLI for your dbt project:
 
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 2. Under the **Your profile** section, select **Credentials**.
@@ -151,7 +151,7 @@ When running `dbt sqlfluff` from the <Constant name="cloud_cli" />, the followin
 
 - dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
 - For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
-- An SQLFluff command will return an exit code of 0 if it ran with any file violations. This <Constant name="dbt" /> behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. <Constant name="dbt" /> Labs plans on addressing this in a later release.
+- An SQLFluff command will return an exit code of 0 if it ran with any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
 ## Considerations
 
@@ -187,14 +187,14 @@ For Mac users, since it's a hidden folder (due to the dot prefix), it won't be v
 In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
 
 ```bash
-mv ~/Downloads/dbt_cloud.yml ~/.<Constant name="dbt" />/dbt_cloud.yml
+mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
 ```
 
 ### Windows
 In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
 
 ```bash
-move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.<Constant name="dbt" />\dbt_cloud.yml
+move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 ```
 
 </TabItem>

@@ -15,7 +15,7 @@ recently_updated: true
 
 ## Introduction
 
-Adapters are an essential component of <Constant name="dbt" />. At their most basic level, they are how <Constant name="dbt" /> connects with the various supported data platforms. At a higher-level, <Constant name="core" /> adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="core" />.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, <Constant name="core" /> adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="core" />.
  
  Navigating and developing around the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 
@@ -33,19 +33,19 @@ There's a tremendous amount of work that goes into creating a database. Here is 
 
 There's a lot more there than just SQL as a language. Databases (and data warehouses) are so popular because you can abstract away a great deal of the complexity from your brain to the database itself. This enables you to focus more on the data.
 
-<Constant name="dbt" /> allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
+dbt allows for further abstraction and standardization of the outermost layers of a database (SQL API, client library, connection manager) into a framework that both:
  - Opens database technology to less technical users (a large swath of a DBA's role has been automated, similar to how the vast majority of folks with websites today no longer have to be "[webmasters](https://en.wikipedia.org/wiki/Webmaster)").
  - Enables more meaningful conversations about how data warehousing should be done.
 
-This is where <Constant name="dbt" /> adapters become critical.
+This is where dbt adapters become critical.
 
 ### What needs to be adapted?
 
-<Constant name="dbt" /> adapters are responsible for _adapting_ <Constant name="dbt" />'s standard functionality to a particular database. Our prototypical database and adapter are PostgreSQL and <Constant name="dbt" />-postgres, and most of our adapters are somewhat based on the functionality described in <Constant name="dbt" />-postgres.
+dbt adapters are responsible for _adapting_ dbt's standard functionality to a particular database. Our prototypical database and adapter are PostgreSQL and dbt-postgres, and most of our adapters are somewhat based on the functionality described in dbt-postgres.
 
-Connecting <Constant name="dbt" /> to a new database will require a new adapter to be built or an existing adapter to be extended.
+Connecting dbt to a new database will require a new adapter to be built or an existing adapter to be extended.
 
-The outermost layers of a database map roughly to the areas in which the <Constant name="dbt" /> adapter framework encapsulates inter-database differences.
+The outermost layers of a database map roughly to the areas in which the dbt adapter framework encapsulates inter-database differences.
 
 ### SQL API
 
@@ -61,7 +61,7 @@ Here are some categories and examples of SQL statements that can be constructed 
 
 ### Python Client Library & Connection Manager
 
-The other big category of inter-database differences comes with how the client connects to the database and executes queries against the connection. To integrate with <Constant name="dbt" />, a data platform must have a pre-existing python client library or support ODBC, using a generic python library like pyodbc.
+The other big category of inter-database differences comes with how the client connects to the database and executes queries against the connection. To integrate with dbt, a data platform must have a pre-existing python client library or support ODBC, using a generic python library like pyodbc.
 
 | Category                     | Area of differences              | Examples                                                                                                    |
 |------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -85,7 +85,7 @@ Differences between databases are encoded into discrete areas:
 
 These classes implement all the methods responsible for:
 - Connecting to a database and issuing queries.
-- Providing <Constant name="dbt" /> with database-specific configuration information.
+- Providing dbt with database-specific configuration information.
 
 | Class                    | Description                                                                                                                                                                                 |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -101,7 +101,7 @@ A set of *macros* responsible for generating SQL that is compliant with the targ
 
 #### Materializations
 
-A set of *materializations* and their corresponding helper macros defined in <Constant name="dbt" /> using jinja and SQL. They codify for <Constant name="dbt" /> how model files should be persisted into the database.
+A set of *materializations* and their corresponding helper macros defined in dbt using jinja and SQL. They codify for dbt how model files should be persisted into the database.
 
 ### Adapter Architecture
 
@@ -118,7 +118,7 @@ The more you can answer Yes to the below questions, the easier your adapter deve
 
 ### Training
 
-- The developer (and any product managers) ideally will have substantial experience as an end-user of <Constant name="dbt" />. If not, it is highly advised that you at least take the [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) and [Advanced Materializations](https://learn.getdbt.com/courses/advanced-materializations) course.
+- The developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) and [Advanced Materializations](https://learn.getdbt.com/courses/advanced-materializations) course.
 
 ### Database
 
@@ -156,7 +156,7 @@ Patch releases of `dbt-adapters` will _not_ include breaking changes or new feat
 
 #### Versioning and releasing your adapter
 
-<Constant name="dbt" /> Labs strongly recommends you to adopt the following approach when versioning and releasing your plugin. 
+dbt Labs strongly recommends you to adopt the following approach when versioning and releasing your plugin. 
 
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
@@ -180,12 +180,12 @@ For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem
 
 ### Scaffolding a new adapter
 
- To create a new adapter plugin from scratch, you can use the [<Constant name="dbt" />-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will generate a scaffolding for you to build upon.
+ To create a new adapter plugin from scratch, you can use the [dbt-database-adapter-scaffold](https://github.com/dbt-labs/dbt-database-adapter-scaffold) to trigger an interactive session which will generate a scaffolding for you to build upon.
 
     Example usage:
 
     ```
-    $ cookiecutter gh:<Constant name="dbt" />-labs/<Constant name="dbt" />-database-adapter-scaffold
+    $ cookiecutter gh:dbt-labs/dbt-database-adapter-scaffold
     ```
 
 The generated boilerplate starting project will include a basic adapter plugin file structure, examples of macros, high level method descriptions, etc.
@@ -226,7 +226,7 @@ Edit the connection manager at `myadapter/dbt/adapters/myadapter/connections.py`
 
 The credentials class defines all of the database-specific credentials (e.g. `username` and `password`) that users will need in the [connection profile](/docs/supported-data-platforms) for your new adapter. Each credentials contract should subclass dbt.adapters.base.Credentials, and be implemented as a python dataclass.
 
-Note that the base class includes required database and schema fields, as <Constant name="dbt" /> uses those values internally.
+Note that the base class includes required database and schema fields, as dbt uses those values internally.
 
 For example, if your adapter requires a host, integer port, username string, and password string, but host is the only required field, you'd add definitions for those new properties to the class as types, like this:
 
@@ -472,7 +472,7 @@ dbt implements specific SQL operations using jinja macros. While reasonable defa
 
 #### Required macros
 
-The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for <Constant name="dbt" /> to operate.
+The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
 - `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L37-L55))
 - `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L43-L55))
@@ -666,10 +666,10 @@ In order to enable the [`dbt init` command](/reference/commands/init) to prompt 
 
 See examples:
 
-- [<Constant name="dbt" />-postgres](https://github.com/dbt-labs/dbt-postgres/blob/main/dbt/include/postgres/profile_template.yml)
-- [<Constant name="dbt" />-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
-- [<Constant name="dbt" />-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
-- [<Constant name="dbt" />-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)
+- [dbt-postgres](https://github.com/dbt-labs/dbt-postgres/blob/main/dbt/include/postgres/profile_template.yml)
+- [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
+- [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
+- [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)
 
 #### `__version__.py`
 
@@ -681,8 +681,8 @@ It should be noted that both of these files are included in the bootstrapped out
 
 This document has two sections:
 
-1. Refer to "About the testing framework" for a description of the standard framework that we maintain for using pytest together with <Constant name="dbt" />. It includes an example that shows the anatomy of a simple test case.
-2. Refer to "Testing your adapter" for a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of <Constant name="dbt" /> functionality.
+1. Refer to "About the testing framework" for a description of the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
+2. Refer to "Testing your adapter" for a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
 
 ### Testing prerequisites
 
@@ -693,7 +693,7 @@ This document has two sections:
 
 [dbt-adapters-tests](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter) offers a standard framework for running prebuilt functional tests, and for defining your own tests. The core testing framework is built using `pytest`, a mature and standard library for testing Python projects.
 
-It includes basic utilities for setting up pytest + <Constant name="dbt" />. These are used by all "prebuilt" functional tests, and make it possible to quickly write your own tests.
+It includes basic utilities for setting up pytest + dbt. These are used by all "prebuilt" functional tests, and make it possible to quickly write your own tests.
 
 Those utilities allow you to do three basic things:
 
@@ -711,7 +711,7 @@ In ["Getting started running basic tests,"](#getting-started-running-basic-tests
 
 This example includes a seed, a model, and two tests—one of which will fail.
 
-1. Define Python strings that will represent the file contents in your <Constant name="dbt" /> project. Defining these in a separate file enables you to reuse the same components across different test cases. The pytest name for this type of reusable component is "fixture."
+1. Define Python strings that will represent the file contents in your dbt project. Defining these in a separate file enables you to reuse the same components across different test cases. The pytest name for this type of reusable component is "fixture."
 
 <File name="tests/functional/example/fixtures.py">
 
@@ -1083,7 +1083,7 @@ class TestSimpleMaterializationsBigQuery(BaseSimpleMaterializations):
 
 </File>
 
-It's always worth asking whether the required modifications represent gaps in perceived or expected <Constant name="dbt" /> functionality. Are these simple implementation details, which any user of this database would understand? Are they limitations worth documenting?
+It's always worth asking whether the required modifications represent gaps in perceived or expected dbt functionality. Are these simple implementation details, which any user of this database would understand? Are they limitations worth documenting?
 
 If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-core` repository on GitHub.
 
@@ -1174,7 +1174,7 @@ python3 -m pytest tests/functional --profile databricks_sql_endpoint
 
 ## Document a new adapter
 
-If you've already built, and tested your adapter, it's time to document it so the <Constant name="dbt" /> community will know that it exists and how to use it.
+If you've already built, and tested your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
 
 ### Making your adapter available
 
@@ -1186,7 +1186,7 @@ Many community members maintain their adapter plugins under open source licenses
 
 ### General Guidelines
 
-To best inform the <Constant name="dbt" /> community of the new adapter, you should contribute to the <Constant name="dbt" />'s open-source documentation site, which uses the [Docusaurus project](https://docusaurus.io/). This is the site you're currently on!
+To best inform the dbt community of the new adapter, you should contribute to the dbt's open-source documentation site, which uses the [Docusaurus project](https://docusaurus.io/). This is the site you're currently on!
 
 ### Conventions
 
@@ -1205,7 +1205,7 @@ We ask our adapter maintainers to use the [docs.getdbt.com repo](https://github.
 
 ### Assumed Knowledge
 
-To simplify things, assume the reader of this documentation already knows how both <Constant name="dbt" /> and your data platform works. There's already great material for how to learn <Constant name="dbt" /> and the data platform out there. The documentation we're asking you to add should be what a user who is already profiecient in both <Constant name="dbt" /> and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
+To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there. The documentation we're asking you to add should be what a user who is already profiecient in both dbt and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
 
 ### Topics and Pages to Cover
 
@@ -1253,7 +1253,7 @@ Contributors to the community should think of contribution _as the end itself,_ 
 ### Who should join the dbt community slack?
 
 - People who have insight into what it means to do hands-on [analytics engineering](https://www.getdbt.com/analytics-engineering/) work
-  The <Constant name="dbt" /> Community Slack workspace is fundamentally a place for analytics practitioners to interact with each other &mdash; the closer the users are in the community to actual data/analytics engineering work, the more natural their engagement will be (leading to better outcomes for partners and the community).
+  The dbt Community Slack workspace is fundamentally a place for analytics practitioners to interact with each other &mdash; the closer the users are in the community to actual data/analytics engineering work, the more natural their engagement will be (leading to better outcomes for partners and the community).
 
 - DevRel practitioners with strong focus
   DevRel practitioners often have a strong analytics background and a good understanding of the community. It’s essential to be sure they are focused on _contributing,_ not on driving community metrics for partner org (such as signing people up for their slack or events). The metrics will rise naturally through authentic engagement.
@@ -1262,22 +1262,22 @@ Contributors to the community should think of contribution _as the end itself,_ 
   This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
 
 - Software Engineers at partner products that are building and supporting integrations with either <Constant name="core" /> or <Constant name="cloud" />
-  This is successful when the engineers are familiar with <Constant name="dbt" /> as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
+  This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
 
 ### Who might struggle in the dbt community
 
 - People in marketing roles
-  <Constant name="dbt" /> Slack is not a marketing channel. Attempts to use it as such invariably fall flat and can even lead to people having a negative view of a product. This doesn’t mean that <Constant name="dbt" /> can’t serve marketing objectives, but a long-term commitment to engagement is the only proven method to do this sustainably.
+  dbt Slack is not a marketing channel. Attempts to use it as such invariably fall flat and can even lead to people having a negative view of a product. This doesn’t mean that dbt can’t serve marketing objectives, but a long-term commitment to engagement is the only proven method to do this sustainably.
 
 - People in product roles
-  The <Constant name="dbt" /> Community can be an invaluable source of feedback on a product. There are two primary ways this can happen &mdash; organically (community members proactively suggesting a new feature) and via direct calls for feedback and user research. Immediate calls for engagement must be done in your dedicated #tools channel. Direct calls should be used sparingly, as they can overwhelm more organic discussions and feedback.
+  The dbt Community can be an invaluable source of feedback on a product. There are two primary ways this can happen &mdash; organically (community members proactively suggesting a new feature) and via direct calls for feedback and user research. Immediate calls for engagement must be done in your dedicated #tools channel. Direct calls should be used sparingly, as they can overwhelm more organic discussions and feedback.
 
 ### Who is the audience for an adapter release?
 
   A new adapter is likely to drive huge community interest from several groups of people:
     - People who are currently using the database that the adapter is supporting
     - People who may be adopting the database in the near future.
-    - People who are interested in <Constant name="dbt" /> development in general.
+    - People who are interested in dbt development in general.
 
 The database users will be your primary audience and the most helpful in achieving success. Engage them directly in the adapter’s dedicated Slack channel. If one does not exist already, reach out in #channel-requests, and we will get one made for you and include it in an announcement about new channels.
 
@@ -1285,16 +1285,16 @@ The final group is where non-slack community engagement becomes important. Twitt
 
 ### How to message the initial rollout and follow-up content
 
-Tell a story that engages <Constant name="dbt" /> users and the community. Highlight new use cases and functionality unlocked by the adapter in a way that will resonate with each segment.
+Tell a story that engages dbt users and the community. Highlight new use cases and functionality unlocked by the adapter in a way that will resonate with each segment.
 
-- Existing users of your technology who are new to <Constant name="dbt" />
-  - Provide a general overview of the value <Constant name="dbt" /> will deliver to your users. This can lean on <Constant name="dbt" />'s messaging and talking points which are laid out in the [<Constant name="dbt" /> viewpoint.](/community/resources/viewpoint)
-  - Give examples of a rollout that speaks to the overall value of <Constant name="dbt" /> and your product.
+- Existing users of your technology who are new to dbt
+  - Provide a general overview of the value dbt will deliver to your users. This can lean on dbt's messaging and talking points which are laid out in the [dbt viewpoint.](/community/resources/viewpoint)
+  - Give examples of a rollout that speaks to the overall value of dbt and your product.
 
-- Users who are already familiar with <Constant name="dbt" /> and the community
+- Users who are already familiar with dbt and the community
   - Consider unique use cases or advantages your adapter provide over existing adapters. Who will be excited for this?
-  - Contribute to the <Constant name="dbt" /> Community and ensure that <Constant name="dbt" /> users on your adapter are well supported (tutorial content, packages, documentation, etc).
-  - Example of a rollout that is compelling for those familiar with <Constant name="dbt" />: [Firebolt](https://www.linkedin.com/feed/update/urn:li:activity:6879090752459182080/)
+  - Contribute to the dbt Community and ensure that dbt users on your adapter are well supported (tutorial content, packages, documentation, etc).
+  - Example of a rollout that is compelling for those familiar with dbt: [Firebolt](https://www.linkedin.com/feed/update/urn:li:activity:6879090752459182080/)
 
 ### Tactically manage distribution of content about new or existing adapters
 
@@ -1309,8 +1309,8 @@ There are tactical pieces on how and where to share that help ensure success.
   - LinkedIn
   - Social media posts _from the author_ or an individual connected to the project tend to have better engagement than posts from a company or organization account.
   - Ask your partner representative about:
-    - Retweets and shares from the official <Constant name="dbt" /> Labs accounts.
-    - Flagging posts internally at <Constant name="dbt" /> Labs to get individual employees to share.
+    - Retweets and shares from the official dbt Labs accounts.
+    - Flagging posts internally at dbt Labs to get individual employees to share.
 
 #### Measuring engagement
 
@@ -1323,15 +1323,15 @@ We’d recommend _against_ boilerplate announcements and encourage finding a uni
 - A summary of the value prop of your database / technology for users who aren’t familiar.
 - The personas that might be interested in this news.
 - A description of what the adapter _is_.  For example:
-  > With the release of our new <Constant name="dbt" /> adapter, you’ll be able to to use <Constant name="dbt" /> to model and transform your data in [name-of-your-org]
+  > With the release of our new dbt adapter, you’ll be able to to use dbt to model and transform your data in [name-of-your-org]
 - Particular or unique use cases or functionality unlocked by the adapter.
 - Plans for future / ongoing support / development.
-- The link to the documentation for using the adapter on the <Constant name="dbt" /> Labs docs site.
+- The link to the documentation for using the adapter on the dbt Labs docs site.
 - An announcement blog.
 
 #### Announcing new release versions of existing adapters
 
-This can vary substantially depending on the nature of the release but a good baseline is the types of release messages that [we put out in the #<Constant name="dbt" />-releases](https://getdbt.slack.com/archives/C37J8BQEL/p1651242161526509) channel.
+This can vary substantially depending on the nature of the release but a good baseline is the types of release messages that [we put out in the #dbt-releases](https://getdbt.slack.com/archives/C37J8BQEL/p1651242161526509) channel.
 
 ![Full Release Post](/img/adapter-guide/0-full-release-notes.png)
 
@@ -1350,9 +1350,9 @@ Breaking this down:
 
 ## Build a trusted adapter
 
-The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the <Constant name="dbt" /> community that your adapter is trusted to be used in production.
+The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
-The very first data platform <Constant name="dbt" /> supported was Redshift followed quickly by Postgres ([<Constant name="core" />#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when <Constant name="dbt" /> Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned <Constant name="dbt" />'s database support into an adapter framework ([<Constant name="core" />#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, <Constant name="dbt" /> Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the <Constant name="dbt" /> community which enables <Constant name="core" /> to work on more than 30 different databases (32 as of Sep '22)!
+The very first data platform dbt supported was Redshift followed quickly by Postgres ([<Constant name="core" />#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([<Constant name="core" />#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core" /> to work on more than 30 different databases (32 as of Sep '22)!
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source projet is is important to determine the answer to the following questions:
 
@@ -1369,13 +1369,13 @@ These are valid, important questions to answer—especially given that `dbt-core
 - "How mature is `dbt-<ADAPTER>`? Any gotchas I should be aware of before I start exploring?"
 - "has anyone here used `dbt-<ADAPTER>` for production models?"
 - "I've been playing with  `dbt-<ADAPTER>` -- I was able to install and run my initial experiments. I noticed that there are certain features mentioned on the documentation that are marked as 'not ok' or 'not tested'. What are the risks?
-I'd love to make a statement on my team to adopt DBT [sic], but I'm pretty sure questions will be asked around the possible limitations of the adapter or if there are other companies out there using <Constant name="dbt" /> [sic] with Oracle DB in production, etc."
+I'd love to make a statement on my team to adopt DBT [sic], but I'm pretty sure questions will be asked around the possible limitations of the adapter or if there are other companies out there using dbt [sic] with Oracle DB in production, etc."
 
-There has been a tendency to trust the <Constant name="dbt" /> Labs-maintained adapters over community- and vendor-supported adapters, but repo ownership is only one among many indicators of software quality. We aim to help our users feel well-informed as to the caliber of an adapter with a new program.
+There has been a tendency to trust the dbt Labs-maintained adapters over community- and vendor-supported adapters, but repo ownership is only one among many indicators of software quality. We aim to help our users feel well-informed as to the caliber of an adapter with a new program.
 
 ### What it means to be trusted
 
-By opting into the below, you agree to this, and we take you at your word. <Constant name="dbt" /> Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met.
+By opting into the below, you agree to this, and we take you at your word. dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met.
 
 ### Feature Completeness
 
@@ -1386,22 +1386,22 @@ Essential functionality includes (but is not limited to the following features):
 - table, view, and seed materializations
 - dbt tests
 
-The adapter should have the required documentation for connecting and configuring the adapter. The <Constant name="dbt" /> docs site should be the single source of truth for this information. These docs should be kept up-to-date.
+The adapter should have the required documentation for connecting and configuring the adapter. The dbt docs site should be the single source of truth for this information. These docs should be kept up-to-date.
 
 Proceed to the "Document a new adapter" step for more information.
 
 ### Release cadence
 
-Keeping an adapter up-to-date with the latest features of <Constant name="dbt" />, as defined in [<Constant name="dbt" />-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new <Constant name="dbt" />-adapter releases and support new features relevant to their platform, ensuring users have the best version of <Constant name="dbt" />. 
+Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new dbt-adapter releases and support new features relevant to their platform, ensuring users have the best version of dbt. 
 
-Before [<Constant name="core" /> version 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of <Constant name="core" /> v1.8+. For example, a user could use <Constant name="core" /> v1.9 with <Constant name="dbt" />-postgres v1.8. 
+Before [<Constant name="core" /> version 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of <Constant name="core" /> v1.8+. For example, a user could use <Constant name="core" /> v1.9 with dbt-postgres v1.8. 
 
 ### Community responsiveness
 
-On a best effort basis, active participation and engagement with the <Constant name="dbt" /> Community across the following forums:
+On a best effort basis, active participation and engagement with the dbt Community across the following forums:
 
-- Being responsive to feedback and supporting user enablement in <Constant name="dbt" /> Community’s Slack workspace
-- Responding with comments to issues raised in public <Constant name="dbt" /> adapter code repository
+- Being responsive to feedback and supporting user enablement in dbt Community’s Slack workspace
+- Responding with comments to issues raised in public dbt adapter code repository
 - Merging in code contributions from community members as deemed appropriate
 
 ### Security Practices
@@ -1409,13 +1409,13 @@ On a best effort basis, active participation and engagement with the <Constant n
 Trusted adapters will not do any of the following:
 
 - Output to logs or file either access credentials information to or data from the underlying data platform itself.
-- Make API calls other than those expressly required for using <Constant name="dbt" /> features (adapters may not add additional logging)
+- Make API calls other than those expressly required for using dbt features (adapters may not add additional logging)
 - Obfuscate code and/or functionality so as to avoid detection
 
 Additionally, to avoid supply-chain attacks:
 
 - Use an automated service to keep Python dependencies up-to-date (such as  Dependabot or similar),
-- Publish directly to PyPI from the <Constant name="dbt" /> adapter code repository by using trusted CI/CD process (such as GitHub actions)
+- Publish directly to PyPI from the dbt adapter code repository by using trusted CI/CD process (such as GitHub actions)
 - Restrict admin access to both the respective code (GitHub) and package (PyPI) repositories
 - Identify and mitigate security vulnerabilities by use of a static code analyzing tool (such as Snyk) as part of a CI/CD process
 
@@ -1425,7 +1425,7 @@ The adapter repository is:
 
 - open-souce licensed,
 - published to PyPI, and
-- automatically tests the codebase against <Constant name="dbt" /> Lab's provided adapter test suite
+- automatically tests the codebase against dbt Lab's provided adapter test suite
 
 ### How to get an adapter on the trusted list
 
@@ -1433,16 +1433,16 @@ Open an issue on the [docs.getdbt.com GitHub repository](https://github.com/dbt-
 
 1. my adapter meet the guidelines given above
 2. I will make best reasonable effort that this continues to be so
-3. checkbox: I acknowledge that <Constant name="dbt" /> Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the above guidelines not be met.
+3. checkbox: I acknowledge that dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the above guidelines not be met.
 
 The approval workflow is as follows:
 
 1. create and populate the template-created issue
-2. <Constant name="dbt" /> Labs will respond as quickly as possible (maximally four weeks, though likely faster)
-3. If approved, <Constant name="dbt" /> Labs will create and merge a Pull request to formally add the adapter to the list.
+2. dbt Labs will respond as quickly as possible (maximally four weeks, though likely faster)
+3. If approved, dbt Labs will create and merge a Pull request to formally add the adapter to the list.
 
 ### Getting help for my trusted adapter
 
-Ask your question in #adapter-ecosystem channel of the <Constant name="dbt" /> community Slack.
+Ask your question in #adapter-ecosystem channel of the dbt community Slack.
 
 </div>

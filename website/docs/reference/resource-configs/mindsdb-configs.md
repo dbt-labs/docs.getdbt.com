@@ -5,7 +5,7 @@ id: "mindsdb-configs"
 
 ## Authentication
 
-To succesfully connect <Constant name="dbt" /> to MinsDB you will need to provide the following configuration from the MindsDB instance.
+To succesfully connect dbt to MinsDB you will need to provide the following configuration from the MindsDB instance.
 
 | Key   | Required| Description | Self-hosted | MindsDB Cloud |
 |---------|-------------------------|---------------------------|-------------------------|--------------------------|
@@ -22,7 +22,7 @@ Create dbt project, choose mindsdb as the database and set up the connection. Ve
 
 `dbt init <project_name>`
 
-To create a predictor, create a <Constant name="dbt" /> model with a "predictor" materialization. The name of the model will be the name of predictor.
+To create a predictor, create a dbt model with a "predictor" materialization. The name of the model will be the name of predictor.
 
 #### Parameters:
 - `integration` - name of used integration to get data from and save result to. Must be created in mindsdb beforehand using the [`CREATE DATABASE` syntax](https://docs.mindsdb.com/sql/create/databases/).
@@ -47,7 +47,7 @@ To create a predictor, create a <Constant name="dbt" /> model with a "predictor"
       select * from stores
 ```
 
-To apply predictor add <Constant name="dbt" /> model with "table" materialization. It creates or replaces table in selected integration with results of predictor.
+To apply predictor add dbt model with "table" materialization. It creates or replaces table in selected integration with results of predictor.
 Name of the model is used as name of the table to store prediction results.
 If you need to specify schema you can do it with dot separator: schema_name.table_name.sql  
 

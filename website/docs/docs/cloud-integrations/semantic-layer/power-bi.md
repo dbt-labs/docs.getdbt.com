@@ -17,7 +17,7 @@ The <Constant name="semantic_layer" /> Power BI integration is currently in priv
 
 - Accept and sign the AI & beta addendum. Reach out to your account team to begin this process.
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) 
-- You are on a supported [<Constant name="cloud" /> release track](/docs/dbt-versions/cloud-release-tracks) or on <Constant name="dbt" /> v1.6 or higher.
+- You are on a supported [<Constant name="cloud" /> release track](/docs/dbt-versions/cloud-release-tracks) or on dbt v1.6 or higher.
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
 - You need your [<Constant name="cloud" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.

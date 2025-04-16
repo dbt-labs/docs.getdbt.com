@@ -12,15 +12,15 @@ Some data teams operate on a global scale. By definition, the team needs to mana
 
 The headcount ratio of platform team to domain teams in this scenario is roughly ≥10:1. For each member of the central platform team, there might be dozens of members of domain-aligned data teams.
 
-Is <Constant name="mesh" /> a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One <Constant name="dbt" /> project would not keep up with the global demands of an organization like this.
+Is <Constant name="mesh" /> a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One dbt project would not keep up with the global demands of an organization like this.
 
 ### Tips and tricks
 
-- **Managing shared macros**: Teams operating at this scale will benefit from a separate repository containing a <Constant name="dbt" /> package of reusable utility macros that all other projects will install. This is different from public models, which provide data-as-a-service (a set of “API endpoints”) — this is distributed as a **library**. This package can also standardize imports of other third-party packages, as well as providing wrappers / shims for those macros. This package should have a dedicated team of maintainers — probably the central platform team, or a set of “superusers” from domain-aligned data modeling teams.
+- **Managing shared macros**: Teams operating at this scale will benefit from a separate repository containing a dbt package of reusable utility macros that all other projects will install. This is different from public models, which provide data-as-a-service (a set of “API endpoints”) — this is distributed as a **library**. This package can also standardize imports of other third-party packages, as well as providing wrappers / shims for those macros. This package should have a dedicated team of maintainers — probably the central platform team, or a set of “superusers” from domain-aligned data modeling teams.
 
 ### Adoption challenges
 
-- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated. To start the migration, prioritize teams that have strong <Constant name="dbt" /> familiarity and fundamentals. <Constant name="mesh" /> is an advancement of core <Constant name="dbt" /> deployments, so these teams are likely to have a smoother transition. 
+- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated. To start the migration, prioritize teams that have strong dbt familiarity and fundamentals. <Constant name="mesh" /> is an advancement of core dbt deployments, so these teams are likely to have a smoother transition. 
   
   Additionally, prioritize teams that manage strategic data assets that need to be shared widely. This ensures that <Constant name="mesh" /> will help your teams deliver concrete value quickly.
 
@@ -46,7 +46,7 @@ If this sounds like your organization, it's very likely that <Constant name="mes
 
 ## Single team monolith
 
-Some organizations operate on an even smaller scale. If your data org is a single small team that controls the end-to-end process of building and maintaining all data products at the organization, <Constant name="mesh" /> may not be required. The complexity in projects comes from having a wide variety of data sources and stakeholders. However, given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement <Constant name="mesh" />, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their <Constant name="dbt" /> DAG, and not because they necessarily have an organizational pain point to solve.
+Some organizations operate on an even smaller scale. If your data org is a single small team that controls the end-to-end process of building and maintaining all data products at the organization, <Constant name="mesh" /> may not be required. The complexity in projects comes from having a wide variety of data sources and stakeholders. However, given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement <Constant name="mesh" />, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their dbt DAG, and not because they necessarily have an organizational pain point to solve.
 
 _Is <Constant name="mesh" /> a good fit?_  Maybe! There are reasons to separate out parts of a large monolithic project into several to better orchestrate and manage the models. However, if the same people are managing each project, they may find that the overhead of managing multiple projects is not worth the benefits.
 

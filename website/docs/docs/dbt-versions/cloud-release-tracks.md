@@ -4,11 +4,11 @@ sidebar_label: "dbt Cloud Release Tracks"
 description: "Learn how to get automatic upgrades to dbt in dbt Cloud. Access new features and enhancements as soon as they become available."
 ---
 
-Since May 2024, new capabilities in the <Constant name="dbt" /> framework are delivered continuously to <Constant name="cloud" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="cloud" /> plan.
+Since May 2024, new capabilities in the dbt framework are delivered continuously to <Constant name="cloud" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="cloud" /> plan.
 
 Previously, customers would pin to a minor version of <Constant name="core" />, and receive only patch updates during that specific version's active support period. Release tracks ensure that your project stays up-to-date with the modern capabilities of <Constant name="cloud" /> and recent versions of <Constant name="core" />.
 
-This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading <Constant name="dbt" /> versions again.
+This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
 
 By moving your environments and jobs to release tracks you can get all the functionality in <Constant name="cloud" /> as soon as it's ready. On the "Latest" release track, this includes access to features _before_ they're available in final releases of <Constant name="core" /> OSS.
 
@@ -27,9 +27,9 @@ To configure an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/ad
 
 ## Which release track should I choose?
 
-Choose the "Latest" release track to continuously receive new features, fixes, performance improvements — latest & greatest <Constant name="dbt" />. This is the default for all customers on <Constant name="cloud" />.
+Choose the "Latest" release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="cloud" />.
 
-Choose the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new <Constant name="dbt" /> releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Choose the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
 ### Common architectures
 
@@ -38,7 +38,7 @@ Choose the "Compatible" and "Extended" release tracks if you need a less-frequen
 - Leave all environments on the "Latest" release track (default configuration)
 
 **Hybrid** - Team, Enterprise
-- Prioritize ongoing compatibility between <Constant name="cloud" /> and <Constant name="core" /> for development & deployment using both products in the same <Constant name="dbt" /> projects
+- Prioritize ongoing compatibility between <Constant name="cloud" /> and <Constant name="core" /> for development & deployment using both products in the same dbt projects
 - Configure all environments to use the "Compatible" release track
 - Understand that new features will not be available until they are first released in <Constant name="core" /> OSS (several months after the "Latest" release track)
 
@@ -48,28 +48,28 @@ Choose the "Compatible" and "Extended" release tracks if you need a less-frequen
 - Configure pre-production & production environments to use the "Extended" release track
 - Understand that new features will not be available until _a month after_ they are first released in <Constant name="core" /> OSS and the Compatible track. Developers (on "Compatible") will get access to new features before they can leverage those capabilities in production (on "Extended"), and must be mindful of the additional delay.
 
-**Virtual Private <Constant name="dbt" /> or Single Tenant**
+**Virtual Private dbt or Single Tenant**
 - Changes to all release tracks roll out as part of <Constant name="cloud" /> instance upgrades once per week
 
 ## Upgrading from older versions
 
 ### How to upgrade {#upgrade-tips}
 
-If you regularly develop your <Constant name="dbt" /> project in <Constant name="cloud" />, and you're still running on a legacy version of <Constant name="core" />, <Constant name="dbt" /> Labs recommends that you try upgrading your project in a development environment. [Override your <Constant name="dbt" /> version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the <Constant name="cloud_ide" /> or Cloud CLI and do your development work as usual. Everything should work as you expect.
+If you regularly develop your dbt project in <Constant name="cloud" />, and you're still running on a legacy version of <Constant name="core" />, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the <Constant name="cloud_ide" /> or Cloud CLI and do your development work as usual. Everything should work as you expect.
 
 If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact <Constant name="cloud" /> support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
 
 Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-version-in-cloud#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
 
-If your organization has multiple <Constant name="dbt" /> projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
+If your organization has multiple dbt projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
 
 ### Considerations
 
-To learn more about how <Constant name="dbt" /> Labs deploys stable <Constant name="dbt" /> upgrades in a safe manner to <Constant name="cloud" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="cloud" />](https://docs.getdbt.com/blog/latest-dbt-stability).
+To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="cloud" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="cloud" />](https://docs.getdbt.com/blog/latest-dbt-stability).
 
-If you're running <Constant name="dbt" /> version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
-<Constant name="dbt" /> Labs has extended the critical support period of <Constant name="core" /> v1.7 for <Constant name="cloud" /> Enterprise customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="cloud" />.
+dbt Labs has extended the critical support period of <Constant name="core" /> v1.7 for <Constant name="cloud" /> Enterprise customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="cloud" />.
 
 <Expandable alt_header="I'm using an older version of dbt in dbt Cloud. What should I do? What happens if I do nothing?" >
 

@@ -120,4 +120,4 @@ Top-level keys for the semantic manifest are:
 ## Related docs
 
 - [<Constant name="semantic_layer" /> API](/docs/dbt-cloud-apis/sl-api-overview)
-- [About <Constant name="dbt" /> artifacts](/reference/artifacts/dbt-artifacts)
+- [About dbt artifacts](/reference/artifacts/dbt-artifacts)

@@ -53,13 +53,13 @@ Note that <Constant name="explorer" /> automatically deletes stale metadata afte
 
 | To view in <Constant name="explorer" /> | You must successfully run |
 |---------------------|---------------------------|
-| All metadata        |  [<Constant name="dbt" /> build](/reference/commands/build), [<Constant name="dbt" /> docs generate](/reference/commands/cmd-docs), and [<Constant name="dbt" /> source freshness](/reference/commands/source#dbt-source-freshness) together as part of the same job in the environment
-| Model lineage, details, or results | [<Constant name="dbt" /> run](/reference/commands/run) or [<Constant name="dbt" /> build](/reference/commands/build) on a given model within a job in the environment |
-| Columns and statistics for models, sources, and snapshots| [<Constant name="dbt" /> docs generate](/reference/commands/cmd-docs) within [a job](/docs/collaborate/build-and-view-your-docs) in the environment |
-| Test results | [<Constant name="dbt" /> test](/reference/commands/test) or [<Constant name="dbt" /> build](/reference/commands/build) within a job in the environment |
-| Source freshness results | [<Constant name="dbt" /> source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
-| Snapshot details | [<Constant name="dbt" /> snapshot](/reference/commands/snapshot) or [<Constant name="dbt" /> build](/reference/commands/build) within a job in the environment |
-| Seed details | [<Constant name="dbt" /> seed](/reference/commands/seed) or [<Constant name="dbt" /> build](/reference/commands/build) within a job in the environment |
+| All metadata        |  [dbt build](/reference/commands/build), [dbt docs generate](/reference/commands/cmd-docs), and [dbt source freshness](/reference/commands/source#dbt-source-freshness) together as part of the same job in the environment
+| Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
+| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/collaborate/build-and-view-your-docs) in the environment |
+| Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment |
+| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
+| Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
+| Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
 Richer and more timely metadata will become available as <Constant name="cloud" /> evolves.
 
@@ -180,9 +180,9 @@ Example of results from searching on the keyword `customers` and applying the fi
 
 From the sidebar, you can browse your project's resources, its file tree, and the database.
 
-- **Resources** tab &mdash; All resources in the project organized by type. Select any resource type in the list and all those resources in the project will display as a table in the main section of the page. For a description on the different resource types (like models, metrics, and so on), refer to [About <Constant name="dbt" /> projects](/docs/build/projects).
+- **Resources** tab &mdash; All resources in the project organized by type. Select any resource type in the list and all those resources in the project will display as a table in the main section of the page. For a description on the different resource types (like models, metrics, and so on), refer to [About dbt projects](/docs/build/projects).
   - [Data health signals](/docs/collaborate/data-health-signals) are visible to the right of the resource name under the **Health** column.
-- **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your <Constant name="dbt" /> project repository.
+- **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
 - **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-cloud-apis/project-state) of your project.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-tabs-sidebar.png" title="Example of tabs in sidebar" />

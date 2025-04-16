@@ -18,13 +18,13 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Create a Google Cloud Platform (GCP) project.
 - Access sample data in a public dataset.
 - Connect <Constant name="cloud" /> to BigQuery.
-- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
@@ -35,7 +35,7 @@ You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.co
 
 ### Related content
 
-- Learn more with [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -103,7 +103,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
 1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
@@ -117,7 +117,7 @@ Now that you have a repository configured, you can initialize your project and s
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -298,7 +298,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 ## Build models on top of sources
 
-Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in <Constant name="dbt" />, you can:
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
 - select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
 - test your assumptions about your source data
 - calculate the freshness of your source data

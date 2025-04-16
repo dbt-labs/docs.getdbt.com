@@ -16,7 +16,7 @@ recently_updated: true
 ## General process of debugging
 
 Learning how to debug is a skill, and one that will make you great at your role!
-1. Read the error message — when writing the code behind <Constant name="dbt" />, we try our best to make error messages as useful as we can. The error message <Constant name="dbt" /> produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
+1. Read the error message — when writing the code behind dbt, we try our best to make error messages as useful as we can. The error message dbt produces will normally contain the type of error (more on these error types below), and the file where the error occurred.
 2. Inspect the file that was known to cause the issue, and see if there's an immediate fix.
 3. Isolate the problem — for example, by running one model a time, or by undoing the code that broke things.
 4. Get comfortable with compiled files and the logs.
@@ -48,7 +48,7 @@ _Note: If you're using the <Constant name="cloud_ide" /> to work on your project
 Running with dbt=1.7.1
 Encountered an error:
 Runtime Error
-  fatal: Not a <Constant name="dbt" /> project (or any of the parent directories). Missing dbt_project.yml file
+  fatal: Not a dbt project (or any of the parent directories). Missing dbt_project.yml file
 ```
 <details>
 <summary>Debugging</summary>
@@ -239,7 +239,7 @@ To prevent this:
 </details>
 
 ### Invalid YAML
-<Constant name="dbt" /> wasn't able to turn your YAML into a valid dictionary.
+dbt wasn't able to turn your YAML into a valid dictionary.
 
 ```
 $ dbt run
@@ -293,7 +293,7 @@ To prevent this:
 
 
 ### Incorrect YAML spec
-Slightly different error — the YAML structure is right (i.e. the YAML parser can turn this into a python dictionary), _but_ there's a key that <Constant name="dbt" /> doesn't recognize.
+Slightly different error — the YAML structure is right (i.e. the YAML parser can turn this into a python dictionary), _but_ there's a key that dbt doesn't recognize.
 
 ```
 $ dbt run
@@ -324,7 +324,7 @@ Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers -
 
 ```
 
-Your <Constant name="dbt" /> DAG is not acyclic, and needs to be fixed!
+Your dbt DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
 - If you need to reference the current model, use the [`{{ this }}` variable](/reference/dbt-jinja-functions/this) instead.
 
@@ -353,13 +353,13 @@ Database Error in model customers (models/customers.sql)
 3. Fix the mistake.
 4. Rerun the failed model.
 
-In some cases, these errors might occur as a result of queries that <Constant name="dbt" /> runs "behind-the-scenes". These include:
+In some cases, these errors might occur as a result of queries that dbt runs "behind-the-scenes". These include:
 - Introspective queries to list objects in your database
 - Queries to `create` schemas
 - `pre-hooks`s, `post-hooks`, `on-run-end` hooks and `on-run-start` hooks
 - For incremental models, and snapshots: merge, update and insert statements
 
-In these cases, you should check out the logs — this contains _all_ the queries <Constant name="dbt" /> has run.
+In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
 - **<Constant name="cloud" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
 - **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
@@ -390,7 +390,7 @@ If you just opened a SQL file in the `target/` directory to help debug an issue,
 
 ## FAQs
 
-Here are some useful FAQs to help you debug your <Constant name="dbt" /> project:
+Here are some useful FAQs to help you debug your dbt project:
 
 - <FAQ path="Troubleshooting/generate-har-file" />
 - <FAQ path="Troubleshooting/auth-expired-error" />  

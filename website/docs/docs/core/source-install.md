@@ -4,7 +4,7 @@ description: "You can install dbt Core from its GitHub code source."
 pagination_next: null
 ---
 
-<Constant name="core" /> and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install <Constant name="dbt" /> from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
+<Constant name="core" /> and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
 
 To download from source, you would clone the repositories from GitHub, making a local copy, and then install the local version using `pip`.
 
@@ -19,8 +19,8 @@ Beginning in v1.8, installing an adapter does not automatically install `dbt-cor
 To install `dbt-core` only from the GitHub code source:
 
 ```shell
-git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="core" />.git
-cd <Constant name="core" />
+git clone https://github.com/dbt-labs/dbt-core.git
+cd dbt-core
 python -m pip install -r requirements.txt
 ```
 
@@ -31,7 +31,7 @@ python -m pip install -r requirements.txt
 To install `dbt-core` and `dbt-postgres` from the GitHub code source:
 
 ```shell
-git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="core" />.git
+git clone https://github.com/dbt-labs/dbt-core.git
 cd <Constant name="core" />
 python -m pip install -r requirements.txt
 ```
@@ -60,8 +60,8 @@ You do _not_ need to install `dbt-core` before installing an adapter plugin -- t
 </VersionBlock>
 
 ```shell
-git clone https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-redshift.git
-cd <Constant name="dbt" />-redshift
+git clone https://github.com/dbt-labs/dbt-redshift.git
+cd dbt-redshift
 python -m pip install .
 ```
 

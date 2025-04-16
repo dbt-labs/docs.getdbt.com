@@ -5,9 +5,9 @@ description: New features and breaking changes to consider as you upgrade to dbt
 
 # Upgrading to dbt utils v1.0
 
-For the first time, [<Constant name="dbt" /> utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) is crossing the major version boundary. From [last month’s blog post](https://www.getdbt.com/blog/announcing-dbt-v1.3-and-utils/): 
+For the first time, [dbt utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) is crossing the major version boundary. From [last month’s blog post](https://www.getdbt.com/blog/announcing-dbt-v1.3-and-utils/): 
 
-> It’s time to formalize what was already unofficial policy: you can rely on <Constant name="dbt" /> utils in the same way as you do <Constant name="core" />, with stable interfaces and consistent and intuitive naming.
+> It’s time to formalize what was already unofficial policy: you can rely on dbt utils in the same way as you do <Constant name="core" />, with stable interfaces and consistent and intuitive naming.
 
 Just like the switch to <Constant name="core" /> 1.0 last year, there are some breaking changes as we standardized and prepared for the future. Most changes can be handled with find-and-replace. If you need help, post on the [Community Forum](https://discourse.getdbt.com) or in [#package-ecosystem](https://getdbt.slack.com/archives/CU4MRJ7QB) channel on Slack. 
 
@@ -89,7 +89,7 @@ models:
 
 ```yaml
 packages:
-  - git: https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-labs-experimental-features
+  - git: https://github.com/dbt-labs/dbt-labs-experimental-features
     subdirectory: insert_by_period
     revision: XXXX #optional but highly recommended. Provide a full git sha hash, e.g. 1c0bfacc49551b2e67d8579cf8ed459d68546e00. If not provided, uses the current HEAD.
 ```

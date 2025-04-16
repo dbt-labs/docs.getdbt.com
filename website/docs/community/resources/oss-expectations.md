@@ -10,19 +10,19 @@ Have you seen things in other OSS projects that you quite like, and think we cou
 
 ### Open source is participatory
 
-We all build <Constant name="dbt" /> together -- whether you write code or contribute your ideas. By using <Constant name="dbt" />, you're invested in the future of the tool, and have an active role in pushing forward the standard of analytics engineering. You already benefit from using code and documentation contributed by community members. Contributing to the <Constant name="dbt" /> community is your way to be an active participant in the thing we're all creating together.
+We all build dbt together -- whether you write code or contribute your ideas. By using dbt, you're invested in the future of the tool, and have an active role in pushing forward the standard of analytics engineering. You already benefit from using code and documentation contributed by community members. Contributing to the dbt community is your way to be an active participant in the thing we're all creating together.
 
-There's a very practical reason, too: OSS prioritizes our collective knowledge and experience over any one person's. We don't have experience using every database, operating system, security environment, ... We rely on the community of OSS users to hone our product capabilities and documentation to the wide variety of contexts in which it operates. In this way, <Constant name="dbt" /> gets to be the handiwork of thousands, rather than a few dozen.
+There's a very practical reason, too: OSS prioritizes our collective knowledge and experience over any one person's. We don't have experience using every database, operating system, security environment, ... We rely on the community of OSS users to hone our product capabilities and documentation to the wide variety of contexts in which it operates. In this way, dbt gets to be the handiwork of thousands, rather than a few dozen.
 
 ### We take seriously our role as maintainers of a standard
 
-As a standard, <Constant name="dbt" /> must be reliable and consistent. Our first priority is ensuring the continued high quality of existing <Constant name="dbt" /> capabilities before we introduce net-new capabilities.
+As a standard, dbt must be reliable and consistent. Our first priority is ensuring the continued high quality of existing dbt capabilities before we introduce net-new capabilities.
 
-We also believe <Constant name="dbt" /> as a framework should be extensible enough to ["make the easy things easy, and the hard things possible"](https://en.wikipedia.org/wiki/Perl#Philosophy). To that end, we _don't_ believe it's appropriate for <Constant name="dbt" /> to have an out-of-the-box solution for every niche problem. Users have the flexibility to achieve many custom behaviors by defining their own macros, materializations, hooks, and more. We view it as our responsibility as maintainers to decide when something should be "possible" — via macros, packages, etc. — and when something should be "easy" — built into the <Constant name="core" /> standard.
+We also believe dbt as a framework should be extensible enough to ["make the easy things easy, and the hard things possible"](https://en.wikipedia.org/wiki/Perl#Philosophy). To that end, we _don't_ believe it's appropriate for dbt to have an out-of-the-box solution for every niche problem. Users have the flexibility to achieve many custom behaviors by defining their own macros, materializations, hooks, and more. We view it as our responsibility as maintainers to decide when something should be "possible" — via macros, packages, etc. — and when something should be "easy" — built into the <Constant name="core" /> standard.
 
 So when will we say "yes" to new capabilities for <Constant name="core" />? The signals we look for include:
 - Upvotes on issues in our GitHub repos
-- Open source <Constant name="dbt" /> packages trying to close a gap
+- Open source dbt packages trying to close a gap
 - Technical advancements in the ecosystem
 
 In the meantime — we'll do our best to respond to new issues with:
@@ -59,9 +59,9 @@ An issue could be a bug you've identified while using the product or reading the
 
 #### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please see [<Constant name="dbt" /> support](/docs/dbt-support) for more details and suggestions on how to get help.
+- Issues are **not** for support / troubleshooting / debugging help. Please see [dbt support](/docs/dbt-support) for more details and suggestions on how to get help.
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
-- Many <Constant name="dbt" /> repositories offer templates for creating issues, such as reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This information helps us (and others) understand your issue.
+- Many dbt repositories offer templates for creating issues, such as reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This information helps us (and others) understand your issue.
 
 ##### You've found an existing issue that interests you. What should you do?
 
@@ -104,7 +104,7 @@ Some of the most common labels are explained below:
 
 **Every PR should be associated with an issue.** Why? Before you spend a lot of time working on a contribution, we want to make sure that your proposal will be accepted. You should open an issue first, describing your desired outcome and outlining your planned change. If you've found an older issue that's already open, comment on it with an outline for your planned implementation _before_ putting in the work to open a pull request.
 
-**PRs must include robust testing.** Comprehensive testing within pull requests is crucial for the stability of <Constant name="dbt" />. By prioritizing robust testing, we ensure the reliability of our codebase, minimize unforeseen issues, and safeguard against potential regressions. **We cannot merge changes that risk the backward incompatibility of existing documented behaviors.** We understand that creating thorough tests often requires significant effort, and your dedication to this process greatly contributes to the project's overall reliability. Thank you for your commitment to maintaining the integrity of our codebase and the experience of everyone using <Constant name="dbt" />!
+**PRs must include robust testing.** Comprehensive testing within pull requests is crucial for the stability of dbt. By prioritizing robust testing, we ensure the reliability of our codebase, minimize unforeseen issues, and safeguard against potential regressions. **We cannot merge changes that risk the backward incompatibility of existing documented behaviors.** We understand that creating thorough tests often requires significant effort, and your dedication to this process greatly contributes to the project's overall reliability. Thank you for your commitment to maintaining the integrity of our codebase and the experience of everyone using dbt!
 
 **PRs go through two review steps.** First, we aim to respond with feedback on whether we think the implementation is appropriate from a product & usability standpoint. At this point, we will close PRs that we believe fall outside the scope of <Constant name="core" />, or which might lead to an inconsistent user experience. This is an important part of our role as maintainers; we're always open to hearing disagreement. If a PR passes this first review, we will queue it up for code review, at which point we aim to test it ourselves and provide thorough feedback.
 
@@ -115,7 +115,7 @@ Some of the most common labels are explained below:
 **Automation that can help us:** Many repositories have a template for pull request descriptions, which will include a checklist that must be completed before the PR can be merged. You don't have to do all of these things to get an initial PR, but they will delay our review process. Those include:
 
 - **Tests, tests, tests.** When you open a PR, some tests and code checks will run. (For security reasons, some may need to be approved by a maintainer.) We will not merge any PRs with failing tests. If you're not sure why a test is failing, please say so, and we'll do our best to get to the bottom of it together.
-- **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source <Constant name="dbt" /> software. For more details, read: ["Contributor License Agreements"](../resources/contributor-license-agreements.md)
+- **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source dbt software. For more details, read: ["Contributor License Agreements"](../resources/contributor-license-agreements.md)
 - **Changelog:** In projects that include a number of changes in each release, we need a reliable way to signal what's been included. The mechanism for this will vary by repository, so keep an eye out for notes about how to update the changelog.
 
 #### Inclusion in release versions

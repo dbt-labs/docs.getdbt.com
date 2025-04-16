@@ -62,4 +62,4 @@ We most commonly see the ORDER BY clause used in data work to:
 - (For Snowflake) Optimize the performance of large incremental models that use both a `cluster_by` [configuration](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#using-cluster_by) and ORDER BY statement
 - Control the ordering of window function partitions (ex. `row_number() over (partition by user_id order by updated_at)`)
 
-This isn’t an extensive list of where your team may be using the ORDER BY clause throughout your <Constant name="dbt" /> models, ad hoc queries, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using the ORDER BY clause throughout your dbt models, ad hoc queries, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

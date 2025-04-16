@@ -71,7 +71,7 @@ select ...
 
 ## Definition 
 
-[Materializations](/docs/build/materializations#materializations) are strategies for persisting <Constant name="dbt" /> models in a warehouse. These are the materialization types built into <Constant name="dbt" />:
+[Materializations](/docs/build/materializations#materializations) are strategies for persisting dbt models in a warehouse. These are the materialization types built into dbt:
 
 - `ephemeral` &mdash; [ephemeral](/docs/build/materializations#ephemeral) models are not directly built into the database
 - `table` &mdash; a model is rebuilt as a [table](/docs/build/materializations#table) on each run
@@ -79,7 +79,7 @@ select ...
 - `materialized_view` &mdash; allows the creation and maintenance of [materialized views](/docs/build/materializations#materialized-view) in the target database
 - `incremental` &mdash; [incremental](/docs/build/materializations#incremental) models allow dbt to insert or update records into a table since the last time that model was run
 
-You can also configure [custom materializations](/guides/create-new-materializations?step=1) in <Constant name="dbt" />. Custom materializations are a powerful way to extend <Constant name="dbt" />'s functionality to meet your specific needs.
+You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs.
 
 ## Creation Precedence
 <!-- This text is copied from /reference/resource-configs/on_configuration_change.md -->

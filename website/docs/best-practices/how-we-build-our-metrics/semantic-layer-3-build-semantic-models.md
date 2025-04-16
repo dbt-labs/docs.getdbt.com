@@ -359,6 +359,6 @@ Let's review the basics of semantic models:
 
 - 🧱 Consist of **entities, dimensions, and measures**.
 - 🫂 Describe the **semantics and relationships of objects** in the warehouse.
-- 1️⃣ Correspond to a **single logical model** in your <Constant name="dbt" /> project.
+- 1️⃣ Correspond to a **single logical model** in your dbt project.
 
 Next up, let's use our new semantic model to **build a metric**!

@@ -20,8 +20,8 @@ You can migrate your projects from using the `dbt-spark` adapter to using the [d
 
 ### Prerequisites
 
-- Your project must be compatible with <Constant name="dbt" /> 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) for details. For the latest version of <Constant name="dbt" />, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
-- For <Constant name="cloud" />, you need administrative (admin) privileges to migrate <Constant name="dbt" /> projects.
+- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
+- For <Constant name="cloud" />, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication
 
@@ -56,7 +56,7 @@ The migration to the `dbt-databricks` adapter from `dbt-spark` shouldn't cause a
 To update your Databricks connection in <Constant name="cloud" />:
 
 1. Select **Account Settings** in the main navigation bar.
-2. On the **Projects** tab, find the project you want to migrate to the <Constant name="dbt" />-databricks adapter.
+2. On the **Projects** tab, find the project you want to migrate to the dbt-databricks adapter.
 3. Click the hyperlinked Connection for the project.
 4. Click **Edit** in the top right corner.
 5. Select **Databricks** for the warehouse
@@ -81,7 +81,7 @@ These credentials will not get lost when there's a successful connection to Data
 ## Migrate dbt projects in dbt Core
 
 To migrate your dbt Core projects to the `dbt-databricks` adapter from `dbt-spark`, you:
-1. Install the [<Constant name="dbt" />-databricks adapter](https://github.com/databricks/dbt-databricks) in your environment
+1. Install the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) in your environment
 1. Update your Databricks connection by modifying your `target` in your `~/.dbt/profiles.yml` file
 
 Anyone who's using your project must also make these changes in their environment.

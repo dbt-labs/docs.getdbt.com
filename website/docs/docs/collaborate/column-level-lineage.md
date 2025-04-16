@@ -5,7 +5,7 @@ description: "Use dbt Explorer's column-level lineage to gain insights about you
 
 # Column-level lineage <Lifecycle status='enterprise' />
 
-<Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your <Constant name="dbt" /> project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a <Constant name="dbt" /> project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
+<Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
 
 CLL is available to <Constant name="cloud" /> Enterprise accounts that can use <Constant name="explorer" />. 
 
@@ -26,7 +26,7 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 ## Column evolution lens {#column-lens}
 
-You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your <Constant name="dbt" /> lineage, informing debugging workflows in particular. 
+You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="90%" title="Example of the Column evolution lens"/>
 
@@ -46,7 +46,7 @@ Learn more about why and how you can use CLL in the following sections.
 
 ### Root cause analysis
 
-When there is an unexpected breakage in a data pipeline, column-level lineage can be a valuable tool to understand the exact point where the error occurred in the pipeline. For example, a failing data test on a particular column in your <Constant name="dbt" /> model might've stemmed from an untested column upstream. Using CLL can help quickly identify and fix breakages when they happen.
+When there is an unexpected breakage in a data pipeline, column-level lineage can be a valuable tool to understand the exact point where the error occurred in the pipeline. For example, a failing data test on a particular column in your dbt model might've stemmed from an untested column upstream. Using CLL can help quickly identify and fix breakages when they happen.
 
 ### Impact analysis
 

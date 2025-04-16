@@ -14,7 +14,7 @@ If this is your first time ever using the tool, it will:
 - prompt you for each piece of information that dbt needs to connect to that database: things like `account`, `user`, `password`, etc
 
 Then, it will:
-- Create a new folder with your project name and sample files, enough to get you started with <Constant name="dbt" />
+- Create a new folder with your project name and sample files, enough to get you started with dbt
 - Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/core/connect-data-platform/connection-profiles).
 
 When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile profile_name`.
@@ -65,11 +65,11 @@ prompts:
 
 
 ```
-$ <Constant name="dbt" /> init
+$ dbt init
 Running with dbt=1.0.0
 Setting up your profile.
 user (yourname@jaffleshop.com): summerintern@jaffleshop.com
 schema (usually dbt_<yourname>): dbt_summerintern
 threads (your favorite number, 1-10) [8]: 6
-Profile internal-snowflake written to /Users/intern/.<Constant name="dbt" />/profiles.yml using project's profile_template.yml and your supplied values. Run '<Constant name="dbt" /> debug' to validate the connection.
+Profile internal-snowflake written to /Users/intern/.dbt/profiles.yml using project's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
 ```

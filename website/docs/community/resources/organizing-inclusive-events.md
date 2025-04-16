@@ -5,7 +5,7 @@ id: "organizing-inclusive-events"
 
 # Tips for organizing inclusive events
 
-The <Constant name="dbt" /> community is filled with dedicated community leaders who create opportunities for connection, learning and professional development within the analytics community.
+The dbt community is filled with dedicated community leaders who create opportunities for connection, learning and professional development within the analytics community.
 
 This guide is a resource to help organizers execute **inclusive digital events**. We understand that organizers, presenters, speakers, etc. might not be able to apply these tips to *every* event, but this guide will offer some food for thought.
 

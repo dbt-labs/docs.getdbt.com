@@ -15,7 +15,7 @@ keywords: ["generate", "schema name", "guide", "dbt", "schema customization", "c
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
-This guide explains how to customize the [schema](/docs/build/custom-schemas), [database](/docs/build/custom-databases), and [alias](/docs/build/custom-aliases) naming conventions in <Constant name="dbt" /> to fit your data warehouse governance and design needs.
+This guide explains how to customize the [schema](/docs/build/custom-schemas), [database](/docs/build/custom-databases), and [alias](/docs/build/custom-aliases) naming conventions in dbt to fit your data warehouse governance and design needs.
 When we develop dbt models and execute certain [commands](https://docs.getdbt.com/reference/dbt-commands) (such as `dbt run` or `dbt build`), objects (like tables and views) get created in the data warehouse based on these naming conventions.
 
 
@@ -27,13 +27,13 @@ Different warehouses have different names for _logical databases_. The informati
 :::
 
 
-The following is <Constant name="dbt" />'s out-of-the-box default behavior:
+The following is dbt's out-of-the-box default behavior:
 
 - The database where the object is created is defined by the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments) or in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) in dbt Core.
 
 - The schema depends on whether you have defined a [custom schema](/docs/build/custom-schemas) for the model:
     - If you haven't defined a custom schema, dbt creates the object in the default schema. In dbt Cloud this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
-    - If you define a custom schema, <Constant name="dbt" /> concatenates the schema mentioned earlier with the custom one.
+    - If you define a custom schema, dbt concatenates the schema mentioned earlier with the custom one.
     - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
     - Note that for automated CI jobs, the schema name derives from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`.
 
@@ -53,19 +53,19 @@ The defaults allow developers to work in their isolated schemas (sandboxes) with
 
 While the default behavior will fit the needs of most organizations, there are occasions where this approach won't work.
 
-For example, <Constant name="dbt" /> expects that it has permission to create schemas as needed (and we recommend that the users running <Constant name="dbt" /> have this ability), but it might not be allowed at your company.
+For example, dbt expects that it has permission to create schemas as needed (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
 Or, based on how you've designed your warehouse, you may wish to minimize the number of schemas in your dev environment (and avoid schema sprawl by not creating the combination of all developer schemas and custom schemas).
 
 Alternatively, you may even want your dev schemas to be named after feature branches instead of the developer name.
 
-For this reason, <Constant name="dbt" /> offers three macros to customize what objects are created in the data warehouse:
+For this reason, dbt offers three macros to customize what objects are created in the data warehouse:
 
 - [`generate_database_name()`](/docs/build/custom-databases#generate_database_name)
 - [`generate_schema_name()`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name)
 - [`generate_alias_name()`](/docs/build/custom-aliases#generate_alias_name)
 
-By overwriting one or multiple of those macros, we can tailor where <Constant name="dbt" /> objects are created in the data warehouse and align with any existing requirement.
+By overwriting one or multiple of those macros, we can tailor where dbt objects are created in the data warehouse and align with any existing requirement.
 
 
 :::note Key concept
@@ -81,7 +81,7 @@ Further, the staging version of `fct_player_stats` should exist in a unique loca
 
 We often leverage the following when customizing these macros:
 
-- In <Constant name="cloud" />, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the <Constant name="dbt" /> invocation is occurring (dev/stg/prod).
+- In <Constant name="cloud" />, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
     - They can be set at the environment level and all jobs will automatically inherit the default values. We'll add jinja logic (`if/else/endif`) to identify whether the run happens in dev, prod, Ci, and more.
     
 - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). 
@@ -94,7 +94,7 @@ To allow the database/schema/object name to depend on the current branch, you ca
 
 ## Example use cases
 
-Here are some typical examples we've encountered with <Constant name="dbt" /> users leveraging those 3 macros and different logic. 
+Here are some typical examples we've encountered with dbt users leveraging those 3 macros and different logic. 
 
 
 :::note
@@ -160,7 +160,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 
 :::note
 
-We added logic to check if the current <Constant name="dbt" /> run is happening in production or not. This is important, and we explain why in the [What not to do](/guides/customize-schema-alias?step=3#what-not-to-do) section.
+We added logic to check if the current dbt run is happening in production or not. This is important, and we explain why in the [What not to do](/guides/customize-schema-alias?step=3#what-not-to-do) section.
 
 :::
 
@@ -488,7 +488,7 @@ Similarly, different PRs will result in the exact same object in the data wareho
 
 ### Solution
 
-As described in the previous example, update the macro to check if <Constant name="dbt" /> is running in production. Only in production should we remove the concatenation and use the custom schema alone.
+As described in the previous example, update the macro to check if dbt is running in production. Only in production should we remove the concatenation and use the custom schema alone.
 
 
 ## Tips and tricks
@@ -498,7 +498,7 @@ This section will provide some useful tips on how to properly adjust your `gener
 
 ### Creating non existing databases from dbt
 
-<Constant name="dbt" /> will automatically try to create a schema if it doesn’t exist and if an object needs to be created in it, but it won’t automatically try to create a database that doesn’t exist.
+dbt will automatically try to create a schema if it doesn’t exist and if an object needs to be created in it, but it won’t automatically try to create a database that doesn’t exist.
 
 So, if your `generate_database_name()` configuration points to different databases, which might not exist, dbt will fail if you do a simple `dbt build`. 
 

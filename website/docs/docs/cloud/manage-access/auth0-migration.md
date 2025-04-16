@@ -5,7 +5,7 @@ sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud."
 ---
 
-<Constant name="dbt" /> Labs is partnering with Auth0 to bring enhanced features to <Constant name="cloud" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="cloud" />. These changes will require some action from customers with SSO configured in <Constant name="cloud" /> today, and this guide will outline the necessary changes for each environment. 
+dbt Labs is partnering with Auth0 to bring enhanced features to <Constant name="cloud" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="cloud" />. These changes will require some action from customers with SSO configured in <Constant name="cloud" /> today, and this guide will outline the necessary changes for each environment. 
 
 If you have not yet configured SSO in <Constant name="cloud" />, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
 
@@ -146,7 +146,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 Click **Save** once you are done. 
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="dbt" /> Cloud_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
 :::warning Domain authorization
 

@@ -35,7 +35,7 @@ With automatic code generation and using natural language prompts, <Constant nam
 - The metadata and user prompts are sent to the AI provider (in this case, OpenAI) through API calls for processing.
 - The AI-generated content is returned to <Constant name="cloud" /> for you to review, edit, and save within your project files.
 - <Constant name="copilot" /> does not use warehouse data to train AI models.
-- No sensitive data persists on <Constant name="dbt" /> Labs' systems, except for usage data.
+- No sensitive data persists on dbt Labs' systems, except for usage data.
 - Client data, including any personal or sensitive data inserted into the query by the user, is deleted within 30 days by OpenAI.
 - <Constant name="copilot" /> uses a best practice style guide to ensure consistency across teams.
 

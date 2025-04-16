@@ -16,8 +16,8 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Create a new Snowflake worksheet.
 - Load sample data into your Snowflake account.
 - Connect <Constant name="cloud" /> to Snowflake.
-- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
-- Add sources to your <Constant name="dbt" /> project. Sources allow you to name and describe the raw data already loaded into Snowflake.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add sources to your dbt project. Sources allow you to name and describe the raw data already loaded into Snowflake.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
@@ -25,9 +25,9 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 Snowflake also provides a quickstart for you to learn how to use <Constant name="cloud" />. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with <Constant name="cloud" /> & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
-You can also watch the [YouTube video on <Constant name="dbt" /> and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
+You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
  
 ### Prerequisites​
@@ -37,7 +37,7 @@ You can also watch the [YouTube video on <Constant name="dbt" /> and Snowflake](
 
 ### Related content
 
-- Learn more with [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
@@ -78,7 +78,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
 
         ```sql 
         copy into raw.jaffle_shop.customers (id, first_name, last_name)
-        from 's3://<Constant name="dbt" />-tutorial-public/jaffle_shop_customers.csv'
+        from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
         file_format = (
             type = 'CSV'
             field_delimiter = ','
@@ -99,7 +99,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
     - Delete all contents in the Editor, then run this command to load data into the `orders` table:
         ```sql
         copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
-        from 's3://<Constant name="dbt" />-tutorial-public/jaffle_shop_orders.csv'
+        from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
         file_format = (
             type = 'CSV'
             field_delimiter = ','
@@ -121,7 +121,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
     - Delete all contents in the Editor, then run this command to load data into the `payment` table:
         ```sql
         copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
-        from 's3://<Constant name="dbt" />-tutorial-public/stripe_payments.csv'
+        from 's3://dbt-tutorial-public/stripe_payments.csv'
         file_format = (
             type = 'CSV'
             field_delimiter = ','
@@ -137,7 +137,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
 
 ## Connect dbt Cloud to Snowflake
 
-There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, <Constant name="dbt" /> Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, <Constant name="dbt" /> Labs recommends connecting manually.
+There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
@@ -148,11 +148,11 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
-    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the <Constant name="dbt" /> tile to open up the connect box. 
+    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 
-2. In the **Connect to <Constant name="dbt" />** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new <Constant name="dbt" /> user role to each database. Then, click **Connect**.
+2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
@@ -213,7 +213,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </Tabs>
 
 ## Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your <Constant name="dbt" /> project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 
@@ -255,7 +255,7 @@ grant all on future tables in database raw to role snowflake_role_name;
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -433,7 +433,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 ## Build models on top of sources
 
-Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in <Constant name="dbt" />, you can:
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
 - select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
 - test your assumptions about your source data
 - calculate the freshness of your source data

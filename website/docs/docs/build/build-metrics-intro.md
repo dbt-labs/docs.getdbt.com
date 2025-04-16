@@ -9,12 +9,12 @@ pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
-Use MetricFlow in <Constant name="dbt" /> to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for <Constant name="dbt" /> semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+Use MetricFlow in dbt to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
-- Intuitively define metrics in your <Constant name="dbt" /> project
+- Intuitively define metrics in your dbt project
 - Develop from your preferred environment, whether that's the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [<Constant name="core" />](/docs/core/installation-overview)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
 - Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) accounts only).

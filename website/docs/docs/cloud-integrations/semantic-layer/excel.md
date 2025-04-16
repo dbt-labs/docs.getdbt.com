@@ -10,7 +10,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Excel 
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using <Constant name="dbt" /> v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You need a Microsoft Excel account with access to install add-ons.
 - You have a [<Constant name="cloud" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a <Constant name="cloud" /> account.
 - You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.

@@ -13,7 +13,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | :--- | :--- |
 | [models](/docs/build/models) | Each model lives in a single file and contains logic that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation. |
 | [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
-| [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with <Constant name="dbt" />. |
+| [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
 | [data tests](/docs/build/data-tests) | SQL queries that you can write to test the models and resources in your project. |
 | [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
 | [docs](/docs/build/documentation) | Docs for your project that you can build. |
@@ -23,11 +23,11 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [groups](/docs/build/groups) | Groups enable collaborative node organization in restricted collections. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 | [semantic models](/docs/build/semantic-models) | Semantic models define the foundational data relationships in [MetricFlow](/docs/build/about-metricflow) and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), enabling you to query metrics using a semantic graph. |
-| [saved queries](/docs/build/saved-queries) | Saved queries organize reusable queries by grouping metrics, dimensions, and filters into nodes visible in the <Constant name="dbt" /> DAG. |
+| [saved queries](/docs/build/saved-queries) | Saved queries organize reusable queries by grouping metrics, dimensions, and filters into nodes visible in the dbt DAG. |
 
 When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
-* **How would people run <Constant name="dbt" /> commands** &mdash; Selecting a path
+* **How would people run dbt commands** &mdash; Selecting a path
 * **How would people navigate within the project** &mdash; Whether as developers in the <Constant name="cloud_ide" /> or stakeholders from the docs
 * **How would people configure the models** &mdash; Some bulk configurations are easier done at the directory level so people don’t have to remember to do everything in a config block with each new model
 
@@ -42,8 +42,8 @@ Edit `dbt_project.yml` to set up common project configurations such as:
 | :--- | :--- |
 | [name](/reference/project-configs/name) | Your project’s name in [snake case](https://en.wikipedia.org/wiki/Snake_case) |
 | [version](/reference/project-configs/version) | Version of your project |
-| [require-<Constant name="dbt" />-version](/reference/project-configs/require-dbt-version) | Restrict your project to only work with a range of [<Constant name="core" /> versions](/docs/dbt-versions/core) |
-| [profile](/reference/project-configs/profile) | The profile <Constant name="dbt" /> uses to connect to your data platform |
+| [require-dbt-version](/reference/project-configs/require-dbt-version) | Restrict your project to only work with a range of [<Constant name="core" /> versions](/docs/dbt-versions/core) |
+| [profile](/reference/project-configs/profile) | The profile dbt uses to connect to your data platform |
 | [model-paths](/reference/project-configs/model-paths) | Directories to where your model and source files live  |
 | [seed-paths](/reference/project-configs/seed-paths) | Directories to where your seed files live |
 | [test-paths](/reference/project-configs/test-paths) | Directories to where your test files live |
@@ -59,7 +59,7 @@ For complete details on project configurations, see [dbt_project.yml](/reference
 
 ## Project subdirectories
 
-You can use the Project subdirectory option in <Constant name="cloud" /> to specify a subdirectory in your git repository that <Constant name="dbt" /> should use as the root directory for your project. This is helpful when you have multiple <Constant name="dbt" /> projects in one repository or when you want to organize your <Constant name="dbt" /> project files into subdirectories for easier management.
+You can use the Project subdirectory option in <Constant name="cloud" /> to specify a subdirectory in your git repository that dbt should use as the root directory for your project. This is helpful when you have multiple dbt projects in one repository or when you want to organize your dbt project files into subdirectories for easier management.
 
 To use the Project subdirectory option in <Constant name="cloud" />, follow these steps:
 
@@ -79,7 +79,7 @@ After configuring the Project subdirectory option, dbt Cloud will use it as the 
 
 :::info Project support in <Constant name="cloud" /> plans
 
-Some [plans](https://www.getdbt.com/pricing) support only one <Constant name="dbt" /> project, while [Enterprise plans](https://www.getdbt.com/contact) allow multiple projects and [cross-project references](/best-practices/how-we-mesh/mesh-1-intro) with <Constant name="mesh" />.
+Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while [Enterprise plans](https://www.getdbt.com/contact) allow multiple projects and [cross-project references](/best-practices/how-we-mesh/mesh-1-intro) with <Constant name="mesh" />.
 
 :::
 
@@ -87,18 +87,18 @@ Some [plans](https://www.getdbt.com/pricing) support only one <Constant name="db
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in <Constant name="cloud" />](/guides) and start developing. Or, run [<Constant name="dbt" /> init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in <Constant name="cloud" />](/guides) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
-During project initialization, <Constant name="dbt" /> creates sample model files in your project directory to help you start developing quickly.
+During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
 ## Sample projects
 
-If you want to explore <Constant name="dbt" /> projects more in-depth, you can clone <Constant name="dbt" /> Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
+If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 
 
 ## Related docs
-* [Best practices: How we structure our <Constant name="dbt" /> projects](/best-practices/how-we-structure/1-guide-overview)
+* [Best practices: How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview)
 * [Quickstarts for <Constant name="cloud" />](/guides)
 * [Quickstart for <Constant name="core" />](/guides/manual-install)

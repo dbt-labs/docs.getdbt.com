@@ -20,7 +20,7 @@ Using Databricks workflows to call the <Constant name="cloud" /> job API can be 
 
 1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a <Constant name="cloud" /> job after those processes are done.
 2. **Utilizes <Constant name="cloud" /> jobs features &mdash;** <Constant name="cloud" /> gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
-3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for <Constant name="dbt" /> jobs in the <Constant name="cloud" /> environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
+3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for dbt jobs in the <Constant name="cloud" /> environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
 4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger <Constant name="cloud" /> jobs based on custom conditions or logic that aren't natively supported by <Constant name="cloud" />'s scheduling feature. This can give you more flexibility in terms of when and how your <Constant name="cloud" /> jobs run.
 
 ### Prerequisites

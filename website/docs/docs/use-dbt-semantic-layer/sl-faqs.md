@@ -7,7 +7,7 @@ tags: [Semantic Layer]
 pagination_next: null
 ---
 
-The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="cloud" /> offering that allows users to centrally define their metrics within their <Constant name="dbt" /> project using [MetricFlow](/docs/build/about-metricflow).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="cloud" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
 
 The <Constant name="semantic_layer" /> offers:
 

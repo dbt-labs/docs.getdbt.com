@@ -19,7 +19,7 @@ dbt ls
      [--output-keys KEY_NAME [KEY_NAME]]
 ```
 
-See [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in <Constant name="dbt" />
+See [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in dbt
 
 **Arguments**:
 - `--resource-type`: This flag restricts the "resource types" returned by dbt in the `dbt ls` command. By default, all resource types are included in the results of `dbt ls` except for the analysis type.
@@ -36,7 +36,7 @@ Note that the `dbt ls` command does not include models which are disabled or sch
 
 **Listing models by package**
 ```
-$ <Constant name="dbt" /> ls --select snowplow.*
+$ dbt ls --select snowplow.*
 snowplow.snowplow_base_events
 snowplow.snowplow_base_web_page_context
 snowplow.snowplow_id_map
@@ -47,7 +47,7 @@ snowplow.snowplow_sessions
 
 **Listing tests by tag name**
 ```
-$ <Constant name="dbt" /> ls --select tag:nightly --resource-type test
+$ dbt ls --select tag:nightly --resource-type test
 my_project.schema_test.not_null_orders_order_id
 my_project.schema_test.unique_orders_order_id
 my_project.schema_test.not_null_products_product_id
@@ -57,14 +57,14 @@ my_project.schema_test.unique_products_product_id
 
 **Listing schema tests of incremental models**
 ```
-$ <Constant name="dbt" /> ls --select config.materialized:incremental,test_type:schema
+$ dbt ls --select config.materialized:incremental,test_type:schema
 model.my_project.logs_parsed
 model.my_project.events_categorized
 ```
 
 **Listing JSON output**
 ```
-$ <Constant name="dbt" /> ls --select snowplow.* --output json
+$ dbt ls --select snowplow.* --output json
 {"name": "snowplow_events", "resource_type": "model", "package_name": "snowplow",  ...}
 {"name": "snowplow_page_views", "resource_type": "model", "package_name": "snowplow",  ...}
 ...
@@ -73,7 +73,7 @@ $ <Constant name="dbt" /> ls --select snowplow.* --output json
 **Listing JSON output with custom keys**
 
 ```
-$ <Constant name="dbt" /> ls --select snowplow.* --output json --output-keys "name resource_type description"
+$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...

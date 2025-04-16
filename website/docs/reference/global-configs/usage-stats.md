@@ -4,11 +4,11 @@ id: "usage-stats"
 sidebar: "Anonymous usage stats"
 ---
 
-<Constant name="dbt" /> Labs is on a mission to build the best version of <Constant name="dbt" /> possible, and a crucial part of that is understanding how users work with <Constant name="dbt" />. To this end, we've added some simple event tracking (or telemetry) to <Constant name="dbt" /> using Snowplow. Importantly, we do not track credentials, raw model contents, or model names: we consider these private, and frankly none of our business. 
+dbt Labs is on a mission to build the best version of dbt possible, and a crucial part of that is understanding how users work with dbt. To this end, we've added some simple event tracking (or telemetry) to dbt using Snowplow. Importantly, we do not track credentials, raw model contents, or model names: we consider these private, and frankly none of our business. 
 
-The data we collect is used for use cases such as industry identification, use-case research, improvements of sales, marketing, product features, and services. Telemetry allows users to seamlessly contribute to the continuous improvement of <Constant name="dbt" />, enabling us to better serve the data community.
+The data we collect is used for use cases such as industry identification, use-case research, improvements of sales, marketing, product features, and services. Telemetry allows users to seamlessly contribute to the continuous improvement of dbt, enabling us to better serve the data community.
 
-Usage statistics are fired when <Constant name="dbt" /> is invoked and when models are run. These events contain basic platform information (OS + Python version) and metadata such as:
+Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + Python version) and metadata such as:
 - Whether the invocation succeeded.
 - How long it took.
 - An anonymized hash key representing the raw model content.
@@ -16,7 +16,7 @@ Usage statistics are fired when <Constant name="dbt" /> is invoked and when mode
 
 For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
-- <Constant name="cloud" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of <Constant name="dbt" />. 
+- <Constant name="cloud" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
 
 - <Constant name="core" /> users have telemetry enabled by default to help us understand usage patterns and improve the product. You can opt out of event tracking at any time by adding the following to your `dbt_project.yml` file:
 

@@ -7,23 +7,23 @@ displayText: Materializations best practices
 hoverSnippet: Read this guide to understand the different types of materializations you can create in dbt.
 ---
 
-Views and tables and incremental models, oh my! In this section we’ll start getting our hands dirty digging into the three basic materializations that ship with <Constant name="dbt" />. They are considerably less scary and more helpful than lions, tigers, or bears — although perhaps not as cute (can data be cute? We at <Constant name="dbt" /> Labs think so). We’re going to define, implement, and explore:
+Views and tables and incremental models, oh my! In this section we’ll start getting our hands dirty digging into the three basic materializations that ship with dbt. They are considerably less scary and more helpful than lions, tigers, or bears — although perhaps not as cute (can data be cute? We at dbt Labs think so). We’re going to define, implement, and explore:
 
 - 🔍 [**views**](/docs/build/materializations#view)
 - ⚒️ [**tables**](/docs/build/materializations#table)
 - 📚 [**incremental model**](/docs/build/materializations#incremental)
 
 :::info
-👻 There is a fourth default materialization available in <Constant name="dbt" /> called [**ephemeral materialization**](/docs/build/materializations#ephemeral). It is less broadly applicable than the other three, and better deployed for specific use cases that require weighing some tradeoffs. We chose to leave it out of this guide and focus on the three materializations that will power 99% of your modeling needs.
+👻 There is a fourth default materialization available in dbt called [**ephemeral materialization**](/docs/build/materializations#ephemeral). It is less broadly applicable than the other three, and better deployed for specific use cases that require weighing some tradeoffs. We chose to leave it out of this guide and focus on the three materializations that will power 99% of your modeling needs.
 :::
 
-**Views and Tables are the two basic categories** of object that we can create across warehouses. They exist natively as types of objects in the warehouse, as you can see from this screenshot of Snowflake (depending on your warehouse the interface will look a little different). **Incremental models** and other materializations types are a little bit different. They tell <Constant name="dbt" /> to **construct tables in a special way**.
+**Views and Tables are the two basic categories** of object that we can create across warehouses. They exist natively as types of objects in the warehouse, as you can see from this screenshot of Snowflake (depending on your warehouse the interface will look a little different). **Incremental models** and other materializations types are a little bit different. They tell dbt to **construct tables in a special way**.
 
 ![Tables and views in the browser on Snowflake.](/img/best-practices/materializations/tables-and-views.png)
 
 ### Views
 
-- ✅ **The default materialization in <Constant name="dbt" />**. A starting project has no configurations defined for materializations, which means _everything_ is by default built as a view.
+- ✅ **The default materialization in dbt**. A starting project has no configurations defined for materializations, which means _everything_ is by default built as a view.
 - 👩‍💻 **Store _only the SQL logic_ of the transformation in the warehouse, _not the data_**. As such, they make a great default. They build almost instantly and cost almost nothing to build.
 - ⏱️ Always reflect the **most up-to-date** version of the input data, as they’re run freshly every time they’re queried.
 - 👎 **Have to be processed every time they’re queried, so slower to return results than a table of the same data.** That also means they can cost more over time, especially if they contain intensive transformations and are queried often.

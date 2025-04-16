@@ -20,27 +20,27 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 | Deployment type |	Schema explorer URL |
 | --------------- | ------------------- |
 | North America multi-tenant	|	https://semantic-layer.cloud.getdbt.com/api/graphql |
-| EMEA multi-tenant	|	https://semantic-layer.emea.<Constant name="dbt" />.com/api/graphql |
-| APAC multi-tenant	|	https://semantic-layer.au.<Constant name="dbt" />.com/api/graphql |
+| EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
+| APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
 | Single tenant | `https://semantic-layer.YOUR_ACCESS_URL/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix followed by the appropriate Access URL for your region and plan.|
 | Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
 
 **Example**
 - If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
-<Constant name="dbt" /> Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="semantic_layer" />.
+dbt Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="semantic_layer" />.
 
 Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Requirements to use the GraphQL API
-- A <Constant name="cloud" /> project on <Constant name="dbt" /> v1.6 or higher
+- A <Constant name="cloud" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
 - A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions
-- Your <Constant name="dbt" /> project is configured and connected to a data platform
+- Your dbt project is configured and connected to a data platform
 
 ## Using the GraphQL API
 
-If you're a <Constant name="dbt" /> user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
 Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 

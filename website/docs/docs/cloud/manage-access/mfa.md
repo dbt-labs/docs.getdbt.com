@@ -50,7 +50,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-cloud/scan-qr.png" title="Example of the user generated QR code." />
 
-3. Enter the code provide for "<Constant name="dbt" /> Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="cloud" />.
+3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="cloud" />.
 
 </Expandable>
 
@@ -74,9 +74,9 @@ If possible, it's recommended to configure multiple MFA methods so that if one f
 
 ## Disclaimer
 
-The terms below apply to <Constant name="cloud" />’s MFA via SMS program, that <Constant name="dbt" /> Labs (“<Constant name="dbt" /> Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="cloud" /> log-in requests.
+The terms below apply to <Constant name="cloud" />’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="cloud" /> log-in requests.
 
-Any clients of <Constant name="dbt" /> Labs that use <Constant name="cloud" /> Labs 2FA via SMS program (after password is input) are subject to the <Constant name="dbt" /> Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
+Any clients of dbt Labs that use <Constant name="cloud" /> Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
 
 (1) The message frequency is a maximum of 1 message per user login;
 

@@ -4,7 +4,7 @@ description: "Learn about advanced topics for dbt Semantic Layer and MetricFlow,
 pagination_prev: null
 ---
 
-The <Constant name="semantic_layer" /> and MetricFlow are powerful tools that allow you to define metrics and semantic models in your <Constant name="dbt" /> project. 
+The <Constant name="semantic_layer" /> and MetricFlow are powerful tools that allow you to define metrics and semantic models in your dbt project. 
 
 This section covers advanced topics for the <Constant name="semantic_layer" /> and MetricFlow, such as data modeling workflows, and more.
 <!--

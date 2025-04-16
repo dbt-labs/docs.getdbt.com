@@ -132,7 +132,7 @@ There are a few things you need to know before you configure RBAC for SSO users:
 - New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `Member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
 - You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
-- <Constant name="dbt" /> Labs recommends that your <Constant name="cloud" /> group names match the IdP group names.
+- dbt Labs recommends that your <Constant name="cloud" /> group names match the IdP group names.
 
 Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and dbt Cloud groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
 
@@ -180,7 +180,7 @@ Euclid takes the following steps to log in:
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/post-login-screen.png" width="60%" title="The screen users see after their first SSO login." />
 
-4. They now open their email and click the link to join <Constant name="dbt" /> Labs, which completes the process.
+4. They now open their email and click the link to join dbt Labs, which completes the process.
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sample-email.png" width="60%" title="The email the user receives on first SSO login." />
 

@@ -74,4 +74,4 @@ case when time_engaged between 0 and 9 then 'low_engagement'
      else 'high_engagement' end as engagement
 ```
 
-This isn’t an extensive list of where your team may be using the BETWEEN condition throughout your <Constant name="dbt" /> models or ad hoc analyses, but contains some common scenarios analytics engineers may encounter.
+This isn’t an extensive list of where your team may be using the BETWEEN condition throughout your dbt models or ad hoc analyses, but contains some common scenarios analytics engineers may encounter.

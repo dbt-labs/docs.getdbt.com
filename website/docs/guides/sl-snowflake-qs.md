@@ -24,7 +24,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Introduction
 
-The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your <Constant name="dbt" /> project and query them in <Constant name="cloud" /> with [MetricFlow commands](/docs/build/metricflow-commands).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in <Constant name="cloud" /> with [MetricFlow commands](/docs/build/metricflow-commands).
 
 import SLCourses from '/snippets/_sl-course.md';
 
@@ -49,7 +49,7 @@ If you're on different data platforms, you can also follow this guide and will n
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Basic understanding of SQL and <Constant name="dbt" />. For example, you've used <Constant name="dbt" /> before or have completed the [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
+- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 
 ### For users on different data platforms
@@ -161,7 +161,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   ```sql
   copy into raw.jaffle_shop.customers (id, first_name, last_name)
-  from 's3://<Constant name="dbt" />-tutorial-public/jaffle_shop_customers.csv'
+  from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
   file_format = (
       type = 'CSV'
       field_delimiter = ','
@@ -189,7 +189,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   ```sql
   copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
-  from 's3://<Constant name="dbt" />-tutorial-public/jaffle_shop_orders.csv'
+  from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
   file_format = (
       type = 'CSV'
       field_delimiter = ','
@@ -219,7 +219,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   ```sql
   copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
-  from 's3://<Constant name="dbt" />-tutorial-public/stripe_payments.csv'
+  from 's3://dbt-tutorial-public/stripe_payments.csv'
   file_format = (
       type = 'CSV'
       field_delimiter = ','
@@ -241,7 +241,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
 ## Connect dbt Cloud to Snowflake
 
-There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, <Constant name="dbt" /> Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, <Constant name="dbt" /> Labs recommends connecting manually.
+There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
@@ -252,11 +252,11 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
-    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the <Constant name="dbt" /> tile to open up the connect box. 
+    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 
-2. In the **Connect to <Constant name="dbt" />** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new <Constant name="dbt" /> user role to each selected database. Then, click **Connect**.
+2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each selected database. Then, click **Connect**.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
@@ -318,15 +318,15 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 ## Set up dbt Cloud project
 
-In this section, you will set up a <Constant name="cloud" /> managed repository and initialize your <Constant name="dbt" /> project to start developing.
+In this section, you will set up a <Constant name="cloud" /> managed repository and initialize your dbt project to start developing.
 
 ### Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your <Constant name="dbt" /> project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/cloud/git/managed-repository). Otherwise, you will need to create your repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/cloud/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 
 ### Initialize your dbt project
-This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your <Constant name="dbt" /> project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" /> using the <Constant name="cloud_ide" />:
 
@@ -339,19 +339,19 @@ Now that you have a repository configured, you can initialize your project and s
       ```sql
       select * from raw.jaffle_shop.customers
       ```
-    - In the command line bar at the bottom, enter <Constant name="dbt" /> run and click Enter. You should see a <Constant name="dbt" /> run succeeded message.
+    - In the command line bar at the bottom, enter dbt run and click Enter. You should see a dbt run succeeded message.
 
 ## Build your dbt project
 The next step is to build your project. This involves adding sources, staging models, business-defined entities, and packages to your project.
 
 ### Add sources
 
-[Sources](/docs/build/sources) in <Constant name="dbt" /> are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable.
+[Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable.
 
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - **Create a new branch (recommended)** &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch, use this option. The <Constant name="cloud_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
+- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The <Constant name="cloud_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
 
 Name the new branch `build-project`.
 
@@ -398,7 +398,7 @@ sources:
 </File>
 
 ### Add staging models
-[Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in <Constant name="dbt" />. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
+[Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
 
 1. In the `jaffle_shop` sub-directory, create the file `stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
 2. Copy the following query into the file and click **Save**.
@@ -456,7 +456,7 @@ from {{ source('stripe', 'payment') }}
 
 ### Add business-defined entities
 
-This phase involves creating [models that serve as the entity layer or concept layer of your <Constant name="dbt" /> project](/best-practices/how-we-structure/4-marts), making the data ready for reporting and analysis.  It also includes adding [packages](/docs/build/packages) and the [MetricFlow time spine](/docs/build/metricflow-time-spine) that extend <Constant name="dbt" />'s functionality.
+This phase involves creating [models that serve as the entity layer or concept layer of your dbt project](/best-practices/how-we-structure/4-marts), making the data ready for reporting and analysis.  It also includes adding [packages](/docs/build/packages) and the [MetricFlow time spine](/docs/build/metricflow-time-spine) that extend dbt's functionality.
 
 This phase is the [marts layer](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview), which brings together modular pieces into a wide, rich vision of the entities an organization cares about.
 
@@ -601,7 +601,7 @@ In this section, you'll learn about [semantic model](https://docs.getdbt.com/gui
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
-- Each semantic model will be 1:1 with a <Constant name="dbt" /> SQL/Python model.
+- Each semantic model will be 1:1 with a dbt SQL/Python model.
 - Each semantic model will contain (at most) 1 primary or natural entity.
 - Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities.
 - Each semantic model may also contain dimensions, measures, and metrics. This is what actually gets fed into and queried by your downstream BI tool.
@@ -1017,14 +1017,14 @@ This section will guide you on how to use the Hex integration to query your metr
 5. Go to the menu on the left side and select **Data browser**. Then select **Add a data connection**. 
 6. Click **Snowflake**. Provide your data connection a name and description. You don't need to your data warehouse credentials to use the <Constant name="semantic_layer" />.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new_data_connection.png" width="50%" title="Select 'Data browser' and then 'Add a data connection' to connect to Snowflake."/>
-7. Under **Integrations**, toggle the <Constant name="dbt" /> switch to the right to enable the <Constant name="dbt" /> integration.
+7. Under **Integrations**, toggle the dbt switch to the right to enable the dbt integration.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_dbt_toggle.png" width="50%" title="Click on the dbt toggle to enable the integration. "/>
 
 8. Enter the following information:
-   * Select your version of <Constant name="dbt" /> as 1.6 or higher
+   * Select your version of dbt as 1.6 or higher
    * Enter your environment id 
    * Enter your service token 
-   * Make sure to click on the **Use <Constant name="semantic_layer" />** toggle. This way, all queries are routed through <Constant name="dbt" />.
+   * Make sure to click on the **Use <Constant name="semantic_layer" />** toggle. This way, all queries are routed through dbt.
    * Click **Create connection** in the bottom right corner.
 9. Hover over **More** on the menu shown in the following image and select **<Constant name="semantic_layer" />**.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Hover over 'More' on the menu and select 'dbt Semantic Layer'."/>

@@ -42,13 +42,13 @@ The [<Constant name="cloud" /> scheduler](/docs/deploy/job-scheduler) executes C
 
 ### Concurrent CI checks
 
-When you have teammates collaborating on the same <Constant name="dbt" /> project creating pull requests on the same <Constant name="dbt" /> repository, the same CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, <Constant name="cloud" /> can safely execute CI runs _concurrently_ instead of _sequentially_ (differing from what is done with deployment <Constant name="cloud" /> jobs). Because no one needs to wait for one CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate <Constant name="dbt" /> code faster.
+When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, <Constant name="cloud" /> can safely execute CI runs _concurrently_ instead of _sequentially_ (differing from what is done with deployment <Constant name="cloud" /> jobs). Because no one needs to wait for one CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate dbt code faster.
 
 The following describes the conditions when CI checks are run concurrently and when they’re not:  
 
 - CI runs with different PR numbers execute concurrently. 
 - CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. <Constant name="cloud" /> will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation). 
-- CI runs with the same PR number and same commit SHA, originating from different <Constant name="cloud" /> projects will execute jobs concurrently. This can happen when two CI jobs are set up in different <Constant name="cloud" /> projects that share the same <Constant name="dbt" /> repository.
+- CI runs with the same PR number and same commit SHA, originating from different <Constant name="cloud" /> projects will execute jobs concurrently. This can happen when two CI jobs are set up in different <Constant name="cloud" /> projects that share the same dbt repository.
 
 ### Smart cancellation of stale builds
 
@@ -64,17 +64,17 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 Available on [<Constant name="cloud" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and <Constant name="cloud" /> Team or Enterprise accounts.
 
-When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. 
+When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. 
 
 By default, SQL linting lints all the changed SQL files in your project (compared to the last deferred production state). Note that [snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but its SQL isn't lintable and can cause errors during linting. To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`). Refer to [snapshot linting](/docs/cloud/dbt-cloud-ide/lint-format#snapshot-linting) for more information.
 
-If the linter runs into errors, you can specify whether <Constant name="dbt" /> should stop running the job on error or continue running it on error. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check.
+If the linter runs into errors, you can specify whether dbt should stop running the job on error or continue running it on error. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check.
 
 #### To configure SQLFluff linting:
 You can optionally configure SQLFluff linting rules to override default linting behavior.
 
-- Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in <Constant name="dbt" />.
+- Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in dbt.
 - Create a `.sqlfluff` configuration file in your project, add your linting rules to it, and dbt Cloud will use them when linting.
     - When configuring, you can use `dbt` as the templater (for example, `templater = dbt`)
-    - If you’re using the <Constant name="cloud_ide" />, <Constant name="cloud" /> CLI, or any other editor, refer to [Customize linting](/docs/cloud/dbt-cloud-ide/lint-format#customize-linting) for guidance on how to add the <Constant name="dbt" />-specific (or dbtonic) linting rules we use for own project.
+    - If you’re using the <Constant name="cloud_ide" />, <Constant name="cloud" /> CLI, or any other editor, refer to [Customize linting](/docs/cloud/dbt-cloud-ide/lint-format#customize-linting) for guidance on how to add the dbt-specific (or dbtonic) linting rules we use for own project.
 - For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.

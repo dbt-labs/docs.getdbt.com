@@ -9,7 +9,7 @@ slug: /sql-reference/left-join
     <title>Working with left joins in SQL</title>
 </head>
 
-An analytics engineer favorite: the left join. Without a doubt, this is probably the most regularly used join in any <Constant name="dbt" /> project (and for good reason).
+An analytics engineer favorite: the left join. Without a doubt, this is probably the most regularly used join in any dbt project (and for good reason).
 
 The left join returns all rows in the [FROM statement](/sql-reference/from), regardless of match in the left join database object. Compare this to an [inner join](/sql-reference/inner-join), where only rows are returned that have successful key matches between the database object in the FROM statement and in the inner join statement.
 

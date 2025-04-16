@@ -9,7 +9,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Google
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using <Constant name="dbt" /> v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [<Constant name="cloud" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a <Constant name="cloud" /> account.
 - You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
@@ -73,7 +73,7 @@ Public saved selections will refresh for anyone who edits the sheet while privat
 :::tip What's the difference between saved selections and saved queries?
 
 - Saved selections are saved components that you can create only when using the application.
-- Saved queries, explained in the next section, are code-defined sections of data you create in your <Constant name="dbt" /> project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
+- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
 ## Using saved queries

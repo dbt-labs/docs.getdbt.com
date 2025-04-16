@@ -17,11 +17,11 @@ PrivateLink enables a private connection from any <Constant name="cloud" /> Mult
 
 ### Cross-region PrivateLink
 
-<Constant name="dbt" /> Labs has a worldwide network of regional VPCs. These VPCs are specifically used to host PrivateLink VPC endpoints, which are connected to <Constant name="cloud" /> instance environments. To ensure security, access to these endpoints is protected by security groups, network policies, and application connection safeguards. The connected services are also authenticated. Currently, we have multiple customers successfully connecting to their PrivateLink endpoints in different AWS regions within <Constant name="cloud" />.
+dbt Labs has a worldwide network of regional VPCs. These VPCs are specifically used to host PrivateLink VPC endpoints, which are connected to <Constant name="cloud" /> instance environments. To ensure security, access to these endpoints is protected by security groups, network policies, and application connection safeguards. The connected services are also authenticated. Currently, we have multiple customers successfully connecting to their PrivateLink endpoints in different AWS regions within <Constant name="cloud" />.
 
 ### Configuring PrivateLink
 
-<Constant name="cloud" /> supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [<Constant name="dbt" /> Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the <Constant name="dbt" /> private network and setting up the endpoint in <Constant name="cloud" />.
+<Constant name="cloud" /> supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in <Constant name="cloud" />.
 
 - [Snowflake](/docs/cloud/secure/snowflake-privatelink)
 - [Databricks](/docs/cloud/secure/databricks-privatelink)

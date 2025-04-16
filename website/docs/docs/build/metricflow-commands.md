@@ -6,15 +6,15 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your <Constant name="dbt" /> project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
-MetricFlow allows you to define and query metrics in your <Constant name="dbt" /> project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 ## MetricFlow
 
-MetricFlow is a <Constant name="dbt" /> package that allows you to define and query metrics in your <Constant name="dbt" /> project. You can use MetricFlow to query metrics in your <Constant name="dbt" /> project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />.
+MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />.
 
 Using MetricFlow with <Constant name="cloud" /> means you won't need to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
 
@@ -83,12 +83,12 @@ The following table lists the commands compatible with the <Constant name="cloud
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
 
 
-<!--below commands aren't supported in <Constant name="dbt" /> cloud yet
+<!--below commands aren't supported in dbt cloud yet
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
 
-:::tip Run <Constant name="dbt" /> parse to reflect metric changes
+:::tip Run dbt parse to reflect metric changes
 When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
@@ -389,7 +389,7 @@ You can add order and limit functions to filter and present the data in a readab
 **Query**
 ```bash
 # In dbt Cloud 
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
 mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
@@ -416,7 +416,7 @@ You can further filter the data set by adding a `where` clause to your query. Th
 **Query**
 ```bash
 # In dbt Cloud 
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
+dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
 # In dbt Core
 mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
@@ -451,7 +451,7 @@ To filter by time, there are dedicated start and end time options. Using these o
 <!--
 bash not support in cloud yet
 # In dbt Cloud
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
 ```bash

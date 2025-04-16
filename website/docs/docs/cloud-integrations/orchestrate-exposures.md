@@ -9,7 +9,7 @@ image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 
 <IntroText>
 
-Use <Constant name="dbt" /> [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh downstream exposures and the underlying data sources (extracts) that power your Tableau Workbooks.
+Use dbt [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh downstream exposures and the underlying data sources (extracts) that power your Tableau Workbooks.
 
 </IntroText>
 
@@ -19,7 +19,7 @@ Orchestrating exposures is currently available in private beta to <Constant name
 
 Orchestrating exposures integrates with [downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) and uses your `dbt build` job to ensure that Tableau extracts are updated regularly.
 
-Control the frequency of these refreshes by configuring environment variables in your <Constant name="dbt" /> environment.
+Control the frequency of these refreshes by configuring environment variables in your dbt environment.
 
 <Expandable alt_header="Differences between visualizing and orchestrating downstream exposures">
 
@@ -27,7 +27,7 @@ The following table summarizes the differences between visualizing and orchestra
 
 | Info | Set up and visualize downstream exposures | Orchestrate downstream exposures <Lifecycle status="beta"/> |
 | ---- | ---- | ---- |
-| Purpose | Automatically brings downstream assets into your <Constant name="dbt" /> lineage. | Proactively refreshes the underlying data sources during scheduled <Constant name="dbt" /> jobs. |
+| Purpose | Automatically brings downstream assets into your dbt lineage. | Proactively refreshes the underlying data sources during scheduled dbt jobs. |
 | Benefits | Provides visibility into data flow and dependencies. | Ensures BI tools always have up-to-date data without manual intervention. |
 | Location  | Exposed in [<Constant name="explorer" />](/docs/collaborate/explore-projects) | Exposed in [<Constant name="cloud" /> scheduler](/docs/deploy/deployments) |
 | Supported BI tool | Tableau | Tableau |
@@ -39,14 +39,14 @@ The following table summarizes the differences between visualizing and orchestra
 To orchestrate downstream exposures, you should meet the following:
 
 - [Configured downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) and ensured desired exposures are included in your lineage
-- Verified your environment and jobs are on a supported <Constant name="dbt" /> [release track](/docs/dbt-versions/cloud-release-tracks).
+- Verified your environment and jobs are on a supported dbt [release track](/docs/dbt-versions/cloud-release-tracks).
 - Have a <Constant name="cloud" /> account on the [Enterprise plan](https://www.getdbt.com/pricing/).
 - Created a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run.
 - Have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="cloud" /> to edit project settings or production environment settings.
 
 ## Orchestrate downstream exposures
 
-To orchestrate downstream exposures and see the refresh happen automatically during scheduled <Constant name="dbt" /> jobs:
+To orchestrate downstream exposures and see the refresh happen automatically during scheduled dbt jobs:
 
 1. In the <Constant name="cloud" />, click **Deploy**, then **Environments**, and select the **Environment variables** tab.
 2. Click **Add variable** and set the [environment level variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) `DBT_ACTIVE_EXPOSURES` to `1` within the environment you want the refresh to happen.
@@ -55,6 +55,6 @@ To orchestrate downstream exposures and see the refresh happen automatically dur
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/active-exposures-env-var.jpg" width="100%" title="Set the environment variable `DBT_ACTIVE_EXPOSURES` to `1`."/>
 5. Run a job in production. You will see the update each time a job runs in production. 
    - If a job runs before the set interval has passed, dbt Cloud skips the downstream exposure refresh and marks it as `skipped` in the job logs.
-6. View the downstream exposure logs in the <Constant name="dbt" /> run job logs.
+6. View the downstream exposure logs in the dbt run job logs.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/active-exposure-log.jpg" title="View the downstream exposure logs in the dbt run job logs."/ >
    - View more details in the debug logs for any troubleshooting.

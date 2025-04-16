@@ -6,7 +6,7 @@ sidebar_label: User interface
 tags: [IDE]
 ---
 
-The [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is a tool for developers to effortlessly build, test, run, and version-control their <Constant name="dbt" /> projects, and enhance data governance — all from the convenience of your browser. Use the Cloud <Constant name="cloud_ide" /> to compile <Constant name="dbt" /> code into SQL and run it against your database directly -- no command line required!
+The [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the Cloud <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly -- no command line required!
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
 
@@ -37,23 +37,23 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
-5. **Command bar &mdash;**  The Command bar, located in the lower left of the <Constant name="cloud_ide" />, is used to invoke [<Constant name="dbt" /> commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
+5. **Command bar &mdash;**  The Command bar, located in the lower left of the <Constant name="cloud_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
 6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
 
-7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the <Constant name="dbt" /> code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
+7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
 
 ## Editing features
 
-The <Constant name="cloud_ide" /> features some delightful tools and layouts to make it easier for you to write <Constant name="dbt" /> code and collaborate with teammates. 
+The <Constant name="cloud_ide" /> features some delightful tools and layouts to make it easier for you to write dbt code and collaborate with teammates. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
-1. **File Editor &mdash;** The File Editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute <Constant name="dbt" /> commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+1. **File Editor &mdash;** The File Editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
     * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help develop easier for you and your team.
 
-2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a <Constant name="dbt" /> invocation. The File Editor tab shows a blue icon for unsaved changes.
+2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 
 3. **Version Control &mdash;** This menu contains all git-related elements, including the <Constant name="git" /> actions button. The button updates relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, creating a merge/pull request when appropriate, or pruning branches deleted from the remote repository.
 
@@ -105,7 +105,7 @@ The <Constant name="cloud_ide" /> returns default row limits, however, you can a
 
 Starting from dbt v1.6 or higher, when you save changes to a model, you can compile its code with the model's specific context. This context is similar to what you'd have when building the model and involves useful context variables like `{{ this }} `or `{{ is_incremental() }}`.
 
-3. **Build button &mdash;** The build button allows users to quickly access <Constant name="dbt" /> commands related to the active model in the File Editor. The available commands include <Constant name="dbt" /> build, <Constant name="dbt" /> test, and <Constant name="dbt" /> run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
+3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/dbt-cloud-ide/lint-format) on the active file in the File Editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
@@ -132,7 +132,7 @@ The Invocation History Drawer stores information on dbt invocations in the IDE. 
 
 You can open the drawer in multiple ways: 
 - Clicking the `^` icon next to the Command bar on the lower left of the page
-- Typing a <Constant name="dbt" /> command and pressing enter
+- Typing a dbt command and pressing enter
 - Or pressing Control-backtick (or Ctrl + `)
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-inv-history-drawer.jpg" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt Cloud invocations."/>
@@ -149,9 +149,9 @@ You can open the drawer in multiple ways:
 
 5. **Node Summary tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with a warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
 
-6. **Node result toggle &mdash;** After running a <Constant name="dbt" /> command, information about each executed node can be found in a Node Result toggle, which includes a summary and debug logs. The Node Results List lists every node that was invoked during the command.
+6. **Node result toggle &mdash;** After running a dbt command, information about each executed node can be found in a Node Result toggle, which includes a summary and debug logs. The Node Results List lists every node that was invoked during the command.
 
-7. **Node result list &mdash;** The Node result list shows all the Node Results used in the <Constant name="dbt" /> run, and you can filter it by clicking on a Result Status tab.
+7. **Node result list &mdash;** The Node result list shows all the Node Results used in the dbt run, and you can filter it by clicking on a Result Status tab.
 
 ## Modals and Menus
 Use menus and modals to interact with <Constant name="cloud_ide" /> and access useful options to help your development workflow. 
@@ -165,7 +165,7 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 - #### Global Command Palette
-  The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized <Constant name="dbt" /> commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
+  The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 - #### <Constant name="cloud_ide" /> Status modal

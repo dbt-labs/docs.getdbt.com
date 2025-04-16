@@ -8,7 +8,7 @@ tags: [scheduler]
 
 The job scheduler is the backbone of running jobs in <Constant name="cloud" />, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure, and ensures the timeliness and reliability of data transformations.
 
-The scheduler enables both cron-based and event-driven execution of <Constant name="dbt" /> commands in the user’s data platform. Specifically, it handles:
+The scheduler enables both cron-based and event-driven execution of dbt commands in the user’s data platform. Specifically, it handles:
 
 - Cron-based execution of <Constant name="cloud" /> jobs that run on a predetermined cadence
 - Event-driven execution of <Constant name="cloud" /> jobs that run based on the completion of another job ([trigger on job completion](/docs/deploy/deploy-jobs#trigger-on-job-completion))
@@ -18,13 +18,13 @@ The scheduler enables both cron-based and event-driven execution of <Constant na
 
 The scheduler handles various tasks including:
 - Queuing jobs
-- Creating temporary environments to run the <Constant name="dbt" /> commands required for those jobs
+- Creating temporary environments to run the dbt commands required for those jobs
 - Providing logs for debugging and remediation
-- Storing <Constant name="dbt" /> artifacts for direct consumption/ingestion by the Discovery API
+- Storing dbt artifacts for direct consumption/ingestion by the Discovery API
 
 The scheduler also:
 - Uses [dbt Cloud's Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="enterprise" />
-- Powers running <Constant name="dbt" /> in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying <Constant name="dbt" /> at scale. 
+- Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 - Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload dbt Core artifacts into dbt Cloud for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,enterprise" />
 
 ## Scheduler terms
@@ -34,14 +34,14 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Term | Definition |
 | --- | --- |
 | Scheduler | The <Constant name="cloud" /> engine that powers job execution. The scheduler queues scheduled or API-triggered job runs, prepares an environment to execute job commands in your cloud data platform, and stores and serves logs and artifacts that are byproducts of run execution. |
-| Job | A collection of run steps, settings, and a trigger to invoke <Constant name="dbt" /> commands against a project in the user's cloud data platform. |
+| Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
 | Deactivated job | A situation where a job has reached 100 consecutive failing runs. |
 | Prep time | The time <Constant name="cloud" /> takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the <Constant name="cloud" /> Scheduler experiences a lot of run traffic. |
-| Run | A single, unique execution of a <Constant name="dbt" /> job. |
+| Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Developer plans have a fixed number of run slots, while Enterprise and Team plans have unlimited run slots. Each running job occupies a run slot for the duration of the run. <br /><br />Team and Developer plans are limited to one project each. For additional projects, consider upgrading to the [Enterprise plan](https://www.getdbt.com/pricing/).| 
-| Threads | When <Constant name="dbt" /> builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that <Constant name="dbt" /> can work on simultaneously. The default thread count in a job is 4. |
+| Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
 | Wait time | Amount of time that <Constant name="cloud" /> waits before running a job, either because there are no available slots or because a previous run of the same job is still in progress. |
 
 
@@ -55,7 +55,7 @@ Before the job starts executing, the scheduler checks these conditions to determ
 
 - **Does this same job have a run already in progress?** &mdash; The scheduler executes distinct runs of the same <Constant name="cloud" /> job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in <Constant name="cloud" />.
 
-If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of <Constant name="dbt" /> installed, setting environment variables, loading data platform credentials, and <Constant name="git" /> provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **Prep time** in the UI.
+If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and <Constant name="git" /> provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **Prep time** in the UI.
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
@@ -77,8 +77,8 @@ In <Constant name="cloud" />, the setting to provision memory available to a job
 
 Jobs consume a lot of memory in the following situations:
 - A high thread count was specified
-- Custom <Constant name="dbt" /> macros attempt to load data into memory instead of pushing compute down to the cloud data platform
-- Having a job that generates <Constant name="dbt" /> project documentation for a large and complex <Constant name="dbt" /> project. 
+- Custom dbt macros attempt to load data into memory instead of pushing compute down to the cloud data platform
+- Having a job that generates dbt project documentation for a large and complex dbt project. 
   * To prevent problems with the job running out of memory, we recommend generating documentation in a separate job that is set aside for that task and removing `dbt docs generate` from all other jobs. This is especially important for large and complex projects.
 
 Refer to [<Constant name="cloud" /> architecture](/docs/cloud/about-cloud/architecture) for an architecture diagram and to learn how the data flows.

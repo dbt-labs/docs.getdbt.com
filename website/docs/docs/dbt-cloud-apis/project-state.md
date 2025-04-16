@@ -2,7 +2,7 @@
 title: "Project state in dbt Cloud"
 ---
 
-<Constant name="cloud" /> provides a stateful way of deploying <Constant name="dbt" />. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
+<Constant name="cloud" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
@@ -59,7 +59,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
  
 ## Affected states by node type
 
-The following table shows the states of <Constant name="dbt" /> nodes and how they are affected by the Discovery API. 
+The following table shows the states of dbt nodes and how they are affected by the Discovery API. 
 
 | Node                                          | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------------------------------------------|------------------|----------------------|--------------------|-----------------------|----------------------|

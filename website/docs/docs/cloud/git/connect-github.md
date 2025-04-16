@@ -14,7 +14,7 @@ Connecting your GitHub account to <Constant name="cloud" /> provides convenience
 ## Prerequisites
 
 - For On-Premises GitHub deployment, reference [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) to set up your connection instead. Some git features are [limited](/docs/cloud/git/import-a-project-by-git-url#limited-integration) with this setup.
-  * **Note** &mdash; [Single tenant](/docs/cloud/about-cloud/tenancy#single-tenant) accounts offer enhanced connection options for integrating with an On-Premises GitHub deployment setup using the native integration.  This integration allows you to use all the features of the integration, such as triggering CI builds. The <Constant name="dbt" /> Labs infrastructure team will coordinate with you to ensure any additional networking configuration requirements are met and completed. To discuss details, contact <Constant name="dbt" /> Labs support or your <Constant name="cloud" /> account team.
+  * **Note** &mdash; [Single tenant](/docs/cloud/about-cloud/tenancy#single-tenant) accounts offer enhanced connection options for integrating with an On-Premises GitHub deployment setup using the native integration.  This integration allows you to use all the features of the integration, such as triggering CI builds. The dbt Labs infrastructure team will coordinate with you to ensure any additional networking configuration requirements are met and completed. To discuss details, contact dbt Labs support or your <Constant name="cloud" /> account team.
 - You _must_ be a **GitHub organization owner** in order to [install the <Constant name="cloud" /> application](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) in your GitHub organization. To learn about GitHub organization roles, see the [GitHub documentation](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization). 
 - The GitHub organization owner requires [_Owner_](/docs/cloud/manage-access/self-service-permissions) or [_Account Admin_](/docs/cloud/manage-access/enterprise-permissions) permissions when they log into <Constant name="cloud" /> to integrate with a GitHub environment using organizations.
 - You may need to temporarily provide an extra <Constant name="cloud" /> user account with _Owner_ or _Account Admin_ [permissions](/docs/cloud/manage-access/enterprise-permissions) for your GitHub organization owner until they complete the installation.
@@ -61,7 +61,7 @@ After the <Constant name="cloud" /> administrator [sets up a connection](/docs/c
 
 :::info GitHub profile connection
 
-- <Constant name="cloud" /> developers on the [Enterprise plan](https://www.getdbt.com/pricing/) must each connect their GitHub profiles to <Constant name="cloud" />. This is because the <Constant name="cloud_ide" /> verifies every developer's read / write access for the <Constant name="dbt" /> repo. 
+- <Constant name="cloud" /> developers on the [Enterprise plan](https://www.getdbt.com/pricing/) must each connect their GitHub profiles to <Constant name="cloud" />. This is because the <Constant name="cloud_ide" /> verifies every developer's read / write access for the dbt repo. 
 
 - <Constant name="cloud" /> developers on the [Team plan](https://www.getdbt.com/pricing/) don't need to each connect their profiles to GitHub, however, it's still recommended to do so.
 

@@ -18,7 +18,7 @@ displayed_sidebar: "docs"
 
 ## What to know before upgrading
 
-<Constant name="dbt" /> Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### Behavior changes
 
@@ -42,7 +42,7 @@ The following env vars have been renamed, for consistency with the convention fo
 - `DBT_NO_PRINT` → `DBT_PRINT`
 - `DBT_ARTIFACT_STATE_PATH` → `DBT_STATE`
 
-As described in [<Constant name="core" />#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [<Constant name="dbt" />-labs/<Constant name="core" />#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [<Constant name="dbt" />-labs/<Constant name="core" />#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
+As described in [<Constant name="core" />#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/<Constant name="core" />#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/<Constant name="core" />#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
 An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
 ```yml
@@ -125,13 +125,13 @@ The [manifest](/reference/artifacts/manifest-json) schema version will be update
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask questions, please read and comment on the GH discussion: [<Constant name="dbt" />-labs/<Constant name="core" />#7213](https://github.com/dbt-labs/dbt-core/discussions/7213).
+For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/<Constant name="core" />#7213](https://github.com/dbt-labs/dbt-core/discussions/7213).
 
 ## New and changed documentation
 
 ### Model governance
 
-The first phase of supporting <Constant name="dbt" /> deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/collaborate/govern/about-model-governance), all of which is new in v1.5.
+The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/collaborate/govern/about-model-governance), all of which is new in v1.5.
 
 ### Revamped CLI
 

@@ -4,13 +4,13 @@ sidebar_label: "Retry jobs"
 description: "Rerun your errored jobs from start or the failure point."
 ---
 
-If your <Constant name="dbt" /> job run completed with a status of **Error**, you can rerun it from start or from the point of failure in <Constant name="cloud" />.
+If your dbt job run completed with a status of **Error**, you can rerun it from start or from the point of failure in <Constant name="cloud" />.
 
 ## Prerequisites
 
 - You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup).
-- You must be using [<Constant name="dbt" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or newer.
-- <Constant name="dbt" /> can successfully parse the project and generate a [manifest](/reference/artifacts/manifest-json)
+- You must be using [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or newer.
+- dbt can successfully parse the project and generate a [manifest](/reference/artifacts/manifest-json)
 - The most recent run of the job hasn't completed successfully. The latest status of the run is **Error**.
     - The job command that failed in the run must be one that supports the [retry command](/reference/commands/retry).
 

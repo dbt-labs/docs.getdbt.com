@@ -22,16 +22,16 @@ The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_
 
 The metrics specification in <Constant name="core" /> is changed in v1.6 to support the integration of MetricFlow. It's strongly recommended that you refer to [Build your metrics](/docs/build/build-metrics-intro) and before getting started so you understand the core concepts of the <Constant name="semantic_layer" />. 
 
-<Constant name="dbt" /> Labs recommends completing these steps in a local dev environment (such as the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)) instead of the <Constant name="cloud_ide" />: 
+dbt Labs recommends completing these steps in a local dev environment (such as the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)) instead of the <Constant name="cloud_ide" />: 
 
-1. Create new Semantic Model configs as YAML files in your <Constant name="dbt" /> project.*
+1. Create new Semantic Model configs as YAML files in your dbt project.*
 1. Upgrade the metrics configs in your project to the new spec.* 
 1. Delete your old metrics file or remove the `.yml` file extension so they're ignored at parse time. Remove the `dbt-metrics` package from your project. Remove any macros that reference `dbt-metrics`, like `metrics.calculate()`. Make sure that any packages you’re using don't have references to the old metrics spec. 
 1. Install the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) to run MetricFlow commands and define your semantic model configurations.
    - If you're using dbt Core, install the [MetricFlow CLI](/docs/build/metricflow-commands) with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
 
     ```bash
-    python -m pip install "<Constant name="dbt" />-metricflow[snowflake]"
+    python -m pip install "dbt-metricflow[snowflake]"
     ```
     **Note** - MetricFlow commands aren't yet supported in the <Constant name="cloud_ide" /> at this time.
 
@@ -48,7 +48,7 @@ The metrics specification in <Constant name="core" /> is changed in v1.6 to supp
 The dbt Semantic Layer API doesn't support `ref` to call dbt objects. This is currently due to differences in architecture between the legacy Semantic Layer and the re-released Semantic Layer. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 :::
 
-**To make this process easier, <Constant name="dbt" /> Labs provides a [custom migration tool](https://github.com/dbt-labs/dbt-converter) that automates these steps for you. You can find installation instructions in the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md). Derived metrics aren’t supported in the migration tool, and will have to be migrated manually.*
+**To make this process easier, dbt Labs provides a [custom migration tool](https://github.com/dbt-labs/dbt-converter) that automates these steps for you. You can find installation instructions in the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md). Derived metrics aren’t supported in the migration tool, and will have to be migrated manually.*
 
 ## Audit metric values after the migration
 
@@ -71,13 +71,13 @@ You might need to audit metric values during the migration to ensure that the hi
     ) }}
     ```
 
-1. Run the [<Constant name="dbt" />-audit](https://github.com/dbt-labs/dbt-audit-helper) helper on both models to compare the metric values.
+1. Run the [dbt-audit](https://github.com/dbt-labs/dbt-audit-helper) helper on both models to compare the metric values.
 
 ## Setup the Semantic Layer in a new environment
 
 This step is only relevant to users who want the legacy and new semantic layer to run in parallel for a short time. This will let you recreate content in downstream tools like Hex and Mode with minimal downtime. If you do not need to recreate assets in these tools skip to step 5.
 
-1. Create a new deployment environment in <Constant name="cloud" /> and set the <Constant name="dbt" /> version to 1.6 or higher.
+1. Create a new deployment environment in <Constant name="cloud" /> and set the dbt version to 1.6 or higher.
    
 2. Select **Only run on a custom branch** and point to the branch that has the updated metric definition.
 
@@ -121,7 +121,7 @@ To learn more about integrating with Hex, check out their [documentation](https:
 ## Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
 
 1. Upgrade your production environment to 1.6 or higher. 
-   * **Note** &mdash; The old metrics definitions are no longer valid so your <Constant name="dbt" /> jobs will not pass. 
+   * **Note** &mdash; The old metrics definitions are no longer valid so your dbt jobs will not pass. 
 
 2. Merge your updated metrics definitions to main. **At this point the legacy semantic layer will no longer work.**
 
@@ -135,7 +135,7 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 - [Quickstart guide with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs)
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [<Constant name="dbt" /> metrics converter](https://github.com/dbt-labs/dbt-converter)
+- [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
 - [<Constant name="semantic_layer" /> API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 - [<Constant name="semantic_layer" /> on-demand course](https://learn.getdbt.com/courses/semantic-layer)

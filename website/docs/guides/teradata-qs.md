@@ -16,13 +16,13 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
 - Connect <Constant name="cloud" /> to Teradata.
-- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
@@ -32,7 +32,7 @@ You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.co
 
 ### Related content
 
-- Learn more with [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we provision Teradata Clearscape Vantage instance](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
@@ -75,7 +75,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         email varchar (100)
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_customers.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_customers.csv')
     )
     NO PRIMARY INDEX;
 
@@ -86,7 +86,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         status varchar(100)
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_orders.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_orders.csv')
     )
     NO PRIMARY INDEX;
 
@@ -97,7 +97,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
         amount integer
     )
     USING (
-        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/<Constant name="dbt" />/raw_payments.csv')
+        LOCATION ('/gs/storage.googleapis.com/clearscape_analytics_demo_data/dbt/raw_payments.csv')
     )
     NO PRIMARY INDEX;
     ```
@@ -137,7 +137,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Delete the example models
 
-You can now delete the files that <Constant name="dbt" /> created when you initialized the project:
+You can now delete the files that dbt created when you initialized the project:
 
 1. Delete the `models/example/` directory.
 2. Delete the `example:` key from your `dbt_project.yml` file, and any configurations that are listed under it.
@@ -180,7 +180,7 @@ You can now delete the files that <Constant name="dbt" /> created when you initi
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -254,7 +254,7 @@ You can connect your business intelligence (BI) tools to these views and tables 
 
 ## Change the way your model is materialized
 
-One of the most powerful features of <Constant name="dbt" /> is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
+One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
 By default, everything gets created as a view. You can override that at the directory level so everything in that directory will materialize to a different materialization.
 
@@ -415,7 +415,7 @@ By default, everything gets created as a view. You can override that at the dire
 
 ## Build models on top of sources
 
-Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in <Constant name="dbt" />, you can:
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
 - Select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
 - Test your assumptions about your source data
 - Calculate the freshness of your source data
@@ -640,7 +640,7 @@ Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confide
 1. In the upper left, select **Deploy**, then click **Environments**.
 2. Click **Create Environment**.
 3. In the **Name** field, write the name of your deployment environment. For example, "Production."
-4. In the **<Constant name="dbt" /> Version** field, select the latest version from the dropdown.
+4. In the **dbt Version** field, select the latest version from the dropdown.
 5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as `jaffle_shop_prod`. This will allow dbt to build and work with that dataset.
 6. Click **Save**.
 
@@ -662,7 +662,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 9. Once the run is complete, click **View Documentation** to see the docs for your project.
 
 
-Congratulations 🎉! You've just deployed your first <Constant name="dbt" /> project!
+Congratulations 🎉! You've just deployed your first dbt project!
 
 
 #### FAQs

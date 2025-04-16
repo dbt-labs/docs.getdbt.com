@@ -19,7 +19,7 @@ How do you find these organizational interfaces? Here are some steps to get you 
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
-  - Is there a single team that is *downstream* of your current <Constant name="dbt" /> project, who could more easily migrate onto <Constant name="mesh" /> as a consumer? 
+  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto <Constant name="mesh" /> as a consumer? 
 
 When attempting to define your project interfaces, you should consider investigating:
 
@@ -80,7 +80,7 @@ models:
 ## Split your projects
 
 1. **Move your grouped models into a subfolder**. This will include any model in the selected group, it's associated YAML entry, as well as its parent or child resources as appropriate depending on where this group sits in your DAG.
-   1. Note that just like in your <Constant name="dbt" /> project, circular references are not allowed! Project B cannot have parents and children in Project A, for example.
+   1. Note that just like in your dbt project, circular references are not allowed! Project B cannot have parents and children in Project A, for example.
 2. **Create a new `dbt_project.yml` file** in the subdirectory.
 3. **Copy any macros** used by the resources you moved.
 4. **Create a new `packages.yml` file** in your subdirectory with the packages that are used by the resources you moved.
@@ -107,14 +107,14 @@ projects:
 
 ## Connecting existing projects
 
-Some organizations may already be coordinating across multiple <Constant name="dbt" /> projects. Most often this is via:
+Some organizations may already be coordinating across multiple dbt projects. Most often this is via:
 
-1. Installing parent projects as <Constant name="dbt" /> packages
+1. Installing parent projects as dbt packages
 2. Using `{{ source() }}` functions to read the outputs of a parent project as inputs to a child project. 
 
 This has a few drawbacks:
 
-1. If using packages, each project has to include *all* resources from *all* projects in its manifest, slowing down <Constant name="dbt" /> and the development cycle.
+1. If using packages, each project has to include *all* resources from *all* projects in its manifest, slowing down dbt and the development cycle.
 2. If using sources, there are breakages in the lineage, as there's no real connection between the parent and child projects.
 
 The migration steps here are much simpler than splitting up a monolith!

@@ -5,7 +5,7 @@ sidebar_label: 'dbt builds models in your target schema'
 id: which-schema
 
 ---
-By default, <Constant name="dbt" /> builds models in your target schema. To change your target schema:
+By default, dbt builds models in your target schema. To change your target schema:
 * If you're developing in **<Constant name="cloud" />**, these are set for each user when you first use a development environment.
 * If you're developing with **dbt Core**, this is the `schema:` parameter in your `profiles.yml` file.
 

@@ -18,8 +18,8 @@ dbt test --exclude "not_null_orders_order_id"   # test all models except the not
 dbt test --exclude "orders"                     # test all models except tests associated with the orders model
 
 # seed
-<Constant name="dbt" /> seed --exclude "account_parent_mappings"    # load all seeds except account_parent_mappings
+dbt seed --exclude "account_parent_mappings"    # load all seeds except account_parent_mappings
 
 # snapshot
-<Constant name="dbt" /> snapshot --exclude "snap_order_statuses"    # execute all snapshots except snap_order_statuses
+dbt snapshot --exclude "snap_order_statuses"    # execute all snapshots except snap_order_statuses
 ```

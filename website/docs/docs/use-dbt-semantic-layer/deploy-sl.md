@@ -25,5 +25,5 @@ After you've executed a job and deployed your <Constant name="semantic_layer" />
 
 ## Related docs
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
-- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to <Constant name="dbt" /> models don't break these metrics.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build your metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.

@@ -9,7 +9,7 @@ tags: [v1.1.41, v1.1.40, v1.1.39, v1.1.38, v1.1.37, v1.1.36, v1.1.35, v1.1.34, v
 
 :::note
 
-This changelog references <Constant name="dbt" /> versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of <Constant name="dbt" /> in your <Constant name="cloud" /> environment, read [Upgrade <Constant name="dbt" /> version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="cloud" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 :::
 
@@ -21,7 +21,7 @@ It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt
 
 #### New products and features
 
-- <Constant name="dbt" /> v1.0 is now available in <Constant name="cloud" />... nbd.
+- dbt v1.0 is now available in <Constant name="cloud" />... nbd.
 
 
 #### Performance improvements and enhancements
@@ -33,18 +33,18 @@ It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt
 We shipped environment variables in <Constant name="cloud" />. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
 
 #### New products and features
-- You can now add environment variables to your <Constant name="cloud" /> project. Why does this matter? Environment variables are a fundamental building block of a <Constant name="dbt" /> project, which until now, we only enabled in <Constant name="core" />. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+- You can now add environment variables to your <Constant name="cloud" /> project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in <Constant name="core" />. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your <Constant name="dbt" /> project, if it's running <Constant name="dbt" /> v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
 dbt v0.21 is now available in dbt Cloud. The big change with this release is it introduces the `dbt build` command. `dbt build` logically does everything you'd want to do in your DAG. It runs your models, tests your tests, snapshots your snapshots, and seeds your seeds. It does this, resource by resource, from left to right across your DAG. dbt build is an opinionated task. It’s the culmination of all we’ve built- running models with resilient <Term id="materialization">materializations</Term>, prioritizing data quality with tests, updating fixtures with seeds, capturing slowly changing dimensions with snapshot. Give it a try!
 
 #### New products and features
-- We have a new beta feature, which we're calling Model Bottlenecks. It allows you to visually see how long it takes to build models in each run, so you can see clearly which models are taking the longest. If you're interested in learning more, check out #beta-feedback-model-bottlenecks in the <Constant name="dbt" /> community Slack, and we can add you to the beta.
+- We have a new beta feature, which we're calling Model Bottlenecks. It allows you to visually see how long it takes to build models in each run, so you can see clearly which models are taking the longest. If you're interested in learning more, check out #beta-feedback-model-bottlenecks in the dbt community Slack, and we can add you to the beta.
 
 ## dbt Cloud v1.1.36 (September 29, 2021)
 Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt Cloud IDE now keeps track of your scroll position - at last!
@@ -59,28 +59,28 @@ Check out the release candidate for `dbt v0.21.0`! Also tab switching in the dbt
 Have you ever been working in the <Constant name="cloud_ide" />, taken a several hour break from developing, and when you returned to your work, the <Constant name="cloud_ide" /> started behaving in unexpected ways? Your develop session became inactive, without any notification. Well, that silent failure won’t happen anymore! <Constant name="cloud" /> now will let you know when you have to refresh your <Constant name="cloud_ide" /> so you can continue to pick up work where you last left off.
 
 #### New products and features
-- <Constant name="dbt" /> v0.20.2 is released in <Constant name="cloud" />.
+- dbt v0.20.2 is released in <Constant name="cloud" />.
 
 #### Performance improvements and enhancements
 - Set default threads to 4 for new jobs and in development creds.
 
 #### Bug fixes
 - The user is now prompted to refresh the page when in a disconnected <Constant name="cloud_ide" /> state.
-- <Constant name="dbt" /> tasks that fail or error are now correctly ordered in the run drawer history.
+- dbt tasks that fail or error are now correctly ordered in the run drawer history.
 
 
 ## dbt Cloud v1.1.34 (September 1, 2021)
-We just launched our beta for supporting environment variables in <Constant name="cloud" />. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in <Constant name="dbt" /> Slack for more information.
+We just launched our beta for supporting environment variables in <Constant name="cloud" />. Environment variables are exciting because they allow you to clone private packages. If you’re interested in joining the beta, check out the #beta-feedback-for-env-vars channel in dbt Slack for more information.
 
 #### Performance improvements and enhancements
 Our <Constant name="cloud_ide" /> SQL drawer got a fresh new look, and it now has improved accessibility.
 
 
 ## dbt Cloud v1.1.33 (August 18, 2021)
-We added a DAG in the <Constant name="cloud_ide" />, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the <Constant name="cloud_ide" />, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing <Constant name="dbt" /> projects, and it’s something worth being excited about!
+We added a DAG in the <Constant name="cloud_ide" />, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the <Constant name="cloud_ide" />, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
 #### New products and features
-- [Dashboard Status Tiles](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps <Constant name="dbt" /> project maintainers build trust internally about the data that end users are seeing.
+- [Dashboard Status Tiles](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps dbt project maintainers build trust internally about the data that end users are seeing.
 - We shipped DAG in the <Constant name="cloud_ide" /> to GA!
 - Support for `dbt v0.20.1` in Cloud.
 
@@ -90,7 +90,7 @@ We added a DAG in the <Constant name="cloud_ide" />, so that you can see your mo
 
 
 ## dbt Cloud v1.1.32 (August 4, 2021)
-The Metadata API is now in GA! When <Constant name="cloud" /> invokes certain commands like run, test, seed, etc, <Constant name="dbt" /> generates metadata in the form of [artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="cloud" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
+The Metadata API is now in GA! When <Constant name="cloud" /> invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="cloud" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
 
 #### New products and features
 - The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api).
@@ -102,7 +102,7 @@ We’ve improved the tabbing experience in the <Constant name="cloud_ide" />. Ta
 
 #### New products and features
 - We are working to release a DAG directly in the IDE, so that when you’re developing, you have a clear idea of where the model you’re working on sits in the dependency graph. If you’re interested in testing out the feature early, head over to the `#beta-feedback-for-ide-dag` channel in the dbt Slack, and we’ll get the new product feature-flagged on your account!
-- Added <Constant name="dbt" /> 0.20.0 to Cloud
+- Added dbt 0.20.0 to Cloud
 
 #### Bug fixes
 - Users will now be able to initialize any project that doesn't contain a `dbt_project.yml` file, regardless of whether or not there are pre-existing files and/or commits to that repo.
@@ -120,7 +120,7 @@ We shipped a resizable folder pane in the <Constant name="cloud_ide" />, and we'
 - Resizable folder pane in the <Constant name="cloud_ide" />: Have you ever developed in the <Constant name="cloud_ide" /> and not been able to see the full name of your model because you couldn’t adjust the width of the file pane? Yeah, us too. Now you’ll be able to adjust your project’s file tree width to be as wide or as narrow as you’d like. It’s these small things that make developing in the <Constant name="cloud_ide" /> so much easier.
 
 #### Bug fixes
-- Made some changes to GitLab webhooks so that the status of the <Constant name="dbt" /> run gets properly updated in GitLab.
+- Made some changes to GitLab webhooks so that the status of the dbt run gets properly updated in GitLab.
 - Resolved an issue where users saw a blank screen rather than the SSO reauthentication page.
 
 #### Performance improvements and enhancements
@@ -158,7 +158,7 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 
 #### Performance improvements and enhancements
 - Behind the scenes, we’ve been moving off of Angular and onto React. We’ve started the process of migrating the central pieces of our UI over - the first of which is the main navigation. We think this will have a big impact on our ability to reduce UI bugs and improve user experience.
-- Added support for <Constant name="dbt" /> 0.19.2rc2 + 0.20.0rc1 in <Constant name="cloud" />.
+- Added support for dbt 0.19.2rc2 + 0.20.0rc1 in <Constant name="cloud" />.
 
 
 ## dbt Cloud v1.1.27 (May 26, 2021)
@@ -167,7 +167,7 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 
 #### Enhancements
 
-- Add <Constant name="dbt" /> v0.19.2rc1 and v0.20.0b1
+- Add dbt v0.19.2rc1 and v0.20.0b1
 - Add an open/closable overlay for the DAG
 - Disable department dropdown
 - Add DAG flags, button, and tab context
@@ -201,7 +201,7 @@ If you haven't seen it yet, spin up the <Constant name="cloud_ide" />: the comma
 
 #### Enhancements
 
-- Made <Constant name="dbt" /> default version on env 0.19.1
+- Made dbt default version on env 0.19.1
 - Rolled out new command line experience to all customers
 - Post webhook triggered run status back to gitlab
 - Temporary tabs can also populate the model from manifest
@@ -234,7 +234,7 @@ Exciting things coming down the pipe - ongoing enhancements to the command bar e
 - Made a grip of visual updates to the new command bar work
 - Moved to using the active model name instead of a placeholder in command bar work
 - Added user ability to delete connections, remove association from a given project.
-- Added verification of <Constant name="dbt" /> version for command bar beta feature flag
+- Added verification of dbt version for command bar beta feature flag
 
 #### Fixed
 
@@ -253,11 +253,11 @@ Phew! As our company grows, so too does our changelog! Look at all these! The bi
 
 #### Enhancements
 
-- Added onFocus and onBlur properties to populate and remove "<Constant name="dbt" />" in command bar
+- Added onFocus and onBlur properties to populate and remove "dbt" in command bar
 - Enabled executing command on enter if user's cursor is in the command bar
 - Added Metadata API access button to account settings
 - Added feature flag for displaying only recent actions
-- Added <Constant name="dbt" /> 0.19.1
+- Added dbt 0.19.1
 - Added regex validation to Databrick's hostname web-form field
 - Updated Connection Edit to allow adapter editing
 - Enabled self-service Github and GitLab integration disconnection
@@ -270,7 +270,7 @@ Phew! As our company grows, so too does our changelog! Look at all these! The bi
 
 - Added styling class to popup to ensure text is readable
 - Fixed sourcemaps syntax for dev commands
-- Added timeout and retry to <Constant name="dbt" /> deps
+- Added timeout and retry to dbt deps
 - Updated databricks schema field type and add error handling to ConnectionSetup
 - Fixed Bigquery private keys & convert text to textarea
 - Fixed last used datetime in the service token UI
@@ -299,7 +299,7 @@ Some backend work, some frontend work, some bug fixes: a nice mix for this relea
 - Support manually-managed group memberships
 - SSO: resolve bug w/ first & last names acting up
 - Integrate Delighted for NPS surveys
-- Add <Constant name="dbt" /> 0.19.1rc1 to Cloud
+- Add dbt 0.19.1rc1 to Cloud
 - Add an account-level setting to require users to re-authenticate via SSO
 - Read-only metadata ServiceToken for Cloud
 - Persist <Constant name="cloud_ide" /> light mode / dark mode across refresh
@@ -383,11 +383,11 @@ Continued stability and quality of life improvements for folks with multiple acc
 
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
-The latest release of <Constant name="dbt" /> (Oh Nineteen Oh) is now available for your enjoyment on <Constant name="cloud" />! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release!
+The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on <Constant name="cloud" />! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release!
 
 #### Enhancements
 
-- Added <Constant name="dbt" /> 0.19.0 :heart_eyes_cat:
+- Added dbt 0.19.0 :heart_eyes_cat:
 - Allowed account-wide service tokens to create connections
 - Added integration for service token UI and API
 - Authorized requests that supply a service token
@@ -406,13 +406,13 @@ Most notable things here are around foundational work toward future feature rele
 
 - Add service tokens UI (stubbed) behind a feature flag
 - Fixing and Upgrading social-auth
-- Add <Constant name="dbt" /> Spark 0.19.0rc1
+- Add dbt Spark 0.19.0rc1
 - Adds the reconciliation of persisted file content and tab state when navigating into the <Constant name="cloud_ide" />
 - Adds the reconciliation of persisted file content and tab state between <Constant name="cloud_ide" /> sessions
 - Read logs from scribe and stop logging to db
 - Upgrade social auth 3.3.3
 - Add warning logs for social auth failures
-- Add <Constant name="dbt" /> 0.19.0rc1
+- Add dbt 0.19.0rc1
 
 #### Fixed
 

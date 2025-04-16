@@ -126,7 +126,7 @@ After a successful job run, you can go back to your dashboard to experience the 
 
 ## Cache management
 
-<Constant name="cloud" /> uses the metadata from your <Constant name="dbt" /> model runs to intelligently manage cache invalidation. When you start a <Constant name="dbt" /> job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
+<Constant name="cloud" /> uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
 
 If an upstream model has data in it that was created after the cache was created, <Constant name="cloud" /> invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and <Constant name="cloud" /> will write a new cache the next time your saved query runs.
 

@@ -4,7 +4,7 @@ id: "source-freshness"
 description: "Validate that data freshness meets expectations and alert if stale."
 ---
 
-<Constant name="cloud" /> provides a helpful interface around <Constant name="dbt" />'s [source data freshness](/docs/build/sources#source-data-freshness) calculations. When a <Constant name="cloud" /> job is configured to snapshot source data freshness, <Constant name="cloud" /> will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the service level agreement (SLA) that you've defined for your organization.
+<Constant name="cloud" /> provides a helpful interface around dbt's [source data freshness](/docs/build/sources#source-data-freshness) calculations. When a <Constant name="cloud" /> job is configured to snapshot source data freshness, <Constant name="cloud" /> will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the service level agreement (SLA) that you've defined for your organization.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources-next.png" title="Data Sources in dbt Cloud"/>
 

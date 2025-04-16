@@ -144,7 +144,7 @@ for step in run_data_results['run_steps']:
       threaded_errors_post += f"""
 *{step['name']}*
 """    
-      # If there are no line items, the failure wasn't related to <Constant name="dbt" /> nodes, and we want the whole rest of the message. 
+      # If there are no line items, the failure wasn't related to dbt nodes, and we want the whole rest of the message. 
       # If there are, then we just want the summary line and then to log out each individual node's error.
       if len(line_items) == 0:
         relevant_log = f'```{full_log[summary_start.start():]}```'
@@ -286,7 +286,7 @@ for step in results['run_steps']:
     threaded_errors_post += f"""
 *{step['name']}*
 """    
-    # If there are no line items, the failure wasn't related to <Constant name="dbt" /> nodes, and we want the whole rest of the message. 
+    # If there are no line items, the failure wasn't related to dbt nodes, and we want the whole rest of the message. 
     # If there are, then we just want the summary line and then to log out each individual node's error.
     if len(line_items) == 0:
       relevant_log = f'```{full_log[summary_start.start():]}```'

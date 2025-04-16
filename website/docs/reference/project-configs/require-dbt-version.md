@@ -18,7 +18,7 @@ require-dbt-version: version-range | [version-range]
 
 You can use `require-dbt-version` to restrict your project to only work with a range of dbt versions. 
 
-When you set this configuration, <Constant name="dbt" /> sends a helpful error message for any user who attempts to run the project with an unsupported version of <Constant name="dbt" />. This can be useful for package maintainers (such as [<Constant name="dbt" />-utils](https://github.com/dbt-labs/dbt-utils)) to ensure that users' <Constant name="dbt" /> version is compatible with the package. Setting this configuration might also help your whole team remain synchronized on the same version of <Constant name="dbt" /> for local development, to avoid compatibility issues from changed behaviour.
+When you set this configuration, dbt sends a helpful error message for any user who attempts to run the project with an unsupported version of dbt. This can be useful for package maintainers (such as [dbt-utils](https://github.com/dbt-labs/dbt-utils)) to ensure that users' dbt version is compatible with the package. Setting this configuration might also help your whole team remain synchronized on the same version of dbt for local development, to avoid compatibility issues from changed behaviour.
 
 If this configuration is not specified, no version check will occur.
 
@@ -33,12 +33,12 @@ If this configuration is not specified, no version check will occur.
 This configuration needs to be interpolated by the YAML parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
 ```yml
 # ✅ These will work
-require-<Constant name="dbt" />-version: ">=1.0.0" # Double quotes are OK
-require-<Constant name="dbt" />-version: '>=1.0.0' # So are single quotes
+require-dbt-version: ">=1.0.0" # Double quotes are OK
+require-dbt-version: '>=1.0.0' # So are single quotes
 
 # ❌ These will not work
-require-<Constant name="dbt" />-version: >=1.0.0 # No quotes? No good
-require-<Constant name="dbt" />-version: ">= 1.0.0" # Don't put whitespace after the equality signs
+require-dbt-version: >=1.0.0 # No quotes? No good
+require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 ```
 
 
@@ -58,7 +58,7 @@ require-dbt-version: ">=1.0.0"
 
 
 ### Pin to a range
-Use a comma separated list for an upper and lower bound. In the following example, this project will run with <Constant name="dbt" /> 1.x.x.
+Use a comma separated list for an upper and lower bound. In the following example, this project will run with dbt 1.x.x.
 
 <File name='dbt_project.yml'>
 
@@ -88,7 +88,7 @@ While you can restrict your project to run only with an exact version of <Consta
 
 :::
 
-In the following example, the project will only run with <Constant name="dbt" /> v1.5: 
+In the following example, the project will only run with dbt v1.5: 
 
 <File name='dbt_project.yml'>
 
@@ -102,14 +102,14 @@ require-dbt-version: "1.5.0"
 
 If the version of dbt used to invoke a project disagrees with the specified `require-dbt-version` in the project or _any_ of the included packages, then dbt will fail immediately with the following error:
 ```
-$ <Constant name="dbt" /> compile
+$ dbt compile
 Running with dbt=1.5.0
 Encountered an error while reading the project:
 Runtime Error
-  This version of <Constant name="dbt" /> is not supported with the 'my_project' package.
-    Installed version of <Constant name="dbt" />: =1.5.0
+  This version of dbt is not supported with the 'my_project' package.
+    Installed version of dbt: =1.5.0
     Required version of dbt for 'my_project': ['>=1.6.0', '<2.0.0']
-  Check the requirements for the 'my_project' package, or run <Constant name="dbt" /> again with --no-version-check
+  Check the requirements for the 'my_project' package, or run dbt again with --no-version-check
 ```
 
 ## Disabling version checks
@@ -125,4 +125,4 @@ See [global configs](/reference/global-configs/version-compatibility) for usage 
 
 ## Recommendation
 * This is a recommended configuration
-* Before v1, you should pin your required <Constant name="dbt" /> version to a minor release. After v1, you should pin to a major release (see above [example](#pin-to-a-range))
+* Before v1, you should pin your required dbt version to a minor release. After v1, you should pin to a major release (see above [example](#pin-to-a-range))

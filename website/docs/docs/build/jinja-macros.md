@@ -6,17 +6,17 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [<Constant name="dbt" /> Jinja context](/reference/dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions)
 * [Macro properties](/reference/macro-properties)
 
 ## Overview
-In <Constant name="dbt" />, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a templating language.
+In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a templating language.
 
-Using Jinja turns your <Constant name="dbt" /> project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. It's important to note that Jinja itself isn't a programming language; instead, it acts as a tool to enhance and extend the capabilities of SQL within your <Constant name="dbt" /> projects.
+Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. It's important to note that Jinja itself isn't a programming language; instead, it acts as a tool to enhance and extend the capabilities of SQL within your dbt projects.
 
 For example, with Jinja, you can:
 * Use control structures (e.g. `if` statements and `for` loops) in SQL
-* Use [environment variables](/reference/dbt-jinja-functions/env_var) in your <Constant name="dbt" /> project for production deployments
+* Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
 * Change the way your project builds based on the current target.
 * Operate on the results of one query to generate another query, for example:
   * Return a list of payment methods, to create a subtotal column per payment method (pivot)
@@ -25,7 +25,7 @@ For example, with Jinja, you can:
 
 If you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a <Constant name="dbt" /> project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
 
 :::info Ready to get started with Jinja and macros?
 
@@ -35,7 +35,7 @@ Check out the [tutorial on using Jinja](/guides/using-jinja) for a step-by-step 
 
 ## Getting started
 ### Jinja
-Here's an example of a <Constant name="dbt" /> model that leverages Jinja:
+Here's an example of a dbt model that leverages Jinja:
 
 <File name='/models/order_payment_method_amounts.sql'>
 
@@ -76,7 +76,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 - **Statements `{% ... %}`**: Statements don't output a string. They are used for control flow, for example, to set up `for` loops and `if` statements, to [set](https://jinja.palletsprojects.com/en/3.1.x/templates/#assignments) or [modify](https://jinja.palletsprojects.com/en/3.1.x/templates/#expression-statement) variables, or to define macros.
 -  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string. Don't use `--` for comment.
 
-When used in a <Constant name="dbt" /> model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
+When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using <Constant name="cloud" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
 * **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
@@ -131,7 +131,7 @@ import WhitespaceControl from '/snippets/_whitespace-control.md';
 <WhitespaceControl/>
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](/reference/dbt-jinja-functions/project_name):
 
@@ -163,14 +163,14 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## dbtonic Jinja
 
-Just like well-written python is pythonic, well-written <Constant name="dbt" /> code is dbtonic.
+Just like well-written python is pythonic, well-written dbt code is dbtonic.
 
 ### Favor readability over <Term id="dry" />-ness {#favor-readability-over-dry-ness}
 
 Once you learn the power of Jinja, it's common to want to abstract every repeated line into a macro! Remember that using Jinja can make your models harder for other users to interpret — we recommend favoring readability when mixing Jinja with SQL, even if it means repeating some lines of SQL in a few places. If all your models are macros, it might be worth re-assessing.
 
 ### Leverage package macros
-Writing a macro for the first time? Check whether we've open sourced one in [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) that you can use, and save yourself some time!
+Writing a macro for the first time? Check whether we've open sourced one in [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) that you can use, and save yourself some time!
 
 ### Set variables at the top of a model
 `{% set ... %}` can be used to create a new variable, or update an existing one. We recommend setting variables at the top of a model, rather than hardcoding it inline. This is a practice borrowed from many other coding languages, since it helps with readability, and comes in handy if you need to reference the variable in two places:

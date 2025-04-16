@@ -39,7 +39,7 @@ A Microsoft Entra ID admin needs to perform the following steps:
 1. Sign into your Azure portal and click **Microsoft Entra ID**.
 2. Select **App registrations** in the left panel.
 3. Select **New registration**. The form for creating a new Entra ID app opens.
-4. Provide a name for your app. We recommend using, "<Constant name="dbt" /> Labs Azure DevOps app".
+4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps app".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single Tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID separate tenants, and for the Entra ID application to work properly, you must select Multitenant.
 6. Set **Redirect URI** to **Web**. Copy and paste the Redirect URI from <Constant name="cloud" /> into the next field.  To find the Redirect URI in <Constant name="cloud" />:
@@ -119,7 +119,7 @@ To create the configuration:
 5. Complete/edit the form (if you are migrating, the existing configurations carry over):
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-DevOps-org` ❌ Avoid `dev.azure.com/my-DevOps-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
-    Client Secrets: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the expiration of the app secret, and <Constant name="dbt" /> Admins should note the expiration date for rotation.
+    Client Secrets: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the expiration of the app secret, and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt Cloud."/>
 

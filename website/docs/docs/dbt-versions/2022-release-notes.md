@@ -13,7 +13,7 @@ Archived release notes for <Constant name="cloud" /> from 2022
 
 ### Threads default value changed to 4
 
-Threads help parallelize node execution in the <Constant name="dbt" /> directed acyclic graph [(DAG)](https://docs.getdbt.com/terms/dag). 
+Threads help parallelize node execution in the dbt directed acyclic graph [(DAG)](https://docs.getdbt.com/terms/dag). 
 
 Previously, the thread value defaulted to 1, which can increase the runtime of your project. To help reduce the runtime of your project, the default value for threads in user profiles is now set to 4 threads. 
 
@@ -33,7 +33,7 @@ For more information, refer to [Deploy jobs](/docs/deploy/deploy-jobs).
 
 The supported method for cloning private GitHub packages is the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 
 
-A small number of people have been able to clone private packages using <Constant name="dbt" />'s native GitHub application without explicitly providing an access token. This functionality is being deprecated as it’s limited in flexibility. 
+A small number of people have been able to clone private packages using dbt's native GitHub application without explicitly providing an access token. This functionality is being deprecated as it’s limited in flexibility. 
 
 If you have been using a package hosted in a private repository on GitHub, you must start passing an access token into the URL. 
 
@@ -55,9 +55,9 @@ packages:
 
 ### The dbt Cloud + Databricks experience is getting even better
 
-<Constant name="cloud" /> is the easiest and most reliable way to develop and deploy a <Constant name="dbt" /> project. It helps remove complexity while also giving you more features and better performance. A simpler Databricks connection experience with support for Databricks’ Unity Catalog and better modeling defaults is now available for your use.
+<Constant name="cloud" /> is the easiest and most reliable way to develop and deploy a dbt project. It helps remove complexity while also giving you more features and better performance. A simpler Databricks connection experience with support for Databricks’ Unity Catalog and better modeling defaults is now available for your use.
 
-For all the Databricks customers already using <Constant name="cloud" /> with the <Constant name="dbt" />-spark adapter, you can now [migrate](/guides/migrate-from-spark-to-databricks) your connection to the [<Constant name="dbt" />-databricks adapter](/docs/core/connect-data-platform/databricks-setup) to get the benefits. [Databricks](https://www.databricks.com/blog/2022/11/17/introducing-native-high-performance-integration-dbt-cloud.html) is committed to maintaining and improving the adapter, so this integrated experience will continue to provide the best of <Constant name="dbt" /> and Databricks.
+For all the Databricks customers already using <Constant name="cloud" /> with the dbt-spark adapter, you can now [migrate](/guides/migrate-from-spark-to-databricks) your connection to the [dbt-databricks adapter](/docs/core/connect-data-platform/databricks-setup) to get the benefits. [Databricks](https://www.databricks.com/blog/2022/11/17/introducing-native-high-performance-integration-dbt-cloud.html) is committed to maintaining and improving the adapter, so this integrated experience will continue to provide the best of dbt and Databricks.
 
 Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-databricks-experience/) to learn more.
 
@@ -67,9 +67,9 @@ The refreshed version of the <Constant name="cloud_ide" /> has launched four bra
 
 The new features are:
 
-- **Formatting** &mdash; Format your <Constant name="dbt" /> SQL files to a single code style with a click of a button. This uses the tool [sqlfmt](https://github.com/tconbeer/sqlfmt).
+- **Formatting** &mdash; Format your dbt SQL files to a single code style with a click of a button. This uses the tool [sqlfmt](https://github.com/tconbeer/sqlfmt).
 - **<Constant name="git" /> diff view** &mdash; Highlights the changes in a file before opening a pull request.
-- **<Constant name="dbt" /> autocomplete** &mdash; There are four new types of autocomplete features to help you develop faster:
+- **dbt autocomplete** &mdash; There are four new types of autocomplete features to help you develop faster:
     - Use `ref` to autocomplete your model names
     - Use `source` to autocomplete your source name + table name
     - Use `macro` to autocomplete your arguments
@@ -80,9 +80,9 @@ Read more about all the [Cloud <Constant name="cloud_ide" /> features](/docs/clo
 
 ### Classic IDE deprecation notice
 
-In December 2022, <Constant name="dbt" /> Labs will deprecate the classic <Constant name="cloud_ide" />. The [new and refreshed <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) will be available for _all_ <Constant name="cloud" /> users. You will no longer be able to access the classic <Constant name="cloud_ide" /> and <Constant name="dbt" /> Labs might introduce changes that break the classic <Constant name="cloud_ide" />.
+In December 2022, dbt Labs will deprecate the classic <Constant name="cloud_ide" />. The [new and refreshed <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) will be available for _all_ <Constant name="cloud" /> users. You will no longer be able to access the classic <Constant name="cloud_ide" /> and dbt Labs might introduce changes that break the classic <Constant name="cloud_ide" />.
 
-With deprecation, <Constant name="dbt" /> Labs will only support the refreshed version of the <Constant name="cloud_ide" />.
+With deprecation, dbt Labs will only support the refreshed version of the <Constant name="cloud_ide" />.
 
 Virtual Private Cloud (VPC) customers with questions about when this change will affect your account can contact your account team or support contact for assistance.
 
@@ -92,7 +92,7 @@ Virtual Private Cloud (VPC) customers with questions about when this change will
 ### Announcing dbt Cloud’s native integration with Azure DevOps
 
 <Constant name="cloud" /> now offers a native integration with Azure DevOps for <Constant name="cloud" /> customers on the enterprise plan.  We built this integration to remove friction, increase security, and unlock net new product experiences for our customers. [Setting up the Azure DevOps integration](/docs/cloud/git/connect-azure-devops) in <Constant name="cloud" /> provides:
-  - easy <Constant name="dbt" /> project set up,
+  - easy dbt project set up,
   - an improved security posture,
   - repo permissions enforcement in <Constant name="cloud_ide" />, and
   - <Constant name="cloud" /> Slim CI.
@@ -117,9 +117,9 @@ Read more about the new [Cloud <Constant name="cloud_ide" /> features](/docs/clo
 
 ### List Steps API endpoint deprecation warning
 
-On October 14th, 2022 <Constant name="dbt" /> Labs is deprecating the List Steps API endpoint. From October 14th, any GET requests to this endpoint will fail. Please prepare to stop using the List Steps endpoint as soon as possible. 
+On October 14th, 2022 dbt Labs is deprecating the List Steps API endpoint. From October 14th, any GET requests to this endpoint will fail. Please prepare to stop using the List Steps endpoint as soon as possible. 
 
-<Constant name="dbt" /> Labs will continue to maintain the [Retrieve Run](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/Retrieve%20Run) endpoint, which is a viable alternative depending on the use case. 
+dbt Labs will continue to maintain the [Retrieve Run](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/Retrieve%20Run) endpoint, which is a viable alternative depending on the use case. 
 
 You can fetch run steps for an individual run with a GET request to the following URL,  replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
 
@@ -137,12 +137,12 @@ For more information, see [Metadata API](/docs/dbt-cloud-apis/discovery-api)
 
 Cross-database queries for RA3 instances are now supported by <Constant name="cloud" /> projects using a Redshift connection. 
 
-With cross-database queries, you can seamlessly query data from any database in the cluster, regardless of which database you are connected to with <Constant name="dbt" />. 
+With cross-database queries, you can seamlessly query data from any database in the cluster, regardless of which database you are connected to with dbt. 
 
 The [connection configuration](https://docs.getdbt.com/reference/warehouse-profiles/redshift-profile) `ra3_node` has been defaulted to `true`. This allows users to:
 
 - benefit from the full RA3 nodes’ capabilities, 
-- generate appropriate <Constant name="dbt" /> documentation.
+- generate appropriate dbt documentation.
 
 ## July 2022
 
@@ -168,7 +168,7 @@ This additional security layer in the <Constant name="cloud_ide" /> is available
 
 ### Audit log
 
-To review actions performed by people in your organization, <Constant name="dbt" /> provides logs of audited user and system events. The <Constant name="cloud" /> audit log lists events triggered in your organization within the last 90 days. 
+To review actions performed by people in your organization, dbt provides logs of audited user and system events. The <Constant name="cloud" /> audit log lists events triggered in your organization within the last 90 days. 
 
 The audit log includes details such as who performed the action, what the action was, and when it was performed. For more details, review [the audit log for <Constant name="cloud" /> Enterprise](/docs/cloud/manage-access/audit-log) documentation.
 
@@ -209,7 +209,7 @@ Love the DAG in the <Constant name="cloud_ide" /> as much as we do? Now when you
 
 #### Performance improvements and enhancements
 
-* Updated recommended <Constant name="dbt" /> commands in the <Constant name="cloud_ide" /> to include <Constant name="core" /> v1.0 commands, such as "build" and the "--select" argument.  
+* Updated recommended dbt commands in the <Constant name="cloud_ide" /> to include <Constant name="core" /> v1.0 commands, such as "build" and the "--select" argument.  
 
 ### Service tokens and bug fixes
 

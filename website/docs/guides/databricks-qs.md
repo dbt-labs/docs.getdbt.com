@@ -17,13 +17,13 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Create a Databricks workspace.
 - Load sample data into your Databricks account.
 - Connect <Constant name="cloud" /> to Databricks.
-- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
@@ -33,7 +33,7 @@ You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.co
 
 ### Related content
 
-- Learn more with [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -156,7 +156,7 @@ If you get a session error and don’t get redirected to this page, you can go b
     <Lightbox src="/img/databricks_tutorial/images/query_check.png" title="Query Check" />
     </div>
 
-12. To ensure any users who might be working on your <Constant name="dbt" /> project has access to your object, run this command.
+12. To ensure any users who might be working on your dbt project has access to your object, run this command.
 
     ```sql 
     grant all privileges on schema default to users;
@@ -164,7 +164,7 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 ## Connect dbt Cloud to Databricks
 
-There are two ways to connect <Constant name="cloud" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Databricks trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, <Constant name="dbt" /> Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, <Constant name="dbt" /> Labs recommends connecting manually.
+There are two ways to connect <Constant name="cloud" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Databricks trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
 ## Set up the integration from Partner Connect
 
@@ -176,7 +176,7 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
 1. In the sidebar of your Databricks account, click **Partner Connect**.
 
-2. Click the **<Constant name="dbt" /> tile**.
+2. Click the **dbt tile**.
 
 3. Select a catalog from the drop-down list, and then click **Next**. The drop-down list displays catalogs you have read and write access to. If your workspace isn't `<UC>-enabled`, the legacy Hive metastore (`hive_metastore`) is used.
 
@@ -186,8 +186,8 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
    1. Click **Create warehouse**. A new tab opens in your browser that displays the **New SQL Warehouse** page in the Databricks SQL UI.
    2. Follow the steps in [Create a SQL warehouse](https://docs.databricks.com/en/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse) in the Databricks docs.
-   3. Return to the Partner Connect tab in your browser, and then close the **<Constant name="dbt" /> tile**.
-   4. Re-open the **<Constant name="dbt" /> tile**.
+   3. Return to the Partner Connect tab in your browser, and then close the **dbt tile**.
+   4. Re-open the **dbt tile**.
    5. Select the SQL warehouse you just created from the drop-down list.
 
 7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you have read and write access to. You can repeat this step to add multiple schemas.
@@ -209,7 +209,7 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
 8. Click **Next**.
 
-   The **Email** box displays the email address for your Databricks account. <Constant name="dbt" /> Labs uses this email address to prompt you to create a trial <Constant name="cloud" /> account.
+   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial <Constant name="cloud" /> account.
 
 9. Click **Connect to <Constant name="cloud" />**.
 
@@ -226,7 +226,7 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
 1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
@@ -240,7 +240,7 @@ Now that you have a repository configured, you can initialize your project and s
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

@@ -29,7 +29,7 @@ communityAwardYear: 2023
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I have been a subscriber to 'The Data Science Roundup' (now ['The Analytics Engineering Roundup'](https://roundup.getdbt.com/)) since its inception, so I knew that <Constant name="dbt" /> existed from the very beginning, since the time that <Constant name="dbt" /> Labs was still called Fishtown Analytics.  Despite that, I never really understood what the tool was or how it fit in until early 2020 when I first started experimenting with the tool.  I immediately joined the community and found it warm and welcoming, so I started to help people where I could and never stopped!
+I have been a subscriber to 'The Data Science Roundup' (now ['The Analytics Engineering Roundup'](https://roundup.getdbt.com/)) since its inception, so I knew that dbt existed from the very beginning, since the time that dbt Labs was still called Fishtown Analytics.  Despite that, I never really understood what the tool was or how it fit in until early 2020 when I first started experimenting with the tool.  I immediately joined the community and found it warm and welcoming, so I started to help people where I could and never stopped!
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 

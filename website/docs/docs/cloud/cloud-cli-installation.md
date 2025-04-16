@@ -6,9 +6,9 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-<Constant name="cloud" /> natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The <Constant name="cloud" /> CLI allows you to run <Constant name="dbt" /> commands against your <Constant name="cloud" /> development environment from your local command line.
+<Constant name="cloud" /> natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The <Constant name="cloud" /> CLI allows you to run dbt commands against your <Constant name="cloud" /> development environment from your local command line.
 
-<Constant name="dbt" /> commands are run against <Constant name="cloud" />'s infrastructure and benefit from:
+dbt commands are run against <Constant name="cloud" />'s infrastructure and benefit from:
 
 * Secure credential storage in the <Constant name="cloud" /> platform
 * [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment 
@@ -107,7 +107,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
       The <Constant name="cloud" /> CLI - an ELT tool for running SQL transformations and data models in <Constant name="cloud" />...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
 
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -127,7 +127,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
   ```bash
   tar -xf dbt_0.29.9_linux_amd64.tar.gz
-  ./<Constant name="dbt" /> --version
+  ./dbt --version
   ```
 
 :::info
@@ -141,7 +141,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
       The <Constant name="cloud" /> CLI - an ELT tool for running SQL transformations and data models in <Constant name="cloud" />...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -174,7 +174,7 @@ Before installing the <Constant name="cloud_cli" />, make sure you have Python i
 
 We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
-1. Create a new virtual environment named "<Constant name="dbt" />-cloud" with this command:
+1. Create a new virtual environment named "dbt-cloud" with this command:
    ```shell
    python3 -m venv dbt-cloud
     ```
@@ -217,7 +217,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the <Constant name="cloud_cli" /> for your dbt Cloud project. This lets you run <Constant name="dbt" /> commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the <Constant name="cloud_cli" /> for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 

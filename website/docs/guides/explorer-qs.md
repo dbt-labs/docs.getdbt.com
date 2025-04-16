@@ -15,13 +15,13 @@ recently_updated: true
 
 Unlock the power of [<Constant name="explorer" />](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
 
-This quickstart guide accompanies the <Constant name="explorer" /> hands-on workshop and helps you dive into a production-level <Constant name="mesh" /> implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your <Constant name="dbt" /> projects to the next level.
+This quickstart guide accompanies the <Constant name="explorer" /> hands-on workshop and helps you dive into a production-level <Constant name="mesh" /> implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
 
-By the end of the guide and workshop, you'll understand how to leverage <Constant name="explorer" /> and have the confidence to navigate multiple <Constant name="dbt" /> projects, trace dependencies, and identify opportunities to improve performance and data quality.
+By the end of the guide and workshop, you'll understand how to leverage <Constant name="explorer" /> and have the confidence to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
 
 ### What you'll learn
 In this guide, you will learn how to:
-- Navigate multiple <Constant name="dbt" /> projects using <Constant name="explorer" />
+- Navigate multiple dbt projects using <Constant name="explorer" />
 - Self-serve on data documentation
 - Trace dependencies at the model and column level
 - Identify opportunities to improve performance and data quality
@@ -62,7 +62,7 @@ Now we’ll be creating your <Constant name="cloud" /> account and connecting it
 
 With <Constant name="explorer" />, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. 
 
-Navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your <Constant name="dbt" /> resources.
+Navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Models tab" />
 
@@ -137,13 +137,13 @@ To learn more about the specific suggestions and the reasons behind them, check 
 
 <ConfettiTrigger>
 
-Congratulations! You've completed the <Constant name="explorer" /> workshop. You now have the tools and knowledge to navigate multiple <Constant name="dbt" /> projects, trace dependencies, and identify opportunities to improve performance and data quality.
+Congratulations! You've completed the <Constant name="explorer" /> workshop. You now have the tools and knowledge to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
 
 You've learned how to:
 - Use <Constant name="explorer" /> to visualize your project’s lineage and interact with the DAG
 - Search for resources in your project and apply filters to refine your search
 - Explore lenses and find table materializations in your current project
-- Navigate multiple <Constant name="dbt" /> projects using <Constant name="explorer" />
+- Navigate multiple dbt projects using <Constant name="explorer" />
 - Trace dependencies at the model and column level
 - Review project recommendations and implement improvements
 

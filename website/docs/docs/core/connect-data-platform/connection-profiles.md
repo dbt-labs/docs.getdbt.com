@@ -65,7 +65,7 @@ or information about configuring advanced options, see [the `profiles.yml` refer
 
 A profile consists of _targets_, and a specified _default target_.
 
-Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some <Constant name="dbt" />-specific configurations.
+Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
 The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](/docs/supported-data-platforms) section.
 
@@ -89,7 +89,7 @@ Use the [debug](/reference/dbt-jinja-functions/debug-method) command to validate
 
 ## Understanding targets in profiles
 
-<Constant name="dbt" /> supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [<Constant name="core" /> Environments](/docs/core/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [<Constant name="core" /> Environments](/docs/core/dbt-core-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
@@ -101,7 +101,7 @@ If you do have multiple targets in your profile, and want to use a target other 
 
 When running dbt commands, you can specify which profile and target to use from the CLI using the `--profile` and `--target` [flags](/reference/global-configs/about-global-configs#available-flags). These flags override what’s defined in your `dbt_project.yml` as long as the specified profile and target are already defined in your `profiles.yml` file.
 
-To run your <Constant name="dbt" /> project with a different profile or target than the default, you can do so using the followingCLI flags:
+To run your dbt project with a different profile or target than the default, you can do so using the followingCLI flags:
 - `--profile` flag &mdash; Overrides the profile set in `dbt_project.yml` by pointing to another profile defined in `profiles.yml`.
 - `--target` flag &mdash; Specifies the target within that profile to use (as defined in `profiles.yml`).
 
@@ -114,27 +114,27 @@ In this example, the `dbt run` command will use the `my-profile-name` profile an
 
 ## Understanding warehouse credentials
 
-We recommend that each <Constant name="dbt" /> user has their own set of database credentials, including a separate user for production runs of <Constant name="dbt" /> – this helps debug rogue queries, simplifies ownerships of schemas, and improves security.
+We recommend that each dbt user has their own set of database credentials, including a separate user for production runs of dbt – this helps debug rogue queries, simplifies ownerships of schemas, and improves security.
 
-To ensure the user credentials you use in your target allow <Constant name="dbt" /> to run, you will need to ensure the user has appropriate privileges. While the exact privileges needed varies between data warehouses, at a minimum your user must be able to:
+To ensure the user credentials you use in your target allow dbt to run, you will need to ensure the user has appropriate privileges. While the exact privileges needed varies between data warehouses, at a minimum your user must be able to:
 
 * read source data
 * create schemas¹
 * read system <Term id="table">tables</Term>
 
-:::info Running <Constant name="dbt" /> without create schema privileges
+:::info Running dbt without create schema privileges
 
-If your user is unable to be granted the privilege to create schemas, your <Constant name="dbt" /> runs should instead target an existing schema that your user has permission to create relations within.
+If your user is unable to be granted the privilege to create schemas, your dbt runs should instead target an existing schema that your user has permission to create relations within.
 
 :::
 
 ## Understanding target schemas
 
-The target schema represents the default schema that <Constant name="dbt" /> will build objects into, and is often used as the differentiator between separate environments within a warehouse.
+The target schema represents the default schema that dbt will build objects into, and is often used as the differentiator between separate environments within a warehouse.
 
 :::info Schemas in BigQuery
 
-<Constant name="dbt" /> uses the term "schema" in a target across all supported warehouses for consistency. Note that in the case of BigQuery, a schema is actually a dataset.
+dbt uses the term "schema" in a target across all supported warehouses for consistency. Note that in the case of BigQuery, a schema is actually a dataset.
 
 :::
 
@@ -142,13 +142,13 @@ The schema used for production should be named in a way that makes it clear that
 
 In development, a pattern we’ve found to work well is to name the schema in your `dev` target `dbt_<username>`. Suffixing your name to the schema enables multiple users to develop in dbt, since each user will have their own separate schema for development, so that users will not build over the top of each other, and ensuring that object ownership and permissions are consistent across an entire schema.
 
-Note that there’s no need to create your target schema beforehand – <Constant name="dbt" /> will check if the schema already exists when it runs, and create it if it doesn’t.
+Note that there’s no need to create your target schema beforehand – dbt will check if the schema already exists when it runs, and create it if it doesn’t.
 
-While the target schema represents the default schema that <Constant name="dbt" /> will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](/docs/build/custom-schemas).
+While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](/docs/build/custom-schemas).
 
 ## Understanding threads
 
-When <Constant name="dbt" /> runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph <Constant name="dbt" /> may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is 4 threads.
+When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is 4 threads.
 
 For more information, check out [using threads](/docs/running-a-dbt-project/using-threads).
 
@@ -164,10 +164,10 @@ The parent directory for `profiles.yml` is determined using the following preced
 To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
 
 ```bash
-$ <Constant name="dbt" /> debug --config-dir
+$ dbt debug --config-dir
 To view your profiles.yml file, run:
 
-open /Users/alice/.<Constant name="dbt" />
+open /Users/alice/.dbt
 ```
 
 You may want to have your `profiles.yml` file stored in a different directory than `~/.dbt/` – for example, if you are [using environment variables](#advanced-using-environment-variables) to load your credentials, you might choose to include this file in the root directory of your dbt project.

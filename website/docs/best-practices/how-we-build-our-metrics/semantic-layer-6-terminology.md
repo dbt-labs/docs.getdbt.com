@@ -5,7 +5,7 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure"
 ---
 
-The rest of this guide will focus on the process of migrating your existing <Constant name="dbt" /> code to the <Constant name="semantic_layer" />. To do this, we'll need to introduce some new terminology and concepts that are specific to the <Constant name="semantic_layer" />.
+The rest of this guide will focus on the process of migrating your existing dbt code to the <Constant name="semantic_layer" />. To do this, we'll need to introduce some new terminology and concepts that are specific to the <Constant name="semantic_layer" />.
 
 We want to define them up front, as we have specific meanings in mind applicable to the process of migrating code to the <Constant name="semantic_layer" />. These terms can mean different things in different settings, but here we mean:
 
@@ -16,9 +16,9 @@ We want to define them up front, as we have specific meanings in mind applicable
 
 We'll also use a couple _new_ terms for the sake of brevity. These aren't standard or official dbt-isms, but useful for communicating meaning in the context of refactoring code for the <Constant name="semantic_layer" />:
 
-- 🧊 **Frozen** — shorthand to indicate code that is statically built in <Constant name="dbt" />’s logical transformation layer. Does not refer to the materialization type: views, incremental models, and regular tables are all considered _frozen_ as they statically generate data or code that is stored in the warehouse as opposed to dynamically querying, as with the <Constant name="semantic_layer" />. This is _not_ a bad thing! We want some portion of our transformation logic to be frozen and stable as the _transformation_ _logic_ is not rapidly shifting and we benefit in testing, performance, and stability.
+- 🧊 **Frozen** — shorthand to indicate code that is statically built in dbt’s logical transformation layer. Does not refer to the materialization type: views, incremental models, and regular tables are all considered _frozen_ as they statically generate data or code that is stored in the warehouse as opposed to dynamically querying, as with the <Constant name="semantic_layer" />. This is _not_ a bad thing! We want some portion of our transformation logic to be frozen and stable as the _transformation_ _logic_ is not rapidly shifting and we benefit in testing, performance, and stability.
 - 🫠 **Melting** — the process of breaking up frozen structures into flexible <Constant name="semantic_layer" /> code. This allows them to create as many combinations and aggregations as possible dynamically in response to stakeholder needs and queries.
 
 :::tip
-🏎️ **The <Constant name="semantic_layer" /> is a denormalization engine.** <Constant name="dbt" /> transforms your data into clean, normalized marts. The <Constant name="semantic_layer" /> is a denormalization engine that dynamically connects and molds these building blocks into the maximum amount of shapes available _dynamically_.
+🏎️ **The <Constant name="semantic_layer" /> is a denormalization engine.** dbt transforms your data into clean, normalized marts. The <Constant name="semantic_layer" /> is a denormalization engine that dynamically connects and molds these building blocks into the maximum amount of shapes available _dynamically_.
 :::

@@ -32,7 +32,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ### User / Password Authentication
 
-Configure your <Constant name="dbt" /> profile for using TiDB:
+Configure your dbt profile for using TiDB:
 
 #### TiDB connection profile
 <File name='profiles.yml'>

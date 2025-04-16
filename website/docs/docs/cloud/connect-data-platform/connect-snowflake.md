@@ -31,7 +31,7 @@ This section describes the different authentication methods for connecting <Cons
 **Available in:** Development environments, Deployment environments
 
 The `Username / Password` auth method is the simplest way to authenticate
-Development or Deployment credentials in a <Constant name="dbt" /> project. Simply enter your Snowflake
+Development or Deployment credentials in a dbt project. Simply enter your Snowflake
 username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
 to authenticate <Constant name="cloud" /> to run queries against Snowflake on behalf of a Snowflake user.
 
@@ -120,7 +120,7 @@ To connect to Snowflake through a custom domain (vanity URL) instead of the acco
 host: https://custom_domain_to_snowflake.com
 ```
 
-This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact <Constant name="dbt" /> Support](mailto:support@getdbt.com) to find a workaround with this architecture.
+This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact dbt Support](mailto:support@getdbt.com) to find a workaround with this architecture.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->

@@ -57,7 +57,7 @@ The <Constant name="visual_editor" /> comprises a series of menus activated by c
 
 Click on an icon to expand its section or execute an action depending on its purpose. The options are as follows:
 
-1. The main menu (click on the **<Constant name="dbt" /> logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
+1. The main menu (click on the **dbt logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
 2. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
 3. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
 4. The **SQL code** area displays the SQL that compiles your model.
@@ -85,7 +85,7 @@ Operators are divided into three types:
 
 <Lightbox src="/img/docs/dbt-cloud/visual-editor/operators.png" width="90%" title="The operator’s menu on the side of the Visual Editor canvas." />
 
-Read more about the [individual operators](/docs/cloud/visual-editor-interface#operators) to understand the basic purpose of each. The <Constant name="dbt" /> model created by the <Constant name="visual_editor" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
+Read more about the [individual operators](/docs/cloud/visual-editor-interface#operators) to understand the basic purpose of each. The dbt model created by the <Constant name="visual_editor" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
 
 <details>
 <summary>More about operator tiles</summary>
@@ -129,7 +129,7 @@ Now, you have two input models and are ready to transform the data!
 
 :::tip
 
-Don't see a pre-existing model you're looking for? Ask your <Constant name="dbt" /> admins to ensure it's been run in your Production environment recently and hasn't gone stale.
+Don't see a pre-existing model you're looking for? Ask your dbt admins to ensure it's been run in your Production environment recently and hasn't gone stale.
 
 :::
 
@@ -221,7 +221,7 @@ Now that you've built your model, you need to customize the output name and loca
 
 :::tip Model locations
 
-You can customize the location for <Constant name="visual_editor" /> models to keep them separate from other <Constant name="cloud" /> models. Check with your <Constant name="dbt" /> admins for best practices and ideas for <Constant name="visual_editor" /> model locations and naming conventions.
+You can customize the location for <Constant name="visual_editor" /> models to keep them separate from other <Constant name="cloud" /> models. Check with your dbt admins for best practices and ideas for <Constant name="visual_editor" /> model locations and naming conventions.
 
 :::
 
@@ -245,7 +245,7 @@ This will [materialize](/docs/build/materializations) the data as a `view` in yo
 
 :::tip
 
-Have <Constant name="dbt" /> [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your <Constant name="cloud" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
+Have dbt [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your <Constant name="cloud" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
 
 :::
 

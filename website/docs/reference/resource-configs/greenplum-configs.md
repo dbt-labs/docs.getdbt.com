@@ -100,7 +100,7 @@ Greenplum does not support partitions with `create table as` [construction](http
 1. create table schema
 2. insert data
 
-To implement partitions into your <Constant name="dbt" />-model you need to specify the following config parameters:
+To implement partitions into your dbt-model you need to specify the following config parameters:
  - `fields_string` - definition of columns name, type and constraints
  - `raw_partition` - partition specification 
 

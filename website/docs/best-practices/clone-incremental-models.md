@@ -19,13 +19,13 @@ Imagine you've created a [Slim CI job](/docs/deploy/continuous-integration) in <
 
 <Lightbox src="/img/best-practices/slim-ci-job.png" width="70%" title="Example of a slim CI job with the above configurations" />
 
-Now imagine your <Constant name="dbt" /> project looks something like this in the DAG:
+Now imagine your dbt project looks something like this in the DAG:
 
 <Lightbox src="/img/best-practices/dag-example.png" width="70%" title="Sample project DAG" />
 
 When you open a pull request (PR) that modifies `dim_wizards`, your CI job will kickoff and build _only the modified models and their downstream dependencies_ (in this case, `dim_wizards` and `fct_orders`) into a temporary schema that's unique to your PR. 
 
-This build mimics the behavior of what will happen once the PR is merged into the main branch. It ensures you're not introducing breaking changes, without needing to build your entire <Constant name="dbt" /> project. 
+This build mimics the behavior of what will happen once the PR is merged into the main branch. It ensures you're not introducing breaking changes, without needing to build your entire dbt project. 
 
 ## What happens when one of the modified models (or one of their downstream dependencies) is an incremental model?
 

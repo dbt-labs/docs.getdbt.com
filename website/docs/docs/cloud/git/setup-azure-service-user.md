@@ -40,7 +40,7 @@ A Microsoft Entra ID admin needs to perform the following steps:
 1. Sign into your Azure portal and click **Microsoft Entra ID**.
 2. Select **App registrations** in the left panel.
 3. Select **New registration**. The form for creating a new Entra ID app opens.
-4. Provide a name for your app. We recommend using, "<Constant name="dbt" /> Labs Azure DevOps app".
+4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps app".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Entra ID application to work properly, you must select Multitenant.
 6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
@@ -117,7 +117,7 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
 4. Complete the form:
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
-    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the Entra ID app secret expiration and <Constant name="dbt" /> Admins should note the expiration date for rotation.
+    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding a Microsoft Entra ID app to dbt Cloud"/>
 
@@ -126,7 +126,7 @@ Your Microsoft Entra ID app should now be added to your <Constant name="cloud" /
 
 ## Connect a service user
 
-A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, <Constant name="cloud" /> will lose privileges to the <Constant name="dbt" /> Azure DevOps repositories, causing production runs to fail.
+A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, <Constant name="cloud" /> will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
 :::info Service user authentication expiration
 <Constant name="cloud" /> will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.

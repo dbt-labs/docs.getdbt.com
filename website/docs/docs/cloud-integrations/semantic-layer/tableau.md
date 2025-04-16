@@ -9,7 +9,7 @@ The Tableau integration allows you to use worksheets to query the <Constant name
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using <Constant name="dbt" /> v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater or Tableau Server.
   - Note that Tableau Online does not currently support custom connectors natively. If you use Tableau Online, you will only be able to access the connector in Tableau Desktop.
 - Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
@@ -38,7 +38,7 @@ Alternatively, you can follow these steps to install the Connector:
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers` or `/Library/JDBC` or `~/Library/JDBC`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
-3. Open Tableau Desktop or Tableau Server and find the **<Constant name="semantic_layer" /> by <Constant name="dbt" /> Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
+3. Open Tableau Desktop or Tableau Server and find the **<Constant name="semantic_layer" /> by dbt Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
 4. Connect with your Host, Environment ID, and Service Token information <Constant name="cloud" /> provides during [<Constant name="semantic_layer" /> configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
    - In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 

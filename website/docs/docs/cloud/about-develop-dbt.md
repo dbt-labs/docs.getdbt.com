@@ -32,4 +32,4 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
 
 </div><br />
 
-To get started, you'll need a [<Constant name="cloud" />](https://www.getdbt.com/signup) account and a developer seat. For a more comprehensive guide about developing in <Constant name="dbt" />, refer to the [quickstart guides](/docs/get-started-dbt).
+To get started, you'll need a [<Constant name="cloud" />](https://www.getdbt.com/signup) account and a developer seat. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).

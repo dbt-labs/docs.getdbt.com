@@ -18,7 +18,7 @@ As a data team, it’s critical that you have context into the downstream use ca
 - Gain a better understanding of how models are used in downstream analytics, improving governance and decision-making.
 - Reduce incidents and optimize workflows by linking upstream models to downstream dependencies.
 - Automate exposure tracking for supported BI tools, ensuring lineage is always up to date.
-- [Orchestrate exposures](/docs/cloud-integrations/orchestrate-exposures) to refresh the underlying data sources during scheduled <Constant name="dbt" /> jobs, improving timeliness and reducing costs. Orchestrating exposures is essentially a way to ensure that your BI tools are updated regularly by using the [<Constant name="cloud" /> job scheduler](/docs/deploy/deployments).
+- [Orchestrate exposures](/docs/cloud-integrations/orchestrate-exposures) to refresh the underlying data sources during scheduled dbt jobs, improving timeliness and reducing costs. Orchestrating exposures is essentially a way to ensure that your BI tools are updated regularly by using the [<Constant name="cloud" /> job scheduler](/docs/deploy/deployments).
   - For more info on the differences between visualizing and orchestrating exposures, see [Visualize and orchestrate downstream exposures](/docs/cloud-integrations/downstream-exposures).
 
 To configure downstream exposures automatically from dashboards in Tableau, prerequisites, and more &mdash; refer to [Configure downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau).

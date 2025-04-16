@@ -4,7 +4,7 @@ id: "version-compatibility"
 sidebar: "Version compatibility"
 ---
 
-For the first several years of <Constant name="core" />'s development, breaking changes were more common. For this reason, we encouraged setting [<Constant name="dbt" /> version requirements](/reference/project-configs/require-dbt-version) &mdash; especially if they use features that are newer or which may break in future versions of <Constant name="core" />. By default, if you run a project with an incompatible <Constant name="dbt" /> version, <Constant name="dbt" /> will raise an error.
+For the first several years of <Constant name="core" />'s development, breaking changes were more common. For this reason, we encouraged setting [dbt version requirements](/reference/project-configs/require-dbt-version) &mdash; especially if they use features that are newer or which may break in future versions of <Constant name="core" />. By default, if you run a project with an incompatible dbt version, dbt will raise an error.
 
 You can use the `VERSION_CHECK` config to disable this check and suppress the error message:
 

@@ -7,7 +7,7 @@ pagination_next: null
 
 An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
 
-Critically, in order to execute <Constant name="dbt" />, environments define three variables:
+Critically, in order to execute dbt, environments define three variables:
 
 1. The version of <Constant name="core" /> that will be used to run your project
 2. The warehouse connection information (including the target database/schema settings)

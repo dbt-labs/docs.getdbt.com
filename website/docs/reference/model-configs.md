@@ -334,16 +334,16 @@ models:
 
 ## Configuring models 
 
-Model configurations are applied hierarchically. You can configure models from within an installed package and also from within your <Constant name="dbt" /> project in the following ways, listed in order of precedence: 
+Model configurations are applied hierarchically. You can configure models from within an installed package and also from within your dbt project in the following ways, listed in order of precedence: 
 
 1. Using a `config()` Jinja macro within a model.
 2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file.
 3. From the `dbt_project.yml` project file, under the `models:` key. In this case, the model that's nested the deepest will have the highest priority. 
-  - Note, the model name configuration must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent <Constant name="dbt" /> from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/collaborate/explore-projects).
+  - Note, the model name configuration must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/collaborate/explore-projects).
 
 The most specific configuration always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](/reference/resource-configs/resource-path) as nested dictionary keys.
 
-Model configurations in your root <Constant name="dbt" /> project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control over your <Constant name="dbt" /> runs. 
+Model configurations in your root dbt project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control over your dbt runs. 
 
 ## Example
 

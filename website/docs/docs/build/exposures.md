@@ -4,13 +4,13 @@ sidebar_label: "Exposures"
 id: "exposures"
 ---
 
-Exposures make it possible to define and describe a downstream use of your <Constant name="dbt" /> project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
+Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
 - populate a dedicated page in the auto-generated [documentation](/docs/build/documentation) site with context relevant to data consumers
 
 Exposures can be defined in two ways:
 - Manual &mdash; Declared [explicitly](/docs/build/exposures#declaring-an-exposure) in your project’s YAML files.
-- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in <Constant name="dbt" />’s metadata system, appear in [<Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
+- Automatic &mdash;  <Constant name="cloud" /> [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [<Constant name="explorer" />](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
 
 ### Declaring an exposure
 

@@ -12,7 +12,7 @@ Read about common questions about <Constant name="copilot" /> to understand how 
 
 <Constant name="copilot" /> is an AI-powered assistant fully integrated into your <Constant name="cloud" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
 
-<Constant name="dbt" /> Labs is committed to protecting your privacy and data. This page provides information about how <Constant name="copilot" /> handles your data. For more information, check out the [<Constant name="dbt" /> Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
+dbt Labs is committed to protecting your privacy and data. This page provides information about how <Constant name="copilot" /> handles your data. For more information, check out the [dbt Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
 
 ## Overview 
 

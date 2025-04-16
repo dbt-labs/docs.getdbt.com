@@ -17,7 +17,7 @@ recently_updated: true
 
 ## Introduction
 
-This guide will demonstrate how to build a data lakehouse with <Constant name="core" /> 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with <Constant name="dbt" />'s robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
+This guide will demonstrate how to build a data lakehouse with <Constant name="core" /> 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with dbt's robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
 
 ### Prerequisites
 
@@ -40,7 +40,7 @@ Python 3.11.4 # Must be Python 3
 
 ```shell
 
-$ <Constant name="dbt" /> --version
+$ dbt --version
 Core:
   - installed: 1.5.0 # Must be 1.5 or newer
   - latest:    1.6.3 - Update available!
@@ -171,11 +171,11 @@ The sources can be found by navigating to the **Object Storage** section of the 
 
 ## The Job output
 
-When you run the <Constant name="dbt" /> job, it will create a **dev** space folder that has all the data assets created. This is what you will see in Dremio Cloud UI. Spaces in Dremio is a way to organize data assets which map to business units or data products.
+When you run the dbt job, it will create a **dev** space folder that has all the data assets created. This is what you will see in Dremio Cloud UI. Spaces in Dremio is a way to organize data assets which map to business units or data products.
 
 <Lightbox src="/img/guides/dremio/dremio-dev-space.png" title="Dremio Cloud dev space"/>
 
-Open the **Application folder** and you will see the output of the simple transformation we did using <Constant name="dbt" />.
+Open the **Application folder** and you will see the output of the simple transformation we did using dbt.
 
 <Lightbox src="/img/guides/dremio/dremio-dev-application.png" title="Application folder transformation output"/>
 

@@ -17,16 +17,16 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
 - Connect <Constant name="cloud" /> to Starburst Galaxy.
-- Take a sample query and turn it into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a select statement.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 - Connect to multiple data sources in addition to your S3 bucket. 
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
-You can also watch the [Build Better Data Pipelines with <Constant name="dbt" /> and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
+You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
 :::
 
 ### Prerequisites 
@@ -41,7 +41,7 @@ You can also watch the [Build Better Data Pipelines with <Constant name="dbt" />
 
 ### Related content
 
-- [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [<Constant name="cloud" /> CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
@@ -49,7 +49,7 @@ You can also watch the [Build Better Data Pipelines with <Constant name="dbt" />
 
 ## Load data to an Amazon S3 bucket {#load-data-to-s3}
 
-Using Starburst Galaxy, you can create tables and also transform them with <Constant name="dbt" />. Start by loading the Jaffle Shop data (provided by <Constant name="dbt" /> Labs) to your Amazon S3 bucket. Jaffle Shop is a fictional cafe selling food and beverages in several US cities. 
+Using Starburst Galaxy, you can create tables and also transform them with dbt. Start by loading the Jaffle Shop data (provided by dbt Labs) to your Amazon S3 bucket. Jaffle Shop is a fictional cafe selling food and beverages in several US cities. 
 
 1. Download these CSV files to your local machine:
 
@@ -62,7 +62,7 @@ Using Starburst Galaxy, you can create tables and also transform them with <Cons
 
     ```
     <bucket/blob>
-        <Constant name="dbt" />-quickstart (folder)
+        dbt-quickstart (folder)
             jaffle-shop-customers (folder)
                 jaffle_shop_customers.csv (file)
             jaffle-shop-orders (folder)
@@ -131,7 +131,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     Replace `YOUR_S3_BUCKET_NAME` with the name of your S3 bucket. These queries create a schema named `jaffle_shop` and also create the `jaffle_shop_customers`, `jaffle_shop_orders`, and `stripe_payments` tables: 
 
     ```sql
-    CREATE SCHEMA jaffle_shop WITH (location='s3://YOUR_S3_BUCKET_NAME/<Constant name="dbt" />-quickstart/');
+    CREATE SCHEMA jaffle_shop WITH (location='s3://YOUR_S3_BUCKET_NAME/dbt-quickstart/');
 
     CREATE TABLE jaffle_shop.jaffle_shop_customers (
         id VARCHAR,
@@ -140,7 +140,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     )
 
     WITH (
-        external_location = 's3://YOUR_S3_BUCKET_NAME/<Constant name="dbt" />-quickstart/jaffle-shop-customers/',
+        external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-customers/',
         format = 'csv',
         type = 'hive',
         skip_header_line_count=1
@@ -157,7 +157,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     )
 
     WITH (
-        external_location = 's3://YOUR_S3_BUCKET_NAME/<Constant name="dbt" />-quickstart/jaffle-shop-orders/',
+        external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-orders/',
         format = 'csv',
         type = 'hive',
         skip_header_line_count=1
@@ -175,7 +175,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 
     WITH (
 
-        external_location = 's3://YOUR_S3_BUCKET_NAME/<Constant name="dbt" />-quickstart/stripe-payments/',
+        external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/stripe-payments/',
         format = 'csv',
         type = 'hive',
         skip_header_line_count=1
@@ -201,7 +201,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     
     If this role is not listed for you, choose the role you selected in [Connect Starburst Galaxy to the Amazon S3 bucket](#connect-to-s3-bucket) when you added location privilege for your S3 bucket.
 3. Click **Clusters** on the left sidebar.
-4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **<Constant name="dbt" />** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in <Constant name="cloud" />.
+4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in <Constant name="cloud" />.
 5. In another browser tab, log in to [<Constant name="cloud" />](/docs/cloud/about-cloud/access-regions-ip-addresses).
 6. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 7. Enter a project name and click **Continue**.
@@ -224,7 +224,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
 1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
@@ -238,7 +238,7 @@ Now that you have a repository configured, you can initialize your project and s
 You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute <Constant name="dbt" /> commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

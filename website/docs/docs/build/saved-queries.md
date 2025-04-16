@@ -89,7 +89,7 @@ If you use multiple metrics in a saved query, then you will only be able to refe
 
 ## Configure saved query
 
-Use saved queries to define and manage common <Constant name="semantic_layer" /> queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within <Constant name="dbt" /> projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
+Use saved queries to define and manage common <Constant name="semantic_layer" /> queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
 
 In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="cloud" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
 

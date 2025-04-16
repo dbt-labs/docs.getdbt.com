@@ -14,20 +14,20 @@ id: "sql-models"
 
 :::info Building your first models
 
-If you're new to <Constant name="dbt" />, we recommend that you read a [quickstart guide](/guides) to build your first <Constant name="dbt" /> project with models.
+If you're new to dbt, we recommend that you read a [quickstart guide](/guides) to build your first dbt project with models.
 
 :::
 
-<Constant name="dbt" />'s Python capabilities are an extension of its capabilities with SQL models. If you're new to <Constant name="dbt" />, we recommend that you read this page first, before reading: ["Python Models"](/docs/build/python-models)
+dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/build/python-models)
 
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
-- The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent <Constant name="dbt" /> from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/collaborate/explore-projects).
+- The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/collaborate/explore-projects).
 - We strongly recommend using underscores for model names, not dots. For example, use `models/my_model.sql` instead of `models/my.model.sql`.
 - Models can be nested in subdirectories within the `models` directory.
 
-Refer to [How we style our <Constant name="dbt" /> models](/best-practices/how-we-style/1-how-we-style-our-dbt-models) for details on how we recommend you name your models.
+Refer to [How we style our dbt models](/best-practices/how-we-style/1-how-we-style-our-dbt-models) for details on how we recommend you name your models.
 
 When you execute the [`dbt run` command](/reference/commands/run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 

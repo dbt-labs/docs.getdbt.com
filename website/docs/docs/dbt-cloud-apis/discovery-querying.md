@@ -7,7 +7,7 @@ pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
 
-Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. <Constant name="dbt" /> Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
+Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
 Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.
 
@@ -67,8 +67,8 @@ The following are the endpoints for accessing the Discovery API. Use the one tha
 | Deployment type |	Discovery API URL |
 | --------------- | ------------------- |
 | North America multi-tenant	|	https://metadata.cloud.getdbt.com/graphql |
-| EMEA multi-tenant	|	https://metadata.emea.<Constant name="dbt" />.com/graphql |
-| APAC multi-tenant	|	https://metadata.au.<Constant name="dbt" />.com/graphql |
+| EMEA multi-tenant	|	https://metadata.emea.dbt.com/graphql |
+| APAC multi-tenant	|	https://metadata.au.dbt.com/graphql |
 | Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
 | Single-tenant | `https://metadata.YOUR_ACCESS_URL/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.|
 
@@ -76,7 +76,7 @@ The following are the endpoints for accessing the Discovery API. Use the one tha
 
 Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
 
-Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. <Constant name="dbt" /> Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="cloud" /> project.
+Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="cloud" /> project.
 
 ## Retention limits
 You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.

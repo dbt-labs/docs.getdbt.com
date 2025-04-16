@@ -15,7 +15,7 @@ recently_updated: true
 
 ## Introduction
 
-To fit your tool within the world of the <Constant name="semantic_layer" />, <Constant name="dbt" /> Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
+To fit your tool within the world of the <Constant name="semantic_layer" />, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 
@@ -32,7 +32,7 @@ To build a <Constant name="semantic_layer" /> integration:
 - Familiarize yourself with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
   - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
-  - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same <Constant name="dbt" /> project repo).
+  - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
 
 ### Connection parameters
 
@@ -106,7 +106,7 @@ Allow users to query either one metric alone without dimensions or multiple metr
 - Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply. (Our APIs provide calls for you to get relevant dimensions for metrics, and vice versa).
 
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
-  * For example, if a <Constant name="dbt" /> model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
+  * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
 
 - We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). 
   

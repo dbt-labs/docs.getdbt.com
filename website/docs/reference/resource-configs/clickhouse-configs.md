@@ -11,7 +11,7 @@ id: "clickhouse-configs"
 | view materialization        | YES        | Creates a [view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/).                                            |
 | table materialization       | YES        | Creates a [table](https://clickhouse.com/docs/en/operations/system-tables/tables/). See below for the list of supported engines. |
 | incremental materialization | YES        | Creates a table if it doesn't exist, and then writes only updates to it.                                                         |
-| ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to <Constant name="dbt" /> and does not create any database objects            |
+| ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to dbt and does not create any database objects            |
 
 ## Experimental models
 The following are [experimental features](https://clickhouse.com/docs/en/beta-and-experimental-features) in Clickhouse:
@@ -25,7 +25,7 @@ The following are [experimental features](https://clickhouse.com/docs/en/beta-an
 
 ### View materialization
 
-A <Constant name="dbt" /> model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/)
+A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/)
 and configured using the following syntax:
 
 <Tabs
@@ -62,7 +62,7 @@ models:
 
 ### Table materialization
 
-A <Constant name="dbt" /> model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and
+A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and
 configured using the following syntax:
 
 <Tabs
@@ -118,8 +118,8 @@ models:
 
 ### Incremental materialization
 
-Table model will be reconstructed for each <Constant name="dbt" /> execution. This may be infeasible and extremely costly for larger result
-sets or complex transformations. To address this challenge and reduce the build time, a <Constant name="dbt" /> model can be created as an
+Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result
+sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an
 incremental ClickHouse table and is configured using the following syntax:
 
 <Tabs
@@ -183,7 +183,7 @@ models:
 
 ## Snapshot
 
-<Constant name="dbt" /> snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time
+dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time
 queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is
 supported by the ClickHouse connector and is configured using the following syntax:
 
@@ -245,12 +245,12 @@ For more information on configuration, check out the [snapshot configs](/referen
 | Distributed Table | https://clickhouse.com/docs/en/engines/table-engines/special/distributed. |
 | Dictionary        | https://clickhouse.com/docs/en/engines/table-engines/special/dictionary   |
 
-If you encounter issues connecting to ClickHouse from <Constant name="dbt" /> with one of the above engines, please report an
+If you encounter issues connecting to ClickHouse from dbt with one of the above engines, please report an
 issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
 
 ## Cross database macro support
 
-<Constant name="dbt" />-clickhouse supports most of the cross database macros now included in <Constant name="core" />, with the following exceptions:
+dbt-clickhouse supports most of the cross database macros now included in <Constant name="core" />, with the following exceptions:
 
 * The `split_part` SQL function is implemented in ClickHouse using the splitByChar function. This function requires
   using a constant string for the "split" delimiter, so the `delimeter` parameter used for this macro will be

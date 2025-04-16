@@ -21,7 +21,7 @@ You will learn, at a high level, the resources necessary to implement this solut
 
 ### Required resources for creating a connection
 
-Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with <Constant name="dbt" /> Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
+Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
 
 This approach is distinct from and does not require you to implement VPC peering between your AWS account(s) and <Constant name="cloud" />.
 
@@ -56,7 +56,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 ### 2. Grant dbt AWS account access to the VPC Endpoint Service
 
-Once these resources have been provisioned, access needs to be granted for the <Constant name="dbt" /> Labs AWS account to create a VPC Endpoint in our VPC. On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the following IAM role in the appropriate production AWS account and save your changes ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions)).
+Once these resources have been provisioned, access needs to be granted for the dbt Labs AWS account to create a VPC Endpoint in our VPC. On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the following IAM role in the appropriate production AWS account and save your changes ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions)).
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
@@ -70,7 +70,7 @@ Once the VPC Endpoint Service is provisioned and configured find the service nam
 
 :::note Custom DNS configuration
  
-If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the <Constant name="dbt" /> Labs Infrastructure team in the <Constant name="cloud" /> private network. For example:
+If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the <Constant name="cloud" /> private network. For example:
     - Private hosted zone: examplecorp.com
     - DNS record: github.examplecorp.com
     
@@ -102,7 +102,7 @@ Once you accept the endpoint connection request, you can use the PrivateLink end
 
 ## Configure in dbt Cloud
 
-Once <Constant name="dbt" /> confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
+Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
 
 1. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. 
 2. Select the configured endpoint from the drop down list.

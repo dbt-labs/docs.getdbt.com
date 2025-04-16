@@ -54,7 +54,7 @@ company-name:
 
 ### Configuration notes
 
-This adapter is based on the <Constant name="dbt" />-postgres adapter documented here [Postgres profile setup](/docs/core/connect-data-platform/postgres-setup)
+This adapter is based on the dbt-postgres adapter documented here [Postgres profile setup](/docs/core/connect-data-platform/postgres-setup)
 
 #### role
 
@@ -62,6 +62,6 @@ The `role` config controls the user role that dbt assumes when opening new conne
 
 #### sslmode / sslrootcert
 
-The ssl config parameters control how <Constant name="dbt" /> connects to Yellowbrick using SSL. Refer to the [Yellowbrick documentation](https://docs.yellowbrick.com/5.2.27/client_tools/config_ssl_for_clients_intro.html) for
+The ssl config parameters control how dbt connects to Yellowbrick using SSL. Refer to the [Yellowbrick documentation](https://docs.yellowbrick.com/5.2.27/client_tools/config_ssl_for_clients_intro.html) for
 details.
 

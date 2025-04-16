@@ -4,13 +4,13 @@ id: "deploy-environments"
 description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-Deployment environments in <Constant name="cloud" /> are crucial for deploying <Constant name="dbt" /> jobs in production and using features or integrations that depend on <Constant name="dbt" /> metadata or results. To execute <Constant name="dbt" />, environments determine the settings used during job runs, including:
+Deployment environments in <Constant name="cloud" /> are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
 
 - The version of <Constant name="core" /> that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
 - The version of your code to execute
 
-A <Constant name="cloud" /> project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of <Constant name="dbt" /> jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
+A <Constant name="cloud" /> project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
 :::tip Learn how to manage <Constant name="cloud" /> environments
 To learn different approaches to managing <Constant name="cloud" /> environments and recommendations for your organization's unique needs, read [<Constant name="cloud" /> environment best practices](/guides/set-up-ci).
@@ -41,7 +41,7 @@ In <Constant name="cloud" />, each project can have one designated deployment en
 
 For customers using the <Constant name="semantic_layer" />, the next section of environment settings is the <Constant name="semantic_layer" /> configurations. [The <Constant name="semantic_layer" /> setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
 
-You can also leverage the <Constant name="dbt" /> Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to <Constant name="dbt" /> models don't break these metrics.
+You can also leverage the dbt Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 
 ## Staging environment
 
@@ -58,7 +58,7 @@ Some customers prefer to connect Development and Staging to their `main` branch 
 ### Why use a staging environment
 
 These are the primary motivations for using a Staging environment:
-1. An additional validation layer before changes are deployed into Production. You can deploy, test, and explore your <Constant name="dbt" /> models in Staging.
+1. An additional validation layer before changes are deployed into Production. You can deploy, test, and explore your dbt models in Staging.
 2. Clear isolation between development workflows and production data. It enables developers to work in metadata-powered ways, using features like deferral and cross-project references, without accessing data in production deployments.
 3. Provide developers with the ability to create, edit, and trigger ad hoc jobs in the Staging environment, while keeping the Production environment locked down using [environment-level permissions](/docs/cloud/manage-access/environment-permissions). 
 
@@ -107,7 +107,7 @@ Warehouse connections are created and managed at the account-level for <Constant
 Each project can have multiple connections (Snowflake account, Redshift host, Bigquery project, Databricks host, and so on.) of the same warehouse type. Some details of that connection (databases/schemas/and so on.) can be overridden within this section of the <Constant name="cloud" /> environment settings.
 :::
 
-This section determines the exact location in your warehouse <Constant name="dbt" /> should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
+This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
 For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
 
@@ -201,7 +201,7 @@ For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#exten
 
 #### Editable fields
 
-- **Auth Method**: This determines the way <Constant name="dbt" /> connects to your warehouse
+- **Auth Method**: This determines the way dbt connects to your warehouse
   - One of: [**Username & Password**, **Key Pair**]
 - If **Username & Password**:
   - **Username**: username to use (most likely a service account)

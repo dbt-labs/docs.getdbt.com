@@ -52,10 +52,10 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 - [`dbt build`](/reference/commands/build) runs all nodes (seeds, models, snapshots, tests) at once in DAG order. If something fails, nodes that depend on it will be skipped.
 - The [`state:modified+` selector](/reference/node-selection/methods#state) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
 
-To be able to find modified nodes, <Constant name="dbt" /> needs to have something to compare against. <Constant name="cloud" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
+To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="cloud" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
 :::info Use CI to test your metrics
-If you've [built semantic nodes](/docs/build/build-metrics-intro) in your <Constant name="dbt" /> project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to <Constant name="dbt" /> models don't break these metrics.
+If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 :::
 
 ### 3. Test your process
@@ -72,7 +72,7 @@ To test your new flow, create a new branch in the <Constant name="cloud_ide" /> 
 
 ## Enforce best practices with dbt project evaluator
 
-<Constant name="dbt" /> Project Evaluator is a package designed to identify deviations from best practices common to many <Constant name="dbt" /> projects, including modeling, testing, documentation, structure and performance problems. For an introduction to the package, read its [launch blog post](/blog/align-with-dbt-project-evaluator).
+dbt Project Evaluator is a package designed to identify deviations from best practices common to many dbt projects, including modeling, testing, documentation, structure and performance problems. For an introduction to the package, read its [launch blog post](/blog/align-with-dbt-project-evaluator).
 
 ### 1. Install the package
 
@@ -246,7 +246,7 @@ pipelines:
   branches:
     '**': # this sets a wildcard to run on every branch
       - step:
-          name: Lint <Constant name="dbt" /> project
+          name: Lint dbt project
           script:
             - python -m pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
@@ -316,7 +316,7 @@ This approach can increase release safety, but creates additional manual steps i
 
 As such, it may slow down the time it takes to get new features into production.
 
-The team at Sunrun maintained a SOX-compliant deployment in <Constant name="dbt" /> while reducing the number of environments. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
+The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing the number of environments. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
 :::
 
 In this section, we will add a new **QA** environment. New features will branch off from and be merged back into the associated `qa` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the CI environment before going live.

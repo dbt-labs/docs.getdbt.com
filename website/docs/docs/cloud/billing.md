@@ -56,31 +56,31 @@ Examples of queried metrics include:
 - Querying one metric, grouping by one dimension → 1 queried metric 
 
   ```shell
-  <Constant name="dbt" /> sl query --metrics revenue --group-by metric_time
+  dbt sl query --metrics revenue --group-by metric_time
   ```
 
 - Querying one metric, grouping by two dimensions → 1 queried metric 
 
   ```shell
-  <Constant name="dbt" /> sl query --metrics revenue --group-by metric_time,user__country
+  dbt sl query --metrics revenue --group-by metric_time,user__country
   ```
 
 - Querying two metrics, grouping by two dimensions → 2 queried metrics 
 
   ```shell
-  <Constant name="dbt" /> sl query --metrics revenue,gross_sales --group-by metric_time,user__country
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time,user__country
   ```
 
 - Running a compile for one metric → 1 queried metric
 
   ```shell
-  <Constant name="dbt" /> sl query --metrics revenue --group-by metric_time --compile
+  dbt sl query --metrics revenue --group-by metric_time --compile
   ```
 
 - Running a compile for two metrics → 2 queried metrics
 
   ```shell
-  <Constant name="dbt" /> sl query --metrics revenue,gross_sales --group-by metric_time --compile
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time --compile
   ```
 
 ### Viewing usage in the product 
@@ -135,7 +135,7 @@ All included successful models built numbers above reflect our most current pric
 
 As an Enterprise customer, you pay annually via invoice, monthly in arrears for additional usage (if applicable), and may benefit from negotiated usage rates. Please refer to your order form or contract for your specific pricing details, or [contact the account team](https://www.getdbt.com/contact-demo) with any questions. 
 
-Enterprise plan billing information is not available in the <Constant name="cloud" /> UI.  Changes are handled through your <Constant name="dbt" /> Labs Solutions Architect or account team manager.
+Enterprise plan billing information is not available in the <Constant name="cloud" /> UI.  Changes are handled through your dbt Labs Solutions Architect or account team manager.
 
 ### Legacy plans
 
@@ -147,7 +147,7 @@ For customers using the legacy <Constant name="semantic_layer" /> with dbt_metri
 
 :::
 
-<Constant name="dbt" /> Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.
+dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.
 
 
 ## Managing usage
@@ -192,7 +192,7 @@ If you have views that contain macros with case statements based on upstream tab
 
 Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](https://docs.getdbt.com/reference/node-selection/yaml-selectors) for your job command. 
 
-1. Open your <Constant name="dbt" /> project in the <Constant name="cloud_ide" />.
+1. Open your dbt project in the <Constant name="cloud_ide" />.
 2. Add a file called `selectors.yml` in your top-level project folder.
 3. In the file, add the following code:
 
@@ -230,14 +230,14 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your <Constant name="dbt" /> project, follow the steps in Run a <Constant name="cloud" /> job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the <Constant name="cloud" /> API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. In your dbt project, follow the steps in Run a <Constant name="cloud" /> job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the <Constant name="cloud" /> API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
 The purpose of the merge job is to:
 
 - Immediately deploy any changes from PRs to production.
 - Ensure your production views remain up-to-date with how they’re defined in your codebase while remaining cost-efficient when running jobs in production.
 
-The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your <Constant name="dbt" /> project.
+The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your dbt project.
 
 ### Rework inefficient models
 
@@ -250,9 +250,9 @@ To reduce your warehouse spend, you can identify what models, on average, are ta
 To understand better how long each model takes to run within the context of a specific run, you can look at the **Model Timing** tab. Select the run of interest on the **Run History** page to find the tab. On that **Run** page, click **Model Timing**. 
 
 Once you've identified which models could be optimized, check out these other resources that walk through how to optimize your work: 
-* [Build scalable and trustworthy data pipelines with <Constant name="dbt" /> and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
-* [Best Practices for Optimizing Your <Constant name="dbt" /> and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
-* [How to optimize and troubleshoot <Constant name="dbt" /> models on Databricks](/guides/optimize-dbt-models-on-databricks)
+* [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
+* [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
+* [How to optimize and troubleshoot dbt models on Databricks](/guides/optimize-dbt-models-on-databricks)
 
 ## FAQs
 
@@ -269,7 +269,7 @@ _Yes. Your <Constant name="cloud" /> account will be upgraded without impacting 
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Team plan._
 
 * What are the <Constant name="semantic_layer" /> trial terms?
-_Team and Enterprise customers can sign up for a free trial of the <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. <Constant name="dbt" /> Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. <Constant name="dbt" /> Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
+_Team and Enterprise customers can sign up for a free trial of the <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
 
 * What is the reasonable use limitation for the <Constant name="semantic_layer" /> powered by MetricFlow during the trial? 
-_Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of <Constant name="dbt" /> Labs._
+_Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs._

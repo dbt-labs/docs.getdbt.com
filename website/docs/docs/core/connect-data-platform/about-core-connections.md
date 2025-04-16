@@ -20,15 +20,15 @@ pagination_prev: null
 - [Snowflake](/docs/core/connect-data-platform/snowflake-setup)
 - [Starburst or Trino](/docs/core/connect-data-platform/trino-setup)
 
-<Constant name="dbt" /> communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml). You can do this using the command line (CLI).
+dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml). You can do this using the command line (CLI).
 
-Data platforms supported in <Constant name="core" /> may be verified by our Trusted Adapter Program, and maintained by <Constant name="dbt" /> Labs, partners, or community members.
+Data platforms supported in <Constant name="core" /> may be verified by our Trusted Adapter Program, and maintained by dbt Labs, partners, or community members.
 
 These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/guides)
 
 ## Connection profiles
 
-If you're using <Constant name="dbt" /> from the command line (CLI), you'll need a profiles.yml file that contains the connection details for your data platform. When you run <Constant name="dbt" /> from the CLI, it reads your dbt_project.yml file to find the profile name, and then looks for a profile with the same name in your profiles.yml file. This profile contains all the information <Constant name="dbt" /> needs to connect to your data platform.
+If you're using dbt from the command line (CLI), you'll need a profiles.yml file that contains the connection details for your data platform. When you run dbt from the CLI, it reads your dbt_project.yml file to find the profile name, and then looks for a profile with the same name in your profiles.yml file. This profile contains all the information dbt needs to connect to your data platform.
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 

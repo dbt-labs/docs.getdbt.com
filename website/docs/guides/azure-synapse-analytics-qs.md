@@ -13,9 +13,9 @@ tags: ['dbt Cloud','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by <Constant name="dbt" /> Labs) into your Azure Synapse Analytics warehouse. 
+- Load the Jaffle Shop sample data (provided by dbt Labs) into your Azure Synapse Analytics warehouse. 
 - Connect <Constant name="cloud" /> to Azure Synapse Analytics.
-- Turn a sample query into a model in your <Constant name="dbt" /> project. A model in <Constant name="dbt" /> is a SELECT statement.
+- Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
@@ -27,7 +27,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Azure Synapse Analytics.
 
 ### Related content
-- [<Constant name="dbt" /> Learn courses](https://learn.getdbt.com)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -51,7 +51,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[customers]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_customers.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_customers.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -65,7 +65,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[orders]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/jaffle_shop_orders.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/jaffle_shop_orders.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -81,7 +81,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
 
     COPY INTO [dbo].[payments]
-    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/<Constant name="dbt" />-quickstart-public/stripe_payments.parquet'
+    FROM 'https://dbtlabsynapsedatalake.blob.core.windows.net/dbt-quickstart-public/stripe_payments.parquet'
     WITH (
         FILE_TYPE = 'PARQUET'
     );
@@ -113,7 +113,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
 1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize <Constant name="dbt" /> project**. This builds out your folder structure with example models.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit Changes**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.

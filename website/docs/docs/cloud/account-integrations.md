@@ -40,9 +40,9 @@ To configure an OAuth account integration:
 
 ## AI integrations
 
-Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use <Constant name="dbt" /> Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask <Constant name="dbt" />](/docs/cloud-integrations/snowflake-native-app) (both available on [<Constant name="cloud" /> Enterprise plans](https://www.getdbt.com/pricing)).
+Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app) (both available on [<Constant name="cloud" /> Enterprise plans](https://www.getdbt.com/pricing)).
 
-<Constant name="cloud" /> supports AI integrations for <Constant name="dbt" /> Labs-managed OpenAI keys, Self-managed OpenAI keys, or Self-managed Azure OpenAI keys.
+<Constant name="cloud" /> supports AI integrations for dbt Labs-managed OpenAI keys, Self-managed OpenAI keys, or Self-managed Azure OpenAI keys.
 
 Note, if you bring-your-own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />.
 
@@ -55,7 +55,7 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
 2. Select **Integrations** and scroll to the **AI** section.
 3. Click on the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
    <Lightbox src="/img/docs/dbt-cloud/account-integration-ai.jpg" width="85%" title="Example of the AI integration page" />
-4. Configure the AI integration for either **<Constant name="dbt" /> Labs OpenAI**, **OpenAI**, or **Azure OpenAI**.
+4. Configure the AI integration for either **dbt Labs OpenAI**, **OpenAI**, or **Azure OpenAI**.
 
   <Tabs queryString="ai-integration"> 
   <TabItem value="dbtlabs" label="dbt Labs OpenAI">

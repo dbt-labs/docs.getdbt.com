@@ -12,14 +12,14 @@ To-do:
 
 ## Incremental materialization strategies
 
-In <Constant name="dbt" />-redshift, the following incremental materialization strategies are supported:
+In dbt-redshift, the following incremental materialization strategies are supported:
 
 - `append` (default when `unique_key` is not defined)
 - `merge`
 - `delete+insert` (default when `unique_key` is defined)
 - [`microbatch`](/docs/build/incremental-microbatch)
 
-All of these strategies are inherited from <Constant name="dbt" />-postgres.
+All of these strategies are inherited from dbt-postgres.
 
 ## Performance optimizations
 
@@ -71,7 +71,7 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
 
-Using late-binding views in a production deployment of <Constant name="dbt" /> can vastly improve the availability of data in the warehouse, especially for models that are materialized as late-binding views and are queried by end-users, since they won’t be dropped when upstream models are updated. Additionally, late binding views can be used with [external tables](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE.html) via Redshift Spectrum.
+Using late-binding views in a production deployment of dbt can vastly improve the availability of data in the warehouse, especially for models that are materialized as late-binding views and are queried by end-users, since they won’t be dropped when upstream models are updated. Additionally, late binding views can be used with [external tables](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE.html) via Redshift Spectrum.
 
 To materialize a dbt model as a late binding view, use the `bind: false` configuration option:
 
@@ -217,7 +217,7 @@ Learn more information about the [parameters](https://docs.aws.amazon.com/redshi
 Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html) configuration of clusters at the object level.
 This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
 By default, a materialized view will be backed up during a cluster snapshot.
-<Constant name="dbt" /> cannot monitor this parameter as it is not queryable within Redshift.
+dbt cannot monitor this parameter as it is not queryable within Redshift.
 If the value changes, the materialized view will need to go through a `--full-refresh` to set it.
 
 Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
@@ -237,6 +237,6 @@ Find more information about materialized view limitations in Redshift's [docs](h
 
 Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. 
 
-In order to support this pattern in the future, <Constant name="dbt" /> would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [<Constant name="dbt" />-labs/<Constant name="core" />#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
+In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
 </VersionBlock>

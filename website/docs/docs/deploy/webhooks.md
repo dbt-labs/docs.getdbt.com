@@ -4,11 +4,11 @@ sidebar_label: "Webhooks"
 description: "Get real-time notifications about your dbt jobs with webhooks."
 ---
 
-With <Constant name="cloud" />, you can create outbound webhooks to send events (notifications) about your <Constant name="dbt" /> jobs to your other systems. Your other systems can listen for (subscribe to) these events to further automate your workflows or to help trigger automation flows you have set up.
+With <Constant name="cloud" />, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. Your other systems can listen for (subscribe to) these events to further automate your workflows or to help trigger automation flows you have set up.
 
-A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your <Constant name="dbt" /> jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
+A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
 
-<Constant name="cloud" /> sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/zapier-slack) notification, a [Microsoft Teams](/guides/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/serverless-pagerduty) when a <Constant name="dbt" /> job fails. 
+<Constant name="cloud" /> sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/zapier-slack) notification, a [Microsoft Teams](/guides/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/serverless-pagerduty) when a dbt job fails. 
 
 You can create webhooks for these events from the [<Constant name="cloud" /> web-based UI](#create-a-webhook-subscription) and by using the [<Constant name="cloud" /> API](#api-for-webhooks):
 
@@ -18,12 +18,12 @@ You can create webhooks for these events from the [<Constant name="cloud" /> web
 
 <Constant name="cloud" /> retries sending each event five times. <Constant name="cloud" /> keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
-A webhook in <Constant name="cloud" /> has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the <Constant name="dbt" /> cloud webhooks system will interpret this as a failure.
+A webhook in <Constant name="cloud" /> has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
 
 :::tip Videos 
-If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://learn.getdbt.com/courses/webhooks) from <Constant name="dbt" /> Labs.
+If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://learn.getdbt.com/courses/webhooks) from dbt Labs.
 
-You can also check out the free [<Constant name="dbt" /> Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals). 
+You can also check out the free [dbt Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals). 
 :::
 
 ## Prerequisites
@@ -159,10 +159,10 @@ An example of a webhook payload for an errored run:
   "webhookName": "test",
   "data": {
     "jobId": "123",
-    "jobName": "<Constant name="dbt" /> Vault",
+    "jobName": "dbt Vault",
     "runId": "12345",
     "environmentId": "1234",
-    "environmentName": "<Constant name="dbt" /> Vault Demo",
+    "environmentName": "dbt Vault Demo",
     "dbtVersion": "1.0.0",
     "projectName": "Snowflake Github Demo",
     "projectId": "167194",

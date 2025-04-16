@@ -13,19 +13,19 @@ displayed_sidebar: "docs"
 
 ## What to know before upgrading
 
-<Constant name="dbt" /> Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the "Latest" release track in <Constant name="cloud" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.9! If you have selected the "Compatible" release track, you will have access in the next monthly "Compatible" release after the <Constant name="core" /> v1.9 final release.
 
 For users of dbt Core, since v1.8, we recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
 
 ```sql
-python3 -m pip install <Constant name="core" /> <Constant name="dbt" />-snowflake
+python3 -m pip install <Constant name="core" /> dbt-snowflake
 ```
 
 ## New and changed features and functionality
 
-Features and functionality new in <Constant name="dbt" /> v1.9.
+Features and functionality new in dbt v1.9.
 
 ### Microbatch `incremental_strategy`
 
@@ -62,7 +62,7 @@ Currently microbatch is supported on these adapters with more to come:
   
 ### Snapshots improvements
 
-Beginning in <Constant name="core" /> 1.9, we've streamlined snapshot configuration and added a handful of new configurations to make <Constant name="dbt" /> **snapshots easier to configure, run, and customize.** These improvements include:
+Beginning in <Constant name="core" /> 1.9, we've streamlined snapshot configuration and added a handful of new configurations to make dbt **snapshots easier to configure, run, and customize.** These improvements include:
 
 - New snapshot specification: Snapshots can now be configured in a YAML file, which provides a cleaner and more consistent set up.
 - New `snapshot_meta_column_names` config: Allows you to customize the names of meta fields (for example, `dbt_valid_from`, `dbt_valid_to`, etc.) that dbt automatically adds to snapshots. This increases flexibility to tailor metadata to your needs.
@@ -119,7 +119,7 @@ You can read more about each of these behavior changes in the following links:
 
 We also made some quality-of-life improvements in Core 1.9, enabling you to:
 
-- Maintain data quality now that <Constant name="dbt" /> returns an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
+- Maintain data quality now that dbt returns an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it.
 - Document [data tests](/reference/resource-properties/description).
 - Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
 - Use `dbt test` with the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).

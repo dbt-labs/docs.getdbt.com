@@ -18,7 +18,7 @@ Learn how to access <Constant name="query_page" />, run queries, and view result
 
 <Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect <Constant name="query_page" /> to:
 - Enable you to write SQL queries, with the option to open multiple tabs 
-- Have SQL + <Constant name="dbt" /> autocomplete suggestions and syntax highlighting
+- Have SQL + dbt autocomplete suggestions and syntax highlighting
 - Bookmark SQL queries
 - View the results of the query and its details using the **Results** or **Details** tabs
 - Create a visualization of your query results using the **Chart** tab
@@ -97,7 +97,7 @@ From here, Kimiko can:
 - Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable <Constant name="dbt" /> model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results
@@ -161,6 +161,6 @@ To access <Constant name="explorer" />, click on the **<Constant name="explorer"
 
 ## FAQs
 - What’s the difference between <Constant name="query_page" /> and <Constant name="explorer" />?
-  - That’s a great question! <Constant name="explorer" /> helps you understand your <Constant name="dbt" /> project's structure, resources, lineage, and metrics, offering context for your data.
+  - That’s a great question! <Constant name="explorer" /> helps you understand your dbt project's structure, resources, lineage, and metrics, offering context for your data.
   - <Constant name="query_page" /> builds on that context, allowing you to write, run, and iterate on SQL queries directly in <Constant name="cloud" />. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
   - <Constant name="explorer" /> provides the context, while <Constant name="query_page" /> enables action.

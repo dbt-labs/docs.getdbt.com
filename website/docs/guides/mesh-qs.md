@@ -23,9 +23,9 @@ This guide will teach you how to set up a multi-project design using foundationa
 For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
-You can check out [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
-You can also watch the [YouTube video on <Constant name="dbt" /> and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
+You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
 
 ### Related content:
@@ -48,7 +48,7 @@ To leverage <Constant name="mesh" />, you need the following:
   - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
   - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
 
-This guide assumes you have experience with or fundamental knowledge of <Constant name="dbt" />. Take the [<Constant name="dbt" /> Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to <Constant name="dbt" />.
+This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to dbt.
 
 ## Create and configure two projects
 
@@ -89,7 +89,7 @@ To set a production environment:
 1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.
 2. Select **Deployment** as the environment type.
 3. Under **Set deployment type**, select the **Production** button.
-4. Select the <Constant name="dbt" /> version.
+4. Select the dbt version.
 5. Continue filling out the fields as necessary in the **Deployment connection** and **Deployment credentials** sections.
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
@@ -106,7 +106,7 @@ This upstream project is where you build your core data assets. This project wil
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 
 1. First, navigate to the **Develop** page to verify your setup.
-2. Click **Initialize <Constant name="dbt" /> project** if you’ve started with an empty repo:
+2. Click **Initialize dbt project** if you’ve started with an empty repo:
 
 <Lightbox src="/img/guides/dbt-mesh/initialize_repo.png" width="40%" title="Initialize repo" />
 
@@ -305,7 +305,7 @@ For details on how <Constant name="cloud" /> uses metadata from the Staging envi
 
 In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/collaborate/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
 
-1. If you’ve also started with a new git repo, click **Initialize <Constant name="dbt" /> project** under the **Version control** section.
+1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
 2. Delete the `models/example` folder
 3. Navigate to the dbt_project.yml file and rename the project (line 5) from `my_new_project` to `finance`
 4. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
@@ -432,7 +432,7 @@ You're now set to add a model that explores how payment types vary throughout a 
 
 How can you enhance resilience and add guardrails to this type of multi-project relationship? You can adopt best practices from software engineering by:
 
-1. Defining model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in <Constant name="dbt" /> to define a set of upfront "guarantees" that define the shape of your model. While building your model, <Constant name="dbt" /> will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
+1. Defining model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
 2. Defining model versions &mdash; Use [model versions](/docs/collaborate/govern/model-versions) to manage updates and handle breaking changes systematically.
 
 ### Set up model contracts
@@ -635,7 +635,7 @@ Congratulations 🎉! You're ready to bring the benefits of <Constant name="mesh
 
 Here are some additional resources to help you continue your journey:
 
-- [How we build our <Constant name="dbt" /> mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
+- [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
 - [<Constant name="mesh" /> FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)

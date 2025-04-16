@@ -12,7 +12,7 @@ This guide describes a feature of the <Constant name="cloud" /> Enterprise plan.
 :::
 
 
-<Constant name="cloud" /> supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for <Constant name="dbt" /> enterprise users. When BigQuery OAuth is enabled for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
+<Constant name="cloud" /> supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for dbt enterprise users. When BigQuery OAuth is enabled for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
 
 
 To set up BigQuery OAuth in <Constant name="cloud" />, a BigQuery admin must:

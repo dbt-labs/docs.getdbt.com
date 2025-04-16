@@ -16,7 +16,7 @@ A Python virtual environment creates an isolated workspace for Python projects, 
 
 You can create virtual environments using tools like [conda](https://anaconda.org/anaconda/conda), [poetry](https://python-poetry.org/docs/managing-environments/) or `venv`. This guide uses `venv` because it's lightweight, has the fewest additional dependencies, and is included in Python by default.
 
-Users who want to run <Constant name="dbt" /> locally, for example in [<Constant name="core" />](/docs/core/installation-overview) or the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation#install-a-virtual-environment) may want to install a Python virtual environment.
+Users who want to run dbt locally, for example in [<Constant name="core" />](/docs/core/installation-overview) or the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation#install-a-virtual-environment) may want to install a Python virtual environment.
 
 ### Prerequisites
 
@@ -136,6 +136,7 @@ For example, if using Postgres:
 
 ```shell
 python -m pip install dbt-core dbt-postgres
+python -m pip install <Constant name="core" /> dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
@@ -186,7 +187,7 @@ python -m pip install --upgrade dbt-ADAPTER_NAME
 
 ### Install dbt-core only
 
-If you're building a tool that integrates with <Constant name="core" />, you may want to install the core library alone, without a database adapter. Note that you won't be able to use <Constant name="dbt" /> as a CLI tool.
+If you're building a tool that integrates with <Constant name="core" />, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
 
 ```shell
 python -m pip install dbt-core
@@ -196,7 +197,7 @@ python -m pip install dbt-core
 
 You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
 
-To upgrade <Constant name="dbt" /> to the latest version:
+To upgrade dbt to the latest version:
 
 ```
 python -m pip install --upgrade dbt-core
@@ -326,6 +327,7 @@ dbt --version
 ```shell
 python -m pip uninstall -y dbt-adapters
 python -m pip install --upgrade --pre dbt-core dbt-common dbt-adapters
+
 dbt --version
 ```
 

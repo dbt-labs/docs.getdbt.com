@@ -11,7 +11,7 @@ The default documentation experience in <Constant name="cloud" /> is [<Constant 
 
 Refer to [documentation](/docs/build/documentation) for more configuration details.
 
-This shift makes [<Constant name="dbt" /> Docs](#dbt-docs) a legacy documentation feature in <Constant name="cloud" />. <Constant name="dbt" /> Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as <Constant name="explorer" />. <Constant name="dbt" /> Docs is available to <Constant name="cloud" /> developer plans or <Constant name="core" /> users.
+This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Constant name="cloud" />. dbt Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as <Constant name="explorer" />. dbt Docs is available to <Constant name="cloud" /> developer plans or <Constant name="core" /> users.
 
 ## Set up a documentation job
 
@@ -26,7 +26,7 @@ To set up a job to generate docs:
 3. Under **Execution Settings**, select **Generate docs on run** and click **Save**.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" width="100%" title="Setting up a job to generate documentation"/>
 
-*Note, for <Constant name="dbt" /> Docs users you need to configure the job to generate docs when it runs, then manually link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
+*Note, for dbt Docs users you need to configure the job to generate docs when it runs, then manually link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
 
 You can also add the [`dbt docs generate` command](/reference/commands/cmd-docs) to the list of commands in the job run steps. However, you can expect different outcomes when adding the command to the run steps compared to configuring a job selecting the **Generate docs on run** checkbox. 
 
@@ -69,11 +69,11 @@ After running `dbt docs generate` in the <Constant name="cloud_ide" />, click th
 
 ### View documentation
 
-Once you set up a job to generate documentation for your project, you can click **Explore** in the navigation and then click on **<Constant name="dbt" /> Docs**. Your project's documentation should open. This link will always help you find the most recent version of your project's documentation in <Constant name="cloud" />.
+Once you set up a job to generate documentation for your project, you can click **Explore** in the navigation and then click on **dbt Docs**. Your project's documentation should open. This link will always help you find the most recent version of your project's documentation in <Constant name="cloud" />.
 
 These generated docs always show the last fully successful run, which means that if you have any failed tasks, including tests, then you will not see changes to the docs by this run. If you don't see a fully successful run, then you won't see any changes to the documentation.
 
-The <Constant name="cloud_ide" /> makes it possible to view [documentation](/docs/build/documentation) for your <Constant name="dbt" /> project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
+The <Constant name="cloud_ide" /> makes it possible to view [documentation](/docs/build/documentation) for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
 ## Related docs
 - [Documentation](/docs/build/documentation)

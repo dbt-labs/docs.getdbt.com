@@ -105,7 +105,7 @@ You will then be redirected to GitLab and prompted to sign into your account. Gi
 Once you've accepted, you should be redirected back to <Constant name="cloud" />, and your integration is ready for developers on your team to [personally authenticate with](#personally-authenticating-with-gitlab).
 
 ### Personally authenticating with GitLab
-<Constant name="cloud" /> developers on the Enterprise plan must each connect their GitLab profiles to <Constant name="cloud" />, as every developer's read / write access for the <Constant name="dbt" /> repo is checked in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
+<Constant name="cloud" /> developers on the Enterprise plan must each connect their GitLab profiles to <Constant name="cloud" />, as every developer's read / write access for the dbt repo is checked in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
 
 To connect a personal GitLab account:
 

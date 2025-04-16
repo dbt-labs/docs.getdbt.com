@@ -35,7 +35,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
    - **App name:** <Constant name="cloud" />
-   - **App logo (optional):** You can optionally [download the <Constant name="dbt" /> logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
+   - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
 
@@ -150,7 +150,7 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
 1. On the **General Settings** page, enter the following details:
 
    * **App name**: <Constant name="cloud" />
-   * **App logo** (optional): You can optionally [download the <Constant name="dbt" /> logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
+   * **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
      and upload it to Okta to use as the logo for this app.
 
 2. Click **Next** to continue.
@@ -341,7 +341,7 @@ Follow these steps to set up single sign-on (SSO) with <Constant name="cloud" />
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the 'Basic SAML Configuration' card"  />
 
-13. Use the following table to complete the required fields and connect to <Constant name="dbt" />:
+13. Use the following table to complete the required fields and connect to dbt:
 
    | Field | Value |
    | ----- | ----- |
@@ -404,7 +404,7 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
    - **App name:** <Constant name="cloud" />
-   - **App logo (optional):** You can optionally [download the <Constant name="dbt" /> logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
+   - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 ### Configure SAML settings
 

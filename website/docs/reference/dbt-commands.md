@@ -2,7 +2,7 @@
 title: "dbt Command reference"
 ---
 
-You can run <Constant name="dbt" /> using the following tools:
+You can run dbt using the following tools:
 
 - In your browser with the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
 - On the command line interface using the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/core/installation-overview).
@@ -30,7 +30,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of <Constant name="dbt" /> commands.
+Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of dbt commands.
 
 | Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |

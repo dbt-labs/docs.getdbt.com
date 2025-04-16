@@ -6,13 +6,13 @@ pagination_next: "docs/cloud/git/import-a-project-by-git-url"
 pagination_prev: "docs/cloud/git/git-configuration-in-dbt-cloud"
 ---
 
-Managed repositories are a great way to trial <Constant name="dbt" /> without needing to create a new repository. If you don't already have a <Constant name="git" /> repository for your <Constant name="dbt" /> project, you can let <Constant name="cloud" /> host and manage a repository for you. 
+Managed repositories are a great way to trial dbt without needing to create a new repository. If you don't already have a <Constant name="git" /> repository for your dbt project, you can let <Constant name="cloud" /> host and manage a repository for you. 
 
 If in the future you choose to host this repository elsewhere, you can export the information from <Constant name="cloud" /> at any time. Refer to [Move from a managed repository to a self-hosted repository](/faqs/Git/managed-repo) for more information on how to do that.
 
 
 :::info
-<Constant name="dbt" /> Labs recommends against using a managed repository in a production environment. You can't use <Constant name="git" /> features like pull requests, which are part of our recommended version control best practices.
+dbt Labs recommends against using a managed repository in a production environment. You can't use <Constant name="git" /> features like pull requests, which are part of our recommended version control best practices.
 :::
 
 To set up a project with a managed repository:
@@ -21,7 +21,7 @@ To set up a project with a managed repository:
 2. Click **Edit** for the project.
 3. Under Repository, click **Configure repository**.
 4. Select **Managed**.
-5. Enter a name for the repository. For example, "analytics" or "<Constant name="dbt" />-models."
+5. Enter a name for the repository. For example, "analytics" or "dbt-models."
 6. Click **Create**.
    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
 

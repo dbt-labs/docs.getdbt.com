@@ -25,7 +25,7 @@ Now, imagine that the order goes from "pending" to "shipped". That same record w
 | -- | ------ | ---------- |
 | 1 | shipped | 2024-01-02 |
 
-This order is now in the "shipped" state, but we've lost the information about when the order was last in the "pending" state. This makes it difficult (or impossible) to analyze how long it took for an order to ship. <Constant name="dbt" /> can "snapshot" these changes to help you understand how values in a row change over time. Here's an example of a snapshot table for the previous example:
+This order is now in the "shipped" state, but we've lost the information about when the order was last in the "pending" state. This makes it difficult (or impossible) to analyze how long it took for an order to ship. dbt can "snapshot" these changes to help you understand how values in a row change over time. Here's an example of a snapshot table for the previous example:
 
 | id | status | updated_at | dbt_valid_from | dbt_valid_to |
 | -- | ------ | ---------- | -------------- | ------------ |
@@ -72,8 +72,8 @@ The following table outlines the configurations available for snapshots in versi
 
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
-| [target_database](/reference/resource-configs/target_database) | The database that <Constant name="dbt" /> should render the snapshot table into | No | analytics |
-| [target_schema](/reference/resource-configs/target_schema) | The schema that <Constant name="dbt" /> should render the snapshot table into | Yes | snapshots |
+| [target_database](/reference/resource-configs/target_database) | The database that dbt should render the snapshot table into | No | analytics |
+| [target_schema](/reference/resource-configs/target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
 | [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
 | [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
@@ -177,7 +177,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 </VersionBlock>
 
 ```
-$ <Constant name="dbt" /> snapshot
+$ dbt snapshot
 Running with dbt=1.8.0
 
 15:07:36 | Concurrency: 8 threads (target='dev')
@@ -192,7 +192,7 @@ Completed successfully
 Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-7. Inspect the results by selecting from the table <Constant name="dbt" /> created. After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described earlier.
+7. Inspect the results by selecting from the table dbt created. After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described earlier.
 
 8. Run the `dbt snapshot` command again, and inspect the results. If any records have been updated, the snapshot should reflect this.
 
@@ -212,7 +212,7 @@ select * from {{ ref('orders_snapshot') }}
 
 <VersionBlock firstVersion="1.9">
 
-Configure your snapshots in YAML files to tell <Constant name="dbt" /> how to detect record changes. Define snapshots configurations in YAML files, alongside your models, for a cleaner, faster, and more consistent set up. Place snapshot YAML files in the models directory or in a snapshots directory. 
+Configure your snapshots in YAML files to tell dbt how to detect record changes. Define snapshots configurations in YAML files, alongside your models, for a cleaner, faster, and more consistent set up. Place snapshot YAML files in the models directory or in a snapshots directory. 
 
 <File name='snapshots/orders_snapshot.yml'>
 
@@ -295,7 +295,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 4. Run the `dbt snapshot` [command](/reference/commands/snapshot)  &mdash; for our example, a new table will be created at `analytics.snapshots.orders_snapshot`. The [`schema`](/reference/resource-configs/schema) config will utilize the `generate_schema_name` macro.
 
     ```
-    $ <Constant name="dbt" /> snapshot
+    $ dbt snapshot
     Running with dbt=1.9.0
 
     15:07:36 | Concurrency: 8 threads (target='dev')
@@ -385,7 +385,7 @@ Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots i
 
 When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 * **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null` or the value specified in [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) (available in dbt Core 1.9+) if configured.
-* **On subsequent runs:** <Constant name="dbt" /> will check which records have changed or if any new records have been created:
+* **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
   - The `dbt_valid_to` column will be updated for any existing records that have changed.
   - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in dbt Core v1.9+).
 
@@ -400,7 +400,7 @@ When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](/reference/dbt-jinja-functions/ref) function.
 
 ## Detecting row changes
-Snapshot "strategies" define how <Constant name="dbt" /> knows if a row has changed. There are two strategies built-in to <Constant name="dbt" />:
+Snapshot "strategies" define how dbt knows if a row has changed. There are two strategies built-in to dbt:
 - [Timestamp](#timestamp-strategy-recommended) &mdash; Uses an `updated_at` column to determine if a row has changed.
 - [Check](#check-strategy) &mdash; Compares a list of columns between their current and historical values to determine if a row has changed.
 

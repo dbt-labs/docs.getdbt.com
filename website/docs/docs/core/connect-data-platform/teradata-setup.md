@@ -42,7 +42,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## dbt dependent packages version compatibility
 
-| <Constant name="dbt" />-teradata | <Constant name="core" /> | <Constant name="dbt" />-teradata-util |  <Constant name="dbt" />-util      |
+| dbt-teradata | <Constant name="core" /> | dbt-teradata-util |  dbt-util      |
 |--------------|----------|-------------------|----------------|
 | 1.2.x        | 1.2.x    | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7    | 1.1.1             | 1.1.1          |
@@ -148,17 +148,17 @@ The following incremental materialization strategies are supported:
 * `valid_history` (early access)
 
 :::info
-- To learn more about <Constant name="dbt" /> incremental strategies, refer to [the <Constant name="dbt" /> incremental strategy documentation](/docs/build/incremental-strategy).
+- To learn more about dbt incremental strategies, refer to [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
 - To learn more about `valid_history` incremental strategy, refer to [Teradata configs](/reference/resource-configs/teradata-configs).
 :::
 
 ### Commands
 
-All <Constant name="dbt" /> commands are supported.
+All dbt commands are supported.
 
 ## Support for model contracts
-Model contracts are supported with <Constant name="dbt" />-teradata v1.7.1 and onwards.
-Constraint support and enforcement in <Constant name="dbt" />-teradata:
+Model contracts are supported with dbt-teradata v1.7.1 and onwards.
+Constraint support and enforcement in dbt-teradata:
 
 | Constraint type |	Support	Platform | enforcement |
 |-----------------|------------------|-------------|
@@ -174,7 +174,7 @@ Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more in
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
 
 ### Cross DB macros
-Starting with release 1.3, some macros were migrated from [teradata-<Constant name="dbt" />-utils](https://github.com/Teradata/dbt-teradata-utils) <Constant name="dbt" /> package to the connector. Refer the following table for the macros supported by the connector.
+Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. Refer the following table for the macros supported by the connector.
 
 For using cross-DB macros, teradata-utils as a macro namespace will not be used, as cross-DB macros have been migrated from teradata-utils to Dbt-Teradata.
 
@@ -199,12 +199,12 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 #### examples for cross DB macros
   ##### <a name="replace"></a>replace
-  \{\{ <Constant name="dbt" />.replace("string_text_column", "old_chars", "new_chars") \}\}
+  \{\{ dbt.replace("string_text_column", "old_chars", "new_chars") \}\}
   \{\{ replace('abcgef', 'g', 'd') \}\}
 
   ##### <a name="date_trunc"></a>date_trunc
-  \{\{ <Constant name="dbt" />.date_trunc("date_part", "date") \}\}
-  \{\{ <Constant name="dbt" />.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
+  \{\{ dbt.date_trunc("date_part", "date") \}\}
+  \{\{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
 
   ##### <a name="datediff"></a>datediff
   `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
@@ -243,7 +243,7 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 <VersionBlock firstVersion="1.8">
 
-<Constant name="dbt" />-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about <Constant name="dbt" /> unit tests [here](/docs/build/unit-tests).
+dbt-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about dbt unit tests [here](/docs/build/unit-tests).
 
 
 </VersionBlock>
@@ -252,15 +252,15 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 ### Browser authentication
 
-* When running a <Constant name="dbt" /> job with logmech set to "browser", the initial authentication opens a browser window where you must enter your username and password.
-* After authentication, this window remains open, requiring you to manually switch back to the <Constant name="dbt" /> console.
+* When running a dbt job with logmech set to "browser", the initial authentication opens a browser window where you must enter your username and password.
+* After authentication, this window remains open, requiring you to manually switch back to the dbt console.
 * For every subsequent connection, a new browser tab briefly opens, displaying the message "TERADATA BROWSER AUTHENTICATION COMPLETED," and silently reuses the existing session.
-* However, the focus stays on the browser window, so you’ll need to manually switch back to the <Constant name="dbt" /> console each time.
+* However, the focus stays on the browser window, so you’ll need to manually switch back to the dbt console each time.
 * This behavior is the default functionality of the teradatasql driver and cannot be avoided at this time.
 * To prevent session expiration and the need to re-enter credentials, ensure the authentication browser window stays open until the job is complete.
 
 ### Transaction mode
-Both ANSI and TERA modes are now supported in <Constant name="dbt" />-teradata. TERA mode's support is introduced with <Constant name="dbt" />-teradata 1.7.1, it is an initial implementation.
+Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
 
 :::info TERA transaction mode
 This is an initial implementation of the TERA transaction mode and may not support some use cases. We highly recommend validating all records or transformations using this mode to avoid unexpected issues or errors.
@@ -268,7 +268,7 @@ This is an initial implementation of the TERA transaction mode and may not suppo
 
 ## Credits
 
-The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10). Teradata took over the adapter in January 2022. We are grateful to Doug for founding the project and accelerating the integration of <Constant name="dbt" /> + Teradata.
+The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10). Teradata took over the adapter in January 2022. We are grateful to Doug for founding the project and accelerating the integration of dbt + Teradata.
 
 ## License
 

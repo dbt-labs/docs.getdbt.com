@@ -9,13 +9,13 @@ keyword: dbt mesh, project dependencies, ref, cross project ref, project depende
 
 # Project dependencies <Lifecycle status='enterprise'/>
 
-For a long time, <Constant name="dbt" /> has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
+For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
 While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
 
 dbt Labs supports an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
-- **Projects** &mdash; The <Constant name="dbt" /> method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="cloud" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+- **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="cloud" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 ## Prerequisites
 - Available in [<Constant name="cloud" /> Enterprise](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/collaborate/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
@@ -70,7 +70,7 @@ The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing 
 
 When you're building on top of another team's work, resolving the references in this way has several advantages:
 - You're using an intentional interface designated by the model's maintainer with `access: public`.
-- You're keeping the scope of your project narrow, and avoiding unnecessary resources and complexity. This is faster for you and faster for <Constant name="dbt" />.
+- You're keeping the scope of your project narrow, and avoiding unnecessary resources and complexity. This is faster for you and faster for dbt.
 - You don't need to mirror any conditional configuration of the upstream project such as `vars`, environment variables, or `target.name`. You can reference them directly wherever the Finance team is building their models in production. Even if the Finance team makes changes like renaming the model, changing the name of its schema, or [bumping its version](/docs/collaborate/govern/model-versions), your `ref` would still resolve successfully.
 - You eliminate the risk of accidentally building those models with `dbt run` or `dbt build`. While you can select those models, you can't actually build them. This prevents unexpected warehouse costs and permissions issues. This also ensures proper ownership and cost allocation for each team's models.
 
@@ -123,7 +123,7 @@ To avoid causing downtime for downstream developers, you should define and trigg
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
-- <Constant name="dbt" /> needs to parse and resolve more inputs (which is slower)
+- dbt needs to parse and resolve more inputs (which is slower)
 - dbt expects you to configure these models as if they were your own (with `vars`, env vars, etc)
 - dbt will run these models as your own unless you explicitly `--exclude` them
 - You could be using the project's models in a way that their maintainer (the Finance team) hasn't intended

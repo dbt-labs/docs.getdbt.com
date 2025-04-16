@@ -10,12 +10,12 @@ pagination_prev: null
 
 This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the <Constant name="semantic_layer" />, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
-MetricFlow handles SQL query construction and defines the specification for <Constant name="dbt" /> semantic models and metrics. It allows you to define metrics in your <Constant name="dbt" /> project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
+MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
 
 Before you start, consider the following guidelines:
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on [<Constant name="dbt" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
@@ -23,12 +23,12 @@ Before you start, consider the following guidelines:
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with <Constant name="dbt" /> version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
+- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with dbt version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
 
-**Note** &mdash; MetricFlow doesn't support <Constant name="dbt" /> [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
+**Note** &mdash; MetricFlow doesn't support dbt [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
 
 MetricFlow abides by these principles:
 
@@ -47,7 +47,7 @@ When MetricFlow generates a metric, it uses its SQL engine to figure out the bes
 
 ### Semantic models 
 
-Semantic models are the starting points of data and correspond to models in your <Constant name="dbt" /> project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
+Semantic models are the starting points of data and correspond to models in your dbt project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
 
 For a semantic model, there are three main pieces of metadata:
 
@@ -73,7 +73,7 @@ MetricFlow supports different metric types:
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data is based on the Jaffle Shop repo. You can view the complete [<Constant name="dbt" /> project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
+The following example data is based on the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
@@ -180,7 +180,7 @@ semantic_models:
   - name: orders
     description: |
       A model containing order data. The grain of the table is the order id.
-    model: ref('orders')  #The name of the <Constant name="dbt" /> model and schema
+    model: ref('orders')  #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
     entities: # Entities, which usually correspond to keys in the table

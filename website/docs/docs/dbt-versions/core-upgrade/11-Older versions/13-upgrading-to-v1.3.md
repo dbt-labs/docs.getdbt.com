@@ -40,7 +40,7 @@ For users of [state-based selection](/reference/node-selection/syntax#about-node
 
 ### For maintainers of adapter plugins
 
-GitHub discussion with details: [<Constant name="dbt" />-labs/<Constant name="core" />#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
+GitHub discussion with details: [dbt-labs/<Constant name="core" />#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
 
 ## New and changed documentation
 

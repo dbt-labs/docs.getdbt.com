@@ -29,7 +29,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 #### User / password authentication
 
-Configure your <Constant name="dbt" /> profile for using Exasol:
+Configure your dbt profile for using Exasol:
 
 ##### Exasol connection information
 

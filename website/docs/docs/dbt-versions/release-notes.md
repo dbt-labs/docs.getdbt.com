@@ -23,7 +23,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## March 2025
 
-- **Behavior change**: As of March 31st, 2025, <Constant name="core" /> versions 1.0, 1.1, and 1.2 have been deprecated from <Constant name="cloud" />. They are no longer available to select as versions for <Constant name="dbt" /> projects. Workloads currently on these versions will be automatically upgraded to v1.3, which may cause new failures.
+- **Behavior change**: As of March 31st, 2025, <Constant name="core" /> versions 1.0, 1.1, and 1.2 have been deprecated from <Constant name="cloud" />. They are no longer available to select as versions for dbt projects. Workloads currently on these versions will be automatically upgraded to v1.3, which may cause new failures.
 - **Enhancement**: [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) users on single-tenant configurations no longer need to contact their account representative to enable this feature. Setup is now self-service and available across all tenant configurations.
 - **New**: The <Constant name="semantic_layer" /> now supports Postgres as a data platform. For more details on how to set up the <Constant name="semantic_layer" /> for Postgres, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
 - **New**: New [environment variable default](/docs/build/environment-variables#dbt-cloud-context) `DBT_CLOUD_INVOCATION_CONTEXT`. 
@@ -31,7 +31,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 #### dbt Developer day
 
-The following features are new or enhanced as part of our [<Constant name="dbt" /> Developer day](https://www.getdbt.com/resources/webinars/dbt-developer-day) on March 19th and 20th, 2025:
+The following features are new or enhanced as part of our [dbt Developer day](https://www.getdbt.com/resources/webinars/dbt-developer-day) on March 19th and 20th, 2025:
 
 - **New**: The [`--sample` flag](/docs/build/sample-flag), now available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 - **New**: <Constant name="copilot" />, an AI-powered assistant, is now generally available in the <Constant name="cloud_ide" /> for all <Constant name="cloud" /> Enterprise accounts. Check out [<Constant name="copilot" />](/docs/cloud/dbt-copilot) for more information.   
@@ -47,7 +47,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 ## February 2025
 
 - **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
-- **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for <Constant name="git" /> now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on <Constant name="cloud" /> Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and <Constant name="dbt" /> Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
+- **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for <Constant name="git" /> now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on <Constant name="cloud" /> Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and dbt Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
 
 ## January 2025
 

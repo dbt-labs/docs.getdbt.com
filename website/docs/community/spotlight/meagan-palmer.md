@@ -25,7 +25,7 @@ communityAwardYear: 2024
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I was fortunate that Jon Bradley at Nearmap had the vision to engage the then Fishtown Analytics team (as the <Constant name="dbt" /> Labs team was formerly called) as consultants and begin using <Constant name="dbt" /> in our stack. I can't thank him enough. It was a turning point for my career, where I could combine my interests and experiences in delivering business value, data, product management, and software engineering practices.
+I was fortunate that Jon Bradley at Nearmap had the vision to engage the then Fishtown Analytics team (as the dbt Labs team was formerly called) as consultants and begin using dbt in our stack. I can't thank him enough. It was a turning point for my career, where I could combine my interests and experiences in delivering business value, data, product management, and software engineering practices.
 
 ## Which dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -38,7 +38,7 @@ I was at <a target="_blank" rel="noopener noreferrer" href="https://coalesce.get
 ## What have you learned from community members? What do you hope others can learn from you?
 
 The community members are amazing. It's great to be among a group of people that want to learn and improve. 
-I've learned a lot - both from other members helping with my queries and in reading how other businesses have implemented <Constant name="dbt" />, including their stories on the organizational & technical issues they face.
+I've learned a lot - both from other members helping with my queries and in reading how other businesses have implemented dbt, including their stories on the organizational & technical issues they face.
 
 I hope I can help instill a sense that simple, clean solutions are possible and preferable. I want to highlight that it is important to focus on what is the actual problem you are trying to solve and the fact that it's worth asking for help when you're starting to get stuck. 
 

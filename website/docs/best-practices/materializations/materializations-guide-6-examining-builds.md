@@ -9,8 +9,8 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 
 ## Examining our builds
 
-- ⌚ <Constant name="dbt" /> keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
-- 🖼️ This information is stored in a couple files which <Constant name="dbt" /> calls **artifacts**.
+- ⌚ dbt keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
+- 🖼️ This information is stored in a couple files which dbt calls **artifacts**.
 - 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **<Constant name="cloud" />** packages the most useful bits of information into a tidy **visualization** for you.
 - ☁️ If you’re not using Cloud, we can still use the output of the **<Constant name="core" /> CLI to understand our runs**.
 
@@ -45,6 +45,6 @@ If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you�
 
 ### dbt Artifacts package
 
-- 🎨  Lastly, when it comes to examining your dbt runs, you’re **not stuck without fancy visuals** if you’re using <Constant name="core" />. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [<Constant name="dbt" /> Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
+- 🎨  Lastly, when it comes to examining your dbt runs, you’re **not stuck without fancy visuals** if you’re using <Constant name="core" />. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [dbt Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
 - 👩‍🎨  This provides models you can **visualize for every aspect of your project** at a very granular level.
 - ⌚  You can use it to **create your own model timing visualization** in your BI tool, and any other reports you need to keep an eye on your materialization strategy.

@@ -236,7 +236,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>
 
-    The <Constant name="semantic_layer" /> is available to [<Constant name="cloud" /> Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on <Constant name="dbt" /> v1.6 or higher. 
+    The <Constant name="semantic_layer" /> is available to [<Constant name="cloud" /> Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. 
     - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) for more information.
     - <Constant name="cloud" /> Developer plans and <Constant name="core" /> users can define metrics but won't be able to query them with integrated tools.
 
@@ -267,7 +267,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## What you need to update
 
-    - If you want to set up a CI environment for your jobs, <Constant name="dbt" /> Labs recommends that you create your CI job in a dedicated [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. To learn more about these environment best practices, refer to the guide [Get started with continuous integration tests](/guides/set-up-ci).
+    - If you want to set up a CI environment for your jobs, dbt Labs recommends that you create your CI job in a dedicated [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. To learn more about these environment best practices, refer to the guide [Get started with continuous integration tests](/guides/set-up-ci).
 
     - If you had set up a CI job before October 2, 2023, the job might've been misclassified as a deploy job with this update. Below describes how to fix the job type:
 
@@ -575,7 +575,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     We're excited to introduce a few critical capabilities to <Constant name="cloud" /> CI that will improve productivity and collaboration in your team’s testing and integration workflow. As of this week, you can now:
 
-    - **Run multiple CI checks in parallel**. If more than one contributor makes changes to the same <Constant name="dbt" /> project in <Constant name="cloud" /> in short succession, the later arriving CI check no longer has to wait for the first check to complete. Both checks will execute concurrently.
+    - **Run multiple CI checks in parallel**. If more than one contributor makes changes to the same dbt project in <Constant name="cloud" /> in short succession, the later arriving CI check no longer has to wait for the first check to complete. Both checks will execute concurrently.
 
     - **Automatically cancel stale CI runs**. If you push multiple commits to the same PR, <Constant name="cloud" /> will cancel older, now-out-of-date CI checks automatically. No resources wasted on checking stale code.
 
@@ -687,7 +687,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - More details on the schedule time on hover
     - Run timeout visibility
 
-    <Constant name="dbt" /> Labs is making a change to the metadata retrieval policy for Run History in <Constant name="cloud" />. 
+    dbt Labs is making a change to the metadata retrieval policy for Run History in <Constant name="cloud" />. 
 
     **Beginning June 1, 2023,** developers on the <Constant name="cloud" /> multi-tenant application will be able to self-serve access to their account’s run history through the <Constant name="cloud" /> user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
 

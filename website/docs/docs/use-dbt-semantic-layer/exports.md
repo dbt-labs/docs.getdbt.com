@@ -16,10 +16,10 @@ Essentially, exports are like any other table in your data platform &mdash; they
 
 - You have a <Constant name="cloud" /> account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. 
 - You use one of the following data platforms: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
-- You are on [<Constant name="dbt" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
-- You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your <Constant name="dbt" /> project.
+- You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
+- You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a <Constant name="cloud" /> environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
-- You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your <Constant name="dbt" /> project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
+- You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
 - You have the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) installed. Note, that exports aren't supported in <Constant name="cloud_ide" /> yet.
 
 ## Benefits of exports
@@ -51,7 +51,7 @@ For these use cases, use the dynamic [<Constant name="semantic_layer" /> APIs](/
 
 ## Run exports
 
-Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries) in your <Constant name="dbt" /> project. In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="cloud" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
+Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries) in your dbt project. In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="cloud" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
 There are two ways to run an export:
   
@@ -196,7 +196,7 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_EXPORT_SAVED
 
 </VersionBlock>
 
-When you run a build job, any saved queries downstream of the <Constant name="dbt" /> models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model).
+When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model).
 
 ### Create and execute exports
 <VersionBlock firstVersion lastVersion="1.7">
@@ -221,8 +221,8 @@ When you run a build job, any saved queries downstream of the <Constant name="db
 
 </VersionBlock>
 
-2. After <Constant name="dbt" /> finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform. It directly executes a "create table" statement so the data stays within your data platform.
-3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the <Constant name="dbt" /> DAG, all outputs related to exports are available in the job logs.
+2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform. It directly executes a "create table" statement so the data stays within your data platform.
+3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
 4. Your data is now available in the data platform for querying! 🎉
 
 ## FAQs

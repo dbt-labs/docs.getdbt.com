@@ -22,13 +22,13 @@ id: 3-how-we-style-our-python
 import pandas as pd
 
 
-def model(<Constant name="dbt" />, session):
+def model(dbt, session):
     # set length of time considered a churn
     pd.Timedelta(days=2)
 
-    <Constant name="dbt" />.config(enabled=False, materialized="table", packages=["pandas==1.5.2"])
+    dbt.config(enabled=False, materialized="table", packages=["pandas==1.5.2"])
 
-    orders_relation = <Constant name="dbt" />.ref("stg_orders")
+    orders_relation = dbt.ref("stg_orders")
 
     # converting a DuckDB Python Relation into a pandas DataFrame
     orders_df = orders_relation.df()

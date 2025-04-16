@@ -28,7 +28,7 @@ And once you have a time spine, you need to configure it in YAML to tell MetricF
 ### Prerequisites
 Before you start, make sure you have:
 
-- A <Constant name="dbt" /> project set up. If you don't have one, follow the [<Constant name="semantic_layer" /> quickstart guide](/guides/sl-snowflake-qs?step=1) or the [<Constant name="cloud" /> quickstart guides](/guides?tags=Quickstart) guide to help you get started.
+- A dbt project set up. If you don't have one, follow the [<Constant name="semantic_layer" /> quickstart guide](/guides/sl-snowflake-qs?step=1) or the [<Constant name="cloud" /> quickstart guides](/guides?tags=Quickstart) guide to help you get started.
 
 ## Add a time spine SQL model
 

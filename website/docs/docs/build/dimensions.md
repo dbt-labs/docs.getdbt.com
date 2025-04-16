@@ -10,7 +10,7 @@ Dimensions represent the non-aggregatable columns in your data set, which are th
 
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
-Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your <Constant name="dbt" /> model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
+Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
 All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
 
@@ -172,7 +172,7 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 
 ```bash
 # dbt Cloud users
-<Constant name="dbt" /> sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
+dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
 # dbt Core users
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
@@ -411,7 +411,7 @@ Here are some guidelines to follow when implementing SCD Type II tables:
 - The `valid_from` and `valid_to` properties must be specified exactly once per SCD table configuration.
 - The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
 - The `valid_from` and `valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
-- We recommend defining the underlying <Constant name="dbt" /> model with [<Constant name="dbt" /> snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
+- We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
 
 This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
 

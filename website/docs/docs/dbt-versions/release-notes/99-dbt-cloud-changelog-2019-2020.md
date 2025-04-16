@@ -9,7 +9,7 @@ tags: [v1.1.16, v1.1.15, v1.1.14, v1.1.13, v1.1.12, v1.1.11, v1.1.10, v1.1.09, v
 
 :::note
 
-This changelog references <Constant name="dbt" /> versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of <Constant name="dbt" /> in your <Constant name="cloud" /> environment, read [Upgrade <Constant name="dbt" /> version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="cloud" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 :::
 
@@ -27,7 +27,7 @@ and adds two new permission sets for Enterprise acccounts.
 
 #### Fixed
 
-- Improve logging infrastructure for <Constant name="dbt" /> run logs
+- Improve logging infrastructure for dbt run logs
 - Fix for SSH tunnel logging errors
 
 
@@ -64,7 +64,7 @@ This release adds a few new pieces of connective tissue, notably OAuth for BigQu
 #### Fixed
 
 - Fix post /run error rate
-- Fix bug where bad argument was passed to <Constant name="dbt" /> runs
+- Fix bug where bad argument was passed to dbt runs
 - Log out unhandled error in environment variable context manager
 - Remove account settings permissions for user integrations
 
@@ -86,7 +86,7 @@ a number of bugs have been squashed and performance improvements have been made.
 
 - GitLab groups endpoint now returns all groups and subgroups
 - Support BigQuery retry configs with value 0
-- Prevent web <Constant name="cloud_ide" /> from crashing after running an invalid <Constant name="dbt" /> command
+- Prevent web <Constant name="cloud_ide" /> from crashing after running an invalid dbt command
 - Apply additional log scrubbing to filter short-lived git credentials
 - Fix older migration to make auth_url field nullable
 - Support paths in GitLab instance URL
@@ -95,14 +95,14 @@ a number of bugs have been squashed and performance improvements have been made.
 
 ## dbt Cloud v1.1.12 (October 30, 2020)
 
-This release adds <Constant name="dbt" /> v.18.1 and 0.19.0b1 to <Constant name="cloud" />. Additionally, a number of bugs have been fixed.
+This release adds dbt v.18.1 and 0.19.0b1 to <Constant name="cloud" />. Additionally, a number of bugs have been fixed.
 
 #### Enhancements
 
 - Update copy on billing page for picking a plan at the end of a trial
 - Improved authorization for metadata API
-- Add <Constant name="dbt" /> 0.19.0b1
-- Add <Constant name="dbt" /> 0.18.1
+- Add dbt 0.19.0b1
+- Add dbt 0.18.1
 
 #### Fixed
 
@@ -142,7 +142,7 @@ and contains a number of bugfixes and improvements in the <Constant name="cloud_
 - Add Gitlab integration (Enterprise)
 - Add GitLab repository setup to project setup flow (Enterprise)
 - Add GitLab automated Deploy Token installation (Enterprise)
-- Add <Constant name="dbt" /> 0.18.1rc1
+- Add dbt 0.18.1rc1
 
 #### Fixed
 
@@ -169,7 +169,7 @@ and a number of fixes and improvements were released as well.
 - Add personal git auth for <Constant name="cloud_ide" /> error handling modals
 - Add Develop Requests to backend views
 - Implemented job execution deferral
-- Add support for <Constant name="dbt" /> v0.18.1b2
+- Add support for dbt v0.18.1b2
 
 #### Fixed
 
@@ -185,11 +185,11 @@ and a number of fixes and improvements were released as well.
 
 ## dbt Cloud v1.1.8 (September 17, 2020)
 
-This release adds native support for Okta SSO and <Constant name="dbt" /> v0.18.0. It also adds
+This release adds native support for Okta SSO and dbt v0.18.0. It also adds
 initial support for a GitLab integration and self-service RBAC configuration.
 
 #### Enhancements
-- Add <Constant name="dbt" /> 0.18.0
+- Add dbt 0.18.0
 - Add native Okta SSO support
 - Add additional logging for Gsuite and Azure SSO
 - Add git cloning support via GitLab deploy tokens for scheduled runs (coming soon)
@@ -202,14 +202,14 @@ initial support for a GitLab integration and self-service RBAC configuration.
 
 ## dbt Cloud v1.1.7 [September 3, 2020]
 
-This release adds a Release Candidate for [<Constant name="dbt" />
-v0.18.0](/docs/<Constant name="dbt" />-versions/core-upgrade) and
+This release adds a Release Candidate for [dbt
+v0.18.0](/docs/dbt-versions/core-upgrade) and
 includes bugfixes and improvements to the Cloud <Constant name="cloud_ide" />
 and job scheduler.
 
 #### Enhancements
 - Improve scheduler backoff behavior
-- Add <Constant name="dbt" /> 0.18.0rc1
+- Add dbt 0.18.0rc1
 - Add support for non-standard ssh ports in connection tunnels
 - Add support for closing the <Constant name="cloud_ide" /> filesystem context menu by clicking outside the menu
 
@@ -246,10 +246,10 @@ significantly.
 
 #### Enhancements
 
-- Add <Constant name="dbt" /> 0.17.2
-- Add <Constant name="dbt" /> 0.18.0 beta 2
+- Add dbt 0.17.2
+- Add dbt 0.18.0 beta 2
 - Add merge conflict resolution, a merge commit workflow, and merge abort workflow to the <Constant name="cloud_ide" />
-- Deprecate <Constant name="dbt" /> versions prior to 0.13.0
+- Deprecate dbt versions prior to 0.13.0
 - Refactor to cut job scheduler loop time
 - Reduce extra database calls to account <Term id="table" /> in job scheduler loop
 - [On-premises] Allow clients to disable authentication for SMTP
@@ -263,19 +263,19 @@ significantly.
 - Fix incorrect usage of `region_name` in KMS client
 - Fix a call to a deprecated Github API
 - Remove extraneous billing API calls during job scheduler loop
-- Fix error where refreshing the <Constant name="cloud_ide" /> would leave running <Constant name="dbt" /> processes in a bad state
+- Fix error where refreshing the <Constant name="cloud_ide" /> would leave running dbt processes in a bad state
 
 
 ## dbt Cloud v1.1.4 (July 21, 2020)
 
 This release dramatically speeds up the job scheduler. It adds a new
-stable <Constant name="dbt" /> version (0.17.1) and a new prerelease (0.17.2b1), and it
+stable dbt version (0.17.1) and a new prerelease (0.17.2b1), and it
 includes a number of bugfixes.
 
 #### Enhancements
 
-- Add <Constant name="dbt" /> 0.17.2b1
-- Add <Constant name="dbt" /> 0.17.1 and set as default version
+- Add dbt 0.17.2b1
+- Add dbt 0.17.1 and set as default version
 - Speed up job scheduler by 50%
 - Added generate docs to rpc service and new view docs route
 - Queue limiting by account for scheduled jobs
@@ -288,16 +288,16 @@ includes a number of bugfixes.
 - Fix a bug with metadata set in azure storage provider
 - Fixed error when switching to developer plan from trial
 - Fix authentication bug where we setup all accounts with same domain
-- \[Security\] Add security check to prevent potentially malicious html files in <Constant name="dbt" /> docs
+- \[Security\] Add security check to prevent potentially malicious html files in dbt docs
 
 
 ## dbt Cloud v1.1.3 (July 7, 2020)
 
-This release contains a number of <Constant name="cloud_ide" /> features and bugfixes, a new release candidate of <Constant name="dbt" />, and a brand new Enterprise Single-Sign On method: Azure Active Directory!
+This release contains a number of <Constant name="cloud_ide" /> features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Azure Active Directory!
 
 #### Enhancements
 
-- Add <Constant name="dbt" /> 0.17.1rc3
+- Add dbt 0.17.1rc3
 - Snowflake: Add support for `client_session_keep_alive` config
 - Enterprise: Native Azure Oauth2 for Enterprise accounts
 - <Constant name="cloud_ide" />: Add custom command palette for finding files
@@ -315,13 +315,13 @@ This release contains a number of <Constant name="cloud_ide" /> features and bug
 
 ## dbt Cloud v1.1.2 (June 23, 2020)
 
-This branch includes an important security fix, two new versions of <Constant name="dbt" />, and some miscellaneous fixes.
+This branch includes an important security fix, two new versions of dbt, and some miscellaneous fixes.
 
 #### Enhancements
 
 - Add project names to the account settings notifications section
-- Add <Constant name="dbt" /> 0.17.1 release candidate
-- Update development <Constant name="dbt" /> version to Marian Anderson
+- Add dbt 0.17.1 release candidate
+- Update development dbt version to Marian Anderson
 - Add remember me to login page and expire user sessions at browser close
 - Adding Auth Provider and enabling Gsuite SSO for enterprise customers
 
@@ -333,13 +333,13 @@ This branch includes an important security fix, two new versions of <Constant na
 
 ## dbt Cloud v1.1.1 (June 9, 2020)
 
-This release includes <Constant name="dbt" /> 0.17.0 and a number of <Constant name="cloud_ide" /> quality of life improvements.
+This release includes dbt 0.17.0 and a number of <Constant name="cloud_ide" /> quality of life improvements.
 
 #### Enhancements
 
-- Added <Constant name="dbt" /> 0.17.0
+- Added dbt 0.17.0
 - Added the ability to create a new folder in the <Constant name="cloud_ide" />
-- Added gitignore status to file system and display <Constant name="dbt" /> artifacts, including directories dbt_modules, logs and target
+- Added gitignore status to file system and display dbt artifacts, including directories dbt_modules, logs and target
 - (Cloud only) Added rollbar and update some various error handling clean up
 - (On-premises only) Admin site: allow Repository's Pull Request Template field to be blank
 - (On-premises only) Added AWS KMS support
@@ -374,13 +374,13 @@ This release contains a few bugfixes for the <Constant name="cloud_ide" /> and e
 
 #### Added
 
-- Use the correct starter project tag, based on <Constant name="dbt" /> version, when initializing a new project in the <Constant name="cloud_ide" />
+- Use the correct starter project tag, based on dbt version, when initializing a new project in the <Constant name="cloud_ide" />
 - Added branch filtering to <Constant name="cloud_ide" /> git checkout UI.
-- Added <Constant name="dbt" /> 0.17.0-rc3.
+- Added dbt 0.17.0-rc3.
 
 #### Fixed
 
-- Fixed source freshness report for <Constant name="dbt" /> version v0.17.0
+- Fixed source freshness report for dbt version v0.17.0
 - Fixed issue with checking-out git branches
 - Fixed issue of logs being omitted on long running queries in the <Constant name="cloud_ide" />
 - Fixed slack notifications failing to send if email notifications fail
@@ -395,14 +395,14 @@ This release contains a few bugfixes for the <Constant name="cloud_ide" /> and e
 
 ## dbt Cloud v1.0.11 (May 19, 2020)
 
-This version adds some new permission sets, and a new release candidate of <Constant name="dbt" />.
+This version adds some new permission sets, and a new release candidate of dbt.
 
 ### All versions
 
 #### Added
 
 - Added permission sets for Job Viewer, Job Admin and Analyst.
-- Added <Constant name="dbt" /> 0.17.0-rc1
+- Added dbt 0.17.0-rc1
 
 ---
 
@@ -412,7 +412,7 @@ This version adds some new permission sets, and a new release candidate of <Cons
 
 #### Added
 
-- Added <Constant name="dbt" /> 0.17.0-b1.
+- Added dbt 0.17.0-b1.
 - PR Url is now self serve configurable.
 - Added more granular permissions around creating and deleting permissions. (Account Admin can create new projects by default while both Account Admin and Project Admin can delete the projects they have permissions for by default)
 - Added an error message to display to users that do not have permissions set up for any projects on an account.
@@ -455,13 +455,13 @@ This release includes bugfixes around how permissions are applied to runs and ru
 
 ## dbt Cloud v1.0.8 (April 28, 2020)
 
-This release adds a new version of <Constant name="dbt" /> (0.16.1), fixes a number of <Constant name="cloud_ide" /> bugs, and fixes some <Constant name="cloud" /> on-premises bugs.
+This release adds a new version of dbt (0.16.1), fixes a number of <Constant name="cloud_ide" /> bugs, and fixes some <Constant name="cloud" /> on-premises bugs.
 
 ### All versions
 
 #### Added
 
-- Add <Constant name="dbt" /> 0.16.1
+- Add dbt 0.16.1
 
 #### Fixed
 
@@ -504,7 +504,7 @@ This release rolls out a major change to how permissions are applied in <Constan
 - Added support to permission credentials on a per project basis.
 - Added support to permission repositories on a per project basis.
 - Smoke tests for account signup, user login and basic project setup
-- Add <Constant name="dbt" /> 0.16.1rc1
+- Add dbt 0.16.1rc1
 - Non-enterprise users can now add new accounts from the Accounts dropdown.
 
 #### Fixed
@@ -528,7 +528,7 @@ This release adds UIs to select group permissions in the project settings UI. It
 #### Fixed
 
 - Fix empty state for selecting github repositories
-- Fixed an issue with the <Constant name="cloud_ide" /> failing to report an invalid project subdirectory for a <Constant name="dbt" /> project
+- Fixed an issue with the <Constant name="cloud_ide" /> failing to report an invalid project subdirectory for a dbt project
 - Fix blank loading screen displayed when switching accounts while on account/profile settings page
 - Fix issue preventing schemas from dropping during PR builds
 - Fix issue where whitespace in user's name breaks default schema name
@@ -549,8 +549,8 @@ This release adds UIs to select group permissions in the project settings UI. It
 
 - Add support for authenticating Development and Deployment Snowflake credentials using keypair auth
 - Add support for checking out tags, render git output in "clone" run step
-- Add <Constant name="dbt" /> 0.15.3
-- Add <Constant name="dbt" /> 0.16.0
+- Add dbt 0.15.3
+- Add dbt 0.16.0
 
 #### Fixed
 
@@ -567,14 +567,14 @@ This release adds UIs to select group permissions in the project settings UI. It
 
 ## 1.0.4 (March 16, 2020)
 
-This release adds two new versions of <Constant name="dbt" />, adds Snowflake SSO support for Enterprise accounts, and fixes a number of bugs.
+This release adds two new versions of dbt, adds Snowflake SSO support for Enterprise accounts, and fixes a number of bugs.
 
 ### All versions
 
 #### Added
 
-- Added <Constant name="dbt" /> 0.15.3rc1
-- Added <Constant name="dbt" /> 0.16.0rc2
+- Added dbt 0.15.3rc1
+- Added dbt 0.16.0rc2
 - Add support for cloning private deps in the <Constant name="cloud_ide" /> when using deploy key auth.
 - Log user that kicked off manual runs.
 - Enterprise support for authenticating user Snowflake connections using Snowflake single sign-on
@@ -609,7 +609,7 @@ This release contains the building blocks for RBAC, and a number of bugfixes and
 - Add email address to email verification screen.
 - Add Enterprise Permissions.
 - Allow account-level access to resources for groups with a permission statement of "all resources" for api backwards compatibility.
-- Add <Constant name="dbt" /> 0.16.0b3
+- Add dbt 0.16.0b3
 
 #### Fixed
 
@@ -662,7 +662,7 @@ This release contains a number of package upgrades, and a number of bugfixes.
 - Remove unused threads input from deployment environments
 - Fix issue that prevented user from viewing documentation and data sources
 - Fix issue rendering code editor panel in the <Constant name="cloud_ide" /> when using Safari
-- Fix issue with log levels that caused <Constant name="dbt" /> logs to be too chatty
+- Fix issue with log levels that caused dbt logs to be too chatty
 
 #### Changed
 
@@ -683,7 +683,7 @@ None.
 
 ## dbt Cloud v1.0.1 (February 4, 2020)
 
-This release makes the <Constant name="cloud_ide" /> generally available, and adds two new versions of <Constant name="dbt" /> (0.15.1, 0.15.2).
+This release makes the <Constant name="cloud_ide" /> generally available, and adds two new versions of dbt (0.15.1, 0.15.2).
 
 For on-premises customers, there is a new set of configurations in the configuration console:
 
@@ -701,8 +701,8 @@ These fields need to be specified for your instance of <Constant name="cloud" />
 - New Team User Detail page
 - New Invite User page
 - New dashboard for Read Only users
-- New <Constant name="dbt" /> version: 0.15.1
-- New <Constant name="dbt" /> version: 0.15.2
+- New dbt version: 0.15.1
+- New dbt version: 0.15.2
 - Ability to rename files in <Constant name="cloud_ide" />
 - New backend service for project-based resource permissions
 
@@ -777,10 +777,10 @@ This release preps <Constant name="cloud" /> for the general <Constant name="clo
 
 #### Added
 
-- New <Constant name="dbt" /> version: 0.14.2
-- New <Constant name="dbt" /> version: 0.14.3
-- New <Constant name="dbt" /> version: 0.14.4
-- New <Constant name="dbt" /> version: 0.15.0
+- New dbt version: 0.14.2
+- New dbt version: 0.14.3
+- New dbt version: 0.14.4
+- New dbt version: 0.15.0
 - New API endpoint: v3/projects
 - New API endpoint: v3/credentials
 - New API endpoint: v3/environments
