@@ -20,7 +20,7 @@ This page explains how to use <Constant name="copilot" /> to:
 - [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />’s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - [Build visual models](#build-visual-models)<Lifecycle status='beta'/> &mdash; Use <Constant name="copilot" /> to generate models in the [<Constant name="visual_editor" />](/docs/cloud/use-visual-editor) with natural language prompts.
-- [Build queries](#build-queries) <Lifecycle status="beta"/> &mdash; Use <Constant name="copilot" /> to generate queries in the [<Constant name="query_page" />](/docs/collaborate/dbt-insights) for exploratory data analysis using natural language prompts.
+- [Build queries](#build-queries) <Lifecycle status="beta"/> &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="query_page" />](/docs/collaborate/dbt-insights) for exploratory data analysis using natural language prompts.
 
 ## Generate resources
 
@@ -43,10 +43,10 @@ Building visual models in the <Constant name="visual_editor" /> is currently in 
 ## Build queries <Lifecycle status="beta"/>
 
 :::info
-<Constant name="query_page" /> is currently in private beta for [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). To join the private beta, reach out to your account team to begin this process.
+dbt <Constant name="query_page" /> is currently in private beta for [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). To join the private beta, reach out to your account team to begin this process.
 :::
 
-Use <Constant name="copilot" /> to build queries in the [<Constant name="query_page" />](/docs/collaborate/dbt-insights) with natural language prompts to seamlessly explore and query data with an intuitive, context-rich interface. Before you begin, make sure you can [access <Constant name="query_page" />](/docs/collaborate/access-dbt-insights).
+Use <Constant name="copilot" /> to build queries in [<Constant name="query_page" />](/docs/collaborate/dbt-insights) with natural language prompts to seamlessly explore and query data with an intuitive, context-rich interface. Before you begin, make sure you can [access <Constant name="query_page" />](/docs/collaborate/access-dbt-insights).
 
 To begin building SQL queries with natural language prompts in <Constant name="query_page" />:
 
