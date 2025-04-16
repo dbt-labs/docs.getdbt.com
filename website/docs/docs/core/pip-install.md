@@ -136,7 +136,6 @@ For example, if using Postgres:
 
 ```shell
 python -m pip install dbt-core dbt-postgres
-python -m pip install <Constant name="core" /> dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
