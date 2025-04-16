@@ -17,7 +17,7 @@ hide_table_of_contents: true
 <Card
     title="Analyze with dbt Insights"
     body="Learn how to query data and perform exploratory data analysis using dbt Insights."
-    link="/docs/collaborate/access-dbt-insights"
+    link="/docs/collaborate/dbt-insights"
     icon="dbt-bit"/>
 
 <Card

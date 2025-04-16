@@ -586,7 +586,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Analyze with Query page",
+          label: "Analyze with dbt Insights",
           link: { type: "doc", id: "docs/collaborate/dbt-insights" },
           items: [
             "docs/collaborate/dbt-insights", // main query page doc

@@ -3,20 +3,20 @@ title: "Access the dbt Insights interface"
 description: "Learn how to access the dbt Insights interface and run queries"
 sidebar_label: "Access and run queries"
 tags: [dbt Insights]
-image: /img/docs/dbt-insights/qp-chart.jpg
+image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
 # Access the dbt Insights interface <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to access the dbt Insights interface and run queries.
+Learn how to access the <Constant name="query_page" /> interface and run queries.
 </IntroText>
 
 :::tip
-dbt Insights is available in private beta to Enterprise accounts. To join, please reach out to your account manager. 
+<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager. 
 :::
 
-The dbt Insights interface provides a rich console experience with editor navigation. You can expect the dbt Insights interface to:
+The <Constant name="query_page" /> interface provides a rich console experience with editor navigation. You can expect the <Constant name="query_page" /> interface to:
 - Enable you to write SQL queries, with the option to open multiple tabs 
 - Have SQL + dbt autocomplete suggestions and syntax highlighting
 - Bookmark SQL queries
@@ -28,15 +28,15 @@ The dbt Insights interface provides a rich console experience with editor naviga
 
 ## Access the dbt Insights interface
 
-Before accessing the dbt Insights interface, ensure that the [prerequisites](/docs/collaborate/dbt-insights#prerequisites) are met.
+Before accessing the <Constant name="query_page" /> interface, ensure that the [prerequisites](/docs/collaborate/dbt-insights#prerequisites) are met.
 
-1. To access the dbt Insights interface, select the **Insights** option in the navigation sidebar.
-2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, the dbt Insights interface will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
-3. Once your credentials are set up, you can write, run, and edit SQL queries in the dbt Insights interface editor for existing models in your project. 
+1. To access the <Constant name="query_page" /> interface, select the **Insights** option in the navigation sidebar.
+2. If your [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) aren’t set up, the <Constant name="query_page" /> interface will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
+3. Once your credentials are set up, you can write, run, and edit SQL queries in the <Constant name="query_page" /> interface editor for existing models in your project. 
 
 ## Run queries
 
-To run queries in the dbt Insights interface, you can use:
+To run queries in the <Constant name="query_page" /> interface, you can use:
 - Standard SQL  
 - Jinja ([`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source), [`is_incremental`](/docs/build/incremental-models#understand-the-is_incremental-macro))  
 - Links from SQL code `ref` to the corresponding Explorer page
@@ -46,7 +46,7 @@ To run queries in the dbt Insights interface, you can use:
 
 ## Example
 
-Let's use an example to illustrate how to run queries in the dbt Insights interface:
+Let's use an example to illustrate how to run queries in the <Constant name="query_page" /> interface:
 
 - A Jaffle shop wants to count unique orders and unique customers to understand whether they can expand their awesome Jaffle shop business to other parts of the world.
 - To express this logic in SQL, Kimiko (analyst assigned to this project) wants to understand yearly trends to help guide expansion decisions. She writes the following SQL query to calculate the number of unique customers, cities, and total order revenue: <br /><br />
@@ -86,7 +86,7 @@ To make things easier, Kimiko decides to use dbt Copilot to save time and explor
 4. Kimiko then reviews the output and clicks **Replace** to use the Copilot-generated SQL in her editor.
 5. Then, she clicks **Run** to preview the results.
 
-<Lightbox src="/img/docs/dbt-insights/qp-copilot.gif" width="95%" title="dbt Insights dbt Copilot" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="95%" title="dbt Insights with dbt Copilot" />
 
 From here, Kimiko can:
 - Continue building or modifying the query using dbt Copilot
@@ -107,7 +107,7 @@ Using the same example, Kimiko can perform some exploratory data analysis by run
 - Viewing results in **Results** tab &mdash; View the paginated results of the query.
 - Sorting results &mdash; Click on the column header to sort the results by that column.
 - Exporting to CSV &mdash; On the top right of the table, click the three-dot ellipsis (`...`) button and select **Export to CSV** to export the dataset.
-<Lightbox src="/img/docs/dbt-insights/qp-export-csv.jpg" width="95%" title="dbt Insights Export to CSV" />
+<Lightbox src="/img/docs/dbt-insights/insights-export-csv.jpg" width="95%" title="dbt Insights Export to CSV" />
 
 ### View details
 Kimiko can also view the details of the query by clicking on the **Details** tab:
@@ -115,7 +115,7 @@ Kimiko can also view the details of the query by clicking on the **Details** tab
 - **Connection details** &mdash; Relevant data platform connection information.
 - **Query details** &mdash; Query duration, status, column count, row count.
 
-<Lightbox src="/img/docs/dbt-insights/qp-details.jpg" width="95%" title="dbt Insights Details tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-details.jpg" width="95%" title="dbt Insights Details tab" />
 
 ### Chart results
 
@@ -124,7 +124,7 @@ Kimiko can visualize the chart results of the query by clicking on the **Chart**
 - Choose from **line chart, bar chart, or scatterplot**.
 - Select the axis and columns to visualize using the **Chart settings** icon.
 
-<Lightbox src="/img/docs/dbt-insights/qp-chart.jpg" width="95%" title="dbt Insights Chart tab" />
+<Lightbox src="/img/docs/dbt-insights/insights-chart.jpg" width="95%" title="dbt Insights Chart tab" />
 
 ### Query history
 
@@ -135,11 +135,11 @@ Kimiko can also view the history of queries and their statuses (like Success, Er
 
 The query history is stored indefinitely.
 
-<Lightbox src="/img/docs/dbt-insights/qp-query-history.png" width="95%" title="dbt Insights Query history icon" />
+<Lightbox src="/img/docs/dbt-insights/insights-query-history.png" width="95%" title="dbt Insights Query history icon" />
 
 ### Use dbt Explorer
 
-Kimiko accesses [dbt Explorer](/docs/collaborate/explore-projects) to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the dbt Insights interface. 
+Kimiko accesses [dbt Explorer](/docs/collaborate/explore-projects) to view the project lineage and project resources with access to tables, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
 
 This integrated view allows her and other users to maintain their query workflow, while getting more context on models, semantic models, metrics, macros, and more. The integrated Explorer view comes with:
 - Same search capabilities as Explorer
@@ -148,19 +148,19 @@ This integrated view allows her and other users to maintain their query workflow
 
 To access dbt Explorer, click on the **Explorer** icon in the [Query console sidebar menu](/docs/collaborate/navigate-dbt-insights#query-console-sidebar-menu).
 
-<Lightbox src="/img/docs/dbt-insights/qp-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
 
 ## Considerations 
 - You can save and bookmark frequently used queries for yourself.
 - Coming soon: Sharing those queries with others.
-- dbt Insights uses your development credentials to query. You have the ability to query against any object in any environment, subject to your warehouse provider permissions.
+- <Constant name="query_page" /> uses your development credentials to query. You have the ability to query against any object in any environment, subject to your warehouse provider permissions.
 - Every Jinja function uses [`defer --favor-state`](/reference/node-selection/defer) to resolve Jinja.
 - Coming soon: The ability to select the environment you use to resolve your `refs`.
 
 <!-- this can move to another page -->
 
 ## FAQs
-- What’s the difference between dbt Insights and dbt Explorer?
+- What’s the difference between <Constant name="query_page" /> and dbt Explorer?
   - That’s a great question! Explorer helps you understand your dbt project's structure, resources, lineage, and metrics, offering context for your data.
-  - The dbt Insights interface builds on that context, allowing you to write, run, and iterate on SQL queries directly in dbt Cloud. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
-  - Explorer provides the context, while dbt Insights enables action.
+  - The <Constant name="query_page" /> interface builds on that context, allowing you to write, run, and iterate on SQL queries directly in dbt Cloud. It’s designed for ad-hoc or exploratory analysis and empowers business users and analysts to explore data, ask questions, and collaborate seamlessly.
+  - Explorer provides the context, while <Constant name="query_page" /> enables action.

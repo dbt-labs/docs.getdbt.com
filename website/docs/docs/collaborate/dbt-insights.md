@@ -4,24 +4,24 @@ description: "Learn how to query data and perform exploratory data analysis usin
 sidebar_label: "About dbt Insights"
 tags: [Semantic Layer]
 pagination_next:  "docs/collaborate/access-dbt-insights"
-image: /img/docs/dbt-insights/qp-chart.jpg
+image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
 # About dbt Insights <Lifecycle status="beta,enterprise" />
 
 <IntroText>
-Learn how to query data with dbt Insights and view documentation in dbt Explorer.
+Learn how to query data with <Constant name="query_page" /> and view documentation in dbt Explorer.
 </IntroText>
 
 :::tip
-dbt Insights is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
+<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
 :::
 
-dbt Insights in dbt Cloud empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
+<Constant name="query_page" /> in dbt Cloud empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
-dbt Insights integrates with [dbt Explorer](/docs/collaborate/explore-projects), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [Visual Editor](/docs/cloud/visual-editor), [dbt Copilot](/docs/cloud/dbt-copilot), and [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
+<Constant name="query_page" /> integrates with [dbt Explorer](/docs/collaborate/explore-projects), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [Visual Editor](/docs/cloud/visual-editor), [dbt Copilot](/docs/cloud/dbt-copilot), and [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
 
-<Lightbox src="/img/docs/dbt-insights/qp-main.gif" title="Overview of the dbt Insights and its features" />
+<Lightbox src="/img/docs/dbt-insights/insights-main.gif" title="Overview of the dbt Insights and its features" />
 
 ## Key benefits
 
@@ -37,9 +37,9 @@ Some example use cases include:
 
 ## Prerequisites 
 
-- Have a dbt Cloud [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about dbt Insights.
+- Have a dbt Cloud [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
-- Have a dbt Cloud [developer license](/docs/cloud/manage-access/seats-and-users) with access to dbt Insights.
+- Have a dbt Cloud [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide)
 - Your production and development [environments](/docs/dbt-cloud-environments) are on dbt Cloud’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
 - Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.

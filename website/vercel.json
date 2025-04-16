@@ -39,6 +39,21 @@
   ],
   "redirects": [
     {
+      "source": "/docs/collaborate/navigate-query-page",
+      "destination": "/docs/collaborate/navigate-dbt-insights",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/access-query-page",
+      "destination": "/docs/collaborate/access-dbt-insights",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/query-page",
+      "destination": "/docs/collaborate/dbt-insights",
+      "permanent": true
+    },
+    {
       "source": "/reference/resource-properties/argument-type",
       "destination": "/reference/resource-properties/arguments",
       "permanent": true
