@@ -25,12 +25,12 @@ dbt env show
 The command returns the following information:
 
 ```bash
-❯ <Constant name="dbt" /> env show
+❯ dbt env show
 Local Configuration:
   Active account ID              185854
   Active project ID              271692
   Active host name               cloud.getdbt.com
-  dbt_cloud.yml file path        /Users/cesar/.<Constant name="dbt" />/dbt_cloud.yml
+  dbt_cloud.yml file path        /Users/cesar/.dbt/dbt_cloud.yml
   dbt_project.yml file path      /Users/cesar/git/cloud-cli-test-project/dbt_project.yml
   <Constant name="cloud" /> CLI version          0.35.7
   OS info                        darwin arm64
@@ -65,18 +65,17 @@ Use the following flags (or options) with the `dbt environment` command:
 - `-h`, `--help` &mdash; To view the help documentation for a specific command in your command line interface.
 
   ```shell 
-  <Constant name="dbt" /> environment [command] --help
-  <Constant name="dbt" /> environment [command] -h
+  dbt environment [command] --help
   ```
 
   The `--help` flag returns the following information:
 
   ```bash
-    ❯ <Constant name="dbt" /> help environment
-    Interact with <Constant name="dbt" /> environments
+    ❯ dbt help environment
+    Interact with dbt environments
 
   Usage:
-    <Constant name="dbt" /> environment [command]
+    dbt environment [command]
 
   Aliases:
     environment, env
@@ -87,12 +86,12 @@ Use the following flags (or options) with the `dbt environment` command:
   Flags:
     -h, --help   help for environment
 
-  Use "<Constant name="dbt" /> environment [command] --help" for more information about a command.
+  Use "dbt environment [command] --help" for more information about a command.
   ```
 
   For example, to view the help documentation for the `show` command, type one of the following commands, including the shorthand:
 
   ```shell
-  <Constant name="dbt" /> environment show --help
-  <Constant name="dbt" /> env show -h
+  dbt environment show --help
+  dbt env show -h
   ```

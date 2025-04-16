@@ -189,7 +189,7 @@ dbt seed --select "result:error" --state path/to/artifacts # run all seeds that 
 The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 
 ```bash
-dbt listry:*"                    # list all saved queries 
+dbt list --select "saved_query:*"                    # list all saved queries 
 dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 

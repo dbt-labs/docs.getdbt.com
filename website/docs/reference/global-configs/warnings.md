@@ -147,17 +147,17 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
 
 - This command promotes all warnings to errors:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"error": "all"}' run
+  dbt --warn-error-options '{"error": "all"}' run
   ```
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run
+  dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This command promotes only `NoNodesForSelectionCriteria` as an error:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}' run
+  dbt --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
@@ -172,17 +172,17 @@ Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For 
   
 - This command promotes all warnings to errors:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"include": "all"}' run 
+  dbt --warn-error-options '{"include": "all"}' run 
   ```
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"include": "all", "exclude": ["NoNodesForSelectionCriteria"]}' run
+  dbt --warn-error-options '{"include": "all", "exclude": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This command promotes only `NoNodesForSelectionCriteria` as an error:
   ```text
-  <Constant name="dbt" /> --warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}' run
+  dbt --warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}' run
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
@@ -237,18 +237,18 @@ Some additional examples of how to promote all warnings to errors using the `WAR
 <VersionBlock lastVersion="1.7"> 
 
 ```bash 
-<Constant name="dbt" /> --warn-error run 
-<Constant name="dbt" /> --warn-error-options '{"include": "all"}' run 
-<Constant name="dbt" /> --warn-error-options '{"include": "*"}' run 
+dbt --warn-error run 
+dbt --warn-error-options '{"include": "all"}' run 
+dbt --warn-error-options '{"include": "*"}' run 
 ```
 </VersionBlock> 
 
 <VersionBlock firstVersion="1.8"> 
 
 ```bash 
-<Constant name="dbt" /> --warn-error run 
-<Constant name="dbt" /> --warn-error-options '{"error": "all"}' run 
-<Constant name="dbt" /> --warn-error-options '{"error": "*"}' run 
+dbt --warn-error run 
+dbt --warn-error-options '{"error": "all"}' run 
+dbt --warn-error-options '{"error": "*"}' run 
 ```
 </VersionBlock>
 

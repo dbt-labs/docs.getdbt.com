@@ -78,7 +78,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
 3. Run and preview the model to create the model:
     ```bash
     dbt run --select time_spine_daily 
-    <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
+    dbt show --select time_spine_daily # Use this command to preview the model if developing locally
     ```
 
 4. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
@@ -146,7 +146,7 @@ For the time spine you created, let's run it and preview the output if you haven
 1. Run the following command:
    ```bash
    dbt run --select time_spine_daily
-   <Constant name="dbt" /> show --select time_spine_daily # Use this command to preview the model if developing locally
+   dbt show --select time_spine_daily # Use this command to preview the model if developing locally
    ```
 
 2. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
@@ -161,7 +161,7 @@ For the time spine you created, let's run it and preview the output if you haven
    Let's say you have a `revenue` metric defined. You can query the model/metrics using the following command:
 
     ```bash
-    <Constant name="dbt" /> sl query --metrics revenue --group-by metric_time
+    dbt sl query --metrics revenue --group-by metric_time
     ```
 
     This will output results similar to the following in the <Constant name="cloud_ide" />:
@@ -238,12 +238,12 @@ To support multiple granularities (like hourly, yearly, monthly), create additio
 3. Run or preview the model to create the model:
    ```bash
    dbt run --select time_spine_yearly
-   <Constant name="dbt" /> show --select time_spine_yearly # Use this command to preview the model if developing locally
+   dbt show --select time_spine_yearly # Use this command to preview the model if developing locally
    ```
 
 4. Validate the output by querying the generated model:
    ```bash
-   <Constant name="dbt" /> sl query --metrics orders --group-by metric_time__year
+   dbt sl query --metrics orders --group-by metric_time__year
    ```
 
 If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
@@ -329,14 +329,14 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
 3. Run or preview the model to create the model:
    ```bash
    dbt run --select fiscal_calendar
-   <Constant name="dbt" /> show --select fiscal_calendar # Use this command to preview the model if developing locally
+   dbt show --select fiscal_calendar # Use this command to preview the model if developing locally
    ```
 
    If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
 
 4. Validate the output by querying the generated model along with your metrics:
    ```bash
-   <Constant name="dbt" /> sl query --metrics orders --group-by metric_time__fiscal_year
+   dbt sl query --metrics orders --group-by metric_time__fiscal_year
    ```
 
    <Lightbox src="/img/mf-guide-fiscal-preview.jpg" title="Validate the custom calendar metrics and time spine output in dbt Cloud IDE" />

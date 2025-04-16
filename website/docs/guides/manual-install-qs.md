@@ -126,7 +126,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
 4. Run the `debug` command from your project to confirm that you can successfully connect:
 
 ```shell
-$ <Constant name="dbt" /> debug
+$ dbt debug
 > Connection test: OK connection ok
 ```
 

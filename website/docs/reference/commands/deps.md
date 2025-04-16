@@ -6,56 +6,56 @@ id: "deps"
 
 `dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. See [Package-Management](/docs/build/packages) for more information.
 
-Where relevant, <Constant name="dbt" /> will display up to date and/or latest versions of packages that are listed on <Constant name="dbt" /> Hub. Example below.
+Where relevant, dbt will display up to date and/or latest versions of packages that are listed on dbt Hub. Example below.
 
 > This does NOT apply to packages that are installed via git/local
 
 ```yaml
 packages:
-  - package: <Constant name="dbt" />-labs/dbt_utils
+  - package: dbt-labs/dbt_utils
     version: 0.7.1
   - package: brooklyn-data/dbt_artifacts
     version: 1.2.0
     install-prerelease: true
-  - package: <Constant name="dbt" />-labs/codegen
+  - package: dbt-labs/codegen
     version: 0.4.0
   - package: calogica/dbt_expectations
     version: 0.4.1
-  - git: https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-audit-helper.git
+  - git: https://github.com/dbt-labs/dbt_audit_helper.git
     revision: 0.4.0
-  - git: "https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-labs-experimental-features" # git URL
+  - git: "https://github.com/dbt-labs/dbt_labs-experimental-features" # git URL
     subdirectory: "materialized-views" # name of subdirectory containing `dbt_project.yml`
     revision: 0.0.1
-  - package: <Constant name="dbt" />-labs/snowplow
+  - package: dbt-labs/snowplow
     version: 0.13.0
 ```
 
 ```txt
-Installing <Constant name="dbt" />-labs/dbt_utils@0.7.1
+Installing dbt-labs/dbt_utils@0.7.1
   Installed from version 0.7.1
   Up to date!
 Installing brooklyn-data/dbt_artifacts@1.2.0
   Installed from version 1.2.0
-Installing <Constant name="dbt" />-labs/codegen@0.4.0
+Installing dbt-labs/codegen@0.4.0
   Installed from version 0.4.0
   Up to date!
 Installing calogica/dbt_expectations@0.4.1
   Installed from version 0.4.1
   Up to date!
-Installing https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-audit-helper.git@0.4.0
+Installing https://github.com/dbt-labs/dbt_audit_helper.git@0.4.0
   Installed from revision 0.4.0
-Installing https://github.com/<Constant name="dbt" />-labs/<Constant name="dbt" />-labs-experimental-features@0.0.1
+Installing https://github.com/dbt-labs/dbt_labs-experimental-features@0.0.1
   Installed from revision 0.0.1
    and subdirectory materialized-views
-Installing <Constant name="dbt" />-labs/snowplow@0.13.0
+Installing dbt-labs/snowplow@0.13.0
   Installed from version 0.13.0
   Updated version available: 0.13.1
 Installing calogica/dbt_date@0.4.0
   Installed from version 0.4.0
   Up to date!
 
-Updates available for packages: ['tailsdotcom/dbt_artifacts', '<Constant name="dbt" />-labs/snowplow']
-Update your versions in packages.yml, then run <Constant name="dbt" /> deps
+Updates available for packages: ['tailsdotcom/dbt_artifacts', 'dbt-labs/snowplow']
+Update your versions in packages.yml, then run dbt deps
 ```
 
 ## Predictable package installs
@@ -80,12 +80,10 @@ dbt deps --lock
 
 ### Forcing package updates
 
-To update all packages, even if `packages.yml` hasn’t changed, use the `--upgrade` flag:
+To update all packages, even if `packages.yml` hasn't changed, use the `--upgrade` flag:
 
 ```shell
-
-<Constant name="dbt" /> deps --upgrade
-
+dbt deps --upgrade
 ```
 
 This is particularly useful for fetching the latest commits from the `main` branch of an internally maintained Git package. 
@@ -103,7 +101,7 @@ The `dbt deps` command can add or update package configurations directly, saving
 Hub packages are the default package types and the easiest to install.
 
 ```shell
-dbt deps --add-package <Constant name="dbt" />-labs/dbt_utils@1.0.0
+dbt deps --add-package dbt-labs/dbt_utils@1.0.0
 
 # with semantic version range
 dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
@@ -116,8 +114,8 @@ Use the `--source` flag to specify the type of package to be installed:
 ```shell
 
 # Git package
-<Constant name="dbt" /> deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
+dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
 
 # Local package
-<Constant name="dbt" /> deps --add-package /opt/<Constant name="dbt" />/redshift --source local
+dbt deps --add-package /opt/dbt/redshift --source local
 ```

@@ -7,16 +7,16 @@ In v1.5, <Constant name="core" /> added support for programmatic invocations. Th
 The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
 
 ```python
-from <Constant name="dbt" />.cli.main import dbtRunner, dbtRunnerResult
+from dbt.cli.main import dbtRunner, dbtRunnerResult
 
 # initialize
-<Constant name="dbt" /> = dbtRunner()
+dbt = dbtRunner()
 
 # create CLI args as a list of strings
 cli_args = ["run", "--select", "tag:my_tag"]
 
 # run the command
-res: dbtRunnerResult = <Constant name="dbt" />.invoke(cli_args)
+res: dbtRunnerResult = dbt.invoke(cli_args)
 
 # inspect the results
 for r in res.result:
@@ -66,8 +66,8 @@ The goal of `dbtRunner` is to offer parity with CLI workflows, within a programm
 Pass pre-constructed objects into `dbtRunner`, to avoid recreating those objects by reading files from disk. Currently, the only object supported is the `Manifest` (project contents).
 
 ```python
-from <Constant name="dbt" />.cli.main import dbtRunner, dbtRunnerResult
-from <Constant name="dbt" />.contracts.graph.manifest import Manifest
+from dbt.cli.main import dbtRunner, dbtRunnerResult
+from dbt.contracts.graph.manifest import Manifest
 
 # use 'parse' command to load a Manifest
 res: dbtRunnerResult = dbtRunner().invoke(["parse"])
@@ -80,9 +80,9 @@ for node in manifest.nodes.values():
         assert node.description != "", f"{node.name} is missing a description"
 
 # reuse this manifest in subsequent commands to skip parsing
-<Constant name="dbt" /> = dbtRunner(manifest=manifest)
+dbt = dbtRunner(manifest=manifest)
 cli_args = ["run", "--select", "tag:my_tag"]
-res = <Constant name="dbt" />.invoke(cli_args)
+res = dbt.invoke(cli_args)
 ```
 
 ### Registering callbacks
@@ -92,15 +92,15 @@ Register `callbacks` on dbt's `EventManager`, to access structured events and en
 <VersionBlock firstVersion="1.8">
 
 ```python
-from <Constant name="dbt" />.cli.main import dbtRunner
+from dbt.cli.main import dbtRunner
 from dbt_common.events.base_types import EventMsg
 
 def print_version_callback(event: EventMsg):
     if event.info.name == "MainReportVersion":
-        print(f"We are thrilled to be running <Constant name="dbt" />{event.data.version}")
+        print(f"We are thrilled to be running dbt{event.data.version}")
 
-<Constant name="dbt" /> = dbtRunner(callbacks=[print_version_callback])
-<Constant name="dbt" />.invoke(["list"])
+dbt = dbtRunner(callbacks=[print_version_callback])
+dbt.invoke(["list"])
 ```
 
 </VersionBlock>
@@ -108,15 +108,15 @@ def print_version_callback(event: EventMsg):
 <VersionBlock lastVersion="1.7">
 
 ```python
-from <Constant name="dbt" />.cli.main import dbtRunner
-from <Constant name="dbt" />.events.base_types import EventMsg
+from dbt.cli.main import dbtRunner
+from dbt.events.base_types import EventMsg
 
 def print_version_callback(event: EventMsg):
     if event.info.name == "MainReportVersion":
-        print(f"We are thrilled to be running <Constant name="dbt" />{event.data.version}")
+        print(f"We are thrilled to be running dbt{event.data.version}")
 
-<Constant name="dbt" /> = dbtRunner(callbacks=[print_version_callback])
-<Constant name="dbt" />.invoke(["list"])
+dbt = dbtRunner(callbacks=[print_version_callback])
+dbt.invoke(["list"])
 ```
 
 </VersionBlock>
@@ -125,10 +125,10 @@ def print_version_callback(event: EventMsg):
 
 Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, <Constant name="dbt" /> will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
 ```python
-from <Constant name="dbt" />.cli.main import dbtRunner
-<Constant name="dbt" /> = dbtRunner()
+from dbt.cli.main import dbtRunner
+dbt = dbtRunner()
 
 # these are equivalent
-<Constant name="dbt" />.invoke(["--fail-fast", "run", "--select", "tag:my_tag"])
-<Constant name="dbt" />.invoke(["run"], select=["tag:my_tag"], fail_fast=True)
+dbt.invoke(["--fail-fast", "run", "--select", "tag:my_tag"])
+dbt.invoke(["run"], select=["tag:my_tag"], fail_fast=True)
 ```
