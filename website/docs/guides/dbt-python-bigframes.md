@@ -20,7 +20,9 @@ In this guide, you'll learn how to set up <Constant name="dbt" /> so you can use
 * Build scalable data transformation pipelines using <Constant name="dbt" /> and Google Cloud, with SQL and Python.
 * Leverage BigFrames from <Constant name="dbt" /> for scalable BigQuery SQL.
 
-In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute pandas and scikit, which help you learn code at scale on the BigQuery SQL engine.
+
+In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
+
 
 BigQuery Dataframes is an open source python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The <Constant name="dbt" />-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the python client side code.
 
@@ -80,12 +82,6 @@ The <Constant name="dbt" /> BigFrames submission method supports both service ac
    gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
    ```
 
-   Note: Considering reviewing these optional IAM requirements required to apply for using remote functions and ML remote models:
-
-   * [Remote Functions](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#remote-function-requirements)
-
-   * [ML Remote Models](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#remote-models)
-
 3. *(Optional)* **Create a test BigQuery Dataset**
 
    Create a new BigQuery Dataset if you don't already have one:
@@ -95,15 +91,16 @@ The <Constant name="dbt" /> BigFrames submission method supports both service ac
    bq mk --location=${REGION} echo "${GOOGLE_CLOUD_PROJECT}" | tr '-' '_'_dataset
    ```
 
-4. *(Optional)* **Create a GCS bucket to stage the python code**
+4. **Create a GCS bucket to stage the python code**
 
-   If you wish to store the python compiled code on a GCS bucket, create a new one:
+   For temporary log and code storage, please create a GCS bucket and assign the required permissions:
 
    ```python
    #Create GCS bucket
    gcloud storage buckets create gs://${GOOGLE_CLOUD_PROJECT}-bucket --location=${REGION}
    #Grant Storage Admin over the bucket to your SA 
-   xgcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:<Constant name="dbt" />-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
+
+   gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
 
 5. **Create a GCS bucket to hold the logs**
@@ -116,7 +113,7 @@ The <Constant name="dbt" /> BigFrames submission method supports both service ac
 
 ## Create, configure, and execute your Python models
 
-1. In your dbt project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
+1. In your <Constant name="dbt"/> project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
 2. In the file, copy this sql into it. 
 
    ```sql
@@ -125,7 +122,17 @@ The <Constant name="dbt" /> BigFrames submission method supports both service ac
       2 as bar
    ```
 3. Now create a new model file in the models directory, named `my_first_python_model.py`. 
-4. Configure the BigFrames submission method by either:  
+
+4. In the `my_first_python_model.py` file, add this code:
+
+   ```python
+   def model(dbt, session):
+      dbt.config(submission_method="bigframes")
+      bdf = dbt.ref("my_sql_model") #loading from prev step
+      return bdf
+   ```
+
+5. Configure the BigFrames submission method by using either:  
 
    a. Project level configuration via dbt_project.yml
 
@@ -138,36 +145,19 @@ The <Constant name="dbt" /> BigFrames submission method supports both service ac
    ```
    or 
 
-   b. The Python code via <Constant name="dbt" />.config
+   b. The Python code via dbt.config in the my_first_python_model.py file 
 
    ```python
-   def model(<Constant name="dbt" />, session):
-      <Constant name="dbt" />.config(submission_method="bigframes")
-      bdf = <Constant name="dbt" />.ref("my_sql_model") 
-      return bdf
+   def model(dbt, session):
+      dbt.config(submission_method="bigframes")
+      # rest of the python code...
+
    ```
 
-3. Now in that file, add in this code:
+6. Run `dbt run` 
 
-   ```python
-   def model(<Constant name="dbt" />, session):
-      <Constant name="dbt" />.config(submission_method="bigframes")
-      bdf = <Constant name="dbt" />.ref("my_sql_model") #loading from prev step
-      return bdf
-   ```
+7. You can view the logs in [dbt logs](/reference/events-logging). You can optionally view the codes and logs (including previous executions) from the [Colab Enterprise Executions](https://console.cloud.google.com/vertex-ai/colab/execution-jobs) tab and [GCS bucket](https://console.cloud.google.com/storage/browser) from the GCP console.
 
-3. Create a new python model file named `my_second_python_model.py` 
-
-   ```python
-   def model(<Constant name="dbt" />, session):  
-      data = {"foo": [1, 2], "bar": [3, 4]}
-      return bpd.DataFrame(data=data)
-   ```
-
-4. Run `dbt run` 
-
-5. You can optionally view the codes and logs (including previous executions) from the Colab Enterprise Executions tab and GCS bucket from the GCP console.
-
-6. Congrats! You just created your first two python models to run on BigFrames! 
+8. Congrats! You just created your first two python models to run on BigFrames! 
 
 </div>
