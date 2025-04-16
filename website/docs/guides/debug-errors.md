@@ -23,10 +23,9 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
-    - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
-    - **dbt Core users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+    - **<Constant name="cloud" /> users**: Use the above, or the `Details` tab in the command output.
+    - **<Constant name="core" /> users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](/community/resources/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
-
 
 ## Types of errors
 Below, we've listed some of common errors. It's useful to understand what dbt is doing behind the scenes when you execute a command like `dbt run`.
@@ -63,11 +62,11 @@ Runtime Error
 ### Could not find profile
 
 ```
-Running with <Constant name="dbt" />=1.7.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Runtime Error
-  Could not run <Constant name="dbt" />
+  Could not run dbt
   Could not find profile named 'jaffle_shops'
 ```
 <details>
@@ -102,11 +101,11 @@ jaffle_shop: # this does not match the profile: key
 - Update these so that they match.
 - If you can't find your `profiles.yml` file, run `dbt debug --config-dir` for help:
 ```
-$ <Constant name="dbt" /> debug --config-dir
-Running with <Constant name="dbt" />=1.7.1
+$ dbt debug --config-dir
+Running with dbt=1.7.1
 To view your profiles.yml file, run:
 
-open /Users/alice/.<Constant name="dbt" />
+open /Users/alice/.dbt
 ```
 
   - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
@@ -133,10 +132,10 @@ Runtime Error
 - After updating the credentials, run `dbt debug` to check you can connect
 
 ```
-$ <Constant name="dbt" /> debug
-Running with <Constant name="dbt" />=1.7.1
-Using profiles.yml file at /Users/alice/.<Constant name="dbt" />/profiles.yml
-Using dbt_project.yml file at /Users/alice/jaffle-shop-<Constant name="dbt" />/dbt_project.yml
+$ dbt debug
+Running with dbt=1.7.1
+Using profiles.yml file at /Users/alice/.dbt/profiles.yml
+Using dbt_project.yml file at /Users/alice/jaffle-shop-dbt/dbt_project.yml
 
 Configuration:
   profiles.yml file [OK found and valid]
@@ -159,10 +158,10 @@ Encountered an error while reading the project:
   ERROR: Runtime Error
   at path []: Additional properties are not allowed ('hello' was unexpected)
 
-Error encountered in /Users/alice/jaffle-shop-<Constant name="dbt" />/dbt_project.yml
+Error encountered in /Users/alice/jaffle-shop-dbt/dbt_project.yml
 Encountered an error:
 Runtime Error
-  Could not run <Constant name="dbt" />
+  Could not run dbt
 ```
 
 <details>
@@ -197,7 +196,7 @@ _Note: if you're using the dbt Cloud IDE to work on your dbt project, this error
 ### Invalid `ref` function
 ```
 $ dbt run -s customers
-Running with <Constant name="dbt" />=1.1.0
+Running with dbt=1.1.0
 
 Encountered an error:
 Compilation Error in model customers (models/customers.sql)
@@ -217,7 +216,7 @@ Compilation Error in model customers (models/customers.sql)
 
 ```
 $ dbt run
-Running with <Constant name="dbt" />=1.7.1
+Running with dbt=1.7.1
 Compilation Error in macro (macros/cents_to_dollars.sql)
   Reached EOF without finding a close tag for macro (searched from line 1)
 ```
@@ -235,7 +234,7 @@ To fix this:
 - Use the error message to find your mistake
 
 To prevent this:
-- _(dbt Core users only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt))
+- _(<Constant name="core" /> only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt))
 
 </details>
 
@@ -244,7 +243,7 @@ To prevent this:
 
 ```
 $ dbt run
-Running with <Constant name="dbt" />=1.7.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -298,7 +297,7 @@ Slightly different error — the YAML structure is right (i.e. the YAML parser c
 
 ```
 $ dbt run
-Running with <Constant name="dbt" />=1.7.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -318,13 +317,12 @@ Compilation Error
 ## Dependency Errors
 ```
 $ dbt run
-Running with <Constant name="dbt" />=1.7.1-rc
+Running with dbt=1.7.1-rc
 
 Encountered an error:
 Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers --> model.jaffle_shop.customers
 
 ```
-
 
 Your <Constant name="dbt" /> DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
@@ -347,10 +345,10 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
-    - **dbt Core:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
+    - **<Constant name="cloud" />:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **<Constant name="core" />:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **dbt Cloud:** Use the `Preview` button from the model file
+    - **<Constant name="cloud" />:** Use the `Preview` button from the model file
     - **<Constant name="core" />:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
@@ -362,8 +360,8 @@ In some cases, these errors might occur as a result of queries that <Constant na
 - For incremental models, and snapshots: merge, update and insert statements
 
 In these cases, you should check out the logs — this contains _all_ the queries <Constant name="dbt" /> has run.
-- **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
-- **dbt Core**: Open the `logs/dbt.log` file.
+- **<Constant name="cloud" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
+- **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
 If you're hitting a strange `Database Error`, it can be a good idea to clean out your logs by opening the file, and deleting the contents. Then, re-execute `dbt run` for _just_ the problematic model. The logs will _just_ have the output you're looking for.
@@ -383,7 +381,7 @@ Using the `Preview` button is useful when developing models and you want to visu
 
 
 ### Forgetting to save files before running
-We’ve all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the dbt Cloud IDE, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
+We've all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the <Constant name="cloud_ide" />, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
 
 ### Editing compiled files
 _(More likely for <Constant name="core" /> users)_

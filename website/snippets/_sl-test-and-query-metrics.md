@@ -2,7 +2,7 @@ To work with metrics in dbt, you have several tools to validate or run commands.
 
 - [**<Constant name="cloud_ide" /> users**](#dbt-cloud-ide-users) &mdash; Run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to query/preview metrics. View metrics visually in the **Lineage** tab.
 - [**<Constant name="cloud_cli" /> users**](#dbt-cloud-cli-users) &mdash; The [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
-- **<Constant name="core" /> users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on dbt Cloud users, dbt Core users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the dbt Semantic Layer, you need to have a [Team or Enterprise account](https://www.getdbt.com/).
+- **<Constant name="core" /> users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on <Constant name="cloud" /> users, <Constant name="core" /> users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the <Constant name="semantic_layer" />, you need to have a [Team or Enterprise account](https://www.getdbt.com/).
 
 Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
@@ -24,10 +24,10 @@ Refer to the following steps to get started:
 
 1. Install the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) (if you haven't already). Then, navigate to your dbt project directory.
 2. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
-3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in <Constant name="cloud" />, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
 :::tip Run dbt parse to reflect metric changes
-When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 :::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
