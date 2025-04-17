@@ -30,8 +30,6 @@ Depending on your plan, use these steps to integrate GitLab in <Constant name="c
 - the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
 - the Enterprise plan, jump ahead to these [instructions](#for-the-dbt-cloud-enterprise-tier).
 
-
-
 ## For dbt Cloud Developer and Team tiers
 
 To connect your GitLab account:
