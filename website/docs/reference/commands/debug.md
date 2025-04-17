@@ -203,7 +203,7 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in <Constant name="cloud_ide" /> and <Constant name="core" /> CLI
+                Available in dbt Cloud IDE and dbt Core CLI
 
  --config-dir          
                 Print a system-specific command to access
