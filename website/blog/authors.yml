@@ -47,6 +47,13 @@ benoit_perigaud:
     linkedin: benoit-perigaud
   name: Benoit Perigaud
   page: true 
+brian_jan:
+  image_url: /img/blog/authors/brian-jan.jpeg
+  title: Lead Cloud Onboarding Architect
+  socials:
+    linkedin: brian-jan-3990a723
+  name: Brian Jan
+  page: true
 brittany_krauth:
   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
   image_url: /img/blog/authors/brittany-krauth.png
