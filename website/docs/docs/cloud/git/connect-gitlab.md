@@ -11,21 +11,26 @@ Connecting your GitLab account to <Constant name="cloud" /> provides convenience
 - Carry GitLab user permissions through to <Constant name="cloud" /> or <Constant name="cloud" /> CLI's git actions.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
-:::info
-There's a limitation with GitLab integration on Team plan accounts. Push rules aren't an option. Only the person who connected the repository in dbt Cloud can commit changes and it's because Team plan accounts have just one deploy token and it's tied to that one user. At the moment, only Enterprise customers can have this capability enabled in their repository since there isn't a deploy token tied to a user.
+### Limitations
 
-:::
+Because <Constant name="cloud" /> Team plans use a single GitLab deploy token that's tied to the user who connected the repo, they are limited in the following ways when using GitLab:
+* Push rules aren't supported
+* Only the user who originally connected the repository can commit changes
+
+To enable multi-user commit access, you’ll need an Enterprise plan, which supports deploy tokens that aren't tied to a specific user.
 
 :::info
 When configuring the repository in <Constant name="cloud" />, GitLab automatically:
-- Registers a webhook, which triggers pipeline jobs in <Constant name="cloud" />.
+- Registers a webhook that triggers pipeline jobs in <Constant name="cloud" />.
 - Creates a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) in your GitLab repository, which sends the job run status back to GitLab using the <Constant name="cloud" /> API for CI jobs. <Constant name="cloud" /> automatically refreshes this token for you, which means you never have to manually rotate it. Check out the [troubleshooting](#troubleshooting) section for more information.
 
 :::
 
-The steps to integrate GitLab in <Constant name="cloud" /> depend on your plan. If you are on:
+Depending on your plan, use these steps to integrate GitLab in <Constant name="cloud" />:
 - the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
 - the Enterprise plan, jump ahead to these [instructions](#for-the-dbt-cloud-enterprise-tier).
+
+
 
 ## For dbt Cloud Developer and Team tiers
 
