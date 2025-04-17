@@ -50,4 +50,4 @@ This type of validation checks to see if the semantic definitions in your semant
 * Underlying tables for data sources exist
 * Generated SQL for metrics will execute
 
-You can run semantic validations (against your semantic layer) in a CI job to guarantee any code changes made to <Constant name="dbt" /> models don't break these metrics. For more information, refer to [semantic validation in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci).
+You can run semantic validations (against your semantic layer) in a CI job to guarantee any code changes made to dbt models don't break these metrics. For more information, refer to [semantic validation in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci).

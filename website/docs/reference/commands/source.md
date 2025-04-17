@@ -16,7 +16,7 @@ You can also use [source freshness commands](/reference/commands/source#source-f
 
 ### Configure source freshness
 
-The example below, shows how to configure source freshness in <Constant name="dbt" />. Refer to [Declaring source freshness](/docs/build/sources#declaring-source-freshness) for more information. 
+The example below, shows how to configure source freshness in dbt. Refer to [Declaring source freshness](/docs/build/sources#declaring-source-freshness) for more information. 
 
 <File name='models/<filename>.yml'>
 

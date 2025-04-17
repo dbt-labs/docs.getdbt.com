@@ -7,7 +7,7 @@ const CONSTANTS_MAP = {
   'dbt Cloud': '<Constant name="cloud" />',
   'dbt Core': '<Constant name="core" />',
   'dbt-core': '<Constant name="core" />',
-  'dbt': '<Constant name="dbt" />',
+  'dbt': 'dbt',
   'dbt Cloud CLI': '<Constant name="cloud_cli" />',
   'dbt Explorer': '<Constant name="explorer" />',
   'Explorer': '<Constant name="explorer" />',

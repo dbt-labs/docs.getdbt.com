@@ -10,8 +10,8 @@ dbt will looks for Snapshots in the `snapshot-paths` paths defined in your `dbt_
 
 **Usage:**
 ```
-$ <Constant name="dbt" /> snapshot --help
-usage: <Constant name="dbt" /> snapshot [-h] [--profiles-dir PROFILES_DIR]
+$ dbt snapshot --help
+usage: dbt snapshot [-h] [--profiles-dir PROFILES_DIR]
                                      [--profile PROFILE] [--target TARGET]
                                      [--vars VARS] [--bypass-cache]
                                      [--threads THREADS]

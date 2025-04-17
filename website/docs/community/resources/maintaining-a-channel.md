@@ -6,7 +6,7 @@ description: There are three things you should do to be a good channel maintaine
 
 ## TL;DR
 
-There are three things you should do to be a good channel maintainer in the [<Constant name="dbt" /> Slack community](https://community.getdbt.com/):
+There are three things you should do to be a good channel maintainer in the [dbt Slack community](https://community.getdbt.com/):
 
 - Once you see some folks in the channel, post initial conversation topics to help them get to know each other.
 - Keep an eye out in #introductions for folks who might benefit from your new channel. For example, if someone works in the space or on  the same problems, then direct them to the channel.
@@ -14,7 +14,7 @@ There are three things you should do to be a good channel maintainer in the [<Co
 
 ## Scope of the role
 
-A maintainer can be a <Constant name="dbt" /> Labs employee but does not have to be. *Slack channel maintainer* is philosophically similar to OSS maintainer. At the onset, the channel maintainer will help build up this new space in Slack and stir up conversation during the first few weeks of the channel's existence. They are someone who stays on top of feedback and encourages generative contributions. This is not necessarily someone who is the generator of content and contributions, or answers every question.
+A maintainer can be a dbt Labs employee but does not have to be. *Slack channel maintainer* is philosophically similar to OSS maintainer. At the onset, the channel maintainer will help build up this new space in Slack and stir up conversation during the first few weeks of the channel's existence. They are someone who stays on top of feedback and encourages generative contributions. This is not necessarily someone who is the generator of content and contributions, or answers every question.
 
 ## Initial instructions
 

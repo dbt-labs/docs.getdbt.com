@@ -56,5 +56,5 @@ You’ll most commonly see queries using a DISTINCT statement to:
 
 - Find the counts of distinct fields in a dataset, especially for primary or surrogate keys.
 
-This isn’t an extensive list of where your team may be using DISTINCT throughout your development work, <Constant name="dbt" /> models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using DISTINCT throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
 

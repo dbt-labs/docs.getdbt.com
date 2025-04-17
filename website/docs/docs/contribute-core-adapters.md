@@ -4,7 +4,7 @@ id: "contribute-core-adapters"
 pagination_next: null
 ---
 
-The <Constant name="dbt" /> Community exists to allow analytics practitioners share their knowledge, help others and collectively to drive forward the discipline of analytics engineering. There are opportunities here for everyone to contribute whether you're at the beginning of your analytics engineering journey or you are a seasoned data professional.
+The dbt Community exists to allow analytics practitioners share their knowledge, help others and collectively to drive forward the discipline of analytics engineering. There are opportunities here for everyone to contribute whether you're at the beginning of your analytics engineering journey or you are a seasoned data professional.
 
 This section explains how you can contribute to existing adapters, or create a new adapter.
 

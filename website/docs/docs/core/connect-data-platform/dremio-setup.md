@@ -29,13 +29,13 @@ Follow the repository's link for OS dependencies.
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
-* Ensure that Python 3.9.x or later is installed on the system that you are running <Constant name="dbt" /> on.
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
 
 
 ## Prerequisites for Dremio Software
 
 * Ensure that you are using version 22.0 or later.
-* Ensure that Python 3.9.x or later is installed on the system that you are running <Constant name="dbt" /> on.
+* Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
 
 * If you want to use TLS to secure the connection between dbt and Dremio Software, configure full wire encryption in your Dremio cluster. For instructions, see <a target="_blank" rel="noopener noreferrer" href="https://docs.dremio.com/software/deployment/wire-encryption-config/">Configuring Wire Encryption</a>.
 

@@ -24,7 +24,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to ClickHouse with **dbt-clickhouse**
 
-To connect to ClickHouse from <Constant name="dbt" />, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles)
+To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles)
 to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
 
 <File name='profiles.yml'>
@@ -100,7 +100,7 @@ to your `profiles.yml` file. A ClickHouse profile conforms to the following synt
 
 ## Troubleshooting Connections
 
-If you encounter issues connecting to ClickHouse from <Constant name="dbt" />, make sure the following criteria are met:
+If you encounter issues connecting to ClickHouse from dbt, make sure the following criteria are met:
 
 - The engine must be one of the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
 - You must have adequate permissions to access the database.

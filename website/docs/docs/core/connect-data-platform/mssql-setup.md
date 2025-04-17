@@ -27,7 +27,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta} />
 
 
-:::tip Default settings change in <Constant name="dbt" />-sqlserver v1.2 / ODBC Driver 18
+:::tip Default settings change in dbt-sqlserver v1.2 / ODBC Driver 18
 Microsoft made several changes related to connection encryption. Read more about the changes [below](#connection-encryption).
 :::
 
@@ -407,7 +407,7 @@ your_profile_name:
 
 ### Automatic Microsoft Entra ID principal provisioning for grants
 
-In <Constant name="dbt" /> 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
+In dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
 
 By setting `auto_provision_aad_principals` to `true` in your model configuration, you can automatically provision Microsoft Entra ID principals (users or groups) that don't exist yet.
 

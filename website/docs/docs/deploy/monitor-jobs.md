@@ -17,7 +17,7 @@ This portion of our documentation will go over <Constant name="cloud" />'s vario
 - [Retry jobs](/docs/deploy/retry-jobs) &mdash; Rerun your errored jobs from start or the failure point.  
 - [Run visibility](/docs/deploy/run-visibility) &mdash; View your run history to help identify where improvements can be made to scheduled jobs.  
 - [Source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources.  
-- [Webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your <Constant name="dbt" /> jobs' statuses to other systems.  
+- [Webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your dbt jobs' statuses to other systems.  
 
 
 To set up and add data health tiles to view data freshness and quality checks in your dashboard, refer to [data health tiles](/docs/collaborate/data-tile).

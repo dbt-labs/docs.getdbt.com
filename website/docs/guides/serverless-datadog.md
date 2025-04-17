@@ -39,7 +39,7 @@ Switch to the directory containing the repo you cloned in step 1:
 
     ```shell
     #example: replace with your actual path
-    cd ~/Documents/GitHub/<Constant name="dbt" />-cloud-webhooks-datadog
+    cd ~/Documents/GitHub/dbt-cloud-webhooks-datadog
     ```
 
 Sign up for fly.io:

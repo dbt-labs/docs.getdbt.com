@@ -107,7 +107,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
       The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
 
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -127,7 +127,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
   ```bash
   tar -xf dbt_0.29.9_linux_amd64.tar.gz
-  ./<Constant name="dbt" /> --version
+  ./dbt --version
   ```
 
 :::info
@@ -141,7 +141,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
       The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
       ```
 
-     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global <Constant name="dbt" /> version installed.
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
@@ -174,7 +174,7 @@ Before installing the <Constant name="cloud_cli" />, make sure you have Python i
 
 We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
-1. Create a new virtual environment named "<Constant name="dbt" />-cloud" with this command:
+1. Create a new virtual environment named "dbt-cloud" with this command:
    ```shell
    python3 -m venv dbt-cloud
     ```

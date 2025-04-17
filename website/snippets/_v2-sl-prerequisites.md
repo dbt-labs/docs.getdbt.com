@@ -4,4 +4,4 @@
 -  Create a successful run in the environment where you configure the <Constant name="semantic_layer" />.
    - **Note:** <Constant name="semantic_layer" /> supports querying in Deployment environments; development querying is coming soon.
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the <Constant name="semantic_layer" />.  
-- Note that the <Constant name="semantic_layer" /> doesn't support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.  It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), though SSO is supported for development user accounts.
+- Note that the <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), though SSO is supported for development user accounts.

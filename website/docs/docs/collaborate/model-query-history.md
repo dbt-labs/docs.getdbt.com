@@ -48,7 +48,7 @@ To enable model query history in <Constant name="cloud" />, follow these steps:
    - If the failure is temporary (like a network timeout), <Constant name="cloud" /> may retry.
    - If the issue is permanent (like a missing permissions), <Constant name="cloud" /> disables query history immediately.
    
-   To re-enable it, please reach out to [<Constant name="dbt" /> Support](mailto:support@getdbt.com). 
+   To re-enable it, please reach out to [dbt Support](mailto:support@getdbt.com). 
 
 <DocCarousel slidesPerView={1}>
 

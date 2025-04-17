@@ -25,7 +25,7 @@ communityAward: false
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I've been a <Constant name="dbt" /> user since 2020, but it wasn't until I attended Coalesce 2021 in New Orleans that I truly felt part of the community. The experience inspired me to start a <Constant name="dbt" /> Meetup in Amsterdam.
+I've been a dbt user since 2020, but it wasn't until I attended Coalesce 2021 in New Orleans that I truly felt part of the community. The experience inspired me to start a dbt Meetup in Amsterdam.
 
 I thoroughly enjoy organizing Meetups! They provide a platform to network and learn from some of the most experienced data professionals in your area. Additionally, it's rewarding to see how attendees bond. Often, in our day-to-day jobs, we're surrounded by people who don't fully grasp our work, so having deeper conversations at Meetups is refreshing.
 

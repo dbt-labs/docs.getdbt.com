@@ -9,7 +9,7 @@ id: run-one-snapshot
 To run one snapshot, use the `--select` flag, followed by the name of the snapshot:
 
 ```shell
-$ <Constant name="dbt" /> snapshot --select order_snapshot
+$ dbt snapshot --select order_snapshot
 ```
 
 Check out the [model selection syntax documentation](/reference/node-selection/syntax) for more operators and examples.

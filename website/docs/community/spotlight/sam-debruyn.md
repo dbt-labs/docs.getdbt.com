@@ -36,4 +36,4 @@ dbt doesn't only shine when you're using it, but also under the hood. dbt's code
 
 ## Anything else interesting you want to tell us?
 
-The <Constant name="dbt" /> community is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.
+The dbt community is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.

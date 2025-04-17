@@ -87,12 +87,12 @@ In this example, the `if model.batch` statement makes sure that the code only ru
 ## Model structure and JSON schema
 
 To view the structure of `models` and their definitions:
-- Refer to [<Constant name="dbt" /> JSON Schema](https://schemas.getdbt.com/) for describing and consuming <Constant name="dbt" /> generated artifacts
-- Select the corresponding manifest version under **Manifest**. For example if you're on <Constant name="dbt" /> v1.8, then you would select Manifest v12
+- Refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts
+- Select the corresponding manifest version under **Manifest**. For example if you're on dbt v1.8, then you would select Manifest v12
   * The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, refer to [Manifest](/reference/artifacts/manifest-json) and select the dbt version on the top navigation (such as `v1.5`). This will help you find out which tags are associated with your model.
 - Then go to `nodes` --> Select Additional properties --> `CompiledModelNode` or view other definitions/objects.
 
-Use the following table to understand how the versioning pattern works and match the Manifest version with the <Constant name="dbt" /> version:
+Use the following table to understand how the versioning pattern works and match the Manifest version with the dbt version:
 
 import ManifestVersions from '/snippets/_manifest-versions.md';
 
@@ -100,4 +100,4 @@ import ManifestVersions from '/snippets/_manifest-versions.md';
 
 ## Related docs
 
-- [<Constant name="dbt" /> JSON Schema](https://schemas.getdbt.com/)
+- [dbt JSON Schema](https://schemas.getdbt.com/)

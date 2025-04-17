@@ -15,7 +15,7 @@ name: string
 ## Definition
 **Required configuration**
 
-The name of a <Constant name="dbt" /> project. Must be letters, digits and underscores only, and cannot start with a digit.
+The name of a dbt project. Must be letters, digits and underscores only, and cannot start with a digit.
 
 ## Recommendation
 Often an organization has one dbt project, so it is sensible to name a project with your organization's name, in `snake_case`. For example:
@@ -32,7 +32,7 @@ Encountered an error while reading the project:
   ERROR: Runtime Error
   at path ['name']: 'jaffle-shop' does not match '^[^\\d\\W]\\w*$'
 Runtime Error
-  Could not run <Constant name="dbt" />
+  Could not run dbt
 ```
 
 This project has:

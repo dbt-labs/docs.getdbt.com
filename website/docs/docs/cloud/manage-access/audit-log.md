@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: "docs/cloud/manage-access/about-user-access"
 ---
 
-To review actions performed by people in your organization, <Constant name="dbt" /> provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
+To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
 You must be an **Account Admin** or an **Account Viewer** to access the audit log and this feature is only available on Enterprise plans.
 
@@ -24,7 +24,7 @@ To access the audit log, click on your account name in the left side menu and se
 
 ## Understanding the audit log
 
-On the audit log page, you will see a list of various events and their associated event data. Each of these events show the following information in <Constant name="dbt" />:
+On the audit log page, you will see a list of various events and their associated event data. Each of these events show the following information in dbt:
 
 * **Event name**: Action that was triggered
 * **Agent**: User who triggered that action/event

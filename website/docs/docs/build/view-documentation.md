@@ -4,7 +4,7 @@ description: "Learn how robust documentation for your dbt models helps stakehold
 id: "view-documentation"
 ---
 
-<Constant name="dbt" /> provides intuitive and scalable tools for viewing your <Constant name="dbt" /> documentation. Detailed documentation is essential for your developers and other stakeholders to gain shared context for your <Constant name="dbt" /> project.
+dbt provides intuitive and scalable tools for viewing your dbt documentation. Detailed documentation is essential for your developers and other stakeholders to gain shared context for your dbt project.
 
 You can view documentation in two complementary ways, depending on your needs:
 
@@ -49,7 +49,7 @@ dbt Docs provides valuable insights into your <Constant name="core" /> or <Const
 
 Here, you can see a representation of the project structure, a markdown description for a model, and a list of all of the columns (with documentation) in the model.
 
-From the <Constant name="dbt" /> Docs page, click the green button in the bottom-right corner of the webpage to expand a "mini-map" of your DAG. This pane displays the immediate parents and children of the model that you're exploring.
+From the dbt Docs page, click the green button in the bottom-right corner of the webpage to expand a "mini-map" of your DAG. This pane displays the immediate parents and children of the model that you're exploring.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
@@ -75,7 +75,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs).
 
 ### dbt Docs
-<Constant name="dbt" /> Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
+dbt Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)

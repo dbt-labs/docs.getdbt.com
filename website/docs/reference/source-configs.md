@@ -157,7 +157,7 @@ You can disable sources imported from a package to prevent them from rendering i
 
 ### Examples
 
-The following examples show how to configure sources in your <Constant name="dbt" /> project.
+The following examples show how to configure sources in your dbt project.
 
 &mdash; [Disable all sources imported from a package](#disable-all-sources-imported-from-a-package) <br />
 &mdash; [Conditionally enable a single source](#conditionally-enable-a-single-source) <br />

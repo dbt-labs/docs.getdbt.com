@@ -27,7 +27,7 @@ Let’s take a look at a practical example using the SUM function below.
 
 ### SUM example
 
-The following example is querying from a sample dataset created by <Constant name="dbt" /> Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
 
 ```sql
 select
@@ -55,8 +55,8 @@ All modern data warehouses support the ability to use the SUM function (and foll
 We most commonly see queries using SUM to:
 
 - Calculate the cumulative sum of a metric across a customer/user id using a CASE WHEN statement (ex. `sum(case when order_array is not null then 1 else 0 end) as count_orders`)
-- Create [<Constant name="dbt" /> metrics](/docs/build/build-metrics-intro) for key business values, such as LTV
+- Create [dbt metrics](/docs/build/build-metrics-intro) for key business values, such as LTV
 - Calculate the total of a field across a dimension (ex. total session time, total time spent per ticket) that you typically use in `fct_` or `dim_` models
 - Summing clicks, spend, impressions, and other key ad reporting metrics in tables from ad platforms
 
-This isn’t an extensive list of where your team may be using SUM throughout your development work, <Constant name="dbt" /> models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using SUM throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

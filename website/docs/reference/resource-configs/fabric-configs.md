@@ -101,5 +101,5 @@ Not supported at this time.
 
 ## dbt-utils
 
-Not supported at this time. However, <Constant name="dbt" />-fabric offers some <Constant name="dbt" />-utils macros. Please check out the [tsql-utils package](https://github.com/dbt-msft/tsql-utils).
+Not supported at this time. However, dbt-fabric offers some dbt-utils macros. Please check out the [tsql-utils package](https://github.com/dbt-msft/tsql-utils).
 

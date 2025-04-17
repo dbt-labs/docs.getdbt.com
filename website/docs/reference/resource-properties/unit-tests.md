@@ -47,11 +47,11 @@ unit_tests:
       # either define rows inline of rows or name of fixture
       rows: {dictionary} | <string>
       fixture: <fixture-name> # sql or csv 
-    overrides: # optional: configuration for the <Constant name="dbt" /> execution environment
+    overrides: # optional: configuration for the dbt execution environment
       macros:
         is_incremental: true | false
         dbt_utils.current_timestamp: <string>
-        # ... any other jinja function from https://docs.getdbt.com/reference/<Constant name="dbt" />-jinja-functions
+        # ... any other jinja function from https://docs.getdbt.com/reference/dbt-jinja-functions
         # ... any other context property
       vars: {dictionary}
       env_vars: {dictionary}

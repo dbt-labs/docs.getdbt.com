@@ -14,7 +14,7 @@ description: "Model contracts define a set of parameters validated during transf
 
 Defining a dbt model is as easy as writing a SQL `select` statement. Your query naturally produces a dataset with columns of names and types based on the columns you select and the transformations you apply.
 
-While this is ideal for quick and iterative development, for some models, constantly changing the shape of its returned dataset poses a risk when other people and processes are querying that model. It's better to define a set of upfront "guarantees" that define the shape of your model. We call this set of guarantees a "contract." While building your model, <Constant name="dbt" /> will verify that your model's transformation will produce a dataset matching up with its contract, or it will fail to build.
+While this is ideal for quick and iterative development, for some models, constantly changing the shape of its returned dataset poses a risk when other people and processes are querying that model. It's better to define a set of upfront "guarantees" that define the shape of your model. We call this set of guarantees a "contract." While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract, or it will fail to build.
 
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
 
@@ -87,9 +87,9 @@ models:
 
 </File>
 
-When building a model with a defined contract, <Constant name="dbt" /> will do two things differently:
-1. <Constant name="dbt" /> will run a "preflight" check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined. This check is agnostic to the order of columns specified in your model (SQL) or YAML spec.
-2. <Constant name="dbt" /> will include the column names, data types, and constraints in the DDL statements it submits to the data platform, which will be enforced while building or updating the model's table, and order the columns per the contract instead of your <Constant name="dbt" /> model.
+When building a model with a defined contract, dbt will do two things differently:
+1. dbt will run a "preflight" check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined. This check is agnostic to the order of columns specified in your model (SQL) or YAML spec.
+2. dbt will include the column names, data types, and constraints in the DDL statements it submits to the data platform, which will be enforced while building or updating the model's table, and order the columns per the contract instead of your dbt model.
 
 ## Platform constraint support
 
@@ -192,8 +192,8 @@ Currently, `not_null` and `check` constraints are enforced only after a model is
 ### Which models should have contracts?
 
 Any model meeting the criteria described above _can_ define a contract. We recommend defining contracts for ["public" models](model-access) that are being relied on downstream.
-- Inside of <Constant name="dbt" />: Shared with other groups, other teams, and [other <Constant name="dbt" /> projects](/best-practices/how-we-mesh/mesh-1-intro).
-- Outside of <Constant name="dbt" />: Reports, dashboards, or other systems & processes that expect this model to have a predictable structure. You might reflect these downstream uses with [exposures](/docs/build/exposures).
+- Inside of dbt: Shared with other groups, other teams, and [other dbt projects](/best-practices/how-we-mesh/mesh-1-intro).
+- Outside of dbt: Reports, dashboards, or other systems & processes that expect this model to have a predictable structure. You might reflect these downstream uses with [exposures](/docs/build/exposures).
 
 ### How are contracts different from tests?
 
@@ -210,14 +210,14 @@ In some cases, you can replace a data test with its equivalent constraint. This 
 
 ### Do I need to define every column for a contract?
 
-Currently, <Constant name="dbt" /> contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
+Currently, dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
 
 At the same time, for models with many columns, we understand that this can mean a _lot_ of yaml. We are investigating the feasibility of supporting "inferred" contracts. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. This isn't the same as a "partial" contract, because all columns in the model are still checked at runtime, and matched up with what's defined _explicitly_ in your yaml contract or _implicitly_ with the comparison state. If you're interested in "inferred" contract, please upvote or comment on [<Constant name="core" />#7432](https://github.com/dbt-labs/dbt-core/issues/7432).
 
 
 ### How are breaking changes handled?
 
-When comparing to a previous project state, <Constant name="dbt" /> will look for breaking changes that could impact downstream consumers. If breaking changes are detected, <Constant name="dbt" /> will present a contract error. 
+When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
 
 import BreakingChanges from '/snippets/_versions-contracts.md';
 

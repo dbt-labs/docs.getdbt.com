@@ -19,7 +19,7 @@ The model <Term id="materialization">materializations</Term> you're familiar wit
 
 :::caution 
 
-This is an advanced feature of <Constant name="dbt" />. Let us know if you need a hand! We're always happy to  [chat](http://community.getdbt.com/).
+This is an advanced feature of dbt. Let us know if you need a hand! We're always happy to  [chat](http://community.getdbt.com/).
 
 :::
 
@@ -54,13 +54,13 @@ Materializations can be given a name, and they can be tied to a specific adapter
 
 :::info 
 
-<Constant name="dbt" />'s ability to dynamically pick the correct materialization based on the active database target is called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). This feature unlocks a whole world of cross-database compatibility features -- if you're interested in this, please let us know on Slack!
+dbt's ability to dynamically pick the correct materialization based on the active database target is called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). This feature unlocks a whole world of cross-database compatibility features -- if you're interested in this, please let us know on Slack!
 
 :::
 
 ### Anatomy of a materialization
 
-Materializations are responsible for taking a <Constant name="dbt" /> model sql statement and turning it into a transformed dataset in a database. As such, materializations generally take the following shape:
+Materializations are responsible for taking a dbt model sql statement and turning it into a transformed dataset in a database. As such, materializations generally take the following shape:
 
 1. Prepare the database for the new model
 2. Run pre-hooks
@@ -149,7 +149,7 @@ Materializations should [return](/reference/dbt-jinja-functions/return) the list
 
 </File>
 
-If a materialization solely creates a single relation, then returning that relation at the end of the materialization is sufficient to synchronize the <Constant name="dbt" /> Relation cache. If the materialization *renames* or *drops* Relations other than the relation returned by the materialization, then additional work is required to keep the cache in sync with the database.
+If a materialization solely creates a single relation, then returning that relation at the end of the materialization is sufficient to synchronize the dbt Relation cache. If the materialization *renames* or *drops* Relations other than the relation returned by the materialization, then additional work is required to keep the cache in sync with the database.
 
 To explicitly remove a relation from the cache, use [adapter.drop_relation](/reference/dbt-jinja-functions/adapter). To explicitly rename a relation in the cache, use [adapter.rename_relation](/reference/dbt-jinja-functions/adapter). Calling these methods is preferable to executing the corresponding SQL directly, as they will mutate the cache as required. If you do need to execute the SQL to drop or rename relations directly, use the `adapter.cache_dropped` and `adapter.cache_renamed` methods to synchronize the cache.
 
@@ -172,7 +172,7 @@ For more information on the `config` dbt Jinja function, see the [config](/refer
 
 ## Materialization precedence
 
-<Constant name="dbt" /> will pick the materialization macro in the following order (lower takes priority):
+dbt will pick the materialization macro in the following order (lower takes priority):
 
 1. global project - default
 2. global project - plugin specific

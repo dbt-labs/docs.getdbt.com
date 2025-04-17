@@ -113,7 +113,7 @@ grant all on database analytics to role transformer;
 ```
 7. Let reporter read the transformed data
 
-A previous version of this article recommended this be implemented through hooks in <Constant name="dbt" />, but this way lets you get away with a one-off statement.
+A previous version of this article recommended this be implemented through hooks in dbt, but this way lets you get away with a one-off statement.
 ```
 grant usage on database analytics to role reporter;
 grant usage on future schemas in database analytics to role reporter;

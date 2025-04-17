@@ -20,9 +20,9 @@ hide_table_of_contents: true
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the <Constant name="dbt" /> community late January 2022, while setting up Spenmo's first <Constant name="dbt" /> project. I was completely new to <Constant name="dbt" />, and relied heavily on the #advice-<Constant name="dbt" />-help channel in <Constant name="dbt" /> Slack whenever I got stuck. I have learnt so much from reading discussions in other channels as well (e.g. #leading-data-teams, #advice-mock-interviews, #db-snowflake, #tools-holistics).
+I joined the dbt community late January 2022, while setting up Spenmo's first dbt project. I was completely new to dbt, and relied heavily on the #advice-dbt-help channel in dbt Slack whenever I got stuck. I have learnt so much from reading discussions in other channels as well (e.g. #leading-data-teams, #advice-mock-interviews, #db-snowflake, #tools-holistics).
 
-The <Constant name="dbt" /> community also helped me expand my professional network, where I met so many amazing individuals! It all started with #local-singapore which was created by community member Jolanda Zwagemaker sometime in April 2022. We organised dinners to connect with one another, which eventually led to an opportunity to run Singapore <Constant name="dbt" /> Meetup (HUGE thank you to <Constant name="dbt" />) - it is heartwarming to see connections forged between many attendees of the meetup, where we also learn from one another. It really does feel like a community!
+The dbt community also helped me expand my professional network, where I met so many amazing individuals! It all started with #local-singapore which was created by community member Jolanda Zwagemaker sometime in April 2022. We organised dinners to connect with one another, which eventually led to an opportunity to run Singapore dbt Meetup (HUGE thank you to dbt) - it is heartwarming to see connections forged between many attendees of the meetup, where we also learn from one another. It really does feel like a community!
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -38,4 +38,4 @@ I definitely have so much more to learn as an individual, but I hope to share so
 
 ## Anything else interesting you want to tell us?
 
-Thank you <Constant name="dbt" /> for enabling us to run meetups! It has been critical for ensuring a great experience for the Singapore community. Also a huge shoutout to Amada, the Global Community Development Lead, for always being super helpful and supportive despite the 12-hour time difference!
+Thank you dbt for enabling us to run meetups! It has been critical for ensuring a great experience for the Singapore community. Also a huge shoutout to Amada, the Global Community Development Lead, for always being super helpful and supportive despite the 12-hour time difference!

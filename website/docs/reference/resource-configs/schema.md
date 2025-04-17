@@ -137,7 +137,7 @@ For users on dbt Cloud v1.8 or earlier, use the [`target_schema` config](/refere
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
-The standard behavior of <Constant name="dbt" /> is:
+The standard behavior of dbt is:
 * If a custom schema is _not_ specified, the schema of the relation is the target schema (`{{ target.schema }}`).
 * If a custom schema is specified, by default, the schema of the relation is `{{ target.schema }}_{{ schema }}`.
 

@@ -19,8 +19,8 @@ They could also be used to:
 
 ### When are artifacts produced? <Lifecycle status="team,enterprise"/>
 
-Most <Constant name="dbt" /> commands (and corresponding RPC methods) produce artifacts:
-- [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your <Constant name="dbt" /> project is parsed
+Most dbt commands (and corresponding RPC methods) produce artifacts:
+- [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
@@ -51,7 +51,7 @@ In the manifest, the `metadata` may also include:
 
 #### Notes:
 
-- The structure of <Constant name="dbt" /> artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at [schemas.getdbt.com](https://schemas.getdbt.com/).
+- The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at [schemas.getdbt.com](https://schemas.getdbt.com/).
 - Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.
 
 ## Related docs

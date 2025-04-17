@@ -31,15 +31,15 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 
 ```zsh
 # odbc connections
-$ python -m pip install "<Constant name="dbt" />-spark[ODBC]"
+$ python -m pip install "dbt-spark[ODBC]"
 
 # thrift or http connections
-$ python -m pip install "<Constant name="dbt" />-spark[PyHive]"
+$ python -m pip install "dbt-spark[PyHive]"
 ```
 
 ```zsh
 # session connections
-$ python -m pip install "<Constant name="dbt" />-spark[session]"
+$ python -m pip install "dbt-spark[session]"
 ```
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
@@ -50,7 +50,7 @@ $ python -m pip install "<Constant name="dbt" />-spark[session]"
 
 ## Connection methods
 
-<Constant name="dbt" />-spark can connect to Spark clusters by four different methods:
+dbt-spark can connect to Spark clusters by four different methods:
 
 - [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
 - [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
@@ -156,7 +156,7 @@ your_profile_name:
 
 Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
-and <Constant name="dbt" /> will periodically retry the connection.
+and dbt will periodically retry the connection.
 
 ### Session
 
@@ -185,7 +185,7 @@ your_profile_name:
 
 Intermittent errors can crop up unexpectedly while running queries against Apache Spark. If `retry_all` is enabled, dbt-spark will naively retry any query that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding.
 
-For instance, this will instruct <Constant name="dbt" /> to retry all failed queries up to 3 times, with a 5 second delay between each retry:
+For instance, this will instruct dbt to retry all failed queries up to 3 times, with a 5 second delay between each retry:
 
 <File name='~/.dbt/profiles.yml'>
 

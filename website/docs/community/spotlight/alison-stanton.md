@@ -23,38 +23,38 @@ communityAwardYear: 2023
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the <Constant name="dbt" /> community when I joined an employer in mid-2020. To summarize the important things that <Constant name="dbt" /> has given me: it allowed me to focus on the next set of data challenges instead of staying in toil. Data folks joke that we're plumbers, but we're digital plumbers and that distinction should enable us to be DRY. That means not only writing DRY code like <Constant name="dbt" /> allows, but also having tooling automation to DRY up repetitive tasks like <Constant name="dbt" /> provides.
+I joined the dbt community when I joined an employer in mid-2020. To summarize the important things that dbt has given me: it allowed me to focus on the next set of data challenges instead of staying in toil. Data folks joke that we're plumbers, but we're digital plumbers and that distinction should enable us to be DRY. That means not only writing DRY code like dbt allows, but also having tooling automation to DRY up repetitive tasks like dbt provides.
 
-<Constant name="dbt" />'s existence flipped the experience of data testing on its head for me. I went from a)years of instigating tech discussions on how to systematize data quality checks and b) building my own SQL tests and design patterns, to having built-in mechanisms for data testing.
+dbt's existence flipped the experience of data testing on its head for me. I went from a)years of instigating tech discussions on how to systematize data quality checks and b) building my own SQL tests and design patterns, to having built-in mechanisms for data testing.
 
-<Constant name="dbt" /> and the <Constant name="dbt" /> community materials are assets I can use in order to provide validation for things I have, do, and will say about data. Having outside voices to point to when requesting investment in data up-front - to avoid problems later - is an under-appreciated tool for data leader's toolboxes.
+dbt and the dbt community materials are assets I can use in order to provide validation for things I have, do, and will say about data. Having outside voices to point to when requesting investment in data up-front - to avoid problems later - is an under-appreciated tool for data leader's toolboxes.
 
-<Constant name="dbt" />'s community has given me access to both a) high-quality, seasoned SMEs in my field to learn from and b) newer folks I can help. Both are gifts that I cherish.
+dbt's community has given me access to both a) high-quality, seasoned SMEs in my field to learn from and b) newer folks I can help. Both are gifts that I cherish.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 I want to be when I grow up:
 
-- MJ, who was the first person to ever say "data build tool" to me. If I'd listened to her then I could have been part of the <Constant name="dbt" /> community years sooner.
+- MJ, who was the first person to ever say "data build tool" to me. If I'd listened to her then I could have been part of the dbt community years sooner.
 
 - Christine Dixon who presented <a href="https://www.youtube.com/watch?v=vD6IrGtxNAM" rel="noopener noreferrer" target="_blank">"Could You Defend Your Data in Court?"</a> at Coalesce 2023. In your entire data career, that is the most important piece of education you'll get.
 
-- The <Constant name="dbt" /> community team in general. Hands-down the most important work they do is the <Constant name="dbt" /> Slack community, which gives me and others the accessibility we need to participate. Gwen Windflower (Winnie) for her extraordinary ability to bridge technical nuance with business needs on-the-fly. Dave Connors for being the first voice for "a node is a node is a node". Joel Labes for creating the ability to emoji-react with :sparkles: to post to the #best-of-slack channel. And so on. The decision to foster a space for data instead of just for their product because that enhances their product. The extremely impressive ability to maintain a problem-solving-is-cool, participate-as-you-can, chorus-of-voices, international, not-only-cis-men, and we're-all-in-this-together community.
+- The dbt community team in general. Hands-down the most important work they do is the dbt Slack community, which gives me and others the accessibility we need to participate. Gwen Windflower (Winnie) for her extraordinary ability to bridge technical nuance with business needs on-the-fly. Dave Connors for being the first voice for "a node is a node is a node". Joel Labes for creating the ability to emoji-react with :sparkles: to post to the #best-of-slack channel. And so on. The decision to foster a space for data instead of just for their product because that enhances their product. The extremely impressive ability to maintain a problem-solving-is-cool, participate-as-you-can, chorus-of-voices, international, not-only-cis-men, and we're-all-in-this-together community.
 
-- Other (all?) <Constant name="dbt" /> labs employees who engage with the community, instead of having a false separation with it &mdash; like most software companies. Welcoming feedback, listening to it, and actioning or filtering it out (ex. Mirna Wong, account reps). Thinking holistically about the eco-system, not just one feature at a time (ex. Anders). Responsiveness and ability to translate diverse items into technical clarity and focused actions (ex. Doug Beatty, the <Constant name="dbt" /> support team). I've been in software and open source and online communities for a long time - these are rare things we should not take for granted.
+- Other (all?) dbt labs employees who engage with the community, instead of having a false separation with it &mdash; like most software companies. Welcoming feedback, listening to it, and actioning or filtering it out (ex. Mirna Wong, account reps). Thinking holistically about the eco-system, not just one feature at a time (ex. Anders). Responsiveness and ability to translate diverse items into technical clarity and focused actions (ex. Doug Beatty, the dbt support team). I've been in software and open source and online communities for a long time - these are rare things we should not take for granted.
 
 - Josh Devlin for prolificness that demonstrates expertise and dedication to helping.
 
-- The maintainers of <Constant name="dbt" /> packages like <Constant name="dbt" />-utils, <Constant name="dbt" />-expectations, <Constant name="dbt" />-date, etc.
+- The maintainers of dbt packages like dbt-utils, dbt-expectations, dbt-date, etc.
 
 - Everyone who gets over their fear to ask a question, propose an answer that may not work, or otherwise take a risk by sharing their voice.
 
-I hope I can support my employer my professional development and my <Constant name="dbt" /> community through the following:
+I hope I can support my employer my professional development and my dbt community through the following:
 
-- Elevate <Constant name="dbt" /> understanding of and support for Enterprise-size company use cases through dialogue, requests, and examples.
+- Elevate dbt understanding of and support for Enterprise-size company use cases through dialogue, requests, and examples.
 - Emphasize rigor with defensive coding and comprehensive testing practices.
 - Improve the onboarding and up-skilling of dbt engineers through feedback and edits on <a href="/">docs.getdbt.com</a>.
-- Contribute to the maintenance of a collaborative and helpful <Constant name="dbt" /> community as the number of <Constant name="dbt" /> practitioners reaches various growth stages and tipping points.
+- Contribute to the maintenance of a collaborative and helpful dbt community as the number of dbt practitioners reaches various growth stages and tipping points.
 - Engage in dialogue. Providing feedback. Champion developer experience as a priority. Be a good open-source citizen on GitHub.
 
 ## What have you learned from community members? What do you hope others can learn from you?
@@ -85,7 +85,7 @@ I also geek out talking about:
 The next things on my agenda to learn about:
 
 - Successes and failures in data literacy work. The best I've found so far is 1:1 interactions and that doesn't scale.
-- How to reduce the amount of time running <Constant name="dbt" /> test takes while maintaining coverage.
+- How to reduce the amount of time running dbt test takes while maintaining coverage.
 Data ethics.
 The things you think are most important by giving them a :sparkles: emoji reaction in Slack.
 

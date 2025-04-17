@@ -45,7 +45,7 @@ Setting a `deprecation_date` works well in conjunction with other [model governa
 
 ### Warning messages
 
-When a project references a model that's slated for deprecation or the deprecation date has passed, a warning is generated. If it's a versioned model, with a newer version available, then the warning says so. This added bit of cross-team communication, from producers to consumers, is an advantage of using <Constant name="dbt" />'s built-in functionality around model versions to facilitate migrations.
+When a project references a model that's slated for deprecation or the deprecation date has passed, a warning is generated. If it's a versioned model, with a newer version available, then the warning says so. This added bit of cross-team communication, from producers to consumers, is an advantage of using dbt's built-in functionality around model versions to facilitate migrations.
 
 Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a mechanism whereby users can promote these warnings to actual runtime errors:
 
@@ -59,7 +59,7 @@ Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a
 
 Example output for an `UpcomingReferenceDeprecation` warning:
 ```
-$ <Constant name="dbt" /> parse
+$ dbt parse
 15:48:14  Running with dbt=1.6.0
 15:48:14  Registered adapter: postgres=1.6.0
 15:48:14  [WARNING]: While compiling 'my_model_ref': Found a reference to my_model, which is slated for deprecation on '2038-01-19T03:14:07-00:00'.
@@ -75,7 +75,7 @@ Additional steps are necessary to save on build-related compute and storage cost
 
 Deprecated models can continue to be built by producers and be selected by consumers until they are [disabled](/reference/resource-configs/enabled) or removed.
 
-Just like it does not automatically [drop relations when models are deleted](/faqs/Models/removing-deleted-models), <Constant name="dbt" /> does not drop relations for deprecated models.
+Just like it does not automatically [drop relations when models are deleted](/faqs/Models/removing-deleted-models), dbt does not drop relations for deprecated models.
 
 Strategies similar to [here](https://discourse.getdbt.com/t/faq-cleaning-up-removed-models-from-your-production-schema/113) or [here](https://discourse.getdbt.com/t/clean-your-warehouse-of-old-and-deprecated-models/1547) can be used to drop relations that have been deprecated and are no longer in use.
 

@@ -150,7 +150,7 @@ Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/d
 ### Caveats
 - <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
 - Run queries/semantic layer commands in the <Constant name="cloud" /> CLI, however running queries/semantic layer commands in the <Constant name="cloud_ide" /> isn’t supported *yet.*
-- <Constant name="semantic_layer" /> doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections. It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
+- <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
 Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 

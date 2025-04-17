@@ -8,7 +8,7 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 
 ## Iceberg table format
 
-The <Constant name="dbt" />-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
+The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
 
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
@@ -42,7 +42,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 
 ### Example configuration
 
-To configure an Iceberg table materialization in <Constant name="dbt" />, refer to the example configuration:
+To configure an Iceberg table materialization in dbt, refer to the example configuration:
 
 <File name='models/<modelname>.sql'>
 
@@ -90,7 +90,7 @@ To maintain best practices,  dbt enforces an input and, by default, writes your 
 
 There are some limitations to the implementation you need to be aware of:
 
--  Using Iceberg tables with <Constant name="dbt" />, the result is that your query is materialized in Iceberg. However, often, <Constant name="dbt" /> creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
+-  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
 - You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
 
 </VersionBlock>
@@ -329,7 +329,7 @@ As with materialized views on most data platforms, there are limitations associa
 
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
-For <Constant name="dbt" /> limitations, these <Constant name="dbt" /> features are not supported:
+For dbt limitations, these dbt features are not supported:
 - [Model contracts](/docs/collaborate/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
@@ -424,7 +424,7 @@ select * from ...
 [Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
-<Constant name="dbt" /> supports setting a default query tag for the duration of its Snowflake connections in
+dbt supports setting a default query tag for the duration of its Snowflake connections in
 [your profile](/docs/core/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
@@ -537,7 +537,7 @@ create or replace table my_database.my_schema.my_table as (
     group by 1
   )
 
-  -- this order by is added by <Constant name="dbt" /> in order to create the
+  -- this order by is added by dbt in order to create the
   -- table in an already-clustered manner.
   order by session_start
 

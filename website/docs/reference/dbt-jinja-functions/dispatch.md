@@ -22,7 +22,7 @@ __Usage__:
 {%- endmacro %}
 ```
 
-<Constant name="dbt" /> uses two criteria when searching for the right candidate macro:
+dbt uses two criteria when searching for the right candidate macro:
 - Adapter prefix
 - Namespace (package)
 
@@ -34,7 +34,7 @@ __Usage__:
 * OtherAdapter: `otheradapter__my_macro`
 * _default:_ `default__my_macro`
 
-If <Constant name="dbt" /> does not find an adapter-specific implementation, it will dispatch to the default implementation.
+If dbt does not find an adapter-specific implementation, it will dispatch to the default implementation.
 
 **Namespace:** Generally, dbt will search for implementations in the root project and internal projects (e.g. `dbt`, `dbt_postgres`). If the `macro_namespace` argument is provided, it instead searches the specified namespace (package) for viable implementations. It is also possible to dynamically route namespace searching by defining a [`dispatch` project config](/reference/project-configs/dispatch-config); see the examples below for details.
 
@@ -171,11 +171,11 @@ You can override global behaviors in different ways for each project that is ins
 
 By combining package-level overrides and `dispatch`, it is possible to achieve three different patterns:
 
-1. **Package always wins** &mdash; As the developer of <Constant name="dbt" /> models in a project that will be deployed elsewhere as a package, You want full control over the macros used to define & materialize my models. Your macros should always take precedence for your models, and there should not be any way to override them.
+1. **Package always wins** &mdash; As the developer of dbt models in a project that will be deployed elsewhere as a package, You want full control over the macros used to define & materialize my models. Your macros should always take precedence for your models, and there should not be any way to override them.
 
     - _Mechanism:_ Each project/package fully overrides the macro by its name, for example, `generate_schema_name` or `create_table_as`. Do not use dispatch.
 
-2. **Conditional application (root project wins)** &mdash; As the maintainer of one <Constant name="dbt" /> project in a mesh of multiple, your team wants conditional application of these rules. When running your project standalone (in development), you want to apply custom behavior; but when installed as a package and deployed alongside several other projects (in production), you want the root-level project's rules to apply.
+2. **Conditional application (root project wins)** &mdash; As the maintainer of one dbt project in a mesh of multiple, your team wants conditional application of these rules. When running your project standalone (in development), you want to apply custom behavior; but when installed as a package and deployed alongside several other projects (in production), you want the root-level project's rules to apply.
 
     - _Mechanism:_ Each package implements its "local" override by registering a candidate for dispatch with an adapter prefix, for example, `default__generate_schema_name` or `default__create_table_as`. The root-level project can then register its own candidate for dispatch (`default__generate_schema_name`), winning the default search order or by explicitly overriding the macro by name (`generate_schema_name`).
 

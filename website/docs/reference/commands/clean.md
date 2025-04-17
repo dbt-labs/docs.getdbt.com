@@ -28,7 +28,7 @@ dbt clean --help
 By default, dbt deletes all the paths within the project directory specified in `clean-targets`.
 
 :::note
-Avoid using paths outside the <Constant name="dbt" /> project; otherwise, you will see an error.
+Avoid using paths outside the dbt project; otherwise, you will see an error.
 :::
   
 

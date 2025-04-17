@@ -13,4 +13,4 @@ If available, the `thread_id` is:
 - available in the compilation context of [`query-comment`](/reference/project-configs/query-comment)
 - included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info)
 - included in the `metadata` dictionary in [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata)
-- included as a label in all BigQuery jobs that <Constant name="dbt" /> originates
+- included as a label in all BigQuery jobs that dbt originates

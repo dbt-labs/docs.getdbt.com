@@ -3,7 +3,7 @@ title: "Syntax overview"
 description: "Node selection syntax enables you to execute dbt commands for specific models and resources."
 ---
 
-<Constant name="dbt" />'s node selection syntax makes it possible to run only specific resources in a given invocation of <Constant name="dbt" />. This selection syntax is used for the following subcommands:
+dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
 
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ dbt run --select "path/to/my_model.sql"  # run a specific model by its path
 
 <TabItem value="subset" label="Examples of subsets of nodes">
 
-<Constant name="dbt" /> supports a shorthand language for defining subsets of nodes. This language uses the following characters:
+dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
 
 - plus operator [(`+`)](/reference/node-selection/graph-operators#the-plus-operator)
 - at operator [(`@`)](/reference/node-selection/graph-operators#the-at-operator)

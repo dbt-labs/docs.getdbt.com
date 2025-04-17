@@ -24,26 +24,26 @@ communityAward: false
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined <Constant name="dbt" />'s Slack at the end of 2021. I often follow <Constant name="dbt" />'s Slack because it offers insights into <Constant name="dbt" /> that I could not have gained on my own.
+I joined dbt's Slack at the end of 2021. I often follow dbt's Slack because it offers insights into dbt that I could not have gained on my own.
 
-I also enjoy presenting my company's findings at the [Tokyo <Constant name="dbt" /> Meetup](https://www.meetup.com/ja-JP/tokyo-dbt-meetup/) and receiving feedback from <Constant name="dbt" /> community members outside my company. Participating in the <Constant name="dbt" /> community frequently sparks ideas on how to enhance my company's data infrastructure.
+I also enjoy presenting my company's findings at the [Tokyo dbt Meetup](https://www.meetup.com/ja-JP/tokyo-dbt-meetup/) and receiving feedback from dbt community members outside my company. Participating in the dbt community frequently sparks ideas on how to enhance my company's data infrastructure.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-Although <Constant name="dbt" /> is already a widely used tool, it is still young and actively being developed. Therefore, there may occasionally be times when there are small bugs, or you might not understand how to use it.
+Although dbt is already a widely used tool, it is still young and actively being developed. Therefore, there may occasionally be times when there are small bugs, or you might not understand how to use it.
 
-In such cases, you can ask questions on the <Constant name="dbt" /> Slack or submit an issue on GitHub. These actions can lead to a direct solution to the problem and often help other community members who are struggling with similar issues—you are not the only one! I have been helped many times by seeing these types of questions from others on <Constant name="dbt" /> Slack and GitHub issues.
+In such cases, you can ask questions on the dbt Slack or submit an issue on GitHub. These actions can lead to a direct solution to the problem and often help other community members who are struggling with similar issues—you are not the only one! I have been helped many times by seeing these types of questions from others on dbt Slack and GitHub issues.
 
 Of course, answering questions and submitting pull requests on GitHub is also a great way to contribute to the community. However, starting with small contributions is perfectly fine. I would like to continue doing these kinds of activities to make the community more active.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-<Constant name="dbt" /> is widely used by various types of businesses, from startups needing fast development to enterprises requiring robust data quality. Different business phases and industries have diverse data requirements.
+dbt is widely used by various types of businesses, from startups needing fast development to enterprises requiring robust data quality. Different business phases and industries have diverse data requirements.
 
-In the <Constant name="dbt" /> community, members actively share best practices and lessons from failures, helping you adapt <Constant name="dbt" /> to your company's needs. Having observed many such use cases, we have learned to deliver value to business users through  dimensional modeling and tools like [AutomateDV](https://automate-dv.readthedocs.io/en/latest/).
+In the dbt community, members actively share best practices and lessons from failures, helping you adapt dbt to your company's needs. Having observed many such use cases, we have learned to deliver value to business users through  dimensional modeling and tools like [AutomateDV](https://automate-dv.readthedocs.io/en/latest/).
 
-I am confident that you can find use cases on <Constant name="dbt" /> Slack that match your company’s business needs, and I encourage you to share the practices and insights you gain from using these tools with the community.
+I am confident that you can find use cases on dbt Slack that match your company’s business needs, and I encourage you to share the practices and insights you gain from using these tools with the community.
 
 ## Anything else interesting you want to tell us?
 
-<Constant name="dbt" /> and the surrounding ecosystem are powerful allies for data engineers and analytics engineers. Let's work together as <Constant name="dbt" /> community members to further enhance these tools and build a better world!
+dbt and the surrounding ecosystem are powerful allies for data engineers and analytics engineers. Let's work together as dbt community members to further enhance these tools and build a better world!

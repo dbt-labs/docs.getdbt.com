@@ -202,7 +202,7 @@ Optionally specify a custom alias for a [model](/docs/build/models), [data test]
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
-The standard behavior of <Constant name="dbt" /> is:
+The standard behavior of dbt is:
 * If a custom alias is _not_ specified, the identifier of the relation is the resource name (i.e. the filename).
 * If a custom alias is specified, the identifier of the relation is the `{{ alias }}` value.
 

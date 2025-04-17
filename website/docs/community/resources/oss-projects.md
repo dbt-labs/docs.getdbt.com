@@ -1,6 +1,6 @@
 # Open source projects
 
-Looking for a good place to get involved contributing code? <Constant name="dbt" /> Labs supports the following OSS repos, organized by the language primarily needed for contribution:
+Looking for a good place to get involved contributing code? dbt Labs supports the following OSS repos, organized by the language primarily needed for contribution:
 
 ## Python
 
@@ -14,12 +14,12 @@ Looking for a good place to get involved contributing code? <Constant name="dbt"
 
 ## dbt
 
-- [<Constant name="dbt" /> Labs' packages](https://hub.getdbt.com/dbt-labs/) - the <Constant name="dbt" /> pacakges created and supported by <Constant name="dbt" /> Labs. Packages are just <Constant name="dbt" /> projects, so if you know the SQL, Jinja, and YAML necessary to work in <Constant name="dbt" />, you can contribute to packages.
+- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt pacakges created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
 
 ## YAML and JSON Config
 
-- [<Constant name="dbt" />-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) - powering completion and linting for YAML configuration in <Constant name="dbt" /> projects.
+- [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) - powering completion and linting for YAML configuration in dbt projects.
 
 ## Shell
 
-- [<Constant name="dbt" />-completion.bash](https://github.com/dbt-labs/dbt-completion.bash) - provides shell completion of CLI commands and selectors such as models and tests for bash and zsh.
+- [dbt-completion.bash](https://github.com/dbt-labs/dbt-completion.bash) - provides shell completion of CLI commands and selectors such as models and tests for bash and zsh.

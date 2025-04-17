@@ -23,9 +23,9 @@ communityAward: false
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the <Constant name="dbt" /> community a few years back, and if you've seen me speak you'll know that discovering <Constant name="dbt" /> was a very "lightbulb on" moment for me as a data analyst in a past life. Making the data transformation process more visible and accessible to less technical backgrounds made a lot of sense to me, data analysts understand best how to derive value from your organization's data!
+I joined the dbt community a few years back, and if you've seen me speak you'll know that discovering dbt was a very "lightbulb on" moment for me as a data analyst in a past life. Making the data transformation process more visible and accessible to less technical backgrounds made a lot of sense to me, data analysts understand best how to derive value from your organization's data!
 
-While I do still get to be hands-on with <Constant name="dbt" />, I now spend more of my time thinking about architecting <Constant name="dbt" /> implementations and building analytics teams around it. The beautiful thing about this industry is that we've made great strides in solving our technical problems, the biggest challenges we now face are more socio-technical and process-based which is just as interesting to me!
+While I do still get to be hands-on with dbt, I now spend more of my time thinking about architecting dbt implementations and building analytics teams around it. The beautiful thing about this industry is that we've made great strides in solving our technical problems, the biggest challenges we now face are more socio-technical and process-based which is just as interesting to me!
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -33,4 +33,4 @@ Leadership is a weird thing because you don't really realize you are a leader un
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-In similar thinking to the kind of leadership I try to exemplify, I've found that the more I give to the community, the more I get in return. Contributing to the <Constant name="dbt" /> Community has given me the ability to have numerous conversations with other practitioners about the problems they face in their role and how they've solved them, which in turn makes me better at my job. There is so much we can learn from others, but someone has to start the conversation!
+In similar thinking to the kind of leadership I try to exemplify, I've found that the more I give to the community, the more I get in return. Contributing to the dbt Community has given me the ability to have numerous conversations with other practitioners about the problems they face in their role and how they've solved them, which in turn makes me better at my job. There is so much we can learn from others, but someone has to start the conversation!

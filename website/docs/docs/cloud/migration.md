@@ -9,7 +9,7 @@ pagination_prev: null
 
 dbt Labs is in the process of rolling out a new cell-based architecture for <Constant name="cloud" />. This architecture provides the foundation of <Constant name="cloud" /> for years to come, and brings improved reliability, performance, and consistency to users of <Constant name="cloud" />.
 
-We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. <Constant name="dbt" /> Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
+We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
 Your account will be automatically migrated on or after its scheduled date. However, if you use certain features, you must take action before that date to avoid service disruptions.
 
@@ -19,7 +19,7 @@ Your account will be automatically migrated on or after its scheduled date. Howe
 
 If you're on the <Constant name="cloud" /> Enterprise tier, you can postpone your account migration by up to 45 days. To reschedule your migration, navigate to **Account Settings** → **Migration guide**.
 
-For help, contact the <Constant name="dbt" /> Support Team at [support@getdbt.com](mailto:support@getdbt.com).
+For help, contact the dbt Support Team at [support@getdbt.com](mailto:support@getdbt.com).
 :::
 
 We highly recommended you take these actions:

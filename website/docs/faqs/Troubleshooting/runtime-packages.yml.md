@@ -16,11 +16,11 @@ Runtime Error
   Error encountered in dbt_utils/dbt_project.yml
   ```
 
-Try updating the old version of the dbt_utils package in your packages.yml to the latest version found in the [<Constant name="dbt" /> hub](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/):
+Try updating the old version of the dbt_utils package in your packages.yml to the latest version found in the [dbt hub](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/):
 
 ```shell
 packages:
-- package: <Constant name="dbt" />-labs/dbt_utils
+- package: dbt-labs/dbt_utils
 
 version: xxx
 ```

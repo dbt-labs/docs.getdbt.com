@@ -40,14 +40,14 @@ Data tests return a set of failing records. Generic data tests (f.k.a. schema te
 
 Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the data test returns zero failing rows, it passes, and your assertion has been validated.
 
-There are two ways of defining data tests in <Constant name="dbt" />:
+There are two ways of defining data tests in dbt:
 * A **singular** data test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](/reference/project-configs/test-paths). It's now a data test, and it will be executed by the `dbt test` command.
 * A **generic** data test is a parameterized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic data tests built in, and we think you should use them!
 
-Defining data tests is a great way to confirm that your outputs and inputs are as expected, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic data tests tend to be much more common—they should make up the bulk of your <Constant name="dbt" /> data testing suite. That said, both ways of defining data tests have their time and place.
+Defining data tests is a great way to confirm that your outputs and inputs are as expected, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic data tests tend to be much more common—they should make up the bulk of your dbt data testing suite. That said, both ways of defining data tests have their time and place.
 
 :::tip Creating your first data tests
-If you're new to <Constant name="dbt" />, we recommend that you check out our [quickstart guide](/guides) to build your first <Constant name="dbt" /> project with models and tests.
+If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project with models and tests.
 :::
 
 ## Singular data tests
@@ -149,10 +149,10 @@ You can find more information about these data tests, and additional configurati
 
 ### More generic data tests
 
-Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your <Constant name="dbt" /> project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open-source packages, such as [<Constant name="dbt" />-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [<Constant name="dbt" />-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) &mdash; skip ahead to the docs on [packages](/docs/build/packages) to learn more!
+There are generic tests defined in some open-source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) &mdash; skip ahead to the docs on [packages](/docs/build/packages) to learn more!
 :::
 
 ### Example

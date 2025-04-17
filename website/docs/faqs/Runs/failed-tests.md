@@ -5,7 +5,7 @@ sidebar_label: 'Debug failed tests'
 id: failed-tests
 
 ---
-To debug a failing test, find the SQL that <Constant name="dbt" /> ran by:
+To debug a failing test, find the SQL that dbt ran by:
 
 * <Constant name="cloud" />:
   * Within the test output, click on the failed test, and then select "Details"

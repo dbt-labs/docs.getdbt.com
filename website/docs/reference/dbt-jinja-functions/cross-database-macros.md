@@ -125,7 +125,7 @@ This macro yields the database-specific data type for a `BIGINT`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_bigint() }}
+{{ dbt.type_bigint() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -145,7 +145,7 @@ This macro yields the database-specific data type for a `BOOLEAN`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_boolean() }}
+{{ dbt.type_boolean() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -165,7 +165,7 @@ This macro yields the database-specific data type for a `FLOAT`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_float() }}
+{{ dbt.type_float() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -184,7 +184,7 @@ This macro yields the database-specific data type for an `INT`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_int() }}
+{{ dbt.type_int() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -204,7 +204,7 @@ This macro yields the database-specific data type for a `NUMERIC`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_numeric() }}
+{{ dbt.type_numeric() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -223,7 +223,7 @@ This macro yields the database-specific data type for `TEXT`.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_string() }}
+{{ dbt.type_string() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -242,7 +242,7 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.type_timestamp() }}
+{{ dbt.type_timestamp() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -266,7 +266,7 @@ This macro returns the current date and time for the system. Depending on the ad
 - You can use the `current_timestamp()` macro within your dbt SQL files like this:
 
 ```sql
-{{ <Constant name="dbt" />.current_timestamp() }}
+{{ dbt.current_timestamp() }}
 ```
 **Sample output (PostgreSQL)**
 
@@ -286,7 +286,7 @@ __Args__:
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.except() }}
+{{ dbt.except() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -305,7 +305,7 @@ __Args__:
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.intersect() }}
+{{ dbt.intersect() }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -327,9 +327,9 @@ This macro appends an element to the end of an array and returns the appended ar
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.array_append("array_column", "element_column") }}
-{{ <Constant name="dbt" />.array_append("array_column", "5") }}
-{{ <Constant name="dbt" />.array_append("array_column", "'blue'") }}
+{{ dbt.array_append("array_column", "element_column") }}
+{{ dbt.array_append("array_column", "5") }}
+{{ dbt.array_append("array_column", "'blue'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -351,7 +351,7 @@ This macro returns the concatenation of two arrays.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.array_concat("array_column_1", "array_column_2") }}
+{{ dbt.array_concat("array_column_1", "array_column_2") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -371,10 +371,10 @@ This macro returns an array constructed from a set of inputs.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.array_construct(["column_1", "column_2", "column_3"]) }}
-{{ <Constant name="dbt" />.array_construct([], "integer") }}
-{{ <Constant name="dbt" />.array_construct([1, 2, 3, 4]) }}
-{{ <Constant name="dbt" />.array_construct(["'blue'", "'green'"]) }}
+{{ dbt.array_construct(["column_1", "column_2", "column_3"]) }}
+{{ dbt.array_construct([], "integer") }}
+{{ dbt.array_construct([1, 2, 3, 4]) }}
+{{ dbt.array_construct(["'blue'", "'green'"]) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -398,10 +398,10 @@ This macro combines a list of strings together.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.concat(["column_1", "column_2"]) }}
-{{ <Constant name="dbt" />.concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
-{{ <Constant name="dbt" />.concat(["first_part_column", "'.'" , "second_part_column"]) }}
-{{ <Constant name="dbt" />.concat(["first_part_column", "','" , "second_part_column"]) }}
+{{ dbt.concat(["column_1", "column_2"]) }}
+{{ dbt.concat(["year_column", "'-'" , "month_column", "'-'" , "day_column"]) }}
+{{ dbt.concat(["first_part_column", "'.'" , "second_part_column"]) }}
+{{ dbt.concat(["first_part_column", "','" , "second_part_column"]) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -423,8 +423,8 @@ This macro provides a hash (such as [MD5](https://en.wikipedia.org/wiki/MD5)) of
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.hash("column") }}
-{{ <Constant name="dbt" />.hash("'Pennsylvania'") }}
+{{ dbt.hash("column") }}
+{{ dbt.hash("'Pennsylvania'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -449,7 +449,7 @@ This macro calculates the number of characters in a string.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.length("column") }}
+{{ dbt.length("column") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -471,8 +471,8 @@ This macro searches for the first occurrence of `substring_text` within `string_
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.position("substring_column", "text_column") }}
-{{ <Constant name="dbt" />.position("'-'", "text_column") }}
+{{ dbt.position("substring_column", "text_column") }}
+{{ dbt.position("'-'", "text_column") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -499,8 +499,8 @@ This macro updates a string and replaces all occurrences of one substring with a
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.replace("string_text_column", "old_chars_column", "new_chars_column") }}
-{{ <Constant name="dbt" />.replace("string_text_column", "'-'", "'_'") }}
+{{ dbt.replace("string_text_column", "old_chars_column", "new_chars_column") }}
+{{ dbt.replace("string_text_column", "'-'", "'_'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -530,8 +530,8 @@ This macro returns the N rightmost characters from a string.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.right("string_text_column", "length_column") }}
-{{ <Constant name="dbt" />.right("string_text_column", "3") }}
+{{ dbt.right("string_text_column", "length_column") }}
+{{ dbt.right("string_text_column", "3") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -562,8 +562,8 @@ This macro splits a string of text using the supplied delimiter and returns the 
 When referencing a column, use one pair of quotes. When referencing a string, use single quotes enclosed in double quotes.
 
 ```sql
-{{ <Constant name="dbt" />.split_part(string_text='column_to_split', delimiter_text='delimiter_column', part_number=1) }}
-{{ <Constant name="dbt" />.split_part(string_text="'1|2|3'", delimiter_text="'|'", part_number=1) }}
+{{ dbt.split_part(string_text='column_to_split', delimiter_text='delimiter_column', part_number=1) }}
+{{ dbt.split_part(string_text="'1|2|3'", delimiter_text="'|'", part_number=1) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -596,8 +596,8 @@ To escape quotes for column values, consider a macro like [replace](#replace) or
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.escape_single_quotes("they're") }}
-{{ <Constant name="dbt" />.escape_single_quotes("ain't ain't a word") }}
+{{ dbt.escape_single_quotes("they're") }}
+{{ dbt.escape_single_quotes("ain't ain't a word") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -619,7 +619,7 @@ To cast column values to a string, consider a macro like [safe_cast](#safe_cast)
 **Usage**:
 
 ```sql
-select {{ <Constant name="dbt" />.string_literal("Pennsylvania") }}
+select {{ dbt.string_literal("Pennsylvania") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -640,7 +640,7 @@ This macro returns some value of the expression from the group. The selected val
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.any_value("column_name") }}
+{{ dbt.any_value("column_name") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -659,10 +659,10 @@ This macro returns the logical `OR` of all non-`NULL` expressions -- `true` if a
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.bool_or("boolean_column") }}
-{{ <Constant name="dbt" />.bool_or("integer_column = 3") }}
-{{ <Constant name="dbt" />.bool_or("string_column = 'Pennsylvania'") }}
-{{ <Constant name="dbt" />.bool_or("column1 = column2") }}
+{{ dbt.bool_or("boolean_column") }}
+{{ dbt.bool_or("integer_column = 3") }}
+{{ dbt.bool_or("string_column = 'Pennsylvania'") }}
+{{ dbt.bool_or("column1 = column2") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -689,7 +689,7 @@ This macro returns the concatenated input values from a group of rows separated 
 Note: If there are instances of `delimiter_text` within your `measure`, you cannot include a `limit_num`.
 
 ```sql
-{{ <Constant name="dbt" />.listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
+{{ dbt.listagg(measure="column_to_agg", delimiter_text="','", order_by_clause="order by order_by_column", limit_num=10) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -709,7 +709,7 @@ array_to_string(
 ### cast
 
 **Availability**:
-<Constant name="dbt" /> v1.8 or higher. For more information, select the version from the documentation navigation menu.
+dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
 
 <VersionBlock firstVersion="1.8">
 
@@ -723,9 +723,9 @@ This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_c
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.cast("column_1", api.Column.translate_type("string")) }}
-{{ <Constant name="dbt" />.cast("column_2", api.Column.translate_type("integer")) }}
-{{ <Constant name="dbt" />.cast("'2016-03-09'", api.Column.translate_type("date")) }}
+{{ dbt.cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -748,12 +748,12 @@ This macro casts a boolean value to a string.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.cast_bool_to_text("boolean_column_name") }}
-{{ <Constant name="dbt" />.cast_bool_to_text("false") }}
-{{ <Constant name="dbt" />.cast_bool_to_text("true") }}
-{{ <Constant name="dbt" />.cast_bool_to_text("0 = 1") }}
-{{ <Constant name="dbt" />.cast_bool_to_text("1 = 1") }}
-{{ <Constant name="dbt" />.cast_bool_to_text("null") }}
+{{ dbt.cast_bool_to_text("boolean_column_name") }}
+{{ dbt.cast_bool_to_text("false") }}
+{{ dbt.cast_bool_to_text("true") }}
+{{ dbt.cast_bool_to_text("0 = 1") }}
+{{ dbt.cast_bool_to_text("1 = 1") }}
+{{ dbt.cast_bool_to_text("null") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -795,9 +795,9 @@ For databases that support it, this macro will return `NULL` when the cast fails
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.safe_cast("column_1", api.Column.translate_type("string")) }}
-{{ <Constant name="dbt" />.safe_cast("column_2", api.Column.translate_type("integer")) }}
-{{ <Constant name="dbt" />.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
+{{ dbt.safe_cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.safe_cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.safe_cast("'2016-03-09'", api.Column.translate_type("date")) }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -813,7 +813,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ### date
 
 **Availability**:
-<Constant name="dbt" /> v1.8 or later. For more information, select the version from the documentation navigation menu.
+dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
 
 <VersionBlock firstVersion="1.8">
 
@@ -828,7 +828,7 @@ This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.date(2023, 10, 4) }}
+{{ dbt.date(2023, 10, 4) }}
 ```
 
 **Sample output (PostgreSQL)**:
@@ -851,8 +851,8 @@ This macro adds a time/day interval to the supplied date/timestamp. Note: The `d
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
-{{ <Constant name="dbt" />.dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
+{{ dbt.dateadd(datepart="day", interval=1, from_date_or_timestamp="'2016-03-09'") }}
+{{ dbt.dateadd(datepart="month", interval=-2, from_date_or_timestamp="'2016-03-09'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -874,9 +874,9 @@ This macro calculates the difference between two dates.
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.datediff("column_1", "column_2", "day") }}
-{{ <Constant name="dbt" />.datediff("column", "'2016-03-09'", "month") }}
-{{ <Constant name="dbt" />.datediff("'2016-03-09'", "column", "year") }}
+{{ dbt.datediff("column_1", "column_2", "day") }}
+{{ dbt.datediff("column", "'2016-03-09'", "month") }}
+{{ dbt.datediff("'2016-03-09'", "column", "year") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -901,9 +901,9 @@ This macro truncates / rounds a timestamp to the first instant for the given [da
 **Usage**:
 
 ```sql
-{{ <Constant name="dbt" />.date_trunc("day", "updated_at") }}
-{{ <Constant name="dbt" />.date_trunc("month", "updated_at") }}
-{{ <Constant name="dbt" />.date_trunc("year", "'2016-03-09'") }}
+{{ dbt.date_trunc("day", "updated_at") }}
+{{ dbt.date_trunc("month", "updated_at") }}
+{{ dbt.date_trunc("year", "'2016-03-09'") }}
 ```
 
 **Sample Output (PostgreSQL)**:
@@ -927,8 +927,8 @@ This macro gets the last day for a given date and datepart.
 - This macro currently only supports dateparts of `month` and `quarter`.
 
 ```sql
-{{ <Constant name="dbt" />.last_day("created_at", "month") }}
-{{ <Constant name="dbt" />.last_day("'2016-03-09'", "year") }}
+{{ dbt.last_day("created_at", "month") }}
+{{ dbt.last_day("'2016-03-09'", "year") }}
 ```
 
 **Sample Output (PostgreSQL)**:

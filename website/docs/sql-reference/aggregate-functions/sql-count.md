@@ -25,7 +25,7 @@ Let’s take a look at a practical example using COUNT, DISTINCT, and GROUP BY b
 
 ### COUNT example
 
-The following example is querying from a sample dataset created by <Constant name="dbt" /> Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
 
 ```sql
 select
@@ -61,4 +61,4 @@ We most commonly see queries using COUNT to:
 - Calculate the counts of key business metrics (daily orders, customers created, etc.) in your data models or BI tool.
 - Define [metrics](/docs/build/build-metrics-intro) to aggregate key metrics.
 
-This isn’t an extensive list of where your team may be using COUNT throughout your development work, <Constant name="dbt" /> models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.
+This isn’t an extensive list of where your team may be using COUNT throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

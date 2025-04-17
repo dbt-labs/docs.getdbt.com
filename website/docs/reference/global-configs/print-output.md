@@ -48,7 +48,7 @@ config:
 
 ```text
 dbt --use-colors run
-<Constant name="dbt" /> --no-use-colors run
+dbt --no-use-colors run
 ```
 
 You can set the color preferences for the file logs only within `profiles.yml` or using the `--use-colors-file / --no-use-colors-file` flags.
@@ -64,5 +64,5 @@ config:
 
 ```text
 dbt --use-colors-file run
-<Constant name="dbt" /> --no-use-colors-file run
+dbt --no-use-colors-file run
 ```

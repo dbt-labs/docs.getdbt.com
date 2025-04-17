@@ -304,7 +304,7 @@ An optional configuration for enabling or disabling a resource.
 
 * Default: true
 
-When a resource is disabled, <Constant name="dbt" /> will not consider it as part of your project. Note that this can cause compilation errors.
+When a resource is disabled, dbt will not consider it as part of your project. Note that this can cause compilation errors.
 
 If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](/reference/node-selection/syntax)
 

@@ -21,12 +21,12 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta}/>
 
 
-[CrateDB] is compatible with PostgreSQL, so its <Constant name="dbt" /> adapter strongly depends on
-<Constant name="dbt" />-postgres, documented at [PostgreSQL profile setup].
+[CrateDB] is compatible with PostgreSQL, so its dbt adapter strongly depends on
+dbt-postgres, documented at [PostgreSQL profile setup].
 
 CrateDB targets are configured exactly the same way, see also [PostgreSQL
 configuration], with just a few things to consider which are special to
-CrateDB. Relevant details are outlined at [using <Constant name="dbt" /> with CrateDB],
+CrateDB. Relevant details are outlined at [using dbt with CrateDB],
 which also includes up-to-date information.
 
 
@@ -59,4 +59,4 @@ cratedb_analytics:
 [PostgreSQL configuration]: https://docs.getdbt.com/reference/resource-configs/postgres-configs
 [PostgreSQL profile setup]: https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup
 [`profiles.yml`]: https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml
-[using <Constant name="dbt" /> with CrateDB]: https://cratedb.com/docs/guide/integrate/<Constant name="dbt" />/
+[using dbt with CrateDB]: https://cratedb.com/docs/guide/integrate/dbt/

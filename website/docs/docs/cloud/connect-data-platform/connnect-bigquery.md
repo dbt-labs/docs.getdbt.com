@@ -16,7 +16,7 @@ While the fields in a BigQuery connection can be specified manually, we recommen
 You can provide the JSON keyfile in one of two formats:
 
 - JSON keyfile upload &mdash; Upload the keyfile directly in its normal JSON format.
-- Base64-encoded string &mdash; Provide the keyfile as a base64-encoded string. When you provide a base64-encoded string, <Constant name="dbt" /> decodes it automatically and populates the necessary fields.
+- Base64-encoded string &mdash; Provide the keyfile as a base64-encoded string. When you provide a base64-encoded string, dbt decodes it automatically and populates the necessary fields.
 
 :::
 
