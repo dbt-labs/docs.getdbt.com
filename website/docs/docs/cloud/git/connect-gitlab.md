@@ -12,6 +12,11 @@ Connecting your GitLab account to <Constant name="cloud" /> provides convenience
 - Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
 :::info
+There's a limitation with GitLab integration on Team plan accounts. Push rules aren't an option. Only the person who connected the repository in dbt Cloud can commit changes and it's because Team plan accounts have just one deploy token and it's tied to that one user. At the moment, only Enterprise customers can have this capability enabled in their repository since there isn't a deploy token tied to a user.
+
+:::
+
+:::info
 When configuring the repository in <Constant name="cloud" />, GitLab automatically:
 - Registers a webhook, which triggers pipeline jobs in <Constant name="cloud" />.
 - Creates a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) in your GitLab repository, which sends the job run status back to GitLab using the <Constant name="cloud" /> API for CI jobs. <Constant name="cloud" /> automatically refreshes this token for you, which means you never have to manually rotate it. Check out the [troubleshooting](#troubleshooting) section for more information.
