@@ -11,14 +11,6 @@ Connecting your GitLab account to <Constant name="cloud" /> provides convenience
 - Carry GitLab user permissions through to <Constant name="cloud" /> or <Constant name="cloud" /> CLI's git actions.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
-### Limitations
-
-Because <Constant name="cloud" /> Team plans use a single GitLab deploy token that's tied to the user who connected the repo, they are limited in the following ways when using GitLab:
-* Push rules aren't supported
-* Only the user who originally connected the repository can commit changes
-
-To enable multi-user commit access, you’ll need an Enterprise plan, which supports deploy tokens that aren't tied to a specific user.
-
 :::info
 When configuring the repository in <Constant name="cloud" />, GitLab automatically:
 - Registers a webhook that triggers pipeline jobs in <Constant name="cloud" />.
@@ -31,6 +23,8 @@ Depending on your plan, use these steps to integrate GitLab in <Constant name="c
 - the Enterprise plan, jump ahead to these [instructions](#for-the-dbt-cloud-enterprise-tier).
 
 ## For dbt Cloud Developer and Team tiers
+
+Before you can work with GitLab repositories in <Constant name="cloud" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="cloud" /> to authenticate your actions when interacting with Git repositories. Make sure to read about [limitations](#limitations) of the Team plan before you connect your account.
 
 To connect your GitLab account:
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**. 
@@ -46,6 +40,13 @@ When you click **Link**, you will be redirected to GitLab and prompted to sign i
 
 Once you've accepted, you should be redirected back to <Constant name="cloud" />, and you'll see that your account has been linked to your profile.
 
+### Limitations
+
+Because <Constant name="cloud" /> Team plans use a single GitLab deploy token that's tied to the user who connected the repo, they are limited in the following ways when using GitLab:
+* Push rules aren't supported
+* Only the user who originally connected the repository can commit changes
+
+To enable multi-user commit access, you’ll need an Enterprise plan, which supports deploy tokens that aren't tied to a specific user.
 
 ## For the dbt Cloud Enterprise tier
 
