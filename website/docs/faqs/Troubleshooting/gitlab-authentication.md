@@ -7,7 +7,7 @@ id: gitlab-authentication
 
 If you're seeing a 'GitLab Authentication is out of date' 500 server error page - this usually occurs when the deploy key in the repository settings in both <Constant name="cloud" /> and GitLab do not match. 
 
-No worries - this is a current issue the <Constant name="dbt" /> Labs team is working on and we have a few workarounds for you to try:
+No worries - this is a current issue the dbt Labs team is working on and we have a few workarounds for you to try:
 
 ### 1st Workaround
 

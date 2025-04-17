@@ -109,7 +109,7 @@ lf_grants={
 Consider these limitations and recommendations: 
 
 - `lf_tags` and `lf_tags_columns` configs support only attaching lf tags to corresponding resources.
-- We recommend managing LF Tags permissions somewhere outside <Constant name="dbt" />. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lakeformation-readme.html).
+- We recommend managing LF Tags permissions somewhere outside dbt. For example, [terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions) or [aws cdk](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_lakeformation-readme.html).
 - `data_cell_filters` management can't be automated outside dbt because the filter can't be attached to the table, which doesn't exist. Once you `enable` this config, dbt will set all filters and their permissions during every dbt run. Such an approach keeps the actual state of row-level security configuration after every dbt run and applies changes if they occur: drop, create, and update filters and their permissions.
 - Any tags listed in `lf_inherited_tags` should be strictly inherited from the database level and never overridden at the table and column level.
 - Currently, `dbt-athena` does not differentiate between an inherited tag association and an override it made previously.
@@ -372,7 +372,7 @@ The materialization also supports invalidating hard deletes. For usage details, 
 The following describes how the adapter implements the AWS Lake Formation tag management:
 
 - [Enable](#table-configuration) LF tags management with the `lf_tags_config` parameter. By default, it's disabled. 
-- Once enabled, LF tags are updated on every <Constant name="dbt" /> run.
+- Once enabled, LF tags are updated on every dbt run.
 - First, all lf-tags for columns are removed to avoid inheritance issues.
 - Then, all redundant lf-tags are removed from tables and actual tags from table configs are applied.
 - Finally, lf-tags for columns are applied.
@@ -380,7 +380,7 @@ The following describes how the adapter implements the AWS Lake Formation tag ma
 It's important to understand the following points:
 
 - dbt doesn't manage `lf-tags` for databases
-- <Constant name="dbt" /> doesn't manage Lake Formation permissions
+- dbt doesn't manage Lake Formation permissions
 
 That's why it's important to take care of this yourself or use an automation tool such as terraform and AWS CDK. For more details, refer to:
 
@@ -438,8 +438,8 @@ def model(dbt, session):
 <TabItem value="Simple Spark" >
 
 ```python
-def model(<Constant name="dbt" />, spark_session):
-    <Constant name="dbt" />.config(materialized="table")
+def model(dbt, spark_session):
+    dbt.config(materialized="table")
 
     data = [(1,), (2,), (3,), (4,)]
 
@@ -452,13 +452,13 @@ def model(<Constant name="dbt" />, spark_session):
 <TabItem value="Spark incremental" >
 
 ```python
-def model(<Constant name="dbt" />, spark_session):
-    <Constant name="dbt" />.config(materialized="incremental")
-    df = <Constant name="dbt" />.ref("model")
+def model(dbt, spark_session):
+    dbt.config(materialized="incremental")
+    df = dbt.ref("model")
 
-    if <Constant name="dbt" />.is_incremental:
+    if dbt.is_incremental:
         max_from_this = (
-            f"select max(run_date) from {<Constant name="dbt" />.this.schema}.{<Constant name="dbt" />.this.identifier}"
+            f"select max(run_date) from {dbt.this.schema}.{dbt.this.identifier}"
         )
         df = df.filter(df.run_date >= spark_session.sql(max_from_this).collect()[0][0])
 
@@ -470,8 +470,8 @@ def model(<Constant name="dbt" />, spark_session):
 <TabItem value="Config Spark model">
 
 ```python
-def model(<Constant name="dbt" />, spark_session):
-    <Constant name="dbt" />.config(
+def model(dbt, spark_session):
+    dbt.config(
         materialized="table",
         engine_config={
             "CoordinatorDpuSize": 1,
@@ -499,15 +499,15 @@ def model(<Constant name="dbt" />, spark_session):
 Using imported external python files:
 
 ```python
-def model(<Constant name="dbt" />, spark_session):
-    <Constant name="dbt" />.config(
+def model(dbt, spark_session):
+    dbt.config(
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="num",
     )
     sc = spark_session.sparkContext
-    sc.addPyFile("s3://athena-<Constant name="dbt" />/test/file1.py")
-    sc.addPyFile("s3://athena-<Constant name="dbt" />/test/file2.py")
+    sc.addPyFile("s3://athena-dbt/test/file1.py")
+    sc.addPyFile("s3://athena-dbt/test/file2.py")
 
     def func(iterator):
         from file2 import transform
@@ -538,7 +538,7 @@ def model(<Constant name="dbt" />, spark_session):
 - Incremental models don't fully utilize Spark capabilities. They depend partially on existing SQL-based logic that runs on Trino.
 - Snapshot materializations are not supported.
 - Spark can only reference tables within the same catalog.
-- For tables created outside of the <Constant name="dbt" /> tool, be sure to populate the location field, or <Constant name="dbt" /> will throw an error when creating the table.
+- For tables created outside of the dbt tool, be sure to populate the location field, or dbt will throw an error when creating the table.
 
 
 [pre-installed list]: https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark-preinstalled-python-libraries.html

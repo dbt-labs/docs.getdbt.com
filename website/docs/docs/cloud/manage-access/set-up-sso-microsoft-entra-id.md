@@ -72,7 +72,7 @@ The Azure users and groups you will create in the following steps are mapped to 
 
 ### Adding users to an Enterprise application
 
-Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to <Constant name="dbt" /> with the following steps:
+Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to dbt with the following steps:
 
 8. Navigate back to the [**Default Directory**](https://portal.azure.com/#home) (or **Home**) and click **Enterprise Applications**
 9. Click the name of the application you created earlier

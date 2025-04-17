@@ -17,32 +17,32 @@ recently_updated: true
 
 ## Introduction
 
-You may have already learned how to build <Constant name="dbt" /> models from scratch. But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into <Constant name="dbt" />.
+You may have already learned how to build dbt models from scratch. But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt.
 
-There are two parts to accomplish this: migration and refactoring. In this guide we’re going to learn a process to help us turn legacy SQL code into modular <Constant name="dbt" /> models.
+There are two parts to accomplish this: migration and refactoring. In this guide we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
 
 When migrating and refactoring code, it’s of course important to stay organized. We'll do this by following several steps:
 
-1. Migrate your code 1:1 into <Constant name="dbt" />
-2. Implement <Constant name="dbt" /> sources rather than referencing raw database tables
+1. Migrate your code 1:1 into dbt
+2. Implement dbt sources rather than referencing raw database tables
 3. Choose a refactoring strategy
 4. Implement <Term id="cte">CTE</Term> groupings and cosmetic cleanup
 5. Separate [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) into standardized layers
-6. Audit the output of <Constant name="dbt" /> models vs legacy SQL
+6. Audit the output of dbt models vs legacy SQL
 
 Let's get into it!
 
 :::info More resources
-This guide is excerpted from the new <Constant name="dbt" /> Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://learn.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures, refer to the[Migrate from stored procedures](/guides/migrate-from-stored-procedures) guide.
+This guide is excerpted from the new dbt Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://learn.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures, refer to the[Migrate from stored procedures](/guides/migrate-from-stored-procedures) guide.
 :::
 
 ## Migrate your existing SQL code
 
 <WistiaVideo id="5u67ik9t66" />
 
-Your goal in this initial step is simply to use <Constant name="dbt" /> to run your existing SQL transformation, with as few modifications as possible. This will give you a solid base to work from.
+Your goal in this initial step is simply to use dbt to run your existing SQL transformation, with as few modifications as possible. This will give you a solid base to work from.
 
-While refactoring you'll be **moving around** a lot of logic, but ideally you won't be **changing** the logic. More changes = more auditing work, so if you come across anything you'd like to fix, try your best to card that up for another task after refactoring! We'll save the bulk of our auditing for the end when we've finalized our legacy-to-<Constant name="dbt" /> model restructuring.
+While refactoring you'll be **moving around** a lot of logic, but ideally you won't be **changing** the logic. More changes = more auditing work, so if you come across anything you'd like to fix, try your best to card that up for another task after refactoring! We'll save the bulk of our auditing for the end when we've finalized our legacy-to-dbt model restructuring.
 
 To get going, you'll copy your legacy SQL query into your dbt project, by saving it in a `.sql` file under the `/models` directory of your project.
 
@@ -50,7 +50,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-If this is your first time running <Constant name="dbt" />, you may want to start with the [Introduction to <Constant name="dbt" />](/docs/introduction) and the earlier sections of the [quickstart guide](/guides) before diving into refactoring.
+If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/guides) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
@@ -58,13 +58,13 @@ This will commonly happen if you're migrating from a [stored procedure workflow 
 
 Functions that you were using previously may not exist, or their syntax may shift slightly between SQL dialects.
 
-If you're not migrating data warehouses at the moment, then you can keep your SQL syntax the same. You have access to the exact same SQL dialect inside of <Constant name="dbt" /> that you have querying directly from your warehouse.
+If you're not migrating data warehouses at the moment, then you can keep your SQL syntax the same. You have access to the exact same SQL dialect inside of dbt that you have querying directly from your warehouse.
 
 ## Create sources from table references
 
 <WistiaVideo id="m1a5p32rny" />
 
-To query from your data warehouse, we recommend creating [sources in <Constant name="dbt" />](/docs/build/sources) rather than querying the database table directly.
+To query from your data warehouse, we recommend creating [sources in dbt](/docs/build/sources) rather than querying the database table directly.
 
 This allows you to call the same table in multiple places with `{{ src('my_source', 'my_table') }}` rather than `my_database.my_schema.my_table`.
 
@@ -74,7 +74,7 @@ We start here for several reasons:
 Using sources unlocks the ability to run [source freshness reporting](/docs/build/sources#source-data-freshness) to make sure your raw data isn't stale.
 
 #### Easy dependency tracing
-If you're migrating multiple stored procedures into <Constant name="dbt" />, with sources you can see which queries depend on the same raw tables.
+If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables.
 
 This allows you to consolidate modeling work on those base tables, rather than calling them separately in multiple places.
 
@@ -213,12 +213,12 @@ After you have moved everything into CTEs, you'll want to write a `select * from
 
 This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
-> For more background on CTEs, check out the [<Constant name="dbt" /> Labs style guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
+> For more background on CTEs, check out the [dbt Labs style guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
 
 ## Port CTEs to individual data models
-Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [<Constant name="dbt" /> data models](https://docs.getdbt.com/docs/build/models).
+Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/build/models).
 
-Internally at <Constant name="dbt" /> Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our <Constant name="dbt" /> projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) accordingly.
+Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) accordingly.
 
 We'll follow those structures in this walkthrough, but your team's conventions may of course differ from ours.
 
@@ -249,15 +249,15 @@ Our final model accomplishes the result set we want, and it uses the components 
 
 <WistiaVideo id="dymp75cwh6" />
 
-We'll want to audit our results using the <Constant name="dbt" /> [audit_helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/).
+We'll want to audit our results using the dbt [audit_helper package](https://hub.getdbt.com/dbt-labs/audit_helper/latest/).
 
 Under the hood, it generates comparison queries between our before and after states, so that we can compare our original query results to our refactored results to identify differences.
 
 Sure, we could write our own query manually to audit these models, but using the dbt `audit_helper` package gives us a head start and allows us to identify variances more quickly.  
 
 ### Ready for refactoring practice?
-Head to the free on-demand course, [Refactoring from Procedural SQL to <Constant name="dbt" />](https://learn.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
+Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://learn.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
-Questions on this guide or the course? Drop a note in #learn-on-demand in [<Constant name="dbt" /> Community Slack](https://getdbt.com/community).
+Questions on this guide or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
 
 </div>

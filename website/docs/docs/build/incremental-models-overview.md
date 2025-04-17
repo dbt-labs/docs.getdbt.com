@@ -7,9 +7,9 @@ pagination_next: "docs/build/incremental-models"
 pagination_prev: null
 ---
 
-Incremental models in <Constant name="dbt" /> is a [materialization](/docs/build/materializations) strategy designed to efficiently update your data warehouse tables by only transforming and loading new or changed data since the last run. Instead of processing your entire dataset every time, incremental models append or update only the new rows, significantly reducing the time and resources required for your data transformations.
+Incremental models in dbt is a [materialization](/docs/build/materializations) strategy designed to efficiently update your data warehouse tables by only transforming and loading new or changed data since the last run. Instead of processing your entire dataset every time, incremental models append or update only the new rows, significantly reducing the time and resources required for your data transformations.
 
-This page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in <Constant name="dbt" />.
+This page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in dbt.
 
 <Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices guide (https://docs.getdbt.com/best-practices/materializations/1-guide-overview)" />
 
@@ -17,7 +17,7 @@ This page will provide you with a brief overview of incremental models, their im
 
 Incremental models enable you to significantly reduce the build time by just transforming new records. This is particularly useful for large datasets, where the cost of processing the entire dataset is high.
 
-Incremental models [require extra configuration](/docs/build/incremental-models) and are an advanced usage of <Constant name="dbt" />. We recommend using them when your dbt runs are becoming too slow.
+Incremental models [require extra configuration](/docs/build/incremental-models) and are an advanced usage of dbt. We recommend using them when your dbt runs are becoming too slow.
 
 ### When to use an incremental model
 
@@ -36,10 +36,10 @@ dbt's [incremental materialization strategy](/docs/build/incremental-strategy) w
 
 On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
 
-Transaction management, a process used in certain data platforms, ensures that a set of actions is treated as a single unit of work (or task). If any part of the unit of work fails, <Constant name="dbt" /> will roll back open transactions and restore the database to a good state.
+Transaction management, a process used in certain data platforms, ensures that a set of actions is treated as a single unit of work (or task). If any part of the unit of work fails, dbt will roll back open transactions and restore the database to a good state.
 
 ## Related docs
-- [Incremental models](/docs/build/incremental-models) to learn how to configure incremental models in <Constant name="dbt" />.
-- [Incremental strategies](/docs/build/incremental-strategy) to understand how <Constant name="dbt" /> implements incremental models on different databases.
+- [Incremental models](/docs/build/incremental-models) to learn how to configure incremental models in dbt.
+- [Incremental strategies](/docs/build/incremental-strategy) to understand how dbt implements incremental models on different databases.
 - [Microbatch](/docs/build/incremental-microbatch) to understand a new incremental strategy intended for efficient and resilient processing of very large time-series datasets.
-- [Materializations best practices](/best-practices/materializations/1-guide-overview) to learn about the best practices for using materializations in <Constant name="dbt" />.
+- [Materializations best practices](/best-practices/materializations/1-guide-overview) to learn about the best practices for using materializations in dbt.

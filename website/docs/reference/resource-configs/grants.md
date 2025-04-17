@@ -7,15 +7,15 @@ id: "grants"
 
 You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
 
-The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, <Constant name="dbt" /> ensures that the grants on its view or table match exactly the grants you have configured.
+The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, dbt ensures that the grants on its view or table match exactly the grants you have configured.
 
-<Constant name="dbt" /> aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether <Constant name="dbt" /> is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that <Constant name="dbt" /> runs.
+dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
 
 You should define grants as resource configs whenever possible, but you might occasionally need to write grants statements manually and run them using [hooks](/docs/build/hooks-operations). For example, hooks may be appropriate if you want to:
 
 * Apply grants on other database objects besides views and tables.
 * Create more granular row- and column-level access, use masking policies, or apply future grants.
-* Take advantage of more advanced permission capabilities offered by your data platform, for which <Constant name="dbt" /> does not offer out-of-the-box support using resource configuration.
+* Take advantage of more advanced permission capabilities offered by your data platform, for which dbt does not offer out-of-the-box support using resource configuration.
 * Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 
 For more information on hooks, see [Hooks & operations](/docs/build/hooks-operations).
@@ -245,7 +245,7 @@ You can grant each permission to a single grantee, or a set of multiple grantees
 
 </File>
 
-When <Constant name="dbt" /> runs this model for the first time, it will create the table, and then run code like:
+When dbt runs this model for the first time, it will create the table, and then run code like:
 ```sql
 grant select on schema_name.table_model to bi_user;
 ```
@@ -262,7 +262,7 @@ In this case, we're creating an incremental model, and granting the `select` pri
 
 </File>
 
-When <Constant name="dbt" /> runs this model for the first time, it will create the table, and then run code like:
+When dbt runs this model for the first time, it will create the table, and then run code like:
 ```sql
 grant select on schema_name.incremental_model to bi_user, reporter;
 ```
@@ -326,7 +326,7 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)). See [<Constant name="dbt" />-redshift#415](https://github.com/dbt-labs/dbt-redshift/issues/415) for the corresponding issue.
+* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)). See [dbt-redshift#415](https://github.com/dbt-labs/dbt-redshift/issues/415) for the corresponding issue.
 
 </div>
 

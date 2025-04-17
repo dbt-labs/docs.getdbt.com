@@ -7,7 +7,7 @@ pagination_next: "docs/build/custom-databases"
 
 By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-cloud-environments) (<Constant name="cloud" />) or [profile's target](/docs/core/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.
 
-For <Constant name="dbt" /> projects with lots of models, it's common to build models across multiple schemas and group similar models together. For example, you might want to:
+For dbt projects with lots of models, it's common to build models across multiple schemas and group similar models together. For example, you might want to:
 
 * Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`.
 * Hide intermediate models in a `staging` schema, and only present models that should be queried by an end user in an `analytics` schema.
@@ -56,11 +56,11 @@ models:
 
 When first using custom schemas, it's a common misunderstanding to assume that a model _only_ uses the new `schema` configuration; for example, a model that has the configuration `schema: marketing` would be built in the `marketing` schema. However, dbt puts it in a schema like `<target_schema>_marketing`.
 
-There's a good reason for this deviation. Each <Constant name="dbt" /> user has their own target schema for development (refer to [Managing Environments](#managing-environments)). If <Constant name="dbt" /> ignored the target schema and only used the model's custom schema, every <Constant name="dbt" /> user would create models in the same schema and would overwrite each other's work.
+There's a good reason for this deviation. Each dbt user has their own target schema for development (refer to [Managing Environments](#managing-environments)). If dbt ignored the target schema and only used the model's custom schema, every dbt user would create models in the same schema and would overwrite each other's work.
 
-By combining the target schema and the custom schema, <Constant name="dbt" /> ensures that objects it creates in your data warehouse don't collide with one another.
+By combining the target schema and the custom schema, dbt ensures that objects it creates in your data warehouse don't collide with one another.
 
-If you prefer to use different logic for generating a schema name, you can change the way <Constant name="dbt" /> generates a schema name (see below).
+If you prefer to use different logic for generating a schema name, you can change the way dbt generates a schema name (see below).
 
 ### How does dbt generate a model's schema name?
 
@@ -211,6 +211,6 @@ For more information, consult the [managing environments in <Constant name="core
 
 ## Related docs
 
-- [Customize <Constant name="dbt" /> models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize <Constant name="dbt" /> models database, schema, and alias
-- [Custom database](/docs/build/custom-databases) to learn how to customize <Constant name="dbt" /> model database
-- [Custom aliases](/docs/build/custom-aliases) to learn how to customize <Constant name="dbt" /> model alias name
+- [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
+- [Custom database](/docs/build/custom-databases) to learn how to customize dbt model database
+- [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

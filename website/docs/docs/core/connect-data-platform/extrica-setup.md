@@ -69,7 +69,7 @@ Here is an example of dbt-extrica profiles. At a minimum, you need to specify `t
 
 | Parameter  | Type     | Description                              |
 |------------|----------|------------------------------------------|
-| type       | string  | Specifies the type of <Constant name="dbt" /> adapter (Extrica). |
+| type       | string  | Specifies the type of dbt adapter (Extrica). |
 | method     | jwt      | Authentication method for JWT authentication. |
 | username   | string   | Username for JWT authentication. The obtained JWT token is used to initialize a trino.auth.JWTAuthentication object.      |
 | password   | string   | Password for JWT authentication. The obtained JWT token is used to initialize a trino.auth.JWTAuthentication object.      |

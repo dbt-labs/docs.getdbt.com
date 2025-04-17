@@ -12,7 +12,7 @@ Resources in your project—models, snapshots, seeds, tests, and the rest—can 
 - You can select resources based on their config values using the `config:` selection method, but not the values of non-config properties.
 - There are slightly different naming conventions for properties and configs depending on the file type. Refer to [naming convention](/reference/dbt_project.yml#naming-convention) for more details.
 
-A rule of thumb: properties declare things _about_ your project resources; configs go the extra step of telling <Constant name="dbt" /> _how_ to build those resources in your warehouse. This is generally true, but not always, so it's always good to check!
+A rule of thumb: properties declare things _about_ your project resources; configs go the extra step of telling dbt _how_ to build those resources in your warehouse. This is generally true, but not always, so it's always good to check!
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns

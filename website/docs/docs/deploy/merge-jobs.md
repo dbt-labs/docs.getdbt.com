@@ -31,7 +31,7 @@ branch configured in the environment) in your <Constant name="git" /> repo, this
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this job runs.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to environment variables, this option lets you customize the behavior of the project. 
     - **Run timeout** &mdash; Cancel this job if the run time exceeds the timeout value.
-    - **<Constant name="dbt" /> version** &mdash; By default, it’s set to inherit the [<Constant name="dbt" /> version](/docs/dbt-versions/core) from the environment. <Constant name="dbt" /> Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next <Constant name="dbt" /> version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" title="Example of creating a merge job"/>

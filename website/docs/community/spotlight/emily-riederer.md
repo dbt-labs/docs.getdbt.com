@@ -30,7 +30,7 @@ hide_table_of_contents: true
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I have been involved in the <Constant name="dbt" /> community for a few years now. While I enjoy being actively engaged, one of my favorite parts is simply "lurking" on the Slack channels. The data space is moving so fast right now with so many different competing frameworks, tools, and ideas. At the same time, data work tends to be less discussed and publicly shared than analysis methods (e.g. new modeling packages) due to data privacy and IP. I've found no better place to "drink from the firehouse" and benefit from the insights of others questions, challenges, and successes.
+I have been involved in the dbt community for a few years now. While I enjoy being actively engaged, one of my favorite parts is simply "lurking" on the Slack channels. The data space is moving so fast right now with so many different competing frameworks, tools, and ideas. At the same time, data work tends to be less discussed and publicly shared than analysis methods (e.g. new modeling packages) due to data privacy and IP. I've found no better place to "drink from the firehouse" and benefit from the insights of others questions, challenges, and successes.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -45,4 +45,4 @@ As a passionate fan of open-source (and the also-thriving #rstats community), I 
 ## Anything else interesting you want to tell us?
 
 test 
-My passion for open-source tools and open-knowledge extends beyond <Constant name="dbt" />. I also enjoy serving on the editorial board for rOpenSci to champion the creation of open-source research software, reviewing technical books for CRC Press, doing pro-bono data projects, and sharing my own learnings through conference talks and writing (including on my website, guest blogs, and books including [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [97 Things Every Data Engineer Should Know](https://www.oreilly.com/library/view/97-things-every/9781492062400/)).
+My passion for open-source tools and open-knowledge extends beyond dbt. I also enjoy serving on the editorial board for rOpenSci to champion the creation of open-source research software, reviewing technical books for CRC Press, doing pro-bono data projects, and sharing my own learnings through conference talks and writing (including on my website, guest blogs, and books including [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [97 Things Every Data Engineer Should Know](https://www.oreilly.com/library/view/97-things-every/9781492062400/)).

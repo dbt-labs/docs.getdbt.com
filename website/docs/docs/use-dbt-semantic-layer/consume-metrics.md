@@ -26,7 +26,7 @@ To leverage the full power of the <Constant name="semantic_layer" />, you can us
   
 ### Query during development
 
-For developers working within the <Constant name="dbt" /> ecosystem, it’s essential to understand how to query metrics during the development phase using MetricFlow commands:
+For developers working within the dbt ecosystem, it’s essential to understand how to query metrics during the development phase using MetricFlow commands:
 - [MetricFlow commands](/docs/build/metricflow-commands) &mdash; Learn how to use MetricFlow commands to query metrics directly during the development process, ensuring your metrics are correctly defined and working as expected.
 
 ## Next steps
@@ -34,5 +34,5 @@ For developers working within the <Constant name="dbt" /> ecosystem, it’s esse
 After understanding the basics of querying metrics, consider optimizing your setup and ensuring the integrity of your metric definitions:
 
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) &mdash; Improve query speed and efficiency by using declarative caching techniques.
-- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) &mdash; Ensure that any changes to <Constant name="dbt" /> models don’t break your metrics by validating semantic nodes in Continuous Integration (CI) jobs.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) &mdash; Ensure that any changes to dbt models don’t break your metrics by validating semantic nodes in Continuous Integration (CI) jobs.
 - [Build your metrics and semantic models](/docs/build/build-metrics-intro) &mdash; If you haven’t already, learn how to define and build your metrics and semantic models using your preferred development tool.

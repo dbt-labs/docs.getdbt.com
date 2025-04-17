@@ -7,7 +7,7 @@ pagination_next: "docs/collaborate/git/version-control-basics"
 pagination_prev: null
 ---
 
-A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in your <Constant name="dbt" /> project.
+A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in your dbt project.
 
 In a distributed version control system, every developer has a full copy of the project and project history. <Constant name="git" /> is one of the most popular distributed version control systems and is commonly used for both open source and commercial software development, with great benefits for individuals, teams and businesses.
 

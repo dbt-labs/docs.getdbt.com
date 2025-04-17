@@ -56,11 +56,11 @@ SSO features are essential because they reduce the number of credentials a user 
 
 ## Security
 
-<Constant name="dbt" /> Labs is dedicated to upholding industry standards for Cloud security and GDPR compliance. Our compliance certifications include the following:
+dbt Labs is dedicated to upholding industry standards for Cloud security and GDPR compliance. Our compliance certifications include the following:
 
 - SOC2 Type II &mdash; assesses a service provider’s security control environment against the trust services principles and criteria set forth by the American Institute of Certified Public Accountants (AICPA).
 - ISO27001:2013 &mdash; a globally recognized standard for establishing and certifying an information security management system (ISMS).
-- GDPR - <Constant name="dbt" /> Labs is committed to maintaining GDPR compliance standards. Read more about our [Data Processing Addendum](https://www.getdbt.com/cloud/dpa).
+- GDPR - dbt Labs is committed to maintaining GDPR compliance standards. Read more about our [Data Processing Addendum](https://www.getdbt.com/cloud/dpa).
 
 
 For more detailed information about our security practices, read our [Security page](https://www.getdbt.com/security/).

@@ -18,4 +18,4 @@ your user has the correct privileges. Check out [example permissions](/reference
 On BigQuery, use the "BigQuery User" role to assign these privileges.
 
 ---
-¹Alternatively, a separate user can create a schema for the <Constant name="dbt" /> user, and then grant the user privileges to create within this schema. We generally recommend granting your <Constant name="dbt" /> user the ability to create schemas, as it is less complicated to implement.
+¹Alternatively, a separate user can create a schema for the dbt user, and then grant the user privileges to create within this schema. We generally recommend granting your dbt user the ability to create schemas, as it is less complicated to implement.

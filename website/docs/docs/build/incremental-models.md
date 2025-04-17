@@ -8,7 +8,7 @@ intro_text: "Learn how to configure and optimize incremental models when develop
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
-Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time <Constant name="dbt" /> ran. As such, on each dbt run, your model gets built incrementally.
+Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
 
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
@@ -26,7 +26,7 @@ select ...
 
 ```
 
-To use incremental models, you also need to tell <Constant name="dbt" />:
+To use incremental models, you also need to tell dbt:
 
 * How to filter the rows on an incremental run
 * The unique key of the model (if any)
@@ -45,7 +45,7 @@ Note that the SQL in your model needs to be valid whether `is_incremental()` eva
 
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
-Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time <Constant name="dbt" /> ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. <Constant name="dbt" /> makes it easy to query your target table by using the "[\{\{ this \}\}](/reference/dbt-jinja-functions/this)" variable.
+Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[\{\{ this \}\}](/reference/dbt-jinja-functions/this)" variable.
 
 Also common is wanting to capture both new and updated records. For updated records, you'll need to [define a unique key](#defining-a-unique-key-optional) to ensure you don't bring in modified records as duplicates. Your `is_incremental()` code will check for rows created *or modified* since the last time dbt ran this model.
 
@@ -99,7 +99,7 @@ The `unique_key` should be supplied in your model definition as a string represe
 :::tip
 In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
 
-By using the first syntax, which is more universal, <Constant name="dbt" /> can ensure that the columns will be templated into your incremental model materialization in a way that's appropriate to your database.
+By using the first syntax, which is more universal, dbt can ensure that the columns will be templated into your incremental model materialization in a way that's appropriate to your database.
     
 When you pass a list in this way, please ensure that each column does not contain any nulls, or the incremental model run may fail.
    
@@ -119,7 +119,7 @@ While common incremental strategies, such as `delete+insert` + `merge`, might us
 
 #### `unique_key` example
 
-Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that <Constant name="dbt" /> last ran, and any days since then. The model would look as follows:
+Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
 <File name='models/staging/fct_daily_active_users.sql'>
 

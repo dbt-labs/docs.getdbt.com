@@ -6,7 +6,7 @@ id: checking-logs
 
 ---
 
-To check out the SQL that <Constant name="dbt" /> is running, you can look in:
+To check out the SQL that dbt is running, you can look in:
 
 * <Constant name="cloud" />:
   * Within the run output, click on a model name, and then select "Details"

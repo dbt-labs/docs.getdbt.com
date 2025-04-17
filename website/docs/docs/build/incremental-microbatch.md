@@ -20,7 +20,7 @@ Read and participate in the discussion: [<Constant name="core" />#10672](https:/
 
 ## What is "microbatch" in dbt?
 
-Incremental models in <Constant name="dbt" /> are a [materialization](/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models process a smaller number of rows, and then append, update, or replace those rows in the existing table. This can significantly reduce the time and resources required for your data transformations.
+Incremental models in dbt are a [materialization](/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models process a smaller number of rows, and then append, update, or replace those rows in the existing table. This can significantly reduce the time and resources required for your data transformations.
 
 Microbatch is an incremental strategy designed for large time-series datasets:
 - It relies solely on a time column ([`event_time`](/reference/resource-configs/event-time)) to define time-based ranges for filtering. 
@@ -36,11 +36,11 @@ When dbt runs a microbatch model — whether for the first time, during increme
 
 Each "batch" corresponds to a single bounded time period (by default, a single day of data). Where other incremental strategies operate only on "old" and "new" data, microbatch models treat every batch as an atomic unit that can be built or replaced on its own. Each batch is independent and <Term id="idempotent" />. 
 
-This is a powerful abstraction that makes it possible for <Constant name="dbt" /> to run batches [separately](#backfills), concurrently, and [retry](#retry) them independently.
+This is a powerful abstraction that makes it possible for dbt to run batches [separately](#backfills), concurrently, and [retry](#retry) them independently.
 
 ### Adapter-specific behavior
 
-<Constant name="dbt" />'s microbatch strategy uses the most efficient mechanism available for "full batch" replacement on each adapter. This can vary depending on the adapter:
+dbt's microbatch strategy uses the most efficient mechanism available for "full batch" replacement on each adapter. This can vary depending on the adapter:
 
 - `dbt-postgres`: Uses the `merge` strategy, which performs "update" or "insert" operations.
 - `dbt-redshift`: Uses the `delete+insert` strategy, which "inserts" or "replaces."
@@ -268,7 +268,7 @@ If you need to reprocess historical data, we recommend using a targeted backfill
 - You don't need to pick among DML strategies (upserting/merging/replacing)
 - You can preview your model, and see the exact records for a given batch that will appear when that batch is processed and written to the table
 
-When you run a microbatch model, <Constant name="dbt" /> will evaluate which batches need to be loaded, break them up into a SQL query per batch, and load each one independently.
+When you run a microbatch model, dbt will evaluate which batches need to be loaded, break them up into a SQL query per batch, and load each one independently.
 
 dbt will automatically filter upstream inputs (`source` or `ref`) that define `event_time`, based on the `lookback` and `batch_size` configs for this model. Note that dbt doesn't know the minimum `event_time` in your data &mdash; it only uses the configs you provide (like `begin`, `lookback`) to decide which batches to run.  
   
@@ -287,7 +287,7 @@ Whether to fix erroneous source data or retroactively apply a change in business
 
 Backfilling a microbatch model is as simple as selecting it to run or build, and specifying a "start" and "end" for `event_time`. Note that `--event-time-start` and `--event-time-end` are mutually necessary, meaning that if you specify one, you must specify the other. 
 
-As always, <Constant name="dbt" /> will process the batches between the start and end as independent queries.
+As always, dbt will process the batches between the start and end as independent queries.
 
 ```bash
 dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
@@ -303,7 +303,7 @@ If one or more of your batches fail, you can use `dbt retry` to reprocess _only_
 
 ## Timezones
 
-For now, <Constant name="dbt" /> assumes that all values supplied are in UTC:
+For now, dbt assumes that all values supplied are in UTC:
 
 - `event_time`
 - `begin`
@@ -336,7 +336,7 @@ select * from {{ ref('stg_events') }}
     {% if is_incremental() %}
         -- this filter will only be applied on an incremental run
         -- add a lookback window of 3 days to account for late-arriving records
-        where date_day >= (select {{ <Constant name="dbt" />.dateadd("day", -3, "max(date_day)") }} from {{ this }})  
+        where date_day >= (select {{ dbt.dateadd("day", -3, "max(date_day)") }} from {{ this }})  
     {% endif %}
 
 ```
@@ -384,7 +384,7 @@ models:
 
 And that’s it!
 
-When you run the model, each batch templates a separate query. For example, if you were running the model on October 1, <Constant name="dbt" /> would template separate queries for each day between September 28 and October 1, inclusive — four batches in total.
+When you run the model, each batch templates a separate query. For example, if you were running the model on October 1, dbt would template separate queries for each day between September 28 and October 1, inclusive — four batches in total.
 
 The query for `2024-10-01` would look like:
 

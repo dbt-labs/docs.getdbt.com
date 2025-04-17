@@ -4,7 +4,7 @@ id: "environment-variables"
 description: "Use environment variables to customize the behavior of your dbt project."
 ---
 
-Environment variables can be used to customize the behavior of a <Constant name="dbt" /> project depending on where the project is running. See the docs on
+Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. See the docs on
 [env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing

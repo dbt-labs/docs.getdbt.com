@@ -48,7 +48,7 @@ The following profile fields are always required except for `user`, which is als
 
 ## Additional parameters
 
-The following profile fields are optional to set up. They let you configure your cluster's session and <Constant name="dbt" /> for your connection. 
+The following profile fields are optional to set up. They let you configure your cluster's session and dbt for your connection. 
 
 
 | Profile field                 | Example                          | Description                                                                                                 |

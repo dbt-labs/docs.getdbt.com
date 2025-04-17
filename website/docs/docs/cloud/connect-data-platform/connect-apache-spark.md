@@ -16,7 +16,7 @@ See [Connect Databricks](#connect-databricks) for the Databricks version of this
 or the Thrift method. Note: While the HTTP method can be used to connect to
 an all-purpose Databricks cluster, the ODBC method is recommended for all
 Databricks connections. For further details on configuring these connection
-parameters, please see the [<Constant name="dbt" />-spark documentation](https://github.com/dbt-labs/dbt-spark#configuring-your-profile).
+parameters, please see the [dbt-spark documentation](https://github.com/dbt-labs/dbt-spark#configuring-your-profile).
 
 To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Apache Spark-specific configuration](/reference/resource-configs/spark-configs).
 

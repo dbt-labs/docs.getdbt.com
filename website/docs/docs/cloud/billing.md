@@ -237,7 +237,7 @@ The purpose of the merge job is to:
 - Immediately deploy any changes from PRs to production.
 - Ensure your production views remain up-to-date with how they’re defined in your codebase while remaining cost-efficient when running jobs in production.
 
-The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your <Constant name="dbt" /> project.
+The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your dbt project.
 
 ### Rework inefficient models
 
@@ -250,9 +250,9 @@ To reduce your warehouse spend, you can identify what models, on average, are ta
 To understand better how long each model takes to run within the context of a specific run, you can look at the **Model Timing** tab. Select the run of interest on the **Run History** page to find the tab. On that **Run** page, click **Model Timing**. 
 
 Once you've identified which models could be optimized, check out these other resources that walk through how to optimize your work: 
-* [Build scalable and trustworthy data pipelines with <Constant name="dbt" /> and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
-* [Best Practices for Optimizing Your <Constant name="dbt" /> and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
-* [How to optimize and troubleshoot <Constant name="dbt" /> models on Databricks](/guides/optimize-dbt-models-on-databricks)
+* [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
+* [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
+* [How to optimize and troubleshoot dbt models on Databricks](/guides/optimize-dbt-models-on-databricks)
 
 ## FAQs
 

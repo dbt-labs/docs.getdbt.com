@@ -55,7 +55,7 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
 2. Select **Integrations** and scroll to the **AI** section.
 3. Click on the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
    <Lightbox src="/img/docs/dbt-cloud/account-integration-ai.jpg" width="85%" title="Example of the AI integration page" />
-4. Configure the AI integration for either **<Constant name="dbt" /> Labs OpenAI**, **OpenAI**, or **Azure OpenAI**.
+4. Configure the AI integration for either **dbt Labs OpenAI**, **OpenAI**, or **Azure OpenAI**.
 
   <Tabs queryString="ai-integration"> 
   <TabItem value="dbtlabs" label="dbt Labs OpenAI">

@@ -20,5 +20,5 @@ Alternatively, you can use [`py-spy`](https://github.com/benfred/py-spy) to coll
 
 ```shell
 python -m pip install py-spy
-sudo py-spy record -s -f speedscope -- <Constant name="dbt" /> parse
+sudo py-spy record -s -f speedscope -- dbt parse
 ```

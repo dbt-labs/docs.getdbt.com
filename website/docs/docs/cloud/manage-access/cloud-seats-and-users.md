@@ -39,7 +39,7 @@ The user's license type always overrides their assigned [Enterprise permission](
 
 Each <Constant name="cloud" /> plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
-If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [<Constant name="dbt" /> Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
 The following tabs detail steps on how to modify your user license count:
 

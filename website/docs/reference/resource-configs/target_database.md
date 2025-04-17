@@ -49,7 +49,7 @@ Runtime Error
 
 
 ## Default
-By default, <Constant name="dbt" /> will use the [target](/reference/dbt-jinja-functions/target) database associated with your profile/connection.
+By default, dbt will use the [target](/reference/dbt-jinja-functions/target) database associated with your profile/connection.
 
 ## Examples
 ### Build all snapshots in a database named `snapshots`

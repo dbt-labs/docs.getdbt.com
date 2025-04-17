@@ -3,7 +3,7 @@ title: "Supported data formats for unit tests"
 sidebar_label: "Data formats"
 ---
 
-Currently, mock data for unit testing in <Constant name="dbt" /> supports three formats:
+Currently, mock data for unit testing in dbt supports three formats:
 
 - `dict` (default): Inline dictionary values.
 - `csv`: Inline CSV values or a CSV file.

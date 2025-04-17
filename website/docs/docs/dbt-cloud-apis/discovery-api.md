@@ -46,7 +46,7 @@ When used with [webhooks](/docs/deploy/webhooks), it can also help with detectin
 
 <TabItem value="discovery" label="Discovery">
 
-Use the API to find and understand <Constant name="dbt" /> assets in integrated tools using information like model and metric definitions, and column information. For more details, refer to [Discovery](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#discovery).
+Use the API to find and understand dbt assets in integrated tools using information like model and metric definitions, and column information. For more details, refer to [Discovery](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#discovery).
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
@@ -62,7 +62,7 @@ Use the API to review who developed the models and who uses them to help establi
 
 <TabItem value="development" label="Development">
 
-Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective <Constant name="dbt" /> projects. For more details, refer to [Development](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#development).
+Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective dbt projects. For more details, refer to [Development](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#development).
 
 
 
@@ -77,7 +77,7 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 There are two types of [project state](/docs/dbt-cloud-apis/project-state) at the environment level that you can query the results of:
 
-- **Definition** &mdash; The logical state of a <Constant name="dbt" /> project’s [resources](/docs/build/projects) that update when the project is changed.
+- **Definition** &mdash; The logical state of a dbt project’s [resources](/docs/build/projects) that update when the project is changed.
 - **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on)
 
 These states allow you to easily examine the difference between a model’s definition and its applied state so you can get answers to questions like, did the model run? or did the run fail? Applied models exist as a table/view in the data platform given their most recent successful run.

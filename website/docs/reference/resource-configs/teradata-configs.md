@@ -227,7 +227,7 @@ id: "teradata-configs"
 
 :::info Using seeds to load raw data
 
-As explained in [<Constant name="dbt" /> seeds documentation](/docs/build/seeds), seeds should not be used to load raw data (for example, large CSV exports from a production database).
+As explained in [dbt seeds documentation](/docs/build/seeds), seeds should not be used to load raw data (for example, large CSV exports from a production database).
 
 Since seeds are version controlled, they are best suited to files that contain business-specific logic, for example a list of country codes or user IDs of employees.
 
@@ -296,11 +296,11 @@ Another example for adding multiple grants:
 Refer to [grants](/reference/resource-configs/grants) for more information on Grants.
 
 ## Query band
-Query band in <Constant name="dbt" />-teradata can be set on three levels:
+Query band in dbt-teradata can be set on three levels:
 1. Profiles level: In the `profiles.yml` file, the user can provide `query_band` using the following example:
 
     ```yaml 
-    query_band: 'application=<Constant name="dbt" />;'
+    query_band: 'application=dbt;'
    ```
 
 2. Project level: In the `dbt_project.yml` file, the user can provide `query_band` using the following example:
@@ -308,7 +308,7 @@ Query band in <Constant name="dbt" />-teradata can be set on three levels:
    ```yaml
      models:
      Project_name:
-        +query_band: "app=<Constant name="dbt" />;model={model};"
+        +query_band: "app=dbt;model={model};"
    ```
 4. Model level: It can be set on the model SQL file or model level configuration on YAML files:
 
@@ -323,21 +323,21 @@ If a user sets some key-value pair with value as `'{model}'`, internally this `'
   ```yaml
   models:
   Project_name:
-    +query_band: "app=<Constant name="dbt" />;model={model};"
+    +query_band: "app=dbt;model={model};"
   ````
 
 - For example, if the model the user is running is `stg_orders`, `{model}` will be replaced with `stg_orders` in runtime.
 - If no `query_band` is set by the user, the default query_band used will be: ```org=teradata-internal-telem;appname=dbt;```
 
 ## Unit testing
-* Unit testing is supported in <Constant name="dbt" />-teradata, allowing users to write and execute unit tests using the <Constant name="dbt" /> test command.
-  * For detailed guidance, refer to the [<Constant name="dbt" /> unit tests documentation](/docs/build/documentation).
+* Unit testing is supported in dbt-teradata, allowing users to write and execute unit tests using the dbt test command.
+  * For detailed guidance, refer to the [dbt unit tests documentation](/docs/build/documentation).
 > In Teradata, reusing the same alias across multiple common table expressions (CTEs) or subqueries within a single model is not permitted, as it results in parsing errors; therefore, it is essential to assign unique aliases to each CTE or subquery to ensure proper query execution.
 
 ## valid_history incremental materialization strategy
 _This is available in early access_
     
-This strategy is designed to manage historical data efficiently within a Teradata environment, leveraging <Constant name="dbt" /> features to ensure data quality and optimal resource usage.
+This strategy is designed to manage historical data efficiently within a Teradata environment, leveraging dbt features to ensure data quality and optimal resource usage.
 In temporal databases, valid time is crucial for applications like historical reporting, ML training datasets, and forensic analysis.
 
 ```yaml
@@ -358,7 +358,7 @@ The `valid_history` incremental strategy requires the following parameters:
 * `valid_period`: Name of the model column indicating the period for which the record is considered to be valid. The datatype must be `PERIOD(DATE)` or `PERIOD(TIMESTAMP)`. 
 * `use_valid_to_time`: Whether the end bound value of the valid period in the input is considered by the strategy when building the valid timeline. Use `no` if you consider your record to be valid until changed (and supply any value greater to the begin bound for the end bound of the period. A typical convention is `9999-12-31` of ``9999-12-31 23:59:59.999999`). Use `yes` if you know until when the record is valid (typically this is a correction in the history timeline).
 
-The valid_history strategy in <Constant name="dbt" />-teradata involves several critical steps to ensure the integrity and accuracy of historical data management:
+The valid_history strategy in dbt-teradata involves several critical steps to ensure the integrity and accuracy of historical data management:
 * Remove duplicates and conflicting values from the source data:
   * This step ensures that the data is clean and ready for further processing by eliminating any redundant or conflicting records.
   * The process of removing primary key duplicates (two or more records with the same value for the `unique_key` and BEGIN() bond of the `valid_period` fields) in the dataset produced by the model. If such duplicates exist, the row with the lowest value is retained for all non-primary-key fields (in the order specified in the model). Full-row duplicates are always de-duplicated.

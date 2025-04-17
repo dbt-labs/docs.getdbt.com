@@ -7,7 +7,7 @@ id: sql-errors
 ---
 
 
-If there's a mistake in your SQL, <Constant name="dbt" /> will return the error that your database returns.
+If there's a mistake in your SQL, dbt will return the error that your database returns.
 
 ```shell
 $ dbt run --select customers

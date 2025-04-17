@@ -7,11 +7,11 @@ id: "contributing-writing"
 
 #### Overview
 
-The [<Constant name="dbt" /> Product Documentation](https://docs.getdbt.com/docs/introduction) sits at the heart of how people learn to use and engage with <Constant name="dbt" />. From explaining <Constant name="dbt" /> to newcomers to providing references for advanced functionality and APIs, the product docs are a frequent resource for _every_ <Constant name="dbt" /> Developer.
+The [dbt Product Documentation](https://docs.getdbt.com/docs/introduction) sits at the heart of how people learn to use and engage with dbt. From explaining dbt to newcomers to providing references for advanced functionality and APIs, the product docs are a frequent resource for _every_ dbt Developer.
 
 #### Contribution opportunities
 
-We strive to create pathways that inspire you to learn more about <Constant name="dbt" /> and enable you to continuously improve the way you solve data problems. We always appreciate the vigilance of the Community helping us to accurately represent the functionality and capabilities of <Constant name="dbt" />. You can participate by:
+We strive to create pathways that inspire you to learn more about dbt and enable you to continuously improve the way you solve data problems. We always appreciate the vigilance of the Community helping us to accurately represent the functionality and capabilities of dbt. You can participate by:
 
 - [Opening an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose) when you see something that can be fixed, whether it’s large or small.
 - Creating a PR when you see something you want to fix, or to address an existing issue. You can do this by clicking **Edit this page** at the bottom of any page on [docs.getdbt.com](http://docs.getdbt.com).
@@ -20,8 +20,8 @@ We strive to create pathways that inspire you to learn more about <Constant name
 
 We appreciate these contributions because they contain context in the original post (OP) that helps us understand their relevance. The also add value to the docs, even in small ways!
 
-- Larger contribution: https://github.com/<Constant name="dbt" />-labs/docs.getdbt.com/pull/1898
-- Smaller contribution: https://github.com/<Constant name="dbt" />-labs/docs.getdbt.com/pull/1114
+- Larger contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1898
+- Smaller contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1114
 
 #### Get started
 
@@ -34,11 +34,11 @@ We appreciate these contributions because they contain context in the original p
 
 #### Overview
 
-The [<Constant name="dbt" /> Developer Blog](https://docs.getdbt.com/blog) is the place for analytics practitioners to talk about _what it’s like to do data work right now._ This is the place to share tips and tricks, hard won knowledge and stories from the trenches with the <Constant name="dbt" /> Community.
+The [dbt Developer Blog](https://docs.getdbt.com/blog) is the place for analytics practitioners to talk about _what it’s like to do data work right now._ This is the place to share tips and tricks, hard won knowledge and stories from the trenches with the dbt Community.
 
 #### Contribution opportunities
 
-We want to hear your stories! Did you recently solve a cool problem, discover an interesting bug or lead an organizational change? Come tell the story on the <Constant name="dbt" /> Developer Blog.
+We want to hear your stories! Did you recently solve a cool problem, discover an interesting bug or lead an organizational change? Come tell the story on the dbt Developer Blog.
 
 #### Sample contributions
 
@@ -52,4 +52,4 @@ We want to hear your stories! Did you recently solve a cool problem, discover an
 
 #### Need help?
 
-Visit #community-writers in the <Constant name="dbt" /> Community Slack
+Visit #community-writers in the dbt Community Slack

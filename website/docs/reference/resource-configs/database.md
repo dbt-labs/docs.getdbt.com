@@ -118,7 +118,7 @@ Optionally specify a custom database for a [model](/docs/build/sql-models), [see
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
-The standard behavior of <Constant name="dbt" /> is:
+The standard behavior of dbt is:
 * If a custom database is _not_ specified, the database of the relation is the target database (`{{ target.database }}`).
 * If a custom database is specified, the database of the relation is the `{{ database }}` value.
 

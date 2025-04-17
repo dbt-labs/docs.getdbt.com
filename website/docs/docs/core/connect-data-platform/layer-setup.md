@@ -112,7 +112,7 @@ FROM {{ ref('training_data') }}
 
 ### Prediction
 
-You can make predictions using any Layer ML model within your <Constant name="dbt" /> models. Layer <Constant name="dbt" /> Adapter helps you score your data resides on your warehouse within your <Constant name="dbt" /> DAG with SQL.
+You can make predictions using any Layer ML model within your dbt models. Layer dbt Adapter helps you score your data resides on your warehouse within your dbt DAG with SQL.
 
 _Syntax:_
 ```

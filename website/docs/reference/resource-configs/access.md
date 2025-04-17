@@ -93,7 +93,7 @@ If you try to reference a model outside of its supported access, you will see an
 ```shell
 dbt run -s marketing_model
 ...
-<Constant name="dbt" />.exceptions.DbtReferenceError: Parsing Error
+dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```

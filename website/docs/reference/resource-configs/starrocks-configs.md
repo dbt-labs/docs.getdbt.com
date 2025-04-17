@@ -6,7 +6,7 @@ description: "Starrocks Configurations - Read this in-depth guide to learn about
 
 ## Model Configuration
 
-A <Constant name="dbt" /> model can be configured using the following syntax:
+A dbt model can be configured using the following syntax:
 
 <Tabs
   groupId="config-fact"

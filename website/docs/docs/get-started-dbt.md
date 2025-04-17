@@ -99,7 +99,7 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 ## Related docs
 
-Expand your <Constant name="dbt" /> knowledge and expertise with these additional resources:
+Expand your dbt knowledge and expertise with these additional resources:
 
 - [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="cloud" /> in action and ask questions.
 - [<Constant name="cloud" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="cloud" /> on AWS, user reviews, and more.

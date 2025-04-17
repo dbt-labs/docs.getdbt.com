@@ -2,17 +2,17 @@
 title: Getting help
 ---
 ## Community help
-<Constant name="dbt" /> is open source, and has a generous community behind it. Asking questions well contributes to the community by building our collective body of knowledge. By following these steps, you'll be more likely to receive help from another community member.
+dbt is open source, and has a generous community behind it. Asking questions well contributes to the community by building our collective body of knowledge. By following these steps, you'll be more likely to receive help from another community member.
 
 ### 1. Try to solve your problem first before asking for help
 
 #### Search the existing documentation
-The docs site you're on is highly searchable, make sure to explore for the answer here as a first step. If you're new to <Constant name="dbt" />, try working through the [quickstart guide](/guides) first to get a firm foundation on the essential concepts.
+The docs site you're on is highly searchable, make sure to explore for the answer here as a first step. If you're new to dbt, try working through the [quickstart guide](/guides) first to get a firm foundation on the essential concepts.
 #### Try to debug the issue yourself
 We have a handy guide on [debugging errors](/guides/debug-errors) to help out! This guide also helps explain why errors occur, and which docs you might need to search for help.
 
 #### Search for answers using your favorite search engine
-We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing <Constant name="dbt" />, the SQL in your models, or getting YAML right, are errors that are not-specific to <Constant name="dbt" />, so there may be other resources to check.
+We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing dbt, the SQL in your models, or getting YAML right, are errors that are not-specific to dbt, so there may be other resources to check.
 
 #### Experiment!
 If the question you have is "What happens when I do `X`", try doing `X` and see what happens! Assuming you have a solid dev environment set up, making mistakes in development won't affect your end users
@@ -33,26 +33,26 @@ While we understand that you may wish to generalize your problem, or that you ma
 In general, people are much more willing to help when they know you've already given something your best shot!
 
 #### Share the context of the problem you're trying to solve
-Sometimes you might hit a boundary of <Constant name="dbt" /> because you're trying to use it in a way that doesn't align with the opinions we've built into <Constant name="dbt" />. By sharing the context of the problem you're trying to solve, we might be able to share insight into whether there's an alternative way to think about it.
+Sometimes you might hit a boundary of dbt because you're trying to use it in a way that doesn't align with the opinions we've built into dbt. By sharing the context of the problem you're trying to solve, we might be able to share insight into whether there's an alternative way to think about it.
 
 #### Post a single message and use threads
-The <Constant name="dbt" /> Slack's culture revolves around threads. When posting a message, try drafting it to yourself first to make sure you have included all the context. Include big code blocks in a thread to avoid overwhelming the channel. 
+The dbt Slack's culture revolves around threads. When posting a message, try drafting it to yourself first to make sure you have included all the context. Include big code blocks in a thread to avoid overwhelming the channel. 
 
 #### Don't tag individuals to demand help
-If someone feels inclined to answer your question, they will do so. We are a community of volunteers, and we're generally pretty responsive and helpful! If nobody has replied to your question, consider if you've asked a question that helps us understand your problem. If you require in-depth, ongoing assistance, we have a wonderful group of experienced <Constant name="dbt" /> consultants in our ecosystem. You can find a full list [below](#receiving-dedicated-support).
+If someone feels inclined to answer your question, they will do so. We are a community of volunteers, and we're generally pretty responsive and helpful! If nobody has replied to your question, consider if you've asked a question that helps us understand your problem. If you require in-depth, ongoing assistance, we have a wonderful group of experienced dbt consultants in our ecosystem. You can find a full list [below](#receiving-dedicated-support).
 
 
 ### 3. Choose the right medium for your question
 We use a number of different mediums to share information
-- If your question is roughly "I've hit this error and am stuck", please ask it on [the <Constant name="dbt" /> Community Forum](https://discourse.getdbt.com).
-- If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [<Constant name="dbt" /> repo](https://github.com/dbt-labs/dbt), [<Constant name="dbt" />-utils repo](https://github.com/dbt-labs/dbt-utils))
+- If your question is roughly "I've hit this error and am stuck", please ask it on [the dbt Community Forum](https://discourse.getdbt.com).
+- If you think you've found a bug, please report it on the relevant GitHub repo (e.g. [dbt repo](https://github.com/dbt-labs/dbt), [dbt-utils repo](https://github.com/dbt-labs/dbt-utils))
 - If you are looking for a more wide-ranging conversation (e.g. "What's the best approach to X?", "Why is Y done this way?"), join our [Slack community](https://getdbt.com/community). Channels are consistently named with prefixes to aid discoverability. 
 
 ## Receiving dedicated support
-If you need dedicated support to build your <Constant name="dbt" /> project, consider reaching out regarding [professional services](https://www.getdbt.com/contact/), or engaging one of our [consulting partners](https://partners.getdbt.com/english/directory/).
+If you need dedicated support to build your dbt project, consider reaching out regarding [professional services](https://www.getdbt.com/contact/), or engaging one of our [consulting partners](https://partners.getdbt.com/english/directory/).
 
 ## dbt Training
-If you want to receive <Constant name="dbt" /> training, check out our [<Constant name="dbt" /> Learn](https://learn.getdbt.com/) program.
+If you want to receive dbt training, check out our [dbt Learn](https://learn.getdbt.com/) program.
 
 ## dbt Cloud support
 **Note:** If you are a **<Constant name="cloud" /> user** and need help with one of the following issues, please reach out to us by clicking [**Create a support ticket**](/docs/dbt-support#create-a-support-ticket) through the <Constant name="cloud" /> navigation or [emailing support@getdbt.com](mailto:support@getdbt.com):

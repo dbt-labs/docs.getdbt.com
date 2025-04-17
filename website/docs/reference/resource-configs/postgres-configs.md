@@ -6,7 +6,7 @@ id: "postgres-configs"
 
 ## Incremental materialization strategies
 
-In <Constant name="dbt" />-postgres, the following incremental materialization strategies are supported:
+In dbt-postgres, the following incremental materialization strategies are supported:
 
 - `append` (default when `unique_key` is not defined)
 - `merge`
@@ -182,7 +182,7 @@ models:
 </Tabs>
 
 The [`indexes`](#indexes) parameter corresponds to that of a table, as explained above.
-It's worth noting that, unlike tables, <Constant name="dbt" /> monitors this parameter for changes and applies the changes without dropping the materialized view.
+It's worth noting that, unlike tables, dbt monitors this parameter for changes and applies the changes without dropping the materialized view.
 This happens via a `DROP/CREATE` of the indexes, which can be thought of as an `ALTER` of the materialized view.
 
 Learn more about these parameters in Postgres's [docs](https://www.postgresql.org/docs/current/sql-creatematerializedview.html).

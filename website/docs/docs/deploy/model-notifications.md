@@ -4,21 +4,21 @@ description: "While a job is running, receive email notifications in real time a
 intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
 ---
 
-Configure <Constant name="dbt" /> to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
+Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
 - `Success` and `Fails` for models
 - `Warning`, `Success`, and `Fails` for tests
 
 With model-level notifications, model owners can be the first ones to know about issues before anyone else (like the stakeholders). 
 
-To be timely and keep the number of notifications to a reasonable amount when multiple models or tests trigger them, <Constant name="dbt" /> observes the following guidelines when notifying the owners:  
+To be timely and keep the number of notifications to a reasonable amount when multiple models or tests trigger them, dbt observes the following guidelines when notifying the owners:  
 
 - Send a notification to each unique owner/email during a job run about any models (with status of failure/success) or tests (with status of warning/failure/success). Each owner receives only one notification, the initial one.
-- No notifications sent about subsequent models or tests while a <Constant name="dbt" /> job is still running.
+- No notifications sent about subsequent models or tests while a dbt job is still running.
 - Each owner/user who subscribes to notifications for one or more statuses (like failure, success, warning) will receive only _one_ email notification at the end of the job run.
 - The email includes a consolidated list of all models or tests that match the statuses the user subscribed to, instead of sending separate emails for each status.
 
-Create configuration YAML files in your project for <Constant name="dbt" /> to send notifications about the status of your models and tests in your deployment environments.
+Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests in your deployment environments.
 
 ## Prerequisites
 - Your <Constant name="cloud" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
