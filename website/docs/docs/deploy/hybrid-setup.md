@@ -79,7 +79,9 @@ A [<Constant name="cloud" /> account admin](/docs/cloud/manage-access/enterprise
 <Lightbox src="/img/docs/deploy/hp-existing-project.jpg" width="80%" title="Hybrid project for an existing project" />
 
 ### Generate service token and artifact upload values
-A <Constant name="cloud" /> admin should perform these steps to generate a [service token](/docs/dbt-cloud-apis/service-tokens) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="cloud" />. The <Constant name="cloud" /> admin should share the values with a <Constant name="core" /> user.
+A <Constant name="cloud" /> admin should perform these steps to generate a [service token](/docs/dbt-cloud-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="cloud" />.
+
+The <Constant name="cloud" /> admin should share the values with a <Constant name="core" /> user.
 
 1. Go to the Hybrid project environment you created in the previous step by navigating to **Deploy** > **Environments** and selecting the environment.
 2. Select the **Artifact upload** button and copy the following values, which the dbt Core user will need to reference in their dbt Core's `dbt_project.yml` configuration:
@@ -87,7 +89,7 @@ A <Constant name="cloud" /> admin should perform these steps to generate a [serv
    - **Account ID**
    - **Environment ID**
    - **Create a service token**
-     - <Constant name="cloud" /> creates a service token with **Job Runner** or **Job Viewer** permissions.
+     - <Constant name="cloud" /> creates a service token with both **Job Runner** _and_ **Job Viewer** permissions.
      - Note if you don't see the **Create service token** button, it's likely you don't have the necessary permissions to create a service token. Contact your <Constant name="cloud" /> admin to either get the necessary permissions or create the service token for you.
 <Lightbox src="/img/docs/deploy/hp-artifact-upload.png" title="Generate hybrid project service token" />
 
