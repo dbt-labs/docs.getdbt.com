@@ -17,7 +17,7 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 
 ## Guide structure overview
 
-1. Getting **setup** in your <Constant name="dbt" /> project.
+1. Getting **setup** in your dbt project.
 2. Building a **semantic model** and its fundamental parts: **entities, dimensions, and measures**.
 3. Building a **metric**.
 4. Defining **advanced metrics**: `ratio` and `derived` types.

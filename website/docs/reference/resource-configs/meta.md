@@ -533,7 +533,7 @@ semantic-models:
 
 <VersionBlock lastVersion="1.8">
 
-Available in <Constant name="dbt" /> version 1.9 and later.
+Available in dbt version 1.9 and later.
 
 </VersionBlock>
 

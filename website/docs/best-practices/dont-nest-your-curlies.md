@@ -7,7 +7,7 @@ id: "dont-nest-your-curlies"
 
 **Don't Nest Your Curlies**
 
-> If <Constant name="dbt" /> errors out early
+> If dbt errors out early
 >
 > and your Jinja is making you surly
 >
@@ -19,7 +19,7 @@ id: "dont-nest-your-curlies"
 
 ### Jinja
 
-When writing jinja code in a <Constant name="dbt" /> project, it may be tempting to nest expressions inside of each other. Take this example:
+When writing jinja code in a dbt project, it may be tempting to nest expressions inside of each other. Take this example:
 
 ```
   {{ dbt_utils.date_spine(

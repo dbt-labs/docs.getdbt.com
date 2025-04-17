@@ -7,7 +7,7 @@ id: "contributing-online-community"
 
 #### Overview
 
-The <Constant name="dbt" /> Slack is the place for real time conversations with the <Constant name="dbt" /> Community. Slack channels exist for specific locations, tools, industries and methodologies. In order to make sure that every channel has dedicated attention from a committed community member, we have Community Maintainers who oversee the discussion in particular channels.
+The dbt Slack is the place for real time conversations with the dbt Community. Slack channels exist for specific locations, tools, industries and methodologies. In order to make sure that every channel has dedicated attention from a committed community member, we have Community Maintainers who oversee the discussion in particular channels.
 
 #### Contribution opportunities
 
@@ -27,17 +27,17 @@ For new channels that you'd like to create and maintain, post a message in the #
 
 #### Overview
 
-[The <Constant name="dbt" /> Community Forum](https://discourse.getdbt.com) is the preferred platform for support questions as well as a space for long-lived discussions about <Constant name="dbt" />, analytics engineering, and the analytics profession. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
+[The dbt Community Forum](https://discourse.getdbt.com) is the preferred platform for support questions as well as a space for long-lived discussions about dbt, analytics engineering, and the analytics profession. It's a place for us to build up a long-lasting knowledge base around the common challenges, opportunities, and patterns we work with every day.
 
 #### Contribution opportunities
 
-Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding <Constant name="dbt" />. Remember, it’s a mitzvah to answer a question.
+Participate in the Forum by asking and answering questions. These discussions are what allows us to find gaps in our best practices, documentation and other recommendation, as well as to get folks onboarded and understanding dbt. Remember, it’s a mitzvah to answer a question.
 
 If you see a great question or answer, be generous with your 💜 reactions. Click the Solved button when your question is answered, so others can benefit.
 
 #### Sample contributions
 
-- An analytics engineer wrote about [how they modified <Constant name="dbt" /> to automatically put models into the correct schema](https://discourse.getdbt.com/t/extracting-schema-and-model-names-from-the-filename/575) based on their filename.
+- An analytics engineer wrote about [how they modified dbt to automatically put models into the correct schema](https://discourse.getdbt.com/t/extracting-schema-and-model-names-from-the-filename/575) based on their filename.
 - Here's [an example of the supportive, thorough answers](https://discourse.getdbt.com/t/is-it-possible-to-have-multiple-files-with-the-same-name-in-dbt/647) you can receive when you take the time to ask a question well.
 
 #### Get started

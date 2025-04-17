@@ -153,7 +153,7 @@ The time period used in the freshness calculation. One of `minute`, `hour` or `d
 
 Add a where clause to the query run by `dbt source freshness` in order to limit data scanned.
 
-This filter *only* applies to <Constant name="dbt" />'s source freshness queries - it will not impact other uses of the source table.
+This filter *only* applies to dbt's source freshness queries - it will not impact other uses of the source table.
 
 This is particularly useful if:
 - You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)

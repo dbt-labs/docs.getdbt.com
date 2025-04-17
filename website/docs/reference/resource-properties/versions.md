@@ -222,7 +222,7 @@ value2="dbt also warns if a model has or had a contract but isn't versioned."
 
 ```
 Breaking Change to Contract Error in model sometable (models/sometable.sql)
-  While comparing to previous project state, <Constant name="dbt" /> detected a breaking change to an enforced contract.
+  While comparing to previous project state, dbt detected a breaking change to an enforced contract.
 
   The contract's enforcement has been disabled.
 

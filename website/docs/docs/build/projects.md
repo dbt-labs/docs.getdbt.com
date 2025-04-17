@@ -13,7 +13,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | :--- | :--- |
 | [models](/docs/build/models) | Each model lives in a single file and contains logic that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation. |
 | [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
-| [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with <Constant name="dbt" />. |
+| [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
 | [data tests](/docs/build/data-tests) | SQL queries that you can write to test the models and resources in your project. |
 | [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
 | [docs](/docs/build/documentation) | Docs for your project that you can build. |
@@ -89,11 +89,11 @@ You can create new projects and [share them](/docs/collaborate/git-version-contr
 
 After you set up a connection with your data platform, you can [initialize your new project in <Constant name="cloud" />](/guides) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
-During project initialization, <Constant name="dbt" /> creates sample model files in your project directory to help you start developing quickly.
+During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
 ## Sample projects
 
-If you want to explore <Constant name="dbt" /> projects more in-depth, you can clone <Constant name="dbt" /> Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
+If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 

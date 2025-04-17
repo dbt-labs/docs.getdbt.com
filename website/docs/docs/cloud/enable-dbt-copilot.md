@@ -40,7 +40,7 @@ Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4
 Once AI features have been enabled, you can provide your organization's OpenAI API key. <Constant name="cloud" /> will then leverage your OpenAI account and terms to power <Constant name="copilot" />. This will incur billing charges to your organization from OpenAI for requests made by <Constant name="copilot" />.
 
 Configure AI keys using:
-- [<Constant name="dbt" /> Labs-managed OpenAI API key](/docs/cloud/account-integrations?ai-integration=dbtlabs#ai-integrations)
+- [dbt Labs-managed OpenAI API key](/docs/cloud/account-integrations?ai-integration=dbtlabs#ai-integrations)
 - Your own [OpenAI API key](/docs/cloud/account-integrations?ai-integration=openai#ai-integrations)
 - [Azure OpenAI](/docs/cloud/account-integrations?ai-integration=azure#ai-integrations)
 

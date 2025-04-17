@@ -123,7 +123,7 @@ dbt.invoke(["list"])
 
 ### Overriding parameters
 
-Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, <Constant name="dbt" /> will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
+Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
 ```python
 from dbt.cli.main import dbtRunner
 dbt = dbtRunner()

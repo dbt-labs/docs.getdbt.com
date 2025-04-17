@@ -12,7 +12,7 @@ description: "Read this guide to understand the project parsing configuration in
 
 At the start of every dbt invocation, dbt reads all the files in your project, extracts information, and constructs a manifest containing every object (model, source, macro, etc). Among other things, dbt uses the `ref()`, `source()`, and `config()` macro calls within models to set properties, infer dependencies, and construct your project's DAG.
 
-Parsing projects can be slow, especially as projects get bigger—hundreds of models, thousands of files—which is frustrating in development. There are a handful of ways to optimize <Constant name="dbt" /> performance today:
+Parsing projects can be slow, especially as projects get bigger—hundreds of models, thousands of files—which is frustrating in development. There are a handful of ways to optimize dbt performance today:
 - LibYAML bindings for PyYAML
 - Partial parsing, which avoids re-parsing unchanged files between invocations
 - A static parser, which extracts information from simple models much more quickly
@@ -22,9 +22,9 @@ These optimizations can be used in combination to reduce parse time from minutes
 
 ## PyYAML + LibYAML
 
-<Constant name="dbt" /> uses [PyYAML](https://pyyaml.org/wiki/PyYAML) to read and validate YAML files in your project. PyYAML is written in pure Python, but it can leverage [LibYAML](https://pyyaml.org/wiki/LibYAML) (written in C, much faster) if it's available in your system. Whenever it parses your project, <Constant name="dbt" /> will always check first to see if LibYAML is available.
+dbt uses [PyYAML](https://pyyaml.org/wiki/PyYAML) to read and validate YAML files in your project. PyYAML is written in pure Python, but it can leverage [LibYAML](https://pyyaml.org/wiki/LibYAML) (written in C, much faster) if it's available in your system. Whenever it parses your project, dbt will always check first to see if LibYAML is available.
 
-You can test to see if LibYAML is installed by running this command in the environment where you've installed <Constant name="dbt" />:
+You can test to see if LibYAML is installed by running this command in the environment where you've installed dbt:
 ```
 python -c "from yaml import CLoader"
 ```
@@ -45,12 +45,12 @@ In particular, you may see incorrect results if these attributes depend on "vola
 
 Starting in v1.0, dbt _will_ detect changes in environment variables. It will selectively re-parse only the files that depend on that [`env_var`](/reference/dbt-jinja-functions/env_var) value. (If the env var is used in `profiles.yml` or `dbt_project.yml`, a full re-parse is needed.) However, dbt will _not_ re-render **descriptions** that include env vars. If your descriptions include frequently changing env vars (this is highly uncommon), we recommend that you fully re-parse when generating documentation: `dbt --no-partial-parse docs generate`.
 
-If certain inputs change between runs, <Constant name="dbt" /> will trigger a full re-parse. The results will be correct, but the full re-parse may be quite slow. Today those inputs are:
+If certain inputs change between runs, dbt will trigger a full re-parse. The results will be correct, but the full re-parse may be quite slow. Today those inputs are:
 - `--vars`
 - `profiles.yml` content (or `env_var` values used within)
 - `dbt_project.yml` content (or `env_var` values used within)
 - installed packages
-- <Constant name="dbt" /> version
+- dbt version
 - certain widely-used macros (for example, [builtins](/reference/dbt-jinja-functions/builtins), overrides, or `generate_x_name` for `database`/`schema`/`alias`)
 
 If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the benefits of partial parsing are not applicable to new pull requests (PR) or new branches. However, they are applied on subsequent commits to the new PR or branch. 

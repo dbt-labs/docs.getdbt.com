@@ -38,7 +38,7 @@ dbt invocation help
 Manage invocations
 
 Usage:
-  <Constant name="dbt" /> invocation [command]
+  dbt invocation [command]
 
 Available Commands:
   list        List active invocations
@@ -52,7 +52,7 @@ Global Flags:
       --no-color               Disables colorization of the output.
   -q, --quiet                  Suppress all non-error logging to stdout.
 
-Use "<Constant name="dbt" /> invocation [command] --help" for more information about a command.
+Use "dbt invocation [command] --help" for more information about a command.
 ```
 
 ### dbt invocation list

@@ -73,7 +73,7 @@ To specify values as environment variables, use the format `{{ env_var('<variabl
 
 #### Troubleshooting Connections
 
-If you encounter issues connecting to Firebolt from <Constant name="dbt" />, make sure the following criteria are met:
+If you encounter issues connecting to Firebolt from dbt, make sure the following criteria are met:
 - You must have adequate permissions to access the engine and the database.
 - Your service account must be attached to a user.
 - The engine must be running.

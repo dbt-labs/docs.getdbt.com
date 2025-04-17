@@ -41,7 +41,7 @@ https://github.com/dbt-labs/jaffle_shop/compare/{{destination}}..{{source}}
 <TabItem value="rendered">
 
 ```
-https://github.com/<Constant name="dbt" />-labs/jaffle_shop/compare/master..my-branch
+https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 ```
 
 </TabItem>

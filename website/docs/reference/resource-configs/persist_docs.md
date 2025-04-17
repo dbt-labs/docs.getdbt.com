@@ -195,7 +195,7 @@ models:
 
 </File>
 
-Run <Constant name="dbt" /> and observe that the created relation and columns are annotated with
+Run dbt and observe that the created relation and columns are annotated with
 your descriptions:
 
 <Lightbox src="/img/reference/persist_docs_relation.png"

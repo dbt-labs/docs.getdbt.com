@@ -109,7 +109,7 @@ logs/
 dbt_modules/
 ```
 5. Commit (save) the file.
-6. Delete the following folders from the <Constant name="dbt" /> project root, if they exist.  No data or code will be lost:
+6. Delete the following folders from the dbt project root, if they exist.  No data or code will be lost:
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
 7. Commit (save) the deleted folders.
 8. Open a merge request using the git provider web interface.  The merge request should attempt to merge the changes into the 'main' branch that all development branches are created from.

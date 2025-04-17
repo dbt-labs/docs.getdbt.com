@@ -42,7 +42,7 @@ Cloud Configuration:
   Environment ID                 243762
   Environment name               Development
   Defer environment ID           [N/A]
-  <Constant name="dbt" /> version                    1.6.0-latest
+  dbt version                    1.6.0-latest
   Target name                    default
   Connection type                snowflake
 

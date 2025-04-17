@@ -116,7 +116,7 @@ Refer to the following **required** parameters to configure your profile for eac
 
 ## Additional parameters
 
-The following profile fields are optional to set up. They help you configure how your cluster's session and <Constant name="dbt" /> work for your connection.
+The following profile fields are optional to set up. They help you configure how your cluster's session and dbt work for your connection.
 
 | Profile field  |  Description  | Example   |
 | ------------- | ------------------- | --------------- |

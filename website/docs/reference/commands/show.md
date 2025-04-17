@@ -57,7 +57,7 @@ $ dbt build -s "my_model_with_duplicates"
 13:22:48
 13:22:48 Done. PASS=1 WARN=0 ERROR=1 SKIP=0 TOTAL=2
 
-$ <Constant name="dbt" /> show -s "unique_my_model_with_duplicates_id"
+$ dbt show -s "unique_my_model_with_duplicates_id"
 13:22:53 Running with dbt=1.5.0
 13:22:53 Found 4 models, 2 tests, 0 snapshots, 0 analyses, 309 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
 13:22:53

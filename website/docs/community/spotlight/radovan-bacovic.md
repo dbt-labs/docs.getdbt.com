@@ -25,13 +25,13 @@ communityAward: false
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I have been in the <Constant name="dbt" /> Community for almost 3 years now. The biggest impact that <Constant name="dbt" /> has had on my professional journey is that it has given me a trustworthy partner for data transformation, and a single source of truth for all our data modification needs. As a public speaker who travels internationally, I recognized the interest of the data community in <Constant name="dbt" /> around the world and, in response, organised several workshops and talks to help people use <Constant name="dbt" />. Let's just say that jumping into a great partnership with the <Constant name="dbt" /> Community has been the greatest takeaway for me!
+I have been in the dbt Community for almost 3 years now. The biggest impact that dbt has had on my professional journey is that it has given me a trustworthy partner for data transformation, and a single source of truth for all our data modification needs. As a public speaker who travels internationally, I recognized the interest of the data community in dbt around the world and, in response, organised several workshops and talks to help people use dbt. Let's just say that jumping into a great partnership with the dbt Community has been the greatest takeaway for me!
 
 ## Which dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 A leader from the dbt Commuity who I have found to be the most prominent is <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/boxysean/">Sean McIntyre</a> from dbt Labs, as I've had the privilege to collaborate with him many times. We recognized that we had a similar passion and energy; it looks like we are on the same journey.
 
-I wanted to be more involved in the <Constant name="dbt" /> Community, spread the word, and share my journey through tutorials, conference talks, blogs and meetups. I think I am capable of addressing my influence in that direction. I am also interested in extending the <Constant name="dbt" /> functionality and automating the deployment, testing and execution of <Constant name="dbt" />. In other words, I try to find good ways to leverage using DevSecOps for <Constant name="dbt" /> to make our development faster and make <Constant name="dbt" /> our trustworthy partner.
+I wanted to be more involved in the dbt Community, spread the word, and share my journey through tutorials, conference talks, blogs and meetups. I think I am capable of addressing my influence in that direction. I am also interested in extending the dbt functionality and automating the deployment, testing and execution of dbt. In other words, I try to find good ways to leverage using DevSecOps for dbt to make our development faster and make dbt our trustworthy partner.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

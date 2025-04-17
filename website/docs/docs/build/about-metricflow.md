@@ -28,7 +28,7 @@ MetricFlow is a SQL query generation tool designed to streamline metric creation
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
 
-**Note** &mdash; MetricFlow doesn't support <Constant name="dbt" /> [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
+**Note** &mdash; MetricFlow doesn't support dbt [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
 
 MetricFlow abides by these principles:
 
@@ -47,7 +47,7 @@ When MetricFlow generates a metric, it uses its SQL engine to figure out the bes
 
 ### Semantic models 
 
-Semantic models are the starting points of data and correspond to models in your <Constant name="dbt" /> project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
+Semantic models are the starting points of data and correspond to models in your dbt project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
 
 For a semantic model, there are three main pieces of metadata:
 
@@ -73,7 +73,7 @@ MetricFlow supports different metric types:
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data is based on the Jaffle Shop repo. You can view the complete [<Constant name="dbt" /> project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
+The following example data is based on the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
@@ -180,7 +180,7 @@ semantic_models:
   - name: orders
     description: |
       A model containing order data. The grain of the table is the order id.
-    model: ref('orders')  #The name of the <Constant name="dbt" /> model and schema
+    model: ref('orders')  #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
     entities: # Entities, which usually correspond to keys in the table

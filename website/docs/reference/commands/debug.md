@@ -7,12 +7,12 @@ intro_text: "Use dbt debug to test database connections and check system setup."
 
 `dbt debug` is a utility function to test the database connection and display information for debugging purposes, such as the validity of your project file, the [dbt version](/reference/dbt-jinja-functions/dbt_version), and your installation of any requisite dependencies (like `git` when you run `dbt deps`).
 
-It checks your database connection, local configuration, and system setup across multiple axes to help identify potential issues before running <Constant name="dbt" /> commands.
+It checks your database connection, local configuration, and system setup across multiple axes to help identify potential issues before running dbt commands.
 
 By default, `dbt debug` validates:
 - **Database connection** (for configured profiles)
 - **dbt project setup** (like `dbt_project.yml` validity)
-- **System environment** (OS, Python version, installed <Constant name="dbt" /> version)
+- **System environment** (OS, Python version, installed dbt version)
 - **Required dependencies** (such as `git` for `dbt deps`)
 - **Adapter details** (installed adapter versions and compatibility)
 
@@ -29,9 +29,9 @@ Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some fl
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
 ```text
-Usage: <Constant name="dbt" /> debug [OPTIONS]
+Usage: dbt debug [OPTIONS]
 
- Show information on the current <Constant name="dbt" /> environment and check dependencies, then
+ Show information on the current dbt environment and check dependencies, then
  test the database connection. Not to be confused with the --debug option
  which increases verbosity.
 
@@ -42,7 +42,7 @@ Options:
                 or for all schemas of interest.
 
  -d, --debug / --no-debug    
-                Display debug logging during <Constant name="dbt" /> execution.
+                Display debug logging during dbt execution.
                 Useful for debugging and making bug reports.
 
  --defer / --no-defer      
@@ -133,13 +133,13 @@ Options:
                 Does not affect {{ print() }} macro calls.
 
  -r, --record-timing-info PATH  
-                When this option is passed, <Constant name="dbt" /> will output
+                When this option is passed, dbt will output
                 low-level timing stats to the specified
                 file. Example: `--record-timing-info
                 output.profile`
 
  --send-anonymous-usage-stats / --no-send-anonymous-usage-stats
-                Send anonymous usage stats to <Constant name="dbt" /> Labs.
+                Send anonymous usage stats to dbt Labs.
 
  --state DIRECTORY        
                 Unless overridden, use this state directory
@@ -170,13 +170,13 @@ Options:
                 Show version information and exit
 
  --version-check / --no-version-check
-                If set, ensure the installed <Constant name="dbt" /> version
-                matches the require-<Constant name="dbt" />-version specified in
+                If set, ensure the installed dbt version
+                matches the require-dbt-version specified in
                 the dbt_project.yml file (if any).
                 Otherwise, allow them to differ.
 
  --warn-error   
-                If <Constant name="dbt" /> would normally warn, instead raise an
+                If dbt would normally warn, instead raise an
                 exception. Examples include --select that
                 selects nothing, deprecations,
                 configurations with no associated models,
@@ -184,7 +184,7 @@ Options:
                 sources/refs in tests.
 
  --warn-error-options WARNERROROPTIONSTYPE
-                If <Constant name="dbt" /> would normally warn, instead raise an
+                If dbt would normally warn, instead raise an
                 exception based on include/exclude
                 configuration. Examples include --select
                 that selects nothing, deprecations,
@@ -203,20 +203,20 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in <Constant name="cloud_ide" /> and <Constant name="core" /> CLI
+                Available in dbt Cloud IDE and dbt Core CLI
 
  --config-dir          
                 Print a system-specific command to access
-                the directory that the current <Constant name="dbt" /> project
+                the directory that the current dbt project
                 is searching for a profiles.yml. Then, exit.
                 This flag renders other debug step flags no-
                 ops.
 
  --profiles-dir PATH       
                 Which directory to look in for the
-                profiles.yml file. If not set, <Constant name="dbt" /> will look
+                profiles.yml file. If not set, dbt will look
                 in the current working directory first, then
-                HOME/.<Constant name="dbt" />/
+                HOME/.dbt/
 
  --project-dir PATH       
                 Which directory to look in for the
@@ -249,7 +249,7 @@ Show the configured location for the `profiles.yml` file and exit:
 dbt debug --config-dir
 To view your profiles.yml file, run:
 
-open /Users/alice/.<Constant name="dbt" />
+open /Users/alice/.dbt
 ```
 
 Test the connection in the <Constant name="cloud_ide" />:

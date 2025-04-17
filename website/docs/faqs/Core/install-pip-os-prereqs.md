@@ -35,7 +35,7 @@ python --version
 
 If you need a compatible version, you can download and install [Python version 3.9 or higher for MacOS](https://www.python.org/downloads/macos).
 
-If your machine runs on an Apple M1 architecture, we recommend that you install <Constant name="dbt" /> via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
+If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 ### Ubuntu/Debian
 
 Ubuntu requires Python and other dependencies to successfully install and run <Constant name="core" />.

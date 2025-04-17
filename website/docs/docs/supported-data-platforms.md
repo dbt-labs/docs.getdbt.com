@@ -12,7 +12,7 @@ dbt connects to and runs SQL against your database, warehouse, lake, or query en
 
 You can [connect](/docs/connect-adapters) to adapters and data platforms natively in <Constant name="cloud" /> or install them manually using <Constant name="core" />.
 
-You can also further customize how <Constant name="dbt" /> works with your specific data platform via configuration: see [Configuring Postgres](/reference/resource-configs/postgres-configs) for an example.
+You can also further customize how dbt works with your specific data platform via configuration: see [Configuring Postgres](/reference/resource-configs/postgres-configs) for an example.
 
 ## Types of Adapters
 

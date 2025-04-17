@@ -13,7 +13,7 @@ displayed_sidebar: "docs"
 
 ## What to know before upgrading
 
-There are no breaking changes for code in <Constant name="dbt" /> projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### For maintainers of adapter plugins
 
@@ -29,7 +29,7 @@ For users of [state-based functionality](/reference/node-selection/syntax#about-
 
 > The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 
-If you have two jobs, whereby one job compares or defers to artifacts produced by the other, you'll need to upgrade both at the same time. If there's a mismatch, <Constant name="dbt" /> will alert you with this error message:
+If you have two jobs, whereby one job compares or defers to artifacts produced by the other, you'll need to upgrade both at the same time. If there's a mismatch, dbt will alert you with this error message:
 
 ```
 Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" in <state-path>/manifest.json, but found "https://schemas.getdbt.com/dbt/manifest/v4.json". Are you running with a different version of dbt?
@@ -39,7 +39,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 [**Incremental models**](/docs/build/incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common <Term id="data-warehouse">data warehouses</Term>, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
 
-[**Generic tests**](/reference/resource-properties/data-tests) can define custom names. This is useful to "prettify" the synthetic name that <Constant name="dbt" /> applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
+[**Generic tests**](/reference/resource-properties/data-tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
 
 [**Sources**](/reference/source-properties) can define configuration inline with other `.yml` properties, just like other resource types. The only supported config is `enabled`; you can use this to dynamically enable/disable sources based on environment or package variables.
 
@@ -48,7 +48,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 **Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#source_status). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in dbt Cloud](/docs/deploy/continuous-integration).
 
 
-[**<Constant name="dbt" />-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
+[**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
 - [`print`](/reference/dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
 - [`selected_resources`](/reference/dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
 

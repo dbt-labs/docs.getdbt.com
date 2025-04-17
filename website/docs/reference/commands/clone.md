@@ -5,7 +5,7 @@ id: "clone"
 ---
 
 The `dbt clone` command clones selected nodes from the [specified state](/reference/node-selection/syntax#establishing-state) to the target schema(s). This command makes use of the `clone` materialization:
-- If your data platform supports zero-copy cloning of tables (Snowflake, Databricks, or BigQuery), and this model exists as a table in the source environment, <Constant name="dbt" /> will create it in your target environment as a clone.
+- If your data platform supports zero-copy cloning of tables (Snowflake, Databricks, or BigQuery), and this model exists as a table in the source environment, dbt will create it in your target environment as a clone.
 - Otherwise, dbt will create a simple pointer view (`select * from` the source object)
 - By default, `dbt clone` will not recreate pre-existing relations in the current target. To override this, use the `--full-refresh` flag. 
 - You may want to specify a higher number of [threads](/docs/running-a-dbt-project/using-threads) to decrease execution time since individual clone statements are independent of one another.
@@ -19,16 +19,16 @@ The `clone` command is useful for:
 
 ```bash
 # clone all of my models from specified state to my target schema(s)
-<Constant name="dbt" /> clone --state path/to/artifacts
+dbt clone --state path/to/artifacts
 
 # clone one_specific_model of my models from specified state to my target schema(s)
-<Constant name="dbt" /> clone --select "one_specific_model" --state path/to/artifacts
+dbt clone --select "one_specific_model" --state path/to/artifacts
 
 # clone all of my models from specified state to my target schema(s) and recreate all pre-existing relations in the current target
-<Constant name="dbt" /> clone --state path/to/artifacts --full-refresh
+dbt clone --state path/to/artifacts --full-refresh
 
 # clone all of my models from specified state to my target schema(s), running up to 50 clone statements in parallel
-<Constant name="dbt" /> clone --state path/to/artifacts --threads 50
+dbt clone --state path/to/artifacts --threads 50
 ```
 
 ### When to use `dbt clone` instead of [deferral](/reference/node-selection/defer)?

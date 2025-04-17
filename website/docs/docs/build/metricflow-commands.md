@@ -6,7 +6,7 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your <Constant name="dbt" /> project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
 MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
@@ -83,7 +83,7 @@ The following table lists the commands compatible with the <Constant name="cloud
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
 
 
-<!--below commands aren't supported in <Constant name="dbt" /> cloud yet
+<!--below commands aren't supported in dbt cloud yet
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
@@ -161,10 +161,10 @@ Options:
                       [required]
   --end-time TEXT     Optional iso8601 timestamp to constraint the end time of
                       the data (inclusive)
-                      *Not available in <Constant name="cloud" /> yet
+                      *Not available in dbt Cloud yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
-                      *Not available in <Constant name="cloud" /> yet
+                      *Not available in dbt Cloud yet
   --help              Show this message and exit.
 ```
 
@@ -214,22 +214,22 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate # For <Constant name="cloud" /> users
-mf validate-configs # For <Constant name="core" /> users
+dbt sl validate # For dbt Cloud users
+mf validate-configs # For dbt Core users
 
 Options:
-  --timeout                       # <Constant name="cloud" /> only
-                                  Optional timeout for data warehouse validation in <Constant name="cloud" />.
-  --dw-timeout INTEGER            # <Constant name="core" /> only
+  --timeout                       # dbt Cloud only
+                                  Optional timeout for data warehouse validation in dbt Cloud.
+  --dw-timeout INTEGER            # dbt Core only
                                   Optional timeout for data warehouse
                                   validation steps. Default None.
-  --skip-dw                       # <Constant name="core" /> only
+  --skip-dw                       # dbt Core only
                                   Skips the data warehouse validations.
-  --show-all                      # <Constant name="core" /> only
+  --show-all                      # dbt Core only
                                   Prints warnings and future errors.
-  --verbose-issues                # <Constant name="core" /> only
+  --verbose-issues                # dbt Core only
                                   Prints extra details about issues.
-  --semantic-validation-workers INTEGER  # <Constant name="core" /> only
+  --semantic-validation-workers INTEGER  # dbt Core only
                                   Uses specified number of workers for large configs.
   --help                          Show this message and exit.
 ```
@@ -241,7 +241,7 @@ The following command performs a health check against the data platform you prov
 Note, in dbt Cloud the `health-checks` command isn't required since it uses dbt Cloud's credentials to perform the health check.
 
 ```bash
-mf health-checks # In <Constant name="core" />
+mf health-checks # In dbt Core
 ```
 
 ## Tutorial
@@ -250,7 +250,7 @@ Follow the dedicated MetricFlow tutorial to help you get started:
 <!--dbt sl tutorial # In dbt Cloud-->
 
 ```bash
-mf tutorial # In <Constant name="core" />
+mf tutorial # In dbt Core
 ```
 
 ## Query
@@ -278,11 +278,11 @@ Options:
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
                            time of the data (inclusive).
-                           *Not available in <Constant name="cloud" /> yet 
+                           *Not available in dbt Cloud yet 
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
-                           *Not available in <Constant name="cloud" /> yet
+                           *Not available in dbt Cloud yet
 
   --where TEXT             SQL-like where statement provided as a string and wrapped in quotes.
                            All filter items must explicitly reference fields or dimensions that are part of your model.
@@ -302,8 +302,8 @@ Options:
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
- --compile (<Constant name="cloud" />)    In the query output, show the query that was
- --explain (<Constant name="core" />)     executed against the data warehouse         
+ --compile (dbt Cloud)    In the query output, show the query that was
+ --explain (dbt Core)     executed against the data warehouse         
                            
 
   --show-dataflow-plan     Display dataflow plan in explain output
@@ -336,9 +336,9 @@ Use the example to query multiple metrics by dimension and return the `order_tot
 
 **Query**
 ```bash
-dbt sl query --metrics order_total,users_active --group-by metric_time # In <Constant name="cloud" />
+dbt sl query --metrics order_total,users_active --group-by metric_time # In dbt Cloud
 
-mf query --metrics order_total,users_active --group-by metric_time # In <Constant name="core" />
+mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 ```
 
 **Result**
@@ -360,9 +360,9 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by order_id__is_food_order # In <Constant name="cloud" />
+dbt sl query --metrics order_total --group-by order_id__is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by order_id__is_food_order # In <Constant name="core" />
+mf query --metrics order_total --group-by order_id__is_food_order # In dbt Core
 ```
 
 **Result**
@@ -389,7 +389,7 @@ You can add order and limit functions to filter and present the data in a readab
 **Query**
 ```bash
 # In dbt Cloud 
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
 mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
@@ -416,7 +416,7 @@ You can further filter the data set by adding a `where` clause to your query. Th
 **Query**
 ```bash
 # In dbt Cloud 
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
+dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
 # In dbt Core
 mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
@@ -451,7 +451,7 @@ To filter by time, there are dedicated start and end time options. Using these o
 <!--
 bash not support in cloud yet
 # In dbt Cloud
-<Constant name="dbt" /> sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
 ```bash
@@ -563,9 +563,9 @@ Optionally, you can specify the time granularity you want your data to be aggreg
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-dbt sl query --metrics revenue --group-by metric_time__month # In <Constant name="cloud" />
+dbt sl query --metrics revenue --group-by metric_time__month # In dbt Cloud
 
-mf query --metrics revenue --group-by metric_time__month # In <Constant name="core" />
+mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
 
 ## Export

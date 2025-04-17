@@ -4,13 +4,13 @@ id: "jobs-terms-and-conditions"
 description: "Before posting a job in the dbt Community or submitting an application, review these terms and conditions."
 ---
 
-I agree to abide by the [<Constant name="dbt" /> Community Code of Conduct](/community/resources/code-of-conduct) and all laws applicable to me in my use of the <Constant name="dbt" /> Community's #jobs channels. I further agree:
+I agree to abide by the [dbt Community Code of Conduct](/community/resources/code-of-conduct) and all laws applicable to me in my use of the dbt Community's #jobs channels. I further agree:
 
-- <Constant name="dbt" /> Labs is not responsible for not does it warrant or guarantee the validity, accuracy, completeness, legality, or reliability of any functionality of any #jobs channel, any posting's content, or any application and/or solicitation of any kind of employment.
-- <Constant name="dbt" /> Labs does not review and approve job-related content.
-- <Constant name="dbt" /> Labs disclaims liability of any kind whatsoever for any type of damage that occurs while using the community Slack for job-related reasons, and I waive any type of claim (including actual, special or consequential damages) to the maximum extent permitted by law.
-- Without limitation, <Constant name="dbt" /> Labs disclaims liability for quality, performance, merchantability, and fitness for a particular purpose, express or implied, that may arise out of my use of the community Slack for job-related content, my reliance on such information, and/or my provision/receipt of job-related information.
+- dbt Labs is not responsible for not does it warrant or guarantee the validity, accuracy, completeness, legality, or reliability of any functionality of any #jobs channel, any posting's content, or any application and/or solicitation of any kind of employment.
+- dbt Labs does not review and approve job-related content.
+- dbt Labs disclaims liability of any kind whatsoever for any type of damage that occurs while using the community Slack for job-related reasons, and I waive any type of claim (including actual, special or consequential damages) to the maximum extent permitted by law.
+- Without limitation, dbt Labs disclaims liability for quality, performance, merchantability, and fitness for a particular purpose, express or implied, that may arise out of my use of the community Slack for job-related content, my reliance on such information, and/or my provision/receipt of job-related information.
 - I understand that no internet-based site is without risk, and my use is at my own risk.
-- My use of any job-posting template (or other forum for providing job-related information) confirms my consent to provide the data posted, confirms that I have permission to post such data, and is subject to the terms of the [<Constant name="dbt" /> Labs privacy policy](https://www.getdbt.com/cloud/privacy-policy).
+- My use of any job-posting template (or other forum for providing job-related information) confirms my consent to provide the data posted, confirms that I have permission to post such data, and is subject to the terms of the [dbt Labs privacy policy](https://www.getdbt.com/cloud/privacy-policy).
 
 For further information, please contact [legal@dbtlabs.com](mailto:legal@dbtlabs.com).

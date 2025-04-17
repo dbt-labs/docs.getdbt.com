@@ -7,7 +7,7 @@ displayText: Materializations best practices
 hoverSnippet: Read this guide to understand the different types of materializations you can create in dbt.
 ---
 
-First, let’s consider some properties of various levels of our <Constant name="dbt" /> project and materializations.
+First, let’s consider some properties of various levels of our dbt project and materializations.
 
 - 🔍 **Views** return the freshest, real-time state of their input data when they’re queried, this makes them ideal as **building blocks** for larger models.
   - 🧶  When we’re building a model that stitches lots of other models together, we don’t want to worry about all those models having different states of freshness because they were built into tables at different times. We want all those inputs to give us all the underlying source data available.
@@ -44,7 +44,7 @@ We’ll start off simple with staging models. Lets consider some aspects of stag
 - 🙅‍♀️ Staging models are **rarely accessed** directly by our **end users.**
 - 🧱 They need to be always up-to-date and in sync with our source data as a **building blocks** for later models
 - 🔍  It’s clear we’ll want to keep our **staging models as views**.
-- 👍  Since views are the **default materialization** in <Constant name="dbt" />, we don’t _have_ to do any specific configuration for this.
+- 👍  Since views are the **default materialization** in dbt, we don’t _have_ to do any specific configuration for this.
 - 💎  Still, for clarity, it’s a **good idea** to go ahead and **specify the configuration** to be explicit. We’ll want to make sure our `dbt_project.yml` looks like this:
 
 ```yaml

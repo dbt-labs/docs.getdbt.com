@@ -20,7 +20,7 @@ sources:
 </File>
 
 ## Definition
-Describe the tool that loads this source into your warehouse. Note that this property is for documentation purposes only — <Constant name="dbt" /> does not meaningfully use this.
+Describe the tool that loads this source into your warehouse. Note that this property is for documentation purposes only — dbt does not meaningfully use this.
 
 ## Examples
 ### Indicate which EL tool loaded data

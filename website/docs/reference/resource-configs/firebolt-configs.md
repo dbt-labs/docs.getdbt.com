@@ -124,7 +124,7 @@ models:
 
 ## Model configuration for dimension tables
 
-A <Constant name="dbt" /> model can be materialized as a Firebolt dimension table and configured using the following syntax:
+A dbt model can be materialized as a Firebolt dimension table and configured using the following syntax:
 
 <Tabs
   groupId="config-dimension"
@@ -192,7 +192,7 @@ Dimension tables do not support aggregation indexes.
 
 ## How aggregating indexes are named
 
-In <Constant name="dbt" />-firebolt, you do not provide names for aggregating indexes; they are named programmatically. <Constant name="dbt" /> will generate index names using the following convention:
+In dbt-firebolt, you do not provide names for aggregating indexes; they are named programmatically. dbt will generate index names using the following convention:
 
 ```
 <table-name>__<key-column>__<index-type>_<unix-timestamp-at-execution>
@@ -216,7 +216,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
 
     ```yaml
     packages:
-      - package: <Constant name="dbt" />-labs/dbt_external_tables
+      - package: dbt-labs/dbt_external_tables
         version: <version>
     ```
 
@@ -225,7 +225,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
     ```yaml
     dispatch:
       - macro_namespace: dbt_external_tables
-        search_order: ['<Constant name="dbt" />', 'dbt_external_tables']
+        search_order: ['dbt', 'dbt_external_tables']
     ```
 
 3. Pull in the `packages.yml` dependencies by calling `dbt deps`.

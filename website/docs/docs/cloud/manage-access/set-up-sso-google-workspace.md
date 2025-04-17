@@ -95,7 +95,7 @@ Settings.
       Only users with an email address from this domain will be able to log into your <Constant name="cloud" />
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
-    - **Slug**: Enter your desired login slug. Users will be able to log into <Constant name="dbt" />
+    - **Slug**: Enter your desired login slug. Users will be able to log into dbt
       Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. The `LOGIN-SLUG` must
       be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely
       identifies your company.

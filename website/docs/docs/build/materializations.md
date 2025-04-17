@@ -14,7 +14,7 @@ pagination_next: "docs/build/incremental-models"
 - ephemeral
 - materialized view
 
-You can also configure [custom materializations](/guides/create-new-materializations?step=1) in <Constant name="dbt" />. Custom materializations are a powerful way to extend <Constant name="dbt" />'s functionality to meet your specific needs. 
+You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs. 
 
 
 ## Configuring materializations
@@ -119,7 +119,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 ### Incremental
 `incremental` models allow dbt to insert or update records into a table since the last time that model was run.
 * **Pros:** You can significantly reduce the build time by just transforming new records
-* **Cons:** Incremental models require extra configuration and are an advanced usage of <Constant name="dbt" />. Read more about using incremental models [here](/docs/build/incremental-models).
+* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
 * **Advice:**
     * Incremental models are best for event-style data
     * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
@@ -148,7 +148,7 @@ Materialized views are a combination of a view and a table, and serve use cases 
 * **Pros:**
   * Materialized views combine the query performance of a table with the data freshness of a view
   * Materialized views operate much like incremental materializations, however they are usually
-able to be refreshed without manual interference on a regular cadence (depending on the database), forgoing the regular <Constant name="dbt" /> batch refresh
+able to be refreshed without manual interference on a regular cadence (depending on the database), forgoing the regular dbt batch refresh
 required with incremental materializations
   * `dbt run` on materialized views corresponds to a code deployment, just like views
 * **Cons:**
@@ -161,7 +161,7 @@ fewer configuration options available; see your database platform's docs for mor
 #### Configuration Change Monitoring
 
 This materialization makes use of the [`on_configuration_change`](/reference/resource-configs/on_configuration_change)
-config, which aligns with the incremental nature of the namesake database object. This setting tells <Constant name="dbt" /> to attempt to
+config, which aligns with the incremental nature of the namesake database object. This setting tells dbt to attempt to
 make configuration changes directly to the object when possible, as opposed to completely recreating
 the object to implement the updated configuration. Using `dbt-postgres` as an example, indexes can
 be dropped and created on the materialized view without the need to recreate the materialized view itself.
@@ -176,7 +176,7 @@ This also holds true for incremental and snapshot models, whose underlying relat
 In the table cases, the scheduling mechanism is either <Constant name="cloud" /> or your local scheduler;
 there is no built-in functionality to automatically refresh the data behind a table.
 However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
-Hence, materialized views work similarly to incremental models with the benefit of not needing to run <Constant name="dbt" /> to refresh the data.
+Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.
 This assumes, of course, that auto refresh is turned on and configured in the model.
 
 :::info
