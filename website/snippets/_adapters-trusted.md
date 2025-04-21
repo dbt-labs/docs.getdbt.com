@@ -65,7 +65,7 @@
     title="Microsoft Fabric Warehouse"
     body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
     pills='["dbt Cloud", "dbt Core"]'
-    icon="fabir_warehouse"/>
+    icon="fabric_warehouse"/>
 
 <Card
     title="Microsoft Fabric Lakehouse"
