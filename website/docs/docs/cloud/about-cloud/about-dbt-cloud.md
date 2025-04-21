@@ -31,7 +31,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <Card
     title="Visual editor (beta)"
     body="Develop with the Visual Editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
-    link="/docs/cloud/visual-editor"
+    link="//docs/cloud/canvas"
     icon="dbt-bit"/>
 
 <Card
