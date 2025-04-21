@@ -1,5 +1,5 @@
 ---
-title: "Fabric Spark setup"
+title: "Microsoft Fabric Lakehouse setup"
 description: "Read this guide to learn about the Microsoft Fabric spark setup for Lakehouse in dbt."
 id: "fabricspark-setup"
 meta:
@@ -39,7 +39,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 dbt-fabricspark can connect to Fabric Spark runtime using Fabric Livy API method. The Fabric Livy API allows submitting jobs in two different modes:  
 
-- [`session-jobs`](#session-jobs) is the preferred method when connecting to Fabric Lakehouse. A Livy session job entails establishing a Spark session that remains active throughout the spark session. A spark session, can run multiple jobs (each job is an action), sharing state and cached data between jobs.
+- [`session-jobs`](#session-jobs) A Livy session job entails establishing a Spark session that remains active throughout the spark session. A spark session, can run multiple jobs (each job is an action), sharing state and cached data between jobs.
 - [`batch-jobs`](#batch-jobs) entails submitting a Spark application for a single job execution. In contrast to a Livy session job, a batch job doesn't sustain an ongoing Spark session. With Livy batch jobs, each job initiates a new Spark session that ends when the job finishes.
 
 :::info Supported mode
@@ -48,7 +48,7 @@ To share the session sate among jobs and reduce the overhead of session manageme
 
 ### session-jobs
 
-Use the `odbc` connection method if you are connecting to a Databricks SQL endpoint or interactive cluster via ODBC driver. (Download the latest version of the official driver [here](https://databricks.com/spark/odbc-driver-download).)
+session-jobs is the preferred method when connecting to Fabric Lakehouse.
 
 <File name='~/.dbt/profiles.yml'>
 
