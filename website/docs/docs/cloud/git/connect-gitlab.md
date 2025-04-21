@@ -43,7 +43,7 @@ Once you've accepted, you should be redirected back to <Constant name="cloud" />
 ### Limitations
 
 <Constant name="cloud" /> Team and Developer plans use a single GitLab deploy token created by the first user who connects the repository, which means:
-* All Git operations (like commits and pushes) from the <Constant name="ide" /> appear as coming from the same deploy token.
+* All Git operations (like commits and pushes) from the <Constant name="cloud_ide" /> appear as coming from the same deploy token.
 * GitLab push rules may reject pushes made through <Constant name="cloud" />, particularly when multiple users are committing via the same deploy token. 
 
 To support advanced Git workflows and multi-user commit behavior, upgrade to the Enterprise plan, which provides more flexible Git authentication strategies.
