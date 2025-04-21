@@ -303,7 +303,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud Visual Editor",
+          label: "dbt Canvas",
           collapsed: true,
           link: { type: "doc", id: "docs/cloud/canvas" },
           items: [

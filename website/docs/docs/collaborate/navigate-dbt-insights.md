@@ -33,7 +33,7 @@ The query console is the main component of <Constant name="query_page" />. It al
 
 ### Query console menu
 The Query console menu is located at the top right of the Query editor. It contains the **Bookmark** and **Run** buttons:
-<!--- Ellipsis **(`...`)** button &mdash; Access to develop in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [Visual Editor](//docs/cloud/canvas) -->
+<!--- Ellipsis **(`...`)** button &mdash; Access to develop in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [Canvas](/docs/cloud/canvas) -->
 - **Bookmark** button &mdash; Save your frequently used SQL queries as favorites for easier access.
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
   - Let [<Constant name="copilot" />](/docs/cloud/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.

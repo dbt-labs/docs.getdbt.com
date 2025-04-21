@@ -19,7 +19,7 @@ This page explains how to use <Constant name="copilot" /> to:
 
 - [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />’s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
-- [Build visual models](#build-visual-models)<Lifecycle status='beta'/> &mdash; Use <Constant name="copilot" /> to generate models in the [<Constant name="visual_editor" />](/docs/cloud/use-visual-editor) with natural language prompts.
+- [Build visual models](#build-visual-models)<Lifecycle status='beta'/> &mdash; Use <Constant name="copilot" /> to generate models in [<Constant name="visual_editor" />](/docs/cloud/use-visual-editor) with natural language prompts.
 - [Build queries](#build-queries) <Lifecycle status="beta"/> &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="query_page" />](/docs/collaborate/dbt-insights) for exploratory data analysis using natural language prompts.
 
 ## Generate resources
