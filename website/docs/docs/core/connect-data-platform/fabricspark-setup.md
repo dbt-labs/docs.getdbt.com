@@ -22,7 +22,7 @@ meta:
 
 Below is a guide for use with [Fabric Data Engineering](https://learn.microsoft.com/en-us/fabric/data-engineering/data-engineering-overview), a new product within Microsoft Fabric. This adapter currently supports connecting to a  lakehouse endpoint.
 
-To learn how to set up dbtAnalytics using Fabric Warehouse, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
+To learn how to set up dbt using Fabric Warehouse, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
