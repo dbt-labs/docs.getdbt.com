@@ -24,7 +24,7 @@ Depending on your plan, use these steps to integrate GitLab in <Constant name="c
 
 ## For dbt Cloud Developer and Team tiers
 
-Before you can work with GitLab repositories in <Constant name="cloud" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="cloud" /> to authenticate your actions when interacting with Git repositories. Make sure to read about [limitations](#limitations) of the Team plan before you connect your account.
+Before you can work with GitLab repositories in <Constant name="cloud" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="cloud" /> to authenticate your actions when interacting with Git repositories. Make sure to read about [limitations](#limitations) of the Team and Developer plans before you connect your account.
 
 To connect your GitLab account:
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**. 
