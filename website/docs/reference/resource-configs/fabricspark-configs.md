@@ -11,7 +11,7 @@ When materializing a model as `table`, you may include several optional configs 
 | Option  | Description          | Required?        | <div style={{width:'350px'}}>Example</div>       |
 |---------|----------------------|------------------|--------------------------------------------------|
 | file_format | The file format to use when creating tables (`parquet`, `delta`, `csv`). | Optional | `delta`|
-| location_root [^1]  | The created table uses the specified directory to store its data. The table alias is appended to it.                               | Optional                | `Files/<folder>` or `Tables/<tableName>`              |
+| location_root [^1]  | The specified directory used to store table data. The table alias is appended to it.                               | Optional                | `Files/<folder>` or `Tables/<tableName>`              |
 | partition_by  | Partition the created table by the specified columns. A directory is created for each partition.                                   | Optional                | `date_day`              |
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                         | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering                                                                                   | Required if `clustered_by` is specified                | `8`              |
