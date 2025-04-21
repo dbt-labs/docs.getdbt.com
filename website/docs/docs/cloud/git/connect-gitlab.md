@@ -42,11 +42,12 @@ Once you've accepted, you should be redirected back to <Constant name="cloud" />
 
 ### Limitations
 
-Because <Constant name="cloud" /> Team plans use a single GitLab deploy token that's tied to the user who connected the repo, they are limited in the following ways when using GitLab:
-* Push rules aren't supported
-* Only the user who originally connected the repository can commit changes
+<Constant name="cloud" /> Team and Developer plans use a single GitLab deploy token created by the first user who connects the repository, which means:
+* All Git operations (like commits and pushes) from the <Constant name="ide" /> appear as coming from the same deploy token.
+* GitLab push rules may reject pushes made through <Constant name="cloud" />, particularly when multiple users are committing via the same deploy token. 
+ 
 
-To enable multi-user commit access, you’ll need an Enterprise plan, which supports deploy tokens that aren't tied to a specific user.
+To support advanced Git workflows and multi-user commit behavior, upgrade to the Enterprise plan, which provides more flexible Git authentication strategies.
 
 ## For the dbt Cloud Enterprise tier
 
