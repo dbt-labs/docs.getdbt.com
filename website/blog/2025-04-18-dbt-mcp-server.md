@@ -2,6 +2,7 @@
 title: "Introducing the dbt MCP Server – Bringing Structured Data to AI Workflows and Agents"
 description: "We’re open‑sourcing an experimental dbt MCP server so LLMs and agents can discover, query, and run your dbt project."
 slug: introducing-dbt-mcp-server
+img: /img/blog/2025-04-18-dbt-mcp-server/mcp_architecture_overview.png
 authors: [jason_ganz]
 tags: [ai, data ecosystem]
 hide_table_of_contents: false
@@ -15,13 +16,13 @@ dbt is the standard for creating governed, trustworthy datasets on top of your s
 
 Today, we are open sourcing an experimental version of the [dbt MCP server](https://github.com/dbt-labs/dbt-mcp/tree/main). We expect that over the coming years, structured data is going to become heavily integrated into AI workflows and that dbt will play a key role in building and provisioning this data.
 
-In particular, we expect both [Business Intelligence](https://roundup.getdbt.com/p/how-ai-will-disrupt-bi-as-we-know) and [Data Engineering](https://roundup.getdbt.com/p/how-ai-will-disrupt-data-engineering) will be driven by AI operating on top of the context defined in your dbt Projects.
+In particular, we expect both [Business Intelligence](https://roundup.getdbt.com/p/how-ai-will-disrupt-bi-as-we-know) and [Data Engineering](https://roundup.getdbt.com/p/how-ai-will-disrupt-data-engineering) will be driven by AI operating on top of the context defined in your dbt projects.
 
 **We are committed to building the data control plane that enables AI to reliably access structured data from across your entire data lineage.** Over the coming months and years, data teams will increasingly focus on building the rich context that feeds into the dbt MCP server.  Both AI agents and business stakeholders will then operate on top of LLM-driven systems hydrated by the dbt MCP context.
 
 <LoomVideo id="28cd33da8bcc41ccbe43338d327e73d8"/>
 
-Today’s system is not a full realization of the vision in the posts shared above, but it is a meaningful step towards safely integrating your structured enterprise data into AI workflows. In this post, we’ll walk through what the dbt MCP server can do today, some tips for getting started and some of the limitations of the current implementation. 
+Today’s system is not a full realization of the vision in the posts shared above, but it is a meaningful step towards safely integrating your structured enterprise data into AI workflows. In this post, we’ll walk through what the dbt MCP server can do today, some tips for getting started and some of the limitations of the current implementation.
 
 We believe it is important for the industry to start coalescing on best practices for safe and trustworthy ways to access your business data via LLM.
 
@@ -168,7 +169,7 @@ To get this working:
 <Lightbox src="/img/blog/2025-04-18-dbt-mcp-server/claudedesktop_project_card.png" title="Example Claude Desktop project connected to the dbt MCP server" width="100%" />
 
 - **Add a custom prompt explaining that questions in this project will likely be routed through the dbt MCP server.** You’ll likely want to customize this to your particular organizational context.
-    - Ex: This conversation is connected to and knows about the information in your dbt Project via the dbt MCP server. When you receive a question that plausibly needs data from an external data source, you will likely want to use the tools available via the dbt MCP server to provide it.
+    - For example: This conversation is connected to and knows about the information in your dbt Project via the dbt MCP server. When you receive a question that plausibly needs data from an external data source, you will likely want to use the tools available via the dbt MCP server to provide it.
 
 *Deployment considerations:*
 
