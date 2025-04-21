@@ -67,7 +67,7 @@ Currently, you can only have one output model in <Constant name="visual_editor" 
 
 When you click on each operator, it opens a configuration panel. The configuration panel allows you to configure the operator, review the current model, preview changes to the model, view the SQL code for the node, and delete the operator.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.png" width="90%" title="Visual editor interface that contains a node toolbar and canvas." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/canvas.png" width="90%" title="The Canvas interface that contains a node toolbar and canvas." />
 
 If you have any feedback on additional operators that you might need, we'd love to hear it! Please contact your dbt Labs account team and share your thoughts.
 
