@@ -63,7 +63,7 @@ You can use the Project subdirectory option in <Constant name="cloud" /> to spec
 
 To use the Project subdirectory option in <Constant name="cloud" />, follow these steps:
 
-1. Click on the cog icon on the upper right side of the page and click on **Account Settings**.
+1. Click your account name in the bottom left and select **Your profile**.
 
 2. Under **Projects**, select the project you want to configure as a project subdirectory.
 
