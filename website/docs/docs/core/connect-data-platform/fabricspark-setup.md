@@ -7,7 +7,7 @@ meta:
   authors: Microsoft
   github_repo: 'microsoft/dbt-fabricspark'
   pypi_package: 'dbt-fabricspark'
-  min_core_version: 'v1.7.0rc1'
+  min_core_version: 'v1.7'
   cloud_support: 'Not supported'
   min_supported_version: 'n/a'
   slack_channel_name: 'db-fabric-synapse'
