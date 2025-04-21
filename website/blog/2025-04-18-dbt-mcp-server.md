@@ -2,7 +2,7 @@
 title: "Introducing the dbt MCP Server – Bringing Structured Data to AI Workflows and Agents"
 description: "We’re open‑sourcing an experimental dbt MCP server so LLMs and agents can discover, query, and run your dbt project."
 slug: introducing-dbt-mcp-server
-img: /img/blog/2025-04-18-dbt-mcp-server/mcp_architecture_overview.png
+image: /img/blog/2025-04-18-dbt-mcp-server/mcp_architecture_overview.png
 authors: [jason_ganz]
 tags: [ai, data ecosystem]
 hide_table_of_contents: false
