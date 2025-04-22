@@ -97,7 +97,7 @@ From here, Kimiko can:
 - Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](//docs/cloud/canvas) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/canvas) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results

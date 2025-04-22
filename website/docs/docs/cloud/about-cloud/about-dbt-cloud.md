@@ -29,7 +29,7 @@ In addition to providing a hosted architecture for running dbt across your organ
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Canvas(beta)"
+    title="dbt Canvas (beta)"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
     link="/docs/cloud/canvas"
     icon="dbt-bit"/>
