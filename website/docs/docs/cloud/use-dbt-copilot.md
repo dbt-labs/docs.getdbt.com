@@ -36,7 +36,7 @@ This page explains how to use <Constant name="copilot" /> to:
 Building visual models in the <Constant name="visual_editor" /> is currently in private beta for [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
 :::
 
-<Constant name="copilot" /> seamlessly integrates with the [<Constant name="visual_editor" />](//docs/cloud/canvas), a drag-and-drop experience that helps you build your visual models using natural language prompts. Before you begin, make sure you can [access the <Constant name="visual_editor" />](/docs/cloud/use-canvas#access-canvas).
+<Constant name="copilot" /> seamlessly integrates with the [<Constant name="visual_editor" />](/docs/cloud/canvas), a drag-and-drop experience that helps you build your visual models using natural language prompts. Before you begin, make sure you can [access the <Constant name="visual_editor" />](/docs/cloud/use-canvas#access-canvas).
 
 <CopilotVE/>
 

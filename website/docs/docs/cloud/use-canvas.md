@@ -73,7 +73,7 @@ To create a dbt SQL model, click on **Create a new model** and perform the follo
 ## Edit an existing model
 To edit an existing model, navigate to a <Constant name="visual_editor" /> workspace, click on the **model icon** button on the upper left, click **+**, and click **Edit existing model**. This will allow you to select the model you'd like to edit.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/edit-model.png" width="90%" title="Eidt a model using the 'Edit a model' button." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/edit-model.png" width="90%" title="Edit a model using the 'Edit a model' button." />
 
 ## Version control
 
