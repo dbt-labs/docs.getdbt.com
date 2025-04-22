@@ -12,7 +12,7 @@ date: 2025-04-17
 is_featured: true
 ---
 
-As a dbt Cloud admin, you’ve just upgraded to dbt Cloud on the [Enterprise plan](https://www.getdbt.com/pricing) - **congrats**! dbt Cloud has a lot to offer such as [CI/CD](/docs/deploy/about-ci), [Orchestration](/docs/deploy/deployments), [dbt Explorer](/docs/collaborate/explore-projects), [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro), [Visual Editor](/docs/cloud/visual-editor), [dbt Copilot](/docs/cloud/dbt-copilot), and so much more. ***But where should you begin?*** 
+As a dbt Cloud admin, you’ve just upgraded to dbt Cloud on the [Enterprise plan](https://www.getdbt.com/pricing) - **congrats**! dbt Cloud has a lot to offer such as [CI/CD](/docs/deploy/about-ci), [Orchestration](/docs/deploy/deployments), [dbt Explorer](/docs/collaborate/explore-projects), [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro), [Visual Editor](/docs/cloud/canvas), [dbt Copilot](/docs/cloud/dbt-copilot), and so much more. ***But where should you begin?*** 
 
 We strongly recommend as you start adopting dbt Cloud functionality to make it a priority to set up Single-Sign On (SSO) and Role-Based Access Control (RBAC). This foundational step enables your organization to keep your data pipelines secure, onboard users into dbt Cloud with ease, and optimize cost savings for the long term.
 
