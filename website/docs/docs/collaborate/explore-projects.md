@@ -9,9 +9,11 @@ pagination_prev: null
 
 <IntroText>
 
-With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/collaborate/view-downstream-exposures) to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/collaborate/view-downstream-exposures) to gain a better understanding of its latest production state.
 
 </IntroText>
+
+Use <Constant name="explorer" /> to navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="explorer" /> integrates with the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt <Constant name="query_page" />](/docs/collaborate/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to help you develop or view your dbt resources.
 
 :::tip
 If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="explorer" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
@@ -71,11 +73,11 @@ Richer and more timely metadata will become available as <Constant name="cloud" 
 
 ## Explore your project's lineage graph {#project-lineage}
 
-dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Term> that you can interact with. To access the project's full lineage graph, select **Overview** in the left sidebar and click the **Explore Lineage** button on the main (center) section of the page.
+dbt Explorer provides a visualization of your project's <Term id="dag">DAG</Term> that you can interact with. To access the project's full lineage graph, select **Overview** in the left sidebar and click the **Explore Lineage** button on the main (center) section of the page.
 
-If you don't see the project lineage graph immediately, click **Render Lineage**. It can take some time for the graph to render depending on the size of your project and your computer’s available memory. The graph of very large projects might not render so you can select a subset of nodes by using selectors, instead.
+If you don't see the project lineage graph immediately, click **Render Lineage**. It can take some time for the graph to render depending on the size of your project and your computer's available memory. The graph of very large projects might not render so you can select a subset of nodes by using selectors, instead.
 
-The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
+The nodes in the lineage graph represent the project's resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
 By default, <Constant name="explorer" /> shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
@@ -83,7 +85,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 
 <Expandable alt_header="How can I interact with the full lineage graph?">
 
-- Hover over any item in the graph to display the resource’s name and type.
+- Hover over any item in the graph to display the resource's name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
 - Right-click on a node (context menu) to:
@@ -91,7 +93,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
     - View the node's [resource details](#view-resource-details) page
-- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details. In the side panel's upper right corner:
+- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph's right-hand side that displays a high-level summary of the resource's details. The side panel includes a **General** tab for information like description, materialized type, and other details. In the side panel's upper right corner:
     - Click the View Resource icon to [view the resource details](#view-resource-details).
     - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
     - Click the Copy Link to Page icon to copy the page's link to your clipboard.
@@ -99,7 +101,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - `resource_type:model [RESOURCE_NAME]` &mdash; Returns all models matching the name search
     - `resource_type:metric,tag:nightly` &mdash; Returns metrics with the tag `nightly`
 - Use [graph operators](/reference/node-selection/graph-operators) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. Examples:
-    - `+orders` &mdash; Returns all the upstream nodes of `orders`
+    - `+orders` &mdash; Returns all the upstream nodes of `orders`
     - `+dim_customers,resource_type:source` &mdash; Returns all sources that are upstream of `dim_customers`
 - Use [set operators](/reference/node-selection/set-operators) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. For example:
     - `+snowplow_sessions +fct_orders` &mdash; Use space-delineated arguments for a union operation. Returns resources that are upstream nodes of either `snowplow_sessions` or `fct_orders`.
@@ -117,7 +119,7 @@ Example of exploring a model in the project's lineage graph:
 
 ## Lenses
 
-The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
+The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project's contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 
 When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
@@ -203,12 +205,12 @@ Here's an example of the Open in <Constant name="cloud_ide" /> icon in the upper
 
 ## View model versions
 
-If models in the project are versioned, you can see which [version of the model](/docs/collaborate/govern/model-versions) is being applied &mdash; `prerelease`, `latest`, and `old` &mdash; in the title of the model’s details page and in the model list from the sidebar.
+If models in the project are versioned, you can see which [version of the model](/docs/collaborate/govern/model-versions) is being applied &mdash; `prerelease`, `latest`, and `old` &mdash; in the title of the model's details page and in the model list from the sidebar.
 
 ## View resource details {#view-resource-details}
 You can view the definition and latest run results of any resource in your project. To find a resource and view its details, you can interact with the lineage graph, use search, or browse the catalog.
 
-The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment.
+The details (metadata) available to you depends on the resource's type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment.
 
 In the upper right corner of the resource details page, you can:
 - Click the [Open in <Constant name="cloud_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
@@ -219,11 +221,11 @@ In the upper right corner of the resource details page, you can:
 - **Data health signals** &mdash; [Data health signals](/docs/collaborate/data-health-signals) offer a quick, at-a-glance view of data health. These icons indicate whether a model is Healthy, Caution, Degraded, or Unknown. Hover over an icon to view detailed information about the model's health.
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model.
 - **General** tab includes:
-    - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
+    - **Lineage** graph &mdash; The model's lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/build/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
     - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test.
-    - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
+    - **Details** section &mdash; Key properties like the model's relation name (for example, how it's represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
 - **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view.
@@ -237,7 +239,7 @@ In the upper right corner of the resource details page, you can:
 - **General** tab includes:
     - **Data health** &mdash; The status on data freshness and data quality.
     - **Status** section &mdash; The status on data freshness and data quality.
-    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the **Expand** icon in the graph's upper right corner to view the exposure in full lineage graph mode. Integrates natively with Tableau and auto-generates downstream lineage.
+    - **Lineage** graph &mdash; The exposure's lineage graph. Click the **Expand** icon in the graph's upper right corner to view the exposure in full lineage graph mode. Integrates natively with Tableau and auto-generates downstream lineage.
     - **Description** section &mdash; A description of the exposure.
     - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
     - **Relationships** section &mdash; The nodes the exposure **Depends On**.
@@ -251,7 +253,7 @@ In the upper right corner of the resource details page, you can:
 
 When you select a test, the following details are available:
 - **General** tab includes:
-    - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
+    - **Lineage** graph &mdash; The test's lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
     - **Description** section &mdash; A description of the test.
     - **Recent** section &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
     - **Details** section &mdash; Details like schema, severity, package, and more.
@@ -269,7 +271,7 @@ Example of the Tests view:
 - **Status bar** (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses.
 - **Data health signals** &mdash; [Data health signals](/docs/collaborate/data-health-signals) offer a quick, at-a-glance view of data health. These icons indicate whether a resource is Healthy, Caution, or Degraded. Hover over an icon to view detailed information about the source's health.
 - **General** tab includes:
-    - **Lineage** graph &mdash; The source’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the source. Click the Expand icon in the graph's upper right corner to view the source in full lineage graph mode.
+    - **Lineage** graph &mdash; The source's lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the source. Click the Expand icon in the graph's upper right corner to view the source in full lineage graph mode.
     - **Description** section &mdash; A description of the source.
     - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
     - **Details** section &mdash; Details like database, schema, and more.
@@ -293,7 +295,7 @@ Example of the details view for the model `customers`:<br /> <Lightbox src="/img
 
 <Constant name="explorer" /> supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny.
 
-You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per <Constant name="cloud" /> project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in <Constant name="explorer" />. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
+You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per <Constant name="cloud" /> project as "production" or "staging," and ensure the proper metadata has been generated then you'll be able to view it in <Constant name="explorer" />. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
 
