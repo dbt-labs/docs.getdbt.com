@@ -22,7 +22,7 @@ meta:
 
 Below is a guide for use with [Fabric Data Engineering](https://learn.microsoft.com/en-us/fabric/data-engineering/data-engineering-overview), a new product within Microsoft Fabric. This adapter currently supports connecting to a  lakehouse endpoint.
 
-To learn how to set up dbtAnalytics using Fabric Warehouse, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
+To learn how to set up dbt using Fabric Warehouse, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -43,7 +43,7 @@ dbt-fabricspark can connect to Fabric Spark runtime using Fabric Livy API method
 - [`batch-jobs`](#batch-jobs) entails submitting a Spark application for a single job execution. In contrast to a Livy session job, a batch job doesn't sustain an ongoing Spark session. With Livy batch jobs, each job initiates a new Spark session that ends when the job finishes.
 
 :::info Supported mode
-To share the session sate among jobs and reduce the overhead of session management,  dbt-fabricspark adapter supports only `session-jobs` mode.
+To share the session state among jobs and reduce the overhead of session management,  dbt-fabricspark adapter supports only `session-jobs` mode.
 :::
 
 ### session-jobs
@@ -93,7 +93,7 @@ your_profile_name:
 
 ### Retries
 
-Intermittent errors can crop up unexpectedly while running queries against Apache Spark. If `retry_all` is enabled, dbt-fabricspark will naively retry any queries that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding. The default `connect_retries` configuration is 2. 
+Intermittent errors can crop up unexpectedly while running queries against Fabric Spark. If `retry_all` is enabled, dbt-fabricspark will naively retry any queries that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding. The default `connect_retries` configuration is 2. 
 
 For instance, this will instruct dbt to retry all failed queries up to 3 times, with a 5 second delay between each retry:
 
@@ -127,4 +127,3 @@ Delta-only features:
 1. Lakehouse schemas are not supported. Refer to [limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-schemas#public-preview-limitations)
 2. Service Principal Authentication is not supported yet by Livy API.
 3. Only Delta, CSV & Parquet table data formats are supported by Fabric Lakehouse.
-4. 
