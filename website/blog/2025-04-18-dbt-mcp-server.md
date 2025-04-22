@@ -16,6 +16,8 @@ dbt is the standard for creating governed, trustworthy datasets on top of your s
 
 Today, we are open sourcing an experimental version of the [dbt MCP server](https://github.com/dbt-labs/dbt-mcp/tree/main). We expect that over the coming years, structured data is going to become heavily integrated into AI workflows and that dbt will play a key role in building and provisioning this data.
 
+<!-- truncate -->
+
 In particular, we expect both [Business Intelligence](https://roundup.getdbt.com/p/how-ai-will-disrupt-bi-as-we-know) and [Data Engineering](https://roundup.getdbt.com/p/how-ai-will-disrupt-data-engineering) will be driven by AI operating on top of the context defined in your dbt projects.
 
 **We are committed to building the data control plane that enables AI to reliably access structured data from across your entire data lineage.** Over the coming months and years, data teams will increasingly focus on building the rich context that feeds into the dbt MCP server.  Both AI agents and business stakeholders will then operate on top of LLM-driven systems hydrated by the dbt MCP context.
@@ -68,7 +70,7 @@ There are three primary functions of the dbt MCP server today.
 
 ❓Do I need to be a dbt Cloud customer to use the dbt MCP server?
 
-- No - there is functionality for both dbt Cloud and dbt Core users included in the MCP. Over time, Cloud-specific services will be built into the MCP server where they provide differentiated value.
+- No - there is functionality for both <Constant name="cloud" /> and dbt Core users included in the MCP. Over time, Cloud-specific services will be built into the MCP server where they provide differentiated value.
 
 Let’s walk through examples of these and why each of them can be helpful in human driven and agent driven use cases:
 
