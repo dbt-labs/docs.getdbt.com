@@ -40,7 +40,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 dbt-fabricspark can connect to Fabric Spark runtime using Fabric Livy API method. The Fabric Livy API allows submitting jobs in two different modes:  
 
 - [`session-jobs`](#session-jobs) A Livy session job entails establishing a Spark session that remains active throughout the spark session. A spark session, can run multiple jobs (each job is an action), sharing state and cached data between jobs.
-- [`batch-jobs`](#batch-jobs) entails submitting a Spark application for a single job execution. In contrast to a Livy session job, a batch job doesn't sustain an ongoing Spark session. With Livy batch jobs, each job initiates a new Spark session that ends when the job finishes.
+- batch jobs entails submitting a Spark application for a single job execution. In contrast to a Livy session job, a batch job doesn't sustain an ongoing Spark session. With Livy batch jobs, each job initiates a new Spark session that ends when the job finishes.
 
 :::info Supported mode
 To share the session state among jobs and reduce the overhead of session management,  dbt-fabricspark adapter supports only `session-jobs` mode.
