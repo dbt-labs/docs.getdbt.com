@@ -33,7 +33,10 @@ The query console is the main component of <Constant name="query_page" />. It al
 
 ### Query console menu
 The Query console menu is located at the top right of the Query editor. It contains the **Bookmark** and **Run** buttons:
-<!--- Ellipsis **(`...`)** button &mdash; Access to develop in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [Visual Editor](/docs/cloud/visual-editor) -->
+<!--- add the below once ide and canvas support is fully released. 
+
+- Ellipsis **(`...`)** button &mdash; Access to develop in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [Visual Editor](/docs/cloud/visual-editor). Note, if you're on a tab with a bookmarked query, you can also click on the ellipsis button to **Share**, **Develop in the IDE**, **Edit details**, and **Delete** a bookmark.
+- -->
 - **Bookmark** button &mdash; Save your frequently used SQL queries as favorites for easier access.
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
   - Let [<Constant name="copilot" />](/docs/cloud/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
@@ -71,7 +74,7 @@ The Query console sidebar menu and icons contains the following options:
 - **Bookmark icon** &mdash; Save and access your frequently used queries. 
   - Once you create and save a bookmark, click the ellipsis **(`...`)** button in the [Query console menu](#query-console-menu) to **Share**, **Develop in the IDE**, **Edit details**, and **Delete** a bookmark.
   - Enhance bookmarked queries with <Constant name="copilot" />'s AI-generated descriptions.
-- **Query history icon** &mdash; View past queries, their statuses (like Success, Error, Pending), start time, and duration. Search for past queries and filter by status. You can also re-run a query from the Query history.
+- **Query history icon** &mdash; View past queries, their statuses (All, Success, Error, or Pending), start time, and duration. Search for past queries and filter by status. You can also re-run a query from the Query history.
 - **<Constant name="copilot" /> icon** &mdash; Use [<Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts.
 
 <DocCarousel slidesPerView={1}>
