@@ -13,7 +13,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 </IntroText>
 
-Use <Constant name="explorer" /> to navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="explorer" /> integrates with the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt <Constant name="query_page" />](/docs/collaborate/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to help you develop or view your dbt resources.
+Use <Constant name="explorer" /> to navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="explorer" /> integrates with the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt <Constant name="query_page" />](/docs/collaborate/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="visual_editor" />](/docs/cloud/canvas) to help you develop or view your dbt resources.
 
 :::tip
 If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="explorer" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
