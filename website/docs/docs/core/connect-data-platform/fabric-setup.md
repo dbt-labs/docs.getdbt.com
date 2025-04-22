@@ -17,7 +17,7 @@ meta:
 
 Below is a guide for use with [Fabric Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently supports connecting to a warehouse. 
 
-To learn how to set up dbtAnalytics using Fabric Lakehouse, refer to [Microsoft Fabric Lakehouse](/docs/core/connect-data-platform/fabricspark-setup).
+To learn how to set up dbt using Fabric Lakehouse, refer to [Microsoft Fabric Lakehouse](/docs/core/connect-data-platform/fabricspark-setup).
 
 To learn how to set up dbtAnalytics dedicated SQL pools, refer to [Microsoft Azure Synapse Analytics setup](/docs/core/connect-data-platform/azuresynapse-setup).
 
