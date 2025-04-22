@@ -24,7 +24,7 @@ Learn how to access <Constant name="query_page" />, run queries, and view result
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** icon
 - Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
@@ -98,7 +98,7 @@ From here, Kimiko can:
 - If Kimiko wants to save the query, she can click **Bookmark** in the [query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/canvas) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results

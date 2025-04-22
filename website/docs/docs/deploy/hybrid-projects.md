@@ -18,7 +18,7 @@ Hybrid projects is available in private beta to [<Constant name="cloud" /> Enter
 <Constant name="core" /> users can seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) like [run results.json](/reference/artifacts/run-results-json), [manifest.json](/reference/artifacts/manifest-json), [catalog.json](/reference/artifacts/catalog-json), [sources.json](/reference/artifacts/sources-json), and so on &mdash; into <Constant name="cloud" /> after executing a run in the <Constant name="core" /> command line interface (CLI), which helps:
 
 - Collaborate with <Constant name="cloud" /> + <Constant name="core" /> users by enabling them to visualize and perform [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in Core projects.
-- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/visual-editor) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
+- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
 - <Constant name="core" /> and <Constant name="cloud" /> users can navigate to [<Constant name="explorer" />](/docs/collaborate/explore-projects) and view their models and assets. To view <Constant name="explorer" />, you must have a [read-only seat](/docs/cloud/manage-access/seats-and-users).
 
 ## Prerequisites

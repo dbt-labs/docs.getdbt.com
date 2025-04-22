@@ -39,6 +39,31 @@
   ],
   "redirects": [
     {
+      "source": "/docs/cloud/build-ve-copilot",
+      "destination": "/docs/cloud/build-canvas-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/visual-editor-interface",
+      "destination": "/docs/cloud/canvas-interface",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/visual-editor",
+      "destination": "/docs/cloud/canvas",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/use-visual-editor",
+      "destination": "/docs/cloud/use-canvas",
+      "permanent": true
+    },
+    {
+      "source": "/guides/visual-editor",
+      "destination": "/guides/canvas",
+      "permanent": true
+    },
+    {
       "source": "/docs/collaborate/navigate-query-page",
       "destination": "/docs/collaborate/navigate-dbt-insights",
       "permanent": true
