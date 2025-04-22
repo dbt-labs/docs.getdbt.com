@@ -268,7 +268,7 @@ or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
 
-Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
+Fabric Spark uses the terms "schema" and "database" interchangeably. dbt understands
 `database` to exist at a higher level than `schema`. As such, you should _never_
 use or set `database` as a node config or in the target profile when running dbt-fabricspark. 
 Move over, the adapter does not support schemas within Lakehouse.
