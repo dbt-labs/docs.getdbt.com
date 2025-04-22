@@ -1,34 +1,34 @@
 ---
-title: "Quickstart for the dbt Cloud Visual Editor"
-id: "visual-editor"
+title: "Quickstart for dbt Cloud Canvas"
+id: "canvas"
 level: 'Beginner'
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['Visual Editor','Analyst', 'dbt Cloud','model']
+tags: ['Visual Editor','Canvas','Analyst', 'dbt Cloud','model']
 recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-import Prerequisites from '/snippets/_visual-editor-prerequisites.md';
+import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
 ## Introduction
 
 :::note beta feature
 
-The <Constant name="visual_editor" /> is currently in a limited beta. [Contact us](https://www.getdbt.com/contact/) if you're interested in joining it. Features currently in the beta are subject to change or removal.
+<Constant name="visual_editor" /> is currently in a limited beta. [Contact us](https://www.getdbt.com/contact/) if you're interested in joining it. Features currently in the beta are subject to change or removal.
 
 :::
 
-The <Constant name="visual_editor" /> offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
+<Constant name="visual_editor" /> offers a quick and straightforward way for anyone to build analytics models, no background in analytics engineering is required! In this guide, you will learn about:
 
-- Accessing the <Constant name="visual_editor" /> and creating a new model
+- Accessing <Constant name="visual_editor" /> and creating a new model
 - Navigating the interface
 - Building a model using operators
 - Committing your changes to <Constant name="git" />
 - Locating your <Constant name="visual_editor" /> model and data
 
-<Prerequisites feature={'/snippets/_visual-editor-prerequisites.md'} />
+<Prerequisites feature={'/snippets/_canvas-prerequisites.md'} />
 
 :::note Prerequisite for using the Jaffle Shop
 
@@ -36,41 +36,44 @@ The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaf
 
 :::
 
-## Access the Visual Editor
+## Access Canvas
 
-To access the <Constant name="visual_editor" />:
+To access <Constant name="visual_editor" />:
 
 1. Click **Develop** from the main menu. If you do not see the **Develop** option, ensure you have selected a **Project** from the menu.
 2. Click **<Constant name="visual_editor" />**.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-main-menu.png" width="60%" title="Visual Editor in the Develop section of the main menu."/>
+<Lightbox src="/img/docs/dbt-cloud/canvas/access-canvas.png" width="60%" title="Canvas in the Develop section of the main menu."/>
 
-3. From the right side, click **Get started** and then click **Create new model**.
+3. From the right side, click **Create new workspace**. This will open a new workspace with a blank untitled model. You don't need to take any additional action to continue with this guide, but in scenarios where you want to create a new model, click the **model icon** on the top left, click **+**, and click **Create new model**.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-create-new-model.png" width="90%" title="Create a new model from the Visual Editor landing page."/>
+<Lightbox src="/img/docs/dbt-cloud/canvas/canvas-create-new-model.png" width="90%" title="Create a new model from the Canvas landing page."/>
 
 ## Navigating the interface
 
-The <Constant name="visual_editor" /> comprises a series of menus activated by clicking icons surrounding the border of the larger canvas. With none of the menu items activated, the workspace looks like this:
+<Constant name="visual_editor" /> comprises a series of menus activated by clicking icons surrounding the border of the canvas workspace area. With none of the menu items activated, the workspace looks like this:
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-screen.png" width="90%" title="The Visual Editor canvas. The number of items is defined in this section." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/canvas-screen.png" width="90%" title="The Canvas workspace screen. The number of items is defined in this section." />
 
 Click on an icon to expand its section or execute an action depending on its purpose. The options are as follows:
 
-1. The main menu (click on the **dbt logo**) and the model's title. The title defaults to "Untitled" but can be edited anytime by clicking on it.
-2. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
-3. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
-4. The **SQL code** area displays the SQL that compiles your model.
-5. The **Runs and previews** that displays run data and previews data for individual operators.
-6. The **Commit history** display.
-7. The navigation tab that has icons for (from top to bottom):
+1. The main menu (click on the **dbt logo**) and the workspace's title. The title default is random but can be edited anytime by clicking on it.
+2. The **current model tab** and name. The name for the model is set with the **Output** operator.
+3. The **model icon** button. Manage your models in the workspace and create new or edit existing models. 
+4. The **Runs** pane displays run data, including warnings and errors.
+5. The **Commit history** display.
+6. The **Previews** pane that displays previews data for individual operators.
+7. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
+8. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
+9. The **SQL code** area displays the SQL that compiles your model.
+10. The **Run** command executes `dbt run` for the model.
+11. This button is initially a **Commit** command for your integrated <Constant name="git" /> provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
+12. The navigation tab that has icons for (from top to bottom):
     - Zoom in
     - Zoom out
     - Center the model to fit the screen
     - Zoom to selection (the operator selected on or off screen will be zoomed and centered)
     - Auto-layout option for the individual operator tiles
-8. The **Run** command executes `dbt run` for the model.
-9. This button is initially a **Commit** command for your integrated <Constant name="git" /> provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
 
 ## Create a model
 
@@ -83,9 +86,9 @@ Operators are divided into three types:
 - **Transform:** Transform operators change and shape your data.
 - **Output:** Output operators define your model name and location.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/operators.png" width="90%" title="The operator’s menu on the side of the Visual Editor canvas." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/operators.png" width="90%" title="The operator’s menu on the side of the Canvas workspace." />
 
-Read more about the [individual operators](/docs/cloud/visual-editor-interface#operators) to understand the basic purpose of each. The dbt model created by the <Constant name="visual_editor" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
+Read more about the [individual operators](/docs/cloud/canvas-interface#operators) to understand the basic purpose of each. The dbt model created by the <Constant name="visual_editor" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
 
 <details>
 <summary>More about operator tiles</summary>
@@ -94,7 +97,7 @@ The operators are drag-and-drop from their menu to the canvas, and when they are
 
 The tiles have the same basic setup with different fields depending on their function. All operators except for **Model** must be connected to another tile before configuring. Once configured, they’ll have the same basic layout.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/operator-tile.png" width="90%" title="An operator tile with configurations filled out." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/operator-tile.png" width="90%" title="An operator tile with configurations filled out." />
 
 1. **The connectors:** Click-and-drag to the connector on another operator to link them. Some connectors have L and R markers. When implementing joins, they designate the left and right joins, respectively.
 2. **The title:** Click to change. The examples and images in this guide will use the default names. 
@@ -117,13 +120,13 @@ To get started:
 2. Click **Choose a model** and then select the source `stg_models` from the dropdown. 
 3. Click the **Select model** option in the window that lists the columns.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/one-model-operators.png" width="90%" title="A single model operator." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operators.png" width="90%" title="A single model operator." />
 
 You now have your first input model in <Constant name="visual_editor" />!
 
 4. Drag a new **Input Model** operator to the canvas below the first and repeat the previous steps, but this time set the source model to `stg_order_items`.
 
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/two-model-operators.png" width="90%" title="Two model operators in the canvas."/>
+    <Lightbox src="/img/docs/dbt-cloud/canvas/two-model-operators.png" width="90%" title="Two model operators in the canvas."/>
 
 Now, you have two input models and are ready to transform the data!
 
@@ -137,11 +140,11 @@ Don't see a pre-existing model you're looking for? Ask your dbt admins to ensure
 
 1. From the **Operators** menu, click **Transform** and drag the **Join** operator onto the canvas to the right of the source models. 
     
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/join-not-connected.png" width="90%" title="A join that has not been connected to the models" />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/join-not-connected.png" width="90%" title="A join that has not been connected to the models" />
 
 2. Click and drag a line from the **+** connector below the `L` on the join border to the **+** on the `stg_orders` model. Do the same for the `R` connector to the `stg_order_items` model.
 
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/join-connected.png" width="90%" title="The join is connected to two model operators." />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/join-connected.png" width="90%" title="The join is connected to two model operators." />
 
 3. In the **Join** tile, click **Configure inputs.**
 4. Set the **Join type** to `Inner`.
@@ -153,7 +156,7 @@ select the following columns:
     - Note: These will appear in the order they are clicked.
 7. You've now built your join! Test it by clicking the **Play icon** in the top right corner of the join tile. Your data will populate in the **Runs and previews** pane.
 
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/preview-join.png" width="90%" title="A completed join with the sample data." />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/preview-join.png" width="90%" title="A completed join with the sample data." />
 
 :::tip
 
@@ -178,7 +181,7 @@ Multiple options for transforming your data include custom formulas, filters, an
     - **Column:** PRODUCT_ID
     - **Alias:** count_PRODUCT_ID
 
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/aggregation.png" width="90%" title="The configured aggregation operator tile." />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/aggregation.png" width="90%" title="The configured aggregation operator tile." />
 
 6. Click the **Play icon** to preview the data. You're starting to see the results you're looking for, but the data is scattered. Let's clean it up a bit more.
 
@@ -198,7 +201,7 @@ There's a lot of data there. Dozens of customers are buying hundreds of products
 4. Click **Add sorting** and in the new **Select column** field select `Aggregation1.count_PRODUCT_ID`. Set it to `Desc`.
 5. Press the **Play icon** to preview the new data.
 
-    <Lightbox src="/img/docs/dbt-cloud/visual-editor/order.png" width="90%" title="The ordered data operator tile config and data preview." />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/order.png" width="90%" title="The ordered data operator tile config and data preview." />
 
 :::tip
 
@@ -217,7 +220,7 @@ Now that you've built your model, you need to customize the output name and loca
     - Hover over a column name and click the **-** icon to remove it from the output model.
 4. Click the **play icon** to preview your final model. 
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/output-model.png" width="90%" title="The output model configures your final model's name and location." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/output-model.png" width="90%" title="The output model configures your final model's name and location." />
 
 :::tip Model locations
 
@@ -237,11 +240,11 @@ Now that you've built a model that results in the data you want, it's time to ru
 
 To run your model, you only need to click the big **Run** button. With the <Constant name="visual_editor" />, there is no command line and no need to memorize a list of commands; there is only **Run**. Click it to see the results populate in the **Runs and previews** pane.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/run-results.png" width="90%" title="The results of a successful run in the 'Runs and previews' pane." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/run-results.png" width="90%" title="The results of a successful run in the 'Runs and previews' pane." />
 
 This will [materialize](/docs/build/materializations) the data as a `view` in your developer schema in the database. Once the model has been merged with your project and `dbt run` is executed in your Staging or Production environments, it will be materialized as a view in related schemas. 
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/preview-data.png" width="90%" title="Preview of the transformed data in Snowflake." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/preview-data.png" width="90%" title="Preview of the transformed data in Snowflake." />
 
 :::tip
 
@@ -253,7 +256,7 @@ Have dbt [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your
 
 The models built in the <Constant name="visual_editor" /> are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/ve-model-folder.png" width="90%" title="Example of the Visual Editor's model path in GitHub." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/ve-model-folder.png" width="90%" title="Example of the Canvas model path in GitHub." />
 
 However, it won't be created in your <Constant name="git" /> repo until you commit your first model. So, back in the model's view:
 
@@ -265,7 +268,7 @@ However, it won't be created in your <Constant name="git" /> repo until you comm
 
 The following example uses GitHub as the provider:
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/demo-model-github.png" width="90%" title="Example of the screen you're taken to in GitHub when you create a pull request from the Visual Editor." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/demo-model-github.png" width="90%" title="Example of the screen you're taken to in GitHub when you create a pull request from Canvas." />
 
 5. Click **Create pull request** in the GitHub window.
 6. Complete the **Add a title** and **Add a description** fields. If your description is split between both, copy all the contents to the description field and give it a shorter title.

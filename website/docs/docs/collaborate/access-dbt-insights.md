@@ -24,7 +24,7 @@ Learn how to access <Constant name="query_page" />, run queries, and view result
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** icon
 - Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/visual-editor) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="explorer" />](/docs/collaborate/explore-projects), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), and [<Constant name="visual_editor" />](/docs/cloud/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
@@ -95,9 +95,10 @@ From here, Kimiko can:
 - [Visualize results](#chart-results) in the **Chart** tab
 - Check the [**Query history**](#query-history) for status and past runs
 - Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
+- If Kimiko wants to save the query, she can click **Bookmark** in the [query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?
-Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/visual-editor) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
+Coming soon &mdash; you'll be able to access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/canvas) from the [Query console menu](/docs/collaborate/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="cloud" />!
 :::
 
 ### View results
@@ -128,10 +129,11 @@ Kimiko can visualize the chart results of the query by clicking on the **Chart**
 
 ### Query history
 
-Kimiko can also view the history of queries and their statuses (like Success, Error, Pending) using the **Query history** icon:
+Kimiko can also view the history of queries and their statuses (All, Success, Error, or Pending) using the **Query history** icon:
 - She can select a query to re-run to view the results. 
 - She can search for past queries and filter by status.
 - For each query, she can click on the ellipsis **(`...`)** button to open the query in a new tab or copy the SQL.
+- Hover over the query to view the SQL code or copy it.
 
 The query history is stored indefinitely.
 

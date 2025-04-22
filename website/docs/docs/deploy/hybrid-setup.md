@@ -157,5 +157,5 @@ Now that you've integrated <Constant name="core" /> artifacts with your <Constan
 
 
 - Collaborate with <Constant name="cloud" /> users by enabling them to visualize and perform [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in Core projects.
-- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/visual-editor) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
+- (Coming soon) New users interested in the [<Constant name="visual_editor" />](/docs/cloud/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
 - <Constant name="core" /> users can navigate to [<Constant name="explorer" />](/docs/collaborate/explore-projects) and view their models and assets. To view <Constant name="explorer" />, you must have a [read-only seat](/docs/cloud/manage-access/seats-and-users).
