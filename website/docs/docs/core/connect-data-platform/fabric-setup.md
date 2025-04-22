@@ -21,7 +21,6 @@ To learn how to set up dbtAnalytics using Fabric Lakehouse, refer to [Microsoft 
 
 To learn how to set up dbtAnalytics dedicated SQL pools, refer to [Microsoft Azure Synapse Analytics setup](/docs/core/connect-data-platform/azuresynapse-setup).
 
-:::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
