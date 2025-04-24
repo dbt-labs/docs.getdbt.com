@@ -8,7 +8,7 @@ pagination_prev: "docs/cloud/canvas"
 
 ---
 
-# Navigate the interface <Lifecycle status='beta, enterprise'/> 
+# Navigate the interface <Lifecycle status='beta, managed'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 

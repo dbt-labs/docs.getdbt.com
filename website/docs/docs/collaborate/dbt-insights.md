@@ -7,7 +7,7 @@ pagination_next:  "docs/collaborate/access-dbt-insights"
 image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
-# About dbt Insights <Lifecycle status="beta,enterprise" />
+# About dbt Insights <Lifecycle status="beta,managed" />
 
 <IntroText>
 Learn how to query data with <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.

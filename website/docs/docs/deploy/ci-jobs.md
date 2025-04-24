@@ -40,7 +40,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 4. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, this includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
     - **Linting** &mdash; Enable this option for dbt to [lint the SQL files](/docs/deploy/continuous-integration#sql-linting) in your project as the first step in `dbt run`. If this check runs into an error, dbt can either **Stop running on error** or **Continue running on error**. 
-    - **dbt compare**<Lifecycle status="enterprise" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
+    - **dbt compare**<Lifecycle status="managed" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
     
       To review the comparison report, navigate to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your <Constant name="git" /> provider (see the [CI report example](#example-ci-report)). 
 
@@ -99,7 +99,7 @@ If you're not using <Constant name="cloud" />’s native <Constant name="git" />
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
-## Semantic validations in CI  <Lifecycle status="team,enterprise" />
+## Semantic validations in CI  <Lifecycle status="self_service,managed" />
 
 Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
 

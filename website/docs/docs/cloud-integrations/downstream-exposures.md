@@ -7,7 +7,7 @@ image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 pagination_next: "docs/cloud-integrations/downstream-exposures-tableau"
 ---
 
-# Visualize and orchestrate downstream exposures <Lifecycle status="enterprise"/>
+# Visualize and orchestrate downstream exposures <Lifecycle status="managed" />
 
 <IntroText>
 

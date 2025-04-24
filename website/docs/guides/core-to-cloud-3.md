@@ -102,8 +102,8 @@ When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` fil
 - Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in <Constant name="cloud" /> to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - <Constant name="cloud" /> automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
-- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
+- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed" />
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats
@@ -162,7 +162,7 @@ Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-la
 - Use the search and filter capabilities in <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/collaborate/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
 - Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
-- Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
+- Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="managed" />
 
 ### Caveats
 - There must be at least one successful job run in the production deployment environment for <Constant name="explorer" /> to populate information. 

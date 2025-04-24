@@ -6,7 +6,7 @@ tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
-# Access the dbt Insights interface <Lifecycle status="beta,enterprise" />
+# Access the dbt Insights interface <Lifecycle status="beta,managed" />
 
 <IntroText>
 Learn how to access <Constant name="query_page" />, run queries, and view results.

@@ -38,7 +38,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 To leverage <Constant name="mesh" />, you need the following:
 
-- You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
+- You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed" />
 - You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="cloud" /> permissions to create new projects. 
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)

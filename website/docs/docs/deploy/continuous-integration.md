@@ -56,11 +56,11 @@ When you push a new commit to a PR, <Constant name="cloud" /> enqueues a new CI 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
-### Run slot treatment <Lifecycle status="team,enterprise" />
+### Run slot treatment <Lifecycle status="self_service,managed" />
 
 CI runs don't consume run slots. This guarantees a CI check will never block a production run.
 
-### SQL linting <Lifecycle status="team,enterprise" />
+### SQL linting <Lifecycle status="self_service,managed" />
 
 Available on [<Constant name="cloud" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and <Constant name="cloud" /> Team or Enterprise accounts.
 

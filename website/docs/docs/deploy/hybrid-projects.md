@@ -5,7 +5,7 @@ description: "Learn how to upload dbt Core artifacts into dbt Cloud to create an
 pagination_next: "docs/deploy/hybrid-setup"
 ---
 
-# About Hybrid projects <Lifecycle status='beta,enterprise'/>
+# About Hybrid projects <Lifecycle status='beta,managed'/>
 
 <IntroText>
 With Hybrid projects, your organization can adopt complementary <Constant name="core" /> and <Constant name="cloud" /> workflows (where some teams develop projects in <Constant name="core" /> and others in <Constant name="cloud" />) and seamlessly integrate these workflows by automatically uploading <Constant name="core" /> [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud" />.

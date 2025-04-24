@@ -31,6 +31,11 @@ Foreign key constraints accept two additional inputs:
 
 This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="cloud" /> "Latest""](/docs/dbt-versions/cloud-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
+Since constraints support and enforcement [varies by platform](/reference/resource-properties/constraints#platform-specific-support), dbt offers two optional fields you can specify on any filter:
+
+- `warn_unenforced`: Set to `False` to skip warnings for constraints that are supported by your platform but not enforced (like `primary_key` in Snowflake).
+- `warn_unsupported`: Set to `False` to skip warnings for constraints that your platform doesn't support at all (like `check` in Redshift).
+
 <File name='models/schema.yml'>
 
 ```yml
@@ -45,6 +50,7 @@ models:
     constraints:
       - type: primary_key
         columns: [first_column, second_column, ...]
+        warn_unsupported: True # show a warning if unsupported
       - type: foreign_key # multi_column
         columns: [first_column, second_column, ...]
         to: ref('my_model_to') | source('source', 'source_table')
@@ -66,6 +72,7 @@ models:
           - type: foreign_key
             to: ref('my_model_to') | source('source', 'source_table')
             to_columns: [other_model_column]
+            warn_unenforced: False # skips warning if supported but not enforced
           - type: ...
 ```
 

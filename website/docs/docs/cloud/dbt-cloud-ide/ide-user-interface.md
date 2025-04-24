@@ -109,7 +109,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/dbt-cloud-ide/lint-format) on the active file in the File Editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** <Lifecycle status="enterprise"/> &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that can generate documentation, tests, and semantic models for you. dbt Copilot is available in the IDE for Enterprise plans.
+5. **dbt Copilot** <Lifecycle status="managed" /> &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that can generate documentation, tests, and semantic models for you. dbt Copilot is available in the IDE for Enterprise plans.
 
 6. **Results tab &mdash;** The Results console tab displays the most recent Preview results in tabular format. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/results-console-tab.jpg" width="90%" title="Preview results show up in the Results console tab"/>

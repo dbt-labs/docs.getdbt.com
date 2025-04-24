@@ -7,7 +7,7 @@ pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
-# Project dependencies <Lifecycle status='enterprise'/>
+# Project dependencies <Lifecycle status='managed'/>
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 

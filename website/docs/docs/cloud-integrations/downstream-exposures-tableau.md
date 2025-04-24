@@ -5,7 +5,7 @@ description: "Set up and visualize exposures automatically by auto-generating th
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Set up automatic exposures in Tableau <Lifecycle status="enterprise" />
+# Set up automatic exposures in Tableau <Lifecycle status="managed" />
 
 <IntroText>
 Set up and automatically populate downstream exposures for supported BI tool integrations, like Tableau. Visualize and orchestrate them through <a href="https://docs.getdbt.com/docs/collaborate/explore-projects">dbt Explorer</a> and the [dbt Cloud job scheduler](/docs/deploy/job-scheduler) for a richer experience.

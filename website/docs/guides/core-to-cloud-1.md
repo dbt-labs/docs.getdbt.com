@@ -69,7 +69,7 @@ This section outlines the steps to set up your <Constant name="cloud" /> account
 
 2. Provide user [access](/docs/cloud/manage-access/about-user-access) and [invite users](/docs/cloud/manage-access/about-user-access) to your <Constant name="cloud" /> account and project.
 
-3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status='enterprise' />
+3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status="managed" />
    - This removes the need to save passwords and secret environment variables locally.
 
 ### Additional configuration
@@ -77,7 +77,7 @@ Explore these additional configurations for performance and reliability improvem
 
 1. In **Account settings**, enable [partial parsing](/docs/cloud/account-settings#partial-parsing) to only reparse changed files, saving time.
 
-2. In **Account settings**, enable [Git repo caching](/docs/cloud/account-settings#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status='enterprise' />
+2. In **Account settings**, enable [Git repo caching](/docs/cloud/account-settings#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status="managed" />
 
 ## Data platform setup
 
@@ -85,7 +85,7 @@ This section outlines the considerations and methods to connect your data platfo
 
 1. In <Constant name="cloud" />, set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables). <Constant name="cloud" /> can connect with a variety of data platform providers including:
    - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-   - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena) (beta)
+   - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
    - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
    - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
@@ -95,6 +95,7 @@ This section outlines the considerations and methods to connect your data platfo
    - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
    - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
    - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
+   - [Teradata](/docs/cloud/connect-data-platform/connect-teradata)
 
 2. You can verify your data platform connections by clicking the **Test connection** button in your deployment and development credentials settings.
 
@@ -102,7 +103,7 @@ This section outlines the considerations and methods to connect your data platfo
 
 Explore these additional configurations to optimize your data platform setup further:
 
-1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status='enterprise' />
+1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status="managed" />
 
 ## Git setup
 
@@ -119,7 +120,7 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 ### Additional configuration
 Explore these additional configurations to optimize your <Constant name="git" /> setup further:
 
-1. Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
+1. Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status="managed" />
   
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
 
@@ -141,7 +142,7 @@ The most common data environments are production, staging, and development. The 
 - Streamlining the process of switching between development, staging, and production contexts.
 - Making it easy to configure environments through the dbt Cloud UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
 - Adding `profiles.yml` attributes to dbt Cloud environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
-- Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="enterprise"/>
+- Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed" />
 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
@@ -225,9 +226,9 @@ Explore these additional configurations to optimize your <Constant name="cloud" 
 
 4. **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
 
-5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
+5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
 
-6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/collaborate/explore-projects#generate-metadata) in dbt Explorer. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="team,enterprise" />
+6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/collaborate/explore-projects#generate-metadata) in dbt Explorer. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="self_service,managed" />
 
 ### CI/CD setup
 
@@ -251,7 +252,7 @@ You’ll want to make sure you set up your [development environment and credenti
    - Run `dbt compile` to make sure your project compiles correctly.
    - Run a few models in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you’re experiencing accurate results in development.
 
-2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
+2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
 ## What’s next?
 

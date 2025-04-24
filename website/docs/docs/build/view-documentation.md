@@ -16,7 +16,7 @@ You can view documentation in two complementary ways, depending on your needs:
 ## Navigating your documentation
 The following sections describe how to navigate your documentation in <Constant name="explorer" /> and dbt Docs.
 
-### dbt Explorer <Lifecycle status="team,enterprise" />
+### dbt Explorer <Lifecycle status="self_service,managed" />
 
 [<Constant name="explorer" />](/docs/collaborate/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
 To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
@@ -67,7 +67,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 :::
 
-### dbt Explorer <Lifecycle status="team,enterprise" />
+### dbt Explorer <Lifecycle status="self_service,managed" />
 
 
 <Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/collaborate/explore-projects#generate-metadata). 

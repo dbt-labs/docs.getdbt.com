@@ -113,11 +113,10 @@ To merge code changes with confidence, you want to know that those changes will 
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-By comparing to artifacts from a previous production run, dbt can determine
-which models are modified and build them on top of of their unmodified parents.
+By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of of their unmodified parents.
 
 ```bash
-dbt -s state:modified+ --defer --state path/to/prod/artifacts
+dbt run -s state:modified+ --defer --state path/to/prod/artifacts
 dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
@@ -132,7 +131,7 @@ By comparing to artifacts from a previous production run, dbt can determine mode
 
 For smarter reruns, use the `result:<status>` selector instead of manually overriding dbt commands with the models in scope.
 ```bash
-dbt --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
+dbt run --select state:modified+ result:error+ --defer --state path/to/prod/artifacts
 ```
   - Rerun all my erroneous models AND run changes I made concurrently that may relate to the erroneous models for downstream use
 

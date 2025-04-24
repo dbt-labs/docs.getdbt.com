@@ -5,7 +5,7 @@ unlisted: true
 sidebar_label: About cost management
 ---
 
-# About cost management in dbt Cloud <Lifecycle status='beta, enterprise' />
+# About cost management in dbt Cloud <Lifecycle status='beta, managed' />
 
 :::note beta documentation
 

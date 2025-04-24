@@ -49,6 +49,53 @@ You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation). If the flag is set to `True`, dbt will raise a warning if the argument `type` names you've added in your macro YAMLs don't match the argument names in your macro or if the argument types aren't valid according to the [supported types](/reference/resource-properties/arguments#supported-types).
 
+### Deprecation warnings
+
+New deprecation warnings in v1.10.
+
+#### Duplicate keys in profiles.yml
+
+
+In v1.10, if two identical keys exist in the `profiles.yml`, you will get a warning, and in a future version, dbt will stop supporting duplicate keys with silent overwrite. 
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+
+```yml
+
+my_profile:
+  target: 
+  outputs:
+...
+
+my_profile: # dbt would use this profile key
+  target: 
+  outputs:
+...
+
+```
+
+#### Custom inputs
+Starting in dbt v1.10, you will receive deprecation warnings for dbt code that will become invalid in the future, including: 
+
+- Unrecognized resource properties, configurations, and top-level keys
+- Duplicate YAML keys in the same file
+- `{% endmacro %}` tags without a corresponding `{% macro %}` tag
+- And more
+  
+Historically, dbt has allowed you to configure inputs largely unconstrained. A common example of this is setting custom YAML properties:
+
+```yml
+
+models:
+  - name: my_model
+    description: A model in my project.
+    dbt_is_awesome: true # a custom property
+
+```
+
+dbt detects the unrecognized custom property (`dbt_is_awesome`) and silently continues. Without a set of strictly defined inputs, it becomes challenging to validate your project's configuration. This creates unintended issues such as:
+- Silently ignoring misspelled properties and configurations (for example, `desciption:` instead of `description:`).
+- Unintended collisions with user code when dbt introduces a new “reserved” property or configuration.
+
 ## Quick hits
 
 - Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.

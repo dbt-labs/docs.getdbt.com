@@ -6,7 +6,7 @@ pagination_next: "docs/deploy/deployment-tools"
 pagination_prev: "docs/deploy/hybrid-projects"
 ---
 
-# Hybrid setup <Lifecycle status='beta,enterprise'/>
+# Hybrid setup <Lifecycle status='beta,managed'/>
 
 <IntroText>
 Set up Hybrid projects to upload <Constant name="core" /> artifacts into <Constant name="cloud" /> for better collaboration and visibility.

@@ -18,7 +18,7 @@ pagination_prev: null
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
-- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="Preview" />
+- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="preview" />
 
 To connect to your database in <Constant name="cloud" />:
 

@@ -213,13 +213,9 @@ my-snowflake-db:
 
 ### SSO authentication
 
-To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
-`authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
+To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config set to 'externalbrowser' to your target. 
 
-Refer to the following tabs for more info and examples:
-
-<Tabs>
-<TabItem value="externalbrowser" label="externalbrowser">
+Refer to the following example:
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -252,47 +248,6 @@ my-snowflake-db:
 ```
 
 </File>
-
-</TabItem>
-
-<TabItem value="oktaurl" label="Okta URL">
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-my-snowflake-db:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      account: [account id] # Snowflake <account_name>
-      user: [username] # Snowflake username
-      role: [user role] # Snowflake user role
-
-      # SSO config -- The three following fields are REQUIRED
-      authenticator: [Okta account URL]
-      username: [Okta username]
-      password: [Okta password]
-
-      database: [database name] # Snowflake database name
-      warehouse: [warehouse name] # Snowflake warehouse name
-      schema: [dbt schema]
-      threads: [between 1 and 8]
-      client_session_keep_alive: False
-      query_tag: [anything]
-
-      # optional
-      connect_retries: 0 # default 0
-      connect_timeout: 10 # default: 10
-      retry_on_database_errors: False # default: false
-      retry_all: False  # default: false
-      reuse_connections: False
-```
-
-</File>
-
-</TabItem>
-</Tabs>
 
 </VersionBlock>
 
@@ -334,13 +289,9 @@ my-snowflake-db:
 
 ### SSO authentication
 
-To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
-`authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
+To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config set to 'externalbrowser' to your target. 
 
-Refer to the following tabs for more info and examples:
-
-<Tabs>
-<TabItem value="externalbrowser" label="externalbrowser">
+Refer to the following example:
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -373,47 +324,6 @@ my-snowflake-db:
 ```
 
 </File>
-
-</TabItem>
-
-<TabItem value="oktaurl" label="Okta URL">
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-my-snowflake-db:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      account: [account id] # Snowflake <account_name>
-      user: [username] # Snowflake username
-      role: [user role] # Snowflake user role
-
-      # SSO config -- The three following fields are REQUIRED
-      authenticator: [Okta account URL]
-      username: [Okta username]
-      password: [Okta password]
-
-      database: [database name] # Snowflake database name
-      warehouse: [warehouse name] # Snowflake warehouse name
-      schema: [dbt schema]
-      threads: [between 1 and 8]
-      client_session_keep_alive: False
-      query_tag: [anything]
-
-      # optional
-      connect_retries: 0 # default 0
-      connect_timeout: 10 # default: 10
-      retry_on_database_errors: False # default: false
-      retry_all: False  # default: false
-      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
-```
-
-</File>
-
-</TabItem>
-</Tabs>
 
 </VersionBlock>
 

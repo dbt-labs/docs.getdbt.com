@@ -17,7 +17,7 @@ They could also be used to:
 - identify historical changes in <Term id="table" /> structure
 - do much, much more
 
-### When are artifacts produced? <Lifecycle status="team,enterprise"/>
+### When are artifacts produced? <Lifecycle status="self_service,managed" />
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed

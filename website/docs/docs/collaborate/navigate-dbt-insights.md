@@ -6,7 +6,7 @@ tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-results.jpg
 ---
 
-# Navigate the dbt Insights interface <Lifecycle status="beta,enterprise" />
+# Navigate the dbt Insights interface <Lifecycle status="beta,managed" />
 
 <IntroText>
 Learn how to navigate <Constant name="query_page" /> interface and use the main components.
@@ -71,7 +71,7 @@ The Query output panel is below the query editor and displays the results of a q
 
 ## Query console sidebar menu
 The Query console sidebar menu and icons contains the following options:
-- **<Constant name="explorer" /> icon** &mdash; View your project’s tables, columns, metrics, lineage, and more using the integrated <Constant name="explorer" /> view.
+- **<Constant name="explorer" /> icon** &mdash; View your project's tables, columns, metrics, lineage, and more using the integrated <Constant name="explorer" /> view.
 - **Bookmark icon** &mdash; Save and access your frequently used queries. 
   - Once you create and save a bookmark, click the ellipsis **(`...`)** button in the [Query console menu](#query-console-menu) to **Share**, **Develop in the IDE**, **Edit details**, and **Delete** a bookmark.
   - Enhance bookmarked queries with <Constant name="copilot" />'s AI-generated descriptions.

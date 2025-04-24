@@ -4,7 +4,7 @@ description: "Learn how dbt Cloud administrators can use Databricks OAuth to con
 id: "set-up-databricks-oauth"
 ---
 
-# Set up Databricks OAuth <Lifecycle status="enterprise" />
+# Set up Databricks OAuth <Lifecycle status="managed" />
 
 <Constant name="cloud" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with Databricks in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 

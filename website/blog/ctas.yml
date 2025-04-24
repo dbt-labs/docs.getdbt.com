@@ -35,4 +35,9 @@
   subheader: Join us on March 19th or 20th to hear from dbt Labs product leads about exciting new and coming-soon features designed to supercharge data developer workflows.
   button_text: Save your seat
   url: https://www.getdbt.com/resources/webinars/dbt-developer-day
+- name: launch_showcase_2025
+  header: 2025 dbt Launch Showcase 
+  subheader: Don't miss the annual dbt Launch Showcase on May 28 and 29th! Catch live demos and get a first look at the latest features coming to dbt.
+  button_text: Save your seat
+  url: https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase
 

@@ -113,7 +113,7 @@ Examples of cron job schedules:
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 
-### Trigger on job completion  <Lifecycle status="team,enterprise" />
+### Trigger on job completion  <Lifecycle status="self_service,managed" />
 
 To _chain_ deploy jobs together:
 1. In the **Triggers** section, enable the **Run when another job finishes** option.

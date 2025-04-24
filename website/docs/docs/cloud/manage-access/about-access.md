@@ -62,9 +62,9 @@ There are three default groups available as soon as you create your <Constant na
 - **Member:** This group is for the general members of your organization, who will also have full access to the account. You cannot change the permissions. By default, <Constant name="cloud" /> adds new users to this group.
 - **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, <Constant name="cloud" /> adds new users to this group.
 
-We recommend deleting the default `Owner`, `Member`, and `Everyone` groups before deploying and replacing them with your organizational groups. This prevents users from receiving more elevated privileges than they should and helps admins ensure they are properly placed.
+Default groups are automatically provisioned for all accounts to simplify the initial set up. We recommend  creating your own organizational groups so you can customize the permissions. Once you create your own groups, you can delete the default groups.
 
-### Create new groups <Lifecycle status='enterprise'/>
+### Create new groups <Lifecycle status="managed" />
 
 - Create new groups from the **Groups & Licenses** section of the **Account settings**.
 - If you use an external IdP for SSO, you can sync those SSO groups to <Constant name="cloud" /> from the **Group details** pane when creating or editing existing groups.
@@ -77,7 +77,7 @@ If a user is assigned licenses and permissions from multiple groups, the group t
 
 :::
 
-### SSO mappings <Lifecycle status='enterprise'/>
+### SSO mappings <Lifecycle status="managed" />
 
 SSO Mappings connect an identity provider (IdP) group membership to a <Constant name="cloud" /> group. When users log into <Constant name="cloud" /> via a supported identity provider, their IdP group memberships sync with <Constant name="cloud" />. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within <Constant name="cloud" />.
 
@@ -124,7 +124,7 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
-## Role-based access control <Lifecycle status='enterprise' />
+## Role-based access control <Lifecycle status="managed" />
 
 Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating <Constant name="cloud" /> with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
 

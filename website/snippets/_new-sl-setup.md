@@ -67,7 +67,7 @@ This credential controls the physical access to underlying data accessed by the 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
-### 4. Add more credentials <Lifecycle status="enterprise"/>
+### 4. Add more credentials <Lifecycle status="managed" />
 dbt Cloud Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams, which can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
 
 We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing access to finance-related schemas to the Finance team.

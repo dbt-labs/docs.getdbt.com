@@ -2,12 +2,24 @@
 
 import React from 'react';
 import styles from './styles.module.css';
-import { STATUS_URLS } from './lifecycle-urls.js';
+import { STATUS_URLS, MANAGED, SELF_SERVICE, DEVELOPER } from './lifecycle-urls.js';
+
+// mapping of variable names to their values (both uppercase and lowercase)
+const PLAN_VARIABLES = {
+  // Uppercase
+  'MANAGED': MANAGED,
+  'SELF_SERVICE': SELF_SERVICE,
+  'DEVELOPER': DEVELOPER,
+  // Lowercase
+  'managed': MANAGED,
+  'self_service': SELF_SERVICE,
+  'developer': DEVELOPER,
+};
 
 const statusColors = {
-  enterprise: '#EBEDF0',
-  team: '#EBEDF0',
-  developer: '#EBEDF0',
+  [MANAGED]: '#EBEDF0',
+  [SELF_SERVICE]: '#EBEDF0',
+  [DEVELOPER]: '#EBEDF0',
   new: '#368f92',
   beta: '#368f92',
   ga: '#009999',
@@ -15,9 +27,9 @@ const statusColors = {
 };
 
 const fontColors = {
-  enterprise: '#262A38',
-  team: '#262A38',
-  developer: '#262A38',
+  [MANAGED]: '#262A38',
+  [SELF_SERVICE]: '#262A38',
+  [DEVELOPER]: '#262A38',
   preview: '#ffff',
   beta: '#ffff',
   ga: '#ffff',
@@ -27,10 +39,14 @@ const fontColors = {
 const statusUrls = STATUS_URLS;
 
 export default function Lifecycle(props) {
-  const statuses = props.status?.split(',');
-  if (!props.status || !statuses?.length) {
+  if (!props.status || typeof props.status !== 'string') {
     return null;
   }
+
+  const statuses = props.status.split(',').map(s => {
+    const trimmedStatus = s.trim();
+    return PLAN_VARIABLES[trimmedStatus] || trimmedStatus;
+  });
 
   return (
     <>

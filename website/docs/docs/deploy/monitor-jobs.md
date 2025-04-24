@@ -10,7 +10,7 @@ Monitor your <Constant name="cloud" /> jobs to help identify improvement and set
 
 This portion of our documentation will go over <Constant name="cloud" />'s various capabilities that help you monitor your jobs and set up alerts to ensure seamless orchestration, including:
 
-- [Visualize and orchestrate downstream exposures](/docs/deploy/orchestrate-exposures) <Lifecycle status="enterprise"/> &mdash; Learn how to use dbt Cloud to automatically visualize and orchestrate exposures from dashboards and proactively refresh the underlying data sources during scheduled dbt jobs.
+- [Visualize and orchestrate downstream exposures](/docs/deploy/orchestrate-exposures) <Lifecycle status="managed" /> &mdash; Learn how to use dbt Cloud to automatically visualize and orchestrate exposures from dashboards and proactively refresh the underlying data sources during scheduled dbt jobs.
 - [Leverage artifacts](/docs/deploy/artifacts) &mdash; <Constant name="cloud" /> generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting freshness of your sources.  
 - [Job notifications](/docs/deploy/job-notifications) &mdash; Receive email or Slack notifications when a job run succeeds, encounters warnings, fails, or is canceled.  
 - [Model notifications](/docs/deploy/model-notifications) &mdash; Receive email notifications about any issues encountered by your models and tests as soon as they occur while running a job.  

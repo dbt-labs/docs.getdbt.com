@@ -4,7 +4,7 @@ sidebar_label: "dbt Copilot FAQs"
 description: "Answers to common questions about dbt Copilot."
 ---
 
-# dbt Copilot FAQs <Lifecycle status="enterprise" /> 
+# dbt Copilot FAQs <Lifecycle status="managed" /> 
 
 <IntroText>
 Read about common questions about <Constant name="copilot" /> to understand how it works and how it can help you.

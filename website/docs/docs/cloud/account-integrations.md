@@ -20,7 +20,7 @@ To configure a <Constant name="git" /> account integration:
 
    - [GitHub](/docs/cloud/git/connect-github)
    - [GitLab](/docs/cloud/git/connect-gitlab)
-   - [Azure DevOps](/docs/cloud/git/connect-azure-devops) <Lifecycle status="enterprise" />
+   - [Azure DevOps](/docs/cloud/git/connect-azure-devops) <Lifecycle status="managed" />
 
 You can connect your <Constant name="cloud" /> account to additional <Constant name="git" /> providers by importing a git repository from any valid git URL. Refer to [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) for more information.
 
