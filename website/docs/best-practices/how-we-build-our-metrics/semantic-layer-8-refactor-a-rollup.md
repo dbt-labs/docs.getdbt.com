@@ -9,7 +9,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-9-concl
 
 Now that we've set the stage, it's time to dig in to the fun and messy part: how do we refactor an existing rollup in dbt into semantic models and metrics?
 
-Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a Semantic Layer. These differences can then inform our structure.
+Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a <Constant name="semantic_layer" />. These differences can then inform our structure.
 
 - 🍊 In dbt, we tend to create **highly denormalized datasets** that bring **everything you want around a certain entity or process into a single table**.
 - 💜 The problem is, this **limits the dimensionality available to MetricFlow**. The more we pre-compute and 'freeze' into place, the less flexible our data is.
@@ -25,9 +25,9 @@ We recommend an incremental implementation process that looks something like thi
 2. 🔍 Examine all the **entities that are components** of this rollup (for instance, an `active_customers_per_week` rollup may include customers, shipping, and product data).
 3. 🛠️ **Build semantic models** for all the underlying component marts.
 4. 📏 **Build metrics** for the required aggregations in the rollup.
-5. 👯 Create a **clone of the output** on top of the Semantic Layer.
+5. 👯 Create a **clone of the output** on top of the <Constant name="semantic_layer" />.
 6. 💻 Audit to **ensure you get accurate outputs**.
-7. 👉 Identify **any other outputs** that point to the rollup and **move them to the Semantic Layer**.
+7. 👉 Identify **any other outputs** that point to the rollup and **move them to the <Constant name="semantic_layer" />**.
 8. ✌️ Put a **deprecation plan** in place for the now extraneous frozen rollup.
 
 You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
@@ -228,7 +228,7 @@ metrics:
 
 ### Example query
 
-```shell
+```
 dbt sl query --metrics revenue --group-by metric_time__month
 ```
 

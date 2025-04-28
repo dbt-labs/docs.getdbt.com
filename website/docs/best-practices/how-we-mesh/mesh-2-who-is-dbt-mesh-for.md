@@ -4,7 +4,7 @@ description: Understanding if dbt Mesh is the right fit for your team
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
 
-Before embarking on a dbt Mesh implementation, it's important to understand if dbt Mesh is the right fit for your team. Here, we outline three common organizational structures to help teams identify whether dbt Mesh might fit your organization's needs. 
+Before embarking on a <Constant name="mesh" /> implementation, it's important to understand if <Constant name="mesh" /> is the right fit for your team. Here, we outline three common organizational structures to help teams identify whether <Constant name="mesh" /> might fit your organization's needs. 
 
 ## The enterprise data mesh
 
@@ -12,7 +12,7 @@ Some data teams operate on a global scale. By definition, the team needs to mana
 
 The headcount ratio of platform team to domain teams in this scenario is roughly ≥10:1. For each member of the central platform team, there might be dozens of members of domain-aligned data teams.
 
-Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One dbt project would not keep up with the global demands of an organization like this.
+Is <Constant name="mesh" /> a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One dbt project would not keep up with the global demands of an organization like this.
 
 ### Tips and tricks
 
@@ -20,17 +20,17 @@ Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to sh
 
 ### Adoption challenges
 
-- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated. To start the migration, prioritize teams that have strong dbt familiarity and fundamentals. dbt Mesh is an advancement of core dbt deployments, so these teams are likely to have a smoother transition. 
+- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated. To start the migration, prioritize teams that have strong dbt familiarity and fundamentals. <Constant name="mesh" /> is an advancement of core dbt deployments, so these teams are likely to have a smoother transition. 
   
-  Additionally, prioritize teams that manage strategic data assets that need to be shared widely. This ensures that dbt Mesh will help your teams deliver concrete value quickly.
+  Additionally, prioritize teams that manage strategic data assets that need to be shared widely. This ensures that <Constant name="mesh" /> will help your teams deliver concrete value quickly.
 
-If this sounds like your organization, dbt Mesh is the architecture you should pursue. ✅
+If this sounds like your organization, <Constant name="mesh" /> is the architecture you should pursue. ✅
 
 ## Hub and spoke
 
 Some slightly smaller organizations still operate with a central data team serving several business-aligned analytics teams in a ~5:1 headcount ratio. These central teams look less like an IT function and more like a modern data platform team of analytics engineers. This team provides the majority of the data products to the rest of the org, as well as the infrastructure for downstream analytics teams to spin up their own spoke projects to ensure quality and maintenance of the core platform.
 
-Is dbt Mesh a good fit in this scenario? Almost certainly! If your central data team starts to bottleneck analysts’ work, you need a way for those teams to operate relatively independently while still ensuring the quality of the most used data products. dbt Mesh is designed to solve this exact problem.
+Is <Constant name="mesh" /> a good fit in this scenario? Almost certainly! If your central data team starts to bottleneck analysts’ work, you need a way for those teams to operate relatively independently while still ensuring the quality of the most used data products. <Constant name="mesh" /> is designed to solve this exact problem.
 
 ### Tips and tricks
 
@@ -42,12 +42,12 @@ Is dbt Mesh a good fit in this scenario? Almost certainly! If your central data 
 
 There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows. Compared to having a single project, where a select few are doing all the development work, this architecture optimizes for slower development from a wider group of people.
 
-If this sounds like your organization, it's very likely that dbt Mesh is a good fit for you. ✅
+If this sounds like your organization, it's very likely that <Constant name="mesh" /> is a good fit for you. ✅
 
 ## Single team monolith
 
-Some organizations operate on an even smaller scale. If your data org is a single small team that controls the end-to-end process of building and maintaining all data products at the organization, dbt Mesh may not be required. The complexity in projects comes from having a wide variety of data sources and stakeholders. However, given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement dbt Mesh, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their dbt DAG, and not because they necessarily have an organizational pain point to solve.
+Some organizations operate on an even smaller scale. If your data org is a single small team that controls the end-to-end process of building and maintaining all data products at the organization, <Constant name="mesh" /> may not be required. The complexity in projects comes from having a wide variety of data sources and stakeholders. However, given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement <Constant name="mesh" />, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their dbt DAG, and not because they necessarily have an organizational pain point to solve.
 
-_Is dbt Mesh a good fit?_  Maybe! There are reasons to separate out parts of a large monolithic project into several to better orchestrate and manage the models. However, if the same people are managing each project, they may find that the overhead of managing multiple projects is not worth the benefits.
+_Is <Constant name="mesh" /> a good fit?_  Maybe! There are reasons to separate out parts of a large monolithic project into several to better orchestrate and manage the models. However, if the same people are managing each project, they may find that the overhead of managing multiple projects is not worth the benefits.
 
-If this sounds like your organization, it's worth considering whether dbt Mesh is a good fit for you.
+If this sounds like your organization, it's worth considering whether <Constant name="mesh" /> is a good fit for you.

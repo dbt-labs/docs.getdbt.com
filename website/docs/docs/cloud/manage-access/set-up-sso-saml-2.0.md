@@ -7,13 +7,13 @@ import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-dbt Cloud Enterprise supports single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
+<Constant name="cloud" /> Enterprise supports single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:
 * IdP-initiated SSO
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This document details the steps to integrate dbt Cloud with an identity
+This document details the steps to integrate <Constant name="cloud" /> with an identity
 provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control).
 
 ## Auth0 URIs
@@ -34,7 +34,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 2. When promoted, configure the application with the following details:
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
-   - **App name:** dbt Cloud
+   - **App name:** <Constant name="cloud" />
    - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
@@ -43,7 +43,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
+Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
 
 When prompted for the SAML 2.0 application configurations, supply the following values:
 
@@ -51,7 +51,7 @@ When prompted for the SAML 2.0 application configurations, supply the following 
 * Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
 - Relay State: `<login slug>`
 
-Additionally, you may configure the IdP attributes passed from your identity provider into dbt Cloud. We recommend using the following values:
+Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. We recommend using the following values:
 
 
 | name | name format | value | description |
@@ -63,9 +63,9 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 
 `NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but dbt Cloud creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
-dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
-on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
-use role-based access control in dbt Cloud, also configure your identity
+<Constant name="cloud" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+on group mappings from the IdP to assign <Constant name="cloud" /> users to <Constant name="cloud" /> groups. To
+use role-based access control in <Constant name="cloud" />, also configure your identity
 provider to provide group membership information in user attribute called
 `groups`:
 
@@ -75,7 +75,7 @@ provider to provide group membership information in user attribute called
 
 :::info Note
 You may use a restricted group attribute statement to limit the groups set
-to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
+to <Constant name="cloud" /> for each authenticated user. For example, if all of your <Constant name="cloud" /> groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
 :::
 
@@ -83,7 +83,7 @@ with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_C
 
 After confirming your details, the IdP should show you the following values for
 the new SAML 2.0 integration. Keep these values somewhere safe, as you will need
-them to complete setup in dbt Cloud.
+them to complete setup in <Constant name="cloud" />.
 
 - Identity Provider Issuer
 - Identity Provider SSO Url
@@ -113,7 +113,7 @@ them to complete setup in dbt Cloud.
 
 ### Finish setup
 
-After creating the application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+After creating the application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## Okta integration
@@ -145,11 +145,11 @@ You can use the instructions in this section to configure Okta as your identity 
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
+Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
 
 1. On the **General Settings** page, enter the following details:
 
-   * **App name**: dbt Cloud
+   * **App name**: <Constant name="cloud" />
    * **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
      and upload it to Okta to use as the logo for this app.
 
@@ -175,7 +175,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
-dbt Cloud expects by using the Attribute Statements and Group Attribute Statements forms.
+<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms.
 
 3. The following table illustrates expected User Attribute Statements:
 
@@ -192,7 +192,7 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
    | `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
 You can instead use a more restrictive Group Attribute Statement than the
-example shown in the previous steps. For example, if all of your dbt Cloud groups start with
+example shown in the previous steps. For example, if all of your <Constant name="cloud" /> groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
 only returns 100 groups for each user, so if your users belong to more than 100
 IdP groups, you will need to use a more restrictive filter**. Please contact
@@ -222,8 +222,8 @@ app.
 ### View setup instructions
 
 1. On the next page, click **View Setup Instructions**.
-2. In the steps below, you'll supply these values in your dbt Cloud Account Settings to complete
-the integration between Okta and dbt Cloud.
+2. In the steps below, you'll supply these values in your <Constant name="cloud" /> Account Settings to complete
+the integration between Okta and <Constant name="cloud" />.
 
 <Lightbox
     collapsed={true}
@@ -237,7 +237,7 @@ the integration between Okta and dbt Cloud.
     title="Application setup instructions"
 />
 
-3. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+3. After creating the Okta application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## Google integration
@@ -251,7 +251,7 @@ Use this section if you are configuring Google as your identity provider.
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
+Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
 
 1. Sign into your **Google Admin Console** via an account with super administrator privileges.
 2. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
@@ -274,7 +274,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.  If your user profile has a unique, stable value that will persist across email address changes, it's best to use that; otherwise, email will work.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
-dbt Cloud expects.
+<Constant name="cloud" /> expects.
 8. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
@@ -285,7 +285,7 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-9. To use [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) in dbt Cloud,  enter the groups in the **Group membership** field during configuration:
+9. To use [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) in <Constant name="cloud" />,  enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
@@ -306,7 +306,7 @@ Expected **Attributes**:
 
 ### Finish setup
 
-After creating the Google application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+After creating the Google application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
 
 ## Microsoft Entra ID (formerly Azure AD) integration
 
@@ -318,14 +318,14 @@ If you're using Microsoft Entra ID (formerly Azure AD), the instructions below w
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
+Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
 
-Follow these steps to set up single sign-on (SSO) with dbt Cloud:
+Follow these steps to set up single sign-on (SSO) with <Constant name="cloud" />:
 
 1. Log into your Azure account.
 2. In the Entra ID portal, select **Enterprise applications** and click **+ New application**.
 3. Select **Create your own application**.
-4. Name the application "dbt Cloud" or another descriptive name.
+4. Name the application "<Constant name="cloud" />" or another descriptive name.
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
@@ -377,9 +377,9 @@ From the Set up Single Sign-On with SAML page:
 
 ### Finish setup
 
-9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in dbt Cloud vary from those in the Entra ID app. They're mapped as follows:
+9. After creating the Azure application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in <Constant name="cloud" /> vary from those in the Entra ID app. They're mapped as follows:
 
-   | dbt Cloud field | Corresponding Entra ID field |
+   | <Constant name="cloud" /> field | Corresponding Entra ID field |
    | ----- | ----- |
    | **Identity Provider SSO URL** | Login URL |
    | **Identity Provider Issuer** | Microsoft Entra Identifier |
@@ -397,13 +397,13 @@ To configure OneLogin, you will need **Administrator** access.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
+Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
 
 1. Log into OneLogin, and add a new SAML 2.0 Application.
 2. Configure the application with the following details:
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
-   - **App name:** dbt Cloud
+   - **App name:** <Constant name="cloud" />
    - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 ### Configure SAML settings
@@ -426,9 +426,9 @@ We recommend using the following values:
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
 
-dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
-on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
-use role-based access control in dbt Cloud, also configure OneLogin to provide group membership information in user attribute called
+<Constant name="cloud" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+on group mappings from the IdP to assign <Constant name="cloud" /> users to <Constant name="cloud" /> groups. To
+use role-based access control in <Constant name="cloud" />, also configure OneLogin to provide group membership information in user attribute called
 `groups`:
 
 | name | name format | value | description |
@@ -439,7 +439,7 @@ use role-based access control in dbt Cloud, also configure OneLogin to provide g
 ### Collect integration secrets
 
 5. After confirming your details, go to the **SSO tab**. OneLogin should show you the following values for
-the new integration. Keep these values somewhere safe, as you will need them to complete setup in dbt Cloud.
+the new integration. Keep these values somewhere safe, as you will need them to complete setup in <Constant name="cloud" />.
 
 - Issuer URL
 - SAML 2.0 Endpoint (HTTP)
@@ -469,14 +469,14 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 
 ### Finish setup
 
-6. After creating the OneLogin application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+6. After creating the OneLogin application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## dbt Cloud Setup
 
 ### Providing IdP values to dbt Cloud
 
-To complete setup, follow the steps below in dbt Cloud:
+To complete setup, follow the steps below in <Constant name="cloud" />:
 
 1. Navigate to the **Account Settings** and then click on **Single Sign On**.
 2. Click **Edit** on the upper right corner.
@@ -493,7 +493,7 @@ To complete setup, follow the steps below in dbt Cloud:
         title="Configuring the application in dbt Cloud" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to dbt Cloud from the IdP directly.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="cloud" /> from the IdP directly.
 
 
 <Snippet path="login_url_note" />

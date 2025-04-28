@@ -104,5 +104,5 @@ By default, all models are "protected." This means that other models in the same
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)

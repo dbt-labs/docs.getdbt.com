@@ -3,11 +3,11 @@ title: "Upgrade dbt version in Cloud"
 id: "upgrade-dbt-version-in-cloud"
 ---
 
-In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of dbt Core. The version can be upgraded at any time.
+In <Constant name="cloud" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a [release track](#release-tracks) to receive ongoing updates (recommended), or a legacy version of dbt Core. Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a [release track](#release-tracks) to receive ongoing updates (recommended), or a legacy version of <Constant name="core" />. Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
@@ -15,7 +15,7 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 Starting in 2024, your project will be upgraded automatically on a cadence that you choose
 
-The **Latest** track ensures you have up-to-date dbt Cloud functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of dbt Core.
+The **Latest** track ensures you have up-to-date <Constant name="cloud" /> functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
@@ -42,7 +42,7 @@ Configure your project to use a different dbt version than what's configured in 
 
 ## Jobs
 
-Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
+Each job in <Constant name="cloud" /> can be configured to inherit parameters from the environment it belongs to.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="200%" title="Settings of a dbt Cloud job"/>
 
@@ -52,13 +52,13 @@ The example job seen in the screenshot above belongs to the environment "Prod". 
 
 dbt Labs has always encouraged users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
 
-> **Starting with v1.0, all subsequent minor versions are available in dbt Cloud. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
+> **Starting with v1.0, all subsequent minor versions are available in <Constant name="cloud" />. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
 
 We provide different support levels for different versions, which may include new features, bug fixes, or security patches:
 
 <Snippet path="core-version-support" />
 
-We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in dbt Cloud.
+We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in <Constant name="cloud" />.
 
 <Snippet path="core-versions-table" />
 
@@ -70,7 +70,7 @@ Starting with v1.0, dbt Cloud will ensure that you're always using the latest co
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
-For more on version support and future releases, see [Understanding dbt Core versions](/docs/dbt-versions/core).
+For more on version support and future releases, see [Understanding <Constant name="core" /> versions](/docs/dbt-versions/core).
 
 ### Need help upgrading?
 
@@ -82,9 +82,9 @@ If you want more advice on how to upgrade your dbt projects, check out our [migr
 Once you know what code changes you'll need to make, you can start implementing them. We recommend you:
 - Create a separate dbt project, "Upgrade project", to test your changes before making them live in your main dbt project.
 - In your "Upgrade project", connect to the same repository you use for your production project.
-- Set the development environment [settings](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to run the latest version of dbt Core.
-- Check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the dbt Cloud IDE.
-  - If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of dbt Core (for example, 1.0 --> 1.10). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
+- Set the development environment [settings](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to run the latest version of <Constant name="core" />.
+- Check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the <Constant name="cloud_ide" />.
+  - If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of <Constant name="core" /> (for example, 1.0 --> 1.10). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
 - Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code.
 - You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt Core version.
 
@@ -92,4 +92,4 @@ Once you know what code changes you'll need to make, you can start implementing 
 
 - Then add a job to the new testing environment that replicates one of the production jobs your team relies on.
   - If that job runs smoothly, you should be all set to merge your branch into main. 
-  - Then change your development and deployment environments in your main dbt project to run off the newest version of dbt Core.
+  - Then change your development and deployment environments in your main dbt project to run off the newest version of <Constant name="core" />.

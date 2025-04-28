@@ -325,8 +325,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 6. Run the `dbt snapshot` [command](/reference/commands/snapshot). For our example, a new table will be created at `analytics.snapshots.orders_snapshot`. You can change the `target_database` configuration, the `target_schema` configuration and the name of the snapshot (as defined in `{% snapshot .. %}`) will change how dbt names this table.
 
-```
-dbt snapshot
+```dbt snapshot
 Running with dbt=1.8.0
 
 15:07:36 | Concurrency: 8 threads (target='dev')

@@ -6,13 +6,15 @@ id: "incremental-microbatch"
 intro_text: "Use microbatch incremental models to process large time-series datasets efficiently."
 ---
 
+import EventTimeRequired from '/snippets/_event_time_required.md';
+
 :::info
 
-Available for [dbt Cloud "Latest"](/docs/dbt-versions/cloud-release-tracks) and dbt Core v1.9 or higher.
+Available for [<Constant name="cloud" /> "Latest"](/docs/dbt-versions/cloud-release-tracks) and <Constant name="core" /> v1.9 or higher.
 
 If you use a custom microbatch macro, set a [distinct behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](#how-microbatch-compares-to-other-incremental-strategies).
 
-Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672). Refer to [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for a list of supported adapters. 
+Read and participate in the discussion: [<Constant name="core" />#10672](https://github.com/dbt-labs/dbt-core/discussions/10672). Refer to [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for a list of supported adapters. 
 
 :::
 
@@ -21,11 +23,12 @@ Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-
 Incremental models in dbt are a [materialization](/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models process a smaller number of rows, and then append, update, or replace those rows in the existing table. This can significantly reduce the time and resources required for your data transformations.
 
 Microbatch is an incremental strategy designed for large time-series datasets:
-- It relies solely on a time column ([`event_time`](/reference/resource-configs/event-time)) to define time-based ranges for filtering. Set the `event_time` column for your microbatch model and its direct parents (upstream models). Note, this is different to `partition_by`, which groups rows into partitions.
+- It relies solely on a time column ([`event_time`](/reference/resource-configs/event-time)) to define time-based ranges for filtering. 
+- Set the `event_time` column for your microbatch model and its direct parents (upstream models). Note, this is different to `partition_by`, which groups rows into partitions.
+  <EventTimeRequired/>
 - It complements, rather than replaces, existing incremental strategies by focusing on efficiency and simplicity in batch processing.
 - Unlike traditional incremental strategies, microbatch enables you to [reprocess failed batches](/docs/build/incremental-microbatch#retry), auto-detect [parallel batch execution](/docs/build/parallel-batch-execution), and eliminate the need to implement complex conditional logic for [backfilling](#backfills).
-
-- Note, microbatch might not be the best strategy for all use cases. Consider other strategies for use cases such as not having a reliable `event_time` column or if you want more control over the incremental logic. Read more in [How `microbatch` compares to other incremental strategies](#how-microbatch-compares-to-other-incremental-strategies).
+- Note, microbatch might not be the best [strategy](/docs/build/incremental-strategy) for all use cases. Consider other strategies for use cases such as not having a reliable `event_time` column or if you want more control over the incremental logic. Read more in [How `microbatch` compares to other incremental strategies](#how-microbatch-compares-to-other-incremental-strategies).
 
 ## How microbatch works
 
@@ -191,7 +194,6 @@ It does not matter whether the table already contains data for that day. Given t
 
 Several configurations are relevant to microbatch models, and some are required:
 
-
 | Config   |  Description   | Default | Type | Required  |
 |----------|---------------|---------|------|---------|
 | [`event_time`](/reference/resource-configs/event-time)  | The column indicating "at what time did the row occur." Required for your microbatch model and any direct parents that should be filtered.   | N/A     |  Column  |  Required |
@@ -243,7 +245,21 @@ from {{ source('sales', 'transactions') }}
 
 ### Full refresh
 
-As a best practice, we recommend [configuring `full_refresh: false`](/reference/resource-configs/full_refresh) on microbatch models so that they ignore invocations with the `--full-refresh` flag. If you need to reprocess historical data, do so with a targeted backfill that specifies explicit start and end dates.
+As a best practice, we recommend [configuring `full_refresh: false`](/reference/resource-configs/full_refresh) on microbatch models so that they ignore invocations with the `--full-refresh` flag. 
+
+Note that running `dbt run --full-refresh` on a microbatch model by itself will not reset or reload data unless you also specify `--event-time-start` and `--event-time-end`. Without these flags, dbt has no way of knowing what time range to rebuild. Use explicit backfills to reset data:
+
+✅ Correct:
+```bash
+dbt run --full-refresh --event-time-start "2024-01-01" --event-time-end "2024-02-01"
+```
+
+❌ Incorrect:
+```bash
+dbt run --full-refresh
+```
+
+If you need to reprocess historical data, we recommend using a targeted backfill with `--event-time-start` and `--event-time-end`.
 
 ## Usage
 
@@ -254,13 +270,16 @@ As a best practice, we recommend [configuring `full_refresh: false`](/reference/
 
 When you run a microbatch model, dbt will evaluate which batches need to be loaded, break them up into a SQL query per batch, and load each one independently.
 
-dbt will automatically filter upstream inputs (`source` or `ref`) that define `event_time`, based on the `lookback` and `batch_size` configs for this model.
+dbt will automatically filter upstream inputs (`source` or `ref`) that define `event_time`, based on the `lookback` and `batch_size` configs for this model. Note that dbt doesn't know the minimum `event_time` in your data &mdash; it only uses the configs you provide (like `begin`, `lookback`) to decide which batches to run.  
+  
+If you want to process data from the actual start of your dataset, you _must_ explicitly define it using the `begin` config or the `--event-time-start` flag.
 
 During standard incremental runs, dbt will process batches according to the current timestamp and the configured `lookback`, with one query per batch.
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_lookback.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 
-**Note:** If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This isn't generally recommended — most models that configure `event_time` are fairly large, and if the reference is not filtered, each batch will perform a full scan of this input table.
+#### Opting out of auto-filtering
+If there’s an upstream model that configures `event_time`, but you *don’t* want the reference to it to be filtered, you can specify `ref('upstream_model').render()` to opt-out of auto-filtering. This isn't generally recommended — most models that configure `event_time` are fairly large, and if the reference is not filtered, each batch will perform a full scan of this input table.
 
 ## Backfills
 
@@ -273,7 +292,6 @@ As always, dbt will process the batches between the start and end as independent
 ```bash
 dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 ```
-
 
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
 

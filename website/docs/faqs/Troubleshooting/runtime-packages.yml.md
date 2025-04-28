@@ -6,7 +6,7 @@ id: runtime-packages.yml
 
 ---
 
-If you're receiving the runtime error below in your packages.yml folder, it may be due to an old version of your dbt_utils package that isn't compatible with your current dbt Cloud version.
+If you're receiving the runtime error below in your packages.yml folder, it may be due to an old version of your dbt_utils package that isn't compatible with your current <Constant name="cloud" /> version.
 
 ```shell
 Running with dbt=xxx

@@ -7,7 +7,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build
 
 ## How to build a semantic model
 
-A semantic model is the Semantic Layer equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
+A semantic model is the <Constant name="semantic_layer" /> equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
 
 - ⚙️ Semantic models are **comprised of three components**:
   - 🫂 **entities**: these describe the **relationships** between various semantic models (think ids)
@@ -351,7 +351,7 @@ As you can see, the content of the semantic model is identical in both approache
    - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
    - Parallel sub-folder approach: Prefixes the file with `sem_` (`sem_orders.yml`)
 
-Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the Semantic Layer.
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the <Constant name="semantic_layer" />.
 
 ## Next steps
 

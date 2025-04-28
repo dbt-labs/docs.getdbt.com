@@ -21,9 +21,9 @@ packages:
     version: 0.4.0
   - package: calogica/dbt_expectations
     version: 0.4.1
-  - git: https://github.com/dbt-labs/dbt-audit-helper.git
+  - git: https://github.com/dbt-labs/dbt_audit_helper.git
     revision: 0.4.0
-  - git: "https://github.com/dbt-labs/dbt-labs-experimental-features" # git URL
+  - git: "https://github.com/dbt-labs/dbt_labs-experimental-features" # git URL
     subdirectory: "materialized-views" # name of subdirectory containing `dbt_project.yml`
     revision: 0.0.1
   - package: dbt-labs/snowplow
@@ -42,9 +42,9 @@ Installing dbt-labs/codegen@0.4.0
 Installing calogica/dbt_expectations@0.4.1
   Installed from version 0.4.1
   Up to date!
-Installing https://github.com/dbt-labs/dbt-audit-helper.git@0.4.0
+Installing https://github.com/dbt-labs/dbt_audit_helper.git@0.4.0
   Installed from revision 0.4.0
-Installing https://github.com/dbt-labs/dbt-labs-experimental-features@0.0.1
+Installing https://github.com/dbt-labs/dbt_labs-experimental-features@0.0.1
   Installed from revision 0.0.1
    and subdirectory materialized-views
 Installing dbt-labs/snowplow@0.13.0
@@ -80,12 +80,10 @@ dbt deps --lock
 
 ### Forcing package updates
 
-To update all packages, even if `packages.yml` hasn’t changed, use the `--upgrade` flag:
+To update all packages, even if `packages.yml` hasn't changed, use the `--upgrade` flag:
 
 ```shell
-
 dbt deps --upgrade
-
 ```
 
 This is particularly useful for fetching the latest commits from the `main` branch of an internally maintained Git package. 

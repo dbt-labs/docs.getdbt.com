@@ -5,7 +5,7 @@ id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
 ---
 
-By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-cloud-environments) (dbt Cloud) or [profile's target](/docs/core/dbt-core-environments) (dbt Core). This default schema is called your _target schema_.
+By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-cloud-environments) (<Constant name="cloud" />) or [profile's target](/docs/core/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.
 
 For dbt projects with lots of models, it's common to build models across multiple schemas and group similar models together. For example, you might want to:
 
@@ -203,11 +203,11 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 
 * **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
 * **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
-* **prod** &mdash; The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
+* **prod** &mdash; The production deployment of your dbt project, like in <Constant name="cloud" />, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
-For more information, consult the [managing environments in dbt Core](/docs/core/dbt-core-environments) guide.
+For more information, consult the [managing environments in <Constant name="core" />](/docs/core/dbt-core-environments) guide.
 
 ## Related docs
 

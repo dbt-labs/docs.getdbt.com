@@ -5,7 +5,7 @@ sidebar_label: 'Installing dbt Core with pip'
 id: install-pip-best-practices.md
 ---
 
-Managing Python local environments can be challenging! You can use these best practices to improve the dbt Core installation with pip. 
+Managing Python local environments can be challenging! You can use these best practices to improve the <Constant name="core" /> installation with pip. 
 
 ### Using virtual environments
 

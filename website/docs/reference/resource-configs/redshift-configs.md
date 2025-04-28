@@ -237,6 +237,6 @@ Find more information about materialized view limitations in Redshift's [docs](h
 
 Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. 
 
-In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
+In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/<Constant name="core" />#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
 </VersionBlock>

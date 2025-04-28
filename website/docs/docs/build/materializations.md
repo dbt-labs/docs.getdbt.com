@@ -134,7 +134,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * You cannot select directly from this model.
     * [Operations](/docs/build/hooks-operations#about-operations) (for example, macros called using [`dbt run-operation`](/reference/commands/run-operation) cannot `ref()` ephemeral nodes)
     * Overuse of ephemeral materialization can also make queries harder to debug.
-    * Ephemeral materialization doesn't support [model contracts](/docs/collaborate/govern/model-contracts#where-are-contracts-supported).
+    * Ephemeral materialization doesn't support [model contracts](/docs/mesh/govern/model-contracts#where-are-contracts-supported).
 * **Advice:**  Use the ephemeral materialization for:
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
@@ -173,7 +173,7 @@ For example, a `dbt run` command is only needed if there is the potential for a 
 it's effectively a deploy action.
 By contrast, a `dbt run` command is needed for a table in the same scenarios *AND when the data in the table needs to be updated*.
 This also holds true for incremental and snapshot models, whose underlying relations are tables.
-In the table cases, the scheduling mechanism is either dbt Cloud or your local scheduler;
+In the table cases, the scheduling mechanism is either <Constant name="cloud" /> or your local scheduler;
 there is no built-in functionality to automatically refresh the data behind a table.
 However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
 Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.

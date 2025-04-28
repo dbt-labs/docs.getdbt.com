@@ -65,7 +65,7 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 ### 3. Obtain VPC Endpoint Service Name
 
-Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
+Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
@@ -75,7 +75,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Postgres Interface-type
 - VPC Endpoint Service Name:
 - Postgres server AWS Region (e.g., us-east-1, eu-west-2):
-- dbt Cloud multi-tenant environment (US, EMEA, AU):
+- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
 ```
 
 
@@ -85,13 +85,13 @@ import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
 ### 5. Accepting the connection request
 
-When you have been notified that the resources are provisioned within the dbt Cloud environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
+When you have been notified that the resources are provisioned within the <Constant name="cloud" /> environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
 ## Create Connection in dbt Cloud
 
-Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink.
 
 1. Navigate to **settings** → **Create new project** → select **PostgreSQL**
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

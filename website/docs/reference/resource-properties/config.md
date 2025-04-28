@@ -14,6 +14,7 @@ hide_table_of_contents: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
@@ -103,6 +104,25 @@ version: 2
                 [<test_config>](/reference/data-test-configs): <config-value>
                 ...
 
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='models/<filename>.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  - name: <test-name>
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [meta](/reference/resource-configs/meta): {dictionary}
+      [tags](/reference/resource-configs/tags): <string>
 ```
 
 </File>

@@ -7,7 +7,8 @@
     "test": "npx jest --watch",
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
-    "prepare": "cd .. && husky install"
+    "prepare": "cd .. && husky install",
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",

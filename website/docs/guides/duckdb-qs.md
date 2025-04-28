@@ -14,7 +14,7 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
+In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
 
 This guide will demonstrate how to: 
@@ -39,7 +39,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Prerequisites
 
-- When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in dbt Cloud.
+- When using DuckDB with <Constant name="core" />, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in <Constant name="cloud" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
@@ -257,12 +257,12 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 ## Next steps
 
-Now that you have dbt Core, DuckDB, and the Jaffle Shop data up and running, you can explore dbt's capabilities. Refer to these materials to get a better understanding of dbt projects and commands:
+Now that you have <Constant name="core" />, DuckDB, and the Jaffle Shop data up and running, you can explore dbt's capabilities. Refer to these materials to get a better understanding of dbt projects and commands:
 
 - The [About projects](/docs/build/projects) page guides you through the structure of a dbt project and its components.
 - [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
 - [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
-- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [dbt Cloud](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
+- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="cloud" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
 - Check out the other [quickstart guides](/guides?tags=Quickstart) to begin integrating into your existing data warehouse.
 
 Additionally, with your new understanding of the basics of using DuckDB, consider optimizing your setup by [documenting your project](/guides/duckdb#document-your-project), [commit your changes](/guides/duckdb#commit-your-changes) and, [schedule a job](/guides/duckdb#schedule-a-job). 
@@ -291,7 +291,7 @@ git push
 
 ### Schedule a job
 
-1. Ensure dbt Core is installed and configured to connect to your DuckDB instance.
+1. Ensure <Constant name="core" /> is installed and configured to connect to your DuckDB instance.
 2. Create a dbt project and define your [`models`](/docs/build/models), [`seeds`](/reference/seed-properties), and [`tests`](/reference/commands/test).
 3. Use a scheduler such [Prefect](/docs/deploy/deployment-tools#prefect) to schedule your dbt runs. You can create a DAG (Directed Acyclic Graph) that triggers dbt commands at specified intervals.
 4. Write a script that runs your dbt commands, such as [`dbt run`](/reference/commands/run), `dbt test` and more so.

@@ -6,7 +6,7 @@ pagination_prev: null
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 ---
 
-# Visualize and orchestrate downstream exposures <Lifecycle status="enterprise"/>
+# Visualize and orchestrate downstream exposures <Lifecycle status="managed" />
 
 import ActiveAutoExposuresOverview from '/snippets/_active-auto-exposures-overview.md';
 

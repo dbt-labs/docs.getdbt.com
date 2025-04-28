@@ -50,7 +50,7 @@ This would result in the generated relation being located in the `staging` datab
 
 <VersionBlock lastVersion="1.8">
 
-Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+Available for <Constant name="cloud" /> release tracks or <Constant name="core" /> v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
 
 </VersionBlock>
 

@@ -129,7 +129,7 @@ packages:
 
 </File>
 
-Add the Git URL for the package, and optionally specify a revision. The revision can be:
+Add the <Constant name="git" /> URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
 - a tagged release
 - a specific commit (full 40-character hash)
@@ -146,7 +146,7 @@ By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-pa
 
 ### Internally hosted tarball URL
 
-Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, <Constant name="core" /> enables you to install packages from internally-hosted tarball URLs. 
 
 
 ```yaml
@@ -161,11 +161,11 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ### Native private packages <Lifecycle status='beta'/> 
 
-dbt Cloud supports private packages from [supported](#prerequisites) Git repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
+<Constant name="cloud" /> supports private packages from [supported](#prerequisites) <Constant name="git" /> repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
 
 #### Prerequisites
 
-- To use native private packages, you must have one of the following Git providers configured in the **Integrations** section of your **Account settings**:
+- To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - [GitHub](/docs/cloud/git/connect-github)
   - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
@@ -213,7 +213,7 @@ packages:
   
 ```
 
-If you are using multiple Git integrations, disambiguate by adding the provider key:
+If you are using multiple <Constant name="git" /> integrations, disambiguate by adding the provider key:
 
 ```yaml
 packages:
@@ -222,7 +222,7 @@ packages:
 
 ```
 
-With this method, you can retrieve private packages from an integrated Git provider without any additional steps to connect. 
+With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect. 
 
 ### SSH key method (command line only)
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
@@ -239,21 +239,21 @@ packages:
 
 </File>
 
-If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
+If you're using <Constant name="cloud" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
 ### Git token method
 
 :::note
 
-dbt Cloud has [native support](#native-private-packages) for Git hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated Git environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure Git tokens to retrieve private packages. 
+<Constant name="cloud" /> has [native support](#native-private-packages) for <Constant name="git" /> hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated <Constant name="git" /> environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure <Constant name="git" /> tokens to retrieve private packages. 
 
 :::
 
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info dbt Cloud usage
+:::info <Constant name="cloud" /> usage
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
@@ -419,7 +419,7 @@ For example, when using a dataset specific package, you may need to configure va
 Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
 
 ### Specifying unpinned Git packages
-If your project specifies an "unpinned" Git package, you may see a warning like:
+If your project specifies an "unpinned" <Constant name="git" /> package, you may see a warning like:
 ```
 The git package "https://github.com/dbt-labs/dbt-utils.git" is not pinned.
 This can introduce breaking changes into your project without warning!

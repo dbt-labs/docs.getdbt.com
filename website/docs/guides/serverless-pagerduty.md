@@ -15,7 +15,7 @@ recently_updated: true
 
 ## Introduction
 
-This guide will teach you how to build and host a basic Python app which will monitor dbt Cloud jobs and create PagerDuty alarms based on failure. To do this, when a dbt Cloud job completes it will:
+This guide will teach you how to build and host a basic Python app which will monitor <Constant name="cloud" /> jobs and create PagerDuty alarms based on failure. To do this, when a <Constant name="cloud" /> job completes it will:
  - Check for any failed nodes (e.g. non-passing tests or errored models), and
  - create a PagerDuty alarm based on those nodes by calling the PagerDuty Events API. Events are deduplicated per run ID.
 
@@ -26,7 +26,7 @@ In this example, we will use fly.io for hosting/running the service. fly.io is a
 ### Prerequisites
 
 This guide assumes some familiarity with:
-- [dbt Cloud Webhooks](/docs/deploy/webhooks)
+- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
 - CLI apps
 - Deploying code to a serverless code runner like fly.io or AWS Lambda
 
@@ -124,6 +124,6 @@ flyctl secrets set DBT_CLOUD_SERVICE_TOKEN=abc123 DBT_CLOUD_AUTH_TOKEN=def456 PD
 
 ## Deploy your app
 
-After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.
+After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the <Constant name="cloud" /> webhook settings and click **Test Endpoint**.
 
 </div>

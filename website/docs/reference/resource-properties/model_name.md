@@ -16,7 +16,7 @@ models:
 </File>
 
 ## Definition
-The name of the model you are declaring properties for. Must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in dbt Explorer.
+The name of the model you are declaring properties for. Must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in <Constant name="explorer" />.
 
 ## Default
 

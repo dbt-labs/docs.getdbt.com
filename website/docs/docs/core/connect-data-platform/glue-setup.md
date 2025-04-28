@@ -1045,7 +1045,7 @@ For more information, check the dbt documentation about [testing a new adapter](
 
 ### Supported Functionality
 
-Most dbt Core functionality is supported, but some features are only available with Apache Hudi.
+Most <Constant name="core" /> functionality is supported, but some features are only available with Apache Hudi.
 
 Apache Hudi-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/glue-configs#the-merge-strategy))

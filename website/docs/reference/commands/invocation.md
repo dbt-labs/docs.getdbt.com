@@ -4,7 +4,7 @@ sidebar_label: "invocation"
 id: invocation
 ---
 
-The `dbt invocation` command is available in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and allows you to:
+The `dbt invocation` command is available in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) and allows you to:
 - List active invocations to debug long-running or hanging invocations.
 - Identify and investigate sessions causing the `Session occupied` error.
 - Monitor currently active dbt commands (like `run`, `build`) in real-time.
@@ -57,7 +57,7 @@ Use "dbt invocation [command] --help" for more information about a command.
 
 ### dbt invocation list
 
-The `list` command provides you with a list of active invocations in your dbt Cloud CLI. When a long-running session is active, you can use this command in a separate terminal window to view the active session to help debug the issue.
+The `list` command provides you with a list of active invocations in your <Constant name="cloud_cli" />. When a long-running session is active, you can use this command in a separate terminal window to view the active session to help debug the issue.
 
 ```shell
 dbt invocation list
@@ -86,7 +86,7 @@ To cancel an active session in the terminal, use the `Ctrl + Z` shortcut.
 
 ## Related docs
 
-- [Install dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
-- [Troubleshooting dbt Cloud CLI 'Session occupied' error](/faqs/Troubleshooting/long-sessions-cloud-cli)
+- [Install <Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)
+- [Troubleshooting <Constant name="cloud" /> CLI 'Session occupied' error](/faqs/Troubleshooting/long-sessions-cloud-cli)
 
 

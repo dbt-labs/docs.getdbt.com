@@ -4,21 +4,21 @@ sidebar_label: "Webhooks"
 description: "Get real-time notifications about your dbt jobs with webhooks."
 ---
 
-With dbt Cloud, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. Your other systems can listen for (subscribe to) these events to further automate your workflows or to help trigger automation flows you have set up.
+With <Constant name="cloud" />, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. Your other systems can listen for (subscribe to) these events to further automate your workflows or to help trigger automation flows you have set up.
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
 
-dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/zapier-slack) notification, a [Microsoft Teams](/guides/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/serverless-pagerduty) when a dbt job fails. 
+<Constant name="cloud" /> sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/zapier-slack) notification, a [Microsoft Teams](/guides/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/serverless-pagerduty) when a dbt job fails. 
 
-You can create webhooks for these events from the [dbt Cloud web-based UI](#create-a-webhook-subscription) and by using the [dbt Cloud API](#api-for-webhooks):
+You can create webhooks for these events from the [<Constant name="cloud" /> web-based UI](#create-a-webhook-subscription) and by using the [<Constant name="cloud" /> API](#api-for-webhooks):
 
 - `job.run.started` &mdash; Run started.
 - `job.run.completed` &mdash; Run completed. This can be a run that has failed or succeeded.
 - `job.run.errored` &mdash; Run errored.
 
-dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
+<Constant name="cloud" /> retries sending each event five times. <Constant name="cloud" /> keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
-A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
+A webhook in <Constant name="cloud" /> has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
 
 :::tip Videos 
 If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://learn.getdbt.com/courses/webhooks) from dbt Labs.
@@ -27,32 +27,32 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 :::
 
 ## Prerequisites
-- You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
+- You have a <Constant name="cloud" /> account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
 - For `write` access to webhooks: 
-    - **Enterprise plan accounts** &mdash; Permission sets are the same for both API service tokens and the dbt Cloud UI. You, or the API service token, must have the Account Admin, Admin, or Developer [permission set](/docs/cloud/manage-access/enterprise-permissions).  
-    - **Team plan accounts** &mdash; For the dbt Cloud UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions). For API service tokens, you must assign the service token to have the [Account Admin or Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
-- You have a multi-tenant or an AWS single-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+    - **Enterprise plan accounts** &mdash; Permission sets are the same for both API service tokens and the <Constant name="cloud" /> UI. You, or the API service token, must have the Account Admin, Admin, or Developer [permission set](/docs/cloud/manage-access/enterprise-permissions).  
+    - **Team plan accounts** &mdash; For the <Constant name="cloud" /> UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions). For API service tokens, you must assign the service token to have the [Account Admin or Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
+- You have a multi-tenant or an AWS single-tenant deployment model in <Constant name="cloud" />. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
 - Your destination system supports [Authorization headers](#troubleshooting).
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 
-1. Navigate to **Account settings** in dbt Cloud (by clicking your account name from the left side panel)
+1. Navigate to **Account settings** in <Constant name="cloud" /> (by clicking your account name from the left side panel)
 2. Go to the **Webhooks** section and click **Create webhook**. 
 3. To configure your new webhook: 
    - **Webhook name** &mdash; Enter a name for your outbound webhook.
    - **Description** &mdash; Enter a description of the webhook.
    - **Events** &mdash; Choose the event you want to trigger this webhook. You can subscribe to more than one event.
-   - **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on. Or, you can leave this field empty for the webhook to trigger on all jobs in your account. By default, dbt Cloud configures your webhook at the account level. 
-   - **Endpoint** &mdash; Enter your application's endpoint URL, where dbt Cloud can send the event(s) to.
+   - **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on. Or, you can leave this field empty for the webhook to trigger on all jobs in your account. By default, <Constant name="cloud" /> configures your webhook at the account level. 
+   - **Endpoint** &mdash; Enter your application's endpoint URL, where <Constant name="cloud" /> can send the event(s) to.
 4. When done, click **Save**. 
    
-   dbt Cloud provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
+   <Constant name="cloud" /> provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
 :::info
-Note that dbt Cloud automatically deactivates a webhook after 5 consecutive failed attempts to send events to your endpoint. To re-activate the webhook, locate it in the webhooks list and click the reactivate button to enable it and continue receiving events.
+Note that <Constant name="cloud" /> automatically deactivates a webhook after 5 consecutive failed attempts to send events to your endpoint. To re-activate the webhook, locate it in the webhooks list and click the reactivate button to enable it and continue receiving events.
 :::
 
-To find the appropriate dbt Cloud access URL for your region and plan, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+To find the appropriate <Constant name="cloud" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 ### Differences between completed and errored webhook events {#completed-errored-event-difference}
 The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, dbt Cloud triggers the two events at different times:
@@ -177,14 +177,14 @@ An example of a webhook payload for an errored run:
 ```
 
 ## API for webhooks {#api-for-webhooks}
-You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
+You can use the <Constant name="cloud" /> API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).   
+<Constant name="cloud" /> is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available <Constant name="cloud" /> access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions
-List all webhooks that are available from a specific dbt Cloud account.
+List all webhooks that are available from a specific <Constant name="cloud" /> account.
 
 #### Request 
 ```shell
@@ -561,12 +561,12 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 ```
 
 ## Related docs 
-- [dbt Cloud CI](/docs/deploy/continuous-integration)
-- [Use dbt Cloud's webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
+- [<Constant name="cloud" /> CI](/docs/deploy/continuous-integration)
+- [Use <Constant name="cloud" />'s webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
 
 ## Troubleshooting
 
-If your destination system isn't receiving dbt Cloud webhooks, ensure it allows Authorization headers. dbt Cloud webhooks send an Authorization header, and if your endpoint doesn't support this, it may be incompatible. Services like Azure Logic Apps and Power Automate may not accept Authorization headers, so they won't work with dbt Cloud webhooks. You can test your endpoint's support by sending a request with curl and an Authorization header, like this:
+If your destination system isn't receiving <Constant name="cloud" /> webhooks, ensure it allows Authorization headers. <Constant name="cloud" /> webhooks send an Authorization header, and if your endpoint doesn't support this, it may be incompatible. Services like Azure Logic Apps and Power Automate may not accept Authorization headers, so they won't work with <Constant name="cloud" /> webhooks. You can test your endpoint's support by sending a request with curl and an Authorization header, like this:
 
 ```shell
 curl -H 'Authorization: 123' -X POST https://<your-webhook-endpoint>

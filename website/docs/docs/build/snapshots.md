@@ -37,9 +37,9 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 <VersionBlock lastVersion="1.8" >
 
-In old versions of dbt Core (v1.8 and earlier), snapshots must be defined in snapshot blocks inside of your [snapshots directory](/reference/project-configs/snapshot-paths). These snapshots do not have native support for environments or deferral, making previewing changes in development difficult. 
+In old versions of <Constant name="core" /> (v1.8 and earlier), snapshots must be defined in snapshot blocks inside of your [snapshots directory](/reference/project-configs/snapshot-paths). These snapshots do not have native support for environments or deferral, making previewing changes in development difficult. 
 
-The modern, environment-aware way to create snapshots is to define them in YAML. This requires dbt Core v1.9 or later, or to be on any [dbt Cloud release track](/docs/dbt-versions/cloud-release-tracks).
+The modern, environment-aware way to create snapshots is to define them in YAML. This requires <Constant name="core" /> v1.9 or later, or to be on any [<Constant name="cloud" /> release track](/docs/dbt-versions/cloud-release-tracks).
 
 - For more information about configuring snapshots in a `.sql` file, refer to the [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy) page. 
 
@@ -331,7 +331,15 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 <Expandable alt_header="Use the timestamp strategy where possible">
 
-This strategy handles column additions and deletions better than the `check` strategy.
+The timestamp strategy is recommended because it handles column additions and deletions more efficiently than the `check` strategy. This is because it's more robust to schema changes, especially when columns are added or removed over time. 
+
+The timestamp strategy relies on a single `updated_at` field, which means it avoids the need to constantly update your snapshot configuration as your source table evolves.
+
+Why timestamp is the preferred strategy:
+
+- Requires tracking only one column (`updated_at`)
+- Automatically handles new or removed columns in the source table
+- Less prone to errors when the table schema evolves over time (for example, if using the `check` strategy, you might need to update the `check_cols` configuration)
 
 </Expandable>
 
@@ -398,6 +406,12 @@ Snapshot "strategies" define how dbt knows if a row has changed. There are two s
 
 ### Timestamp strategy (recommended)
 The `timestamp` strategy uses an `updated_at` field to determine if a row has changed. If the configured `updated_at` column for a row is more recent than the last time the snapshot ran, then dbt will invalidate the old record and record the new one. If the timestamps are unchanged, then dbt will not take any action.
+
+Why timestamp is recommended?
+
+- Requires tracking only one column (`updated_at`)
+- Automatically handles new or removed columns in the source table
+- Less prone to errors when the table schema evolves over time (for example, if using the `check` strategy, you might need to update the `check_cols` configuration)
 
 The `timestamp` strategy requires the following configurations:
 
@@ -630,7 +644,7 @@ Note, in v1.9 and higher, the [`hard_deletes`](/reference/resource-configs/hard-
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-In dbt Core v1.9+ (or available sooner in [the "Latest" release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks)):
+In <Constant name="core" /> v1.9+ (or available sooner in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.

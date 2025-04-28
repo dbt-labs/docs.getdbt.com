@@ -6,7 +6,7 @@ sidebar_label: "About data platform connections"
 pagination_next: "docs/cloud/connect-data-platform/connect-microsoft-fabric"
 pagination_prev: null
 ---
-dbt Cloud can connect with a variety of data platform providers including: 
+<Constant name="cloud" /> can connect with a variety of data platform providers including: 
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
@@ -18,22 +18,22 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
-- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="Preview" />
+- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="preview" />
 
-To connect to your database in dbt Cloud:
+To connect to your database in <Constant name="cloud" />:
 
 1. Click your account name at the bottom of the left-side menu and click **Account settings**
 2. Select **Projects** from the top left, and from there click **New Project**
 
 <Lightbox src="/img/docs/connect-data-platform/choose-a-connection.png" title="Choose a connection"/>
 
-These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/guides)
+These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/guides)
 
 ## Connection management
 
 :::info Connection management now at account-level
 
-From July 2024, connection management has moved from the project level to the account level for all users in dbt Cloud. Previously, each dbt Cloud project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
+From July 2024, connection management has moved from the project level to the account level for all users in <Constant name="cloud" />. Previously, each <Constant name="cloud" /> project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="55%" title="Previous connection model"/>
 
@@ -54,7 +54,7 @@ As shown in the image, a project with 2 environments can target between 1 and 2 
 
 ### Migration from project level connections to account level connections
 
-Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, and so on.).
+Rolling out account-level connections will not require any interruption of service in your current usage (<Constant name="cloud_ide" />, CLI, jobs, and so on.).
 
 :::info Why am I prompted to configure a development environment?
 If your project did not previously have a development environment, you may be redirected to the project setup page. Your project is still intact. Choose a connection for your new development environment, and you can view all your environments again.
@@ -90,13 +90,13 @@ Please consider the following actions, as the steps you take will depend on the 
 - Normalization
   - Understand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
   - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
-  - Test the new wiring by triggering jobs or starting IDE sessions
+  - Test the new wiring by triggering jobs or starting <Constant name="cloud_ide" /> sessions
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>
 
 ## IP Restrictions
 
-dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page.
+<Constant name="cloud" /> will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page.
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 

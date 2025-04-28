@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.2.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading

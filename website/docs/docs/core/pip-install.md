@@ -16,7 +16,7 @@ A Python virtual environment creates an isolated workspace for Python projects, 
 
 You can create virtual environments using tools like [conda](https://anaconda.org/anaconda/conda), [poetry](https://python-poetry.org/docs/managing-environments/) or `venv`. This guide uses `venv` because it's lightweight, has the fewest additional dependencies, and is included in Python by default.
 
-Users who want to run dbt locally, for example in [dbt Core](/docs/core/installation-overview) or the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#install-a-virtual-environment) may want to install a Python virtual environment.
+Users who want to run dbt locally, for example in [<Constant name="core" />](/docs/core/installation-overview) or the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation#install-a-virtual-environment) may want to install a Python virtual environment.
 
 ### Prerequisites
 
@@ -88,9 +88,9 @@ To set up a Python virtual environment, navigate to your project directory and e
   </TabItem>
 </Tabs>
 
-If you're using dbt Core, refer to [What are the best practices for installing dbt Core with pip?](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) after creating your virtual environment. 
+If you're using <Constant name="core" />, refer to [What are the best practices for installing <Constant name="core" /> with pip?](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) after creating your virtual environment. 
 
-If you're using the dbt Cloud CLI, you can [install dbt Cloud CLI in pip](/docs/cloud/cloud-cli-installation#install-dbt-cloud-cli-in-pip) after creating your virtual environment.
+If you're using the <Constant name="cloud" /> CLI, you can [install <Constant name="cloud" /> CLI in pip](/docs/cloud/cloud-cli-installation#install-dbt-cloud-cli-in-pip) after creating your virtual environment.
 
 ### Deactivate virtual environment
 
@@ -186,7 +186,7 @@ python -m pip install --upgrade dbt-ADAPTER_NAME
 
 ### Install dbt-core only
 
-If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
+If you're building a tool that integrates with <Constant name="core" />, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
 
 ```shell
 python -m pip install dbt-core
@@ -210,7 +210,7 @@ python -m pip install --upgrade dbt-core==1.9
 
 ## `pip install dbt`
 
-In the fall of 2023, the `dbt` package on PyPI became a supported method to install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli-in-pip).
+In the fall of 2023, the `dbt` package on PyPI became a supported method to install the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli-in-pip).
 
 If you have workflows or integrations that rely on installing the package named `dbt`, you can achieve the same behavior by installing the same five packages that it used:
 

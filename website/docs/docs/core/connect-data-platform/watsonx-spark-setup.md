@@ -33,10 +33,10 @@ Read the official documentation for using **watsonx.data** with `dbt-watsonx-spa
 - [Documentation for IBM watsonx.data software](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x?topic=integration-data-build-tool-adapter-spark)
 
 ## Installing dbt-watsonx-spark
-Note: From dbt v1.8, installing an adapter no longer installs 'dbt-core' automatically. This is because adapters and dbt Core versions are decoupled to avoid overwriting dbt-core installations.Use the following command for installation:
+Note: From dbt v1.8, installing an adapter no longer installs '<Constant name="core" />' automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations.Use the following command for installation:
 
 ```sh
-python -m pip install dbt-core dbt-watsonx-spark
+python -m pip install <Constant name="core" /> dbt-watsonx-spark
 ```
 
 ## Configuring `dbt-watsonx-spark`
@@ -110,5 +110,5 @@ The following profile fields are optional. You can configure the instance sessio
 ## Limitations and considerations
 
 - **Supports only HTTP**: No support for ODBC, Thrift, or session-based connections.
-- **Limited dbt Cloud Support**: Not fully compatible with dbt Cloud.
+- **Limited <Constant name="cloud" /> Support**: Not fully compatible with <Constant name="cloud" />.
 - **Metadata Persistence**: Some dbt features, such as column descriptions, may not persist in all table formats.

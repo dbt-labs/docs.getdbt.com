@@ -17,6 +17,8 @@ Variables can be defined in two ways:
 1. In the `dbt_project.yml` file
 2. On the command line
 
+Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML information.
+
 ### Defining variables in `dbt_project.yml`
 
 

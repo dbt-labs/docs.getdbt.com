@@ -90,11 +90,11 @@ semantic_models:
 - To query dimensions from different semantic models, add a double underscore (or dunder) to the dimension name after joining the entity in your editing tool. The following query, `user_id__type` is included as a dimension using the `--group-by` flag (`type` is the dimension).
 
 ```yaml 
-dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Cloud
+dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__type # In <Constant name="cloud" />
 ```
 
 ```yaml 
-mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Core
+mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In <Constant name="core" />
 ```
 
 #### SQL examples

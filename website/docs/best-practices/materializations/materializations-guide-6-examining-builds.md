@@ -11,19 +11,19 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 
 - ⌚ dbt keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
 - 🖼️ This information is stored in a couple files which dbt calls **artifacts**.
-- 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **dbt Cloud** packages the most useful bits of information into a tidy **visualization** for you.
-- ☁️ If you’re not using Cloud, we can still use the output of the **dbt Core CLI to understand our runs**.
+- 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **<Constant name="cloud" />** packages the most useful bits of information into a tidy **visualization** for you.
+- ☁️ If you’re not using Cloud, we can still use the output of the **<Constant name="core" /> CLI to understand our runs**.
 
 ### Model timing
 
-That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
+That’s where <Constant name="cloud" />’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in <Constant name="cloud" /> to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
 
-![dbt Cloud's Model Timing diagram](/img/best-practices/materializations/model-timing-diagram.png)
+![<Constant name="cloud" />'s Model Timing diagram](/img/best-practices/materializations/model-timing-diagram.png)
 
 - 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
 - ⌛ We can see above that `order_items` and `orders` are **taking the most time**, so we may want to go ahead and **make that incremental**.
 
-If you aren’t using dbt Cloud, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the dbt Core CLI to check our model times, and it’s a great opportunity to become familiar with that output.
+If you aren’t using <Constant name="cloud" />, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the <Constant name="core" /> CLI to check our model times, and it’s a great opportunity to become familiar with that output.
 
 ### dbt Core CLI output
 
@@ -45,6 +45,6 @@ If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you�
 
 ### dbt Artifacts package
 
-- 🎨  Lastly, when it comes to examining your dbt runs, you’re **not stuck without fancy visuals** if you’re using dbt Core. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [dbt Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
+- 🎨  Lastly, when it comes to examining your dbt runs, you’re **not stuck without fancy visuals** if you’re using <Constant name="core" />. It’s not set up out-of-the-box, but if you want to introspect your project more deeply, you can use the [dbt Artifacts package](https://github.com/brooklyn-data/dbt_artifacts).
 - 👩‍🎨  This provides models you can **visualize for every aspect of your project** at a very granular level.
 - ⌚  You can use it to **create your own model timing visualization** in your BI tool, and any other reports you need to keep an eye on your materialization strategy.

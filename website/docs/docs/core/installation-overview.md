@@ -5,9 +5,9 @@ pagination_next: "docs/core/pip-install"
 pagination_prev: null
 ---
 
-[dbt Core](https://github.com/dbt-labs/dbt-core) is an open sourced project where you can develop from the command line and run your dbt project.
+[<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is an open sourced project where you can develop from the command line and run your dbt project.
 
-To use dbt Core, your workflow generally looks like:
+To use <Constant name="core" />, your workflow generally looks like:
 
 1. **Build your dbt project in a code editor &mdash;** popular choices include VSCode and Atom.
 
@@ -15,7 +15,7 @@ To use dbt Core, your workflow generally looks like:
 
 :::info How we set up our computers for working on dbt projects
 
-We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) for our recommended setup when running dbt projects using dbt Core.
+We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) for our recommended setup when running dbt projects using <Constant name="core" />.
 
 :::
 
@@ -23,12 +23,12 @@ If you're using the command line, we recommend learning some basics of your term
 
 ## Install dbt Core
 
-You can install dbt Core on the command line by using one of these methods:
+You can install <Constant name="core" /> on the command line by using one of these methods:
 
 - [Use pip to install dbt](/docs/core/pip-install) (recommended)
 - [Use a Docker image to install dbt](/docs/core/docker-install)
 - [Install dbt from source](/docs/core/source-install)
-- You can also develop locally using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). The dbt Cloud CLI and dbt Core are both command line tools that let you run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
+- You can also develop locally using the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). The <Constant name="cloud" /> CLI and <Constant name="core" /> are both command line tools that let you run dbt commands. The key distinction is the <Constant name="cloud" /> CLI is tailored for <Constant name="cloud" />'s infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 ## Upgrading dbt Core
 
@@ -38,7 +38,7 @@ dbt provides a number of resources for understanding [general best practices](/b
 
 ## About dbt data platforms and adapters
 
-dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](/docs/supported-data-platforms).
+dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install <Constant name="core" />, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](/docs/supported-data-platforms).
 
 :::tip Pro tip: Using the --help flag
 

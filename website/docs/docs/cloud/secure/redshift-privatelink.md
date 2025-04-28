@@ -16,7 +16,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
 - [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
 
-dbt Cloud supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
+<Constant name="cloud" /> supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
 <CloudProviders type='Redshift' />
 
@@ -49,7 +49,7 @@ dbt Cloud supports both types of endpoints, but there are a number of [considera
        - Redshift cluster name:
        - Redshift cluster AWS account ID:
        - Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
-       - dbt Cloud multi-tenant environment (US, EMEA, AU):
+       - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
        ```
 
    - **Redshift Serverless**
@@ -59,7 +59,7 @@ dbt Cloud supports both types of endpoints, but there are a number of [considera
        - Redshift workgroup name:
        - Redshift workgroup AWS account ID:
        - Redshift workgroup AWS Region (e.g., us-east-1, eu-west-2):
-       - dbt Cloud multi-tenant environment (US, EMEA, AU):
+       - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
        ```
 
 import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
@@ -114,7 +114,7 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 ### 3. Obtain VPC Endpoint Service Name
 
-Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
+Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
@@ -124,14 +124,14 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
 - VPC Endpoint Service Name:
 - Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
-- dbt Cloud multi-tenant environment (US, EMEA, AU):
+- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
 ```
 
 <PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
 
-Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink.
 
 1. Navigate to **settings** → **Create new project** → select **Redshift**
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

@@ -4,7 +4,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Python
 
-- [dbt-core](https://github.com/dbt-labs/dbt-core/discussions) - the primary shared functionality powering dbt
+- [<Constant name="core" />](https://github.com/dbt-labs/dbt-core/discussions) - the primary shared functionality powering dbt
 - [hubcap](https://github.com/dbt-labs/hubcap) - the code powering the dbt Package hub
 - adapters - [the warehouse specific code that wires core up to various platforms](https://docs.getdbt.com/docs/contributing/adapter-development/1-what-are-adapters), several major platforms’ development is supported by dbt Labs:
   - [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery)

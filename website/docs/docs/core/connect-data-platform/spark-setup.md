@@ -210,7 +210,7 @@ To connect to Apache Spark running on an Amazon EMR cluster, you will need to ru
 
 ### Supported functionality
 
-Most dbt Core functionality is supported, but some features are only available
+Most <Constant name="core" /> functionality is supported, but some features are only available
 on Delta Lake (Databricks).
 
 Delta-only features:

@@ -12,6 +12,7 @@ default_value: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
@@ -151,6 +152,35 @@ select ...
 {{ config(
   enabled=true | false
 ) }}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='dbt_project.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
+<File name='models/<filename>.yml'>
+
+```yaml
+unit_tests:
+  - name: [<test-name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+
 ```
 
 </File>

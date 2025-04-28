@@ -7,6 +7,8 @@ description: "dbt uses event_time to understand when an event occurred. When def
 datatype: string
 ---
 
+import EventTimeRequired from '/snippets/_event_time_required.md';
+
 <VersionCallout version="1.9" />
 
 <Tabs>
@@ -102,13 +104,10 @@ snapshots:
 
 </File>
 
-
 import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
 
 <SnapshotYaml/>
 </VersionBlock>
-
-
 
 </TabItem>
 
@@ -139,6 +138,8 @@ sources:
 ## Definition
 
 dbt uses `event_time` to understand when an event occurred. Configure it in your `dbt_project.yml` file, property YAML file, or config block for [models](/docs/build/models), [seeds](/docs/build/seeds), or [sources](/docs/build/sources).
+
+<EventTimeRequired/>
 
 ### Usage
 

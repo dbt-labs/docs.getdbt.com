@@ -17,8 +17,8 @@ import RunProdJob from '/snippets/_sl-run-prod-job.md';
 <RunProdJob/>
 
 ## Next steps
-After you've executed a job and deployed your Semantic Layer:
-- [Set up your Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in dbt Cloud.
+After you've executed a job and deployed your <Constant name="semantic_layer" />:
+- [Set up your <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="cloud" />.
 - Discover the [available integrations](/docs/cloud-integrations/avail-sl-integrations), such as Tableau, Google Sheets, Microsoft Excel, and more.
 - Start querying your metrics with the [API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata).
 

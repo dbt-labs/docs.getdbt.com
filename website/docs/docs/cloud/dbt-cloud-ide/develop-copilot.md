@@ -4,14 +4,14 @@ sidebar_label: "Develop with dbt Copilot"
 description: "Use dbt Copilot to generate documentation, tests, semantic models, and sql code from scratch, giving you the flexibility to modify or fix generated code." 
 ---
 
-# Develop with dbt Copilot <Lifecycle status="enterprise" />
+# Develop with dbt Copilot <Lifecycle status="managed" />
 
 <IntroText>
 
-This page describes how to use dbt Copilot in the dbt Cloud IDE to improve your development workflow.
+This page describes how to use <Constant name="copilot" /> in the <Constant name="cloud_ide" /> to improve your development workflow.
 </IntroText>
 
-Use [dbt Copilot](/docs/cloud/dbt-copilot) in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to generate documentation, tests, semantic models, metrics, and SQL code from scratch &mdash; making it easier for you to build your dbt project, accelerate your development, and focus on high-level tasks. For information about using dbt Copilot in the [Visual Editor](/docs/cloud/visual-editor), see [Build with dbt Copilot](/docs/cloud/build-ve-copilot).
+Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot) in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to generate documentation, tests, semantic models, metrics, and SQL code from scratch &mdash; making it easier for you to build your dbt project, accelerate your development, and focus on high-level tasks. For information about using <Constant name="copilot" /> in the [<Constant name="visual_editor" />](/docs/cloud/canvas), see [Build with <Constant name="copilot" />](/docs/cloud/build-canvas-copilot).
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import CopilotEditCode from '/snippets/_use-copilot-edit-code.md';

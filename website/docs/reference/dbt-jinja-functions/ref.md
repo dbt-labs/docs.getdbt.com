@@ -42,7 +42,7 @@ from {{ref('model_a')}}
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
 The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [\{\{ this \}\} variable](/reference/dbt-jinja-functions/this).
-  - Note &mdash; Prior to dbt v1.6, the dbt Cloud IDE returns `request` as the result of `{{ ref.identifier }}`.
+  - Note &mdash; Prior to dbt v1.6, the <Constant name="cloud_ide" /> returns `request` as the result of `{{ ref.identifier }}`.
 
 ## Advanced ref usage
 
@@ -84,7 +84,7 @@ select * from {{ ref('model_name') }}
 
 You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and a model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages. 
 
-When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/collaborate/govern/project-dependencies).
+When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/mesh/govern/project-dependencies).
 
 The following syntax demonstrates how to reference a model from a specific project or package:
 

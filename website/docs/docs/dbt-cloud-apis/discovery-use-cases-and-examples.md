@@ -3,7 +3,7 @@ title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
 ---
 
-With the Discovery API, you can query the metadata in dbt Cloud to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
+With the Discovery API, you can query the metadata in <Constant name="cloud" /> to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
 
 You can use the API in a variety of ways to get answers to your business questions. Below describes some of the uses of the API and is meant to give you an idea of the questions this API can help you answer.
 
@@ -906,7 +906,7 @@ Graph example:
 
 ### Which metrics are available?
 
-You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+You can define and query metrics using the [<Constant name="semantic_layer" />](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
 
 <details>
 <summary>Example query</summary>

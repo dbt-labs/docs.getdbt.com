@@ -9,7 +9,7 @@ The supported authentication methods are:
 - Microsoft Entra service principal
 - Microsoft Entra password
 
-SQL password (LDAP) is not supported in Microsoft Fabric Data Warehouse so you must use Microsoft Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in dbt Cloud, you will need at least one Microsoft Entra service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
+SQL password (LDAP) is not supported in Microsoft Fabric Data Warehouse so you must use Microsoft Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in <Constant name="cloud" />, you will need at least one Microsoft Entra service principal to connect <Constant name="cloud" /> to Fabric, ideally one service principal for each user.
 
 ### Microsoft Entra service principal 
 The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra service principal authentication. 
@@ -40,4 +40,4 @@ The following are the required fields for setting up a connection with a Microso
 
 ## Configuration 
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Microsoft Fabric Data Warehouse configurations](/reference/resource-configs/fabric-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Microsoft Fabric Data Warehouse configurations](/reference/resource-configs/fabric-configs).

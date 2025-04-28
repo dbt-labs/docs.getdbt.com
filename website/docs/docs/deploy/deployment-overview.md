@@ -10,7 +10,7 @@ pagination_prev: null
 
 <IntroText>
 
-Use dbt Cloud's capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
+Use <Constant name="cloud" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="cloud" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
 </IntroText>
 
@@ -19,15 +19,15 @@ dbt Cloud offers the easiest and most reliable way to run your dbt project in pr
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
 - Maintain high-quality code and data in production
-- Gain visibility into the [health](/docs/collaborate/data-tile) of deployment jobs, models, and tests
+- Gain visibility into the [health](/docs/explore/data-tile) of deployment jobs, models, and tests
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
-- [Visualize](/docs/cloud-integrations/downstream-exposures-tableau) and [orchestrate](/docs/cloud-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="enterprise"/>
-- Use [dbt Cloud's Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="enterprise" />
-- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload dbt Core artifacts into dbt Cloud for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,enterprise" />
+- [Visualize](/docs/cloud-integrations/downstream-exposures-tableau) and [orchestrate](/docs/cloud-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed" />
+- Use [dbt Cloud's Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed" />
+- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload dbt Core artifacts into dbt Cloud for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed" />
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
-Learn how to use dbt Cloud's features to help your team ship timely and quality production data more easily.
+Learn how to use <Constant name="cloud" />'s features to help your team ship timely and quality production data more easily.
 ## Deploy with dbt
 
 <div className="grid--3-col">
@@ -119,7 +119,7 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
 </div> <br />
 
 
-## Hybrid projects <Lifecycle status="beta,enterprise" />
+## Hybrid projects <Lifecycle status="beta,managed" />
 
 <div className="grid--3-col">
 
@@ -149,7 +149,7 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
 
 ## Run dbt in production
 
-If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.-->
+If you want to run dbt jobs on a schedule, you can use tools such as <Constant name="cloud" />, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
 ## Related docs
 

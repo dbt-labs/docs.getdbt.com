@@ -10,9 +10,9 @@ This page contains the collective wisdom of experienced users of dbt on how to b
 ### Version control your dbt project
 All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into your production branch, such as `main`. 
 
-:::info Git guide
+:::info <Constant name="git" /> guide
 
-We've codified our best practices in Git, in our [Git guide](https://github.com/dbt-labs/corp/blob/main/git-guide.md).
+We've codified our best practices in <Constant name="git" />, in our [<Constant name="git" /> guide](https://github.com/dbt-labs/corp/blob/main/git-guide.md).
 
 :::
 
@@ -109,12 +109,11 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](/reference/node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and <Constant name="cloud" />, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-By comparing to artifacts from a previous production run, dbt can determine
-which models are modified and build them on top of of their unmodified parents.
+By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
@@ -203,4 +202,4 @@ We find it most useful to separate these two types of transformations into diffe
 If you're using macros or other pieces of Jinja in your models, your compiled SQL (found in the `target/compiled` directory) may contain unwanted whitespace. Check out the [Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/#whitespace-control) to learn how to control generated whitespace.
 
 ## Related docs
-- [Updating our permissioning guidelines: grants as configs in dbt Core v1.2](https://docs.getdbt.com/blog/configuring-grants)
+- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](https://docs.getdbt.com/blog/configuring-grants)

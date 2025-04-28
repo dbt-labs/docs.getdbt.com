@@ -339,7 +339,7 @@ Model configurations are applied hierarchically. You can configure models from w
 1. Using a `config()` Jinja macro within a model.
 2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file.
 3. From the `dbt_project.yml` project file, under the `models:` key. In this case, the model that's nested the deepest will have the highest priority. 
-  - Note, the model name configuration must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [dbt Explorer](/docs/collaborate/explore-projects).
+  - Note, the model name configuration must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/explore/explore-projects).
 
 The most specific configuration always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](/reference/resource-configs/resource-path) as nested dictionary keys.
 

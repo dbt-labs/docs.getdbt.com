@@ -14,7 +14,7 @@ meta:
 - Using [pre or post hooks](/reference/resource-configs/pre-hook-post-hook)
 
 `this` is a [Relation](/reference/dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected. 
-  - Note &mdash; Prior to dbt v1.6, the dbt Cloud IDE returns `request` as the result of `{{ ref.identifier }}`.
+  - Note &mdash; Prior to dbt v1.6, <Constant name="clou_ided" /> returns `request` as the result of `{{ ref.identifier }}`.
 
 `this` can be thought of as equivalent to `ref('<the_current_model>')`, and is a neat way to avoid circular dependencies.
 

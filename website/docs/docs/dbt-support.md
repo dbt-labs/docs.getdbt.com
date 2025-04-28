@@ -7,7 +7,7 @@ pagination_prev: null
 
 Support for dbt is available to all users through the following channels:
 
-- Dedicated dbt Support team (dbt Cloud users).
+- Dedicated dbt Support team (<Constant name="cloud" /> users).
 - [The Community Forum](https://discourse.getdbt.com/).
 - [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
   
@@ -17,11 +17,11 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 ## dbt Cloud support
 
-The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the dbt Cloud navigation.
+The global dbt Support team is available to <Constant name="cloud" /> customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the <Constant name="cloud" /> navigation.
 
 ### Create a support ticket
-To create a support ticket in dbt Cloud:
-1. In the dbt Cloud navigation, click on **Help & Guides**.
+To create a support ticket in <Constant name="cloud" />:
+1. In the <Constant name="cloud" /> navigation, click on **Help & Guides**.
 2. Click **Create a support ticket**.
 3. Fill out the form and click **Create Ticket**.
 4. A dbt Support team member will respond to your ticket through email.
@@ -29,9 +29,9 @@ To create a support ticket in dbt Cloud:
 <Lightbox src="/img/create-support-ticket.gif" title="Create a support ticket in dbt Cloud" />
 
 ### Ask dbt Support Assistant
-dbt Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to dbt Cloud users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
+dbt Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to <Constant name="cloud" /> users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
 
-The dbt Support Assistant AI widget is separate from [dbt Copilot](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in dbt Cloud won't affect the dbt Support Assistant's availability.
+The dbt Support Assistant AI widget is separate from [<Constant name="copilot" />](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="cloud" /> won't affect the dbt Support Assistant's availability.
 
 :::info
 We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@getdbt.com) to report incorrect information provided by the Support Assistant.
@@ -43,7 +43,7 @@ We want to help you work through implementing and utilizing dbt Cloud at your or
 
 - **Enterprise plans** &mdash; Priority [support](#severity-level-for-enterprise-support), optional premium plans, enhanced SLAs, implementation assistance, dedicated management, and dbt Labs security reviews depending on price point.
 - **Developer and Team plans** &mdash; 24x5 support (no service level agreement (SLA); [contact Sales](https://www.getdbt.com/pricing/) for Enterprise plan inquiries).
-- **Support team help** &mdash; Assistance with [common dbt Cloud questions](/category/troubleshooting), like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, [how to generate a har file](/faqs/Troubleshooting/generate-har-file), and so on.
+- **Support team help** &mdash; Assistance with [common <Constant name="cloud" /> questions](/category/troubleshooting), like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, [how to generate a har file](/faqs/Troubleshooting/generate-har-file), and so on.
 - **Resource guide** &mdash; Check the [guide](/community/resources/getting-help) for effective help-seeking strategies.
 
 <details>
@@ -84,7 +84,7 @@ Basic assistance with dbt project troubleshooting.
 Help with errors and issues in macros, models, and dbt Labs' packages.
 For strategic advice, best practices, or expansion conversations, consult your Account Team.
 
-For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt project:
+For customers on a <Constant name="cloud" /> Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt project:
 - **Something isn't working the way I would expect it to...**
     - in a macro I created...
     - in an incremental model I'm building...
@@ -115,10 +115,10 @@ Support tickets are assigned a severity level based on the impact of the issue o
 
 ## Leave feedback
 
-Leave feedback or submit a feature request for dbt Cloud or dbt Core.
+Leave feedback or submit a feature request for <Constant name="cloud" /> or <Constant name="core" />.
 
 #### Share feedback or feature request for dbt Cloud
-1. In the dbt Cloud navigation, click **Leave feedback**.
+1. In the <Constant name="cloud" /> navigation, click **Leave feedback**.
 2. In the **Leave feedback** pop up, fill out the form.
 3. Upload any relevant files to the feedback form (optional).
 4. Confirm if you'd like dbt Labs to contact you about the feedback (optional).

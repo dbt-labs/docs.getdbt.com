@@ -255,7 +255,7 @@ sources:
 
 <VersionBlock lastVersion="1.8">
 
-Configuring an [`event_time`](/reference/resource-configs/event-time) for a source is only available in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) or dbt Core versions 1.9 and later.
+Configuring an [`event_time`](/reference/resource-configs/event-time) for a source is only available in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks) or <Constant name="core" /> versions 1.9 and later.
 
 </VersionBlock>
 

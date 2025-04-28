@@ -6,7 +6,7 @@ id: "duckdb-configs"
 
 ## Profile
 
-dbt Cloud users don't have to create their own profiles.yml file. dbt-duckdb [profiles](/docs/core/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
+<Constant name="cloud" /> users don't have to create their own profiles.yml file. dbt-duckdb [profiles](/docs/core/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
 
 ```yml
 your_profile_name:

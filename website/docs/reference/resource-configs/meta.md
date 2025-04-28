@@ -13,6 +13,7 @@ hide_table_of_contents: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
     { label: 'Exposures', value: 'exposures', },
@@ -169,6 +170,33 @@ See [configs and properties](/reference/configs-and-properties) for details.
 <TabItem value="tests">
 
 You can't add YAML `meta` configs for [generic tests](/docs/build/data-tests#generic-data-tests). However, you can add `meta` properties to [singular tests](/docs/build/data-tests#singular-data-tests) using `config()` at the top of the test file. 
+
+</TabItem>
+
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='dbt_project.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
+<File name='models/<filename>.yml'>
+
+```yml
+unit_tests:
+  - name: <test-name>
+    config:
+      [meta](/reference/snapshot-properties): {<dictionary>}
+
+```
+
+</File>
 
 </TabItem>
 
@@ -423,9 +451,10 @@ version: 2
 
 models:
   - name: users
-    meta:
-      owner: "@alice"
-      model_maturity: in dev
+    config:
+      meta:
+        owner: "@alice"
+        model_maturity: in dev
 
 ```
 
@@ -439,13 +468,13 @@ models:
 ```yml
 version: 2
 
-[sources](/reference/source-properties):
+sources:
   - name: salesforce
-
     tables:
       - name: account
-        meta:
-          contains_pii: true
+        config:
+          meta:
+            contains_pii: true
         columns:
           - name: email
             meta:

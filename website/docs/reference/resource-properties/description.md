@@ -246,7 +246,7 @@ A user-defined description used to document:
 - data tests, and data test columns
 - unit tests for models
 
-These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="explorer" />](/docs/explore/explore-projects)). 
 
 Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
@@ -407,9 +407,9 @@ models:
 
 ### Include an image from your repo in your descriptions
 
-This section applies to dbt Core users only. Including an image from your repository ensures your images are version-controlled. 
+This section applies to <Constant name="core" /> users only. Including an image from your repository ensures your images are version-controlled. 
 
-Both dbt Cloud and dbt Core users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+Both <Constant name="cloud" /> and <Constant name="core" /> users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include an image in your model's `description` field:
 
@@ -451,7 +451,7 @@ If mixing images and text, also consider using a docs block.
 
 ### Include an image from the web in your descriptions
 
-This section applies to dbt Cloud and dbt Core users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+This section applies to <Constant name="cloud" /> and <Constant name="core" /> users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include images from the web, specify the image URL in your model's `description` field:
 

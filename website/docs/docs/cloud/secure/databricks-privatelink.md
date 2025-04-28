@@ -12,7 +12,7 @@ import CloudProviders from '/snippets/_privatelink-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
-The following steps will walk you through the setup of a Databricks AWS PrivateLink or Azure Private Link endpoint in the dbt Cloud multi-tenant environment.
+The following steps will walk you through the setup of a Databricks AWS PrivateLink or Azure Private Link endpoint in the <Constant name="cloud" /> multi-tenant environment.
 
 <CloudProviders type='Databricks'/>
 
@@ -27,11 +27,11 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
     - Type: Databricks
     - Databricks instance name:
     - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
-    - dbt Cloud multi-tenant environment (US, EMEA, AU):
+    - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
     ```
     <PrivateLinkSLA />
 
-1. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace:
+1. Once <Constant name="cloud" /> support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace:
     - [Register your VPC endpoint](https://docs.databricks.com/en/security/network/classic/vpc-endpoints.html) &mdash; Register the VPC endpoint using the VPC endpoint ID provided by dbt Support.
     - [Create a Private Access Settings object](https://docs.databricks.com/en/security/network/classic/private-access-settings.html) &mdash; Create a Private Access Settings (PAS) object with your desired public access settings, and setting Private Access Level to **Endpoint**. Choose the registered endpoint created in the previous step.
     - [Create or update your workspace](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both) &mdash; Create a workspace, or update an existing workspace. Under **Advanced configurations → Private Link** choose the private access settings object created in the previous step.
@@ -56,7 +56,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
     - Databricks instance name:
     - Azure Databricks Workspace URL (e.g. adb-################.##.azuredatabricks.net)
     - Databricks Azure resource ID:
-    - dbt Cloud multi-tenant environment: EMEA
+    - <Constant name="cloud" /> multi-tenant environment: EMEA
     - Azure region: Region that hosts your Databricks workspace (like, WestEurope, NorthEurope)
     ```
 5. Once our Support team confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and browse to **Networking** > **Private Endpoint Connections**. Then, highlight the `dbt` named option and select **Approve**.
@@ -64,7 +64,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
 ## Create Connection in dbt Cloud
 
-Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in dbt Cloud:
+Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in <Constant name="cloud" />:
 
 1. Navigate to **Settings** → **Create new project** → select **Databricks**. 
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

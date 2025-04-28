@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.1.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
@@ -65,4 +65,4 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### Dependencies
 
-[Python compatibility](/faqs/Core/install-python-compatibility): dbt Core officially supports Python 3.10
+[Python compatibility](/faqs/Core/install-python-compatibility): <Constant name="core" /> officially supports Python 3.10

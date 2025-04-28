@@ -210,9 +210,9 @@ The `docs` attribute supports `node_color` to customize the display color of som
 
 Note, you need to run or re-run the `dbt docs generate` command to apply and view the customized colors.
 
-:::info Custom node colors not applicable in dbt Explorer
+:::info Custom node colors not applicable in <Constant name="explorer" />
 
-The custom `node_color` attribute isn't applicable in dbt Explorer. Instead, Explorer provides [lenses](/docs/collaborate/explore-projects#lenses), which are map layers for your <Term id="dag"/>. Lenses help you better understand your project's contextual metadata at scale and distinguish specific models or subsets of models.
+The custom `node_color` attribute isn't applicable in dbt Explorer. Instead, Explorer provides [lenses](/docs/explore/explore-projects#lenses), which are map layers for your <Term id="dag"/>. Lenses help you better understand your project's contextual metadata at scale and distinguish specific models or subsets of models.
 
 :::
 

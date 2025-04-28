@@ -16,7 +16,7 @@ macros:
   - name: <macro name>
     arguments:
       - name: <arg name>
-        type: <string>
+        [type](#supported-types): <string>
         description: <markdown_string>
 
 ```
@@ -26,11 +26,6 @@ macros:
 ## Definition
 
 The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`.  You can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
-
-You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag:
-
-- If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
-- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro or if the argument types aren't valid according to the [supported types](/reference/resource-properties/arguments#supported-types). Additionally, if no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file.
 
 ## type
 
@@ -64,7 +59,7 @@ macros:
 
 ### Supported types
 
-From dbt Core v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, dbt supports the following types for macro arguments:
+From <Constant name="core" /> v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, dbt supports the following types for macro arguments:
 
 - `string` or `str`
 - `boolean` or `bool`

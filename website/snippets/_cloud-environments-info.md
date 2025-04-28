@@ -1,22 +1,22 @@
 ## Types of environments
 
-In dbt Cloud, there are two types of environments:
+In <Constant name="cloud" />, there are two types of environments:
 - **Deployment environment** &mdash; Determines the settings used when jobs created within that environment are executed.<br></br>
     Types of deployment environments:
     - General
     - Staging
     - Production
-- **Development environment** &mdash; Determines the settings used in the dbt Cloud IDE or dbt Cloud CLI, for that particular project. 
+- **Development environment** &mdash; Determines the settings used in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, for that particular project. 
 
-Each dbt Cloud project can only have a single development environment, but can have any number of General deployment environments, one Production deployment environment and one Staging deployment environment.
+Each <Constant name="cloud" /> project can only have a single development environment, but can have any number of General deployment environments, one Production deployment environment and one Staging deployment environment.
 
 |          | Development | General | Production | Staging |
 |----------|-------------|---------|------------|---------|
-| **Determines settings for** | dbt Cloud IDE or dbt Cloud CLI | dbt Cloud Job runs | dbt Cloud Job runs | dbt Cloud Job runs |
+| **Determines settings for** | <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> | <Constant name="cloud" /> Job runs | <Constant name="cloud" /> Job runs | <Constant name="cloud" /> Job runs |
 | **How many can I have in my project?** | 1 | Any number | 1 | 1 |
 
 :::note 
-For users familiar with development on dbt Core, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
+For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
 :::
 
 ## Common environment settings
@@ -41,7 +41,7 @@ dbt Cloud allows users to select a [release track](/docs/dbt-versions/cloud-rele
 
 By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting will have slightly different behavior depending on the environment type:
 
-- **Development**: determines which branch in the dbt Cloud IDE or dbt Cloud CLI developers create branches from and open PRs against.
+- **Development**: determines which branch in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> developers create branches from and open PRs against.
 - **Deployment:** determines the branch is cloned during job executions for each environment.
 
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
@@ -72,7 +72,7 @@ password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'
 We recommend avoiding setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables). In the earlier example, `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'` will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
 
 #### How extended attributes work
-If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
+If you're developing in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
 - If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables (if not itself wired using the syntax described for secrets above)
 

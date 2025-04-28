@@ -237,9 +237,9 @@ Layout\:
 
 Workflow\:
 
-- **Development**\: I create a `feature` branch from `qa` to make, test, and personally review changes
-- **Quality Assurance\:** I open a pull request comparing my `feature` branch to `qa`, which is then reviewed by peers and <mark style={{backgroundColor:"#d6eaf8"}}>*optionally*</mark> subject matter experts or stakeholders
-- **Promotion**\: After all required approvals and checks, I can merge my changes to `qa`
+- **Development**\: I create a `feature` branch from <mark style={{backgroundColor:"#d6eaf8"}}>`qa`</mark> to make, test, and personally review changes
+- **Quality Assurance\:** I open a pull request comparing my `feature` branch to <mark style={{backgroundColor:"#d6eaf8"}}>`qa`</mark>, which is then reviewed by peers and <mark style={{backgroundColor:"#d6eaf8"}}>*optionally*</mark> subject matter experts or stakeholders
+- **Promotion**\: After all required approvals and checks, I can merge my changes to <mark style={{backgroundColor:"#d6eaf8"}}>`qa`</mark>
 - <mark style={{backgroundColor:"#d6eaf8"}}>**Quality Assurance**\: SMEs or other stakeholders can review my changes in <code style={{backgroundColor: "#aed6f1"}}>qa</code> when I merge my <code style={{backgroundColor: "#aed6f1"}}>feature</code></mark>
 - <mark style={{backgroundColor:"#d6eaf8"}}>**Promotion\:** Once QA specialists give their approval of <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s version of data, a **release manager** opens a pull request using <code style={{backgroundColor: "#aed6f1"}}>qa</code>’s branch targeting <code style={{backgroundColor: "#aed6f1"}}>main</code> (we define this as a **“release”**)</mark>
 - **Deployment**\: Others can see and use my changes (<mark style={{backgroundColor:"#d6eaf8"}}>and other’s changes</mark>) in `main` <mark style={{backgroundColor:"#d6eaf8"}}>after <code style={{backgroundColor: "#aed6f1"}}>qa</code> is merged to <code style={{backgroundColor: "#aed6f1"}}>main</code></mark> and `main` is deployed
@@ -325,6 +325,7 @@ You’ve probably noticed there is one overall theme of adding our additional br
   There are now *two places* where quality can be reviewed (`feature` and `qa`) before changes hit production. `qa` is typically leveraged in at least one of these ways for more quality assurance work\:
     - Testing and reviewing how end-to-end changes are performing over time
     - Deploying the full image of the `qa` changes to a centralized location. Some common reasons to deploy `qa` code are\:
+        - Leveraging [deferral](https://docs.getdbt.com/reference/node-selection/defer) and [Advanced](https://docs.getdbt.com/docs/deploy/advanced-ci) comparison features in CI
         - Testing builds from environment-specific data sets (dynamic sources)
         - Creating staging versions of workbooks in your BI tool.
         This is most relevant when your BI tool doesn’t do well with changing underlying schemas. For instance, some tools have better controls for grabbing a production workbook for development, switching the underlying schema to a `dbt_cloud_pr_#` schema, and reflecting those changes without breaking things. Other tools will break every column selection you have in your workbook, even if the structure is the same. For this reason, it is sometimes easier to create one “staging” version workbook and always point it to a database built from QA code - the changes then can always be reflected and reviewed from that workbook before the code changes in production.
@@ -341,7 +342,7 @@ You’ve probably noticed there is one overall theme of adding our additional br
     
 - **Deployment**
     
-    There are now major branches code can be deployed from\:
+    There are now two major branches code can be deployed from\:
     
     - `qa`\: The “working” version with changes, `features` merge here
     - `main`\: The “production” version
@@ -355,9 +356,9 @@ You’ve probably noticed there is one overall theme of adding our additional br
 
 Since most teams can make **direct promotion** work, we’ll list some key flags for when we start thinking about **indirect promotion** with a team\:
 
-- They speak about having a dedicated environment for a QA, UAT, staging, or pre-production work.
+- They speak about having a dedicated environment for QA, UAT, staging, or pre-production work.
 - They ask how they can test changes end-to-end and over time before things hit production.
-- Their developers aren’t the same, or the only, folks who are checking data outputs for validity - even more so if the other folks are more familiar doing this validation work from other tools.
+- Their developers aren’t the same, or the only, folks who are checking data outputs for validity - especially if the other folks are more familiar performing validations from other tools (like from BI dashboards).
 - Their different environments aren’t working with identical data. Like software environments, they may have limited or scrubbed versions of production data depending on the environment.
 - They have a schedule in mind for making changes “public”, and want to hold features back from being seen or usable until then.
 - They have very high-stakes data consumption.
@@ -374,32 +375,32 @@ We highly recommend that you choose your branching strategy based on which *best
     
     - Much faster in terms of seeing changes - once the PR is merged and deployed, the changes are “in production”.
     - Changes don’t get stuck in a middle branch that’s pending the acceptance of someone else’s validation on data output.
-    - Management is mainly distributed - every developer owns their own branch and ensuring it’s in sync with what’s in main.
+    - Management is mainly distributed - every developer owns their own branch and ensuring it’s in sync with what’s in `main`.
     - There’s no releases to worry about, so no extra processes to manage.
     
     Weaknesses
     
-    - It can present challenges for testing changes end-to-end or over time. Our desire to build only modified and directly impacted models to reduce the amount of models executed in CI goes against the grain of full end-to-end testing, and our mechanism which executes only upon pull request or new commit won’t help us test over time.
+    - It can present challenges for testing changes end-to-end or over time in an environment that isn't production. Our desire to build only modified and directly impacted models to reduce the amount of models executed in CI goes against the grain of full end-to-end testing, and our CI mechanism (which executes only upon pull request or new commit) won’t help us test over time.
     - It can be more difficult for differing schedules or technical abilities when it comes to review. It’s essential in this strategy to include stakeholders or subject matter experts on pull requests *before merge,* because the next step is production. Additionally, some tools aren’t great at switching databases and schemas even if the shape of the data is the same. Constant breakage of reports for review can be too much overhead.
-    - It can be harder to test configurations or job changes before they hit production, especially if things function a bit differently in development.
-    - It can be harder to share code that works fully but isn’t a full reflection of a task. Changes need to be agreed upon to go to production so others can pull them in, otherwise developers need to know how to pull these in from other branches that aren’t main (and be aware of staying in sync or risk merge conflicts).
+    - It can be harder to test configurations or job changes before they hit production, especially if things function a bit differently based on environment.
+    - It can be harder to share code that works fully but isn’t a full reflection of a complete task. Changes need to be agreed upon to go to production so others can pull them in, otherwise developers need to know how to pull these in from other branches that aren’t `main` (and be aware of staying in sync or risk merge conflicts).
 
 - **Indirect promotion**
     
     Strengths
     
     - There’s a dedicated environment to test end-to-end changes over time.
-    - Data output can be reviewed either with a developer on PR or once things hit the middle branch.
-    - Review from other tools is much easier, because the middle branch tends to deploy to a centralized location. “Staging” reports can be set up to always refer to this location for reviewing changes, and processes for creating new reports can flow from staging to production.
+    - Data outputs can be reviewed either with a developer on PR or once things are in the middle branch.
+    - Review from other tools is much easier because we have the option of deploying our middle branch to a centralized location. “Staging” reports can be set up to always refer to this location for reviewing changes, and processes for creating new reports can flow from staging to production.
     - Configurations and job changes can be tested with production-like parameters before they actually hit production.
-    - There’s a dedicated environment to merge changes if you need them for shared development. Consumers of `main` will be none-the-wiser about the things that developers do for ease of collaboration.
+    - Changes merged to the middle branch for shared development won't be reflected in production. Consumers of `main` will be none-the-wiser about the things that developers do for ease of collaboration.
     
     Weaknesses
     
     - Changes can be slower to get to production due to the extra processes intended for the middle branch. In order to keep things moving, there should be someone (or a group of people) in place who fully own managing the changes, validation status, and release cycle.
     - Changes that are valid can get stuck behind other changes that aren’t - having a good plan in place for how the team should handle this scenario is essential because conundrum can hold up getting things to production.
-    - There’s extra management of any new trunks, which will need ownership - without someone (or a group of people) who are knowledgeable, it can be confusing understanding what needs to be done how to do it when things get out of sync.
-    - Requires additional compute in the form of scheduled jobs in the qa environment as well as an additional CI job from qa > main
+    - There’s extra management of any new trunks, which will need ownership - without someone (or a group of people) who are knowledgeable, it can be confusing understanding what needs to be done and how to do it when things get out of sync.
+    - It can require additional compute in the form of scheduled jobs in the QA environment, as well as an additional CI job from `qa` > `main` for testing releases before they're merged.
 
 # Further enhancements
 
@@ -421,7 +422,7 @@ Once you have your basic configurations in place, you can further tweak your pro
 <summary>How do you prevent developers from changing specific files?</summary>
 <p>
 
-Code owners files can help tag appropriate reviewers when certain files or folders are changed
+Many git providers have a CODEOWNERS feature which can be leveraged to tag appropriate reviewers when certain files or folders are changed.
 
 </p>
 </details>
@@ -432,9 +433,9 @@ Code owners files can help tag appropriate reviewers when certain files or folde
 <summary>How do you execute other types of checks in the development workflow?</summary>
 <p>
 
-If you’re thinking about auto-formatting or linting code, you can [implement this within your dbt project](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format).
+Auto-formatting and linting are both [features available in dbt Cloud's IDE](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format#format). You can enable linting [within your CI job](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting).
 
-Other checks are usually implemented through git pipelines (such as GitHub Actions) to run when git events happen (such as [checking that a branch name follows a pattern upon a pull request event](https://medium.com/@durgeshm01722/add-a-branch-naming-pattern-status-check-to-your-github-prs-660c53331b68)).
+Other types of checks are typically implemented through external pipelines, and usually through the git provider due to the alignment of where these checks are desired in the development workflow. Many git providers have pipeline features available, such as GitHub's Actions or Gitlab's CI/CD Pipelines. Here's an example which [checks that a branch name follows a pattern upon a pull request event](https://medium.com/@durgeshm01722/add-a-branch-naming-pattern-status-check-to-your-github-prs-660c53331b68)).
     
 </p>
 </details>
@@ -444,11 +445,11 @@ Other checks are usually implemented through git pipelines (such as GitHub Actio
 <summary>How do you revert changes?</summary>
 <p>
 
-This is an action performed outside of dbt through git operations - however, we recommend instead using an immediate solution with git tags/releases until your code is fixed to your liking\:
+This is an action performed outside of dbt through git operations, but an immediate solution can be implemented using git tags/releases until your code is fixed to your liking\:
 
-- Apply a git tag (an available feature on most git platforms) on the commit SHA that you want to roll back to
+- Apply a git tag (a feature on most git platforms) on the commit SHA that you want to roll back to
 - Use the tag as your `custom branch` on your production environment in dbt Cloud. Your jobs will now check out the code at this point in time.
-- Now you can work as normal. Fix things through the development workflow or have a knowledgeable person revert the changes through git, it doesn’t matter - production is pinned to the previous state until you change the custom branch back to main!
+- Now you can work as normal. Fix things through the development workflow or have a knowledgeable person revert the changes through git, it doesn’t matter - production is pinned to the previous state until you change the custom branch back to `main`!
  
 </p>
 </details>
@@ -460,12 +461,11 @@ This is an action performed outside of dbt through git operations - however, we 
 <summary>How do you make releases?</summary>
 <p>
 
-For our examples, a release is just a pull request to get changes into `main` from `qa`, opened from the git platform. 
+In our examples, we noted that our definition of a release is a pull request from `qa` to `main`, and this is opened from the git platform. 
 
-**You should be aware that having the source branch as `qa` on your pull request will also incorporate any new merges to `qa` since you opened the pull request, until it’s merged.** Because of this it’s important that the person opening a release is aware of what the latest changes were and when a job last ran to indicate the success of all the release’s changes. There are two options we like to implement to make this easier\:
-
-- A CI job for pull requests to `main` - this will catch and rerun our CI job if there’s any new commits on our `qa` branch
-- An [on-merge job](https://docs.getdbt.com/docs/deploy/merge-jobs) using our `qa` environment. This will run a job any time someone merges. You may opt for this if you’d rather not wait on a CI pipeline to finish when you open a release. If this option is used, the latest job that ran should be successful and linked on the release’s PR.
+**Having the source branch as `qa` on your pull request will also incorporate any new merges to `qa` while your PR stays open, possibly resulting in other features being promoted to `main` unintentionally once you merge.** Because of this, it’s important that the person opening a release stays up to date on merges and last runs to ensure the validity of changes before the release is merged. There are two options we like to implement to make this easier\:
+- A CI job for pull requests against `main`: this will run a CI job comparing our middle branch to `main` at release time, and will rerun when there are any new merges to `qa`. Not only that, but the status will show on our pull request and we can leverage other features like [GitHub's required status checks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks) to further ensure we're only merging successful and tested changes.
+- An [on-merge job](https://docs.getdbt.com/docs/deploy/merge-jobs) using our `qa` environment. This will run a job any time someone merges. You may opt for this if you’d rather not wait on a CI pipeline to finish when you open a release. However, this will not put a status on a release PR and we wouldn't be able to block anyone on merging a release based on run status. When using this method, the release owner should still be staying up to date with merges and status of latest run before merge.
 
 </p>
 </details>
@@ -481,14 +481,13 @@ The process of choosing specific commits to move to another branch is called **C
 
 You may be tempted to change to a less standard branching strategy to avoid this - our colleague Grace Goheen has [written some thoughts on this](https://docs.getdbt.com/blog/the-case-against-git-cherry-picking) and provided examples - it’s a worthwhile read!
 
-dbt does not perform cherry picking operations and needs to be done from a command line interface or your git platform’s user interface, if the option is available. We align with Grace on this one — not only does cherry picking require a very good understanding of git operations and the state of the branches, but when it isn’t done with care it introduces a host of other issues that can be hard to resolve. What we tend to see is that the CI processes we’ve exemplified instead shift what the definition of the first PR’s approval is - not only can it be approved for coding and syntax by a peer, but it can also be approved for it’s output by selecting from objects built within the CI schema. This  eliminates a lot of the issues with code that can’t be merged to production.
+dbt does not perform cherry picking operations and this needs to be done from a command line interface or your git platform’s user interface, if the option is available. We align with Grace on this one — not only does cherry picking require a very good understanding of git operations and the state of the branches, but when it isn’t done with care, it can introduce a host of other issues that can be hard to resolve. What we tend to see is that the CI processes we’ve exemplified instead shift what the definition of the first PR’s approval is - not only can it be approved for coding and syntax by a peer, but it can also be approved for it’s output by selecting from objects built within the CI schema. This eliminates a lot of the issues with encountering code that can’t be merged to production.
 
-We also implement other features that can help us omit offending models or introduce more quality\:
-
+We also implement other features that help us in trying times:
 - The [`--exclude`](https://docs.getdbt.com/reference/node-selection/exclude) command flag helps us omit building models in a job
 - The [`enabled`](https://docs.getdbt.com/reference/resource-configs/enabled) configuration helps us keep models from being executed in any job for a longer-term solution
-- Using [contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) and [versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) helps alleviate breaking code changes between teams in dbt Mesh
-- [Unit tests](https://docs.getdbt.com/docs/build/unit-tests) and [data tests](https://docs.getdbt.com/docs/build/data-tests), along with forming best practices around the minimum requirements for every model helps us continuously test our expectations (see [dbt_meta_testing](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest/) package)
+- Using [contracts](https://docs.getdbt.com/docs/mesh/govern/model-contracts) and [versions](https://docs.getdbt.com/docs/mesh/govern/model-versions) helps alleviate breaking code changes between teams in dbt Mesh
+- [Unit tests](https://docs.getdbt.com/docs/build/unit-tests) and [data tests](https://docs.getdbt.com/docs/build/data-tests), along with forming best practices around the minimum requirements for every model, helps us continuously test our expectations (see the [dbt_meta_testing](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest/) package)
 - Using the [dbt audit helper](https://hub.getdbt.com/dbt-labs/audit_helper/latest) package or [enabling advanced CI on our continuous integration jobs](https://docs.getdbt.com/docs/deploy/advanced-ci) helps us understand the impacts our changes make to the original data set
 
 If you are seeing a need to cherry-pick regularly, assessing your review and quality assurance processes and where they are happening in your pipeline can be very helpful in determining how you can avoid it.
@@ -501,7 +500,7 @@ If you are seeing a need to cherry-pick regularly, assessing your review and qua
 <summary>What if a bad change made it all the way in to production?</summary>
 <p>
 
-The process of fixing `main` directly is called a **hotfix**. This needs to be done with git locally or with your git platform’s user interface because dbt’s IDE is based on the branch you set for your developer to base from (in our case, `qa`).
+The process of fixing `main` directly is called a **hotfix**. This needs to be done with git locally or with your git platform’s user interface because dbt’s IDE is based on the branch you set for your developers to base from (in our case, `qa`).
 
 The pattern for hotfixes in hierarchical promotion looks like this\:
 
@@ -509,11 +508,11 @@ The pattern for hotfixes in hierarchical promotion looks like this\:
 
 Here’s how it’s typically performed\:
 
-1. Create a branch from `main`, test and review the fix
-2. Open a PR to `main`, get the fix approved, then merge. The fix is now live.
-3. Check out `qa`, and `git pull` to ensure it’s up to date with what’s on the remote
-4. Merge `main` into `qa`\: `git merge main`
-5. `git push` the changes back to the remote
+1. Create a branch from `main`, then make the change and test the fix.
+2. Open a PR to `main`, get the fix approved, then merged. The fix is now live.
+3. Check out `qa`, and `git pull` to ensure it’s up to date with what’s on the remote.
+4. Merge `main` into `qa`\: `git merge main`.
+5. `git push` the changes back to the remote.
 6. At this point in our example, developers will be flagged in dbt Cloud’s IDE that there is a change on their base branch and can ”Pull from remote”. However, if you implement more than one middle branch you will need to continue resolving your branches hierarchically until you update the branch that developers base from.
 
 </p>
@@ -530,11 +529,11 @@ In our experience, using more than one middle branch is rarely needed. The more 
 
 This structure is mostly desired when there are requirements for using different versions data (i.e scrubbed data) by different teams, but working with the same code changes. This structure allows each team to have a dedicated environment for deployments. Example\:
 
-1. Developers work off of mocked data for their `feature` branches and merge to `qa` for end-to-end and over-time testing of all merged changes before releasing to `preproduction`.
+1. Developers work off of mocked data for their `feature` branches and merge to `qa` for end-to-end and over-time testing of all merged changes using the mocked data before releasing to `preproduction`.
 2. Once `qa` is merged to `preproduction`, the underlying data being used switches to using scrubbed production data and other personas can start looking at and reviewing how this data is functioning before it hits production.
-3. One `preproduction` is merged to `main`, the underlying data being used switches to production data sets. 
+3. Once `preproduction` is merged to `main`, the underlying data being used switches to production data sets. 
 
-This use case can be covered with a more simple branching strategy through the use of git tags and [dbt environment variables](https://docs.getdbt.com/docs/build/environment-variables) to switch source data\:
+To show a comparison, this same use case can be covered with a more simple branching strategy through the use of git tags and [dbt environment variables](https://docs.getdbt.com/docs/build/environment-variables) to switch source data\:
 
 - Indirect Promotion\:
     
@@ -544,7 +543,7 @@ This use case can be covered with a more simple branching strategy through the u
     
     <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/15_direct_tagging.png" title="Tagging in Direct Promotion" width="85%" />
 
-No matter the reason for more branches, these points are always relevant to plan out\:
+Whichever option you decide depends on how your team would like to manage the changes. No matter the reason for more branches, these points are always relevant to plan out\:
 
 - Can we accurately describe the use case of each branch?
 - Who owns the oversight of any new branches?
@@ -565,14 +564,14 @@ By answering these questions, you should be able to follow our same guidance fro
 <summary>We need a middle environment and don’t want to change our branching strategy! Is there any way to reflect what’s in development?</summary>
 <p>
 
-git releases/tags are a mechanism which help you label a specific commit SHA. *Deployment* *environments* in dbt Cloud can use these just like they can a custom branch. Teams will leverage this either to pin their environments to code at a certain point in time or to keep as a roll-back option if needed. 
+git releases/tags are a mechanism which help you label a specific commit SHA. *Deployment environments* in dbt Cloud can use these just like they can a custom branch. Teams will leverage this either to pin their environments to code at a certain point in time or to keep as a roll-back option, if needed. 
 
 We can use the pinning method to create our middle environment. Example\:
 
 - We create a release tag, `v2`, from our repository.
 - We specify `v2` as our branch in our Production environment’s **custom branch** setting.
 Jobs using Production will now check out code at `v2`.
-- We set up an environment called “QA”, with the **custom branch** setting as `main`. For the database and schema, we specify the `qa` database and `analytics` schema. Jobs created using this environment will check out code from `main` and built it to `qa.analytics`.
+- We set up an environment called “QA”, with the **custom branch** setting as `main`. For the database and schema, we specify the `qa` database and `analytics` schema. Jobs created using this environment will check out code from `main` and build it to `qa.analytics`.
 
 <Lightbox src="/img/blog/2025-01-28-git-branching-strategies-and-dbt/16_direct_tagging_middle_env.png" title="Tagging in Direct Promotion to create a middle environment" width="85%" />
 
@@ -586,28 +585,28 @@ Jobs using Production will now check out code at `v2`.
 <summary>How do we change from a direct promotion strategy to an indirect promotion strategy?</summary>
 <p>
 
-Here’s the additional setup steps in a nutshell - for more details be sure to read through the indirect promotion section\:
+Here’s the additional setup steps in a nutshell (using the name `qa` for our middle environment) - for more details be sure to read through the indirect promotion section\:
 
 - git Platform
-    - Create a new branch derived from `main` for your middle branch.
-    - Protect the branch with branch protection rules
+    - Create a new branch called `qa`, which is derived from `main`
+    - Protect `qa` with branch protection rules
 - dbt Cloud
-    - Development\: Switch your environment to use the **custom branch** option and specify your new middle branch’s name. This will base developers off of the middle branch.
-    - Continous Integration\: If you have an existing environment for this, ensure the **custom branch** is also changed to the middle branch’s name. This will change the CI job’s trigger to occur on pull requests to your middle branch.
+    - Development\: Switch your environment to use the **custom branch** option and specify `qa`. This will base developers now off of `qa` code.
+    - Continous Integration\: If you have an existing job for this, ensure the **custom branch** is changed to `qa`. This will change the CI job’s trigger to occur on pull requests to `qa`.
 
 **At this point, your developers will be following the indirect promotion workflow and you can continue working on things in the background.** You may still need to set up a database, database permissions, environments, deployment jobs, etc. Here is a short checklist to help you out! Refer back to our section on indirect promotion for many more details\:
 
-- **Decide if you want to deploy your middle branch’s code. If so\:**
-    - If needed, create the database where the objects will build
-    - Set up a service and give it all the proper permissions. For example, if that will be in a database,
-        
-        the service account should have full access to create and modify the contents within this database. It should also have select-only access to raw data.
-        
-    - Set up an environment for your middle branch in dbt Cloud, being sure to connect it to the location you want your deployments to build in.
-    - Set up any deployment jobs using your middle branch’s environment
-- **Decide if you want CI on release pull requests (from your middle branch to main). If so\:**
+- **Decide if you want to deploy QA code.** Many folks will deploy so they can make use of deferral and Advanced CI features. If so\:**
+    - Create the database where the objects will build
+    - Set up a service account for QA and give it all the proper permissions to create and modify the contents within this database. It should also have select-only access to raw data.
+    - Set up an environment for QA in dbt Cloud, being sure to connect it to the database and schema you want your deployments to build in.
+    - Set up any deployment jobs using the QA environment.
+    - If you want to use deferral or advanced features in CI, be sure that you first have a successful run in QA and then set your deferral setting on your CI job to the QA environment.
+
+- **Decide if you want CI on release pull requests (from `qa` to `main`). If so\:**
     - Set up an environment called “Release CI”
     - Set up the continuous integration job using the “Release CI” environment
+    - If you want to leverage deferral or advanced CI features, defer to your production environment.
 
 </p>
 </details>

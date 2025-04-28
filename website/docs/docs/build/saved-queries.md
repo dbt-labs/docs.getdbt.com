@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries are nodes and visible in the dbt <Term id="dag" />.
 
-Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler).
+Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler).
 
 ## Parameters
 
@@ -89,9 +89,9 @@ If you use multiple metrics in a saved query, then you will only be able to refe
 
 ## Configure saved query
 
-Use saved queries to define and manage common Semantic Layer queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
+Use saved queries to define and manage common <Constant name="semantic_layer" /> queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
 
-In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
+In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="cloud" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
 <!-- For versions 1.9 and higher -->
 
@@ -303,7 +303,7 @@ saved_queries:
 
 ## Run exports
 
-Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [dbt Cloud's Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
+Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [<Constant name="cloud" />'s <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
 For more information on how to run exports, refer to the [Exports](/docs/use-dbt-semantic-layer/exports) documentation.
 

@@ -15,14 +15,14 @@ recently_updated: true
 
 ## Introduction
 
-This guide will teach you how to build and host a basic Python app which will add dbt Cloud job events to Datadog. To do this, when a dbt Cloud job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
+This guide will teach you how to build and host a basic Python app which will add <Constant name="cloud" /> job events to Datadog. To do this, when a <Constant name="cloud" /> job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
 
 In this example, we will use [fly.io](https://fly.io) for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
 ### Prerequisites
 
 This guide assumes some familiarity with:
-- [dbt Cloud Webhooks](/docs/deploy/webhooks)
+- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
 - CLI apps
 - Deploying code to a serverless code runner like fly.io or AWS Lambda
 
@@ -120,6 +120,6 @@ Set these secrets as follows, replacing `abc123` etc with actual values:
 
 ## Deploy your app
 
-After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.
+After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the <Constant name="cloud" /> webhook settings and click **Test Endpoint**.
 
 </div>

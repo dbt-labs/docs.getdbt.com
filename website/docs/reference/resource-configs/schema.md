@@ -51,7 +51,7 @@ This would result in the generated relation being located in the `mappings` sche
 
 <VersionBlock lastVersion="1.8">
 
-Available in dbt Core v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
+Available in <Constant name="core" /> v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 
 </VersionBlock>
 

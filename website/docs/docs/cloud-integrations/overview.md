@@ -6,7 +6,7 @@ pagination_next: "docs/cloud-integrations/downstream-exposures"
 hide_table_of_contents: true
 ---
 
-Many data applications integrate with dbt Cloud, enabling you to leverage the power of dbt for a variety of use cases and workflows.
+Many data applications integrate with <Constant name="cloud" />, enabling you to leverage the power of dbt for a variety of use cases and workflows.
 
 ## Integrations with dbt
 

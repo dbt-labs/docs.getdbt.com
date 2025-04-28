@@ -6,7 +6,7 @@ id: transfer-account
 
 ---
 
-You can transfer your dbt Cloud [access control](/docs/cloud/manage-access/about-user-access) to another user by following the steps below, depending on your dbt Cloud account plan:
+You can transfer your <Constant name="cloud" /> [access control](/docs/cloud/manage-access/about-user-access) to another user by following the steps below, depending on your <Constant name="cloud" /> account plan:
 
 | Account plan| Steps | 
 | ------ | ---------- | 
@@ -19,5 +19,5 @@ When you make any account owner and email changes:
 
 - The new email address _must_ be verified through our email verification process. 
 - You can update any billing email address or [Notifications Settings](/docs/deploy/job-notifications) to reflect the new account owner changes, if applicable.
-- When transferring account ownership, please ensure you [unlink](/faqs/Accounts/git-account-in-use) your GitHub account in dbt Cloud. This is because you can only have your Git account linked to one dbt Cloud user account. 
+- When transferring account ownership, please ensure you [unlink](/faqs/Accounts/git-account-in-use) your GitHub account in <Constant name="cloud" />. This is because you can only have your <Constant name="git" /> account linked to one <Constant name="cloud" /> user account. 
  

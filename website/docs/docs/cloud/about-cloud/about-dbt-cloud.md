@@ -8,11 +8,11 @@ pagination_next: "docs/cloud/about-cloud/architecture"
 pagination_prev: null
 ---
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI. 
+<Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI. 
 
-In addition to providing a hosted architecture for running dbt across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (IDE), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
+In addition to providing a hosted architecture for running dbt across your organization, <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (<Constant name="cloud_ide" />), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
 
-dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
+<Constant name="cloud" />'s [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
 
 <div className="grid--3-col">
 
@@ -29,9 +29,9 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
     icon="dbt-bit"/>
 
 <Card
-    title="Visual editor (beta)"
-    body="Develop with the Visual Editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
-    link="/docs/cloud/visual-editor"
+    title="dbt Canvas (beta)"
+    body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    link="/docs/cloud/canvas"
     icon="dbt-bit"/>
 
 <Card
@@ -67,7 +67,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
    <Card
     title="Host & share documentation"
     body="dbt Cloud hosts and authorizes access to dbt project documentation, allowing you to generate data documentation on a schedule for your project. Invite teammates to dbt Cloud to collaborate and share your project's documentation."
-    link="/docs/collaborate/build-and-view-your-docs"
+    link="/docs/explore/build-and-view-your-docs"
     icon="dbt-bit"/>
 
    <Card
@@ -109,13 +109,13 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
   <Card
     title="dbt Explorer*"
     body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-    link="/docs/collaborate/explore-projects"
+    link="/docs/explore/explore-projects"
     icon="dbt-bit"/>
 
   <Card
-    title="Query page*"
-    body="Learn how to query data and perform exploratory data analysis using the Query page."
-    link="/docs/collaborate/query-page"
+    title="dbt Insights*"
+    body="Learn how to query data and perform exploratory data analysis using dbt Insights."
+    link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>
 
 </div> <br />
@@ -124,6 +124,6 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 ## Related docs
 
-- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
+- [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)

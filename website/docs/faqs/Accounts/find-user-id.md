@@ -5,9 +5,9 @@ sidebar_label: 'Where can I find my user ID'
 id: find-user-id
 ---
 
-Knowing your dbt Cloud user ID can help with interacting with support. 
+Knowing your <Constant name="cloud" /> user ID can help with interacting with support. 
 
-To find your user ID in dbt Cloud, read the following steps:
+To find your user ID in <Constant name="cloud" />, read the following steps:
 
 1. Go to **Account Settings**, **Team**, and then **Users**,
 2. Select your user, <br />

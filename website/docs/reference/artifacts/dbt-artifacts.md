@@ -5,19 +5,19 @@ sidebar_label: "About dbt artifacts"
 
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
 
-- [documentation](/docs/collaborate/build-and-view-your-docs)
+- [documentation](/docs/explore/build-and-view-your-docs)
 - [state](/reference/node-selection/syntax#about-node-selection)
 - [visualizing source freshness](/docs/build/sources#source-data-freshness)
 
 They could also be used to:
 
-- gain insights into your [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
+- gain insights into your [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl)
 - calculate project-level test coverage
 - perform longitudinal analysis of run timing
 - identify historical changes in <Term id="table" /> structure
 - do much, much more
 
-### When are artifacts produced? <Lifecycle status="team,enterprise"/>
+### When are artifacts produced? <Lifecycle status="self_service,managed" />
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
@@ -26,7 +26,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
-When running commands from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/cloud/configure-cloud-cli#how-to-skip-artifacts-from-being-downloaded).
+When running commands from the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/cloud/configure-cloud-cli#how-to-skip-artifacts-from-being-downloaded).
 
 ## Where are artifacts produced?
 

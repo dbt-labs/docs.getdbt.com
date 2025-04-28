@@ -40,7 +40,7 @@ Let’s walk through the DAG from left to right: First, we have raw tables from 
 
 ## [How we build semantic models and metrics](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
 
-What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
+What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/explore/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
 
 <Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-metrics-dag.png" width="80%" title="Semantic Layer DAG in dbt Explorer" />
 

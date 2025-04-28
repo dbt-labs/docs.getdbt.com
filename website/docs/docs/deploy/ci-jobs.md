@@ -4,16 +4,16 @@ sidebar_label: "CI jobs"
 description: "Learn how to create and set up CI checks to test code changes before deploying to production."
 ---
 
-You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your dbt Git repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
+You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your <Constant name="git" /> repository. By running and testing only _modified_ models, <Constant name="cloud" /> ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
 ## Prerequisites
-- You have a dbt Cloud account. 
+- You have a <Constant name="cloud" /> account. 
 - CI features:
-   - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [dbt Cloud release tracks](/docs/dbt-versions/cloud-release-tracks) and to dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project.
+   - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="cloud" /> account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="cloud" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and to <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project.
 - [Advanced CI](/docs/deploy/advanced-ci) features:
-   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
-- Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="cloud" /> account must be on the [Enterprise plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="cloud" /> administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
+- Set up a [connection with your <Constant name="git" /> provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets <Constant name="cloud" /> run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
 import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
@@ -22,7 +22,7 @@ import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
 ## Set up CI jobs {#set-up-ci-jobs}
 
-dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
+dbt Labs recommends that you create your CI job in a dedicated <Constant name="cloud" /> [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
@@ -33,16 +33,16 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Description** &mdash; Provide a description about the CI job.
     - **Environment** &mdash; By default, this will be set to the environment you created the CI job from. Use the dropdown to change the default setting. 
 
-3. Options in the **Git trigger** section:
+3. Options in the **<Constant name="git" /> trigger** section:
     - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
       - **Run on draft pull request** &mdash; Enable this option if you want to also trigger the job to run every time a developer opens up a draft pull request or pushes a commit to that draft pull request. 
 
 4. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, this includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
     - **Linting** &mdash; Enable this option for dbt to [lint the SQL files](/docs/deploy/continuous-integration#sql-linting) in your project as the first step in `dbt run`. If this check runs into an error, dbt can either **Stop running on error** or **Continue running on error**. 
-    - **dbt compare**<Lifecycle status="enterprise" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
+    - **dbt compare**<Lifecycle status="managed" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
     
-      To review the comparison report, navigate to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your Git provider (see the [CI report example](#example-ci-report)). 
+      To review the comparison report, navigate to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your <Constant name="git" /> provider (see the [CI report example](#example-ci-report)). 
 
       :::info Optimization tip 
       When you enable the **dbt compare** checkbox, you can customize the comparison command to optimize your CI job. For example, if you have large models that take a long time to compare, you can exclude them to speed up the process using the [`--exclude` flag](/reference/node-selection/exclude). Refer to [compare changes custom commands](/docs/deploy/job-commands#compare-changes-custom-commands) for more details.
@@ -50,7 +50,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
       Additionally, if you set [`event_time`](/reference/resource-configs/event-time) in your models/seeds/snapshots/sources, it allows you to compare matching date ranges between tables by filtering to overlapping date ranges. This is useful for faster CI workflow or custom sampling set ups.
       :::
 
-    - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
+    - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows <Constant name="cloud" /> to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
       :::info
       Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. Deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ [deploy jobs](/docs/deploy/deploy-jobs) that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
@@ -64,13 +64,13 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
-   - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
+   - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt Cloud UI"/>
 
 ### Example of CI check in pull request {#example-ci-check}
-The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section takes you to the relevant CI run in dbt Cloud.
+The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the <Constant name="cloud" /> section takes you to the relevant CI run in <Constant name="cloud" />.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
 
@@ -81,12 +81,12 @@ The following is an example of a CI report in a GitHub pull request, which is sh
 
 ## Trigger a CI job with the API
 
-If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a CI job to run. However, dbt Cloud will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from Git providers, which is only available through the native integrations.
+If you're not using <Constant name="cloud" />’s native <Constant name="git" /> integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="cloud" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
 
 ### Prerequisites
 
-- You have a dbt Cloud account.
-- For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a <Constant name="cloud" /> account.
+- For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="cloud" /> account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 
 
 1. Set up a CI job with the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint using `"job_type": ci` or from the [dbt Cloud UI](#set-up-ci-jobs).
@@ -99,7 +99,7 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
-## Semantic validations in CI  <Lifecycle status="team,enterprise" />
+## Semantic validations in CI  <Lifecycle status="self_service,managed" />
 
 Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
 
@@ -111,7 +111,7 @@ To do this, add the command `dbt sl validate --select state:modified+` in the CI
 - Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
 - It allows you to catch issues early in the development process and deliver high-quality data to your end users.
 - Semantic validation executes an explain query in the data warehouse for semantic nodes to ensure the generated SQL will execute.
-- For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models
+- For semantic nodes and models that aren't downstream of modified models, <Constant name="cloud" /> defers to the production models
 
 ### Set up semantic validations in your CI job
 To learn how to set this up, refer to the following steps:
@@ -174,7 +174,7 @@ dbt sl validate --select metric:revenue
 
 In this example, the CI job will validate the selected `metric:revenue` semantic node. To select multiple semantic nodes, use the selector syntax: `dbt sl validate --select metric:revenue metric:customers`.
 
-If you don't specify a selector, dbt Cloud will validate all semantic nodes in your project.
+If you don't specify a selector, <Constant name="cloud" /> will validate all semantic nodes in your project.
 
 </Expandable>
 
@@ -217,7 +217,7 @@ To resolve this, change your macro so that the temporary PR schema name contains
 - ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>).
 - ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>).
 
-A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
+A macro is creating a schema but there are no dbt models writing to that schema. <Constant name="cloud" /> doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
 
 </DetailsToggle>
 
@@ -234,7 +234,7 @@ To fix this issue, select a production job run to defer to instead of self.
 
 dbt Cloud can only check out commits that belong to the original repository. dbt Cloud <i>cannot</i> checkout commits that belong to a fork of that repository.
 
-If you receive the following error message at the **Clone Git Repository** step of your job run:
+If you receive the following error message at the **Clone <Constant name="git" /> Repository** step of your job run:
 
 ```
 Error message:

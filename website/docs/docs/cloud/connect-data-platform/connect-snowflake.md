@@ -7,7 +7,7 @@ sidebar_label: "Connect Snowflake"
 
 :::note
 
-dbt Cloud connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
+<Constant name="cloud" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
 
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
 
@@ -24,7 +24,7 @@ The following fields are required when creating a Snowflake connection
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting dbt Cloud to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username / Password
 
@@ -33,7 +33,7 @@ This section describes the different authentication methods for connecting dbt C
 The `Username / Password` auth method is the simplest way to authenticate
 Development or Deployment credentials in a dbt project. Simply enter your Snowflake
 username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
-to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
+to authenticate <Constant name="cloud" /> to run queries against Snowflake on behalf of a Snowflake user.
 
 **Note**: The schema field in the **Developer Credentials** section is a required field.
 <Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
@@ -47,14 +47,14 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
 :::
 
 **Prerequisites:**
-- A development environment in a dbt Cloud project
+- A development environment in a <Constant name="cloud" /> project
 - The Duo authentication app
 - Admin access to Snowflake (if MFA settings haven't already been applied to the account)
-- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to dbt Cloud environments
+- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to <Constant name="cloud" /> environments
 
-dbt Cloud supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) as another username and password option for increased login security. Snowflake's MFA support is powered by the Duo Security service.
+<Constant name="cloud" /> supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) as another username and password option for increased login security. Snowflake's MFA support is powered by the Duo Security service.
 
-- In dbt Cloud, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+- In <Constant name="cloud" />, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
 
    ```yaml
   authenticator: username_password_mfa
@@ -81,7 +81,7 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
    alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';   
    ```
 
-2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Credentials** page to finish configuring dbt Cloud to authenticate with Snowflake using a key pair.
+2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Credentials** page to finish configuring <Constant name="cloud" /> to authenticate with Snowflake using a key pair.
    - **Note:** Unencrypted private keys are permitted. Use a passphrase only if needed. Starting from [dbt version 1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7), dbt introduced the ability to specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
 3. To successfully fill in the Private Key field, you _must_ include commented lines. If you receive a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
@@ -102,15 +102,15 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 
 **Available in:** Development environments, Enterprise plans only
 
-The OAuth auth method permits dbt Cloud to run development queries on behalf of
-a Snowflake user without the configuration of Snowflake password in dbt Cloud. 
+The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
+a Snowflake user without the configuration of Snowflake password in <Constant name="cloud" />. 
 
-For more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
+For more information on configuring a Snowflake OAuth connection in <Constant name="cloud" />, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
 
 ### Custom domain URL
 

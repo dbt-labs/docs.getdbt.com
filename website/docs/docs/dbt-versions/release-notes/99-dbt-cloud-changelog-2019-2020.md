@@ -13,11 +13,11 @@ This changelog references dbt versions that are no longer supported and have bee
 
 :::
 
-Welcome to the 2019 and 2020 changelog for the dbt Cloud application! You can use this changelog to see the highlights of what was new, fixed, and enhanced during this time period.
+Welcome to the 2019 and 2020 changelog for the <Constant name="cloud" /> application! You can use this changelog to see the highlights of what was new, fixed, and enhanced during this time period.
 
 ## dbt Cloud v1.1.16 (December 23, 2020)
 
-This release adds preview support for Databricks Spark in dbt Cloud
+This release adds preview support for Databricks Spark in <Constant name="cloud" />
 and adds two new permission sets for Enterprise acccounts.
 
 #### Enhancements
@@ -46,12 +46,12 @@ Lots of great stuff to confer about this go-round: things really coalesced this 
 - Break out group selection logic from license types and group names
 - Handle json errors in v1/v2 body parsing
 - Handle AuthForbidden and AuthCancelled graciously - ie, not throw 500s
-- Fix regression with IDE loading spinner
+- Fix regression with <Constant name="cloud_ide" /> loading spinner
 
 
 ## dbt Cloud v1.1.14 (November 25, 2020)
 
-This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved IDE users, and some improved piping for observability into log management and API usage.
+This release adds a few new pieces of connective tissue, notably OAuth for BigQuery and SparkAdapter work. There are also some quality of life improvements and investments for the future, focused on our beloved <Constant name="cloud_ide" /> users, and some improved piping for observability into log management and API usage.
 
 #### Enhancements
 
@@ -77,7 +77,7 @@ a number of bugs have been squashed and performance improvements have been made.
 
 #### Enhancements
 
-- Improve error handling for long-running queries in the IDE
+- Improve error handling for long-running queries in the <Constant name="cloud_ide" />
 - Use S3 client caching to improve log download speed for scheduled runs
 - Support triggering jobs [with overriden attributes from the API](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun)
 - Clarify "upgrade" copy on the billing page
@@ -135,7 +135,7 @@ Release v1.1.11 includes some quality-of-life enhancements, copy tweaks, and err
 ## dbt Cloud v1.1.10 (October 8, 2020)
 
 This release adds support for repositories imported via GitLab (Enterprise)
-and contains a number of bugfixes and improvements in the dbt Cloud IDE.
+and contains a number of bugfixes and improvements in the <Constant name="cloud_ide" />.
 
 #### Enhancements
 
@@ -146,12 +146,12 @@ and contains a number of bugfixes and improvements in the dbt Cloud IDE.
 
 #### Fixed
 
-- Fix bug where IDE gets stuck after changing project repository
+- Fix bug where <Constant name="cloud_ide" /> gets stuck after changing project repository
 - Fix race condition where connections can be added to the wrong project
 - Fix revoking email invites
 - Fix a bug in slim CI deferring run search where missing previous run caused the scheduler to raise an error
-- Fix a source of IDE instability
-- Gracefully clean up IDE backend on shutdown
+- Fix a source of <Constant name="cloud_ide" /> instability
+- Gracefully clean up <Constant name="cloud_ide" /> backend on shutdown
 - Always show SSO mappings on Group Details page
 
 
@@ -164,23 +164,23 @@ and a number of fixes and improvements were released as well.
 
 #### Enhancements
 
-- Add dbt Cloud version in the navigation sidebar
+- Add <Constant name="cloud" /> version in the navigation sidebar
 - Add RBAC Group Permission view, create, and modify UIs
-- Add personal git auth for IDE error handling modals
+- Add personal git auth for <Constant name="cloud_ide" /> error handling modals
 - Add Develop Requests to backend views
 - Implemented job execution deferral
 - Add support for dbt v0.18.1b2
 
 #### Fixed
 
-- Fixed the scenario where interacting with the Refresh IDE button causes an index.lock file to remain in the IDE file system
+- Fixed the scenario where interacting with the Refresh <Constant name="cloud_ide" /> button causes an index.lock file to remain in the <Constant name="cloud_ide" /> file system
 - Validate PR URL for XSS attempts
 - Address RBAC inconsistencies
-- Fixed users not being able to update their dbt Cloud password in-app
+- Fixed users not being able to update their <Constant name="cloud" /> password in-app
 - Fix for applying user permissions across multiple accounts after SSO auth
 - Google API: default to common api endpoint but allow override
 - Fix for missing email variable in GSuite debug logging
-- Destroy IDE session when switching projects
+- Destroy <Constant name="cloud_ide" /> session when switching projects
 
 
 ## dbt Cloud v1.1.8 (September 17, 2020)
@@ -211,7 +211,7 @@ and job scheduler.
 - Improve scheduler backoff behavior
 - Add dbt 0.18.0rc1
 - Add support for non-standard ssh ports in connection tunnels
-- Add support for closing the IDE filesystem context menu by clicking outside the menu
+- Add support for closing the <Constant name="cloud_ide" /> filesystem context menu by clicking outside the menu
 
 #### Fixed
 - Fix for joining threads in run triggers
@@ -221,10 +221,10 @@ and job scheduler.
 ## dbt Cloud v1.1.6 (August 20, 2020)
 
 This release includes security enhancements and improvements across the entire
-dbt Cloud application.
+<Constant name="cloud" /> application.
 
 #### Enhancements
-- Support for viewing development docs inside of the IDE ([docs](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- Support for viewing development docs inside of the <Constant name="cloud_ide" /> ([docs](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 - Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
 - Change coloring and iconography to improve accessibility and UX across the application
 - [Enterprise] Support the specification of multiple authorized domains in SSO configuration
@@ -232,14 +232,14 @@ dbt Cloud application.
 
 #### Fixed
 - [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
-- Disallow the creation of symlinks in the IDE
+- Disallow the creation of symlinks in the <Constant name="cloud_ide" />
 - Improve reliability of background cleanup processes
 - Improve performance and reliability of artifact management and PR webhook processing
 
 
 ## dbt Cloud v1.1.5 (August 4, 2020)
 
-This release adds a major new feature to the IDE: merge conflict resolution!
+This release adds a major new feature to the <Constant name="cloud_ide" />: merge conflict resolution!
 
 It also includes changes to the job scheduler that cut the time and resource utilization
 significantly.
@@ -254,7 +254,7 @@ significantly.
 - Reduce extra database calls to account <Term id="table" /> in job scheduler loop
 - [On-premises] Allow clients to disable authentication for SMTP
 - [On-premises] Allow disabling of TLS for SMTP
-- [On-premises] Making k8s access mode for IDE pods an environment variable
+- [On-premises] Making k8s access mode for <Constant name="cloud_ide" /> pods an environment variable
 - [Security] Force session cookie to be secure
 - Make api and admin modules flake8 complaint
 
@@ -300,16 +300,16 @@ This release contains a number of IDE features and bugfixes, a new release candi
 - Add dbt 0.17.1rc3
 - Snowflake: Add support for `client_session_keep_alive` config
 - Enterprise: Native Azure Oauth2 for Enterprise accounts
-- IDE: Add custom command palette for finding files
+- <Constant name="cloud_ide" />: Add custom command palette for finding files
 
 #### Fixed
 
 - Do not run CI builds for draft PRs in GitHub
 - Remove race condition when syncing account with stripe billing events
 - Enterprise: Fixed JIT provisioning bug impacting accounts with shared IdP domains
-- IDE: Fix a regression with Github git clone method
-- IDE: Fix a race condition where git clone didn't complete before user entered IDE
-- IDE: Fix bug with checking out an environment custom branch on IDE refresh
+- <Constant name="cloud_ide" />: Fix a regression with Github git clone method
+- <Constant name="cloud_ide" />: Fix a race condition where git clone didn't complete before user entered <Constant name="cloud_ide" />
+- <Constant name="cloud_ide" />: Fix bug with checking out an environment custom branch on <Constant name="cloud_ide" /> refresh
 - Bigquery: Fix PR schema dropping
 
 
@@ -328,7 +328,7 @@ This branch includes an important security fix, two new versions of dbt, and som
 #### Fixed
 
 - \[Security\] Fix intra-account API key leakage
-- Support queries containing unicode characters in the IDE
+- Support queries containing unicode characters in the <Constant name="cloud_ide" />
 
 
 ## dbt Cloud v1.1.1 (June 9, 2020)
@@ -368,7 +368,7 @@ This release adds some new admin backend functionality, as well as automatic sea
 
 ## dbt Cloud v1.0.12 (May 27, 2020)
 
-This release contains a few bugfixes for the IDE and email notifications, as well as the latest release candidate of 0.17.0.
+This release contains a few bugfixes for the <Constant name="cloud_ide" /> and email notifications, as well as the latest release candidate of 0.17.0.
 
 ### All versions
 
@@ -382,7 +382,7 @@ This release contains a few bugfixes for the IDE and email notifications, as wel
 
 - Fixed source freshness report for dbt version v0.17.0
 - Fixed issue with checking-out git branches
-- Fixed issue of logs being omitted on long running queries in the IDE
+- Fixed issue of logs being omitted on long running queries in the <Constant name="cloud_ide" />
 - Fixed slack notifications failing to send if email notifications fail
 
 ### On-Premises Only
@@ -421,13 +421,13 @@ This version adds some new permission sets, and a new release candidate of dbt.
 
 - Removed .sql from csv download filename
 - Fixed breaking JobDefinition API with new param custom_branch_only
-- Fixed IDE query table column heading casing
+- Fixed <Constant name="cloud_ide" /> query table column heading casing
 
 ---
 
 ## dbt Cloud v1.0.9 (May 5, 2020)
 
-This release includes bugfixes around how permissions are applied to runs and run steps, fixes a bug where the scheduler would hang up, and improves performance of the IDE.
+This release includes bugfixes around how permissions are applied to runs and run steps, fixes a bug where the scheduler would hang up, and improves performance of the <Constant name="cloud_ide" />.
 
 ### All versions
 
@@ -435,13 +435,13 @@ This release includes bugfixes around how permissions are applied to runs and ru
 
 - Fixed permission checks around Runs and Run Steps, this should only affect Enterprise accounts with per-project permissions.
 - Fixed receiving arbitrary remote_url when creating a git url repository.
-- Fixed issue when handling non-resource specific errors from RPC server in IDE.
+- Fixed issue when handling non-resource specific errors from RPC server in <Constant name="cloud_ide" />.
 - Fixed a bug where the scheduler would stop if the database went away.
 - Fixed IDE query results <Term id="table" /> not supporting horizontal scrolling.
 
 #### Changed
 
-- Improve IDE query results performance.
+- Improve <Constant name="cloud_ide" /> query results performance.
 - Allow configuration on jobs to only run builds when environment target branch is env's custom branch.
 - Allow configuration of GitHub installation IDs in the admin backend.
 
@@ -465,21 +465,21 @@ This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and
 
 #### Fixed
 
-- Fixed IDE filesystem loading to check for directories to ensure that load and write methods are only performed on files.
+- Fixed <Constant name="cloud_ide" /> filesystem loading to check for directories to ensure that load and write methods are only performed on files.
 - Fixed a bug with generating private keys for connection SSH tunnels.
 - Fixed issue preventing temporary PR schemas from being dropped when PR is closed.
-- Fix issues with IDE tabs not updating query compile and run results.
-- Fix issues with query runtime timer in IDE for compile and run query functions.
+- Fix issues with <Constant name="cloud_ide" /> tabs not updating query compile and run results.
+- Fix issues with query runtime timer in <Constant name="cloud_ide" /> for compile and run query functions.
 - Fixed what settings are displayed on the account settings page to align with the user's permissions.
 - Fixed bug with checking user's permissions in frontend when user belonged to more than one project.
-- Fixed bug with access control around environments and file system/git interactions that occurred when using IDE.
+- Fixed bug with access control around environments and file system/git interactions that occurred when using <Constant name="cloud_ide" />.
 - Fixed a bug with Environments too generously matching repository.
 
 #### Changed
 
-- Make the configured base branch in the IDE read-only.
+- Make the configured base branch in the <Constant name="cloud_ide" /> read-only.
 - Support configuring groups using an account ID in the admin backend.
-- Use gunicorn webserver in IDE.
+- Use gunicorn webserver in <Constant name="cloud_ide" />.
 - Allow any repository with a Github installation ID to use build-on-PR.
 - Member and Owner Groups are now editable from admin UI.
 
@@ -494,7 +494,7 @@ This release adds a new version of dbt (0.16.1), fixes a number of IDE bugs, and
 
 ## dbt Cloud v1.0.7 (April 13, 2020)
 
-This release rolls out a major change to how permissions are applied in dbt Cloud's API. It also adds some minor bugfixes, and some tooling for improved future QA.
+This release rolls out a major change to how permissions are applied in <Constant name="cloud" />'s API. It also adds some minor bugfixes, and some tooling for improved future QA.
 
 ### All versions
 
@@ -517,7 +517,7 @@ This release rolls out a major change to how permissions are applied in dbt Clou
 
 ## dbt Cloud v1.0.6 (March 30, 2020)
 
-This release adds UIs to select group permissions in the project settings UI. It also contains bugfixes for the IDE, PR build schema dropping, and adds support for dissociating Github and Slack integrations via the Admin backend.
+This release adds UIs to select group permissions in the project settings UI. It also contains bugfixes for the <Constant name="cloud_ide" />, PR build schema dropping, and adds support for dissociating Github and Slack integrations via the Admin backend.
 
 ### All versions
 
@@ -554,10 +554,10 @@ This release adds UIs to select group permissions in the project settings UI. It
 
 #### Fixed
 
-- Git provider urls now built with correct github account and repository directories.
-- Invalid DateTime Start time in IDE Results Panel KPIs.
+- <Constant name="git" /> provider urls now built with correct github account and repository directories.
+- Invalid DateTime Start time in <Constant name="cloud_ide" /> Results Panel KPIs.
 - Fix a race condition causing the Invite User UI to not work properly.
-- Incorrect model build times in IDE.
+- Incorrect model build times in <Constant name="cloud_ide" />.
 
 #### Changed
 
@@ -687,11 +687,11 @@ This release makes the IDE generally available, and adds two new versions of dbt
 
 For on-premises customers, there is a new set of configurations in the configuration console:
 
-SMTP: You can now configure dbt Cloud to send email notifications through your own SMTP server.
+SMTP: You can now configure <Constant name="cloud" /> to send email notifications through your own SMTP server.
 
-RSA Encryption: You can now provide your own RSA keypair for dbt Cloud to use for encryption.
+RSA Encryption: You can now provide your own RSA keypair for <Constant name="cloud" /> to use for encryption.
 
-These fields need to be specified for your instance of dbt Cloud to function properly.
+These fields need to be specified for your instance of <Constant name="cloud" /> to function properly.
 
 ### All versions
 
@@ -703,7 +703,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 - New dashboard for Read Only users
 - New dbt version: 0.15.1
 - New dbt version: 0.15.2
-- Ability to rename files in IDE
+- Ability to rename files in <Constant name="cloud_ide" />
 - New backend service for project-based resource permissions
 
 #### Fixed
@@ -724,7 +724,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 
 #### Changed
 
-- Deployed a number of IDE visual improvements
+- Deployed a number of <Constant name="cloud_ide" /> visual improvements
 - Batch logs up every 5 seconds instead of every second to improve database performance
 - Make `retries` profile configuration for BigQuery connections optional
 - Support `retries` profile configuration for BigQuery connections (new in dbt v0.15.1)
@@ -736,7 +736,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 
 - Remove the "read only" role (this is now a "read only" license type)
 - Remove the "standard" license type
-- Remove "beta" tag from dbt IDE
+- Remove "beta" tag from <Constant name="cloud_ide" />
 - Remove unused frontend code (team page/create repository page and related services)
 
 ### Self-Service
@@ -749,7 +749,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 
 - New Plans page
 - Add a 14 day free trial
-- Add the ability to provision a new repository via dbt Cloud
+- Add the ability to provision a new repository via <Constant name="cloud" />
 - New Invite Team step for project setup process for trial accounts
 
 #### Changed
@@ -771,7 +771,7 @@ These fields need to be specified for your instance of dbt Cloud to function pro
 
 ## dbt Cloud v0.5.0 (December 19, 2019)
 
-This release preps dbt Cloud for the general IDE release in January. Beta IDE functionality can be turned on by checking "Develop file system" in the Accounts page in the dbt Cloud backend.
+This release preps <Constant name="cloud" /> for the general <Constant name="cloud_ide" /> release in January. Beta <Constant name="cloud_ide" /> functionality can be turned on by checking "Develop file system" in the Accounts page in the <Constant name="cloud" /> backend.
 
 ### All versions
 
@@ -785,10 +785,10 @@ This release preps dbt Cloud for the general IDE release in January. Beta IDE fu
 - New API endpoint: v3/credentials
 - New API endpoint: v3/environments
 - New API endpoint: v3/events
-- IDE: Add git workflow UI
-- IDE: Add filesystem management
-- IDE: Hup the server when files change
-- IDE: Display server status and task history
+- <Constant name="cloud_ide" />: Add git workflow UI
+- <Constant name="cloud_ide" />: Add filesystem management
+- <Constant name="cloud_ide" />: Hup the server when files change
+- <Constant name="cloud_ide" />: Display server status and task history
 - Added development and deployment environments and credentials
 - Support `--warn-error` flag in dbt runs
 
@@ -796,8 +796,8 @@ This release preps dbt Cloud for the general IDE release in January. Beta IDE fu
 
 - Fixed an issue where the run scheduler would hang up when deleting PR schemas
 - Fixed an issue where the webhook processor would mark a webhook as processed without queuing a run
-- Fix a bug where SSH tunnels were not created for the Develop IDE
-- Fix Develop IDE scrolling in Firefox
+- Fix a bug where SSH tunnels were not created for the Develop <Constant name="cloud_ide" />
+- Fix Develop <Constant name="cloud_ide" /> scrolling in Firefox
 - Fix a bug where requests were timed out too aggressively
 - Require company name at signup
 - Fix security issue where IP blacklist could be bypassed using shorthand
@@ -811,5 +811,5 @@ This release preps dbt Cloud for the general IDE release in January. Beta IDE fu
 - Migrate environments to projects
 - Move some UIs into Account Settings
 - Make cron scheduling available on the free tier
-- Apply new styles to IDE
+- Apply new styles to <Constant name="cloud_ide" />
 - Speed up develop

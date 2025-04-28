@@ -6,7 +6,7 @@ id: error-importing-repo
 ---
 
 If you don't see your repository listed, double-check that:
-- Your repository is in a Gitlab group you have access to. dbt Cloud will not read repos associated with a user.
+- Your repository is in a Gitlab group you have access to. <Constant name="cloud" /> will not read repos associated with a user.
 
 If you do see your repository listed, but are unable to import the repository successfully, double-check that:
 - You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.

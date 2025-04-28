@@ -21,13 +21,13 @@ During dbt development, you might want to validate that your models are semantic
 Run all models in a project while building only the schemas in your development environment:
 
 ```
-dbt run --empty
+dbt --empty
 ```
 
 Run a specific model:
 
 ```
-dbt run --select path/to/your_model --empty
+dbt --select path/to/your_model --empty
 ```
 
 dbt will build and execute the SQL, resulting in an empty schema in the data warehouse.

@@ -60,7 +60,7 @@ iomete:
 
 ## Supported Functionality
 
-Most dbt Core functionality is supported. 
+Most <Constant name="core" /> functionality is supported. 
 
 Iceberg specific improvements.
 1. Joining the results of `show tables` and `show views`.

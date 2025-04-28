@@ -286,7 +286,7 @@ saved_queries:
 ## Definition
 An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
-For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
+For more details on reference access between resources in groups, check out [model access](/docs/mesh/govern/model-access#groups).
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model
@@ -321,5 +321,5 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Defining groups](/docs/build/groups)

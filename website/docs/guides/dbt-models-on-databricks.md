@@ -106,7 +106,7 @@ When you delete a record from a Delta table, it is a soft delete. What this mean
 
 Now onto the most final layer &mdash; the gold marts that business stakeholders typically interact with from their preferred BI tool. The considerations here will be fairly similar to the silver layer except that these marts are more likely to handling aggregations. Further, you will likely want to be even more intentional about Z-Ordering these tables as SLAs tend to be lower with these direct stakeholder facing tables.
 
-In addition, these tables are well suited for defining [metrics](/docs/build/build-metrics-intro) on to ensure simplicity and consistency across your key business KPIs! Using the [MetricFlow](https://github.com/dbt-labs/metricflow), you can query the metrics inside of your own dbt project even. With the upcoming Semantic Layer Integration, you can also then query the metrics in any of the partner integrated tools.
+In addition, these tables are well suited for defining [metrics](/docs/build/build-metrics-intro) on to ensure simplicity and consistency across your key business KPIs! Using the [MetricFlow](https://github.com/dbt-labs/metricflow), you can query the metrics inside of your own dbt project even. With the upcoming <Constant name="semantic_layer" /> Integration, you can also then query the metrics in any of the partner integrated tools.
 
 ### Filter rows in target and/or source
 
@@ -171,7 +171,7 @@ Databricks is committed to continuously improving its performance. For example, 
 
 ### dbt Cloud Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, dbt Cloud generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. dbt Cloud users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="cloud" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="cloud" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Cloud Admin API
 

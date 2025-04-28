@@ -23,4 +23,4 @@ You will define the number of threads in your `profiles.yml` file (for dbt Core 
 
 ## Related docs
 - [About profiles.yml](/docs/core/connect-data-platform/profiles.yml)
-- [dbt Cloud job scheduler](/docs/deploy/job-scheduler)
+- [<Constant name="cloud" /> job scheduler](/docs/deploy/job-scheduler)

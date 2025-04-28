@@ -110,6 +110,6 @@ Imagine:
 Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models! `sync_all_columns` works like `append_new_columns` but also removes deleted columns, which you're not suppose to do with contracted models unless you upgrade the version.
 
 ## Related documentation
-- [What is a model contract?](/docs/collaborate/govern/model-contracts)
+- [What is a model contract?](/docs/mesh/govern/model-contracts)
 - [Defining `columns`](/reference/resource-properties/columns)
 - [Defining `constraints`](/reference/resource-properties/constraints)

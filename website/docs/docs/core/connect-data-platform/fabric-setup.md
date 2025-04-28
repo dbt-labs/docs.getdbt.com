@@ -13,13 +13,14 @@ meta:
   config_page: '/reference/resource-configs/fabric-configs'
 ---
 
-:::info
+<Snippet path="warehouse-setups-cloud-callout" />
 
-Below is a guide for use with [Fabric Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently only supports connecting to a warehouse and not a lakehouse endpoint. You can access data in your lakehouse via the warehouse if you are in the same workspace. 
+Below is a guide for use with [Fabric Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently supports connecting to a warehouse. 
 
-To learn how to set up dbt with Azure Synapse Analytics dedicated SQL pools, refer to [Microsoft Azure Synapse Analytics setup](/docs/core/connect-data-platform/azuresynapse-setup).
+To learn how to set up dbt using Fabric Lakehouse, refer to [Microsoft Fabric Lakehouse](/docs/core/connect-data-platform/fabricspark-setup).
 
-:::
+To learn how to set up dbtAnalytics dedicated SQL pools, refer to [Microsoft Azure Synapse Analytics setup](/docs/core/connect-data-platform/azuresynapse-setup).
+
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -320,7 +321,7 @@ your_profile_name:
 
 ### Automatic Microsoft Entra ID principal provisioning for grants
 
-Please note that automatic Microsoft Entra ID principal provisioning is not supported by Microsoft Fabric Data Warehouse at this time. Even though in dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups, the data warehouse does not support this feature at this time.
+Please note that automatic Microsoft Entra ID principal provisioning is not supported by Microsoft Fabric Data Warehouse at this time. Even though in dbtn use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups, the data warehouse does not support this feature at this time.
 
 You need to add the service principal or Microsoft Entra identity to a Fabric Workspace as an admin
 

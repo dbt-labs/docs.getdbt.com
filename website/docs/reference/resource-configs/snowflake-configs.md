@@ -330,7 +330,7 @@ As with materialized views on most data platforms, there are limitations associa
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
 For dbt limitations, these dbt features are not supported:
-- [Model contracts](/docs/collaborate/govern/model-contracts)
+- [Model contracts](/docs/mesh/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
 ### Troubleshooting dynamic tables

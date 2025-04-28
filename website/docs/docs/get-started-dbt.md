@@ -6,19 +6,19 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [dbt Cloud](#dbt-cloud) or [dbt Core](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#dbt-cloud) or [<Constant name="core" />](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
 ## dbt Cloud
 
-dbt Cloud is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 
-- Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint
-- Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
-- [dbt Explorer](/docs/collaborate/explore-projects) for collaborative data discovery and understanding
+- The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint
+- Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups
+- [<Constant name="explorer" />](/docs/explore/explore-projects) for collaborative data discovery and understanding
 
-Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
+Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
 
 <div className="grid--3-col">
 
@@ -80,7 +80,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 ## dbt Core
 
-[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data practitioners to transform data using analytics engineering best practices. It suits individuals and small technical teams who prefer manual setup and customization, supports community adapters, and open-source standards.
+[<Constant name="core" />](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data practitioners to transform data using analytics engineering best practices. It suits individuals and small technical teams who prefer manual setup and customization, supports community adapters, and open-source standards.
 
 <div className="grid--3-col">
 
@@ -101,8 +101,8 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 Expand your dbt knowledge and expertise with these additional resources:
 
-- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.
-- [dbt Cloud AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy dbt Cloud on AWS, user reviews, and more.
+- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="cloud" /> in action and ask questions.
+- [<Constant name="cloud" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="cloud" /> on AWS, user reviews, and more.
 - [Best practices](https://docs.getdbt.com/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.

@@ -5,7 +5,7 @@ hoverSnippet: "dbt Mesh FAQs"
 sidebar_label: "dbt Mesh FAQs"
 ---
 
-dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better manage complexity by deploying multiple interconnected dbt projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
+<Constant name="mesh" /> is a new architecture enabled by <Constant name="cloud" />. It allows you to better manage complexity by deploying multiple interconnected dbt projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
 
 ## Overview of Mesh
 
@@ -24,13 +24,13 @@ Most importantly, all this can be accomplished without the central data team los
 
 <DetailsToggle alt_header="What are model contracts?">
 
-dbt [model contracts](/docs/collaborate/govern/model-contracts) serve as a governance tool enabling the definition and enforcement of data structure standards in your dbt models. They allow you to specify and uphold data model guarantees, including column data types, allowing for the stability of dependent models. Should a model fail to adhere to its established contracts, it will not build successfully.
+dbt [model contracts](/docs/mesh/govern/model-contracts) serve as a governance tool enabling the definition and enforcement of data structure standards in your dbt models. They allow you to specify and uphold data model guarantees, including column data types, allowing for the stability of dependent models. Should a model fail to adhere to its established contracts, it will not build successfully.
 
 </DetailsToggle>
 
 <DetailsToggle alt_header="What are model versions?">
 
-dbt [model versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) are iterations of your dbt models made over time. In many cases, you might knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, creating a new version of the model is useful to signify this change.
+dbt [model versions](https://docs.getdbt.com/docs/mesh/govern/model-versions) are iterations of your dbt models made over time. In many cases, you might knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, creating a new version of the model is useful to signify this change.
 
 You can use model versions to:
 
@@ -42,7 +42,7 @@ You can use model versions to:
 
 <DetailsToggle alt_header="What are model access modifiers?">
 
-A [model access modifier](/docs/collaborate/govern/model-access) in dbt determines if a model is accessible as an input to other dbt models and projects. It specifies where a model can be referenced using [the `ref` function](/reference/dbt-jinja-functions/ref). There are three types of access modifiers:
+A [model access modifier](/docs/mesh/govern/model-access) in dbt determines if a model is accessible as an input to other dbt models and projects. It specifies where a model can be referenced using [the `ref` function](/reference/dbt-jinja-functions/ref). There are three types of access modifiers:
 
 * **Private:** A model with a private access modifier is only referenceable by models within the same group. This is intended for models that are implementation details and are meant to be used only within a specific group of related models.
 * **Protected:** Models with a protected access modifier can be referenced by any other model within the same dbt project or when the project is installed as a package. This is the default setting for all models, ensuring backward compatibility, especially when groups are assigned to an existing set of models.
@@ -52,7 +52,7 @@ A [model access modifier](/docs/collaborate/govern/model-access) in dbt determin
 
 <DetailsToggle alt_header="What are model groups?">
 
-A [model group](/docs/collaborate/govern/model-access#groups) in dbt is a concept used to organize models under a common category or ownership. This categorization can be based on various criteria, such as the team responsible for the models or the specific data source they model.
+A [model group](/docs/mesh/govern/model-access#groups) in dbt is a concept used to organize models under a common category or ownership. This categorization can be based on various criteria, such as the team responsible for the models or the specific data source they model.
 
 </DetailsToggle>
 
@@ -101,7 +101,7 @@ In the future, we plan for dbt Cloud to also be able to proactively flag this sc
 
 <DetailsToggle alt_header="If I run `dbt build --select +model`, will this trigger a run of upstream models in other projects?">
 
-No, unless upstream projects are installed as [packages](/docs/build/packages) (source code). In that case, the models in project installed as a project become “your” models, and you can select or run them. There are cases in which this can be desirable; see docs on [project dependencies](/docs/collaborate/govern/project-dependencies).
+No, unless upstream projects are installed as [packages](/docs/build/packages) (source code). In that case, the models in project installed as a project become “your” models, and you can select or run them. There are cases in which this can be desirable; see docs on [project dependencies](/docs/mesh/govern/project-dependencies).
 
 </DetailsToggle>
 
@@ -132,7 +132,7 @@ Depending on each team’s needs, this can be customized with model-level [schem
 
 <DetailsToggle alt_header="Is it possible to apply model contracts to source data?">
 
-No, contracts can only be applied at the [model level](/docs/collaborate/govern/model-contracts). It is a recommended best practice to [define staging models](/best-practices/how-we-structure/2-staging) on top of sources, and it is possible to define contracts on top of those staging models.
+No, contracts can only be applied at the [model level](/docs/mesh/govern/model-contracts). It is a recommended best practice to [define staging models](/best-practices/how-we-structure/2-staging) on top of sources, and it is possible to define contracts on top of those staging models.
 
 </DetailsToggle>
 
@@ -147,13 +147,13 @@ No. A contract applies to an entire model, including all columns in the model’
 
 <DetailsToggle alt_header="Can I have multiple owners in a group?">
 
-No, a [group](/docs/collaborate/govern/model-access#groups) can only be assigned to a single owner.  However, the assigned owner can be a _team_, rather than an individual.
+No, a [group](/docs/mesh/govern/model-access#groups) can only be assigned to a single owner.  However, the assigned owner can be a _team_, rather than an individual.
 
 </DetailsToggle>
 
 <DetailsToggle alt_header="Can contracts be assigned individual owners?">
 
-Not directly, but contracts are [assigned to models](/docs/collaborate/govern/model-contracts) and models can be assigned to individual owners. You can use meta fields for this purpose.
+Not directly, but contracts are [assigned to models](/docs/mesh/govern/model-contracts) and models can be assigned to individual owners. You can use meta fields for this purpose.
 
 </DetailsToggle>
 
@@ -217,7 +217,7 @@ First things first: access to underlying data is always defined and enforced by 
 
 [dbt Cloud Enterprise plans](https://www.getdbt.com/pricing) support [role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control-) that manages granular permissions for users and user groups. You can control which users can see or edit all aspects of a dbt Cloud project. A user’s access to dbt Cloud projects also determines whether they can “explore” that project in detail. Roles, users, and groups are defined within the dbt Cloud application via the UI or by integrating with an identity provider.
 
-[Model access](/docs/collaborate/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within dbt Explorer. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
+[Model access](/docs/mesh/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within dbt Explorer. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
 
 * **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
@@ -266,11 +266,11 @@ Historical limitations required customers to "duplicate" projects so that one ac
 
 import SLMeshFAQs from '/snippets/_sl-dbt-mesh-faq.md';
 
-The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dbt Mesh are complementary mechanisms enabled by dbt Cloud that work together to enhance the management, usability, and governance of data in large-scale data environments.
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dbt Mesh are complementary mechanisms enabled by dbt Cloud that work together to enhance the management, usability, and governance of data in large-scale data environments.
 
-The Semantic Layer in dbt Cloud allows teams to centrally define business metrics and dimensions. It ensures consistent and reliable metric definitions across various analytics tools and platforms.
+The <Constant name="semantic_layer" /> in dbt Cloud allows teams to centrally define business metrics and dimensions. It ensures consistent and reliable metric definitions across various analytics tools and platforms.
 
-dbt Mesh enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. Your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these domains.
+<Constant name="mesh" /> enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. Your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these domains.
 
 <SLMeshFAQs/>
 
@@ -278,7 +278,7 @@ dbt Mesh enables organizations to split their data architecture into multiple do
 
 <DetailsToggle alt_header="How does dbt Explorer relate to and work with dbt Mesh?">
 
-**[dbt Explorer](/docs/collaborate/explore-projects)** is a tool within dbt Cloud that serves as a knowledge base and lineage visualization platform. It provides a comprehensive view of your dbt assets, including models, tests, sources, and their interdependencies.
+**[dbt Explorer](/docs/explore/explore-projects)** is a tool within dbt Cloud that serves as a knowledge base and lineage visualization platform. It provides a comprehensive view of your dbt assets, including models, tests, sources, and their interdependencies.
 
 Used in conjunction with dbt Mesh, dbt Explorer becomes a powerful tool for visualizing and understanding the relationships and dependencies between models across multiple dbt projects.
 
@@ -294,7 +294,7 @@ The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) allows users to develop 
 
 <DetailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
 
-Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
+Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to take advantage of [cross-project dependencies](/docs/mesh/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
 
 </DetailsToggle>
 
@@ -302,9 +302,9 @@ Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-
 
 While dbt Core defines several of the foundational elements for dbt Mesh, dbt Cloud offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in dbt Explorer that’s tailored to each user’s access.
 
-Several key components that underpin the dbt Mesh pattern, including model contracts, versions, and access modifiers, are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
+Several key components that underpin the dbt Mesh pattern, including [model contracts, versions, and access modifiers](/docs/mesh/govern/about-model-governance), are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
 
-To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt Core. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/collaborate/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
+To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt Core. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/mesh/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
 
 The major distinction comes with dbt Cloud's metadata service, which is unique to the dbt Cloud platform and allows for the resolution of references to only the public models in a project. This service enables users to take dependencies on upstream projects, and reference just their `public` models, *without* needing to load the full complexity of those upstream projects into their local development environment.
 
@@ -312,7 +312,7 @@ The major distinction comes with dbt Cloud's metadata service, which is unique t
 
 <DetailsToggle alt_header="Does dbt Mesh require a specific dbt Cloud plan?">
 
-Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required to set up multiple projects and reference models across them.
+Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required to set up multiple projects and reference models across them. Refer to [model governance](/docs/mesh/govern/about-model-governance) for more information on the features available across dbt Cloud plans.
 
 </DetailsToggle>
 

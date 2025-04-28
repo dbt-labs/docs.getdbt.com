@@ -81,7 +81,7 @@ Further, the staging version of `fct_player_stats` should exist in a unique loca
 
 We often leverage the following when customizing these macros:
 
-- In dbt Cloud, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
+- In <Constant name="cloud" />, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
     - They can be set at the environment level and all jobs will automatically inherit the default values. We'll add jinja logic (`if/else/endif`) to identify whether the run happens in dev, prod, Ci, and more.
     
 - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). 
@@ -269,7 +269,7 @@ For teams who prefer to isolate work based on the feature branch, you may want t
 
 :::note
 
-The `DBT_CLOUD_GIT_BRANCH` variable is only available within the dbt Cloud IDE and not the Cloud CLI.
+The `DBT_CLOUD_GIT_BRANCH` variable is only available within the <Constant name="cloud_ide" /> and not the <Constant name="cloud_cli" />.
 
 :::
 

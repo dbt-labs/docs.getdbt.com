@@ -35,7 +35,7 @@ The following are **not** behavior changes:
 - dbt updates the language of human-friendly messages in log events.
 - dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
 
-The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of dbt Cloud and patch releases of dbt Core.
+The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of <Constant name="cloud" /> and patch releases of <Constant name="core" />.
 
 By contrast, behavior change migrations happen slowly, over the course of months, facilitated by behavior change flags. The flags are loosely coupled to the specific dbt runtime version. By setting flags, users have control over opting in (and later opting out) of these changes.
 
@@ -43,7 +43,7 @@ By contrast, behavior change migrations happen slowly, over the course of months
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you’ve opted out of, until you either:
+The following example displays the current flags and their current default values in the latest <Constant name="cloud" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
 
 - Resolve the issue (by switching the flag to `True`)
 - Silence the warnings using the `warn_error_options.silence` flag
@@ -66,9 +66,9 @@ flags:
 
 </File>
 
-This table outlines which month of the "Latest" release track in dbt Cloud and which version of dbt Core contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the "Latest" release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag                                                            | dbt Cloud "Latest": Intro | dbt Cloud "Latest": Maturity | dbt Core: Intro | dbt Core: Maturity | 
+| Flag                                                            | <Constant name="cloud" /> "Latest": Intro | <Constant name="cloud" /> "Latest": Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
 | [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | TBD*                | 1.8.0           | 1.10.0             |
@@ -81,7 +81,7 @@ This table outlines which month of the "Latest" release track in dbt Cloud and w
 | [cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 
-When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
+When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 

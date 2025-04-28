@@ -34,4 +34,4 @@ I just think it's good to have a community, to be able to ask questions and get 
 
 ## Anything else interesting you want to tell us?
 
-Data Vault is actively looking forward to supporting the messaging that dbt Cloud (+packages) is a real alternative that works.
+Data Vault is actively looking forward to supporting the messaging that <Constant name="cloud" /> (+packages) is a real alternative that works.

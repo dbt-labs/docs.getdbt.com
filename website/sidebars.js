@@ -162,6 +162,17 @@ const sidebarSettings = {
                     "docs/cloud/git/authenticate-azure",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "Git version control",
+                  link: { type: "doc", id: "docs/cloud/git/git-version-control" },
+                  items: [
+                    "docs/cloud/git/git-version-control",
+                    "docs/cloud/git/version-control-basics",
+                    "docs/cloud/git/pr-template",
+                    "docs/cloud/git/merge-conflicts",
+                  ],
+                },
               ],
             }, // Supported Git providers
             {
@@ -216,6 +227,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/bigquery-setup",
                 "docs/core/connect-data-platform/databricks-setup",
                 "docs/core/connect-data-platform/fabric-setup",
+                "docs/core/connect-data-platform/fabricspark-setup",
                 "docs/core/connect-data-platform/postgres-setup",
                 "docs/core/connect-data-platform/redshift-setup",
                 "docs/core/connect-data-platform/snowflake-setup",
@@ -303,14 +315,14 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud Visual Editor",
+          label: "dbt Canvas",
           collapsed: true,
-          link: { type: "doc", id: "docs/cloud/visual-editor" },
+          link: { type: "doc", id: "docs/cloud/canvas" },
           items: [
-            "docs/cloud/visual-editor",
-            "docs/cloud/visual-editor-interface", 
-            "docs/cloud/use-visual-editor",
-            "docs/cloud/build-ve-copilot",
+            "docs/cloud/canvas",
+            "docs/cloud/canvas-interface", 
+            "docs/cloud/use-canvas",
+            "docs/cloud/build-canvas-copilot",
           ],
         },
         ],
@@ -490,6 +502,30 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Build dbt Mesh",
+      link: { type: "doc", id: "docs/mesh/about-mesh" },
+      items: [
+        "docs/mesh/about-mesh",
+        {
+          type: "category",
+          label: "Model governance",
+          collapsed: true,
+          link: {
+            type: "doc",
+            id: "docs/mesh/govern/about-model-governance",
+          },
+          items: [
+            "docs/mesh/govern/about-model-governance",
+            "docs/mesh/govern/model-access",
+            "docs/mesh/govern/model-contracts",
+            "docs/mesh/govern/model-versions",
+            "docs/mesh/govern/project-dependencies",
+          ],
+        },
+      ],  
+    },
+    {
+      type: "category",
       label: "Deploy dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
@@ -552,57 +588,46 @@ const sidebarSettings = {
     }, // end of "Deploy dbt"
     {
       type: "category",
-      label: "Collaborate with others",
-      link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
+      label: "Explore your data",
+      link: { type: "doc", id:"docs/explore/explore-your-data" },
       items: [
-        "docs/collaborate/collaborate-with-others",
+        "docs/explore/explore-your-data",
         {
           type: "category",
           label: "Discover data with dbt Explorer",
-          link: { type: "doc", id: "docs/collaborate/explore-projects" },
+          link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
-            "docs/collaborate/explore-projects",
-            "docs/collaborate/access-from-dbt-cloud",
-            "docs/collaborate/column-level-lineage",
-            "docs/collaborate/data-health-signals",
-            "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/model-performance",
-            "docs/collaborate/project-recommendations",
-            "docs/collaborate/dbt-explorer-faqs",
+            "docs/explore/explore-projects",
+            "docs/explore/access-from-dbt-cloud",
+            "docs/explore/column-level-lineage",
+            "docs/explore/data-health-signals",
+            "docs/explore/explore-multiple-projects",
+            "docs/explore/model-performance",
+            "docs/explore/project-recommendations",
+            "docs/explore/dbt-explorer-faqs",
             {
               type: "category",
               label: "Model consumption",
               link: {
                 type: "doc",
-                id: "docs/collaborate/view-downstream-exposures",
+                id: "docs/explore/view-downstream-exposures",
               },
               items: [
-                "docs/collaborate/view-downstream-exposures",
-                "docs/collaborate/data-tile",
-                "docs/collaborate/model-query-history",
+                "docs/explore/view-downstream-exposures",
+                "docs/explore/data-tile",
+                "docs/explore/model-query-history",
               ],
             },
           ],
         },
         {
           type: "category",
-          label: "Analyze with Query page",
-          link: { type: "doc", id: "docs/collaborate/query-page" },
+          label: "Analyze with dbt Insights",
+          link: { type: "doc", id: "docs/explore/dbt-insights" },
           items: [
-            "docs/collaborate/query-page", // main query page doc
-            "docs/collaborate/access-query-page", // info on how to access and use query page
-            "docs/collaborate/navigate-query-page", // navigate query page doc
-          ],
-        },
-        {
-          type: "category",
-          label: "Git version control",
-          link: { type: "doc", id: "docs/collaborate/git-version-control" },
-          items: [
-            "docs/collaborate/git-version-control",
-            "docs/collaborate/git/version-control-basics",
-            "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",
+            "docs/explore/dbt-insights", // main query page doc
+            "docs/explore/access-dbt-insights", // info on how to access and use query page
+            "docs/explore/navigate-dbt-insights", // navigate query page doc
           ],
         },
         {
@@ -610,26 +635,10 @@ const sidebarSettings = {
           label: "Document your projects",
           link: {
             type: "doc",
-            id: "docs/collaborate/build-and-view-your-docs",
+            id: "docs/explore/build-and-view-your-docs",
           },
-          items: ["docs/collaborate/build-and-view-your-docs"],
-        },
-        {
-          type: "category",
-          label: "Model governance",
-          collapsed: true,
-          link: {
-            type: "doc",
-            id: "docs/collaborate/govern/about-model-governance",
-          },
-          items: [
-            "docs/collaborate/govern/about-model-governance",
-            "docs/collaborate/govern/model-access",
-            "docs/collaborate/govern/model-contracts",
-            "docs/collaborate/govern/model-versions",
-            "docs/collaborate/govern/project-dependencies",
-          ],
-        },
+          items: ["docs/explore/build-and-view-your-docs"],
+        },  
       ],
     },
     {
@@ -895,6 +904,17 @@ const sidebarSettings = {
     "docs/dbt-support",
     {
       type: "category",
+      label: "Cost management",
+      link: {
+        type: "doc",
+        id: "docs/cloud/cost-management/cost-management",
+      },
+      items: [
+          "docs/cloud/cost-management/cost-management",
+      ],
+    },
+    {
+      type: "category",
       label: "Frequently asked questions",
       link: {
         type: "generated-index",
@@ -958,6 +978,7 @@ const sidebarSettings = {
         slug: "/reference/resource-configs/resource-configs",
       },
       items: [
+        "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/athena-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/spark-configs",
@@ -965,14 +986,14 @@ const sidebarSettings = {
         "reference/resource-configs/clickhouse-configs",
         "reference/resource-configs/databricks-configs",
         "reference/resource-configs/doris-configs",
-        "reference/resource-configs/duckdb-configs",
+        "reference/resource-configs/duckdb-configs",        
+        "reference/resource-configs/fabric-configs",
+        "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
-        "reference/resource-configs/azuresynapse-configs",
-        "reference/resource-configs/fabric-configs",
         "reference/resource-configs/mssql-configs",
         "reference/resource-configs/mindsdb-configs",
         "reference/resource-configs/oracle-configs",

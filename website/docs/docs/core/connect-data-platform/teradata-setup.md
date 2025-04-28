@@ -42,7 +42,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## dbt dependent packages version compatibility
 
-| dbt-teradata | dbt-core | dbt-teradata-util |  dbt-util      |
+| dbt-teradata | <Constant name="core" /> | dbt-teradata-util |  dbt-util      |
 |--------------|----------|-------------------|----------------|
 | 1.2.x        | 1.2.x    | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7    | 1.1.1             | 1.1.1          |
@@ -168,7 +168,7 @@ Constraint support and enforcement in dbt-teradata:
 | unique	      | ✅ Supported	 | ✅ Enforced |
 | check	          | ✅ Supported	 | ✅ Enforced |
 
-Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more info.
+Refer to [Model contracts](/docs/mesh/govern/model-contracts) for more info.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
