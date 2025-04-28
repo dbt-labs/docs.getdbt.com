@@ -8,7 +8,7 @@ authors: [kyle_dempsey, luis_leon]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2025-04-04
+date: 2025-05-04
 is_featured: true
 ---
 **The AI revolution is here—but are we ready?**  
