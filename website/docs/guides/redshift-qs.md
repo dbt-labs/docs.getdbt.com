@@ -17,9 +17,9 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 - Load sample data into your Redshift account.
 - Connect <Constant name="cloud" /> to Redshift.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
-- Add tests to your models
-- Document your models
-- Schedule a job to run
+- Add tests to your models.
+- Document your models.
+- Schedule a job to run.
 
 :::tip Videos for you
 Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
@@ -178,8 +178,13 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 
     <Lightbox src="/img/redshift_tutorial/images/dbt_cloud_redshift_account_settings.png" width="90%" title="dbt Cloud - Redshift Cluster Settings" />
 
-    :::tip
-    To avoid connectivity issues with <Constant name="cloud" />, make sure to allow inbound traffic on port 5439 from [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) in your Redshift security groups and Network Access Control Lists (NACLs) settings.
+    :::tip Avoid connection issues
+    To avoid connection issues with <Constant name="cloud" />, ensure you follow these minimal but essential AWS network setup steps because Redshift network access isn't configured automatically:
+
+        - Allow inbound traffic on port `5439` from [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) in your Redshift security groups and Network Access Control Lists (NACLs) settings.
+        - Configure your Virtual Private Cloud (VPC) with the necessary route tables, IP gateways (like an internet or NAT gateway), and inbound rules.
+
+    For more information, see [AWS documentation on configuring Redshift security group communication](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-security-group-public-private.html).
     :::
 
 5. Set your development credentials. These credentials will be used by <Constant name="cloud" /> to connect to Redshift. Those credentials (as provided in your CloudFormation output) will be:

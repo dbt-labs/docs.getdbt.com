@@ -7,7 +7,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 
 | Data platforms (click to view setup guide) |||
 | ------------------------------------------ | -------------------------------- | ------------------------------------- |
-| [Clickhouse](/docs/core/connect-data-platform/clickhouse-setup) | [CrateDB](/docs/core/connect-data-platform/cratedb-setup)
+| [Clickhouse](/docs/core/connect-data-platform/clickhouse-setup) | [CrateDB](/docs/core/connect-data-platform/cratedb-setup) | [MaxCompute](/docs/core/connect-data-platform/maxcompute-setup) |
 | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) | [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup)  |
 | [DuckDB](/docs/core/connect-data-platform/duckdb-setup) | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup) | [Extrica](/docs/core/connect-data-platform/extrica-setup) | 
 | [Hive](/docs/core/connect-data-platform/hive-setup) | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup) |  [Impala](/docs/core/connect-data-platform/impala-setup) |

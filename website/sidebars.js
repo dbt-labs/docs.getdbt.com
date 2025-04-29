@@ -271,6 +271,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/watsonx-presto-setup",
                 "docs/core/connect-data-platform/watsonx-spark-setup",
                 "docs/core/connect-data-platform/yellowbrick-setup",
+                "docs/core/connect-data-platform/maxcompute-setup",
               ],
             },
           ],
