@@ -182,15 +182,15 @@ Notable features:
 - Can create and edit authentication and SSO settings. 
 - Can create and edit IP restrictions and service tokens, as well as manage user access controls. 
 - No access to jobs, runs, environments, or the IDE.
-
+  
 </Expandable>
 <Expandable alt_header="Semantic Layer">
 
-A specialized permission set with strict access to only the <Constant name="semantic_layer" /> configuration (credentials and service tokens) for projects. 
+A specialized permission set with strict access to only query the <Constant name="semantic_layer" /> using a service token. 
 
 Notable features:
 - <Constant name="semantic_layer" /> is a project-level set.
-- Can only access <Constant name="semantic_layer" /> configs.
+- Can only query <Constant name="semantic_layer" />.
 - No other access to dbt Cloud features. 
 
 </Expandable>
