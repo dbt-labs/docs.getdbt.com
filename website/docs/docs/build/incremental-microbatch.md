@@ -215,7 +215,7 @@ The following table lists the required configurations for the specific adapters,
 | [`dbt-postgres`](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | ✅ Required | N/A |
 | [`dbt-spark`](/reference/resource-configs/spark-configs#incremental-models)    | N/A | ✅ Required |
 | [`dbt-bigquery`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models) | N/A | ✅ Required |
-| [`dbt-clickhosue`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)    | ✅ Required | N/A |
+| [`dbt-clickhosue`](/reference/resource-configs/clickhouse-configs#incremental-materialization)    | ✅ Required | N/A |
 
 For example, if you're using `dbt-postgres`, configure `unique_key` as follows:
 
