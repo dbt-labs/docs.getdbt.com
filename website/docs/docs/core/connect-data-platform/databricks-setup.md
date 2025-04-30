@@ -123,7 +123,7 @@ The following profile fields are optional to set up. They help you configure how
 | `threads`   | The number of threads dbt should use (default is `1`) |`8`  | 
 | `connect_retries`  | The number of times dbt should retry the connection to Databricks (default is `1`)  |`3`   | 
 | `connect_timeout`     | How many seconds before the connection to Databricks should timeout (default behavior is no timeouts)  | `1000` | 
-| `session_properties`  | This sets the Databricks session properties used in the connection. Execute `SET -v` to see available options  |`ansi_mode: true` | 
+| `session_properties`  | This sets the Databricks session properties used in the connection. Execute `SET -v` to see available options  |`spark.sql.ansi.enabled: true` | 
 
 ## Supported Functionality
 
