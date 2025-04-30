@@ -48,6 +48,7 @@ dbt's microbatch strategy uses the most efficient mechanism available for "full 
 - `dbt-bigquery`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
 - `dbt-spark`: Uses the `insert_overwrite` strategy, which "inserts" or "replaces."
 - `dbt-databricks`: Uses the `replace_where` strategy, which "inserts" or "replaces." 
+- `dbt-clickhouse`: Uses the `delete+insert` strategy, which "inserts" or "replaces." 
 
 Check out the [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more info.
 
@@ -214,6 +215,7 @@ The following table lists the required configurations for the specific adapters,
 | [`dbt-postgres`](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | ✅ Required | N/A |
 | [`dbt-spark`](/reference/resource-configs/spark-configs#incremental-models)    | N/A | ✅ Required |
 | [`dbt-bigquery`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models) | N/A | ✅ Required |
+| [`dbt-clickhosue`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)    | ✅ Required | N/A |
 
 For example, if you're using `dbt-postgres`, configure `unique_key` as follows:
 
