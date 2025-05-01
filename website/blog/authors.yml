@@ -583,7 +583,7 @@ mark_wan:
   name: Mark Wan
   page: true 
 kyle_dempsey:
-  image_url: /img/blog/authors/kyle-dempsey.png
+  image_url: /img/blog/authors/kyle_dempsey.png
   title: Senior Director, Partner Engineering
   socials:
     linkedin: k-dempsey
