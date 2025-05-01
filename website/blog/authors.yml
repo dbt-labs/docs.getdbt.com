@@ -1,4 +1,12 @@
 ---
+adedamola_onabanjo:
+  description: Adedamola builds scalable BI and analytics solutions for fintech companies, passionate about empowering data-driven decisions.
+  image_url: /img/blog/adedamola-onabanjo.png
+  title: BI Manager at Kuda
+  name: Adedamola Onabanjo
+  socials:
+    linkedin: adedamola-onabanjo
+  page: true
 amy_chen:
   image_url: /img/blog/authors/achen.png
   title: Product Manager at dbt Labs

@@ -29,6 +29,7 @@ Starting in <Constant name="core" /> v1.8, we have introduced an additional type
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
 - Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
+- Redshift sources need to be in the same database as the models.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 

@@ -25,6 +25,13 @@ This is an advanced feature of dbt. Let us know if you need a hand! We're always
 
 ## Creating a materialization
 
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
+<CourseCallout resource="Materializations" 
+url="https://learn.getdbt.com/courses/materializations-fundamentals" 
+course="Materializations fundamentals" 
+/>
+
 Materialization blocks make it possible for dbt to load custom materializations from packages. The materialization blocks work very much like `macro` blocks, with a couple of key exceptions. Materializations are defined as follows:
 
 ```sql

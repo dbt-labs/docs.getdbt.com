@@ -86,6 +86,8 @@ The following are the optional configurations you can set in <Constant name="clo
 | [Google cloud storage-bucket](#google-cloud-storage-bucket)    | Location for storing objects in Google Cloud Storage   | String  | `my-bucket`                 |
 | [Dataproc region](#dataproc-region)                | Specifies the cloud region for running data processing jobs    | String  | `US`, `EU`, `asia-northeast1` |
 | [Dataproc cluster name](#dataproc-cluster-name)          | Assigns a unique identifier to a group of virtual machines in Dataproc          | String  | `my-cluster`                |
+| [Notebook Template ID](#notebook-template-id)          | Unique identifier to a Colab Enterprise notebook runtime          | Integer  | `7018811640745295872`                |
+| [Compute Region](#compute-region)          | Assigns a unique identifier to a group of virtual machines in Dataproc          | String  | `US`, `EU`, `asia-northeast1`              |
 
 
 <Expandable alt_header="Priority">
@@ -171,6 +173,18 @@ For more information on [Dataproc regions](https://cloud.google.com/bigquery/doc
 A unique label you give to your group of virtual machines to help you identify and manage your data processing tasks in the cloud. When you integrate Dataproc with BigQuery, you need to provide the cluster name so BigQuery knows which specific set of resources (the cluster) to use for running the data jobs.
 
 Have a look at [Dataproc's document on Create a cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster) for an overview on how clusters work.
+
+</Expandable>
+
+<Expandable alt_header="Notebook Template ID">
+
+The unique identifier associated with a specific Colab notebook, which acts are the python runtime for BigQuery Dataframe.
+
+</Expandable>
+
+<Expandable alt_header="Compute Region">
+
+This region must match the location of your BigQuery dataset if you want to use BigQuery Dataframe, ensure the Colab runtime is also within the same region.
 
 </Expandable>
 

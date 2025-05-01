@@ -994,12 +994,12 @@ This section will guide you on how to use the Sigma integration to query your me
 10. Click on **Table**, then click on **SQL**. Select Snowflake `PC_SIGMA_WH` as your data connection.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-make-table.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
-11. Query away! Try this one, for example:
+11. Go ahead and query a working metric in your project! For example, let's say you had a metric that measures various order-related values. Here’s how you would query it:
 
 ```sql
 select * from
   {{ semantic_layer.query (
-    metrics = ['order_total', 'order_count', large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
+    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
     group_by = 
     [Dimension('metric_time').grain('day') ]
 ) }}

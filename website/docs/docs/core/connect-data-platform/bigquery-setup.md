@@ -411,6 +411,28 @@ my-profile:
       quota_project: my-bq-quota-project
 ```
 
+### Running Python models on BigQuery Dataframe
+To run dbt Python models on GCP, dbt uses BigQuery Dataframe running directly with BigQuery compute, leveraging the scale and performance of BigQuery.
+
+```
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      compute_region: us-central1
+      dataset: my_dataset
+      gcs_bucket: dbt-python
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: abc-123
+      threads: 1
+      type: bigquery
+```
+
+
 ### Running Python models on Dataproc
 
 import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';

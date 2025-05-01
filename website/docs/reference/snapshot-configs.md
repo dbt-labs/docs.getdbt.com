@@ -3,15 +3,23 @@ title: Snapshot configurations
 description: "Read this guide to learn about using snapshot configurations in dbt."
 meta:
   resource_type: Snapshots
+intro_text: "Learn about using snapshot configurations in dbt, including snapshot-specific configurations and general configurations."
 ---
 
 import ConfigResource from '/snippets/_config-description-resource.md';
 import ConfigGeneral from '/snippets/_config-description-general.md';
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
 
 ## Related documentation
 * [Snapshots](/docs/build/snapshots)
 * The `dbt snapshot` [command](/reference/commands/snapshot)
 
+
+<CourseCallout resource="Snapshots" 
+url="https://learn.getdbt.com/courses/snapshots"
+course="Snapshots"
+/>
 
 ## Available configurations
 ### Snapshot-specific configurations

@@ -79,7 +79,7 @@ Discovery (GraphQL) API usage is subject to request rate and response size limit
 Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="cloud" /> project.
 
 ## Retention limits
-You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
+You can use the Discovery API to query data from the previous two months. For example, if today was April 1st, you could query data back to Februrary 1st.
 
 ## Run queries with the GraphQL explorer
 

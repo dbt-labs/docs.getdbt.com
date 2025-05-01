@@ -1,0 +1,258 @@
+---
+title: "Scaling Data Pipelines for a Growth-Stage Fintech with Incremental Models"
+description: "How Kuda leveraged dbt incremental models to reduce costs, speed up pipelines, and scale confidently."
+slug: scaling-data-pipelines-fintech
+authors: [adedamola_onabanjo]
+tags: [analytics, dbt Cloud, fintech, BigQuery]
+hide_table_of_contents: false
+date: 2025-05-01
+is_featured: true
+---
+
+## Introduction
+
+Building scalable data pipelines in a fast-growing fintech can feel like fixing a bike while riding it. You must keep insights flowing even as data volumes explode. At Kuda (a Nigerian neo-bank), we faced this problem as our user base surged. Traditional batch ETL (rebuilding entire tables each run) started to buckle; pipelines took hours, and costs ballooned. We needed to keep data fresh without reprocessing everything. Our solution was to leverage dbt’s [incremental models](/docs/build/incremental-models), which process only new or changed records. This dramatically cut run times and curbed our BigQuery costs, letting us scale efficiently.
+
+<!-- truncate -->
+
+## Challenges in Scaling
+
+Rapid growth brought some serious scaling challenges, and the most important were:
+
+- **Performance**: Our nightly full-refresh models that once took minutes began taking hours as data grew. For example, our core transactions table became too slow to rebuild from scratch for each update. Analytics dashboards lagged, and stakeholders lost timely insights. In real-time fintech, such latency is unacceptable.
+
+- **Cost**: More data and longer processing also drove up our BigQuery bills. Scanning a 2TB table every hour to grab a few MB of new data was wasteful. Under BigQuery’s on-demand pricing model, this could rack up thousands of dollars per month. We needed to increase throughput without scaling cost linearly, which meant rethinking our processing to avoid full table scans.
+
+- **Data** Integrity: As pipelines and dependencies multiplied, so did the risk of inconsistencies or failures. Any new approach had to maintain accuracy and consistency even as we sped things up.
+
+## Approach: Incremental Models & Key Strategies
+
+We tackled these issues by embracing dbt’s incremental models, which process only new or updated records since the last run. Instead of monolithic daily rebuilds, our models continuously ingested changes in small bites. Below, we outline our key [incremental strategies](/docs/build/incremental-strategy) —`append`, `insert_overwrite`, and `merge` — and how we tuned performance and cost.
+
+### Append Strategy
+
+This is the simplest incremental approach: Each run adds new rows to the existing table and never touches old rows. It's ideal for append-only data (e.g. logs or transactions that never change after insertion).
+
+In dbt, using append is straightforward. We configure the model as incremental and specify `incremental_strategy='append'` (supported in some adapters like Snowflake).
+
+> **Note:** `append` is not currently supported in BigQuery. Always confirm [adapter support](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) before choosing an incremental strategy.
+
+In the SQL, we filter the source to only new records since the last load. For example, to incrementally load new transactions:
+
+#### Code: Append Incremental Strategy
+
+```jinja
+{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'append'
+) }}
+```
+
+```sql
+SELECT 
+    transaction_id,
+    customer_id,
+    transaction_date,
+    amount,
+    status
+FROM {{ source('core', 'transactions') }}
+{% if is_incremental() %}
+WHERE transaction_date > (
+   SELECT MAX(transaction_date) FROM {{ this }}
+)
+{% endif %}
+```
+
+This query appends only transactions that have a transaction date later than the maximum transaction date in the target table.
+
+#### Append Incremental Model – Before Incremental Run
+
+| transaction_id | customer_id | transaction_date | amount | status |
+| --- | --- | --- | --- | --- |
+| 10001 | C001 | 2023-09-28 | ₦12,000 | completed |
+| 10002 | C002 | 2023-09-28 | ₦5,000 | completed |
+
+
+#### Append Incremental Model – After Incremental Run
+
+| transaction_id | customer_id | transaction_date | amount | status |
+| --- | --- | --- | --- | --- |
+| 10001 | C001 | 2023-09-28 | ₦12,000 | completed |
+| 10002 | C002 | 2023-09-28 | ₦5,000 | completed |
+| **10003** | **C003** | **2023-09-29** | **₦8,500** | **completed** |
+| **10004** | **C004** | **2023-09-30** | **₦7,250** | **completed** |
+| **10005** | **C005** | **2023-09-30** | **₦3,100** | **pending** |
+
+**_Illustration: The "Before" table shows data before an incremental run; the "After" table shows new transactions (in bold) added. No historical data is touched. Append is great for immutable data streams (like transaction logs or event streams that only ever grow)._**
+
+Append served us well for ingestion pipelines that just accumulate history without reprocessing old data. However, we had to guard against duplicates (if the source might resend records, we applied deduplication or unique constraints). Also, pure append doesn’t handle updates or deletions to existing records. If data can change after insertion (e.g. a transaction status moves from "pending" to "completed"), a different strategy is needed.
+
+### Insert Overwrite Strategy
+
+For data partitioned by date (or another key) that may need partial replacements, `insert_overwrite` is ideal. Instead of merging rows, this strategy overwrites entire partitions of the target table each run. The table must be partitioned (daily, hourly, etc.), and the model will drop and rebuild only the partitions that have new or updated data.
+
+We used `insert_overwrite` for partitioned data like daily aggregates, where changes are isolated by date. For example, if a table is partitioned by `transaction_date`, an `insert_overwrite` model can refresh just the partition for _"2023-10-01"_ without affecting other days.
+
+Here’s how we configured a model to use `insert_overwrite` on BigQuery:
+
+#### Code: Insert Overwrite Strategy
+
+```jinja
+{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'insert_overwrite',
+    partition_by = { 'field': 'transaction_date', 'data_type': 'date' }
+) }}
+```
+
+```sql
+SELECT
+    customer_id,
+    transaction_date,
+    amount,
+    transaction_type
+FROM {{ source('core', 'transactions') }}
+WHERE transaction_date >= {{ this.last_partition }}
+```
+
+Here, `partition_by` defines the table partition. The `WHERE` clause uses `{{ this.last_partition }}` (_the latest partition already present in the target_) to pull only data for new or updated partitions. On each run, BigQuery will replace any existing partition that meets the filter (e.g. the partition for the latest date) with the query results. Older partitions stay untouched.
+
+#### Insert Overwrite Strategy – Before Incremental Run
+
+| transaction_date | transaction_id | customer_id | amount | status |
+| --- | --- | --- | --- | --- |
+| 2023-09-29 | 11001 | C011 | ₦14,000 | completed |
+| 2023-09-29 | 11002 | C012 | ₦6,500 | completed |
+| **2023-10-01** | **12001** | **C021** | **₦8,000** | **pending** |
+| **2023-10-01** | **12002** | **C022** | **₦4,200** | **completed** |
+
+_(Partition to be overwritten highlighted in bold.)_
+
+#### Insert Overwrite Strategy – After Incremental Run
+
+| transaction_date | transaction_id | customer_id | amount | status |
+| --- | --- | --- | --- | --- |
+| 2023-09-29 | 11001 | C011 | ₦14,000 | completed |
+| 2023-09-29 | 11002 | C012 | ₦6,500 | completed |
+| **2023-10-01** | **12003** | **C023** | **₦8,150** | **completed** |
+| **2023-10-01** | **12004** | **C024** | **₦3,900** | **completed** |
+| **2023-10-01** | **12005** | **C025** | **₦5,500** | **completed** |
+
+_(New partition data is shown in bold, replacing the old partition.)_
+
+***_Illustration: "Before" shows a partitioned table with the October 1, 2023 partition highlighted; "After" shows that partition replaced with fresh rows. This approach lets us refresh a specific day’s data (e.g. to capture late-arriving transactions or corrections) without rebuilding the whole table._***
+
+At Kuda, `insert_overwrite` was invaluable for derived tables and rollups. For instance, our daily customer spend aggregates are updated incrementally by replacing just the latest day's data, keeping those tables accurate with minimal cost. By replacing whole partitions, we avoided complex row-by-row merges while still catching any corrections within that day (for example, a back-dated transaction on that day would be picked up when the partition is reprocessed).
+
+One note on static vs dynamic partitions: We mostly used static daily partitions (overwriting entire days). Some warehouses (and newer dbt features) allow dynamic partition updates (updating only changed rows within a partition), but we stuck to whole-day replacements for simplicity. It's easier to say "_each run rebuilds yesterday’s partition from scratch,_" ensuring we capture any late modifications for that day. This dramatically improved performance for large tables (no full table scans) while still correcting recent data when needed. We just had to align the partition_by field and filter logic to avoid wiping the wrong partition.
+
+### Merge Strategy
+
+For tables where new records arrive and existing ones can change, we used the merge strategy. It performs an upsert based on a unique key: new rows are inserted, and if a key already exists, specified fields are updated. This is perfect for data like customer profiles or account balances that evolve.
+
+In dbt, using `incremental_strategy='merge'` requires a unique_key (on BigQuery or Snowflake, dbt compiles it into a merge statement). We can also limit which columns get updated using merge_update_columns or exclude certain fields with `merge_exclude_columns`. For example:
+
+#### Code: Merge Strategy
+
+```jinja
+{{ config(
+    materialized = 'incremental',
+    incremental_strategy = 'merge',
+    unique_key = 'account_id',
+    merge_update_columns = ['balance', 'last_updated']
+) }}
+```
+
+```sql
+SELECT 
+    account_id,
+    balance,
+    last_updated
+FROM {{ source('core', 'accounts') }}
+{% if is_incremental() %}
+WHERE last_updated > (
+   SELECT MAX(last_updated) FROM {{ this }}
+)
+{% endif %}
+```
+
+This model selects only new or updated records (those with a `last_updated` more recent than the max in the target) and merges them into the accounts table on `account_id`. We chose to update only the `balance` and `last_updated` fields for existing accounts (to avoid overwriting other data). If an incoming `account_id` doesn’t exist in the target yet, a new row is inserted.
+
+Merge was our go-to for upserts. For example, we maintained a daily updated accounts table of customer statuses and balances using merge. Each day, new accounts were added, and any changes (balance updates, status changes) were merged into existing records. This prevented duplicates (which a naive append would create) and ensured one row per account with the latest info.
+
+We learned to define unique keys and update columns carefully. In one case, we omitted a merge_exclude_columns and accidentally overwrote a timestamp we meant to preserve—a quick lesson in being explicit. Also, merge comes with a performance cost: each run joins the new data with the existing table. With proper clustering on the key and only a day’s worth of new data, this was fine for us, but at a very large scale, it needs monitoring.
+
+## Optimizing Performance and Cost
+
+Choosing the right incremental strategy was half the battle; we also employed several performance tuning and cost optimization techniques to make our pipelines truly scale:
+
+- **Partitioning**: On large tables, we partitioned by date (or another key) so incremental runs only scan the new slice. For example, partitioning the transactions table by transaction_date meant a daily incremental load only touched that day's partition. BigQuery’s partition pruning reduced scans from entire multi-terabyte tables to just a few GB per run (e.g. 2TB down to 0.01TB), yielding huge savings. Partitioning also sped up downstream queries that filter by date.
+
+- **Clustering**: We added clustering on columns frequently used in filters or joins (e.g. clustering transactions by `customer_id`). In BigQuery, clustering sorts the data by those columns, so queries filtering on them scan less data within each partition. The improvements were subtle but meaningful; some queries that once scanned tens of GBs now scan only a fraction when the table is well-clustered.
+
+- **Smart Scheduling**: We tuned model run frequencies to balance freshness vs. cost. Not every model needs to run constantly. Our customer-facing tables (transactions, balances) ran hourly for near-real-time updates, whereas internal analytics models ran daily or a few times per day. Adjusting schedules avoided wasteful runs and saved on compute cost. We also used dependency-based scheduling (via dbt Cloud), so heavy models ran only after upstream data was updated, preventing runs when no new source data arrived.
+
+- **Warehouse Tuning**: We optimized our warehouse compute as well. Since incremental models drastically cut per-run processing, we could use smaller clusters/slots and run more often without overspending, a big win as data volumes grew.
+
+- **Monitoring & Alerting**: We tracked metrics like run durations and rows processed to catch anomalies. For example, if a daily incremental model that usually adds hundreds of rows suddenly adds zero, that's a red flag (upstream failure or missing source data). Similarly, if a job that normally takes 5 minutes jumps to 50, it likely did an unintended full scan. We also watched data freshness, if an hourly model hasn’t loaded new data in 3 hours, we investigate. These checks helped us catch issues early (like a stale source or a broken filter) and kept data flowing reliably.
+
+With these optimizations in place, we vastly improved our pipeline speed and cost-efficiency. Instead of fearing the next data surge, we were confident our system could handle growth by design.
+
+### Real-World Implementation: Kuda Case Study
+
+How did these approaches work out in practice at Kuda during hyper-growth?
+
+One critical dataset was our customer transactions feed. Initially, a full daily rebuild of the transactions table took over an hour and scanned the entire history. We refactored it into an incremental model (append strategy with partition pruning). The first run built the historical backlog, and subsequent runs pulled only new transactions. The difference was night and day: the incremental job ran in minutes, and data scanned per run dropped by over 90%. Analysts saw new transactions within the hour, and our monthly BigQuery cost for that table plummeted even as data continued to grow.
+
+To illustrate, here’s a simplified daily transactions summary. Initially, it contained data up to _Sept 30, 2023_:
+
+#### Daily Transactions Summary – Before
+
+| date       | transactions_count | total_amount |
+|------------|--------------------|--------------|
+| 2023-09-28 | 1,045              | 25,100,000   |
+| 2023-09-29 | 980                | 22,340,000   |
+| 2023-09-30 | 1,102              | 27,500,000   |
+
+After the next incremental load (bringing in transactions from _October 1, 2023_), the table automatically includes the new day's metrics without recomputing prior days:
+
+#### Daily Transactions Summary – After
+
+| date       | transactions_count | total_amount |
+|------------|--------------------|--------------|
+| 2023-09-28 | 1,045              | 25,100,000   |
+| 2023-09-29 | 980                | 22,340,000   |
+| 2023-09-30 | 1,102              | 27,500,000   |
+| 2023-10-01 | 1,210              | 30,230,000   |
+
+***_Table: Example of a daily transactions summary. After an incremental load for 2023-10-01, the new day’s data appears without reprocessing previous days._***
+
+This approach kept our teams and customers up-to-date. Customer support could view nearly real-time transactions to investigate issues, and customers could generate current account statements on the fly.
+
+We also used incremental models for regulatory and finance reporting. For example, our Finance team needed a daily reconciliation of balances and an end-of-day accounts table. They were fine with data being a day old, but it had to be accurate and deduplicated. We built this with a nightly incremental merge on the accounts table, merging changes from the core accounts data into a fresh daily view of account states. It provided a reliable daily snapshot of accounts. (Our Finance team didn’t realize any fancy incremental process was involved, they just got their report each morning!)
+
+During the launch of a new card product, we needed to monitor transaction declines and errors in near real-time. Our existing daily-refreshed dashboard wasn’t enough. We set up an incremental model that ingested card transaction events every 15 minutes. To ensure that no historical fixes were missed, we also scheduled a nightly full refresh of this model during the launch period. This hybrid approach gave us timely visibility and a daily catch-up for any late-arriving corrections. It proved crucial: we spotted issues (like a spike in declines from an API glitch) early and fixed them, minimizing customer impact. After the launch, we reverted to purely incremental runs once things stabilized.
+
+The overall impact at Kuda was huge. Some heavy transformations that were close to failing became reliable again. Stakeholders noticed fresher data in their reports, our customer satisfaction scores improved as no one saw stale data. By controlling costs and keeping pipelines efficient, we kept management and regulators happy.
+
+## Lessons Learned & Best Practices
+
+Throughout this scaling journey, we learned a ton about what worked and what didn’t. Here are some of the key lessons and best practices we’d recommend to any growth-stage fintech looking to implement incremental models:
+
+- **Choose the Right Strategy**: Not all tables should use the same incremental approach. Generally, use append for insert-only data, `insert_overwrite` for data partitioned by date (or ID) where you can replace whole chunks, and merge for true upsert scenarios. If source deletes are an issue, consider `delete+insert` or handle soft deletes.
+
+- **Partition Wisely**: Partitioning is critical, but pick an appropriate granularity. The right grain (hour, day, month) depends on data volume and query patterns. For us, daily partitions were often the sweet spot, small enough to reduce scanned data, not so small as to create thousands of partitions. Always align your incremental filter with the partition field to enable pruning.
+
+- **Monitor Your Models**: Implement tests or alerts on incremental models. For example, check that each run’s row count is within expected bounds, if a daily incremental that usually adds hundreds of rows suddenly adds zero, that’s a red flag. Catching these issues early prevents bigger problems down the line.
+
+- **Periodic Full Refreshes**: Over time, even a well-built incremental model can drift due to small errors or schema changes. We scheduled occasional full refreshes for critical models to realign them with source data, essentially giving a clean slate that catches any discrepancies or missed data. Similarly, after major logic changes, we’d do a one-time full refresh to apply the new logic across all historical data and then switch back to incremental.
+
+- **Test and Document**: We treated incremental models like mission-critical code. We wrote tests to ensure the logic is sound (for instance, after an incremental run, the target’s record count for a period equals the source’s count for that period, if not, the filter might be wrong). We also documented each model’s assumptions (e.g. “_this model runs incrementally, do not disable the is_incremental filter in development_”). Good documentation helped new team members avoid breaking incremental logic.
+
+- **Design for Scale Early**: Our biggest lesson was to plan for scale from the start. Now, when designing a new model or pipeline, we ask, “_What if the data grows 10x?_”. If a full refresh won't be feasible at that size, we build it incrementally from day one. It's much easier than refactoring under pressure later. This mindset, combined with dbt’s flexible incremental features, has future-proofed our pipelines. As our data continues to grow, the incremental approach should keep holding up.
+
+## Conclusion
+
+Scaling a fintech data platform doesn’t have to mean scaling cost and runtime at the same pace. By using dbt’s incremental models—paired with optimizations like partitioning, clustering, and careful scheduling—Kuda transformed its pipelines to handle rapid growth. We kept data fresh and accurate for users without breaking the bank. Incremental processing let us handle ever-increasing volumes in bite-sized chunks, maintaining agility as the company grew.
+
+If you’re at a growing company struggling with slow or expensive data jobs, give dbt’s incremental models a try. As we saw at Kuda, the payoff can be huge: faster insights, happier stakeholders, and a data platform ready for whatever the future brings. The future of data processing (in fintech and beyond) is incremental. With tools like dbt, you can ride the wave of growth instead of drowning in it.

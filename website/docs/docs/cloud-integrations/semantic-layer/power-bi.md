@@ -5,7 +5,7 @@ tags: [Semantic Layer]
 sidebar_label: "Power BI"
 ---
 
-# Power BI <Lifecycle status="managed,beta" />
+# Power BI <Lifecycle status="self_service,managed,beta" />
 
 The Power BI integration enables you to query the <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
 

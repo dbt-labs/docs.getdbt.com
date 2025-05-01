@@ -175,14 +175,34 @@ dbt list --select "resource_type:source"       # list all sources in your projec
 
 ### result
 
-The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
+The `result` method is related to the [`state` method](/reference/node-selection/methods#state) and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. 
+
+You can use `result` selectors in conjunction with the `+` operator. 
 
 ```bash
-dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
-dbt test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
-dbt build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
-dbt seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
+# run all models that generated errors on the prior invocation of dbt run
+dbt run --select "result:error" --state path/to/artifacts 
+
+# run all tests that failed on the prior invocation of dbt test
+dbt test --select "result:fail" --state path/to/artifacts 
+
+# run all the models associated with failed tests from the prior invocation of dbt build
+dbt build --select "1+result:fail" --state path/to/artifacts
+
+# run all seeds that generated errors on the prior invocation of dbt seed
+dbt seed --select "result:error" --state path/to/artifacts 
 ```
+
+- Only use `result:fail` when you want to re-run tests that failed during the last invocation. This selector is specific to test nodes. Tests don't have downstream nodes in the DAG, so using the `result:fail+` selector will only return the failed test itself and not the model or anything built on top of it.
+- On the other hand, `result:error` selects any resource (models, tests, snapshots, and more) that returned an error.
+- As an example, to re-run upstream and downstream resources associated with failed tests, you can use one of the following selectors:
+  ```bash
+  # reruns all the models associated with failed tests from the prior invocation of dbt build
+  dbt build --select "1+result:fail" --state path/to/artifacts
+
+  # reruns the models associated with failed tests and all downstream dependencies - especially useful in deferred state workflows
+  dbt build --select "1+result:fail+" --state path/to/artifacts
+  ```
 
 ### saved_query
 

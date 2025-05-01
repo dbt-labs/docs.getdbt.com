@@ -39,10 +39,10 @@ Some example use cases include:
 - Have a <Constant name="cloud" /> [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
 - Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
-- Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide)
+- Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide).
 - Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
-- Configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for your dbt project.
-- Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
-	- Note SSH tunneling for Postgres or Redshift connections is not supported. 
-	- Single sign-on (SSO) for development user accounts supported, however SSO for production credentials not yet supported.
-- Have a successful job run in the environment where you configured the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
+- Use a supported data platfrom: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
+	- Single sign-on (SSO) for development user accounts is supported, however SSO for production credentials is not yet supported.
+- (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="query_page" />, you must also:
+  - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.
+  - Have a successful job run in the environment where you configured the <Constant name="semantic_layer" />. 
