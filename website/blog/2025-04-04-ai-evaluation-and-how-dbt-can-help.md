@@ -17,6 +17,8 @@ Across the world, the excitement around AI is undeniable.  Discussions on large 
 A common issue blocking people from moving AI use cases to production is an ability to evaluate the validity of AI responses in a systematic and well governed way.
 Moving AI workflows from prototype to production requires rigorous evaluation, and most organizations do not have a framework to ensure AI outputs remain high-quality, trustworthy, and actionable.
 
+<!-- truncate -->
+
 **Why AI Evaluation Matters**  
 The more conversations we have with data teams, the clearer the problem becomes: Companies don’t want to move AI into production unless they can monitor and ensure its quality once it's there -- the fear of a ‘rogue AI’ still exceeds perceived benefits.
 
