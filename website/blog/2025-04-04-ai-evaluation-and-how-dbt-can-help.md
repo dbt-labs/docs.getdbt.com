@@ -77,7 +77,7 @@ The final step here is writing a dbt [custom test](https://docs.getdbt.com/best-
 We can also easily leverage dbt’s ability to [store test failures](https://docs.getdbt.com/reference/resource-configs/store_failures) to record quality issues found in AI processes for further investigation and triage.
 
 As a final benefit of capturing AI evaluations as part of your dbt project is just that - your AI quality information becomes part of your dbt project meaning quality results are available in all the same ways as any other dbt test result. 
-You can view this information in dbt Explorer, feed it into your data catalog of choice, use the test results to trigger additional downstream processes or visualize the information as quality dashboards through BI.
+You can view this information in <Constant name="explorer" />, feed it into your data catalog of choice, use the test results to trigger additional downstream processes or visualize the information as quality dashboards through BI.
 As AI workflows become more commonplace, businesses need a systematic way to evaluate and monitor AI outputs, just as they do with traditional data products. Fortunately, the same principles and tools within dbt can be easily applied to AI evaluation as well.
 With dbt, data teams can bridge the gap between AI experimentation and AI in production, by ensuring trust, reliability, and governance to AI workflows.
 
