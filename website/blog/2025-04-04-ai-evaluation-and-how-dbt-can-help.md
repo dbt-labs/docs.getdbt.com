@@ -21,7 +21,7 @@ Moving AI workflows from prototype to production requires rigorous evaluation, a
 The more conversations we have with data teams, the clearer the problem becomes: Companies don’t want to move AI into production unless they can monitor and ensure its quality once it's there -- the fear of a ‘rogue AI’ still exceeds perceived benefits.
 
 The core challenge isn’t just building AI use cases; it’s about continuously monitoring their performance and ensuring the same level of quality and reliability we’ve come to expect from other data assets.
-To trust AI in production, we need structured workflows that\:
+To trust AI in production, we need structured workflows that:
 - **Ensure data quality** before it’s fed into AI models
 - **Evaluate AI-generated responses** against known ground truth
 - **Trigger alerts or corrective actions** when AI performance drifts below acceptable thresholds
