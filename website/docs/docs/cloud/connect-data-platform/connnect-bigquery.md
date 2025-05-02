@@ -86,8 +86,8 @@ The following are the optional configurations you can set in <Constant name="clo
 | [Google cloud storage-bucket](#google-cloud-storage-bucket)    | Location for storing objects in Google Cloud Storage   | String  | `my-bucket`                 |
 | [Dataproc region](#dataproc-region)                | Specifies the cloud region for running data processing jobs    | String  | `US`, `EU`, `asia-northeast1` |
 | [Dataproc cluster name](#dataproc-cluster-name)          | Assigns a unique identifier to a group of virtual machines in Dataproc          | String  | `my-cluster`                |
-| [Notebook Template ID](#notebook-template-id)          | Unique identifier to a Colab Enterprise notebook runtime          | Integer  | `7018811640745295872`                |
-| [Compute Region](#compute-region)          | Assigns a unique identifier to a group of virtual machines in Dataproc          | String  | `US`, `EU`, `asia-northeast1`              |
+| [Notebook Template ID](#notebook-template-id)          | BigQuery Dataframe only, Unique identifier to a Colab Enterprise notebook runtime          | Integer  | `7018811640745295872`                |
+| [Compute Region](#compute-region)          | BigQuery Dataframe only, assigns the compute region of the notebook runtime          | String  | `US`, `EU`, `asia-northeast1`              |
 
 
 <Expandable alt_header="Priority">
