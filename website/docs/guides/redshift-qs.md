@@ -180,9 +180,8 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 
     :::tip Avoid connection issues
     To avoid connection issues with <Constant name="cloud" />, ensure you follow these minimal but essential AWS network setup steps because Redshift network access isn't configured automatically:
-
-        - Allow inbound traffic on port `5439` from [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) in your Redshift security groups and Network Access Control Lists (NACLs) settings.
-        - Configure your Virtual Private Cloud (VPC) with the necessary route tables, IP gateways (like an internet or NAT gateway), and inbound rules.
+        - Allow inbound traffic on port `5439` from [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) in your Redshift security groups and Network Access Control Lists settings.
+        - Configure your Virtual Private Cloud with the necessary route tables, IP gateways (like an internet or NAT gateway), and inbound rules.
 
     For more information, see [AWS documentation on configuring Redshift security group communication](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-security-group-public-private.html).
     :::

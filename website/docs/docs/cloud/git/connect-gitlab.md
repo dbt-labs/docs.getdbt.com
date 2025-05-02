@@ -24,6 +24,12 @@ The steps to integrate GitLab in <Constant name="cloud" /> depend on your plan. 
 
 ## For dbt Cloud Developer and Team tiers
 
+:::note
+
+You can only configure Team and Enterprise plan accounts to enable [Git merges](/docs/deploy/merge-jobs) to trigger job runs. This feature is not available to Developer plans.
+
+:::
+
 To connect your GitLab account:
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**. 
 2. Select **Personal profile** under the **Your profile** section.

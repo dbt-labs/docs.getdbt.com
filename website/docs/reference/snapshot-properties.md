@@ -1,7 +1,10 @@
 ---
 title: Snapshot properties
 description: "Read this guide to learn about using source properties in dbt."
+intro_text: "Define snapshot properties in YAML to document snapshots, configure settings, add tests, and describe columns."
 ---
+
+import CourseCallout from '/snippets/_materialization-video-callout.md';
 
 <VersionBlock firstVersion="1.9">
 
@@ -20,6 +23,11 @@ Note, in dbt v1.9 and later, snapshots are defined in an updated syntax using a 
 </VersionBlock>
 
 We recommend that you put them in the `snapshots/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `snapshots/` or `models/` directory.
+
+<CourseCallout resource="Snapshots" 
+url="https://learn.getdbt.com/courses/snapshots"
+course="Snapshots"
+/>
 
 <VersionBlock firstVersion="1.9">
 

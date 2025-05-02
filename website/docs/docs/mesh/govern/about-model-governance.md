@@ -10,6 +10,7 @@ hide_table_of_contents: true
 dbt supports model governance to help you control who can access models, what data they contain, how they change over time, and reference them across projects. dbt supports model governance in dbt Core and dbt Cloud, with some differences in the features available across environments/plans.
 
 - Use model governance to define model structure and visibility in dbt Core and dbt Cloud.
+  - Note that model governance applies to models, not other [dbt resources](/docs/build/projects) like snapshots, seeds, metrics, and so on).
 - dbt Cloud builds on this with features like [cross-project ref](/docs/mesh/govern/project-dependencies) that enable collaboration at scale across multiple projects, powered by its metadata service and [dbt Explorer](/docs/explore/explore-projects). Available in dbt Cloud Enterprise plans.
 
 All of the following features are available in dbt Core and dbt Cloud, _except_ project dependencies, which is only available to [dbt Cloud Enterprise plans](https://www.getdbt.com/pricing).

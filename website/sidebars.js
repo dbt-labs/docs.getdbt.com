@@ -1329,6 +1329,7 @@ const sidebarSettings = {
         },
         "reference/events-logging",
         "reference/exit-codes",
+        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],

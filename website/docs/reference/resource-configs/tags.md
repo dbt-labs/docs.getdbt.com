@@ -139,8 +139,8 @@ These tags can be used as part of the [resource selection syntax](/reference/nod
 You can use the [`+` operator](/reference/node-selection/graph-operators#the-plus-operator) to include upstream or downstream dependencies in your `tag` selection:
 - `dbt run --select tag:my_tag+` &mdash; Run models tagged with `my_tag` and all their downstream dependencies.
 - `dbt run --select +tag:my_tag` &mdash; Run models tagged with `my_tag` and all their upstream dependencies.
-- `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies, and its downstream dependencies.
-- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run model tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
+- `dbt run --select +tag:my_tag+` &mdash; Run models tagged with `my_tag`, their upstream dependencies, and their downstream dependencies.
+- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run models tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
 
 
 :::tip Usage notes about tags

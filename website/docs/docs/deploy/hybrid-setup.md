@@ -105,7 +105,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
       - installed: 1.10.0-b1
       - latest:    1.9.3     - Ahead of latest version!
    ```
-2. If you don't have the latest version, [upgrade](/docs/core/pip-install#change-dbt-core-versions) your dbt Core project by running `python -m pip install --upgrade dbt-core`.
+2. If you don't have the latest version (1.10 or later), [upgrade](/docs/core/pip-install#change-dbt-core-versions) your dbt Core project by running `python -m pip install --upgrade dbt-core`.
 3. Set the following environment variables in your dbt Core project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values).
 
    ```bash
