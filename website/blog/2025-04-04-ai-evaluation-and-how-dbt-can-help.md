@@ -47,7 +47,7 @@ By using dbt to evaluate AI, organizations can apply the same rigorous testing p
 
 **What we Built**
 Let's walk through this example step by step to give you a sense of how it all works.
-For this example we start with a test data set which contains the input to our AI workflow, as well as a true measurement given by a human reviewer - in this example our input is the text review of different movies and the actual_sentiment contains a -1 for negative reviews and 1 for positive reviews.
+For this example, we start with a test data set which contains the input to our AI workflow, as well as a true measurement given by a human reviewer -- in this example our input is the text review of different movies and the `actual_sentiment` contains a -1 for negative reviews and 1 for positive reviews.
 Finally we include a time stamp indicating when our AI provided the response. This time stamp will allow us to track our AI accuracy over time.
 
 <Lightbox src="/img/blog/2025-04-04-ai-evaluation-and-how-dbt-can-help/ai_eval_blog_image_one.png" title="our input data set, including actual sentiment"width="85%" />
