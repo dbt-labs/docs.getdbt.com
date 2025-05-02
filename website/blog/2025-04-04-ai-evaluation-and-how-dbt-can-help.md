@@ -23,7 +23,7 @@ The more conversations we have with data teams, the clearer the problem becomes:
 The core challenge isn’t just building AI use cases; it’s about continuously monitoring their performance and ensuring the same level of quality and reliability we’ve come to expect from other data assets.
 To trust AI in production, we need structured workflows that:
 - **Ensure data quality** before it’s fed into AI models
-- **Evaluate AI-generated responses** against known ground truth
+- **Evaluate AI-generated responses** against responses known to be true
 - **Trigger alerts or corrective actions** when AI performance drifts below acceptable thresholds
 
 Without these capabilities, AI workflows remain stuck in experimental phases, unable to meet the reliability requirements of production use cases.
