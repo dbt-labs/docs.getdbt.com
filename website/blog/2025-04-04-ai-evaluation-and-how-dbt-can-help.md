@@ -81,4 +81,4 @@ You can view this information in <Constant name="explorer" />, feed it into your
 As AI workflows become more commonplace, businesses need a systematic way to evaluate and monitor AI outputs, just as they do with traditional data products. Fortunately, the same principles and tools within dbt can be easily applied to AI evaluation as well.
 With dbt, data teams can bridge the gap between AI experimentation and AI in production, by ensuring trust, reliability, and governance to AI workflows.
 
-Ready to bring AI evaluation into your dbt workflow? Get started with the dbt MCP server—it makes it easy to connect your AI systems to trusted, governed data. Or reach out to start a conversation.
+Ready to bring AI evaluation into your dbt workflow? Get started with the dbt MCP server—it makes it easy to connect your AI systems to trusted, governed data.
