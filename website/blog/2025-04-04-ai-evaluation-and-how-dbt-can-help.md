@@ -73,8 +73,8 @@ You can even run multiple evaluations using different models to assess accuracy 
 
 <Lightbox src="/img/blog/2025-04-04-ai-evaluation-and-how-dbt-can-help/ai_eval_blog_image_two.png" title="dbt Testing evaluates AI accuracry along side data quality"width="85%" />
 
-The final step here is writing a dbt [custom test](https://docs.getdbt.com/best-practices/writing-custom-generic-tests) to find any responses failing to meet our accuracy threshold. By creating this dbt test we can ensure issues with AI accuracy are caught and flagged as part of our standard dbt runs and quality checks. 
-We can also easily leverage dbt’s ability to [store test failures](https://docs.getdbt.com/reference/resource-configs/store_failures) to record quality issues found in AI processes for further investigation and triage.
+The final step here is writing a dbt [custom test]/best-practices/writing-custom-generic-tests) to find any responses failing to meet our accuracy threshold. By creating this dbt test we can ensure issues with AI accuracy are caught and flagged as part of our standard dbt runs and quality checks. 
+We can also easily leverage dbt’s ability to [store test failures](/reference/resource-configs/store_failures) to record quality issues found in AI processes for further investigation and triage.
 
 As a final benefit of capturing AI evaluations as part of your dbt project is just that - your AI quality information becomes part of your dbt project meaning quality results are available in all the same ways as any other dbt test result. 
 You can view this information in <Constant name="explorer" />, feed it into your data catalog of choice, use the test results to trigger additional downstream processes or visualize the information as quality dashboards through BI.
