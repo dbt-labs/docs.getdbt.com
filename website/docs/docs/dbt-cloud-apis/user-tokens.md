@@ -19,7 +19,7 @@ PATs inherit the permissions of the user that created them. For example, if a de
 
 ## Create a personal access token
 
-Creating an account-scoped personal access token (PAT) requires only a few steps.
+Creating an account-scoped PAT requires only a few steps.
 1. Navigate to your **Account Settings**, expand **API tokens** and click **Personal tokens**.
 2. Click **Create personal access token**.
 3. Give the token a descriptive name and click **Save**. 
@@ -43,12 +43,12 @@ The migration to PATs is critical if you are using user API keys today. The curr
 
  There are a few things to understand if you are using a user API key today: 
 
-* Personal access tokens are more secure. 
-    * To promote the least privilege and high-security assurance for your <Constant name="cloud" /> accounts, we highly recommend moving to the new account-scoped personal access tokens.
+* PATs are more secure. 
+    * To promote the least privilege and high-security assurance for your <Constant name="cloud" /> accounts, we highly recommend moving to the new account-scoped PATs.
 * You must create and use unique tokens in each one of your <Constant name="cloud" /> accounts that share the same email address.
     * For example, if paul.atreides@example.com belongs to two <Constant name="cloud" /> accounts: Spice Harvesting Account and Guild Navigator Account. Before this release, the same API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
-* Cross-Account API endpoints will change in behavior when using the personal access tokens.
+* Cross-Account API endpoints will change in behavior when using PATs.
     * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts associated with a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
     * User account metadata will only contain information about the specific account under which the request is being made. 
     * Any other accounts that belong to that user account will need to be requested through the PAT that belongs to that account. 
@@ -64,7 +64,18 @@ If you’re using any undocumented and unsupported API endpoints, please note th
 Are you using a user API key today to access <Constant name="cloud" /> APIs in any of your workflows? If not, you don’t have any action to take. If you are using a user API key, please follow the instructions below. 
 
 1. Make a list of all the places where you’re making a call to the <Constant name="cloud" /> API using the <Constant name="cloud" /> user API key. 
-2. Create a new personal access token under **Account Settings → API Tokens → Personal Tokens.** 
-3. Create and copy the new PAT to replace the old user API key. 
+2. Create a new PAT under **Account Settings → API Tokens → Personal Tokens.** For instructions, see [Create a personal access token](#create-a-personal-access-token).
+3. Replace the API key in your APIs with the PAT you created. You can use a PAT wherever you previously used an API key.
+    
+    To replace the API key with a PAT, include the PAT in the Authorization header of your API requests. For example: `Authorization: Bearer <your-token>`.
+
+    Make sure to replace `<your-token>` with the new PAT you created.
+
+    :::note
+
+     The option to rotate API keys is used for existing API keys, not for replacing them with PATs. You do not need to replace your API key with a PAT in the <Constant name="cloud" /> UI.
+
+    :::
+
 4. Ensure that you’re using a PAT only where it's needed. For flows that require a service account, please use a service token. 
 
