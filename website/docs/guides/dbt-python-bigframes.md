@@ -1,8 +1,8 @@
 ---
-title: "Using BigQuery Dataframes with dbt python models"
+title: "Using BigQuery DataFrames with dbt python models"
 id: dbt-python-bigframes
-description: "Use this guide to help you set up dbt with BigQuery Dataframes (BigFrames)."
-sidebar_label: "BigQuery Dataframes and dbt python"
+description: "Use this guide to help you set up dbt with BigQuery DataFrames (BigFrames)."
+sidebar_label: "BigQuery DataFrames and dbt python"
 # time_to_complete: '30 minutes' comment out until test
 icon: 'guides'
 hide_table_of_contents: true
@@ -16,7 +16,7 @@ recently_updated: true
 
 ## Introduction
 
-In this guide, you'll learn how to set up dbt so you can use it with BigQuery Dataframes (BigFrames):
+In this guide, you'll learn how to set up dbt so you can use it with BigQuery DataFrames (BigFrames):
 * Build scalable data transformation pipelines using dbt and Google Cloud, with SQL and Python.
 * Leverage BigFrames from dbt for scalable BigQuery SQL.
 
@@ -24,7 +24,7 @@ In this guide, you'll learn how to set up dbt so you can use it with BigQuery Da
 In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
 
 
-BigQuery Dataframes is an open source python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the python client side code.
+BigQuery DataFrames is an open source Python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the Python client side code.
 
 
 ### Prerequisites

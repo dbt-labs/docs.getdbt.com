@@ -178,13 +178,13 @@ Have a look at [Dataproc's document on Create a cluster](https://cloud.google.co
 
 <Expandable alt_header="Notebook Template ID">
 
-The unique identifier associated with a specific Colab notebook, which acts are the python runtime for BigQuery Dataframe.
+The unique identifier associated with a specific Colab notebook, which acts are the python runtime for BigQuery DataFrames.
 
 </Expandable>
 
 <Expandable alt_header="Compute Region">
 
-This region must match the location of your BigQuery dataset if you want to use BigQuery Dataframe, ensure the Colab runtime is also within the same region.
+This region must match the location of your BigQuery dataset if you want to use BigQuery DataFrames, ensure the Colab runtime is also within the same region.
 
 </Expandable>
 

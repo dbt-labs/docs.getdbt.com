@@ -297,7 +297,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery Dataframe"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
 
 <File name='models/my_python_model.py'>
 
@@ -425,7 +425,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery Dataframe"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
 
 <File name='models/my_python_model.py'>
 
@@ -528,7 +528,7 @@ models:
 
 You can use the `@udf` decorator or `udf` function to define an "anonymous" function and call it within your `model` function's DataFrame transformation. This is a typical pattern for applying more complex functions as DataFrame operations, especially if those functions require inputs from third-party packages.
 - [Snowpark Python: Creating UDFs](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html)
-- [BigQuery Dataframe UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions)
+- [BigQuery DataFrames UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions)
 - [PySpark functions: udf](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
 <Tabs>
@@ -575,7 +575,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery Dataframe"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
 
 <File name='models/my_python_model.py'>
 
