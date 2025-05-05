@@ -1,5 +1,5 @@
 ---
-title: "Using BigQuery DataFrames with dbt python models"
+title: "Using BigQuery DataFrames with dbt Python models"
 id: dbt-python-bigframes
 description: "Use this guide to help you set up dbt with BigQuery DataFrames (BigFrames)."
 sidebar_label: "BigQuery DataFrames and dbt python"
