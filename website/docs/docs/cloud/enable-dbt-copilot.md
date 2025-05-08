@@ -28,7 +28,7 @@ To opt in to <Constant name="copilot" />, a <Constant name="cloud" /> admin can 
 1. Navigate to **Account settings** in the navigation menu.
 2. Under **Settings**, confirm the account you're enabling.
 3. Click **Edit** in the top right corner.
-4. Enable the **Enable account access to AI-powered features** option.
+4. Enable the **Enable account access to Copilot features** option.
 5. Click **Save**. You should now have <Constant name="copilot" /> AI enabled for use.
 
 Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4, and repeat step 5.
