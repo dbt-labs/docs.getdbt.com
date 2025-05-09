@@ -2,6 +2,7 @@
 title: "About dbt Insights"
 description: "Learn how to query data and perform exploratory data analysis using dbt Insights"
 sidebar_label: "About dbt Insights"
+unlisted: true
 tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
 ---

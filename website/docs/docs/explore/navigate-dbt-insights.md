@@ -2,6 +2,7 @@
 title: "Navigate the dbt Insights interface"
 description: "Learn how to navigate the dbt Insights interface"
 sidebar_label: "Navigation interface"
+unlisted: true
 tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-results.jpg
 ---
