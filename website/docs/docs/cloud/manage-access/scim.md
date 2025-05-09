@@ -52,6 +52,11 @@ To retrieve the necessary dbt Cloud configurations for use in Okta:
     <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the Okta configuration settings." />
 4. Record the **SCIM base URL** field for use in a later step.
 5. Click **Create SCIM token**.
+    :::note
+    
+    It's a best practice to rotate your SCIM token at regular intervals. You can follow these same instructions to rotate the token by creating a new one. Be sure not to delete the old token until it has been replaced in your IdP.
+
+    :::
 6. In the pop-out window, give the token a name that will make it easily identifiable. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/name-scim-token.png" width="60%" title="Give your token and identifier." />
 7. Copy the token and record it securely, as _it will not be available again after you close the window_. You must create a new token if you lose the current one. 
@@ -93,7 +98,7 @@ You've now configured SCIM for the Okta SSO integration in dbt Cloud.
 
 ### Existing Okta integrations
 
-If you are adding SCIM to an existing Okta integration in dbt Cloud (as opposed to setting up SCIM and Oauth concurrently for the first time), there is some functionality you should be aware of:
+If you are adding SCIM to an existing Okta integration in dbt Cloud (as opposed to setting up SCIM and SSO concurrently for the first time), there is some functionality you should be aware of:
 
 - Users and groups already synced to dbt Cloud will become SCIM-managed once you complete the SCIM configuration.
 - You can leverage SCIM to import and manage existing dbt Cloud groups. Update the groups in your IdP with the same naming convention used for dbt Cloud groups. New users, groups, and existing profile changes will be automatically imported into dbt Cloud.
