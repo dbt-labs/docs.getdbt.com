@@ -147,7 +147,7 @@ Some known issues and limitations:
 
 <div warehouse="Databricks">
 
-- Column-level comments require `file_format: delta` (or another "v2 file format")
+- Column-level comments require `file_format: delta` (or another "v2 file format").
 
 
 </div>
