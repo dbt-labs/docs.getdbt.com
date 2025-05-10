@@ -54,7 +54,7 @@ To retrieve the necessary dbt Cloud configurations for use in Okta:
 5. Click **Create SCIM token**.
     :::note
     
-    It's best practice to rotate your SCIM token at regular intervals. To do so, follow these same instructions to create a new one. To avoid service disruptions, don't delete the old token in dbt Cloud until you've replaced it in your IdP.
+    To follow best practices, you should regularly rotate your SCIM tokens. To do so, follow these same instructions you did to create a new one. To avoid service disruptions, remember to replace your token in your IdP before deleting the old token in <Constant name="cloud" />.
 
     :::
 6. In the pop-out window, give the token a name that will make it easily identifiable. Click **Save**.
