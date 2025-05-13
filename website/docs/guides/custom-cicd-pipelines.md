@@ -274,7 +274,7 @@ jobs:
       DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
       DBT_URL: https://cloud.getdbt.com # enter a URL that matches your job
       DBT_JOB_CAUSE: 'GitHub Pipeline CI Job' 
-      DBT_JOB_BRANCH: ${{ github.head_ref }}
+      DBT_JOB_BRANCH: ${{ github.ref_name }}
 
     steps:
       - uses: "actions/checkout@v4"
