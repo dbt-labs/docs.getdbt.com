@@ -21,7 +21,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use the <Constant name="cloud" /> CLI | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
-| API Access | ✅ | ❌ | ❌ |
+| API Access | ✅ | ✅ | ❌ |
 | Use [<Constant name="explorer" />](/docs/explore/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
