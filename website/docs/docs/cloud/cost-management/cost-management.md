@@ -104,11 +104,12 @@ To configure the metadata connection in dbt Cloud:
 2. Click the connection associated with the data warehouse(s) you configured in the Snowflake setup. Do not click **Edit**. This is for the broader settings and will prevent the metadata section from being altered. 
 3. Scroll down to the **Platform metadata credentials** and click **Add credentials**.
 4. Set the appropriate **Auth method** (username and password or key pair) and fill out all the fields provided.
-5. Click **Save**.
+5. In the **Features** section, click the box to enable **Cost Management**.
 
     <Lightbox src="/img/docs/dbt-cloud/cost-management/configure-metadata.png" width="70%" title="Fill out the fields with the appropriate information."/>
 
-6. Repeat this process for each dbt Cloud warehouse connection you want to monitor. 
+6. Click **Save**.
+7. Repeat this process for each dbt Cloud warehouse connection you want to monitor. 
 
 After the setup, it will be a few hours before the initial sync completes and information begins to populate the dashboard. 
 
