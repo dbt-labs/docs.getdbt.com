@@ -85,6 +85,7 @@ Select **Allow**. This redirects you back to <Constant name="cloud" />. You are 
 ## Set up BigQuery Workload Identity Federation <Lifecycle status='beta,managed'/> 
 
 Workload Identity Federation (WIF) allows application workloads, running externally to dbt Cloud, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in dbt Cloud using WIF. 
+Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
 ### Set up dbt Cloud
 

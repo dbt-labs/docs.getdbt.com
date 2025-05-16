@@ -496,7 +496,16 @@ For a full list of possible configuration fields that can be passed in `dataproc
 BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
 - BigQuery Data Editor
 - BigQuery User
-- colabEnterpriseUser (for BigQuery DataFrames only) 
+
+Required roles and permissions for BigQuery DataFrames:
+- BigQuery Job User
+- BigQuery Read Session User
+- Notebook Runtime User
+- Code Creator
+- colabEnterpriseUser
+
+
+
 
 This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 

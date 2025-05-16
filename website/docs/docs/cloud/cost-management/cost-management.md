@@ -90,6 +90,14 @@ Once the user is created and assigned proper privileges, it's time to configure 
 
 ## Set up in dbt Cloud
 
+Configuring the cost management features requires both a connection and a user component:
+
+- **[Connection setup](#connection-setup):** Set up the credentials used to access the data warehouse information. Only one unique [connection](/docs/cloud/connect-data-platform/about-connections#connection-management) per warehouse needs to have the credentials configured.
+
+- **[Provision user access](#provision-user-access):** Add new permissions to users and/or groups to regulate access to the dashboard
+
+### Connection setup
+
 To configure the metadata connection in dbt Cloud:
 
 1. Navigate to **Account Settings** and click **Connections**.
@@ -104,6 +112,22 @@ To configure the metadata connection in dbt Cloud:
 
 After the setup, it will be a few hours before the initial sync completes and information begins to populate the dashboard. 
 
+### Provision user access
+
+Since the dashboard contains sensitive financial information, we're introducing two new permission sets to help you regulate access: `Cost Management Admin` and `Cost Mangement Viewer`.
+
+The `Cost Management Viewer` role is especially useful to organizations who want to grant viewer access to the dashboard without the elevated permissions associated with admin roles.
+
+For example, let's say you have a group of developers in charge of cost observability and insights you wish to grant access to view the dashboard:
+1. Navigate to your **Account settings** and open **Groups and licenses**.
+2. Click the group from your list and click **Edit**.
+3. From **Accounts and permissions** click **Add permission**.
+4. Select the **Cost Management Viewer** permission from the dropdown and click **Save**.
+
+<Lightbox src="/img/docs/dbt-cloud/cost-management/cost-management-viewer.png" width="70%" title="The Cost Management Viewer role assigned to a group."/>
+
+By assigning these permission set to the users or groups you want to have access to the dashboard you can avoid granting broader access with the other roles. 
+
 ## Cost management dashboard
 
 The cost management dashboard can be accessed anywhere in dbt Cloud from the left-side menu. Once enabled, **Cost management** will be an option below the **Account home** feature at the top of the sidebar. Users who don't have the proper permissions will not see the option.
@@ -111,15 +135,14 @@ The cost management dashboard can be accessed anywhere in dbt Cloud from the lef
 Users with the following [permission sets](/docs/cloud/manage-access/enterprise-permissions) will be able to access the cost management dashboard:
 - Account Admin
 - Account Viewer
-- Cost Management Admin
-
-Since the dashboard contains sensitive financial information, we're introducing a new permission set to help you regulate access: `Cost Management Admin`. 
-
-You can optionally assign this permission set to the users or groups you want to have access to the dashboard instead of granting broader access with the other roles. Project-level access is coming soon via a new role, `Cost Management Viewer`.
+- **New:** Cost Management Viewer
+- **New:** Cost Management Admin
 
 Once the information syncs, you will see the results by selecting the **Cost management** dashboard option from the left-side menu. 
 
-<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard.png" width="70%" title="The cost management dashboard."/>
+<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard-upper.png" width="70%" title="The cost management overview."/>
+
+<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard.png" width="70%" title="More of the cost management dashboard overview."/>
 
 - Hover over the **Last refreshed...** date to see a list of your configured connections and their status.
     <Lightbox src="/img/docs/dbt-cloud/cost-management/connection-status.png" width="70%" title="View your connection status."/>
@@ -143,6 +166,8 @@ You can sort the list views by these metrics to see how resources are impacting 
 
 The **Overview** dashboard is the first display you'll see. It gives you general information about your costs:
 
+- View trends in your warehouse costs for the selected time. Hover over the graph to view the difference in spend period-over-period.
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/cost-trends.png" width="70%" title="View trends over time."/>
 - The top tiles display spend and savings over the selected period.
     <Lightbox src="/img/docs/dbt-cloud/cost-management/warehouse-spend.png" width="70%" title="See your total spending."/>
 - The bar chart breaks down costs of dbt execution by project. You can click on the individual bars to view more information.

@@ -649,18 +649,49 @@ It is important to remember that all of dbt Labs documentation is currently in E
 
 Both macOS and Windows include tools that allow you to capture and manipulate screenshots. You can use alternatives based on your preferences, but avoid programs that place a watermark over the content.
 
-* [How to take screenshots in MacOS](https://support.apple.com/en-us/HT201361#:~:text=How%20to%20take%20a%20screenshot,to%20save%20to%20your%20desktop.)
+* [How to take screenshots in macOS](https://support.apple.com/en-us/HT201361#:~:text=How%20to%20take%20a%20screenshot,to%20save%20to%20your%20desktop.)
 * [How to take screenshots with the Snipping Tool in Windows](https://support.microsoft.com/en-us/windows/use-snipping-tool-to-capture-screenshots-00246869-1843-655f-f220-97299b865f6b#:~:text=Press%20Ctrl%20%2B%20PrtScn%20keys.,that%20you%20want%20to%20capture.)
 
 #### Screenshot guidelines
 
-Once you have determined that a screenshot will add value to the document where words alone can't, use the [Lightbox component](/contributing/lightbox) and the following guidelines to capture the information:
+Note that it is not always recommended to use screenshots in technical documentation. Using screenshots even when not necessary might be difficult to maintain because the UI changes often. Make sure to write clear text instructions and to use screenshots when they add value to the document, and not just for decoration. 
 
+Once you have determined that a screenshot will add value where words alone can't, use the [Lightbox component](/contributing/lightbox) and the following guidelines to capture the information:
+
+##### Content
 * Use screenshots to highlight navigation, on-screen elements, and other noteworthy product visuals.
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
-* Add images are under the `static` -> `img` folder.
+* Use the Markup toolbar in Preview for macOS to add callouts to your images when necessary. For more information, refer to [Annotate an image in Preview on Mac](https://support.apple.com/en-ph/guide/preview/prvw1501/mac).
+    When adding callouts, refer to the following guidelines:
+    * Place callouts near the UI element but do not cover important details.
+    * To highlight a part of the UI, use a transparent box with red borders. Select the fifth line thickness (medium) in the Markup tool for consistency. For example: 
+
+        ![Sample callout when highlighting a UI element](images/sample-callouts.png)
+
+        ![Line thickness for callout box](images/callout-thickness.png)
+
+    * To highlight multiple UI elements, use numbered callouts with a matching legend. Each number should correspond to a brief description listed below the screenshot, explaining the function of each UI element.
+    
+      When using numbered callouts, refer to the following guidelines:
+
+      - Font style: Helvetica
+      - Font size: 30 pt
+      - Font color: Red
+      - Format: Bold
+
+      For example:
+
+      ![Sample callouts using numbers](images/sample-numbered-callouts.png)
+    
+      **Note:** When highlighting multiple UI elements, use arrows sparingly because too many arrows can clutter the screenshot.
+* Redact all sensitive information such as names, email addresses, phone numbers, or anything that could be considered personally identifiable information (PII) should be obfuscated. If the dbt account name is shown in the screenshot, make sure to edit the name to a generic name (for example, John Doe or Jane Doe) when taking the screenshot.
+* Avoid URL and bookmark bars in the screenshot and limit the scope to the product and page being documented.
+
+##### Format
+
+* Add images under the `static` -> `img` folder.
 * Use concise filenames that are relevant to the content contained within. Enumerate them if they are part of a sequence.
-* Use JPEG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
+* Use JPEG or PNG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
 * Add *title=""* for all images to write a concise title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
 
 For more information about image-formatting, review the [Lightbox guidance](/contributing/lightbox), and the following examples:
@@ -668,9 +699,6 @@ For more information about image-formatting, review the [Lightbox guidance](/con
   :x: screenshot-august0822.jpg
 
   :white_check_mark: viewing-admins-01.jpg
-
-* Redact all sensitive information from the screenshot &mdash; names, email addresses, phone numbers, or anything that could be considered personally identifiable information (PII) should be obfuscated.
-* Avoid URL and bookmark bars in the screenshot and limit the scope to the product and page being documented.
 
 ## Talk to us
 Your feedback helps drive us forward. At dbt Labs, we want you to get involved if you see areas in the documentation that need improvement. That might include becoming a docs contributor or simply filing a GitHub issue so we know where to look. We have an incredible community of contributors, and our documents reflect that.
