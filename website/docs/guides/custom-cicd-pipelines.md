@@ -244,7 +244,7 @@ my_awesome_project
 
 The YAML file will look pretty similar to our earlier job, but there is a new section called `env` that we’ll use to pass in the required variables. Update the variables below to match your setup based on the comments in the file.
 
-It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (for example, a pull request is merged). Have a look through [GitHub documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 For the value of `DBT_JOB_BRANCH`, refer to the [GitHub documentation](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs) for information about `github` context property names and their use cases. 
 
