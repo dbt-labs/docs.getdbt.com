@@ -54,10 +54,12 @@ Here's an example of the available behavior change flags with their default valu
 
 ```yml
 flags:
-  require_explicit_package_overrides_for_builtin_materializations: False
-  require_model_names_without_spaces: False
-  source_freshness_run_project_hooks: False
+  require_explicit_package_overrides_for_builtin_materializations: True
+  require_model_names_without_spaces: True
+  source_freshness_run_project_hooks: True
   restrict_direct_pg_catalog_access: False
+  skip_nodes_if_on_run_start_fails: False
+  state_modified_compare_more_unrendered_values: False
   require_yaml_configuration_for_mf_time_spines: False
   require_batched_execution_for_custom_microbatch_strategy: False
   require_nested_cumulative_type_params: False
@@ -78,7 +80,7 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
-| [cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
+| [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 
 When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
