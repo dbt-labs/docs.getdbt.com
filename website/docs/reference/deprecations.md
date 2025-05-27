@@ -2,7 +2,18 @@
 title: "Deprecations"
 ---
 
-As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. It is important to resolve any deprecation warnings in your project before the changes are made.
+:::note
+
+Deprecated functionality still works in the v1.10 release, but it is no longer supported and will be removed in a future version.  
+
+This means the deprecated features only present a warning but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)). 
+
+When the functionality is eventually removed, it will cause errors in your dbt runs after you upgrade if the deprecations are not addressed.
+
+
+:::
+
+As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it’s just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
 
 ## Identify deprecation warnings
 
@@ -124,6 +135,15 @@ DBT_TARGET_PATH env var instead.
 #### ConfigTargetPathDeprecation warning resolution
 
 Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
+
+### CustomOutputPathInSourceFreshnessDeprecation
+
+dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
+
+#### CustomOutputPathInSourceFreshnessDeprecation warning resolution
+
+Remove the `--output` or `-o` flag and associated path configuration from any jobs running dbt source freshness commands.
+There is no alternative for changing the location of only the source freshness results. However, you can still use `--target-path` to write _all_ artifacts from the step to a custom location.
 
 ### ExposureNameDeprecation
 
@@ -267,6 +287,47 @@ User config should be moved from the 'config' key in profiles.yml to the 'flags'
 
 Remove `config` from `profiles.yml`. Add any previous [`config`](/reference/global-configs/about-global-configs) in `profiles.yml` to `flags` in `dbt_project.yml`.
 
+### PropertyMovedToConfigDeprecation 
+
+Some historical properties are moving entirely to configs.
+
+This will include: `freshness`, `meta`, `tags`, `docs`, `group`, and `access`
+
+Changing certain properties to configs is beneficial because you can set them for many resources at once in `dbt_project.yml` (project-level/folder-level defaults). More info on the difference between properties and configs [here](/reference/configs-and-properties).
+
+#### PropertyMovedToConfigDeprecation warning resolution
+
+If you previously set one of the impacted properties, such as `freshness`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    freshness:
+      warn_after:
+        count: 24
+        period: hour
+
+```
+
+You should now set it under `config`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    config:
+      freshness:
+        warn_after:
+          count: 24
+          period: hour
+
+```
+
 ### ResourceNamesWithSpacesDeprecation
 
 In [dbt 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#managing-changes-to-legacy-behaviors), allowing resource names to have spaces in them was deprecated. If you get this deprecation warning, dbt detected a resource name with a space in it.
@@ -321,3 +382,33 @@ hello!
 #### UnexpectedJinjaBlockDeprecation warning resolution
 
 Delete the unexpected Jinja blocks.
+
+### WEOIncludeExcludeDeprecation
+
+The `include` and `exclude` options for `warn_error_options` have been deprecated and replaced with `error` and `warn`, respectively.
+
+#### WEOIncludeExcludeDeprecation warning resolution
+
+Anywhere `warn_error_options` is configured, replace:
+- `include` with `error`
+- `exclude` with `warn`
+
+For example:
+
+```yaml
+...
+  flags:
+    warn_error_options:
+      include:
+        - NoNodesForSelectionCriteria
+```
+
+Should now be configured as:
+
+```yaml
+...
+  flags:
+    warn_error_options:
+      error:
+        - NoNodesForSelectionCriteria
+```
