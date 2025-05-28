@@ -239,6 +239,3 @@ Fusion will not produce this extra column in the table resulting from `dbt seed`
 | dog    |  
 | cat    |  
 | bear   |  
-
-#### Supported packages
-
