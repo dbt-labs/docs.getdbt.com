@@ -1,12 +1,12 @@
 ---
-title: "dbt Cloud Architecture"
+title: "dbt Architecture"
 id: "architecture"
-description: "Information about the architecture, communication, and security of dbt Cloud"
+description: "Information about the architecture, communication, and security of dbt"
 ---
 
 This page helps practitioners and those interested in <Constant name="cloud" />'s architecture and data flow.
 
-## About dbt Cloud architecture
+## About dbt architecture
 
 The <Constant name="cloud" /> application has two types of components: static and dynamic. The static components are always running to serve highly available <Constant name="cloud" /> functions, like the <Constant name="cloud" /> web application. On the other hand, the dynamic components are created ad-hoc to handle tasks such as background jobs or requests to use the <Constant name="cloud_ide" />.
 
@@ -36,9 +36,10 @@ For more detailed information on our security practices, read our [Security page
 
 ### Data warehouse interaction
 
-dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the dbt Cloud application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
+<Constant name="cloud" />'s primary role is as a data processor, not a data store. The <Constant name="cloud" /> application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the <Constant name="cloud" /> application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
 
-Some data warehouse providers offer advanced security features that can be leveraged in <Constant name="cloud" />. [Private connections](/docs/cloud/secure/about-private-connectivity) allows supported data platforms on AWS to communicate with <Constant name="cloud" /> without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise plan only).
+
+Some data warehouse providers offer advanced security features that can be leveraged in <Constant name="cloud" />. [Private connections](/docs/cloud/secure/about-private-connectivity) allows supported data platforms on AWS to communicate with <Constant name="cloud" /> without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise-tier plan only).
 
 ### Git sync
 

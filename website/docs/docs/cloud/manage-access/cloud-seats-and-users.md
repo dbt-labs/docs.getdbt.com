@@ -1,6 +1,6 @@
 ---
 title: "Users and licenses"
-description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
+description: "Learn how dbt administrators can use licenses and seats to control access in a dbt account."
 id: "seats-and-users"
 sidebar: "Users and licenses"
 pagination_next: "docs/cloud/manage-access/enterprise-permissions"
@@ -15,7 +15,7 @@ In <Constant name="cloud" />, _licenses_ are used to allocate users to your acco
 
 The user's assigned license determines the specific capabilities they can access in <Constant name="cloud" />.
 
-| Functionality | Developer User | Read-Only Users | IT Users* |
+| Functionality | <div style={{width:'125px'}}>Developer or Analyst Users</div> | <div style={{width:'125px'}}>Read-Only Users</div> |<div style={{width:'125px'}}> IT Users*</div> |
 | ------------- | -------------- | --------------- | -------- |
 | Use the <Constant name="cloud_ide" /> | ✅ | ❌ | ❌ |
 | Use the <Constant name="cloud" /> CLI | ✅ | ❌ | ❌ |
@@ -27,7 +27,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
 
-*Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
+*Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward seat usage.
 
 ## Licenses
 
@@ -39,15 +39,15 @@ The user's license type always overrides their assigned [Enterprise permission](
 
 Each <Constant name="cloud" /> plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
-If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Starter plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
 The following tabs detail steps on how to modify your user license count:
 
 <Tabs>
 
-<TabItem value="enterprise" label="Enterprise plans">
+<TabItem value="enterprise" label="Enterprise-tier plans">
 
-If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
+If you're on an Enterprise-tier plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
 - To remove a user, click on your account name in the left side menu, click **Account settings** and select **Users**.
   - Select the user you want to remove, click **Edit**, and then **Delete**. 
@@ -60,22 +60,21 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 </TabItem>
 
-<TabItem value="team" label="Team plans">
+<TabItem value="starter" label="Starter plans">
 
-If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
+If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
 
 - Adjust your developer user seat count, which manages the users invited to your <Constant name="cloud" /> project. 
 - Adjust your developer billing seat count, which manages the number of billable seats. 
-
 
 You can add or remove developers by increasing or decreasing the number of users and billable seats in your account settings:
 
 <Tabs>
 <TabItem value="addusers" label="Adding users">
 
-To add a user in dbt Cloud, you must be an account owner or have admin privileges. 
+To add a user in <Constant name="cloud" />, you must be an account owner or have admin privileges. 
 
-1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="75%" title="Navigate to Account Settings" />
 
@@ -93,7 +92,7 @@ Great work! After completing those these steps, your <Constant name="cloud" /> u
 
 <TabItem value="deleteusers" label="Deleting users">
 
-To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
+To delete a user in <Constant name="cloud" />, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
@@ -106,7 +105,7 @@ To delete a user in dbt Cloud, you must be an account owner or have admin privil
 <Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="75%" title="Deleting a user" />
 
 
-If you are on a **Teams** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
+If you are on a **Starter** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
 
 1. In **Account Settings**, select **Billing**. 
 2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. If you leave any field blank, you won't be able to save your changes.
@@ -124,23 +123,17 @@ Great work! After completing these steps, your <Constant name="cloud" /> user co
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="cloud" />. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="cloud" />. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
-To manually assign a specific type of license to a user on your team, navigate
-to the Team page in your Account Settings and click the "edit" button for the user
-you want to manage. From this page, you can select the license type and relevant
-groups for the user.
+To manually assign a specific type of license to a user on your team, navigate to the **Users** page in your **Account settings** and click the **Edit** button for the user you want to manage. From this page, you can select the license type and relevant groups for the user.
 
-**Note:** You will need to have an available license ready
-to allocate for the user. If your account does not have an available license to
-allocate, you will need to add more licenses to your plan to complete the license
-change.
+**Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Mapped configuration <Lifecycle status="managed" /> 
+### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
@@ -159,13 +152,10 @@ Usage notes:
 - License types are adjusted when users sign into <Constant name="cloud" /> via Single Sign On.
   Changes made to license type mappings will take effect the next time users
   sign in to <Constant name="cloud" />.
-- License type mappings are based on _IdP Groups_, not _dbt Cloud groups_, so be
+- License type mappings are based on _IdP Groups_, not _<Constant name="cloud" /> groups_, so be
   sure to check group memberships in your identity provider when configuring
   this feature.
 
-
 ## Granular permissioning
 
-The <Constant name="cloud" /> Enterprise plan supports role-based access controls for
-configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-user-access)
-for more information on Enterprise permissioning.
+<Constant name="cloud" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-user-access) for more information on Enterprise permissioning.

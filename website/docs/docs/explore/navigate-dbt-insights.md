@@ -2,12 +2,11 @@
 title: "Navigate the dbt Insights interface"
 description: "Learn how to navigate the dbt Insights interface"
 sidebar_label: "Navigation interface"
-unlisted: true
 tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-results.jpg
 ---
 
-# Navigate the dbt Insights interface <Lifecycle status="beta,managed" />
+# Navigate the dbt Insights interface <Lifecycle status="preview,managed,managed_plus" />
 
 <IntroText>
 Learn how to navigate <Constant name="query_page" /> interface and use the main components.

@@ -1,7 +1,7 @@
 ---
 title: "Set up Azure DevOps with Service User"
 id: "setup-service-user"
-description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt Cloud."
+description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt."
 sidebar_label: "Set up service user"
 ---
 
@@ -104,7 +104,7 @@ If your Azure DevOps account is connected to Entra ID, then you can proceed to [
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Microsoft Entra ID"/>
 
-## Add your Microsoft Entra ID app to dbt Cloud
+## Add your Microsoft Entra ID app to dbt
 
 A <Constant name="cloud" /> account admin needs to perform the following steps. 
 
@@ -118,7 +118,7 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
     - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
-        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" width="100%" title="Adding a Microsoft Entra ID app to dbt Cloud"/>
+        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" width="100%" title="Adding a Microsoft Entra ID app to dbt"/>
 
 Your Microsoft Entra ID app should now be added to your <Constant name="cloud" /> Account. People on your team who want to develop in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
@@ -152,7 +152,7 @@ Some of these permissions are only accessible via the [Azure DevOps API](https:/
 
 <TabItem value="permission" label="Required permissions for service users">
 
-The service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user _before_ creating a new project in dbt Cloud. If you are migrating an existing dbt project to use the native Azure DevOps integration, the dbt Cloud account's service user must have proper permissions on the repository before migration.
+The service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user _before_ creating a new project in <Constant name="cloud" />. If you are migrating an existing dbt project to use the native Azure DevOps integration, the <Constant name="cloud" /> account's service user must have proper permissions on the repository before migration.
 </TabItem>
 
 <TabItem value="mfa" label="Turn off MFA for service user">

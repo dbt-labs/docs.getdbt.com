@@ -1,5 +1,5 @@
 ---
-title: "Trigger PagerDuty alarms when dbt Cloud jobs fail"
+title: "Trigger PagerDuty alarms when dbt jobs fail"
 id: serverless-pagerduty 
 description: Use webhooks to configure a serverless app to trigger PagerDuty alarms.
 hoverSnippet: Learn how to configure a serverless app that uses webhooks to trigger PagerDuty alarms.
@@ -101,7 +101,7 @@ See [PagerDuty's guide](https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgw-ev
 
 Make note of the integration key for later. 
 
-## Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
 
 Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`)
@@ -112,8 +112,8 @@ Make note of the Webhook Secret Key for later.
 
 ## Store secrets
 The application requires three secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
-- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the dbt Cloud webhook you created earlier.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="cloud" /> [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="cloud" /> webhook you created earlier.
 - `PD_ROUTING_KEY`: the integration key for the PagerDuty integration you created earlier.
 
 Set these secrets as follows, replacing `abc123` etc with actual values:

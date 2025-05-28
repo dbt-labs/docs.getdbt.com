@@ -1260,7 +1260,8 @@ Contributors to the community should think of contribution _as the end itself,_ 
 - Founder and executives who are interested in directly engaging with the community
   This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
 
-- Software Engineers at partner products that are building and supporting integrations with either dbt Core or dbt Cloud
+- Software Engineers at partner products that are building and supporting integrations with either - Software Engineers at partner products that are building and supporting integrations with either dbt Core or the <Constant name="core" />
+ or the <Constant name="dbt_platform" />
   This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
 
 ### Who might struggle in the dbt community

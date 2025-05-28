@@ -1,12 +1,12 @@
 ---
-title: "Merge jobs in dbt Cloud"
+title: "Merge jobs in dbt"
 sidebar_label: "Merge jobs"
 description: "Learn how to trigger a dbt job run when a Git pull request merges."
 ---
 
-# Merge jobs in dbt Cloud <Lifecycle status="self_service,managed" />
+# Merge jobs in dbt <Lifecycle status="self_service,managed" />
 
-You can set up a merge job to implement a continuous deployment (CD) workflow in dbt Cloud. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data. Also, you can use this workflow for running `dbt compile` to update your environment's manifest so subsequent CI job runs are more performant.
+You can set up a merge job to implement a continuous deployment (CD) workflow in <Constant name="cloud" />. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data. Also, you can use this workflow for running `dbt compile` to update your environment's manifest so subsequent CI job runs are more performant.
 
 By using CD in <Constant name="cloud" />, you can take advantage of deferral to build only the edited model and any downstream changes. With merge jobs, state will be updated almost instantly, always giving the most up-to-date state information in [<Constant name="explorer" />](/docs/explore/explore-projects).
 
@@ -26,7 +26,7 @@ By using CD in <Constant name="cloud" />, you can take advantage of deferral to 
 1. In the **<Constant name="git" /> trigger** section, the **Run on merge** option is enabled by default. Every time a PR merges (to a base
 branch configured in the environment) in your <Constant name="git" /> repo, this job will get triggered to run. 
 1. Options in the **Execution settings** section:
-    - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
+    - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs <Constant name="cloud" /> to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
     - **Compare changes against** &mdash; By default, it's set to compare changes against the environment you created the job from. This option allows <Constant name="cloud" /> to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG. To change the default settings, you can select **No deferral**, **This job** for self-deferral, or choose a different environment. 
 1. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this job runs.

@@ -1,7 +1,7 @@
 ---
 title: "Authenticate with Azure DevOps"
 id: "authenticate-azure"
-description: "dbt Cloud developers need to authenticate with Azure DevOps."
+description: "dbt developers need to authenticate with Azure DevOps."
 sidebar_label: "Authenticate with Azure DevOps"
 pagination_next: null
 ---
@@ -9,7 +9,7 @@ pagination_next: null
 
 If you use the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to collaborate on your team's Azure DevOps dbt repo, you need to [link your <Constant name="cloud" /> profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
 
-## Link your dbt Cloud profile to Azure DevOps
+## Link your dbt profile to Azure DevOps
 
 Connect your <Constant name="cloud" /> profile to Azure DevOps using OAuth:
 

@@ -3,7 +3,9 @@ title: "About the Discovery API"
 pagination_next: "docs/dbt-cloud-apis/discovery-use-cases-and-examples"
 ---
 
-Every time dbt Cloud runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the dbt Cloud Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
+# About the Discovery API <Lifecycle status="managed,managed_plus" />
+
+Every time <Constant name="cloud" /> runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the <Constant name="cloud" /> Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
 
 By leveraging the metadata in <Constant name="cloud" />, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
 
@@ -13,8 +15,8 @@ You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/d
 
 You can query the <Constant name="cloud" /> metadata:
 
-- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a dbt Cloud project in production.
-- At the job level for results on a specific dbt Cloud job run for a given resource type, like `models` or `test`.
+- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a <Constant name="cloud" /> project in production.
+- At the job level for results on a specific <Constant name="cloud" /> job run for a given resource type, like `models` or `test`.
 
 <Snippet path="metadata-api-prerequisites" />
 
@@ -32,7 +34,7 @@ Use the API to look at historical information like model build time to determine
 
 You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
 
 </TabItem>
 

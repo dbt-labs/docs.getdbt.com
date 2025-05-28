@@ -10,6 +10,6 @@ Choose **Run Python** as the Event. Run the following code:
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
 store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with webhook secret
-store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your dbt Cloud API token
+store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your dbt API token
 ```
 Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.

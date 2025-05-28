@@ -1,8 +1,8 @@
 ---
 title: "Refresh a Mode dashboard when a job completes"
 id: zapier-refresh-mode-report
-description: Use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes.
-hoverSnippet: Learn how to use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes.
+description: Use Zapier to trigger a Mode dashboard refresh when a dbt job completes.
+hoverSnippet: Learn how to use Zapier to trigger a Mode dashboard refresh when a dbt job completes.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
@@ -35,7 +35,7 @@ Press **Continue**, then copy the webhook URL.
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-## Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain any jobs whose completion should trigger a report refresh.
 
 Make note of the Webhook Secret Key for later.
@@ -73,7 +73,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
-In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your dbt Cloud secret), and setting the `account_username` and `report_token` variables to actual values.
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your <Constant name="cloud" /> secret), and setting the `account_username` and `report_token` variables to actual values.
 
 The code below will validate the authenticity of the request, then send a [`run report` command to the Mode API](https://mode.com/developer/api-reference/analytics/report-runs/#runReport) for the given report token.
 
@@ -95,7 +95,7 @@ hook_secret = secret_store.get('DBT_WEBHOOK_KEY')
 username = secret_store.get('MODE_API_TOKEN')
 password = secret_store.get('MODE_API_SECRET')
 
-# Validate the webhook came from dbt Cloud
+# Validate the webhook came from dbt
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:

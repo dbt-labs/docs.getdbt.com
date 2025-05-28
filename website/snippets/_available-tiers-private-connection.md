@@ -1,6 +1,7 @@
-:::info Limited to certain Enterprise tiers
 
-The private connection feature is available on the following dbt Cloud Enterprise tiers:
+:::info Available to certain Enterprise tiers
+
+The private connection feature is available on the following <Constant name="cloud" /> Enterprise tiers:
  * Business Critical 
  * Virtual Private
 

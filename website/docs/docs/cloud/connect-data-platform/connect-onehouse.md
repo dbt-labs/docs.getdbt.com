@@ -2,7 +2,7 @@
 title: "Connect Onehouse"
 id: connect-onehouse
 sidebar_label: "Connect Onehouse"
-description: "Setup instructions for connecting Onehouse to dbt Cloud"
+description: "Setup instructions for connecting Onehouse to dbt"
 pagination_next: null
 ---
 
@@ -15,7 +15,7 @@ Connect to a Onehouse SQL Cluster with the [dbt-spark](/docs/cloud/connect-data-
 
 ## Requirements
 
-* For <Constant name="cloud" />, ensure your Onehouse SQL endpoint is accessible via external DNS/IP, whitelisting dbt Cloud IPs.
+* For <Constant name="cloud" />, ensure your Onehouse SQL endpoint is accessible via external DNS/IP, whitelisting <Constant name="cloud" /> IPs.
 
 ## What works 
 

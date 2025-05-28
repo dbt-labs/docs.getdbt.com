@@ -1,6 +1,6 @@
 ---
 title: "Amazon Athena configurations"
-description: "Reference article for the Amazon Athena adapter for dbt Core and dbt Cloud."
+description: "Reference article for the Amazon Athena adapter for dbt Core and the dbt platform."
 id: "athena-configs"
 ---
 

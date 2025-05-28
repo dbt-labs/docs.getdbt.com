@@ -2,25 +2,19 @@
 title: "Navigate the interface" 
 id: canvas-interface      
 sidebar_label: "Navigate the interface" 
-description: "The dbt Canvas interface contains an operator toolbar, operators, and a canvas to help you access and transform data through a seamless drag-and-drop dbt model creation experience in dbt Cloud." 
+description: "The dbt Canvas interface contains an operator toolbar, operators, and a canvas to help you access and transform data through a seamless drag-and-drop dbt model creation experience in dbt." 
 pagination_next: "docs/cloud/use-canvas"
 pagination_prev: "docs/cloud/canvas"
 
 ---
 
-# Navigate the interface <Lifecycle status='beta, managed'/> 
+# Navigate the interface <Lifecycle status='managed, managed_plus'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 
 The <Constant name="visual_editor" /> interface contains an operator toolbar, operators, canvas, built-in AI, and more to help you access and transform data through a seamless drag-and-drop dbt model creation experience in <Constant name="cloud" />.
 
 </p>
-
-:::tip Beta feature
-<Constant name="visual_editor" /> provides users with a seamless and visual, drag-and-drop experience inside <Constant name="cloud" />. It's available in private beta for [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). 
-
-To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
-:::
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="visual_editor" /> landscape with ease.
 

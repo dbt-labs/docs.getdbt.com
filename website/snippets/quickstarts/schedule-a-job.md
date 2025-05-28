@@ -18,7 +18,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 

@@ -14,7 +14,7 @@ Use legacy SQL-based snapshot configurations with Jinja blocks in any dbt versio
 
 There are situations where you want to use the legacy syntax for [snapshots](/docs/build/snapshots) in any dbt version or release track. This page details how you can use the legacy SQL-based configurations if you need to. 
 
-In dbt v1.9, this syntax was replaced with a [YAML-based configuration](/reference/snapshot-configs#configuring-snapshots) in [dbt Cloud's "Latest" release track](/docs/dbt-versions/cloud-release-tracks). The benefits of YAML-based configurations are that the snapshots are environment aware, meaning you don't have to specify `schema` or `database`, and the syntax is more concise.
+In dbt v1.9, this syntax was replaced with a [YAML-based configuration](/reference/snapshot-configs#configuring-snapshots) in [<Constant name="cloud" />'s "Latest" release track](/docs/dbt-versions/cloud-release-tracks). The benefits of YAML-based configurations are that the snapshots are environment aware, meaning you don't have to specify `schema` or `database`, and the syntax is more concise.
 
 For new snapshots, we recommend using these latest YAML-based configs. If you'd like to move to the YAML-based configuration for existing snapshots, you can [migrate over](/reference/snapshot-configs#snapshot-configuration-migration).
 
@@ -26,7 +26,7 @@ When would you want to use the SQL-based syntax and YAML-based syntax?
   - Suitable for performing very light transformations (but creating a separate ephemeral model for transformations is recommended for better maintainability).
 
 - YAML-based syntax:
-  - Defined in `whatever_name.yml` or in the `snapshots` or `models` directory you prefer. Available in dbt Cloud's "Latest" release track and dbt v1.9 and later.
+  - Defined in `whatever_name.yml` or in the `snapshots` or `models` directory you prefer. Available in <Constant name="cloud" />'s "Latest" release track and dbt v1.9 and later.
   - Ideal for new snapshots or existing snapshots that need to be [migrated](/reference/snapshot-configs#snapshot-configuration-migration).
   - Create transformations separate from the snapshot file by creating an ephemeral model and referencing it in the snapshot using the `relation` field.
 

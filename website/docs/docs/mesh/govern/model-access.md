@@ -162,7 +162,7 @@ As we continue to develop multi-project collaboration, `access: public` will mea
 ### How do I ref a model from another project?
 
 You can `ref` a model from another project in two ways:
-1. [Project dependency](/docs/mesh/govern/project-dependencies): In dbt Cloud Enterprise, you can use project dependencies to `ref`  a model. dbt Cloud uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
+1. [Project dependency](/docs/mesh/govern/project-dependencies): In <Constant name="cloud" /> Enterprise, you can use project dependencies to `ref`  a model. <Constant name="cloud" /> uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
 2. ["Package" dependency](/docs/build/packages): Another way to `ref` a model from another project is to treat the other project as a package dependency. This requires installing the other project as a package, including its full source code, as well as its upstream dependencies.
 
 ### How do I restrict access to models defined in a package?

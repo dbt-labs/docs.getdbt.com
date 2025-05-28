@@ -1,0 +1,57 @@
+---
+title: "Supported features"
+id: "supported-features"
+description: "Feature support and parity information for the dbt Fusion engine."
+pagination_next: null
+pagination_prev: null
+---
+
+# Supported features <Lifecycle status="beta" />
+
+<IntroText>
+
+Learn about the features supported by the dbt Fusion engine, including requirements and limitations.
+
+</IntroText>
+
+import FusionBeta from '/snippets/_fusion-beta-callout.md';
+import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionA from '/snippets/_fusion-auth.md';
+
+<FusionBeta />
+
+### Parity with dbt Core
+
+Our goal is for the dbt Fusion engine to support all capabilities of the dbt Core framework, and then some. Fusion already supports many of the capabilities in <Constant name="core" /> v1.9, and we're working fast to add more.
+
+Note that we have removed some deprecated features, and introduced more-rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) for details.
+
+## Requirements
+
+To use Fusion in your dbt project, you must:
+- Use a supported data warehouse:
+  <FusionDWH /> 
+- Use a supported authentication method:
+  <FusionA />
+- Have only SQL models defined in your project. Python models are not currently supported because Fusion cannot parse these to extract dependencies (refs) on other models. <!-- [TODO: Link to dbt-fusion Python issue.] -->
+
+### Limitations
+
+If your project is using any of the features listed in the following table, you can use Fusion, but you won't be able to fully migrate all your workloads because you have:
+- Models that leverage specific materialization features may be unable to run or may be missing some desirable configurations.
+- Tooling that expects dbt Core's exact log output. Fusion's logging system is currently unstable and incomplete.
+- Workflows built around complementary features of the dbt platform (like model-level notifications, Advanced CI, and Semantic Layer) that Fusion does not yet support.
+
+:::note
+We will move quickly to implement as many of these features during the Beta period and ahead of General Availability. Read more about [the path to GA](https://docs.getdbt.com/blog/2025-05-28-dbt-fusion-engine-path-to-ga).
+:::
+
+import FusionFeatures from '/snippets/_fusion-missing-features.md';
+
+<FusionFeatures />
+
+import AboutFusion from '/snippets/_about-fusion.md';
+
+<AboutFusion />
+
+

@@ -2,21 +2,24 @@
 
 import React from 'react';
 import styles from './styles.module.css';
-import { STATUS_URLS, MANAGED, SELF_SERVICE, DEVELOPER } from './lifecycle-urls.js';
+import { STATUS_URLS, MANAGED_PLUS,MANAGED, SELF_SERVICE, DEVELOPER } from './lifecycle-urls.js';
 
 // mapping of variable names to their values (both uppercase and lowercase)
 const PLAN_VARIABLES = {
   // Uppercase
+  'MANAGED_PLUS': MANAGED_PLUS,
   'MANAGED': MANAGED,
   'SELF_SERVICE': SELF_SERVICE,
   'DEVELOPER': DEVELOPER,
   // Lowercase
+  'managed_plus': MANAGED_PLUS,
   'managed': MANAGED,
   'self_service': SELF_SERVICE,
   'developer': DEVELOPER,
 };
 
 const statusColors = {
+  [MANAGED_PLUS]: '#EBEDF0',
   [MANAGED]: '#EBEDF0',
   [SELF_SERVICE]: '#EBEDF0',
   [DEVELOPER]: '#EBEDF0',
@@ -27,6 +30,7 @@ const statusColors = {
 };
 
 const fontColors = {
+  [MANAGED_PLUS]: '#262A38',
   [MANAGED]: '#262A38',
   [SELF_SERVICE]: '#262A38',
   [DEVELOPER]: '#262A38',

@@ -1,6 +1,6 @@
 ---
-title: "Configure Git in dbt Cloud"
-description: "Learn about the Git providers supported in dbt Cloud"
+title: "Configure Git in dbt"
+description: "Learn about the Git providers supported in dbt"
 hide_table_of_contents: true
 pagination_next: "docs/cloud/git/managed-repository"
 ---
@@ -27,19 +27,19 @@ Whether you use a <Constant name="git" /> integration that natively connects wit
 
 <Card
     title="Connect to GitHub"
-    body="Learn how to connect to GitHub using dbt Cloud's native integration."
+    body="Learn how to connect to GitHub using dbt's native integration."
     link="/docs/cloud/git/connect-github"
     icon="dbt-bit"/>
 
 <Card
     title="Connect to GitLab"
-    body="Learn how to connect to GitLab using dbt Cloud's native integration."
+    body="Learn how to connect to GitLab using dbt's native integration."
     link="/docs/cloud/git/connect-gitlab"
     icon="dbt-bit"/>
 
 <Card
     title="Connect to Azure DevOps"
-    body="Learn how to connect to Azure DevOps using dbt Cloud's native integration. <br /><br />Available on dbt Cloud Enterprise plans."
+    body="Learn how to connect to Azure DevOps using dbt's native integration. <br /><br />Available on dbt Enterprise or Enterprise+ plans."
     link="/docs/cloud/git/connect-azure-devops"
     icon="dbt-bit"/>
 

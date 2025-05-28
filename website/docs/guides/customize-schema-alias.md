@@ -28,10 +28,10 @@ Different warehouses have different names for _logical databases_. The informati
 
 The following is dbt's out-of-the-box default behavior:
 
-- The database where the object is created is defined by the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments) or in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) in dbt Core.
+- The database where the object is created is defined by the database configured at the [environment level in <Constant name="cloud" />](/docs/dbt-cloud-environments) or in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) in dbt Core.
 
 - The schema depends on whether you have defined a [custom schema](/docs/build/custom-schemas) for the model:
-    - If you haven't defined a custom schema, dbt creates the object in the default schema. In dbt Cloud this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
+    - If you haven't defined a custom schema, dbt creates the object in the default schema. In <Constant name="cloud" />, this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
     - If you define a custom schema, dbt concatenates the schema mentioned earlier with the custom one.
     - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
     - Note that for automated CI jobs, the schema name derives from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`.
@@ -88,7 +88,7 @@ We often leverage the following when customizing these macros:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/custom-schema-env-var.png" title="Custom schema environmental variables target name." />
 
-To allow the database/schema/object name to depend on the current branch, you can use the out of the box `DBT_CLOUD_GIT_BRANCH` environment variable in dbt Cloud [special environment variables](/docs/build/environment-variables#special-environment-variables).
+To allow the database/schema/object name to depend on the current branch, you can use the out-of-the-box `DBT_CLOUD_GIT_BRANCH` environment variable in <Constant name="cloud" /> [special environment variables](/docs/build/environment-variables#special-environment-variables).
 
 
 ## Example use cases

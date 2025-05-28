@@ -1,9 +1,9 @@
 ---
-title: "Quickstart for dbt Cloud and Snowflake"
+title: "Quickstart for dbt and Snowflake"
 id: "snowflake"
 level: 'Beginner'
 icon: 'snowflake'
-tags: ['dbt Cloud','Quickstart','Snowflake']
+tags: ['dbt platform','Quickstart','Snowflake']
 hide_table_of_contents: true
 ---
 
@@ -54,7 +54,7 @@ import LoadData from '/snippets/_load-data.md';
 
 <LoadData/>
 
-## Connect dbt Cloud to Snowflake
+## Connect dbt to Snowflake
 
 There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
@@ -85,15 +85,15 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="cloud" /> account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt - Account Info" />
 
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into <Constant name="cloud" /> automatically.
 
 6. Go to the left side menu and click your account name, then select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt - Snowflake Project Overview" />
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt Cloud - Update Database and Warehouse" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
 
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">
@@ -103,7 +103,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt - Choose Snowflake Connection" />
 
 4. Enter your **Settings** for Snowflake with: 
     * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
@@ -114,7 +114,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt - Snowflake Account Settings" />
 
 5. Enter your **Development Credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
@@ -123,7 +123,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="cloud" /> will make to build models concurrently.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake Development Credentials" />
 
 6. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your Snowflake account.
 7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
@@ -131,7 +131,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </TabItem>
 </Tabs>
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
@@ -154,7 +154,7 @@ If you receive an insufficient privileges error on Snowflake at this point, it m
 
 To troubleshoot, use a role with sufficient privileges (like `ACCOUNTADMIN`) and run the following commands in Snowflake. 
 
-**Note**: Replace `snowflake_role_name` with the role you intend to use. If you launched dbt Cloud with Snowflake Partner Connect, use `pc_dbt_role` as the role.
+**Note**: Replace `snowflake_role_name` with the role you intend to use. If you launched <Constant name="cloud" /> with Snowflake Partner Connect, use `pc_dbt_role` as the role.
 
 ```
 grant all on database raw to role snowflake_role_name;

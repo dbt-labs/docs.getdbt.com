@@ -1,34 +1,26 @@
 ---
-title: "About cost management in dbt Cloud"
-description: "Manage your data warehouse costs in dbt Cloud"
-unlisted: true
+title: "About cost management in dbt"
+description: "Manage your data warehouse costs in dbt"
 sidebar_label: About cost management
 ---
 
-# About cost management in dbt Cloud <Lifecycle status='beta, managed' />
+# About cost management in dbt <Lifecycle status='preview,managed,managed_plus' />
 
-:::note beta documentation
-
-This documentation is for a beta feature. The title, sections, and content within this doc may change frequently during the beta period. The final product may be split into multiple pages, and existing sections may be renamed. This page is intended for beta users only. Please do not share outside of your organization. 
-
-Cost management tools are currently only available for Snowflake.
-
-:::
-
-The cost management dashboard in dbt Cloud give you valuable insight into how your dbt projects impact your data warehouse costs. They will help you optimize your warehouse spending by visualizing how features, including models, tests, snapshots, and other resources, influence costs over time so that you can take action, report to stakeholders, and optimize development workflows.
+The cost management dashboard in <Constant name="cloud" /> gives you valuable insight into how your dbt projects impact your data warehouse costs. They will help you optimize your warehouse spending by visualizing how features, including models, tests, snapshots, and other resources, influence costs over time so that you can take action, report to stakeholders, and optimize development workflows.
 
 Currently, only Snowflake is supported. 
 
-This document will cover setup in Snowflake, dbt Cloud, and how to use the cost management dashboard to view your insights.  
+This document will cover setup in Snowflake, <Constant name="cloud" />, and how to use the cost management dashboard to view your insights.  
 
 ## Prerequisites
 
 To configure the cost management tools, you must have the following:
 
-- Proper [permission set](/docs/cloud/manage-access/enterprise-permissions) to configure connections in dbt Cloud (such as account admin or project creator).
+- Proper [permission set](/docs/cloud/manage-access/enterprise-permissions) to configure connections in <Constant name="cloud" /> (such as account admin or project creator).
 - Proper [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges) in Snowflake to create a user and assign them database access.
 - A supported data warehouse. Note: Only Snowflake is supported at this time. More warehouses coming soon!
-- An Enterprise dbt Cloud account
+- A <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
+
 
 ## Set up in Snowflake
 
@@ -82,13 +74,13 @@ GRANT ROLE dbt_cost_management TO USER dbt_cost_user;
 
 ```
 
-If you prefer, you can also configure the user for key pair authentication instead of using a username and password with dbt Cloud. 
+If you prefer, you can also configure the user for key pair authentication instead of using a username and password with <Constant name="cloud" />. 
 
 You must repeat the user creation process in each Snowflake warehouse you want to monitor. 
 
-Once the user is created and assigned proper privileges, it's time to configure the connection in dbt Cloud.
+Once the user is created and assigned proper privileges, it's time to configure the connection in <Constant name="cloud" />.
 
-## Set up in dbt Cloud
+## Set up in dbt
 
 Configuring the cost management features requires both a connection and a user component:
 
@@ -98,7 +90,7 @@ Configuring the cost management features requires both a connection and a user c
 
 ### Connection setup
 
-To configure the metadata connection in dbt Cloud:
+To configure the metadata connection in dbt:
 
 1. Navigate to **Account Settings** and click **Connections**.
 2. Click the connection associated with the data warehouse(s) you configured in the Snowflake setup. Do not click **Edit**. This is for the broader settings and will prevent the metadata section from being altered. 
@@ -109,7 +101,7 @@ To configure the metadata connection in dbt Cloud:
     <Lightbox src="/img/docs/dbt-cloud/cost-management/configure-metadata.png" width="60%" title="Fill out the fields with the appropriate information."/>
 
 6. Click **Save**.
-7. Repeat this process for each dbt Cloud warehouse connection you want to monitor. 
+7. Repeat this process for each <Constant name="cloud" /> warehouse connection you want to monitor. 
 
 After the setup, it will be a few hours before the initial sync completes and information begins to populate the dashboard. 
 
@@ -131,7 +123,7 @@ By assigning these permission set to the users or groups you want to have access
 
 ## Cost management dashboard
 
-The cost management dashboard can be accessed anywhere in dbt Cloud from the left-side menu. Once enabled, **Cost management** will be an option below the **Account home** feature at the top of the sidebar. Users who don't have the proper permissions will not see the option.
+The cost management dashboard can be accessed anywhere in <Constant name="cloud" /> from the left-side menu. Once enabled, **Cost management** will be an option below the **Account home** feature at the top of the sidebar. Users who don't have the proper permissions will not see the option.
 
 Users with the following [permission sets](/docs/cloud/manage-access/enterprise-permissions) will be able to access the cost management dashboard:
 - Account Admin

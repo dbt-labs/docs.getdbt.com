@@ -5,6 +5,8 @@ tags: [Semantic Layer]
 sidebar_label: "Tableau"
 ---
 
+# Tableau <Lifecycle status="self_service,managed,managed_plus" />
+
 The Tableau integration allows you to use worksheets to query the <Constant name="semantic_layer" /> directly and produce your dashboards with trusted data. It provides a live connection to the <Constant name="semantic_layer" /> through Tableau Desktop or Tableau Server.
 
 ## Prerequisites
@@ -14,7 +16,7 @@ The Tableau integration allows you to use worksheets to query the <Constant name
   - Note that Tableau Online does not currently support custom connectors natively. If you use Tableau Online, you will only be able to access the connector in Tableau Desktop.
 - Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
 - You need your <Constant name="cloud" /> host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
-- You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
+- You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
 
 import SLCourses from '/snippets/_sl-course.md';
 

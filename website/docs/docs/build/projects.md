@@ -75,11 +75,11 @@ To use the Project subdirectory option in <Constant name="cloud" />, follow thes
 
 5. Click **Save** when you've finished.
 
-After configuring the Project subdirectory option, dbt Cloud will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no `dbt_project.yml` file in the Project subdirectory, you will be prompted to initialize the dbt project.
+After configuring the Project subdirectory option, <Constant name="cloud" /> will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no `dbt_project.yml` file in the Project subdirectory, you will be prompted to initialize the dbt project.
 
 :::info Project support in <Constant name="cloud" /> plans
 
-Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while [Enterprise plans](https://www.getdbt.com/contact) allow multiple projects and [cross-project references](/best-practices/how-we-mesh/mesh-1-intro) with <Constant name="mesh" />.
+Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while [Enterprise-tier plans](https://www.getdbt.com/contact) allow multiple projects and [cross-project references](/best-practices/how-we-mesh/mesh-1-intro) with <Constant name="mesh" />.
 
 :::
 

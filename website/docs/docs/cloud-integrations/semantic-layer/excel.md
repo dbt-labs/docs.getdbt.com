@@ -6,6 +6,8 @@ tags: [Semantic Layer]
 sidebar_label: "Microsoft Excel"
 ---
 
+# Microsoft Excel <Lifecycle status="self_service,managed,managed_plus" />
+
 The <Constant name="semantic_layer" /> offers a seamless integration with Excel Online and Desktop through a custom menu. This add-on allows you to build <Constant name="semantic_layer" /> queries and return data on your metrics directly within Excel.
 
 ## Prerequisites
@@ -13,7 +15,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Excel 
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You need a Microsoft Excel account with access to install add-ons.
 - You have a [<Constant name="cloud" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a <Constant name="cloud" /> account.
-- You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
+- You must have a <Constant name="cloud" /> Starter, Enterprise, or Enterprise+ [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 :::tip
 
@@ -27,7 +29,7 @@ The <Constant name="semantic_layer" /> Microsoft Excel integration is available 
 
 1. In Excel, authenticate with your host, <Constant name="cloud" /> environment ID, and service token.
    - Access your Environment ID, Host, and URLs in your <Constant name="semantic_layer" /> settings. Generate a service token in the <Constant name="semantic_layer" /> settings or API tokens settings
-   <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
+   <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
 2. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the **Cancel** button.
 

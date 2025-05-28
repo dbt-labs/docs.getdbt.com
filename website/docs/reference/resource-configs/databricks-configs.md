@@ -32,7 +32,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 <VersionBlock firstVersion="1.9">
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
 
 | Option    | Description| Required?     | Model support   | Example      |
 |-------------|--------|-----------|-----------------|---------------|
@@ -65,7 +65,7 @@ For full details, see the [documentation of Databricks behavior flags](/docs/ref
 
 ### Python submission methods
 
-In dbt-databricks v1.9 (try it now in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run

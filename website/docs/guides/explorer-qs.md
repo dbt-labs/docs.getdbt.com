@@ -1,12 +1,12 @@
 ---
 title: "Quickstart for the dbt Explorer workshop"
 id: "explorer-quickstart"
-description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart dbt Explorer"
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Explorer', 'Snowflake', 'dbt Cloud','Quickstart']
-keywords: ['dbt Explorer','Mesh','dbt Cloud', 'Snowflake', 'Multi-Project']
+tags: ['Explorer', 'Snowflake', 'dbt platform','Quickstart']
+keywords: ['dbt Explorer','Mesh','dbt platform', 'Snowflake', 'Multi-Project']
 level: 'Beginner'
 ---
 

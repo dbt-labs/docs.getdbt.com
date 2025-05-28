@@ -1,7 +1,7 @@
 ---
-title: "Account integrations in dbt Cloud"
+title: "Account integrations in dbt"
 sidebar_label: "Account integrations" 
-description: "Learn how to configure account integrations for your dbt Cloud account."
+description: "Learn how to configure account integrations for your dbt account."
 ---
 
 The following sections describe the different **Account integrations** available from your <Constant name="cloud" /> account under the account **Settings** section.
@@ -20,7 +20,7 @@ To configure a <Constant name="git" /> account integration:
 
    - [GitHub](/docs/cloud/git/connect-github)
    - [GitLab](/docs/cloud/git/connect-gitlab)
-   - [Azure DevOps](/docs/cloud/git/connect-azure-devops) <Lifecycle status="managed" />
+   - [Azure DevOps](/docs/cloud/git/connect-azure-devops) <Lifecycle status="managed,managed_plus" />
 
 You can connect your <Constant name="cloud" /> account to additional <Constant name="git" /> providers by importing a git repository from any valid git URL. Refer to [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) for more information.
 
@@ -40,11 +40,11 @@ To configure an OAuth account integration:
 
 ## AI integrations
 
-Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app) (both available on [<Constant name="cloud" /> Enterprise plans](https://www.getdbt.com/pricing)).
+Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app).
 
 <Constant name="cloud" /> supports AI integrations for dbt Labs-managed OpenAI keys, Self-managed OpenAI keys, or Self-managed Azure OpenAI keys.
 
-Note, if you bring-your-own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />.
+Note, if you bring-your-own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />. Bringing your own provider is available for Enterprise or Enterprise+ plans.
 
 :::info
 <Constant name="cloud" />'s AI is optimized for OpenAIs gpt-4o. Using other models can affect performance and accuracy, and functionality with other models isn't guaranteed.
@@ -67,6 +67,7 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   </TabItem>
 
   <TabItem value="openai" label="OpenAI">
+  Bringing your own OpenAI key is available for Enterprise or Enterprise+ plans.
 
   1. Select the toggle for **OpenAI** to use your own OpenAI key.
   2. Enter the API key.
@@ -76,6 +77,8 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   </TabItem>
 
   <TabItem value="azure" label="Azure OpenAI">
+  Bringing your own Azure OpenAI key is available for Enterprise or Enterprise+ plans.
+
   To learn about deploying your own OpenAI model on Azure, refer to [Deploy models on Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai). Configure credentials for your Azure OpenAI deployment in <Constant name="cloud" /> in the following two ways:
     - [From a Target URI](#from-a-target-uri)
     - [Manually providing the credentials](#manually-providing-the-credentials)

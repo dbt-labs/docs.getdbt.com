@@ -113,7 +113,7 @@ A column name or expression that uniquely identifies each record in the inputs o
 * In an incremental model, dbt replaces the old row (like a merge key or upsert).
 * In a snapshot, dbt keeps history, storing multiple rows for that same `unique_key` as it evolves over time.
 
-In dbt Cloud "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
+In <Constant name="cloud" /> "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 
 :::caution 
 

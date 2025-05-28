@@ -1,5 +1,5 @@
 ---
-title: "Project state in dbt Cloud"
+title: "Project state in dbt"
 ---
 
 <Constant name="cloud" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.

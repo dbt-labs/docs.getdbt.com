@@ -15,12 +15,14 @@ For all code contributions to dbt, we ask that contributors complete and sign a 
 
 - [Individual Contributor License Agreement v1.0](https://docs.google.com/forms/d/e/1FAIpQLScfOV7K4enYRHozrDRP6BBIXjOij-JDGca6WBTHyP_ANXSqlg/viewform?usp=sf_link)
 - [Software Grant and Corporate Contributor License Agreement v1.0](https://docs.google.com/forms/d/e/1FAIpQLScDSTwGIlVyGWCMMvmszaXSE5IhIIRyeLQkgWf1-CSC2RnLww/viewform?usp=sf_link)
+- [Licenses FAQ](http://www.getdbt.com/licenses-faq)
 
 ## For Lawyers
 
 Our individual and corporate CLAs are based on the Contributor License Agreements published by the [Apache Software Foundation](http://www.apache.org/), with modifications:
 - [Individual Contributor License Agreement ("Agreement") V2.0](http://www.apache.org/licenses/icla.txt)
 - [Software Grant and Corporate Contributor License Agreement ("Agreement") v r190612](http://www.apache.org/licenses/cla-corporate.txt)
+- [Licenses FAQ](http://www.getdbt.com/licenses-faq)
 
 
 If you have questions about these CLAs, please contact us at support@getdbt.com.

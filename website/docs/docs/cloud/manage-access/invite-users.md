@@ -1,18 +1,18 @@
 ---
-title: "Invite users to dbt Cloud"
-description: "Learn how to manually invite users to dbt Cloud"
+title: "Invite users to dbt"
+description: "Learn how to manually invite users to dbt"
 id: "invite-users"
 sidebar: "Invite users"
 ---
 
-<Constant name="cloud" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="cloud" /> customers on Teams or Enterprise plans (Developer plans are limited to a single user).
+<Constant name="cloud" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="cloud" /> customers on Starter, Enterprise, and Enterprise+ plans.
 
 ## Prerequisites
 
 You must have proper permissions to invite new users:
 
-- [**Teams accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
-- [**Enterprise accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
+- [**Starter accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
+- [**Enterprise-tier accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
 - The admin inviting the users must have a `developer` or `IT` license.
 
 ## Invite new users

@@ -5,6 +5,8 @@ description: "Configuring AWS PrivateLink for Snowflake"
 sidebar_label: "AWS PrivateLink for Snowflake"
 ---
 
+# Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />
+
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -36,7 +38,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 1. Open a support case with Snowflake to allow access from the <Constant name="cloud" /> AWS or Entra ID account.
 - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
 - Provide them with your <Constant name="cloud" /> account ID along with any other information requested in the article.
-  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS dbt Cloud multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support)._
+  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support)._
 - You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
@@ -54,14 +56,14 @@ Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
     - AWS: US, EMEA, or AU
     - Azure: EMEA only
 ```
-_*By default dbt Cloud will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
+_*By default, <Constant name="cloud" /> will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## Create Connection in dbt Cloud
+## Create Connection in dbt
 
 Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink. 
 
@@ -90,7 +92,7 @@ Open the Snowflake UI and take the following steps:
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
 
-9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from dbt Cloud.
+9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from <Constant name="cloud" />.
 
 10. Add the new rule to the allowed list and click **Update Network Policy**.
 

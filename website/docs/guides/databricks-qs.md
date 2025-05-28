@@ -1,10 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud and Databricks"
+title: "Quickstart for dbt and Databricks"
 id: "databricks"
 level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Quickstart','Databricks']
+tags: ['platform', 'Quickstart','Databricks']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -161,7 +161,7 @@ If you get a session error and don’t get redirected to this page, you can go b
     grant all privileges on schema default to users;
     ```
 
-## Connect dbt Cloud to Databricks
+## Connect dbt to Databricks
 
 There are two ways to connect <Constant name="cloud" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Databricks trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
@@ -216,7 +216,7 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
 10. Complete the on-screen instructions on the getdbt.com website to create your trial <Constant name="cloud" /> account.
 
-## Set up a dbt Cloud managed repository
+## Set up a dbt managed repository
 
 <Snippet path="tutorial-managed-repo" />
 

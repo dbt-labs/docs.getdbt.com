@@ -7,7 +7,7 @@ hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core','dbt Cloud']
+tags: ['Migration', 'dbt Core','dbt platform']
 level: 'Intermediate'
 ---
 
@@ -45,7 +45,7 @@ For more information on defaults, see [Caveats](/docs/core/connect-data-platform
 If you use dbt Core, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library called `databricks-sql-connector`.
 
 
-## Migrate your dbt projects in dbt Cloud
+## Migrate your dbt projects in dbt
 
 You can migrate your projects to the Databricks-specific adapter from the generic Apache Spark adapter. If you're using <Constant name="core" />, then skip to Step 4.
 

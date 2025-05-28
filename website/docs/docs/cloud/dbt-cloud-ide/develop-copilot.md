@@ -4,7 +4,7 @@ sidebar_label: "Develop with dbt Copilot"
 description: "Use dbt Copilot to generate documentation, tests, semantic models, and sql code from scratch, giving you the flexibility to modify or fix generated code." 
 ---
 
-# Develop with dbt Copilot <Lifecycle status="managed" />
+# Develop with dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
 <IntroText>
 

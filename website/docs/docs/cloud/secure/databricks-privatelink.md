@@ -6,6 +6,8 @@ sidebar_label: "AWS PrivateLink for Databricks"
 pagination_next: null
 ---
 
+# Configuring Databricks PrivateLink <Lifecycle status="managed_plus" />
+
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
@@ -43,7 +45,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
     :::
 
-## Create Connection in dbt Cloud
+## Create Connection in dbt
 
 Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in <Constant name="cloud" />:
 

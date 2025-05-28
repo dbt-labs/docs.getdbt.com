@@ -6,31 +6,30 @@ hide_table_of_contents: true #For the sake of the tables on this page
 pagination_next: null
 ---
 
+# Enterprise permissions <Lifecycle status="managed,managed_plus" />
+
 import Permissions from '/snippets/_enterprise-permissions-table.md';
 import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 <SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
-The <Constant name="cloud" /> Enterprise plan supports a number of pre-built permission sets to
-help manage access controls within a <Constant name="cloud" /> account. See the docs on [access
-control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
-control (RBAC).
+The <Constant name="cloud" /> Enterprise and Enterprise+ plans support a number of pre-built permission sets to help manage access controls within a <Constant name="cloud" /> account. See the docs on [access control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access control (RBAC).
 
 
 ## Permission sets
 
-The following permission sets are available for assignment in <Constant name="cloud" /> Enterprise accounts. They can be granted to <Constant name="cloud" /> groups and then to users. A <Constant name="cloud" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
+The following permission sets are available for assignment in all <Constant name="cloud" /> Enterprise-tier accounts. They can be granted to <Constant name="cloud" /> groups and then to users. A <Constant name="cloud" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
-Access to dbt Cloud features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
+Access to <Constant name="cloud" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
 <Expandable alt_header="Account admin">
 
-The Account admin permission set is the highest level of access and control over your dbt Cloud account and projects. We recommend limiting the number of users and groups assigned the account admin permission set.
+The Account admin permission set is the highest level of access and control over your <Constant name="cloud" /> account and projects. We recommend limiting the number of users and groups assigned the account admin permission set.
 
 Notable features:
 - Account admin is an account-level set.
 - Unrestricted access to every feature.
-- The default permissions for every user who creates a new dbt Cloud account.
+- The default permissions for every user who creates a new <Constant name="cloud" /> account.
 - The default permissions assigned to the `Owner` group.
 
 </Expandable>
@@ -59,7 +58,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Billing admin">
 
-The Billing admin permission set can review product usage information that impacts the final billing of dbt Cloud (for example, models run).
+The Billing admin permission set can review product usage information that impacts the final billing of <Constant name="cloud" /> (for example, models run).
 
 Notable features:
 - Billing admin is an account-level set.
@@ -70,12 +69,12 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Database admin">
 
-Database admins manage the connections and configurations between dbt Cloud and the underlying databases. 
+Database admins manage the connections and configurations between <Constant name="cloud" /> and the underlying databases. 
 
 Notable features: 
 - Database admin is a project-level set. 
 - Can set up and maintain database connections, environment variables, and <Constant name="semantic_layer" /> configs.
-- Helpful for scenarios where your data warehouse admins only need access to dbt Cloud to configure connections. 
+- Helpful for scenarios where your data warehouse admins only need access to <Constant name="cloud" /> to configure connections. 
 - Read-only access to Git repo, job, and run settings. 
 - Can access dbt Explorer.
 
@@ -106,7 +105,7 @@ Notable features:
 
 </Expandable>
 <Expandable alt_header="Job admin">
-Job admin is an administrative permission set for users who create, run, and manage jobs in dbt Cloud.
+Job admin is an administrative permission set for users who create, run, and manage jobs in <Constant name="cloud" />.
 
 Notable features:
 - Job admin is a project-level set.
@@ -125,23 +124,23 @@ Notable features:
 - Job runner is a project-level set.
 - Can run jobs.
 - Has read-only access to jobs, including status and results.
-- No other access to dbt Cloud features. 
+- No other access to <Constant name="cloud" /> features. 
 
 </Expandable>
 <Expandable alt_header="Job viewer">
 
-Job viewer enables users to monitor and review job executions within dbt Cloud. Users with this role can see jobs’ status, logs, and outcomes but cannot initiate or modify them. 
+Job viewer enables users to monitor and review job executions within <Constant name="cloud" />. Users with this role can see jobs’ status, logs, and outcomes but cannot initiate or modify them. 
 
 Notable features:
 - Job viewer is a project-level set.
 - Read-only access to job results, status, and logs.
-- No other access to dbt Cloud features. 
+- No other access to <Constant name="cloud" /> features. 
 - Can access dbt Explorer.
 
 </Expandable>
 
 <Expandable alt_header="Manage marketplace apps">
-Manage marketplace apps is a specialized permission set associated with dbt Cloud marketplace apps. Usually implemented for the Snowflake Native App.
+Manage marketplace apps is a specialized permission set associated with <Constant name="cloud" /> marketplace apps. Usually implemented for the Snowflake Native App.
 
 Notable features:
 - Manage marketplace apps is an account-level set.
@@ -157,7 +156,7 @@ Notable features:
 - Metadata is a project-level set.
 - Grants read-only access to metadata related to dbt models, runs, sources, and tests.
 - No access to modify, execute, or manage dbt jobs, repositories, or users.
-- No other access to dbt Cloud features.
+- No other access to <Constant name="cloud" /> features.
 
 </Expandable>
 <Expandable alt_header="Project creator">
@@ -174,7 +173,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Security admin">
 
-Security admins have limited access to the security settings and policies for the dbt Cloud account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. This permission set is frequently paired with the [IT license-type](/docs/cloud/manage-access/seats-and-users#licenses). 
+Security admins have limited access to the security settings and policies for the <Constant name="cloud" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. This permission set is frequently paired with the [IT license-type](/docs/cloud/manage-access/seats-and-users#licenses). 
 
 Notable features:
 - Security admin is an account-level set. 
@@ -191,7 +190,7 @@ A specialized permission set with strict access to only query the <Constant name
 Notable features:
 - <Constant name="semantic_layer" /> is a project-level set.
 - Can only query <Constant name="semantic_layer" />.
-- No other access to dbt Cloud features. 
+- No other access to <Constant name="cloud" /> features. 
 
 </Expandable>
 <Expandable alt_header="Stakeholder">
@@ -217,7 +216,7 @@ Notable features:
 
 </Expandable>
 <Expandable alt_header="Viewer">
-The Account Viewer permissions set provides read-only access to the dbt Cloud account. Useful for any persona who needs insights into your dbt Cloud account without access to create or change configurations.
+The Account Viewer permissions set provides read-only access to the <Constant name="cloud" /> account. Useful for any persona who needs insights into your <Constant name="cloud" /> account without access to create or change configurations.
 
 The Viewer permission set is frequently paired with the [Read-only license-type](/docs/cloud/manage-access/seats-and-users).
 
@@ -230,12 +229,12 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Webhook">
 
-The Webhook permissions set manages webhooks in the dbt Cloud.
+The Webhook permissions set manages webhooks in the <Constant name="cloud" />.
 
 Notable features:
 - Webhooks is a project-level set.
 - Create, edit, and manage webhooks.
-- No other access to dbt Cloud features.
+- No other access to <Constant name="cloud" /> features.
 
 </Expandable>
 

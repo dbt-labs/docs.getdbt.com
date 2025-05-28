@@ -6,7 +6,7 @@ displayText: Debugging errors
 hoverSnippet: Learn about errors and the art of debugging those errors.
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Troubleshooting', 'dbt Core', 'dbt Cloud']
+tags: ['Troubleshooting', 'dbt Core', 'dbt platform']
 level: 'Beginner'
 ---
 

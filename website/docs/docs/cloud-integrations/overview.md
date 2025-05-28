@@ -1,6 +1,6 @@
 ---
-title: "About dbt Cloud integrations"
-sidebar_label: "About dbt Cloud integrations"
+title: "About dbt integrations"
+sidebar_label: "About dbt integrations"
 pagination_prev: null
 pagination_next: "docs/cloud-integrations/downstream-exposures"
 hide_table_of_contents: true
@@ -21,7 +21,7 @@ Many data applications integrate with <Constant name="cloud" />, enabling you to
 <Card
     title="dbt Snowflake Native App (preview)"
     link="/docs/cloud-integrations/snowflake-native-app"
-    body="Learn about the dbt Snowflake Native App and how you can access key dbt Cloud features within the Snowflake platform."
+    body="Learn about the dbt Snowflake Native App and how you can access key dbt features within the Snowflake platform."
     icon="snowflake"/>
 
 <Card

@@ -182,7 +182,7 @@ To build `saved_queries`:
 
 Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
 
-Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler).
+Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler).
 
 The following is an example of a saved query with an export:
 

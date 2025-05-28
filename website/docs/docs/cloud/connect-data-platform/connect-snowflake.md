@@ -73,9 +73,9 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
 
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a dbt Cloud project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="cloud" /> project.
 
-1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
+1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in <Constant name="cloud" />:
 
    ```sql
    alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';   
@@ -100,7 +100,7 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 
 ### Snowflake OAuth
 
-**Available in:** Development environments, Enterprise plans only
+**Available in:** Development environments, Enterprise-tier plans only
 
 The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in <Constant name="cloud" />. 
@@ -129,18 +129,18 @@ If you're receiving a `Could not deserialize key data` or `JWT token` error, ref
 
 <DetailsToggle alt_header="Error: `Could not deserialize key data`">
 
-Possible cause and solution for the error "Could not deserialize key data" in dbt Cloud.
+Possible cause and solution for the error "Could not deserialize key data" in <Constant name="cloud" />.
 - This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
 
 **Solution**:
-- You can copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud.
+- You can copy the key from its source and paste it into a text editor to verify it before using it in <Constant name="cloud" />.
 
 </DetailsToggle>
 
 <DetailsToggle alt_header="Error: `JWT token`">
 
-Possible cause and solution for the error "JWT token" in dbt Cloud.
-- This could be a transient issue between Snowflake and dbt Cloud. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud.
+Possible cause and solution for the error "JWT token" in <Constant name="cloud" />.
+- This could be a transient issue between Snowflake and <Constant name="cloud" />. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in <Constant name="cloud" />.
 - The public key was not entered correctly in Snowflake.
 
 **Solutions**

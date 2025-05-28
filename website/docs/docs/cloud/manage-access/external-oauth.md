@@ -1,13 +1,13 @@
 ---
 title: "Set up external OAuth"
 id: external-oauth
-description: "Configuration instructions for dbt Cloud and external OAuth connections"
+description: "Configuration instructions for dbt and external OAuth connections"
 sidebar_label: "Set up external OAuth"
 pagination_next: null
 pagination_prev: null
 ---
 
-# Set up external OAuth for development environments <Lifecycle status="managed" />
+# Set up external OAuth <Lifecycle status="managed, managed_plus" />
 
 :::note 
 
@@ -15,8 +15,7 @@ This feature is currently only available for Okta and Entra ID identity provider
 
 :::
 
-
-<Constant name="cloud" /> Enterprise supports OAuth authentication with external providers. When **External OAuth** is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP). External OAuth authorizes users to access multiple applications, including <Constant name="cloud" />, without sharing their static credentials with the service. This makes the process of authenticating for development environments easier for the user and provides an additional layer of security to your <Constant name="cloud" /> account. 
+<Constant name="cloud" /> Enterprise and Enterprise+ plans support OAuth authentication with external providers. When **External OAuth** is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP). External OAuth authorizes users to access multiple applications, including <Constant name="cloud" />, without sharing their static credentials with the service. This makes the process of authenticating for development environments easier for the user and provides an additional layer of security to your <Constant name="cloud" /> account. 
 
 ## Getting started
 
@@ -87,13 +86,13 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 ## Okta
 
-### 1. Initialize the dbt Cloud settings
+### 1. Initialize the dbt settings
 
 1. In your <Constant name="cloud" /> account, navigate to **Account settings** —> **Integrations**.
 2. Scroll down to **Custom integrations** and click **Add integrations**
 3. Leave this window open. You can set the **Integration type** to Okta and note the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
-<Lightbox src="/img/docs/dbt-cloud/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt Cloud." />
+<Lightbox src="/img/docs/dbt-cloud/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt." />
 
 ### 2. Create the Okta app
 
@@ -106,7 +105,7 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 4. In the **Grant type** section, enable the **Refresh token** option.
 5. Scroll down to the **Sign-in redirect URIs** option. You’ll need to paste the redirect URI you gathered from <Constant name="cloud" /> in step 1.3.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt Cloud value." />
+<Lightbox src="/img/docs/dbt-cloud/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt value." />
 
 6. Save the app configuration. You’ll come back to it, but move on to the next steps for now.
 
@@ -190,7 +189,7 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 
 </Tabs>
 
-### 5. Configuring the integration in dbt Cloud
+### 5. Configuring the integration in dbt
 
 1. Navigate back to the <Constant name="cloud" /> **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields.
    1. `Integration name`: Give the integration a descriptive name that includes identifying information about the Okta environment so future users won’t have to guess where it belongs.
@@ -202,14 +201,14 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 2. **Save** the configuration
 
 
-### 6. Create a new connection in dbt Cloud
+### 6. Create a new connection in dbt
 
 
 1. Navigate the **Account settings** and click **Connections** from the menu. Click **Add connection**.
 2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `OAuth method`, select the external OAuth you just created.
 
 
-<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt Cloud with the External OAuth showing as an option." />
+<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt with the External OAuth showing as an option." />
 
 
 3. Scroll down to the **External OAuth** configurations box and select the config from the list.
@@ -221,7 +220,7 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 
 ## Entra ID
 
-### 1. Initialize the dbt Cloud settings
+### 1. Initialize the dbt settings
 
 1. In your <Constant name="cloud" /> account, navigate to **Account settings** —> **Integrations**.
 2. Scroll down to **Custom integrations** and click **Add integrations**.
@@ -322,7 +321,7 @@ Configure the Entra ID application and in accordance with your Amazon configs.
 </Tabs>
 
 
-### 6. Configuring the integration in dbt Cloud
+### 6. Configuring the integration in dbt
 
 1. Navigate back to the <Constant name="cloud" /> **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields. There will be some back-and-forth between the Entra ID account and <Constant name="cloud" />.
 2. `Integration name`: Give the integration a descriptive name that includes identifying information about the Entra ID environment so future users won’t have to guess where it belongs.

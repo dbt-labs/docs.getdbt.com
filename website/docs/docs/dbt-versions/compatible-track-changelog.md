@@ -1,6 +1,6 @@
 ---
-title: "dbt Cloud Compatible Track - Changelog"
-sidebar_label: "Compatible Track Changelog"
+title: "dbt platform compatible track - changelog"
+sidebar_label: "Compatible track changelog"
 description: "The Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
 ---
 
@@ -14,15 +14,15 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 
 Release date: May 19, 2025
 
-### dbt Cloud 
+### dbt cloud-based platform
 
-These changes reflect capabilities that are only available in dbt Cloud.
+These changes reflect capabilities that are only available in the dbt platform.
 
 ### Fixes
 
 - Get environment variables correctly from the environment for publication artifacts
 
-### Under the Hood
+### Under the hood
 
 - Create JSON schemas for PublicationArtifact and ResolvedProjectsArtifact
 

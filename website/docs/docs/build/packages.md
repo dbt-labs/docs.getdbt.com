@@ -174,7 +174,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable. 
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
 
 
 <File name="packages.yml">
@@ -254,7 +254,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info <Constant name="cloud" /> usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
 :::
 
 In GitHub:

@@ -31,7 +31,7 @@ New features and functionality available in <Constant name="core" /> v1.10
 
 Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 
-### Integrating dbt Core artifacts with dbt Cloud projects
+### Integrating dbt Core artifacts with dbt projects
 
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud"/>. This enhances hybrid <Constant name="core"/>/<Constant name="cloud"/> deployments by:
 

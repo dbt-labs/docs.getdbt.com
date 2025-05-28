@@ -1,12 +1,12 @@
 ---
-title: 'Move from dbt Core to dbt Cloud: What you need to know'
+title: 'Move from dbt Core to the dbt platform: What you need to know'
 id: core-cloud-2
-description: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
-hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
+description: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
+hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt Cloud']
-keywords: ['dbt Core','dbt Cloud','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt Core','dbt platform']
+keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
 ---
 
@@ -19,7 +19,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
-<Expandable alt_header="What is dbt Cloud and dbt Core?">
+<Expandable alt_header="What are dbt and dbt Core?">
 
    - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
      - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
@@ -87,51 +87,51 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 <Expandable alt_header="User roles and responsibilities"> 
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
-- **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in dbt Cloud, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
+- **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in <Constant name="cloud" />, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in <Constant name="cloud" />, training on [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
 - **Data consumers:** Discover data insights by using [dbt Explorer](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
 </Expandable>
 
 <Expandable alt_header="Onboarding order"> 
 
-If you have multiple teams of dbt developers, think about how to start your onboarding sequence for dbt Cloud:
-- Start with downstream (like business-embedded teams) who may benefit from the dbt Cloud IDE as dev experience (less technical users) and sharing features (like auto-deferral and dbt Explorer) to share with their stakeholders, moving to more technical teams later.
-- Consider setting up a [CI job](/docs/deploy/ci-jobs) in dbt Cloud (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
+If you have multiple teams of dbt developers, think about how to start your onboarding sequence for <Constant name="cloud" />:
+- Start with downstream (like business-embedded teams) who may benefit from the <Constant name="cloud_ide" /> as dev experience (less technical users) and sharing features (like auto-deferral and dbt Explorer) to share with their stakeholders, moving to more technical teams later.
+- Consider setting up a [CI job](/docs/deploy/ci-jobs) in <Constant name="cloud" /> (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
 
 </Expandable>
 
 <Expandable alt_header="Analyze current workflows, review processes, and team structures">
 
-Discover how dbt Cloud can help simplify development, orchestration, and testing:
-- **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the <Constant name="cloud_cli" /> (command line interface or code editor) or dbt Cloud IDE (browser-based).
+Discover how <Constant name="cloud" /> can help simplify development, orchestration, and testing:
+- **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the <Constant name="cloud_cli" /> (command line interface or code editor) or <Constant name="cloud_ide" /> (browser-based).
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up [a CI job](/docs/deploy/ci-jobs) to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged.
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 
-  - For the most flexibility, use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
+  - For the most flexibility, use the [<Constant name="cloud" /> API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
 - **Continuous integration (CI)**: Use [CI jobs](/docs/deploy/ci-jobs) to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production.
-  - For many teams, dbt Cloud CI represents a major improvement compared to their previous development workflows.
+  - For many teams, <Constant name="cloud" /> CI represents a major improvement compared to their previous development workflows.
 - **How are you defining tests today?**: While testing production data is important, it’s not the most efficient way to catch logical errors introduced by developers You can use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
 
 </Expandable>
 
 <Expandable alt_header="Understand access control">
 
-Transition to dbt Cloud's [access control](/docs/cloud/manage-access/about-user-access) mechanisms to ensure security and proper access management. dbt Cloud administrators can use dbt Cloud's permission model to control user-level access in a dbt Cloud account:
+Transition to <Constant name="cloud" />'s [access control](/docs/cloud/manage-access/about-user-access) mechanisms to ensure security and proper access management. <Constant name="cloud" /> administrators can use <Constant name="cloud" />'s permission model to control user-level access in a <Constant name="cloud" /> account:
 - **License-based access controls:** Users are configured with account-wide license types. These licenses control the things a user can do within the application: view project metadata, develop changes within those projects, or administer access to those projects.
-- **Role-based Access Control (RBAC):** Users are assigned to *groups* with specific permissions on specific projects or all projects in the account. A user may be a member of multiple groups, and those groups may have permissions on multiple projects. <Lifecycle status="managed" />
+- **Role-based Access Control (RBAC):** Users are assigned to *groups* with specific permissions on specific projects or all projects in the account. A user may be a member of multiple groups, and those groups may have permissions on multiple projects. <Lifecycle status="managed,managed_plus" />
 
 </Expandable>
 
 <Expandable alt_header="Manage environments"> 
 
-If you require isolation between production and pre-production data environments due to sensitive data, dbt Cloud can support Development, Staging, and Production data [environments](/docs/dbt-cloud-environments).
+If you require isolation between production and pre-production data environments due to sensitive data, <Constant name="cloud" /> can support Development, Staging, and Production data [environments](/docs/dbt-cloud-environments).
 
 This provides developers with the benefits of an enhanced workflow while ensuring isolation between Staging and Production data, and locking down permissions on Prod.
 
 </Expandable>
 
-## Move to dbt Cloud
+## Move to dbt
 
 This guide is your roadmap to help you think about migration strategies and what moving from <Constant name="core" /> to <Constant name="cloud" /> could look like.
 
@@ -151,7 +151,7 @@ After [setting the foundations of <Constant name="cloud" />](https://docs.getdbt
 
 ## Transition and training
 
-Once you’ve confirmed that dbt Cloud orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you’re still using an external orchestrator (such as Airflow), and you’ve swapped out `dbt-core` execution for dbt Cloud execution (through the [API](/docs/dbt-cloud-apis/overview)).
+Once you’ve confirmed that <Constant name="cloud" /> orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you’re still using an external orchestrator (such as Airflow), and you’ve swapped out `dbt-core` execution for <Constant name="cloud" /> execution (through the [API](/docs/dbt-cloud-apis/overview)).
 
 Familiarize your team with <Constant name="cloud" />'s [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
 - **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
@@ -164,18 +164,18 @@ Familiarize your team with <Constant name="cloud" />'s [features](/docs/cloud/ab
 
 Now that you’ve chosen <Constant name="cloud" /> as your platform, you’ve unlocked the power of streamlining collaboration, enhancing workflow efficiency, and leveraging powerful [features](/docs/cloud/about-cloud/dbt-cloud-features) for analytics engineering teams. Here are some additional features you can use to unlock the full potential of <Constant name="cloud" />:
 
-- **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/cloud/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in dbt Cloud). <Lifecycle status="managed" />
-- **dbt Cloud APIs:** Use dbt Cloud's robust [APIs](/docs/dbt-cloud-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="self_service,managed" />
+- **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/cloud/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in <Constant name="cloud" />). <Lifecycle status="managed,managed_plus" />
+- **<Constant name="cloud" /> APIs:** Use <Constant name="cloud" />'s robust [APIs](/docs/dbt-cloud-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [<Constant name="cloud" /> Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="self_service,managed" />
 - **dbt Explorer**: Use [dbt Explorer](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](https://docs.getdbt.com/terms/data-lineage) to gain a better understanding of its latest production state. (Once you have a successful job in a Production environment). <Lifecycle status="self_service,managed" />
 - **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models that can then be queried in your [business intelligence (BI) tool](/docs/cloud-integrations/avail-sl-integrations). This means no more inconsistent metrics — there’s now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="self_service,managed" />
-- **dbt Mesh:** Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to share data models across organizations, enabling data teams to collaborate on shared data models and leverage the work of other teams. <Lifecycle status="managed" />
+- **dbt Mesh:** Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to share data models across organizations, enabling data teams to collaborate on shared data models and leverage the work of other teams. <Lifecycle status="managed,managed_plus" />
 
 ### Additional help
 
 - **dbt Learn courses**: Access our free [Learn <Constant name="cloud" />](https://learn.getdbt.com) video courses for on-demand training.
 - **dbt Community:** Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - **dbt Support team:** Our [dbt Support team](/docs/dbt-support) is always available to help you troubleshoot your <Constant name="cloud" /> issues. Create a support ticket in <Constant name="cloud" /> and we’ll be happy to help!
-- **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="managed" />
+- **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="managed,managed_plus" />
 
 ## Summary
 

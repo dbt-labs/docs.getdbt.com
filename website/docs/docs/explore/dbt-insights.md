@@ -2,12 +2,11 @@
 title: "About dbt Insights"
 description: "Learn how to query data and perform exploratory data analysis using dbt Insights"
 sidebar_label: "About dbt Insights"
-unlisted: true
 tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
-# About dbt Insights <Lifecycle status="beta,managed" />
+# About dbt Insights <Lifecycle status="preview,managed,managed_plus" />
 
 <IntroText>
 Learn how to query data with <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
@@ -37,7 +36,7 @@ Some example use cases include:
 
 ## Prerequisites 
 
-- Have a <Constant name="cloud" /> [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
+- Be on a <Constant name="cloud" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
 - Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide).

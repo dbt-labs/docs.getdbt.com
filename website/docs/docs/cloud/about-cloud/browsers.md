@@ -1,7 +1,7 @@
 ---
 title: "Supported browsers"
 id: "browsers"
-description: "dbt Cloud supports the latest browsers like Chrome and Firefox."
+description: "dbt supports the latest browsers like Chrome and Firefox."
 pagination_next: null
 ---
 

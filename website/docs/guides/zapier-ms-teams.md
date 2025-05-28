@@ -1,8 +1,8 @@
 ---
 title: "Post to Microsoft Teams when a job finishes"
 id: zapier-ms-teams
-description: Use Zapier and dbt Cloud webhooks to post to Microsoft Teams when a job finishes running.
-hoverSnippet: Learn how to use Zapier with dbt Cloud webhooks to post in Microsoft Teams when a job finishes running.
+description: Use Zapier and dbt webhooks to post to Microsoft Teams when a job finishes running.
+hoverSnippet: Learn how to use Zapier with dbt webhooks to post in Microsoft Teams when a job finishes running.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
@@ -43,7 +43,7 @@ Press **Continue**, then copy the webhook URL.
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-### 3. Configure a new webhook in dbt Cloud
+### 3. Configure a new webhook in dbt
 
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose either **Run completed** or **Run errored**, but not both, or you'll get double messages when a run fails.
 
@@ -68,7 +68,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
-In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your dbt Cloud secret.
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="cloud" /> secret.
 
 The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by <Constant name="core" />.
 
@@ -87,7 +87,7 @@ secret_store = StoreClient('YOUR_SECRET_HERE')
 hook_secret = secret_store.get('DBT_WEBHOOK_KEY')
 api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 
-# Validate the webhook came from dbt Cloud
+# Validate the webhook came from dbt
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
@@ -103,7 +103,7 @@ commands_to_skip_logs = ['dbt source', 'dbt docs']
 run_id = hook_data['runId']
 account_id = full_body['accountId']
 
-# Fetch run info from the dbt Cloud Admin API
+# Fetch run info from the dbt Admin API
 url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 run_data_response = requests.get(url, headers=headers)

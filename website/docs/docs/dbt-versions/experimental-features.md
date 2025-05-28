@@ -1,7 +1,7 @@
 ---
-title: "Preview new and experimental features in dbt Cloud"
+title: "Preview new and experimental features in the dbt platform"
 id: "experimental-features"
-sidebar_label: "Preview new dbt Cloud features"
+sidebar_label: "Preview new dbt platform features"
 description: "Gain early access to many new dbt Labs experimental features by enabling this in your profile."
 pagination_next: null
 ---

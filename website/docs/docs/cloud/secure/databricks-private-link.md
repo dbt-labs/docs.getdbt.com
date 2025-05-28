@@ -11,7 +11,7 @@ import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-The following steps will walk you through the setup of a Databricks Azure Private Link endpoint in the dbt Cloud multi-tenant environment.
+The following steps will walk you through the setup of a Databricks Azure Private Link endpoint in the <Constant name="cloud" /> multi-tenant environment.
 
 <CloudProviders type='Databricks'/>
 
@@ -28,15 +28,15 @@ The following steps will walk you through the setup of a Databricks Azure Privat
     - Databricks instance name:
     - Azure Databricks Workspace URL (e.g. adb-################.##.azuredatabricks.net)
     - Databricks Azure resource ID:
-    - dbt Cloud multi-tenant environment: EMEA
+    - <Constant name="cloud" /> multi-tenant environment: EMEA
     - Azure region: Region that hosts your Databricks workspace (like, WestEurope, NorthEurope)
     ```
 5. Once our Support team confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and browse to **Networking** > **Private Endpoint Connections**. Then, highlight the `dbt` named option and select **Approve**.
 
 
-## Create connection in dbt Cloud
+## Create connection in dbt
 
-Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in dbt Cloud:
+Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in <Constant name="cloud" />:
 
 1. Navigate to **Settings** → **Create new project** → select **Databricks**. 
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

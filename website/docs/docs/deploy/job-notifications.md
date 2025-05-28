@@ -1,7 +1,7 @@
 ---
 title: "Job notifications"
 id: "job-notifications"
-description: "Set up notifications in dbt Cloud to receive email or Slack alerts about job run status."
+description: "Set up notifications in dbt to receive email or Slack alerts about job run status."
 ---
 
 

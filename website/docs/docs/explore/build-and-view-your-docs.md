@@ -1,5 +1,5 @@
 ---
-title: "Build and view your docs with dbt Cloud"
+title: "Build and view your docs with dbt"
 id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 pagination_next: null
@@ -7,7 +7,7 @@ pagination_next: null
 
 <Constant name="cloud" /> enables you to generate documentation for your project and data platform. The documentation is automatically updated with new information after a fully successful job run, ensuring accuracy and relevance.
 
-The default documentation experience in <Constant name="cloud" /> is [<Constant name="explorer" />](/docs/explore/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state.
+The default documentation experience in <Constant name="cloud" /> is [<Constant name="explorer" />](/docs/explore/explore-projects), available on [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing/). Use [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state.
 
 Refer to [documentation](/docs/build/documentation) for more configuration details.
 
@@ -58,7 +58,7 @@ You configure project documentation to generate documentation when the job you s
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" width="100%" title="Configuring project documentation"/>
 
 :::tip Use <Constant name="explorer" /> for a richer documentation experience
-For a  richer and more interactive experience, try out [<Constant name="explorer" />](/docs/explore/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the <Constant name="cloud_ide" />, model performance, project recommendations, and more.
+For a richer and more interactive experience, try out [<Constant name="explorer" />](/docs/explore/explore-projects), available on [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the <Constant name="cloud_ide" />, model performance, project recommendations, and more.
 :::
 
 ### Generating documentation

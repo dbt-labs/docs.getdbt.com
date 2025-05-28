@@ -9,13 +9,13 @@ pagination_prev: null
 
 <Card
     title="Personal access tokens"
-    body="Learn about user tokens and how to use them to execute queries against the dbt Cloud API."
+    body="Learn about user tokens and how to use them to execute queries against the dbt API."
     link="/docs/dbt-cloud-apis/user-tokens"
     icon="dbt-bit"/>
 
 <Card
     title="Service account tokens"
-    body="Learn how to use service account tokens to securely authenticate with the dbt Cloud API for system-level integrations."
+    body="Learn how to use service account tokens to securely authenticate with dbt APIs for system-level integrations."
     link="/docs/dbt-cloud-apis/service-tokens"
     icon="dbt-bit"/>
 

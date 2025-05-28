@@ -3,10 +3,10 @@
 
 | Connectivity Type                                 | AWS MT | AWS ST | Azure MT | Azure ST |
 |:--------------------------------------------------|:------:|:------:|:--------:|:--------:|
-| <b>INGRESS (to dbt Cloud)</b>                     |        |        |          |          |
-| Private dbt Cloud Ingress                         |   ❌   |   ✅   |    ❌    |    ✅    |
-| Dual dbt Cloud Ingress                            |   ❌   |   ✅   |    ❌    |    ❌    |
-| <b>EGRESS - DW (from dbt Cloud)</b>               |        |        |          |          |
+| <b>INGRESS (to <Constant name="cloud" />)</b>                     |        |        |          |          |
+| Private <Constant name="cloud" /> Ingress                         |   ❌   |   ✅   |    ❌    |    ✅    |
+| Dual <Constant name="cloud" /> Ingress                            |   ❌   |   ✅   |    ❌    |    ❌    |
+| <b>EGRESS - DW (from <Constant name="cloud" />)</b>               |        |        |          |          |
 | Snowflake                                         |   ✅   |   ✅   |    ✅    |    ✅    |
 | - Snowflake Internal Stage                        |   ❌   |   ❌   |    ✅    |    ✅    |
 | Databricks                                        |   ✅   |   ✅   |    ✅    |    ✅    |
@@ -20,7 +20,7 @@
 | Azure Fabric (cross-tenant not supported by Azure)|   -    |   -    |    ❌    |    ❌    |
 | Google BigQuery                                   |   -    |   -    |    -     |    -     |
 | Teradata - Database Server                        |   ✅   |   ✅   |    ✅    |    ✅    |
-| <b>EGRESS - VCS (from dbt Cloud)</b>              |        |        |          |          |
+| <b>EGRESS - VCS (from <Constant name="cloud" />)</b>              |        |        |          |          |
 | GitHub Enteprise Server                           |   ✅   |   ✅   |    ✅    |    ✅    |
 | GitLab Enterprise                                 |   ✅   |   ✅   |    ✅    |    ✅    |
 | BitBucket                                         |   ✅   |   ✅   |    ✅    |    ✅    |

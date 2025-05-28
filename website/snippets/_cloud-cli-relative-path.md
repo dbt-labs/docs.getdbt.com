@@ -1,4 +1,4 @@
-The dbt Cloud CLI doesn't currently support relative paths in the [`packages.yml` file](/docs/build/packages). Instead, use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which supports relative paths in this scenario.
+The <Constant name="cloud_cli" /> doesn't currently support relative paths in the [`packages.yml` file](/docs/build/packages). Instead, use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which supports relative paths in this scenario.
 
 Here's an example of a [local package](/docs/build/packages#local-packages) configuration in the `packages.yml` that won't work with the <Constant name="cloud_cli" />:
 

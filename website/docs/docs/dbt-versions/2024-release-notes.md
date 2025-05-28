@@ -144,7 +144,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) for more information.
 - **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
 - **New**: We now expose the `meta` field within the [config property](/reference/resource-configs/meta) for dbt Semantic Layer metrics in the [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview) under the `meta` field.
-- **New**: Added a new command in the dbt Cloud CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
+- **New**: Added a new command in the dbt CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
 - **Enhancement**: The <Constant name="semantic_layer" /> now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for <Constant name="cloud" /> Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
 - **Fix**: Addressed a bug where unicode query filters (such as Chinese characters) were not working correctly in the <Constant name="semantic_layer" /> Tableau integration.
 - **Fix**: Resolved a bug with parsing certain private keys for BigQuery when running an export.
@@ -286,7 +286,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
 ## March 2024
 
 - **New:** The <Constant name="semantic_layer" /> services now support using Privatelink for customers who have it enabled.
-- **New:** You can now develop against and test your <Constant name="semantic_layer" /> in the Cloud CLI if your developer credential uses SSO.
+- **New:** You can now develop against and test your <Constant name="semantic_layer" /> in the dbt CLI if your developer credential uses SSO.
 - **Enhancement:** You can select entities to Group By, Filter By, and Order By.
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
@@ -407,7 +407,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
     - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
   - The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
   - Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
-  - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
+  - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt CLI
 
   January also saw some refreshed content, either aligning with new product features or requests from the community:
 

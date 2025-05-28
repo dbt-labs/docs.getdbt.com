@@ -28,18 +28,18 @@ Both development and deployment environments have a section called **General Set
 | Environment name | Production  | The environment name  | Any string! |
 | Environment type | Deployment | The type of environment | Deployment, Development|
 | Set deployment type | PROD |  Designates the deployment environment type. | Production, Staging, General | 
-| dbt version | Latest | dbt Cloud automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/cloud-release-tracks) you select. | Lastest, Compatible, Extended |
+| dbt version | Latest | <Constant name="cloud" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/cloud-release-tracks) you select. | Lastest, Compatible, Extended |
 | Only run on a custom branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom branch | dev | Custom Branch name | See below |
 
 :::note About dbt version
 
-dbt Cloud allows users to select a [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades at the cadence that makes sense for their team.
+<Constant name="cloud" /> allows users to select a [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades at the cadence that makes sense for their team.
 :::
 
 ### Custom branch behavior
 
-By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting will have slightly different behavior depending on the environment type:
+By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each <Constant name="cloud" /> Environment using the **Default to a custom branch** option. This setting will have slightly different behavior depending on the environment type:
 
 - **Development**: determines which branch in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> developers create branches from and open PRs against.
 - **Deployment:** determines the branch is cloned during job executions for each environment.
@@ -52,11 +52,11 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 Extended attributes are currently _not_ supported for SSH tunneling
 :::
 
-Extended attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
+Extended attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their <Constant name="cloud" /> Environment settings. It provides users with more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
 
 Extended attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Environment settings using a free form text box." /> <br />
 
 The following code is an example of the types of attributes you can add in the **Extended Attributes** text box:
 

@@ -1,2 +1,2 @@
 
-dbt Cloud is available in both single (virtual private) and multi-tenant configurations.
+<Constant name="cloud" /> is available in both single (virtual private) and multi-tenant configurations.

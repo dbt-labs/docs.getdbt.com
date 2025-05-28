@@ -42,7 +42,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 ## Default
 
 <VersionBlock lastVersion="1.8" >This is a required parameter, no default is provided. </VersionBlock>
-<VersionBlock firstVersion="1.9.1">In dbt Core v1.9+ and dbt Cloud "Latest" release track, this is not a required parameter. </VersionBlock>
+<VersionBlock firstVersion="1.9.1">In dbt Core v1.9+ and <Constant name="cloud" /> "Latest" release track, this is not a required parameter. </VersionBlock>
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`

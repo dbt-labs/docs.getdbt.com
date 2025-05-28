@@ -1,10 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud Canvas"
+title: "Quickstart for dbt Canvas"
 id: "canvas"
 level: 'Beginner'
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['Visual Editor','Canvas','Analyst', 'dbt Cloud','model']
+tags: ['Visual Editor','Canvas','Analyst', 'dbt platform','model']
 recently_updated: true
 ---
 
@@ -32,7 +32,7 @@ import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
 :::note Prerequisite for using the Jaffle Shop
 
-The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) GitHub repo sample project. You can use your own data, but the Jaffle Shop offers a full-featured project useful for testing dbt features. Ask your dbt Cloud administrator about importing it to a project in your environment. They must also execute `dbt run` on the Jaffle Shop project in your `Production` environment before you begin, or you will be unable to reference the source models.
+The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) GitHub repo sample project. You can use your own data, but the Jaffle Shop offers a full-featured project useful for testing dbt features. Ask your <Constant name="cloud" /> administrator about importing it to a project in your environment. They must also execute `dbt run` on the Jaffle Shop project in your `Production` environment before you begin, or you will be unable to reference the source models.
 
 :::
 

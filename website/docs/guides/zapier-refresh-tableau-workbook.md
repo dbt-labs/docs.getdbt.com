@@ -1,8 +1,8 @@
 ---
 title: "Refresh Tableau workbook with extracts after a job finishes"
 id: zapier-refresh-tableau-workbook
-description: Use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
-hoverSnippet: Learn how to use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
+description: Use Zapier to trigger a Tableau workbook refresh once a dbt job completes successfully.
+hoverSnippet: Learn how to use Zapier to trigger a Tableau workbook refresh once a dbt job completes successfully.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
@@ -39,7 +39,7 @@ Press **Continue**, then copy the webhook URL.
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-## Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt
 To set up a webhook subscription for <Constant name="cloud" />, follow the instructions in [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription). For the event, choose **Run completed** and modify the **Jobs** list to include only the jobs that should trigger a report refresh.
 
 Remember to save the Webhook Secret Key for later. Paste in the webhook URL obtained from Zapier in step 2 into the **Endpoint** field and test the endpoint.

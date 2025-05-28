@@ -82,7 +82,7 @@ Generate documentation for your project by following these steps:
 dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after it's generated:
 
 - [**dbt Docs**:](/docs/build/view-documentation#dbt-docs) A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="cloud" /> Developer plans.
-- [**<Constant name="explorer" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="cloud" /> Team or Enterprise plans.
+- [**<Constant name="explorer" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 
 See [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
 
