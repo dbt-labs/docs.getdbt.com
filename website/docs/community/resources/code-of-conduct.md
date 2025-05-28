@@ -6,7 +6,7 @@ description: "Learn about the community values that shape our rules, and review 
 
 # dbt Community Code of Conduct
 
-This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (<Constant name="core" />, dbt packages, etc.), Office Hours, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
+This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (<Constant name="core" />, the <Constant name="fusion_engine" />, dbt packages, etc.), dbt Labs virtual events, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
 
 This Code of Conduct has two sections:
 
