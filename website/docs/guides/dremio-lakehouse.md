@@ -10,7 +10,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Dremio', 'dbt Core']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

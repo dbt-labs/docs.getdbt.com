@@ -109,7 +109,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/dbt-cloud-ide/lint-format) on the active file in the File Editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** <Lifecycle status="managed" /> &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that can generate documentation, tests, and semantic models for you. dbt Copilot is available in the IDE for Enterprise plans.
+5. **dbt Copilot** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that can generate documentation, tests, and semantic models for you. <Lifecycle status="self_service,managed,managed_plus" />
 
 6. **Results tab &mdash;** The Results console tab displays the most recent Preview results in tabular format. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/results-console-tab.jpg" width="90%" title="Preview results show up in the Results console tab"/>
@@ -135,7 +135,7 @@ You can open the drawer in multiple ways:
 - Typing a dbt command and pressing enter
 - Or pressing Control-backtick (or Ctrl + `)
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-inv-history-drawer.jpg" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt Cloud invocations."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-inv-history-drawer.jpg" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt invocations."/>
 
 1. **Invocation History list &mdash;** The left-hand panel of the Invocation History Drawer displays a list of previous invocations in the <Constant name="cloud_ide" />, including the command, branch name, command status, and elapsed time.
 
@@ -162,15 +162,15 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
 
 - #### File Search
   You can easily search for and navigate between files using the File Navigation menu, which can be accessed by pressing Command-O or Control-O or clicking on the 🔍 icon in the File <Constant name="explorer" />.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 - #### Global Command Palette
   The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 - #### <Constant name="cloud_ide" /> Status modal
   The <Constant name="cloud_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="cloud_ide" />. Open this by clicking on the <Constant name="cloud_ide" /> Status button.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 - #### Commit to a new branch
   Edit directly on your protected primary git branch and commit those changes to a new branch when ready.

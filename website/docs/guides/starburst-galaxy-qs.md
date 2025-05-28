@@ -1,10 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud and Starburst Galaxy"
+title: "Quickstart for dbt and Starburst Galaxy"
 id: "starburst-galaxy"
 level: 'Beginner'
 icon: 'starburst'
 hide_table_of_contents: true
-tags: ['dbt Cloud','Quickstart']
+tags: ['dbt platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -194,7 +194,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     select * from jaffle_shop.stripe_payments;
     ```
 
-## Connect dbt Cloud to Starburst Galaxy 
+## Connect dbt to Starburst Galaxy 
 
 1. Make sure you are still logged in to [Starburst Galaxy](https://galaxy.starburst.io/login).
 2. If you haven’t already, set your account’s role to accountadmin. Click your email address in the upper right corner, choose **Switch role** and select **accountadmin**. 
@@ -217,7 +217,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 11. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your Starburst Galaxy cluster.
 12. Click **Next** if the test succeeded. If it failed, you might need to check your Starburst Galaxy settings and credentials.
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing

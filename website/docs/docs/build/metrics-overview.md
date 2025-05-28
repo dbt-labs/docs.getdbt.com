@@ -50,44 +50,6 @@ metrics:
 </File>
 </VersionBlock>
 
-<!-- for v1.7 and lower -->
-
-<VersionBlock lastVersion="1.7">
-
-| Parameter | Description | Required | Type  |
-| --------- | ----------- | ---- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required | String |
-| `description` | Describe your metric.   | Optional | String |
-| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required | String |
-| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required | Dict |
-| `config` | Provide the specific configurations for your metric.   | Optional | Dict |
-| `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional | String |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required | String |
-| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional | String |
-
-Here's a complete example of the metrics spec configuration:
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-metrics:
-  - name: metric name                     ## Required
-    description: same as always           ## Optional
-    type: the type of the metric          ## Required
-    type_params:                          ## Required
-      - specific properties for the metric type
-    config: here for `enabled`            ## Optional
-    meta:
-        my_meta_direct: 'direct'           ## Optional
-    label: The display name for your metric. This value will be shown in downstream tools. ## Required
-    filter: |                             ## Optional            
-      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
-```
-</File>
-
-</VersionBlock>
-
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
@@ -309,25 +271,6 @@ filter: |
 
 filter: |  
  {{ Metric('metric_name', group_by=['entity_name']) }}  
-
-```
-</File>
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-filter: | 
-  {{ Entity('entity_name') }}
-
-filter: |  
-  {{ Dimension('primary_entity__dimension_name') }}
-
-filter: |  
-  {{ TimeDimension('time_dimension', 'granularity') }}
 
 ```
 </File>

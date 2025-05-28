@@ -7,24 +7,6 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.7">
-
- 
-| Option    | Description    | Required?  | Model support | Example     |
-|-----------|---------|-------------------|---------------|-------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).       | Optional       | SQL, Python   | `delta`   |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.   | Optional    | SQL, Python   | `/mnt/root`   |
-| partition_by   | Partition the created table by the specified columns. A directory is created for each partition.| Optional | SQL, Python   | `date_day` |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional   | SQL           | `date_day`   |
-| clustered_by   | Each partition in the created table will be split into a fixed number of buckets by the specified columns.   | Optional    | SQL, Python   | `country_code`           |
-| buckets    | The number of buckets to create while clustering  | Required if `clustered_by` is specified | SQL, Python   | `8`    |
-| tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional          | SQL, Python<sup>*</sup> | `{'this.is.my.key': 12}` |
-| compression      | Set the compression algorithm.    | Optional      | SQL, Python   | `zstd`   |
-
-\* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation. There is not yet a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8" lastVersion="1.8">
 
 1.8 introduces support for [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) at the table level, in addition to all table configuration supported in 1.7.
@@ -50,7 +32,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 <VersionBlock firstVersion="1.9">
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
 
 | Option    | Description| Required?     | Model support   | Example      |
 |-------------|--------|-----------|-----------------|---------------|
@@ -83,7 +65,7 @@ For full details, see the [documentation of Databricks behavior flags](/docs/ref
 
 ### Python submission methods
 
-In dbt-databricks v1.9 (try it now in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
@@ -989,52 +971,6 @@ snapshots:
 ```
 
 </File>
-
-<VersionBlock lastVersion="1.7">
-
-## Materialized views and streaming tables
-Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
-See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
-These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
-In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
-
-<File name='materialized_view.sql'>
-
-```sql
-{{ config(
-   materialized = 'materialized_view'
- ) }}
-```
-
-</File>
-
-or
-
-<File name='streaming_table.sql'>
-
-```sql
-{{ config(
-   materialized = 'streaming_table'
- ) }}
-```
-
-</File>
-
-When dbt detects a pre-existing relation of one of these types, it issues a `REFRESH` [command](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-refresh-full.html).
-
-### Limitations
-
-As mentioned above, support for these materializations in the Databricks adapter is still limited.
-At this time the following configuration options are not available:
-
-* Specifying a refresh schedule for these materializations
-* Specifying `on_configuration_change` settings.
-
-Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
-
-Please see the latest documentation for updates on these limitations.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.8">
 

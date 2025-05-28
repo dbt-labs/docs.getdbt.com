@@ -105,22 +105,6 @@ dbt.invoke(["list"])
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.7">
-
-```python
-from dbt.cli.main import dbtRunner
-from dbt.events.base_types import EventMsg
-
-def print_version_callback(event: EventMsg):
-    if event.info.name == "MainReportVersion":
-        print(f"We are thrilled to be running dbt{event.data.version}")
-
-dbt = dbtRunner(callbacks=[print_version_callback])
-dbt.invoke(["list"])
-```
-
-</VersionBlock>
-
 ### Overriding parameters
 
 Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.

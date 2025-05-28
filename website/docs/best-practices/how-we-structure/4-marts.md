@@ -67,7 +67,7 @@ orders_and_order_payments_joined as (
 
 )
 
-select * from orders_and_payments_joined
+select * from orders_and_order_payments_joined
 ```
 
 ```sql

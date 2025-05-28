@@ -31,7 +31,7 @@ New features and functionality available in <Constant name="core" /> v1.10
 
 Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 
-### Integrating dbt Core artifacts with dbt Cloud projects
+### Integrating dbt Core artifacts with dbt projects
 
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud"/>. This enhances hybrid <Constant name="core"/>/<Constant name="cloud"/> deployments by:
 
@@ -56,7 +56,9 @@ Starting in `v1.10`, you will receive deprecation warnings for dbt code that wil
 - Custom inputs (for example, unrecognized resource properties, configurations, and top-level keys)
 - Duplicate YAML keys in the same file
 - Unexpected jinja blocks (for example, `{% endmacro %}` tags without a corresponding `{% macro %}` tag)
+- Some `properties` are moving to `configs`
 - And more
+
 
 dbt will start raising these warnings in version `1.10`, but making these changes will not be a prerequisite for using it. We at dbt Labs understand that it will take existing users time to migrate their projects, and it is not our goal to disrupt anyone with this update. The goal is to enable you to work with more safety, feedback, and confidence going forward.
 
@@ -138,6 +140,61 @@ hello!
 </File>
 
 Moving forward, you should delete these orphaned jinja blocks.
+
+#### Properties moving to configs
+
+Some historical properties are moving entirely to configs.
+
+This will include: `freshness`, `meta`, `tags`, `docs`, `group`, and `access`
+
+If you previously set one of the impacted properties, such as `freshness`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    freshness:
+      warn_after:
+        count: 24
+        period: hour
+
+```
+
+You should now set it under `config`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    config:
+      freshness:
+        warn_after:
+          count: 24
+          period: hour
+
+```
+
+#### Custom output path for source freshness
+
+The ability to override the default path for `sources.json` via the `--output` or `-o` flags has been deprecated. You can still set the path for all artifacts in the step with `--target-path`, but will receive a warning if trying to set the path for just source freshness.
+
+#### Warn error options
+
+The `warn_error_option` options for `include` and `exclude` have been deprecated and replaced with `error` and `warn`, respectively.
+
+  ```yaml
+...
+  flags:
+    warn_error_options:
+      error: # Previously called "include"
+      warn: # Previously called "exclude"
+      silence: # To silence or ignore warnings
+        - NoNodesForSelectionCriteria
+  ```
 
 ## Quick hits
 

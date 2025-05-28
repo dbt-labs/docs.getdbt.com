@@ -1,12 +1,12 @@
 
 Permissions: 
 
-* **Account-level permissions** &mdash; Permissions related to the management of the dbt Cloud account. For example, billing and account settings.
-* **Project-level permissions** &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. 
+* **Account-level permissions** &mdash; Permissions related to the management of the <Constant name="cloud" /> account. For example, billing and account settings.
+* **Project-level permissions** &mdash; Permissions related to the projects in <Constant name="cloud" />. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. 
 
 ### Account permissions
 
-Account permission sets enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.  
+Account permission sets enable you to manage the <Constant name="cloud" /> account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.  
 
 Key:
 

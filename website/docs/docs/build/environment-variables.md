@@ -9,7 +9,7 @@ Environment variables can be used to customize the behavior of a dbt project dep
 
 :::info Environment Variable Naming and Prefixing
 
-Environment variables in dbt Cloud must be prefixed with either `DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+Environment variables in <Constant name="cloud" /> must be prefixed with either `DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
 
 :::
 
@@ -39,7 +39,7 @@ To set environment variables at the project and environment level, click **Deplo
 You'll notice there is a `Project Default` column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
 
-To the right of the `Project Default` column are all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as an example.
+To the right of the `Project Default` column are all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell <Constant name="cloud" /> to interpret an environment value differently in your Staging vs. Production environment, as an example.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
@@ -89,7 +89,7 @@ There are some known issues with partial parsing of a project and changing envir
 
 ### Handling secrets
 
-While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
+While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
@@ -100,7 +100,7 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 <Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
 
-#### dbt Cloud IDE details
+#### Studio IDE details
 
 The following environment variable is set automatically for the <Constant name="cloud_ide" />:
 
@@ -111,24 +111,24 @@ The following environment variable is set automatically for the <Constant name="
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
 
-#### dbt Cloud context
+#### dbt platform context
 
 The following environment variables are set automatically: 
 
-- `DBT_ENV` &mdash; This key is reserved for the dbt Cloud application and will always resolve to 'prod'. For deployment runs only.
-- `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the dbt Cloud environment in which `dbt` is running. 
-- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of dbt Cloud environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-cloud-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
+- `DBT_ENV` &mdash; This key is reserved for the <Constant name="cloud" /> application and will always resolve to 'prod'. For deployment runs only.
+- `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the <Constant name="cloud" /> environment in which `dbt` is running. 
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="cloud" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-cloud-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
 - `DBT_CLOUD_INVOCATION_CONTEXT` &mdash; The context type in which `dbt` is invoked. The values are `dev`, `staging`, `prod`, or `ci`. 
 
 #### Run details
 
-- `DBT_CLOUD_PROJECT_ID` &mdash; The ID of the dbt Cloud Project for this run
-- `DBT_CLOUD_JOB_ID` &mdash; The ID of the dbt Cloud Job for this run
+- `DBT_CLOUD_PROJECT_ID` &mdash; The ID of the <Constant name="cloud" /> Project for this run
+- `DBT_CLOUD_JOB_ID` &mdash; The ID of the <Constant name="cloud" /> Job for this run
 - `DBT_CLOUD_RUN_ID` &mdash; The ID of this particular run
 - `DBT_CLOUD_RUN_REASON_CATEGORY` &mdash; The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
 - `DBT_CLOUD_RUN_REASON` &mdash; The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
 - `DBT_CLOUD_ENVIRONMENT_ID` &mdash; The ID of the environment for this run
-- `DBT_CLOUD_ACCOUNT_ID` &mdash; The ID of the dbt Cloud account for this run
+- `DBT_CLOUD_ACCOUNT_ID` &mdash; The ID of the <Constant name="cloud" /> account for this run
 
 #### Git details
 
@@ -152,7 +152,7 @@ Now that you can set secrets as environment variables, you can pass git tokens i
 
 Environment variables make it possible to dynamically change the Snowflake virtual warehouse size depending on the job. Instead of calling the warehouse name directly in your project connection, you can reference an environment variable which will get set to a specific virtual warehouse at runtime. 
 
-For example, suppose you'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same dbt Cloud environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('DBT_WAREHOUSE')}}`. Then in the job settings, you can set a different value for the `DBT_WAREHOUSE` environment variable depending on the job's workload.
+For example, suppose you'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same <Constant name="cloud" /> environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('DBT_WAREHOUSE')}}`. Then in the job settings, you can set a different value for the `DBT_WAREHOUSE` environment variable depending on the job's workload.
 
 Currently, it's not possible to dynamically set environment variables across models within a single run. This is because each env_var can only have a single set value for the entire duration of the run.
 
@@ -167,14 +167,14 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 
 - You can't use them in the account/host field, but they can be used for database, warehouse, and role. For these fields, [use extended attributes](/docs/deploy/deploy-environments#deployment-connection).
 
-Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so dbt Cloud simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
+Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so <Constant name="cloud" /> simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
 :::
 
 </Expandable>
 
 <Expandable alt_header="Audit your run metadata">
 
-Here's another motivating example that uses the dbt Cloud run ID, which is set automatically at each run. This additional data field can be used for auditing and debugging:
+Here's another motivating example that uses the <Constant name="cloud" /> run ID, which is set automatically at each run. This additional data field can be used for auditing and debugging:
 
 ```sql
 

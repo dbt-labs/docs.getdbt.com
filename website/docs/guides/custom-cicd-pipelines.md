@@ -7,9 +7,8 @@ hoverSnippet: Learn version-controlled code, custom pipelines, and enhanced code
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration', 'CI']
+tags: ['dbt platform', 'Orchestration', 'CI']
 level: 'Intermediate'
-recently_updated: true
 search_weight: "heavy"
 keywords:
   - bitbucket pipeline, custom pipelines, github, gitlab, azure devops, ci/cd custom pipeline
@@ -50,13 +49,13 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 This guide provides details for multiple code hosting platforms. Where steps are unique, they are presented without a selection option. If code is specific to a platform (i.e. GitHub, GitLab, Bitbucket) you will see a selection option for each.
 
-Pipelines can be triggered by various events. The [dbt Cloud webhook](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the dbt Cloud API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
+Pipelines can be triggered by various events. The [<Constant name="cloud" /> webhook](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the <Constant name="cloud" /> API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
 
 Here’s a quick look at what this pipeline will accomplish:
 
 ![Diagram showing the pipelines to be created and the programs involved](/img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png)
 
-## Run a dbt Cloud job on merge
+## Run a dbt job on merge
 
 This job will take a bit more to setup, but is a good example of how to call the <Constant name="cloud" /> API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
@@ -68,7 +67,7 @@ If your <Constant name="git" /> provider has a native integration with <Constant
 
 The setup below shows how to call the <Constant name="cloud" /> API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
 
-### 1. Get your dbt Cloud API key
+### 1. Get your dbt API key
 
 When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
@@ -80,14 +79,14 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 - Click the *+Add* button under *Access,* and grant this token the *Job Admin* permission
 - Click *Save* and you’ll see a grey box appear with your token. Copy that and save it somewhere safe (this is a password, and should be treated as such).
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png" title="View of the dbt Cloud page where service tokens are created" width="85%" />
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png" title="View of the dbt page where service tokens are created" width="85%" />
 
 Here’s a video showing the steps as well:
 
 <WistiaVideo id="iub17te9ir" />
 
 
-### 2. Put your dbt Cloud API key into your repo
+### 2. Put your dbt API key into your repo
 
 This next part will happen in you code hosting platform. We need to save your API key from above into a repository secret so the job we create can access it. It is **not** recommended to ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines.
 
@@ -102,14 +101,14 @@ This next part will happen in you code hosting platform. We need to save your AP
 }>
 <TabItem value="github">
 
-- Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
-- Click *Settings* to open up the repository options
-- On the left click the *Secrets and variables* dropdown in the *Security* section
-- From that list, click on *Actions*
-- Towards the middle of the screen, click the *New repository secret* button
-- It will ask you for a name, so let’s call ours `DBT_API_KEY`
+- Open up your repository where you want to run the pipeline (the same one that houses your dbt project).
+- Click *Settings* to open up the repository options.
+- On the left click the *Secrets and variables* dropdown in the *Security* section.
+- From that list, click on *Actions*.
+- Towards the middle of the screen, click the *New repository secret* button.
+- It will ask you for a name, so let’s call ours `DBT_API_KEY`.
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Secret* section, paste in the key you copied from dbt Cloud
+- In the *Secret* section, paste in the key you copied from <Constant name="cloud" />.
 - Click *Add secret* and you’re all set!
 
 ** A quick note on security: while using a repository secret is the most straightforward way to setup this secret, there are other options available to you in GitHub. They’re beyond the scope of this guide, but could be helpful if you need to create a more secure environment for running actions. Checkout GitHub’s documentation on secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).*
@@ -181,7 +180,7 @@ In Bitbucket:
 </TabItem>
 </Tabs>
 
-### 3. Create script to trigger dbt Cloud job via an API call
+### 3. Create script to trigger dbt job via an API call
 
 In your project, create a new folder at the root level named `python`. In that folder, create a file named `run_and_monitor_dbt_job.py`. You'll copy/paste the contents from this [gist](https://gist.github.com/b-per/f4942acb8584638e3be363cb87769b48) into that file.
 
@@ -215,7 +214,7 @@ In order to call the <Constant name="cloud" /> API, there are a few pieces of in
 - `DBT_PROJECT_ID` - this is the number just after `projects/` in the URL
 - `DBT_PR_JOB_ID` - this is the number just after `jobs/` in the URL
 
-![Image of a dbt Cloud job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
+![Image of a dbt job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
 
 ### 4. Update your project to include the new API call
 
@@ -247,7 +246,7 @@ The YAML file will look pretty similar to our earlier job, but there is a new se
 It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 ```yaml
-name: run dbt Cloud job on push
+name: run dbt job on push
 
 # This filter says only run this job when there is a push to the main branch
 # This works off the assumption that you've restricted this branch to only all PRs to push to the default branch
@@ -259,9 +258,9 @@ on:
 
 jobs:
 
-  # the job calls the dbt Cloud API to run a job
+  # the job calls the dbt API to run a job
   run_dbt_cloud_job:
-    name: Run dbt Cloud Job
+    name: Run dbt Job
     runs-on: ubuntu-latest
 
   # Set the environment variables needed for the run
@@ -278,7 +277,7 @@ jobs:
       - uses: "actions/setup-python@v5"
         with:
           python-version: "3.9"
-      - name: Run dbt Cloud job
+      - name: Run dbt job
         run: "python python/run_and_monitor_dbt_job.py"
 ```
 
@@ -292,8 +291,8 @@ Please note that the `rules:` section now says to run **only** when there are pu
 <Tabs
   defaultValue="single-job"
   values={[
-    { label: 'Only dbt Cloud job', value: 'single-job', },
-    {label: 'Lint and dbt Cloud job', value: 'multi-job', },
+    { label: 'Only dbt job', value: 'single-job', },
+    {label: 'Lint and dbt job', value: 'multi-job', },
   ]
 }>
 <TabItem value="single-job">
@@ -313,7 +312,7 @@ variables:
 stages:
   - build
 
-# this job calls the dbt Cloud API to run a job
+# this job calls the dbt API to run a job
 run-dbt-cloud-job:
   stage: build
   rules:
@@ -352,7 +351,7 @@ lint-project:
     - python -m pip install sqlfluff==0.13.1
     - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
-# this job calls the dbt Cloud API to run a job
+# this job calls the dbt API to run a job
 run-dbt-cloud-job:
   stage: build
   rules:
@@ -374,7 +373,7 @@ Copy the below YAML file into your Azure pipeline and update the variables below
 Read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
 ```yaml
-name: Run dbt Cloud Job
+name: Run dbt Job
 
 trigger: [ main ] # runs on pushes to main
 
@@ -410,8 +409,8 @@ For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the
 <Tabs
   defaultValue="single-job"
   values={[
-    { label: 'Only dbt Cloud job', value: 'single-job', },
-    {label: 'Lint and dbt Cloud job', value: 'multi-job', },
+    { label: 'Only job', value: 'single-job', },
+    {label: 'Lint and dbt job', value: 'multi-job', },
   ]
 }>
 <TabItem value="single-job">
@@ -424,7 +423,7 @@ pipelines:
   branches:
     'main': # override if your default branch doesn't run on a branch named "main"
       - step:
-          name: 'Run dbt Cloud Job'
+          name: 'Run dbt Job'
           script:
             - export DBT_URL="https://cloud.getdbt.com" # if you have a single-tenant deployment, adjust this accordingly
             - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
@@ -452,7 +451,7 @@ pipelines:
 
     'main': # override if your default branch doesn't run on a branch named "main"
       - step:
-          name: 'Run dbt Cloud Job'
+          name: 'Run dbt Job'
           script:
             - export DBT_URL="https://cloud.getdbt.com" # if you have a single-tenant deployment, adjust this accordingly
             - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
@@ -487,33 +486,33 @@ Additionally, you’ll see the job in the run history of <Constant name="cloud" 
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png" title="dbt run on merge job in GitHub" width="80%" />
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png" title="dbt Cloud job showing it was triggered by GitHub" width="80%" />
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png" title="dbt job showing it was triggered by GitHub" width="80%" />
 
 </TabItem>
 <TabItem value="gitlab">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png" title="dbt run on merge job in GitLab" width="80%" />
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png" title="dbt Cloud job showing it was triggered by GitLab" width="80%" />
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png" title="dbt job showing it was triggered by GitLab" width="80%" />
 
 </TabItem>
 <TabItem value="ado">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="80" title="ADO-triggered job in dbt Cloud"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="80" title="ADO-triggered job in dbt"/>
 
 </TabItem>
 <TabItem value="bitbucket">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png" title="dbt run on merge job in Bitbucket" width="80%" />
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt Cloud job showing it was triggered by Bitbucket" width="80%" />
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt job showing it was triggered by Bitbucket" width="80%" />
 
 </TabItem>
 </Tabs>
 
-## Run a dbt Cloud job on pull request
+## Run a dbt job on pull request
 
 If your git provider is not one with a native integration with <Constant name="cloud" />, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a <Constant name="cloud" /> job when a pull request (PR) is created.
 
@@ -539,13 +538,13 @@ The setup for this pipeline will use the same steps as the prior page. Before mo
 For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
 
 **What is this pipeline going to do?**  
-The setup below will trigger a dbt Cloud job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
+The setup below will trigger a <Constant name="cloud" /> job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
 For example: If you open a PR, it will run the pipeline. If you then decide additional changes are needed, and commit/push to the PR branch, a new pipeline will run with the updated code.  
 
 The following variables control this job:
 
-- `DBT_JOB_BRANCH`: Tells the dbt Cloud job to run the code in the branch that created this PR
-- `DBT_JOB_SCHEMA_OVERRIDE`: Tells the dbt Cloud job to run this into a custom target schema
+- `DBT_JOB_BRANCH`: Tells the <Constant name="cloud" /> job to run the code in the branch that created this PR
+- `DBT_JOB_SCHEMA_OVERRIDE`: Tells the <Constant name="cloud" /> job to run this into a custom target schema
   - The format of this will look like: `DBT_CLOUD_PR_{REPO_KEY}_{PR_NUMBER}`
 
 ```yaml
@@ -557,7 +556,7 @@ pipelines:
   pull-requests:
     '**':
       - step:
-          name: 'Run dbt Cloud PR Job'
+          name: 'Run dbt PR Job'
           script:
             # Check to only build if PR destination is master (or other branch). 
             # Comment or remove line below if you want to run on all PR's regardless of destination branch.
@@ -590,8 +589,8 @@ Now that you have a new pipeline, it's time to run it and make sure it works. Si
 Bitbucket pipeline:
 ![dbt run on PR job in Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-run-on-pr.png)
 
-dbt Cloud job:
-![dbt Cloud job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
+dbt job:
+![<Constant name="cloud" /> job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
 
 </TabItem>
 </Tabs>

@@ -122,14 +122,6 @@ python -m pip install dbt-core dbt-ADAPTER_NAME
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.7">
-
-```shell
-python -m pip install dbt-ADAPTER_NAME
-```
-
-</VersionBlock>
-
 For example, if using Postgres:
 
 <VersionBlock firstVersion="1.8">
@@ -152,28 +144,6 @@ Plugins:
 ```
 
 All adapters build on top of `dbt-core`. Some also depend on other adapters: for example, `dbt-redshift` builds on top of `dbt-postgres`. In that case, you would see those adapters included by your specific installation, too.
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-```shell
-python -m pip install dbt-postgres
-```
-
-This will install `dbt-core` and `dbt-postgres` _only_:
-
-```shell
-$ dbt --version
-installed version: 1.0.0
-   latest version: 1.0.0
-
-Up to date!
-
-Plugins:
-  - postgres: 1.0.0
-```
-
-Some adapters depend on other adapters. For example, `dbt-redshift` builds on top of `dbt-postgres`. In that case, you would see those adapters included by your specific installation, too.
 </VersionBlock>
 
 ### Upgrade adapters
@@ -314,19 +284,5 @@ dbt --version
 
 </Expandable>
 
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-### Installing prereleases
-
-`dbt-adapters` is only compatible with dbt Core 1.8 and higher. If you're on dbt Core v1.7 or lower, follow these steps to upgrade to v1.8 or higher to install prereleases of `dbt-adapters`.
-
-```shell
-python -m pip uninstall -y dbt-adapters
-python -m pip install --upgrade --pre dbt-core dbt-common dbt-adapters
-dbt --version
-```
 
 </VersionBlock>

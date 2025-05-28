@@ -1,6 +1,6 @@
 ---
 title: "Multi-factor authentication"
-description: "Configure dbt Cloud MFA"
+description: "Configure dbt MFA"
 id: "mfa"
 sidebar: null
 ---
@@ -9,18 +9,15 @@ sidebar: null
 
 :::important
 
-
 <Constant name="cloud" /> enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access <Constant name="cloud" />.
 
 :::
 
-<Constant name="cloud" /> provides multiple options for multi-factor authentication (MFA). MFA provides an additional layer of security to username and password logins for Developer and Team plan accounts. The available MFA methods are:
+<Constant name="cloud" /> provides multiple options for multi-factor authentication (MFA), which adds an extra layer of security to username and password logins. MFA is available across <Constant name="cloud" /> plans for users with username and password logins only. The available MFA methods are:
 
 - SMS verification code (US-based phone numbers only)
 - Authenticator app
 - Webauthn-compliant security key
-
-This is available across <Constant name="cloud" /> plans for users with username and password logins only. 
 
 ## Configuration
 
@@ -28,7 +25,7 @@ You can only have one of the three MFA methods configured per user. These are en
 
 1. Navigate to the **Account settings** and under **Your profile** click on **Password & Security**. Click **Enroll** next to the preferred method.
     
-<Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt Cloud." />
+<Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt." />
 
 Choose the next steps based on your preferred enrollment selection:
 

@@ -64,27 +64,6 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 </VersionBlock> 
 
-<!-- For versions 1.7 and lower-->
-<VersionBlock firstVersion="1.7" lastVersion="1.7">
-
-| Parameter | Type    | Required | Description    |
-|-------|---------|----------|----------------|
-| `name`       | String    | Required     | Name of the saved query object.          |
-| `description`     | String      | Required     | A description of the saved query.     |
-| `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
-| `query_params`       | Structure   | Required     | Contains the query parameters. |
-| `query_params::metrics`   | List or String   | Optional    | Metrics nested with the `query_params`: a list of the metrics to be used in the query as specified in the command line interface. |
-| `query_params::group_by`    | List or String          | Optional    | Grouping nested with the `query_params`: a list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | List or String | Optional  | Conditions nested with the `query_params`: a list of strings that may include the `Dimension` or `TimeDimension` objects. |
-| `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
-| `exports::name`       | String               | Required     | Name of export object, nested within `exports`.   |
-| `exports::config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export, nested within `exports`.  |
-| `exports::config::export_as` | String    | Required     |  Specifies the type of export: table, view, or upcoming cache options. Nested within `exports` and `config`.   |
-| `exports::config::schema`   | String   | Optional    | Schema for creating the table or view, not applicable for caching. Nested within `exports` and `config`.   |
-| `exports::config::alias`  | String     | Optional    | Table alias used to write to the table or view.  This option can't be used for caching. Nested within `exports` and `config`.  |
-
-</VersionBlock>
-
 If you use multiple metrics in a saved query, then you will only be able to reference the common dimensions these metrics share in the `group_by` or `where` clauses. Use the entity name prefix with the Dimension object, like `Dimension('user__ds')`.
 
 ## Configure saved query
@@ -158,7 +137,7 @@ saved_queries:
 
 <VersionBlock firstVersion="1.8">
 
-Note, that you can set `export_as` to both the saved query and the exports [config](/reference/resource-properties/config), with the exports config value taking precedence. If a key isn't set in the exports config, it will inherit the saved query config value.
+Note that you can set `export_as` to both the saved query and the exports [config](/reference/resource-properties/config), with the exports config value taking precedence. If a key isn't set in the exports config, it will inherit the saved query config value.
 
 #### Where clause
 
@@ -177,36 +156,6 @@ filter: |
 filter: |  
   {{ Metric('metric_name', group_by=['entity_name']) }}
 ```
-</VersionBlock>
-
-<!-- For versions 1.7 and lower-->
-<VersionBlock lastVersion="1.7">
-
-In the following example, you can set the saved query in the `semantic_model.yml` file:
-
-<File name='semantic_model.yml'>
-
-```yaml
-saved_queries:
-  - name: test_saved_query
-    description: "{{ doc('saved_query_description') }}"
-    label: Test saved query
-    query_params:
-      metrics:
-        - simple_metric
-      group_by:
-        - "Dimension('user__ds')"
-      where:
-        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
-    exports:
-      - name: my_export
-        config:
-          export_as: table
-          alias: my_export_alias
-          schema: my_export_schema_name
-```
-</File>
 </VersionBlock>
 
 #### Project-level saved queries
@@ -233,7 +182,7 @@ To build `saved_queries`:
 
 Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
 
-Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler).
+Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler).
 
 The following is an example of a saved query with an export:
 

@@ -1,27 +1,28 @@
 ---
 title: "Secure your tenant"
-description: "Learn how to secure your tenant for dbt Cloud"
+description: "Learn how to secure your tenant for dbt"
 pagination_next: "docs/cloud/secure/ip-restrictions"
 pagination_prev: null
+hide_table_of_contents: true
 ---
 
 <div className="grid--3-col">
 
 <Card
     title="IP restrictions"
-    body="Learn about IP Restrictions and how it can help secure your dbt Cloud environment."
+    body="Learn about IP Restrictions and how it can help secure your dbt environment."
     link="/docs/cloud/secure/ip-restrictions"
     icon="dbt-bit"/>
 
 <Card
-    title="About PrivateLink"
-    body="Learn about PrivateLink and how it enables a private connection from any dbt Cloud multi-tenant environment to your data platform hosted on AWS using AWS PrivateLink technology."
-    link="/docs/cloud/secure/about-privatelink"
+    title="About private connectivity"
+    body="Learn about private connectivity and how it enables a secure communication from dbt environments to your data platform."
+    link="/docs/cloud/secure/about-private-connectivity"
     icon="dbt-bit"/>
 
 <Card
-    title="PrivateLink for Snowflake"
-    body="Learn how to configure PrivateLink for Snowflake."
+    title="AWS PrivateLink for Snowflake"
+    body="Learn how to configure AWS PrivateLink for Snowflake."
     link="/docs/cloud/secure/snowflake-privatelink"
     icon="dbt-bit"/>
 
@@ -29,20 +30,35 @@ pagination_prev: null
 <br />
 <div className="grid--3-col">
 <Card
-    title="PrivateLink for Databricks"
-    body="Learn how to configure PrivateLink for Databricks. "
+    title="Azure Private Link for Snowflake"
+    body="Learn how to configure Azure Private Link for Snowflake."
+    link="/docs/cloud/secure/snowflake-privatelink"
+    icon="dbt-bit"/>
+
+<Card
+    title="AWS PrivateLink for Databricks"
+    body="Learn how to configure AWS PrivateLink for Databricks. "
     link="/docs/cloud/secure/databricks-privatelink"
     icon="dbt-bit"/>
 
 <Card
-    title="PrivateLink for Redshift"
-    body="Learn how to configure PrivateLink for Redshift."
+    title="Azure Private Link for Databricks"
+    body="Learn how to configure Azure Private Link for Databricks. "
+    link="/docs/cloud/secure/databricks-privatelink"
+    icon="dbt-bit"/>
+</div>
+<br />
+<div className="grid--3-col">
+
+<Card
+    title="AWS PrivateLink for Redshift"
+    body="Learn how to configure AWS PrivateLink for Redshift."
     link="/docs/cloud/secure/redshift-privatelink"
     icon="dbt-bit"/>
 
 <Card
-    title="PrivateLink for Postgres"
-    body="Learn how to configure PrivateLink for Postgres."
+    title="AWS PrivateLink for Postgres"
+    body="Learn how to configure AWS PrivateLink for Postgres."
     link="/docs/cloud/secure/postgres-privatelink"
     icon="dbt-bit"/>
 

@@ -5,6 +5,8 @@ description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
 ---
 
+# GraphQL <Lifecycle status="self_service,managed,managed_plus" />
+
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
@@ -51,7 +53,7 @@ Authentication uses a <Constant name="cloud" /> [service account tokens](/docs/d
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 

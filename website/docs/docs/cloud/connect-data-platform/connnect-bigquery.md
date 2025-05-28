@@ -7,7 +7,7 @@ sidebar_label: "Connect BigQuery"
 
 ## Authentication
 
-dbt Cloud supports different authentication methods depending on your environment and plan type:
+<Constant name="cloud" /> supports different authentication methods depending on your environment and plan type:
 
 - Development environments support:
     - Service JSON
@@ -61,9 +61,8 @@ In addition to these fields, two other optional fields can be configured in a Bi
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
 
-### BigQuery OAuth <Lifecycle status="managed" />
-
-**Available in:** Development environments
+### BigQuery OAuth
+**Available in:** Development environments, Enterprise-tier plans only
 
 The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
 a BigQuery user without configuring the BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="cloud" />, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
@@ -80,7 +79,7 @@ If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwi
 
 **Available in:** Deployment environments
 
-The BigQuery WIF auth method permits dbt Cloud to run deployment queries as a service account without configuring a BigQuery service account keyfile in dbt Cloud. For more information on the initial configuration of a BigQuery WIF connection in dbt Cloud, please see [the docs on setting up BigQuery](https://docs.getdbt.com/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation) WIF.
+The BigQuery WIF auth method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="cloud" />, please see [the docs on setting up BigQuery](https://docs.getdbt.com/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation) WIF.
 
 
 ## Configuration
@@ -142,7 +141,7 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshhold. This configuration should be supplied as an integer number of bytes.
 
-If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in dbt cloud.
+If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in <Constant name="cloud" />.
 
 
 </Expandable>

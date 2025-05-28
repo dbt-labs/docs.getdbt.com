@@ -1,6 +1,6 @@
 ---
 title: "Amazon Athena configurations"
-description: "Reference article for the Amazon Athena adapter for dbt Core and dbt Cloud."
+description: "Reference article for the Amazon Athena adapter for dbt Core and the dbt platform."
 id: "athena-configs"
 ---
 
@@ -73,9 +73,10 @@ id: "athena-configs"
 ```yaml
   +lf_tags_config:
     enabled: true
-    tags:
-      tag1: value1
-      tag2: value2
+    config:
+      tags: # changed to config in v1.10
+        tag1: value1
+        tag2: value2
     tags_columns:
       tag1:
         value1: [ column1, column2 ]
@@ -337,8 +338,9 @@ models:
         test: value
     columns:
       - name: id
-        meta:
-          primary_key: true
+        config:
+          meta: # changed to config in v1.10
+            primary_key: true
 ```
 
 Refer to [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) for more details.

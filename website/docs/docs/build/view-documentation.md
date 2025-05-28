@@ -11,12 +11,12 @@ You can view documentation in two complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**dbt Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="cloud" /> Developer plans |
-| [**<Constant name="explorer" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Team or Enterprise plans |
+| [**<Constant name="explorer" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
 The following sections describe how to navigate your documentation in <Constant name="explorer" /> and dbt Docs.
 
-### dbt Explorer <Lifecycle status="self_service,managed" />
+### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
 
 [<Constant name="explorer" />](/docs/explore/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
 To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
@@ -67,8 +67,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 :::
 
-### dbt Explorer <Lifecycle status="self_service,managed" />
-
+### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
 
 <Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 

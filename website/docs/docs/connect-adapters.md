@@ -7,7 +7,7 @@ Adapters are an essential component of dbt. At their most basic level, they are 
 
 This section provides more details on different ways you can connect dbt to an adapter, and explains what a maintainer is.
 
-### Set up in dbt Cloud
+### Set up in dbt
 
 Explore the fastest and most reliable way to deploy dbt using <Constant name="cloud" />, a hosted architecture that runs <Constant name="core" /> across your organization. <Constant name="cloud" /> lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="cloud" /> UI.
 

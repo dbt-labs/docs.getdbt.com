@@ -1,14 +1,14 @@
 ---
 title: "APIs Overview"
-description: "Learn how dbt accounts on the Team and Enterprise plans can query the dbt Cloud APIs."
+description: "Learn how dbt accounts on the Enterprise-tier plans can query the dbt APIs."
 id: "overview"
 pagination_next: "docs/dbt-cloud-apis/user-tokens"
 pagination_prev: null
 ---
 
-# APIs overview <Lifecycle status="self_service,managed" />
+# APIs overview <Lifecycle status="managed,managed_plus" />
 
-Accounts on the _Team_ and _Enterprise_ plans can query the <Constant name="cloud" /> APIs.
+Accounts on the Enterprise and Enterprise+ plans can query the <Constant name="cloud" /> APIs.
 
 <Constant name="cloud" /> provides the following APIs:
 

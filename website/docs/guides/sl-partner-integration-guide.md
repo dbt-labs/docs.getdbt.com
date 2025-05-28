@@ -8,7 +8,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Semantic Layer','Best practices']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

@@ -1,14 +1,13 @@
 ---
-title: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake" 
+title: "Leverage dbt to generate analytics and ML-ready pipelines with SQL and Python with Snowflake" 
 id: "dbt-python-snowpark"
-description: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake"
-hoverSnippet: Learn how to leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake.
+description: "Leverage dbt to generate analytics and ML-ready pipelines with SQL and Python with Snowflake"
+hoverSnippet: Learn how to leverage dbt to generate analytics and ML-ready pipelines with SQL and Python with Snowflake.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Snowflake']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -260,7 +259,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
         <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/4-query-circuits-data.png" title="Query circuits data"/>
 
-## Configure dbt Cloud
+## Configure dbt
 
 1. We are going to be using [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up a <Constant name="cloud" /> account. Using this method will allow you to spin up a fully fledged dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [managed repository](/docs/cloud/git/managed-repository), environments, and credentials already established.
 2. Navigate out of your worksheet back by selecting **home**.
@@ -278,7 +277,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 8. You should be redirected to a <Constant name="cloud" /> registration page. Fill out the form. Make sure to save the password somewhere for login in the future.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/4-dbt-cloud-sign-up.png" title="dbt Cloud sign up"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/4-dbt-cloud-sign-up.png" title="dbt sign up"/>
 
 9. Select **Complete Registration**. You should now be redirected to your <Constant name="cloud" /> account, complete with a connection to your Snowflake account, a deployment and a development environment, and a sample job.
 

@@ -25,7 +25,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 
 <Card
     title="How to contribute"
-    body="Want to get involved? This is the place! Learn how to contribute to our open source repositories, write for the blog, speak at a meetup and more."
+    body="Want to get involved? This is the place! Learn how to contribute to our public repositories, write for the blog, speak at a meetup and more."
     link="community/contribute" icon="pencil-paper"
 />
 

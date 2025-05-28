@@ -1,11 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud and Microsoft Fabric"
+title: "Quickstart for dbt and Microsoft Fabric"
 id: "microsoft-fabric"
 level: 'Beginner'
 icon: 'fabric'
 hide_table_of_contents: true
-tags: ['dbt Cloud','Quickstart']
-recently_updated: true
+tags: ['platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -99,7 +98,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 
     <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
 
-## Connect dbt Cloud to Microsoft Fabric
+## Connect dbt to Microsoft Fabric
 
 1. Create a new project in <Constant name="cloud" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
@@ -116,7 +115,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Microsoft Fabric account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing

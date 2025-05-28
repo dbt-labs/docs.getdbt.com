@@ -71,19 +71,7 @@ The specification of which columns are defined in a model's top-level `columns` 
 - `include` is either:
   - a list of specific column names to include
   - `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
-- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`. 
-
-<VersionBlock lastVersion="1.7">
-
-:::tip
-Not to be confused with:
-
-- The [`--warn-error-options` flag](/reference/global-configs/warnings#use---warn-error-options-for-targeted-warnings), which also uses `include`/`exclude` to control which warnings are treated as errors.
-- The `--select/--exclude` [syntax](/reference/node-selection/exclude) used for model selection.
-
-These features use similar syntax but apply to different contexts (model versioning, command behavior, and model selection).
-:::
-</VersionBlock>
+- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`.
 
 <VersionBlock firstVersion="1.8">
 

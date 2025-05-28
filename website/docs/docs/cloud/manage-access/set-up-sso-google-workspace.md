@@ -1,31 +1,25 @@
 ---
 title: "Set up SSO with Google Workspace"
-description: "Learn how dbt Cloud administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt Cloud account."
+description: "Learn how dbt administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt account."
 id: "set-up-sso-google-workspace"
 ---
+
+# Set up SSO with Google Workspace <Lifecycle status="managed, managed_plus" />
 
 import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-<Constant name="cloud" /> Enterprise supports Single-Sign On (SSO) via Google GSuite. You will need
-permissions to create and manage a new Google OAuth2 application, as well as
-access to enable the Google Admin SDK. Gsuite is a component within Google
-Cloud Platform (GCP), so you will also need access to a login with permissions
-to manage the GSuite application within a GCP account.
+<Constant name="cloud" /> Enterprise-tier plans support Single-Sign On (SSO) via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Gsuite is a component within Google Cloud Platform (GCP), so you will also need access to a login with permissions to manage the GSuite application within a GCP account.
 
-Some customers choose to use different cloud providers for User and Group permission setup
-than for hosting infrastructure. For example, it's certainly possible to use GSuite to
-manage login information and Multifactor Authentication (MFA) configuration while hosting
-data workloads on AWS.
+Some customers choose to use different cloud providers for User and Group permission setup than for hosting infrastructure. For example, it's certainly possible to use GSuite to manage login information and Multifactor Authentication (MFA) configuration while hosting data workloads on AWS.
 
  Currently supported features include:
 
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This guide outlines the setup process for authenticating to <Constant name="cloud" /> with
-Google GSuite.
+This guide outlines the setup process for authenticating to <Constant name="cloud" /> with Google GSuite.
 
 ## Configuration of the GSuite organization within GCP
 
@@ -79,14 +73,13 @@ and ensure that the API is enabled.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/7f36f50-Screen_Shot_2019-12-03_at_10.15.01_AM.png" title="The 'Admin SDK' page"/>
 
-## Configuration in dbt Cloud
+## Configuration in dbt
 
 To complete setup, follow the steps below in the <Constant name="cloud" /> application.
 
 ### Supply your OAuth Client ID and Client Secret
 
-1. Navigate to the **Enterprise &gt; Single Sign On** page under Account
-Settings.
+1. Navigate to the **Enterprise &gt; Single Sign On** page under **Account settings**.
 2. Click the **Edit** button and supply the following SSO details:
     - **Log in with**: GSuite
     - **Client ID**: Paste the Client ID generated in the steps above
@@ -94,7 +87,7 @@ Settings.
     - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `dbtlabs.com`).
       Only users with an email address from this domain will be able to log into your <Constant name="cloud" />
       account using GSuite auth. Optionally, you may specify a CSV of domains
-      which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
+      which are _all_ authorized to access your <Constant name="cloud" /> account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
       Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. The `LOGIN-SLUG` must
       be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely

@@ -16,7 +16,7 @@ description: "Learn more with the FAQs about dbt Explorer, how it works, how to 
 
 <Expandable alt_header="How is dbt Explorer priced?" >
 
-<Constant name="explorer" /> is generally available to all regions and deployment types on the <Constant name="cloud" /> [Enterprise and Team plans](https://www.getdbt.com/). Certain features within <Constant name="explorer" />, such as multi-project lineage and column-level lineage, are only available on the Enterprise plan.
+<Constant name="explorer" /> is generally available to all regions and deployment types on all <Constant name="cloud" /> [Enterprise-tier and Starter plans](https://www.getdbt.com/). Certain features within <Constant name="explorer" />, such as project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans.
 
 <Constant name="explorer" /> can be accessed by users with developer and read-only seats.
 
@@ -36,7 +36,7 @@ No. <Constant name="explorer" /> and all of its features are only available as a
 
 </Expandable>
 
-<Expandable alt_header="How does dbt Explorer support dbt Cloud environments?" >
+<Expandable alt_header="How does dbt Explorer support dbt environments?" >
 
 <Constant name="explorer" /> supports a production or staging [deployment environment](/docs/deploy/deploy-environments) for each project you want to explore. It defaults to the latest production or staging state of a project. Users can only assign one production and one staging environment per <Constant name="cloud" /> project.
 
@@ -58,7 +58,7 @@ Yes. The lineage that powers <Constant name="explorer" /> is also available thro
 
 <Expandable alt_header="How does dbt Explorer integrate with third-party tools to show end-to-end lineage?" >
 
-<Constant name="explorer" /> reflects all the lineage defined within the dbt project. Our vision for <Constant name="explorer" /> is to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with dbt Cloud, all seamlessly incorporated into the lineage of the dbt Cloud project.
+<Constant name="explorer" /> reflects all the lineage defined within the dbt project. Our vision for <Constant name="explorer" /> is to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with <Constant name="cloud" />, all seamlessly incorporated into the lineage of the <Constant name="cloud" /> project.
 
 </Expandable>
 
@@ -94,7 +94,7 @@ A chart of models built by month is available in the<Constant name="cloud" /> da
 
 </Expandable>
 
-<Expandable alt_header="Can model or column descriptions be edited within dbt Cloud?" >
+<Expandable alt_header="Can model or column descriptions be edited within dbt?" >
 
 Yes. Today, you can edit descriptions in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> by changing the YAML files within the dbt project. In the future, <Constant name="explorer" /> will support more ways of editing descriptions. 
 
@@ -152,9 +152,9 @@ Read-only users can consume metadata in <Constant name="explorer" />. More bespo
 
 </Expandable>
 
-<Expandable alt_header="Does dbt Explorer require a specific dbt Cloud plan?" >
+<Expandable alt_header="Does dbt Explorer require a specific dbt plan?" >
 
-<Constant name="explorer" /> is available on the dbt Cloud Team and Enterprise plans. Certain features within <Constant name="explorer" />, like multi-project lineage and column-level lineage, are only available on the Enterprise plan. 
+<Constant name="explorer" /> is available on dbt Starter and all Enterprise plans. Certain features within <Constant name="explorer" />, like project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans. 
 
 </Expandable>
 
@@ -170,13 +170,13 @@ Yes, users with read-only access can use the <Constant name="explorer" />. Speci
 
 </Expandable>
 
-<Expandable alt_header="Is there an easy way to share useful dbt Explorer content with people outside of dbt Cloud?" >
+<Expandable alt_header="Is there an easy way to share useful dbt Explorer content with people outside of dbt?" >
 
 The ability to embed and share views is being evaluated as a potential future capability. 
 
 </Expandable>
 
-<Expandable alt_header=" Is dbt Explorer accessible from other areas inside dbt Cloud?" >
+<Expandable alt_header=" Is dbt Explorer accessible from other areas inside dbt?" >
 
 Yes, you can [access <Constant name="explorer" /> from various <Constant name="cloud" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
 

@@ -7,9 +7,8 @@ sidebar_label: "BigQuery DataFrames and dbt python"
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['BigQuery', 'Google', 'GCP', 'BigFrames','Quickstart']
-keywords: ['BigQuery','dbt', 'Google']
+keywords: ['BigQuery','dbt platform', 'Google']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

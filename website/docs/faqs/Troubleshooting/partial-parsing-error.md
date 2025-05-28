@@ -1,5 +1,5 @@
 ---
-title: "I'm getting a \"Partial parsing enabled: 1 files deleted, 0 files added, 2 files changed\" compilation error in dbt Cloud?"
+title: "I'm getting a \"Partial parsing enabled: 1 files deleted, 0 files added, 2 files changed\" compilation error in dbt?"
 description: "Delete partial_parse file"
 sidebar_label: 'Partial_parse error in the IDE'
 id: partial-parsing-error

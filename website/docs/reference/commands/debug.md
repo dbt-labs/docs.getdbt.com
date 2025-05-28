@@ -24,7 +24,7 @@ Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some fl
 
 - <Constant name="core" /> CLI: Supports all flags.
 - <Constant name="cloud_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
-- <Constant name="cloud_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your dbt Cloud environment. 
+- <Constant name="cloud_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="cloud" /> environment. 
 
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
@@ -203,7 +203,7 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in dbt Cloud IDE and dbt Core CLI
+                Available in Studio IDE and dbt Core CLI
 
  --config-dir          
                 Print a system-specific command to access
@@ -258,4 +258,4 @@ Test the connection in the <Constant name="cloud_ide" />:
 dbt debug --connection
 ```
 
-<Lightbox src="/img/reference/dbt-debug-ide.jpg" title="Test the connection in the dbt Cloud IDE" />
+<Lightbox src="/img/reference/dbt-debug-ide.jpg" title="Test the connection in the Studio IDE" />

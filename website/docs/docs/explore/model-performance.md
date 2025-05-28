@@ -4,6 +4,8 @@ sidebar_label: "Model performance"
 description: "Learn about the performance of your models so you can make improvements to save time and money."
 ---
 
+# Model performance <Lifecycle status="managed,managed_plus" />
+
 <Constant name="explorer" /> provides metadata on <Constant name="cloud" /> runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
@@ -37,4 +39,5 @@ You can view trends in execution times, counts, and failures by using the Model 
 
 Clicking on a data point reveals a table listing all job runs for that day, with each row providing a direct link to the details of a specific run.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" title="Example of the Model performance tab"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" title="Example of the Model performance tab"/> 
+

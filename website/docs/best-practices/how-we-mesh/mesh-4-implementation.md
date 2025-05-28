@@ -55,9 +55,11 @@ groups:
 
 models: 
   - name: fct_marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
   - name: stg_marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
 ```
 
 - Once you've added models to the group, you can **add [access](/docs/mesh/govern/model-access) settings to the models** based on their connections between groups, *opting for the most private access that will maintain current functionality*. This means that any model that has *only* relationships to other models in the same group should be `private` , and any model that has cross-group relationships, or is a terminal node in the group DAG should be `protected` so that other parts of the DAG can continue to reference it.
@@ -67,11 +69,13 @@ models:
 
 models: 
   - name: fct_marketing_model
-    group: marketing
-    access: protected
+    config: 
+      group: marketing # changed to config in v1.10
+      access: protected # changed to config in v1.10
   - name: stg_marketing_model
-    group: marketing
-    access: private
+    config: 
+      group: marketing # changed to config in v1.10
+      access: private # changed to config in v1.10
 ```
 
 - **Validate these groups by incrementally migrating your jobs** to execute these groups specifically via selection syntax. We would recommend doing this in parallel to your production jobs until you’re sure about them. This will help you feel out if you’ve drawn the lines in the right place.

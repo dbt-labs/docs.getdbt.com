@@ -1,7 +1,7 @@
 ---
-title: "How to upgrade a dbt Cloud account"
+title: "How to upgrade a dbt account"
 id: "cloud-upgrade-instructions"
-description: "Instructions for upgrading a dbt Cloud account after the trial ends."
+description: "Instructions for upgrading a dbt account after the trial ends."
 ---
 
 <Constant name="cloud" /> offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for <Constant name="cloud" /> admins and explains how to select a plan in order to continue using <Constant name="cloud" />. 
@@ -11,7 +11,7 @@ description: "Instructions for upgrading a dbt Cloud account after the trial end
 Before you begin: 
 - You _must_ be part of the [Owner](/docs/cloud/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
 - All amounts shown in <Constant name="cloud" /> are in U.S. Dollars (USD)   
-- When your trial expires, your account's default plan enrollment will be a Team plan.
+- When your trial expires, your account's default plan enrollment will be a Starter plan.
 
 
 
@@ -39,12 +39,12 @@ If you select a plan but have too many seats or projects for that plan (for exam
 
 <Lightbox src="/img/docs/dbt-cloud/developer-plan-allocation.png"/>
 
-### Team plan
+### Starter plan
 
-1. When your trial expires, your account's default plan enrollment will be a Team plan. 
-2. To unlock your account and continue using the Team plan, click on **Select plan** under the Team column.
+1. When your trial expires, your account's default plan enrollment will be a Starter plan. 
+2. To unlock your account and continue using the Starter plan, click on **Select plan** under the Starter column.
 3. Enter your payment information and seat purchases. Then click **Save**.
-4. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Team plan. 🎉
+4. This automatically unlocks your <Constant name="cloud" /> account, and you can now enjoy the benefits of the Starter plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/trial-team-flow.png"/>
 
@@ -52,7 +52,7 @@ If you select a plan but have too many seats or projects for that plan (for exam
 
 ### Enterprise plan
 
-1. If you're interested in our Enterprise plan, select the Enterprise tab under **Billing**.
+1. If you're interested in one of our Enterprise-tier plans, select the Enterprise tab under **Billing**.
 2. Click **Contact Sales** on the right. This opens a chat window for you to contact the <Constant name="cloud" /> Support team, who will connect you to our Sales team.
 3. Once you submit your request, our Sales team will contact you with more information. 
 
@@ -67,9 +67,9 @@ For commonly asked billings questions, refer to the <Constant name="cloud" /> [p
 <details>
   <summary>How does billing work?</summary>
 
-  Team plans are billed monthly on the credit card used to sign up, based on <a href="/docs/cloud/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> &gt; <b>Billing page</b>.
+  Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/cloud/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> &gt; <b>Billing page</b>.
 
-  Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan.
+  Enterprise-tier plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan.
 
 </details>
 <details>
@@ -83,9 +83,9 @@ For commonly asked billings questions, refer to the <Constant name="cloud" /> [p
 <details>
   <summary>Can I pay by invoice?</summary>
   
-  Currently, dbt Cloud Team plan payments must be made with a credit card, and by default they will be billed monthly based on the number of <a href="/docs/cloud/billing">developer seats and usage</a>.
+  Currently, <Constant name="cloud" /> Starter plan payments must be made with a credit card, and by default they will be billed monthly based on the number of <a href="/docs/cloud/billing">developer seats and usage</a>.
   
-  We don’t have any plans to do invoicing for Team plan accounts in the near future, but we do currently support invoices for companies on the dbt Cloud Enterprise plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.
+  We don’t have any plans to do invoicing for Starter plan accounts in the near future, but we do currently support invoices for companies on the <Constant name="cloud" /> Enterprise-tier plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.
 
 </details>
 <details>

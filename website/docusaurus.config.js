@@ -282,6 +282,13 @@ var siteSettings = {
     path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
+    [
+      'vercel-analytics',
+      {
+        debug: false,
+        mode: 'auto',
+      },
+    ],
   ],
   scripts: [
     {

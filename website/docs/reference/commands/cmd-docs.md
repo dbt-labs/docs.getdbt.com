@@ -39,7 +39,7 @@ dbt docs generate --no-compile
 
 Use the `--empty-catalog` argument to skip running the database queries to populate `catalog.json`. When this flag is provided, `dbt docs generate` will skip step (3) described above.
 
-This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project. To learn how to build your documentation in dbt Cloud, refer to [build your docs in dbt Cloud](/docs/explore/build-and-view-your-docs).
+This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project. To learn how to build your documentation in <Constant name="cloud" />, refer to [build your docs in <Constant name="cloud" />](/docs/explore/build-and-view-your-docs).
 
 **Example**:
 

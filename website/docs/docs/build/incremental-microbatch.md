@@ -107,7 +107,7 @@ customers as (
     -- this ref won't
     select * from {{ ref('customers') }}
 
-),
+)
 
 select
   page_views.id as session_id,
@@ -115,7 +115,7 @@ select
   customers.*
   from page_views
   left join customers
-    on page_views.customer_id = customer.id
+    on page_views.customer_id = customers.id
 ```
 
 </File>

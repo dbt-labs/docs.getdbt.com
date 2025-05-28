@@ -173,7 +173,7 @@ Along with adding the `authenticator` parameter, be sure to run `alter account s
 
 To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt Core versions 1.5 and 1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
 
-Starting from [dbt version 1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7), dbt introduced the ability to specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
+dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
 <VersionBlock lastVersion="1.8">
 

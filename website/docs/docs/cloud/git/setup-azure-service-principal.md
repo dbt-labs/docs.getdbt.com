@@ -1,11 +1,11 @@
 ---
 title: "Set up Azure DevOps"
 id: "setup-service-principal"
-description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt Cloud."
+description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt."
 sidebar_label: "Set up service principal"
 ---
 
-# Set up Azure DevOps <Lifecycle status="managed" />
+# Set up Azure DevOps <Lifecycle status="managed,managed_plus" />
 
 ## Service principal overview
 
@@ -104,7 +104,7 @@ Navigate to **Organization settings** --> **Microsoft Entra** --> **Connect Dire
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/add-service-principal.png" width="80%" title="Example setup with the service principal added as a user."/>
 
-## Connect your Microsoft Entra ID app to dbt Cloud
+## Connect your Microsoft Entra ID app to dbt
 
 A <Constant name="cloud" /> account admin must take the following actions.
 
@@ -121,7 +121,7 @@ To create the configuration:
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
     Client Secrets: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the expiration of the app secret, and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
-        <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt Cloud."/>
+        <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt."/>
 
 Your Microsoft Entra ID app should now be added to your <Constant name="cloud" /> Account. People on your team who want to develop in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 

@@ -4,12 +4,12 @@ id: "connect-azure-devops"
 pagination_next: "docs/cloud/git/setup-service-principal"
 ---
 
-# Connect to Azure DevOps <Lifecycle status="managed" />
+# Connect to Azure DevOps <Lifecycle status="managed,managed_plus" />
 
 <Snippet path="available-enterprise-tier-only" />
 
 
-## About Azure DevOps and dbt Cloud
+## About Azure DevOps and dbt
 
 Connect your Azure DevOps cloud account in <Constant name="cloud" /> to unlock new product experiences:
 

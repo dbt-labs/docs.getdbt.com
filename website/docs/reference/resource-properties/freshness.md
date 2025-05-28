@@ -44,7 +44,7 @@ In most cases, the `loaded_at_field` is required. Some adapters support calculat
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If `loaded_at_field` is provided, dbt will calculate freshness via a select query.
-- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters). 
+- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible. 
 <VersionBlock firstVersion="1.10"> 
 - If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom sql query.
 - If `loaded_at_query` is provided, `loaded_at_field` should not be configured.

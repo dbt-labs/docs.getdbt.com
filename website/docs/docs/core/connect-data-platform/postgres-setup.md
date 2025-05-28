@@ -118,16 +118,6 @@ fi
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.7">
-
-To ensure your dbt installation uses `psycopg2`, prefix all `dbt-postgres` installation commands with `DBT_PSYCOPG2_NAME=psycopg2`.
-For example:
-```bash
-DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
-```
-
-</VersionBlock>
-
 Installing `psycopg2` often requires OS level dependencies.
 These dependencies may vary across operating systems and architectures.
 

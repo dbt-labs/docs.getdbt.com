@@ -85,7 +85,8 @@ resource_type:
     # Optional: Add the following specific properties for models
     columns:
       - name: column_name
-        tags: <string> | [<string>]
+        config:
+          tags: <string> | [<string>] # changed to config in v1.10
         tests:
           test-name:
             config:
@@ -351,23 +352,28 @@ version: 2
 
 exposures:
   - name: my_exposure
-    tags: ['exposure_tag']
+    config:
+      tags: ['exposure_tag'] # changed to config in v1.10
     ...
 
 sources:
   - name: source_name
-    tags: ['top_level']
+    config:
+      tags: ['top_level'] # changed to config in v1.10
 
     tables:
       - name: table_name
-        tags: ['table_level']
+        config:
+          tags: ['table_level'] # changed to config in v1.10
 
         columns:
           - name: column_name
-            tags: ['column_level']
+            config:
+              tags: ['column_level'] # changed to config in v1.10
             tests:
               - unique:
-                  tags: ['test_level']
+                config:
+                  tags: ['test_level'] # changed to config in v1.10
 ```
 
 </File>

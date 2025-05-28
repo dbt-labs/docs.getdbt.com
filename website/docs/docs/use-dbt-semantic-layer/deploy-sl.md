@@ -1,11 +1,13 @@
 ---
 title: "Deploy your metrics"
 id: deploy-sl
-description: "Deploy the dbt Semantic Layer in dbt Cloud by running a job to materialize your metrics."
+description: "Deploy the dbt Semantic Layer in dbt by running a job to materialize your metrics."
 sidebar_label: "Deploy your metrics"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/exports"
 ---
+
+# Deploy your metrics <Lifecycle status="self_service,managed,managed_plus" />
 
 <!-- The below snippet can be found in the following file locations in the docs code repository) 
 

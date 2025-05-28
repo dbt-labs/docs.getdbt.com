@@ -292,12 +292,6 @@ Note that, if you select to store test failures:
 
 ## New `data_tests:` syntax
 
-<VersionBlock lastVersion="1.7">
-
-In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information, select version v1.8 from the documentation navigation menu.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8">
   
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 

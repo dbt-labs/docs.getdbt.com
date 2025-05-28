@@ -1,12 +1,12 @@
 ---
 title: "Hybrid setup"
 sidebar_label: "Hybrid setup"
-description: "Learn how to set up hybrid projects in dbt Cloud."
+description: "Learn how to set up hybrid projects in the dbt platform."
 pagination_next: "docs/deploy/deployment-tools"
 pagination_prev: "docs/deploy/hybrid-projects"
 ---
 
-# Hybrid setup <Lifecycle status='beta,managed'/>
+# Hybrid setup <Lifecycle status='managed_plus'/>
 
 <IntroText>
 Set up Hybrid projects to upload <Constant name="core" /> artifacts into <Constant name="cloud" /> for better collaboration and visibility.
@@ -37,7 +37,7 @@ Make sure to enable the hybrid projects toggle in <Constant name="cloud" />’s 
 
 This step is optional and and only needed if you want to share your <Constant name="core" /> models with other <Constant name="cloud" /> projects using the [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) feature.
 
-Before connecting your dbt Core project to a dbt Cloud project, make sure models that you want to share have `access: public` in their model configuration. This setting makes those models visible to other dbt Cloud projects for better collaboration, such as [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref).
+Before connecting your dbt Core project to a <Constant name="cloud" /> project, make sure models that you want to share have `access: public` in their model configuration. This setting makes those models visible to other <Constant name="cloud" /> projects for better collaboration, such as [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref).
 
 1. The easiest way to set this would be in your `dbt_project.yml` file, however you can also set this in the following places:
    - `dbt_project.yml` (project-level)
@@ -139,10 +139,10 @@ Once you have the values from the previous step, you can prepare your <Constant 
     DBT_CLOUD_ACCOUNT_ID=1 DBT_CLOUD_ENVIRONMENT_ID=123 dbt run
    ```
 
-6. After the run completes, you should see a `Artifacts uploaded successfully to artifact ingestion API: command run completed successfully` message and a run in dbt Cloud under your production environment.
+6. After the run completes, you should see a `Artifacts uploaded successfully to artifact ingestion API: command run completed successfully` message and a run in <Constant name="cloud" /> under your production environment.
 
-### Review artifacts in dbt Cloud
-Now that you've uploaded dbt Core artifacts into dbt Cloud and executed a `dbt run`, you can view the artifacts job run:
+### Review artifacts in the dbt platform
+Now that you've uploaded dbt Core artifacts into the <Constant name="dbt_platform" /> and executed a `dbt run`, you can view the artifacts job run:
 1. Navigate to **Deploy**
 2. Click on **Jobs** and then the **Runs** tab.
 3. You should see a job run with the status **Success** with a `</> Artifact ingestion` indicator.

@@ -5,7 +5,7 @@ id: "user-tokens"
 pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
-# Account-scoped personal access tokens <Lifecycle status="self_service,managed" />
+# Account-scoped personal access tokens
 
 :::warning
 
