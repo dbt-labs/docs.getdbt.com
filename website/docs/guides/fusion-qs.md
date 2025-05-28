@@ -210,5 +210,13 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+### Troubleshooting
+
+#### How can I address the `dbt language server is not running in this workspace` error
+
+To avoid the `dbt language server is not running in this workspace` error, you should open your dbt project as a workspace: 
+
+1. Press CMD+Shift+p and add a folder to your workspace.
+2. Save this workspace as a file to make it easy to reopen in the future.
 
 </div>
