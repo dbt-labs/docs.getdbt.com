@@ -220,6 +220,7 @@ To avoid the `dbt language server is not running in this workspace` error, you n
 2. Select the dbt project file you want to add to a workspace.
 3. To save your workspace, click **File** then select **Save Workspace As**.  
 4. Navigate to the location you want to save your workspace.
+
 You can now avoid the error and open your dbt project by opening the workspace it belongs to. For more information on workspaces, refer to [What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces).
 
 </div>
