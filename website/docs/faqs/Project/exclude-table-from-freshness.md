@@ -31,7 +31,6 @@ sources:
       - name: product_skus
         config:
           freshness: null # do not check freshness for this table
-          # changed to config in v1.10
 ```
 
 </File>
