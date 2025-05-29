@@ -21,7 +21,7 @@ sources:
     tables:
       - name: <table_name>
         config:
-          freshness: # changed to config in v1.10
+          freshness: 
             warn_after:
               [count](#count): <positive_integer>
               [period](#period): minute | hour | day
