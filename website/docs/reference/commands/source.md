@@ -39,7 +39,7 @@ sources:
 
       - name: orders
         config:
-          freshness: # changed to config in v1.10
+          freshness: 
             warn_after: {count: 6, period: hour}
             error_after: {count: 12, period: hour}
             filter: datediff('day', _etl_loaded_at, current_timestamp) < 2
