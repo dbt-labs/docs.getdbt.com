@@ -46,7 +46,7 @@ sources:
 
       - name: product_skus
         config:
-          freshness: null # changed to config in v1.10
+          freshness: null 
           
 
 ```
