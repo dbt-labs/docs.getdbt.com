@@ -70,7 +70,7 @@ sources:
   - name: github
     overrides: github_source
     config:
-      freshness: # changed to config in v1.10
+      freshness: # changed to config in v1.9
         warn_after:
           count: 1
           period: day
