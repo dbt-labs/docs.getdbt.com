@@ -28,7 +28,7 @@ sources:
   - name: jaffle_shop
     database: raw
     config:
-      freshness: # changed to config in v1.10
+      freshness: # changed to config in v1.9
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
 
