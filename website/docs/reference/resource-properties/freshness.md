@@ -124,7 +124,7 @@ sources:
     schema: raw
     description: E-commerce data for the Jaffle Shop
     config: 
-      freshness: # changed to config in v1.10
+      freshness: 
         warn_after:
           count: 24
           period: hour
