@@ -104,7 +104,7 @@ Examples:
 sources:
   - name: your_source
     config:
-      freshness: # changed to config in v1.10
+      freshness: # changed to config in v1.9
         error_after:
           count: 2
           period: hour
