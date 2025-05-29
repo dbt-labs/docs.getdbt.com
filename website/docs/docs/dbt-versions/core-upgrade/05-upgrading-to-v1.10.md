@@ -20,7 +20,7 @@ Starting in 2024, <Constant name="cloud" /> provides the functionality from new 
 For users of dbt Core, since v1.8, we recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
 
 ```sql
-python3 -m pip install <Constant name="core" /> dbt-snowflake
+python3 -m pip install dbt-core dbt-snowflake
 ```
 
 ## New and changed features and functionality
