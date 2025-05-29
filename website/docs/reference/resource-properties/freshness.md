@@ -190,7 +190,6 @@ sources:
       - name: orders
         config:
           freshness: # make this a little more strict
-            # changed to config in v1.10
             warn_after: {count: 6, period: hour}
             error_after: {count: 12, period: hour}
             # Apply a where clause in the freshness query
