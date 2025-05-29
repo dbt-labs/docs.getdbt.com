@@ -81,7 +81,7 @@ sources:
     tables:
       - name: issue_assignee
         config:
-          freshness: # changed to config in v1.10
+          freshness:
             warn_after:
               count: 2
               period: day
