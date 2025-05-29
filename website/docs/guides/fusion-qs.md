@@ -216,7 +216,8 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 To avoid the `dbt language server is not running in this workspace` error, you should open your dbt project as a workspace: 
 
-1. Press CMD+Shift+p and add a folder to your workspace.
-2. Save this workspace as a file to make it easy to reopen in the future.
+1. In VS Code, click **File** in the toolbar then select **Add Folder to Workspace**
+2. To save your workspace click click **File** then select **Save Workspace As**.  Navigate to an accessible location to save your workspace.
+3. You can now open your dbt project by opening the workspace it belongs to. For more information on workspaces, refer to [What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces).
 
 </div>
