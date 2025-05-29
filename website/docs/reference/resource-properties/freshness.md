@@ -177,8 +177,8 @@ sources:
   - name: jaffle_shop
     database: raw
     config: 
+      # changed to config in v1.9
       freshness: # default freshness
-        # changed to config in v1.10
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
 
