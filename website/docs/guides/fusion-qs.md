@@ -210,7 +210,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
-### Troubleshooting
+## Troubleshooting
 
 #### Addressing the `dbt language server is not running in this workspace` error
 
