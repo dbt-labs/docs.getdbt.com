@@ -134,7 +134,7 @@ A resource in your project is characterized by resource type, materialization ty
 - **Resource type**: Organizes resources by resource type, such as models, tests, seeds, saved query, and [more](/docs/build/projects). Resource type uses the `resource_type` selector.
 - **Materialization type**: Identifies the strategy for building the dbt models in your data platform.
 - **Latest status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
-- **Model layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
+- **Model layer**: The modeling layer that the model belongs to according to [best practices guide](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.

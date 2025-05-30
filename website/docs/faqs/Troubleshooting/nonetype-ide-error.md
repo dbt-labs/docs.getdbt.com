@@ -13,7 +13,7 @@ NoneType object has no attribute
 enumerate_fields'
 ```
 
-Usually this errors indicates that you tried connecting your database via [SSH tunnel](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-via-an-ssh-tunnel). If you're seeing this error, double-check you have supplied the following items:
+Usually this error indicates that you tried connecting your database via [SSH tunnel](/docs/cloud/connect-data-platform/about-connections#connecting-via-an-ssh-tunnel). If you're seeing this error, double-check you have supplied the following items:
 
 - the hostname
 - username

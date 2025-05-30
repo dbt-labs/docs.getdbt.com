@@ -24,8 +24,8 @@ That work is documented below — it should be simple, straightforward, and in 
 ### A clean slate
 
 dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality:
-- All [deprecation warnings](https://docs.getdbt.com/reference/deprecations) must be resolved before upgrading to the new engine. This included historic deprecations and [new ones as of dbt Core v1.10](https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings). _While Fusion is in beta, it will raise validation warnings, but these warnings will become errors when Fusion goes into Preview._
-- All [behavior change flags](https://docs.getdbt.com/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This included historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings). _While Fusion is in beta, it will raise validation warnings, but these warnings will become errors when Fusion goes into Preview._
+- All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
 
@@ -85,32 +85,32 @@ One exception to this rule: The `--models` / `--model` / `-m` flag was renamed t
 
 | flag name | remediation |
 | ----------| ----------- |
-| `dbt seed` [`--show`](https://docs.getdbt.com/reference/commands/seed) | N/A |
-| [`--print` / `--no-print`](https://docs.getdbt.com/reference/global-configs/print-output) | No action required |
-| [`--printer-width`](https://docs.getdbt.com/reference/global-configs/print-output#printer-width) | No action required |
-| [`--source`](https://docs.getdbt.com/reference/commands/deps#non-hub-packages) | No action required |
-| [`--record-timing-info` / `-r`](https://docs.getdbt.com/reference/global-configs/record-timing-info) | No action required |
-| [`--cache-selected-only` / `--no-cache-selected-only`](https://docs.getdbt.com/reference/global-configs/cache) | No action required |
-| [`--clean-project-files-only` / `--no-clean-project-files-only`](https://docs.getdbt.com/reference/commands/clean#--clean-project-files-only) | No action required |
+| `dbt seed` [`--show`](/reference/commands/seed) | N/A |
+| [`--print` / `--no-print`](/reference/global-configs/print-output) | No action required |
+| [`--printer-width`](/reference/global-configs/print-output#printer-width) | No action required |
+| [`--source`](/reference/commands/deps#non-hub-packages) | No action required |
+| [`--record-timing-info` / `-r`](/reference/global-configs/record-timing-info) | No action required |
+| [`--cache-selected-only` / `--no-cache-selected-only`](/reference/global-configs/cache) | No action required |
+| [`--clean-project-files-only` / `--no-clean-project-files-only`](/reference/commands/clean#--clean-project-files-only) | No action required |
 | `--single-threaded` / `--no-single-threaded` | No action required |
-| `dbt source freshness` [`--output` / `-o`](https://docs.getdbt.com/docs/deploy/source-freshness)  | |
-| [`--config-dir`](https://docs.getdbt.com/reference/commands/debug)  | No action required | 
-| [`--add-package`](https://docs.getdbt.com/reference/commands/deps) | No action required |
-| [`--resource-type` / `--exclude-resource-type`](https://docs.getdbt.com/reference/global-configs/resource-type) | change to `--resource-types` / `--exclude-resource-types` |
+| `dbt source freshness` [`--output` / `-o`](/docs/deploy/source-freshness)  | |
+| [`--config-dir`](/reference/commands/debug)  | No action required | 
+| [`--add-package`](/reference/commands/deps) | No action required |
+| [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | change to `--resource-types` / `--exclude-resource-types` |
 | `--show-resource-report` / `--no-show-resource-report` | No action required |
-| [`--log-cache-events` / `--no-log-cache-events`](https://docs.getdbt.com/reference/global-configs/logs#logging-relational-cache-events) | No action required | 
+| [`--log-cache-events` / `--no-log-cache-events`](/reference/global-configs/logs#logging-relational-cache-events) | No action required | 
 | `--use-experimental-parser` / `--no-use-experimental-parser` | No action required |
-| [`--empty-catalog`](https://docs.getdbt.com/reference/commands/cmd-docs#dbt-docs-generate ) | |
-| [`--compile` / `--no-compile`](https://docs.getdbt.com/reference/commands/cmd-docs#dbt-docs-generate) | |
+| [`--empty-catalog`](/reference/commands/cmd-docs#dbt-docs-generate ) | |
+| [`--compile` / `--no-compile`](/reference/commands/cmd-docs#dbt-docs-generate) | |
 | `--inline-direct` |  No action required |
 | `--partial-parse-file-diff` / `--no-partial-parse-file-diff` | No action required |
 | `--partial-parse-file-path` | No action required |
 | `--populate-cache` / `--no-populate-cache` | No action required |
 | `--static-parser` / `--no-static-parser` | No action required |
 | `--use-fast-test-edges` / `--no-use-fast-test-edges` | No action required |
-| [`--introspect` / `--no-introspect`](https://docs.getdbt.com/reference/commands/compile#introspective-queries) | No action required |
+| [`--introspect` / `--no-introspect`](/reference/commands/compile#introspective-queries) | No action required |
 | `--inject-ephemeral-ctes` / `--no-inject-ephemeral-ctes` | | 
-| [`--partial-parse` / `--no-partial-parse`](https://docs.getdbt.com/reference/parsing#partial-parsing)  | No action required |
+| [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | No action required |
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 

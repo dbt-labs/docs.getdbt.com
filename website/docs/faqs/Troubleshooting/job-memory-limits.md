@@ -27,4 +27,4 @@ As an additional resource, check out [this example video](https://www.youtube.co
 If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com). We're happy to help!
 
 ### Additional resources
-- [Blog post on how we shaved 90 mins off](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model)
+- [Blog post on how we shaved 90 mins off](/blog/how-we-shaved-90-minutes-off-model)

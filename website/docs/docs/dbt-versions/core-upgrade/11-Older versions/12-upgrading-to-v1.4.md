@@ -21,7 +21,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### For consumers of dbt artifacts (metadata)
 
-The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](https://docs.getdbt.com/reference/dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) variables, e.g. `{{ model.root_path }}`.
+The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](/reference/dbt-jinja-functions/model) or [`graph`](/reference/dbt-jinja-functions/graph) variables, e.g. `{{ model.root_path }}`.
 
 Relevant changes:
 - The `root_path` attribute has been removed for non-seed nodes to reduce duplicative information.

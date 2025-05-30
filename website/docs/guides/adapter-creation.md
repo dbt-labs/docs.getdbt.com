@@ -557,7 +557,7 @@ See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/54
 
 ### Behavior change flags
 
-Starting in `dbt-adapters==1.5.0` and `dbt-core==1.8.7`, adapter maintainers can implement their own behavior change flags. Refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes) for more information. 
+Starting in `dbt-adapters==1.5.0` and `dbt-core==1.8.7`, adapter maintainers can implement their own behavior change flags. Refer to [Behavior changes](/reference/global-configs/behavior-changes) for more information. 
 
 Behavior Flags are not intended to be long-living feature flags. They should be implemented with the expectation that the behavior will be the default within an expected period of time. To implement a behavior change flag, you must provide a name for the flag, a default setting (`True` / `False`), an optional source, and a description and/or a link to the flag's documentation on docs.getdbt.com. 
 

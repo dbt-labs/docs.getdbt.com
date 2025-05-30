@@ -65,7 +65,7 @@ If your organization has multiple dbt projects, we recommend starting your upgra
 
 ### Considerations
 
-To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="cloud" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="cloud" />](https://docs.getdbt.com/blog/latest-dbt-stability).
+To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="cloud" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="cloud" />](/blog/latest-dbt-stability).
 
 If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
@@ -77,7 +77,7 @@ If you're running dbt version v1.6 or older, please know that your version of db
 
 dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enteprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the "Latest" release track and you notice new failures in scheduled jobs, please [contact dbt support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
+Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the "Latest" release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
 
 </Expandable>
 
@@ -96,7 +96,7 @@ If you are upgrading from a very old unsupported version of dbt Core, you may ru
 - [v1.5] Empty invalid `tests` config start raising a validation error](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
 - [v1.6] Performance optimization to `load_result` means you cannot call it on the same query result multiple times. Instead, save it to a local variable once, and reuse that variable (context: [dbt-core#7371](https://github.com/dbt-labs/dbt-core/pull/7371)
 
-You should [contact dbt support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
+You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
 
 </Expandable>
 
@@ -104,7 +104,7 @@ You should [contact dbt support](https://docs.getdbt.com/docs/dbt-support#dbt-cl
 
 For the vast majority of customers, there is no further action needed.
 
-If you see new failures in your scheduled jobs now that they are running on a newer version of dbt, you may need to update your project code to account for one of the edge cases described on this page. You should [contact dbt support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
+If you see new failures in your scheduled jobs now that they are running on a newer version of dbt, you may need to update your project code to account for one of the edge cases described on this page. You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
 
 </Expandable>
 

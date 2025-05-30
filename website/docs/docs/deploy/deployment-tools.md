@@ -147,5 +147,5 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 - [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/guides)
 - [Webhooks for your jobs](/docs/deploy/webhooks)
-- [Orchestration guides](https://docs.getdbt.com/guides/orchestration)
+- [Orchestration guides](/guides)
 - [Commands for your production deployment](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)

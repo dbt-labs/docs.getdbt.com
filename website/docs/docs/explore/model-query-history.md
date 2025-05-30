@@ -36,7 +36,7 @@ Model query history for Snowflake users is **only available for Enterprise tier 
 To access the features, you should meet the following:
 
 1. You have a <Constant name="cloud" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
-2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
+2. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="cloud" /> to edit project settings or production environment settings.
 4. Use Snowflake or BigQuery as your data warehouse and can enable [query history permissions](#snowflake-model-query-history) or work with an admin to do so. Support for additional data platforms coming soon.
    - For Snowflake users: You **must** have a Snowflake Enterprise tier or higher subscription.

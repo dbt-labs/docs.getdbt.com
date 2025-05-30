@@ -253,7 +253,7 @@ Double-check that your PR isn't trying to merge using a commit that belongs to a
 
 <DetailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
 
-To trigger jobs on <Constant name="cloud" /> using the [API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="cloud" /> account.
+To trigger jobs on <Constant name="cloud" /> using the [API](/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="cloud" /> account.
 
 If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
 </DetailsToggle>

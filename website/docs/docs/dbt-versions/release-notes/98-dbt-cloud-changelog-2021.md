@@ -33,11 +33,11 @@ It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt
 We shipped environment variables in <Constant name="cloud" />. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
 
 #### New products and features
-- You can now add environment variables to your <Constant name="cloud" /> project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in <Constant name="core" />. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+- You can now add environment variables to your <Constant name="cloud" /> project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in <Constant name="core" />. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](/docs/build/environment-variables).
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](/docs/dbt-cloud-apis/discovery-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
@@ -80,7 +80,7 @@ Our <Constant name="cloud_ide" /> SQL drawer got a fresh new look, and it now ha
 We added a DAG in the <Constant name="cloud_ide" />, so that you can see your model dependencies as you develop! If you haven’t seen the DAG visualization yet, take a moment to spin up the <Constant name="cloud_ide" />, navigate to the Lineage tab, and click-click-click around in there — it is legitimately a brand new modality for developing dbt projects, and it’s something worth being excited about!
 
 #### New products and features
-- [Dashboard Status Tiles](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-dashboard-status-tiles) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps dbt project maintainers build trust internally about the data that end users are seeing.
+- [Dashboard Status Tiles](/docs/explore/data-tile) can now be embedded on dashboards (or anywhere you can embed an iFrame) to give immediate insight into data freshness and quality. This helps dbt project maintainers build trust internally about the data that end users are seeing.
 - We shipped DAG in the <Constant name="cloud_ide" /> to GA!
 - Support for `dbt v0.20.1` in Cloud.
 
@@ -90,10 +90,10 @@ We added a DAG in the <Constant name="cloud_ide" />, so that you can see your mo
 
 
 ## dbt Cloud v1.1.32 (August 4, 2021)
-The Metadata API is now in GA! When <Constant name="cloud" /> invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="cloud" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
+The Metadata API is now in GA! When <Constant name="cloud" /> invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="cloud" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
 
 #### New products and features
-- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api).
+- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](/docs/dbt-cloud-apis/discovery-api).
 - dbt Enterprise customers using GitHub now get better <Term id="grain">fine-grained</Term> access control in their dbt projects. dbt will enforce git permissions for every developer to ensure that read / write policies in GitHub carry through to the IDE.
 
 
@@ -147,7 +147,7 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 
 - `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified+` argument. Read more about Slim CI [here](/docs/deploy/continuous-integration).
 
-- Native GitLab authentication for <Constant name="cloud" /> Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to <Constant name="cloud_ide" />'s git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
+- Native GitLab authentication for <Constant name="cloud" /> Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to <Constant name="cloud_ide" />'s git actions. Read how to set up native GitLab auth [here](/docs/cloud/git/connect-gitlab).
 
 #### Bug fixes
 - Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
