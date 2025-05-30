@@ -7,7 +7,7 @@ id: "contributing-coding"
 
 #### Overview
 
-[dbt Packages](https://docs.getdbt.com/docs/build/packages) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](/docs/build/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
+[dbt Packages](/docs/build/packages) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](/docs/build/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
 
 #### Contribution opportunities
 
@@ -23,7 +23,7 @@ id: "contributing-coding"
 
 - Use packages in your own projects! The best way to know how to improve a package is to use it in a production environment then look for ways it can be modified or improved.
 - Read the following resources on package development:
-  - [So You Want to Build a dbt Package](https://docs.getdbt.com/blog/so-you-want-to-build-a-package)
+  - [So You Want to Build a dbt Package](/blog/so-you-want-to-build-a-package)
   - [Package Best Practices](https://github.com/dbt-labs/hubcap/blob/main/package-best-practices.md)
 - Need help: Visit #package-ecosystem in the dbt Slack
 

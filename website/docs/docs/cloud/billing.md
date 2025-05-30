@@ -252,7 +252,7 @@ If you have views that contain macros with case statements based on upstream tab
 
 #### Exclude views while running tests
 
-Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](https://docs.getdbt.com/reference/node-selection/yaml-selectors) for your job command. 
+Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](/reference/node-selection/yaml-selectors) for your job command. 
 
 1. Open your dbt project in the <Constant name="cloud_ide" />.
 2. Add a file called `selectors.yml` in your top-level project folder.

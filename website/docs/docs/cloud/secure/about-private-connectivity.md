@@ -24,7 +24,7 @@ dbt Labs has globally connected private networks specifically used to host priva
 
 ### Configuring private connections
 
-<Constant name="cloud" /> supports the following data platforms for use with the private connections feature. Instructions for enabling private connections for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in <Constant name="cloud" />.
+<Constant name="cloud" /> supports the following data platforms for use with the private connections feature. Instructions for enabling private connections for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](/community/resources/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in <Constant name="cloud" />.
 
 - [Snowflake AWS PrivateLink](/docs/cloud/secure/snowflake-privatelink)
 - [Snowflake Azure Private Link](/docs/cloud/secure/snowflake-private-link)

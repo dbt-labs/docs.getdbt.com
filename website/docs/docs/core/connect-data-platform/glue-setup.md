@@ -883,7 +883,7 @@ use or set `database` as a node config or in the target profile when running dbt
 
 If you want to control the schema/database in which dbt will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
-For more information, check the dbt documentation about [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas).
+For more information, check the dbt documentation about [custom schemas](/docs/build/custom-schemas).
 
 ## AWS Lakeformation integration
 The adapter supports AWS Lake Formation tags management enabling you to associate existing tags defined out of dbt-glue to database objects built by dbt-glue (database, table, view, snapshot, incremental models, seeds).
@@ -1039,7 +1039,7 @@ $ export DBT_ROLE_ARN=arn:aws:iam::1234567890:role/GlueInteractiveSessionRole
 $ python3 -m pytest tests/functional
 ```
 
-For more information, check the dbt documentation about [testing a new adapter](https://docs.getdbt.com/docs/contributing/testing-a-new-adapter).
+For more information, check the dbt documentation about [testing a new adapter](/guides/adapter-creation).
 
 ## Caveats
 

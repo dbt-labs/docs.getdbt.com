@@ -23,7 +23,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
     - Example: `cust-success.cloud.databricks.com`
 
-1. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support): 
+1. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](/docs/dbt-support#dbt-cloud-support): 
     ```
     Subject: New AWS Multi-Tenant PrivateLink Request
     - Type: Databricks

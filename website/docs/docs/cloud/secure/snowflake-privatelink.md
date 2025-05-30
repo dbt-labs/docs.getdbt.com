@@ -38,14 +38,14 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 1. Open a support case with Snowflake to allow access from the <Constant name="cloud" /> AWS or Entra ID account.
 - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
 - Provide them with your <Constant name="cloud" /> account ID along with any other information requested in the article.
-  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support)._
+  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](/docs/dbt-support#dbt-cloud-support)._
 - You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-3. Add the required information to the following template and submit your request to  [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support):
+3. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support):
 
 ```
 Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request

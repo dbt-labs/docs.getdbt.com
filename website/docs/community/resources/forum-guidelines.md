@@ -13,7 +13,7 @@ id: "forum-guidelines"
 
 **Guidelines for engaging on the Forum**
 
-The community [Rules of the Road](https://docs.getdbt.com/docs/contributing/slack-rules-of-the-road) apply, and following them is the best way to get momentum behind your discussion or answers to your questions. The following guidelines will set you up for success:
+The community [Rules of the Road](/community/resources/community-rules-of-the-road) apply, and following them is the best way to get momentum behind your discussion or answers to your questions. The following guidelines will set you up for success:
 
 - Be respectful
 - Put effort into your posts

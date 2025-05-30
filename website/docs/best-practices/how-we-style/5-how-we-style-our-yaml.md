@@ -15,7 +15,7 @@ id: 5-how-we-style-our-yaml
 Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML information.
 
 :::info
-☁️ As with Python and SQL, the <Constant name="cloud_ide" /> comes with built-in formatting for YAML files (Markdown and JSON too!), via Prettier. Just click the `Format` button and you're in perfect style. As with the other tools, you can [also customize the formatting rules](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format#format-yaml-markdown-json) to your liking to fit your company's style guide.
+☁️ As with Python and SQL, the <Constant name="cloud_ide" /> comes with built-in formatting for YAML files (Markdown and JSON too!), via Prettier. Just click the `Format` button and you're in perfect style. As with the other tools, you can [also customize the formatting rules](/docs/cloud/dbt-cloud-ide/lint-format#format-yaml-markdown-json) to your liking to fit your company's style guide.
 :::
 
 ### Example YAML

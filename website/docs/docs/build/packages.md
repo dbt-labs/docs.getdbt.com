@@ -239,7 +239,7 @@ packages:
 
 </File>
 
-If you're using <Constant name="cloud" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
+If you're using <Constant name="cloud" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
 
 
 ### Git token method

@@ -11,7 +11,7 @@ Incremental models in dbt is a [materialization](/docs/build/materializations) s
 
 This page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in dbt.
 
-<Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices guide (https://docs.getdbt.com/best-practices/materializations/1-guide-overview)" />
+<Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices guide (/best-practices/materializations/1-guide-overview)" />
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 

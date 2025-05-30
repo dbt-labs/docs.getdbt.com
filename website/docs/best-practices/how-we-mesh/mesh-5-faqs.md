@@ -30,7 +30,7 @@ dbt [model contracts](/docs/mesh/govern/model-contracts) serve as a governance t
 
 <DetailsToggle alt_header="What are model versions?">
 
-dbt [model versions](https://docs.getdbt.com/docs/mesh/govern/model-versions) are iterations of your dbt models made over time. In many cases, you might knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, creating a new version of the model is useful to signify this change.
+dbt [model versions](/docs/mesh/govern/model-versions) are iterations of your dbt models made over time. In many cases, you might knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, creating a new version of the model is useful to signify this change.
 
 You can use model versions to:
 
@@ -320,7 +320,7 @@ Yes, a [<Constant name="cloud" /> Enterprise-tier](https://www.getdbt.com/pricin
 
 <DetailsToggle alt_header="Is there a recommended migration or implementation process?">
 
-Refer to our developer guide on [How we structure our dbt Mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
+Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
 
 You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
 

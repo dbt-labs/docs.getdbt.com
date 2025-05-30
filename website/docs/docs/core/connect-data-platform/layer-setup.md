@@ -30,7 +30,7 @@ Add your `layer_api_key` to your `profiles.yaml` to authenticate with Layer. To 
 - Go to [app.layer.ai](https://app.layer.ai) > **Settings** (Cog Icon by your profile photo) > **Developer** > **Create API key** to get your Layer API Key.
 
 #### Bigquery Authentication
-You can use any [authentication method](https://docs.getdbt.com/reference/warehouse-profiles/bigquery-setup) supported in the official dbt Bigquery adapter since Layer uses `dbt-bigquery` adapter to connect to your Bigquery instance. 
+You can use any [authentication method](/docs/core/connect-data-platform/bigquery-setup) supported in the official dbt Bigquery adapter since Layer uses `dbt-bigquery` adapter to connect to your Bigquery instance. 
 
 
 A sample profile:

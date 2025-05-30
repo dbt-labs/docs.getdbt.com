@@ -35,15 +35,15 @@ Things to note:
 
 ## Model Layers
 
-- Only models in `staging` should select from [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources).
-- Models not in the `staging` folder should select from [refs](https://docs.getdbt.com/reference/dbt-jinja-functions/ref).
+- Only models in `staging` should select from [sources](/docs/build/sources).
+- Models not in the `staging` folder should select from [refs](/reference/dbt-jinja-functions/ref).
 
 ## Model File Naming and Coding
 
 - All objects should be plural.  
   Example: `stg_stripe__invoices.sql` vs. `stg_stripe__invoice.sql`
 
-- All models should use the naming convention `<type/dag_stage>_<source/topic>__<additional_context>`. See [this article](https://docs.getdbt.com/blog/stakeholder-friendly-model-names) for more information.
+- All models should use the naming convention `<type/dag_stage>_<source/topic>__<additional_context>`. See [this article](/blog/stakeholder-friendly-model-names) for more information.
 
   - Models in the **staging** folder should use the source's name as the `<source/topic>` and the entity name as the `additional_context`.
 
@@ -86,8 +86,8 @@ Things to note:
 
 ## Model Configurations
 
-- Model configurations at the [folder level](https://docs.getdbt.com/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml) should be considered (and if applicable, applied) first.
-- More specific configurations should be applied at the model level [using one of these methods](https://docs.getdbt.com/reference/model-configs#apply-configurations-to-one-model-only).
+- Model configurations at the [folder level](/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml) should be considered (and if applicable, applied) first.
+- More specific configurations should be applied at the model level [using one of these methods](/reference/model-configs#apply-configurations-to-one-model-only).
 - Models within the `marts` folder should be materialized as `table` or `incremental`.
   - By default, `marts` should be materialized as `table` within `dbt_project.yml`.
   - If switching to `incremental`, this should be specified in the model's configuration.

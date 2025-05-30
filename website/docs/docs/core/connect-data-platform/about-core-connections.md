@@ -24,7 +24,7 @@ dbt communicates with a number of different data platforms by using a dedicated 
 
 Data platforms supported in <Constant name="core" /> may be verified by our Trusted Adapter Program, and maintained by dbt Labs, partners, or community members.
 
-These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/guides)
+These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides).
 
 ## Connection profiles
 

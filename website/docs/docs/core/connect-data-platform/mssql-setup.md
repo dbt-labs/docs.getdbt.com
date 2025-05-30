@@ -407,7 +407,7 @@ your_profile_name:
 
 ### Automatic Microsoft Entra ID principal provisioning for grants
 
-In dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
+In dbt 1.2 or newer you can use the [grants](/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
 
 By setting `auto_provision_aad_principals` to `true` in your model configuration, you can automatically provision Microsoft Entra ID principals (users or groups) that don't exist yet.
 

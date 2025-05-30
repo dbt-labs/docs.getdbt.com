@@ -202,4 +202,4 @@ We find it most useful to separate these two types of transformations into diffe
 If you're using macros or other pieces of Jinja in your models, your compiled SQL (found in the `target/compiled` directory) may contain unwanted whitespace. Check out the [Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/#whitespace-control) to learn how to control generated whitespace.
 
 ## Related docs
-- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](https://docs.getdbt.com/blog/configuring-grants)
+- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](/blog/configuring-grants)

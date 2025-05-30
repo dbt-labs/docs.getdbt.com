@@ -91,7 +91,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If the user is required to execute GRANT statements, see for instance (https://docs.getdbt.com/reference/resource-configs/grants) or (https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
+Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If the user is required to execute GRANT statements, see for instance (/reference/resource-configs/grants) or (/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
 
 ### Kerberos
 
@@ -130,7 +130,7 @@ Note: A typical setup of Cloudera EDH will involve the following steps to setup 
 
 By default, the adapter will send instrumentation events to Cloudera to help improve functionality and understand bugs. If you want to specifically switch this off, for instance, in a production environment, you can explicitly set the flag `usage_tracking: false` in your `profiles.yml` file.
 
-Relatedly, if you'd like to turn off dbt Lab's anonymous usage tracking, see [YAML Configurations: Send anonymous usage stats](https://docs.getdbt.com/reference/global-configs#send-anonymous-usage-stats) for more info
+Relatedly, if you'd like to turn off dbt Lab's anonymous usage tracking, see [YAML Configurations: Send anonymous usage stats](/reference/global-configs/about-global-configs#send-anonymous-usage-stats) for more info.
 
 ### Supported Functionality
 

@@ -32,7 +32,7 @@ Also shout out to [Faith Lierheimer](./faith-lierheimer), whose contributions to
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-The [public documentation for dbt](https://docs.getdbt.com/docs/introduction) is quite good. You should bookmark it and make it a personal goal to read through it all. There are a lot of cool things that dbt can do.
+The [public documentation for dbt](/docs/introduction) is quite good. You should bookmark it and make it a personal goal to read through it all. There are a lot of cool things that dbt can do.
 
 Also I think it's really cool to see newcomers asking questions on Slack/[Discourse](https://discourse.getdbt.com/) and then see those same people answering others' questions. It speaks to the value we all get from dbt that folks want to give back to the community.
 
