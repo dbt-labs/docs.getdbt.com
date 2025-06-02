@@ -43,7 +43,7 @@ If your project is using any of the features listed in the following table, you 
 - Workflows built around complementary features of the dbt platform (like model-level notifications, Advanced CI, and Semantic Layer) that Fusion does not yet support.
 
 :::note
-We will move quickly to implement as many of these features during the Beta period and ahead of General Availability. Read more about [the path to GA](https://docs.getdbt.com/blog/2025-05-28-dbt-fusion-engine-path-to-ga).
+We will move quickly to implement as many of these features during the Beta period and ahead of General Availability. Read more about [the path to GA](/blog/dbt-fusion-engine-path-to-ga).
 :::
 
 import FusionFeatures from '/snippets/_fusion-missing-features.md';
