@@ -7,14 +7,16 @@ sidebar_label: "Connect MotherDuck"
 
 ## Overview
 
-dbt Cloud supports connecting to [MotherDuck](https://motherduck.com/) using the dbt-postgres adapter. To do this, you must run a Postgres proxy with the `pg_duckdb` extension, which streams queries from dbt Cloud to MotherDuck.
+dbt Cloud supports connecting to [MotherDuck](https://motherduck.com/) using the dbt-postgres adapter. 
+
+:::note
+You must run a Postgres proxy with the `pg_duckdb` extension, which streams queries from dbt Cloud to MotherDuck. See the [MotherDuck dbt Cloud integration guide](https://motherduck.com/docs/integrations/transformation/dbt-cloud/) for a full setup script and configuration details.
+:::
 
 **You will need:**
 - A Postgres instance with `pg_duckdb` installed (Docker is recommended)
 - Your MotherDuck token
 - A dbt Cloud account
-
-See the [MotherDuck dbt Cloud integration guide](https://motherduck.com/docs/integrations/transformation/dbt-cloud/) for a full setup script and configuration details.
 
 ## dbt Cloud Connection Settings
 
@@ -31,8 +33,8 @@ When creating a MotherDuck connection in dbt Cloud, use the following fields:
 
 ### Schema Setup
 - **Create your schemas in MotherDuck before connecting.** The proxy cannot create new schemas.
-- In dbt Cloud, set the schema as `ddb$[database]$[schema]` (e.g., `ddb$postgres$my_schema`).
-- Set the `DBT_SCHEMA` environment variable to this value for each user and environment.
+- In dbt Cloud, set the `DBT_SCHEMA` as `ddb$[database]$[schema]` (e.g., `ddb$postgres$my_schema`).
+- This `ENV_VAR` should vary for prod vs development as well as each user.
 
 ### Connecting via an SSH Tunnel
 
