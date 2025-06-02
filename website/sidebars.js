@@ -638,7 +638,7 @@ const sidebarSettings = {
         "docs/explore/explore-your-data",
         {
           type: "category",
-          label: "Discover data with dbt Explorer",
+          label: "Discover data with dbt Catalog",
           link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
             "docs/explore/explore-projects",

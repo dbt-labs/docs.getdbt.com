@@ -5,10 +5,16 @@ sidebar_label: "New Concepts"
 description: "New concepts and configurations you will encounter when you install the dbt Fusion engine."
 pagination_next: null
 pagination_prev: null
-intro_text: "Learn about the net-new concepts you will encounter when using Fusion."
 ---
 
 # New concepts <Lifecycle status="beta" />
+
+<IntroText>
+
+Learn about the net-new concepts you will encounter when using Fusion.
+
+</IntroText>
+
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
@@ -104,7 +110,7 @@ dbt run --static-analysis=unsafe
 
 ## Example: new concepts in action
 
-Imagine a DAG wtih `model_a → model_b → model_c → model_d`. All of these models are defined with static SQL.
+Imagine a DAG with `model_a → model_b → model_c → model_d`. All of these models are defined with static SQL.
 
 ### Default behavior (`static_analysis: on`)
 
@@ -182,7 +188,7 @@ error: dbt0432: PIVOT ANY is not compilable
 
 To fix this error, you may:
 - configure your model with `static_analysis: off`
-- refactor your model to use dynamic Jinja templating, e.g. `dbt_utils.get_columns_values`, and configure your model with `static_analyis: unsafe`
+- refactor your model to use dynamic Jinja templating, e.g. `dbt_utils.get_column_values`, and configure your model with `static_analysis: unsafe`
 - refactor your model to be a static pivot, and benefit from safe static analysis
 
 ```sql
