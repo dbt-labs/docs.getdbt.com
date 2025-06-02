@@ -22,13 +22,14 @@ models:
 ```
 </File>
 
+
 This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.target_schema_marketing.model_name`. This is because the schema of the relation is `{{ target.schema }}_{{ schema }}`. The [definition](#definition) section explains this in more detail.
 
 </TabItem>
 
 <TabItem value="seeds" label="Seeds">
 
-Configure a custom schema in your `dbt_project.yml` file. 
+Configure a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) in your `dbt_project.yml` file. 
 
 For example, if you have a seed that should be placed in a separate schema called `mappings`, you can configure it like this:
 
@@ -50,15 +51,17 @@ This would result in the generated relation being located in the `mappings` sche
 
 <VersionBlock lastVersion="1.8">
 
-Available for versionless dbt Cloud or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+Available in <Constant name="core" /> v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
-Specify a custom schema for a snapshot in your `dbt_project.yml` or config file. 
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or YAML file.
 
 For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
+
+In a `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
@@ -70,18 +73,47 @@ snapshots:
 ```
 </File>
 
+In a `snapshots/snapshot_name.yml` file:
+
+<File name='snapshots/snapshot_name.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      schema: snapshots
+```
+
+</File>
+
 This results in the generated relation being located in the `snapshots` schema so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
 
 </VersionBlock>
 
 </TabItem>
 
+<TabItem value="saved-queries" label="Saved queries">
+
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a [saved query](/docs/build/saved-queries#parameters) in your `dbt_project.yml` or YAML file.
+
+<File name='dbt_project.yml'>
+```yml
+saved-queries:
+  +schema: metrics
+```
+</File>
+
+This would result in the saved query being stored in the `metrics` schema.
+
+</TabItem>
+
 <TabItem value="tests" label="Test">
 
-Customize the schema for storing test results in your `dbt_project.yml` file. 
+Customize a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for storing test results in your `dbt_project.yml` file. 
 
 For example, to save test results in a specific schema, you can configure it like this:
-
 
 <File name='dbt_project.yml'>
 
@@ -99,7 +131,9 @@ This would result in the test results being stored in the `test_results` schema.
 Refer to [Usage](#usage) for more examples.
 
 ## Definition
-Optionally specify a custom schema for a [model](/docs/build/sql-models) or [seed](/docs/build/seeds). (To specify a schema for a [snapshot](/docs/build/snapshots), use the [`target_schema` config](/reference/resource-configs/target_schema)).
+Optionally specify a custom schema for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), [saved query](/docs/build/saved-queries), or [test](/docs/build/data-tests). 
+
+For users on <Constant name="cloud" /> v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

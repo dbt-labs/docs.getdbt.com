@@ -1,6 +1,6 @@
 ---
 title: pre-hook & post-hook
-description: "Pre-hook and Post-hook - Read this in-depth guide to learn about configurations in dbt."
+description: "Configure hooks to execute SQL before (pre) and after (post) a model is run in dbt."
 resource_types: [models, seeds, snapshots]
 datatype: sql-statement | [sql-statement]
 ---
@@ -109,6 +109,8 @@ snapshots:
 
 </File>
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
@@ -125,13 +127,14 @@ select ...
 ```
 
 </File>
+</VersionBlock>
 
-<File name='snapshots/properties.yml'>
+<File name='snapshots/snapshot.yml'>
 
 ```yml
 snapshots:
   - name: [<snapshot_name>]
-    config:
+    [config](/reference/resource-properties/config):
       [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
 ```
@@ -151,9 +154,11 @@ Pre- and post-hooks can also call macros that return SQL statements. If your mac
 
 dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
-## Examples
+import SQLCompilationError from '/snippets/_render-method.md';
 
-<Snippet path="hooks-to-grants" />
+<SQLCompilationError />
+
+## Examples
 
 ### [Redshift] Unload one model to S3
 

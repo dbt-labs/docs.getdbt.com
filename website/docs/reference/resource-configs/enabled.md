@@ -12,6 +12,7 @@ default_value: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
@@ -78,9 +79,28 @@ snapshots:
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/snapshot_name.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
+# Configuring in a SQL file is a legacy method and not recommended. Use the YAML file instead.
+
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
@@ -90,10 +110,9 @@ snapshots:
 select ...
 
 {% endsnapshot %}
-
 ```
-
 </File>
+
 
 </TabItem>
 
@@ -133,6 +152,35 @@ select ...
 {{ config(
   enabled=true | false
 ) }}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='dbt_project.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
+<File name='models/<filename>.yml'>
+
+```yaml
+unit_tests:
+  - name: [<test-name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+
 ```
 
 </File>
@@ -230,14 +278,6 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.6">
-
-Support for disabling semantic models has been added in dbt Core v1.7
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -259,19 +299,9 @@ semantic_models:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="saved queries">
-
-<VersionBlock lastVersion="1.6">
-
-Support for disabling saved queries has been added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name='dbt_project.yml'>
 
@@ -293,8 +323,6 @@ saved_queries:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

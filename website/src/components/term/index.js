@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Link from '@docusaurus/Link';
 import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
 
 {/* 
   Props:
-  id: filename of term
+  id: maps to term in website/docs/terms/hover-terms.md
   children (optional): to display different text 
   other than displayText property for term
 */}
@@ -20,48 +19,44 @@ export default function Term({ id, children = undefined }) {
     setPageReady(true)
   })
 
-  const file = require('../../../docs/terms/' + id + '.md')
-  if(!file)
-    return null
+  // Get terms file
+  const file = require('../../../docs/terms/hover-terms.md')
+
+  // Get term by id
+  const term = file?.frontMatter?.[id]
   
-  const fm = file.frontMatter
-  if(!fm)
-    return null
-  
-  const { displayText, hoverSnippet } = fm
+  // If term not found in file, return children if available or null
+  if(!term) 
+    return children || null
+
+  // Get properties from front matter
+  const { displayText, hoverSnippet } = term;
+
+  // If component has children, show children text,
+  // Else, default to displayText frontmatter field,
+  // Or filename if displayText not set
+  const displayValue = children ? children : displayText ? displayText : id
 
   return (
     <>
-      {pageReady ? (
+      {pageReady && hoverSnippet ? (
         <>
-          <Link
-            to={`/terms/${id}`}
-            key={id}
-            className={styles.term}
-            data-tip 
-            data-for={uniqueID}
+          <span key={id} className={styles.term} data-tip data-for={uniqueID}>
+            {displayValue}
+          </span>
+          <ReactTooltip
+            id={uniqueID}
+            className={styles.termToolTip}
+            place="bottom"
+            effect="solid"
+            wrapper="span"
           >
-            {/* If component has children, show children text,
-                Else, default to displayText frontmatter field,
-                Or filename if displayText not set
-            */}
-            {children ? children : displayText ? displayText : id}
-          </Link>
-          {hoverSnippet && (
-            <ReactTooltip 
-              id={uniqueID} 
-              className={styles.termToolTip} 
-              place="bottom" 
-              effect="solid"
-              wrapper="span" 
-            >
-              {hoverSnippet}
-            </ReactTooltip>
-          )} 
+            {hoverSnippet}
+          </ReactTooltip>
         </>
       ) : (
-        <span>{children ? children : displayText ? displayText : id}</span>
+        <span>{displayValue}</span>
       )}
     </>
-  )
+  );
 }

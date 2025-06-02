@@ -2,11 +2,11 @@
 featured_image: ""
 
 # This CTA lives in right sidebar on blog index
-featured_cta: "coalesce_2024_signup"
+featured_cta: "on_demand_launch_showcase_2025"
 
 # Show or hide hero title, description, cta from blog index
-show_title: true
-show_description: true
+show_title: false
+show_description: false
 hero_button_url: "/blog/welcome"
 hero_button_text: "Start here"
 hero_button_new_tab: false

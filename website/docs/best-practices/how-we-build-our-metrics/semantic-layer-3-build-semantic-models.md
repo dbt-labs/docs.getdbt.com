@@ -7,7 +7,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build
 
 ## How to build a semantic model
 
-A semantic model is the Semantic Layer equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
+A semantic model is the <Constant name="semantic_layer" /> equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
 
 - ⚙️ Semantic models are **comprised of three components**:
   - 🫂 **entities**: these describe the **relationships** between various semantic models (think ids)
@@ -241,7 +241,9 @@ measures:
 
 ## Reviewing our work
 
-Our completed code will look like this, our first semantic model!
+Our completed code will look like this, our first semantic model! Here are two examples showing different organizational approaches:
+
+<Expandable alt_header="Co-located approach">
 
 <File name="models/marts/orders.yml" />
 
@@ -288,12 +290,74 @@ semantic_models:
         description: The total tax paid on each order.
         agg: sum
 ```
+</Expandable>
+
+<Expandable alt_header="Parallel sub-folder approach">
+
+<File name="models/semantic_models/sem_orders.yml" />
+
+```yml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: ordered_at
+    description: |
+      Order fact table. This table is at the order grain with one row per order.
+
+    model: ref('stg_orders')
+
+    entities:
+      - name: order_id
+        type: primary
+      - name: location
+        type: foreign
+        expr: location_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+
+    dimensions:
+      - name: ordered_at
+        expr: date_trunc('day', ordered_at)
+        # use date_trunc(ordered_at, DAY) if using BigQuery
+        type: time
+        type_params:
+          time_granularity: day
+      - name: is_large_order
+        type: categorical
+        expr: case when order_total > 50 then true else false end
+
+    measures:
+      - name: order_total
+        description: The total revenue for each order.
+        agg: sum
+      - name: order_count
+        description: The count of individual orders.
+        expr: 1
+        agg: sum
+      - name: tax_paid
+        description: The total tax paid on each order.
+        agg: sum
+```
+</Expandable>
+
+As you can see, the content of the semantic model is identical in both approaches. The key differences are:
+
+1. **File location**
+   - Co-located approach: `models/marts/orders.yml`
+   - Parallel sub-folder approach: `models/semantic_models/sem_orders.yml`
+
+2. **File naming**
+   - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
+   - Parallel sub-folder approach: Prefixes the file with `sem_` (`sem_orders.yml`)
+
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the <Constant name="semantic_layer" />.
 
 ## Next steps
 
 Let's review the basics of semantic models:
 
-- 🧱 Consist off **entities, dimensions, and measures**.
+- 🧱 Consist of **entities, dimensions, and measures**.
 - 🫂 Describe the **semantics and relationships of objects** in the warehouse.
 - 1️⃣ Correspond to a **single logical model** in your dbt project.
 

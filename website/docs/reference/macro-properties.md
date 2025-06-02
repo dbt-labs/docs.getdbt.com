@@ -19,9 +19,10 @@ macros:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
-    arguments:
+    [meta](/reference/resource-configs/meta): {<dictionary>}
+    [arguments](/reference/resource-properties/arguments):
       - name: <arg name>
-        [type](/reference/resource-properties/argument-type): <string>
+        [type](/reference/resource-properties/arguments#type): <string>
         [description](/reference/resource-properties/description): <markdown_string>
       - ... # declare properties of additional arguments
 

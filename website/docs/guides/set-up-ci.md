@@ -6,9 +6,8 @@ id: set-up-ci
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration', 'CI']
+tags: ['dbt platform', 'Orchestration', 'CI']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -17,7 +16,7 @@ recently_updated: true
 
 By validating your code _before_ it goes into production, you don't need to spend your afternoon fielding messages from people whose reports are suddenly broken.
 
-A solid CI setup is critical to preventing avoidable downtime and broken trust. dbt Cloud uses **sensible defaults** to get you up and running in a performant and cost-effective way in minimal time.
+A solid CI setup is critical to preventing avoidable downtime and broken trust. <Constant name="cloud" /> uses **sensible defaults** to get you up and running in a performant and cost-effective way in minimal time.
 
 After that, there's time to get fancy, but let's walk before we run.
 
@@ -28,16 +27,16 @@ Your git flow will look like this:
 
 ### Prerequisites
 
-As part of your initial dbt Cloud setup, you should already have Development and Production environments configured. Let's recap what each does:
+As part of your initial <Constant name="cloud" /> setup, you should already have Development and Production environments configured. Let's recap what each does:
 
-- Your **Development environment** powers the IDE. Each user has individual credentials, and builds into an individual dev schema. Nothing you do here impacts any of your colleagues.
+- Your **Development environment** powers the <Constant name="cloud_ide" />. Each user has individual credentials, and builds into an individual dev schema. Nothing you do here impacts any of your colleagues.
 - Your **Production environment** brings the canonical version of your project to life for downstream consumers. There is a single set of deployment credentials, and everything is built into your production schema(s).
 
 ## Create a new CI environment
 
 See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
 
-When setting a Schema in the **Deployment Credentials** area, remember that dbt Cloud will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
+When setting a Schema in the **Deployment Credentials** area, remember that <Constant name="cloud" /> will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 
 ### 1. Double-check your Production environment is identified
 
@@ -50,9 +49,9 @@ Use the **Continuous Integration Job** template, and call the job **CI Check**.
 In the Execution Settings, your command will be preset to `dbt build --select state:modified+`. Let's break this down:
 
 - [`dbt build`](/reference/commands/build) runs all nodes (seeds, models, snapshots, tests) at once in DAG order. If something fails, nodes that depend on it will be skipped.
-- The [`state:modified+` selector](/reference/node-selection/methods#the-state-method) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
+- The [`state:modified+` selector](/reference/node-selection/methods#state) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
 
-To be able to find modified nodes, dbt needs to have something to compare against. dbt Cloud uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
+To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="cloud" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
 :::info Use CI to test your metrics
 If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
@@ -62,12 +61,12 @@ If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt pr
 
 That's it! There are other steps you can take to be even more confident in your work, such as validating your structure follows best practices and linting your code. For more information, refer to [Get started with Continuous Integration tests](/guides/set-up-ci).
 
-To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
+To test your new flow, create a new branch in the <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 
 ### Things to keep in mind
 
 - If you make a new commit while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
-- An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, dbt Cloud will drop that schema.
+- An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, <Constant name="cloud" /> will drop that schema.
 - CI jobs will never block a production run.
 
 ## Enforce best practices with dbt project evaluator
@@ -117,7 +116,14 @@ If you create a seed to exclude groups of models from a specific test, remember 
 
 By [linting](/docs/cloud/dbt-cloud-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
 
-The steps below create an action/pipeline which uses [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. If you don't already have SQLFluff rules defined, check out [our recommended config file](/best-practices/how-we-style/2-how-we-style-our-sql).
+Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="cloud" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
+
+SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/cloud-release-tracks). 
+
+
+### Manually set up SQL linting in CI
+
+You can run SQLFluff as part of your pipeline even if you don't have access to [SQL linting in CI](/docs/deploy/continuous-integration#sql-linting). The following steps walk you through setting up a CI job using SQLFluff to scan your code for linting errors. If you're new to SQLFluff rules in <Constant name="cloud" />, check out [our recommended config file](/best-practices/how-we-style/2-how-we-style-our-sql).
 
 ### 1. Create a YAML file to define your pipeline
 
@@ -302,7 +308,7 @@ Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
 ## Advanced: Create a release train with additional environments
 
-Large and complex enterprises sometimes require additional layers of validation before deployment. Learn how to add these checks with dbt Cloud.
+Large and complex enterprises sometimes require additional layers of validation before deployment. Learn how to add these checks with <Constant name="cloud" />.
 
 :::caution Are you sure you need this?
 This approach can increase release safety, but creates additional manual steps in the deployment process as well as a greater maintenance burden.
@@ -344,20 +350,20 @@ Use the **Continuous Integration Job** template, and call the job **QA Check**.
 In the Execution Settings, your command will be preset to `dbt build --select state:modified+`. Let's break this down:
 
 - [`dbt build`](/reference/commands/build) runs all nodes (seeds, models, snapshots, tests) at once in DAG order. If something fails, nodes that depend on it will be skipped.
-- The [`state:modified+` selector](/reference/node-selection/methods#the-state-method) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
+- The [`state:modified+` selector](/reference/node-selection/methods#state) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
 
 To be able to find modified nodes, dbt needs to have something to compare against. Normally, we use the Production environment as the source of truth, but in this case there will be new code merged into `qa` long before it hits the `main` branch and Production environment. Because of this, we'll want to defer the Release environment to itself.
 
 ### Optional: also add a compile-only job
 
-dbt Cloud uses the last successful run of any job in that environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). If you have a lot of PRs in flight, the comparison state could switch around regularly.
+<Constant name="cloud" /> uses the last successful run of any job in that environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). If you have a lot of PRs in flight, the comparison state could switch around regularly.
 
 Adding a regularly-scheduled job inside of the QA environment whose only command is `dbt compile` can regenerate a more stable manifest for comparison purposes.
 
 ### 5. Test your process
 
-When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the dbt Cloud IDE. Under this paradigm, that button will create PRs targeting your QA branch instead.
+When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). <Constant name="cloud" /> will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the <Constant name="cloud_ide" />. Under this paradigm, that button will create PRs targeting your QA branch instead.
 
-To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
+To test your new flow, create a new branch in the <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
 
 </div>

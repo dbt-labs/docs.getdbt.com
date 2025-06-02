@@ -1,10 +1,10 @@
 ---
 title: "Job commands"
 id: "job-commands"
-description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
+description: "How to use dbt commands to set tasks for your dbt jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A <Constant name="cloud" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
@@ -28,28 +28,50 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.jpg" width="85%" title="A failed job that had an error during the dbt deps run step."/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.png" width="85%" title="A failed job that had an error during the dbt deps run step."/>
 
 ### Checkbox commands
 
-For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
+For every job, you have the option to select the [Generate docs on run](/docs/explore/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; <Constant name="cloud" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; <Constant name="cloud" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
-You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Cloud CLI" or "dbt Core" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in dbt Core or dbt Cloud CLI, and not in dbt Cloud IDE.
-
+You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "<Constant name="cloud" /> CLI" or "<Constant name="core" />" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="cloud" /> CLI, and not in <Constant name="cloud_ide" />.
 
 :::tip Using selectors
 
-Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
+Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for `one_specific_model`, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
 
 :::
 
-**Job outcome** &mdash; During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
+#### Compare changes custom commands
+For users that have Advanced CI's [compare changes](/docs/deploy/advanced-ci#compare-changes) feature enabled and selected the **dbt compare** checkbox, you can add custom dbt commands to optimize running the comparison (for example, to exclude specific large models, or groups of models with tags). Running comparisons on large models can significantly increase the time it takes for CI jobs to complete. 
+
+<Lightbox src="/img/docs/deploy/dbt-compare.jpg" width="90%" title="Add custom dbt commands to when using dbt compare." />
+
+The following examples highlight how you can customize the dbt compare command box:
+
+- Exclude the large `fct_orders` model from the comparison to run a CI job on fewer or smaller models and reduce job time/resource consumption. Use the following command:
+  
+  ```sql
+  --select state:modified --exclude fct_orders
+  ```
+- Exclude models based on tags for scenarios like when models share a common feature or function. Use the following command:
+
+   ```sql 
+      --select state modified --exclude tag:tagname_a tag:tagname_b
+   ```
+- Include models that were directly modified and also those one step downstream using the `modified+1` selector. Use the following command:
+  ```sql
+  --select state:modified+1
+  ```
+
+#### Job outcome
+During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
@@ -76,4 +98,4 @@ Job command failures can mean different things for different commands. Some comm
 - [dbt Command reference](/reference/dbt-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [Build and view your docs](/docs/collaborate/build-and-view-your-docs)
+- [Build and view your docs](/docs/explore/build-and-view-your-docs)

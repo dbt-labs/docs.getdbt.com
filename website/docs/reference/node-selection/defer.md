@@ -19,21 +19,12 @@ dbt run --select [...] --defer --state path/to/artifacts
 dbt test --select [...] --defer --state path/to/artifacts
 ```
 
+By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
 
-<VersionBlock lastVersion="0.20">
+When `--defer` is enabled, dbt resolves ref calls using the state manifest instead, but only if:
 
-```shell
-dbt run --models [...] --defer --state path/to/artifacts
-dbt test --models [...] --defer --state path/to/artifacts
-```
-
-</VersionBlock>
-
-When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
-1. Is the referenced node included in the model selection criteria of the current run?
-2. Does the reference node exist as a database object in the current environment?
-
-If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.
+1. The node isn’t among the selected nodes, _and_
+2. It doesn’t exist in the database (or `--favor-state` is used).
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
 
@@ -41,12 +32,12 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use <Constant name="cloud" />, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
 
 
 #### Favor state
 
-You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
+When `--favor-state` is passed, dbt prioritizes node definitions from the `--state directory`. However, this doesn’t apply if the node is also part of the selected nodes.
 
 ### Example
 
@@ -70,8 +61,6 @@ group by 1
 ```
 
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
-
-### test
 
 </File>
 
@@ -138,6 +127,8 @@ Because `model_a` is unselected, dbt will check to see if `dev_alice.model_a` ex
 
 </TabItem>
 </Tabs>
+
+### test
 
 I also have a `relationships` test that establishes referential integrity between `model_a` and `model_b`:
 
@@ -222,6 +213,6 @@ dbt will check to see if `dev_alice.model_a` exists. If it doesn't exist, dbt wi
 
 ## Related docs
 
-- [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer)
+- [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer)
 - [on_configuration_change](/reference/resource-configs/on_configuration_change)
 

@@ -14,6 +14,7 @@ hide_table_of_contents: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
@@ -109,6 +110,25 @@ version: 2
 
 </TabItem>
 
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='models/<filename>.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  - name: <test-name>
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [meta](/reference/resource-configs/meta): {dictionary}
+      [tags](/reference/resource-configs/tags): <string>
+```
+
+</File>
+
+</TabItem>
+
 <TabItem value="sources">
 
 
@@ -170,14 +190,6 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.6">
-
-Support for the `config` property on `semantic_models` was added in dbt Core v1.7
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -193,19 +205,9 @@ semantic_models:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="saved queries">
-
-<VersionBlock lastVersion="1.6">
-
-Support for the `config` property on `saved queries` was added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
 
 <File name='models/<filename>.yml'>
 
@@ -225,8 +227,6 @@ saved-queries:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

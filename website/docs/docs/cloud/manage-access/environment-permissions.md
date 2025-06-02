@@ -7,22 +7,22 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Environment-level permissions give dbt Cloud admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
+Environment-level permissions give <Constant name="cloud" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
 For configuration instructions, check out the [setup page](/docs/cloud/manage-access/environment-permissions-setup).
 
 ## Current limitations
 
-Environment-level permissions give dbt Cloud admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
+Environment-level permissions give <Constant name="cloud" /> admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
 
-- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in dbt Cloud.
+- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in <Constant name="cloud" />.
 - You can only select environment types, and can’t specify a particular environment within a project.
-- You can't select specific resources within environments. dbt Cloud jobs, runs, and environment variables are all environment resources.
-    - For example, you can't specify that a user only has access to jobs but not environment variables. Access to a given environment gives the user access to everything within that environment.
+- You can't select specific resources within environments. <Constant name="cloud" /> jobs and runs are environment resources.
+    - For example, you can't specify that a user only has access to jobs but not runs. Access to a given environment gives the user access to everything within that environment.
 
 ## Environments and roles
 
-dbt Cloud has four different environment types per project: 
+<Constant name="cloud" /> has four different environment types per project: 
 
 - **Production** &mdash; Primary deployment environment. Only one unique Production env per project.
 - **Development** &mdash; Developer testing environment. Only one unique Development env per project.
@@ -34,14 +34,14 @@ Environment write permissions can be specified for the following roles:
 - Analyst
 - Database admin
 - Developer (Previous default write access for all environments. The new default is read access for environments unless access is specified)
-- Git admin
+- <Constant name="git" /> admin
 - Team admin
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
 
 Determine what personas need updated environment access and the roles they should be mapped to. The personas below highlight a few scenarios for environment permissions: 
 
-- **Developer** &mdash; Write access to create/run jobs in development environment
+- **Developer** &mdash; Write access to create/run jobs in non-production environments
 - **Testing/QA** &mdash; Write access to staging and development environments to test
 - **Production deployment** &mdash; Write access to all environments, including production, for deploying
 - **Analyst** &mdash; Doesn't need environmental write access but read-only access for discovery and troubleshooting
@@ -77,4 +77,4 @@ If the user has the same roles across projects, you can apply environment access
 
 
 ## Related docs
--[Environment-level permissions setup](/docs/cloud/manage-access/environment-permissions-setup)
+- [Environment-level permissions setup](/docs/cloud/manage-access/environment-permissions-setup)

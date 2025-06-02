@@ -1,5 +1,6 @@
 ---
 title: "Project variables"
+description: "Use dbt project variables to configure conditional or reusable logic across models and other resources." 
 id: "project-variables"
 pagination_next: "docs/build/environment-variables"
 ---
@@ -15,6 +16,8 @@ Variables can be defined in two ways:
 
 1. In the `dbt_project.yml` file
 2. On the command line
+
+Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML information.
 
 ### Defining variables in `dbt_project.yml`
 

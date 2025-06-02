@@ -1,0 +1,169 @@
+name: Vercel deployment preview link generator
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'website/docs/docs/**'
+      - 'website/docs/best-practices/**'
+      - 'website/docs/guides/**'
+      - 'website/docs/faqs/**'
+      - 'website/docs/reference/**'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-pr-description:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install necessary tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+
+      - name: Generate Vercel deployment URL
+        id: vercel_url
+        run: |
+          # Get the branch name
+          BRANCH_NAME="${{ github.head_ref }}"
+
+          # Convert to lowercase
+          BRANCH_NAME_LOWER=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
+
+          # Replace non-alphanumeric characters with hyphens
+          BRANCH_NAME_SANITIZED=$(echo "$BRANCH_NAME_LOWER" | sed 's/[^a-z0-9]/-/g')
+
+          # Construct the deployment URL
+          DEPLOYMENT_URL="https://docs-getdbt-com-git-${BRANCH_NAME_SANITIZED}-dbt-labs.vercel.app"
+
+          echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
+
+      - name: Wait for deployment to be accessible
+        id: wait_for_deployment
+        run: |
+          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
+          echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
+
+          MAX_ATTEMPTS=60  # Wait up to 10 minutes
+          SLEEP_TIME=10    # Check every 10 seconds
+          ATTEMPTS=0
+
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
+            if [ "$STATUS_CODE" -eq 200 ]; then
+              echo "Deployment is accessible."
+              break
+            else
+              echo "Deployment not yet accessible (status code: $STATUS_CODE). Waiting..."
+              sleep $SLEEP_TIME
+              ATTEMPTS=$((ATTEMPTS + 1))
+            fi
+          done
+
+          if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
+            echo "Deployment did not become accessible within the expected time."
+            exit 1
+          fi  
+
+      - name: Get changed files
+        id: files
+        run: |
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '^website/docs/(docs|best-practices|guides|faqs|reference)/.*\.md$' || true)
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No documentation files were changed."
+            echo "changed_files=" >> $GITHUB_OUTPUT
+          else
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr '\n' ' ')
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate file preview links
+        id: links
+        run: |
+          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
+          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found in the specified directories."
+            LINKS="No documentation files were changed."
+          else
+            LINKS=""
+            # Convert CHANGED_FILES back to newline-separated for processing
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n')
+            for FILE in $CHANGED_FILES; do
+              # Remove 'website/docs/' prefix
+              FILE_PATH="${FILE#website/docs/}"
+              # Remove the .md extension
+              FILE_PATH="${FILE_PATH%.md}"
+
+              # Construct the full URL
+              FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
+              LINKS="$LINKS\n- $FULL_URL"
+            done
+          fi
+
+          # Properly set the multi-line output
+          echo "links<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$LINKS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update PR description with deployment links
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.issue.number;
+
+            // Fetch the current PR description
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            let body = pullRequest.body || '';
+
+            // Define the markers
+            const startMarker = '<!-- vercel-deployment-preview -->';
+            const endMarker = '<!-- end-vercel-deployment-preview -->';
+
+            // Get the deployment URL and links from environment variables
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
+            const links = process.env.LINKS;
+
+            // Build the deployment content without leading whitespace
+            const deploymentContent = [
+              `${startMarker}`,
+              '---',
+              '🚀 Deployment available! Here are the direct links to the updated files:',
+              '',
+              `${links}`,
+              '',
+              `${endMarker}`
+            ].join('\n');
+
+            // Remove existing deployment content between markers
+            const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
+            body = body.replace(regex, '').trim();
+
+            // Append the new deployment content
+            body = `${body}\n\n${deploymentContent}`;
+
+            // Update the PR description
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              body: body,
+            });
+        env:
+          DEPLOYMENT_URL: ${{ steps.vercel_url.outputs.deployment_url }}
+          LINKS: ${{ steps.links.outputs.links }}

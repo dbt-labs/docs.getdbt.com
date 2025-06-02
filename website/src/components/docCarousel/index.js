@@ -5,7 +5,7 @@ import { Navigation, Pagination } from 'swiper';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-function DocCarousel({ slidesPerView = 3, children }) {
+function DocCarousel({ slidesPerView = 3, autoHeight = false, children }) {
     if ( !children?.length > 0 ){      
         return false
     }
@@ -24,6 +24,7 @@ function DocCarousel({ slidesPerView = 3, children }) {
                 navigation
                 modules={[Navigation, Pagination]}
                 pagination={{ clickable: true }}
+                autoHeight={autoHeight} 
                 breakpoints={{
                   640: {
                     slidesPerView: 2,

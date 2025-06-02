@@ -8,7 +8,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Adapter creation']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -161,7 +160,7 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
 - Aim to release a new minor version of your plugin as you add substantial new features. Typically, this will be triggered by adding support for new features released in `dbt-adapters` or by changes to the data platform itself.
-- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (dbt Core v2).
+- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (<Constant name="core" /> v2).
 - Release patch versions of your plugins whenever needed. These patch releases should only contain fixes.
 
 :::note
@@ -556,6 +555,108 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/5468) for information on the macros required for `GRANT` statements:
 
+### Behavior change flags
+
+Starting in `dbt-adapters==1.5.0` and `dbt-core==1.8.7`, adapter maintainers can implement their own behavior change flags. Refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes) for more information. 
+
+Behavior Flags are not intended to be long-living feature flags. They should be implemented with the expectation that the behavior will be the default within an expected period of time. To implement a behavior change flag, you must provide a name for the flag, a default setting (`True` / `False`), an optional source, and a description and/or a link to the flag's documentation on docs.getdbt.com. 
+
+We recommend having a description and documentation link whenever possible. The description and/or docs should provide end users context for why the flag exists, why they may see a warning, and why they may want to utilize the behavior flag. Behavior change flags can be implemented by overwriting `_behavior_flags()` on the adapter in `impl.py`:
+
+<File name='impl.py'>
+
+```python
+class ABCAdapter(BaseAdapter):
+    ...
+    @property
+    def _behavior_flags(self) -> List[BehaviorFlag]:
+        return [
+            {
+                "name": "enable_new_functionality_requiring_higher_permissions",
+                "default": False,
+                "source": "dbt-abc",
+                "description": (
+                    "The dbt-abc adapter is implementing a new method for sourcing metadata. "
+                    "This is a more performant way for dbt to source metadata but requires higher permissions on the platform. "
+                    "Enabling this without granting the requisite permissions will result in an error. "
+                    "This feature is expected to be required by Spring 2025."
+                ),
+                "docs_url": "https://docs.getdbt.com/reference/global-configs/behavior-changes#abc-enable_new_functionality_requiring_higher_permissions",
+            }
+        ]
+```
+
+</File>
+
+Once a behavior change flag has been implemented, it can be referenced on the adapter both in `impl.py` and in Jinja macros:
+
+<File name='impl.py'>
+
+```python
+class ABCAdapter(BaseAdapter):
+    ...
+    def some_method(self, *args, **kwargs):
+        if self.behavior.enable_new_functionality_requiring_higher_permissions:
+            # do the new thing
+        else:
+            # do the old thing
+```
+
+</File>
+
+<File name='adapters.sql'>
+
+```sql
+{% macro some_macro(**kwargs) %}
+    {% if adapter.behavior.enable_new_functionality_requiring_higher_permissions %}
+        {# do the new thing #}
+    {% else %}
+        {# do the old thing #}
+    {% endif %}
+{% endmacro %}
+```
+
+</File>
+
+Every time the behavior flag evaluates to `False,` it warns the user, informing them that a change will occur in the future.
+
+This warning doesn't display when the flag evaluates to `True` as the user is already in the new experience.
+
+Recognizing that the warnings can be disruptive and are not always necessary, you can evaluate the flag without triggering the warning. Simply append `.no_warn` to the end of the flag.
+
+
+<File name='impl.py'>
+
+```python
+    class ABCAdapter(BaseAdapter):
+        ...
+        def some_method(self, *args, **kwargs):
+            if self.behavior.enable_new_functionality_requiring_higher_permissions.no_warn:
+                # do the new thing
+            else:
+                # do the old thing
+```
+
+</File>
+
+<File name='adapters.sql'>
+
+```sql
+{% macro some_macro(**kwargs) %}
+    {% if adapter.behavior.enable_new_functionality_requiring_higher_permissions.no_warn %}
+        {# do the new thing #}
+    {% else %}
+        {# do the old thing #}
+    {% endif %}
+{% endmacro %}
+```
+
+</File>
+
+It's best practice to evaluate a behavior flag as few times as possible. This will make it easier to remove once the behavior change has matured.
+
+As a result, evaluating the flag earlier in the logic flow is easier. Then, take either the old or the new path. While this may create some duplication in code, using behavior flags in this way provides a safer way to implement a change, which we are already admitting is risky or even breaking in nature.
+
 ### Other files
 
 #### `profile_template.yml`
@@ -564,7 +665,7 @@ In order to enable the [`dbt init` command](/reference/commands/init) to prompt 
 
 See examples:
 
-- [dbt-postgres](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml)
+- [dbt-postgres](https://github.com/dbt-labs/dbt-postgres/blob/main/dbt/include/postgres/profile_template.yml)
 - [dbt-redshift](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/include/redshift/profile_template.yml)
 - [dbt-snowflake](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/include/snowflake/profile_template.yml)
 - [dbt-bigquery](https://github.com/dbt-labs/dbt-bigquery/blob/main/dbt/include/bigquery/profile_template.yml)
@@ -584,7 +685,7 @@ This document has two sections:
 
 ### Testing prerequisites
 
-- Your adapter must be compatible with dbt-core **v1.1** or newer
+- Your adapter must be compatible with <Constant name="core" /> **v1.1** or newer
 - You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
@@ -1159,7 +1260,8 @@ Contributors to the community should think of contribution _as the end itself,_ 
 - Founder and executives who are interested in directly engaging with the community
   This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
 
-- Software Engineers at partner products that are building and supporting integrations with either dbt Core or dbt Cloud
+- Software Engineers at partner products that are building and supporting integrations with either - Software Engineers at partner products that are building and supporting integrations with either dbt Core or the <Constant name="core" />
+ or the <Constant name="dbt_platform" />
   This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
 
 ### Who might struggle in the dbt community
@@ -1243,8 +1345,6 @@ Breaking this down:
    <Lightbox src="/img/adapter-guide/3-additional-resources.png" title="more resources"/>
 - Implementation instructions:
     <Lightbox src="/img/adapter-guide/4-installation.png" title="more installation"/>
-- Future plans
-    <Lightbox src="/img/adapter-guide/5-coming-up.png" title="coming soon"/>
 - Contributor recognition (if applicable)
     <Lightbox src="/img/adapter-guide/6-thank-contribs.png" title="thank yous"/>
 
@@ -1279,7 +1379,7 @@ By opting into the below, you agree to this, and we take you at your word. dbt L
 
 ### Feature Completeness
 
-To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
+To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of <Constant name="core" /> given below, with best effort given to support the entire feature set.
 
 Essential functionality includes (but is not limited to the following features):
 

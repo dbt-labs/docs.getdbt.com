@@ -283,6 +283,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .lifecycle {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }
@@ -1088,6 +1092,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 .footer__items--right {
   display: flex;
   gap: 1.5em;
+  align-items: center;
 }
 
 /* fontawesome icons in footer */
@@ -2111,4 +2116,119 @@ h2.anchor.clicked a.hash-link:before {
   .quickstart-container {
     flex-direction: column;
   }
+}
+
+.markdown table th,
+.markdown table td {
+    padding: 8px;
+    border: 1px solid var(--table-border-color);
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: left;
+}
+
+table th {
+  background-color: var(--ifm-color-primary); /* Table header background color */
+}
+
+:root {
+    --table-border-color: #000000; /* Light mode table border color */
+}
+
+/* Dark mode border */
+[data-theme="dark"] {
+    --table-border-color: #ddd; /* Dark mode table border color */
+}
+table th {
+  color: #ffffff; /* White text on lighter background */
+  font-weight: bold;
+}
+
+/* Dark mode table header text */
+[data-theme='dark'] table th {
+  color: #000000; /* Black text on darker background */
+  font-weight: bold;
+}
+
+/* Begin tab borders */
+
+.tabs {
+  background-color: transparent;
+  padding: 10px;
+}
+
+/* Default color and border for tabs */
+.tabs__item {
+  background-color: var(--color-white); /* Sets the tab color the same as the file borders */
+  border: 2px solid var(--color-nav-text);
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Default color and border for tabs in dark mode */
+[data-theme='dark'] .tabs__item {
+  background-color: var(--color-primary-blue);
+  border: 1px solid var(--color-nav-text);
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/*Color when hovering over tabs */
+.tabs__item:hover {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .tabs__item:hover {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+}
+
+/* Color when the tab is clicked*/
+.tabs__item--active {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .tabs__item--active {
+  background-color: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Sets the tab content border and background color */
+[data-theme='dark'] .tabs-container{
+  border: 1px solid var(--color-nav-text);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+[data-theme='light'] .tabs-container{
+  border: 1px solid var(--ifm-toc-border-color);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+/* End tab borders */
+
+/* Qualified chat widget button positioning when widget not opened */
+iframe#q-messenger-frame:not(.qlfd-maximized) {
+  right: 100px !important;
+  z-index: 100000 !important;
+  bottom: 6px !important;
+}
+
+/* prevents nav bar from rendering weirdly with extended titles */
+.navbar__item{
+  white-space: nowrap;
 }

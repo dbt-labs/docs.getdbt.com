@@ -10,7 +10,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['SQL']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -71,7 +70,7 @@ This allows you to call the same table in multiple places with `{{ src('my_sourc
 We start here for several reasons:
 
 #### Source freshness reporting
-Using sources unlocks the ability to run [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
+Using sources unlocks the ability to run [source freshness reporting](/docs/build/sources#source-data-freshness) to make sure your raw data isn't stale.
 
 #### Easy dependency tracing
 If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables.
@@ -111,7 +110,7 @@ You'll move it into a `/marts` subfolder within your project's `/models` folder 
 **Cons**:
 - More pressure to get it right the first time, especially if you've referenced this model from any BI tool or downstream process.
 - Harder to audit, since you've overwritten your audit comparison model.
-- Requires navigating through Git commits to see what code you've changed throughout.
+- Requires navigating through <Constant name="git" /> commits to see what code you've changed throughout.
 
 
 #### Alongside refactoring
@@ -213,7 +212,7 @@ After you have moved everything into CTEs, you'll want to write a `select * from
 
 This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
-> For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes).
+> For more background on CTEs, check out the [dbt Labs style guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
 
 ## Port CTEs to individual data models
 Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/build/models).

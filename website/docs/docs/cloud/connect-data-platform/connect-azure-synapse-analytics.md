@@ -56,4 +56,4 @@ The following are the required fields for setting up a connection with Azure Syn
 
 ## Configuration 
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).

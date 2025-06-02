@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.1.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
@@ -45,7 +45,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### Advanced and experimental functionality
 
-**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#the-source_status-method). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in dbt Cloud](/docs/deploy/continuous-integration).
+**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#source_status). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in <Constant name="cloud" />](/docs/deploy/continuous-integration).
 
 
 [**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
@@ -61,8 +61,8 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 **dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/docs/core/connect-data-platform/bigquery-setup).
 
-**dbt-spark** added support for a [`session` connection method](/docs/core/connect-data-platform/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
+**dbt-spark** added support for a [`session` connection method](/docs/core/connect-data-platform/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in <Constant name="cloud" />.
 
 ### Dependencies
 
-[Python compatibility](/faqs/Core/install-python-compatibility): dbt Core officially supports Python 3.10
+[Python compatibility](/faqs/Core/install-python-compatibility): <Constant name="core" /> officially supports Python 3.10

@@ -18,16 +18,41 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
 
+<VersionBlock firstVersion="1.9">
+
 ```yaml
-measures:
-  - name: The name of the measure
-    description: 'same as always' ## Optional
-    agg: the aggregation type.
-    expr: the field
-    agg_params: 'specific aggregation properties such as a percentile'  ## Optional
-    agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
-    non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
+semantic_models:
+  - name: semantic_model_name
+   ..rest of the semantic model config
+    measures:
+      - name: The name of the measure
+        description: 'same as always' ## Optional
+        agg: the aggregation type.
+        expr: the field
+        agg_params: 'specific aggregation properties such as a percentile'  ## Optional
+        agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
+        non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
+        [config](/reference/resource-properties/config): Use the config property to specify configurations for your measure.  ## Optional
+          [meta](/reference/resource-configs/meta):  {<dictionary>} Set metadata for a resource and organize resources. Accepts plain text, spaces, and quotes. ## Optional
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+```yaml
+semantic_models:
+  - name: semantic_model_name
+   ..rest of the semantic model config
+    measures:
+      - name: The name of the measure
+        description: 'same as always' ## Optional
+        agg: the aggregation type.
+        expr: the field
+        agg_params: 'specific aggregation properties such as a percentile'  ## Optional
+        agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
+        non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
+```
+</VersionBlock>
 
 ### Name
 
@@ -96,13 +121,15 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ### Model with different aggregations
 
+<VersionBlock firstVersion="1.9">
+
 ```yaml
 semantic_models:
   - name: transactions
-    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
+    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each sku.
     model: ref('schema.transactions')
     defaults:
-      agg_time_dimensions: metric_time
+      agg_time_dimension: transaction_date
 
 # --- entities ---
     entities:
@@ -118,19 +145,22 @@ semantic_models:
 # --- measures ---
     measures:
       - name: transaction_amount_usd
-        description: Total USD value of transactions
+        description: Total usd value of transactions
         expr: transaction_amount_usd
         agg: sum
+        config:
+          meta:
+            used_in_reporting: true
       - name: transaction_amount_usd_avg
-        description: Average USD value of transactions
+        description: Average usd value of transactions
         expr: transaction_amount_usd
         agg: average
       - name: transaction_amount_usd_max
-        description: Maximum USD value of transactions
+        description: Maximum usd value of transactions
         expr: transaction_amount_usd
         agg: max
       - name: transaction_amount_usd_min
-        description: Minimum USD value of transactions
+        description: Minimum usd value of transactions
         expr: transaction_amount_usd
         agg: min
       - name: quick_buy_transactions 
@@ -146,8 +176,8 @@ semantic_models:
         expr: transaction_amount_usd
         agg: average 
       - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
-        description: The total USD value of valid transactions only
-        expr: CASE WHEN is_valid = True then transaction_amount_usd else 0 end 
+        description: The total usd value of valid transactions only
+        expr: case when is_valid = True then transaction_amount_usd else 0 end 
         agg: sum
       - name: transactions
         description: The average value of transactions.
@@ -167,7 +197,7 @@ semantic_models:
         
 # --- dimensions ---
     dimensions:
-      - name: metric_time
+      - name: transaction_date
         type: time
         expr: date_trunc('day', ts) # expr refers to underlying column ts
         type_params:
@@ -177,6 +207,92 @@ semantic_models:
         expr: case when quantity > 10 then true else false end
 
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+```yaml
+semantic_models:
+  - name: transactions
+    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each sku.
+    model: ref('schema.transactions')
+    defaults:
+      agg_time_dimension: transaction_date
+
+# --- entities ---
+    entities:
+      - name: transaction_id
+        type: primary
+      - name: customer_id
+        type: foreign
+      - name: store_id
+        type: foreign
+      - name: product_id
+        type: foreign
+
+# --- measures ---
+    measures:
+      - name: transaction_amount_usd
+        description: Total usd value of transactions
+        expr: transaction_amount_usd
+        agg: sum
+      - name: transaction_amount_usd_avg
+        description: Average usd value of transactions
+        expr: transaction_amount_usd
+        agg: average
+      - name: transaction_amount_usd_max
+        description: Maximum usd value of transactions
+        expr: transaction_amount_usd
+        agg: max
+      - name: transaction_amount_usd_min
+        description: Minimum usd value of transactions
+        expr: transaction_amount_usd
+        agg: min
+      - name: quick_buy_transactions 
+        description: The total transactions bought as quick buy
+        expr: quick_buy_flag 
+        agg: sum_boolean 
+      - name: distinct_transactions_count
+        description: Distinct count of transactions 
+        expr: transaction_id
+        agg: count_distinct
+      - name: transaction_amount_avg 
+        description: The average value of transactions 
+        expr: transaction_amount_usd
+        agg: average 
+      - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
+        description: The total usd value of valid transactions only
+        expr: case when is_valid = True then transaction_amount_usd else 0 end 
+        agg: sum
+      - name: transactions
+        description: The average value of transactions.
+        expr: transaction_amount_usd
+        agg: average
+      - name: p99_transaction_value
+        description: The 99th percentile transaction value
+        expr: transaction_amount_usd
+        agg: percentile
+        agg_params:
+          percentile: .99
+          use_discrete_percentile: False # False calculates the continuous percentile, True calculates the discrete percentile.
+      - name: median_transaction_value
+        description: The median transaction value
+        expr: transaction_amount_usd
+        agg: median
+        
+# --- dimensions ---
+    dimensions:
+      - name: transaction_date
+        type: time
+        expr: date_trunc('day', ts) # expr refers to underlying column ts
+        type_params:
+          time_granularity: day
+      - name: is_bulk_transaction
+        type: categorical
+        expr: case when quantity > 10 then true else false end
+
+```
+</VersionBlock>
 
 ### Non-additive dimensions
 
@@ -200,19 +316,19 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 ```yaml
 semantic_models:
-  - name: subscription_id
+  - name: subscriptions
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
     defaults:
-      agg_time_dimension: metric_time 
+      agg_time_dimension: subscription_date
 
     entities:
       - name: user_id
         type: foreign
-        primary_entity: subscription_table
+    primary_entity: subscription
 
     dimensions:
-      - name: metric_time
+      - name: subscription_date
         type: time
         expr: date_transaction
         type_params:
@@ -224,21 +340,21 @@ semantic_models:
         expr: user_id
         agg: count_distinct
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max 
       - name: mrr
         description: Aggregate by summing all users' active subscription plans
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
       - name: user_mrr
         description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
-          name: metric_time
+          name: subscription_date
           window_choice: max
           window_groupings: 
             - user_id 
@@ -252,18 +368,18 @@ metrics:
 
 We can query the semi-additive metrics using the following syntax:
 
-For dbt Cloud:
+For <Constant name="cloud" />:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
-For dbt Core:
+For <Constant name="core" />:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__month --order subscription__subscription_date__month 
+mf query --metrics mrr_by_end_of_month --group-by subscription__subscription_date__week --order subscription__subscription_date__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';

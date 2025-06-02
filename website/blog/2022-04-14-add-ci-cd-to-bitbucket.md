@@ -197,7 +197,7 @@ Reading the file over, you can see that we:
 
 In summary, anytime anything is pushed to main, we’ll ensure our production database reflects the dbt transformation, and we’ve saved the resulting artifacts to defer to.
 
-> ❓ **What are artifacts and why should I defer to them?** dbt artifacts are metadata of the last run - what models and tests were defined, which ones ran successfully, and which failed. If a future dbt run is set to ***defer*** to this metadata, it means that it can select models and tests to run based on their state, including and especially their difference from the reference metadata. See [Artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts), [Selection methods: “state”](https://docs.getdbt.com/reference/node-selection/methods#the-state-method), and [Caveats to state comparison](https://docs.getdbt.com/reference/node-selection/state-comparison-caveats) for details.
+> ❓ **What are artifacts and why should I defer to them?** dbt artifacts are metadata of the last run - what models and tests were defined, which ones ran successfully, and which failed. If a future dbt run is set to ***defer*** to this metadata, it means that it can select models and tests to run based on their state, including and especially their difference from the reference metadata. See [Artifacts](https://docs.getdbt.com/reference/artifacts/dbt-artifacts), [Selection methods: “state”](https://docs.getdbt.com/reference/node-selection/methods#state), and [Caveats to state comparison](https://docs.getdbt.com/reference/node-selection/state-comparison-caveats) for details.
 
 ### Slim Continuous Integration: Retrieve the artifacts and do a state-based run
 

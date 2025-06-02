@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 **Final release:** January 25, 2023
@@ -38,7 +38,7 @@ The high-level changes are:
 - Add support for Incremental Predicates (if applicable)
 - Make use of new adapter-zone tests
 
-For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
+For more detailed information and to ask any questions, please visit [<Constant name="core" />/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 

@@ -1,8 +1,9 @@
 ---
 title: "Configure incremental models"
-description: "Learn how to configure incremental models when building in dbt."
+description: "Learn how to configure and optimize incremental models when developing in dbt."
 id: "incremental-models"
 keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
+intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
 ---
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
@@ -34,8 +35,7 @@ To use incremental models, you also need to tell dbt:
 
 The `is_incremental()` macro powers incremental materializations. It will return `True` if _all_ of the following conditions are met:
 
-- The model must already exist in the database
-- The destination table already exists in the database
+- The model must already exist as a table in the database
 - The `full-refresh` flag _is not_ passed
 - The running model is configured with `materialized='incremental'`
 
@@ -94,7 +94,7 @@ Not specifying a `unique_key` will result in append-only behavior, which means d
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that defines the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
-The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source)).
+The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model may fail to match rows and generate duplicate rows. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`) or define a single-column [surrogate key](https://www.getdbt.com/blog/guide-to-surrogate-key) (for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source)).
 
 :::tip
 In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
@@ -103,7 +103,7 @@ By using the first syntax, which is more universal, dbt can ensure that the colu
     
 When you pass a list in this way, please ensure that each column does not contain any nulls, or the incremental model run may fail.
    
-Alternatively, you can define a single-column [surrogate key](/terms/surrogate-key), for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source).
+Alternatively, you can define a single-column [surrogate key](https://www.getdbt.com/blog/guide-to-surrogate-key), for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source).
 :::
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
@@ -111,10 +111,10 @@ When you define a `unique_key`, you'll see this behavior for each row of "new" d
 * If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](https://www.getdbt.com/blog/guide-to-surrogate-key).
 
 :::info
-While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](/docs/build/incremental-strategy).
+While common incremental strategies, such as `delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](/docs/build/incremental-strategy).
 :::
 
 #### `unique_key` example
@@ -156,15 +156,17 @@ Building this model incrementally without the `unique_key` parameter would resul
 ## How do I rebuild an incremental model?
 If your incremental model logic has changed, the transformations on your new rows of data may diverge from the historical transformations, which are stored in your target table. In this case, you should rebuild your incremental model.
 
-To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time.
+To force dbt to rebuild the entire incremental model from scratch, use the `--full-refresh` flag on the command line. This flag will cause dbt to drop the existing target table in the database before rebuilding it for all-time. 
 
 ```bash
 $ dbt run --full-refresh --select my_incremental_model+
 ```
+
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
-For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation.
+You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 
+For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation. 
 
 ## What if the columns of my incremental model change?
 
@@ -212,11 +214,11 @@ Currently, `on_schema_change` only tracks top-level column changes. It does not 
 
 ### Default behavior
 
-This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
+This is the behavior of `on_schema_change: ignore`, which is set by default.
 
 If you add a column to your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
 
-Similarly, if you remove a column from your incremental model, and execute a `dbt run`, this column will _not_ be removed from your target table.
+If you remove a column from your incremental model and execute a `dbt run`, `dbt run` will fail.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 

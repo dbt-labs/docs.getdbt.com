@@ -4,6 +4,12 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="grid--3-col">
 
+<Card
+    title="Power BI"
+    link="/docs/cloud-integrations/semantic-layer/power-bi"
+    body="Use reports to query the dbt Semantic Layer with Power BI and produce dashboards with trusted data."
+    icon="pbi"/>
+
  <Card
     title="Tableau"
     link="/docs/cloud-integrations/semantic-layer/tableau"
@@ -17,10 +23,24 @@ The following tools integrate with the dbt Semantic Layer:
     icon="google-sheets-logo-icon"/>
 
   <Card
-    title="Microsoft Excel (preview)"
+    title="Microsoft Excel"
     link="/docs/cloud-integrations/semantic-layer/excel"
     body="Connect to Microsoft Excel to query metrics and collaborate with your team. Available for Excel Desktop or Excel Online."
     icon="excel"/>
+
+  <div className="card-container">
+    <Card
+      title="Dot"
+      link="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      body="Enable everyone to analyze data with AI in Slack or Teams."
+      icon="dot-ai"/>
+      <a href="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+  </div>
 
   <div className="card-container">
     <Card
@@ -54,9 +74,9 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Lightdash"
     body="Check out how to connect, query, and consume reliable dbt metrics in real time "
-    link="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    link="https://docs.lightdash.com/references/dbt-semantic-layer"
     icon="lightdash"/>
-    <a href="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    <a href="https://docs.lightdash.com/references/dbt-semantic-layer"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -68,9 +88,9 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Mode"
     body="Discover how to connect, access, and get trustworthy metrics and insights."
-    link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
+    link="https://mode.com/help/articles/supported-databases#dbt-semantic-layer"
     icon="mode"/>
-    <a href="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
+    <a href="https://mode.com/help/articles/supported-databases#dbt-semantic-layer"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -82,15 +102,30 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Push.ai"
     body="Explore how to connect and use metrics to power reports and insights that drive change."
-    link="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
+    link="https://docs.push.ai/data-sources/semantic-layers/dbt"
     icon="push"/>
-    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer?utm_source=dbt&utm_medium=referral&utm_campaign=available-sl-integrations"
+    <a href="https://docs.push.ai/data-sources/semantic-layers/dbt"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
       <Icon name='fa-external-link' />
     </a>
 </div>
+
+<div className="card-container">
+  <Card
+    title="Sigma (Preview)"
+    body="Connect Sigma to the dbt Semantic Layer to allow you to leverage your predefined dbt metrics in Sigma workbooks."
+    link="https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration"
+    icon="sigma"/>
+    <a href="https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+</div>
+
 
 <div className="card-container">
   <Card

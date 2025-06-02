@@ -5,7 +5,7 @@ id: "redshift-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-redshift'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-redshift'
   min_core_version: 'v0.10.0'
   cloud_support: Supported
@@ -31,19 +31,20 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `port`  | 5439 |  |
 | `dbname`  | my_db | Database name|
 | `schema`  | my_schema | Schema name|
-| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out|
+| `connect_timeout`  | 30 | Number of seconds before connection times out. Default is `None`|
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below|
 | `role`  | None | Optional, user identifier of the current session|
 | `autocreate`  | false | Optional, default false. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources|
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement|
-| `retries`  | 1 | Number of retries |
+| `retries`  | 1 | Number of retries (on each statement) |
+| `retry_all`  | true | Allows dbt to retry all statements in a query* |
 
 ## Authentication Parameters
 
 
-The authentication methods that dbt Core supports on Redshift are: 
+The authentication methods that <Constant name="core" /> supports on Redshift are: 
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile

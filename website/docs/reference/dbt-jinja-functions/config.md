@@ -34,13 +34,21 @@ __Args__:
 
 The `config.get` function is used to get configurations for a model from the end-user. Configs defined in this way are optional, and a default value can be provided.
 
+There are 3 cases:
+1. The configuration variable exists, it is not `None`
+1. The configuration variable exists, it is `None`
+1. The configuration variable does not exist
+
 Example usage:
 ```sql
 {% materialization incremental, default -%}
   -- Example w/ no default. unique_key will be None if the user does not provide this configuration
   {%- set unique_key = config.get('unique_key') -%}
 
-  -- Example w/ default value. Default to 'id' if 'unique_key' not provided
+  -- Example w/ alternate value. Use alternative of 'id' if 'unique_key' config is provided, but it is None
+  {%- set unique_key = config.get('unique_key') or 'id' -%}
+
+  -- Example w/ default value. Default to 'id' if the 'unique_key' config does not exist
   {%- set unique_key = config.get('unique_key', default='id') -%}
   ...
 ```

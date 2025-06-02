@@ -27,7 +27,7 @@ unit_tests:
   - name: test_is_valid_email_address
     model: my_model 
     versions:
-      include: 
+      exclude: 
         - 1
     ...
 

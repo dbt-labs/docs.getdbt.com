@@ -40,7 +40,7 @@ seeds:
 
 </File>
 
-Or (as of v0.21):
+Or:
 
 <File name='seeds/properties.yml'>
 

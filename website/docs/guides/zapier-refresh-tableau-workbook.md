@@ -1,21 +1,20 @@
 ---
 title: "Refresh Tableau workbook with extracts after a job finishes"
 id: zapier-refresh-tableau-workbook
-description: Use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
-hoverSnippet: Learn how to use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
+description: Use Zapier to trigger a Tableau workbook refresh once a dbt job completes successfully.
+hoverSnippet: Learn how to use Zapier to trigger a Tableau workbook refresh once a dbt job completes successfully.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Webhooks']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-This guide will teach you how to refresh a Tableau workbook that leverages [extracts](https://help.tableau.com/current/pro/desktop/en-us/extracting_data.htm) when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
+This guide will teach you how to refresh a Tableau workbook that leverages [extracts](https://help.tableau.com/current/pro/desktop/en-us/extracting_data.htm) when a <Constant name="cloud" /> job has completed successfully and there is fresh data available. The integration will:
 
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Tableau workbook
@@ -24,7 +23,7 @@ This guide will teach you how to refresh a Tableau workbook that leverages [extr
 
 To set up the integration, you need to be familiar with:
 
-- [dbt Cloud Webhooks](/docs/deploy/webhooks)
+- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
 - Zapier
 - The [Tableau API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api.htm)
 - The [version](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#rest_api_versioning) of Tableau's REST API that is compatible with your server 
@@ -40,12 +39,12 @@ Press **Continue**, then copy the webhook URL.
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-## Configure a new webhook in dbt Cloud
-To set up a webhook subscription for dbt Cloud, follow the instructions in [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription). For the event, choose **Run completed** and modify the **Jobs** list to include only the jobs that should trigger a report refresh.
+## Configure a new webhook in dbt
+To set up a webhook subscription for <Constant name="cloud" />, follow the instructions in [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription). For the event, choose **Run completed** and modify the **Jobs** list to include only the jobs that should trigger a report refresh.
 
 Remember to save the Webhook Secret Key for later. Paste in the webhook URL obtained from Zapier in step 2 into the **Endpoint** field and test the endpoint.
 
-Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event dbt Cloud sent.
+Once you've tested the endpoint in <Constant name="cloud" />, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event <Constant name="cloud" /> sent.
 
 The sample body's values are hard-coded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
@@ -68,7 +67,7 @@ Choose **Run Python** as the Event and input the following code:
 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt Cloud Webhook key
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="cloud" /> Webhook key
 store.set('TABLEAU_SITE_URL', 'abc123') #replace with your Tableau Site URL, inclusive of https:// and .com
 store.set('TABLEAU_SITE_NAME', 'abc123') #replace with your Tableau Site/Server Name
 store.set('TABLEAU_API_TOKEN_NAME', 'abc123') #replace with your Tableau API Token Name
@@ -106,14 +105,14 @@ pat_secret = secret_store.get('TABLEAU_API_TOKEN_SECRET')
 workbook_name = "YOUR_WORKBOOK_NAME"
 api_version = "ENTER_COMPATIBLE_VERSION"
 
-#Validate authenticity of webhook coming from dbt Cloud
+#Validate authenticity of webhook coming from <Constant name="cloud" />
 auth_header = input_data['auth_header']
 raw_body = input_data['raw_body']
 
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt Cloud.")
+raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="cloud" />.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

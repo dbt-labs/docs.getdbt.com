@@ -5,4 +5,6 @@ sidebar_label: 'Set different database connections at environment level'
 id: diff-database-environment
 ---
 
-Although you're unable to set a different connection at the environment level, there is a workaround where you can have separate projects for their different environments and link them to different hostnames, while still connecting to the same repo.
+<Constant name="cloud" /> supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all <Constant name="cloud" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can only use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
+
+In dbt Core, you can maintain separate production and development environments through the use of [`targets`](/reference/dbt-jinja-functions/target) within a [profile](/docs/core/connect-data-platform/profiles.yml). dbt Core users can define different targets in their profiles.yml, which means you can have targets for different data warehouses for the same profile.

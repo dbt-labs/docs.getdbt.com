@@ -4,7 +4,7 @@ description: "Read this guide to learn about the BigQuery warehouse setup in dbt
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-bigquery'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-bigquery'
   min_core_version: 'v0.10.0'
   cloud_support: Supported
@@ -219,7 +219,8 @@ No timeout is set by default. (For historical reasons, some query types use a de
 
 :::caution Note
 
-The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. So, if dbt-bigquery ran into an exception at 300 seconds, the actual BigQuery job could still be running for the time set in BigQuery's own timeout settings.
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
+Normally, BigQuery keeps running the job even if this timeout is reached, however `dbt-bigquery` will send a request to BigQuery to cancel it.
 
 :::
   
@@ -388,11 +389,55 @@ my-profile:
       execution_project: buck-stops-here-456
 ```
 
+### Quota project
+
+By default, dbt will use the `quota_project_id` set within the credentials of the account you are using to authenticate to BigQuery.
+
+Optionally, you may specify `quota_project` to bill for query execution instead of the default quota project specified for the account from the environment.
+
+This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project in which they are defined. Without overriding the quota project, it will fail to connect.
+
+If you choose to set a quota project, the account you use to authenticate must have the `Service Usage Consumer` role on that project.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      quota_project: my-bq-quota-project
+```
+
+### Running Python models on BigQuery DataFrames
+To run dbt Python models on GCP, dbt uses BigQuery DataFrames running directly with BigQuery compute, leveraging the scale and performance of BigQuery.
+
+```
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      compute_region: us-central1
+      dataset: my_dataset
+      gcs_bucket: dbt-python
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: abc-123
+      threads: 1
+      type: bigquery
+```
+
+
 ### Running Python models on Dataproc
 
-To run dbt Python models on GCP, dbt uses companion services, Dataproc and Cloud Storage, that offer tight integrations with BigQuery. You may use an existing Dataproc cluster and Cloud Storage bucket, or create new ones:
-- https://cloud.google.com/dataproc/docs/guides/create-cluster
-- https://cloud.google.com/storage/docs/creating-buckets
+import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';
+
+<BigQueryDataproc />
 
 Then, add the bucket name, cluster name, and cluster region to your connection profile:
 
@@ -451,6 +496,16 @@ For a full list of possible configuration fields that can be passed in `dataproc
 BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
 - BigQuery Data Editor
 - BigQuery User
+
+Required roles and permissions for BigQuery DataFrames:
+- BigQuery Job User
+- BigQuery Read Session User
+- Notebook Runtime User
+- Code Creator
+- colabEnterpriseUser
+
+
+
 
 This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 

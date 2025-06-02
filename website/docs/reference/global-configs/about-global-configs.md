@@ -58,7 +58,7 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 
 ## Available flags
 
-| Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in Cloud CLI? |
+| Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in <Constant name="cloud_cli" />? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
 | [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
 | [debug](/reference/global-configs/logs#debug-level-logging) | boolean | False | ✅ | `DBT_DEBUG` | `--debug`, `--no-debug` | ✅ |
@@ -78,8 +78,8 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [populate_cache](/reference/global-configs/cache) | boolean | True | ✅ | `DBT_POPULATE_CACHE` | `--populate-cache`, `--no-populate-cache` | ✅ |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_PRINT` | `--print` | ❌ |
 | [printer_width](/reference/global-configs/print-output#printer-width) | int | 80 | ✅ | `DBT_PRINTER_WIDTH` | `--printer-width` | ❌ |
-| [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ✅ (as top-level key) | `DBT_PROFILE`  | `--profile` | ❌ |
-| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--log-path` | ❌ |
+| [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ✅ (as top-level key) | `DBT_PROFILE`  | [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) | ❌ |
+| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
 | [project_dir](/reference/dbt_project.yml) | path |  | ❌ | `DBT_PROJECT_DIR` | `--project-dir` | ❌ |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | boolean | False | ❌ | `DBT_QUIET` | `--quiet` | ✅ |
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | string | None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` | ✅ |
@@ -89,11 +89,11 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [static_parser](/reference/global-configs/parsing#static-parser) | boolean | True | ✅ | `DBT_STATIC_PARSER` | `--static-parser`, `--no-static-parser` | ❌ |
 | [store_failures](/reference/resource-configs/store_failures) | boolean | False | ✅ (as resource config) | `DBT_STORE_FAILURES` | `--store-failures`, `--no-store-failures` | ✅ |
 | [target_path](/reference/global-configs/json-artifacts) | path | None (uses `target/`) | ❌ | `DBT_TARGET_PATH` | `--target-path` | ❌ |
-| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ❌ | `DBT_TARGET` | `--target` | ❌ |
+| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ❌ | `DBT_TARGET` | [`--target`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) | ❌ |
 | [use_colors_file](/reference/global-configs/logs#color) | boolean | True | ✅ | `DBT_USE_COLORS_FILE` | `--use-colors-file`, `--no-use-colors-file` | ❌ |
 | [use_colors](/reference/global-configs/print-output#print-color) | boolean | True | ✅ | `DBT_USE_COLORS` | `--use-colors`, `--no-use-colors` | ❌ |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | boolean | False | ✅ | `DBT_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser`, `--no-use-experimental-parser` | ❌ |
 | [version_check](/reference/global-configs/version-compatibility) | boolean | varies | ✅ | `DBT_VERSION_CHECK` | `--version-check`, `--no-version-check` | ❌ |
 | [warn_error_options](/reference/global-configs/warnings) | dict | {} | ✅ | `DBT_WARN_ERROR_OPTIONS` | `--warn-error-options` | ✅ |
-| [warn_error](/reference/global-configs/warnings) | boolean | False | ✅ | `DBT_WARN_ERROR` | `--warn-error`, `--no-warn-error` | ✅ |
+| [warn_error](/reference/global-configs/warnings) | boolean | False | ✅ | `DBT_WARN_ERROR` | `--warn-error` | ✅ |
 | [write_json](/reference/global-configs/json-artifacts) | boolean | True | ✅ | `DBT_WRITE_JSON` | `--write-json`, `--no-write-json` | ✅ |

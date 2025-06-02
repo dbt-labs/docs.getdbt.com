@@ -5,6 +5,8 @@ sidebar_label: 'Document macros'
 id: documenting-macros
 ---
 
+import MacroArgsNote from '/snippets/_validate-macro-args.md';
+
 To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
@@ -19,7 +21,7 @@ macros:
     description: A macro to convert cents to dollars
     arguments:
       - name: column_name
-        type: string
+        type: column
         description: The name of the column you want to convert
       - name: precision
         type: integer
@@ -28,9 +30,12 @@ macros:
 
 </File>
 
+<MacroArgsNote />
+
 ## Document a custom materialization
 
 When you create a [custom materialization](/guides/create-new-materializations), dbt creates an associated macro with the following format:
+
 ```
 materialization_{materialization_name}_{adapter}
 ```

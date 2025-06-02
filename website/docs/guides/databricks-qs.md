@@ -1,22 +1,21 @@
 ---
-title: "Quickstart for dbt Cloud and Databricks"
+title: "Quickstart for dbt and Databricks"
 id: "databricks"
 level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
-recently_updated: true
-tags: ['dbt Cloud', 'Quickstart','Databricks']
+tags: ['platform', 'Quickstart','Databricks']
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It will show you how to: 
+In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Databricks. It will show you how to: 
 
 - Create a Databricks workspace.
 - Load sample data into your Databricks account.
-- Connect dbt Cloud to Databricks.
+- Connect <Constant name="cloud" /> to Databricks.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -28,7 +27,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
+- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
 
 ### Related content
@@ -41,36 +40,33 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ## Create a Databricks workspace
 
-1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information and click **Continue**.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
     </div>
 
-2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
-3. Check your email to complete the verification process.
-4. After setting up your password, you will be guided to choose a subscription plan. Select the `Premium` or `Enterprise` plan to access the SQL Compute functionality required for using the SQL warehouse for dbt. We have chosen `Premium` for this tutorial. Click **Continue** after selecting your plan.
+2. On the next screen, select your cloud provider. This tutorial uses AWS as the cloud provider, but if you use Azure or GCP internally, please select your platform. The setup process will be similar. Do not select the **Get started with Community Edition** option, as this will not provide the required compute for this guide. 
+
+        <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/choose_provider.png" title="Choose cloud provider" />
+    </div>
+
+3. Check your email and complete the verification process.
+
+4. After completing the verification processes, you will be brought to the first setup screen. Databricks defaults to the `Premium` plan and you can change the trial to `Enterprise` on this page.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
     </div>
 
-5. Click **Get Started** when you come to this below page and then **Confirm** after you validate that you have everything needed.
+5. Now, it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, and more so into one place.  Provide the name of your workspace, choose the appropriate AWS region, and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_1.png" />
-    </div>
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
+    <Lightbox src="/img/databricks_tutorial/images/start_quickstart.png" title="Create AWS resources" />
     </div>
 
-6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for the purpose of this tutorial. 
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
-    </div>
-
-7. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
+6. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
@@ -80,7 +76,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 If you get a session error and don’t get redirected to this page, you can go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
 :::
 
-8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
+7. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/parameters.png" title="Parameters" />
     </div>    
@@ -89,11 +85,11 @@ If you get a session error and don’t get redirected to this page, you can go b
     <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
     </div>    
 
-10. Go back to the Databricks tab. You should see that your workspace is ready to use.
+8. Go back to the Databricks tab. You should see that your workspace is ready to use.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/workspaces.png" title="A Databricks Workspace" />
     </div>
-11. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
+9. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
 
 ## Load data
 
@@ -165,17 +161,17 @@ If you get a session error and don’t get redirected to this page, you can go b
     grant all privileges on schema default to users;
     ```
 
-## Connect dbt Cloud to Databricks
+## Connect dbt to Databricks
 
-There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
+There are two ways to connect <Constant name="cloud" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Databricks trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
 ## Set up the integration from Partner Connect
 
 :::note
- Partner Connect is intended for trial partner accounts. If your organization already has a dbt Cloud account, connect manually. Refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+ Partner Connect is intended for trial partner accounts. If your organization already has a <Constant name="cloud" /> account, connect manually. Refer to [Connect to <Constant name="cloud" /> manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
 :::
 
-To connect dbt Cloud to Databricks using Partner Connect, do the following:
+To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the following:
 
 1. In the sidebar of your Databricks account, click **Partner Connect**.
 
@@ -212,23 +208,23 @@ To connect dbt Cloud to Databricks using Partner Connect, do the following:
 
 8. Click **Next**.
 
-   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial dbt Cloud account.
+   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial <Constant name="cloud" /> account.
 
-9. Click **Connect to dbt Cloud**.
+9. Click **Connect to <Constant name="cloud" />**.
 
    A new tab opens in your web browser, which displays the getdbt.com website.
 
-10. Complete the on-screen instructions on the getdbt.com website to create your trial dbt Cloud account.
+10. Complete the on-screen instructions on the getdbt.com website to create your trial <Constant name="cloud" /> account.
 
-## Set up a dbt Cloud managed repository
+## Set up a dbt managed repository
 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -240,10 +236,10 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

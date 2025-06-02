@@ -61,7 +61,7 @@ Example of how to version a page in the `dbt-versions.js` file:
 exports.versionedPages = [
     {
       "page": "docs/supported-data-platforms",
-      "firstVersion": "0.21",
+      "firstVersion": "1.0",
     }
 ]
 ```
@@ -87,10 +87,10 @@ This component can be added directly to a markdown file in a similar way as othe
 - **lastVersion** (optional): Sets the last version this piece of content is available for.
     - If **lastVersion** prop not set, it will be available from the **firstVersion,** up to the latest version.
 
-Both properties can be used together to set a range where the content should show. In the example below, this content will only show if the selected version is between **0.21** and **1.0**:
+Both properties can be used together to set a range where the content should show. In the example below, this content will only show if the selected version is between **1.5** and **1.9**:
 
 ```markdown
-<VersionBlock lastVersion="1.6">
+<VersionBlock firstVersion="1.5" lastVersion="1.9">
 
 	Versioned content here
 
@@ -99,17 +99,17 @@ Both properties can be used together to set a range where the content should sho
 
 ### Example for versioning entire pages
 
-On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v0.21.0 and later** shows `--select`, while **v-.20.x and earlier** changes this to `--models`.
+On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v1.5 and later** shows `DBT_DEFER`, while **v-.1.4 and earlier** changes this to `DBT_DEFER_TO_STATE`.
 
 ![oldway](https://user-images.githubusercontent.com/3880403/163254165-dea23266-2eea-4e65-b3f0-c7b6d3e51fc3.png)
 
 Below is how we can implement the same versioning using the new **VersionBlock** component:
 
-You see this block when the selected version is >= 0.21:
+You see this block when the selected version is >= 1.5:
 
 ```code
 
-<VersionBlock firstVersion="0.21">
+<VersionBlock firstVersion="1.5">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
@@ -119,10 +119,10 @@ $ dbt test --select [...] --defer --state path/to/artifacts
 </VersionBlock>
 ```
 
-You see this version block when the selected version is `<= 0.20`
+You see this version block when the selected version is `<= 1.9`
 
 ```code
-<VersionBlock lastVersion="0.20">
+<VersionBlock lastVersion="1.9">
 
 ```shell
 $ dbt run --models [...] --defer --state path/to/artifacts
@@ -130,94 +130,6 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 \```
 
 </VersionBlock>
-```
-
-## Using global variables
-
----
-
-Global variables can be configured for use throughout the docs.
-
-Using a global variable requires two steps:
-
-1. Set the variable in the `website/dbt-global-variables.js` file.
-2. Use the **Var** component to add the global variable to a page.
-
-```jsx
-// The dbtCore property is the identifier for the variable,
-// while the name property is the value shown on the page.
-
-exports.dbtVariables = {
-  dbtCore: {
-    name: "dbt Core"
-  }
-}
-```
-
-```markdown
-// <Var name="dbtCore" /> is converted to dbt Core
-
-You can install <Var name="dbtCore" /> on the command line by using one of these recommended methods:
-```
-
-### Versioning global variables
-
-It is possible to version global variables as well. This creates the ability to show different variations of a string based off the current version a visitor has selected.
-
-To extend our `dbt-global-variables.js` file above, we can add a new variable: *note - these versions are not accurate and only shown for this example.*
-
-```jsx
-// A new variable called dbtCloud is added below
-// This variable includes a versions array
-// "Sinter" will replace "dbt Cloud" for versions 0.21 or lower
-
-exports.dbtVariables = {
-  dbtCore: {
-    name: "dbt Core"
-  },
-	dbtCloud: {
-		name: "dbt Cloud",
-		versions: [
-      {
-        "name": "Sinter",
-        "version": "0.21"
-      }
-    ]
-	}
-}
-```
-
-```markdown
-You can get started with <Var name="dbtCloud" /> by [Signing up](https://www.getdbt.com/signup/).
-```
-
-In the above example, the **dbtCloud** property has a default name of “dbt Cloud”. The naming for variables cascade down, meaning “dbt Cloud” will show for all versions, until version **0.21** or lower is selected. At that point “Sinter” will replace “dbt Cloud”.
-
-### Global variables properties
-
-**name** (required): Expects the identifier for a global variable.
-
-### Global variables example
-
-The global `<Var />` component can be used inline, for example:
-
-```markdown
-This piece of markdown content explains why <Var name="dbt" /> is awesome.
-```
-
-However, a Var component cannot start a new line of content. Fortunately, a workaround exists to use the Var component at the beginning of a line of content.
-
-To use the component at the beginning of a sentence, add a non-breaking space character before the component:
-
-```markdown
-// When starting a new line with a global variable,
-// a non-breaking space is required
-
-// Works
-&nbsp;<Var name="dbt" /> is awesome!
-
-// Does not work
-<Var name="dbt" /> is awesome!
 ```
 
 ## Reusing content

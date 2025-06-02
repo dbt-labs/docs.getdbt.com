@@ -3,14 +3,17 @@ title: "Run results JSON file"
 sidebar_label: "Run results"
 ---
 
-**Current schema**: [`v5`](https://schemas.getdbt.com/dbt/run-results/v5/index.html)
+**Current schema**: [`v6`](https://schemas.getdbt.com/dbt/run-results/v6/index.html)
 
  **Produced by:**
  [`build`](/reference/commands/build)
+ [`clone`](/reference/commands/clone)
  [`compile`](/reference/commands/compile)
  [`docs generate`](/reference/commands/cmd-docs)
+ [`retry`](/reference/commands/retry)
  [`run`](/reference/commands/run)
  [`seed`](/reference/commands/seed)
+ [`show`](/reference/commands/show)
  [`snapshot`](/reference/commands/snapshot)
  [`test`](/reference/commands/test) 
  [`run-operation`](/reference/commands/run-operation)
@@ -43,8 +46,6 @@ import RowsAffected from '/snippets/_run-result.md';
 <RowsAffected/>
 
 <!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
-
-<VersionBlock firstVersion="1.7">
 
 The run_results.json includes three attributes related to the `applied` state that complement `unique_id`:
 
@@ -195,5 +196,3 @@ Here's a printed snippet from the `run_results.json`:
     }
   ],
 ```
-
-</VersionBlock>

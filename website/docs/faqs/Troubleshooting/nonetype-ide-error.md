@@ -6,7 +6,7 @@ id: nonetype-ide-error
 
 ---
 
-If you're unable to access the IDE due to the below error message, we'll do our best to get you unstuck with the below steps!
+If you're unable to access the <Constant name="cloud_ide" /> due to the below error message, we'll do our best to get you unstuck with the below steps!
 
 ```shell
 NoneType object has no attribute 

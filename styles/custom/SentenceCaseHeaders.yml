@@ -1,0 +1,34 @@
+extends: capitalization
+message: "'%s' should use sentence-style capitalization. Try '%s' instead."
+level: warning
+scope: heading
+match: $sentence  # Enforces sentence-style capitalization
+indicators:
+  - ":"
+exceptions:
+  - '\bdbt\b'
+  - '\bdbt\s+Cloud\b'
+  - '\bdbt\s+Core\b'
+  - '\bdbt\s+Cloud\s+CLI\b'
+  - Snowflake
+  - Databricks
+  - Azure
+  - GCP
+  - AWS
+  - SQL
+  - CLI
+  - API
+  - YAML
+  - JSON
+  - HTML
+  - Redshift
+  - Google
+  - BigQuery
+  - SnowSQL
+  - Snowsight
+  - Snowpark
+  - Fabric
+  - Microsoft
+  - Postgres
+  - Explorer
+  - IDE

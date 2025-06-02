@@ -4,7 +4,7 @@ required: True
 keyword: project version, project versioning, dbt project versioning
 ---
 
-import VersionsCallout from '/snippets/_version-callout.md';
+import VersionsCallout from '/snippets/_model-version-callout.md';
 
 <VersionsCallout />
 
@@ -17,7 +17,7 @@ The version tag in a `dbt_project` file represents the version of your dbt proje
 
 Starting in dbt version 1.5, `version` in the `dbt_project.yml` is an *optional parameter*. If used, the version must be in a [semantic version](https://semver.org/) format, such as `1.0.0`. The default value is `None` if not specified. For users on dbt version 1.4 or lower, this tag is required, though it isn't currently used meaningfully by dbt.
 
-For more on Core versions, see [About dbt Core versions](/docs/dbt-versions/core).
+For more on Core versions, see [About <Constant name="core" /> versions](/docs/dbt-versions/core).
 
 <File name='dbt_project.yml'>
 
@@ -33,7 +33,7 @@ A version tag in a `.yml` property file provides the control tag, which informs 
 
 Starting from version 1.5, dbt will no longer require this configuration in your resource `.yml` files.  If you want to know more about why this tag was previously required, you can refer to the [FAQs](#faqs). For users on dbt version 1.4 or lower, this tag is required,
 
-For more on property files, see their general [documentation](/reference/configs-and-properties#where-can-i-define-properties) on the same page.
+For more on property files, see their general [documentation](/reference/define-properties) on the same page.
 
 <Tabs
   groupId="resource-version-configs"

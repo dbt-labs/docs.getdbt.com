@@ -12,8 +12,18 @@ The following tips are organized into the following categories:
 - [Package tips](#package-tips) to help you streamline your workflow.
 - [Advanced tips and techniques](#advanced-tips-and-techniques) to help you get the most out of dbt.
 
+If you're developing with the <Constant name="cloud_ide" />, you can refer to the [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
 
-If you're developing with the dbt Cloud IDE, you can refer to the [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
+## YAML tips
+
+This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest [vars](/reference/dbt-jinja-functions/var) and [`env_var`](/reference/dbt-jinja-functions/env_var) in your YAML files.
+
+- You can use Jinja in almost every YAML file in dbt _except_ the [`dependencies.yml` file](/docs/build/packages#use-cases). This is because the `dependencies.yml` file doesn't support Jinja.
+- Use `vars` in any YAML file that supports Jinja (like `schema.yml`, `snapshots.yml`). However, note that:
+  - In `dbt_project.yml`, `packages.yml`, and `profiles.yml` files, you must pass `vars` through the CLI using `--vars`, not defined inside the `vars:` block in the YAML file. This is because these files are parsed before Jinja is rendered.
+- You can use `env_var()` in all YAML files that support Jinja. Only `profiles.yml` and `packages.yml` support environment variables for secure values (using the `DBT_ENV_SECRET_` prefix). These are masked in logs and intended for credentials or secrets.
+
+For additional information, check out [<Constant name="core" />'s context docs](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/context/README.md).
 
 ## Package tips
 
@@ -40,7 +50,7 @@ Leverage these dbt packages to streamline your workflow:
 - Set `vars` in your `dbt_project.yml` to define global defaults for certain conditions, which you can then override using the `--vars` flag in your commands.
 - Use [for loops](/guides/using-jinja?step=3) in Jinja to <Term id="dry">DRY</Term> up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [grants config](/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.
-- Define [source-freshness](/docs/build/sources#snapshotting-source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
+- Define [source-freshness](/docs/build/sources#source-data-freshness) thresholds on your sources to avoid running transformations on data that has already been processed.
 - Use the `+` operator on the left of a model `dbt build --select +model_name` to run a model and all of its upstream dependencies. Use the `+` operator on the right of the model `dbt build --select model_name+` to run a model and everything downstream that depends on it.
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
@@ -52,5 +62,5 @@ Leverage these dbt packages to streamline your workflow:
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
+- [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Develop in the Cloud](/docs/cloud/about-develop-dbt)

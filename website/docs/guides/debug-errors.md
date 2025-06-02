@@ -6,9 +6,8 @@ displayText: Debugging errors
 hoverSnippet: Learn about errors and the art of debugging those errors.
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Troubleshooting', 'dbt Core', 'dbt Cloud']
+tags: ['Troubleshooting', 'dbt Core', 'dbt platform']
 level: 'Beginner'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -23,10 +22,9 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
-    - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
-    - **dbt Core users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+    - **<Constant name="cloud" /> users**: Use the above, or the `Details` tab in the command output.
+    - **<Constant name="core" /> users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](/community/resources/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
-
 
 ## Types of errors
 Below, we've listed some of common errors. It's useful to understand what dbt is doing behind the scenes when you execute a command like `dbt run`.
@@ -41,12 +39,12 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the dbt Cloud IDE to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the <Constant name="cloud_ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
 ```
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 Encountered an error:
 Runtime Error
   fatal: Not a dbt project (or any of the parent directories). Missing dbt_project.yml file
@@ -63,7 +61,7 @@ Runtime Error
 ### Could not find profile
 
 ```
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Runtime Error
@@ -103,7 +101,7 @@ jaffle_shop: # this does not match the profile: key
 - If you can't find your `profiles.yml` file, run `dbt debug --config-dir` for help:
 ```
 $ dbt debug --config-dir
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 To view your profiles.yml file, run:
 
 open /Users/alice/.dbt
@@ -134,7 +132,7 @@ Runtime Error
 
 ```
 $ dbt debug
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 Using profiles.yml file at /Users/alice/.dbt/profiles.yml
 Using dbt_project.yml file at /Users/alice/jaffle-shop-dbt/dbt_project.yml
 
@@ -191,13 +189,13 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt Core users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the <Constant name="cloud_ide" /> to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For <Constant name="core" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
 ```
 $ dbt run -s customers
-Running with dbt=0.17.1
+Running with dbt=1.1.0
 
 Encountered an error:
 Compilation Error in model customers (models/customers.sql)
@@ -217,7 +215,7 @@ Compilation Error in model customers (models/customers.sql)
 
 ```
 $ dbt run
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 Compilation Error in macro (macros/cents_to_dollars.sql)
   Reached EOF without finding a close tag for macro (searched from line 1)
 ```
@@ -235,7 +233,7 @@ To fix this:
 - Use the error message to find your mistake
 
 To prevent this:
-- _(dbt Core users only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt), [vscode-dbt extestion](https://marketplace.visualstudio.com/items?itemName=bastienboutonnet.vscode-dbt))
+- _(<Constant name="core" /> only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt))
 
 </details>
 
@@ -244,7 +242,7 @@ dbt wasn't able to turn your YAML into a valid dictionary.
 
 ```
 $ dbt run
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -287,7 +285,7 @@ To fix this:
 - Find the mistake and fix it
 
 To prevent this:
-- (dbt Core users) Turn on indentation guides in your code editor to help you inspect your files
+- (<Constant name="core" /> users) Turn on indentation guides in your code editor to help you inspect your files
 - Use a YAML validator ([example](http://www.yamllint.com/)) to debug any issues
 
 </details>
@@ -298,7 +296,7 @@ Slightly different error — the YAML structure is right (i.e. the YAML parser c
 
 ```
 $ dbt run
-Running with dbt=0.17.1
+Running with dbt=1.7.1
 
 Encountered an error:
 Compilation Error
@@ -318,13 +316,12 @@ Compilation Error
 ## Dependency Errors
 ```
 $ dbt run
-Running with dbt=0.17.1-rc
+Running with dbt=1.7.1-rc
 
 Encountered an error:
 Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers --> model.jaffle_shop.customers
 
 ```
-
 
 Your dbt DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
@@ -347,11 +344,11 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
-    - **dbt Core:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
+    - **<Constant name="cloud" />:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **<Constant name="core" />:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **dbt Cloud:** Use the `Preview` button from the model file
-    - **dbt Core:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
+    - **<Constant name="cloud" />:** Use the `Preview` button from the model file
+    - **<Constant name="core" />:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
 
@@ -362,8 +359,8 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 - For incremental models, and snapshots: merge, update and insert statements
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
-- **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
-- **dbt Core**: Open the `logs/dbt.log` file.
+- **<Constant name="cloud" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
+- **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
 If you're hitting a strange `Database Error`, it can be a good idea to clean out your logs by opening the file, and deleting the contents. Then, re-execute `dbt run` for _just_ the problematic model. The logs will _just_ have the output you're looking for.
@@ -373,7 +370,7 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 ## Common pitfalls
 
 ### `Preview` vs. `dbt run`
-_(dbt Cloud IDE users only)_
+_(<Constant name="cloud_ide" /> users only)_
 
 There's two interfaces that look similar:
 - The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
@@ -383,11 +380,24 @@ Using the `Preview` button is useful when developing models and you want to visu
 
 
 ### Forgetting to save files before running
-We’ve all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the dbt Cloud IDE, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
+We've all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the <Constant name="cloud_ide" />, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
 
 ### Editing compiled files
-_(More likely for dbt Core users)_
+_(More likely for <Constant name="core" /> users)_
 
 If you just opened a SQL file in the `target/` directory to help debug an issue, it's not uncommon to accidentally edit that file! To avoid this, try changing your code editor settings to grey out any files in the `target/` directory — the visual cue will help avoid the issue.
+
+## FAQs
+
+Here are some useful FAQs to help you debug your dbt project:
+
+- <FAQ path="Troubleshooting/generate-har-file" />
+- <FAQ path="Troubleshooting/auth-expired-error" />  
+- <FAQ path="Troubleshooting/could-not-parse-project" />
+- <FAQ path="Troubleshooting/gitignore" />
+- <FAQ path="Troubleshooting/job-memory-limits" />
+- <FAQ path="Troubleshooting/runtime-packages.yml" />
+- <FAQ path="Troubleshooting/dispatch-could-not-find-package" />
+- <FAQ path="Troubleshooting/sql-errors" />
 
 </div>

@@ -8,8 +8,8 @@ id: 2-how-we-style-our-sql
 - ☁️ Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
   - Customize `.sqlfluff` configuration files to your needs.
   - Refer to our [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use in our own projects. 
-
-  - Exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2).
+  - Exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration/index.html).
+    - Excluding unnecessary folders and files (such as `target/`, `dbt_packages/`, and `macros/`) can speed up linting, improve run times, and help you avoid irrelevant logs.
 - 👻 Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
 - ⏭️ Use trailing commas.
 - 4️⃣ Indents should be four spaces.
@@ -18,7 +18,7 @@ id: 2-how-we-style-our-sql
 - 🫧 The `as` keyword should be used explicitly when aliasing a field or table.
 
 :::info
-☁️ dbt Cloud users can use the built-in [SQLFluff Cloud IDE integration](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their SQL. The default style sheet is based on dbt Labs style as outlined in this guide, but you can customize this to fit your needs. No need to setup any external tools, just hit `Lint`! Also, the more opinionated [sqlfmt](http://sqlfmt.com/) formatter is also available if you prefer that style.
+☁️ <Constant name="cloud" /> users can use the built-in [SQLFluff <Constant name="cloud_ide" /> integration](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their SQL. The default style sheet is based on dbt Labs style as outlined in this guide, but you can customize this to fit your needs. No need to setup any external tools, just hit `Lint`! Also, the more opinionated [sqlfmt](http://sqlfmt.com/) formatter is also available if you prefer that style.
 :::
 
 ## Fields, aggregations, and grouping

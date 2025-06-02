@@ -10,20 +10,22 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 
  The parameters, description, and type for ratio metrics are:
 
-| Parameter | Description | Type |
-| --------- | ----------- | ---- |
-| `name` | The name of the metric. | Required |
-| `description` | The description of the metric. | Optional |
-| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
-| `type_params` | The type parameters of the metric. | Required |
-| `numerator` | The name of the metric used for the numerator, or structure of properties. | Required |
-| `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
-| `filter` | Optional filter for the numerator or denominator. | Optional |
-| `alias` | Optional alias for the numerator or denominator. | Optional |
+| Parameter | Description | Required | Type | 
+| --------- | ----------- | ---- | ---- |
+| `name` | The name of the metric. | Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `type_params` | The type parameters of the metric. | Required | Dict |
+| `numerator` | The name of the metric used for the numerator, or structure of properties. | Required | String or dict |
+| `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  | String  or dict |
+| `filter` | Optional filter for the numerator or denominator. | Optional | String |
+| `alias` | Optional alias for the numerator or denominator. | Optional | String |
 
 The following displays the complete specification for ratio metrics, along with an example.
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: The metric name # Required
@@ -40,11 +42,19 @@ metrics:
         filter: Filter for the denominator # Optional
         alias: Alias for the denominator # Optional
 ```
+</File>
 
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
 ## Ratio metrics example
 
+These examples demonstrate how to create ratio metrics in your model. They cover basic and advanced use cases, including applying filters to the numerator and denominator metrics.
+
+#### Example 1 
+This example is a basic ratio metric that calculates the ratio of food orders to total orders:
+
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: food_order_pct
@@ -55,6 +65,30 @@ metrics:
       numerator: food_orders
       denominator: orders
 ```
+</File>
+
+#### Example 2 
+This example is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator. Note that in order to add these attributes, you'll need to use an explicit key for the name attribute too.
+
+<File name="models/metrics/file_name.yml">
+ 
+```yaml
+metrics:
+  - name: food_order_pct
+    description: "The food order count as a ratio of the total order count, filtered by location"
+    label: Food order ratio by location
+    type: ratio
+    type_params:
+      numerator:
+        name: food_orders
+        filter: location = 'New York'
+        alias: ny_food_orders
+      denominator:
+        name: orders
+        filter: location = 'New York'
+        alias: ny_orders
+```
+</File>
 
 ## Ratio metrics using different semantic models
 
@@ -109,6 +143,8 @@ on
 
 Users can define constraints on input metrics for a ratio metric by applying a filter directly to the input metric, like so:
 
+<File name="models/metrics/file_name.yml">
+ 
 ```yaml
 metrics:
   - name: frequent_purchaser_ratio
@@ -123,6 +159,7 @@ metrics:
       denominator:
         name: distinct_purchasers
 ```
+</File>
 
 Note the `filter` and `alias` parameters for the metric referenced in the numerator. 
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 

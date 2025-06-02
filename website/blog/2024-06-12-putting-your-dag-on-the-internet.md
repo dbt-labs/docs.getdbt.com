@@ -12,7 +12,7 @@ date: 2024-06-14
 is_featured: true
 ---
 
-**New in dbt: allow Snowflake Python models to access the internet**
+## New in dbt: allow Snowflake Python models to access the internet
 
 With dbt 1.8, dbt released support for Snowflake’s [external access integrations](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, [EQT AB](https://eqtgroup.com/). Learn about why they needed it and how they helped build the feature and get it shipped!
 
@@ -45,7 +45,7 @@ This API is open and if it requires an API key, handle it similarly to managing 
 For simplicity’s sake, we will show how to create them using [pre-hooks](/reference/resource-configs/pre-hook-post-hook) in a model configuration yml file:
 
 
-```
+```yml
 models:
   - name: external_access_sample
     config:
@@ -57,7 +57,7 @@ models:
 Then we can simply use the new external_access_integrations configuration parameter to use our network rule within a Python model (called external_access_sample.py):
 
 
-```
+```python
 import snowflake.snowpark as snowpark
 def model(dbt, session: snowpark.Session):
     dbt.config(
@@ -75,7 +75,7 @@ def model(dbt, session: snowpark.Session):
 The result is a model with some json I can parse, for example, in a SQL model to extract some information: 
 
 
-```
+```sql
 {{
     config(
         materialized='incremental',
@@ -108,12 +108,12 @@ The result is a model that will keep track of dbt invocations, and the current U
 
 This is a very new area to Snowflake and dbt -- something special about SQL and dbt is that it’s very resistant to external entropy. The second we rely on API calls, Python packages and other external dependencies, we open up to a lot more external entropy. APIs will change, break, and your models could fail.
 
-Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/terms/elt)), and this functionality unlocks brand new EL capabilities for which best practices do not yet exist. What’s clear is that EL workloads should be separated from T workloads, perhaps in a different modeling layer. Note also that unless using incremental models, your historical data can easily be deleted. dbt has seen a lot of use cases for this, including this AI example as outlined in this external [engineering blog post](https://klimmy.hashnode.dev/enhancing-your-dbt-project-with-large-language-models). 
+Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/terms/elt)), and this functionality unlocks brand new EL capabilities for which best practices do not yet exist. What’s clear is that EL workloads should be separated from T workloads, perhaps in a different modeling layer. Note also that unless using incremental models, your historical data can easily be deleted. dbt has seen a lot of use cases for this, including this AI example as outlined in this external [engineering blog post](https://klimmy.hashnode.dev/enhancing-your-dbt-project-with-large-language-models).
 
-**A few words about the power of Commercial Open Source Software**
+## A few words about the power of Commercial Open Source Software
 
 In order to get this functionality shipped quickly, EQT opened a pull request, Snowflake helped with some problems we had with CI and a member of dbt Labs helped write the tests and merge the code in!  
 
-dbt now features this functionality in dbt 1.8+ or the “Versionless” option of dbt Cloud (dbt overview [here](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)). 
+dbt now features this functionality in dbt 1.8+ and all [Release tracks](/docs/dbt-versions/cloud-release-tracks) in dbt Cloud.
 
 dbt Labs staff and community members would love to chat more about it in the [#db-snowflake](https://getdbt.slack.com/archives/CJN7XRF1B) slack channel.

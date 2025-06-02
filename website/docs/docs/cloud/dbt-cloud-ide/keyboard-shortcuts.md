@@ -1,13 +1,13 @@
 ---
-title: "dbt Cloud IDE keyboard shortcuts"
+title: "Studio IDE keyboard shortcuts"
 description: "Learn about the keyboard shortcuts available in the Cloud IDE."
 sidebar_label: "Keyboard shortcuts"
 ---
 
 
-The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
+The <Constant name="cloud_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
 
-Use this dbt Cloud IDE  page to help you quickly reference some common operations.
+Use this <Constant name="cloud_ide" />  page to help you quickly reference some common operations.
 
 | Shortcut description | macOS | Windows |
 |--------|----------------|------------------|
@@ -25,5 +25,5 @@ Use this dbt Cloud IDE  page to help you quickly reference some common operation
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
+- [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Develop in the Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)

@@ -3,18 +3,20 @@ title: "About the Discovery API"
 pagination_next: "docs/dbt-cloud-apis/discovery-use-cases-and-examples"
 ---
 
-Every time dbt Cloud runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the dbt Cloud Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
+# About the Discovery API <Lifecycle status="managed,managed_plus" />
 
-By leveraging the metadata in dbt Cloud, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
+Every time <Constant name="cloud" /> runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the <Constant name="cloud" /> Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
 
-You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using dbt Cloud features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles]/(docs/collaborate/data-tile).
+By leveraging the metadata in <Constant name="cloud" />, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
+
+You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="cloud" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
-You can query the dbt Cloud metadata:
+You can query the <Constant name="cloud" /> metadata:
 
-- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a dbt Cloud project in production.
-- At the job level for results on a specific dbt Cloud job run for a given resource type, like `models` or `test`.
+- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a <Constant name="cloud" /> project in production.
+- At the job level for results on a specific <Constant name="cloud" /> job run for a given resource type, like `models` or `test`.
 
 <Snippet path="metadata-api-prerequisites" />
 
@@ -32,7 +34,7 @@ Use the API to look at historical information like model build time to determine
 
 You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
 
 </TabItem>
 
@@ -50,7 +52,7 @@ Use the API to find and understand dbt assets in integrated tools using informat
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="75%" title="Data lineage produced by dbt" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="200%" title="Data lineage produced by dbt" />
 
 </TabItem>
 
@@ -65,7 +67,6 @@ Use the API to review who developed the models and who uses them to help establi
 Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective dbt projects. For more details, refer to [Development](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#development).
 
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/data-freshness-metadata.jpg" width="25%" title="Quality and freshness dashboard status tile defined via exposures"/>
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Use exposures to embed data health tiles in your dashboards to distill trust signals for data consumers." />
 

@@ -64,6 +64,7 @@ select
     campaign_id,
     NULLIF(COUNTIF(action = 'impression'), 0) impressions_count
 from {{ source('logs', 'tracking_events') }}
+group by day, campaign_id
 ```
 
 We only need to add a field to move to ingestion-time partitioning: `"time_ingestion_partitioning": true`
@@ -84,6 +85,7 @@ select
     campaign_id,
     NULLIF(COUNTIF(action = 'impression'), 0) impressions_count
 from {{ source('logs', 'tracking_events') }}
+group by day, campaign_id
 ```
 
 The resulting table schema will be:
@@ -158,6 +160,7 @@ select
     campaign_id,
     NULLIF(COUNTIF(action = 'impression'), 0) impressions_count
 from {{ source('logs', 'tracking_events') }}
+group by day, campaign_id
 ```
 
 Again we only need to add a field to move to partition copy: `"copy_partitions": true`
@@ -178,6 +181,7 @@ select
     campaign_id,
     NULLIF(COUNTIF(action = 'impression'), 0) impressions_count
 from {{ source('logs', 'tracking_events') }}
+group by day, campaign_id
 ```
 
 The configuration will be read at run time and will use the BQ driver integration to write the data using partition copy. The integration should be seamless.

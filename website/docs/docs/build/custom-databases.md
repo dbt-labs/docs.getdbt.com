@@ -98,3 +98,9 @@ See docs on macro `dispatch`: ["Managing different global overrides across packa
 ### BigQuery
 
 When dbt opens a BigQuery connection, it will do so using the `project_id` defined in your active `profiles.yml` target. This `project_id` will be billed for the queries that are executed in the dbt run, even if some models are configured to be built in other projects.
+
+## Related docs
+
+- [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
+- [Custom schema](/docs/build/custom-schemas) to learn how to customize dbt model schema
+- [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

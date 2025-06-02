@@ -1,7 +1,7 @@
 ---
 title: "About dbt run command"
 sidebar_label: "run"
-description: "Read this guide on how dbt's run command can be used to execute compiled SQL model files against a target database."
+description: "The dbt run command executes your compiled SQL models against a target database."
 id: "run"
 ---
 
@@ -84,3 +84,14 @@ See [global configs](/reference/global-configs/print-output#print-color)
 The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
 </VersionBlock>
+
+## Status codes
+
+When calling the [list_runs api](/dbt-cloud/api-v2#/operations/List%20Runs), you will get a status code for each run returned. The available run status codes are as follows:
+
+- Starting = 1
+- Running = 3
+- Success = 10
+- Error = 20
+- Canceled = 30
+- Skipped = 40

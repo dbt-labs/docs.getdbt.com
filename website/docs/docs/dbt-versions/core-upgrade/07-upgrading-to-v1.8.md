@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.8 (latest)"
+title: "Upgrading to v1.8"
 id: upgrading-to-v1.8
 description: New features and changes in dbt Core v1.8
 displayed_sidebar: "docs"
@@ -8,20 +8,16 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-## Versionless 
+## Release tracks 
 
-dbt Cloud is going "versionless." This means you'll automatically get early access to new features and functionality before they're available in final releases of dbt Core. 
-
-Select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8+ and more.
-
-To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `versionless`.
+Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 
@@ -50,7 +46,7 @@ Historically, dbt's test coverage was confined to [“data” tests](/docs/build
 
 In v1.8, we're introducing native support for [unit testing](/docs/build/unit-tests). Unit tests validate your SQL modeling logic on a small set of static inputs __before__ you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and the reliability of code.
 
-Starting from v1.8, when you execute the `dbt test` command, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#the-test_type-method) method to run only unit or data tests:
+Starting from v1.8, when you execute the `dbt test` command, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#test_type) method to run only unit or data tests:
 
 ```shell
 

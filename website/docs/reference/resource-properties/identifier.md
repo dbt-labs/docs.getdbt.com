@@ -25,7 +25,7 @@ The <Term id="table" /> name as stored in the database.
 This parameter is useful if you want to use a source table name that differs from the table name in the database.
 
 ## Default
-By default, dbt will use the table's `name:` parameter as the identifier.
+By default, dbt will use the table's `name` parameter as the identifier.
 
 ## Examples
 ### Use a simpler name for a source table than the one in your database

@@ -1,0 +1,9 @@
+DBT Cloud
+DBT Core
+DBT Semantic Layer
+DBT Explorer
+DBT
+DBT-tonic
+DBTonic
+DBT Mesh
+\b\w+\s{2,}\w+\b <!-- catches extra spaces -->

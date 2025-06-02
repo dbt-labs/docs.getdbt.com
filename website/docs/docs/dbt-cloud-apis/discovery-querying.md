@@ -7,7 +7,7 @@ pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
 
-Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema.
+Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
 Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.
 
@@ -15,13 +15,13 @@ Since GraphQL describes the data in the API, the schema displayed in the GraphQL
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). <Constant name="cloud" /> admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
 
-Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent.
+Once you've created a token, you can use it in the Authorization header of requests to the <Constant name="cloud" /> Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent.
 
 ## Access the Discovery API
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
+1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. <Constant name="cloud" /> Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
 
 2. Find the API URL to use from the [Discovery API endpoints](#discovery-api-endpoints) table.
 
@@ -56,10 +56,9 @@ response = requests.post(
 metadata = response.json()['data'][ENDPOINT]
 ```
 
-Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
+Every query will require an environment ID or job ID. You can get the ID from a <Constant name="cloud" /> URL or using the Admin API.
 
 There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
-
 
 ## Discovery API endpoints
 
@@ -77,16 +76,16 @@ The following are the endpoints for accessing the Discovery API. Use the one tha
 
 Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
 
-Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a dbt Cloud project.
+Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="cloud" /> project.
 
 ## Retention limits
-You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
+You can use the Discovery API to query data from the previous two months. For example, if today was April 1st, you could query data back to February 1st.
 
 ## Run queries with the GraphQL explorer
 
 You can run ad-hoc queries directly in the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and use the document explorer on the left-hand side to see all possible nodes and fields.
 
-Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization info.
+Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization information for GraphQL.
 
 1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you want to query.
 
@@ -164,7 +163,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ### Pagination
 
-Querying large datasets can impact performance on multiple functions in the API pipeline. Pagination eases the burden by returning smaller data sets one page at a time. This is useful for returning a particular portion of the dataset or the entire dataset piece-by-piece to enhance performance. dbt Cloud utilizes cursor-based pagination, which makes it easy to return pages of constantly changing data.
+Querying large datasets can impact performance on multiple functions in the API pipeline. Pagination eases the burden by returning smaller data sets one page at a time. This is useful for returning a particular portion of the dataset or the entire dataset piece-by-piece to enhance performance. <Constant name="cloud" /> utilizes cursor-based pagination, which makes it easy to return pages of constantly changing data.
 
 Use the `PageInfo` object to return information about the page. The available fields are:
 

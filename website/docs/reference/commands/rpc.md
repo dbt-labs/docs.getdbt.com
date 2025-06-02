@@ -29,7 +29,7 @@ For more details, see the [`dbt-rpc` repository](https://github.com/dbt-labs/dbt
 ```
 
 $ dbt-rpc serve
-Running with dbt=0.15.0
+Running with dbt=1.5.0
 
 16:34:31 | Concurrency: 8 threads (target='dev')
 16:34:31 |

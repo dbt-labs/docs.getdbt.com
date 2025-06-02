@@ -1,7 +1,7 @@
 ---
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
-description: "Read this tutorial to learn how to use data tests when building in dbt."
+description: "Configure dbt data tests to assess the quality of your input data and ensure accuracy in resulting datasets."
 pagination_next: "docs/build/unit-tests"
 pagination_prev: null
 search_weight: "heavy"
@@ -9,6 +9,11 @@ id: "data-tests"
 keywords:
   - test, tests, testing, dag
 ---
+
+import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
+
+<CopilotBeta resource='data tests' />
+
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Data test properties](/reference/resource-properties/data-tests)
@@ -66,11 +71,29 @@ having total_amount < 0
 
 </File>
 
-The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
+The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
 
-Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+Note:
+- Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your test to fail.
+- Singular tests placed in the tests directory are automatically executed when running `dbt test`. Don't reference singular tests in `model_name.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
 
+To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 
+<File name='tests/schema.yml'>
+
+```yaml
+version: 2
+data_tests:
+  - name: assert_total_payment_amount_is_positive
+    description: >
+      Refunds have a negative amount, so the total amount should always be >= 0.
+      Therefore return records where total amount < 0 to make the test fail.
+
+```
+
+</File>
+
+Singular data tests are so easy that you may find yourself writing the same basic structure repeatedly, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend generic data tests.
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
@@ -122,7 +145,7 @@ In plain English, these data tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
+You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests). You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
 ### More generic data tests
 
@@ -176,7 +199,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
 3. Check out the SQL dbt is running by either:
-   * **dbt Cloud:** checking the Details tab.
+   * **<Constant name="cloud" />:** checking the Details tab.
    * **dbt Core:** checking the `target/compiled` directory
 
 
@@ -269,12 +292,6 @@ Note that, if you select to store test failures:
 
 ## New `data_tests:` syntax
 
-<VersionBlock lastVersion="1.7">
-
-In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information, select version v1.8 from the documentation navigation menu.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8">
   
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
@@ -304,7 +321,6 @@ data_tests:
 
 </File>
 
-To suppress warnings about the rename, add `TestsConfigDeprecation` to the `silence` block of the `warn_error_options` flag in `dbt_project.yml`, [as described in the Warnings documentation](https://docs.getdbt.com/reference/global-configs/warnings).
 
 </VersionBlock>
 

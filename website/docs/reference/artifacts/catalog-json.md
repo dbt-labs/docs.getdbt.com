@@ -7,7 +7,7 @@ sidebar_label: "Catalog"
     
 **Produced by:** [`docs generate`](/reference/commands/cmd-docs)
 
-This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](/docs/collaborate/build-and-view-your-docs).
+This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](/docs/explore/build-and-view-your-docs).
 
 ### Top-level keys
 

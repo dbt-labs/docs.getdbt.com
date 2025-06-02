@@ -59,11 +59,11 @@ If you ever get into a bad state, you can disable partial parsing and trigger a 
 
 ## Static parser
 
-At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20, we introduced a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter). You can see the code for an initial Jinja2 grammar [here](https://github.com/dbt-labs/tree-sitter-jinja2).
+At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. We statically analyze model files leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter). You can see the code for an initial Jinja2 grammar [here](https://github.com/dbt-labs/tree-sitter-jinja2).
 
-Starting in v1.0, the static parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs/parsing).
+The static parser is **on** by default. We believe it can offer *some* speed up to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs/parsing).
 
-For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
+For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from <Constant name="cloud" />, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
 
 ## Experimental parser
 

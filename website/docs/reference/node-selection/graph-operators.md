@@ -3,15 +3,19 @@ title: "Graph operators"
 ---
 
 ### The "plus" operator
-If placed at the front of the model selector, `+` will select all ancestors of the selected model and the model itself. If placed at the end of the string, `+` will select all descendants of the selected model and the model itself.
+The `+` operator expands your selection to include ancestors (upstream dependencies) or descendants (downstream dependencies) of a resource. This operator works for individual models, tags, and other resources.
 
+- Placed after a model/resource &mdash; Includes the resource itself and all its descendants (downstream dependencies).
+- Placed before a model/resource &mdash; Includes the resource itself and all its ancestors (upstream dependencies).
+- Placed on both sides of a model/resource &mdash; Includes the resource itself, all its ancestors, and all its descendants.
 
-   ```bash
+```bash
 dbt run --select "my_model+"         # select my_model and all descendants
 dbt run --select "+my_model"         # select my_model and all ancestors
 dbt run --select "+my_model+"        # select my_model, and all of its ancestors and descendants
-  ```
+```
 
+You can use it with selectors for a more specific scope in your commands. You can also combine it with [`--exclude`](/reference/node-selection/exclude) flag for even more finer control over what gets included in your command.
 
 ### The "n-plus" operator
 

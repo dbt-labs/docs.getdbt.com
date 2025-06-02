@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import {HtmlClassNameProvider, ThemeClassNames} from '@docusaurus/theme-common';
-import {BlogPostProvider, useBlogPost} from '@docusaurus/theme-common/internal';
+import {
+  BlogPostProvider,
+  useBlogPost,
+} from "@docusaurus/plugin-content-blog/client";
 import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
@@ -11,6 +14,8 @@ import TOCCollapsible from '@theme/TOCCollapsible';
 import styles from './styles.module.css';
 import { DiscourseBlogComments } from '@site/src/components/discourseBlogComments';
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
+import StructuredData from '@site/src/components/StructuredData';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 /* dbt Customizations:
  * Import global data from plugin
@@ -32,6 +37,8 @@ function BlogPostPageContent({sidebar, children}) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
   } = frontMatter;
+
+  const {siteConfig} = useDocusaurusContext();
 
   // Use same date formatting as in theme's BlogPostItem component
   // https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-theme-classic/src/theme/BlogPostItem/Header/Info/index.tsx
@@ -74,6 +81,9 @@ function BlogPostPageContent({sidebar, children}) {
   const { blogMeta } = usePluginData("docusaurus-build-global-data-plugin");
   const { featured_cta } = blogMeta;
 
+  // Get the full URL for the blog post
+  const postUrl = `${siteConfig.url}/blog/${frontMatter.slug}`;
+
   return (
     <BlogLayout
       sidebar={sidebar}
@@ -91,6 +101,15 @@ function BlogPostPageContent({sidebar, children}) {
       }
       isBlogPost={true}
     >
+      <StructuredData
+        title={frontMatter?.title}
+        description={frontMatter?.description}
+        authors={authors}
+        date={date}
+        url={postUrl}
+        tags={tags}
+      />
+
       {!hideTableOfContents && toc.length > 0 && (
         <TOCCollapsible
           toc={toc}

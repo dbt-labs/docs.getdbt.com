@@ -11,8 +11,19 @@
   margin-bottom: 0;
 }
 
+.lightBackground {
+  background-color: white;
+  color: #262A38 !important;
+}
+
+
 [data-theme='light'] .Hero {
   color: #fff;
+}
+
+[data-theme='dark'] .lightBackground {
+  background: #262A38;
+  color: #fff !important;
 }
 
 @media (min-width: 996px) {
@@ -48,4 +59,35 @@
   .w60 {
     width: 60%;
   }
+}
+
+.callToActionsTitle {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  display: block;
+}
+
+.callToActions {
+  display: flex;
+  flex-flow: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.callToAction {
+  outline: #fff solid 1px;
+  border-radius: 4px;
+  padding: 0 12px;
+  color: #fff;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.callToAction:hover, .callToAction:active, .callToAction:focus {
+  text-decoration: none;
+  outline: rgb(4, 115, 119) solid 1px;
+  background-color: rgb(4, 115, 119);
+  color: #fff;
 }

@@ -1,21 +1,23 @@
 ---
 title: "Configuring IP restrictions"
 id: ip-restrictions
-description: "Configuring IP restrictions to outside traffic from accessing your dbt Cloud environment"
+description: "Configuring IP restrictions to outside traffic from accessing your dbt environment"
 sidebar_label: "IP restrictions"
-pagination_next: "docs/cloud/secure/about-privatelink"
+pagination_next: "docs/cloud/secure/about-private-connectivity"
 pagination_prev: null
 ---
+
+# Configuring IP restrictions <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
 
 <SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
 
-IP Restrictions help control which IP addresses are allowed to connect to dbt Cloud. IP restrictions allow dbt Cloud customers to meet security and compliance controls by only allowing approved IPs to connect to their dbt Cloud environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
+IP Restrictions help control which IP addresses are allowed to connect to <Constant name="cloud" />. IP restrictions allow <Constant name="cloud" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="cloud" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
 ## Configuring IP restrictions
 
-To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access dbt Cloud: an allowlist and a blocklist. IPs in the allowlist are allowed to access dbt Cloud, and IPs in the deny list will be blocked from accessing dbt Cloud. IP Restrictions can be used for a range of use cases, including:
+To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access <Constant name="cloud" />: an allowlist and a blocklist. IPs in the allowlist are allowed to access <Constant name="cloud" />, and IPs in the deny list will be blocked from accessing <Constant name="cloud" />. IP Restrictions can be used for a range of use cases, including:
 
 - Only allowing corporate VPN traffic and deny all other traffic
 - Deny IPs flagged by the Security team
@@ -23,7 +25,7 @@ To configure IP restrictions, go to **Account Settings** → **IP Restrictions**
 
 IP restrictions will block all service tokens, user requests done via the API (via personal user token), and the UI if they come from blocked IP addresses.
 
-For any version control system integrations (Github, Gitlab, ADO, etc.) inbound into dbt Cloud, ensure their IP addresses are added to the allowed list.
+For any version control system integrations (Github, Gitlab, ADO, etc.) inbound into <Constant name="cloud" />, ensure their IP addresses are added to the allowed list.
 
 ### Allowing IPs
 
@@ -43,7 +45,7 @@ Add multiple IP ranges by clicking the **Add IP range** button to create a new t
 
 Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the [Enabling restrictions](#enabling-restrictions) section.
 
-If you only want to allow the IP ranges added to this list and deny all other requests, adding a denylist is not necessary. By default, if only an allow list is added, dbt Cloud will only allow IPs in the allowable range and deny all other IPs. However, you can add a denylist if you want to deny specific IP addresses within your allowlist CIDR range.
+If you only want to allow the IP ranges added to this list and deny all other requests, adding a denylist is not necessary. By default, if only an allow list is added, <Constant name="cloud" /> will only allow IPs in the allowable range and deny all other IPs. However, you can add a denylist if you want to deny specific IP addresses within your allowlist CIDR range.
 
 ### Blocking IPs (deny)
 
@@ -71,7 +73,7 @@ It is possible to put an IP range on one list and then a sub-range or IP address
 
 Once you are done adding all your ranges, IP restrictions can be enabled by selecting the **Enable IP restrictions** button and clicking **Save**. If your IP address is in any of the denylist ranges, you won’t be able to save or enable IP restrictions - this is done to prevent accidental account lockouts. If you do get locked out due to IP changes on your end, please reach out to support@getdbt.com
 
-Once enabled, when someone attempts to access dbt Cloud from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login. 
+Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login. 
 
 <Lightbox src="/img/docs/dbt-cloud/ip-restricted-email.png" title="IP restricted access denied message for email logins"/>
 

@@ -32,4 +32,3 @@ If you need more than a sentence to explain a model, you can:
 ```
 
 3. Use a [docs block](/docs/build/documentation#using-docs-blocks) to write the description in a separate Markdown file.
-b

@@ -1,0 +1,19 @@
+extends: existence
+message: "UI elements like '%s' should be bold."
+level: warning
+tokens:
+  # Match UI elements that are not bolded (i.e., not within **)
+  - '(?<!\*\*)\bSave\b(?!\*\*)'
+  - '(?<!\*\*)\bSave as\b(?!\*\*)'
+  - '(?<!\*\*)\bCancel\b(?!\*\*)'
+  - '(?<!\*\*)\bSubmit\b(?!\*\*)'
+  - '(?<!\*\*)\bEdit\b(?!\*\*)'
+  - '(?<!\*\*)\bAccount settings\b(?!\*\*)'
+  - '(?<!\*\*)\bProject details\b(?!\*\*)'
+  - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
+  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
+  - '(?<!\*\*)\bIntegrations\b(?!\*\*)'
+  - '(?<!\*\*)\bNotification settings\b(?!\*\*)'
+
+scope: 
+  - raw

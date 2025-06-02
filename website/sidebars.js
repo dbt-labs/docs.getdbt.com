@@ -3,6 +3,18 @@ const sidebarSettings = {
     "docs/introduction",
     {
       type: "category",
+      label: "dbt Fusion engine",
+      collapsed: true,
+      link: { type: "doc", id: "docs/fusion/about-fusion" },
+      items: [
+        "docs/fusion/about-fusion",
+        "docs/fusion/new-concepts",
+        "docs/fusion/supported-features",
+        "docs/fusion/install-fusion",
+      ],
+    },
+    {
+      type: "category",
       label: "Get started with dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/get-started-dbt" },
@@ -23,14 +35,15 @@ const sidebarSettings = {
     }, // Supported data platforms directory
     {
       type: "category",
-      label: "About dbt Cloud",
+      label: "About the dbt platform",
       link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
       items: [
-        "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
-        "docs/cloud/about-cloud/tenancy",
-        "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/browsers",
+        "docs/cloud/about-cloud/change-your-dbt-cloud-theme",
+        "docs/cloud/about-cloud/dbt-cloud-features",
+        "docs/cloud/about-cloud/access-regions-ip-addresses",
+        "docs/cloud/about-cloud/tenancy",
       ],
     }, // About dbt Cloud directory
     {
@@ -43,11 +56,13 @@ const sidebarSettings = {
         "docs/environments-in-dbt",
         {
           type: "category",
-          label: "dbt Cloud",
+          label: "dbt platform",
           collapsed: true,
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/cloud/account-settings",
+            "docs/cloud/account-integrations",
             "docs/dbt-cloud-environments",
             "docs/cloud/migration",
             {
@@ -59,15 +74,17 @@ const sidebarSettings = {
               },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-apache-spark",
                 "docs/cloud/connect-data-platform/connect-amazon-athena",
                 "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
-                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
-                "docs/cloud/connect-data-platform/connect-starburst-trino",
-                "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
                 "docs/cloud/connect-data-platform/connect-databricks",
+                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+                "docs/cloud/connect-data-platform/connect-onehouse",
                 "docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb",
-                "docs/cloud/connect-data-platform/connect-apache-spark",
+                "docs/cloud/connect-data-platform/connect-starburst-trino",
+                "docs/cloud/connect-data-platform/connect-snowflake",
+                "docs/cloud/connect-data-platform/connect-teradata",
               ],
             },
             {
@@ -90,8 +107,8 @@ const sidebarSettings = {
                   },
                   items: [
                     "docs/cloud/manage-access/seats-and-users",
-                    "docs/cloud/manage-access/self-service-permissions",
                     "docs/cloud/manage-access/enterprise-permissions",
+                    "docs/cloud/manage-access/self-service-permissions",
                   ],
                 },
                 {
@@ -120,9 +137,11 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
                     "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+                    "docs/cloud/manage-access/scim",
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
+                    "docs/cloud/manage-access/external-oauth",
                   ],
                 }, // SSO
                 "docs/cloud/manage-access/audit-log",
@@ -138,6 +157,7 @@ const sidebarSettings = {
               },
               items: [
                 "docs/cloud/git/git-configuration-in-dbt-cloud",
+                "docs/cloud/git/managed-repository",
                 "docs/cloud/git/import-a-project-by-git-url",
                 "docs/cloud/git/connect-github",
                 "docs/cloud/git/connect-gitlab",
@@ -150,8 +170,23 @@ const sidebarSettings = {
                   },
                   items: [
                     "docs/cloud/git/connect-azure-devops",
-                    "docs/cloud/git/setup-azure",
+                    "docs/cloud/git/setup-service-principal",
+                    "docs/cloud/git/setup-service-user",
                     "docs/cloud/git/authenticate-azure",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Git version control",
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/git/git-version-control",
+                  },
+                  items: [
+                    "docs/cloud/git/git-version-control",
+                    "docs/cloud/git/version-control-basics",
+                    "docs/cloud/git/pr-template",
+                    "docs/cloud/git/merge-conflicts",
                   ],
                 },
               ],
@@ -163,9 +198,11 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/secure/secure-your-tenant",
                 "docs/cloud/secure/ip-restrictions",
-                "docs/cloud/secure/about-privatelink",
+                "docs/cloud/secure/about-private-connectivity",
                 "docs/cloud/secure/snowflake-privatelink",
+                "docs/cloud/secure/snowflake-private-link",
                 "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/databricks-private-link",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/vcs-privatelink",
@@ -176,7 +213,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Core",
+          label: "dbt Core and Fusion",
           collapsed: true,
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
@@ -184,12 +221,12 @@ const sidebarSettings = {
             "docs/core/dbt-core-environments",
             {
               type: "category",
-              label: "Install dbt Core",
+              label: "Install dbt",
               link: { type: "doc", id: "docs/core/installation-overview" },
               items: [
                 "docs/core/installation-overview",
-                "docs/core/pip-install",
                 "docs/core/docker-install",
+                "docs/core/pip-install",
                 "docs/core/source-install",
               ],
             },
@@ -208,6 +245,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/bigquery-setup",
                 "docs/core/connect-data-platform/databricks-setup",
                 "docs/core/connect-data-platform/fabric-setup",
+                "docs/core/connect-data-platform/fabricspark-setup",
                 "docs/core/connect-data-platform/postgres-setup",
                 "docs/core/connect-data-platform/redshift-setup",
                 "docs/core/connect-data-platform/snowflake-setup",
@@ -218,6 +256,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/athena-setup",
                 "docs/core/connect-data-platform/glue-setup",
                 "docs/core/connect-data-platform/clickhouse-setup",
+                "docs/core/connect-data-platform/cratedb-setup",
                 "docs/core/connect-data-platform/databend-setup",
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/doris-setup",
@@ -228,6 +267,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/firebolt-setup",
                 "docs/core/connect-data-platform/greenplum-setup",
                 "docs/core/connect-data-platform/ibmdb2-setup",
+                "docs/core/connect-data-platform/ibmnetezza-setup",
                 "docs/core/connect-data-platform/infer-setup",
                 "docs/core/connect-data-platform/iomete-setup",
                 "docs/core/connect-data-platform/layer-setup",
@@ -246,7 +286,10 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/tidb-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/vertica-setup",
+                "docs/core/connect-data-platform/watsonx-presto-setup",
+                "docs/core/connect-data-platform/watsonx-spark-setup",
                 "docs/core/connect-data-platform/yellowbrick-setup",
+                "docs/core/connect-data-platform/maxcompute-setup",
               ],
             },
           ],
@@ -257,7 +300,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Develop with dbt Cloud",
+      label: "Develop with dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
       items: [
@@ -265,7 +308,14 @@ const sidebarSettings = {
         "docs/cloud/about-cloud-develop-defer",
         {
           type: "category",
-          label: "dbt Cloud CLI",
+          label: "dbt VS Code Extension",
+          collapsed: true,
+          link: { type: "doc", id: "docs/about-dbt-extension" },
+          items: ["docs/about-dbt-extension", "docs/install-dbt-extension"],
+        },
+        {
+          type: "category",
+          label: "dbt CLI",
           collapsed: true,
           link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
           items: [
@@ -275,7 +325,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud IDE",
+          label: "dbt Studio IDE",
           link: {
             type: "doc",
             id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
@@ -283,19 +333,22 @@ const sidebarSettings = {
           items: [
             "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
             "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-            "docs/cloud/dbt-cloud-ide/ide-user-interface",
+            "docs/cloud/dbt-cloud-ide/git-commit-signing",
             "docs/cloud/dbt-cloud-ide/lint-format",
-            {
-              type: "category",
-              label: "dbt Assist",
-              link: { type: "doc", id: "docs/cloud/dbt-assist" },
-              items: [
-                "docs/cloud/dbt-assist",
-                "docs/cloud/enable-dbt-assist",
-                "docs/cloud/use-dbt-assist",
-                "docs/cloud/dbt-assist-data",
-              ],
-            },
+            "docs/cloud/dbt-cloud-ide/ide-user-interface",
+            "docs/cloud/dbt-cloud-ide/develop-copilot",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Canvas",
+          collapsed: true,
+          link: { type: "doc", id: "docs/cloud/canvas" },
+          items: [
+            "docs/cloud/canvas",
+            "docs/cloud/canvas-interface",
+            "docs/cloud/use-canvas",
+            "docs/cloud/build-canvas-copilot",
           ],
         },
       ],
@@ -330,7 +383,15 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/data-tests" },
               items: ["docs/build/data-tests", "docs/build/unit-tests"],
             },
-            "docs/build/documentation",
+            {
+              type: "category",
+              label: "Documentation",
+              link: { type: "doc", id: "docs/build/documentation" },
+              items: [
+                "docs/build/documentation",
+                "docs/build/view-documentation",
+              ],
+            },
             "docs/build/snapshots",
             "docs/build/seeds",
             "docs/build/jinja-macros",
@@ -349,7 +410,7 @@ const sidebarSettings = {
             "docs/build/build-metrics-intro",
             {
               type: "link",
-              label: "Quickstart with the dbt Cloud Semantic Layer",
+              label: "Quickstart with the dbt Semantic Layer",
               href: `/guides/sl-snowflake-qs`,
             },
             {
@@ -359,9 +420,9 @@ const sidebarSettings = {
               items: [
                 "docs/build/about-metricflow",
                 "docs/build/join-logic",
-                "docs/build/validation",
                 "docs/build/metricflow-time-spine",
                 "docs/build/metricflow-commands",
+                "docs/build/validation",
               ],
             },
             {
@@ -419,6 +480,8 @@ const sidebarSettings = {
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
+                "docs/build/incremental-microbatch",
+                "docs/build/parallel-batch-execution",
               ],
             },
           ],
@@ -430,10 +493,10 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/enhance-your-code" },
           items: [
             "docs/build/enhance-your-code",
-            "docs/build/project-variables",
             "docs/build/environment-variables",
-            "docs/build/packages",
             "docs/build/hooks-operations",
+            "docs/build/packages",
+            "docs/build/project-variables",
           ],
         },
         {
@@ -449,8 +512,54 @@ const sidebarSettings = {
             "docs/build/custom-target-names",
           ],
         },
+        {
+          type: "category",
+          label: "Optimize development",
+          collapsed: true,
+          link: { type: "doc", id: "docs/build/empty-flag" },
+          items: ["docs/build/empty-flag", "docs/build/sample-flag"],
+        },
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
         //"docs/building-a-dbt-project/archival",
+      ],
+    },
+    {
+      type: "category",
+      label: "Build dbt Mesh",
+      link: { type: "doc", id: "docs/mesh/about-mesh" },
+      items: [
+        "docs/mesh/about-mesh",
+        {
+          type: "category",
+          label: "Model governance",
+          collapsed: true,
+          link: {
+            type: "doc",
+            id: "docs/mesh/govern/about-model-governance",
+          },
+          items: [
+            "docs/mesh/govern/about-model-governance",
+            "docs/mesh/govern/model-access",
+            "docs/mesh/govern/model-contracts",
+            "docs/mesh/govern/model-versions",
+            "docs/mesh/govern/project-dependencies",
+          ],
+        },
+        {
+          type: "category",
+          label: "Apache Iceberg",
+          collapsed: true,
+          link: {
+            type: "doc",
+            id: "docs/mesh/iceberg/apache-iceberg-support",
+          },
+          items: [
+            "docs/mesh/iceberg/apache-iceberg-support",
+            "docs/mesh/iceberg/about-catalogs",
+            "docs/mesh/iceberg/snowflake-iceberg-support",
+            "docs/mesh/iceberg/databricks-iceberg-support",
+          ],
+        },
       ],
     },
     {
@@ -463,16 +572,26 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         {
-        type: "category",
-        label: "Continuous integration",
-        collapsed: true,
-        link: { type: "doc", id: "docs/deploy/continuous-integration" },
-        items: [
-        "docs/deploy/continuous-integration",
-        "docs/deploy/advanced-ci",
-        ],
+          type: "category",
+          label: "Continuous integration",
+          collapsed: true,
+          link: { type: "doc", id: "docs/deploy/about-ci" },
+          items: [
+            "docs/deploy/about-ci",
+            "docs/deploy/continuous-integration",
+            "docs/deploy/advanced-ci",
+          ],
         },
         "docs/deploy/continuous-deployment",
+          {
+          type: "category",
+          label: "State aware",
+          link: { type: "doc", id: "docs/deploy/state-aware-about" },
+          items: [
+            "docs/deploy/state-aware-about",
+            "docs/deploy/state-aware-setup",
+          ],
+        },
         {
           type: "category",
           label: "Jobs",
@@ -491,60 +610,69 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
             "docs/deploy/monitor-jobs",
+            "docs/deploy/orchestrate-exposures",
+            "docs/deploy/artifacts",
+            "docs/deploy/job-notifications",
+            "docs/deploy/model-notifications",
             "docs/deploy/run-visibility",
             "docs/deploy/retry-jobs",
-            "docs/deploy/job-notifications",
-            "docs/deploy/webhooks",
-            "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
+            "docs/deploy/webhooks",
           ],
+        },
+        {
+          type: "category",
+          label: "Hybrid projects",
+          collapsed: true,
+          link: { type: "doc", id: "docs/deploy/hybrid-projects" },
+          items: ["docs/deploy/hybrid-projects", "docs/deploy/hybrid-setup"],
         },
         "docs/deploy/deployment-tools",
       ],
     }, // end of "Deploy dbt"
     {
       type: "category",
-      label: "Collaborate with others",
-      link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
+      label: "Explore your data",
+      link: { type: "doc", id: "docs/explore/explore-your-data" },
       items: [
-        "docs/collaborate/collaborate-with-others",
+        "docs/explore/explore-your-data",
         {
           type: "category",
-          label: "Discover data with dbt Explorer",
-          link: { type: "doc", id: "docs/collaborate/explore-projects" },
+          label: "Discover data with dbt Catalog",
+          link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
-            "docs/collaborate/explore-projects",
-            "docs/collaborate/access-from-dbt-cloud",
-            "docs/collaborate/column-level-lineage",
-            "docs/collaborate/model-performance",
-            "docs/collaborate/project-recommendations",
-            "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/dbt-explorer-faqs",
+            "docs/explore/explore-projects",
+            "docs/explore/access-from-dbt-cloud",
+            "docs/explore/column-level-lineage",
+            "docs/explore/data-health-signals",
+            "docs/explore/explore-multiple-projects",
+            "docs/explore/external-metadata-ingestion",
+            "docs/explore/model-performance",
+            "docs/explore/project-recommendations",
+            "docs/explore/dbt-explorer-faqs",
             {
               type: "category",
               label: "Model consumption",
               link: {
                 type: "doc",
-                id: "docs/collaborate/auto-exposures",
+                id: "docs/explore/view-downstream-exposures",
               },
               items: [
-                "docs/collaborate/auto-exposures",
-                "docs/collaborate/data-tile",
-                "docs/collaborate/model-query-history",
+                "docs/explore/view-downstream-exposures",
+                "docs/explore/data-tile",
+                "docs/explore/model-query-history",
               ],
             },
           ],
         },
         {
           type: "category",
-          label: "Git version control",
-          link: { type: "doc", id: "docs/collaborate/git-version-control" },
+          label: "Analyze with dbt Insights",
+          link: { type: "doc", id: "docs/explore/dbt-insights" },
           items: [
-            "docs/collaborate/git-version-control",
-            "docs/collaborate/git/version-control-basics",
-            "docs/collaborate/git/managed-repository",
-            "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",
+            "docs/explore/dbt-insights", // main query page doc
+            "docs/explore/navigate-dbt-insights", // navigate query page doc
+            "docs/explore/access-dbt-insights", // info on how to access and use query page
           ],
         },
         {
@@ -552,25 +680,9 @@ const sidebarSettings = {
           label: "Document your projects",
           link: {
             type: "doc",
-            id: "docs/collaborate/build-and-view-your-docs",
+            id: "docs/explore/build-and-view-your-docs",
           },
-          items: ["docs/collaborate/build-and-view-your-docs"],
-        },
-        {
-          type: "category",
-          label: "Model governance",
-          collapsed: true,
-          link: {
-            type: "doc",
-            id: "docs/collaborate/govern/about-model-governance",
-          },
-          items: [
-            "docs/collaborate/govern/about-model-governance",
-            "docs/collaborate/govern/model-access",
-            "docs/collaborate/govern/model-contracts",
-            "docs/collaborate/govern/model-versions",
-            "docs/collaborate/govern/project-dependencies",
-          ],
+          items: ["docs/explore/build-and-view-your-docs"],
         },
       ],
     },
@@ -583,7 +695,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         {
           type: "link",
-          label: "Quickstart with the dbt Cloud Semantic Layer",
+          label: "Quickstart with the dbt Semantic Layer",
           href: `/guides/sl-snowflake-qs`,
         },
         {
@@ -592,37 +704,39 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/setup-sl" },
           items: [
             "docs/use-dbt-semantic-layer/setup-sl",
-            "docs/use-dbt-semantic-layer/sl-architecture",  
-          ]
+            "docs/use-dbt-semantic-layer/sl-architecture",
+          ],
         },
         {
           type: "category",
           label: "Deploy metrics",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/deploy-sl" },
           items: [
-            "docs/use-dbt-semantic-layer/deploy-sl", 
-            "docs/use-dbt-semantic-layer/exports", 
-            "docs/use-dbt-semantic-layer/sl-cache" 
-          ]
+            "docs/use-dbt-semantic-layer/deploy-sl",
+            "docs/use-dbt-semantic-layer/exports",
+            "docs/use-dbt-semantic-layer/sl-cache",
+          ],
         },
         {
           type: "category",
           label: "Consume",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/consume-metrics" },
-          items: [
-            "docs/use-dbt-semantic-layer/consume-metrics",
-          ]
+          link: {
+            type: "doc",
+            id: "docs/use-dbt-semantic-layer/consume-metrics",
+          },
+          items: ["docs/use-dbt-semantic-layer/consume-metrics"],
         },
         "docs/use-dbt-semantic-layer/sl-faqs",
       ],
     },
     {
       type: "category",
-      label: "dbt Cloud APIs",
+      label: "dbt APIs",
       collapsed: true,
       link: { type: "doc", id: "docs/dbt-cloud-apis/overview" },
       items: [
         "docs/dbt-cloud-apis/overview",
+        "docs/dbt-cloud-apis/mcp",
         {
           type: "category",
           label: "API Access",
@@ -641,17 +755,12 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/admin-cloud-api",
             {
               type: "link",
-              label: "API v2 (legacy docs)",
-              href: "/dbt-cloud/api-v2-legacy",
-            },
-            {
-              type: "link",
-              label: "API v2 (beta docs)",
+              label: "API v2",
               href: "/dbt-cloud/api-v2",
             },
             {
               type: "link",
-              label: "API v3 (beta docs)",
+              label: "API v3",
               href: "/dbt-cloud/api-v3",
             },
           ],
@@ -724,22 +833,46 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-api-overview",
-            "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
+            "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-python",
-            "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
       ],
     },
-
     {
       type: "category",
-      label: "dbt Cloud integrations",
+      label: "dbt Copilot",
+      collapsed: true,
+      link: { type: "doc", id: "docs/cloud/dbt-copilot" },
+      items: [
+        "docs/cloud/dbt-copilot",
+        "docs/cloud/enable-dbt-copilot",
+        "docs/cloud/use-dbt-copilot",
+        "docs/cloud/copilot-styleguide",
+        "docs/cloud/copilot-chat-in-studio",
+        "docs/cloud/dbt-copilot-faqs",
+      ],
+    },
+    {
+      type: "category",
+      label: "dbt integrations",
       link: { type: "doc", id: "docs/cloud-integrations/overview" },
       items: [
         "docs/cloud-integrations/overview",
-        "docs/cloud-integrations/configure-auto-exposures",
+        {
+          type: "category",
+          label: "Visualize and orchestrate exposures",
+          link: {
+            type: "doc",
+            id: "docs/cloud-integrations/downstream-exposures",
+          },
+          items: [
+            "docs/cloud-integrations/downstream-exposures",
+            "docs/cloud-integrations/downstream-exposures-tableau",
+            "docs/cloud-integrations/orchestrate-exposures",
+          ],
+        },
         {
           type: "category",
           label: "Snowflake Native App",
@@ -763,6 +896,7 @@ const sidebarSettings = {
             "docs/cloud-integrations/avail-sl-integrations",
             "docs/cloud-integrations/semantic-layer/gsheets",
             "docs/cloud-integrations/semantic-layer/excel",
+            "docs/cloud-integrations/semantic-layer/power-bi",
             "docs/cloud-integrations/semantic-layer/tableau",
           ],
         },
@@ -775,7 +909,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
-        "docs/dbt-versions/versionless-cloud",
+        "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
@@ -797,13 +931,15 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud release notes",
+          label: "dbt release notes",
           link: {
             type: "doc",
             id: "docs/dbt-versions/dbt-cloud-release-notes",
           },
           items: [
             "docs/dbt-versions/dbt-cloud-release-notes",
+            "docs/dbt-versions/compatible-track-changelog",
+            "docs/dbt-versions/2024-release-notes",
             "docs/dbt-versions/2023-release-notes",
             "docs/dbt-versions/2022-release-notes",
             {
@@ -815,6 +951,15 @@ const sidebarSettings = {
       ],
     },
     "docs/dbt-support",
+    {
+      type: "category",
+      label: "Cost management",
+      link: {
+        type: "doc",
+        id: "docs/cloud/cost-management/cost-management",
+      },
+      items: ["docs/cloud/cost-management/cost-management"],
+    },
     {
       type: "category",
       label: "Frequently asked questions",
@@ -838,6 +983,11 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Project configs",
+      link: {
+        type: "generated-index",
+        title: "Project configs",
+        description: "The list of project configs available in dbt.",
+      },
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
@@ -846,18 +996,18 @@ const sidebarSettings = {
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
-        "reference/project-configs/seed-paths",
         "reference/project-configs/dispatch-config",
         "reference/project-configs/docs-paths",
         "reference/project-configs/macro-paths",
-        "reference/project-configs/packages-install-path",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
+        "reference/project-configs/packages-install-path",
         "reference/project-configs/profile",
         "reference/project-configs/query-comment",
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
         "reference/project-configs/snapshot-paths",
+        "reference/project-configs/seed-paths",
         "reference/project-configs/model-paths",
         "reference/project-configs/test-paths",
         "reference/project-configs/version",
@@ -866,7 +1016,15 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Platform-specific configs",
+      link: {
+        type: "generated-index",
+        title: "Platform-specific configs",
+        description:
+          "Platform-specific configs are used to configure the dbt project for a specific database platform.",
+        slug: "/reference/resource-configs/resource-configs",
+      },
       items: [
+        "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/athena-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/spark-configs",
@@ -874,12 +1032,14 @@ const sidebarSettings = {
         "reference/resource-configs/clickhouse-configs",
         "reference/resource-configs/databricks-configs",
         "reference/resource-configs/doris-configs",
+        "reference/resource-configs/duckdb-configs",
+        "reference/resource-configs/fabric-configs",
+        "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/infer-configs",
+        "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
-        "reference/resource-configs/azuresynapse-configs",
-        "reference/resource-configs/fabric-configs",
         "reference/resource-configs/mssql-configs",
         "reference/resource-configs/mindsdb-configs",
         "reference/resource-configs/oracle-configs",
@@ -892,18 +1052,38 @@ const sidebarSettings = {
         "reference/resource-configs/teradata-configs",
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/watsonx-presto-config",
+        "reference/resource-configs/watsonx-spark-config",
         "reference/resource-configs/yellowbrick-configs",
       ],
     },
     {
       type: "category",
       label: "Resource configs and properties",
+      link: { type: "doc", id: "reference/resource-configs/resource-path" },
       items: [
-        "reference/configs-and-properties",
         "reference/resource-configs/resource-path",
         {
           type: "category",
+          label: "Configs and properties",
+          link: {
+            type: "doc",
+            id: "reference/configs-and-properties",
+          },
+          items: [
+            "reference/configs-and-properties",
+            "reference/define-configs",
+            "reference/define-properties",
+          ],
+        },
+        {
+          type: "category",
           label: "General properties",
+          link: {
+            type: "generated-index",
+            title: "General properties",
+            description: "The list of general properties available in dbt.",
+          },
           items: [
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
@@ -911,8 +1091,6 @@ const sidebarSettings = {
             "reference/resource-properties/deprecation_date",
             "reference/resource-properties/description",
             "reference/resource-properties/latest_version",
-            "reference/resource-properties/include-exclude",
-            "reference/resource-properties/quote",
             "reference/resource-properties/data-tests",
             "reference/resource-properties/versions",
           ],
@@ -920,33 +1098,46 @@ const sidebarSettings = {
         {
           type: "category",
           label: "General configs",
+          link: {
+            type: "generated-index",
+            title: "General configs",
+            description: "The list of general configs available in dbt.",
+          },
           items: [
+            "reference/advanced-config-usage",
             "reference/resource-configs/access",
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
+            "reference/resource-configs/docs",
             "reference/resource-configs/enabled",
+            "reference/resource-configs/event-time",
             "reference/resource-configs/full_refresh",
-            "reference/resource-configs/contract",
             "reference/resource-configs/grants",
             "reference/resource-configs/group",
-            "reference/resource-configs/docs",
+            "reference/resource-configs/meta",
             "reference/resource-configs/persist_docs",
+            "reference/resource-configs/plus-prefix",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
             "reference/resource-configs/tags",
-            "reference/resource-configs/meta",
-            "reference/advanced-config-usage",
-            "reference/resource-configs/plus-prefix",
+            "reference/resource-configs/unique_key",
           ],
         },
         {
           type: "category",
           label: "For models",
+          link: { type: "doc", id: "reference/model-properties" },
           items: [
             "reference/model-properties",
-            "reference/resource-properties/model_name",
             "reference/model-configs",
+            "reference/resource-configs/freshness",
+            "reference/resource-configs/batch-size",
+            "reference/resource-configs/begin",
+            "reference/resource-properties/concurrent_batches",
+            "reference/resource-configs/contract",
+            "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
+            "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/sql_header",
           ],
@@ -954,6 +1145,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For seeds",
+          link: { type: "doc", id: "reference/seed-properties" },
           items: [
             "reference/seed-properties",
             "reference/seed-configs",
@@ -965,22 +1157,27 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For snapshots",
+          link: { type: "doc", id: "reference/snapshot-properties" },
           items: [
             "reference/snapshot-properties",
-            "reference/resource-configs/snapshot_name",
             "reference/snapshot-configs",
+            "reference/resource-configs/snapshots-jinja-legacy",
             "reference/resource-configs/check_cols",
+            "reference/resource-configs/dbt_valid_to_current",
+            "reference/resource-configs/hard-deletes",
+            "reference/resource-configs/invalidate_hard_deletes",
+            "reference/resource-configs/snapshot_meta_column_names",
+            "reference/resource-configs/snapshot_name",
             "reference/resource-configs/strategy",
             "reference/resource-configs/target_database",
             "reference/resource-configs/target_schema",
-            "reference/resource-configs/unique_key",
             "reference/resource-configs/updated_at",
-            "reference/resource-configs/invalidate_hard_deletes",
           ],
         },
         {
           type: "category",
           label: "For data tests",
+          link: { type: "doc", id: "reference/data-test-configs" },
           items: [
             "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
@@ -994,18 +1191,20 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For unit tests",
+          link: { type: "doc", id: "reference/resource-properties/unit-tests" },
           items: [
             "reference/resource-properties/unit-tests",
             "reference/resource-properties/unit-test-input",
-            "reference/resource-properties/unit-testing-versions",
-            "reference/resource-properties/unit-test-overrides",
             "reference/resource-properties/data-formats",
             "reference/resource-properties/data-types",
+            "reference/resource-properties/unit-testing-versions",
+            "reference/resource-properties/unit-test-overrides",
           ],
         },
         {
           type: "category",
           label: "For sources",
+          link: { type: "doc", id: "reference/source-properties" },
           items: [
             "reference/source-properties",
             "reference/source-configs",
@@ -1022,19 +1221,22 @@ const sidebarSettings = {
         {
           type: "category",
           label: "For analyses",
+          link: { type: "doc", id: "reference/analysis-properties" },
           items: ["reference/analysis-properties"],
         },
         {
           type: "category",
           label: "For exposures",
+          link: { type: "doc", id: "reference/exposure-properties" },
           items: ["reference/exposure-properties"],
         },
         {
           type: "category",
           label: "For macros",
+          link: { type: "doc", id: "reference/macro-properties" },
           items: [
             "reference/macro-properties",
-            "reference/resource-properties/argument-type",
+            "reference/resource-properties/arguments",
           ],
         },
       ],
@@ -1042,11 +1244,17 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Commands",
+      link: { type: "doc", id: "reference/dbt-commands" },
       items: [
         "reference/dbt-commands",
         {
           type: "category",
           label: "List of commands",
+          link: {
+            type: "generated-index",
+            title: "List of commands",
+            description: "The list of commands available in dbt.",
+          },
           items: [
             "reference/commands/build",
             "reference/commands/clean",
@@ -1057,6 +1265,7 @@ const sidebarSettings = {
             "reference/commands/deps",
             "reference/commands/dbt-environment",
             "reference/commands/init",
+            "reference/commands/invocation",
             "reference/commands/list",
             "reference/commands/parse",
             "reference/commands/retry",
@@ -1074,17 +1283,30 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Node selection",
+          link: { type: "doc", id: "reference/node-selection/syntax" },
           items: [
             "reference/node-selection/syntax",
+            "reference/node-selection/exclude",
+            "reference/node-selection/defer",
             "reference/node-selection/graph-operators",
             "reference/node-selection/set-operators",
-            "reference/node-selection/exclude",
             "reference/node-selection/methods",
             "reference/node-selection/putting-it-together",
             "reference/node-selection/yaml-selectors",
             "reference/node-selection/test-selection-examples",
-            "reference/node-selection/defer",
-            "reference/node-selection/state-comparison-caveats",
+            {
+              type: "category",
+              label: "About state selection",
+              link: {
+                type: "doc",
+                id: "reference/node-selection/state-selection",
+              },
+              items: [
+                "reference/node-selection/state-selection",
+                "reference/node-selection/configure-state",
+                "reference/node-selection/state-comparison-caveats",
+              ],
+            },
           ],
         },
         {
@@ -1099,7 +1321,26 @@ const sidebarSettings = {
             "reference/global-configs/behavior-changes",
             {
               type: "category",
+              label: "Adapter behavior changes",
+              link: {
+                type: "doc",
+                id: "reference/global-configs/adapter-behavior-changes",
+              },
+              items: [
+                "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/databricks-changes",
+                "reference/global-configs/redshift-changes",
+                "reference/global-configs/snowflake-changes",
+              ],
+            },
+            {
+              type: "category",
               label: "Setting flags",
+              link: {
+                type: "generated-index",
+                title: "Setting flags",
+                description: "The flags you can set to configure dbt.",
+              },
               items: [
                 "reference/global-configs/command-line-options",
                 "reference/global-configs/environment-variable-configs",
@@ -1109,7 +1350,14 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Available flags",
+              link: {
+                type: "generated-index",
+                title: "Available flags",
+                description: "The list of flags available in dbt.",
+              },
               items: [
+                "reference/global-configs/usage-stats",
+                "reference/global-configs/version-compatibility",
                 "reference/global-configs/logs",
                 "reference/global-configs/cache",
                 "reference/global-configs/failing-fast",
@@ -1119,8 +1367,6 @@ const sidebarSettings = {
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
                 "reference/global-configs/resource-type",
-                "reference/global-configs/usage-stats",
-                "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",
               ],
             },
@@ -1128,13 +1374,19 @@ const sidebarSettings = {
         },
         "reference/events-logging",
         "reference/exit-codes",
+        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],
     },
     {
       type: "category",
-      label: "Jinja Reference",
+      label: "Jinja reference",
+      link: {
+        type: "generated-index",
+        title: "Jinja reference",
+        description: "The list of Jinja functions available in dbt.",
+      },
       items: [
         {
           type: "category",
@@ -1159,18 +1411,24 @@ const sidebarSettings = {
     {
       type: "category",
       label: "dbt Artifacts",
+      link: { type: "doc", id: "reference/artifacts/dbt-artifacts" },
       items: [
         "reference/artifacts/dbt-artifacts",
+        "reference/artifacts/catalog-json",
         "reference/artifacts/manifest-json",
         "reference/artifacts/run-results-json",
-        "reference/artifacts/catalog-json",
         "reference/artifacts/sources-json",
+        "reference/artifacts/sl-manifest",
         "reference/artifacts/other-artifacts",
       ],
     },
     {
       type: "category",
       label: "Database Permissions",
+      link: {
+        type: "doc",
+        id: "reference/database-permissions/about-database-permissions",
+      },
       items: [
         "reference/database-permissions/about-database-permissions",
         "reference/database-permissions/databricks-permissions",
@@ -1324,30 +1582,11 @@ const sidebarSettings = {
         "community/resources/forum-guidelines",
         "community/resources/getting-help",
         "community/resources/organizing-inclusive-events",
-        "community/resources/oss-expectations",
-        "community/resources/oss-projects",
+        "community/resources/contributor-expectations",
+        "community/resources/oss-sa-projects",
         "community/resources/contributor-license-agreements",
         "community/resources/jobs-terms-and-conditions",
         "community/resources/speaking-at-a-meetup",
-      ],
-    },
-  ],
-  Glossary: [
-    {
-      type: "category",
-      label: "Analytics Engineering Glossary",
-      link: {
-        type: "generated-index",
-        title: "Analytics Engineering Glossary",
-        description:
-          "The Analytics Engineering Glossary is a living collection of terms & concepts commonly used in the data industry. You can use and contribute to this resource to educate yourself, your team, and your stakeholders.",
-        slug: "/glossary",
-      },
-      items: [
-        {
-          type: "autogenerated",
-          dirName: "terms",
-        },
       ],
     },
   ],

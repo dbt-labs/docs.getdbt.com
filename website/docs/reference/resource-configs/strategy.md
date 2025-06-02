@@ -4,6 +4,13 @@ description: "Strategy - Read this in-depth guide to learn about configurations 
 datatype: timestamp | check
 ---
 
+<VersionBlock lastVersion="1.8">
+
+import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
+
+<SnapshotYaml/>
+</VersionBlock>
+
 <Tabs
   defaultValue="timestamp"
   values={[
@@ -12,6 +19,23 @@ datatype: timestamp | check
   ]
 }>
 <TabItem value="timestamp">
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/<filename>.yml'>
+  
+  ```yaml
+  snapshots:
+  - [name: snapshot_name](/reference/resource-configs/snapshot_name):
+    relation: source('my_source', 'my_table')
+    config:
+      strategy: timestamp
+      updated_at: column_name
+  ```
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 <File name='snapshots/<filename>.sql'>
 
@@ -30,6 +54,7 @@ select ...
 ```
 
 </File>
+</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -47,6 +72,22 @@ snapshots:
 
 <TabItem value="check">
 
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/<filename>.yml'>
+  
+  ```yaml
+  snapshots:
+  - [name: snapshot_name](/reference/resource-configs/snapshot_name):
+    relation: source('my_source', 'my_table')
+    config:
+      strategy: check
+      check_cols: [column_name] | "all"
+  ```
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2
@@ -62,6 +103,7 @@ snapshots:
 ```
 
 </File>
+</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -88,7 +130,25 @@ This is a **required configuration**. There is no default value.
 ## Examples
 ### Use the timestamp strategy
 
+<VersionBlock firstVersion="1.9">
+<File name='snapshots/timestamp_example.yml'>
 
+```yaml
+snapshots:
+  - name: orders_snapshot_timestamp
+    relation: source('jaffle_shop', 'orders')
+    config:
+      schema: snapshots
+      strategy: timestamp
+      unique_key: id
+      updated_at: updated_at
+
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 <File name='snapshots/timestamp_example.sql'>
 
 ```sql
@@ -109,9 +169,31 @@ This is a **required configuration**. There is no default value.
 ```
 
 </File>
+</VersionBlock>
 
 
-### Use the check_cols strategy
+### Use the check strategy
+
+<VersionBlock firstVersion="1.9">
+<File name='snapshots/check_example.yml'>
+
+```yaml
+snapshots:
+  - name: orders_snapshot_check
+    relation: source('jaffle_shop', 'orders')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: check
+      check_cols:
+        - status
+        - is_cancelled
+
+```
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 ```sql
 {% snapshot orders_snapshot_check %}
@@ -129,6 +211,7 @@ This is a **required configuration**. There is no default value.
 
 {% endsnapshot %}
 ```
+</VersionBlock>
 
 ### Advanced: define and use custom snapshot strategy
 Behind the scenes, snapshot strategies are implemented as macros, named `snapshot_<strategy>_strategy`
@@ -140,6 +223,23 @@ It's possible to implement your own snapshot strategy by adding a macro with the
 1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code as a guide and adjust as needed.
 2. Use this strategy via the `strategy` configuration:
 
+<VersionBlock firstVersion="1.9">
+<File name='snapshots/<filename>.yml'>
+
+```yaml
+snapshots:
+  - name: my_custom_snapshot
+    relation: source('my_source', 'my_table')
+    config:
+      strategy: timestamp_with_deletes
+      updated_at: updated_at_column
+      unique_key: id
+```
+</File>
+</VersionBlock>
+
+
+<VersionBlock lastVersion="1.8">
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2
@@ -155,3 +255,4 @@ It's possible to implement your own snapshot strategy by adding a macro with the
 ```
 
 </File>
+</VersionBlock>

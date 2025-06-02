@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt Core CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
+In v1.5, <Constant name="core" /> added support for programmatic invocations. The intent is to expose the existing <Constant name="core" /> CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
 The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
 
@@ -25,12 +25,12 @@ for r in res.result:
 
 ## Parallel execution not supported
 
-[`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. This means it's not safe to run multiple dbt commands at the same time. It's officially discouraged and requires a wrapping process to handle sub-processes. This is because:
+[`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. This means it's not safe to run multiple dbt commands concurrently. It's officially discouraged and requires a wrapping process to handle sub-processes. This is because:
 
-- Running simultaneous commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
+- Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
 - Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning processes or using tools like Celery.
 
-To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
+To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 
@@ -49,7 +49,7 @@ There is a 1:1 correspondence between [CLI exit codes](/reference/exit-codes) an
 
 ## Commitments & Caveats
 
-From dbt Core v1.5 onward, we making an ongoing commitment to providing a Python entry point at functional parity with dbt-core's CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases, in the short & medium term, while we work on a set of stable, long-term interfaces that will ultimately replace it.
+From <Constant name="core" /> v1.5 onward, we making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases, in the short & medium term, while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
 In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
@@ -94,22 +94,6 @@ Register `callbacks` on dbt's `EventManager`, to access structured events and en
 ```python
 from dbt.cli.main import dbtRunner
 from dbt_common.events.base_types import EventMsg
-
-def print_version_callback(event: EventMsg):
-    if event.info.name == "MainReportVersion":
-        print(f"We are thrilled to be running dbt{event.data.version}")
-
-dbt = dbtRunner(callbacks=[print_version_callback])
-dbt.invoke(["list"])
-```
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-```python
-from dbt.cli.main import dbtRunner
-from dbt.events.base_types import EventMsg
 
 def print_version_callback(event: EventMsg):
     if event.info.name == "MainReportVersion":

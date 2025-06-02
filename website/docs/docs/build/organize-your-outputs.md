@@ -31,7 +31,7 @@ pagination_prev: null
 
 <Card
     title="Custom target names"
-    body="Learn how to define a custom target name for a dbt Cloud job."
+    body="Learn how to define a custom target name for a dbt job."
     link="/docs/build/custom-target-names"
     icon="dbt-bit"/>
 

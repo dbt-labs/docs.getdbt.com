@@ -11,7 +11,7 @@ const communityDescription = "The dbt Community is where analytics engineering l
 // This date determines where the 'Previously on the Spotlight" text will show.
 // Any spotlight members with a 'dateCreated' field before this date
 // will be under the 'Previously..' header.
-const currentSpotlightDate = new Date('2024-07-26') 
+const currentSpotlightDate = new Date('2024-10-30')
 
 function CommunitySpotlightList({ spotlightData }) {
   const { siteConfig } = useDocusaurusContext()

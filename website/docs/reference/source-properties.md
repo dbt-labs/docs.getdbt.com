@@ -79,7 +79,7 @@ sources:
           - name: <column_name> # required
             [description](/reference/resource-properties/description): <markdown_string>
             [meta](/reference/resource-configs/meta): {<dictionary>}
-            [quote](/reference/resource-properties/quote): true | false
+            [quote](/reference/resource-properties/columns#quote): true | false
             [tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
@@ -109,15 +109,16 @@ sources:
     loader: emr # informational only (free text)
     loaded_at_field: _loaded_at # configure for all sources
 
-    # meta fields are rendered in auto-generated documentation
-    meta:
-      contains_pii: true
-      owner: "@alice"
+    config:
+      # meta fields are rendered in auto-generated documentation
+      meta: # changed to config in v1.10
+        contains_pii: true
+        owner: "@alice"
 
-    # Add tags to this source
-    tags:
-      - ecom
-      - pii
+      # Add tags to this source
+      tags: # changed to config in v1.10
+        - ecom
+        - pii
 
     quoting:
       database: false

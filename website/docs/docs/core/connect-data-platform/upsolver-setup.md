@@ -10,7 +10,7 @@ meta:
   min_core_version: 'v1.5.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
-  slack_channel_name: 'Upsolver Comunity'
+  slack_channel_name: 'Upsolver Community'
   slack_channel_link: 'https://join.slack.com/t/upsolvercommunity/shared_invite/zt-1zo1dbyys-hj28WfaZvMh4Z4Id3OkkhA'
   platform_name: 'Upsolver'
   config_page: '/reference/resource-configs/upsolver-configs'
@@ -26,7 +26,7 @@ pagination_next: null
     <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
     <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
     <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
+    <li><strong><Constant name="cloud" /> support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 <h2> Installing {frontMatter.meta.pypi_package} </h2>

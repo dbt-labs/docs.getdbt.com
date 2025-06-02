@@ -1,0 +1,98 @@
+[
+    {
+        "host": "jd43444.east-us-2.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWFLAKE_DEPLOYMENT"
+    },
+    {
+        "host": "mgb-mgbdev.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWFLAKE_DEPLOYMENT_REGIONLESS"
+    },
+    {
+        "host": "r3iqwjsfcb1stg.blob.core.windows.net",
+        "port": 443,
+        "type": "STAGE"
+    },
+    {
+        "host": "sfc-repo.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWSQL_REPO"
+    },
+    {
+        "host": "client-telemetry.snowflakecomputing.com",
+        "port": 443,
+        "type": "OUT_OF_BAND_TELEMETRY"
+    },
+    {
+        "host": "app-mgb-mgbdevenv.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWSIGHT_CLIENT_FAILOVER"
+    },
+    {
+        "host": "mgb-mgbdevenv.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "CLIENT_FAILOVER"
+    },
+    {
+        "host": "ocsp.mgb-mgbdevenv.privatelink.snowflakecomputing.com",
+        "port": 80,
+        "type": "OCSP_CLIENT_FAILOVER"
+    },
+    {
+        "host": "ocsp.app-mgb-mgbdevenv.privatelink.snowflakecomputing.com",
+        "port": 80,
+        "type": "OCSP_CLIENT_FAILOVER"
+    },
+    {
+        "host": "ocsp.jd43444.east-us-2.privatelink.snowflakecomputing.com",
+        "port": 80,
+        "type": "OCSP_CACHE"
+    },
+    {
+        "host": "ocsp.mgb-mgbdev.privatelink.snowflakecomputing.com",
+        "port": 80,
+        "type": "OCSP_CACHE_REGIONLESS"
+    },
+    {
+        "host": "api-73a252bb.duosecurity.com",
+        "port": 443,
+        "type": "DUO_SECURITY"
+    },
+    {
+        "host": "app-mgb-mgbdev.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWSIGHT_DEPLOYMENT_REGIONLESS"
+    },
+    {
+        "host": "app.east-us-2.privatelink.snowflakecomputing.com",
+        "port": 443,
+        "type": "SNOWSIGHT_DEPLOYMENT"
+    }
+]
+
+# Current
+{
+    "regionless-snowsight-privatelink-url": "app-mgb-mgbdev.privatelink.snowflakecomputing.com",
+    "privatelink-account-name": "jd43444.east-us-2.privatelink",
+    "snowsight-privatelink-url": "app.east-us-2.privatelink.snowflakecomputing.com",
+    "regionless-privatelink-ocsp-url": "ocsp.mgb-mgbdev.privatelink.snowflakecomputing.com",
+    "privatelink-account-url": "jd43444.east-us-2.privatelink.snowflakecomputing.com",
+    "privatelink-connection-ocsp-urls": "[ocsp.mgb-mgbdevenv.privatelink.snowflakecomputing.com, ocsp.app-mgb-mgbdevenv.privatelink.snowflakecomputing.com]",
+    "privatelink-pls-id": "sf-pvlinksvc-azeastus2.cf82bce2-be9d-4dc6-92ee-3de5fb04d191.eastus2.azure.privatelinkservice",
+    "regionless-privatelink-account-url": "mgb-mgbdev.privatelink.snowflakecomputing.com",
+    "privatelink_ocsp-url": "ocsp.jd43444.east-us-2.privatelink.snowflakecomputing.com",
+    "privatelink-connection-urls": "[mgb-mgbdevenv.privatelink.snowflakecomputing.com, app-mgb-mgbdevenv.privatelink.snowflakecomputing.com]"
+}
+
+# Received from customer 02/2023
+{
+    "regionless-snowsight-privatelink-url": "app-mgb-mgbdev.privatelink.snowflakecomputing.com",
+    "privatelink-account-name": "jd43444.east-us-2.privatelink",
+    "snowsight-privatelink-url": "app.east-us-2.privatelink.snowflakecomputing.com",
+    "privatelink-account-url": "jd43444.east-us-2.privatelink.snowflakecomputing.com",
+    "privatelink-pls-id": "sf-pvlinksvc-azeastus2.cf82bce2-be9d-4dc6-92ee-3de5fb04d191.eastus2.azure.privatelinkservice",
+    "regionless-privatelink-account-url": "mgb-mgbdev.privatelink.snowflakecomputing.com",
+    "privatelink_ocsp-url": "ocsp.jd43444.east-us-2.privatelink.snowflakecomputing.com",
+    "privatelink-connection-urls": "[CLIENT_FAILOVER,mgb-mgbdevenv.privatelink.snowflakecomputing.com]"
+}

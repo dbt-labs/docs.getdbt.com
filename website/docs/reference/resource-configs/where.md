@@ -62,17 +62,7 @@ models:
 
 <TabItem value="one_off">
 
-Configure a one-off (data) test:
-
-<File name='tests/<filename>.sql'>
-
-```sql
-{{ config(where = "date_column = current_date") }}
-
-select ...
-```
-
-</File>
+This config is ignored for one-off tests.
 
 </TabItem>
 
@@ -122,7 +112,7 @@ tests:
 
 The rendering context for the `where` config is the same as for all configurations defined in `.yml` files. You have access to `{{ var() }}` and `{{ env_var() }}`, but you **do not** have access to custom macros for setting this config. If you do want to use custom macros to template out the `where` filter for certain tests, there is a workaround.
 
-As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
+dbt defines a `get_where_subquery` macro.
 
 dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
 - `{{ relation }}` when the `where` config is not defined (`ref()` or `source()`)
@@ -134,7 +124,9 @@ You can override this behavior by:
 
 Within this macro definition, you can reference whatever custom macros you want, based on static inputs from the configuration. At simplest, this enables you to DRY up code that you'd otherwise need to repeat across many different `.yml` files. Because the `get_where_subquery` macro is resolved at runtime, your custom macros can also include [fetching the results of introspective database queries](https://docs.getdbt.com/reference/dbt-jinja-functions/run_query).
 
-**Example:** Filter your test to the past three days of data, using dbt's cross-platform [`dateadd()`](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#dateadd) utility macro.
+#### Example 
+
+Filter your test to the past N days of data, using dbt's cross-platform [`dateadd()`](/reference/dbt-jinja-functions/cross-database-macros#dateadd) utility macro. You can set the number of days in the placeholder string.
 
 <File name='models/config.yml'>
 
@@ -147,7 +139,7 @@ models:
         tests:
           - unique:
               config:
-                where: "date_column > __three_days_ago__"  # placeholder string for static config
+                where: "date_column > __3_days_ago__"  # placeholder string for static config
 ```
 
 </File>
@@ -158,10 +150,9 @@ models:
 {% macro get_where_subquery(relation) -%}
     {% set where = config.get('where') %}
     {% if where %}
-        {% if "__three_days_ago__" in where %}
+        {% if "_days_ago__" in where %}
             {# replace placeholder string with result of custom macro #}
-            {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
-            {% set where = where | replace("__three_days_ago__", three_days_ago) %}
+            {% set where = replace_days_ago(where) %}
         {% endif %}
         {%- set filtered -%}
             (select * from {{ relation }} where {{ where }}) dbt_subquery
@@ -171,6 +162,21 @@ models:
         {% do return(relation) %}
     {%- endif -%}
 {%- endmacro %}
+
+{% macro replace_days_ago(where_string) %}
+    {# Use regex to search the pattern for the number days #}
+    {# Default to 3 days when no number found #}
+    {% set re = modules.re %}
+    {% set days = 3 %}
+    {% set pattern = '__(\d+)_days_ago__' %}
+    {% set match = re.search(pattern, where_string) %}
+    {% if match %}
+        {% set days = match.group(1) | int %}        
+    {% endif %}
+    {% set n_days_ago = dbt.dateadd('day', -days, current_timestamp()) %}
+    {% set result = re.sub(pattern, n_days_ago, where_string) %}
+    {{ return(result) }}
+{% endmacro %}
 ```
 
 </File>

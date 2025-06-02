@@ -1,0 +1,79 @@
+name: Vale linting
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'website/docs/**/*'
+      - 'website/blog/**/*'
+      - 'website/**/*'
+
+jobs:
+  vale:
+    name: Vale linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: List repository contents
+        run: |
+          pwd
+          ls -R
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Vale
+        run: pip install vale==3.9.1.0  # Install a stable version of Vale
+
+      - name: Get changed files
+        id: changed-files
+        uses: dbt-labs/internal-actions/changed-files@changed-files-v1
+        with:
+          files: |
+            website/**/*.md
+          separator: ' '
+
+      - name: Debugging - Print changed files
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          echo "Changed files:"
+          echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
+
+      - name: Confirm files exist
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          echo "Checking if files exist..."
+          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+            if [ -f "$file" ]; then
+              echo "Found: $file"
+            else
+              echo "File not found: $file"
+              exit 1
+            fi
+          done
+
+      - name: Run vale
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          separator: ' '
+
+#      - name: Post summary comment
+#        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+#        run: |
+#          COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
+#          COMMENT+=$'\n'
+#          COMMENT+=$'\n\n'
+#          COMMENT+="➡️ Link to detailed report: [Files changed](${{ github.event.pull_request.html_url }}/files)"
+#          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

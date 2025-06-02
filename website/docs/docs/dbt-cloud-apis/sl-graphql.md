@@ -5,6 +5,8 @@ description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
 ---
 
+# GraphQL <Lifecycle status="self_service,managed,managed_plus" />
+
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
@@ -13,7 +15,7 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+The <Constant name="semantic_layer" /> GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
 
 The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
 
@@ -28,39 +30,36 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 **Example**
 - If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
-dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
+dbt Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="semantic_layer" />.
 
-Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Requirements to use the GraphQL API
-- A dbt Cloud project on dbt v1.6 or higher
-- Metrics are defined and configured
-- A dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with "Semantic Layer Only” and "Metadata Only" permissions
-- Your dbt project is configured and connected to a data platform
 
+- A <Constant name="cloud" /> project on dbt v1.6 or higher
+- Metrics are defined and configured
+- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions
 
 ## Using the GraphQL API
 
-If you're a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 
-### Authentication 
+Authentication uses a <Constant name="cloud" /> [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
-Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
-
-```
+```shell
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
-**Fetch data platform dialect** 
+#### Fetch data platform dialect
 
-In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the dbt Semantic Layer connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
+In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the <Constant name="semantic_layer" /> connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
 
 The GraphQL API has an easy way to fetch this with the following query: 
 
@@ -72,13 +71,13 @@ The GraphQL API has an easy way to fetch this with the following query:
 }
 ```
 
-**Fetch available metrics**
+#### Fetch available metrics
 
 ```graphql
 metrics(environmentId: BigInt!): [Metric!]!
 ```
 
-**Fetch available dimensions for metrics**
+#### Fetch available dimensions for metrics
 
 ```graphql
 dimensions(
@@ -87,7 +86,7 @@ dimensions(
 ): [Dimension!]!
 ```
 
-**Fetch available granularities given metrics**
+#### Fetch available granularities given metrics
 
 Note: This call for `queryableGranularities` returns only queryable granularities for metric time - the primary time dimension across all metrics selected.
 
@@ -123,7 +122,7 @@ You can also optionally access it from the metrics endpoint:
 }
 ```
 
-**Fetch measures**
+#### Fetch measures
 
 ```graphql
 {
@@ -147,7 +146,7 @@ You can also optionally access it from the metrics endpoint:
 }
 ```
 
-**Fetch available metrics given a set of dimensions**
+#### Fetch available metrics given a set of dimensions
 
 ```graphql
 metricsForDimensions(
@@ -156,7 +155,7 @@ metricsForDimensions(
 ): [Metric!]!
 ```
 
-**Metric Types**
+#### Metric types
 
 ```graphql
 Metric {
@@ -174,7 +173,7 @@ Metric {
 MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
-**Metric Type parameters**
+#### Metric type parameters
 
 ```graphql
 MetricTypeParams {
@@ -190,7 +189,7 @@ MetricTypeParams {
 ```
 
 
-**Dimension Types**
+#### Dimension types
 
 ```graphql
 Dimension {
@@ -208,7 +207,7 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
-**List saved queries**
+#### List saved queries
   
   ```graphql
   {
@@ -235,9 +234,13 @@ DimensionType = [CATEGORICAL, TIME]
 
 ### Querying
 
-When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. 
+When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. The following section provides examples of how to query metrics:
 
-**Create Dimension Values query**
+- [Create dimension values query](#create-dimension-values-query)
+- [Create metric query](#create-metric-query)
+- [Fetch query result](#fetch-query-result)
+
+#### Create dimension values query
 
 ```graphql
 
@@ -249,7 +252,7 @@ mutation createDimensionValuesQuery(
 
 ```
 
-**Create Metric query**
+#### Create metric query
 
 ```graphql
 createQuery(
@@ -265,6 +268,7 @@ createQuery(
 ```graphql
 MetricInput {
   name: String!
+  alias: String!
 }
 
 GroupByInput {
@@ -283,7 +287,7 @@ OrderByinput { # -- pass one and only one of metric or groupBy
 }
 ```
 
-**Fetch query result**
+#### Fetch query result
 
 ```graphql
 query(
@@ -323,7 +327,7 @@ mutation {
 
 ### Output format and pagination
 
-**Output format**
+#### Output format
 
 By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`. Alternatively, you can pass `encoded:false` to the jsonResult field to get a raw JSON string directly.
 
@@ -343,7 +347,7 @@ By default, the output is in Arrow format. You can switch to JSON format using t
 
 The results default to the table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
 
-**Pagination**
+#### Pagination
 
 By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.
 
@@ -413,30 +417,41 @@ order_total  ordered_at
 """
 ```
 
-### Additional Create Query examples 
+### Additional create query examples 
 
-The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more.
+The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more:
 
-**Query two metrics grouped by time**
+<!-- no toc -->
+- [Query metric alias](#query-metric-alias) &mdash; Query with metric alias, which allows you to use simpler or more intuitive names for metrics instead of their full definitions.
+- [Query with a time grain](#query-with-a-time-grain)  &mdash; Fetch multiple metrics with a change in time dimension granularities.
+- [Query multiple metrics and multiple dimensions](#query-multiple-metrics-and-multiple-dimensions) &mdash; Select common dimensions for multiple metrics.
+- [Query a categorical dimension on its own](#query-a-categorical-dimension-on-its-own) &mdash; Group by a categorical dimension.
+- [Query with a where filter](#query-with-a-where-filter)  &mdash; Use the `where` parameter to filter on dimensions and entities using parameters.
+- [Query with order](#query-with-order) &mdash; Query with `orderBy`, accepts basic string that's a Dimension, Metric, or Entity. Defaults to ascending order.
+- [Query with limit](#query-with-limit) &mdash; Query using a `limit` clause.
+- [Query saved queries](#query-saved-queries) &mdash; Query using a saved query using the `savedQuery` parameter for frequently used queries.
+- [Query with just compiling SQL](#query-with-just-compiling-sql) &mdash; Query using a compile keyword using the `compileSql` mutation.
+
+
+#### Query metric alias
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
-    metrics: [{name: "food_order_amount"}]
-    groupBy: [{name: "metric_time"}, {name: "customer__customer_type"}]
+    environmentId: "123"
+    metrics: [{name: "metric_name", alias: "metric_alias"}]
   ) {
-    queryId
+    ...
   }
 }
 ```
 
-**Query with a time grain** 
+#### Query with a time grain
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
+    environmentId: "123"
     metrics: [{name: "order_total"}]
     groupBy: [{name: "metric_time", grain: MONTH}] 
   ) {
@@ -447,12 +462,12 @@ mutation {
 
 Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes the form of a dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
 
-**Query two metrics with a categorical dimension**
+#### Query multiple metrics and multiple dimensions
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
+    environmentId: "123"
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name: "metric_time", grain: MONTH}, {name: "customer__customer_type"}]
   ) {
@@ -461,12 +476,12 @@ mutation {
 }
 ```
 
-**Query a categorical dimension on its own**
+#### Query a categorical dimension on its own
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: 123456
+    environmentId: "123"
     groupBy: [{name: "customer__customer_type"}]
   ) {
     queryId
@@ -474,7 +489,7 @@ mutation {
 }
 ```
 
-**Query with a where filter** 
+#### Query with a where filter
 
 The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
  
@@ -487,7 +502,7 @@ Note: If you prefer a `where` clause with a more explicit path, you can optional
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
+    environmentId: "123"
     metrics:[{name: "order_total"}]
     groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: month}]
     where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
@@ -497,9 +512,11 @@ mutation {
 }
 ```
 
-For both `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
+For both `TimeDimension()`, the grain is only required in the `where` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
 
-For example, consider this Semantic model and Metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
+#### Example
+
+For example, consider this semantic model and metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
 
 ```yaml
 semantic_model:
@@ -536,22 +553,36 @@ metrics:
       measure: measure_1
 ```
 
-Assuming the user is querying `metric_0` and `metric_1` together, a valid filter would be:
+Assuming the user is querying `metric_0` and `metric_1` together, the following are valid or invalid filters:
 
-  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
+| <div style={{width:'200px'}}>Example</div> | <div style={{width:'250px'}}>Filter</div> |
+| ------- | ------ |
+| ✅ <br />   Valid filter| `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`  |
+| ❌ <br /> Invalid filter | ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"`  <br /><br /> Metrics in the query are defined based on measures with different grains.  |
+❌ <br /> Invalid filter | `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` <br /><br />  `metric_1` is not available at a month grain. |
 
-Invalid filters would be:
- 
-  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
 
-  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
 
-**Query with Order**
+#### Multi-hop joins
+
+In cases where you need to query across multiple related tables (multi-hop joins), use the `entity_path` argument to specify the path between related entities. The following are examples of how you can define these joins:
+
+- In this example, you're querying the `location_name` dimension but specifying that it should be joined using the `order_id` field.
+	```sql
+	{{Dimension('location__location_name', entity_path=['order_id'])}}
+	```
+- In this example, the `salesforce_account_owner` dimension is joined to the `region` field, with the path going through `salesforce_account`.
+	```sql
+	{{ Dimension('salesforce_account_owner__region',['salesforce_account']) }}
+	```
+
+
+#### Query with order
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
+    environmentId: "123"
     metrics: [{name: "order_total"}]
     groupBy: [{name: "metric_time", grain: MONTH}] 
     orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: MONTH}, descending:true}]
@@ -561,13 +592,12 @@ mutation {
 }
 ```
 
-
-**Query with Limit**
+#### Query with limit
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
+    environmentId: "123"
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name:"metric_time", grain: MONTH}, {name: "customer__customer_type"}]
     limit: 10 
@@ -577,34 +607,17 @@ mutation {
 }
 ```
 
-**Query with just compiling SQL** 
+#### Query saved queries
 
-This takes the same inputs as the `createQuery` mutation.
-
-```graphql
-mutation {
-  compileSql(
-    environmentId: BigInt!
-    metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
-  ) {
-    sql
-  }
-}
-```
-
-**Querying compile SQL with saved queries** 
-
-This query includes the field `savedQuery` and generates the SQL based on a predefined [saved query](/docs/build/saved-queries),rather than dynamically building it from a list of metrics and groupings. You can use this for frequently used queries.
+This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
 
 ```graphql
 mutation {
-  compileSql(
-    environmentId: 200532
-    savedQuery: "new_customer_orders" # new field
+  createQuery(
+    environmentId: "123"
+    savedQuery: "new_customer_orders"
   ) {
     queryId
-    sql
   }
 }
 ```
@@ -613,17 +626,18 @@ mutation {
 When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
-**Create query with saved queries** 
+#### Query with just compiling SQL
 
-This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
+This takes the same inputs as the `createQuery` mutation.
 
 ```graphql
 mutation {
-  createQuery(
-    environmentId: 200532
-    savedQuery: "new_customer_orders"  # new field
+  compileSql(
+    environmentId: "123"
+    metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
+    groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
   ) {
-    queryId
+    sql
   }
 }
 ```

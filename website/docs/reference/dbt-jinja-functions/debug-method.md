@@ -35,7 +35,7 @@ When dbt hits the `debug()` line, you'll see something like:
 
 ```shell
 $ DBT_MACRO_DEBUGGING=write dbt compile
-Running with dbt=0.14.0
+Running with dbt=1.0
 > /var/folders/31/mrzqbbtd3rn4hmgbhrtkfyxm0000gn/T/dbt-macro-compiled-cxvhhgu7.py(14)root()
      13         environment.call(context, (undefined(name='debug') if l_0_debug is missing else l_0_debug)),
 ---> 14         environment.call(context, (undefined(name='source') if l_0_source is missing else l_0_source), 'src', 'seedtable'),

@@ -1,6 +1,6 @@
 ---
 title: "BigQuery configurations"
-description: "Read this guide to understand BigQuery configurations in dbt."
+description: "Reference guide for Big Query configurations in dbt."
 id: "bigquery-configs"
 ---
 
@@ -14,14 +14,14 @@ To-do:
 - `schema` is interchangeable with the BigQuery concept `dataset`
 - `database` is interchangeable with the BigQuery concept of `project`
 
-For our reference documentation, you can declare `project` in place of `database.` 
+For our reference documentation, you can declare `project` in place of `database.`
 This will allow you to read and write from multiple BigQuery projects. Same for `dataset`.
 
 ## Using table partitioning and clustering
 
 ### Partition clause
 
-BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
+BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#use_a_constant_filter_expression) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
 
 The `partition_by` config can be supplied as a dictionary with the following format:
 
@@ -219,7 +219,7 @@ from {{ ref('events') }}
 ```sql
 create table analytics.bigquery_table
 partition by range_bucket(
-  customer_id,
+  user_id,
   generate_array(0, 100, 10)
 )
 as (
@@ -265,7 +265,7 @@ If your model has `partition_by` configured, you may optionally specify two addi
 
 </File>
 
-### Clustering Clause
+### Clustering clause
 
 BigQuery tables can be [clustered](https://cloud.google.com/bigquery/docs/clustered-tables) to colocate related data.
 
@@ -286,7 +286,7 @@ select * from ...
 
 </File>
 
-Clustering on a multiple columns:
+Clustering on multiple columns:
 
 <File name='bigquery_table.sql'>
 
@@ -303,11 +303,11 @@ select * from ...
 
 </File>
 
-## Managing KMS Encryption
+## Managing KMS encryption
 
 [Customer managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption) can be configured for BigQuery tables using the `kms_key_name` model configuration.
 
-### Using KMS Encryption
+### Using KMS encryption
 
 To specify the KMS key name for a model (or a group of models), use the `kms_key_name` model configuration. The following example sets the `kms_key_name` for all of the models in the `encrypted/` directory of your dbt project.
 
@@ -328,14 +328,14 @@ models:
 
 </File>
 
-## Labels and Tags
+## Labels and tags
 
 ### Specifying labels
 
 dbt supports the specification of BigQuery labels for the tables and <Term id="view">views</Term> that it creates. These labels can be specified using the `labels` model config.
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
-  
+
   BigQuery key-value pair entries for labels larger than 63 characters are truncated.
 
 **Configuring labels in a model file**
@@ -373,8 +373,6 @@ models:
 
 </File>
 
-
-
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
 
 ### Specifying tags
@@ -395,9 +393,9 @@ select * from {{ ref('another_model') }}
 
 </File>
 
-You can create a new label with no value or remove a value from an existing label key. 
+You can create a new label with no value or remove a value from an existing label key.
 
-A label with a key that has an empty value can also be [referred](https://cloud.google.com/bigquery/docs/adding-labels#adding_a_label_without_a_value) to as a tag in BigQuery. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. Find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). 
+A label with a key that has an empty value can also be [referred](https://cloud.google.com/bigquery/docs/adding-labels#adding_a_label_without_a_value) to as a tag in BigQuery. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. Find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
 
 Currently, it's not possible to apply IAM tags in BigQuery, however, you can weigh in by upvoting [GitHub issue 1134](https://github.com/dbt-labs/dbt-bigquery/issues/1134).
 
@@ -427,14 +425,15 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
-The `incremental_strategy` config can be set to one of two values:
- - `merge` (default)
- - `insert_overwrite`
+The `incremental_strategy` config can be set to one of the following values:
+- `merge` (default)
+- `insert_overwrite`
+- [`microbatch`](/docs/build/incremental-microbatch)
 
 ### Performance and cost
 
 The operations performed by dbt while building a BigQuery incremental model can
-be made cheaper and faster by using [clustering keys](#clustering-keys) in your
+be made cheaper and faster by using a [clustering clause](#clustering-clause) in your
 model configuration. See [this guide](https://discourse.getdbt.com/t/benchmarking-incremental-strategies-on-bigquery/981) for more information on performance tuning for BigQuery incremental models.
 
 **Note:** These performance and cost benefits are applicable to incremental models
@@ -552,7 +551,7 @@ _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
 way to incrementally update a table using dbt. If we wanted this to run more dynamically—
 let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
 
-Think of this as "full control" mode. You must ensure that expressions or literal values in the the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
+Think of this as "full control" mode. You must ensure that expressions or literal values in the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
 #### Dynamic partitions
 
@@ -563,7 +562,7 @@ If no `partitions` configuration is provided, dbt will instead:
 3. Query the destination table to find the _max_ partition in the database
 
 When building your model SQL, you can take advantage of the introspection performed
-by dbt to filter for only _new_ data. The max partition in the destination table
+by dbt to filter for only _new_ data. The maximum value in the partitioned field in the destination table
 will be available using the `_dbt_max_partition` BigQuery scripting variable. **Note:**
 this is a BigQuery SQL variable, not a dbt Jinja variable, so no jinja brackets are
 required to access this variable.
@@ -673,7 +672,7 @@ select ...
 
 </File>
 
-## Authorized Views
+## Authorized views
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
@@ -711,8 +710,6 @@ models:
 </File>
 
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
-
-<VersionBlock firstVersion="1.7">
 
 ## Materialized views
 
@@ -896,24 +893,199 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
 
-</VersionBlock>
+## Python model configuration
 
-<VersionBlock firstVersion="1.7">
+**Submission methods:**
+BigQuery supports a few different mechanisms to submit Python code, each with relative advantages. The `dbt-bigquery` adapter uses BigQuery DataFrames (BigFrames) or Dataproc. This process reads data from BigQuery, computes it either natively with BigQuery DataFrames or Dataproc, and writes the results back to BigQuery.
 
-## Python models
+<Tabs
+  defaultValue="dataframes"
+  values={[
+    { label: 'BigQuery DataFrames', value: 'dataframes', },
+    { label: 'Dataproc', value: 'dataproc', },
+  ]
+}>
+<TabItem value="dataframes">
 
-The BigQuery adapter supports Python models with the following additional configuration parameters:
+BigQuery DataFrames can execute pandas and scikit-learn. There's no need to manage infrastructure and leverages BigQuery-distributed query engines. It's great for analysts, data scientists, and machine learning engineers who want to manipulate big data using a pandas-like syntax.
+
+**Note:** BigQuery DataFrames run on Google Colab's default runtime. If no `default` runtime template is available, the adapter will automatically create one for you and mark it `default` for next time usage (assuming it has the right permissions).
+
+**BigQuery DataFrames setup:**
+
+```bash
+# IAM permission if using service account
+
+#Create Service Account
+gcloud iam service-accounts create dbt-bigframes-sa
+#Grant BigQuery User Role
+gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.user
+#Grant BigQuery Data Editor role. This can be restricted at dataset level
+gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.dataEditor
+#Grant Service Account user 
+gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/iam.serviceAccountUser
+#Grant Colab Entperprise User
+gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
+
+# update the project.yaml file 
+models:
+  my_dbt_project:
+    submission_method: bigframes
+
+
+# update the profile.yaml file such as this
+my_dbt_project_sa:
+  outputs:
+    dev:
+      compute_region: us-central1
+      dataset: <BIGQUERY_DATESET>
+      gcs_bucket: <GCS BUCKET USED FOR BIGFRAME LOGS>
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: <SERVICE ACCOUNT KEY FILE>
+      location: US
+      method: service-account
+      priority: interactive
+      project: <BIGQUERY_PROJECT>
+      threads: 1
+      type: bigquery
+  target: dev
+
+```
+
+</TabItem>
+
+<TabItem value="dataproc">
+
+Dataproc (`serverless` or pre-configured `cluster`) can execute Python models as PySpark jobs, reading from and writing to BigQuery. `serverless` is simpler but slower with limited configuration and pre-installed packages (`pandas`, `numpy`, `scikit-learn`), while `cluster` offers full control and faster runtimes. Good for complex, long-running batch pipelines and legacy Hadoop/Spark workflows but often slower for ad-hoc or interactive workloads.
+
+**Dataproc setup:**
+- Create or use an existing [Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
+- Enable Dataproc APIs for your project and region.
+- If using the `cluster` submission method: Create or use an existing [Dataproc cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster) with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). (Google recommends copying the action into your own Cloud Storage bucket, rather than using the example version shown in the screenshot.)
+
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
+
+The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
+- `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code.
+- `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`).
+- `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`.
+
+```python
+def model(dbt, session):
+    dbt.config(
+        submission_method="cluster",
+        dataproc_cluster_name="my-favorite-cluster"
+    )
+    ...
+```
+```yml
+version: 2
+models:
+  - name: my_python_model
+    config:
+      submission_method: serverless
+```
+
+Python models running on Dataproc Serverless can be further configured in your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc).
+
+Any user or service account that runs dbt Python models will need the following permissions, in addition to the required BigQuery permissions:
+```
+dataproc.batches.create
+dataproc.clusters.use
+dataproc.jobs.create
+dataproc.jobs.get
+dataproc.operations.get
+dataproc.operations.list
+storage.buckets.get
+storage.objects.create
+storage.objects.delete
+```
+For more information, refer to [Dataproc IAM roles and permissions](https://cloud.google.com/dataproc/docs/concepts/iam/iam).
+
+**Installing packages:** 
+
+Installation of third-party packages on Dataproc varies depending on whether it's a [cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster) or [serverless](https://cloud.google.com/dataproc-serverless/docs).  
+
+- **Dataproc Cluster** &mdash; Google recommends installing Python packages while creating the cluster via initialization actions:  
+    - [How initialization actions are used](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)  
+    - [Actions for installing via `pip` or `conda`](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/python)
+
+    You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.  
+
+- **Dataproc Serverless** &mdash; Google recommends using a [custom docker image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers) to install thrid-party packages. The image needs to be hosted in [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs). It can then be used by providing the image path in dbt profiles:
+    
+    <File name='profiles.yml'>
+    ```yml
+    my-profile:
+        target: dev
+        outputs:
+            dev:
+            type: bigquery
+            method: oauth
+            project: abc-123
+            dataset: my_dataset
+            
+            # for dbt Python models to be run on Dataproc Serverless
+            gcs_bucket: dbt-python
+            dataproc_region: us-central1
+            submission_method: serverless
+            dataproc_batch:
+                runtime_config:
+                    container_image: {HOSTNAME}/{PROJECT_ID}/{IMAGE}:{TAG}
+    ```
+
+
+    </File>
+
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-pip-packages.png" title="Adding packages to install via pip at cluster startup"/>
+
+</TabItem>
+</Tabs>
+
+### Additional parameters
+
+The BigQuery Python models also have the following additional configuration parameters:
 
 | Parameter               | Type        | Required | Default   | Valid values     |
-|-------------------------|-------------|----------|-----------|------------------|
+| :---------------------- | :---------- | :------- | :-------- | :--------------- |
 | `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
 | `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
+| `submission_method`     | `<string>`  | no       | ``        | `serverless`, `bigframes`, `cluster` |
+| `notebook_template_id`  | `<Integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
+| `compute_region`        | `<string>`  | no       | ``        | `<COMPUTE_REGION>` |
+| `gcs_bucket`            | `<string>`  | no       | ``        | `<GCS_BUCKET>` |
+| `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` |
 
-### The `enable_list_inference` parameter
-The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation.
-By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
+- The `enable_list_inference` parameter
+  - The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation. By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
 
-### The `intermediate_format` parameter
-The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
+- The `intermediate_format` parameter
+  - The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
+
+- The `submission_method` parameter
+  - The `submission_method` parameter specifies whether the job will run on BigQuery DataFrames or Serverless Spark. `submission_method` is not required when `dataproc_cluster_name` is declared.
+
+- The `notebook_template_id` parameter
+  - The `notebook_template_id` parameter specifies runtime template in Colab Enterprise.
+
+- The `compute_region` parameter
+  - The `compute_region` parameter specifies the region of the job.
+
+- The `gcs_bucket` parameter
+  - The `gcs_bucket` parameter specifies the GCS bucket used for storing artifacts for the job.
+
+**Related docs:**
+
+- [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)
+- [Create a Dataproc cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster)
+- [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets)
+- [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
+
+<VersionBlock firstVersion="1.8">
+
+## Unit test limitations
+
+You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
 
 </VersionBlock>

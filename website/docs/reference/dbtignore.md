@@ -20,6 +20,13 @@ another-non-dbt-model.py
 
 # ignore all .py files with "codegen" in the filename
 *codegen*.py
+
+# ignore all folders in a directory
+path/to/folders/**
+
+# ignore some folders in a directory
+path/to/folders/subfolder/**
+
 ```
 
 </File>

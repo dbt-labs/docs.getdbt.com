@@ -30,21 +30,41 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 <File name='dbt_project.yml'>
 
+<VersionBlock lastVersion="1.9">
+
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
+    [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[build_after](/reference/resource-configs/build-after): <dict>
+
+  ```
+
+</VersionBlock>
 </File>
 
 </TabItem>
 
-
 <TabItem value="property-yaml">
+
+<VersionBlock lastVersion="1.9">
 
 <File name='models/properties.yml'>
 
@@ -57,11 +77,44 @@ models:
       [materialized](/reference/resource-configs/materialized): <materialization_name>
       [sql_header](/reference/resource-configs/sql_header): <string>
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
+```
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+```
+</File>
+
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    freshness:  ## build_after is nested under the freshness
+      [build_after](/reference/resource-configs/build-after): <dict>
 ```
 
 </File>
-
+</VersionBlock>
 </TabItem>
 
 
@@ -69,15 +122,35 @@ models:
 
 <File name='models/<model_name>.sql'>
 
-```jinja
+<VersionBlock lastVersion="1.9">
+
+```sql
 
 {{ config(
     [materialized](/reference/resource-configs/materialized)="<materialization_name>",
     [sql_header](/reference/resource-configs/sql_header)="<string>"
     [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
 ) }}
 
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+
+```sql
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="<materialization_name>",
+    [sql_header](/reference/resource-configs/sql_header)="<string>"
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
+    [build_after](/reference/resource-configs/build-after)="<dict>"
+) }}
+```
+
+</VersionBlock>
 
 </File>
 
@@ -104,6 +177,8 @@ models:
 
 <File name='dbt_project.yml'>
 
+<VersionBlock lastVersion="1.8">
+
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -121,7 +196,29 @@ models:
     [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
 
 ```
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
+    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
+
+```
+</VersionBlock>
 </File>
 
 </TabItem>
@@ -130,6 +227,8 @@ models:
 <TabItem value="property-yaml">
 
 <File name='models/properties.yml'>
+
+<VersionBlock lastVersion="1.8">
 
 ```yaml
 version: 2
@@ -150,18 +249,43 @@ models:
       [grants](/reference/resource-configs/grants): {<dictionary>}
       [contract](/reference/resource-configs/contract): {<dictionary>}
 ```
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [database](/reference/resource-configs/database): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
+      [persist_docs](/reference/resource-configs/persist_docs): <dict>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
+      [contract](/reference/resource-configs/contract): {<dictionary>}
+      [event_time](/reference/resource-configs/event-time): my_time_field
+```
+
+</VersionBlock>
 </File>
 
 </TabItem>
-
-
 
 <TabItem value="config">
 
 <File name='models/<model_name>.sql'>
 
-```jinja
+<VersionBlock lastVersion="1.8">
+
+```sql
 
 {{ config(
     [enabled](/reference/resource-configs/enabled)=true | false,
@@ -178,6 +302,30 @@ models:
 ) }}
 
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+```sql
+
+{{ config(
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
+    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [database](/reference/resource-configs/database)="<string>",
+    [schema](/reference/resource-properties/schema)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
+    [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
+    [meta](/reference/resource-configs/meta)={<dict>},
+    [grants](/reference/resource-configs/grants)={<dict>},
+    [contract](/reference/resource-configs/contract)={<dictionary>},
+    [event_time](/reference/resource-configs/event-time)='my_time_field',
+
+) }}
+
+```
+</VersionBlock>
 
 </File>
 

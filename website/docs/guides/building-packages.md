@@ -9,7 +9,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Core']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -34,7 +33,7 @@ Packages are _not_ a good fit for sharing models that contain business-specific 
 
 ## Create your new project
 :::note Using the command line for package development
-We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
+We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present <Constant name="cloud" /> is not designed for this workflow.
 :::
 
 1. Use the [dbt init](/reference/commands/init) command to create a new dbt project, which will be your package:

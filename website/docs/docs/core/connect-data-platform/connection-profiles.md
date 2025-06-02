@@ -1,7 +1,7 @@
 ---
 title: "Connection profiles"
 id: "connection-profiles"
-description: "Configure your profile using the command line."
+description: "Configure the connection profile for your dbt project."
 ---
 
 When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
@@ -39,14 +39,25 @@ jaffle_shop:
       dbname: jaffle_shop
       schema: dbt_alice
       threads: 4
+
+    prod:  # additional prod target
+      type: postgres
+      host: prod.db.example.com
+      user: alice
+      password: <prod_password>
+      port: 5432
+      dbname: jaffle_shop
+      schema: analytics
+      threads: 8
 ```
 
 </File>
 
+To add an additional target (like `prod`) to your existing `profiles.yml`, you can add another entry under the `outputs` key. 
 
 ## About the `profiles.yml` file
 
-In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile.
+In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile. 
 
 For information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml).
 
@@ -76,16 +87,30 @@ You can find more information on which values to use in your targets below.
 
 Use the [debug](/reference/dbt-jinja-functions/debug-method) command to validate your warehouse connection. Run `dbt debug` from within a dbt project to test your connection.
 
-
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt Core Environments](/docs/core/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [<Constant name="core" /> Environments](/docs/core/dbt-core-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
 You may also have a `prod` target within your profile, which creates the objects in your production schema. However, since it's often desirable to perform production runs on a schedule, we recommend deploying your dbt project to a separate machine other than your local machine. Most dbt users only have a `dev` target in their profile on their local machine.
 
 If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
+
+### Overriding profiles and targets
+
+When running dbt commands, you can specify which profile and target to use from the CLI using the `--profile` and `--target` [flags](/reference/global-configs/about-global-configs#available-flags). These flags override what’s defined in your `dbt_project.yml` as long as the specified profile and target are already defined in your `profiles.yml` file.
+
+To run your dbt project with a different profile or target than the default, you can do so using the followingCLI flags:
+- `--profile` flag &mdash; Overrides the profile set in `dbt_project.yml` by pointing to another profile defined in `profiles.yml`.
+- `--target` flag &mdash; Specifies the target within that profile to use (as defined in `profiles.yml`).
+
+These flags help when you're working with multiple profiles and targets and want to override defaults without changing your files.
+
+```bash
+dbt run --profile my-profile-name --target dev
+```
+In this example, the `dbt run` command will use the `my-profile-name` profile and the `dev` target.
 
 ## Understanding warehouse credentials
 

@@ -8,7 +8,6 @@ id: "list"
 The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](/reference/commands/run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/core/connect-data-platform/connection-profiles) to resolve [`target`](/reference/dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
 ### Usage
-
 ```
 dbt ls
      [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
@@ -83,13 +82,11 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 **Listing Semantic models**
 
 List all resources upstream of your orders semantic model:
-```
-dbt ls -s +semantic_model:orders
+```dbt ls -s +semantic_model:orders
 ```
 
 **Listing file paths**
-```
-dbt ls --select snowplow.* --output path
+```dbt ls --select snowplow.* --output path
 models/base/snowplow_base_events.sql
 models/base/snowplow_base_web_page_context.sql
 models/identification/snowplow_id_map.sql

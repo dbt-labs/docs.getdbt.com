@@ -64,7 +64,7 @@ To specify values as environment variables, use the format `{{ env_var('<variabl
 | `client_id`                   | Required. Your [service account](https://docs.firebolt.io/godocs/Guides/managing-your-organization/service-accounts.html) id. |
 | `client_secret`               | Required. The secret associated with the specified `client_id`. |
 | `database`               | Required. The name of the Firebolt database to connect to. |
-| `engine_name`            | Required in version 0.21.10 and later. Optional in earlier versions. The name (not the URL) of the Firebolt engine to use in the specified `database`. This must be a general purpose read-write engine and the engine must be running. If omitted in earlier versions, the default engine for the specified `database` is used. |
+| `engine_name`            | Required. The name (not the URL) of the Firebolt engine to use in the specified `database`. This must be a general purpose read-write engine and the engine must be running. If omitted in earlier versions, the default engine for the specified `database` is used. |
 | `account_name`           | Required. Specifies the account name under which the specified `database` exists. |
 | `schema`                 | Recommended. A string to add as a prefix to the names of generated tables when using the [custom schemas workaround](https://docs.getdbt.com/reference/warehouse-profiles/firebolt-profile#supporting-concurrent-development). |
 | `threads`                | Required. Set to higher number to improve performance. |
