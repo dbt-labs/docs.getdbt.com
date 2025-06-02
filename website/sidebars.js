@@ -80,6 +80,7 @@ const sidebarSettings = {
                 "docs/cloud/connect-data-platform/connect-bigquery",
                 "docs/cloud/connect-data-platform/connect-databricks",
                 "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+                "docs/cloud/connect-data-platform/connect-motherduck",
                 "docs/cloud/connect-data-platform/connect-onehouse",
                 "docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
