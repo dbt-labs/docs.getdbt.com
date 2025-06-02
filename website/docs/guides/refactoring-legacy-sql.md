@@ -129,7 +129,7 @@ Means that you will copy your model to a `/marts` folder, and work on changes on
 We generally recommend the **alongside** approach, which we'll follow in this tutorial.
 
 ## Implement CTE groupings
-Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](https://docs.getdbt.com/docs/build/models).
+Once you choose your refactoring strategy, you'll want to do some cosmetic cleanups according to your data modeling best practices and start moving code into CTE groupings. This will give you a head start on porting SQL snippets from CTEs into modular [dbt data models](/docs/build/models).
 
 <WistiaVideo id="di9jovovdv" />
 
@@ -212,12 +212,12 @@ After you have moved everything into CTEs, you'll want to write a `select * from
 
 This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
-> For more background on CTEs, check out the [dbt Labs style guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
+> For more background on CTEs, check out the [dbt Labs style guide](/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
 
 ## Port CTEs to individual data models
-Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/build/models).
+Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](/docs/build/models).
 
-Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) accordingly.
+Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](/best-practices/how-we-structure/1-guide-overview) accordingly.
 
 We'll follow those structures in this walkthrough, but your team's conventions may of course differ from ours.
 

@@ -135,9 +135,9 @@ For more information, refer to the [DuckDB setup](/docs/core/connect-data-platfo
 
 
     - [dbt compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
+    - [dbt run](/reference/commands/run) &mdash; compiles and runs your project
+    - [dbt test](/reference/commands/test) &mdash; compiles and tests your project
+    - [dbt build](/reference/commands/build) &mdash; compiles, runs, and tests your project
     - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
     - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
@@ -220,12 +220,12 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 
     You can also use the [duckcli](https://duckdb.org/docs/api/cli/overview.html) to write SQL against the warehouse from the command line or build reports in the [Evidence](https://evidence.dev/) project provided in the `reports` directory.
     
-    For complete information, refer to the [dbt command reference](https://docs.getdbt.com/reference/dbt-commands). Common commands are:
+    For complete information, refer to the [dbt command reference](/reference/dbt-commands). Common commands are:
     
     - [dbt compile](/reference/commands/compile) &mdash; generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
+    - [dbt run](/reference/commands/run) &mdash; compiles and runs your project
+    - [dbt test](/reference/commands/test) &mdash; compiles and tests your project
+    - [dbt build](/reference/commands/build) &mdash; compiles, runs, and tests your project
 
 
   </TabItem>

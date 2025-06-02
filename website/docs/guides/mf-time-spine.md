@@ -31,7 +31,7 @@ Before you start, make sure you have:
 
 ## Add a time spine SQL model
 
-Let's get started by assuming you're creating a time spine from scratch. If you have a dbt project set up already and have your own time spine (like a `dim_date` type model), you can skip this step and go to [Use an existing dim_date model](https://docs.getdbt.com//guides/mf-time-spine#using-an-existing-dim-date-model).
+Let's get started by assuming you're creating a time spine from scratch. If you have a dbt project set up already and have your own time spine (like a `dim_date` type model), you can skip this step and go to [Use an existing dim_date model](/guides/mf-time-spine#using-an-existing-dim-date-model).
 
 The time spine is a dbt model that generates a series of dates (or timestamps) at a specific granularity. In this example, let's create a daily time spine &mdash; `time_spine_daily.sql`. 
 

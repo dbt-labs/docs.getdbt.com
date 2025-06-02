@@ -17,7 +17,7 @@ keywords:
 
 ## Introduction
 
-One of the core tenets of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using <Constant name="cloud" />’s [webhook functionality](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a <Constant name="cloud" /> job via the API.
+One of the core tenets of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using <Constant name="cloud" />’s [webhook functionality](/docs/deploy/continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a <Constant name="cloud" /> job via the API.
 
 A note on parlance in this article since each code hosting platform uses different terms for similar concepts. The terms `pull request` (PR) and `merge request` (MR) are used interchangeably to mean the process of merging one branch into another branch.
 
@@ -49,7 +49,7 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 This guide provides details for multiple code hosting platforms. Where steps are unique, they are presented without a selection option. If code is specific to a platform (i.e. GitHub, GitLab, Bitbucket) you will see a selection option for each.
 
-Pipelines can be triggered by various events. The [<Constant name="cloud" /> webhook](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the <Constant name="cloud" /> API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
+Pipelines can be triggered by various events. The [<Constant name="cloud" /> webhook](/docs/deploy/continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the <Constant name="cloud" /> API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
 
 Here’s a quick look at what this pipeline will accomplish:
 
@@ -69,7 +69,7 @@ The setup below shows how to call the <Constant name="cloud" /> API to run a job
 
 ### 1. Get your dbt API key
 
-When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
+When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
 - Login to your <Constant name="cloud" /> account
 - In the upper left, click the menu button, then *Account Settings*
@@ -523,7 +523,7 @@ This section is only for those projects that connect to their git repository usi
 
 :::
 
-The setup for this pipeline will use the same steps as the prior page. Before moving on, follow steps 1-5 from the [prior page](https://docs.getdbt.com/guides/custom-cicd-pipelines?step=2).
+The setup for this pipeline will use the same steps as the prior page. Before moving on, follow steps 1-5 from the [prior page](/guides/custom-cicd-pipelines?step=2).
 
 ### 1. Create a pipeline job that runs when PRs are created
 

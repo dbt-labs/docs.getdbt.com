@@ -38,13 +38,13 @@ Today thousands of companies, with data teams ranging in size from 2 to 2,000, r
 
 The guide outlines the following steps:
 
-- [Considerations](https://docs.getdbt.com/guides/core-cloud-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
-- [Plan your move](https://docs.getdbt.com/guides/core-cloud-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
-- [Move to <Constant name="cloud" />](https://docs.getdbt.com/guides/core-cloud-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
-- [Test and validate](https://docs.getdbt.com/guides/core-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move.
-- [Transition and training](https://docs.getdbt.com/guides/core-cloud-2?step=7): Learn how to fully transition to <Constant name="cloud" /> and what training and support you may need. 
-- [Summary](https://docs.getdbt.com//guides/core-cloud-2?step=8): Summarizes key takeaways and what you've learned in this guide.
-- [What's next?](https://docs.getdbt.com/guides/core-cloud-2?step=9): Introduces what to expect in the following guides.
+- [Considerations](/guides/core-cloud-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
+- [Plan your move](/guides/core-cloud-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
+- [Move to <Constant name="cloud" />](/guides/core-cloud-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
+- [Test and validate](/guides/core-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move.
+- [Transition and training](/guides/core-cloud-2?step=7): Learn how to fully transition to <Constant name="cloud" /> and what training and support you may need. 
+- [Summary](/guides/core-cloud-2?step=8): Summarizes key takeaways and what you've learned in this guide.
+- [What's next?](/guides/core-cloud-2?step=9): Introduces what to expect in the following guides.
 
 ## Considerations
 
@@ -108,7 +108,7 @@ Discover how <Constant name="cloud" /> can help simplify development, orchestrat
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up [a CI job](/docs/deploy/ci-jobs) to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged.
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 
-  - For the most flexibility, use the [<Constant name="cloud" /> API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
+  - For the most flexibility, use the [<Constant name="cloud" /> API](/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
 - **Continuous integration (CI)**: Use [CI jobs](/docs/deploy/ci-jobs) to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production.
   - For many teams, <Constant name="cloud" /> CI represents a major improvement compared to their previous development workflows.
 - **How are you defining tests today?**: While testing production data is important, it’s not the most efficient way to catch logical errors introduced by developers You can use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
@@ -142,7 +142,7 @@ For a more detailed comparison of <Constant name="core" /> and <Constant name="c
 
 ## Test and validate
 
-After [setting the foundations of <Constant name="cloud" />](https://docs.getdbt.com/guides/core-to-cloud-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
+After [setting the foundations of <Constant name="cloud" />](/guides/core-to-cloud-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
 
 - **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
 - **Start cutover:** You can start the cutover to <Constant name="cloud" /> by creating a <Constant name="cloud" /> job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
@@ -185,7 +185,7 @@ This guide should now have given you some insight and equipped you with a framew
 
 - **Plan you move**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness <Constant name="cloud" />'s collaborative and efficient environment.
 
-- **Move to <Constant name="cloud" />**: Linking to [the guide](https://docs.getdbt.com/guides/core-to-cloud-1?step=1) that outlines technical steps required to transition your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
+- **Move to <Constant name="cloud" />**: Linking to [the guide](/guides/core-to-cloud-1?step=1) that outlines technical steps required to transition your <Constant name="core" /> project to <Constant name="cloud" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 
 - **Test and validate**: Emphasizing technical transitions, including testing and validating your dbt projects within the <Constant name="cloud" /> ecosystem to ensure data integrity and performance.
 

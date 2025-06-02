@@ -124,7 +124,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
-    Refer to the [API v3 Pagination](https://docs.getdbt.com/dbt-cloud/api-v3#/) or [API v2 Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) sections for more information on how to paginate your API responses. 
+    Refer to the [API v3 Pagination](/dbt-cloud/api-v3#/) or [API v2 Pagination](/dbt-cloud/api-v2#/) sections for more information on how to paginate your API responses. 
 
   </Expandable>
 
@@ -691,7 +691,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     **Beginning June 1, 2023,** developers on the <Constant name="cloud" /> multi-tenant application will be able to self-serve access to their account’s run history through the <Constant name="cloud" /> user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
 
-    Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/List%20Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
+    Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](/dbt-cloud/api-v2#/operations/List%20Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
 
     <Lightbox src="/img/docs/dbt-cloud/rn-run-history.jpg" width="100%" title="The dbt Cloud UI displaying a Run History"/>
 
@@ -808,7 +808,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     :::
 
-    For more info, refer to our [documentation](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/List%20Runs).
+    For more info, refer to our [documentation](/dbt-cloud/api-v2#/operations/List%20Runs).
 
   </Expandable>
 
@@ -826,7 +826,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='Starburst adapter GA'>
 
-    The Starburst (Trino compatible) connection is now generally available in dbt Cloud. This means you can now use dbt Cloud to connect with Starburst Galaxy, Starburst Enterprise, and self-hosted Trino. This feature is powered by the [`dbt-trino`](https://github.com/starburstdata/dbt-trino) adapter. To learn more, check out our Quickstart guide for [dbt Cloud and Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy).
+    The Starburst (Trino compatible) connection is now generally available in dbt Cloud. This means you can now use dbt Cloud to connect with Starburst Galaxy, Starburst Enterprise, and self-hosted Trino. This feature is powered by the [`dbt-trino`](https://github.com/starburstdata/dbt-trino) adapter. To learn more, check out our Quickstart guide for [dbt Cloud and Starburst Galaxy](/guides/starburst-galaxy).
 
   </Expandable>
 
@@ -878,7 +878,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     Refer to some additional info and resources to help you upgrade your dbt version:
 
-    - [How to upgrade dbt without fear](https://docs.getdbt.com/blog/upgrade-dbt-without-fear) 
+    - [How to upgrade dbt without fear](/blog/upgrade-dbt-without-fear) 
     - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10)
     - [Version migration guides](/docs/dbt-versions/core-upgrade)
 
@@ -888,7 +888,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
 
-    Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/) and stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
+    Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/) and stay up-to-date with [IDE-related changes](/tags/ide).
 
     ## New features 
 
@@ -936,7 +936,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
-    Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) section of the overview for more information on this change. 
+    Refer to the [Pagination](/dbt-cloud/api-v2#/) section of the overview for more information on this change. 
 
     </Expandable>
 

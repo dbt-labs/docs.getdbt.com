@@ -119,7 +119,7 @@ Read more about the new [Cloud <Constant name="cloud_ide" /> features](/docs/clo
 
 On October 14th, 2022 dbt Labs is deprecating the List Steps API endpoint. From October 14th, any GET requests to this endpoint will fail. Please prepare to stop using the List Steps endpoint as soon as possible. 
 
-dbt Labs will continue to maintain the [Retrieve Run](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/Retrieve%20Run) endpoint, which is a viable alternative depending on the use case. 
+dbt Labs will continue to maintain the [Retrieve Run](/dbt-cloud/api-v2#/operations/Retrieve%20Run) endpoint, which is a viable alternative depending on the use case. 
 
 You can fetch run steps for an individual run with a GET request to the following URL,  replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
 
@@ -139,7 +139,7 @@ Cross-database queries for RA3 instances are now supported by <Constant name="cl
 
 With cross-database queries, you can seamlessly query data from any database in the cluster, regardless of which database you are connected to with dbt. 
 
-The [connection configuration](https://docs.getdbt.com/reference/warehouse-profiles/redshift-profile) `ra3_node` has been defaulted to `true`. This allows users to:
+The [connection configuration](/docs/core/connect-data-platform/redshift-setup) `ra3_node` has been defaulted to `true`. This allows users to:
 
 - benefit from the full RA3 nodes’ capabilities, 
 - generate appropriate dbt documentation.
@@ -213,7 +213,7 @@ Love the DAG in the <Constant name="cloud_ide" /> as much as we do? Now when you
 
 ### Service tokens and bug fixes
 
-Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 
 #### New products and features
 
@@ -227,7 +227,7 @@ Service tokens can now be assigned granular permissions to enforce least privile
 
 ### Autocomplete snippets for SQL and YAML files in IDE
 
-Some noteworthy improvements include autocomplete snippets for sql and YAML files in the IDE, which are available for use now! We also added a [new metric layer page](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
+Some noteworthy improvements include autocomplete snippets for sql and YAML files in the IDE, which are available for use now! We also added a [new metric layer page](/docs/use-dbt-semantic-layer/dbt-sl) to docs.getdbt.com to help you begin thinking about the metrics layer in dbt Cloud.
 
 #### Performance improvements and enhancements
 
@@ -237,7 +237,7 @@ Some noteworthy improvements include autocomplete snippets for sql and YAML file
 
 ### Model timing for Multi-tenant Team and Enterprise accounts
 
-We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in <Constant name="cloud" />. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](/docs/deploy/deploy-jobs#model-timing) tab in <Constant name="cloud" />. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
 
 #### Performance improvements and enhancements
 

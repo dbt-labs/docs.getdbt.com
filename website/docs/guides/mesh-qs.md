@@ -30,9 +30,9 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
-- [Deciding how to structure your <Constant name="mesh" />](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-structures)
-- [<Constant name="mesh" /> best practices guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-implementation)
-- [<Constant name="mesh" /> FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
+- [Deciding how to structure your <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-3-structures)
+- [<Constant name="mesh" /> best practices guide](/best-practices/how-we-mesh/mesh-4-implementation)
+- [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs)
 
 ## Prerequisites​
 
@@ -41,12 +41,12 @@ To leverage <Constant name="mesh" />, you need the following:
 - You must have a [<Constant name="cloud" /> Enterprise-tier account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed,managed_plus" />
 - You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="cloud" /> permissions to create new projects. 
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
-  - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
-  - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
-  - [Redshift](https://docs.getdbt.com/guides/redshift?step=3)
-  - [BigQuery](https://docs.getdbt.com/guides/bigquery?step=3)
-  - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
-  - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
+  - [Snowflake](/guides/snowflake?step=3)
+  - [Databricks](/guides/databricks?step=3)
+  - [Redshift](/guides/redshift?step=3)
+  - [BigQuery](/guides/bigquery?step=3)
+  - [Fabric](/guides/microsoft-fabric?step=2)
+  - [Starburst Galaxy](/guides/starburst-galaxy?step=2)
 
 This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to dbt.
 
@@ -83,7 +83,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="clou
     - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
 
 ### Create a production environment
-In <Constant name="cloud" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="explorer" /> in the [later steps](https://docs.getdbt.com/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
+In <Constant name="cloud" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="explorer" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
 
 To set a production environment:
 1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.
@@ -286,7 +286,7 @@ Note: By default, model access is set to "protected", which means they can only 
 
 ### Create and run a dbt job
 
-Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](https://docs.getdbt.com/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
+Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
 
 To run your first deployment <Constant name="cloud" /> job, you will need to create a new <Constant name="cloud" /> job.  
 1. Click **Deploy** and then **Jobs**. 
@@ -636,8 +636,8 @@ Congratulations 🎉! You're ready to bring the benefits of <Constant name="mesh
 
 Here are some additional resources to help you continue your journey:
 
-- [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
-- [<Constant name="mesh" /> FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
+- [How we build our dbt mesh projects](/best-practices/how-we-mesh/mesh-1-intro)
+- [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs)
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
 - [<Constant name="explorer" />](/docs/explore/explore-projects)

@@ -117,7 +117,7 @@ To configure the Athena credentials in your environment:
 1. Fill out the `aws_access_key` and `aws_access_id` recorded in previous steps, as well as the `Schema` to write to. 
 1. Click **Test connection** and once it succeeds, **Save** the environment.
 
-Repeat the process to create a [development environment](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments). 
+Repeat the process to create a [development environment](/docs/dbt-cloud-environments#types-of-environments). 
 
 ## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />

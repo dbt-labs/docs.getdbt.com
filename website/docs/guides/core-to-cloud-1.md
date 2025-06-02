@@ -41,14 +41,14 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 This guide outlines the steps you need to take to move from <Constant name="core" /> to <Constant name="cloud" /> and highlights the necessary technical changes:
 
-- [Account setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=4): Learn how to create a <Constant name="cloud" /> account, invite team members, and configure it for your team.
-- [Data platform setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=5): Find out about connecting your data platform to <Constant name="cloud" />.
-- [<Constant name="git" /> setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="cloud" />.
-- [Developer setup:](https://docs.getdbt.com/guides/core-to-cloud-1?step=7) Understand the setup needed for developing in <Constant name="cloud" />.
-- [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=8): Discover how to manage environment variables in <Constant name="cloud" />, including their priority.
-- [Orchestration setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=9): Learn how to prepare your <Constant name="cloud" /> environment and jobs for orchestration.
-- [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
-- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
+- [Account setup](/guides/core-to-cloud-1?step=4): Learn how to create a <Constant name="cloud" /> account, invite team members, and configure it for your team.
+- [Data platform setup](/guides/core-to-cloud-1?step=5): Find out about connecting your data platform to <Constant name="cloud" />.
+- [<Constant name="git" /> setup](/guides/core-to-cloud-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="cloud" />.
+- [Developer setup:](/guides/core-to-cloud-1?step=7) Understand the setup needed for developing in <Constant name="cloud" />.
+- [Environment variables](/guides/core-to-cloud-1?step=8): Discover how to manage environment variables in <Constant name="cloud" />, including their priority.
+- [Orchestration setup](/guides/core-to-cloud-1?step=9): Learn how to prepare your <Constant name="cloud" /> environment and jobs for orchestration.
+- [Models configuration](/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
+- [What's next?](/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
 - [Learn <Constant name="cloud" />](https://learn.getdbt.com) on-demand video learning.

@@ -138,7 +138,7 @@ Note: If you're using a workgroup with a default output location configured, `s3
 
 ### Incremental models
 
-The following [incremental models](https://docs.getdbt.com/docs/build/incremental-models) strategies are supported:
+The following [incremental models](/docs/build/incremental-models) strategies are supported:
 
 - `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined.
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
@@ -343,7 +343,7 @@ models:
             primary_key: true
 ```
 
-Refer to [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) for more details.
+Refer to [persist_docs](/reference/resource-configs/persist_docs) for more details.
 
 ## Snapshots
 

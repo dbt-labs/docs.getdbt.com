@@ -64,10 +64,10 @@ The rest of this guide applies universally across all supported platforms, ensur
 
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
-- [Step 2: Create a new GCP project](https://docs.getdbt.com/guides/bigquery?step=2)
-- [Step 3: Create BigQuery dataset](https://docs.getdbt.com/guides/bigquery?step=3)
-- [Step 4: Generate BigQuery credentials](https://docs.getdbt.com/guides/bigquery?step=4)
-- [Step 5: Connect <Constant name="cloud" /> to BigQuery](https://docs.getdbt.com/guides/bigquery?step=5)
+- [Step 2: Create a new GCP project](/guides/bigquery?step=2)
+- [Step 3: Create BigQuery dataset](/guides/bigquery?step=3)
+- [Step 4: Generate BigQuery credentials](/guides/bigquery?step=4)
+- [Step 5: Connect <Constant name="cloud" /> to BigQuery](/guides/bigquery?step=5)
 
 </TabItem>
 
@@ -75,9 +75,9 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
-- [Step 2: Create a Databricks workspace](https://docs.getdbt.com/guides/databricks?step=2)
-- [Step 3: Load data](https://docs.getdbt.com/guides/databricks?step=3)
-- [Step 4: Connect <Constant name="cloud" /> to Databricks](https://docs.getdbt.com/guides/databricks?step=4)
+- [Step 2: Create a Databricks workspace](/guides/databricks?step=2)
+- [Step 3: Load data](/guides/databricks?step=3)
+- [Step 4: Connect <Constant name="cloud" /> to Databricks](/guides/databricks?step=4)
 
 </TabItem>
 
@@ -85,8 +85,8 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
-- [Step 2: Load data into your Microsoft Fabric warehouse](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
-- [Step 3: Connect <Constant name="cloud" /> to Microsoft Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=3)
+- [Step 2: Load data into your Microsoft Fabric warehouse](/guides/microsoft-fabric?step=2)
+- [Step 3: Connect <Constant name="cloud" /> to Microsoft Fabric](/guides/microsoft-fabric?step=3)
 
 </TabItem>
 
@@ -94,9 +94,9 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
-- [Step 2: Create a Redshift cluster](https://docs.getdbt.com/guides/redshift?step=2)
-- [Step 3: Load data](https://docs.getdbt.com/guides/redshift?step=3)
-- [Step 4: Connect <Constant name="cloud" /> to Redshift](https://docs.getdbt.com/guides/redshift?step=3)
+- [Step 2: Create a Redshift cluster](/guides/redshift?step=2)
+- [Step 3: Load data](/guides/redshift?step=3)
+- [Step 4: Connect <Constant name="cloud" /> to Redshift](/guides/redshift?step=3)
 
 </TabItem>
 
@@ -104,10 +104,10 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
-- [Step 2: Load data to an Amazon S3 bucket](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
-- [Step 3: Connect Starburst Galaxy to Amazon S3 bucket data](https://docs.getdbt.com/guides/starburst-galaxy?step=3)
-- [Step 4: Create tables with Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=4)
-- [Step 5: Connect <Constant name="cloud" /> to Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=5)
+- [Step 2: Load data to an Amazon S3 bucket](/guides/starburst-galaxy?step=2)
+- [Step 3: Connect Starburst Galaxy to Amazon S3 bucket data](/guides/starburst-galaxy?step=3)
+- [Step 4: Create tables with Starburst Galaxy](/guides/starburst-galaxy?step=4)
+- [Step 5: Connect <Constant name="cloud" /> to Starburst Galaxy](/guides/starburst-galaxy?step=5)
 
 </TabItem>
 
@@ -482,7 +482,7 @@ select * from final
 
 ## Create semantic models
 
-In this section, you'll learn about [semantic model](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#about-semantic-models), [their components](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#semantic-model-components), and [how to configure a time spine](https://docs.getdbt.com/guides/sl-snowflake-qs?step=6#configure-a-time-spine).
+In this section, you'll learn about [semantic model](/guides/sl-snowflake-qs?step=6#about-semantic-models), [their components](/guides/sl-snowflake-qs?step=6#semantic-model-components), and [how to configure a time spine](/guides/sl-snowflake-qs?step=6#configure-a-time-spine).
 
 
 ### About semantic models

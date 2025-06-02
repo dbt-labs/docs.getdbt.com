@@ -112,7 +112,7 @@ Make note of the Webhook Secret Key for later.
 
 ## Store secrets
 The application requires three secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="cloud" /> [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="cloud" /> webhook you created earlier.
 - `PD_ROUTING_KEY`: the integration key for the PagerDuty integration you created earlier.
 

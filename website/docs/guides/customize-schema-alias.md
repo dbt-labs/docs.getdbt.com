@@ -15,7 +15,7 @@ keywords: ["generate", "schema name", "guide", "dbt", "schema customization", "c
 
 ## Introduction
 This guide explains how to customize the [schema](/docs/build/custom-schemas), [database](/docs/build/custom-databases), and [alias](/docs/build/custom-aliases) naming conventions in dbt to fit your data warehouse governance and design needs.
-When we develop dbt models and execute certain [commands](https://docs.getdbt.com/reference/dbt-commands) (such as `dbt run` or `dbt build`), objects (like tables and views) get created in the data warehouse based on these naming conventions.
+When we develop dbt models and execute certain [commands](/reference/dbt-commands) (such as `dbt run` or `dbt build`), objects (like tables and views) get created in the data warehouse based on these naming conventions.
 
 
 
@@ -275,7 +275,7 @@ The `DBT_CLOUD_GIT_BRANCH` variable is only available within the <Constant name=
 
 We’ve also seen some organizations prefer to organize their dev databases by branch name. This requires implementing similar logic in `generate_database_name()` instead of the `generate_schema_name()` macro. By default, dbt will not automatically create the databases. 
 
-Refer to the [Tips and tricks](https://docs.getdbt.com/guides/customize-schema-alias?step=5) section to learn more.    
+Refer to the [Tips and tricks](/guides/customize-schema-alias?step=5) section to learn more.    
 
 
 <File name='macros/generate_schema_name.sql'>

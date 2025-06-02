@@ -32,7 +32,7 @@ Using Databricks workflows to call the <Constant name="cloud" /> job API can be 
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="cloud" />
+1. Retrieve **[personal access token](/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="cloud" />
 2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="cloud" /> API key. 
 
 3. Enter the **following commands** in your terminal:

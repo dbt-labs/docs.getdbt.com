@@ -72,14 +72,14 @@ This release adds a few new pieces of connective tissue, notably OAuth for BigQu
 ## dbt Cloud v1.1.13 (November 12, 2020)
 
 This release adds support for triggering runs with overriden attributes via the
-[triggerRun](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun) API endpoint. Additionally,
+[triggerRun](/dbt-cloud/api-v2#) API endpoint. Additionally,
 a number of bugs have been squashed and performance improvements have been made.
 
 #### Enhancements
 
 - Improve error handling for long-running queries in the <Constant name="cloud_ide" />
 - Use S3 client caching to improve log download speed for scheduled runs
-- Support triggering jobs [with overriden attributes from the API](https://docs.getdbt.com/dbt-cloud/api/#operation/triggerRun)
+- Support triggering jobs [with overriden attributes from the API](/dbt-cloud/api-v2#)
 - Clarify "upgrade" copy on the billing page
 
 #### Fixed

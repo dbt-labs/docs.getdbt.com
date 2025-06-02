@@ -35,7 +35,7 @@ The following steps use [GitHub](https://github.com/) as the <Constant name="git
 2. Select **Public** so the repository can be shared with others. You can always make it private later.
 3. Leave the default values for all other settings.
 4. Click **Create repository**.
-5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](https://docs.getdbt.com/guides/manual-install?step=6).
+5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](/guides/manual-install?step=6).
 
 ## Create a project
 
@@ -161,7 +161,7 @@ You should have an output that looks like this:
 
 Commit your changes so that the repository contains the latest code.
 
-1. Link the GitHub repository you created to your dbt project by running the following commands in Terminal. Make sure you use the correct git URL for your repository, which you should have saved from step 5 in [Create a repository](https://docs.getdbt.com/guides/manual-install?step=2).
+1. Link the GitHub repository you created to your dbt project by running the following commands in Terminal. Make sure you use the correct git URL for your repository, which you should have saved from step 5 in [Create a repository](/guides/manual-install?step=2).
 
 ```shell
 git init

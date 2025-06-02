@@ -53,4 +53,4 @@ You can clone nodes between states in <Constant name="cloud" /> using the `dbt c
   - Run the `dbt clone` command from the command bar.
   
   
-Check out [this Developer blog post](https://docs.getdbt.com/blog/to-defer-or-to-clone) for more details on best practices when to use `dbt clone` vs. deferral.
+Check out [this Developer blog post](/blog/to-defer-or-to-clone) for more details on best practices when to use `dbt clone` vs. deferral.

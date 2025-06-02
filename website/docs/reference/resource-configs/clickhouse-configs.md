@@ -260,7 +260,7 @@ dbt-clickhouse supports most of the cross database macros now included in <Const
 
 ## Setting `quote_columns`
 
-To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
+To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](/reference/resource-configs/quote_columns) for more information.
 
 ```yaml
 seeds:
