@@ -78,7 +78,7 @@ dbt Labs has introduced the new [dbt Fusion engine](/docs/fusion/about-fusion), 
 - **To gain access to the Fusion Latest release track, you must reach out to your dbt Labs account team to request it. Week by week we'll expand the beta cohort based on project eligibility, including Starter plans**. Once we transition from Beta to Preview, all users will see it as an option for their environments, projects, jobs, etc.
 
 
- To increase the likelihood your project is compatible, update all jobs and environments to the `Latest` release track and follow our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)
+ To increase the compatibility of your project, update all jobs and environments to the `Latest` release track and follow our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion). 
 - There are some significant changes, these can also be found in the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - Currently, the only supported adapter is Snowflake. More adapter support coming soon!
 - When you change your development environment(s) to `Fusion Latest`, every user will have to restart the IDE.
