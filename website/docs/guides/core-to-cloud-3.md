@@ -1,14 +1,13 @@
 ---
-title: 'Move from dbt Core to dbt Cloud: Optimization tips'
+title: 'Move from dbt Core to the dbt platform: Optimization tips'
 id: core-to-cloud-3
-description: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
-hoverSnippet: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
+description: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
+hoverSnippet: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt Cloud']
-keywords: ['dbt Core','dbt Cloud','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt Core','dbt platform']
+keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 ## Introduction
@@ -38,8 +37,8 @@ In <Constant name="cloud" />, you can natively connect to your data platform an
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with <Constant name="cloud" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
 - <Constant name="cloud" /> supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
-- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your dbt Cloud environment settings. It gives you more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
-  - For example, if you have a field in your `profiles.yml` that you’d like to add to the dbt Cloud adapter user interface, you can use Extended Attributes to set it.
+- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your <Constant name="cloud" /> environment settings. It gives you more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
+  - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="cloud" /> adapter user interface, you can use Extended Attributes to set it.
 
 ### Caveats
 - Not all parameters are available for adapters.
@@ -51,7 +50,7 @@ In <Constant name="cloud" />, you can natively connect to your data platform an
 
 Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
 
-### dbt Cloud IDE
+### Studio IDE
 A web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. The <Constant name="cloud_ide" /> makes developing fast and easy for new and seasoned data practitioners to build and test changes.
 
 **Who might prefer the <Constant name="cloud_ide" />?**
@@ -67,7 +66,7 @@ A web-based interface for building, testing, running, and version-controlling db
   - View saved but not-committed code changes directly in the <Constant name="cloud_ide" />.
 - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
 The <Constant name="cloud_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="cloud_ide" /> due to its focus on simplicity and ease of use:
 
@@ -75,10 +74,10 @@ The <Constant name="cloud_ide" /> provides a simplified interface that's accessi
 - Mass-generating files / interacting with the file system are not available.
 - Combining/piping commands, such as `dbt run -s (bash command)`, is not available.
 
-### dbt Cloud CLI
+### dbt CLI
 The <Constant name="cloud" /> CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your <Constant name="cloud" /> development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
-When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` file contains the [necessary folders](/docs/cloud/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so dbt Cloud doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, dbt Cloud won't add any missing entries to the `.gitignore file`.
+When moving from dbt Core to <Constant name="cloud" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/cloud/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so <Constant name="cloud" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="cloud" /> won't add any missing entries to the `.gitignore file`.
 
 **Who might prefer the <Constant name="cloud" /> CLI?**
 
@@ -90,7 +89,7 @@ When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` fil
 
 - Allows users to run dbt commands against their <Constant name="cloud" /> development environment from their local command line with minimal configuration.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 - Able to use Visual Studio (VS) Code extensions
 
 ## Orchestration
@@ -102,8 +101,8 @@ When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` fil
 - Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in <Constant name="cloud" /> to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - <Constant name="cloud" /> automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed" />
-- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
+- Protect you and your data freshness from third-party outages by enabling <Constant name="cloud" />’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed,managed_plus" />
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across <Constant name="cloud" /> projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats
@@ -162,7 +161,7 @@ Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-la
 - Use the search and filter capabilities in <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/explore/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
 - Use the [Lenses](/docs/explore/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
-- Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="managed" />
+- Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="managed,managed_plus" />
 
 ### Caveats
 - There must be at least one successful job run in the production deployment environment for <Constant name="explorer" /> to populate information. 

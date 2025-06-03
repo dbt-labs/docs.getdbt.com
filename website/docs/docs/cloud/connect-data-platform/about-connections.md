@@ -100,4 +100,4 @@ Please consider the following actions, as the steps you take will depend on the 
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API. Using the dbt Cloud API requires allowing the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the <Constant name="cloud" /> API. Using the <Constant name="cloud" /> API requires allowing the `cloud.getdbt.com` subdomain. For more on the <Constant name="cloud" /> architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).

@@ -1,17 +1,17 @@
 ---
-title: "Self-service Team account permissions"
-description: "Learn how dbt Cloud administrators can use self-service permissions to control access in a dbt Cloud Team account."
-sidebar_label: "Team permissions"
+title: "Self-service Starter account permissions"
+description: "Learn how dbt administrators can use self-service permissions to control access in a dbt Starter account."
+sidebar_label: "Starter permissions"
 id: "self-service-permissions"
 ---
 
-Self-service Team accounts are a quick and easy way to get <Constant name="cloud" /> up and running for a small team. For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) account unlocks these capabilities. 
+Self-service Starter accounts are a quick and easy way to get <Constant name="cloud" /> up and running for a small team. 
 
-If you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact)
+For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise-tier](/docs/cloud/manage-access/enterprise-permissions) account unlocks these capabilities &mdash; if you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact).
 
 ## Groups and permissions
 
-Groups determine a user's permission and there are three groups are available for Team plan <Constant name="cloud" /> accounts: Owner, Member, and Everyone. The first Owner user is the person who created the <Constant name="cloud" /> account. 
+Groups determine a user's permission and there are three groups are available for the Starter plan <Constant name="cloud" /> accounts: Owner, Member, and Everyone. The first Owner user is the person who created the <Constant name="cloud" /> account. 
 
 New users are added to the Member and Everyone groups when they onboard but this can be changed when the invitation is created. These groups only affect users with a [Developer license](#licenses) assigned. 
 

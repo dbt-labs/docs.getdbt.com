@@ -1,11 +1,11 @@
 
-Starting in 2024, when you select a [release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades, dbt will ignore the `require-dbt-version` config.
+Starting in 2024, when you select a [release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades, dbt will ignore the `require-dbt-version` config.
 
-dbt Labs is committed to zero breaking changes for code in dbt projects, with ongoing releases to dbt Cloud and new versions of dbt Core. We also recommend these best practices:
+dbt Labs is committed to zero breaking changes for code in dbt projects, with ongoing releases to <Constant name="cloud" /> and new versions of dbt Core. We also recommend these best practices:
 
 <Expandable alt_header="Installing dbt packages" >
 
-If you install dbt packages for use in your project, whether the package is maintained by your colleagues or a member of the open source dbt community, we recommend pinning the package to a specific revision or `version` boundary. Since v1.7, dbt manages this out-of-the-box by _locking_ the version/revision of packages in development in order to guarantee predictable builds in production. To learn more, refer to [Predictable package installs](/reference/commands/deps#predictable-package-installs).
+If you install dbt packages for use in your project, whether the package is maintained by your colleagues or a member of the open source dbt community, we recommend pinning the package to a specific revision or `version` boundary. dbt manages this out-of-the-box by _locking_ the version/revision of packages in development in order to guarantee predictable builds in production. To learn more, refer to [Predictable package installs](/reference/commands/deps#predictable-package-installs).
 
 </Expandable>
 <Expandable alt_header="Maintaining dbt packages" >

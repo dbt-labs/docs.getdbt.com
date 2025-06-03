@@ -7,7 +7,7 @@ pagination_next:  "docs/explore/data-tile"
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 ---
 
-# Visualize downstream exposures <Lifecycle status="managed" />
+# Visualize downstream exposures <Lifecycle status="managed,managed_plus" />
 
 <IntroText>
 Downstream exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in <Constant name="explorer" /> for a richer experience.
@@ -25,7 +25,7 @@ To configure downstream exposures automatically from dashboards in Tableau, prer
 
 ### Supported plans
 
-Downstream exposures is available on the [<Constant name="cloud" /> Enterprise](https://www.getdbt.com/pricing/) plan. Currently, you can only connect to a single Tableau site on the same server.
+Downstream exposures is available on all <Constant name="cloud" /> [Enterprise-tier plans](https://www.getdbt.com/pricing/). Currently, you can only connect to a single Tableau site on the same server.
 
 :::info Tableau Server
 If you're using Tableau Server, you need to [allowlist <Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for your <Constant name="cloud" /> region.

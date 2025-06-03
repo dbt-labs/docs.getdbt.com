@@ -6,9 +6,8 @@ id: set-up-ci
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration', 'CI']
+tags: ['dbt platform', 'Orchestration', 'CI']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -119,7 +118,7 @@ By [linting](/docs/cloud/dbt-cloud-ide/lint-format#lint) your project during CI,
 
 Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="cloud" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
 
-SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="cloud" /> [Team or Enterprise accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/cloud-release-tracks). 
+SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/cloud-release-tracks). 
 
 
 ### Manually set up SQL linting in CI
@@ -363,7 +362,7 @@ Adding a regularly-scheduled job inside of the QA environment whose only command
 
 ### 5. Test your process
 
-When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the <Constant name="cloud_ide" />. Under this paradigm, that button will create PRs targeting your QA branch instead.
+When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). <Constant name="cloud" /> will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the <Constant name="cloud_ide" />. Under this paradigm, that button will create PRs targeting your QA branch instead.
 
 To test your new flow, create a new branch in the <Constant name="cloud_ide" /> then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
 

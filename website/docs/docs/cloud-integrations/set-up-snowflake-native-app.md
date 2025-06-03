@@ -24,9 +24,9 @@ The order of the steps is slightly different if you purchased the public listing
 ## Prerequisites
 The following are the prerequisites for <Constant name="cloud" /> and Snowflake. 
 
-### dbt Cloud
+### dbt
 
-- You must have a <Constant name="cloud" /> account on the Enterprise plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
+- You must have a <Constant name="cloud" /> account on an Enterprise-tier plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
     - Currently, <Constant name="semantic_layer" /> is unavailable for Azure ST instances and the **Ask dbt** chatbot will not function in the dbt Snowflake Native App without it. 
 - Your <Constant name="cloud" /> account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 - There's a <Constant name="cloud" /> project with [<Constant name="semantic_layer" /> configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
@@ -67,7 +67,7 @@ Configure <Constant name="cloud" /> and Snowflake Cortex to power the **Ask dbt*
 
     Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
-## Configure dbt Cloud 
+## Configure dbt
 Collect the following pieces of information from <Constant name="cloud" /> to set up the application. 
 
 1. Navigate to the left-hand side panel and click your account name. From there, select **Account settings**. Then click **API tokens > Service tokens**. Create a service token with access to all the projects you want to access in the dbt Snowflake Native App. Grant these permission sets: 
@@ -133,9 +133,9 @@ The following is an example of the **Ask dbt** chatbot with the suggested prompt
 
 ## FAQs
 
-<Expandable alt_header="Unable to install the dbt Cloud Snowflake Native app from the Snowflake Marketplace" >
+<Expandable alt_header="Unable to install the dbt Snowflake Native app from the Snowflake Marketplace" >
 
-The dbt Cloud Snowflake Native App is not available to Snowflake Free Trial accounts.
+The <Constant name="cloud" /> Snowflake Native App is not available to Snowflake Free Trial accounts.
 
 </Expandable>
 
@@ -147,7 +147,7 @@ Check that the SL user has been granted access to the `dbt_sl_llm` schema and ma
 
 <Expandable alt_header="Need to update the dbt configuration options used by the Native App" >
 
-If there's been an update to the dbt Cloud account ID, access URL, or API service token, you need to update the configuration for the dbt Snowflake Native App. In Snowflake, navigate to the app's configuration page and delete the existing configurations. Add the new configuration and then run `CALL app_public.restart_app();` in the application database in Snowsight. 
+If there's been an update to the <Constant name="cloud" /> account ID, access URL, or API service token, you need to update the configuration for the dbt Snowflake Native App. In Snowflake, navigate to the app's configuration page and delete the existing configurations. Add the new configuration and then run `CALL app_public.restart_app();` in the application database in Snowsight. 
 </Expandable>
 
 <Expandable alt_header="Are environment variables supported in the Native App?" >

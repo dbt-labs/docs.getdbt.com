@@ -2,7 +2,7 @@
 title: "Supported data platforms"
 id: "supported-data-platforms"
 sidebar_label: "About supported data platforms"
-description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
+description: "Connect dbt to any data platform in dbt, using a dedicated adapter plugin"
 hide_table_of_contents: true
 pagination_next: "docs/connect-adapters"
 pagination_prev: null

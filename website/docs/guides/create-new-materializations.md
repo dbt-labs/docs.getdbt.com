@@ -8,7 +8,6 @@ hoverSnippet: Learn how to create your own materializations.
 icon: 'guides'
 hide_table_of_contents: true
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

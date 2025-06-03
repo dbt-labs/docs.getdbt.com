@@ -3,11 +3,12 @@ title: "Column-level lineage"
 description: "Use dbt Explorer's column-level lineage to gain insights about your data at a granular level."
 ---
 
-# Column-level lineage <Lifecycle status="managed" />
+# Column-level lineage <Lifecycle status="managed,managed_plus" />
 
 <Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
 
-CLL is available to <Constant name="cloud" /> Enterprise accounts that can use <Constant name="explorer" />. 
+CLL is available to all <Constant name="cloud" /> Enterprise plans that can use <Constant name="explorer" />. 
+
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="95%" title="Overview of column level lineage"/>
 
@@ -19,7 +20,7 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 There is no additional setup required for CLL if your account is on an Enterprise plan that can use <Constant name="explorer" />. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="explorer" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-dbt Cloud updates the lineage in Explorer after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
+<Constant name="cloud" /> updates the lineage in Explorer after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
 

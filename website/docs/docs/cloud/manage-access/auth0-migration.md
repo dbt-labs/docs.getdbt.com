@@ -2,8 +2,10 @@
 title: "Migrating to Auth0 for SSO"
 id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
-description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud."
+description: "Required actions for migrating to Auth0 for SSO services on dbt."
 ---
+
+# Migrating to Auth0 for SSO <Lifecycle status="managed,managed_plus" />
 
 dbt Labs is partnering with Auth0 to bring enhanced features to <Constant name="cloud" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="cloud" />. These changes will require some action from customers with SSO configured in <Constant name="cloud" /> today, and this guide will outline the necessary changes for each environment. 
 
@@ -56,7 +58,7 @@ The Okta fields that will be updated are:
 
 Below are sample steps to update. You must complete all of them to ensure uninterrupted access to <Constant name="cloud" /> and you should coordinate with your identity provider admin when making these changes.
 
-1. Replace `<SLUG>` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
+1. Replace `<SLUG>` with your organization’s login slug. It must be unique across all <Constant name="cloud" /> instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 
@@ -80,7 +82,7 @@ The Entra ID fields that will be updated are:
 
 The new values for these fields can be found in <Constant name="cloud" /> by navigating to **Account settting** --> **Single sign-on**.
 
-1. Replace `<SLUG>` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
+1. Replace `<SLUG>` with your organization’s login slug. It must be unique across all <Constant name="cloud" /> instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
 2. Locate your <Constant name="cloud" /> SAML2.0 app in the **Enterprise applications** section of Azure. Click **Single sign-on** on the left side menu.
 
@@ -146,7 +148,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 Click **Save** once you are done. 
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="cloud" />_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
 :::warning Domain authorization
 

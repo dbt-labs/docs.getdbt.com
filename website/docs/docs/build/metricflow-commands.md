@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
-MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="cloud" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
@@ -22,9 +22,9 @@ Using MetricFlow with <Constant name="cloud" /> means you won't need to manage v
 
 <Tabs>
 
-<TabItem value="cloud" label="MetricFlow with dbt Cloud">
+<TabItem value="cloud" label="MetricFlow with the dbt platform">
 
-In dbt Cloud, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation). 
+In <Constant name="cloud" />, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation). 
 
 For <Constant name="cloud_cli" /> users, MetricFlow commands are embedded in the <Constant name="cloud_cli" /> , which means you can immediately run them once you install the <Constant name="cloud_cli" />  and don't need to install MetricFlow separately. You don't need to manage versioning because your <Constant name="cloud" /> account will automatically manage the versioning for you.
 
@@ -34,19 +34,11 @@ For <Constant name="cloud_cli" /> users, MetricFlow commands are embedded in the
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
-<VersionBlock lastVersion="1.7">
- 
-1. Create or activate your virtual environment `python -m venv venv`
-2. Run `pip install dbt-metricflow`
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `python -m pip install "dbt-metricflow[snowflake]"`
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8">
  
-1. Create or activate your virtual environment `python -m venv venv`
-2. Run `pip install dbt-metricflow`
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `python -m pip install "dbt-metricflow[dbt-snowflake]"`
+1. Create or activate your virtual environment `python -m venv venv`.
+2. Run `pip install dbt-metricflow`.
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter, run `python -m pip install "dbt-metricflow[dbt-snowflake]"`.
 
 </VersionBlock>
 
@@ -62,7 +54,7 @@ Something to note, MetricFlow `mf` commands return an error if you have a Metafo
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
 
 <Tabs>
-<TabItem value="cloudcommands" label="Commands for dbt Cloud">
+<TabItem value="cloudcommands" label="Commands for the dbt platform">
 
 You can use the `dbt sl` prefix before the command name to execute them in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. For example, to list all metrics, run `dbt sl list metrics`. 
 
@@ -83,7 +75,7 @@ The following table lists the commands compatible with the <Constant name="cloud
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
 
 
-<!--below commands aren't supported in dbt cloud yet
+<!--below commands aren't supported in dbt yet
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
@@ -92,7 +84,7 @@ The following table lists the commands compatible with the <Constant name="cloud
 When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
-<Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
+<Expandable alt_header="How can I query or preview metrics with the dbt CLI?">
 
 Check out the following video for a short video demo of how to query or preview metrics with the <Constant name="cloud_cli" />:
 
@@ -122,7 +114,7 @@ Use the `mf` prefix before the command name to execute them in dbt Core. For exa
 This command lists the metrics with their available dimensions:
 
 ```bash
-dbt sl list metrics <metric_name> # In dbt Cloud
+dbt sl list metrics <metric_name> # In the dbt platform
 
 mf list metrics <metric_name> # In dbt Core
 
@@ -137,7 +129,7 @@ Options:
 This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
 
 ```bash
-dbt sl list dimensions --metrics <metric_name> # In dbt Cloud
+dbt sl list dimensions --metrics <metric_name> # In the dbt platform
 
 mf list dimensions --metrics <metric_name> # In dbt Core
 
@@ -151,7 +143,7 @@ Options:
 This command lists all dimension values with the corresponding metric:
 
 ```bash
-dbt sl list dimension-values --metrics <metric_name> --dimension <dimension_name> # In dbt Cloud
+dbt sl list dimension-values --metrics <metric_name> --dimension <dimension_name> # In the dbt platform
 
 mf list dimension-values --metrics <metric_name> --dimension <dimension_name> # In dbt Core
 
@@ -161,10 +153,10 @@ Options:
                       [required]
   --end-time TEXT     Optional iso8601 timestamp to constraint the end time of
                       the data (inclusive)
-                      *Not available in dbt Cloud yet
+                      *Not available in the dbt platform yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
-                      *Not available in dbt Cloud yet
+                      *Not available in in the dbt platform yet
   --help              Show this message and exit.
 ```
 
@@ -173,7 +165,7 @@ Options:
 This command lists all unique entities:
 
 ```bash
-dbt sl list entities --metrics <metric_name> # In dbt Cloud 
+dbt sl list entities --metrics <metric_name> # In the dbt platform
 
 mf list entities --metrics <metric_name> # In dbt Core
 
@@ -214,12 +206,12 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate # For dbt Cloud users
+dbt sl validate # For dbt users
 mf validate-configs # For dbt Core users
 
 Options:
-  --timeout                       # dbt Cloud only
-                                  Optional timeout for data warehouse validation in dbt Cloud.
+  --timeout                       # dbt platform only
+                                  Optional timeout for data warehouse validation in the dbt platform.
   --dw-timeout INTEGER            # dbt Core only
                                   Optional timeout for data warehouse
                                   validation steps. Default None.
@@ -238,7 +230,7 @@ Options:
 
 The following command performs a health check against the data platform you provided in the configs. 
 
-Note, in dbt Cloud the `health-checks` command isn't required since it uses dbt Cloud's credentials to perform the health check.
+Note, in <Constant name="cloud" />, the `health-checks` command isn't required since it uses <Constant name="cloud" />'s credentials to perform the health check.
 
 ```bash
 mf health-checks # In dbt Core
@@ -247,7 +239,7 @@ mf health-checks # In dbt Core
 ## Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
-<!--dbt sl tutorial # In dbt Cloud-->
+<!--dbt sl tutorial # In the dbt platform-->
 
 ```bash
 mf tutorial # In dbt Core
@@ -258,8 +250,8 @@ mf tutorial # In dbt Core
 Create a new query with MetricFlow and execute it against your data platform. The query returns the following result:
 
 ```bash
-dbt sl query --metrics <metric_name> --group-by <dimension_name> # In dbt Cloud 
-dbt sl query --saved-query <name> # In dbt Cloud
+dbt sl query --metrics <metric_name> --group-by <dimension_name> # In the dbt platform
+dbt sl query --saved-query <name> # In the dbt platform
 
 mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
@@ -278,11 +270,11 @@ Options:
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
                            time of the data (inclusive).
-                           *Not available in dbt Cloud yet 
+                           *Not available in the dbt platform yet 
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
-                           *Not available in dbt Cloud yet
+                           *Not available in the dbt platform yet
 
   --where TEXT             SQL-like where statement provided as a string and wrapped in quotes.
                            All filter items must explicitly reference fields or dimensions that are part of your model.
@@ -302,7 +294,7 @@ Options:
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
- --compile (dbt Cloud)    In the query output, show the query that was
+ --compile (the dbt platform)          In the query output, show the query that was
  --explain (dbt Core)     executed against the data warehouse         
                            
 
@@ -336,7 +328,7 @@ Use the example to query multiple metrics by dimension and return the `order_tot
 
 **Query**
 ```bash
-dbt sl query --metrics order_total,users_active --group-by metric_time # In dbt Cloud
+dbt sl query --metrics order_total,users_active --group-by metric_time # In the dbt platform
 
 mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 ```
@@ -360,7 +352,7 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by order_id__is_food_order # In dbt Cloud
+dbt sl query --metrics order_total --group-by order_id__is_food_order # In the dbt platform
 
 mf query --metrics order_total --group-by order_id__is_food_order # In dbt Core
 ```
@@ -388,7 +380,7 @@ You can add order and limit functions to filter and present the data in a readab
 
 **Query**
 ```bash
-# In dbt Cloud 
+# In the dbt platform
 dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
@@ -415,7 +407,7 @@ You can further filter the data set by adding a `where` clause to your query. Th
 
 **Query**
 ```bash
-# In dbt Cloud 
+# In the dbt platform
 dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
 # In dbt Core
@@ -450,7 +442,7 @@ To filter by time, there are dedicated start and end time options. Using these o
  Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
 <!--
 bash not support in cloud yet
-# In dbt Cloud
+# In the dbt platform
 dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
@@ -478,12 +470,12 @@ You can use this for frequently used queries. Replace `<name>` with the name of 
 
 **Query**
 ```bash
-dbt sl query --saved-query <name> # In dbt Cloud
+dbt sl query --saved-query <name> # In the dbt platform
 
 mf query --saved-query <name> # In dbt Core
 ```
 
-For example, if you use dbt Cloud and have a saved query named `new_customer_orders`, you would run `dbt sl query --saved-query new_customer_orders`.
+For example, if you use <Constant name="cloud" /> and have a saved query named `new_customer_orders`, you would run `dbt sl query --saved-query new_customer_orders`.
 
 :::info A note on querying saved queries
 When querying [saved queries](/docs/build/saved-queries), you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
@@ -502,7 +494,7 @@ Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQ
 **Query**
 
 ```bash
-# In dbt Cloud
+# In the dbt platform
 dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
 
 # In dbt Core
@@ -537,7 +529,7 @@ limit 10
 
 <TabItem value="eg7" label=" Export to CSV">
  
-Add the `--csv file_name.csv` flag to export the results of your query to a csv. The `--csv` flag is available in dbt Core only and not supported in dbt Cloud.
+Add the `--csv file_name.csv` flag to export the results of your query to a csv. The `--csv` flag is available in dbt Core only and not supported in <Constant name="cloud" />.
 
 **Query**
 
@@ -563,7 +555,7 @@ Optionally, you can specify the time granularity you want your data to be aggreg
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-dbt sl query --metrics revenue --group-by metric_time__month # In dbt Cloud
+dbt sl query --metrics revenue --group-by metric_time__month # In the dbt platform
 
 mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
@@ -630,7 +622,7 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
+<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt CLI?">
 
 The default `limit` for query issues from the <Constant name="cloud_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="cloud_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
 

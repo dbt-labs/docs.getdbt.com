@@ -1,10 +1,10 @@
 --- 
 title: "Enable dbt Copilot" 
 sidebar_label: "Enable dbt Copilot" 
-description: "Enable dbt Copilot, an AI-powered assistant, in dbt Cloud to speed up your development." 
+description: "Enable dbt Copilot, an AI-powered assistant, in dbt to speed up your development." 
 ---
 
-# Enable dbt Copilot <Lifecycle status="managed" /> 
+# Enable dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
 <IntroText>
 Enable <Constant name="copilot" />, an AI-powered assistant, in <Constant name="cloud" /> to speed up your development and focus on delivering quality data.
@@ -15,7 +15,8 @@ This page explains how to enable <Constant name="copilot" /> in <Constant name="
 ## Prerequisites
 
 - Available in the <Constant name="cloud" /> only.
-- Must have a [<Constant name="cloud" /> Enterprise account](https://www.getdbt.com/pricing).
+- Must have a [<Constant name="cloud" /> Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/pricing).
+  - Certain features like [BYOK](#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
 - By default, <Constant name="copilot" /> deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [provide your own OpenAI API key](#bringing-your-own-openai-api-key-byok).
 - <Constant name="copilot" /> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
@@ -35,7 +36,7 @@ Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="90%" title="Example of the 'Enable account access to AI-powered feature' option in Account settings" />
 
-## Bringing your own OpenAI API key (BYOK)
+## Bringing your own OpenAI API key (BYOK) <Lifecycle status="managed_plus,managed" /> 
 
 Once AI features have been enabled, you can provide your organization's OpenAI API key. <Constant name="cloud" /> will then leverage your OpenAI account and terms to power <Constant name="copilot" />. This will incur billing charges to your organization from OpenAI for requests made by <Constant name="copilot" />.
 

@@ -20,7 +20,7 @@ To begin configuring dbt now, select the option that is right for you.
 <div className="grid--2-col">
 
 <Card
-    title="dbt Cloud setup"
+    title="dbt platform setup"
     body="Learn how to connect to a data platform, integrate with secure authentication methods, and configure a sync with a git repo."
     link="/docs/cloud/about-cloud-setup"
     icon="dbt-bit"/>

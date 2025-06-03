@@ -80,11 +80,11 @@ To configure your own linting rules:
 6. Test it out and happy linting!
 
 #### Snapshot linting
-By default, dbt Cloud lints all modified `.sql` files in your project, including snapshots. [Snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but their SQL isn't lintable and can cause errors during linting.
+By default, <Constant name="cloud" /> lints all modified `.sql` files in your project, including snapshots. [Snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but their SQL isn't lintable and can cause errors during linting.
 
 To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`).
 
-Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file since dbt Cloud doesn't automatically ignore snapshots on the backend.
+Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file since <Constant name="cloud" /> doesn't automatically ignore snapshots on the backend.
 
 ### Configure dbtonic linting rules
 
@@ -221,12 +221,12 @@ However, you can customize and include an additional child `.sqlfluff` configura
 Currently, running SQLFluff commands from the terminal isn't supported. 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">
+<DetailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the Studio IDE?">
 - Double-check that your SQLFluff version matches the one in <Constant name="cloud_ide" /> (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
 - If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </DetailsToggle>
 
-<DetailsToggle alt_header="What are some considerations when using dbt Cloud linting?">
+<DetailsToggle alt_header="What are some considerations when using dbt linting?">
 Currently, the <Constant name="cloud_ide" /> can lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large, taking more than 60 seconds for the <Constant name="cloud" /> backend to process, you will see an 'Unable to complete linting this file' error. 
 
 To avoid this, break up your model into smaller models (files) so that they are less complex to lint or fix. Note that linting is simpler than fixing so there may be cases where a file can be linted but not fixed. 

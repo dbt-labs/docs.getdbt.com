@@ -54,10 +54,12 @@ Here's an example of the available behavior change flags with their default valu
 
 ```yml
 flags:
-  require_explicit_package_overrides_for_builtin_materializations: False
-  require_model_names_without_spaces: False
-  source_freshness_run_project_hooks: False
+  require_explicit_package_overrides_for_builtin_materializations: True
+  require_model_names_without_spaces: True
+  source_freshness_run_project_hooks: True
   restrict_direct_pg_catalog_access: False
+  skip_nodes_if_on_run_start_fails: False
+  state_modified_compare_more_unrendered_values: False
   require_yaml_configuration_for_mf_time_spines: False
   require_batched_execution_for_custom_microbatch_strategy: False
   require_nested_cumulative_type_params: False
@@ -78,7 +80,7 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
-| [cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
+| [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 
 When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
@@ -127,17 +129,11 @@ You can still explicitly override built-in materializations, in favor of a mater
 
 In the future, we may extend the project-level [`dispatch` configuration](/reference/project-configs/dispatch-config) to support a list of authorized packages for overriding built-in materialization.
 
-<VersionBlock lastVersion="1.7">
-
-The following flags were introduced in a future version of dbt Core. If you're still using an older version, then you have the legacy behavior by default (when each flag is `False`). 
-
-</VersionBlock>
-
 ### No spaces in resource names
 
 The `require_resource_names_without_spaces` flag enforces using resource names without spaces. 
 
-The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+The names of dbt resources (for example, models) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
 
 <File name='models/model name with spaces.sql'>
 
@@ -182,7 +178,7 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -195,7 +191,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
 
 ```
 
-If you run `dbt parse` with that syntax on Core v1.9 or [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
+If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
 
 ```bash
 

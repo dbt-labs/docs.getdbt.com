@@ -6,7 +6,6 @@ level: 'Beginner'
 platform: 'dbt-core'
 icon: 'fa-light fa-square-terminal'
 tags: ['dbt Core','Quickstart']
-hide_table_of_contents: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -468,7 +467,7 @@ We recommend using <Constant name="cloud" /> as the easiest and most reliable wa
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt Cloud job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
 For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 

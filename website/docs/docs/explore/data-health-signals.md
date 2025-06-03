@@ -9,9 +9,12 @@ image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
 # Data health signals <Lifecycle status="preview" />
 Data health signals offer a quick, at-a-glance view of data health when browsing your resources in <Constant name="explorer" />. They keep you informed on the status of your resource's health using the indicators **Healthy**, **Caution**, **Degraded**, or **Unknown**.
 
+Note,  we don’t calculate data health for non-dbt resources.
+
 - Supported resources are [models](/docs/build/models), [sources](/docs/build/sources), and [exposures](/docs/build/exposures).
 - For accurate health data, ensure the resource is up-to-date and had a recent job run.
-- Each data health signal reflects key data health components, such as test success status, missing resource descriptions, missing tests, absence of builds in 30-day windows, [and more](#data-health-signal-criteria)
+- Each data health signal reflects key data health components, such as test success status, missing resource descriptions, missing tests, absence of builds in 30-day windows, [and more](#data-health-signal-criteria).
+
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.jpg" width="55%" title="View data health signals for your models."/> 
 

@@ -1,9 +1,9 @@
 ---
-title: "Quickstart for dbt Cloud and Teradata"
+title: "Quickstart for dbt and Teradata"
 id: "teradata"
 level: 'Beginner'
 icon: 'teradata'
-tags: ['dbt Cloud','Quickstart','Teradata']
+tags: ['dbt platform', 'Quickstart','Teradata']
 hide_table_of_contents: true
 ---
 
@@ -102,28 +102,28 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
     NO PRIMARY INDEX;
     ```
 
-## Connect dbt Cloud to Teradata
+## Connect dbt to Teradata
 
 1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In **Configure your development environment**, click **Add new connection**.
 4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
 
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt Cloud - Choose Teradata Connection" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt - Choose Teradata Connection" />
   
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt Cloud - Teradata Account Settings" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
 5. Enter your **Development Credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
    * **Schema** &mdash; The default database to use
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
 
 6. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
 7. If the connection test succeeds, click **Next**. If it fails, check your Teradata settings and credentials.
 
-## Set up a dbt Cloud managed repository
+## Set up a dbt managed repository
 
 <Snippet path="tutorial-managed-repo" />
 

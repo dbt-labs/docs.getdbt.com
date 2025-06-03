@@ -1,7 +1,7 @@
 ---
 title: "Job commands"
 id: "job-commands"
-description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
+description: "How to use dbt commands to set tasks for your dbt jobs."
 ---
 
 A <Constant name="cloud" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
@@ -34,9 +34,9 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 For every job, you have the option to select the [Generate docs on run](/docs/explore/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; <Constant name="cloud" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; <Constant name="cloud" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 

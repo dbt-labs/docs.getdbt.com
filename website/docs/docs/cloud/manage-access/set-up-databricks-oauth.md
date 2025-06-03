@@ -1,10 +1,10 @@
 ---
 title: "Set up Databricks OAuth"
-description: "Learn how dbt Cloud administrators can use Databricks OAuth to control access in a dbt Cloud account."
+description: "Learn how dbt administrators can use Databricks OAuth to control access in a dbt account."
 id: "set-up-databricks-oauth"
 ---
 
-# Set up Databricks OAuth <Lifecycle status="managed" />
+# Set up Databricks OAuth <Lifecycle status="managed, managed_plus" />
 
 <Constant name="cloud" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with Databricks in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 
@@ -42,7 +42,7 @@ You can use the following table to set up the redirect URLs for your application
 | **Single tenant** | https://INSTANCE_NAME.getdbt.com/callback <br /> https://INSTANCE_NAME.getdbt.com/complete/databricks
 
 
-### Configure the Connection in dbt Cloud (dbt Cloud project admin)
+### Configure the Connection in dbt (dbt project admin)
 
 Now that you have an OAuth app set up in Databricks, you'll need to add the client ID and secret to <Constant name="cloud" />. To do so:
  - From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**
@@ -51,9 +51,9 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
  - Select **Connection** to edit the connection details
  - Add the `OAuth Client ID` and `OAuth Client Secret` from the Databricks OAuth app under the **Optional Settings** section
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Adding Databricks OAuth application client ID and secret to dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Adding Databricks OAuth application client ID and secret to dbt" />
 
-### Authenticating to Databricks (dbt Cloud IDE developer)
+### Authenticating to Databricks (Studio IDE developer)
 
 Once the Databricks connection via OAuth is set up for a <Constant name="cloud" /> project, each <Constant name="cloud" /> user will need to authenticate with Databricks in order to use the <Constant name="cloud_ide" />. To do so:
 

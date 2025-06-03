@@ -223,12 +223,6 @@ unit_tests:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.7">
-
-The `description` property is available for [unit tests](/docs/build/unit-tests) beginning in dbt v1.8.
-
-</VersionBlock>
-
 </TabItem>
 
 </Tabs>
@@ -525,12 +519,6 @@ data_tests:
 Note that in order for the test to run, the `tests/assert_total_payment_amount_is_positive.sql` SQL file has to exist in the `tests` directory.
 
 ### Add a description to a unit test
-
-<VersionBlock lastVersion="1.7">
-
-<VersionCallout version="1.8" />
-
-</VersionBlock>
 
 This example shows a unit test that checks to ensure the `opened_at` timestamp is properly truncated to a date for the `stg_locations` model.
 

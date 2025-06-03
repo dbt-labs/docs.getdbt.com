@@ -6,7 +6,7 @@ description: "Validate that data freshness meets expectations and alert if stale
 
 <Constant name="cloud" /> provides a helpful interface around dbt's [source data freshness](/docs/build/sources#source-data-freshness) calculations. When a <Constant name="cloud" /> job is configured to snapshot source data freshness, <Constant name="cloud" /> will render a user interface showing you the state of the most recent snapshot. This interface is intended to help you determine if your source data freshness is meeting the service level agreement (SLA) that you've defined for your organization.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources-next.png" title="Data Sources in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources-next.png" title="Data Sources in dbt"/>
 
 ### Enabling source freshness snapshots
 
@@ -24,7 +24,7 @@ Review the following options and outcomes:
 | Options | Outcomes |
 |--------| ------- |
 |  **Select checkbox <a id="checkbox"></a>** | The **Run source freshness** checkbox in your **Execution Settings** will run `dbt source freshness` as the first step in your job and won't break subsequent steps if it fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`. |
-| **Add as a run step** | Add the `dbt source freshness` command to a job anywhere in your list of run steps. However, if your source data is out of date &mdash; this step will "fail", and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step. <br /><br /> You can create a new job to snapshot source freshness. <br /><br /> If you *do not* want your models to run if your source data is out of date, then it could be a good idea to run `dbt source freshness` as the first step in your job. Otherwise, we recommend adding `dbt source freshness` as the last step in the job, or creating a separate job just for this task.  |
+| **Add as a run step** | Add the `dbt source freshness` command to a job anywhere in your list of run steps. However, if your source data is out of date &mdash; this step will "fail", and subsequent steps will not run. <Constant name="cloud" /> will trigger email notifications (if configured) based on the end state of this step. <br /><br /> You can create a new job to snapshot source freshness. <br /><br /> If you *do not* want your models to run if your source data is out of date, then it could be a good idea to run `dbt source freshness` as the first step in your job. Otherwise, we recommend adding `dbt source freshness` as the last step in the job, or creating a separate job just for this task.  |
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-step-source-freshness.png" title="Adding a step to snapshot source freshness"/>

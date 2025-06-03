@@ -1,34 +1,26 @@
 ---
-title: "About cost management in dbt Cloud"
-description: "Manage your data warehouse costs in dbt Cloud"
-unlisted: true
+title: "About cost management in dbt"
+description: "Manage your data warehouse costs in dbt"
 sidebar_label: About cost management
 ---
 
-# About cost management in dbt Cloud <Lifecycle status='beta, managed' />
+# About cost management in dbt <Lifecycle status='preview,managed,managed_plus' />
 
-:::note beta documentation
-
-This documentation is for a beta feature. The title, sections, and content within this doc may change frequently during the beta period. The final product may be split into multiple pages, and existing sections may be renamed. This page is intended for beta users only. Please do not share outside of your organization. 
-
-Cost management tools are currently only available for Snowflake.
-
-:::
-
-The cost management dashboard in dbt Cloud give you valuable insight into how your dbt projects impact your data warehouse costs. They will help you optimize your warehouse spending by visualizing how features, including models, tests, snapshots, and other resources, influence costs over time so that you can take action, report to stakeholders, and optimize development workflows.
+The cost management dashboard in <Constant name="cloud" /> gives you valuable insight into how your dbt projects impact your data warehouse costs. They will help you optimize your warehouse spending by visualizing how features, including models, tests, snapshots, and other resources, influence costs over time so that you can take action, report to stakeholders, and optimize development workflows.
 
 Currently, only Snowflake is supported. 
 
-This document will cover setup in Snowflake, dbt Cloud, and how to use the cost management dashboard to view your insights.  
+This document will cover setup in Snowflake, <Constant name="cloud" />, and how to use the cost management dashboard to view your insights.  
 
 ## Prerequisites
 
 To configure the cost management tools, you must have the following:
 
-- Proper [permission set](/docs/cloud/manage-access/enterprise-permissions) to configure connections in dbt Cloud (such as account admin or project creator).
+- Proper [permission set](/docs/cloud/manage-access/enterprise-permissions) to configure connections in <Constant name="cloud" /> (such as account admin or project creator).
 - Proper [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges) in Snowflake to create a user and assign them database access.
 - A supported data warehouse. Note: Only Snowflake is supported at this time. More warehouses coming soon!
-- An Enterprise dbt Cloud account
+- A <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
+
 
 ## Set up in Snowflake
 
@@ -82,13 +74,13 @@ GRANT ROLE dbt_cost_management TO USER dbt_cost_user;
 
 ```
 
-If you prefer, you can also configure the user for key pair authentication instead of using a username and password with dbt Cloud. 
+If you prefer, you can also configure the user for key pair authentication instead of using a username and password with <Constant name="cloud" />. 
 
 You must repeat the user creation process in each Snowflake warehouse you want to monitor. 
 
-Once the user is created and assigned proper privileges, it's time to configure the connection in dbt Cloud.
+Once the user is created and assigned proper privileges, it's time to configure the connection in <Constant name="cloud" />.
 
-## Set up in dbt Cloud
+## Set up in dbt
 
 Configuring the cost management features requires both a connection and a user component:
 
@@ -98,17 +90,18 @@ Configuring the cost management features requires both a connection and a user c
 
 ### Connection setup
 
-To configure the metadata connection in dbt Cloud:
+To configure the metadata connection in dbt:
 
 1. Navigate to **Account Settings** and click **Connections**.
 2. Click the connection associated with the data warehouse(s) you configured in the Snowflake setup. Do not click **Edit**. This is for the broader settings and will prevent the metadata section from being altered. 
 3. Scroll down to the **Platform metadata credentials** and click **Add credentials**.
 4. Set the appropriate **Auth method** (username and password or key pair) and fill out all the fields provided.
-5. Click **Save**.
+5. In the **Features** section, click the box to enable **Cost Management**.
 
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/configure-metadata.png" width="70%" title="Fill out the fields with the appropriate information."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/configure-metadata.png" width="60%" title="Fill out the fields with the appropriate information."/>
 
-6. Repeat this process for each dbt Cloud warehouse connection you want to monitor. 
+6. Click **Save**.
+7. Repeat this process for each <Constant name="cloud" /> warehouse connection you want to monitor. 
 
 After the setup, it will be a few hours before the initial sync completes and information begins to populate the dashboard. 
 
@@ -124,13 +117,13 @@ For example, let's say you have a group of developers in charge of cost observab
 3. From **Accounts and permissions** click **Add permission**.
 4. Select the **Cost Management Viewer** permission from the dropdown and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cost-management/cost-management-viewer.png" width="70%" title="The Cost Management Viewer role assigned to a group."/>
+<Lightbox src="/img/docs/dbt-cloud/cost-management/cost-management-viewer.png" width="60%" title="The Cost Management Viewer role assigned to a group."/>
 
 By assigning these permission set to the users or groups you want to have access to the dashboard you can avoid granting broader access with the other roles. 
 
 ## Cost management dashboard
 
-The cost management dashboard can be accessed anywhere in dbt Cloud from the left-side menu. Once enabled, **Cost management** will be an option below the **Account home** feature at the top of the sidebar. Users who don't have the proper permissions will not see the option.
+The cost management dashboard can be accessed anywhere in <Constant name="cloud" /> from the left-side menu. Once enabled, **Cost management** will be an option below the **Account home** feature at the top of the sidebar. Users who don't have the proper permissions will not see the option.
 
 Users with the following [permission sets](/docs/cloud/manage-access/enterprise-permissions) will be able to access the cost management dashboard:
 - Account Admin
@@ -140,14 +133,14 @@ Users with the following [permission sets](/docs/cloud/manage-access/enterprise-
 
 Once the information syncs, you will see the results by selecting the **Cost management** dashboard option from the left-side menu. 
 
-<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard-upper.png" width="70%" title="The cost management overview."/>
+<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard-upper.png" width="60%" title="The cost management overview."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard.png" width="70%" title="More of the cost management dashboard overview."/>
+<Lightbox src="/img/docs/dbt-cloud/cost-management/dashboard.png" width="60%" title="More of the cost management dashboard overview."/>
 
 - Hover over the **Last refreshed...** date to see a list of your configured connections and their status.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/connection-status.png" width="70%" title="View your connection status."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/connection-status.png" width="60%" title="View your connection status."/>
 - Adjust the period you want to monitor.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/time-period.png" width="70%" title="Adjust the period you want to view."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/time-period.png" width="60%" title="Adjust the period you want to view."/>
 
 ### Metrics
 
@@ -159,20 +152,22 @@ There are metrics that will be available to view and measure your costs as you n
 - **Duration (resource view only):** The total duration of queries that executed dbt resources over the time period.
 
 You can sort the list views by these metrics to see how resources are impacting individual areas and have quick views into your highest cost areas
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/sort-by-execution-cost.png" width="70%" title="Metrics sorted by execution cost."/>
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/sort-by-consumption-query.png" width="70%" title="Metrics sorted by consumption queries."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/sort-by-execution-cost.png" width="60%" title="Metrics sorted by execution cost."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/sort-by-consumption-query.png" width="60%" title="Metrics sorted by consumption queries."/>
 
 ### Overview 
 
 The **Overview** dashboard is the first display you'll see. It gives you general information about your costs:
 
 - View trends in your warehouse costs for the selected time. Hover over the graph to view the difference in spend period-over-period.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/cost-trends.png" width="70%" title="View trends over time."/>
-- The top tiles display spend and savings over the selected period.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/warehouse-spend.png" width="70%" title="See your total spending."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/cost-trends.png" width="60%" title="View trends over time."/>
+- The top tiles display:
+    - Warehouse spend over the selected period.
+    - Realized savings (coming soon).
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/warehouse-spend.png" width="60%" title="See your total spending."/>
 - The bar chart breaks down costs of dbt execution by project. You can click on the individual bars to view more information.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/project-bar.png" width="70%" title="View your spending over time by project and interact with the data to view more."/>
-
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/project-bar.png" width="60%" title="View your spending over time by project and interact with the data to view more."/>
+- 
 You'll be brought to the **Discover** tab when you click on a bar or project. Here, you can view more detailed information about your spending. 
 
 ### Discover
@@ -183,7 +178,7 @@ There are multiple options for filtering the cost data views with two starting p
 - Resources
 - Environments
 
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/filter-by-resource.png" width="70%" title="Filter the Discover view by resource types."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/filter-by-resource.png" width="60%" title="Filter the Discover view by resource types."/>
 
 #### Resource view
 
@@ -198,9 +193,9 @@ When you filter by resources, you get valuable insights into how your projectsâ€
     - Source
 - Filter the graph view by project and/or resource type. 
 - View a detailed breakdown of your resources and the costs associated. You can filter by resource name and/or type and sort by each column. 
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/resource-type.png" width="70%" title="Filter and view detailed breakdowns of your resources."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/resource-type.png" width="60%" title="Filter and view detailed breakdowns of your resources."/>
 - Click into a resource to view its lineage and how much each node impacts your costs. You can even open the resource in dbt Explorer from this view to better understand your metadata!
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/render-lineage.png" width="70%" title="View the resources lineage and monitor node costs."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/render-lineage.png" width="60%" title="View the resources lineage and monitor node costs."/>
 
 #### Environment view
 
@@ -210,6 +205,42 @@ When you filter by environment, select a project to view more detailed informati
 - The list view will mark your production environment with a `PROD` icon. 
 - Click a colored square next to an environment name to add or remove it from the bar graph view. 
 - Hover over a bar to view the cost breakdown for each environment.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/environment-cost-breakdown.png" width="70%" title="The bar graph breaks down costs by environment."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/environment-cost-breakdown.png" width="60%" title="The bar graph breaks down costs by environment."/>
 - Sort the list view by any of the available fields. Click an item in the list view for detailed bar graph breakdowns of cost, query execution count, and consumption count.
-    <Lightbox src="/img/docs/dbt-cloud/cost-management/individual-environment.png" width="70%" title="View individual environments and how they impact your costs."/>
+    <Lightbox src="/img/docs/dbt-cloud/cost-management/individual-environment.png" width="60%" title="View individual environments and how they impact your costs."/>
+
+## Resource details
+
+When you click on a model or other resource from the **Discover** tab, you are provided with detailed information about the models consumption and execution:
+
+- The first section is a description and information about the resource, including size and consumption queries over the last 30 days.
+- **Lineage:** A DAG view of different lenses with data consumption metrics:
+    - **Resource type:** View the resource type lineage for your model including other models, snapshots, seeds, and metrics.
+    - **Execution costs:** View the execution costs for each resource in your models lineage.
+    - **Consumption query history:** View the warehouse consumption metrics for the different resources in your models lineage.
+- **Cost:** A graph of the resources consumption costs over the previous 30 day period.
+- **Query execution count:** A graph of the total number of queries the resource has run against the warehouse over the previous 30 day period.
+- **Consumption queries:** A graph of the queries used to gather analytical data from the warehouse.
+
+<DocCarousel slidesPerView={1}>
+<Lightbox src="/img/docs/dbt-cloud/cost-management/resource-description.png" width="90%" title="The resource description" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/lens-resource-type.png" width="90%" title="The resource type lens" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/lens-execution-cost.png" width="90%" title="The execution cost lens" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/lens-consumption-query-history.png" width="90%" title="The consumption query history lens" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/cost.png" width="90%" title="The cost analysis graph" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/query-execution-count.png" width="90%" title="The query execution count history" />
+<Lightbox src="/img/docs/dbt-cloud/cost-management/consumption-queries.png" width="90%" title="The consumption query history" />
+</DocCarousel>
+
+## Known limitations
+
+The following are some of the known limitations and caveats for the cost management dashboard:
+
+- The dashboard doesn't currently reflect the costs of development environments.
+- There may be discrepancies in cost comparison between the dashboard and the data platform UI, as they may reflect different numbers depending on the time period or range selected.
+- The cost metric may not perfectly reflect queries with very small durations, which may also skew the average.
+- The consumption metric includes all queries of a given model in the warehouse, beyond just analytics use cases, so it is best for relative comparison between resources.
+- The consumption metric relies on mapping the dbt model to its tables in the warehouse, so it may be imprecise depending on how the mapping changes
+- A dbt run results in multiple executions (run steps) issuing queries, which makes it less intuitive to reason about, so in the future, moving toward more run-centric metrics (grouping/aggregating)
+- Core costs are dependent on using dbt v1.10 or higher to associate queries with dbt workloads.
+- Snowflake can take up to 72 hours to report accurate cost data, so the past three days may undercount until the data is updated.

@@ -30,5 +30,5 @@ If you're ready to ship your users more power and flexibility with less code, le
 :::info
 MetricFlow is the engine for defining metrics in dbt and one of the key components of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics.
 
-To fully experience the <Constant name="semantic_layer" />, including the ability to query dbt metrics via external integrations, you'll need a [<Constant name="cloud" /> Team or Enterprise account](https://www.getdbt.com/pricing/). Refer to [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
+To fully experience the <Constant name="semantic_layer" />, including the ability to query dbt metrics via external integrations, you'll need a [<Constant name="cloud" /> Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing/). Refer to [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 :::

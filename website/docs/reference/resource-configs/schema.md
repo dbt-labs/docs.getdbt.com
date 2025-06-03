@@ -133,7 +133,7 @@ Refer to [Usage](#usage) for more examples.
 ## Definition
 Optionally specify a custom schema for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), [saved query](/docs/build/saved-queries), or [test](/docs/build/data-tests). 
 
-For users on dbt Cloud v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
+For users on <Constant name="cloud" /> v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

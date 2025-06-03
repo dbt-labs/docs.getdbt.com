@@ -1,15 +1,17 @@
 ---
 title: "Configuring PrivateLink for self-hosted cloud version control systems (VCS)"
 id: vcs-privatelink
-description: "Setting up a PrivateLink connection between dbt Cloud and an organization’s cloud hosted git server"
+description: "Setting up a PrivateLink connection between dbt and an organization’s cloud hosted git server"
 sidebar_label: "PrivateLink for VCS"
 ---
 
-import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+# Configuring PrivateLink for self-hosted cloud VCS <Lifecycle status="managed_plus" />
+
+import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
 import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
 
-<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
 AWS PrivateLink provides private connectivity from <Constant name="cloud" /> to your self-hosted cloud version control system (VCS) service by routing requests through your virtual private cloud (VPC). This type of connection does not require you to publicly expose an endpoint to your VCS repositories or for requests to the service to traverse the public internet, ensuring the most secure connection possible. AWS recommends PrivateLink connectivity as part of its [Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) and details this particular pattern in the **Shared Services** section of the [AWS PrivateLink whitepaper](https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-privatelink/aws-privatelink.pdf).
 
@@ -17,7 +19,7 @@ You will learn, at a high level, the resources necessary to implement this solut
 
 ## PrivateLink connection overview
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="80%" title="High level overview of the dbt Cloud and AWS PrivateLink for VCS architecture" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="80%" title="High level overview of the dbt and AWS PrivateLink for VCS architecture" />
 
 ### Required resources for creating a connection
 
@@ -45,7 +47,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
-    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated Security Group, or the Security Group must have a rule that allows requests from the appropriate dbt Cloud **private CIDR(s)**. Note that **this is different** than the static public IPs listed on the dbt Cloud [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. The correct private CIDR(s) can be provided by dbt Support upon request. If necessary, temporarily adding an allow rule of `10.0.0.0/8` should allow connectivity until the rule can be refined to the smaller dbt provided CIDR.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated Security Group, or the Security Group must have a rule that allows requests from the appropriate <Constant name="cloud" /> **private CIDR(s)**. Note that **this is different** than the static public IPs listed on the <Constant name="cloud" /> [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. The correct private CIDR(s) can be provided by dbt Support upon request. If necessary, temporarily adding an allow rule of `10.0.0.0/8` should allow connectivity until the rule can be refined to the smaller dbt provided CIDR.
     - **Listeners:** Create one Listener per Target Group that maps the appropriate incoming port to the corresponding Target Group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **Endpoint Service** - The VPC Endpoint Service is what allows for the VPC to VPC connection, routing incoming requests to the configured load balancer.
     - **Load balancer type:** Network.
@@ -88,7 +90,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
 ```
 
-import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
@@ -100,7 +102,7 @@ When you have been notified that the resources are provisioned within the <Const
 
 Once you accept the endpoint connection request, you can use the PrivateLink endpoint in <Constant name="cloud" />.
 
-## Configure in dbt Cloud
+## Configure in dbt
 
 Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
 

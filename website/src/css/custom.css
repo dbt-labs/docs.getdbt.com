@@ -2227,3 +2227,8 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   z-index: 100000 !important;
   bottom: 6px !important;
 }
+
+/* prevents nav bar from rendering weirdly with extended titles */
+.navbar__item{
+  white-space: nowrap;
+}

@@ -1,11 +1,11 @@
 ---
-title: "Quickstart for dbt Cloud and Amazon Athena"
+title: "Quickstart for dbt and Amazon Athena"
 id: "athena"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Beginner'
 icon: 'athena'
 hide_table_of_contents: true
-tags: ['Amazon','Athena', 'dbt Cloud','Quickstart']
+tags: ['Amazon','Athena', 'dbt platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -96,7 +96,7 @@ To obtain your AWS credentials file:
 
 Retrieve the `aws_access_key_id` and `aws_secret_access_key` from the `~/.aws/credentials` file for a future step.
 
-## Configure the connection in dbt Cloud
+## Configure the connection in dbt
 
 To configure the Athena connection in <Constant name="cloud" />:
 1. Click your **account name** on the left-side menu and click **Account settings**.
@@ -119,7 +119,7 @@ To configure the Athena credentials in your environment:
 
 Repeat the process to create a [development environment](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments). 
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing

@@ -128,22 +128,22 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
   </Expandable>
 
-- <Expandable alt_header='dbt Cloud CLI'>
+- <Expandable alt_header='dbt CLI'>
 
-    We are excited to announce the dbt Cloud CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
+    We are excited to announce the dbt CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
 
     We will continue to invest in the dbt Cloud IDE as the easiest and most accessible way to get started using dbt, especially for data analysts who have never developed software using the command line before. We will keep improving the speed, stability, and feature richness of the IDE, as we have been [all year long](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/).
 
     We also know that many people developing in dbt have a preference for local development, where they can use their favorite terminal, text editor, keybindings, color scheme, and so on. This includes people with data engineering backgrounds, as well as those analytics engineers who started writing code in the dbt Cloud IDE and have expanded their skills. 
 
-    The new dbt Cloud CLI offers the best of both worlds, including: 
+    The new dbt CLI offers the best of both worlds, including: 
 
     - The power of developing against the dbt Cloud platform 
     - The flexibility of your own local setup
 
     Run whichever community-developed plugins, pre-commit hooks, or other arbitrary scripts you like.
 
-    Some of the unique capabilities of this dbt Cloud CLI include:
+    Some of the unique capabilities of this dbt CLI include:
 
     - Automatic deferral of build artifacts to your Cloud project's production environment
     - Secure credential storage in the dbt Cloud platform
@@ -151,7 +151,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Development workflow for dbt Semantic Layer
     - Speedier, lower cost builds
 
-    Refer to [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn more.
+    Refer to [dbt CLI](/docs/cloud/cloud-cli-installation) to learn more.
 
   </Expandable>
 
@@ -167,7 +167,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt deps auto install'>
 
-    The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
+    The dbt Cloud IDE and dbt CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
 
     This improved workflow is available to all multi-tenant dbt Cloud users (Single-tenant support coming next week) and applies to dbt versions.
 

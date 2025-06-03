@@ -1,10 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud Canvas"
+title: "Quickstart for dbt Canvas"
 id: "canvas"
 level: 'Beginner'
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['Visual Editor','Canvas','Analyst', 'dbt Cloud','model']
+tags: ['Visual Editor','Canvas','Analyst', 'dbt platform','model']
 recently_updated: true
 ---
 
@@ -32,7 +32,7 @@ import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
 :::note Prerequisite for using the Jaffle Shop
 
-The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) GitHub repo sample project. You can use your own data, but the Jaffle Shop offers a full-featured project useful for testing dbt features. Ask your dbt Cloud administrator about importing it to a project in your environment. They must also execute `dbt run` on the Jaffle Shop project in your `Production` environment before you begin, or you will be unable to reference the source models.
+The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) GitHub repo sample project. You can use your own data, but the Jaffle Shop offers a full-featured project useful for testing dbt features. Ask your <Constant name="cloud" /> administrator about importing it to a project in your environment. They must also execute `dbt run` on the Jaffle Shop project in your `Production` environment before you begin, or you will be unable to reference the source models.
 
 :::
 
@@ -59,10 +59,10 @@ Click on an icon to expand its section or execute an action depending on its pur
 
 1. The main menu (click on the **dbt logo**) and the workspace's title. The title default is random but can be edited anytime by clicking on it.
 2. The **current model tab** and name. The name for the model is set with the **Output** operator.
-3. The **model icon** button. Manage your models in the workspace and create new or edit existing models. 
+3. The **model icon** button. Manage your models in the workspace. 
 4. The **Runs** pane displays run data, including warnings and errors.
-5. The **Commit history** display.
-6. The **Previews** pane that displays previews data for individual operators.
+5. The **Previews** pane that displays previews data for individual operators.
+6. The **Add** option for creating new models, editing existing, or adding seed files.
 7. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
 8. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="visual_editor" /> models.
 9. The **SQL code** area displays the SQL that compiles your model.
@@ -201,7 +201,7 @@ There's a lot of data there. Dozens of customers are buying hundreds of products
 4. Click **Add sorting** and in the new **Select column** field select `Aggregation1.count_PRODUCT_ID`. Set it to `Desc`.
 5. Press the **Play icon** to preview the new data.
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/order.png" width="90%" title="The ordered data operator tile config and data preview." />
+    <Lightbox src="/img/docs/dbt-cloud/canvas/order.png" width="90%" title="The ordered data operator tile config." />
 
 :::tip
 
@@ -282,5 +282,6 @@ Want to take your skills to the next level? Try taking the SQL output from your 
 
 :::
 
+Want to learn more? Be sure to check out our [Canvas fundamentals course](https://learn.getdbt.com/learn/course/canvas-fundamentals) on [dbt Learn](https://learn.getdbt.com/catalog).
 
 </div>

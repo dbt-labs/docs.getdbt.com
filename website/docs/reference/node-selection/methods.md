@@ -339,17 +339,6 @@ dbt test --select "test_name:range_min_max"     # run all instances of a custom 
 
 ### The test_type
 
-<VersionBlock lastVersion="1.7">
-
-The `test_type` method is used to select tests based on their type, `singular` or `generic`:
-
-```bash
-dbt test --select "test_type:generic"        # run all generic tests
-dbt test --select "test_type:singular"       # run all singular tests
-```
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8">
 
 The `test_type` method is used to select tests based on their type: 
@@ -371,9 +360,6 @@ dbt test --select "test_type:singular"       # run all singular data tests
 
 ### unit_test
 
-<VersionBlock lastVersion="1.7">
-Supported in v1.8 or newer.
-</VersionBlock>
 <VersionBlock firstVersion="1.8">
 
 The `unit_test` method selects [unit tests](/docs/build/unit-tests).

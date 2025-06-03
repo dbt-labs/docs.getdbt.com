@@ -1,13 +1,15 @@
 ---
 title: "Set up BigQuery OAuth"
-description: "Learn how dbt Cloud administrators can use BigQuery OAuth to control access in a dbt Cloud account"
+description: "Learn how dbt administrators can use BigQuery OAuth to control access in a dbt account"
 id: "set-up-bigquery-oauth"
 pagination_next: null
 ---
 
-:::info Enterprise Feature
+# Set up BigQuery OAuth <Lifecycle status="managed, managed_plus" />
 
-This guide describes a feature of the <Constant name="cloud" /> Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+:::info Enterprise-tier feature
+
+This guide describes a feature available on <Constant name="cloud" /> Enterprise and Enterprise+ plans. If you’re interested in learning more about our Enterprise-tier plans, contact us at sales@getdbt.com.
 
 :::
 
@@ -35,7 +37,7 @@ To get started, locate the connection's redirect URI for configuring BigQuery OA
  - Select **Connection** to edit the connection details
  - Locate the **Redirect URI** field under the **OAuth 2.0 Settings** section. Copy this value to your clipboard to use later on.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt" />
 
 ### Creating a BigQuery OAuth 2.0 client ID and secret
 To get started, you need to create a client ID and secret for [authentication](https://cloud.google.com/bigquery/docs/authentication) with BigQuery. This client ID and secret will be stored in <Constant name="cloud" /> to manage the OAuth connection between <Constant name="cloud" /> users and BigQuery.
@@ -48,7 +50,7 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 Set up an [OAuth consent screen](https://support.google.com/cloud/answer/6158849) if you haven't already. Then, click **+ Create Credentials** at the top of the page and select **OAuth client ID**.
 
-Fill in the client ID configuration. **Authorized JavaScript Origins** are not applicable. Add an item to **Authorized redirect URIs** and replace `REDIRECT_URI` with the value you copied to your clipboard earlier from the connection's **OAuth 2.0 Settings** section in dbt Cloud:
+Fill in the client ID configuration. **Authorized JavaScript Origins** are not applicable. Add an item to **Authorized redirect URIs** and replace `REDIRECT_URI` with the value you copied to your clipboard earlier from the connection's **OAuth 2.0 Settings** section in <Constant name="cloud" />:
 
 | Config                       | Value           |
 | ---------------------------- | --------------- |
@@ -60,7 +62,7 @@ Then click **Create** to create the BigQuery OAuth app and see the app client ID
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/bq-oauth-app-02.png" title="Create an OAuth app in BigQuery" />
 
-### Configure the Connection in dbt Cloud
+### Configure the Connection in dbt
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to <Constant name="cloud" />. To do so:
  1. Navigate back to the Connection details page, as described in [Locate the redirect URI value](#locate-the-redirect-uri-value).
  2. Add the client ID and secret from the BigQuery OAuth app under the **OAuth 2.0 Settings** section.
@@ -82,16 +84,16 @@ You will then be redirected to BigQuery and asked to approve the drive, cloud pl
 
 Select **Allow**. This redirects you back to <Constant name="cloud" />. You are now an authenticated BigQuery user and can begin accessing dbt development tools. 
 
-## Set up BigQuery Workload Identity Federation <Lifecycle status='beta,managed'/> 
+## Set up BigQuery Workload Identity Federation <Lifecycle status='managed'/> 
 
-Workload Identity Federation (WIF) allows application workloads, running externally to dbt Cloud, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in dbt Cloud using WIF. 
+Workload Identity Federation (WIF) allows application workloads, running externally to <Constant name="cloud" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in <Constant name="cloud" /> using WIF. 
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
-### Set up dbt Cloud
+### Set up dbt
 
-To configure a BigQuery connection to use WIF authentication in dbt Cloud, you must set up a custom OAuth integration configured with details from the Entra application used as your workpool provider in GCP.
+To configure a BigQuery connection to use WIF authentication in <Constant name="cloud" />, you must set up a custom OAuth integration configured with details from the Entra application used as your workpool provider in GCP.
 
-In dbt Cloud: 
+In <Constant name="cloud" />: 
 
 1. Navigate to **Account settings** --> **Integrations** 
 2. Scroll down to the section for **Custom OAuth Integrations** and create a new integration, 
@@ -99,9 +101,9 @@ In dbt Cloud:
     - The Application ID URI should be set to the expected audience claim on tokens issued from the Entra application. It will be the same URI your workpool provider has been configured to expect.
     - You do not have to add the Redirect URI to your Entra application
 
-### Create connections in dbt Cloud
+### Create connections in dbt
 
-To get started, create a new connection in dbt Cloud:
+To get started, create a new connection in <Constant name="cloud" />:
 
 1. Navigate to **Account settings** --> **Connections**.
 2. Click **New connection** and select **BigQuery** as the connection type. You will then see the option to select **BigQuery** or **BigQuery (Legacy)**. Select **BigQuery**.

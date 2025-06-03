@@ -1,15 +1,14 @@
 ---
-title: 'Move from dbt Core to dbt Cloud: Get started'
+title: 'Move from dbt Core to the dbt platform: Get started'
 id: core-to-cloud-1
-description: "Learn how to move from dbt Core to dbt Cloud and what you need to get started."
-hoverSnippet: "Learn how to move from dbt Core to dbt Cloud."
+description: "Learn how to move from dbt Core to the dbt platform and what you need to get started."
+hoverSnippet: "Learn how to move from dbt Core to the dbt platform."
 icon: 'guides'
 time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt Cloud']
-keywords: ['dbt Core','dbt Cloud','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt Core','dbt platform']
+keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -24,7 +23,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
-<Expandable alt_header="What is dbt Cloud and dbt Core?">
+<Expandable alt_header="What are dbt and dbt Core?">
 
    - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
      - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
@@ -69,7 +68,7 @@ This section outlines the steps to set up your <Constant name="cloud" /> account
 
 2. Provide user [access](/docs/cloud/manage-access/about-user-access) and [invite users](/docs/cloud/manage-access/about-user-access) to your <Constant name="cloud" /> account and project.
 
-3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status="managed" />
+3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status="managed,managed_plus" />
    - This removes the need to save passwords and secret environment variables locally.
 
 ### Additional configuration
@@ -77,7 +76,7 @@ Explore these additional configurations for performance and reliability improvem
 
 1. In **Account settings**, enable [partial parsing](/docs/cloud/account-settings#partial-parsing) to only reparse changed files, saving time.
 
-2. In **Account settings**, enable [Git repo caching](/docs/cloud/account-settings#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status="managed" />
+2. In **Account settings**, enable [Git repo caching](/docs/cloud/account-settings#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status="managed,managed_plus" />
 
 ## Data platform setup
 
@@ -103,7 +102,7 @@ This section outlines the considerations and methods to connect your data platfo
 
 Explore these additional configurations to optimize your data platform setup further:
 
-1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status="managed" />
+1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status="managed,managed_plus" />
 
 ## Git setup
 
@@ -120,7 +119,7 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 ### Additional configuration
 Explore these additional configurations to optimize your <Constant name="git" /> setup further:
 
-1. Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status="managed" />
+1. Log into <Constant name="cloud" /> using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status="managed,managed_plus" />
   
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
 
@@ -133,21 +132,21 @@ This section highlights the development configurations you’ll need for your <C
 - [Additional configuration](/guides/core-to-cloud-1?step=7#additional-configuration-2)
 - [<Constant name="cloud" /> commands](/guides/core-to-cloud-1?step=7#dbt-cloud-commands)
 
-### dbt Cloud environments
+### dbt environments
 
 The most common data environments are production, staging, and development. The way dbt Core manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
 
 [<Constant name="cloud" /> environments](/docs/dbt-cloud-environments) go further by:
 - Integrating with features such as job scheduling or version control, making it easier to manage the full lifecycle of your dbt projects within a single platform.
 - Streamlining the process of switching between development, staging, and production contexts.
-- Making it easy to configure environments through the dbt Cloud UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
-- Adding `profiles.yml` attributes to dbt Cloud environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
-- Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed" />
+- Making it easy to configure environments through the <Constant name="cloud" /> UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in <Constant name="cloud" />.
+- Adding `profiles.yml` attributes to <Constant name="cloud" /> environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
+- Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed,managed_plus" />
 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
 
-2. **dbt Core version** &mdash; In your dbt Cloud environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and dbt Cloud for developing or deploying your dbt project,   You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
+2. **dbt Core version** &mdash; In your <Constant name="cloud" /> environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="cloud" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
    - When using <Constant name="core" />, you need to think about which version you’re using and manage your own upgrades. When using <Constant name="cloud" />, leverage [release tracks](/docs/dbt-versions/cloud-release-tracks) so you don’t have to.
 
 3. **Connect to your data platform** &mdash; When using <Constant name="cloud" />, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
@@ -161,8 +160,8 @@ Explore these additional configurations to optimize your developer setup further
 
 1. **Custom target names** &mdash; Using [`custom target.names`](/docs/build/custom-target-names) in your dbt projects helps identify different environments (like development, staging, and production). While you can specify the `custom target.name` values in your developer credentials or orchestration setup, we recommend using [environment variables](/docs/build/environment-variables) as the preferred method. They offer a clearer way to handle different environments and are better supported by dbt's partial parsing feature, unlike using [`{{ target }}` logic](/reference/dbt-jinja-functions/target) which is meant for defining the data warehouse connection.
 
-### dbt Cloud commands
-1. Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt init` isn’t needed in dbt Cloud as you can create a new project directly in dbt Cloud.
+### dbt commands
+1. Review the [dbt commands](/reference/dbt-commands) supported for <Constant name="cloud" /> development. For example, `dbt init` isn’t needed in <Constant name="cloud" /> as you can create a new project directly in <Constant name="cloud" />.
 
 ## Environment variables
 This section will help you understand how to set up and manage <Constant name="cloud" /> environment variables for your project. The following categories are covered:
@@ -174,14 +173,14 @@ In <Constant name="cloud" />, you can set [environment variables](/docs/build/en
 
 In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined manually by the developer or within the external application running dbt.
 
-### Environment variables in dbt Cloud
-  - dbt Cloud environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`).
+### Environment variables in dbt
+  - <Constant name="cloud" /> environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`).
   - If your <Constant name="core" /> environment variables don’t follow this naming convention, perform a [“find and replace”](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#dbt-cloud-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
-- dbt Cloud secures environment variables that enable more flexible configuration of data warehouse connections or git provider integrations, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET`to obscure them in logs and the UI.
+- <Constant name="cloud" /> secures environment variables that enable more flexible configuration of data warehouse connections or git provider integrations, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET`to obscure them in logs and the UI.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
-### dbt Cloud environment variables order of precedence
+### dbt environment variables order of precedence
 Environment variables in <Constant name="cloud" /> are managed with a clear [order of precedence](/docs/build/environment-variables#setting-and-overriding-environment-variables), allowing users to define values at four levels (highest to lowest order of precedence):
    - The job level (job override) or in the <Constant name="cloud_ide" /> for an individual developer (personal override). _Highest precedence_
    - The environment level, which can be overridden by the job level or personal override.
@@ -190,7 +189,7 @@ Environment variables in <Constant name="cloud" /> are managed with a clear [ord
   
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
-### Set environment variables in dbt Cloud
+### Set environment variables in dbt
 
 - To set these variables for an entire project or specific environments, navigate to **Deploy** > **Environments** > **Environment variables** tab.
 - To set these variables at the job level, navigate to **Deploy** > **Jobs** > **Select your job** > **Settings** > **Advanced settings**.
@@ -205,7 +204,7 @@ This section outlines the considerations and methods to set up your <Constant na
 - [Additional configuration](/guides/core-to-cloud-1?step=8#additional-configuration-3)
 - [CI/CD setup](/guides/core-to-cloud-1?step=8#cicd-setup)
 
-### dbt Cloud environments
+### dbt environments
 To use the [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
 
 ### Initial setup steps
@@ -218,7 +217,7 @@ To use the [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-schedule
 ### Additional configuration
 Explore these additional configurations to optimize your <Constant name="cloud" /> orchestration setup further:
 
-1. **Custom target names** &mdash; Use environment variables to set a `custom target.name` for every [corresponding dbt Cloud job](/docs/build/custom-target-names) at the environment level.
+1. **Custom target names** &mdash; Use environment variables to set a `custom target.name` for every [corresponding <Constant name="cloud" /> job](/docs/build/custom-target-names) at the environment level.
 
 2. **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your <Constant name="cloud" /> jobs runs.
 
@@ -226,7 +225,7 @@ Explore these additional configurations to optimize your <Constant name="cloud" 
 
 4. **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
 
-5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
+5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [<Constant name="cloud" /> APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
 
 6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/explore/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/explore/explore-projects#generate-metadata) in dbt Explorer. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="self_service,managed" />
 
@@ -234,7 +233,7 @@ Explore these additional configurations to optimize your <Constant name="cloud" 
 
 Building a custom solution to efficiently check code upon pull requests is complicated. With <Constant name="cloud" />, you can enable [continuous integration / continuous deployment (CI/CD)](/docs/deploy/continuous-integration) and configure <Constant name="cloud" /> to run your dbt projects in a temporary schema when new commits are pushed to open pull requests.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt"/>
 
 This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool for data practitioners.
 

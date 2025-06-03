@@ -1,6 +1,6 @@
 ## Canvas prerequisites
 Before using <Constant name="visual_editor" />, you should:
-- Have a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account.
+- Have a [<Constant name="cloud" /> Enterprise or Enterprise+](https://www.getdbt.com/pricing) account.
 - Have a [developer license](/docs/cloud/manage-access/seats-and-users) with developer credentials set up.
 - Be using one of the following adapters:
     - Bigquery

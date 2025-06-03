@@ -2,24 +2,18 @@
 title: "Edit and create dbt models" 
 id: use-canvas    
 sidebar_label: "Edit and create dbt models" 
-description: "Access and use Canvas to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud." 
+description: "Access and use Canvas to create or edit dbt models through a visual, drag-and-drop experience inside of dbt." 
 pagination_prev: "docs/cloud/canvas-interface"
 pagination_next: "docs/cloud/build-canvas-copilot"
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
-# Edit and create dbt models <Lifecycle status='beta, managed'/> 
+# Edit and create dbt models <Lifecycle status='managed, managed_plus'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 Access and use <Constant name="visual_editor" /> to create or edit dbt models through a visual, drag-and-drop experience. Use the built-in AI for custom code generation in your development experience.
 </p>
-
-:::tip Beta feature
-<Constant name="visual_editor" /> provides users with a seamless and drag-and-drop experience inside of <Constant name="cloud" />. It's available in private beta for [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). 
-
-To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
-:::
 
 ## Access Canvas
 

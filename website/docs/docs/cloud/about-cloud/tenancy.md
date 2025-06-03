@@ -1,7 +1,7 @@
 ---
 title: Tenancy
 id: tenancy
-description: "Information about single tenant and multi-tenant dbt Cloud instances"
+description: "Information about single tenant and multi-tenant dbt instances"
 ---
 
 import AboutCloud from '/snippets/_test-tenancy.md';

@@ -4,7 +4,7 @@ sidebar_label: "Build with dbt Copilot"
 description: "Use dbt Copilot to build visual models in Canvas with natural language prompts"
 ---
 
-# Build with dbt Copilot <Lifecycle status='beta, managed'/> 
+# Build with dbt Copilot <Lifecycle status='beta, managed, managed_plus'/> 
 
 <IntroText>
 Use <Constant name="copilot" /> to build visual models in the <Constant name="visual_editor" /> with natural language prompts.
