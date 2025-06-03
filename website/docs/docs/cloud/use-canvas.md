@@ -69,7 +69,7 @@ To edit an existing model, navigate to a <Constant name="visual_editor" /> works
 
 <Lightbox src="/img/docs/dbt-cloud/canvas/edit-model.png" width="90%" title="Edit a model using the 'Edit a model' button." />
 
-## Testing and documenting
+## Test and document
 
 Testing and documenting your models is an important part of the development process.  
 
