@@ -638,7 +638,7 @@ const sidebarSettings = {
         "docs/explore/explore-your-data",
         {
           type: "category",
-          label: "Discover data with dbt Explorer",
+          label: "Discover data with dbt Catalog",
           link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
             "docs/explore/explore-projects",
@@ -1107,7 +1107,6 @@ const sidebarSettings = {
             "reference/advanced-config-usage",
             "reference/resource-configs/access",
             "reference/resource-configs/alias",
-            "reference/resource-configs/contract",
             "reference/resource-configs/database",
             "reference/resource-configs/docs",
             "reference/resource-configs/enabled",
@@ -1135,6 +1134,7 @@ const sidebarSettings = {
             "reference/resource-configs/batch-size",
             "reference/resource-configs/begin",
             "reference/resource-properties/concurrent_batches",
+            "reference/resource-configs/contract",
             "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",

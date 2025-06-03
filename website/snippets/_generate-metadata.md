@@ -8,7 +8,7 @@
 
 If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt Core, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="cloud" />. This enables <Constant name="explorer" /> to access and display your metadata correctly.
 
-- To ensure all metadata is available in dbt Explorer, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running those two commands ensure all relevant metadata (like lineage, test results, documentation, and more) is available in dbt Explorer.
+- To ensure all metadata is available in <Constant name="explorer" />, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running those two commands ensure all relevant metadata (like lineage, test results, documentation, and more) is available in dbt Explorer.
 - <Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
     - Note that CI jobs don't update <Constant name="explorer" />. This is because they don't reflect the production state and don't provide the necessary metadata updates.
 - To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment.

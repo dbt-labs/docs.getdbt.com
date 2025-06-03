@@ -17,7 +17,7 @@ Use <Constant name="explorer" /> to navigate and manage your projects within <Co
 
 ## Prerequisites
 
-- You have a <Constant name="cloud" /> account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a <Constant name="cloud" /> account on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
 - You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update <Constant name="explorer" />. 
 - You are on the <Constant name="explorer" /> page. To do this, select **Explore** from the navigation in <Constant name="cloud" />.
@@ -38,14 +38,14 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/explore-projects#search-resources) <Lifecycle status="starter, enterprise, enterprise+" /> <Lifecycle status="preview" />
+:::info [Global navigation](/docs/explore/explore-projects#search-resources) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
 <Constant name="explorer" /> introduces the ability to widen your search by searching your dbt resources (models, seeds, snapshots, sources, exposures and more so) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects.
 
 To enable global navigation:
 
 - Have a [developer license with Owner](/docs/cloud/manage-access/about-user-access#role-based-access-control) permissions.
-- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable Explorer's Global Navigation**.
+- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable dbt Catalog's Global Navigation**.
 
 :::
 

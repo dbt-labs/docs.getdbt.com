@@ -243,7 +243,9 @@ my_awesome_project
 
 The YAML file will look pretty similar to our earlier job, but there is a new section called `env` that we’ll use to pass in the required variables. Update the variables below to match your setup based on the comments in the file.
 
-It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (for example, a pull request is merged). Have a look through [GitHub documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+
+For information about `github` context property names and their use cases, refer to the [GitHub documentation](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs). 
 
 ```yaml
 name: run dbt job on push
@@ -269,8 +271,9 @@ jobs:
       DBT_PROJECT_ID: 00000 # enter your project id
       DBT_PR_JOB_ID:  00000 # enter your job id
       DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
+      DBT_URL: https://cloud.getdbt.com # enter a URL that matches your job
       DBT_JOB_CAUSE: 'GitHub Pipeline CI Job' 
-      DBT_JOB_BRANCH: ${{ github.ref_name }}
+      DBT_JOB_BRANCH: ${{ github.head_ref }} # Resolves to the head_ref or source branch of the pull request in a workflow run. 
 
     steps:
       - uses: "actions/checkout@v4"
