@@ -13,10 +13,10 @@ The dbt extensions for VS Code and Cursor streamlines dbt development workflows.
 
 To use the extension, you must meet the following prerequisites:
 
-- You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor
-- You are not using (or have disabled) 3rd party dbt extensions
-- You are using a macOS, Windows, or a Linux-based computer
-- The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process
+- You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
+- You are not using (or have disabled) 3rd party dbt extensions.
+- You are using a macOS, Windows, or a Linux-based computer.
+- The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process.
 
 ## Installation instructions
 
@@ -34,8 +34,10 @@ import InstallExtension from '/snippets/_install-dbt-extension.md';
 
 Users must complete registration within 14 days of installing the dbt extension. There are two ways to register:
 
-- Users without an existing dbt account can register quickly and easily through an online registration form.
+- Users without an existing dbt account can register quickly and easily through an online registration form. For the initial installation, you only need to provide your name and email address to complete the registration. Subsequent installations will require you to complete the entire [dbt account registration process](#accessing-your-dbt-account) to use the extension. 
 - Users with an existing dbt account can connect their account using a `dbt_cloud.yml` credentials file.
+
+The VS Code extension is free for organizations for up to 15 users.
 
 ### New user registration
 
@@ -65,6 +67,8 @@ Now that you have activated your dbt developer account, you can access features 
 If you already have a dbt account, you do not need to re-register to use the dbt extension. The dbt extension can authenticate with the dbt platform using a `dbt_cloud.yml` file. If this file is present in your `~/.dbt/` folder, then the registration flow will automatically attempt to use this
 file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downloaded, follow the directions below:
 
+<Expandable alt_header="For dbt accounts with Fusion enabled">
+
 1. Log in to your dbt account.
 2. Click your account name at the bottom of the left-side menu and click **Account settings**.
 3. Under the **Your profile** section, click **VS Code Extension**. 
@@ -72,6 +76,20 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
     <Lightbox src="/img/docs/extension/download-registration-2.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
 5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
 6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+
+</Expandable>
+
+<Expandable alt_header="For dbt accounts without Fusion enabled">
+
+1. Log in to your dbt account.
+2. Click your account name at the bottom of the left-side menu and click **Account settings**.
+3. Under the **Your profile** section, click **CLI**. 
+4. In the **Configure Cloud authentication** section, click **Download CLI configuration file**. This downloads the `dbt_cloud.yml` file. 
+    <Lightbox src="/img/docs/extension/download-registration.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
+5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
+6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+
+</Expandable>
 
 ## Troubleshooting
 <!-- This anchor is linked from the  VS Code extension. Please do not change it -->

@@ -33,7 +33,7 @@ models:
 models:
   - name: stg_orders
     config:
-      freshness:
+      freshness: # changed to config in v1.9
         build_after:  # build this model no more often than every X amount of time, as long as as it has new data
           count: positive_integer
           period: minute | hour | day
@@ -117,17 +117,19 @@ Add the `freshness` configuration to the model with `count: 4` and `period: hour
 ```yaml
 models:
   - name: stg_wizards
-    freshness:
-      build_after: 
-        count: 4
-        period: hour
-        updates_on: all
+    config:
+      freshness: # changed to config in v1.9
+        build_after: 
+          count: 4
+          period: hour
+          updates_on: all
   - name: stg_worlds
-    freshness:
-      build_after: 
-        count: 4
-        period: hour
-        updates_on: all  
+    config:
+      freshness:
+        build_after: 
+          count: 4
+          period: hour
+          updates_on: all  
 ```
 
 When the state-aware orchestration job triggers, dbt checks for two things:
@@ -148,17 +150,19 @@ Add the `build_after` freshness configuration to the model with `count: 1` and `
 ```yaml
 models:
   - name: stg_wizards
-    freshness:
-      build_after: 
-        count: 1
-        period: hour
-        updates_on: any
+    config: 
+      freshness: # changed to config in v1.9
+        build_after: 
+          count: 1
+          period: hour
+          updates_on: any
   - name: stg_worlds
-    freshness:
-      build_after: 
-        count: 1
-        period: hour
-        updates_on: any  
+    config:
+      freshness:
+        build_after: 
+          count: 1
+          period: hour
+          updates_on: any  
 
 ```
 

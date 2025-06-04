@@ -149,17 +149,19 @@ Here's the following YAML example:
 ```yaml
 models:
   - name: dim_wizards
-    freshness:
-      build_after:
-        count: 4         # how long to wait before rebuilding
-        period: hour     # unit of time
-        updates_on: all  # only rebuild if all upstream dependencies have new data
+    config:
+      freshness: # changed to config in v1.9
+        build_after:
+          count: 4         # how long to wait before rebuilding
+          period: hour     # unit of time
+          updates_on: all  # only rebuild if all upstream dependencies have new data
   - name: dim_worlds
-    freshness:
-      build_after:
-        count: 4
-        period: hour
-        updates_on: all
+    config:
+      freshness:
+        build_after:
+          count: 4
+          period: hour
+          updates_on: all
 ```
 
 </File>
