@@ -151,7 +151,7 @@ To map the attributes that will sync with dbt:
     - **Match objects using this attribute:** `No`
     - **Matching precedence:** *Leave blank*
     - **Apply this mapping:** `Always`
-  6. Click **Ok**
+6. Click **Ok**
     <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
 7. Back on the **Attribute mapping** screen, click the checkbox to **Show advanced options**
     <Lightbox src="/img/docs/dbt-cloud/access-control/show-advanced-options.png" width="60%" title="Edit the advanced options." />
