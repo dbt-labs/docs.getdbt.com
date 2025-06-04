@@ -213,7 +213,7 @@ packages:
   
 ```
 
-If you are using multiple <Constant name="git" /> integrations, disambiguate by adding the provider key:
+If you are using multiple <Constant name="git" /> integrations or using the dbt Fusion engine, add the provider key:
 
 ```yaml
 packages:
@@ -222,7 +222,9 @@ packages:
 
 ```
 
-With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect. 
+With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect.
+
+Using `provider` with Fusion carries the expectation that you have a SSH key configured on your machine to use for git cloning.
 
 ### SSH key method (command line only)
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.

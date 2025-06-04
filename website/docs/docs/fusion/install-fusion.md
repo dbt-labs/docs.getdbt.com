@@ -77,7 +77,7 @@ Fusion will be installed in the following locations:
 - **macOS & Linux:** `$HOME/.local/bin/dbt`
 - **Windows:** `C:\Users\<YourUsername>\.local\bin\dbt.exe`
 
-This location is automaticallly added to your path to easily execute the `dbtf` command, but it requires reloading your shell.
+This location is automatically added to your path to easily execute the `dbtf` command, but it requires reloading your shell.
 
 ### Update Fusion
 

@@ -25,7 +25,7 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
     icon="dbt-bit"/>
 
    <Card
-    title="dbt Canvas (beta)"
+    title="dbt Canvas"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
     link="/docs/cloud/canvas"
     icon="dbt-bit"/>

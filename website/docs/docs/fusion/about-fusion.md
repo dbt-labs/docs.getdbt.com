@@ -4,11 +4,14 @@ id: "about-fusion"
 description: "Fusion is the next-generation engine for dbt."
 pagination_next: null
 pagination_prev: null
-intro_text: "dbt is the industry standard for data transformation. The dbt Fusion engine enables dbt to operate at speed and scale like never before."
 ---
 
 # About the dbt Fusion engine <Lifecycle status="beta" />
 
+<IntroText>
+
+dbt is the industry standard for data transformation. The dbt Fusion engine enables dbt to operate at speed and scale like never before.
+</IntroText>
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 

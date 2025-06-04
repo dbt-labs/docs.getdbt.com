@@ -6,7 +6,7 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 
 ## Iceberg table format
 
-Our Snowflake Iceberg table content has moved to a [new papge!](/docs/mesh/iceberg/snowflake-iceberg-support).
+Our Snowflake Iceberg table content has moved to a [new page!](/docs/mesh/iceberg/snowflake-iceberg-support).
 
 ## Dynamic tables
 

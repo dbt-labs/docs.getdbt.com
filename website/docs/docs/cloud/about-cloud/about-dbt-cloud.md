@@ -29,7 +29,7 @@ In addition to providing a hosted architecture for running dbt across your organ
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Canvas (beta)"
+    title="dbt Canvas"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
     link="/docs/cloud/canvas"
     icon="dbt-bit"/>
@@ -107,8 +107,8 @@ In addition to providing a hosted architecture for running dbt across your organ
     icon="dbt-bit"/>
 
   <Card
-    title="dbt Explorer*"
-    body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
+    title="dbt Catalog*"
+    body="Learn about dbt Catalog and how to interact with it to understand, improve, and leverage your data pipelines."
     link="/docs/explore/explore-projects"
     icon="dbt-bit"/>
 

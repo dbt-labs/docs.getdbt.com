@@ -4,7 +4,7 @@ sidebar_label: "External metadata ingestion"
 description: "Connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with dbt Catalog." 
 ---
 
-# External metadata ingestion <Lifecycle status="Enterprise,Enterprise+" /> <Lifecycle status="preview" />
+# External metadata ingestion <Lifecycle status="managed,managed_plus" /> <Lifecycle status="preview" />
 
 <IntroText>
 
@@ -25,7 +25,7 @@ These credentials are configured separately from dbt environment credentials and
 - Have a <Constant name="cloud" /> account on the [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plan.
 - You must be an [account admin with permission](/docs/cloud/manage-access/enterprise-permissions#account-admin) to edit connections.
     - The credentials must have [sufficient read-level access to fetch metadata](/docs/explore/external-metadata-ingestion#configuration-instructions).
-- Have [**global navigation**](/docs/explore/explore-projects#catalog-overview-) enabled.
+- Have [**global navigation**](/docs/explore/explore-projects#catalog-overview) enabled.
 - Use Snowflake as your data platform.
 - Stayed tuned! Coming very soon, there’ll be support in future for other adapters!
 
@@ -41,9 +41,9 @@ To enable external metadata ingestion:
     - This allows metadata from this connection to populate the <Constant name="explorer" />
     - *Optional*: Enable additional features such as **cost optimization**
 5. Apply filters to restrict which metadata is ingested:
-    - You can filter by **database**, **schema**, **table**, or **view**
-    - Strongly recommend you filter by certain schemas. See [Best practices](/docs/explore/external-metadata-ingestion#best-practices) for more informtion
-    - These fields accept CSV-formatted regular expressions
+    - You can filter by **database**, **schema**, **table**, or **view**.
+    - Strongly recommend you filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.
+    - These fields accept CSV-formatted regular expressions:
         - Example: `DIM` matches `DIM_ORDERS` and `DIMENSION_TABLE` (basic "contains" match)
         - Wildcards are supported: `DIM*` matches `DIM_ORDERS`, `DIM_PRODUCTS`, etc.
 

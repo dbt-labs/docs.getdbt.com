@@ -248,9 +248,9 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 3. Click **Add** next to **Application ID URI**. The field will automatically populate. Click **Save**.
 4. Record the `value` field for use in a future step. _This is only displayed once. Be sure to record it immediately. Microsoft hides the field when you leave the page and come back._
 5. From the same screen, click **Add scope**.
-   1. Give the scope a name.
+   1. Name the scope `session:role-any`.
    2. Set “Who can consent?” to **Admins and users**.
-   3. Set **Admin consent display name** session:role-any and give it a description.
+   3. Set **Admin consent display name** to `session:role-any` and give it a description.
    4. Ensure **State** is set to **Enabled**.
    5. Click **Add scope**.
 
