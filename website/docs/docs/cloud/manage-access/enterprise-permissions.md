@@ -227,16 +227,6 @@ Notable features:
 - Can access dbt Explorer
 
 </Expandable>
-<Expandable alt_header="Webhook">
-
-The Webhook permissions set manages webhooks in the <Constant name="cloud" />.
-
-Notable features:
-- Webhooks is a project-level set.
-- Create, edit, and manage webhooks.
-- No other access to <Constant name="cloud" /> features.
-
-</Expandable>
 
 :::tip Licenses or Permission sets
 

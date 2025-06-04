@@ -69,24 +69,25 @@ version: 2
 sources:
   - name: github
     overrides: github_source
-
-    freshness:
-      warn_after:
-        count: 1
-        period: day
-      error_after:
-        count: 2
-        period: day
+    config:
+      freshness: # changed to config in v1.9
+        warn_after:
+          count: 1
+          period: day
+        error_after:
+          count: 2
+          period: day
 
     tables:
       - name: issue_assignee
-        freshness:
-          warn_after:
-            count: 2
-            period: day
-          error_after:
-            count: 4
-            period: day
+        config:
+          freshness:
+            warn_after:
+              count: 2
+              period: day
+            error_after:
+              count: 4
+              period: day
 
 ```
 

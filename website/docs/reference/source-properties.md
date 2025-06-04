@@ -34,17 +34,17 @@ sources:
     # requires v1.1+
     [config](/reference/resource-properties/config):
       [<source_config>](source-configs): <config_value>
-
+      [freshness](/reference/resource-properties/freshness): 
+        # changed to config in v1.9
+        warn_after:
+          [count](/reference/resource-properties/freshness#count): <positive_integer>
+          [period](/reference/resource-properties/freshness#period): minute | hour | day
+        error_after:
+          [count](/reference/resource-properties/freshness#count): <positive_integer>
+          [period](/reference/resource-properties/freshness#period): minute | hour | day
+        [filter](/reference/resource-properties/freshness#filter): <where-condition>
+      
     [overrides](/reference/resource-properties/overrides): <string>
-
-    [freshness](/reference/resource-properties/freshness):
-      warn_after:
-        [count](/reference/resource-properties/freshness#count): <positive_integer>
-        [period](/reference/resource-properties/freshness#period): minute | hour | day
-      error_after:
-        [count](/reference/resource-properties/freshness#count): <positive_integer>
-        [period](/reference/resource-properties/freshness#period): minute | hour | day
-      [filter](/reference/resource-properties/freshness#filter): <where-condition>
 
     [quoting](/reference/resource-properties/quoting):
       database: true | false
@@ -61,14 +61,15 @@ sources:
           - <test>
           - ... # declare additional tests
         [tags](/reference/resource-configs/tags): [<string>]
-        [freshness](/reference/resource-properties/freshness):
-          warn_after:
-            [count](/reference/resource-properties/freshness#count): <positive_integer>
-            [period](/reference/resource-properties/freshness#period): minute | hour | day
-          error_after:
-            [count](/reference/resource-properties/freshness#count): <positive_integer>
-            [period](/reference/resource-properties/freshness#period): minute | hour | day
-          [filter](/reference/resource-properties/freshness#filter): <where-condition>
+        [config](/reference/resource-properties/config):
+          [freshness](/reference/resource-properties/freshness):
+            warn_after:
+              [count](/reference/resource-properties/freshness#count): <positive_integer>
+              [period](/reference/resource-properties/freshness#period): minute | hour | day
+            error_after:
+              [count](/reference/resource-properties/freshness#count): <positive_integer>
+              [period](/reference/resource-properties/freshness#period): minute | hour | day
+            [filter](/reference/resource-properties/freshness#filter): <where-condition>
 
         [quoting](/reference/resource-properties/quoting):
           database: true | false

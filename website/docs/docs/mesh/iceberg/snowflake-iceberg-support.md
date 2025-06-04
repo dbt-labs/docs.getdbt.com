@@ -175,7 +175,7 @@ catalogs:
       - name: snowflake_write_integration
         external_volume: dbt_external_volume
         table_format: iceberg
-        catalog_type: built-in
+        catalog_type: built_in
 
 ```
 
