@@ -31,7 +31,7 @@ join <table_b> on
 ```
 
 :::tip Surrogate keys > joins with AND
-Using <Term id="surrogate-key">surrogate keys</Term>, hashed values of multiple columns, is a great way to avoid using AND operators in joins. Typically, having AND or [OR operators](/sql-reference/or) in a join can cause the query or model to be potentially inefficient, especially at considerable data volume, so creating surrogate keys earlier in your upstream tables ([using the surrogate key macro](https://docs.getdbt.com/blog/sql-surrogate-keys)) can potentially improve performance in downstream models.
+Using <Term id="surrogate-key">surrogate keys</Term>, hashed values of multiple columns, is a great way to avoid using AND operators in joins. Typically, having AND or [OR operators](/sql-reference/or) in a join can cause the query or model to be potentially inefficient, especially at considerable data volume, so creating surrogate keys earlier in your upstream tables ([using the surrogate key macro](/blog/sql-surrogate-keys)) can potentially improve performance in downstream models.
 :::
 
 ### SQL AND operator example

@@ -70,6 +70,6 @@ The use cases for case statements in dbt models and ad hoc queries is almost end
 
 Instead, it’s important to know *why* you’d want to use them in your data work and when you wouldn’t want to use them. Some example reasons you’d want to leverage case statements:
 - Create booleans from your existing data (ex. `case when cnt > 1 then true else false end as is_active`)
-- Establish mappings between raw data and more general buckets of data (see example earlier in the page); note that if you find yourself creating many case when scenarios for a mapping that doesn’t change over time, you’ll likely want to import that mapping either as its own dbt model or data source (a good use case for [seeds](https://docs.getdbt.com/docs/build/seeds))
-- If you find yourself creating the same case when statement throughout your models, consider abstracting that case when into its own model or into a <Term id="dry" /> [macro](https://docs.getdbt.com/docs/build/jinja-macros)
+- Establish mappings between raw data and more general buckets of data (see example earlier in the page); note that if you find yourself creating many case when scenarios for a mapping that doesn’t change over time, you’ll likely want to import that mapping either as its own dbt model or data source (a good use case for [seeds](/docs/build/seeds))
+- If you find yourself creating the same case when statement throughout your models, consider abstracting that case when into its own model or into a <Term id="dry" /> [macro](/docs/build/jinja-macros)
 - Generate more business-user friendly columns values that can be easily comprehended by business users

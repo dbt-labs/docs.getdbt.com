@@ -79,13 +79,13 @@ For more information about Iceberg table creation and supported configurations, 
 ## Seeds
 The `dbt-watsonx-presto` adapter offers comprehensive support for all [watsonx.data Presto datatypes](https://www.ibm.com/support/pages/node/7157339) in seed files. To leverage this functionality, you must explicitly define the data types for each column.
 
-You can configure column data types either in the dbt_project.yml file or in property files, as supported by dbt. For more details on seed configuration and best practices, refer to the [dbt seed configuration documentation](https://docs.getdbt.com/reference/seed-configs).
+You can configure column data types either in the dbt_project.yml file or in property files, as supported by dbt. For more details on seed configuration and best practices, refer to the [dbt seed configuration documentation](/reference/seed-configs).
 
 
 ## Materializations
 The `dbt-watsonx-presto` adapter supports both table and view materializations, allowing you to manage how your data is stored and queried in watsonx.data Presto(java).
 
-For further information on configuring materializations, refer to the [dbt materializations documentation](https://docs.getdbt.com/reference/resource-configs/materialized).
+For further information on configuring materializations, refer to the [dbt materializations documentation](/reference/resource-configs/materialized).
 
 ### Table
 

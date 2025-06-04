@@ -25,7 +25,7 @@ on t1.id = t2.id
 
 In this example above, there’s only one field from each table being used to join the two together; if you’re joining between two database objects that require multiple fields, you can leverage AND/OR operators, and more preferably, <Term id="surrogate-key">surrogate keys</Term>. You may additionally add [WHERE](/sql-reference/where), [GROUP BY](/sql-reference/group-by), [ORDER BY](/sql-reference/order-by), [HAVING](/sql-reference/having), and other clauses after your joins to create filtering, ordering, and performing aggregations.
 
-As with any query, you can perform as many joins as you want in a singular query. A general word of advice: try to keep data models <Term id="dry">modular</Term> by performing regular <Term id="dag" /> audits. If you join certain tables further upstream, are those individual tables needed again further downstream? If your query involves multiple joins and complex logic and is exposed to end business users, ensure that you leverage table or [incremental materializations](https://docs.getdbt.com/docs/build/incremental-models).
+As with any query, you can perform as many joins as you want in a singular query. A general word of advice: try to keep data models <Term id="dry">modular</Term> by performing regular <Term id="dag" /> audits. If you join certain tables further upstream, are those individual tables needed again further downstream? If your query involves multiple joins and complex logic and is exposed to end business users, ensure that you leverage table or [incremental materializations](/docs/build/incremental-models).
 
 ### SQL inner join example
 

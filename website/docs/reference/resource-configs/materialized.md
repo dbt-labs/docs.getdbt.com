@@ -24,7 +24,7 @@ datatype: "string"
 
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
-    +materialized: [<materialization_name>](https://docs.getdbt.com/docs/build/materializations#materializations)
+    +materialized: [<materialization_name>](/docs/build/materializations#materializations)
 ```
 
 </File>
@@ -42,7 +42,7 @@ version: 2
 models:
   - name: <model_name>
     config:
-      materialized: [<materialization_name>](https://docs.getdbt.com/docs/build/materializations#materializations)
+      materialized: [<materialization_name>](/docs/build/materializations#materializations)
 
 ```
 
@@ -57,7 +57,7 @@ models:
 
 ```jinja
 {{ config(
-  materialized="[<materialization_name>](https://docs.getdbt.com/docs/build/materializations#materializations)"
+  materialized="[<materialization_name>](/docs/build/materializations#materializations)"
 ) }}
 
 select ...

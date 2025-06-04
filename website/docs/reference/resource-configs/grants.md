@@ -151,7 +151,7 @@ Now, the model will grant select to `user_a`, `user_b`, AND `user_c`!
 
 **Notes:**
 - This will only take effect for privileges which include the `+` prefix. Each privilege controls that behavior separately. If we were granting other privileges, in addition to `select`, and those privilege names lacked the `+` prefix, they would continue to "clobber" rather than "add" new grantees.
-- This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](https://docs.getdbt.com/reference/resource-configs/plus-prefix).
+- This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](/reference/resource-configs/plus-prefix).
 - `grants` is the first config to support a `+` prefix for controlling config merge behavior. Currently, it's the only one. If it proves useful, we may extend this capability to new and existing configs in the future.
 
 ### Conditional grants
@@ -320,7 +320,7 @@ models:
 - Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
   - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
   - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
-- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook)
+- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](/reference/resource-configs/pre-hook-post-hook)
 
 </div>
 

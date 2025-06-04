@@ -60,7 +60,7 @@ This default can be overwritten in two ways:
 - Configuring a custom `alias` within the version yaml, or the versioned model's definition
 - Overwriting dbt's `generate_alias_name` macro, to use different behavior based on `node.version`
 
-See ["Custom aliases"](https://docs.getdbt.com/docs/build/custom-aliases) for more details.
+See ["Custom aliases"](/docs/build/custom-aliases) for more details.
 
 Note that the value of `defined_in` and the `alias` configuration of a model are not coordinated, except by convention. The two are declared and determined independently.
 

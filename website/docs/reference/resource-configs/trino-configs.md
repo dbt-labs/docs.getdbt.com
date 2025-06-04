@@ -190,7 +190,7 @@ select * from {{ ref('events') }}
 {% endif %}
 ```
 
-Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change). 
+Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change).
 
 If your connector doesn't support views, set the `+views_enabled` property to `false`.
 
@@ -300,7 +300,7 @@ The `dbt-trino` adapter supports [materialized views](https://trino.io/docs/curr
 
 You can also define custom properties for the materialized view through the `properties` config.
 
-This materialization supports the [full_refresh](https://docs.getdbt.com/reference/resource-configs/full_refresh) config and flag.
+This materialization supports the [full_refresh](/reference/resource-configs/full_refresh) config and flag.
 Whenever you want to rebuild your materialized view (for example, when changing underlying SQL query) run `dbt run --full-refresh`.
 
 You can create a materialized view by editing _one_ of these files:

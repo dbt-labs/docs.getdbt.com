@@ -39,7 +39,7 @@ For comments *on* database objects, such as views and tables, there’s a differ
 comment on [database object type] <database object name> is 'comment text here';
 ```
 
-These database object-level comments are more useful for adding additional context or metadata to these objects versus inline comments being useful for explaining code functionality. Alternatively, these table and view-level comments can be easily abstracted out and version-controlled using [model descriptions in dbt](https://docs.getdbt.com/reference/resource-properties/description) and persisted in the objects using the [persist_docs config](/reference/resource-configs/persist_docs) in dbt.
+These database object-level comments are more useful for adding additional context or metadata to these objects versus inline comments being useful for explaining code functionality. Alternatively, these table and view-level comments can be easily abstracted out and version-controlled using [model descriptions in dbt](/reference/resource-properties/description) and persisted in the objects using the [persist_docs config](/reference/resource-configs/persist_docs) in dbt.
 
 ## SQL comments in Snowflake, Databricks, BigQuery, and Redshift
 
@@ -53,9 +53,9 @@ We recommend leveraging inline comments in the following situations:
 
 - Explain complex code logic that if you had to scratch your head at, someone else will have to scratch their head at
 - Explain niche, unique-to-your-business logic
-- Separate out field types (ex. Ids, booleans, strings, dates, numerics, and timestamps) in [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) to create more readable, organized, and formulaic models
+- Separate out field types (ex. Ids, booleans, strings, dates, numerics, and timestamps) in [staging models](/best-practices/how-we-structure/2-staging) to create more readable, organized, and formulaic models
 - Clearly label tech debt (`-- [TODO]: TECH DEBT`) in queries or models
 
 
-If you find your inline SQL comments are getting out of control, less scannable and readable, that’s a sign to lean more heavily on dbt Docs and markdown files in your dbt project. dbt supports [descriptions](https://docs.getdbt.com/reference/resource-properties/description), which allow you to add robust model (or macro, source, snapshot, seed, and source) and column descriptions that will populate in hosted dbt Docs. For models or columns that need more thorough or customizable documentation, leverage [doc blocks in markdown and YAML files](https://docs.getdbt.com/reference/resource-properties/description#use-a-docs-block-in-a-description) to create more detailed explanations and comments.
+If you find your inline SQL comments are getting out of control, less scannable and readable, that’s a sign to lean more heavily on dbt Docs and markdown files in your dbt project. dbt supports [descriptions](/reference/resource-properties/description), which allow you to add robust model (or macro, source, snapshot, seed, and source) and column descriptions that will populate in hosted dbt Docs. For models or columns that need more thorough or customizable documentation, leverage [doc blocks in markdown and YAML files](/reference/resource-properties/description#use-a-docs-block-in-a-description) to create more detailed explanations and comments.
 
