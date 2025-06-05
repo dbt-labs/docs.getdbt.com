@@ -19,6 +19,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## June 2025
 
 - **Enhancement**: Group owners can now specify multiple email addresses for model-level notifications, enabling broader team alerts. Previously, only a single email address was supported. Check out the [Configure groups](/docs/deploy/model-notifications#configure-groups) section to learn more.
+- **New**: The Semantic Layer GraphQL API has a new [List a save query](/dbt-cloud-apis/sl-graphql#list-a-saved-query) endpoint.
 
 ## May 2025
 

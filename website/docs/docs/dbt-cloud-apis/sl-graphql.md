@@ -234,9 +234,9 @@ List all saved queries for the specified environment.
 }
 ```
 
-#### List a single saved query
+#### List a saved query
 
-Lookup a single saved query using environment ID and query name.
+List a single saved query using environment ID and query name.
 
 ```graphql
 
