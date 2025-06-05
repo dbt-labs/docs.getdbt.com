@@ -6,22 +6,21 @@ level: 'Beginner'
 platform: 'dbt-core'
 icon: 'fa-light fa-square-terminal'
 tags: ['dbt Core','Quickstart']
-hide_table_of_contents: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
+When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
 
-If you want to edit files and run projects using the web-based dbt Integrated Development Environment (IDE), refer to the [dbt Cloud quickstarts](/guides). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="cloud_ide" />), refer to the [<Constant name="cloud" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) &mdash; a <Constant name="cloud" /> powered command line.
 
 ### Prerequisites
 
 * To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
-* Install dbt Core using the [installation instructions](/docs/core/installation-overview) for your operating system.
-* Complete appropriate Setting up and Loading data steps in the Quickstart for dbt Cloud series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
+* Install <Constant name="core" /> using the [installation instructions](/docs/core/installation-overview) for your operating system.
+* Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="cloud" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ### Create a starter project
@@ -30,7 +29,7 @@ After setting up BigQuery to work with dbt, you are ready to create a starter pr
 
 ## Create a repository
 
-The following steps use [GitHub](https://github.com/) as the Git provider for this guide, but you can use any Git provider. You should have already [created a GitHub account](https://github.com/join).
+The following steps use [GitHub](https://github.com/) as the <Constant name="git" /> provider for this guide, but you can use any <Constant name="git" /> provider. You should have already [created a GitHub account](https://github.com/join).
 
 1. [Create a new GitHub repository](https://github.com/new) named `dbt-tutorial`.
 2. Select **Public** so the repository can be shared with others. You can always make it private later.
@@ -464,12 +463,12 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
+We recommend using <Constant name="cloud" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt Cloud job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
-For more information about using dbt Core to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
+For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 
 </div>

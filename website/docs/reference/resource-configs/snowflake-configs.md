@@ -4,100 +4,9 @@ id: "snowflake-configs"
 description: "Snowflake Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
-<!----
-To-do:
-- use the reference doc structure for this article / split into separate articles
---->
+## Iceberg table format
 
-<VersionBlock firstVersion="1.9">
-
-## Iceberg table format <Lifecycle status="beta"/>
-
-The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
-
-- [Table](/docs/build/materializations#table)
-- [Incremental](/docs/build/materializations#incremental)
-- [Dynamic](#dynamic-tables) 
-
-For now, to create Iceberg tables, you must implement a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the `Show Objects` query, which dbt depends on for metadata.
-
-To use Iceberg, set the `enable_iceberg_materializations` flag to `True` in your dbt_project.yml:
-
-<File name='dbt_project.yml'>
-
-```yaml
-
-flags:
-  enable_iceberg_materializations: True
-
-```
-
-</File>
-
-
-The following configurations are supported.
-For more information, check out the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
-
-| Parameter | Type   | Required | Description   | Sample input | Note   |
-| ------ | ----- | -------- | ------------- | ------------ | ------ |
-| `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
-| `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
-| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you do not specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
-
-### Example configuration
-
-To configure an Iceberg table materialization in dbt, refer to the example configuration:
-
-<File name='models/<modelname>.sql'>
-
-```sql
-
-{{
-  config(
-    materialized = "table",
-    table_format="iceberg",
-    external_volume="s3_iceberg_snow",
-  )
-}}
-
-select * from {{ ref('raw_orders') }}
-
-```
-
-</File>
-
-### Base location 
-
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`
-
-#### Base Location Subpath
-We recommend using dbt's auto-generated `base_location`. However, if you need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, the subpath concatenates to the end of the previously described pattern for `base_location` string generation.
-
-For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}/prod/`.
-
-A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
-
-#### Rationale
-
-dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_ location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
-
-- Navigate the underlying object store (S3/Azure blob)
-- Read Iceberg tables via an object-store integration
-- Grant schema-specific access to tables via object store
-- Use a crawler pointed at the tables within the external volume to build a new catalog with another tool
-
-To maintain best practices,  we enforce an input. Currently, we do not support overriding the default `base location` input but will consider it based on user feedback. 
-
-In summary, dbt-snowflake does not support arbitrary definition of `base_location` for Iceberg tables. Instead, dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
-
-### Limitations
-
-There are some limitations to the implementation you need to be aware of:
-
--  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
-- You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
-
-</VersionBlock>
+Our Snowflake Iceberg table content has moved to a [new page!](/docs/mesh/iceberg/snowflake-iceberg-support).
 
 ## Dynamic tables
 
@@ -334,7 +243,7 @@ As with materialized views on most data platforms, there are limitations associa
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
 For dbt limitations, these dbt features are not supported:
-- [Model contracts](/docs/collaborate/govern/model-contracts)
+- [Model contracts](/docs/mesh/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
 ### Troubleshooting dynamic tables
@@ -483,6 +392,8 @@ Snowflake supports the following incremental strategies:
 - Merge (default)
 - Append
 - Delete+insert
+- Insert_overwrite
+  - Note: This is not a standard dbt incremental strategy. `insert_overwrite` behaves like `truncate` + re-`insert` commands on Snowflake. It doesn't support partition-based overwrites, which means it'll overwrite the entire table intentionally. It's implemented as an incremental strategy because it aligns with dbt’s workflow of not dropping existing tables.
 - [`microbatch`](/docs/build/incremental-microbatch)
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
@@ -564,6 +475,85 @@ models:
 ```
 
 </File>
+
+## Python model configuration
+
+The Snowflake adapter supports Python models. Snowflake uses its own framework, Snowpark, which has many similarities to PySpark.
+
+**Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
+
+**Installing packages:** Snowpark supports several popular packages via Anaconda. Refer to the [complete list](https://repo.anaconda.com/pkgs/snowflake/) for more details. Packages are installed when your model is run. Different models can have different package dependencies. If you use third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
+
+**Python version:** To specify a different Python version, use the following configuration:
+
+```python
+def model(dbt, session):
+    dbt.config(
+        materialized = "table",
+        python_version="3.11"
+    )
+```
+
+You can use the `python_version` config to run a Snowpark model with [Python versions](https://docs.snowflake.com/en/developer-guide/snowpark/python/setup) 3.9, 3.10, or 3.11.
+
+<VersionBlock firstVersion="1.8">
+
+**External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
+
+```python
+import pandas
+import snowflake.snowpark as snowpark
+
+def model(dbt, session: snowpark.Session):
+    dbt.config(
+        materialized="table",
+        secrets={"secret_variable_name": "test_secret"},
+        external_access_integrations=["test_external_access_integration"],
+    )
+    import _snowflake
+    return session.create_dataframe(
+        pandas.DataFrame(
+            [{"secret_value": _snowflake.get_generic_secret_string('secret_variable_name')}]
+        )
+    )
+```
+
+</VersionBlock>
+
+**Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
+
+### Third-party Snowflake packages
+
+To use a third-party Snowflake package that isn't available in Snowflake Anaconda, upload your package by following [this example](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#importing-packages-through-a-snowflake-stage), and then configure the `imports` setting in the dbt Python model to reference to the zip file in your Snowflake staging.
+
+Here’s a complete example configuration using a zip file, including using `imports` in a Python model:
+
+```python
+
+def model(dbt, session):
+    # Configure the model
+    dbt.config(
+        materialized="table",
+        imports=["@mystage/mycustompackage.zip"],  # Specify the external package location
+    )
+    
+    # Example data transformation using the imported package
+    # (Assuming `some_external_package` has a function we can call)
+    data = {
+        "name": ["Alice", "Bob", "Charlie"],
+        "score": [85, 90, 88]
+    }
+    df = pd.DataFrame(data)
+
+    # Process data with the external package
+    df["adjusted_score"] = df["score"].apply(lambda x: some_external_package.adjust_score(x))
+    
+    # Return the DataFrame as the model output
+    return df
+
+```
+
+For more information on using this configuration, refer to [Snowflake's documentation](https://community.snowflake.com/s/article/how-to-use-other-python-packages-in-snowpark) on uploading and using other python packages in Snowpark not published on Snowflake's Anaconda channel.
 
 ## Configuring virtual warehouses
 

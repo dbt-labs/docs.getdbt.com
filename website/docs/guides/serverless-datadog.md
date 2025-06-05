@@ -1,28 +1,27 @@
 ---
-title: "Create Datadog events from dbt Cloud results"
+title: "Create Datadog events from dbt results"
 id: serverless-datadog
-description: Configure a serverless app to add dbt Cloud events to Datadog logs.
-hoverSnippet: Learn how to configure a serverless app to add dbt Cloud events to Datadog logs.
+description: Configure a serverless app to add dbt events to Datadog logs.
+hoverSnippet: Learn how to configure a serverless app to add dbt events to Datadog logs.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Webhooks']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-This guide will teach you how to build and host a basic Python app which will add dbt Cloud job events to Datadog. To do this, when a dbt Cloud job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
+This guide will teach you how to build and host a basic Python app which will add <Constant name="cloud" /> job events to Datadog. To do this, when a <Constant name="cloud" /> job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
 
 In this example, we will use [fly.io](https://fly.io) for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
 ### Prerequisites
 
 This guide assumes some familiarity with:
-- [dbt Cloud Webhooks](/docs/deploy/webhooks)
+- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
 - CLI apps
 - Deploying code to a serverless code runner like fly.io or AWS Lambda
 
@@ -97,7 +96,7 @@ Wrote config file fly.toml<br/>
 ### 4. Create a Datadog API Key
 [Create an API Key for your Datadog account](https://docs.datadoghq.com/account_management/api-app-keys/) and make note of it and your Datadog site (e.g. `datadoghq.com`) for later.
 
-## Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt
 
 1. See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
 2. Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`).
@@ -108,8 +107,8 @@ Wrote config file fly.toml<br/>
 ## Store secrets
 
 The application requires four secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
-- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the dbt Cloud webhook you created earlier.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="cloud" /> [personal access token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="cloud" /> webhook you created earlier.
 - `DD_API_KEY`: the API key you created earlier.
 - `DD_SITE`: The Datadog site for your organisation, e.g. `datadoghq.com`.
 
@@ -120,6 +119,6 @@ Set these secrets as follows, replacing `abc123` etc with actual values:
 
 ## Deploy your app
 
-After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.
+After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the <Constant name="cloud" /> webhook settings and click **Test Endpoint**.
 
 </div>

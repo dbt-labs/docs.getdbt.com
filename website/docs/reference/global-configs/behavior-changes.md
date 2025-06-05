@@ -35,7 +35,7 @@ The following are **not** behavior changes:
 - dbt updates the language of human-friendly messages in log events.
 - dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
 
-The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of dbt Cloud and patch releases of dbt Core.
+The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of <Constant name="cloud" /> and patch releases of <Constant name="core" />.
 
 By contrast, behavior change migrations happen slowly, over the course of months, facilitated by behavior change flags. The flags are loosely coupled to the specific dbt runtime version. By setting flags, users have control over opting in (and later opting out) of these changes.
 
@@ -43,7 +43,7 @@ By contrast, behavior change migrations happen slowly, over the course of months
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you’ve opted out of, until you either:
+The following example displays the current flags and their current default values in the latest <Constant name="cloud" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
 
 - Resolve the issue (by switching the flag to `True`)
 - Silence the warnings using the `warn_error_options.silence` flag
@@ -54,31 +54,36 @@ Here's an example of the available behavior change flags with their default valu
 
 ```yml
 flags:
-  require_explicit_package_overrides_for_builtin_materializations: False
-  require_model_names_without_spaces: False
-  source_freshness_run_project_hooks: False
+  require_explicit_package_overrides_for_builtin_materializations: True
+  require_model_names_without_spaces: True
+  source_freshness_run_project_hooks: True
   restrict_direct_pg_catalog_access: False
+  skip_nodes_if_on_run_start_fails: False
+  state_modified_compare_more_unrendered_values: False
   require_yaml_configuration_for_mf_time_spines: False
   require_batched_execution_for_custom_microbatch_strategy: False
+  require_nested_cumulative_type_params: False
+  validate_macro_args: False 
 ```
 
 </File>
 
-This table outlines which month of the "Latest" release track in dbt Cloud and which version of dbt Core contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the "Latest" release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag                                                            | dbt Cloud "Latest": Intro | dbt Cloud "Latest": Maturity | dbt Core: Intro | dbt Core: Maturity | 
+| Flag                                                            | <Constant name="cloud" /> "Latest": Intro | <Constant name="cloud" /> "Latest": Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
-| [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | TBD*                | 1.8.0           | 1.10.0             |
-| [source_freshness_run_project_hooks](#project-hooks-with-source-freshness)                              | 2024.03          | TBD*                | 1.8.0           | 1.10.0             |
-| [Redshift] [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag)    | 2024.09          | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
+| [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             |
+| [source_freshness_run_project_hooks](#project-hooks-with-source-freshness)                              | 2024.03          | 2025.05                | 1.8.0           | 1.10.0             |
+| [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) [Redshift]   | 2024.09          | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
 | [skip_nodes_if_on_run_start_fails](#failures-in-on-run-start-hooks)                                | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
-| [cumulative_type_params](#cumulative-metrics-parameter)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
+| [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
+| [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 
-When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
+When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
@@ -124,17 +129,11 @@ You can still explicitly override built-in materializations, in favor of a mater
 
 In the future, we may extend the project-level [`dispatch` configuration](/reference/project-configs/dispatch-config) to support a list of authorized packages for overriding built-in materialization.
 
-<VersionBlock lastVersion="1.7">
-
-The following flags were introduced in a future version of dbt Core. If you're still using an older version, then you have the legacy behavior by default (when each flag is `False`). 
-
-</VersionBlock>
-
 ### No spaces in resource names
 
 The `require_resource_names_without_spaces` flag enforces using resource names without spaces. 
 
-The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+The names of dbt resources (for example, models) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
 
 <File name='models/model name with spaces.sql'>
 
@@ -179,7 +178,7 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -192,7 +191,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
 
 ```
 
-If you run `dbt parse` with that syntax on Core v1.9 or [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
+If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
 
 ```bash
 
@@ -225,3 +224,31 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 
 ```
+
+### Macro argument validation
+
+dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `False`, which means that dbt won't validate the names or types of documented macro arguments.
+
+In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
+- the argument names matched those in your macro
+- the argument types were valid or consistent with the macro's Jinja definition
+
+Here's an example of a documented macro:
+<File name='macros/filename.yml'>
+
+```yaml
+version: 2
+
+macros:
+  - name: <macro name>
+    arguments:
+      - name: <arg name>
+        type: <string>
+```
+</File>
+
+When you set the `validate_macro_args` flag to `True`, dbt will:
+- Check that all argument names in your YAML match those in the macro definition
+- Raise warnings if the names or types don't match
+- Validate that the [`type` values follow the supported format](/reference/resource-properties/arguments#supported-types).
+- If no arguments are documented in the YAML, infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)

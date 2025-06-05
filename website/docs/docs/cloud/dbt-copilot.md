@@ -1,27 +1,45 @@
 --- 
 title: "About dbt Copilot" 
 sidebar_label: "About dbt Copilot" 
-description: "dbt Copilot is a powerful AI engine designed to accelerate your analytics workflows throughout your entire ADLC." 
+description: "dbt Copilot is a powerful AI-powered assistant designed to accelerate your analytics workflows throughout your entire ADLC." 
 pagination_next: "docs/cloud/enable-dbt-copilot"
-pagination_prev: null
+keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 ---
 
-# About dbt Copilot <Lifecycle status='beta'/> 
+# About dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
-dbt Copilot is a powerful artificial intelligence (AI) engine that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. dbt Copilot embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
+<IntroText>
+<Constant name="copilot" /> is a powerful, AI-powered assistant fully integrated into your <Constant name="cloud" /> experience—designed to accelerate your analytics workflows.
 
-With automatic code generation, let dbt Copilot [generate code](/docs/cloud/use-dbt-copilot#generate-and-edit-code) using natural language, and [generate documentation](/docs/build/documentation), [tests](/docs/build/data-tests), and [semantic models](/docs/build/semantic-models) for you with the click of a button.
+</IntroText>
 
-:::tip Beta feature
-dbt Copilot is designed to _help_ developers generate documentation, tests, and semantic models, as well as [code](/docs/cloud/use-dbt-copilot#generate-and-edit-code) using natural language, in dbt Cloud. It's available in beta, in the dbt Cloud IDE only.
+<Constant name="copilot" /> embeds AI-driven assistance across every stage of the [analytics development life cycle (ADLC)](https://www.getdbt.com/resources/guides/the-analytics-development-lifecycle) and harnesses rich metadata—capturing relationships, lineage, and context  &mdash; so you can deliver refined, trusted data products at speed.
 
-To use dbt Copilot, you must have an active [dbt Cloud Enterprise account](https://www.getdbt.com/pricing) and either agree to use dbt Labs' OpenAI key or provide your own Open AI API key. [Register here](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to the Account Team if you're interested in joining the private beta.
+With automatic code generation and using natural language prompts, <Constant name="copilot" /> can [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot), [<Constant name="visual_editor" /> (beta)](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" /> (beta)](/docs/explore/dbt-insights).
+
+:::tip
+<Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
 
-## Feedback
+## How dbt Copilot works
 
-Please note: Always review AI-generated code and content as it may produce incorrect results. The features and/or functionality of dbt Copilot may be added or eliminated as part of the beta trial.
+<Constant name="copilot" /> enhances efficiency by automating repetitive tasks while ensuring data privacy and security. It works as follows:
 
-To give feedback, please contact your dbt Labs account team. We appreciate your feedback and suggestions as we improve dbt Copilot.
+- Access <Constant name="copilot" /> through:
+  - The [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot) to generate documentation, tests, semantic models.
+  - The [<Constant name="visual_editor" /> (beta)](/docs/cloud/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
+  - The [<Constant name="query_page" /> (beta)](/docs/explore/dbt-insights) to generate SQL queries for analysis using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
+- <Constant name="copilot" /> gathers metadata (like column names, model SQL, documentation) but never accesses row-level warehouse data.
+- The metadata and user prompts are sent to the AI provider (in this case, OpenAI) through API calls for processing.
+- The AI-generated content is returned to <Constant name="cloud" /> for you to review, edit, and save within your project files.
+- <Constant name="copilot" /> does not use warehouse data to train AI models.
+- No sensitive data persists on dbt Labs' systems, except for usage data.
+- Client data, including any personal or sensitive data inserted into the query by the user, is deleted within 30 days by OpenAI.
+- <Constant name="copilot" /> uses a best practice style guide to ensure consistency across teams.
+- <Constant name="copilot" /> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
+
+:::tip
+<Constant name="copilot" /> accelerates, but doesn’t replace, your analytics engineer. It helps deliver better data products faster, but always review AI-generated content, as it may be incorrect.
+:::

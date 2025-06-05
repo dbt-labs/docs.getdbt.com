@@ -12,8 +12,8 @@ profile: string
 
 ## Definition
 The profile your dbt project should use to connect to your <Term id="data-warehouse" />.
-* If you are developing in dbt Cloud: This configuration is not applicable
-* If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
+* If you are developing in <Constant name="cloud" />: This configuration is not applicable
+* If you are developing locally: This configuration is required, unless a command-line option like [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) is supplied. The `--profile` flag overrides the profile set in `dbt_project.yml`.
 
 ## Related guides
 * [Connecting to your warehouse using the command line](/docs/core/connect-data-platform/connection-profiles#connecting-to-your-warehouse-using-the-command-line)

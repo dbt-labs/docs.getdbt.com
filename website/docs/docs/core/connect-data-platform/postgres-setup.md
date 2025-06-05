@@ -5,7 +5,7 @@ id: "postgres-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-postgres'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-postgres'
   min_core_version: 'v0.4.0'
   cloud_support: Supported
@@ -114,16 +114,6 @@ if [[ $(pip show psycopg2-binary) ]]; then
     PSYCOPG2_VERSION=$(pip show psycopg2-binary | grep Version | cut -d " " -f 2)
     pip uninstall -y psycopg2-binary && pip install psycopg2==$PSYCOPG2_VERSION
 fi
-```
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-To ensure your dbt installation uses `psycopg2`, prefix all `dbt-postgres` installation commands with `DBT_PSYCOPG2_NAME=psycopg2`.
-For example:
-```bash
-DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
 ```
 
 </VersionBlock>

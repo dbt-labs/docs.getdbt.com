@@ -13,13 +13,13 @@ In software engineering, environments are used to enable engineers to develop an
 
 In traditional software engineering, different environments often use completely separate architecture. For example, the dev and prod versions of a website may use different servers and databases. <Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments &mdash; the _production_ environment refers to the relations (for example, schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
 
-Configure environments to tell dbt Cloud or dbt Core how to build and execute your project in development and production:
+Configure environments to tell <Constant name="cloud" /> or <Constant name="core" /> how to build and execute your project in development and production:
 
 <div className="grid--2-col">
 
 <Card
-    title="Environments in dbt Cloud"
-    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE, dbt Cloud CLI, and dbt jobs."
+    title="Environments in dbt"
+    body="Seamlessly configure development and deployment environments in dbt to control how your project runs in both the Studio IDE, dbt CLI, and dbt jobs."
     link="/docs/dbt-cloud-environments"
     icon="dbt-bit"/>
 
@@ -33,8 +33,8 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 ## Related docs
 
-- [dbt Cloud environment best practices](/guides/set-up-ci)
+- [<Constant name="cloud" /> environment best practices](/guides/set-up-ci)
 - [Deployment environments](/docs/deploy/deploy-environments)
-- [About dbt Core versions](/docs/dbt-versions/core)
-- [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)
+- [About <Constant name="core" /> versions](/docs/dbt-versions/core)
+- [Set Environment variables in <Constant name="cloud" />](/docs/build/environment-variables#special-environment-variables)
 - [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)

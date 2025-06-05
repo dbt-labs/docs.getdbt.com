@@ -50,7 +50,7 @@ This would result in the generated relation being located in the `staging` datab
 
 <VersionBlock lastVersion="1.8">
 
-Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+Available for <Constant name="cloud" /> release tracks or <Constant name="core" /> v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
 
 </VersionBlock>
 
@@ -114,7 +114,7 @@ This would result in the test results being stored in the `test_results` databas
 
 ## Definition
 
-Optionally specify a custom database for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), or [data test](/docs/build/data-tests). (To specify a database for a [snapshot](/docs/build/snapshots), use the [`target_database` config](/reference/resource-configs/target_database)).
+Optionally specify a custom database for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), or [data test](/docs/build/data-tests).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

@@ -62,17 +62,7 @@ models:
 
 <TabItem value="one_off">
 
-Configure a one-off (data) test:
-
-<File name='tests/<filename>.sql'>
-
-```sql
-{{ config(where = "date_column = current_date") }}
-
-select ...
-```
-
-</File>
+This config is ignored for one-off tests.
 
 </TabItem>
 
@@ -122,7 +112,7 @@ tests:
 
 The rendering context for the `where` config is the same as for all configurations defined in `.yml` files. You have access to `{{ var() }}` and `{{ env_var() }}`, but you **do not** have access to custom macros for setting this config. If you do want to use custom macros to template out the `where` filter for certain tests, there is a workaround.
 
-As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
+dbt defines a `get_where_subquery` macro.
 
 dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
 - `{{ relation }}` when the `where` config is not defined (`ref()` or `source()`)

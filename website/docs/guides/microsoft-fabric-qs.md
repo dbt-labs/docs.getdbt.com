@@ -1,30 +1,29 @@
 ---
-title: "Quickstart for dbt Cloud and Microsoft Fabric"
+title: "Quickstart for dbt and Microsoft Fabric"
 id: "microsoft-fabric"
 level: 'Beginner'
 icon: 'fabric'
 hide_table_of_contents: true
-tags: ['dbt Cloud','Quickstart']
-recently_updated: true
+tags: ['platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
 - Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
-- Connect dbt Cloud to Microsoft Fabric.
+- Connect <Constant name="cloud" /> to Microsoft Fabric.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 ### Prerequisites
-- You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
+- You have a [<Constant name="cloud" />](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
 - [dbt Learn courses](https://learn.getdbt.com)
@@ -99,9 +98,9 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
 
     <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
 
-## Connect dbt Cloud to Microsoft Fabric
+## Connect dbt to Microsoft Fabric
 
-1. Create a new project in dbt Cloud. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
+1. Create a new project in <Constant name="cloud" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
@@ -113,16 +112,16 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
-6. Click **Test connection**. This verifies that dbt Cloud can access your Microsoft Fabric account.
+6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Microsoft Fabric account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -130,10 +129,10 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

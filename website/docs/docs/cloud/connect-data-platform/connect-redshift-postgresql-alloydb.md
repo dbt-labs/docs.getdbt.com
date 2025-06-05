@@ -1,7 +1,7 @@
 ---
 title: "Connect Redshift, PostgreSQL, and AlloyDB"
 id: connect-redshift-postgresql-alloydb
-description: "Setup instructions for connecting Redshift, PostgreSQL, and AlloyDBnpm to dbt Cloud"
+description: "Setup instructions for connecting Redshift, PostgreSQL, and AlloyDBnpm to dbt"
 sidebar_label: "Connect Redshift, PostgreSQL, and AlloyDB"
 ---
 
@@ -13,13 +13,13 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
-**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs. 
+**Note**: When you set up a Redshift or Postgres connection in <Constant name="cloud" />, SSL-related parameters aren't available as inputs. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
 ### Authentication Parameters
 
-For authentication, dbt Cloud users can use either a **Database username and password**, or they can now use **IAM User authentication** to Redshift via [extended attributes](/docs/dbt-cloud-environments#extended-attributes).
+For authentication, <Constant name="cloud" /> users can use either a **Database username and password**, or they can now use **IAM User authentication** to Redshift via [extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
 <Tabs
   defaultValue="database"
@@ -91,7 +91,7 @@ Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be as
 
 To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the [bastion server](#about-the-bastion-server-in-aws).
 
-Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
+Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize <Constant name="cloud" /> to connect to your database via the bastion server.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="70%" title="A generated public key for a Redshift connection"/>
 
@@ -101,11 +101,11 @@ Once the connection is saved, a public key will be generated and displayed for t
   <summary>What is a Bastion server?</summary>
   <div>
     <div>
-      A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. 
+      A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows <Constant name="cloud" /> to open an SSH connection. 
       
       <br></br>
     
-      dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
+      <Constant name="cloud" /> only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
     
       Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
     </div>
@@ -115,9 +115,9 @@ Once the connection is saved, a public key will be generated and displayed for t
 
 ### Configuring the Bastion Server in AWS
 
-To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
+To configure the SSH tunnel in <Constant name="cloud" />, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that <Constant name="cloud" /> will connect to. Review the following steps:
 
-- Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
+- Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="cloud" /> IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
 - Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud`:
     
 ```shell
@@ -130,14 +130,14 @@ touch ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```  
 
-- Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
+- Copy and paste the <Constant name="cloud" /> generated public key, into the authorized_keys file.
 
-The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
+The Bastion server should now be ready for <Constant name="cloud" /> to use as a tunnel into the Redshift environment.
 
 
 ## Configuration
 
-To optimize performance with data platform-specific configurations in dbt Cloud, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
+To optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
 
 To grant users or roles database permissions (access rights and privileges), refer to the [Redshift permissions](/reference/database-permissions/redshift-permissions) page or [Postgres permissions](/reference/database-permissions/postgres-permissions) page.
 
@@ -150,13 +150,13 @@ When setting up a database connection using an SSH tunnel, you need the followin
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
 - The database itself (such as a Redshift cluster).
 
-dbt Cloud uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
+<Constant name="cloud" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
 
 Tunnel failures usually happen because:
 
 - The SSH daemon times out if it's idle for too long.
 - The load balancer cuts off the connection if it's idle.
-- dbt Cloud tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
+- <Constant name="cloud" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
 
 Bastion hosts might have additional SSH settings to disconnect inactive clients after several checks without a response. By default, it checks three times.
 

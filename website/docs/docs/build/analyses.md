@@ -1,6 +1,6 @@
 ---
 title: "Analyses"
-description: "Read this tutorial to learn how to use custom analyses when building in dbt."
+description: "Configure SQL files in dbt to create compiled code used for analyses."
 id: "analyses"
 pagination_next: null
 ---

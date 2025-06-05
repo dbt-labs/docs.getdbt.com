@@ -328,19 +328,6 @@ This method is deprecated and will be removed in a future release. Please use [a
 
 :::
 
-Prior to v0.18.0, dbt supported a limited version of `dispatch` functionality via
-a macro named `adapter_macro`.
-
-__Args__:
-
-  * `name`: name of macro to implement
-  * `*args`
-  * `**kwargs`
-  
-Finds an adapter-appropriate version of a named macro and implements it with the
-positional and/or keyword arguments provided. This is most relevant for macros
-in open-source packages with cross-database support.
-
 **Usage:**
 
 <File name='macros/concat.sql'>

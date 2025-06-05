@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
@@ -17,7 +17,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## Release tracks 
 
-Starting in 2024, dbt Cloud provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
+Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 

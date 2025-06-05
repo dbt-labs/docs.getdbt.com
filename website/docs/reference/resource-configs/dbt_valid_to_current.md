@@ -12,8 +12,9 @@ id: "dbt_valid_to_current"
 
 ```yaml
 snapshots:
-  my_project:
-    +dbt_valid_to_current: "to_date('9999-12-31')"
+  - name: my_snapshot
+    config:
+      dbt_valid_to_current: "string"
 
 ```
 
@@ -27,7 +28,7 @@ snapshots:
         unique_key='id',
         strategy='timestamp',
         updated_at='updated_at',
-        dbt_valid_to_current='to_date('9999-12-31')'
+        dbt_valid_to_current='string'
     )
 }}
 ```
@@ -39,7 +40,7 @@ snapshots:
 ```yml
 snapshots:
   [<resource-path>](/reference/resource-configs/resource-path):
-    +dbt_valid_to_current: "to_date('9999-12-31')"
+    +dbt_valid_to_current: "string"
 ```
 
 </File>
@@ -60,7 +61,7 @@ Any new records inserted _after_ applying the `dbt_valid_to_current` configurati
 
 ### Considerations
 
-- **Date expressions** &mdash; Provide a hardcoded date expression compatible with your data platform, such as to_date`('9999-12-31')`. Note that syntax may vary by warehouse (for example, `to_date('YYYY-MM-DD'`) or `date(YYYY, MM, DD)`).
+- **Date expressions** &mdash; Provide a hardcoded date expression compatible with your data platform, such as `to_date('9999-12-31')`. Note that syntax may vary by warehouse (for example, `to_date('YYYY-MM-DD'`) or `date(YYYY, MM, DD)`).
 
 - **Jinja limitation** &mdash; `dbt_valid_to_current` only accepts static SQL expressions. Jinja expressions (like `{{ var('my_future_date') }}`) are not supported.
 

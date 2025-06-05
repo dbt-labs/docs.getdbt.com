@@ -12,7 +12,8 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 version: 2
 
 models:
-  - [name](/reference/resource-properties/model_name): <model name>
+  # Model name must match the filename of a model -- including case sensitivity
+  - [name](/reference/resource-properties/model_name): model_name 
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
@@ -31,7 +32,7 @@ models:
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
         [meta](/reference/resource-configs/meta): {<dictionary>}
-        [quote](/reference/resource-properties/quote): true | false
+        [quote](/reference/resource-properties/columns#quote): true | false
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
         [tests](/reference/resource-properties/data-tests):
@@ -40,7 +41,7 @@ models:
         [tags](/reference/resource-configs/tags): [<string>]
         
         # only required in conjunction with time_spine key
-        granularity: <[any supported time granularity](/docs/build/dimensions?dimension=time_gran)> 
+        [granularity](/docs/build/metricflow-time-spine#creating-a-time-spine-table): <[any supported time granularity](/docs/build/dimensions?dimension=time_gran)> 
 
       - name: ... # declare properties of additional columns
 
@@ -63,11 +64,11 @@ models:
           - ... # declare additional data tests
         columns:
           # include/exclude columns from the top-level model properties
-          - [include](/reference/resource-properties/include-exclude): <include_value>
-            [exclude](/reference/resource-properties/include-exclude): <exclude_list>
+          - [include](/reference/resource-properties/versions#include): <include_value>
+            [exclude](/reference/resource-properties/versions#include): <exclude_list>
           # specify additional columns
           - name: <column_name> # required
-            [quote](/reference/resource-properties/quote): true | false
+            [quote](/reference/resource-properties/columns#quote): true | false
             [constraints](/reference/resource-properties/constraints):
               - <constraint>
             [tests](/reference/resource-properties/data-tests):

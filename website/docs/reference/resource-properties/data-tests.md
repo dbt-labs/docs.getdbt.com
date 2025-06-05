@@ -1,5 +1,6 @@
 ---
 title: "About data tests property"
+description: "Reference guide for the resource properties available for data tests in dbt."
 sidebar_label: "Data tests"
 resource_types: all
 datatype: data-test
@@ -27,7 +28,7 @@ version: 2
 models:
   - name: <model_name>
     tests:
-      - [<test_name>](#test_name):
+      - [<test_name>](#custom-data-test-name):
           <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
@@ -35,8 +36,8 @@ models:
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
-          - [<test_name>](#test_name)
-          - [<test_name>](#test_name):
+          - [<test_name>](#custom-data-test-name)
+          - [<test_name>](#custom-data-test-name):
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
@@ -58,8 +59,8 @@ sources:
     tables:
     - name: <table_name>
       tests:
-        - [<test_name>](#test_name)
-        - [<test_name>](#test_name):
+        - [<test_name>](#custom-data-test-name)
+        - [<test_name>](#custom-data-test-name):
             <argument_name>: <argument_value>
             [config](/reference/resource-properties/config):
               [<test_config>](/reference/data-test-configs): <config-value>
@@ -67,8 +68,8 @@ sources:
       columns:
         - name: <column_name>
           tests:
-            - [<test_name>](#test_name)
-            - [<test_name>](#test_name):
+            - [<test_name>](#custom-data-test-name)
+            - [<test_name>](#custom-data-test-name):
                 <argument_name>: <argument_value>
                 [config](/reference/resource-properties/config):
                   [<test_config>](/reference/data-test-configs): <config-value>
@@ -89,8 +90,8 @@ version: 2
 seeds:
   - name: <seed_name>
     tests:
-      - [<test_name>](#test_name)
-      - [<test_name>](#test_name):
+      - [<test_name>](#custom-data-test-name)
+      - [<test_name>](#custom-data-test-name):
           <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
@@ -98,8 +99,8 @@ seeds:
     columns:
       - name: <column_name>
         tests:
-          - [<test_name>](#test_name)
-          - [<test_name>](#test_name):
+          - [<test_name>](#custom-data-test-name)
+          - [<test_name>](#custom-data-test-name):
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
@@ -120,8 +121,8 @@ version: 2
 snapshots:
   - name: <snapshot_name>
     tests:
-      - [<test_name>](#test_name)
-      - [<test_name>](#test_name):
+      - [<test_name>](#custom-data-test-name)
+      - [<test_name>](#custom-data-test-name):
           <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
@@ -129,8 +130,8 @@ snapshots:
     columns:
       - name: <column_name>
         tests:
-          - [<test_name>](#test_name)
-          - [<test_name>](#test_name):
+          - [<test_name>](#custom-data-test-name)
+          - [<test_name>](#custom-data-test-name):
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
@@ -208,7 +209,7 @@ models:
 
 ### `accepted_values`
 
-This test validates that all of the values in a column are present in a supplied list of `values`. If any values other than those provided in the list are present, then the test will fail.
+This test validates that all of the non-`null` values in a column are present in a supplied list of `values`. If any values other than those provided in the list are present, then the test will fail.
 
 The `accepted_values` test supports an optional `quote` parameter which, by default, will single-quote the list of accepted values in the test query. To test non-strings (like integers or boolean values) explicitly set the `quote` config to `false`.
 
@@ -266,17 +267,22 @@ Some data tests require multiple columns, so it doesn't make sense to nest them 
 
 <File name='models/orders.yml'>
 
-```yml
+```yaml
 version: 2
 
 models:
   - name: orders
+    description: 
+        Order overview data mart, offering key details for each order including if it's a customer's first order and a food vs. drink item breakdown. One row per order.
     tests:
-      - unique:
-          column_name: "country_code || '-' || order_id"
+      - dbt_utils.expression_is_true:
+          expression: "order_items_subtotal = subtotal"
+      - dbt_utils.expression_is_true:
+          expression: "order_total = subtotal + tax_paid"
 ```
-
 </File>
+
+This example focuses on testing expressions to ensure that `order_items_subtotal` equals `subtotal` and `order_total` correctly sums `subtotal` and `tax_paid`.
 
 ### Use custom generic test
 

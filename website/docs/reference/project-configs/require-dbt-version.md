@@ -22,7 +22,7 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-:::info dbt Cloud release tracks 
+:::info <Constant name="cloud" /> release tracks 
 
 <Snippet path="_config-dbt-version-check" />
 
@@ -84,7 +84,7 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 :::info Not recommended
 Pinning to a specific dbt version is discouraged because it limits project flexibility and can cause compatibility issues, especially with dbt packages. It's recommended to [pin to a major release](#pin-to-a-range), using a version range (for example, `">=1.0.0", "<2.0.0"`) for broader compatibility and to benefit from updates.
 
-While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
+While you can restrict your project to run only with an exact version of <Constant name="core" />, we do not recommend this for <Constant name="core" /> v1.0.0 and higher. 
 
 :::
 
@@ -103,12 +103,12 @@ require-dbt-version: "1.5.0"
 If the version of dbt used to invoke a project disagrees with the specified `require-dbt-version` in the project or _any_ of the included packages, then dbt will fail immediately with the following error:
 ```
 $ dbt compile
-Running with dbt=0.21.0
+Running with dbt=1.5.0
 Encountered an error while reading the project:
 Runtime Error
   This version of dbt is not supported with the 'my_project' package.
-    Installed version of dbt: =0.21.0
-    Required version of dbt for 'my_project': ['>=1.0.0', '<2.0.0']
+    Installed version of dbt: =1.5.0
+    Required version of dbt for 'my_project': ['>=1.6.0', '<2.0.0']
   Check the requirements for the 'my_project' package, or run dbt again with --no-version-check
 ```
 
@@ -117,7 +117,7 @@ Runtime Error
 To suppress failures to to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
 ```
 $ dbt run --no-version-check
-Running with dbt=0.21.0
+Running with dbt=1.5.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
 

@@ -1,9 +1,10 @@
 ---
-title: "Configuring test `severity`"
+title: severity, error_if, and warn_if
 id: "severity"
 description: "You can use error thresholds to configure the severity of test results and set when to produce an error or warning based on the number of failed tests."
 resource_types: [tests]
 datatype: string
+keywords: [severity, error_if, warn_if]
 ---
 
 Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, etc.
@@ -21,7 +22,12 @@ Here's how those play in practice:
 - If `severity: error`, dbt will check the `error_if` condition first. If the error condition is met, the test returns an error. If it's not met, dbt will then check the `warn_if` condition (defaulted to `!=0`). If it's not specified or the warn condition is met, the test warns; if it's not met, the test passes.
 - If `severity: warn`, dbt will skip the `error_if` condition entirely and jump straight to the `warn_if` condition. If the warn condition is met, the test warns; if it's not met, the test passes.
 
-Note that test warn statuses will return errors instead if the [`--warn-error`](/reference/global-configs/warnings) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
+By default, a test with `severity: warn` will only ever return a warning, and not cause errors. However, you can promote warnings to errors using:
+
+* `--warn-error`: Promotes _all_ dbt warnings (including test warnings, Jinja warnings, deprecations, and so on.) to errors.
+* `--warn-error-options`: Promotes _only specific types_ of warnings. 
+
+Learn more about [Warnings](/reference/global-configs/warnings).
 
 <Tabs
   defaultValue="generic"
@@ -32,7 +38,7 @@ Note that test warn statuses will return errors instead if the [`--warn-error`](
     { label: 'Project level', value: 'project', },
   ]
 }>
-
+ 
 <TabItem value="generic">
 
 Configure a specific instance of a out-of-the-box generic test:

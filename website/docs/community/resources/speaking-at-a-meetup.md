@@ -149,7 +149,7 @@ Lesson: Send out a data survey to your company to inform your roadmap.
    A new Bowery Farming site had increased the amount of data the team were dealing with, which put a strain on their data stack.
 
 3. How did this manifest?
-   Charts show increased dbt run times, and increased Redshift costs.
+   Charts show increased dbt times, and increased Redshift costs.
 
 3. What tactics were used to solve the problem?
     1. Push Redshift to its limit: Leverage Athena, Redshift configurations, separate clusters, python pre-processing

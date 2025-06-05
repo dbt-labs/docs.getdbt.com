@@ -1,0 +1,36 @@
+
+.carouselContainer :global(.swiper) {
+  padding: 1rem 1rem 2rem 1rem;
+}
+
+.carouselContainer :global(.swiper-slide) {
+  height: auto;
+  display: grid;
+  width: fit-content;
+}
+
+.carouselContainer :global(.swiper-pagination) {
+  bottom: -5px;
+}
+
+.carouselContainer :global(.swiper-button-prev) {
+  left: 20px;
+}
+
+.carouselContainer :global(.swiper-button-next) {
+  right: 20px;
+}
+
+.carouselContainer :global(.swiper-pagination-bullet) {
+  background: var(--ifm-color-primary);
+}
+
+.carouselContainer :global(.swiper-wrapper) {
+
+}
+
+.carouselContainer :global(.swiper-button-next),
+.carouselContainer :global(.swiper-button-prev) {
+  color: var(--ifm-color-primary);
+} 
+

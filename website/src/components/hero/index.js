@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-function Hero({ heading, subheading, showGraphic = false, customStyles = {}, classNames = '', colClassNames = '', callToActionsTitle, callToActions = [] }) {
+function Hero({ heading, subheading, showGraphic = false, customStyles = {}, classNames = '', colClassNames = '', callToActionsTitle, callToActions = [], lightBackground = false, children }) {
   return (
-    <header className={` ${styles.Hero} container-fluid ${classNames ? classNames : ''}`} style={customStyles && customStyles}>
+    <header className={` ${styles.Hero} container-fluid ${lightBackground ? styles.lightBackground : ''} ${classNames ? classNames : ''}`} style={customStyles && customStyles}>
       {showGraphic && (
         <div className={styles.showGraphic}></div>
       )}
@@ -12,6 +12,7 @@ function Hero({ heading, subheading, showGraphic = false, customStyles = {}, cla
           <div className={`col col--7 ${colClassNames ? colClassNames : ''}`}>
             <h1>{heading}</h1>
             <p>{subheading}</p>
+            {children}
             {callToActionsTitle && <span className={styles.callToActionsTitle}>{callToActionsTitle}</span>}
             {callToActions.length > 0 && (
               <div className={styles.callToActions}>

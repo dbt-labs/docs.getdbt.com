@@ -13,6 +13,7 @@ hide_table_of_contents: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Unit tests', value: 'unit tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
     { label: 'Exposures', value: 'exposures', },
@@ -22,6 +23,17 @@ hide_table_of_contents: true
   ]
 }>
 <TabItem value="models">
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+
+```
+
+</File>
 
 <File name='models/schema.yml'>
 
@@ -35,7 +47,8 @@ models:
 
     columns:
       - name: column_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>} # changed to config in v1.10
 
 ```
 
@@ -50,6 +63,15 @@ See [configs and properties](/reference/configs-and-properties) for details.
 </TabItem>
 
 <TabItem value="sources">
+
+<File name='dbt_project.yml'>
+
+```yml
+sources:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
 
 <File name='models/schema.yml'>
 
@@ -68,7 +90,8 @@ version: 2
 
         columns:
           - name: column_name
-            meta: {<dictionary>}
+            config:
+              meta: {<dictionary>} # changed to config in v1.10
 
 ```
 
@@ -77,6 +100,15 @@ version: 2
 </TabItem>
 
 <TabItem value="seeds">
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
 
 <File name='seeds/schema.yml'>
 
@@ -90,7 +122,8 @@ seeds:
 
     columns:
       - name: column_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>} # changed to config in v1.10
 
 ```
 
@@ -101,6 +134,15 @@ The `meta` config can also be defined under the `seeds` config block in `dbt_pro
 </TabItem>
 
 <TabItem value="snapshots">
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
 
 <File name='snapshots/schema.yml'>
 
@@ -114,7 +156,8 @@ snapshots:
 
     columns:
       - name: column_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>} # changed to config in v1.10
 
 ```
 
@@ -134,6 +177,33 @@ You can't add YAML `meta` configs for [generic tests](/docs/build/data-tests#gen
 
 </TabItem>
 
+<TabItem value="unit tests">
+
+<VersionCallout version="1.8" />
+
+<File name='dbt_project.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
+<File name='models/<filename>.yml'>
+
+```yml
+unit_tests:
+  - name: <test-name>
+    config:
+      [meta](/reference/snapshot-properties): {<dictionary>}
+
+```
+
+</File>
+
+</TabItem>
+
 <TabItem value="analyses">
 
 The `meta` config is not currently supported for analyses.
@@ -142,6 +212,15 @@ The `meta` config is not currently supported for analyses.
 
 <TabItem value="macros">
 
+<File name='dbt_project.yml'>
+
+```yml
+macros:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
 <File name='macros/schema.yml'>
 
 ```yml
@@ -149,7 +228,8 @@ version: 2
 
 [macros](/reference/macro-properties):
   - name: macro_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>} # changed to config in v1.10
 
     arguments:
       - name: argument_name
@@ -162,6 +242,15 @@ version: 2
 
 <TabItem value="exposures">
 
+<File name='dbt_project.yml'>
+
+```yml
+exposures:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
 <File name='models/exposures.yml'>
 
 ```yml
@@ -169,7 +258,8 @@ version: 2
 
 exposures:
   - name: exposure_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>} # changed to config in v1.10
 
 ```
 
@@ -194,9 +284,41 @@ semantic_models:
 ```
 
 </File>
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic-models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
+
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic-models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_model_name
+    config:
+      meta: {<dictionary>}
+
+```
+
+</File>
 
 [Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) can also have their own `meta` configurations.
 
@@ -226,6 +348,7 @@ semantic_models:
 ```
 
 </File>
+
 </VersionBlock>
 
 The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
@@ -234,26 +357,17 @@ The `meta` config can also be defined under the `semantic-models` config block i
 
 <TabItem value="metrics">
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock firstVersion="1.8"> 
 
-<File name='models/metrics.yml'>
+<File name='dbt_project.yml'>
 
 ```yml
 metrics:
-  - name: number_of_people
-    label: "Number of people"
-    description: Total count of people
-    type: simple
-    type_params:
-      measure: people
-    meta:
-      my_meta_direct: 'direct'
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
 ```
-
 </File>
-</VersionBlock>
 
-<VersionBlock firstVersion="1.8"> 
 <File name='models/metrics.yml'>
 
 ```yml
@@ -275,6 +389,15 @@ metrics:
 </TabItem>
 
 <TabItem value="saved queries">
+
+<File name='dbt_project.yml'>
+
+```yml
+saved-queries:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
 
 <File name='models/semantic_models.yml'>
 
@@ -306,9 +429,10 @@ version: 2
 
 models:
   - name: users
-    meta:
-      owner: "@alice"
-      model_maturity: in dev
+    config:
+      meta:
+        owner: "@alice"
+        model_maturity: in dev
 
 ```
 
@@ -322,17 +446,18 @@ models:
 ```yml
 version: 2
 
-[sources](/reference/source-properties):
+sources:
   - name: salesforce
-
     tables:
       - name: account
-        meta:
-          contains_pii: true
+        config:
+          meta:
+            contains_pii: true
         columns:
           - name: email
-            meta:
-              contains_pii: true
+            config:
+              meta: # changed to config in v1.10
+                contains_pii: true
 
 ```
 

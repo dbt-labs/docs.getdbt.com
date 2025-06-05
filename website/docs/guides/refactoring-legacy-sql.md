@@ -10,7 +10,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['SQL']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -111,7 +110,7 @@ You'll move it into a `/marts` subfolder within your project's `/models` folder 
 **Cons**:
 - More pressure to get it right the first time, especially if you've referenced this model from any BI tool or downstream process.
 - Harder to audit, since you've overwritten your audit comparison model.
-- Requires navigating through Git commits to see what code you've changed throughout.
+- Requires navigating through <Constant name="git" /> commits to see what code you've changed throughout.
 
 
 #### Alongside refactoring
@@ -213,7 +212,7 @@ After you have moved everything into CTEs, you'll want to write a `select * from
 
 This allows anyone after us to easily step through the CTEs when troubleshooting, rather than having to untangle nested queries.
 
-> For more background on CTEs, check out the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes).
+> For more background on CTEs, check out the [dbt Labs style guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects).
 
 ## Port CTEs to individual data models
 Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/build/models).

@@ -64,7 +64,7 @@ The following profile fields are optional to set up. They let you configure your
 
 ## Authentication parameters
 
-The authentication methods that dbt Core supports are: 
+The authentication methods that <Constant name="core" /> supports are: 
 
 - `ldap` &mdash; LDAP (username and password)  
 - `kerberos` &mdash; Kerberos

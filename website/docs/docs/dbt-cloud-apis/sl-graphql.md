@@ -5,6 +5,8 @@ description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
 ---
 
+# GraphQL <Lifecycle status="self_service,managed,managed_plus" />
+
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
@@ -13,7 +15,7 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+The <Constant name="semantic_layer" /> GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
 
 The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
 
@@ -28,37 +30,36 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 **Example**
 - If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
-dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
+dbt Partners can use the <Constant name="semantic_layer" /> GraphQL API to build an integration with the <Constant name="semantic_layer" />.
 
-Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Requirements to use the GraphQL API
-- A dbt Cloud project on dbt v1.6 or higher
+
+- A <Constant name="cloud" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with "Semantic Layer Only” and "Metadata Only" permissions
-- Your dbt project is configured and connected to a data platform
+- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions
 
 ## Using the GraphQL API
 
-If you're a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
-### Authentication 
 
-Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses a <Constant name="cloud" /> [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```shell
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
 #### Fetch data platform dialect
 
-In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the dbt Semantic Layer connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
+In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the <Constant name="semantic_layer" /> connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
 
 The GraphQL API has an easy way to fetch this with the following query: 
 
@@ -420,16 +421,18 @@ order_total  ordered_at
 
 The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more:
 
-    - [Query metric alias](#query-metric-alias)
-    - [Query with a time grain](#query-with-a-time-grain)
-    - [Query multiple metrics and multiple dimensions](#query-multiple-metrics-and-multiple-dimensions)
-    - [Query a categorical dimension on its own](#query-a-categorical-dimension-on-its-own)
-    - [Query with a where filter](#query-with-a-where-filter)
-    - [Query with order](#query-with-order)
-    - [Query with limit](#query-with-limit)
-    - [Query saved queries](#query-saved-queries) 
-    - [Query with just compiling SQL](#query-with-just-compiling-sql)
-    
+<!-- no toc -->
+- [Query metric alias](#query-metric-alias) &mdash; Query with metric alias, which allows you to use simpler or more intuitive names for metrics instead of their full definitions.
+- [Query with a time grain](#query-with-a-time-grain)  &mdash; Fetch multiple metrics with a change in time dimension granularities.
+- [Query multiple metrics and multiple dimensions](#query-multiple-metrics-and-multiple-dimensions) &mdash; Select common dimensions for multiple metrics.
+- [Query a categorical dimension on its own](#query-a-categorical-dimension-on-its-own) &mdash; Group by a categorical dimension.
+- [Query with a where filter](#query-with-a-where-filter)  &mdash; Use the `where` parameter to filter on dimensions and entities using parameters.
+- [Query with order](#query-with-order) &mdash; Query with `orderBy`, accepts basic string that's a Dimension, Metric, or Entity. Defaults to ascending order.
+- [Query with limit](#query-with-limit) &mdash; Query using a `limit` clause.
+- [Query saved queries](#query-saved-queries) &mdash; Query using a saved query using the `savedQuery` parameter for frequently used queries.
+- [Query with just compiling SQL](#query-with-just-compiling-sql) &mdash; Query using a compile keyword using the `compileSql` mutation.
+
+
 #### Query metric alias
 
 ```graphql

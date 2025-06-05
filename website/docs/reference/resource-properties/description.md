@@ -179,7 +179,7 @@ models:
       - name: column_name
         tests:
           - unique:
-            description: markdown_string
+              description: markdown_string
 ```
 </File>
 
@@ -223,12 +223,6 @@ unit_tests:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.7">
-
-The `description` property is available for [unit tests](/docs/build/unit-tests) beginning in dbt v1.8.
-
-</VersionBlock>
-
 </TabItem>
 
 </Tabs>
@@ -246,7 +240,7 @@ A user-defined description used to document:
 - data tests, and data test columns
 - unit tests for models
 
-These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="explorer" />](/docs/explore/explore-projects)). 
 
 Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
@@ -407,9 +401,9 @@ models:
 
 ### Include an image from your repo in your descriptions
 
-This section applies to dbt Core users only. Including an image from your repository ensures your images are version-controlled. 
+This section applies to <Constant name="core" /> users only. Including an image from your repository ensures your images are version-controlled. 
 
-Both dbt Cloud and dbt Core users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+Both <Constant name="cloud" /> and <Constant name="core" /> users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include an image in your model's `description` field:
 
@@ -451,7 +445,7 @@ If mixing images and text, also consider using a docs block.
 
 ### Include an image from the web in your descriptions
 
-This section applies to dbt Cloud and dbt Core users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+This section applies to <Constant name="cloud" /> and <Constant name="core" /> users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include images from the web, specify the image URL in your model's `description` field:
 
@@ -498,10 +492,12 @@ models:
     columns:
       - name: order_id
         tests:
-            - unique:
+          - unique:
               description: "The order_id is unique for every row in the orders model"
 ```
 </File>
+
+You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
 #### Singular data test
 
@@ -523,12 +519,6 @@ data_tests:
 Note that in order for the test to run, the `tests/assert_total_payment_amount_is_positive.sql` SQL file has to exist in the `tests` directory.
 
 ### Add a description to a unit test
-
-<VersionBlock lastVersion="1.7">
-
-<VersionCallout version="1.8" />
-
-</VersionBlock>
 
 This example shows a unit test that checks to ensure the `opened_at` timestamp is properly truncated to a date for the `stg_locations` model.
 

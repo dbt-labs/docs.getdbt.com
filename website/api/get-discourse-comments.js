@@ -9,10 +9,12 @@ const PREVIEW_ENV = 'deploy-preview-'
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
 let headers = {
-  'Accept': 'application/json',
-  'Api-Key': DISCOURSE_DEVBLOG_API_KEY,
-  'Api-Username': DISCOURSE_USER_SYSTEM,
-}    
+  Accept: "application/json",
+  "Api-Key": DISCOURSE_DEVBLOG_API_KEY,
+  "Api-Username": DISCOURSE_USER_SYSTEM,
+  // Cache comments in the browser (max-age) & CDN (s-maxage) for 1 day
+  "Cache-Control": "max-age=86400, s-maxage=86400 stale-while-revalidate",
+};    
 
 async function getDiscourseComments(request, response) {
   let topicId, comments, DISCOURSE_TOPIC_ID;

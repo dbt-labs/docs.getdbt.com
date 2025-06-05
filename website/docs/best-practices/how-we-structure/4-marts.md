@@ -4,7 +4,7 @@ id: "4-marts"
 ---
 
 :::info
-Our guidance here diverges if you use the dbt Semantic Layer. In a project without the Semantic Layer we recommend you denormalize heavily, per the best practices below. On the other hand, if you're using the Semantic Layer, we want to stay as normalized as possible to allow MetricFlow the most flexibility. Guidance for marts in a Semantic Layer context is on the next page.
+Our guidance here diverges if you use the <Constant name="semantic_layer" />. In a project without the <Constant name="semantic_layer" /> we recommend you denormalize heavily, per the best practices below. On the other hand, if you're using the <Constant name="semantic_layer" />, we want to stay as normalized as possible to allow MetricFlow the most flexibility. Guidance for marts in a <Constant name="semantic_layer" /> context is on the next page.
 :::
 
 This is the layer where everything comes together and we start to arrange all of our atoms (staging models) and molecules (intermediate models) into full-fledged cells that have identity and purpose. We sometimes like to call this the _entity_ _layer_ or _concept layer_, to emphasize that all our marts are meant to represent a specific entity or concept at its unique grain. For instance, an order, a customer, a territory, a click event, a payment — each of these would be represented with a distinct mart, and each row would represent a discrete instance of these concepts. Unlike in a traditional Kimball star schema though, in modern data warehousing — where storage is cheap and compute is expensive — we’ll happily borrow and add any and all data from other concepts that are relevant to answering questions about the mart’s core entity. Building the same data in multiple places, as we do with `orders` in our `customers` mart example below, is more efficient in this paradigm than repeatedly rejoining these concepts (this is a basic definition of denormalization in this context). Let’s take a look at how we approach this first layer intended expressly for exposure to end users.
@@ -67,7 +67,7 @@ orders_and_order_payments_joined as (
 
 )
 
-select * from orders_and_payments_joined
+select * from orders_and_order_payments_joined
 ```
 
 ```sql
@@ -137,4 +137,4 @@ The most important aspect of marts is that they contain all of the useful data a
 
 ### The dbt Semantic Layer and marts
 
-Our structural recommendations are impacted quite a bit by whether or not you’re using the dbt Semantic Layer. If you're using the Semantic Layer, we recommend a more normalized approach to your marts. If you're not using the Semantic Layer, we recommend a more denormalized approach that has become typical in dbt projects. For the full list of recommendations on structure, naming, and organization in the Semantic Layer, check out the [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, particularly the [Refactoring an existing rollup](/best-practices/how-we-build-our-metrics/semantic-layer-8-refactor-a-rollup) section.
+Our structural recommendations are impacted quite a bit by whether or not you’re using the <Constant name="semantic_layer" />. If you're using the <Constant name="semantic_layer" />, we recommend a more normalized approach to your marts. If you're not using the <Constant name="semantic_layer" />, we recommend a more denormalized approach that has become typical in dbt projects. For the full list of recommendations on structure, naming, and organization in the <Constant name="semantic_layer" />, check out the [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, particularly the [Refactoring an existing rollup](/best-practices/how-we-build-our-metrics/semantic-layer-8-refactor-a-rollup) section.

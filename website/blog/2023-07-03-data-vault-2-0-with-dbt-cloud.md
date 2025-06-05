@@ -85,7 +85,7 @@ If you are new to the framework, taking a look at already built Data Vault macro
 
 Building your transformation templates leveraging reusable macros and flexible Jinja language can enhance your project development in a scalable way. When things get more complex, you are able to go back and change your templates in one place either completely, or using parameters to ensure you don’t mess with what already works well.
 
-If you are someone who has practiced Data Vault data modeling in another tool, you might appreciate the dbt [**model contracts**](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) as a way to guarantee to your data end-users the exact shape of a dbt transformation. This is a similar practice to writing DDL.
+If you are someone who has practiced Data Vault data modeling in another tool, you might appreciate the dbt [**model contracts**](https://docs.getdbt.com/docs/mesh/govern/model-contracts) as a way to guarantee to your data end-users the exact shape of a dbt transformation. This is a similar practice to writing DDL.
 
 Scalability also happens at the database layer. With [**materializations**](https://docs.getdbt.com/docs/build/materializations), you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive and make optimizations to reduce cost.
 

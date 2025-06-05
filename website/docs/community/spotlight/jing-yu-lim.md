@@ -32,7 +32,7 @@ To me, Analytics Engineering could help overcome certain challenges I face as an
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-One of my favourite presentations from the Singapore dbt Meetup was ["How would the ideal Semantic Layer look like?"](https://docs.google.com/presentation/d/1t1ts04b7qA-BVlV3qbNZ4fI-MSZn0iL6_FhsaWhJk_0/edit?usp=sharing ) by fellow community member Thanh Dinh from Holistics. It taught me a new perspective on metrics: they could be like dbt models, where dependencies can be set up between metric models.
+One of my favourite presentations from the Singapore dbt Meetup was ["How would the ideal <Constant name="semantic_layer" /> look like?"](https://docs.google.com/presentation/d/1t1ts04b7qA-BVlV3qbNZ4fI-MSZn0iL6_FhsaWhJk_0/edit?usp=sharing ) by fellow community member Thanh Dinh from Holistics. It taught me a new perspective on metrics: they could be like dbt models, where dependencies can be set up between metric models.
 
 I definitely have so much more to learn as an individual, but I hope to share some of my tips and lessons in terms of data modelling with others.
 

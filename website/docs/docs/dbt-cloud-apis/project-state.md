@@ -1,14 +1,14 @@
 ---
-title: "Project state in dbt Cloud"
+title: "Project state in dbt"
 ---
 
-dbt Cloud provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
+<Constant name="cloud" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
-A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given dbt Cloud project.
+A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given <Constant name="cloud" /> project.
 
-There are two states that can be queried in dbt Cloud:
+There are two states that can be queried in <Constant name="cloud" />:
 
 - **Applied state** refers to what exists in the data warehouse after a successful `dbt run`. The model build succeeds and now exists as a table in the warehouse.
     
@@ -80,12 +80,12 @@ The following table shows the states of dbt nodes and how they are affected by t
 
 ## Caveats about state/metadata updates 
 
-Over time, Cloud Artifacts will provide information to maintain state for features/services in dbt Cloud and enable you to access state in dbt Cloud and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
+Over time, Cloud Artifacts will provide information to maintain state for features/services in <Constant name="cloud" /> and enable you to access state in <Constant name="cloud" /> and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
 
 Here are some limitations of the state representation in the Discovery API:
 
 - Users must access the default production environment to know the latest state of a project.
 - The API gets the definition from the latest manifest generated in a given deployment environment, but that often won’t reflect the latest project code state.
-- Compiled code results may be outdated depending on dbt Cloud run step order and failures.
+- Compiled code results may be outdated depending on <Constant name="cloud" /> run step order and failures.
 - Catalog info can be outdated, or incomplete (in the applied state), based on if/when `docs generate` was last run.
 - Source freshness checks can be out of date (in the applied state) depending on when the command was last run, and it’s not included in `build`. 

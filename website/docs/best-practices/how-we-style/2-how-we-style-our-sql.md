@@ -18,7 +18,7 @@ id: 2-how-we-style-our-sql
 - 🫧 The `as` keyword should be used explicitly when aliasing a field or table.
 
 :::info
-☁️ dbt Cloud users can use the built-in [SQLFluff Cloud IDE integration](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their SQL. The default style sheet is based on dbt Labs style as outlined in this guide, but you can customize this to fit your needs. No need to setup any external tools, just hit `Lint`! Also, the more opinionated [sqlfmt](http://sqlfmt.com/) formatter is also available if you prefer that style.
+☁️ <Constant name="cloud" /> users can use the built-in [SQLFluff <Constant name="cloud_ide" /> integration](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their SQL. The default style sheet is based on dbt Labs style as outlined in this guide, but you can customize this to fit your needs. No need to setup any external tools, just hit `Lint`! Also, the more opinionated [sqlfmt](http://sqlfmt.com/) formatter is also available if you prefer that style.
 :::
 
 ## Fields, aggregations, and grouping

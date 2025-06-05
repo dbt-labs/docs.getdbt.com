@@ -25,7 +25,7 @@ The latest version of this model. The "latest" version is relevant for:
 
 This value can be a string or a numeric (integer or float) value. It must be one of the [version identifiers](/reference/resource-properties/versions#v) specified in this model's list of `versions`.
 
-To run the latest version of a model, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/collaborate/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
+To run the latest version of a model, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/mesh/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
 
 ## Default
 

@@ -2,14 +2,17 @@
 title: "Configure AWS PrivateLink for Postgres"
 id: postgres-privatelink
 description: "Configuring PrivateLink for Postgres"
-sidebar_label: "PrivateLink for Postgres"
+sidebar_label: "AWS PrivateLink for Postgres"
 ---
-import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+# Configure AWS PrivateLink for Postgres <Lifecycle status="managed_plus" />
+
+import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
 import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
-import CloudProviders from '/snippets/_privatelink-across-providers.md';
+import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
 A Postgres database, hosted either in AWS or in a properly connected on-prem data center, can be accessed through a private network connection using AWS Interface-type PrivateLink. The type of Target Group connected to the Network Load Balancer (NLB) may vary based on the location and type of Postgres instance being connected, as explained in the following steps.
 
@@ -48,7 +51,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
-    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate dbt Cloud **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the dbt Cloud [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate <Constant name="cloud" /> **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the <Constant name="cloud" /> [Access, Regions, & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
     - **Listeners:** Create one listener per target group that maps the appropriate incoming port to the corresponding target group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **VPC Endpoint Service** &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests) after dbt creates the endpoint.
@@ -65,7 +68,7 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 ### 3. Obtain VPC Endpoint Service Name
 
-Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
+Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
@@ -75,23 +78,23 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Postgres Interface-type
 - VPC Endpoint Service Name:
 - Postgres server AWS Region (e.g., us-east-1, eu-west-2):
-- dbt Cloud multi-tenant environment (US, EMEA, AU):
+- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
 ```
 
 
-import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
 ### 5. Accepting the connection request
 
-When you have been notified that the resources are provisioned within the dbt Cloud environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
+When you have been notified that the resources are provisioned within the <Constant name="cloud" /> environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
-## Create Connection in dbt Cloud
+## Create Connection in dbt
 
-Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink.
 
 1. Navigate to **settings** → **Create new project** → select **PostgreSQL**
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

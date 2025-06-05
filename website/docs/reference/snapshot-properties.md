@@ -1,7 +1,10 @@
 ---
 title: Snapshot properties
 description: "Read this guide to learn about using source properties in dbt."
+intro_text: "Define snapshot properties in YAML to document snapshots, configure settings, add tests, and describe columns."
 ---
+
+import CourseCallout from '/snippets/_materialization-video-callout.md';
 
 <VersionBlock firstVersion="1.9">
 
@@ -15,11 +18,16 @@ Snapshots properties can be declared in `.yml` files in:
 - your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)).
 - your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths))
 
-Note, in dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, available now in [the dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and soon in [dbt Core v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+Note, in dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, available now in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks) and soon in [dbt Core v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
 </VersionBlock>
 
 We recommend that you put them in the `snapshots/` directory. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `snapshots/` or `models/` directory.
+
+<CourseCallout resource="Snapshots" 
+url="https://learn.getdbt.com/courses/snapshots"
+course="Snapshots"
+/>
 
 <VersionBlock firstVersion="1.9">
 
@@ -44,7 +52,7 @@ snapshots:
       - name: <column name>
         [description](/reference/resource-properties/description): <markdown_string>
         [meta](/reference/resource-configs/meta): {<dictionary>}
-        [quote](/reference/resource-properties/quote): true | false
+        [quote](/reference/resource-properties/columns#quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
         [tests](/reference/resource-properties/data-tests):
           - <test>
@@ -80,7 +88,7 @@ snapshots:
       - name: <column name>
         [description](/reference/resource-properties/description): <markdown_string>
         [meta](/reference/resource-configs/meta): {<dictionary>}
-        [quote](/reference/resource-properties/quote): true | false
+        [quote](/reference/resource-properties/columns#quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
         [tests](/reference/resource-properties/data-tests):
           - <test>

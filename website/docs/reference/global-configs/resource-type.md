@@ -24,21 +24,6 @@ The `--exclude-resource-type` flag is only available in dbt version 1.8 and high
 
 The available resource types are:
 
-<VersionBlock lastVersion="1.7">
-
-- [`analysis`](/docs/build/analyses)
-- [`exposure`](/docs/build/exposures)
-- [`metric`](/docs/build/build-metrics-intro)
-- [`model`](/docs/build/models)
-- [`saved_query`](/docs/build/saved-queries)
-- [`seed`](/docs/build/seeds)
-- [`semantic_model`](/docs/build/semantic-models)
-- [`snapshot`](/docs/build/snapshots)
-- [`source`](/docs/build/sources)
-- [`test`](/docs/build/data-tests)
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.8">
 
 - [`analysis`](/docs/build/analyses)
@@ -57,7 +42,7 @@ The available resource types are:
 
 ## Example
 
-Instead of targeting specific resources, use the `--resource-flag` or `--exclude-resource-type` flags to target all resources of a certain type: `dbt build --resource-type RESOURCE_TYPE` replacing `RESOURCE_TYPE` with the resource type you want to include.
+Instead of targeting specific resources, use the `--resource-type` or `--exclude-resource-type` flags to target all resources of a certain type: `dbt build --resource-type RESOURCE_TYPE` replacing `RESOURCE_TYPE` with the resource type you want to include.
 
 - For example, use the following command to include _all_ snapshots from your dbt build process:
 

@@ -1,13 +1,13 @@
 ---
-title: How do I delete a project in dbt Cloud?
-description: "Deleting a project in dbt Cloud"
+title: How do I delete a project in dbt?
+description: "Deleting a project in dbt"
 sidebar_label: 'How to delete a project'
 id: delete-a-project
 
 ---
-To delete a project in dbt Cloud, you must be the account owner or have admin privileges. 
+To delete a project in <Constant name="cloud" />, you must be the account owner or have admin privileges. 
 
-1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" title="Navigate to account settings" />
 

@@ -172,8 +172,6 @@ Through the combination of direct and indirect selection, there are many ways to
 
   dbt test --select "assert_total_payment_amount_is_positive" # directly select the test by name
   dbt test --select "payments,test_type:singular" # indirect selection, v1.2
-  dbt test --select "payments,test_type:data" # indirect selection, v0.18.0
-  dbt test --select "payments" --data  # indirect selection, earlier versions
 
   ```
 
@@ -208,7 +206,8 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tags: [my_column_tag]
+        config:
+          tags: [my_column_tag] # changed to config in v1.10
         tests:
           - unique
 
@@ -239,7 +238,8 @@ models:
       - name: order_id
         tests:
           - unique:
-              tags: [my_test_tag]
+            config:
+              tags: [my_test_tag] # changed to config in v1.10
 
 ```
 

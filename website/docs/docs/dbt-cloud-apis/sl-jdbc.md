@@ -5,31 +5,33 @@ description: "Integrate and use the JDBC API to query your metrics."
 tags: [Semantic Layer, API]
 ---
 
-The dbt Semantic Layer Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
+# JDBC API <Lifecycle status="self_service,managed,managed_plus" />
+
+The <Constant name="semantic_layer" /> Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
 
 A JDBC driver is a software component enabling a Java application to interact with a data platform. Here's some more information about our JDBC API:
 
-- The Semantic Layer JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
+- The <Constant name="semantic_layer" /> JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
 - You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
-- The dbt Semantic Layer supports ArrowFlight SQL driver version 12.0.0 and higher. 
+- The <Constant name="semantic_layer" /> supports ArrowFlight SQL driver version 12.0.0 and higher. 
 - You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
 - If you’re a partner or user building a homegrown application, you’ll need to install an AWS root CA to the Java Trust [documentation](https://www.amazontrust.com/repository/) (specific to Java and JDBC call).
 
-dbt Labs partners can use the JDBC API to build integrations in their tools with the dbt Semantic Layer
+dbt Labs partners can use the JDBC API to build integrations in their tools with the <Constant name="semantic_layer" />
 
 ## Using the JDBC API
 
-If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
+If you are a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right JDBC connection parameters described in this document.
 
-You *may* be able to use our JDBC API with tools that do not have an official integration with the dbt Semantic Layer. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the Semantic Layer API.
+You *may* be able to use our JDBC API with tools that do not have an official integration with the <Constant name="semantic_layer" />. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the <Constant name="semantic_layer" /> API.
 
-Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
-Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
 ## Authentication
 
-dbt Cloud authorizes requests to the dbt Semantic Layer API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
+<Constant name="cloud" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
 
 ## Connection parameters
 
@@ -44,15 +46,15 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | JDBC parameter | Description | Example |
 | -------------- | ----------- | ------- |
 | `jdbc:arrow-flight-sql://` | The protocol for the JDBC driver.  | `jdbc:arrow-flight-sql://` |
-| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your account's dbt Cloud region. You must always add the `semantic-layer` prefix before the access URL.  | For dbt Cloud deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
-| `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the dbt Cloud URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
-| `SERVICE_TOKEN` | dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions. Create a new service token on the **Account Settings** page. | `token=SERVICE_TOKEN` |
+| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your account's <Constant name="cloud" /> region. You must always add the `semantic-layer` prefix before the access URL.  | For <Constant name="cloud" /> deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
+| `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the <Constant name="cloud" /> URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
+| `SERVICE_TOKEN` | <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions. Create a new service token on the **Account Settings** page. | `token=SERVICE_TOKEN` |
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
 
 ## Querying the API for metric metadata
 
-The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions.
+The <Constant name="semantic_layer" /> JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions.
 
 Expand the following toggles for examples and metadata commands:
 
@@ -232,7 +234,7 @@ To query metric values, here are the following parameters that are available. Yo
 | `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`  |
 | `saved_query` | A saved query you can use for frequently used queries. | `select * from {{ semantic_layer.query(saved_query="new_customer_orders"` |
 
-## Note on time dimensions and `metric_time`
+### Note on time dimensions and `metric_time`
 
 You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
@@ -246,20 +248,21 @@ Note that `metric_time` should be available in addition to any other time dimens
 
 The following sections provide examples of how to query metrics using the JDBC API:
 
-    - [Fetch metadata for metrics](#fetch-metadata-for-metrics)
-    - [Query common dimensions](#query-common-dimensions)
-    - [Query grouped by time](#query-grouped-by-time)
-    - [Query with a time grain](#query-with-a-time-grain)
-    - [Group by categorical dimension](#group-by-categorical-dimension)
-    - [Query only a dimension](#query-only-a-dimension)
-    - [Query by all dimensions](#query-by-all-dimensions)
-    - [Query with where filters](#query-with-where-filters)
-    - [Query with a limit](#query-with-a-limit)
-    - [Query with order by examples](#query-with-order-by-examples)
-    - [Query with compile keyword](#query-with-compile-keyword)
-    - [Query a saved query](#query-a-saved-query)
-    - [Query metric alias](#query-metric-alias)
-    - [Multi-hop joins](#multi-hop-joins)
+<!-- no toc -->
+- [Fetch metadata for metrics](#fetch-metadata-for-metrics) &mdash; Filter/add any SQL outside of the templating syntax.
+- [Query common dimensions](#query-common-dimensions) &mdash; Select common dimensions for multiple metrics.
+- [Query grouped by time](#query-grouped-by-time) &mdash; Fetch revenue and new customers grouped by time.
+- [Query with a time grain](#query-with-a-time-grain) &mdash; Fetch multiple metrics with a change in time dimension granularities.
+- [Group by categorical dimension](#group-by-categorical-dimension) &mdash; Group by a categorical dimension.
+- [Query only a dimension](#query-only-a-dimension) &mdash; Get the full list of dimension values for the chosen dimension.
+- [Query by all dimensions](#query-by-all-dimensions) &mdash; Query by all valid dimensions.
+- [Query with where filters](#query-with-where-filters) &mdash; Use the `where` parameter to filter on dimensions and entities using parameters.
+- [Query with a limit](#query-with-a-limit) &mdash; Query using a `limit` or `order_by` clause.
+- [Query with order by examples](#query-with-order-by-examples) &mdash; Query with `order_by`, accepts basic string that's a Dimension, Metric, or Entity. Defaults to ascending order. Add a `-` sign in front of the object for descending order.
+- [Query with compile keyword](#query-with-compile-keyword) &mdash; Query using a compile keyword to preview the final SQL before execution.
+- [Query a saved query](#query-a-saved-query) &mdash; Query using a saved query with optional parameters like `limit` or `where`.
+- [Query metric alias](#query-metric-alias) &mdash; Query metrics using aliases, which allow you to use simpler or more intuitive names for metrics instead of their full definitions.
+- [Multi-hop joins](#multi-hop-joins) &mdash; Query across multiple related tables (multi-hop joins) using the `entity_path` argument to specify the path between related entities.
 
 ### Fetch metadata for metrics
 
@@ -588,5 +591,5 @@ So for example, if the `time_dimension_name` is `ds` and the granularity level i
 
 ## Related docs
 
-- [dbt Semantic Layer integration best practices](/guides/sl-partner-integration-guide)
+- [<Constant name="semantic_layer" /> integration best practices](/guides/sl-partner-integration-guide)
 

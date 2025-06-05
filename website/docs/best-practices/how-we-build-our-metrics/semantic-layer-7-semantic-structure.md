@@ -12,11 +12,11 @@ The first thing you need to establish is how you’re going to consistently stru
 - 🏡 **Co-locate your semantic layer code** in a one-YAML-file-per-marts-model system.
   - Puts documentation, data tests, unit tests, semantic models, and metrics into a unified file that corresponds to a dbt-modeled mart.
   - Trades larger file size for less clicking between files.
-  - Simpler for greenfield projects that are building the Semantic Layer alongside dbt models.
+  - Simpler for greenfield projects that are building the <Constant name="semantic_layer" /> alongside dbt models.
 - 🏘️**Create a sub-folder** called `models/semantic_models/`.
   - Create a parallel file and folder structure within that specifically for semantic layer code.
   - Gives you more targeted files, but may involves switching between files more often.
-  - Better for migrating large existing projects, as you can quickly see what marts have been codified into the Semantic Layer.
+  - Better for migrating large existing projects, as you can quickly see what marts have been codified into the <Constant name="semantic_layer" />.
 
 It’s not terribly difficult to shift between these (it can be done with some relatively straightforward shell scripting), and this is purely a decision based on your developers’ preference (i.e. it has no impact on execution or performance), so don’t feel locked in to either path. Just pick the one that feels right and you can always shift down the road if you change your mind.
 

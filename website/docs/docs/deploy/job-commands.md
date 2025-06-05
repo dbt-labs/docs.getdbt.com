@@ -1,10 +1,10 @@
 ---
 title: "Job commands"
 id: "job-commands"
-description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
+description: "How to use dbt commands to set tasks for your dbt jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A <Constant name="cloud" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
@@ -32,15 +32,15 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 ### Checkbox commands
 
-For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
+For every job, you have the option to select the [Generate docs on run](/docs/explore/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; <Constant name="cloud" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; <Constant name="cloud" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
-You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Cloud CLI" or "dbt Core" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in dbt Core or dbt Cloud CLI, and not in dbt Cloud IDE.
+You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "<Constant name="cloud" /> CLI" or "<Constant name="core" />" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="cloud" /> CLI, and not in <Constant name="cloud_ide" />.
 
 :::tip Using selectors
 
@@ -98,4 +98,4 @@ Job command failures can mean different things for different commands. Some comm
 - [dbt Command reference](/reference/dbt-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [Build and view your docs](/docs/collaborate/build-and-view-your-docs)
+- [Build and view your docs](/docs/explore/build-and-view-your-docs)

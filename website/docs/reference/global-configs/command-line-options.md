@@ -4,7 +4,7 @@ id: "command-line-options"
 sidebar: "Command line options"
 ---
 
-For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). For a list of all dbt CLI flags you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags). When set, CLI flags override [environment variables](/reference/global-configs/environment-variable-configs) and [project flags](/reference/global-configs/project-flags).
+For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). For a list of all <Constant name="cloud_cli" /> flags you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags). When set, CLI flags override [environment variables](/reference/global-configs/environment-variable-configs) and [project flags](/reference/global-configs/project-flags).
 
 Environment variables contain a `DBT_` prefix. 
 

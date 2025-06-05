@@ -1,0 +1,27 @@
+---
+title: "About git"
+id: git-version-control
+description: "Git overview"
+sidebar_label: "About git"
+pagination_next: null
+pagination_prev: null
+---
+
+A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in your dbt project.
+
+In a distributed version control system, every developer has a full copy of the project and project history. <Constant name="git" /> is one of the most popular distributed version control systems and is commonly used for both open source and commercial software development, with great benefits for individuals, teams and businesses.
+
+![<Constant name="git" /> overview](https://docs.getdbt.com/img/docs/dbt-cloud/cloud-ide/git-overview.png)
+
+
+<Constant name="git" /> allows developers see the entire timeline of their changes, decisions, and progression of any project in one place. From the moment they access the history of a project, the developer has all the context they need to understand it and start contributing.
+
+When you develop in the command line interface (CLI) or Cloud  integrated development environment (<Constant name="cloud_ide" />), you can leverage <Constant name="git" /> directly to version control your code. To use version control, make sure you are connected to a <Constant name="git" /> repository in the CLI or Cloud <Constant name="cloud_ide" />. 
+
+
+## Related docs
+- [Version control basics](/docs/cloud/git/version-control-basics)
+- [Merge conflicts](/docs/cloud/git/merge-conflicts) 
+- [Connect to GitHub](/docs/cloud/git/connect-github)
+- [Connect to GitLab](/docs/cloud/git/connect-gitlab)
+- [Connect to Azure DevOps](/docs/cloud/git/connect-azure-devops)

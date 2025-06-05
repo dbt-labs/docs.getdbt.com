@@ -1,6 +1,6 @@
 ---
 title: pre-hook & post-hook
-description: "Pre-hook and Post-hook - Read this in-depth guide to learn about configurations in dbt."
+description: "Configure hooks to execute SQL before (pre) and after (post) a model is run in dbt."
 resource_types: [models, seeds, snapshots]
 datatype: sql-statement | [sql-statement]
 ---

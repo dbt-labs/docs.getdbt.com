@@ -1,12 +1,12 @@
 ---
-title: How can I consolidate projects in dbt Cloud?
-description: "Consolidating projects in dbt Cloud"
+title: How can I consolidate projects in dbt?
+description: "Consolidating projects in dbt"
 sidebar_label: 'How to consolidate projects'
 id: consolidate-projects
 
 ---
 
-Consolidating your dbt projects can be an enormous task, and there is no universal solution. But, there are some common approaches to project consolidation in dbt Cloud that you can follow, depending on the scope of the work that needs to be done.
+Consolidating your dbt projects can be an enormous task, and there is no universal solution. But, there are some common approaches to project consolidation in <Constant name="cloud" /> that you can follow, depending on the scope of the work that needs to be done.
 
 If you have multiple projects that contain production-worthy code, there are rarely straightforward solutions to merging them. Let's suppose you have `Main Project` and `Smaller Subset Project`.
 
@@ -20,7 +20,7 @@ Another option would be to use an external code editor (for example, VS Code) to
 
 ### Manual migration with multiple browser tabs
 
-If you only have a couple of models or macros that you want to consolidate, copy the raw file contents from your git provider in `Smaller Subset Project`. Then, in the dbt Cloud IDE, paste the contents into a new file in your `Main Project`.
+If you only have a couple of models or macros that you want to consolidate, copy the raw file contents from your git provider in `Smaller Subset Project`. Then, in the <Constant name="cloud_ide" />, paste the contents into a new file in your `Main Project`.
 
 Alternatively, you can download those files from your git provider (`Smaller Subset Project` repo) and upload them back to your other repository (`Main Project` repo). This doesn’t scale well and could bypass change controls, so it might only be a viable solution for organizations with only a few files.
 

@@ -107,6 +107,10 @@ reverse-etl:
   displayText: reverse ETL
   hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 
+sql-expression:
+  displayText: SQL expression
+  hoverSnippet: A SQL expression is a combination of columns, values, operators, and functions that evaluates to a single value.
+
 subquery:
   displayText: subquery
   hoverSnippet: A subquery is a query within another query. Subqueries are often used when you need to process data in multiple steps.

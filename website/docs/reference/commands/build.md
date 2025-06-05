@@ -54,7 +54,7 @@ Unit tests and data tests can be selected using `--select test_type:unit` or `--
 
 ```
 $ dbt build
-Running with dbt=0.21.0-b2
+Running with dbt=1.9.0-b2
 Found 1 model, 4 tests, 1 snapshot, 1 analysis, 341 macros, 0 operations, 1 seed file, 2 sources, 2 exposures
 
 18:49:43 | Concurrency: 1 threads (target='dev')

@@ -8,7 +8,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Adapter creation']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -161,7 +160,7 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
 - Aim to release a new minor version of your plugin as you add substantial new features. Typically, this will be triggered by adding support for new features released in `dbt-adapters` or by changes to the data platform itself.
-- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (dbt Core v2).
+- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (<Constant name="core" /> v2).
 - Release patch versions of your plugins whenever needed. These patch releases should only contain fixes.
 
 :::note
@@ -686,7 +685,7 @@ This document has two sections:
 
 ### Testing prerequisites
 
-- Your adapter must be compatible with dbt-core **v1.1** or newer
+- Your adapter must be compatible with <Constant name="core" /> **v1.1** or newer
 - You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
@@ -1261,7 +1260,8 @@ Contributors to the community should think of contribution _as the end itself,_ 
 - Founder and executives who are interested in directly engaging with the community
   This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
 
-- Software Engineers at partner products that are building and supporting integrations with either dbt Core or dbt Cloud
+- Software Engineers at partner products that are building and supporting integrations with either - Software Engineers at partner products that are building and supporting integrations with either dbt Core or the <Constant name="core" />
+ or the <Constant name="dbt_platform" />
   This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
 
 ### Who might struggle in the dbt community
@@ -1379,7 +1379,7 @@ By opting into the below, you agree to this, and we take you at your word. dbt L
 
 ### Feature Completeness
 
-To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
+To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of <Constant name="core" /> given below, with best effort given to support the entire feature set.
 
 Essential functionality includes (but is not limited to the following features):
 

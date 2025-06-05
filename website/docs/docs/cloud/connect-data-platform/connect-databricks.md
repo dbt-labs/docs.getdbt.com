@@ -1,7 +1,7 @@
 ---
 title: "Connect Databricks"
 id: connect-databricks
-description: "Setup instructions for connecting Databricks to dbt Cloud"
+description: "Setup instructions for connecting Databricks to dbt"
 sidebar_label: "Connect Databricks"
 ---
 
@@ -9,11 +9,11 @@ The dbt-databricks adapter is maintained by the Databricks team. The Databricks 
 
 ## About the dbt-databricks adapter
 
-dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality. 
+dbt-databricks is compatible with the following versions of <Constant name="core" /> in <Constant name="cloud" /> with varying degrees of functionality. 
 
 | Feature | dbt Versions |
 | ----- | ----------- | 
-| dbt-databricks | Available starting with dbt 1.0 in dbt Cloud|
+| dbt-databricks | Available starting with dbt 1.0 in <Constant name="cloud" />|
 | Unity Catalog | Available starting with dbt 1.1 | 
 | Python models | Available starting with dbt 1.3 |
 
@@ -24,7 +24,7 @@ The dbt-databricks adapter is more opinionated, guiding users to an improved exp
 - **Support for Unity Catalog:**
 Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
 
 To grant users or roles database permissions (access rights and privileges), refer to the [example permissions](/reference/database-permissions/databricks-permissions) page.
 

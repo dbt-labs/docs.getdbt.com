@@ -7,11 +7,11 @@ hoverSnippet: Learn how to clone incremental models for CI jobs.
 ---
 
 Before you begin, you must be aware of a few conditions:
-- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in dbt Cloud
+- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in <Constant name="cloud" />.
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 
-Imagine you've created a [Slim CI job](/docs/deploy/continuous-integration) in dbt Cloud and it is configured to: 
+Imagine you've created a [Slim CI job](/docs/deploy/continuous-integration) in <Constant name="cloud" /> and it is configured to: 
 
 - Defer to your production environment.
 - Run the command `dbt build --select state:modified+` to run and test all of the models you've modified and their downstream dependencies.
@@ -37,7 +37,7 @@ This can be suboptimal because:
 
 You can alleviate these problems by zero copy cloning the relevant, pre-existing incremental models into your PR-specific schema as the first step of the CI job using the `dbt clone` command. This way, the incremental models already exist in the PR-specific schema when you first execute the command `dbt build --select state:modified+` so the `is_incremental` flag will be `true`. 
 
-You'll have two commands for your dbt Cloud CI check to execute:
+You'll have two commands for your <Constant name="cloud" /> CI check to execute:
 1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified:
   ```shell
   dbt clone --select state:modified+,config.materialized:incremental,state:old

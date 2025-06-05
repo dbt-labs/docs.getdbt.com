@@ -14,6 +14,8 @@ is_featured: true
 
 :::tip February 2024 Update
 
+This blog references dbt Core versions older than v1.0.
+
 It's been a few years since dbt-core turned 1.0! Since then, we've committed to releasing zero breaking changes whenever possible and it's become much easier to upgrade dbt Core versions.
 
 In 2024, we're taking this promise further by:

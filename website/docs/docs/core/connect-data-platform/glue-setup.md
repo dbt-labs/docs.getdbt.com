@@ -868,7 +868,7 @@ test_project:
 
 ## Persisting model descriptions
 
-Relation-level docs persistence is supported since dbt v0.17.0. For more
+Relation-level docs persistence is supported. For more
 information on configuring docs persistence, see [the docs](/reference/resource-configs/persist_docs).
 
 When the `persist_docs` option is configured appropriately, you'll be able to
@@ -1045,7 +1045,7 @@ For more information, check the dbt documentation about [testing a new adapter](
 
 ### Supported Functionality
 
-Most dbt Core functionality is supported, but some features are only available with Apache Hudi.
+Most <Constant name="core" /> functionality is supported, but some features are only available with Apache Hudi.
 
 Apache Hudi-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/glue-configs#the-merge-strategy))

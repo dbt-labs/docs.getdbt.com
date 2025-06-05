@@ -1,9 +1,10 @@
 import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
-import { useDoc } from "@docusaurus/theme-common/internal";
+import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import Heading from "@theme/Heading";
 import MDXContent from "@theme/MDXContent";
+import IntroText from "@site/src/components/IntroText";
 /**
  Title can be declared inside md content or declared through
  front matter and added manually. To make both cases consistent,
@@ -57,6 +58,9 @@ export default function DocItemContent({ children }) {
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
       )}
+
+      {/* Render IntroText if frontMatter.intro_text exists */}
+      {frontMatter.intro_text && <IntroText>{frontMatter.intro_text}</IntroText>}
 
       {/* Wrap with small container if spotlight member page */}
       {isSpotlightMember ? (

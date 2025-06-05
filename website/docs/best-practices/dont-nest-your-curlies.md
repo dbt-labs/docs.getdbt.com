@@ -43,7 +43,7 @@ Here, the return value of the `var()` context method is supplied as the `start_d
 ```
 
 **Incorrect example**
-*This code does not work in dbt &gt;= v0.15.0*. Once we've denoted that we're inside a jinja expression (using the `{{` syntax), no further curly brackets are required inside of the jinja expression. This code will supply a literal string value, `"{{ var('start_date') }}"`, as the `start_date` argument to the `date_spine` macro. This is probably not what you actually want to do!
+Once we've denoted that we're inside a Jinja expression (using the `{{` syntax), no further curly brackets are required inside of the Jinja expression. This code will supply a literal string value, `"{{ var('start_date') }}"`, as the `start_date` argument to the `date_spine` macro. This is probably not what you actually want to do!
 
 ```
 -- Do not do this! It will not work!

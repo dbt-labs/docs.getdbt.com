@@ -1,14 +1,14 @@
 ---
-title: How do I change a user license type to read-only in dbt Cloud?
-description: "Changing a user license type to read-only in dbt Cloud"
+title: How do I change a user license type to read-only in dbt?
+description: "Changing a user license type to read-only in dbt"
 sidebar_label: 'How to change a user license type to read-only'
 id: change-user-license
 
 ---
 
-To change the license type for a user from `developer` to `read-only` or `IT` in dbt Cloud, you must be an account owner or have admin privileges. You might make this change to free up a billable seat but retain the user’s access to view the information in the dbt Cloud account.
+To change the license type for a user from `developer` to `read-only` or `IT` in <Constant name="cloud" />, you must be an account owner or have admin privileges. You might make this change to free up a billable seat but retain the user’s access to view the information in the <Constant name="cloud" /> account.
 
-1. From dbt Cloud, click on your account name in the left side menu and, select **Account settings**.
+1. From <Constant name="cloud" />, click on your account name in the left side menu and, select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" title="Navigate to account settings" />
 

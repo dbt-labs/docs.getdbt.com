@@ -6,13 +6,13 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 image: /img/docs/dbt-cloud/example-ci-compare-changes-tab.png
 ---
 
-# Advanced CI <Lifecycle status="enterprise"/>
+# Advanced CI <Lifecycle status="managed,managed_plus" />
 
 [Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
 
 :::info How to enable this feature
 
-You can opt into Advanced CI in dbt Cloud. Please refer to [Account access to Advance CI features](/docs/cloud/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your dbt Cloud account.
+You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Account access to Advance CI features](/docs/cloud/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your <Constant name="cloud" /> account.
 
 :::
 
@@ -22,18 +22,18 @@ dbt Labs plans to provide additional Advanced CI features in the near future. Mo
 :::
 
 ## Prerequisites
-- You have a dbt Cloud Enterprise account.
+- You have a <Constant name="cloud" /> Enterprise or Enterprise+ account.
 - You have [Advance CI features](/docs/cloud/account-settings#account-access-to-advanced-features) enabled.
 - You use a supported data platform: BigQuery, Databricks, Postgres, or Snowflake. Support for additional data platforms coming soon.
 
 ## Compare changes feature {#compare-changes}
 
-For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
+For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
 dbt reports the comparison differences in:
 
-- **dbt Cloud** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
-- **The pull request from your Git provider** &mdash; Shows a summary of the changes as a Git comment.
+- **<Constant name="cloud" />** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
+- **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
 <Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
 
@@ -49,7 +49,7 @@ This is useful in scenarios like:
 
 ## About the cached data
 
-After [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model for preview purposes. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
+After [comparing changes](#compare-changes), <Constant name="cloud" /> stores a cache of no more than 100 records for each modified model for preview purposes. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, <Constant name="cloud" /> uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
 
 You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
@@ -64,7 +64,7 @@ If you access a CI job run that's more than 30 days old, you will not be able to
 
 ## Connection permissions
 
-The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The dbt Cloud administrator must ensure that client CI credentials are appropriately restricted since all customer's account users will be able to view the comparison results and the cached data.
+The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The <Constant name="cloud" /> administrator must ensure that client CI credentials are appropriately restricted since all customer's account users will be able to view the comparison results and the cached data.
 
 If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
 

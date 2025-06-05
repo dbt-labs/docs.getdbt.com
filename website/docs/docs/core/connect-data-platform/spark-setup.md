@@ -5,7 +5,7 @@ id: "spark-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-spark'
+  github_repo: 'dbt-labs/dbt-adapters'
   pypi_package: 'dbt-spark'
   min_core_version: 'v0.15.0'
   cloud_support: Supported
@@ -60,7 +60,7 @@ dbt-spark can connect to Spark clusters by four different methods:
 - [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
 
 :::info Advanced functionality
-The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by dbt Cloud.
+The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by <Constant name="cloud" />.
 :::
 
 
@@ -210,7 +210,7 @@ To connect to Apache Spark running on an Amazon EMR cluster, you will need to ru
 
 ### Supported functionality
 
-Most dbt Core functionality is supported, but some features are only available
+Most <Constant name="core" /> functionality is supported, but some features are only available
 on Delta Lake (Databricks).
 
 Delta-only features:

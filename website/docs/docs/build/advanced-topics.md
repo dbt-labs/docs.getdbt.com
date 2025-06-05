@@ -4,9 +4,9 @@ description: "Learn about advanced topics for dbt Semantic Layer and MetricFlow,
 pagination_prev: null
 ---
 
-The dbt Semantic Layer and MetricFlow are powerful tools that allow you to define metrics and semantic models in your dbt project. 
+The <Constant name="semantic_layer" /> and MetricFlow are powerful tools that allow you to define metrics and semantic models in your dbt project. 
 
-This section covers advanced topics for the dbt Semantic Layer and MetricFlow, such as data modeling workflows, and more.
+This section covers advanced topics for the <Constant name="semantic_layer" /> and MetricFlow, such as data modeling workflows, and more.
 <!--
 - [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced) &mdash; Use `fill_nulls_with` to set null metric values to zero, ensuring numeric values for every data row, even with derived metrics.
 -->

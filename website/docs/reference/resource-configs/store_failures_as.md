@@ -73,4 +73,4 @@ Additional resources:
 - [Data test configurations](/reference/data-test-configs#related-documentation)
 - [Data test-specific configurations](/reference/data-test-configs#test-data-specific-configurations)
 - [Configuring directories of models in dbt_project.yml](/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml)
-- [Config inheritance](/reference/configs-and-properties#config-inheritance)
+- [Config inheritance](/reference/define-configs#config-inheritance)

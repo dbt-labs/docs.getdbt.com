@@ -15,21 +15,18 @@
  */
 exports.versions = [
   {
+    version: "2.0",
+    customDisplay: "dbt Fusion engine (v2.0 Beta)",
+    isPrerelease: true,
+  },
+  {
     version: "1.10",
-    customDisplay: "Cloud (Latest)",
+    customDisplay: "Latest (dbt Core v1.10)",
   },
   {
     version: "1.9",
-    customDisplay: "1.9 (Compatible)",
+    customDisplay: "Compatible (dbt Core v1.9)",
     EOLDate: "2025-12-08",
-  },
-  {
-    version: "1.8",
-    EOLDate: "2025-04-15",
-  },
-  {
-    version: "1.7",
-    EOLDate: "2024-11-01",
   },
 ];
 
@@ -43,6 +40,14 @@ exports.versions = [
  * @property {string} lastVersion The last version the page is visible in the sidebar
  */
 exports.versionedPages = [
+  {
+    page: "docs/build/sample-flag",
+    firstVersion: "1.10",
+  },
+  {
+    page: "docs/build/empty-flag",
+    firstVersion: "1.8",
+  },
   {
     page: "docs/build/incremental-microbatch",
     firstVersion: "1.9",

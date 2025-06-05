@@ -38,7 +38,8 @@ version: 2
 
 models:
   - name: MODEL_NAME
-    group: GROUP
+    config:
+      group: GROUP # changed to config in v1.10
 
 ```
 
@@ -77,7 +78,8 @@ models:
 ```yml
 seeds:
   - name: [SEED_NAME]
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME # changed to config in v1.10
 ```
 
 </File>
@@ -194,7 +196,8 @@ version: 2
 
 analyses:
   - name: ANALYSIS_NAME
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME # changed to config in v1.10
 ```
 
 </File>
@@ -286,7 +289,7 @@ saved_queries:
 ## Definition
 An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
-For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
+For more details on reference access between resources in groups, check out [model access](/docs/mesh/govern/model-access#groups).
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model
@@ -297,10 +300,12 @@ This is useful if you want to prevent other groups from building on top of model
 ```yml
 models:
   - name: finance_model
-    access: private
-    group: finance
+    config:
+      group: finance # changed to config in v1.10
+      access: private # changed to config in v1.10
   - name: marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
 ```
 </File>
 
@@ -321,5 +326,5 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Defining groups](/docs/build/groups)

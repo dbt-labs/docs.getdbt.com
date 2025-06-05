@@ -1,6 +1,6 @@
 ---
 title: "Multi-factor authentication"
-description: "Configure dbt Cloud MFA"
+description: "Configure dbt MFA"
 id: "mfa"
 sidebar: null
 ---
@@ -9,18 +9,15 @@ sidebar: null
 
 :::important
 
-
-dbt Cloud enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access dbt Cloud.
+<Constant name="cloud" /> enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access <Constant name="cloud" />.
 
 :::
 
-dbt Cloud provides multiple options for multi-factor authentication (MFA). MFA provides an additional layer of security to username and password logins for Developer and Team plan accounts. The available MFA methods are:
+<Constant name="cloud" /> provides multiple options for multi-factor authentication (MFA), which adds an extra layer of security to username and password logins. MFA is available across <Constant name="cloud" /> plans for users with username and password logins only. The available MFA methods are:
 
 - SMS verification code (US-based phone numbers only)
 - Authenticator app
 - Webauthn-compliant security key
-
-This is available across dbt Cloud plans for users with username and password logins only. 
 
 ## Configuration
 
@@ -28,7 +25,7 @@ You can only have one of the three MFA methods configured per user. These are en
 
 1. Navigate to the **Account settings** and under **Your profile** click on **Password & Security**. Click **Enroll** next to the preferred method.
     
-<Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt Cloud." />
+<Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt." />
 
 Choose the next steps based on your preferred enrollment selection:
 
@@ -38,7 +35,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-cloud/sms-enter-phone.png" title="The phone number selection, including a dropdown for country code." />
 
-3. You will receive an SMS message with a six digit code. Enter the code in dbt Cloud.
+3. You will receive an SMS message with a six digit code. Enter the code in <Constant name="cloud" />.
 
 <Lightbox src="/img/docs/dbt-cloud/enter-code.png" title="Enter the 6-digit code." />
 
@@ -50,7 +47,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-cloud/scan-qr.png" title="Example of the user generated QR code." />
 
-3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in dbt Cloud.
+3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="cloud" />.
 
 </Expandable>
 
@@ -74,9 +71,9 @@ If possible, it's recommended to configure multiple MFA methods so that if one f
 
 ## Disclaimer
 
-The terms below apply to dbt Cloud’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for dbt Cloud log-in requests.
+The terms below apply to <Constant name="cloud" />’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="cloud" /> log-in requests.
 
-Any clients of dbt Labs that use dbt Cloud Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
+Any clients of dbt Labs that use <Constant name="cloud" /> Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
 
 (1) The message frequency is a maximum of 1 message per user login;
 

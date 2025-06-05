@@ -1,6 +1,6 @@
 ---
 title: "Custom aliases"
-description: "Read this tutorial to learn how to use custom aliases when building in dbt."
+description: "Configure custom aliases to override default naming conventions for models and other resources in dbt."
 id: "custom-aliases"
 ---
 
@@ -152,7 +152,7 @@ If these models should indeed have the same database identifier, you can work ar
 #### Model versions
 
 **Related documentation:**
-- [Model versions](/docs/collaborate/govern/model-versions)
+- [Model versions](/docs/mesh/govern/model-versions)
 - [`versions`](/reference/resource-properties/versions#alias)
 
 By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like for non-versioned models by configuring a custom `alias` or re-implementing the `generate_alias_name` macro.

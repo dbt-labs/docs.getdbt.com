@@ -129,7 +129,7 @@ The following profile fields are optional to set up. They help you configure how
 
 ### Delta Lake
 
-Most dbt Core functionality is supported, but some features are only available
+Most <Constant name="core" /> functionality is supported, but some features are only available
 on Delta Lake.
 
 Delta-only features:

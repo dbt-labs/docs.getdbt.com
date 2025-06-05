@@ -6,11 +6,11 @@ id: install-pip-os-prereqs.md
 
 ---
 
-Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of dbt Core](/docs/core/pip-install).
+Your operating system may require pre-installation setup before installing <Constant name="core" /> with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of <Constant name="core" />](/docs/core/pip-install).
 
 ### CentOS
 
-CentOS requires Python and some other dependencies to successfully install and run dbt Core.
+CentOS requires Python and some other dependencies to successfully install and run <Constant name="core" />.
 
 To install Python and other dependencies:
 
@@ -23,7 +23,7 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 ### MacOS
 
-The MacOS requires Python 3.8 or higher to successfully install and run dbt Core.
+The MacOS requires Python 3.8 or higher to successfully install and run <Constant name="core" />.
 
 To check the Python version:
 
@@ -38,7 +38,7 @@ If you need a compatible version, you can download and install [Python version 3
 If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 ### Ubuntu/Debian
 
-Ubuntu requires Python and other dependencies to successfully install and run dbt Core.
+Ubuntu requires Python and other dependencies to successfully install and run <Constant name="core" />.
 
 To install Python and other dependencies:
 
@@ -53,8 +53,8 @@ pip install cryptography~=3.4
 
 ### Windows
 
-Windows requires Python and git to successfully install and run dbt Core.
+Windows requires Python and git to successfully install and run <Constant name="core" />.
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.9 or higher for Windows](https://www.python.org/downloads/windows/).
+Install [<Constant name="git" /> for Windows](https://git-scm.com/downloads) and [Python version 3.9 or higher for Windows](https://www.python.org/downloads/windows/).
 
 For further questions, please see the [Python compatibility FAQ](/faqs/Core/install-python-compatibility)

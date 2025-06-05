@@ -26,7 +26,7 @@ seeds:
       - name: <column name>
         [description](/reference/resource-properties/description): <markdown_string>
         [meta](/reference/resource-configs/meta): {<dictionary>}
-        [quote](/reference/resource-properties/quote): true | false
+        [quote](/reference/resource-properties/columns#quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
         [tests](/reference/resource-properties/data-tests):
           - <test>

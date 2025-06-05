@@ -89,8 +89,8 @@ By default, all models within a group have the `protected` [access modifier](/re
 ```yml
 models:
   - name: finance_private_model
-    access: private
     config:
+      access: private # changed to config in v1.10
       group: finance
 
   # in a different group!
@@ -117,6 +117,6 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)
 * [Group selection](/reference/node-selection/methods#group)

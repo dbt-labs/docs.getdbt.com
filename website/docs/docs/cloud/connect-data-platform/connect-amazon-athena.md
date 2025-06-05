@@ -1,7 +1,7 @@
 ---
 title: "Connect Amazon Athena"
 id: connect-amazon-athena
-description: "Configure the Amazon Athena data platform connection in dbt Cloud."
+description: "Configure the Amazon Athena data platform connection in dbt."
 sidebar_label: "Connect Amazon Athena"
 ---
 
@@ -9,7 +9,7 @@ sidebar_label: "Connect Amazon Athena"
 
 Your environment(s) must be on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to use the Amazon Athena connection.
 
-Connect dbt Cloud to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:
+Connect <Constant name="cloud" /> to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:
 
 | Field                         | Option           | Description                                                                         | Type   | Required? | Example |
 | ----------------------------- | ---------------- | ----------------------------------------------------------------------------------- | ------ | --------- | ------- |

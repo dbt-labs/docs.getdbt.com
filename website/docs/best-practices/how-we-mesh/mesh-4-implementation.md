@@ -6,9 +6,9 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 ### Where should your mesh journey start?
 
-Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
+Moving to a <Constant name="mesh" /> represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
 
-1. Lack of buy-in that a dbt Mesh is the right long-term architecture
+1. Lack of buy-in that a <Constant name="mesh" /> is the right long-term architecture
 2. Lack of alignment on a well-scoped starting point
 
 Creating alignment on your architecture and starting point are major steps in ensuring a successful migration. Deciding on the right starting point will look different for every organization, but there are some heuristics that can help you decide where to start. In all likelihood, your organization already has logical components, and you may already be grouping, building, and deploying your project according to these interfaces.The goal is to define and formalize these organizational interfaces and use these boundaries to split your project apart by domain.
@@ -19,7 +19,7 @@ How do you find these organizational interfaces? Here are some steps to get you 
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
-  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto dbt Mesh as a consumer? 
+  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto <Constant name="mesh" /> as a consumer? 
 
 When attempting to define your project interfaces, you should consider investigating:
 
@@ -29,7 +29,7 @@ When attempting to define your project interfaces, you should consider investiga
 
 Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
 
-To learn more, refer to our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+To learn more, refer to our freely available [<Constant name="mesh" /> learning course](https://learn.getdbt.com/courses/dbt-mesh). 
 
 
 ## Defining project interfaces with groups and access
@@ -55,23 +55,27 @@ groups:
 
 models: 
   - name: fct_marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
   - name: stg_marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
 ```
 
-- Once you've added models to the group, you can **add [access](/docs/collaborate/govern/model-access) settings to the models** based on their connections between groups, *opting for the most private access that will maintain current functionality*. This means that any model that has *only* relationships to other models in the same group should be `private` , and any model that has cross-group relationships, or is a terminal node in the group DAG should be `protected` so that other parts of the DAG can continue to reference it.
+- Once you've added models to the group, you can **add [access](/docs/mesh/govern/model-access) settings to the models** based on their connections between groups, *opting for the most private access that will maintain current functionality*. This means that any model that has *only* relationships to other models in the same group should be `private` , and any model that has cross-group relationships, or is a terminal node in the group DAG should be `protected` so that other parts of the DAG can continue to reference it.
 
 ```yml
 # in models/marketing/__models.yml
 
 models: 
   - name: fct_marketing_model
-    group: marketing
-    access: protected
+    config: 
+      group: marketing # changed to config in v1.10
+      access: protected # changed to config in v1.10
   - name: stg_marketing_model
-    group: marketing
-    access: private
+    config: 
+      group: marketing # changed to config in v1.10
+      access: private # changed to config in v1.10
 ```
 
 - **Validate these groups by incrementally migrating your jobs** to execute these groups specifically via selection syntax. We would recommend doing this in parallel to your production jobs until you’re sure about them. This will help you feel out if you’ve drawn the lines in the right place.
@@ -87,8 +91,8 @@ models:
 5. **Update `{{ ref }}` functions** &mdash; For any model that has a cross-project dependency (this may be in the files you moved, or in the files that remain in your project):
    1. Update the `{{ ref() }}` function to have two arguments, where the first is the name of the source project and the second is the name of the model: e.g. `{{ ref('jaffle_shop', 'my_upstream_model') }}`
    2. Update the upstream, cross-project parents’ `access` configs to `public` , ensuring any project can safely `{{ ref() }}` those models.
-   3. We *highly* recommend adding a [model contract](/docs/collaborate/govern/model-contracts) to the upstream models to ensure the data shape is consistent and reliable for your downstream consumers.
-6. **Create a `dependencies.yml` file** ([docs](/docs/collaborate/govern/project-dependencies)) for the downstream project, declaring the upstream project as a dependency.
+   3. We *highly* recommend adding a [model contract](/docs/mesh/govern/model-contracts) to the upstream models to ensure the data shape is consistent and reliable for your downstream consumers.
+6. **Create a `dependencies.yml` file** ([docs](/docs/mesh/govern/project-dependencies)) for the downstream project, declaring the upstream project as a dependency.
 
 ```yml
 
@@ -137,7 +141,7 @@ The migration steps here are much simpler than splitting up a monolith!
 ## Additional Resources
 ### Our example projects
 
-We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo dbt Mesh. Note that you'll need to leverage dbt Cloud to use multi-project architecture, as cross-project references are powered via dbt Cloud's APIs.
+We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo <Constant name="mesh" />. Note that you'll need to leverage <Constant name="cloud" /> to use multi-project architecture, as cross-project references are powered via <Constant name="cloud" />'s APIs.
 
 - **[Platform](https://github.com/dbt-labs/jaffle-shop-mesh-platform)** - containing our centralized staging models.
 - **[Marketing](https://github.com/dbt-labs/jaffle-shop-mesh-marketing)** - containing our marketing marts.
@@ -148,4 +152,4 @@ We've provided a set of example projects you can use to explore the topics cover
 We recommend using the `dbt-meshify` [command line tool](<https://dbt-labs.github.io/dbt-meshify/>) to help you do this. This comes with CLI operations to automate most of the above steps.
 
 ## Related docs
-- [Quickstart with dbt Mesh](/guides/mesh-qs)
+- [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)

@@ -1,5 +1,6 @@
 ---
 title: "About dbt compile command"
+description: "The dbt compile command creates executable SQL from model, test, and analysis files."
 sidebar_label: "compile"
 id: "compile"
 ---

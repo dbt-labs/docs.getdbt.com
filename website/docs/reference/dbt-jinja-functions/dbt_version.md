@@ -25,5 +25,5 @@ currently running. It can be used for debugging or auditing purposes. For detail
 
 ```
 $ dbt run-operation get_version
-The installed version of dbt is 0.16.0
+The installed version of dbt is 1.6.0
 ```

@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Fabric DWH configurations"
+title: "Microsoft Fabric Data Warehouse configurations"
 id: "fabric-configs"
 ---
 
@@ -59,7 +59,7 @@ models:
 ## Seeds
 
 By default, `dbt-fabric` will attempt to insert seed files in batches of 400 rows.
-If this exceeds Microsoft Fabric Synapse Data Warehouse 2100 parameter limit, the adapter will automatically limit to the highest safe value possible.
+If this exceeds Microsoft Fabric Data Warehouse 2100 parameter limit, the adapter will automatically limit to the highest safe value possible.
 
 To set a different default seed value, you can set the variable `max_batch_size` in your project configuration.
 
@@ -79,11 +79,11 @@ If, for example, any column has a `NOT NULL` constraint, an error will be thrown
 
 ## Indexes
 
-Indexes are not supported by Microsoft Fabric Synapse Data Warehouse. Any Indexes provided as a configuration is ignored by the adapter.
+Indexes are not supported by Microsoft Fabric Data Warehouse. Any Indexes provided as a configuration is ignored by the adapter.
 
 ## Grants with auto provisioning
 
-Grants with auto provisioning is not supported by Microsoft Fabric Synapse Data Warehouse at this time.
+Grants with auto provisioning is not supported by Microsoft Fabric Data Warehouse at this time.
 
 ## Incremental
 
@@ -101,5 +101,5 @@ Not supported at this time.
 
 ## dbt-utils
 
-Not supported at this time. However, dbt-fabric offers some utils macros. Please check out [utils macros](https://github.com/microsoft/dbt-fabric/tree/main/dbt/include/fabric/macros/utils).
+Not supported at this time. However, dbt-fabric offers some dbt-utils macros. Please check out the [tsql-utils package](https://github.com/dbt-msft/tsql-utils).
 

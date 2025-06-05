@@ -5,7 +5,7 @@ id: "mindsdb-configs"
 
 ## Authentication
 
-To succesfully connect dbt to MinsDB you will need to provide the following configuration from the MindsDB instance.
+To succesfully connect dbt to MindsDB, you will need to provide the following configuration from the MindsDB instance.
 
 | Key   | Required| Description | Self-hosted | MindsDB Cloud |
 |---------|-------------------------|---------------------------|-------------------------|--------------------------|

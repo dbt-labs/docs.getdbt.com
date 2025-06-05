@@ -30,6 +30,8 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 <File name='dbt_project.yml'>
 
+<VersionBlock lastVersion="1.9">
+
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -40,13 +42,29 @@ models:
 
 ```
 
+</VersionBlock>
 
+<VersionBlock firstVersion="1.10">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
+    [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[build_after](/reference/resource-configs/build-after): <dict>
+
+  ```
+
+</VersionBlock>
 </File>
 
 </TabItem>
 
-
 <TabItem value="property-yaml">
+
+<VersionBlock lastVersion="1.9">
 
 <File name='models/properties.yml'>
 
@@ -62,15 +80,51 @@ models:
       [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
+</File>
+</VersionBlock>
 
+<VersionBlock firstVersion="1.10">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+```
 </File>
 
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      freshness:
+        # build_after is nested under freshness
+        [build_after](/reference/resource-configs/build-after): <dict>
+```
+
+</File>
+</VersionBlock>
 </TabItem>
 
 
 <TabItem value="config">
 
 <File name='models/<model_name>.sql'>
+
+<VersionBlock lastVersion="1.9">
 
 ```sql
 
@@ -82,6 +136,23 @@ models:
 ) }}
 
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+
+```sql
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="<materialization_name>",
+    [sql_header](/reference/resource-configs/sql_header)="<string>"
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
+    [build_after](/reference/resource-configs/build-after)="<dict>"
+) }}
+```
+
+</VersionBlock>
 
 </File>
 
@@ -352,3 +423,30 @@ models:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.10">
+
+### Configuring source freshness
+
+The model `freshness` config rebuilds models only when new source or upstream data is available. This is useful for models that depend on other models but only need to be updated periodically. For more information, see [freshness](/reference/resource-configs/freshness).
+
+See the following example of a `my_model.yml` file using the `freshness` config:
+
+<File name="models/my_model.yml">
+  
+```yml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        build_after:  # build this model no more often than every X amount of time, as long as as it has new data
+          count: positive_integer
+          period: minute | hour | day
+          updates_on: any | all # optional config
+```
+  
+</File>
+
+</VersionBlock>
+
+

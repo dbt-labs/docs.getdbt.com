@@ -4,70 +4,47 @@ sidebar_label: "Use dbt Copilot"
 description: "Use dbt Copilot to generate documentation, tests, semantic models, and sql code from scratch, giving you the flexibility to modify or fix generated code." 
 ---
 
-# Use dbt Copilot <Lifecycle status='beta'/> 
+import CopilotResources from '/snippets/_use-copilot-resources.md';
+import CopilotEditCode from '/snippets/_use-copilot-edit-code.md';
+import CopilotVE from '/snippets/_use-copilot-ve.md';
 
-Use dbt Copilot to generate documentation, tests, semantic models, and code from scratch, giving you the flexibility to modify or fix generated code.
+# Use dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
-This page explains how to use dbt Copilot to:
+<IntroText>
+Use <Constant name="copilot" /> to generate documentation, tests, semantic models, and code from scratch, giving you the flexibility to modify or fix generated code.
 
-- [Generate resources](#generate-resources) &mdash; Save time by using dbt Copilot’s generation button to generate documentation, tests, and semantic model files during your development.
-- [Generate and edit code](#generate-and-edit-code) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code.
+</IntroText>
 
-## Generate resources
+This page explains how to use <Constant name="copilot" /> to:
 
-Generate documentation, tests, and semantic models resources with the click-of-a-button using dbt Copilot, saving you time. To access and use this AI feature:
+- [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />’s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- [Build visual models](#build-visual-models) &mdash; Use <Constant name="copilot" /> to generate models in [<Constant name="visual_editor" />](/docs/cloud/use-canvas) with natural language prompts.
+- [Build queries](#build-queries) &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="query_page" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
 
-1. Navigate to the dbt Cloud IDE and select a SQL model file under the **File Explorer**.
-2. In the **Console** section (under the **File Editor**), click **dbt Copilot** to view the available AI options.
-3. Select the available options to generate the YAML config: **Generate Documentation**, **Generate Tests**, or **Generate Semantic Model**.
-   - To generate multiple YAML configs for the same model, click each option separately. dbt Copilot intelligently saves the YAML config in the same file.
-4. Verify the AI-generated code. You can update or fix the code as needed.
-5. Click **Save As**. You should see the file changes under the **Version control** section.
+## Generate resources 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
+<CopilotResources/>
 
-## Generate and edit code <Lifecycle status='beta'/>
+## Generate and edit SQL inline
 
-dbt Copilot also allows you to generate SQL code directly within the SQL file in the dbt Cloud IDE, using natural language prompts. This means you can rewrite or add specific portions of the SQL file without needing to edit the entire file. 
+<CopilotEditCode/>
 
-This intelligent AI tool streamlines SQL development by reducing errors, scaling effortlessly with complexity, and saving valuable time. dbt Copilot's [prompt window](#use-the-prompt-window), accessible by keyboard shortcut, handles repetitive or complex SQL generation effortlessly so you can focus on high-level tasks. 
+<Constant name="copilot" /> seamlessly integrates with the [<Constant name="visual_editor" />](/docs/cloud/canvas), a drag-and-drop experience that helps you build your visual models using natural language prompts. Before you begin, make sure you can [access the <Constant name="visual_editor" />](/docs/cloud/use-canvas#access-canvas).
 
-Use Copilot's prompt window for use cases like:
+<CopilotVE/>
 
-- Writing advanced transformations
-- Performing bulk edits efficiently
-- Crafting complex patterns like regex
+Use <Constant name="copilot" /> to build queries in [<Constant name="query_page" />](/docs/explore/dbt-insights) with natural language prompts to seamlessly explore and query data with an intuitive, context-rich interface. Before you begin, make sure you can [access <Constant name="query_page" />](/docs/explore/access-dbt-insights).
 
-### Use the prompt window 
+To begin building SQL queries with natural language prompts in <Constant name="query_page" />:
 
-Access dbt Copilot's AI prompt window using the keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows) to:
+1. Click on the **<Constant name="copilot" />** icon in Query console sidebar menu.
+2. In the dbt Copilot prompt box, enter your prompt in natural language for dbt Copilot to build the SQL query you want. <!--You can also reference existing models using the `@` symbol. For example, to build a model that calculates the total price of orders, you can enter `@orders` in the prompt and it'll pull in and reference the `orders` model.-->
+3. Click **Submit** and <Constant name="copilot" /> generates a summary of the SQL query you want to build. To clear the prompt, click on the **Clear** button. To close the prompt box, click the <Constant name="copilot" /> icon again.
+4. <Constant name="copilot" /> will automatically generate the SQL with an explanation of the query. 
+   - Click **Add** to add the generated SQL to the existing query. 
+   - Click **Replace** to replace the existing query with the generated SQL.
+5. In the **Query console menu**, click the **Run** button to preview the data.
+6. Confirm the results or continue building your model. 
 
-#### 1. Generate SQL from scratch
-- Use the keyboard shortcuts Cmd+B (Mac) or Ctrl+B (Windows) to generate SQL from scratch.
-- Enter your instructions to generate SQL code tailored to your needs using natural language.
-- Ask dbt Copilot to fix the code or add a specific portion of the SQL file.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/copilot-sql-generation-prompt.jpg" width="90%" title="dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />
-
-#### 2. Edit existing SQL code
-- Highlight a section of SQL code and press Cmd+B (Mac) or Ctrl+B (Windows) to open the prompt window for editing.
-- Use this to refine or modify specific code snippets based on your needs.
-- Ask dbt Copilot to fix the code or add a specific portion of the SQL file.
-
-#### 3. Review changes with the diff view to quickly assess the impact of the changes before making changes
-- When a suggestion is generated, Copilot displays a visual "diff" view to help you compare the proposed changes with your existing code:
-  - **Green**: Means new code that will be added if you accept the suggestion.
-  - **Red**: Highlights existing code that will be removed or replaced by the suggested changes.
-
-#### 4. Accept or reject suggestions
-- **Accept**: If the generated SQL meets your requirements, click the **Accept** button to apply the changes directly to your `.sql` file directly in the IDE.
-- **Reject**: If the suggestion don’t align with your request/prompt, click **Reject** to discard the generated SQL without making changes and start again.
-
-#### 5. Regenerate code
-- To regenerate, press the **Escape** button on your keyboard (or click the Reject button in the popup). This will remove the generated code and puts your cursor back into the prompt text area. 
-- Update your prompt and press **Enter** to try another generation. Press **Escape** again to close the popover entirely.
-
-Once you've accepted a suggestion, you can continue to use the prompt window to generate additional SQL code and commit your changes to the branch.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/copilot-sql-generation.gif" width="100%" title="Edit existing SQL code using dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />
-
+<Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="95%" title="dbt Copilot in dbt Insights" />

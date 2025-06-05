@@ -19,7 +19,7 @@ These properties are:
 - [`tests`](/reference/resource-properties/data-tests)
 - [`docs`](/reference/resource-configs/docs)
 - `columns`
-- [`quote`](/reference/resource-properties/quote)
+- [`quote`](/reference/resource-properties/columns#quote)
 - [`source` properties](/reference/source-properties) (e.g. `loaded_at_field`, `freshness`)
 - [`exposure` properties](/reference/exposure-properties) (e.g. `type`, `maturity`)
-- [`macro` properties](/reference/macro-properties) (e.g. `arguments`)
+- [`macro` properties](/reference/resource-properties/arguments) (e.g. `arguments`)

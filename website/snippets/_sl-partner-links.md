@@ -4,6 +4,12 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="grid--3-col">
 
+<Card
+    title="Power BI"
+    link="/docs/cloud-integrations/semantic-layer/power-bi"
+    body="Use reports to query the dbt Semantic Layer with Power BI and produce dashboards with trusted data."
+    icon="pbi"/>
+
  <Card
     title="Tableau"
     link="/docs/cloud-integrations/semantic-layer/tableau"

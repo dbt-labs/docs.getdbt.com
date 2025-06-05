@@ -29,7 +29,7 @@ group by 1
 
 ```txt
 $ dbt run
-Running with dbt=0.16.0
+Running with dbt=1.6.0
 Found 2 models, 28 tests, 0 snapshots, 0 analyses, 130 macros, 0 operations, 0 seed files, 3 sources
 
 11:42:52 | Concurrency: 8 threads (target='dev_snowflake')

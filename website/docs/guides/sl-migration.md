@@ -8,7 +8,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Semantic Layer','Migration']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -20,20 +19,20 @@ The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_
 
 ## Migrate metric configs to the new spec
 
-The metrics specification in dbt Core is changed in v1.6 to support the integration of MetricFlow. It's strongly recommended that you refer to [Build your metrics](/docs/build/build-metrics-intro) and before getting started so you understand the core concepts of the Semantic Layer. 
+The metrics specification in <Constant name="core" /> is changed in v1.6 to support the integration of MetricFlow. It's strongly recommended that you refer to [Build your metrics](/docs/build/build-metrics-intro) and before getting started so you understand the core concepts of the <Constant name="semantic_layer" />. 
 
-dbt Labs recommends completing these steps in a local dev environment (such as the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)) instead of the dbt Cloud IDE: 
+dbt Labs recommends completing these steps in a local dev environment (such as the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)) instead of the <Constant name="cloud_ide" />: 
 
 1. Create new Semantic Model configs as YAML files in your dbt project.*
 1. Upgrade the metrics configs in your project to the new spec.* 
 1. Delete your old metrics file or remove the `.yml` file extension so they're ignored at parse time. Remove the `dbt-metrics` package from your project. Remove any macros that reference `dbt-metrics`, like `metrics.calculate()`. Make sure that any packages you’re using don't have references to the old metrics spec. 
-1. Install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run MetricFlow commands and define your semantic model configurations.
+1. Install the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) to run MetricFlow commands and define your semantic model configurations.
    - If you're using dbt Core, install the [MetricFlow CLI](/docs/build/metricflow-commands) with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
 
     ```bash
     python -m pip install "dbt-metricflow[snowflake]"
     ```
-    **Note** - MetricFlow commands aren't yet supported in the dbt CLoud IDE at this time.
+    **Note** - MetricFlow commands aren't yet supported in the <Constant name="cloud_ide" /> at this time.
 
 2. Run `dbt parse`. This parses your project and creates a `semantic_manifest.json` file in your target directory. MetricFlow needs this file to query metrics. If you make changes to your configs, you will need to parse your project again. 
 3. Run `mf list metrics` to view the metrics in your project.
@@ -77,7 +76,7 @@ You might need to audit metric values during the migration to ensure that the hi
 
 This step is only relevant to users who want the legacy and new semantic layer to run in parallel for a short time. This will let you recreate content in downstream tools like Hex and Mode with minimal downtime. If you do not need to recreate assets in these tools skip to step 5.
 
-1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6 or higher.
+1. Create a new deployment environment in <Constant name="cloud" /> and set the dbt version to 1.6 or higher.
    
 2. Select **Only run on a custom branch** and point to the branch that has the updated metric definition.
 
@@ -85,26 +84,26 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds. There needs to be a successful job in your environment in order to set up the semantic layer.
 
-5. Select **Account Settings** -> **Projects** -> **Project details** and choose **Configure the Semantic Layer**. 
+5. Select **Account Settings** -> **Projects** -> **Project details** and choose **Configure the <Constant name="semantic_layer" />**. 
 
 6. Under **Environment**, select the deployment environment you created in the previous step. Save your configuration.
 
-7. In the **Project details** page, click **Generate service token** and grant it **Semantic Layer Only** and **Metadata Only** permissions. Save this token securely. You will need it to connect to the semantic layer. 
+7. In the **Project details** page, click **Generate service token** and grant it **<Constant name="semantic_layer" /> Only** and **Metadata Only** permissions. Save this token securely. You will need it to connect to the semantic layer. 
 
 
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
 
 ## Update connection in downstream integrations
 
-Now that your Semantic Layer is set up, you will need to update any downstream integrations that used the legacy Semantic Layer. 
+Now that your <Constant name="semantic_layer" /> is set up, you will need to update any downstream integrations that used the legacy <Constant name="semantic_layer" />. 
 
 ### Migration guide for Hex 
 
-To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex. 
+To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [<Constant name="semantic_layer" /> cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex. 
 
-1. Set up a new connection for the dbt Semantic Layer for your account. Something to note is that your legacy connection will still work.
+1. Set up a new connection for the <Constant name="semantic_layer" /> for your account. Something to note is that your legacy connection will still work.
 
-2. Re-create the dashboards or reports that use the legacy dbt Semantic Layer. 
+2. Re-create the dashboards or reports that use the legacy <Constant name="semantic_layer" />. 
 
 3. For specific SQL syntax details, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
 
@@ -114,7 +113,7 @@ To learn more about integrating with Hex, check out their [documentation](https:
 
 1. Set up a new connection for the semantic layer for your account. Follow [Mode's docs to setup your connection](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer).
 
-2. Re-create the dashboards or reports that use the legacy dbt Semantic Layer. 
+2. Re-create the dashboards or reports that use the legacy <Constant name="semantic_layer" />. 
 
 3. For specific SQL syntax details, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
    
@@ -127,17 +126,17 @@ To learn more about integrating with Hex, check out their [documentation](https:
 
 If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in-a-new-environment):
 
-3. Update your Environment in **Account Settings** -> **Project Details** -> **Edit Semantic Layer Configuration** to point to your production environment
+3. Update your Environment in **Account Settings** -> **Project Details** -> **Edit <Constant name="semantic_layer" /> Configuration** to point to your production environment
 
 4. Delete your migration environment. Be sure to update your connection details in any downstream tools to account for the environment change.
 
 ### Related docs 
 
-- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [Quickstart guide with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs)
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
-- [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
-- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
+- [<Constant name="semantic_layer" /> API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- [<Constant name="semantic_layer" /> on-demand course](https://learn.getdbt.com/courses/semantic-layer)
 
 </div>

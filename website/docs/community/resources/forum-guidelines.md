@@ -25,10 +25,10 @@ The community [Rules of the Road](https://docs.getdbt.com/docs/contributing/slac
 The forum is broken down into three categories:
 
 - [Help](https://discourse.getdbt.com/c/help/19)
-  - This is a Q&A style forum where you can ask the dbt Community for help with specific questions about dbt, dbt Cloud, data modeling, or anything else you want a definitive answer on.
+  - This is a Q&A style forum where you can ask the dbt Community for help with specific questions about dbt, <Constant name="cloud" />, data modeling, or anything else you want a definitive answer on.
   - This category is for questions which can plausibly have a _single correct answer_.
     - ✅ How do I debug this Jinja error?
-    - ✅ How do I set up CI in dbt Cloud on GitHub?
+    - ✅ How do I set up CI in <Constant name="cloud" /> on GitHub?
     - ❌ What is the best way to do marketing attribution? (More general Discussions like this are perfect for the [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21) category)
 - [Show and Tell](https://discourse.getdbt.com/c/show-and-tell/22)
   - This is the place to show off all of the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!

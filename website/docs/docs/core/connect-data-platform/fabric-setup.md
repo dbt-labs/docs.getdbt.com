@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Fabric Synapse Data Warehouse setup"
-description: "Read this guide to learn about the Microsoft Fabric Synapse Data Warehouse setup in dbt."
+title: "Microsoft Fabric Data Warehouse setup"
+description: "Read this guide to learn about the Microsoft Fabric Data Warehouse setup in dbt."
 id: fabric-setup
 meta:
   maintained_by: Microsoft
@@ -13,13 +13,14 @@ meta:
   config_page: '/reference/resource-configs/fabric-configs'
 ---
 
-:::info
+<Snippet path="warehouse-setups-cloud-callout" />
 
-Below is a guide for use with [Synapse Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently only supports connecting to a warehouse and not a lakehouse endpoint. You can access data in your lakehouse via the warehouse if you are in the same workspace. 
+Below is a guide for use with [Fabric Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently supports connecting to a warehouse. 
 
-To learn how to set up dbt with Azure Synapse Dedicated Pools, refer to [Microsoft Azure Synapse DWH setup](/docs/core/connect-data-platform/azuresynapse-setup).
+To learn how to set up dbt using Fabric Lakehouse, refer to [Microsoft Fabric Lakehouse](/docs/core/connect-data-platform/fabricspark-setup).
 
-:::
+To learn how to set up dbtAnalytics dedicated SQL pools, refer to [Microsoft Azure Synapse Analytics setup](/docs/core/connect-data-platform/azuresynapse-setup).
+
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -39,7 +40,7 @@ If you already have ODBC Driver 17 installed, then that one will work as well.
 
 #### Supported configurations
 
-* The adapter is tested with Microsoft Fabric Synapse Data Warehouses (also referred to as Warehouses).
+* The adapter is tested with Microsoft Fabric Data Warehouse (also referred to as warehouses).
 * We test all combinations with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
 * The collations we run our tests on are `Latin1_General_100_BIN2_UTF8`.
 
@@ -82,11 +83,11 @@ More details about how these values affect your connection and how they are used
 
 ### Standard SQL Server authentication
 
-SQL Server and windows authentication are not supported by Microsoft Fabric Synapse Data Warehouse.
+SQL Server and windows authentication are not supported by Microsoft Fabric Data Warehouse.
 
 ### Microsoft Entra ID authentication
 
-Microsoft Entra ID (formerly Azure AD) authentication is a default authentication mechanism in Microsoft Fabric Synapse Data Warehouse.
+Microsoft Entra ID (formerly Azure AD) authentication is a default authentication mechanism in Microsoft Fabric Data Warehouse.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
@@ -320,7 +321,7 @@ your_profile_name:
 
 ### Automatic Microsoft Entra ID principal provisioning for grants
 
-Please note that automatic Microsoft Entra ID principal provisioning is not supported by Microsoft Fabric Synapse Data Warehouse at this time. Even though in dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups, the data warehouse does not support this feature at this time.
+Please note that automatic Microsoft Entra ID principal provisioning is not supported by Microsoft Fabric Data Warehouse at this time. Even though in dbtn use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups, the data warehouse does not support this feature at this time.
 
 You need to add the service principal or Microsoft Entra identity to a Fabric Workspace as an admin
 

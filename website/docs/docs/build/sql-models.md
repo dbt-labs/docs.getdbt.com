@@ -1,6 +1,6 @@
 ---
 title: "SQL models"
-description: "Read this tutorial to learn how to use SQL models when building in dbt."
+description: "SQL models are the building blocks of your dbt project."
 id: "sql-models"
 ---
 
@@ -23,7 +23,7 @@ dbt's Python capabilities are an extension of its capabilities with SQL models. 
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
-- The model name is inherited from the filename.
+- The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="explorer" />](/docs/explore/explore-projects).
 - We strongly recommend using underscores for model names, not dots. For example, use `models/my_model.sql` instead of `models/my.model.sql`.
 - Models can be nested in subdirectories within the `models` directory.
 
@@ -108,13 +108,22 @@ You can use _configurations_ to change any of these behaviors — more on that l
 <FAQ path="Models/sql-dialect" />
 
 ## Configuring models
-Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
+Configurations are "model settings" that you can set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
 
 * Changing the <Term id="materialization" /> that a model uses &mdash; a [materialization](/docs/build/materializations) determines the SQL that dbt uses to create the model in your warehouse.
 * Build models into separate [schemas](/docs/build/custom-schemas).
 * Apply [tags](/reference/resource-configs/tags) to a model.
 
-Here's an example of model configuration:
+The following diagram shows an example directory structure of a models folder:
+
+```
+models
+├── staging
+└── marts
+    └── marketing
+```
+
+Here's an example of a model configuration:
 
 <File name='dbt_project.yml'>
 

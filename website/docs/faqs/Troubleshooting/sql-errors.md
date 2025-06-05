@@ -11,7 +11,7 @@ If there's a mistake in your SQL, dbt will return the error that your database r
 
 ```shell
 $ dbt run --select customers
-Running with dbt=0.15.0
+Running with dbt=1.9.0
 Found 3 models, 9 tests, 0 snapshots, 0 analyses, 133 macros, 0 operations, 0 seed files, 0 sources
 
 14:04:12 | Concurrency: 1 threads (target='dev')

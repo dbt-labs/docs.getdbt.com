@@ -1,7 +1,7 @@
 ---
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
-description: "Read this tutorial to learn how to use data tests when building in dbt."
+description: "Configure dbt data tests to assess the quality of your input data and ensure accuracy in resulting datasets."
 pagination_next: "docs/build/unit-tests"
 pagination_prev: null
 search_weight: "heavy"
@@ -145,7 +145,7 @@ In plain English, these data tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
+You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests). You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
 ### More generic data tests
 
@@ -199,7 +199,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
 3. Check out the SQL dbt is running by either:
-   * **dbt Cloud:** checking the Details tab.
+   * **<Constant name="cloud" />:** checking the Details tab.
    * **dbt Core:** checking the `target/compiled` directory
 
 
@@ -291,12 +291,6 @@ Note that, if you select to store test failures:
 
 
 ## New `data_tests:` syntax
-
-<VersionBlock lastVersion="1.7">
-
-In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information, select version v1.8 from the documentation navigation menu.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.8">
   

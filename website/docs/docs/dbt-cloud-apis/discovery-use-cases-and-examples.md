@@ -3,7 +3,7 @@ title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
 ---
 
-With the Discovery API, you can query the metadata in dbt Cloud to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
+With the Discovery API, you can query the metadata in <Constant name="cloud" /> to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
 
 You can use the API in a variety of ways to get answers to your business questions. Below describes some of the uses of the API and is meant to give you an idea of the questions this API can help you answer.
 
@@ -25,7 +25,7 @@ For performance use cases, people typically query the historical or latest appli
 
 It’s helpful to understand how long it takes to build models (tables) and tests to execute during a dbt run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
 
 <details>
 <summary>Example query with code</summary>
@@ -497,7 +497,7 @@ Graph example:
 
 Checking [source freshness](/docs/build/sources#source-data-freshness) allows you to ensure that sources loaded and used in your dbt project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt"/>
 
 <details>
 <summary>Example query</summary>
@@ -548,7 +548,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ### What’s the test coverage and status?
 
-[Tests](https://docs.getdbt.com/docs/build/tests) are an important way to ensure that your stakeholders are reviewing high-quality data. You can execute tests during a dbt Cloud run. The Discovery API provides complete test results for a given environment or job, which it represents as the `children` of a given node that’s been tested (for example, a `model`).
+[Tests](https://docs.getdbt.com/docs/build/tests) are an important way to ensure that your stakeholders are reviewing high-quality data. You can execute tests during a dbt run. The Discovery API provides complete test results for a given environment or job, which it represents as the `children` of a given node that’s been tested (for example, a `model`).
 
 <details>
 <summary>Example query</summary>
@@ -906,7 +906,7 @@ Graph example:
 
 ### Which metrics are available?
 
-You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+You can define and query metrics using the [<Constant name="semantic_layer" />](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
 
 <details>
 <summary>Example query</summary>

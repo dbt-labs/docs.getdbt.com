@@ -42,7 +42,7 @@ from {{ref('model_a')}}
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
 The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [\{\{ this \}\} variable](/reference/dbt-jinja-functions/this).
-  - Note &mdash; Prior to dbt v1.6, the dbt Cloud IDE returns `request` as the result of `{{ ref.identifier }}`.
+  - Note &mdash; Prior to dbt v1.6, the <Constant name="cloud_ide" /> returns `request` as the result of `{{ ref.identifier }}`.
 
 ## Advanced ref usage
 
@@ -84,7 +84,7 @@ select * from {{ ref('model_name') }}
 
 You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and a model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages. 
 
-When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/collaborate/govern/project-dependencies).
+When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/mesh/govern/project-dependencies).
 
 The following syntax demonstrates how to reference a model from a specific project or package:
 
@@ -98,9 +98,11 @@ We especially recommend using two-argument `ref` to avoid ambiguity, in cases wh
 
 **Note:** The `project_or_package` should match the `name` of the project/package, as defined in its `dbt_project.yml`. This might be different from the name of the repository. It never includes the repository's organization name. For example, if you use the [`fivetran/stripe`](https://hub.getdbt.com/fivetran/stripe/latest/) package, the package name is `stripe`, not `fivetran/stripe`.
 
-### Forcing Dependencies
+### Forcing dependencies
 
-In normal usage, dbt knows the proper order to run all models based on the usage of the `ref` function. There are cases though where dbt doesn't know when a model should be run. An example of this is when a model only references a macro. In that case, dbt thinks the model can run first because no explicit references are made at compilation time. To address this, you can use a SQL comment along with the `ref` function — dbt will understand the dependency, and the compiled query will still be valid:
+In normal usage, dbt knows the proper order to run all models based on the use of the `ref` function. There are some cases where dbt doesn't know when a model should be run. For example, when a model only references a macro:
+- In this case, dbt thinks the model can run first because no explicit references are made at compilation time.
+- To address this, use a SQL comment along with the `ref` function &mdash; dbt will understand the dependency and the compiled query will still be valid:
 
 ```sql
  -- depends_on: {{ ref('upstream_parent_model') }}
@@ -110,7 +112,10 @@ In normal usage, dbt knows the proper order to run all models based on the usage
 
 dbt will see the `ref` and build this model after the specified reference.
 
-Another example is when a reference appears within an [`is_incremental()`](/docs/build/incremental-models#understand-the-is_incremental-macro) conditional block. This is because the `is_incremental()` macro will always return `false` at parse time, so any references within it can't be inferred. To handle this, you can use a SQL comment outside of the `is_incremental()` conditional:
+Another example is:
+- When a reference appears within an [`is_incremental()`](/docs/build/incremental-models#understand-the-is_incremental-macro) conditional block.
+- This is because the `is_incremental()` macro will always return `false` at parse time, so any references within it can't be inferred.
+- To handle this, you can use a SQL comment outside of the `is_incremental()` conditional:
 
 ```sql
 -- depends_on: {{ source('raw', 'orders') }}
@@ -119,3 +124,7 @@ Another example is when a reference appears within an [`is_incremental()`](/docs
 select * from {{ source('raw', 'orders') }}
 {% endif %}
 ```
+
+:::tip
+To ensure dbt understands the dependency, use a SQL comment instead of a Jinja comment. Jinja comments (`{# ... #}`) _don't_ work and are ignored by dbt's parser, meaning `ref` is never processed and resolved. SQL comments, however, (`--` or `/* ... */`) _do_ work because dbt still evaluates Jinja inside SQL comments.
+:::

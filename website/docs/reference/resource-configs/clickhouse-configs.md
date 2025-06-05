@@ -250,7 +250,7 @@ issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
 
 ## Cross database macro support
 
-dbt-clickhouse supports most of the cross database macros now included in dbt-core, with the following exceptions:
+dbt-clickhouse supports most of the cross database macros now included in <Constant name="core" />, with the following exceptions:
 
 * The `split_part` SQL function is implemented in ClickHouse using the splitByChar function. This function requires
   using a constant string for the "split" delimiter, so the `delimeter` parameter used for this macro will be

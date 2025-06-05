@@ -14,6 +14,7 @@ import CopyButton from '@theme/CodeBlock/CopyButton';
 import WordWrapButton from '@theme/CodeBlock/WordWrapButton';
 import Container from '@theme/CodeBlock/Container';
 import styles from './styles.module.css';
+
 // Prism languages are always lowercase
 // We want to fail-safe and allow both "php" and "PHP"
 // See https://github.com/facebook/docusaurus/issues/9012
@@ -27,6 +28,7 @@ import squashLinks from './inline-link';
 function normalizeLanguage(language) {
   return language?.toLowerCase();
 }
+
 export default function CodeBlockString({
   children,
   className: blockClassName = '',
@@ -46,14 +48,20 @@ export default function CodeBlockString({
   // We still parse the metastring in case we want to support more syntax in the
   // future. Note that MDX doesn't strip quotes when parsing metastring:
   // "title=\"xyz\"" => title: "\"xyz\""
+
   const title = parseCodeBlockTitle(metastring) || titleProp;
   const {lineClassNames, code} = parseLines(children, {
     metastring,
     language,
     magicComments,
   });
+
   const showLineNumbers =
     showLineNumbersProp ?? containsLineNumbers(metastring);
+
+  // ✅ Strip markdown for clean copying
+  const plainTextCode = children.trim().replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
   return (
     <Container
       as="div"
@@ -67,44 +75,45 @@ export default function CodeBlockString({
       <div className={styles.codeBlockContent}>
         <Highlight theme={prismTheme} code={code} language={language ?? 'text'}>
           {({className, style, tokens, getLineProps, getTokenProps}) => (
-            <pre
-              tabIndex={0}
-              ref={wordWrap.codeBlockRef}
-              className={clsx(className, styles.codeBlock, 'thin-scrollbar')}
-              style={style}>
-              <code
-                className={clsx(
-                  styles.codeBlockLines,
-                  showLineNumbers && styles.codeBlockLinesWithNumbering,
-                )}>
-                {tokens.map((line, i) => {
-                  const squashedLine = squashLinks(line);
-                  return (
-                    <Line
-                      key={i}
-                      line={squashedLine}
-                      getLineProps={getLineProps}
-                      getTokenProps={getTokenProps}
-                      classNames={lineClassNames[i]}
-                      showLineNumbers={showLineNumbers}
-                    />
-                  );
-                } 
+            <>
+              <pre
+                tabIndex={0}
+                ref={wordWrap.codeBlockRef}
+                className={clsx(className, styles.codeBlock, 'thin-scrollbar')}
+                style={style}>
+                <code
+                  className={clsx(
+                    styles.codeBlockLines,
+                    showLineNumbers && styles.codeBlockLinesWithNumbering,
+                  )}>
+                  {tokens.map((line, i) => {
+                    const squashedLine = squashLinks(line);
+                    return (
+                      <Line
+                        key={i}
+                        line={squashedLine}
+                        getLineProps={getLineProps}
+                        getTokenProps={getTokenProps}
+                        classNames={lineClassNames[i]}
+                        showLineNumbers={showLineNumbers}
+                      />
+                    );
+                  })}
+                </code>
+              </pre>
+              <div className={styles.buttonGroup}>
+                {(wordWrap.isEnabled || wordWrap.isCodeScrollable) && (
+                  <WordWrapButton
+                    className={styles.codeButton}
+                    onClick={() => wordWrap.toggle()}
+                    isEnabled={wordWrap.isEnabled}
+                  />
                 )}
-              </code>
-            </pre>
+                <CopyButton className={styles.codeButton} code={plainTextCode} />
+              </div>
+            </>
           )}
         </Highlight>
-        <div className={styles.buttonGroup}>
-          {(wordWrap.isEnabled || wordWrap.isCodeScrollable) && (
-            <WordWrapButton
-              className={styles.codeButton}
-              onClick={() => wordWrap.toggle()}
-              isEnabled={wordWrap.isEnabled}
-            />
-          )}
-          <CopyButton className={styles.codeButton} code={code} />
-        </div>
       </div>
     </Container>
   );

@@ -34,6 +34,7 @@ unit_tests:
     config: 
       meta: {dictionary}
       tags: <string> | [<string>]
+      enabled: {boolean} # optional. v1.9 or higher. If not configured, defaults to `true`
     given:
       - input: <ref_or_source_call> # optional for seeds
         format: dict | csv | sql

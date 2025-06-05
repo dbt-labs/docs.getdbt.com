@@ -1,9 +1,9 @@
 ---
-title: "Quickstart for dbt Cloud and Teradata"
+title: "Quickstart for dbt and Teradata"
 id: "teradata"
 level: 'Beginner'
 icon: 'teradata'
-tags: ['dbt Cloud','Quickstart','Teradata']
+tags: ['dbt platform', 'Quickstart','Teradata']
 hide_table_of_contents: true
 ---
 
@@ -11,11 +11,11 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Teradata Vantage. It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Teradata Vantage. It will show you how to:
 
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
-- Connect dbt Cloud to Teradata.
+- Connect <Constant name="cloud" /> to Teradata.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -27,7 +27,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/).
+- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/).
 - You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
 ### Related content
@@ -43,9 +43,9 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 The following steps will guide you through how to get the data stored as CSV files in a public S3 bucket and insert it into the tables.
 
-:::tip SQL IDE
+:::tip SQL <Constant name="cloud_ide" />
 
-If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL IDE handy, use the JupyterLab bundled with your database to execute SQL:
+If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="cloud_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
 
 1. Navigate to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click the **Run Demos** button. The demo will launch JupyterLab.
 
@@ -102,36 +102,36 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
     NO PRIMARY INDEX;
     ```
 
-## Connect dbt Cloud to Teradata
+## Connect dbt to Teradata
 
-1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
+1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In **Configure your development environment**, click **Add new connection**.
 4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
 
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt Cloud - Choose Teradata Connection" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt - Choose Teradata Connection" />
   
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt Cloud - Teradata Account Settings" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
 5. Enter your **Development Credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
    * **Schema** &mdash; The default database to use
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
 
-6. Click **Test Connection** to verify that dbt Cloud can access your Teradata Vantage instance.
+6. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
 7. If the connection test succeeds, click **Next**. If it fails, check your Teradata settings and credentials.
 
-## Set up a dbt Cloud managed repository
+## Set up a dbt managed repository
 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
 
@@ -177,10 +177,10 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="cloud_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -633,7 +633,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
@@ -655,7 +655,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 3. Scroll down to the **Execution Settings** section.
 4. Under **Commands**, add this command as part of your job if you don't see it:
    * `dbt build`
-5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/collaborate/build-and-view-your-docs) each time your job runs. 
+5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs. 
 6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
 7. Select **Save**, then click **Run now** to run your job.
 8. Click the run and watch its progress under "Run history."

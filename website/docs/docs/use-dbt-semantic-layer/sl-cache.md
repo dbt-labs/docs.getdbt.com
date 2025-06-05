@@ -6,8 +6,9 @@ tags: [Semantic Layer]
 sidebar_label: "Cache common queries"
 ---
 
+# Cache common queries <Lifecycle status="managed,managed_plus" />
 
-The dbt Semantic Layer allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
+The <Constant name="semantic_layer" /> allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
 
 There are two different types of caching:
 
@@ -21,8 +22,8 @@ While you can use caching to speed up your queries and reduce compute time, know
 - Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
 
 ## Prerequisites
-- dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
-- dbt Cloud environments must be on [release tracks](/docs/dbt-versions/cloud-release-tracks) and not legacy dbt Core versions.
+- <Constant name="cloud" /> [Enterprise or Enterprise+](https://www.getdbt.com/) plans.
+- <Constant name="cloud" /> environments must be on [release tracks](/docs/dbt-versions/cloud-release-tracks) and not legacy <Constant name="core" /> versions.
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
@@ -58,7 +59,7 @@ For configuration details, refer to [Declarative caching setup](#declarative-cac
 
 How declarative caching works:
 - Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
-- Running a saved query triggers the dbt Semantic Layer to:
+- Running a saved query triggers the <Constant name="semantic_layer" /> to:
   - Build a cached table from a saved query, with exports defined, into your data platform.
   - Make sure any query requests that match the saved query's inputs use the cache, returning data more quickly.
   - Automatically invalidates the cache when it detects new and fresh data in any upstream models related to the metrics in your cached table.
@@ -68,13 +69,13 @@ How declarative caching works:
 
 <summary> 📹 Check out this video demo to see how declarative caching works!</summary>
 
-This video demonstrates the concept of declarative caching, how to run it using the dbt Cloud scheduler, and how fast your dashboards load as a result.
+This video demonstrates the concept of declarative caching, how to run it using the <Constant name="cloud" /> scheduler, and how fast your dashboards load as a result.
 
 <LoomVideo id='aea82a4dee364dfdb536e7b8068684e7' />
 
 </details>
 
-Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
+Refer to the following diagram, which illustrates what happens when the <Constant name="semantic_layer" /> receives a query request:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
 
@@ -113,11 +114,11 @@ saved-queries:
 
 ### Run your declarative cache
 
-After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the dbt Cloud job scheduler to build a cached table from a saved query into your data platform.
+After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the <Constant name="cloud" /> job scheduler to build a cached table from a saved query into your data platform.
 
-- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
+- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query <Constant name="cloud" />.
 - The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
-- The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your Semantic Layer user.
+- The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your <Constant name="semantic_layer" /> user.
 - The cache refreshes (or rebuilds) on the same schedule as the saved query job.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/cache-creation-flow.jpg" width="70%" title="Overview of the cache creation flow." />
@@ -126,9 +127,9 @@ After a successful job run, you can go back to your dashboard to experience the 
 
 ## Cache management
 
-dbt Cloud uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
+<Constant name="cloud" /> uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
 
-If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
+If an upstream model has data in it that was created after the cache was created, <Constant name="cloud" /> invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and <Constant name="cloud" /> will write a new cache the next time your saved query runs.
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
@@ -146,4 +147,4 @@ In the future, we plan to clone credentials, identify the minimum access level n
 ## Related docs
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - [Saved queries](/docs/build/saved-queries)
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

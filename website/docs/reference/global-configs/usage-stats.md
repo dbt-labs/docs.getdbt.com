@@ -16,9 +16,9 @@ Usage statistics are fired when dbt is invoked and when models are run. These ev
 
 For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
-- dbt Cloud has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
+- <Constant name="cloud" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
 
-- dbt Core users have telemetry enabled by default to help us understand usage patterns and improve the product. You can opt out of event tracking at any time by adding the following to your `dbt_project.yml` file:
+- <Constant name="core" /> users have telemetry enabled by default to help us understand usage patterns and improve the product. You can opt out of event tracking at any time by adding the following to your `dbt_project.yml` file:
 
   <File name="dbt_project.yml">
 

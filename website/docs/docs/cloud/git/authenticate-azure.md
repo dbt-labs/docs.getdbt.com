@@ -1,17 +1,17 @@
 ---
 title: "Authenticate with Azure DevOps"
 id: "authenticate-azure"
-description: "dbt Cloud developers need to authenticate with Azure DevOps."
+description: "dbt developers need to authenticate with Azure DevOps."
 sidebar_label: "Authenticate with Azure DevOps"
 pagination_next: null
 ---
 
 
-If you use the dbt Cloud IDE or dbt Cloud CLI to collaborate on your team's Azure DevOps dbt repo, you need to [link your dbt Cloud profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
+If you use the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to collaborate on your team's Azure DevOps dbt repo, you need to [link your <Constant name="cloud" /> profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
 
-## Link your dbt Cloud profile to Azure DevOps
+## Link your dbt profile to Azure DevOps
 
-Connect your dbt Cloud profile to Azure DevOps using OAuth:
+Connect your <Constant name="cloud" /> profile to Azure DevOps using OAuth:
 
 1. Click your account name at the bottom of the left-side menu and click **Account settings**
 2. Scroll down to **Your profile** and select **Personal profile**.
@@ -22,7 +22,7 @@ Connect your dbt Cloud profile to Azure DevOps using OAuth:
 5. When you see the permission request screen from Azure DevOps App, click **Accept**. 
    <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/OAuth Acceptance.png" title="Azure DevOps Authorization Screen"/>
 
-You will be directed back to dbt Cloud, and your profile should be linked. You are now ready to develop in dbt Cloud!
+You will be directed back to <Constant name="cloud" />, and your profile should be linked. You are now ready to develop in <Constant name="cloud" />!
 
 ## FAQs
 

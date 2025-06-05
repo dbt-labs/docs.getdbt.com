@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure Synapse DWH setup"
-description: "Read this guide to learn about the Mircosoft Azure Synapse warehouse setup in dbt."
+title: "Microsoft Azure Synapse Analytics setup"
+description: "Read this guide to learn about the Mircosoft Azure Synapse Analytics dedicated SQL pool setup in dbt."
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'
@@ -17,9 +17,9 @@ meta:
 
 :::info
 
-The following is a guide to using Azure Synapse Analytics Dedicated SQL Pools, formerly SQL DW. For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+The following is a guide to using Azure Synapse Analytics dedicated SQL pools (formerly SQL DW). For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
 
-Refer to [Microsoft Fabric Synapse Data Warehouse](/docs/core/connect-data-platform/fabric-setup) to set it up with dbt.
+For Microsoft Fabric setup with dbt, refer to [Microsoft Fabric Data Warehouse](/docs/core/connect-data-platform/fabric-setup).
 
 
 :::
@@ -32,7 +32,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 :::info Dedicated SQL only
 
-Azure Synapse offers both Dedicated SQL Pools and Serverless SQL Pools.
+Azure Synapse Analytics offers both dedicated SQL pools and serverless SQL pools.
 **Only Dedicated SQL Pools are supported by this adapter. 
 
 :::
@@ -45,7 +45,7 @@ On Debian/Ubuntu make sure you have the ODBC header files before installing
 sudo apt install unixodbc-dev
 ```
 
-Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
+Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
 :::tip Default settings change in dbt-synapse v1.2 / ODBC Driver 18

@@ -61,7 +61,7 @@ Example of how to version a page in the `dbt-versions.js` file:
 exports.versionedPages = [
     {
       "page": "docs/supported-data-platforms",
-      "firstVersion": "0.21",
+      "firstVersion": "1.0",
     }
 ]
 ```
@@ -87,10 +87,10 @@ This component can be added directly to a markdown file in a similar way as othe
 - **lastVersion** (optional): Sets the last version this piece of content is available for.
     - If **lastVersion** prop not set, it will be available from the **firstVersion,** up to the latest version.
 
-Both properties can be used together to set a range where the content should show. In the example below, this content will only show if the selected version is between **0.21** and **1.0**:
+Both properties can be used together to set a range where the content should show. In the example below, this content will only show if the selected version is between **1.5** and **1.9**:
 
 ```markdown
-<VersionBlock lastVersion="1.9">
+<VersionBlock firstVersion="1.5" lastVersion="1.9">
 
 	Versioned content here
 
@@ -99,17 +99,17 @@ Both properties can be used together to set a range where the content should sho
 
 ### Example for versioning entire pages
 
-On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v0.21.0 and later** shows `--select`, while **v-.20.x and earlier** changes this to `--models`.
+On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v1.5 and later** shows `DBT_DEFER`, while **v-.1.4 and earlier** changes this to `DBT_DEFER_TO_STATE`.
 
 ![oldway](https://user-images.githubusercontent.com/3880403/163254165-dea23266-2eea-4e65-b3f0-c7b6d3e51fc3.png)
 
 Below is how we can implement the same versioning using the new **VersionBlock** component:
 
-You see this block when the selected version is >= 0.21:
+You see this block when the selected version is >= 1.5:
 
 ```code
 
-<VersionBlock firstVersion="0.21">
+<VersionBlock firstVersion="1.5">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
@@ -119,10 +119,10 @@ $ dbt test --select [...] --defer --state path/to/artifacts
 </VersionBlock>
 ```
 
-You see this version block when the selected version is `<= 0.20`
+You see this version block when the selected version is `<= 1.9`
 
 ```code
-<VersionBlock lastVersion="0.20">
+<VersionBlock lastVersion="1.9">
 
 ```shell
 $ dbt run --models [...] --defer --state path/to/artifacts

@@ -2,13 +2,13 @@
 title: "About References"
 id: "references-overview"
 sidebar_label: "About References"
-description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
+description: "Connect dbt to any data platform in the dbt platform or dbt Core, using a dedicated adapter plugin"
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
 
-The References section contains reference materials for developing with dbt, which includes dbt Cloud and dbt Core.
+The References section contains reference materials for developing with dbt, which includes <Constant name="cloud" /> and <Constant name="core" />.
 
 Learn how to add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts.  <br />
 
@@ -22,7 +22,7 @@ Learn how to add more configurations to your dbt project or adapter, use propert
 
 <Card
     title="Platform-specific configurations"
-    body="Learn how to optimize performance with data platform-specific configurations in dbt Cloud and dbt Core."
+    body="Learn how to optimize performance with data platform-specific configurations in dbt and dbt Core."
     link="/reference/resource-configs/postgres-configs"
     icon="computer"/>
 

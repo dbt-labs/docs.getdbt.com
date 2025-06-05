@@ -9,7 +9,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Core','Troubleshooting']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -93,7 +92,7 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
-Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or dbt Cloud, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
+Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or <Constant name="cloud" />, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
 
 ## Adjust as necessary
 

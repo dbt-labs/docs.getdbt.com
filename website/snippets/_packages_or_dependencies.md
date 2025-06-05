@@ -3,8 +3,8 @@
 
 The following setup will work for every dbt project:
 
-- Add [any package dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-project-dependencies) to `packages.yml`
-- Add [any project dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-package-dependencies) to `dependencies.yml`
+- Add [any package dependencies](/docs/mesh/govern/project-dependencies#when-to-use-project-dependencies) to `packages.yml`
+- Add [any project dependencies](/docs/mesh/govern/project-dependencies#when-to-use-package-dependencies) to `dependencies.yml`
 
 However, you may be able to consolidate both into a single `dependencies.yml` file. Read the following section to learn more.
 
@@ -19,12 +19,12 @@ Use the following toggles to understand the differences and determine when to us
 
 <Expandable alt_header="When to use Project dependencies" >
 
-Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) and [cross-project reference](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) workflow:
+Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) and [cross-project reference](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) workflow:
 
 - Use `dependencies.yml` when you need to set up cross-project references between different dbt projects, especially in a dbt Mesh setup.
 - Use `dependencies.yml` when you want to include both projects and non-private dbt packages in your project's dependencies.
-  - Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like dbt Cloud.
-- Use `dependencies.yml` for organization and maintainability if you're using both [cross-project refs](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) and [dbt Hub packages](https://hub.getdbt.com/). This reduces the need for multiple YAML files to manage dependencies.
+  - Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like <Constant name="cloud" />.
+- Use `dependencies.yml` for organization and maintainability if you're using both [cross-project refs](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) and [dbt Hub packages](https://hub.getdbt.com/). This reduces the need for multiple YAML files to manage dependencies.
 
 </Expandable>
 
