@@ -423,3 +423,30 @@ models:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.10">
+
+### Configuring source freshness
+
+The model `freshness` config rebuilds models only when new source or upstream data is available. This is useful for models that depend on other models but only need to be updated periodically. For more information, see [freshness](/reference/resource-configs/freshness).
+
+See the following example of a `my_model.yml` file using the `freshness` config:
+
+<File name="models/my_model.yml">
+  
+```yml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        build_after:  # build this model no more often than every X amount of time, as long as as it has new data
+          count: positive_integer
+          period: minute | hour | day
+          updates_on: any | all # optional config
+```
+  
+</File>
+
+</VersionBlock>
+
+

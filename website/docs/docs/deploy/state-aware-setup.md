@@ -138,11 +138,14 @@ These configurations are powerful because you can define a sensible default at t
 
 Let's use an example to illustrate how to customize our project so a model and its parent model are rebuilt only if they haven't been refreshed in the past 4 hours &mdash; even if a job runs more frequently than that.
 
-A Jaffle shop wants has recently expanded globally and wanted to make savings. To reduce spend, they found out about <Constant name="cloud" />'s state-aware orchestration and want to rebuild models only when needed. Maggie &mdash; the analytics engineer &mdash; wants to configure her dbt `jaffle_shop` project to only rebuild certain models if they haven't been refreshed in the last 4 hours, even if a job runs more often than that. 
+A Jaffle shop has recently expanded globally and wanted to make savings. To reduce spend, they found out about <Constant name="cloud" />'s state-aware orchestration and want to rebuild models only when needed. Maggie &mdash; the analytics engineer &mdash; wants to configure her dbt `jaffle_shop` project to only rebuild certain models if they haven't been refreshed in the last 4 hours, even if a job runs more often than that. 
 
 To do this, she uses the model `freshness` config. This config helps state-aware orchestration decide _when_ a model should be rebuilt. 
 
-Here's the following YAML example:
+Refer to the following samples for using the `freshness` config in the model file, in the project file, and in the `config` block of the `model.sql` file:
+
+<Tabs>
+<TabItem value="project" label="Model YAML">
 
 <File name="models/model.yml">
 
@@ -163,8 +166,46 @@ models:
           period: hour
           updates_on: all
 ```
+</File>
+
+</TabItem>
+<TabItem value="yml" label="Project file">
+
+<File name="dbt_project.yml">
+  
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+      build_after: 
+        count: 4
+        period: hour
+        updates_on: all 
+```
+</File>
+
+</TabItem>
+<TabItem value="sql" label="Config block">
+
+<File name="models/<filename>.sql">
+  
+```jinja
+{{
+    config(
+        freshness={
+            "build_after": {
+                "count": 4,
+                "period": "hour",
+                "updates_on": "all"
+            }
+        }
+    )
+}}
+```
 
 </File>
+</TabItem>
+</Tabs>
 
 With this config, dbt:
 
@@ -172,6 +213,8 @@ With this config, dbt:
 - Checks when `dim_wizards` and `dim_worlds` were last built
 
 If any new data is available _and_ at least 4 hours have passed, <Constant name="cloud" /> rebuilds the models.
+
+
 
 ### Differences between `all` and `any`
 
