@@ -104,7 +104,7 @@ Key:
 {`
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder | Team admin |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:| 
-| Environment credentials  |   W   |    W    |       W        |     R     |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
+| Environment credentials  |   W   |    R    |       W        |     R     |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W#  |       W         |     W#   |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
 | Data platform configs    |   W   |    W    |       W        |     W     |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
 | Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
