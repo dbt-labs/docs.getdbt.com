@@ -208,10 +208,12 @@ DimensionType = [CATEGORICAL, TIME]
 ```
 
 #### List saved queries
+
+List all saved queries for the specified environment:
   
   ```graphql
   {
-  savedQueries(environmentId: 200532) {
+  savedQueries(environmentId: "123") {
     name
     description
     label
@@ -229,6 +231,34 @@ DimensionType = [CATEGORICAL, TIME]
       }
     }
   }
+}
+```
+
+#### List a saved query
+
+List a single saved query using environment ID and query name:
+
+```graphql
+
+{
+savedQuery(environmentId: "123", savedQueryName: "query_name") {
+  name
+  description
+  label
+  queryParams {
+    metrics {
+      name
+    }
+    groupBy {
+      name
+      grain
+      datePart
+    }
+    where {
+      whereSqlTemplate
+    }
+  }
+}
 }
 ```
 

@@ -117,17 +117,19 @@ Add the `freshness` configuration to the model with `count: 4` and `period: hour
 ```yaml
 models:
   - name: stg_wizards
-    freshness:
-      build_after: 
-        count: 4
-        period: hour
-        updates_on: all
+    config:
+      freshness:
+        build_after: 
+          count: 4
+          period: hour
+          updates_on: all
   - name: stg_worlds
-    freshness:
-      build_after: 
-        count: 4
-        period: hour
-        updates_on: all  
+    config:
+      freshness:
+        build_after: 
+          count: 4
+          period: hour
+          updates_on: all  
 ```
 
 When the state-aware orchestration job triggers, dbt checks for two things:
@@ -148,17 +150,19 @@ Add the `build_after` freshness configuration to the model with `count: 1` and `
 ```yaml
 models:
   - name: stg_wizards
-    freshness:
-      build_after: 
-        count: 1
-        period: hour
-        updates_on: any
+    config: 
+      freshness:
+        build_after: 
+          count: 1
+          period: hour
+          updates_on: any
   - name: stg_worlds
-    freshness:
-      build_after: 
-        count: 1
-        period: hour
-        updates_on: any  
+    config:
+      freshness:
+        build_after: 
+          count: 1
+          period: hour
+          updates_on: any  
 
 ```
 

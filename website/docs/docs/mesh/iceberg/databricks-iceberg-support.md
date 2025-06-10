@@ -65,12 +65,12 @@ catalogs:
     write_integrations:
       - name: unity_catalog_integration
         table_format: iceberg
-        catalog_type: unit
+        catalog_type: unity
 
 ```
 
 2. Apply the catalog configuration at either the model, folder, or project level. <br />
-<br />An example of `iceberg_model.yml`:
+<br />An example of `iceberg_model.sql`:
 
 ```yaml
 

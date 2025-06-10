@@ -15,8 +15,13 @@ pagination_prev: null
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
-## May 2025
 
+## June 2025
+
+- **Enhancement**: Group owners can now specify multiple email addresses for model-level notifications, enabling broader team alerts. Previously, only a single email address was supported. Check out the [Configure groups](/docs/deploy/model-notifications#configure-groups) section to learn more.
+- **New**: The Semantic Layer GraphQL API now has a [`List a saved query`](/docs/dbt-cloud-apis/sl-graphql#list-a-saved-query) endpoint.
+
+## May 2025
 
 ### 2025 dbt Launch Showcase
 The following features are new or enhanced as part of our [dbt Launch Showcase](https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase) on May 28th, 2025:

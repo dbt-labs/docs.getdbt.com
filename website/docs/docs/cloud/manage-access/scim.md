@@ -13,7 +13,7 @@ The System for Cross-Domain Identity Management (SCIM) makes user data more secu
 
 To configure SCIM in your <Constant name="cloud" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
-- You must be using Okta as your SSO provider.
+- You must be using Okta or Entra ID as your SSO provider.
 - You must have permissions to configure the account settings in [<Constant name="cloud" />](/docs/cloud/manage-access/enterprise-permissions) and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
 - If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist.
 
@@ -32,24 +32,19 @@ When users are provisioned, the following attributes are supported
 - Given name
 
 The following IdPs are supported in the <Constant name="cloud" /> UI:
-- Okta
-- Entra ID (_coming soon_)
+- [Okta](#scim-configuration-for-okta)
+- [Entra ID](#scim-configuration-for-entra-id) <Lifecycle status="beta" />
 
-If your IdP isn’t on the list, it can be supported using <Constant name="cloud" /> APIs (_docs coming soon_).
+If your IdP isn’t on the list, it can be supported using <Constant name="cloud" /> [APIs](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
 
-## SCIM configuration for Okta <Lifecycle status="beta" />
+## Set up dbt
 
-Please complete the [setup SSO with Okta](/docs/cloud/manage-access/set-up-sso-okta) steps before configuring SCIM settings.
-
-
-### Set up dbt
-
-To retrieve the necessary <Constant name="cloud" /> configurations for use in Okta:
+To retrieve the necessary <Constant name="cloud" /> configurations for use in Okta or Entra ID:
 
 1. Navigate to your <Constant name="cloud" /> **Account settings**.
 2. Select **Single sign-on** from the left-side menu.
-3. Scroll to the bottom of your Okta configuration settings and click **Enable SCIM**.
-    <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the Okta configuration settings." />
+3. Scroll to the bottom of your SSO configuration settings and click **Enable SCIM**.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the configuration settings." />
 4. Record the **SCIM base URL** field for use in a later step.
 5. Click **Create SCIM token**.
     :::note
@@ -71,6 +66,10 @@ To retrieve the necessary <Constant name="cloud" /> configurations for use in Ok
 
 
 :::
+
+## SCIM configuration for Okta
+
+Please complete the [setup SSO with Okta](/docs/cloud/manage-access/set-up-sso-okta) steps before configuring SCIM settings.
 
 ### Set up Okta
 
@@ -105,3 +104,58 @@ If you are adding SCIM to an existing Okta integration in <Constant name="cloud"
     - Ensure the **Import users and profile updates** and **Import groups** checkboxes are selected in the **Provisioning settings** tab in the Okta SCIM configuration.
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
+## SCIM configuration for Entra ID <Lifecycle status="beta" />
+
+Please complete the [setup SSO with Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) steps before configuring SCIM settings.
+
+### Set up Entra ID
+
+1. Log in to your Azure account and open the **Entra ID** configurations.
+2. From the sidebar, under **Manage**, click **Enterprise Applications**.
+3. Click **New Application** and select the option to **Create your own application**.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/create-your-own.png" width="60%" title="Create your own application." />
+4. Give your app a unique name and ensure the **Integrate any other application you don't find in the gallery (Non-gallery)** field is selected. Ignore any prompts for existing apps. Click **Create**.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/create-application.png" width="60%" title="Give your app a unique name." />
+5. From the application **Overview** screen, click **Provision User Accounts**.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/provision-user-accounts.png" width="60%" title="The 'Provision user accounts' option." />
+6. From the **Create configuration** section, click **Connect your application**
+7. Fill out the form with the information from your dbt account:
+    - The **Tenant URL** in Entra ID is your **SCIM based URL** from dbt
+    - The **Secret token** in Entra ID is your *SCIM token** from dbt
+8. Click **Test connection** and click **Create** once complete.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-config.png" width="60%" title="Configure the app and test the connection." />
+
+### Attribute mapping
+
+To map the attributes that will sync with dbt:
+
+1. From the enteprise app **Overview** screen sidebar menu, click **Provisioning**. 
+    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning.png" width="60%" title="The Provisioning option on the sidebar." />
+
+2. From under **Manage**, again click **Provisioning**.
+3. Expand the **Mappings** section and click **Provision Microsoft Entra ID users**.
+     <Lightbox src="/img/docs/dbt-cloud/access-control/provision-entra-users.png" width="60%" title="Provision the Entra ID users." />
+4. Make sure the following mappings are in place and delete any others:
+    - **UserName:** `userPrincipalName`
+    - **active:** `Switch([IsSoftDeleted], , "False", "True", "True", "False")`
+    - **emails[type eq "work"].value:** `userPrincipalName`
+    - **name.givenName:** `givenName`
+    - **name.familyName:** `surname`
+    - **externalid:** `mailNickname`
+    - **emails[type eq "work"].primary** (see next step)
+     <Lightbox src="/img/docs/dbt-cloud/access-control/attribute-list.png" width="60%" title="Edit the attributes so they match the list as shown." />
+5. Click **Add new mapping** and fill out the fields with the following:
+    - **Mapping type:** `none`
+    - **Default value if null (optional):** `True`
+    - **Target attribute:** `emails[type eq "work"].primary`
+    - **Match objects using this attribute:** `No`
+    - **Matching precedence:** *Leave blank*
+    - **Apply this mapping:** `Always`
+6. Click **Ok**
+    <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
+7. Back on the **Attribute mapping** screen, click the checkbox to **Show advanced options**
+    <Lightbox src="/img/docs/dbt-cloud/access-control/show-advanced-options.png" width="60%" title="Edit the advanced options." />
+8. Mark all of the fields from Step 5 as `Required` and click **Save**.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/mark-as-required.png" width="60%" title="Mark the fields as required." />    
+
+You can now begin assigning users to your SCIM app in Entra ID!

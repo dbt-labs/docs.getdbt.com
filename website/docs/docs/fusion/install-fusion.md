@@ -24,6 +24,17 @@ Before installing Fusion, ensure:
   <FusionDWH /> 
 - You are using a supported authentication method:
   <FusionA /> 
+- You are using a supported OS and architecture:
+
+  🟢 - Supported <br/>
+  🟡 - Not yet supported - Support expected by 2025-07-18
+
+  | Operating System    | X86-64 | ARM  |
+  |-------------------|----------|------|
+  | macOS             |   🟢     |  🟢  |
+  | Linux             |   🟢     |  🟡  |
+  | Windows           |   🟡     |  🟡  |
+
 
 ## Install Fusion
 

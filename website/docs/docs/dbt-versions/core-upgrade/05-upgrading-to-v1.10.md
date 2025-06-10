@@ -31,6 +31,42 @@ New features and functionality available in <Constant name="core" /> v1.10
 
 Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 
+### Parsing `catalogs.yml`
+
+dbt Core can now parse the `catalogs.yml` file. This is an important milestone in the journey to supporting external catalogs for Iceberg tables, as it enables write integrations. You'll be able to provide a config specifying a catalog integration for your producer model:
+
+For example: 
+
+```yml
+
+catalogs:
+  - name: catalog_dave
+    # materializing the data to an external location, and metadata to that data catalog
+    write_integrations: 
+      - name: databricks_glue_write_integration
+          external_volume: databricks_external_volume_prod
+          table_format: iceberg
+          catalog_type: unity 
+
+```
+
+The implementation for the model would look like this:
+
+<File name='models/schemas.yml'>
+
+```yaml
+
+models:
+  - name: my_second_public_model
+    config:
+      catalog_name: catalog_dave
+
+```
+
+</File>
+
+Check out our [docs on external catalog support](/docs/mesh/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
+
 ### Integrating dbt Core artifacts with dbt projects
 
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud"/>. This enhances hybrid <Constant name="core"/>/<Constant name="cloud"/> deployments by:

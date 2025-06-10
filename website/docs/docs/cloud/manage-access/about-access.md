@@ -59,7 +59,7 @@ The permissions available depends on whether you're on an [Enterprise-tier](/doc
 There are three default groups available as soon as you create your <Constant name="cloud" /> account (the person who created the account is added to all three automatically):
 
 - **Owner:** This group is for individuals responsible for the entire account and will give them elevated account admin privileges. You cannot change the permissions. 
-- **Member:** This group is for the general members of your organization, who will also have full access to the account. You cannot change the permissions. By default, <Constant name="cloud" /> adds new users to this group.
+- **Member:** This group is for the general members of your organization. Default permissions are broad, restricting only access to features that can alter billing or security. By default, <Constant name="cloud" /> adds new users to this group.
 - **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, <Constant name="cloud" /> adds new users to this group.
 
 Default groups are automatically provisioned for all accounts to simplify the initial set up. We recommend  creating your own organizational groups so you can customize the permissions. Once you create your own groups, you can delete the default groups.
