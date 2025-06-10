@@ -37,14 +37,14 @@ The `query-comment` configuration can also call a macro that returns a string.
 
 ## Default
 
-By default dbt automatically inserts a <Term id="json" /> comment in each query it runs. This comment includes metadata such as the dbt version, profile and target names, and node ID for the resource generating the query.
+By default, dbt automatically inserts a <Term id="json" /> comment in each query it runs. This comment includes metadata such as the dbt version, profile and target names, and node ID for the resource generating the query.
 
 - For Snowflake, the comment appears at the *end* of the query. This prevents the comment from being stripped during processing.
 
 - For other adapters, the comment appears at the *beginning* of the query. For example:
 
   ```sql
-  /* {"app": "dbt", "dbt_version": "1.5.0rc2", "profile_name": "debug",
+  /* {"app": "dbt", "dbt_version": "1.10.0rc2", "profile_name": "debug",
       "target_name": "dev", "node_id": "model.dbt2.my_model"} */
 
   create view analytics.analytics.orders as (
