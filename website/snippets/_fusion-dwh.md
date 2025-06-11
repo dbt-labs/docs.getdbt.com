@@ -1,16 +1,16 @@
-  <DetailsToggle alt_header="Snowflake">
+  <Expandable alt_header="Snowflake">
     - Username/password
     - Native OAuth
     - External OAuth
     - Key pair
     - MFA
 
-  </DetailsToggle>
+  </Expandable>
 
-  <DetailsToggle alt_header="Databricks">
+  <Expandable alt_header="Databricks">
     - Service Account / User Token
     - Native Oauth
 
-  </DetailsToggle>
+  </Expandable>
 
 <!-- <Expandable alt_header="Supported data platforms"> -->
