@@ -11,7 +11,7 @@ This page explains how to access <Constant name="explorer" /> from various <Cons
 ### Studio IDE 
 You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to <Constant name="explorer" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="cloud_ide" /> and <Constant name="explorer" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
 
-#### Access Canvas from the IDE
+#### Access Catalog from the IDE
 - In your model, seed, or snapshot file, click the **View in <Constant name="explorer" />** icon to the right of your file breadcrumb (under the file name tab). 
 - This opens the model, seed, or snapshot file in a new tab, allowing you to view resources/lineage directly in <Constant name="explorer" />. 
 
@@ -21,7 +21,7 @@ You can enhance your project navigation and editing experience by directly acces
 
 Seamlessly access dbt Catalog via <Constant name="visual_editor" /> to bring your workflow to life with visual editing.
 
-#### Access dbt Catalog from Canvas
+#### Access Catalog from Canvas
 
 Steps here
 [Roxi to check with Greg and team and will add images on response]
