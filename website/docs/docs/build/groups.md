@@ -43,7 +43,7 @@ groups:
       email: finance@jaffleshop.com
     description: For the finance team # optional
     config:
-      meta: # optional; you can provide more information about the group in this config
+      meta: # optional
         data_owner: Finance team
 ```
 
