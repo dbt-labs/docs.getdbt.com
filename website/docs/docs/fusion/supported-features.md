@@ -16,7 +16,6 @@ Learn about the features supported by the dbt Fusion engine, including requireme
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
-import FusionA from '/snippets/_fusion-auth.md';
 
 <FusionBeta />
 
