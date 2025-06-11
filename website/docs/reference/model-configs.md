@@ -430,6 +430,8 @@ models:
 
 The model `freshness` config rebuilds models only when new source or upstream data is available. This is useful for models that depend on other models but only need to be updated periodically. For more information, see [freshness](/reference/resource-configs/freshness).
 
+Note that for every `freshness` config, you're required to either set values for both `count` and `period`, or set `freshness: null`. This requirement applies to all `freshness` types: `freshness.warn_after`, `freshness.error_after`, and `freshness.build_after`.
+
 See the following example of a `my_model.yml` file using the `freshness` config:
 
 <File name="models/my_model.yml">

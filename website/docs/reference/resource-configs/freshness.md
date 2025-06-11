@@ -86,7 +86,7 @@ The configuration consists of the following parts:
 | Configuration | Description |
 |--------------|-------------|
 | `build_after` | Config nested under `freshness`. Used to determine whether a model should be rebuilt when new data is present, based on whether the specified count and period have passed since the model was last built. Although dbt checks for new data every time the job runs, `build_after` ensures the model is only rebuilt if enough time has passed and new data is available. |
-| `count` and `period` | Specify how often dbt should check for new data. For example, `count: 4, period: hour` means dbt will check every 4 hours. |
+| `count` and `period` | Specify how often dbt should check for new data. For example, `count: 4, period: hour` means dbt will check every 4 hours.<br /><br /> Note that for every `freshness` config, you're required to either set values for both `count` and `period`, or set `freshness: null`.|
 | `updates_on` | Optional. Determines when upstream data changes should trigger a job build. Use the following values:<br /> - `any`: The model will build once _any_ direct upstream node has new data since the last build. Faster and may increase spend.<br /> - `all`: The model will only build when _all_ direct upstream nodes have new data since the last build. Less spend and more requirements. |
 
 ## Default

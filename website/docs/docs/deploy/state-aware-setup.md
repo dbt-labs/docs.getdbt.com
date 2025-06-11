@@ -142,6 +142,8 @@ A Jaffle shop has recently expanded globally and wanted to make savings. To redu
 
 To do this, she uses the model `freshness` config. This config helps state-aware orchestration decide _when_ a model should be rebuilt. 
 
+Note that for every `freshness` config, you're required to either set values for both `count` and `period`, or set `freshness: null`. This requirement applies to all `freshness` types: `freshness.warn_after`, `freshness.error_after`, and `freshness.build_after`.
+
 Refer to the following samples for using the `freshness` config in the model file, in the project file, and in the `config` block of the `model.sql` file:
 
 <Tabs>
