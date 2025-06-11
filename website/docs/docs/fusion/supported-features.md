@@ -16,7 +16,6 @@ Learn about the features supported by the dbt Fusion engine, including requireme
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
-import FusionA from '/snippets/_fusion-auth.md';
 
 <FusionBeta />
 
@@ -28,11 +27,9 @@ Note that we have removed some deprecated features, and introduced more-rigorous
 
 ## Requirements
 
-To use Fusion in your dbt project, you must:
-- Use a supported data warehouse:
+To use Fusion in your dbt project:
+- You are using a supported data warehouse and authentication method.
   <FusionDWH /> 
-- Use a supported authentication method:
-  <FusionA />
 - Have only SQL models defined in your project. Python models are not currently supported because Fusion cannot parse these to extract dependencies (refs) on other models. <!-- [TODO: Link to dbt-fusion Python issue.] -->
 
 ### Limitations

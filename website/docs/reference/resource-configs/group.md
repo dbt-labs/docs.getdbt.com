@@ -286,6 +286,8 @@ saved_queries:
 
 </Tabs>
 
+Note that for backwards compatibility, `group` is supported as a top-level key, but without the capabilities of config inheritance.
+
 ## Definition
 An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
