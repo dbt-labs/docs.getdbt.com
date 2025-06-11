@@ -15,6 +15,8 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 Release date: June 12, 2025
 
 This release includes functionality from the following versions of dbt Core OSS:
+
+```
 dbt-core==1.9.8
 
 # shared interfaces
