@@ -2,7 +2,7 @@
     - Username/password
     - Native OAuth
     - External OAuth
-    - Keypair
+    - Key pair
     - MFA
 
   </DetailsToggle>
