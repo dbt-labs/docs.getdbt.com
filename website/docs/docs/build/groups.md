@@ -39,10 +39,8 @@ groups:
 groups:
   - name: finance
     owner:
-      # 'name' or 'email' is required; additional properties allowed
+      # 'name' or 'email' is required; additional properties will no longer be allowed in a future release
       email: finance@jaffleshop.com
-      slack: finance-data
-      github: finance-data-team
     description: For the finance team # optional
     config:
       meta: # optional

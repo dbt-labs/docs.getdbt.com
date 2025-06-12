@@ -57,7 +57,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 \+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
 In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
-For full details, see the [documentation of Databricks behavior flags](/docs/reference/global-configs/databricks-changes).
+For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
 
 </VersionBlock>
 
