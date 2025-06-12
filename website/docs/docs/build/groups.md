@@ -39,7 +39,7 @@ groups:
 groups:
   - name: finance
     owner:
-      # 'name' or 'email' is required; additional properties NOT allowed in the future
+      # 'name' or 'email' is required; additional properties will no longer be allowed in a future release
       email: finance@jaffleshop.com
     description: For the finance team # optional
     config:
