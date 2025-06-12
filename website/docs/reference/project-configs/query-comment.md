@@ -30,21 +30,27 @@ query-comment:
 </File>
 
 ## Definition
+
 A string to inject as a comment in each query that dbt runs against your database. This comment can attribute SQL statements to specific dbt resources like models and tests.
 
 The `query-comment` configuration can also call a macro that returns a string.
 
 ## Default
-By default, dbt will insert a <Term id="json" /> comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
 
-```sql
-/* {"app": "dbt", "dbt_version": "1.5.0rc2", "profile_name": "debug",
-    "target_name": "dev", "node_id": "model.dbt2.my_model"} */
+By default, dbt automatically inserts a <Term id="json" /> comment in each query it runs. This comment includes metadata such as the dbt version, profile and target names, and node ID for the resource generating the query.
 
-create view analytics.analytics.orders as (
-    select ...
-  );
-```
+- For Snowflake, the comment appears at the *end* of the query. This prevents the comment from being stripped during processing.
+
+- For other adapters, the comment appears at the *beginning* of the query. For example:
+
+  ```sql
+  /* {"app": "dbt", "dbt_version": "1.10.0rc2", "profile_name": "debug",
+      "target_name": "dev", "node_id": "model.dbt2.my_model"} */
+
+  create view analytics.analytics.orders as (
+      select ...
+    );
+  ```
 
 ## Using the dictionary syntax
 The dictionary syntax includes two keys:

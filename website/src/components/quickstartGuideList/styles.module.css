@@ -72,8 +72,8 @@
     gap: 1rem;
     flex-shrink: 0;
     width: 300px;
-    outline: 1px solid #EFF2F3;
-    border-radius: 10px;
+    border: 1px solid var(--border-neutral-tertiary);
+    border-radius: 12px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -81,7 +81,7 @@
     position: sticky;
     top: 100px;
     z-index: 10;
-    background: #fff;
+    background: var(--bg-surface-default);
     transition: top 0.3s ease;
     margin: 0;
 }
@@ -99,7 +99,8 @@
 }
 
 [data-theme='dark'] .quickstartFilterContainer {
-  background: #262A38;
+  background: var(--bg-surface-inverse);
+  border-color: var(--border-inverse-tertiary);
 }
 
 .quickstartFilterContainer h3 {
@@ -107,7 +108,7 @@
     font-weight: 300;
     margin-bottom: 0;
     font-size: 1.25rem;
-    color: #262A38;
+    color: #030711;
 }
 
 [data-theme='dark'] .quickstartFilterContainer h3 {
@@ -115,26 +116,33 @@
 }
 
 .clearAllFiltersButton {
-    padding: 8px 16px;
-    border: 1px solid #6B7280;
-    border-radius: 4px;
-    background: transparent;
-    cursor: pointer;
-    margin-top: 16px;
-    color: var(--ifm-font-color-base);
-    font-family: var(--ifm-font-family-base);
-    font-size: 1rem;
-    width: 100%;
+  padding: 8px 16px;
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-neutral-primary);
+  font-family: var(--ifm-font-family-base);
+  font-size: 1rem;
+  width: 100%;
   }
   
   .clearAllFiltersButton:hover {
-    background: #067377;
-    color: #fff;
+    background: var(--bg-neutral-primary-hover);
+    color: var(--text-neutral-primary);
     transition: all 0.2s ease-in-out;
   }
 
   [data-theme='dark'] .clearAllFiltersButton {
-    color: #fff;
+    color: var(--text-inverse-primary);
+    border-color: var(--border-inverse-tertiary);
+  }
+
+  [data-theme='dark'] .clearAllFiltersButton:hover {
+    background: var(--bg-neutral-primary-hover);
+    color: var(--text-neutral-primary);
+    transition: all 0.2s ease-in-out;
+    border-color: var(--border-inverse-tertiary);
   }
 
   .guideSection {

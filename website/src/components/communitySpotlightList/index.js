@@ -46,6 +46,7 @@ function CommunitySpotlightList({ spotlightData }) {
         customStyles={{marginBottom: 0}} 
         classNames='community-spotlight-hero'
         colClassNames='col--8'
+        lightBackground={true}
       />
       <section id='spotlight-members-section'>
         <div className='container'>   

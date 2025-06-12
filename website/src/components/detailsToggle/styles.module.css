@@ -12,7 +12,7 @@
 
 :local(.disclaimer) {
     font-size: 0.8em;
-    color: #666;
+    color: var(--color-terminal-black-500);
     margin-left: 10px; /* Adjust as needed */
     text-decoration: none;
 }
@@ -43,11 +43,11 @@
     margin-left: 2em;
     margin-bottom: 10px;
     padding: 20px;
-    background-color: #e3f8f8;
+    background-color: var(--color-coalesce-purple-100);
 }
 
 :local(html[data-theme='dark'] .body) {
-  background: #333b47;
+  background: var(--color-coalesce-purple-950);
 }
 
 :local(.body > p:last-child) {

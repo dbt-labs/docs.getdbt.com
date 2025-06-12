@@ -40,8 +40,8 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #047377;
-    color: rgb(236, 236, 236);
+    background-color: var(--color-transform-orange-600);
+    color: var(--text-neutral-primary);
     padding: 10px;
     border-radius: 5px;
     z-index: 9999;

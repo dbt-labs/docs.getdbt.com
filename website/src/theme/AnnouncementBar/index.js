@@ -15,11 +15,10 @@ export default function AnnouncementBar() {
   if (!isActive || !announcementBarActive) {
     return null;
   }
-  const {backgroundColor, textColor, isCloseable} = announcementBar;
+  const { isCloseable } = announcementBar;
   return (
     <div
       className={styles.announcementBar}
-      style={{backgroundColor, color: textColor}}
       role="banner">
       {isCloseable && <div className={styles.announcementBarPlaceholder} />}
       {announcementBarLink ? (
@@ -28,10 +27,6 @@ export default function AnnouncementBar() {
           rel="noopener noreferrer" 
           href={announcementBarLink}
           className={styles.announcementBarLink}
-          style={{
-            backgroundColor,
-            color: textColor,
-          }}
           >
           <AnnouncementBarContent className={styles.announcementBarContent} />
         </a>

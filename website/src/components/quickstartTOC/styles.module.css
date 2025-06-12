@@ -16,44 +16,49 @@
 .tocList li {
     padding: 1rem;
     display: block;
-    box-shadow: 0px 10px 16px 0px rgba(31, 41, 55, 0.10);
     border-radius: 8px;
     margin-bottom: 1rem;
     display: grid;
     grid-template-columns: 1fr 5fr;
     cursor: pointer;
-    color: var(--color-primary-blue);
+    color: var(--color-neutral-primary);
+    border: 1px solid var(--border-neutral-tertiary);
+    border-radius: 12px;
+    background: var(--bg-surface-default);
     text-decoration: none;
 }
 
 .tocList li span {
-    border-radius: 50%;
+    border-radius: 8px;
     display: inline-block;
     width: 30px;
     height: 30px;
     text-align: center;
-    line-height: 27px;
-    color: var(--color-green-blue);
-    border: solid 1px var(--color-green-blue);
+    vertical-align: middle;
+    color: var(--text-neutral-primary);
+    border: solid 1px var(--border-neutral-tertiary);
     margin-bottom: auto;
 }
 
 .tocList .active span {
-    background: var( --color-green-blue);
-    color: var(--color-white);
+    background: var(--color-terminal-black-200);
+    color: var(--text-neutral-primary);
 }
 
 html[data-theme="dark"] .tocList li {
-    color: var(--color-white);
+    color: var(--text-inverse-primary);
+    border-color: var(--border-inverse-tertiary);
+    background: var(--bg-surface-inverse);
 }
 
 html[data-theme="dark"] .tocList li span {
-    border-color: var(--color-white);
-    color: var(--color-white);
+    border-color: var(--border-inverse-tertiary);
+    color: var(--text-inverse-primary);
 }
 
 html[data-theme="dark"] .tocList .active span {
-    border-color: var(--color-green-blue);
+    border-color: var(--border-inverse-tertiary);
+    color: var(--text-neutral-primary);
 }
 
 .tocItem {
@@ -69,25 +74,35 @@ html[data-theme="dark"] .tocList .active span {
 }
 
 .buttonContainer a {
-    padding: .5rem;
+    padding: 8px 16px;
     cursor: pointer;
-    transition-property: color, background, border-color;
-    transition-duration: var(--ifm-button-transition-duration);
-    transition-timing-function: var(--ifm-transition-timing-default);
-    border: 2px solid var(--color-green-blue);
-    color: var(--color-green-blue);
-    border-radius: 5px;
+    border: 1px solid var(--border-neutral-tertiary);
+    border-radius: 12px;
+    background: var(--bg-surface-default);
+    color: var(--text-neutral-primary);
+    font-family: var(--ifm-font-family-base);
+    font-size: 1rem;
     width: 125px;
     text-align: center;
+    transition: all 0.2s ease-in-out;
 }
 
-.stepWrapper .buttonContainer a:hover {
-    background: var(--color-green-blue);
-    color: var(--color-white);
+.buttonContainer a:hover {
+    background: var(--bg-neutral-primary-hover);
+    color: var(--text-neutral-primary);
 }
 
-html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
-    color: var(--color-white) !important;
+
+html[data-theme="dark"] .buttonContainer a {
+    color: var(--text-inverse-primary) !important;
+    border-color: var(--border-inverse-tertiary);
+    background: var(--bg-surface-inverse);
+}
+
+html[data-theme="dark"] .buttonContainer a:hover {
+    background: var(--bg-surface-inverse);
+    color: var(--text-neutral-primary);
+    border-color: var(--border-inverse-tertiary);
 }
 
 .buttonContainer .prevButton {
@@ -101,21 +116,21 @@ html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
 
 .buttonContainer > a > svg {
     width: 11.2px;
-    fill: var(--color-green-blue);
+    fill: black;
     margin-bottom: -1px;
 }
 
 .buttonContainer > a:hover > svg {
     width: 11.2px;
-    fill: var(--color-white);
+    fill: var(--text-neutral-primary);
 }
 
 html[data-theme="dark"] .buttonContainer > a > svg {
-    fill: var(--color-green-blue);
+    fill: var(--text-inverse-primary);
 }
 
 html[data-theme="dark"] .buttonContainer > a:hover > svg {
-    fill: var(--color-white);
+    fill: var(--text-inverse-primary);
 }
 
 .buttonContainer .prevButton svg {
@@ -135,17 +150,18 @@ html[data-theme="dark"] .buttonContainer > a:hover > svg {
 }
 
 .stepWrapper[data-step="1"] a.nextButton {
-    background: var(--color-green-blue);
-    color: var(--color-white);
-    fill: var(--color-white);
+    background: var(--color-transform-orange-600);
+    color: var(--text-neutral-primary);
+    fill: var(--text-neutral-primary);
 }
 
 .stepWrapper[data-step="1"] a.nextButton > svg {
-    fill: var(--color-white);
+    fill: var(--text-neutral-primary);
 }
 
-html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton {
-    color: var(--color-white) !important;
+html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton, html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton > svg {
+    color: var(--text-inverse-primary) !important;
+    fill: var(--text-inverse-primary) !important;
 }
 
 .stepWrapper.hidden {
