@@ -52,7 +52,7 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
 
-## Querying the API for metric metadata
+## Querying the API for metadata
 
 The <Constant name="semantic_layer" /> JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions.
 
@@ -78,18 +78,6 @@ Note, metrics is a required argument that lists one or multiple metrics in it.
 ```bash
 select * from {{ 
     semantic_layer.dimensions(metrics=['food_order_amount'])}}
-```
-</Expandable>
-
-<Expandable alt_header="Fetch dimension values">
-
-You can use this query to fetch dimension values for one or multiple metrics and a single dimension.
-
-Note, metrics is a required argument that lists one or multiple metrics, and a single dimension.
-
-```bash
-select * from {{ 
-semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
 ```
 </Expandable>
 
@@ -219,9 +207,9 @@ In this example, if you define an alias for `revenue` as `banana`, the query wil
 For more a more detailed example, see [Query metric alias](#query-metric-alias).
 </Expandable>
 
-## Querying the API for metric values
+## Querying the API for values
 
-To query metric values, here are the following parameters that are available. Your query must have _either_ a `metric` **or** a `group_by` parameter to be valid. 
+To query values, the following parameters are available. Your query must have _either_ a `metric` **or** a `group_by` parameter to be valid. 
 
 | Parameter | <div style={{width:'400px'}}>Description</div>  | <div style={{width:'100px'}}>Example</div>  | 
 | --------- | -----------| ------------ |

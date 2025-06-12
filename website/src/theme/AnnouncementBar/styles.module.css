@@ -6,6 +6,10 @@
   display: flex;
   align-items: center;
   height: auto;
+  background-image: url('/img/announcement-bar-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
 
   /*
   Unfortunately we can't make announcement bar render above the navbar
@@ -34,7 +38,8 @@ html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
 
 .announcementBarContent {
   flex: 1 1 auto;
-  font-size: 1.125rem;
+  font-size: var(--text-base);
+  font-weight: 500;
   text-align: center;
   padding: 15px 0;
 }

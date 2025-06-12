@@ -46,8 +46,8 @@
 }
 
 .checkbox:checked {
-  background-color: #6B7280; 
-  border-color: #6B7280;
+  background-color: var(--color-coalesce-purple-600); 
+  border-color: var(--color-coalesce-purple-600);
 }
 
 .checkbox:checked::after {
@@ -62,10 +62,6 @@
   transform: rotate(45deg);
 }
 
-.checkbox:hover {
-  border-color: #6B7280;
-}
-
 .viewMoreButton {
   background: none;
   cursor: pointer;
@@ -73,13 +69,16 @@
   margin-bottom: .75rem;
   border: none;
   text-decoration: underline;
-  color: var(--ifm-font-color-base);
+  color: var(--text-neutral-primary);
   font-family: var(--ifm-font-family-base);
 }
 
 .viewMoreButton:hover {
   text-decoration: underline;
-  color: rgb(4, 115, 119);
+}
+
+[data-theme='dark'] .viewMoreButton {
+  color: var(--text-inverse-primary);
 }
 
 .buttonContainer {
@@ -91,21 +90,29 @@
 
 .selectAllButton {
   padding: 8px 16px;
-  border: 1px solid #6B7280;
-  border-radius: 4px;
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 12px;
   background: transparent;
   cursor: pointer;
-  color: var(--ifm-font-color-base);
+  color: var(--text-neutral-primary);
   font-family: var(--ifm-font-family-base);
   font-size: 1rem;
 }
 
 .selectAllButton:hover {
-  background: #067377;
-  color: #fff;
+  background: var(--bg-neutral-primary-hover);
+  color: var(--text-neutral-primary);
   transition: all 0.2s ease-in-out;
 }
 
 [data-theme='dark'] .selectAllButton {
-  color: #fff;
+  color: var(--text-inverse-primary);
+  border-color: var(--border-inverse-tertiary);
+}
+
+[data-theme='dark'] .selectAllButton:hover {
+  background: var(--bg-neutral-primary-hover);
+  color: var(--text-neutral-primary);
+  transition: all 0.2s ease-in-out;
+  border-color: var(--border-inverse-tertiary);
 }

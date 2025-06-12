@@ -1,41 +1,57 @@
 .inputContainer {
   padding: 8px 12px;
-  border-radius: 8px;
-  border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
+  border-radius: 12px;
+  border: 1px solid #D1D5DC;
+  height: 40px;
+  min-width: 188px;
+  width: 100%;
   max-width: 350px;
   display: flex;
   align-items: center;
   margin: 1rem auto 0;
+  font-family: var(--font-sans);
+  background: var(--color-white);
 }
 
 .inputContainer:active, .input:focus {
-  border: 2px solid #4f5d75;
+  border: 1px solid var(--border-neutral-tertiary);
   outline: none;
 }
 
 .input::placeholder {
-  all: unset;
-  -webkit-text-security: initial;
+  font-size: 0.875rem;
+  font-weight: 500;
   opacity: .5;
 }
 
 .inputContainer .input {
   border: none;
-  font-size: .975rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--ifm-font-color-base);
   font-family: var(--ifm-font-family-base);
   background: none;
-  padding-left: .5rem;
+  padding-left: 8px;
+  width: 100%;
 }
 
-[data-theme='dark'] .input{
+[data-theme='dark'] .inputContainer {
+  border-color: var(--border-inverse-tertiary);
+}
+
+[data-theme='dark'] .input {
   background: transparent;
-  color: #e3e3e3;
+  color: var(--text-inverse-primary);
 }
 
 .inputContainer > svg {
-  fill: var(--ifm-font-color-base);
-  width: 16px;
-  height: 25px;
-  opacity: .5;
+  fill: var(--docsearch-muted-color);
+  width: 1em;
+  height: 1em;
+  stroke-width: 2px;
+  opacity: 1;
+}
+
+[data-theme='dark'] .inputContainer .input {
+  color: var(--text-neutral-primary);
 }

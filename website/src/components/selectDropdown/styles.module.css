@@ -26,7 +26,7 @@
 }
 
 [data-theme='dark'] .selectContainer [class$="-menu"] {
-    background: #262a38;
+    background: #030711;
 }
 
 .selectContainer [class$="-option"] {
@@ -34,7 +34,7 @@
 }
 
 .selectContainer [class$="-option"]:hover, .selectContainer [class$="-option"]:active, .selectContainer [class$="-option"]:focus-within {
-    background: #262a38;
+    background: #030711;
     color: #fff;
 }
 
