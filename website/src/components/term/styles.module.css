@@ -6,7 +6,7 @@
   text-decoration: underline dotted var(--ifm-link-color);
 }
 .termToolTip {
-  background: var(--color-primary-blue) !important;
+  background: var(--color-neutral-primary) !important;
   font-size: .9rem !important;
   color: #fff !important;
   max-width: 400px;

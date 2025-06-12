@@ -15,7 +15,7 @@ function DetailsToggle({ children, alt_header = null }) {
         className={styles.link} 
         onClick={handleToggleClick}
       >
-        <span className={`${styles.toggle} ${isOn ? null : styles.toggleUpsideDown}`}></span>&nbsp;
+        <span className={`${styles.toggle} ${isOn ? styles.toggleUpsideDown : null}`}></span>&nbsp;
         <span className={styles.headerText}>{alt_header}</span>
       </span>
       <div 

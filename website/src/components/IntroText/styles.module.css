@@ -1,10 +1,10 @@
 /* default styles (assuming light mode) */
 html .introText {
-  color: #4B5563;
+  color: var(--text-neutral-primary);
   font-size: 1.15em;
 }
 
 /* Adjusting for Dark Mode */
 html[data-theme='dark'] .introText {
-  color: #9CA3AF;
+  color: var(--text-inverse-primary);
 }

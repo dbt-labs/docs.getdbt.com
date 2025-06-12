@@ -21,6 +21,12 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+:::tip `dbt-athena` vs `dbt-athena-community`
+
+`dbt-athena-community` was the community-maintained adapter until dbt Labs took over maintenance in late 2024. Both `dbt-athena` and `dbt-athena-community` are maintained by dbt Labs, but `dbt-athena-community` is now simply a wrapper on `dbt-athena`, published for backwards compatibility.
+
+:::
+
 ## Connecting to Athena with dbt-athena
 
 This plugin does not accept any credentials directly. Instead, [credentials are determined automatically](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) based on AWS CLI/boto3 conventions and stored login info. You can configure the AWS profile name to use via aws_profile_name. Check out the dbt profile configuration below for details.

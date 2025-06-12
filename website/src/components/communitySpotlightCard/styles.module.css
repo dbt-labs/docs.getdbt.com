@@ -19,15 +19,11 @@ div.spotlightMemberCard {
   flex: 0 0 100%;
   margin-bottom: .5rem;
 }
-.spotlightMemberCard .awardBadge span {
-  max-width: fit-content;
-  color: #fff;
-  background: var(--ifm-color-primary);
-  display: block;
-  border-radius: 1rem;
-  padding: 5px 10px;
-  font-size: .7rem;
+
+.spotlightMemberCard h2 {
+  margin-bottom: 0;
 }
+
 .spotlightMemberCard .spotlightMemberImgContainer {
   flex: 0 0 100%;
 }
@@ -36,6 +32,7 @@ div.spotlightMemberCard {
   width: 100%;
   margin: 0 0 2rem;
   display: block;
+  border-radius: 1rem;
 }
 .spotlightMemberContent {
   padding: 0;
@@ -44,8 +41,8 @@ div.spotlightMemberCard {
   font-size: 2rem !important;
   line-height: 2rem;
   margin-top: 0 !important;
+  color: var(--text-neutral-primary);
   margin-bottom: .5rem !important;
-  color: #009999;
   font-weight: 700;
 }
 [data-theme='dark'] .spotlightMemberContent .spotlightMemberHeader {
@@ -80,6 +77,13 @@ div.spotlightMemberCard {
   margin-top: 1rem;  
   font-weight: 600;
   font-size: 1rem;
+  color: var(--text-neutral-primary);
+}
+
+@media (min-width: 996px) {
+  [data-theme='dark'] .spotlightMemberContent .spotlightReadMore {
+    color: var(--text-inverse-primary);
+  }
 }
 
 .spotlightMemberContent .spotlightMemberInfo > span {

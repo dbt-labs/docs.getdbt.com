@@ -1,29 +1,67 @@
 .cardContainer {
-  --ifm-link-color: var(--ifm-color-emphasis-800);
-  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
-  --ifm-link-hover-decoration: none;
-
-  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  transition: all var(--ifm-transition-fast) ease;
-  transition-property: border, box-shadow;
+  height: 100%;
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 16px;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  background-color: var(--bg-surface-default);
+  backdrop-filter: blur(10px) !important;
+  color: var(--text-neutral-secondary);
+  box-shadow: none !important;
 }
 
 .cardContainer:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
-}
-
-.cardContainer *:last-child {
-  margin-bottom: 0;
+  text-decoration: none;
 }
 
 .cardTitle {
   font-size: 1.2rem;
+  color: var(--text-neutral-secondary);
 }
 
 .cardDescription {
-  font-size: 0.8rem;
+  color: var(--text-neutral-secondary);
+}
+
+.cardDescription a, .cardDescription a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  margin-bottom: 1.5rem;
+  max-width: 30px;
+  font-size: 25px;
+}
+
+.pillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.pill {
+  border-radius: 1.5rem;
+  background: #E5E7EB;
+  color: #030711;
+  padding: 0rem 0.75rem;
+  font-size: 16px;
+}
+
+html[data-theme="dark"] .cardTitle {
+  color: var(--text-inverse-secondary);
+}
+
+html[data-theme="dark"] .cardContainer {
+  background-color: var(--bg-surface-inverse);
+  border-color: var(--border-inverse-tertiary);
+}
+
+html[data-theme="dark"] .cardDescription {
+  color: var(--text-inverse-secondary);
+}
+
+html[data-theme="dark"] .pill {
+  background: #374151;
+  color: #fff;
 }
 
 .glossaryCard {

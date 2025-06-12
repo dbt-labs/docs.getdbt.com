@@ -1,0 +1,298 @@
+/* TEXT TOKENS ------------------------------------------------------------------------------------ */
+
+:root {
+  --text-accent-primary: var(--color-coalesce-purple-600);
+  --text-accent-strong: var(--color-coalesce-purple-900);
+  --text-accent-subtle: var(--color-coalesce-purple-50);
+  --text-brand-primary: var(--color-transform-orange-600);
+  --text-error: var(--color-pink-700);
+  --text-warning: var(--color-yellow-700);
+  --text-success: var(--color-green-600);
+
+  /* Brand & Accent Text */
+  --text-brand-primary: var(--color-transform-orange-600);
+  --text-accent-primary: var(--color-coalesce-purple-600);
+  --text-accent-strong: var(--color-coalesce-purple-900);
+
+  /* Status Text */
+  --text-error: var(--color-pink-700);
+  --text-warning: var(--color-yellow-700);
+  --text-success: var(--color-green-600);
+  --text-info: var(--color-blue-600);
+
+  /* Neutral Text */
+  --text-neutral-primary: var(--color-terminal-black-950);
+  --text-neutral-secondary: var(--color-terminal-black-800);
+  --text-neutral-tertiary: var(--color-terminal-black-600);
+  --text-neutral-quaternary: var(--color-terminal-black-500);
+  --text-neutral-placeholder: var(--color-terminal-black-500);
+  --text-neutral-disabled: var(--color-terminal-black-400);
+
+  /* Inverse Text */
+  --text-inverse-primary: var(--color-white);
+  --text-inverse-secondary: rgba(255, 255, 255, 0.8);
+  --text-inverse-tertiary: rgba(255, 255, 255, 0.5);
+  --text-inverse-disabled: rgba(255, 255, 255, 0.3);
+  --text-inverse-accent-primary: var(--color-coalesce-purple-400);
+
+  /* Brand & Accent Backgrounds */
+  --bg-brand-primary: var(--color-transform-orange-600);
+  --bg-accent-primary: var(--color-coalesce-purple-600);
+  --bg-accent-strong: var(--color-coalesce-purple-900);
+  --bg-accent-subtle: var(--color-coalesce-purple-50);
+  --bg-disabled: var(--color-terminal-black-100);
+
+  /* Neutral Backgrounds */
+  --bg-neutral-primary-default: var(--color-white);
+  --bg-neutral-primary-hover: var(--color-terminal-black-100);
+  --bg-neutral-secondary-subtle: var(--color-terminal-black-50);
+  --bg-neutral-secondary-default: var(--color-terminal-black-100);
+  --bg-neutral-tertiary-default: var(--color-terminal-black-200);
+  --bg-neutral-tertiary-hover: rgba(0, 0, 0, 0.05);
+  --bg-neutral-tertiary-pressed: rgba(0, 0, 0, 0.1);
+
+  /* Inverse Backgrounds */
+  --bg-inverse-primary-default: var(--color-terminal-black-950);
+  --bg-inverse-primary-subtle: var(--color-terminal-black-800);
+  --bg-inverse-secondary-hover: rgba(255, 255, 255, 0.6);
+  --bg-inverse-secondary-pressed: rgba(255, 255, 255, 0.8);
+  --bg-inverse-tertiary-hover: rgba(255, 255, 255, 0.05);
+  --bg-inverse-tertiary-pressed: rgba(255, 255, 255, 0.1);
+
+  /* Surface Backgrounds */
+  --bg-surface-default: rgba(255, 255, 255, 0.7);
+  --bg-surface-inverse: rgba(16, 24, 40, 0.7);
+
+  /* Brand & Accent Borders */
+  --border-brand-primary: var(--color-transform-orange-600);
+  --border-accent-primary: var(--color-coalesce-purple-600);
+  --border-error: var(--color-pink-700);
+
+  /* Neutral Borders */
+  --border-neutral-primary: var(--color-terminal-black-950);
+  --border-neutral-secondary-default: var(--color-terminal-black-300);
+  --border-neutral-tertiary: var(--color-terminal-black-200);
+  --border-neutral-secondary-hover: var(--color-terminal-black-400);
+  --border-neutral-disabled: var(--color-terminal-black-400);
+
+  /* Inverse Borders */
+  --border-inverse-primary: var(--color-white);
+  --border-inverse-secondary: rgba(255, 255, 255, 0.5);
+  --border-inverse-tertiary: rgba(255, 255, 255, 0.1);
+  --border-inverse-disabled: rgba(255, 255, 255, 0.1);
+}
+
+/* Brand & Accent Text */
+.text-brand-primary {
+  color: var(--color-transform-orange-600);
+}
+
+.text-accent-primary {
+  color: var(--color-coalesce-purple-600);
+}
+
+.text-accent-strong {
+  color: var(--color-coalesce-purple-900);
+}
+
+/* Status Text */
+.text-error {
+  color: var(--color-pink-700);
+}
+
+.text-warning {
+  color: var(--color-yellow-700);
+}
+
+.text-success {
+  color: var(--color-green-600);
+}
+
+.text-info {
+  color: var(--color-blue-600);
+}
+
+/* Neutral Text */
+.text-neutral-primary {
+  color: var(--color-terminal-black-950);
+}
+
+.text-neutral-secondary {
+  color: var(--color-terminal-black-800);
+}
+
+.text-neutral-tertiary {
+  color: var(--color-terminal-black-600);
+}
+
+.text-neutral-quaternary {
+  color: var(--color-terminal-black-500);
+}
+
+.text-neutral-placeholder {
+  color: var(--color-terminal-black-500);
+}
+
+.text-neutral-disabled {
+  color: var(--color-terminal-black-400);
+}
+
+/* Inverse Text */
+.text-inverse-primary {
+  color: var(--color-white);
+}
+
+.text-inverse-secondary {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-inverse-tertiary {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.text-inverse-disabled {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.text-inverse-accent-primary {
+  color: var(--color-coalesce-purple-400);
+}
+
+/* BACKGROUND TOKENS ------------------------------------------------------------------------------------ */
+
+/* Brand & Accent Backgrounds */
+.bg-brand-primary {
+  background-color: var(--color-transform-orange-600);
+}
+
+.bg-accent-primary {
+  background-color: var(--color-coalesce-purple-600);
+}
+
+.bg-accent-strong {
+  background-color: var(--color-coalesce-purple-900);
+}
+
+.bg-accent-subtle {
+  background-color: var(--color-coalesce-purple-50);
+}
+
+.bg-disabled {
+  background-color: var(--color-terminal-black-100);
+}
+
+/* Neutral Backgrounds */
+.bg-neutral-primary-default {
+  background-color: var(--color-white);
+}
+
+.bg-neutral-primary-hover {
+  background-color: var(--color-terminal-black-100);
+}
+
+.bg-neutral-secondary-subtle {
+  background-color: var(--color-terminal-black-50);
+}
+
+.bg-neutral-secondary-default {
+  background-color: var(--color-terminal-black-100);
+}
+
+.bg-neutral-tertiary-default {
+  background-color: var(--color-terminal-black-200);
+}
+
+.bg-neutral-tertiary-hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bg-neutral-tertiary-pressed {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Inverse Backgrounds */
+.bg-inverse-primary-default {
+  background-color: var(--color-terminal-black-950);
+}
+
+.bg-inverse-primary-subtle {
+  background-color: var(--color-terminal-black-800);
+}
+
+.bg-inverse-secondary-hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.bg-inverse-secondary-pressed {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-inverse-tertiary-hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.bg-inverse-tertiary-pressed {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Surface Backgrounds */
+.bg-surface-default {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-surface-inverse {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* BORDER TOKENS ------------------------------------------------------------------------------------ */
+
+/* Brand & Accent Borders */
+.border-brand-primary {
+  border-color: var(--color-transform-orange-600);
+}
+
+.border-accent-primary {
+  border-color: var(--color-coalesce-purple-600);
+}
+
+.border-error {
+  border-color: var(--color-pink-700);
+}
+
+/* Neutral Borders */
+.border-neutral-primary {
+  border-color: var(--color-terminal-black-950);
+}
+
+.border-neutral-secondary-default {
+  border-color: var(--color-terminal-black-300);
+}
+
+.border-neutral-tertiary {
+  border-color: var(--color-terminal-black-200);
+}
+
+.border-neutral-secondary-hover {
+  border-color: var(--color-terminal-black-400);
+}
+
+.border-neutral-disabled {
+  border-color: var(--color-terminal-black-400);
+}
+
+/* Inverse Borders */
+.border-inverse-primary {
+  border-color: var(--color-white);
+}
+
+.border-inverse-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.border-inverse-tertiary {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.border-inverse-disabled {
+  border-color: rgba(255, 255, 255, 0.1);
+} 
