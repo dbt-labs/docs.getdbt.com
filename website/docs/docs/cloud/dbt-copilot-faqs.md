@@ -127,3 +127,32 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application.
 
 </Expandable>
+
+## Copilot allowlisting URLs
+
+<Expandable alt_header="Allowlisting URLs">
+
+<Constant name="copilot" /> doesn't specifically block AI-related URLs. However, if your organization use endpoint protection platforms, firewalls, or network proxies (such as Zscaler), you may encounter the following issues with <Constant name="copilot" />: 
+
+    - Block unknown or AI-related domains.
+    - Break TLS/SSL traffic to inspect it.
+    - Disallow specific ports or services.
+
+We recommend the following URLs to be allowlisted:
+
+**For <Constant name="copilot" /> in the IDE**:
+
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_generic_tests/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_documentation/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_semantic_model/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_inline`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_metrics/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/track_response`
+
+**For <Constant name="copilot" /> in Canvas**:
+
+- `/api/private/visual-editor/v1/ai/llm-generate`
+- `/api/private/visual-editor/v1/ai/track-response`
+- `/api/private/visual-editor/v1/files/${fileId}/llm-generate-dag-through-chat`
+
+</Expandable>

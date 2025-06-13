@@ -100,8 +100,9 @@ You've now configured SCIM for the Okta SSO integration in <Constant name="cloud
 If you are adding SCIM to an existing Okta integration in <Constant name="cloud" /> (as opposed to setting up SCIM and SSO concurrently for the first time), there is some functionality you should be aware of:
 
 - Users and groups already synced to <Constant name="cloud" /> will become SCIM-managed once you complete the SCIM configuration.
-- You can leverage SCIM to import and manage existing <Constant name="cloud" /> groups. Update the groups in your IdP with the same naming convention used for <Constant name="cloud" /> groups. New users, groups, and existing profile changes will be automatically imported into <Constant name="cloud" />.
+- (Recommended) Import and manage existing <Constant name="cloud" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="cloud" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="cloud" />.
     - Ensure the **Import users and profile updates** and **Import groups** checkboxes are selected in the **Provisioning settings** tab in the Okta SCIM configuration.
+    - Use **Import Users** to sync all users from <Constant name="cloud" />, including previously deleted users, if you need to re-provision those users. 
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
 ## SCIM configuration for Entra ID <Lifecycle status="beta" />

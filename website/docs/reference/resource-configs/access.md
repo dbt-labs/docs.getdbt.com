@@ -16,7 +16,9 @@ models:
 
 </File>
 
-You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+You can apply `access` modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying `access` configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+
+Note that for backwards compatibility, `access` is supported as a top-level key, but without the capabilities of config inheritance.
 
 There are multiple approaches to configuring access:
 

@@ -32,9 +32,10 @@ exposures:
     url: <string>
     maturity: {high, medium, low}  # Indicates level of confidence or stability in the exposure
     [enabled](/reference/resource-configs/enabled): true | false
-    [tags](/reference/resource-configs/tags): [<string>]
-    [meta](/reference/resource-configs/meta): {<dictionary>}
-    owner:
+    config: # 'tags' and 'meta' changed to config in v1.10
+      [tags](/reference/resource-configs/tags): [<string>] 
+      [meta](/reference/resource-configs/meta): {<dictionary>} 
+    owner: # supports 'name' and 'email' only
       name: <string>
       email: <string>
     

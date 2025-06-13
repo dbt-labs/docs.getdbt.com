@@ -15,7 +15,7 @@
 | Redshift (Managed)                                |   ✅   |   ✅   |    -     |    -     | 
 | Redshift Severless (Interface)                    |   ✅   |   ✅   |    -     |    -     | 
 | Redshift Serverless (Managed)                     |   ✅   |   ✅   |    -     |    -     |
-| Amazon Athena w/ AWS Glue                         |   ✅   |   ✅   |    -     |    -     |
+| Amazon Athena w/ AWS Glue                         |   ❌   |   ✅   |    -     |    -     |
 | Azure Synapse                                     |   -    |   -    |    ✅    |    ✅    |
 | Azure Fabric (cross-tenant not supported by Azure)|   -    |   -    |    ❌    |    ❌    |
 | Google BigQuery                                   |   -    |   -    |    -     |    -     |

@@ -165,6 +165,8 @@ macros:
 
 </Tabs>
 
+Note that for backwards compatibility, `docs` is supported as a top-level key, but without the capabilities of config inheritance.
+
 ## Definition
 The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
 

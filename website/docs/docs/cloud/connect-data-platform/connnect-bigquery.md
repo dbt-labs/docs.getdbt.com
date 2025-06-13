@@ -23,7 +23,7 @@ When you create a new BigQuery connection, you will be presented with two schema
 - **BigQuery:** Supports all connection types (Use this option)
 - **BigQuery (Legacy):**  Supports all connection types except for WIF (Deprecated feature. Do not use)
 
-All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated.
+All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated. To update existing connections and credentials in an environment to use the new BigQuery option, first, use the [APIs](/docs/dbt-cloud-apis/admin-cloud-api) to remove the configurations. 
 
 ### JSON keyfile
 

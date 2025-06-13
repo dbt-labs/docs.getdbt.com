@@ -123,8 +123,8 @@ models:
 </File>
 
 </TabItem>
-
 </Tabs>
+Note that for backwards compatibility, `tags` is supported as a top-level key, but without the capabilities of config inheritance.
 
 ## Definition
 Apply a tag (or list of tags) to a resource.

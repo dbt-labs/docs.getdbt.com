@@ -56,7 +56,7 @@ This credential controls the physical access to underlying data accessed by the 
 - Starter plans can create multiple service tokens that link to a single underlying credential, but each project can only have one credential.
 - All Enterprise plans can [add multiple credentials](#4-add-more-credentials) and map those to service tokens for tailored access.
 
-<a href="https://www.getdbt.com/contact" style={{ color: 'white', backgroundColor: '#66c2c2', padding: '4px 8px', borderRadius: '4px', textDecoration: 'none', display: 'inline-block' }}>Book a free live demo</a> to discover the full potential of <Constant name="cloud" /> Enterprise and higher plans.
+<a href="https://www.getdbt.com/contact">Book a free live demo</a> to discover the full potential of <Constant name="cloud" /> Enterprise and higher plans.
 :::
 
 ### 3. View connection detail

@@ -53,7 +53,7 @@ When prompted for the SAML 2.0 application configurations, supply the following 
 * Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
 - Relay State: `<login slug>`
 
-Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. We recommend using the following values:
+Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. [SCIM configuration](https://docs.getdbt.com/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
 
 
 | name | name format | value | description |
@@ -177,7 +177,7 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
-<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms.
+<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](https://docs.getdbt.com/docs/cloud/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
 
 3. The following table illustrates expected User Attribute Statements:
 
