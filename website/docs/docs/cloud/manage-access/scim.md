@@ -35,7 +35,7 @@ The following IdPs are supported in the <Constant name="cloud" /> UI:
 - [Okta](#scim-configuration-for-okta)
 - [Entra ID](#scim-configuration-for-entra-id) <Lifecycle status="beta" />
 
-If your IdP isn’t on the list, it can be supported using <Constant name="cloud" /> [APIs](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
+If your IdP isn’t on the list, it can be supported using <Constant name="cloud" /> [APIs](/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
 
 ## Set up dbt
 
