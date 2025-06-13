@@ -141,6 +141,43 @@ models:
 
 <VersionBlock firstVersion="1.9">
 
+## Configuring columns
+
+When materializing models of various types, you may include several optional column-level configs that are specific to the dbt-databricks plugin, in addition to the standard [column configs](/reference/resource-properties/columns).
+
+<VersionBlock firstVersion="1.9">
+
+| Option    | Description   | Required?| Model support | Materialization support | Example  |
+|-----------|---------------|----------|---------------|----------------------------|----------|
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on individual columns    | Optional    |  SQL, Python | Table, Incremental, Materialized View, Streaming Table  | `{'data_classification': 'pii'}`  |
+| column_mask   | [Column mask](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask) configuration for dynamic data masking. Accepts `function` and optional `using_columns` properties*  | Optional     | SQL, Python   | Table, Incremental, Streaming Table | `{'function': 'my_catalog.my_schema.mask_email'}`   |
+
+\* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters)
+</VersionBlock>
+
+This example uses the column-level configurations in the previous table:
+
+<File name='schema.yml'>
+
+```yaml
+models:
+  - name: customers
+    columns:
+      - name: customer_id
+        config:
+          databricks_tags:
+            data_classification: "public"
+      - name: email
+        config:
+          databricks_tags:
+            data_classification: "pii"
+          column_mask:
+            function: my_catalog.my_schema.mask_email
+            using_columns: "customer_id, 'literal string'"
+```
+
+</File>
+
 ## Incremental models
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of five values:
