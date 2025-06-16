@@ -171,6 +171,7 @@ sources:
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness for the tables in this source.
 
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
+# Is this entirely right? DBT can still look into datawarehouse metadata, if possible. The above statement is assertive and confusing
 
 These configs are applied hierarchically, so `freshness` and `loaded_at_field` values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
