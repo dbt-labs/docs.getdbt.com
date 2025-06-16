@@ -103,6 +103,7 @@ sources:
     description: This is a replica of the Postgres database used by our app
     tables:
       - name: orders
+        database: raw
         description: >
           One record per order. Includes cancelled and deleted orders.
         columns:
