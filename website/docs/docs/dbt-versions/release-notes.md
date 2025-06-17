@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2025
 
-- **New**: The <Constant name="semantic_layer" /> now supports Trino as a data platform. For more details on how to set up the <Constant name="semantic_layer" /> for Trino, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
+- **New**: The <Constant name="semantic_layer" /> now supports Trino as a data platform. For more details, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
 - **New**: The dbt Fusion engine supports Databricks in beta.
 - **Enhancement**: Group owners can now specify multiple email addresses for model-level notifications, enabling broader team alerts. Previously, only a single email address was supported. Check out the [Configure groups](/docs/deploy/model-notifications#configure-groups) section to learn more.
 - **New**: The Semantic Layer GraphQL API now has a [`List a saved query`](/docs/dbt-cloud-apis/sl-graphql#list-a-saved-query) endpoint.
