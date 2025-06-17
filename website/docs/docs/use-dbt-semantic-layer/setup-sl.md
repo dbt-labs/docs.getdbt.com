@@ -10,7 +10,7 @@ pagination_prev: "guides/sl-snowflake-qs"
 
 # Set up the dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
 
-With the <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. 
+With the <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more.
 
 ## Prerequisites
 
