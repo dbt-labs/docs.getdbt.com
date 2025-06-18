@@ -613,7 +613,7 @@ The following example changes the warehouse for a single model with a config() b
 <File name='models/events/sessions.sql'>
 
 ```sql
--- override the Snowflake virtual warehouse for just this model
+# override the Snowflake virtual warehouse for just this model
 {{
   config(
     materialized='table',
