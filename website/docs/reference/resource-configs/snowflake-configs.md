@@ -563,7 +563,7 @@ The default warehouse that dbt uses can be configured in your [Profile](/docs/co
   defaultValue="dbt_project.yml"
   values={[
     { label: 'Project file', value: 'dbt_project.yml', },
-    { label: 'Property file', value: 'models/_models.yml', },
+    { label: 'Property file', value: 'models/my_model.yml', },
     { label: 'SQL config', value: 'models/events/sessions.sql', },
     ]}
 >
@@ -591,11 +591,11 @@ snapshots:
 
 </File>
 </TabItem>
-<TabItem value="models/_models.yml">
+<TabItem value="models/my_model.yml">
 
 The following example changes the warehouse for a single model with a config argument in the YAML.
 
-<File name='models/_models.yml'>
+<File name='models/my_model.yml'>
 
 ```yaml
 models:
