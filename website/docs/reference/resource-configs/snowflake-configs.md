@@ -562,14 +562,15 @@ The default warehouse that dbt uses can be configured in your [Profile](/docs/co
 <Tabs
   defaultValue="dbt_project.yml"
   values={[
-    { label: 'YAML code', value: 'dbt_project.yml', },
-    { label: 'SQL code', value: 'models/events/sessions.sql', },
+    { label: 'Project file', value: 'dbt_project.yml', },
+    { label: 'Property file', value: 'models/_models.yml', },
+    { label: 'SQL config', value: 'models/events/sessions.sql', },
     ]}
 >
 
 <TabItem value="dbt_project.yml">
 
-The example config below changes the warehouse for a group of models with a config argument in the yml.
+The following example changes the warehouse for a group of models with a config argument in the YAML.
 
 <File name='dbt_project.yml'>
 
@@ -580,25 +581,39 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"    # use the `EXTRA_SMALL` warehouse for all models in the project...
+  +snowflake_warehouse: "EXTRA_SMALL"    # default snowflake virtual warehouse for all models in the project.
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"    # ...except for the models in the `clickstream` folder, which will use the `EXTRA_LARGE` warehouse.
-
+      +snowflake_warehouse: "EXTRA_LARGE"    # override the default snowflake virtual warehouse for all models under the `clickstream` directory.
 snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
 
 </File>
 </TabItem>
+<TabItem value="models/_models.yml">
 
+The following example changes the warehouse for a single model with a config argument in the YAML.
+
+<File name='models/_models.yml'>
+
+```yaml
+models:
+  - name: my_model
+    config:
+      snowflake_warehouse: "EXTRA_LARGE"    # override the snowflake virtual warehouse for just this model
+```
+
+</File>
+</TabItem>
 <TabItem value="models/events/sessions.sql">
 
-The example config below changes the warehouse for a single model with a config() block in the SQL model.
+The following example changes the warehouse for a single model with a config() block in the SQL model.
 
 <File name='models/events/sessions.sql'>
 
 ```sql
+-- override the snowflake virtual warehouse for just this model
 {{
   config(
     materialized='table',
