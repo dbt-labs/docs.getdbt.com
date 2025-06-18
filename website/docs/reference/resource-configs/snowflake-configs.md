@@ -581,10 +581,10 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"    # default snowflake virtual warehouse for all models in the project.
+  +snowflake_warehouse: "EXTRA_SMALL"    # default Snowflake virtual warehouse for all models in the project.
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"    # override the default snowflake virtual warehouse for all models under the `clickstream` directory.
+      +snowflake_warehouse: "EXTRA_LARGE"    # override the default Snowflake virtual warehouse for all models under the `clickstream` directory.
 snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
@@ -601,7 +601,7 @@ The following example overrides the Snowflake warehouse for a single model using
 models:
   - name: my_model
     config:
-      snowflake_warehouse: "EXTRA_LARGE"    # override the snowflake virtual warehouse just for this model
+      snowflake_warehouse: "EXTRA_LARGE"    # override the Snowflake virtual warehouse just for this model
 ```
 
 </File>
@@ -613,7 +613,7 @@ The following example changes the warehouse for a single model with a config() b
 <File name='models/events/sessions.sql'>
 
 ```sql
--- override the snowflake virtual warehouse for just this model
+-- override the Snowflake virtual warehouse for just this model
 {{
   config(
     materialized='table',
