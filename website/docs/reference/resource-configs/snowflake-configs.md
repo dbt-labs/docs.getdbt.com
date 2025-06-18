@@ -593,7 +593,7 @@ snapshots:
 </TabItem>
 <TabItem value="models/my_model.yml">
 
-The following example changes the warehouse for a single model with a config argument in the YAML.
+The following example overrides the Snowflake warehouse for a single model using a config argument in the property file.
 
 <File name='models/my_model.yml'>
 
@@ -601,7 +601,7 @@ The following example changes the warehouse for a single model with a config arg
 models:
   - name: my_model
     config:
-      snowflake_warehouse: "EXTRA_LARGE"    # override the snowflake virtual warehouse for just this model
+      snowflake_warehouse: "EXTRA_LARGE"    # override the snowflake virtual warehouse just for this model
 ```
 
 </File>
