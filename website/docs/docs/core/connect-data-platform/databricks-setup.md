@@ -41,6 +41,8 @@ Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) 
 
 You can use either token-based authentication or OAuth client-based authentication to connect to Databricks. Refer to the following examples for more info on how to configure your profile for each type of authentication.
 
+OAuth authentication is supported starting with `dbt-databricks>=1.10.0`. The default OAuth app for dbt-databricks is auto-enabled in every account with expected settings, you can find it in [Account Console](https://accounts.cloud.databricks.com) > [Settings](https://accounts.cloud.databricks.com/settings) > [App Connections](https://accounts.cloud.databricks.com/settings/app-integrations) > dbt adapter for Databricks. If you cannot find it you may have disabled dbt in your account, please refer to this [guide](https://docs.databricks.com/en/integrations/enable-disable-oauth.html) to re-enable dbt as OAuth app.
+
 <Tabs queryString="tokenoauth">
 
 <TabItem value="token" label="Token-based authentication">
@@ -65,7 +67,7 @@ your_profile_name:
 
 </TabItem>
 
-<TabItem value="oauth" label="OAuth client-based authentication">
+<TabItem value="oauth-m2m" label="OAuth client-based authentication (M2M)">
 
 
 <File name='~/.dbt/profiles.yml'>
@@ -81,8 +83,30 @@ your_profile_name:
       host: YOUR_ORG.databrickshost.com # Required
       http_path: /SQL/YOUR/HTTP/PATH # Required
       auth_type: oauth # Required if using OAuth-based authentication
-      client_id: OAUTH_CLIENT_ID # The ID of your OAuth application. Required if using OAuth-based authentication
-      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXX # OAuth client secret. # Required if using OAuth-based authentication
+      client_id: OAUTH_CLIENT_ID # The ID of your OAuth application. Required if using OAuth-based authentication. Key should be azure_client_id for Azure Databricks.
+      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXX # OAuth client secret. Required if using OAuth-based authentication. Key should be azure_client_secret for Azure Databricks.
+      threads: 1_OR_MORE  # Optional, default 1
+```
+</File>
+
+</TabItem>
+
+<TabItem value="oauth-u2m" label="OAuth client-based authentication (U2M)">
+
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog
+      schema: SCHEMA_NAME # Required
+      host: YOUR_ORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
+      auth_type: oauth # Required if using OAuth-based authentication
       threads: 1_OR_MORE  # Optional, default 1
 ```
 </File>
@@ -110,8 +134,10 @@ Refer to the following **required** parameters to configure your profile for eac
 | Field     | Authentication type | Description | Example | 
 | --------- | ------- | ----------- | ---- | 
 |  `token`  |  Token-based  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |
-|  `client_id`  | OAuth-based |  The client ID for your Databricks OAuth application.<br />  | `OAUTH_CLIENT_ID`  | 
-|  `client_secret`  | OAuth-based |  The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  
+|  `client_id`  | OAuth-based (AWS/GCP) |  The client ID for your Databricks OAuth application  | `OAUTH_CLIENT_ID`  | 
+|  `client_secret`  | OAuth-based (AWS/GCP) |  The client secret for your Databricks OAuth application. | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  
+|  `azure_client_id`  | OAuth-based (Azure) |  The client ID for your Azure Databricks OAuth application. | `AZURE_CLIENT_ID`  | 
+|  `azure_client_secret`  | OAuth-based (Azure) |  The client secret for your Azure Databricks OAuth application. | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |
 |  `auth_type`  |  OAuth-based |  The type of authorization needed to connect to Databricks. <br /> | `oauth`  |
 
 ## Additional parameters
