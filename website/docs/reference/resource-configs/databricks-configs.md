@@ -139,13 +139,11 @@ models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.10">
 
 ## Configuring columns
 
-When materializing models of various types, you may include several optional column-level configs that are specific to the dbt-databricks plugin, in addition to the standard [column configs](/reference/resource-properties/columns).
-
-<VersionBlock firstVersion="1.9">
+When materializing models of various types, you may include several optional column-level configs that are specific to the dbt-databricks plugin, in addition to the standard [column configs](/reference/resource-properties/columns). Support for column tags and column masks were added in dbt-databricks v1.10.4.
 
 | Option    | Description   | Required?| Model support | Materialization support | Example  |
 |-----------|---------------|----------|---------------|----------------------------|----------|
@@ -153,7 +151,7 @@ When materializing models of various types, you may include several optional col
 | column_mask   | [Column mask](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask) configuration for dynamic data masking. Accepts `function` and optional `using_columns` properties*  | Optional     | SQL, Python   | Table, Incremental, Streaming Table | `{'function': 'my_catalog.my_schema.mask_email'}`   |
 
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters)
-</VersionBlock>
+
 
 † `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
 
@@ -179,6 +177,10 @@ models:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
 
 ## Incremental models
 

@@ -41,7 +41,7 @@ Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) 
 
 You can use either token-based authentication or OAuth client-based authentication to connect to Databricks. Refer to the following examples for more info on how to configure your profile for each type of authentication.
 
-OAuth authentication is supported starting with `dbt-databricks>=1.10.0`. The default OAuth app for dbt-databricks is auto-enabled in every account with expected settings, you can find it in [Account Console](https://accounts.cloud.databricks.com) > [Settings](https://accounts.cloud.databricks.com/settings) > [App Connections](https://accounts.cloud.databricks.com/settings/app-integrations) > dbt adapter for Databricks. If you cannot find it you may have disabled dbt in your account, please refer to this [guide](https://docs.databricks.com/en/integrations/enable-disable-oauth.html) to re-enable dbt as OAuth app.
+The default OAuth app for dbt-databricks is auto-enabled in every account with expected settings, you can find it in [Account Console](https://accounts.cloud.databricks.com) > [Settings](https://accounts.cloud.databricks.com/settings) > [App Connections](https://accounts.cloud.databricks.com/settings/app-integrations) > dbt adapter for Databricks. If you cannot find it you may have disabled dbt in your account, please refer to this [guide](https://docs.databricks.com/en/integrations/enable-disable-oauth.html) to re-enable dbt as OAuth app.
 
 <Tabs queryString="tokenoauth">
 
