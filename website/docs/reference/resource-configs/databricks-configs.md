@@ -29,7 +29,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 † When `table_format` is `iceberg`, `file_format` must be `delta`.
 
-‡ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
 
 \+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
@@ -149,11 +149,13 @@ When materializing models of various types, you may include several optional col
 
 | Option    | Description   | Required?| Model support | Materialization support | Example  |
 |-----------|---------------|----------|---------------|----------------------------|----------|
-| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on individual columns    | Optional    |  SQL, Python | Table, Incremental, Materialized View, Streaming Table  | `{'data_classification': 'pii'}`  |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on individual columns    | Optional    |  SQL†, Python† | Table, Incremental, Materialized View, Streaming Table  | `{'data_classification': 'pii'}`  |
 | column_mask   | [Column mask](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask) configuration for dynamic data masking. Accepts `function` and optional `using_columns` properties*  | Optional     | SQL, Python   | Table, Incremental, Streaming Table | `{'function': 'my_catalog.my_schema.mask_email'}`   |
 
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters)
 </VersionBlock>
+
+† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
 
 This example uses the column-level configurations in the previous table:
 
