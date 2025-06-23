@@ -10,7 +10,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration', 'dbt Core']
 level: 'Beginner'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

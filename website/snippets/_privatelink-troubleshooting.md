@@ -1,6 +1,6 @@
 ## Troubleshooting
 
-If the PrivateLink endpoint has been provisioned and configured in dbt Cloud, but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt Cloud and the backing service.
+If the PrivateLink endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between <Constant name="cloud" /> and the backing service.
 
 ### Configuration
 
@@ -8,20 +8,20 @@ Start with the configuration:
 
 <Expandable alt_header="1. NLB Security Group">
 
-The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated Security Group or the Security Group must have a rule that allows requests from the appropriate dbt Cloud _private CIDR(s)_. Note that this differs from the static public IPs listed on the dbt Cloud Connection page. dbt Support can provide the correct private CIDR(s) upon request.
+The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated Security Group or the Security Group must have a rule that allows requests from the appropriate <Constant name="cloud" /> _private CIDR(s)_. Note that this differs from the static public IPs listed on the <Constant name="cloud" /> Connection page. dbt Support can provide the correct private CIDR(s) upon request.
    - **Note***: To test if this is the issue, temporarily adding an allow rule of `10.0.0.0/8` should allow connectivity until the rule can be refined to a smaller CIDR
 
 </Expandable>
 
 <Expandable alt_header="2. NLB Listener and Target Group">
 
-Check that there is a Listener connected to the NLB that matches the port that dbt Cloud is trying to connect to. This Listener must have a configured action to forward to a Target Group with targets that point to your backing service. At least one (but preferably all) of these targets must be **Healthy**. Unhealthy targets could suggest that the backing service is, in fact, unhealthy or that the service is protected by a Security Group that doesn't allow requests from the NLB.
+Check that there is a Listener connected to the NLB that matches the port that <Constant name="cloud" /> is trying to connect to. This Listener must have a configured action to forward to a Target Group with targets that point to your backing service. At least one (but preferably all) of these targets must be **Healthy**. Unhealthy targets could suggest that the backing service is, in fact, unhealthy or that the service is protected by a Security Group that doesn't allow requests from the NLB.
 
 </Expandable>
 
 <Expandable alt_header="3. Cross-zone Load Balancing">
 
-Check that _Cross-zone load balancing_ is enabled for your NLB (check the **Attributes** tab of the NLB in the AWS console). If this is disabled, and the zones that dbt Cloud is connected to are misaligned with the zones where the service is running, requests may not be able to be routed correctly. Enabling cross-zone load balancing will also make the connection more resilient in the case of a failover in a zone outage scenario. Cross-zone connectivity may incur additional data transfer charges, though this should be minimal for requests from dbt Cloud.
+Check that _Cross-zone load balancing_ is enabled for your NLB (check the **Attributes** tab of the NLB in the AWS console). If this is disabled, and the zones that <Constant name="cloud" /> is connected to are misaligned with the zones where the service is running, requests may not be able to be routed correctly. Enabling cross-zone load balancing will also make the connection more resilient in the case of a failover in a zone outage scenario. Cross-zone connectivity may incur additional data transfer charges, though this should be minimal for requests from <Constant name="cloud" />.
 
 </Expandable>
 
@@ -33,7 +33,7 @@ If all the above check out, it may be possible that requests are not routing cor
 
 ### Monitoring
 
-To help isolate connection issues over a PrivateLink connection from dbt Cloud, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. Contact dbt Support to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
+To help isolate connection issues over a PrivateLink connection from <Constant name="cloud" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. Contact dbt Support to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
 
 <Expandable alt_header="VPC Endpoint Service Monitoring">
 

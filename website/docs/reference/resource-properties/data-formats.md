@@ -29,7 +29,7 @@ unit_tests:
 
 ```
 
-## csv
+## CSV
 
 When using the `csv` format, you can use either an inline CSV string for `rows`:
 

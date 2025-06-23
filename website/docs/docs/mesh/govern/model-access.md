@@ -87,19 +87,22 @@ groups:
 models:
   # This is a public model -- it's a stable & mature interface for other teams/projects
   - name: dim_customers
-    group: customer_success
-    access: public
+    config:
+      group: customer_success # changed to config in v1.10
+      access: public # changed to config in v1.10
     
   # This is a private model -- it's an intermediate transformation intended for use in this context *only*
   - name: int_customer_history_rollup
-    group: customer_success
-    access: private
+    config:
+      group: customer_success # changed to config in v1.10
+      access: private # changed to config in v1.10
     
   # This is a protected model -- it might be useful elsewhere in *this* project,
   # but it shouldn't be exposed elsewhere
   - name: stg_customer__survey_results
-    group: customer_success
-    access: protected
+    config:
+      group: customer_success # changed to config in v1.10
+      access: protected # changed to config in v1.10
 ```
 
 </File>
@@ -126,7 +129,8 @@ And the model access is defined:
 
 models:
   - name: my_model
-    access: public
+    config:
+      access: public # changed to config in v1.10
 
 ```
 
@@ -158,7 +162,7 @@ As we continue to develop multi-project collaboration, `access: public` will mea
 ### How do I ref a model from another project?
 
 You can `ref` a model from another project in two ways:
-1. [Project dependency](/docs/mesh/govern/project-dependencies): In dbt Cloud Enterprise, you can use project dependencies to `ref`  a model. dbt Cloud uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
+1. [Project dependency](/docs/mesh/govern/project-dependencies): In <Constant name="cloud" /> Enterprise, you can use project dependencies to `ref`  a model. <Constant name="cloud" /> uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
 2. ["Package" dependency](/docs/build/packages): Another way to `ref` a model from another project is to treat the other project as a package dependency. This requires installing the other project as a package, including its full source code, as well as its upstream dependencies.
 
 ### How do I restrict access to models defined in a package?

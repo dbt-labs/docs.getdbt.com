@@ -39,6 +39,21 @@
   ],
   "redirects": [
     {
+      "source": "/docs/cloud/secure/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/privatelink/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/privatelink/about-private-link",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
       "source": "/docs/collaborate/explore-projects",
       "destination": "/docs/explore/explore-projects",
       "permanent": true
@@ -206,6 +221,11 @@
     {
       "source": "/reference/resource-properties/argument-type",
       "destination": "/reference/resource-properties/arguments",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
       "permanent": true
     },
     {
@@ -1516,11 +1536,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/cloud/privatelink/:path*",
-      "destination": "/docs/cloud/secure/about-privatelink",
-      "permanent": true
-    },
-    {
       "source": "/docs/deploy/dbt-cloud-job#create-and-schedule-jobs",
       "destination": "/docs/deploy/dbt-cloud-job#create-and-schedule-jobs",
       "permanent": true
@@ -2499,11 +2514,6 @@
     {
       "source": "/docs/dbt-cloud/cloud-ide/the-dbt-ide",
       "destination": "/docs/get-started/dbt-cloud-features",
-      "permanent": true
-    },
-    {
-      "source": "/((?!useful).*components)",
-      "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
       "permanent": true
     },
     {
@@ -4149,7 +4159,17 @@
     },
     {
       "source": "/docs/contributing/oss-expectations",
-      "destination": "/community/resources/oss-expectations",
+      "destination": "/community/resources/contributor-expectations",
+      "permanent": true
+    },
+    {
+      "source": "/community/resources/oss-expectations",
+      "destination": "/community/resources/contributor-expectations",
+      "permanent": true
+    },
+    {
+      "source": "/community/resources/oss-projects",
+      "destination": "/community/resources/oss-sa-projects",
       "permanent": true
     },
     {

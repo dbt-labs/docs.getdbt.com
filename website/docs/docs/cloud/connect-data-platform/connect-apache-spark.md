@@ -1,7 +1,7 @@
 ---
 title: "Connect Apache Spark"
 id: connect-apache-spark
-description: "Setup instructions for connecting Apache Spark to dbt Cloud"
+description: "Setup instructions for connecting Apache Spark to dbt"
 sidebar_label: "Connect Apache Spark"
 pagination_next: null
 ---

@@ -7,7 +7,7 @@ id: "run"
 
 ## Overview
 
-`dbt run` executes compiled sql model files against the current `target`
+`dbt run` executes compiled SQL model files against the current `target`
 database. dbt connects to the target database and runs the relevant SQL required
 to materialize all data models using the specified <Term id="materialization" /> strategies.
 Models are run in the order defined by the dependency graph generated during
@@ -77,13 +77,10 @@ See [global configs](/reference/global-configs/failing-fast)
 
 See [global configs](/reference/global-configs/print-output#print-color)
 
-<VersionBlock firstVersion="1.8">
 
 ## The `--empty` flag
 
 The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
-
-</VersionBlock>
 
 ## Status codes
 

@@ -1,10 +1,10 @@
 ---
-title: "Quickstart for dbt Cloud and Azure Synapse Analytics"
+title: "Quickstart for dbt and Azure Synapse Analytics"
 id: "azure-synapse-analytics"
 level: 'Beginner'
 icon: 'azure-synapse-analytics'
 hide_table_of_contents: true
-tags: ['dbt Cloud','Quickstart']
+tags: ['dbt platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -89,7 +89,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 
     <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
 
-## Connect dbt Cloud to Azure Synapse Analytics
+## Connect dbt to Azure Synapse Analytics
 
 1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 2. Enter a project name and click **Continue**.
@@ -106,7 +106,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Azure Synapse Analytics account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing

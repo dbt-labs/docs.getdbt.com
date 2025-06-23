@@ -2,7 +2,7 @@
 title: "Job scheduler"
 id: "job-scheduler"
 sidebar_label: "Job scheduler"
-description: "The dbt Cloud job scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
+description: "The dbt job scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
 tags: [scheduler]
 ---
 
@@ -23,9 +23,10 @@ The scheduler handles various tasks including:
 - Storing dbt artifacts for direct consumption/ingestion by the Discovery API
 
 The scheduler also:
-- Uses [dbt Cloud's Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed" />
+- Uses [<Constant name="cloud" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
 - Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
-- Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload dbt Core artifacts into dbt Cloud for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed" />
+- Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="core" /> artifacts into dbt for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
+- Uses [state-aware orchestration](/docs/deploy/state-aware-about) to decide what needs to be rebuilt based on source freshness, model staleness, and code changes. <Lifecycle status="beta,managed,managed_plus" />
 
 ## Scheduler terms
 
@@ -40,7 +41,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Deactivated job | A situation where a job has reached 100 consecutive failing runs. |
 | Prep time | The time <Constant name="cloud" /> takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the <Constant name="cloud" /> Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
-| Run slot | Run slots control the number of jobs that can run concurrently. Developer plans have a fixed number of run slots, while Enterprise and Team plans have unlimited run slots. Each running job occupies a run slot for the duration of the run. <br /><br />Team and Developer plans are limited to one project each. For additional projects, consider upgrading to the [Enterprise plan](https://www.getdbt.com/pricing/).| 
+| Run slot | Run slots control the number of jobs that can run concurrently. Each running job occupies a run slot for the duration of the run. To view the number of run slots available in your plan, check out the [dbt pricing page](https://www.getdbt.com/pricing). <br /><br />Starter and Developer plans are limited to one project each. For additional projects or more run slots, consider upgrading to an [Enterprise-tier plan](https://www.getdbt.com/pricing/).| 
 | Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
 | Wait time | Amount of time that <Constant name="cloud" /> waits before running a job, either because there are no available slots or because a previous run of the same job is still in progress. |
 
@@ -51,13 +52,13 @@ The scheduler queues a deployment job to be processed when it's triggered to run
 
 Before the job starts executing, the scheduler checks these conditions to determine if the run can start executing:
 
-- **Is there a run slot that's available on the account for use?** &mdash; If all run slots are occupied, the queued run will wait. The wait time is displayed in <Constant name="cloud" />. If there are long wait times, [upgrading to Enterprise](https://www.getdbt.com/contact/) can provide more run slots and allow for higher job concurrency.
+- **Is there a run slot that's available on the account for use?** &mdash; If all run slots are occupied, the queued run will wait. The wait time is displayed in <Constant name="cloud" />. If there are long wait times, [upgrading to an Enterprise-tier plan](https://www.getdbt.com/contact/) can provide more run slots and allow for higher job concurrency.
 
 - **Does this same job have a run already in progress?** &mdash; The scheduler executes distinct runs of the same <Constant name="cloud" /> job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in <Constant name="cloud" />.
 
 If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and <Constant name="git" /> provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **Prep time** in the UI.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt job run"/>
 
 ### Treatment of CI jobs
 When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a <Constant name="git" /> pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 

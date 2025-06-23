@@ -112,21 +112,6 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-semantic_models:
-  - name: semantic_model_name
-   ..rest of the semantic model config
-    entities:
-      - name: entity_name     ## Required
-        type: Primary, or natural, or foreign, or unique ## Required
-        description: A description of the field or role the entity takes in this table ## Optional
-        expr: The field that denotes that entity (transaction_id).  ## Optional
-              Defaults to name if unspecified.
-```
-</VersionBlock>
-
 Here's an example of how to define entities in a semantic model:
 
 <VersionBlock firstVersion="1.9"> 
@@ -151,28 +136,6 @@ entities:
     [config](/reference/resource-properties/config):
       [meta](/reference/resource-configs/meta):
         data_owner: "Finance team"
-```
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8"> 
-
-```yaml
-entities:
-  - name: transaction
-    type: primary
-    expr: id_transaction
-  - name: order
-    type: foreign
-    expr: id_order
-  - name: user
-    type: foreign
-    expr: substring(id_order from 2)
-    entities:
-  - name: transaction
-    type: 
-    description: A description of the field or role the entity takes in this table ## Optional
-    expr: The field that denotes that entity (transaction_id).  
-          Defaults to name if unspecified.
 ```
 </VersionBlock>
 

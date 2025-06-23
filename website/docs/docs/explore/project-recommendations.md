@@ -3,6 +3,8 @@ title: "Project recommendations"
 sidebar_label: "Project recommendations"
 description: "dbt Explorer provides recommendations that you can take to improve the quality of your dbt project."
 ---
+
+# Project recommendations <Lifecycle status="managed,managed_plus" />
  
 dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
@@ -46,5 +48,4 @@ The following table lists the rules currently defined in the `dbt_project_evalua
 Models, sources, and exposures each also have a **Recommendations** tab on their resource details page, with the specific recommendations that correspond to that resource:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-tab.png" width="80%" title="Example of the Recommendations tab "/>
-
 

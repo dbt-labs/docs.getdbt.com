@@ -56,7 +56,7 @@ export default function QuickstartGuideCard({ frontMatter, onFavoriteUpdate }) {
       {icon && getIconType(icon, styles.icon)}
 
       <div className={styles.cardHeader}>
-        <p>{title}</p>
+        <h4 className="heading-4">{title}</h4>
         {isRecent && <span className={styles.recently_updated}>Updated</span>}
         <button
           onClick={toggleFavorite}
@@ -173,11 +173,11 @@ export function QuickstartGuideTitle({ frontMatter }) {
         <div className={styles.tag_container}>
           {tags &&
             tags.map((tag, i) => (
-              <div className={styles.tag} key={i}>
+              <div className={`${styles.tag} tag`} key={i}>
                 {tag}
               </div>
             ))}
-          {level && <div className={styles.tag}>{level}</div>}
+          {level && <div className={`${styles.tag} tag`}>{level}</div>}
         </div>
       )}
     </>

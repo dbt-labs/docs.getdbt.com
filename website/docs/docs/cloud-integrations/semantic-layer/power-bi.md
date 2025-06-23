@@ -5,13 +5,13 @@ tags: [Semantic Layer]
 sidebar_label: "Power BI"
 ---
 
-# Power BI <Lifecycle status="self_service,managed,beta" />
+# Power BI <Lifecycle status="self_service,managed,managed_plus,beta" />
 
 The Power BI integration enables you to query the <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
 
 :::tip
 The <Constant name="semantic_layer" /> Power BI integration is currently in private beta. To join the beta, contact your account representative.
-:::
+:::  
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ The <Constant name="semantic_layer" /> Power BI integration is currently in priv
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
 - You need your [<Constant name="cloud" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
-- You must have a <Constant name="cloud" /> Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
+- You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';
 

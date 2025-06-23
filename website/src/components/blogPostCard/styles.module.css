@@ -1,21 +1,23 @@
 :root {
-  --border-radius: 10px;
+  --border-radius: 16px;
 }
 
 .card {
-  border: 1px solid #EFF2F3;
+  border: 1px solid var(--border-neutral-tertiary);
   border-radius: var(--border-radius);
-  box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  background-color: var(--bg-surface-default);
+  backdrop-filter: blur(10px) !important;
 }
 
 /* if blog post has thumbnail image */
 
 .imageCard {
-  border: 1px solid #EFF2F3;
+  border: 1px solid var(--border-neutral-tertiary);
   border-radius: var(--border-radius);
-  box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
   padding: 0;
+  background-color: var(--bg-surface-default);
+  backdrop-filter: blur(10px) !important;
 }
 
 .contentContainer.imageContentContainer {
@@ -52,19 +54,33 @@
   line-height: 1.875rem;
 }
 
-[data-theme='dark'] a.ctaLink {
-  color: #fff;
-  text-decoration: underline;
-}
-
 a.ctaLink {
-  color: #009999;
-  font-weight: 600;
+  color: var(--text-neutral-primary);
+  font-weight: 500;
   margin-top: auto;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 a.ctaLink:after {
-  content: ' →';
-  margin-left: 5px;
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 16px;
+  margin-left: auto;
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 14L8 8L2 2' stroke='%23030711' stroke-width='1.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+[data-theme='dark'] a.ctaLink:after {
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 14L8 8L2 2' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme='dark'] a.ctaLink {
+  color: var(--text-inverse-primary);
 }
 
 .icon {
@@ -76,3 +92,21 @@ a.ctaLink:after {
   margin-bottom: 1.5rem;
 }
 
+html[data-theme="dark"] {
+  .card, .imageCard {
+    background-color: var(--bg-surface-inverse);
+    border-color: var(--border-inverse-tertiary);
+  }
+
+  .contentContainer {
+    color: var(--text-inverse-secondary);
+  }
+}
+
+.tagsContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+}

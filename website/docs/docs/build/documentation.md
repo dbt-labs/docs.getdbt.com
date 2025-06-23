@@ -82,7 +82,7 @@ Generate documentation for your project by following these steps:
 dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after it's generated:
 
 - [**dbt Docs**:](/docs/build/view-documentation#dbt-docs) A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="cloud" /> Developer plans.
-- [**<Constant name="explorer" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="cloud" /> Team or Enterprise plans.
+- [**<Constant name="explorer" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 
 See [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
 
@@ -123,12 +123,6 @@ In this example, a docs block named `table_events` is defined with some descript
 <VersionBlock firstVersion="1.9">
 
 Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 </VersionBlock>
 

@@ -24,4 +24,4 @@ Whereas you can use **configurations** to:
 * Change how a model will be materialized (<Term id="table" />, <Term id="view" />, incremental, etc)
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
 * Declare whether a resource should persist its descriptions as comments in the database
-* Apply tags and "meta" properties
+* Apply tags and meta to a resource

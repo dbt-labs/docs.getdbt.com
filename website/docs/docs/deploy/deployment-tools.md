@@ -15,12 +15,12 @@ If your organization uses [Airflow](https://airflow.apache.org/), there are a nu
 
 <Tabs>
 
-<TabItem value="airflowcloud" label="dbt Cloud">
+<TabItem value="airflowcloud" label="dbt platform">
 
-Installing the [dbt Cloud Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
+Installing the [<Constant name="cloud" /> Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate <Constant name="cloud" /> jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within <Constant name="cloud" />.
 
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt job triggered by Airflow"/>
 
 </TabItem>
 
@@ -53,7 +53,7 @@ To use the dbt API to trigger a job in <Constant name="cloud" /> through ADF:
 2. You'll want to create a pipeline in ADF to trigger a <Constant name="cloud" /> job.
 3. Securely fetch the <Constant name="cloud" /> service token from a key vault in ADF, using a web call as the first step in the pipeline.
 4. Set the parameters in the pipeline, including the <Constant name="cloud" /> account ID and  job ID, as well as the name of the key vault and secret that contains the service token. 
-    * You can find the dbt Cloud job and account id in the URL, for example, if your URL is `https://YOUR_ACCESS_URL/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
+    * You can find the <Constant name="cloud" /> job and account id in the URL, for example, if your URL is `https://YOUR_ACCESS_URL/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
 5. Trigger the pipeline in ADF to start the <Constant name="cloud" /> job and monitor the status of the <Constant name="cloud" /> job in ADF.
 6. In <Constant name="cloud" />, you can check the status of the job and how it was triggered in <Constant name="cloud" />.
 
@@ -94,20 +94,20 @@ The following is an example of viewing lineage in Orchestra for dbt jobs:
 
 If your organization uses [Prefect](https://www.prefect.io/), the way you will run your jobs depends on the dbt version you're on, and whether you're orchestrating <Constant name="cloud" /> or <Constant name="core" /> jobs. Refer to the following variety of options:
 
-<Lightbox src="/img/docs/running-a-dbt-project/prefect_dag_dbt_cloud.jpg" width="75%" title="Prefect DAG using a dbt Cloud job run flow"/> 
+<Lightbox src="/img/docs/running-a-dbt-project/prefect_dag_dbt_cloud.jpg" width="75%" title="Prefect DAG using a dbt job run flow"/> 
 
 
 ### Prefect 2
 
 <Tabs>
 
-<TabItem value="prefect2cloud" label="dbt Cloud">
+<TabItem value="prefect2cloud" label="dbt platform">
 
 - Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.github.io/prefect-dbt/cloud/jobs/#prefect_dbt.cloud.jobs.trigger_dbt_cloud_job_run_and_wait_for_completion) flow. 
 - As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect user interface (UI)](https://docs.prefect.io/ui/overview/).
 
 
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt Cloud job triggered by Prefect"/> 
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt job triggered by Prefect"/> 
 
 </TabItem>
 
@@ -124,9 +124,9 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 <Tabs>
 
-<TabItem value="prefect1cloud" label="dbt Cloud">
+<TabItem value="prefect1cloud" label="dbt platform">
 
-- Trigger dbt Cloud jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. 
+- Trigger <Constant name="cloud" /> jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. 
 - Running this task will generate a markdown artifact viewable in the Prefect UI. 
 - The artifact will contain links to the dbt artifacts generated as a result of the job run.
 

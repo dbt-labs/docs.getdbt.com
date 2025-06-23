@@ -74,39 +74,6 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-semantic_models:
-  - name: transactions
-    description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
-    model: {{ ref('fact_transactions') }}
-    defaults:
-      agg_time_dimension: order_date
-# --- entities --- 
-  entities: 
-    - name: transaction
-      type: primary
-      ...
-# --- measures --- 
-  measures: 
-      ... 
-# --- dimensions ---
-  dimensions:
-    - name: order_date
-      type: time
-      type_params:
-        time_granularity: day
-      label: "Date of transaction" # Recommend adding a label to provide more context to users consuming the data
-      expr: ts
-    - name: is_bulk
-      type: categorical
-      expr: case when quantity > 10 then true else false end
-    - name: type
-      type: categorical
-```
-</VersionBlock>
-
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
 MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. We recommend making these "virtual primary entities" unique across your semantic model. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
@@ -154,15 +121,6 @@ dimensions:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-dimensions: 
-  - name: is_bulk_transaction
-    type: categorical
-    expr: case when quantity > 10 then true else false end
-```
-</VersionBlock>
 
 ## Time
 
@@ -171,7 +129,7 @@ Time has additional parameters specified under the `type_params` section. When y
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
 
 ```bash
-# dbt Cloud users
+# dbt users
 dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
 # dbt Core users
@@ -197,36 +155,6 @@ dimensions:
     config:
       meta:
         notes: "Only valid for orders from 2022 onward"
-    is_partition: True
-    type_params:
-      time_granularity: day
-  - name: deleted_at
-    type: time
-    label: "Date of deletion"
-    expr: ts_deleted # ts_deleted is the underlying column name from the table
-    is_partition: True 
-    type_params:
-      time_granularity: day
-
-measures:
-  - name: users_deleted
-    expr: 1
-    agg: sum
-    agg_time_dimension: deleted_at
-  - name: users_created
-    expr: 1
-    agg: sum
-```
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-```yaml
-dimensions: 
-  - name: created_at
-    type: time
-    label: "Date of creation"
-    expr: ts_created # ts_created is the underlying column name from the table 
     is_partition: True
     type_params:
       time_granularity: day
@@ -281,48 +209,6 @@ dimensions:
     is_partition: True 
     type_params:
       time_granularity: hour 
-  - name: deleted_at
-    type: time
-    label: "Date of deletion"
-    expr: ts_deleted # ts_deleted is the underlying column name from the table 
-    is_partition: True 
-    type_params:
-      time_granularity: day 
-
-measures:
-  - name: users_deleted
-    expr: 1
-    agg: sum 
-    agg_time_dimension: deleted_at
-  - name: users_created
-    expr: 1
-    agg: sum
-```
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-`time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add daily granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to daily. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from daily to monthly. However, you can't go from a coarser grain to a finer grain (monthly to daily).
-
-Our supported granularities are:
-* day
-* week
-* month
-* quarter
-* year
-
-Aggregation between metrics with different granularities is possible, with the <Constant name="semantic_layer" /> returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
-
-```yaml
-dimensions: 
-  - name: created_at
-    type: time
-    label: "Date of creation"
-    expr: ts_created # ts_created is the underlying column name from the table 
-    is_partition: True 
-    type_params:
-      time_granularity: day 
   - name: deleted_at
     type: time
     label: "Date of deletion"
@@ -556,7 +442,7 @@ In the sales tier example, if sales_person_id 456 is Tier 2 from 2022-03-08 onwa
 The following command or code represents how to return the count of transactions generated by each sales tier per month:
 
 ```bash
-# dbt Cloud users
+# dbt platform users
 dbt sl query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
 # dbt Core users

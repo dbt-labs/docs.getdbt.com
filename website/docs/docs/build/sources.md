@@ -9,7 +9,7 @@ search_weight: "heavy"
 ## Related reference docs
 * [Source properties](/reference/source-properties)
 * [Source configurations](/reference/source-configs)
-* [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
+* [`{{ source() }}` Jinja function](/reference/dbt-jinja-functions/source)
 * [`source freshness` command](/reference/commands/source)
 
 ## Using sources
@@ -103,6 +103,7 @@ sources:
     description: This is a replica of the Postgres database used by our app
     tables:
       - name: orders
+        database: raw
         description: >
           One record per order. Includes cancelled and deleted orders.
         columns:
@@ -144,22 +145,26 @@ version: 2
 sources:
   - name: jaffle_shop
     database: raw
-    freshness: # default freshness
-      warn_after: {count: 12, period: hour}
-      error_after: {count: 24, period: hour}
+    config: 
+      freshness: # default freshness
+        # changed to config in v1.9
+        warn_after: {count: 12, period: hour}
+        error_after: {count: 24, period: hour}
     loaded_at_field: _etl_loaded_at
 
     tables:
       - name: orders
-        freshness: # make this a little more strict
-          warn_after: {count: 6, period: hour}
-          error_after: {count: 12, period: hour}
+        config:
+          freshness: # make this a little more strict
+            warn_after: {count: 6, period: hour}
+            error_after: {count: 12, period: hour}
 
       - name: customers # this inherits the default freshness defined in the jaffle_shop source block at the beginning
 
 
       - name: product_skus
-        freshness: null # do not check freshness for this table
+        config:
+          freshness: null # do not check freshness for this table
 ```
 
 </File>

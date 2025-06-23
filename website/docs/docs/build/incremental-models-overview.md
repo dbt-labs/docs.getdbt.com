@@ -13,6 +13,13 @@ This page will provide you with a brief overview of incremental models, their im
 
 <Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices guide (https://docs.getdbt.com/best-practices/materializations/1-guide-overview)" />
 
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
+<CourseCallout resource="Incremental models"
+url="https://learn.getdbt.com/courses/incremental-models"
+course="Incremental models"
+/>
+
 ## Understand incremental models
 
 Incremental models enable you to significantly reduce the build time by just transforming new records. This is particularly useful for large datasets, where the cost of processing the entire dataset is high.

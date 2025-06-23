@@ -5,13 +5,13 @@ sidebar_label: 'How to fix your .gitignore file'
 id: gitignore
 ---
 
-A `.gitignore` file specifies which files git should intentionally ignore or 'untrack'. dbt Cloud indicates untracked files in the project file explorer pane by putting the file or folder name in *italics*.
+A `.gitignore` file specifies which files git should intentionally ignore or 'untrack'. <Constant name="cloud" /> indicates untracked files in the project file explorer pane by putting the file or folder name in *italics*.
 
 If you encounter issues like problems reverting changes, checking out or creating a new branch, or not being prompted to open a pull request after a commit in the <Constant name="cloud_ide" /> &mdash; this usually indicates a problem with the [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) file. The file may be missing or lacks the required entries for <Constant name="cloud" /> to work correctly.
 
 The following sections describe how to fix the `.gitignore` file in:
 
-<Expandable alt_header="Fix in the dbt Cloud IDE">
+<Expandable alt_header="Fix in the Studio IDE">
 
 To resolve issues with your `gitignore` file, adding the correct entries won't automatically remove (or 'untrack') files or folders that have already been tracked by git. The updated `gitignore` will only prevent new files or folders from being tracked. So you'll need to first fix the `gitignore` file, then perform some additional git operations to untrack any incorrect files or folders.  
 
@@ -85,7 +85,7 @@ dbt_modules/
 7. Commit (save) the deletions to the main branch.
 8. Switch to the <Constant name="cloud_ide" /> , and open the project that you're fixing.
 9. [Rollback your repo to remote](/docs/cloud/git/version-control-basics#the-git-button-in-the-cloud-ide)  in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Rollback to remote**.
-    * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of dbt Cloud.
+    * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of <Constant name="cloud" />.
 10. Once you rollback to remote, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
 11. Go to the **File Explorer** to verify the `.gitignore` file contains the correct entries and make sure the untracked files/folders in the .gitignore file are in *italics*. 
 12. Great job 🎉! You've configured the `.gitignore` correctly and can continue with your development!

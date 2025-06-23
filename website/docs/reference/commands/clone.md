@@ -37,9 +37,9 @@ Unlike deferral, `dbt clone` requires some compute and creation of additional ob
 
 For example, by creating actual data warehouse objects, `dbt clone` allows you to test out your code changes on downstream dependencies _outside of dbt_ (such as a BI tool). 
 
-As another example, you could `clone` your modified incremental models as the first step of your dbt Cloud CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
+As another example, you could `clone` your modified incremental models as the first step of your <Constant name="cloud" /> CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
 
-## Cloning in dbt Cloud
+## Cloning in dbt
 
 You can clone nodes between states in <Constant name="cloud" /> using the `dbt clone` command. This is available in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="cloud" />, read [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer).
 
@@ -49,7 +49,7 @@ You can clone nodes between states in <Constant name="cloud" /> using the `dbt c
 
   - Set up your **Production environment** and have a successful job run.
   - Enable **Defer to production** by toggling the switch in the lower-right corner of the command bar.
-    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
+    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
   - Run the `dbt clone` command from the command bar.
   
   

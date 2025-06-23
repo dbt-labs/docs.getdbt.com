@@ -38,7 +38,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources|
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement|
-| `retries`  | 1 | Number of retries |
+| `retries`  | 1 | Number of retries (on each statement) |
+| `retry_all`  | true | Allows dbt to retry all statements in a query* |
 
 ## Authentication Parameters
 

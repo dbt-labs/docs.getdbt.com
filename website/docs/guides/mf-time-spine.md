@@ -5,7 +5,6 @@ level: 'Intermediate'
 icon: 'guides'
 tags: ['Quickstart', 'Semantic Layer']
 hide_table_of_contents: true
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -69,7 +68,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
     select *
     from final
     where date_day > dateadd(year, -5, current_date())  -- Keep recent dates only
-      and date_day < dateadd(day, 30, current_date());
+      and date_day < dateadd(day, 30, current_date())
     ```
     </File>
       
@@ -82,7 +81,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
     ```
 
 4. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
-   <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in dbt Cloud IDE" />
+   <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in the Studio IDE" />
 
 ## Add YAML configuration for the time spine
 
@@ -150,7 +149,7 @@ For the time spine you created, let's run it and preview the output if you haven
    ```
 
 2. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
-    <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in dbt Cloud IDE" />
+    <Lightbox src="/img/mf-guide-preview-time-spine-table.jpg" title="Preview the time spine model in the Studio IDE" />
 
 3. Check that the model:
    - Contains one row per day.
@@ -165,7 +164,7 @@ For the time spine you created, let's run it and preview the output if you haven
     ```
 
     This will output results similar to the following in the <Constant name="cloud_ide" />:
-    <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.jpg" title="Validate the metrics and time spine output in dbt Cloud IDE" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.jpg" title="Validate the metrics and time spine output in the Studio IDE" />
 
 5. Double check that the results are correct and returning the expected data.
 
@@ -247,7 +246,7 @@ To support multiple granularities (like hourly, yearly, monthly), create additio
    ```
 
 If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
-   <Lightbox src="/img/mf-guide-query.jpg" title="Validate the metrics and time spine output in dbt Cloud IDE" />
+   <Lightbox src="/img/mf-guide-query.jpg" title="Validate the metrics and time spine output in the Studio IDE" />
 
 :::tip Extra credit!
 For some extra practice, try one of the following exercises:
@@ -339,7 +338,7 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
    dbt sl query --metrics orders --group-by metric_time__fiscal_year
    ```
 
-   <Lightbox src="/img/mf-guide-fiscal-preview.jpg" title="Validate the custom calendar metrics and time spine output in dbt Cloud IDE" />
+   <Lightbox src="/img/mf-guide-fiscal-preview.jpg" title="Validate the custom calendar metrics and time spine output in the Studio IDE" />
 
 
 ## What's next

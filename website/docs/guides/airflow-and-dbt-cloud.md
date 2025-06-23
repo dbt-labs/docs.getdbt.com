@@ -1,19 +1,18 @@
 ---
-title: Airflow and dbt Cloud
+title: Airflow and dbt
 id: airflow-and-dbt-cloud
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration']
+tags: ['dbt platform', 'Orchestration']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. <Constant name="cloud" /> works great with Airflow, letting you execute your dbt code in <Constant name="cloud" /> while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like <Constant name="explorer" />) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
+Many organizations already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. <Constant name="cloud" /> works great with Airflow, letting you execute your dbt code in <Constant name="cloud" /> while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like <Constant name="explorer" />) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
 
 - Scheduling other processes outside of dbt runs
 - Ensuring that a [dbt job](/docs/deploy/job-scheduler) kicks off before or after another process outside of <Constant name="cloud" />
@@ -33,7 +32,7 @@ You’ll also gain a better understanding of how this will:
 
 ## Prerequisites
 
-- [<Constant name="cloud" /> Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+- [<Constant name="cloud" /> Enterprise or Enterprise+ account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 
@@ -61,7 +60,7 @@ Follow the instructions [here](https://docs.docker.com/desktop/) to install Dock
 
 ## Clone the airflow-dbt-cloud repository
 
-Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/dbt-labs/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
+Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/dbt-labs/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your <Constant name="cloud" /> job. Once cloned, navigate into the `airflow-dbt-cloud` project.
 
 ```bash
 git clone https://github.com/dbt-labs/airflow-dbt-cloud.git
@@ -102,13 +101,13 @@ For more information about cloning GitHub repositories, refer to "[Cloning a rep
 
 <WistiaVideo id="2rzsjo0uml" paddingTweak="62.25%" />
 
-## Create a dbt Cloud service token
+## Create a dbt service token
 
-[Create a service token](/docs/dbt-cloud-apis/service-tokens) with `Job Admin` privileges from within dbt Cloud. Ensure that you save a copy of the token, as you won’t be able to access this later.
+[Create a service token](/docs/dbt-cloud-apis/service-tokens) with `Job Admin` privileges from within <Constant name="cloud" />. Ensure that you save a copy of the token, as you won’t be able to access this later.
 
 <WistiaVideo id="amubh6qmwq" paddingTweak="62.25%" />
 
-## Create a dbt Cloud job
+## Create a dbt job
 
 [Create a job in your <Constant name="cloud" /> account](/docs/deploy/deploy-jobs#create-and-schedule-jobs), paying special attention to the information in the bullets below.
 
@@ -122,7 +121,7 @@ https://YOUR_ACCESS_URL/#/accounts/{account_id}/projects/{project_id}/jobs/{job_
 
 <WistiaVideo id="qiife5rzlp" paddingTweak="62.25%" />
 
-## Connect dbt Cloud to Airflow
+## Connect dbt to Airflow
 
 Now you have all the working pieces to get up and running with Airflow + <Constant name="cloud" />. It's time to **set up a connection** and **run a DAG in Airflow** that kicks off a <Constant name="cloud" /> job.
 
@@ -130,11 +129,11 @@ Now you have all the working pieces to get up and running with Airflow + <Consta
 
     ![Airflow connections menu](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-connections-menu.png)
 
-2. Click on the `+` sign to add a new connection, then click on the drop down to search for the dbt Cloud Connection Type
+2. Click on the `+` sign to add a new connection, then click on the drop down to search for the <Constant name="cloud" /> Connection Type.
 
     ![Connection type](/img/guides/orchestration/airflow-and-dbt-cloud/connection-type.png)
 
-3. Add in your connection details and your default dbt Cloud account id. This is found in your dbt Cloud URL after the accounts route section (`/accounts/{YOUR_ACCOUNT_ID}`), for example the account with id 16173 would see this in their URL: `https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/`
+3. Add in your connection details and your default <Constant name="cloud" /> account id. This is found in your <Constant name="cloud" /> URL after the accounts route section (`/accounts/{YOUR_ACCOUNT_ID}`), for example the account with id 16173 would see this in their URL: `https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/`
 
     ![Connection type](/img/guides/orchestration/airflow-and-dbt-cloud/connection-type-configured.png)
 
@@ -142,10 +141,10 @@ Now you have all the working pieces to get up and running with Airflow + <Consta
 
  Add your `account_id` and `job_id` to the python file [dbt_cloud_run_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_run_job.py).
 
-Both IDs are included inside of the dbt Cloud job URL as shown in the following snippets:
+Both IDs are included inside of the <Constant name="cloud" /> job URL as shown in the following snippets:
 
 ```python
-# For the dbt Cloud Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
+# For the dbt Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
 # The account_id is 16173 and the job_id is 65767
 # Update lines 34 and 35
 ACCOUNT_ID = "16173"
@@ -199,7 +198,7 @@ airflow-dbt-cloud_e3fe3c-postgres-1     exited
 
 Because the Airflow DAG references <Constant name="cloud" /> jobs, your analytics engineers can take responsibility for configuring the jobs in <Constant name="cloud" />.
 
-For example, to run some models hourly and others daily, there will be jobs like `Hourly Run` or `Daily Run` using the commands `dbt run --select tag:hourly` and `dbt run --select tag:daily` respectively. Once configured in dbt Cloud, these can be added as steps in an Airflow DAG as shown in this guide. Refer to our full [node selection syntax docs here](/reference/node-selection/syntax).
+For example, to run some models hourly and others daily, there will be jobs like `Hourly Run` or `Daily Run` using the commands `dbt run --select tag:hourly` and `dbt run --select tag:daily` respectively. Once configured in <Constant name="cloud" />, these can be added as steps in an Airflow DAG as shown in this guide. Refer to our full [node selection syntax docs here](/reference/node-selection/syntax).
 
 ### How can I re-run models from the point of failure?  
 
@@ -230,7 +229,7 @@ As discussed above, we prefer to keep jobs bundled together and containing as ma
 
 Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/error-notifications-in-airflow/) functionality, or [<Constant name="cloud" />'s notifications](/docs/deploy/job-notifications), which support email and Slack notifications. You could also create a [webhook](/docs/deploy/webhooks).
 
-### How should I plan my dbt Cloud + Airflow implementation?
+### How should I plan my dbt + Airflow implementation?
 
 Check out [this recording](https://www.youtube.com/watch?v=n7IIThR8hGk) of a dbt meetup for some tips.
 

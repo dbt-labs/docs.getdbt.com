@@ -13,9 +13,6 @@ Metrics must be defined in a YAML file &mdash; either within the same file as yo
 
 The keys for metrics definitions are:
 
-<!-- for v1.8 and higher -->
-
-<VersionBlock firstVersion="1.8">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -48,59 +45,12 @@ metrics:
 ```
 
 </File>
-</VersionBlock>
-
-<!-- for v1.7 and lower -->
-
-<VersionBlock lastVersion="1.7">
-
-| Parameter | Description | Required | Type  |
-| --------- | ----------- | ---- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required | String |
-| `description` | Describe your metric.   | Optional | String |
-| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required | String |
-| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required | Dict |
-| `config` | Provide the specific configurations for your metric.   | Optional | Dict |
-| `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional | String |
-| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required | String |
-| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional | String |
-
-Here's a complete example of the metrics spec configuration:
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-metrics:
-  - name: metric name                     ## Required
-    description: same as always           ## Optional
-    type: the type of the metric          ## Required
-    type_params:                          ## Required
-      - specific properties for the metric type
-    config: here for `enabled`            ## Optional
-    meta:
-        my_meta_direct: 'direct'           ## Optional
-    label: The display name for your metric. This value will be shown in downstream tools. ## Required
-    filter: |                             ## Optional            
-      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
-```
-</File>
-
-</VersionBlock>
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
 ## Default granularity for metrics
-
-<VersionBlock lastVersion="1.8">
-Default time granularity for metrics is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. 
-
-Default time granularity for metrics is available now in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks), and it will be available in [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
-
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -293,8 +243,6 @@ A filter is configured using Jinja templating. Use the following syntax to refer
 
 Refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
 
-<VersionBlock firstVersion="1.8">
-
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
@@ -312,26 +260,6 @@ filter: |
 
 ```
 </File>
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-filter: | 
-  {{ Entity('entity_name') }}
-
-filter: |  
-  {{ Dimension('primary_entity__dimension_name') }}
-
-filter: |  
-  {{ TimeDimension('time_dimension', 'granularity') }}
-
-```
-</File>
-</VersionBlock>
 
 For example, if you want to filter for the order date dimension grouped by month, use the following syntax:
 

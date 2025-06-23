@@ -40,18 +40,18 @@ unit_tests:
         format: dict | csv | sql
         # either define rows inline or name of fixture
         rows: {dictionary} | <string>
-        fixture: <fixture-name> # sql or csv 
+        fixture: <fixture-name> # SQL or csv 
       - input: ... # declare additional inputs
     expect:
       format: dict | csv | sql
       # either define rows inline of rows or name of fixture
       rows: {dictionary} | <string>
-      fixture: <fixture-name> # sql or csv 
+      fixture: <fixture-name> # SQL or csv 
     overrides: # optional: configuration for the dbt execution environment
       macros:
         is_incremental: true | false
         dbt_utils.current_timestamp: <string>
-        # ... any other jinja function from https://docs.getdbt.com/reference/dbt-jinja-functions
+        # ... any other Jinja function from https://docs.getdbt.com/reference/dbt-jinja-functions
         # ... any other context property
       vars: {dictionary}
       env_vars: {dictionary}

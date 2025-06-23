@@ -33,7 +33,7 @@ Read the official documentation for using **watsonx.data** with `dbt-watsonx-spa
 - [Documentation for IBM watsonx.data software](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x?topic=integration-data-build-tool-adapter-spark)
 
 ## Installing dbt-watsonx-spark
-Note: From dbt v1.8, installing an adapter no longer installs '<Constant name="core" />' automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations.Use the following command for installation:
+Note: Installing an adapter doesn't install '<Constant name="core" />' automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations. Use the following command for installation:
 
 ```sh
 python -m pip install <Constant name="core" /> dbt-watsonx-spark

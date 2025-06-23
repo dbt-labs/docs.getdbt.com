@@ -83,7 +83,7 @@ For more information, refer to the [DuckDB setup](/docs/core/connect-data-platfo
 
     ```shell
 
-    cd jaffle_shop_duck_db
+    cd jaffle_shop_duckdb
 
     ```
 

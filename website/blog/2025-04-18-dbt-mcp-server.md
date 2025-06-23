@@ -111,7 +111,7 @@ By leveraging the dbt Semantic Layer through the MCP server, you ensure that LLM
 | `get_dimensions` | Identifies available dimensions for specified metrics | List of dimensions that can be used to group/filter the specified metrics |
 | `query_metrics` | Executes queries against metrics in the dbt Semantic Layer | Query results based on specified metrics, dimensions, and filters |
 
-## **Using the dbt MCP server for sql execution to power text to sql**
+## **Using the dbt MCP server for SQL execution to power text to sql**
 
 While the dbt Semantic Layer provides a governed, metrics-based approach to data querying, there are many analytical needs that require more flexible, exploratory SQL queries. The dbt MCP server will soon include SQL validation and querying capabilities with rich context awareness.
 

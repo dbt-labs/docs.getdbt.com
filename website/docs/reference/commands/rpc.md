@@ -400,7 +400,7 @@ Several of the following request types accept these additional parameters:
 
 ### Compiling a query
 
-This query compiles the sql `select {{ 1 + 1 }} as id` (base64-encoded) against the rpc server:
+This query compiles the SQL `select {{ 1 + 1 }} as id` (base64-encoded) against the rpc server:
 
 <File name='rpc-spec.json'>
 
@@ -423,7 +423,7 @@ The resulting response will include a key called `compiled_sql` with a value of 
 
 ### Executing a query
 
-This query executes the sql `select {{ 1 + 1 }} as id` (bas64-encoded) against the rpc server:
+This query executes the SQL `select {{ 1 + 1 }} as id` (bas64-encoded) against the rpc server:
 
 <File name='rpc-run.json'>
 

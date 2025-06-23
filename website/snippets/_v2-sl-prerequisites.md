@@ -1,6 +1,6 @@
-- Have a <Constant name="cloud" /> Team or Enterprise account. Available on all [tenant configurations](/docs/cloud/about-cloud/tenancy).
+- Have a <Constant name="cloud" /> Starter, Enterprise, or Enterprise+ account. Available on all [tenant configurations](/docs/cloud/about-cloud/tenancy).
 - Ensure your production and development environments are on a [supported dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-- Use Snowflake, BigQuery, Databricks, Redshift, or Postgres.
+- Use Snowflake, BigQuery, Databricks, Redshift, Postgres, or Trino.
 -  Create a successful run in the environment where you configure the <Constant name="semantic_layer" />.
    - **Note:** <Constant name="semantic_layer" /> supports querying in Deployment environments; development querying is coming soon.
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the <Constant name="semantic_layer" />.  

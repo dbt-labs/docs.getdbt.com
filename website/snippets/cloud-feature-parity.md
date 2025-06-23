@@ -1,4 +1,4 @@
-The following table outlines which dbt Cloud features are supported on the different SaaS options available today. For more information about feature availability, please [contact us](https://www.getdbt.com/contact/).
+The following table outlines which <Constant name="cloud" /> features are supported on the different SaaS options available today. For more information about feature availability, please [contact us](https://www.getdbt.com/contact/).
 
 | Feature                       | AWS Multi-tenant | AWS single tenant     |Azure multi-tenant   | Azure single tenant | GCP multi-tenant <Lifecycle status='beta' /> |
 |-------------------------------|------------------|-----------------------|---------------------|---------------------|------------------|

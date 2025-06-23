@@ -1,7 +1,7 @@
 ---
-title: Can self-hosted GitLab instances only be connected via dbt Cloud Enterprise plans?
+title: Can self-hosted GitLab instances only be connected via dbt Enterprise plans?
 description: "Self hosted GitLab instances plan availability"
-sidebar_label: 'Self-hosted GitLab instances available for dbt Cloud Enterprise'
+sidebar_label: 'Self-hosted GitLab instances available for dbt Enterprise'
 id: gitlab-selfhosted
 ---
 

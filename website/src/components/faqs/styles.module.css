@@ -20,6 +20,7 @@
     height: 1.25rem;
     width: 1.25rem;
     vertical-align: middle;
+    margin-right: 5px;
 }
 
 /* hack for unswizzled FAQ arrows */

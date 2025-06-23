@@ -6,6 +6,8 @@ description: "Embed data health tiles in your dashboards to distill data health 
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 ---
 
+# Data health tile <Lifecycle status="managed,managed_plus" />
+
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into <Constant name="explorer" /> to see more details and investigate issues.
 
 The data health tile:
@@ -27,16 +29,16 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 
 ## Prerequisites
 
-- You must have a <Constant name="cloud" /> account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You must have a <Constant name="cloud" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
 - You have [exposures](/docs/build/exposures) defined in your project:
   -  If using manual exposures, they must be explicitly defined in your YAML files.
   - If using automatic downstream exposures, ensure your BI tool is [configured](/docs/cloud-integrations/downstream-exposures-tableau) with <Constant name="cloud" />.
 - You have [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
-- The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
+- The exposure used for the data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in <Constant name="explorer" />.
 
-## View exposure in dbt Explorer
+## View exposure in dbt Catalog
 
 First, be sure to enable [source freshness](/docs/deploy/source-freshness) in the job that generates this exposure.
 
@@ -52,7 +54,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
    - You can also see the last check completed, the last check time, and the last check duration.
 6. You can click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Explorer." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Catalog." />
 
 ## Embed in your dashboard
 
@@ -70,7 +72,7 @@ Follow these steps to set up your data health tile:
 6. Navigate back to <Constant name="explorer" /> and select an exposure.
 
    :::tip
-      The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in dbt Explorer.
+      The exposure used for the  data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in <Constant name="explorer" />.
    :::
 
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
@@ -130,7 +132,7 @@ Follow these steps to embed the data health tile in Tableau:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/tableau-example.png" width="80%" title="Embed data health tile iFrame in Tableau"/>
 
 1. Create a dashboard in Tableau and connect to your database to pull in the data.
-2. Ensure you've copied the URL or iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
+2. Ensure you've copied the URL or iFrame snippet available in <Constant name="explorer" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
 3. Insert a **Web Page** object.
 4. Insert the URL and click **Ok**.
 
@@ -150,7 +152,7 @@ Follow these steps to embed the data health tile in Sigma:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/sigma-example.jpg" width="90%" title="Embed data health tile in Sigma"/>
 
 1. Create a dashboard in Sigma and connect to your database to pull in the data.
-2. Ensure you've copied the URL or iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
+2. Ensure you've copied the URL or iFrame snippet available in <Constant name="explorer" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
 3. Add a new embedded UI element in your Sigma Workbook in the following format:
 
     ```html
@@ -171,7 +173,7 @@ The default experience is the [environment-based data health tile](#view-exposur
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
 <Expandable alt_header="Job-based data health">  
-In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
+In <Constant name="cloud" />, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
 
 #### Functionality
 The dashboard status tile looks like this:
@@ -203,7 +205,7 @@ You can insert these three fields into the following iFrame, and then embed it *
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
+<Constant name="cloud" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
 
 ```
 <iframe src='https://metadata.emea.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>' title='Exposure Status Tile'></iframe>
@@ -220,7 +222,7 @@ The dashboard status tile should work anywhere you can embed an iFrame. But belo
 #### Mode
 Mode allows you to directly [edit the HTML](https://mode.com/help/articles/report-layout-and-presentation/#html-editor) of any given report, where you can embed the iFrame.
 
-Note that Mode has also built its own [integration](https://mode.com/get-dbt/) with the dbt Cloud Discovery API!
+Note that Mode has also built its own [integration](https://mode.com/get-dbt/) with the <Constant name="cloud" /> Discovery API!
 </TabItem>
 
 <TabItem value="looker" label="Looker">
@@ -247,7 +249,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
+<Constant name="cloud" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
 
 ```
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -270,7 +272,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
+<Constant name="cloud" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
 
 ```
 https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>

@@ -41,7 +41,7 @@ Materialized views are now an out of the box materialization in your dbt project
 
 *These adapters have supported materialized views in their adapter prior 1.6.
 
-Just like you would materialize your sql model as  `table` or `view`  today, you can use `materialized_view` in your model configuration, dbt_project.yml, and resources.yml files. At release, python models will not be supported.
+Just like you would materialize your SQL model as  `table` or `view`  today, you can use `materialized_view` in your model configuration, dbt_project.yml, and resources.yml files. At release, python models will not be supported.
 
 
 

@@ -20,15 +20,11 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
 
-<VersionBlock firstVersion="1.8">
-
 :::important
 
-From dbt v1.8, "tests" are now called "data tests" to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+`tests` are now called `data tests` to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
-
-</VersionBlock>
 
 ## Overview
 
@@ -36,7 +32,7 @@ Data tests are assertions you make about your models and other resources in your
 
 You can use data tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend data tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a data test.
 
-Data tests return a set of failing records. Generic data tests (f.k.a. schema tests) are defined using `test` blocks.
+Data tests return a set of failing records. Generic data tests (a.k.a. schema tests) are defined using `test` blocks.
 
 Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the data test returns zero failing rows, it passes, and your assertion has been validated.
 
@@ -291,16 +287,8 @@ Note that, if you select to store test failures:
 
 
 ## New `data_tests:` syntax
-
-<VersionBlock lastVersion="1.7">
-
-In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information, select version v1.8 from the documentation navigation menu.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.8">
   
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests, the key was renamed from `tests:` to `data_tests:`. 
 
 dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
@@ -327,8 +315,6 @@ data_tests:
 
 </File>
 
-
-</VersionBlock>
 
 ## FAQs
 

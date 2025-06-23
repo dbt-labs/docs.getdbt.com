@@ -1,9 +1,9 @@
 ---
-title: About dbt Cloud setup
+title: About dbt setup
 id: about-cloud-setup
-description: "Configuration settings for dbt Cloud."
-sidebar_label: "About dbt Cloud setup"
-pagination_next: "docs/dbt-cloud-environments"
+description: "Configuration settings for dbt."
+sidebar_label: "About dbt setup"
+pagination_next: "docs/cloud/account-settings"
 pagination_prev: null
 ---
 

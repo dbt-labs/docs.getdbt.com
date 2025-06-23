@@ -6,6 +6,7 @@ tags: [Semantic Layer]
 sidebar_label: "Cache common queries"
 ---
 
+# Cache common queries <Lifecycle status="managed,managed_plus" />
 
 The <Constant name="semantic_layer" /> allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
 
@@ -21,7 +22,7 @@ While you can use caching to speed up your queries and reduce compute time, know
 - Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
 
 ## Prerequisites
-- <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/) plan.
+- <Constant name="cloud" /> [Enterprise or Enterprise+](https://www.getdbt.com/) plans.
 - <Constant name="cloud" /> environments must be on [release tracks](/docs/dbt-versions/cloud-release-tracks) and not legacy <Constant name="core" /> versions.
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.

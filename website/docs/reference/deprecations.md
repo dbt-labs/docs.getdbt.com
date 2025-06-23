@@ -2,7 +2,57 @@
 title: "Deprecations"
 ---
 
-As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. It is important to resolve any deprecation warnings in your project before the changes are made.
+:::note
+
+Deprecated functionality still works in the v1.10 release, but it is no longer supported and will be removed in a future version.  
+
+This means the deprecated features only present a warning but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)). 
+
+When the functionality is eventually removed, it will cause errors in your dbt runs after you upgrade if the deprecations are not addressed.
+
+
+:::
+
+As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it’s just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
+
+## Identify deprecation warnings
+
+Finding deprecations that impact your code can be a daunting task when looking at the standard logs. Identifying them is the first step towards remediation. There are several methods for quickly locating deprecations and automatically remediating some of them.
+
+### dbt CLI
+
+To view deprecations from your CLI, run:
+
+```bash
+dbt parse --no-partial-parse --show-all-deprecations
+```
+
+The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurence of the deprecations is listed instead  of just the first.
+
+```bash
+
+19:15:13 [WARNING]: Deprecated functionality
+Summary of encountered deprecations:
+- MFTimespineWithoutYamlConfigurationDeprecation: 1 occurrence
+
+```
+
+### The dbt platform
+
+If you're using <Constant name="cloud" />, you can view deprecation warnings from the **Dashboard** area of your account.
+
+    <Lightbox src="/img/docs/dbt-cloud/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
+
+Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />).
+
+    <Lightbox src="/img/docs/dbt-cloud/deprecation-list.png" title="Deprecation warnings listed in the logs." />
+
+### Automatic remediation
+
+Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
+
+**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="cloud" />.
+
 
 ## List of Deprecation Warnings
 
@@ -85,6 +135,15 @@ DBT_TARGET_PATH env var instead.
 #### ConfigTargetPathDeprecation warning resolution
 
 Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
+
+### CustomOutputPathInSourceFreshnessDeprecation
+
+dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
+
+#### CustomOutputPathInSourceFreshnessDeprecation warning resolution
+
+Remove the `--output` or `-o` flag and associated path configuration from any jobs running dbt source freshness commands.
+There is no alternative for changing the location of only the source freshness results. However, you can still use `--target-path` to write _all_ artifacts from the step to a custom location.
 
 ### ExposureNameDeprecation
 
@@ -174,6 +233,26 @@ The following are recommended approaches:
 1. Replace `dbt_modules` with `dbt_packages` in your `clean-targets` spec (and `.gitignore`).
 2. Set `packages-install-path: dbt_modules` if you want to keep having packages installed in `dbt_modules`.
 
+### PackageMaterializationOverrideDeprecation
+
+The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-changes#package-override-for-built-in-materialization) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
+
+#### PackageMaterializationOverrideDeprecation warning resolution
+
+Explicitly override built-in materializations, in favor of a materialization defined in a package, by reimplementing the built-in materialization in your root project and wrapping the package implementation.
+
+For example: 
+
+```jinja
+
+{% materialization table, snowflake %}
+    {{ return (package_name.materialization_table_snowflake()) }}
+{% endmaterialization %}
+
+```
+
+Once you've added the override for your package, remove the `require_explicit_package_overrides_for_builtin_materializations: false` flag from your `dbt_project.yml` to resolve the warning.
+
 ### PackageRedirectDeprecation
 
 This deprecation warning means a package currently used in your project, defined in `packages.yml`, has been renamed. This generally happens when the ownership of a package has changed or the scope of the package has changed. It is likely that the package currently referenced in your `packages.yml` has stopped being actively maintained (as development has been moved to the new package name), and at some point, the named package will cease working with dbt.
@@ -187,13 +266,13 @@ The `fishtown-analytics/dbt_utils` package is deprecated in favor of
 ```
 </File>
 
-#### PackageRedirectDeprecation warning Resolution
+#### PackageRedirectDeprecation warning resolution
 
 Begin referencing the new package in your `packages.yml` instead of the old package.
 
 ### ProjectFlagsMovedDeprecation
 
-In dbt [v1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#quick-hits), the `config` property that had been configurable in `profiles.yml` was deprecated in favor of `flags` in the `dbt_project.yaml`. If you see this deprecation warning, dbt detected the `config` property in your `profiles.yml`.
+The `config` property that had been configurable in `profiles.yml` was deprecated in favor of `flags` in the `dbt_project.yaml`. If you see this deprecation warning, dbt detected the `config` property in your `profiles.yml`.
 
 Example:
 
@@ -207,6 +286,47 @@ User config should be moved from the 'config' key in profiles.yml to the 'flags'
 #### ProjectFlagsMovedDeprecation warning resolution
 
 Remove `config` from `profiles.yml`. Add any previous [`config`](/reference/global-configs/about-global-configs) in `profiles.yml` to `flags` in `dbt_project.yml`.
+
+### PropertyMovedToConfigDeprecation 
+
+Some historical properties are moving entirely to configs.
+
+This will include: `freshness`, `meta`, `tags`, `docs`, `group`, and `access`
+
+Changing certain properties to configs is beneficial because you can set them for many resources at once in `dbt_project.yml` (project-level/folder-level defaults). More info on the difference between properties and configs [here](/reference/configs-and-properties).
+
+#### PropertyMovedToConfigDeprecation warning resolution
+
+If you previously set one of the impacted properties, such as `freshness`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    freshness:
+      warn_after:
+        count: 24
+        period: hour
+
+```
+
+You should now set it under `config`:
+
+```yaml
+
+sources: 
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    config:
+      freshness:
+        warn_after:
+          count: 24
+          period: hour
+
+```
 
 ### ResourceNamesWithSpacesDeprecation
 
@@ -241,3 +361,54 @@ information: https://docs.getdbt.com/reference/global-configs/legacy-behaviors
 #### SourceFreshnessProjectHooksNotRun warning resolution
 
 Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness).
+
+### UnexpectedJinjaBlockDeprecation
+
+If you have an unexpected Jinja block - an orphaned Jinja block or a Jinja block outside of a macro context - you will receive a warning, and in a future version, dbt will stop supporting unexpected Jinja blocks. Previously, these unexpected Jinja blocks were silently ignored.
+
+<File name='macros/my_macro.sql'>
+
+```sql
+
+{% endmacro %} # orphaned endmacro jinja block
+
+{% macro hello() %}
+hello!
+{% endmacro %}
+
+```
+</File>
+
+#### UnexpectedJinjaBlockDeprecation warning resolution
+
+Delete the unexpected Jinja blocks.
+
+### WEOIncludeExcludeDeprecation
+
+The `include` and `exclude` options for `warn_error_options` have been deprecated and replaced with `error` and `warn`, respectively.
+
+#### WEOIncludeExcludeDeprecation warning resolution
+
+Anywhere `warn_error_options` is configured, replace:
+- `include` with `error`
+- `exclude` with `warn`
+
+For example:
+
+```yaml
+...
+  flags:
+    warn_error_options:
+      include:
+        - NoNodesForSelectionCriteria
+```
+
+Should now be configured as:
+
+```yaml
+...
+  flags:
+    warn_error_options:
+      error:
+        - NoNodesForSelectionCriteria
+```

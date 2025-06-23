@@ -185,17 +185,9 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-The `description` property is available for [singular data tests](/docs/build/data-tests#singular-data-tests) or [generic data tests](/docs/build/data-tests#generic-data-tests) beginning in dbt v1.9.
-
-</VersionBlock> 
-
 </TabItem>
 
 <TabItem value="unit_tests">
-
-<VersionBlock firstVersion="1.8">
 
 <File name='models/schema.yml'>
 
@@ -221,14 +213,6 @@ unit_tests:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-The `description` property is available for [unit tests](/docs/build/unit-tests) beginning in dbt v1.8.
-
-</VersionBlock>
-
 </TabItem>
 
 </Tabs>
@@ -248,7 +232,7 @@ A user-defined description used to document:
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="explorer" />](/docs/explore/explore-projects)). 
 
-Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
+Descriptions can include markdown, as well as the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).
 
 :::caution You may need to quote your YAML
 
@@ -476,12 +460,6 @@ If mixing images and text, also consider using a docs block.
 
 ### Add a description to a data test
 
-<VersionBlock lastVersion="1.8">
-
-<VersionCallout version="1.9" />
-
-</VersionBlock>
-
 You can add a `description` property to a generic or singular data test.
 
 #### Generic data test
@@ -525,12 +503,6 @@ data_tests:
 Note that in order for the test to run, the `tests/assert_total_payment_amount_is_positive.sql` SQL file has to exist in the `tests` directory.
 
 ### Add a description to a unit test
-
-<VersionBlock lastVersion="1.7">
-
-<VersionCallout version="1.8" />
-
-</VersionBlock>
 
 This example shows a unit test that checks to ensure the `opened_at` timestamp is properly truncated to a date for the `stg_locations` model.
 

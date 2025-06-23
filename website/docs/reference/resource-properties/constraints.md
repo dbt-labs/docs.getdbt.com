@@ -84,54 +84,6 @@ For more information on the adapters which support foreign key constraints, have
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment:
-
-`expression: "{{ target.schema }}.customers(customer_id)"` 
-
-Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About <Constant name="core" /> versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-
-<File name='models/schema.yml'>
-
-```yml
-models:
-  - name: <model_name>
-    
-    # required
-    config:
-      contract: {enforced: true}
-    
-    # model-level constraints
-    constraints:
-      - type: primary_key
-        columns: [first_column, second_column, ...]
-      - type: foreign_key # multi_column
-        columns: [first_column, second_column, ...]
-        expression: "{{ target.schema }}.other_model_name (other_model_first_column, other_model_second_column, ...)"
-      - type: check
-        columns: [first_column, second_column, ...]
-        expression: "first_column != second_column"
-        name: human_friendly_name
-      - type: ...
-    
-    columns:
-      - name: first_column
-        data_type: string
-        
-        # column-level constraints
-        constraints:
-          - type: not_null
-          - type: unique
-          - type: foreign_key
-            expression: "{{ target.schema }}.other_model_name (other_model_column)"
-          - type: ...
-```
-
-</File>
-
-</VersionBlock>
-
 ## Platform-specific support
 
 In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.

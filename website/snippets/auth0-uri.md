@@ -1,5 +1,5 @@
 
-The URI used for SSO connections on multi-tenant dbt Cloud instances will vary based on your dbt Cloud hosted region. To find the URIs for your environment in dbt Cloud: 
+The URI used for SSO connections on multi-tenant <Constant name="cloud" /> instances will vary based on your <Constant name="cloud" /> hosted region. To find the URIs for your environment in <Constant name="cloud" />: 
 
 1. Navigate to your **Account settings** and click **Single sign-on** on the left menu.
 1. Click **Edit** in the **Single sign-on** pane.

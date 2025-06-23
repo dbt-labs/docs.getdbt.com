@@ -98,6 +98,7 @@ The `dbt-trino` adapter supports these modes in `table` materialization (and [fu
 - `rename` &mdash; Creates an intermediate table, renames the target table to the backup one, and renames the intermediate table to the target one.
 - `drop` &mdash; Drops and re-creates a table. This overcomes the table rename limitation in AWS Glue.
 - `replace` &mdash; Replaces a table using CREATE OR REPLACE clause. Support for table replacement varies across connectors. Refer to the connector documentation for details.
+- `skip` &mdash; Skips table materialization altogether using a CREATE TABLE IF NOT EXISTS clause.
 
 If CREATE OR REPLACE is supported in underlying connector, `replace` is recommended option. Otherwise, the recommended `table` materialization uses `on_table_exists = 'rename'` and is also the default. You can change this default configuration by editing _one_ of these files:
 - the SQL file for your model

@@ -4,7 +4,7 @@ description: "Learn how to sign your Git commits when using the IDE for developm
 sidebar_label: Git commit signing
 ---
 
-# Git commit signing <Lifecycle status="managed" />
+# Git commit signing <Lifecycle status="managed,managed_plus" />
 
 To prevent impersonation and enhance security, you can sign your <Constant name="git" /> commits before pushing them to your repository. Using your signature, a <Constant name="git" /> provider can cryptographically verify a commit and mark it as "verified", providing increased confidence about its origin.
 
@@ -14,9 +14,9 @@ You can configure <Constant name="cloud" /> to sign your <Constant name="git" />
 ## Prerequisites 
 
 - GitHub or GitLab is your <Constant name="git" /> provider. Currently, Azure DevOps is not supported.
-- You have a <Constant name="cloud" /> account on the [Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 
-## Generate GPG keypair in dbt Cloud
+## Generate GPG keypair in dbt
 
 To generate a GPG keypair in <Constant name="cloud" />, follow these steps:
 1. Go to your **Personal profile** page in <Constant name="cloud" />.
@@ -52,9 +52,9 @@ Once you have uploaded the public key to your <Constant name="git" /> provider, 
 
 <!-- vale on -->
 
-<DetailsToggle alt_header="What happens if I delete my GPG keypair in dbt Cloud?">
+<DetailsToggle alt_header="What happens if I delete my GPG keypair in dbt?">
 
-If you delete your GPG keypair in dbt Cloud, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
+If you delete your GPG keypair in <Constant name="cloud" />, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
 </DetailsToggle>
 
 <DetailsToggle alt_header="What Git providers support GPG keys?">

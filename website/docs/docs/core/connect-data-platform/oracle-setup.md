@@ -248,7 +248,7 @@ SSL_SERVER_DN_MATCH=yes
 
 ## Connecting to Oracle Database
 
-Define the following mandatory parameters as environment variables and refer them in the connection profile using [env_var](https://docs.getdbt.com/reference/dbt-jinja-functions/env_var) jinja function. Optionally, you can also define these directly in the `profiles.yml` file, but this is not recommended
+Define the following mandatory parameters as environment variables and refer them in the connection profile using [env_var](https://docs.getdbt.com/reference/dbt-jinja-functions/env_var) Jinja function. Optionally, you can also define these directly in the `profiles.yml` file, but this is not recommended
 
 ```bash
 export DBT_ORACLE_USER=<username>

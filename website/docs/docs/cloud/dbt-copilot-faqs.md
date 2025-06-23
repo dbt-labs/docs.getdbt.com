@@ -4,8 +4,6 @@ sidebar_label: "dbt Copilot FAQs"
 description: "Answers to common questions about dbt Copilot."
 ---
 
-# dbt Copilot FAQs <Lifecycle status="managed" /> 
-
 <IntroText>
 Read about common questions about <Constant name="copilot" /> to understand how it works and how it can help you.
 </IntroText>
@@ -18,9 +16,9 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <Expandable alt_header="What is dbt Copilot?">
 
-<Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your dbt Cloud experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
+<Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your <Constant name="cloud" /> experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
 
-With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot) and, now in beta, [<Constant name="visual_editor" />](/docs/cloud/use-canvas).
+With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/use-canvas), and [<Constant name="query_page" />](/docs/explore/dbt-insights).
 
 <Constant name="copilot"/> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
 
@@ -28,9 +26,11 @@ With automatic code generation, let <Constant name="copilot" /> [generate code](
 
 <Expandable alt_header="Where can I find dbt Copilot?">
 
-<Constant name="copilot" /> can currently be found in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot). Future releases will bring <Constant name="copilot" /> to the [<Constant name="visual_editor" />](/docs/cloud/use-canvas) and even more parts of the <Constant name="cloud" /> application.
+<Constant name="copilot" /> is available in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/use-canvas), and [<Constant name="query_page" />](/docs/explore/dbt-insights). Future releases will bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application!
 
-To use <Constant name="copilot" />, you must have a <Constant name="cloud" /> [Enterprise account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
+To use <Constant name="copilot" />, you must have a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
+
+Certain features like [BYOK](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 
 </Expandable>
 
@@ -52,7 +52,7 @@ with a click of a button and ensuring data privacy and security.
 
 <Expandable alt_header="Who has access to dbt Copilot?" >
 
-When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="cloud" /> [Enterprise account](https://www.getdbt.com/contact) to all dbt Cloud [developer license users](/docs/cloud/manage-access/seats-and-users).
+When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) to all <Constant name="cloud" /> [developer license users](/docs/cloud/manage-access/seats-and-users).
 
 </Expandable>
 
@@ -72,7 +72,7 @@ Yes, <Constant name="copilot" /> is powered by ai-codegen-api, which is deployed
 
 <Expandable alt_header="Which model providers does dbt Copilot use?">
 
-dbt Labs works with OpenAI to build and operationalize <Constant name="copilot" />. Enterprise accounts can [supply their own OpenAI keys](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok)
+dbt Labs works with OpenAI to build and operationalize <Constant name="copilot" />. Enterprise-tier accounts can [supply their own OpenAI keys](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok).
 
 </Expandable>
 
@@ -125,5 +125,34 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 - <Constant name="copilot" /> is not available in the <Constant name="cloud" /> API.
 
 Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application.
+
+</Expandable>
+
+## Copilot allowlisting URLs
+
+<Expandable alt_header="Allowlisting URLs">
+
+<Constant name="copilot" /> doesn't specifically block AI-related URLs. However, if your organization use endpoint protection platforms, firewalls, or network proxies (such as Zscaler), you may encounter the following issues with <Constant name="copilot" />: 
+
+    - Block unknown or AI-related domains.
+    - Break TLS/SSL traffic to inspect it.
+    - Disallow specific ports or services.
+
+We recommend the following URLs to be allowlisted:
+
+**For <Constant name="copilot" /> in the IDE**:
+
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_generic_tests/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_documentation/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_semantic_model/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_inline`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_metrics/...`
+- `/api/ide/accounts/${accountId}/develop/${developId}/ai/track_response`
+
+**For <Constant name="copilot" /> in Canvas**:
+
+- `/api/private/visual-editor/v1/ai/llm-generate`
+- `/api/private/visual-editor/v1/ai/track-response`
+- `/api/private/visual-editor/v1/files/${fileId}/llm-generate-dag-through-chat`
 
 </Expandable>

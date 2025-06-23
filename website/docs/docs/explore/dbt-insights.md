@@ -4,17 +4,15 @@ description: "Learn how to query data and perform exploratory data analysis usin
 sidebar_label: "About dbt Insights"
 tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
+pagination_prev: "docs/explore/model-query-history"
+pagination_next: "docs/explore/navigate-dbt-insights"
 ---
 
-# About dbt Insights <Lifecycle status="beta,managed" />
+# About dbt Insights <Lifecycle status="preview,managed,managed_plus" />
 
 <IntroText>
 Learn how to query data with <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
 </IntroText>
-
-:::tip
-<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
-:::
 
 <Constant name="query_page" /> in <Constant name="cloud" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
@@ -36,7 +34,7 @@ Some example use cases include:
 
 ## Prerequisites 
 
-- Have a <Constant name="cloud" /> [Enterprise](https://www.getdbt.com/pricing) account &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
+- Be on a <Constant name="cloud" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
 - Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide).

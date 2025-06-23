@@ -108,13 +108,22 @@ You can use _configurations_ to change any of these behaviors — more on that l
 <FAQ path="Models/sql-dialect" />
 
 ## Configuring models
-Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
+Configurations are "model settings" that you can set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
 
 * Changing the <Term id="materialization" /> that a model uses &mdash; a [materialization](/docs/build/materializations) determines the SQL that dbt uses to create the model in your warehouse.
 * Build models into separate [schemas](/docs/build/custom-schemas).
 * Apply [tags](/reference/resource-configs/tags) to a model.
 
-Here's an example of model configuration:
+The following diagram shows an example directory structure of a models folder:
+
+```
+models
+├── staging
+└── marts
+    └── marketing
+```
+
+Here's an example of a model configuration:
 
 <File name='dbt_project.yml'>
 

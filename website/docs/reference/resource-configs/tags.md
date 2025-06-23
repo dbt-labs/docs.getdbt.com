@@ -17,25 +17,6 @@ datatype: string | [string]
 
 <File name='dbt_project.yml'>
 
-<VersionBlock lastVersion="1.8">
-
-```yml
-
-[models](/reference/model-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>] # Supports single strings or list of strings
-
-[snapshots](/reference/snapshot-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
-[seeds](/reference/seed-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
-```
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 ```yml
@@ -70,11 +51,6 @@ datatype: string | [string]
 The following examples show how to add tags to dbt resources in YAML files. Replace `resource_type` with `exposures`, `models`, `snapshots`, `seeds`, or `saved_queries` as appropriate.
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-The following examples show how to add tags to dbt resources in YAML files. Replace `resource_type` with `exposures`, `models`, `snapshots`, or `seeds` as appropriate.
-</VersionBlock>
-
 <File name='resource_type/properties.yml'>
 
 ```yaml
@@ -85,7 +61,8 @@ resource_type:
     # Optional: Add the following specific properties for models
     columns:
       - name: column_name
-        tags: <string> | [<string>]
+        config:
+          tags: <string> | [<string>] # changed to config in v1.10
         tests:
           test-name:
             config:
@@ -122,8 +99,8 @@ models:
 </File>
 
 </TabItem>
-
 </Tabs>
+Note that for backwards compatibility, `tags` is supported as a top-level key, but without the capabilities of config inheritance.
 
 ## Definition
 Apply a tag (or list of tags) to a resource.
@@ -139,8 +116,8 @@ These tags can be used as part of the [resource selection syntax](/reference/nod
 You can use the [`+` operator](/reference/node-selection/graph-operators#the-plus-operator) to include upstream or downstream dependencies in your `tag` selection:
 - `dbt run --select tag:my_tag+` &mdash; Run models tagged with `my_tag` and all their downstream dependencies.
 - `dbt run --select +tag:my_tag` &mdash; Run models tagged with `my_tag` and all their upstream dependencies.
-- `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies, and its downstream dependencies.
-- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run model tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
+- `dbt run --select +tag:my_tag+` &mdash; Run models tagged with `my_tag`, their upstream dependencies, and their downstream dependencies.
+- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run models tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
 
 
 :::tip Usage notes about tags
@@ -275,12 +252,6 @@ seeds:
 
 ### Apply tags to saved queries
 
-<VersionBlock lastVersion="1.8">
-
-<VersionCallout version="1.9" />
-
-</VersionBlock>
-
 
 This following example shows how to apply a tag to a saved query in the `dbt_project.yml` file. The saved query is then tagged with `order_metrics`.
 
@@ -351,23 +322,28 @@ version: 2
 
 exposures:
   - name: my_exposure
-    tags: ['exposure_tag']
+    config:
+      tags: ['exposure_tag'] # changed to config in v1.10
     ...
 
 sources:
   - name: source_name
-    tags: ['top_level']
+    config:
+      tags: ['top_level'] # changed to config in v1.10
 
     tables:
       - name: table_name
-        tags: ['table_level']
+        config:
+          tags: ['table_level'] # changed to config in v1.10
 
         columns:
           - name: column_name
-            tags: ['column_level']
+            config:
+              tags: ['column_level'] # changed to config in v1.10
             tests:
               - unique:
-                  tags: ['test_level']
+                config:
+                  tags: ['test_level'] # changed to config in v1.10
 ```
 
 </File>

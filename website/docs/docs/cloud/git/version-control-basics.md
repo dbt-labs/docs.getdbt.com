@@ -54,7 +54,7 @@ Refer to [merge conflicts](/docs/cloud/git/merge-conflicts) to learn how to reso
 
 ## The .gitignore file
 
-dbt Cloud implements a global [`.gitignore file`](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) that automatically excludes the following sub-folders from your git repository to ensure smooth operation:
+<Constant name="cloud" /> implements a global [`.gitignore file`](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) that automatically excludes the following sub-folders from your git repository to ensure smooth operation:
 
 ```
 dbt_packages/

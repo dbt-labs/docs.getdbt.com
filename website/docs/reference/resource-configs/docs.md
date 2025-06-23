@@ -43,9 +43,10 @@ version: 2
 
 models:
   - name: model_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -80,9 +81,10 @@ version: 2
 
 seeds:
   - name: seed_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -112,9 +114,10 @@ version: 2
 
 snapshots:
   - name: snapshot_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -132,9 +135,10 @@ version: 2
 
 analyses:
   - name: analysis_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -151,14 +155,17 @@ version: 2
 
 macros:
   - name: macro_name
-    docs:
-      show: true | false
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
 ```
 </File>
 
 </TabItem>
 
 </Tabs>
+
+Note that for backwards compatibility, `docs` is supported as a top-level key, but without the capabilities of config inheritance.
 
 ## Definition
 The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.

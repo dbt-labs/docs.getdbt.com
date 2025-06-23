@@ -4,9 +4,9 @@ id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
-When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Explorer](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).
+When running dbt jobs, dbt generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of the <Constant name="dbt_platform" />, namely: [dbt Explorer](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).
 
-## Create dbt Cloud Artifacts
+## Create dbt Artifacts
 
 [<Constant name="explorer" />](/docs/explore/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
 
@@ -20,7 +20,7 @@ The following steps are for legacy dbt Docs only. For the current documentation 
 
 While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection on the **Project details** page. To access this page:
 
-1. From dbt Cloud, click on your account name in the left side menu and select **Account settings**.
+1. From the <Constant name="dbt_platform" />, click on your account name in the left side menu and select **Account settings**.
 2. Select your project, and click **Edit** in the lower right. 
 3. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
 
@@ -44,7 +44,7 @@ Both the job's commands and the docs generate step (triggered by the **Generate 
 
 <Expandable alt_header="For dbt Docs">
 
-When set up, dbt Cloud updates the Documentation link in the header tab so it links to documentation for this job. This link always directs you to the latest version of the documentation for your project.
+When set up, <Constant name="cloud" /> updates the Documentation link in the header tab so it links to documentation for this job. This link always directs you to the latest version of the documentation for your project.
 
 </Expandable>
 

@@ -9,7 +9,20 @@ Now that you've seen how we style our dbt projects, it's time to build your own.
 
 ## Pre-commit hooks
 
-Lastly, to ensure your style guide's automated rules are being followed without additional mental overhead to your team, you can use [pre-commit hooks](https://pre-commit.com/) to automatically check your code for style violations (and often fix them automagically) before it's committed. This is a great way to make sure your style guide is followed by all contributors. We recommend implementing this once you've settled on and published your style guide, and your codebase is conforming to it. This will ensure that all future commits follow the style guide. You can find an excellent set of open source pre-commit hooks for dbt from the community [here in the dbt-checkpoint project](https://github.com/dbt-checkpoint/dbt-checkpoint).
+You can use [pre-commit hooks](https://pre-commit.com/) to automatically check your code for style violations (and often fix them automagically) before you commit. This is a great way to make sure all contributors follow your style guide. We recommend implementing this once you've settled on and published your style guide, and your codebase is conforming to it. This will ensure that all future commits follow the style guide. You can find an excellent set of open source pre-commit hooks for dbt from the community [here in the dbt-checkpoint project](https://github.com/dbt-checkpoint/dbt-checkpoint).
+
+## dbt Project Evaluator
+
+The [`dbt_project_evaluator`](https://github.com/dbt-labs/dbt-project-evaluator) is a package that ensures compliance to [dbt's style guide and best practices](/best-practices/how-we-structure/1-guide-overview). The `dbt_project_evaluator` package highlights areas of a dbt project that are not aligned with dbt's best practices and provides recommendations on how to improve a project. This enables analytics engineers to determine exactly where their projects deviated from dbt's best practices and improve their projects on their own. The `dbt_project_evaluator` package covers the following categories: 
+
+- Modeling
+- Testing
+- Documentation
+- Structure
+- Performance
+- Governance
+
+For more information, see [Introducing the dbt_project_evaluator: Automatically evaluate your dbt project for alignment with best practices](/blog/align-with-dbt-project-evaluator).
 
 ## Style guide template
 

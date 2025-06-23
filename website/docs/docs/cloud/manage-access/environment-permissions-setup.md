@@ -20,7 +20,7 @@ In your <Constant name="cloud" /> account:
 
    However, before deleting these groups, ensure that any existing users &mdash; including yourself &mdash; are reassigned to their appropriate organizational groups. You won’t be able to delete the `Owner` group until _at least_ one user is added to another group with the account admin permission set or if there is a user with an IT license. This safety ensures that an account admin is always available to manage group changes.
 
-<Lightbox src="/img/docs/dbt-cloud/groups-and-licenses.png" width="80%" title="Groups & Licenses page in dbt Cloud with the default groups highlighted."/>
+<Lightbox src="/img/docs/dbt-cloud/groups-and-licenses.png" width="80%" title="Groups & Licenses page in dbt with the default groups highlighted."/>
 
 3. Create a new or open an existing group. If it's a new group, give it a name, then scroll down to **Access & permissions**. Click **Add**.
 

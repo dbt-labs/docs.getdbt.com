@@ -1,10 +1,12 @@
 ---
-title: "dbt Cloud Administrative API"
+title: "dbt Administrative API"
 id: "admin-cloud-api"
 pagination_next: "docs/dbt-cloud-apis/discovery-api"
 ---
 
-The <Constant name="cloud" /> Administrative API is enabled by default for [Team and Enterprise plans](https://www.getdbt.com/pricing/). It can be used to:
+# dbt Administrative API <Lifecycle status="managed,managed_plus" />
+
+The <Constant name="cloud" /> Administrative API is enabled by default for [Enterprise and Enterprise+ plans](https://www.getdbt.com/pricing/). It can be used to:
 
 - Download artifacts after a job has completed
 - Kick off a job run from an orchestration tool
@@ -31,9 +33,9 @@ link="/dbt-cloud/api-v3"
 
 <div className="card-container">
  <Card
-    title="dbt Cloud Terraform provider"
+    title="dbt Terraform provider"
     link="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
-    body="The Terraform provider maintained by dbt Labs which can be used to manage a dbt Cloud account."
+    body="The Terraform provider maintained by dbt Labs which can be used to manage a dbt account."
     icon="pencil-paper"/>
     <a href="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
     className="external-link"

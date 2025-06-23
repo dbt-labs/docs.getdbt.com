@@ -1,12 +1,12 @@
 ---
-title: "Change your dbt Cloud theme" 
+title: "Change your dbt theme" 
 id: change-your-dbt-cloud-theme
-description: "Learn about theme switching in dbt Cloud"
-sidebar_label: Change your dbt Cloud theme
+description: "Learn about theme switching in dbt"
+sidebar_label: Change your dbt theme
 image: /img/docs/dbt-cloud/using-dbt-cloud/light-vs-dark.png
 ---
 
-# Change your dbt Cloud theme 
+# Change your dbt theme 
 
 <Constant name="cloud" /> supports **Light mode** (default), **Dark mode**, and **System mode** (respects your browser's theme for light or dark mode) under the **Theme** section of your user profile and is available for all [plans](https://www.getdbt.com/pricing). 
 
@@ -16,7 +16,7 @@ Your selected theme is stored in your user profile, ensuring a consistent experi
 
 Theme selection applies across all areas of <Constant name="cloud" />, including the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="explorer" />](/docs/explore/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="cloud" />](/docs/cloud/about-cloud/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
 
-## Change themes in dbt Cloud
+## Change themes in dbt
 
 To switch to dark mode in the <Constant name="cloud" /> UI, follow these steps:
 

@@ -6,7 +6,7 @@
     <li><strong>PyPI package</strong>: <code>{props.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${props.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${props.meta.pypi_package}.svg`}/></a></li>
     <li><strong>Slack channel</strong>: <a href={props.meta.slack_channel_link}>{props.meta.slack_channel_name}</a></li>
     <li><strong>Supported dbt Core version</strong>: {props.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {props.meta.cloud_support}</li>
+    <li><strong><Constant name="cloud" /> support</strong>: {props.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {props.meta.min_supported_version}</li>
     </ul>
 
@@ -14,17 +14,8 @@
 
 Use `pip` to install the adapter. Before 1.8, installing the adapter would automatically install `dbt-core` and any additional dependencies. Beginning in 1.8, installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
 Use the following command for installation:
-<VersionBlock firstVersion="1.8">
 
 <code>python -m pip install dbt-core {props.meta.pypi_package}</code>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.7">
-
-<code>python -m pip install {props.meta.pypi_package}</code>
-
-</VersionBlock>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
 

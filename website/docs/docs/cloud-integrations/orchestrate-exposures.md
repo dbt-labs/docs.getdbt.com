@@ -5,7 +5,7 @@ description: "Use dbt to proactively refresh the underlying data sources (like T
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Orchestrate downstream exposures <Lifecycle status="managed,beta" />
+# Orchestrate downstream exposures <Lifecycle status="managed,managed_plus,beta" />
 
 <IntroText>
 
@@ -40,7 +40,7 @@ To orchestrate downstream exposures, you should meet the following:
 
 - [Configured downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) and ensured desired exposures are included in your lineage
 - Verified your environment and jobs are on a supported dbt [release track](/docs/dbt-versions/cloud-release-tracks).
-- Have a <Constant name="cloud" /> account on the [Enterprise plan](https://www.getdbt.com/pricing/).
+- Have a <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - Created a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run.
 - Have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="cloud" /> to edit project settings or production environment settings.
 
@@ -54,7 +54,7 @@ To orchestrate downstream exposures and see the refresh happen automatically dur
 4. Set the variable to **1440** minutes (24 hours) by default. This means that downstream exposures won’t refresh Tableau extracts more often than this set interval, even if the related models run more frequently.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/active-exposures-env-var.jpg" width="100%" title="Set the environment variable `DBT_ACTIVE_EXPOSURES` to `1`."/>
 5. Run a job in production. You will see the update each time a job runs in production. 
-   - If a job runs before the set interval has passed, dbt Cloud skips the downstream exposure refresh and marks it as `skipped` in the job logs.
+   - If a job runs before the set interval has passed, <Constant name="cloud" /> skips the downstream exposure refresh and marks it as `skipped` in the job logs.
 6. View the downstream exposure logs in the dbt run job logs.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/active-exposure-log.jpg" title="View the downstream exposure logs in the dbt run job logs."/ >
    - View more details in the debug logs for any troubleshooting.
