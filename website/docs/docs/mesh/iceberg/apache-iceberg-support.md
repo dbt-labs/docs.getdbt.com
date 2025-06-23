@@ -28,9 +28,9 @@ dbt abstracts the complexity of table formats so teams can focus on delivering r
     icon="snowflake"/>
 
 <Card
-    title="Databricks"
-    body="Databricks Iceberg Configurations"
-    link="/docs/mesh/iceberg/databricks-iceberg-support"
-    icon="databricks"/>
+    title="BigQuery"
+    body="BigQuery Iceberg Configurations"
+    link="/docs/mesh/iceberg/bigquery-iceberg-support"
+    icon="bigquery"/>
 
 </div>
