@@ -18,13 +18,13 @@ This guide walks you through installing Fusion locally, including important prer
 Before installing Fusion, ensure:
 
 - You have administrative privileges to install software on your local machine.
-- You are familiar with command-line interfaces (Terminal on macOS/Linux, PowerShell on Windows).
+- You are familiar with command-line interfaces (Terminal on macOS/Linux<!--, PowerShell on Windows-->).
 - You are using a supported data warehouse and authentication method.
   <FusionDWH /> 
 - You are using a supported OS and architecture:
 
   🟢 - Supported <br/>
-  🟡 - Not yet supported - Support expected by 2025-07-18
+  🟡 - Not yet supported
 
   | Operating System    | X86-64 | ARM  |
   |-------------------|----------|------|
@@ -38,7 +38,7 @@ Before installing Fusion, ensure:
 Fusion can be installed via the command line from our official CDN:
 
 - **macOS/Linux:** Using `curl`
-- **Windows:** Using `irm`
+<!--- **Windows:** Using `irm` -->
 
 ### macOS & Linux installation
 
@@ -56,7 +56,7 @@ exec $SHELL
 
 Or, close and reopen your Terminal window. This will load the updated environment settings into the new session.
 
-### Windows installation (PowerShell)
+<!-- ### Windows installation (PowerShell)
 
 Run the following command in PowerShell:
 
@@ -71,6 +71,7 @@ Start-Process powershell
 ```
 
 Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
+-->
 
 ### Verify the installation
 
@@ -80,10 +81,8 @@ After installation, open a new command-line window and verify that Fusion is ins
 dbtf --version
 ```
 
-Fusion will be installed in the following locations:
-
-- **macOS & Linux:** `$HOME/.local/bin/dbt`
-- **Windows:** `C:\Users\<YourUsername>\.local\bin\dbt.exe`
+- **macOS** & **Linux**: $HOME/.local/bin/dbt
+<!--- **Windows:** `C:\Users\<YourUsername>\.local\bin\dbt.exe` -->
 
 This location is automatically added to your path to easily execute the `dbtf` command, but it requires reloading your shell.
 
