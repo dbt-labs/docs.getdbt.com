@@ -378,7 +378,7 @@ models:
     config:
       freshness:
         build_after:  # build this model no more often than every X amount of time, as long as as it has new data
-          count: positive_integer
+          count: <positive_integer>
           period: minute | hour | day
           updates_on: any | all # optional config
 ```

@@ -28,14 +28,15 @@ Configurations in your root dbt project have _higher_ precedence than configurat
 
 ## Combining configs
 
-Most configurations are "clobbered," or overwritten in unexpected ways, when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
+Most configurations are "clobbered"  when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
 - [`tags`](/reference/resource-configs/tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags are applied in its `.sql` file, the final set of tags will include all of them.
 - [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key).
+- When using the [`freshness`](/reference/resource-configs/freshness) config, a more specific key-value pair replaces a less specific value with the same key.
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
-- When using the [`freshness`](/reference/resource-configs/freshness) config for sources, note the following:
-    - The `freshness` config in the `schema.yml` file overrides the `freshness` config in the `dbt_project.yml` file. 
-    - A more specific `dbt_project.yml` file overrides a `dbt_project.yml` file with a less specific configuration. 
-    - In a `schema.yml` file, more specific `freshness` configs are merged with less specific `freshness` configs.
+- For clobbering and merging configurations that are inherited from multiple levels, the general rules are:
+    - Node-level configs (more specific) clobber project-level configs (less specific).
+    - For sources, table-level configs (more specific) clobber source-level configs (less specific).
+    - The root project's configuration in `dbt_project.yml` clobbers configuration within package files. This is so that users can control the behavior of packages they are installing using `dbt deps` without needing to edit the code in those package files directly.
 
 ## The `+` prefix
 

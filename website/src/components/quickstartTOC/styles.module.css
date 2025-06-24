@@ -142,6 +142,7 @@ html[data-theme="dark"] .buttonContainer > a:hover > svg {
 
 .buttonContainer .nextButton {
     margin-left: auto;
+    text-decoration: none;
 }
 
 .buttonContainer .nextButton i {
