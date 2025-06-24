@@ -76,7 +76,7 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 ### Limitations
 
-BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the (BigQuery docs)[https://cloud.google.com/bigquery/docs/iceberg-tables#limitations] for more information. 
+BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the [BigQuery docs](https://cloud.google.com/bigquery/docs/iceberg-tables#limitations) for more information. 
 
 
 <VersionBlock firstVersion="1.9">
