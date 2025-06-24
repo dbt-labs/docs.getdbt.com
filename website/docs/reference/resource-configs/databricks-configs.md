@@ -150,7 +150,7 @@ When materializing models of various types, you may include several optional col
 | databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on individual columns    | Optional    |  SQL†, Python† | Table, Incremental, Materialized View, Streaming Table  | `{'data_classification': 'pii'}`  |
 | column_mask   | [Column mask](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask) configuration for dynamic data masking. Accepts `function` and optional `using_columns` properties*  | Optional     | SQL, Python   | Table, Incremental, Streaming Table | `{'function': 'my_catalog.my_schema.mask_email'}`   |
 
-\* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters)
+\* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters).
 
 
 † `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
