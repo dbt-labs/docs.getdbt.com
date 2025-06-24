@@ -33,7 +33,7 @@ When users are provisioned, the following attributes are supported
 
 The following IdPs are supported in the <Constant name="cloud" /> UI:
 - [Okta](#scim-configuration-for-okta)
-- [Entra ID](#scim-configuration-for-entra-id) <Lifecycle status="beta" />
+- [Entra ID](#scim-configuration-for-entra-id)
 
 If your IdP isn’t on the list, it can be supported using <Constant name="cloud" /> [APIs](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
 
