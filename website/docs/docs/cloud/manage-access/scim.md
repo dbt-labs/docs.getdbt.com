@@ -98,7 +98,7 @@ If you are adding SCIM to an existing Okta integration in <Constant name="cloud"
     - Use **Import Users** to sync all users from <Constant name="cloud" />, including previously deleted users, if you need to re-provision those users. 
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
-## SCIM configuration for Entra ID <Lifecycle status="beta" />
+## SCIM configuration for Entra ID 
 
 Please complete the [setup SSO with Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) steps before configuring SCIM settings.
 
