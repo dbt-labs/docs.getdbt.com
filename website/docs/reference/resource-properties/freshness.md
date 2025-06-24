@@ -32,8 +32,8 @@ sources:
           [count](#count): <positive_integer>
           [period](#period): minute | hour | day
         [filter](#filter): <boolean_sql_expression>
-    [loaded_at_field](#loaded_at_field): <column_name_or_expression>
-    [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+      [loaded_at_field](#loaded_at_field): <column_name_or_expression> # changed to config in v1.10
+      [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
 
     tables:
       - name: <table_name>
@@ -46,8 +46,8 @@ sources:
               [count](#count): <positive_integer>
               [period](#period): minute | hour | day
             [filter](#filter): <boolean_sql_expression>
-        [loaded_at_field](#loaded_at_field): <column_name_or_expression>
-        [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+          [loaded_at_field](#loaded_at_field): <column_name_or_expression> # changed to config in v1.10
+          [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
 
         ...
 ```
@@ -126,12 +126,12 @@ sources:
         error_after:
           count: 2
           period: hour
-    loaded_at_query: |
-      select max(_sdc_batched_at) from (
-      select * from {{ this }}
-      where _sdc_batched_at > dateadd(day, -7, current_date)
-      qualify count(*) over (partition by _sdc_batched_at::date) > 2000
-      )
+      loaded_at_query: |
+        select max(_sdc_batched_at) from (
+        select * from {{ this }}
+        where _sdc_batched_at > dateadd(day, -7, current_date)
+        qualify count(*) over (partition by _sdc_batched_at::date) > 2000
+        )
 
 ```
 
@@ -149,7 +149,8 @@ sources:
     tables:
       - name: raw_orders
         description: One record per order
-        loaded_at_query: "select {{ current_timestamp() }}"
+        config:
+          loaded_at_query: "select {{ current_timestamp() }}"
 ...
 
 ```
