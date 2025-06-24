@@ -15,7 +15,7 @@ To use the extension, you must meet the following prerequisites:
 
 - You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
 - You are not using (or have disabled) 3rd party dbt extensions.
-- You are using a macOS<!--, Windows,--> or a Linux-based computer.
+- You are using a macOS<!--, Windows,--> or Linux-based computer.
 - The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process.
 
 ## Installation instructions
