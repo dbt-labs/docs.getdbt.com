@@ -29,7 +29,7 @@ Before installing Fusion, ensure:
   | Operating System    | X86-64 | ARM  |
   |-------------------|----------|------|
   | macOS             |   🟢     |  🟢  |
-  | Linux             |   🟢     |  🟡  |
+  | Linux             |   🟢     |  🟢  |
   | Windows           |   🟡     |  🟡  |
 
 
