@@ -25,7 +25,6 @@ In DAG order, for selected resources or an entire project.
 
 **Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
 
-<VersionBlock firstVersion="1.8">
 
 ### The `--empty` flag
 
@@ -46,8 +45,6 @@ When `dbt build` is executed with unit tests applied, the models will be process
 This saves on warehouse spend as the model will only be materialized if the unit tests pass successfully.
 
 Unit tests and data tests can be selected using `--select test_type:unit` or `--select test_type:data` for `dbt build` (same for the `--exclude` flag).
-
-</VersionBlock>
 
 ### Examples
 

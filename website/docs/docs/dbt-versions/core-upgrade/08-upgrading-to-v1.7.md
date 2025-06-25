@@ -66,7 +66,7 @@ To retain the behavior prior to v1.7, there are two main options:
 
 ### dbt clean
 
-Starting in v1.7, [dbt clean](/reference/commands/clean) will only clean paths within the current working directory. The `--no-clean-project-files-only` flag will delete all paths specified in the `clean-targets` section of `dbt_project.yml`, even if they're outside the dbt project.
+[dbt clean](/reference/commands/clean) only cleans paths within the current working directory. The `--no-clean-project-files-only` flag will delete all paths specified in the `clean-targets` section of `dbt_project.yml`, even if they're outside the dbt project.
 
 Supported flags:
 -  `--clean-project-files-only` (default) 

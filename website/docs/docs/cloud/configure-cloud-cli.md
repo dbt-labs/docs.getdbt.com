@@ -1,7 +1,7 @@
 ---
-title: Configure and use the dbt Cloud CLI
+title: Configure and use the dbt CLI
 id: configure-cloud-cli
-description: "Instructions on how to configure the dbt Cloud CLI"
+description: "Instructions on how to configure the dbt CLI"
 sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
@@ -11,20 +11,20 @@ Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name
 - Secure credential storage in the <Constant name="cloud" /> platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
 - Speedier, lower-cost builds.
-- Support for <Constant name="mesh" /> ([cross-project ref](/docs/collaborate/govern/project-dependencies)), and more.
+- Support for <Constant name="mesh" /> ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
 
 ## Prerequisites
 
 - You must set up a project in <Constant name="cloud" />.
-  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="cloud" /> interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud" /> CLI will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 
-## Configure the dbt Cloud CLI
+## Configure the dbt CLI
 
-Once you install the <Constant name="cloud" /> CLI, you need to configure it to connect to a <Constant name="cloud" /> project.
+Once you install the <Constant name="cloud_cli" />, you need to configure it to connect to a <Constant name="cloud" /> project.
 
-1. In dbt Cloud, navigate to **Develop** and click **Configure <Constant name="cloud_cli" />** to download your `dbt_cloud.yml` credentials file.
+1. In <Constant name="cloud" />, navigate to **Develop** and click **Configure <Constant name="cloud_cli" />** to download your `dbt_cloud.yml` credentials file.
 
     <details>
     <summary>Region URLs to download credentials</summary>
@@ -82,7 +82,7 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
     cd ~/dbt-projects/jaffle_shop
     ```
 
-2. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
+2. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the <Constant name="cloud" /> project ID you want to use.
 
     ```yaml
     # dbt_project.yml
@@ -94,7 +94,7 @@ Once you install the <Constant name="cloud" /> CLI, you need to configure it to 
         project-id: PROJECT_ID
     ```
 
-   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
+   - To find your project ID, select **Develop** in the <Constant name="cloud" /> navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
 
 3. You should now be able to [use the <Constant name="cloud_cli" />](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="cloud" /> configuration details or `dbt compile` to compile models in your dbt project.
 
@@ -109,13 +109,13 @@ To set environment variables in the <Constant name="cloud" /> CLI for your dbt p
 3. Click on your project and scroll to the **Environment variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
 
-## Use the dbt Cloud CLI
+## Use the dbt CLI
 
 The <Constant name="cloud_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your <Constant name="cloud" /> configuration details. With the <Constant name="cloud_cli" />, you can:
 
 - Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which is currently not guaranteed by `dbt-core`.
 - Automatically defers build artifacts to your Cloud project's production environment.
-- Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in <Constant name="cloud" />. 
+- Supports [project dependencies](/docs/mesh/govern/project-dependencies), which allows you to depend on another project using the metadata service in <Constant name="cloud" />. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
  
 :::tip Use the <code>--help</code> flag

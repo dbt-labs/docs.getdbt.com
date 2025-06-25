@@ -7,9 +7,8 @@ hoverSnippet: Learn how to Productionize your dbt Databricks project.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks','dbt Core','dbt Cloud']
+tags: ['Databricks','dbt Core','dbt platform']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -109,7 +108,7 @@ The deployment monitor in <Constant name="cloud" /> offers a higher-level view o
 
 <Lightbox src="/img/guides/databricks-guides/deployment_monitor_dbx.png" width="85%" title="The Deployment Monitor Shows Job Status Over Time Across Environments" />
 
-By adding [data health tiles](/docs/collaborate/data-tile) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Data tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](/docs/build/exposures) defined.
+By adding [data health tiles](/docs/explore/data-tile) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Data tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](/docs/build/exposures) defined.
 
 ## Set up notifications
 
@@ -183,7 +182,7 @@ Using the same sources for development and deployment environments enables testi
 
 Though there are similarities between dbt docs and Databricks Unity Catalog, they are ultimately used for different purposes and complement each other well. By combining their strengths, you can provide your organization with a robust and user-friendly data management ecosystem.
 
-dbt docs is a documentation site generated from your dbt project that provides an interface for developers and non-technical stakeholders to understand the data lineage and business logic applied to transformations without requiring full access to <Constant name="cloud" /> or Databricks. It gives you additional options on how you can organize and search for your data. You can automatically [build and view your dbt docs using <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs) to keep the documentation evergreen.
+dbt docs is a documentation site generated from your dbt project that provides an interface for developers and non-technical stakeholders to understand the data lineage and business logic applied to transformations without requiring full access to <Constant name="cloud" /> or Databricks. It gives you additional options on how you can organize and search for your data. You can automatically [build and view your dbt docs using <Constant name="cloud" />](/docs/explore/build-and-view-your-docs) to keep the documentation evergreen.
 
 Unity Catalog is a unified governance solution for your lakehouse. It provides a data explorer that can be used for discovery of datasets that have not been defined in dbt. The data explorer also captures [column-level lineage](https://docs.databricks.com/data-governance/unity-catalog/data-lineage.html#capture-and-explore-lineage),  when you need to trace the lineage of a specific column.
 

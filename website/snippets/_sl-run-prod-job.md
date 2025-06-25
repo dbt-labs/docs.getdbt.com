@@ -1,7 +1,7 @@
-This section explains how you can perform a job run in your deployment environment in dbt Cloud to materialize and deploy your metrics. Currently, the deployment environment is only supported.
+This section explains how you can perform a job run in your deployment environment in <Constant name="cloud" /> to materialize and deploy your metrics. Currently, the deployment environment is only supported.
 
 1. Once you’ve [defined your semantic models and metrics](/guides/sl-snowflake-qs?step=10), commit and merge your metric changes in your dbt project. 
-2. In dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
+2. In <Constant name="cloud" />, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
     * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 3. To create a new environment, navigate to **Deploy** in the navigation menu, select **Environments**, and then select **Create new environment**.
 4. Fill in your deployment credentials with your Snowflake username and password. You can name the schema anything you want. Click **Save** to create your new production environment.
@@ -15,7 +15,7 @@ This section explains how you can perform a job run in your deployment environme
 
 <summary>What’s happening internally?</summary>
 
-- Merging the code into your main branch allows dbt Cloud to pull those changes and build the definition in the manifest produced by the run. <br />
+- Merging the code into your main branch allows <Constant name="cloud" /> to pull those changes and build the definition in the manifest produced by the run. <br />
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
 - The Semantic Layer APIs pull in the most recent manifest and enables your integration to extract metadata from it.
 

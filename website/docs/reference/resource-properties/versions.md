@@ -43,7 +43,7 @@ The value of the version identifier is used to order versions of a model relativ
 
 In general, we recommend that you use a simple "major versioning" scheme for your models: `1`, `2`, `3`, and so on, where each version reflects a breaking change from previous versions. You are able to use other versioning schemes. dbt will sort your version identifiers alphabetically if the values are not all numeric. You should **not** include the letter `v` in the version identifier, as dbt will do that for you.
 
-To run a model with multiple versions, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/collaborate/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
+To run a model with multiple versions, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/mesh/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
 
 
 ### `defined_in`
@@ -71,26 +71,11 @@ The specification of which columns are defined in a model's top-level `columns` 
 - `include` is either:
   - a list of specific column names to include
   - `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
-- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`. 
-
-<VersionBlock lastVersion="1.7">
-
-:::tip
-Not to be confused with:
-
-- The [`--warn-error-options` flag](/reference/global-configs/warnings#use---warn-error-options-for-targeted-warnings), which also uses `include`/`exclude` to control which warnings are treated as errors.
-- The `--select/--exclude` [syntax](/reference/node-selection/exclude) used for model selection.
-
-These features use similar syntax but apply to different contexts (model versioning, command behavior, and model selection).
-:::
-</VersionBlock>
-
-<VersionBlock firstVersion="1.8">
+- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`.
 
 :::tip
 Not to be confused with the `--select/--exclude` [syntax](/reference/node-selection/exclude), which is used for model selection.
 :::
-</VersionBlock>
 
 The `columns` list of a versioned model can have _at most one_ `include/exclude` element. However, if none of your model versions specify columns, you don't need to define columns at all and can omit the `columns/include`/`exclude` keys from the versioned model. In this case, dbt will automatically use all top-level columns for all versions. 
 
@@ -184,7 +169,7 @@ Each other version has declared a modification from the top-level property:
 ### Our recommendations
 - Follow a consistent naming convention for model versions and aliases.
 - Use `defined_in` and `alias` only if you have good reason.
-- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/collaborate/govern/model-versions#configuring-database-location-with-alias)
+- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/mesh/govern/model-versions#configuring-database-location-with-alias)
 
 ### Detecting breaking changes
 
@@ -233,7 +218,7 @@ Breaking Change to Contract Error in model sometable (models/sometable.sql)
    - order_id (number -> int)
 
   Consider making an additive (non-breaking) change instead, if possible.
-  Otherwise, create a new model version: https://docs.getdbt.com/docs/collaborate/govern/model-versions
+  Otherwise, create a new model version: https://docs.getdbt.com/docs/mesh/govern/model-versions
 ```
 
 </TabItem>

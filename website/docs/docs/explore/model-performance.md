@@ -1,0 +1,43 @@
+---
+title: "Model performance"
+sidebar_label: "Model performance"
+description: "Learn about the performance of your models so you can make improvements to save time and money."
+---
+
+# Model performance <Lifecycle status="managed,managed_plus" />
+
+<Constant name="explorer" /> provides metadata on <Constant name="cloud" /> runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
+
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
+
+<ExplorerCourse />
+
+## The Performance overview page 
+
+You can pinpoint areas for performance enhancement by using the Performance overview page. This page presents a comprehensive analysis across all project models and displays the longest-running models, those most frequently executed, and the ones with the highest failure rates during runs/tests. Data can be segmented by environment and job type which can offer insights into:
+
+- Most executed models (total count).
+- Models with the longest execution time (average duration).
+- Models with the most failures, detailing run failures (percentage and count) and test failures (percentage and count).
+
+Each data point links to individual models in <Constant name="explorer" />. 
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-performance-overview-page.png" width="90%" title="Example of Performance overview page"/>
+
+You can view historical metadata for up to the past three months. Select the time horizon using the filter, which defaults to a two-week lookback.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/ex-2-week-default.png" width="55%" title="Example of dropdown"/>
+
+## The Model performance tab
+
+You can view trends in execution times, counts, and failures by using the Model performance tab for historical performance analysis. Daily execution data includes:
+
+- Average model execution time.
+- Model execution counts, including failures/errors (total sum).
+
+Clicking on a data point reveals a table listing all job runs for that day, with each row providing a direct link to the details of a specific run.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" title="Example of the Model performance tab"/> 
+

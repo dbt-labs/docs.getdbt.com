@@ -4,96 +4,9 @@ id: "snowflake-configs"
 description: "Snowflake Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
-<VersionBlock firstVersion="1.9">
-
 ## Iceberg table format
 
-The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
-
-- [Table](/docs/build/materializations#table)
-- [Incremental](/docs/build/materializations#incremental)
-- [Dynamic Table](#dynamic-tables) 
-
-For now, to create Iceberg tables, you must implement a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the `Show Objects` query, which dbt depends on for metadata.
-
-To use Iceberg, set the `enable_iceberg_materializations` flag to `True` in your dbt_project.yml:
-
-<File name='dbt_project.yml'>
-
-```yaml
-
-flags:
-  enable_iceberg_materializations: True
-
-```
-
-</File>
-
-
-The following configurations are supported.
-For more information, check out the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
-
-| Parameter | Type   | Required | Description   | Sample input | Note   |
-| ------ | ----- | -------- | ------------- | ------------ | ------ |
-| `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
-| `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
-| `base_location_root` | String  | No  | If provided, the input will override the default dbt base_location value of `_dbt` |
-| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you do not specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
-
-### Example configuration
-
-To configure an Iceberg table materialization in dbt, refer to the example configuration:
-
-<File name='models/<modelname>.sql'>
-
-```sql
-
-{{
-  config(
-    materialized = "table",
-    table_format="iceberg",
-    external_volume="s3_iceberg_snow",
-  )
-}}
-
-select * from {{ ref('raw_orders') }}
-
-```
-
-</File>
-
-### Base location 
-
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
-
-We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the `base_location_root` and `base_location_subpath`. 
-
-- If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
-- If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
-- If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
-- If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
-
-A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
-
-#### Rationale
-
-By default, dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_ location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
-
-- Navigate the underlying object store (S3/Azure blob)
-- Read Iceberg tables via an object-store integration
-- Grant schema-specific access to tables via object store
-- Use a crawler pointed at the tables within the external volume to build a new catalog with another tool
-
-To maintain best practices,  dbt enforces an input and, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
-
-### Limitations
-
-There are some limitations to the implementation you need to be aware of:
-
--  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
-- You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
-
-</VersionBlock>
+Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
 
 ## Dynamic tables
 
@@ -105,15 +18,6 @@ While this materialization is specific to Snowflake, it very much follows the im
 of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
-
-<VersionBlock lastVersion="1.8">
-
-| Parameter          | Type       | Required | Default     | Change Monitoring Support |
-|--------------------|------------|----------|-------------|---------------------------|
-| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
-| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -127,83 +31,6 @@ Dynamic tables are supported with the following configuration parameters:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-<Tabs
-  groupId="config-languages"
-  defaultValue="project-yaml"
-  values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
-  ]
-}>
-
-<TabItem value="project-yaml">
-
-<File name='dbt_project.yml'>
-
-```yaml
-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
-    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
-    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-
-```
-
-</File>
-
-</TabItem>
-
-
-<TabItem value="property-yaml">
-
-<File name='models/properties.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: [<model-name>]
-    config:
-      [materialized](/reference/resource-configs/materialized): dynamic_table
-      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
-      [target_lag](#target-lag): downstream | <time-delta>
-      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-
-```
-
-</File>
-
-</TabItem>
-
-
-<TabItem value="config">
-
-<File name='models/<model_name>.sql'>
-
-```jinja
-
-{{ config(
-    [materialized](/reference/resource-configs/materialized)="dynamic_table",
-    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
-    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
-    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
-
-) }}
-
-```
-
-</File>
-
-</TabItem>
-
-</Tabs>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 <Tabs
@@ -212,7 +39,7 @@ models:
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'SQL config', value: 'config', },
   ]
 }>
 
@@ -330,7 +157,7 @@ As with materialized views on most data platforms, there are limitations associa
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
 For dbt limitations, these dbt features are not supported:
-- [Model contracts](/docs/collaborate/govern/model-contracts)
+- [Model contracts](/docs/mesh/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
 ### Troubleshooting dynamic tables
@@ -563,6 +390,82 @@ models:
 
 </File>
 
+## Python model configuration
+
+The Snowflake adapter supports Python models. Snowflake uses its own framework, Snowpark, which has many similarities to PySpark.
+
+**Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
+
+**Installing packages:** Snowpark supports several popular packages via Anaconda. Refer to the [complete list](https://repo.anaconda.com/pkgs/snowflake/) for more details. Packages are installed when your model is run. Different models can have different package dependencies. If you use third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
+
+**Python version:** To specify a different Python version, use the following configuration:
+
+```python
+def model(dbt, session):
+    dbt.config(
+        materialized = "table",
+        python_version="3.11"
+    )
+```
+
+You can use the `python_version` config to run a Snowpark model with [Python versions](https://docs.snowflake.com/en/developer-guide/snowpark/python/setup) 3.9, 3.10, or 3.11.
+
+
+**External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
+
+```python
+import pandas
+import snowflake.snowpark as snowpark
+
+def model(dbt, session: snowpark.Session):
+    dbt.config(
+        materialized="table",
+        secrets={"secret_variable_name": "test_secret"},
+        external_access_integrations=["test_external_access_integration"],
+    )
+    import _snowflake
+    return session.create_dataframe(
+        pandas.DataFrame(
+            [{"secret_value": _snowflake.get_generic_secret_string('secret_variable_name')}]
+        )
+    )
+```
+
+**Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
+
+### Third-party Snowflake packages
+
+To use a third-party Snowflake package that isn't available in Snowflake Anaconda, upload your package by following [this example](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#importing-packages-through-a-snowflake-stage), and then configure the `imports` setting in the dbt Python model to reference to the zip file in your Snowflake staging.
+
+Here’s a complete example configuration using a zip file, including using `imports` in a Python model:
+
+```python
+
+def model(dbt, session):
+    # Configure the model
+    dbt.config(
+        materialized="table",
+        imports=["@mystage/mycustompackage.zip"],  # Specify the external package location
+    )
+    
+    # Example data transformation using the imported package
+    # (Assuming `some_external_package` has a function we can call)
+    data = {
+        "name": ["Alice", "Bob", "Charlie"],
+        "score": [85, 90, 88]
+    }
+    df = pd.DataFrame(data)
+
+    # Process data with the external package
+    df["adjusted_score"] = df["score"].apply(lambda x: some_external_package.adjust_score(x))
+    
+    # Return the DataFrame as the model output
+    return df
+
+```
+
+For more information on using this configuration, refer to [Snowflake's documentation](https://community.snowflake.com/s/article/how-to-use-other-python-packages-in-snowpark) on uploading and using other python packages in Snowpark not published on Snowflake's Anaconda channel.
+
 ## Configuring virtual warehouses
 
 The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
@@ -570,14 +473,15 @@ The default warehouse that dbt uses can be configured in your [Profile](/docs/co
 <Tabs
   defaultValue="dbt_project.yml"
   values={[
-    { label: 'YAML code', value: 'dbt_project.yml', },
-    { label: 'SQL code', value: 'models/events/sessions.sql', },
+    { label: 'Project file', value: 'dbt_project.yml', },
+    { label: 'Property file', value: 'models/my_model.yml', },
+    { label: 'SQL config', value: 'models/events/sessions.sql', },
     ]}
 >
 
 <TabItem value="dbt_project.yml">
 
-The example config below changes the warehouse for a group of models with a config argument in the yml.
+The following example changes the warehouse for a group of models with a config argument in the YAML.
 
 <File name='dbt_project.yml'>
 
@@ -588,25 +492,39 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"    # use the `EXTRA_SMALL` warehouse for all models in the project...
+  +snowflake_warehouse: "EXTRA_SMALL"    # default Snowflake virtual warehouse for all models in the project.
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"    # ...except for the models in the `clickstream` folder, which will use the `EXTRA_LARGE` warehouse.
-
+      +snowflake_warehouse: "EXTRA_LARGE"    # override the default Snowflake virtual warehouse for all models under the `clickstream` directory.
 snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
 
 </File>
 </TabItem>
+<TabItem value="models/my_model.yml">
 
+The following example overrides the Snowflake warehouse for a single model using a config argument in the property file.
+
+<File name='models/my_model.yml'>
+
+```yaml
+models:
+  - name: my_model
+    config:
+      snowflake_warehouse: "EXTRA_LARGE"    # override the Snowflake virtual warehouse just for this model
+```
+
+</File>
+</TabItem>
 <TabItem value="models/events/sessions.sql">
 
-The example config below changes the warehouse for a single model with a config() block in the sql model.
+The following example changes the warehouse for a single model with a config() block in the SQL model.
 
 <File name='models/events/sessions.sql'>
 
 ```sql
+# override the Snowflake virtual warehouse for just this model
 {{
   config(
     materialized='table',
@@ -660,6 +578,43 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.10">
+
+## Setting row access policies 
+
+Configure [row access policies](https://docs.snowflake.com/en/user-guide/security-row-intro) on tables, views, and dynamic tables by using the `row_access_policy` config for models. The policy must already exist in Snowflake before you apply it to the model.
+
+<File name='models/<modelname>.sql'>
+
+```sql
+{{ config(
+    row_access_policy = 'my_database.my_schema.my_row_access_policy_name on (id)'
+) }}
+
+select ...
+
+```
+</File>
+
+## Configuring table tags 
+
+To add tags to tables, views, and dynamic tables, use the `table_tag` config. Note, the tag must already exist in Snowflake before you apply it.
+
+<File name='models/<modelname>.sql'>
+
+```sql
+{{ config(
+    table_tag = "my_tag_name = 'my_tag_value'"
+) }}
+
+select ...
+
+```
+
+</File>
+
+</VersionBlock>
+
 ## Secure views
 
 To create a Snowflake [secure view](https://docs.snowflake.net/manuals/user-guide/views-secure.html), use the `secure` config for view models. Secure views can be used to limit access to sensitive data. Note: secure views may incur a performance penalty, so you should only use them if you need them.
@@ -680,7 +635,6 @@ models:
 ```
 
 </File>
-
 
 ## Source freshness known limitation
 

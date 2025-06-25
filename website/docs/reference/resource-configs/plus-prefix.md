@@ -54,12 +54,14 @@ models:
     schema: my_schema # a plus prefix is optional here
     +tags: # this is the tag config
       - "hello"
-    tags: # whereas this is the tag resource path
-      # The below config applies to models in the
-      # models/tags/ directory.
-      # Note: you don't _need_ a leading + here,
-      # but it wouldn't hurt.
-      materialized: view
+    config:
+      tags: # whereas this is the tag resource path
+        # changed to config in v1.10
+        # The below config applies to models in the
+        # models/tags/ directory.
+        # Note: you don't _need_ a leading + here,
+        # but it wouldn't hurt.
+        materialized: view
 
 
 ```

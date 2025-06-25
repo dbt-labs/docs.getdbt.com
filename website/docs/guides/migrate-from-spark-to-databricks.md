@@ -7,9 +7,8 @@ hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core','dbt Cloud']
+tags: ['Migration', 'dbt Core','dbt platform']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -18,9 +17,8 @@ recently_updated: true
 
 You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
-### Prerequisites
+### Prerequisite
 
-- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
 - For <Constant name="cloud" />, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication
@@ -47,7 +45,7 @@ For more information on defaults, see [Caveats](/docs/core/connect-data-platform
 If you use dbt Core, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library called `databricks-sql-connector`.
 
 
-## Migrate your dbt projects in dbt Cloud
+## Migrate your dbt projects in dbt
 
 You can migrate your projects to the Databricks-specific adapter from the generic Apache Spark adapter. If you're using <Constant name="core" />, then skip to Step 4.
 

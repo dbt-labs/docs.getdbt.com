@@ -6,7 +6,7 @@ displayed_sidebar: "docs"
 ---
 
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:
-1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
+1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
 
 ## Resources
@@ -33,7 +33,7 @@ This release includes significant new features, and rework to `dbt-core`'s CLI a
 Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882)). We recommend setting via env var or CLI flag instead.
 
 The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
-- `dbt --log-level warn list` (recommended; equivalent to previous default)
+- `dbt list --log-level warn` (recommended; equivalent to previous default)
 - `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and `list` output)
 
 The following env vars have been renamed, for consistency with the convention followed by all other parameters:
@@ -110,7 +110,7 @@ The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.l
 {{ return(load_result('collect_freshness')) }}
 ```
 
-Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/mesh/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 Likewise, if your project has reimplemented the `ref` macro with custom logic, you will need to update the logic in your macro as described [here](https://docs.getdbt.com/reference/dbt-jinja-functions/builtins).
 
@@ -131,7 +131,7 @@ For more detailed information and to ask questions, please read and comment on t
 
 ### Model governance
 
-The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/collaborate/govern/about-model-governance), all of which is new in v1.5.
+The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/mesh/govern/about-model-governance), all of which is new in v1.5.
 
 ### Revamped CLI
 

@@ -486,7 +486,7 @@ dbt does not perform cherry picking operations and this needs to be done from a 
 We also implement other features that help us in trying times:
 - The [`--exclude`](https://docs.getdbt.com/reference/node-selection/exclude) command flag helps us omit building models in a job
 - The [`enabled`](https://docs.getdbt.com/reference/resource-configs/enabled) configuration helps us keep models from being executed in any job for a longer-term solution
-- Using [contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) and [versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) helps alleviate breaking code changes between teams in dbt Mesh
+- Using [contracts](https://docs.getdbt.com/docs/mesh/govern/model-contracts) and [versions](https://docs.getdbt.com/docs/mesh/govern/model-versions) helps alleviate breaking code changes between teams in dbt Mesh
 - [Unit tests](https://docs.getdbt.com/docs/build/unit-tests) and [data tests](https://docs.getdbt.com/docs/build/data-tests), along with forming best practices around the minimum requirements for every model, helps us continuously test our expectations (see the [dbt_meta_testing](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest/) package)
 - Using the [dbt audit helper](https://hub.getdbt.com/dbt-labs/audit_helper/latest) package or [enabling advanced CI on our continuous integration jobs](https://docs.getdbt.com/docs/deploy/advanced-ci) helps us understand the impacts our changes make to the original data set
 

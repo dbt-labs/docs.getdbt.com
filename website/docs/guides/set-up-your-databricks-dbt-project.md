@@ -7,9 +7,8 @@ hoverSnippet: Learn how to set up your dbt project with Databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt Cloud']
+tags: ['Databricks', 'dbt Core', 'dbt platform']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>

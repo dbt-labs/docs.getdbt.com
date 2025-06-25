@@ -19,13 +19,13 @@ Usually this error indicates that the "main" branch name has changed or it is po
 **Workaround 1**
 Take a look at your Environment Settings - If you **do not** have a custom branch filled in your Environment Settings:
 
-1. Disconnect and reconnect your repository [connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) on your Project Settings page. This should then allow dbt Cloud to pick up that the "main" branch is now called `main`
-2. In the Environment Settings, set the custom branch to 'master' and refresh the <Constant name="cloud_ide" /> 
+1. Disconnect and reconnect your repository [connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) on your Project Settings page. This should then allow <Constant name="cloud" /> to pick up that the "main" branch is now called `main`.
+2. In the Environment Settings, set the custom branch to 'master' and refresh the <Constant name="cloud_ide" />.
 
 **Workaround 2**
 Take a look at your Environment Settings - If you **do** have a custom branch filled in your Environment Settings:
 
-1. Disconnecting and reconnecting your repository [connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) on your Project Settings page. This should then allow dbt Cloud to pick up that the "main" branch is now called `main`
-2. In the Environment Settings, remove the custom branch and refresh the <Constant name="cloud_ide" />
+1. Disconnecting and reconnecting your repository [connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url) on your Project Settings page. This should then allow <Constant name="cloud" /> to pick up that the "main" branch is now called `main`.
+2. In the Environment Settings, remove the custom branch and refresh the <Constant name="cloud_ide" />.
 
 If you've tried the workarounds above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!

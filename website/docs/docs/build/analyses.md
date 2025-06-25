@@ -48,4 +48,4 @@ To compile this analysis into runnable sql, run:
 dbt compile
 ```
 
-Then, look for the compiled SQL file in `target/compiled/{project name}/analyses/running_total_by_account.sql`. This sql can then be pasted into a data visualization tool, for instance. Note that no `running_total_by_account` relation will be materialized in the database as this is an `analysis`, not a `model`.
+Then, look for the compiled SQL file in `target/compiled/{project name}/analyses/running_total_by_account.sql`. This SQL can then be pasted into a data visualization tool, for instance. Note that no `running_total_by_account` relation will be materialized in the database as this is an `analysis`, not a `model`.

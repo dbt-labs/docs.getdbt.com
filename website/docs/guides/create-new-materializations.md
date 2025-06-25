@@ -8,7 +8,6 @@ hoverSnippet: Learn how to create your own materializations.
 icon: 'guides'
 hide_table_of_contents: true
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -24,6 +23,13 @@ This is an advanced feature of dbt. Let us know if you need a hand! We're always
 :::
 
 ## Creating a materialization
+
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
+<CourseCallout resource="Materializations" 
+url="https://learn.getdbt.com/courses/materializations-fundamentals" 
+course="Materializations fundamentals" 
+/>
 
 Materialization blocks make it possible for dbt to load custom materializations from packages. The materialization blocks work very much like `macro` blocks, with a couple of key exceptions. Materializations are defined as follows:
 
@@ -60,11 +66,11 @@ dbt's ability to dynamically pick the correct materialization based on the activ
 
 ### Anatomy of a materialization
 
-Materializations are responsible for taking a dbt model sql statement and turning it into a transformed dataset in a database. As such, materializations generally take the following shape:
+Materializations are responsible for taking a dbt model SQL statement and turning it into a transformed dataset in a database. As such, materializations generally take the following shape:
 
 1. Prepare the database for the new model
 2. Run pre-hooks
-3. Execute any sql required to implement the desired materialization
+3. Execute any SQL required to implement the desired materialization
 4. Run post-model hooks
 5. Clean up the database as required
 6. Update the Relation cache
@@ -73,7 +79,7 @@ Each of these tasks are explained in sections below.
 
 ### Prepare the database
 
-Materializations are responsible for creating new tables or <Term id="view">views</Term> in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what sql they should run. Here is some pseudocode for the "setup" phase of the **<Term id="table" />** materialization:
+Materializations are responsible for creating new tables or <Term id="view">views</Term> in the database, or inserting/updating/deleting data from existing tables. As such, materializations need to know about the state of the database to determine exactly what SQL they should run. Here is some pseudocode for the "setup" phase of the **<Term id="table" />** materialization:
 
 ```sql
 -- Refer to the table materialization (linked above) for an example of real syntax

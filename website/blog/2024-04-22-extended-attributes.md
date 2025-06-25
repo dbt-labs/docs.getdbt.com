@@ -66,7 +66,7 @@ With this setup, we have a separate account for development work, using individu
 
 Production is then pointed to a _completely separate account_ that's only writable from production environment builds and readable from the BI tool.
 
-It’s really that simple. This works with [PrivateLink](/docs/cloud/secure/about-privatelink) connections handling the authentication as well! Again, while we have one project connection that's the _default_, you can now configure unique connections securely _per environment_.
+It’s really that simple. This works with [private connections](/docs/cloud/secure/about-private-connectivity) handling the authentication as well! Again, while we have one project connection that's the _default_, you can now configure unique connections securely _per environment_.
 
 ## All the world a Stage
 

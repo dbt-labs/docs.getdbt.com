@@ -3,11 +3,13 @@ title: "Set up SSO with SAML 2.0"
 id: "set-up-sso-saml-2.0"
 ---
 
+# Set up SSO with SAML 2.0 <Lifecycle status="managed, managed_plus" />
+
 import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-<Constant name="cloud" /> Enterprise supports single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
+<Constant name="cloud" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:
 * IdP-initiated SSO
 * SP-initiated SSO
@@ -51,7 +53,7 @@ When prompted for the SAML 2.0 application configurations, supply the following 
 * Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
 - Relay State: `<login slug>`
 
-Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. We recommend using the following values:
+Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. [SCIM configuration](https://docs.getdbt.com/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
 
 
 | name | name format | value | description |
@@ -61,7 +63,7 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | last_name | Unspecified | user.last_name | The user's last name |
 | NameID | Unspecified | ID | The user's unchanging ID |
 
-`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but dbt Cloud creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
+`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but <Constant name="cloud" /> creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
 <Constant name="cloud" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign <Constant name="cloud" /> users to <Constant name="cloud" /> groups. To
@@ -175,7 +177,7 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
-<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms.
+<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](https://docs.getdbt.com/docs/cloud/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
 
 3. The following table illustrates expected User Attribute Statements:
 
@@ -472,9 +474,9 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 6. After creating the OneLogin application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
 section to complete the integration.
 
-## dbt Cloud Setup
+## dbt Setup
 
-### Providing IdP values to dbt Cloud
+### Providing IdP values to dbt
 
 To complete setup, follow the steps below in <Constant name="cloud" />:
 
@@ -487,18 +489,24 @@ To complete setup, follow the steps below in <Constant name="cloud" />:
    | Log&nbsp;in&nbsp;with | SAML 2.0 |
    | Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
-   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
+   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
    | Slug | Enter your desired login slug. |
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
-        title="Configuring the application in dbt Cloud" />
+        title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
 5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="cloud" /> from the IdP directly.
 
+### Additional configuration options
+
+The **Single sign-on** section also contains additional configuration options which are located after the credentials fields.
+
+- **Sign SAML Auth Request:** <Constant name="cloud" /> will sign SAML requests sent to your identity provider when users attempt to log in.  Metadata for configuring this in your identity provider can be downloaded from the value shown in **SAML Metadata URL**.  We recommend leaving this disabled for most situations.
+
+- **Attribute Mappings:** Associate SAML attributes that <Constant name="cloud" /> needs with attributes your identity provider includes in SAML assertions.  The value must be a valid JSON object with the `email`, `first_name`, or `last_name` keys and values that are strings or lists of strings.  For example, if your identity provider is unable to include an `email` attribute in assertions, but does include one called `EmailAddress`, then **Attribute Mappings** should be set to `{ "email": "EmailAddress" }`. The mappings are only needed if you cannot configure attributes as specified in the instructions on this page. If you can, the default value of `{}` is acceptable.
 
 <Snippet path="login_url_note" />
 
 ### Setting up RBAC
 
-After configuring an identity provider, you will be able to set up [role-based
-access control](/docs/cloud/manage-access/enterprise-permissions) for your account.
+After configuring an identity provider, you will be able to set up [role-based access control](/docs/cloud/manage-access/enterprise-permissions) for your account.

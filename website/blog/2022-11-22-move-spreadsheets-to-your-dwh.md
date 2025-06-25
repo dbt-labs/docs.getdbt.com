@@ -33,7 +33,7 @@ Let’s have a look at some of the offerings to help you get your spreadsheets i
 
 ## dbt seeds
 
-dbt comes with an inbuilt csv loader ([seeds](https://docs.getdbt.com/docs/build/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
+dbt comes with an inbuilt CSV loader ([seeds](https://docs.getdbt.com/docs/build/seeds)) to populate your data warehouse with any files you put inside of your project’s `seeds` folder. It will automatically infer data types from your file’s contents, but you can always override it by [providing explicit instructions in your dbt_project.yml](https://docs.getdbt.com/reference/resource-configs/column_types) file.
 
 However, since dbt creates these tables by inserting rows one at a time, it doesn’t perform well at scale (there’s no hard limit but aim for hundreds of rows rather than thousands). [The dbt docs](https://docs.getdbt.com/docs/build/seeds#faqs) suggest using seeds for “files that contain business-specific logic, for example, a list of country codes or user IDs of employees.”
 
@@ -119,7 +119,7 @@ Beware of inconsistent data types though—if someone types text into a column t
 
 I’m a big fan of [Fivetran’s Google Drive connector](https://fivetran.com/docs/files/google-drive); in the past I’ve used it to streamline a lot of weekly reporting. It allows stakeholders to use a tool they’re already familiar with (Google Drive) instead of dealing with another set of credentials. Every file uploaded into a specific folder on Drive (or [Box, or consumer Dropbox](https://fivetran.com/docs/files/magic-folder)) turns into a table in your warehouse.
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-drive-uploader.png" title="Fivetran will add each of these csv files to a single schema in your warehouse, making it ideal for regular uploads" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-drive-uploader.png" title="Fivetran will add each of these CSV files to a single schema in your warehouse, making it ideal for regular uploads" />
 
 Like the Google Sheets connector, the data types of the columns are determined automatically. Dates, in particular, are finicky though—if you can control your input data, try to get it into [ISO 8601 format](https://xkcd.com/1179/) to minimize the amount of cleanup you have to do on the other side.
 

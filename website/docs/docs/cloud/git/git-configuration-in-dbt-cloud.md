@@ -1,11 +1,11 @@
 ---
-title: "Configure Git in dbt Cloud"
-description: "Learn about the Git providers supported in dbt Cloud"
+title: "Configure Git in dbt"
+description: "Learn about the Git providers supported in dbt"
 hide_table_of_contents: true
 pagination_next: "docs/cloud/git/managed-repository"
 ---
 
-[Version control](/docs/collaborate/git/version-control-basics) &mdash; a system that allows you and your teammates to work safely and simultaneously on a single project &mdash; is an essential part of the dbt workflow. It enables teams to collaborate effectively and maintain a history of changes to their dbt projects. 
+[Version control](/docs/cloud/git/version-control-basics) &mdash; a system that allows you and your teammates to work safely and simultaneously on a single project &mdash; is an essential part of the dbt workflow. It enables teams to collaborate effectively and maintain a history of changes to their dbt projects. 
 
 In <Constant name="cloud" />, you can configure <Constant name="git" /> integrations to manage your dbt project code with ease. <Constant name="cloud" /> offers multiple ways to integrate with you <Constant name="git" /> provider, catering to diverse team needs and preferences. 
 
@@ -27,19 +27,19 @@ Whether you use a <Constant name="git" /> integration that natively connects wit
 
 <Card
     title="Connect to GitHub"
-    body="Learn how to connect to GitHub using dbt Cloud's native integration."
+    body="Learn how to connect to GitHub using dbt's native integration."
     link="/docs/cloud/git/connect-github"
     icon="dbt-bit"/>
 
 <Card
     title="Connect to GitLab"
-    body="Learn how to connect to GitLab using dbt Cloud's native integration."
+    body="Learn how to connect to GitLab using dbt's native integration."
     link="/docs/cloud/git/connect-gitlab"
     icon="dbt-bit"/>
 
 <Card
     title="Connect to Azure DevOps"
-    body="Learn how to connect to Azure DevOps using dbt Cloud's native integration. <br /><br />Available on dbt Cloud Enterprise plans."
+    body="Learn how to connect to Azure DevOps using dbt's native integration. <br /><br />Available on dbt Enterprise or Enterprise+ plans."
     link="/docs/cloud/git/connect-azure-devops"
     icon="dbt-bit"/>
 

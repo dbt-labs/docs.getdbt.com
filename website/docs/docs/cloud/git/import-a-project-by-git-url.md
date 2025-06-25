@@ -6,7 +6,7 @@ description: "Learn how to connect to a git repository using a git URL."
 In <Constant name="cloud" />, you can import a git repository from any valid git URL that points to a dbt project. There are some important considerations to keep in mind when doing this.
 
 ## Git protocols
-You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
+You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. <Constant name="cloud" /> uses the SSH protocol to clone repositories, so <Constant name="cloud" /> will be unable to clone repos supplied with the HTTP protocol.
 
 import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
@@ -79,7 +79,7 @@ AWS CodeCommit is no longer available to new customers, and existing customers o
 
 :::
 
-#### Step 1: Create an AWS User for dbt Cloud
+#### Step 1: Create an AWS User for dbt
 - To give <Constant name="cloud" /> access to your repository, first you'll need to create an AWS IAM user for <Constant name="cloud" />. 
 - Log into the AWS Console and navigate to the IAM section. 
 - Click **Add User**, and create a new user by entering a unique and meaningful user name.
@@ -95,16 +95,16 @@ AWS CodeCommit is no longer available to new customers, and existing customers o
 
 **Note:** The <Constant name="cloud" />-generated public key is the only key that will work in the next step. Any other key that has been generated outside of <Constant name="cloud" /> will not work.
 
-#### Step 3: Grant dbt Cloud AWS User access
+#### Step 3: Grant dbt AWS User access
 - Open up the newly created <Constant name="cloud" /> user in the AWS IAM Console. 
 - Choose the **Security Credentials** tab and then click **Upload SSH public key**. 
 - Paste in the contents of the **Public Key** field from the <Constant name="cloud" /> Repository page.
 - Once you've created the key, you'll see an **SSH key ID** for it. 
 - **[Contact dbt Support](mailto:support@getdbt.com)** and share that field so that dbt Support team can complete the setup process for you.
 
-#### Step 4: Specify a custom branch in dbt Cloud
+#### Step 4: Specify a custom branch in dbt
 
-CodeCommit uses `master` as its default branch, and to initialize your project, you'll need to specify the `master` branch as a [custom branch](/faqs/Environments/custom-branch-settings#development) in dbt Cloud.
+CodeCommit uses `master` as its default branch, and to initialize your project, you'll need to specify the `master` branch as a [custom branch](/faqs/Environments/custom-branch-settings#development) in <Constant name="cloud" />.
 
 - Go to **Deploy** -> **Environments** -> **Development**. 
 - Select **Settings** -> **Edit** and under **General Settings**, check the **Default to a custom branch** checkbox.
@@ -112,13 +112,13 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 
 #### Step 5: Configure pull request template URLs (Optional)
 
-To prevent users from directly merging code changes into the default branch, configure the [PR Template URL](/docs/collaborate/git/pr-template) in the **Repository details** page for your project. Once configured, <Constant name="cloud" /> will prompt users to open a new PR after committing and synching code changes on the branch in the <Constant name="cloud_ide" />, before merging any changes into the default branch.
+To prevent users from directly merging code changes into the default branch, configure the [PR Template URL](/docs/cloud/git/pr-template) in the **Repository details** page for your project. Once configured, <Constant name="cloud" /> will prompt users to open a new PR after committing and synching code changes on the branch in the <Constant name="cloud_ide" />, before merging any changes into the default branch.
 
 - Go to **Account Settings** -> **Projects** -> Select the project.
 - Click the repository link under **Repository**.
 - In the **Repository details** page, click **Edit** in the lower right.
   <Lightbox src="/img/docs/collaborate/repo-details.jpg" width="80%" title="Configure PR template in the 'Repository details' page." />
-- In the **Pull request URL** field, set the URL based on the suggested [PR template format](/docs/collaborate/git/pr-template#aws-codecommit).
+- In the **Pull request URL** field, set the URL based on the suggested [PR template format](/docs/cloud/git/pr-template#aws-codecommit).
 - Replace `<repo>` with the name of your repository (Note that it is case sensitive). In the following example, the repository name is `New_Repo`.
   <Lightbox src="/img/docs/collaborate/pr-template-example.jpg" width="60%" title="In the Pull request URL field example, the repository name is 'New_Repo'." />
 - After filling the **Pull request URL** field, click **Save**.
@@ -128,7 +128,7 @@ To prevent users from directly merging code changes into the default branch, con
 ## Azure DevOps
 :::info Use Azure DevOps?
 
-If you use Azure DevOps and you are on the <Constant name="cloud" /> Enterprise plan, you can import your repo directly using [<Constant name="cloud" />'s Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/continuous-integration).
+If you use Azure DevOps and you are on the <Constant name="cloud" /> Enterprise or Enterprise+ plan, you can import your repo directly using [<Constant name="cloud" />'s Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -146,7 +146,7 @@ If you use Azure DevOps and you are on the <Constant name="cloud" /> Enterprise 
 
 5. After saving this SSH key, <Constant name="cloud" /> will be able to read and write files in your Azure DevOps repository.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/d19f199-Screen_Shot_2020-03-09_at_4.13.50_PM.png" title="Enter and save the public key generated for your repository by dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/d19f199-Screen_Shot_2020-03-09_at_4.13.50_PM.png" title="Enter and save the public key generated for your repository by dbt" />
 
 ## Other git providers
 

@@ -1,22 +1,21 @@
 ---
-title: "Using BigQuery Dataframes with dbt python models"
+title: "Using BigQuery DataFrames with dbt Python models"
 id: dbt-python-bigframes
-description: "Use this guide to help you set up dbt with BigQuery Dataframes (BigFrames)."
-sidebar_label: "BigQuery Dataframes and dbt python"
+description: "Use this guide to help you set up dbt with BigQuery DataFrames (BigFrames)."
+sidebar_label: "BigQuery DataFrames and dbt python"
 # time_to_complete: '30 minutes' comment out until test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['BigQuery', 'Google', 'GCP', 'BigFrames','Quickstart']
-keywords: ['BigQuery','dbt', 'Google']
+keywords: ['BigQuery','dbt platform', 'Google']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this guide, you'll learn how to set up dbt so you can use it with BigQuery Dataframes (BigFrames):
+In this guide, you'll learn how to set up dbt so you can use it with BigQuery DataFrames (BigFrames):
 * Build scalable data transformation pipelines using dbt and Google Cloud, with SQL and Python.
 * Leverage BigFrames from dbt for scalable BigQuery SQL.
 
@@ -24,7 +23,7 @@ In this guide, you'll learn how to set up dbt so you can use it with BigQuery Da
 In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
 
 
-BigQuery Dataframes is an open source python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the python client side code.
+BigQuery DataFrames is an open source Python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the Python client side code.
 
 
 ### Prerequisites
@@ -113,8 +112,8 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
 ## Create, configure, and execute your Python models
 
-1. In your dbt project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
-2. In the file, copy this sql into it. 
+1. In your dbt project, create a SQL model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
+2. In the file, copy this SQL into it. 
 
    ```sql
       select 

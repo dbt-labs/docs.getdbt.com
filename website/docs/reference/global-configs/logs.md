@@ -4,7 +4,7 @@ id: "logs"
 sidebar: "logs"
 ---
 
-### Log Formatting
+### Log formatting
 
 dbt outputs logs to two different locations: CLI console and the log file.
 
@@ -69,7 +69,7 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 - Setting the `--log-level` will configure console and file logs. 
 
   ```text
-  dbt --log-level debug run
+  dbt run --log-level debug
   ```
 
 - Setting the `LOG_LEVEL` to `none` will disable information from being sent to either the console or file logs. 
@@ -81,7 +81,7 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 - To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
   ```text
-  dbt --log-level-file error run
+  dbt run --log-level-file error
   ```
 
 - To only disable writing to the logs file but keep console logs, set `LOG_LEVEL_FILE` config to none.
@@ -115,7 +115,7 @@ Just like other global configs, it is possible to override these values for your
 
 ### Suppress non-error logs in output
 
-By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the [`print()`](/reference/dbt-jinja-functions/print) macro.  For example, you might suppress all but error logs to more easily find and debug a jinja error.
+By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the [`print()`](/reference/dbt-jinja-functions/print) macro.  For example, you might suppress all but error logs to more easily find and debug a Jinja error.
 
 <File name='profiles.yml'>
 
@@ -140,7 +140,7 @@ In [dbt version 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-
 
 You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
 
-- `dbt --log-level warn list` (recommended; equivalent to previous default)
+- `dbt list --log-level warn` (recommended; equivalent to previous default)
 - `dbt --quiet list` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
 
 

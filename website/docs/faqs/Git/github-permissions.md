@@ -1,10 +1,10 @@
 ---
-title: "I'm seeing a 'GitHub and dbt Cloud latest permissions' error"
-description: "GitHub and dbt Cloud permissions error"
-sidebar_label: "GitHub and dbt Cloud permissions error"
+title: "I'm seeing a 'GitHub and dbt latest permissions' error"
+description: "GitHub and dbt permissions error"
+sidebar_label: "GitHub and dbt permissions error"
 ---
 
-If you see the error `This account needs to accept the latest permissions for the dbt Cloud GitHub App` in dbt Cloud &mdash; this usually occurs when the permissions for the dbt Cloud GitHub App are out of date.
+If you see the error `This account needs to accept the latest permissions for the dbt GitHub App` in <Constant name="cloud" /> &mdash; this usually occurs when the permissions for the <Constant name="cloud" /> GitHub App are out-of-date.
 
 To solve this issue, you'll need to update the permissions for the <Constant name="cloud" /> GitHub App in your GitHub account. This FAQ shares a couple of ways you can do it.
 
@@ -22,7 +22,7 @@ A GitHub organization admin will need to update the permissions in GitHub for th
 
 3. Click on **Review request** and then click on the **Accept new permissions** button on the next page.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-review-request.jpg" width="80%" title="Grant access to the dbt Cloud app by accepting the new permissions." />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-review-request.jpg" width="80%" title="Grant access to the dbt app by accepting the new permissions." />
 
 For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
 
@@ -40,7 +40,7 @@ Disconnect the GitHub and <Constant name="cloud" /> integration in <Constant nam
 6. Return to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
 7. Configure your repository and click **Save**
 
-<Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Cloud Account Settings pages."/>
+<Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Account Settings pages."/>
 
 ## Support
 If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@getdbt.com) team and we'll be happy to help!

@@ -7,7 +7,7 @@ hoverSnippet: Learn how to clone incremental models for CI jobs.
 ---
 
 Before you begin, you must be aware of a few conditions:
-- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in dbt Cloud
+- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in <Constant name="cloud" />.
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 

@@ -1,7 +1,7 @@
 ---
 title: "Connect Redshift, PostgreSQL, and AlloyDB"
 id: connect-redshift-postgresql-alloydb
-description: "Setup instructions for connecting Redshift, PostgreSQL, and AlloyDBnpm to dbt Cloud"
+description: "Setup instructions for connecting Redshift, PostgreSQL, and AlloyDBnpm to dbt"
 sidebar_label: "Connect Redshift, PostgreSQL, and AlloyDB"
 ---
 
@@ -101,11 +101,11 @@ Once the connection is saved, a public key will be generated and displayed for t
   <summary>What is a Bastion server?</summary>
   <div>
     <div>
-      A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. 
+      A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows <Constant name="cloud" /> to open an SSH connection. 
       
       <br></br>
     
-      dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
+      <Constant name="cloud" /> only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
     
       Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
     </div>
@@ -150,13 +150,13 @@ When setting up a database connection using an SSH tunnel, you need the followin
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
 - The database itself (such as a Redshift cluster).
 
-dbt Cloud uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
+<Constant name="cloud" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
 
 Tunnel failures usually happen because:
 
 - The SSH daemon times out if it's idle for too long.
 - The load balancer cuts off the connection if it's idle.
-- dbt Cloud tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
+- <Constant name="cloud" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
 
 Bastion hosts might have additional SSH settings to disconnect inactive clients after several checks without a response. By default, it checks three times.
 

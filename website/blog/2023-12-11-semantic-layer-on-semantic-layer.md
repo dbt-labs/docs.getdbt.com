@@ -40,7 +40,7 @@ Let’s walk through the DAG from left to right: First, we have raw tables from 
 
 ## [How we build semantic models and metrics](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
 
-What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
+What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/explore/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
 
 <Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-metrics-dag.png" width="80%" title="Semantic Layer DAG in dbt Explorer" />
 
@@ -68,7 +68,7 @@ metrics:
       measure: queries
 ```
 
-Having our metrics in the semantic layer is powerful in a few ways. Firstly, metric definitions and the generated SQL are centralized, and live in our dbt project, instead of being scattered across BI tools or sql clients. Secondly, the types of queries I can run are dynamic and flexible. Traditionally, I would materialize a cube or rollup table which needs to contain all the different dimensional slices my users might be curious about. Now, users can join tables and add dimensionality to their metrics queries on the fly at query time, saving our data team cycles of updating and adding new fields to rollup tables. Thirdly, we can expose these metrics to a variety of downstream BI tools so stakeholders in product, finance, or GTM can understand product performance regardless of their technical skills. 
+Having our metrics in the semantic layer is powerful in a few ways. Firstly, metric definitions and the generated SQL are centralized, and live in our dbt project, instead of being scattered across BI tools or SQL clients. Secondly, the types of queries I can run are dynamic and flexible. Traditionally, I would materialize a cube or rollup table which needs to contain all the different dimensional slices my users might be curious about. Now, users can join tables and add dimensionality to their metrics queries on the fly at query time, saving our data team cycles of updating and adding new fields to rollup tables. Thirdly, we can expose these metrics to a variety of downstream BI tools so stakeholders in product, finance, or GTM can understand product performance regardless of their technical skills. 
 
 Now that we’ve done the pipeline work to set up our metrics for the semantic layer launch we’re ready to analyze how the launch went!
 

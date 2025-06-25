@@ -11,14 +11,14 @@ You can view documentation in two complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**dbt Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="cloud" /> Developer plans |
-| [**<Constant name="explorer" />**](/docs/collaborate/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/collaborate/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Team or Enterprise plans |
+| [**<Constant name="explorer" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="cloud" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="cloud" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
 The following sections describe how to navigate your documentation in <Constant name="explorer" /> and dbt Docs.
 
-### dbt Explorer <Lifecycle status="self_service,managed" />
+### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
 
-[<Constant name="explorer" />](/docs/collaborate/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
+[<Constant name="explorer" />](/docs/explore/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
 To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
 
 <DocCarousel slidesPerView={1}>
@@ -39,7 +39,7 @@ To access <Constant name="explorer" />, navigate to the **Explore** option in th
 - Model query history to track consumption queries on your models to gain deeper insights into data usage. 
 - Downstream exposures to automatically expose relevant data models from tools like Tableau to enhance visibility.
 
-For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="explorer" />](/docs/collaborate/explore-projects).
+For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="explorer" />](/docs/explore/explore-projects).
 
 ### dbt Docs
 
@@ -67,12 +67,11 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 :::
 
-### dbt Explorer <Lifecycle status="self_service,managed" />
+### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
 
+<Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 
-<Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/collaborate/explore-projects#generate-metadata). 
-
-To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs).
+To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="cloud" />](/docs/explore/build-and-view-your-docs).
 
 ### dbt Docs
 dbt Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
@@ -80,6 +79,6 @@ dbt Docs was built to make it easy to host on the web. The site is "static," mea
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
 * Use your own web server like Apache/Nginx
-* If you're on a <Constant name="cloud" /> Developer plan, see [Build and view your docs with <Constant name="cloud" />](/docs/collaborate/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
+* If you're on a <Constant name="cloud" /> Developer plan, see [Build and view your docs with <Constant name="cloud" />](/docs/explore/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
 
 Interested in using <Constant name="explorer" /> for the complete dbt documentation experience, sign up for a free [<Constant name="cloud" /> trial](https://www.getdbt.com/signup) or [contact us](https://www.getdbt.com/contact). 

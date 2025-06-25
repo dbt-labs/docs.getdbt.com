@@ -80,55 +80,7 @@ models:
 
 Supported dbt-adapters use these fields when populated, to render out the foreign key constraint instead of `expression`.
 
-For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support).
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment:
-
-`expression: "{{ target.schema }}.customers(customer_id)"` 
-
-Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About <Constant name="core" /> versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-
-<File name='models/schema.yml'>
-
-```yml
-models:
-  - name: <model_name>
-    
-    # required
-    config:
-      contract: {enforced: true}
-    
-    # model-level constraints
-    constraints:
-      - type: primary_key
-        columns: [first_column, second_column, ...]
-      - type: foreign_key # multi_column
-        columns: [first_column, second_column, ...]
-        expression: "{{ target.schema }}.other_model_name (other_model_first_column, other_model_second_column, ...)"
-      - type: check
-        columns: [first_column, second_column, ...]
-        expression: "first_column != second_column"
-        name: human_friendly_name
-      - type: ...
-    
-    columns:
-      - name: first_column
-        data_type: string
-        
-        # column-level constraints
-        constraints:
-          - type: not_null
-          - type: unique
-          - type: foreign_key
-            expression: "{{ target.schema }}.other_model_name (other_model_column)"
-          - type: ...
-```
-
-</File>
+For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/mesh/govern/model-contracts#platform-constraint-support).
 
 </VersionBlock>
 
@@ -377,7 +329,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support)
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/mesh/govern/model-contracts#platform-constraint-support)
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 

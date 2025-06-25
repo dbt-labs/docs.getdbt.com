@@ -10,7 +10,7 @@ function Hero({ heading, subheading, showGraphic = false, customStyles = {}, cla
       <div className={`container`}>
         <div className="row justify-content-center">
           <div className={`col col--7 ${colClassNames ? colClassNames : ''}`}>
-            <h1>{heading}</h1>
+            <h1 className='heading-1'>{heading}</h1>
             <p>{subheading}</p>
             {children}
             {callToActionsTitle && <span className={styles.callToActionsTitle}>{callToActionsTitle}</span>}

@@ -9,7 +9,15 @@ pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
-The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
+# dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+
+<IntroText>
+
+The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handling data joins.
+
+</IntroText>
+
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications.
 
 Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. To ensure secure access control, the <Constant name="semantic_layer" /> implements robust [access permissions](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) mechanisms.
 
@@ -27,7 +35,7 @@ import Features from '/snippets/_sl-plan-info.md'
 
 <Features
 product="dbt Semantic Layer"
-plan="dbt Cloud Team or Enterprise"
+plan="dbt Starter or Enterprise-tier"
 />
 
 This page points to various resources available to help you understand, configure, deploy, and integrate the <Constant name="semantic_layer" />. The following sections contain links to specific pages that explain each aspect in detail. Use these links to navigate directly to the information you need, whether you're setting up the <Constant name="semantic_layer" /> for the first time, deploying metrics, or integrating with downstream tools.

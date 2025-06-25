@@ -25,7 +25,7 @@ Below you’ll find a sampling of the ways to get involved. There are a lot of o
 
 <Card
     title="Coding contributions"
-    body="The dbt Community supports a wide variety of open source projects, and OSS software is at the heart of everything we do. Learn how to get involved with projects in the dbt ecosystem."
+    body="The dbt Community supports a wide variety of open source and source-available projects, and this software is at the heart of everything we do. Learn how to get involved with projects in the dbt ecosystem."
     link="community/contributing/contributing-coding"
     icon="folder"
 />

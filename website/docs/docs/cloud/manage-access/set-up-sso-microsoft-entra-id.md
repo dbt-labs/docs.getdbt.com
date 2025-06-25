@@ -1,17 +1,17 @@
 ---
 title: "Set up SSO with Microsoft Entra ID (formerly Azure AD)"
-description: "Learn how dbt Cloud administrators can use Microsoft Entra ID to control access in a dbt Cloud account."
+description: "Learn how dbt administrators can use Microsoft Entra ID to control access in a dbt account."
 id: "set-up-sso-microsoft-entra-id"
 sidebar_label: "Set up SSO with Microsoft Entra ID"
 ---
+
+# Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
 
 import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-<Constant name="cloud" /> Enterprise supports single-sign on via Microsoft Entra ID (formerly Azure AD).
-You will need permissions to create and manage a new Entra ID application.
-Currently supported features include:
+<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). You will need permissions to create and manage a new Entra ID application. Currently supported features include:
 
 * IdP-initiated SSO
 * SP-initiated SSO
@@ -59,7 +59,7 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
-### Azure &lt;-&gt; dbt Cloud User and Group mapping
+### Azure &lt;-&gt; dbt User and Group mapping
 
 :::important
 
@@ -99,7 +99,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | Microsoft Graph | Delegated | `User.Read` |
 
 :::info Why is `Directory.AccessAsUser.All` permission required?
-`Directory.Accessasuser.all` is required is because it lets dbt Cloud see what groups the user belongs to. dbt Cloud doesn't use the permission for anything else. This setup avoids asking users for extra consent when they log in.
+`Directory.Accessasuser.all` is required is because it lets <Constant name="cloud" /> see what groups the user belongs to. <Constant name="cloud" /> doesn't use the permission for anything else. This setup avoids asking users for extra consent when they log in.
 :::
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
@@ -125,7 +125,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe" />
 
-## Configuring dbt Cloud
+## Configuring dbt
 
 To complete setup, follow the steps below in the <Constant name="cloud" /> application.
 
@@ -139,22 +139,30 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 | ----- | ----- |
 | **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant |
 | **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
-| **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
+| **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/manage-access/sso-overview#auth0-uris) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into <Constant name="cloud" /> by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/manage-access/sso-overview#auth0-uris) for your region and plan. Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company. |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
 1.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
 
 <Snippet path="login_url_note" />
 
+### Additional configuration options
+
+The **Single sign-on** section also contains additional configuration options which are located after the credentials fields.
+
+- **Include all groups:** Retrieve all groups to which a user belongs from your identity provider. If a user is a member of nested groups, it will also include the parent groups. When this option is disabled, only groups where the user has direct membership will be supplied.  This option is enabled by default.
+
+- **Maximum number of groups to retrieve:** Provides a configurable limit to the number of groups to retrieve for users.  By default, this is set to 250 groups, but this number can be increased if users' group memberships exceed that amount.
+
 ## Setting up RBAC
 Now you have completed setting up SSO with Entra ID, the next steps will be to set up
 [RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
 
-## Troubleshooting Tips
+## Troubleshooting tips
 
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 

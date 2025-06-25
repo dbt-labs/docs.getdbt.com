@@ -1,8 +1,8 @@
 ---
-title: "dbt Cloud environments"
+title: "dbt environments"
 id: "dbt-cloud-environments"
-description: "Learn about dbt Cloud's development environment to execute your project in the IDE"
-pagination_next: null
+description: "Learn about dbt's development environment to execute your project in the IDE"
+pagination_next: "docs/cloud/migration"
 ---
 
 An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
@@ -17,7 +17,7 @@ Each <Constant name="cloud" /> project can have only one [development environmen
 
 Use environments to customize settings for different stages of your project and streamline the execution process by using software engineering principles. 
 
-<Lightbox src="/img/dbt-env.png" width="90%" title="dbt Cloud environment hierarchy showing projects, environments, connections, and orchestration jobs." />
+<Lightbox src="/img/dbt-env.png" width="90%" title="dbt environment hierarchy showing projects, environments, connections, and orchestration jobs." />
 
 The following sections detail the different types of environments and how to intuitively configure your development environment in <Constant name="cloud" />. 
 

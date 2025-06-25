@@ -1,7 +1,7 @@
 ---
 title: "Deployment environments"
 id: "deploy-environments"
-description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
+description: "Learn about dbt's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
 Deployment environments in <Constant name="cloud" /> are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
@@ -82,7 +82,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 **Faster development enabled by deferral:** If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
-Finally, the Staging environment has its own view in [<Constant name="explorer" />](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
+Finally, the Staging environment has its own view in [<Constant name="explorer" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 

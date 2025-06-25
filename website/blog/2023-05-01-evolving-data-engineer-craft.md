@@ -144,7 +144,7 @@ models:
 select * from {{ ref('dim_customers', v=2) }}
 ```
 
-[**Model Access**](https://docs.getdbt.com/docs/collaborate/govern/model-access)
+[**Model Access**](https://docs.getdbt.com/docs/mesh/govern/model-access)
 
 - **Problems you’re living through**: I split out my dbt project subdirectories in sales, marketing, and finance, and have a large team referencing dbt models across those folders everyday. However, I notice a lot of the references use staging tables that are incomplete and shouldn’t be referenced. I don’t have a good way to prevent inappropriate references.
 - **What it is**: You can now define public, private, and protected models within dbt project subdirectories and models so your teammates only touch what they’re supposed to!

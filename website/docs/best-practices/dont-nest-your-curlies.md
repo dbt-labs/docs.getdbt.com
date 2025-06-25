@@ -19,7 +19,7 @@ id: "dont-nest-your-curlies"
 
 ### Jinja
 
-When writing jinja code in a dbt project, it may be tempting to nest expressions inside of each other. Take this example:
+When writing Jinja code in a dbt project, it may be tempting to nest expressions inside of each other. Take this example:
 
 ```
   {{ dbt_utils.date_spine(
@@ -29,7 +29,7 @@ When writing jinja code in a dbt project, it may be tempting to nest expressions
   }}
 ```
 
-To nest a jinja expression inside of another jinja expression, simply place the desired code (without curly brackets) directly into the expression.
+To nest a Jinja expression inside of another Jinja expression, simply place the desired code (without curly brackets) directly into the expression.
 
 **Correct example**
 Here, the return value of the `var()` context method is supplied as the `start_date` argument to the `date_spine` macro. Great!

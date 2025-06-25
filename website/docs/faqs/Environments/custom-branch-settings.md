@@ -1,5 +1,5 @@
 ---
-title: How do I use the 'Custom Branch' settings in a dbt Cloud Environment?
+title: How do I use the 'Custom Branch' settings in a dbt Environment?
 description: "Use custom code from your repository"
 sidebar_label: 'Custom branch settings'
 id: custom-branch-settings

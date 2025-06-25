@@ -1,6 +1,6 @@
 ## View downstream exposures
 
-After setting up downstream exposures in dbt Cloud, you can view them in [dbt Explorer](/docs/collaborate/explore-projects) for a richer experience.
+After setting up downstream exposures in <Constant name="cloud" />, you can view them in [dbt Explorer](/docs/explore/explore-projects) for a richer experience.
 
 Navigate to dbt Explorer by clicking on the **Explore** link in the navigation. From the **Overview** page, you can view downstream exposures from a couple of places:
 
@@ -12,7 +12,7 @@ Navigate to dbt Explorer by clicking on the **Explore** link in the navigation. 
 ### Exposures menu
 View downstream exposures from the **Exposures** menu item under **Resources**. This menu provides a comprehensive list of all the exposures so you can quickly access and manage them. The menu displays the following information:
    - **Name**: The name of the exposure.
-   - **Health**: The [data health signal](/docs/collaborate/data-health-signals) of the exposure.
+   - **Health**: The [data health signal](/docs/explore/data-health-signals) of the exposure.
    - **Type**: The type of exposure, such as `dashboard` or `notebook`.
    - **Owner**: The owner of the exposure.
    - **Owner email**: The email address of the owner of the exposure.

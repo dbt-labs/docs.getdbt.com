@@ -168,7 +168,7 @@ Constraint support and enforcement in dbt-teradata:
 | unique	      | ✅ Supported	 | ✅ Enforced |
 | check	          | ✅ Supported	 | ✅ Enforced |
 
-Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more info.
+Refer to [Model contracts](/docs/mesh/govern/model-contracts) for more info.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
@@ -241,12 +241,10 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
   `last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
 
-<VersionBlock firstVersion="1.8">
 
 dbt-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about dbt unit tests [here](/docs/build/unit-tests).
 
 
-</VersionBlock>
 
 ## Limitations
 

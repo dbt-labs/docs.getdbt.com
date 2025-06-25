@@ -61,7 +61,7 @@ For the Database view, pray your team has been declaring a logical schema bucket
 
 #### The full dropdown list in their data warehouse.
 
-If they have access to Worksheets, SQL runner, or another way to write ad hoc sql queries, then they will have access to the data models as present in your database, ie. `database / schema / object`, but with less documentation attached, and more proclivity towards querying tables to check out their contents, which costs time and money.
+If they have access to Worksheets, SQL runner, or another way to write ad hoc SQL queries, then they will have access to the data models as present in your database, ie. `database / schema / object`, but with less documentation attached, and more proclivity towards querying tables to check out their contents, which costs time and money.
 
 ![A screenshot of the SQL Runner menu within Looker showcasing the dropdown list of all data models present in the database.](/img/blog/2022-05-17-stakeholder-friendly-model-names/data-warehouse-dropdown.png)
 

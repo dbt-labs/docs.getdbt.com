@@ -2,13 +2,13 @@
 title: "About fromjson context method"
 sidebar_label: "fromjson"
 id: "fromjson"
-description: "Deserialize a json string into python with `fromjson` context method."
+description: "Deserialize a JSON string into python with `fromjson` context method."
 ---
 
-The `fromjson` context method can be used to deserialize a json string into a Python object primitive, eg. a `dict` or `list`.
+The `fromjson` context method can be used to deserialize a JSON string into a Python object primitive, eg. a `dict` or `list`.
 
 __Args__:
- * `string`: The json string to deserialize (required)
+ * `string`: The JSON string to deserialize (required)
  * `default`: A default value to return if the `string` argument cannot be deserialized (optional)
 
 ### Usage:

@@ -1,7 +1,7 @@
 ---
 title: "Connect Amazon Athena"
 id: connect-amazon-athena
-description: "Configure the Amazon Athena data platform connection in dbt Cloud."
+description: "Configure the Amazon Athena data platform connection in dbt."
 sidebar_label: "Connect Amazon Athena"
 ---
 

@@ -1,16 +1,15 @@
 ---
-title: "Quickstart for the dbt Cloud Semantic Layer and Snowflake"
+title: "Quickstart for the dbt Semantic Layer and Snowflake"
 id: sl-snowflake-qs
-description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart with the dbt Semantic Layer and Snowflake"
 meta:
   api_name: dbt Semantic Layer APIs
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic Layer', 'Snowflake', 'dbt Cloud','Quickstart']
-keywords: ['dbt Semantic Layer','Metrics','dbt Cloud', 'Snowflake', 'Google Sheets']
+tags: ['Semantic Layer', 'Snowflake', 'dbt platform', 'Quickstart']
+keywords: ['dbt Semantic Layer','Metrics','dbt platform', 'Snowflake', 'Google Sheets']
 level: 'Intermediate'
-recently_updated: true
 ---
 
 <!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) -->
@@ -36,19 +35,20 @@ If you're on different data platforms, you can also follow this guide and will n
 
 ### Prerequisites
 
-- You need a [<Constant name="cloud" />](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. 
+- You need a [<Constant name="cloud" />](https://www.getdbt.com/signup/) Trial, Starter, or Enterprise-tier account for all deployments. 
 - Have the correct [<Constant name="cloud" /> license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
   <DetailsToggle alt_header="More info on license and permissions">  
   
-  - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
-  - Team &mdash; "Owner" access with a Developer license.
-  - Trial &mdash; Automatic "Owner" access under a Team plan trial.
+  - Enterprise-tier &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
+  - Starter &mdash; "Owner" access with a Developer license.
+  - Trial &mdash; Automatic "Owner" access under a Starter plan trial.
   
   </DetailsToggle>
 
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
+- Complete the [Quickstart for <Constant name="cloud" /> and Snowflake](snowflake-qs.md) guide. 
 - Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 
@@ -67,7 +67,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 - [Step 2: Create a new GCP project](https://docs.getdbt.com/guides/bigquery?step=2)
 - [Step 3: Create BigQuery dataset](https://docs.getdbt.com/guides/bigquery?step=3)
 - [Step 4: Generate BigQuery credentials](https://docs.getdbt.com/guides/bigquery?step=4)
-- [Step 5: Connect dbt Cloud to BigQuery](https://docs.getdbt.com/guides/bigquery?step=5)
+- [Step 5: Connect <Constant name="cloud" /> to BigQuery](https://docs.getdbt.com/guides/bigquery?step=5)
 
 </TabItem>
 
@@ -119,127 +119,15 @@ Open a new tab and follow these quick steps for account setup and data loading i
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
 3. Select **SQL Worksheet** to create a new worksheet.
 
-### Set up Snowflake environment
+### Set up and load data into Snowflake
 
-The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
+import LoadData from '/snippets/_load-data.md';
 
-Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for `stripe` data).
-
-1. Run the following SQL commands one by one by typing them into the Editor of your new Snowflake SQL worksheet to set up your environment.
-
-2. Click **Run** in the upper right corner of the UI for each one:
-
-```sql
--- Create a virtual warehouse named 'transforming'
-create warehouse transforming;
-
--- Create two databases: one for raw data and another for analytics
-create database raw;
-create database analytics;
-
--- Within the 'raw' database, create two schemas: 'jaffle_shop' and 'stripe'
-create schema raw.jaffle_shop;
-create schema raw.stripe;
-```
-
-### Load data into Snowflake
-Now that your environment is set up, you can start loading data into it. You will be working within the raw database, using the `jaffle_shop` and stripe schemas to organize your tables.
-
-1. Create customer table. First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
-
-  ```sql
-  create table raw.jaffle_shop.customers
-  ( id integer,
-    first_name varchar,
-    last_name varchar
-  );
-  ```
-
-  You should see a ‘Table `CUSTOMERS` successfully created.’ message.
-
-2. Load data. After creating the table, delete all contents in the Editor. Run this command to load data from the S3 bucket into the customer table:
-
-  ```sql
-  copy into raw.jaffle_shop.customers (id, first_name, last_name)
-  from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
-  file_format = (
-      type = 'CSV'
-      field_delimiter = ','
-      skip_header = 1
-      );
-  ```
-
-  You should see a confirmation message after running the command.
-
-3. Create `orders` table. Delete all contents in the Editor. Run the following command to create…
-
-  ```sql
-  create table raw.jaffle_shop.orders
-  ( id integer,
-    user_id integer,
-    order_date date,
-    status varchar,
-    _etl_loaded_at timestamp default current_timestamp
-  );
-  ```
-
-  You should see a confirmation message after running the command.
-
-4. Load data. Delete all contents in the Editor, then run this command to load data into the orders table:
-
-  ```sql
-  copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
-  from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
-  file_format = (
-      type = 'CSV'
-      field_delimiter = ','
-      skip_header = 1
-      );
-  ```
-
-  You should see a confirmation message after running the command.
-
-5. Create `payment` table. Delete all contents in the Editor. Run the following command to create the payment table:
-
-  ```sql
-  create table raw.stripe.payment
-  ( id integer,
-    orderid integer,
-    paymentmethod varchar,
-    status varchar,
-    amount integer,
-    created date,
-    _batched_at timestamp default current_timestamp
-  );
-  ```
-
-  You should see a confirmation message after running the command.
-
-6. Load data. Delete all contents in the Editor. Run the following command to load data into the payment table:
-
-  ```sql
-  copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
-  from 's3://dbt-tutorial-public/stripe_payments.csv'
-  file_format = (
-      type = 'CSV'
-      field_delimiter = ','
-      skip_header = 1
-      );
-  ```
-
-  You should see a confirmation message after running the command.
-
-7. Verify data. Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one, like the following confirmation image.
-
-  ```sql
-  select * from raw.jaffle_shop.customers;
-  select * from raw.jaffle_shop.orders;
-  select * from raw.stripe.payment;
-  ```
+<LoadData/>
 
   <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-snowflake-confirm.jpg" width="90%" title="The image displays Snowflake's confirmation output when data loaded correctly in the Editor." />
 
-## Connect dbt Cloud to Snowflake
+## Connect dbt to Snowflake
 
 There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
 
@@ -270,15 +158,15 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="cloud" /> account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt - Account Info" />
 
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into <Constant name="cloud" /> automatically.
 
 6. Click your account name in the left side menu and select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select **Edit** and update the **Database** field to `analytics` and the **Warehouse** field to `transforming`.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt - Snowflake Project Overview" />
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt Cloud - Update Database and Warehouse" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
 
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">
@@ -288,7 +176,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt - Choose Snowflake Connection" />
 
 4. Enter your **Settings** for Snowflake with: 
     * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
@@ -299,7 +187,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt - Snowflake Account Settings" />
 
 5. Enter your **Development Credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
@@ -308,7 +196,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="cloud" /> will make to build models concurrently.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake Development Credentials" />
 
 6. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your Snowflake account.
 7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
@@ -316,11 +204,11 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </TabItem>
 </Tabs>
 
-## Set up dbt Cloud project
+## Set up dbt project
 
 In this section, you will set up a <Constant name="cloud" /> managed repository and initialize your dbt project to start developing.
 
-### Set up a dbt Cloud managed repository 
+### Set up a dbt managed repository 
 If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/cloud/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
@@ -1105,14 +993,14 @@ This section will guide you on how to use the Sigma integration to query your me
 10. Click on **Table**, then click on **SQL**. Select Snowflake `PC_SIGMA_WH` as your data connection.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-make-table.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
-11. Query away! Try this one, for example:
+11. Go ahead and query a working metric in your project! For example, let's say you had a metric that measures various order-related values. Here’s how you would query it:
 
 ```sql
 select * from
   {{ semantic_layer.query (
-    metrics = ['order_total', 'order_count', large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
+    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
     group_by = 
-    [Dimension('metric_time').grain('day) ]
+    [Dimension('metric_time').grain('day') ]
 ) }}
 ```
 

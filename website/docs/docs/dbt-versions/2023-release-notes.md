@@ -128,30 +128,30 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
   </Expandable>
 
-- <Expandable alt_header='dbt Cloud CLI'>
+- <Expandable alt_header='dbt CLI'>
 
-    We are excited to announce the dbt Cloud CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
+    We are excited to announce the dbt CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
 
     We will continue to invest in the dbt Cloud IDE as the easiest and most accessible way to get started using dbt, especially for data analysts who have never developed software using the command line before. We will keep improving the speed, stability, and feature richness of the IDE, as we have been [all year long](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/).
 
     We also know that many people developing in dbt have a preference for local development, where they can use their favorite terminal, text editor, keybindings, color scheme, and so on. This includes people with data engineering backgrounds, as well as those analytics engineers who started writing code in the dbt Cloud IDE and have expanded their skills. 
 
-    The new dbt Cloud CLI offers the best of both worlds, including: 
+    The new dbt CLI offers the best of both worlds, including: 
 
     - The power of developing against the dbt Cloud platform 
     - The flexibility of your own local setup
 
     Run whichever community-developed plugins, pre-commit hooks, or other arbitrary scripts you like.
 
-    Some of the unique capabilities of this dbt Cloud CLI include:
+    Some of the unique capabilities of this dbt CLI include:
 
     - Automatic deferral of build artifacts to your Cloud project's production environment
     - Secure credential storage in the dbt Cloud platform
-    - Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies))
+    - Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
     - Development workflow for dbt Semantic Layer
     - Speedier, lower cost builds
 
-    Refer to [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn more.
+    Refer to [dbt CLI](/docs/cloud/cloud-cli-installation) to learn more.
 
   </Expandable>
 
@@ -167,7 +167,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt deps auto install'>
 
-    The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
+    The dbt Cloud IDE and dbt CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
 
     This improved workflow is available to all multi-tenant dbt Cloud users (Single-tenant support coming next week) and applies to dbt versions.
 
@@ -200,7 +200,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## ☁ Cloud projects
     - Continuous integration jobs are now generally available and no longer in beta!
     - Added [Postgres PrivateLink set up page](/docs/cloud/secure/postgres-privatelink)
-    - Published beta docs for [dbt Explorer](/docs/collaborate/explore-projects).
+    - Published beta docs for [dbt Explorer](/docs/explore/explore-projects).
     - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-cloud-apis/sl-graphql) and updated the [integration docs](/docs/cloud-integrations/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
     - Added an [FAQ](/faqs/Git/git-migration) describing how to migrate from one git provider to another in dbt Cloud.
     - Clarified an example and added a [troubleshooting section](/docs/cloud/connect-data-platform/connect-snowflake#troubleshooting) to Snowflake connection docs to address common errors and provide solutions.
@@ -724,7 +724,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🔎 Discoverability
 
     - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml) by adding a callout on several key pages.
-    - Fleshed out the [model jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
+    - Fleshed out the [model Jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
     - Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
     ## Cloud projects
@@ -1008,7 +1008,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Reliability improvements – Improved error handling that previously put IDE in a bad state
     - Corrected the list of dropdown options for the Build button
     - Adjusted startup page duration
-    - Added code snippets for `unique` and `not_null` tests for yml files
+    - Added code snippets for `unique` and `not_null` tests for YAML files
     - Added code snippets for metrics based on environment dbt versions
     - Changed “commit and push” to “commit and sync” to better reflect the action
     - Improved error message when saving or renaming files to duplicate names

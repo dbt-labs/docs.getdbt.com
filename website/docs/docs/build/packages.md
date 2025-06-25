@@ -174,7 +174,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable. 
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
 
 
 <File name="packages.yml">
@@ -213,7 +213,7 @@ packages:
   
 ```
 
-If you are using multiple <Constant name="git" /> integrations, disambiguate by adding the provider key:
+If you are using multiple <Constant name="git" /> integrations or using the dbt Fusion engine, add the provider key:
 
 ```yaml
 packages:
@@ -222,7 +222,9 @@ packages:
 
 ```
 
-With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect. 
+With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect.
+
+Using `provider` with Fusion carries the expectation that you have a SSH key configured on your machine to use for git cloning.
 
 ### SSH key method (command line only)
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
@@ -254,7 +256,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info <Constant name="cloud" /> usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
 :::
 
 In GitHub:
@@ -377,7 +379,7 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 
 ### Pinning packages
 
-Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
+Running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
 
 - The `package-lock.yml` file contains a record of all packages installed.
 - If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 

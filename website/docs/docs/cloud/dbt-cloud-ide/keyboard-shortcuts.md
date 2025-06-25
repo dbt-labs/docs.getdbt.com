@@ -1,5 +1,5 @@
 ---
-title: "dbt Cloud IDE keyboard shortcuts"
+title: "Studio IDE keyboard shortcuts"
 description: "Learn about the keyboard shortcuts available in the Cloud IDE."
 sidebar_label: "Keyboard shortcuts"
 ---

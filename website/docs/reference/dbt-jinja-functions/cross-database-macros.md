@@ -711,7 +711,6 @@ array_to_string(
 **Availability**:
 dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
 
-<VersionBlock firstVersion="1.8">
 
 __Args__:
 
@@ -736,7 +735,6 @@ This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_c
     cast('2016-03-09' as date)
 ```
 
-</VersionBlock>
 
 ### cast_bool_to_text
 __Args__:
@@ -815,8 +813,6 @@ For databases that support it, this macro will return `NULL` when the cast fails
 **Availability**:
 dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
 
-<VersionBlock firstVersion="1.8">
-
 __Args__:
 
  * `year`: an integer
@@ -836,8 +832,6 @@ This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
 ```sql
 to_date('2023-10-04', 'YYYY-MM-DD')
 ```
-
-</VersionBlock>
 
 ### dateadd
 __Args__:

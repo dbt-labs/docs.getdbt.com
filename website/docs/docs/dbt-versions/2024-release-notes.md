@@ -42,7 +42,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## November 2024
 
-- **Enhancement**: Data health signals in <Constant name="explorer" /> are now available for Exposures, providing a quick view of data health while browsing resources. To view trust signal icons, go to <Constant name="explorer" /> and click **Exposures** under the **Resource** tab. Refer to [Data health signals for resources](/docs/collaborate/data-health-signals) for more info.
+- **Enhancement**: Data health signals in <Constant name="explorer" /> are now available for Exposures, providing a quick view of data health while browsing resources. To view trust signal icons, go to <Constant name="explorer" /> and click **Exposures** under the **Resource** tab. Refer to [Data health signals for resources](/docs/explore/data-health-signals) for more info.
 - **Bug**: Identified and fixed an error with <Constant name="semantic_layer" /> queries that take longer than 10 minutes to complete.
 - **Fix**: Job environment variable overrides in credentials are now respected for Exports. Previously, they were ignored.
 - **Behavior change**: If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
@@ -73,11 +73,11 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - [Linting with CI jobs](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting)
   - dbt Assist is now [dbt Copilot](https://docs.getdbt.com/docs/cloud/dbt-copilot)
   - Developer blog on [Snowflake Feature Store and dbt: A bridge between data pipelines and ML](https://docs.getdbt.com/blog/snowflake-feature-store)
-  - [Downstream exposures with Tableau](https://docs.getdbt.com/docs/collaborate/view-downstream-exposures)
+  - [Downstream exposures with Tableau](https://docs.getdbt.com/docs/explore/view-downstream-exposures)
   - Semantic Layer integration with [Excel desktop and M365](https://docs.getdbt.com/docs/cloud-integrations/semantic-layer/excel)
-  - [Data health tiles](https://docs.getdbt.com/docs/collaborate/data-tile)
+  - [Data health tiles](https://docs.getdbt.com/docs/explore/data-tile)
   - [Semantic Layer and Cloud IDE integration](https://docs.getdbt.com/docs/build/metricflow-commands#metricflow-commands)
-  - Query history in [Explorer](https://docs.getdbt.com/docs/collaborate/model-query-history#view-query-history-in-explorer)
+  - Query history in [Explorer](https://docs.getdbt.com/docs/explore/model-query-history#view-query-history-in-explorer)
   - Semantic Layer Metricflow improvements, including [improved granularity and custom calendar](https://docs.getdbt.com/docs/build/metricflow-time-spine#custom-calendar) 
   - [Python SDK](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-python) is now generally available 
 
@@ -92,7 +92,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Fix:** The UI now indicates when the description of a model is inherited from a catalog comment.
 - **Behavior change:** User API tokens have been deprecated. Update to [personal access tokens](/docs/dbt-cloud-apis/user-tokens) if you have any still in use.
 - **New**: The <Constant name="cloud_ide" /> supports signed commits for <Constant name="git" />, available for Enterprise plans. You can sign your <Constant name="git" /> commits when pushing them to the repository to prevent impersonation and enhance security. Supported <Constant name="git" /> providers are GitHub and GitLab. Refer to [<Constant name="git" /> commit signing](/docs/cloud/dbt-cloud-ide/git-commit-signing.md) for more information.
-- **New:** With <Constant name="mesh" />, you can now enable bidirectional dependencies across your projects. Previously, dbt enforced dependencies to only go in one direction. dbt checks for cycles across projects and raises errors if any are detected. For details, refer to [Cycle detection](/docs/collaborate/govern/project-dependencies#cycle-detection). There's also the [Intro to <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide to help you learn more best practices. 
+- **New:** With <Constant name="mesh" />, you can now enable bidirectional dependencies across your projects. Previously, dbt enforced dependencies to only go in one direction. dbt checks for cycles across projects and raises errors if any are detected. For details, refer to [Cycle detection](/docs/mesh/govern/project-dependencies#cycle-detection). There's also the [Intro to <Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide to help you learn more best practices. 
 - **New**: The [<Constant name="semantic_layer" /> Python software development kit](/docs/dbt-cloud-apis/sl-python) is now [generally available](/docs/dbt-versions/product-lifecycles). It provides users with easy access to the <Constant name="semantic_layer" /> with Python and enables developers to interact with the <Constant name="semantic_layer" /> APIs to query metrics/dimensions in downstream tools.
 - **Enhancement**: You can now add a description to a singular data test. Use the [`description` property](/reference/resource-properties/description) to document [singular data tests](/docs/build/data-tests#singular-data-tests). You can also use [docs block](/docs/build/documentation#using-docs-blocks) to capture your test description. The enhancement is available now in [the "Latest" release track in dbt Cloud](/docs/dbt-versions/cloud-release-tracks), and it will be included in dbt Core v1.9.
 - **New**: Introducing the [microbatch incremental model strategy](/docs/build/incremental-microbatch) (beta), available now in [dbt Cloud Latest](/docs/dbt-versions/cloud-release-tracks) and will soon be supported in dbt Core v1.9. The microbatch strategy allows for efficient, batch-based processing of large time-series datasets for improved performance and resiliency, especially when you're working with data that changes over time (like new records being added daily). To enable this feature in dbt Cloud, set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` in your project.
@@ -105,7 +105,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement**: In the "Latest" release track in dbt Cloud, snapshots defined in SQL files can now use `config` defined in `schema.yml` YAML files. This update resolves the previous limitation that required snapshot properties to be defined exclusively in `dbt_project.yml` and/or a `config()` block within the SQL file. This will also be released in dbt Core 1.9.
 - **New**: In the "Latest" release track in dbt Cloud, the `snapshot_meta_column_names` config allows for customizing the snapshot metadata columns. This feature allows an organization to align these automatically-generated column names with their conventions, and will be included in the upcoming dbt Core 1.9 release.
 - **Enhancement**: the "Latest" release track in dbt Cloud infers a model's `primary_key` based on configured data tests and/or constraints within `manifest.json`. The inferred `primary_key` is visible in dbt Explorer and utilized by the dbt Cloud [compare changes](/docs/deploy/run-visibility#compare-tab) feature. This will also be released in dbt Core 1.9. Read about the [order dbt infers columns can be used as primary key of a model](https://github.com/dbt-labs/dbt-core/blob/7940ad5c7858ff11ef100260a372f2f06a86e71f/core/dbt/contracts/graph/nodes.py#L534-L541). 
-- **New:** <Constant name="explorer" /> now includes trust signal icons, which is currently available as a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Trust signals offer a quick, at-a-glance view of data health when browsing your dbt models in <Constant name="explorer" />. These icons indicate whether a model is **Healthy**, **Caution**, **Degraded**, or **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run. Refer to [Data health signals](/docs/collaborate/data-health-signals) for more information. 
+- **New:** <Constant name="explorer" /> now includes trust signal icons, which is currently available as a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Trust signals offer a quick, at-a-glance view of data health when browsing your dbt models in <Constant name="explorer" />. These icons indicate whether a model is **Healthy**, **Caution**, **Degraded**, or **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run. Refer to [Data health signals](/docs/explore/data-health-signals) for more information. 
 - **New:** Downstream exposures are now available in Preview in <Constant name="cloud" />. Downstream exposures helps users understand how their models are used in downstream analytics tools to inform investments and reduce incidents. It imports and auto-generates exposures based on Tableau dashboards, with user-defined curation. To learn more, refer to [Downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau).
 
 
@@ -117,15 +117,15 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: Use the new recommended syntax for [defining `foreign_key` constraints](/reference/resource-properties/constraints) using `refs`, available in the "Latest" release track in dbt Cloud. This will soon be released in dbt Core v1.9. This new syntax will capture dependencies and works across different environments.
 - **Enhancement**: You can now run [Semantic Layer commands](/docs/build/metricflow-commands) commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The supported commands are `dbt sl list`, `dbt sl list metrics`, `dbt sl list dimension-values`, `dbt sl list saved-queries`, `dbt sl query`, `dbt sl list dimensions`, `dbt sl list entities`, and `dbt sl validate`. 
 - **New**: Microsoft Excel, a <Constant name="semantic_layer" /> integration, is now generally available. The integration allows you to connect to Microsoft Excel to query metrics and collaborate with your team. Available for [Excel Desktop](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationId=4132ecd1-425d-982d-efb4-de94ebc83f26) or [Excel Online](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationid=4132ecd1-425d-982d-efb4-de94ebc83f26&isWac=True). For more information, refer to [Microsoft Excel](/docs/cloud-integrations/semantic-layer/excel).
-- **New**: [Data health tile](/docs/collaborate/data-tile) is now generally available in <Constant name="explorer" />. Data health tiles provide a quick at-a-glance view of your data quality, highlighting potential issues in your data. You can embed these tiles in your dashboards to quickly identify and address data quality issues in your dbt project.
-- **New**: <Constant name="explorer" />'s Model query history feature is now in Preview for <Constant name="cloud" /> Enterprise customers. Model query history allows you to view the count of consumption queries for a model based on the data warehouse's query logs. This feature provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products. To learn more, refer to [Model query history](/docs/collaborate/model-query-history). 
+- **New**: [Data health tile](/docs/explore/data-tile) is now generally available in <Constant name="explorer" />. Data health tiles provide a quick at-a-glance view of your data quality, highlighting potential issues in your data. You can embed these tiles in your dashboards to quickly identify and address data quality issues in your dbt project.
+- **New**: <Constant name="explorer" />'s Model query history feature is now in Preview for <Constant name="cloud" /> Enterprise customers. Model query history allows you to view the count of consumption queries for a model based on the data warehouse's query logs. This feature provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products. To learn more, refer to [Model query history](/docs/explore/model-query-history). 
 - **Enhancement**: You can now use [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes) and [Environment Variables](/docs/build/environment-variables) when connecting to the <Constant name="semantic_layer" />. If you set a value directly in the <Constant name="semantic_layer" /> Credentials, it will have a higher priority than Extended Attributes. When using environment variables, the default value for the environment will be used.  If you're using exports, job environment variable overrides aren't supported yet, but they will be soon.
 - **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
 - **New:** The [Amazon Athena warehouse connection](/docs/cloud/connect-data-platform/connect-amazon-athena) is available as a public preview for <Constant name="cloud" /> accounts that have upgraded to [the "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
 
 ## August 2024
 
-- **Fix:** Fixed an issue in [<Constant name="explorer" />](/docs/collaborate/explore-projects) where navigating to a consumer project from a public node resulted in displaying a random public model rather than the original selection. 
+- **Fix:** Fixed an issue in [<Constant name="explorer" />](/docs/explore/explore-projects) where navigating to a consumer project from a public node resulted in displaying a random public model rather than the original selection. 
 - **New**: You can now configure metrics at granularities at finer time grains, such as hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
 - **Enhancement**: Microsoft Excel now supports [saved selections](/docs/cloud-integrations/semantic-layer/excel#using-saved-selections) and [saved queries](/docs/cloud-integrations/semantic-layer/excel#using-saved-queries). Use Saved selections to save your query selections within the Excel application. The application also clears stale data in [trailing rows](/docs/cloud-integrations/semantic-layer/excel#other-settings) by default. To return your results and keep any previously selected data intact, un-select the **Clear trailing rows** option. 
 - **Behavior change:** GitHub is no longer supported for OAuth login to <Constant name="cloud" />. Use a supported [SSO or OAuth provider](/docs/cloud/manage-access/sso-overview) to securely manage access to your <Constant name="cloud" /> account.
@@ -138,13 +138,13 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: The ability to lint your SQL files from the <Constant name="cloud" /> CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
 - **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
 
-- **Enhancement**: Introducing a revamped overview page for <Constant name="explorer" />, available in beta. It includes a new design and layout for the <Constant name="explorer" /> homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
+- **Enhancement**: Introducing a revamped overview page for <Constant name="explorer" />, available in beta. It includes a new design and layout for the <Constant name="explorer" /> homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/explore/explore-projects#overview-page).
 
 #### dbt Semantic Layer
 - **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) for more information.
 - **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
 - **New**: We now expose the `meta` field within the [config property](/reference/resource-configs/meta) for dbt Semantic Layer metrics in the [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview) under the `meta` field.
-- **New**: Added a new command in the dbt Cloud CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
+- **New**: Added a new command in the dbt CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
 - **Enhancement**: The <Constant name="semantic_layer" /> now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for <Constant name="cloud" /> Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
 - **Fix**: Addressed a bug where unicode query filters (such as Chinese characters) were not working correctly in the <Constant name="semantic_layer" /> Tableau integration.
 - **Fix**: Resolved a bug with parsing certain private keys for BigQuery when running an export.
@@ -223,11 +223,11 @@ The following features are new or enhanced as part of our [<Constant name="cloud
 
   To learn more about its features, check out:
   
-  - [Explore projects](/docs/collaborate/explore-projects)
-  - [Explore multiple projects](/docs/collaborate/explore-multiple-projects) 
-  - [Column-level lineage](/docs/collaborate/column-level-lineage) 
-  - [Model performance](/docs/collaborate/model-performance) 
-  - [Project recommendations](/docs/collaborate/project-recommendations) 
+  - [Explore projects](/docs/explore/explore-projects)
+  - [Explore multiple projects](/docs/explore/explore-multiple-projects) 
+  - [Column-level lineage](/docs/explore/column-level-lineage) 
+  - [Model performance](/docs/explore/model-performance) 
+  - [Project recommendations](/docs/explore/project-recommendations) 
 
   </Expandable>
 
@@ -286,7 +286,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
 ## March 2024
 
 - **New:** The <Constant name="semantic_layer" /> services now support using Privatelink for customers who have it enabled.
-- **New:** You can now develop against and test your <Constant name="semantic_layer" /> in the Cloud CLI if your developer credential uses SSO.
+- **New:** You can now develop against and test your <Constant name="semantic_layer" /> in the dbt CLI if your developer credential uses SSO.
 - **Enhancement:** You can select entities to Group By, Filter By, and Order By.
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
@@ -400,14 +400,14 @@ The following features are new or enhanced as part of our [<Constant name="cloud
   January saw some great new content:
 
   - New [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs) page
-  - Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/collaborate/column-level-lineage) feature
+  - Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/explore/column-level-lineage) feature
   - Developer blog posts:
     - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
     - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
     - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
   - The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
   - Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
-  - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
+  - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt CLI
 
   January also saw some refreshed content, either aligning with new product features or requests from the community:
 

@@ -29,7 +29,7 @@ BigQuery targets can be specified using one of four methods:
 1. [OAuth via `gcloud`](#oauth-via-gcloud)
 2. [OAuth token-based](#oauth-token-based)
 3. [service account file](#service-account-file)
-4. [service account json](#service-account-json)
+4. [service account JSON](#service-account-json)
 
 For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
@@ -158,7 +158,7 @@ my-bigquery-db:
       threads: 4 # Must be a value of 1 or greater
       [OPTIONAL_CONFIG](#optional-configurations): VALUE
 
-      # These fields come from the service account json keyfile
+      # These fields come from the service account JSON keyfile
       keyfile_json:
         type: xxx
         project_id: xxx
@@ -411,6 +411,28 @@ my-profile:
       quota_project: my-bq-quota-project
 ```
 
+### Running Python models on BigQuery DataFrames
+To run dbt Python models on GCP, dbt uses BigQuery DataFrames running directly with BigQuery compute, leveraging the scale and performance of BigQuery.
+
+```
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      compute_region: us-central1
+      dataset: my_dataset
+      gcs_bucket: dbt-python
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: abc-123
+      threads: 1
+      type: bigquery
+```
+
+
 ### Running Python models on Dataproc
 
 import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';
@@ -474,6 +496,16 @@ For a full list of possible configuration fields that can be passed in `dataproc
 BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
 - BigQuery Data Editor
 - BigQuery User
+
+Required roles and permissions for BigQuery DataFrames:
+- BigQuery Job User
+- BigQuery Read Session User
+- Notebook Runtime User
+- Code Creator
+- colabEnterpriseUser
+
+
+
 
 This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 

@@ -3,7 +3,7 @@ title: "Quickstart with dbt Mesh"
 id: "mesh-qs"
 level: 'Intermediate'
 icon: 'guides'
-tags: ['dbt Cloud','Quickstart']
+tags: ['dbt platform','Quickstart']
 hide_table_of_contents: true
 ---
 
@@ -38,7 +38,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 To leverage <Constant name="mesh" />, you need the following:
 
-- You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed" />
+- You must have a [<Constant name="cloud" /> Enterprise-tier account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed,managed_plus" />
 - You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="cloud" /> permissions to create new projects. 
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
@@ -59,7 +59,7 @@ In this section, you'll create two new, empty projects in <Constant name="cloud"
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
 
-<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt Cloud projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
+<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
 
 To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
 
@@ -75,7 +75,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="clou
      - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
      - For "Jaffle | Finance", set the default database to `jaffle_finance`
 
-<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
+<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt" /> 
 
 7. Continue the prompts to complete the project setup. Once configured, each project should have:
     - A data platform connection
@@ -216,7 +216,7 @@ Now that you've set up the foundational project, let's start building the data a
 6. Navigate to the **Command bar** and execute `dbt build`.
 
 Before a downstream team can leverage assets from this foundational project, you need to first:
-- [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
+- [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
   - Note, Enable the **Generate docs on run** toggle for this job to update the <Constant name="explorer" />. Once run, you can click Explore from the upper menu bar and see your lineage, tests, and documentation coming through successfully.
 
@@ -237,7 +237,8 @@ To make `fct_orders` publicly available:
 
   models:
     - name: fct_orders
-      access: public
+      config:
+        access: public # changed to config in v1.10
       description: "Customer and order details"
       columns:
         - name: order_id
@@ -274,7 +275,7 @@ To make `fct_orders` publicly available:
   ```
   </File>
 
-Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/collaborate/govern/model-access#access-modifiers).
+Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/mesh/govern/model-access#access-modifiers).
 
 2. Navigate to the <Constant name="cloud_ide" /> **Lineage** tab to see the model noted as **Public**, below the model name.
 
@@ -283,7 +284,7 @@ Note: By default, model access is set to "protected", which means they can only 
 3. Go to **Version control** and click the **Commit and Sync** button to commit your changes.
 4. Merge your changes to the main or production branch.
 
-### Create and run a dbt Cloud job
+### Create and run a dbt job
 
 Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](https://docs.getdbt.com/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
 
@@ -292,18 +293,18 @@ To run your first deployment <Constant name="cloud" /> job, you will need to cre
 2. Click **Create job** and then **Deploy job**.
 3. Select the **Generate docs on run** option. This will reflect the state of this project in the **Explore** section.
 
-<Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt Cloud job." />
+<Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt job." />
 
 4. Then, click **Run now** to trigger the job.
 <Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
 
 5. After the run is complete, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
 
-For details on how <Constant name="cloud" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/collaborate/govern/project-dependencies#staging-with-downstream-dependencies).
+For details on how <Constant name="cloud" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/mesh/govern/project-dependencies#staging-with-downstream-dependencies).
 
 ## Reference a public model in your downstream project
 
-In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/collaborate/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
+In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/mesh/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
 
 1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
 2. Delete the `models/example` folder
@@ -312,7 +313,7 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 5. In the **File <Constant name="explorer" />**, hover over the project directory, click the **...** and Select **Create file**.
 6. Name the file `dependencies.yml`.
 
-<Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the dbt Cloud IDE." />
+<Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the Studio IDE." />
 
 6. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
 
@@ -419,8 +420,8 @@ You're now set to add a model that explores how payment types vary throughout a 
 
     </File> 
 
-2. Notice the cross-project ref at work! When you add the `ref`, the dbt Cloud IDE's auto-complete feature recognizes the public model as available.
-<Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the dbt Cloud IDE" />
+2. Notice the cross-project ref at work! When you add the `ref`, the <Constant name="cloud_ide" />'s auto-complete feature recognizes the public model as available.
+<Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the Studio IDE" />
 
 3. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_compile.png" title="Cross-project ref compile" />
@@ -432,8 +433,8 @@ You're now set to add a model that explores how payment types vary throughout a 
 
 How can you enhance resilience and add guardrails to this type of multi-project relationship? You can adopt best practices from software engineering by:
 
-1. Defining model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
-2. Defining model versions &mdash; Use [model versions](/docs/collaborate/govern/model-versions) to manage updates and handle breaking changes systematically.
+1. Defining model contracts &mdash; Set up [model contracts](/docs/mesh/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
+2. Defining model versions &mdash; Use [model versions](/docs/mesh/govern/model-versions) to manage updates and handle breaking changes systematically.
 
 ### Set up model contracts
 As part of the Data Analytics team, you may want to ensure the `fct_orders` model is reliable for downstream users, like the Finance team.
@@ -443,9 +444,9 @@ As part of the Data Analytics team, you may want to ensure the `fct_orders` mode
 ```yaml
 models:
   - name: fct_orders
-    access: public
     description: “Customer and order details”
     config:
+      access: public # changed to config in v1.10
       contract:
         enforced: true
     columns:
@@ -481,10 +482,10 @@ version: 2
 
 models:
   - name: fct_orders
-    access: public
     description: "Customer and order details"
     latest_version: 2
     config:
+      access: public # changed to config in v1.10
       contract:
         enforced: true
     columns:
@@ -551,7 +552,7 @@ select * from {{ ref('fct_orders', v=2) }}
 select * from {{ ref('fct_orders') }}
 ```
 
-## Add a dbt Cloud job in the downstream project
+## Add a dbt job in the downstream project
 Before proceeding, make sure you commit and merge your changes in both the “Jaffle | Data Analytics” and “Jaffle | Finance” projects.
 
 A member of the Finance team would like to schedule a <Constant name="cloud" /> job for their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
@@ -618,7 +619,7 @@ select * from final
 
 ## View lineage with dbt Explorer
 
-Use [<Constant name="explorer" />](/docs/collaborate/explore-projects) to view the lineage across projects in <Constant name="cloud" />. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
+Use [<Constant name="explorer" />](/docs/explore/explore-projects) to view the lineage across projects in <Constant name="cloud" />. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/explore/explore-multiple-projects).
 
 <Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="85%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
 
@@ -638,8 +639,8 @@ Here are some additional resources to help you continue your journey:
 - [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
 - [<Constant name="mesh" /> FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
-- [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
-- [<Constant name="explorer" />](/docs/collaborate/explore-projects)
+- [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
+- [<Constant name="explorer" />](/docs/explore/explore-projects)
 
 </ConfettiTrigger>
 

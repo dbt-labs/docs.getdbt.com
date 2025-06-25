@@ -20,24 +20,6 @@ snapshots:
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{{ config(
-  strategy="timestamp",
-  updated_at="column_name"
-) }}
-
-```
-
-</File>
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -91,30 +73,6 @@ snapshots:
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/orders.sql'>
-
-```sql
-{% snapshot orders_snapshot %}
-
-{{
-    config(
-      target_schema='snapshots',
-      unique_key='id',
-
-      strategy='timestamp',
-      updated_at='updated_at'
-    )
-}}
-
-select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-
-```
-
-</File>
-</VersionBlock>
 
 ### Coalesce two columns to create a reliable `updated_at` column
 Consider a data source that only has an `updated_at` column filled in when a record is updated (so a `null` value indicates that the record hasn't been updated after it was created).
@@ -161,33 +119,4 @@ Alternatively, you can also create an ephemeral model to performs the required t
 </VersionBlock>
 
 
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/orders.sql'>
-
-```sql
-{% snapshot orders_snapshot %}
-
-{{
-    config(
-      target_schema='snapshots',
-      unique_key='id',
-
-      strategy='timestamp',
-      updated_at='updated_at_for_snapshot'
-    )
-}}
-
-select
-    *,
-    coalesce(updated_at, created_at) as updated_at_for_snapshot
-
-from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-
-```
-
-</File>
-</VersionBlock>
 

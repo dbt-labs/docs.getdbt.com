@@ -16,10 +16,14 @@ The results of the preview query are not materialized in the data warehouse, or 
 
 Example:
 
-```dbt show --select "model_name.sql"
 ```
+dbt show --select "model_name.sql"
+```
+
 or
-```dbt show --inline "select * from {{ ref('model_name') }}"
+
+```
+dbt show --inline "select * from {{ ref('model_name') }}"
 ```
 
 The following is an example of `dbt show` output for a model named `stg_orders`:

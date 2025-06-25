@@ -1,6 +1,6 @@
 ---
 title: I'm receiving an `Failed ALPN` error when trying to connect to the dbt Semantic Layer.
-description: "To resolve the 'Failed ALPN' error in the dbt Semantic Layer, create a SSL interception exception for the dbt Cloud domain."
+description: "To resolve the 'Failed ALPN' error in the dbt Semantic Layer, create a SSL interception exception for the dbt domain."
 sidebar_label: 'Use SSL exception to resolve `Failed ALPN` error'
 ---
 

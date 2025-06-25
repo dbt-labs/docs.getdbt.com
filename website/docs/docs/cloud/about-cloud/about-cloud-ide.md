@@ -1,8 +1,8 @@
 ---
-title: "About dbt Cloud IDE"
+title: "About Studio IDE"
 id: about-cloud-ide
-description: "about dbt Cloud Integrated Development Environment"
-sidebar_label: About dbt Cloud IDE
+description: "about dbt Studio Integrated Development Environment"
+sidebar_label: About dbt Studio IDE
 ---
 
 The <Constant name="cloud" /> integrated development environment (<Constant name="cloud_ide" />) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud <Constant name="cloud_ide" />, you can compile dbt code into SQL and run it against your database directly.
@@ -20,7 +20,7 @@ With the Cloud <Constant name="cloud_ide" />, you can:
     * Currently, you can't preview python models
 - Visualize a directed acyclic graph (DAG), and more.
 
-<Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" width="85%" title="The dbt Cloud IDE in dark mode"/>
+<Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" width="85%" title="The Studio IDE in dark mode"/>
 
 For more information, read the complete [Cloud <Constant name="cloud_ide" /> guide](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 

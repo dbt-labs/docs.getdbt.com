@@ -1,7 +1,7 @@
 When using the dbt Semantic Layer in a [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setting, we recommend the following:
 
 - You have one standalone project that contains your semantic models and metrics.
-- Then as you build your Semantic Layer, you can [cross-reference dbt models](/docs/collaborate/govern/project-dependencies) across your various projects or packages to create your semantic models using the [two-argument `ref` function](/reference/dbt-jinja-functions/ref#ref-project-specific-models)( `ref('project_name', 'model_name')`).
+- Then as you build your Semantic Layer, you can [cross-reference dbt models](/docs/mesh/govern/project-dependencies) across your various projects or packages to create your semantic models using the [two-argument `ref` function](/reference/dbt-jinja-functions/ref#ref-project-specific-models)( `ref('project_name', 'model_name')`).
 - Your dbt Semantic Layer project serves as a global source of truth across the rest of your projects.
 
 #### Usage example 

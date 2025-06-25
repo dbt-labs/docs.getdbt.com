@@ -10,12 +10,15 @@ version: 2
 
 models:
   - name: model_name
-    access: private | protected | public
+    config:
+      access: private | protected | public # changed to config in v1.10
 ```
 
 </File>
 
-You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+You can apply `access` modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying `access` configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+
+Note that for backwards compatibility, `access` is supported as a top-level key, but without the capabilities of config inheritance.
 
 There are multiple approaches to configuring access:
 
@@ -28,7 +31,9 @@ There are multiple approaches to configuring access:
   
   models:
     - name: my_public_model
-      access: public # Older method, still supported
+      config:
+        access: public # Older method, still supported
+          # changed to config in v1.10
       
   ```
   </File>
@@ -43,7 +48,7 @@ There are multiple approaches to configuring access:
   models:
     - name: my_public_model
       config:
-        access: public # newly supported in v1.7
+        access: public
       
   ```
   </File>
@@ -104,5 +109,5 @@ By default, all models are "protected." This means that other models in the same
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)

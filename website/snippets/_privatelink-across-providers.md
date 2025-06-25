@@ -1,1 +1,0 @@
-PrivateLink endpoints can't connect across cloud providers. For a PrivateLink connection to work, both dbt Cloud and the server (like {props.type}) must be hosted on the same cloud provider. For example, dbt Cloud hosted on AWS cannot connect via PrivateLink to services hosted on Azure, and dbt Cloud hosted on Azure can’t connect via Private Link to services hosted on AWS.

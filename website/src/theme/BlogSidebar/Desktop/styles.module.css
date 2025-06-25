@@ -5,9 +5,10 @@
   top: calc(var(--ifm-navbar-height) + 2rem);
 }
 
-.sidebarItemTitle {
-  font-size: var(--ifm-h3-font-size);
-  font-weight: var(--ifm-font-weight-bold);
+.sidebarItemTitle, .yearGroupHeading {
+  font-size: var(--text-2xl);
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .sidebarItemList {

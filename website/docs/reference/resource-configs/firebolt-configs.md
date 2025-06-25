@@ -10,7 +10,7 @@ To prevent a warning, make sure to explicitly set a value for `quote_columns` in
 
 ```yaml
 seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
+  +quote_columns: false  #or `true` if you have CSV column headers with spaces
 ```
 
 

@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import getIconType from "../../utils/get-icon-type";
 
 
-function Card({ title, body, link, icon, pills }) {
+function Card({ title, body, link, icon, pills, tag }) {
 
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
@@ -28,7 +28,8 @@ function Card({ title, body, link, icon, pills }) {
         to={useBaseUrl(link)}>
         <article className={styles.card}>
             {icon && getIconType(icon, styles.icon , imgClass)}
-          <h3>{title}</h3>
+            {tag && <span className="tag">{tag}</span>}
+          <h4 className="heading-4">{title}</h4>
           <div
             className={styles.cardBody}
             dangerouslySetInnerHTML={{ __html: body }}
@@ -36,7 +37,7 @@ function Card({ title, body, link, icon, pills }) {
         </article>
       </Link> : <article className={styles.card}>
         {icon && getIconType(icon, styles.icon , imgClass)}
-        <h3>{title}</h3>
+        <h4 className="heading-4">{title}</h4>
         <div
           className={styles.cardBody}
           dangerouslySetInnerHTML={{ __html: body }}

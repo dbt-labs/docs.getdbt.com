@@ -1,19 +1,18 @@
 ---
 title: "Quickstart for the dbt Explorer workshop"
 id: "explorer-quickstart"
-description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart dbt Explorer"
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Explorer', 'Snowflake', 'dbt Cloud','Quickstart']
-keywords: ['dbt Explorer','Mesh','dbt Cloud', 'Snowflake', 'Multi-Project']
+tags: ['Explorer', 'Snowflake', 'dbt platform','Quickstart']
+keywords: ['dbt Explorer','Mesh','dbt platform', 'Snowflake', 'Multi-Project']
 level: 'Beginner'
-recently_updated: true
 ---
 
 ## Introduction
 
-Unlock the power of [<Constant name="explorer" />](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
+Unlock the power of [<Constant name="explorer" />](/docs/explore/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
 
 This quickstart guide accompanies the <Constant name="explorer" /> hands-on workshop and helps you dive into a production-level <Constant name="mesh" /> implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
 
@@ -82,12 +81,12 @@ Navigate and manage your projects within <Constant name="cloud" /> to help you a
 dbt Explorer provides a visualization of your project’s <Term id="dag"/> that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your DAG.
-- [Lenses](/docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
+- [Lenses](/docs/explore/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
   - Applying a lens adds tags to the nodes, showing metadata like layer values, with color coding to help you distinguish them.
 
  <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="100%" title="dbt Explorer's lineage graph" />
   
-- Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. 
+- Use the [advanced search](/docs/explore/explore-projects#search-resources) feature to locate resources in your project. 
   - Perform hard searches and keyword searches. 
   - All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. 
   - Apply filters to fully refine your search.
@@ -106,7 +105,7 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
   - Navigate to the model’s **Model resource** page and explore the primary key column’s **Column-Level Lineage**
 
 ## Multi-project
-Use <Constant name="explorer" /> to gain a deeper understanding of *all* your <Constant name="cloud" /> projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects).
+Use <Constant name="explorer" /> to gain a deeper understanding of *all* your <Constant name="cloud" /> projects with its [multi-project capabilities](/docs/explore/explore-multiple-projects).
 - See the number of public, protected, and private models, as well as metrics for each project.
 - View cross-project lineage and navigate between individual projects’ lineage graphs.
 - Explore column-level lineage across projects.
@@ -124,7 +123,7 @@ Use <Constant name="explorer" /> to gain a deeper understanding of *all* your <C
 
 These recommendations are designed to build trust in your project and reduce confusion.
 
-To learn more about the specific suggestions and the reasons behind them, check out [our docs](/docs/collaborate/project-recommendations).
+To learn more about the specific suggestions and the reasons behind them, check out [our docs](/docs/explore/project-recommendations).
 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
@@ -147,11 +146,11 @@ You've learned how to:
 - Trace dependencies at the model and column level
 - Review project recommendations and implement improvements
 
-For the next steps, you can check out the [<Constant name="explorer" /> documentation](/docs/collaborate/explore-projects) and [FAQs](/docs/collaborate/dbt-explorer-faqs) to learn more about how to use <Constant name="explorer" />.
+For the next steps, you can check out the [<Constant name="explorer" /> documentation](/docs/explore/explore-projects) and [FAQs](/docs/explore/dbt-explorer-faqs) to learn more about how to use <Constant name="explorer" />.
 
 Keep an eye out for new features coming out soon, like:
 - [Visualize downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) integrations (like Tableau).
-- [Model query history](/docs/collaborate/model-query-history) for additional warehouses (like Redshift and Databricks)
-- Improvements to [data health tiles](/docs/collaborate/data-tile)
+- [Model query history](/docs/explore/model-query-history) for additional warehouses (like Redshift and Databricks)
+- Improvements to [data health tiles](/docs/explore/data-tile)
 
 </ConfettiTrigger>

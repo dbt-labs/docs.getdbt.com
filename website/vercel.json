@@ -39,6 +39,146 @@
   ],
   "redirects": [
     {
+      "source": "/docs/cloud/secure/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/privatelink/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/privatelink/about-private-link",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/explore-projects",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/access-from-dbt-cloud",
+      "destination": "/docs/explore/access-from-dbt-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/column-level-lineage",
+      "destination": "/docs/explore/column-level-lineage",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/data-health-signals",
+      "destination": "/docs/explore/data-health-signals",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/explore-multiple-projects",
+      "destination": "/docs/explore/explore-multiple-projects",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/model-performance",
+      "destination": "/docs/explore/model-performance",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/project-recommendations",
+      "destination": "/docs/explore/project-recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/dbt-explorer-faqs",
+      "destination": "/docs/explore/dbt-explorer-faqs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/view-downstream-exposures",
+      "destination": "/docs/explore/view-downstream-exposures",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/data-tile",
+      "destination": "/docs/explore/data-tile",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/model-query-history",
+      "destination": "/docs/explore/model-query-history",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/dbt-insights",
+      "destination": "/docs/explore/dbt-insights",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/access-dbt-insights",
+      "destination": "/docs/explore/access-dbt-insights",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/navigate-dbt-insights",
+      "destination": "/docs/explore/navigate-dbt-insights",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/git-version-control",
+      "destination": "/docs/cloud/git-version-control",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/git/version-control-basics",
+      "destination": "/docs/cloud/git/version-control-basics",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/git/pr-template",
+      "destination": "/docs/cloud/git/pr-template",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/git/merge-conflicts",
+      "destination": "/docs/cloud/git/merge-conflicts",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/build-and-view-your-docs",
+      "destination": "/docs/explore/build-and-view-your-docs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/govern/about-model-governance",
+      "destination": "/docs/mesh/govern/about-model-governance",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/govern/model-access",
+      "destination": "/docs/mesh/govern/model-access",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/govern/model-contracts",
+      "destination": "/docs/mesh/govern/model-contracts",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/govern/model-versions",
+      "destination": "/docs/mesh/govern/model-versions",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/govern/project-dependencies",
+      "destination": "/docs/mesh/govern/project-dependencies",
+      "permanent": true
+    },
+    {
+      "source": "/docs/collaborate/collaborate-with-others",
+      "destination": "/docs/explore/explore-your-data",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/build-ve-copilot",
       "destination": "/docs/cloud/build-canvas-copilot",
       "permanent": true
@@ -65,22 +205,27 @@
     },
     {
       "source": "/docs/collaborate/navigate-query-page",
-      "destination": "/docs/collaborate/navigate-dbt-insights",
+      "destination": "/docs/explore/navigate-dbt-insights",
       "permanent": true
     },
     {
       "source": "/docs/collaborate/access-query-page",
-      "destination": "/docs/collaborate/access-dbt-insights",
+      "destination": "/docs/explore/access-dbt-insights",
       "permanent": true
     },
     {
       "source": "/docs/collaborate/query-page",
-      "destination": "/docs/collaborate/dbt-insights",
+      "destination": "/docs/explore/dbt-insights",
       "permanent": true
     },
     {
       "source": "/reference/resource-properties/argument-type",
       "destination": "/reference/resource-properties/arguments",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/about-privatelink",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
       "permanent": true
     },
     {
@@ -170,7 +315,7 @@
     },
     {
       "source": "/docs/collaborate/auto-exposures",
-      "destination": "/docs/collaborate/view-downstream-exposures",
+      "destination": "/docs/explore/view-downstream-exposures",
       "permanent": true
     },  
     {
@@ -635,7 +780,7 @@
     },
     {
       "source":  "/docs/deploy/dashboard-status-tiles",
-      "destination":  "/docs/collaborate/data-tile",
+      "destination":  "/docs/explore/data-tile",
       "permanent": true
     },
     {
@@ -700,7 +845,7 @@
     },
     {
       "source": "/docs/collaborate/cloud-build-and-view-your-docs",
-      "destination": "/docs/collaborate/build-and-view-your-docs",
+      "destination": "/docs/explore/build-and-view-your-docs",
       "permanent": true
     },
     {
@@ -1047,12 +1192,12 @@
     },
     {
       "source": "/faqs/Project/docs-for-multiple-projects",
-      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "destination": "/docs/explore/explore-projects#about-project-level-lineage",
       "permanent": true
     },
     {
       "source": "/faqs/Project/docs-for-multiple-projects",
-      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "destination": "/docs/explore/explore-projects#about-project-level-lineage",
       "permanent": true
     },
     {
@@ -1107,12 +1252,12 @@
     },
     {
       "source": "/faqs/models/reference-models-in-another-project",
-      "destination": "/docs/collaborate/govern/project-dependencies",
+      "destination": "/docs/mesh/govern/project-dependencies",
       "permanent": true
     },
     {
       "source": "/faqs/Models/reference-models-in-another-project",
-      "destination": "/docs/collaborate/govern/project-dependencies",
+      "destination": "/docs/mesh/govern/project-dependencies",
       "permanent": true
     },
     {
@@ -1391,11 +1536,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/cloud/privatelink/:path*",
-      "destination": "/docs/cloud/secure/about-privatelink",
-      "permanent": true
-    },
-    {
       "source": "/docs/deploy/dbt-cloud-job#create-and-schedule-jobs",
       "destination": "/docs/deploy/dbt-cloud-job#create-and-schedule-jobs",
       "permanent": true
@@ -1502,22 +1642,22 @@
     },
     {
       "source": "/docs/collaborate/publish/about-publishing-models",
-      "destination": "/docs/collaborate/govern/about-model-governance",
+      "destination": "/docs/mesh/govern/about-model-governance",
       "permanent": true
     },
     {
       "source": "/docs/collaborate/publish/model-contracts",
-      "destination": "/docs/collaborate/govern/model-contracts",
+      "destination": "/docs/mesh/govern/model-contracts",
       "permanent": true
     },
     {
       "source": "/docs/collaborate/publish/model-access",
-      "destination": "/docs/collaborate/govern/model-access",
+      "destination": "/docs/mesh/govern/model-access",
       "permanent": true
     },
     {
       "source": "/docs/collaborate/publish/model-versions",
-      "destination": "/docs/collaborate/govern/model-versions",
+      "destination": "/docs/mesh/govern/model-versions",
       "permanent": true
     },
     {
@@ -1913,7 +2053,7 @@
     },
     {
       "source": "/docs/collaborate/git/resolve-merge-conflicts",
-      "destination": "/docs/collaborate/git/merge-conflicts",
+      "destination": "/docs/cloud/git/merge-conflicts",
       "permanent": true
     },
     {
@@ -2028,7 +2168,7 @@
     },
     {
       "source": "/docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
-      "destination": "/docs/collaborate/explore-projects",
+      "destination": "/docs/explore/explore-projects",
       "permanent": true
     },
     {
@@ -2088,7 +2228,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories",
-      "destination": "/docs/collaborate/git/pr-template",
+      "destination": "/docs/cloud/git/pr-template",
       "permanent": true
     },
     {
@@ -2374,11 +2514,6 @@
     {
       "source": "/docs/dbt-cloud/cloud-ide/the-dbt-ide",
       "destination": "/docs/get-started/dbt-cloud-features",
-      "permanent": true
-    },
-    {
-      "source": "/((?!useful).*components)",
-      "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
       "permanent": true
     },
     {
@@ -3979,7 +4114,7 @@
     },
     {
       "source": "/dbt-cloud/cloud-ide/the-ide-git-button",
-      "destination": "/docs/collaborate/git/version-control-basics",
+      "destination": "/docs/cloud/git/version-control-basics",
       "permanent": true
     },
     {
@@ -4024,7 +4159,17 @@
     },
     {
       "source": "/docs/contributing/oss-expectations",
-      "destination": "/community/resources/oss-expectations",
+      "destination": "/community/resources/contributor-expectations",
+      "permanent": true
+    },
+    {
+      "source": "/community/resources/oss-expectations",
+      "destination": "/community/resources/contributor-expectations",
+      "permanent": true
+    },
+    {
+      "source": "/community/resources/oss-projects",
+      "destination": "/community/resources/oss-sa-projects",
       "permanent": true
     },
     {

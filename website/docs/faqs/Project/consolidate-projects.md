@@ -1,6 +1,6 @@
 ---
-title: How can I consolidate projects in dbt Cloud?
-description: "Consolidating projects in dbt Cloud"
+title: How can I consolidate projects in dbt?
+description: "Consolidating projects in dbt"
 sidebar_label: 'How to consolidate projects'
 id: consolidate-projects
 

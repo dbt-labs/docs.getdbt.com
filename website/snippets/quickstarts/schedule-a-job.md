@@ -18,7 +18,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
@@ -40,7 +40,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 3. Scroll down to the **Execution Settings** section.
 4. Under **Commands**, add this command as part of your job if you don't see it:
    * `dbt build`
-5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/collaborate/build-and-view-your-docs) each time your job runs. 
+5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs. 
 6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
 7. Select **Save**, then click **Run now** to run your job.
 8. Click the run and watch its progress under "Run history."

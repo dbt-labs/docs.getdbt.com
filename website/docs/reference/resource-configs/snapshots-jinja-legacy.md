@@ -1,6 +1,6 @@
 ---
 title: Legacy snapshot configurations
-description: Read about how to configure snapshots using legacy jinja blocks
+description: Read about how to configure snapshots using legacy Jinja blocks
 sidebar: "Legacy configuration"
 ---
 
@@ -14,7 +14,7 @@ Use legacy SQL-based snapshot configurations with Jinja blocks in any dbt versio
 
 There are situations where you want to use the legacy syntax for [snapshots](/docs/build/snapshots) in any dbt version or release track. This page details how you can use the legacy SQL-based configurations if you need to. 
 
-In dbt v1.9, this syntax was replaced with a [YAML-based configuration](/reference/snapshot-configs#configuring-snapshots) in [dbt Cloud's "Latest" release track](/docs/dbt-versions/cloud-release-tracks). The benefits of YAML-based configurations are that the snapshots are environment aware, meaning you don't have to specify `schema` or `database`, and the syntax is more concise.
+In dbt v1.9, this syntax was replaced with a [YAML-based configuration](/reference/snapshot-configs#configuring-snapshots) in [<Constant name="cloud" />'s "Latest" release track](/docs/dbt-versions/cloud-release-tracks). The benefits of YAML-based configurations are that the snapshots are environment aware, meaning you don't have to specify `schema` or `database`, and the syntax is more concise.
 
 For new snapshots, we recommend using these latest YAML-based configs. If you'd like to move to the YAML-based configuration for existing snapshots, you can [migrate over](/reference/snapshot-configs#snapshot-configuration-migration).
 
@@ -26,7 +26,7 @@ When would you want to use the SQL-based syntax and YAML-based syntax?
   - Suitable for performing very light transformations (but creating a separate ephemeral model for transformations is recommended for better maintainability).
 
 - YAML-based syntax:
-  - Defined in `whatever_name.yml` or in the `snapshots` or `models` directory you prefer. Available in dbt Cloud's "Latest" release track and dbt v1.9 and later.
+  - Defined in `whatever_name.yml` or in the `snapshots` or `models` directory you prefer. Available in <Constant name="cloud" />'s "Latest" release track and dbt v1.9 and later.
   - Ideal for new snapshots or existing snapshots that need to be [migrated](/reference/snapshot-configs#snapshot-configuration-migration).
   - Create transformations separate from the snapshot file by creating an ephemeral model and referencing it in the snapshot using the `relation` field.
 
@@ -197,24 +197,6 @@ Configure your snapshot to tell dbt how to detect record changes. Snapshots are 
 
 The following table outlines the configurations available for snapshots:
 
-<VersionBlock lastVersion="1.8">
-
-| Config | Description | Required? | Example |
-| ------ | ----------- | --------- | ------- |
-| [target_database](/reference/resource-configs/target_database) | The database that dbt should render the snapshot table into | No | analytics |
-| [target_schema](/reference/resource-configs/target_schema) | The schema that dbt should render the snapshot table into | Yes | snapshots |
-| [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
-| [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
-| [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
-| [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
-| [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
-
-- A number of other configurations are also supported (like, `tags` and `post-hook`), check out the full list [here](/reference/snapshot-configs).
-- Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](/reference/snapshot-configs) for more information.
-- Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 | Config | Description | Required? | Example |
@@ -269,32 +251,6 @@ select * from {{ source('jaffle_shop', 'orders') }}
 4. Check whether the result set of your query includes a reliable timestamp column that indicates when a record was last updated. For our example, the `updated_at` column reliably indicates record changes, so we can use the `timestamp` strategy. If your query result set does not have a reliable timestamp, you'll need to instead use the `check` strategy — more details on this in the next step.
 
 5. Add configurations to your snapshot using a `config` block. You can also [configure your snapshot from your `dbt_project.yml` file](/reference/snapshot-configs).
-
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/orders_snapshot.sql'>
-
-```sql
-{% snapshot orders_snapshot %}
-
-{{
-    config(
-      target_database='analytics',
-      target_schema='snapshots',
-      unique_key='id',
-
-      strategy='timestamp',
-      updated_at='updated_at',
-    )
-The following table outlines the configurations available for snapshots:
-
-select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
-
-</File>
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -400,29 +356,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
 #### Examples
 
 - #### Using a column name `updated_at`:
-  
-  <VersionBlock lastVersion="1.8">
-  <File name='snapshots/orders.sql'>
-
-  ```sql
-  {% snapshot orders_snapshot %}
-
-  {{
-      config(
-        target_schema='snapshots',
-        unique_key='id',
-
-        strategy='timestamp',
-        updated_at='updated_at'
-      )
-  }}
-
-  select * from {{ source('jaffle_shop', 'orders') }}
-
-  {% endsnapshot %}
-  ```
-  </File>
-  </VersionBlock>
 
   <VersionBlock firstVersion="1.9">
   <File name='snapshots/orders.sql'>
@@ -480,32 +413,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
   </File>
   </VersionBlock>
 
-  <VersionBlock lastVersion="1.8">
-  <File name='snapshots/orders.sql'>
-
-  ```sql
-  {% snapshot orders_snapshot %}
-
-  {{
-      config(
-        target_schema='snapshots',
-        unique_key='id',
-
-        strategy='timestamp',
-        updated_at='updated_at_for_snapshot'
-      )
-  }}
-
-  select
-      *,
-      coalesce(updated_at, created_at) as updated_at_for_snapshot
-
-  from {{ source('jaffle_shop', 'orders') }}
-
-  {% endsnapshot %}
-  ```
-  </File>
-  </VersionBlock>
 
 </Expandable>
 

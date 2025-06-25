@@ -30,9 +30,9 @@ If you're using the command line interface (CLI), use [log()](/reference/dbt-jin
   
  </TabItem>
  
- <TabItem value="ide" label="dbt Cloud IDE">
+ <TabItem value="ide" label="Studio IDE">
    
- If you're using the dbt Cloud IDE, compile the following to print the full contents: <br /><br />
+ If you're using the Studio IDE, compile the following to print the full contents: <br /><br />
 
  ```jinja
 {{ model | tojson(indent = 4) }}

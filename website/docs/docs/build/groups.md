@@ -13,8 +13,10 @@ Group members may include models, tests, seeds, snapshots, analyses, and metrics
 
 ### Declaring a group
 
-Groups are defined in `.yml` files, nested under a `groups:` key.
+Groups are defined in `.yml` files, nested under a `groups:` key. <VersionBlock firstVersion="1.10">You can add the `description` property and the `meta` config to add more information about the group.</VersionBlock>
 
+
+<VersionBlock lastVersion="1.9">
 <File name='models/marts/finance/finance.yml'>
 
 ```yaml
@@ -28,6 +30,25 @@ groups:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+<File name='models/marts/finance/finance.yml'>
+
+```yaml
+groups:
+  - name: finance
+    owner:
+      # 'name' or 'email' is required; additional properties will no longer be allowed in a future release
+      email: finance@jaffleshop.com
+    description: For the finance team # optional
+    config:
+      meta: # optional
+        data_owner: Finance team
+```
+
+</File>
+</VersionBlock>
 
 ### Adding a model to a group
 
@@ -89,8 +110,8 @@ By default, all models within a group have the `protected` [access modifier](/re
 ```yml
 models:
   - name: finance_private_model
-    access: private
     config:
+      access: private # changed to config in v1.10
       group: finance
 
   # in a different group!
@@ -117,6 +138,6 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)
 * [Group selection](/reference/node-selection/methods#group)

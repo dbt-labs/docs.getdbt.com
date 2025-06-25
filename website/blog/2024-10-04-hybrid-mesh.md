@@ -48,8 +48,8 @@ Enabling a Hybrid Mesh is as simple as a few additional steps to import the meta
 
 Configure public models to serve as stable interfaces for downstream dbt Projects.
 
-- Decide which models from your Core project will be accessible in your Mesh. For more information on how to configure public access for those models, refer to the [model access page.](/docs/collaborate/govern/model-access)
-- Optionally set up a [model contract](/docs/collaborate/govern/model-contracts) for all public models for better governance.
+- Decide which models from your Core project will be accessible in your Mesh. For more information on how to configure public access for those models, refer to the [model access page.](/docs/mesh/govern/model-access)
+- Optionally set up a [model contract](/docs/mesh/govern/model-contracts) for all public models for better governance.
 - Keep dbt Core and dbt Cloud projects in separate repositories to allow for a clear separation between upstream models managed by the dbt Core team and the downstream models handled by the dbt Cloud team.
 
 ### Step 2: Mirror each "producer" Core project in dbt Cloud 
@@ -60,11 +60,11 @@ This allows dbt Cloud to know about the contents and metadata of your project, w
 - Each upstream Core project has to have a production [environment](/docs/dbt-cloud-environments) in dbt Cloud. You need to configure credentials and environment variables in dbt Cloud just so that it will resolve relation names to the same places where your dbt Core workflows are deploying those models.
 - Set up a [merge job](/docs/deploy/merge-jobs) in a production environment to run `dbt parse`. This will enable connecting downstream projects in dbt Mesh by producing the necessary [artifacts](/reference/artifacts/dbt-artifacts) for cross-project referencing.
   - Optional: Set up a regular job to run `dbt build` instead of using a merge job for `dbt parse`, and centralize your dbt orchestration by moving production runs to dbt Cloud. Check out [this guide](/guides/core-to-cloud-1?step=9) for more details on converting your production runs to dbt Cloud.
-- Optional: Set up a regular job (for example, daily) to run `source freshness` and `docs generate`. This will hydrate dbt Cloud with additional metadata and enable features in [dbt Explorer](/docs/collaborate/explore-projects) that will benefit both teams, including [Column-level lineage](/docs/collaborate/column-level-lineage).
+- Optional: Set up a regular job (for example, daily) to run `source freshness` and `docs generate`. This will hydrate dbt Cloud with additional metadata and enable features in [dbt Explorer](/docs/explore/explore-projects) that will benefit both teams, including [Column-level lineage](/docs/explore/column-level-lineage).
 
 ### Step 3: Create and connect your downstream projects to your Core project using dbt Mesh
 Now that dbt Cloud has the necessary information about your Core project, you can begin setting up your downstream projects, building on top of the public models from the project you brought into Cloud in [Step 2](#step-2-mirror-each-producer-core-project-in-dbt-cloud). To do this:
-- Initialize each new downstream dbt Cloud project and create a [`dependencies.yml` file](/docs/collaborate/govern/project-dependencies#use-cases). 
+- Initialize each new downstream dbt Cloud project and create a [`dependencies.yml` file](/docs/mesh/govern/project-dependencies#use-cases). 
 - In that `dependencies.yml` file, add the dbt project name from the `dbt_project.yml` of the upstream project(s). This sets up cross-project references between different dbt projects:
 
     ```yaml
@@ -79,7 +79,7 @@ Now that dbt Cloud has the necessary information about your Core project, you ca
 
 And that’s all it takes! From here, the domain teams that own each dbt Project can build out their models to fit their own use cases. You can now build out your Hybrid Mesh however you want, accessing the full suite of dbt Cloud features.
 - Orchestrate your Mesh to ensure timely delivery of data products and make them available to downstream consumers.
-- Use [dbt Explorer](/docs/collaborate/explore-projects) to trace the lineage of your data back to its source.
+- Use [dbt Explorer](/docs/explore/explore-projects) to trace the lineage of your data back to its source.
 - Onboard more teams and connect them to your Mesh.
 - Build [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) into your projects to query them with the [dbt Semantic Layer](https://www.getdbt.com/product/semantic-layer).
 

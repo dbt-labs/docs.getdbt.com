@@ -1,5 +1,5 @@
 ---
-title: "About continuous integration (CI) in dbt Cloud"
+title: "About continuous integration (CI) in dbt"
 sidebar_label: "About continuous integration"
 pagination_prev: null
 pagination_next: "docs/deploy/continuous-integration"

@@ -17,12 +17,12 @@ MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
 - Develop from your preferred environment, whether that's the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [<Constant name="core" />](/docs/core/installation-overview)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
-- Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Team or Enterprise](https://www.getdbt.com/pricing/) accounts only).
+- Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
 <div className="grid--3-col">
 
  <Card
-    title="Quickstart for the dbt Cloud Semantic Layer"
+    title="Quickstart for the dbt Semantic Layer"
     body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
     link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>

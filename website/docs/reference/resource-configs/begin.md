@@ -44,7 +44,7 @@ models:
 
 </File>
 
-#### Example in sql model config block
+#### Example in SQL model config block
 
 <File name="models/user_sessions.sql">
 

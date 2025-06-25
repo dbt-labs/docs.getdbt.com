@@ -22,7 +22,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 Follow the repository's link for OS dependencies.
 
 :::note 
-[Model contracts](/docs/collaborate/govern/model-contracts) are not supported.
+[Model contracts](/docs/mesh/govern/model-contracts) are not supported.
 :::
 
 ## Prerequisites for Dremio Cloud
