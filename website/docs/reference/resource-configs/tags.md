@@ -62,7 +62,7 @@ resource_type:
     columns:
       - name: column_name
         config:
-          tags: <string> | [<string>] # changed to config in v1.10
+          tags: <string> | [<string>] # changed to config in v1.10 and backported to 1.9
         tests:
           test-name:
             config:
@@ -339,7 +339,7 @@ sources:
         columns:
           - name: column_name
             config:
-              tags: ['column_level'] # changed to config in v1.10
+              tags: ['column_level'] # changed to config in v1.10 and backported to 1.9
             tests:
               - unique:
                 config:

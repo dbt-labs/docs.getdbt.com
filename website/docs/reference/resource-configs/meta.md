@@ -48,7 +48,7 @@ models:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -91,7 +91,7 @@ version: 2
         columns:
           - name: column_name
             config:
-              meta: {<dictionary>} # changed to config in v1.10
+              meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -123,7 +123,7 @@ seeds:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -157,7 +157,7 @@ snapshots:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -453,7 +453,7 @@ sources:
         columns:
           - name: email
             config:
-              meta: # changed to config in v1.10
+              meta: # changed to config in v1.10 and backported to 1.9
                 contains_pii: true
 
 ```
