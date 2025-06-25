@@ -352,9 +352,14 @@ version: 2
 models:
   - name: base_events
     description: "Standardized event data from raw sources"
-    config:
-      materialized: table
-      tags: ["core", "events"]
+    columns:
+      - name: user_id
+        description: "Unique identifier for a user"
+        tests:
+          - not_null
+          - unique
+      - name: event_type
+        description: "Type of event recorded (click, purchase, etc.)"
 ```
 
 </File>
