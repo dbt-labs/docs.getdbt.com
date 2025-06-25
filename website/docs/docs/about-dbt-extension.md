@@ -189,13 +189,6 @@ After installation, you may want to configure the extension to better fit your d
 1. Open the VS Code settings by pressing `Ctrl+,` (<!--Windows/-->Linux) or `Cmd+,` (Mac).
 2. Search for `dbt`. On this page, you can adjust the extension’s configuration options as to fit your needs.
 
-## FAQs
-
-**Can I use the dbt extension with my monorepo?**
-
-The dbt extension will not activate unless it finds a `dbt_project.yml` file in the root folder of a workspace. If you develop in a monorepo, consider using a  [.code-workspace](https://code.visualstudio.com/docs/editing/workspaces/workspaces#_singlefolder-workspaces) file to create a workspace for your dbt project folder. You can do this easily by running the `Add folder to workspace` commmand in your editor.
-
-
 ## Known limitations
 
 The following are currently known limitations of the dbt extension:
