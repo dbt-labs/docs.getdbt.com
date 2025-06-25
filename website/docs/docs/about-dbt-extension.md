@@ -118,7 +118,7 @@ Usage:
 Preview a CTE’s output, or an entire model, directly from inside your editor for faster validation and debugging.
 
 Usage:
-- Click the **table icon** or use keyboard shortcut `cmd+enter` (macOS) / `ctrl+enter` (Windows/Linux) to preview query results.
+- Click the **table icon** or use keyboard shortcut `cmd+enter` (macOS) / `ctrl+enter` (<!--Windows/-->Linux) to preview query results.
 - Click the **Preview CTE** codelens to preview CTE results.
 - Results will be displayed in the **Query Results** tab in the bottom panel.
 - The preview table is sortable and results are stored until the tab is closed.
@@ -169,7 +169,7 @@ Usage:
 Use the command palette to quickly build models using complex selectors. 
 
 Usage:
-- Click the **dbt icon** or use keyboard shortcut `cmd+shift+enter` (macOS) / `ctrl+shift+enter` (Windows/Linux) to launch a quickpick menu.
+- Click the **dbt icon** or use keyboard shortcut `cmd+shift+enter` (macOS) / `ctrl+shift+enter` (<!--Windows/-->Linux) to launch a quickpick menu.
 - Select a command to run.
 
 <video width="100%" height="100%" playsinline muted controls>
@@ -186,7 +186,7 @@ Once installed, the dbt extension automatically activates when you open any `.sq
 
 After installation, you may want to configure the extension to better fit your development workflow:
 
-1. Open the VS Code settings by pressing `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac).
+1. Open the VS Code settings by pressing `Ctrl+,` (<!--Windows/-->Linux) or `Cmd+,` (Mac).
 2. Search for `dbt`. On this page, you can adjust the extension’s configuration options as to fit your needs.
 
 ## FAQs

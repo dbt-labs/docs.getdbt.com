@@ -4,6 +4,7 @@
 
 .cardWrapper a {
   color: inherit;
+  text-decoration: none;
 }
 .cardWrapper a:hover {
   text-decoration: none;

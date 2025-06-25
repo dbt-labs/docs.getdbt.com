@@ -40,7 +40,7 @@ sources:
     [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
       warn_after:  
-        count: positive_integer
+        count: <positive_integer>
         period: minute | hour | day
     [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta):
       key: value
@@ -70,7 +70,7 @@ sources:
       [meta](/reference/resource-configs/meta): {<dictionary>}
       [freshness](/reference/resource-properties/freshness):
         warn_after:  
-          count: positive_integer
+          count: <positive_integer>
           period: minute | hour | day
 
     tables:
@@ -256,7 +256,11 @@ sources:
 
 #### Configure source freshness
 
-Use a `freshness` block to define the acceptable amount of time between the most recent record and now for a table to be considered "fresh". You can provide one or both of `warn_after` and `error_after` parameters. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source. For more information, see [freshness](/reference/resource-properties/freshness).
+Use a `freshness` block to define expectations about how frequently a table is updated with new data, and to raise warnings and errors when those expectation are not met.
+
+dbt compares the most recently updated timestamp calculated from a column, warehouse metadata, or custom query against the current timestamp when the freshness check is running.
+
+You can provide one or both of the `warn_after` and `error_after` parameters. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source. For more information, see [freshness](/reference/resource-properties/freshness).
 
 See the following example of a `dbt_project.yml` file using the `freshness` config:
 

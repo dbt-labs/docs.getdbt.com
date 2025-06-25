@@ -112,6 +112,7 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 2. Click **Install**.
 3. You will see a prompt to register the extension. You can skip this step for now, but check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.
 4. If you see the **dbt Extension** label in your editor's status bar, then the extension has installed successfully.
+    <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="Verify installation in the status bar."/>
 
 ## Initialize the Jaffle Shop project
 

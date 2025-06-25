@@ -14,7 +14,7 @@ dbt supports creating Iceberg tables for two of the BigQuery materializations:
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
 
-## Bigquery Iceberg catalogs
+## BigQuery Iceberg catalogs
 
 BigQuery supports Iceberg tables via its built-in catalog [BigLake Metastore](https://cloud.google.com/bigquery/docs/iceberg-tables#architecture) today. No setup is needed to access the BigLake Metastore. However, you will need to have a [storage bucket and the required BigQuery roles](https://cloud.google.com/bigquery/docs/iceberg-tables#create-iceberg-tables) configured prior to creating an Iceberg table. 
 
@@ -76,7 +76,7 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 ### Limitations
 
-BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the (BigQuery docs)[https://cloud.google.com/bigquery/docs/iceberg-tables#limitations] for more information. 
+BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the [BigQuery docs](https://cloud.google.com/bigquery/docs/iceberg-tables#limitations) for more information. 
 
 
 <VersionBlock firstVersion="1.9">
