@@ -2,6 +2,7 @@
 title: "Apache Iceberg Support"
 id: apache-iceberg-support
 sidebar_label: "Apache Iceberg support"
+pagination_next: "docs/mesh/iceberg/about-catalogs"
 description: Understand dbt platform support for Iceberg catalogs.
 ---
 

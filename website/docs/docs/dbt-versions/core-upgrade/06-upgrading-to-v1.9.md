@@ -76,6 +76,13 @@ Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fiel
 
 To learn how to safely migrate existing snapshots, refer to [Snapshot configuration migration](/reference/snapshot-configs#snapshot-configuration-migration) for more information. 
 
+### Some `properties` moved to `configs`
+
+The following `properties` were moved to `configs` in [Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10) and backported to Core v1.9:
+- [`freshness`](/reference/resource-properties/freshness) for sources
+- [`meta`](/reference/resource-configs/meta) under `columns`
+- [`tags`](/reference/resource-configs/tags) under `columns`
+
 ### `state:modified` improvements
 
 We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives and negatives. Read more about [the `state:modified` behavior flag](#managing-changes-to-legacy-behaviors) that unlocks this improvement:

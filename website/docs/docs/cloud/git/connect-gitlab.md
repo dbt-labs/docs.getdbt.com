@@ -13,16 +13,19 @@ Connecting your GitLab account to <Constant name="cloud" /> provides convenience
 
 :::info
 When configuring the repository in <Constant name="cloud" />, GitLab automatically:
-- Registers a webhook, which triggers pipeline jobs in <Constant name="cloud" />.
+- Registers a webhook that triggers pipeline jobs in <Constant name="cloud" />.
 - Creates a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) in your GitLab repository, which sends the job run status back to GitLab using the <Constant name="cloud" /> API for CI jobs. <Constant name="cloud" /> automatically refreshes this token for you, which means you never have to manually rotate it. Check out the [troubleshooting](#troubleshooting) section for more information.
 
 :::
 
-The steps to integrate GitLab in <Constant name="cloud" /> depend on your plan. If you are on:
-- the Developer or Starter plan, read these [instructions](#for-dbt-cloud-developer-and-starter-tiers).
-- the Enterprise or Enterprise+ plan, jump ahead to these [instructions](#for-the-dbt-cloud-enterprise-tier).
 
-## For dbt Developer and Starter tiers
+Depending on your plan, use these steps to integrate GitLab in <Constant name="cloud" />:
+- the Developer or Starter plan, read these [instructions](#for-dbt-developer-and-starter-plans).
+- the Enterprise or Enterprise+ plan, jump ahead to these [instructions](#for-the-dbt-enterprise-plans).
+
+## For dbt Developer and Starter plans
+
+Before you can work with GitLab repositories in <Constant name="cloud" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="cloud" /> to authenticate your actions when interacting with Git repositories. Make sure to read about [limitations](#limitations) of the Team and Developer plans before you connect your account.
 
 To connect your GitLab account:
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**. 
@@ -38,8 +41,15 @@ When you click **Link**, you will be redirected to GitLab and prompted to sign i
 
 Once you've accepted, you should be redirected back to <Constant name="cloud" />, and you'll see that your account has been linked to your profile.
 
-## For the dbt Enterprise tier
+### Limitations
 
+<Constant name="cloud" /> Team and Developer plans use a single GitLab deploy token created by the first user who connects the repository, which means:
+* All Git operations (like commits and pushes) from the <Constant name="cloud_ide" /> appear as coming from the same deploy token.
+* GitLab push rules may reject pushes made through <Constant name="cloud" />, particularly when multiple users are committing via the same deploy token. 
+
+To support advanced Git workflows and multi-user commit behavior, upgrade to the Enterprise plan, which provides more flexible Git authentication strategies.
+
+## For the dbt Enterprise plans
 
 <Constant name="cloud" /> Enterprise and Enterprise+ customers have the added benefit of bringing their own GitLab OAuth application to <Constant name="cloud" />. This tier benefits from extra security, as <Constant name="cloud" /> will:
 - Enforce user authorization with OAuth.

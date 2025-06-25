@@ -339,7 +339,7 @@ models:
     columns:
       - name: id
         config:
-          meta: # changed to config in v1.10
+          meta: # changed to config in v1.10 and backported to 1.9
             primary_key: true
 ```
 
