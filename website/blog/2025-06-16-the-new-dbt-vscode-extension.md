@@ -19,6 +19,8 @@ I went from this cheatsheet to creating all different kinds of content, contribu
 
 Since the acquisition of SDF Labs by dbt Labs, I have been waiting for the day that we would see what the result of the fusion of these two companies would be. Spoiler alert: It’s the dbt Fusion engine and it's better than I could have expected.
 
+<!--truncate-->
+
 ## The dbt developer experience in the pre-fusion-era
 
 If you've ever started a dbt project, chances are your journey began like mine did: cloning `jaffle_shop`, opening it in VS Code, and running [`dbt run`](/reference/commands/run) for the first time (actually the second time, because I know you forgot to run [`dbt deps`](/reference/commands/deps) in the first one). This is the dbt initiation process, our ‘hello-world’.
