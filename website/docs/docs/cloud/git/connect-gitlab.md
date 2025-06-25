@@ -21,7 +21,7 @@ When configuring the repository in <Constant name="cloud" />, GitLab automatical
 
 Depending on your plan, use these steps to integrate GitLab in <Constant name="cloud" />:
 - the Developer or Starter plan, read these [instructions](#for-dbt-developer-and-starter-plans).
-- the Enterprise or Enterprise+ plan, jump ahead to these [instructions](#for-the-dbt-enterprise-plan).
+- the Enterprise or Enterprise+ plan, jump ahead to these [instructions](#for-the-dbt-enterprise-plans).
 
 ## For dbt Developer and Starter plans
 
@@ -49,7 +49,7 @@ Once you've accepted, you should be redirected back to <Constant name="cloud" />
 
 To support advanced Git workflows and multi-user commit behavior, upgrade to the Enterprise plan, which provides more flexible Git authentication strategies.
 
-## For the dbt Enterprise plan
+## For the dbt Enterprise plans
 
 <Constant name="cloud" /> Enterprise and Enterprise+ customers have the added benefit of bringing their own GitLab OAuth application to <Constant name="cloud" />. This tier benefits from extra security, as <Constant name="cloud" /> will:
 - Enforce user authorization with OAuth.
