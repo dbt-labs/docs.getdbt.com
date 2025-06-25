@@ -307,6 +307,9 @@ var siteSettings = {
           blogSidebarCount: 5,
           remarkPlugins: [math],
           rehypePlugins: [katex],
+          // Un-truncated blog posts will throw an error
+          // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts          
+          onUntruncatedBlogPosts: 'throw',
         },
       },
     ],
