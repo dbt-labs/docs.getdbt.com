@@ -47,7 +47,7 @@ sources:
               [period](#period): minute | hour | day
             [filter](#filter): <boolean_sql_expression>
           [loaded_at_field](#loaded_at_field): <column_name_or_expression> # changed to config in v1.10
-          [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+          [loaded_at_query](#loaded_at_query): <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
 
         ...
 ```
