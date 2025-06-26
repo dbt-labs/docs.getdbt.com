@@ -32,12 +32,15 @@ sources:
           [count](#count): <positive_integer>
           [period](#period): minute | hour | day
         [filter](#filter): <boolean_sql_expression>
-      [loaded_at_field](#loaded_at_field): <column_name_or_expression> # changed to config in v1.10
-      [loaded_at_query](#loaded_at_query): <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+      # changed to config in v1.10
+      [loaded_at_field](#loaded_at_field): <column_name_or_expression>
+      # or use loaded_at_query in v1.10 or higher. Should not be used if loaded_at_field is defined
+      [loaded_at_query](#loaded_at_query): <sql_expression>
 
     tables:
       - name: <table_name>
         config:
+          # source.table.config.freshness overrides source.config.freshness
           freshness: 
             warn_after:
               [count](#count): <positive_integer>
@@ -46,8 +49,10 @@ sources:
               [count](#count): <positive_integer>
               [period](#period): minute | hour | day
             [filter](#filter): <boolean_sql_expression>
-          [loaded_at_field](#loaded_at_field): <column_name_or_expression> # changed to config in v1.10
-          [loaded_at_query](#loaded_at_query): <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+          # changed to config in v1.10
+          [loaded_at_field](#loaded_at_field): <column_name_or_expression>
+          # or use loaded_at_query in v1.10 or higher. Should not be used if loaded_at_field is defined
+          [loaded_at_query](#loaded_at_query): <sql_expression>
 
         ...
 ```
@@ -113,7 +118,7 @@ loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 
 ## loaded_at_query
 
-Specify custom SQL to generate the `maxLoadedAt` timestamp on the source (rather than via warehouse metadata or the `loaded_at_field` config).
+Specify custom SQL to generate the `maxLoadedAt` timestamp on the source (rather than via warehouse metadata or the `loaded_at_field` config). Note that `loaded_at_query` should not be used if `loaded_at_field` is defined.
 
 Examples: 
 
