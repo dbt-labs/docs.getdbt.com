@@ -46,7 +46,7 @@ To enable defer in the <Constant name="cloud_ide" />, toggle the **Defer to stag
 
 For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the staging or production location of the referenced models.
 
-<Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
+<Lightbox src="/img/docs/dbt-cloud/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
 
 ### Defer in dbt CLI
 

@@ -67,7 +67,7 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
   connect_retries: 0
   ```
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.jpg" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Key pair
 

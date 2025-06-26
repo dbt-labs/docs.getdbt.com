@@ -316,7 +316,7 @@ joel_labes:
   image_url: /img/blog/authors/jlabes.png
   socials:
     linkedin: joel-labes
-    x: joellabes
+    bluesky: https://bsky.app/profile/joellab.es
   name: Joel Labes
   page: true
   title: Senior Developer Experience Advocate at dbt Labs

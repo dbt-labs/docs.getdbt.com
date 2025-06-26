@@ -52,7 +52,7 @@ To retrieve the necessary <Constant name="cloud" /> configurations for use in Ok
     To follow best practices, you should regularly rotate your SCIM tokens. To do so, follow these same instructions you did to create a new one. To avoid service disruptions, remember to replace your token in your IdP before deleting the old token in <Constant name="cloud" />.
 
     :::
-6. In the pop-out window, give the token a name that will make it easily identifiable. Click **Save**.
+6. In the pop-up window, give the token a name that will make it easily identifiable. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/name-scim-token.png" width="60%" title="Give your token and identifier." />
 7. Copy the token and record it securely, as _it will not be available again after you close the window_. You must create a new token if you lose the current one. 
     <Lightbox src="/img/docs/dbt-cloud/access-control/copy-scim-token.png" width="60%" title="Give your token and identifier." />
