@@ -13,10 +13,10 @@ The dbt extensions for VS Code and Cursor streamlines dbt development workflows.
 
 To use the extension, you must meet the following prerequisites:
 
+- The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process, but you can also [manually install](/docs/fusion/install-fusion) separate from this workflow, either before or after the extension is installed. 
 - You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
 - You are not using (or have disabled) 3rd party dbt extensions.
 - You are using a macOS<!--, Windows,--> or Linux-based computer.
-- The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process.
 
 ## Installation instructions
 
@@ -113,3 +113,7 @@ If you are not seeing dbt LSP features in your editor, first consult the general
 If you see an error message indicating that your version of dbt is unsupported, then there is likely a problem with your environment.
 - Check the **dbt Path** setting in your VS Code settings. If this path is set, ensure that it is pointing to a valid dbt Fusion engine executable.
 - If necessary, you can also install the dbt Fusion engine directly using these instructions: [Install the Fusion CLI](/docs/fusion/install-fusion).
+
+import AboutFusion from '/snippets/_about-fusion.md';
+
+<AboutFusion />
