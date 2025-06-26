@@ -4,7 +4,7 @@ id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 level: 'Beginner'
 platform: 'dbt-core'
-icon: 'fa-light fa-square-terminal'
+icon: 'square-terminal'
 tags: ['dbt Core','Quickstart']
 ---
 

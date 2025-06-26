@@ -2,7 +2,7 @@
 title: "Quickstart for dbt and Azure Synapse Analytics"
 id: "azure-synapse-analytics"
 level: 'Beginner'
-icon: 'azure-synapse-analytics'
+icon: 'azure-synapse-analytics-2'
 hide_table_of_contents: true
 tags: ['dbt platform','Quickstart']
 ---

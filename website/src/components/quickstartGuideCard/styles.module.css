@@ -32,6 +32,7 @@
 
 .quickstartCard .icon {
   max-width: 46px;
+  max-height: 46px;
   font-size: 46px;
   margin-bottom: .8rem;
   color: var(--ifm-menu-color);

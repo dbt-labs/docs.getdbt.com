@@ -32,7 +32,7 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
     title="Quickstart for dbt and Azure Synapse Analytics"
     body="Discover how to integrate dbt with Azure Synapse Analytics for your data transformations."
     link="https://docs.getdbt.com/guides/azure-synapse-analytics"
-    icon="azure-synapse-analytics"/>
+    icon="azure-synapse-analytics-2"/>
 
 <Card
     title="Quickstart for dbt and BigQuery"

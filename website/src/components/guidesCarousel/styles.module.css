@@ -1,6 +1,6 @@
 
 .carouselContainer :global(.swiper) {
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem 2rem 2rem;
 }
 
 .carouselContainer :global(.swiper-slide) {
@@ -14,19 +14,15 @@
 }
 
 .carouselContainer :global(.swiper-button-prev) {
-  left: 20px;
+  left: 0;
 }
 
 .carouselContainer :global(.swiper-button-next) {
-  right: 20px;
+  right: 0;
 }
 
 .carouselContainer :global(.swiper-pagination-bullet) {
   background: var(--ifm-color-primary);
-}
-
-.carouselContainer :global(.swiper-wrapper) {
-
 }
 
 .carouselContainer :global(.swiper-button-next),
