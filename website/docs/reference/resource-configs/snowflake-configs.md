@@ -6,7 +6,7 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 
 ## Iceberg table format
 
-Our Snowflake Iceberg table content has moved to a [new page!](/docs/mesh/iceberg/snowflake-iceberg-support).
+Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
 
 ## Dynamic tables
 
@@ -18,15 +18,6 @@ While this materialization is specific to Snowflake, it very much follows the im
 of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
-
-<VersionBlock lastVersion="1.8">
-
-| Parameter          | Type       | Required | Default     | Change Monitoring Support |
-|--------------------|------------|----------|-------------|---------------------------|
-| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
-| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -40,83 +31,6 @@ Dynamic tables are supported with the following configuration parameters:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-<Tabs
-  groupId="config-languages"
-  defaultValue="project-yaml"
-  values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
-  ]
-}>
-
-<TabItem value="project-yaml">
-
-<File name='dbt_project.yml'>
-
-```yaml
-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
-    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
-    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-
-```
-
-</File>
-
-</TabItem>
-
-
-<TabItem value="property-yaml">
-
-<File name='models/properties.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: [<model-name>]
-    config:
-      [materialized](/reference/resource-configs/materialized): dynamic_table
-      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
-      [target_lag](#target-lag): downstream | <time-delta>
-      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-
-```
-
-</File>
-
-</TabItem>
-
-
-<TabItem value="config">
-
-<File name='models/<model_name>.sql'>
-
-```jinja
-
-{{ config(
-    [materialized](/reference/resource-configs/materialized)="dynamic_table",
-    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
-    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
-    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
-
-) }}
-
-```
-
-</File>
-
-</TabItem>
-
-</Tabs>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 <Tabs
@@ -125,7 +39,7 @@ models:
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'SQL config', value: 'config', },
   ]
 }>
 
@@ -496,7 +410,6 @@ def model(dbt, session):
 
 You can use the `python_version` config to run a Snowpark model with [Python versions](https://docs.snowflake.com/en/developer-guide/snowpark/python/setup) 3.9, 3.10, or 3.11.
 
-<VersionBlock firstVersion="1.8">
 
 **External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
 
@@ -517,8 +430,6 @@ def model(dbt, session: snowpark.Session):
         )
     )
 ```
-
-</VersionBlock>
 
 **Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
 
@@ -562,14 +473,15 @@ The default warehouse that dbt uses can be configured in your [Profile](/docs/co
 <Tabs
   defaultValue="dbt_project.yml"
   values={[
-    { label: 'YAML code', value: 'dbt_project.yml', },
-    { label: 'SQL code', value: 'models/events/sessions.sql', },
+    { label: 'Project file', value: 'dbt_project.yml', },
+    { label: 'Property file', value: 'models/my_model.yml', },
+    { label: 'SQL config', value: 'models/events/sessions.sql', },
     ]}
 >
 
 <TabItem value="dbt_project.yml">
 
-The example config below changes the warehouse for a group of models with a config argument in the yml.
+The following example changes the warehouse for a group of models with a config argument in the YAML.
 
 <File name='dbt_project.yml'>
 
@@ -580,25 +492,39 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"    # use the `EXTRA_SMALL` warehouse for all models in the project...
+  +snowflake_warehouse: "EXTRA_SMALL"    # default Snowflake virtual warehouse for all models in the project.
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"    # ...except for the models in the `clickstream` folder, which will use the `EXTRA_LARGE` warehouse.
-
+      +snowflake_warehouse: "EXTRA_LARGE"    # override the default Snowflake virtual warehouse for all models under the `clickstream` directory.
 snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
 
 </File>
 </TabItem>
+<TabItem value="models/my_model.yml">
 
+The following example overrides the Snowflake warehouse for a single model using a config argument in the property file.
+
+<File name='models/my_model.yml'>
+
+```yaml
+models:
+  - name: my_model
+    config:
+      snowflake_warehouse: "EXTRA_LARGE"    # override the Snowflake virtual warehouse just for this model
+```
+
+</File>
+</TabItem>
 <TabItem value="models/events/sessions.sql">
 
-The example config below changes the warehouse for a single model with a config() block in the sql model.
+The following example changes the warehouse for a single model with a config() block in the SQL model.
 
 <File name='models/events/sessions.sql'>
 
 ```sql
+# override the Snowflake virtual warehouse for just this model
 {{
   config(
     materialized='table',
@@ -652,6 +578,43 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.10">
+
+## Setting row access policies 
+
+Configure [row access policies](https://docs.snowflake.com/en/user-guide/security-row-intro) on tables, views, and dynamic tables by using the `row_access_policy` config for models. The policy must already exist in Snowflake before you apply it to the model.
+
+<File name='models/<modelname>.sql'>
+
+```sql
+{{ config(
+    row_access_policy = 'my_database.my_schema.my_row_access_policy_name on (id)'
+) }}
+
+select ...
+
+```
+</File>
+
+## Configuring table tags 
+
+To add tags to tables, views, and dynamic tables, use the `table_tag` config. Note, the tag must already exist in Snowflake before you apply it.
+
+<File name='models/<modelname>.sql'>
+
+```sql
+{{ config(
+    table_tag = "my_tag_name = 'my_tag_value'"
+) }}
+
+select ...
+
+```
+
+</File>
+
+</VersionBlock>
+
 ## Secure views
 
 To create a Snowflake [secure view](https://docs.snowflake.net/manuals/user-guide/views-secure.html), use the `secure` config for view models. Secure views can be used to limit access to sensitive data. Note: secure views may incur a performance penalty, so you should only use them if you need them.
@@ -672,7 +635,6 @@ models:
 ```
 
 </File>
-
 
 ## Source freshness known limitation
 

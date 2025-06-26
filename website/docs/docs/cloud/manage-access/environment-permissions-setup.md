@@ -22,7 +22,7 @@ In your <Constant name="cloud" /> account:
 
 <Lightbox src="/img/docs/dbt-cloud/groups-and-licenses.png" width="80%" title="Groups & Licenses page in dbt with the default groups highlighted."/>
 
-3. Create a new or open an existing group. If it's a new group, give it a name, then scroll down to **Access & permissions**. Click **Add**.
+3. Create a new or open an existing group. If it's a new group, give it a name, then scroll down to **Access & permissions**. Click **Add permission**.
 
 <Lightbox src="/img/docs/dbt-cloud/add-permissions.png" width="80%" title="The Access & permissions section with the Add button highlighted."/>
 

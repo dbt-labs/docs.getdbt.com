@@ -112,8 +112,8 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
 ## Create, configure, and execute your Python models
 
-1. In your dbt project, create a sql model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
-2. In the file, copy this sql into it. 
+1. In your dbt project, create a SQL model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
+2. In the file, copy this SQL into it. 
 
    ```sql
       select 

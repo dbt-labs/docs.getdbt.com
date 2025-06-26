@@ -47,7 +47,7 @@ Access <Constant name="explorer" /> directly from the **modeling timing tab**, w
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.jpg" title="Access dbt Explorer from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
 
-### dbt Insights <Lifecycle status="beta,managed,managed_plus" />
+### dbt Insights <Lifecycle status="preview,managed,managed_plus" />
 
 Access <Constant name="explorer" /> directly from [<Constant name="query_page" />](/docs/explore/access-dbt-insights) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
 

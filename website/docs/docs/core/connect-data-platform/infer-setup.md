@@ -34,7 +34,7 @@ To do this Infer uses a variant called SQL-inf, which defines as set of primitiv
 you can build advanced analysis for any business use case.
 Read more about SQL-inf and Infer in the [Infer documentation](https://docs.getinfer.io/).
 
-The `dbt-infer` package allow you to use SQL-inf easily within your DBT models. 
+The `dbt-infer` package allow you to use SQL-inf easily within your dbt models. 
 You can read more about the `dbt-infer` package itself and how it connects to Infer in the [dbt-infer documentation](https://dbt.getinfer.io/).
 
 The dbt-infer adapter is maintained via PyPi and installed with pip.
@@ -45,7 +45,7 @@ pip install dbt-infer
 
 Versioning of dbt-infer follows the standard dbt versioning scheme - meaning if you are using dbt 1.2 the corresponding dbt-infer will be named 1.2.x where is the latest minor version number.
 
-Before using SQL-inf in your DBT models you need to setup an Infer account and generate an API-key for the connection.
+Before using SQL-inf in your dbt models you need to setup an Infer account and generate an API-key for the connection.
 You can read how to do that in the [Getting Started Guide](https://docs.getinfer.io/docs/reference/integrations/dbt).
 
 The profile configuration in `profiles.yml` for `dbt-infer` should look something like this:
@@ -108,7 +108,7 @@ infer_bigquery:
 
 ## Usage
 
-You do not need to change anything in your existing DBT models when switching to use SQL-inf &#8211;
+You do not need to change anything in your existing dbt models when switching to use SQL-inf &#8211;
 they will all work the same as before &#8211; but you now have the ability to use SQL-inf commands
 as native SQL functions.
 

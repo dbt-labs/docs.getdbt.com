@@ -34,13 +34,10 @@ For <Constant name="cloud_cli" /> users, MetricFlow commands are embedded in the
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
-<VersionBlock firstVersion="1.8">
  
 1. Create or activate your virtual environment `python -m venv venv`.
 2. Run `pip install dbt-metricflow`.
   * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter, run `python -m pip install "dbt-metricflow[dbt-snowflake]"`.
-
-</VersionBlock>
 
 **Note**, you'll need to manage versioning between <Constant name="core" />, your adapter, and MetricFlow.
 
@@ -529,7 +526,7 @@ limit 10
 
 <TabItem value="eg7" label=" Export to CSV">
  
-Add the `--csv file_name.csv` flag to export the results of your query to a csv. The `--csv` flag is available in dbt Core only and not supported in <Constant name="cloud" />.
+Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available in dbt Core only and not supported in <Constant name="cloud" />.
 
 **Query**
 

@@ -114,7 +114,7 @@ Consider these limitations and recommendations:
 - `data_cell_filters` management can't be automated outside dbt because the filter can't be attached to the table, which doesn't exist. Once you `enable` this config, dbt will set all filters and their permissions during every dbt run. Such an approach keeps the actual state of row-level security configuration after every dbt run and applies changes if they occur: drop, create, and update filters and their permissions.
 - Any tags listed in `lf_inherited_tags` should be strictly inherited from the database level and never overridden at the table and column level.
 - Currently, `dbt-athena` does not differentiate between an inherited tag association and an override it made previously.
-   - For example,  If a `lf_tags_config` value overrides an inherited tag in one run, and that override is removed before a subsequent run, the prior override will linger and no longer be encoded anywhere (for example, Terraform where the inherited value is configured nor in the DBT project where the override previously existed but now is gone).
+   - For example,  If a `lf_tags_config` value overrides an inherited tag in one run, and that override is removed before a subsequent run, the prior override will linger and no longer be encoded anywhere (for example, Terraform where the inherited value is configured nor in the dbt project where the override previously existed but now is gone).
   
 ### Table location
 
@@ -339,7 +339,7 @@ models:
     columns:
       - name: id
         config:
-          meta: # changed to config in v1.10
+          meta: # changed to config in v1.10 and backported to 1.9
             primary_key: true
 ```
 

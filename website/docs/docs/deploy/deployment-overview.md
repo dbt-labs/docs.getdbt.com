@@ -23,7 +23,7 @@ The <Constant name="dbt_platform" /> offers the easiest and most reliable way to
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 - [Visualize](/docs/cloud-integrations/downstream-exposures-tableau) and [orchestrate](/docs/cloud-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed,managed_plus" />
 - Use [<Constant name="cloud" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
-- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="cloud" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
+- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="cloud" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="Preview"/>
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
@@ -125,7 +125,7 @@ Learn how to use <Constant name="cloud" />'s features to help your team ship tim
 </div> <br />
 
 
-## Hybrid projects <Lifecycle status="beta,managed" />
+## Hybrid projects <Lifecycle status="managed" /> <Lifecycle status="Preview"/>
 
 <div className="grid--3-col">
 

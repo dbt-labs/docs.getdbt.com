@@ -12,9 +12,8 @@ Downloading and building <Constant name="core" /> will enable you to contribute 
 
 ### Installing dbt Core
 
-Beginning in v1.8, installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations
+Installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations
 
-<VersionBlock firstVersion="1.8">
 
 To install `dbt-core` only from the GitHub code source:
 
@@ -24,7 +23,6 @@ cd dbt-core
 python -m pip install -r requirements.txt
 ```
 
-</VersionBlock>
 
 To install in editable mode, which includes your local changes as you make them:
 
@@ -37,11 +35,9 @@ instead.
 
 To install an adapter plugin from source, you will need to first locate its source repository. For instance, the `dbt-redshift` adapter is located at https://github.com/dbt-labs/dbt-redshift.git, so you can clone it and install from there:
 
-<VersionBlock firstVersion="1.8">
 
 You will also need to install `dbt-core` before installing an adapter plugin.
 
-</VersionBlock>
 
 ```shell
 git clone https://github.com/dbt-labs/dbt-redshift.git

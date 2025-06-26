@@ -12,10 +12,6 @@ image: /img/docs/dbt-insights/insights-results.jpg
 Learn how to navigate <Constant name="query_page" /> interface and use the main components.
 </IntroText>
 
-:::tip
-<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
-:::
-
 <Constant name="query_page" /> provides an interactive interface for writing, running, and analyzing SQL queries. This section highlights the main components of <Constant name="query_page" />. 
 
 ## Query console

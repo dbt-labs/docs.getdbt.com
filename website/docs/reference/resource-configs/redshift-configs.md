@@ -231,8 +231,6 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
 
-<VersionBlock firstVersion="1.8">
-
 ## Unit test limitations
 
 - Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support.
@@ -241,4 +239,3 @@ Find more information about materialized view limitations in Redshift's [docs](h
 
 - Redshift doesn't support unit tests that rely on sources in a database that differs from the models. See this issue in GitHub for more detail: https://github.com/dbt-labs/dbt-redshift/issues/995
 
-</VersionBlock>

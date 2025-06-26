@@ -69,7 +69,7 @@ a BigQuery user without configuring the BigQuery service account keyfile in <Con
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="cloud" />.
 
-### BigQuery Workload Identity Federation <Lifecycle status="managed, beta" />
+### BigQuery Workload Identity Federation <Lifecycle status="managed, preview" />
 
 :::note
 

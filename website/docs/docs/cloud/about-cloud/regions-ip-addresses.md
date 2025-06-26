@@ -14,7 +14,7 @@ description: "Available regions and ip addresses"
 |--------|----------|------------|--------------|-------| --------- |
 | North America [^1] | AWS us-east-1 (N. Virginia) | **Multi-tenant:**<br />cloud.getdbt.com <br /><br /> **Cell based:** ACCOUNT_PREFIX.us1.dbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) |
 | North America [^1] | Azure <br /> East US 2 (Virginia) | **Cell based:** ACCOUNT_PREFIX.us2.dbt.com | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
-| North America [^1] | GCP (us-central1) <Lifecycle status='beta'/>  | **Cell based:** ACCOUNT_PREFIX.us3.dbt.com   | 34.33.2.0/26 | All Enterprise plans | **Coming soon** | 
+| North America [^1] | GCP (us-central1) <Lifecycle status='beta'/>  | **Cell based:** ACCOUNT_PREFIX.us3.dbt.com   | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
 | EMEA [^1] | AWS eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
 | EMEA [^1] | Azure <br /> North Europe (Ireland)  |    **Cell based:** ACCOUNT_PREFIX.eu2.dbt.com  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
 | APAC  [^1] | 	AWS ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
@@ -43,9 +43,9 @@ There are two ways to view your <Constant name="cloud" /> IP addresses:
 
 ### Static IP addresses
 
-<Constant name="cloud" />, like many cloud services, relies on underlying AWS cloud infrastructure for operations. While we can offer static URLs for access, we cannot provide a list of IP addresses to configure connections due to the nature of AWS cloud services.
+<Constant name="cloud" /> is hosted on AWS, Azure, and the Google Cloud Platform (GCP). While we can offer static URLs for access, we cannot provide a list of IP addresses to configure connections due to the nature of these cloud services.
 
-* Dynamic IP addresses &mdash; <Constant name="cloud" /> infrastructure uses Amazon Web Services (AWS). <Constant name="cloud" /> offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. AWS manages the IP ranges and may change them according to their operational and security needs.
+* Dynamic IP addresses &mdash; <Constant name="cloud" /> offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. The cloud service provider manages the IP ranges and may change them according to their operational and security needs.
 
 * Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use <Constant name="cloud" /> services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
 

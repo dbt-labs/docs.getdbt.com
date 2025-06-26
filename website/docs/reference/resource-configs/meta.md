@@ -48,7 +48,7 @@ models:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -91,7 +91,7 @@ version: 2
         columns:
           - name: column_name
             config:
-              meta: {<dictionary>} # changed to config in v1.10
+              meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -123,7 +123,7 @@ seeds:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -157,7 +157,7 @@ snapshots:
     columns:
       - name: column_name
         config:
-          meta: {<dictionary>} # changed to config in v1.10
+          meta: {<dictionary>} # changed to config in v1.10 and backported to 1.9
 
 ```
 
@@ -357,8 +357,6 @@ The `meta` config can also be defined under the `semantic-models` config block i
 
 <TabItem value="metrics">
 
-<VersionBlock firstVersion="1.8"> 
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -384,7 +382,6 @@ metrics:
 ```
 
 </File>
-</VersionBlock>
 
 </TabItem>
 
@@ -456,7 +453,7 @@ sources:
         columns:
           - name: email
             config:
-              meta: # changed to config in v1.10
+              meta: # changed to config in v1.10 and backported to 1.9
                 contains_pii: true
 
 ```
@@ -538,12 +535,6 @@ semantic-models:
 </Tabs>
 
 ### Assign meta to dimensions, measures, entities
-
-<VersionBlock lastVersion="1.8">
-
-Available in dbt version 1.9 and later.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 

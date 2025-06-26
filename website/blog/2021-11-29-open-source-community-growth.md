@@ -114,7 +114,7 @@ From this, dbt knows to grab the schema for these tables from BigQuery during ge
 
 Explicitly defining external data sources in dbt was important to me for two reasons:
 
-1. It allows us to use the jinja `source()` and `ref()` functions to refer to these tables within our models, as opposed to hardcoding the table names.
+1. It allows us to use the Jinja `source()` and `ref()` functions to refer to these tables within our models, as opposed to hardcoding the table names.
 2. It ensures that the schemas are included in `catalog.json` when `dbt docs generate` is run, which is critical for collecting and tracing data lineage. I need this information so that it can be transmitted to OpenLineage during the run cycle.
 
 ### GitHub

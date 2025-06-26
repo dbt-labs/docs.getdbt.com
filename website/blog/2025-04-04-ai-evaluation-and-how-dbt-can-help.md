@@ -66,7 +66,7 @@ The lionshare of the work building this model was the prompt engineering for the
 
 <Lightbox src="/img/blog/2025-04-04-ai-evaluation-and-how-dbt-can-help/ai_eval_blog_image_three.png" title="AI generated results automatically evaluated by one or more models"width="85%" />
 
-We chose to define our prompt as a jinja variable as opposed to listing it directly in each dbt model.
+We chose to define our prompt as a Jinja variable as opposed to listing it directly in each dbt model.
 This has the upside of increasing model readability, but obscures the text of what the prompt is from someone reading the model.
 To address this issue and provide full traceability, we materialize the prompt as a column in this table. This means that each output row contains not only the evaluation score but also the exact prompt given to produce it.
 Regardless of where you define your evaluation prompt, by including it as part of your dbt project it will benefit from the same change management and version control processes as the rest of your dbt project, ensuring strong governance of your AI workflows.

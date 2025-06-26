@@ -3,7 +3,6 @@ title: "About dbt test command"
 sidebar_label: "test"
 id: "test"
 ---
-<VersionBlock firstVersion="1.8">
 
 `dbt test` runs data tests defined on models, sources, snapshots, and seeds and unit tests defined on SQL models. It expects that you have already created those resources through the appropriate commands.
 
@@ -40,7 +39,6 @@ dbt test --select "one_specific_model,test_type:unit"
 
 For more information on writing tests, read the [data testing](/docs/build/data-tests) and [unit testing](/docs/build/unit-tests) documentation.
 
-</VersionBlock>
 
 
 

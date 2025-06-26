@@ -44,7 +44,7 @@
   font-size: 18px;
 }
 [data-theme="dark"] .discourseTopics ul li a {
-  color: #91D0CB;
+  color: var(--ifm-link-color);
 }
 .discourseTopics blockquote {
   margin-bottom: 0;
@@ -57,8 +57,10 @@
   color: #fff;
 }
 .discourseCta:hover {
-  background: var(--color-light-teal);
+  background: var(--ifm-color-primary);
   color: #fff;
+  text-decoration: underline;
+  border-color: var(--ifm-color-primary);
 }
 
 /* Loading icon */

@@ -35,7 +35,7 @@ To upload the public key to your <Constant name="git" /> provider, follow the de
 
 Once you have uploaded the public key to your <Constant name="git" /> provider, your <Constant name="git" /> commits will be marked as "Verified" after you push the changes to the repository.
 
-<Lightbox src="/img/docs/dbt-cloud/git-sign-verified.jpg" width="95%" title="Example of a verified Git commit in a Git provider." />
+<Lightbox src="/img/docs/dbt-cloud/git-sign-verified.png" width="95%" title="Example of a verified Git commit in a Git provider." />
 
 ## Considerations
 

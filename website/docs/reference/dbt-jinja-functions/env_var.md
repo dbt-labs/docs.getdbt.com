@@ -5,7 +5,7 @@ id: "env_var"
 description: "Incorporate environment variables using `en_var` function."
 ---
 
-The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes jinja code.
+The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes Jinja code.
 
 When used in a `profiles.yml` file (to avoid putting credentials on a server), it can be used like this:
 
@@ -36,7 +36,7 @@ If passing an environment variable for a property that uses an integer type (for
 
 :::caution Quoting, Curly Brackets, & You
 
-Be sure to quote the entire jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
+Be sure to quote the entire Jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 

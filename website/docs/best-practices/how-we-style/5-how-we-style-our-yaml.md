@@ -28,18 +28,18 @@ models:
     columns:
       - name: event_id
         description: This is a unique identifier for the event
-        tests:
+        data_tests:
           - unique
           - not_null
 
       - name: event_time
         description: "When the event occurred in UTC (eg. 2018-01-01 12:00:00)"
-        tests:
+        data_tests:
           - not_null
 
       - name: user_id
         description: The ID of the user who recorded the event
-        tests:
+        data_tests:
           - not_null
           - relationships:
               to: ref('users')

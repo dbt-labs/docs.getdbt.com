@@ -22,6 +22,8 @@ That’s where <Constant name="cloud" />’s Model Timing visualization comes in
 
 - 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
 - ⌛ We can see above that `order_items` and `orders` are **taking the most time**, so we may want to go ahead and **make that incremental**.
+- :one: If a job has a single dbt invocation (for example `dbt build`), the model timing chart reflects the timing of all models.
+- :1234: If a job includes multiple dbt commands (for example, `dbt build` followed by `dbt compile`), the model timing chart reflects only the models from the final command (`dbt compile`). For models executed in both commands, the chart displays the timing from the last invocation. Models that were not re-invoked in the final command retain their timing from the earlier command (`dbt build`).
 
 If you aren’t using <Constant name="cloud" />, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the <Constant name="core" /> CLI to check our model times, and it’s a great opportunity to become familiar with that output.
 

@@ -7,7 +7,7 @@ displayed_sidebar: "docs"
  
 ## Resources 
 
-- <Constant name="core" /> v1.10 changelog (coming soon)
+- <Constant name="core" /> [v1.10 changelog](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
@@ -91,7 +91,7 @@ Starting in `v1.10`, you will receive deprecation warnings for dbt code that wil
 
 - Custom inputs (for example, unrecognized resource properties, configurations, and top-level keys)
 - Duplicate YAML keys in the same file
-- Unexpected jinja blocks (for example, `{% endmacro %}` tags without a corresponding `{% macro %}` tag)
+- Unexpected Jinja blocks (for example, `{% endmacro %}` tags without a corresponding `{% macro %}` tag)
 - Some `properties` are moving to `configs`
 - And more
 
@@ -103,6 +103,7 @@ What does this mean for you?
 1. If your project (or dbt package) encounters a new deprecation warning in `v1.10`, plan to update your invalid code soon. Although it’s just a warning for now, in a future version, dbt will enforce stricter validation of the inputs in your project. Check out the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to autofix many of these!
 2. In the future, the [`meta` config](/reference/resource-configs/meta) will be the only place to put custom user-defined attributes. Everything else will be strongly typed and strictly validated. If you have an extra attribute you want to include in your project, or a model config you want to access in a custom materialization, you must nest it under `meta` moving forward.
 3. If you are using the [`—-warn-error` flag](/reference/global-configs/warnings) (or `--warn-error-options '{"error": "all"}'`) to promote all warnings to errors, this will include new deprecation warnings coming to dbt Core. If you don’t want these to be promoted to errors, the `--warn-error-options` flag gives you more granular control over exactly which types of warnings are treated as errors. You can set `"warn": ["Deprecations"]` (new as of `v1.10`) to continue treating the deprecation warnings as warnings.
+4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise an error**. Please update your job definitions accordingly.
 
 #### Custom inputs
   
@@ -158,7 +159,7 @@ my_profile: # dbt would use only this profile key
 
 Moving forward, you should delete unused keys or move them to a separate YAML file.
 
-#### Unexpected jinja blocks
+#### Unexpected Jinja blocks
 
 If you have an orphaned Jinja block, you will receive a warning, and in a future version, dbt will stop supporting unexpected Jinja blocks. Previously, these orphaned Jinja blocks were silently ignored.
 
@@ -175,7 +176,7 @@ hello!
 ```
 </File>
 
-Moving forward, you should delete these orphaned jinja blocks.
+Moving forward, you should delete these orphaned Jinja blocks.
 
 #### Properties moving to configs
 
@@ -236,5 +237,6 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
 
 - Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 
-- Provide validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/resource-properties/arguments#supported-types).
- 
+- Provide validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/resource-properties/arguments#supported-types). 
+
+- [Cost management](/docs/cloud/cost-management) is coming soon to <Constant name="core" />! Select features will be introduced in <Constant name="core" /> v1.10, with many more to follow in v1.11. Be sure to upgrade so you can take advantage of these features when they launch in 2025.

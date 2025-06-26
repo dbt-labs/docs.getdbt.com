@@ -72,26 +72,8 @@ models:
     columns:
       - name: favorite_number
         tests:
-      	  - is_even
+      	  - is_even:
             [description](/reference/resource-properties/description): "This is a test"
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: users
-    columns:
-      - name: favorite_number
-        tests:
-      	  - is_even
 ```
 
 </File>
@@ -166,27 +148,6 @@ where id is not null
 
 When calling this test from a `.yml` file, supply the arguments to the test in a dictionary. Note that the standard arguments (`model` and `column_name`) are provided by the context, so you do not need to define them again.
 
-<VersionBlock lastVersion="1.8">
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: people
-    columns:
-      - name: account_id
-        tests:
-          - relationships:
-              to: ref('accounts')
-              field: id
-```
-
-</File>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 <File name='models/<filename>.yml'>
@@ -230,29 +191,6 @@ It is possible to include a `config()` block in a generic test definition. Value
 Any time the `warn_if_odd` test is used, it will _always_ have warning-level severity, unless the specific test overrides that value:
 
 </File>
-
-<VersionBlock lastVersion="1.8">
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: users
-    columns:
-      - name: favorite_number
-        tests:
-      	  - warn_if_odd         # default 'warn'
-      - name: other_number
-        tests:
-          - warn_if_odd:
-              severity: error   # overrides
-```
-
-</File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 

@@ -2,7 +2,7 @@
 title: "About statement blocks"
 sidebar_label: "statement blocks"
 id: "statement-blocks"
-description: "SQL queries that hit database and return results to your jinja context."
+description: "SQL queries that hit database and return results to your Jinja context."
 ---
 
 :::tip Recommendation
@@ -11,7 +11,7 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 
 :::
 
-`statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
+`statement`s are SQL queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
 <File name='get_states_statement.sql'>
 

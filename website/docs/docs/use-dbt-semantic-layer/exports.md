@@ -168,7 +168,6 @@ Exports use the default credentials of the production environment. To enable exp
 
 ### Set environment variable
 <!-- for Release Tracks -->
-<VersionBlock firstVersion="1.8">
 
 1. Click **Deploy** in the top navigation bar and choose **Environments**.
 2. Select **Environment variables**.
@@ -180,12 +179,10 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_EXPORT_SAVED
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/env-var-dbt-exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
 
-</VersionBlock>
 
 When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model).
 
 ### Create and execute exports
-<VersionBlock firstVersion="1.8">
 
 1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_EXPORT_SAVED_QUERIES=TRUE` environment variable is set, as described in [Set environment variable](#set-environment-variable).
    - This enables you to run any export that needs to be refreshed after a model is built.
@@ -193,8 +190,6 @@ When you run a build job, any saved queries downstream of the dbt models in that
     ```bash
       dbt build --select orders+
       ```
-
-</VersionBlock>
 
 2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform. It directly executes a "create table" statement so the data stays within your data platform.
 3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.

@@ -185,17 +185,9 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-The `description` property is available for [singular data tests](/docs/build/data-tests#singular-data-tests) or [generic data tests](/docs/build/data-tests#generic-data-tests) beginning in dbt v1.9.
-
-</VersionBlock> 
-
 </TabItem>
 
 <TabItem value="unit_tests">
-
-<VersionBlock firstVersion="1.8">
 
 <File name='models/schema.yml'>
 
@@ -221,8 +213,6 @@ unit_tests:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 </Tabs>
@@ -242,7 +232,7 @@ A user-defined description used to document:
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="explorer" />](/docs/explore/explore-projects)). 
 
-Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
+Descriptions can include markdown, as well as the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).
 
 :::caution You may need to quote your YAML
 
@@ -469,12 +459,6 @@ models:
 If mixing images and text, also consider using a docs block.
 
 ### Add a description to a data test
-
-<VersionBlock lastVersion="1.8">
-
-<VersionCallout version="1.9" />
-
-</VersionBlock>
 
 You can add a `description` property to a generic or singular data test.
 

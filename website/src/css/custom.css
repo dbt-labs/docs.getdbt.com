@@ -33,7 +33,7 @@
   --ifm-link-hover-color: #632FF5;
   --ifm-button-border-radius: var(--radius-xl);
   --ifm-menu-color: #030711;
-  --ifm-menu-color-active: #009999;
+  --ifm-menu-color-active: var(--color-coalesce-purple-600);
   --ifm-pagination-nav-color-hover: #047377;
   --ifm-tabs-color-active: #047377;
   --ifm-menu-color-background-active: var(--color-coalesce-purple-100);
@@ -65,8 +65,12 @@
   --filter-brightness-low: 1.1;
   --filter-brightness-high: 1.5;
   --darkmode-link-color: #9786FF;
+
+  /* sidebar collapse button */
+  --docusaurus-collapse-button-bg: var(--color-white) !important;
+  --docusaurus-collapse-button-bg-hover: var(--color-off-white) !important;
+
   --light-dark-toggle: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQuMzA4IDMuMzg1YzAtMS4xNzguMTczLTIuMzcuNjE1LTMuMzg1QzEuOTgzIDEuMjggMCA0LjI4MiAwIDcuNjkyQTguMzA4IDguMzA4IDAgMCAwIDguMzA4IDE2YzMuNDEgMCA2LjQxMi0xLjk4MyA3LjY5Mi00LjkyMy0xLjAxNS40NDItMi4yMDcuNjE1LTMuMzg1LjYxNWE4LjMwOCA4LjMwOCAwIDAgMS04LjMwNy04LjMwN1oiIGZpbGw9IiM5MkEwQjMiLz48L3N2Zz4=";
-  --ifm-menu-link-sublist-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L6 6L10 2' stroke='%23030711' stroke-width='1.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   --ifm-h3-font-size: var(--text-4xl) !important;
 
@@ -116,14 +120,10 @@ html[data-theme="dark"] {
   --ifm-table-cell-color: var(--color-green-blue);
 
   --ifm-link-color: var(--darkmode-link-color);
-}
 
-/* Linked `code` tags visibility adjustment */
-html[data-theme=dark] a code {
-  color: var(--darkmode-link-color);
-}
-html[data-theme=dark] a code:hover {
-  color: var(--darkmode-link-color);
+  /* sidebar collapse button */
+  --docusaurus-collapse-button-bg: var(--color-neutral-primary) !important;
+  --docusaurus-collapse-button-bg-hover: var(--color-neutral-secondary) !important;
 }
 
 /* For /dbt-cloud/api REDOC Page */
@@ -371,8 +371,17 @@ code {
   font-size: var(--text-sm);
 }
 
-.main-wrapper .home .col>p {
-  font-size: 1.25rem;
+a code {
+  color: rgba(61, 24, 154, 1);
+}
+
+.markdown a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.markdown a:hover {
+  text-decoration: none !important;
 }
 
 /* Wish we didn't need to do this... */
@@ -715,22 +724,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 
 .menu__list-item-collapsible:hover {
   background-color: transparent;
-}
-
-
-/* Mobile ToC caret */
-.docs-doc-page .theme-doc-toc-mobile .clean-btn:after {
-  content: '';
-  display: inline-block;
-  border: solid currentColor;
-  border-width: 0 2px 2px 0;
-  padding: 3px;
-  transform: rotate(-45deg);
-  transition: transform 0.2s ease;
-}
-
-.docs-doc-page .theme-doc-toc-mobile[class*="Expanded"] .clean-btn:after {
-  transform: rotate(45deg);
 }
 
 /* < icon */
@@ -1471,12 +1464,6 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   color: #6A7282 !important;
 }
 
-@media(max-width: 1199px) {
-  [data-theme="dark"] button.DocSearch-Button {
-    background-color: transparent !important;
-  }
-}
-
 @media screen and (max-width: 750px) {
   .card.large {
     height: auto;
@@ -1484,7 +1471,13 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   }
 }
 
-@media screen and (max-width: 1199px) {
+@media(max-width: 1319px) {
+  [data-theme="dark"] button.DocSearch-Button {
+    background-color: transparent !important;
+  }
+}
+
+@media screen and (max-width: 1319px) {
   button.DocSearch-Button {
     background: none;
   }
@@ -1504,7 +1497,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1320px) {
 
   /* search bar styles */
   button.DocSearch-Button {
@@ -1559,6 +1552,11 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   }
 }
 
+@media (min-width: 1480px) {
+  .dbt__brand {
+    border-right: 1px solid var(--ifm-toc-border-color);
+  }
+}
 
 @media (min-width: 1440px) {
   .container--fluid {
@@ -1567,7 +1565,6 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
   .dbt__brand {
     background-color: var(--ifm-background-color);
-    border-right: 1px solid var(--ifm-toc-border-color);
   }
 }
 

@@ -81,7 +81,7 @@ snapshots:
 sources:
   [<source-configs>](source-configs)
   
-tests:
+data_tests:
   [<test-configs>](/reference/data-test-configs)
 
 vars:

@@ -18,7 +18,6 @@ Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _al
 
 </File>
 
-<VersionBlock firstVersion="1.8">
 
 :::caution Proceed with caution in production environments
 Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will treat _all_ current and future warnings as errors.
@@ -26,7 +25,6 @@ Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will 
 This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
-</VersionBlock>
 
 ## Use `--warn-error-options` for targeted warnings
 
@@ -35,8 +33,6 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 :::info `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive
 `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive. You can only specify one, even when you're specifying the config in multiple places (like env var or a flag), otherwise, you'll see a usage error.
 :::
-
-<VersionBlock firstVersion="1.8">
 
 Warnings that should be treated as errors can be specified through `error` parameter. Warning names can be found in:
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
@@ -52,13 +48,9 @@ Here's how you can use the [`--warn-error-options`](#use---warn-error-options-fo
 - No nodes selected with `--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'`.
 - Deprecation warnings with `--warn-error-options '{"error": ["Deprecations"]}'` (new in v1.10).
 
-</VersionBlock>
-
 ### Configuration
 
 You can configure warnings as errors or which warnings to silence, by warn error options through command flag, environment variable, or `dbt_project.yml`.
-
-<VersionBlock firstVersion="1.8">
 
 You can choose to:
 
@@ -81,15 +73,12 @@ In the following example, we're silencing the [`NoNodesForSelectionCriteria` war
   ```
 
   </File>
-</VersionBlock>
 
 ### Examples
 Here are some examples that show you how to configure `warn_error_options` using flags or file-based configuration.
 
 #### Target specific warnings
 Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warning that occurs when your `--select` flag doesn't match any nodes/resources in your dbt project:
-
-<VersionBlock firstVersion="1.8">
 
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
@@ -130,25 +119,19 @@ The following example shows how to promote all warnings to errors, except for th
 
   </File>
 
-</VersionBlock>
-
 #### Promote all warnings to errors
 Some examples of how to promote all warnings to errors:
 
 ##### using dbt command flags
-
-<VersionBlock firstVersion="1.8"> 
 
 ```bash 
 dbt --warn-error run 
 dbt --warn-error-options '{"error": "all"}' run 
 dbt --warn-error-options '{"error": "*"}' run 
 ```
-</VersionBlock>
 
 ##### using environment variables
 
-<VersionBlock firstVersion="1.8"> 
 
 ```bash 
 WARN_ERROR=true dbt run 
@@ -156,10 +139,9 @@ DBT_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run
 DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
 ```
 
-</VersionBlock>
   
 :::caution
-Note, as mentioned earlier, using <VersionBlock firstVersion="1.8">`warn_error_options: error: "all"`</VersionBlock> will treat all current and future warnings as errors.
+Note, using `warn_error_options: error: "all"` will treat all current and future warnings as errors.
 
 This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::

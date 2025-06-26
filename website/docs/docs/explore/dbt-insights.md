@@ -4,6 +4,8 @@ description: "Learn how to query data and perform exploratory data analysis usin
 sidebar_label: "About dbt Insights"
 tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
+pagination_prev: "docs/explore/model-query-history"
+pagination_next: "docs/explore/navigate-dbt-insights"
 ---
 
 # About dbt Insights <Lifecycle status="preview,managed,managed_plus" />
@@ -11,10 +13,6 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 <IntroText>
 Learn how to query data with <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
 </IntroText>
-
-:::tip
-<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager.
-:::
 
 <Constant name="query_page" /> in <Constant name="cloud" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 

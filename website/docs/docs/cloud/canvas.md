@@ -29,7 +29,7 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 
 ## Feedback
 
-Please note, always review AI-generated code and content as it may produce incorrect results. <Constant name="visual_editor" /> features and/or functionality may be added or eliminated as part of the beta trial.
+Please note, always review AI-generated code and content as it may produce incorrect results.
 
 To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve <Constant name="visual_editor" />.
 

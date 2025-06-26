@@ -119,7 +119,7 @@ To create the configuration:
 5. Complete/edit the form (if you are migrating, the existing configurations carry over):
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-DevOps-org` ❌ Avoid `dev.azure.com/my-DevOps-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
-    Client Secrets: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the expiration of the app secret, and dbt Admins should note the expiration date for rotation.
+    - **Client Secret**: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="cloud" />. Entra ID admins are responsible for the expiration of the app secret, and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt."/>
 

@@ -1,7 +1,7 @@
 ---
 title: "Semantic models"
 id: "semantic-models"
-description: "Semantic models are yml abstractions on top of a dbt mode, connected via joining keys as edges"
+description: "Semantic models are YAML abstractions on top of a dbt mode, connected via joining keys as edges"
 keywords:
   - dbt metrics layer
 sidebar_label: Semantic models

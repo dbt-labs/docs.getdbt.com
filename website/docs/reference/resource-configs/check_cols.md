@@ -22,25 +22,6 @@ datatype: "[column_name] | all"
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{{ config(
-  strategy="check",
-  check_cols=["column_name"]
-) }}
-
-```
-
-</File>
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -88,26 +69,6 @@ snapshots:
 To select from this snapshot in a downstream model: `select * from {{ ref('orders_snapshot_check') }}`
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```sql
-{% snapshot orders_snapshot_check %}
-
-    {{
-        config(
-          strategy='check',
-          unique_key='id',
-          check_cols=['status', 'is_cancelled'],
-        )
-    }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
-
-</VersionBlock>
-
 ### Check all columns for changes
 
 <VersionBlock firstVersion="1.9">
@@ -129,21 +90,4 @@ snapshots:
 To select from this snapshot in a downstream model: `select * from {{ ref('orders_snapshot_check') }}`
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
 
-```sql
-{% snapshot orders_snapshot_check %}
-
-    {{
-        config(
-          strategy='check',
-          unique_key='id',
-          check_cols='all',
-        )
-    }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
-</VersionBlock>

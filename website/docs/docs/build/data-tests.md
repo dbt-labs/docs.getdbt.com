@@ -20,15 +20,11 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
 
-<VersionBlock firstVersion="1.8">
-
 :::important
 
-From dbt v1.8, "tests" are now called "data tests" to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+`tests` are now called `data tests` to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
-
-</VersionBlock>
 
 ## Overview
 
@@ -291,10 +287,8 @@ Note that, if you select to store test failures:
 
 
 ## New `data_tests:` syntax
-
-<VersionBlock firstVersion="1.8">
   
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests, the key was renamed from `tests:` to `data_tests:`. 
 
 dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
@@ -321,8 +315,6 @@ data_tests:
 
 </File>
 
-
-</VersionBlock>
 
 ## FAQs
 

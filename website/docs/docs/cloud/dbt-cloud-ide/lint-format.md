@@ -45,7 +45,7 @@ With the <Constant name="cloud_ide" />, you can seamlessly use [SQLFluff](https:
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="cloud_ide" />).
-- Displays a **Code Quality** tab to view code errors, provides code quality visibility and management, and displays the SQLFluff version used.
+- Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
 :::info Ephemeral models not supported
 Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
@@ -96,7 +96,7 @@ Refer to the [Jaffle shop SQLFluff config file](https://github.com/dbt-labs/jaff
 ```
 [sqlfluff]
 templater = dbt
-# This change (from jinja to dbt templater) will make linting slower
+# This change (from Jinja to dbt templater) will make linting slower
 # because linting will first compile dbt code into data warehouse code.
 runaway_limit = 10
 max_line_length = 80
@@ -219,11 +219,6 @@ However, you can customize and include an additional child `.sqlfluff` configura
 <DetailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
 
 Currently, running SQLFluff commands from the terminal isn't supported. 
-</DetailsToggle>
-
-<DetailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the Studio IDE?">
-- Double-check that your SQLFluff version matches the one in <Constant name="cloud_ide" /> (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
-- If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </DetailsToggle>
 
 <DetailsToggle alt_header="What are some considerations when using dbt linting?">

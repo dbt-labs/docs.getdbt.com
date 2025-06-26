@@ -2,6 +2,7 @@
 title: "Apache Iceberg Support"
 id: apache-iceberg-support
 sidebar_label: "Apache Iceberg support"
+pagination_next: "docs/mesh/iceberg/about-catalogs"
 description: Understand dbt platform support for Iceberg catalogs.
 ---
 
@@ -28,9 +29,9 @@ dbt abstracts the complexity of table formats so teams can focus on delivering r
     icon="snowflake"/>
 
 <Card
-    title="Databricks"
-    body="Databricks Iceberg Configurations"
-    link="/docs/mesh/iceberg/databricks-iceberg-support"
-    icon="databricks"/>
+    title="BigQuery"
+    body="BigQuery Iceberg Configurations"
+    link="/docs/mesh/iceberg/bigquery-iceberg-support"
+    icon="bigquery"/>
 
 </div>

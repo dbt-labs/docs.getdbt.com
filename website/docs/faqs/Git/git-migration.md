@@ -15,13 +15,13 @@ To migrate from one git provider to another, refer to the following steps to avo
    
 2. Go back to <Constant name="cloud" /> and set up your [integration for the new <Constant name="git" /> provider](/docs/cloud/git/git-configuration-in-dbt-cloud), if needed. 
 3. Disconnect the old repository in <Constant name="cloud" /> by going to **Account Settings** and then **Projects**.
-4. Click on the **Repository** link, then click **Edit** and **Disconnect**. 
-   
-   <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" width="80%" title="Disconnect and reconnect your Git repository in your dbt Account settings page."/>
+4. Click on the **Repository** link, then click **Edit** and **Disconnect**.
+      <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" width="80%" title="Disconnect and reconnect your Git repository in your dbt Account settings page."/>
 
-5. On the same page, connect to the new <Constant name="git" /> provider repository by clicking **Configure Repository**
+5. Click **Confirm Disconnect**.
+6. On the same page, connect to the new <Constant name="git" /> provider repository by clicking **Configure Repository**
    - If you're using the native integration, you may need to OAuth to it.
   
-6. That's it, you should now be connected to the new <Constant name="git" /> provider! 🎉
+7. That's it, you should now be connected to the new <Constant name="git" /> provider! 🎉
 
 Note &mdash; As a tip, we recommend you refresh your page and <Constant name="cloud_ide" /> before performing any actions. 

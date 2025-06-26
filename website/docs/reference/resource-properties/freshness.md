@@ -1,3 +1,20 @@
+<Tabs>
+<TabItem value="yml" label="Project file">
+
+<File name="dbt_project.yml">
+  
+```yaml
+sources:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+      warn_after:  
+        count: <positive_integer>
+        period: minute | hour | day
+```
+  
+</File>
+</TabItem>
+<TabItem value="project" label="Model YAML">
 <File name='models/<filename>.yml'>
 
 ```yaml
@@ -34,8 +51,9 @@ sources:
 
         ...
 ```
-
 </File>
+</TabItem>
+</Tabs>
 
 ## Definition
 A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
@@ -48,7 +66,7 @@ If a source has a `freshness:` block, dbt will attempt to calculate freshness fo
 - If `loaded_at_field` is provided, dbt will calculate freshness via a select query.
 - If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible. 
 <VersionBlock firstVersion="1.10"> 
-- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom sql query.
+- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom SQL query.
 - If `loaded_at_query` is provided, `loaded_at_field` should not be configured.
 </VersionBlock>
 

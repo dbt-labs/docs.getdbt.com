@@ -12,10 +12,6 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 Learn how to access <Constant name="query_page" />, run queries, and view results.
 </IntroText>
 
-:::tip
-<Constant name="query_page" /> is available in private beta to Enterprise accounts. To join, please reach out to your account manager. 
-:::
-
 <Constant name="query_page" /> provides a rich console experience with editor navigation. You can expect <Constant name="query_page" /> to:
 - Enable you to write SQL queries, with the option to open multiple tabs 
 - Have SQL + dbt autocomplete suggestions and syntax highlighting
@@ -151,6 +147,8 @@ This integrated view allows you and your users to maintain your query workflow, 
 To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/explore/navigate-dbt-insights#query-console-sidebar-menu).
 
 <Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
+
+### Set Jinja context
 
 ## Bookmark your queries
 

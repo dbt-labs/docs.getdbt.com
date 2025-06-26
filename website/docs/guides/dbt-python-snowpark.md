@@ -92,16 +92,16 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
     create or replace schema raw; 
     use schema raw; 
 
-    -- define our file format for reading in the csvs 
-    create or replace file format csvformat
-    type = csv
+    -- define our file format for reading in the CSVs 
+    create or replace file format CSVformat
+    type = CSV
     field_delimiter =','
     field_optionally_enclosed_by = '"', 
     skip_header=1; 
 
     --
     create or replace stage formula1_stage
-    file_format = csvformat 
+    file_format = CSVformat 
     url = 's3://formula1-dbt-cloud-python-demo/formula1-kaggle-data/';
 
     -- load in the 8 tables we need for our demo 
@@ -238,7 +238,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 6. Let’s unpack that pretty long query we ran into component parts. We ran this query to load in our 8 Formula 1 tables from a public S3 bucket. To do this, we:
     - Created a new database called `formula1` and a schema called `raw` to place our raw (untransformed) data into.
-    - Defined our file format for our CSV files. Importantly, here we use a parameter called `field_optionally_enclosed_by =` since the string columns in our Formula 1 csv files use quotes.  Quotes are used around string values to avoid parsing issues where commas `,` and new lines `/n` in data values could cause data loading errors.
+    - Defined our file format for our CSV files. Importantly, here we use a parameter called `field_optionally_enclosed_by =` since the string columns in our Formula 1 CSV files use quotes.  Quotes are used around string values to avoid parsing issues where commas `,` and new lines `/n` in data values could cause data loading errors.
     - Created a stage to locate our data we are going to load in. Snowflake Stages are locations where data files are stored.  Stages are used to both load and unload data to and from Snowflake locations. Here we are using an external stage, by referencing an S3 bucket.
     - Created our tables for our data to be copied into. These are empty tables with the column name and data type. Think of this as creating an empty container that the data will then fill into.
     - Used the `copy into` statement for each of our tables. We reference our staged location we created and upon loading errors continue to load in the rest of the data. You should not have data loading errors but if you do, those rows will be skipped and Snowflake will tell you which rows caused errors

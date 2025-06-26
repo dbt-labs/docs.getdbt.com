@@ -305,7 +305,7 @@ LEFT JOIN {{ source('upstream', 'source') }} s USING (id)
 | Option | Default | Description |
 | --- | --- | --- |
 | location | `external_location` macro | The path to write the external materialization to. See below for more details. |
-| format | parquet |The format of the external file |(parquet, csv, or json).
+| format | parquet |The format of the external file |(parquet, CSV, or JSON).
 | delimiter | , | For CSV files, the delimiter to use for fields. |
 | options | None | Any other options to pass to DuckDB's COPY operation (for example partition_by, codec, etc). |
 | `glue_register` | false | If true, try to register the file created by this model with the AWS Glue Catalog. |
@@ -314,7 +314,8 @@ LEFT JOIN {{ source('upstream', 'source') }} s USING (id)
 
 If the location argument is specified, it must be a filename (or S3 bucket/path), and `dbt-duckdb` will attempt to infer the format argument from the file extension of the location if the format argument is unspecified (this functionality was added in version 1.4.1.)
 
-If the location argument is not specified, then the external file will be named after the `model.sql` (or `model.py`) file that defined it with an extension that matches the format argument (parquet, csv, or json). By default, the external files are created relative to the current working directory, but you can change the default directory (or S3 bucket/prefix) by specifying the `external_root` setting in your DuckDB profile.
+If the location argument is not specified, then the external file will be named after the `model.sql` (or `model.py`) file that defined it with an extension that matches the format argument (parquet, CSV, or JSON). By default, the external files are created relative to the current working directory, but you can change the default directory (or S3 bucket/prefix) by specifying the `external_root` setting in your DuckDB profile.
+
 
 `dbt-duckdb` supports the `delete+insert` and `append` [strategies](/docs/build/incremental-strategy#built-in-strategies) for incremental table models, but there's no support for incremental materialization strategies for external models.
 

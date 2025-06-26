@@ -59,8 +59,10 @@
     border: none;
   }
 .discourseCta:hover {
-  background: var(--color-light-teal);
+  background: var(--ifm-color-primary);
   color: #fff;
+  text-decoration: underline;
+  border-color: var(--ifm-color-primary);
 }
 
 .loadMoreCta {

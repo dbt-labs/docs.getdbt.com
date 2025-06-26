@@ -16,7 +16,6 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
 
 To add an additional target (like `prod`) to your existing `profiles.yml`, you can add another entry under the `outputs` key.
 
-<VersionBlock firstVersion="1.8">
 
 <File name='profiles.yml'>
 
@@ -43,7 +42,6 @@ To add an additional target (like `prod`) to your existing `profiles.yml`, you c
 
 </File>
 
-</VersionBlock>
 
 ## User config
 

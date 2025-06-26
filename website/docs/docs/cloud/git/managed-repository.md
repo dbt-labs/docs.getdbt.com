@@ -25,3 +25,14 @@ To set up a project with a managed repository:
 6. Click **Create**.
    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
 
+## Download managed repository
+
+To download a copy of your managed repository from <Constant name="cloud" /> to your local machine:
+
+1. Use the **Project** selector on the main left-side menu to navigate to a project that's using a managed repository.
+2. Click **Dashboard** from the main left-side menu.
+3. From the dashboard, click **Settings**.
+4. Locate the **Repository** field and click the hyperlink for the repo.
+5. Below the **Deploy key** you will find the **Download repository** option. Click the button to download. If you don't see this option, you're either not assigned a [permission set](/docs/cloud/manage-access/enterprise-permissions#account-permissions) with `write` access to Git repositories, or you don't have a managed repo for your project. 
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/download-managed-repo.png" size="60%" title="The download button for a managed repo." />

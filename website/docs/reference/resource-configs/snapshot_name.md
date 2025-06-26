@@ -21,24 +21,6 @@ snapshots:
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{% snapshot snapshot_name %}
-
-{% endsnapshot %}
-
-```
-
-</File>
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-
-</VersionBlock>
 
 ## Description
 
@@ -70,19 +52,6 @@ snapshots:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/orders.sql'>
-
-```jinja2
-{% snapshot orders_snapshot %}
-...
-{% endsnapshot %}
-
-```
-
-</File>
-
-</VersionBlock>
 
 To select from this snapshot in a downstream model:
 

@@ -73,12 +73,9 @@ The specification of which columns are defined in a model's top-level `columns` 
   - `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
 - `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`.
 
-<VersionBlock firstVersion="1.8">
-
 :::tip
 Not to be confused with the `--select/--exclude` [syntax](/reference/node-selection/exclude), which is used for model selection.
 :::
-</VersionBlock>
 
 The `columns` list of a versioned model can have _at most one_ `include/exclude` element. However, if none of your model versions specify columns, you don't need to define columns at all and can omit the `columns/include`/`exclude` keys from the versioned model. In this case, dbt will automatically use all top-level columns for all versions. 
 

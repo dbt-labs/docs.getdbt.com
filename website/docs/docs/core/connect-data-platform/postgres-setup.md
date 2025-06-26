@@ -101,7 +101,6 @@ Installing `psycopg2-binary` uses a pre-built version of `psycopg2` which may no
 This is ideal for development and testing workflows where performance is less of a concern and speed and ease of install is more important.
 However, production environments will benefit from a version of `psycopg2` which is built from source for your particular operating system and architecture. In this scenario, speed and ease of install is less important as the on-going usage is the focus.
 
-<VersionBlock firstVersion="1.8">
 
 To use `psycopg2`:
 1. Install `dbt-postgres`
@@ -116,7 +115,6 @@ if [[ $(pip show psycopg2-binary) ]]; then
 fi
 ```
 
-</VersionBlock>
 
 Installing `psycopg2` often requires OS level dependencies.
 These dependencies may vary across operating systems and architectures.
@@ -133,12 +131,4 @@ pip install psycopg2
 ```
 Your OS may have its own dependencies based on your particular scenario.
 
-<VersionBlock firstVersion="1.8">
 
-#### Limitations
-
-In versions 1.8.0 and 1.8.1, `psycopg2-binary` is installed on MacOS and Windows operating systems and `psycopg2` is installed on Linux operating systems.
-This has the side effect of requiring the OS dependencies identified above to install `dbt-postgres` on Linux.
-Users will either need to update their workflows to install these dependencies, or upgrade to 1.8.2.
-
-</VersionBlock>

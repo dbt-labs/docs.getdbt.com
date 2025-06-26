@@ -35,3 +35,4 @@ You should use service tokens broadly for any production workflow where you need
 * **Production Terraform** &mdash; Use a service token since this is a production workflow and is acting as a service account and not a user account. 
 * **<Constant name="cloud_cli" />** &mdash; Use a PAT since the <Constant name="cloud_cli" /> works within the context of a user (the user is making the requests and has to operate within the context of their user account).
 * **Testing a custom script and staging Terraform or Postman** &mdash; We recommend using a PAT as this is a developmental workflow and is scoped to the user making the changes. When you push this script or Terraform into production, use a service token instead.
+* **API endpoints requiring user context** &mdash; Use PATs to authenticate to any API endpoint that requires user context (for example, endpoints to create and update user credentials). 

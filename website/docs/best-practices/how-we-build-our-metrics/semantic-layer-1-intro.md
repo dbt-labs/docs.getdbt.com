@@ -10,7 +10,7 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 
 ## Learning goals
 
-- ❓ Understand the **purpose and capabilities** of the ** <Constant name="semantic_layer" />**, particularly MetricFlow as the engine that powers it.
+- ❓ Understand the **purpose and capabilities** of the **<Constant name="semantic_layer" />**, particularly MetricFlow as the engine that powers it.
 - 🧱 Familiarity with the core components of MetricFlow — **semantic models and metrics** — and how they work together.
 - 🔁 Know how to **refactor** dbt models for the <Constant name="semantic_layer" />.
 - 🏅 Aware of **best practices** to take maximum advantage of the <Constant name="semantic_layer" />.

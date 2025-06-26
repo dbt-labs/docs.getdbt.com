@@ -44,7 +44,7 @@ Lots of great stuff to confer about this go-round: things really coalesced this 
 - Fix this one hairy bug where one email could have multiple user accounts
 - Fix setup-connection react-page routing
 - Break out group selection logic from license types and group names
-- Handle json errors in v1/v2 body parsing
+- Handle JSON errors in v1/v2 body parsing
 - Handle AuthForbidden and AuthCancelled graciously - ie, not throw 500s
 - Fix regression with <Constant name="cloud_ide" /> loading spinner
 
@@ -419,7 +419,7 @@ This version adds some new permission sets, and a new release candidate of dbt.
 
 #### Fixed
 
-- Removed .sql from csv download filename
+- Removed .sql from CSV download filename
 - Fixed breaking JobDefinition API with new param custom_branch_only
 - Fixed <Constant name="cloud_ide" /> query table column heading casing
 

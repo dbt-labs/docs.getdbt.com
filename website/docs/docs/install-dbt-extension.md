@@ -15,7 +15,7 @@ To use the extension, you must meet the following prerequisites:
 
 - You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
 - You are not using (or have disabled) 3rd party dbt extensions.
-- You are using a macOS, Windows, or a Linux-based computer.
+- You are using a macOS<!--, Windows,--> or Linux-based computer.
 - The dbt extension requires installation of the dbt Fusion engine. Fusion installation is part of the extension installation process.
 
 ## Installation instructions
@@ -75,7 +75,7 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
 4. In the **Set up your credentials** section, click **Download credentials**. This downloads the `dbt_cloud.yml` file. 
     <Lightbox src="/img/docs/extension/download-registration-2.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
 5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
-6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (<!--Windows/-->Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
 
 </Expandable>
 
@@ -87,7 +87,7 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
 4. In the **Configure Cloud authentication** section, click **Download CLI configuration file**. This downloads the `dbt_cloud.yml` file. 
     <Lightbox src="/img/docs/extension/download-registration.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
 5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
-6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (<!--Windows/-->Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
 
 </Expandable>
 
@@ -106,7 +106,7 @@ Note: It is possible to "hide" status bar items in VS Code. Double-check if the 
 
 If you are not seeing dbt LSP features in your editor, first consult the general troubleshooting steps above. If you have confirmed that the dbt extension is installed correctly, but you still do not see dbt Language Server features (autocomplete, go-to-definition, hover text, etc):
  - Check the version of your dbt extension on the extensions page in your editor. Ensure that you are using the latest available version of the dbt extension.
- - Try reinstalling the dbt Language Server by pressing `cmd+shift+P` (macOS) or `ctrl+shift+P` (Windows/Linux) and selecting the `dbt: Reinstall dbt LSP` command.
+ - Try reinstalling the dbt Language Server by pressing `cmd+shift+P` (macOS) or `ctrl+shift+P` (<!--Windows/-->Linux) and selecting the `dbt: Reinstall dbt LSP` command.
 
 #### Unsupported dbt version
 

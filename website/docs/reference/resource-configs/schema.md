@@ -49,12 +49,6 @@ This would result in the generated relation being located in the `mappings` sche
 
 <TabItem value="snapshots" label="Snapshots">
 
-<VersionBlock lastVersion="1.8">
-
-Available in <Constant name="core" /> v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or YAML file.
@@ -198,7 +192,7 @@ tests:
 
 </File>
 
-Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a sql statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
+Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a SQL statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
 
 ```sql
 create schema if not exists dev_username_dbt_test__audit authorization username;

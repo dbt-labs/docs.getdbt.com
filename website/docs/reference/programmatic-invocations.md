@@ -89,7 +89,6 @@ res = dbt.invoke(cli_args)
 
 Register `callbacks` on dbt's `EventManager`, to access structured events and enable custom logging. The current behavior of callbacks is to block subsequent steps from proceeding; this functionality is not guaranteed in future versions.
 
-<VersionBlock firstVersion="1.8">
 
 ```python
 from dbt.cli.main import dbtRunner
@@ -103,7 +102,6 @@ dbt = dbtRunner(callbacks=[print_version_callback])
 dbt.invoke(["list"])
 ```
 
-</VersionBlock>
 
 ### Overriding parameters
 

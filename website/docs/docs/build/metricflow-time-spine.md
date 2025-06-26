@@ -93,33 +93,6 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
 </File>
 </VersionBlock>
 
-<!--
-<VersionBlock lastVersion="1.8">
-<File name="models/_models.yml">
-  
-```yaml
-models:
-  - name: time_spine_hourly
-    description: A date spine with one row per hour, ranging from 2020-01-01 to 2039-12-31.
-    time_spine:
-      standard_granularity_column: date_hour # column for the standard grain of your table
-    columns:
-      - name: date_hour
-        granularity: hour # set granularity at column-level for standard_granularity_column
-  
-  - name: time_spine_daily
-    description: A date spine with one row per day, ranging from 2020-01-01 to 2039-12-31.
-    time_spine:
-      standard_granularity_column: date_day # column for the standard grain of your table
-    columns:
-      - name: date_day
-        granularity: day # set granularity at column-level for standard_granularity_column
-```
-
-</File>
-</VersionBlock>
--->
-
 - This example configuration shows a time spine model called  `time_spine_hourly` and `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. 
 - The `standard_granularity_column` is the column that maps to one of our [standard granularities](/docs/build/dimensions?dimension=time_gran). This column must be set under the `columns` key and should have a grain that is finer or equal to any custom granularity columns defined in the same model.
   - It needs to reference a column defined under the `columns` key, in this case, `date_hour` and `date_day`, respectively.
@@ -338,85 +311,6 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-<!-- this whole section is for 1.8 and and lower -->
-
-MetricFlow uses a time spine table to construct cumulative metrics. By default, MetricFlow expects the time spine table to be named `metricflow_time_spine` and doesn't support using a different name. For supported granularities, refer to the [dimensions](/docs/build/dimensions?dimension=time_gran#time) page.
-
-To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
-
-### Daily
-
-<File name='metricflow_time_spine.sql'>
-
-
-```sql
-{{
-    config(
-        materialized = 'table',
-    )
-}}
-
-with days as (
-
-    {{
-        dbt.date_spine(
-            'day',
-            "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2025','mm/dd/yyyy')"
-        )
-    }}
-
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select * from final
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_day  < dateadd(day, 30, current_timestamp())
-```
-
-</File>
-
-### Daily (BigQuery)
-
-Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
-
-<File name="metricflow_time_spine.sql">
-
-```sql
-{{config(materialized='table')}}
-with days as (
-    {{dbt.date_spine(
-        'day',
-        "DATE(2000,01,01)",
-        "DATE(2025,01,01)"
-    )
-    }}
-),
-
-final as (
-    select cast(date_day as date) as date_day
-    from days
-)
-
-select *
-from final
--- filter the time spine to a specific range
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_day < dateadd(day, 30, current_timestamp())
-```
-
-</File>
-
-You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but finer grains are only supported in versions 1.9 and higher.
-
-</VersionBlock>
-
 
 ## Custom calendar <Lifecycle status="Preview"/>
 
@@ -424,12 +318,6 @@ You only need to include the `date_day` column in the table. MetricFlow can hand
 Check out our mini guide on [how to create a time spine table](/guides/mf-time-spine) to get started!
 :::
 
-
-<VersionBlock lastVersion="1.8">
-
-The ability to configure custom calendars, such as a fiscal calendar, is available now in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks), and it will be available in [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 

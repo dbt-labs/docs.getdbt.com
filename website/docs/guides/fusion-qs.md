@@ -35,7 +35,7 @@ This guide will focus on the dbt extension and CLI combined experience.
 
 To take full advantage of this guide, you'll need to meet the following prerequisites:
 - You should have a basic understanding of dbt projects, git workflows, and data warehouse requirements.
-- Currently, Snowflake is the only supported data warehouse. More adapters are coming soon.
+- Currently, Snowflake and Databricks are the only supported data platforms. More adapters are coming soon.
 - You need a macOS (Terminal) or Windows (Powershell) machine to run the dbt Fusion engine. 
 - You need to have [Visual Studio Code](https://code.visualstudio.com/) installed. The [Cursor](https://www.cursor.com/en) code editor will also work, but these instructions will focus on VS Code.
     - Disable all third-party dbt extensions to avoid issues.
@@ -112,6 +112,7 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 2. Click **Install**.
 3. You will see a prompt to register the extension. You can skip this step for now, but check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.
 4. If you see the **dbt Extension** label in your editor's status bar, then the extension has installed successfully.
+    <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="Verify installation in the status bar."/>
 
 ## Initialize the Jaffle Shop project
 

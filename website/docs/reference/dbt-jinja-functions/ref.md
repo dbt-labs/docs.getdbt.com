@@ -13,6 +13,7 @@ select * from {{ ref("node_name") }}
 ## Definition
 
 This function:
+
 - Returns a [Relation](/reference/dbt-classes#relation) for a [model](/docs/build/models), [seed](/docs/build/seeds), or [snapshot](/docs/build/snapshots)
 - Creates dependencies between the referenced node and the current model, which is useful for documentation and [node selection](/reference/node-selection/syntax)
 - Compiles to the full object name in the database
@@ -28,8 +29,6 @@ from public.raw_data
 
 </File>
 
-
-
 <File name='model_b.sql'>
 
 ```sql
@@ -42,7 +41,6 @@ from {{ref('model_a')}}
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
 The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [\{\{ this \}\} variable](/reference/dbt-jinja-functions/this).
-  - Note &mdash; Prior to dbt v1.6, the <Constant name="cloud_ide" /> returns `request` as the result of `{{ ref.identifier }}`.
 
 ## Advanced ref usage
 
@@ -55,7 +53,8 @@ This functionality is useful when referencing versioned models that make breakin
 
 If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
 
-#### Example:
+#### Example
+
 <File name='models/<schema>.yml'>
 
 ```yml
@@ -82,7 +81,7 @@ select * from {{ ref('model_name') }}
 
 ### Ref project-specific models
 
-You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and a model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages. 
+You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and a model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages.
 
 When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/mesh/govern/project-dependencies).
 
@@ -100,30 +99,56 @@ We especially recommend using two-argument `ref` to avoid ambiguity, in cases wh
 
 ### Forcing dependencies
 
-In normal usage, dbt knows the proper order to run all models based on the use of the `ref` function. There are some cases where dbt doesn't know when a model should be run. For example, when a model only references a macro:
-- In this case, dbt thinks the model can run first because no explicit references are made at compilation time.
+In normal usage, dbt knows the proper order to run all models based on the use of the `ref` function, because it discovers them all during its parse phase. dbt will throw an error if it discovers an "unexpected" `ref` at run time (meaning it was hidden during the parsing phase). The most common cause for this is that the `ref` is inside a branch of an `if` statement that wasn't evaluated during parsing.
+
+<File name='conditional_ref.sql'>
+
+```sql
+--This macro already has its own `if execute` check, so this one is redundant and introduced solely to cause an error
+{% if execute %}
+  {% set sql_statement %}
+      select max(created_at) from {{ ref('processed_orders') }}
+  {% endset %}
+
+  {%- set newest_processed_order = dbt_utils.get_single_value(sql_statement, default="'2020-01-01'") -%}
+{% endif %}
+
+select
+
+    *,
+    last_order_at > '{{ newest_processed_order }}' as has_unprocessed_order
+
+from {{ ref('users') }}
+```
+
+</File>
+
+- In this case, dbt doesn't know that `processed_orders` is a dependency because `execute` is false during parsing.
 - To address this, use a SQL comment along with the `ref` function &mdash; dbt will understand the dependency and the compiled query will still be valid:
 
-```sql
- -- depends_on: {{ ref('upstream_parent_model') }}
-
- {{ your_macro('variable') }}
-```
-
-dbt will see the `ref` and build this model after the specified reference.
-
-Another example is:
-- When a reference appears within an [`is_incremental()`](/docs/build/incremental-models#understand-the-is_incremental-macro) conditional block.
-- This is because the `is_incremental()` macro will always return `false` at parse time, so any references within it can't be inferred.
-- To handle this, you can use a SQL comment outside of the `is_incremental()` conditional:
+<File name='conditional_ref.sql'>
 
 ```sql
--- depends_on: {{ source('raw', 'orders') }}
+--Now that this ref is outside of the if block, it will be detected during parsing
+--depends_on: {{ ref('processed_orders') }}
 
-{% if is_incremental() %}
-select * from {{ source('raw', 'orders') }}
+{% if execute %}
+  {% set sql_statement %}
+      select max(created_at) from {{ ref('processed_orders') }}
+  {% endset %}
+
+  {%- set newest_processed_order = dbt_utils.get_single_value(sql_statement, default="'2020-01-01'") -%}
 {% endif %}
+
+select
+
+    *,
+    last_order_at > '{{ newest_processed_order }}' as has_unprocessed_order
+
+from {{ ref('users') }}
 ```
+
+</File>
 
 :::tip
 To ensure dbt understands the dependency, use a SQL comment instead of a Jinja comment. Jinja comments (`{# ... #}`) _don't_ work and are ignored by dbt's parser, meaning `ref` is never processed and resolved. SQL comments, however, (`--` or `/* ... */`) _do_ work because dbt still evaluates Jinja inside SQL comments.

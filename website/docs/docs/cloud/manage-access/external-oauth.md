@@ -136,7 +136,7 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 7. Give the rule a descriptive name and scroll down to **token lifetimes**. Configure the **Access token lifetime is**, **Refresh token lifetime is**, and **but will expire if not used every** settings according to your organizational policies. We recommend the defaults of 1 hour and 90 days. Stricter rules increase the odds of your users having to re-authenticate.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-token-lifetime.png" width="60%" title="Toke lifetime settings in the API rule window." />
+<Lightbox src="/img/docs/dbt-cloud/configure-token-lifetime.png" width="60%" title="Token lifetime settings in the API rule window." />
 
 8. Navigate back to the **Settings** tab and leave it open in your browser. You’ll need some of the information in later steps.
 
@@ -204,7 +204,7 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 ### 6. Create a new connection in dbt
 
 
-1. Navigate the **Account settings** and click **Connections** from the menu. Click **Add connection**.
+1. Navigate to **Account settings** and click **Connections** from the menu. Click **New connection**.
 2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `OAuth method`, select the external OAuth you just created.
 
 

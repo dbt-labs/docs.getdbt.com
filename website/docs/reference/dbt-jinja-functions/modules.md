@@ -2,7 +2,7 @@
 title: "About modules variable"
 sidebar_label: "modules"
 id: "modules"
-description: "`modules` jinja variables has useful Python modules to operate data."
+description: "`modules` Jinja variables has useful Python modules to operate data."
 ---
 
 The `modules` variable in the Jinja context contains useful Python modules for operating on data.

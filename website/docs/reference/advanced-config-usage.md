@@ -4,7 +4,7 @@ sidebar_label: Advanced usage
 ---
 ## Alternative config block syntax
 
-Some configurations may contain characters (e.g. dashes) that cannot be parsed as a jinja argument. For example, the following would return an error:
+Some configurations may contain characters (e.g. dashes) that cannot be parsed as a Jinja argument. For example, the following would return an error:
 
 ```sql
 {{ config(

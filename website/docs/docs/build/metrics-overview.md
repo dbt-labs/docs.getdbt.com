@@ -13,9 +13,6 @@ Metrics must be defined in a YAML file &mdash; either within the same file as yo
 
 The keys for metrics definitions are:
 
-<!-- for v1.8 and higher -->
-
-<VersionBlock firstVersion="1.8">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -48,21 +45,12 @@ metrics:
 ```
 
 </File>
-</VersionBlock>
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
 ## Default granularity for metrics
-
-<VersionBlock lastVersion="1.8">
-Default time granularity for metrics is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. 
-
-Default time granularity for metrics is available now in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks), and it will be available in [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9). 
-
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -255,8 +243,6 @@ A filter is configured using Jinja templating. Use the following syntax to refer
 
 Refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
 
-<VersionBlock firstVersion="1.8">
-
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
@@ -274,7 +260,6 @@ filter: |
 
 ```
 </File>
-</VersionBlock>
 
 For example, if you want to filter for the order date dimension grouped by month, use the following syntax:
 

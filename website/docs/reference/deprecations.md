@@ -272,7 +272,7 @@ Begin referencing the new package in your `packages.yml` instead of the old pack
 
 ### ProjectFlagsMovedDeprecation
 
-In dbt [v1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#quick-hits), the `config` property that had been configurable in `profiles.yml` was deprecated in favor of `flags` in the `dbt_project.yaml`. If you see this deprecation warning, dbt detected the `config` property in your `profiles.yml`.
+The `config` property that had been configurable in `profiles.yml` was deprecated in favor of `flags` in the `dbt_project.yaml`. If you see this deprecation warning, dbt detected the `config` property in your `profiles.yml`.
 
 Example:
 

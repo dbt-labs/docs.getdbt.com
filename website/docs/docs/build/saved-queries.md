@@ -41,29 +41,6 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 </VersionBlock>
 
-<!-- For versions 1.8 and higher -->
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
-
-| Parameter | Type    | Required | Description    |
-|-------|---------|----------|----------------|
-| `name`       | String    | Required     | Name of the saved query object.          |
-| `description`     | String      | Required     | A description of the saved query.     |
-| `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
-| `config`     | String      |  Optional     |  Use the [`config`](/reference/resource-properties/config) property to specify configurations for your saved query. Supports `cache`, [`enabled`](/reference/resource-configs/enabled), `export_as`, [`group`](/reference/resource-configs/group), [`meta`](/reference/resource-configs/meta), and [`schema`](/reference/resource-configs/schema)  configurations.   |
-| `config::cache::enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
-| `query_params`       | Structure   | Required     | Contains the query parameters. |
-| `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
-| `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
-| `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
-| `exports::name`       | String               | Required     | Name of the export object.      |
-| `exports::config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export.  |
-| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
-| `exports::config::schema`   | String   | Optional    | The schema for creating the table or view. This option cannot be used for caching.   |
-| `exports::config::alias`  | String     | Optional    | The table alias used to write to the table or view.  This option cannot be used for caching.  | 
-
-</VersionBlock> 
-
 If you use multiple metrics in a saved query, then you will only be able to reference the common dimensions these metrics share in the `group_by` or `where` clauses. Use the entity name prefix with the Dimension object, like `Dimension('user__ds')`.
 
 ## Configure saved query
@@ -105,37 +82,8 @@ saved_queries:
 ```
 </VersionBlock>
 
-<!-- For versions 1.8 and higher -->
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
-
-```yaml
-saved_queries:
-  - name: test_saved_query
-    description: "{{ doc('saved_query_description') }}"
-    label: Test saved query
-    config:
-      cache:
-        enabled: true  # Or false if you want it disabled by default
-    query_params:
-      metrics:
-        - simple_metric
-      group_by:
-        - "Dimension('user__ds')"
-      where:
-        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
-    exports:
-      - name: my_export
-        config:
-          export_as: table
-          alias: my_export_alias
-          schema: my_export_schema_name
-```
-
-</VersionBlock>
 </File>
 
-<VersionBlock firstVersion="1.8">
 
 Note that you can set `export_as` to both the saved query and the exports [config](/reference/resource-properties/config), with the exports config value taking precedence. If a key isn't set in the exports config, it will inherit the saved query config value.
 
@@ -156,7 +104,6 @@ filter: |
 filter: |  
   {{ Metric('metric_name', group_by=['entity_name']) }}
 ```
-</VersionBlock>
 
 #### Project-level saved queries
 
@@ -219,34 +166,6 @@ saved_queries:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-saved_queries:
-  - name: order_metrics
-    description: Relevant order metrics
-    query_params:
-      metrics:
-        - orders
-        - large_order
-        - food_orders
-        - order_total
-      group_by:
-        - Entity('order_id')
-        - TimeDimension('metric_time', 'day')
-        - Dimension('customer__customer_name')
-        - ... # Additional group_by
-      where:
-        - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
-         - ... # Additional where clauses
-    exports:
-      - name: order_metrics
-        config:
-          export_as: table # Options available: table, view
-          schema: my_export_schema_name # Optional - defaults to deployment schema
-          alias: my_export_alias # Optional - defaults to Export name
-```
-</VersionBlock>
 
 </File>
 

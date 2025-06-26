@@ -11,8 +11,8 @@ pagination_next: "docs/deploy/hybrid-setup"
 With Hybrid projects, your organization can adopt complementary <Constant name="core" /> and <Constant name="cloud" /> workflows (where some teams develop projects in <Constant name="core" /> and others in <Constant name="cloud" />) and seamlessly integrate these workflows by automatically uploading <Constant name="core" /> [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud" />.
 </IntroText>
 
-:::tip Available in private beta
-Hybrid projects is available in private beta to [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing). To register your interest in the beta, reach out to your account representative.
+:::tip Available in public preview
+Hybrid projects is available in public preview to [<Constant name="cloud" /> Enterprise accounts](https://www.getdbt.com/pricing).
 :::
 
 <Constant name="core" /> users can seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) like [run results.json](/reference/artifacts/run-results-json), [manifest.json](/reference/artifacts/manifest-json), [catalog.json](/reference/artifacts/catalog-json), [sources.json](/reference/artifacts/sources-json), and so on &mdash; into <Constant name="cloud" /> after executing a run in the <Constant name="core" /> command line interface (CLI), which helps:

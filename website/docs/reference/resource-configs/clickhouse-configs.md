@@ -187,24 +187,6 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is
 supported by the ClickHouse connector and is configured using the following syntax:
 
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/<model_name>.sql'>
-
-```jinja
-{{
-   config(
-     target_schema = "<schema_name>",
-     unique_key = "<column-name>",
-     strategy = "<strategy>",
-     updated_at = "<unpdated_at_column-name>",
-   )
-}}
-```
-
-</File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -264,7 +246,7 @@ To prevent a warning, make sure to explicitly set a value for `quote_columns` in
 
 ```yaml
 seeds:
-  +quote_columns: false  #or `true` if you have csv column headers with spaces
+  +quote_columns: false  #or `true` if you have CSV column headers with spaces
 ```
 
  

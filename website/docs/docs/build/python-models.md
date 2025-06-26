@@ -145,8 +145,6 @@ with upstream_python_model as (
 Referencing [ephemeral](/docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-core/issues/7288)) 
 :::
 
-<VersionBlock firstVersion="1.8">
-
 From dbt version 1.8, Python models also support dynamic configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
 
 <File name='models/my_python_model.py'>
@@ -163,7 +161,6 @@ print(f"{dbt.config.get('my_var')}")  # Output after change: 5
 This also means you can use `dbt.config.get()` within Python models to ensure that configuration values are effectively retrievable and usable within Python f-strings.
 
 </File>
-</VersionBlock>
 
 ## Configuring Python models
 
@@ -196,7 +193,7 @@ Out of the box, the `dbt` class supports:
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
 
-It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). Starting from dbt v1.8, the `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated YAML file config:
+It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated YAML file config:
 
 <File name='models/config.yml'>
 
@@ -233,8 +230,6 @@ def model(dbt, session):
 
 </File>
 
-<VersionBlock firstVersion="1.8">
-
 #### Dynamic configurations
 
 In addition to the existing methods of configuring Python models, you also have dynamic access to configuration values set with `dbt.config()` within Python models using f-strings. This increases the possibilities for custom logic and configuration management.
@@ -252,7 +247,6 @@ def model(dbt, session):
 ```
 
 </File>
-</VersionBlock>
 
 ### Materializations
 

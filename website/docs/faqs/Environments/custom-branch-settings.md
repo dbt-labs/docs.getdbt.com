@@ -22,10 +22,10 @@ Only one branch can be protected. If you specify a custom branch, the primary br
 
 For example, if you want to use the `develop` branch of a connected repository:
 
-- Go to an environment and select **Settings** to edit it
-- Select  **Only run on a custom branch** in **General settings**
-- Enter **develop** as the name of your custom branch
-- Click **Save**
+1. Go to an environment and click **Settings** > **Edit** to edit the environment.
+2. Select **Only run on a custom branch** in **General settings**.
+3. Enter **develop** as the name of your custom branch.
+4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" width="100%" title="Configuring a custom base repository branch"/>
 

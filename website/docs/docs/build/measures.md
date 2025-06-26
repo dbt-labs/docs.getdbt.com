@@ -37,23 +37,6 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-semantic_models:
-  - name: semantic_model_name
-   ..rest of the semantic model config
-    measures:
-      - name: The name of the measure
-        description: 'same as always' ## Optional
-        agg: the aggregation type.
-        expr: the field
-        agg_params: 'specific aggregation properties such as a percentile'  ## Optional
-        agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
-        non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
-```
-</VersionBlock>
-
 ### Name
 
 When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the measure's `name` differs from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
@@ -209,90 +192,6 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-semantic_models:
-  - name: transactions
-    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each sku.
-    model: ref('schema.transactions')
-    defaults:
-      agg_time_dimension: transaction_date
-
-# --- entities ---
-    entities:
-      - name: transaction_id
-        type: primary
-      - name: customer_id
-        type: foreign
-      - name: store_id
-        type: foreign
-      - name: product_id
-        type: foreign
-
-# --- measures ---
-    measures:
-      - name: transaction_amount_usd
-        description: Total usd value of transactions
-        expr: transaction_amount_usd
-        agg: sum
-      - name: transaction_amount_usd_avg
-        description: Average usd value of transactions
-        expr: transaction_amount_usd
-        agg: average
-      - name: transaction_amount_usd_max
-        description: Maximum usd value of transactions
-        expr: transaction_amount_usd
-        agg: max
-      - name: transaction_amount_usd_min
-        description: Minimum usd value of transactions
-        expr: transaction_amount_usd
-        agg: min
-      - name: quick_buy_transactions 
-        description: The total transactions bought as quick buy
-        expr: quick_buy_flag 
-        agg: sum_boolean 
-      - name: distinct_transactions_count
-        description: Distinct count of transactions 
-        expr: transaction_id
-        agg: count_distinct
-      - name: transaction_amount_avg 
-        description: The average value of transactions 
-        expr: transaction_amount_usd
-        agg: average 
-      - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
-        description: The total usd value of valid transactions only
-        expr: case when is_valid = True then transaction_amount_usd else 0 end 
-        agg: sum
-      - name: transactions
-        description: The average value of transactions.
-        expr: transaction_amount_usd
-        agg: average
-      - name: p99_transaction_value
-        description: The 99th percentile transaction value
-        expr: transaction_amount_usd
-        agg: percentile
-        agg_params:
-          percentile: .99
-          use_discrete_percentile: False # False calculates the continuous percentile, True calculates the discrete percentile.
-      - name: median_transaction_value
-        description: The median transaction value
-        expr: transaction_amount_usd
-        agg: median
-        
-# --- dimensions ---
-    dimensions:
-      - name: transaction_date
-        type: time
-        expr: date_trunc('day', ts) # expr refers to underlying column ts
-        type_params:
-          time_granularity: day
-      - name: is_bulk_transaction
-        type: categorical
-        expr: case when quantity > 10 then true else false end
-
-```
-</VersionBlock>
 
 ### Non-additive dimensions
 

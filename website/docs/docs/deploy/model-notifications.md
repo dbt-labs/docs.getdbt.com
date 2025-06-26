@@ -126,6 +126,8 @@ Provide <Constant name="cloud" /> account members the ability to configure and r
 To use model-level notifications, your <Constant name="cloud" /> account must have access to the feature. Ask your <Constant name="cloud" /> administrator to enable this feature for account members by following these steps:
 
 1. Navigate to **Notification settings** from your profile name in the sidebar (lower left-hand side). 
-1. From **Email notifications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and/or Fails). 
+2. From **Email notifications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and/or Fails). 
 
   <Lightbox src="/img/docs/dbt-cloud/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
+
+3. Click **Save**.

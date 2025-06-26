@@ -26,6 +26,7 @@ To configure the cost management tools, you must have the following:
 - Proper [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges) in Snowflake to create a user and assign them database access.
 - A supported data warehouse. Note: Only Snowflake is supported at this time. More warehouses coming soon!
 - A <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
+- Support for <Constant name="core" /> and the dbt Fusion engine is coming soon! Select features will be introduced in [v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10), with many more to come in future versions.
 
 
 ## Set up in Snowflake
@@ -93,9 +94,8 @@ Once the user is created and assigned proper privileges, it's time to configure 
 
 Configuring the cost management features requires both a connection and a user component:
 
-- **[Connection setup](#connection-setup):** Set up the credentials used to access the data warehouse information. Only one unique [connection](/docs/cloud/connect-data-platform/about-connections#connection-management) per warehouse needs to have the credentials configured.
-
-- **[Provision user access](#provision-user-access):** Add new permissions to users and/or groups to regulate access to the dashboard
+- **[Connection setup](#connection-setup):** Set up the credentials used to access the data warehouse information. Use the connection associated with your main account identifier (name or ID). Only one unique [connection](/docs/cloud/connect-data-platform/about-connections#connection-management) per warehouse needs to have the credentials configured. If you have multiple connections that reference the same account identifier, you only need to add platform metadata credentials to one of them.
+- **[Provision user access](#provision-user-access):** Add new permissions to users and/or groups to regulate access to the dashboard.
 
 ### Connection setup
 

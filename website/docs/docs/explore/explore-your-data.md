@@ -17,7 +17,7 @@ hide_table_of_contents: true
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Insights (beta)"
+    title="dbt Insights"
     body="Query data and perform exploratory data analysis using dbt Insights"
     link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>

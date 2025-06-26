@@ -90,25 +90,6 @@ snapshots:
 ```
 </File>
 </VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-<File name="models/modlename.sql">
-
-```sql
-
-{{ config(
-    event_time: 'my_time_field'
-) }}
-```
-
-</File>
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="sources" label="Sources">
@@ -195,7 +176,7 @@ models:
 
 </File>
 
-Example in sql model config block:
+Example in SQL model config block:
 
 <File name="models/user_sessions.sql">
 

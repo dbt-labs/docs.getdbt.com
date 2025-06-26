@@ -11,7 +11,7 @@ The Power BI integration enables you to query the <Constant name="semantic_layer
 
 :::tip
 The <Constant name="semantic_layer" /> Power BI integration is currently in private beta. To join the beta, contact your account representative.
-:::
+:::  
 
 ## Prerequisites
 

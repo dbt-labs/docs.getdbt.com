@@ -109,26 +109,6 @@ snapshots:
 
 </File>
 
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/<filename>.sql'>
-
-```sql
-{% snapshot snapshot_name %}
-{{ config(
-    pre_hook="SQL-statement" | ["SQL-statement"],
-    post_hook="SQL-statement" | ["SQL-statement"],
-) }}
-
-select ...
-
-{% end_snapshot %}
-
-```
-
-</File>
-</VersionBlock>
-
 <File name='snapshots/snapshot.yml'>
 
 ```yml

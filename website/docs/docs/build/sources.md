@@ -9,7 +9,7 @@ search_weight: "heavy"
 ## Related reference docs
 * [Source properties](/reference/source-properties)
 * [Source configurations](/reference/source-configs)
-* [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
+* [`{{ source() }}` Jinja function](/reference/dbt-jinja-functions/source)
 * [`source freshness` command](/reference/commands/source)
 
 ## Using sources
@@ -103,6 +103,7 @@ sources:
     description: This is a replica of the Postgres database used by our app
     tables:
       - name: orders
+        database: raw
         description: >
           One record per order. Includes cancelled and deleted orders.
         columns:

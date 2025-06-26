@@ -724,7 +724,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🔎 Discoverability
 
     - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml) by adding a callout on several key pages.
-    - Fleshed out the [model jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
+    - Fleshed out the [model Jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
     - Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
     ## Cloud projects
@@ -1008,7 +1008,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Reliability improvements – Improved error handling that previously put IDE in a bad state
     - Corrected the list of dropdown options for the Build button
     - Adjusted startup page duration
-    - Added code snippets for `unique` and `not_null` tests for yml files
+    - Added code snippets for `unique` and `not_null` tests for YAML files
     - Added code snippets for metrics based on environment dbt versions
     - Changed “commit and push” to “commit and sync” to better reflect the action
     - Improved error message when saving or renaming files to duplicate names

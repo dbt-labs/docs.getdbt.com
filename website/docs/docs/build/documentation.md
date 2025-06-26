@@ -126,12 +126,6 @@ Docs blocks should be placed in files with a `.md` file extension. By default, d
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
-
-</VersionBlock>
-
 ### Usage
 To use a docs block, reference it from your `schema.yml` file with the [doc()](/reference/dbt-jinja-functions/doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown here:
 

@@ -63,7 +63,7 @@ models:
 
 <TabItem value="Model file">
 
-Alternatively, materializations can be configured directly inside of the model sql files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](/reference/resource-configs/redshift-configs) or [BigQuery specific configurations](/reference/resource-configs/bigquery-configs)).
+Alternatively, materializations can be configured directly inside of the model SQL files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](/reference/resource-configs/redshift-configs) or [BigQuery specific configurations](/reference/resource-configs/bigquery-configs)).
 
 <File name='models/events/stg_event_log.sql'>
 

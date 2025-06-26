@@ -62,7 +62,11 @@ If you're on an Enterprise-tier plan and have the correct [permissions](/docs/cl
 
 <TabItem value="starter" label="Starter plans">
 
-If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
+If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. 
+
+Refer to [Self-service Starter account permissions](/docs/cloud/manage-access/self-service-permissions#licenses) for more information on the number of each license type included in the Starter plan.
+
+You'll need to make two changes:
 
 - Adjust your developer user seat count, which manages the users invited to your <Constant name="cloud" /> project. 
 - Adjust your developer billing seat count, which manages the number of billable seats. 
@@ -76,13 +80,13 @@ To add a user in <Constant name="cloud" />, you must be an account owner or have
 
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="75%" title="Navigate to Account Settings" />
+<Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" width="75%" title="Navigate to Account settings" />
 
 2. In **Account Settings**, select **Billing**. 
-3. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
+3. Under **Billing details**, enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing address** section. Leaving these blank won't allow you to save your changes.
 4. Press **Update Payment Information** to save your changes.
 
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="75%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.png" width="75%" title="Navigate to Account settings -> Billing to modify billing seat count" />
 
 
 Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your <Constant name="cloud" /> account:
@@ -96,22 +100,19 @@ To delete a user in <Constant name="cloud" />, you must be an account owner or h
 
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
+<Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" width="85%" title="Navigate to Account settings" />
 
-2. In **Account Settings**, select **Users**.
+2. In **Account settings**, select **Users**.
 3. Select the user you want to delete, then click **Edit**. 
 4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
 
 <Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="75%" title="Deleting a user" />
 
+import LicenseCount from '/snippets/_license-count.md';
 
-If you are on a **Starter** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
-
-1. In **Account Settings**, select **Billing**. 
-2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. If you leave any field blank, you won't be able to save your changes.
-3. Click **Update Payment Information** to save your changes. 
+<LicenseCount/>
         
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="75%" title="The Billing** page in your **Account Settings" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.png" width="75%" title="The Billing** page in your **Account settings" />
 
 Great work! After completing these steps, your <Constant name="cloud" /> user count and billing count should now be the same.
 

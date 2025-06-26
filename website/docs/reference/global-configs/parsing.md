@@ -6,13 +6,13 @@ sidebar: "Parsing"
 
 ### Partial Parsing
 
-The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
+The `PARTIAL_PARSE` flag can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
-<File name='profiles.yml'>
+<File name='dbt_project.yml'>
 
 ```yaml
 
-config:
+flags:
   partial_parse: true
 
 ```

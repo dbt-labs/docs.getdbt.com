@@ -3,7 +3,7 @@ title: "About data platform connections"
 id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
-pagination_next: "docs/cloud/connect-data-platform/connect-microsoft-fabric"
+pagination_next: "docs/cloud/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 ---
 <Constant name="cloud" /> can connect with a variety of data platform providers including: 

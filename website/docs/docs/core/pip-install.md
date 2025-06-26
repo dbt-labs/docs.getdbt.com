@@ -112,19 +112,15 @@ alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
 
 ## Installing the adapter
 
-Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Beginning in v1.8, installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
-
-<VersionBlock firstVersion="1.8">
+Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
 
 ```shell
 python -m pip install dbt-core dbt-ADAPTER_NAME
 ```
 
-</VersionBlock>
 
 For example, if using Postgres:
 
-<VersionBlock firstVersion="1.8">
 
 ```shell
 python -m pip install dbt-core dbt-postgres
@@ -144,7 +140,6 @@ Plugins:
 ```
 
 All adapters build on top of `dbt-core`. Some also depend on other adapters: for example, `dbt-redshift` builds on top of `dbt-postgres`. In that case, you would see those adapters included by your specific installation, too.
-</VersionBlock>
 
 ### Upgrade adapters
 
@@ -196,7 +191,6 @@ python -m pip install \
 
 Or, better yet, just install the package(s) you need!
 
-<VersionBlock firstVersion="1.8">
 
 ## Installing prereleases
 
@@ -285,4 +279,4 @@ dbt --version
 </Expandable>
 
 
-</VersionBlock>
+

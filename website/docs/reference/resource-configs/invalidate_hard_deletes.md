@@ -39,27 +39,6 @@ snapshots:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{{
-  config(
-    strategy="timestamp",
-    invalidate_hard_deletes=True
-  )
-}}
-
-```
-
-</File>
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -98,28 +77,4 @@ snapshots:
   ```
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/orders.sql'>
-
-```sql
-{% snapshot orders_snapshot %}
-
-    {{
-        config(
-          target_schema='snapshots',
-          strategy='timestamp',
-          unique_key='id',
-          updated_at='updated_at',
-          invalidate_hard_deletes=True,
-        )
-    }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
-
-</File>
 </VersionBlock>

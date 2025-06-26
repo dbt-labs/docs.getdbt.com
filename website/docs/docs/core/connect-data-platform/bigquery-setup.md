@@ -29,7 +29,7 @@ BigQuery targets can be specified using one of four methods:
 1. [OAuth via `gcloud`](#oauth-via-gcloud)
 2. [OAuth token-based](#oauth-token-based)
 3. [service account file](#service-account-file)
-4. [service account json](#service-account-json)
+4. [service account JSON](#service-account-json)
 
 For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
@@ -158,7 +158,7 @@ my-bigquery-db:
       threads: 4 # Must be a value of 1 or greater
       [OPTIONAL_CONFIG](#optional-configurations): VALUE
 
-      # These fields come from the service account json keyfile
+      # These fields come from the service account JSON keyfile
       keyfile_json:
         type: xxx
         project_id: xxx

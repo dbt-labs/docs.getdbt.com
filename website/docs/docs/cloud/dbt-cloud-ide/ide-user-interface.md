@@ -81,7 +81,7 @@ The <Constant name="cloud_ide" /> features some delightful tools and layouts to 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-markdown-with-save.jpg" width="90%" title="The Markdown Preview console tab renders markdown code below the Editor tab."/>
 
 - **CSV Preview console tab &mdash;** The CSV Preview console tab displays the data from your CSV file in a table, which updates automatically as you edit the file in your seed directory.
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-csv.jpg" width="90%" title="View csv code in the CSV Preview console tab below the Editor tab."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-csv.jpg" width="90%" title="View CSV code in the CSV Preview console tab below the Editor tab."/>
 
 ## Console section
 

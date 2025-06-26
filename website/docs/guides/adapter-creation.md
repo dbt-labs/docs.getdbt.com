@@ -100,7 +100,7 @@ A set of *macros* responsible for generating SQL that is compliant with the targ
 
 #### Materializations
 
-A set of *materializations* and their corresponding helper macros defined in dbt using jinja and SQL. They codify for dbt how model files should be persisted into the database.
+A set of *materializations* and their corresponding helper macros defined in dbt using Jinja and SQL. They codify for dbt how model files should be persisted into the database.
 
 ### Adapter Architecture
 
@@ -467,7 +467,7 @@ This classmethod provides the adapter's canonical date function. This is not use
 
 ### Editing SQL logic
 
-dbt implements specific SQL operations using jinja macros. While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, etc), you may need to override one or more of macros when building a new adapter.
+dbt implements specific SQL operations using Jinja macros. While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, etc), you may need to override one or more of macros when building a new adapter.
 
 #### Required macros
 
@@ -1369,7 +1369,7 @@ These are valid, important questions to answer—especially given that `dbt-core
 - "How mature is `dbt-<ADAPTER>`? Any gotchas I should be aware of before I start exploring?"
 - "has anyone here used `dbt-<ADAPTER>` for production models?"
 - "I've been playing with  `dbt-<ADAPTER>` -- I was able to install and run my initial experiments. I noticed that there are certain features mentioned on the documentation that are marked as 'not ok' or 'not tested'. What are the risks?
-I'd love to make a statement on my team to adopt DBT [sic], but I'm pretty sure questions will be asked around the possible limitations of the adapter or if there are other companies out there using dbt [sic] with Oracle DB in production, etc."
+I'd love to make a statement on my team to adopt dbt, but I'm pretty sure questions will be asked around the possible limitations of the adapter or if there are other companies out there using dbt with Oracle DB in production, etc."
 
 There has been a tendency to trust the dbt Labs-maintained adapters over community- and vendor-supported adapters, but repo ownership is only one among many indicators of software quality. We aim to help our users feel well-informed as to the caliber of an adapter with a new program.
 
