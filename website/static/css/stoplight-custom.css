@@ -27,7 +27,6 @@
 .sl-prose a {
     /* Ensure link colors aren't overridden by docusaurus css */
     color: var(--color-text) !important;
-
     /* Underline links */
     text-decoration: underline !important;
 }
