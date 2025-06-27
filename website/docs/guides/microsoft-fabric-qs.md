@@ -137,10 +137,10 @@ You have two options for working with files in the <Constant name="cloud_ide" />
 Name the new branch `add-customers-model`.
 
 1. Click the **...** next to the `models` directory, then select **Create file**.  
-2. Name the file `customers.sql`, then click **Create**.
+2. Name the file `dim_customers.sql`, then click **Create**.
 3. Copy the following query into the file and click **Save**.
 
-    <File name='customers.sql'>
+    <File name='dim_customers.sql'>
 
     ```sql
     with customers as (
