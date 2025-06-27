@@ -1,3 +1,17 @@
+   <Expandable alt_header="BigQuery">
+  
+    - Service Account / User Token
+    - Native OAuth
+    - External OAuth
+
+  </Expandable>
+
+  <Expandable alt_header="Databricks">
+    - Service Account / User Token
+    - Native OAuth
+
+  </Expandable>
+  
   <Expandable alt_header="Snowflake">
     - Username/password
     - Native OAuth
@@ -7,10 +21,5 @@
 
   </Expandable>
 
-  <Expandable alt_header="Databricks">
-    - Service Account / User Token
-    - Native Oauth
-
-  </Expandable>
 
 <!-- <Expandable alt_header="Supported data platforms"> -->
