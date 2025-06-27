@@ -371,6 +371,23 @@ code {
   font-size: var(--text-sm);
 }
 
+/* Code block font size in headers */
+.markdown h2 > code {
+  font-size: var(--text-2xl);
+}
+
+.markdown h3 > code {
+  font-size: var(--text-xl);
+}
+
+.markdown h4 > code {
+  font-size: var(--text-lg);
+}
+
+.markdown h5 > code {
+  font-size: var(--text-sm);
+}
+
 a code {
   color: rgba(61, 24, 154, 1);
 }
