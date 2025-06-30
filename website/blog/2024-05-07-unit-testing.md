@@ -215,7 +215,6 @@ group by 1
 <     count(
 ---
 >     sum(
-
 25c25
 <     count(
 ---
