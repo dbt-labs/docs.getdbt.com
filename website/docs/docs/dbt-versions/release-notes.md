@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2025
 
-- **New:** Added support for the bigquery_v1 adapter in the Semantic Layer and MetricFlow. This initial implementation supports authentication via native OAuth and Service Account JSON.
+- **New:** Added support for the bigquery_v1 adapter in the Semantic Layer and MetricFlow. This initial implementation supports authentication via native OAuth and Service Account JSON. Note: Workload Identity Federation is not yet supported.
   🔒 Note: Workload Identity Federation (WIF) is not yet supported.
 - **New:**  Snowflake External OAuth is now supported for Semantic Layer queries.
 Snowflake connections that use External OAuth for user credentials can now emit queries for Insights through the Semantic Layer Gateway—enabling secure, identity-aware access via providers like Okta or Microsoft Entra ID.
