@@ -13,7 +13,7 @@
   </Expandable>
   
   <Expandable alt_header="Snowflake">
-    - Username/password
+    - Username / Password
     - Native OAuth
     - External OAuth
     - Key pair
