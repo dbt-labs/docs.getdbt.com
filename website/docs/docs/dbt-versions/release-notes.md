@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 - **New:** Added support for the latest version of BigQuery credentials in Semantic Layer and MetricFlow.
 - **New:**  Snowflake External OAuth is now supported for Semantic Layer queries.
-Snowflake connections that use External OAuth for user credentials can now emit queries for Insights, Cloud CLI,  and Studio through the Semantic Layer Gateway. This enables secure, identity-aware access via providers like Okta or Microsoft Entra ID.
+Snowflake connections that use External OAuth for user credentials can now emit queries for Insights, Cloud CLI, and Studio through the Semantic Layer Gateway. This enables secure, identity-aware access via providers like Okta or Microsoft Entra ID.
 - **New:** You can now [download your managed Git repo](/docs/cloud/git/managed-repository#download-managed-repository) from the dbt platform.
 - **New**: The <Constant name="semantic_layer" /> now supports Trino as a data platform. For more details, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
 - **New**: The dbt Fusion engine supports Databricks in beta.
