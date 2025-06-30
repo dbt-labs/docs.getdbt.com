@@ -211,11 +211,12 @@ group by 1
 ### SQL Code fix
 
 ```diff
-17c17
+20c20
 <     count(
 ---
 >     sum(
-23c23
+
+25c25
 <     count(
 ---
 >     sum(
