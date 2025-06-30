@@ -79,7 +79,6 @@ If you're using BitBucket Server or Data Center your template may look something
 https://<bitbucket-server>/projects/<proj>/repos/<repo>/pull-requests?create&sourceBranch={{source}}&targetBranch={{destination}}
 ```
 
-
 ### AWS CodeCommit
 ```
 https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-requests/new/refs/heads/{{destination}}/.../refs/heads/{{source}}
