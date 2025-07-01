@@ -212,7 +212,7 @@ group by 1
 
 You can see that we changed `count` to `sum` in the SQL code:
 
-<Lightbox src="/img/blog/2024-05-07-unit-testing/changed_code.png" width="50%" title="changed_code" />
+<Lightbox src="/img/blog/2024-05-07-unit-testing/changed_code.png" width="50%" title="SQl changes in code" />
 
 ### Caveats and pro-tips
 
