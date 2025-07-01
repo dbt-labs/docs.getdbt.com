@@ -107,7 +107,7 @@ dbtf system uninstall
 
 ### Adapter installation
 
-The Fusion install automatically includes the Snowflake adapter. Other adapters will be available at a later date. 
+The Fusion install automatically includes the Snowflake, Databricks, and BigQuery adapters. Other adapters will be available at a later date. 
 
 ## Troubleshooting
 

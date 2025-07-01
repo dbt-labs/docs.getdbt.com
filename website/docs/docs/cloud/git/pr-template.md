@@ -73,6 +73,12 @@ https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch
 https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}&dest={{destination}}
 ```
 
+If you're using BitBucket Server or Data Center your template may look something like:
+
+```
+https://<bitbucket-server>/projects/<proj>/repos/<repo>/pull-requests?create&sourceBranch={{source}}&targetBranch={{destination}}
+```
+
 ### AWS CodeCommit
 ```
 https://console.aws.amazon.com/codesuite/codecommit/repositories/<repo>/pull-requests/new/refs/heads/{{destination}}/.../refs/heads/{{source}}

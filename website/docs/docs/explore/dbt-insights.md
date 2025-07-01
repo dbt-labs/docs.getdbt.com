@@ -39,7 +39,7 @@ Some example use cases include:
 - Have a <Constant name="cloud" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="query_page" />.
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide).
 - Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
-- Use a supported data platfrom: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
+- Use a supported data platform: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Single sign-on (SSO) for development user accounts is supported, however SSO for production credentials is not yet supported.
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="query_page" />, you must also:
   - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.

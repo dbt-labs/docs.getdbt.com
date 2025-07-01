@@ -371,6 +371,23 @@ code {
   font-size: var(--text-sm);
 }
 
+/* Code block font size in headers */
+.markdown h2 > code {
+  font-size: var(--text-2xl);
+}
+
+.markdown h3 > code {
+  font-size: var(--text-xl);
+}
+
+.markdown h4 > code {
+  font-size: var(--text-lg);
+}
+
+.markdown h5 > code {
+  font-size: var(--text-sm);
+}
+
 a code {
   color: rgba(61, 24, 154, 1);
 }
@@ -2451,60 +2468,60 @@ h2.anchor.clicked a.hash-link:before {
 
 /* Default color and border for tabs */
 .tabs__item {
-  background-color: var(--color-white); /* Sets the tab color the same as the file borders */
-  border: 1px solid var(--border-neutral-tertiary);
-  color: var(--text-neutral-primary);
-  padding: 5px 10px;
-  margin-right: 5px;
-  border-radius: 12px;
+  background-color: var(--text-inverse-primary); /* Sets the tab color the same as the file borders */
+  border-bottom: 2px solid var(--border-neutral-tertiary);
+  color: var(--color-terminal-black-500);
+  padding: 8px 16px;
+  border-radius: 0;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.3s;
+  transition: border 0.3s;
+  font-size: 16px !important;
+  text-wrap: nowrap;
 }
 
 /* Default color and border for tabs in dark mode */
 [data-theme='dark'] .tabs__item {
-  background-color: var(--color-neutral-primary);
-  border: 1px solid var(--border-inverse-tertiary);
-  color: var(--text-inverse-primary);
+  background-color: var(--bg-inverse-primary-default);
+  border-bottom: 2px solid var(--bg-inverse-primary-subtle);
+  color: var(--text-inverse-secondary);
 }
 
 /*Color when hovering over tabs */
 .tabs__item:hover {
-  background-color: var(--ifm-color-primary);
-  color: var(--color-white);
+  color: var(--text-neutral-primary);
+  background: var(--text-inverse-primary);
 }
 
 [data-theme='dark'] .tabs__item:hover {
-  background-color: var(--ifm-color-primary);
-  color: var(--color-white);
+  background-color: var(--bg-inverse-primary-default);
+  color: var(--text-inverse-primary);
 }
 
 /* Color when the tab is clicked*/
 .tabs__item--active {
-  background-color: var(--ifm-color-primary);
-  color: var(--color-white);
-  border-color: var(--ifm-color-primary);
+  color: var(--text-neutral-primary);
+  border-color: var(--color-transform-orange-600);
 }
 
 [data-theme='dark'] .tabs__item--active {
-  background-color: var(--ifm-color-primary);
-  color: var(--color-white);
-  border-color: var(--ifm-color-primary);
+  background-color: var(--bg-inverse-primary-default);
+  color: var(--text-inverse-primary);
+  border-color: var(--color-transform-orange-600);
 }
 
 /* Sets the tab content border and background color */
-[data-theme='dark'] .tabs-container{
-  border: 1px solid var(--color-nav-text);
-  padding: 15px;
-  border-radius: 10px;
+.tabs-container{
+  border: 1px solid var(--border-neutral-tertiary);
+  padding: 1rem;
+  border-radius: 8px;
   margin-top: 10px;
   background-color: transparent;
 }
 
-[data-theme='light'] .tabs-container{
-  border: 1px solid var(--ifm-toc-border-color);
-  padding: 15px;
+[data-theme='dark'] .tabs-container{
+  border: 1px solid var(--bg-inverse-primary-subtle);
+  padding: 1rem;
   border-radius: 10px;
   margin-top: 10px;
   background-color: transparent;
