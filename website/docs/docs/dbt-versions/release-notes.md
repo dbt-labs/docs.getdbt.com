@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2025
 
-- **New**: The dbt Fusion engine supports the BigQuery adapter in beta.
+- **Beta**: The dbt Fusion engine supports the BigQuery adapter in beta.
 - **New:** You can now view the history of settings changes for [projects](/docs/cloud/account-settings), [environments](/docs/dbt-cloud-environments), and [jobs](/docs/deploy/deploy-jobs).
 - **New:** Added support for the latest version of BigQuery credentials in Semantic Layer and MetricFlow.
 - **New:**  Snowflake External OAuth is now supported for Semantic Layer queries.

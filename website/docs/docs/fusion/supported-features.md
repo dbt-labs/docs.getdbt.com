@@ -28,7 +28,7 @@ Note that we have removed some deprecated features, and introduced more-rigorous
 ## Requirements
 
 To use Fusion in your dbt project:
-- You're using a supported data warehouse and authentication method:
+- You're using a supported adapter and authentication method:
   <FusionDWH /> 
 - Have only SQL models defined in your project. Python models are not currently supported because Fusion cannot parse these to extract dependencies (refs) on other models. <!-- [TODO: Link to dbt-fusion Python issue.] -->
 
