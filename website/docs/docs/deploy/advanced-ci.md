@@ -16,11 +16,6 @@ You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Acco
 
 :::
 
-:::tip More features
-dbt Labs plans to provide additional Advanced CI features in the near future. More info coming soon.
-
-:::
-
 ## Prerequisites
 - You have a <Constant name="cloud" /> Enterprise or Enterprise+ account.
 - You have [Advanced CI features](/docs/cloud/account-settings#account-access-to-advanced-features) enabled.
