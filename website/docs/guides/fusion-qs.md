@@ -10,6 +10,7 @@ recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
+import FusionDWH from '/snippets/_fusion-dwh.md';
 
 ## Introduction
 
@@ -35,7 +36,8 @@ This guide will focus on the dbt extension and CLI combined experience.
 
 To take full advantage of this guide, you'll need to meet the following prerequisites:
 - You should have a basic understanding of dbt projects, git workflows, and data warehouse requirements.
-- Currently, Snowflake and Databricks are the only supported data platforms. More adapters are coming soon.
+- Make sure you're using a supported data warehouse and authentication method:
+  <FusionDWH /> 
 - You need a macOS (Terminal) or Windows (Powershell) machine to run the dbt Fusion engine. 
 - You need to have [Visual Studio Code](https://code.visualstudio.com/) installed. The [Cursor](https://www.cursor.com/en) code editor will also work, but these instructions will focus on VS Code.
     - Disable all third-party dbt extensions to avoid issues.

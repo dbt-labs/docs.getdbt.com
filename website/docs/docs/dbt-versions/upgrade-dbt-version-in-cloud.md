@@ -3,6 +3,8 @@ title: "Upgrade dbt version in Cloud"
 id: "upgrade-dbt-version-in-cloud"
 ---
 
+import FusionDWH from '/snippets/_fusion-dwh.md';
+
 In <Constant name="cloud" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
 
 ## Environments
@@ -80,7 +82,7 @@ dbt Labs has introduced the new [dbt Fusion engine](/docs/fusion/about-fusion), 
 
  To increase the compatibility of your project, update all jobs and environments to the `Latest` release track and follow our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion). 
 - There are some significant changes, these can also be found in the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
-- Make sure to be using a supported data warehouse:
+- Make sure you're using a supported data warehouse and authentication method:
   <FusionDWH /> 
 - When you change your development environment(s) to `Fusion Latest`, every user will have to restart the IDE.
 
