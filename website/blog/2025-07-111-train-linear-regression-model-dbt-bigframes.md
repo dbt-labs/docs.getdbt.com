@@ -13,9 +13,11 @@ is_featured: true
 
 ## Introduction to dbt and BigFrames
 
-**dbt** open-source, command-line framework engineered for data transformation within modern data warehouses. It empowers data teams to transform, test, and document data by writing modular SQL or Python.
+**dbt Core**: open-source, command-line framework engineered for data transformation within modern data warehouses. It empowers data teams to transform, test, and document data by writing modular SQL or Python.
 
-**BigQuery DataFrames (BigFrames)** is an open-source Python library offered by Google. BigFrames scales Python data processing by transpiling common Python data science APIs (Pandas and Scikit-learn) to BigQuery SQL.  
+> This blog post uses dbt Core, but you can also use dbt Platform with minor configuration changes.
+
+**BigQuery DataFrames (BigFrames)**: Open-source Python library offered by Google. BigFrames scales Python data processing by transpiling common Python data science APIs (Pandas and Scikit-learn) to BigQuery SQL.  
 
 You can read more in the [official BigFrames guide](https://cloud.google.com/bigquery/docs/bigframes-intro) and view the [public GitHub repository](https://github.com/GoogleCloudPlatform/bigframes).
 
@@ -29,6 +31,8 @@ By combining dbt with BigFrames—via the **dbt-bigquery adapter** (referred to 
 
 > See more from the [BigFrames guide](https://cloud.google.com/bigquery/docs/bigframes-intro) or the [dbt guide](https://docs.getdbt.com/).
 
+To illustrate the practical impact of combining dbt with BigFrames, the following sections explore how this integration can streamline and scale a common machine learning task: training a linear regression model on large datasets.
+
 ## The Power of dbt-BigFrames for Large-Scale Linear Regression
 
 Linear regression is a cornerstone of predictive analytics, used in:
@@ -38,6 +42,7 @@ Linear regression is a cornerstone of predictive analytics, used in:
 - Real estate valuation
 
 These tasks often require processing datasets too large for traditional in-memory Python. BigFrames alone solves this, but combining it with dbt offers a structured, maintainable, and production-ready way to train models or generate batch predictions on large data.
+
 
 ## “dbt-BigFrames” with ML: A Practical Example
 
