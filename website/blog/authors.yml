@@ -605,3 +605,10 @@ kyle_dempsey:
     linkedin: k-dempsey
   name: Kyle Dempsey
   page: true
+jialuo_chen:
+  image_url: /img/blog/authors/jialuo_chen.jpg
+  title: Software Engineer at Google
+  socials:
+    linkedin: jialuo-chen-31680789
+  name: Jialuo Chen
+  page: true
