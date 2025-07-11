@@ -1,5 +1,5 @@
 ---
-title: "How to train  a Linear regression model with dbt and BigFrames?"
+title: "How to train a linear regression model with dbt and BigFrames?"
 description: "How to build a scalable linear regression model by combining dbt's modular orchestration with BigFrames' in-database Python execution in BigQuery."
 slug: train-linear-dbt-bigframes
 authors: [jialuo_chen]
