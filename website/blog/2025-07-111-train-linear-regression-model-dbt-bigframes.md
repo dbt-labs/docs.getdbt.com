@@ -182,7 +182,7 @@ def model(dbt, session):
 # Run all models
 dbt run
 
-# Or run in order
+# Or run just your new models
 dbt run --select prepare_table prediction
 ```
 
