@@ -2,7 +2,7 @@
 title: "Data health signals"
 sidebar_label: "Data health signals"
 id: data-health-signals
-description: "Learn how data health signals offer a quick, at-a-glance view of data health when browsing your resources in dbt Explorer."
+description: "Learn how data health signals offer a quick, at-a-glance view of data health when browsing your resources in dbt Catalog."
 image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
 ---
 
@@ -28,7 +28,7 @@ Access data health signals in the following places:
 - In the [DAG lineage graph](/docs/explore/explore-projects#project-lineage). Click any node to open the node details panel where you can view it and its details.
 - In [Data health tiles](/docs/explore/data-tile) through an embeddable iFrame and visible in your BI dashboard.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.gif" width="95%" title="Access data health signals in multiple places in dbt Explorer."/> 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.gif" width="95%" title="Access data health signals in multiple places in dbt Catalog."/> 
 
 ## Data health signal criteria
 

@@ -1,12 +1,12 @@
 ---
-title: "Quickstart for the dbt Explorer workshop"
+title: "Quickstart for the dbt Catalog workshop"
 id: "explorer-quickstart"
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
-sidebar_label: "Quickstart dbt Explorer"
+sidebar_label: "Quickstart dbt Catalog"
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Explorer', 'Snowflake', 'dbt platform','Quickstart']
-keywords: ['dbt Explorer','Mesh','dbt platform', 'Snowflake', 'Multi-Project']
+keywords: ['dbt Catalog','Mesh','dbt platform', 'Snowflake', 'Multi-Project']
 level: 'Beginner'
 ---
 
@@ -45,7 +45,7 @@ Now we’ll be creating your <Constant name="cloud" /> account and connecting it
    
 
 ## Performance
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Performance tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Catalog's Performance tab" />
 <Constant name="explorer" /> will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
 
 ### Hands-On
@@ -63,7 +63,7 @@ With <Constant name="explorer" />, you can view your project's resources (such a
 
 Navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Models tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Catalog's Models tab" />
 
 ### Hands-On
 - Explore the **Model** tab 
@@ -78,13 +78,13 @@ Navigate and manage your projects within <Constant name="cloud" /> to help you a
  
 ## Lineage
 
-dbt Explorer provides a visualization of your project’s <Term id="dag"/> that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
+<Constant name="explorer" /> provides a visualization of your project’s <Term id="dag"/> that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your DAG.
 - [Lenses](/docs/explore/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
   - Applying a lens adds tags to the nodes, showing metadata like layer values, with color coding to help you distinguish them.
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="100%" title="dbt Explorer's lineage graph" />
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="100%" title="dbt Catalog's lineage graph" />
   
 - Use the [advanced search](/docs/explore/explore-projects#search-resources) feature to locate resources in your project. 
   - Perform hard searches and keyword searches. 
@@ -92,7 +92,7 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
   - Apply filters to fully refine your search.
 - When searching for a column name, the results show all relational nodes containing that column in their schemas. 
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="100%" title="dbt Explorer's advanced search feature" />
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="100%" title="dbt Catalog's advanced search feature" />
 
 ### Hands-On
 - Explore **Project-Level lineage**
@@ -125,7 +125,7 @@ These recommendations are designed to build trust in your project and reduce con
 
 To learn more about the specific suggestions and the reasons behind them, check out [our docs](/docs/explore/project-recommendations).
 
-<Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Catalog's project recommendation tab" />
 
 ### Hands-On
 - Review your project recommendations.

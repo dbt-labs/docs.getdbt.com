@@ -171,7 +171,7 @@ This is not currently possible, but something we hope to enable in the near futu
 
 <DetailsToggle alt_header="Integrations available between the dbt Discovery API and other tools for cross-project lineage?">
 
-Yes. In addition to being viewable natively through [dbt Explorer](https://www.getdbt.com/product/dbt-explorer), it is possible to view cross-project lineage connect using partner integrations with data cataloging tools. For a list of available <Constant name="cloud" /> integrations, refer to the [Integrations page](https://www.getdbt.com/product/integrations).
+Yes. In addition to being viewable natively through [<Constant name="explorer" />](https://www.getdbt.com/product/dbt-explorer), it is possible to view cross-project lineage connect using partner integrations with data cataloging tools. For a list of available <Constant name="cloud" /> integrations, refer to the [Integrations page](https://www.getdbt.com/product/integrations).
 
 </DetailsToggle>
 
@@ -187,7 +187,7 @@ If a data quality issue does slip through, you also have the option of simply ro
 
 Yes, all of this metadata is accessible via the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api). This metadata can be fed into a monitoring tool, or used to create reports and dashboards. 
 
-We also expose some of this information in <Constant name="cloud" /> itself in [jobs](/docs/deploy/jobs), [environments](/docs/environments-in-dbt) and in [dbt Explorer](https://www.getdbt.com/product/dbt-explorer).
+We also expose some of this information in <Constant name="cloud" /> itself in [jobs](/docs/deploy/jobs), [environments](/docs/environments-in-dbt) and in [<Constant name="explorer" />](https://www.getdbt.com/product/dbt-explorer).
 
 </DetailsToggle>
 
@@ -217,7 +217,7 @@ First things first: access to underlying data is always defined and enforced by 
 
 [<Constant name="cloud" /> Enterprise and Enterprise+ plans](https://www.getdbt.com/pricing) support [role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control-) that manages granular permissions for users and user groups. You can control which users can see or edit all aspects of a <Constant name="cloud" /> project. A user’s access to <Constant name="cloud" /> projects also determines whether they can “explore” that project in detail. Roles, users, and groups are defined within the <Constant name="cloud" /> application via the UI or by integrating with an identity provider.
 
-[Model access](/docs/mesh/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within dbt Explorer. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
+[Model access](/docs/mesh/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within <Constant name="explorer" />. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
 
 * **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
@@ -226,7 +226,7 @@ We are discussing a future extension to `protected` models to allow for their re
 
 * **Private:** Model `groups` enable more-granular control over where `private` models can be referenced. By defining a group, and configuring models to belong to that group, you can restrict other models (not in the same group) from referencing any `private` models the group contains. Groups also provide a standard mechanism for defining the `owner` of all resources it contains.
 
-Within dbt Explorer, `public` models are discoverable for every user in the <Constant name="cloud" /> account — every public model is listed in the “multi-project” view. By contrast, `protected` and `private` models in a project are visible only to users who have access to that project (including read-only access).
+Within <Constant name="explorer" />, `public` models are discoverable for every user in the <Constant name="cloud" /> account — every public model is listed in the “multi-project” view. By contrast, `protected` and `private` models in a project are visible only to users who have access to that project (including read-only access).
 
 Because dbt does not implicitly coordinate data warehouse `grants` with model-level `access`, it is possible for there to be a mismatch between them. For example, a `public` model’s metadata is viewable to all <Constant name="cloud" /> users, anyone can write a `ref` to that model, but when they actually run or preview, they realize they do not have access to the underlying data in the data warehouse. **This is intentional.** In this way, your organization can retain least-privileged access to underlying data, while providing visibility and discoverability for the wider organization. Armed with the knowledge of which other “data products” (public models) exist — their descriptions, their ownership, which columns they contain — an analyst on another team can prepare a well-informed request for access to the underlying data.
 
@@ -240,7 +240,7 @@ Not currently! But this is something we may evaluate in the future.
 
 <DetailsToggle alt_header="As a central data team member, can I still maintain visibility on the entire organizational DAG?">
 
-Yes! As long as a user has permissions (at least read-only access) on all projects in a <Constant name="cloud" /> account, they can navigate across the entirety of the organization’s DAG in dbt Explorer, and see models at all levels of detail.
+Yes! As long as a user has permissions (at least read-only access) on all projects in a <Constant name="cloud" /> account, they can navigate across the entirety of the organization’s DAG in <Constant name="explorer" />, and see models at all levels of detail.
 
 </DetailsToggle>
 
@@ -276,11 +276,11 @@ The <Constant name="semantic_layer" /> in <Constant name="cloud" /> allows teams
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How does dbt Explorer relate to and work with dbt Mesh?">
+<DetailsToggle alt_header="How does dbt Catalog relate to and work with dbt Mesh?">
 
-**[dbt Explorer](/docs/explore/explore-projects)** is a tool within <Constant name="cloud" /> that serves as a knowledge base and lineage visualization platform. It provides a comprehensive view of your dbt assets, including models, tests, sources, and their interdependencies.
+**[<Constant name="explorer" />](/docs/explore/explore-projects)** is a tool within <Constant name="cloud" /> that serves as a knowledge base and lineage visualization platform. It provides a comprehensive view of your dbt assets, including models, tests, sources, and their interdependencies.
 
-Used in conjunction with dbt Mesh, dbt Explorer becomes a powerful tool for visualizing and understanding the relationships and dependencies between models across multiple dbt projects.
+Used in conjunction with dbt Mesh, <Constant name="explorer" /> becomes a powerful tool for visualizing and understanding the relationships and dependencies between models across multiple dbt projects.
 
 </DetailsToggle>
 
@@ -300,7 +300,7 @@ Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-
 
 <DetailsToggle alt_header="Is there a way to leverage dbt Mesh capabilities in dbt Core?">
 
-While dbt Core defines several of the foundational elements for dbt Mesh, <Constant name="cloud" /> offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in dbt Explorer that’s tailored to each user’s access.
+While dbt Core defines several of the foundational elements for dbt Mesh, <Constant name="cloud" /> offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in <Constant name="explorer" /> that’s tailored to each user’s access.
 
 Several key components that underpin the dbt Mesh pattern, including [model contracts, versions, and access modifiers](/docs/mesh/govern/about-model-governance), are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
 

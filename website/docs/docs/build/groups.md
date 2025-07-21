@@ -13,42 +13,21 @@ Group members may include models, tests, seeds, snapshots, analyses, and metrics
 
 ### Declaring a group
 
-Groups are defined in `.yml` files, nested under a `groups:` key. <VersionBlock firstVersion="1.10">You can add the `description` property and the `meta` config to add more information about the group.</VersionBlock>
+import DefineGroups from '/snippets/_define-groups.md';
 
+<DefineGroups />
 
-<VersionBlock lastVersion="1.9">
-<File name='models/marts/finance/finance.yml'>
+#### Centrally defining a group
 
-```yaml
-groups:
-  - name: finance
-    owner:
-      # 'name' or 'email' is required; additional properties allowed
-      email: finance@jaffleshop.com
-      slack: finance-data
-      github: finance-data-team
-```
+To centrally define a group in your project, there are two options:
 
-</File>
-</VersionBlock>
+- Create one `_groups.yml` file in the root of the `models` directory.
+- Create one `_groups.yml` file in the root of a `groups` directory. For this option, you also need to configure [`model-paths`](/reference/project-configs/model-paths) in the `dbt_project.yml` file:
 
-<VersionBlock firstVersion="1.10">
-<File name='models/marts/finance/finance.yml'>
+  ```yml 
+  model-paths: ["models", "groups"]
+  ```
 
-```yaml
-groups:
-  - name: finance
-    owner:
-      # 'name' or 'email' is required; additional properties will no longer be allowed in a future release
-      email: finance@jaffleshop.com
-    description: For the finance team # optional
-    config:
-      meta: # optional
-        data_owner: Finance team
-```
-
-</File>
-</VersionBlock>
 
 ### Adding a model to a group
 

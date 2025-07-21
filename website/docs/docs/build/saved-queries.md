@@ -28,6 +28,8 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
 | `config`     | String      |  Optional     |  Use the [`config`](/reference/resource-properties/config) property to specify configurations for your saved query. Supports `cache`, [`enabled`](/reference/resource-configs/enabled), `export_as`, [`group`](/reference/resource-configs/group), [`meta`](/reference/resource-configs/meta), [`tags`](/reference/resource-configs/tags), and [`schema`](/reference/resource-configs/schema)  configurations.   |
 | `config::cache::enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
+| `limit`     | Integer    | Optional     |  The maximum number of rows to return. |
+| `order_by`  | String     | Optional     |  The metrics and group bys to order the query by. |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
 | `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
 | `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |

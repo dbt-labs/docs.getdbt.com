@@ -153,7 +153,7 @@ Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/d
 
 Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 
-## dbt Explorer
+## dbt Catalog
 
 [<Constant name="explorer" />](/docs/explore/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using <Constant name="explorer" />:
 

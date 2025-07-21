@@ -228,7 +228,7 @@ When referring to different sections of the IDE, use the name of the section and
 
 ## Capitalization
 
-We should only capitalize products (dbt Explorer, Canvas, Insights), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
+We should only capitalize products (Catalog, Canvas, Insights), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
 
 ## Titles
 

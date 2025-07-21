@@ -18,10 +18,14 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## July 2025
 
+- **Preview**: The [Semantic Layer Power BI integration](/docs/cloud-integrations/semantic-layer/power-bi) is now available in Preview.
+- **Enhancement:** You can now use `limit` and `order_by` parameters when creating [saved queries](/docs/build/saved-queries). 
+- **Enhancement:** Users assigned IT [licenses](/docs/cloud/manage-access/seats-and-users) can now edit and manage [global connections settings](/docs/cloud/connect-data-platform/about-connections#connection-management).
 - **New**: Paginated [GraphQL](/docs/dbt-cloud-apis/sl-graphql) endpoints for metadata queries in Semantic Layer are now available. This improves integration load times for large manifests. For more information, see [Metadata calls](/docs/dbt-cloud-apis/sl-graphql#metadata-calls).
 
 ## June 2025
 
+- **New**: [System for Cross-Domain Identity Management](/docs/cloud/manage-access/scim#scim-configuration-for-entra-id) (SCIM) through Microsoft Entra ID is now GA.
 - **Enhancement:** You can now set the [compilation environment](/docs/explore/access-dbt-insights#set-jinja-environment) to control how Jinja functions are rendered in dbt Insights.
 - **Beta**: The dbt Fusion engine supports the BigQuery adapter in beta.
 - **New:** You can now view the history of settings changes for [projects](/docs/cloud/account-settings), [environments](/docs/dbt-cloud-environments), and [jobs](/docs/deploy/deploy-jobs).
@@ -45,7 +49,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
   - Begin testing today with the [quickstart guide](/guides/fusion).
   - Know [where we're headed with the dbt Fusion engine](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
 - **New**: The dbt VS Code extension is a powerful new tool that brings the speed and productivity of the dbt Fusion engine into your Visual Studio Code editor. This is a free download that will forever change your dbt development workflows. The dbt VS Code extension is now available as beta [alongside Fusion](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension). Check out the [installation instructions](/docs/install-dbt-extension) and read more [about the features](/docs/about-dbt-extension) to get started enhancing your dbt workflows today! 
-- **New**: dbt Explorer is now dbt Catalog! Learn more about the change [here](https://getdbt.com/blog/updated-names-for-dbt-platform-and-features).
+- **New**: dbt Explorer is now <Constant name="explorer" />! Learn more about the change [here](https://getdbt.com/blog/updated-names-for-dbt-platform-and-features).
 	- dbt's Catalog, global navigation provides a search experience that lets you find dbt resources across all your projects, as well as non-dbt resources in Snowflake.
 	- External metadata ingestion allows you to connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt. 
 - **New**: [dbt Canvas is now generally available](https://getdbt.com/blog/dbt-canvas-is-ga) (GA). Canvas is the intuitive visual editing tool that enables anyone to create dbt models with an easy to understand drag-and-drop interface. Read more [about Canvas](/docs/cloud/canvas) to begin empowering your teams to build more, faster! 
@@ -95,7 +99,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 The following features are new or enhanced as part of our [dbt Developer day](https://www.getdbt.com/resources/webinars/dbt-developer-day) on March 19th and 20th, 2025:
 
 - **New**: The [`--sample` flag](/docs/build/sample-flag), now available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
-- **New**: <Constant name="copilot" />, an AI-powered assistant, is now generally available in the <Constant name="cloud_ide" /> for all <Constant name="cloud" /> Enterprise accounts. Check out [<Constant name="copilot" />](/docs/cloud/dbt-copilot) for more information.   
+- **New**: <Constant name="copilot" />, an AI-powered assistant, is now generally available in the Cloud IDE for all <Constant name="cloud" /> Enterprise accounts. Check out [<Constant name="copilot" />](/docs/cloud/dbt-copilot) for more information.   
 
 #### Also available this month
 
@@ -112,7 +116,7 @@ The following features are new or enhanced as part of our [dbt Developer day](ht
 - **New**: Added the `dbt invocation` command to the [dbt CLI](/docs/cloud/cloud-cli-installation). This command allows you to view and manage active invocations, which are long-running sessions in the dbt CLI. For more information, see [dbt invocation](/reference/commands/invocation).
 - **New**: Users can now switch themes directly from the user menu, available [in Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). We have added support for **Light mode** (default), **Dark mode**, and automatic theme switching based on system preferences. The selected theme is stored in the user profile and will follow users across all devices.
   - Dark mode is currently available on the Developer plan and will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates. For more information, refer to [Change your <Constant name="cloud" /> theme](/docs/cloud/about-cloud/change-your-dbt-cloud-theme).
-- **Fix**: <Constant name="semantic_layer" /> errors in the Cloud <Constant name="cloud_ide" /> are now displayed with proper formatting, fixing an issue where newlines appeared broken or difficult to read. This fix ensures error messages are more user-friendly and easier to parse.
+- **Fix**: <Constant name="semantic_layer" /> errors in the Cloud IDE are now displayed with proper formatting, fixing an issue where newlines appeared broken or difficult to read. This fix ensures error messages are more user-friendly and easier to parse.
 - **Fix**: Fixed an issue where [saved queries](/docs/build/saved-queries) with no [exports](/docs/build/saved-queries#configure-exports) would fail with an `UnboundLocalError`. Previously, attempting to process a saved query without any exports would cause an error due to an undefined relation variable. Exports are optional, and this fix ensures saved queries without exports don't fail.
 - **New**: You can now query metric alias in <Constant name="semantic_layer" /> [GraphQL](/docs/dbt-cloud-apis/sl-graphql) and [JDBC](/docs/dbt-cloud-apis/sl-jdbc) APIs. 
   - For the JDBC API, refer to [Query metric alias](/docs/dbt-cloud-apis/sl-jdbc#query-metric-alias) for more information.

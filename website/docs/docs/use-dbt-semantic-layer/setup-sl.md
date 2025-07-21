@@ -12,6 +12,10 @@ pagination_prev: "guides/sl-snowflake-qs"
 
 With the <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more.
 
+:::info Not yet supported in the dbt Fusion engine
+<Constant name="semantic_layer" /> is currently supported in the <Constant name="dbt_platform" /> for environments running versions of <Constant name="core" />. Support for environments on the dbt Fusion engine is coming soon.
+:::
+
 ## Prerequisites
 
 import SetUp from '/snippets/_v2-sl-prerequisites.md';

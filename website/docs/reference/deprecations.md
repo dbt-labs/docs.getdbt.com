@@ -169,6 +169,15 @@ dbt-core.
 
 Ensure your exposure names only contain letters, numbers, and underscores. A more human-readable name can be put in the [`label`](/reference/exposure-properties#overview) property of exposures.
 
+### GenericJSONSchemaValidationDeprecation
+
+
+This deprecation type is a catch-all/fallback. dbt attempts to handle all JSON schema validation errors with specific deprecation event types, but it is possible that we missed something. Missing something means that either dbt failed to handle a specific case with a deprecation event _or_ the JSON schema is incorrect in a particular area.
+
+#### GenericJSONSchemaValidationDeprecation warning resolution
+
+If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for dbt Core users).
+
 ### MFCumulativeTypeParamsDeprecation
 
 In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-changes#cumulative-metrics) was deprecated. 
@@ -211,9 +220,51 @@ https://docs.getdbt.com/reference/global-configs/behavior-changes
 
 Define your MetricFlow timespine in [YAML](/docs/build/metricflow-time-spine#creating-a-time-spine-table).
 
+### MissingPlusPrefixDeprecation
+
+import MissingPrefix from '/snippets/_missing-prefix.md';
+
+<MissingPrefix />
+
+Example: 
+<File name='CLI'>
+```bash
+18:16:06  [WARNING][MissingPlusPrefixDeprecation]: Deprecated functionality
+Missing '+' prefix on `tags` found at `my_path.sub_path.another_path.tags` in
+file `dbt_project.yml`. Hierarchical config
+values without a '+' prefix are deprecated in dbt_project.yml.
+```
+</File>
+
+#### MissingPlusPrefixDeprecation warning resolution
+
+If you previously set one of the impacted configurations without a `+`, such as `materialized`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models: 
+  marts:
+    materialized: table
+```
+
+</File>
+
+You should now set it with the `+` prefix to disambiguate between paths:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models: 
+  marts:
+    +materialized: table
+```
+
+</File>
+
 ### ModelParamUsageDeprecation
 
-The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m `flag will raise an error. Please update your job definitions accordingly.
+The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt Core v1.10, and an error in Fusion. Please update your job definitions accordingly.
 
 #### ModelParamUsageDeprecation warning resolution
 

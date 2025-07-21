@@ -41,7 +41,7 @@ Notable features:
 - Admin is a project-level set.
 - Unrestricted access to existing projects, but can't create new projects.
 - Can invite new members and assign access but can't create groups.
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Analyst">
@@ -53,7 +53,7 @@ Notable features:
 - Full access to the IDE and the ability to configure personal credentials for adapters and Git. 
 - Read-only access to environment configs.
 - Can view jobs but can't edit them.
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Billing admin">
@@ -96,7 +96,7 @@ Notable features:
 - Can set up and maintain database connections, environment variables, and <Constant name="semantic_layer" /> configs.
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="cloud" /> to configure connections. 
 - Read-only access to Git repo, job, and run settings. 
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Developer">
@@ -108,7 +108,7 @@ Notable features:
 - Can create, edit, and test dbt code in the IDE.
 - Read-only access to the underlying configs for environments, jobs, runs, and Git.
 - Users manage their credentials to data warehouses and Git. 
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Git admin">
@@ -121,7 +121,7 @@ Notable features:
 - Can edit project settings.
 - Read-only access to account settings (including users and groups). 
 - No access to the IDE.
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Job admin">
@@ -133,7 +133,7 @@ Notable features:
 - Job admins can set up project integrations, including [Tableau lineage](/docs/cloud-integrations/semantic-layer/tableau).
 - Read-only access to project configs. 
 - Read-only access to connections and public models.
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Job runner">
@@ -155,7 +155,7 @@ Notable features:
 - Job viewer is a project-level set.
 - Read-only access to job results, status, and logs.
 - No other access to <Constant name="cloud" /> features. 
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 
@@ -188,7 +188,7 @@ Notable features:
 - Only permission set other than Account admin that can create projects.
 - Limited account settings access. The project creator can create and edit connections, invite users, create groups, and assign licenses.
 - Unrestricted access to project configurations. 
-- Can access dbt Explorer
+- Can access <Constant name="explorer" />
 
 </Expandable>
 <Expandable alt_header="Security admin">
@@ -222,7 +222,7 @@ Notable features:
 - Read-only access to projects, environments, jobs, and runs.
 - Read-only access to user and group information.
 - No access to the IDE. 
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Team admin">
@@ -232,7 +232,7 @@ Notable features:
 - Team admin is a project-level set. 
 - Access to manage the project(s) for a team of users. Limited scope and access can be extended via environment permissions. 
 - Read-only access to many account settings (excluding sensitive content like billing and auth providers).
-- Can access dbt Explorer.
+- Can access <Constant name="explorer" />.
 
 </Expandable>
 <Expandable alt_header="Viewer">
@@ -244,7 +244,7 @@ Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
 - No access to the IDE. 
-- Can access dbt Explorer
+- Can access <Constant name="explorer" />
 
 </Expandable>
 

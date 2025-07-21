@@ -227,7 +227,7 @@ Explore these additional configurations to optimize your <Constant name="cloud" 
 
 5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [<Constant name="cloud" /> APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
 
-6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/explore/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/explore/explore-projects#generate-metadata) in dbt Explorer. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="self_service,managed" />
+6. **<Constant name="explorer" />** &mdash; If you use [<Constant name="explorer" />](/docs/explore/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/explore/explore-projects#generate-metadata) in <Constant name="explorer" />. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="self_service,managed" />
 
 ### CI/CD setup
 
@@ -251,7 +251,7 @@ You’ll want to make sure you set up your [development environment and credenti
    - Run `dbt compile` to make sure your project compiles correctly.
    - Run a few models in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you’re experiencing accurate results in development.
 
-2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
+2. Once your first job has successfully run in your production environment, use [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
 ## What’s next?
 

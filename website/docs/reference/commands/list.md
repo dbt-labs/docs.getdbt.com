@@ -82,11 +82,13 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 **Listing Semantic models**
 
 List all resources upstream of your orders semantic model:
-```dbt ls -s +semantic_model:orders
+```
+$ dbt ls -s +semantic_model:orders
 ```
 
 **Listing file paths**
-```dbt ls --select snowplow.* --output path
+```
+$ dbt ls --select snowplow.* --output path
 models/base/snowplow_base_events.sql
 models/base/snowplow_base_web_page_context.sql
 models/identification/snowplow_id_map.sql

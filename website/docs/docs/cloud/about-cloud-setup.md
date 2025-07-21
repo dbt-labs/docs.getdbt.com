@@ -18,7 +18,7 @@ This portion of our documentation will take you through the various settings in 
 
 For steps on installing <Constant name="cloud" /> development tools, refer to the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or the [<Constant name="cloud_ide" /> (browser-based)](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
-These settings are intended for <Constant name="cloud" /> administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/guides). If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn site](https://learn.getdbt.com/).
+These settings are intended for <Constant name="cloud" /> administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/guides) or follow the [dbt platform configuration checklist](/docs/configuration-checklist). If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn site](https://learn.getdbt.com/).
 
 ## Prerequisites
 

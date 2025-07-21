@@ -55,6 +55,12 @@ jaffle_shop:
 
 To add an additional target (like `prod`) to your existing `profiles.yml`, you can add another entry under the `outputs` key. 
 
+## The `env_var` function
+
+import Envvarsecrets from '/snippets/_env-var-secrets.md'; 
+
+<Envvarsecrets />
+
 ## About the `profiles.yml` file
 
 In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile. 

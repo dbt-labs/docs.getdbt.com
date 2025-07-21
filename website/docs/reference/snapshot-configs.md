@@ -75,7 +75,7 @@ Refer to [configuring snapshots](/docs/build/snapshots#configuring-snapshots) fo
 ```yml
 snapshots:
   - name: <string>
-    resource_path: ref() | source()
+    relation: ref() | source()
     config:
       [database](/reference/resource-configs/database): <string>
       [schema](/reference/resource-configs/schema): <string>
@@ -132,7 +132,7 @@ Here's how you can do it:
     ```yaml
     snapshots:
       - name: orders_snapshot
-        resource_path: source('something','orders')
+        relation: source('something','orders')
         config:
           strategy: timestamp
           updated_at: updated_at

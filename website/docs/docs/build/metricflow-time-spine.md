@@ -103,7 +103,7 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
 ### Migrating from SQL to YAML
-If your project already includes a time spine (`metricflow_time_spine.sql`), you can migrate its configuration to YAML to address any deprecation warnings you may get.
+If you already have a SQL model that defines your time spine, you can reference that model directly. The `metricflow_time_spine.sql` file is no longer required and can be removed.
 
 1. Add the following configuration to a new or existing YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the YAML file whatever you want (for example, `util/_models.yml`):
 

@@ -11,6 +11,6 @@ If your team is using dbt Core today, you could be reading this guide because:
 - The person who set it up has since left.
 - You’re interested in what <Constant name="cloud" /> could do to better manage the complexity of your dbt deployment, democratize access to more contributors, or improve security and governance practices.
 
-Moving from dbt Core to <Constant name="cloud" /> simplifies workflows by providing a fully managed environment that improves collaboration, security, and orchestration. With <Constant name="cloud" />, you gain access to features like cross-team collaboration ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)), version management, streamlined CI/CD, [dbt Explorer](/docs/explore/explore-projects) for comprehensive insights, and more &mdash; making it easier to manage complex dbt deployments and scale your data workflows efficiently. 
+Moving from dbt Core to <Constant name="cloud" /> simplifies workflows by providing a fully managed environment that improves collaboration, security, and orchestration. With <Constant name="cloud" />, you gain access to features like cross-team collaboration ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)), version management, streamlined CI/CD, [<Constant name="explorer" />](/docs/explore/explore-projects) for comprehensive insights, and more &mdash; making it easier to manage complex dbt deployments and scale your data workflows efficiently. 
 
 It's ideal for teams looking to reduce the burden of maintaining their own infrastructure while enhancing governance and productivity.

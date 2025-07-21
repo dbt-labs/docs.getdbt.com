@@ -29,11 +29,11 @@ Individual users in <Constant name="cloud" /> can be people you [manually invite
 
 In either scenario, when you add a user to <Constant name="cloud" />, they are assigned a [license](#licenses). You assign licenses at the individual user or group levels. When you manually invite a user, you will assign the license in the invitation window.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/license-dropdown.png" width="60%" title="Example of the license dropdown in the user invitation window." />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/license-dropdown.png" width="40%" title="Example of the license dropdown in the user invitation window." />
 
 You can edit an existing user's license by navigating to the **Users** section of the **Account settings**, clicking on a user, and clicking **Edit** on the user pane. Delete users from this same window to free up licenses for new users.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="60%" title="Example of the user information window in the user directory" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="40%" title="Example of the user information window in the user directory" />
 
 ### User passwords
 
@@ -172,7 +172,7 @@ Euclid takes the following steps to log in:
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
 
-2. Login with their Okta credentials.
+2. Log in with their Okta credentials.
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login.png" width="60%" title="The SSO login screen when using Okta as the identity provider." />
 
@@ -180,15 +180,19 @@ Euclid takes the following steps to log in:
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/post-login-screen.png" width="60%" title="The screen users see after their first SSO login." />
 
-4. They now open their email and click the link to join dbt Labs, which completes the process.
+4. They now open their email and click the link to join dbt Labs.
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sample-email.png" width="60%" title="The email the user receives on first SSO login." />
 
-Euclid is now logged in to their account. They only have access to the `Jaffle Shop` pr, and the project selection option is removed from their UI entirely. 
+5. Their email address is now verified. They click **Authenticate with your enterprise login**, which completes the process. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/rbac-account-home.png" width="60%" title="The home screen with access restricted." />
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/email-verified.png" width="60%" title="The confirmation that the email address is verified." />
 
-They can now configure development credentials. The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
+Euclid is now logged in to their account. They only have access to the `Jaffle Shop` project. Under **Orchestration**, they can configure development credentials.
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/orchestration-environments.png" width="60%" title="The Orchestration page with the environments." />
+
+The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
 

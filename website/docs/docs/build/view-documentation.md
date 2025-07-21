@@ -16,16 +16,16 @@ You can view documentation in two complementary ways, depending on your needs:
 ## Navigating your documentation
 The following sections describe how to navigate your documentation in <Constant name="explorer" /> and dbt Docs.
 
-### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
+### Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
 [<Constant name="explorer" />](/docs/explore/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
 To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of dbt Explorer's resource details page and its lineage." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of Catalog's resource details page and its lineage." />
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Navigate dbt Explorer to discover your project's resources and lineage."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Navigate Catalog to discover your project's resources and lineage."/>
 
 </DocCarousel>
 
@@ -67,7 +67,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 :::
 
-### dbt Explorer <Lifecycle status="self_service,managed,managed_plus" />
+### Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
 <Constant name="explorer" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="explorer" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 

@@ -56,7 +56,7 @@ Extended attributes allows users to set a flexible [profiles.yml](/docs/core/con
 
 Extended attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Environment settings using a free form text box." /> <br />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.png" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Environment settings using a free form text box." /> <br />
 
 The following code is an example of the types of attributes you can add in the **Extended Attributes** text box:
 

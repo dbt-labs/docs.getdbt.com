@@ -4,7 +4,7 @@ id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
-When running dbt jobs, dbt generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of the <Constant name="dbt_platform" />, namely: [dbt Explorer](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).
+When running dbt jobs, dbt generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of the <Constant name="dbt_platform" />, namely: [<Constant name="explorer" />](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).
 
 ## Create dbt Artifacts
 
@@ -16,7 +16,7 @@ To view a resource, its metadata, and what commands are needed, refer to [genera
 
 <Expandable alt_header="For dbt Docs">
 
-The following steps are for legacy dbt Docs only. For the current documentation experience, see [dbt Explorer](/docs/explore/explore-projects).
+The following steps are for legacy dbt Docs only. For the current documentation experience, see [dbt <Constant name="explorer" />](/docs/explore/explore-projects).
 
 While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection on the **Project details** page. To access this page:
 
@@ -54,8 +54,6 @@ To view the latest source freshness result, refer to [generate metadata](/docs/e
 
 <Expandable alt_header="For dbt Docs">
 
-Configuring a job for the Source Freshness artifact setting also updates the data source link under **Deploy**. The new link points to the latest Source Freshness report for the selected job.
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
+Configuring a job for the Source Freshness artifact setting also updates the data source link under **Orchestration** > **Data sources**. The link points to the latest Source Freshness report for the selected job.
 
 </Expandable>

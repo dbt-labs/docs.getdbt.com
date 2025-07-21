@@ -51,6 +51,17 @@ SQL analytics endpoints are read-only and so are not appropriate for Transformat
 
 ## Authentication methods & profile configuration
 
+:::info Supported authentication methods
+
+Microsoft Fabric supports two authentication types:
+
+- Microsoft Entra service principal
+- Microsoft Entra password
+
+To better understand the authentication mechanisms, read our [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) page.
+
+:::
+
 ### Common configuration
 
 For all the authentication methods, refer to the following configuration options that can be set in your `profiles.yml` file. 

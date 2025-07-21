@@ -45,13 +45,13 @@ Kimiko wonders, "How do I find data in our project that will help me answer thei
 
 She navigates to the data catalog, <Constant name="explorer" />, by signing into <Constant name="cloud" /> and clicking <Constant name="explorer" /> in the left panel. Because the question was about customers, Kimiko begins by searching for "customers" in <Constant name="explorer" />:
 
-<Lightbox src="/img/guides/analyst-qs/catalog-search.png" width="90%" title="Catalog search for Customers" />
+<Lightbox src="/img/guides/analyst-qs/catalog-search.png" width="90%" title="Catalog search for customers" />
 
 She finds a "customers" model, which might be what she needs. She clicks **customers** to open the model. The description reads, “Customer overview data Mart offering key details for each unique customer, one row per customer.”
 
 Next, Kimiko selects **Columns** to see which columns this model uses. 
 
-<Lightbox src="/img/guides/analyst-qs/columns.png" width="90%" title="Columns in Customer table" />
+<Lightbox src="/img/guides/analyst-qs/columns.png" width="90%" title="Columns in customers table" />
 
 She notices these columns: `customer_ID`, `customer_names`, and `first_ordered_at`. 
 

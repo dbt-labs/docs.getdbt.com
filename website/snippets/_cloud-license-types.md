@@ -4,7 +4,7 @@ There are four license types in <Constant name="cloud" />:
   - User can be granted _any_ permission sets.
 - **Developer** &mdash; User can be granted _any_ permission sets.
 - **IT** &mdash; Available on [Starter, Enterprise, and Enterprise+ plans only](https://www.getdbt.com/pricing). User has Security Admin and Billing Admin [permissions](/docs/cloud/manage-access/enterprise-permissions#permission-sets) applied. 
-  - Can manage users, groups, and licenses, among other permissions. 
+  - Can manage users, groups, connections, and licenses, among other permissions. 
   - _IT licensed users do not inherit rights from any permission sets_. 
   - Every IT licensed user has the same access across the account, regardless of the group permissions assigned.
 - **Read-Only** &mdash; Available on [Starter, Enterprise, and Enterprise+ plans only](https://www.getdbt.com/pricing).

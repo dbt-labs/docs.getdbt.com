@@ -30,12 +30,12 @@ To use BigQuery in the <Constant name="cloud_ide" />, all developers must:
 
 ### Locate the redirect URI value
 To get started, locate the connection's redirect URI for configuring BigQuery OAuth. To do so:
- - Navigate to your account name, above your profile icon on the left side panel  
- - Select **Account settings** from the menu 
- - From the left sidebar, select **Projects** 
- - Choose the project from the list
- - Select **Connection** to edit the connection details
- - Locate the **Redirect URI** field under the **OAuth 2.0 Settings** section. Copy this value to your clipboard to use later on.
+
+1. Navigate to your account name, above your profile icon on the left side panel. 
+2. Select **Account settings** from the menu. 
+3. From the left sidebar, select **Connections**.
+4. Click the BigQuery connection.
+5. Locate the **Redirect URI** field under the **Development OAuth** section. Copy this value to your clipboard to use later on.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt" />
 
@@ -80,7 +80,7 @@ Once the BigQuery OAuth app is set up for a <Constant name="cloud" /> project, e
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/developer-bq-auth.gif" title="Authenticating to BigQuery" />
 
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" width="50%" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to <Constant name="cloud" />. You are now an authenticated BigQuery user and can begin accessing dbt development tools. 
 

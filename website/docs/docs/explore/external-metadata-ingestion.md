@@ -35,7 +35,7 @@ These credentials are configured separately from dbt environment credentials and
 
 1. Click your account name at the bottom of the left-side menu and click **[Account settings](/docs/cloud/account-settings)**.
 2. Under Account information, go to **Settings** and click **Edit** at the top right corner of the page.
-3. Select the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option (if not already enabled).
+3. Select the **Ingest external metadata in dbt <Constant name="explorer" /> (formerly dbt Explorer)** option (if not already enabled).
 
 ### Configure the warehouse connection
 
@@ -49,6 +49,7 @@ These credentials are configured separately from dbt environment credentials and
     - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.
 6. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
+      - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
     - It is strongly recommend to filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.
     - These fields accept CSV-formatted regular expressions:
         - Example: `DIM` matches `DIM_ORDERS` and `DIMENSION_TABLE` (basic "contains" match).

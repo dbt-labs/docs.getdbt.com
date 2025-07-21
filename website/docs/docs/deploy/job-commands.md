@@ -75,7 +75,7 @@ During a job run, the commands are "chained" together and executed as run steps.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" width="85%" title="A failed job run that had an error during a run step"/>
+<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.png" width="85%" title="A failed job run that had an error during a run step"/>
 
 ## Job command failures
 

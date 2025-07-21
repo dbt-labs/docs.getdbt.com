@@ -3,7 +3,7 @@ title: "About the Discovery API"
 pagination_next: "docs/dbt-cloud-apis/discovery-use-cases-and-examples"
 ---
 
-# About the Discovery API <Lifecycle status="managed,managed_plus" />
+# About the Discovery API <Lifecycle status="self_service,managed,managed_plus" />
 
 Every time <Constant name="cloud" /> runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the <Constant name="cloud" /> Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
 

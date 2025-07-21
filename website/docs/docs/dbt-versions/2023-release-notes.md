@@ -37,7 +37,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     The **Extended Attributes** text box is available from your environment's settings page: 
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="85%" title="Example of the Extended Attributes text box" />
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.png" width="85%" title="Example of the Extended attributes text box" />
 
   </Expandable>
 
@@ -78,7 +78,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 ## November 2023
 
-- <Expandable alt_header='New features and UI changes to dbt Explorer'>
+- <Expandable alt_header='New features and UI changes to dbt Catalog'>
 
     There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 
 

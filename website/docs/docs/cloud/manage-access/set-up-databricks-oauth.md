@@ -45,11 +45,13 @@ You can use the following table to set up the redirect URLs for your application
 ### Configure the Connection in dbt (dbt project admin)
 
 Now that you have an OAuth app set up in Databricks, you'll need to add the client ID and secret to <Constant name="cloud" />. To do so:
- - From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**
- - Select **Projects** from the menu
- - Choose your project from the list
- - Select **Connection** to edit the connection details
- - Add the `OAuth Client ID` and `OAuth Client Secret` from the Databricks OAuth app under the **Optional Settings** section
+
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
+2. Select **Projects** from the menu.
+3. Choose your project from the list.
+4. Click **Connections** and select the Databricks connection.
+5. Click **Edit**.
+6. Under the **Optional settings** section, add the `OAuth Client ID` and `OAuth Client Secret` from the Databricks OAuth app.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Adding Databricks OAuth application client ID and secret to dbt" />
 
@@ -57,12 +59,11 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
 
 Once the Databricks connection via OAuth is set up for a <Constant name="cloud" /> project, each <Constant name="cloud" /> user will need to authenticate with Databricks in order to use the <Constant name="cloud_ide" />. To do so:
 
-- From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**
-- Select **Profile settings**.
-- Select **Credentials**.
-- Choose your project from the list
-- Select `OAuth` as the authentication method, and click **Save**
-- Finalize by clicking the **Connect Databricks Account** button
+1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
+2. Under **Your profile**, select **Credentials**.
+3. Choose your project from the list and click **Edit**.
+4. Select `OAuth` as the authentication method, and click **Save**.
+5. Finalize by clicking the **Connect Databricks Account** button.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connecting to Databricks from an IDE user profile" />
 

@@ -98,3 +98,9 @@ dbt run --no-version-check
 </TabItem>
 
 </Tabs>
+
+## Config precedence
+
+import SettingFlags from '/snippets/_setting-flags.md';
+
+<SettingFlags />

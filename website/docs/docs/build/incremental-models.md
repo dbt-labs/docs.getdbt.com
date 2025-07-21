@@ -2,7 +2,7 @@
 title: "Configure incremental models"
 description: "Learn how to configure and optimize incremental models when developing in dbt."
 id: "incremental-models"
-keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
+keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration", "incremental predicates"]
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
 ---
 
@@ -85,6 +85,10 @@ where event_time >= (select coalesce(max(event_time),'1900-01-01') from {{ this 
 For more complex incremental models that make use of Common Table Expressions (CTEs), you should consider the impact of the position of the `is_incremental()` macro on query performance. In some warehouses, filtering your records early can vastly improve the run time of your query!
 
 :::
+
+import Incrementalpredicates from '/snippets/_incremental-predicates.md';
+
+<Incrementalpredicates />
 
 ### Defining a unique key (optional)
 

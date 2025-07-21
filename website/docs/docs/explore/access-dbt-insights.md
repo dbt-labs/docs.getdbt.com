@@ -134,19 +134,19 @@ The query history is stored indefinitely.
 
 <Lightbox src="/img/docs/dbt-insights/insights-query-history.png" width="95%" title="dbt Insights Query history icon" />
 
-### Use dbt Explorer
+### Use dbt Catalog
 
 Access [<Constant name="explorer" />](/docs/explore/explore-projects) directly in <Constant name="query_page" /> to view project resources such as models, columns, metrics, and dimensions, and more — all integrated in the <Constant name="query_page" /> interface. 
 
 This integrated view allows you and your users to maintain your query workflow, while getting more context on models, semantic models, metrics, macros, and more. The integrated <Constant name="explorer" /> view comes with:
 - Same search capabilities as <Constant name="explorer" />
 - Allows users to narrow down displayed objects by type
-- Hyperlink from SQL code `ref` to the corresponding Explorer page
+- Hyperlink from SQL code `ref` to the corresponding <Constant name="explorer" /> page
 - View assets in more detail by opening with the full <Constant name="explorer" /> experience or open them in <Constant name="copilot" />.
 
 To access <Constant name="explorer" />, click on the **<Constant name="explorer" />** icon in the [Query console sidebar menu](/docs/explore/navigate-dbt-insights#query-console-sidebar-menu).
 
-<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Catalog" />
 
 ### Set Jinja environment
 

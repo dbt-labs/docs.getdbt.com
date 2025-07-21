@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-cloud-apis/user-tokens"
 pagination_prev: null
 ---
 
-# APIs overview <Lifecycle status="managed,managed_plus" />
+# APIs overview <Lifecycle status="self_service,managed,managed_plus" />
 
 Accounts on the Enterprise and Enterprise+ plans can query the <Constant name="cloud" /> APIs.
 

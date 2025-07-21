@@ -227,7 +227,7 @@ dbt --version
 ```
 Note, this will also install any pre-releases of all dependencies.
 
-### Activate your virtual environment 
+## Activate your virtual environment 
 
 To install or use packages within your virtual environment:
 
@@ -277,6 +277,4 @@ dbt --version
 ```
 
 </Expandable>
-
-
 

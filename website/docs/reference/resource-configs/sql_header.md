@@ -4,6 +4,17 @@ description: "Sql_header - Read this in-depth guide to learn about configuration
 datatype: "string"
 ---
 
+:::info `sql_header` does not support Jinja or macros like `ref` and `source`
+
+Unlike [pre-hooks and post-hooks](/reference/resource-configs/pre-hook-post-hook), macros like [`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source), and references like [`{{ this }}`](/reference/dbt-jinja-functions/this), aren't supported.
+
+The primary function of `set_sql_header` is fairly limited. It's intended to: 
+- [Create UDFs](/reference/resource-configs/sql_header#create-a-bigquery-temporary-udf)
+- [Set script variables](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) (BigQuery) 
+- [Set temporary session parameters](/reference/resource-configs/sql_header#set-snowflake-session-parameters-for-a-particular-model) (Snowflake)
+
+:::
+
 <Tabs
   defaultValue="models"
   values={[

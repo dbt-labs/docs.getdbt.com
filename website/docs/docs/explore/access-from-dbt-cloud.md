@@ -15,11 +15,11 @@ You can enhance your project navigation and editing experience by directly acces
 - In your model, seed, or snapshot file, click the **View in <Constant name="explorer" />** icon to the right of your file breadcrumb (under the file name tab). 
 - This opens the model, seed, or snapshot file in a new tab, allowing you to view resources/lineage directly in <Constant name="explorer" />. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-ide.jpg" title="Access dbt Explorer from the IDE by clicking on the 'View in Explorer' icon next to the file breadcrumbs. " />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-ide.jpg" title="Access dbt Catalog from the IDE by clicking on the 'View in Explorer' icon next to the file breadcrumbs. " />
 
 ### Canvas
 
-Seamlessly access dbt Catalog via <Constant name="visual_editor" /> to bring your workflow to life with visual editing.
+Seamlessly access <Constant name="explorer" /> via <Constant name="visual_editor" /> to bring your workflow to life with visual editing.
 
 #### Access Catalog from Canvas
 
@@ -33,7 +33,7 @@ The **Lineage tab** in <Constant name="cloud" /> jobs displays the lineage assoc
 - From a job, select the **Lineage tab**. 
 - Double-click the node in the lineage to open a new tab and view its metadata directly in <Constant name="explorer" />.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" title="Access dbt Explorer from the lineage tab by double-clicking on the lineage node." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" title="Access dbt Catalog from the lineage tab by double-clicking on the lineage node." />
 
 ### Model timing tab in jobs <Lifecycle status="self_service,managed,managed_plus"/>
 
@@ -45,7 +45,7 @@ Access <Constant name="explorer" /> directly from the **modeling timing tab**, w
 - From a job, select the **model timing tab**.
 - Hover over a resource and click on **View on <Constant name="explorer" />** to view the resource metadata directly in <Constant name="explorer" />. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.jpg" title="Access dbt Explorer from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-model-timing.jpg" title="Access dbt Catalog from the model timing tab by hovering over the resource and clicking 'View in Explorer'." />
 
 ### dbt Insights <Lifecycle status="preview,managed,managed_plus" />
 
@@ -53,4 +53,4 @@ Access <Constant name="explorer" /> directly from [<Constant name="query_page" /
 
 To access <Constant name="explorer" /> from <Constant name="query_page" />, click on the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
 
-<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Explorer" />
+<Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Catalog" />

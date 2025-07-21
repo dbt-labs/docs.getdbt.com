@@ -617,11 +617,11 @@ select * from final
 
 <Lightbox src="/img/guides/dbt-mesh/deprecation_date_warning.png" title="The model will display a deprecation date warning." />
 
-## View lineage with dbt Explorer
+## View lineage with dbt Catalog
 
 Use [<Constant name="explorer" />](/docs/explore/explore-projects) to view the lineage across projects in <Constant name="cloud" />. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/explore/explore-multiple-projects).
 
-<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="85%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
+<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="85%" title="View 'Jaffle | Data Analytics' lineage with dbt Catalog " />
 
 ## What's next
 

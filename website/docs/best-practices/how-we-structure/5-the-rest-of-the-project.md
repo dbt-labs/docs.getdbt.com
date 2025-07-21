@@ -76,6 +76,16 @@ models:
 One of the many benefits this consistent approach to project structure confers to us is this ability to cascade default behavior. Carefully organizing our folders and defining configuration at that level whenever possible frees us from configuring things like schema and materialization in every single model (not very DRY!) — we only need to configure exceptions to our general rules. Tagging is another area this principle comes into play. Many people new to dbt will rely on tags rather than a rigorous folder structure, and quickly find themselves in a place where every model _requires_ a tag. This creates unnecessary complexity. We want to lean on our folders as our primary selectors and grouping mechanism, and use tags to define groups that are _exceptions._ A folder-based selection like \*\*`dbt build --select marts.marketing` is much simpler than trying to tag every marketing-related model, hoping all developers remember to add that tag for new models, and using `dbt build --select tag:marketing`.
 :::
 
+#### Defining groups
+
+A group is a collection of nodes within a dbt DAG. Groups enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-configs/access) models.
+
+import DefineGroups from '/snippets/_define-groups.md';
+
+<DefineGroups />
+
+For more information about using groups, see [Add groups to your DAG](/docs/build/groups).
+
 ### How we use the other folders
 
 ```shell

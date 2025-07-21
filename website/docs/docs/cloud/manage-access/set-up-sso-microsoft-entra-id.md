@@ -46,7 +46,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" width="70%" title="Configuring a new app registration"/>
 
-5. Save the App registration to continue setting up Microsoft Entra ID SSO
+5. Save the App registration to continue setting up Microsoft Entra ID SSO.
 
 :::info Configuration with the new Microsoft Entra ID interface (optional)
 
@@ -70,15 +70,17 @@ There is a [limitation](https://learn.microsoft.com/en-us/entra/identity/hybrid/
 
 The Azure users and groups you will create in the following steps are mapped to groups created in <Constant name="cloud" /> based on the group name. Reference the docs on [enterprise permissions](enterprise-permissions) for additional information on how users, groups, and permission sets are configured in <Constant name="cloud" />.
 
+The <Constant name="dbt_platform" /> uses the **User principal name** (UPN) in Microsoft Entra ID to identify and match users logging in to <Constant name="cloud" /> through SSO. The UPN is usually formatted as an email address.
+
 ### Adding users to an Enterprise application
 
 Once you've registered the application, the next step is to assign users to it. Add the users you want to be viewable to dbt with the following steps:
 
-8. Navigate back to the [**Default Directory**](https://portal.azure.com/#home) (or **Home**) and click **Enterprise Applications**
-9. Click the name of the application you created earlier
-10. Click **Assign Users and Groups**
-11. Click **Add User/Group**
-12. Assign additional users and groups as-needed
+8. Navigate back to the [**Default Directory**](https://portal.azure.com/#home) (or **Home**) and click **Enterprise Applications**.
+9. Click the name of the application you created earlier.
+10. Click **Assign Users and Groups**.
+11. Click **Add User/Group**.
+12. Assign additional users and groups as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
 
@@ -89,8 +91,8 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 ### Configuring permissions
 
 13. Navigate back to [**Default Directory**](https://portal.azure.com/#home) (or **Home**) and then **App registration**.
-14. Select your application and then select **API Permissions**
-15. Click **+Add a permission** and add the permissions shown below
+14. Select your application and then select **API permissions**.
+15. Click **+Add a permission** and add the permissions shown below.
 
 | API Name | Type | Permission |
 | -------- | ---- | ---------- |
@@ -108,11 +110,11 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 ### Creating a client secret
 
-17. Under **Manage**, click **Certificates & secrets**
-18. Click **+New client secret**
-19. Name the client secret "<Constant name="cloud" />" (or similar) to identify the secret
-20. Select **730 days (24 months)** as the expiration value for this secret (recommended)
-21. Click **Add** to finish creating the client secret value (not the client secret ID)
+17. Under **Manage**, click **Certificates & secrets**.
+18. Click **+New client secret**.
+19. Name the client secret "<Constant name="cloud" />" (or similar) to identify the secret.
+20. Select **730 days (24 months)** as the expiration value for this secret (recommended).
+21. Click **Add** to finish creating the client secret value (not the client secret ID).
 22. Record the generated client secret somewhere safe. Later in the setup process, we'll use this client secret in <Constant name="cloud" /> to finish configuring the integration.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
@@ -120,7 +122,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 ### Collect client credentials
 
-23. Navigate to the **Overview** page for the app registration
+23. Navigate to the **Overview** page for the app registration.
 24. Note the **Application (client) ID** and **Directory (tenant) ID** shown in this form and record them along with your client secret. We'll use these keys in the steps below to finish configuring the integration in <Constant name="cloud" />.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe" />
@@ -146,7 +148,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
-1.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
+28.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
 
 <Snippet path="login_url_note" />
 

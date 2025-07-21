@@ -67,7 +67,7 @@ The following tables outline the access that users have if they are assigned a D
 |Project-level permission | Owner | Member  | Read-only | IT license |
 |:------------------------|:-----:|:-------:|:---------:|:----------:|
 | Adapters                |   W   |    W    |    R      |      -      |
-| Connections             |   W   |    W    |    R      |      -      |
+| Connections             |   W   |    W    |    R      |      W      |
 | Credentials             |   W   |    W    |    R      |      -      |
 | Custom env. variables   |   W   |    W    |    R      |      -      |
 | Develop (<Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI)| W |  W    |    -      |      -      |

@@ -1,6 +1,6 @@
 ---
 title: "Column-level lineage"
-description: "Use dbt Explorer's column-level lineage to gain insights about your data at a granular level."
+description: "Use dbt Catalog's column-level lineage to gain insights about your data at a granular level."
 ---
 
 # Column-level lineage <Lifecycle status="managed,managed_plus" />
