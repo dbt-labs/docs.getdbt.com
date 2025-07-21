@@ -15,10 +15,10 @@ function slugify(text) {
     .replace(/-+$/, ''); // Trim - from end
 }
 
-function Expandable({ children, alt_header = null, lifecycle }) {
+function Expandable({ children, alt_header = null, lifecycle, is_open = false }) {
   if (!alt_header) return null;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(is_open);
   const detailsRef = useRef(null);
   const anchorId = slugify(alt_header);
 
