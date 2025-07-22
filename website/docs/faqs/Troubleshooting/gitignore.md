@@ -25,7 +25,7 @@ dbt_modules/
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.png" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
 
 4. Select **Restart <Constant name="cloud_ide" />**.
-5. Go back to your dbt project and delete the following files or folders if you have them:
+5. Go back to your File Catalog and delete the following files or folders if you have them:
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
 6. **Save** and then **Commit and sync** your changes.
 7. Restart the <Constant name="cloud_ide" /> again.
