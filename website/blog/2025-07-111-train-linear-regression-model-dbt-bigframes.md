@@ -203,5 +203,5 @@ By integrating **BigFrames** into your **dbt workflows**, you can build scalable
 
 - 📚 [dbt Support](/docs/dbt-support)  
 - 📨 Email feedback on BigFrames: `bigframes-feedback@google.com`  
-- 🛠 [File issues on GitHub](https://github.com/GoogleCloudPlatform/bigframes)  
+- 🛠 [File issues on GitHub](https://github.com/googleapis/python-bigquery-dataframes)  
 - 📬 [Subscribe to BigFrames updates](https://groups.google.com/g/bigframes-announce)
