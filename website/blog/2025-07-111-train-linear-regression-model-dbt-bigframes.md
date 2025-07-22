@@ -17,7 +17,7 @@ is_featured: true
 
 **BigQuery DataFrames (BigFrames)**: An open-source Python library offered by Google. BigFrames scales Python data processing by transpiling common Python data science APIs (Pandas and Scikit-learn) to BigQuery SQL.  
 
-You can read more in the [official BigFrames guide](https://cloud.google.com/bigquery/docs/bigframes-intro) and view the [public BigFrames GitHub repository](https://github.com/GoogleCloudPlatform/bigframes).
+You can read more in the [official BigFrames guide](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) and view the [public BigFrames GitHub repository](https://github.com/googleapis/python-bigquery-dataframes).
 
 By combining dbt with BigFrames—via the **dbt-bigquery adapter** (referred to as _"dbt-BigFrames"_)—you gain:
 
