@@ -19,12 +19,12 @@ is_featured: true
 
 You can read more in the [official BigFrames guide](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) and view the [public BigFrames GitHub repository](https://github.com/googleapis/python-bigquery-dataframes).
 
-By combining dbt with BigFrames—via the **dbt-bigquery adapter** (referred to as _"dbt-BigFrames"_)—you gain:
+By combining dbt with BigFrames via the `dbt-bigquery` adapter (referred to as _"dbt-BigFrames"_), you gain:
 
-- dbt’s modular SQL and Python modeling, dependency management with dbt.ref(), environment configurations, and data testing. With dbt Cloud, you also get job scheduling and monitoring.
+- dbt’s modular SQL and Python modeling, dependency management with dbt.ref(), environment configurations, and data testing. With the cloud-based dbt platform, you also get job scheduling and monitoring.
 - BigFrames’ ability to execute complex Python transformations (including machine learning) directly in BigQuery.
 
-`dbt-BigFrames` utilizes the **Colab Enterprise Notebook Executor Service** in a GCP project to run Python models. These notebooks execute BigFrames code, which is translated into BigQuery SQL.
+`dbt-BigFrames` utilizes the **Colab Enterprise notebook executor service** in a GCP project to run Python models. These notebooks execute BigFrames code, which is translated into BigQuery SQL.
 
 <!-- truncate -->
 
@@ -43,7 +43,7 @@ Linear regression is a cornerstone of predictive analytics, used in:
 
 These tasks often require processing datasets too large for traditional in-memory Python. BigFrames alone solves this, but combining it with dbt offers a structured, maintainable, and production-ready way to train models or generate batch predictions on large data.
 
-## “dbt-BigFrames” with ML: A Practical Example
+## “dbt-BigFrames” with ML: A practical example
 
 We’ll walk through training a linear regression model using a **dbt Python model powered by BigFrames**, focusing on the structure and orchestration provided by dbt.
 
@@ -63,7 +63,7 @@ Develop a machine learning model to predict atmospheric ozone levels using histo
 ### Prerequisites
 
 - A Google Cloud account  
-- A dbt Platform or Core setup  
+- A dbt platform or Core setup  
 - Basic to intermediate SQL and Python  
 - Familiarity with dbt using [Beginner dbt guides](/guides?level=Beginner)
 
@@ -105,10 +105,10 @@ models:
 
 This project uses **two modular dbt Python models**:
 
-1. `prepare_table.py` – Ingests and prepares data
-2. `prediction.py` – Trains the model and generates predictions
+1. `prepare_table.py` &mdash; Ingests and prepares data
+2. `prediction.py` &mdash; Trains the model and generates predictions
 
-### Part 1: Preparing the Table (`prepare_table.py`)
+### Part 1: Preparing the table (`prepare_table.py`)
 
 ```python
 def model(dbt, session):
@@ -147,7 +147,7 @@ def model(dbt, session):
     return df.reset_index()
 ```
 
-### Part 2: Training the Model and Making Predictions (`prediction.py`)
+### Part 2: Training the model and making predictions (`prediction.py`)
 
 ```python
 def model(dbt, session):
@@ -176,7 +176,7 @@ def model(dbt, session):
     return df_pred
 ```
 
-## Running Your dbt ML Pipeline
+## Running your dbt ML pipeline
 
 ```bash
 # Run all models
@@ -186,7 +186,7 @@ dbt run
 dbt run --select prepare_table prediction
 ```
 
-## Key advantages of dbt + BigFrames for ML
+## Key advantages of dbt and BigFrames for ML
 
 - **Scalability & Efficiency**: Handle large datasets in BigQuery via BigFrames  
 - **Simplified Workflow**: Use familiar APIs like `pandas` and `scikit-learn`  
@@ -199,9 +199,9 @@ dbt run --select prepare_table prediction
 
 By integrating **BigFrames** into your **dbt workflows**, you can build scalable, maintainable, and production-ready machine learning pipelines. While this example used linear regression, the same principles apply across other ML use cases with `bigframes.ml`.
 
-## Feedback & support
+## Feedback and support
 
 - 📚 [dbt Support](/docs/dbt-support)  
-- 📨 Email feedback on BigFrames: `bigframes-feedback@google.com`  
+- 📨 Email feedback on BigFrames: [bigframes-feedback@google.com](mailto:bigframes-feedback@google.com)
 - 🛠 [File issues on GitHub](https://github.com/googleapis/python-bigquery-dataframes)  
 - 📬 [Subscribe to BigFrames updates](https://docs.google.com/forms/d/10EnDyYdYUW9HvelHYuBRC8L3GdGVl3rX0aroinbRZyc/viewform?edit_requested=true)
