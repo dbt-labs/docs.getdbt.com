@@ -12,15 +12,16 @@ quoting:
   database: true | false
   schema: true | false
   identifier: true | false
-
+  snowflake_ignore_case: true | false  # Snowflake only: Aligns with session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior
 ```
 
 </File>
 
 ## Definition
+
 Optionally configure whether dbt should quote databases, schemas, and identifiers when:
-* creating relations (tables/views)
-* resolving a `ref` function to a direct relation reference
+* Creating relations (tables/views)
+* Resolving a `ref` function to a direct relation reference
 
 :::info BigQuery Terminology
 
@@ -69,7 +70,7 @@ quoting:
   database: false
   schema: false
   identifier: false
-
+  snowflake_ignore_case: false  # Snowflake only: Aligns with session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior
 ```
 
 </File>
@@ -80,6 +81,7 @@ quoting:
 </Tabs>
 
 ## Examples
+
 Set quoting to `false` for a project:
 <File name='dbt_project.yml'>
 
@@ -103,7 +105,8 @@ create table analytics.dbt_alice.dim_customers
 ## Recommendation
 
 ### Snowflake
-Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
+
+Set all quoting configs to `False` unless Snowflake's session parameter `QUOTED_IDENTIFIERS_IGNORE_CASE` is set to `true`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
 
 If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure it in the source.yml file. [Refer to configuring quoting for more info](/reference/resource-properties/quoting).
 
@@ -163,4 +166,5 @@ select * from analytics.orders;
 
 
 ### Other warehouses
+
 Leave the default values for your warehouse.
