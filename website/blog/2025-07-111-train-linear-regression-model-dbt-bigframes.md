@@ -28,7 +28,7 @@ By combining dbt with BigFrames via the `dbt-bigquery` adapter (referred to as _
 
 <!-- truncate -->
 
-> Refer to the [BigFrames guide](https://cloud.google.com/bigquery/docs/bigframes-intro) or [dbt guides](/guides) to learn more.
+> Refer to the [BigFrames guide](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) or [dbt guides](/guides/dbt-python-bigframes?step=1) to learn more.
 
 To illustrate the practical impact of combining dbt with BigFrames, the following sections explore how this integration can streamline and scale a common machine learning task: training a linear regression model on large datasets.
 
