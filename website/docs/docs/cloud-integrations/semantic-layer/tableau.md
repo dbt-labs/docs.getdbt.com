@@ -14,18 +14,18 @@ The Tableau integration allows you to use worksheets to query the <Constant name
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater, Tableau Server, or [Tableau Cloud](https://www.tableau.com/products/cloud-bi).
 - Log in to Tableau Desktop (with Cloud or Server credentials) or Tableau Cloud. You can also use a licensened Tableau Server deployment.
-- You need your <Constant name="cloud" /> host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
+- You need your <Constant name="cloud" /> host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-## Installing the Connector
+## Installing the connector
 
 The <Constant name="semantic_layer" /> Tableau connector is available to download directly on [Tableau Exchange](https://exchange.tableau.com/products/1020). The connector is supported in Tableau Desktop, Tableau Server, and Tableau Cloud.
 
-Alternatively, you can follow these steps to install the Connector. Note that these steps only apply to Tableau Desktop and Tableau Server. The connector for Tableau Cloud is managed by Tableau.
+Alternatively, you can follow these steps to install the connector. Note that these steps only apply to Tableau Desktop and Tableau Server. The connector for Tableau Cloud is managed by Tableau.
 
 1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/latest/download/dbt_semantic_layer.taco) locally and add it to your default folder:
 
