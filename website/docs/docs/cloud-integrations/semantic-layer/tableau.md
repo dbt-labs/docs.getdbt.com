@@ -13,7 +13,7 @@ The Tableau integration allows you to use worksheets to query the <Constant name
 
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater, Tableau Server, or [Tableau Cloud](https://www.tableau.com/products/cloud-bi).
-- Log in to Tableau Desktop (with Cloud or Server credentials) or Tableau Cloud. You can also use a licensened Tableau Server deployment.
+- Log in to Tableau Desktop (with Cloud or Server credentials) or Tableau Cloud. You can also use a licensed Tableau Server deployment.
 - You need your <Constant name="cloud" /> host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
 
