@@ -27,15 +27,13 @@ sources:
     [database](/reference/resource-properties/database): <database_name>
     [schema](/reference/resource-properties/schema): <schema_name>
     [loader](/reference/resource-properties/loader): <string>
-    [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
-    [meta](/reference/resource-configs/meta): {<dictionary>}
-    [tags](/reference/resource-configs/tags): [<string>]
-    
+
     # requires v1.1+
     [config](/reference/resource-properties/config):
       [<source_config>](source-configs): <config_value>
-      [freshness](/reference/resource-properties/freshness): 
-        # changed to config in v1.9
+      [freshness](/reference/resource-properties/freshness):
+        # changed to config in v1.10
+        [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
         warn_after:
           [count](/reference/resource-properties/freshness#count): <positive_integer>
           [period](/reference/resource-properties/freshness#period): minute | hour | day
@@ -43,9 +41,11 @@ sources:
           [count](/reference/resource-properties/freshness#count): <positive_integer>
           [period](/reference/resource-properties/freshness#period): minute | hour | day
         [filter](/reference/resource-properties/freshness#filter): <where-condition>
-    
+      [meta](/reference/resource-configs/meta): {<dictionary>} # changed to config in v1.10
+      [tags](/reference/resource-configs/tags): [<string>] # changed to config in v1.10
+
     # deprecated in v1.10
-    [overrides](/reference/resource-properties/overrides): <string> 
+    [overrides](/reference/resource-properties/overrides): <string>
 
     [quoting](/reference/resource-properties/quoting):
       database: true | false
@@ -55,14 +55,14 @@ sources:
     tables:
       - name: <string> #required
         [description](/reference/resource-properties/description): <markdown_string>
-        [meta](/reference/resource-configs/meta): {<dictionary>}
         [identifier](/reference/resource-properties/identifier): <table_name>
-        [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
         [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
-        [tags](/reference/resource-configs/tags): [<string>]
         [config](/reference/resource-properties/config):
+          [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
+          [meta](/reference/resource-configs/meta): {<dictionary>}
+          [tags](/reference/resource-configs/tags): [<string>]
           [freshness](/reference/resource-properties/freshness):
             warn_after:
               [count](/reference/resource-properties/freshness#count): <positive_integer>
@@ -80,12 +80,13 @@ sources:
         columns:
           - name: <column_name> # required
             [description](/reference/resource-properties/description): <markdown_string>
-            [meta](/reference/resource-configs/meta): {<dictionary>}
             [quote](/reference/resource-properties/columns#quote): true | false
             [tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
-            [tags](/reference/resource-configs/tags): [<string>]
+            [config](/reference/resource-properties/config):
+              [meta](/reference/resource-configs/meta): {<dictionary>}
+              [tags](/reference/resource-configs/tags): [<string>]
           - name: ... # declare properties of additional columns
 
       - name: ... # declare properties of additional source tables

@@ -26,7 +26,7 @@ dbt supports creating Iceberg tables for three of the Snowflake materializations
 
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
-- [Dynamic Table](#dynamic-tables) 
+- [Dynamic Table](/reference/resource-configs/snowflake-configs#dynamic-tables) 
 
 ## Iceberg catalogs
 

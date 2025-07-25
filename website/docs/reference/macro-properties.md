@@ -17,9 +17,10 @@ version: 2
 macros:
   - name: <macro name>
     [description](/reference/resource-properties/description): <markdown_string>
-    [docs](/reference/resource-configs/docs):
-      show: true | false
-    [meta](/reference/resource-configs/meta): {<dictionary>}
+    config:
+      [docs](/reference/resource-configs/docs):
+        show: true | false
+      [meta](/reference/resource-configs/meta): {<dictionary>}
     [arguments](/reference/resource-properties/arguments):
       - name: <arg name>
         [type](/reference/resource-properties/arguments#type): <string>
