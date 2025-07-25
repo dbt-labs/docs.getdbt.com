@@ -301,6 +301,25 @@ my-profile:
       location: US # Optional, one of US or EU, or a regional location
 ```
 
+### Reservations
+
+BigQuery now lets you choose which reservation a query should use at runtime. If you set `reservation` in your BigQuery profile, dbt will pass it to the job config; if omitted, BigQuery’s default assignment rules apply.
+Example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      reservation: projects/abc-123/locations/US/reservations/my-reservation
+```
+If not specified, BigQuery will use the default reservation assignment associated with the project, folder, or organization. The reservation must be located in the same region as the query, and the authenticated account must have permission to use the specified reservation.
+See official docs for [Workload management using reservations](https://cloud.google.com/bigquery/docs/reservations-workload-managemen)
+
 ### Maximum Bytes Billed
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
