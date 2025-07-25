@@ -59,6 +59,7 @@ The following example is a list of all available configurations in the `dbt_proj
   database: true | false
   schema: true | false
   identifier: true | false
+  snowflake_ignore_case: true | false  # Snowflake only: Aligns with session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior
 
 metrics:
   [<metric-configs>](/docs/build/metrics-overview)
