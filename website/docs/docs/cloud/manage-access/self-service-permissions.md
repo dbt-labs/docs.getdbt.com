@@ -33,18 +33,9 @@ There are three license types:
 
 See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
 
-:::important License types override group permissions
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
-**User license types always override their assigned group permission sets.** This means that even if a user belongs to a group with administrative permissions, having a 'Read-Only' license would still prevent them from performing administrative actions.
-
-For example:
-- A user with a Read-Only license cannot perform administrative actions, even if they belong to an Owner group
-- A user with an IT license has limited access regardless of their group permissions
-- Only Developer licenses allow full access based on group permission sets
-
-This override behavior ensures that license restrictions are always enforced, regardless of group membership.
-
-:::
+<LicenseOverrideNote />
 
 ## Table of groups, licenses, and permissions
 

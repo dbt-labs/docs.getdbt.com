@@ -248,18 +248,9 @@ Notable features:
 
 </Expandable>
 
-:::tip Licenses override permission sets
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
-**User license types always override their assigned [Enterprise permission](/docs/cloud/manage-access/enterprise-permissions) sets.** This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
-
-**Examples:**
-- A user with a Read-Only license cannot perform administrative actions, even if they belong to an Account Admin group
-- A user with an IT license has limited access regardless of their group permissions
-- Only Developer licenses allow full access based on group permission sets
-
-This override behavior ensures that license restrictions are always enforced, regardless of group membership.
-
-:::
+<LicenseOverrideNote />
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
