@@ -318,7 +318,7 @@ my-profile:
       reservation: projects/abc-123/locations/US/reservations/my-reservation
 ```
 If not specified, BigQuery will use the default reservation assignment associated with the project, folder, or organization. The reservation must be located in the same region as the query, and the authenticated account must have permission to use the specified reservation.
-See official docs for [Workload management using reservations](https://cloud.google.com/bigquery/docs/reservations-workload-managemen)
+See official docs for [Workload management using reservations](https://cloud.google.com/bigquery/docs/reservations-workload-management)
 
 ### Maximum Bytes Billed
 
