@@ -116,7 +116,7 @@ If you're using Snowflake, we recommend:
   Setting `snowflake_ignore_case: true` ensures that dbt compiles column and identifier names to match Snowflake’s behavior at runtime, preserving parity between compile-time and runtime logic. Without this, you may encounter "column not found" errors.
 
 :::info Quoting a source
-If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure this in the source.yml file. [Refer to configuring quoting for more info](/reference/resource-properties/quoting).
+If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure this in the source.yml file. Refer to [configuring quoting](/reference/resource-properties/quoting) for more information.
 :::
 
 #### Explanation
