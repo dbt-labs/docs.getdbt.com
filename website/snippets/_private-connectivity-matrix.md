@@ -10,7 +10,7 @@
 | Snowflake                                         |   ✅   |   ✅   |    ✅    |    ✅    |
 | - Snowflake Internal Stage                        |   ❌   |   ❌   |    ✅    |    ✅    |
 | Databricks                                        |   ✅   |   ✅   |    ✅    |    ✅    |
-| Postgres (self-hosted) * see limitations below    |   ✅   |   ✅   |    🟡    |    🟡    |
+| Postgres (self-hosted) * see limitations below    |   ✅   |   ✅   |    ⚠️    |    ⚠️     |
 | Redshift (Interface)                              |   ✅   |   ✅   |    -     |    -     |
 | Redshift (Managed)                                |   ✅   |   ✅   |    -     |    -     | 
 | Redshift Severless (Interface)                    |   ✅   |   ✅   |    -     |    -     | 
@@ -27,4 +27,4 @@
 | AWS CodeCommit                                    |   ❌   |   ✅   |    -     |    -     |
 | Azure DevOps Repos (not supported by Azure)       |   -    |   -    |    ❌    |    ❌    |
 
-🟡 * - Postgres private connectivity is limited to only load balancer-backed private endpoint service connections. Direct connections to cloud provider managed database services, such as Azure Database for PostgreSQL, are not currently supported.
+⚠️ * - Postgres private connectivity is limited to only load balancer-backed private endpoint service connections. Direct connections to cloud provider managed database services, such as Azure Database for PostgreSQL, are not currently supported.
