@@ -58,6 +58,60 @@ Some deprecations can be automatically fixed with a script. Read more about it i
 
 The following are deprecation warnings in dbt today and the associated version number in which they first appear.
 
+### ArgumentsPropertyInGenericTestDeprecation
+
+dbt has deprecated the ability to specify a custom top-level property called `arguments` on generic tests. This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `False`.
+
+#### ArgumentsPropertyInGenericTestDeprecation warning resolution
+
+For example, you may have previously had a property called `arguments` on custom generic tests:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - my_custom_generic_test:
+          arguments: [1,2,3]
+          expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
+You should set the `require_generic_test_arguments_property` flag to `True` and nest any keyword arguments to your test under the new `arguments` property:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - my_custom_generic_test:
+          arguments: 
+            arguments: [1,2,3]
+            expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
+Alternatively, the original `arguments` keyword could be renamed to something else that does not collide with the new `arguments` key in the dbt framework. This renaming would also need to occur in the test macro definition, and the renamed key would still need to be specified within the `arguments` property to be valid syntactically. For example: 
+
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - my_custom_generic_test:
+          arguments:
+            renamed_arguments: [1,2,3]
+            expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
 ### ConfigDataPathDeprecation
 
 In [dbt v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) `data-paths` has been renamed to [seed-paths](/reference/project-configs/model-paths). If you receive this deprecation warning, it means that `data-paths` is still being used in your project's `dbt_project.yml`.
@@ -136,6 +190,89 @@ DBT_TARGET_PATH env var instead.
 
 Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
 
+### CustomKeyInConfigDeprecation
+
+This warning is raised when you use custom config keys that dbt does not recognize as part of the official config spec. This applies to configuration blocks in both SQL and YAML files.
+
+Example that results in the warning: 
+
+```yaml
+models:
+  - name: my_model
+    config:
+      custom_config_key: value
+```
+
+#### CustomKeyInConfigDeprecation warning resolution
+
+Nest custom keys under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)). For example:
+
+```yaml
+models:
+  - name: my_model
+    config:
+      meta:
+        custom_config_key: value
+```
+
+### CustomKeyInObjectDeprecation
+
+This warning is displayed when you specify a config that dbt does not recognize as part of the official config spec. This could be custom configs or defining `meta` as top-level keys in the `columns` list.
+
+Previously, when you could define any additional fields directly under `config`, it could lead to collisions between pre-existing user-defined configurations and official configurations of the dbt framework. 
+
+As of dbt Core v1.10 and in the <Constant name="fusion_engine" />, top-level config keys will be reserved for official configurations of the dbt framework.
+
+import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
+
+<DeprecationWarnings4 />
+
+#### CustomKeyInObjectDeprecation warning resolution
+
+Nest custom configs under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)).
+
+Example that results in the warning: 
+
+```yaml
+models:
+  - name: my_model
+    config:
+      custom_config_key: value
+    columns:
+      - name: my_column
+        meta:
+          some_key: some_value
+```
+
+Example of the resolution:
+
+```yaml
+models:
+  - name: my_model
+    config:
+      meta:
+        custom_config_key: value
+    columns:
+      - name: my_column
+        config:
+          meta:
+            some_key: some_value
+```
+
+To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
+
+Example before custom configurations were nested under meta:
+
+```jinja
+{% set my_custom_config = config.get('custom_config_key') %}
+```
+
+After configs are nested:
+
+```jinja
+{% set my_custom_config = config.get('meta').custom_config_key %}
+```
+
 ### CustomOutputPathInSourceFreshnessDeprecation
 
 dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
@@ -145,9 +282,99 @@ dbt has deprecated the `--output` (or `-o`) flag for overriding the location of 
 Remove the `--output` or `-o` flag and associated path configuration from any jobs running dbt source freshness commands.
 There is no alternative for changing the location of only the source freshness results. However, you can still use `--target-path` to write _all_ artifacts from the step to a custom location.
 
-### ExposureNameDeprecation
+### CustomTopLevelKeyDeprecation
 
-#### Description
+This warning informs users when they use custom top-level keys in their YAML files that are not supported by dbt.
+
+import DeprecationWarnings from '/snippets/_deprecation-warnings.md';
+
+<DeprecationWarnings />
+
+#### CustomTopLevelKeyDeprecation warning resolution
+
+Move custom top-level keys in your YAML files under `config.meta`.
+
+For example, when you use a custom top-level key such as `custom_metdata`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+custom_metadata:
+  owner: "data_team"
+  description: "This project contains models for our analytics platform"
+  last_updated: "2025-07-01"
+```
+
+</File>
+
+You should move the key under `config.meta`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+config:
+  meta:
+    custom_metadata:
+      owner: "data_team"
+      description: "This project contains models for our analytics platform"
+      last_updated: "2025-07-01"
+```
+
+</File>
+
+### DuplicateYAMLKeysDeprecation
+
+This warning is raised when two identical keys exist in the `profiles.yml`. 
+
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+
+<File name='profiles.yml'>
+
+```yml
+
+my_profile:
+  target: 
+  outputs:
+...
+
+my_profile: # dbt would use this profile key
+  target: 
+  outputs:
+...
+```
+</File>
+
+Note that in a future version, dbt will stop supporting duplicate keys with silent overwrite. 
+
+#### DuplicateYAMLKeysDeprecation warning resolution
+
+Remove duplicate keys from your `profiles.yml` file. 
+
+### EnvironmentVariableNamespaceDeprecation
+
+This warning is raised when you're using environment variables that conflict with dbt's reserved namespace `DBT_ENGINE`. Previously, both dbt internal variables and custom variables used the `DBT_` prefix⁠. If the environment variable defined in dbt collides with a custom environment variable, the project may break. 
+
+All new dbt environment variables are now prefixed with `DBT_ENGINE` to prevent naming collisions and minimize disruption for users.
+
+#### EnvironmentVariableNamespaceDeprecation
+
+Review your custom environment variables and ensure they don't conflict with dbt's reserved namespace `DBT_ENGINE`.
+
+### ExposureNameDeprecation
 
 In [dbt 1.3](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
 
@@ -220,6 +447,79 @@ https://docs.getdbt.com/reference/global-configs/behavior-changes
 
 Define your MetricFlow timespine in [YAML](/docs/build/metricflow-time-spine#creating-a-time-spine-table).
 
+### MissingArgumentsPropertyInGenericTestDeprecation
+
+dbt has deprecated specifiying keyword arguments as properties on custom generic data tests or data tests that use the [alternative `test_name` format](/docs/reference/resource-properties/data-tests.md#alternative-format-for-defining-tests). Instead, arguments to tests should be specified under the new `arguments` property.
+
+This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `True`.
+
+
+#### MissingArgumentsPropertyInGenericTestDeprecation warning resolution
+
+If you previously set arguments as top-level properties on custom generic tests:
+
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
+Or using the alternative `test_name` format:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+    - name: arbitrary_name
+      test_name: dbt_utils.expression_is_true
+      expression: "order_items_subtotal = subtotal"
+      where: "1=1"
+```
+
+</File>
+
+You should now nest arguments under `arguments` and framework configurations under `config`:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments: 
+            expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
+Or with framework configurations:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+    - name: arbitrary_name
+      test_name: dbt_utils.expression_is_true
+      arguments:
+         expression: "order_items_subtotal = subtotal"
+      config:
+        where: "1=1"
+```
+
+</File>
+
 ### MissingPlusPrefixDeprecation
 
 import MissingPrefix from '/snippets/_missing-prefix.md';
@@ -235,6 +535,10 @@ file `dbt_project.yml`. Hierarchical config
 values without a '+' prefix are deprecated in dbt_project.yml.
 ```
 </File>
+
+import DeprecationWarnings2 from '/snippets/_deprecation-warnings.md';
+
+<DeprecationWarnings2 />
 
 #### MissingPlusPrefixDeprecation warning resolution
 
@@ -421,6 +725,18 @@ information: https://docs.getdbt.com/reference/global-configs/legacy-behaviors
 
 Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness).
 
+### SourceOverrideDeprecation
+
+The `overrides` property for sources is deprecated.
+
+import DeprecationWarnings3 from '/snippets/_deprecation-warnings.md';
+
+<DeprecationWarnings3 />
+
+#### SourceOverrideDeprecation warning resolution
+
+Remove the `overrides` property and [enable or disable a source](/reference/source-configs.md#configuring-sources) from a package instead. 
+
 ### UnexpectedJinjaBlockDeprecation
 
 If you have an unexpected Jinja block - an orphaned Jinja block or a Jinja block outside of a macro context - you will receive a warning, and in a future version, dbt will stop supporting unexpected Jinja blocks. Previously, these unexpected Jinja blocks were silently ignored.
@@ -442,7 +758,7 @@ hello!
 
 Delete the unexpected Jinja blocks.
 
-### WEOIncludeExcludeDeprecation
+### WEOIncludeExcludeDeprecation 
 
 The `include` and `exclude` options for `warn_error_options` have been deprecated and replaced with `error` and `warn`, respectively.
 

@@ -38,7 +38,7 @@ To take full advantage of this guide, you'll need to meet the following prerequi
 - You should have a basic understanding of dbt projects, git workflows, and data warehouse requirements.
 - Make sure you're using a supported adapter and authentication method:
   <FusionDWH /> 
-- You need a macOS (Terminal) or Windows (Powershell) machine to run the dbt Fusion engine. 
+- You need a macOS (Terminal), Linux, or Windows (Powershell) machine to run the dbt Fusion engine. 
 - You need to have [Visual Studio Code](https://code.visualstudio.com/) installed. The [Cursor](https://www.cursor.com/en) code editor will also work, but these instructions will focus on VS Code.
     - Disable all third-party dbt extensions to avoid issues.
 

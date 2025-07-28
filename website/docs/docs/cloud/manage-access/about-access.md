@@ -112,6 +112,10 @@ Developer licenses will make up a majority of the users in your environment and 
 
 For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users)
 
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
+
+<LicenseOverrideNote />
+
 ### Permissions
 
 Permissions determine what a developer-licensed user can do in your <Constant name="cloud" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.

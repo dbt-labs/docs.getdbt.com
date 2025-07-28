@@ -369,9 +369,13 @@ You must connect your service user before setting up a <Constant name="cloud" />
 
 A <Constant name="cloud" /> account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
 1. Sign in to the service user's Azure DevOps account.
-2. In <Constant name="cloud" />, click **Link Azure Service User**.
-3. You will be directed to Azure DevOps and must accept the Microsoft Entra ID app's permissions.
-4. Finally, you will be redirected to <Constant name="cloud" />, and the service user will be connected.
+2. In <Constant name="cloud" />, go to **Account settings** > **Integrations**. 
+3. Go to the **Azure DevOps** section and select **Service User**.
+4. Enter values for the required fields.
+6. Click **Save**.
+7. Click **Link Azure service user**.
+8. You will be directed to Azure DevOps and you must accept the Microsoft Entra ID app's permissions.
+9. Finally, you will be redirected to <Constant name="cloud" />, and the service user will be connected.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 

@@ -86,7 +86,8 @@ The `run` command supports the `--empty` flag for building schema-only dry runs.
 
 When calling the [list_runs api](/dbt-cloud/api-v2#/operations/List%20Runs), you will get a status code for each run returned. The available run status codes are as follows:
 
-- Starting = 1
+- Queued = 1
+- Starting = 2
 - Running = 3
 - Success = 10
 - Error = 20

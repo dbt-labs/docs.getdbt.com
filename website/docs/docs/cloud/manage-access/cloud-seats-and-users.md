@@ -31,11 +31,9 @@ The user's assigned license determines the specific capabilities they can access
 
 ## Licenses
 
-:::tip Licenses or Permission sets
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
-The user's license type always overrides their assigned [Enterprise permission](/docs/cloud/manage-access/enterprise-permissions) set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
-
-:::
+<LicenseOverrideNote />
 
 Each <Constant name="cloud" /> plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 

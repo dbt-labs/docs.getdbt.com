@@ -50,6 +50,9 @@ Example usage:
 
   -- Example w/ default value. Default to 'id' if the 'unique_key' config does not exist
   {%- set unique_key = config.get('unique_key', default='id') -%}
+
+  -- Example of a custom config nested under `meta` as required in v1.10 and higher.
+  {% set my_custom_config = config.get('meta').custom_config_key %}
   ...
 ```
 

@@ -124,6 +124,7 @@ You can use the [`+` operator](/reference/node-selection/graph-operators#the-plu
 
 When using tags, consider the following: 
 
+- Each individual tag must be a string. 
 - Tags are additive across project hierarchy.
 - Some resource types (like sources, exposures) require tags at the top level.
 
@@ -298,6 +299,33 @@ Run resources with multiple tags using the following commands:
 ```
 
 ## Usage notes
+
+### Tags must be strings
+
+Each individual tag must be a string value (for example, `marketing` or `daily`).
+
+In the following example, `my_tag: "my_value"` is invalid because it is a key-value pair.
+
+```yml
+sources:
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    config:
+      tags:
+        my_tag: "my_value". # invalid
+    tables:
+      - name: raw_customers
+        config:
+          tags:
+            my_tag: "my_value". # invalid
+```
+
+A warning is raised when the `tags` value is not a string. For example:
+
+```
+Field config.tags: {'my_tag': 'my_value'} is not valid for source (ecom)
+```
 
 ### Tags are additive
 Tags accumulate hierarchically. The [earlier example](/reference/resource-configs/tags#use-tags-to-run-parts-of-your-project) would result in:

@@ -17,3 +17,7 @@ To change the license type for a user from `developer` to `read-only` or `IT` in
 4. For the **License** option, choose **Read-only** or **IT** (from **Developer**), and click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/change_user_to_read_only_20221023.gif" title="Change user's license type" />
+
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
+
+<LicenseOverrideNote />

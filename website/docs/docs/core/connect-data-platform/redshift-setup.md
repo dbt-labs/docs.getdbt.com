@@ -39,7 +39,14 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources|
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement|
 | `retries`  | 1 | Number of retries (on each statement) |
-| `retry_all`  | true | Allows dbt to retry all statements in a query* |
+| `retry_all`  | true | Allows dbt to retry all statements in a query|
+| `tcp_keepalive`  | true | Allows dbt to prevent idle connections from being dropped by intermediate firewalls or load-balancers. |
+| `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
+| `tcp_keepalive_interval`  | 200 | Number of Seconds of inactivity before the next probe is sent |
+| `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
+
+For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
+
 
 ## Authentication Parameters
 

@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## July 2025
 
+- **New**: The [Tableau Cloud](https://www.tableau.com/products/cloud-bi) integration with Semantic Layer is now available. For more information, see [Tableau](/docs/cloud-integrations/semantic-layer/tableau).
 - **Preview**: The [Semantic Layer Power BI integration](/docs/cloud-integrations/semantic-layer/power-bi) is now available in Preview.
 - **Enhancement:** You can now use `limit` and `order_by` parameters when creating [saved queries](/docs/build/saved-queries). 
 - **Enhancement:** Users assigned IT [licenses](/docs/cloud/manage-access/seats-and-users) can now edit and manage [global connections settings](/docs/cloud/connect-data-platform/about-connections#connection-management).
@@ -25,7 +26,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2025
 
-- **New**: [System for Cross-Domain Identity Management](/docs/cloud/manage-access/scim#scim-configuration-for-entra-id) (SCIM) through Microsoft Entra ID is now GA.
+- **New**: [System for Cross-Domain Identity Management](/docs/cloud/manage-access/scim#scim-configuration-for-entra-id) (SCIM) through Microsoft Entra ID is now GA. Also available on legacy Enterprise plans. 
 - **Enhancement:** You can now set the [compilation environment](/docs/explore/access-dbt-insights#set-jinja-environment) to control how Jinja functions are rendered in dbt Insights.
 - **Beta**: The dbt Fusion engine supports the BigQuery adapter in beta.
 - **New:** You can now view the history of settings changes for [projects](/docs/cloud/account-settings), [environments](/docs/dbt-cloud-environments), and [jobs](/docs/deploy/deploy-jobs).

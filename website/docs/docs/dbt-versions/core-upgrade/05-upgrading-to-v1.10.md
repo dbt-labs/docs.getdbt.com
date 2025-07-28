@@ -135,6 +135,25 @@ models:
 
 ```
 
+#### Custom keys not nested under meta
+
+Previously, when you could define any additional fields directly under `config`, it could lead to collisions between pre-existing user-defined configurations and official configurations of the dbt framework. 
+
+In the future, the `meta` config will be the sole location for custom user-defined attributes. Everything else will be strongly typed and strictly validated. If you have an extra attribute you want to include in your project, or a model config you want to access in a custom materialization, you must nest it under `meta` moving forward:
+
+```yaml
+models:
+  - name: my_model
+    config:
+      meta:
+        custom_config_key: value
+    columns:
+      - name: my_column
+        config:
+          meta:
+            some_key: some_value
+```
+
 #### Duplicate keys in the same yaml file
 
 If two identical keys exist in the same YAML file, you will get a warning, and in a future version, dbt will stop supporting duplicate keys. Previously, if identical keys existed in the same YAML file, dbt silently overwrite, using the last configuration listed in the file. 

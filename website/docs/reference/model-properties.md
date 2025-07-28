@@ -13,16 +13,16 @@ version: 2
 
 models:
   # Model name must match the filename of a model -- including case sensitivity
-  - [name](/reference/resource-properties/model_name): model_name 
+  - [name](/reference/resource-properties/model_name): model_name
     [description](/reference/resource-properties/description): <markdown_string>
-    [docs](/reference/resource-configs/docs):
-      show: true | false
-      node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
     [latest_version](/reference/resource-properties/latest_version): <version_identifier>
     [deprecation_date](/reference/resource-properties/deprecation_date): <YAML_DateTime>
-    [access](/reference/resource-configs/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>
+      [docs](/reference/resource-configs/docs):
+        show: true | false
+        node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+      [access](/reference/resource-configs/access): private | protected | public
     [constraints](/reference/resource-properties/constraints):
       - <constraint>
     [tests](/reference/resource-properties/data-tests):
@@ -31,14 +31,15 @@ models:
     [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
-        [meta](/reference/resource-configs/meta): {<dictionary>}
         [quote](/reference/resource-properties/columns#quote): true | false
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
         [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional data tests
-        [tags](/reference/resource-configs/tags): [<string>]
+        [config](/reference/resource-properties/config):
+          [meta](/reference/resource-configs/meta): {<dictionary>}
+          [tags](/reference/resource-configs/tags): [<string>]
         
         # only required in conjunction with time_spine key
         [granularity](/docs/build/metricflow-time-spine#creating-a-time-spine-table): <[any supported time granularity](/docs/build/dimensions?dimension=time_gran)> 
@@ -52,13 +53,13 @@ models:
       - [v](/reference/resource-properties/versions#v): <version_identifier> # required
         [defined_in](/reference/resource-properties/versions#defined-in): <definition_file_name>
         [description](/reference/resource-properties/description): <markdown_string>
-        [docs](/reference/resource-configs/docs):
-          show: true | false
-        [access](/reference/resource-configs/access): private | protected | public
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
         [config](/reference/resource-properties/config):
           [<model_config>](/reference/model-configs): <config_value>
+          [docs](/reference/resource-configs/docs):
+            show: true | false
+          [access](/reference/resource-configs/access): private | protected | public
         [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional data tests

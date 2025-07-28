@@ -743,11 +743,11 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     After the source and all the staging models are complete for each of the 8 tables, your staging folder should look like this:
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/1-staging-folder.png" title="Staging folder"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/1-staging-folder.png" width="40%" title="Staging folder"/>
 
 1. It’s a good time to delete our example folder since these two models are extraneous to our formula1 pipeline and `my_first_model` fails a `not_null` test that we won’t spend time investigating. <Constant name="cloud" /> will warn us that this folder will be permanently deleted, and we are okay with that so select **Delete**.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/2-delete-example.png" title="Delete example folder"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/2-delete-example.png" width="40%" title="Delete example folder"/>
 
 1. Now that the staging models are built and saved, it's time to create the models in our development schema in Snowflake. To do this we're going to enter into the command line `dbt build` to run all of the models in our project, which includes the 8 new staging models and the existing example models.
 
@@ -1890,12 +1890,12 @@ Now that we've completed testing and documenting our work, we're ready to deploy
   - Once our code is merged to the main branch, we'll need to run dbt in our production environment to build all of our models and run all of our tests. This will allow us to build production-ready objects into our production environment in Snowflake. Luckily for us, the Partner Connect flow has already created our deployment environment and job to facilitate this step.
 
 1. Before getting started, let's make sure that we've committed all of our work to our feature branch. If you still have work to commit, you'll be able to select the **Commit and push**, provide a message, and then select **Commit** again.
-2. Once all of your work is committed, the git workflow button will now appear as **Merge to main**. Select **Merge to main** and the merge process will automatically run in the background.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/1-merge-to-main-branch.png" title="Merge into main"/>
+2. Once all of your work is committed, the git workflow button will now appear as **Merge this branch to main**. Click **Merge this branch to main** and the merge process will automatically run in the background.
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/1-merge-to-main-branch.png" title="Merge this branch to main"/>
 
 3. When it's completed, you should see the git button read **Create branch** and the branch you're currently looking at will become **main**.
 4. Now that all of our development work has been merged to the main branch, we can build our deployment job. Given that our production environment and production job were created automatically for us through Partner Connect, all we need to do here is update some default configurations to meet our needs.
-5. In the menu, select **Deploy** **> Environments**
+5. In the left-hand menu, go to **Orchestration** > **Environments**.
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/2-ui-select-environments.png" title="Navigate to environments within the UI"/>
 
 6. You should see two environments listed and you'll want to select the **Deployment** environment then **Settings** to modify it.
