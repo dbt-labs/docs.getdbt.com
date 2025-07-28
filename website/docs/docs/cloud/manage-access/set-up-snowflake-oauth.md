@@ -14,6 +14,10 @@ This guide describes a feature available on <Constant name="cloud" /> Enterprise
 
 <Constant name="cloud" /> Enterprise and Enterprise+ supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to <Constant name="cloud" />. If Snowflake is set up with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the dbt Development credentials without any additional setup.
 
+import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md'; 
+
+<SnowflakeOauthWithPL />
+
 To set up Snowflake OAuth in <Constant name="cloud" />, admins from both are required for the following steps:
 1. [Locate the redirect URI value](#locate-the-redirect-uri-value) in <Constant name="cloud" />.
 2. [Create a security integration](#create-a-security-integration) in Snowflake.

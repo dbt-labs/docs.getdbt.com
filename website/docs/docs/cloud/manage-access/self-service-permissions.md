@@ -33,6 +33,10 @@ There are three license types:
 
 See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
 
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
+
+<LicenseOverrideNote />
+
 ## Table of groups, licenses, and permissions
 
 Key:

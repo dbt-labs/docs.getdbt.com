@@ -248,10 +248,9 @@ Notable features:
 
 </Expandable>
 
-:::tip Licenses or Permission sets
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
-The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
-:::
+<LicenseOverrideNote />
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
