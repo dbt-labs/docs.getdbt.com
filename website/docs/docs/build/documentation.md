@@ -19,6 +19,8 @@ dbt provides a way to generate documentation for your dbt project and render it 
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions/doc)
+* [Generating dbt Docs in CI Without a Warehouse](https://www.datumlabs.io/resources/how-datum-labs-delivers-lightning-fast-dbt-docs-in-ci-no-warehouse-required?utm_source=dbtLabs&utm_medium=document&utm_campaign=blog)
+
 * If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
