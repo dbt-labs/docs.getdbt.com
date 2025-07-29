@@ -36,7 +36,7 @@ models:
   - name: my_model
     columns:
       - name: id
-        tests:
+        data_tests:
           - not_null:
               config:
                 store_failures_as: view
@@ -55,7 +55,7 @@ version: "1.0.0"
 config-version: 2
 profile: "sandcastle"
 
-tests:
+data_tests:
   my_project:
     +store_failures_as: table
     my_subfolder_1:

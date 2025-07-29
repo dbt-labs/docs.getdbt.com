@@ -8,7 +8,7 @@ description: "Set up notifications in dbt to receive email or Slack alerts about
 Set up notifications in <Constant name="cloud" /> to receive email or Slack alerts about the status of a job run. You can choose to be notified by one or more of the following job run statuses: 
 
 - **Succeeds** option &mdash; A job run completed successfully.
-- **Warns** option &mdash; A job run encountered warnings from [tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks (if applicable).
+- **Warns** option &mdash; A job run encountered warnings from [data tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks (if applicable).
 - **Fails** option &mdash; A job run failed to complete. 
 - **Is canceled** option &mdash; A job run is canceled.
 

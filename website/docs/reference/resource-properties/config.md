@@ -87,7 +87,7 @@ version: 2
 
 <resource_type>:
   - name: <resource_name>
-    tests:
+    data_tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           config:
@@ -96,7 +96,7 @@ version: 2
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
-        tests:
+        data_tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>

@@ -242,7 +242,7 @@ Snapshots can be configured in multiple ways:
 2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 </VersionBlock>
 
-Snapshot configurations are applied hierarchically in the order above with higher taking precedence. You can also apply [tests](/reference/snapshot-properties) to snapshots using the [`tests` property](/reference/resource-properties/data-tests).
+Snapshot configurations are applied hierarchically in the order above with higher taking precedence. You can also apply [data tests](/reference/snapshot-properties) to snapshots using the [`tests` property](/reference/resource-properties/data-tests).
 
 ### Examples
 

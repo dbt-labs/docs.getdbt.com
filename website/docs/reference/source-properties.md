@@ -56,7 +56,7 @@ sources:
       - name: <string> #required
         [description](/reference/resource-properties/description): <markdown_string>
         [identifier](/reference/resource-properties/identifier): <table_name>
-        [tests](/reference/resource-properties/data-tests):
+        [data_tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         [config](/reference/resource-properties/config):
@@ -81,7 +81,7 @@ sources:
           - name: <column_name> # required
             [description](/reference/resource-properties/description): <markdown_string>
             [quote](/reference/resource-properties/columns#quote): true | false
-            [tests](/reference/resource-properties/data-tests):
+            [data_tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
             [config](/reference/resource-properties/config):
@@ -137,18 +137,18 @@ sources:
           loaded_at_field: updated_at # override source defaults
         columns:
           - name: id
-            tests:
+            data_tests:
               - unique
 
           - name: price_in_usd
-            tests:
+            data_tests:
               - not_null
 
       - name: customers
         quoting:
           identifier: true # override source defaults
         columns:
-            tests:
+            data_tests:
               - unique
 ```
 

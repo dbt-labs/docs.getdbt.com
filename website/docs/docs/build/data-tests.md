@@ -22,7 +22,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 
 :::important
 
-`tests` are now called `data tests` to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+Tests are now called data tests to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
 
@@ -70,10 +70,10 @@ having total_amount < 0
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
 
 Note:
-- Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your test to fail.
-- Singular tests placed in the tests directory are automatically executed when running `dbt test`. Don't reference singular tests in `model_name.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
+- Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your data test to fail.
+- Singular data tests placed in the tests directory are automatically executed when running `dbt test`. Don't reference singular tests in `model_name.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
 
-To add a description to a singular test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
+To add a description to a singular data test in your project, add a `.yml` file to your `tests` directory, for example, `tests/schema.yml` with the following content:
 
 <File name='tests/schema.yml'>
 
@@ -104,7 +104,7 @@ Certain data tests are generic: they can be reused over and over again. A generi
 {% endtest %}
 ```
 
-You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
+You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the data test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
 
 :::info
 If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](/reference/configs-and-properties).
@@ -119,15 +119,15 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: status
-        tests:
+        data_tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'returned']
       - name: customer_id
-        tests:
+        data_tests:
           - relationships:
               to: ref('customers')
               field: id
@@ -145,14 +145,14 @@ You can find more information about these data tests, and additional configurati
 
 ### More generic data tests
 
-Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of data tests &mdash; a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic data tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open-source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) &mdash; skip ahead to the docs on [packages](/docs/build/packages) to learn more!
+There are generic data tests defined in some open-source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) &mdash; skip ahead to the docs on [packages](/docs/build/packages) to learn more!
 :::
 
 ### Example
-To add a generic (or "schema") test to your project:
+To add a generic (or "schema") data test to your project:
 
 1. Add a `.yml` file to your `models` directory, e.g. `models/schema.yml`, with the following content (you may need to adjust the `name:` values for an existing model)
 
@@ -165,7 +165,7 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique
           - not_null
 
@@ -272,7 +272,7 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
-## Storing test failures
+## Storing data test failures
 
 Normally, a data test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag,  the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 
@@ -280,7 +280,7 @@ This workflow allows you to query and examine failing records much more quickly 
 
 <Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
 
-Note that, if you select to store test failures:
+Note that, if you select to store data test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 

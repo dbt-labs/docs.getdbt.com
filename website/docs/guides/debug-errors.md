@@ -254,7 +254,7 @@ Compilation Error
     4  | - name: customers
     5  |     columns:
     6  |       - name: customer_id
-    7  |         tests:
+    7  |         data_tests:
     8  |           - unique
 
     Raw Error:
@@ -274,7 +274,7 @@ models:
   - name: customers
       columns: # this is indented too far!
       - name: customer_id
-        tests:
+        data_tests:
           - unique
           - not_null
 ```

@@ -457,21 +457,21 @@ sources:
         description: One record per circuit, which is the specific race course. 
         columns:
           - name: circuitid
-            tests:
+            data_tests:
             - unique
             - not_null
       - name: constructors 
         description: One record per constructor. Constructors are the teams that build their formula 1 cars. 
         columns:
           - name: constructorid
-            tests:
+            data_tests:
             - unique
             - not_null
       - name: drivers
         description: One record per driver. This table gives details about the driver. 
         columns:
           - name: driverid
-            tests:
+            data_tests:
             - unique
             - not_null
       - name: lap_times
@@ -480,7 +480,7 @@ sources:
         description: One row per pit stop. Pit stops do not have their own id column, the combination of the race_id and driver_id identify the pit stop.
         columns:
           - name: stop
-            tests:
+            data_tests:
               - accepted_values:
                   values: [1,2,3,4,5,6,7,8]
                   quote: false            
@@ -488,13 +488,13 @@ sources:
         description: One race per row. Importantly this table contains the race year to understand trends. 
         columns:
           - name: raceid
-            tests:
+            data_tests:
             - unique
             - not_null        
       - name: results
         columns:
           - name: resultid
-            tests:
+            data_tests:
             - unique
             - not_null   
         description: One row per result. The main table that we join out for grid and position variables.
@@ -502,7 +502,7 @@ sources:
         description: One status per row. The status contextualizes whether the race was finished or what issues arose e.g. collisions, engine, etc. 
         columns:
           - name: statusid
-            tests:
+            data_tests:
             - unique
             - not_null
 ```
@@ -1743,7 +1743,7 @@ Since the output of our Python models are tables, we can test SQL and Python mod
           columns:
             - name: constructor_name
               description: team that makes the car
-              tests:
+              data_tests:
                 - unique
 
         - name: lap_times_moving_avg
@@ -1751,7 +1751,7 @@ Since the output of our Python models are tables, we can test SQL and Python mod
           columns:
             - name: race_year
               description: year of the race
-              tests:
+              data_tests:
                 - relationships:
                   to: ref('int_lap_times_years')
                   field: race_year

@@ -738,7 +738,7 @@ models:
   - name: my_model
     columns:
       - name: id
-        tests:
+        data_tests:
           - unique
           - not_null  # this test will fail
 """

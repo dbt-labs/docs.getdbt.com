@@ -28,7 +28,7 @@ models:
   - name: large_table
     columns:
       - name: very_unreliable_column
-        tests:
+        data_tests:
           - accepted_values:
               values: ["a", "b", "c"]
               config:
@@ -82,7 +82,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +limit: 1000  # all tests
   
   <package_name>:

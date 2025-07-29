@@ -9,221 +9,176 @@ pagination_prev: null
 
 # New concepts <Lifecycle status="beta" />
 
-<IntroText>
-
-Learn about the net-new concepts you will encounter when using Fusion.
-
-</IntroText>
-
-
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
 <FusionBeta />
 
-The new dbt Fusion engine compiles and statically analyzes SQL, to provide dialect-aware validation and extract column-level lineage. This means running `dbt compile` will generate and analyze a full logical plan for all the models in a dbt project, before running any models.
-To enable this capability, Fusion introduces **two new concepts**:
-- **Compilation strategies** (ahead-of-time or just-in-time) to determine whether a mode is compiled before or during DAG execution.
-- **Static analysis** of code (SQL) in dbt models. When turned on, Fusion will produce a logical plan, validate it, and statically analyze the model's plan to extract column-level lineage and other rich metadata.
+<IntroText>
 
-In dbt core, `compile` means rendering Jinja. In dbt Fusion, compile introduces a new step and analyzes the SQL. Therefore a `compile` in Fusion can be broken down into two steps: `render` (Jinja) and `analyze` (SQL).
+The dbt Fusion engine fully comprehends your project's SQL, enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
-## Compilation strategies
+It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-[Ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) is the default compilation strategy of Fusion. This means when a user runs `dbt run` on Fusion, it compiles all models first, then runs them, providing a platform for significant performance improvements and guaranteeing correctness of the DAG before execution. This models compiled languages like Rust, Typescript, or Java where the compiler catches all issues upfront before anything is executed. 
+The dbt Fusion engine can also render Jinja, but then it completes a second phase: producing and validating with _static analysis_ a logical plan for every rendered query in the project. This static analysis step is the cornerstone of Fusion's new capabilities.
 
-<Lightbox src="/img/fusion/aot-compilation.png" title="Ahead-of-time compilation strategy (Fusion default)" />
+</IntroText>
 
-[Just-in-time compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation) is the default behavior of <Constant name="core" />. dbt compiles, then runs, each model sequentially in the DAG. This is necessary in cases where the results of upstream models are inputs to introspective queries used to template downstream models. The downstream model must be compiled "just-in-time," after the upstream models have finished building.
+| Step | dbt Core engine | dbt Fusion engine |
+|------|-----------------|--------------------|
+| Render Jinja into SQL | ✅ | ✅ |
+| Produce and statically analyze logical plan  | ❌ | ✅ |
+| Run rendered SQL | ✅ | ✅ |
 
-<Lightbox src="/img/fusion/jit-compilation.png" title="Just-In-time compilation strategy (dbt Core)" />
+## Rendering strategies
 
-### Dynamic Templating
+<Lightbox src="/img/fusion/annotated_steps.png" title="Each dot represents a step in that model's execution (render, analyze, run). The numbers reflect step order across the DAG. JIT steps are green; AOT steps are purple." alignment="left" width="600px"/>
 
-While Fusion defaults to ahead-of-time (AOT) compilation for performance and validation benefits, models with dynamic Jinja templating ([introspective queries](/faqs/Warehouse/db-connection-dbt-compile)) require just-in-time compilation.
+<Expandable alt_header="JIT rendering and execution (dbt Core)" is_open="true">
+  <video src="/img/fusion/CoreJitRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+</Expandable>
 
-Dynamic templating functions that depend on the state of the data platform, such as [run_query](/reference/dbt-jinja-functions/run_query) and [`dbt_utils.get_column_values`](https://github.com/dbt-labs/dbt-utils?tab=readme-ov-file#get_column_values-source), need to query the database to determine what SQL to generate.
+<Constant name="core" /> will _always_ use **Just In Time (JIT) rendering**. It renders a model, runs it in the warehouse, then moves on to the next model.
 
-These patterns create a chicken-and-egg problem for AOT compilation: Fusion can't know what SQL will be generated until it runs the upstream models and queries their results. The downstream model's SQL depends on the data produced _at runtime_ in the upstream model, and so it must be compiled "just in time."
+<Expandable alt_header="AOT rendering, analysis and execution (dbt Fusion engine)" is_open="true">
+  <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+</Expandable>
 
-**Fusion intelligently switches to JIT compilation only for models that require it, while maintaining AOT compilation for all other models in your DAG.** This selective approach gives you the best of both worlds:
+The <Constant name="fusion_engine" /> will _default to_ **Ahead of Time (AOT) rendering and analysis**. It renders all models in the project, then produces and statically analyzes every model's logical plan, and only then will it start running models in the warehouse.
 
-- Models without dynamic templating benefit from AOT's performance improvements and upfront validation
-- Models with dynamic templating still work correctly with JIT compilation
-- The compilation mode is determined on a per-model basis, not for the entire DAG
+By rendering and analyzing all models ahead of time, and only beginning execution once everything is proven to be valid, the <Constant name="fusion_engine" /> avoids consuming any warehouse resources unnecessarily. By contrast, SQL errors in models run by <Constant name="core" />'s engine will only be flagged by the database itself during execution.
 
-For example, in a DAG like this:
-<Lightbox src="/img/fusion/introspection-normal.png" title="Fusion switches to JIT compilation since all model_b contains an introspection query" />
+### Rendering introspective queries
 
+The exception to AOT rendering is an introspective model: a model whose rendered SQL depends on the results of a database query. Models containg macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with ahead-of-time rendering because:
 
-Fusion will:
-1. Render `model_a`, `model_b`, `model_d` ahead of time
-2. In DAG order, analyze the SQL of `model_a` then `model_b`
-3. Run `model_a → model_b`
-4. Switch to JIT compile-run for `model_c` (due to dynamic templating)
-5. Continue with SQL analysis then run for `model_d` (since it depends on a dynamic model)
+- Most introspective queries are run against the results of an earlier model in the DAG, which may not yet exist in the database during AOT rendering.
+- Even if the model does exist in the database, it might be out of date until after the model has been refreshed.
 
+The <Constant name="fusion_engine" /> switches to **JIT rendering for introspective models**, to ensure it renders them the same way as <Constant name="core" />.
 
-However, if you have a parallel branch:
-<Lightbox src="/img/fusion/introspection-mixed.png" title="Fusion switches to JIT compilation _only_ for model_c (dynamic templating) and its downstreams" />
+Note that macros like `adapter.get_columns_in_relation()` and `dbt_utils.star()` _can_ be rendered and analyzed ahead of time, as long as the [`Relations`](/reference/dbt-classes#relation) they inspect aren't themselves dynamic. This is because the <Constant name="fusion_engine" /> populates schemas into memory as part of the compilation process.
 
+## Principles of static analysis
 
-Fusion will:
-1. AOT compile `model_a`, `model_b` _and_ `model_x`, `model_y`, `model_z` because none depend on a dynamically templated model. It also AOT renders `model_d` since its Jinja is not dynamic.
-2. Switch to JIT compile and run for `model_c`
-3. JIT analyze and run `model_d`
+[Static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control.
 
-This granular approach ensures maximum performance and reliability, while maintaining compatibility with dynamic SQL patterns.
+The <Constant name="fusion_engine" /> is unique in that it can statically analyze not just a single model in isolation, but every query from one end of your DAG to the other. Even your database can only validate the query in front of it! Concepts like [information flow theory](https://roundup.getdbt.com/i/156064124/beyond-cll-information-flow-theory-and-metadata-propagation) &mdash; although not incorporated into the dbt platform [yet](https://www.getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine) &mdash; rely on stable inputs and the ability to trace columns DAG-wide.
 
-## The `static_analysis` config
+### Static analysis and introspective queries
 
-Fusion can statically analyze the vast majority of SQL in supported dialects, with some exceptions and limitations. You can toggle on and off the new static (SQL) analysis features for specific models in your project, if they contain unsupported or dynamic SQL. This configuration propagates downstream, which means if an upstream model's static analysis is turned off, then Fusion will also turn off static analysis for any downstream models referencing that model.
+When Fusion encounters an introspective query, that model will switch to just-in-time rendering (as described above). Both the introspective model and all of its descendants will also be opted in to JIT static analysis. We refer to JIT static analysis as "unsafe" because it will still capture most SQL errors and prevent execution of an invalid model, but only after upstream models have already been materialized.
 
-## Usage
+This classification is meant to indicate that Fusion can no longer 100% guarantee alignment between what it analyzes and what will be executed. The most common real-world example where unsafe static analysis can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
 
-You can set `static_analysis` as a model-level config (preferred), or as a CLI flag for an entire run, which overrides model-level configuration and is really intended as an aid to debugging. Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
+During a `dbt run`, JIT rendering ensures the downstream model's code will be up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario Fusion will read from the upstream model as it was last run. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
 
-The `static_analysis` model-level config uses these options:
+<Expandable alt_header="Rendering and analyzing without execution" is_open="true">
+  <video src="/img/fusion/FusionJitCompileUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+  Note that `model_d` is rendered AOT, since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
+</Expandable>
 
-- `on`: (Default) Statically analyzes SQL.
-- `off`: Skips SQL analysis on a model and all downstream models that depend on it. If Fusion detects that a model is dynamically templated with introspective queries, it will automatically shut off static analysis for this model and all downstream models, and switch to just-in-time compilation.
-- `unsafe`: Force Fusion to analyze the SQL for dynamically generated models. As the user, you accept the risk that SQL may _change_ between compile and run, as the state of the data platform or upstream models change. At runtime, the resulting SQL may be invalid or different. Fusion switches to JIT compilation for this model and models downstream.
+You will still derive significant benefits from "unsafe" static analysis compared to no static analysis, and we recommend leaving it on unless you notice it causing you problems. Better still, you should consider whether your introspective code could be rewritten in a way that is eligible for AOT rendering and static analysis.
 
-<File name='models/<filename>.yml'>
+## Recapping the differences between engines
+
+dbt Core:
+
+- renders all models just-in-time
+- never runs static analysis
+
+The dbt Fusion engine:
+
+- renders all models ahead-of-time, unless they use introspective queries
+- statically analyzes all models, defaulting to ahead-of-time unless they or their parents were rendered just-in-time, in which case the static analysis step will also happen just-in-time.
+
+## Configuring `static_analysis`
+
+Beyond the default behavior described above, you can always modify the way static analysis is applied for specific models in your project. Remember that **a model is only eligible for static analysis if all of its parents are also eligible.**
+
+The `static_analysis` options are:
+
+- `on`: Statically analyze SQL. The default for non-introspective models, depends on AOT rendering.
+- `unsafe`: Statically analyze SQL. The default for introspective models. Always uses JIT rendering.
+- `off`: Skip SQL analysis on this model and its descendants.
+
+When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
+
+The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the `--static-analysis off` or `--static-analysis unsafe` CLI flags to override all model-level configuration. Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
+
+### Example configurations
+
+Disable static analysis for all models in a package:
+
+<File name='dbt_project.yml'>
 
 ```yml
-version: 2
+name: jaffle_shop
 
 models:
-  - name: <model_name>
-    config:
-      static_analysis: unsafe
-      ...
+  jaffle_shop: 
+    marts:
+      +materialized: table
+  
+  a_package_with_introspective_queries:
+    +static_analysis: off
 ```
 
 </File>
 
-The CLI flag uses `--static-analysis=unsafe` or `--static-analysis=off` for the entire run, which takes precedence over the model-level config:
+Disable static analysis for a model using a custom UDF:
 
-```bash
-dbt run --static-analysis=unsafe
-```
-
-## Example: new concepts in action
-
-Imagine a DAG with `model_a → model_b → model_c → model_d`. All of these models are defined with static SQL.
-
-### Default behavior (`static_analysis: on`)
-
-- During `dbt compile`, Fusion will compile and analyze all models
-- During `dbt run`, Fusion will compile and analyze all models, then run all models
-
-### After adding dynamic SQL
-
-We update `model_c` to introduce dynamic SQL (such as `dbt_utils.get_column_values`). Fusion will automatically detect that `model_c` has dynamic Jinja. It will turn off static analysis for `model_c+` and switch them to a just-in-time compilation strategy.
-
-During `dbt compile`, Fusion will:
-- Parse the project, detect that `model_c` is dynamic, switch `static_analysis: off` for `model_c+`
-- Compile and analyze `model_a`, `model_b`
-- Skip analysis for `model_c+` (including `model_d`)
-
-During `dbt run`, Fusion will:
-- Parse the project, detect that `model_c` is dynamic, switch `static_analysis: off` and just-in-time rendering for `model_c+`
-- Compile and analyze `model_a`, `model_b`
-- Run `model_a → model_b`
-- Render SQL for `model_c` (without static analysis), then run `model_c`
-- Render SQL for `model_d` (no static analysis), then run `model_d`
-
-### Explicitly set `static_analysis: unsafe` for `model_c`
-
-This configuration tells Fusion to attempt static analysis, even though `model_c` is dynamically templated.
-
-During `dbt compile`, Fusion will:
-- Parse the project, detect that `model_c` is unsafe, but the explicit user configuration of `static_analysis: unsafe` tells Fusion not to shut off static analysis for `model_c+`
-- Compile and analyze all models. For `model_b`'s introspection queries, it uses data from previously-built tables or production (if using defer)
-
-During `dbt run`, Fusion will:
-- Parse the project, detect that `model_c` is unsafe, but the explicit user configuration of `static_analysis: unsafe` tells Fusion not to shut off static analysis for `model_c+`. Fusion still switches to JIT compilation for those models.
-- Compile and analyze `model_a`, `model_b`
-- Run `model_a → model_b`
-- Compile `model_c` (including static analysis), then run `model_c`
-- Compile `model_d` (including static analysis), then run `model_d`
-
-- **Warning:** The actual SQL executed for `model_c` and `model_d` may differ from what was analyzed during compilation, which may lead to schema mismatches or errors. Many of those errors will be detected during static analysis, but the detection is "just-in-time," after `model_a → model_b` have already been materialized.
-
-## Limitations to static analysis
-
-Fusion is unable to compile user-defined functions (UDFs), which define custom functions in Snowflake and other data warehouses. When using a UDF in a model, you need to set `static_analysis: off`. In the future, we intend to add native support for UDF definition and compilation within  Fusion.
-
-Fusion automatically detects dynamically templated SQL, via introspective query calls within dbt-jinja, but it is unable to detect dynamic SQL, such as the Snowflake `PIVOT` function. You can either configure your model to set `static_analysis: off`, or you can refactor your model to have a statically enforceable schema. (See example below.)
-
-### Dynamic SQL
-
-We currently do not detect when the schema is dynamic based on SQL functionality (instead of Jinja). For example, when you use Snowflake with the `ANY` keyword:
+<File name='models/my_udf_using_model.sql'>
 
 ```sql
-with quarterly_sales as (
-  select * from values
-    (1, 10000, '2023_Q1'),
-    (1, 400, '2023_Q1'),
-    (2, 4500, '2023_Q1'),
-    (2, 35000, '2023_Q1'),
-    (3, 10200, '2023_Q4')
-  as quarterly_sales(emp_id, amount, quarter)
-)
+{{ config(static_analysis='off') }}
 
-select *
-from quarterly_sales
-pivot (
-  sum(amount) for quarter in (ANY)
-)
-order by emp_id
+select 
+  user_id,
+  my_cool_udf(ip_address) as cleaned_ip
+from {{ ref('my_model') }}
 ```
 
-This example model uses a dynamic schema based on SQL functionality (not Jinja), which causes an error:
+</File>
 
-```terminal
-error: dbt0432: PIVOT ANY is not compilable
-  --> models/example/my_first_model.sql:12:29 (target/compiled/models/example/my_first_model.sql:12:29)
-```
+### When should I turn static analysis `off`?
 
-To fix this error, you may:
-- configure your model with `static_analysis: off`
-- refactor your model to use dynamic Jinja templating, e.g. `dbt_utils.get_column_values`, and configure your model with `static_analysis: unsafe`
-- refactor your model to be a static pivot, and benefit from safe static analysis
+Static analysis may incorrectly fail on valid queries if they contain:
 
-```sql
-with quarterly_sales as ( 
-    select * from values
-    (1, 10000, '2023_01'),
-    (1, 400, '2023_01'),
-    (2, 4500, '2023_01'),
-    (2, 35000, '2023_01'),
-    (3, 10200, '2023_04')   
-as quarterly_sales(emp_id, amount, quarter)
-)
+- **syntax or native functions** that the <Constant name="fusion_engine" /> doesn't recognize. Please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) in addition to disabling static analysis.
+- **user-defined functions** that the <Constant name="fusion_engine" /> doesn't recognize. You will need to temporarily disable static analysis. Native support for UDF compilation will arrive in a future version - see [dbt-fusion#69](https://github.com/dbt-labs/dbt-fusion/issues/69).
+- **dynamic SQL** such as [Snowflake's PIVOT ANY](https://docs.snowflake.com/en/sql-reference/constructs/pivot#dynamic-pivot-on-all-distinct-column-values-automatically) which cannot be statically analyzed. You can disable static analysis, refactor your pivot to use explicit column names, or create a [dynamic pivot in Jinja](https://github.com/dbt-labs/dbt-utils#pivot-source).
+- **highly volatile data feeding an introspective query** during a standalone `dbt compile` invocation. Because the `dbt compile` step does not run models, it uses old data or defers to a different environment when running introspective queries. The more frequently the input data changes, the more likely it is for this divergence to cause a compilation error. Consider whether these standalone `dbt compile` commands are necessary before disabling static analysis.
 
-select * from quarterly_sales pivot (
-sum(amount) for quarter in ('2023_01', '2023_04'))
-order by emp_id
-```
+## Examples
 
-### UDFs
+### No introspective models
 
-If you call a user-defined function in your model SQL:
+<Expandable alt_header="AOT rendering, analysis and execution" is_open="true">
+  <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+</Expandable>
 
-```sql
-select my_example_udf(player_id)
-    from {{ source('raw_data', 'raw_players') }}
-```
+- Fusion renders each model in order.
+- Then it statically analyzes each model's logical plan in order.
+- Finally, it runs each model's rendered SQL. Nothing is persisted to the database until Fusion has validated the entire project.
 
-Fusion will raise an error during static analysis:
+### Introspective model with `unsafe` static analysis
 
-```terminal
-error: dbt0209: No function MY_EXAMPLE_UDF
-  --> models/staging/stg_players.sql:7:9 (target/compiled/models/staging/stg_players.sql:7:9)
-```
+Imagine we update `model_c` to contain an introspective query (such as `dbt_utils.get_column_values`). We'll say it's querying `model_b`, but the <Constant name="fusion_engine" />'s response is the same regardless of what the introspection does.
 
-To fix this error, you need to set `static_analysis: off` for that model. This will also have the effect of turning off static analysis for any downstream models as well.
+<Expandable alt_header="Unsafe static analysis of introspective models" is_open="true">
+  <video src="/img/fusion/FusionJitRunUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+</Expandable>
+
+- During parsing, Fusion discovers `model_c`'s introspective query. It switches `model_c` to JIT rendering and opts `model_c+` in to JIT static analysis.
+- `model_a` and `model_b` are still eligible for AOT compilation, so Fusion handles them the same as in the introspection-free example above. `model_d` is still eligible for AOT rendering (but not analysis).
+- Once `model_b` is run, Fusion renders `model_c`'s SQL (using the just-refreshed data), analyzes it, and runs it. All three steps happen back-to-back.
+- `model_d`'s AOT-rendered SQL is analyzed and run.
+
+<Expandable alt_header="Complex DAG with an introspective branch" is_open="true">
+  <video src="/img/fusion/FusionJitRunUnsafeComplexDag.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
+</Expandable>
+
+As you'd expect, a branching DAG will AOT compile as much as possible before moving on to the JIT components, and will work with multiple `--threads` if they're available. Here, `model_c` can start rendering as soon as `model_b` has finished running, while the AOT-compiled `model_x` and `model_y` run separately:
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

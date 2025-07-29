@@ -91,7 +91,7 @@ You can also:
 - Add data tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/data-tests) and [documentation](/docs/build/documentation)).
+These should be familiar concepts if you've already added data tests and descriptions to your models (if not check out the guides on [testing](/docs/build/data-tests) and [documentation](/docs/build/documentation)).
 
 <File name='models/<filename>.yml'>
 
@@ -109,7 +109,7 @@ sources:
         columns:
           - name: id
             description: Primary key of the orders table
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status

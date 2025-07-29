@@ -355,7 +355,7 @@ models:
     columns:
       - name: user_id
         description: "Unique identifier for a user"
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: event_type

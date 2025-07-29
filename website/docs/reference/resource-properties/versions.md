@@ -125,7 +125,7 @@ models:
         data_type: text
         constraints:
           - type: not_null
-        tests:
+        data_tests:
           - unique
       - name: customer_country
         data_type: text

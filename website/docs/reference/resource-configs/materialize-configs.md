@@ -77,13 +77,13 @@ select ...
 
 </File>
 
-### Tests
+### Data tests
 
 If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   project_name:
     +store_failures: true
     +schema: test

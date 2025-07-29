@@ -96,7 +96,7 @@ For example, to save test results in a specific database, you can configure it l
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +database: test_results
 ```

@@ -328,7 +328,7 @@ dbt run --select "tag:nightly"    # run all models with the `nightly` tag
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](/docs/build/data-tests).
+[data tests](/docs/build/data-tests).
 
 
   ```bash

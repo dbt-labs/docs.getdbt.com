@@ -12,7 +12,7 @@ Depending on the resource type, you can define configurations in a dbt project a
 <VersionBlock firstVersion="1.9">
 
 1. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file for supported resource directories like `models/`, `snapshots/`, `seeds/`, `analyses`, `tests/`, and more.
-2. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `tests:`, and so on)
+2. From the [`dbt_project.yml` file](dbt_project.yml), under the corresponding resource key (`models:`, `snapshots:`, `data_tests:`, and so on)
 </VersionBlock>
 
 

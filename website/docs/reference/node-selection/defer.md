@@ -141,7 +141,7 @@ models:
   - name: model_b
     columns:
       - name: id
-        tests:
+        data_tests:
           - relationships:
               to: ref('model_a')
               field: id

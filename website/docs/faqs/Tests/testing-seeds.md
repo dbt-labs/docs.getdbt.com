@@ -20,11 +20,11 @@ seeds:
     description: A mapping of two letter country codes to country names
     columns:
       - name: country_code
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: country_name
-        tests:
+        data_tests:
           - unique
           - not_null
 ```

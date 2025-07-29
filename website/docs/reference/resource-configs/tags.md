@@ -63,7 +63,7 @@ resource_type:
       - name: column_name
         config:
           tags: <string> | [<string>] # changed to config in v1.10 and backported to 1.9
-        tests:
+        data_tests:
           test-name:
             config:
               tags: "single-string" # Supports single string 
@@ -368,7 +368,7 @@ sources:
           - name: column_name
             config:
               tags: ['column_level'] # changed to config in v1.10 and backported to 1.9
-            tests:
+            data_tests:
               - unique:
                 config:
                   tags: ['test_level'] # changed to config in v1.10

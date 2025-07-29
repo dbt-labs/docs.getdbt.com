@@ -574,6 +574,74 @@ The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way bac
 
 Update your job definitions and remove the `--models` / `--model` / `-m` flag and replace it with `--select` / `--s`.
 
+### ModulesItertoolsUsageDeprecation
+
+dbt has deprecated the use of `modules.itertools` in Jinja.
+
+Example:
+
+<File name='CLI'>
+```bash
+15:49:33  [WARNING]: Deprecated functionality
+Usage of itertools modules is deprecated. Please use the built-in functions
+instead.
+```
+</File>
+
+
+#### ModulesItertoolsUsageDeprecation warning resolution
+
+If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions) and [Jinja methods](/docs/build/jinja-macros) instead.
+
+For example, the following SQL file:
+
+<File name='models/itertools_usage.sql'>
+
+```sql
+{%- set A = [1, 2] -%}
+{%- set B = ['x', 'y', 'z'] -%}
+{%- set AB_cartesian = modules.itertools.product(A, B) -%}
+
+{%- for item in AB_cartesian %}
+  {{ item }}
+{%- endfor -%}
+```
+
+</File>
+
+Should be converted to use alternative built-in dbt Jinja methods. For example:
+
+
+<File name='macros/cartesian_product.sql'>
+
+```sql
+{%- macro cartesian_product(list1, list2) -%}
+  {%- set result = [] -%}
+  {%- for item1 in list1 -%}
+    {%- for item2 in list2 -%}
+      {%- set _ = result.append((item1, item2)) -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {{ return(result) }}
+{%- endmacro -%}
+```
+
+</File>
+
+<File name='models/itertools_usage.sql'>
+
+```sql
+{%- set A = [1, 2] -%}
+{%- set B = ['x', 'y', 'z'] -%}
+{%- set AB_cartesian = cartesian_product(A, B) -%}
+
+{%- for item in AB_cartesian %}
+  {{ item }}
+{%- endfor -%}
+```
+
+</File>
+
 ### PackageInstallPathDeprecation
 
 The default location where packages are installed when running `dbt deps` has been updated from `dbt_modules` to `dbt_packages`. During a `dbt clean` dbt detected that `dbt_modules` is defined in the [clean-targets](/reference/project-configs/clean-targets) property in `dbt_project.yml` even though `dbt_modules` is not the [`packages-install-path`](/reference/project-configs/packages-install-path).

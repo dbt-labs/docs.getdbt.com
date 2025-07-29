@@ -15,7 +15,7 @@ sources:
         columns:
           - name: id
             description: Primary key of the table
-            tests:
+            data_tests:
               - unique
               - not_null
 
@@ -23,7 +23,7 @@ sources:
         columns:
           - name: id
             description: Primary key of the table
-            tests:
+            data_tests:
               - unique
               - not_null
 
@@ -31,7 +31,7 @@ sources:
             description: Foreign key to customers
 
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
                   values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
@@ -42,7 +42,7 @@ models:
       tags: ['pii']
     columns:
       - name: customer_id
-        tests:
+        data_tests:
           - unique
           - not_null
 
@@ -51,11 +51,11 @@ models:
       materialized: view
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: status
-        tests:
+        data_tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
               config:

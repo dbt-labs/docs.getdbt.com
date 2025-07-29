@@ -69,7 +69,7 @@ With the `use_materialization_v2` flag set to `True`, there are two model config
      
      columns:
        - name: country
-         tests:
+         data_tests:
            - unique
            - not_null
  ...
@@ -98,7 +98,7 @@ As such, we must replace the view whenever you change its description
      
      columns:
        - name: country
-         tests:
+         data_tests:
            - unique
            - not_null
  ...

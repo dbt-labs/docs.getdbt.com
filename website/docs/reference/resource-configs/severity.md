@@ -52,7 +52,7 @@ models:
   - name: large_table
     columns:
       - name: slightly_unreliable_column
-        tests:
+        data_tests:
           - unique:
               config:
                 severity: error
@@ -107,7 +107,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +severity: warn  # all tests
 
   <package_name>:

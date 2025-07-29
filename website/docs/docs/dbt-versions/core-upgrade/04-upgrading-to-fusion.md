@@ -161,7 +161,7 @@ When you have an undefined generic test in your project:
 
 models:
   - name: dim_wizards
-    tests:
+    data_tests:
       - does_not_exist
 
 ```

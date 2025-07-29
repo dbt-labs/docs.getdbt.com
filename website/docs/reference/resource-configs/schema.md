@@ -112,7 +112,7 @@ For example, to save test results in a specific schema, you can configure it lik
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +schema: test_results
 ```
@@ -176,7 +176,7 @@ seeds:
 
 </File>
 
-### Tests
+### Data tests
 
 Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results.
 The resulting schema is `{{ profile.schema }}_{{ tests.schema }}`, with a default suffix of `dbt_test__audit`.
@@ -185,7 +185,7 @@ To use the same profile schema, set `+schema: null`.
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +schema: _sad_test_failures  # Will write tables to my_database.my_schema__sad_test_failures
 ```

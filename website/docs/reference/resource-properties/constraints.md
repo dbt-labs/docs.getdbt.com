@@ -207,7 +207,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: varchar
@@ -294,7 +294,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # need this test because primary_key constraint is not enforced
       - name: customer_name
         data_type: text
@@ -368,7 +368,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: string
@@ -505,7 +505,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: text
