@@ -17,7 +17,7 @@ import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
 The dbt Fusion engine fully comprehends your project's SQL, enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
-It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a query to send to a database.
+It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
 The dbt Fusion engine can also render Jinja, but then it completes a second phase: producing and validating with _static analysis_ a logical plan for every rendered query in the project. This static analysis step is the cornerstone of Fusion's new capabilities.
 
