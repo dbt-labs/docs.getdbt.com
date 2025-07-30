@@ -96,8 +96,8 @@ You can customize with:
 You can either define `loaded_at_field` or `loaded_at_query` but not both.
 :::
 You can also customize with:
-- `updates_on`: Change the default from any to all so it doesn’t build unless all upstreams have fresh data reducing compute even more.
-- `Build_after`: Don’t build a model more often than every x period to reduce build frequency when you need data less often than sources refresh.
+- `build_after`: Fusion-only config enabling you to limit building a model more often than every x period to reduce build frequency when you need data less often than sources refresh.
+- `updates_on`: Change the default from any to all so it doesn’t build unless all upstreams have fresh data reducing compute even more. Child config of `build_after`.
 
 To learn more about model freshness and build after, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness)
 
@@ -156,14 +156,14 @@ models:
   - name: dim_wizards
     config:
       freshness: 
-        build_after:
+        build_after:       # Fusion-only config. Ignored by dbt Core.
           count: 4         # how long to wait before rebuilding
           period: hour     # unit of time
           updates_on: all  # only rebuild if all upstream dependencies have new data
   - name: dim_worlds
     config:
       freshness:
-        build_after:
+        build_after:      # Fusion-only config. Ignored by dbt Core.
           count: 4
           period: hour
           updates_on: all
@@ -179,7 +179,7 @@ models:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
-      build_after: 
+      build_after:      # Fusion-only config. Ignored by dbt Core.
         count: 4
         period: hour
         updates_on: all 
@@ -195,7 +195,7 @@ models:
 {{
     config(
         freshness={
-            "build_after": {
+            "build_after": {  # Fusion-only config. Ignored by dbt Core.
                 "count": 4,
                 "period": "hour",
                 "updates_on": "all"
@@ -228,7 +228,7 @@ If any new data is available _and_ at least 4 hours have passed, <Constant name=
 
 ```yaml
     freshness:
-      build_after:
+      build_after:      # Fusion-only config. Ignored by dbt Core.
         count: 1
         period: hour
         updates_on: any

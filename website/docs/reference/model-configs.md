@@ -53,7 +53,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-    [+](/reference/resource-configs/plus-prefix)[build_after](/reference/resource-configs/build-after): <dict>
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
 
   ```
 
@@ -112,7 +112,7 @@ models:
     config:
       freshness:
         # build_after is nested under freshness
-        [build_after](/reference/resource-configs/build-after): <dict>
+        [build_after](/reference/resource-configs/build-after): <dict>      # Fusion-only config. Ignored by dbt Core.
 ```
 
 </File>
@@ -148,7 +148,7 @@ models:
     [sql_header](/reference/resource-configs/sql_header)="<string>"
     [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
     [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
-    [build_after](/reference/resource-configs/build-after)="<dict>"
+    [freshness](/reference/resource-configs/freshness)="<dict>"
 ) }}
 ```
 
