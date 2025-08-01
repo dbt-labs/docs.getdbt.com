@@ -12,9 +12,8 @@
 
   </Expandable>
 
-  <Expandable alt_header="Databricks">
-    - Service Account / User Token
-    - Native OAuth
+  <Expandable alt_header="Redshift">
+    - Username / Password
 
   </Expandable>
   
