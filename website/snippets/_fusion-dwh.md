@@ -11,6 +11,12 @@
     - Native OAuth
 
   </Expandable>
+
+  <Expandable alt_header="Databricks">
+    - Service Account / User Token
+    - Native OAuth
+
+  </Expandable>
   
   <Expandable alt_header="Snowflake">
     - Username / Password
