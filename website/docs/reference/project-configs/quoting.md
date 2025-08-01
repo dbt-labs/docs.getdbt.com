@@ -112,9 +112,9 @@ create table analytics.dbt_alice.dim_customers
 
 If you're using Snowflake, we recommend:
 
-- Setting all quoting configs to `False` in your dbt_project.yml to avoid quoting model and column names unnecessarily and to help prevent case sensitivity issues.
+- Setting all quoting configs to `False` in your [`dbt_project.yml`](/reference/dbt_project.yml) to avoid quoting model and column names unnecessarily and to help prevent case sensitivity issues.
   - Setting all quoting configs to `False` also means you cannot use reserved words as identifiers, such as model or table names. We recommend you avoid using these reserved words anyway.  
-- If you're using Fusion and your Snowflake environment sets the session parameter `QUOTED_IDENTIFIERS_IGNORE_CASE = true` (for example, in an orchestrator or pre-hook), you should also enable quoting and `snowflake_ignore_case` in your dbt_project.yml to preserve the exact case of database, schema, and identifier:
+- If you're using Fusion and your Snowflake environment sets the session parameter `QUOTED_IDENTIFIERS_IGNORE_CASE = true` (for example, in an orchestrator or pre-hook), you should also enable quoting and `snowflake_ignore_case` in your `dbt_project.yml` to preserve the exact case of database, schema, and identifier:
 
   ```yml
   quoting:
@@ -125,7 +125,7 @@ If you're using Snowflake, we recommend:
                                  # Ignored by dbt Core and other adapters.
   ```
 
-  Setting `snowflake_ignore_case: true` ensures that dbt compiles column and identifier names to match Snowflake’s behavior at runtime, preserving parity between compile-time and runtime logic. Without this, you may encounter "column not found" errors.
+  Setting `snowflake_ignore_case: true` ensures that dbt compiles column and identifier names match Snowflake’s behavior at runtime, preserving parity between compile-time and runtime logic. Without this, you may encounter "column not found" errors.
 
 :::info Quoting a source
 If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure this in the source.yml file. Refer to [configuring quoting](/reference/resource-properties/quoting) for more information.
@@ -133,7 +133,7 @@ If a Snowflake source table uses a quoted database, schema, or table identifier,
 
 #### Explanation
 
-Unlike most databases (which lowercase unquoted identifiers), Snowflake uppercases them. But when identifiers are quoted, case is preserved. This creates problems when dbt compiles a model with quoted, lowercase identifiers, and the query later references those identifiers without quotes, triggering uppercasing and a mismatch.
+Unlike most databases (which lowercases unquoted identifiers), Snowflake uppercases them. But when identifiers are quoted, case is preserved. This creates problems when dbt compiles a model with quoted, lowercase identifiers, and the query later references those identifiers without quotes, triggering uppercasing and a mismatch.
 
 
 <File name='snowflake_casing.sql'>
