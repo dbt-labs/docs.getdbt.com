@@ -214,6 +214,7 @@ var siteSettings = {
             data-ft-workflow-tag="docs" 
             config-ft-greeting-message="Welcome to dbt Product docs! Ask a question."
             config-ft-widget-header-title = "Ask a question"
+            config-ft-privacy-policy = "We're pleased to offer this complimentary chatbot service, powered by Forethought.ai, to optimize your experience and productivity. Your use of this cahtbot is subject to, and may be retained pursuant to, the terms of the privacy policy available for review at https://www.getdbt.com/cloud/privacy-policy."
           ></script>
 
           <div class="footer-logo">
