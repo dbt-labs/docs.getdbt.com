@@ -30,10 +30,7 @@ Before installing Fusion, ensure:
   |-------------------|----------|------|
   | macOS             |   🟢     |  🟢  |
   | Linux             |   🟢     |  🟢  |
-  | Windows*           |   🟡     |  🟡  |
-  
-  *Support for Windows is coming soon. Watch this page for updates. 
- 
+  | Windows           |   🟢     |  🟡  |
 
 
 ## Install Fusion
