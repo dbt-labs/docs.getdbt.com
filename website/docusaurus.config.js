@@ -70,14 +70,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "virtual-event",
+      id: "dbt-workshop",
       content:
-        "Join our live event: Modernize self-service analytics with dbt — cut costs, reduce bottlenecks, and keep the tools analysts love. Register now.",
+        "Join our live virtual workshop: Fast track to dbt — build and run your first dbt models. Save your seat.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/empowering-data-analysts-showcase-series-part-one",
+      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
