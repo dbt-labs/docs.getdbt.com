@@ -33,7 +33,7 @@ For improved reliability and performance on your job runs, you can enable <Const
 
 To use, select the **Enable repository caching** option from your account settings. 
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable repository caching option" />
+<Lightbox src="/img/docs/deploy/account-settings-repository-caching.png" width="85%" title="Example of the Enable repository caching option" />
 
 ## Partial parsing
 
@@ -45,7 +45,7 @@ Partial parsing in <Constant name="cloud" /> requires dbt version 1.4 or newer. 
 
 To use, select the **Enable partial parsing between deployment runs** option from your account settings.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable partial parsing between deployment runs option" />
+<Lightbox src="/img/docs/deploy/account-settings-partial-parsing.png" width="85%" title="Example of the Enable partial parsing between deployment runs option" />
 
 ## Account access and enablement
 
@@ -63,7 +63,7 @@ To use Advanced CI features, your <Constant name="cloud" /> account must have ac
 
 Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="The Enable account access to Advanced CI option" />
+<Lightbox src="/img/docs/deploy/account-settings-advanced-ci.png" width="85%" title="The Enable account access to Advanced CI option" />
 
 ### Enabling dbt Catalog <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
