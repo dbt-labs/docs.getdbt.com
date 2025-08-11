@@ -53,7 +53,7 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 [<Constant name="copilot" />](/docs/cloud/dbt-copilot) is an AI-powered assistant fully integrated into your dbt experience and is designed to accelerate your analytics workflows.
 
-To use this feature, your <Constant name="cloud" /> administrator must enable <Constant name="copilot" /> on your account by selecting the **Enable account access to dbt Copilot features** option from your account settings. For more information, see [Enable dbt Copilot](/docs/cloud/enable-dbt-copilot).
+To use this feature, your <Constant name="cloud" /> administrator must enable <Constant name="copilot" /> on your account by selecting the **Enable account access to dbt Copilot features** option from the account settings. For more information, see [Enable dbt Copilot](/docs/cloud/enable-dbt-copilot).
 
 ### Enabling Advanced CI features <Lifecycle status="managed,managed_plus" />
 
@@ -63,7 +63,7 @@ To use Advanced CI features, your <Constant name="cloud" /> account must have ac
 
 Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable account access to Advanced CI option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="The Enable account access to Advanced CI option" />
 
 ### Enabling dbt Catalog <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
@@ -73,7 +73,7 @@ To enable dbt <Constant name="explorer" />, a [developer license with Owner perm
 
 You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="explorer" /> by connecting directly to your warehouse. This way, you can view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
 
-To use external metadata ingestion, you must be an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="explorer" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** box. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
+To use external metadata ingestion, you must be an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="explorer" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
 
 ## Project settings history
