@@ -133,7 +133,11 @@ If a Snowflake source table uses a quoted database, schema, or table identifier,
 
 #### Explanation
 
-Unlike most databases (which lowercases unquoted identifiers), Snowflake uppercases them. But when identifiers are quoted, case is preserved. This creates problems when dbt compiles a model with quoted, lowercase identifiers, and the query later references those identifiers without quotes, triggering uppercasing and a mismatch.
+dbt skips quoting on Snowflake so lowercase model names work seamlessly in downstream queries and BI tools without worrying about case or quotes.
+
+Unlike most databases (which lowercase unquoted identifiers), Snowflake uppercases them. When you quote identifiers, Snowflake will preserve their case and make them case-sensitive. This means when you create a table with quoted, lowercase identifiers, the table should always be referenced with quotes and use the exact same case, which can easily break downstream queries in BI tools or ad-hoc SQL. 
+
+Because dbt conventions use lowercase model and file names, quoting them in Snowflake risks breaking downstream queries in BI tools or ad-hoc SQL. If dbt instead used uppercase names by convention, the safe defaults for other databases would be at risk of breaking downstream queries.
 
 
 <File name='snowflake_casing.sql'>
