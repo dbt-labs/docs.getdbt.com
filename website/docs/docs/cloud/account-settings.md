@@ -71,7 +71,7 @@ Once enabled, the **dbt compare** option becomes available in the CI job setting
 
 To enable dbt <Constant name="explorer" />, a [developer license with Owner permissions](/docs/cloud/manage-access/about-user-access#role-based-access-control) is required. Enable <Constant name="explorer" /> in your account by selecting the **Enable dbt Catalog’s (formerly dbt Explorer) New Navigation** option from your account settings. For more information, see [Catalog overview](/docs/explore/explore-projects#catalog-overview).
 
-You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="explorer" /> by connecting directly to your warehouse. This way, you can view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
+You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="explorer" /> by connecting directly to your warehouse. This enables you to view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
 
 To use external metadata ingestion, you must be an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="explorer" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
