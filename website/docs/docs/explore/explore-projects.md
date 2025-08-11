@@ -45,7 +45,7 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 To enable global navigation:
 
 - Have a [developer license with Owner](/docs/cloud/manage-access/about-user-access#role-based-access-control) permissions.
-- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable dbt Catalog's Global Navigation**.
+- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable dbt Catalog’s (formerly dbt Explorer) New Navigation**.
 
 :::
 
