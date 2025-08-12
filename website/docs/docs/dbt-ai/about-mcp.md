@@ -85,7 +85,9 @@ There are two ways to install dbt MCP: [local](#local) and [remote](#remote).
 
 ## MCP integrations 
 
-The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) with tool use capabilities. We have specific integration guides for the following clients:
+The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities. 
+
+We have also created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
