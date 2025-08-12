@@ -16,8 +16,8 @@ Release date: August 12, 2025
 ### Notable dbt Core OSS changes
 
 This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
-* Introduction of several new [deprecations](/reference/deprecations) that flag project incompatibilities between dbt Core and Fusion engines.
-* Support for defining `meta` and `tags` within `config` of columns and exposures, which may lead to an intermittent increase false positives in `state:modified` comparisons.
+* Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between dbt Core and Fusion engines.
+* Support for defining `meta` and `tags` within `config` of columns and exposures, as well as defining `freshness` within `config` of sources. These changes lead to manifest.json minor schema evolutions which may cause an intermittent increase in false positives during `state:modified` comparisons.
 
 ### dbt cloud-based platform 
 
