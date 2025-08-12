@@ -44,23 +44,21 @@ dbt-core==1.10.8
 dbt-adapters==1.16.3
 dbt-common==1.27.1
 dbt-semantic-interfaces==0.9.0
+dbt-extractor==0.6.0
+dbt-protos==1.0.348
 
 # dbt-adapters
 dbt-athena==1.9.4
 dbt-bigquery==1.10.1
 dbt-databricks==1.10.9
-dbt-extractor==0.6.0
 dbt-fabric==1.9.4
 dbt-postgres==1.9.0
-dbt-protos==1.0.348
 dbt-redshift==1.9.5
 dbt-snowflake==1.10.0
 dbt-spark==1.9.3
 dbt-synapse==1.8.2
 dbt-teradata==1.9.3
 dbt-trino==1.9.3
-dbtlabs-proto-private==1.0.306
-dbtlabs-vortex==0.1.10
 ```
 
 Changelogs:
