@@ -204,7 +204,7 @@ sources:
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
 
-    loaded_at_field: _etl_loaded_at
+      loaded_at_field: _etl_loaded_at
 
     tables:
       - name: customers # this will use the freshness defined above

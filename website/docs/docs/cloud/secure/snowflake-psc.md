@@ -1,53 +1,52 @@
 ---
-title: "Configuring Snowflake and AWS PrivateLink"
-id: snowflake-privatelink
-description: "Configuring AWS PrivateLink for Snowflake"
-sidebar_label: "AWS PrivateLink for Snowflake"
+title: "Configuring Snowflake and GCP Private Service Connect"
+id: snowflake-psc
+description: "Configuring GCP Private Service Connect for Snowflake"
+sidebar_label: "GCP Private Service Connect for Snowflake"
 ---
 
-# Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />
+# Configuring Snowflake Private Service Connect <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-The following steps walk you through the setup of an AWS-hosted Snowflake PrivateLink endpoint in a <Constant name="cloud" /> multi-tenant environment.
+The following steps walk you through the setup of a GCP Snowflake Private Service Connect (PSC) endpoint in a <Constant name="cloud" /> multi-tenant environment.
 
 <CloudProviders type='Snowflake' />
 
-import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md'; 
-
-<SnowflakeOauthWithPL />
-
 :::warning
 
-AWS Internal Stage PrivateLink connections are not currently supported.
+GCP Internal Stage PSC connections are not currently supported.
 
 :::
 
-## Configure AWS PrivateLink
+## Configure GCP Private Service Connect
 
-To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink):
+To configure Snowflake instances hosted on GCP for [Private Service Connect](https://cloud.google.com/vpc/docs/private-service-connect):
 
-1. Open a support case with Snowflake to allow access from the <Constant name="cloud" /> AWS or Entra ID account.
-- Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
-- Provide them with your <Constant name="cloud" /> account ID along with any other information requested in the article.
-  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](/docs/dbt-support#dbt-cloud-support)._
-- You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
+1. Follow the steps in the [Authorize Private Service Connect for your account](https://docs.snowflake.com/en/user-guide/private-service-connect-google#authorize-private-service-connect-for-your-account) section in the Snowflake Documentation to allow for PSC connectivity from the dbt GCP project. Use `dbt-cloud-prod-psc` as the project ID in the `AUTHORIZE_PRIVATELINK` step, replacing `<access_token>` with the token retrieved in the previous step.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
+```
+USE ROLE ACCOUNTADMIN;
 
-2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
+SELECT SYSTEM$AUTHORIZE_PRIVATELINK (
+ 'dbt-cloud-prod-psc',
+ '<access_token>' 
+);
+```
+
+2. After access has been granted, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
 3. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support):
 
 ```
-Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
+Subject: New Multi-Tenant GCP PSC Request
 - Type: Snowflake
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
 - *Use privatelink-account-url or regionless-privatelink-account-url?: 
-- dbt AWS multi-tenant environment (US, EMEA, AU):
+- dbt GCP multi-tenant environment:
 ```
 _*By default, <Constant name="cloud" /> will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
@@ -67,9 +66,10 @@ Once <Constant name="cloud" /> support completes the configuration, you can star
 5. Test your connection and save it.
 
 ## Configuring Network Policies
+
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
 
-You can request the VPCE ID from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. 
+You can request the CIDR range from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. 
 
 ### Using the UI
 
@@ -79,17 +79,11 @@ Open the Snowflake UI and take the following steps:
 3. Click on **Add Rule**.
 4. Give the rule a name.
 5. Select a database and schema where the rule will be stored. These selections are for permission settings and organizational purposes; they do not affect the rule itself.
-6. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
-7. Type the VPCE ID provided by <Constant name="cloud" /> Support into the identifier box and press **Enter**.
+6. Set the type to `IPV4` and the mode to `Ingress`.
+7. Type the CIDR range provided by <Constant name="cloud" /> Support into the identifier box and press **Enter**.
 8. Click **Create Network Rule**.
-
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
-
 9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from <Constant name="cloud" />.
-
 10. Add the new rule to the allowed list and click **Update Network Policy**.
-
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink3.png" title="Update Network Policy"/>
 
 ### Using SQL
 
@@ -100,8 +94,8 @@ For quick and automated setup of network rules via SQL in Snowflake, the followi
 
 CREATE NETWORK RULE allow_dbt_cloud_access
   MODE = INGRESS
-  TYPE = AWSVPCEID
-  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the actual ID provided
+  TYPE = IPV4
+  VALUE_LIST = ('<CIDR_RANGE>'); -- Replace '<CIDR_RANGE>' with the actual CIDR provided
 
 ```
 
