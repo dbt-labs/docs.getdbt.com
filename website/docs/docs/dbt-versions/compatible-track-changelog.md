@@ -23,10 +23,10 @@ This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==
 
 ### Fixes
 
-- updates generate publications script to add project and env id in generated pub file
-- use json stream for publication artifact generation script
-- get environment variables correctly from environment for publication artifacts
-- Adding --resource-type and --exclude-resource-type flags to SL commands
+- Update generate publications script to add project and env id in generated publication file
+- Use JSON stream for publication artifact generation script
+- Get environment variables correctly from environment for publication artifacts
+- Adding `--resource-type` and `--exclude-resource-type` flags to Semantic Layer commands
 - Azure DevOps Private Packages are now properly matched with Private Package Definition in packages.yml
 
 ### Under the Hood
