@@ -13,7 +13,13 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 
 Release date: August 12, 2025
 
-### dbt cloud=-based platform 
+### Notable dbt Core OSS changes
+
+This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
+* Introduction of several new [deprecations](/reference/deprecations) that flag project incompatibilities between dbt Core and Fusion engines.
+* Support for defining `meta` and `tags` within `config` of columns and exposures, which may lead to an intermittent increase false positives in `state:modified` comparisons.
+
+### dbt cloud-based platform 
 
 ### Fixes
 
@@ -25,7 +31,6 @@ Release date: August 12, 2025
 
 ### Under the Hood
 
-- Create JSON schemas for PublicationArtifact and ResolvedProjectsArtifact
 - Prepare support for Private Package's URLs with multiple levels
 - Disable telemetry client logger
 - Update semantic layer SDK to 0.11
