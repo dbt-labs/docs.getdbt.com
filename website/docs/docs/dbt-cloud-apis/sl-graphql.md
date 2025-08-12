@@ -530,6 +530,7 @@ The following section provides query examples for the GraphQL API, such as how t
 - [Query with limit](#query-with-limit) &mdash; Query using a `limit` clause.
 - [Query saved queries](#query-saved-queries) &mdash; Query using a saved query using the `savedQuery` parameter for frequently used queries.
 - [Query with just compiling SQL](#query-with-just-compiling-sql) &mdash; Query using a compile keyword using the `compileSql` mutation.
+- [Query records](#query-records) &mdash; View all the queries made in your project.
 
 
 #### Query metric alias
@@ -737,6 +738,68 @@ mutation {
     groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
+  }
+}
+```
+
+#### Query records
+
+Use this endpoint to view all the queries made in your project. This covers both Insights and <Constant name="semantic_layer" /> queries.
+
+```graphql
+{
+  queryRecords(
+    environmentId:123
+  ) {
+    items {
+      queryId
+      status
+      startTime
+      endTime
+      connectionDetails
+      sqlDialect
+      connectionSchema
+      error
+      queryDetails {
+        ... on SemanticLayerQueryDetails {
+          params {
+            type
+            metrics {
+              name
+            }
+            groupBy {
+              name
+              grain
+            }
+            limit
+            where {
+              sql
+            }
+            orderBy {
+              groupBy {
+                name
+                grain
+              }
+              metric {
+                name
+              }
+              descending
+            }
+            savedQuery
+          }
+        }
+        ... on RawSqlQueryDetails {
+          queryStr
+          compiledSql
+          numCols
+          queryDescription
+          queryTitle
+        }
+      }
+    }
+    totalItems
+    pageNum
+    pageSize
   }
 }
 ```

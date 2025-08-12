@@ -129,7 +129,7 @@ The following options are available for `s3_data_naming`:
 - `table`: `{s3_data_dir}/{table}/`
 - `table_unique`: `{s3_data_dir}/{table}/{uuid4()}/`
 - `schema_table`: `{s3_data_dir}/{schema}/{table}/`
-- `s3_data_naming=schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
+- `schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
 
 To set the `s3_data_naming` globally in the target profile, overwrite the value in the table config, or set up the value for groups of the models in dbt_project.yml.
 

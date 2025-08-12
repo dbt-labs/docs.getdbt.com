@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## August 2025
 
+- **New**: The <Constant name="semantic_layer" /> GraphQL API now has a [`queryRecords`](/docs/dbt-cloud-apis/sl-graphql#query-records) endpoint. With this endpoint, you can view the query history both for Insights and <Constant name="semantic_layer" /> queries.
 - **Fix**: Resolved a bug that caused <Constant name="semantic_layer" /> queries with a trailing whitespace to produce an error. This issue mostly affected [Push.ai](https://docs.push.ai/data-sources/semantic-layers/dbt) users and is fixed now. 
 - **New**: You can now use [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens) to authenticate in the Semantic Layer. This enables user-level authentication and reduces the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. For more information, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
 
