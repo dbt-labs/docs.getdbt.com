@@ -143,8 +143,9 @@ models:
       - name: id
         data_tests:
           - relationships:
-              to: ref('model_a')
-              field: id
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                to: ref('model_a')
+                field: id
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)

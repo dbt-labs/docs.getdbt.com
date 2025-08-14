@@ -89,7 +89,8 @@ version: 2
   - name: <resource_name>
     data_tests:
       - [<test_name>](#test_name):
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           config:
             <test_config>: <config-value>
             ...
@@ -99,7 +100,8 @@ version: 2
         data_tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
-              <argument_name>: <argument_value>
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
               config:
                 [<test_config>](/reference/data-test-configs): <config-value>
                 ...

@@ -65,7 +65,8 @@ models:
   - name: orders
     data_tests:
       - unique:
-          column_name: "(country_code || '-' || order_id)"
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            column_name: "(country_code || '-' || order_id)"
 ```
 
 </File>
@@ -84,9 +85,10 @@ models:
   - name: orders
     data_tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - country_code
-            - order_id
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            combination_of_columns:
+              - country_code
+              - order_id
 ```
 
 </File>

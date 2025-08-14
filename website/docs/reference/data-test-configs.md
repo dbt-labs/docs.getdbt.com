@@ -88,7 +88,8 @@ version: 2
       - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [fail_calc](/reference/resource-configs/fail_calc): <string>
             [limit](/reference/resource-configs/limit): <integer>
@@ -104,7 +105,8 @@ version: 2
           - <test_name>:
               name: 
               [description](/reference/resource-properties/description): "markdown formatting"
-              <argument_name>: <argument_value>
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
                 [limit](/reference/resource-configs/limit): <integer>
@@ -185,7 +187,8 @@ version: 2
       - <test_name>: # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [enabled](/reference/resource-configs/enabled): true | false
             [tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -201,7 +204,8 @@ version: 2
           - <test_name>:
               name: 
               [description](/reference/resource-properties/description): "markdown formatting"
-              <argument_name>: <argument_value>
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [enabled](/reference/resource-configs/enabled): true | false
                 [tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -293,7 +297,8 @@ models:
       - name: color
         data_tests:
           - accepted_values:
-              values: ['blue', 'red']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['blue', 'red']
               config:
                 severity: warn
                 snowflake_warehouse: my_warehouse
@@ -318,7 +323,8 @@ models:
       - name: delivery_status
         data_tests:
           - accepted_values:
-              values: ['delivered', 'pending', 'failed']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['delivered', 'pending', 'failed']
               description: "This test checks whether there are unexpected delivery statuses. If it fails, check with logistics team"
 
 ```

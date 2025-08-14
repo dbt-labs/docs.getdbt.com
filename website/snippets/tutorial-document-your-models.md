@@ -39,13 +39,15 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
           - name: status
             data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
             data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
     ```
 
     </File>
