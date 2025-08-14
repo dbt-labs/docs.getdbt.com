@@ -2,11 +2,15 @@
 title: "Global navigation"
 sidebar_label: "Global navigation"
 id: global-navigation
-description: ""
+description: "Learn how to enable and use global navigation to search, explore, and analyze data assets across all your dbt projects and connected metadata sources."
 
 ---
 
 # Global navigation <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
+
+<IntroText>Learn how to enable and use global navigation in <Constant name="explorer" /> to search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.
+
+</IntroText>
 
 <Constant name="explorer" /> introduces the ability to widen your search by searching your dbt resources (models, seeds, snapshots, sources, exposures and more so) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects.
 
