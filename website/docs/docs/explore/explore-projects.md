@@ -180,7 +180,7 @@ Under the **Models** option, you can filter on model properties (access or mater
 
 <Expandable alt_header="Global navigation">
 
-<Constant name="explorer" /> builds on the functionality of the old navigation and introduces exciting new capabilities to enhance your experience. For more information, refer to [Global navigation](/docs/explore/explore-global-nav).
+<Constant name="explorer" /> builds on the functionality of the old navigation and introduces exciting new capabilities to enhance your experience. For more information, refer to [Global navigation](/docs/explore/global-navigation).
 
 </Expandable>
 
