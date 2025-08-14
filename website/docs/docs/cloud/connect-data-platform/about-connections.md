@@ -7,6 +7,7 @@ pagination_next: "docs/cloud/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 ---
 <Constant name="cloud" /> can connect with a variety of data platform providers including: 
+
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
@@ -29,18 +30,15 @@ To connect to your database in <Constant name="cloud" />:
 
 These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides)
 
+### Supported authentication methods
+
+The following table shows which authentication types are supported for each connection available on the <Constant name="dbt_platform" />:
+
+import AuthTypes from '/snippets/_dbt_connection_support.md';
+
+<AuthTypes />
+
 ## Connection management
-
-:::info Connection management now at account-level
-
-From July 2024, connection management has moved from the project level to the account level for all users in <Constant name="cloud" />. Previously, each <Constant name="cloud" /> project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="55%" title="Previous connection model"/>
-
-Connections created with APIs before this change cannot be accessed with the [latest APIs](/dbt-cloud/api-v3#/operations/List%20Account%20Connections). dbt Labs recommends [recreating the connections](/dbt-cloud/api-v3#/operations/Create%20Account%20Connection) with the latest APIs.
-
-
-:::
 
 Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
 

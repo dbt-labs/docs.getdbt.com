@@ -26,6 +26,8 @@ The currently available supported features for SCIM are:
 - Group creation and management
 - Importing groups and users
 
+When users are managed by SCIM, functionality like applying default groups and inviting users manually will be disabled by default. 
+
 When users are provisioned, the following attributes are supported
 - Username
 - Family name
@@ -173,7 +175,7 @@ You can manage user license assignments via SCIM with a user attribute in your I
 To use license management via SCIM, enable the feature under the **SCIM** section in the **Single sign-on** settings. This setting will enforce license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.  
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
 
-_We recommend that you complete the setup instructions for your identity provider prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt_platform" /> will be ignored._
+_We recommend that you complete the setup instructions for your identity provider prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt_platform" /> will be ignored. SCIM license mapping is currently only supported for Okta._
 
 The recommended steps for migrating to SCIM license mapping are as follows:
 1. Set up SCIM but keep the toggle disabled so existing license mappings continue to work as expected.

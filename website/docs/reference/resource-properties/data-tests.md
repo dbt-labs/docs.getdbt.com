@@ -29,7 +29,8 @@ models:
   - name: <model_name>
     data_tests:
       - [<test_name>](#custom-data-test-name):
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -38,7 +39,8 @@ models:
         data_tests:
           - [<test_name>](#custom-data-test-name)
           - [<test_name>](#custom-data-test-name):
-              <argument_name>: <argument_value>
+              arguments:
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
 ```
@@ -61,7 +63,8 @@ sources:
       data_tests:
         - [<test_name>](#custom-data-test-name)
         - [<test_name>](#custom-data-test-name):
-            <argument_name>: <argument_value>
+            arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+              <argument_name>: <argument_value>
             [config](/reference/resource-properties/config):
               [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -70,7 +73,8 @@ sources:
           data_tests:
             - [<test_name>](#custom-data-test-name)
             - [<test_name>](#custom-data-test-name):
-                <argument_name>: <argument_value>
+                arguments:
+                  <argument_name>: <argument_value>
                 [config](/reference/resource-properties/config):
                   [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -92,7 +96,8 @@ seeds:
     data_tests:
       - [<test_name>](#custom-data-test-name)
       - [<test_name>](#custom-data-test-name):
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -101,7 +106,8 @@ seeds:
         data_tests:
           - [<test_name>](#custom-data-test-name)
           - [<test_name>](#custom-data-test-name):
-              <argument_name>: <argument_value>
+              arguments:
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -123,7 +129,8 @@ snapshots:
     data_tests:
       - [<test_name>](#custom-data-test-name)
       - [<test_name>](#custom-data-test-name):
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -132,7 +139,8 @@ snapshots:
         data_tests:
           - [<test_name>](#custom-data-test-name)
           - [<test_name>](#custom-data-test-name):
-              <argument_name>: <argument_value>
+              arguments:
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [<test_config>](/reference/data-test-configs): <config-value>
 
@@ -157,7 +165,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `data_tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic data tests](/docs/build/data-tests#generic-data-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add data tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](/reference/data-test-configs) passed to those data tests should be nested below the test name.
+The `data_tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic data tests](/docs/build/data-tests#generic-data-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add data tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](/reference/data-test-configs) passed to those data tests should be nested below the `arguments` property.
 
 Once these data tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -224,13 +232,15 @@ models:
       - name: status
         data_tests:
           - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['placed', 'shipped', 'completed', 'returned']
 
       - name: status_id
         data_tests:
           - accepted_values:
-              values: [1, 2, 3, 4]
-              quote: false
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
 ```
 
 </File>
@@ -252,8 +262,9 @@ models:
       - name: customer_id
         data_tests:
           - relationships:
-              to: ref('customers')
-              field: id
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                to: ref('customers')
+                field: id
 ```
 
 </File>
@@ -276,9 +287,11 @@ models:
         Order overview data mart, offering key details for each order including if it's a customer's first order and a food vs. drink item breakdown. One row per order.
     data_tests:
       - dbt_utils.expression_is_true:
-          expression: "order_items_subtotal = subtotal"
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            expression: "order_items_subtotal = subtotal"
       - dbt_utils.expression_is_true:
-          expression: "order_total = subtotal + tax_paid"
+          arguments:
+            expression: "order_total = subtotal + tax_paid"
 ```
 </File>
 
@@ -332,7 +345,8 @@ models:
         data_tests:
           - accepted_values:
               name: unexpected_order_status_today
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['placed', 'shipped', 'completed', 'returned']
               config:
                 where: "order_date = current_date"
 ```
@@ -371,11 +385,13 @@ models:
       - name: status
         data_tests:
           - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['placed', 'shipped', 'completed', 'returned']
               config:
                 where: "order_date = current_date"
           - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments:
+                values: ['placed', 'shipped', 'completed', 'returned']
               config:
                 # only difference is in the 'where' config
                 where: "order_date = (current_date - interval '1 day')" # PostgreSQL syntax
@@ -409,12 +425,14 @@ models:
         data_tests:
           - accepted_values:
               name: unexpected_order_status_today
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['placed', 'shipped', 'completed', 'returned']
               config:
                 where: "order_date = current_date"
           - accepted_values:
               name: unexpected_order_status_yesterday
-              values: ['placed', 'shipped', 'completed', 'returned']
+              arguments:
+                values: ['placed', 'shipped', 'completed', 'returned']
               config:
                 where: "order_date = (current_date - interval '1 day')" # PostgreSQL
 ```
@@ -460,11 +478,12 @@ models:
         data_tests:
           - name: unexpected_order_status_today
             test_name: accepted_values  # name of the generic test to apply
-            values:
-              - placed
-              - shipped
-              - completed
-              - returned
+            arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+              values:
+                - placed
+                - shipped
+                - completed
+                - returned
             config:
               where: "order_date = current_date"
 ```
