@@ -172,6 +172,7 @@ The **Filters** side panel becomes available after you perform a keyword search.
 - [Model access](/docs/mesh/govern/model-access) (like public, private)
 - [Model layer](/best-practices/how-we-structure/1-guide-overview) (like marts, staging)
 - [Model materialization](/docs/build/materializations) (like view, table)
+/docs/explore/explore-global-nav
 - [Tags](/reference/resource-configs/tags) (supports multi-select)
 
 Under the **Models** option, you can filter on model properties (access or materialization type). Also available are **Advanced** options, where you can limit the search results to column name, model code, and more.
