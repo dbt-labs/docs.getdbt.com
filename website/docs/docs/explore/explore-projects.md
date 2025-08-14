@@ -40,7 +40,7 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 
 :::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
-<Constant name="explorer" /> introduces the ability to widen your search by searching your dbt resources (models, seeds, snapshots, sources, exposures and more so) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
+<Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 
 :::
 
@@ -172,7 +172,6 @@ The **Filters** side panel becomes available after you perform a keyword search.
 - [Model access](/docs/mesh/govern/model-access) (like public, private)
 - [Model layer](/best-practices/how-we-structure/1-guide-overview) (like marts, staging)
 - [Model materialization](/docs/build/materializations) (like view, table)
-/docs/explore/explore-global-nav
 - [Tags](/reference/resource-configs/tags) (supports multi-select)
 
 Under the **Models** option, you can filter on model properties (access or materialization type). Also available are **Advanced** options, where you can limit the search results to column name, model code, and more.
