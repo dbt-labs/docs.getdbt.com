@@ -654,6 +654,7 @@ const sidebarSettings = {
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
             "docs/explore/external-metadata-ingestion",
+            "docs/explore/global-navigation",
             "docs/explore/model-performance",
             "docs/explore/project-recommendations",
             "docs/explore/dbt-explorer-faqs",

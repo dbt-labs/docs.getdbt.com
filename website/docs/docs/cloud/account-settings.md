@@ -9,7 +9,7 @@ The following sections describe the different **Account settings** available fro
 <Lightbox src="/img/docs/dbt-cloud/example-sidebar-account-settings.png" title="Example of Account settings from the sidebar" /> 
 
 ## Git repository caching <Lifecycle status="managed,managed_plus" />
-
+ 
 :::important repo caching enabled by default
 
 <Constant name="git" /> repository caching is enabled by default for all new Enterprise and Enterprise+ accounts, improving reliability by allowing <Constant name="cloud" /> to use a cached copy of your repo if cloning fails. 
