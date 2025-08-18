@@ -4,7 +4,7 @@ description: "Install the Fusion engine locally on the command line interface (C
 id: install-fusion-cli
 ---
 
-# Install Fusion
+# Install Fusion on the CLI <Lifecycle status="preview" />
 
 Fusion can be installed via the command line from our official CDN:
 
