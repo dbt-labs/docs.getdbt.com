@@ -51,6 +51,7 @@ You can:
 - [Install the dbt extension for VSCode](/docs/install-dbt-extension) <Lifecycle status="preview" />
 - [Install the Fusion CLI](/docs/fusion/install-fusion) <Lifecycle status="preview" />
 
+
 Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible.
 
 ## What's next?

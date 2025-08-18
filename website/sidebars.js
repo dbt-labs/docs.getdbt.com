@@ -221,13 +221,23 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Core and Fusion",
           collapsed: true,
-          link: { type: "doc", id: "docs/core/about-core-setup" },
+          link: { type: "doc", id: "docs/about-dbt-install" },
           items: [
-            "docs/core/about-core-setup",
+            "docs/about-dbt-install",
             "docs/core/dbt-core-environments",
+             {
+              type: "category",
+              label: "Install dbt Fusion engine",
+              link: { type: "doc", id: "docs/fusion/about-fusion-install" },
+              items: [
+                "docs/fusion/about-fusion-install",
+                "docs/fusion/install-dbt-extension",
+                "docs/fusion/install-fusion-cli",
+              ],
+            },
             {
               type: "category",
-              label: "Install dbt",
+              label: "Install dbt Core",
               link: { type: "doc", id: "docs/core/installation-overview" },
               items: [
                 "docs/core/installation-overview",

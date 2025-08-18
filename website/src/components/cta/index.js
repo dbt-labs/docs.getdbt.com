@@ -1,6 +1,7 @@
 import React from 'react'
 import {usePluginData} from '@docusaurus/useGlobalData';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import getIconType from "../../utils/get-icon-type";
 
 export default function CTA({ cta }) {
 
@@ -11,13 +12,14 @@ export default function CTA({ cta }) {
   if(!thisCta)
     return false
 
-  const { header, subheader, button_text, url } = thisCta
+  const { header, subheader, button_text, url, icon } = thisCta
 
   // Get site url from docusaurus.config.js
   // If cta url has different hostname, open cta in new tab 
   const { siteConfig } = useDocusaurusContext()
   return (
     <div className="docs-cta">
+      {icon && <div className="docs-cta-icon">{getIconType(icon)}</div>}
       <h4>{header}</h4>
       <p>{subheader}</p>
       {button_text && (

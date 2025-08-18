@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import Card from '@site/src/components/card';
-import Hero from '@site/src/components/hero';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
@@ -120,6 +119,9 @@ function Home() {
                   <Link to="/docs/dbt-versions/dbt-cloud-release-notes">Release notes</Link>
                   <Link to="/docs/introduction">Product docs</Link>
                 </div>
+                <div className="hero-cta">
+                  <Link to="/docs/install-dbt-extension" class="primary-cta">Install Fusion + VS Code extension</Link>
+                </div>
               </div>
             </div>
           </header>
@@ -154,7 +156,6 @@ function Home() {
                 </div>
               </div>
           </section>
-
           <section className='baton-1'>
             <div className='container'>
               <div>
@@ -209,6 +210,13 @@ function Home() {
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
                   link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide"
                   icon="dashboard"
+                />
+                <Card
+                  title="VS Code Extension"
+                  body="This free tool brings the full power of the dbt Fusion engine into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
+                  link="/docs/about-dbt-extension"
+                  icon="vsce"
+                  showBorderBeam
                 />
               </div>
             </div>
@@ -315,20 +323,6 @@ function Home() {
                 {recentBlogData.map((item) => (
                   <BlogPostCard postMetaData={item} />
                 ))}
-              </div>
-            </div>
-          </section>
-
-          <section className='bottom-cta'>
-            <div className='container'>
-              <div className='cta-section-text'>
-                <span className="eyebrow">Get started</span>
-                <h2 className="heading-2">Start building with dbt.</h2>
-                <p>Streamline your data transformation process, reduce manual errors, and increase productivity with dbt. Sign up today and take your data transformation workflow to the next level.</p>
-              </div>
-              <div className="cta-section">
-                <Link to="https://www.getdbt.com/contact" target="_blank"className="primary-cta">Request your demo</Link>
-                <Link to="https://www.getdbt.com/signup" target="_blank" className="secondary-cta">Create a free account</Link>
               </div>
             </div>
           </section>

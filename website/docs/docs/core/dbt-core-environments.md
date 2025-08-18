@@ -1,5 +1,5 @@
 ---
-title: "dbt Core environments"
+title: "dbt environments"
 id: "dbt-core-environments"
 pagination_next: "docs/running-a-dbt-project/run-your-dbt-projects"
 ---

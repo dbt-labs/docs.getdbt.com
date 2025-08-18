@@ -1,21 +1,16 @@
 ---
-title: "Install Fusion"
+title: "About installing Fusion"
 description: "Install the Fusion engine locally to take data transformation to the next level."
-id: install-fusion
+id: about-fusion-install
 ---
 
-# About Fusion installation <Lifecycle status="preview" />
+# About Fusion installation <Lifecycle status="beta" />
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
-<VersionBlock lastVersion="1.99">
-
 <FusionBeta />
 
-</VersionBlock>
-
 import FusionPrereqs from '/snippets/_fusion-prereqs.md';
-
 
 <FusionPrereqs />
  
@@ -24,12 +19,12 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 <Card
     title="dbt VS Code Extension"
     body="Learn how to connect to a data platform, integrate with secure authentication methods, and configure a sync with a git repo."
-    link="/docs/fusion/install-dbt-extension"
+    link="/docs/install-dbt-extension"
     icon="dbt-bit"/>
 
 <Card
     title="dbt Fusion engine CLI installation"
-    body="Learn how to install the dbt ."
+    body="Learn how to install the dbt Fusion engine on the command line interface (CLI)."
     link="/docs/fusion/install-fusion-cli"
     icon="dbt-bit"/>
 
