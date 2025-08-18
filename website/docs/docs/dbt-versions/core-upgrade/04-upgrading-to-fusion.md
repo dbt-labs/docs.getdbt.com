@@ -307,3 +307,25 @@ models:
 </File>
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
+#### Algebraic operations in Jinja macros
+
+In dbt Core, you can set algebraic functions in the return function of a Jinja macro:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyz') + 'abc'
+
+{% endmacro %}
+```
+
+This is no longer supported in Fusion and will return an error. This is not a common use case and there is no deprecation warning for this behavior in dbt Core. The supported format is:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyzabc')
+
+{% endmacro %}
+```
