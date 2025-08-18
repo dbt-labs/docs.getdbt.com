@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "Join our live virtual workshop: Fast track to dbt — build and run your first dbt models. Save your seat.",
+        "The free dbt VS Code extension is the best way to develop locally in dbt.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
+      "/docs/about-dbt-extension",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
@@ -216,6 +216,22 @@ var siteSettings = {
             config-ft-widget-header-title = "Ask a question"
             config-ft-privacy-policy = "We're pleased to offer this complimentary chatbot service, powered by Forethought.ai, to optimize your experience and productivity. Your use of this chatbot is subject to, and may be retained pursuant to, the terms of the privacy policy available for review at <a href='https://www.getdbt.com/cloud/privacy-policy' target='_blank'>https://www.getdbt.com/cloud/privacy-policy</a>."
           ></script>
+          <div class='bottom-cta'>
+            <div class='container'>
+              <div class='cta-section-text'>
+                <span class="eyebrow">Get started</span>
+                <h2 class="heading-2">Start building with dbt.</h2>
+                <p>The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.</p>
+              </div>
+              <div class="cta-section">
+                <a href="https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt" target="_blank" class="primary-cta">Install free extension</a>
+                <a href="https://www.getdbt.com/signup" target="_blank" class="secondary-cta">Request your demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-footer">
+          <div class="container">
           <div class="footer-logo">
             <a href="/">
               <img src="/img/dbt-logo-light.svg?v=2" alt="dbt Labs" />
@@ -225,6 +241,7 @@ var siteSettings = {
           <div class="footer-grid">
             <div class="footer-grid-item">
               <h5 class="heading-5">Resources</h5>
+              <a href='/docs/about-dbt-extension'>VS Code Extension</a>
               <a href="https://www.getdbt.com/resources" target="_blank">Resource Hub</a>
               <a href="https://www.getdbt.com/dbt-learn" target="_blank">dbt Learn</a>
               <a href="https://www.getdbt.com/dbt-certification" target="_blank">Certification</a>
@@ -269,6 +286,8 @@ var siteSettings = {
               <a href='https://www.getdbt.com/security/'>Security</a>
               <button id="ot-sdk-btn" onclick="openPreferenceCenter()">Cookie Settings</button>
             </div>
+          </div>
+          </div>
           </div>
           `,
         },

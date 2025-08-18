@@ -45,3 +45,9 @@
   subheader: Watch our annual dbt Launch Showcase to hear from our executives and product leaders about the latest features landing in dbt. 
   button_text: Watch the talks
   url: https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase
+- name: vs_code_extension
+  header: VS Code extension
+  subheader: The free dbt VS Code extension is the best way to develop locally in dbt.
+  button_text: Install free extension
+  icon: vsce
+  url: /docs/install-dbt-extension
