@@ -6,16 +6,20 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# About the dbt Fusion engine <Lifecycle status="beta" />
+# About the dbt Fusion engine
 
 <IntroText>
 
 dbt is the industry standard for data transformation. The dbt Fusion engine enables dbt to operate at speed and scale like never before.
 </IntroText>
 
+<VersionBlock lastVersion="1.99">
+
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
 <FusionBeta />
+
+</VersionBlock>
 
 The dbt Fusion engine shares the same familiar framework for authoring data transformations as <Constant name="core" />, while enabling data developers to work faster and deploy transformation workloads more efficiently.
 

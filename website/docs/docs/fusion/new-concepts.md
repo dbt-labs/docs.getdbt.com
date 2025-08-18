@@ -7,11 +7,15 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# New concepts <Lifecycle status="beta" />
+# New concepts
+
+<VersionBlock lastVersion="1.99">
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
 <FusionBeta />
+
+</VersionBlock>
 
 <IntroText>
 

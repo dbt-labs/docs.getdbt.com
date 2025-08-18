@@ -5,7 +5,7 @@ description: "Installation instructions for the dbt extension."
 sidebar_label: "Install the dbt extension"
 ---
 
-# Install the dbt VS Code extension <Lifecycle status="beta" />
+# Install the dbt VS Code extension <Lifecycle status="preview" />
 
 The dbt extensions for VS Code and Cursor streamlines dbt development workflows. The dbt extension is powered by the dbt Fusion engine.
 

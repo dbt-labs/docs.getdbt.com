@@ -4,12 +4,16 @@ description: "Install the Fusion engine locally to take data transformation to t
 id: install-fusion
 ---
 
-# About Fusion installation <Lifecycle status="beta" />
+# About Fusion installation
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
 
+<VersionBlock lastVersion="1.99">
+
 <FusionBeta />
+
+</VersionBlock>
 
 This guide walks you through installing Fusion locally, including important prerequisites, step-by-step installation instructions, troubleshooting common issues, and configuration guidance.
 

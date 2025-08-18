@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Supported features <Lifecycle status="beta" />
+# Supported features
 
 <IntroText>
 
@@ -17,7 +17,11 @@ Learn about the features supported by the dbt Fusion engine, including requireme
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
 
+<VersionBlock lastVersion="1.99">
+
 <FusionBeta />
+
+</VersionBlock>
 
 ### Parity with dbt Core
 

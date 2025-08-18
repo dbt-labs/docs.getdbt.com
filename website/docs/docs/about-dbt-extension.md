@@ -6,7 +6,7 @@ sidebar_label: "About the dbt VS Code extension"
 pagination_next: "docs/install-dbt-extension"
 ---
 
-# About the dbt VS Code Extension <Lifecycle status="beta" />
+# About the dbt VS Code Extension <Lifecycle status="preview" />
 
 The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the new dbt Fusion engine while developing locally.
