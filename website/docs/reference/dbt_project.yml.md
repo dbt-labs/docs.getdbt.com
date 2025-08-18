@@ -59,7 +59,8 @@ The following example is a list of all available configurations in the `dbt_proj
   database: true | false
   schema: true | false
   identifier: true | false
-
+  snowflake_ignore_case: true | false  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                       # Ignored by dbt Core and other adapters.
 metrics:
   [<metric-configs>](/docs/build/metrics-overview)
 

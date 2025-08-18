@@ -111,7 +111,7 @@ No, dbt Labs will not dispute your ownership of any code or artifacts unique to 
 
 <Expandable alt_header="Does dbt Labs have terms in place for dbt Copilot?">
 
-Clients who signed with terms after January 2024 don't need additional terms prior to enabling <Constant name="copilot" />. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event client prefer additional terms, clients may enter into the presigned AI & Beta Addendum available at [here](https://app.hellosign.com/s/LwqigFvP) (the dbt Labs signature will be dated as of the date the client signs).
+Clients who signed with terms after January 2024 don't need additional terms prior to enabling <Constant name="copilot" />. Longer term clients have also protected their data through confidentiality and data deletion obligations. In the event client prefer additional terms, clients may enter into the presigned AI & Beta Addendum available at [here](https://na2.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=85817ff4-9ce5-4fae-8e34-20b854fdb52a&env=na2&acct=858db9e4-4a6d-48df-954f-84ece3303aac&v=2) (the dbt Labs signature will be dated as of the date the client signs).
 
 </Expandable>
 

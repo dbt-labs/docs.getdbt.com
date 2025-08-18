@@ -258,4 +258,4 @@ Test the connection in the <Constant name="cloud_ide" />:
 dbt debug --connection
 ```
 
-<Lightbox src="/img/reference/dbt-debug-ide.jpg" title="Test the connection in the Studio IDE" />
+<Lightbox src="/img/reference/dbt-debug-ide.png" title="Test the connection in the Studio IDE" />

@@ -78,7 +78,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Postgres Interface-type
 - VPC Endpoint Service Name:
 - Postgres server AWS Region (e.g., us-east-1, eu-west-2):
-- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 
 

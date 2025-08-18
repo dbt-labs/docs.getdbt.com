@@ -23,7 +23,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 ### Prerequisites
 - You have a [<Constant name="cloud" />](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Microsoft Fabric.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. The service principal must also have `CONNECT` privleges to the database in the warehouse. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
 - [dbt Learn courses](https://learn.getdbt.com)
@@ -113,7 +113,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
 6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Microsoft Fabric account.
-7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
+7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` priveleges to the database in the warehouse. 
 
 ## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />

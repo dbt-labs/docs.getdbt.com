@@ -30,7 +30,8 @@ models:
       - name: very_unreliable_column
         data_tests:
           - accepted_values:
-              values: ["a", "b", "c"]
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ["a", "b", "c"]
               config:
                 limit: 1000  # will only include the first 1000 failures
 ```

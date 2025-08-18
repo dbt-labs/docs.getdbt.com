@@ -83,11 +83,11 @@ If the connection to the VCS service requires a custom domain and/or URL for TLS
 Subject: New Multi-Tenant PrivateLink Request
 - Type: VCS Interface-type
 - VPC Endpoint Service Name:
-- Custom DNS (optional)
+- Custom DNS (if HTTPS)
     - Private hosted zone:
     - DNS record:
 - VCS install AWS Region (e.g., us-east-1, eu-west-2):
-- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';

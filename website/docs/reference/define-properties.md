@@ -17,7 +17,7 @@ We highly recommend that you define properties in dedicated paths alongside the 
 Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
 
 Instead, we now refer to these files as `properties.yml` files. (Of course, you're still free to name your files `schema.yml`)
-git pull
+
 :::
 
 ### Which properties are _not_ also configs?

@@ -47,9 +47,7 @@ Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
 - Type: Snowflake
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
 - *Use privatelink-account-url or regionless-privatelink-account-url?: 
-- <Constant name="cloud" /> multi-tenant environment 
-    - AWS: US, EMEA, or AU
-    - Azure: EMEA only
+- dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 _*By default, <Constant name="cloud" /> will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 

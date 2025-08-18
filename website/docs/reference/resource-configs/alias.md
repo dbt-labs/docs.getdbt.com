@@ -174,7 +174,8 @@ models:
       - name: order_id
         data_tests:
           - unique:
-              alias: unique_order_id_test
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                alias: unique_order_id_test
 ```
 </File>
 

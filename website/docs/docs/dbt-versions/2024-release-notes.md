@@ -430,7 +430,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
 
   To learn more, refer to [Partial parsing](/docs/cloud/account-settings#partial-parsing).
 
-  <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
+  <Lightbox src="/img/docs/deploy/account-settings-partial-parsing.png" width="85%" title="Example of the Partial parsing option" />
 
   </Expandable>
 

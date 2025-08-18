@@ -47,13 +47,15 @@ models:
       - name: my_column
         data_tests:
           - accepted_values:
-              values: ["a", "b", "c"]
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ["a", "b", "c"]
               config:
                 where: "date_column = current_date"
       - name: other_column
         data_tests:
           - not_null:
-              where: "date_column < current_date"
+              arguments: 
+                where: "date_column < current_date"
 ```
 
 </File>

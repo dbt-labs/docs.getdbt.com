@@ -162,8 +162,9 @@ models:
         data_tests:
           - relationships:
             [description](/reference/resource-properties/description): "This is a test"
-              to: ref('accounts')
-              field: id
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                to: ref('accounts')
+                field: id
 ```
 
 </File>
@@ -210,7 +211,8 @@ models:
         description: "Test other_number"
         data_tests:
           - warn_if_odd:
-              severity: error   # overrides
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                severity: error   # overrides
 ```
 
 </File>

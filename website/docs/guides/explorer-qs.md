@@ -5,7 +5,7 @@ description: "Use this guide to build and define metrics, set up the dbt Semanti
 sidebar_label: "Quickstart dbt Catalog"
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Explorer', 'Snowflake', 'dbt platform','Quickstart']
+tags: ['Explorer', 'Snowflake', 'dbt platform','Quickstart','Catalog']
 keywords: ['dbt Catalog','Mesh','dbt platform', 'Snowflake', 'Multi-Project']
 level: 'Beginner'
 ---
@@ -30,17 +30,16 @@ In this guide, you will learn how to:
 
 ## Setup
 Now we’ll be creating your <Constant name="cloud" /> account and connecting it to a data warehouse. 
-1. Go to this URL (sign out if you're already logged in):  https://cloud.getdbt.com/coalesce-workshop-signup
+1. Go to this URL (sign out if you're already logged in): https://cloud.getdbt.com/coalesce-workshop-signup
 2. Enter your first name and last name.
 3. Select the **Exploring a <Constant name="mesh" /> implementation with <Constant name="explorer" />** option.
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
 6. Wait about 30 seconds, you’ll be in the <Constant name="cloud" /> account for this workshop and already connected to a data warehouse.
-7. Toggle into the **Platform project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
-8. Run each job you see by clicking on the job and then selecting **Run**. This will run the *upstream* project job in both a production and staging environment.
-9. Toggle into the **Analytics project**. Go to the **Deploy** tab and select **Jobs** from the dropdown menu. 
-10. Run each job you see by clicking on the job and then selecting **Run**. This will run the *downstream* project job in both a production and staging environment.
- <Lightbox src="/img/quickstarts/dbt-cloud/go_to_jobs.png" width="80%" title="Click on the Jobs tab" />
+7. Toggle into the **Platform project**. Go to the **Orchestration** tab and select **Jobs** from the dropdown menu. 
+8. Run each job you see by clicking on the job and then selecting **Run now**. This will run the *upstream* project job in both a production and staging environment.
+9. Toggle into the **Analytics project**. Go to the **Orchestration** tab and select **Jobs** from the dropdown menu. 
+10. Run each job you see by clicking on the job and then selecting **Run now**. This will run the *downstream* project job in both a production and staging environment.
  <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="80%" title="Run the jobs" />
    
 
@@ -49,11 +48,11 @@ Now we’ll be creating your <Constant name="cloud" /> account and connecting it
 <Constant name="explorer" /> will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
 
 ### Hands-On
-- Trigger the Daily Prod job to run again
-- Explore the **Performance** tab on the **Project details** page
+- Trigger the Daily Prod job to run again.
+- Explore the **Performance** tab on the **Project details** page.
   - Which model took the longest over the last two weeks? Over the last month? 
   - Which model failed the most tests? 
-  - Click on the model that took the longest to run in the _Longest model executions_ graph
+  - Click on the model that took the longest to run in the _Longest model executions_ graph.
     - What is the average duration time over the last two weeks? Over the last month?
     - How often is the model being built? What is the Model Test Failure Rate?
 
@@ -63,7 +62,7 @@ With <Constant name="explorer" />, you can view your project's resources (such a
 
 Navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Catalog's Models tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_models_tab.png" width="100%" title="dbt Catalog's Models tab" />
 
 ### Hands-On
 - Explore the **Model** tab 

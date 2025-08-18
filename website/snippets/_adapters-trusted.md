@@ -55,6 +55,12 @@
     icon="dbt-ibm-netezza"/>
 
 <Card
+    title="Databricks Lakebase"
+    body="<ul><li><a href='/docs/core/connect-data-platform/lakebase-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    pills='["dbt platform", "dbt Core"]'
+    icon="lakebase"/>
+
+<Card
     title="Materialize"
     body="<ul><li><a href='/docs/core/connect-data-platform/materialize-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a 
     href=https://badge.fury.io/py/dbt-materialize><img src=https://badge.fury.io/py/dbt-materialize.svg/></a>"

@@ -7,6 +7,8 @@ import {
 } from '@docusaurus/plugin-content-blog/client';
 import BlogSidebarContent from '@theme/BlogSidebar/Content';
 import Link from "@docusaurus/Link";
+import CTA from '@site/src/components/cta';
+import {usePluginData} from '@docusaurus/useGlobalData';
 import styles from './styles.module.css';
 
 /* dbt Customizations:
@@ -28,6 +30,7 @@ const ListComponent = ({items}) => {
 
 function BlogSidebarDesktop({ sidebar, tagData }) {
   const items = useVisibleBlogSidebarItems(sidebar.items);
+  const { blogMeta } = usePluginData('docusaurus-build-global-data-plugin');
   return (
     <aside className="col col--3">
       <nav
@@ -73,6 +76,11 @@ function BlogSidebarDesktop({ sidebar, tagData }) {
           ListComponent={ListComponent}
           yearGroupHeadingClassName={styles.yearGroupHeading}
         />
+        {blogMeta?.featured_cta && (
+          <div className="margin-top--lg">
+            <CTA cta={blogMeta.featured_cta} />
+          </div>
+        )}
       </nav>
     </aside>
   );

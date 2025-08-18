@@ -11,12 +11,13 @@
 }
 
 .card {
+  position: relative;
   border: 1px solid var(--border-neutral-tertiary);
   border-radius: 16px;
   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
   background-color: var(--bg-surface-default);
-
   backdrop-filter: blur(10px) !important;
+  overflow: hidden;
 }
 
 

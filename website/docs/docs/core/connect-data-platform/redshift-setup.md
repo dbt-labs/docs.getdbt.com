@@ -27,22 +27,22 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
-| `host` | hostname.region.redshift.amazonaws.com or workgroup.account.region.redshift-serverless.amazonaws.com | Host of cluster |
-| `port`  | 5439 |  |
+| `host` | `hostname.region.redshift.amazonaws.com` or `workgroup.account.region.redshift-serverless.amazonaws.com` | Host of cluster|
+| `port`  | 5439 | Port for your Redshift environment|
 | `dbname`  | my_db | Database name|
 | `schema`  | my_schema | Schema name|
-| `connect_timeout`  | 30 | Number of seconds before connection times out. Default is `None`|
-| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below|
-| `role`  | None | Optional, user identifier of the current session|
-| `autocreate`  | false | Optional, default false. Creates user if they do not exist |
+| `connect_timeout`  | 30 | Number of seconds before the connection times out. Default is `None` |
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Defaults to `prefer`, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below |
+| `role`  | None | Optional, user identifier of the current session |
+| `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
-| `ra3_node`  | true | Optional, default False. Enables cross-database sources|
-| `autocommit`  | true | Optional, default True. Enables autocommit after each statement|
+| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources |
+| `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
-| `tcp_keepalive`  | true | Allows dbt to prevent idle connections from being dropped by intermediate firewalls or load-balancers. |
+| `tcp_keepalive`  | true | Allows dbt to prevent idle connections from being dropped by intermediate firewalls or load-balancers |
 | `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
-| `tcp_keepalive_interval`  | 200 | Number of Seconds of inactivity before the next probe is sent |
+| `tcp_keepalive_interval`  | 200 | Number of seconds of inactivity before the next probe is sent |
 | `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
 
 For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
@@ -120,7 +120,7 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `cluster_id` | cluster_id| Required for IAM authentication only for provisoned cluster, not for Serverless |
 | `user`   | username | User querying the database, ignored for Serverless (but field still required) |
 | `region`  | us-east-1 | Region of your Redshift instance | 
 

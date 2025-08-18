@@ -1296,8 +1296,35 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
 /* footer styles */
 .footer {
+  background-color: transparent;
+  padding: 0;
+}
+.footer .container {
+  padding: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.footer__links {
+  padding-left: 0 !important;
+}
+
+.sub-footer {
   background-color: var(--color-terminal-black-950);
   padding-top: 3rem;
+}
+
+.sub-footer .container {
+  max-width: var(--ifm-container-width-xl);
+  margin: 0 auto;
+  padding: var(--ifm-footer-padding-vertical) var(--ifm-footer-padding-horizontal);
+}
+
+@media (max-width: 996px) {
+  .sub-footer .container {
+    padding: 0 var(--ifm-spacing-horizontal);
+  }
 }
 
 .footer__links {
@@ -1893,23 +1920,37 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
 /* CTA Styles */
 .docs-cta {
-  padding: 20px 10px;
-  margin: 1rem;
-  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 16px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 7rem;
   /*position: sticky;*/
-  text-align: center;
-  background: var(--color-terminal-black-100);
+  text-align: left;
   position: relative;
   bottom: 0;
   max-width: 400px;
 }
 
+.docs-cta-icon {
+  margin-bottom: 1rem;
+  max-width: 30px;
+  font-size: 25px;
+}
+
+.docs-cta-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
 .docs-cta h4 {
   margin-bottom: 10px;
+  font-size: 1.25rem;
 }
 
 .docs-cta p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 21px;
 }
 
@@ -1930,6 +1971,11 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 /* CTA dark-mode styles */
 [data-theme='dark'] .docs-cta {
   background: var(--color-terminal-black-800);
+  border-color: var(--border-inverse-tertiary);
+}
+
+[data-theme='dark'] .docs-cta .docs-cta-btn:hover {
+  color: var(--text-neutral-primary) !important;
 }
 
 @media (max-width: 996px) {
@@ -2010,8 +2056,8 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 }
 
 /* OneTrust Cookies Settings Btn in Footer */
-footer #ot-sdk-btn,
-footer #ot-sdk-btn.optanon-show-settings {
+.sub-footer #ot-sdk-btn,
+.sub-footer #ot-sdk-btn.optanon-show-settings {
   background: none;
   border: none;
   color: var(--text-inverse-tertiary);
@@ -2024,8 +2070,8 @@ footer #ot-sdk-btn.optanon-show-settings {
   cursor: pointer;
 }
 
-footer #ot-sdk-btn:hover,
-footer #ot-sdk-btn.optanon-show-settings:hover {
+.sub-footer #ot-sdk-btn:hover,
+.sub-footer #ot-sdk-btn.optanon-show-settings:hover {
   background: none;
   border: none;
   color: var(--text-inverse-primary);
@@ -2094,6 +2140,31 @@ section.discourse-forum-page {
 
   [data-theme='dark'] .home section[class*="baton"] > .container::after, [data-theme='dark'] .home .baton-hero > .container::after {
     background: linear-gradient(to left, var(--ifm-background-color) 0%, var(--ifm-background-color) 50%, transparent 100%);
+  }
+}
+
+.home .hero-cta {
+  margin-top: 2rem;
+
+  a {
+    background: #fff;
+    border: solid 1px #000;
+    border-radius: 12px;
+    padding: 8px 16px;
+    color: #000;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a:hover {
+    text-decoration: none;
+    background: var(--bg-neutral-primary-hover);
+  }
+}
+
+@media (max-width: 996px) {
+  .home .hero-cta {
+    padding: 8px;
+    font-size: var(--text-sm);
   }
 }
 
@@ -2570,7 +2641,7 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 .baton-hero::before {
   content: '';
   position: absolute;
-  top: 10%;
+  top: 6%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -2611,7 +2682,7 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 
 .baton-hero {
   text-align: center;
-  padding: 6rem 1rem 20rem;
+  padding: 9rem 1rem 20rem;
 }
 
 @media (max-width: 996px) {
@@ -2651,7 +2722,7 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   justify-content: center;
   align-items: center;
 }
@@ -2664,6 +2735,16 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 
 .baton-hero .quick-links a:hover {
   text-decoration: none;
+}
+
+@media (max-width: 996px) {
+  .quick-links span {
+    display: none;
+  }
+
+  .quick-links a {
+    font-size: var(--text-sm);
+  }
 }
 
 [data-theme='dark'] .baton-hero .quick-links a {
@@ -2682,6 +2763,21 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
+  text-align: left;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.bottom-cta .container {
+  margin: 0 auto;
+  max-width: var(--ifm-container-width-xl);
+  padding: var(--ifm-footer-padding-vertical) var(--ifm-footer-padding-horizontal);
+}
+
+@media (max-width: 996px) {
+  .bottom-cta .container {
+    padding: 0 var(--ifm-spacing-horizontal);
+  }
 }
 
 .bottom-cta .cta-section-text {

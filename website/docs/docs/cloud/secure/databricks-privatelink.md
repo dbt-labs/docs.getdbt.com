@@ -29,7 +29,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
     - Type: Databricks
     - Databricks instance name:
     - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
-    - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
+    - dbt AWS multi-tenant environment (US, EMEA, AU):
     ```
     <PrivateLinkSLA />
 

@@ -86,7 +86,7 @@ Once configured in both Tableau and [<Constant name="cloud" />](#set-up-in-dbt-c
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.jpg" title="Select the collections you want to include for the downstream exposures."/>
 
       :::info
-      <Constant name="cloud" /> automatically imports and syncs any workbook within the selected collections. New additions to the collections will be added to the lineage in <Constant name="cloud" /> during the next sync (once per day).
+      <Constant name="cloud" /> automatically imports and syncs any workbook within the selected collections. New additions to the collections will appear in the lineage in <Constant name="cloud" /> once per day &mdash; after the daily sync and a job run.
 
       <Constant name="cloud" /> immediately starts a sync when you update the selected collections list, capturing new workbooks and removing irrelevant ones.
       :::

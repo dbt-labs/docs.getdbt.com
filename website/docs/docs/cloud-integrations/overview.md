@@ -13,6 +13,14 @@ Many data applications integrate with <Constant name="cloud" />, enabling you to
 <div className="grid--3-col">
 
 <Card
+    title="dbt VS Code extension"
+    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt Fusion engine while developing locally."
+    link="/docs/about-dbt-extension"
+    icon="vsce"
+    showBorderBeam
+    />
+
+<Card
     title="Visualize and orchestrate downstream exposures"
     body="Configure downstream exposures automatically from dashboards and understand how models are used in downstream tools. Proactively refresh the underlying data sources during scheduled dbt jobs."
     link="docs/cloud-integrations/downstream-exposures"

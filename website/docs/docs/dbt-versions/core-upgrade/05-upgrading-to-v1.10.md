@@ -31,11 +31,70 @@ New features and functionality available in <Constant name="core" /> v1.10
 
 Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.
 
+### Move standalone anchors under `anchors:` key
+
+As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+
+For example, rather than using this configuration:
+
+<File name='models/_models.yml'>
+
+```yml
+id_column: &id_column_alias
+  name: id
+  description: This is a unique identifier.
+  data_type: int
+  data_tests:
+    - not_null
+    - unique
+
+models:
+  - name: my_first_model
+    columns: 
+      - *id_column_alias
+      - name: unrelated_column_a
+        description: This column is not repeated in other models.
+  - name: my_second_model
+    columns: 
+      - *id_column_alias
+```
+
+</File>
+
+Move the anchor under the `anchors:` key instead:
+
+<File name='models/_models.yml'>
+
+```yml
+anchors: 
+  - &id_column_alias
+      name: id
+      description: This is a unique identifier.
+      data_type: int
+      data_tests:
+        - not_null
+        - unique
+
+models:
+  - name: my_first_model
+    columns: 
+      - *id_column_alias
+      - name: unrelated_column_a
+        description: This column is not repeated in other models
+  - name: my_second_model
+    columns: 
+      - *id_column_alias
+```
+
+</File>
+
+This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
 ### Parsing `catalogs.yml`
 
 dbt Core can now parse the `catalogs.yml` file. This is an important milestone in the journey to supporting external catalogs for Iceberg tables, as it enables write integrations. You'll be able to provide a config specifying a catalog integration for your producer model:
 
-For example: 
+For example:
 
 ```yml
 

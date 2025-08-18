@@ -29,6 +29,7 @@
     "core-js": "^3.20.0",
     "feed": "^4.2.2",
     "file-loader": "^6.2.0",
+    "framer-motion": "^12.23.12",
     "fs": "0.0.2",
     "gray-matter": "^4.0.3",
     "hast-util-is-element": "^1.1.0",

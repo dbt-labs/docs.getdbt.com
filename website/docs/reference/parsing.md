@@ -55,7 +55,15 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 
 If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the benefits of partial parsing are not applicable to new pull requests (PR) or new branches. However, they are applied on subsequent commits to the new PR or branch. 
 
-If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
+When partial parsing is enabled, dbt may occasionally fail or incorrectly parse the project causing:
+- Nodes (for example, models, sources) to not be found.
+- Configurations to be set incorrectly (for example, different from what is defined in a model's `schema.yml` file).
+
+If you get into this state, you can trigger a full re-parse using any of the following options: 
+- Run the dbt command with `--no-partial-parse`.
+- Delete the `target/partial_parse.msgpack` file by running `dbt clean`.
+
+You can disable partial parsing entirely by setting the `PARTIAL_PARSE` global config to `false`.
 
 ## Static parser
 

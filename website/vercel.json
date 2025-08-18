@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/dbt-cloud-apis/mcp",
+      "destination": "/docs/dbt-ai/about-mcp",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/secure/about-privatelink",
       "destination": "/docs/cloud/secure/about-private-connectivity",
       "permanent": true
