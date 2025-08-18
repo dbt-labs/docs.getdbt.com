@@ -19,7 +19,7 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 
 <FusionPrereqs />
  
-<div className="grid--2-col">
+<div className="grid--3-col">
 
 <Card
     title="dbt VS Code Extension"
@@ -28,9 +28,15 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Fusion engine CLI installation"
-    body="Learn how to install the dbt ."
+    title="dbt Fusion engine on the CLI"
+    body="Learn how to install the dbt Fusion engine on the command line interface (CLI)."
     link="/docs/fusion/install-fusion-cli"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Fusion engine upgrade"
+    body="Learn how you can upgrade and leverage the speed and scale of the dbt Fusion engine"
+    link="/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine"
     icon="dbt-bit"/>
 
 </div>
