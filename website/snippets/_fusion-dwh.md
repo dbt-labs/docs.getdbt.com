@@ -3,6 +3,7 @@
     - Service Account / User Token
     - Native OAuth
     - External OAuth
+   - Users must be granted BigQuery Read Session User permission (provides access to the storage read API)
 
   </Expandable>
 

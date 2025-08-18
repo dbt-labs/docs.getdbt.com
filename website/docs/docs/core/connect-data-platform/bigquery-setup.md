@@ -497,6 +497,9 @@ BigQuery's permission model is dissimilar from more conventional databases like 
 - BigQuery Data Editor
 - BigQuery User
 
+BigQuery with dbt Fusion engine also requires users to have the following permission:
+- BigQuery Read Session User (provides access to the storage read API)
+
 Required roles and permissions for BigQuery DataFrames:
 - BigQuery Job User
 - BigQuery Read Session User

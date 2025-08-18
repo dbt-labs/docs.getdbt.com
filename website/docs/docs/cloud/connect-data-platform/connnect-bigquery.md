@@ -5,6 +5,11 @@ description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
 ---
 
+## Required permissions
+
+BigQuery with dbt Fusion engine also requires users to have the following permission:
+- BigQuery Read Session User (provides access to the storage read API)
+
 ## Authentication
 
 <Constant name="cloud" /> supports different authentication methods depending on your environment and plan type:
