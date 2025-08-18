@@ -4,7 +4,7 @@ description: "Install the Fusion engine locally to take data transformation to t
 id: install-fusion
 ---
 
-# About Fusion installation
+# About Fusion installation <Lifecycle status="preview" />
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
