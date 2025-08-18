@@ -1,10 +1,10 @@
 ---
-title: "Install Fusion on the CLI"
-description: "Install the Fusion engine locally on the command line interface (CLI) to take data transformation to the next level."
+title: "Install Fusion from the CLI"
+description: "Install the Fusion engine locally from the command line interface (CLI) to take data transformation to the next level."
 id: install-fusion-cli
 ---
 
-# Install Fusion on the CLI <Lifecycle status="preview" />
+# Install Fusion from the CLI <Lifecycle status="preview" />
 
 Fusion can be installed via the command line from our official CDN:
 

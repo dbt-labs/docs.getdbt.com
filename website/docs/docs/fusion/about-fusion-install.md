@@ -23,7 +23,7 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Fusion engine on the CLI"
+    title="dbt Fusion engine from the CLI"
     body="Learn how to install the dbt Fusion engine on the command line interface (CLI)."
     link="/docs/fusion/install-fusion-cli"
     icon="dbt-bit"/>
