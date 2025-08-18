@@ -51,4 +51,8 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+### Package support
 
+import FusionPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionPackages />

@@ -329,3 +329,9 @@ return('xyzabc')
 
 {% endmacro %}
 ```
+
+### Package support
+
+import FusionPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionPackages />
