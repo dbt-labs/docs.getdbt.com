@@ -310,7 +310,7 @@ This move is only necessary for fragments defined outside of the main YAML struc
 
 #### Algebraic operations in Jinja macros
 
-In dbt Core, you can set algebraic functions in the return function of a Jinja macro:
+In <Constant name="core" />, you can set algebraic functions in the return function of a Jinja macro:
 
 ```jinja
 {% macro my_macro() %}
@@ -320,7 +320,7 @@ return('xyz') + 'abc'
 {% endmacro %}
 ```
 
-This is no longer supported in Fusion and will return an error. This is not a common use case and there is no deprecation warning for this behavior in dbt Core. The supported format is:
+This is no longer supported in <Constant name="fusion" /> and will return an error. This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
 
 ```jinja
 {% macro my_macro() %}
