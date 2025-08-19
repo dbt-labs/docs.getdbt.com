@@ -7,7 +7,7 @@ pagination_next: "docs/core/dbt-core-environments"
 pagination_prev: null
 ---
 
-<Constant name="dbt" /> enables data teams to transform data using analytics engineering best practices. You can choose your local development experience from these tools:
+<Constant name="dbt" /> enables data teams to transform data using analytics engineering best practices. Choose your local development experience from these tools:
 
 * Local command line interface (CLI) tools leveraging the speed and scale of the <Constant name="fusion_engine" /> or using our legacy Core product
 * VS Code or Cursor with the dbt extension
