@@ -22,6 +22,12 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+## Required permissions
+
+import BigQueryPerms from '/snippets/_bigquery-permissions.md';
+
+<BigQueryPerms />
+
 ## Authentication Methods
 
 BigQuery targets can be specified using one of four methods:
@@ -491,26 +497,6 @@ my-profile:
 For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
 
-## Required permissions
-
-BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
-- BigQuery Data Editor
-- BigQuery User
-
-BigQuery with <Constant name="fusion_engine" /> also requires users to have the following permission:
-- BigQuery Read Session User (provides access to the storage read API)
-
-Required roles and permissions for BigQuery DataFrames:
-- BigQuery Job User
-- BigQuery Read Session User
-- Notebook Runtime User
-- Code Creator
-- colabEnterpriseUser
-
-
-
-
-This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 

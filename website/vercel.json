@@ -44,6 +44,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/core/about-core-setup",
+      "destination": "/docs/about-dbt-install",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/secure/about-privatelink",
       "destination": "/docs/cloud/secure/about-private-connectivity",
       "permanent": true

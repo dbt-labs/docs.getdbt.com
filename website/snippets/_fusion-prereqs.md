@@ -4,13 +4,13 @@ Learn more about installing Fusion locally, along with important prerequisites, 
 
 ## Prerequisites
 
-Before installing Fusion, ensure:
+Before installing Fusion, ensure that you:
 
-- You have administrative privileges to install software on your local machine.
-- You are familiar with command-line interfaces (Terminal on macOS/Linux<!--, PowerShell on Windows-->).
-- You are using a supported data warehouse and authentication method.
+- Have administrative privileges to install software on your local machine.
+- Are comfortable using a command-line interface (Terminal on macOS/Linux<!--, PowerShell on Windows-->).
+- Use a supported data warehouse and authentication method and configure permissions as needed:
   <FusionDWH /> 
-- You are using a supported OS and architecture:
+- Use a supported operating system:
 
   🟢 - Supported <br/>
   🟡 - Not yet supported

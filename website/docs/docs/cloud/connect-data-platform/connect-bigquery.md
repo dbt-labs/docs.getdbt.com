@@ -5,10 +5,11 @@ description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
 ---
 
-## Required permission
+## Required permissions
 
-BigQuery with <Constant name="fusion_engine" /> also requires users to have the following permission:
-- BigQuery Read Session User (provides access to the storage read API)
+import BigQueryPerms from '/snippets/_bigquery-permissions.md';
+
+<BigQueryPerms />
 
 ## Authentication
 
@@ -16,7 +17,7 @@ BigQuery with <Constant name="fusion_engine" /> also requires users to have the 
 
 - Development environments support:
     - Service JSON
-    - BigQuery Oauth <Lifecycle status="managed" />
+    - BigQuery OAuth <Lifecycle status="managed" />
 - Deployment environments support: 
     - Service JSON
     - BigQuery Workload Identity Federation (WIF) <Lifecycle status="managed" />
