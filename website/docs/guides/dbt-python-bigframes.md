@@ -50,6 +50,13 @@ You will set up the environments, build scalable pipelines in dbt, and execute a
 
 ## Configure Google Cloud
 
+:::tip
+
+**BigQuery set up**
+Initialize your dbt project and select BigQuery (Legacy) as their adapter. as the adapter, making sure your profiles.yml is configured accordingly (using type: bigquery, your GCP project, dataset, credentials, etc.
+
+:::
+
 The dbt BigFrames submission method supports both service account and OAuth credentials. You will use the service account in the following steps.
 
 1. **Create a new Google Cloud Project**
@@ -109,6 +116,55 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    #Grant Storage Admin over the bucket to your SA 
    gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket-logs --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
+
+import OptionalSettings from '/snippets/_bigquery-optional-configs.md'; 
+
+<OptionalSettings />
+
+6. **Google cloud storage bucket** 
+
+The GCS bucket and Dataproc region aren't always needed in a basic BigQuery setup for dbt, but they are required in some specific use cases, especially when:
+
+- You're using Python models with BigQuery DataFrames.
+
+- You're using Spark on Dataproc (via dbt or other tools).
+
+- You're staging large files in GCS before loading into BigQuery.
+
+You can configure the GCS bucket in the [profiles.yml](/docs/core/connect-data-platform/profiles.yml), add this under your BigQuery profile:
+
+```yaml
+my_bq_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: your-gcp-project-id
+      dataset: your_dataset
+      keyfile: /path/to/key.json
+      location: US
+      threads: 4
+      timeout_seconds: 300
+
+      # 👇 Optional settings
+      job_execution_timeout_seconds: 300
+      gcs_bucket: your-temp-gcs-bucket-name
+```
+
+**Dataproc region**
+
+The Dataproc region is only if you're using Dataproc (for example, for running PySpark or Spark jobs). You would set the region when initializing or referencing a Dataproc cluster. For example, if running Spark on Dataproc.
+
+It's not required for standard BigQuery or Python models via dbt unless explicitly configured.
+
+For example, in a gcloud CLI command:
+
+```bash
+gcloud dataproc clusters create my-cluster \
+  --region=us-central1 \
+  --zone=us-central1-b
+```
 
 ## Create, configure, and execute your Python models
 
