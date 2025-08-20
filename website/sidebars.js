@@ -1429,6 +1429,7 @@ const sidebarSettings = {
           ],
         },
         "reference/dbt-classes",
+        "reference/files-with-jinja-support",
       ],
     },
     {
