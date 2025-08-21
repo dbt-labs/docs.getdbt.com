@@ -27,7 +27,7 @@ To view deprecations from your CLI, run:
 dbt parse --no-partial-parse --show-all-deprecations
 ```
 
-The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurence of the deprecations is listed instead  of just the first.
+The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurrence of the deprecations is listed instead  of just the first.
 
 ```bash
 
