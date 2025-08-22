@@ -112,7 +112,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     To learn more, refer to [Repo caching](/docs/cloud/account-settings#git-repository-caching).
 
-    <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
+    <Lightbox src="/img/docs/deploy/account-settings-repository-caching.png" width="85%" title="Example of the Repository caching option" />
 
   </Expandable>
 

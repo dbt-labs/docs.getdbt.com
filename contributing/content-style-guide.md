@@ -6,7 +6,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 
 ### Table of Contents
 * [Folder Structure and TOC](#folder-structure-and-toc)
-* [Filenaming](#filenaming)
+* [Naming conventions and branding ](#naming-conventions-and-branding)
 * [Using Markdown](#using-markdown)
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
@@ -33,7 +33,58 @@ Don't worry if you're not sure where in the leftbar a new topic belongs. Do your
 
 The right sidebar (rightbar), also known as the page TOC, is created automatically for all the H2 and H3 headings on a page. For details, see [Headings and Table of contents](https://docusaurus.io/docs/markdown-features/toc) in Docusaurus. 
 
-## Filenaming
+
+## Naming conventions and branding
+
+There are many features in dbt. There are even a few different iterations of dbt itself. Figuring out what's a feature, what's a "product," and what's lingo can be a challenge. Addressing them in files and publishing to the docs site also has a set of rules to follow. This section will help clear up some of the language around calling out dbt products, features, and file names.
+
+### dbt products
+
+The following are the "branding" guidelines for the various dbt products (all case sensitive)
+- **dbt Labs** &mdash; The company that owns and operates dbt. When the docs say "we," this is who "we" is!
+- **dbt** &mdash; Always lower case, all the time. If something applies to all of our offerings, this is acceptable to use. For example, "You can write dbt models in SQL or Python." Otherwise, you should refer to the specific product type.
+- **dbt Core** &mdash; A version of dbt <= v1.X. Always lowercase `dbt` and capital `C`.
+- **dbt Fusion engine** &mdash; A version of dbt >= v2.X. You will frequently see this used interchangeably with just `Fusion` in our docs. If you're writing about us externally, using "dbt Fusion engine" would be very much appreciated!
+- dbt &mdash; Wait... didn't we already mention this? Yes and no. What was previously called `dbt Cloud` is now just `dbt`. However, this can get a little confusing in the docs, so we call it the `dbt platform` or the `cloud-based dbt platform` (all lowercase, all the time) to disambiguate. You can also refer to it by the plan tiers that are offered: `Developer`, `Starter`, `Enterprise`, and `Enterprise+` if writing about something feature-specific.
+
+### dbt features
+
+Some features in the cloud-based dbt platform are treated as proper nouns:
+- Studio IDE
+- Canvas
+- Insights
+- Catalog
+- Mesh
+- Orchestrator
+- Semantic Layer
+- Copilot
+
+All of our other features, such as models, environments, configs, and settings, are treated as common nouns.
+
+### 3rd party brands
+
+We have many official and unofficial partners in the world of dbt. We (and by extension, our docs) must respect their branding. Use proper nouns where appropriate, and even if a product has been known by a particular name for years, if the name changes, we should use the new branding. 
+- Microsoft Azure Active Directory  ❌
+- Microsoft Entra ID ✅ 
+
+Avoid shorthand unless they use it as well. For example:
+
+- Visual Studio Code &mdash; VScode ❌
+- Visual Studio Code &mdash; VS Code ✅ 
+
+### Acronyms and initialisms
+
+When using acronyms and initialisms, use all caps, unless there is another established standard:
+
+- yaml ❌ --> YAML ✅ 
+- sql ❌ --> SQL ✅ 
+- json ❌ --> JSON ✅ 
+- dbt ✅ --> DBT ❌
+- scuba ✅ --> S.C.U.B.A. ❌
+
+The exception in cases like YAML and SQL is if you are using the file extension. For example, "Save the model in a file with the .sql extension."
+
+### Filenaming
 
 If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, review the following file name guidance and examples: 
 
@@ -44,7 +95,6 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 | ✅ Use | ❌ Avoid|
 |:-------:|:-------:|
 |`/docs/cloud/about-cloud/architecture` | `/docs/deploy/how-we-think-about-architecture`|
-
 
 ## Using Markdown
 

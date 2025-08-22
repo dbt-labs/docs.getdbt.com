@@ -106,22 +106,26 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
-3. In **Configure your development environment**, click **Add new connection**.
-4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
+3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**.
+4. In the **Type** section, select **Teradata**.
+5. Enter your Teradata settings and click **Save**.
 
   <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt - Choose Teradata Connection" />
   
   <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
-5. Enter your **Development Credentials** for Teradata with:
+6. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+7. Select your project that uses the Teradata connection. 
+8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal development credentials.
+9. Enter your **Development credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
-   * **Schema** &mdash; The default database to use
+   * **Schema** &mdash; The default database to use.
   
    <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
 
-6. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
-7. If the connection test succeeds, click **Next**. If it fails, check your Teradata settings and credentials.
+10. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
+11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.
 
 ## Set up a dbt managed repository
 
@@ -482,11 +486,11 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 </div>
 
-## Add tests to your models
+## Add data tests to your models
 
-Adding [tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
+Adding [data tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
 
-To add tests to your project:
+To add data tests to your project:
 
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
@@ -500,33 +504,35 @@ To add tests to your project:
       - name: bi_customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_orders
         columns:
           - name: order_id
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
 
     ```
 
@@ -534,11 +540,11 @@ To add tests to your project:
 
 3. Run `dbt test`, and confirm that all your tests passed.
 
-When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
+When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each data test. Each query will return the number of records that fail the test. If this number is 0, then the data test is successful.
 
 #### FAQs
 
-<FAQ path="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ path="Tests/available-tests" alt_header="What data tests are available for me to use in dbt? Can I add my own custom tests?" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
@@ -564,7 +570,7 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: customer_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: first_order_date
@@ -575,7 +581,7 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: customer_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
 
@@ -584,19 +590,21 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: order_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
     ```
 
     </File>

@@ -68,9 +68,10 @@ CREATE OR REPLACE ROLE dbt_metadata_role;
 2. Grant access to a warehouse to run queries to view metadata:
 
 ```sql
-GRANT OPERATE, USAGE ON WAREHOUSE "<your-warehouse>" TO ROLE dbt_metadata_role;
+GRANT USAGE ON WAREHOUSE "<your-warehouse>" TO ROLE dbt_metadata_role;
 ```
 
+If your warehouse needs to be restarted for metadata ingestions (doesn't have auto-resume enabled), you may need to grant `OPERATE` permissions to the role as well. 
 If you do not already have a user, create a dbt-specific user for metadata access. Replace `<your-password>` with a strong password and `<your-warehouse>` with the warehouse name used above:
 
 ```sql

@@ -23,7 +23,7 @@ dbt provides a way to generate documentation for your dbt project and render it 
 
 ## Assumed knowledge
 
-* [Tests](/docs/build/data-tests)
+* [Data tests](/docs/build/data-tests)
 
 ## Overview
 
@@ -36,7 +36,7 @@ The following sections describe how to [add descriptions](#adding-descriptions-t
 
 ## Adding descriptions to your project
 
-Before generating documentation, add [descriptions](/reference/resource-properties/description) to your project resources. Add the `description:` key to the same YAML files where you declare [tests](/docs/build/data-tests). For example:
+Before generating documentation, add [descriptions](/reference/resource-properties/description) to your project resources. Add the `description:` key to the same YAML files where you declare [data tests](/docs/build/data-tests). For example:
 
 <File name='models/<filename>.yml'>
 
@@ -50,14 +50,14 @@ models:
     columns:
       - name: event_id
         description: This is a unique identifier for the event
-        tests:
+        data_tests:
           - unique
           - not_null
 
       - name: user-id
         quote: true
         description: The user who performed the event
-        tests:
+        data_tests:
           - not_null
 
 ```
@@ -140,7 +140,7 @@ models:
     columns:
       - name: event_id
         description: This is a unique identifier for the event
-        tests:
+        data_tests:
             - unique
             - not_null
 ```

@@ -1,16 +1,16 @@
 ---
-title: "Set up the dbt Semantic Layer"
+title: "Administer the Semantic Layer"
 id: setup-sl
-description: "Seamlessly set up the dbt Semantic Layer in dbt using intuitive navigation."
-sidebar_label: "Set up the Semantic Layer"
+description: "Seamlessly set up the credentials and tokens to start querying the dbt Semantic Layer."
+sidebar_label: "Administer the Semantic Layer"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
 pagination_prev: "guides/sl-snowflake-qs"
 ---
 
-# Set up the dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# Administer the Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
 
-With the <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more.
+With the dbt <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. This topic shows you how to set up credentials and tokens so that other tools can query the <Constant name="semantic_layer" />.
 
 :::info Not yet supported in the dbt Fusion engine
 <Constant name="semantic_layer" /> is currently supported in the <Constant name="dbt_platform" /> for environments running versions of <Constant name="core" />. Support for environments on the dbt Fusion engine is coming soon.
@@ -26,7 +26,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-## Set up dbt Semantic Layer
+## Administer the Semantic Layer
 
 import SlSetUp from '/snippets/_new-sl-setup.md';  
 
@@ -45,7 +45,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Next steps
 
-- Now that you've set up the <Constant name="semantic_layer" />, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.

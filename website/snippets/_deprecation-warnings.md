@@ -2,3 +2,4 @@ This deprecation warning is only raised for Fusion users on the following adapte
 - Snowflake
 - Databricks
 - BigQuery
+- Redshift

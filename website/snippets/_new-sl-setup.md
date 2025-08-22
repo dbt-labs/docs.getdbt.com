@@ -1,6 +1,6 @@
 import SLEnvVars from '/snippets/_sl-env-vars.md';
 
-You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to set up the Semantic Layer at the environment and project level.
+You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to administer the Semantic Layer at the environment and project level.
 - Enterprise+ and Enterprise plan:
   - Developer license with Account Admin permissions, or
   - Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
@@ -21,9 +21,16 @@ Select the environment where you want to enable the Semantic Layer:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-select-env.png" width="75%" title="Select the deployment environment to run your Semantic Layer against."/>
 
-### 2. Add a credential and create service tokens
+### 2. Configure credentials and create tokens
 
-The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. 
+There are two options for setting up <Constant name="semantic_layer" /> using API tokens: 
+
+- [Add a credential and create service tokens](#add-a-credential-and-create-service-tokens)
+- [Configure development credentials and create personal tokens](#configure-development-credentials-and-create-a-personal-token)
+
+#### Add a credential and create service tokens
+
+The first option is to use [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. 
 
 This credential controls the physical access to underlying data accessed by the Semantic Layer, and all access policies set in the data platform for this credential will be respected.
 
@@ -35,18 +42,18 @@ This credential controls the physical access to underlying data accessed by the 
 
 *If you're on a Starter plan and need to add more credentials, consider upgrading to our [Enterprise+ or Enterprise plan](https://www.getdbt.com/contact). All Enterprise users can refer to [Add more credentials](#4-add-more-credentials) for detailed steps on adding multiple credentials.*
 
-#### 1.  Select deployment environment
+##### 1.  Select deployment environment
    - After selecting the deployment environment, you should see the **Credentials & service tokens** page. 
    - Click the **Add Semantic Layer credential** button. 
 
-#### 2. Configure credential
+##### 2. Configure credential
    - In the **1. Add credentials** section, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
    - <SLEnvVars/>
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.png" width="55%" title="Add credentials and map them to a service token. " />
 
-#### 3. Create or link service tokens
+##### 3. Create or link service tokens
    - If you have permission to create service tokens, you’ll see the [**Map new service token** option](/docs/use-dbt-semantic-layer/setup-sl#map-service-tokens-to-credentials) after adding the credential. Name the token, set permissions to 'Semantic Layer Only' and 'Metadata Only', and click **Save**. 
    - Once the token is generated, you won't be able to view this token again, so make sure to record it somewhere safe.
    - If you don’t have access to create service tokens, you’ll see a message prompting you to contact your admin to create one for you. Admins can create and link tokens as needed.
@@ -59,9 +66,25 @@ This credential controls the physical access to underlying data accessed by the 
 <a href="https://www.getdbt.com/contact">Book a free live demo</a> to discover the full potential of <Constant name="cloud" /> Enterprise and higher plans.
 :::
 
+#### Configure development credentials and create a personal token
+
+Using [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. 
+
+To use PATs in <Constant name="semantic_layer" />:
+
+1. Configure your development credentials.
+   1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Credentials**.
+   2. Select your project. 
+   3. Click **Edit**.
+   4. Go to **Development credentials** and enter your details. 
+   5. Click **Save**.
+2. [Create a personal access token](/docs/dbt-cloud-apis/user-tokens). Make sure to copy the token. 
+
+You can use the generated PAT as the authentication method for <Constant name="semantic_layer" /> [APIs](/docs/dbt-cloud-apis/sl-api-overview) and [integrations](/docs/cloud-integrations/avail-sl-integrations). 
+
 ### 3. View connection detail
 1. Go back to the **Project details** page for connection details to connect to downstream tools.
-2. Copy and share the environment ID, service token, host, as well as the service token name to the relevant teams for BI connection set up. If your tool uses the GraphQL API, save the GraphQL API host information instead of the JDBC URL. 
+2. Copy and share the Environment ID, service or personal token, Host, as well as the service or personal token name to the relevant teams for BI connection setup. If your tool uses the GraphQL API, save the GraphQL API host information instead of the JDBC URL. 
 
     For info on how to connect to other integrations, refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
 

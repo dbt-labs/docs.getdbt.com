@@ -16,7 +16,7 @@
 exports.versions = [
   {
     version: "2.0",
-    customDisplay: "dbt Fusion engine (v2.0 Beta)",
+    customDisplay: "dbt Fusion engine",
     isPrerelease: true,
   },
   {

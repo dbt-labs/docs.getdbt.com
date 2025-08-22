@@ -11,7 +11,7 @@ You can use the API in a variety of ways to get answers to your business questio
 | --- | --- | --- |
 | [Performance](#performance) | Identify inefficiencies in pipeline execution to reduce infrastructure costs and improve timeliness. | <ul><li>What’s the latest status of each model?</li> <li>Do I need to run this model?</li><li>How long did my DAG take to run?</li> </ul>|
 | [Quality](#quality) | Monitor data source freshness and test results to resolve issues and drive trust in data. | <ul><li>How fresh are my data sources?</li><li>Which tests and models failed?</li><li>What’s my project’s test coverage?</li></ul>  |
-| [Discovery](#discovery) | Find and understand relevant datasets and semantic nodes with rich context and metadata. | <ul><li>What do these tables and columns mean?</li><li>What’s the full data lineage?</li><li>Which metrics can I query?</li> </ul> |
+| [Discovery](#discovery) | Find and understand relevant datasets and semantic nodes with rich context and metadata. | <ul><li>What do these tables and columns mean?</li><li>What's the full data lineage at a model level?</li><li>Which metrics can I query?</li> </ul> |
 | [Governance](#governance) | Audit data development and facilitate collaboration within and between teams. | <ul><li>Who is responsible for this model?</li><li>How do I contact the model’s owner?</li><li>Who can use this model?</li></ul>|
 | [Development](#development) | Understand dataset changes and usage and gauge impacts to inform project definition. | <ul><li>How is this metric used in BI tools?</li><li>Which nodes depend on this data source?</li><li>How has a model changed? What impact?</li> </ul>|
 
@@ -548,7 +548,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ### What’s the test coverage and status?
 
-[Tests](/docs/build/data-tests) are an important way to ensure that your stakeholders are reviewing high-quality data. You can execute tests during a dbt run. The Discovery API provides complete test results for a given environment or job, which it represents as the `children` of a given node that’s been tested (for example, a `model`).
+[Data tests](/docs/build/data-tests) are an important way to ensure that your stakeholders are reviewing high-quality data. You can execute tests during a dbt run. The Discovery API provides complete test results for a given environment or job, which it represents as the `children` of a given node that’s been tested (for example, a `model`).
 
 <details>
 <summary>Example query</summary>
@@ -903,6 +903,48 @@ Graph example:
 </details>
 
 -->
+
+### What's the full data lineage at a model level?
+
+The Discovery API enables access to comprehensive model-level data lineage by exposing:
+
+- Upstream dependencies of models, including relationships to [sources](/docs/build/sources), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots) 
+- Model execution metadata such as run status, execution time, and freshness
+- Column-level details, including tests and descriptions
+- References between models to reconstruct lineage across your project
+
+<details>
+<summary>Example query</summary>
+
+Here's a GraphQL query example that retrieves full model-level data lineage using the Discovery API:
+
+```graphql
+query ($environmentId: BigInt!, $first: Int!) {
+  environment(id: $environmentId) {
+    applied {
+      models(first: $first) {
+        edges {
+          node {
+            name
+            ancestors(types: [Model, Source, Seed, Snapshot]) {
+              ... on ModelAppliedStateNestedNode {
+                name
+                resourceType
+              }
+              ... on SourceAppliedStateNestedNode {
+                sourceName
+                name
+                resourceType
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+</details>
 
 ### Which metrics are available?
 

@@ -14,9 +14,10 @@ description: "Available regions and ip addresses"
 |--------|----------|------------|--------------|-------| --------- |
 | North America [^1] | AWS us-east-1 (N. Virginia) | **Multi-tenant:**<br />cloud.getdbt.com <br /><br /> **Cell based:** ACCOUNT_PREFIX.us1.dbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) |
 | North America [^1] | Azure <br /> East US 2 (Virginia) | **Cell based:** ACCOUNT_PREFIX.us2.dbt.com | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
-| North America [^1] | GCP (us-central1) <Lifecycle status='beta'/>  | **Cell based:** ACCOUNT_PREFIX.us3.dbt.com   | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
+| North America [^1] | GCP (us-central1) | **Cell based:** ACCOUNT_PREFIX.us3.dbt.com   | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
 | EMEA [^1] | AWS eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
 | EMEA [^1] | Azure <br /> North Europe (Ireland)  |    **Cell based:** ACCOUNT_PREFIX.eu2.dbt.com  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
+| EMEA [^1] | GCP <br /> (London)  |  eu3.dbt.com  |  34.33.2.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
 | APAC  [^1] | 	AWS ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
@@ -29,7 +30,7 @@ To log into <Constant name="cloud" />, use the URL that applies to your environm
 - **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`. You can also use `cloud.getdbt.com`, but this URL will be removed in the future. 
     - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your <Constant name="cloud" /> credentials. If you are a member of a single account, you will be logged in, and your URL will be displayed in the browser. If you are a member of multiple accounts, you will be presented with a list of options, along with the appropriate login URLs for each.
 
-    <Lightbox src="/img/docs/dbt-cloud/find-account.png" title="dbt accounts" />
+    <Lightbox src="/img/docs/dbt-cloud/find-account.png" width="60%" title="dbt accounts" />
 
 - **EMEA multi-tenant:** Use `emea.dbt.com`.
 - **APAC multi-tenant:** Use `au.dbt.com`.

@@ -95,7 +95,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
     - Target Group protocol: **TCP** 
 
-- **Network Load Balancer (NLB)** &mdash; Requires creating a Listener that attaches to the newly created Target Group for port `5439`
+- **Network Load Balancer (NLB)** &mdash; Requires creating a Listener that attaches to the newly created Target Group (port `5439`is the default)
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
@@ -126,7 +126,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
 - VPC Endpoint Service Name:
 - Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
-- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 
 <PrivateLinkSLA />

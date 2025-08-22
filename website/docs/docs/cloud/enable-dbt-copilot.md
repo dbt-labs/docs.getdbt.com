@@ -14,7 +14,7 @@ This page explains how to enable <Constant name="copilot" /> in <Constant name="
 
 ## Prerequisites
 
-- Available in the <Constant name="cloud" /> only.
+- Available in the <Constant name="dbt_platform" /> only.
 - Must have a [<Constant name="cloud" /> Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/pricing).
   - Certain features like [BYOK](#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
@@ -29,12 +29,12 @@ To opt in to <Constant name="copilot" />, a <Constant name="cloud" /> admin can 
 1. Navigate to **Account settings** in the navigation menu.
 2. Under **Settings**, confirm the account you're enabling.
 3. Click **Edit** in the top right corner.
-4. Enable the **Enable account access to Copilot features** option.
+4. Enable the **Enable account access to dbt Copilot features** option.
 5. Click **Save**. You should now have <Constant name="copilot" /> AI enabled for use.
 
 Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4, and repeat step 5.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="90%" title="Example of the 'Enable account access to AI-powered feature' option in Account settings" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="90%" title="Example of the 'Enable account access to dbt Copilot features' option in Account settings" />
 
 ## Bringing your own OpenAI API key (BYOK) <Lifecycle status="managed_plus,managed" /> 
 

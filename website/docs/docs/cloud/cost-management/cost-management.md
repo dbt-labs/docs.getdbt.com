@@ -25,9 +25,10 @@ The cost management dashboard and features are currently only available to custo
 To configure the cost management tools, you must have the following:
 
 - Proper [permission set](/docs/cloud/manage-access/enterprise-permissions) to configure connections in <Constant name="cloud" /> (such as account admin or project creator).
-- Proper [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges) in Snowflake to create a user and assign them database access.
+- Proper [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges) in Snowflake to create a user and assign them database access. 
 - A supported data warehouse. Note: Only Snowflake is supported at this time. More warehouses coming soon!
 - A <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
+
 
 
 ## Set up in Snowflake
@@ -59,6 +60,8 @@ GRANT ROLE dbt_cost_management TO USER dbt_cost_user;
 
 GRANT USAGE ON DATABASE SNOWFLAKE TO ROLE dbt_cost_management;
 GRANT USAGE ON SCHEMA SNOWFLAKE.ACCOUNT_USAGE TO ROLE dbt_cost_management;
+GRANT USAGE ON WAREHOUSE YOUR_WAREHOUSE TO ROLE dbt_cost_management;
+ALTER USER dbt_cost_user SET DEFAULT_WAREHOUSE = 'YOUR_WAREHOUSE';
 
 GRANT SELECT ON VIEW SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY TO ROLE dbt_cost_management;
 GRANT SELECT ON VIEW SNOWFLAKE.ACCOUNT_USAGE.QUERY_ATTRIBUTION_HISTORY TO ROLE dbt_cost_management;

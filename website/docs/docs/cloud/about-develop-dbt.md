@@ -12,23 +12,33 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
 
 <div className="grid--3-col" >
 
-<Card
+  <Card
     title="dbt CLI"
     body="Allows you to develop and run dbt commands from your local command line or code editor against your dbt development environment."
     link="/docs/cloud/cloud-cli-installation"
     icon="dbt-bit"/>
 
   <Card
+    title="dbt VS Code extension"
+    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt Fusion engine while developing locally."
+    link="/docs/about-dbt-extension"
+    icon="vsce"
+    showBorderBeam
+    />
+
+  <Card
     title="dbt Studio IDE"
     body="Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface."
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
-    icon="dbt-bit"/>
+    icon="dashboard"/>
 
    <Card
     title="dbt Canvas"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
     link="/docs/cloud/canvas"
-    icon="dbt-bit"/>
+    icon="canvas"/>
+
+
 
 </div><br />
 

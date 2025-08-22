@@ -13,13 +13,9 @@ If you have not yet configured SSO in <Constant name="cloud" />, refer instead t
 
 ## Start the migration
 
-The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Updates Available** on the right side of the menu bar, near the settings icon. 
+The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Update Required** on the right side of the menu bar, near the settings icon. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-migration-available.png" title="SSO migration available"/>
-
-Alternatively, you can start the process from the **Settings** page in the **Single Sign-on** pane. Click the **Begin Migration** button to start. 
-
-<Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
+Alternatively, you can start the process by clicking your account name at the bottom left-hand menu and going to **Account settings** > **Single sign-on**. Click the **Begin Migration** button to start.
 
 :::warning vanity urls
 

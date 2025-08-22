@@ -121,7 +121,7 @@ The saved location of a table is determined in precedence by the following condi
 
 1. If `external_location` is defined, that value is used.
 2. If `s3_data_dir` is defined, the path is determined by that and `s3_data_naming`.
-3. If `s3_data_dir` is not defined, data is stored under `s3_staging_dir/tables/`.
+3. If `s3_data_dir` is not defined, data is stored under `{s3_staging_dir}/tables/`.
 
 The following options are available for `s3_data_naming`:
 
@@ -129,7 +129,7 @@ The following options are available for `s3_data_naming`:
 - `table`: `{s3_data_dir}/{table}/`
 - `table_unique`: `{s3_data_dir}/{table}/{uuid4()}/`
 - `schema_table`: `{s3_data_dir}/{schema}/{table}/`
-- `s3_data_naming=schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
+- `schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
 
 To set the `s3_data_naming` globally in the target profile, overwrite the value in the table config, or set up the value for groups of the models in dbt_project.yml.
 

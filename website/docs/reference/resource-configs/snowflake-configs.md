@@ -29,9 +29,6 @@ Dynamic tables are supported with the following configuration parameters:
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.9">
 
 <Tabs
   groupId="config-languages"

@@ -1,5 +1,5 @@
 ---
-title: "About dbt Core and installation"
+title: "About dbt Core installation"
 description: "Install dbt Core locally to begin transforming your data."
 pagination_next: "docs/core/pip-install"
 pagination_prev: null

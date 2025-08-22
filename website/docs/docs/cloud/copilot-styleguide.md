@@ -22,7 +22,7 @@ This guide helps ensure consistency and clarity in dbt projects.
 
 Using <Constant name="copilot" /> in the <Constant name="cloud_ide" />, you can automatically generate a style guide template called `dbt-styleguide.md`. If the style guide is manually added or edited, it must also follow this naming convention. Any other file name cannot be used with <Constant name="copilot" />.
 
-Add the `dbt-styleguide.md` file to the root of your project. <Constant name="copilot" /> will use it as context for the large language model (LLM) when generating [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), [semantic models](/docs/build/semantic-models), and [documentation](/docs/build/documentation).
+Add the `dbt-styleguide.md` file to the root of your project. <Constant name="copilot" /> will use it as context for the large language model (LLM) when generating [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), [semantic models](/docs/build/semantic-models), and [documentation](/docs/build/documentation).
 
 Note, by creating a `dbt-styleguide.md` for <Constant name="copilot" />, you are overriding dbt's default style guide.
 

@@ -27,7 +27,7 @@ To view deprecations from your CLI, run:
 dbt parse --no-partial-parse --show-all-deprecations
 ```
 
-The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurence of the deprecations is listed instead  of just the first.
+The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurrence of the deprecations is listed instead  of just the first.
 
 ```bash
 
@@ -190,6 +190,31 @@ DBT_TARGET_PATH env var instead.
 
 Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
 
+### CustomKeyInConfigDeprecation
+
+This warning is raised when you use custom config keys that dbt does not recognize as part of the official config spec. This applies to configuration blocks in both SQL and YAML files.
+
+Example that results in the warning: 
+
+```yaml
+models:
+  - name: my_model
+    config:
+      custom_config_key: value
+```
+
+#### CustomKeyInConfigDeprecation warning resolution
+
+Nest custom keys under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)). For example:
+
+```yaml
+models:
+  - name: my_model
+    config:
+      meta:
+        custom_config_key: value
+```
+
 ### CustomKeyInObjectDeprecation
 
 This warning is displayed when you specify a config that dbt does not recognize as part of the official config spec. This could be custom configs or defining `meta` as top-level keys in the `columns` list.
@@ -311,10 +336,45 @@ config:
 
 </File>
 
+### DuplicateYAMLKeysDeprecation
+
+This warning is raised when two identical keys exist in the `profiles.yml`. 
+
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+
+<File name='profiles.yml'>
+
+```yml
+
+my_profile:
+  target: 
+  outputs:
+...
+
+my_profile: # dbt would use this profile key
+  target: 
+  outputs:
+...
+```
+</File>
+
+Note that in a future version, dbt will stop supporting duplicate keys with silent overwrite. 
+
+#### DuplicateYAMLKeysDeprecation warning resolution
+
+Remove duplicate keys from your `profiles.yml` file. 
+
+### EnvironmentVariableNamespaceDeprecation
+
+This warning is raised when you're using environment variables that conflict with dbt's reserved namespace `DBT_ENGINE`. Previously, both dbt internal variables and custom variables used the `DBT_` prefix⁠. If the environment variable defined in dbt collides with a custom environment variable, the project may break. 
+
+All new dbt environment variables are now prefixed with `DBT_ENGINE` to prevent naming collisions and minimize disruption for users.
+
+#### EnvironmentVariableNamespaceDeprecation
+
+Review your custom environment variables and ensure they don't conflict with dbt's reserved namespace `DBT_ENGINE`.
 
 ### ExposureNameDeprecation
-
-#### Description
 
 In [dbt 1.3](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
 
@@ -514,6 +574,74 @@ The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way bac
 
 Update your job definitions and remove the `--models` / `--model` / `-m` flag and replace it with `--select` / `--s`.
 
+### ModulesItertoolsUsageDeprecation
+
+dbt has deprecated the use of `modules.itertools` in Jinja.
+
+Example:
+
+<File name='CLI'>
+```bash
+15:49:33  [WARNING]: Deprecated functionality
+Usage of itertools modules is deprecated. Please use the built-in functions
+instead.
+```
+</File>
+
+
+#### ModulesItertoolsUsageDeprecation warning resolution
+
+If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions) and [Jinja methods](/docs/build/jinja-macros) instead.
+
+For example, the following SQL file:
+
+<File name='models/itertools_usage.sql'>
+
+```sql
+{%- set A = [1, 2] -%}
+{%- set B = ['x', 'y', 'z'] -%}
+{%- set AB_cartesian = modules.itertools.product(A, B) -%}
+
+{%- for item in AB_cartesian %}
+  {{ item }}
+{%- endfor -%}
+```
+
+</File>
+
+Should be converted to use alternative built-in dbt Jinja methods. For example:
+
+
+<File name='macros/cartesian_product.sql'>
+
+```sql
+{%- macro cartesian_product(list1, list2) -%}
+  {%- set result = [] -%}
+  {%- for item1 in list1 -%}
+    {%- for item2 in list2 -%}
+      {%- set _ = result.append((item1, item2)) -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {{ return(result) }}
+{%- endmacro -%}
+```
+
+</File>
+
+<File name='models/itertools_usage.sql'>
+
+```sql
+{%- set A = [1, 2] -%}
+{%- set B = ['x', 'y', 'z'] -%}
+{%- set AB_cartesian = cartesian_product(A, B) -%}
+
+{%- for item in AB_cartesian %}
+  {{ item }}
+{%- endfor -%}
+```
+
+</File>
+
 ### PackageInstallPathDeprecation
 
 The default location where packages are installed when running `dbt deps` has been updated from `dbt_modules` to `dbt_packages`. During a `dbt clean` dbt detected that `dbt_modules` is defined in the [clean-targets](/reference/project-configs/clean-targets) property in `dbt_project.yml` even though `dbt_modules` is not the [`packages-install-path`](/reference/project-configs/packages-install-path).
@@ -698,7 +826,7 @@ hello!
 
 Delete the unexpected Jinja blocks.
 
-### WEOIncludeExcludeDeprecation
+### WEOIncludeExcludeDeprecation 
 
 The `include` and `exclude` options for `warn_error_options` have been deprecated and replaced with `error` and `warn`, respectively.
 

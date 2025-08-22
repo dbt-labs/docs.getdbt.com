@@ -40,7 +40,7 @@ Some example use cases include:
 - Configured [developer credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide).
 - Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="cloud" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
 - Use a supported data platform: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
-	- Single sign-on (SSO) for development user accounts is supported, however SSO for production credentials is not yet supported.
+	- Single sign-on (SSO) for development user accounts is supported. Deployment environments will be queried leveraging the user's development credentials.
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="query_page" />, you must also:
   - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.
   - Have a successful job run in the environment where you configured the <Constant name="semantic_layer" />. 

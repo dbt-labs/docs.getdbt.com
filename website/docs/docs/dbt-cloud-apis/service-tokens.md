@@ -6,12 +6,6 @@ description: "Service account tokens help you define permissions for securing ac
 
 # Service account tokens <Lifecycle status="self_service,managed,managed_plus" />
 
-:::info Important service account token update
-
-If you have service tokens created on or before July 18, 2023, please read [this important update](/docs/dbt-cloud-apis/service-tokens#service-token-update).
-
-:::
-
 Service account tokens enable you to securely authenticate with the <Constant name="cloud" /> API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
 
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in <Constant name="cloud" /> to your service account token, which can vary slightly depending on your plan:
@@ -69,16 +63,17 @@ Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissio
 - Stakeholder
 - Team Admin
 
-
 ## Service token update
 
-On July 18, 2023, dbt Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 18, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
+On July 18, 2023, dbt Labs changed how tokens are generated and validated to increase performance. These improvements only apply to tokens created after July 18, 2023.
+
+Old tokens remain valid, but if they are used in high-frequency API invocations, we recommend you rotate them for reduced latency.
 
 To rotate your token:
+
 1. Navigate to **Account settings** and click **Service tokens** on the left side pane.
-2. Verify the **Created** date for the token is _on or before_ July 18, 2023. 
-    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/service-token-date.png" title="Service token created date"/>
-3. Click **+ New Token** on the top right side of the screen. Ensure the new token has the same permissions as the old one. 
+2. Verify the **Created** date for the token is _on or before_ July 18, 2023.
+3. Click **+ New Token** on the top right side of the screen. Ensure the new token has the same permissions as the old one.
 4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
 5. Delete the old token in <Constant name="cloud" /> by clicking the **trash can icon**. _Only take this action after the new token is in place to avoid service disruptions_.
 

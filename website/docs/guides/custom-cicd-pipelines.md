@@ -71,20 +71,21 @@ The setup below shows how to call the <Constant name="cloud" /> API to run a job
 
 When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
-- Login to your <Constant name="cloud" /> account
-- In the upper left, click the menu button, then *Account Settings*
-- Click *Service Tokens* on the left
-- Click *New Token* to create a new token specifically for CI/CD API calls
-- Name your token something like “CICD Token”
-- Click the *+Add* button under *Access,* and grant this token the *Job Admin* permission
-- Click *Save* and you’ll see a grey box appear with your token. Copy that and save it somewhere safe (this is a password, and should be treated as such).
+1. Log in to your <Constant name="cloud" /> account.
+2. Click your account name at the bottom left-hand menu and go to **Account settings**.
+3. Click [**Service tokens**](/docs/dbt-cloud-apis/service-tokens) on the left.
+4. Click **+ Create service token** to create a new token specifically for CI/CD API calls.
+5. Name your token something like “CICD Token”.
+6. Click the **+Add permission** button under **Access**, and grant this token the **Job Admin** permission.
+7. Click **Save** and you’ll see a grey box appear with your token. Copy that and save it somewhere safe (this is a password, and should be treated as such).
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png" title="View of the dbt page where service tokens are created" width="85%" />
 
-Here’s a video showing the steps as well:
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-new-service-token-page.png" title="Creating a new service token" width="85%" />
 
-<WistiaVideo id="iub17te9ir" />
-
+</DocCarousel>
 
 ### 2. Put your dbt API key into your repo
 

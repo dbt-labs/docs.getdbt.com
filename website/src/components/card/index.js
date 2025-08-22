@@ -3,9 +3,9 @@ import styles from './styles.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 import getIconType from "../../utils/get-icon-type";
+import BorderBeam from '../borderBeam';
 
-
-function Card({ title, body, link, icon, pills, tag }) {
+function Card({ title, body, link, icon, pills, tag, showBorderBeam = false }) {
 
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
@@ -34,6 +34,7 @@ function Card({ title, body, link, icon, pills, tag }) {
             className={styles.cardBody}
             dangerouslySetInnerHTML={{ __html: body }}
           ></div>
+          {showBorderBeam && <BorderBeam />}
         </article>
       </Link> : <article className={styles.card}>
         {icon && getIconType(icon, styles.icon , imgClass)}
@@ -51,10 +52,10 @@ function Card({ title, body, link, icon, pills, tag }) {
             ))}
           </div>
         )}
+        {showBorderBeam && <BorderBeam />}
       </article>}
     </div>
   );
 }
 
 export default Card;
-

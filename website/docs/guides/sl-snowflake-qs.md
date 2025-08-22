@@ -138,7 +138,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
-    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
+    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" width="60%" title="Snowflake Partner Connect Box" />
 
     If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
@@ -158,8 +158,6 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 4. After the new tab loads, you will see a form. If you already created a <Constant name="cloud" /> account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt - Account Info" />
-
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into <Constant name="cloud" /> automatically.
 
 6. Click your account name in the left side menu and select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select **Edit** and update the **Database** field to `analytics` and the **Warehouse** field to `transforming`.
@@ -174,11 +172,12 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 1. Create a new project in <Constant name="cloud" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
-3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
+3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**. This directs you to the connection configuration settings. 
+4. In the **Type** section, select **Snowflake**.
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt - Choose Snowflake Connection" />
 
-4. Enter your **Settings** for Snowflake with: 
+5. Enter your **Settings** for Snowflake with: 
     * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
 
         <Snippet path="snowflake-acct-name" />
@@ -189,7 +188,11 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt - Snowflake Account Settings" />
 
-5. Enter your **Development Credentials** for Snowflake with: 
+6. Click **Save**.
+7. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+8. Select your project that uses the Snowflake connection. 
+9. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal development credentials.
+10. Enter your **Development credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
     * **Password** &mdash; The password you set when creating your Snowflake account.
     * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="cloud_ide" />.
@@ -198,8 +201,8 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake Development Credentials" />
 
-6. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your Snowflake account.
-7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
+11. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Snowflake account.
+12. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Snowflake settings and credentials.
 
 </TabItem>
 </Tabs>
@@ -852,12 +855,12 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 <RunProdJob/>
 
 
-## Set up dbt Semantic Layer
+## Administer the Semantic Layer
 
-In this section, you will learn how to set up the <Constant name="semantic_layer" />, add credentials, and create service tokens. This section goes over the following topics:
+In this section, you will learn how to add credentials and create service tokens to start querying the dbt <Constant name="semantic_layer" />. This section goes over the following topics:
 
 - [Select environment](#1-select-environment)
-- [Add a credential and create service tokens](#2-add-a-credential-and-create-service-tokens)
+- [Configure credentials and create tokens](#2-configure-credentials-and-create-tokens)
 - [View connection detail](#3-view-connection-detail)
 - [Add more credentials](#4-add-more-credentials)
 - [Delete configuration](#delete-configuration)
@@ -910,8 +913,8 @@ This section will guide you on how to use the Hex integration to query your metr
 
 8. Enter the following information:
    * Select your version of dbt as 1.6 or higher
-   * Enter your environment id 
-   * Enter your service token 
+   * Enter your Environment ID 
+   * Enter your service or personal token 
    * Make sure to click on the **Use <Constant name="semantic_layer" />** toggle. This way, all queries are routed through dbt.
    * Click **Create connection** in the bottom right corner.
 9. Hover over **More** on the menu shown in the following image and select **<Constant name="semantic_layer" />**.
@@ -982,9 +985,9 @@ This section will guide you on how to use the Sigma integration to query your me
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-add-integration.png" width="70%" title="Click the '+ New project' button on the top right"/>
 
 8. In the **dbt Integration** section, fill out the required fields, and then hit save:
-- Your dbt [service account token](/docs/dbt-cloud-apis/service-tokens).
+- Your dbt [service account token](/docs/dbt-cloud-apis/service-tokens) or [personal access tokens](/docs/dbt-cloud-apis/user-tokens).
 - Your access URL of your existing Sigma dbt integration. Use `cloud.getdbt.com` as your access URL.
-- Your dbt environment ID.
+- Your dbt Environment ID.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-sigma-add-info.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
 9. Return to the Sigma home page. Create a new workbook.

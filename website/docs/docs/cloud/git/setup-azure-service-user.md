@@ -43,7 +43,9 @@ A Microsoft Entra ID admin needs to perform the following steps:
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps app".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Entra ID application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+6. Add a redirect URI.
+    1. Select **Web** as the platform.
+    2. In the field, enter `https://YOUR_ACCESS_URL/complete/azure_active_directory`. Make sure to replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Entra ID app registrations"/>
@@ -69,9 +71,11 @@ An Entra ID admin needs to provide your new app access to Azure DevOps:
 
 A Microsoft Entra ID admin needs to add another redirect URI to your Entra ID application. This redirect URI will be used to authenticate the service user for headless actions in deployment environments.
 
+Before adding another redirect URI, make sure you selected **Web** as the platform when you [registered the Microsoft Entra ID app](#register-a-microsoft-entra-id-app).
+
 1. Navigate to your Microsoft Entra ID application.
 
-2. Select the link next to **Redirect URIs**
+2. Select the link next to **Redirect URIs**.
 3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
 `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.

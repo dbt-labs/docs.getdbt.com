@@ -39,7 +39,7 @@ There are three primary ways to contribute to the dbt projects. We’ll use the 
 
 - [Open an issue](https://github.com/dbt-labs/dbt-fusion/issues/new/choose) to suggest an improvement or give feedback.
 - Comment / engage on existing [issues](https://github.com/dbt-labs/dbt-fusion/issues) or [discussions](https://github.com/dbt-labs/dbt-fuson/discussions). This could be upvoting issues that would be helpful for your organization, commenting to add nuance to a feature request or sharing how a feature would impact your dbt usage.
-- Create a pull request that resolves an open Issue. This involves writing the code and tests that add the feature/resolve the bug described in an Issue, and then going through the code review process asynchronously with a dbt Labs engineer.
+- Create a pull request that resolves an open Issue. This involves writing the code and tests that add the feature/resolve the bug described in an Issue, and then going through the code review process asynchronously with a dbt Labs engineer. Note that signed commits are required when contributing to <Constant name="core" />. For steps on how to sign commits, see [Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 
 #### Sample contributions
 

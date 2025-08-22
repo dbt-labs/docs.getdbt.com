@@ -157,7 +157,7 @@ In the `dbt_project.yml` file at the project level:
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   your_project:
     +alias: unique_order_id_test
 ```
@@ -172,9 +172,10 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique:
-              alias: unique_order_id_test
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                alias: unique_order_id_test
 ```
 </File>
 

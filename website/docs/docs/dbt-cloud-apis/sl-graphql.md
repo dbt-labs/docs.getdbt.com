@@ -38,22 +38,22 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 - A <Constant name="cloud" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions
+- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-cloud-apis/user-tokens)
 
 ## Using the GraphQL API
 
-If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
 Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 
-Authentication uses a <Constant name="cloud" /> [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses either a <Constant name="cloud" /> [service account token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```shell
-{"Authorization": "Bearer <SERVICE TOKEN>"}
+{"Authorization": "Bearer <AUTHENTICATION TOKEN>"}
 ```
 
-Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service or personal token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
@@ -530,6 +530,7 @@ The following section provides query examples for the GraphQL API, such as how t
 - [Query with limit](#query-with-limit) &mdash; Query using a `limit` clause.
 - [Query saved queries](#query-saved-queries) &mdash; Query using a saved query using the `savedQuery` parameter for frequently used queries.
 - [Query with just compiling SQL](#query-with-just-compiling-sql) &mdash; Query using a compile keyword using the `compileSql` mutation.
+- [Query records](#query-records) &mdash; View all the queries made in your project.
 
 
 #### Query metric alias
@@ -737,6 +738,68 @@ mutation {
     groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
+  }
+}
+```
+
+#### Query records
+
+Use this endpoint to view all the queries made in your project. This covers both Insights and <Constant name="semantic_layer" /> queries.
+
+```graphql
+{
+  queryRecords(
+    environmentId:123
+  ) {
+    items {
+      queryId
+      status
+      startTime
+      endTime
+      connectionDetails
+      sqlDialect
+      connectionSchema
+      error
+      queryDetails {
+        ... on SemanticLayerQueryDetails {
+          params {
+            type
+            metrics {
+              name
+            }
+            groupBy {
+              name
+              grain
+            }
+            limit
+            where {
+              sql
+            }
+            orderBy {
+              groupBy {
+                name
+                grain
+              }
+              metric {
+                name
+              }
+              descending
+            }
+            savedQuery
+          }
+        }
+        ... on RawSqlQueryDetails {
+          queryStr
+          compiledSql
+          numCols
+          queryDescription
+          queryTitle
+        }
+      }
+    }
+    totalItems
+    pageNum
+    pageSize
   }
 }
 ```

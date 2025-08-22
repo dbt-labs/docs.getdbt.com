@@ -57,7 +57,7 @@ models:
   - name: my_model
     columns:
       - name: my_columns
-        tests:
+        data_tests:
           - unique:
               config:
                 fail_calc: "case when count(*) > 0 then sum(n_records) else 0 end"
@@ -110,7 +110,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +fail_calc: count(*)  # all tests
   
   <package_name>:

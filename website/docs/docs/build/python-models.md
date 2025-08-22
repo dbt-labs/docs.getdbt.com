@@ -54,10 +54,10 @@ models:
     columns:
       - name: id
         # Standard validation for 'grain' of Python results
-        tests:
+        data_tests:
           - unique
           - not_null
-    tests:
+    data_tests:
       # Write your own validation logic (in SQL) for Python results
       - [custom_generic_test](/best-practices/writing-custom-generic-tests)
 ```

@@ -82,14 +82,14 @@ The following profile fields are required to configure IBM Netezza connections.
 | --------- | ------- | ------- | ----------- |
 |   `user`  | Required | Username or email address for authentication. | `user` |
 | `password`| Required | Password or API key for authentication | `password` |
-|   `host`  | Required | Hostname for connecting to Presto. | `127.0.0.1` |
-| `database`| Required | The catalog name in your Presto instance. | `Analytics` |
-|  `schema` | Required | The schema name within your Presto instance catalog. | `my_schema`  |
-|   `port`  | Required | The port for connecting to Presto.  | `443`  |
+|   `host`  | Required | Hostname for connecting to Netezza. | `127.0.0.1` |
+| `database`| Required | The catalog name in your Netezza instance. | `SYSTEM` |
+|  `schema` | Required | The schema name within your Netezza instance catalog. | `my_schema`  |
+|   `port`  | Required | The port for connecting to Netezza.  | `5480`  |
 
 
 ### Schemas and databases
-When selecting the catalog and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized.
+When selecting the database and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the database. Instead, they serve as the default location for where tables and views are materialized.
 
 ## Notes:
 

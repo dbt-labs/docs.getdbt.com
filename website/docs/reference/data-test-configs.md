@@ -41,7 +41,7 @@ Click the link on each configuration option to read more about what it can do.
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[fail_calc](/reference/resource-configs/fail_calc): <string>
     [+](/reference/resource-configs/plus-prefix)[limit](/reference/resource-configs/limit): <integer>
@@ -84,11 +84,12 @@ version: 2
 
 <resource_type>:
   - name: <resource_name>
-    tests:
+    data_tests:
       - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [fail_calc](/reference/resource-configs/fail_calc): <string>
             [limit](/reference/resource-configs/limit): <integer>
@@ -100,11 +101,12 @@ version: 2
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
-        tests:
+        data_tests:
           - <test_name>:
               name: 
               [description](/reference/resource-properties/description): "markdown formatting"
-              <argument_name>: <argument_value>
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
                 [limit](/reference/resource-configs/limit): <integer>
@@ -142,7 +144,7 @@ This configuration mechanism is supported for specific instances of generic test
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
     [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -181,11 +183,12 @@ version: 2
 
 <resource_type>:
   - name: <resource_name>
-    tests:
+    data_tests:
       - <test_name>: # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          <argument_name>: <argument_value>
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [enabled](/reference/resource-configs/enabled): true | false
             [tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -197,11 +200,12 @@ version: 2
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
-        tests:
+        data_tests:
           - <test_name>:
               name: 
               [description](/reference/resource-properties/description): "markdown formatting"
-              <argument_name>: <argument_value>
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [enabled](/reference/resource-configs/enabled): true | false
                 [tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -233,7 +237,7 @@ models:
   - name: my_model
     columns:
       - name: id
-        tests:
+        data_tests:
           - unique:
             config:
               tags: ['my_tag'] # changed to config in v1.10
@@ -274,7 +278,7 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   package_name:
     +enabled: false
 ```
@@ -291,9 +295,10 @@ models:
   - name: my_model
     columns:
       - name: color
-        tests:
+        data_tests:
           - accepted_values:
-              values: ['blue', 'red']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['blue', 'red']
               config:
                 severity: warn
                 snowflake_warehouse: my_warehouse
@@ -316,9 +321,10 @@ models:
   - name: my_model
     columns:
       - name: delivery_status
-        tests:
+        data_tests:
           - accepted_values:
-              values: ['delivered', 'pending', 'failed']
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ['delivered', 'pending', 'failed']
               description: "This test checks whether there are unexpected delivery statuses. If it fails, check with logistics team"
 
 ```

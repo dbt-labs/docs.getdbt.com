@@ -31,6 +31,12 @@
     icon="bigquery"/>
 
 <Card
+    title="ClickHouse"
+    body="<ul><li><a href='/docs/core/connect-data-platform/clickhouse-setup'>Install with dbt Core </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-clickhouse><img src=https://badge.fury.io/py/dbt-clickhouse.svg/></a>"
+    pills='["dbt Core"]'
+    icon="clickhouse"/>
+    
+<Card
     title="Databricks"
     body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-databricks'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/core/connect-data-platform/databricks-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
@@ -53,6 +59,12 @@
     body="<ul><li><a href='/docs/core/connect-data-platform/ibmnetezza-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-ibm-netezza><img src=https://badge.fury.io/py/dbt-ibm-netezza.svg/></a>"
     pills='["dbt Core"]'
     icon="dbt-ibm-netezza"/>
+
+<Card
+    title="Databricks Lakebase"
+    body="<ul><li><a href='/docs/core/connect-data-platform/lakebase-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    pills='["dbt platform", "dbt Core"]'
+    icon="lakebase"/>
 
 <Card
     title="Materialize"

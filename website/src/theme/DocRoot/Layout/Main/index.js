@@ -72,7 +72,10 @@ export default function DocRootLayoutMain({
     } else {
       setPreData({
         showisPrereleaseBanner: true,
-        isPrereleaseBannerText: `You’re viewing docs for the dbt Fusion engine, currently in beta. Some content may reflect earlier dbt Core behavior and is still being updated. Features described may be incomplete or unstable. Refer to the <a href="https://docs.getdbt.com/docs/fusion/supported-features"> supported Fusion features</a> and the <a href="https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-fusion"> Fusion upgrade guide </a> for the most accurate information.`,
+        isPrereleaseBannerText: `You’re viewing the docs version for the <a href="https://docs.getdbt.com/docs/fusion/about-fusion">dbt Fusion engine</a>, currently available for installation in: 
+<li><a href="https://docs.getdbt.com/docs/fusion/install-fusion-cli">Local command line interface (CLI) tools</a> <code> Preview </code></li>
+<li><a href="https://docs.getdbt.com/docs/install-dbt-extension">VS Code and Cursor with the dbt extension</a> <code> Preview </code></li>
+<li><a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine">dbt platform environments <code> Beta</a> </code></li>`,
       });
     }
     // If EOLDate not set for version, do not show banner
@@ -119,7 +122,7 @@ export default function DocRootLayoutMain({
       >
         {PreData.showisPrereleaseBanner && (
           <div className={styles.versionBanner}>
-            <Admonition type="caution" title="Warning">
+            <Admonition type="info" title="Important">
               <div
                 dangerouslySetInnerHTML={{
                   __html: sanitizeHtml(PreData.isPrereleaseBannerText),

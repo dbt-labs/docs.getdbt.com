@@ -73,8 +73,7 @@ It is possible to put an IP range on one list and then a sub-range or IP address
 
 Once you are done adding all your ranges, IP restrictions can be enabled by selecting the **Enable IP restrictions** button and clicking **Save**. If your IP address is in any of the denylist ranges, you won’t be able to save or enable IP restrictions - this is done to prevent accidental account lockouts. If you do get locked out due to IP changes on your end, please reach out to support@getdbt.com
 
-Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login. 
+Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login.
 
-<Lightbox src="/img/docs/dbt-cloud/ip-restricted-email.png" title="IP restricted access denied message for email logins"/>
-
-<Lightbox src="/img/docs/dbt-cloud/ip-restricted-sso.png" title="IP restricted access denied message for SSO logins"/>
+- For email logins: "Access denied! Please contact your admin for more details."
+- For SSO logins: "Access denied! Please contact your admin for more details." in a dbt login page

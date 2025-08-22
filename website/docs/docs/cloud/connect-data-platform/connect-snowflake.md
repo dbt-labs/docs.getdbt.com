@@ -26,19 +26,19 @@ The following fields are required when creating a Snowflake connection
 
 This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
 
-### Username / Password
+### Username and password with MFA
 
-**Available in:** Development environments, Deployment environments
+:::info Snowflake authentication
 
-The `Username / Password` auth method is the simplest way to authenticate
-Development or Deployment credentials in a dbt project. Simply enter your Snowflake
-username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
-to authenticate <Constant name="cloud" /> to run queries against Snowflake on behalf of a Snowflake user.
+Starting November 2025, Snowflake will phase out single-factor password authentication, and multi-factor authentication (MFA) will be enforced.
 
-**Note**: The schema field in the **Developer Credentials** section is a required field.
-<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
+MFA will be required for all `Username / Password` authentication.
 
-### Snowflake MFA
+To continue using key pair authentication, users should update any deployment environments currently using `Username / Password` by November 2025.
+
+Refer to [Snowflake's blog post](https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/) for more information.
+
+:::
 
 :::info Snowflake MFA plan availability
 
@@ -46,13 +46,25 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
 
 :::
 
+**Available in:** Development environments
+
+The `Username / Password` auth method is the simplest way to authenticate
+Development credentials in a dbt project. Simply enter your Snowflake
+username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
+to authenticate <Constant name="cloud" /> to run queries against Snowflake on behalf of a Snowflake user.
+
+`Username / Password` authentication is not supported for deployment credentials because MFA is required. In deployment environments, use [keypair](/docs/cloud/connect-data-platform/connect-snowflake#key-pair) authentication instead.
+
+**Note**: The *Schema** field in the **Developer Credentials** section is required.
+<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
+
 **Prerequisites:**
 - A development environment in a <Constant name="cloud" /> project
 - The Duo authentication app
 - Admin access to Snowflake (if MFA settings haven't already been applied to the account)
 - [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to <Constant name="cloud" /> environments
 
-<Constant name="cloud" /> supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) as another username and password option for increased login security. Snowflake's MFA support is powered by the Duo Security service.
+[MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all `Username / Password` logins. Snowflake's MFA support is powered by the Duo Security service.
 
 - In <Constant name="cloud" />, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
 
@@ -70,6 +82,10 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Key pair
+
+
+
+
 
 **Available in:** Development environments,  Deployment environments
 

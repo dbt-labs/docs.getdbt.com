@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Supported features <Lifecycle status="beta" />
+# Supported features
 
 <IntroText>
 
@@ -17,11 +17,15 @@ Learn about the features supported by the dbt Fusion engine, including requireme
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 import FusionDWH from '/snippets/_fusion-dwh.md';
 
+<VersionBlock lastVersion="1.99">
+
 <FusionBeta />
+
+</VersionBlock>
 
 ### Parity with dbt Core
 
-Our goal is for the dbt Fusion engine to support all capabilities of the dbt Core framework, and then some. Fusion already supports many of the capabilities in <Constant name="core" /> v1.9, and we're working fast to add more.
+Our goal is for the <Constant name="fusion_engine" /> to support all capabilities of the <Constant name="core" /> framework, and then some. Fusion already supports many of the capabilities in <Constant name="core" /> v1.9, and we're working fast to add more.
 
 Note that we have removed some deprecated features, and introduced more-rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) for details.
 
@@ -51,4 +55,8 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+### Package support
 
+import FusionPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionPackages />

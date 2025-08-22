@@ -177,7 +177,7 @@ models:
   - name: model_name
     columns:
       - name: column_name
-        tests:
+        data_tests:
           - unique:
               description: markdown_string
 ```
@@ -475,7 +475,7 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique:
               description: "The order_id is unique for every row in the orders model"
 ```

@@ -83,11 +83,11 @@ If the connection to the VCS service requires a custom domain and/or URL for TLS
 Subject: New Multi-Tenant PrivateLink Request
 - Type: VCS Interface-type
 - VPC Endpoint Service Name:
-- Custom DNS (optional)
+- Custom DNS (if HTTPS)
     - Private hosted zone:
     - DNS record:
 - VCS install AWS Region (e.g., us-east-1, eu-west-2):
-- <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
@@ -106,12 +106,24 @@ Once you accept the endpoint connection request, you can use the PrivateLink end
 
 Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
 
-1. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. 
-2. Select the configured endpoint from the drop down list.
-3. Click **Save**.
+**To configure a new git integration with PrivateLink:**
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration with PrivateLink" />
+1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Projects**.
+2. Click **New project**.
+3. Name your project and configure your development environment.
+4. Under **Set up repository**, click **Git clone**.
+5. Select **PrivateLink Endpoint** as the connection type.
+    Your configured integrations will appear in the dropdown menu. 
+6. Select the configured endpoint from the dropdown list.
+7. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="80%" title="Editing an existing git integration with PrivateLink" />
+**To configure an existing git integration with PrivateLink:** 
+
+1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Integrations**.
+2. Under **Gitlab**, select **PrivateLink Endpoint** as the connection type.
+    Your configured integrations will appear in the dropdown menu. 
+3. Select the configured endpoint from the dropdown list.
+4. Click **Save**.
+
 
 <PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>

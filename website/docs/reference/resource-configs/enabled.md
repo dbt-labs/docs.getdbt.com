@@ -121,7 +121,7 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 

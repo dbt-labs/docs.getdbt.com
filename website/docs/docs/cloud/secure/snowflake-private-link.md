@@ -44,7 +44,7 @@ Subject: New Multi-Tenant Azure PrivateLink Request
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
   - Enable Internal Stage Private Link? Y/N (If Y, output must include `privatelink-internal-stage`)
-- dbt Azure multi-tenant environment: 
+- dbt Azure multi-tenant environment (EMEA):
 ```
 
 3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 

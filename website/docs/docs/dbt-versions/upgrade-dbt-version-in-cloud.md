@@ -74,9 +74,9 @@ Starting with v1.0, <Constant name="cloud" /> will ensure that you're always usi
 
 For more on version support and future releases, see [Understanding <Constant name="core" /> versions](/docs/dbt-versions/core).
 
-### dbt Fusion engine
+### dbt Fusion engine <Lifecycle status="beta" />
 
-dbt Labs has introduced the new [dbt Fusion engine](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently in beta on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but there are a few things to keep in mind:
+dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently in beta on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but there are a few things to keep in mind:
 - **To gain access to the Fusion Latest release track, you must reach out to your dbt Labs account team to request it. Week by week we'll expand the beta cohort based on project eligibility, including Starter plans**. Once we transition from Beta to Preview, all users will see it as an option for their environments, projects, jobs, etc.
 
 

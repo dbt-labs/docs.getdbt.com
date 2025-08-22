@@ -166,8 +166,38 @@ The following table outlines the configuration fields required to set up a catal
 | `external_volume`| yes      | `<external_volume_name>`                                                                |
 | `table_format`   | yes      | `iceberg`                                                                               |
 | `catalog_type`   | yes      | `built_in`, `iceberg_rest`*                                                             |
+| `adapter_properties`| optional| See below                                                                    |
 
 *Coming soon! Stay tuned for updates.
+
+### Adapter Properties
+
+These are the additional optional configurations, unique to Snowflake, that can be supplied and nested under `adapter_properties` to add in more configurability. 
+
+| Field                         | Accepted values                                                            |
+|------------------|-----------------------------------------------------------------------------------------|
+| `storage_serialization_policy`|  `COMPATIBLE` or `OPTIMIZED`                                               |
+| `max_data_extension_time_in_days`|  `0` to `90` with a default of `14`                                     |
+| `data_retention_time_in_days`|  Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`      |
+| `change_tracking`|  `True` or `False`                                                                      |
+
+-  **storage_serialization_policy** 
+
+The serialization policy tells Snowflake what kind of encoding and compression to perform on the table data files. If not specified at table creation, the table inherits the value set at the schema, database, or account level. If the value isn’t specified at any level, the table uses the default value. You can’t change the value of this parameter after table creation. Accepted values: . 
+
+- **max_data_extension_time_in_days** 
+
+The maximum number of days Snowflake can extend the data retention period for tables to prevent streams on the tables from becoming stale. The `MAX_DATA_EXTENSION_TIME_IN_DAYS` parameter enables you to limit this automatic extension period to control storage costs for data retention, or for compliance reasons. 
+
+- **data_retention_time_in_days** 
+
+For managed Iceberg tables, you can set a retention period for Snowflake Time Travel and undropping the table over the default account values. For tables that use an external catalog, Snowflake uses the value of the DATA_RETENTION_TIME_IN_DAYS parameter to set a retention period for Snowflake Time Travel and undropping the table. When the retention period expires, Snowflake does not delete the Iceberg metadata or snapshots from your external cloud storage.
+
+- **change_tracking** 
+
+Specifies whether to enable change tracking on the table.
+
+
 
 ### Configure catalog integration for managed Iceberg tables
 
@@ -187,7 +217,7 @@ catalogs:
 
 ```
 
-2. Apply the catalog configuration in either the SQL config (inside the .sql model file), property file (model folder), or your `dbt_project.yml`. <br />
+2. Add the `catalog_name` config parameter in either the SQL config (inside the .sql model file), property file (model folder), or your `dbt_project.yml`. <br />
 <br />An example of `iceberg_model.sql`:
 
 ```yaml
@@ -195,7 +225,7 @@ catalogs:
 {{
     config(
         materialized='table',
-        catalog = catalog_horizon
+        catalog_name = catalog_horizon
 
     )
 }}

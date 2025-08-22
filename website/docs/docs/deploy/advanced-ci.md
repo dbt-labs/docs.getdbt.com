@@ -19,7 +19,7 @@ You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Acco
 ## Prerequisites
 - You have a <Constant name="cloud" /> Enterprise or Enterprise+ account.
 - You have [Advanced CI features](/docs/cloud/account-settings#account-access-to-advanced-features) enabled.
-- You use a supported data platform: BigQuery, Databricks, Postgres, or Snowflake. Support for additional data platforms coming soon.
+- You use a supported data platform: BigQuery, Databricks, Postgres, Redshift, or Snowflake. Support for additional data platforms coming soon.
 
 ## Compare changes feature {#compare-changes}
 

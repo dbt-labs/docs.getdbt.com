@@ -97,12 +97,9 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | API Name | Type | Permission |
 | -------- | ---- | ---------- |
 | Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
-| Microsoft Graph | Delegated | `Directory.Read.All` |
 | Microsoft Graph | Delegated | `User.Read` |
 
-:::info Why is `Directory.AccessAsUser.All` permission required?
-`Directory.Accessasuser.all` is required is because it lets <Constant name="cloud" /> see what groups the user belongs to. <Constant name="cloud" /> doesn't use the permission for anything else. This setup avoids asking users for extra consent when they log in.
-:::
+`User.Read` is the only strictly required permission, but configuring `Directory.Accessasuser.all` prevents users from receiving extra prompts for consent when they log in. It lets <Constant name="cloud" /> see what groups the user belongs to and isn't used for anything else.
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 

@@ -134,11 +134,11 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 9. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments`. 
 
-    <div style={{maxWidth: '400px'}}>
+    <div style={{maxWidth: '600px'}}>
     <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_orders_upload.png" title="Load jaffle shop orders" />
     </div>
 
-    <div style={{maxWidth: '400px'}}>
+    <div style={{maxWidth: '600px'}}>
     <Lightbox src="/img/databricks_tutorial/images/stripe_payments_upload.png" title="Load stripe payments" />
     </div>
     

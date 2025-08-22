@@ -6,7 +6,7 @@ image: /img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png
 pagination_next: "docs/explore/data-health-signals"
 pagination_prev: null
 ---
-
+ 
 <IntroText>
 
 With <Constant name="explorer" />, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/explore/view-downstream-exposures) to gain a better understanding of its latest production state.
@@ -38,14 +38,9 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/explore-projects#search-resources) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
+:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
-<Constant name="explorer" /> introduces the ability to widen your search by searching your dbt resources (models, seeds, snapshots, sources, exposures and more so) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects.
-
-To enable global navigation:
-
-- Have a [developer license with Owner](/docs/cloud/manage-access/about-user-access#role-based-access-control) permissions.
-- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable dbt Catalog's Global Navigation**.
+<Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 
 :::
 
@@ -185,26 +180,12 @@ Under the **Models** option, you can filter on model properties (access or mater
 
 <Expandable alt_header="Global navigation">
 
-<Constant name="explorer" /> builds on the functionality of the old navigation and introduces exciting new capabilities to enhance your experience.
-
-- Search data assets &mdash; widen your search by searching your dbt resources (models, seeds, snapshots, sources, exposures and more so) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects.
-    - External metadata ingestion &mdash; connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="explorer" />.
-- Explore lineage &mdash; provides an interactive map of data relationships across all your dbt projects. It lets you:
-    - View upstream/downstream dependencies for models, sources, and more.
-    - Drill into project and column-level lineage, including multi-project (Mesh) links.
-    - Filter with "lineage lenses" by resource type, materialization, layer, or run status.
-    - Troubleshoot data issues by tracing root causes and downstream impacts.
-    - Optimize pipelines by spotting slow, failing, or unused parts of your DAG.
-- See recommendations &mdash; offer a project-wide snapshot of dbt health, highlighting actionable tips to enhance your analytics engineering. These insights are automatically generated using <Constant name="cloud" /> metadata and best practices from the project evaluator ruleset.
-- Model query history &mdash; shows how often each dbt model is queried in your warehouse, helping you:
-    - Track real usage via successful `SELECT`s (excluding builds/tests)
-    - Identify most/least used models for optimization or deprecation
-    - Guide investment and maintenance with data-driven insights
-- Downstream exposures &mdash; shows how your dbt models and sources are used by BI tools, apps, ML models, and reports across all connected projects
+<Constant name="explorer" /> builds on the functionality of the old navigation and introduces exciting new capabilities to enhance your experience. For more information, refer to [Global navigation](/docs/explore/global-navigation).
 
 </Expandable>
 
 ### Example of keyword search
+
 Example of results from searching on the keyword `customers` and applying the filters models, description, and code. [Data health signals](/docs/explore/data-health-signals) are visible to the right of the model name in the search results.
 
 ## Browse with the sidebar
@@ -241,7 +222,7 @@ In the upper right corner of the resource details page, you can:
     - **Lineage** graph &mdash; The model's lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/build/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-    - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test.
+    - **Tests** section &mdash; [Data tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test.
     - **Details** section &mdash; Key properties like the model's relation name (for example, how it's represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.

@@ -161,7 +161,7 @@ When you have an undefined generic test in your project:
 
 models:
   - name: dim_wizards
-    tests:
+    data_tests:
       - does_not_exist
 
 ```
@@ -247,3 +247,91 @@ Fusion will not produce this extra column in the table resulting from `dbt seed`
 | dog    |  
 | cat    |  
 | bear   |  
+
+#### Move standalone anchors under `anchors:` key
+
+As part of the ongoing process of making the dbt authoring language more precise, unexpected top-level keys in a YAML file will result in errors. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+
+For example, rather than using this configuration:
+
+<File name='models/_models.yml'>
+
+```yml
+# id_column is not a valid name for a top-level key in the dbt authoring spec, and will raise an error
+id_column: &id_column_alias
+  name: id
+  description: This is a unique identifier.
+  data_type: int
+  data_tests:
+    - not_null
+    - unique
+
+models:
+  - name: my_first_model
+    columns: 
+      - *id_column_alias
+      - name: unrelated_column_a
+        description: This column is not repeated in other models.
+  - name: my_second_model
+    columns: 
+      - *id_column_alias
+```
+
+</File>
+
+Move the anchor under the `anchors:` key instead:
+
+<File name='models/_models.yml'>
+
+```yml
+anchors: 
+  - &id_column_alias
+      name: id
+      description: This is a unique identifier.
+      data_type: int
+      data_tests:
+        - not_null
+        - unique
+
+models:
+  - name: my_first_model
+    columns: 
+      - *id_column_alias
+      - name: unrelated_column_a
+        description: This column is not repeated in other models
+  - name: my_second_model
+    columns: 
+      - *id_column_alias
+```
+
+</File>
+
+This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
+#### Algebraic operations in Jinja macros
+
+In <Constant name="core" />, you can set algebraic functions in the return function of a Jinja macro:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyz') + 'abc'
+
+{% endmacro %}
+```
+
+This is no longer supported in <Constant name="fusion" /> and will return an error. This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyzabc')
+
+{% endmacro %}
+```
+
+### Package support
+
+import FusionPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionPackages />

@@ -89,13 +89,13 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Database admin">
 
-Database admins manage the connections and configurations between <Constant name="cloud" /> and the underlying databases. 
+Database admins manage configurations between <Constant name="cloud" /> and the underlying databases. 
 
 Notable features: 
 - Database admin is a project-level set. 
-- Can set up and maintain database connections, environment variables, and <Constant name="semantic_layer" /> configs.
+- Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="cloud" /> to configure connections. 
-- Read-only access to Git repo, job, and run settings. 
+- Read-only access to connections, Git repo, job, and run settings. 
 - Can access <Constant name="explorer" />.
 
 </Expandable>
@@ -213,9 +213,9 @@ Notable features:
 - No other access to <Constant name="cloud" /> features. 
 
 </Expandable>
-<Expandable alt_header="Stakeholder">
+<Expandable alt_header="Stakeholder and Read-Only">
 
-Stakeholder is a read-only permission set, similar to viewer, but without access to sensitive content such as account settings or billing information. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings or billing information. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
@@ -248,10 +248,9 @@ Notable features:
 
 </Expandable>
 
-:::tip Licenses or Permission sets
+import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
-The user's [license](/docs/cloud/manage-access/about-user-access) type always overrides their assigned permission set. This means that even if a user belongs to a <Constant name="cloud" /> group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
-:::
+<LicenseOverrideNote />
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 

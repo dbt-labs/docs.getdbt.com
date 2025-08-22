@@ -73,14 +73,26 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="clou
 6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
    - For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
      - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
-     - For "Jaffle | Finance", set the default database to `jaffle_finance`
-
-<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt" /> 
-
+     - For "Jaffle | Finance", set the default database to `jaffle_finance`.
 7. Continue the prompts to complete the project setup. Once configured, each project should have:
     - A data platform connection
     - New git repo
     - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/1-settings-gear-icon.png" width="90%" title="Navigate to Account settings." />
+
+<Lightbox src="/img/guides/dbt-mesh/select_projects.png" width="30%" title="Select projects from the menu." />
+
+<Lightbox src="/img/guides/dbt-mesh/create_a_new_project.png" width="95%" title="Create a new project in the Studio IDE." />
+
+<Lightbox src="/img/guides/dbt-mesh/enter_project_name.png" width="95%" title="Name your project." />
+
+<Lightbox src="/img/guides/dbt-mesh/select_a_connection.png" width="95%" title="Select the relevant connection for your projects." />
+
+</DocCarousel>
+
 
 ### Create a production environment
 In <Constant name="cloud" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="explorer" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.

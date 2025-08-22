@@ -12,21 +12,20 @@ The Tableau integration allows you to use worksheets to query the <Constant name
 ## Prerequisites
 
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
-- You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater or Tableau Server.
-  - Note that Tableau Online does not currently support custom connectors natively. If you use Tableau Online, you will only be able to access the connector in Tableau Desktop.
-- Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
-- You need your <Constant name="cloud" /> host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
-- You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
+- You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater, Tableau Server, or [Tableau Cloud](https://www.tableau.com/products/cloud-bi).
+- Log in to Tableau Desktop (with Cloud or Server credentials) or Tableau Cloud. You can also use a licensed Tableau Server deployment.
+- You need your [<Constant name="cloud" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
+- You must have a <Constant name="cloud" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-## Installing the Connector
+## Installing the connector
 
-The <Constant name="semantic_layer" /> Tableau connector is available to download directly on [Tableau Exchange](https://exchange.tableau.com/products/1020).
+The <Constant name="semantic_layer" /> Tableau connector is available to download directly on [Tableau Exchange](https://exchange.tableau.com/products/1020). The connector is supported in Tableau Desktop, Tableau Server, and Tableau Cloud.
 
-Alternatively, you can follow these steps to install the Connector:
+Alternatively, you can follow these steps to install the connector. Note that these steps only apply to Tableau Desktop and Tableau Server. The connector for Tableau Cloud is managed by Tableau.
 
 1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/latest/download/dbt_semantic_layer.taco) locally and add it to your default folder:
 
@@ -41,7 +40,7 @@ Alternatively, you can follow these steps to install the Connector:
    - Mac: `~/Library/Tableau/Drivers` or `/Library/JDBC` or `~/Library/JDBC`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
 3. Open Tableau Desktop or Tableau Server and find the **<Constant name="semantic_layer" /> by dbt Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
-4. Connect with your Host, Environment ID, and Service Token information <Constant name="cloud" /> provides during [<Constant name="semantic_layer" /> configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
+4. Connect with your Host, Environment ID, and service or personal token information <Constant name="cloud" /> provides during the [<Constant name="semantic_layer" /> configuration](/docs/use-dbt-semantic-layer/setup-sl). 
    - In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 
 ## Using the integration

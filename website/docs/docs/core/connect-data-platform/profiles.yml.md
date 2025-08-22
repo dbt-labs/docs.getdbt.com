@@ -8,8 +8,8 @@ If you're using [dbt Core](/docs/core/installation-overview), you'll need a `pro
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 
-:::tip No `profiles.yml` file needed for <Constant name="cloud" />
-If you're using <Constant name="cloud" />, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="cloud" /> interface and don't need a `profiles.yml` file.
+:::note dbt platform accounts
+If you're using the cloud-based <Constant name="cloud" /> platform, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="cloud" /> interface and don't need a `profiles.yml` file.
 :::
 
 This section identifies the parts of your `profiles.yml` that aren't specific to a particular data platform. For specific connection details, refer to the relevant page for your data platform.

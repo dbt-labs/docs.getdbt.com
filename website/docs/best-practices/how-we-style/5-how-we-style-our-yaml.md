@@ -42,6 +42,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('users')
-              field: id
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                to: ref('users')
+                field: id
 ```

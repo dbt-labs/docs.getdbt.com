@@ -58,8 +58,4 @@ For existing accounts with the Snowflake Native App configured, users will be pr
 
 1. When you attempt to access the <Constant name="cloud" /> platform from the Snowflake Native App, you will be prompted to link your account.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflake-link-account-prompt.png" width="90%" title="The Snowflake Native App prompt to link accounts" />
-
 2. Click **Link account** and you will be prompted for your <Constant name="cloud" /> credentials. 
-
-<Lightbox src="/img/docs/dbt-cloud/snowflake-link-dbt-cloud.png" width="90%" title="The link accounts prompt" />

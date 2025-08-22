@@ -35,14 +35,14 @@ snapshots:
       [docs](/reference/resource-configs/docs):
         show: true | false
         node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
-    [tests](/reference/resource-properties/data-tests):
+    [data_tests](/reference/resource-properties/data-tests):
       - <test>
       - ...
     columns:
       - name: <column name>
         [description](/reference/resource-properties/description): <markdown_string>
         [quote](/reference/resource-properties/columns#quote): true | false
-        [tests](/reference/resource-properties/data-tests):
+        [data_tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         [config](/reference/resource-properties/config):

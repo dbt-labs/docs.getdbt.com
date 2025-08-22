@@ -208,7 +208,7 @@ models:
       - name: order_id
         config:
           tags: [my_column_tag] # changed to config in v1.10 and backported to 1.9
-        tests:
+        data_tests:
           - unique
 
 ```
@@ -236,7 +236,7 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique:
             config:
               tags: [my_test_tag] # changed to config in v1.10

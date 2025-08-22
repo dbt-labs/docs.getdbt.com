@@ -37,8 +37,6 @@ To unlock your account and select a plan, review the following guidance per plan
 
 If you select a plan but have too many seats or projects for that plan (for example, if you select the Developer plan but have more than one developer seat), you'll be directed to the users & projects pages to make edits.
 
-<Lightbox src="/img/docs/dbt-cloud/developer-plan-allocation.png"/>
-
 ### Starter plan
 
 1. When your trial expires, your account's default plan enrollment will be a Starter plan. 

@@ -15,7 +15,7 @@ tags: ['Amazon','Athena', 'dbt platform','Quickstart']
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Amazon Athena. It will show you how to: 
 
 - Create an S3 bucket for Athena query results.
-- Creat an Athena database.
+- Create an Athena database.
 - Access sample data in a public dataset.
 - Connect <Constant name="cloud" /> to Amazon Athena.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.

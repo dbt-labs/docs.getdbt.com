@@ -107,6 +107,10 @@ reverse-etl:
   displayText: reverse ETL
   hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 
+scalar-value:
+  displayText: scalar value
+  hoverSnippet: A single piece of data (for example, a number or string) rather than a collection or set of values.
+
 sql-expression:
   displayText: SQL expression
   hoverSnippet: A SQL expression is a combination of columns, values, operators, and functions that evaluates to a single value.

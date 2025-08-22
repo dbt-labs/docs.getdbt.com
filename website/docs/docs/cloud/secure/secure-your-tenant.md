@@ -62,4 +62,25 @@ hide_table_of_contents: true
     link="/docs/cloud/secure/postgres-privatelink"
     icon="dbt-bit"/>
 
+<Card
+    title="Azure Private Link for Postgres Flexible Server"
+    body="Learn how to configure Private Link for Azure Database for Postgres Flexible Server."
+    link="/docs/cloud/secure/az-postgres-private-link"
+    icon="dbt-bit"/>
+</div>
+<br />
+<div className="grid--3-col">
+
+<Card
+    title="Azure Private Link for Synapse"
+    body="Learn how to configure Private Link for Azure Synapse."
+    link="/docs/cloud/secure/az-synapse-private-link"
+    icon="dbt-bit"/>
+
+<Card
+    title="GCP Private Service Connect for Snowflake"
+    body="Learn how to configure GCP Private Service Connect for Snowflake."
+    link="/docs/cloud/secure/snowflake-psc"
+    icon="dbt-bit"/>
+
 </div>

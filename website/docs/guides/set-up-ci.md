@@ -86,7 +86,7 @@ To have these tests fail in CI, create a new environment called `DBT_PROJECT_EVA
 In your `dbt_project.yml` file, override the severity configuration:
 
 ```yaml
-tests:
+data_tests:
 dbt_project_evaluator:
     +severity: "{{ env_var('DBT_PROJECT_EVALUATOR_SEVERITY', 'warn') }}"
 ```

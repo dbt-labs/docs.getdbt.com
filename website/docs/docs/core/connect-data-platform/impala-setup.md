@@ -85,7 +85,7 @@ your_profile_name:
      password: [password]
      dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
      schema: [schema name]
-     retries: [retries] # number of times impyla attempts retry conneciton to warehouse, default value: 3
+     retries: [retries] # number of times Impala attempts retry connection to warehouse, default value: 3
   
 ```
 
@@ -113,7 +113,7 @@ your_profile_name:
       use_ssl: true # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
       dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
       schema: [schema name]
-      retries: [retries] # number of times impyla attempts retry conneciton to warehouse, default value: 3
+      retries: [retries] # number of times Impala attempts retry connection to warehouse, default value: 3
   
 ```
 

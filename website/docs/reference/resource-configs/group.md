@@ -136,7 +136,7 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   [<resource-path>](resource-path):
     +group: GROUP_NAME
 ```
@@ -150,7 +150,7 @@ version: 2
 
 <resource_type>:
   - name: <resource_name>
-    tests:
+    data_tests:
       - <test_name>:
           config:
             group: GROUP_NAME

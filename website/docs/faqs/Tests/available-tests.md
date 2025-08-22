@@ -1,11 +1,11 @@
 ---
-title: What tests are available for me to use in dbt?
-description: "Types of tests to use in dbt"
-sidebar_label: 'Available test to use in dbt'
+title: What data tests are available for me to use in dbt?
+description: "Types of data tests to use in dbt"
+sidebar_label: 'Available data test to use in dbt'
 id: available-tests
 
 ---
-Out of the box, dbt ships with the following tests:
+Out of the box, dbt ships with the following data tests:
 
 * `unique`
 * `not_null`
