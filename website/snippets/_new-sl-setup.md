@@ -1,6 +1,6 @@
 import SLEnvVars from '/snippets/_sl-env-vars.md';
 
-You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to set up the Semantic Layer at the environment and project level.
+You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to administer the Semantic Layer at the environment and project level.
 - Enterprise+ and Enterprise plan:
   - Developer license with Account Admin permissions, or
   - Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.

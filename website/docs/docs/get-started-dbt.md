@@ -78,22 +78,27 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 </div>
 
-## dbt Core
+## dbt local installations
 
-[<Constant name="core" />](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data practitioners to transform data using analytics engineering best practices. It suits individuals and small technical teams who prefer manual setup and customization, supports community adapters, and open-source standards.
+[<Constant name="core" /> and <Constant name="fusion_engine" />](/docs/about-dbt-install) provide command-line tools that enable data practitioners to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
 
 <div className="grid--3-col">
 
 <Card
+    title="dbt Fusion engine from a manual install"
+    body="Learn how to install dbt Fusion and set up a project."
+    link="/guides/fusion?step=2"
+    icon="dbt-bit"/>
+<Card
     title="dbt Core from a manual install"
     body="Learn how to install dbt Core and set up a project."
-    link="https://docs.getdbt.com/guides/manual-install"
+    link="/guides/manual-install"
     icon="dbt-bit"/>
 
 <Card
     title="Quickstart for dbt Core using DuckDB"
     body="Learn how to connect to DuckDB."
-    link="https://docs.getdbt.com/guides/duckdb?step=1"
+    link="/guides/duckdb?step=1"
     icon="duckdb"/>
 </div>
 

@@ -121,7 +121,7 @@ The saved location of a table is determined in precedence by the following condi
 
 1. If `external_location` is defined, that value is used.
 2. If `s3_data_dir` is defined, the path is determined by that and `s3_data_naming`.
-3. If `s3_data_dir` is not defined, data is stored under `s3_staging_dir/tables/`.
+3. If `s3_data_dir` is not defined, data is stored under `{s3_staging_dir}/tables/`.
 
 The following options are available for `s3_data_naming`:
 

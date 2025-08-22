@@ -3,6 +3,7 @@
     - Service Account / User Token
     - Native OAuth
     - External OAuth
+    - [Required permissions](/docs/core/connect-data-platform/bigquery-setup#required-permissions)
 
   </Expandable>
 

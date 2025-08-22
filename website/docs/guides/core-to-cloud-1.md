@@ -116,13 +116,6 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
      This method is preferred for its simplicity, security features (including secure OAuth logins and automated workflows like CI builds on pull requests), and overall ease of use.
    - [Import a <Constant name="git" /> repository](/docs/cloud/git/import-a-project-by-git-url) from any valid <Constant name="git" /> URL that points to a dbt project.
 
-### Additional configuration
-Explore these additional configurations to optimize your <Constant name="git" /> setup further:
-
-1. Log into <Constant name="cloud" /> using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status="managed,managed_plus" />
-  
-  Set up groups for dbt project access with those configured for repository access to streamline permissions.
-
 ## Developer setup
 
 This section highlights the development configurations you’ll need for your <Constant name="cloud" /> project. The following categories are covered in this section:

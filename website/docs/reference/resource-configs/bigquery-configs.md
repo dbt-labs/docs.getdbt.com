@@ -395,9 +395,86 @@ select * from {{ ref('another_model') }}
 
 You can create a new label with no value or remove a value from an existing label key.
 
-A label with a key that has an empty value can also be [referred](https://cloud.google.com/bigquery/docs/adding-labels#adding_a_label_without_a_value) to as a tag in BigQuery. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. Find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
+A label with a key that has an empty value can also be referred to as a [tag](https://cloud.google.com/bigquery/docs/adding-labels#adding_a_label_without_a_value) in BigQuery. However, this is different from a [BigQuery tag](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. For more information, see the [Tags documentation](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
 
-Currently, it's not possible to apply IAM tags in BigQuery, however, you can weigh in by upvoting [GitHub issue 1134](https://github.com/dbt-labs/dbt-bigquery/issues/1134).
+### Resource tags
+
+[BigQuery tags](https://cloud.google.com/bigquery/docs/tags) enable conditional IAM access control for BigQuery tables and views. You can apply these BigQuery tags using the `resource_tags` configuration. This section contains guidelines for using the `resource_tags` configuration parameter. 
+
+Resource tags are key-value pairs that must follow BigQuery's tag format: `{google_cloud_project_id}/{key_name}: value`. Unlike labels, BigQuery tags are primarily designed for IAM access control using conditional policies, allowing organizations to:
+
+- **Implement conditional access control**: Apply IAM policies conditionally based on BigQuery tags (for example, granting access only to tables tagged with `environment:production`).
+- **Enforce data governance**: Use BigQuery tags with IAM policies to protect sensitive data.
+- **Control access at scale**: Manage access patterns consistently across different projects and environments.
+
+#### Prerequisites
+- [Create tag keys and values](https://cloud.google.com/bigquery/docs/tags#create_tag_keys_and_values) in advance before using them in dbt.
+- Grant the [required IAM permissions](https://cloud.google.com/bigquery/docs/tags#required_permissions) to apply tags to resources.
+
+#### Configuring tags in a model file
+To configure tags in a model file, refer to the following example:
+<File name='model.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table",
+    resource_tags = {
+      "my-project-id/environment": "production",
+      "my-project-id/data_classification": "sensitive",
+      "my-project-id/access_level": "restricted"
+    }
+  )
+}}
+
+select * from {{ ref('another_model') }}
+```
+
+</File>
+
+#### Configuring tags in `dbt_project.yml`
+To configure tags in a `dbt_project.yml` file, refer to the following example:
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    production:
+      +resource_tags:
+        my-project-id/environment: production
+        my-project-id/data_classification: sensitive
+    staging:
+      +resource_tags:
+        my-project-id/environment: staging
+        my-project-id/data_classification: internal
+```
+
+</File>
+
+#### Using both dbt tags and BigQuery tags
+
+You can use dbt's existing `tags` configuration alongside BigQuery's `resource_tags`:
+
+<File name='model.sql'>
+
+```sql
+{{
+  config(
+    materialized = "materialized_view",
+    tags = ["reporting", "daily"],  # dbt tags for internal organization
+    resource_tags = {  # BigQuery tags for IAM access control
+      "my-project-id/environment": "production",
+      "my-project-id/data_classification": "sensitive"
+    }
+  )
+}}
+
+select * from {{ ref('my_table') }}
+```
+
+</File>
+
+For more information on setting up IAM conditional policies with BigQuery tags, see BigQuery's documentation on [tags](https://cloud.google.com/bigquery/docs/tags).
 
 ### Policy tags
 BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
@@ -726,6 +803,7 @@ with the following configuration parameters:
 | [`max_staleness`](#auto-refresh) (in Preview)                                    | `<interval>`           | no       | `none`  | alter                     |
 | [`description`](/reference/resource-properties/description)                      | `<string>`             | no       | `none`  | alter                     |
 | [`labels`](#specifying-labels)                                                   | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`resource_tags`](#resource-tags)                                                | `{<string>: <string>}` | no       | `none`  | alter                     |
 | [`hours_to_expiration`](#controlling-table-expiration)                           | `<integer>`            | no       | `none`  | alter                     |
 | [`kms_key_name`](#using-kms-encryption)                                          | `<string>`             | no       | `none`  | alter                     |
 
@@ -765,6 +843,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[max_staleness](#auto-refresh): <interval>
     [+](/reference/resource-configs/plus-prefix)[description](/reference/resource-properties/description): <string>
     [+](/reference/resource-configs/plus-prefix)[labels](#specifying-labels): {<label-name>: <label-value>}
+    [+](/reference/resource-configs/plus-prefix)[resource_tags](#resource-tags): {<tag-key>: <tag-value>}
     [+](/reference/resource-configs/plus-prefix)[hours_to_expiration](#acontrolling-table-expiration): <integer>
     [+](/reference/resource-configs/plus-prefix)[kms_key_name](##using-kms-encryption): <path-to-key>
 ```
@@ -802,6 +881,7 @@ models:
       [max_staleness](#auto-refresh): <interval>
       [description](/reference/resource-properties/description): <string>
       [labels](#specifying-labels): {<label-name>: <label-value>}
+      [resource_tags](#resource-tags): {<tag-key>: <tag-value>}
       [hours_to_expiration](#acontrolling-table-expiration): <integer>
       [kms_key_name](##using-kms-encryption): <path-to-key>
 ```
@@ -844,6 +924,9 @@ models:
     [description](/reference/resource-properties/description)="<description>",
     [labels](#specifying-labels)={
         "<label-name>": "<label-value>",
+    },
+    [resource_tags](#resource-tags)={
+        "<tag-key>": "<tag-value>",
     },
     [hours_to_expiration](#acontrolling-table-expiration)=<integer>,
     [kms_key_name](##using-kms-encryption)="<path_to_key>",

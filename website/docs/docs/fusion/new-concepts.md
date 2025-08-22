@@ -7,15 +7,19 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# New concepts <Lifecycle status="beta" />
+# New concepts
+
+<VersionBlock lastVersion="1.99">
 
 import FusionBeta from '/snippets/_fusion-beta-callout.md';
 
 <FusionBeta />
 
+</VersionBlock>
+
 <IntroText>
 
-The dbt Fusion engine [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
+The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
 It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 

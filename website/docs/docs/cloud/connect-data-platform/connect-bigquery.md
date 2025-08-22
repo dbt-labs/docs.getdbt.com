@@ -5,13 +5,19 @@ description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
 ---
 
+## Required permissions
+
+import BigQueryPerms from '/snippets/_bigquery-permissions.md';
+
+<BigQueryPerms />
+
 ## Authentication
 
 <Constant name="cloud" /> supports different authentication methods depending on your environment and plan type:
 
 - Development environments support:
     - Service JSON
-    - BigQuery Oauth <Lifecycle status="managed" />
+    - BigQuery OAuth <Lifecycle status="managed" />
 - Deployment environments support: 
     - Service JSON
     - BigQuery Workload Identity Federation (WIF) <Lifecycle status="managed" />

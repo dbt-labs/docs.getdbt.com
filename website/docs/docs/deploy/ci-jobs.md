@@ -6,6 +6,10 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your <Constant name="git" /> repository. By running and testing only _modified_ models, <Constant name="cloud" /> ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
+:::note Triggering CI jobs in monorepos
+If you have a monorepo with several dbt projects, opening a single pull request in one of your projects will trigger jobs for all projects connected to the monorepo. To address this, you can use separate target branches per project (for example, `main-project-a`, `main-project-b`) to separate CI triggers.
+:::
+
 ## Prerequisites
 - You have a <Constant name="cloud" /> account. 
 - CI features:

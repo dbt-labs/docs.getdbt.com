@@ -307,3 +307,31 @@ models:
 </File>
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
+#### Algebraic operations in Jinja macros
+
+In <Constant name="core" />, you can set algebraic functions in the return function of a Jinja macro:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyz') + 'abc'
+
+{% endmacro %}
+```
+
+This is no longer supported in <Constant name="fusion" /> and will return an error. This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
+
+```jinja
+{% macro my_macro() %}
+
+return('xyzabc')
+
+{% endmacro %}
+```
+
+### Package support
+
+import FusionPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionPackages />

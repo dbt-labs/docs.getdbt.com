@@ -22,6 +22,12 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+## Required permissions
+
+import BigQueryPerms from '/snippets/_bigquery-permissions.md';
+
+<BigQueryPerms />
+
 ## Authentication Methods
 
 BigQuery targets can be specified using one of four methods:
@@ -491,36 +497,20 @@ my-profile:
 For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
 
-## Required permissions
-
-BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
-- BigQuery Data Editor
-- BigQuery User
-
-Required roles and permissions for BigQuery DataFrames:
-- BigQuery Job User
-- BigQuery Read Session User
-- Notebook Runtime User
-- Code Creator
-- colabEnterpriseUser
-
-
-
-
-This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 
 To connect to BigQuery using the `oauth` method, follow these steps:
 
 1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
-2. Activate the application-default account with
+2. Activate the application-default account with:
 
 ```shell
-gcloud auth application-default login \
+gcloud auth application-default login \           
   --scopes=https://www.googleapis.com/auth/bigquery,\
 https://www.googleapis.com/auth/drive.readonly,\
-https://www.googleapis.com/auth/iam.test
+https://www.googleapis.com/auth/iam.test,\
+https://www.googleapis.com/auth/cloud-platform
 ```
 
 A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
