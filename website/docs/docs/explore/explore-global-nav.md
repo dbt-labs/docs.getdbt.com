@@ -1,5 +1,5 @@
 ---
-title: "Global Navigation"
+title: "Global navigation"
 sidebar_label: "Global navigation"
 id: global-navigation
 description: "Learn how to enable and use global navigation to search, explore, and analyze data assets across all your dbt projects and connected metadata sources."
