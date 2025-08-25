@@ -7,7 +7,7 @@ authors: [devon_fulcher]
 tags: [ai, data ecosystem, mcp]
 hide_table_of_contents: false
 
-date: 2025-07-11
+date: 2025-08-26
 is_featured: true
 ---
 
@@ -33,48 +33,7 @@ Hosting a remote MCP server is non-trivial. While a local MCP server only has to
 
 At the same time, we want the remote dbt MCP server to have similar functionality as the local dbt MCP server without entirely reimplementing the tools. We implemented these requirements by running a Streamable HTTP MCP server and adding proxied versions of each dbt MCP tool to this server. The proxied version of each tool has the same tool parameters, description, and implementation as the open source version, ensuring a consistent experience. The difference is that the proxied versions are configured via HTTP headers rather than environment variables and these tools connect directly to our internal APIs which reduces latency.
 
-```mermaid
----
-config:
-  layout: elk
----
-
-flowchart LR
-  %% External
-  AG[Agent framework]
-
-  %% Containers
-  subgraph DBT["dbt platform"]
-    direction LR
-
-    subgraph MCP["Remote dbt MCP server"]
-      direction LR
-
-      subgraph SERVER["MCP Server"]
-        direction LR
-        A1[authentication]
-        A2[configuration via headers]
-        A3[update tools to use internal APIs]
-      end
-
-      subgraph LIB["dbt-mcp as a library"]
-        direction TB
-        R1[tools and instructions]
-      end
-    end
-
-    D1[internal Discovery API]
-    D2[internal Semantic Layer API]
-    D3[internal SQL tools API]
-  end
-
-  %% Edges
-  AG -- "Streamable HTTP" --> MCP
-  LIB --> SERVER
-  MCP --> D1
-  MCP --> D2
-  MCP --> D3
-```
+<Lightbox src="/img/blog/2025-08-26-building-the-remote-dbt-mcp-server/remote-dbt-mcp.png" title="Remote mcp server" />
 
 ## The Remote dbt MCP Server in Action
 
