@@ -20,12 +20,6 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 
 <SnowflakeOauthWithPL />
 
-:::warning
-
-AWS Internal Stage PrivateLink connections are not currently supported.
-
-:::
-
 ## Configure AWS PrivateLink
 
 To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink):
@@ -46,10 +40,13 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
 - Type: Snowflake
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
-- *Use privatelink-account-url or regionless-privatelink-account-url?: 
+- *Use privatelink-account-url or regionless-privatelink-account-url?:
+- **Create Internal Stage PrivateLink endpoint? (Y/N): 
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 _*By default, <Constant name="cloud" /> will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
+
+_** Internal Stage PrivateLink must be [enabled on the Snowflake account](https://docs.snowflake.com/en/user-guide/private-internal-stages-aws#prerequisites) to use this feature_
 
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
@@ -66,10 +63,29 @@ Once <Constant name="cloud" /> support completes the configuration, you can star
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
+## Configuring Internal Stage PrivateLink in <Constant name="cloud" />
+
+If an Internal Stage PrivateLink endpoint has been provisioned, your dbt environments must be configured to use this endpoint instead of the account default set in Snowflake.
+
+1. Obtain the Internal Stage PrivateLink endpoint DNS from dbt Support. For example, `*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com`.
+2. In the appropriate dbt project, navigate to **Orchestration** → **Environments**.
+3. In any environment that should use the dbt Internal Stage PrivateLink endpoint, set an **Extended Attribute** similar to the following:
+```
+s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com'
+```
+4. Save the changes
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
+
 ## Configuring Network Policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
 
-You can request the VPCE ID from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. 
+You can request the VPCE IDs from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. If creating an endpoint for Internal Stage, the VPCE ID will be different from the VPCE ID of the main service endpoint.
+
+:::note Network Policy for Snowflake Internal Stage PrivateLink
+For guidance on protecting both the Snowflake service and Internal Stage consult the Snowflake [network policies](https://docs.snowflake.com/en/user-guide/network-policies#strategies-for-protecting-both-service-and-internal-stage) and [network rules](https://docs.snowflake.com/en/user-guide/network-rules#incoming-requests) docs. 
+
+:::
 
 ### Using the UI
 

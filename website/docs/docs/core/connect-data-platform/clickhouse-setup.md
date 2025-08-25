@@ -8,7 +8,7 @@ meta:
   pypi_package: 'dbt-clickhouse'
   min_core_version: 'v0.19.0'
   cloud_support: Not Supported
-  min_supported_version: '?'
+  min_supported_version: 'n/a'
   slack_channel_name: '#db-clickhouse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Clickhouse'

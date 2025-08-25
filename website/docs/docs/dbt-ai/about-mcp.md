@@ -22,16 +22,26 @@ There are two ways to access the dbt-mcp server: locally hosted or remotely host
 
 <-->
 
+## Server Access
+
+There are two ways to install dbt MCP: [local](#local) and [remote](#remote). 
+
+- [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
+- [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
+
 ## Available Tools
 
 ### Supported
+The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. 
+Here are the categories of tools supported based on what form of the MCP Server you connect to as well as detailed information on exact commands or queries available to the LLM.   
 
 | Tools | Local | Remote |
 | --- | --- | --- |
 | dbt CLI  | ✅ | ❌ |
 | Semantic Layer | ✅ | ✅ |
+| SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
-| SQL  | ✅ | ❌ |
+| Administrative API | ✅ | ❌ |
 | Disable tools | ✅ | ❌ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
@@ -69,20 +79,29 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_details`: Gets details for a specific model
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
+- `get_model_health`: Get health signals for a specific model
+
+
+### Administrative API
+
+To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-apis/admin-cloud-api)
+
+- `list_jobs`: List all jobs in a dbt account
+- `get_job_details`: Get detailed information for a specific job including configuration and settings  
+- `trigger_job_run`: Trigger a job run with optional parameter overrides like Git branch, schema, or execution parameters
+- `list_jobs_runs`: List runs in an account with optional filtering by job, status, or other criteria
+- `get_job_run_details`: Get comprehensive run information including execution details, steps, artifacts, and debug logs
+- `cancel_job_run`: Cancel a running job to stop execution
+- `retry_job_run`: Retry a failed job run to attempt execution again
+- `list_job_run_artifacts`: List all available artifacts for a job run (manifest.json, catalog.json, logs, etc.)
+- `get_job_run_artifact`: Download specific artifact files from job runs for analysis or integration
 
 ### SQL 
 ⚠️ The SQL tools access the dbt platform endpoints. While MCP usage of the tools doesn't consume dbt Copilot credits, access to the tools is impacted by dbt Copilot credit overages from direct usage of Copilot in dbt.
 
 - `text_to_sql`: Generate SQL from natural language requests
-- `execute_sql`: Execute SQL on dbt Cloud's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
+- `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
 
-
-## Server setup
-
-There are two ways to install dbt MCP: [local](#local) and [remote](#remote). 
-
-- [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
-- [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
 
 ## MCP integrations 
 

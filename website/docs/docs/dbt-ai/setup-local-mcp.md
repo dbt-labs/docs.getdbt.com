@@ -20,6 +20,7 @@ DBT_HOST=cloud.getdbt.com
 DBT_PROD_ENV_ID=your-production-environment-id
 DBT_DEV_ENV_ID=your-development-environment-id
 DBT_USER_ID=your-user-id
+DBT_ACCOUNT_ID=your-account-id
 DBT_TOKEN=your-service-token
 DBT_PROJECT_DIR=/path/to/your/dbt/project
 DBT_PATH=/path/to/your/dbt/executable
@@ -32,13 +33,14 @@ MULTICELL_ACCOUNT_PREFIX=your-account-prefix
 
 You will need to configure environment variables to access the tools. If you are only using the dbt CLI commands, you do not need to supply the dbt platform-specific environment variables, and vice versa. 
 
-#### Configuration for APIs and SQL tools
+#### Configuration for API and SQL tools
 
 | Environment Variable | Required | Description |
 | --- | --- | --- |
-| DBT_HOST | Required | Your dbt Platform instance hostname. For more information, click [here](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses). If you are using Multi-cell, don’t include the `ACCOUNT_PREFIX` here. The default is `cloud.getdbt.com`  |
+| DBT_HOST | Required | Your dbt platform [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). If you're using Multi-cell, exclude the `ACCOUNT_PREFIX` from the hostname. The default is `cloud.getdbt.com`  |
 | MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell  `ACCOUNT_PREFIX`. If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses).  |
 | DBT_TOKEN | Required | Your personal access token or service token from the dbt platform. <br/> **Note**: A service token is required when using the Semantic Layer, and this service token should have at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
+| DBT_ACCOUNT_ID | Required for Admininstrative API tools | Your [dbt account ID](https://docs.getdbt.com/faqs/Accounts/find-user-id) |
 | DBT_PROD_ENV_ID | Required | Your dbt Cloud production environment ID |
 
 #### Additional configuration for SQL tools
@@ -69,6 +71,7 @@ We support disabling tool access on the local dbt-mcp.
 | `DISABLE_DBT_CLI`        | `false` | Set this to `true` to disable dbt Core, dbt Cloud CLI, and dbt Fusion MCP tools |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools                    |
 | `DISABLE_DISCOVERY`      | `false` | Set this to `true` to disable dbt Discovery API MCP tools                     |
+| `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Admininistrative API MCP tools                         |
 | `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools                                |
 | `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools    |
 

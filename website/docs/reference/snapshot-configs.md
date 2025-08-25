@@ -122,7 +122,6 @@ Here's how you can do it:
 
     ```sql
     alter table my_snapshot_table
-    add column dbt_valid_to_current string,
     add column dbt_valid_from timestamp,
     add column dbt_valid_to timestamp;
     ```

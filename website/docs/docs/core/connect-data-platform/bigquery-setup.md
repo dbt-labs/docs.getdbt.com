@@ -503,13 +503,14 @@ For a full list of possible configuration fields that can be passed in `dataproc
 To connect to BigQuery using the `oauth` method, follow these steps:
 
 1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
-2. Activate the application-default account with
+2. Activate the application-default account with:
 
 ```shell
-gcloud auth application-default login \
+gcloud auth application-default login \           
   --scopes=https://www.googleapis.com/auth/bigquery,\
 https://www.googleapis.com/auth/drive.readonly,\
-https://www.googleapis.com/auth/iam.test
+https://www.googleapis.com/auth/iam.test,\
+https://www.googleapis.com/auth/cloud-platform
 ```
 
 A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
