@@ -8,7 +8,7 @@ description: "Learn how to enable and use global navigation to search, explore, 
 
 # Global navigation <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
-<IntroText>Learn how to enable and use the new navigation in <Constant name="explorer" /> to search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
+<IntroText>Learn how to enable and use global navigation in <Constant name="explorer" /> to search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
 
 
 For enterprise accounts with multiple projects, <Constant name="explorer" /> expands search to include dbt resources across all projects in your account, and the option to discover external metadata. For Starter plans (single project), you’ll benefit from the new navigation and search experience within your project.
