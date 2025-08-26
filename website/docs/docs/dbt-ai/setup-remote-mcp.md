@@ -39,7 +39,7 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
 
 4. After establishing what headers you need, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating a configuration file. This is dependent on what tools you want to integrate with.
 
-  Example configuration:
+##  Example configuration
 
   Be sure to replace `<host>`, `<token>`, and `<prod-id>` with your information:
 
