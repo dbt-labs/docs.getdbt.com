@@ -11,17 +11,17 @@ date: 2025-08-26
 is_featured: true
 ---
 
-In April, we released the local [dbt MCP (Model Context Protocol) server](/blog/introducing-dbt-mcp-server) as an open source project to connect AI agents and LLMs with direct, governed access to trusted dbt assets. The dbt MCP server provides a [universal, open standard](https://docs.anthropic.com/en/docs/mcp) for bridging AI systems with your structured context that keeps your agents accurate, governed, and trustworthy. To learn more about the dbt MCP server, read our docs [here](/docs/dbt-ai/about-mcp).
-
-<!--truncate-->
+In April, we released the local [dbt MCP (Model Context Protocol) server](/blog/introducing-dbt-mcp-server) as an open source project to connect AI agents and LLMs with direct, governed access to trusted dbt assets. The dbt MCP server provides a [universal, open standard](https://docs.anthropic.com/en/docs/mcp) for bridging AI systems with your structured context that keeps your agents accurate, governed, and trustworthy. Learn more in [About dbt Model Context Protocol](/docs/dbt-ai/about-mcp).
 
 Since releasing the local dbt MCP server, the dbt community has been applying it in incredible ways including agentic conversational analytics, data catalog exploration, and dbt project refactoring. However, a key piece of feedback we received from AI engineers was that the local dbt MCP server isn’t easy to deploy or host for multi-tenanted workloads, making it difficult to build applications on top of the dbt MCP server.
 
 This is why we are excited to announce a new way to integrate with dbt MCP: **the remote dbt MCP server**. The remote dbt MCP server doesn’t require installing dependencies or running the dbt MCP server in your infrastructure, making it easier than ever to build and run agents. It is **available today in public beta** for users with dbt Starter, Enterprise, or Enterprise+ plans, ready for you to start building AI-powered applications.
 
-## What is the Remote dbt MCP Server?
+<!--truncate-->
 
-Commonly, agents and MCP servers run locally on your computer, but local-first agents are limited in the type of applications that can be built. With remote MCP, new experiences are possible. For instance, remote MCP enables server-side agents to perform long-running tasks, be shared across an organization, and accessed through web applications - all experiences which are far more difficult or impossible in a local agent architecture.
+## What is the Remote dbt MCP Server? <Lifecycle status="self_service,managed,managed_plus,beta" />
+
+Commonly, agents and MCP servers run locally on your computer, but local-first agents are limited in the type of applications that can be built. With remote MCP, new experiences are possible. For instance, remote MCP enables server-side agents to perform long-running tasks, be shared across an organization, and be accessed through web applications -- all experiences that are far more difficult (or impossible) in a local agent architecture.
 
 The remote dbt MCP server brings **structured, governed context** to these experiences and opens the door for innovative data applications to be built on top. The remote dbt MCP server makes it possible for your agent to answer business questions with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), discover data assets with the [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api), and run natural-language queries with SQL tools. Check out our docs [here](/docs/dbt-ai/about-mcp) to learn about the full list of supported tools. These capabilities are easy to integrate in various platforms with the standardized MCP specification.
 
