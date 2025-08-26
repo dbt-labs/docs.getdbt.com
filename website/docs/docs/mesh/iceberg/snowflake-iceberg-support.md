@@ -210,7 +210,7 @@ catalogs:
   - name: catalog_horizon
     active_write_integration: snowflake_write_integration
     write_integrations:
-      - name: snowflake_write_integration
+      - catalog_name: snowflake_write_integration
         external_volume: dbt_external_volume
         table_format: iceberg
         catalog_type: built_in
