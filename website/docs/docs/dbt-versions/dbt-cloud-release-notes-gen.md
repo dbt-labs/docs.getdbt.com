@@ -15,7 +15,15 @@ unlisted: true
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
+Release notes are grouped by date for single-tenant environments.
 
-## August 2025
-<!-- needs title -->
+## Date
+
+### New
+
+### Enhancements
+
+### Fixes
+
+### Behavior changes
+
