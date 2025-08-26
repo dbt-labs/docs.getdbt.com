@@ -1,6 +1,6 @@
 ---
-title: "dbt release notes"
-description: "dbt release notes"
+title: "Weekly dbt release notes"
+description: "Weekly dbt release notes"
 id: "dbt-cloud-release-notes-gen"
 sidebar: "dbt release notes"
 pagination_next: null
@@ -8,7 +8,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-<Constant name="cloud" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
+<Constant name="cloud" /> release notes for recent and historical changes. Release notes fall into one of these categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements
