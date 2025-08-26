@@ -48,7 +48,7 @@ pip install langgraph "langchain[anthropic]" langchain-mcp-adapters
 export ANTHROPIC_API_KEY=<your-api-key>
 ```
 
-First, we need to define the URL & headers that the MCP client will use. These values will depend on your specific dbt Cloud deployment. In this example, we are setting the configuration from environment variables. For more information on this configuration, check out our docs [here](/docs/dbt-ai/about-mcp).
+First, we need to define the URL & headers that the MCP client will use. These values will depend on your specific dbt Cloud deployment. In this example, we are setting the configuration from environment variables. For more information on this configuration, refer to [About dbt Model Context Protocol ](/docs/dbt-ai/about-mcp).
 
 ```python
 import os
