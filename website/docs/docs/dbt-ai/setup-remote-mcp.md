@@ -5,7 +5,7 @@ description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
 ---
 
-# Set up remote MCP <Lifecycle status="beta" />
+# Set up remote MCP <Lifecycle status="self_service,managed,managed_plus,beta" />
 
 The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based dbt platform.
 
