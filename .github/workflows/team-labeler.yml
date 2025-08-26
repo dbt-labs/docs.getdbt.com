@@ -13,3 +13,5 @@ jobs:
     - uses: JulienKode/team-labeler-action@v1.1.0
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        # Optional: Add if you want to use GitHub team-based labeling
+        org-token: "${{ secrets.ORG_TOKEN }}"
