@@ -612,3 +612,10 @@ jialuo_chen:
     linkedin: jialuo-chen-31680789
   name: Jialuo Chen
   page: true
+devon_fulcher:
+  image_url: /img/blog/authors/devon_fulcher.JPG
+  title: Senior Software Engineer at dbt Labs
+  socials:
+    linkedin: devonfulcher
+  name: Devon Fulcher
+  page: true

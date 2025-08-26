@@ -8,7 +8,7 @@
 | Dual <Constant name="cloud" /> Ingress                            |   ❌   |   ✅   |    ❌    |    ❌    |    ❌    |
 | <b>EGRESS - DW (from <Constant name="cloud" />)</b>               |        |        |          |          |          |
 | Snowflake                                         |   ✅   |   ✅   |    ✅    |    ✅    |    ✅    |
-| - Snowflake Internal Stage                        |   ❌   |   ❌   |    ✅    |    ✅    |    ❌    |
+| - Snowflake Internal Stage                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
 | Databricks                                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
 | Postgres (via load balancer)                      |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
 | Azure Database for PostgreSQL Flexible Server     |   -    |   -    |    ✅    |    ✅    |    -     |
