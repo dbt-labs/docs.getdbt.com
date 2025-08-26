@@ -37,11 +37,7 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
   | x-dbt-disable-tools | Optional | A comma separted list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
   | x-dbt-disable-toolsets | Optional | A comma separted list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
 
-4. After establishing what headers you need, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating a configuration file. This is dependent on what tools you want to integrate with.
-
-##  Example configuration
-
-  Be sure to replace `<host>`, `<token>`, and `<prod-id>` with your information:
+4. After establishing what headers you need, you can follow the examples [here](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. The MCP protocol is programming language and framework agnostic, so you can choose any which help you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients which support header-based authentication. Here is an example configuration for Cursor. Be sure to replace `<host>`, `<token>`, `<prod-id>`, `<user-id>`, and `<dev-id>` with your information:
 
   ```
   {
@@ -51,10 +47,10 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
         "headers": {
          "Authorization": "token <token>",
           "x-dbt-prod-environment-id": "<prod-id>",
+          "x-dbt-user-id": "<user-id>",
+          "x-dbt-dev-environment-id": "<dev-id>"
         }
       }
     }
   }
   ```
-
-  - Streamable HTTP MCP transport: Use the example [here](https://github.com/dbt-labs/dbt-mcp/blob/76992ac51a905e9e0d2194774e7246ee288094b9/examples/remote_mcp/main.py) as a reference in Python. A similar implementation is possible with SDKs for many other languages.
