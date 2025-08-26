@@ -1,5 +1,8 @@
 on: [pull_request_target]
 name: team-label
+permissions:
+  contents: read
+  issues: write
 jobs:
   team-labeler:
     runs-on: ubuntu-latest
