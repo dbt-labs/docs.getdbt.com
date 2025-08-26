@@ -1,11 +1,14 @@
-on: [pull_request_target]
 name: team-label
+on:
+  pull_request:
+  issues:
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write # Necessary to create the labels if they do not exist yet.
 jobs:
   team-labeler:
     runs-on: ubuntu-latest
-    permissions:
-       contents: read
-       pull-requests: write
     steps:
     - uses: JulienKode/team-labeler-action@v1.1.0
       with:
