@@ -37,7 +37,9 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
   | x-dbt-disable-tools | Optional | A comma separted list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
   | x-dbt-disable-toolsets | Optional | A comma separted list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
 
-4. After establishing what headers you need, you can follow the examples [here](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. The MCP protocol is programming language and framework agnostic, so you can choose any which help you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients which support header-based authentication. Here is an example configuration for Cursor. Be sure to replace `<host>`, `<token>`, `<prod-id>`, `<user-id>`, and `<dev-id>` with your information:
+4. After establishing which headers you need, you can follow the examples [here](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
+
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. You can use this example Cursor configuration, replacing `<host>`, `<token>`, `<prod-id>`, `<user-id>`, and `<dev-id>` with your information:
 
   ```
   {
