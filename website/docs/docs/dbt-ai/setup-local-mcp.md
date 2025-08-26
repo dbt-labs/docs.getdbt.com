@@ -7,11 +7,11 @@ id: "setup-local-mcp"
 
 # Set up local MCP <Lifecycle status="beta" />
 
-[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) can be hosted locally on your machine or virtually. To set up the local dbt MCP server, follow these directions.
+[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine. To set up the local dbt MCP server, follow these directions.
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to install `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment. 
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to install `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
 
-2. Create an `.env` file to set your environment variables. 
+2. Create an `.env` file to set your environment variables.
 
 Here is an example of the file:
 
@@ -26,12 +26,12 @@ DBT_PROJECT_DIR=/path/to/your/dbt/project
 DBT_PATH=/path/to/your/dbt/executable
 MULTICELL_ACCOUNT_PREFIX=your-account-prefix
 ```
- You will need this file for integrating with MCP-compatible tools. 
+ You will need this file for integrating with MCP-compatible tools.
  Here are the environment variables you could supply:
 
 ### Setting environment variables
 
-You will need to configure environment variables to access the tools. If you are only using the dbt CLI commands, you do not need to supply the dbt platform-specific environment variables, and vice versa. 
+You will need to configure environment variables to access the tools. If you are only using the dbt CLI commands, you do not need to supply the dbt platform-specific environment variables, and vice versa.
 
 #### Configuration for API and SQL tools
 
@@ -64,7 +64,7 @@ We automatically set `DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCri
 You can overwrite it if needed, but it provides a better experience when calling dbt from the MCP server, ensuring the tool selects valid nodes.
 
 #### Disabling tools
-We support disabling tool access on the local dbt-mcp.  
+We support disabling tool access on the local dbt-mcp.
 
 | Name                     | Default | Description                                                                     |
 | ------------------------ | ------- | ------------------------------------------------------------------------------- |
@@ -75,12 +75,12 @@ We support disabling tool access on the local dbt-mcp.
 | `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools                                |
 | `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools    |
 
-3. After creating your .env file, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating a 
-configuration file. This is dependent on what tools you want to integrate with. 
+3. After creating your .env file, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating a
+configuration file. This is dependent on what tools you want to integrate with.
 
 
 ### Example configuration
-For some tools,  you may need an additional configuration file to upload to connect to dbt-mcp. 
+For some tools,  you may need an additional configuration file to upload to connect to dbt-mcp.
 Here is a sample configuration JSON file that you can use to connect to the MCP tools. Be sure to replace the sections within `<>`:
 
 ```json
@@ -99,4 +99,3 @@ Here is a sample configuration JSON file that you can use to connect to the MCP 
 ```
 
 `<path-to-.env-file>` is where you saved the `.env` file from the Setup step.
-

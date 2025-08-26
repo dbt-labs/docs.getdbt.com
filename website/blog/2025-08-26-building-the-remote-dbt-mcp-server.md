@@ -33,7 +33,7 @@ Hosting your own remote MCP server is non-trivial. While a local MCP server only
 
 At the same time, we want the remote dbt MCP server to have similar functionality as the local dbt MCP server without entirely reimplementing the tools. We implemented these requirements by running a Streamable HTTP MCP server and adding proxied versions of each dbt MCP tool to this server. The proxied version of each tool has the same tool parameters, description, and implementation as the open source version, ensuring a consistent experience. The difference is that the proxied versions are configured via HTTP headers rather than environment variables and these tools connect directly to our internal APIs which reduces latency.
 
-<Lightbox src="/img/blog/2025-08-26-building-the-remote-dbt-mcp-server/remote-dbt-mcp.png" title="Remote mcp server" />
+<Lightbox src="/img/blog/2025-08-26-building-the-remote-dbt-mcp-server/remote-dbt-mcp.png" title="The remote dbt MCP architecture" />
 
 ## The Remote dbt MCP Server in Action
 
