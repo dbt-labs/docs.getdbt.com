@@ -50,7 +50,7 @@ dbt-protos==1.0.348
 # dbt-adapters
 dbt-athena==1.9.4
 dbt-bigquery==1.10.1
-dbt-databricks==1.10.9
+dbt-databricks==1.10.10
 dbt-fabric==1.9.4
 dbt-postgres==1.9.0
 dbt-redshift==1.9.5
