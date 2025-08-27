@@ -77,7 +77,7 @@ var siteSettings = {
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://coalesce.getdbt.com/event/21662b38-2c17-4c10-9dd7-964fd652ab44/register-1",
+      "https://coalesce.getdbt.com/",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
