@@ -149,7 +149,7 @@ The following are best practices for external metadata ingestion, designed to en
 - Use filters to limit ingestion to relevant assets:
     - For example: restrict to production schemas only, or ignore transient/temp schemas.
 
-Note that, external metadata ingestion runs once per day at 5 PM UTC.
+External metadata ingestion runs daily at 5 PM UTC, and also runs immediately each time you update and save credentials.
 
 
 
