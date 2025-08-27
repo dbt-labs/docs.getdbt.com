@@ -77,7 +77,7 @@ var siteSettings = {
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://coalesce.getdbt.com/",
+      "https://coalesce.getdbt.com/5Y3oaq/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2026_coalesce-2025_aw&utm_content=coalesce____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
