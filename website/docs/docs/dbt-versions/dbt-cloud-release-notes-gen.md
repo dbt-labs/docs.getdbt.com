@@ -1,5 +1,5 @@
 ---
-title: "Weekly dbt release notes"
+title: "Weekly dbt single-tenant release notes"
 description: "Release notes for weekly single-tenant updates."
 id: "dbt-cloud-release-notes-gen"
 sidebar: "dbt single-tenant release notes"
