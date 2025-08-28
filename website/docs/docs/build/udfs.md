@@ -16,7 +16,7 @@ Note that only basic SQL UDFs are currently supported in <Constant name="core" /
 
 To define UDFs in <Constant name="core" />, refer to the following steps:
 
-1. Create a SQL file under the `functions` directory. Only basic SQL UDFs are currently supported. For example:
+1. Create a SQL file under the `functions` directory. For example:
     <!--Please check if the sample is correct-->
     <File name='functions/is_positive_int.sql'>
 
@@ -39,7 +39,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     ```yml
     functions:
     - name: is_positive_int # required
-        description: My UDF that determines if a string represents a positive (+) integer #required
+        description: My UDF that determines if a string represents a positive (+) integer # required
         config:
             schema: udf_schema
             database: udf_db
@@ -47,12 +47,12 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
             - name: a_string
                 type: string
                 description: The string that I want to check if it's representing a positive integer (like "10") 
-        return_type: #required
-            type: boolean #required
+        return_type: # required
+            type: boolean # required
     ```
     </File>
 
-    The rendered create UDF statement depends on which adapter you’re using. For example:
+    The rendered `CREATE` UDF statement depends on which adapter you’re using. For example:
 
     <Tabs>
 
