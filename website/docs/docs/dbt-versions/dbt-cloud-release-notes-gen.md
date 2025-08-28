@@ -1,14 +1,14 @@
 ---
 title: "Weekly dbt release notes"
-description: "Weekly dbt release notes"
+description: "Release notes for weekly single-tenant updates."
 id: "dbt-cloud-release-notes-gen"
-sidebar: "dbt release notes"
+sidebar: "dbt single-tenant release notes"
 pagination_next: null
 pagination_prev: null
 unlisted: true
 ---
 
-<Constant name="cloud" /> release notes for recent and historical changes. Release notes fall into one of these categories:
+<Constant name="cloud" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements
