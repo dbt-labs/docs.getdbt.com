@@ -1,0 +1,108 @@
+---
+title: "User-defined functions"
+description: "Learn how to define UDFs in your dbt projects."
+id: "udfs"
+---
+
+## Overview
+
+User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside <Constant name="core" />.
+
+Note that only basic SQL UDFs are currently supported in <Constant name="core" />.
+
+<Constant name="core" /> creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
+
+## Defining UDFs in dbt
+
+To define UDFs in <Constant name="core" />, refer to the following steps:
+
+1. Create a SQL file under the `functions` directory. For example:
+
+    <File name='functions/is_positive_int.sql'>
+
+    ```sql
+    {{ config(
+        database='udf_db'
+    ) }}
+
+    REGEXP_CONTAINS(a_string, r'^[0-9]+$')
+    ```
+
+    </File>
+
+2. Define your argument, output types, properties, and configs in a corresponding YAML file. For example:
+
+    <File name='functions/schema.yml'>
+
+    ```yml
+    functions:
+    - name: is_positive_int
+        description: My UDF that determines if a string represents a positive (+) integer
+        config:
+            schema: udf_schema
+            database: udf_db
+        arguments: 
+        - name: a_string
+            type: string
+            description: The string that I want to check if it's representing a positive integer (like "10") 
+        returns:
+        type: boolean
+    ```
+    </File>
+
+    The rendered create UDF statement depends on which adapter you’re using. For example:
+
+    <Tabs>
+
+    <TabItem value="Snowflake">
+    ```sql
+    CREATE OR REPLACE FUNCTION my_schema.is_positive_int(a_string STRING)
+    RETURNS BOOLEAN
+    AS (
+    REGEXP_CONTAINS(a_string, r'^[0-9]+$')
+    );
+    ```
+    </TabItem>
+
+    <TabItem value="Redshift">
+    ```sql
+    CREATE OR REPLACE FUNCTION repeat_n(s VARCHAR, n INTEGER)
+    RETURNS VARCHAR
+    IMMUTABLE
+    AS $$ SELECT repeat(s, n); $$
+    LANGUAGE SQL;
+    ```
+    </TabItem>
+    </Tabs>
+
+3. Reference the UDF in a model using the `{{ ref(…) }}` macro. For example:
+
+    <File name="models/my_model.sql">
+
+    ```sql
+    select
+
+    maybe_positive_int_column,
+        {{ ref('is_positive_int') }}('maybe_positive_int_column')
+
+    from {{ ref('a_model_i_like') }}
+    ```
+    </File>
+
+4. Run `dbt compile`.
+
+    In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`. 
+
+    <File name="models/my_model.sql">
+
+    ```sql
+    select
+
+    maybe_positive_int_column,
+	udf_db.udf_schema.is_positive_int(maybe_positive_int_column) as is_positive
+
+    from analytics.<dbt_schema>.a_model_i_like
+    ```
+    </File>
+
+In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definition.
