@@ -17,7 +17,7 @@ Note that only basic SQL UDFs are currently supported in <Constant name="core" /
 To define UDFs in <Constant name="core" />, refer to the following steps:
 
 1. Create a SQL file under the `functions` directory. Only basic SQL UDFs are currently supported. For example:
-
+    <!--Please check if the sample is correct-->
     <File name='functions/is_positive_int.sql'>
 
     ```sql
