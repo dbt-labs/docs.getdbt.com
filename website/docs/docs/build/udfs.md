@@ -16,7 +16,7 @@ Note that only basic SQL UDFs are currently supported in <Constant name="core" /
 
 To define UDFs in <Constant name="core" />, refer to the following steps:
 
-1. Create a SQL file under the `functions` directory. For example:
+1. Create a SQL file under the `functions` directory. Only basic SQL UDFs are currently supported. For example:
 
     <File name='functions/is_positive_int.sql'>
 
@@ -30,23 +30,25 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
 
     </File>
 
-2. Define your argument, output types, properties, and configs in a corresponding YAML file. For example:
+2. Define your argument, output types, properties, and configs in a corresponding YAML file.
+
+    For example:
 
     <File name='functions/schema.yml'>
 
     ```yml
     functions:
-    - name: is_positive_int
-        description: My UDF that determines if a string represents a positive (+) integer
+    - name: is_positive_int # required
+        description: My UDF that determines if a string represents a positive (+) integer #required
         config:
             schema: udf_schema
             database: udf_db
         arguments: 
-        - name: a_string
-            type: string
-            description: The string that I want to check if it's representing a positive integer (like "10") 
-        returns:
-        type: boolean
+            - name: a_string
+                type: string
+                description: The string that I want to check if it's representing a positive integer (like "10") 
+        return_type: #required
+            type: boolean #required
     ```
     </File>
 
@@ -74,7 +76,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     ```
     </TabItem>
     </Tabs>
-
+<!-- Are steps 3-4 now supported?-->
 3. Reference the UDF in a model using the `{{ ref(…) }}` macro. For example:
 
     <File name="models/my_model.sql">
@@ -91,7 +93,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
 
 4. Run `dbt compile`.
 
-    In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`. 
+    In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
     <File name="models/my_model.sql">
 
