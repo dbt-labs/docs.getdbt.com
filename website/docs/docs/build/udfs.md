@@ -89,9 +89,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     ```
     </File>
 
-4. Run `dbt compile`.
-
-    In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
+4. Run `dbt compile`. In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
     <File name="models/my_model.sql">
 
