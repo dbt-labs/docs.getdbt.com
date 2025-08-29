@@ -29,7 +29,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
 
     </File>
 
-2. Define your argument, output types, properties, and configs in a corresponding YAML file.
+2. Define your argument, output types, properties, and configs in a corresponding YAML file. For example:
 
     For example:
 
