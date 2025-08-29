@@ -4,7 +4,6 @@ description: "Learn how to add user-defined functions (UDFs) to your dbt project
 id: "udfs"
 ---
 
-## Overview
 
 User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside <Constant name="core" />.
 
