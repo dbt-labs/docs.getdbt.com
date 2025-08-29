@@ -31,7 +31,6 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
 
 2. Define your argument, output types, properties, and configs in a corresponding YAML file. For example:
 
-    For example:
 
     <File name='functions/schema.yml'>
 
