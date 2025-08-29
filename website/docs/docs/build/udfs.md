@@ -1,6 +1,6 @@
 ---
 title: "User-defined functions"
-description: "Learn how to define UDFs in your dbt projects."
+description: "Learn how to add user-defined functions (UDFs) to your dbt projects."
 id: "udfs"
 ---
 
