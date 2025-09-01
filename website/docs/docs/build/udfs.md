@@ -104,3 +104,14 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     </File>
 
     In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definition.
+
+## Listing and selecting UDFs
+
+To list UDFs in your project, run `dbt list`. 
+
+To select UDFs when running a project, use the following commands:
+
+- `dbt run --resource_type function` &mdash; Use this command to only run UDFs in your project. <!--Confirm if correct-->
+- `dbt run --select resource_type:function` &mdash; Use this command to reinitialize all UDFs in your project.
+- `dbt run --select path/to/my_function.sql` &mdash; Use this command to select a function by file path.
+- `dbt run --select my_function` &mdash; Use this command if you modified a UDF and you want to replace it in the data warehouse. To update all models that use the UDF, run `dbt run --select my_function+`.
