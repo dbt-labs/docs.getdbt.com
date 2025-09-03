@@ -34,8 +34,8 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
   **Configuration to disable tools**
   | Header | Required  | Description |
   | --- | --- | --- |
-  | x-dbt-disable-tools | Optional | A comma separted list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
-  | x-dbt-disable-toolsets | Optional | A comma separted list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
+  | x-dbt-disable-tools | Optional | A comma-separated list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
+  | x-dbt-disable-toolsets | Optional | A comma-separated list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
 
 4. After establishing which headers you need, you can follow the examples [here](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 
