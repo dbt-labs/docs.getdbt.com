@@ -804,6 +804,25 @@ const sidebarSettings = {
                 "docs/dbt-cloud-apis/discovery-schema-environment",
                 {
                   type: "category",
+                  label: "Applied",
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                  },
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                  ],
+                },
+                // Uncomment to add Definition subpage, but need to make items non-empty
+                // {
+                //   type: "category",
+                //   label: "Definition",
+                //   items: [
+                //     // insert pages here
+                //   ],
+                // },
+                {
+                  type: "category",
                   label: "Job",
                   link: {
                     type: "doc",
@@ -827,21 +846,6 @@ const sidebarSettings = {
                     // "docs/dbt-cloud-apis/discovery-schema-job-macros",
                   ],
                 },
-                {
-                  type: "category",
-                  label: "Applied",
-                  items: [
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
-                  ],
-                },
-                // Uncomment to add Definition subpage, but need to make items non-empty
-                // {
-                //   type: "category",
-                //   label: "Definition",
-                //   items: [
-                //     // insert pages here
-                //   ],
-                // },
               ],
             },
           ],
