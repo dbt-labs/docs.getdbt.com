@@ -801,15 +801,16 @@ const sidebarSettings = {
                 id: "docs/dbt-cloud-apis/discovery-schema-environment",
               },
               items: [
-                "docs/dbt-cloud-apis/discovery-schema-environment",
                 {
                   type: "category",
-                  label: "Applied",
+                  label: "Environment",
                   link: {
                     type: "doc",
-                    id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment",
                   },
                   items: [
+
+                   "docs/dbt-cloud-apis/discovery-schema-environment",
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied",
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
                     "docs/dbt-cloud-apis/discovery-schema-environment-definition",
