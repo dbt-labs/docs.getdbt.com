@@ -1,10 +1,10 @@
 ---
 title: "Environment object schema"
-sidebar_label: "Environment"
-id: "discovery-schema-environment"
+sidebar_label: "Applied"
+id: "discovery-schema-environment-applied"
 ---
  
-import { QueryArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, NodeArgsTable, SchemaTable } from "./schema";
 
 The environment object allows you to query information about a particular model based on `environmentId`.
 
@@ -14,12 +14,13 @@ The [Example queries](#example-queries) illustrate a few fields you can query wi
 
 When querying for `environment`, you can use the following arguments.
 
-<QueryArgsTable queryName="environment" />
+<!-- <QueryArgsTable queryName="AppliedState" /> -->
 
 ### Example queries
 
 You can use your production environment's `id`:
 
+<!-- NEED  UPDATE THIS EXAMPLE -->
 ```graphql
 query Example {
 	environment(id: 834){ # Get the latest state of the production environment
@@ -45,51 +46,9 @@ query Example {
 	}
 ```
 
-With the deprecation of the data type `Int` for `id`, below is an example of replacing it with `BigInt`:
 
-```graphql
-query ($environmentId: BigInt!, $first: Int!) {
-  environment(id: $environmentId) {
-    applied {
-      models(first: $first) {
-        edges {
-          node {
-            uniqueId
-            executionInfo {
-              lastRunId
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-```
-
-With the deprecation of `modelByEnvironment`, below is an example of replacing it with `environment`:
-
-```graphql
-query ($environmentId: BigInt!, $uniqueId: String) {
-  environment(id: $environmentId) {
-    applied {
-      modelHistoricalRuns(uniqueId: $uniqueId) {
-        uniqueId
-        executionTime
-        executeCompletedAt
-      }
-    }
-  }
-}
-```
 
 ### Fields
-When querying an `environment`, you can use the following fields.
-
-<SchemaTable nodeName="Environment" />
 
 When querying the `applied` field of `environment`, you can use the following fields.
 <SchemaTable nodeName="AppliedState" />
-
-When querying the `definition` field of `environment`, you can use the following fields.
-<SchemaTable nodeName="DefinitionState" />

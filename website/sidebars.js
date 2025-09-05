@@ -807,10 +807,12 @@ const sidebarSettings = {
                   label: "Applied",
                   link: {
                     type: "doc",
-                    id: "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
                   },
                   items: [
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied",
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-definition",
                   ],
                 },
                 // Uncomment to add Definition subpage, but need to make items non-empty
