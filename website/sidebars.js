@@ -798,7 +798,7 @@ const sidebarSettings = {
               label: "Schema",
               link: {
                 type: "doc",
-                id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                id: "docs/dbt-cloud-apis/discovery-schema-about",
               },
               items: [
                 "docs/dbt-cloud-apis/discovery-schema-environment",
