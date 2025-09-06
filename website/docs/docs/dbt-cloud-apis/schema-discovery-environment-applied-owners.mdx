@@ -1,0 +1,56 @@
+---
+title: "Owners object schema"
+sidebar_label: "Owners"
+id: "discovery-schema-environment-applied-owners"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+<!-- NEED  UPDATE THIS DESCRIPTION -->
+The owners object allows you to query information about exposure owners. 
+
+The [Example query](#example-query) illustrates a few fields you can query with the `owners` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `owners`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="owners" />
+
+### Example query
+
+<!-- NEED  UPDATE THIS EXAMPLE -->
+You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      models (first: 100) {
+        edges {
+          node {
+            name
+            description
+            access
+            accountId
+            catalog {
+              owner
+            }
+            config
+            environmentId
+            tests {
+              name
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `owners`, you can use the following fields:
+
+<SchemaTable nodeName="ExposureOwner" />

@@ -811,8 +811,32 @@ const sidebarSettings = {
                   items: [
 
                    "docs/dbt-cloud-apis/discovery-schema-environment",
+                   {
+                    type: "category",
+                    label: "Applied",
+                    link: {
+                      type: "doc",
+                      id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                    },
+                    items: [
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tests",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-sources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-snapshots",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-model",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-files",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-packages",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-owners",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
+                    ],
+                  },
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied",
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
                     "docs/dbt-cloud-apis/discovery-schema-environment-definition",
                   ],
                 },
