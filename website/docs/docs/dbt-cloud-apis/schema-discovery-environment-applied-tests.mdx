@@ -2,22 +2,20 @@
 title: "Tests object schema"
 sidebar_label: "Tests"
 id: "discovery-schema-environment-applied-tests"
-parent: "AppliedState"
-target: "tests"
-node: "TestAppliedStateNodeConnection"
 ---
  
 import { NodeArgsTable, SchemaTable } from "./schema";
+
 <!-- NEED  UPDATE THIS DESCRIPTION -->
 The seeds object allows you to query information about seeds. 
 
-The [Example query](#example-query) illustrates a few fields you can query with the `{frontmatter.target}` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+The [Example query](#example-query) illustrates a few fields you can query with the `tests` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
-When querying for `{frontmatter.target}`, you can use the following arguments:
+When querying for `tests`, you can use the following arguments:
 
-<NodeArgsTable parent="{frontmatter.parent}" name="{frontmatter.target}" />
+<NodeArgsTable parent="AppliedState" name="tests" />
 
 ### Example query
 
@@ -54,6 +52,6 @@ query {
 
 ### Fields
 
-When querying for `{frontmatter.target}`, you can use the following fields:
+When querying for `tests`, you can use the following fields:
 
-<SchemaTable nodeName="{frontmatter.node}" />
+<SchemaTable nodeName="TestAppliedStateNodeConnection" />

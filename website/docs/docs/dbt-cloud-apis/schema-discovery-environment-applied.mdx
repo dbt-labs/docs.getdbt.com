@@ -1,20 +1,20 @@
 ---
-title: "Environment object schema"
+title: "Applied object schema"
 sidebar_label: "Applied"
 id: "discovery-schema-environment-applied"
 ---
  
 import { QueryArgsTable, NodeArgsTable, SchemaTable } from "./schema";
 
-The environment object allows you to query information about a particular model based on `environmentId`.
+The applied object allows you to query information about a particular model based on `environmentId`.
 
 The [Example queries](#example-queries) illustrate a few fields you can query with this `environment` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
-When querying for `environment`, you can use the following arguments.
+When querying for `applied`, you can use the following arguments.
 
-<!-- <QueryArgsTable queryName="AppliedState" /> -->
+<NodeArgsTable parent="Environment" name="applied" />
 
 ### Example queries
 
@@ -32,18 +32,12 @@ query Example {
 					executionInfo {executeCompletedAt, executionTime}, # Metadata from when the model was built
 					tests {name, executionInfo{lastRunStatus, lastRunError}}, # Latest test results
 					catalog {columns {name, description, type}, stats {label, value}}, # Catalog info
-					ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness }
+					ancestors(types:[Source]) {name, ...on SourceAppliedStateNestedNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness }
 					children {name, resourceType}}} # Immediate dependencies in lineage
 				totalCount } # Number of models in the project
 		}
-		definition { # The logical state of a given project node given its most recent manifest generated
-			models(first: 100, filter:{access:public}){ # Filter on model access (or other properties)
-				edges { node {
-					rawCode, # Compare to see if/how the model has changed since the last build
-					jobDefinitionId, runGeneratedAt,	# When the code was last compiled or run
-					contractEnforced, group, version}}} # Model governance
-		}
 	}
+}
 ```
 
 

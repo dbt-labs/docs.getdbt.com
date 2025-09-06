@@ -809,7 +809,6 @@ const sidebarSettings = {
                     id: "docs/dbt-cloud-apis/discovery-schema-environment",
                   },
                   items: [
-
                    "docs/dbt-cloud-apis/discovery-schema-environment",
                    {
                     type: "category",
@@ -836,7 +835,6 @@ const sidebarSettings = {
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
                     ],
                   },
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied",
                     "docs/dbt-cloud-apis/discovery-schema-environment-definition",
                   ],
                 },

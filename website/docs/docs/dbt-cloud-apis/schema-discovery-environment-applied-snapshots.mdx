@@ -2,22 +2,20 @@
 title: "Snapshots object schema"
 sidebar_label: "Snapshots"
 id: "discovery-schema-environment-applied-snapshots"
-parent: "AppliedState"
-target: "snapshots"
-node: "SnapshotAppliedStateNodeConnection"
 ---
  
 import { NodeArgsTable, SchemaTable } from "./schema";
+
 <!-- NEED  UPDATE THIS DESCRIPTION -->
 The seeds object allows you to query information about seeds. 
 
-The [Example query](#example-query) illustrates a few fields you can query with the `{frontmatter.target}` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+The [Example query](#example-query) illustrates a few fields you can query with the `snapshots` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
-When querying for `{frontmatter.target}`, you can use the following arguments:
+When querying for `snapshots`, you can use the following arguments:
 
-<NodeArgsTable parent="{frontmatter.parent}" name="{frontmatter.target}" />
+<NodeArgsTable parent="AppliedState" name="snapshots" />
 
 ### Example query
 
@@ -54,6 +52,6 @@ query {
 
 ### Fields
 
-When querying for `{frontmatter.target}`, you can use the following fields:
+When querying for `snapshots`, you can use the following fields:
 
-<SchemaTable nodeName="{frontmatter.node}" />
+<SchemaTable nodeName="SnapshotAppliedStateNodeConnection" />
