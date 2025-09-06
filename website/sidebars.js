@@ -801,6 +801,8 @@ const sidebarSettings = {
                 id: "docs/dbt-cloud-apis/discovery-schema-about",
               },
               items: [
+                
+                "docs/dbt-cloud-apis/discovery-schema-about",
                 {
                   type: "category",
                   label: "Environment",
@@ -810,7 +812,7 @@ const sidebarSettings = {
                   },
                   items: [
 
-                   "docs/dbt-cloud-apis/discovery-schema-environment",
+                    "docs/dbt-cloud-apis/discovery-schema-environment",
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied",
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
                     "docs/dbt-cloud-apis/discovery-schema-environment-definition",
