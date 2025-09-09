@@ -1,0 +1,57 @@
+---
+title: "Resources object schema"
+sidebar_label: "Resources"
+id: "discovery-schema-environment-applied-resources"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+<!-- NEED  UPDATE THIS DESCRIPTION -->
+The resources object allows you to query for paginated results of resources. 
+
+The [Example query](#example-query) illustrates a few fields you can query with the `resources` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `resources`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="resources" />
+
+### Example query
+
+<!-- NEED  UPDATE THIS EXAMPLE -->
+You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      models (first: 100) {
+        edges {
+          node {
+            name
+            description
+            access
+            accountId
+            catalog {
+              owner
+            }
+            config
+            environmentId
+            tests {
+              name
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `resources`, you can use the following fields:
+
+<SchemaTable nodeName="EnvironmentAppliedNodeConnection" />
