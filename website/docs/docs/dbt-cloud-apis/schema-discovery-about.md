@@ -1,11 +1,11 @@
 ---
-title: "About the schema"
+title: "About the Discovery API schema"
 sidebar_label: "About"
 id: "discovery-schema-about"
 ---
 
 
-<div className="grid--4-col">
+<div className="grid--2-col">
 
 <Card
     title="Environment object schema"
