@@ -1,6 +1,6 @@
 ---
 title: "About the Discovery API schema"
-sidebar_label: "About"
+sidebar_label: "About the schema"
 id: "discovery-schema-about"
 ---
 
@@ -11,23 +11,23 @@ The Discovery API *schema* provides all the pieces necessary to query and intera
 <div className="grid--2-col">
 
 <Card
-    title="Environment object schema"
+    title="Environment schema"
     body="Query and compare a model’s definition (intended) and its applied (actual) state."
     link="/docs/dbt-cloud-apis/discovery-schema-environment"
     icon="dbt-bit"/>
 <Card
-    title="Applied object schema"
+    title="Applied schema"
     body="Query the actual state of objects and metadata in the warehouse after a `dbt run` or `dbt build`."
     link="/docs/dbt-cloud-apis/discovery-schema-environment-applied"
     icon="dbt-bit"/>
 <Card
-    title="Definition object schema"
+    title="Definition schema"
     body="Query intended state in project code and configuration defined in your dbt project."
     link="/docs/dbt-cloud-apis/discovery-schema-environment-definition"
     icon="dbt-bit"/>
 
  <Card
-    title="Model Historical Runs object schema"
+    title="Model Historical Runs schema"
     body="Query information about a model's run history."
     link="/docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns"
     icon="dbt-bit"/>

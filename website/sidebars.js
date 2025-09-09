@@ -801,7 +801,6 @@ const sidebarSettings = {
                 id: "docs/dbt-cloud-apis/discovery-schema-about",
               },
               items: [
-                
                 "docs/dbt-cloud-apis/discovery-schema-about",
                 {
                   type: "category",
