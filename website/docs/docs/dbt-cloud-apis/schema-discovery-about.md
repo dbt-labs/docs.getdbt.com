@@ -13,12 +13,12 @@ id: "discovery-schema-about"
     link="/docs/dbt-cloud-apis/discovery-schema-environment"
     icon="dbt-bit"/>
 <Card
-    title="Environment Applied object schema"
+    title="Applied object schema"
     body="Query applied resources in an environment."
     link="/docs/dbt-cloud-apis/discovery-schema-environment-applied"
     icon="dbt-bit"/>
 <Card
-    title="Environment Definition object schema"
+    title="Definition object schema"
     body="Query definition resources in an environment."
     link="/docs/dbt-cloud-apis/discovery-schema-environment-definition"
     icon="dbt-bit"/>
