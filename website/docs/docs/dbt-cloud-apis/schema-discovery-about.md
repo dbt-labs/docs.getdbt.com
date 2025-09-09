@@ -20,7 +20,7 @@ id: "discovery-schema-about"
 <Card
     title="Environment Definition object schema"
     body="Query definition resources in an environment."
-    link="/docs/dbt-cloud-apis/discovery-schema-environment-applied"
+    link="/docs/dbt-cloud-apis/discovery-schema-environment-definition"
     icon="dbt-bit"/>
 
  <Card
