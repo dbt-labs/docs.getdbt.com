@@ -14,7 +14,7 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 
 Release Date: September 10, 2025
 
-This release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of dbt Core OSS:
 
 ```
 dbt-core==1.10.11
