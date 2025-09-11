@@ -312,7 +312,7 @@ You should be aware of these limitations to the implementation:
 
 -  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
 - You cannot incrementally update a pre-existing incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
-- As of Snowflake change bundle `2025-01`, the `SHOW TABLES` command does not include the `is_iceberg` column in its output. This forced dbt to run a similar to the following query for all the models in the dbt project (regardless of whether they're configured as `iceberg` models):
+- As of Snowflake change bundle `2025-01`, the `SHOW TABLES` command does not include the `is_iceberg` column in its output. This forced dbt to run a command similar to the following query for all the models in the dbt project (regardless of whether they're configured as `iceberg` models):
 
 ```sql
 select all_objects.*, is_iceberg
