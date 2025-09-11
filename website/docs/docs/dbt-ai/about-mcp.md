@@ -24,7 +24,7 @@ There are two ways to access the dbt-mcp server: locally hosted or remotely host
 
 ## Server Access
 
-There are two ways to install dbt MCP: [local](#local) and [remote](#remote).
+You can install dbt MCP locally or remotely:
 
 - [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
 - [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
