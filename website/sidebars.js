@@ -804,7 +804,7 @@ const sidebarSettings = {
                 "docs/dbt-cloud-apis/discovery-schema-about",
                 {
                   type: "category",
-                  label: "Environment",
+                  label: "Environment (recommended)",
                   link: {
                     type: "doc",
                     id: "docs/dbt-cloud-apis/discovery-schema-environment",
