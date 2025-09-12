@@ -314,15 +314,15 @@ You should be aware of these limitations to the implementation:
 - You cannot incrementally update a pre-existing incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
   - As of Snowflake change bundle `2025-01`, the `SHOW TABLES` command does not include the `is_iceberg` column in its output. This forced dbt v1.9 to run a command similar to the following query for all the models in the dbt project (regardless of whether they're configured as `iceberg` models):
 
-```sql
-select all_objects.*, is_iceberg
-from table(result_scan(last_query_id(-1))) all_objects
-left join INFORMATION_SCHEMA.tables as all_tables
-on all_tables.table_name = all_objects."name"
-and all_tables.table_schema = all_objects."schema_name"
-and all_tables.table_catalog = all_objects."database_name"
-``` 
-
-This query may be relatively inefficient and potentially expensive, depending on the size of your Snowflake warehouse. Thus, the ability to run iceberg models is gated behind the `enable_iceberg_materializations` flag.
+    ```sql
+    select all_objects.*, is_iceberg
+    from table(result_scan(last_query_id(-1))) all_objects
+    left join INFORMATION_SCHEMA.tables as all_tables
+    on all_tables.table_name = all_objects."name"
+    and all_tables.table_schema = all_objects."schema_name"
+    and all_tables.table_catalog = all_objects."database_name"
+    ``` 
+    
+    This query may be relatively inefficient and potentially expensive, depending on the size of your Snowflake warehouse. Thus, the ability to run iceberg models is gated behind the `enable_iceberg_materializations` flag.
 
 </VersionBlock>
