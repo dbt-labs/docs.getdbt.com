@@ -23,22 +23,25 @@ When querying for `files`, you can use the following arguments:
 You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
 
 ```graphql
-query {
-  environment(id: 834) {
+query ($environmentId: BigInt!, $first: Int!, $filter: FileFilter) {
+  environment(id: $environmentId) {
     applied {
-      modelHistoricalRuns(
-        uniqueId: "model.marketing.customers" # Use this format for unique ID: RESOURCE_TYPE.PACKAGE_NAME.RESOURCE_NAME
-        lastRunCount: 20
+      files(
+        filter: $filter, 
+        first: $first
       ) {
-        runId # Get historical results for a particular model
-        runGeneratedAt
-        executionTime # View build time across runs
-        status
-        tests {
-          name
-          status
-          executeCompletedAt
-        } # View test results across runs
+        edges {
+          node {
+            description
+            name
+            filePath
+            projectId
+            fileType
+            tags
+            uniqueId
+            resourceType
+          }
+        }
       }
     }
   }

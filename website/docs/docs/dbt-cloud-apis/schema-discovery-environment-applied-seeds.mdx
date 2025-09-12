@@ -22,25 +22,23 @@ When querying for `seeds`, you can use the following arguments:
 You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
 
 ```graphql
-query {
-  environment(id: 834) {
+query ($environmentId: BigInt!, $first: Int!, $filter: GenericMaterializedFilter) {
+  environment(id: $environmentId) {
     applied {
-      models (first: 100) {
+      seeds(
+        first: $first,
+        filter: $filter
+      ) {
         edges {
           node {
-            name
             description
-            access
-            accountId
-            catalog {
-              owner
-            }
-            config
-            environmentId
-            tests {
-              name
-              description
-            }
+            name
+            filePath
+            projectId
+            fqn
+            tags
+            uniqueId
+            resourceType
           }
         }
       }
@@ -54,3 +52,8 @@ query {
 When querying for `seeds`, you can use the following fields:
 
 <SchemaTable nodeName="SeedAppliedStateNodeConnection" />
+
+### Key Fields from Nodes
+
+<SchemaTable nodeName="SeedAppliedStateNode" />
+

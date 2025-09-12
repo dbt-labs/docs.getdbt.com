@@ -10,39 +10,17 @@ import { NodeArgsTable, SchemaTable } from "./schema";
 
 The [Example query](#example-query) illustrates a few fields you can query with the `tags` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
  
-### Arguments
-
-When querying for `tags`, you can use the following arguments:
-
-<NodeArgsTable parent="AppliedState" name="tags" />
 
 ### Example query
 
-<!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` to return the name of all the tags in your environment.
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      models (first: 100) {
-        edges {
-          node {
-            name
-            description
-            access
-            accountId
-            catalog {
-              owner
-            }
-            config
-            environmentId
-            tests {
-              name
-              description
-            }
-          }
-        }
+      tags {
+        name
       }
     }
   }

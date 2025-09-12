@@ -7,7 +7,7 @@ id: "discovery-schema-environment-applied-lineage"
 import { NodeArgsTable, SchemaTable } from "./schema";
 
 <!-- NEED  UPDATE THIS DESCRIPTION -->
-The lineage object allows you to query information about project lineage. 
+The <Term id="data-lineage">lineage</Term> object allows you to query information about the lineage of data within your projects. 
 
 The [Example query](#example-query) illustrates a few fields you can query with the `lineage` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
@@ -20,7 +20,7 @@ When querying for `lineage`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` and filter on the `Model` resource type, to return lineage metadata for your models.
 
 ```graphql
 query {
@@ -33,6 +33,8 @@ query {
         resourceType
         filePath
         projectId
+        materializationType
+        parentIds
         tags
         uniqueId
       }
