@@ -18,32 +18,14 @@ When querying for `packages`, you can use the following arguments:
 
 ### Example query
 
-<!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+<!-- NEED  UPDATE THIS EXAMPLE DESCRIPTION -->
+You can use the `environmentId` and filter by the model resource, to return a list of all model packages in your environment.
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      models (first: 100) {
-        edges {
-          node {
-            name
-            description
-            access
-            accountId
-            catalog {
-              owner
-            }
-            config
-            environmentId
-            tests {
-              name
-              description
-            }
-          }
-        }
-      }
+      packages(resource: "model")
     }
   }
 }

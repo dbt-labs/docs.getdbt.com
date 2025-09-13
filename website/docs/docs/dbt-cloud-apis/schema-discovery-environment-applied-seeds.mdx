@@ -18,16 +18,18 @@ When querying for `seeds`, you can use the following arguments:
 
 ### Example query
 
-<!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+<!-- NEED  UPDATE THIS EXAMPLE DESCRIPTION -->
+You can use the `environmentId`, filtering on the database used, to return seeds information for the given database:
 
 ```graphql
 query ($environmentId: BigInt!, $first: Int!, $filter: GenericMaterializedFilter) {
   environment(id: $environmentId) {
     applied {
       seeds(
-        first: $first,
-        filter: $filter
+        first: 100,
+        filter: {
+          database: "analytics"
+        }
       ) {
         edges {
           node {

@@ -20,28 +20,31 @@ When querying for `tests`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` to return test metadata for all tests in the environment:
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      models (first: 100) {
+      tests(
+        filter: {
+          testTypes: [
+            GENERIC_DATA_TEST,
+            SINGULAR_DATA_TEST,
+            UNIT_TEST
+          ]
+        }, 
+        first: 100
+      ) {
         edges {
           node {
             name
+            model
             description
-            access
-            accountId
-            catalog {
-              owner
-            }
-            config
-            environmentId
-            tests {
-              name
-              description
-            }
+            expect
+            resourceType
+            testType
+            given
           }
         }
       }

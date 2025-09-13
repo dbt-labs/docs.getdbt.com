@@ -19,25 +19,27 @@ When querying for `exposures`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId`, `first: 100`, and filter on model `uniqueIds`, to return first 100 results for corresponding exposures information:
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      modelHistoricalRuns(
-        uniqueId: "model.marketing.customers" # Use this format for unique ID: RESOURCE_TYPE.PACKAGE_NAME.RESOURCE_NAME
-        lastRunCount: 20
+      exposures(
+        filter: {
+          uniqueIds: ["model.marketing.customers"] # Use this format for unique ID: RESOURCE_TYPE.PACKAGE_NAME.RESOURCE_NAME
+        }, 
+        first: 100
       ) {
-        runId # Get historical results for a particular model
-        runGeneratedAt
-        executionTime # View build time across runs
-        status
-        tests {
-          name
-          status
-          executeCompletedAt
-        } # View test results across runs
+        edges {
+          node {
+            accountId
+            exposureType
+            fqn
+            projectId
+            url
+          }
+        }
       }
     }
   }

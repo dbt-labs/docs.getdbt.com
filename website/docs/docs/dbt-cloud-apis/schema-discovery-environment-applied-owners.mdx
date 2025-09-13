@@ -19,30 +19,15 @@ When querying for `owners`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` and the exposure `OwnerResourceType` to return a list of each exposure owner.
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      models (first: 100) {
-        edges {
-          node {
-            name
-            description
-            access
-            accountId
-            catalog {
-              owner
-            }
-            config
-            environmentId
-            tests {
-              name
-              description
-            }
-          }
-        }
+      owners(resource: exposure) {
+        email
+        name
       }
     }
   }

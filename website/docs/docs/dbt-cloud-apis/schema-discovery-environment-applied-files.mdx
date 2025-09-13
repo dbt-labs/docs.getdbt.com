@@ -7,7 +7,7 @@ id: "discovery-schema-environment-applied-files"
 import { NodeArgsTable, SchemaTable } from "./schema";
 
 <!-- NEED  UPDATE THIS DESCRIPTION -->
-The exposure object allows you to query information about files. 
+The files object allows you to query information about files. 
 
 The [Example query](#example-query) illustrates a few fields you can query with the `files` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
@@ -20,15 +20,17 @@ When querying for `files`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId`, `first` and filter on the marts directory to return results for the first 100 files and file information in that directory:
 
 ```graphql
-query ($environmentId: BigInt!, $first: Int!, $filter: FileFilter) {
+query ($environmentId: BigInt!) {
   environment(id: $environmentId) {
     applied {
       files(
-        filter: $filter, 
-        first: $first
+        filter: {
+          path: "models/marts"
+        }, 
+        first: 100
       ) {
         edges {
           node {
@@ -53,3 +55,8 @@ query ($environmentId: BigInt!, $first: Int!, $filter: FileFilter) {
 When querying for `files`, you can use the following fields:
 
 <SchemaTable nodeName="AppliedStateFilesConnection" />
+
+### Key Fields from Nodes
+
+<SchemaTable nodeName="FileAppliedStateNode" />
+

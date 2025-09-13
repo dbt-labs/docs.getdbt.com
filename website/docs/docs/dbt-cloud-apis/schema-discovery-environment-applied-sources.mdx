@@ -20,27 +20,37 @@ When querying for `sources`, you can use the following arguments:
 ### Example query
 
 <!-- NEED  UPDATE THIS EXAMPLE -->
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` and filter on the database name, to return the freshness and execution status, for the first 100 sources from the given database:
 
 ```graphql
 query {
   environment(id: 834) {
     applied {
-      models (first: 100) {
+      sources(
+        filter: {
+          database: "analytics"
+        }, 
+        first: 100
+      ) {
         edges {
           node {
             name
+            fqn
             description
-            access
-            accountId
-            catalog {
-              owner
+            filePath
+            freshness {
+              freshnessChecked
+              freshnessStatus
             }
-            config
-            environmentId
+            sourceName
+            sourceDescription
             tests {
               name
               description
+              testType
+              executionInfo {
+                lastRunStatus
+              }
             }
           }
         }
