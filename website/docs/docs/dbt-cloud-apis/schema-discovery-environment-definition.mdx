@@ -18,18 +18,6 @@ You can use your production environment's `id`:
 ```graphql
 query Example {
 	environment(id: 834){ # Get the latest state of the production environment
-		applied { # The state of an executed node as it exists as an object in the database
-			models(first: 100){ # Pagination to ensure manageable response for large projects
-				edges { node {
-					uniqueId, name, description, rawCode, compiledCode, # Basic properties
-					database, schema, alias, # Table/view identifier (can also filter by)
-					executionInfo {executeCompletedAt, executionTime}, # Metadata from when the model was built
-					tests {name, executionInfo{lastRunStatus, lastRunError}}, # Latest test results
-					catalog {columns {name, description, type}, stats {label, value}}, # Catalog info
-					ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness }
-					children {name, resourceType}}} # Immediate dependencies in lineage
-				totalCount } # Number of models in the project
-		}
 		definition { # The logical state of a given project node given its most recent manifest generated
 			models(first: 100, filter:{access:public}){ # Filter on model access (or other properties)
 				edges { node {
@@ -38,45 +26,9 @@ query Example {
 					contractEnforced, group, version}}} # Model governance
 		}
 	}
-```
-
-With the deprecation of the data type `Int` for `id`, below is an example of replacing it with `BigInt`:
-
-```graphql
-query ($environmentId: BigInt!, $first: Int!) {
-  environment(id: $environmentId) {
-    applied {
-      models(first: $first) {
-        edges {
-          node {
-            uniqueId
-            executionInfo {
-              lastRunId
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-```
-
-With the deprecation of `modelByEnvironment`, below is an example of replacing it with `environment`:
-
-```graphql
-query ($environmentId: BigInt!, $uniqueId: String) {
-  environment(id: $environmentId) {
-    applied {
-      modelHistoricalRuns(uniqueId: $uniqueId) {
-        uniqueId
-        executionTime
-        executeCompletedAt
-      }
-    }
-  }
 }
 ```
+
 
 ### Fields
 When querying the `definition` field of `environment`, you can use the following fields.
