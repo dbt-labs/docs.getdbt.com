@@ -826,7 +826,6 @@ const sidebarSettings = {
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-models",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-files",
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
                       "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
