@@ -798,21 +798,43 @@ const sidebarSettings = {
               label: "Schema",
               link: {
                 type: "doc",
-                id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                id: "docs/dbt-cloud-apis/discovery-schema-about",
               },
               items: [
+                "docs/dbt-cloud-apis/discovery-schema-about",
                 {
                   type: "category",
-                  label: "Environment",
+                  label: "Environment (recommended)",
                   link: {
                     type: "doc",
                     id: "docs/dbt-cloud-apis/discovery-schema-environment",
                   },
                   items: [
-
                    "docs/dbt-cloud-apis/discovery-schema-environment",
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied",
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                   {
+                    type: "category",
+                    label: "Applied",
+                    link: {
+                      type: "doc",
+                      id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                    },
+                    items: [
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tests",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-sources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-snapshots",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-models",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-packages",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-owners",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
+                    ],
+                  },
                     "docs/dbt-cloud-apis/discovery-schema-environment-definition",
                   ],
                 },
