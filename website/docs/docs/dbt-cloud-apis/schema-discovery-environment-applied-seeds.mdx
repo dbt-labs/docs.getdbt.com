@@ -18,7 +18,7 @@ When querying for `seeds`, you can use the following arguments:
 
 ### Example query
 
-You can use the `environmentId`, filtering on the database used, to return seeds information for the given database:
+You can specify the `environmentId`, filter by the database, and limit to the first 100 to show information about the first 100 seed files in the 'analytics' database, including their metadata and file locations:
 
 ```graphql
 query ($environmentId: BigInt!, $first: Int!, $filter: GenericMaterializedFilter) {

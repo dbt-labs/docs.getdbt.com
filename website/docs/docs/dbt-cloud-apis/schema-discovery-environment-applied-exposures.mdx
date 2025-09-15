@@ -18,7 +18,7 @@ When querying for `exposures`, you can use the following arguments:
 
 ### Example query
 
-You can use the `environmentId`, `first: 100`, and filter on model `uniqueIds`, to return first 100 results for corresponding exposures information:
+You can specify the `environmentId`, `first: 100`, and filter by model `uniqueIds` to return all the downstream exposures (dashboards, applications, etc.) that depend on the 'customers' model in the 'marketing' package, limited to the first 100 results:
 
 ```graphql
 query {
