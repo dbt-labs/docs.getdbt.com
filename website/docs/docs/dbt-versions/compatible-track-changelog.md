@@ -9,6 +9,54 @@ Select the "Compatible" and "Extended" release tracks if you need a less-frequen
 Each monthly "Compatible" release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
 
 For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
+
+## September 2025
+
+Release Date: September 10, 2025
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.10.11
+
+# shared interfaces
+dbt-adapters==1.16.6
+dbt-common==1.29.0
+dbt-semantic-interfaces==0.9.0
+
+# adapters
+dbt-athena==1.9.5
+dbt-bigquery==1.10.2
+dbt-databricks==1.10.12
+dbt-extractor==0.6.0
+dbt-fabric==1.9.4
+dbt-postgres==1.9.1
+dbt-protos==1.0.348
+dbt-redshift==1.9.5
+dbt-sl-sdk[sync]==0.13.0
+dbt-snowflake==1.10.2
+dbt-spark==1.9.3
+dbt-synapse==1.8.4
+dbt-teradata==1.10.0
+dbt-trino==1.9.3
+```
+
+Changelogs:
+- [dbt-core 1.10.11](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11011---september-04-2025)
+- [dbt-adapters 1.16.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
+- [dbt-common 1.29.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1290---september-04-2025)
+- [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
+- [dbt-bigquery 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-bigquery/CHANGELOG.md#dbt-bigquery-1101---july-29-2025)
+- [dbt-databricks 1.10.12](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-11012-september-8-2025)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.9.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/CHANGELOG.md#changelog)
+- [dbt-redshift 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-redshift/CHANGELOG.md#dbt-redshift-195---may-13-2025)
+- [dbt-snowflake 1.10.2](http://github.com/dbt-labs/dbt-adapters/blob/main/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-spark/CHANGELOG.md#dbt-spark-193---july-16-2025)
+- [dbt-synapse 1.8.4](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.10.0](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.0)
+- [dbt-trino 1.9.3](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md#dbt-trino-193---july-22-2025)
+
 ## August 2025
 
 Release date: August 12, 2025

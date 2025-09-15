@@ -1,6 +1,6 @@
 ---
-title: "Set Up local MCP"
-sidebar_label: "Set Up local MCP"
+title: "Set up local MCP"
+sidebar_label: "Set up local MCP"
 description: "Learn how to set up the local dbt-mcp server"
 id: "setup-local-mcp"
 ---
@@ -39,7 +39,7 @@ You will need to configure environment variables to access the tools. If you are
 | --- | --- | --- |
 | DBT_HOST | Required | Your dbt platform [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). If you're using Multi-cell, exclude the `ACCOUNT_PREFIX` from the hostname. The default is `cloud.getdbt.com`  |
 | MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell  `ACCOUNT_PREFIX`. If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses).  |
-| DBT_TOKEN | Required | Your personal access token or service token from the dbt platform. <br/> **Note**: A service token is required when using the Semantic Layer, and this service token should have at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
+| DBT_TOKEN | Required | Your personal access token or service token from the dbt platform. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
 | DBT_ACCOUNT_ID | Required for Admininstrative API tools | Your [dbt account ID](https://docs.getdbt.com/faqs/Accounts/find-user-id) |
 | DBT_PROD_ENV_ID | Required | Your dbt Cloud production environment ID |
 

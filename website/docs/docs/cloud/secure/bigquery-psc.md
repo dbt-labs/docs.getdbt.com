@@ -35,8 +35,9 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 Once the dbt Support team completes the configuration, you can start creating new connections using PSC: 
 
-1. Navigate to **Settings** → **Create new project** → select **BigQuery**. 
-2. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the API endpoint field).
-4. Configure any remaining data platform details.
-5. Save the connection and test in either a project job or Studio session.
+1. Navigate to **Account settings** > **Connections**.
+2. In the **Connections** page, select **BigQuery**. Click **Edit**.
+3. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 
+4. Select the private endpoint from the dropdown (this will automatically populate the API endpoint field).
+5. Configure any remaining data platform details.
+6. Save the connection and test in either a project job or Studio session.

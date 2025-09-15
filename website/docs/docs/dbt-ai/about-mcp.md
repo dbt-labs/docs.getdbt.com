@@ -24,7 +24,7 @@ There are two ways to access the dbt-mcp server: locally hosted or remotely host
 
 ## Server Access
 
-There are two ways to install dbt MCP: [local](#local) and [remote](#remote).
+You can install dbt MCP locally or remotely:
 
 - [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
 - [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
@@ -62,7 +62,7 @@ Allowing your client to utilize dbt commands through the MCP tooling could modif
 
 ### Semantic Layer
 
-To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-layer/dbt-sl)
+To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - `list_metrics`: Retrieves all defined metrics
 - `get_dimensions`: Gets dimensions associated with specified metrics
@@ -72,19 +72,21 @@ To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-
 
 ### Metadata Discovery
 
-To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/discovery-api)
+To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/discovery-api).
 
 - `get_mart_models`: Gets all mart models
 - `get_all_models`: Gets all models
 - `get_model_details`: Gets details for a specific model
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
-- `get_model_health`: Get health signals for a specific model
+- `get_model_health`: Gets health signals for a specific model
+- `get_exposures`: Gets all exposures
+- `get_exposure_details`: Gets details for a specific exposure or a list of exposures
 
 
 ### Administrative API
 
-To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-apis/admin-cloud-api)
+To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-apis/admin-cloud-api).
 
 - `list_jobs`: List all jobs in a dbt account
 - `get_job_details`: Get detailed information for a specific job including configuration and settings

@@ -22,7 +22,7 @@ The application's service principal represents the Entra ID application object. 
 
 1. [Register an Entra ID app](#register-a-microsoft-entra-id-app).
 2. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-3. [Add your Entra ID app to <Constant name="cloud" />](#add-your-azure-ad-app-to-dbt-cloud).
+3. [Add your Entra ID app to <Constant name="cloud" />](#connect-your-microsoft-entra-id-app-to-dbt).
 
 Once the Microsoft Entra ID app is added to <Constant name="cloud" />, it will act as a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in <Constant name="cloud" /> such as deployment runs and CI. The <Constant name="cloud" /> developers can then personally authenticate in <Constant name="cloud" /> from Azure DevOps. For more, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 

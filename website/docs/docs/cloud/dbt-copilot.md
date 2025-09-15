@@ -38,7 +38,6 @@ With automatic code generation and using natural language prompts, <Constant nam
 - No sensitive data persists on dbt Labs' systems, except for usage data.
 - Client data, including any personal or sensitive data inserted into the query by the user, is deleted within 30 days by OpenAI.
 - <Constant name="copilot" /> uses a best practice style guide to ensure consistency across teams.
-- <Constant name="copilot" /> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
 
 :::tip
 <Constant name="copilot" /> accelerates, but doesn’t replace, your analytics engineer. It helps deliver better data products faster, but always review AI-generated content, as it may be incorrect.

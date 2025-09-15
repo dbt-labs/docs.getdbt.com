@@ -42,7 +42,7 @@ You'll have two commands for your <Constant name="cloud" /> CI check to execute:
   ```shell
   dbt clone --select state:modified+,config.materialized:incremental,state:old
   ```
-1. Build all of the models that have been modified and their downstream dependencies:
+2. Build all of the models that have been modified and their downstream dependencies:
   ```shell
   dbt build --select state:modified+
   ```
