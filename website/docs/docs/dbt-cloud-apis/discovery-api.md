@@ -15,7 +15,7 @@ You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/d
 
 You can query the <Constant name="cloud" /> metadata:
 
-- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a <Constant name="cloud" /> project in production.
+- At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelHistoricalRuns`) of a <Constant name="cloud" /> project in production.
 - At the job level for results on a specific <Constant name="cloud" /> job run for a given resource type, like `models` or `test`.
 
 <Snippet path="metadata-api-prerequisites" />
@@ -77,7 +77,7 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 ## Types of project state
 
-There are two types of [project state](/docs/dbt-cloud-apis/project-state) at the environment level that you can query the results of:
+You can query these two types of [project state](/docs/dbt-cloud-apis/project-state) at the environment level:
 
 - **Definition** &mdash; The logical state of a dbt project’s [resources](/docs/build/projects) that update when the project is changed.
 - **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on)

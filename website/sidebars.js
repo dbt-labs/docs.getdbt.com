@@ -799,10 +799,54 @@ const sidebarSettings = {
               label: "Schema",
               link: {
                 type: "doc",
-                id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                id: "docs/dbt-cloud-apis/discovery-schema-about",
               },
               items: [
-                "docs/dbt-cloud-apis/discovery-schema-environment",
+                "docs/dbt-cloud-apis/discovery-schema-about",
+                {
+                  type: "category",
+                  label: "Environment (recommended)",
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                  },
+                  items: [
+                   "docs/dbt-cloud-apis/discovery-schema-environment",
+                   {
+                    type: "category",
+                    label: "Applied",
+                    link: {
+                      type: "doc",
+                      id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                    },
+                    items: [
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tests",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-sources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-snapshots",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-models",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-packages",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-owners",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
+                    ],
+                  },
+                    "docs/dbt-cloud-apis/discovery-schema-environment-definition",
+                  ],
+                },
+                // Uncomment to add Definition subpage, but need to make items non-empty
+                // {
+                //   type: "category",
+                //   label: "Definition",
+                //   items: [
+                //     // insert pages here
+                //   ],
+                // },
                 {
                   type: "category",
                   label: "Job",
@@ -828,21 +872,6 @@ const sidebarSettings = {
                     // "docs/dbt-cloud-apis/discovery-schema-job-macros",
                   ],
                 },
-                {
-                  type: "category",
-                  label: "Applied",
-                  items: [
-                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
-                  ],
-                },
-                // Uncomment to add Definition subpage, but need to make items non-empty
-                // {
-                //   type: "category",
-                //   label: "Definition",
-                //   items: [
-                //     // insert pages here
-                //   ],
-                // },
               ],
             },
           ],

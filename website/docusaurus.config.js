@@ -378,6 +378,11 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/mutiny.js",
     "/js/hide-forethought.js",
+    {
+      src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+      async: true,
+      defer: true,
+    },
   ],
   stylesheets: [
     "/css/fonts.css",

@@ -3,7 +3,7 @@ title: "Model Historical Runs object schema"
 sidebar_label: "Model historical runs"
 id: "discovery-schema-environment-applied-modelHistoricalRuns"
 ---
-
+ 
 import { NodeArgsTable, SchemaTable } from "./schema";
 
 The model historical runs object allows you to query information about a model's run history. 
@@ -18,7 +18,7 @@ When querying for `modelHistoricalRuns`, you can use the following arguments:
 
 ### Example query
 
-You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can specify the `environmentId` and the model's `uniqueId` to return the model and its execution history for the `customers` model in the `marketing` package, including performance metrics and test results for the last 20 times it was run, regardless of which job ran it.
 
 ```graphql
 query {

@@ -2912,3 +2912,8 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   background-color: var(--bg-neutral-primary-hover);
   color: var(--text-neutral-primary);
 }
+
+/* Hide reCaptcha badge */
+.grecaptcha-badge {
+  display: none;
+}

@@ -1,0 +1,62 @@
+---
+title: "Snapshots object schema"
+sidebar_label: "Snapshots"
+id: "discovery-schema-environment-applied-snapshots"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[Snapshots](/docs/build/snapshots) represent point-in-time copies of your data, allowing you to track historical changes. You can query your snapshots from the Discovery API.
+
+The [Example query](#example-query) illustrates a few fields you can query with the `snapshots` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `snapshots`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="snapshots" />
+
+### Example query
+
+You can specify the `environmentId`, filter by the database, and limit to the first 100 to see the first 100 snapshots in the `analytics` database, including their execution performance and status information:
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      snapshots(
+        filter: {
+          database: "analytics"
+        }, 
+        first: 100
+      ) {
+        edges {
+          node {
+            executionInfo {
+              compileCompletedAt
+              compileStartedAt
+              executeCompletedAt
+              executeStartedAt
+              executionTime
+              lastRunStatus
+              lastRunId
+            }
+            fqn
+            name
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `snapshots`, you can use the following fields:
+
+<SchemaTable nodeName="SnapshotAppliedStateNodeConnection" />
+
+### Key fields from nodes
+
+<SchemaTable nodeName="SnapshotAppliedStateNode" />
