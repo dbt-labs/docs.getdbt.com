@@ -70,7 +70,7 @@ so pick a slug that uniquely identifies your company.
 
 * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
 * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
-* **Relay State**: `<login slug>`
+* **Relay State**: `<login slug>` (Note: Relay state may be shown as optional in the Okta settings; it is _required_ for the dbt SSO configuration.) 
 * **Name ID format**: `Unspecified`
 * **Application username**: `Custom` / `user.getInternalProperty("id")`
 * **Update Application username on**: `Create and update`
