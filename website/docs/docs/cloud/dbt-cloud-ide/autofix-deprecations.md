@@ -24,6 +24,7 @@ To find and fix deprecations:
 9. Once complete, you'll notice a success message. You can click the **Review changes** to verify the changes.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Success"/>
 10. Click **Commit and Sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
+11. You are now ready to enable Fusion if you [meet the requirements](/docs/fusion/supported-features#requirements)!
 
 ## Related docs
 
