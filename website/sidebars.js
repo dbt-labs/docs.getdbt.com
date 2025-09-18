@@ -355,6 +355,7 @@ const sidebarSettings = {
             "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
             "docs/cloud/dbt-cloud-ide/git-commit-signing",
             "docs/cloud/dbt-cloud-ide/lint-format",
+            "docs/cloud/dbt-cloud-ide/autofix-deprecations",
             "docs/cloud/dbt-cloud-ide/develop-copilot",
           ],
         },
