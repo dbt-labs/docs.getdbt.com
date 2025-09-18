@@ -14,7 +14,7 @@ To find and fix deprecations:
 3. Click the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />.
 4. Select **Check & fix deprecations**.
      <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu to autofix deprecation warnings"/>
-5. The tool performs a `dbt parse —show-all-deprecations —no-partial-parse` and to find the deprecations in your project.
+5. The tool performs a `dbt parse —show-all-deprecations —no-partial-parse` to find the deprecations in your project.
 6. If you don't see the deprecations and **Autofix warnings** button then click the command history in the bottom left:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-history.png" width="90%" title="Access recent commands to see the autofix button"/>
 7. When the command history opens, click the **Autofix warnings** button:
