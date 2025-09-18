@@ -23,7 +23,7 @@ To find and fix deprecations:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
 9. Once complete, you'll notice a success message. You can click the **Review changes** to verify the changes.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Success"/>
-10. Click **Commit and Sync** to commit these changes to the project repository.
+10. Click **Commit and Sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
 
 ## Related docs
 
