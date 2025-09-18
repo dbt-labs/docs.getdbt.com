@@ -1,7 +1,7 @@
 ---
-title: "Autofix deprecation warnings"
-description: "Learn how you can use the Autofix tool in the Studio IDE to update project code."
-sidebar_label: "Autofix deprecations"
+title: "Fix deprecation warnings"
+description: "Learn how you can use the autofix tool in the Studio IDE to update project code."
+sidebar_label: "Fix deprecations"
 ---
 
 
@@ -20,8 +20,10 @@ To find and fix deprecations:
 7. When the command history opens, click the **Autofix warnings** button:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-button.png" width="90%" title="Learn what deprecations need to be auto fixed"/>
 8. When the proceed with autofix dialog opens, click **Continue** to begin resolving project deprecations and begin a follow-up parse to show remaining deprecations.
-    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/>
-9. Click the **Review changes** so you can verify the changes and click **Commit and Sync** to commit them to the project repository.
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
+9. Once comlplete, you'll notice a success message. You can click the **Review changes** to verify the changes.
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Success"/>
+10. Click **Commit and Sync** to commit these changes to the project repository.
 
 ## Related docs
 
