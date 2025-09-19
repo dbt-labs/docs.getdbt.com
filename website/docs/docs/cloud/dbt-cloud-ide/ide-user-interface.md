@@ -194,14 +194,14 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
 #### <Constant name="cloud_ide" /> Options menu
-  The <Constant name="cloud_ide" /> Options menu can be accessed by clicking on the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />. This menu contains global options:
+  Access the <Constant name="cloud_ide" /> Options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />. This menu contains global options:
 
-  * Viewing status details, including the <Constant name="cloud_ide" /> Status modal.
-  * Restarting the <Constant name="cloud_ide" />
+  * View status details, including the <Constant name="cloud_ide" /> Status modal
+  * Restart the <Constant name="cloud_ide" />
   * Reinstall dependencies
   * Clean dbt project
   * [Check & fix deprecations](/docs/cloud/dbt-cloud-ide/autofix-deprecations)
-  * Rollback your repo to remote, to refresh your git state and view status details
+  * Rollback your repo to remote to refresh your git state and view status details
   
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the IDE options menu to switch to dark or light mode, restart the IDE, rollback to remote, or view the IDE status"/>
