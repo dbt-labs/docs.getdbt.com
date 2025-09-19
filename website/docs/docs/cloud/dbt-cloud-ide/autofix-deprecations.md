@@ -5,7 +5,7 @@ sidebar_label: "Fix deprecations"
 ---
 
 
-You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="cloud_ide" />. You can run the autofix tool on any version of <Constant name="core" /> before you upgrade to Fusion!
+You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="cloud_ide" />. You can run the autofix tool on the [Compatible or Latest release track](/docs/dbt-versions/cloud-release-tracks) of <Constant name="core" /> before you upgrade to Fusion!
 
 To find and fix deprecations:
 
