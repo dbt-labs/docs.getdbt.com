@@ -15,16 +15,16 @@ To find and fix deprecations:
 4. Select **Check & fix deprecations**.
      <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu to autofix deprecation warnings"/>
         The tool performs a `dbt parse —show-all-deprecations —no-partial-parse` to find the deprecations in your project.
-6. If you don't see the deprecations and the **Autofix warnings** button, click the command history in the bottom left:
+5. If you don't see the deprecations and the **Autofix warnings** button, click the command history in the bottom left:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-history.png" width="90%" title="Access recent commands to see the autofix button"/>
-7. When the command history opens, click the **Autofix warnings** button:
+6. When the command history opens, click the **Autofix warnings** button:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-button.png" width="90%" title="Learn what deprecations need to be auto fixed"/>
-8. When the **Proceed with autofix** dialog opens, click **Continue** to begin resolving project deprecations and start a follow-up parse to show remaining deprecations.
+7. When the **Proceed with autofix** dialog opens, click **Continue** to begin resolving project deprecations and start a follow-up parse to show remaining deprecations.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
-9. Once complete, a success message appears. Click **Review changes** to verify the changes.
+8. Once complete, a success message appears. Click **Review changes** to verify the changes.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Success"/>
-10. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
-11. You are now ready to enable Fusion if you [meet the requirements](/docs/fusion/supported-features#requirements)!
+9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
+10. You are now ready to enable Fusion if you [meet the requirements](/docs/fusion/supported-features#requirements)!
 
 ## Related docs
 
