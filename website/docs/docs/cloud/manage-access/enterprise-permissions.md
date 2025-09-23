@@ -193,7 +193,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Security admin">
 
-Security admins have limited access to the security settings and policies for the <Constant name="cloud" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. This permission set is frequently paired with the [IT license-type](/docs/cloud/manage-access/seats-and-users#licenses). 
+Security admins have limited access to the security settings and policies for the <Constant name="cloud" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/cloud/manage-access/seats-and-users#licenses) inlcudes this permission set by default. 
 
 Notable features:
 - Security admin is an account-level set. 
