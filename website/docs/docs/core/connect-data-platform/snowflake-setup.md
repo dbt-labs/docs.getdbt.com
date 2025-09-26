@@ -107,6 +107,9 @@ To use key pair authentication, specify the `private_key_path` in your configura
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
 :::important Private keys in the dbt Fusion engine
+
+We recommend you use a modern PKCS#8 method for key pair authentication with Fusion.
+
 If you're using a 3DES-encrypted, headerless PEM body, you should either:
 - (Recommended) Re-export your existing key using a modern algorithm such as AES-256 encryption.
 - Add the `BEGIN` header and `END` footer to your PEM body. For example:

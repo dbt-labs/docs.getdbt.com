@@ -22,7 +22,7 @@
     - Username / Password
     - Native OAuth
     - External OAuth
-    - Key pair
+    - Key pair using a modern PKCS#8 method
     - MFA
 
   </Expandable>
