@@ -27,7 +27,9 @@ In this validation step, we ensure your config files follow the defined schema f
 
 * Semantic models
 * Identifiers
+<VersionBlock lastVersion="1.99">
 * Measures
+</VersionBlock>
 * Dimensions
 * Metrics
 
@@ -35,19 +37,38 @@ In this validation step, we ensure your config files follow the defined schema f
 
 This syntactic validation step occurs after we've built your semantic graph. The <Constant name="semantic_layer" />, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if measure names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
+<VersionBlock lastVersion="1.99">
 1. Check those semantic models with measures have a valid time dimension
 2. Check that there is only one primary identifier defined in each semantic model
 3. Dimension consistency
 4. Unique measures in semantic models
 5. Measures in metrics are valid
 7. Cumulative metrics are configured properly
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+1. Check those semantic models with simple metrics have a valid time dimension
+2. Check that there is only one primary identifier defined in each semantic model
+3. Dimension consistency
+4. Unique simple metrics in semantic models
+5. Simple metrics in metrics are valid <!--check if correct-->
+7. Cumulative metrics are configured properly
+</VersionBlock>
 
 ## Data platform
 
 This type of validation checks to see if the semantic definitions in your semantic graph exist in the underlying physical table. To test this, we run queries against your data platform to ensure the generated SQL for semantic models, dimensions, and metrics will execute. We run the following checks:
 
+<VersionBlock lastVersion="1.99">
 * Measures and dimensions exist
 * Underlying tables for data sources exist
 * Generated SQL for metrics will execute
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+* Simple metrics and dimensions exist
+* Underlying tables for data sources exist
+* Generated SQL for metrics will execute
+</VersionBlock>
 
 You can run semantic validations (against your semantic layer) in a CI job to guarantee any code changes made to dbt models don't break these metrics. For more information, refer to [semantic validation in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci).

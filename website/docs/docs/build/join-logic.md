@@ -6,7 +6,7 @@ sidebar_label: "Joins"
 tags: [Metrics, Semantic Layer]
 ---
 
-Joins are a powerful part of MetricFlow and simplify the process of making all valid dimensions available for your metrics at query time, regardless of where they are defined in different semantic models. With Joins, you can also create metrics using measures from different semantic models.
+Joins are a powerful part of MetricFlow and simplify the process of making all valid dimensions available for your metrics at query time, regardless of where they are defined in different semantic models. With Joins, you can also create metrics using <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0">simple metrics</VersionBlock> from different semantic models.
 
 Joins use `entities` defined in your semantic model configs as the join keys between tables. Assuming entities are defined in the semantic model, MetricFlow creates a graph using the semantic models as nodes and the join paths as edges to perform joins automatically. MetricFlow chooses the appropriate join type and avoids fan-out or chasm joins with other tables based on the entity types.
 
@@ -61,6 +61,8 @@ The following example uses two semantic models with a common entity and shows a 
 - `transactions`
 - `user_signup`
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 semantic_models:
   - name: transactions
@@ -83,6 +85,11 @@ semantic_models:
       - name: type
         type: categorical
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 - MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
   - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
@@ -143,7 +150,7 @@ where sales.user_id is not null or returns.user_id is not null;
 
 ## Multi-hop joins
 
-MetricFlow allows users to join measures and dimensions across a graph of entities by moving from one table to another within a graph. This is referred to as "multi-hop join". 
+MetricFlow allows users to join <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0">simple metrics</VersionBlock> and dimensions across a graph of entities by moving from one table to another within a graph. This is referred to as "multi-hop join". 
 
 MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
 - Enables complex data analysis without ambiguous paths.
@@ -156,6 +163,8 @@ For example, if you have two models, `country` and `region`, where customers are
 ![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
 
 Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -194,6 +203,11 @@ semantic_models:
       - name: country_name
         type: categorical
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 ### Query multi-hop joins
 

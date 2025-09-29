@@ -8,7 +8,9 @@ tags: [Metrics, Semantic Layer]
 
 Ratio allows you to create a ratio between two metrics. You simply specify a numerator and a denominator metric. Additionally, you can apply a dimensional filter to both the numerator and denominator using a constraint string when computing the metric. 
 
- The parameters, description, and type for ratio metrics are:
+The parameters, description, and type for ratio metrics are:
+
+<VersionBlock lastVersion="1.99">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -22,8 +24,15 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `filter` | Optional filter for the numerator or denominator. | Optional | String |
 | `alias` | Optional alias for the numerator or denominator. | Optional | String |
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
+
 The following displays the complete specification for ratio metrics, along with an example.
 
+<VersionBlock lastVersion="1.99">
 <File name="models/metrics/file_name.yml">
  
 ```yaml
@@ -44,6 +53,12 @@ metrics:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
 ## Ratio metrics example
@@ -53,6 +68,7 @@ These examples demonstrate how to create ratio metrics in your model. They cover
 #### Example 1 
 This example is a basic ratio metric that calculates the ratio of food orders to total orders:
 
+<VersionBlock lastVersion="1.99">
 <File name="models/metrics/file_name.yml">
  
 ```yaml
@@ -67,8 +83,16 @@ metrics:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
+
 #### Example 2 
 This example is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator. Note that in order to add these attributes, you'll need to use an explicit key for the name attribute too.
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml">
  
@@ -89,6 +113,12 @@ metrics:
         alias: ny_orders
 ```
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
 
 ## Ratio metrics using different semantic models
 
@@ -143,6 +173,8 @@ on
 
 Users can define constraints on input metrics for a ratio metric by applying a filter directly to the input metric, like so:
 
+<VersionBlock lastVersion="1.99">
+
 <File name="models/metrics/file_name.yml">
  
 ```yaml
@@ -160,6 +192,12 @@ metrics:
         name: distinct_purchasers
 ```
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
 
 Note the `filter` and `alias` parameters for the metric referenced in the numerator. 
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 

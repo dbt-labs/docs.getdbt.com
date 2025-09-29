@@ -8,7 +8,9 @@ tags: [Metrics, Semantic Layer]
 
 In MetricFlow, derived metrics are metrics created by defining an expression using other metrics. They enable you to perform calculations with existing metrics. This is helpful for combining metrics and doing math functions on aggregated columns, like creating a profit metric. 
 
- The parameters, description, and type for derived metrics are: 
+The parameters, description, and type for derived metrics are: 
+
+<VersionBlock lastVersion="1.99">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -23,8 +25,15 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `filter` | Optional filter to apply to the metric. | Optional | String |  
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional | String |
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
 
 The following displays the complete specification for derived metrics, along with an example.
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 metrics:
@@ -41,9 +50,18 @@ metrics:
           offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Optional
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
+
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
 ## Derived metrics example
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 metrics:
@@ -86,6 +104,12 @@ metrics:
           alias: order_total_prev_month
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 ## Derived metric offset
 
 To perform calculations using a metric's value from a previous time period, you can add an offset parameter to a derived metric. For example, if you want to calculate period-over-period growth or track user retention, you can use this metric offset.
@@ -93,6 +117,8 @@ To perform calculations using a metric's value from a previous time period, you 
 **Note:** You must include the [`metric_time` dimension](/docs/build/dimensions#time) when querying a derived metric with an offset window.
 
 The following example displays how you can calculate monthly revenue growth using a 1-month offset window:
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 - name: customer_retention
@@ -108,9 +134,17 @@ The following example displays how you can calculate monthly revenue growth usin
         alias: active_customers_prev_month
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 ### Offset windows and granularity
 
 You can query any granularity and offset window combination. The following example queries a metric with a 7-day offset and a monthly grain:
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 - name: d7_booking_change
@@ -127,9 +161,15 @@ You can query any granularity and offset window combination. The following examp
         alias: bookings_7_days_ago
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For dbt Core, you can use the `mf query` prefix. 
 
-1. Retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
+1. Retrieve the raw, unaggregated dataset with the specified <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> and dimensions at the smallest level of detail, which is currently 'day'.
 2. Then, perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
    For example, to calculate `d7_booking_change` for July 2017: 
    - First, sum up all the booking values for each day in July to calculate the bookings metric.

@@ -53,20 +53,30 @@ For a semantic model, there are three main pieces of metadata:
 
 * [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
+<VersionBlock lastVersion="1.99">
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
+</VersionBlock>
 
+<VersionBlock lastVersion="1.99">
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
+</VersionBlock>
 
 ### Metrics 
 
-Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
+<VersionBlock lastVersion="1.99">
+Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics. Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+Metrics, which is a key concept, are functions that combine simple metrics, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses various aggregation types, such as average, sum, and count distinct, to create metrics. Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
+</VersionBlock>
 
 MetricFlow supports different metric types:
 
 - [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
+- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0"> simple metrics</VersionBlock>, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
 
 ## Use case
@@ -124,6 +134,7 @@ In this example, a measure named `order_total` is defined based on the order_tot
 
 The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
 
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -167,13 +178,19 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
+```
+</VersionBlock>
 
-  ```
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 </TabItem>
 <TabItem value="example2" label="More dimensions example">
 
 Similarly, you could then add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -201,6 +218,12 @@ semantic_models:
       - name: is_food_order
         type: categorical
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 </TabItem>
 <TabItem value="example3" label="Advanced example">
 
@@ -225,6 +248,8 @@ group by 1
 
 MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 metrics:
   - name: food_order_pct_of_order_total_returning
@@ -237,6 +262,12 @@ metrics:
     filter: |
       {{ Dimension('customer__is_new_customer') }} = false
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 </TabItem>
 </Tabs>
 
@@ -259,7 +290,7 @@ If you have not invested in data consistency, that is okay. The <Constant name="
 
 MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
 </DetailsToggle>
-
+<VersionBlock lastVersion="1.99">
 <DetailsToggle alt_header="Why not just make metrics the same as measures?">
 One principle of MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).
 
@@ -268,6 +299,7 @@ Many metrics are constructed from reused measures and in some cases constructed 
 Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.
 
 </DetailsToggle>
+</VersionBlock>
 <DetailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
 The dbt <Constant name="semantic_layer" />, powered by MetricFlow,  builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.
 

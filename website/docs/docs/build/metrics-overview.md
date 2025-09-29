@@ -13,6 +13,7 @@ Metrics must be defined in a YAML file &mdash; either within the same file as yo
 
 The keys for metrics definitions are:
 
+<VersionBlock lastVersion="1.99">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -24,8 +25,25 @@ The keys for metrics definitions are:
 | `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional | Dict |
 | `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional | String |
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--removed type_params-->
+
+| Parameter | Description | Required | Type |
+| --------- | ----------- | ---- | ---- |
+| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required | String |
+| `description` | Describe your metric.   | Optional | String |
+| `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required | String |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required | String |
+| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional | Dict |
+| `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional | String |
+
+</VersionBlock>
+
 Here's a complete example of the metrics spec configuration:
 
+<VersionBlock lastVersion="1.99">
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
@@ -46,6 +64,12 @@ metrics:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
@@ -62,6 +86,9 @@ The granularity can be set using the `time_granularity` parameter on the metric,
 - You have a semantic model called `orders` with a time dimension called `order_time`.
 - You want the `orders` metric to roll up to `monthly` by default; however, you want the option to look at these metrics hourly.
 - You can set the `time_granularity` parameter on the `order_time` dimension to `hour`, and then set the `time_granularity` parameter in the metric to `month`.
+
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -86,6 +113,13 @@ metrics:
     time_granularity: month -- Optional, defaults to day
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
+
 Remember that metrics can be defined in the same YAML files as your semantic models but must be defined as a separate top-level section and not nested within the `semantic_models` key. Or you can define metrics in their dedicated separate YAML files located in any subdirectories within the same dbt project repository.
 
 </VersionBlock>
@@ -93,6 +127,8 @@ Remember that metrics can be defined in the same YAML files as your semantic mod
 ## Conversion metrics
 
 [Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -121,9 +157,18 @@ metrics:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 ## Cumulative metrics
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -143,9 +188,17 @@ metrics:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 ## Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -164,6 +217,12 @@ metrics:
           alias: cost
 ```
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 <!-- not supported
 ### Expression metrics
@@ -186,6 +245,8 @@ metrics:
 ## Ratio metrics 
 
 [Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `filter` string  can be applied to both the numerator and denominator or separately to the numerator or denominator.
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -211,6 +272,12 @@ metrics:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 ## Simple metrics
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
@@ -218,6 +285,8 @@ metrics:
 - `name` &mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the <Constant name="semantic_layer" /> API.
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
+
+<VersionBlock lastVersion="1.99">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -236,6 +305,12 @@ metrics:
       {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
 ```
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 ## Filters
 

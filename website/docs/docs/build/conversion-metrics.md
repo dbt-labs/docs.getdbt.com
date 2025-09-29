@@ -221,7 +221,7 @@ You now have a dataset where every conversion is connected to a visit event. To 
 
 ### Step 4: Aggregate and calculate
 
-Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities measures. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
+Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock>. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
 
 ```sql
 select
