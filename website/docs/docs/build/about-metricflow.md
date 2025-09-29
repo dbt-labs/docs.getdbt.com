@@ -394,6 +394,7 @@ where
 group by 1
 ```
 
+
 MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
 <VersionBlock lastVersion="1.99">
