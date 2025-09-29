@@ -7,15 +7,21 @@ tags: [Metrics, Semantic Layer]
 pagination_next: null
 ---
 
+<VersionBlock lastVersion="1.99">
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
+</VersionBlock>
 
- The parameters, description, and type for simple metrics are:
+<VersionBlock firstVersion="2.0">
+<!--insert Simple metrics intro for version 2.0-->
+</VersionBlock>
+
+The parameters, description, and type for simple metrics are:
 
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
-
+<VersionBlock lastVersion="1.99">
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
 | `name` | The name of the metric. | Required | String |
@@ -30,7 +36,16 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
 | `measure:join_to_timespine` | Indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
+
 The following displays the complete specification for simple metrics, along with an example.
+
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 metrics:
@@ -48,6 +63,12 @@ metrics:
 
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
 <!-- create_metric not supported yet
@@ -58,6 +79,9 @@ If you've already defined the measure using the `create_metric: true` parameter,
 -->
 
 ## Simple metrics example
+
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
   metrics: 
@@ -82,6 +106,11 @@ If you've already defined the measure using the `create_metric: true` parameter,
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
 
 ## Related docs
 - [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)

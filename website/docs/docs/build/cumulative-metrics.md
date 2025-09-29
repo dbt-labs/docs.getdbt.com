@@ -10,13 +10,25 @@ Cumulative metrics aggregate a measure over a given accumulation window. If no w
 
 Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and types for cumulative metrics are: 
 
+<VersionBlock lastVersion="1.99">
+
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `measure::name` means the `name` parameter is nested under `measure`.
 :::
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--confirm if this should be simple metric-->
+
+:::tip
+Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `measure::name` means the `name` parameter is nested under `measure`.
+:::
+</VersionBlock>
+
 ## Parameters
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 | Parameter   | <div style={{width:'350px'}}>Description</div>   | Required | Type      |
 |-------------|---------------------------------------------------|----------|-----------|
@@ -33,8 +45,6 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `cumulative_type_params::window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
 | `cumulative_type_params::grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
 | `cumulative_type_params::period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
-
-</VersionBlock>
 
 <Expandable alt_header="Explanation of type_params::measure">
   
@@ -55,12 +65,20 @@ The`type_params::measure` configuration can be written in different ways:
   ```
 </Expandable>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec parameters-->
+</VersionBlock>
+
+
 ### Complete specification
 The following displays the complete specification for cumulative metrics, along with an example:
 
-<File name='models/marts/sem_semantic_model_name.yml'>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
+
+<File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
 metrics:
@@ -79,9 +97,13 @@ metrics:
         join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
 
 ```
-</VersionBlock>
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 ## Cumulative metrics example
 
@@ -89,7 +111,7 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 The following example shows how to define cumulative metrics in a YAML file:
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 - `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `type params` to specify the measure `order_total` to be aggregated.
 
@@ -99,9 +121,14 @@ The following example shows how to define cumulative metrics in a YAML file:
 
 </VersionBlock>
 
-<File name='models/marts/sem_semantic_model_name.yml'>
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
+
+<File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
 metrics:
@@ -133,11 +160,15 @@ metrics:
       cumulative_type_params:
         grain_to_date: month
 ```
-</VersionBlock>
 
 </File>
+</VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 ### Granularity options
 
@@ -230,6 +261,10 @@ group by
 
 </VersionBlock>
 
+<VersionBlock firstVersion="2.0">
+<!--insert 2.0 version of Granularity optiosn section-->
+</VersionBlock>
+
 ### Window options
 
 This section details examples of when to specify and not to specify window options.
@@ -243,6 +278,8 @@ If a window option is specified, MetricFlow applies a sliding window to the unde
 
 Suppose the underlying measure `customers` is configured to count the unique customers making orders at the Jaffle shop.
 
+<VersionBlock lastVersion="1.99">
+
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -254,9 +291,15 @@ measures:
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 We can write a cumulative metric `weekly_customers` as such:
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
@@ -281,6 +324,10 @@ From the sample YAML example, note the following:
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
 If you remove `window`, the measure will accumulate over all time.
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert 2.0 version of this example-->
 </VersionBlock>
 
 
@@ -308,6 +355,8 @@ Suppose you (a subscription-based company for the sake of this example) have an 
 
 Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following YAML file shows creating a cumulative metrics to obtain current revenue and the total number of active subscriptions as a cumulative sum:
 
+
+<VersionBlock lastVersion="1.99">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -335,8 +384,14 @@ metrics:
       measure: subscription_count
 
 ```
-
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 </Expandable>
 
 ### Grain to date
@@ -345,6 +400,7 @@ You can choose to specify a grain to date in your cumulative metric configuratio
 
 For example, let's consider an underlying measure of `order_total.`
 
+<VersionBlock lastVersion="1.99">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -354,13 +410,18 @@ For example, let's consider an underlying measure of `order_total.`
 ```
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
+
 We can compare the difference between a 1-month window and a monthly grain to date. 
 - The cumulative metric in a window approach applies a sliding window of 1 month
 - The grain to date by month resets at the beginning of each month.
 
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 <File name='models/marts/sem_semantic_model_name.yml'>
-
-<VersionBlock firstVersion="1.9">
 
 ```yaml
 metrics:
@@ -382,12 +443,17 @@ metrics:
         grain_to_date: month # Resets at the beginning of each month
         period_agg: first # Optional. Defaults to first. Accepted values: first|last|average
 ```
-</VersionBlock>
+
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 Cumulative metric with grain to date:
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -400,6 +466,12 @@ Cumulative metric with grain to date:
       grain_to_date: month
 ```
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 <Expandable alt_header="Expand toggle to view how the SQL compiles">
 
@@ -444,7 +516,6 @@ order by
 ```
 
 </Expandable>
-</VersionBlock>
 
 
 ## SQL implementation example
