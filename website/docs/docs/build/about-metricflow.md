@@ -182,7 +182,97 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+models:
+  - name: orders    # The name of the semantic model
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+      group: orders-group
+      config:
+        meta:
+          owner: "@data-team"
+          description: "A model containing order data. The grain of the table is the order id."
+    
+    agg_time_dimension: metric_time # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        entity:
+          type: primary
+          name: order_id
+          description: "Primary key for orders table"
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        entity:
+          type: foreign
+          name: customer
+          description: "Foreign key linking to customers"
+          label: "Customer"
+      
+      # Time dimension - metric_time
+      - name: ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: metric_time
+          description: "Date when the order was placed"
+          label: "Order Date"
+    
+    metrics:
+      # Simple metric for order total revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+
+  - name: customers    # The name of the second semantic model
+    semantic_model:
+      enabled: true
+      name: customers_semantic_model
+      group: customers-group
+      config:
+        meta:
+          owner: "@data-team"
+          description: "Customer dimension table. The grain of the table is one row per customer."
+    
+    agg_time_dimension: first_ordered_at
+    
+    columns:
+      # Primary entity - customer
+      - name: customer_id
+        entity:
+          type: primary
+          name: customer
+          description: "Primary key for customers table"
+          label: "Customer"
+      
+      # Categorical dimension - is_new_customer (with expression)
+      - name: first_ordered_at
+        dimension:
+          type: categorical
+          name: is_new_customer
+          description: "Indicates if this is a new customer"
+          label: "Is New Customer"
+        # Note: In the new spec, expressions would be handled differently
+        # This represents the logic: case when first_ordered_at is not null then true else false end
+      
+      # Time dimension - first_ordered_at
+      - name: first_ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: first_ordered_at
+          description: "Date of customer's first order"
+          label: "First Order Date"
+```
+
 </VersionBlock>
 
 </TabItem>
@@ -221,7 +311,65 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+models:
+  - name: orders    # The name of the semantic model
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+      group: orders-group
+      config:
+        meta:
+          owner: "@data-team"
+          description: "A model containing order data. The grain of the table is the order id."
+    
+    agg_time_dimension: metric_time # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        entity:
+          type: primary
+          name: order_id
+          description: "Primary key for orders table"
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        entity:
+          type: foreign
+          name: customer
+          description: "Foreign key linking to customers"
+          label: "Customer"
+      
+      # Time dimension - metric_time
+      - name: ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: metric_time
+          description: "Date when the order was placed"
+          label: "Order Date"
+      
+      # Categorical dimension - is_food_order
+      - name: is_food_order
+        dimension:
+          type: categorical
+          name: is_food_order
+          description: "Indicates if this is a food order"
+          label: "Is Food Order"
+    
+    metrics:
+      # Simple metric for order total revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+```
+
 </VersionBlock>
 
 </TabItem>
@@ -265,7 +413,126 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+models:
+  - name: orders    # The name of the semantic model
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+      group: orders-group
+      config:
+        meta:
+          owner: "@data-team"
+          description: "A model containing order data. The grain of the table is the order id."
+    
+    agg_time_dimension: metric_time # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        entity:
+          type: primary
+          name: order_id
+          description: "Primary key for orders table"
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        entity:
+          type: foreign
+          name: customer
+          description: "Foreign key linking to customers"
+          label: "Customer"
+      
+      # Time dimension - metric_time
+      - name: ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: metric_time
+          description: "Date when the order was placed"
+          label: "Order Date"
+      
+      # Categorical dimension - is_food_order
+      - name: is_food_order
+        dimension:
+          type: categorical
+          name: is_food_order
+          description: "Indicates if this is a food order"
+          label: "Is Food Order"
+    
+    metrics:
+      # Simple metric for total order revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+      
+      # Simple metric for food order revenue
+      - name: food_order
+        description: "Revenue from food orders only"
+        label: "Food Order Revenue"
+        type: simple
+        agg: sum
+        expr: "case when is_food_order = true then order_total else 0 end"
+
+  - name: customers    # The name of the second semantic model
+    semantic_model:
+      enabled: true
+      name: customers_semantic_model
+      group: customers-group
+      config:
+        meta:
+          owner: "@data-team"
+          description: "Customer dimension table. The grain of the table is one row per customer."
+    
+    agg_time_dimension: first_ordered_at
+    
+    columns:
+      # Primary entity - customer
+      - name: customer_id
+        entity:
+          type: primary
+          name: customer
+          description: "Primary key for customers table"
+          label: "Customer"
+      
+      # Categorical dimension - is_new_customer (with expression)
+      - name: first_ordered_at
+        dimension:
+          type: categorical
+          name: is_new_customer
+          description: "Indicates if this is a new customer"
+          label: "Is New Customer"
+        # Note: In the new spec, expressions would be handled differently
+        # This represents the logic: case when first_ordered_at is not null then true else false end
+      
+      # Time dimension - first_ordered_at
+      - name: first_ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: first_ordered_at
+          description: "Date of customer's first order"
+          label: "First Order Date"
+
+# Top-level metrics for cross-model metrics
+metrics:
+  - name: food_order_pct_of_order_total_returning
+    description: "Revenue from food orders from returning customers"
+    label: "Food % of Order Total"
+    type: ratio
+    numerator:
+      name: food_order
+      filter: "{{ Dimension('customer__is_new_customer') }} = false"
+    denominator:
+      name: order_total
+      filter: "{{ Dimension('customer__is_new_customer') }} = false"
+```
+
 </VersionBlock>
 
 </TabItem>
