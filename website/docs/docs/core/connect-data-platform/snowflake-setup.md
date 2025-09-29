@@ -110,7 +110,7 @@ dbt can specify a `private_key` directly as a string instead of a `private_key_p
 
 We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Fusion's security requirements don't support legacy 3DES encryption or headerless key formats that work with dbt Core. Older key formats may cause authentication failures.
 
-If you encounter the error, `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` your private key is in the wrong format. You have two options:
+If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 
 - (Recommended fix) Re-export your key with modern encryption:
 
