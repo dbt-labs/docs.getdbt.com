@@ -1,5 +1,10 @@
 const sidebarSettings = {
   docs: [
+    {
+      type: 'html',
+      value: 'About',
+      className: 'sidebar-title',
+    },
     "docs/introduction",
     {
       type: "category",
@@ -15,14 +20,17 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Get started with dbt",
-      collapsed: true,
-      link: { type: "doc", id: "docs/get-started-dbt" },
+      label: "About the dbt platform",
+      link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
       items: [
-        "docs/get-started-dbt",
-        "docs/configuration-checklist",
+        "docs/cloud/about-cloud/architecture",
+        "docs/cloud/about-cloud/browsers",
+        "docs/cloud/about-cloud/change-your-dbt-cloud-theme",
+        "docs/cloud/about-cloud/dbt-cloud-features",
+        "docs/cloud/about-cloud/access-regions-ip-addresses",
+        "docs/cloud/about-cloud/tenancy",
       ],
-    }, // Get started quickstarts directory
+    }, // About dbt Cloud directory
     {
       type: "category",
       label: "Supported data platforms",
@@ -37,18 +45,20 @@ const sidebarSettings = {
       ],
     }, // Supported data platforms directory
     {
+      type: 'html',
+      value: 'Get started',
+      className: 'sidebar-title',
+    },
+    {
       type: "category",
-      label: "About the dbt platform",
-      link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
+      label: "Get started with dbt",
+      collapsed: true,
+      link: { type: "doc", id: "docs/get-started-dbt" },
       items: [
-        "docs/cloud/about-cloud/architecture",
-        "docs/cloud/about-cloud/browsers",
-        "docs/cloud/about-cloud/change-your-dbt-cloud-theme",
-        "docs/cloud/about-cloud/dbt-cloud-features",
-        "docs/cloud/about-cloud/access-regions-ip-addresses",
-        "docs/cloud/about-cloud/tenancy",
+        "docs/get-started-dbt",
+        "docs/configuration-checklist",
       ],
-    }, // About dbt Cloud directory
+    }, // Get started quickstarts directory
     {
       type: "category",
       label: "Set up dbt",
@@ -216,7 +226,6 @@ const sidebarSettings = {
                 "docs/cloud/secure/vcs-privatelink",
               ],
             }, // PrivateLink
-            "docs/cloud/billing",
           ],
         },
         {
@@ -316,6 +325,11 @@ const sidebarSettings = {
         "docs/running-a-dbt-project/run-your-dbt-projects",
         "docs/running-a-dbt-project/using-threads",
       ],
+    },
+    {
+      type: 'html',
+      value: 'Build and develop',
+      className: 'sidebar-title',
     },
     {
       type: "category",
@@ -588,6 +602,11 @@ const sidebarSettings = {
       ],
     },
     {
+      type: 'html',
+      value: 'Deploy and explore',
+      className: 'sidebar-title',
+    },
+    {
       type: "category",
       label: "Deploy dbt",
       collapsed: true,
@@ -756,165 +775,30 @@ const sidebarSettings = {
       ],
     },
     {
+      type: 'html',
+      value: 'dbt AI',
+      className: 'sidebar-title',
+    },
+    {
       type: "category",
-      label: "dbt APIs",
+      label: "Copilot",
       collapsed: true,
-      link: { type: "doc", id: "docs/dbt-cloud-apis/overview" },
+      link: { type: "doc", id: "docs/cloud/dbt-copilot" },
       items: [
-        "docs/dbt-cloud-apis/overview",
-        {
-          type: "category",
-          label: "API Access",
-          link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
-          items: [
-            "docs/dbt-cloud-apis/authentication",
-            "docs/dbt-cloud-apis/user-tokens",
-            "docs/dbt-cloud-apis/service-tokens",
-          ],
-        },
-        {
-          type: "category",
-          label: "Administrative API",
-          link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
-          items: [
-            "docs/dbt-cloud-apis/admin-cloud-api",
-            {
-              type: "link",
-              label: "API v2",
-              href: "/dbt-cloud/api-v2",
-            },
-            {
-              type: "link",
-              label: "API v3",
-              href: "/dbt-cloud/api-v3",
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Discovery API",
-          link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
-          items: [
-            "docs/dbt-cloud-apis/discovery-api",
-            "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
-            "docs/dbt-cloud-apis/project-state",
-            "docs/dbt-cloud-apis/discovery-querying",
-            {
-              type: "category",
-              label: "Schema",
-              link: {
-                type: "doc",
-                id: "docs/dbt-cloud-apis/discovery-schema-about",
-              },
-              items: [
-                "docs/dbt-cloud-apis/discovery-schema-about",
-                {
-                  type: "category",
-                  label: "Environment (recommended)",
-                  link: {
-                    type: "doc",
-                    id: "docs/dbt-cloud-apis/discovery-schema-environment",
-                  },
-                  items: [
-                   "docs/dbt-cloud-apis/discovery-schema-environment",
-                   {
-                    type: "category",
-                    label: "Applied",
-                    link: {
-                      type: "doc",
-                      id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
-                    },
-                    items: [
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tests",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-sources",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-snapshots",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-models",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-packages",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-owners",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
-                      "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
-                    ],
-                  },
-                    "docs/dbt-cloud-apis/discovery-schema-environment-definition",
-                  ],
-                },
-                // Uncomment to add Definition subpage, but need to make items non-empty
-                // {
-                //   type: "category",
-                //   label: "Definition",
-                //   items: [
-                //     // insert pages here
-                //   ],
-                // },
-                {
-                  type: "category",
-                  label: "Job",
-                  link: {
-                    type: "doc",
-                    id: "docs/dbt-cloud-apis/discovery-schema-job",
-                  },
-                  items: [
-                    "docs/dbt-cloud-apis/discovery-schema-job",
-                    "docs/dbt-cloud-apis/discovery-schema-job-model",
-                    "docs/dbt-cloud-apis/discovery-schema-job-models",
-                    "docs/dbt-cloud-apis/discovery-schema-job-source",
-                    "docs/dbt-cloud-apis/discovery-schema-job-sources",
-                    "docs/dbt-cloud-apis/discovery-schema-job-seed",
-                    "docs/dbt-cloud-apis/discovery-schema-job-seeds",
-                    // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
-                    "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
-                    "docs/dbt-cloud-apis/discovery-schema-job-test",
-                    "docs/dbt-cloud-apis/discovery-schema-job-tests",
-                    "docs/dbt-cloud-apis/discovery-schema-job-exposure",
-                    "docs/dbt-cloud-apis/discovery-schema-job-exposures",
-                    // "docs/dbt-cloud-apis/discovery-schema-job-macro",
-                    // "docs/dbt-cloud-apis/discovery-schema-job-macros",
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Semantic Layer APIs",
-          link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
-          items: [
-            "docs/dbt-cloud-apis/sl-api-overview",
-            "docs/dbt-cloud-apis/sl-graphql",
-            "docs/dbt-cloud-apis/sl-jdbc",
-            "docs/dbt-cloud-apis/sl-python",
-          ],
-        },
+        "docs/cloud/dbt-copilot",
+        "docs/cloud/enable-dbt-copilot",
+        "docs/cloud/use-dbt-copilot",
+        "docs/cloud/copilot-styleguide",
+        "docs/cloud/copilot-chat-in-studio",
+        "docs/cloud/dbt-copilot-faqs",
       ],
     },
-            {
-          type: "category",
-          label: "Copilot",
-          collapsed: true,
-          link: { type: "doc", id: "docs/cloud/dbt-copilot" },
-          items: [
-           "docs/cloud/dbt-copilot",
-           "docs/cloud/enable-dbt-copilot",
-            "docs/cloud/use-dbt-copilot",
-            "docs/cloud/copilot-styleguide",
-            "docs/cloud/copilot-chat-in-studio",
-            "docs/cloud/dbt-copilot-faqs",
-          ],
-        },
     {
       type: "category",
       label: "dbt MCP",
       collapsed: true,
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
-       
           "docs/dbt-ai/about-mcp",
           "docs/dbt-ai/setup-local-mcp",
           "docs/dbt-ai/setup-remote-mcp",
@@ -922,6 +806,11 @@ const sidebarSettings = {
           "docs/dbt-ai/integrate-mcp-cursor",
           "docs/dbt-ai/integrate-mcp-claude",
           ],
+    },
+    {
+      type: 'html',
+      value: 'Additional tools',
+      className: 'sidebar-title',
     },
     {
       type: "category",
@@ -971,7 +860,20 @@ const sidebarSettings = {
         },
       ],
     },
-
+    {
+      type: "category",
+      label: "Cost management",
+      link: {
+        type: "doc",
+        id: "docs/cloud/cost-management/cost-management",
+      },
+      items: ["docs/cloud/cost-management/cost-management"],
+    },
+    {
+      type: 'html',
+      value: 'Release information',
+      className: 'sidebar-title',
+    },
     {
       type: "category",
       label: "Available dbt versions",
@@ -998,55 +900,166 @@ const sidebarSettings = {
             },
           ],
         },
-        {
-          type: "category",
-          label: "dbt release notes",
-          link: {
-            type: "doc",
-            id: "docs/dbt-versions/dbt-cloud-release-notes",
-          },
-          items: [
-            "docs/dbt-versions/dbt-cloud-release-notes",
-            "docs/dbt-versions/dbt-cloud-release-notes-gen",
-            "docs/dbt-versions/compatible-track-changelog",
-            "docs/dbt-versions/2024-release-notes",
-            "docs/dbt-versions/2023-release-notes",
-            "docs/dbt-versions/2022-release-notes",
-            {
-              type: "autogenerated",
-              dirName: "docs/dbt-versions/release-notes",
-            },
-          ],
-        },
       ],
     },
-    "docs/dbt-support",
     {
       type: "category",
-      label: "Cost management",
+      label: "dbt release notes",
       link: {
         type: "doc",
-        id: "docs/cloud/cost-management/cost-management",
-      },
-      items: ["docs/cloud/cost-management/cost-management"],
-    },
-    {
-      type: "category",
-      label: "Frequently asked questions",
-      link: {
-        type: "generated-index",
-        title: "Frequently asked questions",
-        description:
-          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@getdbt.com or clicking on the chat widget, and we’ll do our best to help out.",
-        slug: "/docs/faqs",
+        id: "docs/dbt-versions/dbt-cloud-release-notes",
       },
       items: [
+        "docs/dbt-versions/dbt-cloud-release-notes",
+        "docs/dbt-versions/dbt-cloud-release-notes-gen",
+        "docs/dbt-versions/compatible-track-changelog",
+        "docs/dbt-versions/2024-release-notes",
+        "docs/dbt-versions/2023-release-notes",
+        "docs/dbt-versions/2022-release-notes",
         {
           type: "autogenerated",
-          dirName: "faqs",
+          dirName: "docs/dbt-versions/release-notes",
         },
       ],
     },
+    {
+      type: 'html',
+      value: ' ',
+      className: 'sidebar-title',
+    },
+  ],
+  apis: [
+      "docs/dbt-cloud-apis/overview",
+      {
+        type: "category",
+        label: "API Access",
+        link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
+        items: [
+          "docs/dbt-cloud-apis/authentication",
+          "docs/dbt-cloud-apis/user-tokens",
+          "docs/dbt-cloud-apis/service-tokens",
+        ],
+      },
+      {
+        type: "category",
+        label: "Administrative API",
+        link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
+        items: [
+          "docs/dbt-cloud-apis/admin-cloud-api",
+          {
+            type: "link",
+            label: "API v2",
+            href: "/dbt-cloud/api-v2",
+          },
+          {
+            type: "link",
+            label: "API v3",
+            href: "/dbt-cloud/api-v3",
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Discovery API",
+        link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
+        items: [
+          "docs/dbt-cloud-apis/discovery-api",
+          "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
+          "docs/dbt-cloud-apis/project-state",
+          "docs/dbt-cloud-apis/discovery-querying",
+          {
+            type: "category",
+            label: "Schema",
+            link: {
+              type: "doc",
+              id: "docs/dbt-cloud-apis/discovery-schema-about",
+            },
+            items: [
+              "docs/dbt-cloud-apis/discovery-schema-about",
+              {
+                type: "category",
+                label: "Environment (recommended)",
+                link: {
+                  type: "doc",
+                  id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                },
+                items: [
+                 "docs/dbt-cloud-apis/discovery-schema-environment",
+                 {
+                  type: "category",
+                  label: "Applied",
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                  },
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-tests",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-sources",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-snapshots",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-seeds",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-resources",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-models",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposures",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-exposure-tile",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-tags",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-packages",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-owners",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
+                  ],
+                },
+                  "docs/dbt-cloud-apis/discovery-schema-environment-definition",
+                ],
+              },
+                // Uncomment to add Definition subpage, but need to make items non-empty
+                // {
+                //   type: "category",
+                //   label: "Definition",
+                //   items: [
+                //     // insert pages here
+                //   ],
+                // },
+              {
+                type: "category",
+                label: "Job",
+                link: {
+                  type: "doc",
+                  id: "docs/dbt-cloud-apis/discovery-schema-job",
+                },
+                items: [
+                  "docs/dbt-cloud-apis/discovery-schema-job",
+                  "docs/dbt-cloud-apis/discovery-schema-job-model",
+                  "docs/dbt-cloud-apis/discovery-schema-job-models",
+                  "docs/dbt-cloud-apis/discovery-schema-job-source",
+                  "docs/dbt-cloud-apis/discovery-schema-job-sources",
+                  "docs/dbt-cloud-apis/discovery-schema-job-seed",
+                  "docs/dbt-cloud-apis/discovery-schema-job-seeds",
+                  // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
+                  "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
+                  "docs/dbt-cloud-apis/discovery-schema-job-test",
+                  "docs/dbt-cloud-apis/discovery-schema-job-tests",
+                  "docs/dbt-cloud-apis/discovery-schema-job-exposure",
+                  "docs/dbt-cloud-apis/discovery-schema-job-exposures",
+                  // "docs/dbt-cloud-apis/discovery-schema-job-macro",
+                  // "docs/dbt-cloud-apis/discovery-schema-job-macros",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Semantic Layer APIs",
+        link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
+        items: [
+          "docs/dbt-cloud-apis/sl-api-overview",
+          "docs/dbt-cloud-apis/sl-graphql",
+          "docs/dbt-cloud-apis/sl-jdbc",
+          "docs/dbt-cloud-apis/sl-python",
+        ],
+      },
   ],
   reference: [
     "reference/references-overview",
@@ -1776,6 +1789,29 @@ const sidebarSettings = {
         },
       ],
     },
+  ],
+  faqs: [
+    {
+      type: "category",
+      label: "Frequently asked questions",
+      link: {
+        type: "generated-index",
+        title: "Frequently asked questions",
+        description:
+          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@getdbt.com or clicking on the chat widget, and we’ll do our best to help out.",
+        slug: "/docs/faqs",
+      },
+      items: [
+        {
+          type: "autogenerated",
+          dirName: "faqs",
+        },
+      ],
+    },
+  ],
+  support: [
+    "docs/dbt-support",
+    "docs/cloud/billing",
   ],
 };
 

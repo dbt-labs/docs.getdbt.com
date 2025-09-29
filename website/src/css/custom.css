@@ -2913,6 +2913,27 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   color: var(--text-neutral-primary);
 }
 
+/* Sidebar Title headers */
+
+.sidebar-title {
+  font-weight: var(--ifm-font-weight-semibold);
+  display: block;
+  opacity: 90%;
+  padding: 8px 0;
+  margin: 12px 0;
+  text-align: left; /* Optional: Center the title */
+}
+
+/* Light mode */
+html[data-theme='light'] .sidebar-title {
+  border-top: 1px solid var(--color-nav-text); /* lighter border for light mode */
+}
+
+/* Dark mode */
+html[data-theme='dark'] .sidebar-title {
+  border-top: 1px solid var(--color-nav-text); /* white border for dark mode */
+  color: var(--text-inverse-primary);
+}
 /* Hide reCaptcha badge */
 .grecaptcha-badge {
   display: none;

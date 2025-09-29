@@ -15,7 +15,8 @@ sidebar: null
 
 <Constant name="cloud" /> provides multiple options for multi-factor authentication (MFA), which adds an extra layer of security to username and password logins. MFA is available across <Constant name="cloud" /> plans for users with username and password logins only. The available MFA methods are:
 
-- SMS verification code (US-based phone numbers only)
+- SMS verification code
+    - Currently, only phone numbers with the North American Numbering Plan (NANP) +1 country code are supported.
 - Authenticator app
 - Webauthn-compliant security key
 
