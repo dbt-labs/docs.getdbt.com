@@ -121,6 +121,7 @@ my-snowflake-db:
       role: [user role]
 
       # Keypair config
+      # For dbt Fusion engine, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
       private_key_path: [path/to/private.key]
       # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
