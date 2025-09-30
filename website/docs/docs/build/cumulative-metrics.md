@@ -1,32 +1,53 @@
 ---
 title: "Cumulative metrics"
 id: cumulative
-description: "Use Cumulative metrics to aggregate a measure over a given window."
+description: "Use Cumulative metrics to aggregate a metric over a given window."
 sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
+
+<VersionBlock firstVersion="2.0">
+
+Cumulative metrics aggregate values from other metrics across a defined accumulation window. If you don’t specify a window, the metric accumulates values over the entire available time range.
+
+Use cumulative metrics when you want to calculate rolling or period-to-date values, such as weekly active users or month-to-date revenue.
+
+- You must create a [time spine model](/docs/build/metricflow-time-spine) before you define cumulative metrics so thta MetricFlow can join time-based aggregations to the time spine.
+- If a cumulative metric depends on metrics or dimensions defined in a different semantic model, set cumulative metrics under the top level `metrics` key.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and types for cumulative metrics are: 
 
-<VersionBlock lastVersion="1.99">
-
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `measure::name` means the `name` parameter is nested under `measure`.
 :::
 
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--confirm if this should be simple metric-->
-
-:::tip
-Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `measure::name` means the `name` parameter is nested under `measure`.
-:::
 </VersionBlock>
 
 ## Parameters
+
+<VersionBlock firstVersion="2.0">
+
+| Parameter   | <div style={{width:'350px'}}>Description</div>   | Required | Type      |
+|-------------|---------------------------------------------------|----------|-----------|
+| `name`  | The name of the metric.       | Required  | String |
+| `description`       | The description of the metric.     | Optional  | String |
+| `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  | String |  
+| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required  | String |
+| `input_metric`     | The name of the metric being referenced. Supports the following nested parameters: `name`, `filter`, and `alias`. | Required  | Dict |
+| `input_metric::name`     | The name of the metric being referenced. | Required  | String |
+| `input_metric::filter`     | The [filter](/docs/build/metrics-overview#filters) to apply to the metric. | Optional  | String |
+| `input_metric::alias`     | The alias to apply to the metric. | Optional  | String |
+| `join_to_timespine` | Boolean indicating if the aggregated metric should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  | Boolean |
+| `window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
+| `grain_to_date`   | Sets the accumulation grain, such as `hour`, `day`, `week`, `month`, `year`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
+| `period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.9" lastVersion="1.99">
 
@@ -67,14 +88,9 @@ The`type_params::measure` configuration can be written in different ways:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
-<!--insert new yaml spec parameters-->
-</VersionBlock>
-
-
 ### Complete specification
-The following displays the complete specification for cumulative metrics, along with an example:
 
+The following displays the complete specification for cumulative metrics, along with an example:
 
 <VersionBlock firstVersion="1.9" lastVersion="1.99">
 
@@ -102,7 +118,22 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+metrics:
+  - name: my_advanced_cumulative_metric # required 
+    description: my_description # optional
+    label: my_label # required
+    type: cumulative # required --  cumulative | ratio | derived | conversion
+    # if cumulative, optionally can supply window or grain_to_date, but not both
+    window: 1 week # (interval)
+    # grain_to_date: hour # hour | day | week | month | year | ...
+    input_metric: # required, must refer to metric name or metric dict
+      name: my_metric_name_from_another_semantic_model
+      filter: my_filter
+      alias: my_metric_name_a_week_ago_in_another_semantic_model
+```
+
 </VersionBlock>
 
 ## Cumulative metrics example
@@ -122,7 +153,41 @@ The following example shows how to define cumulative metrics in a YAML file:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+- `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `input_metric` to specify the simple metric `order_total` to be aggregated.
+
+- `cumulative_order_total_l1m`: Calculates the trailing 1-month cumulative order total. Uses `window` parameter to specify a window of 1 month.
+
+- `cumulative_order_total_mtd`: Calculates the month-to-date cumulative order total. Uses `grain_to_date` parameter to specify a grain of `month`.
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+# Top level metrics key is for metrics excluding simple metrics
+metrics:
+  - name: cumulative_order_total
+    label: "Cumulative order total (All-Time)"    
+    description: "The cumulative value of all orders"
+    type: cumulative
+    input_metric: order_total
+  
+  - name: cumulative_order_total_l1m
+    label: "Cumulative order total (L1M)"   
+    description: "Trailing 1-month cumulative order total"
+    type: cumulative
+    window: 1 month
+    input_metric: order_total
+  
+  - name: cumulative_order_total_mtd
+    label: "Cumulative order total (MTD)"
+    description: "The month-to-date value of all orders"
+    type: cumulative
+    grain_to_date: month
+    input_metric: order_total
+```
+
+</File>
+
 </VersionBlock>
 
 
@@ -131,6 +196,7 @@ The following example shows how to define cumulative metrics in a YAML file:
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
+# Top level metrics key is for metrics excluding simple metrics
 metrics:
   - name: cumulative_order_total
     label: Cumulative order total (All-Time)    
@@ -164,13 +230,9 @@ metrics:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
-</VersionBlock>
+### Granularity options
 
 <VersionBlock firstVersion="1.9" lastVersion="1.99">
-
-### Granularity options
 
 Use the `period_agg` parameter with `first()`, `last()`, and `average()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
@@ -195,6 +257,35 @@ In the following example, we define a cumulative metric, `cumulative_revenue`, t
 
 In this example, `period_agg` is set to `first`, which chooses the first value for the selected granularity window. To query `cumulative_revenue` by week, use the following query syntax: 
 - `dbt sl query --metrics cumulative_revenue --group-by metric_time__week`
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+Use the `period_agg` parameter with `first`, `last`, and `average` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
+- For other metrics, we use the `date_trunc` function to implement granularity. 
+- However, cumulative metrics are non-additive (values can't be added up), so we can't use the `date_trunc` function to change their time grain granularity.
+- By default, we take the first value of the period. You can change this by specifying a different function using the `period_agg` parameter.
+
+In the following example, we define a cumulative metric, `cumulative_revenue`, that calculates the cumulative revenue for all orders:
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+metrics:
+  - name: cumulative_revenue
+    description: "The cumulative revenue for all orders."
+    label: "Cumulative revenue (all-time)"
+    type: cumulative
+    input_metric: revenue
+    period_agg: first # Optional. Defaults to first. Accepted values: first|last|average
+```
+</File>
+
+In this example, `period_agg` is set to `first`, which chooses the first value for the selected granularity window. To query `cumulative_revenue` by week, use the following query syntax: 
+- `dbt sl query --metrics cumulative_revenue --group-by metric_time__week`
+
+</VersionBlock>
 
 <Expandable alt_header="Expand toggle to view how the SQL compiles">
 
@@ -259,15 +350,106 @@ group by
 
 </Expandable>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--insert 2.0 version of Granularity optiosn section-->
-</VersionBlock>
-
 ### Window options
 
 This section details examples of when to specify and not to specify window options.
+
+<VersionBlock firstVersion="2.0">
+
+- When a window is specified, MetricFlow applies a sliding window to the underlying simple metric, such as tracking weekly active users with a 7-day window.
+- Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
+
+<Expandable alt_header="Example of window specified">
+
+If a window option is specified, MetricFlow applies a sliding window to the underlying metric.
+
+Suppose the underlying metrics, `customers`, is configured to count the unique customers making orders at the Jaffle shop:
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+models:
+  - name: customers
+    semantic_model:
+      enabled: true
+      ...
+
+    metrics:
+      - name: customers
+        description: "Unique customers making orders at the Jaffle shop"
+        label: "Customers"
+        type: simple
+        agg: count_distinct
+        expr: customer_id
+```
+</File>
+
+We can write a cumulative metric `weekly_customers` as such:
+
+
+<File name='models/marts/fct_orders.yml'>
+
+``` yaml
+metrics:
+  - name: weekly_customers
+    description: "Weekly active customers with a 7-day sliding window"
+    label: "Weekly Active Customers"
+    type: cumulative
+    input_metric: customers
+    window: 7 days
+    period_agg: first # This will choose the first value of the granularity window when changing the granularity.
+```
+</File>
+
+From the sample YAML example, note the following:
+
+* `type`: Specify cumulative to indicate the type of metric. 
+* `input_metric`: Specify the metric to be aggregated (in this case, `customers`).
+* `window`: Specify the accumulation window (in this case, 7 days).
+* `period_agg`: Specify the aggregation function (in this case, `first`).
+
+For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
+
+If you remove `window`, the metric will accumulate over all time.
+
+
+</Expandable>
+
+<Expandable alt_header="Example of window not specified">
+
+Suppose you (a subscription-based company for the sake of this example) have an event-based log table with the following columns: 
+
+* `date`: a date column 
+* `user_id`: (integer) an ID specified for each user that is responsible for the event 
+* `subscription_plan`: (integer) a column that indicates a particular subscription plan associated with the user. 
+* `subscription_revenue`: (integer) a column that indicates the value associated with the subscription plan.  
+* `event_type`: (integer) a column that populates with +1 to indicate an added subscription, or -1 to indicate a deleted subscription. 
+* `revenue`: (integer) a column that multiplies `event_type` and `subscription_revenue` to depict the amount of revenue added or lost for a specific date. 
+
+Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following YAML file shows creating a cumulative metrics to obtain current revenue and the total number of active subscriptions as a cumulative sum using the `revenue` and `subscription_count` metrics:
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+metrics:
+  - name: current_revenue
+    description: "Current revenue"
+    label: "Current Revenue"
+    type: cumulative
+    input_metric: revenue
+  - name: active_subscriptions
+    description: "Count of active subscriptions"
+    label: "Active Subscriptions"
+    type: cumulative
+    input_metric: subscription_count
+```
+</File>
+
+</Expandable>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 - When a window is specified, MetricFlow applies a sliding window to the underlying measure, such as tracking weekly active users with a 7-day window.
 - Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
@@ -277,8 +459,6 @@ This section details examples of when to specify and not to specify window optio
 If a window option is specified, MetricFlow applies a sliding window to the underlying measure.
 
 Suppose the underlying measure `customers` is configured to count the unique customers making orders at the Jaffle shop.
-
-<VersionBlock lastVersion="1.99">
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
@@ -291,15 +471,7 @@ measures:
 ```
 </File>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
-</VersionBlock>
-
 We can write a cumulative metric `weekly_customers` as such:
-
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
@@ -324,22 +496,6 @@ From the sample YAML example, note the following:
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
 If you remove `window`, the measure will accumulate over all time.
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--insert 2.0 version of this example-->
-</VersionBlock>
-
-
-From the sample YAML example, note the following:
-
-* `type`: Specify cumulative to indicate the type of metric. 
-* `type_params`: Configure the cumulative metric by providing a `measure` and optionally add a `window` or `grain_to_date` configuration.
-
-For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
-
-If you remove `window`, the measure will accumulate over all time.
-
 </Expandable>
 
 <Expandable alt_header="Example of window not specified">
@@ -355,8 +511,6 @@ Suppose you (a subscription-based company for the sake of this example) have an 
 
 Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following YAML file shows creating a cumulative metrics to obtain current revenue and the total number of active subscriptions as a cumulative sum:
 
-
-<VersionBlock lastVersion="1.99">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -386,21 +540,19 @@ metrics:
 ```
 </File>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
-</VersionBlock>
-
 </Expandable>
+
+</VersionBlock>
 
 ### Grain to date
 
 You can choose to specify a grain to date in your cumulative metric configuration to accumulate a metric from the start of a grain (such as week, month, or year). When using a window, such as a month, MetricFlow will go back one full calendar month. However, grain to date will always start accumulating from the beginning of the grain, regardless of the latest date of data.
 
-For example, let's consider an underlying measure of `order_total.`
 
 <VersionBlock lastVersion="1.99">
+
+For example, let's consider an underlying measure of `order_total.`
+
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -413,7 +565,24 @@ For example, let's consider an underlying measure of `order_total.`
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+For example, let's consider an underlying simple metric `order_total` defined within a semantic model:
+
+```yaml
+models:
+  - name: fct_orders
+    semantic_model:
+      enabled: true
+    
+    # Simple metrics defined within semantic model
+    metrics:
+      - name: order_total
+        description: "Sum of order total amounts"
+        type: simple
+        agg: sum
+        expr: order_total
+```
+
 </VersionBlock>
 
 We can compare the difference between a 1-month window and a monthly grain to date. 
@@ -448,7 +617,21 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+# Top-level metrics key for cumulative metrics
+metrics:
+  - name: cumulative_order_total_mtd
+    label: "Cumulative order total (MTD)"
+    description: "The month-to-date value of all orders"
+    type: cumulative
+    grain_to_date: month
+    input_metric: order_total
+```
+</File>
+
 </VersionBlock>
 
 Cumulative metric with grain to date:
@@ -470,7 +653,20 @@ Cumulative metric with grain to date:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+<File name='models/marts/fct_orders.yml'>
+
+```yaml
+# Top-level metrics key for cumulative metrics
+metrics:
+  - name: orders_last_month_to_date
+    label: "Orders month to date"
+    description: "Month-to-date count of orders"
+    type: cumulative
+    grain_to_date: month
+    input_metric: order_count
+```
+</File>
 </VersionBlock>
 
 <Expandable alt_header="Expand toggle to view how the SQL compiles">
