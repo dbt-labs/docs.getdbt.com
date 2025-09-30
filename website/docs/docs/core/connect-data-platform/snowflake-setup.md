@@ -106,10 +106,9 @@ To use key pair authentication, specify the `private_key_path` in your configura
 
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
-:::important
-**dbt Fusion engine requires modern key formats**
+#### dbt Fusion engine key formats
 
-We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Fusion's security requirements don't support legacy 3DES encryption or headerless key formats that work with dbt Core. Older key formats may cause authentication failures.
+Fusion requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Using older key formats may cause authentication failures.
 
 If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 
@@ -128,7 +127,6 @@ If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8
   < your existing encrypted private key contents >
   -----END ENCRYPTED PRIVATE KEY-----
   ```
-:::
 
 <VersionBlock firstVersion="1.9">
 
