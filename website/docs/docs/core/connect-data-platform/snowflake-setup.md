@@ -122,7 +122,7 @@ If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8
 
 - (Temporary workaround) Add the `BEGIN` header and `END` footer to your PEM body:
 
-  ```
+  ```bash
   -----BEGIN ENCRYPTED PRIVATE KEY-----
   < your existing encrypted private key contents >
   -----END ENCRYPTED PRIVATE KEY-----
