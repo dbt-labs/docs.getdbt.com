@@ -2,7 +2,6 @@
 title: "Databricks and Apache Iceberg"
 id: databricks-iceberg-support
 sidebar_label: "Databricks Iceberg support"
-unlisted: true
 description: Understand Databricks support for Apache Iceberg.
 ---
 

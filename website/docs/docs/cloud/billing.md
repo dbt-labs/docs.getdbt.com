@@ -201,7 +201,7 @@ Enterprise plan billing information is not available in the <Constant name="clou
 
 ### Legacy plans
 
-Customers who purchased the <Constant name="cloud" /> Starter plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
+Customers who purchased the <Constant name="cloud" /> Starter plan (formerly Team) plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
 
 :::note Legacy <Constant name="semantic_layer" />
 

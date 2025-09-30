@@ -265,7 +265,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
    - The **jwks_uri** field maps to the `external_oauth_jws_keys_url` field in Snowflake.
 3. Navigate to the resource server in previous steps.
    - The **Application ID URI** maps to the `external_oauth_audience_list` field in Snowflake.
-4. Run the configurations. Be sure the admin who created the Microsoft apps is also a user in Snowflake, or the configuration will fail.
+4. Run the configurations. You need both an Entra ID admin and a data warehouse admin to complete the setup. If these admins are not the same person, they should work together to complete the configuration.
 
 
 ### 6. Configuring the integration in dbt
