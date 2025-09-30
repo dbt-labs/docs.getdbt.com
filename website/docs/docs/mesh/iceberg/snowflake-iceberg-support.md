@@ -205,7 +205,7 @@ catalogs:
         table_format: iceberg
         catalog_type: built_in
         adapter_properties:
-          change_tracking: 'True'
+          change_tracking: True
 
 ```
 
@@ -217,7 +217,7 @@ catalogs:
 {{
     config(
         materialized='table',
-        catalog_name = catalog_horizon
+        catalog_name = 'catalog_horizon'
 
     )
 }}
