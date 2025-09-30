@@ -130,7 +130,7 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 <Tabs>
 <TabItem value="example1" label="Revenue example">
 
-In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
+In this example, a metric named `order_total` is defined based on the order_total column in the `orders` table. 
 
 The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
 
