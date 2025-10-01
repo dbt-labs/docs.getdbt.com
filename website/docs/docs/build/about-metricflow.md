@@ -14,10 +14,24 @@ MetricFlow handles SQL query construction and defines the specification for dbt 
 
 Before you start, consider the following guidelines:
 
+<VersionBlock lastVersion="1.99">
+
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+- Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).<!--replace link with new yaml spec once available-->
+- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+
+</VersionBlock>
+
 
 ## MetricFlow
 
@@ -73,11 +87,22 @@ Metrics, which is a key concept, are functions that combine simple metrics, cons
 
 MetricFlow supports different metric types:
 
+<VersionBlock lastVersion="1.99">
+
 - [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0"> simple metrics</VersionBlock>, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
+- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
+- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.99">
+- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
+- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two simple metrics, like revenue per customer.
+- [Simple](/docs/build/simple) &mdash; Metrics that aggregate data directly from warehouse columns.
+</VersionBlock> 
 
 ## Use case
 
