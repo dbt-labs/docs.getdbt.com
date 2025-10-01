@@ -57,9 +57,7 @@ If validation fails, MetricFlow surfaces errors for users to address before exec
 
 ## Example
 
-The following example uses two semantic models with a common entity and shows a MetricFlow query that requires a join between the two semantic models. The two semantic models are:
-- `transactions`
-- `user_signup`
+The following example uses two semantic models with a common entity and shows a MetricFlow query that requires a join between the two semantic models: `transactions` and `user_signup`.
 
 <VersionBlock lastVersion="1.99">
 
@@ -87,8 +85,46 @@ semantic_models:
 ```
 </VersionBlock>
 
+<! -- pick up here -->
+
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+<File name='models/model.yml'>
+
+```yaml
+models:
+  - name: transactions
+    semantic_model:
+      enabled: true
+    columns:
+      - name: id
+        entity:
+          name: transaction            
+          type: primary
+      - name: user_id
+        entity:
+          name: user
+          type: foreign
+      - name: purchase_price
+    metrics:
+      - name: average_purchase_price
+        type: simple
+        agg: average
+        expr: purchase_price
+
+  - name: user_signup
+    semantic_model:
+      enabled: true
+    columns:
+      - name: user_id
+        entity:
+          name: user
+          type: primary
+      - name: type
+        dimension:
+          type: categorical
+```
+</File>
 </VersionBlock>
 
 - MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
