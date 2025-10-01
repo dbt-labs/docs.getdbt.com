@@ -70,6 +70,7 @@ id: "setup-local-mcp"
       | `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools                                |
       | `DISABLE_DBT_CODEGEN`    | `true`  | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package) |
       | `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools    |
+      | `DISABLE_DBT_PLATFORM`   | `false` | Set this to `true` to disable platform tools (SL, Discovery, Admin API, and SQL) |
     </TabItem>
 
     </Tabs>
