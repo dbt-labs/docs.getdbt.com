@@ -96,7 +96,7 @@ MetricFlow supports different metric types:
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
 </VersionBlock>
 
-<VersionBlock firstVersion="1.99">
+<VersionBlock firstVersion="2.0">
 - [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
 - [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
