@@ -1,7 +1,7 @@
 ---
 title: "Simple metrics"
 id: simple
-description: "Use simple metrics to directly reference a single measure."
+description: "Use simple metrics to aggregate data directly from columns in your semantic models."
 sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
 pagination_next: null
@@ -12,7 +12,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert Simple metrics intro for version 2.0-->
+Simple metrics are direct aggregations over columns in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
 </VersionBlock>
 
 The parameters, description, and type for simple metrics are:
@@ -22,6 +22,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 :::
 
 <VersionBlock lastVersion="1.99">
+
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
 | `name` | The name of the metric. | Required | String |
@@ -39,7 +40,22 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec parameters-->
+
+| Parameter | Description | Required | Type |
+| --------- | ----------- | ---- | ---- |
+| `name` | The name of the metric. | Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `name` | The metric you're referencing. | Required | String |
+| `alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the metric. | Optional | String |
+| `filter` | Optional `filter` applied to the metric. | Optional | String |
+| `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `average`, `median`, `count_distinct`, `percentile`, and `sum_boolean`. | Required | String |
+| `expr` | Either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional | String |
+| `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model. | Optional | String |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
+| `join_to_timespine` | Indicates if the aggregated metric should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
+
 </VersionBlock>
 
 The following displays the complete specification for simple metrics, along with an example.
@@ -66,7 +82,26 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+metrics:
+  - name: The metric name # Required
+    description: The metric description # Optional
+    label: The value that will be displayed in downstream tools # Required
+    type: simple  # Required
+    agg: count_distinct # Required
+    expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
+    join_to_timespine: true
+    fill_nulls_with: 0
+
+  - name: The metric name
+    description: The metric description
+    label: The value that will be displayed in downstream tools
+    type: simple
+    agg: count_distinct
+    agg_time_dimension: my_other_time_dimension_column # Optional, if not using the default time dimension
+```
+
 </VersionBlock>
 
 For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
@@ -79,7 +114,6 @@ If you've already defined the measure using the `create_metric: true` parameter,
 -->
 
 ## Simple metrics example
-
 
 <VersionBlock lastVersion="1.99">
 
@@ -106,10 +140,33 @@ If you've already defined the measure using the `create_metric: true` parameter,
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```
+
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec parameters-->
+
+```yaml
+metrics:
+  - name: customers
+    description: Count of customers
+    type: simple
+    label: Count of customers
+    agg: count
+    expr: customers 
+    fill_nulls_with: 0
+    join_to_timespine: true
+    alias: customer_count
+    filter: "{{ Dimension('customer__customer_total') }} >= 20"
+
+  - name: large_orders
+    description: "Order with order values over 20."
+    type: simple
+    label: Large orders
+    agg: count
+    expr: orders 
+    filter: "{{ Dimension('customer__order_total_dim') }} >= 20"
+```
+
 </VersionBlock>
 
 ## Related docs
