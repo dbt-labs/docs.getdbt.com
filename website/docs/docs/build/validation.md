@@ -19,7 +19,7 @@ You can run validations from <Constant name="cloud" /> or the command line with 
 
 ```bash
 dbt sl validate # dbt platform users
-mf validate-configs # dbt platform users
+mf validate-configs # dbt Core users
 ```
 </VersionBlock>
 
@@ -28,7 +28,7 @@ mf validate-configs # dbt platform users
 You can run validations from <Constant name="cloud" /> or the command line with the following [MetricFlow command](/docs/build/metricflow-commands):
 
 ```bash
-mf validate-configs # dbt platform users
+mf validate-configs # dbt Fusion users
 ```
 </VersionBlock>
 
