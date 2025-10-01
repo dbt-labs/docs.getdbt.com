@@ -4,19 +4,33 @@ description: "Learn how to add user-defined functions (UDFs) to your dbt project
 id: "udfs"
 ---
 
+# User-defined functions <Lifecycle status="beta" />
 
-User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside <Constant name="core" />.
+<!--Confirm how users can get this feature-->
+:::info Beta feature 
+If you are interested in getting access to this feature, please contact us. 
+:::
 
-Note that only basic SQL UDFs are currently supported in <Constant name="core" />.
+User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside the <Constant name="dbt_platform" />.
 
-<Constant name="core" /> creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
+Note that only basic SQL UDFs are currently supported in dbt.<!--Is this correct?-->
+
+dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
+
+## Supported adapters
+
+UDFs are supported in the following adapters:
+
+- BigQuery
+- Snowflake
+- Redshift
 
 ## Defining UDFs in dbt
 
-To define UDFs in <Constant name="core" />, refer to the following steps:
+To define UDFs in the <Constant name="dbt_platform" />, refer to the following steps:
 
 1. Create a SQL file under the `functions` directory. For example:
-    <!--Please check if the sample is correct-->
+
     <File name='functions/is_positive_int.sql'>
 
     ```sql
@@ -36,19 +50,40 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
 
     ```yml
     functions:
-    - name: is_positive_int # required
+      - name: is_positive_int # required
         description: My UDF that determines if a string represents a positive (+) integer # required
         config:
             schema: udf_schema
             database: udf_db
         arguments: 
             - name: a_string
-                type: string
-                description: The string that I want to check if it's representing a positive integer (like "10") 
+              type: string
+              description: The string that I want to check if it's representing a positive integer (like "10") 
         return_type: # required
             type: boolean # required
     ```
     </File>
+
+    <Expandable alt_header="Supported UDF types">
+
+    You can use these values for the `type` property when you define a function in a YAML file.
+
+    - `scalar` - Returns a single value per row
+    - `aggregate` - Returns a single value per group, aggregating several rows
+    - `table functions` - Returns a table result
+    <br></br>
+    For example:
+
+    ```yml
+    functions:
+	  - name: string 
+	    description: string
+	    type: scalar # default value
+    ```
+
+    If not explicitly specified, the `type` property defaults to `scalar`.
+
+    </Expandable>
 
     The rendered `CREATE` UDF statement depends on which adapter you’re using. For example:
 
@@ -74,8 +109,8 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     ```
     </TabItem>
     </Tabs>
-<!-- Are steps 3-4 now supported?-->
-3. Reference the UDF in a model using the `{{ ref(…) }}` macro. For example:
+
+3. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
 
     <File name="models/my_model.sql">
 
@@ -83,13 +118,13 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     select
 
     maybe_positive_int_column,
-        {{ ref('is_positive_int') }}('maybe_positive_int_column')
+        {{ function('is_positive_int') }}('maybe_positive_int_column')
 
     from {{ ref('a_model_i_like') }}
     ```
     </File>
 
-4. Run `dbt compile`. In the following example, the `{{ ref('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
+4. Run `dbt compile`. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
     <File name="models/my_model.sql">
 
@@ -103,7 +138,7 @@ To define UDFs in <Constant name="core" />, refer to the following steps:
     ```
     </File>
 
-    In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definition.
+    In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definitions.
 
 ## Listing and selecting UDFs
 
