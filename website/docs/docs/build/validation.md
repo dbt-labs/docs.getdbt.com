@@ -54,12 +54,14 @@ In this validation step, we ensure your config files follow the defined schema f
 
 ## Semantic syntax
 
+<VersionBlock firstVersion="2.0">
 :::info
 In the initial <Constant name="fusion" /> release, semantic syntax validation is only available in these environments:
 - **<Constant name="cloud_ide" />**
 - **Orchestration** in the <Constant name="dbt_platform" />
 - Local development with a valid `dbt_cloud.yaml` config
 :::
+</VersionBlock>
 
 This syntactic validation step occurs after we've built your semantic graph. The <Constant name="semantic_layer" />, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
