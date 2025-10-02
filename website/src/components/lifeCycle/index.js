@@ -27,6 +27,7 @@ const statusColors = {
   beta: '#bab2ff',
   ga: '#ff9e5f',
   preview: '#ff9e5f',
+  private: '#968F8E',
 };
 
 const fontColors = {
@@ -38,6 +39,7 @@ const fontColors = {
   ga: "#030711",
   new: "#ffff",
   beta: "#ffff",
+  private: "#030711",
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place
