@@ -215,7 +215,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Stakeholder and Read-Only">
 
-The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings or billing information. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
@@ -223,6 +223,7 @@ Notable features:
 - Read-only access to user and group information.
 - No access to the IDE. 
 - Can access <Constant name="explorer" />.
+- No access to audit logs (which contain sensitive account information like user settings).
 
 </Expandable>
 <Expandable alt_header="Team admin">
@@ -243,6 +244,7 @@ The Viewer permission set is frequently paired with the [Read-only license-type]
 Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
+- **Read-only access to audit logs** (unlike Stakeholder/Read-Only).
 - No access to the IDE. 
 - Can access <Constant name="explorer" />
 
