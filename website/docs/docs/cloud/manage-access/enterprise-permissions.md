@@ -221,9 +221,9 @@ Notable features:
 - Stakeholder is a project-level set.
 - Read-only access to projects, environments, jobs, and runs.
 - Read-only access to user and group information.
-- No access to the IDE. 
 - Can access <Constant name="explorer" />.
-- No access to audit logs (which contain sensitive account information like user settings).
+- No access to the IDE.
+- No access to certain sensitive audit log content (such as user settings and account-level changes).
 
 </Expandable>
 <Expandable alt_header="Team admin">
@@ -244,7 +244,7 @@ The Viewer permission set is frequently paired with the [Read-only license-type]
 Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
-- **Read-only access to audit logs** (unlike Stakeholder/Read-Only).
+- **Read-only access to audit logs** including account-level information (unlike Stakeholder/Read-Only).
 - No access to the IDE. 
 - Can access <Constant name="explorer" />
 
