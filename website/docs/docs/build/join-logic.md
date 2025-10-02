@@ -83,9 +83,15 @@ semantic_models:
       - name: type
         type: categorical
 ```
+
+- MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
+  - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
+- Since `user_id` is a foreign key in `transactions` and a primary key in `user_signup`, MetricFlow performs a left join where `transactions` joins `user_signup` to access the `average_purchase_price` measure defined in `transactions`.
+- To query dimensions from different semantic models, add a double underscore (or dunder) to the dimension name after joining the entity in your editing tool. The following query, `user_id__type` is included as a dimension using the `--group-by` flag (`type` is the dimension).
+
 </VersionBlock>
 
-<! -- pick up here -->
+<!-- pick up here -->
 
 <VersionBlock firstVersion="2.0">
 
@@ -93,9 +99,10 @@ semantic_models:
 
 ```yaml
 models:
-  - name: transactions
+  - name: transactions_model
     semantic_model:
       enabled: true
+      name: transactions
     columns:
       - name: id
         entity:
@@ -106,15 +113,19 @@ models:
           name: user
           type: foreign
       - name: purchase_price
+        entity:
+          name: purchase_price
+          type: foreign
     metrics:
       - name: average_purchase_price
         type: simple
         agg: average
         expr: purchase_price
 
-  - name: user_signup
+  - name: user_model
     semantic_model:
       enabled: true
+      name: user_signup
     columns:
       - name: user_id
         entity:
@@ -125,19 +136,20 @@ models:
           type: categorical
 ```
 </File>
-</VersionBlock>
 
 - MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
-  - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
-- Since `user_id` is a foreign key in `transactions` and a primary key in `user_signup`, MetricFlow performs a left join where `transactions` joins `user_signup` to access the `average_purchase_price` measure defined in `transactions`.
+  - Note that the `average_purchase_price` simple metric is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
+- Since `user_id` is a foreign key in `transactions` and a primary key in `user_signup`, MetricFlow performs a left join where `transactions` joins `user_signup` to access the `average_purchase_price` simple metric defined in `transactions`.
 - To query dimensions from different semantic models, add a double underscore (or dunder) to the dimension name after joining the entity in your editing tool. The following query, `user_id__type` is included as a dimension using the `--group-by` flag (`type` is the dimension).
 
+</VersionBlock>
+
 ```yaml 
-dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__type # In <Constant name="cloud" />
+dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt platform />
 ```
 
 ```yaml 
-mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In <Constant name="core" />
+mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Core
 ```
 
 #### SQL examples
@@ -198,9 +210,9 @@ For example, if you have two models, `country` and `region`, where customers are
 
 ![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
 
-Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
-
 <VersionBlock lastVersion="1.99">
+
+Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
 
 ```yaml
 semantic_models:
@@ -242,7 +254,83 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` simple metric from the sales table and the `country_name` dimension from the `country_dim` table.
+
+<File name='models/model.yml'>
+
+```yaml
+models:
+  - name: sales_model
+    semantic_model:
+      enabled: true
+      name: sales
+    
+    agg_time_dimension: first_ordered_at
+    
+    columns:
+      - name: id
+        entity:
+          type: primary
+      
+      - name: user_id
+        entity:
+          type: foreign
+      
+      - name: purchase_price
+        # Column for the simple metric expression
+      
+      - name: first_ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: metric_time
+    
+    metrics:
+      - name: average_purchase_price
+        type: simple
+        agg: avg
+        expr: purchase_price
+
+  - name: user_signup_model
+    semantic_model:
+      enabled: true
+      name: user_signup
+    
+    columns:
+      - name: user_id
+        entity:
+          type: primary
+      
+      - name: country_id
+        entity:
+          type: unique
+      
+      - name: signup_date
+        granularity: day
+        dimension:
+          type: time
+      
+      - name: country_dim
+        dimension:
+          type: categorical
+
+  - name: country_model
+    semantic_model:
+      enabled: true
+      name: country
+    
+    columns:
+      - name: country_id
+        entity:
+          type: primary
+      
+      - name: country_name
+        dimension:
+          type: categorical
+```
+
+</File>
 </VersionBlock>
 
 ### Query multi-hop joins
