@@ -244,7 +244,7 @@ The Viewer permission set is frequently paired with the [Read-only license-type]
 Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
-- **Read-only access to audit logs** including account-level information (unlike Stakeholder/Read-Only).
+- Read-only access to audit logs, including sensitive account-level information.
 - No access to the IDE. 
 - Can access <Constant name="explorer" />
 
