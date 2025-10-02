@@ -19,15 +19,15 @@ const PLAN_VARIABLES = {
 };
 
 const statusColors = {
-  [MANAGED_PLUS]: '#d1d5dc',
-  [MANAGED]: '#d1d5dc',
-  [SELF_SERVICE]: '#d1d5dc',
-  [DEVELOPER]: '#d1d5dc',
+  [MANAGED_PLUS]: '#E5E7EB',
+  [MANAGED]: '#E5E7EB',
+  [SELF_SERVICE]: '#E5E7EB',
+  [DEVELOPER]: '#E5E7EB',
   new: '#bab2ff',
   beta: '#bab2ff',
   ga: '#ff9e5f',
-  preview: '#ff9e5f',
-  private: '#968F8E',
+  preview: '#FE6703',
+  private: '#99A1AF',
 };
 
 const fontColors = {
@@ -37,8 +37,8 @@ const fontColors = {
   [DEVELOPER]: "#030711",
   preview: "#030711",
   ga: "#030711",
-  new: "#ffff",
-  beta: "#ffff",
+  new: "#030711",
+  beta: "#030711",
   private: "#030711",
 };
 
