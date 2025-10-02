@@ -16,10 +16,11 @@ Simple metrics are direct aggregations over columns in your data warehouse using
 </VersionBlock>
 
 The parameters, description, and type for simple metrics are:
-
+<VersionBlock lastVersion="1.99">
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
+</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
@@ -85,18 +86,18 @@ metrics:
 
 ```yaml
 metrics:
-  - name: The metric name # Required
+  - name: my_simple_metric # Required
     description: The metric description # Optional
-    label: The value that will be displayed in downstream tools # Required
+    label: My simple metric label # Required
     type: simple  # Required
-    agg: count_distinct # Required
+    agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean (use existing enum from DSI)
     expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
     join_to_timespine: true
     fill_nulls_with: 0
 
-  - name: The metric name
+  - name: my_simple_metric_that_uses_the_other_time_dimensio
     description: The metric description
-    label: The value that will be displayed in downstream tools
+    label: My simple metric that uses the other time dimension label
     type: simple
     agg: count_distinct
     agg_time_dimension: my_other_time_dimension_column # Optional, if not using the default time dimension
