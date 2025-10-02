@@ -223,7 +223,7 @@ Notable features:
 - Read-only access to user and group information.
 - Can access <Constant name="explorer" />.
 - No access to the IDE.
-- No access to certain sensitive audit log content (such as user settings and account-level changes).
+- Limited access to audit log content that excludes sensitive information, such as user settings and account-level changes.
 
 </Expandable>
 <Expandable alt_header="Team admin">
