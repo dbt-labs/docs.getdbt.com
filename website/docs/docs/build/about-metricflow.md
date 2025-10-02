@@ -219,7 +219,7 @@ Additionally, the `customers` semantic model defines a derived categorical dimen
 
 ```yaml
 models:
-  - name: orders    # The name of the semantic model
+  - name: orders    # The name of the model
     semantic_model:
       enabled: true
       name: orders_semantic_model
