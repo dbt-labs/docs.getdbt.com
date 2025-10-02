@@ -4,7 +4,7 @@ description: "Manage your data warehouse costs in dbt"
 sidebar_label: About cost management
 ---
 
-# About cost management <Lifecycle status='private,preview,managed,managed_plus' />
+# About cost management <Lifecycle status='private_preview,managed,managed_plus' />
 
 :::info Private preview
 
