@@ -27,7 +27,7 @@ UDFs are supported in the following adapters:
 
 ## Defining UDFs in dbt
 
-To define UDFs in the <Constant name="dbt_platform" />, refer to the following steps:
+To define UDFs in the dbt, refer to the following steps:
 
 1. Create a SQL file under the `functions` directory. For example:
 
