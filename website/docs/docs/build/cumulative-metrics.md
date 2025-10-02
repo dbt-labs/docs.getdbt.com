@@ -12,7 +12,7 @@ Cumulative metrics aggregate values from other metrics across a defined accumula
 
 Use cumulative metrics when you want to calculate rolling or period-to-date values, such as weekly active users or month-to-date revenue.
 
-- You must create a [time spine model](/docs/build/metricflow-time-spine) before you define cumulative metrics so thta MetricFlow can join time-based aggregations to the time spine.
+- You must create a [time spine model](/docs/build/metricflow-time-spine) before you define cumulative metrics so that MetricFlow can join time-based aggregations to the time spine.
 - If a cumulative metric depends on metrics or dimensions defined in a different semantic model, set cumulative metrics under the top level `metrics` key.
 </VersionBlock>
 
