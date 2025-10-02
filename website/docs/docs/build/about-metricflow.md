@@ -70,6 +70,9 @@ For a semantic model, there are three main pieces of metadata:
 <VersionBlock lastVersion="1.99">
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 </VersionBlock>
+<VersionBlock firstVersion="2.0">
+* [Simple metrics](/docs/build/simple) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
+</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
