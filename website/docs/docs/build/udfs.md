@@ -6,14 +6,14 @@ id: "udfs"
 
 # User-defined functions <Lifecycle status="beta" />
 
-<!--Confirm how users can get this feature-->
-:::info Beta feature 
-If you are interested in getting access to this feature, please contact us. 
+
+:::info
+UDFs are not yet supported in the dbt Fusion engine.
 :::
 
-User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside the <Constant name="dbt_platform" />.
+User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside dbt.
 
-Note that only basic SQL UDFs are currently supported in dbt.<!--Is this correct?-->
+Note that only `scalar` functions are currently supported in dbt. The `scalar` UDF type returns a single value per row.
 
 dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
 
@@ -24,6 +24,7 @@ UDFs are supported in the following adapters:
 - BigQuery
 - Snowflake
 - Redshift
+- Postgres (<Constant name="core" /> only)
 
 ## Defining UDFs in dbt
 
@@ -43,7 +44,7 @@ To define UDFs in dbt, refer to the following steps:
 
     </File>
 
-2. Define your argument, output types, properties, and configs in a corresponding YAML file. For example:
+2. Specify the function name and define the config, return type, and optional arguments in a corresponding YAML file. For example:
 
 
     <File name='functions/schema.yml'>
@@ -55,15 +56,16 @@ To define UDFs in dbt, refer to the following steps:
         config:
             schema: udf_schema
             database: udf_db
-        arguments: 
-            - name: a_string
-              type: string
+        arguments: # optional
+            - name: a_string # required if arguments is specified
+              data_type: string # required if arguments is specified
               description: The string that I want to check if it's representing a positive integer (like "10") 
-        return_type: # required
-            type: boolean # required
+        returns: # required
+            data_type: boolean # required
     ```
     </File>
 
+    <!--other types not yet supported
     <Expandable alt_header="Supported UDF types">
 
     You can use these values for the `type` property when you define a function in a YAML file.
@@ -84,7 +86,8 @@ To define UDFs in dbt, refer to the following steps:
     If not explicitly specified, the `type` property defaults to `scalar`.
 
     </Expandable>
-
+    -->
+    
     The rendered `CREATE` UDF statement depends on which adapter you’re using. For example:
 
     <Tabs>
@@ -103,7 +106,7 @@ To define UDFs in dbt, refer to the following steps:
     ```sql
     CREATE OR REPLACE FUNCTION repeat_n(s VARCHAR, n INTEGER)
     RETURNS VARCHAR
-    IMMUTABLE
+    VOLATILE
     AS $$ SELECT repeat(s, n); $$
     LANGUAGE SQL;
     ```
@@ -118,7 +121,7 @@ To define UDFs in dbt, refer to the following steps:
     select
 
     maybe_positive_int_column,
-        {{ function('is_positive_int') }}('maybe_positive_int_column')
+        {{ function('is_positive_int') }}(maybe_positive_int_column)
 
     from {{ ref('a_model_i_like') }}
     ```
