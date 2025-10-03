@@ -11,11 +11,11 @@ id: "udfs"
 UDFs are not yet supported in the dbt Fusion engine.
 :::
 
-User-defined functions (UDFs) enable users to define and register custom functions within the warehouse. Like [macros](/docs/build/jinja-macros), UDFs enable reuse of code; however, unlike macros, you can define UDFs in languages other than SQL (for example, Python, Java, Scala) and you can use them in queries outside dbt.
-
-Note that only `scalar` functions are currently supported in dbt. The `scalar` UDF type returns a single value per row.
+User-defined functions (UDFs) enable users to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse. They run natively in the warehouse so you can reuse the same logic in tools outside dbt. Note that creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
 
 dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
+
+Only `scalar` functions are currently supported. The `scalar` UDF type returns a single value per row.
 
 ## Supported adapters
 
@@ -142,6 +142,41 @@ To define UDFs in dbt, refer to the following steps:
     </File>
 
     In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definitions.
+
+After defining a UDF, you can update the SQL file that contains its function body (`is_positive_int.sql` in this example). When you rebuild, your changes will be applied everywhere the UDF is referenced. 
+
+## Using UDFs in unit tests
+
+You can use [unit tests](/docs/build/unit-tests) to validate models that reference UDFs. Before running unit tests, make sure the function exists in your warehouse. To ensure that the function exists for a unit test, run:
+
+```bash
+dbt build --select "+my_model_to_test" --empty
+```
+
+Following the example in [Defining UDFs in dbt](#defining-udfs-in-dbt), here's an example of a unit test that validates a model that calls a UDF:
+
+<File name="tests/test_is_positive_int.yml">
+
+```yml
+unit_tests:
+  - name: test_is_positive_int 
+    description: "Check my is_positive_int logic captures edge cases"
+    model: my_model
+    given:
+      - input: ref('a_model_i_like')
+        rows:
+          - { maybe_positive_int_column: 10 }
+          - { maybe_positive_int_column: -4 }
+          - { maybe_positive_int_column: +8 }
+          - { maybe_positive_int_column: 1.0 }
+    expect:
+      rows:
+        - { maybe_positive_int_column: 10,  is_positive: true }
+        - { maybe_positive_int_column: -4,  is_positive: false }
+        - { maybe_positive_int_column: +8,  is_positive: true }
+        - { maybe_positive_int_column: 1.0, is_positive: true }
+```
+</File>
 
 ## Listing and selecting UDFs
 
