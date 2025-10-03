@@ -6,7 +6,9 @@ sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
 ---
-  
+
+<!-- TODO: update this section to include the new simple metrics -->
+
 After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project
 
 Metrics must be defined in a YAML file &mdash; either within the same file as your semantic models or in a separate YAML file in a subdirectory of your dbt project. They shouldn't be defined in a `config` block on a model.

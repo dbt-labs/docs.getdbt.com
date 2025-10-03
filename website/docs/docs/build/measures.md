@@ -6,6 +6,10 @@ sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
 ---
 
+:::tip Measures are deprecated in Fusion
+If you're using the dbt Fusion engine, measures have been deprecated and replaced with simple metrics. dbt made this change to the YAML specification to make the development experience more ergonomic for dbt developers. To experience the new simple metrics, [upgrade to dbt Fusion v2.0](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+:::
+
 Measures are aggregations performed on columns in your model. They can be used as final metrics or as building blocks for more complex metrics. 
 
 Measures have several inputs, which are described in the following table along with their field types.
