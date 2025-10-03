@@ -44,7 +44,7 @@ To define UDFs in dbt, refer to the following steps:
 
     </File>
 
-2. Specify the function name and define the config, return type, and optional arguments in a corresponding YAML file. For example:
+2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding YAML file. For example:
 
 
     <File name='functions/schema.yml'>
