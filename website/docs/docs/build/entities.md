@@ -13,7 +13,7 @@ Entities are real-world concepts in a business, such as customers, transactions,
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing `measure` or `dimension` within that same model.
 </VersionBlock>
 
-</VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="2.0">
 
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing simple metrics or `dimension` within that same model.
 </VersionBlock>
