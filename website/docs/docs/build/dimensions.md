@@ -121,7 +121,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-</VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="2.0">
 
 ```yaml
 models:
@@ -185,7 +185,7 @@ For example:
 
 </VersionBlock>
 
-</VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.99">
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
 MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. We recommend making these "virtual primary entities" unique across your semantic model. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
@@ -205,7 +205,7 @@ semantic_model:
 ```
 </VersionBlock>
 
-</VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="2.0">
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. 
 
@@ -277,7 +277,7 @@ dimensions:
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics, the default time dimension for each metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimension's name. 
 
 </VersionBlock>
-</VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="2.0">
 
 Time dimensions no longer use `type_params`. Set the column’s granularity on the time column and define the model’s aggregation time with `agg_time_dimension`. A metric can override this with its own `agg_time_dimension`.
 
@@ -677,7 +677,7 @@ semantic_models:
 
 </VersionBlock>
 
-</VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="2.0">
 
 ```yaml
 models:
@@ -723,7 +723,7 @@ models:
 
 The following code represents a separate semantic model that holds a fact table for `transactions`:  
 
-</VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models: 
