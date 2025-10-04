@@ -8,7 +8,15 @@ tags: [Metrics, Semantic Layer]
 
 Entities are real-world concepts in a business, such as customers, transactions, and ad campaigns. We often focus our analyses on specific entities, such as customer churn or annual recurring revenue modeling. In our Semantic Layer models, these entities serve as a join key across semantic models.
 
+<VersionBlock lastVersion="1.99">
+
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing `measure` or `dimension` within that same model.
+</VersionBlock>
+
+</VersionBlock firstVersion="2.0">
+
+Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing simple metrics or `dimension` within that same model.
+</VersionBlock>
 
 Entities can be specified with a single column or multiple columns. Entities (join keys) in a semantic model are identified by their name. Each entity name must be unique within a semantic model, but it doesn't have to be unique across different semantic models. 
 
@@ -95,7 +103,7 @@ Natural keys are columns or combinations of columns in a table that uniquely ide
 
 The following is the complete spec for entities:
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -112,9 +120,34 @@ semantic_models:
 ```
 </VersionBlock>
 
+<VersionBlock firstVersion="2.0">
+
+```yaml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      name: semantic_model_name
+      
+    # ...rest of the semantic model config (labels, groups, etc.)
+
+    columns:
+      - name: transaction_id                 
+        entity:
+          type: primary # Required; primary | natural | foreign | unique
+          name: entity_name # Optional; defaults to column name
+          description: "A description of the field or role the entity takes in this table"
+          # Additional configuration
+          [config](/reference/resource-properties/config): # Optional
+            [meta](/reference/resource-configs/meta):
+              owner: "Team Name"
+```
+
+</VersionBlock>
+
 Here's an example of how to define entities in a semantic model:
 
-<VersionBlock firstVersion="1.9"> 
+<VersionBlock firstVersion="1.9" lastVersion="1.99"> 
 
 ```yaml
 entities:
@@ -139,9 +172,48 @@ entities:
 ```
 </VersionBlock>
 
+<VersionBlock firstVersion="2.0"> 
+
+```yaml
+models:
+  - name: your_model_name
+    semantic_model:
+      enabled: true
+
+    columns:
+      - name: id_transaction
+        entity:
+          type: primary
+          name: transaction
+
+      - name: id_order
+        entity:
+          type: foreign
+          name: order
+```
+
+## `derived_semantics` in `entities`
+
+Use `derived_semantics` when you need an entity that is not a direct 1:1 mapping to a single physical column. The `expr` field is required when using `derived_semantics`.
+
+For example:
+
+```yaml
+# Derived entities (expression-based)
+derived_semantics:
+  entities:
+    - name: user
+      type: foreign
+      expr: "substring(id_order from 2)" # Required
+```
+</VersionBlock>
+
+
 ## Combine columns with a key
 
 If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs/build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator.
+
+<VersionBlock lastVersion="1.99"> 
 
 ```yaml
 
@@ -150,6 +222,23 @@ entities:
     type: foreign # This can be any entity type key. 
     expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0"> 
+
+```yaml
+models:
+  - name: your_model_name
+    semantic_model:
+      enabled: true
+
+    derived_semantics:
+      entities:
+        - name: brand_target_key
+          type: foreign
+          expr: "date_key || '|' || brand_code"
+```
+</VersionBlock>
 
 ## Examples
 
@@ -172,6 +261,9 @@ order_total
 ```
 
 How might we define our Semantic Layer YAML so that we can query `order_total` by `ordered_at` `fiscal_year_name`, and `delivered_at` `fiscal_year_name`?
+
+
+<VersionBlock lastVersion="1.99"> 
 
 First, we need to define two `unique` entities in the `date_categories` with the expression set to `date_day`:
 
@@ -202,6 +294,51 @@ semantic_models:
     description: Formatted fiscal year string (e.g. 'FY2025')
     type: categorical
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0"> 
+
+First, we need to define two `unique` entities in the `date_categories` with the expression set to `date_day`:
+
+```yaml
+models:
+  - name: date_categories
+    semantic_model:
+      enabled: true
+
+    agg_time_dimension: date_day
+
+    columns:
+      - name: date_id
+        entity:
+          type: primary
+          name: date_id
+
+      - name: date_day
+        granularity: day
+        dimension:
+          type: time
+          name: date_day
+
+      - name: fiscal_year_name
+        dimension:
+          type: categorical
+          name: fiscal_year_name
+          description: "Formatted fiscal year string (e.g. 'FY2025')"
+
+    derived_semantics: # Unique entities 
+      entities:
+        - name: ordered_at_entity
+          type: unique
+          expr: date_day
+        - name: delivered_at_entity
+          type: unique
+          expr: date_day
+```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99"> 
 
 Then, we need to add these same entities as `foreign` keys to our `orders` model, with the expression set to `ordered_at` and `delivered_at`:
 
@@ -237,8 +374,49 @@ semantic_models:
         description: Total amount for each order including taxes.
         agg: sum
         create_metric: True
-        
- ```
+```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0"> 
+
+Then, we need to add these same entities as `foreign` keys to our `orders` model, with the expression set to `ordered_at` and `delivered_at`:
+
+```yaml
+models:
+  - name: orders
+    semantic_model:
+      enabled: true
+
+    agg_time_dimension: ordered_at
+
+    columns:
+      - name: order_id
+        entity:
+          type: primary
+          name: order_id
+
+      - name: ordered_at
+        granularity: day
+        dimension:
+          type: time
+          name: ordered_at
+
+    derived_semantics: # Foreign keys
+      entities:
+        - name: ordered_at_entity
+          type: foreign
+          expr: ordered_at
+        - name: delivered_at_entity
+          type: foreign
+          expr: delivered_at
+
+    metrics:
+      - name: order_total
+        type: simple
+        agg: sum
+        description: "Total amount for each order including taxes."
+```
+</VersionBlock>
 
 With this configuration, our semantic models can join on `ordered_at = date_day` via the `ordered_at_entity`, and on `delivered_at = date_day` via the `delivered_at_entity`. To validate our output, we can run:
 - `dbt sl query --metrics order_total --group-by ordered_at_entity__fiscal_year_name` or
