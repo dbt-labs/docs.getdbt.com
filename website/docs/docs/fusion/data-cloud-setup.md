@@ -15,6 +15,8 @@ meta:
   platform_name: 'Salesforec Data Cloud'
   config_page: '/reference/resource-configs/data-cloud-configs'
 ---
+⚠️ Disclaimer: This adapter is in the Alpha product stage and thus is not production-ready. It should only be used in sandbox or test environments. 
+As we continue to develop and take in your feedback, the experience is subject to change — commands, configuration, and workflows may be updated or removed in future releases. 
 
 
 ## Installing dbt-salesforce
