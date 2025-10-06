@@ -54,6 +54,8 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `average`, `median`, `count_distinct`, `percentile`, and `sum_boolean`. | Required | String |
 | `expr` | Either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional | String |
 | `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model. | Optional | String |
+| `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
+| `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics.| Optional | String |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
 | `join_to_timespine` | Indicates if the aggregated metric should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
 
