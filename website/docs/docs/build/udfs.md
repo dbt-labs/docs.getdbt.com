@@ -6,16 +6,13 @@ id: "udfs"
 
 # User-defined functions <Lifecycle status="beta" />
 
-
 :::info
 UDFs are not yet supported in the dbt Fusion engine.
 :::
 
-User-defined functions (UDFs) enable users to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse. They run natively in the warehouse so you can reuse the same logic in tools outside dbt. Note that creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
+User-defined functions (UDFs) enable users to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse. They run natively in the warehouse so you can reuse the same logic in tools outside dbt.
 
 dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
-
-Only `scalar` functions are currently supported. The `scalar` UDF type returns a single value per row.
 
 ## Supported adapters
 
@@ -184,7 +181,11 @@ To list UDFs in your project, run `dbt list`.
 
 To select UDFs when running a project, use the following commands:
 
-- `dbt run --resource_type function` &mdash; Use this command to only run UDFs in your project. <!--Confirm if correct-->
+- `dbt run --resource_type function` &mdash; Use this command to only run UDFs in your project.
 - `dbt run --select resource_type:function` &mdash; Use this command to reinitialize all UDFs in your project.
 - `dbt run --select path/to/my_function.sql` &mdash; Use this command to select a function by file path.
 - `dbt run --select my_function` &mdash; Use this command if you modified a UDF and you want to replace it in the data warehouse. To update all models that use the UDF, run `dbt run --select my_function+`.
+
+## Limitations
+- Creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
+- Only <Term id="scalar">scalar</Term> functions are currently supported.
