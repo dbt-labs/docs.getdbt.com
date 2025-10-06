@@ -35,6 +35,7 @@ UDFs are supported in the following adapters:
 - BigQuery
 - Snowflake
 - Redshift
+- Databricks
 
 </TabItem>
 </Tabs>
