@@ -154,50 +154,54 @@ You can open the drawer in multiple ways:
 7. **Node result list &mdash;** The Node result list shows all the Node Results used in the dbt run, and you can filter it by clicking on a Result Status tab.
 
 ## Modals and Menus
+
 Use menus and modals to interact with <Constant name="cloud_ide" /> and access useful options to help your development workflow. 
 
-- #### Editor tab menu
+#### Editor tab menu
   To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.png" width="90%" title=" Right-click a tab to view the Editor tab menu options"/>
 
-- #### File Search
+#### File Search
   You can easily search for and navigate between files using the File Navigation menu, which can be accessed by pressing Command-O or Control-O or clicking on the 🔍 icon in the File <Constant name="explorer" />.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
-- #### Global Command Palette
+#### Global Command Palette
   The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
-- #### <Constant name="cloud_ide" /> Status modal
+#### <Constant name="cloud_ide" /> Status modal
   The <Constant name="cloud_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="cloud_ide" />. Open this by clicking on the <Constant name="cloud_ide" /> Status button.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.png" width="60%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
-- #### Commit to a new branch
+#### Commit to a new branch
   Edit directly on your protected primary git branch and commit those changes to a new branch when ready.
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="70%" title="Commit changes to a new branch"/>
 
-- #### Commit Changes modal
+#### Commit Changes modal
   The Commit Changes modal is accessible via the <Constant name="git" /> Actions button to commit all changes or via the Version Control Options menu to commit individual changes. Once you enter a commit message, you can use the modal to commit and sync the selected changes.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes-modal.png" width="90%" title="The Commit Changes modal is how users commit changes to their branch."/>
 
-- #### Change Branch modal
+#### Change Branch modal
   The Change Branch modal allows users to switch git branches in the <Constant name="cloud_ide" />. It can be accessed through the **Change Branch** link or the **<Constant name="git" /> actions** button under the **Version control** menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/change-branch-modal.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
-- #### Prune branches modal
+#### Prune branches modal
   The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **<Constant name="git" /> actions** button under the [**Version control** menu](#editing-features). Note that this won't delete the branch you're currently on. Pruning branches isn't available for managed repositories because they don't have a typical remote setup, which prevents remote branch deletion.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prune-branch-modal.png" width="60%" title="The Prune branches modal allows users to delete local branches that have already been deleted from the remote repository."/>
 
-- #### Revert Uncommitted Changes modal
+#### Revert Uncommitted Changes modal
   The Revert Uncommitted Changes modal is how users revert changes in the IDE. This is accessible via the `Revert File` option above the Version Control Options menu, or via the Git Actions button when there are saved, uncommitted changes in the IDE.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
-- #### <Constant name="cloud_ide" /> Options menu
-  The <Constant name="cloud_ide" /> Options menu can be accessed by clicking on the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />. This menu contains global options such as:
+#### <Constant name="cloud_ide" /> Options menu
+  Access the <Constant name="cloud_ide" /> Options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />. This menu contains global options:
 
-  * Toggling between dark or light mode for a better viewing experience
-  * Restarting the <Constant name="cloud_ide" />
-  * Rollback your repo to remote, to refresh your git state and view status details
-  * Viewing status details, including the <Constant name="cloud_ide" /> Status modal.
+  * View status details, including the <Constant name="cloud_ide" /> Status modal
+  * Restart the <Constant name="cloud_ide" />
+  * Reinstall dependencies
+  * Clean dbt project
+  * [Check & fix deprecations](/docs/cloud/dbt-cloud-ide/autofix-deprecations)
+  * Rollback your repo to remote to refresh your git state and view status details
+  
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the IDE options menu to switch to dark or light mode, restart the IDE, rollback to remote, or view the IDE status"/>

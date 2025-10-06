@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "The free dbt VS Code extension is the best way to develop locally in dbt.",
+        "Register now for Coalesce 2025 ✨ The Analytics Engineering Conference!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "/docs/about-dbt-extension",
+      "https://coalesce.getdbt.com/5Y3oaq/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2026_coalesce-2025_aw&utm_content=coalesce____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
@@ -119,16 +119,16 @@ var siteSettings = {
               activeBaseRegex: "docs/(?!(dbt-cloud))",
             },
             {
-              label: "API docs",
-              to: "/docs/dbt-cloud-apis/overview",
+              label: "References",
+              to: "reference/references-overview",
             },
             {
               label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Release notes",
-              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+              to: "/blog",
+              label: "Developer blog",
             },
           ],
         },
@@ -138,26 +138,33 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "reference/references-overview",
-          label: "Reference",
+          to: "/docs/dbt-cloud-apis/overview",
+          label: "APIs",
           position: "right",
-          activeBasePath: "reference",
         },
         {
-          label: "Resources",
+          label: "Help",
           position: "right",
           items: [
             {
+              label: "Release notes",
+              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+            },
+            {
+              label: "FAQs",
+              to: "/docs/faqs",
+            },
+            {
+              label: "Support and billing",
+              to: "/docs/dbt-support",
+            },
+            {
+              label: "Fusion Diaries",
+              href: "https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements",
+            },
+            {
               label: "Courses",
               href: "https://learn.getdbt.com",
-            },
-            {
-              label: "Best practices",
-              to: "/best-practices",
-            },
-            {
-              label: "Developer blog",
-              to: "/blog",
             },
           ],
         },
@@ -203,6 +210,13 @@ var siteSettings = {
             },
           ],
         },
+        {
+          label: "Install VS Code extension",
+          position: "right",
+          to: "/docs/install-dbt-extension",
+          id: "nav-install-vs-code-extension",
+          className: "nav-install-dbt-extension",
+        },
       ],
     },
     footer: {
@@ -225,7 +239,7 @@ var siteSettings = {
               </div>
               <div class="cta-section">
                 <a href="https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt" target="_blank" class="primary-cta">Install free extension</a>
-                <a href="https://www.getdbt.com/signup" target="_blank" class="secondary-cta">Request your demo</a>
+                <a href="https://www.getdbt.com/contact" target="_blank" class="secondary-cta">Request your demo</a>
               </div>
             </div>
           </div>
@@ -361,8 +375,8 @@ var siteSettings = {
       src: "https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js",
       defer: true,
     },
-    { 
-      src: '/js/checkboxes.js', 
+    {
+      src: "/js/checkboxes.js",
       async: true,
     },
     "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
@@ -371,6 +385,11 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/mutiny.js",
     "/js/hide-forethought.js",
+    {
+      src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+      async: true,
+      defer: true,
+    },
   ],
   stylesheets: [
     "/css/fonts.css",

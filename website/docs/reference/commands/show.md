@@ -5,8 +5,9 @@ id: "show"
 ---
 
 Use `dbt show` to:
-- Compile the dbt-SQL definition of a `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
+- Compile the dbt-SQL definition of a single `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
   - `dbt show` does not support [Python (dbt-py)](/docs/build/python-models) models.
+  - Only selecting a single node is supported. [Selector methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other methods that select multiple nodes will not be utilized.
 - Run that query against the data warehouse
 - Preview the results in the terminal
 

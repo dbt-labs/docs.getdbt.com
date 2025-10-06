@@ -69,10 +69,6 @@ To understand how to navigate the <Constant name="cloud_ide" /> and its user int
 | **Dark mode**  | From the status bar in the <Constant name="cloud_ide" />, enable dark mode for a great viewing experience in low-light environments. 
 
 
-### Code generation
-
-The <Constant name="cloud_ide" /> comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
-
 ### dbt YAML validation
 
 Use dbt-jsonschema to validate dbt YAML files, helping you leverage the autocomplete and assistance capabilities of the <Constant name="cloud_ide" />. This also provides immediate feedback on YAML file structure and syntax, helping you make sure your project configurations meet the required standards.
@@ -93,35 +89,36 @@ Set up your developer credentials:
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure developer credentials in your profile"/>
 
-6. Access the <Constant name="cloud_ide" /> by clicking **Develop** at the top of the page.
+6. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
 7. Initialize your project and familiarize yourself with the <Constant name="cloud_ide" /> and its delightful [features](#cloud-ide-features).
 
 Nice job, you're ready to start developing and building models 🎉!  
 
 ### Considerations
+
 - To improve your experience using <Constant name="cloud" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
 - To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running <Constant name="cloud" />.
 - The <Constant name="cloud_ide" />'s idle session timeout is one hour.
 - <Expandable alt_header="About the start up process and work retention">
   
-  The following sections describe the start-up process and work retention in the <Constant name="cloud_ide" />.
+    The following sections describe the start-up process and work retention in the <Constant name="cloud_ide" />.
   
   - #### Start-up process
-    There are three start-up states when using or launching the <Constant name="cloud_ide" />:
-    - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-    - **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for one hour. The environment automatically turns off one hour after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-    - **Hot start &mdash;** This is the state of resuming an existing or active develop session within one hour of the last activity. <br /><br />
+      There are three start-up states when using or launching the <Constant name="cloud_ide" />:
+      - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
+      - **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for one hour. The environment automatically turns off one hour after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+      - **Hot start &mdash;** This is the state of resuming an existing or active develop session within one hour of the last activity. <br /><br />
 
   - #### Work retention
 
-    The <Constant name="cloud_ide" /> needs explicit action to save your changes. There are three ways your work is stored:
+      The <Constant name="cloud_ide" /> needs explicit action to save your changes. There are three ways your work is stored:
 
-    - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
+      - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 
-    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.png" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
+      <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.png" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
 
-    - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
-    - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
+      - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
+      - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
   </Expandable>
 

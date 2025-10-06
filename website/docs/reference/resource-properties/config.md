@@ -217,15 +217,20 @@ semantic_models:
 version: 2
 
 saved-queries:
-  - name: <saved-query-name>
+  - name: <saved_query_name>
     config:
       [cache](/docs/build/saved-queries#parameters): 
         enabled: true | false
       [enabled](/reference/resource-configs/enabled): true | false
-      [export_as](/docs/build/saved-queries#parameters): view | table 
       [group](/reference/resource-configs/group): <string>
       [meta](/reference/resource-configs/meta): {dictionary}
       [schema](/reference/resource-configs/schema): <string>
+    [exports](/docs/build/saved-queries#parameters):
+      - name: <export_name>
+        config:
+          [export_as](/docs/build/saved-queries#parameters): view | table 
+          [alias](/reference/resource-configs/alias): <string>
+          [schema](/reference/resource-configs/schema): <string>
 ```
 
 </File>

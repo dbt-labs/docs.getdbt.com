@@ -20,10 +20,10 @@ Connect your Azure DevOps cloud account in <Constant name="cloud" /> to unlock n
 - Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps.
 
 
-Currently, there are multiple methods for integrating Azure DevOps with <Constant name="cloud" />: 
+Currently, there are multiple methods for integrating Azure DevOps with <Constant name="cloud" />. The following methods are available to all accounts: 
 
-- [**Service principal (recommended)**](/docs/cloud/git/setup-service-principal): Currently, this feature is in a phased rollout and not widely available to all accounts.
-- [**Service user (legacy)**](/docs/cloud/git/setup-service-user): Available to all accounts.
-- [**Service user to service principal migration**](/docs/cloud/git/setup-service-principal#migrate-to-service-principal): Once the **Service principal** option is available, you can migrate to the new service. 
+- [**Service principal (recommended)**](/docs/cloud/git/setup-service-principal)
+- [**Service user (legacy)**](/docs/cloud/git/setup-service-user)
+- [**Service user to service principal migration**](/docs/cloud/git/setup-service-principal#migrate-to-service-principal)
 
 No matter which approach you take, you will need admins for <Constant name="cloud" />, Azure Entra ID, and Azure DevOps to complete the integration. For more information, follow the setup guide that's right for you. 

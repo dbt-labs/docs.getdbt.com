@@ -1,0 +1,40 @@
+---
+title: "Owners object schema"
+sidebar_label: "Owners"
+id: "discovery-schema-environment-applied-owners"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[Owners](/docs/build/groups) help you identify the user or domain responsible for a dbt asset. For most assets, owners are defined in your project code using groups. Exposures are an exception: for downstream exposures that represent BI assets, owners are automatically pulled from the downstream tool based on who owns that asset. You can query ownership information through the Discovery API.
+
+The [Example query](#example-query) illustrates a few fields you can query with the `owners` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `owners`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="owners" />
+
+### Example query
+
+You can specify the `environmentId` and "exposure" as the `OwnerResourceType` to return people who own exposures (downstream BI assets) in this environment, including their contact information.
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      owners(resource: exposure) {
+        email
+        name
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `owners`, you can use the following fields:
+
+<SchemaTable nodeName="ExposureOwner" />

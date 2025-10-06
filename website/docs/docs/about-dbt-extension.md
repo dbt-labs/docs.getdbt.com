@@ -3,178 +3,65 @@ title: About the dbt VS Code extension
 id: about-dbt-extension
 description: "Bring all the speed and power of the dbt Fusion engine to your local development workflow."
 sidebar_label: "About the dbt VS Code extension"
-pagination_next: "docs/install-dbt-extension"
+image: /img/docs/extension/extension-marketplace.png
+pagination_next: "docs/dbt-extension-features"
 ---
 
 # About the dbt VS Code Extension <Lifecycle status="preview" />
 
-The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
-This is the only way to enjoy all the power of the new dbt Fusion engine while developing locally.
+The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
+This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.
 
-_Save time and resources_ with near-instant parsing, live error detection, powerful IntelliSense capabilities, and more.
+- _Save time and resources_ with near-instant parsing, live error detection, powerful IntelliSense capabilities, and more.
+- _Stay in flow_ with a seamless, end-to-end dbt development experience designed from scratch for local dbt development.
 
-_Stay in flow_ with a seamless, end-to-end dbt development experience designed from scratch for local dbt development.
+The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
-_This is a public beta release. Behavior may change ahead of the broader generally available (GA) release._
+:::tip Try out the Fusion quickstart guide
 
-## Productivity features
+Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
 
-The following extension features help you get more done, fast:
+:::
 
-- **[Live error detection](#live-error-detection):** Automatically validate your SQL code to detect errors and surface warnings, without hitting the warehouse. This includes both dbt errors (like invalid `ref`) and SQL errors (like invalid column name or SQL syntax).
-- **[Lightning-fast parse times](#lightning-fast-parse-times):** Parse even the largest projects up to 30x faster than dbt Core.
-- **[Powerful IntelliSense](#powerful-intellisense):** Autocomplete SQL functions, model names, columns, macros, and more.
-- **[Instant refactoring](#instant-refactoring):** Rename models or columns and see references update project-wide.
-- **[Go-to-definition](#go-to-definition-and-reference):** Jump to the definition of any `ref`, macro, model, or column with a single click. Particularly useful in large projects with many models and macros.
-- **[Hover insights](#hover-insights):** See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
-- **[Live CTE previews](#live-preview-for-models-and-ctes):** Preview a CTE’s output directly from inside your dbt model for faster validation and debugging.
-- **[Rich lineage in context](#rich-lineage-in-context):** See lineage at the column or table level as you develop with no context switching or breaking the flow.
-- **[View compiled code](#view-compiled-code):** Get a live view of the SQL code your models will build alongside your dbt code.
-- **[Build flexibly](#build-flexibly):** Use the command palette to build models with complex selectors.
- 
-### Live error detection
+## Navigating the dbt extension
 
-Automatically validate your SQL code to detect errors and surface warnings without hitting the warehouse.
+Once the dbt VS Code extension has been installed, several visual enhancements will be added to your IDE to help you navigate the features and functionality. 
 
-- Displays diagnostics (red squiggles) for:
-  - Syntax errors (missing commas, misspelled keywords, etc).
-  - Invalid / missing column names (for example, `select not_a_column from {{ ref('real_model') }}`).
-  - Missing `group by` clauses, or columns that are neither grouped nor aggregated.
-  - Invalid function names or arguments
-- Hover over red squiggles to display errors.
-- Full diagnostic information is available in the “Problems”.
+Check out the following video to see the features and functionality of the dbt VS Code extension:
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/live-error-detection.webm" type="video/webm" />
-</video>
+<div style={{ position: 'relative', maxWidth: '960px', margin: '2rem auto', overflow: 'hidden', borderRadius: '12px', height: '500px', boxShadow: 'var(--ifm-global-shadow-lw)' }}>
+  <iframe
+    src="https://app.storylane.io/share/a1rkqx0mbd7a"
+    title="dbt Fusion + VS Code extension walkthrough"
+    style={{ position: 'relative', top: '-48px', height: '900px', width: '100%', border: 0, paddingBottom:'calc(42.20%)',transform: 'scale(1)'}}
+    allow="fullscreen; autoplay; encrypted-media"
+  />
+</div>
 
-### Lightning-fast parse times
+### The dbt extension menu
 
-Parse even the largest projects up to 30x faster than with dbt Core.
+The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
+- **Get started button:** Launches the [Fusion upgrade](/docs/install-dbt-extension#upgrade-to-fusion) workflow.
+- **Extension info:** Information about the extension, Fusion, and your dbt project. Includes configuration options and actions.
+- **Help:** Quick links to support, bug submissions, and documentation.
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/zoomzoom.webm" type="video/webm" />
-</video>
+<Lightbox src="/img/docs/extension/sidebar-menu.png" width="30%" title="dbt VS Code extension welcome screen."/>
 
-### Powerful IntelliSense
+### Caching
 
-Autocomplete SQL functions, model names, columns, macros and more.
+The dbt extension caches important schema information from your data warehouse to improve speed and performance. This will automatically update over time, but if recent changes have been made that aren't reflected in your project, you can manually update the schema information:
 
-Usage:
-- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call.
-- Autocomplete dialect-specific function names.
+1. Click the **dbt logo** on the sidebar to open the menu.
+2. Expand the **Extension info** section and location the **Actions** subsection.
+3. Click **Refresh source schemas** to update.
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/intellisense.webm" type="video/webm" />
-</video>
+### Productivity features
 
-### Instant refactoring
+:::info This section has moved
 
-Renaming models:
- - Right-click on a file in the file tree and select **Rename**.
- - After renaming the file, you'll get a prompt asking if you want to make refactoring changes.
-  - Select **OK** to apply the changes, or **Show Preview** to display a preview of refactorings.
- - After applying your changes, `ref`s should be updated to use the updated model name.
+We've moved productivity features to their own page! Check out their [new location](/docs/dbt-extension-features).
 
-Renaming columns:
-- Right-click on a column alias and select **Rename Symbol**.
-- After renaming the column, you'll get a prompt asking if you want to make refactoring changes.
-  - Select **OK** to apply the changes, or **Show Preview** to show a preview of refactorings.
-- After applying your changes, downstream references to the column should be updated to use the new column name.
-
-Note: Renaming models and columns is not yet supported for snapshots, or any resources defined in a .yml file.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/refactor.webm" type="video/webm" />
-</video>
-
-### Go-to-definition and reference
-
-Jump to the definition of any `ref`, macro, model, or column with a single click. Particularly useful in large projects with many models and macros.
-
-Usage:
-- Command or Ctrl-click to go to the definition for an identifier.
-- You can also right-click an identifier or and select **Go to Definition** or **Go to References**.
-- Supports CTE names, column names, `*`, macro names, and dbt `ref()` and `source()` call.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/go-to-definition.webm" type="video/webm" />
-</video>
-
-### Hover insights
-
-See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
-
-Usage:
-- Hover over `*` to see expanded list of columns and their types.
-- Hover over column name or alias to see its type.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/hover-insights.webm" type="video/webm" />
-</video>
-
-### Live preview for models and CTEs
-
-Preview a CTE’s output, or an entire model, directly from inside your editor for faster validation and debugging.
-
-Usage:
-- Click the **table icon** or use keyboard shortcut `cmd+enter` (macOS) / `ctrl+enter` (<!--Windows/-->Linux) to preview query results.
-- Click the **Preview CTE** codelens to preview CTE results.
-- Results will be displayed in the **Query Results** tab in the bottom panel.
-- The preview table is sortable and results are stored until the tab is closed.
-- You can also select a range of SQL to preview the results of a specific SQL snippet.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/preview-cte.webm" type="video/webm" />
-</video>
-
-### Rich lineage in context
-
-See lineage at the column or table level as you develop — no context switching or breaking flow.
-
-View table lineage:
-- Open the **Lineage** tab in your editor. It will reflect table lineage focused on the currently-open file.
-- Double-click nodes to open the files in your editor.
-- The lineage pane updates as you navigate the files in your dbt project.
-- Right-click on a node to update the DAG, or view column lineage for a node.
-
-View column lineage:
-- Right-click on a filename, or in the SQL contents of a model file.
-- Select **dbt: View Lineage** --> **Show column lineage**.
-- Select the column to view lineage for.
-- Double-click on a node to update the DAG selector.
-- You can also use column selectors in the lineage window by adding the `column:` prefix and appending the column name. 
-  - For example, if you want the lineage for the `AMOUNT` column of your `stg_payments` model, edit the `+model.jaffle_shop.stg_payments+` to `+column:model.jaffle_shop.stg_payments.AMOUNT+`.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/lineage.webm" type="video/webm" />
-</video>
-
-### View compiled code
-
-Get a live view of the SQL code your models will build — right alongside your dbt code.
-
-Usage:
-- Click the **code icon** to view compiled code side-by-side with source code.
-- Compiled code will update as you save your source code.
-- Clicking on a dbt macro will focus the corresponding compiled code.
-- Clicking on a compiled code block will focus the corresponding source code.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/compiled-code.webm" type="video/webm" />
-</video>
-
-### Build flexibly
-
-Use the command palette to quickly build models using complex selectors. 
-
-Usage:
-- Click the **dbt icon** or use keyboard shortcut `cmd+shift+enter` (macOS) / `ctrl+shift+enter` (<!--Windows/-->Linux) to launch a quickpick menu.
-- Select a command to run.
-
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/build-flexibly.webm" type="video/webm" />
-</video>
+:::
 
 ## Using the extension
 
@@ -186,8 +73,11 @@ Once installed, the dbt extension automatically activates when you open any `.sq
 
 After installation, you may want to configure the extension to better fit your development workflow:
 
-1. Open the VS Code settings by pressing `Ctrl+,` (<!--Windows/-->Linux) or `Cmd+,` (Mac).
-2. Search for `dbt`. On this page, you can adjust the extension’s configuration options as to fit your needs.
+1. Open the VS Code settings by pressing `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac).
+2. Search for `dbt`. On this page, you can adjust the extension’s configuration options to fit your needs.
+
+<Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="30%" title="dbt extension settings within the VS Code settings."/>
+
 
 ## Known limitations
 
@@ -210,6 +100,8 @@ dbt platform customers can contact dbt Labs support at [support@getdbt.com](mail
 For organizations that are not customers of the dbt platform, the best place for questions and discussion is the [dbt Community Slack](https://www.getdbt.com/community/join-the-community).
 
 We welcome feedback as we work to continuously improve the extension, and would love to hear from you!
+
+For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

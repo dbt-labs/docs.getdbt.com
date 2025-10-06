@@ -68,3 +68,55 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 
 select 1 as id
 ```
+
+## flags.WHICH
+
+`flags.WHICH` is a global variable that gets set when you run a dbt command. If used in a macro, it allows you to conditionally change behavior depending on the command currently being executed. For example, conditionally modifying SQL:
+
+```sql
+{% macro conditional_filter(table_name) %}
+    {# Add a WHERE clause only during `dbt run`, not during `dbt test` or `dbt compile` #}
+
+    select *
+    from {{ table_name }}
+    {% if flags.WHICH == "run" %}
+        where is_active = true
+    {% elif flags.WHICH == "test" %}
+        -- In test runs, restrict rows to keep tests fast
+        limit 10
+    {% elif flags.WHICH == "compile" %}
+        -- During compile, just add a harmless comment
+        -- compile mode detected
+    {% endif %}
+{% endmacro %}
+```
+
+The following commands are supported: 
+
+| `flags.WHICH` value | Description                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `"build"`           | Build and test all selected resources.                                 |
+| `"clean"`           | Remove artifacts like target directory and packages.                 |
+| `"clone"`           | Clone models and other resources.                                                      |
+| `"compile"`         | Compile SQL, but do not execute.                                     |
+| `"debug"`           | Test connections and validate configs.                                 |
+| `"deps"`            | Download package dependencies.                                          |
+| `"docs"`            | Generate and serve documentation.                                         |
+| `"environment"`     | Workspace environment commands (cloud CLI).                      |
+| `"help"`            | Show help for commands and subcommands.                                    |
+| `"init"`            | Bootstrap a new project.                                                |
+| `"invocation"`      | For interacting with or inspecting current invocation (cloud CLI). |
+| `"list"`            | List resources.                                              |
+| `"parse"`           | Parse project and report errors, but don’t build/test.                 |
+| `"retry"`           | Retry the last invocation from the point of failure.                   |
+| `"run"`             | Execute models.                                                          |
+| `"run-operation"`   | Invoke arbitrary macros or SQL ops.                            |
+| `"seed"`            | Load CSV(s) into the database.                                          |
+| `"show"`            | Inspect resource definitions or materializations.                       |
+| `"snapshot"`        | Execute snapshots.                                                  |
+| `"source"`          | Validate freshness and inspect source definitions.                       |
+| `"test"`            | Schema and data tests.                                                    |
+| `"version"`         | Display dbt version.                                                 |
+
+
+

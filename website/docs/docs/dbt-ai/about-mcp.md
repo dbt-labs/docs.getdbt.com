@@ -24,7 +24,7 @@ There are two ways to access the dbt-mcp server: locally hosted or remotely host
 
 ## Server Access
 
-There are two ways to install dbt MCP: [local](#local) and [remote](#remote).
+You can install dbt MCP locally or remotely:
 
 - [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
 - [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
@@ -62,7 +62,7 @@ Allowing your client to utilize dbt commands through the MCP tooling could modif
 
 ### Semantic Layer
 
-To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-layer/dbt-sl)
+To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - `list_metrics`: Retrieves all defined metrics
 - `get_dimensions`: Gets dimensions associated with specified metrics
@@ -72,19 +72,21 @@ To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-
 
 ### Metadata Discovery
 
-To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/discovery-api)
+To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/discovery-api).
 
 - `get_mart_models`: Gets all mart models
 - `get_all_models`: Gets all models
 - `get_model_details`: Gets details for a specific model
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
-- `get_model_health`: Get health signals for a specific model
+- `get_model_health`: Gets health signals for a specific model
+- `get_exposures`: Gets all exposures
+- `get_exposure_details`: Gets details for a specific exposure or a list of exposures
 
 
 ### Administrative API
 
-To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-apis/admin-cloud-api)
+To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-apis/admin-cloud-api).
 
 - `list_jobs`: List all jobs in a dbt account
 - `get_job_details`: Get detailed information for a specific job including configuration and settings
@@ -95,6 +97,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `retry_job_run`: Retry a failed job run to attempt execution again
 - `list_job_run_artifacts`: List all available artifacts for a job run (manifest.json, catalog.json, logs, etc.)
 - `get_job_run_artifact`: Download specific artifact files from job runs for analysis or integration
+- `get_job_run_error`: Retrieves error details for failed job runs to help troubleshoot errors
 
 ### SQL
 ⚠️ The SQL tools access the dbt platform endpoints. While MCP usage of the tools doesn't consume dbt Copilot credits, access to the tools is impacted by dbt Copilot credit overages from direct usage of Copilot in dbt.
@@ -102,6 +105,13 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `text_to_sql`: Generate SQL from natural language requests
 - `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
 
+### Codegen tools
+
+These tools help automate boilerplate code generation for dbt projects files. To use them, install the [dbt-codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/) in your dbt project. These tools are disabled by default. To enable them, set the `DISABLE_DBT_CODEGEN` environment variable to `false`.
+
+- `generate_source`: Creates source YAML definitions from database schemas.
+- `generate_model_yaml`: Generates documentation YAML for existing dbt models, including column names, data types, and description placeholders.
+- `generate_staging_model`: Creates staging SQL models from sources to transform raw source data into clean staging models.
 
 ## MCP integrations
 

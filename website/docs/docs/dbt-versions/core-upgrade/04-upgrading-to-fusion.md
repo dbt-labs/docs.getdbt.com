@@ -184,6 +184,18 @@ In dbt Core v1, `dbt parse` passes, but `dbt compile` fails.
 
 Fusion will error out during `parse`.
 
+#### Stricter evaluation of duplicate docs blocks
+
+In older versions of <Constant name="core" />, it was possible to create scenarios with duplicate [docs blocks](/docs/build/documentation#using-docs-blocks). For example, you can have two packages with identical docs blocks referenced by an unqualified name in your dbt project. In this case, <Constant name="core" /> would use whichever docs block is referenced without any warnings or errors. 
+
+<Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
+
+```bash
+dbt found two docs with the same name: 'docs_block_title in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
+```
+
+To resolve this error, rename any duplicate docs blocks. 
+
 #### End of support for legacy manifest versions
 
 You can no longer interoperate with pre-1.8 versions of dbt-core if you're a:
@@ -320,7 +332,13 @@ return('xyz') + 'abc'
 {% endmacro %}
 ```
 
-This is no longer supported in <Constant name="fusion" /> and will return an error. This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
+This is no longer supported in <Constant name="fusion" /> and will return an error: 
+
+```bash
+error: dbt1501: Failed to add template invalid operation: return() is called in a non-block context
+```
+
+This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
 
 ```jinja
 {% macro my_macro() %}

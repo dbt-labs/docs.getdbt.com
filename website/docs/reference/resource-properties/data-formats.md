@@ -15,6 +15,8 @@ The `dict` data format is the default if no `format` is defined.
 
 `dict` requires an inline dictionary for `rows`:
 
+<File name='models/schema.yml'>
+
 ```yml
 
 unit_tests:
@@ -29,9 +31,13 @@ unit_tests:
 
 ```
 
+</File>
+
 ## CSV
 
 When using the `csv` format, you can use either an inline CSV string for `rows`:
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -47,8 +53,12 @@ unit_tests:
           2,michelle
 
 ```
+</File>
+
 
 Or, you can provide the name of a CSV file in the `tests/fixtures` directory (or the configured `test-paths` location) of your project for `fixture`: 
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -61,6 +71,7 @@ unit_tests:
         fixture: my_model_a_fixture
 
 ```
+</File>
 
 ## sql
 
@@ -71,6 +82,8 @@ Using this format:
 However, when using `format: sql` you must supply mock data for _all rows_.
 
 When using the `sql` format, you can use either an inline SQL query for `rows`:
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -86,7 +99,11 @@ unit_tests:
 
 ```
 
+</File>
+
 Or, you can provide the name of a SQL file in the `tests/fixtures` directory (or the configured `test-paths` location) of your project for `fixture`: 
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -99,5 +116,6 @@ unit_tests:
         fixture: my_model_a_fixture
 
 ```
+</File>
 
 **Note:** Jinja is unsupported in SQL fixtures for unit tests.

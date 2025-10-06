@@ -20,7 +20,7 @@ dbt will mark modified any resource that depends on a changed macro, or on a mac
 
 ### Vars
 
-If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+If a model uses a `var` or `env_var` in its definition, dbt is unable to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
 
 ### Tests
 

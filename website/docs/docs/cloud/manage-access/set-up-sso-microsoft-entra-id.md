@@ -7,10 +7,6 @@ sidebar_label: "Set up SSO with Microsoft Entra ID"
 
 # Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
 
-import SetUpPages from '/snippets/_sso-docs-mt-available.md';
-
-<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
-
 <Constant name="cloud" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). You will need permissions to create and manage a new Entra ID application. Currently supported features include:
 
 * IdP-initiated SSO

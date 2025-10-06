@@ -1009,14 +1009,21 @@ gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceA
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/iam.serviceAccountUser
 #Grant Colab Entperprise User
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
+```
 
-# update the project.yaml file 
+<File name='dbt_project.yml'>
+
+```yaml
 models:
   my_dbt_project:
     submission_method: bigframes
+```
 
+</File>
 
-# update the profile.yaml file such as this
+<File name='profiles.yml'>
+
+```yaml
 my_dbt_project_sa:
   outputs:
     dev:
@@ -1033,8 +1040,8 @@ my_dbt_project_sa:
       threads: 1
       type: bigquery
   target: dev
-
 ```
+</File>
 
 </TabItem>
 

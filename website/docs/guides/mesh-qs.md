@@ -303,14 +303,14 @@ Before a downstream team can leverage assets from this foundational project, you
 To run your first deployment <Constant name="cloud" /> job, you will need to create a new <Constant name="cloud" /> job.  
 1. Click **Deploy** and then **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
-3. Select the **Generate docs on run** option. This will reflect the state of this project in the **Explore** section.
+3. Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="explorer"/>.
 
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt job." />
 
 4. Then, click **Run now** to trigger the job.
 <Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
 
-5. After the run is complete, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
+5. After the run is complete, navigate to <Constant name="explorer"/>. You should now see your lineage, tests, and documentation coming through successfully.
 
 For details on how <Constant name="cloud" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/mesh/govern/project-dependencies#staging-with-downstream-dependencies).
 

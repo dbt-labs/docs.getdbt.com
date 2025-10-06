@@ -6,6 +6,7 @@ level: 'Beginner'
 platform: 'dbt-core'
 icon: 'square-terminal'
 tags: ['dbt Core','Quickstart']
+hide_table_of_contents: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -32,7 +33,10 @@ After setting up BigQuery to work with dbt, you are ready to create a starter pr
 The following steps use [GitHub](https://github.com/) as the <Constant name="git" /> provider for this guide, but you can use any <Constant name="git" /> provider. You should have already [created a GitHub account](https://github.com/join).
 
 1. [Create a new GitHub repository](https://github.com/new) named `dbt-tutorial`.
-2. Select **Public** so the repository can be shared with others. You can always make it private later.
+2. Select one of the following (You can always change this setting later):
+    - **Private (recommended):** To secure your environment and prevent private information (like credentials) from being public.
+    - **Public:** If you need to easily collaborate and share with others, especially outside of your organization. 
+
 3. Leave the default values for all other settings.
 4. Click **Create repository**.
 5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](/guides/manual-install?step=6).

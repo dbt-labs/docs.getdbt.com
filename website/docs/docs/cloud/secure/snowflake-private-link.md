@@ -32,7 +32,7 @@ To configure Snowflake instances hosted on Azure for [Private Link](https://lear
 ```sql
 
 USE ROLE ACCOUNTADMIN;
-SYSTEM$GET_PRIVATELINK_CONFIG;
+SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 
 ```
 

@@ -16,6 +16,14 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## October 2025
+
+- **Behavior change**: The CodeGenCodeLens feature for creating models from your sources with a click of a button has been temporarily removed from the <Constant name="cloud_ide" /> due to compatibility issues. We plan to reintroduce this feature in the near future for both the IDE and the VS Code extension.
+
+## September 2025
+
+- **Fix**: Improved how [MetricFlow](/docs/build/about-metricflow) handles [offset metrics](/docs/build/derived) for more accurate results when querying time-based data. MetricFlow now joins data _after_ aggregation when the query grain matches the offset grain. Previously, when querying offset metrics, the offset join was applied _before_ aggregation, which could exclude some values from the total time period.
+
 ## August 2025
 
 - **Fix**: Resolved a bug that caused [saved query](/docs/build/saved-queries) exports to fail during `dbt build` with `Unable to get saved_query` errors. 

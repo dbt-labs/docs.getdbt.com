@@ -13,6 +13,10 @@ The `--select` and `--selector` arguments sound similar, but they are different.
 
 </Expandable>
 
+import UsingCommas from '/snippets/_using-commas.md';
+
+<UsingCommas />
+
 Many of the methods below support Unix-style wildcards:
 
 | Wildcard | Description                                               |

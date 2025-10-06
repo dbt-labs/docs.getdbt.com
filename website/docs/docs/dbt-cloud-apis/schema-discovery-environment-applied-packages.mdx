@@ -1,0 +1,31 @@
+---
+title: "Packages object schema"
+sidebar_label: "Packages"
+id: "discovery-schema-environment-applied-packages"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[dbt packages](/docs/build/packages) are libraries with models, macros, and other resources that tackle a specific problem area utilized by dbt projects. You can query project packages through the Discovery API.
+
+The [Example query](#example-query) illustrates a few fields you can query with the `packages` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `packages`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="packages" />
+
+### Example query
+
+You can specify the `environmentId` and "model" as the resource to see all dbt packages in this environment that contain model resources:
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      packages(resource: "model")
+    }
+  }
+}
+```

@@ -97,7 +97,7 @@ An example of a webhook payload for a run that's started:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde",
+  "webhookId": "wsu_12345abcde",
   "eventId": "wev_2L6Z3l8uPedXKPq9D2nWbPIip7Z",
   "timestamp": "2023-01-31T19:28:15.742843678Z",
   "eventType": "job.run.started",
@@ -114,7 +114,7 @@ An example of a webhook payload for a run that's started:
     "runStatus": "Running",
     "runStatusCode": 3,
     "runStatusMessage": "None",
-    "runReason": "Kicked off from UI by test@test.com",
+    "runReason": "Kicked off from the UI by test@test.com",
     "runStartedAt": "2023-01-31T19:28:07Z"
   }
 }
@@ -125,7 +125,7 @@ An example of a webhook payload for a completed run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde",
+  "webhookId": "wsu_12345abcde",
   "eventId": "wev_2L6ZDoilyiWzKkSA59Gmc2d7FDD",
   "timestamp": "2023-01-31T19:29:35.789265936Z",
   "eventType": "job.run.completed",
@@ -142,7 +142,7 @@ An example of a webhook payload for a completed run:
     "runStatus": "Success",
     "runStatusCode": 10,
     "runStatusMessage": "None",
-    "runReason": "Kicked off from UI by test@test.com",
+    "runReason": "Kicked off from the UI by test@test.com",
     "runStartedAt": "2023-01-31T19:28:07Z",
     "runFinishedAt": "2023-01-31T19:29:32Z"
   }
@@ -154,7 +154,7 @@ An example of a webhook payload for an errored run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde",
+  "webhookId": "wsu_12345abcde",
   "eventId": "wev_2L6m5BggBw9uPNuSmtg4MUiW4Re",
   "timestamp": "2023-01-31T21:15:20.419714619Z",
   "eventType": "job.run.errored",
@@ -171,7 +171,7 @@ An example of a webhook payload for an errored run:
     "runStatus": "Errored",
     "runStatusCode": 20,
     "runStatusMessage": "None",
-    "runReason": "Kicked off from UI by test@test.com",
+    "runReason": "Kicked off from the UI by test@test.com",
     "runStartedAt": "2023-01-31T21:14:41Z",
     "runErroredAt": "2023-01-31T21:15:20Z"
   }

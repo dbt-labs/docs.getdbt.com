@@ -19,7 +19,7 @@ You can use the API in a variety of ways to get answers to your business questio
 
 You can use the Discovery API to identify inefficiencies in pipeline execution to reduce infrastructure costs and improve timeliness. Below are example questions and queries you can run.
 
-For performance use cases, people typically query the historical or latest applied state across any part of the DAG (for example, models) using the `environment`, `modelByEnvironment`, or job-level endpoints.
+For performance use cases, people typically query the historical or latest applied state across any part of the DAG (for example, models) using the `environment`, `modelHistoricalRuns`, or job-level endpoints.
 
 ### How long did each model take to run?
 

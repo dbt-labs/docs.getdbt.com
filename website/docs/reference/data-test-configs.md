@@ -239,8 +239,8 @@ models:
       - name: id
         data_tests:
           - unique:
-            config:
-              tags: ['my_tag'] # changed to config in v1.10
+              config:
+                tags: ['my_tag'] # changed to config in v1.10
 ```
 
 </File>

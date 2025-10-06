@@ -1,6 +1,6 @@
 ---
-title: "Apache Hive configurations"
-description: "Apache Hive Configurations - Read this in-depth guide to learn about configurations in dbt."
+title: "Cloudera Hive configurations"
+description: "Cloudera Hive Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "hive-configs"
 ---
 
@@ -15,6 +15,9 @@ When materializing a model as `table`, you may include several optional configs 
 | file_format | underlying storage format of the table, see https://cwiki.apache.org/confluence/display/Hive/FileFormats for supported formats | No | file_format='PARQUET' |
 | location | storage location, typically an hdfs path | No | LOCATION='/user/etl/destination' |
 | comment | comment for the table | No | comment='this is the cleanest model' |
+| external | is this an external table - true / false | No | external=true |
+| tbl_properties | any metadata can be stored as key/value pair with the table | No | tbl_properties="('dbt_test'='1')" |
+| table_type | indicates the type of the table | No | table_type="iceberg" |
 
 ## Incremental models
 

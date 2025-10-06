@@ -1,20 +1,19 @@
 
-The dbt extension for VS Code and Cursor streamlines dbt development workflows. The dbt extension is powered by the <Constant name="fusion_engine" />.
+The [dbt extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview) for VS Code and Cursor, powered by the <Constant name="fusion_engine" />, streamlines dbt development workflows. 
 
 ## Prerequisites
 
 To use the extension, you must meet the following prerequisites:
 
-- The dbt extension requires installation of the <Constant name="fusion_engine" />. <Constant name="fusion" /> installation is part of the extension installation process, but you can also [manually install](/docs/fusion/install-fusion) separate from this workflow, either before or after the extension is installed. 
-- You are using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
-- You are not using (or have disabled) third-party dbt extensions.
-- You are using a macOS<!--, Windows,--> or Linux-based computer.
+- <Constant name="fusion_engine" /> &mdash; The [dbt extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview) requires the <Constant name="fusion_engine" />. Installing the extension prompts for installation of the <Constant name="fusion_engine" />. You can also [manually install](/docs/fusion/install-fusion) it at any time, before or after installing the extension.
+- Editor &mdash; You're using the [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/en) code editor.
+- Operating systems &mdash; You're using a macOS, Windows, or Linux-based computer. 
 
 ## Installation instructions
 
 :::note
 
-This is the only official dbt Labs VS Code extension. Please disable or uninstall any third-party dbt extensions before installing to avoid issues.
+This is the only official dbt Labs VS Code extension. Other extensions _can_ work alongside the dbt VS Code extension, but they aren’t tested or supported by dbt Labs.
 
 Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for the latest updates.
 
@@ -34,6 +33,21 @@ In VS Code:
 6. You're all set up! See [about the dbt extension](/docs/about-dbt-extension) for more information on how to use the dbt extension.
     <Lightbox src="/img/docs/extension/kitchen-sink.png" width="60%" title="Showing lineage and compiled code in the extension"/>
 
+## Getting started
+
+Once the dbt VS Code extension has been installed in your environment, the dbt logo will appear on the sidebar. From here, you can access workflows to help you get started, offers information about the extension and your dbt project, and provides helpful links to guide you. For more information, see the [the dbt extension menu](/docs/about-dbt-extension#the-dbt-extension-menu) documentation. 
+
+To get started with the extension:
+1. From the sidebar menu, click the dbt logo to open the menu and expand the **Get started** section. 
+2. Click the **dbt Walkthrough** status bar to view the welcome screen.
+    <Lightbox src="/img/docs/extension/welcome-screen.png" width="60%" title="dbt VS Code extension welcome screen."/>
+3. Click through the items to get started with the extension:
+    - **Open your dbt project:** Launches file explorer so you can select the dbt project you want to open with Fusion.
+    - **Check Fusion compatibility:** Runs the [Fusion upgrade](#upgrade-to-fusion) workflows to bring your project up-to-date.
+    - **Explore features:** Opens the [documentation](/docs/about-dbt-extension) so you can learn more about all the extension has to offer.
+    - **Register:** Launches the registration workflow so you can continue to use the extension beyond the trial period.
+
+
 ## Upgrade to Fusion
 
 :::note
@@ -44,7 +58,7 @@ If you are already running the <Constant name="fusion_engine" />, you must be on
 
 The dbt extension provides a built-in upgrade tool to walk you through the process of configuring <Constant name="fusion" />  and updating your dbt project to support all of its features and fix any deprecated code. To start the process:
 
-1. From the VS Code left-side menu, click the **dbt logo**.
+1. From the VS Code sidebar menu, click the **dbt logo**.
 2. In the resulting pane, open the **Get started** section and click the **Get started** button. 
 
     <Lightbox src="/img/docs/extension/fusion-onboarding-experience.png" title="The dbt extension help pane and upgrade assistant." width="60%" /> 
@@ -61,6 +75,9 @@ This will start the upgrade tool and guide you through the Fusion upgrade with a
 - **Ready to run a dbtf debug?** (If there is an existing `profiles.yml` file): Validates that your project is configured correctly and can connect to your data warehouse.
 - **Ready to run a dbtf parse?**: Your dbt project will be parsed to check for compatibility with <Constant name="fusion" />.
     - If any issues are encountered during the parsing, you'll be given the option to run the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) tool to resolve the errors. If you opt to not run the tool during the upgrade processes, you can always run it later or manually fix any errors. However, the upgrade tool cannot continue until the errors are resolved.
+        :::tip AI Agents
+        There are cases where dbt-autofix may not resolve all errors and requires manual intervention. For those cases, the dbt-autofix tool provides an [AI Agents.md](https://github.com/dbt-labs/dbt-autofix/blob/main/AGENTS.md) file to enable AI agents to help with migration work after dbt-autofix has completed its part.
+        :::
 - **Ready to run a ‘dbtf compile -static-analysis off’?** (Only runs once the parse passes): Compiles your project without any static analysis, mimicking dbt Core. This compile only renders Jinja into SQL, so <Constant name="fusion" />'s advanced SQL comprehension is temporarily disabled. 
 - **Ready to run a ‘dbtf compile’?**: Compiles your project with full <Constant name="fusion" /> static analysis. It checks that your SQL code is valid in the context of your warehouse's tables and columns. 
 
@@ -113,7 +130,7 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
 4. In the **Set up your credentials** section, click **Download credentials**. This downloads the `dbt_cloud.yml` file. 
     <Lightbox src="/img/docs/extension/download-registration-2.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
 5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
-6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (<!--Windows/-->Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
 
 </Expandable>
 
@@ -125,7 +142,7 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
 4. In the **Configure Cloud authentication** section, click **Download CLI configuration file**. This downloads the `dbt_cloud.yml` file. 
     <Lightbox src="/img/docs/extension/download-registration.png" width="60%" title="Download the dbt_cloud.yml file to complete registration."/>
 5. Move the downloaded `dbt_cloud.yml` file to your `~/.dbt/` directory.
-6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (<!--Windows/-->Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
+6. To update your registration in VS Code, open the command palette (`ctrl+shift+P` (Windows/Linux) or `cmd+shift+p` (macOS)), then select `dbt: Register dbt extension` to complete the registration.
 
 </Expandable>
 
@@ -155,7 +172,7 @@ Note: It is possible to "hide" status bar items in VS Code. Double-check if the 
 
 If you are not seeing dbt LSP features in your editor, first consult the general troubleshooting steps above. If you have confirmed that the dbt extension is installed correctly, but you still do not see dbt Language Server features (for example, autocomplete, go-to-definition, hover text):
  - Check the version of your dbt extension on the extensions page in your editor. Ensure that you are using the latest available version of the dbt extension.
- - Try reinstalling the dbt Language Server by pressing `cmd+shift+P` (macOS) or `ctrl+shift+P` (<!--Windows/-->Linux) and selecting the `dbt: Reinstall dbt LSP` command.
+ - Try reinstalling the dbt Language Server by pressing `cmd+shift+P` (macOS) or `ctrl+shift+P` (Windows/Linux) and selecting the `dbt: Reinstall dbt LSP` command.
 
 #### Unsupported dbt version
 
