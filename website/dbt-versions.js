@@ -25,7 +25,7 @@ exports.versions = [
   },
  {
     version: "1.11",
-    customDisplay: "Latest (dbt Core v1.11 beta)",
+    customDisplay: "Latest (dbt Core v1.11 Beta)",
     isPrerelease: true,
   },
   {
