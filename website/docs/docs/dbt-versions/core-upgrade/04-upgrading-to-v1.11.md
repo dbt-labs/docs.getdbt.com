@@ -40,7 +40,7 @@ Key features include:
 - **Unit test support**: Validate models that use UDFs with unit tests (you should make sure functions exist first by running `dbt build --select "+model_to_test" --empty`).
 - **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt run --resource_type function` or `dbt run --select my_function`.
 
-Read about defining and using UDFs, and prerequisites, such as supported adapters in the [UDF documentation](/docs/build/user-defined-functions).
+Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/user-defined-functions).
 
 ### Catalog improvements
 
