@@ -13,8 +13,8 @@ Use inputs in your unit tests to reference a specific model or source for the te
     - If you do supply an input for a seed, we will use that input instead.
 - Use “empty” inputs by setting rows to an empty list `rows: []`
 
+<File name='models/schema.yml'>
 ```yml
-
 unit_tests:
   - name: test_is_valid_email_address # this is the unique name of the test
     model: dim_customers # name of the model I'm unit testing
@@ -32,3 +32,4 @@ unit_tests:
 ...
 
 ```
+</File>

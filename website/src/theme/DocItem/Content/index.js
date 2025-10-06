@@ -26,6 +26,7 @@ import CommunitySpotlightCard from "@site/src/components/communitySpotlightCard"
 import QuickstartTOC from "@site/src/components/quickstartTOC";
 import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
 import styles from "./styles.module.css";
+import { Feedback } from "../../../components/feedback";
 
 
 function useSyntheticTitle() {
@@ -60,7 +61,9 @@ export default function DocItemContent({ children }) {
       )}
 
       {/* Render IntroText if frontMatter.intro_text exists */}
-      {frontMatter.intro_text && <IntroText>{frontMatter.intro_text}</IntroText>}
+      {frontMatter.intro_text && (
+        <IntroText>{frontMatter.intro_text}</IntroText>
+      )}
 
       {/* Wrap with small container if spotlight member page */}
       {isSpotlightMember ? (
@@ -73,19 +76,19 @@ export default function DocItemContent({ children }) {
         </div>
       ) : isQuickstartGuide ? (
         <>
-        <QuickstartGuideTitle frontMatter={frontMatter} />
-        <div className={clsx("quickstart-container")}>
-          
-          <QuickstartTOC />
-          <div className={clsx("step-container")}>
-            <MDXContent>{children}</MDXContent>
+          <QuickstartGuideTitle frontMatter={frontMatter} />
+          <div className={clsx("quickstart-container")}>
+            <QuickstartTOC />
+            <div className={clsx("step-container")}>
+              <MDXContent>{children}</MDXContent>
+            </div>
           </div>
-        </div>
         </>
-
       ) : (
         <MDXContent>{children}</MDXContent>
       )}
+
+      {!isSpotlightMember ? <Feedback /> : null}
     </div>
   );
 }

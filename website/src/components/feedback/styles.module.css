@@ -1,0 +1,175 @@
+/* Feedback Container */
+.feedbackContainer {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feedbackContainer h2 {
+  margin-bottom: 0;
+}
+
+/* Form Styles */
+.feedbackContainer .feedbackActions {
+  position: relative;
+}
+
+/* Button Styles */
+.feedbackContainer .feedbackButtons {
+  display: flex;
+  gap: .75rem;
+  position: relative;
+}
+
+.feedbackContainer .feedbackButton {
+  background-color: transparent;
+  color: var(--ifm-heading-color);
+  border: 1px solid var(--color-neutral-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  border-radius: .75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+} 
+
+.feedbackContainer .feedbackButton:hover:not(:disabled) {
+  background-color: var(--color-neutral-secondary);
+  border-color: var(--color-neutral-secondary);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.feedbackContainer .feedbackButton:focus {
+  outline: 2px solid var(--color-coalesce-purple-600);
+  outline-offset: 2px;
+}
+
+.feedbackContainer .feedbackButtonSelected {
+  background-color: var(--color-neutral-secondary);
+  border-color: var(--color-neutral-secondary);
+  color: var(--color-white);
+}
+
+.feedbackContainer .feedbackButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Submit Button */
+.feedbackContainer .feedbackSubmitButton {
+  background: var(--ifm-color-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  color: var(--color-neutral-primary);
+  border: none;
+  border-radius: .75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.feedbackContainer .feedbackSubmitButton:hover:not(:disabled) {
+  background-color: var(--ifm-color-primary) !important;
+  background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+
+.feedbackContainer .feedbackSubmitButton:focus {
+  outline: 2px solid var(--color-coalesce-purple-600);
+  outline-offset: 2px;
+}
+
+.feedbackContainer .feedbackSubmitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+html[data-theme="dark"] .feedbackContainer .feedbackSubmitButton {
+  color: var(--color-neutral-primary);
+}
+
+html[data-theme="dark"] .feedbackContainer .feedbackSubmitButton:hover:not(:disabled) {
+  color: var(--color-neutral-primary) !important;
+  background-color: var(--ifm-color-primary) !important;
+  background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+
+/* Feedback Input */
+.feedbackContainer .feedbackInput {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.feedbackContainer .feedbackInput textarea {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-terminal-black-300);
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-terminal-black-500);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.feedbackContainer .feedbackInput textarea:focus {
+  outline: 2px solid var(--color-coalesce-purple-600);
+outline-offset: 2px;      
+}
+
+/* Submission Status */
+.feedbackContainer .feedbackMessage {
+  font-size: 0.9rem;
+  display: block;
+  margin: 1rem 0 0;
+  min-height: 33.5px;
+  
+}
+
+.feedbackContainer .validationError {
+  color: var(--ifm-color-danger);
+  margin-top: 0.5rem;
+}
+
+/* Additional Links */
+.feedbackContainer .feedbackLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Disclaimer */
+.feedbackContainer .feedbackDisclaimer {
+  font-size: 0.8em;
+  margin-top: 1rem;
+  max-width: 360px;
+}
+
+/* Dark Mode */
+html[data-theme="dark"] {
+  .feedbackContainer .feedbackButton {
+   background-color: var(--color-neutral-primary);
+   border-color: var(--color-white);
+   color: var(--color-white);
+ }
+ 
+ .feedbackContainer .feedbackButton:hover:not(:disabled) {
+   background-color: color-mix(in oklab,var(--color-white)60%,transparent);
+   border-color: var(--color-white);
+   color: var(--color-neutral-primary);
+ }
+
+ .feedbackContainer .feedbackButtonSelected {
+   background-color: color-mix(in oklab,var(--color-white)60%,transparent);
+   border-color: var(--color-white);
+   color: var(--color-neutral-primary);
+ }
+
+ .feedbackContainer .feedbackInput textarea {
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+}

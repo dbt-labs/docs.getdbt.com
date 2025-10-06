@@ -83,4 +83,10 @@ hide_table_of_contents: true
     link="/docs/cloud/secure/snowflake-psc"
     icon="dbt-bit"/>
 
+<Card
+    title="GCP Private Service Connect for BigQuery (beta)"
+    body="Learn how to configure GCP Private Service Connect for BigQuery."
+    link="/docs/cloud/secure/bigquery-psc"
+    icon="dbt-bit"/>
+
 </div>

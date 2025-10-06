@@ -6,10 +6,6 @@ id: "set-up-sso-google-workspace"
 
 # Set up SSO with Google Workspace <Lifecycle status="managed, managed_plus" />
 
-import SetUpPages from '/snippets/_sso-docs-mt-available.md';
-
-<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
-
 <Constant name="cloud" /> Enterprise-tier plans support Single-Sign On (SSO) via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Gsuite is a component within Google Cloud Platform (GCP), so you will also need access to a login with permissions to manage the GSuite application within a GCP account.
 
 Some customers choose to use different cloud providers for User and Group permission setup than for hosting infrastructure. For example, it's certainly possible to use GSuite to manage login information and Multifactor Authentication (MFA) configuration while hosting data workloads on AWS.

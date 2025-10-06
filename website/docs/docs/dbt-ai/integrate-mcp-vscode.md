@@ -75,7 +75,7 @@ These instructions are for integrating dbt MCP and VS Code. To get started, in V
   - Running the `MCP: List Servers` command from the Command Palette (Control/Command + Shift + P) and selecting the server. 
   - Utilizing the keywords inline within the `mcp.json` file.
 
-  <Lightbox src="img/mcp/vscode_run_server_keywords_inline.png" width="60%" title="VS Code inline management" />
+  <Lightbox src="/img/mcp/vscode_run_server_keywords_inline.png" width="60%" title="VS Code inline management" />
 
 Now you will be able to access the local dbt MCP server on VS Code through interfaces like GitHub Copilot.
 

@@ -5,6 +5,7 @@ sidebar_label: "About dbt Canvas"
 description: "dbt Canvas enables you to quickly create and visualize dbt models through a visual, drag-and-drop experience inside of dbt." 
 pagination_next: "docs/cloud/canvas-interface"
 pagination_prev: null
+image: /img/docs/dbt-cloud/canvas/canvas.png
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';

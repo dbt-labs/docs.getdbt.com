@@ -144,6 +144,7 @@ For more info on styling best practices, refer to [How we style our SQL](/best-p
 In the <Constant name="cloud_ide" />, you can format your code to match style guides with a click of a button. The <Constant name="cloud_ide" /> integrates with formatters like sqlfmt, Prettier, and Black to automatically format code on five different file types &mdash; SQL, YAML, Markdown, Python, and JSON:
 
 - SQL &mdash; Format with [sqlfmt](http://sqlfmt.com/), which provides one way to format your dbt SQL and Jinja.
+    - **Note**: Custom sqlfmt configuration in the <Constant name="cloud_ide" /> is not supported.
 - YAML, Markdown, and JSON &mdash; Format with [Prettier](https://prettier.io/). 
 - Python &mdash; Format with [Black](https://black.readthedocs.io/en/latest/).
 

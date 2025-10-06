@@ -80,6 +80,7 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Snowflake](/reference/resource-configs/snowflake-configs)
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
+- [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
 
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.
@@ -87,9 +88,9 @@ Freshness blocks are applied hierarchically:
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
 
-To exclude a source from freshness calculations, you have two options:
-- Don't add a `freshness:` block.
-- Explicitly set `freshness: null`.
+To exclude a source from freshness calculations, explicitly set `freshness: null`.
+
+In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations). 
 
 ## loaded_at_field
 

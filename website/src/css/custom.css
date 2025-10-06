@@ -230,6 +230,26 @@ html[data-theme="dark"] input.sc-avest {
   order: 4;
 }
 
+/* IDE Extension nav item */
+.navbar__item.nav-install-dbt-extension {
+  order: 5;
+  background: var(--ifm-color-primary);
+  transition: all 0.3s ease-in-out;
+  color: var(--color-neutral-primary);
+}
+.navbar__item.nav-install-dbt-extension:hover {
+  background-color: var(--ifm-color-primary) !important;
+  background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+html[data-theme="dark"] .navbar__item.nav-install-dbt-extension {
+  color: var(--color-neutral-primary);
+}
+html[data-theme="dark"] .navbar__item.nav-install-dbt-extension:hover {
+  color: var(--color-neutral-primary) !important;
+  background-color: var(--ifm-color-primary) !important;
+  background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+
 .navbar__account:before {
   background: url("data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M20%2021C20%2019.6044%2020%2018.9067%2019.8278%2018.3389C19.44%2017.0605%2018.4395%2016.06%2017.1611%2015.6722C16.5933%2015.5%2015.8956%2015.5%2014.5%2015.5H9.5C8.10444%2015.5%207.40665%2015.5%206.83886%2015.6722C5.56045%2016.06%204.56004%2017.0605%204.17224%2018.3389C4%2018.9067%204%2019.6044%204%2021%22%20stroke%3D%22%23030711%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M12%2012C14.4853%2012%2016.5%209.98528%2016.5%207.5C16.5%205.01472%2014.4853%203%2012%203C9.51472%203%207.5%205.01472%207.5%207.5C7.5%209.98528%209.51472%2012%2012%2012Z%22%20stroke%3D%22%23030711%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22square%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") no-repeat;
 content: "";
@@ -237,6 +257,7 @@ display: flex;
 height: 22px;
 width: 22px;
 display: none;
+margin-top: 5px;
 }
 
 html[data-theme="dark"] .navbar__account:before {
@@ -526,7 +547,55 @@ a.code-link:hover {
   gap: 8px;
 }
 
-@media(max-width: 1258px) {
+/* Custom nav styles from right before mobile,
+   up to where nav begins to hit logo
+*/
+@media(min-width: 996px) and (max-width: 1154px) {
+  .navbar__items {
+    min-width: auto;
+    gap: 0 !important;
+  }
+
+  .navbar__items .navbar__brand {
+    min-width: 167px;
+    padding: 10px 0 0;
+  }
+
+  .navbar__items .navbar__brand .navbar__logo {
+    height: 1.5rem;
+  }
+
+  .navbar__items.navbar__items--right {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+@media(min-width: 996px) and (max-width: 1199px) {
+  .navbar__items.navbar__items--right .navbar__item, .navbar__items.navbar__items--right .navbar__link {
+    font-size: 0.875rem;
+    padding: 10px 8px !important;
+  }
+}
+
+@media(min-width: 1200px) and (max-width: 1320px) {
+  .navbar__items.navbar__items--right .navbar__item, .navbar__items.navbar__items--right .navbar__link {
+    font-size: 0.938rem;
+    padding: 10px 8px !important;
+  }
+}
+
+@media(min-width: 996px) and (max-width: 1320px) {
+  .navbar__items {
+    gap: 0 !important;
+  }
+
+  .navbar__items.navbar__items--right .navbar__item, .navbar__items.navbar__items--right .navbar__link {
+    padding: 10px 8px !important;
+  }
+}
+
+@media(max-width: 1530px) {
   .navbar__items {
     gap: 4px;
   }
@@ -1503,9 +1572,10 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   }
 }
 
-[data-theme="dark"] button.DocSearch-Button {
-  background-color: #FFF !important;
-  color: #6A7282 !important;
+/* hide search text and keys until 1201px */
+button .DocSearch-Button-Placeholder,
+button .DocSearch-Button-Keys {
+  display: none;
 }
 
 @media screen and (max-width: 750px) {
@@ -1533,17 +1603,18 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   .DocSearch-Button .DocSearch-Search-Icon {
     color: var(--docsearch-muted-color);
   }
-
-  /* hide search text and keys until 1201px */
-  button .DocSearch-Button-Placeholder,
-  button .DocSearch-Button-Keys {
-    display: none;
-  }
 }
 
-@media screen and (min-width: 1320px) {
-
+@media screen and (min-width: 1530px) {
+  /* 
+    9/8/25 NOTE: Only showing full search bar styles
+    on 1530px and above to fit the IDE Extension CTA into the nav
+  */
   /* search bar styles */
+  [data-theme="dark"] button.DocSearch-Button {
+    background-color: #FFF !important;
+    color: #6A7282 !important;
+  }
   button.DocSearch-Button {
     border: 1px solid #D1D5DC;
     border-radius: 12px;
@@ -1557,6 +1628,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0 12px 0 8px;
+    display: inline-block;
   }
 
   /* magnifying glass icon */
@@ -1573,6 +1645,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
     padding: 0.24em 0.5em;
     gap: 0;
     margin-right: -13px;
+    display: flex;
   }
 
   /* single key */
@@ -1596,9 +1669,14 @@ html[data-theme="dark"] .main-wrapper nav a:active {
   }
 }
 
-@media (min-width: 1480px) {
+@media (min-width: 1670px) {
   .dbt__brand {
     border-right: 1px solid var(--ifm-toc-border-color);
+    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
+    min-height: var(--ifm-navbar-height);
+    max-height: var(--ifm-navbar-height);
+    width: 300px;
+    min-width: 5.5em;
   }
 }
 
@@ -1613,14 +1691,6 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 }
 
 @media (min-width: 997px) {
-  .dbt__brand {
-    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
-    min-height: var(--ifm-navbar-height);
-    max-height: var(--ifm-navbar-height);
-    width: 300px;
-    min-width: 5.5em;
-  }
-
   html.docs-version-current .navbar {
     width: 100%;
     margin-left: 0;
@@ -2841,4 +2911,30 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 .bottom-cta .cta-section .secondary-cta:hover {
   background-color: var(--bg-neutral-primary-hover);
   color: var(--text-neutral-primary);
+}
+
+/* Sidebar Title headers */
+
+.sidebar-title {
+  font-weight: var(--ifm-font-weight-semibold);
+  display: block;
+  opacity: 90%;
+  padding: 8px 0;
+  margin: 12px 0;
+  text-align: left; /* Optional: Center the title */
+}
+
+/* Light mode */
+html[data-theme='light'] .sidebar-title {
+  border-top: 1px solid var(--color-nav-text); /* lighter border for light mode */
+}
+
+/* Dark mode */
+html[data-theme='dark'] .sidebar-title {
+  border-top: 1px solid var(--color-nav-text); /* white border for dark mode */
+  color: var(--text-inverse-primary);
+}
+/* Hide reCaptcha badge */
+.grecaptcha-badge {
+  display: none;
 }

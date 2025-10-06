@@ -159,7 +159,7 @@ Turn on the DAG and trigger it to run. Verify the job succeeded after running.
 
 ![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-dag.png)
 
-Click Monitor Job Run to open the run details in <Constant name="cloud" />.
+Click **Monitor Job Run** to open the run details in <Constant name="cloud" />.
 ![Task run instance](/img/guides/orchestration/airflow-and-dbt-cloud/task-run-instance.png)
 
 ## Cleaning up

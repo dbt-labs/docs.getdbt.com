@@ -4,6 +4,7 @@ description: The dbt platform is the fastest and most reliable way to deploy dbt
 categories:
   - title: Most popular
     guides:
+      - fusion
       - snowflake
       - databricks
       - bigquery

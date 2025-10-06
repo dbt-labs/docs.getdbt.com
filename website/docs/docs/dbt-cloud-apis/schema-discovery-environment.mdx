@@ -3,10 +3,10 @@ title: "Environment object schema"
 sidebar_label: "Environment"
 id: "discovery-schema-environment"
 ---
-
+ 
 import { QueryArgsTable, SchemaTable } from "./schema";
 
-The environment object allows you to query information about a particular model based on `environmentId`.
+You can use the environment object to query and compare definition (intended) and applied (actual) states for nodes (models, seeds, snapshots, models, and more) in your dbt project.  For example, you specify an `environmentId` to learn more about a particular model (or other node type) in that environment.
 
 The [Example queries](#example-queries) illustrate a few fields you can query with this `environment` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
@@ -14,7 +14,7 @@ The [Example queries](#example-queries) illustrate a few fields you can query wi
 
 When querying for `environment`, you can use the following arguments.
 
-<QueryArgsTable queryName="environment" useBetaAPI />
+<QueryArgsTable queryName="environment" />
 
 ### Example queries
 
@@ -86,10 +86,10 @@ query ($environmentId: BigInt!, $uniqueId: String) {
 ### Fields
 When querying an `environment`, you can use the following fields.
 
-<SchemaTable nodeName="Environment" useBetaAPI />
+<SchemaTable nodeName="Environment" />
 
-When querying the `applied` field of `environment`, you can use the following fields.
-<SchemaTable nodeName="AppliedState" useBetaAPI />
+For details on querying the `applied` field of `environment`, you can visit:
+[Applied](./schema-discovery-environment-applied.mdx)
 
-When querying the `definition` field of `environment`, you can use the following fields.
-<SchemaTable nodeName="DefinitionState" useBetaAPI />
+For details querying the `definition` field of `environment`, you can visit:
+[Definition](./schema-discovery-environment-definition.mdx)

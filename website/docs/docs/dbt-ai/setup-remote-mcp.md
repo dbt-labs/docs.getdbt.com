@@ -1,6 +1,6 @@
 ---
-title: "Set Up remote MCP"
-sidebar_label: "Set Up remote MCP"
+title: "Set up remote MCP"
+sidebar_label: "Set up remote MCP"
 description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
 ---
@@ -22,7 +22,7 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | Token | Required | Your personal access token or service token from the dbt platform. <br/> **Note**: A service token is required when using the Semantic Layer, and this service token should have at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
+  | Token | Required | Your personal access token or service token from the dbt platform. <br/> **Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
   | x-dbt-prod-environment-id | Required | Your dbt Cloud production environment ID |
 
   **Additional configuration for SQL tools**
@@ -34,8 +34,8 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
   **Configuration to disable tools**
   | Header | Required  | Description |
   | --- | --- | --- |
-  | x-dbt-disable-tools | Optional | A comma separted list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
-  | x-dbt-disable-toolsets | Optional | A comma separted list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
+  | x-dbt-disable-tools | Optional | A comma-separated list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
+  | x-dbt-disable-toolsets | Optional | A comma-separated list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
 
 4. After establishing which headers you need, you can follow the examples [here](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 

@@ -53,7 +53,7 @@ Complete all of these items to ensure your <Constant name="cloud" /> resources a
 
 Use one of these two URL login options:
 
-- `us1.dbt.com.` If you were previously logging in at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login.
+- `us1.dbt.com.` If you were previously logging in with a username and password at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login. If you have single sign-on configured, you will use the unique URL listed in the SSO account settings (ex: `ACCOUNT_PREFIX.us1.dbt.com`).
 - `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
 Check out [access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information.
 

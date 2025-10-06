@@ -25,7 +25,7 @@ The following fields are required when creating a connection:
 
 For authentication, <Constant name="cloud" /> users can use **Database username and password** for Postgres and Postgres compatible databases. For more information on what is supported, check out the database specific setup page for limitations and helpful tips. 
 
-In addition, for Redshift, users can use **IAM User authentication** via [extended attributes](/docs/dbt-cloud-environments#extended-attributes) or Identity Center via [external Oauth](/docs/cloud/manage-access/redshift-external-oauth) 
+In addition, for Redshift, users can use **IAM User authentication** via [extended attributes](/docs/dbt-cloud-environments#extended-attributes) or Identity Center via [external Oauth](/docs/cloud/manage-access/redshift-external-oauth). IAM role authentication is not supported. 
 
 <Tabs
   defaultValue="database"

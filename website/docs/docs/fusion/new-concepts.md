@@ -129,6 +129,20 @@ models:
 
 </File>
 
+Disable static analysis in YAML:
+
+<File name='models/my_udf_using_model.yml'>
+
+```yml
+models:
+  - name: model_with_static_analysis_off
+    config:
+      static_analysis: off
+```
+
+</File>
+
+
 Disable static analysis for a model using a custom UDF:
 
 <File name='models/my_udf_using_model.sql'>

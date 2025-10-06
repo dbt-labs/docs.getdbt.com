@@ -70,8 +70,7 @@ In addition to these fields, two other optional fields can be configured in a Bi
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise-tier plans only
 
-The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
-a BigQuery user without configuring the BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="cloud" />, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
+The OAuth auth method permits <Constant name="cloud" /> to run queries on behalf of a BigQuery user or workload without storing the BigQuery service account keyfile in <Constant name="cloud" />. However, the JSON must still be provided, or fields must be manually filled out to complete the configuration in dbt Cloud. Those values do not have to be real for this bypass to work (for example, they can be `N/A`). For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="cloud" />>, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="cloud" />.
 

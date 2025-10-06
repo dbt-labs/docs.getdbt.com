@@ -17,7 +17,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 | file_format <sup>†</sup>        | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).   | Optional     | SQL, Python     | `delta`     |
 | location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.     | Optional  | SQL, Python     | `/mnt/root`  |
 | partition_by        | Partition the created table by the specified columns. A directory is created for each partition. | Optional   | SQL, Python     | `date_day`  |
-| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional          | SQL, Python     | `date_day` |
+| liquid_clustered_by<sup>^</sup>  | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional          | SQL, Python     | `date_day` |
 | auto_liquid_cluster\+ | The created table is [automatically clustered by Databricks](https://docs.databricks.com/aws/en/delta/clustering#automatic-liquid-clustering).  Available since dbt-databricks 1.10.0 | Optional | SQL, Python | `auto_liquid_cluster: true` |
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.      | Optional     | SQL, Python     | `country_code`           |
 | buckets    | The number of buckets to create while clustering   | Required if `clustered_by` is specified   | SQL, Python     | `8`        |
@@ -30,6 +30,8 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 † When `table_format` is `iceberg`, `file_format` must be `delta`.
 
 ‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
+
+<sup>^</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
 
 \+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 

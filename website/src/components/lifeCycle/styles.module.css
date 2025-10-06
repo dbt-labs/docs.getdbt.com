@@ -8,7 +8,6 @@
     margin-left: 12px; /* Margin to separate from the header text */
     vertical-align: middle; /* Align with the title */
     display: inline-block; /* Use inline-block for better control */
-    text-transform: capitalize; /* Uppercase text */
     line-height: 1.6; /* Adjust line height for vertical alignment */
     text-decoration: none; /* No underline by default */
     transition: background-color 0.2s ease, transform 0.2s ease, text-decoration 0.2s ease;
@@ -18,7 +17,7 @@
 .lifecycle:hover {
     background-color: #EBEDF0;
     color: #e3f2fd;
-    text-decoration: underline;
+    text-decoration: none;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     transform: scale(1.09); /* Slightly enlarge the pill */
 }

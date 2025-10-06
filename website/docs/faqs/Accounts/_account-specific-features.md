@@ -77,9 +77,9 @@ This approach is especially valuable for analysts and business users, allowing b
 
 <Constant name="visual_editor" /> enables efficient data access and transformation through a visual interface, combining the benefits of code-driven development with AI-assisted code generation for a seamless, flexible experience.
 
-## Query Page <Lifecycle status="Enterprise, Enterprise+"/>
+## dbt Insights <Lifecycle status="Enterprise, Enterprise+"/>
 
-The Query Page is an interactive feature in <Constant name="cloud" /> designed for writing, running, and analyzing SQL queries within an intuitive interface. It brings together SQL query execution, results visualization, and integration with dbt metadata and documentation &mdash; all in one place.⁠⁠
+<Constant name="query_page" /> is an interactive feature in <Constant name="cloud" /> designed for writing, running, and analyzing SQL queries within an intuitive interface. It brings together SQL query execution, results visualization, and integration with dbt metadata and documentation &mdash; all in one place.⁠⁠
 
 It supports key features such as query history, the ability to export results to CSV, basic charting (for example, line and bar charts), and direct links to <Constant name="explorer" /> and the <Constant name="cloud_ide" /> for a seamless workflow between exploration and development.⁠⁠⁠⁠
 
@@ -89,7 +89,7 @@ You can save and share frequently used SQL queries, and explore documentation or
 
 The interface supports syntax highlighting, code completion, asset linking (to easily reference dbt models/tables), and connects to the Semantic Layer for querying metrics or columns by name.
 
-While the Query Page supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to “jump off” into downstream BI tools with their queries if needed.⁠
+While <Constant name="query_page" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to “jump off” into downstream BI tools with their queries if needed.⁠
 
 ## dbt Mesh cross platform <Lifecycle status="Enterprise, Enterprise+"/>
 

@@ -1,0 +1,64 @@
+---
+title: "Tests object schema"
+sidebar_label: "Tests"
+id: "discovery-schema-environment-applied-tests"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[Tests](/docs/build/data-tests) are assertions you make about your models and other resources in your dbt project. When you run `dbt test`, dbt will tell you if each test in your project passes or fails. You can query tests through the Discovery API to understand information about them.
+
+
+The [Example query](#example-query) illustrates a few fields you can query with the `tests` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `tests`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="tests" />
+
+### Example query
+
+You can use the `environmentId` and filter by test types to return metadata for all tests in the environment:
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      tests(
+        filter: {
+          testTypes: [
+            GENERIC_DATA_TEST,
+            SINGULAR_DATA_TEST,
+            UNIT_TEST
+          ]
+        }, 
+        first: 100
+      ) {
+        edges {
+          node {
+            name
+            model
+            description
+            expect
+            resourceType
+            testType
+            given
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `tests`, you can use the following fields:
+
+<SchemaTable nodeName="TestAppliedStateNodeConnection" />
+
+### Key fields from nodes
+
+<SchemaTable nodeName="TestAppliedStateNode" />
+

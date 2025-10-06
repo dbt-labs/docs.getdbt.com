@@ -32,9 +32,10 @@ exposures:
     url: <string>
     maturity: {high, medium, low}  # Indicates level of confidence or stability in the exposure
     [enabled](/reference/resource-configs/enabled): true | false
-    config: # 'tags' and 'meta' changed to config in v1.10
+    [config](/reference/resource-properties/config): # 'tags' and 'meta' changed to config in v1.10
       [tags](/reference/resource-configs/tags): [<string>] 
-      [meta](/reference/resource-configs/meta): {<dictionary>} 
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      enabled: true | false
     owner: # supports 'name' and 'email' only
       name: <string>
       email: <string>
@@ -46,8 +47,6 @@ exposures:
       - metric('metric_name')
       
     label: "Human-Friendly Name for this Exposure!"
-    [config](/reference/resource-properties/config):
-      enabled: true | false
 
   - name: ... # declare properties of additional exposures
 ```
