@@ -1,7 +1,7 @@
 ---
 title: Creating metrics
 id: metrics-overview
-description: "Metrics can be defined in the same or separate YAML files from semantic models within the same dbt project repo."
+description: "Define metrics in your dbt project to create quantitative indicators."
 sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"

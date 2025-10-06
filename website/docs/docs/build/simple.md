@@ -1,7 +1,7 @@
 ---
 title: "Simple metrics"
 id: simple
-description: "Use simple metrics to directly reference a single measure."
+description: "Use simple metrics to directly reference a single column expression within a semantic model"
 sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
 pagination_next: null

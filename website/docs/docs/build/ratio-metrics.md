@@ -1,7 +1,7 @@
 ---
 id: ratio
 title: "Ratio metrics"
-description: "Use ratio metrics to create a ratio out of two measures. "
+description: "Use ratio metrics to create a ratio out of two metrics. "
 sidebar_label: Ratio
 tags: [Metrics, Semantic Layer]
 ---
