@@ -4,7 +4,9 @@ id: upgrading-to-v1.11
 description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
 ---
- 
+
+# Upgrading to v1.1 <Lifecycle status="beta" />
+
 ## Resources
 
 - <Constant name="core" /> [v1.11 beta changelog](https://github.com/dbt-labs/dbt-core/blob/prep-release/nightly-release/1.11.0b2.dev10062025_18275799839/CHANGELOG.md)
