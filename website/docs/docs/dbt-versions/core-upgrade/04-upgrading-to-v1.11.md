@@ -37,7 +37,7 @@ Key features include:
 - **Native warehouse execution**: Create, update, and rename UDFs as part of DAG execution.
 - **DAG integration**: UDF files are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
-- **Unit test support**: Validate models that use UDFs with unit tests (you should make sure functions exist first by running `dbt build --select "+model_to_test" --empty`).
+- **Unit test support**: Validate models that use UDFs with unit tests. Make sure the functions exist by running `dbt build --select "+model_to_test" --empty` before running unit tests.
 - **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt run --resource_type function` or `dbt run --select my_function`.
 
 Read more about UDFs, including prerequisites and how to define and use them in the UDF documentation.
@@ -52,7 +52,7 @@ The catalog integration has been enhanced with new configuration options and val
 
 ### Enhanced `dbt ls` output
 
-The `dbt ls` command now supports nested key traversal, making it easier to query and filter complex metadata from your dbt project.
+The `dbt ls` command now supports nested key traversal. This makes it easier to query and filter complex metadata from your dbt project.
 
 ### Manifest metadata enhancements
 
@@ -60,7 +60,7 @@ Manifest metadata now includes `run_started_at`, providing better tracking of wh
 
 ### Improved config validation
 
-SQL-based configuration validation has been improved for models, catching configuration errors earlier in the development process.
+SQL-based configuration validation has been improved for models. This enables earlier detection of configuration errors during development.
 
 ### Managing changes to legacy behaviors
 
@@ -68,7 +68,7 @@ Starting with `v1.10`, you can [manage changes to legacy behaviors](/reference/g
 
 ### Deprecation warnings
 
-Starting with `v1.10`, you began receiving deprecation warnings for dbt code that will become invalid in the future. You can use the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to fix invalid code.
+Starting in `v1.10`, dbt began displaying deprecation warnings for code that will become invalid in future releases. You can use the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to fix invalid code.
 
 ## Quick hits
 
@@ -80,8 +80,8 @@ dbt Core v1.11 includes these bug fixes and performance improvements:
 - **Model and source freshness**: Resolved bugs related to model and source freshness checks.
 - **Partial parsing**: Enhanced partial parsing reliability and performance.
 - **JSON schema validation**: Fixed validation issues for more accurate schema checking.
-- **Tags and meta handling**: Improved processing of tags and meta configurations.
-- **Event time quoting**: Better handling of event_time field quoting in configurations.
+- **Tags and meta handling**: Improved processing of `tags` and `meta` configurations.
+- **Event time quoting**: Better handling of `event_time` field quoting in configurations.
 - **Deprecation handling**: Enhanced deprecation warning messages and reduced redundant warnings.
 - **Error messages**: Improved error messaging throughout the codebase for easier debugging.
 - **Performance**: Various performance optimizations across the platform.
