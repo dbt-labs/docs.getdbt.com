@@ -18,10 +18,25 @@ dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is
 
 UDFs are supported in the following adapters:
 
+<Tabs>
+
+<TabItem value="core" label="dbt Core local install">
+
 - BigQuery
 - Snowflake
 - Redshift
-- Postgres (<Constant name="core" /> only)
+- Postgres
+
+</TabItem>
+
+<TabItem value ="dbt platform" label ="dbt Core in the dbt platform">
+
+- BigQuery
+- Snowflake
+- Redshift
+
+</TabItem>
+</Tabs>
 
 ## Defining UDFs in dbt
 
