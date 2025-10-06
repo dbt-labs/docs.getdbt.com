@@ -26,6 +26,7 @@ UDFs are supported in the following adapters:
 - Snowflake
 - Redshift
 - Postgres
+- Databricks
 
 </TabItem>
 
