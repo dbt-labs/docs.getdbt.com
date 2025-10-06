@@ -9,22 +9,16 @@ pagination_next: null
 
 <VersionBlock lastVersion="1.99">
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-<!--insert Simple metrics intro for version 2.0-->
-</VersionBlock>
-
-The parameters, description, and type for simple metrics are:
 
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
-<VersionBlock lastVersion="1.99">
+The parameters, description, and type for simple metrics are:
+
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
-| `name` | The name of the metric. | Required | String |
+| `name` | The name of the metric. It must be unique within your project and can include lowercase letters, numbers, and underscores. Use this name to reference the metric from the <Constant name="semantic_layer" /> API. | Required | String |
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
@@ -39,8 +33,28 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec parameters-->
+
+Simple metrics are metrics that directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
+
+The parameters, description, and type for simple metrics are:
+
+| Parameter | Description | Required | Type |
+| --------- | ----------- | ---- | ---- |
+| `name` | The name of the metric. It must be unique within your project and can include lowercase letters, numbers, and underscores. Use this name to reference the metric from the <Constant name="semantic_layer" /> API. | Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`,  `count_distinct`,  `percentile`, and `sum_boolean` (use existing enum from DSI)| Required | String |
+| `expr` | The expression to use, like a column name. Defaults to the metric name. | Optional | String |
+| `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
+| `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. | Optional | String |
+| `non_additive_dimension` | The non-additive dimension to use. | Optional | String |
+| `agg_time_dimension` | The time dimension to use. | Optional | String |
+| `join_to_timespine` | Indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
+
 </VersionBlock>
+
 
 The following displays the complete specification for simple metrics, along with an example.
 
