@@ -46,9 +46,9 @@ Read about defining and using UDFs, and prerequisites, such as supported adapter
 
 The catalog integration has been enhanced with new configuration options and validation:
 
-- `file_format` configuration is now supported in catalog integration
-- Improved catalog and config validation for sources, models, and tests
-- Better error handling and validation messages
+- `file_format` configuration is now supported in catalog integration.
+- Improved catalog and config validation for sources, models, and tests.
+- Better error handling and validation messages.
 
 ### Enhanced `dbt ls` output
 
@@ -76,20 +76,20 @@ Starting with `v1.10`, you began receiving deprecation warnings for dbt code tha
 
 dbt Core v1.11 includes these bug fixes and performance improvements:
 
-- **Config parsing improvements**: Fixed multiple issues in config parsing logic for more reliable configuration handling
-- **Model and source freshness**: Resolved bugs related to model and source freshness checks
-- **Partial parsing**: Enhanced partial parsing reliability and performance
-- **JSONSchema validation**: Fixed validation issues for more accurate schema checking
-- **Tags and meta handling**: Improved processing of tags and meta configurations
-- **Event time quoting**: Better handling of event_time field quoting in configurations
-- **Deprecation handling**: Enhanced deprecation warning messages and reduced redundant warnings
-- **Error messages**: Improved error messaging throughout the codebase for easier debugging
-- **Performance**: Various performance optimizations across the platform
+- **Config parsing improvements**: Fixed multiple issues in config parsing logic for more reliable configuration handling.
+- **Model and source freshness**: Resolved bugs related to model and source freshness checks.
+- **Partial parsing**: Enhanced partial parsing reliability and performance.
+- **JSON schema validation**: Fixed validation issues for more accurate schema checking.
+- **Tags and meta handling**: Improved processing of tags and meta configurations.
+- **Event time quoting**: Better handling of event_time field quoting in configurations.
+- **Deprecation handling**: Enhanced deprecation warning messages and reduced redundant warnings.
+- **Error messages**: Improved error messaging throughout the codebase for easier debugging.
+- **Performance**: Various performance optimizations across the platform.
 
 ### Dependency updates
 
 dbt Core v1.11 updates several key dependencies to ensure compatibility and security:
 
-- Updated minimum versions for `jsonschema`, `dbt-common`, `dbt-adapters`, and `dbt-semantic-interfaces`
-- Loosened some dependency pins for better compatibility with other Python packages
-- Fixed dependency installation issues for smoother setup
+- Updated minimum versions for `jsonschema`, `dbt-common`, `dbt-adapters`, and `dbt-semantic-interfaces`.
+- Loosened some dependency pins for better compatibility with other Python packages.
+- Fixed dependency installation issues for smoother setup.
