@@ -1324,6 +1324,18 @@ const sidebarSettings = {
             "reference/resource-properties/arguments",
           ],
         },
+        {
+          type: "category",
+          label: "For functions",
+          link: { type: "doc", id: "reference/function-properties" },
+          items: [
+            "reference/function-properties",
+            "reference/function-configs",
+            "reference/resource-properties/type",
+            "reference/resource-properties/returns",
+            "reference/resource-properties/arguments",
+          ],
+        },
       ],
     },
     {

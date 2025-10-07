@@ -231,3 +231,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 ## Limitations
 - Creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
 - Only <Term id="scalar">scalar</Term> functions are currently supported.
+
+## Related FAQs
+
+<FAQ path="Project/udfs-vs-macros" />
