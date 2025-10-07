@@ -39,59 +39,19 @@ Key features include:
 - **Native warehouse execution**: Create, update, and rename UDFs as part of DAG execution.
 - **DAG integration**: UDF files are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
-- **Unit test support**: Validate models that use UDFs with unit tests. Make sure the functions exist by running `dbt build --select "+model_to_test" --empty` before running unit tests.
-- **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt run --resource_type function` or `dbt run --select my_function`.
+- **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt build --select "resource_type:function"`.
 
 Read more about UDFs, including prerequisites and how to define and use them in the UDF documentation.
 
-### Catalog improvements
-
-The catalog integration has been enhanced with new configuration options and validation:
-
-- `file_format` configuration is now supported in catalog integration.
-- Improved catalog and config validation for sources, models, and tests.
-- Better error handling and validation messages.
-
-### Enhanced `dbt ls` output
-
-The `dbt ls` command now supports nested key traversal. This makes it easier to query and filter complex metadata from your dbt project.
-
-### Manifest metadata enhancements
-
-Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
-
-### Improved config validation
-
-SQL-based configuration validation has been improved for models. This enables earlier detection of configuration errors during development.
-
-### Managing changes to legacy behaviors
-
-Starting with `v1.10`, you can [manage changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
-
 ### Deprecation warnings
 
-Starting in `v1.10`, dbt began displaying deprecation warnings for code that will become invalid in future releases. You can use the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to fix invalid code.
+You can use the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to fix invalid code and resolve deprecations warnings.
 
 ## Quick hits
 
-### Bug fixes and improvements
+You will find these quick hits in dbt Core v1.11:
+* The `dbt ls` command now supports nested key traversal. This makes it easier to query and filter complex metadata from your dbt project.
+* Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
+* SQL-based configuration validation has been improved for models. This enables earlier detection of configuration errors during development.
+* The dbt Catalog integration has been enhanced with new configuration options (including `file_format` support), improved validation for sources, models, and tests, and better error handling messages.
 
-dbt Core v1.11 includes these bug fixes and performance improvements:
-
-- **Config parsing improvements**: Fixed multiple issues in config parsing logic for more reliable configuration handling.
-- **Model and source freshness**: Resolved bugs related to model and source freshness checks.
-- **Partial parsing**: Enhanced partial parsing reliability and performance.
-- **JSON schema validation**: Fixed validation issues for more accurate schema checking.
-- **Tags and meta handling**: Improved processing of `tags` and `meta` configurations.
-- **Event time quoting**: Better handling of `event_time` field quoting in configurations.
-- **Deprecation handling**: Enhanced deprecation warning messages and reduced redundant warnings.
-- **Error messages**: Improved error messaging throughout the codebase for easier debugging.
-- **Performance**: Various performance optimizations across the platform.
-
-### Dependency updates
-
-dbt Core v1.11 updates several key dependencies to ensure compatibility and security:
-
-- Updated minimum versions for `jsonschema`, `dbt-common`, `dbt-adapters`, and `dbt-semantic-interfaces`.
-- Loosened some dependency pins for better compatibility with other Python packages.
-- Fixed dependency installation issues for smoother setup.
