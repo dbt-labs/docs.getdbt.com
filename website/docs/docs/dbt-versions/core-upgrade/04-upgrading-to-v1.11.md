@@ -43,10 +43,6 @@ Key features include:
 
 Read more about UDFs, including prerequisites and how to define and use them in the UDF documentation.
 
-### Deprecation warnings
-
-You can use the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to fix invalid code and resolve deprecations warnings.
-
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
