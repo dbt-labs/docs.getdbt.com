@@ -5,6 +5,8 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-6-terminology"
 ---
 
+
+
 ## More advanced metric types
 
 We're not limited to just passing measures through to our metrics, we can also _combine_ measures to model more advanced metrics.

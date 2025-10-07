@@ -5,6 +5,10 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-5-advanced-metrics"
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 ## How to build metrics
 
 - 💹 We'll start with one of the most important metrics for any business: **revenue**.

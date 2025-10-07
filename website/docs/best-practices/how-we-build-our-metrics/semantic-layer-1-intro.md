@@ -6,6 +6,10 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-2-setup
 pagination_prev: null
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 Flying cars, hoverboards, and true self-service analytics: this is the future we were promised. The first two might still be a few years out, but real self-service analytics is here today. With <Constant name="cloud" />'s <Constant name="semantic_layer" />, you can resolve the tension between accuracy and flexibility that has hampered analytics tools for years, empowering everybody in your organization to explore a shared reality of metrics. Best of all for analytics engineers, building with these new tools will significantly [DRY](https://docs.getdbt.com/terms/dry) up and simplify your codebase. As you'll see, the deep interaction between your dbt models and the <Constant name="semantic_layer" /> make your dbt project the ideal place to craft your metrics.
 
 ## Learning goals
