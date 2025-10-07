@@ -71,7 +71,7 @@ To define UDFs in dbt, refer to the following steps:
             data_type: string # required if arguments is specified
             description: The string that I want to check if it's representing a positive integer (like "10") 
         returns: # required
-            data_type: boolean # required
+          data_type: boolean # required
     ```
     </File>
 
