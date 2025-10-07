@@ -107,6 +107,10 @@ reverse-etl:
   displayText: reverse ETL
   hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 
+scalar:
+  displayText: scalar
+  hoverSnippet: A UDF type that returns a single value per row.
+
 scalar-value:
   displayText: scalar value
   hoverSnippet: A single piece of data (for example, a number or string) rather than a collection or set of values.
