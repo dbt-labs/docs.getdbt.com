@@ -488,6 +488,8 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 [Dimensions](/docs/build/dimensions) are different ways to organize or look at data. They are effectively the group by parameters for metrics. For example, you might group data by things like region, country, or job title.
 
+<VersionBlock lastVersion="1.99">
+
 MetricFlow takes a dynamic approach when making dimensions available for metrics. Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the dimensions you need and constructs any joins necessary to reach the requested dimensions at query time. The advantage of this approach is that you don't need to set up a system that pre-materializes every possible way to group data, which can be time-consuming and prone to errors. Instead, you define the dimensions (group by parameters) you're interested in within the semantic model, and they will automatically be made available for valid metrics.
 
 Dimensions have the following characteristics:
@@ -496,14 +498,24 @@ Dimensions have the following characteristics:
 - Dimensions are bound to the primary entity of the semantic model in which they are defined. For example, if a dimension called `full_name` is defined in a model with `user` as a primary entity, then `full_name` is scoped to the `user` entity. To reference this dimension, you would use the fully qualified dimension name `user__full_name`.
 - The naming of dimensions must be unique in each semantic model with the same primary entity. Dimension names can be repeated if defined in semantic models with a different primary entity.
 
-<VersionBlock lastVersion="1.99">
 :::info For time groups
 
 For semantic models with a measure, you must have a [primary time group](/docs/build/dimensions#time).
 :::
+
 </VersionBlock>
 
+
 <VersionBlock firstVersion="2.0">
+
+MetricFlow takes a dynamic approach when making dimensions available for metrics. Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the dimensions you need and constructs any joins necessary to reach the requested dimensions at query time. The advantage of this approach is that you don't need to set up a system that pre-materializes every possible way to group data, which can be time-consuming and prone to errors. Instead, you define dimensions within the semantic model by nesting them under columns, and they will automatically be made available for valid metrics.
+
+Dimensions have the following characteristics:
+
+- There are two types of dimensions: categorical and time. Categorical dimensions are for things you can't measure in numbers, while time dimensions represent dates and timestamps. Time dimensions require a column-level granularity.
+- Dimensions are bound to the primary entity of the semantic model in which they are defined. For example, if a dimension called `full_name` is defined in a model with `user` as a primary entity, then `full_name` is scoped to the `user` entity. To reference this dimension, you would use the fully qualified dimension name `user__full_name`.
+- The naming of dimensions must be unique in each semantic model with the same primary entity. Dimension names can be repeated if defined in semantic models with a different primary entity.
+
 :::info For time groups
 
 For semantic models that define metrics, include at least one time dimension column with a `granularity` and set the model’s `agg_time_dimension`. You can override the aggregation time dimension on individual metrics if needed.
@@ -530,7 +542,7 @@ import MeasuresParameters from '/snippets/\_sl-measures-parameters.md';
 
 Simple metrics are direct aggregations over columns in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
 
-Simple have various parameters which are listed in a table along with their descriptions and types. For more information, see [Simple metrics](/docs/build/simple).
+Simple metrics have various parameters which are listed in a table along with their descriptions and types. For more information, see [Simple metrics](/docs/build/simple). <!--add a snippet once merged-->
 
 </VersionBlock>
 
