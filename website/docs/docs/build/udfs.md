@@ -6,41 +6,38 @@ id: "udfs"
 
 # User-defined functions <Lifecycle status="beta" />
 
-:::info
-UDFs are not yet supported in the dbt Fusion engine.
-:::
-
 User-defined functions (UDFs) enable you to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt, such as BI tools, data science notebooks, and more. 
 
 UDFs are particularly valuable for sharing logic across multiple tools, standardizing complex business calculations, improving performance for compute-intensive operations (since they're compiled and optimized by your warehouse's query engine), and version controlling custom logic within your dbt project.
 
 dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is built in the warehouse before the model that references it.
 
-## Supported adapters
+## Prerequisites
 
-UDFs are supported in the following adapters:
+* Make sure you're using the dbt Fusion engine or dbt Core v1.11.
+* Use one of the following adapters:
 
-<Tabs>
-
-<TabItem value="core" label="dbt Core">
-
-- BigQuery
-- Snowflake
-- Redshift
-- Postgres
-- Databricks
-
-</TabItem>
-
-<TabItem value ="fusion" label ="dbt Fusion">
-
-- BigQuery
-- Snowflake
-- Redshift
-- Databricks
-
-</TabItem>
-</Tabs>
+	<Tabs>
+	
+	<TabItem value="core" label="dbt Core">
+	
+	- BigQuery
+	- Snowflake
+	- Redshift
+	- Postgres
+	- Databricks
+	
+	</TabItem>
+	
+	<TabItem value ="fusion" label ="dbt Fusion">
+	
+	- BigQuery
+	- Snowflake
+	- Redshift
+	- Databricks
+	
+	</TabItem>
+	</Tabs>
 
 ## Defining UDFs in dbt
 
