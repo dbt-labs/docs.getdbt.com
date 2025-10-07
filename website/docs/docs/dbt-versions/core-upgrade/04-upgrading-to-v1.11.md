@@ -31,7 +31,7 @@ New features and functionality available in <Constant name="core" /> v1.11
 
 ### User-defined functions (UDFs) <Lifecycle status="beta" />
 
-dbt Core v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they run natively in the warehouse so you can reuse the same logic in tools outside dbt.
+dbt Core v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
 
 Key features include:
 
