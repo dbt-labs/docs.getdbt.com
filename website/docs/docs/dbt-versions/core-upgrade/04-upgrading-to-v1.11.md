@@ -41,7 +41,7 @@ Key features include:
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
 - **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt build --select "resource_type:function"`.
 
-Read more about UDFs, including prerequisites and how to define and use them in the UDF documentation.
+Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/user-defined-functions).
 
 ## Quick hits
 
