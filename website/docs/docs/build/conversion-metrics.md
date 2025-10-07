@@ -6,15 +6,17 @@ sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
 ---
 
-Conversion metrics allow you to define when a base event and a subsequent conversion event happen for a specific entity within some time range.
+Conversion metrics let you measure how often one event leads to another for a specific entity within a defined time window.
 
-For example, using conversion metrics allows you to track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window). You would need to add a time range and an entity to join. 
+For example, you can track how often a user (entity) who visits your site (base event) makes a purchase (conversion event) within 7 days (time window). To set this up, you’ll specify both the time range and the entity that links/joins the two events.
 
 Conversion metrics are different from [ratio metrics](/docs/build/ratio) because you need to include an entity in the pre-aggregated join.
 
 ## Parameters
 
 The specification for conversion metrics is as follows:
+
+<VersionBlock lastVersion="1.99">
 
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
@@ -44,9 +46,42 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `base_property` | The property from the base semantic model that you want to hold constant.  |  Optional | String |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Optional | String |
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+| Parameter | Description | Required | Type |
+| --- | --- | --- | --- |
+| `name` | The name of the metric. | Required | String |
+| `description` | The description of the metric. | Optional | String |
+| `type` | The type of metric. Set as `conversion` for conversion metrics. | Required | String |
+| `label` | The display label for the metric. Accepts plain text, spaces, and quotes. | Optional | String |
+| `config` | Configuration settings for the metric. | Optional | Dict |
+| `config::group` | The group the metric belongs to. | Optional | String |
+| `config::tags` | Tags associated with the metric. | Optional | List |
+| `config::meta` | Metadata for the metric. | Optional | Dict |
+| `entity` | The entity for each conversion event. | Required | String |
+| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | Optional | String |
+| `base_metric` | The base metric name or configuration for the conversion event. Can be a string (metric name) or a dict (for additional customization). | Required | String or Dict |
+| `base_metric::name` | The name of the base metric (when using dict format). | Required | String |
+| `base_metric::filter` | Filter to apply to the base metric (when using dict format). | Optional | String |
+| `base_metric::alias` | Alias for the base metric (when using dict format). | Optional | String |
+| `conversion_metric` | The conversion metric name or configuration. Can be a string (metric name) or a dict (for additional customization). | Required | String or Dict |
+| `conversion_metric::name` | The name of the conversion metric (when using dict format). | Required | String |
+| `conversion_metric::filter` | Filter to apply to the conversion metric (when using dict format). | Optional | String |
+| `conversion_metric::alias` | Alias for the conversion metric (when using dict format). | Optional | String |
+| `window` | The time window for the conversion event (such as `7 days`, `1 week`, `3 months`). Defaults to infinity. | Optional | String |
+| `constant_properties` | List of properties to hold constant between base and conversion events. Can be a dimension or entity.| Optional | List |
+| `constant_properties::base_property` | The dimension or entity of the semantic model linked to the `base_metric`. | Required | String |
+| `constant_properties::conversion_property` | The dimension or entity of the semantic model linked to the `conversion_metric`. | Required | String |
+
+</VersionBlock>
+
 Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
 The following code example displays the complete specification for conversion metrics and details how they're applied:
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 metrics:
@@ -72,6 +107,37 @@ metrics:
           - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
             conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<File name="models/file_name.yml" >
+
+```yaml
+models:
+  - name: your_model_name
+    semantic_model:
+      enabled: true
+.... rest of configs....
+    metrics:
+      - name: my_conversion_metric
+        description: "Tracks how often a base event leads to a conversion event for an entity"
+        label: "My conversion metric"
+        type: conversion
+        entity: my_primary_entity   # Required; the entity the conversion is tracked for
+        calculation: conversion_rate       # Optional; conversion_rate | conversions
+        base_metric: my_base_event_metric  # Required; metrics defined in another semantic model
+        conversion_metric: my_conversion_event_metric  # Required; metrics defined in another semantic model
+        window: 7 days   # Optional; defines the time window for conversion
+        constant_properties:  # Optional; list of constant properties
+          - base_property: my_dimension_or_entity
+            conversion_property: my_dimension_or_entity
+
+```
+</File>
+
+</VersionBlock>
 
 ## Conversion metric example
 
@@ -103,6 +169,8 @@ Records completed orders with `USER_ID` and `REFERRER_ID`.
 
 Next, define a conversion metric as follows:
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 - name: visit_to_buy_conversion_rate_7d
   description: "Conversion rate from visiting to transaction in 7 days"
@@ -115,10 +183,34 @@ Next, define a conversion metric as follows:
         fill_nulls_with: 0
         filter: {{ Dimension('visits__referrer_id') }} = 'facebook'
       conversion_measure:
-        name: sellers
+        name: buys
       entity: user
       window: 7 days
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+```yaml
+models:
+  - name: your_model_name
+    semantic_model:
+      enabled: true
+.... rest of configs....
+    metrics:
+      - name: visit_to_buy_conversion_rate_7d
+        description: "Conversion rate from visiting to transaction in 7 days"
+        type: conversion
+        label: Visit to buy conversion rate (7-day window)
+        entity: user
+        calculation: conversion_rat
+        base_metric:
+          name: visits
+          filter: {{ Dimension('visits__referrer_id') }} = 'facebook'
+        conversion_metric: buys
+        window: 7 days
+```
+</VersionBlock>
 
 To calculate the conversion, link the `BUYS` event to the nearest `VISITS` event (or closest base event). The following steps explain this process in more detail:
 
@@ -227,10 +319,10 @@ Now that you’ve tied each conversion event to a visit, you can calculate the a
 select
   coalesce(subq_3.metric_time__day, subq_13.metric_time__day) as metric_time__day,
   cast(max(subq_13.buys) as double) / cast(nullif(max(subq_3.visits), 0) as double) as visit_to_buy_conversion_rate_7d
-from ( -- base measure
+from ( -- base
   select
     metric_time__day,
-    sum(visits) as mqls
+    sum(visits) as visits
   from (
     select
       date_trunc('day', first_contact_date) as metric_time__day,
@@ -240,10 +332,10 @@ from ( -- base measure
   group by
     metric_time__day
 ) subq_3
-full outer join ( -- conversion measure
+full outer join ( -- conversion
   select
     metric_time__day,
-    sum(buys) as sellers
+    sum(buys) as buys
   from (
     -- ...
     -- The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility.
@@ -271,6 +363,8 @@ Use the following additional settings to customize your conversion metrics:
 
 To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 - name: visit_to_buy_conversion_rate_7_day_window
   description: "Conversion rate from viewing a page to making a purchase"
@@ -288,6 +382,24 @@ To return zero in the final data set, you can set the value of a null conversion
       window: 7 days 
 
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+```yaml
+metrics:
+  - name: visit_to_buy_conversion_rate_7_day_window
+    description: "Conversion rate from viewing a page to making a purchase"
+    type: conversion
+    label: Visit to user conversion rate (7 day window)
+    entity: user
+    calculation: conversions
+    base_metric: visits
+    conversion_metric: buys
+    window: 7 days
+    fill_nulls_with: 0  # Set null conversion values to zero
+```
+</VersionBlock>
 
 This will return the following results:
 
@@ -302,6 +414,8 @@ Refer to [Fill null values for metrics](/docs/build/fill-nulls-advanced) for mor
 Use the conversion calculation parameter to either show the raw number of conversions or the conversion rate. The default value is the conversion rate.
 
 You can change the default to display the number of conversions by setting the `calculation: conversion` parameter:
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 - name: visit_to_buy_conversions_1_week_window
@@ -320,6 +434,26 @@ You can change the default to display the number of conversions by setting the `
         window: 1 week
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+```yaml
+metrics:
+  - name: visit_to_buy_conversions_1_week_window
+    description: "Visit to buy conversions"
+    type: conversion
+    label: Visit to buy conversions (1 week window)
+    entity: user
+    calculation: conversions
+    base_metric: visits
+    conversion_metric: buys
+    window: 1 week
+    fill_nulls_with: 0
+```
+
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="constproperty" label="Set constant property">
@@ -336,10 +470,12 @@ Back to the initial questions, you want to see how many customers viewed an item
 
 In this case, you want to set `product_id` as the constant property. You can specify this in the configs as follows:
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
   description: "Conversion rate for users who viewed the item detail page and purchased the item"
-  type: Conversion
+  type: conversion
   label: View Item Detail > Purchase
   type_params:
     conversion_type_params:
@@ -353,6 +489,27 @@ In this case, you want to set `product_id` as the constant property. You can spe
         - base_property: product
           conversion_property: product
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+```yaml
+metrics:
+  - name: view_item_detail_to_purchase_with_same_item
+    description: "Conversion rate for users who viewed the item detail page and purchased the item"
+    type: conversion
+    label: View item detail > Purchase
+    entity: user
+    calculation: conversions
+    base_metric: view_item_detail
+    conversion_metric: purchase
+    window: 1 week
+    constant_properties:
+      - base_property: product
+        conversion_property: product
+```
+</VersionBlock>
 
 You will add an additional condition to the join to make sure the constant property is the same across conversions.
 
