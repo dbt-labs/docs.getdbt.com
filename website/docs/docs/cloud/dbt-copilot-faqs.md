@@ -90,12 +90,6 @@ The user clicks the <Constant name="copilot" /> button. Aside from authenticatio
 
 </Expandable>
 
-<Expandable alt_header="Does dbt Copilot access my warehouse data?">
-
-To provide the services, <Constant name="copilot" /> utilizes the data entered by the user in addition to metadata, including column names, model SQL, the model's name, and model documentation. The row-level data from the warehouse is never used or sent by dbt Labs to a third-party provider without action by the user. The user is responsible for double-checking output for completeness and accuracy.
-
-</Expandable>
-
 <Expandable alt_header="Can dbt Copilot data be deleted upon client written request?">
 
 To the extent client identifies personal or sensitive information uploaded by or on behalf of client to dbt Labs systems by the user in error, such data can be deleted within 30 days of written request.
