@@ -12,7 +12,7 @@ UDFs are not yet supported in the dbt Fusion engine.
 
 User-defined functions (UDFs) enable users to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse. They run natively in the warehouse so you can reuse the same logic in tools outside dbt.
 
-dbt creates, updates, and renames UDFs as part of DAG execution. The UDF file is created before building the model that references it.
+dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is built in the warehouse before the model that references it.
 
 ## Supported adapters
 
@@ -20,7 +20,7 @@ UDFs are supported in the following adapters:
 
 <Tabs>
 
-<TabItem value="core" label="dbt Core local install">
+<TabItem value="core" label="dbt Core">
 
 - BigQuery
 - Snowflake
@@ -30,7 +30,7 @@ UDFs are supported in the following adapters:
 
 </TabItem>
 
-<TabItem value ="dbt platform" label ="dbt Core in the dbt platform">
+<TabItem value ="fusion" label ="dbt Fusion">
 
 - BigQuery
 - Snowflake
@@ -49,9 +49,6 @@ To define UDFs in dbt, refer to the following steps:
     <File name='functions/is_positive_int.sql'>
 
     ```sql
-    {{ config(
-        database='udf_db'
-    ) }}
 
     REGEXP_CONTAINS(a_string, r'^[0-9]+$')
     ```
@@ -68,12 +65,12 @@ To define UDFs in dbt, refer to the following steps:
       - name: is_positive_int # required
         description: My UDF that determines if a string represents a positive (+) integer # required
         config:
-            schema: udf_schema
-            database: udf_db
+          schema: udf_schema
+          database: udf_db
         arguments: # optional
-            - name: a_string # required if arguments is specified
-              data_type: string # required if arguments is specified
-              description: The string that I want to check if it's representing a positive integer (like "10") 
+          - name: a_string # required if arguments is specified
+            data_type: string # required if arguments is specified
+            description: The string that I want to check if it's representing a positive integer (like "10") 
         returns: # required
             data_type: boolean # required
     ```
@@ -86,7 +83,7 @@ To define UDFs in dbt, refer to the following steps:
 
     - `scalar` - Returns a single value per row
     - `aggregate` - Returns a single value per group, aggregating several rows
-    - `table functions` - Returns a table result
+    - `table` - Returns a table result
     <br></br>
     For example:
 
@@ -108,7 +105,7 @@ To define UDFs in dbt, refer to the following steps:
 
     <TabItem value="Snowflake">
     ```sql
-    CREATE OR REPLACE FUNCTION my_schema.is_positive_int(a_string STRING)
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
     RETURNS BOOLEAN
     AS (
     REGEXP_CONTAINS(a_string, r'^[0-9]+$')
@@ -133,10 +130,8 @@ To define UDFs in dbt, refer to the following steps:
 
     ```sql
     select
-
-    maybe_positive_int_column,
+        maybe_positive_int_column,
         {{ function('is_positive_int') }}(maybe_positive_int_column)
-
     from {{ ref('a_model_i_like') }}
     ```
     </File>
@@ -147,17 +142,15 @@ To define UDFs in dbt, refer to the following steps:
 
     ```sql
     select
-
-    maybe_positive_int_column,
-	udf_db.udf_schema.is_positive_int(maybe_positive_int_column) as is_positive
-
-    from analytics.<dbt_schema>.a_model_i_like
+        maybe_positive_int_column,
+	    udf_db.udf_schema.is_positive_int(maybe_positive_int_column) as is_positive
+    from analytics.dbt_schema.a_model_i_like
     ```
     </File>
 
-    In your DAG, there should be a dependency between `is_positive_int` → `my_model` and a UDF node is created from the SQL and YAML definitions.
+    In your DAG, a UDF node is created from the SQL and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
 
-After defining a UDF, you can update the SQL file that contains its function body (`is_positive_int.sql` in this example). When you rebuild, your changes will be applied everywhere the UDF is referenced. 
+After defining a UDF, if you update the SQL file that contains its function body (`is_positive_int.sql` in this example) or its configurations, your changes will be applied to the UDF in the warehouse next time you `build`. 
 
 ## Using UDFs in unit tests
 
@@ -196,12 +189,12 @@ unit_tests:
 
 To list UDFs in your project, run `dbt list`. 
 
-To select UDFs when running a project, use the following commands:
+To select UDFs when building a project, use the following commands:
 
 - `dbt run --resource_type function` &mdash; Use this command to only run UDFs in your project.
 - `dbt run --select resource_type:function` &mdash; Use this command to reinitialize all UDFs in your project.
-- `dbt run --select path/to/my_function.sql` &mdash; Use this command to select a function by file path.
-- `dbt run --select my_function` &mdash; Use this command if you modified a UDF and you want to replace it in the data warehouse. To update all models that use the UDF, run `dbt run --select my_function+`.
+- `dbt build --select path/to/my_function.sql` &mdash; Use this selector to build function by file path.
+- `dbt build --select my_function` &mdash; Use this selector to build `my_function`. To build all models that use the UDF, run `dbt build --select my_function+`.
 
 ## Limitations
 - Creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
