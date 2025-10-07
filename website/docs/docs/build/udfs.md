@@ -14,7 +14,7 @@ dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is buil
 
 ## Prerequisites
 
-* Make sure you're using dbt Platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.11.
+* Make sure you're using dbt platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.11.
 * Use one of the following adapters:
 
 	<Tabs>
@@ -29,7 +29,7 @@ dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is buil
 	
 	</TabItem>
 	
-	<TabItem value ="fusion" label ="dbt Fusion">
+	<TabItem value ="fusion" label ="dbt Fusion engine">
 	
 	- BigQuery
 	- Snowflake
@@ -53,6 +53,8 @@ To define UDFs in dbt, refer to the following steps:
     ```
 
     </File>
+
+    **Note**: You can specify configs in the SQL file or in the corresponding YAML file in Step 2. 
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding YAML file. For example:
 
@@ -106,21 +108,54 @@ To define UDFs in dbt, refer to the following steps:
     ```sql
     CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
     RETURNS BOOLEAN
-    AS (
-    REGEXP_CONTAINS(a_string, r'^[0-9]+$')
-    );
+    LANGUAGE SQL
+    AS $$
+      REGEXP_CONTAINS(a_string, r'^[0-9]+$')
+    $$;
     ```
     </TabItem>
 
     <TabItem value="Redshift">
     ```sql
-    CREATE OR REPLACE FUNCTION repeat_n(s VARCHAR, n INTEGER)
-    RETURNS VARCHAR
-    VOLATILE
-    AS $$ SELECT repeat(s, n); $$
-    LANGUAGE SQL;
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(VARCHAR)
+    RETURNS BOOLEAN
+    VOLATILE # Technically this function could be set as STABLE, but we don't support setting volatility yet
+    AS $$
+      REGEXP_CONTAINS($1, r'^[0-9]+$')
+    $$ LANGUAGE SQL;
     ```
     </TabItem>
+
+    <TabItem value="BigQuery">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS BOOLEAN
+    AS (
+      REGEXP_CONTAINS(a_string, r'^[0-9]+$')
+    );
+    ```
+    </TabItem>
+
+    <TabItem value="Databricks">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS BOOLEAN
+    LANGUAGE SQL
+    RETURN
+      REGEXP_CONTAINS(a_string, r'^[0-9]+$');
+    ```
+    </TabItem>
+
+    <TabItem value="Postgres">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS BOOLEAN
+    AS $$
+      REGEXP_CONTAINS(a_string, r'^[0-9]+$')
+    $$ LANGUAGE SQL;
+    ```
+    </TabItem>
+  
     </Tabs>
 
 3. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
@@ -186,14 +221,11 @@ unit_tests:
 
 ## Listing and selecting UDFs
 
-To list UDFs in your project, run `dbt list`. 
+To list UDFs in your project, run `dbt list --select "resource_type:function"` or `dbt list --resource-type function`.
 
-To select UDFs when building a project, use the following commands:
+To select UDFs when building a project, run `dbt build --select "resource_type:function"`.
 
-- `dbt run --resource_type function` &mdash; Use this command to only run UDFs in your project.
-- `dbt run --select resource_type:function` &mdash; Use this command to reinitialize all UDFs in your project.
-- `dbt build --select path/to/my_function.sql` &mdash; Use this selector to build function by file path.
-- `dbt build --select my_function` &mdash; Use this selector to build `my_function`. To build all models that use the UDF, run `dbt build --select my_function+`.
+For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods).
 
 ## Limitations
 - Creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 
