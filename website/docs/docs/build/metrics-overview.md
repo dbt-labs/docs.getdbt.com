@@ -15,9 +15,9 @@ Metrics must be defined in a YAML file &mdash; either within the same file as yo
 
 <VersionBlock firstVersion="2.0">
 
-You can define metrics in two locations within your models YAML files:
+You can define metrics in two locations within your `models` YAML files:
 
-- **Within semantic models** (under `models` -> `semantic_model` -> `metrics`) for metrics that use measures and dimensions from a single semantic model. Recommended for simple metrics.
+- **Within semantic models** (under `models` -> `semantic_model` -> `metrics`) for metrics that use dimensions from a single semantic model. Recommended for simple metrics.
 - **At the top level** (under a separate `metrics` key) for advanced metrics (cumulative, ratio, derived, conversion) that reference metrics from different semantic models. Simple metrics can't be defined at the top level.
 
 Metrics must be defined in YAML files within your dbt project and shouldn't be defined in a `config` block on a model.
