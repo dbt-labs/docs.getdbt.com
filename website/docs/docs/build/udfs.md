@@ -14,7 +14,7 @@ dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is buil
 
 ## Prerequisites
 
-* Make sure you're using dbt Fusion engine or Latest release track in the dbt Platform or dbt Core v1.11.
+* Make sure you're using dbt Platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.11.
 * Use one of the following adapters:
 
 	<Tabs>
