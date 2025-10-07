@@ -183,6 +183,7 @@ To define UDFs in dbt, refer to the following steps:
     </File>
 
     In your DAG, a UDF node is created from the SQL and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
+   <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" title="The DAG for the UDF node" />
 
 After defining a UDF, if you update the SQL file that contains its function body (`is_positive_int.sql` in this example) or its configurations, your changes will be applied to the UDF in the warehouse next time you `build`. 
 
