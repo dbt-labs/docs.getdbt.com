@@ -4,7 +4,6 @@ description: "Learn about advanced topics for dbt Semantic Layer and MetricFlow,
 pagination_prev: null
 ---
 
-The <Constant name="semantic_layer" /> and MetricFlow are powerful tools that allow you to define metrics and semantic models in your dbt project. 
 
 This section covers advanced topics for the <Constant name="semantic_layer" /> and MetricFlow, such as data modeling workflows, and more.
 <!--
@@ -15,7 +14,7 @@ This section covers advanced topics for the <Constant name="semantic_layer" /> a
 
 <Card
     title="Fill null values for metrics"
-    body="Use <code>fill_nulls_with</code> to set null metric values to zero, ensuring numeric values for every data row."
+    body="Use fill_nulls_with to set null metric values to zero, ensuring numeric values for every data row."
     link="/docs/build/fill-nulls-advanced"
     icon="dbt-bit"/>
 
