@@ -36,8 +36,8 @@ dbt Core v1.11 introduces support for user-defined functions (UDFs), which enabl
 Key features include:
 
 - **Define UDFs as first-class dbt resources**: Create UDF files in a `functions/` directory with corresponding YAML configuration.
-- **Native warehouse execution**: Create, update, and rename UDFs as part of DAG execution.
-- **DAG integration**: UDF files are built before models that reference them, ensuring proper dependency management.
+- **Execution**: Create, update, and rename UDFs as part of DAG execution using `dbt build --select "resource_type:function"`
+- **DAG integration**: When executing `dbt build`, UDFs are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
 - **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt build --select "resource_type:function"`.
 
