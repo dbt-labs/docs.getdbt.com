@@ -45,8 +45,6 @@ Read more about UDFs, including prerequisites and how to define and use them in 
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
-* The `dbt ls` command now supports nested key traversal. This makes it easier to query and filter complex metadata from your dbt project.
+* The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 * Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
-* SQL-based configuration validation has been improved for models. This enables earlier detection of configuration errors during development.
-* The dbt Catalog integration has been enhanced with new configuration options (including `file_format` support), improved validation for sources, models, and tests, and better error handling messages.
 
