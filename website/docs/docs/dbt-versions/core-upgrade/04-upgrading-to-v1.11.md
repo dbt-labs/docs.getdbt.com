@@ -39,7 +39,6 @@ Key features include:
 - **Execution**: Create, update, and rename UDFs as part of DAG execution using `dbt build --select "resource_type:function"`
 - **DAG integration**: When executing `dbt build`, UDFs are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
-- **List and select functions**: Manage UDFs by using `dbt list` and selection syntax like `dbt build --select "resource_type:function"`.
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/user-defined-functions).
 
