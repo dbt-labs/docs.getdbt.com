@@ -40,7 +40,7 @@ Key features include:
 - **DAG integration**: When executing `dbt build`, UDFs are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
 
-Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/user-defined-functions).
+Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
 ### Deprecation warnings enabled by default (coming soon)
 
