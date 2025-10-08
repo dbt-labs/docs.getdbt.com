@@ -7,6 +7,7 @@ keyword: governance, model version, model versioning, dbt model versioning
 ---
 
 import VersionsCallout from '/snippets/_model-version-callout.md';
+import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
 
 <VersionsCallout />
 
@@ -17,6 +18,8 @@ Versioning APIs is a hard problem in software engineering. The root of the chall
 When sharing a final dbt model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
 
 Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
+
+<ModelGovernanceRollback />
 
 ## Related documentation
 - [`versions`](/reference/resource-properties/versions)
@@ -42,10 +45,6 @@ dbt Core 1.6 introduced first-class support for **deprecating models** by specif
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 
 ## When should you version a model?
-
-import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
-
-<ModelGovernanceRollback />
 
 By enforcing a model's contract, dbt can help you catch unintended changes to column names and data types that could cause a big headache for downstream queriers. If you're making these changes intentionally, you should create a new model version. If you're making a non-breaking change, you don't need a new version—such as adding a new column, or fixing a bug in an existing column's calculation.
 

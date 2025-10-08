@@ -5,6 +5,8 @@ description: "Learn how to set up the local dbt-mcp server"
 id: "setup-local-mcp"
 ---
 
+import MCPExample from '/snippets/_mcp-config-files.md';
+
 # Set up local MCP <Lifecycle status="beta" />
 
 [The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine. Set up the local dbt MCP server with the following directions: 
@@ -108,3 +110,19 @@ id: "setup-local-mcp"
     ```
 
     `<path-to-.env-file>` is where you saved the `.env` file from the Setup step.
+
+## dbt platform authentication <Lifecycle status="managed, managed_plus" />
+
+The local MCP server integrates with your existing cloud-based dbt platform OAuth integration with a simple configuration file in the client. Reference the following sample configurations (configs may vary depending on the client):
+
+:::info static subdomains
+
+Only accounts with static subdomains (for example, abc123.us1.dbt.com) can use OAuth with MCP servers. All accounts are in the process of being migrated to static subdomains by Dec 2025. Please contact support for more information.
+
+:::
+
+<MCPExample />
+
+Once configured, your session connects to the dbt platform account, starts the OAuth authentication workflow, and then opens your account where you can select the project you want to reference.
+
+<Lightbox src="/img/mcp/select-project.png" width="60%" title="Select your dbt platform project"/>
