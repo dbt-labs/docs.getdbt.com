@@ -130,11 +130,11 @@ If you haven’t already, create a new service account:
 3. Click **Create service account**. Google recommends creating a service account per workload.
 4. Assign the relevant roles you would like this service account to have. In our experience, `BigQuery Admin` is the default role with required access.
 
-Once you’ve created the service account, navigate back to the workpool you created in the previous step: 
+Once you've created the service account, navigate back to the workpool you created in the previous step: 
 1. Click the **Grant Access** option at the top of the page.
 2. Select **Grant access using Service Account Impersonation**.
 3. Select the service account you just created.
-4. Under **Select Principals**, set `subject` as the **Attribute Name**. For the **Attribute Value**, you’ll want to set it to the value assigned to the sub on the token. You can retrieve this value directly from the access token.
+4. Under **Select Principals**, set `subject` as the **Attribute Name**. For the **Attribute Value**, set it to the `sub` (subject) claim value from the Entra ID access token. You can decode the access token using [jwt.io](https://jwt.io) to view the `sub` claim value, which uniquely identifies your application.
 
 ### 4. Set up dbt
 
