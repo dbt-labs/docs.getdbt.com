@@ -25,7 +25,6 @@ UDFs are compiled and optimized by your warehouse's query engine, which can prov
 
 </Expandable>
 
-<Expandable alt_header="Your logic is SQL-based and doesn't need Jinja templating">
 
 If your reusable logic is pure SQL without needing dynamic SQL generation, a UDF is cleaner and more portable.
 
