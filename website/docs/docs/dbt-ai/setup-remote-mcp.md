@@ -31,6 +31,17 @@ The remote server uses an HTTP connection and makes calls to dbt-mcp hosted on t
   | x-dbt-dev-environment-id | Required for `execute_sql` | Your dbt Cloud development environment ID |
   | x-dbt-user-id | Required for `execute_sql` | Your dbt Cloud user ID ([docs](https://docs.getdbt.com/faqs/Accounts/find-user-id)) |
 
+  **Additional configuration for Fusion tools**
+
+Fusion tools, by default, defer to the environment provided via `x-dbt-prod-environment-id` for model and table metadata.
+
+  | Header | Required | Description |
+  | --- | --- | --- |
+  | x-dbt-dev-environment-id | Required| Your dbt platform development environment ID |
+  | x-dbt-user-id | Required | Your dbt platform user ID ([docs](/faqs/Accounts/find-user-id)) |
+  | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, fusion tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
+
+
   **Configuration to disable tools**
   | Header | Required  | Description |
   | --- | --- | --- |
