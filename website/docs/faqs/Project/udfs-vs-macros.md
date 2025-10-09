@@ -61,7 +61,11 @@ Macros and UDFs both support Jinja logic:
 
 <Expandable alt_header="Your logic needs access to dbt context">
 
-Macros can access dbt's context variables like `{{ ref() }}`, `{{ source() }}`, environment variables, and project configurations. UDFs cannot.
+Both macros and UDFs can use Jinja, which means they can access dbt context variables like `{{ ref() }},` `{{ source() }}`, environment variables, and project configurations. You can even call a macro from within a UDF (and vice versa) to combine dynamic SQL generation with runtime execution.
+
+However, the difference between the two is _when_ the logic runs:
+- Macros run at compile time, generating SQL before it’s sent to the warehouse.
+- UDFs run inside the warehouse at query time.
 
 </Expandable>
 
@@ -73,17 +77,13 @@ Macros don't create anything in your warehouse; they just generate SQL at compil
 
 ## Can I use both together?
 
-Yes! You can use a macro to call a UDF, combining the benefits of both. For example:
+Yes! You can use a macro to call a UDF or call a macro from within a UDF, combining the benefits of both. So the following example shows how to use a macro to define default values for arguments alongside your logic, for your UDF
 
 ```sql
-{%- macro clean_and_validate_email(column_name) -%}
-  {{ function('validate_email') }}(
-    LOWER(TRIM({{ column_name }}))
-  )
-{%- endmacro -%}
+{% macro cents_to_dollars(column_name, scale=2) %}
+  {{ function('cents_to_dollars') }}({{ column_name }}, {{scale}})
+{% endmacro %}
 ```
-
-This approach uses a macro for dynamic SQL generation (the `column_name` parameter) while leveraging a UDF for the main validation logic that can be reused outside dbt.
 
 ## Related documentation
 

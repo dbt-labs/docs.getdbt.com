@@ -97,6 +97,9 @@ vars:
 
 [restrict-access](/docs/mesh/govern/model-access): true | false
 
+functions:
+  [<function-configs>](/reference/function-configs)
+
 ```
 
 </File>
