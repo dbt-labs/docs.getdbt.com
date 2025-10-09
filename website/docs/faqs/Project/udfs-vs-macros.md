@@ -39,6 +39,10 @@ If your reusable logic is pure SQL without needing dynamic SQL generation, a UDF
 
 Macros excel at generating SQL based on conditions, looping through lists, or building queries programmatically. UDFs can't do this.
 
+Traditional SQL UDFs are limited to SQL expressions and don’t support looping or conditionals. However, Python UDFs do support conditionals, looping, and more complex logic, including operations that aren't possible to express in Jinja.
+
+Just like macros, UDFs can also incorporate Jinja when needed.
+
 </Expandable>
 
 <Expandable alt_header="You want to generate DDL or DML statements">
@@ -49,7 +53,9 @@ Macros can create entire model definitions, tests, or any SQL statement. UDFs ar
 
 <Expandable alt_header="You need to adapt SQL across different warehouses">
 
-Macros can use Jinja logic to generate warehouse-specific SQL, making your dbt project portable across platforms. UDFs are warehouse-specific.
+Macros and UDFs both support Jinja logic:
+- Macros can use Jinja conditional logic to generate SQL that's dependent on which warehouse you're using (see [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros)), making your dbt project portable across platforms. UDFs are warehouse-specific.
+- UDFs can also include Jinja, but they're warehouse-specific. This means you must define them separately for each platform and specify the correct argument `data_types` according to that warehouse’s syntax.
 
 </Expandable>
 
