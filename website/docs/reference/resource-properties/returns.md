@@ -40,9 +40,9 @@ The `data_type` values are warehouse-specific. Use the data type syntax that you
 Refer to your warehouse documentation for the complete list of supported data types and their syntax.
 :::
 
-### description (optional)
+### description
 
-A markdown string describing what the function returns. This is helpful for documentation purposes.
+An optional markdown string describing what the function returns. This is helpful for documentation purposes.
 
 ## Examples
 
@@ -114,5 +114,5 @@ functions:
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
-- [Arguments](/reference/resource-properties/arguments)
+- [Arguments](/reference/resource-properties/function-arguments)
 

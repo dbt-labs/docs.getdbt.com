@@ -12,7 +12,7 @@ version: 2
 
 functions:
   - name: <function name>
-    type: scalar | aggregate | table
+    type: scalar | aggregate | table  # table is coming soon
 
 ```
 
@@ -55,14 +55,26 @@ functions:
 
 Aggregate functions operate on multiple rows and return a single value. These functions are used in `GROUP BY` operations.
 
-:::note Coming soon
-Support for aggregate functions is planned for a future release.
-:::
+**Example:**
 
-**Example use cases:**
-- Custom aggregation logic
-- Weighted averages
-- Custom statistical functions
+<File name='functions/schema.yml'>
+
+```yml
+version: 2
+
+functions:
+  - name: double_total
+    description: Sums values and doubles the result
+    type: aggregate
+    arguments:
+      - name: values
+        data_type: FLOAT
+        description: A sequence of numbers to aggregate
+    returns:
+      data_type: FLOAT
+```
+
+</File>
 
 ### table
 
@@ -72,14 +84,12 @@ Table functions return a table (multiple rows and columns) rather than a single 
 Support for table functions is planned for a future release.
 :::
 
-**Example use cases:**
-- Unpacking complex data structures
-- Generating multiple rows from a single input
-- Custom table transformations
 
 ## Related documentation
 
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
+- [Arguments](/reference/resource-properties/function-arguments)
+- [Returns](/reference/resource-properties/returns)
 

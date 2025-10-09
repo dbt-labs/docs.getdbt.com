@@ -68,6 +68,10 @@ functions:
 
 <ConfigGeneral />
 
+:::note Database, schema, and alias configuration
+Functions support `database`, `schema`, and `alias` configurations just like models. These determine where the function is created in your warehouse. The function will use the standard dbt configuration precedence (specific config > project config > target profile defaults).
+:::
+
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"

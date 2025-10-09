@@ -20,7 +20,7 @@ functions:
       [docs](/reference/resource-configs/docs):
         show: true | false
         node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
-    [arguments](/reference/resource-properties/arguments): # optional
+    [arguments](/reference/resource-properties/function-arguments): # optional
       - name: <string> # required if arguments is specified
         data_type: <string> # required if arguments is specified, warehouse-specific
         description: <markdown_string> # optional

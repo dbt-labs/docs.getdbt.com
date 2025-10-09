@@ -1,19 +1,11 @@
 ---
-title: arguments
+title: arguments (for macros)
 sidebar_label: "arguments"
 id: arguments
 ---
 
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
-
-<Tabs
-  defaultValue="macros"
-  values={[
-    { label: 'Macros', value: 'macros', },
-    { label: 'Functions', value: 'functions', },
-  ]
-}>
-<TabItem value="macros">
+import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 <File name='macros/<filename>.yml'>
 
@@ -32,37 +24,11 @@ macros:
 
 </File>
 
-</TabItem>
-
-<TabItem value="functions">
-
-<File name='functions/<filename>.yml'>
-
-```yml
-
-version: 2
-
-functions:
-  - name: <function name>
-    arguments:
-      - name: <arg name>
-        data_type: <string> # warehouse-specific
-        description: <markdown_string>
-
-```
-
-</File>
-
-</TabItem>
-</Tabs>
-
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro or function can accept. Each argument can have a `name`, `type` (for macros) or `data_type` (for functions), and `description`.  
+<ArgumentsShared />
 
 For **macros**, you can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
-
-For **functions**, you can add `arguments` to a [function property](/reference/function-properties), which defines the parameters for user-defined functions (UDFs) in your warehouse. The `data_type` for function arguments is warehouse-specific (for example, `STRING`, `VARCHAR`, `INTEGER`) and should match the data types supported by your data platform.
 
 ## type
 
@@ -144,36 +110,7 @@ macros:
 
 </File>
 
-## data_type (for functions)
+## Related documentation
 
-The `data_type` property for function arguments specifies the data type that the warehouse expects for that parameter. This is a required field for function arguments and must match the data types supported by your specific data platform.
-
-:::important Warehouse-specific data types
-The `data_type` values are warehouse-specific. Use the data type syntax that your warehouse requires:
-- **Snowflake**: `STRING`, `NUMBER`, `BOOLEAN`, `TIMESTAMP_NTZ`, etc.
-- **BigQuery**: `STRING`, `INT64`, `BOOL`, `TIMESTAMP`, `ARRAY<STRING>`, etc.
-- **Redshift**: `VARCHAR`, `INTEGER`, `BOOLEAN`, `TIMESTAMP`, etc.
-- **Postgres**: `TEXT`, `INTEGER`, `BOOLEAN`, `TIMESTAMP`, etc.
-
-Refer to your warehouse documentation for the complete list of supported data types.
-:::
-
-<File name='functions/schema.yml'>
-
-```yml
-version: 2
-
-functions:
-  - name: calculate_discount
-    arguments:
-      - name: original_price
-        data_type: DECIMAL(10,2)
-        description: "The original price before discount"
-      - name: discount_percent
-        data_type: INTEGER
-        description: "The discount percentage to apply"
-    returns:
-      data_type: DECIMAL(10,2)
-```
-
-</File>
+- [Macro properties](/reference/macro-properties)
+- [Arguments (for functions)](/reference/resource-properties/function-arguments)
