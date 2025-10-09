@@ -28,7 +28,6 @@ UDFs are compiled and optimized by your warehouse's query engine, which can prov
 
 If your reusable logic is pure SQL without needing dynamic SQL generation, a UDF is cleaner and more portable.
 
-</Expandable>
 
 ## Use macros when:
 
