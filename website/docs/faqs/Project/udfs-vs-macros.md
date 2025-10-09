@@ -15,27 +15,39 @@ UDFs are created in your warehouse and can be used by BI tools, data science not
 
 </Expandable>
 
-<Expandable alt_header="You want better performance for complex operations">
+<Expandable alt_header="You want to standardize warehouse-native functions">
 
-UDFs are compiled and optimized by your warehouse's query engine, which can provide better performance for compute-intensive operations compared to Jinja macros that generate SQL text.
+UDFs let you create reusable warehouse functions for data validation, custom formatting, or business-specific calculations that need to be consistent across all your data tools. Once created, they become part of your warehouse's function catalog.
 
 </Expandable>
 
+<Expandable alt_header="You want dbt to manage the function lifecycle">
 
+dbt manages UDFs as part of your DAG execution, ensuring they're created before models that reference them. You can version control UDF definitions alongside your models, test changes in development environments, and deploy them together through CI/CD pipelines.
 
+</Expandable>
 
+<Expandable alt_header="Your SQL logic is self-contained">
 
+If your reusable logic is pure SQL without needing compile-time SQL generation (loops, conditionals in Jinja), a UDF is cleaner and more portable across your data stack. The function logic lives in the warehouse where it's executed, not in dbt's compilation layer.
 
+</Expandable>
 
 ## Use macros when:
 
-<Expandable alt_header="You need to generate SQL dynamically">
+<Expandable alt_header="You need to generate SQL at compile time">
 
-Macros excel at generating SQL based on conditions, looping through lists, or building queries programmatically. UDFs can't do this.
+Macros generate SQL dynamically **before** it's sent to the warehouse (at compile time). This is essential for:
+- Building different SQL for different warehouses
+- Generating repetitive SQL patterns (like creating dozens of similar columns)
+- Creating entire model definitions or DDL statements
+- Dynamically referencing models based on project structure
 
-Traditional SQL UDFs are limited to SQL expressions and don’t support looping or conditionals. However, Python UDFs do support conditionals, looping, and more complex logic, including operations that aren't possible to express in Jinja.
+UDFs execute **at query runtime** in the warehouse. While they can use Jinja templating in their definitions, they don't generate new SQL queries—they're pre-defined functions that get called by your SQL.
 
-Just like macros, UDFs can also incorporate Jinja when needed.
+:::note Expanding UDFs
+Currently, only SQL UDFs are supported. Python, Java, and Scala UDFs are planned for future releases. Once Python UDFs are available, they'll support conditionals and looping within the function logic itself (using Python syntax), but they'll still execute at runtime, not at compile time like macros.
+:::
 
 </Expandable>
 
@@ -47,9 +59,9 @@ Macros can create entire model definitions, tests, or any SQL statement. UDFs ar
 
 <Expandable alt_header="You need to adapt SQL across different warehouses">
 
-Macros and UDFs both support Jinja logic:
-- Macros can use Jinja conditional logic to generate SQL that's dependent on which warehouse you're using (see [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros)), making your dbt project portable across platforms. UDFs are warehouse-specific.
-- UDFs can also include Jinja, but they're warehouse-specific. This means you must define them separately for each platform and specify the correct argument `data_types` according to that warehouse’s syntax.
+Macros can use Jinja conditional logic to generate warehouse-specific SQL (see [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros)), making your dbt project portable across platforms.
+
+UDFs are warehouse-specific objects. Even though UDFs can include Jinja templating in their definitions, each warehouse has different syntax for creating functions, different supported data types, and different SQL dialects. You would need to define separate UDF files for each warehouse you support.
 
 </Expandable>
 
