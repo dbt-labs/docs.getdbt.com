@@ -49,7 +49,7 @@ Macros can create entire model definitions, tests, or any SQL statement. UDFs ar
 
 <Expandable alt_header="You need to adapt SQL across different warehouses">
 
-Macros can use Jinja logic to generate warehouse-specific SQL, making your dbt project portable across platforms. UDFs are warehouse-specific.
+Macros can use Jinja conditional logic to generate SQL that's dependent on which warehouse you're using (see [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros)), making your dbt project portable across platforms. UDFs are warehouse-specific.
 
 </Expandable>
 
