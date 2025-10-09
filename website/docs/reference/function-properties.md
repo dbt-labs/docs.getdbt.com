@@ -4,7 +4,7 @@ title: Function properties
 
 Function properties can be declared in `.yml` files under a `functions` key.
 
-We recommend that you put them in the `functions/` directory. You can name these files `schema.yml` or `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within that directory.
+We recommend that you put them in the `functions/` directory. You can name these files `schema.yml` or `whatever_you_want.yml`, and nest them in subfolders within that directory.
 
 <File name='functions/<filename>.yml'>
 
