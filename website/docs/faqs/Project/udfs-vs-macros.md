@@ -23,7 +23,6 @@ UDFs are compiled and optimized by your warehouse's query engine, which can prov
 
 
 
-</Expandable>
 
 
 
