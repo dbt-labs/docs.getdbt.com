@@ -4,7 +4,7 @@ description: "The dbt profiles.yml file contains the connection details for your
 id: profiles.yml
 ---
 
-If you're using [dbt Core](/docs/core/installation-overview), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt Core from the command line, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform.
+If you're developing locally using [dbt Core](/docs/core/installation-overview) or the [dbt Fusion engine](/docs/fusion/about-fusion-install), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt Core from the command line, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform.
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 
