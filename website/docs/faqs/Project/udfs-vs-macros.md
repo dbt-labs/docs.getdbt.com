@@ -22,7 +22,6 @@ UDFs are compiled and optimized by your warehouse's query engine, which can prov
 </Expandable>
 
 
-UDFs let you create reusable warehouse functions for data validation, custom formatting, or business-specific calculations that need to be consistent across all your data tools.
 
 </Expandable>
 
