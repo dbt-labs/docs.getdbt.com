@@ -12,7 +12,7 @@ version: 2
 
 functions:
   - name: <function name>
-    type: scalar | aggregate | table  # table is coming soon
+    type: scalar | aggregate | table  # aggregate and table coming soon
 
 ```
 
