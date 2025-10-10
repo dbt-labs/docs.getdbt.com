@@ -165,7 +165,8 @@ functions:
 Similarly, you can use the name of an installed package to configure functions in that package.
 
 #### Apply the `schema` configuration to one function only
-To apply a configuration to one function only, provide the full resource path (including the project name, and subdirectories).
+
+To apply a configuration to one function only in a properties file, specify the configuration in the function's `config` block:
 
 <File name='functions/schema.yml'>
 
@@ -180,7 +181,7 @@ functions:
 
 </File>
 
-Or in `dbt_project.yml`, for a project named `jaffle_shop`, with a function file at `functions/is_positive_int.sql`:
+To apply a configuration to one function only in `dbt_project.yml`, provide the full resource path (including the project name and subdirectories). For a project named `jaffle_shop`, with a function file at `functions/is_positive_int.sql`:
 
 <File name='dbt_project.yml'>
 
@@ -195,10 +196,10 @@ functions:
 
 
 ## Example function configuration
-The following is a valid function configuration for a project with:
-* `name: jaffle_shop`
-* A function file at `functions/is_positive_int.sql`
-* A function file at `functions/marketing/clean_url.sql`
+
+The following example shows how to configure functions in a project named `jaffle_shop` that has two function files:
+- `functions/is_positive_int.sql`
+- `functions/marketing/clean_url.sql`
 
 
 <File name='dbt_project.yml'>
