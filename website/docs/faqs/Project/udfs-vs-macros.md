@@ -27,9 +27,15 @@ dbt manages UDFs as part of your DAG execution, ensuring they're created before 
 
 </Expandable>
 
-<Expandable alt_header="Your SQL logic is self-contained">
+<Expandable alt_header=“Jinja compiles at creation time, not on each function call”>
 
-If your reusable logic is pure SQL without needing compile-time SQL generation (loops, conditionals in Jinja), a UDF is cleaner and more portable across your data stack. The function logic lives in the warehouse where it's executed, not in dbt's compilation layer.
+You can use Jinja (loops, conditionals, macros, `ref`, `source`, `var`) inside a UDF configuration.  dbt resolves that Jinja **when the UDF is created**, and the resulting SQL body is what gets stored in your warehouse.
+
+Jinja influences the function when it’s created, whereas arguments influence it when it runs in the warehouse:
+
+- :white_check_mark: **Allowed:** Jinja that depends on project or build-time state — for example, `var(“can_do_things”)`, static `ref(‘orders’)`, or environment-specific logic. These are all evaluated once at creation time.  
+- :x: **Not allowed:** Jinja that depends on **function arguments** passed at runtime. The compiler can’t see those, so dynamic `ref(ref_name)` or conditional Jinja based on argument values won’t work.
+
 
 </Expandable>
 
