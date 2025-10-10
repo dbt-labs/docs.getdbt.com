@@ -35,7 +35,7 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
     5. Enter the email address, and click Add user.
        After adding an external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your <Constant name="cloud" /> account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
        :::note
-       External emails persist even if you remove the admin who added them from the account.  
+       External emails and their notification settings persist until edited or removed even if you remove the admin who added them from the account.
        :::
 
     <Lightbox src="/img/docs/deploy/example-notification-external-email.png" width="50%" title="Example of the Notification email dropdown"/>
