@@ -55,6 +55,8 @@ functions:
 
 Aggregate functions operate on multiple rows and return a single value. These functions are used in `GROUP BY` operations.
 
+
+
 **Example:**
 
 <File name='functions/schema.yml'>
