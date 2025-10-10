@@ -54,7 +54,9 @@ functions:
 ### aggregate
 
 Aggregate functions operate on multiple rows and return a single value. These functions are used in `GROUP BY` operations.
-
+:::note Coming soon
+Support for aggregate functions is planned for a future release.
+:::
 
 
 **Example:**
