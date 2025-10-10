@@ -129,7 +129,9 @@ functions:
 ## Configuring functions
 Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's YAML properties file. The function body is defined in a SQL file in the `functions/` directory.
 
-Function configurations, like model configurations, are applied hierarchically. For more info, refer to [config inheritance](/reference/define-configs#config-inheritance)
+Function configurations, like model configurations, are applied hierarchically. For more info, refer to [config inheritance](/reference/define-configs#config-inheritance). 
+
+Functions respect the same name-generation macros as models: [`generate_database_name`](/docs/build/custom-databases), [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name), and [`generate_alias_name`](/docs/build/custom-aliases).
 
 ### Examples
 #### Apply the `schema` configuration to all functions
