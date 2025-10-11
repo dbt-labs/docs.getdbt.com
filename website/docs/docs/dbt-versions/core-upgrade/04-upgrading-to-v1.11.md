@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 # Upgrading to v1.1 <Lifecycle status="beta" />
 
 :::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install dbt-core 1.11.0b2`
+When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install dbt-core 1.11.0b3`
 :::
 
 ## Resources
