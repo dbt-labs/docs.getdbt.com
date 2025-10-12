@@ -1,7 +1,7 @@
 ---
 title: When should I use a UDF instead of a macro?
 description: "Guidance on choosing between UDFs and macros"
-sidebar_label: 'UDFs vs macros'
+sidebar_label: 'UDFs or macros'
 id: udfs-vs-macros
 ---
 
@@ -100,4 +100,3 @@ Yes! You can use a macro to call a UDF or call a macro from within a UDF, combin
 
 - [User-defined functions](/docs/build/udfs)
 - [Jinja macros](/docs/build/jinja-macros)
-
