@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 # Upgrading to v1.1 <Lifecycle status="beta" />
 
 :::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install dbt-core 1.11.0b3`
+When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install --upgrade --pre dbt-core`
 :::
 
 ## Resources
@@ -50,7 +50,7 @@ Read more about UDFs, including prerequisites and how to define and use them in 
 
 Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation will be enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`).
 
-These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types) before they're removed in future versions.
+These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
 
 ## Quick hits
 
