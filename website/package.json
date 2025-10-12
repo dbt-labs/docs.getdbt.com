@@ -19,6 +19,7 @@
     "@docusaurus/theme-search-algolia": "^3.7.0",
     "@mdx-js/react": "^3.0.1",
     "@monaco-editor/react": "^4.4.6",
+    "@signalwire/docusaurus-plugin-llms-txt": "2.0.0-alpha.2",
     "@stoplight/elements": "^7.5.8",
     "@svgr/webpack": "^6.0.0",
     "axios": "^1.12.0",

@@ -248,6 +248,19 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "Connect Fusion to your data platform",
+              link: {
+                type: "doc",
+                id: "docs/fusion/connect-data-platform-fusion/profiles.yml",
+              },
+              items: [
+                "docs/fusion/connect-data-platform-fusion/profiles.yml",
+                "docs/fusion/connect-data-platform-fusion/connection-profiles",
+                "docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup",
+              ],
+            },
+            {
+              type: "category",
               label: "Install dbt Core",
               link: { type: "doc", id: "docs/core/installation-overview" },
               items: [
@@ -1134,6 +1147,7 @@ const sidebarSettings = {
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/trino-configs",
         "reference/resource-configs/starrocks-configs",
+        "reference/resource-configs/data-cloud-configs",
         "reference/resource-configs/teradata-configs",
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/vertica-configs",

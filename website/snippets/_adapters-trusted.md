@@ -105,6 +105,12 @@
     icon="redshift"/>
 
 <Card
+    title="Salesforce Data Cloud"
+    body="<ul><li><a href='/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
+    pills='["dbt Fusion"]'
+    icon="salesforce"/>
+
+<Card
     title="Snowflake"
     body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-snowflake'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/core/connect-data-platform/snowflake-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
     pills='["dbt platform", "dbt Core"]'

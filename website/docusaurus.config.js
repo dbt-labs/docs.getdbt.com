@@ -365,6 +365,133 @@ var siteSettings = {
         mode: "auto",
       },
     ],
+    [
+      "@signalwire/docusaurus-plugin-llms-txt",
+      {
+        generate: {
+          enableMarkdownFiles: true,
+          enableLlmsFullTxt: true,
+          relativePaths: false,
+        },
+        include: {
+          includeBlog: false,
+          includePages: false,
+          includeDocs: true,
+        },
+        // Content organization
+        structure: {
+          sections: [
+            {
+              id: "getting-started",
+              name: "Getting Started",
+              routes: [
+                { route: "/docs/introduction" },
+                { route: "/docs/get-started-dbt" },
+                { route: "/docs/configuration-checklist" },
+              ],
+            },
+            {
+              id: "set-up-dbt",
+              name: "Set up dbt",
+              routes: [
+                { route: "/docs/about-setup" },
+                { route: "/docs/environments-in-dbt" },
+                { route: "/docs/running-a-dbt-project/**" },
+              ],
+              subsections: [
+                {
+                  id: "dbt-platform",
+                  name: "dbt platform",
+                  routes: [
+                    { route: "/docs/about-cloud-setup" },
+                    { route: "/docs/cloud/account-settings" },
+                    { route: "/docs/cloud/account-integrations" },
+                    { route: "/docs/dbt-cloud-environments" },
+                    { route: "/docs/cloud/migration" },
+                  ],
+                  subsections: [
+                    {
+                      id: "connect-data-platform",
+                      name: "Connect data platform",
+                      routes: [{ route: "/docs/cloud/connect-data-platform/**" }],
+                    },
+                    {
+                      id: "manage-access",
+                      name: "Manage access",
+                      routes: [{ route: "/docs/cloud/manage-access/**" }],
+                    },
+                    {
+                      id: "git",
+                      name: "Git",
+                      routes: [{ route: "/docs/cloud/git/**" }],
+                    },
+                    {
+                      id: "secure",
+                      name: "Secure",
+                      routes: [{ route: "/docs/cloud/secure/**" }],
+                    },
+                  ],
+                },
+                {
+                  id: "dbt-core-and-fusion",
+                  name: "dbt Core and Fusion",
+                  routes: [
+                    { route: "/docs/about-dbt-install" },
+                    { route: "/docs/core/dbt-core-environments" },
+                  ],
+                  subsections: [
+                    {
+                      id: "install-dbt-fusion-engine",
+                      name: "Install dbt Fusion engine",
+                      routes: [
+                        { route: "/docs/fusion/about-fusion-install" },
+                        { route: "/docs/fusion/install-dbt-extension" },
+                        { route: "/docs/fusion/install-fusion-cli" },
+                      ],
+                    },
+                    {
+                      id: "install-dbt-core",
+                      name: "Install dbt Core",
+                      routes: [
+                        { route: "/docs/core/installation-overview" },
+                        { route: "/docs/core/docker-install" },
+                        { route: "/docs/core/pip-install" },
+                        { route: "/docs/core/source-install" },
+                      ],
+                    },
+                    {
+                      id: "core-connect-data-platform",
+                      name: "Connect data platform",
+                      routes: [
+                        { route: "/docs/core/connect-data-platform/**" },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              id: "fusion",
+              name: "Fusion",
+              routes: [{ route: "/docs/fusion/**" }],
+            },
+            {
+              id: "platform",
+              name: "Platform",
+              routes: [{ route: "/docs/cloud/**" }],
+            },
+            {
+              id: "api-reference",
+              name: "API Reference",
+              routes: [{ route: "/docs/dbt-cloud-apis/**" }],
+            },
+          ],
+          siteTitle: "dbt Developer Hub",
+          siteDescription:
+            "End user documentation, guides and technical reference for dbt",
+        },
+      },
+    ],
   ],
   scripts: [
     {

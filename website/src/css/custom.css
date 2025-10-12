@@ -2792,6 +2792,10 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
   background-image: url('/img/batons/baton-hero.png');
 }
 
+[data-theme='dark'] .baton-hero::before {
+  background-image: url('/img/batons/baton-hero-dark.png');
+}
+
 @media (min-width: 1460px) {
   .baton-1::before,
   .baton-2::before {
