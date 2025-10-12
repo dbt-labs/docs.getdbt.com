@@ -15,12 +15,17 @@
  */
 exports.versions = [
   {
-    version: "1.11",
+    version: "1.12",
     customDisplay: "Latest (dbt platform)",
   },
   {
     version: "2.0",
     customDisplay: "dbt Fusion engine",
+    isPrerelease: true,
+  },
+ {
+    version: "1.11",
+    customDisplay: "Latest (dbt Core v1.11 Beta)",
     isPrerelease: true,
   },
   {
