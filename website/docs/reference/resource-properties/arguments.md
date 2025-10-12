@@ -1,10 +1,11 @@
 ---
-title: arguments
+title: arguments (for macros)
 sidebar_label: "arguments"
 id: arguments
 ---
 
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
+import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 <File name='macros/<filename>.yml'>
 
@@ -25,7 +26,9 @@ macros:
 
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`.  You can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
+<ArgumentsShared />
+
+For **macros**, you can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
 ## type
 
@@ -106,3 +109,8 @@ macros:
 ```
 
 </File>
+
+## Related documentation
+
+- [Macro properties](/reference/macro-properties)
+- [Arguments (for functions)](/reference/resource-properties/function-arguments)

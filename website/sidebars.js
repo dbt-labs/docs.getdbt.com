@@ -1082,6 +1082,7 @@ const sidebarSettings = {
         "reference/project-configs/config-version",
         "reference/project-configs/dispatch-config",
         "reference/project-configs/docs-paths",
+        "reference/project-configs/function-paths",
         "reference/project-configs/macro-paths",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
@@ -1322,6 +1323,18 @@ const sidebarSettings = {
           items: [
             "reference/macro-properties",
             "reference/resource-properties/arguments",
+          ],
+        },
+        {
+          type: "category",
+          label: "For functions",
+          link: { type: "doc", id: "reference/function-properties" },
+          items: [
+            "reference/function-properties",
+            "reference/function-configs",
+            "reference/resource-properties/type",
+            "reference/resource-properties/returns",
+            "reference/resource-properties/function-arguments",
           ],
         },
       ],
