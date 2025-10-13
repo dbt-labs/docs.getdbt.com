@@ -166,6 +166,149 @@ SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 
 ```
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
 
+## Semantic View
+[Snowflake's Semantic View](https://docs.snowflake.com/user-guide/views-semantic/overview) offers a powerful, native schema object for centralizing key metric definitions, directly addressing the core issue of fragmented metric logic that erodes data trust across various BI and analytics environments.
+
+The [dbt_semantic_view package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) allows developers to fully integrate the governance of their Snowflake Semantic Views into their existing dbt workflows, thereby extending dbt's strengths in version control, testing, and CI/CD directly to their centralized semantic layer.
+
+### Install the Package
+Import the package in `packages.yml`.
+```cmd
+packages:
+  - package: Snowflake-Labs/dbt_semantic_view
+```
+> Please refer to the [package hub page: dbt_semantic_view](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) for detailed installation instructions.
+
+### Highlighted features
+- Materialize models with Semantic View
+
+Define and manage the full structure of the Snowflake Semantic View, including its entities, relationships, and precise metric logic (FACTS, DIMENSIONS, METRICS), using familiar dbt project files.
+> The example below is adapted from [Getting Started with Snowflake Semantic View](https://quickstarts.snowflake.com/guide/snowflake-semantic-view/index.html?index=..%2F..index#3).
+```sql
+{{ config(materialized='semantic_view') }}
+
+tables (
+    CUSTOMER as {{ SOURCE('<SOURCE_NAME>', 'CUSTOMER') }} primary key (C_CUSTOMER_SK),
+    DATE as {{ SOURCE('<SOURCE_NAME>', 'DATE_DIM') }} primary key (D_DATE_SK),
+    DEMO as {{ SOURCE('<SOURCE_NAME>', 'CUSTOMER_DEMOGRAPHICS') }} primary key (CD_DEMO_SK),
+    ITEM as {{ SOURCE('<SOURCE_NAME>', 'ITEM') }} primary key (I_ITEM_SK),
+    STORE as {{ SOURCE('<SOURCE_NAME>', 'STORE') }} primary key (S_STORE_SK),
+    STORESALES as {{ SOURCE('<SOURCE_NAME>', 'STORESALES') }}
+    primary key (SS_SOLD_DATE_SK,SS_CDEMO_SK,SS_ITEM_SK,SS_STORE_SK,SS_CUSTOMER_SK)
+)
+relationships (
+    SALESTOCUSTOMER as STORESALES(SS_CUSTOMER_SK) references CUSTOMER(C_CUSTOMER_SK),
+    SALESTODATE as STORESALES(SS_SOLD_DATE_SK) references DATE(D_DATE_SK),
+    SALESTODEMO as STORESALES(SS_CDEMO_SK) references DEMO(CD_DEMO_SK),
+    SALESTOITEM as STORESALES(SS_ITEM_SK) references ITEM(I_ITEM_SK),
+    SALETOSTORE as STORESALES(SS_STORE_SK) references STORE(S_STORE_SK)
+)
+facts (
+    ITEM.COST as i_wholesale_cost,
+    ITEM.PRICE as i_current_price,
+    STORE.TAX_RATE as S_TAX_PRECENTAGE,
+    STORESALES.SALES_QUANTITY as SS_QUANTITY
+)
+dimensions (
+    CUSTOMER.BIRTHYEAR as C_BIRTH_YEAR,
+    CUSTOMER.COUNTRY as C_BIRTH_COUNTRY,
+    CUSTOMER.C_CUSTOMER_SK as c_customer_sk,
+    DATE.DATE as D_DATE,
+    DATE.D_DATE_SK as d_date_sk,
+    DATE.MONTH as D_MOY,
+    DATE.WEEK as D_WEEK_SEQ,
+    DATE.YEAR as D_YEAR,
+    DEMO.CD_DEMO_SK as cd_demo_sk,
+    DEMO.CREDIT_RATING as CD_CREDIT_RATING,
+    DEMO.MARITAL_STATUS as CD_MARITAL_STATUS,
+    ITEM.BRAND as I_BRAND,
+    ITEM.CATEGORY as I_CATEGORY,
+    ITEM.CLASS as I_CLASS,
+    ITEM.I_ITEM_SK as i_item_sk,
+    STORE.MARKET as S_MARKET_ID,
+    STORE.SQUAREFOOTAGE as S_FLOOR_SPACE,
+    STORE.STATE as S_STATE,
+    STORE.STORECOUNTRY as S_COUNTRY,
+    STORE.S_STORE_SK as s_store_sk,
+    STORESALES.SS_CDEMO_SK as ss_cdemo_sk,
+    STORESALES.SS_CUSTOMER_SK as ss_customer_sk,
+    STORESALES.SS_ITEM_SK as ss_item_sk,
+    STORESALES.SS_SOLD_DATE_SK as ss_sold_date_sk,
+    STORESALES.SS_STORE_SK as ss_store_sk
+)
+metrics (
+    STORESALES.TOTALCOST as SUM(item.cost),
+    STORESALES.TOTALSALESPRICE as SUM(SS_SALES_PRICE),
+    STORESALES.TOTALSALESQUANTITY as SUM(SS_QUANTITY)
+        WITH SYNONYMS = ( 'total sales quantity', 'total sales amount')
+)
+```
+
+- Reference Semantic Views in other dbt models
+
+While referencing external Semantic Views via `source()` remains supported, the new materialization introduces native support for the `ref()` function. This crucial feature allows internally defined Semantic Views to be treated as first-class foundational components in your DAG, simplifying metric consumption for all downstream dbt models.
+
+```sql
+{{ config(materialized='view') }}
+
+select * from semantic_view(
+  {{ ref('<semantic_view_model_name>') }}
+  METRICS ...
+  DIMENSIONS ...
+  WHERE ...
+)
+```
+
+```sql
+{{ config(materialized='table') }}
+
+select * from semantic_view(
+  {{ source('<source_name>', '<semantic_view>') }}
+  METRICS ...
+  DIMENSIONS ...
+  WHERE ...
+)
+
+```
+
+- Privilege Management: 
+
+Streamline governance by automatically propagating grants and privileges with `COPY GRANTS` from the Semantic View to dependent roles using dbt's native configuration.
+
+In `dbt_project.yml`:
+```yml
+models:
+  project_name:
+    +copy_grants: true
+```
+
+In `models/my_materialized_semantic_view.yml`:
+```yml
+models:
+  config:
+    copy_grants: true
+```
+
+In `models/my_materialized_semantic_view.sql` config specification:
+```sql
+{{
+  config(
+    materialized='semantic_view',
+    copy_grants=true
+  )
+}}
+```
+
+In `models/my_materialized_semantic_view.sql` SQL definition:
+```sql
+TABLES(...)
+RELATIONSHIPS(...)
+FACTS(...)
+DIMENSIONS(...)
+METRICS(...)
+COPY GRANTS
+```
+
 ## Temporary tables
 
 Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
