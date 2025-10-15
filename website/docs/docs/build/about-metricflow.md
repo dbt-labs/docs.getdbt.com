@@ -25,7 +25,7 @@ MetricFlow is a SQL query generation tool designed to streamline metric creation
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
 - MetricFlow is developed and maintained as part of the [Open Semantic Interchange (OSI)](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/) initiative. 
 - MetricFlow is compatible with dbt version 1.6 and higher.
-- MeticFlow is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). Data practitioners and enthusiasts are highly encouraged to contribute. Read more about [MetricFlow's license history](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/). 
+- MeticFlow is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). Data practitioners and enthusiasts are highly encouraged to contribute. Read more about [MetricFlow's license history](https://github.com/dbt-labs/metricflow?tab=readme-ov-file#license-history). 
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
