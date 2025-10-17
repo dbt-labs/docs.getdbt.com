@@ -17,7 +17,6 @@ models:
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 models:
   - name: my_model
     description: deprecating in the future
