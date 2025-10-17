@@ -69,8 +69,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
-
 models:
   - name: [<model-name>]
     config:
@@ -90,8 +88,6 @@ Note, most model configurations are defined under `config`, while `build_after` 
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
-
 models:
   - name: [<model-name>]
     config:
@@ -201,8 +197,6 @@ models:
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
-
 models:
   - name: [<model-name>]
     config:
@@ -336,8 +330,6 @@ select * from {{ ref('raw_events') }}
 <File name='models/events/base/properties.yml'>
 
 ```yaml
-version: 2
-
 models:
   - name: base_events
     description: "Standardized event data from raw sources"
