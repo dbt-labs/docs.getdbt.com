@@ -3,7 +3,7 @@ datatype: integer
 description: "Read this guide to understand the config-version configuration in dbt."
 ---
 
-The `config-version:` tag is optional.
+The `config-version:` tag is [optional](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5#quick-hits).
 
 <File name='dbt_project.yml'>
 
