@@ -203,7 +203,6 @@ snapshots:
 <File name='snapshots/properties.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: [<snapshot-name>]

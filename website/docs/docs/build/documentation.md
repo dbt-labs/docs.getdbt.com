@@ -41,7 +41,6 @@ Before generating documentation, add [descriptions](/reference/resource-properti
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: events
@@ -131,7 +130,6 @@ To use a docs block, reference it from your `schema.yml` file with the [doc()](/
 <File name='schema.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: events

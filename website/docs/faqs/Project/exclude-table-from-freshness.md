@@ -14,7 +14,6 @@ To work around this, you can set the table's freshness to null (`freshness: null
 
 ```yaml
 
-version: 2
 
 sources:
   - name: jaffle_shop

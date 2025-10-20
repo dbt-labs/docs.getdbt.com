@@ -78,7 +78,6 @@ To add a description to a singular data test in your project, add a `.yml` file 
 <File name='tests/schema.yml'>
 
 ```yaml
-version: 2
 data_tests:
   - name: assert_total_payment_amount_is_positive
     description: >
@@ -113,7 +112,6 @@ If this is your first time working with adding properties to a resource, check o
 Out of the box, dbt ships with four generic data tests already defined: `unique`, `not_null`, `accepted_values` and `relationships`. Here's a full example using those tests on an `orders` model:
 
 ```yml
-version: 2
 
 models:
   - name: orders
@@ -161,7 +159,6 @@ To add a generic (or "schema") data test to your project:
 <File name='models/schema.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders

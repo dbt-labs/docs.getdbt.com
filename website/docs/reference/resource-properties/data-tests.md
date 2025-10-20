@@ -23,7 +23,6 @@ keywords: [test, tests, custom tests, custom test name, test name]
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: <model_name>
@@ -54,7 +53,6 @@ models:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -89,7 +87,6 @@ sources:
 <File name='seeds/<filename>.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <seed_name>
@@ -122,7 +119,6 @@ seeds:
 <File name='snapshots/<filename>.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: <snapshot_name>
@@ -180,7 +176,6 @@ This data test validates that there are no `null` values present in a column.
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -201,7 +196,6 @@ The config and where clause are optional.
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -224,7 +218,6 @@ The `accepted_values` test supports an optional `quote` parameter which, by defa
 <File name='schema.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -254,7 +247,6 @@ The following example tests that every order's `customer_id` maps back to a vali
 <File name='schema.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -279,7 +271,6 @@ Some data tests require multiple columns, so it doesn't make sense to nest them 
 <File name='models/orders.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -304,7 +295,6 @@ If you've defined your own custom generic data test, you can use that as the `te
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -336,7 +326,6 @@ You may also define your own name for a specific data test, via the `name` prope
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -377,7 +366,6 @@ A data test's name must be unique for all tests defined on a given model-column 
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -416,7 +404,6 @@ By providing a custom name, you help dbt differentiate data tests:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -469,7 +456,6 @@ This example is identical to the one above:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders

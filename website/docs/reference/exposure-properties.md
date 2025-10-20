@@ -23,7 +23,6 @@ Exposure names must contain only letters, numbers, and underscores (no spaces or
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: <string_with_underscores>
@@ -57,7 +56,6 @@ exposures:
 <File name='models/jaffle/exposures.yml'>
 
 ```yaml
-version: 2
 
 exposures:
 

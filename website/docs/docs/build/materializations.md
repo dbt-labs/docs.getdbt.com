@@ -86,7 +86,6 @@ Materializations can also be configured in the model's `properties.yml` file.  T
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: events

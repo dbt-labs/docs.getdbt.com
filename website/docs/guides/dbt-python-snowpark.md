@@ -445,7 +445,6 @@ We're going to be using each of our 8 Formula 1 tables from our `formula1` datab
 2. Then, paste the following code into the file before saving it:
 
 ```yaml
-version: 2
 
 sources:
   - name: formula1

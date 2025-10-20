@@ -253,7 +253,6 @@ Name the new branch `build-project`.
 <File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
 
 ```yaml
-version: 2
 
 sources:
  - name: jaffle_shop
@@ -278,7 +277,6 @@ In your source file, you can also use the **Generate model** button to create a 
 <File name='models/staging/stripe/src_stripe.yml'>
 
 ```yaml
-version: 2
 
 sources:
  - name: stripe

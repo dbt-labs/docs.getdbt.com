@@ -710,7 +710,6 @@ def model(dbt, session):
     ...
 ```
 ```yml
-version: 2
 models:
   - name: my_python_model
     config:

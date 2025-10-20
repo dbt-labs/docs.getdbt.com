@@ -167,7 +167,6 @@ The following example shows how to configure this:
 <File name="schema.yml">
 
 ```yaml
-version: 2
  
 models:
   - name: incremental_market_updates

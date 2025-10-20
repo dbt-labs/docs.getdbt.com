@@ -21,7 +21,6 @@ The following example shows an exposure definition in a `models/<filename>.yml` 
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 exposures:
 

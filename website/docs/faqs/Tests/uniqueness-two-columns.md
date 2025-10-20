@@ -40,7 +40,6 @@ select
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: orders
@@ -59,7 +58,6 @@ models:
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: orders
@@ -79,7 +77,6 @@ This is especially useful for large datasets since it is more performant. Check 
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: orders

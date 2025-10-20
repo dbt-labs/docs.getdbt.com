@@ -37,7 +37,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -198,7 +197,6 @@ It is possible to extend this context by "getting" them with `dbt.config.get()` 
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -506,7 +504,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model

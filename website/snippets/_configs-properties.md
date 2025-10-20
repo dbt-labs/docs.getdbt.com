@@ -5,7 +5,6 @@ Here's an example that defines both `sources` and `models` for a project:
 <File name='models/jaffle_shop.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: raw_jaffle_shop

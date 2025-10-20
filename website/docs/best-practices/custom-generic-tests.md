@@ -65,7 +65,6 @@ To use this generic test, specify it by name in the `data_tests` property of a m
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: users
@@ -153,7 +152,6 @@ When calling this test from a `.yml` file, supply the arguments to the test in a
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: people
@@ -198,7 +196,6 @@ Any time the `warn_if_odd` test is used, it will _always_ have warning-level sev
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: users

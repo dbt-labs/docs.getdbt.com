@@ -13,7 +13,6 @@ If these names are a little less-than-perfect, use the [schema](/reference/resou
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop

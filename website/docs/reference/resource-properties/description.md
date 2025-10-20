@@ -22,7 +22,6 @@ description: "This guide explains how to use the description key to add YAML des
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -43,7 +42,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: source_name
@@ -68,7 +66,6 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -89,7 +86,6 @@ seeds:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -110,7 +106,6 @@ snapshots:
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -131,7 +126,6 @@ analyses:
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: macro_name
@@ -158,7 +152,6 @@ You can add a description to a [singular data test](/docs/build/data-tests#singu
 ```yml
 # Singular data test example
 
-version: 2
 
 data_tests:
   - name: data_test_name
@@ -171,7 +164,6 @@ data_tests:
 ```yml
 # Generic data test example
 
-version: 2
 
 models:
   - name: model_name
@@ -259,7 +251,6 @@ This section contains examples of how to add descriptions to various resources:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: dim_customers
@@ -280,7 +271,6 @@ You can use YAML [block notation](https://yaml-multiline.info/) to split a longe
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: dim_customers
@@ -304,7 +294,6 @@ You can use markdown in your descriptions, but you may need to quote your descri
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: dim_customers
@@ -325,7 +314,6 @@ If you have a long description, especially if it contains markdown, it may make 
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: fct_orders
@@ -374,7 +362,6 @@ You can use relative links to link to another model. It's a little hacky — but
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: customers
@@ -413,7 +400,6 @@ asset-paths: ["assets"]
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: customers
@@ -442,7 +428,6 @@ To include images from the web, specify the image URL in your model's `descripti
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: customers
@@ -469,7 +454,6 @@ This example shows a generic data test that checks for unique values in a column
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: orders
@@ -490,7 +474,6 @@ This example shows a singular data test that checks to ensure all values in the 
 <File name='tests/<filename>.yml'>
 
 ```yaml
-version: 2
 data_tests:
   - name: assert_total_payment_amount_is_positive
     description: >

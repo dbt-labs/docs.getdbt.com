@@ -14,7 +14,6 @@ To document macros, use a [schema file](/reference/macro-properties) and nest th
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: cents_to_dollars
@@ -45,7 +44,6 @@ To document a custom materialization, use the previously mentioned format to det
 <File name='macros/properties.yml'>
 
 ```yaml
-version: 2
 
 macros:
   - name: materialization_my_materialization_name_default

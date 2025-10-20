@@ -9,7 +9,6 @@ We recommend that you put them in the `seeds/` directory. You can name these fil
 <File name='seeds/<filename>.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <string>

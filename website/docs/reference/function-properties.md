@@ -11,7 +11,6 @@ We recommend that you put them in the `functions/` directory. You can name these
 <File name='functions/<filename>.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: <string> # required
@@ -40,7 +39,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_positive_int

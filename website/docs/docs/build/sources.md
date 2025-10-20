@@ -25,7 +25,6 @@ Sources are defined in `.yml` files nested under a `sources:` key.
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -96,7 +95,6 @@ These should be familiar concepts if you've already added data tests and descrip
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -140,7 +138,6 @@ To configure source freshness information, add a `freshness` block to your sourc
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop

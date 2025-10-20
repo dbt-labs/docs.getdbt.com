@@ -8,9 +8,6 @@ id: returns
 <File name='functions/<filename>.yml'>
 
 ```yml
-
-version: 2
-
 functions:
   - name: <function name>
     returns:
@@ -52,7 +49,6 @@ An optional markdown string describing what the function returns. This is helpfu
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_valid_email
@@ -73,7 +69,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: calculate_metrics
@@ -95,7 +90,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: split_tags

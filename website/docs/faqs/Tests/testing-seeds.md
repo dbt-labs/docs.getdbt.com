@@ -13,7 +13,6 @@ To test and document seeds, use a [schema file](/reference/configs-and-propertie
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: country_codes

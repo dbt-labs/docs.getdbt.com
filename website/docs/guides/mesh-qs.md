@@ -490,7 +490,6 @@ In this section, you will set up model versions by the Data Analytics team as th
 
 ```yaml
 
-version: 2
 
 models:
   - name: fct_orders

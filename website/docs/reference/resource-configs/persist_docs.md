@@ -88,7 +88,6 @@ snapshots:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -208,7 +207,6 @@ Supply a [description](/reference/resource-properties/description) for a model:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: dim_customers

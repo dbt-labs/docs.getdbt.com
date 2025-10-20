@@ -11,7 +11,6 @@ Use the [`database` property](/reference/resource-properties/database) to define
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop
