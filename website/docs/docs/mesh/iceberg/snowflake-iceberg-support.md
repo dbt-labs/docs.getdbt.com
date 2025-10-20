@@ -20,7 +20,7 @@ Refer to [Snowflake configurations](/reference/resource-configs/snowflake-config
 
 We recommend using the Iceberg catalog configuration and applying the catalog in the model config for ease of use and to future-proof your code. Using `table_format = 'iceberg'` directly on the model configuration is a legacy approach and limits usage to just Snowflake Horizon as the catalog. Catalog support is available on dbt 1.10+
 
-## Creating Iceberg Tables
+## Creating Iceberg tables
 
 dbt supports creating Iceberg tables for three of the Snowflake materializations: 
 
@@ -155,7 +155,7 @@ After you have created the external catalog integration, you will be able to do 
 
 - **Sync Snowflake-managed tables to an external catalog:** You can create a Snowflake Iceberg table that Snowflake manages via a cloud storage location and then register/sync that table to the external catalog. This allows other engines to discover the table.
 
-## dbt Catalog Integration Configurations for Snowflake
+## dbt Catalog integration configurations for Snowflake
 
 The following table outlines the configuration fields required to set up a catalog integration for [Iceberg tables in Snowflake](/reference/resource-configs/snowflake-configs#iceberg-table-format).
 
@@ -170,24 +170,35 @@ The following table outlines the configuration fields required to set up a catal
 
 You can connect to external Iceberg-compatible catalogs, such as Polaris and Unity Catalog, via the Iceberg REST `catalog_type`. Please note that we only support Iceberg REST with [Catalog Linked Databases](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database). 
 
-### Adapter Properties
+### Adapter properties
 
 These are the additional configurations, unique to Snowflake, that can be supplied and nested under `adapter_properties`. 
 
-| Field | Required | Accepted Values |
+#### Built-in catalog
+
+| Field | Required | Accepted values |
 | --- | --- | --- |
-| `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
-| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
-| `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
 | `change_tracking` | Optional | `True` or `False`    |
-| `catalog_linked_database` | Required if you are using the iceberg_rest `catalog type`. | catalog linked database name.   |
+| `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+
+#### REST catalog
+
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `auto_refresh` | Optional | `True` or `False`    |
+| `catalog_linked_database` | Required for `catalog type: iceberg_rest`. | catalog linked database name.   |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `target_file_size` | Optional | values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`, etc., case insensitive  |
 
 -  **storage_serialization_policy:** The serialization policy tells Snowflake what kind of encoding and compression to perform on the table data files. If not specified at table creation, the table inherits the value set at the schema, database, or account level. If the value isn’t specified at any level, the table uses the default value. You can’t change the value of this parameter after table creation.
 - **max_data_extension_time_in_days:** The maximum number of days Snowflake can extend the data retention period for tables to prevent streams on the tables from becoming stale. The `MAX_DATA_EXTENSION_TIME_IN_DAYS` parameter enables you to limit this automatic extension period to control storage costs for data retention, or for compliance reasons. 
 - **data_retention_time_in_days:** For managed Iceberg tables, you can set a retention period for Snowflake Time Travel and undropping the table over the default account values. For tables that use an external catalog, Snowflake uses the value of the DATA_RETENTION_TIME_IN_DAYS parameter to set a retention period for Snowflake Time Travel and undropping the table. When the retention period expires, Snowflake does not delete the Iceberg metadata or snapshots from your external cloud storage.
 - **change_tracking:** Specifies whether to enable change tracking on the table.
 - **catalog_linked_database:** [Catalog-linked databases](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database) (CLD) in Snowflake ensures that Snowflake can automatically sync metadata (including namespaces and iceberg tables) from the external Iceberg Catalog and registers them as remote tables in the catalog-linked database. The reason we require the usage of Catalog-linked databases for building Iceberg tables with external catalogs is that without it, dbt will be unable to truly manage the table end-to-end. Snowflake does not support dropping the Iceberg table on non-CLDs in the external catalog; instead, it only allows unlinking the Snowflake table, which creates a discrepancy with how dbt expects to manage the materialized object.
-
+- **auto_refresh:** Specifies whether Snowflake should automatically poll the external Iceberg catalog for metadata updates. If `REFRESH_INTERVAL_SECONDS` isn’t set on the catalog integration, the default refresh interval is 30 seconds. 
+- **target_file_size:** Specifies a target Parquet file size. Default is `AUTO`.
 
 ### Configure catalog integration for managed Iceberg tables
 
