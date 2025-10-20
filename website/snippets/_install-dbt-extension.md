@@ -152,44 +152,9 @@ file during registration. If you do not have a `~/.dbt/dbt_cloud.yml` file downl
 ## Troubleshooting
 <!-- This anchor is linked from the  VS Code extension. Please do not change it -->
 
-#### dbt platform configurations
+import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
 
-If you're a cloud-based dbt platform user who has the `dbt-cloud:` config in the `dbt_project.yml` file and are also using [dbt Mesh](/docs/mesh/about-mesh), you must have the project ID configured:
-
-```yaml
-dbt-cloud:
-  project-id: 12345 # Required
-```
-
-If you don’t configure this correctly, cross-platform references will not resolve properly, and you will encounter errors executing dbt commands.
-
-#### General troubleshooting tips
-
-If the dbt extension has activated successfully, you will see the `dbt Extension` label in the status bar at the bottom left of your editor. You can view diagnostic information about the dbt extension by clicking the **dbt Extension** button.
-
-If the dbt extension label is not present, then it is likely that the dbt extension was not installed successfully. If this happens, try uninstalling the extension, restarting your editor, and then reinstalling the extension.
-
-Note: It is possible to "hide" status bar items in VS Code. Double-check if the **dbt Extension** status bar label is hidden by right-clicking on the status bar in your editor. If you see **dbt Extension** in the right-click menu, then the extension has installed successfully.
-
-#### Missing dbt LSP features
-
-If you receive a `no active LSP for this workspace` error message or aren't seeing [dbt Language Server (LSP)](https://docs.getdbt.com/blog/dbt-fusion-engine-components#the-dbt-vs-code-extension-and-language-server) features in your editor (like autocomplete, go-to-definition, or hover text), start by first following the general [troubleshooting steps](#troubleshooting) mentioned earlier. 
-
-If you've confirmed the dbt extension is installed correctly but don't see LSP features, try the following:
-1. Check extension version &mdash; Ensure that you're using the latest available version of the dbt extension by:
-    - Opening the Extensions page in your editor, or
-    - Going to the **Output** tab and looking for the version number.
-2. Reinstall the LSP &mdash; If the version is correct, reinstall the LSP:
-   1. Open the Command Palette: Command + Shift + P (macOS) or Ctrl + Shift + P (Windows/Linux).
-   2. Paste `dbt: Reinstall dbt LSP` and enter.
-
-This command downloads the LSP and re-activates the extension to resolve the error.
-
-#### Unsupported dbt version
-
-If you see an error message indicating that your version of dbt is unsupported, then there is likely a problem with your environment.
-- Check the **dbt Path** setting in your VS Code settings. If this path is set, ensure that it is pointing to a valid <Constant name="fusion_engine" />  executable.
-- If necessary, you can also install the <Constant name="fusion_engine" />  directly using these instructions: [Install the Fusion CLI](/docs/fusion/install-fusion).
+<FusionTroubleshooting />
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
