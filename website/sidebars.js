@@ -432,6 +432,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/metrics-spec-fusion",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
