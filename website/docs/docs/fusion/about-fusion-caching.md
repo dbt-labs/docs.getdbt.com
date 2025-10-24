@@ -94,7 +94,7 @@ As an end user, you'll likely come across the cache when:
 
 The biggest performance bottleneck in dbt isn’t the language the engine is written in: it’s actually the times that dbt needs to query the data warehouse in order to render jinja into SQL! 
 
-We call this “introspection” and it really slows down local development! See [New Concepts: Rendering introspective queries](new-concepts#rendering-introspective-queries)
+We call this “introspection” and it really slows down local development! See [New Concepts: Rendering introspective queries](/docs/fusion/new-concepts#static-analysis-and-introspective-queries)
 
  So we’ve shipped a query cache that’s now in beta.
 
