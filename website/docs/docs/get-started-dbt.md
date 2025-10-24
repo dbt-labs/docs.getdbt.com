@@ -76,6 +76,12 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
     link="https://docs.getdbt.com/guides/teradata"
     icon="teradata"/>
 
+<Card
+    title="Quickstart for dbt and Salesforce Data Cloud"
+    body="Use dbt with Salesforce Data Cloud for your data transformation workflows."
+    link="https://docs.getdbt.com/guides/salesforce"
+    icon="TODO"/> 
+
 </div>
 
 ## dbt local installations
