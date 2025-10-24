@@ -21,7 +21,9 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 Caching is large part of how <Constant name="fusion_engine" /> delivers a vastly impoved developer experience. The goal for Fusion is to enable analytics engineers to meaningful feedback as fast as possible.
 
-At the same time, caching is famously one of the two hardest problems in computer science!
+At the same time, caching is famously one of the two hardest problems in computer science! So let's learn about what the different ways that dbt caches information, and, in what situations do you need to reason about it as an end user.
+
+</IntroText>
 
 dbt's Caching falls into the following three buckets:
 1. a user never has to think about
