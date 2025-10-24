@@ -6,13 +6,15 @@ sidebar_label: Metrics YAML spec in Fusion
 tags: [Metrics, Semantic Layer, Fusion]
 ---
 
-The legacy MetricFlow YAML spec is often described as complex, verbose, and disconnected from the model-centric configuration experience in dbt. The new metrics YAML spec in the dbt Fusion engine simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to direct keys. 
+The legacy MetricFlow YAML specification is often described as complex, verbose, and disconnected from the model-centric configuration experience in dbt. 
+
+The new Semantic Layer specification in the dbt Fusion engine creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to direct keys. 
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization.
 
 ## Changes in the new spec
 
-This section highlights the key updates in the new metrics spec and compares them to the previous spec.
+This section highlights the key updates in the new metrics spec in Fusion and compares them to the previous spec.
 
 ### Semantic models
 
@@ -83,7 +85,7 @@ models:
       enabled: true
     agg_time_dimension: ordered_at
     columns:
-      # Entities
+      # entities
       - name: order_id
         entity:
           type: primary
@@ -93,13 +95,13 @@ models:
           type: foreign
           name: customer
 
-      # Time dimension
+      # time dimension
       - name: ordered_at
         dimension:
           type: time
         granularity: day
 
-      # Categorical dimension
+      # categorical dimension
       - name: order_status
         dimension:
           type: categorical
@@ -364,33 +366,32 @@ models:
 </Tabs>
 
 
-## Migrating to the new spec using autofix
+## Migrating to the new spec
 
-### CLI
+Refer to the steps in this section to convert your metrics to the new YAML spec.
 
-You can use the [autofix tool](https://github.com/dbt-labs/dbt-autofix) to convert your existing legacy YAML spec to the new metrics spec in Fusion.
+### Using the CLI
 
-1. Create a branch for the migration.
+The [autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the autofix tool before migrating to the new spec using the CLI.
 
-2. Run the following command:
+1. In your CLI, run the following command:
 
-```bash
-dbt-autofix deprecations --semantic-layer
-```
+    ```bash
+    dbt-autofix deprecations --semantic-layer
+    ```
 
-3. Review the diff and resolve any TODOs left by the tool.
+2. Review the diff and resolve all flagged items.
 
-4. Run parsing and validations:
+3. Run parsing and validations:
 
-```bash
-dbt parse
-mf validate-configs
-```
+    ```bash
+    dbt parse
+    mf validate-configs
+    ```
 
-5. Commit and open a PR. Deploy to a staging environment and re‑validate.
+### Using the Studio IDE
 
-
-### dbt platform
+You can also convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" />. You don't have to install the autofix tool.
 
 1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix tool may overwrite any unsaved changes.
