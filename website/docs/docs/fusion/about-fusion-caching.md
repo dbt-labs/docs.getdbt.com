@@ -44,6 +44,31 @@ Where 🚧 indicates a feature that is still in beta
 
 ### Relation Cache
 
+#### What is the relation cache?
+
+Before dbt creates modifies or drops any table or view in the target data platform, it first needs to know what's already in there! The fundamental reason is simple: make sure that name of model you're about to materialize is not taken already!
+
+However, it doesn't make sense to make these metadata queries to the warehouse for every model; the better answer is for dbt to initially cache all the relations, then update the cache as it runs. We call this the relational cache.
+
+<!-- TODO make a stadnalone reference page to define introspective queries -->
+An additional benefit of this cache is when a dbt model makes use of an introspective query. Introspective queries are queries that a dbt model's jinja requires in order to be rendered to SQL. While they are often convenient, the can have a sizable impact on dbt's ability to performantly compile a project, especially as it relates to the dbt Fusion engine which also performs static analysis.
+
+An example of the additional benefit that the relation cache provide to end users that have introspective queries in their project is the `dbt_utils.get_relations_by_pattern()` ([docs](https://github.com/dbt-labs/dbt-utils?tab=readme-ov-file#get_relations_by_pattern-source)) macro. If you use that in a model, for dbt to know how to turn it into SQL, it needs to know what relations there are! It could ask the datawarehouse everytime the model is compiled or ran. However, it can simply use the relation cache.
+
+#### When to know about the relation cache and how to troubleshoot it
+
+The relation cache has been a part of dbt for years now and is quite stable, so you likely will not need to think about it unless are contributing to the dbt codebase, or developing a custom materialization.
+
+In Fusion, there is currently a `logs/beta_cache.log` artifact which provides some information on the intitial poputation of the cache, such as 
+- which schemas were cached
+- how many relations were found in each schema
+- how long did the metadata queries take
+
+
+As the filename suggest, this file is in a beta state, and likely to evolve and be integrated into `logs/dbt.log`
+
+<!-- TODO: what Core CLI flags are supported in Fusion?? -->
+
 ### Source Schema Cache
 
 In order to perform offline [static analysis](new-concepts) of your project, the first thing that's required is
