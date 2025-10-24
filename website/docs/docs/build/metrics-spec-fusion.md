@@ -6,9 +6,9 @@ sidebar_label: Metrics YAML spec in Fusion
 tags: [Metrics, Semantic Layer, Fusion]
 ---
 
-The legacy MetricFlow YAML specification is often described as complex, verbose, and disconnected from the model-centric configuration experience in dbt. 
+The legacy MetricFlow YAML specification is often described as complex and disconnected from the model-centric configuration experience in dbt. 
 
-The new Semantic Layer specification in the dbt Fusion engine creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to direct keys. 
+The new Semantic Layer specification in the <Constant name="fusion_engine" /> creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to direct keys. 
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization.
 
@@ -22,15 +22,6 @@ The `semantic_model` key is embedded under `models`.
 
 <Tabs>
 
-<TabItem value="old" label="Old spec">
-
-```yml
-semantic_models:
-  - name: orders
-```
-
-</TabItem>
-
 <TabItem value="new" label="New spec">
 
 ```yml
@@ -43,6 +34,15 @@ models:
 
 </TabItem>
 
+<TabItem value="old" label="Old spec">
+
+```yml
+semantic_models:
+  - name: orders
+```
+
+</TabItem>
+
 </Tabs>
 
 ### Entities and dimensions
@@ -50,31 +50,6 @@ models:
 Entities and dimensions are defined under columns. 
 
 <Tabs>
-
-<TabItem value="old" label="Old spec">
-
-```yml
-semantic_models:
-  - name: orders
-    model: ref('orders')
-    entities:
-      - name: order
-        type: primary
-        expr: order_id
-      - name: customer
-        type: foreign
-        expr: customer_id
-    dimensions:
-      - name: ordered_at
-        type: time
-        type_params:
-          time_granularity: day
-      - name: status
-        type: categorical
-        expr: order_status
-```
-
-</TabItem>
 
 <TabItem value="new" label="New spec">
 
@@ -110,6 +85,31 @@ models:
 
 </TabItem>
 
+<TabItem value="old" label="Old spec">
+
+```yml
+semantic_models:
+  - name: orders
+    model: ref('orders')
+    entities:
+      - name: order
+        type: primary
+        expr: order_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+    dimensions:
+      - name: ordered_at
+        type: time
+        type_params:
+          time_granularity: day
+      - name: status
+        type: categorical
+        expr: order_status
+```
+
+</TabItem>
+
 </Tabs>
 
 ### Time dimension
@@ -118,6 +118,43 @@ models:
 - `time granularity`: Deprecated in Fusion. Define the native grain on the time dimension column with `granularity` (for example, `hour`, `day`).
 
 <Tabs>
+
+<TabItem value="new" label="New spec">
+
+```yml
+models:
+  - name: subscriptions
+    semantic_model:
+      enabled: true
+
+    # default aggregation time dimension for metrics in this model
+    agg_time_dimension: activated_at
+
+    columns:
+      - name: activated_at
+        granularity: day # native grain on the column
+        dimension:
+          type: time
+
+      - name: created_at
+        granularity: hour # another time column with a different native grain
+        dimension:
+          type: time
+
+    metrics:
+      - name: active_subscriptions
+        type: simple
+        agg: count
+        expr: 1 # inherits agg_time_dimension: activated_at
+
+      - name: signups_by_created_day
+        type: simple
+        agg: count
+        expr: 1
+        agg_time_dimension: created_at # override to use created_at as the time dimension
+```
+
+</TabItem>
 
 <TabItem value="old" label="Old spec">
 
@@ -152,51 +189,40 @@ metrics:
 
 </TabItem>
 
-<TabItem value="new" label="New spec">
-
-```yml
-models:
-  - name: subscriptions
-    semantic_model:
-      enabled: true
-
-    # Default aggregation time dimension for metrics in this model
-    agg_time_dimension: activated_at
-
-    columns:
-      - name: activated_at
-        granularity: day       # Native grain on the column
-        dimension:
-          type: time
-
-      - name: created_at
-        granularity: hour      # Another time column with a different native grain
-        dimension:
-          type: time
-
-    metrics:
-      - name: active_subscriptions
-        type: simple
-        agg: count
-        expr: 1                # Inherits agg_time_dimension: activated_at
-
-      - name: signups_by_created_day
-        type: simple
-        agg: count
-        expr: 1
-        agg_time_dimension: created_at  # Override to use created_at as the time dimension
-```
-
-</TabItem>
-
 </Tabs>
 
 
 ### Simple metrics
 
-Measures have been deprecated in Fusion and are replaced with simple metrics.
+Measures are deprecated in Fusion and are replaced with simple metrics.
 
 <Tabs>
+
+<TabItem value="new" label="New spec">
+
+```yml
+models:
+  - name: customers
+    semantic_model:
+      enabled: true
+    agg_time_dimension: first_ordered_at
+    columns:
+      - name: customer_id
+        entity:
+          name: customer
+          type: primary
+      - name: first_ordered_at
+        dimension:
+          type: time
+        granularity: day
+    metrics:
+      - name: lifetime_spend_pretax
+        type: simple # simple metrics
+        agg: sum
+        expr: amount_pretax
+```
+
+</TabItem>
 
 <TabItem value="old" label="Old spec">
 
@@ -226,39 +252,46 @@ metrics:
 
 </TabItem>
 
-<TabItem value="new" label="New spec">
-
-```yml
-models:
-  - name: customers
-    semantic_model:
-      enabled: true
-    agg_time_dimension: first_ordered_at
-    columns:
-      - name: customer_id
-        entity:
-          name: customer
-          type: primary
-      - name: first_ordered_at
-        dimension:
-          type: time
-        granularity: day
-    metrics:
-      - name: lifetime_spend_pretax
-        type: simple
-        agg: sum
-        expr: amount_pretax
-```
-
-</TabItem>
-
 </Tabs>
 
 ### Advanced metrics
 
-Define simple metrics inside their semantic model, then create cross‑model metrics under a top‑level `metrics` block. Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
+Define simple metrics inside the model, and create cross‑model metrics under a top‑level `metrics` block. Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
 
 <Tabs>
+
+<TabItem value="new" label="New spec">
+
+```yml
+# define simple metrics where the data lives
+models:
+  - name: orders
+    semantic_model:
+      enabled: true
+    metrics:
+      - name: orders
+        type: simple
+        agg: count
+        expr: 1
+
+  - name: website
+    semantic_model:
+      enabled: true
+    metrics:
+      - name: sessions
+        type: simple
+        agg: count
+        expr: 1
+
+# advanced metrics under top-level metrics key
+metrics:
+  - name: orders_per_session
+    type: ratio
+    numerator: orders
+    denominator: sessions
+```
+
+</TabItem>
 
 <TabItem value="old" label="Old spec">
 
@@ -285,39 +318,6 @@ metrics:
 
 </TabItem>
 
-<TabItem value="new" label="New spec">
-
-```yml
-# Define simple metrics where the data lives
-models:
-  - name: orders
-    semantic_model:
-      enabled: true
-    metrics:
-      - name: orders
-        type: simple
-        agg: count
-        expr: 1
-
-  - name: website
-    semantic_model:
-      enabled: true
-    metrics:
-      - name: sessions
-        type: simple
-        agg: count
-        expr: 1
-
-# Compose across models at the top level
-metrics:
-  - name: orders_per_session
-    type: ratio
-    numerator: orders
-    denominator: sessions
-```
-
-</TabItem>
-
 </Tabs>
 
 ## `type_params`
@@ -331,19 +331,6 @@ The `type_params` key is deprecated. The following are direct keys on the metric
 - `fill_nulls_with`
 
 <Tabs>
-
-<TabItem value="old" label="Old spec">
-
-```yml
-metrics:
-  - name: revenue_p95
-    type: simple
-    type_params:
-      percentile: 95.0
-      percentile_type: discrete
-```
-
-</TabItem>
 
 <TabItem value="new" label="New spec">
 
@@ -363,12 +350,25 @@ models:
 
 </TabItem>
 
+<TabItem value="old" label="Old spec">
+
+```yml
+metrics:
+  - name: revenue_p95
+    type: simple
+    type_params:
+      percentile: 95.0
+      percentile_type: discrete
+```
+
+</TabItem>
+
 </Tabs>
 
 
 ## Migrating to the new spec
 
-Refer to the steps in this section to convert your metrics to the new YAML spec.
+Refer to the steps in this section to convert your legacy metrics to the new YAML spec.
 
 ### Using the CLI
 
@@ -390,6 +390,8 @@ The [autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metr
     ```
 
 ### Using the Studio IDE
+
+<!--need to confirm steps and replace screenshots-->
 
 You can also convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" />. You don't have to install the autofix tool.
 
