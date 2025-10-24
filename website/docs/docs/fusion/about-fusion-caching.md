@@ -71,7 +71,24 @@ As the filename suggest, this file is in a beta state, and likely to evolve and 
 
 ### Source Schema Cache
 
-In order to perform offline [static analysis](new-concepts) of your project, the first thing that's required is
+#### What is the source schema cache?
+
+In order to perform offline [static analysis](new-concepts) of your project and validate that all the datatypes are correct, the dbt Fusion engine first needs to know the column datatypes of all of your source tables.
+
+To accomplish this, the first thing Fusion does is make metadata queries to your data platform to get all the column names and datatypes of all of the relevant source tables. The result is saved to `target/db/` as parquet files.
+
+The parquet files have no rows, but the colums and datatypes do correspond to those of the source table in the data warehouse.
+
+#### When to know about the source schema cache and how to troubleshoot it?
+
+As an end user, you'll likely come across the cache when:
+- you're migrating from Core to Fusion, but you don't have permission to get the schema of some of the source tables defined in your project
+- Fusion tells you it can't find a column in your source table, but it's actually there
+
+
+
+
+
 
 ### (BETA) Query Cache
 
