@@ -73,7 +73,7 @@ As the filename suggest, this file is in a beta state, and likely to evolve and 
 
 #### What is the source schema cache?
 
-In order to perform offline [static analysis](new-concepts) of your project and validate that all the datatypes are correct, the dbt Fusion engine first needs to know the column datatypes of all of your source tables.
+In order to perform offline [static analysis](/docs/fusion/new-concepts) of your project and validate that all the datatypes are correct, the dbt Fusion engine first needs to know the column datatypes of all of your source tables.
 
 To accomplish this, the first thing Fusion does is make metadata queries to your data platform to get all the column names and datatypes of all of the relevant source tables. The result is saved to `target/db/` as parquet files.
 
