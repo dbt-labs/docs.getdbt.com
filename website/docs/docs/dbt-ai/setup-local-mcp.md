@@ -34,10 +34,10 @@ import MCPExample from '/snippets/_mcp-config-files.md';
     <TabItem value="API and SQL tool settings">
       | Environment Variable | Required | Description |
       | --- | --- | --- |
-      | DBT_HOST | Required | Your dbt platform [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). If you're using Multi-cell, exclude the `ACCOUNT_PREFIX` from the hostname. The default is `cloud.getdbt.com`  |
-      | MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell  `ACCOUNT_PREFIX`. If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses).  |
+      | DBT_HOST | Required | Your dbt platform [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). If you're using Multi-cell, exclude the `ACCOUNT_PREFIX` from the hostname. The default is `cloud.getdbt.com`.  |
+      | MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell `ACCOUNT_PREFIX`. If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses).  |
       | DBT_TOKEN | Required | Your personal access token or service token from the dbt platform. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
-      | DBT_ACCOUNT_ID | Required for Admininstrative API tools | Your [dbt account ID](https://docs.getdbt.com/faqs/Accounts/find-user-id) |
+      | DBT_ACCOUNT_ID | Required for Administrative API tools | Your [dbt account ID](https://docs.getdbt.com/faqs/Accounts/find-user-id) |
       | DBT_PROD_ENV_ID | Required | Your dbt Cloud production environment ID |
       | DBT_DEV_ENV_ID | Optional | Your dbt Cloud development environment ID |
       | DBT_USER_ID | Optional | Your dbt Cloud user ID ([docs](https://docs.getdbt.com/faqs/Accounts/find-user-id)) |
@@ -66,7 +66,7 @@ import MCPExample from '/snippets/_mcp-config-files.md';
       | `DISABLE_DBT_CLI`        | `false` | Set this to `true` to disable dbt Core, dbt Cloud CLI, and dbt Fusion MCP tools |
       | `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools                    |
       | `DISABLE_DISCOVERY`      | `false` | Set this to `true` to disable dbt Discovery API MCP tools                     |
-      | `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Admininistrative API MCP tools                         |
+      | `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Administrative API MCP tools                         |
       | `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools                                |
       | `DISABLE_DBT_CODEGEN`    | `true`  | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package) |
       | `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools    |
@@ -85,7 +85,7 @@ import MCPExample from '/snippets/_mcp-config-files.md';
 
 4. Set up your MCP client:
 
-    After creating your `.env` file, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating aconfiguration file. This is dependent on what tools you want to integrate with.
+    After creating your `.env` file, you can move on to our guides on connecting dbt-mcp to tools like Claude Desktop or Cursor or to creating a configuration file. This is dependent on what tools you want to integrate with.
 
 
     #### Example configuration
@@ -107,15 +107,15 @@ import MCPExample from '/snippets/_mcp-config-files.md';
     }
     ```
 
-    `<path-to-.env-file>` is where you saved the `.env` file from the Setup step.
+    `<path-to-.env-file>` is where you saved the `.env` file from the setup step.
 
 ## dbt platform authentication
 
 The local MCP server integrates with your existing cloud-based dbt platform OAuth integration with a simple configuration file in the client. Reference the following sample configurations (configs may vary depending on the client):
 
-:::info static subdomains
+:::info Static subdomains
 
-Only accounts with static subdomains (for example, abc123.us1.dbt.com) can use OAuth with MCP servers. All accounts are in the process of being migrated to static subdomains by Dec 2025. Please contact support for more information.
+Only accounts with static subdomains (for example, abc123.us1.dbt.com) can use OAuth with MCP servers. All accounts are in the process of being migrated to static subdomains by December 2025. Please contact support for more information.
 
 :::
 

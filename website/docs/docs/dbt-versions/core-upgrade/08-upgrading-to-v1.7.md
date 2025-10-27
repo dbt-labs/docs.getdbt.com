@@ -40,7 +40,7 @@ To retain the behavior prior to v1.7, there are two main options:
 ### MetricFlow enhancements
 
 - Automatically create metrics on measures with [`create_metric: true`](/docs/build/semantic-models).
-- Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions and entities.
+- Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions, and entities.
 - New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group), and [meta](/reference/resource-configs/meta).
 - Support `fill_nulls_with` and `join_to_timespine` for metric nodes.
 - `saved_queries` extends governance beyond the semantic objects to their consumption.

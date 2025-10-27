@@ -86,7 +86,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - Custom DNS (if HTTPS)
     - Private hosted zone:
     - DNS record:
-- VCS install AWS Region (e.g., us-east-1, eu-west-2):
+- VCS install AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 

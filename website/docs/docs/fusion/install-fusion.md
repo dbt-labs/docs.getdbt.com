@@ -2,6 +2,7 @@
 title: "Install Fusion"
 description: "Install the Fusion engine locally to take data transformation to the next level."
 id: install-fusion
+hide_table_of_contents: true
 ---
 
 # About Fusion local installation <Lifecycle status="preview" />

@@ -8,8 +8,8 @@ id: "integrate-mcp-claude"
 import MCPExample from '/snippets/_mcp-config-files.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces: 
-- [Claude Code](https://www.anthropic.com/claude-code): a terminal/IDE tool for development
-- [Claude for desktop](https://claude.ai/download): a GUI with MCP support for file access and commands as well as basic coding features 
+- [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development
+- [Claude for desktop](https://claude.ai/download): A GUI with MCP support for file access and commands as well as basic coding features 
 
 ## Claude Code
 
@@ -18,7 +18,7 @@ You can set up Claude Code with both the local and remote `dbt-mcp` server. We r
 ### Setup with local dbt MCP server
 
 Prerequisites:
-- Have an .env file with your environment variables 
+- Have an `.env` file with your environment variables 
 - Local dbt-mcp setup
 
 1. Run the following command to add the MCP server to Claude Code:
@@ -41,7 +41,7 @@ To install it in the project scope, run the following and commit the `.mcp.json`
 claude mcp add dbt -s project -- uvx --env-file <path-to-.env-file> dbt-mcp
 ```
 
-More info on scopes [here](https://docs.anthropic.com/en/docs/claude-code/mcp#understanding-mcp-server-scopes)
+For more information on scopes, refer to [Understanding MCP server scopes](https://docs.anthropic.com/en/docs/claude-code/mcp#understanding-mcp-server-scopes).
 
 
 ## Claude for desktop
@@ -82,3 +82,4 @@ For debugging, you can find the Claude desktop logs at `~/Library/Logs/Claude` f
 
 - Claude desktop may return errors such as `Error: spawn uvx ENOENT` or `Could not connect to MCP server dbt-mcp`. Try replacing the command
 and environment variables file path with the full path. For `ux`, find the full path to `uvx` by running `which uvx` on Unix systems and placing this full path in the JSON. For instance: `"command": "/the/full/path/to/uvx"`.
+

@@ -91,7 +91,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If the user is required to execute GRANT statements, see for instance (/reference/resource-configs/grants) or (/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
+Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ, and WRITE permissions. If the user is required to execute GRANT statements, see for instance (/reference/resource-configs/grants) or (/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
 
 ### Kerberos
 

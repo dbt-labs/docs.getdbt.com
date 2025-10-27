@@ -112,7 +112,7 @@ function Home() {
                   title="dbt Fusion engine"
                   tag="Article"
                   body="Learn about the dbt Fusion engine and see how it enables dbt to operate at speed and scale like never before."
-                  link="/docs/fusion/about-fusion"
+                  link="/docs/fusion"
                   icon="zap"
                 />
                 <Card

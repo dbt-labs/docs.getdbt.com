@@ -29,7 +29,7 @@ From your Azure portal:
     - Postgres Flexible Server name:
     - Azure Database for Postgres Flexible Server resource ID:
     - dbt Azure multi-tenant environment (EMEA):
-    - Azure Postgres server region (e.g., WestEurope, NorthEurope):
+    - Azure Postgres server region (for example, WestEurope, NorthEurope):
     ```
 5. Once our support team confirms the endpoint has been created, navigate to the Azure Database for Postgres Flexible Server in the Azure Portal and browse to **Settings** > **Networking**. In the **Private Endpoints** section, highlight the `dbt` named option and select **Approve**. Confirm with Support that the connection has been approved so they can validate the connection and make it available for use in  <Constant name="cloud" />.
 

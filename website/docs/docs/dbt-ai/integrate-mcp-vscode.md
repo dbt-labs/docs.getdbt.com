@@ -45,7 +45,7 @@ These instructions are for integrating dbt MCP and VS Code. To get started, in V
     }
     ```
 
-    `<path-to-.env-file>` is where you saved the `.env` file from the Setup step
+    `<path-to-.env-file>` is where you saved the `.env` file from the setup step.
 
     </TabItem>
 
@@ -72,7 +72,7 @@ These instructions are for integrating dbt MCP and VS Code. To get started, in V
 
     #### Local MCP with dbt platform authentication <Lifecycle status="managed, managed_plus" />
 
-    Additionally, you can configure the local MCP server to authenticate against your dbt platform environment using OAuth. Substitute the previous local MCP JSON with one of the following::
+    Additionally, you can configure the local MCP server to authenticate against your dbt platform environment using OAuth. Substitute the previous local MCP JSON with one of the following:
 
     <MCPExample />
 
@@ -86,4 +86,4 @@ Now you will be able to access the local dbt MCP server on VS Code through inter
 
 ## Resources
 
-- Microsoft VS Code MCP [docs](https://code.visualstudio.com/docs/copilot/chat/mcp-servers).
+- [Microsoft VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)

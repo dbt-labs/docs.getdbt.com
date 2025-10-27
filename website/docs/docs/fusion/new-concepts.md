@@ -1,7 +1,7 @@
 ---
 title: "New concepts in the dbt Fusion engine"
 id: "new-concepts"
-sidebar_label: "New Concepts"
+sidebar_label: "New concepts"
 description: "New concepts and configurations you will encounter when you install the dbt Fusion engine."
 pagination_next: null
 pagination_prev: null

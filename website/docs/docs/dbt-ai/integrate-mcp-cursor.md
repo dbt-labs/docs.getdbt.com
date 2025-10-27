@@ -19,7 +19,7 @@ After setting up your MCP server, you connect it to Cursor. Log in to Cursor and
 3. Update inputs in the template. 
 4. Save, and now you have access to the dbt-mcp!
 
-#### Set up with dbt platform authentication <Lifecycle status="managed, managed_plus" />
+### Set up with dbt platform authentication <Lifecycle status="managed, managed_plus" />
 You can configure the local MCP server for use with the dbt platform via OAuth: 
 
 1. Click one of the following application links with Cursor open:

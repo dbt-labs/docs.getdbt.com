@@ -44,7 +44,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 - **New**: [dbt <Constant name="query_page" />](/docs/explore/dbt-insights) is now generally available (GA)!
   - **Private beta**: The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) is now available in dbt <Constant name="query_page" />. The Analyst agent is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. For more information, see [Analyze data with the Analyst agent](/docs/cloud/use-dbt-copilot#analyze-data-with-the-analyst-agent).
   - **Beta**: dbt <Constant name="query_page" /> now has a [Query Builder](/docs/explore/navigate-dbt-insights#query-builder), where you can build SQL queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities.
-  - **Enhancement**: In [dbt <Constant name="query_page" />](/docs/explore/dbt-insights), projects upgraded to the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) get [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features) and their compilation running on <Constant name="fusion" />.
+  - **Enhancement**: In [dbt <Constant name="query_page" />](/docs/explore/dbt-insights), projects upgraded to the [<Constant name="fusion_engine" />](/docs/fusion) get [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features) and their compilation running on <Constant name="fusion" />.
 - **New**: [MetricFlow](/docs/build/about-metricflow) is now developed and maintained as part of the [Open Semantic Interchange (OSI)](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/) initiative, and is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). For more information, see the blog post about [Open sourcing MetricFlow](https://www.getdbt.com/blog/open-source-metricflow-governed-metrics).
 
 ### Pre-Coalesce 
@@ -102,7 +102,7 @@ Snowflake connections that use External OAuth for user credentials can now emit 
 The following features are new or enhanced as part of our [dbt Launch Showcase](https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase) on May 28th, 2025:
 
 - **New**: The dbt Fusion engine is the brand new dbt engine re-written from the ground up to provide incredible speed, cost-savings tools, and comprehensive SQL language tools. The dbt Fusion engine is now available in beta for Snowflake users.
-  - Read more [about Fusion](/docs/fusion/about-fusion).
+  - Read more [about Fusion](/docs/fusion).
   - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
   - Begin testing today with the [quickstart guide](/guides/fusion).
   - Know [where we're headed with the dbt Fusion engine](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
@@ -169,7 +169,7 @@ The following features are new or enhanced as part of our [dbt Developer day](ht
 
 ## February 2025
 
-- **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
+- **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute, and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
 - **New**: The [Azure DevOps](/docs/cloud/git/connect-azure-devops) integration for <Constant name="git" /> now supports [Entra service principal apps](/docs/cloud/git/setup-service-principal) on <Constant name="cloud" /> Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and dbt Labs recommends [migrating to a service principal](/docs/cloud/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
 - **New**: Added the `dbt invocation` command to the [dbt CLI](/docs/cloud/cloud-cli-installation). This command allows you to view and manage active invocations, which are long-running sessions in the dbt CLI. For more information, see [dbt invocation](/reference/commands/invocation).
 - **New**: Users can now switch themes directly from the user menu, available [in Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). We have added support for **Light mode** (default), **Dark mode**, and automatic theme switching based on system preferences. The selected theme is stored in the user profile and will follow users across all devices.

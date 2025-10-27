@@ -35,7 +35,8 @@ This quickstart guide will get you from zero to running your first dbt project w
 | **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/fusion/install-fusion) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
-**Tip:** Read more [about the <Constant name="fusion_engine" />](/docs/fusion/about-fusion) to understand what’s new, what’s changed, and what’s deprecated.
+To learn more about which tool is best for you, see the [Fusion availability](/docs/fusion/fusion-availability) page. To learn about the <Constant name="fusion_engine" /> and how it works, read more [about the dbt Fusion engine](/docs/fusion/about-fusion).
+
 
 ## Prerequisites
 
@@ -179,7 +180,7 @@ Now that your project works, open it in VS Code and see Fusion in action:
 
 Now you're ready to see some of these awesome features in action!
 
-<!--no toc -->
+<!-- no toc -->
 - [Preview data and code](#preview-data-and-code)
 - [Navigate your project with lineage tools](#navigate-your-project-with-lineage-tools)
 - [Use the power of SQL understanding](#use-the-power-of-sql-understanding)
