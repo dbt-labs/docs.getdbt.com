@@ -10,7 +10,7 @@ User-defined functions (UDFs) enable you to define and register custom functions
 
 UDFs are particularly valuable for sharing logic across multiple tools, standardizing complex business calculations, improving performance for compute-intensive operations (since they're compiled and optimized by your warehouse's query engine), and version controlling custom logic within your dbt project.
 
-dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is built in the warehouse before the model that references it.
+dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is built in the warehouse before the model that references it. Refer to [listing and selecting UDFs](/docs/build/udfs#listing-and-selecting-udfs) for more info on how to build UDFs in your project.
 
 ## Prerequisites
 
@@ -222,11 +222,11 @@ unit_tests:
 
 ## Listing and selecting UDFs
 
-To list UDFs in your project, run `dbt list --select "resource_type:function"` or `dbt list --resource-type function`.
+Use the [`list` command](/reference/commands/list#listing-functions) to list UDFs in your project: `dbt list --select "resource_type:function"` or `dbt list --resource-type function`.
 
-To select UDFs when building a project, run `dbt build --select "resource_type:function"`.
+Use the [`build` command](/reference/commands/build#functions) to select UDFs when building a project: `dbt build --select "resource_type:function"`.
 
-For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods).
+For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
 
 ## Limitations
 - Creating UDFs in other languages (for example, Python, Java, or Scala) is not yet supported. 

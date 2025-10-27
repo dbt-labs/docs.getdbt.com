@@ -53,7 +53,7 @@ By rendering and analyzing all models ahead of time, and only beginning executio
 
 ### Rendering introspective queries
 
-The exception to AOT rendering is an introspective model: a model whose rendered SQL depends on the results of a database query. Models containg macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with ahead-of-time rendering because:
+The exception to AOT rendering is an introspective model: a model whose rendered SQL depends on the results of a database query. Models containing macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with ahead-of-time rendering because:
 
 - Most introspective queries are run against the results of an earlier model in the DAG, which may not yet exist in the database during AOT rendering.
 - Even if the model does exist in the database, it might be out of date until after the model has been refreshed.
@@ -64,7 +64,9 @@ Note that macros like `adapter.get_columns_in_relation()` and `dbt_utils.star()`
 
 ## Principles of static analysis
 
-[Static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control.
+The concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
+
+The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
 
 The <Constant name="fusion_engine" /> is unique in that it can statically analyze not just a single model in isolation, but every query from one end of your DAG to the other. Even your database can only validate the query in front of it! Concepts like [information flow theory](https://roundup.getdbt.com/i/156064124/beyond-cll-information-flow-theory-and-metadata-propagation) &mdash; although not incorporated into the dbt platform [yet](https://www.getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine) &mdash; rely on stable inputs and the ability to trace columns DAG-wide.
 
@@ -99,7 +101,7 @@ The dbt Fusion engine:
 
 Beyond the default behavior described above, you can always modify the way static analysis is applied for specific models in your project. Remember that **a model is only eligible for static analysis if all of its parents are also eligible.**
 
-The `static_analysis` options are:
+The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
 - `on`: Statically analyze SQL. The default for non-introspective models, depends on AOT rendering.
 - `unsafe`: Statically analyze SQL. The default for introspective models. Always uses JIT rendering.
@@ -107,7 +109,9 @@ The `static_analysis` options are:
 
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
-The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the `--static-analysis off` or `--static-analysis unsafe` CLI flags to override all model-level configuration. Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
+The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis off` or `--static-analysis unsafe` CLI flags](/reference/global-configs/static-analysis-flag) to override all model-level configuration. 
+
+Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
 
 ### Example configurations
 

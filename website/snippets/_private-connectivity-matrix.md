@@ -19,7 +19,7 @@
 | Amazon Athena w/ AWS Glue                         |   ❌   |   ✅   |    -     |    -     |    -     |
 | Azure Synapse                                     |   -    |   -    |    ✅    |    ✅    |    -     |
 | Azure Fabric (cross-tenant not supported by Azure)|   -    |   -    |    ❌    |    ❌    |    -     |
-| Google BigQuery                                   |   -    |   -    |    -     |    -     |    ✅ (beta)    |
+| Google BigQuery                                   |   -    |   -    |    -     |    -     |    ✅    |
 | Teradata - Database Server                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
 | <b>EGRESS - VCS (from <Constant name="cloud" />)</b>              |        |        |          |          |          |
 | GitHub Enteprise Server                           |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
