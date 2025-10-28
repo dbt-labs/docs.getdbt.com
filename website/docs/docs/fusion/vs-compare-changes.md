@@ -7,6 +7,10 @@ sidebar_label: "Compare changes (dev)"
 
 # Compare changes in development <Lifecycle status="beta"/>
 
+:::info
+Compare changes in development, powered by <Constant name="fusion_engine" />, is available in beta for VS Code and Cursor.
+:::
+
 The dbt VS Code extension can compare changes you make during development by producing your current working copy against your manifest.json (for example, your last production state) — directly in your editor. This helps you check impact early on, before even opening a PR (or running CI in deployment).
 
 Compare changes in development allows you to:
