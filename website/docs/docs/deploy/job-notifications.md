@@ -142,7 +142,7 @@ This section explains how to connect your Microsoft Entra tenant to the <Constan
 Before you begin:
 - Find your **Microsoft Entra Tenant (Directory) ID** on the **Microsoft Entra ID** Azure Overview page.  
 - Ensure that a dbt account admin or Azure admin performs this _one-time, account-wide setup_.
-  <Lightbox src="/img/docs/deploy/microsoft-entra-tenant-id.png" width="100%" title="Example of the Microsoft Entra Tenant (Directory) ID"/>
+  <Lightbox src="/img/docs/deploy/entra-id-overview.jpeg" width="80%" title="Example of the Microsoft Entra Tenant (Directory) ID"/>
 
 To connect your Microsoft Entra tenant to the <Constant name="dbt_platform" />:
 1. In the <Constant name="dbt_platform" />, go to the **Account settings** page.
@@ -150,16 +150,16 @@ To connect your Microsoft Entra tenant to the <Constant name="dbt_platform" />:
 3. Select the expand toggle icon and click the pencil icon to edit.
 4. Enter the Tenant (Directory) ID.
     <Lightbox src="/img/docs/deploy/dbt-platform-integrations.png" width="100%" title="Example of the Microsoft Entra tenant to dbt connection"/>
-5. Click the **Link App** button to link dbt and Teams, account-wide.
+5. Click the **Link App** button to link dbt and Entra, account-wide.
 6. When prompted, grant admin consent to allow the required permissions.
 7. You'll be redirected to the [www.getdbt.com](http://www.getdbt.com) webpage on the new tab.
 8. You’ve now successfully connected Microsoft Entra to dbt!  🎉
-9. The next step is to link your <Constant name="dbt_platform" /> account to Microsoft Teams.
+9. The next step is to [link](#link-dbt-platform-account-to-teams) your <Constant name="dbt_platform" /> account to Microsoft Teams.
 
 dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenant. This app manages authentication requests and permissions securely.
-    
-image 3 (dbt-cloud-integrations page - see assets toggle)
-    
+
+<Lightbox src="/img/docs/deploy/dbt-cloud-integrations.png" width="100%" title="Example of the dbt-cloud-integration app overview"/>
+
 - The current Entra app permissions are:
 	- `profile`
   - `openid`
@@ -170,18 +170,21 @@ image 3 (dbt-cloud-integrations page - see assets toggle)
   - `Channel.ReadBasic.All`
 
 #### Link dbt platform account to Teams
+
 :::info
 You can link any Teams user account from your tenant, but we recommend creating a dedicated account just for posting dbt notifications.
 During the OAuth process, you’ll need to sign in to a Microsoft account to complete the integration.
-
 - If you’re logged into a single Microsoft account, the integration will complete automatically.
 - If you’re logged into multiple accounts (or none), you’ll be prompted to select or log in to one.
+
+
+<Expandable alt_header="Photo example of the Microsoft account selection popup">
+<Lightbox src="/img/docs/deploy/pick-account.png" width="50%" title="Photo example of the Microsoft account popup"/>
+</Expandable>
 :::
 
-image 4 (pick ms account pop up - see assets toggle)
-
 To link your <Constant name="dbt_platform" /> account to Microsoft Teams:
-1. If you're not already there, go back to the <Constant name="dbt_platform" />, go to the **Account settings** page.
+1. If you're not there already, go back to the <Constant name="dbt_platform" /> -> **Account settings** page.
 2. Select **Integrations**.
 3. Scroll to the **OAuth** section.
 4. Next to **Teams** and click on the **Link** button.
@@ -197,24 +200,24 @@ Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can now 
 :::info
 Currently, notifications can only be sent to Teams channels (standard, shared, or private) that you belong to.
 :::
-    
+
 1. In the <Constant name="dbt_platform" />, click your profile icon and select **Notification settings**.
 2. Select **Teams notifications** in the left sidebar.
 3. From the dropdown, select the **Notification team** that you want to send notifications to.
 4. Select the **Notification channel** you want to send notifications to.
-	- Remember, dbt only sends notifications to Teams channels (standard, shared, or private) that _you_ belong to.
+   - d<Constant name="dbt_platform" /> only sends notifications to Teams channels (standard, shared, or private) that _you_ belong to.
 5. In the dropdown, choose the environment for the jobs you want to receive notifications about. 
 6. Click **Edit** on the top right to configure the Teams job notification settings and customize which job statuses trigger job notifications.
 7. When finished, click **Save**.
 
 Your Teams channel is now set up to receive dbt job notifications!
 
-image 5 (configure-teams-notification - see assets toggle)
-    
+<Lightbox src="/img/docs/deploy/configure-teams-notification.png" width="100%" title="Example of the configure Teams notification page"/>
+
 #### Disable the Teams integration
 
 Disabling and unlinking the Teams integration in the <Constant name="dbt_platform" /> removes it for the entire account. To disable it:
-    
+
 1. In the <Constant name="dbt_platform" />, go to **Account settings**. 
 2. Click on **Integrations** and scroll down to **OAuth**.
 3. On the far right of the **Teams** integration, click the **X** icon.
