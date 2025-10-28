@@ -55,9 +55,7 @@ Usage:
 - Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call.
 - Autocomplete dialect-specific function names.
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/intellisense.mp4" type="video/webm" />
-</video>
+<Lightbox src="/img/docs/extension/vsce-intellisense.gif" width="100%" title="Example of the VS Code extension IntelliSense"/>
 
 ### Instant refactoring
 
