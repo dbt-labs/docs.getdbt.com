@@ -8,7 +8,6 @@ datatype: schema_name
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 [sources](/reference/source-properties):
   - name: <source_name>
@@ -43,7 +42,6 @@ By default, dbt will use the source's `name` parameter as the schema name.
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop

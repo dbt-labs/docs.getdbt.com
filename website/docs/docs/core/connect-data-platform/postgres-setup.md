@@ -99,7 +99,7 @@ If `dbt-postgres` encounters an operational error or timeout when opening a new 
 `psycopg2-binary` is installed by default when installing `dbt-postgres`.
 Installing `psycopg2-binary` uses a pre-built version of `psycopg2` which may not be optimized for your particular machine.
 This is ideal for development and testing workflows where performance is less of a concern and speed and ease of install is more important.
-However, production environments will benefit from a version of `psycopg2` which is built from source for your particular operating system and architecture. In this scenario, speed and ease of install is less important as the on-going usage is the focus.
+However, production environments will benefit from a version of `psycopg2` which is built from source for your particular operating system, and architecture. In this scenario, speed and ease of install is less important as the on-going usage is the focus.
 
 
 To use `psycopg2`:

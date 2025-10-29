@@ -37,7 +37,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -198,7 +197,6 @@ It is possible to extend this context by "getting" them with `dbt.config.get()` 
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -506,7 +504,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -649,7 +646,7 @@ Over the past decade, most people writing [data transformations](https://www.get
 
 A DataFrame is a two-dimensional data structure (rows and columns). It supports convenient methods for transforming that data and creating new columns from calculations performed on existing columns. It also offers convenient ways for previewing data while developing locally or in a notebook.
 
-That's about where the agreement ends. There are numerous frameworks with their own syntaxes and APIs for DataFrames. The [pandas](https://pandas.pydata.org/docs/) library offered one of the original DataFrame APIs, and its syntax is the most common to learn for new data professionals. Most newer DataFrame APIs are compatible with pandas-style syntax, though few can offer perfect interoperability. This is true for BigQuery DataFrames, Snowpark and PySpark, which have their own DataFrame APIs.
+That's about where the agreement ends. There are numerous frameworks with their own syntaxes and APIs for DataFrames. The [pandas](https://pandas.pydata.org/docs/) library offered one of the original DataFrame APIs, and its syntax is the most common to learn for new data professionals. Most newer DataFrame APIs are compatible with pandas-style syntax, though few can offer perfect interoperability. This is true for BigQuery DataFrames, Snowpark, and PySpark, which have their own DataFrame APIs.
 
 When developing a Python model, you will find yourself asking these questions:
 

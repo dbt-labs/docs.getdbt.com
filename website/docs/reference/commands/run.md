@@ -7,19 +7,16 @@ id: "run"
 
 ## Overview
 
-`dbt run` executes compiled SQL model files against the current `target`
-database. dbt connects to the target database and runs the relevant SQL required
-to materialize all data models using the specified <Term id="materialization" /> strategies.
-Models are run in the order defined by the dependency graph generated during
-compilation. Intelligent multi-threading is used to minimize execution time
-without violating dependencies.
+The `dbt run` command only applies to models. It doesn't run tests, snapshots, seeds, or other resource types. To run those commands, use the appropriate dbt commands found in the [dbt commands](/reference/dbt-commands) section — such as `dbt test`, `dbt snapshot`, or `dbt seed`.
 
-Deploying new models frequently involves destroying prior versions of these
-models. In these cases, `dbt run` minimizes the amount of time in which a model
-is unavailable by first building each model with a temporary name, then dropping
-the existing model, then renaming the model to its correct name. The drop and
-rename happen within a single database transaction for database adapters that
-support transactions.
+You can use the `dbt run` command when you want to build or rebuild models in your project.
+
+### How does `dbt run` work?
+
+- `dbt run` executes compiled SQL model files against the current `target` database. 
+- dbt connects to the target database and runs the relevant SQL required to materialize all data models using the specified <Term id="materialization" /> strategies.
+- Models are run in the order defined by the dependency graph generated during compilation. Intelligent multi-threading is used to minimize execution time without violating dependencies.
+- Deploying new models frequently involves destroying prior versions of these models. In these cases, `dbt run` minimizes downtime by first building each model with a temporary name, then dropping and renaming within a single transaction (for adapters that support transactions).
 
 ## Refresh incremental models
 

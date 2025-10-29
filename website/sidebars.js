@@ -10,8 +10,10 @@ const sidebarSettings = {
       type: "category",
       label: "dbt Fusion engine",
       collapsed: true,
-      link: { type: "doc", id: "docs/fusion/about-fusion" },
+      link: { type: "doc", id: "docs/fusion/fusion" },
       items: [
+        "docs/fusion/fusion",
+        "docs/fusion/fusion-availability",
         "docs/fusion/about-fusion",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
@@ -357,6 +359,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
       items: [
         "docs/cloud/about-develop-dbt",
+        "docs/about-dbt-lsp",
         "docs/cloud/about-cloud-develop-defer",
         {
           type: "category",
@@ -1226,6 +1229,7 @@ const sidebarSettings = {
             "reference/resource-configs/plus-prefix",
             "reference/resource-configs/pre-hook-post-hook",
             "reference/resource-configs/schema",
+            "reference/resource-configs/static-analysis",
             "reference/resource-configs/tags",
             "reference/resource-configs/unique_key",
           ],
@@ -1486,6 +1490,7 @@ const sidebarSettings = {
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
                 "reference/global-configs/resource-type",
+                "reference/global-configs/static-analysis-flag",
                 "reference/global-configs/warnings",
               ],
             },

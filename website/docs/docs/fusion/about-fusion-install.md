@@ -6,14 +6,17 @@ id: about-fusion-install
 
 # About Fusion local installation <Lifecycle status="preview" />
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
+import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 
 <FusionLifecycle />
 
-import FusionPrereqs from '/snippets/_fusion-prereqs.md';
-
 <FusionPrereqs />
- 
+
+## Getting started
+
+If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [Fusion availability](/docs/fusion/fusion-availability) page.
+
 <div className="grid--3-col">
 
 <Card
@@ -35,3 +38,5 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
     icon="dbt-bit"/>
 
 </div>
+
+

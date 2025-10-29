@@ -45,7 +45,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yaml
-version: 2
 
 functions:
   - name: [<function-name>]
@@ -108,7 +107,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yaml
-version: 2
 
 functions:
   - name: [<function-name>]
@@ -174,7 +172,6 @@ To apply a configuration to one function only in a properties file, specify the 
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_positive_int
@@ -226,7 +223,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_positive_int

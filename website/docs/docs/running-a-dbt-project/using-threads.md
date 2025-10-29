@@ -35,7 +35,7 @@ In Redshift, the `threads` setting limits the number of queries or statements th
 
 In other warehouses, Fusion dynamically optimizes thread usage based on the DAG and warehouse concurrency properties.
 
-For more information about Fusion's approach to parallelism, refer to [About Fusion](/docs/fusion/about-fusion).
+For more information about Fusion's approach to parallelism, refer to [the dbt Fusion engine](/docs/fusion) page.
 
 </VersionBlock>
 

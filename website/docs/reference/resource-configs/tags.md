@@ -346,7 +346,6 @@ the tags as a top-level key instead.
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: my_exposure

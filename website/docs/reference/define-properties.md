@@ -37,7 +37,7 @@ These properties are:
 - [`deprecation_date`](/reference/resource-properties/deprecation_date)
 - [`description`](/reference/resource-properties/description)
 - [`quote`](/reference/resource-properties/columns#quote)
-- [`source` properties](/reference/source-properties) (for example, `loaded_at_field`, `freshness`)
+- [`source` properties](/reference/source-properties) (for example, `loaded_at_field`)
 - [`exposure` properties](/reference/exposure-properties) (for example, `type`, `maturity`)
   - Note that while most exposure properties must be configured directly in `properties.yml` files, you can set the [`enabled`](/reference/resource-configs/enabled) config at the [project level](/reference/exposure-properties#project-level-configs) in the`dbt_project.yml` file.
 - [`macro` properties](/reference/macro-properties) (for example, `arguments`)

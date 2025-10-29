@@ -34,7 +34,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: MODEL_NAME
@@ -102,7 +101,6 @@ snapshots:
 <File name='snapshots/properties.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -146,7 +144,6 @@ data_tests:
 <File name='tests/properties.yml'>
 
 ```yml
-version: 2
 
 <resource_type>:
   - name: <resource_name>
@@ -192,7 +189,6 @@ select ...
 <File name='analyses/<filename>.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: ANALYSIS_NAME
@@ -220,7 +216,6 @@ metrics:
 <File name='models/metrics.yml'>
 
 ```yaml
-version: 2
 
 metrics:
   - name: [METRIC_NAME]

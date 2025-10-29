@@ -63,7 +63,7 @@ For example, the always-enterprising and fictional account "Jaffle Labs" will cr
 
 To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
 
-1. From **Account settings**, click **+ New Project**.
+1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.
    - Use "Jaffle | Data Analytics" for one project
    - Use "Jaffle | Finance" for the other project
@@ -118,10 +118,7 @@ This upstream project is where you build your core data assets. This project wil
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 
 1. First, navigate to the **Develop** page to verify your setup.
-2. Click **Initialize dbt project** if you’ve started with an empty repo:
-
-<Lightbox src="/img/guides/dbt-mesh/initialize_repo.png" width="40%" title="Initialize repo" />
-
+2. Click **Initialize dbt project** if you’ve started with an empty repo.
 3. Delete the `models/example` folder.  
 4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
 5. In your `dbt_project.yml` file, remove lines 39-42 (the `my_new_project` model reference).
@@ -138,7 +135,6 @@ Now that you've set up the foundational project, let's start building the data a
   <File name='models/staging/sources.yml'>
 
   ```yaml
-  version: 2
 
   sources:
     - name: jaffle_shop
@@ -245,7 +241,6 @@ To make `fct_orders` publicly available:
   <File name='models/core/core.yml'>
 
   ```yaml
-  version: 2
 
   models:
     - name: fct_orders
@@ -301,16 +296,15 @@ Note: By default, model access is set to "protected", which means they can only 
 Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
 
 To run your first deployment <Constant name="cloud" /> job, you will need to create a new <Constant name="cloud" /> job.  
-1. Click **Deploy** and then **Jobs**. 
+1. Go to **Orchestration** > **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
 3. Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="explorer"/>.
 
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt job." />
 
-4. Then, click **Run now** to trigger the job.
-<Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
-
-5. After the run is complete, navigate to <Constant name="explorer"/>. You should now see your lineage, tests, and documentation coming through successfully.
+4. Click **Save**.
+5. Click **Run now** to trigger the job.
+6. After the run is complete, navigate to <Constant name="explorer"/>. You should now see your lineage, tests, and documentation coming through successfully.
 
 For details on how <Constant name="cloud" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/mesh/govern/project-dependencies#staging-with-downstream-dependencies).
 
@@ -319,15 +313,12 @@ For details on how <Constant name="cloud" /> uses metadata from the Staging envi
 In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/mesh/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
 
 1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
-2. Delete the `models/example` folder
-3. Navigate to the dbt_project.yml file and rename the project (line 5) from `my_new_project` to `finance`
+2. Delete the `models/example` folder.
+3. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `finance`.
 4. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-5. In the **File <Constant name="explorer" />**, hover over the project directory, click the **...** and Select **Create file**.
+5. In the **File <Constant name="explorer" />**, hover over the project directory, click the **...** and select **Create file**.
 6. Name the file `dependencies.yml`.
-
-<Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the Studio IDE." />
-
-6. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
+7. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
 
   <File name='dependencies.yml'>
 
@@ -352,7 +343,6 @@ Now that you've set up the foundational project, let's start building the data a
     <File name='models/staging/sources.yml'>
 
     ```yml
-    version: 2
 
     sources:
       - name: stripe
@@ -490,7 +480,6 @@ In this section, you will set up model versions by the Data Analytics team as th
 
 ```yaml
 
-version: 2
 
 models:
   - name: fct_orders
@@ -569,10 +558,10 @@ Before proceeding, make sure you commit and merge your changes in both the “Ja
 
 A member of the Finance team would like to schedule a <Constant name="cloud" /> job for their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
 
-1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** and then **Jobs**. 
-2. Then click **Create job** and then **Deploy job**.
+1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Orchestration** > **Jobs**. 
+2. Click **Create job** and then **Deploy job**.
 3. Add a name for the job, then scroll to the bottom of the **Job completion** section.  
-4. In **Job completion** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
+4. In the **Triggers** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
 <Lightbox src="/img/guides/dbt-mesh/trigger_on_completion.png" title="Trigger job on completion" />
 
 5. Click **Save** and verify the job is set up correctly.

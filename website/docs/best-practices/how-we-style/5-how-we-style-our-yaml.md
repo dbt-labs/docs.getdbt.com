@@ -21,7 +21,7 @@ Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML informa
 ### Example YAML
 
 ```yaml
-version: 2
+
 
 models:
   - name: events

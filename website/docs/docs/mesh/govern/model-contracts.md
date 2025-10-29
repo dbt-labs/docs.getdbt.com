@@ -226,4 +226,4 @@ value="Removing a contracted model by deleting, renaming, or disabling it (dbt v
 value2="versioned models will raise an error. unversioned models will raise a warning."
 />
 
-More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
+More details are available in the [contract reference](/reference/resource-configs/contract#incremental-models-and-on_schema_change).

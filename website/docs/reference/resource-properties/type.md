@@ -9,7 +9,6 @@ id: type
 
 ```yml
 
-version: 2
 
 functions:
   - name: <function name>
@@ -37,7 +36,6 @@ A scalar function returns a single value for each row of input. This is the most
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_positive_int
@@ -65,7 +63,6 @@ Support for aggregate functions is planned for a future release.
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: double_total

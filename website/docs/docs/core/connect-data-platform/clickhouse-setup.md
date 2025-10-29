@@ -37,7 +37,7 @@ clickhouse-service:
       schema: [ default ]  # ClickHouse database for dbt models
 
       # optional
-      host: [ <your-clickhouse-host> ]  # Your clickhouse cluster url e.g., abc123.clickhouse.cloud. Defaults to `localhost`.
+      host: [ <your-clickhouse-host> ]  # Your clickhouse cluster url for example, abc123.clickhouse.cloud. Defaults to `localhost`.
       port: [ 8123 ]  # Defaults to 8123, 8443, 9000, 9440 depending on the secure and driver settings 
       user: [ default ]  # User for all database operations
       password: [ <empty string> ]  # Password for the user

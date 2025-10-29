@@ -9,7 +9,7 @@ pagination_prev: null
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for deploying dbt:
 
-- **<Constant name="cloud" />** runs the <Constant name="fusion_engine" /> or <Constant name="core" /> in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive user interface aids you in setting up the various components. <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring, and alerting. It also offers an integrated development environment (<Constant name="cloud_ide" />) and allows you to develop and run dbt commands from your local command line (CLI) or code editor.
+- **<Constant name="dbt_platform" />** (formerly dbt Cloud) runs the <Constant name="fusion_engine" /> or <Constant name="core" /> in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive user interface aids you in setting up the various components. <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring, and alerting. It also offers an integrated development environment (<Constant name="cloud_ide" />) and allows you to develop and run dbt commands from your local command line (CLI) or code editor.
 
 - **<Constant name="core" />** is an open-source command line tool that you can install locally in your environment, and communication with databases is facilitated through adapters.
 

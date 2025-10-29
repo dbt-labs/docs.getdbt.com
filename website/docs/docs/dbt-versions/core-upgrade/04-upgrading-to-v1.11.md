@@ -55,6 +55,6 @@ These warnings help you proactively identify and update deprecated configuration
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
-* The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
-* Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
+- The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
+- Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 

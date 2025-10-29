@@ -106,6 +106,6 @@ Let's get started with access to a <Constant name="fusion"/> sandbox!
 
 Stop by the **dbt Booth in the Discovery Hall** to learn more about the <Constant name="fusion"/>-powered features mentioned in the keynote, witness the magic firsthand at any of our demo pods, and dive deeper into use cases, success stories, and migration details through ongoing lightning talks.
 
-- Learn more about the <Constant name="fusion_engine"/> in the docs: [About Fusion](https://docs.getdbt.com/docs/fusion/about-fusion)
+- Learn more about the <Constant name="fusion_engine"/> in the docs: [the dbt Fusion engine](/docs/fusion)
 - Continue learning dbt at [learn.getdbt.com](http://learn.getdbt.com)
 - Learn about [Coalesce](https://coalesce.getdbt.com/event/21662b38-2c17-4c10-9dd7-964fd652ab44/summary) &mdash; the premier analytics engineering conference where data leaders and practitioners reimagine tools and reshape the future of data and AI.

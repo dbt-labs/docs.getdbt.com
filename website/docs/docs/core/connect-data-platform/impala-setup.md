@@ -1,6 +1,6 @@
 ---
-title: "Apache Impala setup"
-description: "Read this guide to learn about the Apache Impala warehouse setup in dbt."
+title: "Cloudera Impala setup"
+description: "Read this guide to learn about the Cloudera Impala warehouse setup in dbt."
 id: "impala-setup"
 meta:
   maintained_by: Cloudera
@@ -81,7 +81,7 @@ your_profile_name:
      auth_type: ldap
      use_http_transport: [true / false] # default value: true
      use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
-     username: [username]
+     user: [username]
      password: [password]
      dbname: [db name]  # this should be same as schema name provided below, starting with 1.1.2 this parameter is optional
      schema: [schema name]
@@ -91,7 +91,7 @@ your_profile_name:
 
 </File>
 
-Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If the user is required to execute GRANT statements, see for instance (/reference/resource-configs/grants) or (/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
+Note: When creating workload user in CDP ensure that the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ, and WRITE permissions. If the user is required to execute GRANT statements, see for instance (/reference/resource-configs/grants) or (/reference/project-configs/on-run-start-on-run-end) appropriate GRANT permissions should be configured. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. 
 
 ### Kerberos
 

@@ -19,7 +19,6 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <string> # required
@@ -103,7 +102,6 @@ sources:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop

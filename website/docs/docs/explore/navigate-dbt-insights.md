@@ -110,27 +110,29 @@ View past queries, their statuses (All, Success, Error, or Pending), start time,
 
 ### dbt Copilot
 
-Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the <Constant name="copilot" /> agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="query_page" /> to interact with your data:
+Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="query_page" /> to interact with your data:
 
 <Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="90%" title="dbt Copilot in Insights" />
 
-- **Agent** tab<Lifecycle status='private_beta' /> - Ask questions to the dbt <Constant name="copilot" /> agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. Some sample questions: 
+- **Agent** tab<Lifecycle status='private_beta' /> - Ask questions to the Analyst agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. To request access to the Analyst agent, [join the waitlist](https://www.getdbt.com/product/dbt-agents#dbt-Agents-signup).  
+
+  Some sample questions you can ask the agent: 
 
   - _What region are my sales growing the fastest?_ 
   - _What was the revenue last month?_
   - _How should I optimize my marketing spend next quarter?_
   - _How many customers do I have, broken down by customer type?_
 
-  The dbt <Constant name="copilot" /> agent creates an analysis plan based on your question. The agent:
+  The Analyst agent creates an analysis plan based on your question. The agent:
 
   1. Gets context using your semantic models and metrics. 
   2. Generates SQL queries using your project's definitions.  
   3. Executes the SQL query and returns results with context.
   4. Reviews and summarizes the generated insights and provides a comprehensive answer.
 
-  The <Constant name="copilot" /> agent can loop through these steps multiple times if it hasn't reached a complete answer, allowing for complex, multi-step analysis.⁠
+  The agent can loop through these steps multiple times if it hasn't reached a complete answer, allowing for complex, multi-step analysis.⁠
 
-  For more information, see [Analyze data with the dbt <Constant name="copilot" /> agent](/docs/cloud/use-dbt-copilot#analyze-data-with-the-copilot-agent).
+  For more information, see [Analyze data with the Analyst agent](/docs/cloud/use-dbt-copilot#analyze-data-with-the-analyst-agent).
 
 - **Generate SQL** tab - Build queries in <Constant name="query_page" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/cloud/use-dbt-copilot#build-queries).
 

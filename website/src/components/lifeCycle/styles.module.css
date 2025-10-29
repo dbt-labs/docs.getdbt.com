@@ -1,10 +1,10 @@
 .lifecycle {
     background-color: #d1d5dc; 
     color: #030711; 
-    font-size: 0.8rem; /* Using rem so font size is relative to root */
-    font-weight: 600;  /* Normal font weight */
-    padding: 1px 8px; /* Adjust padding for a more pill-like shape */
-    border-radius: 16px; /* Larger border-radius for rounded edges */
+    font-size: 1rem; /* Using rem so font size is relative to root */
+    font-weight: 500;  /* Normal font weight */
+    padding: 8px 16px; /* Adjust padding for a more pill-like shape */
+    border-radius: 20px; /* Larger border-radius for rounded edges */
     margin-left: 12px; /* Margin to separate from the header text */
     vertical-align: middle; /* Align with the title */
     display: inline-block; /* Use inline-block for better control */
