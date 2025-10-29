@@ -49,27 +49,27 @@ To connect to YDB from dbt, you'll need to add a [profile](/docs/core/connect-da
 <File name='profiles.yml'>
 
 ```yaml
-<profile-name>:
+profile-name:
   target: dev
   outputs:
     dev:
       type: ydb
-      host: [localhost]
-      port: [2136]
-      database: [/local]
-      schema: [<empty string>]
-      secure: [False]
-      root_certificates_path: [<empty string>]
+      host: localhost
+      port: 2136
+      database: /local
+      schema: empty_string
+      secure: False
+      root_certificates_path: empty_string
 
-      # Static Credentials
-      username: [<empty string>]
-      password: [<empty string>]
+      # Static credentials
+      username: empty_string
+      password: empty_string
 
-      # Access Token Credentials
-      token: [<empty string>]
+      # Access token credentials
+      token: empty_string
 
-      # Service Account Credentials
-      service_account_credentials_file: [<empty string>]
+      # Service account credentials
+      service_account_credentials_file: empty_string
 
   ```
 
@@ -82,10 +82,10 @@ To connect to YDB from dbt, you'll need to add a [profile](/docs/core/connect-da
 | host | Yes | | YDB host |
 | port | Yes | | YDB port |
 | database | Yes | | YDB database |
-| schema | No | [<empty string>] | Optional subfolder for DBT models. Use empty string or `/` to use root folder |
-| secure | No | False | If enabled, grpcs protocol will be used |
-| root_certificates_path | No | [<empty string>] | Optional path to root certificates file |
-| username | No | [<empty string>] | YDB username to use Static Credentials |
-| password | No | [<empty string>] | YDB password to use Static Credentials |
-| token | No | [<empty string>] | YDB token to use Access Token Credentials |
-| service_account_credentials_file | No | [<empty string>] | Path to service account credentials file to use Service Account Credentials |
+| schema | No | `empty_string` | Optional subfolder for dbt models. Use empty string or `/` to use root folder |
+| secure | No | False | If enabled, `grpcs` protocol will be used |
+| root_certificates_path | No | `empty_string`| Optional path to root certificates file |
+| username | No | `empty_string` | YDB username to use static Ccredentials |
+| password | No | `empty_string` | YDB password to use static credentials |
+| token | No | `empty_string` | YDB token to use Access Token credentials |
+| service_account_credentials_file | No | `empty_string` | Path to service account credentials file to use service account credentials |
