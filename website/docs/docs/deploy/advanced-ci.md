@@ -72,7 +72,7 @@ import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
 
 <CompareChangesTLDR />
 
-#### How does Advanced CI compare changes in deployment differ from compare changes in development?
+#### Compare changes in deployment and compare changes in development
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 

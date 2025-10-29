@@ -1,4 +1,4 @@
-| Aspect | In development | In Advanced CI (deployment) |
+| Aspect | In development | In deployment (Advanced CI) |
 |---|---|---|
 | Affects | Development for one modified model at a time | Deployment for all modified models in a project |
 | Trigger | On-demand in editor | PR open/update and CI job |
