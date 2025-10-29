@@ -34,7 +34,7 @@ In VS Code:
 4. If the dbt Fusion engine is not already installed on your machine, the extension will prompt you to download and install it. Follow the steps shown in the notification to complete the installation.
     <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install the dbt Fusion engine"/>
 5. Run the VS Code extension [upgrade tool](#upgrade-to-fusion) to ensure your dbt project is Fusion ready and help you fix any errors and deprecations.
-6. You're all set up! See [about the dbt extension](/docs/about-dbt-extension) for more information on how to use the dbt extension.
+6. You're all set up! See [about the dbt extension](/docs/about-dbt-extension) for more information on how to use the dbt extension. To read about the features and functionality, see the [dbt extension features](/docs/dbt-extension-features).
     <Lightbox src="/img/docs/extension/kitchen-sink.png" width="60%" title="Showing lineage and compiled code in the extension"/>
 
 ## Getting started

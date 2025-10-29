@@ -8,7 +8,8 @@ image: /img/docs/dbt-cloud/example-ci-compare-changes-tab.png
 
 # Advanced CI <Lifecycle status="managed,managed_plus" />
 
-[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. 
+By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
 
 :::info How to enable this feature
 
@@ -25,12 +26,14 @@ You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Acco
 
 For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
+You can also compare changes in development. For more details, see [Compare changes in development](#compare-changes-in-development).
+
 dbt reports the comparison differences in:
 
 - **<Constant name="cloud" />** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
 - **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
-<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="55%" title="Example of the Compare tab" />
 
 ### Optimizing comparisons
 
@@ -64,3 +67,13 @@ The compare changes feature uses the same credentials as the CI job, as defined 
 If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
 
 <Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="Example of credentials in the user settings" />
+
+import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
+
+<CompareChangesTLDR />
+
+#### How does Advanced CI compare changes in deployment differ from compare changes in development?
+
+import CompareChangesTable from '/snippets/_compare-changes-table.md';
+
+<CompareChangesTable />

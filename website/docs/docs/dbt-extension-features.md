@@ -22,8 +22,9 @@ The following extension features help you get more done, fast:
 - **[Rich lineage in context](#rich-lineage-in-context):** See lineage at the column or table level as you develop with no context switching or breaking the flow.
 - **[View compiled code](#view-compiled-code):** Get a live view of the SQL code your models will build alongside your dbt code.
 - **[Build flexibly](#build-flexibly):** Use the command palette to build models with complex selectors.
+- **[Compare changes](#compare-changes):**<Lifecycle status="beta" /> Compare changes you make during development by comparing your current working copy against your `manifest.json` (for example, your last production state) — directly in your editor.
  
-### Live error detection
+## Live error detection
 
 Automatically validate your SQL code to detect errors and surface warnings without hitting the warehouse.
 
@@ -39,7 +40,7 @@ Automatically validate your SQL code to detect errors and surface warnings witho
   <source src="/img/docs/extension/live-error-detection.mp4" type="video/webm" />
 </video>
 
-### Lightning-fast parse times
+## Lightning-fast parse times
 
 Parse even the largest projects up to 30x faster than with dbt Core.
 
@@ -47,7 +48,7 @@ Parse even the largest projects up to 30x faster than with dbt Core.
   <source src="/img/docs/extension/zoomzoom.mp4" type="video/webm" />
 </video>
 
-### Powerful IntelliSense
+## Powerful IntelliSense
 
 Autocomplete SQL functions, model names, columns, macros and more.
 
@@ -59,7 +60,7 @@ Usage:
   <source src="/img/docs/extension/intellisense.mp4" type="video/webm" />
 </video>
 
-### Instant refactoring
+## Instant refactoring
 
 Renaming models:
  - Right-click on a file in the file tree and select **Rename**.
@@ -79,7 +80,7 @@ Note: Renaming models and columns is not yet supported for snapshots, or any res
   <source src="/img/docs/extension/refactor.mp4" type="video/webm" />
 </video>
 
-### Go-to-definition and reference
+## Go-to-definition and reference
 
 Jump to the definition of any `ref`, macro, model, or column with a single click. Particularly useful in large projects with many models and macros. Excludes definitions from installed packages.
 
@@ -92,7 +93,7 @@ Usage:
   <source src="/img/docs/extension/go-to-definition.mp4" type="video/webm" />
 </video>
 
-### Hover insights
+## Hover insights
 
 See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
 
@@ -104,7 +105,7 @@ Usage:
   <source src="/img/docs/extension/hover-insights.mp4" type="video/webm" />
 </video>
 
-### Live preview for models and CTEs
+## Live preview for models and CTEs
 
 Preview a CTE’s output, or an entire model, directly from inside your editor for faster validation and debugging.
 
@@ -119,7 +120,7 @@ Usage:
   <source src="/img/docs/extension/preview-cte.mp4" type="video/webm" />
 </video>
 
-### Rich lineage in context
+## Rich lineage in context
 
 See lineage at the column or table level as you develop — no context switching or breaking flow.
 
@@ -141,7 +142,7 @@ View column lineage:
   <source src="/img/docs/extension/lineage.mp4" type="video/webm" />
 </video>
 
-### View compiled code
+## View compiled code
 
 Get a live view of the SQL code your models will build — right alongside your dbt code.
 
@@ -155,7 +156,7 @@ Usage:
   <source src="/img/docs/extension/compiled-code.mp4" type="video/webm" />
 </video>
 
-### Build flexibly
+## Build flexibly
 
 Use the command palette to quickly build models using complex selectors. 
 
@@ -166,3 +167,7 @@ Usage:
 <video width="100%" height="100%" playsinline muted controls>
   <source src="/img/docs/extension/build-flexibly.mp4" type="video/webm" />
 </video>
+
+import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
+
+<CompareChangesTLDR />
