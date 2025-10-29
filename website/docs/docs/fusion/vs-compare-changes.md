@@ -42,14 +42,15 @@ import CompareChangesTable from '/snippets/_compare-changes-table.md';
 To use compare changes in development, follow these steps:
 
 1. In your editor (this could be VS Code or Cursor), open a SQL model file. 
-2. Make some changes to the model, like adding a new column or modifying an existing one like `left_join_customers` to `right_join_customers`.
-3. Use the command palette and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) _or_ click the **Compare** tab in the editor toolbar.
-4. This runs the comparison and the **Compare** tab will display the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
+2. Before changing the model, you need to have successfully built the model using `dbt build`. This is how the comparison is made against the last successful build of the model.
+3. Make some changes to the model, like adding a new column or modifying an existing one like `left_join_customers` to `right_join_customers`.
+4. Use the command palette and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) _or_ click the **Compare** tab in the editor toolbar.
+5. This runs the comparison and the **Compare** tab will display the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
    - **Overview tab**: High-level summary about the changes to the models, such as the number of primary keys that were added or removed, rows modified, and so on. It will also include the relation between models that were added or modified.
    - **Primary keys tab**: Details about the changes to the records.
    - **Modified rows tab**: Details about the modified rows.
    - **Columns tab**: Details about the changes to the columns.
-4. Once you've compared changes, you can see the changes in the **Compare** tab, you can then decide to commit your changes or continue editing.
+6. Once you've compared changes, you can see the changes in the **Compare** tab, you can then decide to commit your changes or continue editing.
 
 <Lightbox src="/img/docs/extension/vs-compare-changes.gif" width="100%" title="Example of the Compare tab" />
 
