@@ -104,7 +104,7 @@ MetricFlow supports different metric types:
 - [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two simple metrics, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics that aggregate data directly from warehouse columns.
+- [Simple](/docs/build/simple) &mdash; Metrics defined as simple aggregations over a particular dataset.
 </VersionBlock> 
 
 ## Use case
@@ -253,7 +253,6 @@ models:
         granularity: day
         dimension:
           type: time
-          name: metric_time
           description: "Date when the order was placed"
           label: "Order Date"
     
@@ -266,7 +265,7 @@ models:
         agg: sum
         expr: order_total
 
-  - name: customers    # The name of the second semantic model
+  - name: customers    # The customers model with semantic layer constructs defined
     semantic_model:
       enabled: true
       name: customers_semantic_model
@@ -461,7 +460,7 @@ models:
           owner: "@data-team"
           description: "A model containing order data. The grain of the table is the order id."
     
-    agg_time_dimension: metric_time # Default aggregation time dimension
+    agg_time_dimension: ordered_at # Default aggregation time dimension
     
     columns:
       # Primary entity - order_id
@@ -480,12 +479,11 @@ models:
           description: "Foreign key linking to customers"
           label: "Customer"
       
-      # Time dimension - metric_time
+      # Time dimension - ordered_at
       - name: ordered_at
         granularity: day
         dimension:
           type: time
-          name: metric_time
           description: "Date when the order was placed"
           label: "Order Date"
       
