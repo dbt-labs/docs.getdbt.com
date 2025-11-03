@@ -14,8 +14,6 @@ The <Constant name="cloud_ide" /> **Status button** (located in the bottom right
 
 Once viewed, make sure you commit and merge your changes in your project.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-ide-dag.png" title="Validate your metrics using the Lineage tab in the IDE." />
-
 ### Cloud CLI users
 
 This section is for <Constant name="cloud_cli" /> users. MetricFlow commands are integrated with <Constant name="cloud" />, which means you can run MetricFlow commands as soon as you install the <Constant name="cloud_cli" />. Your account will automatically manage version control for you.
