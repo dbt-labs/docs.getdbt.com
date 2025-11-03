@@ -265,6 +265,7 @@ Define simple metrics inside the model, and create cross‑model metrics under a
 # define simple metrics where the data lives
 models:
   - name: orders
+    ...
     semantic_model:
       enabled: true
     metrics:
