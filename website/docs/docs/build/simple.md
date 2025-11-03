@@ -52,7 +52,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `filter` | Optional `filter` applied to the metric. | Optional | String |
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `average`, `median`, `count_distinct`, `percentile`, and `sum_boolean`. | Required | String |
 | `expr` | Optional SQL expression to control the aggregation logic. By default, metric `name` is used as the expression of the metric. | Optional | String |
-| `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model. | Optional | String |
+| `agg_time_dimension` | The time dimension used for time-based aggregation. Defaults to the `agg_time_dimension` for the semantic model if not specified. | Optional | String |
 | `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
 | `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics.| Optional | String |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
