@@ -278,7 +278,8 @@ metrics:
     type: ratio
     numerator:
       name: distinct_purchasers
-      filter: | "{{ Dimension('customer__is_frequent_purchaser') }}"
+      filter: | 
+        "{{ Dimension('customer__is_frequent_purchaser') }}"
       alias: frequent_purchasers
     denominator:
       name: distinct_purchasers
