@@ -273,7 +273,7 @@ Time has additional parameters specified under the `type_params` section. When y
 </VersionBlock>
 <VersionBlock firstVersion="2.0">
 
-Time dimensions no longer use `type_params`. Set the column’s granularity on the time column and define the model’s aggregation time with `agg_time_dimension`. A metric can override this with its own `agg_time_dimension`.
+Time dimensions no longer use `type_params`. For dimensions defined on a column entry, add the column’s `granularity` at the column level. For derived dimensions, add `granularity` in the dimension configuration. A semantic model’s default aggregation time dimension is set with the `agg_time_dimension` property at the model's top level. A metric can override this with its own `agg_time_dimension`.
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
 </VersionBlock>
