@@ -269,7 +269,7 @@ exposures:
 
 <TabItem value="semantic models">
 
-Configure `meta` in the your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
+Configure `meta` in your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
 
 <File name='dbt_project.yml'>
@@ -437,7 +437,7 @@ models:
       - name: number_of_people
         type: simple
         description: Total count of people
-        agg: count  | sum | count_distinct
+        agg: count
         expr: people
         config:
           meta:
