@@ -40,8 +40,8 @@ The parameters, description, and type for derived metrics are:
 | `input_metrics` | Defines aliases, filters, or offsets for metrics referenced in the expression. Needed only when you customize those attributes. | Optional | List |
 | `input_metrics::name` | The name of the referenced metric defined elsewhere in the project. | Required when `metric_aliases` provided | String |
 | `input_metrics::alias` | Alternate name you can reference in `expr`. | Optional | String |
-| `metric_aliases::filter` | Filter to apply to the referenced metric. | Optional | String |  
-| `metric_aliases::offset_window` | Offset applied to the referenced metric (for example, `1 week`). Allowed only for derived metrics.  | Optional | String |
+| `input_metrics::filter` | Filter to apply to the referenced metric. | Optional | String |  
+| `input_metrics::offset_window` | Offset applied to the referenced metric (for example, `1 week`). Allowed only for derived metrics.  | Optional | String |
 
 </VersionBlock>
 
@@ -77,7 +77,7 @@ metrics:
     label: my derived metric label # Optional
     type: derived # Required 
     expr: my_simple_metric - my_simple_metric_a_week_ago # Required for derived
-    metric_aliases: # Required for derived if using aliases / filters / offset_window for portions of the expression
+    input_metrics: # Required for derived if using aliases / filters / offset_window for portions of the expression
       - name: my_simple_metric
         alias: my_simple_metric_a_week_ago
         filter: "{{ Dimension('my_primary_entity__my_categorical_dimension_column') }} > 10"
@@ -145,15 +145,15 @@ models:
   - name: fct_orders
     semantic_model:
       enabled: true
-      name: fct_orders_semantic_model
+      name: order
     ... rest of config ...
     metrics:
       - name: order_gross_profit
-        description: Gross profit from each order.
+        description: "Gross profit from each order."
         label: Order gross profit
         type: derived
         expr: revenue - cost
-        metric_aliases:
+        input_metrics:
           - name: order_total
             alias: revenue
           - name: order_cost
@@ -163,7 +163,7 @@ models:
         description: "The gross profit for each food order."
         type: derived
         expr: revenue - cost
-        metric_aliases:
+        input_metrics:
           - name: order_total
             alias: revenue
             filter: |
@@ -177,7 +177,7 @@ models:
         label: Order total growth % M/M
         type: derived
         expr: (order_total - order_total_prev_month) * 100 / order_total_prev_month
-        metric_aliases:
+        input_metrics:
           - name: order_total
           - name: order_total
             alias: order_total_prev_month
@@ -278,8 +278,8 @@ models:
         description: Difference between bookings now and 7 days ago
         type: derived
         label: d7 bookings change
-        expr: bookings - bookings_7_days_ago
-        metric_aliases:
+        expr: current_bookings - bookings_7_days_ago
+        input_metrics:
           - name: bookings
             alias: current_bookings
           - name: bookings
