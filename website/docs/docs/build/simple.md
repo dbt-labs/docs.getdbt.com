@@ -47,7 +47,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `name` | The name of the metric. | Required | String |
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
-| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
 | `name` | The metric you're referencing. | Required | String |
 | `alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the metric. | Optional | String |
 | `filter` | Optional `filter` applied to the metric. | Optional | String |
