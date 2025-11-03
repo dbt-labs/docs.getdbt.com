@@ -6,7 +6,6 @@ sidebar_label: Metrics YAML spec in Fusion
 tags: [Metrics, Semantic Layer, Fusion]
 ---
 
-The legacy MetricFlow YAML specification is often described as complex and disconnected from the model-centric configuration experience in dbt. 
 
 The new Semantic Layer specification in the <Constant name="fusion_engine" /> creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to direct keys. 
 
