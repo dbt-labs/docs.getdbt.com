@@ -13,6 +13,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | [Impala](/docs/core/connect-data-platform/impala-setup) | [Infer](/docs/core/connect-data-platform/infer-setup) | [iomete](/docs/core/connect-data-platform/iomete-setup) |
 | [MindsDB](/docs/core/connect-data-platform/mindsdb-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup) | [RisingWave](/docs/core/connect-data-platform/risingwave-setup) |
 | [Rockset](/docs/core/connect-data-platform/rockset-setup) | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)| [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup) |
-| [SQLite](/docs/core/connect-data-platform/sqlite-setup) | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup)| 
+| [SQLite](/docs/core/connect-data-platform/sqlite-setup) | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup)|
 | [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) | [Upsolver](/docs/core/connect-data-platform/upsolver-setup) | [Vertica](/docs/core/connect-data-platform/vertica-setup) |
 |  [Watsonx-Presto](/docs/core/connect-data-platform/watsonx-presto-setup) | [IBM watsonx.data - Spark](/docs/core/connect-data-platform/watsonx-spark-setup) | [Yellowbrick](/docs/core/connect-data-platform/yellowbrick-setup) |
+| [YDB](/docs/core/connect-data-platform/ydb-setup) |

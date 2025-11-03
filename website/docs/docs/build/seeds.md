@@ -29,7 +29,7 @@ personal identifiable information (PII) and passwords.
 
 ## Example
 To load a seed file in your dbt project:
-1. Add the file to your `seeds` directory, with a `.csv` file extension, e.g. `seeds/country_codes.csv`
+1. Add the file to your `seeds` directory, with a `.csv` file extension, for example, `seeds/country_codes.csv`
 
 <File name='seeds/country_codes.csv'>
 

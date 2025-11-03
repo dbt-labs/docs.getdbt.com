@@ -4,24 +4,7 @@ description: "Read this guide to understand ClickHouse configurations in dbt."
 id: "clickhouse-configs"
 ---
 
-## Models
-
-| Type                        | Supported? | Details                                                                                                                          |
-|-----------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------|
-| view materialization        | YES        | Creates a [view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/).                                            |
-| table materialization       | YES        | Creates a [table](https://clickhouse.com/docs/en/operations/system-tables/tables/). See below for the list of supported engines. |
-| incremental materialization | YES        | Creates a table if it doesn't exist, and then writes only updates to it.                                                         |
-| ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to dbt and does not create any database objects            |
-
-## Experimental models
-The following are [experimental features](https://clickhouse.com/docs/en/beta-and-experimental-features) in Clickhouse:
-
-| Type                                    | Supported?        | Details                                                                                                                                                                                                                                         |
-|-----------------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Materialized View materialization       | YES, Experimental | Creates a [materialized view](https://clickhouse.com/docs/en/materialized-view).                                                                                                                                                                |
-| Distributed table materialization       | YES, Experimental | Creates a [distributed table](https://clickhouse.com/docs/en/engines/table-engines/special/distributed).                                                                                                                                        |
-| Distributed incremental materialization | YES, Experimental | Incremental model based on the same idea as distributed table. Note that not all strategies are supported, visit [this](https://github.com/ClickHouse/dbt-clickhouse?tab=readme-ov-file#distributed-incremental-materialization) for more info. |
-| Dictionary materialization              | YES, Experimental | Creates a [dictionary](https://clickhouse.com/docs/en/engines/table-engines/special/dictionary).                                                                                                                                                |
+## ClickHouse configurations
 
 ### View materialization
 
@@ -116,6 +99,8 @@ models:
 | `order_by`     | A tuple of column names or arbitrary expressions. This allows you to create a small sparse index that helps find data faster.                        | Optional (default: `tuple()`)     |
 | `partition_by` | A partition is a logical combination of records in a table by a specified criterion. The partition key can be any expression from the table columns. | Optional                          |
 
+For the complete list of configuration options, see the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt).
+
 ### Incremental materialization
 
 Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result
@@ -181,6 +166,8 @@ models:
 | `incremental_strategy`   | The strategy to use for incremental materialization.  `delete+insert`, `append` and `insert_overwrite` (experimental) are supported.  For additional details on strategies, see [here](https://github.com/ClickHouse/dbt-clickhouse#incremental-model-strategies) | Optional (default: 'default')                                                        |
 | `incremental_predicates` | Incremental predicate clause to be applied to `delete+insert` materializations                                                                                                                                                                                    | Optional                                                                             |
 
+For the complete list of configuration options, see the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt).
+
 ## Snapshot
 
 dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time
@@ -209,44 +196,7 @@ supported by the ClickHouse connector and is configured using the following synt
 
 For more information on configuration, check out the [snapshot configs](/reference/snapshot-configs) reference page.
 
-## Supported table engines
+## Learn more
 
-| Type                   | Details                                                                                   |
-|------------------------|-------------------------------------------------------------------------------------------|
-| MergeTree (default)    | https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree/.         |
-| HDFS                   | https://clickhouse.com/docs/en/engines/table-engines/integrations/hdfs                    |
-| MaterializedPostgreSQL | https://clickhouse.com/docs/en/engines/table-engines/integrations/materialized-postgresql |
-| S3                     | https://clickhouse.com/docs/en/engines/table-engines/integrations/s3                      |
-| EmbeddedRocksDB        | https://clickhouse.com/docs/en/engines/table-engines/integrations/embedded-rocksdb        |
-| Hive                   | https://clickhouse.com/docs/en/engines/table-engines/integrations/hive                    |
+The `dbt-clickhouse` adapter supports most dbt-native features like tests, snapshots, helper macros, and more. For a complete overview of supported features and best practices, see the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt).
 
-## Experimental supported table engines
-
-| Type              | Details                                                                   |
-|-------------------|---------------------------------------------------------------------------|
-| Distributed Table | https://clickhouse.com/docs/en/engines/table-engines/special/distributed. |
-| Dictionary        | https://clickhouse.com/docs/en/engines/table-engines/special/dictionary   |
-
-If you encounter issues connecting to ClickHouse from dbt with one of the above engines, please report an
-issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
-
-## Cross database macro support
-
-dbt-clickhouse supports most of the cross database macros now included in <Constant name="core" />, with the following exceptions:
-
-* The `split_part` SQL function is implemented in ClickHouse using the splitByChar function. This function requires
-  using a constant string for the "split" delimiter, so the `delimeter` parameter used for this macro will be
-  interpreted as a string, not a column name
-* Similarly, the `replace` SQL function in ClickHouse requires constant strings for the `old_chars` and `new_chars`
-  parameters, so those parameters will be interpreted as strings rather than column names when invoking this macro.
-
-## Setting `quote_columns`
-
-To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](/reference/resource-configs/quote_columns) for more information.
-
-```yaml
-seeds:
-  +quote_columns: false  #or `true` if you have CSV column headers with spaces
-```
-
- 

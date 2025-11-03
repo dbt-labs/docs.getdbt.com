@@ -106,20 +106,6 @@ To use key pair authentication, specify the `private_key_path` in your configura
 
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
-:::important Private keys in the dbt Fusion engine
-If you're using a 3DES-encrypted, headerless PEM body, you should either:
-- (Recommended) Re-export your existing key using a modern algorithm such as AES-256 encryption.
-- Add the `BEGIN` header and `END` footer to your PEM body. For example:
-
-  ```
-  -----BEGIN ENCRYPTED PRIVATE KEY-----
-  < encrypted private key contents here - line 1 >
-  < encrypted private key contents here - line 2 >
-  < ... >
-  -----END ENCRYPTED PRIVATE KEY-----
-  ```
-:::
-
 <VersionBlock firstVersion="1.9">
 
 <File name='~/.dbt/profiles.yml'>
@@ -135,6 +121,7 @@ my-snowflake-db:
       role: [user role]
 
       # Keypair config
+      # For dbt Fusion engine, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
       private_key_path: [path/to/private.key]
       # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
@@ -155,6 +142,29 @@ my-snowflake-db:
 ```
 
 </File>
+
+#### dbt Fusion engine key formats
+
+Fusion requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Using older key formats may cause authentication failures.
+
+If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
+
+- (Recommended fix) Re-export your key with modern encryption:
+
+  ```bash
+  # Convert to PKCS#8 with AES-256 encryption
+  openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 aes-256-cbc -inform PEM -out rsa_key.p8
+
+  ```
+
+- (Temporary workaround) Add the `BEGIN` header and `END` footer to your PEM body:
+
+  ```bash
+  -----BEGIN ENCRYPTED PRIVATE KEY-----
+  < your existing encrypted private key contents >
+  -----END ENCRYPTED PRIVATE KEY-----
+  ```
+
 
 ### SSO authentication
 

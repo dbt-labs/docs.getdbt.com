@@ -84,7 +84,6 @@ snapshots:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -204,7 +203,6 @@ sources:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: [<source-name>]
@@ -237,7 +235,6 @@ metrics:
 <File name='models/metrics.yml'>
 
 ```yaml
-version: 2
 
 metrics:
   - name: [<metric-name>]
@@ -264,7 +261,6 @@ exposures:
 <File name='models/exposures.yml'>
 
 ```yaml
-version: 2
 
 exposures:
   - name: [<exposure-name>]

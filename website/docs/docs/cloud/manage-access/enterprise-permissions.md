@@ -111,6 +111,12 @@ Notable features:
 - Can access <Constant name="explorer" />.
 
 </Expandable>
+<Expandable alt_header="Fusion admin">
+This permission set is used exclusively to enable users to interact with the Fusion upgrade workflows. We recommend limiting this permission to users and projects that are Fusion-ready. 
+
+See the [dbt platform Fusion upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) docs for more information.
+
+</Expandable>
 <Expandable alt_header="Git admin">
 
 Git admins manage Git repository integrations and cloning.
@@ -215,14 +221,15 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Stakeholder and Read-Only">
 
-The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings or billing information. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
 - Read-only access to projects, environments, jobs, and runs.
 - Read-only access to user and group information.
-- No access to the IDE. 
 - Can access <Constant name="explorer" />.
+- No access to the IDE.
+- Limited access to audit log content that excludes sensitive information, such as user settings and account-level changes.
 
 </Expandable>
 <Expandable alt_header="Team admin">
@@ -243,6 +250,7 @@ The Viewer permission set is frequently paired with the [Read-only license-type]
 Notable features:
 - Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
+- Read-only access to audit logs, including sensitive account-level information.
 - No access to the IDE. 
 - Can access <Constant name="explorer" />
 

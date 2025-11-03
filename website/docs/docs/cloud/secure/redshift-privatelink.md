@@ -50,7 +50,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
        - Type: Redshift-managed
        - Redshift cluster name:
        - Redshift cluster AWS account ID:
-       - Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
+       - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
        - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
        ```
 
@@ -60,7 +60,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
        - Type: Redshift-managed - Serverless
        - Redshift workgroup name:
        - Redshift workgroup AWS account ID:
-       - Redshift workgroup AWS Region (e.g., us-east-1, eu-west-2):
+       - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
        - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
        ```
 
@@ -125,7 +125,7 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
 - VPC Endpoint Service Name:
-- Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
+- Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 

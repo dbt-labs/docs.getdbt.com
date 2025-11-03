@@ -13,7 +13,7 @@ The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be 
 <File name='Usage'>
 
 ```text
-dbt --log-format json run
+dbt run --log-format json
 ```
 
 </File>
@@ -45,7 +45,7 @@ When the `LOG_FORMAT` is set explicitly, it will take effect in both the console
 <File name='Usage'>
 
 ```text
-dbt --log-format-file json run
+dbt run --log-format-file json
 ```
 
 </File>
@@ -55,7 +55,7 @@ dbt --log-format-file json run
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-dbt --debug --log-format json run
+dbt run --debug --log-format json
 ```
 
 See [structured logging](/reference/events-logging#structured-logging) for more details.
@@ -75,7 +75,7 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 - Setting the `LOG_LEVEL` to `none` will disable information from being sent to either the console or file logs. 
   
   ```text
-  dbt --log-level none
+  dbt run --log-level none
   ```
 
 - To set the file log level as a different value than the console, use the `--log-level-file` flag. 
@@ -86,7 +86,7 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 
 - To only disable writing to the logs file but keep console logs, set `LOG_LEVEL_FILE` config to none.
   ```text
-  dbt --log-level-file none
+  dbt run --log-level-file none
   ```
 
 ### Debug-level logging
@@ -98,9 +98,7 @@ The `--debug` flag is also available via shorthand as `-d`.
 <File name='Usage'>
 
 ```text
-dbt --debug run
-...
-
+dbt run --debug
 ```
 
 </File>  
@@ -129,8 +127,7 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-dbt --quiet run
-...
+dbt run --quiet
 ```
 
 ### dbt list logging
@@ -141,7 +138,7 @@ In [dbt version 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-
 You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
 
 - `dbt list --log-level warn` (recommended; equivalent to previous default)
-- `dbt --quiet list` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
+- `dbt list --quiet` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
 
 
 ### Logging relational cache events
@@ -166,6 +163,6 @@ config:
 </File>
 
 ```text
-dbt --use-colors-file run
-dbt --no-use-colors-file run
+dbt run --use-colors-file
+dbt run --no-use-colors-file
 ```

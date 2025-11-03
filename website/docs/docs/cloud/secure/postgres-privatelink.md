@@ -77,7 +77,7 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Postgres Interface-type
 - VPC Endpoint Service Name:
-- Postgres server AWS Region (e.g., us-east-1, eu-west-2):
+- Postgres server AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 

@@ -6,7 +6,6 @@ datatype: table_identifier
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -33,7 +32,6 @@ By default, dbt will use the table's `name` parameter as the identifier.
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -61,7 +59,6 @@ select * from jaffle_shop.api_orders
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: ga

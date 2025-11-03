@@ -6,7 +6,6 @@ datatype: access
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -27,7 +26,6 @@ There are multiple approaches to configuring access:
   <File name='models/properties_my_public_model.yml'>
   
   ```yml
-  version: 2
   
   models:
     - name: my_public_model
@@ -43,7 +41,6 @@ There are multiple approaches to configuring access:
   <File name='models/properties_my_public_model.yml'>
   
   ```yml
-  version: 2
   
   models:
     - name: my_public_model

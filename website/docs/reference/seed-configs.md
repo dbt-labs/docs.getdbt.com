@@ -45,14 +45,13 @@ seeds:
 <File name='seeds/properties.yml'>
 
 ```yaml
-version: 2
 
 seeds:
   - name: [<seed-name>]
     config:
       [quote_columns](/reference/resource-configs/quote_columns): true | false
       [column_types](/reference/resource-configs/column_types): {column_name: datatype}
-      [delimiter](/reference/resource-configs/grants): <string>
+      [delimiter](/reference/resource-configs/delimiter): <string>
 
 ```
 
@@ -111,7 +110,6 @@ seeds:
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
 
 seeds:
   - name: [<seed-name>]
@@ -181,7 +179,6 @@ To apply a configuration to one seed only, provide the full resource path (inclu
 <File name='seeds/marketing/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: utm_parameters

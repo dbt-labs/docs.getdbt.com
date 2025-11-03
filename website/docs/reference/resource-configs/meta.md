@@ -38,7 +38,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -76,7 +75,6 @@ sources:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 [sources](/reference/source-properties):
   - name: model_name
@@ -113,7 +111,6 @@ seeds:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -147,7 +144,6 @@ snapshots:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -224,7 +220,6 @@ macros:
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 [macros](/reference/macro-properties):
   - name: macro_name
@@ -254,7 +249,6 @@ exposures:
 <File name='models/exposures.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: exposure_name
@@ -422,7 +416,6 @@ Additionally, indicate the maturity of a model using a `model_maturity:` key.
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: users
@@ -441,7 +434,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: salesforce

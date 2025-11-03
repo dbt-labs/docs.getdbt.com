@@ -88,7 +88,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: access_key # credential type, Optional, default is 'access_key'
       access_key_id: accessKeyId # AccessKeyId
@@ -106,7 +106,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: sts # credential type
       access_key_id: accessKeyId # AccessKeyId
@@ -125,7 +125,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: ram_role_arn # credential type
       access_key_id: accessKeyId # AccessKeyId
@@ -148,7 +148,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: oidc_role_arn # credential type
       access_key_id: accessKeyId # AccessKeyId
@@ -181,7 +181,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: ecs_ram_role # credential type
       role_name: roleName # `role_name` is optional. It will be retrieved automatically if not set. It is highly recommended to set it up to reduce requests.
@@ -199,7 +199,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: credentials_uri # credential type
       credentials_uri: http://local_or_remote_uri/ # Credentials URI
@@ -216,7 +216,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: bearer # credential type
       bearer_token: bearerToken # BearerToken
@@ -231,7 +231,7 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     dev:
       type: maxcompute
       project: dbt-example # Replace this with your project name
-      schema: default # Replace this with schema name, e.g. dbt_bilbo
+      schema: default # Replace this with schema name, for example, dbt_bilbo
       endpoint: http://service.cn-shanghai.maxcompute.aliyun.com/api # Replace this with your maxcompute endpoint
       auth_type: chain
 ```

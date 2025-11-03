@@ -35,7 +35,6 @@ The following example shows how to define groups in a `groups.yml` file.
 <File name='models/groups.yml'>
 
 ```yml
-version: 2
 
 groups:
   - name: finance
@@ -76,7 +75,6 @@ Attach groups to models as you would any other config, in either the `dbt_projec
 <File name='models/marts.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: sales

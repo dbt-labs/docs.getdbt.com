@@ -10,7 +10,7 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 ### Usage
 ```
 dbt ls
-     [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
+     [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,function,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
@@ -34,9 +34,21 @@ Note that the `dbt ls` command does not include models which are disabled or sch
 
 ### Example usage
 
-**Listing models by package**
-```
-$ dbt ls --select snowplow.*
+The following examples show how to use the `dbt ls` command to list resources in your project.
+
+<!-- no toc -->
+  - [Listing models by package](#listing-models-by-package)
+  - [Listing tests by tag name](#listing-tests-by-tag-name)
+  - [Listing schema tests of incremental models](#listing-schema-tests-of-incremental-models)
+  - [Listing JSON output](#listing-json-output)
+  - [Listing JSON output with custom keys](#listing-json-output-with-custom-keys)
+  - [Listing semantic models](#listing-semantic-models)
+  - [Listing functions](#listing-functions)
+
+#### Listing models by package
+
+```bash
+dbt ls --select snowplow.*
 snowplow.snowplow_base_events
 snowplow.snowplow_base_web_page_context
 snowplow.snowplow_id_map
@@ -45,9 +57,10 @@ snowplow.snowplow_sessions
 ...
 ```
 
-**Listing tests by tag name**
-```
-$ dbt ls --select tag:nightly --resource-type test
+#### Listing tests by tag name     
+
+```bash
+dbt ls --select tag:nightly --resource-type test
 my_project.schema_test.not_null_orders_order_id
 my_project.schema_test.unique_orders_order_id
 my_project.schema_test.not_null_products_product_id
@@ -55,42 +68,54 @@ my_project.schema_test.unique_products_product_id
 ...
 ```
 
-**Listing schema tests of incremental models**
-```
-$ dbt ls --select config.materialized:incremental,test_type:schema
+#### Listing schema tests of incremental models
+
+```bash
+dbt ls --select config.materialized:incremental,test_type:schema
 model.my_project.logs_parsed
 model.my_project.events_categorized
 ```
 
-**Listing JSON output**
-```
-$ dbt ls --select snowplow.* --output json
+#### Listing JSON output
+
+```bash
+dbt ls --select snowplow.* --output json
 {"name": "snowplow_events", "resource_type": "model", "package_name": "snowplow",  ...}
 {"name": "snowplow_page_views", "resource_type": "model", "package_name": "snowplow",  ...}
 ...
 ```
 
-**Listing JSON output with custom keys**
+#### Listing JSON output with custom keys    
 
-```
-$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
+```bash
+dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
 ```
 
-**Listing Semantic models**
+#### Listing semantic models
 
 List all resources upstream of your orders semantic model:
-```
-$ dbt ls -s +semantic_model:orders
+```bash
+dbt ls -s +semantic_model:orders
 ```
 
-**Listing file paths**
-```
-$ dbt ls --select snowplow.* --output path
+#### Listing file paths
+```bash
+dbt ls --select snowplow.* --output path
 models/base/snowplow_base_events.sql
 models/base/snowplow_base_web_page_context.sql
 models/identification/snowplow_id_map.sql
 ...
+```
+
+#### Listing functions
+
+List all functions in your project:
+
+```bash
+dbt list --select "resource_type:function" # or dbt ls --resource-type function
+jaffle_shop.area_of_circle
+jaffle_shop.whoami
 ```

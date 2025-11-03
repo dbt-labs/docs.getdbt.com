@@ -9,7 +9,6 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   # Model name must match the filename of a model -- including case sensitivity

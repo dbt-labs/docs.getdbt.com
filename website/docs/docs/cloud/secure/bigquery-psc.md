@@ -16,7 +16,7 @@ The following steps walk you through the setup of a GCP BigQuery [Private Servic
 
 <CloudProviders type='BigQuery' />
 
-## Configure GCP Private Service Connect
+## Enabling dbt for GCP Private Service Connect
 
 To enable dbt to privately connect to your BigQuery project via PSC, the regional PSC endpoint needs be enabled for your dbt account. Using the following template, submit a request to [dbt Support](/docs/dbt-support#dbt-cloud-support):
 
@@ -31,6 +31,9 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
+## (Optional) Generate Bigquery Credentials
+You may already have credentials set up for your datasets. If not, you can follow the steps in our [BigQuery quickstart guide](/guides/bigquery?step=4) to generate credentials. 
+
 ## Create the connection in dbt
 
 Once the dbt Support team completes the configuration, you can start creating new connections using PSC: 
@@ -39,5 +42,5 @@ Once the dbt Support team completes the configuration, you can start creating ne
 2. In the **Connections** page, select **BigQuery**. Click **Edit**.
 3. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 
 4. Select the private endpoint from the dropdown (this will automatically populate the API endpoint field).
-5. Configure any remaining data platform details.
+5. Input any remaining data platform details, including the BigQuery credentials you might have created in previous steps.
 6. Save the connection and test in either a project job or Studio session.

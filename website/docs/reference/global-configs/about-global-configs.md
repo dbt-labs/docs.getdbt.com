@@ -34,12 +34,17 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 
 ## Available flags
 
-| Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in <Constant name="cloud_cli" />? |
+| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in <Constant name="cloud_cli" />? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
 | [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
+| [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | boolean | True | ❌ | `DBT_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only, --no-clean-project-files-only` | ❌ |
 | [debug](/reference/global-configs/logs#debug-level-logging) | boolean | False | ✅ | `DBT_DEBUG` | `--debug`, `--no-debug` | ✅ |
-| [defer](/reference/node-selection/defer) | boolean | False | ❌ | `DBT_DEFER` | `--defer`, `--no-defer` | ✅ (enabled by default) |
+| [defer](/reference/node-selection/defer) | boolean | False | ❌ | `DBT_DEFER` | `--defer`, `--no-defer` | ✅ (default) |
 | [defer_state](/reference/node-selection/defer) | path | None | ❌ | `DBT_DEFER_STATE` | `--defer-state` | ❌ |
+| [favor_state](/reference/node-selection/defer#favor-state) | boolean | False | ❌ | `DBT_FAVOR_STATE` | `--favor-state`, `--no-favor-state` | ✅ |
+| [empty](/docs/build/empty-flag) | boolean | False | ❌ | `DBT_EMPTY` | `--empty`, `--no-empty` | ✅  |
+| [event_time_start](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | datetime | None | ❌ | `DBT_EVENT_TIME_START` | `--event-time-start` | ✅ |
+| [event_time_end](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | datetime | None | ❌ | `DBT_EVENT_TIME_END` | `--event-time-end` | ✅ |
 | [fail_fast](/reference/global-configs/failing-fast) | boolean | False | ✅ | `DBT_FAIL_FAST` | `--fail-fast`, `-x`, `--no-fail-fast` | ✅ |
 | [full_refresh](/reference/resource-configs/full_refresh) | boolean | False | ✅ (as resource config) | `DBT_FULL_REFRESH` | `--full-refresh`, `--no-full-refresh` | ✅ |
 | [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | enum | eager | ✅ | `DBT_INDIRECT_SELECTION` | `--indirect-selection` | ❌ |
@@ -52,13 +57,14 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_LOG_PATH` | `--log-path` | ❌ |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | boolean | True | ✅ | `DBT_PARTIAL_PARSE` | `--partial-parse`, `--no-partial-parse` | ✅ |
 | [populate_cache](/reference/global-configs/cache) | boolean | True | ✅ | `DBT_POPULATE_CACHE` | `--populate-cache`, `--no-populate-cache` | ✅ |
-| [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_PRINT` | `--print` | ❌ |
+| [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_PRINT` | `--print`, `--no-print` | ❌ |
 | [printer_width](/reference/global-configs/print-output#printer-width) | int | 80 | ✅ | `DBT_PRINTER_WIDTH` | `--printer-width` | ❌ |
 | [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ✅ (as top-level key) | `DBT_PROFILE`  | [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) | ❌ |
 | [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
 | [project_dir](/reference/dbt_project.yml) | path |  | ❌ | `DBT_PROJECT_DIR` | `--project-dir` | ❌ |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | boolean | False | ❌ | `DBT_QUIET` | `--quiet` | ✅ |
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | string | None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` | ✅ |
+| [sample](/docs/build/sample-flag) | string | None | ❌ | `DBT_SAMPLE` | `--sample` | ✅ |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | boolean | True | ✅ | `DBT_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats`, `--no-send-anonymous-usage-stats` | ❌ |
 | [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | boolean | True | ✅ | ❌ | ❌ | ❌ |
 | [state](/reference/node-selection/defer) | path | none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state`, `--defer-state` | ❌ |

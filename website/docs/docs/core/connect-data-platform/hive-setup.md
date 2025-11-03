@@ -1,6 +1,6 @@
 ---
-title: "Apache Hive setup"
-description: "Read this guide to learn about the Apache Hive warehouse setup in dbt."
+title: "Cloudera Hive setup"
+description: "Read this guide to learn about the Cloudera Hive warehouse setup in dbt."
 id: "hive-setup"
 meta:
   maintained_by: Cloudera
@@ -78,14 +78,14 @@ your_profile_name:
      auth_type: ldap
      use_http_transport: BOOLEAN # default value: true
      use_ssl: BOOLEAN # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
-     username: USERNAME
+     user: USERNAME
      password: PASSWORD
      schema: SCHEMA_NAME
 ```
 
 </File>
 
-Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-end).
+Note: When creating workload user in CDP, make sure the user has CREATE, SELECT, ALTER, INSERT, UPDATE, DROP, INDEX, READ, and WRITE permissions. If you need the user to execute GRANT statements, you should also configure the appropriate GRANT permissions for them. When using Apache Ranger, permissions for allowing GRANT are typically set using "Delegate Admin" option. For more information, see [`grants`](/reference/resource-configs/grants) and [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-end).
 
 ### Kerberos
 
@@ -124,7 +124,7 @@ By default, the adapter will collect instrumentation events to help improve func
 
 ## Installation and Distribution
 
-dbt's adapter for Apache Hive is managed in its own repository, [dbt-hive](https://github.com/cloudera/dbt-hive). To use it, 
+dbt's adapter for Cloudera Hive is managed in its own repository, [dbt-hive](https://github.com/cloudera/dbt-hive). To use it, 
 you must install the `dbt-hive` plugin.
 
 ### Using pip

@@ -203,7 +203,6 @@ snapshots:
 <File name='snapshots/properties.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: [<snapshot-name>]
@@ -323,7 +322,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     <File name='dbt_project.yml'>
 
     ```yml
-    version: 2
 
     snapshots:
       - name: orders_snapshot

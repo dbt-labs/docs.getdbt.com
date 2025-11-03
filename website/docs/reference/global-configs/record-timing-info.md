@@ -8,7 +8,7 @@ The `-r` or `--record-timing-info` flag saves performance profiling information 
 <File name='Usage'>
 
 ```text
-$ dbt -r timing.txt run
+$ dbt run -r timing.txt
 ...
 
 $ snakeviz timing.txt

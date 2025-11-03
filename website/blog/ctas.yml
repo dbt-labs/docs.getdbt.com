@@ -51,3 +51,8 @@
   button_text: Install free extension
   icon: vsce
   url: /docs/install-dbt-extension
+- name: fusion_engine
+  header: Live virtual event 
+  subheader: Experience the dbt Fusion engine with Tristan Handy and Elias DeFaria on October 28th
+  button_text: Save your seat
+  url: https://www.getdbt.com/resources/webinars/speed-simplicity-cost-savings-experience-the-dbt-fusion-engine

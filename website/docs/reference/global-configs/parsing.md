@@ -22,7 +22,7 @@ flags:
 <File name='Usage'>
 
 ```text
-dbt --no-partial-parse run
+dbt run --no-partial-parse
 ```
 
 </File>

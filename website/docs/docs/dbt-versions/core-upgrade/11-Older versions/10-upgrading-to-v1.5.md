@@ -34,7 +34,7 @@ Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated fo
 
 The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
 - `dbt list --log-level warn` (recommended; equivalent to previous default)
-- `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and `list` output)
+- `dbt list --quiet` (suppresses all logging less than ERROR level, except for "printed" messages and `list` output)
 
 The following env vars have been renamed, for consistency with the convention followed by all other parameters:
 - `DBT_DEFER_TO_STATE` → `DBT_DEFER`

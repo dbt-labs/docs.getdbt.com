@@ -5,7 +5,7 @@ description: "Learn about the dbt MCP server"
 id: "about-mcp"
 ---
 
-# About dbt Model Context Protocol (MCP) <Lifecycle status="beta" />
+# About dbt Model Context Protocol (MCP)
 
 As AI becomes more deeply integrated into data workflows, dbt users need a seamless way to access and integrate dbt's structured metadata and execution context effectively. This page provides an overview of dbt's MCP Server, which exposes this context, supporting use cases such as conversational access to data, agent-driven automation of dbt workflows, and AI-assisted development.
 
@@ -26,14 +26,13 @@ There are two ways to access the dbt-mcp server: locally hosted or remotely host
 
 You can install dbt MCP locally or remotely:
 
-- [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp)
+- [Local MCP server setup guide](/docs/dbt-ai/setup-local-mcp) 
 - [Remote MCP server setup guide](/docs/dbt-ai/setup-remote-mcp)
 
 ## Available Tools
 
 ### Supported
-The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery.
-Here are the categories of tools supported based on what form of the MCP Server you connect to as well as detailed information on exact commands or queries available to the LLM.
+The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
 | Tools | Local | Remote |
 | --- | --- | --- |
@@ -42,6 +41,7 @@ Here are the categories of tools supported based on what form of the MCP Server 
 | SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
 | Administrative API | ✅ | ❌ |
+| Fusion Tools | ✅ | ✅ |
 | Disable tools | ✅ | ✅ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
@@ -80,6 +80,7 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
 - `get_model_health`: Gets health signals for a specific model
+- `get_all_sources`: Gets all source tables with metadata and freshness information
 - `get_exposures`: Gets all exposures
 - `get_exposure_details`: Gets details for a specific exposure or a list of exposures
 
@@ -97,6 +98,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `retry_job_run`: Retry a failed job run to attempt execution again
 - `list_job_run_artifacts`: List all available artifacts for a job run (manifest.json, catalog.json, logs, etc.)
 - `get_job_run_artifact`: Download specific artifact files from job runs for analysis or integration
+- `get_job_run_error`: Retrieves error details for failed job runs to help troubleshoot errors
 
 ### SQL
 ⚠️ The SQL tools access the dbt platform endpoints. While MCP usage of the tools doesn't consume dbt Copilot credits, access to the tools is impacted by dbt Copilot credit overages from direct usage of Copilot in dbt.
@@ -104,6 +106,29 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `text_to_sql`: Generate SQL from natural language requests
 - `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
 
+### Codegen tools
+
+These tools help automate boilerplate code generation for dbt project files. To use them, install the [dbt-codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/) in your dbt project. These tools are disabled by default. To enable them, set the `DISABLE_DBT_CODEGEN` environment variable to `false`.
+
+- `generate_source`: Creates source YAML definitions from database schemas.
+- `generate_model_yaml`: Generates documentation YAML for existing dbt models, including column names, data types, and description placeholders.
+- `generate_staging_model`: Creates staging SQL models from sources to transform raw source data into clean staging models.
+
+### Fusion tools (Remote)
+
+A set of tools that leverage the <Constant name="fusion" /> engine for advanced SQL compilation and column-level lineage analysis.
+
+- `compile_sql`: Compiles a SQL statement in the context of the current project and environment.
+- `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
+
+import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
+
+<MCPCreditUsage />
+
+### Fusion tools (local)
+A set of tools that leverage the <Constant name="fusion" /> engine through a locally running <Constant name="fusion" /> Language Server Protocol (LSP) in VS Code or Cursor with the dbt VS Code extension.
+
+- `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
 
 ## MCP integrations
 
@@ -119,4 +144,4 @@ We have also created integration guides for the following clients:
 - Some MCP clients may be unable to find `uvx` from the JSON config. This will result in error messages like `Could not connect to MCP server dbt-mcp`. If this happens, try finding the full path to `uvx` with `which uvx` on Unix systems and placing this full path in the JSON. For instance: `"command": "/the/full/path/to/uvx"`.
 
 ## Resources
-- Refer to our blog on [Introducing the dbt MCP Server](/blog/introducing-dbt-mcp-server#getting-started) for more information.
+- For more information, refer to our blog on [Introducing the dbt MCP Server](/blog/introducing-dbt-mcp-server#getting-started).

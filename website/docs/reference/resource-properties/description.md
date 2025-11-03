@@ -22,7 +22,6 @@ description: "This guide explains how to use the description key to add YAML des
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -43,7 +42,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: source_name
@@ -68,7 +66,6 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -89,7 +86,6 @@ seeds:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -110,7 +106,6 @@ snapshots:
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -131,7 +126,6 @@ analyses:
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: macro_name
@@ -490,7 +484,6 @@ This example shows a singular data test that checks to ensure all values in the 
 <File name='tests/<filename>.yml'>
 
 ```yaml
-version: 2
 data_tests:
   - name: assert_total_payment_amount_is_positive
     description: >

@@ -253,7 +253,6 @@ Here's an example of a documented macro:
 <File name='macros/filename.yml'>
 
 ```yaml
-version: 2
 
 macros:
   - name: <macro name>
