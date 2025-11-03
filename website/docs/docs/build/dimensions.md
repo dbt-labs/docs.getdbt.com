@@ -156,7 +156,7 @@ models:
 
 ## `derived_semantics` in `dimensions`
 
-Use `derived_semantics` when you need an entity that is not a direct 1:1 mapping to a single physical column. The `expr` field is required when using `derived_semantics`.
+Use the `derived_semantics` key in the model YAML entry when you need to derive a dimension definition that is not a direct 1:1 mapping to a single physical column. The `expr` field is required when using `derived_semantics`.
 
 ```yaml
 derived_semantics: 
