@@ -196,7 +196,6 @@ metrics:
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
-# Top level metrics key is for metrics excluding simple metrics
 metrics:
   - name: cumulative_order_total
     label: Cumulative order total (All-Time)    
