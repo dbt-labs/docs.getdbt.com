@@ -203,7 +203,7 @@ models:
         type: conversion
         label: Visit to buy conversion rate (7-day window)
         entity: user
-        calculation: conversion_rat
+        calculation: conversion_rate
         base_metric:
           name: visits
           filter: {{ Dimension('visits__referrer_id') }} = 'facebook'

@@ -44,7 +44,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `input_metric::alias`     | The alias to apply to the metric. | Optional  | String |
 | `join_to_timespine` | Boolean indicating if the aggregated metric should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  | Boolean |
 | `window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
-| `grain_to_date`   | Sets the accumulation grain, such as `hour`, `day`, `week`, `month`, `year`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
+| `grain_to_date`   | Sets the accumulation grain, such as `hour`, `day`, `week`, `month`, `year`, restarting accumulation at the beginning of each specified grain period. For example, selecting `month` will aggregate the `month to date` aggregation of the metric. Cannot be used with `window`. | Optional  | String |
 | `period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
 
 </VersionBlock>
@@ -130,7 +130,7 @@ metrics:
     # grain_to_date: hour # hour | day | week | month | year | ...
     input_metric: # required, must refer to metric name or metric dict
       name: my_metric_name_from_another_semantic_model
-      filter: my_filter
+      filter: "{{ Dimension('entity__dimension_name') }} > 10"
       alias: my_metric_name_a_week_ago_in_another_semantic_model
 ```
 
@@ -163,7 +163,6 @@ The following example shows how to define cumulative metrics in a YAML file:
 <File name='models/marts/fct_orders.yml'>
 
 ```yaml
-# Top level metrics key is for metrics excluding simple metrics
 metrics:
   - name: cumulative_order_total
     label: "Cumulative order total (All-Time)"    
@@ -364,7 +363,7 @@ If a window option is specified, MetricFlow applies a sliding window to the unde
 
 Suppose the underlying metrics, `customers`, is configured to count the unique customers making orders at the Jaffle shop:
 
-<File name='models/marts/fct_orders.yml'>
+<File name='models/marts/customers.yml'>
 
 ```yaml
 models:
@@ -386,7 +385,7 @@ models:
 We can write a cumulative metric `weekly_customers` as such:
 
 
-<File name='models/marts/fct_orders.yml'>
+<File name='models/marts/customers.yml'>
 
 ``` yaml
 metrics:
