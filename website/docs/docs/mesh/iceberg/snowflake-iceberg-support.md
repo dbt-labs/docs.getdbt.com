@@ -396,7 +396,7 @@ config(
     },
 )
 ```
-This configuration results in: base_location = '{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar'
+This configuration results in: `base_location` = `{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar`
 :::
 
 </VersionBlock>
