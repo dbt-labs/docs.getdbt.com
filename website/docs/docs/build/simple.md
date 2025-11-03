@@ -12,7 +12,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-Simple metrics are direct aggregations over columns in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
+Simple metrics are direct aggregations over datasets in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
 </VersionBlock>
 
 The parameters, description, and type for simple metrics are:
