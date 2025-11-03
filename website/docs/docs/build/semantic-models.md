@@ -113,7 +113,7 @@ models:
       name: the_name_of_the_semantic_model # Optional: semantic model name, defaults to model name
       description: same as always # Optional
     
-    agg_time_dimension: dimension_name # Required if the model contains simple metrics
+    agg_time_dimension: dimension_name # Required 
 
     # Entities, dimensions defined at column level
     columns:
