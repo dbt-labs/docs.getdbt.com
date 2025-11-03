@@ -148,12 +148,11 @@ To fill null values for derived and ratio metrics, you can link them with a time
 
 For example, the following structure leaves nulls in the final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
 
-| metric_time | bookings | leads | leads_to_website_visit |
+| metric_time | website_visits | leads | leads_to_website_visit |
 | --- | --- | --- | --- |
 | 2024-01-01 | 50 | 5 | .1 |
 | 2024-01-02 | 37 | 0 | null |
 | 2024-01-03 | 79 | 8 | .1 |
-
 
 To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would join the `leads` metric to a time spine model to ensure a value for each day. This can be done by adding `join_to_timespine` to the <VersionBlock lastVersion="1.99">`measure` parameter</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> in the `leads` metric configuration:
 
