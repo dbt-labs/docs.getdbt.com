@@ -72,9 +72,9 @@ models:
 
       # time dimension
       - name: ordered_at
+        granularity: day
         dimension:
           type: time
-        granularity: day
 
       # categorical dimension
       - name: order_status
