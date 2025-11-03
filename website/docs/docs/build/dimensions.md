@@ -131,8 +131,6 @@ models:
 
     agg_time_dimension: order_date
 
-    # Underlying dbt model reference (kept from your input)
-    model:  ref('fact_transactions') 
 
     columns:
       # --- entities ---
