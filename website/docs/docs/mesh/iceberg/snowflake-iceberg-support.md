@@ -395,7 +395,6 @@ config(
       'base_location_root': 'bar',
     },
 )
--- base_location = '{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar
 ```
 This configuration results in: base_location = '{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar'
 :::
