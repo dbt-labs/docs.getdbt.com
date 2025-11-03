@@ -548,7 +548,7 @@ Here’s an example configuration:
 ```
 
 </VersionBlock>
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="2.0">
 
 ```yaml
 models:
