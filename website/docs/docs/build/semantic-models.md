@@ -29,7 +29,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 
 <VersionBlock firstVersion="2.0">
 
-- Think of semantic models as nodes connected by entities in a semantic graph.
+- Think of semantic models as nodes connected by entities in a semantic graph. You can configure this graph by making metadata annotations on your dbt models to describe their usage in metric calculations. 
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - Each dbt model can define one semantic model via a `semantic_model` block. Use the optional `name` field if you need a different display name.
