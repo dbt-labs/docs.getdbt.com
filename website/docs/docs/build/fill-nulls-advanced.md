@@ -77,15 +77,12 @@ models:
         type: simple
         agg: count
         fill_nulls_with: 0 # This fills null values with zero
-
-# Define derived metrics at the top level
-metrics:
-  - name: leads_to_website_visit
-    type: derived
-    expr: leads/website_visits
-    input_metrics:
-      - name: leads
-      - name: website_visits
+      - name: leads_to_website_visit
+        type: derived
+        expr: leads/website_visits
+        input_metrics:
+          - name: leads
+          - name: website_visits
 ```
 
 </File>
