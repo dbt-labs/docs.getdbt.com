@@ -89,7 +89,7 @@ metrics:
 metrics:
   - name: my_simple_metric # Required
     description: The metric description # Optional
-    label: My simple metric label # Required
+    label: My simple metric label # Optional
     type: simple  # Required
     agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean (use existing enum from DSI)
     expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
