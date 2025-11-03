@@ -41,6 +41,6 @@ dbt Labs has globally connected private networks specifically used to host priva
 
 #### GCP
 - [Snowflake](/docs/cloud/secure/snowflake-psc)
-- [BigQuery](/docs/cloud/secure/bigquery-psc)<Lifecycle status="beta" />
+- [BigQuery](/docs/cloud/secure/bigquery-psc)
 
 <PrivateLinkHostnameWarning features={'/snippets/_private-connection-hostname-restriction.md'}/>
