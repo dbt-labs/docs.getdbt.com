@@ -229,7 +229,6 @@ models:
       - name: transaction_date
         dimension: # Dimensions are qualitative values such as names, dates, or geographical data. They provide context to metrics and allow "metric by group" data slicing.
           type: time
-          name: transaction_date
           time_granularity: day
 
       - name: order_country
