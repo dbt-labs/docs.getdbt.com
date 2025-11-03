@@ -38,6 +38,7 @@ models:
 ```yml
 semantic_models:
   - name: orders
+     model: ref('orders')
 ```
 
 </TabItem>
