@@ -294,7 +294,7 @@ You can set `is_partition` for time to define specific time spans. <VersionBlock
 
 Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the <Constant name="semantic_layer" /> uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 ```yaml
 dimensions: 
