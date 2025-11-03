@@ -39,7 +39,7 @@ To create a new <Constant name="cloud" /> development environment:
 
 To use the dbt <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
 
 ## Deployment environment
 
