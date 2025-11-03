@@ -80,7 +80,6 @@ models:
       - name: order_status
         dimension:
           type: categorical
-        alias: status
 ```
 
 </TabItem>
