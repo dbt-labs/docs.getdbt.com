@@ -75,7 +75,7 @@ models:
         description: Column description # Optional
         dimensions:
           - name: my_dimension # Optional, defaults to column name
-            type: Categorical or Time # Required
+            type: categorical # Required. Accepted values: categorical | time
             label: Recommended adding a string that defines the display value in downstream tools # Optional
             description: Same as always # Optional
             expr: The column name or expression. If not provided the default is the dimension name # Optional
