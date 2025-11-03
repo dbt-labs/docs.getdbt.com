@@ -223,11 +223,6 @@ models:
     semantic_model:
       enabled: true
       name: orders_semantic_model
-      group: orders-group
-      config:
-        meta:
-          owner: "@data-team"
-          description: "A model containing order data. The grain of the table is the order id."
     
     agg_time_dimension: metric_time # Default aggregation time dimension
     
@@ -253,8 +248,8 @@ models:
         granularity: day
         dimension:
           type: time
-          description: "Date when the order was placed"
           label: "Order Date"
+          description: "Date when the order was placed"
     
     metrics:
       # Simple metric for order total revenue
@@ -269,11 +264,6 @@ models:
     semantic_model:
       enabled: true
       name: customers_semantic_model
-      group: customers-group
-      config:
-        meta:
-          owner: "@data-team"
-          description: "Customer dimension table. The grain of the table is one row per customer."
     
     agg_time_dimension: first_ordered_at
     
@@ -285,16 +275,6 @@ models:
           name: customer
           description: "Primary key for customers table"
           label: "Customer"
-      
-      # Categorical dimension - is_new_customer (with expression)
-      - name: first_ordered_at
-        dimension:
-          type: categorical
-          name: is_new_customer
-          description: "Indicates if this is a new customer"
-          label: "Is New Customer"
-        # Note: In the new spec, expressions would be handled differently
-        # This represents the logic: case when first_ordered_at is not null then true else false end
       
       # Time dimension - first_ordered_at
       - name: first_ordered_at
@@ -351,11 +331,6 @@ models:
     semantic_model:
       enabled: true
       name: orders_semantic_model
-      group: orders-group
-      config:
-        meta:
-          owner: "@data-team"
-          description: "A model containing order data. The grain of the table is the order id."
     
     agg_time_dimension: metric_time # Default aggregation time dimension
     
@@ -454,11 +429,6 @@ models:
     semantic_model:
       enabled: true
       name: orders_semantic_model
-      group: orders-group
-      config:
-        meta:
-          owner: "@data-team"
-          description: "A model containing order data. The grain of the table is the order id."
     
     agg_time_dimension: ordered_at # Default aggregation time dimension
     
@@ -505,22 +475,25 @@ models:
         expr: order_total
       
       # Simple metric for food order revenue
-      - name: food_order
+      - name: food_revenue
         description: "Revenue from food orders only"
-        label: "Food Order Revenue"
+        label: "Food order revenue"
         type: simple
         agg: sum
         expr: "case when is_food_order = true then order_total else 0 end"
+
+      # Simple metric for count of distinct customers in orders
+      - name: total_customers
+        description: "Count of unique customers with orders"
+        label: "Total customers"
+        type: simple
+        agg: count_distinct
+        expr: customer_id
 
   - name: customers    # The name of the second semantic model
     semantic_model:
       enabled: true
       name: customers_semantic_model
-      group: customers-group
-      config:
-        meta:
-          owner: "@data-team"
-          description: "Customer dimension table. The grain of the table is one row per customer."
     
     agg_time_dimension: first_ordered_at
     
@@ -533,16 +506,6 @@ models:
           description: "Primary key for customers table"
           label: "Customer"
       
-      # Categorical dimension - is_new_customer (with expression)
-      - name: first_ordered_at
-        dimension:
-          type: categorical
-          name: is_new_customer
-          description: "Indicates if this is a new customer"
-          label: "Is New Customer"
-        # Note: In the new spec, expressions would be handled differently
-        # This represents the logic: case when first_ordered_at is not null then true else false end
-      
       # Time dimension - first_ordered_at
       - name: first_ordered_at
         granularity: day
@@ -552,18 +515,15 @@ models:
           description: "Date of customer's first order"
           label: "First Order Date"
 
-# Top-level metrics for cross-model metrics
 metrics:
-  - name: food_order_pct_of_order_total_returning
+  - name: food_revenue_per_customer
     description: "Revenue from food orders from returning customers"
-    label: "Food % of Order Total"
+    label: "Food % of order total"
     type: ratio
     numerator:
-      name: food_order
-      filter: "{{ Dimension('customer__is_new_customer') }} = false"
+      name: food_revenue
     denominator:
-      name: order_total
-      filter: "{{ Dimension('customer__is_new_customer') }} = false"
+      name: total_customers
 ```
 
 </VersionBlock>
