@@ -48,7 +48,6 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (`simple` for simple metrics). | Required | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
-| `name` | The metric you're referencing. | Required | String |
 | `alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the metric. | Optional | String |
 | `filter` | Optional `filter` applied to the metric. | Optional | String |
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `average`, `median`, `count_distinct`, `percentile`, and `sum_boolean`. | Required | String |
