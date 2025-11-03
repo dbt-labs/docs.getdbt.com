@@ -86,7 +86,12 @@ metrics:
 <VersionBlock firstVersion="2.0">
 
 ```yaml
-metrics:
+models: 
+  - name: my_model
+     semantic_model: 
+       enabled: true
+     ...
+     metrics:
   - name: my_simple_metric # Required
     description: The metric description # Optional
     label: My simple metric label # Optional
