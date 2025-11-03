@@ -96,7 +96,7 @@ metrics:
     join_to_timespine: true
     fill_nulls_with: 0
 
-  - name: my_simple_metric_that_uses_the_other_time_dimensio
+  - name: my_simple_metric_that_uses_the_other_time_dimension
     description: The metric description
     label: My simple metric that uses the other time dimension label
     type: simple
