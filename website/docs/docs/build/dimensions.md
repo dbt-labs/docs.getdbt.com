@@ -147,9 +147,6 @@ models:
           name: order_date
           label: "Date of transaction"
           description: "A record for every transaction that takes place. Carts are considered multiple transactions for each SKU."
-          config:
-            meta:
-              data_owner: "Finance team"
 
       - name: type
         dimension:
