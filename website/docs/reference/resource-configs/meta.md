@@ -271,19 +271,6 @@ exposures:
 
 Configure `meta` in the your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
-<VersionBlock lastVersion="1.9">
-
-<File name='models/semantic_models.yml'>
-
-```yml
-semantic_models:
-  - name: semantic_model_name
-    config:
-      meta: {<dictionary>}
-
-```
-
-</File>
 
 <File name='dbt_project.yml'>
 
@@ -294,31 +281,35 @@ semantic-models:
 ```
 </File>
 
+<VersionBlock lastVersion="1.99">
+<File name='models/semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_model_name
+    config:
+      meta: {<dictionary>}
+
+```
+</File>
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
-
-
-<File name='dbt_project.yml'>
+<VersionBlock firstVersion="2.0">
+<File name='models/file_name.yml'>
 
 ```yml
-semantic-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +meta: {<dictionary>}
-```
-</File>
-
-<File name='models/semantic_models.yml'>
-
-```yml
-semantic_models:
-  - name: semantic_model_name
-    config:
-      meta: {<dictionary>}
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      config:
+        meta: {<dictionary>}
 
 ```
-
 </File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 [Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) can also have their own `meta` configurations.
 
@@ -348,7 +339,50 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
 
+<VersionBlock firstVersion="2.0">
+
+[Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and metrics can also have their own `meta` configurations.
+
+<File name='models/file_name.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      config:
+        meta: {<dictionary>}
+
+    agg_time_dimension: your_time_dimension_name
+
+    columns:
+      - name: entity_column_name
+        entity:
+          type: primary
+          name: entity_name
+          config:
+            meta: {<dictionary>}
+
+      - name: dimension_column_name
+        dimension:
+          type: categorical
+          name: dimension_name
+          config:
+            meta: {<dictionary>}
+
+    metrics:
+      - name: simple_metric_name
+        description: "Description of the metric"
+        type: simple
+        agg: sum  
+        expr: column_name 
+        config:
+          meta: {<dictionary>}
+```
+
+</File>
 </VersionBlock>
 
 The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
@@ -366,6 +400,7 @@ metrics:
 ```
 </File>
 
+<VersionBlock lastVersion="1.99">
 <File name='models/metrics.yml'>
 
 ```yml
@@ -382,6 +417,35 @@ metrics:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/file_name.yml'>
+
+```yml
+models:
+  - name: model_name 
+    semantic_model:
+      enabled: true
+    agg_time_dimension: your_time_dimension
+    columns:
+      - name: column_name
+        dimension:
+          type: time
+        granularity: day
+    metrics:
+      - name: number_of_people
+        type: simple
+        description: Total count of people
+        agg: count  | sum | count_distinct
+        expr: people
+        config:
+          meta:
+            my_meta_config: 'config_value'
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 
