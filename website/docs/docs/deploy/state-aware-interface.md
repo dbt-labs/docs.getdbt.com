@@ -23,7 +23,7 @@ You can also view the number of reused models per project in the **Accounts home
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/account-home-chart.png" width="90%" title="Models built and reused chart in Account home"/>
-<Lightbox src="/img/docs/deploy/sao-model-reuse.png" width="100%" title="View reused models count per project in the Accounts home page"/>
+<Lightbox src="/img/docs/deploy/sao-model-reuse.png" width="90%" title="View reused models count per project in the Accounts home page"/>
 </DocCarousel>
 
 ## Model consumption view in jobs
