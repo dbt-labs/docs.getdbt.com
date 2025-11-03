@@ -213,7 +213,7 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 - **target_file_size:** Specifies a target Parquet file size. Default is `AUTO`.
 
 <VersionBlock firstVersion="2.0">
-The following properties can be set in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` will take precedence. See [Base location](#base-location) for more information.
+You can set the following properties in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` takes precedence. Refer to [Base location](#base-location) for more information.
 - **base_location_root:** Specifies the prefix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table.
 - **base_location_subpath:** Specifies the suffix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table. This property can only be set in model configurations, not in `catalogs.yml`.
 </VersionBlock>
@@ -315,7 +315,7 @@ We recommend using the default behavior, but if you need to customize the result
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
+While you can customize paths with `base_location_root` and `base_location_subpath`, we don't recommend you rely on these for environment isolation (such as separating development and production environments). These configuration values can be easily modified by anyone with repository access. For true environment isolation, use separate `EXTERNAL VOLUME`s with infrastructure-level access controls.
 
 #### Example configurations
 
@@ -345,7 +345,7 @@ select * from {{ ref('jaffle_shop_customers') }}
 <VersionBlock firstVersion="2.0">
 Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
 
-We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the adapter properties `base_location_root` and `base_location_subpath`. `base_location_subpath` is only accepted in model configurations (see [Adapter Properties](#adapter-properties)).
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows you to configure the base_location with the adapter properties `base_location_root` and `base_location_subpath`. `base_location_subpath` is only accepted in model configurations. Refer to [Adapter Properties](#adapter-properties) for more information.
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
