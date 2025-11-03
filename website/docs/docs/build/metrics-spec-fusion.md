@@ -33,7 +33,7 @@ models:
 
 </TabItem>
 
-<TabItem value="old" label="Old spec">
+<TabItem value="old" label="Legacy spec">
 
 ```yml
 semantic_models:
