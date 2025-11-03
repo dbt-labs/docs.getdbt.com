@@ -78,7 +78,6 @@ models:
             type: categorical # Required. Accepted values: categorical | time
             label: Recommended adding a string that defines the display value in downstream tools # Optional
             description: Same as always # Optional, defaults to the column description if not otherwise specified
-            expr: The column name or expression. If not provided the default is the dimension name # Optional
 ```
 
 </VersionBlock>
