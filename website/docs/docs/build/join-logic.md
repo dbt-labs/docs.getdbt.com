@@ -91,8 +91,6 @@ semantic_models:
 
 </VersionBlock>
 
-<!-- pick up here -->
-
 <VersionBlock firstVersion="2.0">
 
 <File name='models/model.yml'>
@@ -111,10 +109,6 @@ models:
       - name: user_id
         entity:
           name: user
-          type: foreign
-      - name: purchase_price
-        entity:
-          name: purchase_price
           type: foreign
     metrics:
       - name: average_purchase_price
