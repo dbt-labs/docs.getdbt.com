@@ -37,7 +37,7 @@ The parameters, description, and type for derived metrics are:
 | `type` | The metric type (`simple`, `cumulative`, `ratio`, `derived`, or `conversion`). | Required | String |  
 | `label` | Display name for downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
 | `expr` | The expression that combines other metrics. Validation warns if it is missing or references undefined metrics. | Required | String |
-| `metric_aliases` | Defines aliases, filters, or offsets for metrics referenced in the expression. Needed only when you customize those attributes. | Optional | List |
+| `input_metrics` | Defines aliases, filters, or offsets for metrics referenced in the expression. Needed only when you customize those attributes. | Optional | List |
 | `metric_aliases::name` | The name of the referenced metric defined elsewhere in the project. | Required when `metric_aliases` provided | String |
 | `metric_aliases::alias` | Alternate name you can reference in `expr`. | Optional | String |
 | `metric_aliases::filter` | Filter to apply to the referenced metric. | Optional | String |  
