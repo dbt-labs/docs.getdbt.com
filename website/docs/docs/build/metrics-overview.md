@@ -63,7 +63,7 @@ Each metric type has additional specific parameters:
 - **Ratio metrics**: `numerator` (required), `denominator` (required)
 - **Conversion metrics**: `entity` (required), `calculation` (required), `base_metric` (required), `conversion_metric` (required), `window`, `constant_properties`
 
-Refer to each metric type section in the following sections for detailed information on type-specific parameters.
+Refer to the following sections about each metric type for detailed information on type-specific parameters.
 
 </VersionBlock>
 
