@@ -13,7 +13,7 @@ With the new spec, you get simpler configuration without losing flexibility, fas
 
 ## Changes in the latest spec
 
-This section highlights the key updates in the new metrics spec in Fusion and compares them to the previous spec.
+This section highlights the key updates in the latest metrics spec in Fusion and compares them to the legacy spec.
 
 ### Semantic models
 
