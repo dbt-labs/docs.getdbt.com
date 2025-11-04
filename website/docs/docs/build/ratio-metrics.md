@@ -186,7 +186,6 @@ metrics:
       name: orders
       filter: location = 'New York'
       alias: ny_orders
-    denominator: orders
 ```
 </File>
 
