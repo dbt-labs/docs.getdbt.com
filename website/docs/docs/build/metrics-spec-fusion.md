@@ -366,7 +366,7 @@ metrics:
 </Tabs>
 
 
-## Migrating to the new spec
+## Migrating to the latest spec
 
 Refer to the steps in this section to convert your legacy metrics to the new YAML spec.
 
