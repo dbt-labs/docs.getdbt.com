@@ -11,7 +11,7 @@ The latest Semantic Layer specification in the <Constant name="fusion_engine" />
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization.
 
-## Changes in the new spec
+## Changes in the latest spec
 
 This section highlights the key updates in the new metrics spec in Fusion and compares them to the previous spec.
 
