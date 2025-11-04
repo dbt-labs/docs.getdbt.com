@@ -1,8 +1,8 @@
 ---
-title: "Metrics YAML spec in the dbt Fusion engine"
+title: "Migrate to the latest YAML spec in the dbt Fusion engine"
 id: "metrics-spec-fusion"
 description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec in Fusion."
-sidebar_label: Metrics YAML spec in Fusion 
+sidebar_label: Migrate to the latest YAML spec 
 tags: [Metrics, Semantic Layer, Fusion]
 ---
 
