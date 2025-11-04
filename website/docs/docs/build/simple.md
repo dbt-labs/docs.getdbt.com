@@ -56,7 +56,6 @@ The parameters, description, and type for simple metrics are:
 
 </VersionBlock>
 
-
 The following displays the complete specification for simple metrics, along with an example.
 
 
@@ -81,6 +80,8 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
+
+Note that you must define simple metrics within a semantic model's YAML entry.
 
 ```yaml
 models: 
