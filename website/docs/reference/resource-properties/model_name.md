@@ -7,7 +7,6 @@ required: yes
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name

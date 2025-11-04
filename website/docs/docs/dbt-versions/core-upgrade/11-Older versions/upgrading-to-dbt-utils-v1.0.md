@@ -61,7 +61,6 @@ You can not assume one behavior or the other, as each project can customize its 
 - The `expression_is_true` test no longer has a dedicated `condition` argument. Instead, use `where` which is [now available natively to all tests](/reference/resource-configs/where):
 
 ```yaml
-version: 2
 
 models:
   - name: old_syntax

@@ -109,21 +109,22 @@ Key:
 <SortableTable> 
 
 {`
-|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:| 
-| Environment credentials  |   W   |    R    |       W        |     R     |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
-| Cost Managerment         |   -   |    -    |       -        |     -     |     -     |     -     |    -        |      -      |                 -                       |       -        |      -       |   -       |
-| Custom env. variables    |   W   |    W#  |       W         |     W#   |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
-| Data platform configs    |   W   |    W    |       W        |     W     |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
-| Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
-| Environments             |   W   |    R    |       R        |     R     |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
-| Jobs                     |   W   |    R*   |       R*       |     R*    |     R*    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R*     |
-| Metadata GraphQL API access| R   |    R    |       R        |     R     |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
-| Permissions              |   W   |    -    |       R        |     R     |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Projects                 |   W   |    R    |       W        |     R     |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
-| Repositories             |   W   |   -     |       R        |     R     |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R*   |       R*       |     R*    |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |
-| Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:| 
+| Environment credentials  |   W   |    R    |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
+| Cost Managerment         |   -   |    -    |       -        |     -     |      -       |     -     |     -     |    -        |      -      |                 -                       |       -        |      -       |   -       |
+| Custom env. variables    |   W   |    W#  |       W         |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
+| Data platform configs    |   W   |    W    |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
+| Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
+| Environments             |   W   |    R    |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
+| Fusion upgrade           |   -   |    -    |      -         |     -     |      W       |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
+| Jobs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R*     |
+| Metadata GraphQL API access| R   |    R    |       R        |     R     |      -       |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
+| Permissions              |   W   |    -    |       R        |     R     |      -       |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Projects                 |   W   |    R    |       W        |     R     |      -       |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
+| Repositories             |   W   |   -     |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
+| Runs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |
+| Semantic Layer config    |   W   |    R    |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 `}
 

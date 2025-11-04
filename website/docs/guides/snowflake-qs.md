@@ -367,7 +367,6 @@ Sources make it possible to name and describe the data loaded into your warehous
     <File name='models/sources.yml'>
 
     ```yml
-    version: 2
 
     sources:
         - name: jaffle_shop

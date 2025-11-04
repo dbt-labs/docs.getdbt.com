@@ -2,6 +2,7 @@
 title: "BigQuery configurations"
 description: "Reference guide for Big Query configurations in dbt."
 id: "bigquery-configs"
+tags: ['BigQuery', 'dbt Fusion', 'dbt Core']
 ---
 
 <!----
@@ -484,7 +485,6 @@ dbt enables this feature as a column resource property, `policy_tags` (_not_ a n
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
 - name: policy_tag_table
@@ -858,7 +858,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -1070,7 +1069,6 @@ def model(dbt, session):
     ...
 ```
 ```yml
-version: 2
 models:
   - name: my_python_model
     config:

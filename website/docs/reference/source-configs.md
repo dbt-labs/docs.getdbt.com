@@ -60,7 +60,6 @@ sources:
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
 
 sources:
   - name: [<source-name>]
@@ -151,7 +150,6 @@ When defining a source, you can disable the entire source, or specific source ta
 <File name='models/sources.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: my_source
@@ -171,7 +169,6 @@ You can configure specific source tables, and use [variables](/reference/dbt-jin
 <File name='models/sources.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: my_source

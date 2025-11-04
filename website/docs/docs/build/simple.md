@@ -9,24 +9,17 @@ pagination_next: null
 
 <VersionBlock lastVersion="1.99">
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-Simple metrics are direct aggregations over datasets in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
-</VersionBlock>
 
 The parameters, description, and type for simple metrics are:
-<VersionBlock lastVersion="1.99">
+
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
-</VersionBlock>
 
-<VersionBlock lastVersion="1.99">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
-| `name` | The name of the metric. | Required | String |
+| `name` | The name of the metric. It must be unique within your project and can include lowercase letters, numbers, and underscores. Use this name to reference the metric from the <Constant name="semantic_layer" /> API. | Required | String |
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
@@ -42,23 +35,27 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 <VersionBlock firstVersion="2.0">
 
+Simple metrics are metrics that directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
+
+The parameters, description, and type for simple metrics are:
+
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
-| `name` | The name of the metric. | Required | String |
+| `name` | The name of the metric. It must be unique within your project and can include lowercase letters, numbers, and underscores. Use this name to reference the metric from the <Constant name="semantic_layer" /> API. | Required | String |
 | `description` | The description of the metric. | Optional | String |
-| `type` | The type of the metric (`simple` for simple metrics). | Required | String |
-| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
-| `alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the metric. | Optional | String |
-| `filter` | Optional `filter` applied to the metric. | Optional | String |
-| `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `average`, `median`, `count_distinct`, `percentile`, and `sum_boolean`. | Required | String |
-| `expr` | Optional SQL expression to control the aggregation logic. By default, metric `name` is used as the expression of the metric. | Optional | String |
-| `agg_time_dimension` | The time dimension used for time-based aggregation. Defaults to the `agg_time_dimension` for the semantic model if not specified. | Optional | String |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`,  `count_distinct`,  `percentile`, and `sum_boolean` (use existing enum from DSI)| Required | String |
+| `expr` | The expression to use, like a column name. Defaults to the metric name. | Optional | String |
 | `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
-| `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics.| Optional | String |
+| `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics. | Optional | String |
+| `non_additive_dimension` | The non-additive dimension to use. | Optional | String |
+| `agg_time_dimension` | The time dimension to use. | Optional | String |
+| `join_to_timespine` | Indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
-| `join_to_timespine` | Indicates if the aggregated metric should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
 
 </VersionBlock>
+
 
 The following displays the complete specification for simple metrics, along with an example.
 

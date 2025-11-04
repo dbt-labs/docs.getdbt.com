@@ -175,7 +175,7 @@ The audit log includes details such as who performed the action, what the action
 
 ### Credentials no longer accidentally wiped when editing an environment
 
-We resolved a bug where when updating unencrypted fields (e.g. threads, schema name) in an environment setting would cause secret fields (e.g. password, keypair, credential details) to be deleted from that environment. Now users can freely update environment settings without fear of unintentionally wiping credentials.
+We resolved a bug where when updating unencrypted fields (for example, threads, schema name) in an environment setting would cause secret fields (for example, password, keypair, credential details) to be deleted from that environment. Now users can freely update environment settings without fear of unintentionally wiping credentials.
 
 ### Email verification
 

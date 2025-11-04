@@ -73,7 +73,6 @@ you can set up your sources to compile to different databases depending on your
 environment. 
 
 ```yml
-version: 2
  
 sources:
   - name: source_name 

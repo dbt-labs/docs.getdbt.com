@@ -1,16 +1,16 @@
 ---
-title: arguments
+title: arguments (for macros)
 sidebar_label: "arguments"
 id: arguments
 ---
 
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
+import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 <File name='macros/<filename>.yml'>
 
 ```yml
 
-version: 2
 
 macros:
   - name: <macro name>
@@ -25,7 +25,9 @@ macros:
 
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`.  You can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
+<ArgumentsShared />
+
+For **macros**, you can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
 ## type
 
@@ -45,7 +47,6 @@ The data type of your argument. Setting [`validate_macro_args`](/reference/globa
 <File name='macros/<filename>.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: <macro name>
@@ -91,7 +92,6 @@ Note that the types follow a Python-like style but are used for documentation an
 <File name='macros/cents_to_dollars.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: cents_to_dollars
@@ -106,3 +106,8 @@ macros:
 ```
 
 </File>
+
+## Related documentation
+
+- [Macro properties](/reference/macro-properties)
+- [Arguments (for functions)](/reference/resource-properties/function-arguments)

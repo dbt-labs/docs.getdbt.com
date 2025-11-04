@@ -28,8 +28,8 @@ select ...
 
 To use incremental models, you also need to tell dbt:
 
-* How to filter the rows on an incremental run
-* The unique key of the model (if any)
+- How to filter the rows on an incremental run
+- The unique key of the model (if any)
 
 ### Understand the is_incremental() macro
 
@@ -112,8 +112,8 @@ Alternatively, you can define a single-column [surrogate key](https://www.getdbt
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
-* If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
+- If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
+- If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
 Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](https://www.getdbt.com/blog/guide-to-surrogate-key).
 
@@ -201,12 +201,12 @@ models:
 
 </File>
 
-The possible values for `on_schema_change` are:  
+The possible values for `on_schema_change` are:
 
-* `ignore`: Default behavior (see below).
-* `fail`: Triggers an error message when the source and target schemas diverge  
-* `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
-* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
+- `ignore`: Default behavior (see below).
+- `fail`: Triggers an error message when the source and target schemas diverge
+- `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
+- `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 

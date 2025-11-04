@@ -18,6 +18,10 @@ At a high level, you’ll need to decide:
 - Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
+import MeshCourseCallout from '/snippets/_mesh-course-callout.md';
+
+<MeshCourseCallout />
+
 ## Define your project interfaces by splitting your DAG
 
 The first (and perhaps most difficult!) decision when migrating to a multi-project architecture is deciding where to draw the line in your DAG to define the interfaces between your projects. Let's explore some language for discussing the design of these patterns.
@@ -40,7 +44,6 @@ Horizontal splits separate your DAG based on source or domain. These splits are 
 - **Data from different sources.** For example, clickstream event data and transactional ecommerce data may need to be modeled independently of each other.
 - **Team workflows.** For example, if two embedded groups operate at different paces, you may want to split the projects up so they can move independently.
 
-
 <Lightbox src="/img/best-practices/how-we-mesh/horizontal_split.png" title="A simplified dbt DAG with a dotted line representing a horizontal split." />
 
 ### Combining these strategies
@@ -49,9 +52,7 @@ Horizontal splits separate your DAG based on source or domain. These splits are 
 - **Pick one type of split and focus on that first**. If you have a hub-and-spoke team topology for example, handle breaking out the central platform project before you split the remainder into domains. Then if you need to break those domains up horizontally you can focus on that after the fact.
 - **DRY applies to underlying data, not just code.** Regardless of your strategy, you should not be sourcing the same rows and columns into multiple nodes. When working within a mesh pattern it becomes increasingly important that we don't duplicate logic or data.
 
-
 <Lightbox src="/img/best-practices/how-we-mesh/combined_splits.png" title="A simplified dbt DAG with two dotted lines representing both a vertical and horizontal split." />
-
 
 ## Determine your git strategy
 

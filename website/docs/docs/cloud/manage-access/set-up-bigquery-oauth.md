@@ -5,6 +5,8 @@ id: "set-up-bigquery-oauth"
 pagination_next: null
 ---
 
+import EntraIdGetToken from '/snippets/_entra-id-get-token.md';
+
 # Set up BigQuery OAuth <Lifecycle status="managed, managed_plus" />
 
 :::info Enterprise-tier feature
@@ -100,6 +102,12 @@ Create an app in Entra where dbt will request access tokens when authenticating 
 5. From the **app overview**, click **Expose an API** in the left menu.
 6. Click **Add** next to Application ID URI. The field will automatically populate. 
 7. Click **Save**.
+8. (Optional) To include the `sub` claim in tokens issued by this application, configure [optional claims in Entra ID](https://learn.microsoft.com/en-us/entra/identity-platform/optional-claims?tabs=appui).  
+The `sub` (subject) claim uniquely identifies the user or service principal for whom the token is issued.  
+When you configure service account impersonation in GCP, the Workload Identity Federation mapping uses this `sub` value to verify the identity of the calling Entra application.
+9. (Optional but recommended) Test your Entra ID configuration by requesting a token:
+   
+   <EntraIdGetToken />
 
 Workload Identity Federation utilizes a machine-to-machine OAuth flow that is unattended by the user; as such, a redirect URI won't need to be set for the application. Step 3 in this section is crucial because it determines the audience for tokens issued from the app and informs the workpool in GCP whether the calling application has permission to access the resources guarded by the workpool.
 
@@ -130,11 +138,18 @@ If you haven’t already, create a new service account:
 3. Click **Create service account**. Google recommends creating a service account per workload.
 4. Assign the relevant roles you would like this service account to have. In our experience, `BigQuery Admin` is the default role with required access.
 
-Once you’ve created the service account, navigate back to the workpool you created in the previous step: 
+Once you've created the service account, navigate back to the workpool you created in the previous step: 
 1. Click the **Grant Access** option at the top of the page.
 2. Select **Grant access using Service Account Impersonation**.
 3. Select the service account you just created.
-4. Under **Select Principals**, set `subject` as the **Attribute Name**. For the **Attribute Value**, you’ll want to set it to the value assigned to the sub on the token. You can retrieve this value directly from the access token.
+4. Under **Select Principals**, set `subject` as the **Attribute Name**. For the **Attribute Value**, set it to the `sub` (subject) claim value from the Entra ID access token.
+   
+   <Expandable alt_header="Obtain the sub value">
+   To obtain the `sub` value, request an access token from Entra ID. The `sub` claim is consistent 
+   across all tokens issued by this application:
+   <EntraIdGetToken />
+   
+   </Expandable>
 
 ### 4. Set up dbt
 

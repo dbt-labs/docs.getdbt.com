@@ -2,11 +2,12 @@
 title: About the dbt VS Code extension
 id: about-dbt-extension
 description: "Bring all the speed and power of the dbt Fusion engine to your local development workflow."
-sidebar_label: "About the dbt VS Code extension"
+sidebar_label: "dbt VS Code extension"
+image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
 ---
 
-# About the dbt VS Code Extension <Lifecycle status="preview" />
+# About the dbt VS Code extension <Lifecycle status="preview" />
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.
@@ -16,9 +17,26 @@ This is the only way to enjoy all the power of the <Constant name="fusion_engine
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
+:::tip Try out the Fusion quickstart guide
+
+Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
+
+:::
+
 ## Navigating the dbt extension
 
 Once the dbt VS Code extension has been installed, several visual enhancements will be added to your IDE to help you navigate the features and functionality. 
+
+Check out the following video to see the features and functionality of the dbt VS Code extension:
+
+<div style={{ position: 'relative', maxWidth: '960px', margin: '2rem auto', overflow: 'hidden', borderRadius: '12px', height: '500px', boxShadow: 'var(--ifm-global-shadow-lw)' }}>
+  <iframe
+    src="https://app.storylane.io/share/a1rkqx0mbd7a"
+    title="dbt Fusion + VS Code extension walkthrough"
+    style={{ position: 'relative', top: '-48px', height: '900px', width: '100%', border: 0, paddingBottom:'calc(42.20%)',transform: 'scale(1)'}}
+    allow="fullscreen; autoplay; encrypted-media"
+  />
+</div>
 
 ### The dbt extension menu
 
@@ -47,7 +65,7 @@ We've moved productivity features to their own page! Check out their [new locati
 
 ## Using the extension
 
-Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion/about-fusion) for more on eligibility and upgrading.
+Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 
@@ -58,8 +76,7 @@ After installation, you may want to configure the extension to better fit your d
 1. Open the VS Code settings by pressing `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac).
 2. Search for `dbt`. On this page, you can adjust the extension’s configuration options to fit your needs.
 
-<Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="30%" title="dbt extension settings within the VS Code settings."/>
-
+<Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="70%" title="dbt extension settings within the VS Code settings."/>
 
 ## Known limitations
 

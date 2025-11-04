@@ -17,4 +17,7 @@ export const STATUS_URLS = {
   beta: PRODUCT_LIFECYCLE_URL,
   preview: PRODUCT_LIFECYCLE_URL,
   ga: PRODUCT_LIFECYCLE_URL,
+  private: PRODUCT_LIFECYCLE_URL,
+  private_beta: PRODUCT_LIFECYCLE_URL,
+  private_preview: PRODUCT_LIFECYCLE_URL,
 };

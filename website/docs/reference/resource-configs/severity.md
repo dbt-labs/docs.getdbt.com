@@ -46,7 +46,6 @@ Configure a specific instance of a out-of-the-box generic test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table

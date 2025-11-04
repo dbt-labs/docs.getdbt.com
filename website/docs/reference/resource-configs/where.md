@@ -39,7 +39,6 @@ Configure a specific instance of a generic (schema) test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table
@@ -54,7 +53,7 @@ models:
       - name: other_column
         data_tests:
           - not_null:
-              arguments: 
+              config: 
                 where: "date_column < current_date"
 ```
 
@@ -133,7 +132,6 @@ Filter your test to the past N days of data, using dbt's cross-platform [`datead
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 models:
   - name: my_model
     columns:

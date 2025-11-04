@@ -17,8 +17,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
 * Assert "truths" about a model, in the form of [data tests](/docs/build/data-tests), e.g. "this `id` column is unique"
-* Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
-* Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
+* Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures), and assert an exposure's "type"
 
 Whereas you can use **configurations** to:
 * Change how a model will be materialized (<Term id="table" />, <Term id="view" />, incremental, etc)

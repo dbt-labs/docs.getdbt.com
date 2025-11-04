@@ -13,7 +13,7 @@ The System for Cross-Domain Identity Management (SCIM) makes user data more secu
 
 To configure SCIM in your <Constant name="cloud" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
-- You must be using Okta or Entra ID as your SSO provider.
+- You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have permissions to configure the account settings in [<Constant name="cloud" />](/docs/cloud/manage-access/enterprise-permissions) and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
 - If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist.
 
@@ -167,10 +167,27 @@ To map the attributes that will sync with dbt:
     - **externalid:** `mailNickname`
     - **emails[type eq "work"].primary** 
      <Lightbox src="/img/docs/dbt-cloud/access-control/attribute-list.png" width="60%" title="Edit the attributes so they match the list as shown." />
-
+11. Click **Save**.
 
 You can now begin assigning users to your SCIM app in Entra ID!
 
+## Assign users to SCIM app
+
+The following steps go over how to assign users/groups to the SCIM app. Refer to Microsoft's [official instructions for assigning users or groups to an Enterprise App in Entra ID](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#step-3-assign-users-and-groups-to-the-application) to learn more. Although the article is written for Databricks, the steps are identical.
+
+1. Navigate to Enterprise applications and select the SCIM app.
+2. Go to **Manage** > **Provisioning**.
+3. To synchronize Microsoft Entra ID users and groups to dbt, click the **Start provisioning** button.
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/scim-entraid-start-provision.png" width="80%" title="Start provisioning to synchronize users and groups." />
+4. Navigate back to the SCIM app's overview page and go to **Manage** > **Users and groups**.
+5. Click **Add user/group** and select the users and groups. 
+       <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/scim-entraid-add-users.png" width="80%" title="Add user/group." />
+7. Click the **Assign** button.
+8. Wait a few minutes. In the <Constant name="dbt_platform" />, confirm the users and groups exist in your dbt account.
+    - Users and groups that you add and assign will automatically be provisioned to your dbt account when Microsoft Entra ID schedules the next sync.
+    - By enabling provisioning, you immediately trigger the initial Microsoft Entra ID sync. Subsequent syncs are triggered every 20-40 minutes, depending on the number of users and groups in the application. Refer to Microsoft Entra ID's [Provisioning tips](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#provisioning-tips) documentation for more information.
+    - You can also prompt a manual provisioning outside of the cycle by clicking **Restart provisioning**.
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/scim-entraid-manual.png" width="80%" title="Prompt manual provisioning." />
 
 ## Manage user licenses with SCIM
 

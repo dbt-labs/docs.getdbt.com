@@ -62,6 +62,9 @@ To set up a Python virtual environment, navigate to your project directory and e
   </TabItem>
 
   <TabItem value="Windows" label="Windows">
+
+    Note: Syntax may vary slightly depending on the program. For example, bash would be `source env/Scripts/activate`. The following examples use PowerShell:
+    
     1. Create your virtual environment
 
     ```shell
@@ -71,7 +74,7 @@ To set up a Python virtual environment, navigate to your project directory and e
     2. Activate your virtual environment:
 
     ```shell
-    env\Scripts\activate
+    .env\Scripts\activate
     ```
 
     3. Verify Python Path:

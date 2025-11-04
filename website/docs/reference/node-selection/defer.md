@@ -135,7 +135,6 @@ I also have a `relationships` test that establishes referential integrity betwee
 <File name='models/resources.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_b

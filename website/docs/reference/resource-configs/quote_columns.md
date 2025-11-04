@@ -45,7 +45,6 @@ Or:
 <File name='seeds/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: mappings

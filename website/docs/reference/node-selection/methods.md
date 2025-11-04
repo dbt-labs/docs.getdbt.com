@@ -93,6 +93,8 @@ dbt ls --select "+exposure:*" --resource-type source    # list all source tables
 
 ### file
 
+<VersionBlock lastVersion="1.10">
+
 The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
@@ -101,6 +103,27 @@ dbt run --select "file:some_model.sql"
 dbt run --select "some_model.sql"
 dbt run --select "some_model"
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+The `file` method can be used to select a model or a function by its filename, including the file extension (`.sql`).
+
+```bash
+# These are equivalent
+dbt run --select "file:some_model.sql"
+dbt run --select "some_model.sql"
+dbt run --select "some_model"
+
+# These are equivalent
+dbt build --select "file:my_function.sql"
+dbt build --select "my_function.sql"
+dbt build --select "my_function"
+
+# To build all models that use the function
+dbt build --select "my_function+"
+```
+</VersionBlock>
 
 ### fqn
 
@@ -152,6 +175,8 @@ Use the `this` package to select nodes from the current project. From the exampl
 Since `this` always refers to the current project, using `package:this` ensures that you're only selecting models from the project you're working in.
 
 ### path
+
+<VersionBlock lastVersion="1.10">
 The `path` method is used to select models/sources defined at or under a specific path.
 Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files.
 While the `path` prefix is not explicitly required, it may be used to make
@@ -168,14 +193,57 @@ selectors unambiguous.
   dbt run --select "models/staging/github/stg_issues.sql"
   ```
 
-### resource_type
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+The `path` method is used to select models, sources, or functions defined at or under a specific path.
+Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files. Functions are defined in SQL files. While the `path` prefix is not explicitly required, it may be used to make
+selectors unambiguous.
+
 
   ```bash
+  # These two selectors are equivalent
+  dbt run --select "path:models/staging/github"
+  dbt run --select "models/staging/github"
+
+  # These two selectors are equivalent
+  dbt run --select "path:models/staging/github/stg_issues.sql"
+  dbt run --select "models/staging/github/stg_issues.sql"
+
+  # These two selectors are equivalent
+  dbt build --select "path:functions/my_function.sql"
+  dbt build --select "functions/my_function.sql"
+  ```
+
+</VersionBlock>
+
+### resource_type
+
+<VersionBlock lastVersion="1.10">
+
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
 dbt list --select "resource_type:test"         # list all tests in your project
 dbt list --select "resource_type:source"       # list all sources in your project
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+```bash
+dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
+dbt build --select "resource_type:function"    # build all functions in your project
+dbt list --select "resource_type:test"         # list all tests in your project
+dbt list --select "resource_type:source"       # list all sources in your project
+```
+
+</VersionBlock>
 
 ### result
 

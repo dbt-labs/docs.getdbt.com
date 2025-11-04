@@ -159,46 +159,11 @@ import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
 
 ## FAQs
 
+import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
+
 <DetailsToggle alt_header="How to create a .dbt directory and move your file">
 
-If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it.
-
-<Tabs>
-<TabItem value="Create a .dbt directory">
-
-  1. Clone your dbt project repository locally.
-  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
-
-     ```bash
-     mkdir ~/.dbt
-     ```
-
-This will create a `.dbt` folder in the root directory.
-
-For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G.
-
-</TabItem>
-
-<TabItem value="Move the dbt_cloud.yml file">
-
-### Mac or Linux
-In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
-
-```bash
-mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
-```
-
-### Windows
-In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
-
-```bash
-move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
-```
-
-</TabItem>
-</Tabs>
-
-This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+<DbtDirectoryFaq />
 
 </DetailsToggle>
 

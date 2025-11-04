@@ -14,7 +14,7 @@ Apache Iceberg is an open standard table format that brings greater portability 
 
 dbt abstracts the complexity of table formats so teams can focus on delivering reliable, well-modeled data. Our initial integration with Iceberg supports table materializations and catalog integrations, allowing users to define and manage Iceberg tables directly in their dbt projects. To learn more, click on one of the following tiles
 
-<div className="grid--3-col">
+<div className="grid--4-col">
 
 <Card
     title="Using dbt + Iceberg Catalog overview"
@@ -33,5 +33,11 @@ dbt abstracts the complexity of table formats so teams can focus on delivering r
     body="BigQuery Iceberg Configurations"
     link="/docs/mesh/iceberg/bigquery-iceberg-support"
     icon="bigquery"/>
+
+<Card
+    title="Databricks"
+    body="Databricks Iceberg Configurations"
+    link="/docs/mesh/iceberg/databricks-iceberg-support"
+    icon="databricks"/>
 
 </div>

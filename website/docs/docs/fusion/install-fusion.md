@@ -2,15 +2,16 @@
 title: "Install Fusion"
 description: "Install the Fusion engine locally to take data transformation to the next level."
 id: install-fusion
+hide_table_of_contents: true
 ---
 
 # About Fusion local installation <Lifecycle status="preview" />
 
-import FusionBeta from '/snippets/_fusion-beta-callout.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <VersionBlock lastVersion="1.99">
 
-<FusionBeta />
+<FusionLifecycle />
 
 </VersionBlock>
 

@@ -199,7 +199,7 @@ semantic_models:
       time_granularity: day
 
   - name: fiscal_year_name
-    description: Formatted fiscal year string (e.g. 'FY2025')
+    description: Formatted fiscal year string (for example, 'FY2025')
     type: categorical
 ```
 

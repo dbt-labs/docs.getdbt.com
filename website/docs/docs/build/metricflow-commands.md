@@ -276,7 +276,7 @@ Options:
   --where TEXT             SQL-like where statement provided as a string and wrapped in quotes.
                            All filter items must explicitly reference fields or dimensions that are part of your model.
                            To query a single statement: ---where "{{ Dimension('order_id__revenue') }} > 100"
-                           To query multiple statements: --where "{{ Dimension('order_id__revenue') }} > 100 --where {{ Dimension('user_count') }} < 1000"
+                           To query multiple statements: --where "{{ Dimension('order_id__revenue') }} > 100" --where "{{ Dimension('user_count') }} < 1000" # make sure to wrap each statement in quotes
                            To add a dimension filter, use the `Dimension()` template wrapper to indicate that the filter item is part of your model. 
                            Refer to the [FAQ](#faqs) for more info on how to do this using a template wrapper.
 
@@ -405,10 +405,10 @@ You can further filter the data set by adding a `where` clause to your query. Th
 **Query**
 ```bash
 # In the dbt platform
-dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True --where {{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
+dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True" --where "{{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
 # In dbt Core
-mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True --where TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
+mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True" --where "{{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 ```
 
 Notes:
@@ -437,11 +437,7 @@ Notes:
 To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
  Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
-<!--
-bash not support in cloud yet
-# In the dbt platform
-dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
--->
+
 **Query**
 ```bash
 # In dbt Core
@@ -636,7 +632,7 @@ To query multiple metrics, group bys, or where statements in your command, follo
   - Multiple dimension/entity example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier`
  
 - To query multiple where statements, use the `--where` syntax and wrap the statement in quotes:
-  - Multiple where statement example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"`
+  - Multiple where statement example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01'" --where "accounts__plan_tier = 'coco'"`
 
 </DetailsToggle>
 

@@ -23,7 +23,7 @@ Connect <Constant name="cloud" /> to Amazon's Athena interactive query service t
 | AWS S3 temp tables prefix     | s3_tmp_table_dir | Prefix for storing temporary tables, if different from the connection's s3_data_dir | String | Optional  | s3://bucket3/dbt/ |
 | Poll interval                 | poll_interval    | Interval in seconds to use for polling the status of query results in Athena        | Integer| Optional  | 5 |
 | Query retries                 | num_retries      | Number of times to retry a failing query                                            | Integer| Optional  | 3 |
-| Boto3 retries                 | num_boto3_retries| Number of times to retry boto3 requests (e.g. deleting S3 files for materialized tables)| Integer | Optional | 5 |
+| Boto3 retries                 | num_boto3_retries| Number of times to retry boto3 requests (for example, deleting S3 files for materialized tables)| Integer | Optional | 5 |
 | Iceberg retries               | num_iceberg_retries| Number of times to retry iceberg commit queries to fix ICEBERG_COMMIT_ERROR       | Integer | Optional | 0 |
 
 ### Development credentials

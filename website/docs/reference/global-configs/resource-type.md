@@ -18,6 +18,8 @@ The `--exclude-resource-type` flag is only available in dbt version 1.8 and high
 
 The available resource types are:
 
+<VersionBlock lastVersion="1.10">
+
 - [`analysis`](/docs/build/analyses)
 - [`exposure`](/docs/build/exposures)
 - [`metric`](/docs/build/build-metrics-intro)
@@ -29,6 +31,24 @@ The available resource types are:
 - [`source`](/docs/build/sources)
 - [`test`](/docs/build/data-tests)
 - [`unit_test`](/docs/build/unit-tests)
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11"> 
+
+- [`analysis`](/docs/build/analyses)
+- [`exposure`](/docs/build/exposures)
+- [`function`](/docs/build/udfs)
+- [`metric`](/docs/build/build-metrics-intro)
+- [`model`](/docs/build/models)
+- [`saved_query`](/docs/build/saved-queries)
+- [`seed`](/docs/build/seeds)
+- [`semantic_model`](/docs/build/semantic-models)
+- [`snapshot`](/docs/build/snapshots)
+- [`source`](/docs/build/sources)
+- [`test`](/docs/build/data-tests)
+- [`unit_test`](/docs/build/unit-tests)
+</VersionBlock>
+
 
 ## Positive vs negative filters
 

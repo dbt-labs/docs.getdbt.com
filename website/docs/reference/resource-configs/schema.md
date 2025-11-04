@@ -72,7 +72,6 @@ In a `snapshots/snapshot_name.yml` file:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name

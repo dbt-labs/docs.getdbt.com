@@ -12,7 +12,6 @@ You can name these files `whatever_you_want.yml` and nest them arbitrarily deep 
 <File name='macros/<filename>.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: <macro name>

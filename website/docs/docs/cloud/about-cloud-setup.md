@@ -7,7 +7,7 @@ pagination_next: "docs/cloud/account-settings"
 pagination_prev: null
 ---
 
-<Constant name="cloud" /> is the fastest and most reliable way to deploy your dbt jobs. It contains a myriad of settings that can be configured by admins, from the necessities (data platform integration) to security enhancements (SSO) and quality-of-life features (RBAC).
+<Constant name="dbt_platform" /> (formerly dbt Cloud) is the fastest and most reliable way to deploy your dbt jobs. It contains a myriad of settings that can be configured by admins, from the necessities (data platform integration) to security enhancements (SSO) and quality-of-life features (RBAC).
 
 This portion of our documentation will take you through the various settings in the <Constant name="cloud" /> UI, including:
 

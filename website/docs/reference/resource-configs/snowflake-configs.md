@@ -2,6 +2,7 @@
 title: "Snowflake configurations"
 id: "snowflake-configs"
 description: "Snowflake Configurations - Read this in-depth guide to learn about configurations in dbt."
+tags: ['Snowflake', 'dbt Fusion', 'dbt Core']
 ---
 
 ## Iceberg table format
@@ -66,7 +67,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]

@@ -7,7 +7,6 @@ datatype: test
 
 <VersionCallout version="1.8" />
 
-
 Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
 
 To run only your unit tests, use the command:
@@ -21,7 +20,7 @@ To run only your unit tests, use the command:
 - Unit tests must be defined in a YML file in your `models/` directory.
 - If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 
-<file name='dbt_project.yml'>
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -59,9 +58,11 @@ unit_tests:
 
   ```
 
-</file>
+</File>
 
 ## Examples
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -87,6 +88,9 @@ unit_tests:
         - {email: missingdot@gmailcom, is_valid_email_address: false}
 
 ```
+</File>
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -111,6 +115,9 @@ unit_tests:
       fixture: valid_email_address_fixture_output
 
 ```
+</File>
+
+<File name='models/schema.yml'>
 
 ```yml
 
@@ -134,3 +141,4 @@ unit_tests:
       fixture: valid_email_address_fixture_output
 
 ```
+</File>

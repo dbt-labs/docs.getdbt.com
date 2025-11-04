@@ -21,7 +21,6 @@ The following example shows an exposure definition in a `models/<filename>.yml` 
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 exposures:
 
@@ -84,6 +83,6 @@ When we generate the [<Constant name="explorer" /> site](/docs/explore/explore-p
 
 ## Related docs
 
-* [Exposure properties](/reference/exposure-properties)
-* [`exposure:` selection method](/reference/node-selection/methods#exposure)
-* [Data health tiles](/docs/explore/data-tile)
+- [Exposure properties](/reference/exposure-properties)
+- [`exposure:` selection method](/reference/node-selection/methods#exposure)
+- [Data health tiles](/docs/explore/data-tile)

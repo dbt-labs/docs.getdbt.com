@@ -79,6 +79,10 @@ json:
   displayText: JSON
   hoverSnippet: JSON (JavaScript Object Notation) is a minimal format for semi-structured data used to capture relationships between fields and values.
 
+lsp:
+  displayText: LSP
+  hoverSnippet: Language Server Protocol (LSP) enables developer features like live CTE previews, hover info, error highlighting, and more.
+
 materialization:
   displayText: materialization 
   hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse. 
@@ -106,6 +110,10 @@ relational-database:
 reverse-etl:
   displayText: reverse ETL
   hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
+
+scalar:
+  displayText: scalar
+  hoverSnippet: A UDF type that returns a single value per row.
 
 scalar-value:
   displayText: scalar value

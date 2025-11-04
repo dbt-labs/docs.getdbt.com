@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import Card from '@site/src/components/card';
-import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json'
+import BorderBeam from '@site/src/components/borderBeam';
+import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
 import { getSpotlightMember } from '../utils/get-spotlight-member';
@@ -16,14 +17,12 @@ function getBanner() {
 }
 
 function Home() {
-
   // Use same date formatting as in theme's BlogPostItem component
-  // https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-theme-classic/src/theme/BlogPostItem/Header/Info/index.tsx
   const dateTimeFormat = useDateTimeFormat({
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
   });
 
   const formatDate = (blogDate) => dateTimeFormat.format(new Date(blogDate));
@@ -38,19 +37,19 @@ function Home() {
         description: currentValue.metadata.description,
         link: currentValue.metadata.permalink,
         image: currentValue.metadata.image,
-        tags: currentValue.metadata.tags
+        tags: currentValue.metadata.tags,
       };
       accumulator.push(postMetaData);
       return accumulator;
     }, []);
 
   const featuredResource = {
-    title: "How we structure our dbt projects",
+    title: 'How we structure our dbt projects',
     description:
-      "Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.",
-    link: "/best-practices/how-we-structure/1-guide-overview",
-    image: "/img/structure-dbt-projects.png",
-    sectionTitle: "Featured resource",
+      'Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.',
+    link: '/best-practices/how-we-structure/1-guide-overview',
+    image: '/img/structure-dbt-projects.png',
+    sectionTitle: 'Featured resource',
   };
 
   // Set spotlightSection to featuredResource by default
@@ -62,17 +61,12 @@ function Home() {
     siteConfig?.themeConfig?.communitySpotlightMember || null;
 
   // Get spotlight member by ID or date if available
-  // If found, update section to show community spotlight member
-  // Otherwise, show featured resource
   const spotlightMember = getSpotlightMember(communitySpotlightMember);
   if (spotlightMember) {
     spotlightSection = spotlightMember;
   }
 
-  const handleSearch = (e) => {
-    // Trigger Algolia search modal
-    document.querySelector('.DocSearch-Button').click();
-  };
+  // note: we've removed the in-hero search input so that we can rely on navbar DocSearch (⌘K) only. 
 
   return (
     <>
@@ -85,79 +79,62 @@ function Home() {
       <Layout permalink="/">
         <div
           className="container container--fluid home"
-          style={{ padding: "0", background: "#FFF" }}
+          style={{ padding: 0, background: '#FFF' }}
         >
-          <header className='baton-hero'>
-            <div className='container'>
+          <header className="baton-hero baton-hero--compact">
+            <div className="container">
               <div>
-                <h1 className="heading-1">The dbt Developer Hub</h1>
-                <p>Find everything you need to build, document, and collaborate with dbt — faster.</p>
-                <div 
-                  className="hero-search-input" 
-                  onClick={handleSearch}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      handleSearch();
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Open search"
-                >
-                  <input
-                    type="text"
-                    placeholder="⌘K to search"
-                    readOnly
-                    className="input"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="quick-links">
-                  <span>Quick links</span>
-                  <Link to="/guides">Guides</Link>
-                  <Link to="/docs/dbt-versions/dbt-cloud-release-notes">Release notes</Link>
-                  <Link to="/docs/introduction">Product docs</Link>
-                </div>
-                <div className="hero-cta">
-                  <Link to="/docs/install-dbt-extension" class="primary-cta">Install Fusion + VS Code extension</Link>
+                <h1 className="heading-1 heading-1--tight">The dbt Developer Hub</h1>
+                <p className="hero-subcopy">
+                Find everything you need to build, document, and collaborate with dbt &mdash; faster.
+                </p>
+
+                {/* quickstarts moved up with tightened spacing */}
+                <div className="hero-cta hero-cta--tight">
+                  <Link
+                    id="hero-vs-code-cta"
+                    className="hero-border-beam-cta"
+                    to="/docs/install-dbt-extension">
+                      <span>Install dbt VS Code extension + Fusion</span>
+                      </Link>
                 </div>
               </div>
             </div>
           </header>
-          <section>
-            <div className='container'>
+          <section className="section--compact home-quickstart">
+            <div className="container">
               <div>
                 <span className="eyebrow">Quickstart</span>
                 <h2 className="heading-2">New to dbt? Start here.</h2>
               </div>
-                <div className="home-card-grid">
-                  <Card
-                    title="dbt Fusion engine"
-                    tag="Article"
-                    body="Learn about the dbt Fusion engine and see how it enables dbt to operate at speed and scale like never before."
-                    link="/docs/fusion/about-fusion"
-                    icon="zap"
-                  />
-                  <Card
-                    title="Get started with dbt"
-                    tag="Guide"
-                    body="Build fast with our quickstart guides."
-                    link="/docs/get-started-dbt"
-                    icon="settings"
-                  />
-                  <Card
-                    title="Move to the dbt platform"
-                    tag="Guide"
-                    body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
-                    link="/guides/core-to-cloud-1?step=1"
-                    icon="tool"
-                  />
-                </div>
+              <div className="home-card-grid">
+                <Card
+                  title="dbt Fusion engine"
+                  tag="Article"
+                  body="Learn about the dbt Fusion engine and see how it enables dbt to operate at speed and scale like never before."
+                  link="/docs/fusion"
+                  icon="zap"
+                />
+                <Card
+                  title="Get started with dbt"
+                  tag="Guide"
+                  body="Build fast with our quickstart guides."
+                  link="/docs/get-started-dbt"
+                  icon="settings"
+                />
+                <Card
+                  title="Move to the dbt platform"
+                  tag="Guide"
+                  body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
+                  link="/guides/core-to-cloud-1?step=1"
+                  icon="tool"
+                />
               </div>
+            </div>
           </section>
-          <section className='baton-1'>
-            <div className='container'>
+
+          <section className="baton-1 section--compact">
+            <div className="container">
               <div>
                 <span className="eyebrow">Documentation by product</span>
                 <h2 className="heading-2">Explore the docs by product</h2>
@@ -170,10 +147,11 @@ function Home() {
                   icon="dbt-copilot"
                 />
                 <Card
-                  title="dbt Mesh"
-                  body="dbt Mesh is a framework that helps organizations scale their teams and data assets effectively."
-                  link="/docs/mesh/about-mesh"
-                  icon="lineage"
+                  title="VS Code Extension"
+                  body="This free tool brings the full power of the dbt Fusion engine into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
+                  link="/docs/about-dbt-extension"
+                  icon="vsce"
+                  showBorderBeam
                 />
                 <Card
                   title="dbt Orchestrator"
@@ -212,18 +190,17 @@ function Home() {
                   icon="dashboard"
                 />
                 <Card
-                  title="VS Code Extension"
-                  body="This free tool brings the full power of the dbt Fusion engine into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
-                  link="/docs/about-dbt-extension"
-                  icon="vsce"
-                  showBorderBeam
+                  title="dbt Mesh"
+                  body="dbt Mesh is a framework that helps organizations scale their teams and data assets effectively."
+                  link="/docs/mesh/about-mesh"
+                  icon="lineage"
                 />
               </div>
             </div>
           </section>
 
-          <section>
-            <div className='container'>
+          <section className="section--compact">
+            <div className="container">
               <div>
                 <span className="eyebrow">Docs highlights</span>
                 <h2 className="heading-2">Dive deeper into dbt</h2>
@@ -257,11 +234,11 @@ function Home() {
                   <Link to="/community/join">Join the Community</Link>
                 </div>
               </div>
-              </div>
+            </div>
           </section>
 
-          <section className='baton-2'>
-            <div className='container'>
+          <section className="baton-2 section--compact">
+            <div className="container">
               <div>
                 <span className="eyebrow">Get help from others</span>
                 <h2 className="heading-2">Join the dbt Community</h2>
@@ -312,8 +289,8 @@ function Home() {
             </div>
           </section>
 
-          <section className='static-bg'>
-            <div className='container'>
+          <section className="static-bg section--compact">
+            <div className="container">
               <div>
                 <span className="eyebrow">From the team</span>
                 <h2 className="heading-2">Read the developer blog</h2>
@@ -321,7 +298,7 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 {recentBlogData.map((item) => (
-                  <BlogPostCard postMetaData={item} />
+                  <BlogPostCard key={item.link} postMetaData={item} />
                 ))}
               </div>
             </div>
