@@ -73,11 +73,11 @@ models:
     columns: # Any column can have either an entity or a dimension, but not both
       - name: my_dimension_column # Required
         description: Column description # Optional
-        dimensions:
-          - name: my_dimension # Optional, defaults to column name
-            type: categorical # Required. Accepted values: categorical | time
-            label: Recommended adding a string that defines the display value in downstream tools # Optional
-            description: Same as always # Optional, defaults to the column description if not otherwise specified
+        dimension:
+          name: my_dimension # Optional, defaults to column name
+          type: categorical # Required. Accepted values: categorical | time
+          label: Recommended adding a string that defines the display value in downstream tools # Optional
+          description: Same as always # Optional, defaults to the column description if not otherwise specified
 ```
 
 </VersionBlock>
@@ -164,17 +164,6 @@ derived_semantics:
     - name: is_bulk
       type: categorical
       expr: "case when quantity > 10 then true else false end" # Required
-```
-
-For example:
-
-```yaml
-    # Derived entities (expression-based)
-    derived_semantics:
-      entities:
-        - name: user
-          type: foreign
-          expr: "substring(id_order from 2)" # Required
 ```
 
 </VersionBlock>
