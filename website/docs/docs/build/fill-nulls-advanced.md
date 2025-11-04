@@ -151,7 +151,7 @@ For example, the following structure leaves nulls in the final results (`leads_t
 | 2024-01-02 | 37 | 0 | null |
 | 2024-01-03 | 79 | 8 | .1 |
 
-To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would join the `leads` metric to a time spine model to ensure a value for each day. This can be done by adding `join_to_timespine` to the <VersionBlock lastVersion="1.99">`measure` parameter</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> in the `leads` metric configuration:
+To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would join the `leads` metric to a time spine model to ensure a value for each day. You can do this by adding `join_to_timespine` to the <VersionBlock lastVersion="1.99">`measure` parameter</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> in the `leads` metric configuration:
 
 <VersionBlock lastVersion="1.99">
 <File name='models/metrics/leads.yml'>
