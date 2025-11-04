@@ -159,12 +159,16 @@ models:
 Use the `derived_semantics` key in the model YAML entry when you need to derive a dimension definition that is not a direct 1:1 mapping to a single physical column. The `expr` field is required when using `derived_semantics`.
 
 ```yaml
-derived_semantics: 
-  dimensions:
-    - name: is_bulk
-      type: categorical
-      expr: "case when quantity > 10 then true else false end" # Required
-```
+models: 
+  - name: my_model
+    semantic_model:
+      enabled: true
+    ...
+    derived_semantics: 
+      dimensions:
+        - name: is_bulk
+          type: categorical
+          expr: "case when quantity > 10 then true else false end" # Required
 
 For example:
 
