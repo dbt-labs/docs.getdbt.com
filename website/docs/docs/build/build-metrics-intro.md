@@ -23,7 +23,7 @@ MetricFlow allows you to:
 
   <Card
     title="Metrics spec in the dbt Fusion engine"
-    body="Learn how to migrate from the legacy metrics YAML spec to the new metrics YAML spec in Fusion."
+    body="Learn how to migrate from the legacy metrics YAML spec to the latest metrics YAML spec in Fusion."
     link="/docs/build/metrics-spec-fusion"
     icon="dbt-bit"/>
 
