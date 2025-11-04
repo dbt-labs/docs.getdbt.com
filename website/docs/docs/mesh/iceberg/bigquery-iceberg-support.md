@@ -5,6 +5,8 @@ sidebar_label: "BigQuery Iceberg support"
 description: Understand BigQuery support for Apache Iceberg.
 ---
 
+import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
+
 dbt supports materializing Iceberg tables on BigQuery via the catalog integration, starting with the dbt-bigquery 1.10 release.
 
 ## Creating Iceberg Tables
@@ -123,7 +125,7 @@ BigQuery's DDL for creating iceberg tables requires that a fully qualified stora
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location_root = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-**Note:** While you can customize paths with `base_location_root` and `base_location_subpath`, we don't recommend you rely on these for environment isolation (such as separating development and production environments). These configuration values can be easily modified by anyone with repository access. For true environment isolation, use separate `EXTERNAL VOLUME`s with infrastructure-level access controls..
+<BaseLocationEnvIsolation />
 
 dbt also allows users to completely override the storage_uri with the model configuration field `storage_uri`. This overrides both the catalog integration path and the other model configuration fields to supply the entire `storage_uri` path directly.
 
@@ -161,7 +163,7 @@ The available adapter properties for configuration are `base_location_root`, `ba
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location_root = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-**Note:** While you can customize paths with `base_location_root` and `base_location_subpath`, we don't recommend you rely on these for environment isolation (such as separating development and production environments). These configuration values can be easily modified by anyone with repository access. For true environment isolation, use separate `EXTERNAL VOLUME`s with infrastructure-level access controls.
+<BaseLocationEnvIsolation />
 
 dbt also allows users to completely override the storage_uri with the adapter property `storage_uri`. This overrides both the catalog integration path and any `base_location` overrides to supply the entire `storage_uri` path directly.
 

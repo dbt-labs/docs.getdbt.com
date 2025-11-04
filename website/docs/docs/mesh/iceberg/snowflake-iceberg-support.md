@@ -5,6 +5,8 @@ sidebar_label: "Snowflake Iceberg support"
 description: Understand Snowflake support for Apache Iceberg.
 ---
 
+import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
+
 dbt supports materializing the table in Iceberg table format in two different ways:
 
 - The model configuration field `table_format = 'iceberg'` (legacy)
@@ -352,7 +354,7 @@ We recommend using the default behavior, but if you need to customize the result
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
+<BaseLocationEnvIsolation />
 
 #### Example configurations
 
