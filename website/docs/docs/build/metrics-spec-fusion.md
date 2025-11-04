@@ -395,7 +395,7 @@ The [autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metr
 
 <!--need to confirm steps and replace screenshots-->
 
-You can also convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" />. You don't have to install the autofix tool.
+Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the dbt-autofix tool.
 
 1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix tool may overwrite any unsaved changes.
