@@ -15,6 +15,13 @@ With the new spec, you get simpler configuration without losing flexibility, fas
 
 This section highlights the key updates in the latest metrics spec in Fusion and compares them to the legacy spec.
 
+- [Semantic models](#semantic-models) &mdash; `semantic_model` is nested directly under each model in `models:` instead of being a top-level key.
+- [Entities and dimensions](#entities-and-dimensions) &mdash; Entities and dimensions are defined under columns.
+- [Time dimension](#time-dimension) &mdash; Set `agg_time_dimension` at the model level as the default time dimension for all metrics, with the option to override per metric. `time_granularity` is deprecated in Fusion. Define `granularity` at the column level.
+- [Simple metrics](#simple-metrics) &mdash; Measures are deprecated in Fusion. Use `type: simple` metrics defined directly within the model instead.
+- [Advanced metrics](#advanced-metrics) &mdash; Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
+- [`type_params`](#type_params) &mdash; The `type_params` key is deprecated in Fusion.
+
 ### Semantic models
 
 The `semantic_model` key is embedded under `models`.
@@ -47,7 +54,7 @@ semantic_models:
 
 ### Entities and dimensions
 
-Entities and dimensions are defined under columns. 
+Entities and dimensions are defined directly under columns, creating a 1:1 relationship between the physical columns and their semantic definitions.
 
 <Tabs>
 
@@ -368,7 +375,7 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML specs using the dbt-autofix tool in your CLI or <Constant name="dbt_platform"/>'s Studio IDE.  
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI or <Constant name="dbt_platform"/>'s Studio IDE.  
 
 Refer to the following steps in this section, depending on which tool you use.
 
