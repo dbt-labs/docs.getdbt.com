@@ -374,7 +374,7 @@ Refer to the following steps in this section, depending on which tool you use.
 
 ### Using the CLI
 
-The [autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI.
+The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI.
 
 1. In your CLI, run the following command:
 
