@@ -88,25 +88,25 @@ metrics:
 ```yaml
 models: 
   - name: my_model
-     semantic_model: 
-       enabled: true
+    semantic_model: 
+      enabled: true
      ...
-     metrics:
-  - name: my_simple_metric # Required
-    description: The metric description # Optional
-    label: My simple metric label # Optional
-    type: simple  # Required
-    agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean (use existing enum from DSI)
-    expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
-    join_to_timespine: true
-    fill_nulls_with: 0
+    metrics:
+      - name: my_simple_metric # Required
+        description: The metric description # Optional
+        label: My simple metric label # Optional
+        type: simple  # Required
+        agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean (use existing enum from DSI)
+        expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
+        join_to_timespine: true
+        fill_nulls_with: 0
 
-  - name: my_simple_metric_that_uses_the_other_time_dimension
-    description: The metric description
-    label: My simple metric that uses the other time dimension label
-    type: simple
-    agg: count_distinct
-    agg_time_dimension: my_other_time_dimension_column # Optional, if not using the default time dimension
+      - name: my_simple_metric_that_uses_the_other_time_dimension
+        description: The metric description
+        label: My simple metric that uses the other time dimension label
+        type: simple
+        agg: count_distinct
+        agg_time_dimension: my_other_time_dimension_column # Optional, if not using the default time dimension
 ```
 
 </VersionBlock>
