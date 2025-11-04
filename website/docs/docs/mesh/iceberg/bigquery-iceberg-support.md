@@ -62,9 +62,9 @@ Supply and nest these additional configurations, unique to BigQuery, under the `
 
 These properties can be set in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` will take precedence. Refer to [Base location](#base-location) for more information.
 
-- **base_location_root:** Specifies the prefix of the base location path within the storage bucket where Iceberg table data will be written.
-- **base_location_subpath:** Specifies the suffix of the base location path within the storage bucket where Iceberg table data will be written. This property can only be set in model configurations, not in `catalogs.yml`.
-- **storage_uri:** Completely overrides the storage_uri, allowing you to specify the full path directly instead of using the catalog integration's external volume and base_location components.
+- `base_location_root`: Specifies the prefix of the base location path within the storage bucket where Iceberg table data will be written.
+- `base_location_subpath`: Specifies the suffix of the base location path within the storage bucket where Iceberg table data will be written. This property can only be set in model configurations, not in `catalogs.yml`.
+- `storage_uri`: Completely overrides the storage_uri, allowing you to specify the full path directly instead of using the catalog integration's external volume and base_location components.
 
 </VersionBlock>
 
