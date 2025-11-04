@@ -368,7 +368,9 @@ metrics:
 
 ## Migrating to the latest spec
 
-Refer to the steps in this section to convert your legacy metrics to the new YAML spec.
+Migrate your legacy metrics to the latest YAML specs using the dbt-autofix tool in your CLI or <Constant name="dbt_platform"/>'s Studio IDE.  
+
+Refer to the following steps in this section, depending on which tool you use.
 
 ### Using the CLI
 
