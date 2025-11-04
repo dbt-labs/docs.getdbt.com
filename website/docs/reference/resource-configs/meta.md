@@ -268,6 +268,7 @@ exposures:
 </TabItem>
 
 <TabItem value="semantic models">
+<VersionBlock lastVersion="1.99">
 
 Configure `meta` in your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
@@ -281,7 +282,7 @@ semantic-models:
 ```
 </File>
 
-<VersionBlock lastVersion="1.99">
+
 <File name='models/semantic_models.yml'>
 
 ```yml
@@ -295,6 +296,19 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
+
+Configure `meta` in the [semantic models](/docs/build/semantic-models) embedded within your model YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
+
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic-models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +meta: {<dictionary>}
+```
+</File>
+
 <File name='models/file_name.yml'>
 
 ```yml
@@ -566,6 +580,7 @@ models:
 
 ### Assign meta to semantic model
 
+<VersionBlock lastVersion="1.99">
 
 The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the `semantic_model.yml` file and  `dbt_project.yml` file:
 
@@ -597,10 +612,48 @@ semantic-models:
 ```
 </TabItem>
 </Tabs>
+</VersionBlock>
+
+
+<VersionBlock firstVersion="2.0">
+
+The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the model YAML file and  `dbt_project.yml` file:
+
+<Tabs>
+<TabItem value="semantic_model" label="Semantic model">
+
+```yaml
+models:
+  - name: fact_transactions
+    description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
+    semantic_model:
+      enabled: true
+      name: transaction
+      config:
+        meta:
+          data_owner: "Finance team"
+          used_in_reporting: true
+
+    agg_time_dimension: transaction_date
+```
+
+</TabItem>
+
+<TabItem value="project.yml" label="dbt_project.yml">
+
+```yaml
+semantic-models:
+  jaffle_shop:
+    +meta:
+      used_in_reporting: true
+```
+</TabItem>
+</Tabs>
+</VersionBlock>
 
 ### Assign meta to dimensions, measures, entities
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.99">
 
 <Tabs>
 <TabItem value="semantic_model" label="Semantic model">
@@ -662,3 +715,77 @@ semantic-models:
 </TabItem>
 </Tabs>
 </VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<Tabs>
+<TabItem value="semantic_model" label="Semantic model">
+
+The following example shows how to assign a `meta` value to a [dimension](/docs/build/dimensions), [entity](/docs/build/entities), and [simple metrics](/docs/build/simple) in a semantic model:
+
+<File name='model_name.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      name: semantic_model
+
+    agg_time_dimension: order_date
+
+    columns:
+      - name: order_date
+        dimension:
+          type: time
+          config:
+            meta:
+              data_owner: "Finance team"
+              used_in_reporting: true
+
+      - name: customer_id
+        entity:
+          type: primary
+          config:
+            meta:
+              description: "Unique identifier for customers"
+              data_owner: "Sales team"
+              used_in_reporting: false
+
+    metrics:
+      - name: count_of_users
+        type: simple
+        agg: count_distinct
+        expr: user_id
+        config:
+          meta:
+            used_in_reporting: true
+```
+
+</File>
+</TabItem>
+
+<TabItem value="project.yml" label="dbt_project.yml">
+
+This second example shows how to assign a `data_owner` and additional metadata value to a dimension in the `dbt_project.yml` file using the `+meta` syntax. The similar syntax can be used for entities and simple metrics.
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic-models:
+  jaffle_shop:
+    ...
+    [dimensions](/docs/build/dimensions):
+      - name: order_date
+        config:
+          meta:
+            data_owner: "Finance team"
+            used_in_reporting: true
+```
+
+
+</File>
+</TabItem>
+</Tabs>
+</VersionBlock>
+
