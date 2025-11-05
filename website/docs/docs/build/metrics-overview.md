@@ -582,8 +582,6 @@ metrics:
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
 
-<VersionBlock lastVersion="1.99">
-
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
