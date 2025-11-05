@@ -488,8 +488,6 @@ metrics:
 
 <VersionBlock lastVersion="1.99">
 
-<VersionBlock lastVersion="1.99">
-
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
