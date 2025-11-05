@@ -159,12 +159,9 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 
 <VersionBlock lastVersion="1.99">
 
-
 In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
 
 The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
-
-<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -216,7 +213,6 @@ semantic_models:
 In this example, a simple metric named `order_total` is defined on the `orders` model and semantic model. The metric sums the `order_total` column. The time dimension `metric_time` provides daily granularity and can be rolled up to weekly or monthly periods.
 
 Additionally, the `customers` semantic model defines a derived categorical dimension `is_new_customer`, which returns `true` when `first_ordered_at` is `not null` and `false` otherwise.
-
 
 ```yaml
 models:
