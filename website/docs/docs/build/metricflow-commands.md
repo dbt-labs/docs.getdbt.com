@@ -54,7 +54,7 @@ Something to note, MetricFlow `mf` commands return an error if you have a Metafo
 ## MetricFlow commands
 
 MetricFlow provides the following commands to retrieve metadata and query metrics.  
-- If using <Constant name="dbt_platform" /> or if you're on the <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
+- Use the `dbt sl` prefix if you’re on the <Constant name="dbt_platform" /> (like the <Constant name="cloud_ide"/> or <Constant name="cloud_cli"/>) or if you’re running the <Constant name="fusion_engine" /> (for example, locally in VS Code or the terminal).
 - If using dbt <Constant name="core"/> locally, you can run MetricFlow commands using the `mf` prefix.
 
 <Tabs>
@@ -488,7 +488,7 @@ Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQ
 **Query**
 
 ```bash
- # In dbt platform or Fusion engine 
+# In dbt platform or Fusion engine 
 dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
 
 # In dbt Core
@@ -561,7 +561,7 @@ Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-dbt sl export 
+dbt sl export  # dbt platform or Fusion engine
 ```
 
 ## Export-all
@@ -571,7 +571,7 @@ Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-dbt sl export-all 
+dbt sl export-all  # dbt platform or Fusion engine
 ```
 
 
