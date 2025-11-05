@@ -52,6 +52,12 @@ Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation 
 
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
 
+## Adapter-specific features and functionalities
+
+### Snowflake
+
+- The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
+
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
