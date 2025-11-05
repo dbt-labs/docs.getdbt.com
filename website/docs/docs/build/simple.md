@@ -45,7 +45,7 @@ The parameters, description, and type for simple metrics are:
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
-| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`,  `count_distinct`,  `percentile`, and `sum_boolean` (use existing enum from DSI)| Required | String |
+| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`, `count`, `count_distinct`,  `percentile`, and `sum_boolean` (use existing enum from DSI)| Required | String |
 | `expr` | The expression to use, like a column name. Defaults to the metric name. | Optional | String |
 | `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
 | `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics. | Optional | String |
