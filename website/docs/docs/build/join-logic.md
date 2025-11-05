@@ -215,8 +215,6 @@ For example, if you have two models, `country` and `region`, where customers are
 
 Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
 
-<VersionBlock lastVersion="1.99">
-
 ```yaml
 semantic_models:
   - name: sales
