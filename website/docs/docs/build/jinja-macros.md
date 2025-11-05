@@ -15,13 +15,14 @@ In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a t
 Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. It's important to note that Jinja itself isn't a programming language; instead, it acts as a tool to enhance and extend the capabilities of SQL within your dbt projects.
 
 For example, with Jinja, you can:
-* Use control structures (e.g. `if` statements and `for` loops) in SQL
-* Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
-* Change the way your project builds based on the current target.
-* Operate on the results of one query to generate another query, for example:
-  * Return a list of payment methods, to create a subtotal column per payment method (pivot)
-  * Return a list of columns in two relations, and select them in the same order to make it easier to union them together
-* Abstract snippets of SQL into reusable [**macros**](#macros) — these are analogous to functions in most programming languages.
+
+- Use control structures (for example, `if` statements and `for` loops) in SQL
+- Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
+- Change the way your project builds based on the current target.
+- Operate on the results of one query to generate another query, for example:
+  - Return a list of payment methods, to create a subtotal column per payment method (pivot)
+  - Return a list of columns in two relations, and select them in the same order to make it easier to union them together
+- Abstract snippets of SQL into reusable [**macros**](#macros) — these are analogous to functions in most programming languages.
 
 If you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
 

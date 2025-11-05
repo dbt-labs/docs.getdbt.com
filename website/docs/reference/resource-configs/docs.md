@@ -39,7 +39,6 @@ models:
 <File name='models/schema.yml'>
 
   ```yml
-version: 2
 
 models:
   - name: model_name
@@ -77,7 +76,6 @@ seeds:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -110,7 +108,6 @@ snapshots:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -131,7 +128,6 @@ You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refe
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -151,7 +147,6 @@ You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refe
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: macro_name

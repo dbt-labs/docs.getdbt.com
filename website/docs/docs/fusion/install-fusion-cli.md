@@ -57,6 +57,7 @@ dbtf --version
 
 This location is automatically added to your path to easily execute the `dbtf` command, but it requires reloading your shell.
 
+
 ## Update Fusion
 
 The following command will update to the latest version of Fusion and adapter code:

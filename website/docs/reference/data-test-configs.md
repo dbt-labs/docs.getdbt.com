@@ -80,7 +80,6 @@ data_tests:
 <TabItem value="property-yaml">
 
 ```yaml
-version: 2
 
 <resource_type>:
   - name: <resource_name>
@@ -179,7 +178,6 @@ data_tests:
 <TabItem value="property-yaml">
 
 ```yaml
-version: 2
 
 <resource_type>:
   - name: <resource_name>

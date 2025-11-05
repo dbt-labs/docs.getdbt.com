@@ -13,7 +13,7 @@ The System for Cross-Domain Identity Management (SCIM) makes user data more secu
 
 To configure SCIM in your <Constant name="cloud" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
-- You must be using Okta or Entra ID as your SSO provider.
+- You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have permissions to configure the account settings in [<Constant name="cloud" />](/docs/cloud/manage-access/enterprise-permissions) and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
 - If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist.
 

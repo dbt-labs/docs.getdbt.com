@@ -10,7 +10,6 @@ The `overrides` property is deprecated in v1.10.
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -48,7 +47,6 @@ includes the `github_source` package.
 <File name='models/src_github.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: github
@@ -68,7 +66,6 @@ You can override configurations at both the source and the <Term id="table" /> l
 <File name='models/src_github.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: github

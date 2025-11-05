@@ -83,15 +83,15 @@ Explore these additional configurations for performance and reliability improvem
 This section outlines the considerations and methods to connect your data platform to <Constant name="cloud" />.
 
 1. In <Constant name="cloud" />, set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables). <Constant name="cloud" /> can connect with a variety of data platform providers including:
-   - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+   - [AlloyDB](/docs/cloud/connect-data-platform/connect-postgresql-alloydb) 
    - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
-   - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+   - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift) 
    - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
    - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
    - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
    - [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
    - [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
-   - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
+   - [PostgreSQL](/docs/cloud/connect-data-platform/connect-postgresql-alloydb)
    - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
    - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
    - [Teradata](/docs/cloud/connect-data-platform/connect-teradata)

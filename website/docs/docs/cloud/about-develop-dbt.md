@@ -1,16 +1,21 @@
 ---
-title: About developing in dbt
+title: Develop with dbt
 id: about-develop-dbt
 description: "Learn how to develop your dbt projects using dbt."
-sidebar_label: "About developing in dbt" 
+sidebar_label: "Develop with dbt" 
 pagination_next: "docs/cloud/about-cloud-develop-defer"
-hide_table_of_contents: true
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 
 You can develop in your browser using a <Constant name="cloud" />-powered command line interface (CLI), an integrated development environment (<Constant name="cloud_ide" />), or <Constant name="visual_editor" />.
 
-<div className="grid--3-col" >
+## Getting started
+
+To get started, you'll need a [<Constant name="cloud" />](https://www.getdbt.com/signup) account and a developer license. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).
+
+Choose the option that best fits your needs:
+
+<div className="grid--2-col" >
 
   <Card
     title="dbt CLI"
@@ -20,7 +25,7 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
 
   <Card
     title="dbt VS Code extension"
-    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt Fusion engine while developing locally."
+    body="Bring the speed and intelligence of the dbt Fusion engine to VS Code for a seamless local development experience."
     link="/docs/about-dbt-extension"
     icon="vsce"
     showBorderBeam
@@ -28,7 +33,7 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
 
   <Card
     title="dbt Studio IDE"
-    body="Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface."
+    body="Develop dbt projects directly in your browser with seamless SQL compilation and an intuitive, visual workflow."
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="dashboard"/>
 
@@ -42,4 +47,3 @@ You can develop in your browser using a <Constant name="cloud" />-powered comman
 
 </div><br />
 
-To get started, you'll need a [<Constant name="cloud" />](https://www.getdbt.com/signup) account and a developer seat. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).

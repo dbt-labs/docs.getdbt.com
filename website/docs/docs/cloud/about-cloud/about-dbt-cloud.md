@@ -8,7 +8,7 @@ pagination_next: "docs/cloud/about-cloud/architecture"
 pagination_prev: null
 ---
 
-<Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.
+<Constant name="dbt_platform" /> (formerly dbt Cloud) is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.
 
 In addition to providing a hosted architecture for running dbt across your organization, <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (<Constant name="cloud_ide" />), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
 

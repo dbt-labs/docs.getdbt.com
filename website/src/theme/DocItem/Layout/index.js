@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
+import { useLocation } from '@docusaurus/router';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -28,6 +29,7 @@ import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
 import useHashLink from '../../../utils/use-hash-link';
 import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
+import CopyPage from '@site/src/components/copyPage';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -179,6 +181,12 @@ export default function DocItemLayout({children}) {
   // If the page has a search_weight value, apply that value
   const {frontMatter} = useDoc();
   const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
+  
+  // Check if the current route contains /guides/
+  const location = useLocation();
+  const isGuidesRoute = location.pathname.includes('/guides/');
+
+  
 
   return (
     <div className="row">
@@ -186,7 +194,10 @@ export default function DocItemLayout({children}) {
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
+          <div className={styles.copyPageContainer}>
             <DocBreadcrumbs />
+            <CopyPage dropdownRight={isGuidesRoute} />
+            </div>
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>

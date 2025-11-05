@@ -30,7 +30,6 @@ The following specifies an `alias` as part of the `models/properties.yml` file m
 <File name='models/properties.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: sales_total
@@ -75,7 +74,6 @@ In the `seeds/properties.yml` file:
 <File name='seeds/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: product_categories
@@ -123,7 +121,6 @@ In the `snapshots/snapshot_name.yml` file:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: your_snapshot_name

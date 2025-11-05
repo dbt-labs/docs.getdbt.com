@@ -8,7 +8,7 @@ pagination_prev: null
 
 Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#dbt-cloud) or [<Constant name="core" />](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
-## the dbt platform
+## The dbt platform (formerly dbt Cloud) {#the-dbt-platform}
 
 <Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 

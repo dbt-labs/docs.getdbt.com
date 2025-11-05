@@ -33,6 +33,8 @@ BigQuery DataFrames is an open source Python package that transpiles pandas and 
 - Basic to intermediate SQL and python.
 - Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com).
 
+During setup, you’ll need to select the **BigQuery (Legacy)** adapter and enter values for your **Google Cloud Storage Bucket** and **Dataproc Region** in the <Constant name="dbt_platform"/>. See [Configure BigQuery in dbt platform](/guides/dbt-python-bigframes?step=2#configure-bigquery-in-dbt-platform) for details.
+
 ### What you'll build
 
 Here's what you'll build in two parts:
@@ -101,6 +103,23 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
    gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
+
+### Configure BigQuery in the dbt platform
+
+To set up your BigQuery DataFrames connection in the <Constant name="dbt_platform"/>, refer to the following steps:
+1. Go to **Account settings** > **Connections**. Click **New connection**. 
+2. In the **Type** section, select **BigQuery**.
+3. Select **BigQuery (Legacy)** as your adapter.
+2. Under **Optional settings**, enter values for the following fields:
+    - **Google Cloud Storage Bucket** (for example: `dbt_name_bucket`)
+    - **Dataproc Region** (for example: `us-central1`)
+3. Click **Save**.
+ 
+This is required so that BigFrames jobs execute correctly.
+
+Refer to [Connect to BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) for more info on how to connect to BigQuery in the <Constant name="dbt_platform"/>.
+
+<Lightbox src="/img/guides/gcp-guides/dbt-platform-bq.png" width="80%" title="Configure BigQuery in the dbt platform"/>
 
 ## Create, configure, and execute your Python models
 

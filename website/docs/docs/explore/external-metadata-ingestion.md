@@ -44,6 +44,7 @@ These credentials are configured separately from dbt environment credentials and
 3. Select an existing connection or create a [**New connection**](/docs/cloud/connect-data-platform/connect-snowflake) where you want to ingest metadata from.
 4. Scroll to the bottom of the page and click **Add credentials** in **Platform metadata credentials**.
     - Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
+    - If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured. 
 5. Select the **External metadata ingestion** option.
     - This allows metadata from this connection to populate the <Constant name="explorer" />.
     - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.

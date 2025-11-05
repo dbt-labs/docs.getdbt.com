@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="cloud" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, <Constant name="cloud" /> is the fastest and easiest way to begin transforming your data.
+<Constant name="cloud" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt pricing work?
 

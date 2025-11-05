@@ -94,7 +94,7 @@ Model query history uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in
 
 To enhance your discovery, you can view your model query history in various locations within <Constant name="explorer" />:
 - [View from Performance charts](#view-from-performance-charts)
-* [View from Project lineage](#view-from-project-lineage)
+- [View from Project lineage](#view-from-project-lineage)
 - [View from Model list](#view-from-model-list)
 
 ### View from Performance charts

@@ -24,7 +24,6 @@ course="Snapshots"
 <File name='snapshots/<filename>.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: <snapshot name>

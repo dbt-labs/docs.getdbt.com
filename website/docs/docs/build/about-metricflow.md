@@ -37,7 +37,9 @@ Before you start, consider the following guidelines:
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with dbt version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
+- MetricFlow is developed and maintained as part of the [Open Semantic Interchange (OSI)](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/) initiative. 
+- MetricFlow is compatible with dbt version 1.6 and higher.
+- MetricFlow is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). Data practitioners and enthusiasts are highly encouraged to contribute. Read more about [MetricFlow's license history](https://github.com/dbt-labs/metricflow?tab=readme-ov-file#license-history). 
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
@@ -70,9 +72,6 @@ For a semantic model, there are three main pieces of metadata:
 <VersionBlock lastVersion="1.99">
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
-* [Simple metrics](/docs/build/simple) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
-</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
@@ -93,7 +92,7 @@ MetricFlow supports different metric types:
 <VersionBlock lastVersion="1.99">
 
 - [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
@@ -164,6 +163,8 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
 
 The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
+
+<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -285,7 +286,6 @@ models:
           description: "Date of customer's first order"
           label: "First Order Date"
 ```
-
 </VersionBlock>
 
 </TabItem>
@@ -425,7 +425,7 @@ metrics:
 
 ```yaml
 models:
-  - name: orders    # The name of the semantic model
+  - name: orders    
     semantic_model:
       enabled: true
       name: orders_semantic_model

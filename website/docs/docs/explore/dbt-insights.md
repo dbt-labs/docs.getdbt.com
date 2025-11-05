@@ -8,7 +8,7 @@ pagination_prev: "docs/explore/model-query-history"
 pagination_next: "docs/explore/navigate-dbt-insights"
 ---
 
-# About dbt Insights <Lifecycle status="preview,managed,managed_plus" />
+# About dbt Insights <Lifecycle status="managed,managed_plus" />
 
 <IntroText>
 Learn how to query data with <Constant name="query_page" /> and view documentation in <Constant name="explorer" />.
@@ -44,3 +44,4 @@ Some example use cases include:
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="query_page" />, you must also:
   - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.
   - Have a successful job run in the environment where you configured the <Constant name="semantic_layer" />. 
+- (Optional) To enable [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features-in-dbt-insights) in <Constant name="query_page" /> and run your compilations on the <Constant name="fusion_engine" />, set your development environment to use the **Latest Fusion** dbt version.

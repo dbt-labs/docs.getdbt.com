@@ -25,7 +25,6 @@ Sources are defined in `.yml` files nested under a `sources:` key.
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -96,7 +95,6 @@ These should be familiar concepts if you've already added data tests and descrip
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -140,7 +138,6 @@ To configure source freshness information, add a `freshness` block to your sourc
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -211,7 +208,7 @@ Set [source freshness snapshots](/docs/deploy/source-freshness#enabling-source-f
 
 ### Filter
 
-Some databases can have tables where a filter over certain columns are required, in order prevent a full scan of the table, which could be costly. In order to do a freshness check on such tables a `filter` argument can be added to the configuration, e.g. `filter: _etl_loaded_at >= date_sub(current_date(), interval 1 day)`. For the example above, the resulting query would look like
+Some databases can have tables where a filter over certain columns are required, in order prevent a full scan of the table, which could be costly. In order to do a freshness check on such tables a `filter` argument can be added to the configuration, for example, `filter: _etl_loaded_at >= date_sub(current_date(), interval 1 day)`. For the example above, the resulting query would look like
 
 ```sql
 select

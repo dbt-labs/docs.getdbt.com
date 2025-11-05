@@ -1,15 +1,15 @@
 ---
 title: "Databricks configurations"
 id: "databricks-configs"
+tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 ---
 
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock firstVersion="1.9">
-
 dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
+
 
 | Option    | Description| Required?     | Model support   | Example      |
 |-------------|--------|-----------|-----------------|---------------|
@@ -38,11 +38,8 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
 For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.9">
-
 ### Python submission methods
+_Available in versions 1.9 or higher_
 
 In dbt-databricks v1.9 (try it now in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
 
@@ -139,11 +136,9 @@ models:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.10">
 
 ## Configuring columns
+_Available in versions 1.10 or higher_
 
 When materializing models of various types, you may include several optional column-level configs that are specific to the dbt-databricks plugin, in addition to the standard [column configs](/reference/resource-properties/columns). Support for column tags and column masks were added in dbt-databricks v1.10.4.
 
@@ -166,25 +161,20 @@ models:
   - name: customers
     columns:
       - name: customer_id
-        config:
-          databricks_tags:
-            data_classification: "public"
+        databricks_tags:
+          data_classification: "public"
       - name: email
-        config:
-          databricks_tags:
-            data_classification: "pii"
-          column_mask:
-            function: my_catalog.my_schema.mask_email
-            using_columns: "customer_id, 'literal string'"
+        databricks_tags:
+          data_classification: "pii"
+        column_mask:
+          function: my_catalog.my_schema.mask_email
+          using_columns: "customer_id, 'literal string'"
 ```
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.9">
-
 ## Incremental models
+_Available in versions 1.9 or higher_
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of five values:
  - **`append`**: Insert new records without updating or overwriting any existing data.
@@ -194,8 +184,6 @@ dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs
  - **`microbatch`** (Delta file format only): Implements the [microbatch strategy](/docs/build/incremental-microbatch) using `replace_where` with predicates generated based `event_time`.
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
-
-</VersionBlock>
 
 ### The `append` strategy
 
@@ -250,9 +238,17 @@ insert into table analytics.databricks_incremental
 
 ### The `insert_overwrite` strategy
 
-This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/3.0.0-preview/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
+The `insert_overwrite` strategy updates data in a table by replacing existing records instead of just adding new ones. This strategy is most effective when specified alongside a `partition_by` or `liquid_clustered_by` clause in your model config, which helps identify the specific partitions or clusters affected by your query. dbt will run an [atomic `insert into ... replace on` statement](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) that dynamically replaces all partitions/clusters included in your query, instead of rebuilding the entire table. 
 
-If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
+**Important!** Be sure to re-select _all_ of the relevant data for a partition or cluster when using this incremental strategy. 
+
+When using `liquid_clustered_by`, the `replace on` keys used will be the same as the `liquid_clustered_by` keys (same as `partition_by` behavior). 
+
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `True` (in SQL warehouses or when using cluster computes) dbt dynamically overwrites partitions and only replaces the partitions or clusters returned by your model query. dbt runs a [partitionOverwriteMode='dynamic' `insert overwrite` statement](https://docs.databricks.com/aws/en/delta/selective-overwrite#dynamic-partition-overwrites-with-partitionoverwritemode-legacyl), which helps reduce unnecessary overwrites and improves performance. 
+
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `False` in SQL warehouses, dbt truncates (empties) the entire table before inserting new data. This replaces all rows in the table each time the model runs, which can increase run time and cost for large datasets
+
+If you don't specify `partition_by` or `liquid_clustered_by`, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
 <Tabs
   defaultValue="source"
@@ -420,8 +416,6 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.9">
-
 Beginning with 1.9, `merge` behavior can be modified with the following additional configuration options:
 
 - `target_alias`, `source_alias`: Aliases for the target and source to allow you to describe your merge conditions more naturally.  These default to `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE`, respectively.
@@ -535,8 +529,6 @@ when not matched by source
 </TabItem>
 </Tabs>
 
-</VersionBlock>
-
 ### The `replace_where` strategy
 
 The `replace_where` incremental strategy requires:
@@ -626,9 +618,10 @@ insert into analytics.replace_where_incremental
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.9">
 
 ### The `microbatch` strategy
+
+_Available in versions 1.9 or higher_
 
 The Databricks adapter implements the `microbatch` strategy using `replace_where`. Note the requirements and caution statements for `replace_where` above. For more information about this strategy, see the [microbatch reference page](/docs/build/incremental-microbatch).
 
@@ -701,8 +694,6 @@ insert into analytics.replace_where_incremental
 </TabItem>
 </Tabs>
 
-</VersionBlock>
-
 ## Python model configuration
 
 The Databricks adapter supports Python models. Databricks uses PySpark as the processing framework for these models. 
@@ -725,7 +716,6 @@ def model(dbt, session):
     ...
 ```
 ```yml
-version: 2
 models:
   - name: my_python_model
     config:
@@ -840,7 +830,7 @@ compute:
 
 ### Specifying the compute for models
 
-As with many other configuaration options, you can specify the compute for a model in multiple ways, using `databricks_compute`.
+As with many other configuration options, you can specify the compute for a model in multiple ways, using `databricks_compute`.
 In your `dbt_project.yml`, the selected compute can be specified for all the models in a given directory:
 
 <File name='dbt_project.yml'>
@@ -916,9 +906,8 @@ Databricks adapter ... using compute resource <name of compute>.
 
 Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
-<VersionBlock firstVersion="1.9">
 The python code needs to run on an all purpose cluster (or serverless cluster, see [Python Submission Methods](#python-submission-methods)), while the SQL code can run on an all purpose cluster or a SQL Warehouse.
-</VersionBlock>
+
 When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
 If you wish to use a different compute for executing the python itself, you must specify an alternate compute in the config for the model.
 For example:
@@ -1034,7 +1023,7 @@ select * from {{ ref('my_seed') }}
 
 </File>
 
-### Configuration Details
+### Configuration details
 
 #### partition_by
 `partition_by` works the same as for views and tables, i.e. can be a single column, or an array of columns to partition by.

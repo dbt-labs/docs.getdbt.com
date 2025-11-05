@@ -1,11 +1,11 @@
 ---
-title: "Configuring BigQuery and GCP Private Service Connect (beta)"
+title: "Configuring BigQuery and GCP Private Service Connect"
 id: bigquery-psc
-description: "Configuring GCP Private Service Connect for BigQuery (beta)"
-sidebar_label: "GCP Private Service Connect for BigQuery (beta)"
+description: "Configuring GCP Private Service Connect for BigQuery"
+sidebar_label: "GCP Private Service Connect for BigQuery"
 ---
 
-# Configuring BigQuery Private Service Connect <Lifecycle status="beta, managed_plus" />
+# Configuring BigQuery Private Service Connect <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';

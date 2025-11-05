@@ -26,7 +26,7 @@ The following steps will walk you through the setup of a Databricks Azure Privat
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Databricks
     - Databricks instance name:
-    - Azure Databricks Workspace URL (e.g. adb-################.##.azuredatabricks.net)
+    - Azure Databricks Workspace URL (for example, adb-################.##.azuredatabricks.net)
     - Databricks Azure resource ID:
     - dbt Azure multi-tenant environment (EMEA):
     - Azure Databricks workspace region (like WestEurope, NorthEurope):

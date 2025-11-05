@@ -22,87 +22,86 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
-## Connecting to ClickHouse with **dbt-clickhouse**
+## Connecting to ClickHouse
 
 To connect to ClickHouse from dbt, you'll need to add a [profile](/docs/core/connect-data-platform/connection-profiles)
-to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
+to your `profiles.yml` configuration file. Follow the reference configuration below to set up a ClickHouse profile:
 
 <File name='profiles.yml'>
-
 ```yaml
-<profile-name>:
-  target: <target-name>
+clickhouse-service:
+  target: dev
   outputs:
-    <target-name>:
+    dev:
       type: clickhouse
-      schema: [ default ] # ClickHouse database for dbt models
+      schema: [ default ]  # ClickHouse database for dbt models
 
       # optional
-      driver: [ http ] # http or native.  If not configured, this will be auto-determined based on the port setting
-      host: [ localhost ]
+      host: [ <your-clickhouse-host> ]  # Your clickhouse cluster url for example, abc123.clickhouse.cloud. Defaults to `localhost`.
       port: [ 8123 ]  # Defaults to 8123, 8443, 9000, 9440 depending on the secure and driver settings 
-      user: [ default ] # User for all database operations
-      password: [ <empty string> ] # Password for the user
-      cluster: [ <empty string> ] # If configured, certain DDL/table operations will be executed with the `ON CLUSTER` clause using this cluster. Distributed materializations require this setting to work. See the following ClickHouse Cluster section for more details.
-      verify: [ True ] # Validate TLS certificate if using TLS/SSL
-      secure: [ False ] # Use TLS (native protocol) or HTTPS (http protocol)
-      retries: [ 1 ] # Number of times to retry a "retriable" database exception (such as a 503 'Service Unavailable' error)
-      compression: [ <empty string> ] # Use gzip compression if truthy (http), or compression type for a native connection
-      connect_timeout: [ 10 ] # Timeout in seconds to establish a connection to ClickHouse
-      send_receive_timeout: [ 300 ] # Timeout in seconds to receive data from the ClickHouse server
-      cluster_mode: [ False ] # Use specific settings designed to improve operation on Replicated databases (recommended for ClickHouse Cloud)
-      use_lw_deletes: [ False ] # Use the strategy `delete+insert` as the default incremental strategy.
-      check_exchange: [ True ] # Validate that clickhouse support the atomic EXCHANGE TABLES command.  (Not needed for most ClickHouse versions)
-      local_suffix: [ _local ] # Table suffix of local tables on shards for distributed materializations.
-      local_db_prefix: [ <empty string> ] # Database prefix of local tables on shards for distributed materializations. If empty, it uses the same database as the distributed table.
-      allow_automatic_deduplication: [ False ] # Enable ClickHouse automatic deduplication for Replicated tables
-      tcp_keepalive: [ False ] # Native client only, specify TCP keepalive configuration. Specify custom keepalive settings as [idle_time_sec, interval_sec, probes].
-      custom_settings: [ { } ] # A dictionary/mapping of custom ClickHouse settings for the connection - default is empty.
-
-      # Native (clickhouse-driver) connection settings
-      sync_request_timeout: [ 5 ] # Timeout for server ping
-      compress_block_size: [ 1048576 ] # Compression block size if compression is enabled
-
+      user: [ default ]  # User for all database operations
+      password: [ <empty string> ]  # Password for the user
+      secure: [ False ]  # Use TLS (native protocol) or HTTPS (http protocol)
 
 ```
 
+For a complete list of configuration options, see the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt).
 </File>
 
-### Description of ClickHouse Profile Fields
+### Create a dbt project
+You can now use this profile in one of your existing projects or create a new one using:
 
-| Field                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`                          | This must be included either in `profiles.yml` or in the `dbt_project.yml` file. Must be set to `clickhouse`.                                                                                                                                                                                                                                                                                                                                                                |
-| `schema`                        | Required. A ClickHouse's database name. The dbt model database.schema.table is not compatible with ClickHouse because ClickHouse does not support a schema. So we use a simple model schema.table, where schema is the ClickHouse's database. We don't recommend using the `default` database.                                                                                                                                                                               |
-| `driver`                        | Optional. The ClickHouse client interface, `http` or `native`.  Defaults to `http` unless the `port` is set to 9440 or 9400, in which case the `native` driver is assumed.                                                                                                                                                                                                                                                                                                   |
-| `host`                          | Optional. The host name of the connection. Default is `localhost`.                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `port`                          | Optional. ClickHouse server port number.  Defaults to 8123/8443 (secure) if the driver is `http`, and to 9000/9440(secure) if the driver is `native`.                                                                                                                                                                                                                                                                                                                        |
-| `user`                          | Required. A ClickHouse username with adequate permissions to access the specified `schema`.                                                                                                                                                                                                                                                                                                                                                                                  |
-| `password`                      | Required. The password associated with the specified `user`.                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `cluster`                       | Optional. If set, certain DDL/table operations will be executed with the `ON CLUSTER` clause using this cluster. Distributed materializations require this setting to work. See the following ClickHouse Cluster section for more details.                                                                                                                                                                                                                                   |
-| `verify`                        | Optional. For (`secure=True`) connections, validate the ClickHouse server TLS certificate, including matching hostname, expiration, and signed by a trusted Certificate Authority. Defaults to True.                                                                                                                                                                                                                                                                         |
-| `secure`                        | Optional. Whether the connection (either http or native) is secured by TLS.  This converts an http driver connection to https, and a native driver connection to the native ClickHouse protocol over TLS.  the Defaults to False.                                                                                                                                                                                                                                            |
-| `retries`                       | Optional. Number of times to retry the initial connection attempt if the error appears to be recoverable.                                                                                                                                                                                                                                                                                                                                                                    |
-| `compression`                   | Optional. Use compression in the connection.  Defaults to `False`.  If set to `True` for HTTP, this enables gzip compression.  If set to `True` for the native protocol, this enabled lz4 compression.  Other valid values are `lz4hc` and `zstd` for the native driver only.                                                                                                                                                                                                |
-| `connect_timeout`               | Optional. Connection timeout in seconds. Defaults is 10 seconds.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `send_receive_timeout`          | Optional. Timeout for receiving data from or sending data to ClickHouse.  Defaults to 5 minutes (300 seconds)                                                                                                                                                                                                                                                                                                                                                                |
-| `cluster_mode`                  | Optional. Add connection settings to improve compatibility with clusters using the Replicated Database Engine. Default False.                                                                                                                                                                                                                                                                                                                                                |
-| `use_lw_deletes`                | Optional. If ClickHouse experimental lightweight deletes are available, use the `delete+insert` strategy as the default strategy for incremental materializations.  Defaults to `False` (use legacy strategy).                                                                                                                                                                                                                                                               |
-| `check_exchange`                | Optional. On connecting to the ClickHouse, if this is parameter is `True` dbt will validate that the ClickHouse server supports atomic exchange of tables.  Using atomic exchange (when available) improves reliability and parallelism.  This check is unnecessary for ClickHouse running on recent Linux operating system, and in those circumstances can be disabled by setting `check_exchange` to `False` to avoid additional overhead on startup.  Defaults to `True`. |
-| `local_suffix`                  | Optional. Table suffix of local tables on shards for distributed materializations. Defaults to '_local'.                                                                                                                                                                                                                                                                                                                                                                     |
-| `local_db_prefix`               | Optional. Database prefix of local tables on shards for distributed materializations. If empty, it uses the same database as the distributed table. Defaults to empty string.                                                                                                                                                                                                                                                                                                |
-| `allow_automatic_deduplication` | Optional. Enable ClickHouse automatic deduplication for Replicated tables. Defaults to False.                                                                                                                                                                                                                                                                                                                                                                                |
-| `tcp_keepalive`                 | Optional. Native client only, specify TCP keepalive configuration. Specify custom keepalive settings as `idle_time_sec`, `interval_sec`, `probes`. Defaults to False.                                                                                                                                                                                                                                                                                                        |
-| `sync_request_timeout`          | Optional. Timeout for connection ping request (native connection only).  Defaults to 5 seconds.                                                                                                                                                                                                                                                                                                                                                                              |
-| `compress_block_size`           | Optional. Compression block size (in bytes) when using compression with the native driver.  Defaults to 1MB                                                                                                                                                                                                                                                                                                                                                                  |
-| `database_engine`               | Optional. Database engine to use when creating new ClickHouse schemas (databases).  If not set (the default), new databases will use the default ClickHouse database engine (usually Atomic).                                                                                                                                                                                                                                                                                |
-| `custom_settings`               | Optional. A mapping of ClickHouse specific user settings to use with the connection.  See the ClickHouse documentation for supported settings.                                                                                                                                                                                                                                                                                                                               |
+```sh
+dbt init project_name
+```
 
-## Troubleshooting Connections
+Navigate to the `project_name` directory and update your `dbt_project.yml` file to use the profile you configured to connect to ClickHouse.
 
-If you encounter issues connecting to ClickHouse from dbt, make sure the following criteria are met:
+```yaml
+profile: 'clickhouse-service'
+```
 
-- The engine must be one of the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
-- You must have adequate permissions to access the database.
-- If you're not using the default table engine for the database, you must specify a table engine in your model
-  configuration.
+### Test connection
+
+Execute `dbt debug` with the CLI tool to confirm whether dbt is able to connect to ClickHouse. Confirm the response includes `Connection test: [OK connection ok]`, indicating a successful connection.
+
+## Supported features
+
+### dbt features
+
+Type | Supported? | Details
+-----|------------|----------------
+Contracts | YES | 
+Docs generate | YES |
+Most dbt-utils macros | YES | (now included in dbt-core) 
+Seeds | YES | 
+Sources | YES | 
+Snapshots | YES | 
+Tests | YES | 
+
+### Materializations
+
+Type | Supported? | Details
+-----|------------|----------------
+Table | YES | Creates a [table](https://clickhouse.com/docs/en/operations/system-tables/tables/). See below for the list of supported engines.
+View | YES | Creates a [view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/).
+Incremental | YES | Creates a table if it doesn't exist, and then writes only updates to it.
+Microbatch incremental | YES | 
+Ephemeral materialization | YES | Creates a ephemeral/CTE materialization. This model is internal to dbt and does not create any database objects.
+Materialized View | YES, Experimental | Creates a [materialized view](https://clickhouse.com/docs/en/materialized-view).
+Distributed table materialization | YES, Experimental | Creates a [distributed table](https://clickhouse.com/docs/en/engines/table-engines/special/distributed).
+Distributed incremental materialization | YES, Experimental | Incremental model based on the same idea as distributed table. Note that not all strategies are supported, visit [this](https://github.com/ClickHouse/dbt-clickhouse?tab=readme-ov-file#distributed-incremental-materialization) for more info.
+Dictionary materialization | YES, Experimental | Creates a [dictionary](https://clickhouse.com/docs/en/engines/table-engines/special/dictionary).
+
+**Note**: Community-developed features are labeled as experimental. Despite this designation, many of these features, like materialized views, are widely adopted and successfully used in production environments.
+
+## Documentation
+
+See the [ClickHouse documentation](https://clickhouse.com/docs/integrations/dbt) for more details on using the `dbt-clickhouse` adapter to manage your data model.
+
+## Contributing
+
+We welcome contributions from the community to help improve the `dbt-ClickHouse` adapter. Whether you're fixing a bug,
+adding a new feature, or enhancing the documentation, your efforts are greatly appreciated!
+
+Please take a moment to read our [Contribution Guide](https://github.com/ClickHouse/dbt-clickhouse/blob/main/CONTRIBUTING.md) to get started. The guide provides detailed instructions on setting up your environment, running tests, and submitting pull requests.

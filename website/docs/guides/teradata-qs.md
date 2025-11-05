@@ -562,7 +562,6 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
     <File name='models/schema.yml'>
 
     ```yaml
-    version: 2
 
     models:
       - name: bi_customers

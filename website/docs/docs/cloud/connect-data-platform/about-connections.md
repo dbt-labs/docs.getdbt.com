@@ -6,43 +6,57 @@ sidebar_label: "About data platform connections"
 pagination_next: "docs/cloud/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 ---
-<Constant name="cloud" /> can connect with a variety of data platform providers including: 
+The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Expand the sections below to know the supported data platforms for <Constant name="core" /> and the <Constant name="fusion_engine" />: 
 
-- [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)
-- [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
-- [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
-- [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
-- [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
-- [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
-- [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
-- [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
-- [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
-- [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="preview" />
+| Connection | Available on Latest   | Available on Fusion<Lifecycle status='private_preview' />|
+|------------|:---------------------:|:---------------------:|
+| [AlloyDB](/docs/cloud/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
+| [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena) | ✅ | ❌ |
+| [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift) | ✅ | ✅ |
+| [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) | ✅ | ❌ |
+| [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) | ✅ | ❌ |
+| [Databricks](/docs/cloud/connect-data-platform/connect-databricks) | ✅ | ✅ |
+| [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) | ✅ | ✅ |
+| [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) | ✅ | ❌ |
+| [PostgreSQL](/docs/cloud/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
+| [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake) | ✅ | ✅ |
+| [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino) | ✅ | ❌ |
+| [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ | ❌ |
 
 To connect to your database in <Constant name="cloud" />:
 
-1. Click your account name at the bottom of the left-side menu and click **Account settings**
-2. Select **Projects** from the top left, and from there click **New Project**
+1. Click your account name at the bottom of the left-side menu and click **Account settings**.
+2. Select **Connections** from the top left, and from there, click **New connection**.
 
 <Lightbox src="/img/docs/connect-data-platform/choose-a-connection.png" title="Choose a connection"/>
 
-These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides)
+These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides).
 
 ### Supported authentication methods
 
-The following table shows which authentication types are supported for each connection available on the <Constant name="dbt_platform" />:
+The following tables show which authentication types are supported for each connection available on the <Constant name="dbt_platform" />:
+
+<Tabs>
+
+<TabItem value="dbt Core">
 
 import AuthTypes from '/snippets/_dbt_connection_support.md';
 
 <AuthTypes />
+</TabItem>
+
+<TabItem value="dbt Fusion">
+import AuthTypesFusion from '/snippets/_dbt_connection_support_fusion.md';
+
+<AuthTypesFusion />
+
+</TabItem>
+
+</Tabs>
 
 ## Connection management
 
-Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
-
-<Lightbox src="/img/docs/connect-data-platform/connection-list.png" width="100%" title="Connection list"/>
+Warehouse connections are an account-level resource. You can find them under **Accounts settings** > **Connections**.
 
 Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
 
@@ -50,7 +64,7 @@ Warehouse connections can be re-used across projects. If multiple projects all c
 
 As shown in the image, a project with 2 environments can target between 1 and 2 different connections. If you want to separate your production environment from your non-production environment, assign multiple connections to a single project.
 
-### Migration from project level connections to account level connections
+### Migration from project-level connections to account-level connections
 
 Rolling out account-level connections will not require any interruption of service in your current usage (<Constant name="cloud_ide" />, CLI, jobs, and so on.).
 

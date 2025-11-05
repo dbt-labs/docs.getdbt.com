@@ -14,17 +14,13 @@ There are two ways to optionally modify this behavior:
 
 For example, to quickly compile a model that requires no database metadata or introspective queries:
 ```text
-
-dbt --no-populate-cache compile --select my_model_name
-
+dbt compile --no-populate-cache --select my_model_name
 ```
 
 Or, to improve speed and performance while focused on developing Salesforce models, which are materialized into their own dedicated schema, you could select those models and pass the `cache-selected-only` flag:
 
 ```text
-
-dbt --cache-selected-only run --select salesforce
-
+dbt run --cache-selected-only --select salesforce
 ```
 
 ### Logging relational cache events

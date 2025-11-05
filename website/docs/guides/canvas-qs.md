@@ -34,12 +34,8 @@ The examples in this guide use the [Jaffle Shop](https://github.com/dbt-labs/jaf
 
 To access <Constant name="visual_editor" />:
 
-1. Click **Develop** from the main menu. If you do not see the **Develop** option, ensure you have selected a **Project** from the menu.
-2. Click **<Constant name="visual_editor" />**.
-
-<Lightbox src="/img/docs/dbt-cloud/canvas/access-canvas.png" width="60%" title="Canvas in the Develop section of the main menu."/>
-
-3. From the right side, click **Create new workspace**. This will open a new workspace with a blank untitled model. You don't need to take any additional action to continue with this guide, but in scenarios where you want to create a new model, click the **model icon** on the top left, click **+**, and click **Create new model**.
+1. Click **<Constant name="visual_editor" />** on the left-side menu.
+2. From the right side, click **Create new workspace**. This will open a new workspace with a blank untitled model. You don't need to take any additional action to continue with this guide, but in scenarios where you want to create a new model, click **+Add** on the top navigation bar and click **Create new model**.
 
 <Lightbox src="/img/docs/dbt-cloud/canvas/canvas-create-new-model.png" width="90%" title="Create a new model from the Canvas landing page."/>
 

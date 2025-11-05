@@ -13,7 +13,7 @@ Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _al
 <File name='Usage'>
 
   ```text
-  dbt --warn-error run
+  dbt run --warn-error
   ```
 
 </File>
@@ -83,17 +83,17 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
 
 - This command promotes all warnings to errors, except for `NoNodesForSelectionCriteria`:
   ```text
-  dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run
+  dbt run --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}'
   ```
 
 - This command promotes all warnings to errors, except for deprecation warnings:
   ```text
-  dbt --warn-error-options '{"error": "all", "warn": ["Deprecations"]}' run
+  dbt run --warn-error-options '{"error": "all", "warn": ["Deprecations"]}'
   ```
 
 - This command promotes only `NoNodesForSelectionCriteria` as an error:
   ```text
-  dbt --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}' run
+  dbt run --warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
@@ -101,7 +101,7 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
   DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' dbt run
   ```
 
-Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}' run` not `dbt --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}' run`.
+Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt run --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}'` not `dbt run --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}'`.
 
 The following example shows how to promote all warnings to errors, except for the `NoNodesForSelectionCriteria` warning using the `silence` and `warn` parameters in the `dbt_project.yml` file:
   <File name='dbt_project.yml'>
@@ -125,9 +125,9 @@ Some examples of how to promote all warnings to errors:
 ##### using dbt command flags
 
 ```bash 
-dbt --warn-error run 
-dbt --warn-error-options '{"error": "all"}' run 
-dbt --warn-error-options '{"error": "*"}' run 
+dbt run --warn-error
+dbt run --warn-error-options '{"error": "all"}'
+dbt run --warn-error-options '{"error": "*"}'
 ```
 
 ##### using environment variables

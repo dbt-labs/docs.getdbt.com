@@ -3,7 +3,7 @@ title: freshness
 description: "Read this guide to understand the `freshness` configuration in dbt."
 id: "freshness"
 ---
-# freshness <Lifecycle status="beta,managed,managed_plus" />
+# freshness <Lifecycle status="private_preview,managed,managed_plus" />
  
 <VersionCallout version="1.10" />
 
@@ -15,7 +15,7 @@ id: "freshness"
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       build_after:  # build this model no more often than every X amount of time, as long as it has new data. Available only on dbt platform Enterprise tiers. 
         count: <positive_integer>
         period: minute | hour | day

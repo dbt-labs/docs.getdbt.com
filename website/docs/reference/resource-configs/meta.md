@@ -38,7 +38,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -76,7 +75,6 @@ sources:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 [sources](/reference/source-properties):
   - name: model_name
@@ -113,7 +111,6 @@ seeds:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -147,7 +144,6 @@ snapshots:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -224,7 +220,6 @@ macros:
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 [macros](/reference/macro-properties):
   - name: macro_name
@@ -254,7 +249,6 @@ exposures:
 <File name='models/exposures.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: exposure_name
@@ -268,22 +262,10 @@ exposures:
 </TabItem>
 
 <TabItem value="semantic models">
+<VersionBlock lastVersion="1.99">
 
-Configure `meta` in the your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
+Configure `meta` in your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
-<VersionBlock lastVersion="1.9">
-
-<File name='models/semantic_models.yml'>
-
-```yml
-semantic_models:
-  - name: semantic_model_name
-    config:
-      meta: {<dictionary>}
-
-```
-
-</File>
 
 <File name='dbt_project.yml'>
 
@@ -294,9 +276,22 @@ semantic-models:
 ```
 </File>
 
+
+<File name='models/semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_model_name
+    config:
+      meta: {<dictionary>}
+
+```
+</File>
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="2.0">
+
+Configure `meta` in the [semantic models](/docs/build/semantic-models) embedded within your model YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
 
 <File name='dbt_project.yml'>
@@ -308,17 +303,21 @@ semantic-models:
 ```
 </File>
 
-<File name='models/semantic_models.yml'>
+<File name='models/file_name.yml'>
 
 ```yml
-semantic_models:
-  - name: semantic_model_name
-    config:
-      meta: {<dictionary>}
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      config:
+        meta: {<dictionary>}
 
 ```
-
 </File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 [Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) can also have their own `meta` configurations.
 
@@ -348,7 +347,50 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
 
+<VersionBlock firstVersion="2.0">
+
+[Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and metrics can also have their own `meta` configurations.
+
+<File name='models/file_name.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      config:
+        meta: {<dictionary>}
+
+    agg_time_dimension: your_time_dimension_name
+
+    columns:
+      - name: entity_column_name
+        entity:
+          type: primary
+          name: entity_name
+          config:
+            meta: {<dictionary>}
+
+      - name: dimension_column_name
+        dimension:
+          type: categorical
+          name: dimension_name
+          config:
+            meta: {<dictionary>}
+
+    metrics:
+      - name: simple_metric_name
+        description: "Description of the metric"
+        type: simple
+        agg: sum  
+        expr: column_name 
+        config:
+          meta: {<dictionary>}
+```
+
+</File>
 </VersionBlock>
 
 The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
@@ -366,6 +408,7 @@ metrics:
 ```
 </File>
 
+<VersionBlock lastVersion="1.99">
 <File name='models/metrics.yml'>
 
 ```yml
@@ -382,6 +425,35 @@ metrics:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/file_name.yml'>
+
+```yml
+models:
+  - name: model_name 
+    semantic_model:
+      enabled: true
+    agg_time_dimension: your_time_dimension
+    columns:
+      - name: column_name
+        dimension:
+          type: time
+        granularity: day
+    metrics:
+      - name: number_of_people
+        type: simple
+        description: Total count of people
+        agg: count
+        expr: people
+        config:
+          meta:
+            my_meta_config: 'config_value'
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 
@@ -422,7 +494,6 @@ Additionally, indicate the maturity of a model using a `model_maturity:` key.
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: users
@@ -441,7 +512,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: salesforce
@@ -502,6 +572,7 @@ models:
 
 ### Assign meta to semantic model
 
+<VersionBlock lastVersion="1.99">
 
 The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the `semantic_model.yml` file and  `dbt_project.yml` file:
 
@@ -533,10 +604,48 @@ semantic-models:
 ```
 </TabItem>
 </Tabs>
+</VersionBlock>
+
+
+<VersionBlock firstVersion="2.0">
+
+The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the model YAML file and  `dbt_project.yml` file:
+
+<Tabs>
+<TabItem value="semantic_model" label="Semantic model">
+
+```yaml
+models:
+  - name: fact_transactions
+    description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
+    semantic_model:
+      enabled: true
+      name: transaction
+      config:
+        meta:
+          data_owner: "Finance team"
+          used_in_reporting: true
+
+    agg_time_dimension: transaction_date
+```
+
+</TabItem>
+
+<TabItem value="project.yml" label="dbt_project.yml">
+
+```yaml
+semantic-models:
+  jaffle_shop:
+    +meta:
+      used_in_reporting: true
+```
+</TabItem>
+</Tabs>
+</VersionBlock>
 
 ### Assign meta to dimensions, measures, entities
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.99">
 
 <Tabs>
 <TabItem value="semantic_model" label="Semantic model">
@@ -598,3 +707,77 @@ semantic-models:
 </TabItem>
 </Tabs>
 </VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<Tabs>
+<TabItem value="semantic_model" label="Semantic model">
+
+The following example shows how to assign a `meta` value to a [dimension](/docs/build/dimensions), [entity](/docs/build/entities), and [simple metrics](/docs/build/simple) in a semantic model:
+
+<File name='model_name.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      name: semantic_model
+
+    agg_time_dimension: order_date
+
+    columns:
+      - name: order_date
+        dimension:
+          type: time
+          config:
+            meta:
+              data_owner: "Finance team"
+              used_in_reporting: true
+
+      - name: customer_id
+        entity:
+          type: primary
+          config:
+            meta:
+              description: "Unique identifier for customers"
+              data_owner: "Sales team"
+              used_in_reporting: false
+
+    metrics:
+      - name: count_of_users
+        type: simple
+        agg: count_distinct
+        expr: user_id
+        config:
+          meta:
+            used_in_reporting: true
+```
+
+</File>
+</TabItem>
+
+<TabItem value="project.yml" label="dbt_project.yml">
+
+This second example shows how to assign a `data_owner` and additional metadata value to a dimension in the `dbt_project.yml` file using the `+meta` syntax. The similar syntax can be used for entities and simple metrics.
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic-models:
+  jaffle_shop:
+    ...
+    [dimensions](/docs/build/dimensions):
+      - name: order_date
+        config:
+          meta:
+            data_owner: "Finance team"
+            used_in_reporting: true
+```
+
+
+</File>
+</TabItem>
+</Tabs>
+</VersionBlock>
+

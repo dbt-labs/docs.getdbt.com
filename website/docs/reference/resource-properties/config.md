@@ -28,7 +28,6 @@ hide_table_of_contents: true
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: <model_name>
@@ -46,7 +45,6 @@ models:
 <File name='seeds/<filename>.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <seed_name>
@@ -64,7 +62,6 @@ seeds:
 <File name='snapshots/<filename>.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: <snapshot_name>
@@ -83,7 +80,6 @@ snapshots:
 <File name='<resource_path>/<filename>.yml'>
 
 ```yml
-version: 2
 
 <resource_type>:
   - name: <resource_name>
@@ -137,7 +133,6 @@ version: 2
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -158,7 +153,6 @@ sources:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 metrics:
   - name: <metric_name>
@@ -177,7 +171,6 @@ metrics:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: <exposure_name>
@@ -192,10 +185,10 @@ exposures:
 
 <TabItem value="semantic models">
 
+<VersionBlock lastVersion="1.99">
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 semantic_models:
   - name: <semantic_model_name>
@@ -206,6 +199,23 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/<filename>.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      config:
+        [meta](/reference/resource-configs/meta): {dictionary}
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 
@@ -214,7 +224,6 @@ semantic_models:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 saved-queries:
   - name: <saved_query_name>

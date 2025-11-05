@@ -28,7 +28,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
     Subject: New AWS Multi-Tenant PrivateLink Request
     - Type: Databricks
     - Databricks instance name:
-    - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
+    - Databricks cluster AWS Region (for example, us-east-1, eu-west-2):
     - dbt AWS multi-tenant environment (US, EMEA, AU):
     ```
     <PrivateLinkSLA />

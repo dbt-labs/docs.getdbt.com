@@ -41,7 +41,7 @@ MetricFlow allows you to:
 
   <Card
     title="Metrics"
-    body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
+    body="Define metrics in your dbt project using different metric types in YAML files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
   

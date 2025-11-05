@@ -37,9 +37,3 @@ To configure an OAuth account integration:
 4. For custom OAuth providers, under **Custom OAuth integrations**, click on **Add integration** and select the [OAuth provider](/docs/cloud/manage-access/sso-overview) from the list. Fill in the required fields and click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/account-integration-oauth.png" width="85%" title="Example of the OAuth integration page" />
-
-:::info
-
-We’ve moved the AI integrations section to [Enable dbt Copilot](/docs/cloud/enable-dbt-copilot#ai-integrations).
-
-:::

@@ -19,7 +19,6 @@ datatype: test
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: <model_name>
@@ -45,7 +44,6 @@ models:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -74,7 +72,6 @@ sources:
 <File name='seeds/<filename>.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <seed_name>
@@ -100,7 +97,6 @@ seeds:
 <File name='snapshots/<filename>.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: <snapshot_name>
@@ -127,7 +123,6 @@ snapshots:
 <File name='analyses/<filename>.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: <analysis_name>
@@ -176,7 +171,6 @@ The `quote` field can be used to enable or disable quoting for column names.
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -195,7 +189,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: source_name
@@ -216,7 +209,6 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -235,7 +227,6 @@ seeds:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -254,7 +245,6 @@ snapshots:
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -293,7 +283,6 @@ Without setting `quote: true`:
 This is especially relevant if using Snowflake:
 
 ```yml
-version: 2
 
 sources:
   - name: stripe

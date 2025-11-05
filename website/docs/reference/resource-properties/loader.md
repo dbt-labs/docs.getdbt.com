@@ -6,7 +6,6 @@ datatype: string
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -28,7 +27,6 @@ Describe the tool that loads this source into your warehouse. Note that this pro
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop

@@ -69,7 +69,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -85,10 +84,11 @@ models:
 
 <VersionBlock firstVersion="1.10">
 
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -97,22 +97,9 @@ models:
       [sql_header](/reference/resource-configs/sql_header): <string>
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
       [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-```
-</File>
-
-Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
-
-<File name='models/properties.yml'>
-
-```yaml
-version: 2
-
-models:
-  - name: [<model-name>]
-    config:
-      freshness:
+      [freshness](/reference/resource-configs/freshness):
         # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
-        [build_after](/reference/resource-configs/build-after): <dict>
+        build_after: <dict>
 ```
 
 </File>
@@ -146,9 +133,9 @@ models:
 {{ config(
     [materialized](/reference/resource-configs/materialized)="<materialization_name>",
     [sql_header](/reference/resource-configs/sql_header)="<string>"
-    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views for supported adapters
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views for supported adapters
     [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
-    [build_after](/reference/resource-configs/build-after)="<dict>"
+    [freshness](/reference/resource-configs/freshness)=<dict>
 ) }}
 ```
 
@@ -212,7 +199,6 @@ models:
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -347,7 +333,6 @@ select * from {{ ref('raw_events') }}
 <File name='models/events/base/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: base_events

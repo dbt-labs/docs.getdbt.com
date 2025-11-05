@@ -107,7 +107,7 @@ She's happy with the results and clicks **Details** to see the AI-generated repo
 
 <Lightbox src="/img/guides/analyst-qs/details.png" width="90%" title="Details report tabe" />
 
-Once she's ready to get the insight to her stakeholder, she clicks **Chart** to view the chart prefilled with the data from the **Results** tab. 
+Once she's ready to get the insight to her stakeholder, she clicks **Chart** to view the chart prefilled with the data from the **Data** tab. 
 
 She adds x- and y-axis labels, such as "Month of first order" and "Total new customers" to make it more comprehensible for the final report she'll share with her stakeholder. Next, she takes a screenshot to share with them.
 

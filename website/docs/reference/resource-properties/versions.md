@@ -12,7 +12,6 @@ import VersionsCallout from '/snippets/_model-version-callout.md';
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -84,7 +83,6 @@ You may declare additional columns within the version's `columns` list. If a ver
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   

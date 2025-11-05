@@ -30,7 +30,6 @@ Usage:
 
 ```yaml
 
-version: 2
 models:
   - name: orders
     description: "{{ doc('orders') }}"

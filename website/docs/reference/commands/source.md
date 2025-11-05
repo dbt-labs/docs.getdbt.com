@@ -22,7 +22,6 @@ The example below, shows how to configure source freshness in dbt. Refer to [Dec
 
 ```yaml
 
-version: 2
 
 sources:
   - name: jaffle_shop

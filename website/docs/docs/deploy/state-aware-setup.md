@@ -6,7 +6,7 @@ id: "state-aware-setup"
 tags: ['scheduler']
 ---
 
-# Setting up state-aware orchestration <Lifecycle status="beta,managed,managed_plus" />
+# Setting up state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
 
 <IntroText>
 
@@ -14,9 +14,9 @@ Set up state-aware orchestration to automatically determine which models to buil
 
 </IntroText>
 
-import FusionBeta from '/snippets/_fusion-beta-callout.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
-<FusionBeta />
+<FusionLifecycle />
 
 ## Prerequisites
 
@@ -41,7 +41,9 @@ By default, for an Enterprise-tier account upgraded to the dbt Fusion engine, an
 
 ## Create a job
 
-New jobs are state aware by default. If you have existing jobs, you need to unselect **Force node selection** in your job settings to make them state aware.
+:::info New jobs are state-aware by default
+For existing jobs, make them state-aware by selecting **Enable Fusion cost optimization features** in the **Job settings** page.
+:::
 
 To create a state-aware job:
 
@@ -51,15 +53,13 @@ To create a state-aware job:
     - (Optional) **Description**: Provide a description of what the job does (for example, what the job consumes and what the job produces). 
     - **Environment**: By default, it’s set to the deployment environment you created the state-aware job from.
 3. Options in the **Execution settings** and **Triggers** sections:
-   
-   **Note:** New jobs are state aware by default. For existing jobs, you need to uncheck **Force-node selection** under "execution settings" in the Job settings page.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
      - **Generate docs on run**: Enable this option if you want to [generate project docs](/docs/build/documentation) when this deploy job runs.
-     - **Force node selection**: Enable this option only if you want to rebuild nodes every with every job run and to ignore data freshness. Disable (uncheck the box) to allow state-aware orchestration.
+     - **Enable Fusion cost optimization features**: Select this option to enable **State-aware orchestration**. **Efficient testing** is disabled by default. You can expand **More options** to enable or disable individual settings. 
 - **Triggers** section:
     - **Run on schedule**: Run the deploy job on a set schedule.
       - **Timing**: Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
@@ -73,9 +73,12 @@ To create a state-aware job:
     - **Environment variables**: Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target name**: Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run timeout**: Cancel the deploy job if the run time exceeds the timeout value. 
-    - **Compare changes against**: By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="cloud" /> know what it should compare the changes against.  
+    - **Compare changes against**: By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="cloud" /> know what it should compare the changes against. 
 
-You can see which models dbt builds in the run summary logs. Models that weren't rebuilt during the run will show **reusing** in the logs alongside the reason that dbt was able to skip building the model (and saving you unnecessary compute!)
+7. Click **Save**. 
+
+You can see which models dbt builds in the run summary logs. Models that weren't rebuilt during the run are tagged as **Reused** with context about why dbt skipped rebuilding them (and saving you unnecessary compute!). You can also see the reused models under the **Reused** tab.
+
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
 
@@ -274,7 +277,19 @@ If you want to exclude a model from the freshness rule set at a higher level, se
 ```
 </File>
 
-This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and enough time passed, dbt rebuilds the models. This method helps when the need for fresher data outweighs the costs. 
+This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and enough time passed, dbt rebuilds the models. This method helps when the need for fresher data outweighs the costs.
+
+## Limitation
+
+The following section lists considerations when using state-aware-orchestration:
+
+### Deleted tables
+
+If a table was deleted in the warehouse, and neither the model’s code nor the data it depends on has changed, state-aware orchestration does not detect a change and will not rebuild the table. This is because dbt decides what to build based on code and data changes, not by checking whether every table still exists. To build the table, you have the following options:
+
+- **Clear cache and rebuild**: Go to **Orchestration** > **Environments** and click **Clear cache**. The next run will rebuild all models from a clean state.
+
+- **Temporarily disable state-aware orchestration**: Go to **Orchestration** > **Jobs**. Select your job and click **Edit**. Under **Enable Fusion cost optimization features**, disable **State-aware orchestration** and click **Save**. Run the job to force a full build, then re‑enable the feature after the run.
 
 ## Related docs
 

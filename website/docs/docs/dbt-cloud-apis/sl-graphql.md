@@ -160,6 +160,7 @@ You can also optionally access it from the metrics endpoint:
 }
 ```
 
+<VersionBlock lastVersion="1.9">
 #### Fetch measures
 
 ```graphql
@@ -185,6 +186,7 @@ You can also optionally access it from the metrics endpoint:
   }
 }
 ```
+</VersionBlock>
 
 #### Fetch entities
 
@@ -241,6 +243,19 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
 #### Metric type parameters
+<VersionBlock firstVersion="2.0">
+```graphql
+MetricTypeParams {
+  numerator: MetricInput
+  denominator: MetricInput
+  expr: String
+  window: MetricTimeWindow
+  grainToDate: TimeGranularity
+  metrics: [MetricInput!]
+}
+```
+</VersionBlock>
+<VersionBlock lastVersion="1.9">
 
 ```graphql
 MetricTypeParams {
@@ -254,6 +269,8 @@ MetricTypeParams {
   metrics: [MetricInput!]
 }
 ```
+
+</VersionBlock>
 
 #### Dimension types
 
@@ -611,57 +628,6 @@ mutation {
     }
 }
 ```
-
-For both `TimeDimension()`, the grain is only required in the `where` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
-
-#### Example
-
-For example, consider this semantic model and metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
-
-```yaml
-semantic_model:
-  name: my_model_source
-
-defaults:
-  agg_time_dimension: created_month
-  measures:
-    - name: measure_0
-      agg: sum
-    - name: measure_1
-      agg: sum
-      agg_time_dimension: order_year
-  dimensions:
-    - name: created_month
-      type: time
-      type_params:
-        time_granularity: month
-    - name: order_year
-      type: time
-      type_params:
-        time_granularity: year
-
-metrics:
-  - name: metric_0
-    description: A metric with a month grain.
-    type: simple
-    type_params:
-      measure: measure_0
-  - name: metric_1
-    description: A metric with a year grain.
-    type: simple
-    type_params:
-      measure: measure_1
-```
-
-Assuming the user is querying `metric_0` and `metric_1` together, the following are valid or invalid filters:
-
-| <div style={{width:'200px'}}>Example</div> | <div style={{width:'250px'}}>Filter</div> |
-| ------- | ------ |
-| ✅ <br />   Valid filter| `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`  |
-| ❌ <br /> Invalid filter | ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"`  <br /><br /> Metrics in the query are defined based on measures with different grains.  |
-❌ <br /> Invalid filter | `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` <br /><br />  `metric_1` is not available at a month grain. |
-
-
 
 #### Multi-hop joins
 
