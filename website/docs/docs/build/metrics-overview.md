@@ -10,7 +10,9 @@ pagination_next: "docs/build/cumulative"
 After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project
 
 <VersionBlock lastVersion="1.99">
+  
 Metrics must be defined in a YAML file &mdash; either within the same file as your semantic models or in a separate YAML file in a subdirectory of your dbt project. They shouldn't be defined in a `config` block on a model.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
@@ -52,6 +54,8 @@ The keys for metrics parameters are:
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional | String |
 | `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), [`tags`](/reference/resource-configs/tags), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional | Dict |
 | `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional | String |
+
+</VersionBlock>
 
 ### Type-specific parameters
 
