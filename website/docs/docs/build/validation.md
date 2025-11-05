@@ -56,7 +56,7 @@ In this validation step, we ensure your config files follow the defined schema f
 
 <VersionBlock firstVersion="2.0">
 :::info
-In the initial <Constant name="fusion" /> release, semantic syntax validation is only available in these environments:
+In the initial <Constant name="fusion" /> release, semantic syntax validation is only available in the following contexts:
 - **<Constant name="cloud_ide" />**
 - **Orchestration** in the <Constant name="dbt_platform" />
 - Local development with a valid `dbt_cloud.yaml` config
