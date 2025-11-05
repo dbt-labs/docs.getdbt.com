@@ -99,15 +99,25 @@ function extractFirstHeading(content) {
 }
 
 /**
- * Extract versions from VersionBlock components
+ * Extract version information from VersionBlock components
+ * Returns both explicit version arrays and version ranges
  * @param {string} content - The markdown content
- * @returns {Array} Array of version strings
+ * @returns {Object} Object with versions array and/or versionRange
  */
 function extractVersions(content) {
-  const versions = new Set();
+  const result = {
+    versions: null,      // Explicit versions from versions={[...]}
+    versionRange: null,  // Range from firstVersion/lastVersion
+  };
   
-  // Match <VersionBlock versions={[...]} or <VersionBlock firstVersion="..." lastVersion="...">
+  const explicitVersions = new Set();
+  let hasFirstVersion = false;
+  let hasLastVersion = false;
+  let firstVersion = null;
+  let lastVersion = null;
+  
   // Pattern 1: versions={['1.0', '2.0']} or versions={["1.0", "2.0"]}
+  // This indicates explicit, specific versions only
   const arrayMatches = content.matchAll(/<VersionBlock[^>]*versions=\{(\[[^\]]+\])\}[^>]*>/g);
   for (const match of arrayMatches) {
     try {
@@ -116,34 +126,43 @@ function extractVersions(content) {
       // Replace single quotes with double quotes for JSON parsing
       const jsonStr = arrayStr.replace(/'/g, '"');
       const versionArray = JSON.parse(jsonStr);
-      versionArray.forEach(v => versions.add(v));
+      versionArray.forEach(v => explicitVersions.add(v));
     } catch (e) {
       // If parsing fails, try to extract versions with regex
       const versionStrs = match[1].match(/['"]([^'"]+)['"]/g);
       if (versionStrs) {
-        versionStrs.forEach(v => versions.add(v.replace(/['"]/g, '')));
+        versionStrs.forEach(v => explicitVersions.add(v.replace(/['"]/g, '')));
       }
     }
   }
   
-  // Pattern 2: firstVersion="1.0" lastVersion="2.0"
-  const rangeMatches = content.matchAll(/<VersionBlock[^>]*(?:firstVersion|lastVersion)=["']([^"']+)["'][^>]*>/g);
-  for (const match of rangeMatches) {
-    versions.add(match[1]);
-  }
-  
-  // Also check for individual version attributes
-  const firstVersionMatches = content.matchAll(/firstVersion=["']([^"']+)["']/g);
+  // Pattern 2: firstVersion="1.0" (means 1.0 and later)
+  const firstVersionMatches = content.matchAll(/<VersionBlock[^>]*firstVersion=["']([^"']+)["'][^>]*>/g);
   for (const match of firstVersionMatches) {
-    versions.add(match[1]);
+    hasFirstVersion = true;
+    firstVersion = match[1];
   }
   
-  const lastVersionMatches = content.matchAll(/lastVersion=["']([^"']+)["']/g);
+  // Pattern 3: lastVersion="2.0" (means up to and including 2.0)
+  const lastVersionMatches = content.matchAll(/<VersionBlock[^>]*lastVersion=["']([^"']+)["'][^>]*>/g);
   for (const match of lastVersionMatches) {
-    versions.add(match[1]);
+    hasLastVersion = true;
+    lastVersion = match[1];
   }
   
-  return Array.from(versions).sort();
+  // Build result
+  if (explicitVersions.size > 0) {
+    result.versions = Array.from(explicitVersions).sort();
+  }
+  
+  if (hasFirstVersion || hasLastVersion) {
+    result.versionRange = {
+      ...(hasFirstVersion && { min: firstVersion }),
+      ...(hasLastVersion && { max: lastVersion }),
+    };
+  }
+  
+  return result;
 }
 
 /**
@@ -290,8 +309,8 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
     // Generate base URL
     const baseUrl = generateUrlPath(relativePath, frontmatter.id);
     
-    // Extract versions from VersionBlock components
-    const versions = extractVersions(markdownContent);
+    // Extract version information from VersionBlock components
+    const versionInfo = extractVersions(markdownContent);
     
     // Base metadata shared by all chunks
     const baseMeta = {
@@ -301,7 +320,8 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
       keywords: frontmatter.keywords || [],
       ...(frontmatter.category && { category: frontmatter.category }),
       ...(frontmatter.type && { type: frontmatter.type }),
-      ...(versions.length > 0 && { versions: versions }),
+      ...(versionInfo.versions && { versions: versionInfo.versions }),
+      ...(versionInfo.versionRange && { versionRange: versionInfo.versionRange }),
     };
     
     // If chunking is disabled, return single document
@@ -335,8 +355,8 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
         return;
       }
       
-      // Extract section-specific versions
-      const sectionVersions = extractVersions(section.content);
+      // Extract section-specific version information
+      const sectionVersionInfo = extractVersions(section.content);
       
       // Create section title
       const sectionTitle = section.heading 
@@ -356,7 +376,7 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
       // Create description from section content
       const description = createExcerpt(plainText, 200);
       
-      // Merge base metadata with section-specific versions
+      // Merge base metadata with section-specific version information
       const sectionMeta = {
         ...baseMeta,
         section: section.heading || 'Introduction',
@@ -365,9 +385,12 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
         chunkIndex: index,
       };
       
-      // If section has specific versions, override the base versions
-      if (sectionVersions.length > 0) {
-        sectionMeta.versions = sectionVersions;
+      // If section has specific version info, override the base version info
+      if (sectionVersionInfo.versions) {
+        sectionMeta.versions = sectionVersionInfo.versions;
+      }
+      if (sectionVersionInfo.versionRange) {
+        sectionMeta.versionRange = sectionVersionInfo.versionRange;
       }
       
       chunks.push({
