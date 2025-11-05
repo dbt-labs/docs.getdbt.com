@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 <VersionBlock firstVersion="2.0">
 
-Cumulative metrics aggregate values from other metrics across a defined accumulation window. If you don’t specify a window, the metric accumulates values over the entire available time range.
+Cumulative metrics aggregate values from other metrics across a defined accumulation period. If you don’t specify a period, the metric accumulates values over the entire available time range.
 
 Use cumulative metrics when you want to calculate rolling or period-to-date values, such as weekly active users or month-to-date revenue.
 
@@ -18,7 +18,7 @@ Use cumulative metrics when you want to calculate rolling or period-to-date valu
 
 <VersionBlock lastVersion="1.99">
 
-Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+Cumulative metrics aggregate a measure over a given accumulation period. If no window is specified, the period is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and types for cumulative metrics are: 
 
@@ -37,7 +37,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `name`  | The name of the metric.       | Required  | String |
 | `description`       | The description of the metric.     | Optional  | String |
 | `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  | String |  
-| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required  | String |
+| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
 | `input_metric`     | The name of the metric being referenced. Supports the following nested parameters: `name`, `filter`, and `alias`. | Required  | Dict |
 | `input_metric::name`     | The name of the metric being referenced. | Required  | String |
 | `input_metric::filter`     | The [filter](/docs/build/metrics-overview#filters) to apply to the metric. | Optional  | String |
@@ -45,7 +45,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `join_to_timespine` | Boolean indicating if the aggregated metric should be joined to the time spine table to fill in missing dates. Default is `false`. | Optional  | Boolean |
 | `window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
 | `grain_to_date`   | Sets the accumulation grain, such as `hour`, `day`, `week`, `month`, `year`, restarting accumulation at the beginning of each specified grain period. For example, selecting `month` will aggregate the `month to date` aggregation of the metric. Cannot be used with `window`. | Optional  | String |
-| `period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
+| `period_agg`  | Defines how to re-aggregate the cumulative metric when querying with a non-default granularity: `first`, `last`, or `average`. Defaults to `first` if `period_agg` isn't specified. | Optional  | String |
 
 </VersionBlock>
 
@@ -56,7 +56,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `name`  | The name of the metric.       | Required  | String |
 | `description`       | The description of the metric.     | Optional  | String |
 | `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  | String |  
-| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required  | String |
+| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
 | `type_params`    | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`.  | Required  | Dict |
 | `type_params::measure`   | The measure associated with the metric. Supports both shorthand (string) and object syntax. The shorthand is used if only the name is needed, while the object syntax allows specifying additional attributes. | Required  | Dict |
 | `measure::name`    | The name of the measure being referenced. Required if using object syntax for `type_params::measure`.  | Optional  | String |
@@ -65,7 +65,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params::cumulative_type_params`     | Configures the attributes like `window`, `period_agg`, and `grain_to_date` for cumulative metrics. | Optional  | Dict |
 | `cumulative_type_params::window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
 | `cumulative_type_params::grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
-| `cumulative_type_params::period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
+| `cumulative_type_params::period_agg`  | Defines how to re-aggregate the cumulative metric when querying with a non-default granularity: `first`, `last`, or `average`. Defaults to `first` if `period_agg` isn't specified.  | Optional  | String |
 
 <Expandable alt_header="Explanation of type_params::measure">
   
@@ -235,7 +235,7 @@ metrics:
 Use the `period_agg` parameter with `first()`, `last()`, and `average()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
 - However, cumulative metrics are non-additive (values can't be added up), so we can't use the `date_trunc` function to change their time grain granularity.
-- By default, we take the first value of the period. You can change this by specifying a different function using the `period_agg` parameter.
+- For cumulative metrics, we first compute at the default granularity. When you query a different granularity, we re-aggregate those results using `period_agg` (default is the first value in each period).
 
 In the following example, we define a cumulative metric, `cumulative_revenue`, that calculates the cumulative revenue for all orders:
 
@@ -354,8 +354,8 @@ This section details examples of when to specify and not to specify window optio
 
 <VersionBlock firstVersion="2.0">
 
-- When a window is specified, MetricFlow applies a sliding window to the underlying simple metric, such as tracking weekly active users with a 7-day window.
-- Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
+- When a period is specified, MetricFlow applies a sliding window to the underlying simple metric, such as tracking weekly active users with a 7-day window.
+- Without specifying a period, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
 
 <Expandable alt_header="Example of window specified">
 
@@ -395,7 +395,7 @@ metrics:
     type: cumulative
     input_metric: customers
     window: 7 days
-    period_agg: first # This will choose the first value of the granularity window when changing the granularity.
+    period_agg: first # When using non-default granularity with cumulative metrics, re-aggregation is required. period_agg: first selects the first value in each granularity window during re-aggregation.
 ```
 </File>
 
@@ -404,7 +404,8 @@ From the sample YAML example, note the following:
 * `type`: Specify cumulative to indicate the type of metric. 
 * `input_metric`: Specify the metric to be aggregated (in this case, `customers`).
 * `window`: Specify the accumulation window (in this case, 7 days).
-* `period_agg`: Specify the aggregation function (in this case, `first`).
+* `period_agg`: Specify the re-aggregation function (in this case, `first`).
+* `grain_to_date`: Specify the grain to date (in this case, `week`).
 
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
@@ -481,7 +482,7 @@ metrics:
     measure: customers
     cumulative_type_params:
       window: 7 days # Setting the window to 7 days since we want to track weekly active
-      period_agg: first # This will choose the first value of the granularity window when changing the granularity.
+      period_agg: first #  When using non-default granularity with cumulative metrics, re-aggregation is required. period_agg: first selects the first value in each granularity window during re-aggregation.
 ```
 </File>
 
