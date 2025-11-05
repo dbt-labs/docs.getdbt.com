@@ -153,9 +153,6 @@ The granularity can be set using the `time_granularity` parameter on the metric,
 - You want the `orders` metric to roll up to `monthly` by default; however, you want the option to look at these metrics hourly.
 - You can set the `time_granularity` parameter on the `order_time` dimension to `hour`, and then set the `time_granularity` parameter in the metric to `month`.
 
-
-<VersionBlock lastVersion="1.99">
-
 ```yaml
 semantic_models:
   ...
