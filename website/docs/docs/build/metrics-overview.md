@@ -327,9 +327,6 @@ metrics:
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-
-<VersionBlock lastVersion="1.99">
-
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
