@@ -129,7 +129,7 @@ models:
           name: dimension_name
           description: dimension description
 
-    # Simple metrics now replace measures
+    # Simple metrics replace measures
     metrics:
       - name: metric_name
         description: metric description
