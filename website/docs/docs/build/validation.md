@@ -15,7 +15,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 ## Validations command
 
 <VersionBlock lastVersion="1.99">
-You can run validations from <Constant name="cloud" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="cloud" />, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
+You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="cloud" />, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
 ```bash
 dbt sl validate # dbt platform users
@@ -25,11 +25,19 @@ mf validate-configs # dbt Core users
 
 <VersionBlock firstVersion="2.0">
 
-You can run validations from <Constant name="cloud" /> or the command line with the following [MetricFlow command](/docs/build/metricflow-commands):
+You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow command](/docs/build/metricflow-commands):
 
 ```bash
 mf validate-configs # dbt Fusion users
 ```
+
+:::info
+In the initial <Constant name="fusion" /> release, [semantic syntax](#semantic-syntax) and [data platform](#data-platform) validations are only available in the following contexts:
+- **<Constant name="cloud_ide" />**
+- **Orchestration** in the <Constant name="dbt_platform" />
+- Local development with a valid `dbt_cloud.yaml` config. If `dbt_cloud.yml` isn't found, run the validation manually using `mf validate-configs`.
+:::
+
 </VersionBlock>
 
 
@@ -54,15 +62,6 @@ In this validation step, we ensure your config files follow the defined schema f
 
 ## Semantic syntax
 
-<VersionBlock firstVersion="2.0">
-:::info
-In the initial <Constant name="fusion" /> release, semantic syntax validation is only available in the following contexts:
-- **<Constant name="cloud_ide" />**
-- **Orchestration** in the <Constant name="dbt_platform" />
-- Local development with a valid `dbt_cloud.yaml` config
-:::
-</VersionBlock>
-
 This syntactic validation step occurs after we've built your semantic graph. The <Constant name="semantic_layer" />, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
 <VersionBlock lastVersion="1.99">
@@ -85,7 +84,7 @@ This syntactic validation step occurs after we've built your semantic graph. The
 
 ## Data platform
 
-This type of validation checks to see if the semantic definitions in your semantic graph exist in the underlying physical table. To test this, we run queries against your data platform to ensure the generated SQL for semantic models, dimensions, and metrics will execute. <VersionBlock firstVersion="2.0">In <Constant name="fusion" />, data platform validations are available only when using the `mf validate-configs` command.</VersionBlock>
+This type of validation checks to see if the semantic definitions in your semantic graph exist in the underlying physical table. To test this, we run queries against your data platform to ensure the generated SQL for semantic models, dimensions, and metrics will execute.
 
 We run the following checks:
 
