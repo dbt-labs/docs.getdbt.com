@@ -1074,8 +1074,6 @@ After setting up your orders model:
 
 <VersionBlock lastVersion="1.99">
 
-<VersionBlock lastVersion="2.0">
-
 <File name='models/metrics/dim_customers.yml'>
 
 ```yaml
