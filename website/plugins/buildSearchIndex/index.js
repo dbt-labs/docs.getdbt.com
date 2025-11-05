@@ -527,16 +527,6 @@ module.exports = function buildSearchIndexPlugin(context, options) {
         console.log(`  Average ${avgChunksPerFile} chunks per file`);
       }
       console.log(`✓ Written to: ${outputPath}`);
-      
-      // Also create a copy in the static directory for development
-      const staticPath = path.resolve(context.siteDir, 'static', outputFile);
-      try {
-        fs.mkdirSync(path.dirname(staticPath), { recursive: true });
-        fs.writeFileSync(staticPath, JSON.stringify(indexData, null, 2), 'utf8');
-        console.log(`✓ Copy written to static directory: ${staticPath}`);
-      } catch (error) {
-        console.warn(`Could not write to static directory: ${error.message}`);
-      }
     },
   };
 };
