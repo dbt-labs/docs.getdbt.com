@@ -65,8 +65,6 @@ Each metric type has additional specific parameters:
 
 Refer to the following sections about each metric type for detailed information on type-specific parameters.
 
-</VersionBlock>
-
 ### Example
 
 Here's a complete example of the metrics spec configuration:
