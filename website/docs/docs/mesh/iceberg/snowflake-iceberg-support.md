@@ -20,7 +20,7 @@ Refer to [Configure catalog integration](#configure-catalog-integration-for-mana
 
 :::
 
-We recommend using the Iceberg catalog configuration and applying the catalog in the model config for ease of use and to future-proof your code. Using `table_format = 'iceberg'` directly on the model configuration is a legacy approach and limits usage to just Snowflake Horizon as the catalog. Catalog support is available on dbt 1.10+.
+We recommend using the Iceberg catalog configuration and applying the catalog in the model config for ease of use and to future-proof your code. Using `table_format = 'iceberg'` directly on the model configuration is a legacy approach and limits usage to just Snowflake Managed Catalog as the catalog. Catalog support is available on dbt 1.10+.
 
 ## Creating Iceberg tables
 
@@ -33,7 +33,7 @@ dbt supports creating Iceberg tables for three of the Snowflake materializations
 ## Iceberg catalogs
 
 Snowflake has support for Iceberg tables via built-in and external catalogs, including:
-- Snowflake Horizon (the built-in catalog) 
+- Snowflake Managed Catalog (the built-in catalog) 
 - Polaris/Open Catalog (managed Polaris)
 - Glue Data Catalog (Supported in dbt-snowflake through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create) with Iceberg REST)
 - Iceberg REST Compatible 
@@ -248,12 +248,12 @@ You can set the following properties in model configurations under the `adapter_
 ### Configure catalog integration for managed Iceberg tables
 
 1. Create a `catalogs.yml` at the top level of your dbt project.<br />
-<br />An example of Snowflake Horizon as the catalog:
+<br />An example of Snowflake Managed Catalog as the catalog:
 
 ```yaml
 
 catalogs:
-  - name: catalog_horizon
+  - name: snowflake_catalog
     active_write_integration: snowflake_write_integration
     write_integrations:
       - name: snowflake_write_integration
@@ -273,7 +273,7 @@ catalogs:
 {{
     config(
         materialized='table',
-        catalog_name = 'catalog_horizon'
+        catalog_name = 'snowflake_catalog'
 
     )
 }}
@@ -296,7 +296,7 @@ The syncing experience will be different depending on the catalog you choose. So
 
 ## Iceberg table format
 
-The dbt-snowflake adapter also supports applying `table_format` as a standalone configuration for dbt-snowflake models. We recommend against using this, as it is a legacy behavior, and you will only be able to write to Snowflake Horizon (not external Iceberg catalogs).
+The dbt-snowflake adapter also supports applying `table_format` as a standalone configuration for dbt-snowflake models. We recommend against using this, as it is a legacy behavior, and you will only be able to write to Snowflake Managed Catalog (not external Iceberg catalogs).
 
 The following configurations are supported.
 For more information, check out the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
@@ -355,7 +355,7 @@ An example model with a customized `base_location`:
 {{
     config(
         materialized='table',
-        catalog_name='catalog_horizon',
+        catalog_name='snowflake_catalog',
         base_location_root='foo',
         base_location_subpath='bar',
 
@@ -392,7 +392,7 @@ An example model with a customized `base_location`:
 {{
     config(
         materialized='table',
-        catalog_name='catalog_horizon',
+        catalog_name='snowflake_catalog',
         adapter_properties={
           'base_location_root': 'foo',
           'base_location_subpath': 'bar',
@@ -415,7 +415,7 @@ For example, in the following model config, `base_location_root`=`bar` overrides
 ```sql
 config(
     materialized='table',
-    catalog_name='catalog_horizon',
+    catalog_name='snowflake_catalog',
     'base_location_root': 'foo',
     'base_location_subpath': 'bar',
     adapter_properties={
