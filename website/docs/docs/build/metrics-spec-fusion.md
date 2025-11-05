@@ -375,15 +375,15 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI or <Constant name="dbt_platform"/>'s Studio IDE.  
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s Studio IDE.<!--IDE pending-->  
 
 Refer to the following steps in this section, depending on which tool you use.
 
-### Using the CLI
+### Using the CLI or VS Code extension
 
-The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI.
+The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI or the dbt VS Code extension.
 
-1. In your CLI, run the following command:
+1. In your CLI or in the VS Code extension, run the following command:
 
     ```bash
     dbt-autofix deprecations --semantic-layer
@@ -398,9 +398,8 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
     mf validate-configs
     ```
 
+<!--need to confirm if users can manually run the command in IDE
 ### Using the Studio IDE
-
-<!--need to confirm steps and replace screenshots-->
 
 Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the dbt-autofix tool.
 
@@ -418,4 +417,4 @@ Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name=
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
 8. Once complete, a success message appears. Click **Review changes** to verify the changes.
 
-9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
+9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.-->
