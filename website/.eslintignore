@@ -8,3 +8,4 @@ sidebars-*.js
 docusaurus.config.js
 cypress.config.js
 static/fonts/**
+plugins/buildSearchIndex/**
