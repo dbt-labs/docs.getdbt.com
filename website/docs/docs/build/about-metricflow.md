@@ -226,18 +226,18 @@ models:
     columns:
       # Primary entity - order_id
       - name: order_id
+        description: "Primary key for orders table"
         entity:
           type: primary
           name: order_id
-          description: "Primary key for orders table"
           label: "Order ID"
       
       # Foreign entity - customer
       - name: customer_id
+        description: "Foreign key linking to customers"
         entity:
           type: foreign
           name: customer
-          description: "Foreign key linking to customers"
           label: "Customer"
       
       # Time dimension - metric_time
@@ -267,19 +267,19 @@ models:
     columns:
       # Primary entity - customer
       - name: customer_id
+        description: "Primary key for customers table"
         entity:
           type: primary
           name: customer
-          description: "Primary key for customers table"
           label: "Customer"
       
       # Time dimension - first_ordered_at
       - name: first_ordered_at
+        description: "Date of customer's first order"
         granularity: day
         dimension:
           type: time
           name: first_ordered_at
-          description: "Date of customer's first order"
           label: "First Order Date"
 ```
 </VersionBlock>
@@ -333,35 +333,35 @@ models:
     columns:
       # Primary entity - order_id
       - name: order_id
+        description: "Primary key for orders table"
         entity:
           type: primary
           name: order_id
-          description: "Primary key for orders table"
           label: "Order ID"
       
       # Foreign entity - customer
       - name: customer_id
+        description: "Foreign key linking to customers"
         entity:
           type: foreign
           name: customer
-          description: "Foreign key linking to customers"
           label: "Customer"
       
       # Time dimension - metric_time
       - name: ordered_at
+        description: "Date when the order was placed"
         granularity: day
         dimension:
           type: time
           name: metric_time
-          description: "Date when the order was placed"
           label: "Order Date"
       
       # Categorical dimension - is_food_order
       - name: is_food_order
+        description: "Indicates if this is a food order"
         dimension:
           type: categorical
           name: is_food_order
-          description: "Indicates if this is a food order"
           label: "Is Food Order"
     
     metrics:
@@ -431,34 +431,34 @@ models:
     columns:
       # Primary entity - order_id
       - name: order_id
+        description: "Primary key for orders table"
         entity:
           type: primary
           name: order_id
-          description: "Primary key for orders table"
           label: "Order ID"
       
       # Foreign entity - customer
       - name: customer_id
+        description: "Foreign key linking to customers"
         entity:
           type: foreign
           name: customer
-          description: "Foreign key linking to customers"
           label: "Customer"
       
       # Time dimension - ordered_at
       - name: ordered_at
+        description: "Date when the order was placed"
         granularity: day
         dimension:
           type: time
-          description: "Date when the order was placed"
           label: "Order Date"
       
       # Categorical dimension - is_food_order
       - name: is_food_order
+        description: "Indicates if this is a food order"
         dimension:
           type: categorical
           name: is_food_order
-          description: "Indicates if this is a food order"
           label: "Is Food Order"
     
     metrics:
@@ -496,19 +496,19 @@ models:
     columns:
       # Primary entity - customer
       - name: customer_id
+        description: "Primary key for customers table"
         entity:
           type: primary
           name: customer
-          description: "Primary key for customers table"
           label: "Customer"
       
       # Time dimension - first_ordered_at
       - name: first_ordered_at
+        description: "Date of customer's first order"
         granularity: day
         dimension:
           type: time
           name: first_ordered_at
-          description: "Date of customer's first order"
           label: "First Order Date"
 
 metrics:
