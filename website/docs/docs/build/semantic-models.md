@@ -227,9 +227,9 @@ models:
           name: customer
 
       - name: transaction_date
+        granularity: day
         dimension: # Dimensions are qualitative values such as names, dates, or geographical data. They provide context to metrics and allow "metric by group" data slicing.
           type: time
-          time_granularity: day
 
       - name: order_country
         dimension:
@@ -244,12 +244,12 @@ models:
         agg: sum
         expr: transaction_total
 
-      - name: sales
-        description: "The total sale of the transaction."
+      - name: average_transaction_total
+        description: "The average total sale of the transaction."
         type: simple
-        label: Sales
-        agg: sum
-        expr: transaction_total
+        label: Average Transaction Total
+        agg: average
+        expr: average_transaction_total
 
       - name: median_sales
         description: "The median sale of the transaction."
@@ -537,11 +537,15 @@ import MeasuresParameters from '/snippets/\_sl-measures-parameters.md';
 
 <VersionBlock firstVersion="2.0">
 
+### `derived_semantics` in dimensions and entities
+
+Use the `derived_semantics` key in the model YAML entry when you want to create dimensions and entities that don’t match a single, physical column. The `expr` field is required when using `derived_semantics`. For more information, see [Dimensions](/docs/build/dimensions#derived_semantics-in-dimensions) and [Entities](/docs/build/entities#derived_semantics-in-entities).
+
 ### Simple metrics
 
 Simple metrics are direct aggregations over columns in your data warehouse using different aggregation types. They serve as building blocks for more complex metrics and can be filtered by dimensions.
 
-Simple metrics have various parameters which are listed in a table along with their descriptions and types. For more information, see [Simple metrics](/docs/build/simple). <!--add a snippet once merged-->
+Simple metrics have various parameters which are listed in a table along with their descriptions and types. For more information, see [Simple metrics](/docs/build/simple).
 
 </VersionBlock>
 
