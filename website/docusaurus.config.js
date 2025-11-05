@@ -360,6 +360,17 @@ var siteSettings = {
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
     [
+      path.resolve("plugins/buildSearchIndex"),
+      {
+        docsDir: 'docs',
+        outputFile: 'search-index.json',
+        includeContent: true,
+        maxContentLength: 10000,
+        enableChunking: true,  // Split documents into sections for granular search
+        minChunkSize: 200,     // Minimum characters for a section to become its own chunk
+      },
+    ],
+    [
       "vercel-analytics",
       {
         debug: false,
