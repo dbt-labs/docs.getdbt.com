@@ -17,6 +17,30 @@ function stripMarkdown(markdown) {
   // Remove HTML comments
   text = text.replace(/<!--[\s\S]*?-->/g, '');
   
+  // Remove Docusaurus admonitions but keep content
+  // Pattern: :::type [optional title]\ncontent\n:::
+  text = text.replace(/:::(\w+)([^\n]*)\n([\s\S]*?):::/g, (match, type, title, content) => {
+    // Keep the content, optionally prefix with the title or type
+    const prefix = title.trim() ? `${title.trim()}: ` : '';
+    return `${prefix}${content.trim()}`;
+  });
+  
+  // Remove any standalone ::: markers that weren't caught
+  text = text.replace(/^:::.*$/gm, '');
+  
+  // Convert markdown tables to readable text
+  // First, remove table separator lines (|---|---|)
+  text = text.replace(/^\|[\s\-:|]+\|$/gm, '');
+  
+  // Then convert table rows to comma-separated values
+  text = text.replace(/^\|(.+)\|$/gm, (match, content) => {
+    // Split by pipe, trim whitespace, filter empty, join with comma
+    return content.split('|')
+      .map(cell => cell.trim())
+      .filter(cell => cell.length > 0)
+      .join(', ');
+  });
+  
   // Remove code blocks (with language specifier)
   text = text.replace(/```[\s\S]*?```/g, '');
   
@@ -72,6 +96,54 @@ function stripMarkdown(markdown) {
 function extractFirstHeading(content) {
   const headingMatch = content.match(/^#\s+(.+)$/m);
   return headingMatch ? headingMatch[1].trim() : null;
+}
+
+/**
+ * Extract versions from VersionBlock components
+ * @param {string} content - The markdown content
+ * @returns {Array} Array of version strings
+ */
+function extractVersions(content) {
+  const versions = new Set();
+  
+  // Match <VersionBlock versions={[...]} or <VersionBlock firstVersion="..." lastVersion="...">
+  // Pattern 1: versions={['1.0', '2.0']} or versions={["1.0", "2.0"]}
+  const arrayMatches = content.matchAll(/<VersionBlock[^>]*versions=\{(\[[^\]]+\])\}[^>]*>/g);
+  for (const match of arrayMatches) {
+    try {
+      // Extract the array content and parse it
+      const arrayStr = match[1];
+      // Replace single quotes with double quotes for JSON parsing
+      const jsonStr = arrayStr.replace(/'/g, '"');
+      const versionArray = JSON.parse(jsonStr);
+      versionArray.forEach(v => versions.add(v));
+    } catch (e) {
+      // If parsing fails, try to extract versions with regex
+      const versionStrs = match[1].match(/['"]([^'"]+)['"]/g);
+      if (versionStrs) {
+        versionStrs.forEach(v => versions.add(v.replace(/['"]/g, '')));
+      }
+    }
+  }
+  
+  // Pattern 2: firstVersion="1.0" lastVersion="2.0"
+  const rangeMatches = content.matchAll(/<VersionBlock[^>]*(?:firstVersion|lastVersion)=["']([^"']+)["'][^>]*>/g);
+  for (const match of rangeMatches) {
+    versions.add(match[1]);
+  }
+  
+  // Also check for individual version attributes
+  const firstVersionMatches = content.matchAll(/firstVersion=["']([^"']+)["']/g);
+  for (const match of firstVersionMatches) {
+    versions.add(match[1]);
+  }
+  
+  const lastVersionMatches = content.matchAll(/lastVersion=["']([^"']+)["']/g);
+  for (const match of lastVersionMatches) {
+    versions.add(match[1]);
+  }
+  
+  return Array.from(versions).sort();
 }
 
 /**
@@ -218,6 +290,9 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
     // Generate base URL
     const baseUrl = generateUrlPath(relativePath, frontmatter.id);
     
+    // Extract versions from VersionBlock components
+    const versions = extractVersions(markdownContent);
+    
     // Base metadata shared by all chunks
     const baseMeta = {
       sidebar_label: frontmatter.sidebar_label || null,
@@ -226,6 +301,7 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
       keywords: frontmatter.keywords || [],
       ...(frontmatter.category && { category: frontmatter.category }),
       ...(frontmatter.type && { type: frontmatter.type }),
+      ...(versions.length > 0 && { versions: versions }),
     };
     
     // If chunking is disabled, return single document
@@ -259,6 +335,9 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
         return;
       }
       
+      // Extract section-specific versions
+      const sectionVersions = extractVersions(section.content);
+      
       // Create section title
       const sectionTitle = section.heading 
         ? `${title} - ${section.heading}`
@@ -277,19 +356,27 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
       // Create description from section content
       const description = createExcerpt(plainText, 200);
       
+      // Merge base metadata with section-specific versions
+      const sectionMeta = {
+        ...baseMeta,
+        section: section.heading || 'Introduction',
+        sectionLevel: section.headingLevel,
+        pageTitle: title,
+        chunkIndex: index,
+      };
+      
+      // If section has specific versions, override the base versions
+      if (sectionVersions.length > 0) {
+        sectionMeta.versions = sectionVersions;
+      }
+      
       chunks.push({
         id: sectionId,
         title: sectionTitle,
         description: description,
         url: sectionUrl,
         content: plainText,
-        meta: {
-          ...baseMeta,
-          section: section.heading || 'Introduction',
-          sectionLevel: section.headingLevel,
-          pageTitle: title,
-          chunkIndex: index,
-        },
+        meta: sectionMeta,
         _source: relativePath,
       });
     });
