@@ -165,7 +165,7 @@ To define UDFs in dbt, refer to the following steps:
     ```sql
     select
         maybe_positive_int_column,
-        {{ function('is_positive_int') }}(maybe_positive_int_column)
+        {{ function('is_positive_int') }}(maybe_positive_int_column) as is_positive_int
     from {{ ref('a_model_i_like') }}
     ```
     </File>

@@ -39,8 +39,7 @@ When you use only the dbt platform, you can disable the CLI tools. You can find 
         "dbt-mcp"
       ],
       "env": {
-        "DBT_HOST": "https://<your-dbt-host-with-custom-subdomain>",
-        "DISABLE_DBT_CLI": "true"
+        "DBT_HOST": "https://<your-dbt-host-with-custom-subdomain>"
       }
     }
   }

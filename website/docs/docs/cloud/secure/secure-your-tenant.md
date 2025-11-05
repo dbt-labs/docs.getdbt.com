@@ -84,7 +84,7 @@ hide_table_of_contents: true
     icon="dbt-bit"/>
 
 <Card
-    title="GCP Private Service Connect for BigQuery (beta)"
+    title="GCP Private Service Connect for BigQuery"
     body="Learn how to configure GCP Private Service Connect for BigQuery."
     link="/docs/cloud/secure/bigquery-psc"
     icon="dbt-bit"/>

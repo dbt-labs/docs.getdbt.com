@@ -5,6 +5,8 @@ sidebar_label: "Snowflake Iceberg support"
 description: Understand Snowflake support for Apache Iceberg.
 ---
 
+import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
+
 dbt supports materializing the table in Iceberg table format in two different ways:
 
 - The model configuration field `table_format = 'iceberg'` (legacy)
@@ -176,12 +178,24 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 
 #### Built-in catalog
 
+<VersionBlock lastVersion="1.99">
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |
 | `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+</VersionBlock>
+<VersionBlock firstVersion="2.0">
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `change_tracking` | Optional | `True` or `False`    |
+| `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+| `base_location_root` | Optional | relative path segment (like `'subpath1/subpath2'`) |
+| `base_location_subpath` | Optional | relative path segment (like `'subpath1/subpath2'`), only configurable per-model |
+</VersionBlock>
 
 #### REST catalog
 
@@ -199,6 +213,12 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 - **catalog_linked_database:** [Catalog-linked databases](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database) (CLD) in Snowflake ensures that Snowflake can automatically sync metadata (including namespaces and iceberg tables) from the external Iceberg Catalog and registers them as remote tables in the catalog-linked database. The reason we require the usage of Catalog-linked databases for building Iceberg tables with external catalogs is that without it, dbt will be unable to truly manage the table end-to-end. Snowflake does not support dropping the Iceberg table on non-CLDs in the external catalog; instead, it only allows unlinking the Snowflake table, which creates a discrepancy with how dbt expects to manage the materialized object.
 - **auto_refresh:** Specifies whether Snowflake should automatically poll the external Iceberg catalog for metadata updates. If `REFRESH_INTERVAL_SECONDS` isn’t set on the catalog integration, the default refresh interval is 30 seconds. 
 - **target_file_size:** Specifies a target Parquet file size. Default is `AUTO`.
+
+<VersionBlock firstVersion="2.0">
+You can set the following properties in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` takes precedence. Refer to [Base location](#base-location) for more information.
+- **base_location_root:** Specifies the prefix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table.
+- **base_location_subpath:** Specifies the suffix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table. This property can only be set in model configurations, not in `catalogs.yml`.
+</VersionBlock>
 
 ### Configure catalog integration for managed Iceberg tables
 
@@ -287,20 +307,106 @@ select * from {{ ref('raw_orders') }}
 
 ### Base location 
 
+<VersionBlock lastVersion="1.99">
 Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
 
-We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the `base_location_root` and `base_location_subpath`. 
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the model configuration fields `base_location_root` and `base_location_subpath`.
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
+While you can customize paths with `base_location_root` and `base_location_subpath`, we don't recommend you rely on these for environment isolation (such as separating development and production environments). These configuration values can be easily modified by anyone with repository access. For true environment isolation, use separate `EXTERNAL VOLUME`s with infrastructure-level access controls.
+
+#### Example configurations
+
+An example model with a customized `base_location`:
+
+<File name='iceberg_model.sql'>
+
+```sql
+
+{{
+    config(
+        materialized='table',
+        catalog_name='catalog_horizon',
+        base_location_root='foo',
+        base_location_subpath='bar',
+
+    )
+}}
+
+select * from {{ ref('jaffle_shop_customers') }}
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
+
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows you to configure the base_location with the adapter properties `base_location_root` and `base_location_subpath`. `base_location_subpath` is only accepted in model configurations. Refer to [Adapter Properties](#adapter-properties) for more information.
+
+- If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
+- If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
+- If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
+- If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
+
+<BaseLocationEnvIsolation />
+
+#### Example configurations
+
+An example model with a customized `base_location`:
+
+<File name='iceberg_model.sql'>
+
+```sql
+
+{{
+    config(
+        materialized='table',
+        catalog_name='catalog_horizon',
+        adapter_properties={
+          'base_location_root': 'foo',
+          'base_location_subpath': 'bar',
+        }
+
+    )
+}}
+
+select * from {{ ref('jaffle_shop_customers') }}
+```
+
+</File>
+
+:::info Legacy model configuration for base_location
+
+For backwards compatibility, dbt <Constant name="fusion"/> also supports setting `base_location_root` and `base_location_subpath` as top-level model configuration fields. `adapter_properties` configs take precedence over legacy configs.
+
+For example, in the following model config, `base_location_root`=`bar` overrides `base_location_root`=`foo`.
+
+```sql
+config(
+    materialized='table',
+    catalog_name='catalog_horizon',
+    'base_location_root': 'foo',
+    'base_location_subpath': 'bar',
+    adapter_properties={
+      'base_location_root': 'bar',
+    },
+)
+```
+This configuration results in: `base_location` = `{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar`
+:::
+
+</VersionBlock>
+
 
 #### Rationale
 
-By default, dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_ location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
+By default, dbt manages `base_location` on behalf of users to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The `base_location` parameter declares where to write the data within the external volume. The Snowflake Iceberg catalog keeps track of your Iceberg table regardless of where the data lives within the `external volume` declared and the `base_location` provided. However, Snowflake permits passing anything into the `base_location` field, including an empty string, even reusing the same path across multiple tables. This behavior could result in future technical debt because it will limit the ability to:
 
 - Navigate the underlying object store (S3/Azure blob)
 - Read Iceberg tables via an object-store integration
