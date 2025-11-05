@@ -60,7 +60,6 @@ Here we describe the Semantic model components with examples:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--replaced Measures with Simple metrics, but need to verify if components are correct-->
 
 | Component    | Description      | Required     |  Type     | 
 | ------------ | ---------------- | -------- | -------- | 
@@ -70,6 +69,7 @@ Here we describe the Semantic model components with examples:
 | [Entities](#entities)         | Define entities at the column level. For any column that serves as a join key, add an entity block under the column with `type` set to primary, foreign, unique, or natural. Optionally include name, description, label, config, or use expr when the join key differs from the column. | Required | List | 
 | [Primary Entity](#primary-entity) | If a column declares an entity with `type: primary`, you don’t need `primary_entity`. If no column is primary, set the top-level `primary_entity` to name the model’s primary entity. | Optional | String | 
 | [Dimensions](#dimensions)     | Different ways to group or slice data for a metric, they can be `time` or `categorical`.  | Required | List |
+| [Derived semantics](#derived_semantics-in-dimensions-and-entities) | Use to create dimensions and entities that don’t match a single, physical column. The `expr` field is required. | Optional | List |
 | [Simple metrics](#measures)     | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics.  | Optional | List |
 | [Label](#label)     | The display name for your semantic model `node`, `dimension`, `entity`, and/or simple metrics.   | Optional | String |
 | `config`   | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs. | Optional | Dict |
