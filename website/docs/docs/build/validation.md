@@ -8,38 +8,36 @@ tags: [Metrics, Semantic Layer]
 
 Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of the <Constant name="semantic_layer" />, powered by MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform).
 
-These validations ensure that configuration files follow the expected schema, the semantic graph doesn't violate any constraints, and semantic definitions in the graph exist in the physical table - providing effective data governance support. These three validation steps occur sequentially and must succeed before proceeding to the next step.
+These validations ensure that configuration files follow the expected schema, the semantic graph doesn't violate any constraints, and semantic definitions in the graph exist in the physical table &mdash; providing effective data governance support. These three validation steps occur sequentially and must succeed before proceeding to the next step.
 
 The code that handles validation [can be found here](https://github.com/dbt-labs/dbt-semantic-interfaces/tree/main/dbt_semantic_interfaces/validations) for those who want to dive deeper into this topic. 
 
 ## Validations command
 
-<VersionBlock lastVersion="1.99">
 You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="cloud" />, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
 ```bash
-dbt sl validate # dbt platform users
-mf validate-configs # dbt Core users
-```
-</VersionBlock>
+# dbt platform and Fusion users in IDE / Cloud CLI
+# runs parsing, semantic, and (where supported) data platform validations
+dbt sl validate
 
-<VersionBlock firstVersion="2.0">
-
-You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow command](/docs/build/metricflow-commands):
-
-```bash
-mf validate-configs # dbt Fusion users
+# dbt Core (open source) users
+# runs parsing and semantic validations 
+mf validate-configs
 ```
 
-:::info
-In the initial <Constant name="fusion" /> release, [semantic syntax](#semantic-syntax) and [data platform](#data-platform) validations are only available in the following contexts:
-- **<Constant name="cloud_ide" />**
-- **Orchestration** in the <Constant name="dbt_platform" />
-- Local development with a valid `dbt_cloud.yaml` config. If `dbt_cloud.yml` isn't found, run the validation manually using `mf validate-configs`.
-:::
+## Availability by environment
 
-</VersionBlock>
+Validation behavior and availability differ depending on your environment and setup:
 
+| Environment | Who can use | Parsing | Semantic syntax | Data platform | How to run |
+| --- | --- | --- | --- | --- | --- |
+| dbt Fusion engine| dbt platform users for full Semantic Layer features<!--need to confirm--> | ✅ | ✅ * | ✅ * | Runs automatically for dbt platform jobs.<br></br> When running locally, validations run automatically with commands if `dbt_cloud.yml` is configured. If not, run manually using `mf validate-configs`. |
+| Cloud CLI | dbt platform users | ✅ | ✅ | ✅ | Run any Cloud CLI command; validations execute automatically. |
+| dbt Core | Open source users | ✅ | ✅ | ❌ | Use dbt Core for parsing/builds. Run additional validation manually with the MetricFlow CLI. |
+| MetricFlow CLI | Open source users | ✅ | ✅ | ✅ | Run `mf validate-configs` locally to validate and test metrics. |
+
+*Jobs run in **Orchestration** or **Studio IDE** run this validation automatically.
 
 ## Parsing
 
