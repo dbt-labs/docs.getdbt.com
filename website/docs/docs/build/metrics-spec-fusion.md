@@ -327,10 +327,11 @@ metrics:
 
 </Tabs>
 
-## `type_params`
+### `type_params`
 
 The `type_params` key is deprecated. The following are direct keys on the metric:
 
+- `expr`
 - `percentile`
 - `percentile_type`
 - `non_additive_dimension: { name, window_agg, group_by }`
@@ -364,12 +365,163 @@ metrics:
   - name: revenue_p95
     type: simple
     type_params:
+      expr: amount
       percentile: 95.0
       percentile_type: discrete
 ```
 
 </TabItem>
 
+</Tabs>
+
+For [derived metrics](/docs/build/derived), `type_params::metrics` is renamed `input_metrics`.
+<Tabs>
+
+<TabItem value="new" label="New spec">
+
+```yaml
+metrics:
+  - name: d7_booking_change
+    description: Difference between bookings now and 7 days ago
+    type: derived
+    label: d7 bookings change
+    expr: current_bookings - bookings_7_days_ago
+    input_metrics:
+      - name: bookings
+        alias: current_bookings
+      - name: bookings
+        offset_window: 7 days
+        alias: bookings_7_days_ago
+```
+
+</TabItem>
+
+<TabItem value="old" label="Legacy spec">
+
+```yaml
+- name: d7_booking_change
+  description: Difference between bookings now and 7 days ago
+  type: derived
+  label: d7 bookings change
+  type_params:
+    expr: bookings - bookings_7_days_ago
+    metrics:
+      - name: bookings
+        alias: current_bookings
+      - name: bookings
+        offset_window: 7 days
+        alias: bookings_7_days_ago
+```
+
+</TabItem>
+</Tabs>
+
+For [ratio metrics](/docs/build/ratio), `numerator` and `denominator` are now direct keys on the metric.
+
+<Tabs>
+<TabItem value="new" label="New spec">
+
+```yaml
+metrics:
+  - name: conversion_rate
+    type: ratio
+    numerator: conversions
+    denominator: sessions
+```
+
+</TabItem>
+
+<TabItem value="old" label="Legacy spec">
+
+```yaml
+metrics:
+  - name: conversion_rate
+    type: ratio
+    type_params:
+      numerator: conversions
+      denominator: sessions
+```
+
+</TabItem>
+</Tabs>
+
+For [cumulative metrics](/docs/build/cumulative):
+- `type_params::measure` is renamed `input_metric` and must reference a metric.
+- `type_params::cumulative_type_params` values are direct keys on the metric: `window`, `grain_to_date`, and `period_agg`.
+
+<Tabs>
+<TabItem value="new" label="New spec">
+
+```yaml
+metrics:
+  - name: revenue_mtd_cumulative
+    type: cumulative
+    input_metric: revenue_daily
+    window: 30d
+    grain_to_date: month
+    period_agg: sum
+```
+
+</TabItem>
+
+<TabItem value="old" label="Legacy spec">
+
+```yaml
+metrics:
+  - name: revenue_mtd_cumulative
+    type: cumulative
+    type_params:
+      measure: revenue_daily  
+      cumulative_type_params:
+        window: 30d
+        grain_to_date: month
+        period_agg: sum
+```
+
+</TabItem>
+</Tabs>
+
+For [conversion metrics](/docs/build/conversion), the following `type_params::conversion_type_params` values are direct keys on the metric: 
+- `entity`
+- `calculation`
+- `base_metric` (previously `base_measure`)
+- `conversion_metric` (previously `conversion_measure`)
+- `constant_properties`
+
+<Tabs>
+<TabItem value="new" label="New spec">
+
+```yaml
+metrics:
+  - name: paid_signup_conversion
+    type: conversion
+    entity: user_id
+    calculation: conversion_rate
+    base_metric: signups
+    conversion_metric: paid_signups
+    constant_properties:
+      plan: pro
+```
+
+</TabItem>
+
+<TabItem value="old" label="Legacy spec">
+
+```yaml
+metrics:
+  - name: paid_signup_conversion
+    type: conversion
+    type_params:
+      conversion_type_params:
+        entity: user_id
+        calculation: conversion_rate
+        base_measure: signups            
+        conversion_measure: paid_signups
+        constant_properties:
+          plan: pro
+```
+
+</TabItem>
 </Tabs>
 
 
