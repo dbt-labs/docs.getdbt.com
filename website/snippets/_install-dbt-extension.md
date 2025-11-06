@@ -136,7 +136,7 @@ During the VS Code extension registration workflow it can detect if you already 
 - The extension will use the `dbt_cloud.yml` file from your <Constant name="dbt_platform"/> account, which securely stores your <Constant name="dbt_platform"/> account credentials for authentication. You can download this file from your <Constant name="dbt_platform"/>'s **Account settings** page.
 
 #### How the registration works
-- If a `dbt_cloud.yml` file already exists in your `~/.dbt/` or `C:\Users\[username]\.dbt` folder, the extension automatically detects it in the registration flow and uses it.
+- If a `dbt_cloud.yml` file already exists in your `~/.dbt/` (macOS/Linux) or `C:\Users\[username]\.dbt` (Windows) folder, the extension automatically detects it in the registration flow and uses it.
 - If you don’t have the file yet, you’ll need to download it from the <Constant name="dbt_platform"/>.
 
 #### Download the `dbt_cloud.yml` file
