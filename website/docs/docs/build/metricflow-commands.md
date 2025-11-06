@@ -6,7 +6,7 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [ <Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Install <Constant name="fusion"/>](/docs/fusion/install-fusion). 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Install <Constant name="fusion"/>](/docs/fusion/install-fusion). 
  
 MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="dbt_platform" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
@@ -19,17 +19,17 @@ MetricFlow is a dbt package that allows you to define and query metrics in your 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in the <Constant name="cloud_ide"/>, VS Code/Cursor, <Constant name="cloud_cli" />), <Constant name="core" />  (open source), with either the <Constant name="fusion_engine"/> or <Constant name="dbt Core"/> engine.
+MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in the <Constant name="cloud_ide"/>, VS Code/Cursor, <Constant name="cloud_cli" />), or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
 
-- When using <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
+- When using the <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
 - Using MetricFlow with <Constant name="dbt_platform" /> means you won't need to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
-- <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+- <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your Git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 <Tabs>
 
 <TabItem value="cloud" label="MetricFlow in Fusion or dbt platform">
 
-When using <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
+When using the <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
 
 - In <Constant name="dbt_platform" />, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation).
 - For CLI or VS Code/Cursor users, MetricFlow commands are embedded, which means you can immediately run them once you install the <Constant name="cloud_cli" /> or VS Code extension and don't need to install MetricFlow separately. You don't need to manage versioning because your <Constant name="dbt_platform" /> account will automatically manage the versioning for you.
@@ -249,7 +249,7 @@ Create a new query with MetricFlow and execute it against your data platform. Th
 
 ```bash
 dbt sl query --metrics <metric_name> --group-by <dimension_name>  # In dbt platform or Fusion engine 
-dbt sl query --saved-query <name>  # In dbt platform or Fusion engine 
+dbt sl query --saved-query <name> # In dbt platform or Fusion engine 
 
 mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
@@ -272,7 +272,7 @@ Options:
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
-                           *Not available in the dbt platform/Fusion/Fusion yet
+                           *Not available in the dbt platform/Fusion yet
 
   --where TEXT             SQL-like where statement provided as a string and wrapped in quotes.
                            All filter items must explicitly reference fields or dimensions that are part of your model.
@@ -326,7 +326,7 @@ Use the example to query multiple metrics by dimension and return the `order_tot
 
 **Query**
 ```bash
-dbt sl query --metrics order_total,users_active --group-by metric_time  # In dbt platform or Fusion engine 
+dbt sl query --metrics order_total,users_active --group-by metric_time # In dbt platform or Fusion engine 
 
 mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 ```
@@ -350,7 +350,7 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by order_id__is_food_order  # In dbt platform or Fusion engine 
+dbt sl query --metrics order_total --group-by order_id__is_food_order # In dbt platform or Fusion engine 
 
 mf query --metrics order_total --group-by order_id__is_food_order # In dbt Core
 ```
@@ -378,7 +378,7 @@ You can add order and limit functions to filter and present the data in a readab
 
 **Query**
 ```bash
- # In dbt platform or Fusion engine 
+# In dbt platform or Fusion engine 
 dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
@@ -405,7 +405,7 @@ You can further filter the data set by adding a `where` clause to your query. Th
 
 **Query**
 ```bash
- # In dbt platform or Fusion engine 
+# In dbt platform or Fusion engine 
 dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True" --where "{{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
 # In dbt Core
@@ -464,7 +464,7 @@ You can use this for frequently used queries. Replace `<name>` with the name of 
 
 **Query**
 ```bash
-dbt sl query --saved-query <name>  # In dbt platform or Fusion engine 
+dbt sl query --saved-query <name> # In dbt platform or Fusion engine 
 
 mf query --saved-query <name> # In dbt Core
 ```
@@ -549,7 +549,7 @@ Optionally, you can specify the time granularity you want your data to be aggreg
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-dbt sl query --metrics revenue --group-by metric_time__month  # In dbt platform or Fusion engine 
+dbt sl query --metrics revenue --group-by metric_time__month # In dbt platform or Fusion engine 
 
 mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
@@ -561,7 +561,7 @@ Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-dbt sl export  # dbt platform or Fusion engine
+dbt sl export # dbt platform or Fusion engine
 ```
 
 ## Export-all
@@ -571,7 +571,7 @@ Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="cloud" />.
 
 ```bash
-dbt sl export-all  # dbt platform or Fusion engine
+dbt sl export-all # dbt platform or Fusion engine
 ```
 
 
