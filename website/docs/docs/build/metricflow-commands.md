@@ -24,6 +24,7 @@ MetricFlow is a dbt package that allows you to define and query metrics in your 
 - When using the <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
 - Using MetricFlow with <Constant name="dbt_platform" /> means you won't need to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
 - <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your Git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+</VersionBlock>
 
 <Tabs>
 
