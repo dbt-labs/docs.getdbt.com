@@ -16,8 +16,7 @@ The dbt VS Code extension, powered by the <Constant name="fusion_engine"/>, can 
 Compare changes in development allows you to:
 - Check impact early on, before even opening a PR or running a [CI job](/docs/deploy/ci-jobs) in deployment.
 - Preview data changes caused by your local edits (like added/removed rows, column changes, primary-key changes, and so on).
-- Use it alongside other [dbt VS Code extension features](/docs/dbt-extension-features), like live CTE previews.
-- How does it complement state aware?
+- It’s one of several [dbt VS Code extension features](/docs/dbt-extension-features) available along with things like live CTE previews and hover insights.
 
 ## Prerequisites
 
