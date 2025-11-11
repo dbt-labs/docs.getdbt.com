@@ -17,7 +17,7 @@ Before you start, consider the following guidelines:
 <VersionBlock lastVersion="1.99">
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- Available on [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion), or [dbt Latest](/docs/dbt-versions/cloud-release-tracks), or [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- Available on [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion), or [dbt Latest](/docs/dbt-versions/cloud-release-tracks), or [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6+
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
