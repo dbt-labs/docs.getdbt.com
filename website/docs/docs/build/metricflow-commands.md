@@ -20,10 +20,6 @@ MetricFlow is a dbt package that allows you to define and query metrics in your 
 
 <VersionBlock firstVersion="2.0">
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in the <Constant name="cloud_ide"/>, VS Code/Cursor, <Constant name="cloud_cli" />), or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
-
-- When using the <Constant name="dbt_platform" /> or <Constant name="fusion_engine" />, you can run MetricFlow commands using the `dbt sl` prefix.
-- Using MetricFlow with <Constant name="dbt_platform" /> means you won't need to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
-- <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your Git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 </VersionBlock>
 
 <Tabs>
@@ -34,6 +30,8 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 
 - Run MetricFlow commands using the `dbt sl` prefix in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation).
 - For CLI or VS Code/Cursor users, MetricFlow commands are embedded, which means you can immediately run them once you install the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [VS Code extension](/docs/install-dbt-extension) and don't need to install MetricFlow separately. You don't need to manage versioning because your <Constant name="dbt_platform" /> account will automatically manage the versioning for you.
+- Using MetricFlow with <Constant name="dbt_platform" /> doesn't require you to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
+- <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your Git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 </TabItem>
 
