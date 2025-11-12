@@ -61,6 +61,8 @@ The following example uses two semantic models with a common entity and shows a 
 
 <VersionBlock lastVersion="1.99">
 
+<VersionBlock lastVersion="1.99">
+
 ```yaml
 semantic_models:
   - name: transactions
@@ -83,6 +85,11 @@ semantic_models:
       - name: type
         type: categorical
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<!--insert new yaml spec-->
+</VersionBlock>
 
 - MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
   - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 

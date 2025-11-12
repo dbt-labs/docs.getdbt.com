@@ -14,10 +14,24 @@ MetricFlow handles SQL query construction and defines the specification for dbt 
 
 Before you start, consider the following guidelines:
 
+<VersionBlock lastVersion="1.99">
+
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- Available on [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion), or [dbt Latest](/docs/dbt-versions/cloud-release-tracks), or [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6+
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+- Define metrics in YAML and query them using the [latest metric specifications](/docs/build/semantic-models).
+- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.11 and higher
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+
+</VersionBlock>
+
 
 ## MetricFlow
 
@@ -75,11 +89,22 @@ Metrics, which is a key concept, are functions that combine simple metrics, cons
 
 MetricFlow supports different metric types:
 
+<VersionBlock lastVersion="1.99">
+
 - [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
 - [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0"> simple metrics</VersionBlock>, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
+- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
+- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
+- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two simple metrics, like revenue per customer.
+- [Simple](/docs/build/simple) &mdash; Metrics defined as simple aggregations over a particular dataset.
+</VersionBlock> 
 
 ## Use case
 
@@ -132,11 +157,11 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 <Tabs>
 <TabItem value="example1" label="Revenue example">
 
+<VersionBlock lastVersion="1.99">
+
 In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
 
 The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
-
-<VersionBlock lastVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -184,7 +209,79 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+In this example, a simple metric named `order_total` is defined on the `orders` model and semantic model. The metric sums the `order_total` column. The time dimension `metric_time` provides daily granularity and can be rolled up to weekly or monthly periods.
+
+Additionally, the `customers` semantic model defines a derived categorical dimension `is_new_customer`, which returns `true` when `first_ordered_at` is `not null` and `false` otherwise.
+
+```yaml
+models:
+  - name: orders    # The name of the model
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+    
+    agg_time_dimension: metric_time # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        description: "Primary key for orders table"
+        entity:
+          type: primary
+          name: order_id
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        description: "Foreign key linking to customers"
+        entity:
+          type: foreign
+          name: customer
+          label: "Customer"
+      
+      # Time dimension - metric_time
+      - name: ordered_at
+        granularity: day
+        dimension:
+          type: time
+          label: "Order Date"
+          description: "Date when the order was placed"
+    
+    metrics:
+      # Simple metric for order total revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+
+  - name: customers    # The customers model with semantic layer constructs defined
+    semantic_model:
+      enabled: true
+      name: customers_semantic_model
+    
+    agg_time_dimension: first_ordered_at
+    
+    columns:
+      # Primary entity - customer
+      - name: customer_id
+        description: "Primary key for customers table"
+        entity:
+          type: primary
+          name: customer
+          label: "Customer"
+      
+      # Time dimension - first_ordered_at
+      - name: first_ordered_at
+        description: "Date of customer's first order"
+        granularity: day
+        dimension:
+          type: time
+          name: first_ordered_at
+          label: "First Order Date"
+```
 </VersionBlock>
 
 </TabItem>
@@ -223,7 +320,60 @@ semantic_models:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+models:
+  - name: orders    # The name of the semantic model
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+    
+    agg_time_dimension: metric_time # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        description: "Primary key for orders table"
+        entity:
+          type: primary
+          name: order_id
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        description: "Foreign key linking to customers"
+        entity:
+          type: foreign
+          name: customer
+          label: "Customer"
+      
+      # Time dimension - metric_time
+      - name: ordered_at
+        description: "Date when the order was placed"
+        granularity: day
+        dimension:
+          type: time
+          name: metric_time
+          label: "Order Date"
+      
+      # Categorical dimension - is_food_order
+      - name: is_food_order
+        description: "Indicates if this is a food order"
+        dimension:
+          type: categorical
+          name: is_food_order
+          label: "Is Food Order"
+    
+    metrics:
+      # Simple metric for order total revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+```
+
 </VersionBlock>
 
 </TabItem>
@@ -248,6 +398,7 @@ where
 group by 1
 ```
 
+
 MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
 <VersionBlock lastVersion="1.99">
@@ -267,7 +418,110 @@ metrics:
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-<!--insert new yaml spec-->
+
+```yaml
+models:
+  - name: orders    
+    semantic_model:
+      enabled: true
+      name: orders_semantic_model
+    
+    agg_time_dimension: ordered_at # Default aggregation time dimension
+    
+    columns:
+      # Primary entity - order_id
+      - name: order_id
+        description: "Primary key for orders table"
+        entity:
+          type: primary
+          name: order_id
+          label: "Order ID"
+      
+      # Foreign entity - customer
+      - name: customer_id
+        description: "Foreign key linking to customers"
+        entity:
+          type: foreign
+          name: customer
+          label: "Customer"
+      
+      # Time dimension - ordered_at
+      - name: ordered_at
+        description: "Date when the order was placed"
+        granularity: day
+        dimension:
+          type: time
+          label: "Order Date"
+      
+      # Categorical dimension - is_food_order
+      - name: is_food_order
+        description: "Indicates if this is a food order"
+        dimension:
+          type: categorical
+          name: is_food_order
+          label: "Is Food Order"
+    
+    metrics:
+      # Simple metric for total order revenue
+      - name: order_total
+        description: "Total revenue from orders"
+        label: "Order Total Revenue"
+        type: simple
+        agg: sum
+        expr: order_total
+      
+      # Simple metric for food order revenue
+      - name: food_revenue
+        description: "Revenue from food orders only"
+        label: "Food order revenue"
+        type: simple
+        agg: sum
+        expr: "case when is_food_order = true then order_total else 0 end"
+
+      # Simple metric for count of distinct customers in orders
+      - name: total_customers
+        description: "Count of unique customers with orders"
+        label: "Total customers"
+        type: simple
+        agg: count_distinct
+        expr: customer_id
+
+  - name: customers    # The name of the second semantic model
+    semantic_model:
+      enabled: true
+      name: customers_semantic_model
+    
+    agg_time_dimension: first_ordered_at
+    
+    columns:
+      # Primary entity - customer
+      - name: customer_id
+        description: "Primary key for customers table"
+        entity:
+          type: primary
+          name: customer
+          label: "Customer"
+      
+      # Time dimension - first_ordered_at
+      - name: first_ordered_at
+        description: "Date of customer's first order"
+        granularity: day
+        dimension:
+          type: time
+          name: first_ordered_at
+          label: "First Order Date"
+
+metrics:
+  - name: food_revenue_per_customer
+    description: "Revenue from food orders from returning customers"
+    label: "Food % of order total"
+    type: ratio
+    numerator:
+      name: food_revenue
+    denominator:
+      name: total_customers
+```
+
 </VersionBlock>
 
 </TabItem>

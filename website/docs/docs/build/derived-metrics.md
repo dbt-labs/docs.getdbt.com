@@ -29,7 +29,6 @@ The parameters, description, and type for derived metrics are:
 
 <VersionBlock firstVersion="2.0">
 
-
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
 | `name` | The name of the metric. | Required | String |  
