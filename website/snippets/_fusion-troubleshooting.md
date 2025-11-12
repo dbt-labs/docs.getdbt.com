@@ -1,6 +1,6 @@
 If you run into any issues, check out the troubleshooting section below.
 
-<Expandable alt_header="How to create a .dbt directory in root and move config files">
+<Expandable alt_header="How to create a .dbt directory in root and move dbt_cloud.yml file">
 
 import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
