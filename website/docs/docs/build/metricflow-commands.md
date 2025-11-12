@@ -8,18 +8,18 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Install <Constant name="fusion"/>](/docs/fusion/install-fusion). 
  
-MetricFlow allows you to define and query metrics in your dbt project in the [<Constant name="dbt_platform" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 ## MetricFlow
 
 <VersionBlock lastVersion="1.99">
-MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />  (open source).
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />  (open source).
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in the <Constant name="cloud_ide"/>, VS Code/Cursor, <Constant name="cloud_cli" />), or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in the <Constant name="cloud_ide"/>, VS Code/Cursor, <Constant name="cloud_cli" />, or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
 </VersionBlock>
 
 <Tabs>
