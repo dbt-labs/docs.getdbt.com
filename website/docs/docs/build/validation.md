@@ -32,9 +32,9 @@ Validation behavior and availability differ depending on your environment and se
 
 | Environment | Who can use | Parsing | Semantic syntax | Data platform | How to run |
 | --- | --- | --- | --- | --- | --- |
-| dbt Fusion engine| dbt platform users for full Semantic Layer features<!--need to confirm--> | ✅ | ✅ * | ✅ * | Runs automatically for dbt platform jobs.<br></br> When running locally, validations run automatically with commands if `dbt_cloud.yml` is configured. If not, run manually using `mf validate-configs`. |
-| Cloud CLI | dbt platform users | ✅ | ✅ | ✅ | Run any Cloud CLI command; validations execute automatically. |
-| dbt Core | Open source users | ✅ | ✅ | ❌ | Use dbt Core for parsing/builds. Run additional validation manually with the MetricFlow CLI. |
+| <Constant name="fusion_engine"/>  | <Constant name="dbt_platform"/> users for full Semantic Layer features | ✅ | ✅ * | ✅ * | Runs automatically for <Constant name="dbt_platform"/>  jobs.<br></br> When running in development, validations run automatically on <Constant name="dbt_platform"/>  if `dbt_cloud.yml` configured. If not,, run manually using `mf-validate-configs`.|
+| <Constant name="cloud_cli"/>  | <Constant name="dbt_platform"/>  users | ✅ | ✅ | ✅ | Run any <Constant name="cloud_cli"/>  command; validations execute automatically. |
+| <Constant name="core"/>  | Open source users | ✅ | ✅ | ❌ | Use <Constant name="core"/>  for parsing/builds. Run additional validation manually with the MetricFlow CLI. |
 | MetricFlow CLI | Open source users | ✅ | ✅ | ✅ | Run `mf validate-configs` locally to validate and test metrics. |
 
 *Jobs run in **Orchestration** or **Studio IDE** run this validation automatically.
