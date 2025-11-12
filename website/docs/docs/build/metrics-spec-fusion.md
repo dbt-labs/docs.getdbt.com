@@ -527,9 +527,13 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s Studio IDE.<!--IDE pending-->  
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="cloud_ide" />.
 
 Refer to the following steps in this section, depending on which tool you use.
+
+<!--no toc-->
+- [Using the CLI or VS Code extension](#using-the-cli-or-vs-code-extension)
+- [Using the Studio IDE](#using-the-studio-ide)
 
 ### Using the CLI or VS Code extension
 
@@ -550,10 +554,9 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
     mf validate-configs
     ```
 
-<!--need to confirm if users can manually run the command in IDE
 ### Using the Studio IDE
 
-Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the dbt-autofix tool.
+Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
 
 1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix tool may overwrite any unsaved changes.
@@ -564,9 +567,7 @@ Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name=
 5. If you don't see the deprecations and the **Autofix warnings** button, click the command history in the bottom left:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-history.png" width="90%" title="Access recent commands to see the autofix button"/>
 6. When the command history opens, click the **Autofix warnings** button.
-
 7. When the **Proceed with autofix** dialog opens, click **Continue** to begin resolving project deprecations and start a follow-up parse to show remaining deprecations.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
 8. Once complete, a success message appears. Click **Review changes** to verify the changes.
-
-9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.-->
+9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
