@@ -15,7 +15,7 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 ## MetricFlow
 
 <VersionBlock lastVersion="1.99">
-MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />  (open source).
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />  (open source).
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
