@@ -41,11 +41,14 @@ require-dbt-version: >=1.0.0 # No quotes? No good
 require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 ```
 
+## dbt Fusion compatibility
+
+If your project runs on Fusion and has a  `require-dbt-version` configuration, make sure the version range includes at least version 2.0.0 to indicate that your project is Fusion-compatible.
 
 ## Examples
 
 ### Specify a minimum dbt version
-Use a `>=` operator for a minimum boundary. In the following example, this project will run with any version of dbt greater than or equal to 1.0.0.
+Use a `>=` operator for a minimum boundary. In the following example, this project will run with any version of dbt greater than or equal to 1.0.0. This also indicates that your package is compatible with Fusion since versions 2.0 are included in the range.
 
 
 <File name='dbt_project.yml'>
@@ -56,9 +59,42 @@ require-dbt-version: ">=1.0.0"
 
 </File>
 
+In the following example, this project will only work with Fusion-compatible versions of dbt:
+
+
+<File name='dbt_project.yml'>
+
+```yml
+require-dbt-version: ">=2.0.0"
+```
+
+</File>
+
 
 ### Pin to a range
-Use a comma separated list for an upper and lower bound. In the following example, this project will run with dbt 1.x.x.
+Use a comma separated list for an upper and lower bound. 
+
+In the following example, this project is compatible with Fusion and will run with both Fusion-compatible dbt versions (2.x.x) and dbt 1.x.x.
+
+<File name='dbt_project.yml'>
+
+```yml
+require-dbt-version: [">=1.0.0", "<3.0.0"]
+```
+
+</File>
+
+OR
+
+<File name='dbt_project.yml'>
+
+```yml
+require-dbt-version: ">=1.0.0,<3.0.0"
+```
+
+</File>
+
+In the following example, this project will run with dbt 1.x.x but will not run on Fusion (2.0.x and above).
 
 <File name='dbt_project.yml'>
 
