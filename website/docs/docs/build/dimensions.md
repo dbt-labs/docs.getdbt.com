@@ -225,6 +225,19 @@ models:
         agg: sum
 ```
 
+If your table doedoesn't have a physical primary key column, you can still declare a primary entity. Set the model’s grain by declaring a `primary_entity`. <Constant name="fusion"/> supports this and treats the model as being at that entity’s grain.
+
+```yaml
+models:
+  - name: model_without_pk
+    semantic_model:
+      enabled: true
+    primary_entity: order  # "virtual primary entity"
+    columns:
+      - name: customer_id
+        entity: foreign
+```
+
 </VersionBlock>
 
 ## Dimensions types
