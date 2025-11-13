@@ -6,9 +6,11 @@ sidebar_label: About cost management
 
 # About cost management <Lifecycle status='private_preview,managed,managed_plus' />
 
-:::info Private preview
+:::info Retiring the cost management dashboard on November 25, 2025
 
-Cost management features are in private preview. If you're interested in joining the preview, please contact your account manager.
+We’re focusing on building a more scalable and integrated cost-insights experience, expected in early 2026.
+
+In the meantime, you can analyze model-level costs using the [dbt Model Cost Calculator package](https://github.com/dbt-labs/dbt-pov-model-cost-calculator).
 
 :::
 
