@@ -225,7 +225,7 @@ models:
         agg: sum
 ```
 
-If your table doedoesn't have a physical primary key column, you can still declare a primary entity. Set the model’s grain by declaring a `primary_entity`. <Constant name="fusion"/> supports this and treats the model as being at that entity’s grain.
+If your table doesn't have a physical primary key column, you can still declare a primary entity. Set the model’s grain by declaring a `primary_entity`. <Constant name="fusion"/> supports this and treats the model as being at that entity’s grain.
 
 ```yaml
 models:
