@@ -8,7 +8,7 @@ sidebar_label: About cost management
 
 :::info Retiring the cost management dashboard
 
-On November 25, 2025, we'll be retiring the cost management dashboard. Instead, we'll focus on building a more scalable and integrated cost-insights experience, expected in early 2026.
+On November 25, 2025, we'll be retiring the cost management dashboard to focus on building a more scalable and integrated cost-insights experience, expected in early 2026.
 
 In the meantime, you can analyze model-level costs using the [dbt Model Cost Calculator package](https://github.com/dbt-labs/dbt-pov-model-cost-calculator). Please reach out to your dbt Labs account team with any questions or concerns.
 
