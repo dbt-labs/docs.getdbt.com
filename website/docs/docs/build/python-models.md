@@ -522,6 +522,10 @@ You can use the `@udf` decorator or `udf` function to define an "anonymous" func
 - [BigQuery DataFrames UDFs](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#custom-python-functions)
 - [PySpark functions: udf](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
+:::tip
+You can also define [SQL or Python UDFs](/docs/build/udfs) as first-class resources under `/functions` with a matching `YAML` file. dbt builds them as part of the DAG, and you reference them from SQL using `{{ function('my_udf') }}`. These UDFs are reusable across tools (BI, notebooks, SQL clients) because they live in your warehouse.
+:::
+
 <Tabs>
 
 <TabItem value="Snowpark">
@@ -626,14 +630,13 @@ def model(dbt, session):
 
 #### Code reuse
 
-Currently, Python functions defined in one dbt model can't be imported and reused in other models. This is something dbt Labs would like to support, so there are two patterns we're considering:
+To re-use a Python function across multiple dbt models, you can define [Python UDFs](/docs/build/udfs) under `/functions` with a matching YAML file. These UDFs live in your warehouse and can be reused across tools (BI, notebooks, SQL clients). 
 
-- Creating and registering **"named" UDFs** &mdash; This process is different across data platforms and has some performance limitations. For example, Snowpark supports [vectorized UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html) for pandas-like functions that you can execute in parallel.
-- **Private Python packages** &mdash; In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+In the future, we're considering also adding support for Private Python packages. In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+
 
 :::note ❓ dbt questions
 
-- Should dbt have a role in abstracting over UDFs? Should dbt support a new type of DAG node, `function`? Would the primary use case be code reuse across Python models or defining Python-language functions that can be called from SQL models?
 - How can dbt help users when uploading or initializing private Python assets? Is this a new form of `dbt deps`?
 - How can dbt support users who want to test custom functions? If defined as UDFs: "unit testing" in the database? If "pure" functions in packages: encourage adoption of `pytest`?
 

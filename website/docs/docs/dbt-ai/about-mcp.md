@@ -45,6 +45,9 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
 
+import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
+
+<MCPCreditUsage />
 
 ## Available tools
 
@@ -59,7 +62,6 @@ The dbt MCP server has access to many parts of the dbt experience related to dev
 | Metadata Discovery| ✅ | ✅ |
 | Administrative API | ✅ | ❌ |
 | Fusion Tools | ✅ | ✅ |
-| Disable tools | ✅ | ✅ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
@@ -100,7 +102,8 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_all_sources`: Gets all source tables with metadata and freshness information
 - `get_exposures`: Gets all exposures
 - `get_exposure_details`: Gets details for a specific exposure or a list of exposures
-
+- `keyword_search`: Searches artifacts from <Constant name="dbt_platform"/> runs by using exact string matching against fields such as code, descriptions, and names.
+- `get_related_models`: Uses semantic search to find dbt models that are similar to the query, even if there isn't an exact string match.
 
 ### Administrative API
 
@@ -117,8 +120,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `get_job_run_artifact`: Download specific artifact files from job runs for analysis or integration
 - `get_job_run_error`: Retrieves error details for failed job runs to help troubleshoot errors
 
-### SQL
-⚠️ The SQL tools access the dbt platform endpoints. While MCP usage of the tools doesn't consume dbt Copilot credits, access to the tools is impacted by dbt Copilot credit overages from direct usage of Copilot in dbt.
+### SQL (remote)
 
 - `text_to_sql`: Generate SQL from natural language requests
 - `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
@@ -131,16 +133,12 @@ These tools help automate boilerplate code generation for dbt project files. To 
 - `generate_model_yaml`: Generates documentation YAML for existing dbt models, including column names, data types, and description placeholders.
 - `generate_staging_model`: Creates staging SQL models from sources to transform raw source data into clean staging models.
 
-### Fusion tools (Remote)
+### Fusion tools (remote)
 
 A set of tools that leverage the <Constant name="fusion" /> engine for advanced SQL compilation and column-level lineage analysis.
 
 - `compile_sql`: Compiles a SQL statement in the context of the current project and environment.
 - `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
-
-import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
-
-<MCPCreditUsage />
 
 ### Fusion tools (local)
 A set of tools that leverage the <Constant name="fusion" /> engine through a locally running <Constant name="fusion" /> Language Server Protocol (LSP) in VS Code or Cursor with the dbt VS Code extension.
