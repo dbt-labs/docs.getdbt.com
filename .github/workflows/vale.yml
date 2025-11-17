@@ -33,7 +33,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: dbt-labs/internal-actions/changed-files@changed-files-v1
+        uses: dbt-labs/internal-actions/changed-files@6ff66921e5028a073bdc567410d363b1b78e3f59  # dbt-labs/internal-actions/changed-files@changed-files-v1
         with:
           files: |
             website/**/*.md

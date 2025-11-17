@@ -4,6 +4,8 @@ id: "snowflake-native-app"
 description: "An overview of the dbt Snowflake Native App for dbt accounts"
 pagination_prev: null
 pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
+unlisted: true
+
 ---
 
 # About the dbt Snowflake Native App <Lifecycle status='preview' />

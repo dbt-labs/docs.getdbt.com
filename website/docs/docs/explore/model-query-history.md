@@ -45,22 +45,23 @@ To access the features, you should meet the following:
 
 To enable model query history in <Constant name="cloud" />, follow these steps:
 
-1. Navigate to **Deploy** and then **Environments**.
+1. Navigate to **Orchestration** and then **Environments**.
 2. Select the environment marked **PROD** and click **Settings**.
-3. Click **Edit** and scroll to the **Query History** section to enable the query history toggle. When it’s green and to the right, it's enabled.
+3. Click **Edit** and scroll to the **Query History** section.
 4. Click the **Test Permissions** button to validate the deployment credentials permissions are sufficient to support query history.
-5. <Constant name="cloud" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="cloud" /> automatically disables it to prevent unintended warehouse costs.
+5. Click the **Enable query history** box to enable. 
+6. **Save** your settings.
+
+<Constant name="cloud" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="cloud" /> automatically disables it to prevent unintended warehouse costs.
    - If the failure is temporary (like a network timeout), <Constant name="cloud" /> may retry.
    - If the issue is permanent (like a missing permissions), <Constant name="cloud" /> disables query history immediately.
    
    To re-enable it, please reach out to [dbt Support](mailto:support@getdbt.com). 
 
-<DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.jpg" width="95%" title="Enable query history in your environment settings." />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history-success.jpg" width="95%" title="Example of permissions verified result after clicking Test Permissions." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.png" width="95%" title="Enable query history in your environment settings." />
 
-</DocCarousel>
+
 
 ## Credential permissions
 

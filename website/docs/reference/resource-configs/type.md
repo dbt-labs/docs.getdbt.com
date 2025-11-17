@@ -8,19 +8,17 @@ id: type
 <File name='functions/<filename>.yml'>
 
 ```yml
-
-
 functions:
   - name: <function name>
-    type: scalar | aggregate | table  # aggregate and table coming soon
-
+    config:
+      type: scalar | aggregate | table  # aggregate and table coming soon
 ```
 
 </File>
 
 ## Definition
 
-The `type` property specifies the type of user-defined function (UDF) you're creating. This property is optional and defaults to `scalar` if not specified.
+The `type` config specifies the type of user-defined function (UDF) you're creating. This config is optional and defaults to `scalar` if not specified.
 
 ## Supported function types
 
@@ -36,11 +34,11 @@ A scalar function returns a single value for each row of input. This is the most
 <File name='functions/schema.yml'>
 
 ```yml
-
 functions:
   - name: is_positive_int
     description: Determines if a string represents a positive integer
-    type: scalar
+    config:
+      type: scalar
     arguments:
       - name: input_string
         data_type: STRING
@@ -63,11 +61,11 @@ Support for aggregate functions is planned for a future release.
 <File name='functions/schema.yml'>
 
 ```yml
-
 functions:
   - name: double_total
     description: Sums values and doubles the result
-    type: aggregate
+    config:
+      type: aggregate
     arguments:
       - name: values
         data_type: FLOAT
@@ -92,6 +90,7 @@ Support for table functions is planned for a future release.
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
+- [Volatility](/reference/resource-configs/volatility)
 - [Arguments](/reference/resource-properties/function-arguments)
 - [Returns](/reference/resource-properties/returns)
 
