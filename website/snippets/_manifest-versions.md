@@ -12,4 +12,4 @@
 | Core v1.4             | [v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)  |
 | Core v1.3             | [v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)  |
 
-\* Manifest v20 has the same metadata as [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html) but is currently incomplete. More information will be made available when the <Constant name="fusion" /> manifest is finalized prior to general availability. 
+\* Manifest v20 has the same metadata as [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html) but is incomplete. More details will be shared once the <Constant name="fusion" /> manifest is finalized before general availability.
