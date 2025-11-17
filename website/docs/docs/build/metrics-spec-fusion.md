@@ -559,15 +559,10 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
 
 1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
-2. Make sure to save and commit your work before proceeding. The autofix tool may overwrite any unsaved changes.
-3. Click the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />.
-4. Select **Check & fix deprecations**.
-     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu to autofix deprecation warnings"/>
-        The tool performs a `dbt-autofix deprecations --semantic-layer` to find the deprecations in your project.
-5. If you don't see the deprecations and the **Autofix warnings** button, click the command history in the bottom left:
-    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-history.png" width="90%" title="Access recent commands to see the autofix button"/>
-6. When the command history opens, click the **Autofix warnings** button.
-7. When the **Proceed with autofix** dialog opens, click **Continue** to begin resolving project deprecations and start a follow-up parse to show remaining deprecations.
-    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
-8. Once complete, a success message appears. Click **Review changes** to verify the changes.
-9. Click **Commit and sync** in the top left of <Constant name="cloud_ide" /> to commit these changes to the project repository.
+2. Make sure to save and commit your work before proceeding. The autofix command may overwrite any unsaved changes.
+3. In the <Constant name="cloud_ide" />, run the following command:
+
+    ```bash
+    dbt-autofix deprecations --semantic-layer
+    ```
+4. Click **Commit and sync** in the top left of the <Constant name="cloud_ide" /> to commit these changes to the project repository.
