@@ -22,6 +22,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
 - **New**: The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 - **New**: When jobs exceed their configured timeout, the BigQuery adapter sends a cancellation request to the BigQuery job. For more information, see [Connect BigQuery](/docs/cloud/connect-data-platform/connect-bigquery#job-creation-timeout-seconds).
+- **Enhancement**: The BigQuery adapter now supports an [`execution_project`](/reference/resource-configs/bigquery-configs#configuring-execution-projects) config on individual models, allowing you to route specific workloads to alternate GCP billing projects.
 
 ## October 2025
 

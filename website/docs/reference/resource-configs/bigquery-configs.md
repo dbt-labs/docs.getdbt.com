@@ -18,6 +18,8 @@ To-do:
 For our reference documentation, you can declare `project` in place of `database.`
 This will allow you to read and write from multiple BigQuery projects. Same for `dataset`.
 
+<VersionBlock firstVersion="1.12">
+
 ## Configuring execution projects
 
 By default, dbt submits queries to the `execution_project` defined in your
@@ -92,6 +94,8 @@ select * from {{ ref('staging_sessions') }}
 </Tabs>
 
 dbt automatically switches to the configured project before running the model and restores the previous project once the model finishes.
+
+</VersionBlock>
 
 ## Using table partitioning and clustering
 
