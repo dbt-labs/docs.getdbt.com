@@ -36,7 +36,7 @@ Once configured, your session connects to the dbt platform account, starts the O
 
 <Lightbox src="/img/mcp/select-project.png" width="60%" title="Select your dbt platform project"/>
 
-After completing OAuth setup, skip to [step 3 (Test your configuration)](#3-optional-test-your-configuration).
+After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
 
 ### CLI only (no dbt platform)
 
