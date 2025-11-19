@@ -98,6 +98,8 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_details`: Gets details for a specific model
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
+- `get_model_ancestors`: Retrieves all upstream dependencies (ancestors) for a specified dbt model, tracing back to root data sources
+- `get_model_descendants`: Retrieves all downstream dependencies (descendants) for a specified dbt model with optional depth and node limits for impact analysis
 - `get_model_health`: Gets health signals for a specific model
 - `get_all_sources`: Gets all source tables with metadata and freshness information
 - `get_exposures`: Gets all exposures
