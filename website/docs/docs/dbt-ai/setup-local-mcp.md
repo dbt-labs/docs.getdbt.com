@@ -42,7 +42,7 @@ After completing OAuth setup, skip to [step 3 (Test your configuration)](#3-opti
 
 If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
-Add this configuration to your MCP client (refer to the specific [integration guides](#4-set-up-your-mcp-client) for exact file locations):
+Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
 
 ```json
 {
@@ -94,7 +94,7 @@ Follow the appropriate instructions for your OS to locate your path:
 
 </Expandable>
 
-After completing this setup, skip to [step 3 (Test your configuration)](#3-optional-test-your-configuration).
+After completing this setup, skip to [Test your configuration](#optional-test-your-configuration).
 
 ### Environment variable configuration
 
