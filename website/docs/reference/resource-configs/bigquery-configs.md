@@ -18,6 +18,81 @@ To-do:
 For our reference documentation, you can declare `project` in place of `database.`
 This will allow you to read and write from multiple BigQuery projects. Same for `dataset`.
 
+## Configuring execution projects
+
+By default, dbt submits queries to the `execution_project` defined in your
+[profile configuration](/docs/core/connect-data-platform/bigquery-setup#profiles.yml). When you
+need certain resources to bill to a different GCP project (for example, separating production and
+sandbox workloads), you can override the execution project by setting the `execution_project` model
+configuration.
+
+- Accepts a single project id string, or a mapping of `{target-name: project-id}`
+- When provided as a mapping, dbt uses the value that matches the active target in your profile
+- If the configured project matches the default execution project, dbt leaves the current project unchanged
+
+<Tabs
+  defaultValue="dbt_project.yml"
+  values={[
+    { label: 'Project file', value: 'dbt_project.yml', },
+    { label: 'Property file', value: 'models/my_model.yml', },
+    { label: 'SQL config', value: 'models/events/sessions.sql', },
+  ]}
+>
+
+<TabItem value="dbt_project.yml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: my_project
+version: 1.0.0
+
+models:
+  my_project:
+    intensive:
+      +execution_project:
+        dev: "analytics-dev-execution"
+        prod: "analytics-prod-execution"
+```
+
+</File>
+</TabItem>
+
+<TabItem value="models/my_model.yml">
+
+<File name='models/my_model.yml'>
+
+```yaml
+models:
+  - name: heavy_compute_model
+    config:
+      execution_project: "billing-project-for-heavy-models"
+```
+
+</File>
+</TabItem>
+
+<TabItem value="models/events/sessions.sql">
+
+<File name='models/events/sessions.sql'>
+
+```sql
+{{ config(
+    execution_project = {
+      "dev": "dev-execution-project",
+      "prod": "prod-execution-project"
+    }
+) }}
+
+select * from {{ ref('staging_sessions') }}
+```
+
+</File>
+</TabItem>
+</Tabs>
+
+dbt automatically switches to the configured project before running the model and restores the previous project once the model finishes.
+
 ## Using table partitioning and clustering
 
 ### Partition clause
