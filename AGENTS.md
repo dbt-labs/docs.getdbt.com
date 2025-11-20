@@ -197,10 +197,13 @@ description: "Brief description"
 4. **URLs** - Don't modify external links
 5. **Product constants** - Leave `<Constant name="..." />` as-is
 6. **Comments in code** - Latin abbreviations in code comments are acceptable
+7. **Inline code comments** &mdash; In YAML/SQL/Python examples
+8. **Quoted text** &mdash; Text surrounded by quotes
 
 ## Validation Checklist
 
-Before submitting changes:
+AI agents should confirm the following before committing changes:
+
 - [ ] All bullet points use `-` not `*`
 - [ ] No "e.g." or "i.e." in prose (only in code comments)
 - [ ] Oxford commas in all 3+ item lists
