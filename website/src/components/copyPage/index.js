@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import { useCopyPage } from '../../utils/use-copy-page';
 import getSvgIcon from '../../utils/get-svg-icon';
+import Link from '@docusaurus/Link';
 
 /**
  * CopyPage Component
@@ -11,8 +12,13 @@ import getSvgIcon from '../../utils/get-svg-icon';
  * - Open page in configured LLM services (ChatGPT, Claude, etc.)
  * - Full keyboard navigation and accessibility support
  * - Error handling and user feedback
+ *
+ * @param {Object} props
+ * @param {boolean} [props.dropdownRight=false] - Align dropdown to the right (used on guides pages)
+ * @param {string} [props.pageUrl] - Fully qualified canonical URL for the current page,
+ *   used to build LLM links. If omitted, the hook will fall back to window.location.
  */
-function CopyPage({ dropdownRight = false }) {
+function CopyPage({ dropdownRight = false, pageUrl }) {
   const {
     isDropdownOpen,
     copySuccess,
@@ -20,9 +26,8 @@ function CopyPage({ dropdownRight = false }) {
     llmServices,
     dropdownRef,
     handleCopyPage,
-    handleOpenInLLM,
     toggleDropdown,
-  } = useCopyPage();
+  } = useCopyPage({ pageUrl });
 
   return (
     <div className={styles.copyPageContainer} ref={dropdownRef}>
@@ -38,48 +43,49 @@ function CopyPage({ dropdownRight = false }) {
         {getSvgIcon("chevron-down", { className: styles.dropdownIcon })}
       </button>
 
-      {isDropdownOpen && (
-        <div
-          className={`${styles.dropdown} ${dropdownRight ? styles.dropdownRight : ''}`}
-          role="menu"
-          aria-label="Copy page menu"
+      <div
+        className={`${styles.dropdown} ${dropdownRight ? styles.dropdownRight : ''} ${!isDropdownOpen ? styles.dropdownHidden : ''}`}
+        role="menu"
+        aria-label="Copy page menu"
+        aria-hidden={!isDropdownOpen}
+      >
+        <button
+          className={styles.dropdownItem}
+          onClick={handleCopyPage}
+          role="menuitem"
+          tabIndex={isDropdownOpen ? "0" : "-1"}
         >
-          <button
+          {getSvgIcon("copy", {})}
+          <div className={styles.dropdownItemContent}>
+            <div className={styles.dropdownItemTitle}>Copy page</div>
+            <div className={styles.dropdownItemSubtitle}>
+              Copy page as Markdown for LLMs
+            </div>
+          </div>
+        </button>
+
+        {Object.entries(llmServices).map(([serviceKey, service]) => (
+          <Link
+            key={serviceKey}
+            id={service.id}
             className={styles.dropdownItem}
-            onClick={handleCopyPage}
+            href={service.computedUrl}
+            target="_blank"
             role="menuitem"
-            tabIndex="0"
+            tabIndex={isDropdownOpen ? "0" : "-1"}
           >
-            {getSvgIcon("copy", {})}
+            {getSvgIcon("external-link", {})}
             <div className={styles.dropdownItemContent}>
-              <div className={styles.dropdownItemTitle}>Copy page</div>
+              <div className={styles.dropdownItemTitle}>
+                Open in {service.name}
+              </div>
               <div className={styles.dropdownItemSubtitle}>
-                Copy page as Markdown for LLMs
+                {service.subtitle}
               </div>
             </div>
-          </button>
-
-          {Object.entries(llmServices).map(([serviceKey, service]) => (
-            <button
-              key={serviceKey}
-              className={styles.dropdownItem}
-              onClick={() => handleOpenInLLM(serviceKey)}
-              role="menuitem"
-              tabIndex="0"
-            >
-              {getSvgIcon("external-link", {})}
-              <div className={styles.dropdownItemContent}>
-                <div className={styles.dropdownItemTitle}>
-                  Open in {service.name}
-                </div>
-                <div className={styles.dropdownItemSubtitle}>
-                  {service.subtitle}
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
+          </Link>
+        ))}
+      </div>
 
       {copySuccess && (
         <div

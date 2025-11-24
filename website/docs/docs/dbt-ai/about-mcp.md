@@ -100,9 +100,10 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_children`: Gets the children models of a specific model
 - `get_model_health`: Gets health signals for a specific model
 - `get_all_sources`: Gets all source tables with metadata and freshness information
+- `get_source_details`: Gets details for a specific source
 - `get_exposures`: Gets all exposures
 - `get_exposure_details`: Gets details for a specific exposure or a list of exposures
-- `keyword_search`: Searches artifacts from <Constant name="dbt_platform"/> runs by using exact string matching against fields such as code, descriptions, and names.
+- `search`: Searches artifacts from <Constant name="dbt_platform"/> runs by using exact string matching against fields such as code, descriptions, and names.
 - `get_related_models`: Uses semantic search to find dbt models that are similar to the query, even if there isn't an exact string match.
 
 ### Administrative API
