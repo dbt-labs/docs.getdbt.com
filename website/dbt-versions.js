@@ -16,7 +16,7 @@
 exports.versions = [
   {
     version: "1.12",
-    customDisplay: "Latest (dbt platform)",
+    customDisplay: "dbt platform (Latest)",
   },
   {
     version: "2.0",
@@ -25,17 +25,17 @@ exports.versions = [
   },
  {
     version: "1.11",
-    customDisplay: "Latest (dbt Core v1.11 Beta)",
+    customDisplay: "Core v1.11 Beta",
     isPrerelease: true,
   },
   {
     version: "1.10",
-    customDisplay: "Compatible (dbt Core v1.10)",
+    customDisplay: "Core v1.10 (Compatible)",
     EOLDate: "2026-06-15",
   },
   {
     version: "1.9",
-    customDisplay: "Extended (dbt Core v1.9)",
+    customDisplay: "Core v1.9 (Extended)",
     EOLDate: "2025-12-08",
   },
 ];
@@ -78,6 +78,38 @@ exports.versionedPages = [
     page: "reference/global-configs/indirect-selection",
     firstVersion: "1.8",
   },
+  {
+    page: "docs/cloud/connect-data-platform/connect-apache-spark",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-amazon-athena",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-onehouse",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-postgresql-alloydb",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-starburst-trino",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/cloud/connect-data-platform/connect-teradata",
+    lastVersion: "1.99",
+  },
 ];
 
 /**
@@ -90,5 +122,12 @@ exports.versionedPages = [
  * @property {string} firstVersion The first version the category is visible in the sidebar
  */
 exports.versionedCategories = [
-
+  {
+    category: "Connect dbt Core to your data platform",
+    lastVersion: "1.99",
+  },
+  {
+    category: "Install dbt Core",
+    lastVersion: "1.99",
+  },
 ];

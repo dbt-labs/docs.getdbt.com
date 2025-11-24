@@ -11,7 +11,6 @@ import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 ```yml
 
-version: 2
 
 macros:
   - name: <macro name>
@@ -48,7 +47,6 @@ The data type of your argument. Setting [`validate_macro_args`](/reference/globa
 <File name='macros/<filename>.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: <macro name>
@@ -94,7 +92,6 @@ Note that the types follow a Python-like style but are used for documentation an
 <File name='macros/cents_to_dollars.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: cents_to_dollars

@@ -443,7 +443,6 @@ For the external sources, which require authentication, you need to create an au
 The following are examples of external sources configured for Teradata:
 
 ```yaml
-version: 2
 sources:
   - name: teradata_external
     schema: "{{ target.schema }}"
@@ -475,7 +474,6 @@ sources:
 ```
 
 ```yaml
-version: 2
 sources:
   - name: teradata_external
     schema: "{{ target.schema }}"

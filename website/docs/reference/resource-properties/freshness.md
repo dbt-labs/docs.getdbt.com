@@ -19,7 +19,6 @@ sources:
 
 ```yaml
 
-version: 2
 
 sources:
   - name: <source_name>
@@ -194,7 +193,6 @@ This is particularly useful if:
 
 ```yaml
 
-version: 2
 
 sources:
   - name: jaffle_shop

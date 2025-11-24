@@ -403,7 +403,6 @@ select
 <File name='models/nested_fields.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: nested_column_constraints_example

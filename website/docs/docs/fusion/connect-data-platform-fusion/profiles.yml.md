@@ -2,6 +2,7 @@
 title: "About profiles.yml"
 description: "The dbt profiles.yml file contains the connection details for your data warehouse."
 id: profiles.yml
+pagination_next: "docs/fusion/connect-data-platform-fusion/connection-profiles"
 ---
 import ProfilesYml from '/snippets/_profiles.yml.md';
 

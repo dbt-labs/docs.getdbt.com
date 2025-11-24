@@ -15,14 +15,14 @@ jobs:
     steps:
       # Checkout repo
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
 
       # Wait 8 minutes to allow Vercel build to complete
       - run: sleep 480
 
       # Once deploy URL is found, trigger Algolia crawl
       - name: Run Algolia Crawler
-        uses: algolia/algoliasearch-crawler-github-actions@v1
+        uses: algolia/algoliasearch-crawler-github-actions@79db67cd7284bf4623324cd69e3cba49c7a85c4c # algolia/algoliasearch-crawler-github-actions@v1
         id: crawler_push
         with:
           crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}

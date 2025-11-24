@@ -6,9 +6,10 @@ displayed_sidebar: "docs"
 ---
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
-import FusionBeta from '/snippets/_fusion-beta-callout.md';
+import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
 
-<FusionBeta />
+<FusionLifecycle />
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
@@ -24,6 +25,9 @@ That work is documented below — it should be simple, straightforward, and in 
 
 You can find more information about what's changing in the dbt Fusion engine [changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+
+<FusionUpgradeSteps />
+
 ### Supported adapters
 
 The following adapters are supported in the dbt Fusion engine:
@@ -33,12 +37,12 @@ The following adapters are supported in the dbt Fusion engine:
 ### A clean slate
 
 dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality:
-- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This included historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings). _While Fusion is in beta, it will raise validation warnings, but these warnings will become errors when Fusion goes into Preview._
+- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This included historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
 
-The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. Now that we've announced Fusion in beta, we're going to work with other package maintainers to get them ready & working on Fusion. If we know that a popular package will require upgrading to a new release for Fusion compatibility, we will document it here.
+The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. We're working with those package maintainers to make packages available for Fusion. Packages requiring an upgrade to a new release for Fusion compatibility, will be documented in this upgrade guide.
 
 ### Changed functionality
 
@@ -353,3 +357,4 @@ return('xyzabc')
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionPackages />
+

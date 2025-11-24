@@ -6,7 +6,6 @@ datatype: {dictionary}
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>

@@ -133,6 +133,10 @@ import DeleteJob from '/snippets/_delete-job.md';
 
 <DeleteJob/>
 
+import JobMonitoring from '/snippets/_in-progress-top-jobs.md';
+
+<JobMonitoring />
+
 ## Job settings history
 
 You can view historical job settings changes over the last 90 days.

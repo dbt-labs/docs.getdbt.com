@@ -453,7 +453,7 @@ Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models usin
 
 ### Features
 - User Defined Python function is run in an ADB-S spawned Python 3.12.1 runtime
-- Access to external Python packages available in the Python runtime. For e.g. `numpy`, `pandas`, `scikit_learn` etc
+- Access to external Python packages available in the Python runtime. For example, `numpy`, `pandas`, `scikit_learn` etc
 - Integration with Conda 24.x to create environments with custom Python packages
 - Access to Database session in the Python function
 - DataFrame read API to read `TABLES`, `VIEWS`, and ad-hoc `SELECT` queries as DataFrames

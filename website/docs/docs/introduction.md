@@ -19,7 +19,7 @@ Read more about why we want to enable analysts to work more like software engine
 
 Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
 
-### The dbt platform
+### The dbt platform (formerly dbt Cloud) 
 
 The <Constant name="dbt_platform" /> offers the fastest, most reliable, and scalable way to deploy dbt. Allowing data teams to optimize their data transformation by developing, testing, scheduling, and investigating data models using a single, fully managed service through a web-based user interface (UI).
 
@@ -29,7 +29,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 The <Constant name="fusion_engine" /> is the next-generation dbt engine, designed to deliver data teams a lightning-fast development experience, intelligent cost savings, and improved governance.
 
-For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion/about-fusion), [supported features](/docs/fusion/about-fusion), and the [installation instructions](/docs/fusion/install-fusion).
+For more information, refer to [the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [installation instructions](/docs/fusion/install-fusion) pages.
 
 ### dbt Core
 

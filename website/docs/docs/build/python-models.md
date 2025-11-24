@@ -37,7 +37,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -198,7 +197,6 @@ It is possible to extend this context by "getting" them with `dbt.config.get()` 
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -291,7 +289,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames"> 
 
 <File name='models/my_python_model.py'>
 
@@ -419,7 +417,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames">
 
 <File name='models/my_python_model.py'>
 
@@ -506,7 +504,6 @@ def model(dbt, session):
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: my_python_model
@@ -524,6 +521,10 @@ You can use the `@udf` decorator or `udf` function to define an "anonymous" func
 - [Snowpark Python: Creating UDFs](https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-udfs.html)
 - [BigQuery DataFrames UDFs](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#custom-python-functions)
 - [PySpark functions: udf](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
+
+:::tip
+You can also define [SQL or Python UDFs](/docs/build/udfs) as first-class resources under `/functions` with a matching `YAML` file. dbt builds them as part of the DAG, and you reference them from SQL using `{{ function('my_udf') }}`. These UDFs are reusable across tools (BI, notebooks, SQL clients) because they live in your warehouse.
+:::
 
 <Tabs>
 
@@ -569,7 +570,7 @@ def model(dbt, session):
 
 </TabItem>
 
-<TabItem value="BigQuery DataFrames"> <Lifecycle status="Preview" />
+<TabItem value="BigQuery DataFrames"> 
 
 <File name='models/my_python_model.py'>
 
@@ -577,7 +578,7 @@ def model(dbt, session):
 def model(dbt, session):
     dbt.config(submission_method="bigframes")
 
-    # You can also use @bpd.udf (currently a preview feature)
+    # You can also use @bpd.udf
     @bpd.remote_function(dataset='jialuo_test_us')
     def my_func(x: int) -> int:
         return x * 1100
@@ -629,14 +630,13 @@ def model(dbt, session):
 
 #### Code reuse
 
-Currently, Python functions defined in one dbt model can't be imported and reused in other models. This is something dbt Labs would like to support, so there are two patterns we're considering:
+To re-use a Python function across multiple dbt models, you can define [Python UDFs](/docs/build/udfs) under `/functions` with a matching YAML file. These UDFs live in your warehouse and can be reused across tools (BI, notebooks, SQL clients). 
 
-- Creating and registering **"named" UDFs** &mdash; This process is different across data platforms and has some performance limitations. For example, Snowpark supports [vectorized UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html) for pandas-like functions that you can execute in parallel.
-- **Private Python packages** &mdash; In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+In the future, we're considering also adding support for Private Python packages. In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+
 
 :::note ❓ dbt questions
 
-- Should dbt have a role in abstracting over UDFs? Should dbt support a new type of DAG node, `function`? Would the primary use case be code reuse across Python models or defining Python-language functions that can be called from SQL models?
 - How can dbt help users when uploading or initializing private Python assets? Is this a new form of `dbt deps`?
 - How can dbt support users who want to test custom functions? If defined as UDFs: "unit testing" in the database? If "pure" functions in packages: encourage adoption of `pytest`?
 
@@ -649,7 +649,7 @@ Over the past decade, most people writing [data transformations](https://www.get
 
 A DataFrame is a two-dimensional data structure (rows and columns). It supports convenient methods for transforming that data and creating new columns from calculations performed on existing columns. It also offers convenient ways for previewing data while developing locally or in a notebook.
 
-That's about where the agreement ends. There are numerous frameworks with their own syntaxes and APIs for DataFrames. The [pandas](https://pandas.pydata.org/docs/) library offered one of the original DataFrame APIs, and its syntax is the most common to learn for new data professionals. Most newer DataFrame APIs are compatible with pandas-style syntax, though few can offer perfect interoperability. This is true for BigQuery DataFrames, Snowpark and PySpark, which have their own DataFrame APIs.
+That's about where the agreement ends. There are numerous frameworks with their own syntaxes and APIs for DataFrames. The [pandas](https://pandas.pydata.org/docs/) library offered one of the original DataFrame APIs, and its syntax is the most common to learn for new data professionals. Most newer DataFrame APIs are compatible with pandas-style syntax, though few can offer perfect interoperability. This is true for BigQuery DataFrames, Snowpark, and PySpark, which have their own DataFrame APIs.
 
 When developing a Python model, you will find yourself asking these questions:
 

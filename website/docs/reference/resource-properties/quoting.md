@@ -7,7 +7,6 @@ default: true
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: jaffle_shop
@@ -54,7 +53,6 @@ Creating relations with quoted identifiers also makes those identifiers case sen
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop

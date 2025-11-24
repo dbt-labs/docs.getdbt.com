@@ -179,6 +179,11 @@ Job retry deadline seconds is the maximum amount of time BigQuery will spend ret
 
 Job creation timeout seconds is the maximum time BigQuery will wait to start the job. If the job doesn’t start within that time, it times out.
 
+import JobTimeout from '/snippets/_bigquery-timeout.md';
+
+<JobTimeout />
+
+
 </Expandable>
 
 #### Run dbt python models on Google Cloud Platform

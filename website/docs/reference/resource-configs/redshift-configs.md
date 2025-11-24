@@ -2,6 +2,7 @@
 title: "Redshift configurations"
 description: "Redshift Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "redshift-configs"
+tags: ['Redshift', 'dbt Fusion', 'dbt Core']
 ---
 
 <!----
@@ -150,7 +151,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]

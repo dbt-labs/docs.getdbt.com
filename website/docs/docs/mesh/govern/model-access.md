@@ -15,8 +15,8 @@ The two concepts will be closely related, as we develop multi-project collaborat
 :::
 
 ## Related documentation
-* [`groups`](/docs/build/groups)
-* [`access`](/reference/resource-configs/access)
+- [`groups`](/docs/build/groups)
+- [`access`](/reference/resource-configs/access)
 
 ## Groups
 

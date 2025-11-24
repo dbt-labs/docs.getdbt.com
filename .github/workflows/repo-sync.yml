@@ -18,7 +18,7 @@ jobs:
     name: Repo Sync
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
       with:
         # Use the INTERMEDIATE_BRANCH as the checkout reference
         ref: ${{ secrets.INTERMEDIATE_BRANCH }}
@@ -27,7 +27,7 @@ jobs:
         fetch-depth: 0  
 
     # Sync the source repo to the destination branch using repo-sync/github-sync
-    - uses: repo-sync/github-sync@v2
+    - uses: repo-sync/github-sync@3832fe8e2be32372e1b3970bbae8e7079edeec88 # repo-sync/github-sync@v2
       name: Sync repo to branch
       with:
         # Source repository to sync from
@@ -39,7 +39,7 @@ jobs:
         github_token: ${{ secrets.WORKFLOW_TOKEN }}
 
     - name: Ship pull request
-      uses: actions/github-script@v6
+      uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # actions/github-script@v6
       with:
         github-token: ${{ secrets.WORKFLOW_TOKEN }}
         result-encoding: string

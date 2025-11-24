@@ -6,7 +6,7 @@ tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-chart.jpg
 ---
 
-# Access the dbt Insights interface <Lifecycle status="preview,managed,managed_plus" />
+# Access the dbt Insights interface <Lifecycle status="managed,managed_plus" />
 
 <IntroText>
 Learn how to access <Constant name="query_page" />, run queries, and view results.
@@ -16,7 +16,7 @@ Learn how to access <Constant name="query_page" />, run queries, and view result
 - Enable you to write SQL queries, with the option to open multiple tabs 
 - Have SQL + dbt autocomplete suggestions and syntax highlighting
 - Save SQL queries
-- View the results of the query and its details using the **Results** or **Details** tabs
+- View the results of the query and its details using the **Data** or **Details** tabs
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** tab
 - Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
@@ -86,7 +86,7 @@ To make things easier, [use <Constant name="copilot" />](/docs/cloud/use-dbt-cop
 
 From here, you can:
 - Continue building or modifying the query using <Constant name="copilot" />
-- Explore the [results](#view-results) in the **Results** tab
+- Explore the [results](#view-results) in the **Data** tab
 - [View metadata and query details](#view-details) in the **Details** tab
 - [Visualize results](#chart-results) in the **Chart** tab
 - Check the [**Query history**](#query-history) for status and past runs
@@ -101,7 +101,7 @@ You can access the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/dev
 
 Using the same example, you can perform some exploratory data analysis by running the query and:
 
-- Viewing results in **Results** tab &mdash; View the paginated results of the query.
+- Viewing results in **Data** tab &mdash; View the paginated results of the query.
 - Sorting results &mdash; Click on the column header to sort the results by that column.
 - Exporting to CSV &mdash; On the top right of the table, click the download button to export the dataset.
 <Lightbox src="/img/docs/dbt-insights/insights-export-csv.png" width="95%" title="dbt Insights Export to CSV" />
@@ -168,6 +168,7 @@ Insights offers a robust save feature for quickly finding the queries you use mo
     
 - View saved Insight details including description and creation date in the **Overview** tab.
 - View the Insight history in the **Version history** tab. Click a version to compare it the current and view changes. 
+
 
 ## Considerations 
 - <Constant name="query_page" /> uses your development credentials to query. You have the ability to query against any object in your data warehouse that is accessible using your development credentials. 

@@ -200,7 +200,6 @@ Because the column `order_id` is tagged `my_column_tag`, the test itself also re
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: orders
@@ -230,7 +229,6 @@ This is an even clearer example of direct selection: the test itself is tagged `
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: orders

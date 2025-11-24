@@ -57,7 +57,7 @@ This release adds a few new pieces of connective tissue, notably OAuth for BigQu
 
 - Update IP allowlist
 - User can OAuth for BigQuery in profile credentials
-- Adding SparkAdapter backend models, mappers and services
+- Adding SparkAdapter backend models, mappers, and services
 - Added BigQuery OAuth integration
 - Adding db index for owner_thread_id
 
@@ -339,7 +339,7 @@ This release includes dbt 0.17.0 and a number of IDE quality of life improvement
 
 - Added dbt 0.17.0
 - Added the ability to create a new folder in the IDE
-- Added gitignore status to file system and display dbt artifacts, including directories dbt_modules, logs and target
+- Added gitignore status to file system and display dbt artifacts, including directories dbt_modules, logs, and target
 - (Cloud only) Added rollbar and update some various error handling clean up
 - (On-premises only) Admin site: allow Repository's Pull Request Template field to be blank
 - (On-premises only) Added AWS KMS support

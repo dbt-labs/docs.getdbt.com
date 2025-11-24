@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
+import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -28,6 +30,8 @@ import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
 import useHashLink from '../../../utils/use-hash-link';
 import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
+import CopyPage from '@site/src/components/copyPage';
+import StructuredData from '@site/src/components/StructuredData';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -177,16 +181,42 @@ export default function DocItemLayout({children}) {
 
   // dbt Custom
   // If the page has a search_weight value, apply that value
-  const {frontMatter} = useDoc();
+  const {frontMatter, metadata} = useDoc();
   const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
+
+  // Get site URL from Docusaurus config so we can build a canonical, fully-qualified URL
+  const { siteConfig } = useDocusaurusContext();
+
+  // Construct full URL for structured data
+  const location = useLocation();
+  const isGuidesRoute = location.pathname.includes('/guides/');
+  const siteUrl = siteConfig?.url || '';
+  const fullUrl = `${siteUrl}${location.pathname}${location.search}${location.hash}`;
+
+  // Format date for structured data (use lastUpdatedAt if available)
+  const formatDate = (timestamp) => {
+    if (!timestamp) return undefined;
+    return new Date(timestamp).toISOString();
+  };
 
   return (
     <div className="row">
+      <StructuredData
+        title={frontMatter?.title}
+        description={frontMatter?.description || frontMatter?.hoverSnippet}
+        url={fullUrl}
+        date={formatDate(metadata?.lastUpdatedAt)}
+        tags={frontMatter?.tags || []}
+        totalTime={frontMatter?.time_to_complete}
+      />
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
+          <div className={styles.copyPageContainer}>
             <DocBreadcrumbs />
+            <CopyPage dropdownRight={isGuidesRoute} pageUrl={fullUrl} />
+            </div>
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>

@@ -10,7 +10,6 @@ import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 ```yml
 
-version: 2
 
 functions:
   - name: <function name>
@@ -63,7 +62,6 @@ An optional markdown string describing the argument. This is helpful for documen
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: is_positive_int
@@ -82,7 +80,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: calculate_discount
@@ -105,7 +102,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-version: 2
 
 functions:
   - name: get_tags

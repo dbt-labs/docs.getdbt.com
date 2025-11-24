@@ -69,6 +69,10 @@ To understand how to navigate the <Constant name="cloud_ide" /> and its user int
 | **Dark mode**  | From the status bar in the <Constant name="cloud_ide" />, enable dark mode for a great viewing experience in low-light environments. 
 
 
+### Code generation
+
+The <Constant name="cloud_ide" /> comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
+
 ### dbt YAML validation
 
 Use dbt-jsonschema to validate dbt YAML files, helping you leverage the autocomplete and assistance capabilities of the <Constant name="cloud_ide" />. This also provides immediate feedback on YAML file structure and syntax, helping you make sure your project configurations meet the required standards.

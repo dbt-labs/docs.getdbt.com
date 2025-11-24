@@ -22,7 +22,6 @@ Configure a specific instance of a generic (schema) test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table

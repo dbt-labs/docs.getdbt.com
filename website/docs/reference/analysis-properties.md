@@ -11,7 +11,6 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 <File name='analyses/<filename>.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: <analysis_name> # required

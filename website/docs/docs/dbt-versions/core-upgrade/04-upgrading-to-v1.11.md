@@ -5,7 +5,7 @@ description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.1 <Lifecycle status="beta" />
+# Upgrading to v1.11 <Lifecycle status="beta" />
 
 :::note Installing Beta v1.11 on the command line 
 When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install --upgrade --pre dbt-core`
@@ -52,9 +52,15 @@ Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation 
 
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
 
+## Adapter-specific features and functionalities
+
+### Snowflake
+
+- The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
+
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
-* The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
-* Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
+- The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
+- Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 

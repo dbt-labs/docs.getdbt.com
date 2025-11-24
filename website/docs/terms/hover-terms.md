@@ -79,6 +79,10 @@ json:
   displayText: JSON
   hoverSnippet: JSON (JavaScript Object Notation) is a minimal format for semi-structured data used to capture relationships between fields and values.
 
+lsp:
+  displayText: LSP
+  hoverSnippet: Language Server Protocol (LSP) enables developer features like live CTE previews, hover info, error highlighting, and more.
+
 materialization:
   displayText: materialization 
   hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse. 

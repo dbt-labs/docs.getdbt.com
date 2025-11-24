@@ -1,9 +1,10 @@
 ---
-title: "Upgrade dbt version in Cloud"
+title: "Upgrade versions in dbt platform"
 id: "upgrade-dbt-version-in-cloud"
 ---
 
 import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 
 In <Constant name="cloud" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
 
@@ -15,14 +16,14 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 ### Release Tracks
 
-Starting in 2024, your project will be upgraded automatically on a cadence that you choose
+Starting in 2024, your project gets upgraded automatically on a cadence that you choose:
 
 The **Latest** track ensures you have up-to-date <Constant name="cloud" /> functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
 To upgrade an environment in the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
-- `Latest Fusion` <Lifecycle status="beta" /> (available to select accounts)
+- `Latest Fusion` <Lifecycle status="private_preview" /> (available to select accounts)
 - `latest` (formerly called `versionless`; the old name is still supported)
 - `compatible` (available to Starter, Enterprise, Enterprise+ plans)
 - `extended` (available to all Enterprise plans)
@@ -43,20 +44,18 @@ Configure your project to use a different dbt version than what's configured in 
 5. (Optional) Verify that <Constant name="cloud" /> will use your override setting to build the project by invoking a `dbt build` command in the <Constant name="cloud_ide" />'s command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version <Constant name="cloud" /> is using. <br /><br />
    For users on Release tracks, the output will display `Running dbt...` instead of a specific version, reflecting the flexibility and continuous automatic updates provided by the release track functionality.
 
-## dbt Fusion engine <Lifecycle status="beta" />
+## dbt Fusion engine <Lifecycle status="private_preview" />
 
-dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently in beta on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but remember:
-
-- To gain access to the `Latest Fusion` release track, you must reach out to your dbt Labs account team to request it. Week by week, we'll expand the beta cohort based on project eligibility, including Starter plans. Once we transition from Beta to Preview, all users will see it as an option for their environments, projects, jobs, etc.
-- To increase the compatibility of your project, update all jobs and environments to the `Latest` release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion). 
+dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion), a ground-up rebuild of dbt. This is currently in private preview on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but remember:
+- If you don't see the `Latest Fusion` release track as an option, you should check with your dbt Labs account team about eligibility.
+- To increase the compatibility of your project, update all jobs and environments to the `Latest` release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - Make sure you're using a supported adapter and authentication method:
   <FusionDWH /> 
-- When you change your development environment(s) to `Latest Fusion`, every user will have to restart the IDE.
-
+- Once you upgrade your development environment(s) to `Latest Fusion`, every user will have to restart the IDE.
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
 
-### Upgrading environments to Fusion <Lifecycle status="beta" />
+### Upgrading environments to Fusion <Lifecycle status="private_preview" />
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
@@ -91,7 +90,6 @@ This hides the <Constant name="fusion" /> upgrade workflow from users who don't 
 
 The <Constant name="fusion" /> upgrade workflows helps identify areas of the project that need to be updated and provides tools for manually resolving and autofixing any errors. 
 
-
 #### Upgrade your development environment
 
 To begin the process of upgrading to <Constant name="fusion" /> with the assistant:
@@ -106,6 +104,8 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
 
 Now that you've upgraded your development environment to <Constant name="Fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
+
+<FusionUpgradeSteps />
 
 ## Jobs
 

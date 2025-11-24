@@ -77,7 +77,7 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
       standard_granularity_column: date_hour # column for the standard grain of your table, must be date time type.
       custom_granularities:
         - name: fiscal_year
-          column_name: fiscal_year_column
+          column_name: fiscal_year_column # must refer to a column defined in the model
     columns:
       - name: date_hour
         granularity: hour # set granularity at column-level for standard_granularity_column
@@ -99,11 +99,13 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
   - It sets the granularity at the column-level using the `granularity` key, in this case, `hour` and `day`, respectively. 
 - MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to another source table.
 - [The `custom_granularities` field](#custom-calendar), (available in <Constant name="cloud" /> Latest and dbt Core v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
+  - The `column_name` field must reference a column that exists in the same model.
 
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
 ### Migrating from SQL to YAML
-If you already have a SQL model that defines your time spine, you can reference that model directly. The `metricflow_time_spine.sql` file is no longer required and can be removed.
+
+If you already have a SQL model that defines your time spine, you can reference that model directly in the YAML file. If you don't have a SQL model that defines your time spine, add one before proceeding to the following steps. 
 
 1. Add the following configuration to a new or existing YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the YAML file whatever you want (for example, `util/_models.yml`):
 
@@ -121,7 +123,7 @@ If you already have a SQL model that defines your time spine, you can reference 
   ```
   </File>
 
-2. After adding the YAML configuration, delete the existing `metricflow_time_spine.sql` file from your project to avoid any issues.
+2. After adding the YAML configuration and ensuring you have a SQL model that defines the time spine, you can delete the existing `metricflow_time_spine.sql` file from your project to avoid any deprecation warnings or errors.
 
 3. Test the configuration to ensure compatibility with your production jobs.
 
@@ -357,7 +359,7 @@ models:
       standard_granularity_column: date_day
       custom_granularities:
         - name: fiscal_year
-          column_name: fiscal_year_column
+          column_name: fiscal_year_column # must refer to a column defined in the model
 ```
 </File>
 

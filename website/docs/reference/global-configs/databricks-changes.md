@@ -6,45 +6,72 @@ sidebar: "Databricks"
 
 The following are the current [behavior change flags](/docs/reference/global-configs/behavior-changes.md#behavior-change-flags) that are specific to `dbt-databricks`:
 
-| Flag                          | `dbt-databricks`: Intro | `dbt-databricks`: Maturity |
-| ----------------------------- | ----------------------- | -------------------------- |
-| [`use_info_schema_for_columns`](#use-information-schema-for-columns) | 1.9.0                   | TBD                        |
-| [`use_user_folder_for_python`](#use-users-folder-for-python-model-notebooks)  | 1.9.0                   | TBD                        |
-| [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        |
+| Flag                          | `dbt-databricks`: Intro | `dbt-databricks`: Maturity | Status |
+| ----------------------------- | ----------------------- | -------------------------- | ------ |
+| [`use_info_schema_for_columns`](#use-information-schema-for-columns) | 1.9.0                   | N/A                        | **Removed in 1.11.0** |
+| [`use_user_folder_for_python`](#use-users-folder-for-python-model-notebooks)  | 1.9.0                   | 1.11.0                     | Default changed to `True` |
+| [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        | Active |
+| [`use_managed_iceberg`](#use-managed-iceberg)  | 1.11.0  |  1.12.0                                                     | Active |
+| [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `True` |
 
 ## Use information schema for columns
 
-The `use_info_schema_for_columns` flag is `False` by default.
+:::caution Removed in v1.11.0
 
-Setting this flag to `True` will use `information_schema` rather than `describe extended` to get column metadata for Unity Catalog tables. This setting helps you avoid issues where `describe extended` truncates information when the type is a complex struct. However, this setting is not yet the default behavior, as there are performance impacts due to a Databricks metadata limitation because of the need to run `REPAIR TABLE {{relation}} SYNC METADATA` before querying to ensure the `information_schema` is complete. 
-Please note that there is no equivalent option for views at this time which means dbt will still need to use `describe extended` for views.
+The `use_info_schema_for_columns` flag has been **removed** as of dbt-databricks v1.11.0. The adapter now uses [`DESCRIBE EXTENDED ... AS JSON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-aux-describe-table) (available in DBR 16.2+) to efficiently retrieve complex type information, eliminating the need for this flag.
 
-This flag may become default behavior in the future, depending on how `information_schema` changes.
+If you're still using this flag in your project configuration, you can safely remove it. The new approach provides better performance and doesn't require the `REPAIR TABLE` operations that were needed with `information_schema`.
 
-:::tip Do I need this flag?
+:::
+
+### Legacy documentation
+_This applies to dbt-databricks versions v1.11 and older_
+The `use_info_schema_for_columns` flag was `False` by default in versions 1.9 and 1.10.
+
+Setting this flag to `True` would use `information_schema` rather than `describe extended` to get column metadata for Unity Catalog tables. This setting helped avoid issues where `describe extended` truncates information when the type is a complex struct.
+
+:::tip For complex types
 
 If your complex type comes from processing JSON using `from_json`, you have an alternative: use [`parse_json` to create the column as the `variant` type](https://docs.databricks.com/aws/en/sql/language-manual/functions/parse_json).
-Depending on how you intend to query or further process the data, the `variant` type might be a reasonable alternative in terms of performance, while not suffering from the issue of type truncation in metadata queries.
+The `variant` type might be a reasonable alternative in terms of performance, while avoiding type truncation issues.
 
 :::
 
 ## Use user's folder for Python model notebooks
 
-The `use_user_folder_for_python` flag is `False` by default and results in writing uploaded python model notebooks to `/Shared/dbt_python_models/{{schema}}/`. Setting this flag to `True` will write notebooks to `/Users/{{current user}}/{{catalog}}/{{schema}}/` Writing to the `Shared` folder is deprecated by Databricks as it does not align with governance best practices.
+:::info Default changed in v1.11.0
 
-We plan to switch the default of this flag to `True` in v1.11.0.
+As of dbt-databricks v1.11.0, the `use_user_folder_for_python` flag defaults to **`True`**.
+
+:::
+
+The `use_user_folder_for_python` flag controls where uploaded Python model notebooks are stored in Databricks:
+
+- **`True` (default in v1.11+)**: Notebooks are written to `/Users/{{current user}}/{{catalog}}/{{schema}}/`.
+- **`False` (default in v1.9-v1.10)**: Notebooks are written to `/Shared/dbt_python_models/{{schema}}/`.
+
+Databricks deprecated writing to the `Shared` folder as it doesn't align with governance best practices. Using user-specific folders provides better isolation, access control, and aligns with Unity Catalog security models.
+
+To preserve the legacy behavior for backward compatibility, you can explicitly set this flag to `False` in your `dbt_project.yml`:
+
+```yaml
+flags:
+  use_user_folder_for_python: false
+```
 
 ## Use restructured materializations
 
 The `use_materialization_v2` flag is `False` by default and guards significant rewrites of the core materializations in `dbt-databricks` while they are still in an experimental stage.
 
-When set to `True`, `dbt-databricks ` uses the updated logic for all model types (views, tables, incremental, seeds). It also enables additional, optional config options for more fine-tuned control:
+When set to `True`, `dbt-databricks` uses the updated logic for all model types (views, tables, incremental, seeds). It also enables additional, optional config options for more fine-tuned control:
 * `view_update_via_alter` &mdash; When enabled, this config attempts to update the view in place using alter view, instead of using create or replace to replace it.
 * `use_safer_relation_operation` &mdash; When enabled (and if `view_update_via_alter` isn't set), this config makes dbt model updates more safe by staging relations and using rename operations to ensure the live version of the table or view is not disrupted by failures.
 
 These configs aren't required to receive the core benefits of this flag &mdash; like better performance and column/constraint functionality &mdash; but they are gated behind the flag because they introduce more significant changes to how materializations behave.
 
-We plan to switch the default of this flag to `True` in 1.11.0, depending on user feedback.
+In v1.11.0, this flag will stay set to `False` by default. Based on feedback about the new materialization’s lack of atomicity (all-or-nothing updates), we won’t enable it automatically. We’ll explore other ways to achieve the same benefits without losing atomicity.
+Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `True`.
+Instead, we will be investigating new ways to provide the same benefits while maintaining atomicity.
 
 ### Changes to the Seed materialization
 
@@ -59,7 +86,6 @@ With the `use_materialization_v2` flag set to `True`, there are two model config
  <File name="schema.yml">
  
  ```yaml
- version: 2
   
  models:
    - name: market_summary
@@ -88,7 +114,6 @@ As such, we must replace the view whenever you change its description
  <File name="schema.yml">
  
  ```yaml
- version: 2
   
  models:
    - name: market_summary
@@ -167,7 +192,6 @@ The following example shows how to configure this:
 <File name="schema.yml">
 
 ```yaml
-version: 2
  
 models:
   - name: incremental_market_updates
@@ -178,3 +202,14 @@ models:
 ```
 
 </File>
+
+## Use managed Iceberg
+
+When you set `table_format` to `iceberg`, the `use_managed_iceberg` flag controls how the table is created. By default, this flag is set to `False` and dbt creates a [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability) table. When set to `True`, dbt creates a [managed Iceberg](https://docs.databricks.com/aws/en/tables/managed) table.
+
+## Use `replace on` for `insert_overwrite` strategy
+
+The `use_replace_on_for_insert_overwrite` flag is only relevant when using incremental models with the `insert_overwrite` strategy on SQL warehouses. The flag is `True` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `False`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
+
+If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `True`, provided you do not use any partitions or liquid clustering clusters.
+These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.

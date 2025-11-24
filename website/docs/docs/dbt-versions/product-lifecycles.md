@@ -1,5 +1,5 @@
 ---
-title: "dbt Product lifecycles"
+title: "Product lifecycles"
 id: "product-lifecycles"
 description: "Learn about dbt Labs' product lifecycles."
 ---
@@ -7,7 +7,7 @@ description: "Learn about dbt Labs' product lifecycles."
 dbt Labs is directly involved with the maintenance of three products: 
 
 - <Constant name="core" />: The [open-source](https://github.com/dbt-labs/dbt-core) software that’s freely available.
-- <Constant name="dbt_platform" />: The cloud-based [SaaS solution](https://www.getdbt.com/signup), originally built on top of <Constant name="core" />. We're now introducing dbt's new engine, the <Constant name="fusion_engine" />. For more information, refer to [About the dbt Fusion engine](/docs/fusion/about-fusion).
+- <Constant name="dbt_platform" />: The cloud-based [SaaS solution](https://www.getdbt.com/signup), originally built on top of <Constant name="core" />. We're now introducing dbt's new engine, the <Constant name="fusion_engine" />. For more information, refer to [the dbt Fusion engine](/docs/fusion).
 - <Constant name="fusion_engine" />: The next-generation dbt engine, substantially faster than  <Constant name="core" /> and has built in SQL comprehension technology to power the next generation of analytics engineering workflows. The <Constant name="fusion_engine" /> is designed to deliver data teams a lightning-fast development experience, intelligent cost savings, and improved governance.
 
 All dbt features fall into a lifecycle category determined by their availability in the following products:

@@ -53,7 +53,7 @@ $ python -m pip install "dbt-spark[session]"
 dbt-spark can connect to Spark clusters by four different methods:
 
 - [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
-- [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
+- [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (for example, Amazon EMR).
 - [`http`](#http) is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
 
 
@@ -98,7 +98,7 @@ your_profile_name:
 
 ### Thrift
 
-Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster, e.g. a cluster running locally or on Amazon EMR.
+Use the `thrift` connection method if you are connecting to a Thrift server sitting in front of a Spark cluster, for example, a cluster running locally or on Amazon EMR.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -115,8 +115,8 @@ your_profile_name:
       # optional
       port: [port]              # default 10001
       user: [user]
-      auth: [e.g. KERBEROS]
-      kerberos_service_name: [e.g. hive]
+      auth: [for example, KERBEROS]
+      kerberos_service_name: [for example, hive]
       use_ssl: [true|false]   # value of hive.server2.use.SSL, default false
       server_side_parameters:
         "spark.driver.memory": "4g" 
@@ -126,7 +126,7 @@ your_profile_name:
 
 ### HTTP
 
-Use the `http` method if your Spark provider supports generic connections over HTTP (e.g. Databricks interactive cluster).
+Use the `http` method if your Spark provider supports generic connections over HTTP (for example, Databricks interactive cluster).
 
 <File name='~/.dbt/profiles.yml'>
 

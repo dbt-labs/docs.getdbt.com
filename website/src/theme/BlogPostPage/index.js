@@ -102,6 +102,7 @@ function BlogPostPageContent({sidebar, children}) {
       isBlogPost={true}
     >
       <StructuredData
+        type="BlogPosting"
         title={frontMatter?.title}
         description={frontMatter?.description}
         authors={authors}

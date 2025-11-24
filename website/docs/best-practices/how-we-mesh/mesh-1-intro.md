@@ -21,3 +21,7 @@ For additional information, refer to the [<Constant name="mesh" /> FAQs](/best-p
 - Understand the **purpose and tradeoffs** of building a multi-project architecture.
 - Develop an intuition for various **<Constant name="mesh" /> patterns** and how to design a multi-project architecture for your organization.
 - Establish recommended steps to **incrementally adopt** these patterns in your dbt implementation.
+
+import MeshCourseCallout from '/snippets/_mesh-course-callout.md';
+
+<MeshCourseCallout />

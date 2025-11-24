@@ -268,7 +268,6 @@ Compilation Error
 
 Usually, it's to do with indentation — here's the offending YAML that caused this error:
 ```yaml
-version: 2
 
 models:
   - name: customers
