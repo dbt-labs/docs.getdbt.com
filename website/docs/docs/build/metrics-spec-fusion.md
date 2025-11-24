@@ -529,6 +529,10 @@ metrics:
 
 Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="cloud_ide" />.
 
+import CopilotLimitation from '/snippets/_copilot-limitation.md';
+
+<CopilotLimitation />
+
 Refer to the following steps in this section, depending on which tool you use.
 
 <!--no toc-->
