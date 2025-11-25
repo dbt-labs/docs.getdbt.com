@@ -13,8 +13,9 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/fusion/fusion" },
       items: [
         "docs/fusion/fusion",
-        "docs/fusion/fusion-availability",
         "docs/fusion/about-fusion",
+        "docs/fusion/fusion-availability",
+        "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
         "docs/fusion/install-fusion",
@@ -903,8 +904,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Available dbt versions",
-      link: { type: "doc", id: "docs/dbt-versions/core" },
+      link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
+        "docs/dbt-versions/about-versions",
         "docs/dbt-versions/core",
         "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
@@ -912,11 +914,11 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "category",
-          label: "dbt Core upgrade guides",
+          label: "dbt version upgrade guides",
           link: {
             type: "generated-index",
             title: "Version upgrade guides",
-            description: "Learn what's new in the latest version of dbt Core.",
+            description: "Learn what's new in the latest version of dbt.",
             slug: "/docs/dbt-versions/core-upgrade",
           },
           items: [
@@ -1360,7 +1362,10 @@ const sidebarSettings = {
           items: [
             "reference/function-properties",
             "reference/function-configs",
-            "reference/resource-properties/type",
+            "reference/resource-configs/type",
+            "reference/resource-configs/volatility",
+            "reference/resource-configs/runtime-version",
+            "reference/resource-configs/entry-point",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
           ],

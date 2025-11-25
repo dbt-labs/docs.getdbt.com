@@ -18,7 +18,7 @@ We strive to create pathways that inspire you to learn more about dbt and enable
 
 #### Sample contributions
 
-We appreciate these contributions because they contain context in the original post (OP) that helps us understand their relevance. The also add value to the docs, even in small ways!
+We appreciate these contributions because they contain context in the original post (OP) that helps us understand their relevance. They also add value to the docs, even in small ways!
 
 - Larger contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1898
 - Smaller contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1114

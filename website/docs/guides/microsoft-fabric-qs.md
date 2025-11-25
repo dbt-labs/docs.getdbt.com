@@ -4,7 +4,7 @@ id: "microsoft-fabric"
 level: 'Beginner'
 icon: 'fabric'
 hide_table_of_contents: true
-tags: ['platform','Quickstart']
+tags: ['Platform', 'Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>

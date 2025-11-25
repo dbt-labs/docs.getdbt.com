@@ -9,7 +9,7 @@ image: /img/docs/extension/extension-features.png
 
 # dbt VS Code extension features <Lifecycle status="preview" />
 
-The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (LSP) that enables enhanced workflows, faster development, and easy navigation.
+The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (<Term id="lsp"/>) that enables enhanced workflows, faster development, and easy navigation.
 
 The following extension features help you get more done, fast:
 
@@ -53,7 +53,7 @@ Parse even the largest projects up to 30x faster than with dbt Core.
 Autocomplete SQL functions, model names, macros and more.
 
 Usage:
-- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call.
+- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call. Autocomplete doesn’t trigger when replacing existing model names inside parentheses.
 - Autocomplete dialect-specific function names.
 
 <Lightbox src="/img/docs/extension/vsce-intellisense.gif" width="100%" title="Example of the VS Code extension IntelliSense"/>

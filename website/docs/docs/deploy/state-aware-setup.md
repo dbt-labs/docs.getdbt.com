@@ -26,7 +26,7 @@ To use state-aware orchestration, make sure you meet these prerequisites:
 - You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
-- You must set up a [deployment environment](/docs/deploy/deploy-environments). 
+- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only. 
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
 
 :::info

@@ -17,15 +17,21 @@ Choose one of the following paths to get started with the dbt Fusion engine.
 <div className="grid--3-col">
 
 <Card
+    title="About Fusion"
+    body="Learn about the dbt Fusion engine and how it works."
+    link="/docs/fusion/about-fusion"
+    icon="dbt-bit"/>
+
+<Card
     title="Fusion availability"
     body="Learn where the dbt Fusion engine is available."
     link="/docs/fusion/fusion-availability"
     icon="dbt-bit"/>
 
 <Card
-    title="About Fusion"
-    body="Learn about the dbt Fusion engine and how it works."
-    link="/docs/fusion/about-fusion"
+    title="Fusion readiness checklist"
+    body="Learn about the checklist to prepare your projects for the dbt Fusion engine."
+    link="/docs/fusion/fusion-readiness"
     icon="dbt-bit"/>
 
 <Card

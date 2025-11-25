@@ -104,8 +104,14 @@ Providing a non-unique key will result in unexpected snapshot results. dbt **wil
 :::
 
 ## Default
-This is a **required parameter**. No default is provided.
 
+This parameter is optional. If you don't provide a `unique_key`, your adapter will default to using `incremental_strategy: append`.
+
+If you leave out the `unique_key` parameter and use strategies like `merge`, `insert_overwrite`, `delete+insert`, or `microbatch`, the adapter will fall back to using `incremental_strategy: append`.
+
+This is different for BigQuery:
+- For `incremental_strategy = merge`, you must provide a `unique_key`; leaving it out leads to ambiguous or failing behavior.
+- For `insert_overwrite` or `microbatch`, `unique_key` is not required because they work by partition replacement rather than row-level upserts.
 
 ## Examples
 ### Use an `id` column as a unique key

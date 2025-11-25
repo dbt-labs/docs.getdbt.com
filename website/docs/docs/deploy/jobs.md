@@ -1,6 +1,6 @@
 ---
 title: "Jobs in the dbt platform"
-sidebar_label: "About Jobs"
+sidebar_label: "About jobs"
 description: "Learn about the different job types in dbt and what their differences are." 
 tags: [scheduler]
 pagination_next: "docs/deploy/deploy-jobs"

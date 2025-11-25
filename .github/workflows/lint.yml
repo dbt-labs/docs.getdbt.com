@@ -6,15 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
     
     - name: Install Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # actions/setup-node@v3
       with:
         node-version: '18.12.0'
       
     - name: Cache Node Modules
-      uses: actions/cache@v3
+      uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # actions/cache@v3
       id: cache-node-mods
       with:
         path: website/node_modules
