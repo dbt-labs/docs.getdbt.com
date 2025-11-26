@@ -65,7 +65,7 @@ Some of the typical commands you can use are:
 | ----------------------------------------------------------------------------| ---------------------------------|
 |[`dbt source freshness`](/reference/commands/source#dbt-source-freshness)    |Checks the "freshness" for all sources.|
 |[`dbt source freshness --output target/source_freshness.json`](/reference/commands/source#configuring-source-freshness-output)|Output of "freshness" information to a different path.|
-|[`dbt source freshness --select "source:source_name"`](/reference/commands/source#specifying-sources-to-snapshot)|Checks the "freshness" for specific sources.|
+|[`dbt source freshness --select "source:source"`](/reference/commands/source#specifying-sources-to-snapshot)|Checks the "freshness" for specific sources.|
 
 ### Specifying sources to snapshot
 
