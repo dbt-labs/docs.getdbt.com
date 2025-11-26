@@ -22,3 +22,6 @@ website/i18n/*
 
 # Local Vercel folder
 .vercel
+
+# Claude Code settings
+.claude/settings.json
