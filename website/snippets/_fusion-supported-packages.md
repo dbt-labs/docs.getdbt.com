@@ -4,7 +4,7 @@ The following packages are verified and supported on the <Constant name="fusion_
 - [Datavault-UK/automate_dv](https://github.com/Datavault-UK/dbtvault.git)
 - [dbt-labs/audit_helper](https://github.com/dbt-labs/dbt-audit-helper.git)
 - [dbt-labs/codegen](https://github.com/dbt-labs/dbt-codegen.git)
-- [dbt-labs/dbt_project_evaluator](https://github.com/dbt-labs/dbt-project-evaluator.git)
+- [dbt-labs/dbt_project_evaluator](https://github.com/dbt-labs/dbt-project-evaluator.git) (versions 1.1.1 and above)
 - [dbt-labs/dbt_utils](https://github.com/dbt-labs/dbt-utils.git)
 - [elementary-data/elementary](https://github.com/elementary-data/dbt-data-reliability.git)
 - [entechlog/dbt_snow_mask](https://github.com/entechlog/dbt-snow-mask.git)

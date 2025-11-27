@@ -4,7 +4,7 @@ id: "databricks"
 level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['platform', 'Quickstart','Databricks']
+tags: ['Platform', 'Quickstart', 'Databricks']
 ---
 
 <div style={{maxWidth: '900px'}}>

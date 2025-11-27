@@ -119,7 +119,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 - `retry_job_run`: Retry a failed job run to attempt execution again
 - `list_job_run_artifacts`: List all available artifacts for a job run (manifest.json, catalog.json, logs, etc.)
 - `get_job_run_artifact`: Download specific artifact files from job runs for analysis or integration
-- `get_job_run_error`: Retrieves error details for failed job runs to help troubleshoot errors
+- `get_job_run_error`: Retrieves error details for failed job runs to help troubleshoot errors (includes option to return warning and deprecation details)
 
 ### SQL (remote)
 

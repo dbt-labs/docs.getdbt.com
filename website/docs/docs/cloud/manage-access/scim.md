@@ -77,6 +77,7 @@ Please complete the [setup SSO with Okta](/docs/cloud/manage-access/set-up-sso-o
     - Push New Users
     - Push Profile Updates
     - Push Groups
+    - Import New Users and Profile Updates  (Optional for users created before SSO/SCIM setup)
 6. From the **Authentication mode** dropdown, select **HTTP Header**.
 7. In the **Authorization** section, paste the token from <Constant name="cloud" /> into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
