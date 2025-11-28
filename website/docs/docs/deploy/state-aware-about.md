@@ -38,7 +38,7 @@ Without configuring anything, <Constant name="cloud" />'s state-aware orchestrat
 
 If you want to leave comments in your source code but don’t want to trigger rebuilds, it is recommended to use regular SQL comments (for example, `-- This is a single-line comment in SQL`) in your query. State-aware orchestration ignores comment-only changes; such annotations will not force model rebuilds across the DAG.
 
-### Handling concurrent jobs in state-aware orchestration
+### Handling concurrent jobs
 
 If two separate jobs both depend on the same downstream model (for example, `model_ab`), and both jobs detect upstream changes (`updates_on = any`), then `model_ab` may run twice &mdash; once per job.
 
