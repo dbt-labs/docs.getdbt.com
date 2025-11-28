@@ -36,6 +36,14 @@ For example, you can configure your project so that <Constant name="cloud" /> sk
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
+If you want to leave comments in your source code but don’t want to trigger rebuilds, it is recommended to use regular SQL comments (for example, `-- This is a single-line comment in SQL`) in your query. State-aware orchestration ignores comment-only changes; such annotations will not force model rebuilds across the DAG.
+
+### Handling concurrent jobs in state-aware orchestration
+
+If two separate jobs both depend on the same downstream model (for example, `model_ab`), and both jobs detect upstream changes (`updates_on = any`), then `model_ab` may run twice &mdash; once per job.
+
+Under state-aware orchestration, each job independently evaluates whether a model needs rebuilding based on the model’s compiled code and upstream data state. State-aware orchestration does not enforce a single build per model across different jobs.
+
 ## Efficient Testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
@@ -112,6 +120,10 @@ The following section lists some considerations when using Efficient Testing in 
     store_failures: true | false
     where: <string>
   ```
+
+## Related FAQs
+
+<FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
 

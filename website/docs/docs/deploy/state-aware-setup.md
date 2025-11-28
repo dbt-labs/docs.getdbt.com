@@ -92,20 +92,20 @@ import DeleteJob from '/snippets/_delete-job.md';
 
 By default, we use the warehouse metadata to check if sources (or upstream models in the case of Mesh) are fresh. For more advanced use cases, dbt provides other options that enable you to specify what gets run by state-aware orchestration. 
 
-You can customize with:
-- `loaded_at_field`: Specify a specific column to use from the data.
+You can use the following optional parameters to customize your state-aware orchestration:
 
-- `loaded_at_query`: Define a custom freshness condition in SQL to account for partial loading or streaming data.
+|Parameter | Description | Allowed values | Supports Jinja |
+|----------|-------------| -------------- | -------------- |
+| `freshness.loaded_at_field` | Specifies a specific column to use from the data. | Name of timestamp column. For example, `created_at`, `"CAST(created_at AS TIMESTAMP)"`. | ✅ |
+| `freshness.loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string: a query or expression that returns a timestamp or indicates freshness. For example, `"select {{ current_timestamp() }}"`. | ✅ |
+| `freshness.build_after.count` | Determines how many units of time must pass before a model can be rebuilt to help reduce build frequency. | Positive integer. For example, `4`. | ✅ |
+| `freshness.build_after.period` | The time unit for the count to define the build interval. | `minute`, `hour`, `day` | ✅ |
+| `build_after.updates_on` | Determines whether a model rebuild is triggered when any upstream dependency has fresh data or only when all upstream dependencies are fresh. | <li>`any` (default) &mdash; Use this value when you want a downstream model to rebuild if _any_ of its upstream dependencies receives fresh data, even if others haven’t.</li> <li>`all` &mdash; Use this value when you want to trigger a rebuild only when _all_ upstream dependencies are fresh &mdash; minimizing unnecessary builds and reducing compute cost.</li> | ❌ |
 
-If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
-:::note 
-You can either define `loaded_at_field` or `loaded_at_query` but not both.
-:::
-You can also customize with:
-- `updates_on`: Change the default from `any` to `all` so it doesn’t build unless all upstreams have fresh data reducing compute even more.
-- `build_after`: Don’t build a model more often than every x period to reduce build frequency when you need data less often than sources are fresh.
-
+Some notes when using `loaded_at_field` or `loaded_at_query`:
+- You can either define `loaded_at_field` or `loaded_at_query` but not both.
+- If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
 To learn more about model freshness and build after, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
 
