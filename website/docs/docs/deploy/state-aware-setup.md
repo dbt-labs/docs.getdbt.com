@@ -97,10 +97,10 @@ You can use the following optional parameters to customize your state-aware orch
 |Parameter | Description | Allowed values | Supports Jinja |
 |----------|-------------| -------------- | -------------- |
 | `freshness.loaded_at_field` | Specifies a specific column to use from the data. | Name of timestamp column. For example, `created_at`, `"CAST(created_at AS TIMESTAMP)"`. | ✅ |
-| `freshness.loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string: a query or expression that returns a timestamp or indicates freshness. For example, `"select {{ current_timestamp() }}"`. | ✅ |
-| `freshness.build_after.count` | Determines how many units of time must pass before a model can be rebuilt to help reduce build frequency. | Positive integer. For example, `4`. | ✅ |
-| `freshness.build_after.period` | The time unit for the count to define the build interval. | `minute`, `hour`, `day` | ✅ |
-| `build_after.updates_on` | Determines whether a model rebuild is triggered when any upstream dependency has fresh data or only when all upstream dependencies are fresh. | <li>`any` (default) &mdash; Use this value when you want a downstream model to rebuild if _any_ of its upstream dependencies receives fresh data, even if others haven’t.</li> <li>`all` &mdash; Use this value when you want to trigger a rebuild only when _all_ upstream dependencies are fresh &mdash; minimizing unnecessary builds and reducing compute cost.</li> | ❌ |
+| `freshness.loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string. For example, `"select {{ current_timestamp() }}"`. | ✅ |
+| `freshness.build_after.count` | Determines how many units of time must pass before a model can be rebuilt to help reduce build frequency. | A positive integer or a Jinja expression. For example, `4` or `"{{ var('build_after_count', 4) }}"`. | ✅ |
+| `freshness.build_after.period` | The time unit for the count to define the build interval. | `minute`, `hour`, `day`, or a Jinja expression (for example, `"{{ var('build_after_period', 'day') }}"`). | ✅ |
+| `freshness.build_after.updates_on` | Determines whether a model rebuild is triggered when any upstream dependency has fresh data or only when all upstream dependencies are fresh. | <li>`any` (default) &mdash; Use this value when you want a downstream model to rebuild if _any_ of its upstream dependencies receives fresh data, even if others haven’t.</li> <li>`all` &mdash; Use this value when you want to trigger a rebuild only when _all_ upstream dependencies are fresh &mdash; minimizing unnecessary builds and reducing compute cost. Recommended to use in state-aware orchestration.</li> | ❌ |
 
 
 Some notes when using `loaded_at_field` or `loaded_at_query`:
