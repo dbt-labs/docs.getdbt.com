@@ -36,12 +36,12 @@ For example, consider this `customers` model:
 <File name='models/customers.sql'>
 
 ```sql
-with customer_orders as (
+with ORDERS as (
     select
-        customer_id,
+        user_id,
         min(order_date) as first_order_date,
         max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
+        count(id) as number_of_orders
 
     from jaffle_shop.orders
 
@@ -49,16 +49,16 @@ with customer_orders as (
 )
 
 select
-    customers.customer_id,
-    customers.first_name,
-    customers.last_name,
-    customer_orders.first_order_date,
-    customer_orders.most_recent_order_date,
-    coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+    CUSTOMERS.id,
+    CUSTOMERS.first_name,
+    CUSTOMERS.last_name,
+    ORDERS.first_order_date,
+    ORDERS.most_recent_order_date,
+    coalesce(ORDERS.number_of_orders, 0) as number_of_orders
 
-from jaffle_shop.customers
+from jaffle_shop.customers CUSTOMERS
 
-left join customer_orders using (customer_id)
+left join ORDERS on ORDERS.user_id=CUSTOMERS.id
 ```
 
 </File>
@@ -67,29 +67,29 @@ When you execute `dbt run`, dbt will build this as a _view_ named `customers` in
 
 ```sql
 create view dbt_alice.customers as (
-    with customer_orders as (
+    with ORDERS as (
         select
-            customer_id,
+            user_id,
             min(order_date) as first_order_date,
             max(order_date) as most_recent_order_date,
-            count(order_id) as number_of_orders
-
+            count(id) as number_of_orders
+    
         from jaffle_shop.orders
-
+    
         group by 1
     )
 
     select
-        customers.customer_id,
-        customers.first_name,
-        customers.last_name,
-        customer_orders.first_order_date,
-        customer_orders.most_recent_order_date,
-        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
-
-    from jaffle_shop.customers
-
-    left join customer_orders using (customer_id)
+        CUSTOMERS.id,
+        CUSTOMERS.first_name,
+        CUSTOMERS.last_name,
+        ORDERS.first_order_date,
+        ORDERS.most_recent_order_date,
+        coalesce(ORDERS.number_of_orders, 0) as number_of_orders
+    
+    from jaffle_shop.customers CUSTOMERS
+    
+    left join ORDERS on ORDERS.user_id=CUSTOMERS.id
 )
 ```
 
