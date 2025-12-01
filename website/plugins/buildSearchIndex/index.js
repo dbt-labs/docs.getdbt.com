@@ -4,6 +4,65 @@ const path = require('path');
 const matter = require('gray-matter');
 
 /**
+ * Build a map of document IDs to their breadcrumb trails from sidebar configuration
+ * @param {Object|Array} sidebarConfig - The sidebar configuration
+ * @param {Array} breadcrumb - Current breadcrumb trail
+ * @param {Object} result - Accumulator for results
+ * @returns {Object} Map of doc IDs to breadcrumb information
+ */
+function buildBreadcrumbMap(sidebarConfig, breadcrumb = [], result = {}) {
+  // Handle array of items
+  if (Array.isArray(sidebarConfig)) {
+    sidebarConfig.forEach(item => buildBreadcrumbMap(item, breadcrumb, result));
+    return result;
+  }
+  
+  // Handle object (could be a category or a doc reference)
+  if (typeof sidebarConfig === 'object' && sidebarConfig !== null) {
+    const { type, label, items, link, id } = sidebarConfig;
+    
+    // If this is a category, add to breadcrumb and process children
+    if (type === 'category' && label) {
+      const newBreadcrumb = [...breadcrumb, label];
+      
+      // If category has a link, register it
+      if (link && link.id) {
+        result[link.id] = {
+          breadcrumb: newBreadcrumb,
+          section: breadcrumb[0] || null,
+        };
+      }
+      
+      // Process items in this category
+      if (items && Array.isArray(items)) {
+        items.forEach(item => buildBreadcrumbMap(item, newBreadcrumb, result));
+      }
+    }
+    // Skip html type items (section titles)
+    else if (type === 'html') {
+      return result;
+    }
+    // If it has an id, it's a doc reference
+    else if (id) {
+      result[id] = {
+        breadcrumb: breadcrumb.length > 0 ? breadcrumb : null,
+        section: breadcrumb[0] || null,
+      };
+    }
+  }
+  
+  // Handle string (doc reference)
+  if (typeof sidebarConfig === 'string') {
+    result[sidebarConfig] = {
+      breadcrumb: breadcrumb.length > 0 ? breadcrumb : null,
+      section: breadcrumb[0] || null,
+    };
+  }
+  
+  return result;
+}
+
+/**
  * Strip markdown syntax to get plain text
  * @param {string} markdown - The markdown content
  * @returns {string} Plain text content
@@ -286,9 +345,10 @@ function splitIntoSections(markdownContent) {
  * @param {string} relativePath - Relative path from docs root
  * @param {boolean} enableChunking - Whether to split into sections
  * @param {number} minChunkSize - Minimum content size to create separate chunk
+ * @param {Object} breadcrumbMap - Map of doc IDs to breadcrumb information
  * @returns {Array} Array of processed documents (one or more)
  */
-function processMarkdownFile(filePath, relativePath, enableChunking = true, minChunkSize = 200) {
+function processMarkdownFile(filePath, relativePath, enableChunking = true, minChunkSize = 200, breadcrumbMap = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     
@@ -312,6 +372,22 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
     // Extract version information from VersionBlock components
     const versionInfo = extractVersions(markdownContent);
     
+    // Look up breadcrumb information for this document
+    // Try multiple potential keys: frontmatter.id, full path without extension, and relativePath
+    const potentialKeys = [
+      frontmatter.id,
+      relativePath.replace(/\.(md|mdx)$/, ''),
+      relativePath
+    ].filter(Boolean);
+    
+    let breadcrumbInfo = {};
+    for (const key of potentialKeys) {
+      if (breadcrumbMap[key]) {
+        breadcrumbInfo = breadcrumbMap[key];
+        break;
+      }
+    }
+    
     // Base metadata shared by all chunks
     const baseMeta = {
       sidebar_label: frontmatter.sidebar_label || null,
@@ -322,6 +398,8 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
       ...(frontmatter.type && { type: frontmatter.type }),
       ...(versionInfo.versions && { versions: versionInfo.versions }),
       ...(versionInfo.versionRange && { versionRange: versionInfo.versionRange }),
+      ...(breadcrumbInfo.breadcrumb && { breadcrumb: breadcrumbInfo.breadcrumb }),
+      ...(breadcrumbInfo.section && { sidebar_section: breadcrumbInfo.section }),
     };
     
     // If chunking is disabled, return single document
@@ -436,8 +514,9 @@ function processMarkdownFile(filePath, relativePath, enableChunking = true, minC
  * @param {Array} results - Accumulator for results
  * @param {boolean} enableChunking - Whether to chunk documents
  * @param {number} minChunkSize - Minimum chunk size
+ * @param {Object} breadcrumbMap - Map of doc IDs to breadcrumb information
  */
-function scanDirectory(dir, basePath = '', results = [], enableChunking = true, minChunkSize = 200) {
+function scanDirectory(dir, basePath = '', results = [], enableChunking = true, minChunkSize = 200, breadcrumbMap = {}) {
   const files = fs.readdirSync(dir);
   
   files.forEach(file => {
@@ -447,11 +526,11 @@ function scanDirectory(dir, basePath = '', results = [], enableChunking = true, 
     if (stat.isDirectory()) {
       // Skip node_modules and hidden directories
       if (file !== 'node_modules' && !file.startsWith('.')) {
-        scanDirectory(filePath, path.join(basePath, file), results, enableChunking, minChunkSize);
+        scanDirectory(filePath, path.join(basePath, file), results, enableChunking, minChunkSize, breadcrumbMap);
       }
     } else if (file.endsWith('.md') || file.endsWith('.mdx')) {
       const relativePath = path.join(basePath, file).replace(/\\/g, '/');
-      const chunks = processMarkdownFile(filePath, relativePath, enableChunking, minChunkSize);
+      const chunks = processMarkdownFile(filePath, relativePath, enableChunking, minChunkSize, breadcrumbMap);
       
       // Add all chunks from this file
       results.push(...chunks);
@@ -469,6 +548,7 @@ module.exports = function buildSearchIndexPlugin(context, options) {
     maxContentLength = 10000, // Maximum length of content field
     enableChunking = true, // Split documents into sections
     minChunkSize = 200, // Minimum size for a chunk to be created
+    sidebarPath = 'sidebars.js', // Path to sidebar configuration
   } = options || {};
   
   return {
@@ -481,9 +561,34 @@ module.exports = function buildSearchIndexPlugin(context, options) {
         console.log(`Minimum chunk size: ${minChunkSize} characters`);
       }
       
+      // Load sidebar configuration to extract breadcrumbs
+      let breadcrumbMap = {};
+      try {
+        const sidebarConfigPath = path.resolve(context.siteDir, sidebarPath);
+        console.log('Loading sidebar configuration from:', sidebarConfigPath);
+        
+        // Clear require cache to ensure fresh load
+        delete require.cache[require.resolve(sidebarConfigPath)];
+        
+        const sidebarConfig = require(sidebarConfigPath);
+        
+        // Build breadcrumb map from all sidebars
+        if (typeof sidebarConfig === 'object') {
+          Object.keys(sidebarConfig).forEach(sidebarKey => {
+            buildBreadcrumbMap(sidebarConfig[sidebarKey], [], breadcrumbMap);
+          });
+        }
+        
+        const breadcrumbCount = Object.keys(breadcrumbMap).length;
+        console.log(`✓ Built breadcrumb map with ${breadcrumbCount} entries`);
+      } catch (error) {
+        console.warn('Warning: Could not load sidebar configuration:', error.message);
+        console.warn('Continuing without breadcrumb information...');
+      }
+      
       // Scan the docs directory
       const docsPath = path.resolve(context.siteDir, docsDir);
-      const searchIndex = scanDirectory(docsPath, '', [], enableChunking, minChunkSize);
+      const searchIndex = scanDirectory(docsPath, '', [], enableChunking, minChunkSize, breadcrumbMap);
       
       // Optionally truncate content to reduce file size
       if (maxContentLength > 0) {
