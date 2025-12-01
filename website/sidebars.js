@@ -888,15 +888,6 @@ const sidebarSettings = {
       ],
     },
     {
-      type: "category",
-      label: "Cost management",
-      link: {
-        type: "doc",
-        id: "docs/cloud/cost-management/cost-management",
-      },
-      items: ["docs/cloud/cost-management/cost-management"],
-    },
-    {
       type: 'html',
       value: 'Release information',
       className: 'sidebar-title',
