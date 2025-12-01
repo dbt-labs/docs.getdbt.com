@@ -627,11 +627,24 @@ module.exports = function buildSearchIndexPlugin(context, options) {
       const outputPath = path.join(outDir, outputFile);
       fs.writeFileSync(outputPath, JSON.stringify(indexData, null, 2), 'utf8');
       
-      console.log(`✓ Search index built with ${searchIndex.length} chunks from ${uniqueFiles} files`);
-      if (enableChunking) {
-        console.log(`  Average ${avgChunksPerFile} chunks per file`);
+      // Also copy to static directory for development access
+      const staticPath = path.join(context.siteDir, 'static', outputFile);
+      try {
+        fs.writeFileSync(staticPath, JSON.stringify(indexData, null, 2), 'utf8');
+        console.log(`✓ Search index built with ${searchIndex.length} chunks from ${uniqueFiles} files`);
+        if (enableChunking) {
+          console.log(`  Average ${avgChunksPerFile} chunks per file`);
+        }
+        console.log(`✓ Written to build: ${outputPath}`);
+        console.log(`✓ Written to static: ${staticPath}`);
+      } catch (error) {
+        console.log(`✓ Search index built with ${searchIndex.length} chunks from ${uniqueFiles} files`);
+        if (enableChunking) {
+          console.log(`  Average ${avgChunksPerFile} chunks per file`);
+        }
+        console.log(`✓ Written to: ${outputPath}`);
+        console.warn(`⚠ Could not write to static directory: ${error.message}`);
       }
-      console.log(`✓ Written to: ${outputPath}`);
     },
   };
 };

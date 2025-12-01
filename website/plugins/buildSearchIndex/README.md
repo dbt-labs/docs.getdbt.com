@@ -36,8 +36,8 @@ npm run build
 ```
 
 This generates:
-- `build/search-index.json` (production)
-- `static/search-index.json` (development copy)
+- `build/search-index.json` (production - deployed)
+- `static/search-index.json` (development only - gitignored)
 
 ### 2. Test the Index
 
@@ -553,9 +553,9 @@ website/
 ├── docusaurus.config.js              # Plugin configuration
 ├── docs/                              # Documentation source
 ├── build/
-│   └── search-index.json             # Generated index
+│   └── search-index.json             # Generated index (deployed to production)
 ├── static/
-│   └── search-index.json             # Dev copy
+│   └── search-index.json             # Dev copy (gitignored, local only)
 └── plugins/
     └── buildSearchIndex/
         ├── index.js                   # Plugin code ⭐
