@@ -39,7 +39,7 @@ The forum is broken down into three categories:
 
 We are **strongly** committed to building a community where everyone can feel welcome.
 
-The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems together, and to help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background.
+The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems, and help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background.
 
 Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We are working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we will continue to iterate and make improvements.
 

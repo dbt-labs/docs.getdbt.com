@@ -3,7 +3,7 @@ title: "Analyze your data in dbt"
 id: "analyze-your-data"
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['analyst', 'dbt platform', 'Quickstart']
+tags: ['Analyst', 'dbt platform', 'Quickstart']
 intro_text: "Start with a stakeholder question and analyze the data to answer that question without writing any SQL"
 recently_updated: true
 ---

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -183,11 +184,14 @@ export default function DocItemLayout({children}) {
   const {frontMatter, metadata} = useDoc();
   const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
 
+  // Get site URL from Docusaurus config so we can build a canonical, fully-qualified URL
+  const { siteConfig } = useDocusaurusContext();
+
   // Construct full URL for structured data
   const location = useLocation();
   const isGuidesRoute = location.pathname.includes('/guides/');
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
-  const fullUrl = `${siteUrl}${location.pathname}`;
+  const siteUrl = siteConfig?.url || '';
+  const fullUrl = `${siteUrl}${location.pathname}${location.search}${location.hash}`;
 
   // Format date for structured data (use lastUpdatedAt if available)
   const formatDate = (timestamp) => {
@@ -211,7 +215,7 @@ export default function DocItemLayout({children}) {
           <article>
           <div className={styles.copyPageContainer}>
             <DocBreadcrumbs />
-            <CopyPage dropdownRight={isGuidesRoute} />
+            <CopyPage dropdownRight={isGuidesRoute} pageUrl={fullUrl} />
             </div>
             <DocVersionBadge />
             {docTOC.mobile}

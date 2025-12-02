@@ -36,13 +36,13 @@ Once configured, your session connects to the dbt platform account, starts the O
 
 <Lightbox src="/img/mcp/select-project.png" width="60%" title="Select your dbt platform project"/>
 
-After completing OAuth setup, skip to [step 3 (Test your configuration)](#3-optional-test-your-configuration).
+After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
 
 ### CLI only (no dbt platform)
 
 If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
-Add this configuration to your MCP client (refer to the specific [integration guides](#4-set-up-your-mcp-client) for exact file locations):
+Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
 
 ```json
 {
@@ -94,7 +94,7 @@ Follow the appropriate instructions for your OS to locate your path:
 
 </Expandable>
 
-After completing this setup, skip to [step 3 (Test your configuration)](#3-optional-test-your-configuration).
+After completing this setup, skip to [Test your configuration](#optional-test-your-configuration).
 
 ### Environment variable configuration
 
@@ -264,6 +264,15 @@ After completing your configuration, follow the specific integration guide for y
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
+
+## Debug configurations
+These settings allow you to customize the MCP server’s logging level to help with diagnosing and troubleshooting.
+
+| Name                     | Default | Description                                                                     |
+| ------------------------ | ------- | ------------------------------------------------------------------------------- |
+| `DBT_MCP_LOG_LEVEL`        | `INFO` |  Environment variable to override the MCP server log level. Options are: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.  |
+
+To see more detail about what’s happening inside the MCP server and help debug issues, you can temporarily set the log level to `DEBUG`. We recommend setting it temporarily to avoid filling up disk space with logs.
 
 ## Troubleshooting
 

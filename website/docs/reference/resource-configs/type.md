@@ -2,6 +2,7 @@
 title: type
 sidebar_label: "type"
 id: type
+description: "The type config specifies the type of user-defined function you're creating."
 ---
 <VersionCallout version="1.11" /> 
 
@@ -9,12 +10,14 @@ id: type
 
 ```yml
 functions:
-  - name: <function name>
+  - name: function_name
     config:
-      type: scalar | aggregate | table  # aggregate and table coming soon
+      type: scalar | aggregate 
 ```
 
 </File>
+
+In the future, we're considering adding support for `table` type. Refer to [this issue](https://github.com/dbt-labs/dbt-core/issues/11917) to track the progress and provide any feedback.
 
 ## Definition
 
@@ -22,9 +25,25 @@ The `type` config specifies the type of user-defined function (UDF) you're creat
 
 ## Supported function types
 
+The following function types are supported:
+<!-- no toc -->
+- [scalar (default)](#scalar-default)
+- [aggregate](#aggregate)
+
+Support for `type` differs based on the warehouse and language (SQL or Python) you're using:
+
+| Adapter	| scalar SQL	| scalar Python	| aggregate SQL	| aggregate Python |
+| --- | --- | --- | --- | --- |
+| dbt-bigquery	| ✅	| ✅	| ✅	| ❌ |
+| dbt-snowflake	| ✅	| ✅	| ❌	| ✅ |
+| dbt-databricks	| ✅	| ❌	| ❌	| ❌ |
+| dbt-postgres	| ✅	| ❌	| ❌	| ❌ |
+| dbt-redshift	| ✅	| ❌	| ❌	| ❌ |
+
 ### scalar (default)
 
 A scalar function returns a single value for each row of input. This is the most common type of UDF.
+
 
 **Example use cases:**
 - Data validation (checking if a string matches a pattern)
@@ -50,13 +69,16 @@ functions:
 
 ### aggregate
 
-Aggregate functions operate on multiple rows and return a single value. These functions are used in `GROUP BY` operations.
-:::note Coming soon
-Support for aggregate functions is planned for a future release.
-:::
+Aggregate functions operate on multiple rows and return a single value &mdash; for example, they sum values or calculate an average for a group. Queries use these functions in `GROUP BY` operations.
+
+Aggregate functions are currently supported only for:
+- Python functions on Snowflake
+- SQL functions on BigQuery
 
 
-**Example:**
+**Example use cases:**
+- Calculating totals or averages for groups of data (for example, total sales per customer)
+- Aggregating data over time (for example, daily, monthly, or yearly totals)
 
 <File name='functions/schema.yml'>
 
@@ -76,15 +98,6 @@ functions:
 
 </File>
 
-### table
-
-Table functions return a table (multiple rows and columns) rather than a single value.
-
-:::note Coming soon
-Support for table functions is planned for a future release.
-:::
-
-
 ## Related documentation
 
 - [User-defined functions](/docs/build/udfs)
@@ -93,4 +106,3 @@ Support for table functions is planned for a future release.
 - [Volatility](/reference/resource-configs/volatility)
 - [Arguments](/reference/resource-properties/function-arguments)
 - [Returns](/reference/resource-properties/returns)
-

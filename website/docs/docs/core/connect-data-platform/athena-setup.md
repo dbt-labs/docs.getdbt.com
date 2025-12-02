@@ -51,3 +51,26 @@ default:
 ```
 
 </File>
+
+### Example Config
+
+<File name='profiles.yml'>
+
+```yaml
+default:
+  outputs:
+    dev:
+      type: athena
+      s3_staging_dir: s3://dbt_demo_bucket/athena-staging/
+      s3_data_dir: s3://dbt_demo_bucket/dbt-data/
+      s3_data_naming: schema_table 
+      region_name: us-east-1
+      database: warehouse 
+      schema: dev
+      aws_profile_name: demo
+      threads: 4 
+      num_retries: 3    
+  target: dev
+```
+
+</File>
