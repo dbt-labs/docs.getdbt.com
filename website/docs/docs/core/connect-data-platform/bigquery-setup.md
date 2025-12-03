@@ -244,11 +244,20 @@ my-profile:
       job_execution_timeout_seconds: 600 # 10 minutes
 ```
 
+import JobTimeout from '/snippets/_bigquery-timeout.md';
+
+<JobTimeout />
+
 #### job_creation_timeout_seconds
 
 It is also possible for a query job to fail to submit in the first place. You can configure the maximum timeout for the job creation step by configuring  `job_creation_timeout_seconds`. No timeout is set by default.
 
 In the job creation step, dbt is simply submitting a query job to BigQuery's `Jobs.Insert` API, and receiving a query job ID in return. It should take a few seconds at most. In some rare situations, it could take longer.
+
+import JobTimeout2 from '/snippets/_bigquery-timeout.md';
+
+<JobTimeout2 />
+
 
 #### job_retries
 

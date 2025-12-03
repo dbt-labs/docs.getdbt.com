@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
       - name: Link Checker
-        uses: lycheeverse/lychee-action@master
+        uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # lycheeverse/lychee-action@master
         with:
           args: --verbose --config .github/lychee.toml './website/**/*.md'

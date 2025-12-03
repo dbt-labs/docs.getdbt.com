@@ -77,3 +77,20 @@ import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 <CompareChangesTable />
+
+## Troubleshooting
+
+<Expandable alt_header="Compare changes CI models need to be on same database host/connection">
+
+Compare Changes only works if both CI and production models live on the same database host/connection. Compare Changes runs SQL queries in the current CI job’s environment to compare the CI model (like `ci.dbt_cloud_123.foo`) to the production model (`prod.analytics.foo`).
+
+If the CI job defers to a production job that's on a different database connection or host, then the compare changes feature will not work as expected. This is because the CI environment can't access or query production objects on another host. 
+
+In the following example, the CI job can’t access the production model to compare them because they’re on different database hosts:
+
+  - The dbt CI job in environment `ci.dbt_cloud_123.foo` that connects to host `abc123.rds.amazonaws.com`
+  - The dbt production job in environment `prod.analytics.foo` that connects to host `def456.rds.amazonaws.com`
+
+</ Expandable>
+
+

@@ -1,4 +1,8 @@
 ---
+aggregate:
+  displayText: aggregate
+  hoverSnippet: A UDF type that returns a single value per group, aggregating several rows.
+
 cte: 
   displayText: CTE
   hoverSnippet: A Common Table Expression (CTE) is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other.

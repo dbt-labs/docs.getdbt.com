@@ -7,7 +7,7 @@ id: udfs-vs-macros
 
 Both user-defined functions (UDFs) and macros let you reuse logic across your dbt project, but they work in fundamentally different ways. Here's when to use each:
 
-## Use UDFs when:
+#### Use UDFs when:
 
 <Expandable alt_header="You need logic accessible outside dbt">
 
@@ -20,6 +20,7 @@ UDFs are created in your warehouse and can be used by BI tools, data science not
 UDFs let you create reusable warehouse functions for data validation, custom formatting, or business-specific calculations that need to be consistent across all your data tools. Once created, they become part of your warehouse's function catalog.
 
 </Expandable>
+
 
 <Expandable alt_header="You want dbt to manage the function lifecycle">
 
@@ -38,7 +39,17 @@ Jinja influences the function when it’s created, whereas arguments influence i
 
 </Expandable>
 
-## Use macros when:
+
+<Expandable alt_header="You need Python logic that runs in your warehouse">
+
+A Python UDF creates a Python function directly within your data warehouse, which you can invoke using SQL.  
+This makes it easier to apply complex transformations, calculations, or logic that would be difficult or verbose to express in SQL.  
+
+Python UDFs support conditionals and looping within the function logic itself (using Python syntax), and execute at runtime, not at compile time like macros. Python UDFs are currently supported in Snowflake and BigQuery.
+
+</Expandable>
+
+#### Use macros when:
 
 <Expandable alt_header="You need to generate SQL at compile time">
 
@@ -51,14 +62,14 @@ Macros generate SQL dynamically **before** it's sent to the warehouse (at compil
 UDFs execute **at query runtime** in the warehouse. While they can use Jinja templating in their definitions, they don't generate new SQL queries—they're pre-defined functions that get called by your SQL.
 
 :::note Expanding UDFs
-Currently, only SQL UDFs are supported. Python, Java, and Scala UDFs are planned for future releases. Once Python UDFs are available, they'll support conditionals and looping within the function logic itself (using Python syntax), but they'll still execute at runtime, not at compile time like macros.
+Currently, SQL and Python UDFs are supported. Java and Scala UDFs are planned for future releases. 
 :::
 
 </Expandable>
 
 <Expandable alt_header="You want to generate DDL or DML statements">
 
-Macros can create entire model definitions, tests, or any SQL statement. UDFs are limited to returning values or tables.
+Currently, SQL and Python UDFs are supported. Java and Scala UDFs are planned for future releases. 
 
 </Expandable>
 
@@ -86,7 +97,7 @@ Macros don't create anything in your warehouse; they just generate SQL at compil
 
 </Expandable>
 
-## Can I use both together?
+#### Can I use both together?
 
 Yes! You can use a macro to call a UDF or call a macro from within a UDF, combining the benefits of both. So the following example shows how to use a macro to define default values for arguments alongside your logic, for your UDF
 
@@ -96,7 +107,7 @@ Yes! You can use a macro to call a UDF or call a macro from within a UDF, combin
 {% endmacro %}
 ```
 
-## Related documentation
+#### Related documentation
 
 - [User-defined functions](/docs/build/udfs)
 - [Jinja macros](/docs/build/jinja-macros)

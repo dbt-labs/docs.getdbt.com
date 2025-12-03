@@ -376,6 +376,57 @@ models:
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
 
+### Applying labels to jobs
+
+While the `labels` configuration applies labels to the tables and views created by dbt, you can also apply labels to the BigQuery _jobs_ that dbt runs. Job labels are useful for tracking query costs, monitoring job performance, and organizing your BigQuery job history by dbt metadata.
+
+By default, labels are not applied to jobs directly. However, you can enable job labeling through query comments by following these steps:
+
+#### Step 1
+Define the `query_comment` macro to add labels to your queries via the query comment:
+
+  ```sql
+  -- macros/query_comment.sql
+  {% macro query_comment(node) %}
+      {%- set comment_dict = {} -%}
+      {%- do comment_dict.update(
+          app='dbt',
+          dbt_version=dbt_version,
+          profile_name=target.get('profile_name'),
+          target_name=target.get('target_name'),
+      ) -%}
+      {%- if node is not none -%}
+        {%- do comment_dict.update(node.config.get("labels", {})) -%}
+      {% else %}
+        {%- do comment_dict.update(node_id='internal') -%}
+      {%- endif -%}
+      {% do return(tojson(comment_dict)) %}
+  {% endmacro %}
+  ```
+
+  This macro creates a JSON comment containing dbt metadata (app, version, profile, target) and merges in any model-specific labels you've configured.
+
+#### Step 2
+Enable job labeling in your `dbt_project.yml` by setting `comment: "{{ query_comment(node) }}"` and `job-label: true` in the `query-comment` configuration:
+
+  ```yaml
+  # dbt_project.yml
+  name: analytics
+  profile: bq
+  version: "1.0.0"
+  
+  models:
+    analytics:
+      +materialized: table
+  
+  query-comment:
+    comment: "{{ query_comment(node) }}"
+    job-label: true
+  ```
+
+  When enabled, BigQuery will parse the JSON comment and apply the key-value pairs as labels to each job. You can then filter and analyze jobs in the BigQuery console or via the INFORMATION_SCHEMA.JOBS view using
+  these labels.
+
 ### Specifying tags
 BigQuery table and view *tags* can be created by supplying an empty string for the label value.
 

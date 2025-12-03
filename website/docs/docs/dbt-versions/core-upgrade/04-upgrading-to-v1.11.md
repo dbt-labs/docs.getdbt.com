@@ -5,10 +5,10 @@ description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.1 <Lifecycle status="beta" />
+# Upgrading to v1.11 <Lifecycle status="beta" />
 
 :::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install --upgrade --pre dbt-core`
+When using Core v1.11 on the command line (not in <Constant name="dbt_platform" />), you need to install a beta version of dbt-core. For example, `install --upgrade --pre dbt-core`.
 :::
 
 ## Resources
@@ -46,11 +46,23 @@ Key features include:
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
+### Unique project resource names
+
+The `require_unique_project_resource_names` flag is now available to enforce the uniqueness of resource names within the same package. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
+
+The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error. For more information, see [Behavior changes](/reference/global-configs/behavior-changes#unique-project-resource-names).
+
 ### Deprecation warnings enabled by default (coming soon)
 
 Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation will be enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`).
 
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
+
+## Adapter-specific features and functionalities
+
+### Snowflake
+
+- The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 
 ## Quick hits
 

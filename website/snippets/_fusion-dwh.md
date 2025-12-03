@@ -12,6 +12,7 @@
 
   <Expandable alt_header="Redshift">
     - Username / Password
+    - IAM profile
   </Expandable>
   
   <Expandable alt_header="Snowflake">

@@ -1,6 +1,6 @@
 ---
 title: "About Hybrid projects"
-sidebar_label: "About Hybrid projects"
+sidebar_label: "About hybrid projects"
 description: "Learn how to upload dbt Core artifacts into the dbt platform to create and set up hybrid projects."
 pagination_next: "docs/deploy/hybrid-setup"
 ---
@@ -8,7 +8,7 @@ pagination_next: "docs/deploy/hybrid-setup"
 # About Hybrid projects <Lifecycle status='managed_plus'/>
 
 <IntroText>
-With Hybrid projects, your organization can adopt complementary <Constant name="core" /> and <Constant name="cloud" /> workflows (where some teams develop projects in <Constant name="core" /> and others in <Constant name="cloud" />) and seamlessly integrate these workflows by automatically uploading <Constant name="core" /> [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud" />.
+With Hybrid projects, your organization can adopt complementary <Constant name="core" /> and <Constant name="cloud" /> workflows (where some teams deploy projects in <Constant name="core" /> and others in <Constant name="cloud" />) and seamlessly integrate these workflows by automatically uploading <Constant name="core" /> [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="cloud" />.
 </IntroText>
 
 :::tip Available in public preview

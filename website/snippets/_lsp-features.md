@@ -1,6 +1,5 @@
 |                              | VS Code extension | Studio IDE | Insights |
 |------------------------------|:--------------------------:|:----------:|:--------:|
-| Autocomplete column names    | ✅                          | ✅          | ❌        |
 | Autocomplete function names  | ✅                          | ✅          | ❌        |
 | Autocomplete ref/source args | ✅                          | ✅          | ✅        |
 | CTE Preview                  | ✅                          | ✅          | ✅        |

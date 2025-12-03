@@ -5,14 +5,51 @@ import { LLM_SERVICES } from '../components/copyPage/config';
 /**
  * Custom hook to manage CopyPage functionality
  * Handles dropdown state, clipboard operations, LLM integration, and error states
+ *
+ * @param {Object} options
+ * @param {string} [options.pageUrl] - Fully qualified canonical URL for the current page.
+ *   If provided, this will be used for all LLM links (preferred for SSR correctness).
+ *
  * @returns {Object} State and handlers for the CopyPage component
  */
-export function useCopyPage() {
+export function useCopyPage({ pageUrl } = {}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
   const [error, setError] = useState(null);
   const dropdownRef = useRef(null);
   const rawMarkdownContent = useRawMarkdownContent();
+
+  // Compute the canonical URL for this page.
+  // Prefer an explicit pageUrl (from Docusaurus metadata) so SSR markup
+  // already includes the correct URL, avoiding empty prompts before hydration.
+  let canonicalUrl = '';
+
+  // Always normalize to the production docs domain for LLM links,
+  // regardless of preview/localhost environment.
+  if (pageUrl) {
+    try {
+      const parsed = new URL(pageUrl);
+      canonicalUrl = `https://docs.getdbt.com${parsed.pathname}${parsed.search}${parsed.hash}`;
+    } catch (e) {
+      // If parsing fails for any reason, fall back to using the raw pageUrl
+      // (still better than an empty string), but this should be rare.
+      canonicalUrl = pageUrl;
+    }
+  } else if (typeof window !== 'undefined') {
+    canonicalUrl = `https://docs.getdbt.com${window.location.pathname}${window.location.search}${window.location.hash}`;
+  }
+
+  // Compute LLM service URLs with the current page URL
+  const llmServicesWithUrls = Object.entries(LLM_SERVICES).reduce((acc, [key, service]) => {
+    const encodedUrl = encodeURIComponent(canonicalUrl);
+    const llmUrl = service.url.replace('{url}', encodedUrl);
+    
+    acc[key] = {
+      ...service,
+      computedUrl: llmUrl
+    };
+    return acc;
+  }, {});
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -104,9 +141,7 @@ export function useCopyPage() {
     }
 
     try {
-      // Always use the production domain to avoid localhost/preview URLs in LLM context
-      const productionUrl = `https://docs.getdbt.com${window.location.pathname}${window.location.search}${window.location.hash}`;
-      const encodedUrl = encodeURIComponent(productionUrl);
+      const encodedUrl = encodeURIComponent(canonicalUrl);
       const llmUrl = service.url.replace('{url}', encodedUrl);
 
       window.open(llmUrl, '_blank', 'noopener,noreferrer');
@@ -132,7 +167,7 @@ export function useCopyPage() {
     copySuccess,
     error,
     rawMarkdownContent,
-    llmServices: LLM_SERVICES,
+    llmServices: llmServicesWithUrls,
 
     // Refs
     dropdownRef,
