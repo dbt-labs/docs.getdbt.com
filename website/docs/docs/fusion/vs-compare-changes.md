@@ -14,35 +14,33 @@ Compare changes in development, powered by <Constant name="fusion_engine" />, is
 The dbt VS Code extension, powered by the <Constant name="fusion_engine"/>, can compare changes you make during development by comparing your current working copy against your `manifest.json` (for example, your last production state) — directly in your editor. 
 
 Compare changes in development allows you to:
-- Check impact early on, before even opening a PR or running a [CI job](/docs/deploy/ci-jobs) in deployment.
-- Preview data changes caused by your local edits (like added/removed rows, column changes, primary-key changes, and so on).
+- Check impact early on amd catch changes before you open a PR or run a [CI job](/docs/deploy/ci-jobs) in deployment.
+- Preview data changes caused by your local edits (like added/removed rows, column changes, primary-key changes, and so on) &mdash; directly in your editor and without waiting on CI.
 - It’s one of several [dbt VS Code extension features](/docs/dbt-extension-features) available along with things like live CTE previews and hover insights.
 
 ## Prerequisites
 
 - You have a dbt Enterprise or Enterprise+ account.
-- Use a supported developer editor: VS Code or Cursor connected to a dbt project.
 - Installed the [dbt VS Code extension](/docs/install-dbt-extension) and [<Constant name="fusion" />](/docs/fusion/install-fusion).
-- Enabled Advanced CI features in the dbt platform. guessing here and to be confirmed
-- Use a supported data platform: BigQuery, Databricks, Redshift, or Snowflake. Support for additional data platforms coming soon. do we want to say this
+- Enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
+- Use a <Constant name="fusion" /> supported data platform: BigQuery, Databricks, Redshift, or Snowflake. Support for additional data platforms coming soon.
 - If you've configured [automatic deferral](/docs/cloud/about-cloud-develop-defer), you need a successful job run. To use compare changes manually without a successful job run, you can manually copy a `manifest.json` and specify the state directory.
   
 #### How this differs from Advanced CI
-:::info Related (CI pipelines)
+
 This compare changes feature applies to development only. If you're looking to compare changes between your production environment and the pull request’s latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
-:::
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 <CompareChangesTable />
 
-## Compare changes in development
+## Use compare changes
 
 To use compare changes in development, follow these steps:
 
-1. In your editor (this could be VS Code or Cursor), open a SQL model file. 
-2. Before changing the model, you need to have successfully built the model using `dbt build`. This is how the comparison is made against the last successful build of the model.
-3. Make some changes to the model, like adding a new column or modifying an existing one like `left_join_customers` to `right_join_customers`.
+1. Open a SQL model file in your editor.
+2. Make sure to successfully build the model at least once with `dbt build`. This gives dbt a baseline for comparison and allows you to compare your changes against the last successful build of the model.
+3. Make some changes to the model, like adding a new column or modifying an existing one (for example, `left_join_customers` to `right_join_customers`).
 4. Use the command palette and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) _or_ click the **Compare** tab in the editor toolbar.
 5. This runs the comparison and the **Compare** tab will display the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
    - **Overview tab**: High-level summary about the changes to the models, such as the number of primary keys that were added or removed, rows modified, and so on. It will also include the relation between models that were added or modified.
