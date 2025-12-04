@@ -52,11 +52,58 @@ The `require_unique_project_resource_names` flag is now available to enforce the
 
 The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error. For more information, see [Behavior changes](/reference/global-configs/behavior-changes#unique-project-resource-names).
 
-### Deprecation warnings enabled by default (coming soon)
+### Deprecation warnings enabled by default
 
-Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation will be enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`).
+Deprecation warnings from JSON schema validation are now enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`) for projects running using the Snowflake, Databricks, BigQuery, and Redshift adapters.
 
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
+
+You'll see the following deprecation warnings by default: 
+* [CustomKeyInConfigDeprecation](/reference/deprecations#customkeyinconfigdeprecation)
+* [CustomKeyInObjectDeprecation](/reference/deprecations#customkeyinobjectdeprecation)
+* [CustomTopLevelKeyDeprecation](/reference/deprecations#customtoplevelkeydeprecation)
+* [MissingPlusPrefixDeprecation](/reference/deprecations#missingplusprefixdeprecation)
+* [SourceOverrideDeprecation](/reference/deprecations#sourceoverridedeprecation)
+
+Each deprecation type can be silenced using the [warn-error-options](/reference/global-configs/warnings#configuration) project configuration. For example, to silence all of the above deprecations within `dbt_project.yml`: 
+
+<File name='dbt_project.yml'>
+```yml
+
+flags:
+  warn_error_options:
+    silence:
+      - CustomTopLevelKeyDeprecation
+      - CustomKeyInConfigDeprecation
+      - CustomKeyInObjectDeprecation
+      - MissingPlusPrefixDeprecation
+      - SourceOverrideDeprecation
+```
+</File>
+
+Alternatively, the `--warn-error-options` flag can be used to silence specific deprecations from the command line:
+```sh
+dbt parse --warn-error-options '{"silence": ["CustomTopLevelKeyDeprecation", "CustomKeyInConfigDeprecation", "CustomKeyInObjectDeprecation", "MissingPlusPrefixDeprecation", "SourceOverrideDeprecation"]}'
+```
+
+To silence _all_ deprecation warnings within `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+
+flags:
+  warn_error_options:
+    silence:
+      - Deprecations
+```
+</File>
+
+Similarly, all deprecation warnings can be silenced via the `--warn-error-options` command line flag:
+
+```sh
+dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
+```
 
 ## Adapter-specific features and functionalities
 
