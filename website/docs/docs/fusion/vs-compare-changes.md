@@ -1,7 +1,7 @@
 ---
 title: "Compare changes in local development"
 id: "vs-compare-changes"
-description: "See how code edits will change your data while you develop in VS Code—without waiting on CI."
+description: "Compare how code edits will change your data while you develop in locally with the dbt VS Code extension — without waiting on CI."
 sidebar_label: "Compare changes"
 ---
 
