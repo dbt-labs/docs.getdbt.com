@@ -5,7 +5,7 @@ description: "Compare how code edits will change your data while you develop in 
 sidebar_label: "Compare changes"
 ---
 
-# Compare changes in development <Lifecycle status="beta,managed,managed_plus" />
+# Compare changes in local development <Lifecycle status="beta,managed,managed_plus" />
 
 :::info
 Compare changes in local development, powered by <Constant name="fusion_engine" />, is available in beta for the VS Code extension.
