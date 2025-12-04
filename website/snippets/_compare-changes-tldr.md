@@ -1,4 +1,4 @@
-## Compare changes in development <Lifecycle status="beta" />
+## Compare changes in development <Lifecycle status="beta,managed,managed_plus" />
 
 You can use compare changes in development, powered by the <Constant name="fusion_engine"/>, to compare your current working copy against your `manifest.json` (for example, your last production state) — directly in your editor.
 

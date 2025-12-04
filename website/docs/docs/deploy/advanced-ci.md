@@ -6,6 +6,8 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 image: /img/docs/dbt-cloud/example-ci-compare-changes-tab.png
 ---
 
+import CompareChangesTable from '/snippets/_compare-changes-table.md';
+
 # Advanced CI <Lifecycle status="managed,managed_plus" />
 
 [Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. 
@@ -23,6 +25,32 @@ You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Acco
 - You use a supported data platform: BigQuery, Databricks, Postgres, Redshift, or Snowflake. Support for additional data platforms coming soon.
 
 ## Compare changes feature {#compare-changes}
+
+:::tip Compare changes in development
+
+You can use compare changes in development, powered by the <Constant name="fusion_engine"/>, to preview changes to your data caused by your local edits (like added/removed rows and so on) &mdash; directly in your editor and without waiting on CI.
+
+For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
+
+<div data-force-black-text="true">
+<style>{`
+  div[data-force-black-text="true"] details summary,
+  div[data-force-black-text="true"] details summary * {
+    color: #000000 !important;
+  }
+  div[data-force-black-text="true"] details summary span::before {
+    border-color: #000000 !important;
+  }
+`}</style>
+<Expandable alt_header="Differences between compare changes in development and Advanced CI compare changes">
+
+<CompareChangesTable />
+
+</Expandable>
+</div>
+
+:::
+
 
 For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
@@ -68,15 +96,7 @@ If using dynamic data masking in the data warehouse, the cached data will no lon
 
 <Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="Example of credentials in the user settings" />
 
-import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
 
-<CompareChangesTLDR />
-
-#### Compare changes in deployment and compare changes in development
-
-import CompareChangesTable from '/snippets/_compare-changes-table.md';
-
-<CompareChangesTable />
 
 ## Troubleshooting
 
