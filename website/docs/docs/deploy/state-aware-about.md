@@ -32,17 +32,28 @@ We built <Constant name="cloud" />'s state-aware orchestration on these four cor
 
 State-aware orchestration uses shared state tracking to determine which models need to be built by detecting changes in code or data every time a job runs. It also supports custom refresh intervals and custom source freshness configurations, so <Constant name="cloud" /> only rebuilds models when they're actually needed.
 
-For example, you can configure your project so that <Constant name="cloud" /> skips rebuilding the dim_wizards model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
+For example, you can configure your project so that <Constant name="cloud" /> skips rebuilding the `dim_wizards` model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
-If you want to leave comments in your source code but don’t want to trigger rebuilds, it is recommended to use regular SQL comments (for example, `-- This is a single-line comment in SQL`) in your query. State-aware orchestration ignores comment-only changes; such annotations will not force model rebuilds across the DAG.
+### Detecting code changes
+
+State-aware orchestration evaluates model changes based on _compiled SQL code_, rather than the pre-rendered code.
+
+- Every macro, variable, or templated logic is resolved before state-aware orchestration checks for changes.
+- If you use dynamic content (for example, `{{ run_started_at }}`), state-aware orchestration may detect that as a change even if the “static” SQL template hasn’t changed. This may result in more frequent model rebuilds.
+- Any change to a macro definition or templated logic will be treated as a code change, even if the underlying data or SQL structure remains the same.
+- If you want to leave comments in your source code but don’t want to trigger rebuilds, it is recommended to use regular SQL comments (for example, `-- This is a single-line comment in SQL`) in your query. State-aware orchestration ignores comment-only changes; such annotations will not force model rebuilds across the DAG.
 
 ### Handling concurrent jobs
 
 If two separate jobs both depend on the same downstream model (for example, `model_ab`), and both jobs detect upstream changes (`updates_on = any`), then `model_ab` may run twice &mdash; once per job.
 
-Under state-aware orchestration, each job independently evaluates whether a model needs rebuilding based on the model’s compiled code and upstream data state. State-aware orchestration does not enforce a single build per model across different jobs.
+Under state-aware orchestration, each job independently evaluates whether a model needs rebuilding based on the model’s compiled code and upstream data state. It does not enforce a single build per model across different jobs.
+
+What happens when jobs overlap:
+- If both jobs reach the same model at exactly the same time, one job waits until the other finishes. This is to prevent collisions in the data warehouse when two jobs try to build the same model at the same time.
+- After the first job finishes, the second job still checks whether a rebuild for the model is needed. The job may choose to reuse the existing result or perform another build, depending on changes detected.
 
 ## Efficient Testing in state-aware orchestration <Lifecycle status="private_beta" />
 

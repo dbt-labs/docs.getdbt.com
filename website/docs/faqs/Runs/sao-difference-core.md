@@ -1,6 +1,6 @@
 ---
 title: How is state-aware orchestration different from using selectors in dbt Core?
-description: "Compare how state-aware orchestration differs from using selectors in dbt Core’s"
+description: "Compare how state-aware orchestration differs from using selectors in dbt Core"
 sidebar_label: 'State-aware orchestration vs selectors in dbt Core'
 id: sao-difference-core
 
