@@ -54,7 +54,7 @@ For more details on how to use this feature, see [Compare changes in local devel
 
 For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
-You can also compare changes in development. For more details, see [Compare changes in development](#compare-changes-in-development).
+You can also compare changes in development. For more details, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
 
 dbt reports the comparison differences in:
 
