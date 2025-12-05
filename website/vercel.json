@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/fusion/install-fusion",
+      "destination": "/docs/fusion/get-started-fusion",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/manage-access/external-oauth",
       "destination": "/docs/cloud/manage-access/sso-overview",
       "permanent": true

@@ -18,7 +18,7 @@ const sidebarSettings = {
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/install-fusion",
+        "docs/fusion/get-started-fusion",
       ],
     },
     {
@@ -1642,6 +1642,7 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-2-who-is-dbt-mesh-for",
             "best-practices/how-we-mesh/mesh-3-structures",
             "best-practices/how-we-mesh/mesh-4-implementation",
+            "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
             "best-practices/how-we-mesh/mesh-5-faqs",
           ],
         },

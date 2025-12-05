@@ -66,6 +66,7 @@ flags:
   validate_macro_args: False
   require_all_warnings_handled_by_warn_error: False
   require_generic_test_arguments_property: True
+  require_unique_project_resource_names: False
 ```
 
 </File>
@@ -87,6 +88,7 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
+| [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -344,3 +346,30 @@ models:
 When you set the `require_generic_test_arguments_property` flag to `True`, dbt will:
 - Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
 - Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.
+
+### Unique project resource names
+
+The `require_unique_project_resource_names` flag enforces uniqueness of resource names within the same package. dbt resources such as models, seeds, snapshots, analyses, tests, and functions share a common namespace. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
+
+The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
+
+For example, if your project contains a model and a seed named `sales`:
+
+```
+models/sales.sql
+seeds/sales.csv
+```
+
+And a model contains:
+
+```sql
+select * from {{ ref('sales') }}
+```
+
+When the flag is set to `True`, dbt will raise:
+
+```
+DuplicateResourceNameError: Found resources with the same name 'sales' in package 'project': 'model.project.sales' and 'seed.project.sales'. Please update one of the resources to have a unique name.
+```
+
+When this error is raised, you should rename one of the resources, or refactor the project structure to avoid name conflicts.

@@ -29,7 +29,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 The <Constant name="fusion_engine" /> is the next-generation dbt engine, designed to deliver data teams a lightning-fast development experience, intelligent cost savings, and improved governance.
 
-For more information, refer to [the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [installation instructions](/docs/fusion/install-fusion) pages.
+For more information, refer to [the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [installation instructions](/docs/fusion/get-started-fusion) pages.
 
 ### dbt Core
 
