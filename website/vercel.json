@@ -40,7 +40,7 @@
   "redirects": [
     {
       "source": "/docs/cloud/cost-management",
-      "destination": "/docs/cloud/about-cloud/overview",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
