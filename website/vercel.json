@@ -44,11 +44,6 @@
       "permanent": true
     },
     {
-      "source": "/faqs/Accounts/account-specific-features",
-      "destination": "/faqs/Accounts/dbt-cloud-features",
-      "permanent": true
-    },
-    {
       "source": "/docs/cloud/manage-access/external-oauth",
       "destination": "/docs/cloud/manage-access/sso-overview",
       "permanent": true
