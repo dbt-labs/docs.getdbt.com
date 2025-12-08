@@ -1398,6 +1398,7 @@ const sidebarSettings = {
             "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
+            "reference/commands/sync",
             "reference/commands/test",
             "reference/commands/version",
           ],
