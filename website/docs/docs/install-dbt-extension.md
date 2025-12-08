@@ -1,8 +1,8 @@
 ---
-title: Install the dbt VS Code extension
+title: Install and configure the dbt VS Code extension
 id: install-dbt-extension
 description: "Installation instructions for the dbt extension."
-sidebar_label: "Install the dbt extension"
+sidebar_label: "Configure the dbt extension"
 image: /img/docs/extension/extension-marketplace.png
 ---
 

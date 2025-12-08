@@ -18,7 +18,7 @@ const sidebarSettings = {
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/install-fusion",
+        "docs/fusion/get-started-fusion",
       ],
     },
     {

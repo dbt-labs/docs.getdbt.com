@@ -71,10 +71,12 @@ Once the user completes this process, their email and user information will popu
 
 ## FAQ
 
-* Is there a limit to the number of users I can invite? _Your ability to invite users is limited to the number of licenses you have available._
-* Why are users are clicking the invitation link and getting an `Invalid Invitation Code` error? _We have seen scenarios where embedded secure link technology (such as enterprise Outlooks [Safe Link](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about?view=o365-worldwide) feature) can result in errors when clicking on the email link. Be sure to include the `getdbt.com` URL in the allowlists for these services._
-* Can I have a mixture of users with SSO and username/password authentication? _Once SSO is enabled, you will no longer be able to add local users. If you have contractors or similar contingent workers, we recommend you add them to your SSO service._
-* What happens if I need to resend the invitation? _From the Users page, click on the invite record, and you will be presented with the option to resend the invitation._
-* What can I do if I entered an email address incorrectly? _From the Users page, click on the invite record, and you will be presented with the option to revoke it. Once revoked, generate a new invitation to the correct email address._
+- Is there a limit to the number of users I can invite? _Your ability to invite users is limited to the number of licenses you have available._
+- What happens if I reinstate a deleted user? _If you invite a previously deleted user back to your account with the same email address, their personal profile information, including linked accounts, will persist (unless the user deleted the connection from the source account, like GitHub)._ 
+_Any previously assigned permissions and access settings are reset, and you will have to reassign them._
+- Why are users are clicking the invitation link and getting an `Invalid Invitation Code` error? _We have seen scenarios where embedded secure link technology (such as enterprise Outlooks [Safe Link](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about?view=o365-worldwide) feature) can result in errors when clicking on the email link. Be sure to include the `getdbt.com` URL in the allowlists for these services._
+- Can I have a mixture of users with SSO and username/password authentication? _Once SSO is enabled, you will no longer be able to add local users. If you have contractors or similar contingent workers, we recommend you add them to your SSO service._
+- What happens if I need to resend the invitation? _From the Users page, click on the invite record, and you will be presented with the option to resend the invitation._
+- What can I do if I entered an email address incorrectly? _From the Users page, click on the invite record, and you will be presented with the option to revoke it. Once revoked, generate a new invitation to the correct email address._
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/resend-invite.png" width="60%" title="Resend or revoke the users invitation"/>

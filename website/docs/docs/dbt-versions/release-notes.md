@@ -18,6 +18,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## November 2025
 
+- **Behavior change**: [dbt Copilot](/docs/cloud/dbt-copilot) now requires all input files to use UTF-8 encoding. Files that use other encodings will return an error. If you're working with legacy files that use a different encoding, convert them to UTF-8 before using Copilot.
+- **Enhancement**: dbt Copilot now has improved reliability when working with OpenAI. This includes longer timeouts, better retry behavior, and improved handling of reasoning messages for long code generations, resulting in fewer failures and more successful completions.
 - **New**: The Snowflake adapter now supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - **New**: You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
 - **New**: The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
