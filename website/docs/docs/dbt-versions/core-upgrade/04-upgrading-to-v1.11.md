@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 # Upgrading to v1.11 <Lifecycle status="beta" />
 
 :::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in dbt platform), you need to install a beta version of dbt-core For example, `install --upgrade --pre dbt-core`
+When using Core v1.11 on the command line (not in <Constant name="dbt_platform" />), you need to install a beta version of dbt-core. For example, `install --upgrade --pre dbt-core`.
 :::
 
 ## Resources
@@ -46,11 +46,64 @@ Key features include:
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
-### Deprecation warnings enabled by default (coming soon)
+### Unique project resource names
 
-Coming soon to dbt Core v1.11, deprecation warnings from JSON Schema validation will be enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`).
+The `require_unique_project_resource_names` flag is now available to enforce the uniqueness of resource names within the same package. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
+
+The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error. For more information, see [Behavior changes](/reference/global-configs/behavior-changes#unique-project-resource-names).
+
+### Deprecation warnings enabled by default
+
+Deprecation warnings from JSON schema validation are now enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`) for projects running using the Snowflake, Databricks, BigQuery, and Redshift adapters.
 
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
+
+You'll see the following deprecation warnings by default: 
+* [CustomKeyInConfigDeprecation](/reference/deprecations#customkeyinconfigdeprecation)
+* [CustomKeyInObjectDeprecation](/reference/deprecations#customkeyinobjectdeprecation)
+* [CustomTopLevelKeyDeprecation](/reference/deprecations#customtoplevelkeydeprecation)
+* [MissingPlusPrefixDeprecation](/reference/deprecations#missingplusprefixdeprecation)
+* [SourceOverrideDeprecation](/reference/deprecations#sourceoverridedeprecation)
+
+Each deprecation type can be silenced using the [warn-error-options](/reference/global-configs/warnings#configuration) project configuration. For example, to silence all of the above deprecations within `dbt_project.yml`: 
+
+<File name='dbt_project.yml'>
+```yml
+
+flags:
+  warn_error_options:
+    silence:
+      - CustomTopLevelKeyDeprecation
+      - CustomKeyInConfigDeprecation
+      - CustomKeyInObjectDeprecation
+      - MissingPlusPrefixDeprecation
+      - SourceOverrideDeprecation
+```
+</File>
+
+Alternatively, the `--warn-error-options` flag can be used to silence specific deprecations from the command line:
+```sh
+dbt parse --warn-error-options '{"silence": ["CustomTopLevelKeyDeprecation", "CustomKeyInConfigDeprecation", "CustomKeyInObjectDeprecation", "MissingPlusPrefixDeprecation", "SourceOverrideDeprecation"]}'
+```
+
+To silence _all_ deprecation warnings within `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+
+flags:
+  warn_error_options:
+    silence:
+      - Deprecations
+```
+</File>
+
+Similarly, all deprecation warnings can be silenced via the `--warn-error-options` command line flag:
+
+```sh
+dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
+```
 
 ## Adapter-specific features and functionalities
 

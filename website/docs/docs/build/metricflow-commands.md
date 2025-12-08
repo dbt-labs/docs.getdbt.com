@@ -24,7 +24,7 @@ Using MetricFlow with <Constant name="cloud" /> means you won't need to manage v
 
 <TabItem value="cloud" label="MetricFlow with the dbt platform">
 
-In <Constant name="cloud" />, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation). 
+In <Constant name="cloud" />, run MetricFlow commands directly in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation). 
 
 For <Constant name="cloud_cli" /> users, MetricFlow commands are embedded in the <Constant name="cloud_cli" /> , which means you can immediately run them once you install the <Constant name="cloud_cli" />  and don't need to install MetricFlow separately. You don't need to manage versioning because your <Constant name="cloud" /> account will automatically manage the versioning for you.
 

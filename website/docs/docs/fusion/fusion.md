@@ -47,9 +47,9 @@ Choose one of the following paths to get started with the dbt Fusion engine.
     icon="dbt-bit"/>
 
 <Card
-    title="Install Fusion"
-    body="Learn about how to install the dbt Fusion engine."
-    link="/docs/fusion/install-fusion"
+    title="Get started with Fusion"
+    body="Learn about how to start using the dbt Fusion engine."
+    link="/docs/fusion/get-started-fusion"
     icon="dbt-bit"/>
 
 <Card

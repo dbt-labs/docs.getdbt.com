@@ -23,7 +23,7 @@ The `Latest` [release track](/docs/dbt-versions/cloud-release-tracks) has all of
 
 You must resolve deprecations while your projects are on a <Constant name="core" /> release track, as they result in warnings that will become errors once you upgrade to <Constant name="fusion" />. The autofix tool can automatically resolve many deprecations (such as moving arbitrary configs into the meta dictionary). Start a new branch to begin resolving deprecation warnings using one of the following methods:
 
-- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/dbt-cloud-ide/autofix-deprecations). You can run the autofix tool on the `Compatible` or `Latest` release track.
+- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the `Compatible` or `Latest` release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
 

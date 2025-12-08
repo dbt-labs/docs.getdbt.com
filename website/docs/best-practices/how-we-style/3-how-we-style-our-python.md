@@ -13,7 +13,7 @@ id: 3-how-we-style-our-python
   - [ruff](https://pypi.org/project/ruff/) linter
 
   :::info
-  ☁️ <Constant name="cloud" /> comes with the [black formatter built-in](/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their Python. You don't need to download or configure anything, just click `Format` in a Python model and you're good to go!
+  ☁️ <Constant name="cloud" /> comes with the [black formatter built-in](/docs/cloud/studio-ide/lint-format) to automatically lint and format their Python. You don't need to download or configure anything, just click `Format` in a Python model and you're good to go!
   :::
 
 ## Example Python

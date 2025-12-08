@@ -30,7 +30,7 @@ for r in res.result:
 - Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
 - Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning processes or using tools like Celery.
 
-To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
+To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 

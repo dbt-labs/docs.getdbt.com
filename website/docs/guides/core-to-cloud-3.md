@@ -46,7 +46,7 @@ In <Constant name="cloud" />, you can natively connect to your data platform an
 
 ## Development tools
 
-<Constant name="cloud" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your dbt projects.
+<Constant name="cloud" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
 
 Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
 
@@ -64,7 +64,7 @@ A web-based interface for building, testing, running, and version-controlling db
 - The <Constant name="cloud_ide" /> has simplified <Constant name="git" /> functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the <Constant name="cloud_ide" />.
-- [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
+- [Format or lint](/docs/cloud/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
