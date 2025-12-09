@@ -172,7 +172,7 @@ dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenan
   - `ChannelMessage.Read.All`
   - `Channel.ReadBasic.All`
 
-#### Configure Teams notifications
+#### Configure Teams notifications -- IS THERE A LIMIT TO HOW MANY TEAMS CHANNELS I CAN CONFIGURE?
 
 Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can now configure which Teams channels receive job notifications. The **Teams notifications** menu requires that you have an active integration with Teams on the account.
 
