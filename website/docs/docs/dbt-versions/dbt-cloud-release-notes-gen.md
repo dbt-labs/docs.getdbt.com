@@ -54,7 +54,6 @@ Release notes are grouped by date for single-tenant environments.
 - **ORC Fusion – Python model enforcement**: Build conformance now scans manifests for Python models, marks builds non-conformant with a clear log message, and enables beta Python models during recorder captures so tenants know exactly why FS can’t replay. <!-- https://github.com/dbt-labs/dbt-orc/compare/ef353c390e8f179a96dc18b2e6420b22928e7217...f950dc9cd1507d7c0ac22e4676f887255fc5b940 -->
 - **Insights UI – Download lockdown**: Chart PNG/CSV download buttons disappear automatically when the `ninja-498-disable-download` flag is on, keeping data-egress restrictions intact for regulated tenants. <!-- https://github.com/dbt-labs/insights-ui/compare/2dc1826aa16f2c30168b541dc4fa435274911d27...af7811ca2deab05584a63e27419c63e0bfb16b97 -->
 - **semantic-layer gateway – Export timeout**: MetricFlow export compilation now times out after 30 minutes (was 45), surfacing stuck exports faster without affecting standard queries. <!-- https://github.com/dbt-labs/semantic-layer-gateway/compare/6c5bf61aef9e5101c619ac3e848fcc7459cf6996...6e0e0d457a55f083b752126270e01d13569d24b3 -->
-- **Studio – IDE Next default**: Studio now loads IDE Next by default and only falls back to the legacy IDE when the `fic215WorkbenchModeKillswitch` flag is flipped, giving tenants the modern experience while preserving an escape hatch. <!-- https://github.com/dbt-labs/studio/compare/7eb6e566274fe08bf1cf7dc30e8c0ca2dd6571e8...11ed3b092efe17a745062af5a100a25077182f08 -->
 
 ## Date
 
