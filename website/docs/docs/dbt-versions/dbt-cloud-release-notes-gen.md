@@ -46,7 +46,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Studio – Editing UX**: Studio's tab view, console pane, and command drawer have been redesigned to enhance efficiency and multitasking.<!-- Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/studio/compare/7eb6e566274fe08bf1cf7dc30e8c0ca2dd6571e8...11ed3b092efe17a745062af5a100a25077182f08 -->
 
 ## Fixes
-- **dbt cloud CLI server – Session overloads**: Parallelism checks now run before invocation creation and immediately return 429s when a session is already occupied, preventing confusing hangs for operators. <!-- https://github.com/dbt-labs/dbt-cloud-cli-server/commit/871e280694087e21ea3d5a7ca84d6805e6799450 -->
 - **IDE server – VCS errors**: Branch creation now returns explicit feedback for bad branch names/SHAs and detects unauthorized Git errors earlier, making automation failures actionable. <!-- Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/ide-server/commit/239863005992ff39687cc337e2f113ba9c0bb512 -->
 - **Explorer (metadata UI)**: Account Search V2 waits until users provide a query and strips empty filters before hitting GraphQL, eliminating “cannot be null/empty array” errors that previously led to blank results. <!-- https://github.com/dbt-labs/metadata-ui/compare/ff9621ac71248abe070223f28a7b449d173383cb...f5bd24427727ba5e41cd725b00868e1f8ad2673f -->
 
