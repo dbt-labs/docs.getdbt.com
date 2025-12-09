@@ -145,7 +145,7 @@ During the OAuth process, you’ll need to sign in to a Microsoft account to com
 - If you’re logged into multiple accounts (or none), you’ll be prompted to select or log in to one.
 
 
-<Expandable alt_header="Photo example of the Microsoft account selection popup">
+<Expandable alt_header="Image of the Microsoft account selection popup">
 <Lightbox src="/img/docs/deploy/pick-account.png" width="50%" title="Photo example of the Microsoft account popup"/>
 </Expandable>
 :::
@@ -174,7 +174,7 @@ dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenan
 
 #### Configure Teams notifications
 
-Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can now configure which Teams channels receive job notifications. The **Teams notifications** menu requires the user to have an active integration with Teams on the account.
+Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can now configure which Teams channels receive job notifications. The **Teams notifications** menu requires that you have an active integration with Teams on the account.
 
 :::info
 Currently, dbt only sends notifications to Teams channels (standard, shared, or private) that you belong to.
