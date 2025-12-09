@@ -62,6 +62,7 @@ If you're not sure what features are available, check out the following table.
 | Refactoring tools (rename model / column) | ❌ | ❌ | ✅ | Coming soon |
 | Go-to definition / references | ❌ | ❌ | ✅ | Coming soon |
 | Column-level lineage (in editor) | ❌ | ❌ | ✅ | Coming soon |
+| Developer compare changes | ❌ | ❌  | Coming soon | Coming soon |
 | **Platform and governance** |  |  |  |  |
 | Advanced CI compare changes | ❌ | ❌  | ✅ | ✅ |
 | dbt Mesh | ❌ | ❌  | ✅ | ✅ |
@@ -99,12 +100,13 @@ import FusionFeatures from '/snippets/_fusion-missing-features.md';
 
 <FusionFeatures />
 
-import AboutFusion from '/snippets/_about-fusion.md';
-
-<AboutFusion />
-
-### Package support
+## Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionPackages />
+
+import AboutFusion from '/snippets/_about-fusion.md';
+
+<AboutFusion />
+

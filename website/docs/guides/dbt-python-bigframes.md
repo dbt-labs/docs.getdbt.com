@@ -19,12 +19,9 @@ In this guide, you'll learn how to set up dbt so you can use it with BigQuery Da
 * Build scalable data transformation pipelines using dbt and Google Cloud, with SQL and Python.
 * Leverage BigFrames from dbt for scalable BigQuery SQL.
 
-
 In addition to the existing dataproc/pyspark based submission methods for executing python models, you can now use the BigFrames submission method to execute Python models with  pandas-like and scikit-like APIs,  without the need of any Spark setup or knowledge.
 
-
 BigQuery DataFrames is an open source Python package that transpiles pandas and scikit-learn code to scalable BigQuery SQL. The dbt-bigquery adapter relies on the BigQuery Studio Notebook Executor Service to run the Python client side code.
-
 
 ### Prerequisites
 
@@ -33,13 +30,15 @@ BigQuery DataFrames is an open source Python package that transpiles pandas and 
 - Basic to intermediate SQL and python.
 - Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com).
 
+During setup, you’ll need to select the **BigQuery (Legacy)** adapter and enter values for your **Google Cloud Storage Bucket** and **Dataproc Region** in the <Constant name="dbt_platform"/>. See [Configure BigQuery in dbt platform](/guides/dbt-python-bigframes?step=2#configure-bigquery-in-dbt-platform) for details.
+
 ### What you'll build
 
 Here's what you'll build in two parts:
 - Google Cloud project setup
     - A one-time setup to configure the Google Cloud project you’ll be working with.
 - Build and Run the Python Model
-  - Create, configure, and execute a Python model using BigQuery DataFrames and dbt. 
+    - Create, configure, and execute a Python model using BigQuery DataFrames and dbt. 
 
 You will set up the environments, build scalable pipelines in dbt, and execute a python model.
 
@@ -55,11 +54,18 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 1. **Create a new Google Cloud Project**
 
    a. Your new project will have the following list of APIs already enabled, including BigQuery, which is required.
-
       * [Default APIs](https://cloud.google.com/service-usage/docs/enabled-service#default)
 
    b. Enable the BigQuery API which also enables the following additional APIs automatically
       * [BigQuery API's](https://cloud.google.com/bigquery/docs/enable-assets#automatic-api-enablement)
+
+   c. Required API's:
+   - **BigQuery API:** For all core BigQuery operations.
+   - **Vertex AI API:** To use the Colab Enterprise executor service.
+   - **Cloud Storage API:** For staging code and logs.
+   - **IAM API:** For managing permissions.
+   - **Compute Engine API:** As an underlying dependency for the notebook runtime environment.
+   - **Dataform API:** For managing the notebook code assets within BigQuery.
 
 
 2. **Create a service account and grant IAM permissions**
@@ -80,8 +86,16 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    #Grant Colab Entperprise User
    gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
    ```
+   
+   :::info When using a Shared VPC
+   When using Colab Enterprise in a Shared VPC environment, additional roles are required for the following service accounts on the Shared VPC host project:
+       - Vertex AI P4SA (`service-<PROJECT_NUMBER>@gcp-sa-aiplatform.iam.gserviceaccount.com`): This service account always requires the Compute Network User (`roles/compute.networkUser`) role on the Shared VPC host
+         project. Replace `<PROJECT_NUMBER>` with the project number.
+       - Colab Enterprise P6SA (`service-<PROJECT_NUMBER>@gcp-sa-vertex-nb.iam.gserviceaccount.com`): This service account also needs the Compute Network User (`roles/compute.networkUser`) role on the Shared VPC host
+         project. Replace `<PROJECT_NUMBER>` with the project number.
+   :::
 
-3. *(Optional)* **Create a test BigQuery Dataset**
+4. *(Optional)* **Create a test BigQuery Dataset**
 
    Create a new BigQuery Dataset if you don't already have one:
 
@@ -90,7 +104,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
    bq mk --location=${REGION} echo "${GOOGLE_CLOUD_PROJECT}" | tr '-' '_'_dataset
    ```
 
-4. **Create a GCS bucket to stage the python code, and store logs**
+5. **Create a GCS bucket to stage the python code, and store logs**
 
    For temporary log and code storage, please create a GCS bucket and assign the required permissions:
 
@@ -101,6 +115,23 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 
    gcloud storage buckets add-iam-policy-binding gs://${GOOGLE_CLOUD_PROJECT}-bucket --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/storage.admin
    ```
+
+### Configure BigQuery in the dbt platform
+
+To set up your BigQuery DataFrames connection in the <Constant name="dbt_platform"/>, refer to the following steps:
+1. Go to **Account settings** > **Connections**. Click **New connection**. 
+2. In the **Type** section, select **BigQuery**.
+3. Select **BigQuery (Legacy)** as your adapter.
+2. Under **Optional settings**, enter values for the following fields:
+    - **Google Cloud Storage Bucket** (for example: `dbt_name_bucket`)
+    - **Dataproc Region** (for example: `us-central1`)
+3. Click **Save**.
+ 
+This is required so that BigFrames jobs execute correctly.
+
+Refer to [Connect to BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) for more info on how to connect to BigQuery in the <Constant name="dbt_platform"/>.
+
+<Lightbox src="/img/guides/gcp-guides/dbt-platform-bq.png" width="80%" title="Configure BigQuery in the dbt platform"/>
 
 ## Create, configure, and execute your Python models
 

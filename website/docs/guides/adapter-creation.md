@@ -1354,7 +1354,7 @@ The Trusted Adapter Program exists to allow adapter maintainers to demonstrate t
 
 The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables dbt Core to work on more than 30 different databases (32 as of Sep '22)!
 
-Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source projet is is important to determine the answer to the following questions:
+Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due diligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source project is is important to determine the answer to the following questions:
 
 1. Does it work?
 2. Does it meet my team's specific use case?

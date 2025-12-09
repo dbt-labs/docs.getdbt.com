@@ -36,6 +36,7 @@ To configure automatic downstream exposures, you should meet the following:
 3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 4. You have [proper permissions](/docs/cloud/manage-access/enterprise-permissions) to edit <Constant name="cloud" /> project or production environment settings.
 5. Use Tableau as your BI tool and enable metadata permissions or work with an admin to do so. Compatible with Tableau Cloud or Tableau Server with the Metadata API enabled.
+6. You have configured a [Tableau personal access token (PAT)](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) whose creator has permission to view data sources. The PAT inherits the permissions of its creator, so ensure the Tableau user who created the token has [Connect permissions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_permissions.htm).
 
 ### Considerations
 import ConsiderationsTableau from '/snippets/_auto-exposures-considerations-tb.md';

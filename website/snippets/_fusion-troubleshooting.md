@@ -1,5 +1,13 @@
 If you run into any issues, check out the troubleshooting section below.
 
+<Expandable alt_header="How to create a .dbt directory in root and move dbt_cloud.yml file">
+
+import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
+
+<DbtDirectoryFaq />
+
+</Expandable>
+
 <Expandable  alt_header="dbt platform configurations">
 
 If you're a cloud-based dbt platform user who has the `dbt-cloud:` config in the `dbt_project.yml` file and are also using dbt Mesh, you must have the project ID configured:

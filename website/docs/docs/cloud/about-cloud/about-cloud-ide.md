@@ -22,9 +22,9 @@ With the Cloud <Constant name="cloud_ide" />, you can:
 
 <Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.png" width="85%" title="The Studio IDE in dark mode"/>
 
-For more information, read the complete [Cloud <Constant name="cloud_ide" /> guide](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+For more information, read the complete [Cloud <Constant name="cloud_ide" /> guide](/docs/cloud/studio-ide/develop-in-studio).
 
 ## Related docs
 
-- [<Constant name="cloud_ide" /> user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)
+- [<Constant name="cloud_ide" /> user interface](/docs/cloud/studio-ide/ide-user-interface)
+- [Keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts)

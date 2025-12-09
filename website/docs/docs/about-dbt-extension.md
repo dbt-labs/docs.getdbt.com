@@ -2,12 +2,12 @@
 title: About the dbt VS Code extension
 id: about-dbt-extension
 description: "Bring all the speed and power of the dbt Fusion engine to your local development workflow."
-sidebar_label: "About the dbt VS Code extension"
+sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
 ---
 
-# About the dbt VS Code Extension <Lifecycle status="preview" />
+# About the dbt VS Code extension <Lifecycle status="preview" />
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.
@@ -76,8 +76,7 @@ After installation, you may want to configure the extension to better fit your d
 1. Open the VS Code settings by pressing `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac).
 2. Search for `dbt`. On this page, you can adjust the extension’s configuration options to fit your needs.
 
-<Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="30%" title="dbt extension settings within the VS Code settings."/>
-
+<Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="70%" title="dbt extension settings within the VS Code settings."/>
 
 ## Known limitations
 

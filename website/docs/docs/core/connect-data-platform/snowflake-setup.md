@@ -98,7 +98,7 @@ my-snowflake-db:
 
 </VersionBlock>
 
-Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authentication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
+**Note:** To avoid receiving Duo push notifications for every model build, enable [MFA token caching](https://docs.snowflake.com/en/user-guide/security-mfa#label-mfa-token-caching) in your Snowflake warehouse by running `alter account set allow_client_mfa_caching = true;` with the ACCOUNTADMIN role.
 
 ### Key pair authentication
 
@@ -206,9 +206,8 @@ my-snowflake-db:
 
 </VersionBlock>
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
+**Note**: To avoid authentication prompts for every dbt connection (which can result in dozens of SSO tabs opening), enable [connection caching](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use#using-connection-caching-to-minimize-the-number-of-prompts-for-authentication-optional) in your Snowflake warehouse by running `alter account set allow_id_token = true;` with the ACCOUNTADMIN role.
 
-Refer to the [Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for info on how to enable this feature in your account.
 
 ### OAuth authorization
 
@@ -256,6 +255,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | connect_retries | No | The number of times to retry after an unsuccessful connection |
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |
 | reuse_connections | No | A boolean flag indicating whether to reuse idle connections to help reduce total connections opened. Default is `False`. |
+| platform_detection_timeout_seconds | No | Timeout (in seconds) for platform detection. Defaults to `0.0`. Set to a positive value if using Workload Identity Federation (WIF) authentication.|
 
 ### account
 For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. 
@@ -268,6 +268,13 @@ Please also note that the Snowflake account name should only be the `account_nam
 
 The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/1271), and work around it by disabling the keepalive.
 
+### platform_detection_timeout_seconds
+
+The Snowflake connector uses the `platform_detection_timeout_seconds` parameter to determine how long it waits to detect the cloud platform for a connection. This parameter is available starting in <Constant name="core"/> v1.10.
+
+
+- Set to `0.0` (default) to disable cloud platform detection for faster connections.
+- Set to a positive value only if you're using WIF authentication, which requires the connector to detect the cloud environment.
 
 ### query_tag
 
@@ -289,3 +296,4 @@ However, in the <Constant name="dbt_platform" />, this setting is automatically 
 ### retry_all
 
 The `retry_all` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters any error.
+

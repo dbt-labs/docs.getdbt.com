@@ -24,9 +24,12 @@ Check out the section of the Getting Started guide on [using Jinja](/guides/usin
 
 ```jinja2
 {% set results = run_query('select 1 as id') %}
-{% do results.print_table() %}
 
--- do something with `results` here...
+{% if results is not none %}
+  {{ log(results.print_table(), info=True) }}
+{% endif %}
+
+{# do something with `results` here... #}
 ```
 
 </File>

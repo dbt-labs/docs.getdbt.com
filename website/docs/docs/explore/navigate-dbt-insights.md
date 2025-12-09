@@ -33,7 +33,7 @@ The Query console menu is located at the top right of the Query editor. It conta
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
   - Let [<Constant name="copilot" />](/docs/cloud/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
   - Access the newly created bookmark from the **Bookmark** icon in the [Query console sidebar menu](#query-console-sidebar-menu). 
- - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
+ - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
 ## Query Builder <Lifecycle status="beta" />

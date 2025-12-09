@@ -43,11 +43,12 @@ When you click **Link**, you will be redirected to GitLab and prompted to sign i
 
 Once you've accepted, you should be redirected back to <Constant name="cloud" />, and you'll see that your account has been linked to your profile.
 
-### Limitations
+### Requirements and limitations
 
 <Constant name="cloud" /> Team and Developer plans use a single GitLab deploy token created by the first user who connects the repository, which means:
-* All Git operations (like commits and pushes) from the <Constant name="cloud_ide" /> appear as coming from the same deploy token.
-* GitLab push rules may reject pushes made through <Constant name="cloud" />, particularly when multiple users are committing via the same deploy token. 
+- All repositories users access from the <Constant name="dbt_platform" /> must belong to a [GitLab group](https://docs.gitlab.com/user/group/).
+- All Git operations (like commits and pushes) from the <Constant name="cloud_ide" /> appear as coming from the same deploy token.
+- GitLab push rules may reject pushes made through <Constant name="cloud" />, particularly when multiple users are committing via the same deploy token. 
 
 To support advanced Git workflows and multi-user commit behavior, upgrade to the Enterprise plan, which provides more flexible Git authentication strategies.
 
@@ -66,6 +67,7 @@ Once the admin completes those steps, <Constant name="cloud" /> developers need 
 
 
 ### Setting up a GitLab OAuth application
+
 We recommend that before you set up a project in <Constant name="cloud" />, a GitLab account admin set up an OAuth application in GitLab for use in <Constant name="cloud" />.
 
 For more detail, GitLab has a [guide for creating a Group Application](https://docs.gitlab.com/ee/integration/oauth_provider.html#group-owned-applications).

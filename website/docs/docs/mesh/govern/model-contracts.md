@@ -6,9 +6,9 @@ description: "Model contracts define a set of parameters validated during transf
 ---
 
 ## Related documentation
-* [`contract`](/reference/resource-configs/contract)
-* [`columns`](/reference/resource-properties/columns)
-* [`constraints`](/reference/resource-properties/constraints)
+- [`contract`](/reference/resource-configs/contract)
+- [`columns`](/reference/resource-properties/columns)
+- [`constraints`](/reference/resource-properties/constraints)
 
 ## Why define a contract?
 

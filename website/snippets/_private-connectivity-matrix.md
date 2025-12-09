@@ -1,7 +1,9 @@
 ## Private connectivity feature matrix
 
+The following feature chart outlines the availability of private connectivity features across <constant name="dbt_platform" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) instances <br /> <br />
+✅ = Available | ❌ = Not currently supported | \- = Not applicable <br/>
 
-| Connectivity Type                                 | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
+| Connectivity type                                 | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
 |:--------------------------------------------------|:------:|:------:|:--------:|:--------:|:--------:|
 | <b>INGRESS (to <Constant name="cloud" />)</b>                     |        |        |          |          |          |
 | Private <Constant name="cloud" /> Ingress                         |   ❌   |   ✅   |    ❌    |    ✅    |    ❌    |

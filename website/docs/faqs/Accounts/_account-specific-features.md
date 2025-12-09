@@ -6,7 +6,7 @@ id: account-specific-features
 ---
 
 <IntroText>
-The features in <Constant name="cloud" /> are tailored to each organization’s unique configuration, including user permissions, project setup, and subscription level, with guidance provided to help teams make the most of their available capabilities.
+The features in <Constant name="cloud" /> are tailored to each organization's unique configuration, including user permissions, project setup, and subscription level, with guidance provided to help teams make the most of their available capabilities.
 </IntroText>
 
 This document provides a comprehensive overview of account-specific features in <Constant name="cloud" /> according to plan type.
@@ -41,7 +41,7 @@ BYOK allows users to provide and manage their own encryption or API keys, rather
 BYOK means users can bring and configure their own OpenAI or Azure OpenAI API key. With BYOK, users have more control over privacy, observability, and security for their data and metadata. Take note of the following when using BYOK:
 
 - When you use your own API key, your contract with the LLM provider (not dbt Labs') applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt Labs.
-- dbt Labs does not impose usage limits on the user’s key, as it does with internally managed keys.
+- dbt Labs does not impose usage limits on the user's key, as it does with internally managed keys.
 
 Currently, BYOK in <Constant name="cloud" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/cloud/account-settings), and requests made by <Constant name="copilot" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
 
@@ -65,13 +65,13 @@ Note that BYOK is different from bring your own cloud (BYOC). BYOK refers to key
 
 ### Natural language in Canvas <Lifecycle status="Enterprise, Enterprise+"/>
 
-Natural language in <Constant name="visual_editor" /> refers to the ability to build data models visually in <Constant name="visual_editor" /> using plain language prompts, powered by GenAI (<Constant name="copilot" />). You can describe what you want to build or transform, and the tool generates the underlying SQL and transformation steps for you. No SQL expertise is required. It’s aimed at making data modeling more accessible to less-technical users or anyone who prefers a drag-and-drop or conversational interface over hand-coding SQL.⁠⁠
+Natural language in <Constant name="visual_editor" /> refers to the ability to build data models visually in <Constant name="visual_editor" /> using plain language prompts, powered by GenAI (<Constant name="copilot" />). You can describe what you want to build or transform, and the tool generates the underlying SQL and transformation steps for you. No SQL expertise is required. It's aimed at making data modeling more accessible to less-technical users or anyone who prefers a drag-and-drop or conversational interface over hand-coding SQL.⁠⁠
 
 Natural language lets users translate business questions or transformation requests directly into data workflows. This accelerates the process of creating governed, production-ready models while maintaining best practices and version control. You can edit <Constant name="visual_editor" /> models collaboratively, and you can see both the graphical workflow and the SQL code it produces.⁠⁠⁠⁠
 
 The natural language capability is fully integrated into the <Constant name="visual_editor" /> workspace. You can start with a blank model and generate models or transformation steps by specifying requirements in everyday language. <Constant name="copilot" /> interprets the request, constructs the model in the <Constant name="visual_editor" />, and presents it visually &mdash; making it easy to refine, preview, and publish changes.⁠⁠
 
-This approach is especially valuable for analysts and business users, allowing broader participation in data transformation tasks without losing dbt’s governance, reproducibility, and code review processes.
+This approach is especially valuable for analysts and business users, allowing broader participation in data transformation tasks without losing dbt's governance, reproducibility, and code review processes.
 
 ## Canvas <Lifecycle status="Enterprise, Enterprise+"/>
 
@@ -89,7 +89,7 @@ You can save and share frequently used SQL queries, and explore documentation or
 
 The interface supports syntax highlighting, code completion, asset linking (to easily reference dbt models/tables), and connects to the Semantic Layer for querying metrics or columns by name.
 
-While <Constant name="query_page" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to “jump off” into downstream BI tools with their queries if needed.⁠
+While <Constant name="query_page" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to "jump off" into downstream BI tools with their queries if needed.⁠
 
 ## dbt Mesh cross platform <Lifecycle status="Enterprise, Enterprise+"/>
 
@@ -119,7 +119,7 @@ IP restrictions (IP allowlist/blocklist) let organizations control which IPs can
 
 Cost remediation tooling helps organizations identify and resolve inefficiencies that lead to unnecessary data platform expenses &mdash; especially in cloud data warehouses.
 
-Cost remediation is one of the three pillars of cost management in platforms like <Constant name="cloud" />:
+Cost remediation is one of the three pillars of managing costs:
 
 - Monitoring (to see costs)
 
@@ -142,3 +142,4 @@ For information on the different plan types and upgrading your plan, refer to ou
 ## Related content
 
 - [Billing](/docs/cloud/billing)
+

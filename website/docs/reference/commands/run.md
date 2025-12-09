@@ -7,7 +7,7 @@ id: "run"
 
 ## Overview
 
-The `dbt run` command only applies to models. It doesn't run tests, snapshots, seeds, or other resource types. To run those commands, use the appropriate dbt commands found in the [dbt commands](/reference/dbt-commands) section — such as `dbt test`, `dbt snapshot`, or `dbt seed`.
+The `dbt run` command only applies to models. It doesn't run tests, snapshots, seeds, or other resource types. To run those commands, use the appropriate dbt commands found in the [dbt commands](/reference/dbt-commands) section — such as `dbt test`, `dbt snapshot`, or `dbt seed`. Alternatively, use `dbt build` with a [resource type selector](/reference/node-selection/methods#resource_type).
 
 You can use the `dbt run` command when you want to build or rebuild models in your project.
 

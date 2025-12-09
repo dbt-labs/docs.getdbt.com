@@ -176,12 +176,32 @@ models:
 ## Incremental models
 _Available in versions 1.9 or higher_
 
-dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of five values:
- - **`append`**: Insert new records without updating or overwriting any existing data.
- - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (default; Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
- - **`replace_where`** (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
- - **`microbatch`** (Delta file format only): Implements the [microbatch strategy](/docs/build/incremental-microbatch) using `replace_where` with predicates generated based `event_time`.
+:::caution Breaking change in v1.11.0
+
+<details> 
+<summary>dbt-databricks v1.11.0 requires Databricks Runtime 12.2 LTS or higher for incremental models</summary>
+
+This version introduces a fix for column order mismatches in incremental models by using Databricks' `INSERT BY NAME` syntax (available since DBR 12.2). This prevents data corruption that could occur when column order changed in models using `on_schema_change: sync_all_columns`.
+
+If you're using an older runtime:
+- Pin your `dbt-databricks` version to `1.10.x` 
+- Or upgrade to DBR 12.2 LTS or higher
+
+This breaking change affects all incremental strategies: `append`, `insert_overwrite`, `replace_where`, `delete+insert`, and `merge` (via intermediate table creation).
+
+For more details on v1.11.0 changes, see the [dbt-databricks v1.11.0 changelog](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md).
+
+</details> 
+
+:::
+
+dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of six values:
+ - `append`: Insert new records without updating or overwriting any existing data.
+ - `insert_overwrite`: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
+ - `merge`(default; Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - `replace_where` (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
+ - `delete+insert` (Delta file format only, available in v1.11+): Match records based on a required `unique_key`, delete matching records, and insert new records. Optionally filter using `incremental_predicates`.
+ - `microbatch` (Delta file format only): Implements the [microbatch strategy](/docs/build/incremental-microbatch) using `replace_where` with predicates generated based `event_time`.
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
@@ -238,9 +258,17 @@ insert into table analytics.databricks_incremental
 
 ### The `insert_overwrite` strategy
 
-This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/3.0.0-preview/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
+The `insert_overwrite` strategy updates data in a table by replacing existing records instead of just adding new ones. This strategy is most effective when specified alongside a `partition_by` or `liquid_clustered_by` clause in your model config, which helps identify the specific partitions or clusters affected by your query. dbt will run an [atomic `insert into ... replace on` statement](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) that dynamically replaces all partitions/clusters included in your query, instead of rebuilding the entire table. 
 
-If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
+**Important!** Be sure to re-select _all_ of the relevant data for a partition or cluster when using this incremental strategy. 
+
+When using `liquid_clustered_by`, the `replace on` keys used will be the same as the `liquid_clustered_by` keys (same as `partition_by` behavior). 
+
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `True` (in SQL warehouses or when using cluster computes) dbt dynamically overwrites partitions and only replaces the partitions or clusters returned by your model query. dbt runs a [partitionOverwriteMode='dynamic' `insert overwrite` statement](https://docs.databricks.com/aws/en/delta/selective-overwrite#dynamic-partition-overwrites-with-partitionoverwritemode-legacyl), which helps reduce unnecessary overwrites and improves performance. 
+
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `False` in SQL warehouses, dbt truncates (empties) the entire table before inserting new data. This replaces all rows in the table each time the model runs, which can increase run time and cost for large datasets
+
+If you don't specify `partition_by` or `liquid_clustered_by`, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
 <Tabs
   defaultValue="source"
@@ -603,6 +631,143 @@ create temporary view replace_where__dbt_tmp as
 insert into analytics.replace_where_incremental
     replace where user_id >= 10000
     table `replace_where__dbt_tmp`
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+### The `delete+insert` strategy
+
+_Available in versions 1.11 or higher_
+
+The `delete+insert` incremental strategy requires:
+- `file_format: delta`
+- A required `unique_key` configuration
+- Databricks Runtime 12.2 LTS or higher
+
+The `delete+insert` strategy is a simpler alternative to the `merge` strategy for cases where you want to replace matching records without the complexity of updating specific columns. This strategy works in two steps:
+
+1. **Delete**: Remove all rows from the target table where the `unique_key` matches rows in the new data.
+2. **Insert**: Insert all new rows from the staging data.
+
+This strategy is particularly useful when:
+- You want to replace entire records rather than update specific columns
+- Your business logic requires a clean "remove and replace" approach
+- You need a simpler incremental strategy than `merge` for full record replacement
+
+When using Databricks Runtime 17.1 or higher, dbt uses the efficient [`INSERT INTO ... REPLACE ON` syntax](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) to perform this operation atomically. For older runtime versions, dbt executes separate `DELETE` and `INSERT` statements.
+
+You can optionally use `incremental_predicates` to further filter which records are processed, providing more control over which rows are deleted and inserted.
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code (DBR 17.1+)', value: 'run_new', },
+    { label: 'Run code (DBR < 17.1)', value: 'run_legacy', },
+]
+}>
+<TabItem value="source">
+
+<File name='delete_insert_incremental.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    file_format='delta',
+    incremental_strategy='delete+insert',
+    unique_key='user_id'
+) }}
+
+with new_events as (
+
+    select * from {{ ref('events') }}
+
+    {% if is_incremental() %}
+    where date_day >= date_add(current_date, -1)
+    {% endif %}
+
+)
+
+select
+    user_id,
+    max(date_day) as last_seen
+
+from new_events
+group by 1
+```
+
+</File>
+</TabItem>
+<TabItem value="run_new">
+
+<File name='target/run/delete_insert_incremental.sql'>
+
+```sql
+create temporary view delete_insert_incremental__dbt_tmp as
+
+    with new_events as (
+
+        select * from analytics.events
+
+        where date_day >= date_add(current_date, -1)
+
+    )
+
+    select
+        user_id,
+        max(date_day) as last_seen
+
+    from new_events
+    group by 1
+
+;
+
+insert into table analytics.delete_insert_incremental as target
+replace on (target.user_id <=> temp.user_id)
+(select `user_id`, `last_seen`
+   from delete_insert_incremental__dbt_tmp where date_day >= date_add(current_date, -1)) as temp
+```
+
+</File>
+
+</TabItem>
+<TabItem value="run_legacy">
+
+<File name='target/run/delete_insert_incremental.sql'>
+
+```sql
+create temporary view delete_insert_incremental__dbt_tmp as
+
+    with new_events as (
+
+        select * from analytics.events
+
+        where date_day >= date_add(current_date, -1)
+
+    )
+
+    select
+        user_id,
+        max(date_day) as last_seen
+
+    from new_events
+    group by 1
+
+;
+
+-- Step 1: Delete matching rows
+delete from analytics.delete_insert_incremental
+where analytics.delete_insert_incremental.user_id IN (SELECT user_id FROM delete_insert_incremental__dbt_tmp)
+  and date_day >= date_add(current_date, -1);
+
+-- Step 2: Insert new rows
+insert into analytics.delete_insert_incremental by name
+select `user_id`, `last_seen`
+from delete_insert_incremental__dbt_tmp
+where date_day >= date_add(current_date, -1)
 ```
 
 </File>
@@ -986,13 +1151,15 @@ or
 We support [on_configuration_change](/reference/resource-configs/on_configuration_change) for most available properties of these materializations.
 The following table summarizes our configuration support:
 
-| Databricks Concept | Config Name | MV/ST support |
-| ------------------ | ------------| ------------- |
-| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | `partition_by` | MV/ST |
-| COMMENT | [`description`](/reference/resource-properties/description) | MV/ST |
-| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | `tblproperties` | MV/ST |
-| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST |
-| query | defined by your model SQL | on_configuration_change for MV only |
+| Databricks Concept | Config Name | MV/ST support | Version |
+| ------------------ | ------------| ------------- | ------- |
+| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | `partition_by` | MV/ST | All |
+| [CLUSTER BY](https://docs.databricks.com/en/delta/clustering.html) | `liquid_clustered_by` | MV/ST | v1.11+ |
+| COMMENT | [`description`](/reference/resource-properties/description) | MV/ST | All |
+| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | `tblproperties` | MV/ST | All |
+| [TAGS](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) | `databricks_tags` | MV/ST | v1.11+ |
+| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST | All |
+| query | defined by your model SQL | on_configuration_change for MV only | All |
 
 <File name='mv_example.sql'>
 
@@ -1019,6 +1186,27 @@ select * from {{ ref('my_seed') }}
 
 #### partition_by
 `partition_by` works the same as for views and tables, i.e. can be a single column, or an array of columns to partition by.
+
+#### liquid_clustered_by
+_Available in versions 1.11 or higher_
+
+`liquid_clustered_by` enables [liquid clustering](https://docs.databricks.com/en/delta/clustering.html) for materialized views and streaming tables. Liquid clustering optimizes query performance by co-locating similar data within the same files, particularly beneficial for queries with selective filters on the clustered columns.
+
+**Note:** You cannot use both `partition_by` and `liquid_clustered_by` on the same materialization, as Databricks doesn't allow combining these features.
+
+#### databricks_tags
+_Available in versions 1.11 or higher_
+
+`databricks_tags` allows you to apply [Unity Catalog tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to your materialized views and streaming tables for data governance and organization. Tags are key-value pairs that can be used for data classification, access control policies, and metadata management.
+
+```sql
+{{ config(
+    materialized='streaming_table',
+    databricks_tags={'pii': 'contains_email', 'team': 'analytics'}
+) }}
+```
+
+Tags are applied via `ALTER` statements after the materialization is created. Once applied, tags cannot be removed through dbt-databricks configuration changes. To remove tags, you must use Databricks directly or a post-hook.
 
 #### description
 As with views and tables, adding a `description` to your configuration will lead to a table-level comment getting added to your materialization.

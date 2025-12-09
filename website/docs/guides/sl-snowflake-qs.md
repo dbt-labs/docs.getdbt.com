@@ -217,7 +217,7 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ### Initialize your dbt project
-This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" /> using the <Constant name="cloud_ide" />:
 

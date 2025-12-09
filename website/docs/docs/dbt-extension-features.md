@@ -1,20 +1,21 @@
 ---
-title: dbt VS Code extension features and functionality
+title: dbt extension features
 id: dbt-extension-features
 description: "The dbt VS Code extension is backed by the dbt Fusion engine and a powerful LSP."
-sidebar_label: "dbt VS Code extension features"
+sidebar_label: "dbt extension features"
 pagination_next: "docs/install-dbt-extension"
 image: /img/docs/extension/extension-features.png
 ---
 
- # dbt VS Code extension features and functionality <Lifecycle status="preview" />
-The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (LSP) that enables enhanced workflows, faster development, and easy navigation.
+# dbt VS Code extension features <Lifecycle status="preview" />
+
+The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (<Term id="lsp"/>) that enables enhanced workflows, faster development, and easy navigation.
 
 The following extension features help you get more done, fast:
 
 - **[Live error detection](#live-error-detection):** Automatically validate your SQL code to detect errors and surface warnings, without hitting the warehouse. This includes both dbt errors (like invalid `ref`) and SQL errors (like invalid column name or SQL syntax).
 - **[Lightning-fast parse times](#lightning-fast-parse-times):** Parse even the largest projects up to 30x faster than dbt Core.
-- **[Powerful IntelliSense](#powerful-intellisense):** Autocomplete SQL functions, model names, columns, macros, and more.
+- **[Powerful IntelliSense](#powerful-intellisense):** Autocomplete SQL functions, model names, macros, and more.
 - **[Instant refactoring](#instant-refactoring):** Rename models or columns and see references update project-wide.
 - **[Go-to-definition](#go-to-definition-and-reference):** Jump to the definition of any `ref`, macro, model, or column with a single click. Particularly useful in large projects with many models and macros. Excludes definitions from installed packages.
 - **[Hover insights](#hover-insights):** See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
@@ -49,15 +50,13 @@ Parse even the largest projects up to 30x faster than with dbt Core.
 
 ### Powerful IntelliSense
 
-Autocomplete SQL functions, model names, columns, macros and more.
+Autocomplete SQL functions, model names, macros and more.
 
 Usage:
-- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call.
+- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call. Autocomplete doesn’t trigger when replacing existing model names inside parentheses.
 - Autocomplete dialect-specific function names.
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/extension/intellisense.mp4" type="video/webm" />
-</video>
+<Lightbox src="/img/docs/extension/vsce-intellisense.gif" width="100%" title="Example of the VS Code extension IntelliSense"/>
 
 ### Instant refactoring
 

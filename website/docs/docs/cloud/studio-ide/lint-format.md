@@ -56,7 +56,7 @@ Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FA
 Linting is available on all branches, including your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. To enable linting, open a `.sql` file and click the **Code Quality** tab.
-2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
+2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/studio-ide/ide-user-interface#console-section), below the **File editor**. 
 3. In the code quality tool config pop-up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
@@ -231,6 +231,6 @@ To avoid this, break up your model into smaller models (files) so that they are 
 
 ## Related docs
 
-- [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)
+- [User interface](/docs/cloud/studio-ide/ide-user-interface)
+- [Keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts)
 - [SQL linting in CI jobs](/docs/deploy/continuous-integration#sql-linting) 

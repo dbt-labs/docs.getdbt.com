@@ -14,8 +14,16 @@ Environment variables in <Constant name="cloud" /> must be prefixed with either 
 :::
 
 ### Setting and overriding environment variables
+This section explains how to set and override environment variables in <Constant name="cloud" />.
 
-**Order of precedence**
+<!-- no toc -->
+- [Order of precedence](#order-of-precedence)
+- [Setting environment variables](#setting-environment-variables)
+- [Overriding environment variables at the job level](#overriding-environment-variables-at-the-job-level)
+- [Overriding environment variables at the personal level](#overriding-environment-variables-at-the-personal-level)
+- [Local environment variables](#local-environment-variables)
+
+#### Order of precedence
 
 Environment variable values can be set in multiple places within <Constant name="cloud" />. As a result, <Constant name="cloud" /> will interpret environment variables according to the following order of precedence (lowest to highest):
 
@@ -28,24 +36,19 @@ There are four levels of environment variables:
  3. The environment level, which can in turn be overridden again at
  4. The job level (job override) or in the <Constant name="cloud_ide" /> for an individual dev (personal override). (_highest precedence_)
 
-**Setting environment variables at the project and environment level**
+#### Setting environment variables
 
 To set environment variables at the project and environment level, click **Orchestration** in the left-side menu, then select **Environments**. Click **Environment variables** to add and update your environment variables.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
 
-
-
 You'll notice there is a **Project default** column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
-
 
 To the right of the **Project default** column are all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell <Constant name="cloud" /> to interpret an environment value differently in your Staging vs. Production environment, as an example.
 
-
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
-
-**Overriding environment variables at the job level**
+#### Overriding environment variables at the job level
 
 You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpreted differently depending on the job.
 
@@ -53,14 +56,11 @@ When setting up or editing a job, you will see a section where you can override 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
 
-
 Every job runs in a specific, deployment environment, and by default, a job will inherit the values set at the environment level (or the highest precedence level set) for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.png" title="Setting a job override value"/>
 
-
-**Overriding environment variables at the personal level**
-
+#### Overriding environment variables at the personal level
 
 You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (<Constant name="cloud_ide" />). By default, <Constant name="cloud" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="cloud" />:
 - Click on your account name in the left side menu and select **Account settings**. 
@@ -87,10 +87,15 @@ To refresh the <Constant name="cloud_ide" /> mid-development, click on either th
 
 There are some known issues with partial parsing of a project and changing environment variables mid-session in the IDE. If you find that your dbt project is not compiling to the values you've set, try deleting the `target/partial_parse.msgpack` file in your dbt project which will force dbt to re-compile your whole project.
 
+#### Local environment variables
+
+If you are using the dbt VS Code extension, you can set environment variables locally in your shell profile (`~/.zshrc` or `~/.bashrc`) or in a `.env` file at the root level of your dbt project.
+
+See the [Configure the dbt VS Code extension](/docs/configure-dbt-extension#set-environment-variables-locally) page for more information.
+
 ### Handling secrets
 
 While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
-
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
@@ -104,7 +109,7 @@ While all environment variables are encrypted at rest in <Constant name="cloud" 
 
 The following environment variable is set automatically for the <Constant name="cloud_ide" />:
 
-- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
   - The variable changes when the branch is changed.
   - Doesn't require restarting the <Constant name="cloud_ide" /> after a branch change.
   - Currently not available in the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).

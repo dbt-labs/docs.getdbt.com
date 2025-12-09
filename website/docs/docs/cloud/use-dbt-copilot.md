@@ -17,8 +17,8 @@ Use <Constant name="copilot" /> to generate documentation, tests, semantic model
 
 This page explains how to use <Constant name="copilot" /> to:
 
-- [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />’s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
-- [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />’s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+- [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 - [Build visual models](#build-visual-models) &mdash; Use <Constant name="copilot" /> to generate models in [<Constant name="visual_editor" />](/docs/cloud/use-canvas) with natural language prompts.
 - [Build queries](#build-queries) &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="query_page" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
 - [Analyze data with the Analyst agent](#analyze-data-with-the-analyst-agent) &mdash; Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking a natural language question to the Analyst agent.

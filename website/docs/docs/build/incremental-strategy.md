@@ -37,7 +37,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |    |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         | ✅  |    |    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 
@@ -200,7 +200,7 @@ This strategy shouldn't be confused with `delete+insert` which deletes matching 
 
 By specifying a `unique_key` (which can be composed of one or more columns), `merge` can also help resolve duplicates. If the `unique_key` already exists in the destination table, `merge` will update the record, so you won't have duplicates. If the records don’t exist, `merge` will insert them.
 
-Note, if you use `merge` without specifying a `unique_key`, it behaves like the `append` strategy. However, it is required to use a `unique_key` with `merge` for adapters like BigQuery.
+Note, if you use `merge` without specifying a `unique_key`, it behaves like the `append` strategy.
 
 While the `merge` strategy is useful for keeping tables current, it's best suited for smaller tables or incremental datasets. It can be expensive for large tables because it scans the entire destination table to determine what to update or insert.
 

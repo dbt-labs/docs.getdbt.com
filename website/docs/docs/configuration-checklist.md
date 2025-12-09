@@ -27,7 +27,7 @@ The dbt platform supports [global connections](/docs/cloud/connect-data-platform
 - [ ] Be sure the data warehouse has real data you can reference. This can be production or development data. We have a sandbox e-commerce project called [The Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) that you can use if you prefer. The Jaffle Shop includes mock data and ready-to-run models!
 - [ ] Whether starting a brand new project or importing an existing dbt Core project, you'll want to make sure you have the [proper structure configured](/docs/build/projects).
     - [ ] If you are migrating from Core, there are some important things you'll need to know, so check out our [migration guide](/guides/core-cloud-2?step=1).
-- [ ] Your users will need to [configure their credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) to connect to the development environment in the dbt Studio IDE.
+- [ ] Your users will need to [configure their credentials](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) to connect to the development environment in the dbt Studio IDE.
     - [ ] Ensure that all users who need access to work in the IDE have a [developer license](/docs/cloud/manage-access/seats-and-users) assigned in your account. 
 - [ ] dbt models are primarily written as [SELECT statements](/docs/build/sql-models), so an early step for measuring success is having a developer run a simple select statement in the IDE and validating the results. 
     - [ ] You can also verify the connection by running basic SQL queries using [dbt Insights](/docs/explore/access-dbt-insights).
@@ -46,11 +46,11 @@ Git is, for many dbt environments, the backbone of your project. Git repositorie
     - Other providers using [Git clone](/docs/cloud/git/import-a-project-by-git-url)
     - If you aren't ready to integrate with an existing Git solution, dbt can provide you with a [managed Git repository](/docs/cloud/git/managed-repository). 
 - [ ] Ensure developers can [checkout](/docs/cloud/git/version-control-basics#git-overview) a new branch in your repo.
-- [ ] Ensure developers in the IDE can [commit changes](/docs/cloud/dbt-cloud-ide/ide-user-interface#basic-layout). 
+- [ ] Ensure developers in the IDE can [commit changes](/docs/cloud/studio-ide/ide-user-interface#basic-layout). 
 
 ## Environments and jobs
 
-[Environments](/docs/environments-in-dbt) separate your development data from your production data. dbt supports two environment types: Development and Deployment. There are three types of Development environments:
+[Environments](/docs/environments-in-dbt) separate your development data from your production data. dbt supports two environment types: Development and Deployment. There are three types of deployment environments:
 - Production - One per project
 - Staging - One per project
 - General - Multiple per project
