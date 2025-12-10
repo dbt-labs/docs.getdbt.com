@@ -44,7 +44,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Fixes
 - **IDE server – VCS errors**: Branch creation now returns explicit feedback for bad branch names/SHAs and detects unauthorized Git errors earlier, making automation failures actionable. <!--  ✅ Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/ide-server/commit/239863005992ff39687cc337e2f113ba9c0bb512 -->
-- **Explorer (metadata UI)**: Account Search V2 waits until users provide a query and strips empty filters before hitting GraphQL, eliminating “cannot be null/empty array” errors that previously led to blank results. <!-- https://github.com/dbt-labs/metadata-ui/compare/ff9621ac71248abe070223f28a7b449d173383cb...f5bd24427727ba5e41cd725b00868e1f8ad2673f -->
 
 ## Behavior Changes
 - **ORC Fusion – Python model enforcement**: Build conformance now scans manifests for Python models, marks builds non-conformant with a clear log message, and enables beta Python models during recorder captures so tenants know exactly why FS can’t replay. <!-- https://github.com/dbt-labs/dbt-orc/compare/ef353c390e8f179a96dc18b2e6420b22928e7217...f950dc9cd1507d7c0ac22e4676f887255fc5b940 -->
