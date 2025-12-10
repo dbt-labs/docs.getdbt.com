@@ -61,5 +61,5 @@ Release notes are grouped by date for single-tenant environments.
 - dbt platform – Lineage and Command pane stability
   - Reliability improved by aligning with updated IDE and VS Code command APIs; eliminates intermittent skips.
 
-### Behavior Changes
+### Behavior changes
 - dbt platform – dbt Core “versionless” renamed to “latest” so it's consistent and clear across tenants.
