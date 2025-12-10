@@ -29,7 +29,7 @@ Use the `--select` argument to limit the nodes included within `catalog.json`. W
 dbt docs generate --select +orders
 ```
 
-Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above.
+Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above. Note that dbt still runs certain special macros (like `generate_schema_name`) [during parsing](/reference/global-configs/parsing), even when compilation is skipped.
 
 **Example**:
 

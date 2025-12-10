@@ -43,32 +43,32 @@ Note that we have removed some deprecated features and introduced more rigorous 
 - To learn about the <Term id="lsp"/> features supported across the <Constant name="dbt_platform"/>, refer to [About dbt LSP](/docs/about-dbt-lsp).
 - To stay up-to-date on the latest features and capabilities, check out the [Fusion diaries](https://github.com/dbt-labs/dbt-fusion/discussions).
 
-If you're not sure what features are available, check out the following table. 
+Some features need you to configure [`static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) in order to work. If you're not sure what features are available, check out the following table.  
 
-> ✅ = Available | 🟡 = Partial / at compile-time only | ❌ = Not available | Coming soon = Not yet available
+> ✅ = Available | 🟡 = Partial/at compile-time only | ❌ = Not available | Coming soon = Not yet available
 
-| **Category / Capability** | **dbt Core**<br /><small>(self-hosted)</small> | **Fusion CLI**<br/><small>(self-hosted)</small> | **VS Code <br />+ Fusion** | **<Constant name="dbt_platform" />*** |
-|:---------------------------|:--------------------:|:--------------------:|:------------------:|:----------------------:|
-| **Engine performance** |  |  |  |  |
-| SQL compilation | ✅ | ✅ | ✅ | ✅ |
-| SQL compilation and parsing (SQL understanding) | ❌ | ✅ | ✅ | ✅ |
-| Uses the <Constant name="fusion_engine"/> | ❌ <br /><small>(Built on Python)</small> | ✅ | ✅ | ✅ |
-| Up to 30x faster parse / compile | ❌ | ✅ | ✅ | ✅ |
-| Incremental compilation | ❌ | ❌ | ✅ | ✅ |
-| **Editor and development experience** |  |  |  |  |
-| IntelliSense / autocomplete / hover info | ❌ | ❌ | ✅ | ✅ |
-| Inline errors (on save / in editor) | ❌ | 🟡 | ✅ | ✅ |
-| Live CTE previews / compiled SQL view | ❌ | ❌ | ✅ | ✅ |
-| Refactoring tools (rename model / column) | ❌ | ❌ | ✅ | Coming soon |
-| Go-to definition / references | ❌ | ❌ | ✅ | Coming soon |
-| Column-level lineage (in editor) | ❌ | ❌ | ✅ | Coming soon |
-| Developer compare changes | ❌ | ❌  | Coming soon | Coming soon |
-| **Platform and governance** |  |  |  |  |
-| Advanced CI compare changes | ❌ | ❌  | ✅ | ✅ |
-| dbt Mesh | ❌ | ❌  | ✅ | ✅ |
-| State-aware orchestration (SAO) | ❌ | ❌ | ❌ | ✅ |
-| Governance (PII / PHI tracking) | ❌ | ❌ | ❌ | Coming soon |
-| CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | ❌ | Coming soon |
+| **Category/Capability** | **dbt Core**<br /><small>(self-hosted)</small> | **Fusion CLI**<br/><small>(self-hosted)</small> | **VS Code <br />+ Fusion** | **<Constant name="dbt_platform" />*** | **Requires <br />`static_analysis`** |
+|:--------------|:--------------:|:---------------:|:-------------:|:-------------:|:--------------:|
+| **Engine performance** |  |  |  |  |  |
+| SQL rendering | ✅ | ✅ | ✅ | ✅ | ❌ |
+| SQL parsing and compilation (SQL understanding) | ❌ | ✅ | ✅ | ✅ | ✅ |
+| Uses the <Constant name="fusion_engine"/> | ❌ <br /><small>(Built on Python)</small> | ✅ | ✅ | ✅ | ❌ |
+| Up to 30x faster parse/compile | ❌ | ✅ | ✅ | ✅ | ❌ |
+| **Editor and development experience** |  |  |  |  |  |
+| IntelliSense/autocomplete/hover info | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Inline errors (on save/in editor) | ❌ | 🟡 | ✅ | ✅ | ✅ |
+| Live CTE previews/compiled SQL view | ❌ | ❌ | ✅ | ✅ | 🟡 <br /><small>(Live CTE previews only)</small> |
+| Refactoring tools (rename model/column) | ❌ | ❌ | ✅ | Coming soon | 🟡 <br /><small>(Column refactoring only)</small> |
+| Go-to definition/references/macro | ❌ | ❌ | ✅ | Coming soon | 🟡 <br /><small>(Column go-to definition only)</small> |
+| Column-level lineage (in editor) | ❌ | ❌ | ✅ | Coming soon | ✅ |
+| Developer compare changes | ❌ | ❌  | Coming soon | Coming soon | ❌ |
+| **Platform and governance** |  |  |  |  |  |
+| Advanced CI compare changes | ❌ | ❌  | ✅ | ✅ | ❌ |
+| dbt Mesh | ❌ | ❌  | ✅ | ✅ | ❌ |
+| Efficient testing | ❌ | ❌ | ❌ | ✅ | ✅ |
+| State-aware orchestration (SAO) | ❌ | ❌ | ❌ | ✅ | ❌ |
+| Governance (PII/PHI tracking) | ❌ | ❌ | ❌ | Coming soon | ✅ |
+| CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | ❌ | Coming soon | ✅ |
 
 *Support for other <Constant name="dbt_platform" /> tools, like <Constant name="semantic_layer" /> and <Constant name="explorer" />, is coming soon.
 
@@ -100,12 +100,13 @@ import FusionFeatures from '/snippets/_fusion-missing-features.md';
 
 <FusionFeatures />
 
-import AboutFusion from '/snippets/_about-fusion.md';
-
-<AboutFusion />
-
-### Package support
+## Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionPackages />
+
+import AboutFusion from '/snippets/_about-fusion.md';
+
+<AboutFusion />
+

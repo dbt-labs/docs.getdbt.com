@@ -29,7 +29,7 @@ You must resolve deprecations while your projects are on a <Constant name="core"
 
 ### 3. Validate and upgrade your dbt packages
 
-The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_project_evaluator`) are already compatible with <Constant name="fusion" />, as are a large number of external and community packages. We list many known supported packages [here](https://docs.getdbt.com/docs/fusion/supported-features#package-support), but more exist. 
+The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_project_evaluator`) are already compatible with <Constant name="fusion" />, as are a large number of external and community packages. Review [the dbt package hub](https://hub.getdbt.com) to see verified <Constant name="fusion" />-compatible packages by checking that the `require-dbt-version` configuration includes `2.0.0` or higher. Refer to [package support](/docs/fusion/supported-features#package-support) for more information.
 
 - [ ] Make sure that all of your packages are upgraded to the most recent version, many of which contain enhancements to support <Constant name="fusion" />. 
 - [ ] Check package repositories to make sure they're compatible with <Constant name="fusion" />. If a package you use is not yet compatible, we recommend opening an issue with the maintainer, making the contribution yourself, or removing the package temporarily before you upgrade.
