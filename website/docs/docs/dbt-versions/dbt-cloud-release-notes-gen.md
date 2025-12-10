@@ -23,7 +23,6 @@ Release notes are grouped by date for single-tenant environments.
 - **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, MCP SQL/Text-to-SQL tools now derive tenant tokens from `dbt-jwt-auth`, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind LaunchDarkly for approved tenants. <!-- ✅ reviewed by mirna https://github.com/dbt-labs/ai-codegen-api/compare/3a63caa3608227c4f4f790767f2da6b0e161b3ce...53dd582d636b4ac6ed3830f0fa0277624e1279d8 -->
 - **dbt platform
   – **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster. <!-- https://github.com/dbt-labs/cloud-ui/compare/bd5b51b3325707f35aa16a2b1db44371ac26d9fb...2717141a98fa3d56a1d08192798d43074d4f6ea3 -->
-  – **Sign-in resilience**: Regional account switching reuses PKCE params stored with a 10‑minute TTL, reducing OAuth retries for VS Code and cross-region redirects. <!-- https://github.com/dbt-labs/cloud-ui/compare/bd5b51b3325707f35aa16a2b1db44371ac26d9fb...2717141a98fa3d56a1d08192798d43074d4f6ea3 -->
   - **Collaboration & notifications**: Slack Copilot mentions now run through hardened workers with CSV attachments and structured logging, while webhook channels accept very long URLs, gracefully handle warning-only subscriptions, and scrub corrupted job IDs. <!-- https://github.com/dbt-labs/dbt-cloud/compare/de23dc27acd4f236b182d115daae2c852b80a29b...1c771b16ebbb932158400a5e81ccf9cd04979e7 -->
   - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync. <!-- https://github.com/dbt-labs/dbt-cloud/compare/de23dc27acd4f236b182d115daae2c852b80a29b...1c771b16ebbb932158400a5e81ccf9cd04979e7 -->
 - **dbt CLI server – Internal enhancements**: Improved stability and performance for large projects. <!-- ✅ Reviewed by jp-dbt Tues Dec 9  https://github.com/dbt-labs/dbt-cloud-cli-server/commit/871e280694087e21ea3d5a7ca84d6805e6799450 -->
@@ -36,7 +35,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Behavior changes
 - **Insights UI – Download lockdown**: Chart PNG/CSV download buttons disappear automatically when the `ninja-498-disable-download` flag is on, keeping data-egress restrictions intact for regulated tenants. <!-- https://github.com/dbt-labs/insights-ui/compare/2dc1826aa16f2c30168b541dc4fa435274911d27...af7811ca2deab05584a63e27419c63e0bfb16b97 -->
-
 
 ## December 3, 2025
 
