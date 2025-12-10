@@ -20,19 +20,18 @@ Release notes are grouped by date for single-tenant environments.
 ## December 10, 2025
 
 ### Enhancements
-- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, MCP SQL/Text-to-SQL tools now derive tenant tokens from `dbt-jwt-auth`, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind LaunchDarkly for approved tenants. <!-- ✅ reviewed by mirna https://github.com/dbt-labs/ai-codegen-api/compare/3a63caa3608227c4f4f790767f2da6b0e161b3ce...53dd582d636b4ac6ed3830f0fa0277624e1279d8 -->
+- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, MCP SQL/Text-to-SQL tools now derive tenant tokens from `dbt-jwt-auth`, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind LaunchDarkly for approved tenants. 
 - **dbt platform
-  – **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster. <!-- https://github.com/dbt-labs/cloud-ui/compare/bd5b51b3325707f35aa16a2b1db44371ac26d9fb...2717141a98fa3d56a1d08192798d43074d4f6ea3 -->
-  - **Collaboration & notifications**: Slack Copilot mentions now run through hardened workers with CSV attachments and structured logging, while webhook channels accept very long URLs, gracefully handle warning-only subscriptions, and scrub corrupted job IDs. <!-- https://github.com/dbt-labs/dbt-cloud/compare/de23dc27acd4f236b182d115daae2c852b80a29b...1c771b16ebbb932158400a5e81ccf9cd04979e7 -->
-  - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync. <!-- https://github.com/dbt-labs/dbt-cloud/compare/de23dc27acd4f236b182d115daae2c852b80a29b...1c771b16ebbb932158400a5e81ccf9cd04979e7 -->
-- **dbt CLI server – Internal enhancements**: Improved stability and performance for large projects. <!-- ✅ Reviewed by jp-dbt Tues Dec 9  https://github.com/dbt-labs/dbt-cloud-cli-server/commit/871e280694087e21ea3d5a7ca84d6805e6799450 -->
-- **Studio - Fusion logging improvements**: On Fusion, node start and end times will now properly be displayed in command output. <!--  ✅  Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/ide-server/commit/239863005992ff39687cc337e2f113ba9c0bb512 -->
-- **IDE UI – AI entry points & run controls**: Copilot Chat automatically appears anywhere AI entitlements exist, preview runs auto-cancel when nodes change, and keyboard shortcuts respect native keymaps with clear UI labels. <!-- https://github.com/dbt-labs/ide-ui/compare/0b9028083dd7ca9da858878755735a747782fa94...856b80ea1a37649ea257ca9d3352e44353f9fe88 -->
-- **Studio – Editing UX**: Studio's tab view, console pane, and command drawer have been redesigned to enhance efficiency and multitasking.<!--  ✅  Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/studio/compare/7eb6e566274fe08bf1cf7dc30e8c0ca2dd6571e8...11ed3b092efe17a745062af5a100a25077182f08 -->
+  – **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster.
+  - **Collaboration & notifications**: Slack Copilot mentions now run through hardened workers with CSV attachments and structured logging, while webhook channels accept very long URLs, gracefully handle warning-only subscriptions, and scrub corrupted job IDs.
+  - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync. 
+- **dbt CLI server – Internal enhancements**: Improved stability and performance for large projects. 
+- **Studio - Fusion logging improvements**: On Fusion, node start and end times will now properly be displayed in command output. 
+- **IDE UI – AI entry points & run controls**: Copilot Chat automatically appears anywhere AI entitlements exist, preview runs auto-cancel when nodes change, and keyboard shortcuts respect native keymaps with clear UI labels. 
+- **Studio – Editing UX**: Studio's tab view, console pane, and command drawer have been redesigned to enhance efficiency and multitasking.
 
 ### Fixes
-- **IDE server – VCS errors**: Branch creation now returns explicit feedback for bad branch names/SHAs and detects unauthorized Git errors earlier, making automation failures actionable. <!--  ✅ reviewed by mirna ✅ Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/ide-server/commit/239863005992ff39687cc337e2f113ba9c0bb512 -->
-
+- **IDE server – VCS errors**: Branch creation now returns explicit feedback for bad branch names/SHAs and detects unauthorized Git errors earlier, making automation failures actionable. 
 ## December 3, 2025
 
 ### New
