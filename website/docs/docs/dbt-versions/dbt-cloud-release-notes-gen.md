@@ -37,7 +37,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Fixes
 - **IDE server – VCS errors**: Branch creation now returns explicit feedback for bad branch names/SHAs and detects unauthorized Git errors earlier, making automation failures actionable. <!--  ✅ reviewed by mirna ✅ Reviewed by jp-dbt Tues Dec 9 https://github.com/dbt-labs/ide-server/commit/239863005992ff39687cc337e2f113ba9c0bb512 -->
 
-### Behavior Changes
+### Behavior changes
 - **Insights UI – Download lockdown**: Chart PNG/CSV download buttons disappear automatically when the `ninja-498-disable-download` flag is on, keeping data-egress restrictions intact for regulated tenants. <!-- https://github.com/dbt-labs/insights-ui/compare/2dc1826aa16f2c30168b541dc4fa435274911d27...af7811ca2deab05584a63e27419c63e0bfb16b97 -->
 
 
