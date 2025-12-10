@@ -54,7 +54,6 @@ Release notes are grouped by date for single-tenant environments.
 - dbt platform – Code Quality tab improvements
   - Clearer lint/format actions (SQLFluff, Prettier), better empty states, visible Config button when applicable, and simplified logs retrieval.
   - Applies to SQL, JSON, YAML, and Markdown workflows.
-
 - dbt platform – Editor experience
   - Upgraded editor for stability, improved container sizing/overflow, “Save” overlay only appears when tabs are open, and minor action‑bar refinements.
 
