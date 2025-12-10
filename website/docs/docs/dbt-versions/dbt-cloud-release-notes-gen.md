@@ -17,7 +17,6 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
-
 ## December 10, 2025
 
 ## New
@@ -41,3 +40,27 @@ Release notes are grouped by date for single-tenant environments.
 ## Behavior Changes
 - **Insights UI – Download lockdown**: Chart PNG/CSV download buttons disappear automatically when the `ninja-498-disable-download` flag is on, keeping data-egress restrictions intact for regulated tenants. <!-- https://github.com/dbt-labs/insights-ui/compare/2dc1826aa16f2c30168b541dc4fa435274911d27...af7811ca2deab05584a63e27419c63e0bfb16b97 -->
 
+
+## December 3, 2025
+
+### New
+- dbt platform – Command pane: Autofix deprecation warnings
+  - When deprecations are detected, you now see “Autofix deprecation warnings”
+ 
+- dbt platform – Autofix Packages detailed results
+  - After running “Autofix packages,” you see a results panel with upgraded packages (with links), packages left unchanged and why, and quick access to `packages.yml` to help assess Fusion readiness and next steps.
+
+### Enhancements
+- dbt platform – Code Quality tab improvements
+  - Clearer lint/format actions (SQLFluff, Prettier), better empty states, visible Config button when applicable, and simplified logs retrieval.
+  - Applies to SQL, JSON, YAML, and Markdown workflows.
+
+- dbt platform – Editor experience
+  - Upgraded editor for stability, improved container sizing/overflow, “Save” overlay only appears when tabs are open, and minor action‑bar refinements.
+
+### Fixes
+- dbt platform – Lineage and Command pane stability
+  - Reliability improved by aligning with updated IDE and VS Code command APIs; eliminates intermittent skips.
+
+### Behavior Changes
+- dbt platform – dbt Core “versionless” renamed to “latest” so it's consistent and clear across tenants.
