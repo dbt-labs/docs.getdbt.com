@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 ### New
 
 - **dbt platform**
-  - **Autofix deprecation warnings**: When deprecations are detected, you now see "Autofix deprecation warnings"
+  - **Autofix deprecation warnings**: When deprecations are detected, you now see "Autofix deprecation warnings."
   - **Autofix Packages detailed results**: After running Autofix, you see a results panel with upgraded packages (with links), packages left unchanged and why, and quick access to `packages.yml` to help assess Fusion readiness and next steps.
 
 ### Enhancements
