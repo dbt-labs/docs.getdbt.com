@@ -21,11 +21,11 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Enhancements
 
-- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, MCP SQL/Text-to-SQL tools now derive tenant tokens from `dbt-jwt-auth`, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind feature flag for approved tenants.
+- **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind feature flag for approved tenants.
   
 - **dbt platform**
   - **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster.
-  - **Collaboration & notifications**: Slack Copilot mentions now run through hardened workers with CSV attachments and structured logging, while webhook channels accept very long URLs, gracefully handle warning-only subscriptions, and scrub corrupted job IDs.
+  - **Collaboration & notifications**: Slack Copilot mentions are now more reliable, with hardened workers, support for CSV attachments, and improved logging. Webhook channels now accept longer URLs, handle “warning-only” subscriptions correctly, and automatically clean up corrupted job IDs.
   - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync.
 
 - **dbt CLI server**: Improved stability and performance for large projects.
