@@ -273,6 +273,39 @@ After configs are nested:
 {% set my_custom_config = config.get('meta').custom_config_key %}
 ```
 
+### ConfigMetaFallbackDeprecation
+
+dbt has deprecated the fallback behavior where `config.get()` and `config.require()` check `config.meta` when a key is not found at the top level. This change prevents collisions between custom configurations and official dbt configurations.
+
+Example:
+
+<File name='CLI'>
+```bash
+15:30:22  [WARNING]: Deprecated functionality
+Custom config found under "meta" using config.get("my_key").
+Please replace this with config.meta_get("my_key") to avoid collisions with
+configs introduced by dbt.
+```
+</File>
+
+#### ConfigMetaFallbackDeprecation warning resolution
+
+Replace calls to `config.get()` and `config.require()` that access custom configurations with the new `config.meta_get()` and `config.meta_require()` methods.
+
+**Before:**
+```jinja
+{% set my_custom_config = config.get('custom_key') %}
+{% set required_config = config.require('required_key') %}
+```
+
+**After:**
+```jinja
+{% set my_custom_config = config.meta_get('custom_key') %}
+{% set required_config = config.meta_require('required_key') %}
+```
+
+For more information, see the [config variable documentation](/reference/dbt-jinja-functions/config#configmeta_get).
+
 ### CustomOutputPathInSourceFreshnessDeprecation
 
 dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
