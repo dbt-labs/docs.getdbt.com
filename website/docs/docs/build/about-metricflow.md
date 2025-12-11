@@ -29,8 +29,9 @@ MetricFlow is a SQL query generation tool designed to streamline metric creation
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
-
-**Note** &mdash; MetricFlow doesn't support dbt [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
+:::note
+MetricFlow doesn't support dbt [builtin functions or packages](/reference/dbt-jinja-functions/builtins) at this time, however, support is planned for the future.
+:::
 
 MetricFlow abides by these principles:
 

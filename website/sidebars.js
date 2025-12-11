@@ -1450,6 +1450,7 @@ const sidebarSettings = {
               },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/bigquery-changes",
                 "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
                 "reference/global-configs/snowflake-changes",
