@@ -94,12 +94,12 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 14. Select your application and then select **API permissions**.
 15. Click **+Add a permission** and add the permissions shown below.
 
-| API Name | Type | Permission |
-| -------- | ---- | ---------- |
-| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` |
-| Microsoft Graph | Delegated | `User.Read` |
+| API Name | Type | Permission | Required? |
+| --- | --- | --- | --- |
+| Microsoft Graph | Delegated | `User.Read` | Yes |
+| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 100 groups |
 
-`User.Read` is the only strictly required permission, but configuring `Directory.Accessasuser.all` prevents users from receiving extra prompts for consent when they log in. It lets <Constant name="cloud" /> see what groups the user belongs to and isn't used for anything else.
+The default scope only requires `User.Read`. If you assign a user to more than 100 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`.  
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 

@@ -273,6 +273,41 @@ After configs are nested:
 {% set my_custom_config = config.get('meta').custom_config_key %}
 ```
 
+### ConfigMetaFallbackDeprecation
+
+When dbt required users to move custom configurations into the `meta` dictionary, some projects began erroring because dbt reserved top-level configs for official framework configuration. To unblock these projects, dbt added a temporary fallback where `config.get()` and `config.require()` also check `config.meta` when a key wasn't found.
+
+dbt has deprecated this fallback behavior. To prevent collisions between your custom configurations and configs that dbt intends to introduce in the future, migrate to the new `config.meta_get()` and `config.meta_require()` methods.
+
+Example:
+
+<File name='CLI'>
+```bash
+15:30:22  [WARNING]: Deprecated functionality
+Custom config found under "meta" using config.get("my_key").
+Please replace this with config.meta_get("my_key") to avoid collisions with
+configs introduced by dbt.
+```
+</File>
+
+#### ConfigMetaFallbackDeprecation warning resolution
+
+Replace calls to `config.get()` and `config.require()` that access custom configurations with the new `config.meta_get()` and `config.meta_require()` methods.
+
+**Before:**
+```jinja
+{% set my_custom_config = config.get('custom_key') %}
+{% set required_config = config.require('required_key') %}
+```
+
+**After:**
+```jinja
+{% set my_custom_config = config.meta_get('custom_key') %}
+{% set required_config = config.meta_require('required_key') %}
+```
+
+For more information, see the [config variable documentation](/reference/dbt-jinja-functions/config#configmeta_get).
+
 ### CustomOutputPathInSourceFreshnessDeprecation
 
 dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
@@ -335,6 +370,16 @@ config:
 ```
 
 </File>
+
+### DuplicateNameDistinctNodeTypesDeprecation
+
+dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `False`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
+
+When the `require_unique_project_resource_names` flag is set to `True`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
+
+#### DuplicateNameDistinctNodeTypesDeprecation warning resolution
+
+Rename one of the conflicting resources to ensure all names are unique.
 
 ### DuplicateYAMLKeysDeprecation
 

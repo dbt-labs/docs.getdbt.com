@@ -1,4 +1,8 @@
 ---
+aggregate:
+  displayText: aggregate
+  hoverSnippet: A UDF type that returns a single value per group, aggregating several rows.
+
 cte: 
   displayText: CTE
   hoverSnippet: A Common Table Expression (CTE) is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other.
@@ -122,6 +126,10 @@ scalar-value:
 sql-expression:
   displayText: SQL expression
   hoverSnippet: A SQL expression is a combination of columns, values, operators, and functions that evaluates to a single value.
+
+sql-rendering:
+  displayText: SQL rendering  
+  hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
 
 subquery:
   displayText: subquery

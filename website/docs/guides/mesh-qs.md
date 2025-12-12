@@ -113,7 +113,7 @@ To set a production environment:
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="cloud" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+<Constant name="cloud" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 

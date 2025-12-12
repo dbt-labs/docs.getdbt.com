@@ -24,6 +24,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 | [semantic models](/docs/build/semantic-models) | Semantic models define the foundational data relationships in [MetricFlow](/docs/build/about-metricflow) and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), enabling you to query metrics using a semantic graph. |
 | [saved queries](/docs/build/saved-queries) | Saved queries organize reusable queries by grouping metrics, dimensions, and filters into nodes visible in the dbt DAG. |
+| [user-defined functions](/docs/build/udfs) | User-defined functions (UDFs) let you create reusable custom functions in your warehouse, shareable across dbt, BI tools, data science workflows, and more. |
 
 When building out the structure of your project, you should consider these impacts on your organization's workflow:
 

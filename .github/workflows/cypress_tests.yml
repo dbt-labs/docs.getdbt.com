@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
 
       - name: install node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # actions/setup-node@v3
         with:
           node-version: '16.13.1'
 
@@ -28,7 +28,7 @@ jobs:
           echo "PR_NUMBER=${PR_NUMBER}" >> ${GITHUB_ENV}
 
       - name: run cypress e2e 
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@248bde77443c376edc45906ede03a1aba9da0462 # cypress-io/github-action@v5
         with:
           command: npx cypress run
           browser: chrome
@@ -40,7 +40,7 @@ jobs:
           CYPRESS_BASE_URL: https://deploy-preview-${{ env.PR_NUMBER }}--docs-getdbt-com.netlify.app
 
       - name: Screenshot artifact upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-screenshots

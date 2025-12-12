@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "✨ Live virtual event -- Experience the dbt Fusion engine with Tristan Handy and Elias DeFaria on October 28th!",
+        "Join our virtual event on Dec 16 & 17: Delivering reliable AI with the dbt Semantic Layer and dbt MCP Server",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/speed-simplicity-cost-savings-experience-the-dbt-fusion-engine",
+      "https://www.getdbt.com/resources/webinars/delivering-reliable-ai-with-the-dbt-semantic-layer-and-dbt-mcp-server",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",

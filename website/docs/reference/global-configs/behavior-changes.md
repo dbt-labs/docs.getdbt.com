@@ -64,7 +64,9 @@ flags:
   require_batched_execution_for_custom_microbatch_strategy: False
   require_nested_cumulative_type_params: False
   validate_macro_args: False
+  require_all_warnings_handled_by_warn_error: False
   require_generic_test_arguments_property: True
+  require_unique_project_resource_names: False
 ```
 
 </File>
@@ -84,7 +86,9 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              |
 | [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
+| [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
+| [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -97,6 +101,7 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD                        |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | 
 | [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD |
+| [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD |
 
 When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
@@ -216,7 +221,7 @@ If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="clo
 nest those values under `type_params.cumulative_type_params.window` and
 `type_params.cumulative_type_params.grain_to_date`. See documentation on
 behavior changes:
-https://docs.getdbt.com/reference/global-configs/behavior-changes.
+https://docs.getdbt.com/reference/global-configs/behavior-changes
 
 ```
 
@@ -269,6 +274,35 @@ When you set the `validate_macro_args` flag to `True`, dbt will:
 - If no arguments are documented in the YAML, infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json)
 
 
+### Warn-error handler for all warnings
+
+By default, the `require_all_warnings_handled_by_warn_error` flag is set to `False`.
+
+When you set `require_all_warnings_handled_by_warn_error` to `True`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `False`, only some warnings are processed by the handler while others may bypass it.
+
+Note that enabling this for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
+
+<Expandable alt_header="Recommended steps to enable the flag">
+
+We recommend the following rollout plan when setting the `require_all_warnings_handled_by_warn_error` flag to `True`:
+
+1. Run a full build without partial parsing to surface parse-time warnings, and confirm it finishes successfully:
+
+   ```bash
+   dbt build --no-partial-parse
+   ```
+
+   - Some warnings are only emitted at parse time.
+   - If the build fails because warnings are already treated as errors (via `--warn-error` or `--warn-error-options`), fix those first and re-run.
+2. Review the logs:
+   - If you have any warnings at this point, it means they weren't handled by `--warn-error`/`--warn-error-options`. Continue to the next step.
+   - If there are no warnings, enable the flag in all environments and that's it!
+3. Enable `require_all_warnings_handled_by_warn_error` in your development environment and fix any warnings that now surface as errors.
+4. Enable the flag in your CI environment (if you have one) and ensure builds pass.
+5. Enable the flag in your production environment.
+
+</Expandable>
+
 ### Generic test arguments property
 
 dbt supports parsing key-value arguments that are inputs to generic tests when specified under the `arguments` property. In the past, dbt didn't support a way to clearly disambiguate between properties that were inputs to generic tests and framework configurations, and only accepted arguments as top-level properties.
@@ -313,3 +347,30 @@ models:
 When you set the `require_generic_test_arguments_property` flag to `True`, dbt will:
 - Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
 - Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.
+
+### Unique project resource names
+
+The `require_unique_project_resource_names` flag enforces uniqueness of resource names within the same package. dbt resources such as models, seeds, snapshots, analyses, tests, and functions share a common namespace. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
+
+The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
+
+For example, if your project contains a model and a seed named `sales`:
+
+```
+models/sales.sql
+seeds/sales.csv
+```
+
+And a model contains:
+
+```sql
+select * from {{ ref('sales') }}
+```
+
+When the flag is set to `True`, dbt will raise:
+
+```
+DuplicateResourceNameError: Found resources with the same name 'sales' in package 'project': 'model.project.sales' and 'seed.project.sales'. Please update one of the resources to have a unique name.
+```
+
+When this error is raised, you should rename one of the resources, or refactor the project structure to avoid name conflicts.

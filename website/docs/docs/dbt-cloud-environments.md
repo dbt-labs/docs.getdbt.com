@@ -5,7 +5,7 @@ description: "Learn about dbt's development environment to execute your project 
 pagination_next: "docs/cloud/migration"
 ---
 
-An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
+An environment determines how <Constant name="cloud" /> will execute your project in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
 
 Critically, in order to execute dbt, environments define three variables:
 
@@ -37,9 +37,9 @@ To create a new <Constant name="cloud" /> development environment:
 
 ### Set developer credentials
 
-To use the dbt <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
+To use the dbt <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, each developer will need to set up [personal development credentials](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
 
 ## Deployment environment
 

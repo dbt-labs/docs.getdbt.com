@@ -1,4 +1,4 @@
-Generate documentation, tests, metrics, and semantic models [resources](/docs/build/projects) with the click-of-a-button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) using dbt Copilot, saving you time. To access and use this AI feature:
+Generate documentation, tests, metrics, and semantic models [resources](/docs/build/projects) with the click-of-a-button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) using dbt Copilot, saving you time. To access and use this AI feature:
 
 1. Navigate to the <Constant name="cloud_ide" /> and select a SQL model file under the **File Explorer**.
 2. In the **Console** section (under the **File Editor**), click **dbt Copilot** to view the available AI options.

@@ -6,9 +6,7 @@ intro_text: "The dbt_project.yml file is a required file for all dbt projects. I
 Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project. It works as follows:
 
 - dbt uses [YAML](https://yaml.org/) in a few different places. If you're new to YAML, it would be worth learning how arrays, dictionaries, and strings are represented.
-
 - By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
-
 - Specify your <Constant name="cloud" /> project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your <Constant name="cloud" /> project URL: For example, in `https://YOUR_ACCESS_URL/11/projects/123456`, the project ID is `123456`.
 
 
@@ -50,8 +48,9 @@ The following example is a list of all available configurations in the `dbt_proj
   [<global-configs>](/reference/global-configs/project-flags)
 
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
-  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
-  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
+  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cli): project_id # Required
+  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cli): environment_id # Optional
+  [account-host](/docs/cloud/about-cloud/access-regions-ip-addresses): account-host # Defaults to 'cloud.getdbt.com'; Required if use a different Access URL
 
 [exposures](/docs/build/exposures):
   +[enabled](/reference/resource-configs/enabled): true | false

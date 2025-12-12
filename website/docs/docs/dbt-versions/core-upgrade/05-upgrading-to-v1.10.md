@@ -143,6 +143,7 @@ dbt Core v1.10 introduces new flags for [managing changes to legacy behaviors](
 You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation). If the flag is set to `True`, dbt will raise a warning if the argument `type` names you've added in your macro YAMLs don't match the argument names in your macro or if the argument types aren't valid according to the [supported types](/reference/resource-properties/arguments#supported-types).
+- (Introduced, disabled by default) [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-changes#warn-error-handler-for-all-warnings). If this flag is set to `True`, all warnings raised during a run will be routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `False` (which is the current default), only some warnings are processed by the handler &mdash; others may bypass it. Turning it on for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause build failures on warnings that were previously ignored to fail so we recommend enabling it gradually, one a project at a time.
 
 ### Deprecation warnings
 
@@ -310,6 +311,17 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
       silence: # To silence or ignore warnings
         - NoNodesForSelectionCriteria
   ```
+
+## Adapter-specific features and functionalities
+
+### Snowflake
+- You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
+- The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
+
+### BigQuery
+
+- `dbt-bigquery` cancels BigQuery jobs that exceed their configured timeout by sending a cancellation request. If the request succeeds, dbt stops the job. If the request fails, the BigQuery job may keep running in the background until it finishes or you cancel it manually. For more information, see [Timeout and retries](/docs/core/connect-data-platform/bigquery-setup#timeouts-and-retries).
+
 
 ## Quick hits
 

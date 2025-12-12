@@ -90,11 +90,11 @@ import Incrementalpredicates from '/snippets/_incremental-predicates.md';
 
 <Incrementalpredicates />
 
-### Defining a unique key (optional)
+### Defining a unique key
 
-A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+Defining the optional [`unique_key` parameter](/reference/resource-configs/unique_key) enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
 
-Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
+If you don't specify a `unique_key`, most adapters will result in `append`-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that defines the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
@@ -166,7 +166,7 @@ To force dbt to rebuild the entire incremental model from scratch, use the `--fu
 $ dbt run --full-refresh --select my_incremental_model+
 ```
 
-It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
+The trailing `+` in the command above will also run all downstream models that depend on `my_incremental_model`. If any of those downstream dependencies are also incremental models, they will be fully refreshed as well. 
 
 You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 

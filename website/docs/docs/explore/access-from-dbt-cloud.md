@@ -9,7 +9,7 @@ Access <Constant name="explorer" /> from other features and products inside <Con
 This page explains how to access <Constant name="explorer" /> from various <Constant name="cloud" /> features, including the <Constant name="cloud_ide" /> and jobs. While the primary way to navigate to <Constant name="explorer" /> is through the **Explore** link in the navigation, you can also access it from other <Constant name="cloud" /> features.
 
 ### Studio IDE 
-You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to <Constant name="explorer" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="cloud_ide" /> and <Constant name="explorer" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
+You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to <Constant name="explorer" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="cloud_ide" /> and <Constant name="explorer" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
 
 #### Access Catalog from the IDE
 - In your model, seed, or snapshot file, click the **View in <Constant name="explorer" />** icon to the right of your file breadcrumb (under the file name tab). 

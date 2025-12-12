@@ -9,7 +9,7 @@ image: /img/docs/extension/extension-features.png
 
 # dbt VS Code extension features <Lifecycle status="preview" />
 
-The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (LSP) that enables enhanced workflows, faster development, and easy navigation.
+The dbt VS Code extension is backed by the speed and power of the dbt Fusion engine and a dynamic Language Server Protocol (<Term id="lsp"/>) that enables enhanced workflows, faster development, and easy navigation.
 
 The following extension features help you get more done, fast:
 
@@ -21,6 +21,7 @@ The following extension features help you get more done, fast:
 - **[Hover insights](#hover-insights):** See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
 - **[Live CTE previews](#live-preview-for-models-and-ctes):** Preview a CTE’s output directly from inside your dbt model for faster validation and debugging.
 - **[Rich lineage in context](#rich-lineage-in-context):** See lineage at the column or table level as you develop with no context switching or breaking the flow.
+  - If you use Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
 - **[View compiled code](#view-compiled-code):** Get a live view of the SQL code your models will build alongside your dbt code.
 - **[Build flexibly](#build-flexibly):** Use the command palette to build models with complex selectors.
  
@@ -53,7 +54,7 @@ Parse even the largest projects up to 30x faster than with dbt Core.
 Autocomplete SQL functions, model names, macros and more.
 
 Usage:
-- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call.
+- Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call. Autocomplete doesn’t trigger when replacing existing model names inside parentheses.
 - Autocomplete dialect-specific function names.
 
 <Lightbox src="/img/docs/extension/vsce-intellisense.gif" width="100%" title="Example of the VS Code extension IntelliSense"/>
@@ -121,6 +122,11 @@ Usage:
 ### Rich lineage in context
 
 See lineage at the column or table level as you develop — no context switching or breaking flow.
+
+:::tip Using the lineage tab in Cursor
+
+If you're using the dbt VS Code extension in Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
+:::
 
 View table lineage:
 - Open the **Lineage** tab in your editor. It will reflect table lineage focused on the currently-open file.

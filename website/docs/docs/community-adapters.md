@@ -7,13 +7,13 @@ Community adapters are adapter plugins contributed and maintained by members of 
 
 | Data platforms (click to view setup guide) |||
 | ------------------------------------------ | -------------------------------- | ------------------------------------- |
-| [CrateDB](/docs/core/connect-data-platform/cratedb-setup) | [MaxCompute](/docs/core/connect-data-platform/maxcompute-setup) | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) |
-| [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup)  | [DuckDB](/docs/core/connect-data-platform/duckdb-setup) | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup) |
-|[Extrica](/docs/core/connect-data-platform/extrica-setup) | [Hive](/docs/core/connect-data-platform/hive-setup) | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup) |
-| [Impala](/docs/core/connect-data-platform/impala-setup) | [Infer](/docs/core/connect-data-platform/infer-setup) | [iomete](/docs/core/connect-data-platform/iomete-setup) |
-| [MindsDB](/docs/core/connect-data-platform/mindsdb-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup) | [RisingWave](/docs/core/connect-data-platform/risingwave-setup) |
-| [Rockset](/docs/core/connect-data-platform/rockset-setup) | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)| [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup) |
-| [SQLite](/docs/core/connect-data-platform/sqlite-setup) | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup)|
-| [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) | [Upsolver](/docs/core/connect-data-platform/upsolver-setup) | [Vertica](/docs/core/connect-data-platform/vertica-setup) |
-|  [Watsonx-Presto](/docs/core/connect-data-platform/watsonx-presto-setup) | [IBM watsonx.data - Spark](/docs/core/connect-data-platform/watsonx-spark-setup) | [Yellowbrick](/docs/core/connect-data-platform/yellowbrick-setup) |
-| [YDB](/docs/core/connect-data-platform/ydb-setup) |
+| [CrateDB](/docs/core/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) | [DeltaStream](/docs/core/connect-data-platform/deltastream-setup) |
+| [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup) | [DuckDB](/docs/core/connect-data-platform/duckdb-setup) | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup) |
+| [Extrica](/docs/core/connect-data-platform/extrica-setup) | [Hive](/docs/core/connect-data-platform/hive-setup) | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup) |
+| [IBM watsonx.data - Spark](/docs/core/connect-data-platform/watsonx-spark-setup) | [Impala](/docs/core/connect-data-platform/impala-setup) | [Infer](/docs/core/connect-data-platform/infer-setup) |
+| [iomete](/docs/core/connect-data-platform/iomete-setup) | [MaxCompute](/docs/core/connect-data-platform/maxcompute-setup) | [MindsDB](/docs/core/connect-data-platform/mindsdb-setup) |
+| [MySQL](/docs/core/connect-data-platform/mysql-setup) | [RisingWave](/docs/core/connect-data-platform/risingwave-setup) | [Rockset](/docs/core/connect-data-platform/rockset-setup) |
+| [SingleStore](/docs/core/connect-data-platform/singlestore-setup) | [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup) | [SQLite](/docs/core/connect-data-platform/sqlite-setup) |
+| [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup) | [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) |
+| [Upsolver](/docs/core/connect-data-platform/upsolver-setup) | [Vertica](/docs/core/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/core/connect-data-platform/watsonx-presto-setup) |
+| [Yellowbrick](/docs/core/connect-data-platform/yellowbrick-setup) | | |

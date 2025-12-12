@@ -1,6 +1,6 @@
 ---
 title: "Release tracks in dbt platform"
-sidebar_label: "dbt Release Tracks"
+sidebar_label: "About release tracks"
 description: "Learn how to get automatic upgrades to dbt in the dbt platform. Access new features and enhancements as soon as they become available."
 ---
 

@@ -5,7 +5,7 @@ pagination_prev: null
 ---
 You can run your dbt projects with [<Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features) or [<Constant name="core" />](https://github.com/dbt-labs/dbt-core):
 
-- **<Constant name="cloud" />**: A hosted application where you can develop directly from a web browser using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). It also natively supports developing using a command line interface, [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). Among other features, <Constant name="cloud" /> provides: 
+- **<Constant name="cloud" />**: A hosted application where you can develop directly from a web browser using the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio). It also natively supports developing using a command line interface, [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). Among other features, <Constant name="cloud" /> provides: 
 
   - Development environment to help you build, test, run, and [version control](/docs/cloud/git/git-version-control) your project faster.
   - Share your [dbt project's documentation](/docs/build/documentation) with your team.
@@ -32,6 +32,6 @@ For information on all dbt commands and their arguments (flags), see the [dbt co
 - [How we set up our computers for working on dbt projects](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243)
 - [Model selection syntax](/reference/node-selection/syntax)
 - [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)
-- [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#ide-features)
+- [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#ide-features)
 - [Does dbt offer extract and load functionality?](/faqs/Project/transformation-tool)
 - [Why does dbt compile need a data platform connection](/faqs/Warehouse/db-connection-dbt-compile)

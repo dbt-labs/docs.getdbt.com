@@ -13,11 +13,12 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/fusion/fusion" },
       items: [
         "docs/fusion/fusion",
-        "docs/fusion/fusion-availability",
         "docs/fusion/about-fusion",
+        "docs/fusion/fusion-availability",
+        "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/install-fusion",
+        "docs/fusion/get-started-fusion",
       ],
     },
     {
@@ -291,6 +292,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/spark-setup",
                 "docs/core/connect-data-platform/bigquery-setup",
                 "docs/core/connect-data-platform/databricks-setup",
+                "docs/core/connect-data-platform/deltastream-setup",
                 "docs/core/connect-data-platform/fabric-setup",
                 "docs/core/connect-data-platform/fabricspark-setup",
                 "docs/core/connect-data-platform/postgres-setup",
@@ -388,16 +390,16 @@ const sidebarSettings = {
           label: "dbt Studio IDE",
           link: {
             type: "doc",
-            id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+            id: "docs/cloud/studio-ide/develop-in-studio",
           },
           items: [
-            "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-ide/ide-user-interface",
-            "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-            "docs/cloud/dbt-cloud-ide/git-commit-signing",
-            "docs/cloud/dbt-cloud-ide/lint-format",
-            "docs/cloud/dbt-cloud-ide/autofix-deprecations",
-            "docs/cloud/dbt-cloud-ide/develop-copilot",
+            "docs/cloud/studio-ide/develop-in-studio",
+            "docs/cloud/studio-ide/ide-user-interface",
+            "docs/cloud/studio-ide/keyboard-shortcuts",
+            "docs/cloud/studio-ide/git-commit-signing",
+            "docs/cloud/studio-ide/lint-format",
+            "docs/cloud/studio-ide/autofix-deprecations",
+            "docs/cloud/studio-ide/develop-copilot",
           ],
         },
         {
@@ -886,15 +888,6 @@ const sidebarSettings = {
       ],
     },
     {
-      type: "category",
-      label: "Cost management",
-      link: {
-        type: "doc",
-        id: "docs/cloud/cost-management/cost-management",
-      },
-      items: ["docs/cloud/cost-management/cost-management"],
-    },
-    {
       type: 'html',
       value: 'Release information',
       className: 'sidebar-title',
@@ -902,8 +895,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Available dbt versions",
-      link: { type: "doc", id: "docs/dbt-versions/core" },
+      link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
+        "docs/dbt-versions/about-versions",
         "docs/dbt-versions/core",
         "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
@@ -911,11 +905,11 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "category",
-          label: "dbt Core upgrade guides",
+          label: "dbt version upgrade guides",
           link: {
             type: "generated-index",
             title: "Version upgrade guides",
-            description: "Learn what's new in the latest version of dbt Core.",
+            description: "Learn what's new in the latest version of dbt.",
             slug: "/docs/dbt-versions/core-upgrade",
           },
           items: [
@@ -1140,6 +1134,7 @@ const sidebarSettings = {
         "reference/resource-configs/bigquery-configs",
         "reference/resource-configs/clickhouse-configs",
         "reference/resource-configs/databricks-configs",
+        "reference/resource-configs/deltastream-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/duckdb-configs",
         "reference/resource-configs/fabric-configs",
@@ -1358,7 +1353,10 @@ const sidebarSettings = {
           items: [
             "reference/function-properties",
             "reference/function-configs",
-            "reference/resource-properties/type",
+            "reference/resource-configs/type",
+            "reference/resource-configs/volatility",
+            "reference/resource-configs/runtime-version",
+            "reference/resource-configs/entry-point",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
           ],
@@ -1452,6 +1450,7 @@ const sidebarSettings = {
               },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/bigquery-changes",
                 "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
                 "reference/global-configs/snowflake-changes",
@@ -1635,6 +1634,7 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-2-who-is-dbt-mesh-for",
             "best-practices/how-we-mesh/mesh-3-structures",
             "best-practices/how-we-mesh/mesh-4-implementation",
+            "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
             "best-practices/how-we-mesh/mesh-5-faqs",
           ],
         },

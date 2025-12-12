@@ -5,6 +5,8 @@ sidebar_label: "BigQuery Iceberg support"
 description: Understand BigQuery support for Apache Iceberg.
 ---
 
+import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
+
 dbt supports materializing Iceberg tables on BigQuery via the catalog integration, starting with the dbt-bigquery 1.10 release.
 
 ## Creating Iceberg Tables
@@ -58,9 +60,11 @@ Supply and nest these additional configurations, unique to BigQuery, under the `
 | `base_location_subpath` | String | No     | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | Only configurable per-model |
 | `storage_uri` | String | No     | If provided, the input will override the dbt storage_uri value. | Only configurable per-model |
 
-These properties can be set in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` will take precedence.
+These properties can be set in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` will take precedence. Refer to [Base location](#base-location) for more information.
 
-See [Base location](#base-location) for more information.
+- `base_location_root`: Specifies the prefix of the base location path within the storage bucket where Iceberg table data will be written.
+- `base_location_subpath`: Specifies the suffix of the base location path within the storage bucket where Iceberg table data will be written. This property can only be set in model configurations, not in `catalogs.yml`.
+- `storage_uri`: Completely overrides the storage_uri, allowing you to specify the full path directly instead of using the catalog integration's external volume and base_location components.
 
 </VersionBlock>
 
@@ -121,7 +125,7 @@ BigQuery's DDL for creating iceberg tables requires that a fully qualified stora
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location_root = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-A theoretical (but not recommended) use case is re-using the `storage_uri` while maintaining isolation across development and production environments. We recommend against this as storage permissions should be configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
+<BaseLocationEnvIsolation />
 
 dbt also allows users to completely override the storage_uri with the model configuration field `storage_uri`. This overrides both the catalog integration path and the other model configuration fields to supply the entire `storage_uri` path directly.
 
@@ -159,7 +163,7 @@ The available adapter properties for configuration are `base_location_root`, `ba
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
 - If base_location_root = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
-A theoretical (but not recommended) use case is re-using the `storage_uri` while maintaining isolation across development and production environments. We recommend against this as storage permissions should be configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
+<BaseLocationEnvIsolation />
 
 dbt also allows users to completely override the storage_uri with the adapter property `storage_uri`. This overrides both the catalog integration path and any `base_location` overrides to supply the entire `storage_uri` path directly.
 
@@ -188,7 +192,7 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 </File>
 
-An example `catalogs.yml` with a customized `base_location_root`:
+An example `catalogs.yml` with a customized `base_location_root` using `adapter_properties`:
 
 <File name='catalogs.yml'>
 
@@ -218,15 +222,16 @@ For example, in the following model config, `base_location_root`=`bar` overrides
 config(
     materialized='table',
     catalog_name='my_bigquery_iceberg_catalog',
-    'base_location_root': 'foo'
+    'base_location_root': 'foo',
     'base_location_subpath': 'bar',
     adapter_properties={
       'base_location_root': 'bar',
     },
 )
--- storage_uri = '{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar
+
 ```
 
+This configuration results in: `storage_uri` = `{{ external_volume }}/bar/{{ schema }}/{{ model_name }}/bar`
 :::
 
 </VersionBlock>

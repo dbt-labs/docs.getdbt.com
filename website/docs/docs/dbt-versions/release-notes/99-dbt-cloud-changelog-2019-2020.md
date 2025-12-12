@@ -224,7 +224,7 @@ This release includes security enhancements and improvements across the entire
 <Constant name="cloud" /> application.
 
 #### Enhancements
-- Support for viewing development docs inside of the <Constant name="cloud_ide" /> ([docs](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- Support for viewing development docs inside of the <Constant name="cloud_ide" /> ([docs](/docs/cloud/studio-ide/develop-in-studio)
 - Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
 - Change coloring and iconography to improve accessibility and UX across the application
 - [Enterprise] Support the specification of multiple authorized domains in SSO configuration
