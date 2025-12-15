@@ -119,14 +119,14 @@ To ensure late-arriving data is detected by state-aware orchestration, your `loa
 
 
 <Tabs>
-<TabItem value="loaded_at_field" label="`loaded_at_field`">
+<TabItem value="loaded_at_field" label="loaded_at_field">
 
 ```yaml
 loaded_at_field: ingested_at
 ```
 </TabItem>
 
-<TabItem value="loaded_at_query" label="`loaded_at_query`">
+<TabItem value="loaded_at_query" label="loaded_at_query">
 
 ```yaml
 loaded_at_query: |
