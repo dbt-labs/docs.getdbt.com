@@ -127,6 +127,10 @@ sql-expression:
   displayText: SQL expression
   hoverSnippet: A SQL expression is a combination of columns, values, operators, and functions that evaluates to a single value.
 
+sql-rendering:
+  displayText: SQL rendering  
+  hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
+
 subquery:
   displayText: subquery
   hoverSnippet: A subquery is a query within another query. Subqueries are often used when you need to process data in multiple steps.

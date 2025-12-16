@@ -39,6 +39,46 @@
   ],
   "redirects": [
     {
+      "source": "/docs/cloud/cost-management",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+      "destination": "/docs/cloud/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/autofix-deprecations",
+      "destination": "/docs/cloud/studio-ide/autofix-deprecations",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/develop-copilot",
+      "destination": "/docs/cloud/studio-ide/develop-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/git-commit-signing",
+      "destination": "/docs/cloud/studio-ide/git-commit-signing",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/ide-user-interface",
+      "destination": "/docs/cloud/studio-ide/ide-user-interface",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
+      "destination": "/docs/cloud/studio-ide/keyboard-shortcuts",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/lint-format",
+      "destination": "/docs/cloud/studio-ide/lint-format",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/install-fusion",
       "destination": "/docs/fusion/get-started-fusion",
       "permanent": true

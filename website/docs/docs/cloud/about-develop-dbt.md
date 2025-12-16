@@ -34,7 +34,7 @@ Choose the option that best fits your needs:
   <Card
     title="dbt Studio IDE"
     body="Develop dbt projects directly in your browser with seamless SQL compilation and an intuitive, visual workflow."
-    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
+    link="/docs/cloud/studio-ide/develop-in-studio"
     icon="dashboard"/>
 
    <Card

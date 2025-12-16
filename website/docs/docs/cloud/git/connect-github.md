@@ -56,7 +56,7 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 ## Authenticate your personal GitHub account
 
-After the <Constant name="cloud" /> administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to <Constant name="cloud" /> to use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
+After the <Constant name="cloud" /> administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to <Constant name="cloud" /> to use the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
 
 :::info GitHub profile connection
 

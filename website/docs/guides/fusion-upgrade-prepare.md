@@ -6,17 +6,18 @@ icon: 'zap'
 hide_table_of_contents: true
 tags: ['dbt Fusion engine', 'dbt platform', 'Upgrade']
 recently_updated: true
+intro_text: This guide helps you prepare for an in-place upgrade from dbt Core to the dbt Fusion engine in the dbt platform.
 ---
+
+<div style={{maxWidth: '900px'}}>
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 
-## Introduction <Lifecycle status="private_preview" />
+## Introduction
 
-:::Important private preview
+import FusionPreview from '/snippets/_fusion-private-preview.md';
 
-The <Constant name="fusion_engine" /> is available as a private preview for all tiers of <Constant name="dbt_platform" /> accounts. dbt Labs is enabling <Constant name="fusion" /> only on accounts that have eligible projects. Following the steps outlined in this guide doesn't guarantee <Constant name="fusion" /> eligibility.
-
-:::
+<FusionPreview />
 
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
@@ -129,6 +130,12 @@ The autofix tool can resolve many deprecations automatically, including:
 
 Check out the [autofix readme](https://github.com/dbt-labs/dbt-autofix/) for a complete list of the deprecations it addresses.
 
+:::note Fusion package compatibility
+
+In addition to deprecations, the autofix tool attempts to upgrade packages to the lowest supported <Constant name="fusion" />-compatible version. Check out [package support](/docs/fusion/supported-features#package-support) for more information about <Constant name="fusion" /> compatibility.
+
+:::
+
 ### Step 1: Create a new branch
 
 Before running the autofix tool, create a new branch to isolate your changes:
@@ -217,17 +224,27 @@ Once all deprecations are resolved:
 
 ## Validate and upgrade your dbt packages
 
-dbt packages extend your project's functionality, but they must be compatible with <Constant name="fusion" />. Most commonly used packages from dbt Labs (like `dbt_utils` and `dbt_project_evaluator`) and many community packages [already support <Constant name="fusion" />](/docs/fusion/supported-features#package-support). Before upgrading, verify your packages are compatible and upgrade them to the latest versions. Check for packages that support version 2.0.0, or ask the maintainer if you're unsure. 
+:::tip Run autofix first
 
-:::tip What if a package isn't compatible?
+This section contains instructions for manual package upgrades. We recommend running the autofix tool before taking these steps.
 
-If a critical package isn't yet compatible with <Constant name="fusion" />:
-- Check with the package maintainer about their roadmap
-- Open an issue requesting <Constant name="fusion" /> support
-- Consider contributing the compatibility updates yourself
-- Try it out anyway! The incompatible portion of the package might not impact your project. 
+The autofix tool finds packages incompatible with <Constant name="fusion" /> and upgrades them to the lowest compatible version. For more information, check out [package support](/docs/fusion/supported-features#package-support).
 
 :::
+
+dbt packages extend your project's functionality, but they must be compatible with <Constant name="fusion" />. Most commonly used packages from dbt Labs (like `dbt_utils` and `dbt_project_evaluator`) and many community packages [already support <Constant name="fusion" />](/docs/fusion/supported-features#package-support). Before upgrading, verify your packages are compatible and upgrade them to the latest versions. Check for packages that support version 2.0.0, or ask the maintainer if you're unsure.
+
+What if a package isn't compatible?
+
+If a critical package isn't yet compatible with <Constant name="fusion" />:
+- Check with the package maintainer about their roadmap.
+- Open an issue requesting <Constant name="fusion" /> support.
+- Consider contributing the compatibility updates yourself.
+- Try it out anyway! The incompatible portion of the package might not impact your project. 
+
+import FusionPackageCompatibility from '/snippets/_fusion-package-compatibility.md';
+
+<FusionPackageCompatibility />
 
 ### Step 1: Review your current packages
 
@@ -249,9 +266,9 @@ packages:
 
 ### Step 2: Check compatibility and find the latest package versions
 
-Review the [supported packages list](/docs/fusion/supported-features#package-support) to see verified <Constant name="fusion" />-compatible packages.
+Review [the dbt package hub](https://hub.getdbt.com) to see verified <Constant name="fusion" />-compatible packages by checking that the `require-dbt-version` configuration includes `2.0.0` or higher. Refer to [package support](/docs/fusion/supported-features#package-support) for more information.
 
-For packages not on this list:
+For packages that aren't <Constant name="fusion" />-compatible:
    - Visit the package's GitHub repository.
    - Check the README or recent releases for <Constant name="fusion" /> compatibility information.
    - Look for issues or discussions about <Constant name="fusion" /> support.
@@ -267,7 +284,7 @@ For Hub packages, you can use version ranges to stay up-to-date:
 ```yaml
 packages:
   - package: dbt-labs/dbt_utils
-    version: [">=1.0.0", "<2.0.0"]  # Gets latest 1.x version
+    version: [">=1.0.0", "<3.0.0"]  # Gets latest 1.x or 2.x version
 ```
 
 ### Step 3: Update your package versions
@@ -463,3 +480,5 @@ Stay up-to-date with feature availability:
 With limitations identified and addressed, you've completed all the preparation steps. Your project is now ready to upgrade to <Constant name="fusion" />!
 
 Check out [Part 2: Making the move](/guides/upgrade-to-fusion)
+
+</div>

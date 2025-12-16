@@ -193,7 +193,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide"
+                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
                   icon="dashboard"
                 />
                 <Card
