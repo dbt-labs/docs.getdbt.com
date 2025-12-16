@@ -27,7 +27,7 @@ Compare changes in development is available for models only, support for seeds, 
 
 - You have a dbt Enterprise or Enterprise+ account.
 - You have a developer seat license.
-- Installed the [dbt VS Code extension](/docs/install-dbt-extension) and the [<Constant name="fusion_engine" />](/docs/fusion/install-fusion) in your editor.
+- Installed the [dbt VS Code extension](/docs/install-dbt-extension) and the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion) in your editor.
 - Enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
 - Use a <Constant name="fusion" /> supported data platform: BigQuery, Databricks, Redshift, or Snowflake. Support for additional data platforms coming soon.
 - If you've configured [automatic deferral](/docs/cloud/about-cloud-develop-defer), you need a successful job run. To use compare changes manually without a successful job run, you can manually copy a `manifest.json` and specify the state directory.
