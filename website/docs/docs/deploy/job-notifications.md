@@ -67,9 +67,10 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
 1. On the **Email notifications** page, click **Unsubscribe from all email notifications**. 
 
 ## Slack notifications (user-linked) {#slack-notifications}
-This is the current Slack integration available for all users. The [Slack notifications at the account level](#slack-notifications-account) feature is available in private beta. To request access, contact dbt Support or your account manager.
-
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
+
+This is the current Slack integration available for all users and not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in private beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the private beta features.
+
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
