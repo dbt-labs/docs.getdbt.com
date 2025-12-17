@@ -114,7 +114,7 @@ If you create a seed to exclude groups of models from a specific test, remember 
 
 ## Run linting checks with SQLFluff
 
-By [linting](/docs/cloud/dbt-cloud-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
+By [linting](/docs/cloud/studio-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
 
 Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="cloud" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
 

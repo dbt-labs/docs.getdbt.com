@@ -1,21 +1,21 @@
 ---
 title: "About the Studio IDE"
-id: develop-in-the-cloud
+id: develop-in-studio
 description: "Develop, test, run, and build in the Studio IDE. You can compile dbt code into SQL and run it against your database directly"
 sidebar_label: About the IDE
 tags: [IDE]
-pagination_next: "docs/cloud/dbt-cloud-ide/keyboard-shortcuts"
+pagination_next: "docs/cloud/studio-ide/keyboard-shortcuts"
 pagination_prev: null
 ---
 
 The <Constant name="cloud" /> integrated development environment (<Constant name="cloud_ide" />) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
-The <Constant name="cloud_ide" /> offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
+The <Constant name="cloud_ide" /> offers several [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) and [editing features](/docs/cloud/studio-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
 - Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
-- AI copilot &mdash; Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot), an AI-powered assistant that can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, and semantic models) for you &mdash; with the click of a button. Check out [Develop with <Constant name="copilot" />](/docs/cloud/dbt-cloud-ide/develop-copilot) for more details.
+- AI copilot &mdash; Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot), an AI-powered assistant that can [generate code](/docs/cloud/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/studio-ide/develop-copilot#generate-resources) (like documentation, tests, and semantic models) for you &mdash; with the click of a button. Check out [Develop with <Constant name="copilot" />](/docs/cloud/studio-ide/develop-copilot) for more details.
 - Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
-- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
+- Code [formatting and linting](/docs/cloud/studio-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
 - Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
 - Version control &mdash; Manage code versions with a few clicks.
 - Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
@@ -48,21 +48,21 @@ To improve your experience using <Constant name="cloud" />, we suggest that you 
 
 The <Constant name="cloud_ide" /> comes with features that make it easier for you to develop, build, compile, run, and test data models. 
 
-To understand how to navigate the <Constant name="cloud_ide" /> and its user interface elements, refer to the [<Constant name="cloud_ide" /> user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) page.
+To understand how to navigate the <Constant name="cloud_ide" /> and its user interface elements, refer to the [<Constant name="cloud_ide" /> user interface](/docs/cloud/studio-ide/ide-user-interface) page.
 
 | Feature  |  Description |
 |---|---|
-| [**<Constant name="cloud_ide" /> shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the <Constant name="cloud_ide" /> by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
-| **IDE version control** | The <Constant name="cloud_ide" /> version control section and git button allow you to apply the concept of [version control](/docs/cloud/git/version-control-basics) to your project directly into the <Constant name="cloud_ide" />. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/cloud/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - Use the **Prune branches** [button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.<br /> - Sign your [git commits](/docs/cloud/dbt-cloud-ide/git-commit-signing) to mark them as 'Verified'. <Lifecycle status="managed,managed_plus" /> |
-| **Preview and Compile button** | You can [compile or preview](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
-| [**<Constant name="copilot" />**](/docs/cloud/dbt-cloud-ide/develop-copilot)| A powerful AI-powered assistant that can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. <Lifecycle status="self_service,managed,managed_plus" />. |
+| [**<Constant name="cloud_ide" /> shortcuts**](/docs/cloud/studio-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/studio-ide/keyboard-shortcuts) in the <Constant name="cloud_ide" /> by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
+| **IDE version control** | The <Constant name="cloud_ide" /> version control section and git button allow you to apply the concept of [version control](/docs/cloud/git/version-control-basics) to your project directly into the <Constant name="cloud_ide" />. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/cloud/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - Use the **Prune branches** [button](/docs/cloud/studio-ide/ide-user-interface#prune-branches-modal) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.<br /> - Sign your [git commits](/docs/cloud/studio-ide/git-commit-signing) to mark them as 'Verified'. <Lifecycle status="managed,managed_plus" /> |
+| **Preview and Compile button** | You can [compile or preview](/docs/cloud/studio-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
+| [**<Constant name="copilot" />**](/docs/cloud/studio-ide/develop-copilot)| A powerful AI-powered assistant that can [generate code](/docs/cloud/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. <Lifecycle status="self_service,managed,managed_plus" />. |
 | **Build, test, and run button**  | Build, test, and run your project with the click of a button or by using the command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the <Constant name="cloud_ide" />. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within <Constant name="cloud" />. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the <Constant name="cloud_ide" /> for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
 | **Organize tabs and files**  | - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions, including duplicate files  <br /> - Close multiple, unsaved tabs to batch save your work <br /> - Double click files to rename files |
 | **Find and replace** | - Press Command-F or Control-F to open the find-and-replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline<br /> - You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches<br /> - Use the left arrow to replace the text with something else |
 | **Multiple selections**  | You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.<br /><br /> - Option-Command-Down arrow or Ctrl-Alt-Down arrow<br /> - Option-Command-Up arrow or Ctrl-Alt-Up arrow<br /> - Press Option and click on an area or Press Ctrl-Alt and click on an area<br /> 
-| **Lint and Format** | [Lint and format](/docs/cloud/dbt-cloud-ide/lint-format) your files with a click of a button, powered by SQLFluff, sqlfmt, Prettier, and Black.
+| **Lint and Format** | [Lint and format](/docs/cloud/studio-ide/lint-format) your files with a click of a button, powered by SQLFluff, sqlfmt, Prettier, and Black.
 | **dbt autocomplete**  |  Autocomplete features to help you develop faster:<br /><br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var<br /> - Start typing a hyphen (-) to use in-line autocomplete in a YAML file<br /> - Automatically create models from dbt sources with a click of a button.  |
 | **<Term id="dag" /> in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. The default view is 2+model+2 (defaults to display 2 nodes away), however, you can change it to +model+ (full  <Term id="dag" />). Note the `--exclude` flag isn't supported. |
 | **Status bar** | This area provides you with useful information about your <Constant name="cloud_ide" /> and project status. You also have additional options like enabling light or dark mode, restarting the <Constant name="cloud_ide" />, or [recloning your repo](/docs/cloud/git/version-control-basics).
@@ -134,7 +134,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the <Constant name="git" /> branch name. For example, using the branch name as a prefix for a development schema.
   - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
-- **Generate your YAML configurations with <Constant name="copilot" />** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in <Constant name="cloud" />. It can [generate code](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/dbt-cloud-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="cloud_ide" />, so you can accomplish more in less time. <Lifecycle status="self_service,managed,managed_plus" /> 
+- **Generate your YAML configurations with <Constant name="copilot" />** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in <Constant name="cloud" />. It can [generate code](/docs/cloud/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/cloud/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="cloud_ide" />, so you can accomplish more in less time. <Lifecycle status="self_service,managed,managed_plus" /> 
 
 - **Build and view your project's docs** &mdash; The <Constant name="cloud_ide" /> makes it possible to [build and view](/docs/explore/build-and-view-your-docs) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
@@ -142,7 +142,7 @@ Nice job, you're ready to start developing and building models 🎉!
 ## Related docs
 
 - [How we style our dbt projects](/best-practices/how-we-style/0-how-we-style-our-dbt-projects)
-- [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
+- [User interface](/docs/cloud/studio-ide/ide-user-interface)
 - [Version control basics](/docs/cloud/git/version-control-basics)
 - [dbt commands](/reference/dbt-commands)
 

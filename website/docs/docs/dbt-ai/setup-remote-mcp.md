@@ -25,8 +25,8 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 2. Obtain the following information from dbt platform:
 
   - **dbt Cloud host**: Use this to form the full URL. For example, replace `<host>` here: `https://<host>/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `<ACCOUNT_PREFIX>.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
-  - **Production environment ID**: This can be found on the **Orchestration** page of dbt Cloud. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions.
+  - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
+  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions. Note: to use functionality that requires the `x-dbt-user-id` header, a personal access token is required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
@@ -34,14 +34,14 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | Token | Required | Your personal access token or service token from the dbt platform. <br/> **Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
-  | x-dbt-prod-environment-id | Required | Your dbt Cloud production environment ID |
+  | Token | Required | Your personal access token or service token from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+  | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
 
   **Additional configuration for SQL tools**
   | Header | Required | Description |
   | --- | --- | --- |
-  | x-dbt-dev-environment-id | Required for `execute_sql` | Your dbt Cloud development environment ID |
-  | x-dbt-user-id | Required for `execute_sql` | Your dbt Cloud user ID ([docs](https://docs.getdbt.com/faqs/Accounts/find-user-id)) |
+  | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID |
+  | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
 
   **Additional configuration for Fusion tools**
 
@@ -50,8 +50,8 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
   | Header | Required | Description |
   | --- | --- | --- |
   | x-dbt-dev-environment-id | Required| Your dbt platform development environment ID |
-  | x-dbt-user-id | Required | Your dbt platform user ID ([docs](/faqs/Accounts/find-user-id)) |
-  | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, fusion tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
+  | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
+  | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
 
 
   **Configuration to disable tools**

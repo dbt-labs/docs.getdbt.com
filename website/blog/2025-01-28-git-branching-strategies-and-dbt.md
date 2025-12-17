@@ -433,7 +433,7 @@ Many git providers have a CODEOWNERS feature which can be leveraged to tag appro
 <summary>How do you execute other types of checks in the development workflow?</summary>
 <p>
 
-Auto-formatting and linting are both [features available in dbt Cloud's IDE](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format#format). You can enable linting [within your CI job](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting).
+Auto-formatting and linting are both [features available in dbt Cloud's IDE](https://docs.getdbt.com/docs/cloud/studio-ide/lint-format#format). You can enable linting [within your CI job](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting).
 
 Other types of checks are typically implemented through external pipelines, and usually through the git provider due to the alignment of where these checks are desired in the development workflow. Many git providers have pipeline features available, such as GitHub's Actions or Gitlab's CI/CD Pipelines. Here's an example which [checks that a branch name follows a pattern upon a pull request event](https://medium.com/@durgeshm01722/add-a-branch-naming-pattern-status-check-to-your-github-prs-660c53331b68)).
     

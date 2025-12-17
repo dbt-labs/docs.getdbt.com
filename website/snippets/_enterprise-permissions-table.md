@@ -21,56 +21,48 @@ Key:
 
 #### Account access for account permissions
 
-<SortableTable>
+<FilterableTable>
 
-{`
-| Account-level permission | Account Admin | Billing admin | Cost Management admin | Cost Management viewer | Manage marketplace apps | Project creator | Security admin | Viewer |
-|:-------------------------|:-------------:|:-------------:|:---------------------:|:----------------------:|:-----------------------:|:---------------:|:--------------:|:------:|
-| Account settings*        | W             | -             | -                     | -                      | -                       | R               | R              | R      |
-| Audit logs               | R             | -             | -                     | -                      | -                       | -               | R              | R      |
-| Auth provider            | W             | -             | -                     | -                      | -                       | -               | W              | R      |
-| Billing                  | W             | W             | -                     | -                      | -                       | -               | -              | R      |
-| Connections              | W             | -             | R                     | R                      | -                       | W               | -              | -      |
-| Groups                   | W             | -             | -                     | -                      | -                       | R               | W              | R      |
-| Invitations              | W             | -             | -                     | -                      | -                       | W               | W              | R      |
-| IP restrictions          | W             | -             | -                     | -                      | -                       | -               | W              | R      |
-| Licenses                 | W             | -             | -                     | -                      | -                       | W               | W              | R      |
-| Marketplace app          | -             | -             | -                     | -                      | W                       | -               | -              | -      |
-| Members                  | W             | -             | -                     | -                      | -                       | W               | W              | R      |
-| Project (create)         | W             | -             | -                     | -                      | -                       | W               | -              | -      |
-| Public models            | R             | R             | -                     | -                      | -                       | R               | R              | R      |
-| Service tokens           | W             | -             | -                     | -                      | -                       | -               | R              | R      |
-| Webhooks                 | W             | -             | -                     | -                      | -                       | -               | -              | -      |
-`}
-
-</SortableTable>
+| Account-level permission | Account Admin | Billing admin | Manage marketplace apps | Project creator | Security admin | Viewer |
+|:-------------------------|:-------------:|:-------------:|:-----------------------:|:---------------:|:--------------:|:------:|
+| Account settings*        | W             | -             | -                       | R               | R              | R      |
+| Audit logs               | R             | -             | -                       | -               | R              | R      |
+| Auth provider            | W             | -             | -                       | -               | W              | R      |
+| Billing                  | W             | W             | -                       | -               | -              | R      |
+| Connections              | W             | -             | -                       | W               | -              | -      |
+| Groups                   | W             | -             | -                       | R               | W              | R      |
+| Invitations              | W             | -             | -                       | W               | W              | R      |
+| IP restrictions          | W             | -             | -                       | -               | W              | R      |
+| Licenses                 | W             | -             | -                       | W               | W              | R      |
+| Marketplace app          | -             | -             | W                       | -               | -              | -      |
+| Members                  | W             | -             | -                       | W               | W              | R      |
+| Project (create)         | W             | -             | -                       | W               | -              | -      |
+| Public models            | R             | R             | -                       | R               | R              | R      |
+| Service tokens           | W             | -             | -                       | -               | R              | R      |
+| Webhooks                 | W             | -             | -                       | -               | -              | -      |
+</FilterableTable>
 
 \* Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
 
 
 #### Project access for account permissions
  
- <SortableTable>
-
-{`
-| Project-level permission     | Account Admin | Billing admin | Cost Management Admin | Cost Management viewer | Project creator | Security admin | Viewer |
-|:-----------------------------|:-------------:|:-------------:|:---------------------:|:----------------------:|:---------------:|:--------------:|:------:|
-| Environment credentials      | W             | -             | -                     | -                      | W               | -              | R      |
-| Cost Management              | W             | -             | W                     | R                      | -               | -              | R      |
-| Custom env. variables        | W             | -             | -                     | -                      | W               | -              | R      |
-| Data platform configurations | W             | -             | -                     | -                      | W               | -              | R      |
-| Develop (IDE or CLI)         | W             | -             | -                     | -                      | W               | -              | -      |
-| Environments                 | W             | -             | R                     | R                      | W               | -              | R      |
-| Jobs                         | W             | -             | -                     | -                      | W               | -              | R      |
-| Metadata GraphQL API access  | R             | -             | R                     | R                      | R               | -              | R      |
-| Permissions                  | W             | -             | -                     | -                      | W               | W              | R      |
-| Projects                     | W             | -             | R                     | R                      | W               | R              | R      |
-| Repositories                 | W             | -             | -                     | -                      | W               | -              | R      |
-| Runs                         | W             | -             | -                     | -                      | W               | -              | R      |
-| Semantic Layer config        | W             | -             | -                     | -                      | W               | v              | R      |
-`}
-
-</SortableTable>
+<FilterableTable>
+| Project-level permission     | Account Admin | Billing admin | Project creator | Security admin | Viewer |
+|:-----------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:|
+| Environment credentials      | W             | -             | W               | -              | R      |
+| Custom env. variables        | W             | -             | W               | -              | R      |
+| Data platform configurations | W             | -             | W               | -              | R      |
+| Develop (IDE or CLI)         | W             | -             | W               | -              | -      |
+| Environments                 | W             | -             | W               | -              | R      |
+| Jobs                         | W             | -             | W               | -              | R      |
+| Metadata GraphQL API access  | R             | -             | R               | -              | R      |
+| Permissions                  | W             | -             | W               | W              | R      |
+| Projects                     | W             | -             | W               | R              | R      |
+| Repositories                 | W             | -             | W               | -              | R      |
+| Runs                         | W             | -             | W               | -              | R      |
+| Semantic Layer config        | W             | -             | W               | v              | R      |
+</FilterableTable>
 
 ### Project permissions
  
@@ -83,9 +75,7 @@ Key:
 
 #### Account access for project permissions
  
-<SortableTable>
-
-{`
+<FilterableTable>
 | Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:| 
 | Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
@@ -100,19 +90,14 @@ Key:
 | Public models            |   R   |    R    |      R         |     R     |     R     |     R     |     -       |      R      |     R    |        R       |      R      |     R      |
 | Service tokens           |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Webhooks                 |   W   |    -    |      -         |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-`}
-
-</SortableTable>
+</FilterableTable>
 
 #### Project access for project permissions
 
-<SortableTable> 
-
-{`
+<FilterableTable> 
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:| 
 | Environment credentials  |   W   |    R    |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
-| Cost Managerment         |   -   |    -    |       -        |     -     |      -       |     -     |     -     |    -        |      -      |                 -                       |       -        |      -       |   -       |
 | Custom env. variables    |   W   |    W#  |       W         |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
 | Data platform configs    |   W   |    W    |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
 | Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
@@ -126,9 +111,7 @@ Key:
 | Runs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
-`}
-
-</SortableTable>
+</FilterableTable>
 
 \* These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
 

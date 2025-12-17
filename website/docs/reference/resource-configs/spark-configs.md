@@ -125,7 +125,8 @@ If no `partition_by` is specified, then the `insert_overwrite` strategy will ato
 {{ config(
     materialized='incremental',
     partition_by=['date_day'],
-    file_format='parquet'
+    file_format='parquet',
+    incremental_strategy='insert_overwrite'
 ) }}
 
 /*

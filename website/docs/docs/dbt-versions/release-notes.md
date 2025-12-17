@@ -16,8 +16,17 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## December 2025
+- **Enhancement**: For users in the default region (`US1`) that previously created a dbt account in the past, the dbt VS Code extension now supports registering with OAuth . This makes it easier to register the extension for users who may have forgotten their password or are locked out of their account. For more information, see [Register the extension](/docs/install-dbt-extension#register-the-extension).
+- **New and enhancements:** The dbt [Studio IDE user interface](/docs/cloud/studio-ide/ide-user-interface) has been enhanced to bring more powerful development features to your fingertips:
+  -  A newly designed toolbar that groups all of your action and project insight tabs for easy access.
+  - A dedicated inline **Commands** tab for history and logs.
+  - When you upgrade your development environment to the <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
+ 
 ## November 2025
 
+- **Behavior change**: [dbt Copilot](/docs/cloud/dbt-copilot) now requires all input files to use UTF-8 encoding. Files that use other encodings will return an error. If you're working with legacy files that use a different encoding, convert them to UTF-8 before using Copilot.
+- **Enhancement**: dbt Copilot now has improved reliability when working with OpenAI. This includes longer timeouts, better retry behavior, and improved handling of reasoning messages for long code generations, resulting in fewer failures and more successful completions.
 - **New**: The Snowflake adapter now supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - **New**: You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
 - **New**: The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
@@ -128,7 +137,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 - **New**: You can use Copilot to create a `dbt-styleguide.md` for dbt projects. The generated style guide template includes SQL style guidelines, model organization and naming conventions, model configurations and testing practices, and recommendations to enforce style rules. For more information, see [Copilot style guide](/docs/cloud/copilot-styleguide).
 - **New**: Copilot chat is an interactive interface within the Studio IDE where you can generate SQL code from natural language prompts and ask analytics-related questions. It integrates contextual understanding of your dbt project and assists in streamlining SQL development. For more information, see [Copilot chat](/docs/cloud/copilot-chat-in-studio).
 - **New**: Leverage dbt Copilot to generate SQL queries in [Insights](/docs/explore/dbt-insights) from natural language prompts, enabling efficient data exploration within a context-aware interface.
-- **New**: The dbt platform Cost management dashboard is now available as a preview for Snowflake users on Enterprise and Enteprise Plus plans. Gain valuable insights into your warehouse spend with the comprehensive and interactive dashboard. Read more [about it](/docs/cloud/cost-management) to get started with your cost savings analysis today!
+- **New**: The dbt platform Cost management dashboard was available as a preview for Snowflake users on Enterprise and Enterprise Plus plans. On November 25, 2025, we retired the cost management dashboard to focus on building a more scalable and integrated cost-insights experience, expected in early 2026.
 - **New**: Apache Iceberg catalog integration support is now available on Snowflake and BigQuery! This is essential to making your dbt Mesh interoperable across platforms, built on Iceberg. Read more about [Iceberg](/docs/mesh/iceberg/apache-iceberg-support) to begin creating Iceberg tables. 
 - **Update**: Product renaming and other changes. For more information, refer to [Updated names for dbt platform and features](https://getdbt.com/blog/updated-names-for-dbt-platform-and-features).
   <Expandable alt_header="Product names key">

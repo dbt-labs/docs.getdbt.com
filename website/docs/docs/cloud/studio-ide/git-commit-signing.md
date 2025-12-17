@@ -43,7 +43,7 @@ Once you have uploaded the public key to your <Constant name="git" /> provider, 
 - The GPG keypair generated in <Constant name="cloud" /> is linked to the email address associated with your account at the time of keypair creation. This email identifies the author of signed commits.
 - For your <Constant name="git" /> commits to be marked as "verified", your <Constant name="cloud" /> email address must be a verified email address with your <Constant name="git" /> provider. The <Constant name="git" /> provider (such as, GitHub, GitLab) checks that the commit's signed email matches a verified email in your <Constant name="git" /> provider account. If they don’t match, the commit won't be marked as "verified."
 - Keep your <Constant name="cloud" /> email and <Constant name="git" /> provider's verified email in sync to avoid verification issues. If you change your <Constant name="cloud" /> email address:
-  - Generate a new GPG keypair with the updated email, following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
+  - Generate a new GPG keypair with the updated email, following the [steps mentioned earlier](/docs/cloud/studio-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
   - Add and verify the new email in your <Constant name="git" /> provider.
 
 <!-- vale off -->
@@ -54,7 +54,7 @@ Once you have uploaded the public key to your <Constant name="git" /> provider, 
 
 <DetailsToggle alt_header="What happens if I delete my GPG keypair in dbt?">
 
-If you delete your GPG keypair in <Constant name="cloud" />, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/dbt-cloud-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
+If you delete your GPG keypair in <Constant name="cloud" />, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/studio-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
 </DetailsToggle>
 
 <DetailsToggle alt_header="What Git providers support GPG keys?">

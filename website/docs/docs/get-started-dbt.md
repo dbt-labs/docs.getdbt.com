@@ -12,7 +12,7 @@ Begin your dbt journey by trying one of our quickstarts, which provides a step-b
 
 <Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 
-- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
+- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs).
 - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint.
 - Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups.
