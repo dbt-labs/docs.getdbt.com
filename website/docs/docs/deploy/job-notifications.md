@@ -79,6 +79,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 :::
 
 ### Prerequisites 
+- You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="cloud" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
@@ -139,13 +140,14 @@ Integrate Slack with <Constant name="dbt_platform" /> at the account level to re
 
 #### Prerequisites
 
+- You have a Slack workspace that you want to receive job notifications from.
 - A dbt Cloud account admin must link the Slack app at the account level in Account settings → Integrations.
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 - After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications.
 
 **Channels supported:**
-    - Public channels are supported by default
-    - Private channels are supported if the dbt Slack app is invited to the channel.
+  - Public channels are supported by default
+- Private channels are supported if the dbt Slack app is invited to the channel.
 
 #### Set up the Slack integration
 
@@ -206,8 +208,9 @@ dbt integrates with Teams through Microsoft Entra to provide secure authenticati
 #### Prerequisites
 
 Before you begin:
-- You must have a <Constant name="dbt_platform" /> account.
-- Contact dbt Support or your account manager to request access.
+- You must have a <Constant name="dbt_platform" /> account on an Enterprise-tier plan.
+- You have a Microsoft Teams account that you want to receive job notifications from.
+- Contact your account manager to request access.
 - Make sure you have permission to view the **Account integrations** and **Job notifications** pages in <Constant name="dbt_platform" />.
 
 #### Set up Microsoft Teams
