@@ -51,7 +51,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Insights UI**
   - **Bookmark workflow upgrades**: Bookmarked queries reopen with their full builder context (metrics, filters, order-bys, limits), the Save button only activates on real changes, and deep links keep the `bookmarkId` query string in sync while switching tabs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
-  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
+  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. <!-- reviewed by mirna ✅ https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
 
 - **dbt Cloud CLI**
   - **Monorepo-friendly file sync** (& IDE): Invocation file sync roots itself in the invocation directory, reruns dependency installs for nested `dependencies.yml`, and the IDE's LSP/file sync honors dbt subdirectories while keeping exclusion lists accurate. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 --> <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-ide-server-20248398200 -->
