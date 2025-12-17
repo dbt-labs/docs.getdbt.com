@@ -19,6 +19,7 @@ By moving your environments and jobs to release tracks you can get all the funct
 | **Latest** | Formerly called "Versionless", provides a continuous release of the latest functionality in the dbt platform.<br /><br />Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's "Compatible" release. | Enterprise, Enterprise+ | `extended` |
+| **Fallback** | The previous month's "Extended" release. | Enterprise+ | `fallback` |
 
 To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `latest` (or `versionless`, the old name is still supported)
@@ -30,6 +31,14 @@ To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cl
 Choose the "Latest" release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="cloud" />.
 
 Choose the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+
+### Using the Fallback release track
+
+The "Fallback" release track provides an emergency rollback option if you suspect a regression in the "Extended" release track. Only account admins can activate "Fallback", and it's enabled through a button in the dbt Cloud UI rather than as an environment configuration.
+
+TODO: add image of button?
+
+When you switch to "Fallback", our team is automatically notified and may reach out to help resolve the issue. This track is intended as a temporary measure to unblock you, not for ongoing use. We recommend returning to "Extended" or "Compatible" once the underlying issue is resolved.
 
 ### Common architectures
 
