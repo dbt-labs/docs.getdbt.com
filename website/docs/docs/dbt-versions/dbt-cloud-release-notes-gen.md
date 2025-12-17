@@ -29,9 +29,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt CLI**
   - **Invocation-specific retention overrides**: Both the HTTP API and Python client accept a `ttl_seconds` parameter when launching runs, so artifacts and events from short-lived single-tenant jobs can be purged as soon as the override expires instead of waiting on the global retention window. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
 
-- **MetricFlow server**
-  - **Manifest awareness**: The GraphQL `environmentInfo` field now reports `hasMetricsDefined`, letting admin tools hide Semantic Layer actions until a manifest actually contains metrics. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
-
 ### Enhancements
 
 - **dbt platform**
@@ -43,14 +40,10 @@ Release notes are grouped by date for single-tenant environments.
   - **Freshness clarity & Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-metadata-ui-20248398200 -->
 
 - **Insights UI**
-  - **Bookmark workflow upgrades**: Bookmarked queries reopen with their full builder context (metrics, filters, order-bys, limits), the Save button only activates on real changes, and deep links keep the `bookmarkId` query string in sync while switching tabs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
   - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. <!-- reviewed by mirna ✅ https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
 
 - **dbt CLI**
   - **Monorepo-friendly file sync** (& IDE): Invocation file sync roots itself in the invocation directory, reruns dependency installs for nested `dependencies.yml`, and the IDE's LSP/file sync honors dbt subdirectories while keeping exclusion lists accurate. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 --> <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-ide-server-20248398200 -->
-
-- **MetricFlow server**
-  - **Resilient job lifecycle**: Export polling now returns in-progress statuses, HTTP clients share retry/read-timeout logic, jobs are watched and cancelled after 45 minutes with clear error messaging, and Arrow→pandas conversions sanitize timestamp/date columns before raising a dedicated error. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
 
 - **Notifications system**
   - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier. <!-- https://github.com/dbt-labs/notifications-system/compare/6aa8df34c76637ac4df4f2753e8d210be478ee50...1a11cb0f15e55d8243e9f5a2eb0ccf85c870f4ed -->
@@ -66,15 +59,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
   - **Cost optimization indicator accuracy**: Job pages once again display “Cost optimization features” whenever Fusion actually ran (and gating conditions are met), so customers see the right coverage status regardless of feature-flag permutations. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
 
-- **Insights UI**
-  - **Deterministic query completion**: Tabs mark executions as finished and surface builder-compiled SQL even when the backend returns zero rows, stopping spinners from hanging on filtered-empty datasets. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
-
-- **Semantic Layer Gateway**
-  - **Postgres type handling**: Flight SQL exports now treat `uuid`, `json`, `jsonb`, and interval-like types as UTF‑8 fields, eliminating ingestion failures or nulls when those column types are requested. <!-- https://github.com/dbt-labs/semantic-layer-gateway/commit/fdfd0799b965bdf3c343081efd5121d8ca9c7003 -->
-
-- **MetricFlow server**
-  - **PyArrow conversion guardrails**: Prevent CSV/JSON exports from crashing when encountering exotic column types. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
-
 ### Behavior changes
 
 - **dbt platform**
@@ -88,9 +72,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Notifications**
   - **Event taxonomy update**: Webhook payloads emit canonical `job.run.started|errored|canceled|completed` event types instead of the legacy `on_*` strings; update downstream filters accordingly. <!-- https://github.com/dbt-labs/notifications-system/compare/6aa8df34c76637ac4df4f2753e8d210be478ee50...1a11cb0f15e55d8243e9f5a2eb0ccf85c870f4ed -->
-
-- **MetricFlow server**
-  - **Stricter query validation & timeouts**: Unsupported `metric_time` grains now fail fast instead of silently downgrading, and long-running tasks are cancelled after 45 minutes with explicit timeout messaging, preventing hung jobs. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
 
 - **dbt orc**
   - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). <!-- reviewed by bianca ✅ https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
