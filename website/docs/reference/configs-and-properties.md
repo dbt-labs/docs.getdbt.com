@@ -24,3 +24,5 @@ Whereas you can use **configurations** to:
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
 * Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and meta to a resource
+
+<!-- This is a test -->
