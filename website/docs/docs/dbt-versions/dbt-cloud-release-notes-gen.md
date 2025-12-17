@@ -22,11 +22,11 @@ Release notes are grouped by date for single-tenant environments.
 
 ### New
 
-- **dbt Cloud app**
+- **dbt platform**
   - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
   - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
 
-- **dbt Cloud CLI**
+- **dbt CLI**
   - **Invocation-specific retention overrides**: Both the HTTP API and Python client accept a `ttl_seconds` parameter when launching runs, so artifacts and events from short-lived single-tenant jobs can be purged as soon as the override expires instead of waiting on the global retention window. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
 
 - **MetricFlow server**
@@ -46,7 +46,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Bookmark workflow upgrades**: Bookmarked queries reopen with their full builder context (metrics, filters, order-bys, limits), the Save button only activates on real changes, and deep links keep the `bookmarkId` query string in sync while switching tabs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
   - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. <!-- reviewed by mirna ✅ https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
 
-- **dbt Cloud CLI**
+- **dbt CLI**
   - **Monorepo-friendly file sync** (& IDE): Invocation file sync roots itself in the invocation directory, reruns dependency installs for nested `dependencies.yml`, and the IDE's LSP/file sync honors dbt subdirectories while keeping exclusion lists accurate. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 --> <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-ide-server-20248398200 -->
 
 - **MetricFlow server**
@@ -77,10 +77,10 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Behavior changes
 
-- **dbt Cloud app**
+- **dbt platform**
   - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can’t be targeted), reducing misconfiguration risk. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
 
-- **dbt Cloud CLI**
+- **dbt CLI**
   - **User-isolated invocation history**: Every invocation lookup validates the caller’s user ID, preventing admins from accidentally reading another developer’s runs when multiple accounts share a CLI server. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
 
 - **IDE server**
