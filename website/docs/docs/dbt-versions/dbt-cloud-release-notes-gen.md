@@ -29,9 +29,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt Cloud CLI**
   - **Invocation-specific retention overrides**: Both the HTTP API and Python client accept a `ttl_seconds` parameter when launching runs, so artifacts and events from short-lived single-tenant jobs can be purged as soon as the override expires instead of waiting on the global retention window. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
 
-- **dbt orc**
-  - **Mantle query telemetry parity**: Mantle runs can now emit `.resource_queries.json` artifacts by parsing `run_model_query_data.json`, and the dispatcher automatically enables `DBT_ENGINE_WRITE_SQL_QUERY_DATA` when the relevant feature flags are set, putting Mantle on equal footing with Fusion for Cost Insights and SQL-level observability. <!-- https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
-
 - **MetricFlow server**
   - **Manifest awareness**: The GraphQL `environmentInfo` field now reports `hasMetricsDefined`, letting admin tools hide Semantic Layer actions until a manifest actually contains metrics. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
 
@@ -54,9 +51,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **MetricFlow server**
   - **Resilient job lifecycle**: Export polling now returns in-progress statuses, HTTP clients share retry/read-timeout logic, jobs are watched and cancelled after 45 minutes with clear error messaging, and Arrow→pandas conversions sanitize timestamp/date columns before raising a dedicated error. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
-
-- **dbt orc**
-  - **Artifact handling upgrades**: Conformance and partial-parse artifacts upload as binary-safe payloads, emit per-upload size metrics, and Mantle resource-query parsing is centralized for reuse across dispatcher components. <!-- https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
 
 - **Notifications system**
   - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier. <!-- https://github.com/dbt-labs/notifications-system/compare/6aa8df34c76637ac4df4f2753e8d210be478ee50...1a11cb0f15e55d8243e9f5a2eb0ccf85c870f4ed -->
@@ -99,7 +93,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Stricter query validation & timeouts**: Unsupported `metric_time` grains now fail fast instead of silently downgrading, and long-running tasks are cancelled after 45 minutes with explicit timeout messaging, preventing hung jobs. <!-- https://github.com/dbt-labs/metricflow-server/compare/4ba6d0f...5d5febc -->
 
 - **dbt orc**
-  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). <!-- https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
+  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). <!-- reviewed by bianca ✅ https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
 
 ## December 10, 2025
 
