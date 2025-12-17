@@ -7,11 +7,16 @@ icon: 'zap'
 hide_table_of_contents: true
 tags: ['dbt Fusion engine', 'dbt platform','Upgrade']
 recently_updated: true
+intro_text: This guide helps you implement an in-place upgrade from the latest version of dbt Core to the dbt Fusion engine in the dbt platform.
 ---
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 
-## Introduction <Lifecycle status="private_preview" />
+## Introduction 
+
+import FusionPreview from '/snippets/_fusion-private-preview.md';
+
+<FusionPreview />
 
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and moving to it is the same as upgrading between <Constant name="core" /> versions in the <Constant name="dbt_platform" />. Once your project is <Constant name="fusion" /> ready, it's only a matter of pulling a few levers to make the move, but you have some flexibility in how you do so, especially in your development environments. 
 
@@ -94,6 +99,12 @@ Even if you resolved deprecations in Part 1, run a final check to ensure nothing
 3. Review the results:
    - **No warnings found**: Skip to Step 4 to continue upgrading.
    - **Warnings found**: Continue to Step 3 to resolve them.
+
+:::info Inconsistent Fusion warnings and `dbt-autofix` logs
+
+You may see <Constant name="fusion" /> deprecation warnings about packages not being compatible with <Constant name="fusion" />, while `dbt autofix` indicates they are compatible. Use `dbt autofix` as the source of truth because it has additional context that <Constant name="fusion" /> warnings don't have yet. This conflict is temporary and will be resolved as soon as we implement and roll out `dbt-autofix`'s enhanced compatibility detection to <Constant name="fusion" /> warnings. 
+
+:::
 
 ### Step 3: Resolve remaining deprecations
 

@@ -19,6 +19,10 @@ Connecting your GitHub account to <Constant name="cloud" /> provides convenience
 - The GitHub organization owner requires [_Owner_](/docs/cloud/manage-access/self-service-permissions) or [_Account Admin_](/docs/cloud/manage-access/enterprise-permissions) permissions when they log into <Constant name="cloud" /> to integrate with a GitHub environment using organizations.
 - You may need to temporarily provide an extra <Constant name="cloud" /> user account with _Owner_ or _Account Admin_ [permissions](/docs/cloud/manage-access/enterprise-permissions) for your GitHub organization owner until they complete the installation.
 
+:::important Case-sensitive repository names
+When specifying a GitHub repository in the <Constant name="dbt_platform" /> using the UI, API, or Terraform provider, the repository name must exactly match the case used in the GitHub URL to avoid cloning errors or job failures. For example, if the URL of your repository is `github.com/my-org/MyRepo`, enter the name as `MyRepo`, not `myrepo`.
+:::
+
 ## Installing dbt in your GitHub account
 
 You can connect your <Constant name="cloud" /> account to GitHub by installing the <Constant name="cloud" /> application in your GitHub organization and providing access to the appropriate repositories. 
@@ -30,13 +34,13 @@ To connect your <Constant name="cloud" /> account to your GitHub account:
 
 3. Scroll down to **Linked accounts**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect-1.png" title="Navigated to Linked Accounts under your profile"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-connect-1.png" width= "80%" title="Navigated to Linked Accounts under your profile"/>
 
 4. In the **Linked accounts** section, set up your GitHub account connection to <Constant name="cloud" /> by clicking **Link** to the right of GitHub. This redirects you to your account on GitHub where you will be asked to install and configure the <Constant name="cloud" /> application. 
 
 5. Select the GitHub organization and repositories <Constant name="cloud" /> should access.
 
-   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" title="Installing the dbt application into a GitHub organization"/>
+   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" width="50%" title="Installing the dbt application into a GitHub organization"/>
 
 6. Assign the <Constant name="cloud" /> GitHub App the following permissions:
    - Read access to metadata

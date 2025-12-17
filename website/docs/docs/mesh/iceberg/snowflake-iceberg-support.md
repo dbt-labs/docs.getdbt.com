@@ -416,8 +416,8 @@ For example, in the following model config, `base_location_root`=`bar` overrides
 config(
     materialized='table',
     catalog_name='catalog_horizon',
-    'base_location_root': 'foo',
-    'base_location_subpath': 'bar',
+    base_location_root='foo',
+    base_location_subpath='bar',
     adapter_properties={
       'base_location_root': 'bar',
     },

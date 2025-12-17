@@ -115,20 +115,6 @@ PrivateLink provides a secure and private connection between your organization's
 
 IP restrictions (IP allowlist/blocklist) let organizations control which IPs can access their <Constant name="cloud" /> account.
 
-## Cost remediation tooling <Lifecycle status="Enterprise+"/>
-
-Cost remediation tooling helps organizations identify and resolve inefficiencies that lead to unnecessary data platform expenses &mdash; especially in cloud data warehouses.
-
-Cost remediation is one of the three pillars of managing costs:
-
-- Monitoring (to see costs)
-
-- Avoidance (to prevent costs)
-
-- Remediation (to fix existing issues)
-
-It identifies cost inefficiencies, suggests optimizations, streamlines issue resolution through workflows, and aims to automate fixes with minimal effort.
-
 ## Projects and run slots 
 
 The number of projects and run slots available to your organization varies based on your selected plan tier. For detailed information, please refer to our [pricing page](https://www.getdbt.com/pricing).

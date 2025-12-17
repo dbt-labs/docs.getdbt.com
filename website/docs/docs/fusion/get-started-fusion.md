@@ -16,19 +16,22 @@ Upgrade your existing projects to the <Constant name="fusion_engine" /> and lear
     title="dbt VS Code extension"
     body="Add the dbt VS Code extension to your existing development workflows for both dbt platform and the CLI."
     link="/docs/install-dbt-extension"
-    icon="dbt-bit"/>
+    icon="dbt-bit"
+    lifecycle="preview"/>
 
 <Card
     title="Guide: Prepare to upgrade to Fusion"
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to Fusion."
     link="/guides/prepare-fusion-upgrade"
-    icon="dbt-bit"/>
+    icon="dbt-bit"
+    lifecycle="private_preview"/>
 
 <Card
     title="Guide: Upgrade to Fusion"
     body="Learn how to upgrade your eligible projects on the dbt platform to the Fusion engine with this comprehensive guide."
     link="/guides/upgrade-to-fusion"
-    icon="dbt-bit"/>
+    icon="dbt-bit"
+    lifecycle="private_preview"/>
 
 </div>
 
@@ -42,13 +45,15 @@ Once you've caught up on everything [<Constant name="fusion" /> has to offer](/d
     title="Install Fusion + VS Code extension"
     body="Learn how to install and configure our most robust set of tools for local development."
     link="/docs/fusion/install-dbt-extension"
-    icon="dbt-bit"/>
+    icon="dbt-bit"
+    lifecycle="preview"/>
 
 <Card
     title="Install Fusion CLI only"
     body="Learn how to install and configure the dbt Fusion engine from your command line."
     link="/docs/fusion/install-fusion-cli"
-    icon="dbt-bit"/>
+    icon="dbt-bit"
+    lifecycle="preview"/>
 
 <Card
     title="Sign up for the dbt platform"

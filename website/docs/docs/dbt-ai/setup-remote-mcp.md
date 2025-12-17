@@ -26,7 +26,7 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
   - **dbt Cloud host**: Use this to form the full URL. For example, replace `<host>` here: `https://<host>/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `<ACCOUNT_PREFIX>.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions.
+  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions. Note: to use functionality that requires the `x-dbt-user-id` header, a personal access token is required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 

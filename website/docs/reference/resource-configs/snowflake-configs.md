@@ -373,7 +373,7 @@ create or replace table my_database.my_schema.my_table as (
 
 ### Dynamic table clustering
 
-Starting in <Constant name="core"/> v1.10, dynamic tables support the `cluster_by` configuration. When set, dbt includes the clustering specification in the `CREATE DYNAMIC TABLE` statement.
+Starting in <Constant name="core"/> v1.11, dynamic tables support the `cluster_by` configuration. When set, dbt includes the clustering specification in the `CREATE DYNAMIC TABLE` statement.
 
 For example:
 

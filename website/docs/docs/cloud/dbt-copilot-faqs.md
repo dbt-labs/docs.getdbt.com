@@ -20,8 +20,6 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/use-canvas), and [<Constant name="query_page" />](/docs/explore/dbt-insights).
 
-<Constant name="copilot"/> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
-
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Copilot?">

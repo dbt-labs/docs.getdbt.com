@@ -30,9 +30,14 @@ on-run-start:
   - '{{ log("I will stop at the first sign of trouble", info = true) if flags.FAIL_FAST }}'
 ```
 
-Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
+
 
 ## Available flags
+Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
+
+
+
+<FilterableTable>
 
 | Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in <Constant name="cloud_cli" />? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
@@ -79,3 +84,5 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [warn_error_options](/reference/global-configs/warnings) | dict | {} | ✅ | `DBT_WARN_ERROR_OPTIONS` | `--warn-error-options` | ✅ |
 | [warn_error](/reference/global-configs/warnings) | boolean | False | ✅ | `DBT_WARN_ERROR` | `--warn-error` | ✅ |
 | [write_json](/reference/global-configs/json-artifacts) | boolean | True | ✅ | `DBT_WRITE_JSON` | `--write-json`, `--no-write-json` | ✅ |
+
+</FilterableTable>
