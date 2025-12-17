@@ -4,7 +4,7 @@ id: "job-notifications"
 description: "Set up notifications in dbt to receive email or Slack alerts about job run status."
 ---
 
-Set up notifications in <Constant name="cloud" /> to receive alerts about the status of a job run. You can choose to be notified by one or more of the following job run statuses: 
+Set up notifications in <Constant name="dbt_platform" /> to receive alerts about the status of a job run. You can choose to be notified by one or more of the following job run statuses: 
 
 - **Succeeds** option &mdash; A job run completed successfully with no warnings or errors.
 - **Warns** option &mdash; A job run encountered warnings from [data tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks (if applicable).
@@ -14,7 +14,7 @@ Set up notifications in <Constant name="cloud" /> to receive alerts about the st
 ### Notification options
 <!-- temp list for now until private betas go ga -->
 
-<Constant name="cloud" /> currently supports the following notification channels:
+<Constant name="dbt_platform" /> currently supports the following notification channels:
 
 - [Email](#email-notifications) &mdash; Available for all users
 - [Slack (user-linked)](#slack-notifications) &mdash; Available for all users
