@@ -62,3 +62,5 @@ select * from events where event_type = '{{ var("event_type", "activation") }}'
 ```
 
 </File>
+
+<!-- this is a test -->
