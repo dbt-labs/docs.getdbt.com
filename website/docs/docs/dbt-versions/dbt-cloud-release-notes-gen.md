@@ -22,12 +22,8 @@ Release notes are grouped by date for single-tenant environments.
 
 ### New
 
-- **dbt platform**
-  - **Cost Insights surfaces & controls**: Project Home now shows a Cost Insights card with cost/run/model-build tabs, CSV/table exports, and deployment-period filters, while workspace admins can toggle the capability and wire it into platform metadata credentials directly inside settings, so single-tenant teams can track Fusion savings without leaving the UI. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
-
 - **dbt Cloud app**
   - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
-  - **Cost Insights metadata inventory**: Platform metadata credentials now carry a `cost_insights_enabled` flag and a gRPC endpoint lists the cross-account environments tied to those connections, giving managed tenants a programmatic inventory of where warehouse spend telemetry will originate. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
   - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
 
 - **dbt Cloud CLI**
