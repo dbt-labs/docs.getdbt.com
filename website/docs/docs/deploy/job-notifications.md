@@ -11,7 +11,8 @@ Set up notifications in <Constant name="cloud" /> to receive alerts about the st
 - **Fails** option &mdash; A job run failed to complete. 
 - **Is canceled** option &mdash; A job run is canceled.
 
-## Notification methods
+### Notification options
+<!-- temp list for now until private betas go ga -->
 
 <Constant name="cloud" /> currently supports the following notification channels:
 
