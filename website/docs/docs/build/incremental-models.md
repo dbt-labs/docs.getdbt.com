@@ -90,6 +90,9 @@ import Incrementalpredicates from '/snippets/_incremental-predicates.md';
 
 <Incrementalpredicates />
 
+<!-- This is a test comment -->
+<!-- User feedback: The current implementation of incremental_predicates may not fully address real-world use cases where users want to add conditions to the WHEN MATCHED statement rather than just the overall join criteria in MERGE operations -->
+
 ### Defining a unique key
 
 Defining the optional [`unique_key` parameter](/reference/resource-configs/unique_key) enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
