@@ -23,7 +23,7 @@ You will learn, at a high level, the resources necessary to implement this solut
 
 ### Required resources for creating a connection
 
-Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
+Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity.
 
 This approach is distinct from and does not require you to implement VPC peering between your AWS account(s) and <Constant name="cloud" />.
 
@@ -71,11 +71,11 @@ Once the VPC Endpoint Service is provisioned and configured find the service nam
  <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
 :::note Custom DNS configuration
- 
+
 If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the <Constant name="cloud" /> private network. For example:
     - Private hosted zone: examplecorp.com
     - DNS record: github.examplecorp.com
-    
+
 :::
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
@@ -104,7 +104,7 @@ Once you accept the endpoint connection request, you can use the PrivateLink end
 
 ## Configure in dbt
 
-Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
+Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration.
 
 **To configure a new git integration with PrivateLink:**
 
@@ -113,15 +113,15 @@ Once dbt confirms that the PrivateLink integration is complete, you can use it i
 3. Name your project and configure your development environment.
 4. Under **Set up repository**, click **Git clone**.
 5. Select **PrivateLink Endpoint** as the connection type.
-    Your configured integrations will appear in the dropdown menu. 
+    Your configured integrations will appear in the dropdown menu.
 6. Select the configured endpoint from the dropdown list.
 7. Click **Save**.
 
-**To configure an existing git integration with PrivateLink:** 
+**To configure an existing git integration with PrivateLink:**
 
 1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Integrations**.
 2. Under **Gitlab**, select **PrivateLink Endpoint** as the connection type.
-    Your configured integrations will appear in the dropdown menu. 
+    Your configured integrations will appear in the dropdown menu.
 3. Select the configured endpoint from the dropdown list.
 4. Click **Save**.
 

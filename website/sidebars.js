@@ -228,6 +228,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/az-synapse-private-link",
                 "docs/cloud/secure/bigquery-psc",
                 "docs/cloud/secure/vcs-privatelink",
+                "docs/cloud/secure/gcp-self-hosted-psc",
               ],
             }, // PrivateLink
           ],
@@ -240,7 +241,7 @@ const sidebarSettings = {
           items: [
             "docs/about-dbt-install",
             "docs/core/dbt-core-environments",
-             {
+            {
               type: "category",
               label: "Install dbt Fusion engine",
               link: { type: "doc", id: "docs/fusion/about-fusion-install" },
@@ -653,7 +654,7 @@ const sidebarSettings = {
           ],
         },
         "docs/deploy/continuous-deployment",
-          {
+        {
           type: "category",
           label: "State aware",
           link: { type: "doc", id: "docs/deploy/state-aware-about" },
@@ -826,13 +827,13 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
-          "docs/dbt-ai/about-mcp",
-          "docs/dbt-ai/setup-local-mcp",
-          "docs/dbt-ai/setup-remote-mcp",
-          "docs/dbt-ai/integrate-mcp-vscode",
-          "docs/dbt-ai/integrate-mcp-cursor",
-          "docs/dbt-ai/integrate-mcp-claude",
-          ],
+        "docs/dbt-ai/about-mcp",
+        "docs/dbt-ai/setup-local-mcp",
+        "docs/dbt-ai/setup-remote-mcp",
+        "docs/dbt-ai/integrate-mcp-vscode",
+        "docs/dbt-ai/integrate-mcp-cursor",
+        "docs/dbt-ai/integrate-mcp-claude",
+      ],
     },
     {
       type: 'html',
@@ -948,63 +949,63 @@ const sidebarSettings = {
     },
   ],
   apis: [
-      "docs/dbt-cloud-apis/overview",
-      {
-        type: "category",
-        label: "API Access",
-        link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
-        items: [
-          "docs/dbt-cloud-apis/authentication",
-          "docs/dbt-cloud-apis/user-tokens",
-          "docs/dbt-cloud-apis/service-tokens",
-        ],
-      },
-      {
-        type: "category",
-        label: "Administrative API",
-        link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
-        items: [
-          "docs/dbt-cloud-apis/admin-cloud-api",
-          {
-            type: "link",
-            label: "API v2",
-            href: "/dbt-cloud/api-v2",
+    "docs/dbt-cloud-apis/overview",
+    {
+      type: "category",
+      label: "API Access",
+      link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
+      items: [
+        "docs/dbt-cloud-apis/authentication",
+        "docs/dbt-cloud-apis/user-tokens",
+        "docs/dbt-cloud-apis/service-tokens",
+      ],
+    },
+    {
+      type: "category",
+      label: "Administrative API",
+      link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
+      items: [
+        "docs/dbt-cloud-apis/admin-cloud-api",
+        {
+          type: "link",
+          label: "API v2",
+          href: "/dbt-cloud/api-v2",
+        },
+        {
+          type: "link",
+          label: "API v3",
+          href: "/dbt-cloud/api-v3",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Discovery API",
+      link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
+      items: [
+        "docs/dbt-cloud-apis/discovery-api",
+        "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
+        "docs/dbt-cloud-apis/project-state",
+        "docs/dbt-cloud-apis/discovery-querying",
+        {
+          type: "category",
+          label: "Schema",
+          link: {
+            type: "doc",
+            id: "docs/dbt-cloud-apis/discovery-schema-about",
           },
-          {
-            type: "link",
-            label: "API v3",
-            href: "/dbt-cloud/api-v3",
-          },
-        ],
-      },
-      {
-        type: "category",
-        label: "Discovery API",
-        link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
-        items: [
-          "docs/dbt-cloud-apis/discovery-api",
-          "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
-          "docs/dbt-cloud-apis/project-state",
-          "docs/dbt-cloud-apis/discovery-querying",
-          {
-            type: "category",
-            label: "Schema",
-            link: {
-              type: "doc",
-              id: "docs/dbt-cloud-apis/discovery-schema-about",
-            },
-            items: [
-              "docs/dbt-cloud-apis/discovery-schema-about",
-              {
-                type: "category",
-                label: "Environment (recommended)",
-                link: {
-                  type: "doc",
-                  id: "docs/dbt-cloud-apis/discovery-schema-environment",
-                },
-                items: [
-                 "docs/dbt-cloud-apis/discovery-schema-environment",
-                 {
+          items: [
+            "docs/dbt-cloud-apis/discovery-schema-about",
+            {
+              type: "category",
+              label: "Environment (recommended)",
+              link: {
+                type: "doc",
+                id: "docs/dbt-cloud-apis/discovery-schema-environment",
+              },
+              items: [
+                "docs/dbt-cloud-apis/discovery-schema-environment",
+                {
                   type: "category",
                   label: "Applied",
                   link: {
@@ -1028,57 +1029,57 @@ const sidebarSettings = {
                     "docs/dbt-cloud-apis/discovery-schema-environment-applied-lineage",
                   ],
                 },
-                  "docs/dbt-cloud-apis/discovery-schema-environment-definition",
-                ],
+                "docs/dbt-cloud-apis/discovery-schema-environment-definition",
+              ],
+            },
+            // Uncomment to add Definition subpage, but need to make items non-empty
+            // {
+            //   type: "category",
+            //   label: "Definition",
+            //   items: [
+            //     // insert pages here
+            //   ],
+            // },
+            {
+              type: "category",
+              label: "Job",
+              link: {
+                type: "doc",
+                id: "docs/dbt-cloud-apis/discovery-schema-job",
               },
-                // Uncomment to add Definition subpage, but need to make items non-empty
-                // {
-                //   type: "category",
-                //   label: "Definition",
-                //   items: [
-                //     // insert pages here
-                //   ],
-                // },
-              {
-                type: "category",
-                label: "Job",
-                link: {
-                  type: "doc",
-                  id: "docs/dbt-cloud-apis/discovery-schema-job",
-                },
-                items: [
-                  "docs/dbt-cloud-apis/discovery-schema-job",
-                  "docs/dbt-cloud-apis/discovery-schema-job-model",
-                  "docs/dbt-cloud-apis/discovery-schema-job-models",
-                  "docs/dbt-cloud-apis/discovery-schema-job-source",
-                  "docs/dbt-cloud-apis/discovery-schema-job-sources",
-                  "docs/dbt-cloud-apis/discovery-schema-job-seed",
-                  "docs/dbt-cloud-apis/discovery-schema-job-seeds",
-                  // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
-                  "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
-                  "docs/dbt-cloud-apis/discovery-schema-job-test",
-                  "docs/dbt-cloud-apis/discovery-schema-job-tests",
-                  "docs/dbt-cloud-apis/discovery-schema-job-exposure",
-                  "docs/dbt-cloud-apis/discovery-schema-job-exposures",
-                  // "docs/dbt-cloud-apis/discovery-schema-job-macro",
-                  // "docs/dbt-cloud-apis/discovery-schema-job-macros",
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        type: "category",
-        label: "Semantic Layer APIs",
-        link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
-        items: [
-          "docs/dbt-cloud-apis/sl-api-overview",
-          "docs/dbt-cloud-apis/sl-graphql",
-          "docs/dbt-cloud-apis/sl-jdbc",
-          "docs/dbt-cloud-apis/sl-python",
-        ],
-      },
+              items: [
+                "docs/dbt-cloud-apis/discovery-schema-job",
+                "docs/dbt-cloud-apis/discovery-schema-job-model",
+                "docs/dbt-cloud-apis/discovery-schema-job-models",
+                "docs/dbt-cloud-apis/discovery-schema-job-source",
+                "docs/dbt-cloud-apis/discovery-schema-job-sources",
+                "docs/dbt-cloud-apis/discovery-schema-job-seed",
+                "docs/dbt-cloud-apis/discovery-schema-job-seeds",
+                // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
+                "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
+                "docs/dbt-cloud-apis/discovery-schema-job-test",
+                "docs/dbt-cloud-apis/discovery-schema-job-tests",
+                "docs/dbt-cloud-apis/discovery-schema-job-exposure",
+                "docs/dbt-cloud-apis/discovery-schema-job-exposures",
+                // "docs/dbt-cloud-apis/discovery-schema-job-macro",
+                // "docs/dbt-cloud-apis/discovery-schema-job-macros",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Semantic Layer APIs",
+      link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
+      items: [
+        "docs/dbt-cloud-apis/sl-api-overview",
+        "docs/dbt-cloud-apis/sl-graphql",
+        "docs/dbt-cloud-apis/sl-jdbc",
+        "docs/dbt-cloud-apis/sl-python",
+      ],
+    },
   ],
   reference: [
     "reference/references-overview",
@@ -1634,7 +1635,7 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-2-who-is-dbt-mesh-for",
             "best-practices/how-we-mesh/mesh-3-structures",
             "best-practices/how-we-mesh/mesh-4-implementation",
-            "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
+            "best-practices/how-we-mesh/mesh-6-coordinate-versions",
             "best-practices/how-we-mesh/mesh-5-faqs",
           ],
         },
