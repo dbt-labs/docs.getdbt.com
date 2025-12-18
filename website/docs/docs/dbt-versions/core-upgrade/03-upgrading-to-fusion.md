@@ -352,6 +352,25 @@ return('xyzabc')
 {% endmacro %}
 ```
 
+### Updated config.get() to surface top level meta keys
+
+The `config.get()` and `config.require()` Jinja methods now automatically check the `meta` dictionary when a key isn't found in the main config. This allows you to access custom metadata fields directly without having to navigate into `config.meta`.
+
+Before, you had to explicitly access meta fields:
+
+```jinja
+{% set my_value = config.get('meta', {}).get('my_key') %}
+```
+Now, meta keys are surfaced automatically:
+
+```jinja
+{% set my_value = config.get('my_key') %}
+```
+
+The lookup order is as follows:
+1. Checks `config`.
+2. If not found, checks `config.meta`.
+
 ### Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
