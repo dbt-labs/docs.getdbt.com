@@ -232,3 +232,5 @@ saved-queries:
 
 ## Definition
 The `config` property allows you to configure resources at the same time you're defining properties in YAML files.
+
+<!-- this is a test -->
