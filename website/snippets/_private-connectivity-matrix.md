@@ -1,31 +1,48 @@
 ## Private connectivity feature matrix
 
-The following feature chart outlines the availability of private connectivity features across <constant name="dbt_platform" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) instances <br /> <br />
-✅ = Available | ❌ = Not currently supported | \- = Not applicable <br/>
+The following feature charts outline the availability of private connectivity features across <constant name="dbt_platform" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) instances.
 
-| Connectivity type                                 | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
-|:--------------------------------------------------|:------:|:------:|:--------:|:--------:|:--------:|
-| <b>INGRESS (to <Constant name="cloud" />)</b>                     |        |        |          |          |          |
-| Private <Constant name="cloud" /> Ingress                         |   ❌   |   ✅   |    ❌    |    ✅    |    ❌    |
-| Dual <Constant name="cloud" /> Ingress                            |   ❌   |   ✅   |    ❌    |    ❌    |    ❌    |
-| <b>EGRESS - DW (from <Constant name="cloud" />)</b>               |        |        |          |          |          |
-| Snowflake                                         |   ✅   |   ✅   |    ✅    |    ✅    |    ✅    |
-| - Snowflake Internal Stage                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| Databricks                                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| Postgres (via load balancer)                      |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| Azure Database for PostgreSQL Flexible Server     |   -    |   -    |    ✅    |    ✅    |    -     |
-| Redshift (Interface)                              |   ✅   |   ✅   |    -     |    -     |    -     |
-| Redshift (Managed)                                |   ✅   |   ✅   |    -     |    -     |    -     |
-| Redshift Severless (Interface)                    |   ✅   |   ✅   |    -     |    -     |    -     |
-| Redshift Serverless (Managed)                     |   ✅   |   ✅   |    -     |    -     |    -     |
-| Amazon Athena w/ AWS Glue                         |   ❌   |   ✅   |    -     |    -     |    -     |
-| Azure Synapse                                     |   -    |   -    |    ✅    |    ✅    |    -     |
-| Azure Fabric (cross-tenant not supported by Azure)|   -    |   -    |    ❌    |    ❌    |    -     |
-| Google BigQuery                                   |   -    |   -    |    -     |    -     |    ✅    |
-| Teradata - Database Server                        |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| <b>EGRESS - VCS (from <Constant name="cloud" />)</b>              |        |        |          |          |          |
-| GitHub Enteprise Server                           |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| GitLab Enterprise                                 |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| BitBucket                                         |   ✅   |   ✅   |    ✅    |    ✅    |    ❌    |
-| AWS CodeCommit                                    |   ❌   |   ✅   |    -     |    -     |    -     |
-| Azure DevOps Repos (not supported by Azure)       |   -    |   -    |    ❌    |    ❌    |    -     |
+**Legend:**
+- ✅ = Available
+- ❌ = Not currently supported
+- \- = Not applicable
+
+### Ingress into dbt Cloud
+
+| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
+|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
+| Private <Constant name="cloud" /> Ingress | ❌ | ✅ | ❌ | ✅ | ❌ |
+| Dual <Constant name="cloud" /> Ingress | ❌ | ✅ | ❌ | ❌ | ❌ |
+
+---
+
+### Egress from dbt Cloud to services managed by Cloud Provider or 3rd party
+
+| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
+|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
+| **Amazon Athena** w/ AWS Glue | ❌ | ✅ | - | - | - |
+| **AWS CodeCommit** | ❌ | ✅ | - | - | - |
+| **Azure Database for PostgreSQL Flexible Server** | - | - | ✅ | ✅ | - |
+| **Azure DevOps Repos**<br/>(not supported by Azure) | - | - | ❌ | ❌ | - |
+| **Azure Fabric**<br/>(cross-tenant not supported by Azure) | - | - | ❌ | ❌ | - |
+| **Azure Synapse** | - | - | ✅ | ✅ | - |
+| **Databricks** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Google BigQuery** | - | - | - | - | ✅ |
+| **Redshift (Interface)** | ✅ | ✅ | - | - | - |
+| **Redshift (Managed)** | ✅ | ✅ | - | - | - |
+| **Redshift Serverless (Interface)** | ✅ | ✅ | - | - | - |
+| **Redshift Serverless (Managed)** | ✅ | ✅ | - | - | - |
+| **Snowflake** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| &nbsp;&nbsp;Snowflake Internal Stage | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Teradata** | ✅ | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+### Egress from dbt Cloud to Self-Hosted service
+
+| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
+|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
+| **BitBucket** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **GitHub Enterprise Server** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **GitLab Enterprise** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Postgres** | ✅ | ✅ | ✅ | ✅ | ❌ |
