@@ -23,58 +23,51 @@ Release notes are grouped by date for single-tenant environments.
 ### New
 
 - **dbt platform**
-  - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
-  - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
-
-- **dbt CLI**
-  - **Invocation-specific retention overrides**: Both the HTTP API and Python client accept a `ttl_seconds` parameter when launching runs, so artifacts and events from short-lived single-tenant jobs can be purged as soon as the override expires instead of waiting on the global retention window. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
+  - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs. 
+  - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters. 
 
 ### Enhancements
 
 - **dbt platform**
-  - **Profile connection overrides**: Fusion profile pages show read-only connection values and allow warehouse/role/database overrides per environment, consolidating tuning for multi-profile tenants. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
-  - **Large list pagination**: Credential pickers and workspace project cards paginate after 25 rows (with search boxes and skeleton states), keeping navigation responsive for very large single-tenant deployments. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
-
+  - **Large list pagination**: Settings's Projects and Credentials now paginate after 25 rows (with search boxes and skeleton states), keeping navigation responsive for large deployments.
 - **Metadata Explorer**
-  - **Model context & lineage polish**: Model panels now show materialization type, lineage renders metadata strips only when content exists, and upstream public-model columns load automatically for better cross-project visibility. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-metadata-ui-20248398200 -->
-  - **Freshness clarity & Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-metadata-ui-20248398200 -->
+  - **Model context & lineage polish**: Model panels now show materialization type, lineage renders metadata strips only when content exists, and upstream public-model columns load automatically for better cross-project visibility.
+  - **Freshness clarity & Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio.
 
 - **Insights UI**
-  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. <!-- reviewed by mirna ✅ https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-insights-ui-20248398200 -->
-
+  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. 
 - **dbt CLI**
-  - **Monorepo-friendly file sync** (& IDE): Invocation file sync roots itself in the invocation directory, reruns dependency installs for nested `dependencies.yml`, and the IDE's LSP/file sync honors dbt subdirectories while keeping exclusion lists accurate. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 --> <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-ide-server-20248398200 -->
-
+  - **Improved monorepo support for file sync and the IDE**:
+    - File sync now anchors itself to the invocation directory, making monorepo structures behave more predictably.
+    - Nested `dependencies.yml` files correctly trigger dependency installs.
+    - The IDE’s LSP and file sync now recognize dbt subdirectories properly.
+    - Exclusion lists remain accurate even in multi-project repositories.
 - **Notifications system**
-  - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier. <!-- https://github.com/dbt-labs/notifications-system/compare/6aa8df34c76637ac4df4f2753e8d210be478ee50...1a11cb0f15e55d8243e9f5a2eb0ccf85c870f4ed -->
+  - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier. 
 
 - **Studio**
-  - **dbt-themed editor & Monaco 11**: A new feature flag enables dbt-branded VS Code theming inside the embedded workbench, and Monaco 11 brings upstream editor fixes plus better syntax coloring. <!-- https://github.com/dbt-labs/studio/compare/11ed3b092efe17a745062af5a100a25077182f08...b96257ab99208174d6bb8bd17d25ba0c88bd20c2 -->
-  - **Git sidebar + file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload. <!-- https://github.com/dbt-labs/studio/compare/11ed3b092efe17a745062af5a100a25077182f08...b96257ab99208174d6bb8bd17d25ba0c88bd20c2 -->
-  - **Log viewers & autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in Fusion treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent. <!-- https://github.com/dbt-labs/studio/compare/11ed3b092efe17a745062af5a100a25077182f08...b96257ab99208174d6bb8bd17d25ba0c88bd20c2 -->
+  - **Git sidebar + file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload.
+  - **Log viewers & Autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in Fusion treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent.
 
 ### Fixes
 
 - **dbt platform**
-  - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
-  - **Cost optimization indicator accuracy**: Job pages once again display “Cost optimization features” whenever Fusion actually ran (and gating conditions are met), so customers see the right coverage status regardless of feature-flag permutations. <!-- https://github.com/dbt-labs/cloud-ui/compare/2717141a98fa3d56a1d08192798d43074d4f6ea3...6784e4a5969c83a5e129f78d710811125f364b8e -->
+  - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides. 
+  - **Cost optimization indicator accuracy**: Job pages once again display “Cost optimization features” whenever Fusion actually ran (and gating conditions are met), so customers see the right coverage status regardless of feature-flag permutations. 
 
 ### Behavior changes
 
 - **dbt platform**
-  - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can’t be targeted), reducing misconfiguration risk. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-app-20248398200 -->
+  - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can’t be targeted), reducing misconfiguration risk. 
 
 - **dbt CLI**
-  - **User-isolated invocation history**: Every invocation lookup validates the caller’s user ID, preventing admins from accidentally reading another developer’s runs when multiple accounts share a CLI server. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-dbt-cloud-cli-server-20248398200 -->
-
+  - **User-isolated invocation history**: Every invocation lookup validates the caller’s user ID, preventing admins from accidentally reading another developer’s runs when multiple accounts share a CLI server. 
 - **IDE server**
   - **Support-impersonation guardrails & short-lived show artifacts**: Operators who “hijack” a customer session can no longer run show/run/build/test commands, and `dbt show` artifacts expire after 15 minutes to protect sensitive data. <!-- https://github.com/dbt-labs/helm-releases/tree/main/combined-diffs/diff-ide-server-20248398200 -->
-
-- **Notifications**
-  - **Event taxonomy update**: Webhook payloads emit canonical `job.run.started|errored|canceled|completed` event types instead of the legacy `on_*` strings; update downstream filters accordingly. <!-- https://github.com/dbt-labs/notifications-system/compare/6aa8df34c76637ac4df4f2753e8d210be478ee50...1a11cb0f15e55d8243e9f5a2eb0ccf85c870f4ed -->
+  - **Enhanced security for support-assisted sessions:** Support impersonation sessions now restrict the execution of `show`, `run`, `build`, and `test` commands. Artifacts generated by `dbt show` are also short-lived and will automatically expire after 15 minutes to limit unintended data retention.
 
 - **dbt orc**
-  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). <!-- reviewed by bianca ✅ https://github.com/dbt-labs/dbt-orc/compare/f950dc9cd1507d7c0ac22e4676f887255fc5b940...dc05d7e6bbfedc100e3afbf6aa66c356e56674ec -->
+  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). 
 
 ## December 10, 2025
 
