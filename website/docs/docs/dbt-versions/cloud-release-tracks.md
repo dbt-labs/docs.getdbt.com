@@ -34,11 +34,19 @@ Choose the "Compatible" and "Extended" release tracks if you need a less-frequen
 
 ### Using the Fallback release track
 
-The "Fallback" release track provides an emergency rollback option if you suspect a regression in the "Extended" release track. Only account admins can activate "Fallback", and it's enabled through a button in the dbt Cloud UI rather than as an environment configuration.
+The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. 
 
-TODO: add image of button?
+Enable it by going to **Account settings** and clicking the **Fallback** release track button in the <Constant name="dbt_platform" /> interface, rather than through environment settings.
 
-When you switch to "Fallback", our team is automatically notified and may reach out to help resolve the issue. This track is intended as a temporary measure to unblock you, not for ongoing use. We recommend returning to "Extended" or "Compatible" once the underlying issue is resolved.
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="Fallback release track button in dbt platform"/>
+
+<Lightbox src="/img/docs/dbt-versions/rollback-popup.png" width="80%" title="Fallback release track popup in dbt platform"/>
+
+</DocCarousel>
+
+Switching to **Fallback** alerts the dbt team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. You should return to "Extended" or "Compatible" once the issue is resolved.
 
 ### Common architectures
 
