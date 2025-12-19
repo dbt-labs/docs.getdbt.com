@@ -9,6 +9,7 @@ import { getSpotlightMember } from '../utils/get-spotlight-member';
 import Link from '@docusaurus/Link';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import StructuredData from '@site/src/components/StructuredData';
+import Translate from '@docusaurus/Translate';
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
@@ -81,33 +82,39 @@ function Home() {
         title="The dbt Developer Hub"
         description="Find everything you need to build, document, and collaborate with dbt — faster."
         url={siteConfig.url}
-        tags={['dbt', 'documentation', 'developer hub', 'data transformation']}
+        tags={["dbt", "documentation", "developer hub", "data transformation"]}
       />
       <Layout permalink="/">
         <div
           className="container container--fluid home"
-          style={{ padding: 0, background: '#FFF' }}
+          style={{ padding: 0, background: "#FFF" }}
         >
-          <header className="baton-hero baton-hero--compact">
-            <div className="container">
-              <div>
-                <h1 className="heading-1 heading-1--tight">The dbt Developer Hub</h1>
-                <p className="hero-subcopy">
-                Find everything you need to build, document, and collaborate with dbt &mdash; faster.
-                </p>
+            <header className="baton-hero baton-hero--compact">
+              <div className="container">
+                <div>
+                  <h1 className="heading-1 heading-1--tight">
+                    <Translate id="home.hero.title">
+                    The dbt Developer Hub
+                    </Translate>
+                  </h1>
+                  <p className="hero-subcopy">
+                    Find everything you need to build, document, and collaborate
+                    with dbt &mdash; faster.
+                  </p>
 
-                {/* quickstarts moved up with tightened spacing */}
-                <div className="hero-cta hero-cta--tight">
-                  <Link
-                    id="hero-vs-code-cta"
-                    className="hero-border-beam-cta"
-                    to="/docs/install-dbt-extension">
+                  {/* quickstarts moved up with tightened spacing */}
+                  <div className="hero-cta hero-cta--tight">
+                    <Link
+                      id="hero-vs-code-cta"
+                      className="hero-border-beam-cta"
+                      to="/docs/install-dbt-extension"
+                    >
                       <span>Install dbt VS Code extension + Fusion</span>
-                      </Link>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </header>
+            </header>
           <section className="section--compact home-quickstart">
             <div className="container">
               <div>
@@ -211,7 +218,10 @@ function Home() {
               <div>
                 <span className="eyebrow">Docs highlights</span>
                 <h2 className="heading-2">Dive deeper into dbt</h2>
-                <p>Learn best practices, explore detailed configuration references, or review our APIs.</p>
+                <p>
+                  Learn best practices, explore detailed configuration
+                  references, or review our APIs.
+                </p>
               </div>
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
@@ -223,20 +233,32 @@ function Home() {
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Guides</h4>
-                  <Link to="/guides/snowflake?step=1">Quickstart for dbt and Snowflake</Link>
-                  <Link to="/guides/databricks?step=1">Quickstart for dbt and Databricks</Link>
-                  <Link to="/guides/airflow-and-dbt-cloud?step=1">Airflow and dbt</Link>
+                  <Link to="/guides/snowflake?step=1">
+                    Quickstart for dbt and Snowflake
+                  </Link>
+                  <Link to="/guides/databricks?step=1">
+                    Quickstart for dbt and Databricks
+                  </Link>
+                  <Link to="/guides/airflow-and-dbt-cloud?step=1">
+                    Airflow and dbt
+                  </Link>
                   <Link to="/guides/debug-errors?step=1">Debugging errors</Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Reference Guides</h4>
                   <Link to="/reference/dbt-commands">Command Reference</Link>
-                  <Link to="/category/project-configs">Project Configurations</Link>
-                  <Link to="/reference/artifacts/dbt-artifacts">dbt Artifacts</Link>
+                  <Link to="/category/project-configs">
+                    Project Configurations
+                  </Link>
+                  <Link to="/reference/artifacts/dbt-artifacts">
+                    dbt Artifacts
+                  </Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Other Resources</h4>
-                  <Link to="/docs/dbt-versions/dbt-cloud-release-notes">Release Notes</Link>
+                  <Link to="/docs/dbt-versions/dbt-cloud-release-notes">
+                    Release Notes
+                  </Link>
                   <Link to="/blog">Developer Blog</Link>
                   <Link to="/community/join">Join the Community</Link>
                 </div>
@@ -249,7 +271,10 @@ function Home() {
               <div>
                 <span className="eyebrow">Get help from others</span>
                 <h2 className="heading-2">Join the dbt Community</h2>
-                <p>Connect with thousands of developers solving real data problems every day.</p>
+                <p>
+                  Connect with thousands of developers solving real data
+                  problems every day.
+                </p>
               </div>
               <div className="home-card-grid">
                 <Card
@@ -301,7 +326,10 @@ function Home() {
               <div>
                 <span className="eyebrow">From the team</span>
                 <h2 className="heading-2">Read the developer blog</h2>
-                <p>Deep dives, changelogs, best practices, and new feature highlights from dbt Labs.</p>
+                <p>
+                  Deep dives, changelogs, best practices, and new feature
+                  highlights from dbt Labs.
+                </p>
               </div>
               <div className="home-card-grid">
                 {recentBlogData.map((item) => (

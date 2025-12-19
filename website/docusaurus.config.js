@@ -114,10 +114,6 @@ var siteSettings = {
       },
       items: [
         {
-          type: "localeDropdown",
-          position: "left",
-        },
-        {
           label: "Docs",
           position: "right",
           items: [
@@ -201,6 +197,10 @@ var siteSettings = {
               to: "/community/spotlight",
             },
           ],
+        },
+        {
+          type: "localeDropdown",
+          position: "right",
         },
         {
           label: "Account",
