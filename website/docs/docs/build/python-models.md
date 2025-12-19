@@ -228,6 +228,44 @@ def model(dbt, session):
 
 </File>
 
+#### Accessing custom meta values
+
+To store custom values, use the [`meta` config](/reference/resource-configs/meta). For example, if you have a model named `my_python_model` and you want to store custom values, you can do the following:
+
+<File name='models/schema.yml'>
+
+```yml
+
+models:
+  - name: my_python_model
+    config:
+      meta:
+        custom_value: "111"
+        another_value: "abc"
+```
+
+</File>
+
+Then access them in your Python model using the `dbt.config.get()` method to access the `meta` object first and then access your custom values:
+
+<File name='models/my_python_model.py'>
+
+```python
+def model(dbt, session):
+    # First, get the meta object
+    meta = dbt.config.get("meta")
+    
+    # Then access your custom values from meta
+    custom_value = meta.get("custom_value")
+    another_value = meta.get("another_value")
+    
+    # Use your custom values in your model logic
+    orders_df = dbt.ref("fct_orders")
+    ...
+```
+
+</File>
+
 #### Dynamic configurations
 
 In addition to the existing methods of configuring Python models, you also have dynamic access to configuration values set with `dbt.config()` within Python models using f-strings. This increases the possibilities for custom logic and configuration management.

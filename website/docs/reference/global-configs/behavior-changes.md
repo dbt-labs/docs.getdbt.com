@@ -67,6 +67,7 @@ flags:
   require_all_warnings_handled_by_warn_error: False
   require_generic_test_arguments_property: True
   require_unique_project_resource_names: False
+  require_ref_searches_node_package_before_root: False
 ```
 
 </File>
@@ -89,6 +90,7 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
+| [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -374,3 +376,32 @@ DuplicateResourceNameError: Found resources with the same name 'sales' in packag
 ```
 
 When this error is raised, you should rename one of the resources, or refactor the project structure to avoid name conflicts.
+
+
+### Package `ref` search order
+
+The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package. 
+
+The flag is set to `False` by default in "Latest" and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
+
+For example, the following model in the package `my_package` is imported by the project `my_project`:
+
+<File name='my_package/model_downstream.sql'>
+
+```sql
+select * from {{ ref('model_upstream') }}
+```
+</File>
+
+By default, dbt searches for `model_upstream` in this order:
+1. First in `my_project` (root project)
+2. Then in `my_package` (where the model is defined)
+
+When you set the `require_ref_searches_node_package_before_root` flag to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+
+Using the same example, dbt searches for `model_upstream` in this order:
+1. First in `my_package` (where the model is defined)
+2. Then in `my_project` (root project)
+
+The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects. 
+

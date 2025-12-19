@@ -3,9 +3,6 @@ import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
 
-// Category keywords used to identify category/header rows in tables
-const CATEGORY_ROW_KEYWORDS = ['performance', 'experience', 'governance'];
-
 const stripMarkdown = (text) => {
   if (!text) return '';
   let strippedText = String(text).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
@@ -100,9 +97,8 @@ const parseTableFromDOM = (tableElement) => {
       });
       if (cells.length > 0) {
         const firstCellText = stripMarkdown(extractTextFromElement(tr.querySelector('td, th')));
-        const firstCellLower = firstCellText.toLowerCase();
-        const isCategoryRow = firstCellText.includes('**') || 
-                             CATEGORY_ROW_KEYWORDS.some(keyword => firstCellLower.includes(keyword));
+        // Category rows are identified by ** markdown bold markers
+        const isCategoryRow = firstCellText.includes('**');
         data.push({
           cells,
           isCategoryRow,
@@ -391,7 +387,7 @@ const FilterableTable = ({ children }) => {
 
         {hasActiveFilters && filteredData.length === 0 ? (
           <div className={styles.noResults}>
-            No rows match your search criteria. Try adjusting your filters.
+            DAG, no rows match your search criteria! Why don't you try changing your search or filters.
           </div>
         ) : (
           <table className={styles.filterableTable}>
