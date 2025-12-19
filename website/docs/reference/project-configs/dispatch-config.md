@@ -17,6 +17,8 @@ dispatch:
 
 </File>
 
+<!-- testing comments -->
+
 ## Definition
 
 Optionally override the [dispatch](/reference/dbt-jinja-functions/dispatch) search locations for macros in certain namespaces. If not specified, `dispatch` will look in your root project _first_, by default, and then look for implementations in the package named by `macro_namespace`.
