@@ -39,12 +39,14 @@ The following feature charts outline the availability of private connectivity fe
 ---
 
 ### Egress from dbt Cloud to Self-Hosted service
-There are some minimal prerequisites per Cloud (AWS, Azure, and GCP) which if a self-hosted service meets can be considered a supported connectivity type:
-- **For AWS:** The self-hosted service must be shared with dbt through [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html)
-- **For Azure:** The self-hosted service must be shared with dbt through [Azure PrivateLink](https://learn.microsoft.com/en-us/azure/private-link/create-private-link-service-portal?tabs=dynamic-ip)
-- **For GCP:** The self-hosted service must be shared with dbt through a [Private Service Connect (Service Attachment)](/docs/cloud/secure/gcp-self-hosted-psc)
 
-The table below is not a comprehensive list of all supported self-hosted services. The services listed have been tested and validated for private connectivity.
+Private connectivity is supported for most self-hosted services, provided they can be integrated with each cloud provider's private connectivity mechanism as a producer:
+
+- **AWS:** [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html)
+- **Azure:** [Azure PrivateLink](https://learn.microsoft.com/en-us/azure/private-link/create-private-link-service-portal?tabs=dynamic-ip)
+- **GCP:** [Private Service Connect (Service Attachment)](/docs/cloud/secure/gcp-self-hosted-psc)
+
+The table below lists some self-hosted services that have been tested and validated for private connectivity. This is not a comprehensive list—other services may be supported if they meet the integration requirements above.
 
 | Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
 |:------------------|:------:|:------:|:--------:|:--------:|:--------:|
