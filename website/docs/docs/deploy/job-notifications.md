@@ -18,8 +18,8 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 
 - [Email](#email-notifications) &mdash; Available for all users
 - [Slack (user-linked)](#slack-notifications) &mdash; Available for all users
-- [Slack (account-level)](#slack-notifications-account)  &mdash; Available in private beta. To request access, your account manager.
-- [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, your account manager.
+- [Slack (account-level)](#slack-notifications-account)  &mdash; Available in private beta. To request access, contact your account manager.
+- [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, contact your account manager.
 
 
 ## Email notifications
@@ -141,9 +141,10 @@ Integrate Slack with <Constant name="dbt_platform" /> at the account level to re
 #### Prerequisites
 
 - You have a Slack workspace that you want to receive job notifications from.
-- A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level in Account settings → Integrations.
+- A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
-- After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications.
+
+After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications.
 
 **Channels supported:**
   - Public channels are supported by default
@@ -210,7 +211,6 @@ dbt integrates with Teams through Microsoft Entra to provide secure authenticati
 Before you begin:
 - You must have a <Constant name="dbt_platform" /> account
 - You have a Microsoft Teams account that you want to receive job notifications from.
-- Contact your account manager to request access.
 - Make sure you have permission to view the **Account integrations** and **Job notifications** pages in <Constant name="dbt_platform" />.
 
 #### Set up Microsoft Teams
@@ -287,4 +287,4 @@ Disabling and unlinking the Teams integration in the <Constant name="dbt_platfor
 3. On the far right of the **Teams** integration, click the **X** icon.
 4. Confirm the unlinking by selecting **Unlink**.
 
-The Teams integration has been disabled.
+The Teams integration has been disabled. You can always re-enable the integration by following the [Set up Microsoft Teams](/deploy/job-notifications#set-up-microsoft-teams) steps.
