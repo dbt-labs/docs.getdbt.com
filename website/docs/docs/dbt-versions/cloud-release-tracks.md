@@ -46,7 +46,6 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 
 </DocCarousel>
 
-Switching to **Fallback** alerts the dbt team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. You should return to "Extended" or "Compatible" once the issue is resolved.
 
 ### Common architectures
 
