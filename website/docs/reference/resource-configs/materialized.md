@@ -90,4 +90,5 @@ Materializations are implemented following this "drop through" life cycle:
 4. If there are no configuration changes, perform the default action for that type (e.g. apply refresh for a materialized view).
 5. Determine whether to apply the configuration changes according to the `on_configuration_change` setting.
 
+<!-- this is a comment tes -->
 
