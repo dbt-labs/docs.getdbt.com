@@ -57,7 +57,8 @@ jobs:
           ATTEMPTS=0
 
           while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
+            # Allow DNS/connection errors without exiting the script (curl exit 6, etc.)
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL" || echo "000")
             if [ "$STATUS_CODE" -eq 200 ]; then
               echo "Deployment is accessible."
               break
