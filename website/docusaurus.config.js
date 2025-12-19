@@ -48,6 +48,10 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "ja"],
+  },
   themeConfig: {
     docs: {
       sidebar: {
@@ -109,6 +113,10 @@ var siteSettings = {
         alt: "dbt Logo",
       },
       items: [
+        {
+          type: "localeDropdown",
+          position: "left",
+        },
         {
           label: "Docs",
           position: "right",
@@ -414,7 +422,9 @@ var siteSettings = {
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
-                      routes: [{ route: "/docs/cloud/connect-data-platform/**" }],
+                      routes: [
+                        { route: "/docs/cloud/connect-data-platform/**" },
+                      ],
                     },
                     {
                       id: "manage-access",
