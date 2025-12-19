@@ -21,7 +21,6 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 - [Slack (account-level)](#slack-notifications-account)  &mdash; Available in private beta. To request access, contact your account manager.
 - [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, contact your account manager.
 
-
 ## Email notifications
 
 You can receive email alerts about jobs by configuring the <Constant name="cloud" /> email notification settings.
@@ -287,4 +286,4 @@ Disabling and unlinking the Teams integration in the <Constant name="dbt_platfor
 3. On the far right of the **Teams** integration, click the **X** icon.
 4. Confirm the unlinking by selecting **Unlink**.
 
-The Teams integration has been disabled. You can always re-enable the integration by following the [Set up Microsoft Teams](/deploy/job-notifications#set-up-microsoft-teams) steps.
+The Teams integration has been disabled. You can always re-enable the integration by following the [Set up Microsoft Teams](#set-up-microsoft-teams) steps.
