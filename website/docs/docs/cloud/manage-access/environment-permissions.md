@@ -29,6 +29,10 @@ Environment-level permissions give <Constant name="cloud" /> admins more flexibi
 - **Staging** &mdash; Pre-prod environment that sits between development and production. Only one unique Staging env per project.
 - **General** &mdash; Mixed use environments. No limit on the number per project. 
 
+### Environment write permissions
+
+Environment write permissions grant access to create, edit, and delete runs and jobs within an environment. However, they don't grant users access to create or delete environments themselves. See [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about elevated permission sets. 
+
 Environment write permissions can be specified for the following roles:
 
 - Analyst
