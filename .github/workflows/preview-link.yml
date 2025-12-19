@@ -29,20 +29,43 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq curl
 
-      - name: Generate Vercel deployment URL
+      - name: Fetch Vercel deployment URL
         id: vercel_url
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          # Get the branch name
-          BRANCH_NAME="${{ github.head_ref }}"
+          echo "Waiting for Vercel preview link on PR #$PR_NUMBER..."
+          MAX_ATTEMPTS=60  # Up to 10 minutes
+          SLEEP_TIME=10
+          ATTEMPTS=0
+          DEPLOYMENT_URL=""
 
-          # Convert to lowercase
-          BRANCH_NAME_LOWER=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            COMMENTS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$REPO/issues/$PR_NUMBER/comments?per_page=100")
 
-          # Replace non-alphanumeric characters with hyphens
-          BRANCH_NAME_SANITIZED=$(echo "$BRANCH_NAME_LOWER" | sed 's/[^a-z0-9]/-/g')
+            DEPLOYMENT_URL=$(echo "$COMMENTS" | jq -r '.[] | select(.user.login=="vercel[bot]") | .body' \
+              | tr '|' '\n' \
+              | grep -o 'https://[a-zA-Z0-9.-]*vercel.app[^[:space:]]*' \
+              | head -n 1 || true)
 
-          # Construct the deployment URL
-          DEPLOYMENT_URL="https://docs-getdbt-com-git-${BRANCH_NAME_SANITIZED}-dbt-labs.vercel.app"
+            if [ -n "$DEPLOYMENT_URL" ]; then
+              echo "Found Vercel preview: $DEPLOYMENT_URL"
+              break
+            fi
+
+            echo "Preview link not available yet. Waiting..."
+            sleep $SLEEP_TIME
+            ATTEMPTS=$((ATTEMPTS + 1))
+          done
+
+          if [ -z "$DEPLOYMENT_URL" ]; then
+            echo "Unable to find Vercel preview link on the PR."
+            exit 1
+          fi
 
           echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
 
@@ -57,7 +80,7 @@ jobs:
           ATTEMPTS=0
 
           while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL" || echo "000")
             if [ "$STATUS_CODE" -eq 200 ]; then
               echo "Deployment is accessible."
               break
