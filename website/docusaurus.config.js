@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "Join our virtual event on Dec 16 & 17: Delivering reliable AI with the dbt Semantic Layer and dbt MCP Server",
+        "Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/delivering-reliable-ai-with-the-dbt-semantic-layer-and-dbt-mcp-server",
+      "https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",

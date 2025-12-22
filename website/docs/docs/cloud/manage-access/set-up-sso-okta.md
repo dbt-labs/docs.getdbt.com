@@ -59,18 +59,15 @@ Click **Next** to continue.
 
 The SAML Settings page configures how Okta and <Constant name="cloud" /> communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
-To complete this section, you will need a _login slug_. This slug controls the
-URL where users on your account can log into your application via Okta. Login
-slugs are typically the lowercased name of your organization separated with
-dashes. It should contain only letters, numbers, and dashes. For example, the _login slug_ for dbt Labs would be
-`dbt-labs`. Login slugs must be unique across all <Constant name="cloud" /> accounts,
-so pick a slug that uniquely identifies your company.
+import LoginSlug from '/snippets/_login-slug.md';
+
+<LoginSlug />
 
 <Snippet path="access_url" />
 
-* **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
-* **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
-* **Relay State**: `<login slug>`
+* **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
+* **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login URL slug}`
+* **Relay State**: `<login URL slug>`
 * **Name ID format**: `Unspecified`
 * **Application username**: `Custom` / `user.getInternalProperty("id")`
 * **Update Application username on**: `Create and update`
@@ -155,12 +152,6 @@ To complete setup, follow the steps below in <Constant name="cloud" />.
 First, navigate to the **Enterprise &gt; Single Sign On** page under Account
 Settings. Next, click the **Edit** button and supply the following SSO details:
 
-:::note Login Slugs
-
-The slug configured here should have the same value as the  **Okta RelayState**
-configured in the steps above.
-
-:::
 
 | Field | Value |
 | ----- | ----- |
@@ -168,7 +159,7 @@ configured in the steps above.
 | **Identity&nbsp;Provider&nbsp;SSO&nbsp;Url** | Paste the **Identity Provider Single Sign-On URL** shown in the Okta setup instructions |
 | **Identity&nbsp;Provider&nbsp;Issuer** | Paste the **Identity Provider Issuer** shown in the Okta setup instructions |
 | **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions; <br />**Note:** When the certificate expires, an Okta admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
-| **Slug** | Enter your desired login slug. Users will be able to log into <Constant name="cloud" /> by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company. |
+
 
 <Lightbox
     collapsed={false}
