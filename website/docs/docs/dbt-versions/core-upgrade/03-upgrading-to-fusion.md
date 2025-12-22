@@ -351,6 +351,31 @@ return('xyzabc')
 
 {% endmacro %}
 ```
+### Accessing custom configurations in meta
+
+`config.get()` and `config.require()` don't return values from the `meta` dictionary. If you try to access a key that only exists in `meta`, dbt emits a warning:
+
+```bash
+warning: The key 'my_key' was not found using config.get('my_key'), but was 
+detected as a custom config under 'meta'. Please use config.meta_get('my_key') 
+or config.meta_require('my_key') instead.
+```
+
+Behavior when a key exists only in meta:
+
+| Method | Behavior |
+|--------|----------|
+| `config.get('my_key')` | Returns the default value and emits a warning. |
+| `config.require('my_key')` | Raises an error and emits a warning. |
+
+To access custom configurations stored under meta, use the explicit methods:
+
+```jinja
+{% set owner = config.meta_get('owner') %}
+{% set has_pii = config.meta_require('pii') %}
+```
+
+For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
 ### Package support
 

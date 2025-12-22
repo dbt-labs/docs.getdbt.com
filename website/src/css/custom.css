@@ -2522,7 +2522,8 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
 .quickstart-container .step-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Hide `contentTitle` h1 from content for guides.

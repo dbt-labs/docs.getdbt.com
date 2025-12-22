@@ -436,50 +436,9 @@ select * from final
 
 </File>
 
-5. In your main directory, create the file `packages.yml`.
-6. Copy the following text into the file and click **Save**.
+5. Create a MetricFlow time spine model by following the [MetricFlow time spine guide](/guides/mf-time-spine?step=1). This guide walks you through creating both the SQL model and YAML configuration required for time-based metric calculations.
 
-<File name='packages.yml'>
-
-```sql
-packages:
- - package: dbt-labs/dbt_utils
-   version: 1.1.1
-```
-
-</File>
-
-7. In the `models` directory, create the file `metrics/metricflow_time_spine.sql` in your main directory.
-8. Copy the following query into the file and click **Save**.
-
-<File name='models/metrics/metricflow_time_spine.sql'>
-
-```sql
-{{
-   config(
-       materialized = 'table',
-   )
-}}
-with days as (
-   {{
-       dbt_utils.date_spine(
-           'day',
-           "to_date('01/01/2000','mm/dd/yyyy')",
-           "to_date('01/01/2027','mm/dd/yyyy')"
-       )
-   }}
-),
-final as (
-   select cast(date_day as date) as date_day
-   from days
-)
-select * from final
-
-```
-
-</File>
-
-9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built five models.
+6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built your models.
 
 ## Create semantic models
 
@@ -642,10 +601,7 @@ semantic_models:
 
 To ensure accurate time-based aggregations, you must configure a [time spine](/docs/build/metricflow-time-spine). The time spine allows you to have accurate metric calculations over different time granularities.
 
-1. Add a time spine model to your project at whichever granularity needed for your metrics (like daily or hourly).
-2. Configure each time spine in a YAML file to define how MetricFlow recognizes and uses its columns. Follow the instructions in [Configuring time spine in YAML](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) documenation.
-
-For a step-by-step guide, refer to [MetricFlow time spine guide](/guides/mf-time-spine?step=1).
+Follow the [MetricFlow time spine guide](/guides/mf-time-spine?step=1) for complete step-by-step instructions on creating and configuring your time spine model. This guide provides the current best practices and avoids deprecated configurations.
 
 ## Define metrics and add a second semantic model
 
@@ -658,7 +614,7 @@ In this section, you will [define metrics](#define-metrics) and [add a second se
 There are different types of metrics you can configure:
 
 - [Conversion metrics](/docs/build/conversion) &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
-- [Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you must create the time spine model before you add cumulative metrics.
+- [Cumulative metrics](/docs/build/cumulative) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you must create the time spine model before you add cumulative metrics.
 - [Derived metrics](/docs/build/metrics-overview#derived-metrics) &mdash; Allows you to do calculations on top of metrics.
 - [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single measure without any additional measures involved.
 - [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
@@ -755,7 +711,8 @@ metrics:
     type_params:
       measure:
         name: order_total
-      grain_to_date: month
+      cumulative_type_params:
+        grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
     label: "pct_of_orders_that_are_large"
@@ -999,7 +956,7 @@ This section will guide you on how to use the Sigma integration to query your me
 ```sql
 select * from
   {{ semantic_layer.query (
-    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
+    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', 'pct_of_orders_that_are_large'],
     group_by = 
     [Dimension('metric_time').grain('day') ]
 ) }}

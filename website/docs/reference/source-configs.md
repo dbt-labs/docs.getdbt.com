@@ -63,6 +63,8 @@ sources:
 
 sources:
   - name: [<source-name>]
+    [database](/reference/resource-properties/database): <database-name>
+    [schema](/reference/resource-properties/schema): <schema-name>
     [config](/reference/resource-properties/config):
       [enabled](/reference/resource-configs/enabled): true | false
       [event_time](/reference/resource-configs/event-time): my_time_field
@@ -145,7 +147,7 @@ sources:
 
 #### Conditionally enable a single source
 
-When defining a source, you can disable the entire source, or specific source tables, using the inline `config` property:
+When defining a source, you can disable the entire source, or specific source tables, using the inline `config` property. You can also specify `database` and `schema` to override the target database and schema:
 
 <File name='models/sources.yml'>
 
@@ -153,6 +155,8 @@ When defining a source, you can disable the entire source, or specific source ta
 
 sources:
   - name: my_source
+    database: raw
+    schema: my_schema
     config:
       enabled: true
     tables:
