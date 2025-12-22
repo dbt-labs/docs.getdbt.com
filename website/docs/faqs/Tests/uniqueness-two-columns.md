@@ -6,7 +6,7 @@ id: uniqueness-two-columns
 
 ---
 
-Yes, there's a few different options.
+Yes, there's a few different options for testing the uniqueness of two columns.
 
 
 Consider an orders <Term id="table" /> that contains records from multiple countries, and the combination of ID and country code is unique:
