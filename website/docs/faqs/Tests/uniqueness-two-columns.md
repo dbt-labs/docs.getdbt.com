@@ -40,15 +40,12 @@ select
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
-
 models:
   - name: orders
     columns:
       - name: surrogate_key
         data_tests:
           - unique
-
 ```
 
 </File>
@@ -59,8 +56,6 @@ models:
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
-
 models:
   - name: orders
     data_tests:
@@ -79,8 +74,6 @@ This is especially useful for large datasets since it is more performant. Check 
 <File name='models/orders.yml'>
 
 ```yml
-version: 2
-
 models:
   - name: orders
     data_tests:
