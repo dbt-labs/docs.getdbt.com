@@ -551,7 +551,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     For SQL files, you can easily lint and format your code using [SQLFluff](https://sqlfluff.com/) and apply consistent formatting using [sqlfmt](http://sqlfmt.com/). Additionally, for other file types like YAML, Markdown, JSON, and Python, you can utilize the respective tools powered by [Prettier](https://prettier.io/) and [Black](https://black.readthedocs.io/en/latest/) to ensure clean and standardized code formatting.
 
-    For more info, read [Lint and format your code](/docs/cloud/dbt-cloud-ide/lint-format).
+    For more info, read [Lint and format your code](/docs/cloud/studio-ide/lint-format).
 
     <DocCarousel slidesPerView={1}>
 
@@ -607,7 +607,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     - We clarified the nuances of [CI and CI jobs](/docs/deploy/continuous-integration), updated the [Scheduler content](/docs/deploy/job-scheduler), added two new pages for the job settings and run visibility, moved the project state page to the [Syntax page](/reference/node-selection/syntax), and provided a landing page for [Deploying with Cloud](/docs/deploy/jobs) to help readers navigate the content better.
     - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/core/connect-data-platform/about-core-connections) to the Docs section. 
-    - We launched a new [Lint and format page](/docs/cloud/dbt-cloud-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
+    - We launched a new [Lint and format page](/docs/cloud/studio-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
     - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
     - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and job triggers.    
     - We added information related to the newly created [IT license](/docs/cloud/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
@@ -630,7 +630,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt Cloud IDE'>
 
-    To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
+    To continue improving your [Cloud IDE](/docs/cloud/studio-ide/develop-in-studio) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
 
     Stay up-to-date with [IDE-related changes](/tags/ide).
 
@@ -640,7 +640,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Format markdown files with prettier
     - Leverage developer experience shortcuts, including ``Ctrl + ` `` (toggle history drawer), `CMD + Option + /` (toggle block comment), `CMD + Shift + P` (open command palette), `Option + W` (close editor tab)
     - Display parent folder name for files with same name in Changes section
-    - Navigate the new IDE features quickly using [the IDE User Interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) help page
+    - Navigate the new IDE features quickly using [the IDE User Interface](/docs/cloud/studio-ide/ide-user-interface) help page
     - Use `top X` in SQL when previewing in the IDE
     - Opt into the new IDE backend layer over the past month (still with dbt-rpc). Ready for beta later in June!
 
@@ -729,7 +729,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## Cloud projects
 
-    - We launched [dbt Cloud IDE user interface doc](/docs/cloud/dbt-cloud-ide/ide-user-interface), which provides a thorough walkthrough of the IDE UI elements and their definitions.
+    - We launched [dbt Cloud IDE user interface doc](/docs/cloud/studio-ide/ide-user-interface), which provides a thorough walkthrough of the IDE UI elements and their definitions.
     - Launched a sparkling new [dbt Cloud Scheduler page](/docs/deploy/job-scheduler) ✨! We went from previously having little content around the scheduler to a subsection that breaks down the awesome scheduler features and how it works.
     - Updated the [dbt Cloud user license page](/docs/cloud/manage-access/seats-and-users#licenses) to clarify how to add or remove cloud users.
     - Shipped these Discovery API docs to coincide with the launch of the Discovery API:
@@ -886,14 +886,14 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt Cloud IDE'>
 
-    To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
+    To continue improving your [Cloud IDE](/docs/cloud/studio-ide/develop-in-studio) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
 
     Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/) and stay up-to-date with [IDE-related changes](/tags/ide).
 
     ## New features 
 
     - Commit and revert individual files under **Version Control**.
-    - Use the [command palette](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
+    - Use the [command palette](/docs/cloud/studio-ide/develop-in-studio#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
     - Create PRs even when there are uncommitted changes (under the **git** dropdown).
     - The IDE will display more autocomplete suggestions when editing a YML file, powered by [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema).
     - The file tree now has additional options in the right-click menu, such as Copy model as ref or Copy file path.
@@ -952,7 +952,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt Cloud IDE'>
 
-    To continue improving our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
+    To continue improving our [Cloud IDE](/docs/cloud/studio-ide/develop-in-studio) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
 
     Learn more about the [February changes](https://getdbt.slack.com/archives/C03SAHKKG2Z/p1677605383451109). 
 
@@ -992,7 +992,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='dbt Cloud IDE'>
 
-    In the spirit of continuing to improve our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
+    In the spirit of continuing to improve our [Cloud IDE](/docs/cloud/studio-ide/develop-in-studio) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
 
     Learn more about the [January changes](https://getdbt.slack.com/archives/C03SAHKKG2Z/p1675272600286119) and what's coming soon.
 

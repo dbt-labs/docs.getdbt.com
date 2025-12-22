@@ -1,6 +1,6 @@
 To work with metrics in dbt, you have several tools to validate or run commands. Here's how you can test and query metrics depending on your setup:
 
-- [**<Constant name="cloud_ide" /> users**](#dbt-cloud-ide-users) &mdash; Run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) directly in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to query/preview metrics. View metrics visually in the **Lineage** tab.
+- [**<Constant name="cloud_ide" /> users**](#dbt-cloud-ide-users) &mdash; Run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) directly in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to query/preview metrics. View metrics visually in the **Lineage** tab.
 - [**<Constant name="cloud_cli" /> users**](#dbt-cloud-cli-users) &mdash; The [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
 - **<Constant name="core" /> users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on <Constant name="cloud" /> users, <Constant name="core" /> users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the <Constant name="semantic_layer" />, you need to have a [Starter or Enterprise-tier account](https://www.getdbt.com/).
 

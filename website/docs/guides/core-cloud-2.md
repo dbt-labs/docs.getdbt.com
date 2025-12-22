@@ -22,7 +22,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 <Expandable alt_header="What are dbt and dbt Core?">
 
    - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
-     - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
+     - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
      - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
      - Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups
@@ -88,7 +88,7 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
 - **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in <Constant name="cloud" />, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in <Constant name="cloud" />, training on [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in <Constant name="cloud" />, training on [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) usage, and role changes.
 - **Data consumers:** Discover data insights by using [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
 </Expandable>
@@ -155,7 +155,7 @@ Once you’ve confirmed that <Constant name="cloud" /> orchestration and CI/CD a
 
 Familiarize your team with <Constant name="cloud" />'s [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
 - **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
-- **Development tools**: Use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your dbt projects.
+- **Development tools**: Use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to build, test, run, and version control your dbt projects.
 - **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in <Constant name="cloud" />, which streamlines project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to the job details. Access comprehensive logs for all job runs to help with troubleshooting.
 - **CI/CD:** Use <Constant name="cloud" />'s [CI/CD](/docs/deploy/ci-jobs) feature to run your dbt projects in a temporary schema whenever new commits are pushed to open pull requests. This helps with catching bugs before deploying to production.

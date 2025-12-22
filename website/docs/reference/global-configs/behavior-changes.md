@@ -66,6 +66,8 @@ flags:
   validate_macro_args: False
   require_all_warnings_handled_by_warn_error: False
   require_generic_test_arguments_property: True
+  require_unique_project_resource_names: False
+  require_ref_searches_node_package_before_root: False
 ```
 
 </File>
@@ -87,6 +89,8 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | 
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
+| [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
+| [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -99,6 +103,7 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD                        |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | 
 | [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD |
+| [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD |
 
 When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
@@ -344,3 +349,59 @@ models:
 When you set the `require_generic_test_arguments_property` flag to `True`, dbt will:
 - Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
 - Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.
+
+### Unique project resource names
+
+The `require_unique_project_resource_names` flag enforces uniqueness of resource names within the same package. dbt resources such as models, seeds, snapshots, analyses, tests, and functions share a common namespace. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
+
+The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
+
+For example, if your project contains a model and a seed named `sales`:
+
+```
+models/sales.sql
+seeds/sales.csv
+```
+
+And a model contains:
+
+```sql
+select * from {{ ref('sales') }}
+```
+
+When the flag is set to `True`, dbt will raise:
+
+```
+DuplicateResourceNameError: Found resources with the same name 'sales' in package 'project': 'model.project.sales' and 'seed.project.sales'. Please update one of the resources to have a unique name.
+```
+
+When this error is raised, you should rename one of the resources, or refactor the project structure to avoid name conflicts.
+
+
+### Package `ref` search order
+
+The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package. 
+
+The flag is set to `False` by default in "Latest" and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
+
+For example, the following model in the package `my_package` is imported by the project `my_project`:
+
+<File name='my_package/model_downstream.sql'>
+
+```sql
+select * from {{ ref('model_upstream') }}
+```
+</File>
+
+By default, dbt searches for `model_upstream` in this order:
+1. First in `my_project` (root project)
+2. Then in `my_package` (where the model is defined)
+
+When you set the `require_ref_searches_node_package_before_root` flag to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+
+Using the same example, dbt searches for `model_upstream` in this order:
+1. First in `my_package` (where the model is defined)
+2. Then in `my_project` (root project)
+
+The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects. 
+

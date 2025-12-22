@@ -4,7 +4,7 @@ description: "Learn how to add user-defined functions (UDFs) to your dbt project
 id: "udfs"
 ---
 
-# User-defined functions <Lifecycle status="beta" />
+# User-defined functions
 
 User-defined functions (UDFs) enable you to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt, such as BI tools, data science notebooks, and more. 
 
@@ -41,9 +41,20 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</TabItem>
 	</Tabs>
 
+:::important UDF support
+When developing UDFs, it's important to understand the following support limitations:
+
+- Python UDFs aren't yet supported in <Constant name="fusion" />.
+- Additional languages (for example, Java, JavaScript, Scala) aren't currently supported.
+
+See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
+:::
+
 ## Defining UDFs in dbt
 
-You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently supported in Snowflake and BigQuery. Follow these steps to define UDFs in dbt:
+You can define SQL and Python UDFs in dbt. Python UDFs are currently supported in Snowflake and BigQuery when using <Constant name="core" />. 
+
+Follow these steps to define UDFs in dbt:
 
 1. Create a SQL or Python file under the `functions` directory. For example, this UDF checks if a string represents a positive integer:
 
@@ -102,6 +113,7 @@ You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently suppo
           - name: a_string          # required if arguments is specified
             data_type: string       # required if arguments is specified
             description: The string that I want to check if it's representing a positive integer (like "10") 
+            default_value: "'1'"    # optional, available in Snowflake and Postgres
         returns:                    # required
           data_type: integer        # required 
     ```
@@ -159,9 +171,10 @@ You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently suppo
           arguments:                   # optional
             - name: a_string           # required if arguments is specified
               data_type: string        # required if arguments is specified
-              description: The string that I want to check if it's representing a positive integer (like "10") 
-          returns:                    # required
-            data_type: integer        # required
+              description: The string that I want to check if it's representing a positive integer (like "10")
+              default_value: "'1'"     # optional, available in Snowflake and Postgres
+          returns:                     # required
+            data_type: integer         # required
     ```
     </File>
     </TabItem>
@@ -197,7 +210,7 @@ You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently suppo
     <TabItem value="Snowflake">
 
     ```sql
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING DEFAULT '1')
     RETURNS INTEGER
     LANGUAGE SQL
     IMMUTABLE
@@ -242,7 +255,7 @@ You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently suppo
     <TabItem value="Postgres">
 
     ```sql
-    CREATE OR REPLACE FUNCTION udf_schema.is_positive_int(a_string text)
+    CREATE OR REPLACE FUNCTION udf_schema.is_positive_int(a_string text DEFAULT '1')
     RETURNS int
     LANGUAGE sql
     IMMUTABLE
@@ -260,7 +273,7 @@ You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently suppo
 
     <TabItem value="Snowflake">
     ```sql
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING DEFAULT '1')
       RETURNS INTEGER
       LANGUAGE PYTHON
       RUNTIME_VERSION = '3.11'
@@ -362,9 +375,10 @@ Use the [`build` command](/reference/commands/build#functions) to select UDFs wh
 For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
 
 ## Limitations
-- Creating UDFs in other languages (for example, Java or Scala) is not yet supported. 
+- Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
 - Creating Python UDFs are currently supported in Snowflake and BigQuery only. Other warehouses aren't yet supported.
-- Only <Term id="scalar">scalar</Term> functions are currently supported.
+- Support for Python UDFs in <Constant name="fusion" /> is not yet available. Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for the latest updates.
+- Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
 
 ## Related FAQs
 

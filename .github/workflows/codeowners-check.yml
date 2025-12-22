@@ -11,9 +11,12 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: depot-ubuntu-24.04
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955  # actions/checkout@v4
-      - uses: mszostok/codeowners-validator@f555ba682ec613249e7e478a4e0bff3ba35dc79f # v0.7.2
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # actions/checkout@v6
+      - uses: mszostok/codeowners-validator@7f3f5e28c6d7b8dfae5731e54ce2272ca384592f #v0.7.4
+        env:
+          INPUT_GITHUB_APP_PRIVATE_KEY: "${{ secrets.SECENG_CICD_CHECKS_PRIVATE_KEY }}"
+          INPUT_GITHUB_APP_INSTALLATION_ID: "${{ secrets.SECENG_CICD_CHECKS_INSTALLATIONID }}"
+          INPUT_GITHUB_APP_ID: "${{ secrets.SECENG_CICD_CHECKS_APPID }}"
         with:
-          github_access_token: "${{ secrets.OWNERS_VALIDATOR_GITHUB_SECRET }}"
           checks: "owners,duppatterns"
           experimental_checks: "notowned"

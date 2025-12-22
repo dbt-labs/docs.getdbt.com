@@ -382,9 +382,14 @@ There are a few specific use cases where we recommend using a "local" package:
 2. **Testing changes** &mdash; To test changes in one project or package within the context of a downstream project or package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter for quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
 3. **Nested project** &mdash; When you have a nested project that defines fixtures and tests for a project of utility macros, like [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests).
 
-
 ## What packages are available?
-Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
+To see the library of published dbt packages, check out the [dbt package hub](https://hub.getdbt.com)!
+
+## Fusion package compatibility
+
+import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionSupportedPackages />
 
 ## Advanced package configuration
 ### Updating a package

@@ -19,11 +19,11 @@ Use this <Constant name="cloud_ide" />  page to help you quickly reference some 
 | Reveal a list of dbt functions in the editor. | Enter two underscores `__` | Enter two underscores  `__` |
 | Open the command palette to invoke dbt commands and actions.  | Command-P / Command-Shift-P | Control-P / Control-Shift-P |
 | Multi-edit in the editor by selecting multiple lines. | Option-Click / Shift-Option-Command / Shift-Option-Click  | Hold Alt and Click |
-| Open the [**Invocation History Drawer**](/docs/cloud/dbt-cloud-ide/ide-user-interface#invocation-history) located at the bottom of the IDE.  | Control-backtick (or Control + `)  | Control-backtick (or Ctrl + `) | 
+| Open the [**Invocation History Drawer**](/docs/cloud/studio-ide/ide-user-interface#invocation-history) located at the bottom of the IDE.  | Control-backtick (or Control + `)  | Control-backtick (or Ctrl + `) | 
 | Add a block comment to the selected code. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. | Shift-Option-A | Shift-Alt-A |
 
 ## Related docs
 
 - [Quickstart guide](/guides)
 - [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/studio-ide/develop-in-studio)

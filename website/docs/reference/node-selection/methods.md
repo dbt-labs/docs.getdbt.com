@@ -376,6 +376,11 @@ Certain factors can affect how references are used or resolved later on, includi
 - Modifying `latest_version`: if there's no tie to a specific version, the reference or model will point to the latest version.
   -  If a newer version is released, the reference will automatically resolve to the new version, potentially changing the behavior or output of the system that relies on it.
 
+dbt handles state comparison for seed files differently depending on their size:
+
+- **Seed files smaller than 1 MiB** &mdash; Included in the `state:modified` selector only when the contents change.
+- **Seed files 1 MiB or larger** &mdash; Included in the `state:modified` selector only when the seed file path changes.
+
 #### Overwrites the `manifest.json`
 
 import Overwritesthemanifest from '/snippets/_overwrites-the-manifest.md';

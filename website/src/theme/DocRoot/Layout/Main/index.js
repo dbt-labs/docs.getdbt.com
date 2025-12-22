@@ -74,10 +74,7 @@ export default function DocRootLayoutMain({
       if (dbtVersion === "2.0") {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the docs version for the <a href="https://docs.getdbt.com/docs/fusion">dbt Fusion engine</a>, currently available for installation in: 
-<li><a href="https://docs.getdbt.com/docs/fusion/install-fusion-cli">Local command line interface (CLI) tools</a> <code> Preview </code></li>
-<li><a href="https://docs.getdbt.com/docs/install-dbt-extension">VS Code/Cursor/Windsurf with the dbt extension</a> <code> Preview </code></li>
-<li><a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine">dbt platform (formerly dbt Cloud) environments</a> <code> Private preview </code></li>`,
+          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/fusion">dbt Fusion engine</a>.`,
         });
       } else {
         // For other prerelease versions (like 1.11 beta)
