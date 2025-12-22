@@ -37,10 +37,10 @@ The parameters, description, and type for derived metrics are:
 | `label` | Display name for downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
 | `expr` | The expression that combines other metrics. Validation warns if it is missing or references undefined metrics. | Required | String |
 | `input_metrics` | Defines aliases, filters, or offsets for metrics referenced in the expression. Needed only when you customize those attributes. | Optional | List |
-| `input_metrics::name` | The name of the referenced metric defined elsewhere in the project. | Required when `metric_aliases` provided | String |
-| `input_metrics::alias` | Alternate name you can reference in `expr`. | Optional | String |
-| `input_metrics::filter` | Filter to apply to the referenced metric. | Optional | String |  
-| `input_metrics::offset_window` | Offset applied to the referenced metric (for example, `1 week`). Allowed only for derived metrics.  | Optional | String |
+| `input_metrics.name` | The name of the referenced metric defined elsewhere in the project. | Required when `metric_aliases` provided | String |
+| `input_metrics.alias` | Alternate name you can reference in `expr`. | Optional | String |
+| `input_metrics.filter` | Filter to apply to the referenced metric. | Optional | String |  
+| `input_metrics.offset_window` | Offset applied to the referenced metric (for example, `1 week`). Allowed only for derived metrics.  | Optional | String |
 
 </VersionBlock>
 

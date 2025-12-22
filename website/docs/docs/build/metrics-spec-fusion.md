@@ -374,7 +374,7 @@ metrics:
 
 </Tabs>
 
-For [derived metrics](/docs/build/derived), `type_params::metrics` is renamed `input_metrics`.
+For [derived metrics](/docs/build/derived), `type_params.metrics` is renamed `input_metrics`.
 <Tabs>
 
 <TabItem value="new" label="New spec">
@@ -446,8 +446,8 @@ metrics:
 </Tabs>
 
 For [cumulative metrics](/docs/build/cumulative):
-- `type_params::measure` is renamed `input_metric` and must reference a metric.
-- `type_params::cumulative_type_params` values are direct keys on the metric: `window`, `grain_to_date`, and `period_agg`.
+- `type_params.measure` is renamed `input_metric` and must reference a metric.
+- `type_params.cumulative_type_params` values are direct keys on the metric: `window`, `grain_to_date`, and `period_agg`.
 
 <Tabs>
 <TabItem value="new" label="New spec">
@@ -481,7 +481,7 @@ metrics:
 </TabItem>
 </Tabs>
 
-For [conversion metrics](/docs/build/conversion), the following `type_params::conversion_type_params` values are direct keys on the metric: 
+For [conversion metrics](/docs/build/conversion), the following `type_params.conversion_type_params` values are direct keys on the metric: 
 - `entity`
 - `calculation`
 - `base_metric` (previously `base_measure`)

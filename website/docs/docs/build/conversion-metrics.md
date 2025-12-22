@@ -57,23 +57,23 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 | `type` | The type of metric. Set as `conversion` for conversion metrics. | Required | String |
 | `label` | The display label for the metric. Accepts plain text, spaces, and quotes. | Optional | String |
 | `config` | Configuration settings for the metric. | Optional | Dict |
-| `config::group` | The group the metric belongs to. | Optional | String |
-| `config::tags` | Tags associated with the metric. | Optional | List |
-| `config::meta` | Metadata for the metric. | Optional | Dict |
+| `config.group` | The group the metric belongs to. | Optional | String |
+| `config.tags` | Tags associated with the metric. | Optional | List |
+| `config.meta` | Metadata for the metric. | Optional | Dict |
 | `entity` | The entity for each conversion event. | Required | String |
 | `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | Optional | String |
 | `base_metric` | The base metric name or configuration for the conversion event. Can be a string (metric name) or a dict (for additional customization). | Required | String or Dict |
-| `base_metric::name` | The name of the base metric (when using dict format). | Required | String |
-| `base_metric::filter` | Filter to apply to the base metric (when using dict format). | Optional | String |
-| `base_metric::alias` | Alias for the base metric (when using dict format). | Optional | String |
+| `base_metric.name` | The name of the base metric (when using dict format). | Required | String |
+| `base_metric.filter` | Filter to apply to the base metric (when using dict format). | Optional | String |
+| `base_metric.alias` | Alias for the base metric (when using dict format). | Optional | String |
 | `conversion_metric` | The conversion metric name or configuration. Can be a string (metric name) or a dict (for additional customization). | Required | String or Dict |
-| `conversion_metric::name` | The name of the conversion metric (when using dict format). | Required | String |
-| `conversion_metric::filter` | Filter to apply to the conversion metric (when using dict format). | Optional | String |
-| `conversion_metric::alias` | Alias for the conversion metric (when using dict format). | Optional | String |
+| `conversion_metric.name` | The name of the conversion metric (when using dict format). | Required | String |
+| `conversion_metric.filter` | Filter to apply to the conversion metric (when using dict format). | Optional | String |
+| `conversion_metric.alias` | Alias for the conversion metric (when using dict format). | Optional | String |
 | `window` | The time window for the conversion event (such as `7 days`, `1 week`, `3 months`). Defaults to infinity. | Optional | String |
 | `constant_properties` | List of properties to hold constant between base and conversion events. Can be a dimension or entity.| Optional | List |
-| `constant_properties::base_property` | The dimension or entity of the semantic model linked to the `base_metric`. | Required | String |
-| `constant_properties::conversion_property` | The dimension or entity of the semantic model linked to the `conversion_metric`. | Required | String |
+| `constant_properties.base_property` | The dimension or entity of the semantic model linked to the `base_metric`. | Required | String |
+| `constant_properties.conversion_property` | The dimension or entity of the semantic model linked to the `conversion_metric`. | Required | String |
 
 </VersionBlock>
 
