@@ -33,7 +33,7 @@ Large data sets can slow down dbt build times, making it harder for developers t
 
 ### Move standalone anchors under `anchors:` key
 
-As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
 
 For example, rather than using this configuration:
 
@@ -216,7 +216,7 @@ models:
 
 #### Duplicate keys in the same yaml file
 
-If two identical keys exist in the same YAML file, you will get a warning, and in a future version, dbt will stop supporting duplicate keys. Previously, if identical keys existed in the same YAML file, dbt silently overwrite, using the last configuration listed in the file. 
+If two identical keys exist in the same properties YAML file, you will get a warning, and in a future version, dbt will stop supporting duplicate keys. Previously, if identical keys existed in the same properties YAML file, dbt silently overwrite, using the last configuration listed in the file.
 
 <File name='profiles.yml'>
 
@@ -236,7 +236,7 @@ my_profile: # dbt would use only this profile key
 
 </File>
 
-Moving forward, you should delete unused keys or move them to a separate YAML file.
+Moving forward, you should delete unused keys or move them to a separate properties YAML file.
 
 #### Unexpected Jinja blocks
 

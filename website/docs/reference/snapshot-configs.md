@@ -31,8 +31,8 @@ course="Snapshots"
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'YAML file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config-resource', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config-resource', },
   ]
 }>
 
@@ -167,8 +167,8 @@ If you use one of the latest configs, such as `dbt_valid_to_current`, without mi
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'YAML file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 <TabItem value="project-yaml">
