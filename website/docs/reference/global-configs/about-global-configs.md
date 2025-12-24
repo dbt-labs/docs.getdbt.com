@@ -37,7 +37,7 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 
 ### Common flag examples
 
-The `--target` flag is commonly used to specify which target (environment) to use when running dbt commands. For example:
+Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
 
 ```bash
 dbt run --target dev
