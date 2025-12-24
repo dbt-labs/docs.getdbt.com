@@ -23,7 +23,7 @@ Check out some common git terms below that you might encounter when developing:
 | Branch | A branch is a parallel version of a repository. It is contained within the repository but does not affect the primary or main branch allowing you to work freely without disrupting the live version. When you've made the changes you want to make, you can merge your branch back into the main branch to publish your changes |
 | Checkout | The `checkout` command is used to create a new branch, change your current working branch to a different branch, or switch to a different version of a file from a different branch. |
 | Commit | A commit is a user’s change to a file (or set of files). When you make a commit to save your work, <Constant name="git" /> creates a unique ID that allows you to keep a record of the specific changes committed along with who made them and when. Commits usually contain a commit message which is a brief description of what changes were made. |
-| main | The primary, base branch of all repositories. All committed and accepted changes should be on the main branch.<br /><br /> In the <Constant name="cloud_ide" />, the main branch is protected. This means you can't directly edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, you can commit those changes to a new branch.|
+| main | The primary, base branch of all repositories. All committed and accepted changes should be on the main branch.<br /><br /> In the <Constant name="cloud_ide" />, the main branch is protected. This means you can't directly edit, format, or lint files, and execute dbt commands in your protected primary git branch when using the <Constant name="dbt_platform" /> user interface. Keep in mind that all <Constant name="cloud_ide" /> Git activity is subject to the permissions of your configured credentials, and the rules configured at the remote Git provider (for example, GitHub or GitLab branch protection). Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, you can commit those changes to a new branch.|
 | Merge | Merge takes the changes from one branch and adds them into another (usually main) branch. These commits are usually first requested via pull request before being merged by a maintainer. |
 | Pull Request | If someone has changed code on a separate branch of a project and wants it to be reviewed to add to the main branch, they can submit a pull request. Pull requests ask the repo maintainers to review the commits made, and then, if acceptable, merge the changes upstream. A pull happens when adding the changes to the main branch. |
 | Push | A `push` updates a remote branch with the commits made to the current branch. You are literally _pushing_ your changes into the remote. |
@@ -31,7 +31,7 @@ Check out some common git terms below that you might encounter when developing:
 
 ## The git button in the Cloud IDE
 
-You can perform git tasks with the git button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The following are descriptions of each git button command and what they do:
+You can perform git tasks with the git button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio). The following are descriptions of each git button command and what they do:
 
 | Name | Actions |
 | --- | --- |

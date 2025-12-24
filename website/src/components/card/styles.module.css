@@ -30,8 +30,14 @@
 }
 
 
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .icon {
-  margin-bottom: 1.5rem;
   max-width: 30px;
   font-size: 25px;
 }

@@ -53,10 +53,6 @@ Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-c
 
 Note, if you bring-your-own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />. Bringing your own provider is available for Enterprise or Enterprise+ plans.
 
-:::info
-<Constant name="cloud" />'s AI is optimized for OpenAIs gpt-4o. Using other models can affect performance and accuracy, and functionality with other models isn't guaranteed.
-:::
-
 To configure the AI integration in your <Constant name="cloud" /> account, a <Constant name="cloud" /> admin can perform the following steps:
 1. Navigate to **Account settings** in the side menu.
 2. Select **Integrations** and scroll to the **AI** section.

@@ -390,16 +390,16 @@ const sidebarSettings = {
           label: "dbt Studio IDE",
           link: {
             type: "doc",
-            id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+            id: "docs/cloud/studio-ide/develop-in-studio",
           },
           items: [
-            "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-ide/ide-user-interface",
-            "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-            "docs/cloud/dbt-cloud-ide/git-commit-signing",
-            "docs/cloud/dbt-cloud-ide/lint-format",
-            "docs/cloud/dbt-cloud-ide/autofix-deprecations",
-            "docs/cloud/dbt-cloud-ide/develop-copilot",
+            "docs/cloud/studio-ide/develop-in-studio",
+            "docs/cloud/studio-ide/ide-user-interface",
+            "docs/cloud/studio-ide/keyboard-shortcuts",
+            "docs/cloud/studio-ide/git-commit-signing",
+            "docs/cloud/studio-ide/lint-format",
+            "docs/cloud/studio-ide/autofix-deprecations",
+            "docs/cloud/studio-ide/develop-copilot",
           ],
         },
         {
@@ -886,15 +886,6 @@ const sidebarSettings = {
           ],
         },
       ],
-    },
-    {
-      type: "category",
-      label: "Cost management",
-      link: {
-        type: "doc",
-        id: "docs/cloud/cost-management/cost-management",
-      },
-      items: ["docs/cloud/cost-management/cost-management"],
     },
     {
       type: 'html',
@@ -1459,6 +1450,7 @@ const sidebarSettings = {
               },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/bigquery-changes",
                 "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
                 "reference/global-configs/snowflake-changes",

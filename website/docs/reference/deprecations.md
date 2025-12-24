@@ -273,6 +273,7 @@ After configs are nested:
 {% set my_custom_config = config.get('meta').custom_config_key %}
 ```
 
+
 ### CustomOutputPathInSourceFreshnessDeprecation
 
 dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.

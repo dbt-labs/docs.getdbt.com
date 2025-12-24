@@ -24,7 +24,7 @@ The following fields are required when creating a Snowflake connection
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username and password with MFA
 

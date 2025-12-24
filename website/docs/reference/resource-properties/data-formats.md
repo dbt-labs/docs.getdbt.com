@@ -7,7 +7,7 @@ Currently, mock data for unit testing in dbt supports three formats:
 
 - `dict` (default): Inline dictionary values.
 - `csv`: Inline CSV values or a CSV file.
-- `sql`: Inline SQL query or a SQL file. Note: For this format you must supply mock data for _all rows_. 
+- `sql`: Inline SQL query or a SQL file. Note: For this format you must supply mock data for _all columns_. 
 
 ## dict
 

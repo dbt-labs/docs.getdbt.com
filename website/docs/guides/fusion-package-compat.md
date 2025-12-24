@@ -107,7 +107,9 @@ Only update the [`require-dbt-version` config](/reference/project-configs/requir
     ```yaml
     require-dbt-version: [">=1.10.0,<3.0.0"] 
     ```
-    This signals that your package supports both <Constant name="core"/> and <Constant name="fusion"/>. dbt Labs uses this release metadata to mark your package with a <Constant name="fusion"/>-compatible badge (to be introduced shortly) in the dbt package hub. Packages without this metadata don't display the <Constant name="fusion"/>-compatible badge.
+    This signals that your package supports both <Constant name="core"/> and <Constant name="fusion"/>. 
+    dbt Labs uses this release metadata to mark your package with a <Constant name="fusion"/>-compatible badge in the [dbt package hub](https://hub.getdbt.com/). Packages without this metadata don't
+    display the <Constant name="fusion"/>-compatible badge.
 
 2. Commit and push your changes to your repository.
 
@@ -129,7 +131,7 @@ Your package is now <Constant name="fusion"/>-compatible and the dbt package hub
 - Updated `require-dbt-version: [">=1.10.0,<3.0.0"]` to include `2.0.0`
 - Published a new release
 - Announced the update (optional)
-<!--- Celebrated your new <Constant name="fusion"/>-compatible badge 🎉 -->
+- Celebrate your new <Constant name="fusion"/>-compatible badge 🎉
 
 ## Final thoughts
 
@@ -155,7 +157,7 @@ The following are some frequently asked questions about upgrading your package t
 
 <Constant name="fusion"/> and <Constant name="core"/> v1.10+ use the same new authoring layer. Ensuring your package supports `2.0.0` in your `require-dbt-version` config ensures your package is compatible with both.
 
-Updating your package ensures users have the latest version of your package, your package stays trusted on dbt package hub, and users benefit from the latest features and bug fixes. Soon, you'll be able to display a <Constant name="fusion"/>-compatible badge in dbt package hub.
+Updating your package ensures users have the latest version of your package, your package stays trusted on dbt package hub, and users benefit from the latest features and bug fixes. <Constant name="fusion"/>-compatible packages display a badge in the dbt package hub.
 
 If a package excludes `2.0.0`, <Constant name="fusion"/> will warn today and error in a future release, matching dbt <Constant name="core"/> behavior. 
 
@@ -172,6 +174,6 @@ You want to do this to ensure any changes to your package remain compatible with
 
 Users can identify your package as <Constant name="fusion"/>-compatible by checking for 2.0.0 or higher in the `require-dbt-version` range config.
 
-<Constant name="fusion"/>-compatible packages will soon display a badge on dbt packages hub. This is automatically determined based on your package’s metadata and version requirements.
+<Constant name="fusion"/>-compatible packages also display a badge in the dbt package hub. This is automatically determined based on your package’s metadata and version requirements.
 
 </Expandable>

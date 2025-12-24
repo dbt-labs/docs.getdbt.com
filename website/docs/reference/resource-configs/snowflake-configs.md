@@ -35,9 +35,9 @@ Dynamic tables are supported with the following configuration parameters:
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'SQL config', value: 'config', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
@@ -373,7 +373,7 @@ create or replace table my_database.my_schema.my_table as (
 
 ### Dynamic table clustering
 
-Starting in <Constant name="core"/> v1.10, dynamic tables support the `cluster_by` configuration. When set, dbt includes the clustering specification in the `CREATE DYNAMIC TABLE` statement.
+Starting in <Constant name="core"/> v1.11, dynamic tables support the `cluster_by` configuration. When set, dbt includes the clustering specification in the `CREATE DYNAMIC TABLE` statement.
 
 For example:
 
@@ -518,7 +518,7 @@ The default warehouse that dbt uses can be configured in your [Profile](/docs/co
   values={[
     { label: 'Project file', value: 'dbt_project.yml', },
     { label: 'Property file', value: 'models/my_model.yml', },
-    { label: 'SQL config', value: 'models/events/sessions.sql', },
+    { label: 'SQL file config', value: 'models/events/sessions.sql', },
     ]}
 >
 

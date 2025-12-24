@@ -14,7 +14,7 @@ You can seamlessly switch between these modes directly from the profile menu, cu
 
 Your selected theme is stored in your user profile, ensuring a consistent experience across <Constant name="cloud" />.
 
-Theme selection applies across all areas of <Constant name="cloud" />, including the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [<Constant name="explorer" />](/docs/explore/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="cloud" />](/docs/cloud/about-cloud/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
+Theme selection applies across all areas of <Constant name="cloud" />, including the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), [<Constant name="explorer" />](/docs/explore/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="cloud" />](/docs/cloud/about-cloud/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
 
 ## Change themes in dbt
 

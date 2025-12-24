@@ -67,6 +67,7 @@ flags:
   require_all_warnings_handled_by_warn_error: False
   require_generic_test_arguments_property: True
   require_unique_project_resource_names: False
+  require_ref_searches_node_package_before_root: False
 ```
 
 </File>
@@ -89,6 +90,7 @@ This table outlines which month of the "Latest" release track in <Constant name=
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
+| [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -101,6 +103,7 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD                        |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | 
 | [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD |
+| [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD |
 
 When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
@@ -183,9 +186,9 @@ The `require_yaml_configuration_for_mf_time_spines` flag is set to `False` by de
 
 In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
 
-When the flag is set to `True`, dbt will continue to support the SQL file configuration. When the flag is set to `False`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a SQL file. 
+When the flag is set to `True`, dbt will continue to support the SQL file configuration. When the flag is set to `False`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a config block in a SQL file. 
 
-The MetricFlow YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details. 
+The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 
 ### Custom microbatch strategy
 The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `False` by default and is only relevant if you already have a custom microbatch macro in your project.  If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
@@ -373,3 +376,32 @@ DuplicateResourceNameError: Found resources with the same name 'sales' in packag
 ```
 
 When this error is raised, you should rename one of the resources, or refactor the project structure to avoid name conflicts.
+
+
+### Package `ref` search order
+
+The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package. 
+
+The flag is set to `False` by default in "Latest" and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
+
+For example, the following model in the package `my_package` is imported by the project `my_project`:
+
+<File name='my_package/model_downstream.sql'>
+
+```sql
+select * from {{ ref('model_upstream') }}
+```
+</File>
+
+By default, dbt searches for `model_upstream` in this order:
+1. First in `my_project` (root project)
+2. Then in `my_package` (where the model is defined)
+
+When you set the `require_ref_searches_node_package_before_root` flag to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+
+Using the same example, dbt searches for `model_upstream` in this order:
+1. First in `my_package` (where the model is defined)
+2. Then in `my_project` (root project)
+
+The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects. 
+

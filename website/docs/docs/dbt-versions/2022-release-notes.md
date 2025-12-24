@@ -76,11 +76,11 @@ The new features are:
     - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the <Constant name="cloud_ide" /> for low-light environments.
 
-Read more about all the [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#cloud-ide-features).
+Read more about all the [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#cloud-ide-features).
 
 ### Classic IDE deprecation notice
 
-In December 2022, dbt Labs will deprecate the classic <Constant name="cloud_ide" />. The [new and refreshed <Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) will be available for _all_ <Constant name="cloud" /> users. You will no longer be able to access the classic <Constant name="cloud_ide" /> and dbt Labs might introduce changes that break the classic <Constant name="cloud_ide" />.
+In December 2022, dbt Labs will deprecate the classic <Constant name="cloud_ide" />. The [new and refreshed <Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) will be available for _all_ <Constant name="cloud" /> users. You will no longer be able to access the classic <Constant name="cloud_ide" /> and dbt Labs might introduce changes that break the classic <Constant name="cloud_ide" />.
 
 With deprecation, dbt Labs will only support the refreshed version of the <Constant name="cloud_ide" />.
 
@@ -111,7 +111,7 @@ Some of the improvements include:
 - Better organization and navigation with features like drag and drop of files, breadcrumb, build button drop-down, and more.
 - You can use new features like auto-format your file, auto-complete model names, and git diff view to see your changes before making a pull request.
 
-Read more about the new [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#cloud-ide-features) and check out [New and improved Cloud <Constant name="cloud_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
+Read more about the new [Cloud <Constant name="cloud_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#cloud-ide-features) and check out [New and improved Cloud <Constant name="cloud_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
 
 ## September 2022
 

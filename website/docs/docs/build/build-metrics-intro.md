@@ -15,7 +15,7 @@ Use MetricFlow in dbt to centrally define your metrics. As a key component of th
 
 MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
-- Develop from your preferred environment, whether that's the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [<Constant name="core" />](/docs/core/installation-overview)
+- Develop from your preferred environment, whether that's the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/core/installation-overview)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
 - Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
