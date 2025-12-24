@@ -84,3 +84,15 @@ sources:
       {%- endif -%}
     schema: source_schema
 ```
+
+To specify which target to use when running dbt commands, use the `--target` flag:
+
+```bash
+dbt run --target dev
+```
+
+```bash
+dbt run --target prod
+```
+
+You can use the `--target` flag with any dbt command to override the default target specified in your `profiles.yml` file. This is useful for running the same dbt project against different environments (like dev, staging, or prod) without changing your configuration files.

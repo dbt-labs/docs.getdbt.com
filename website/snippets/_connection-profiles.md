@@ -95,6 +95,20 @@ You may also have a `prod` target within your profile, which creates the objects
 
 If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
 
+For example, to run against your `prod` target instead of the default `dev` target:
+
+```bash
+dbt run --target prod
+```
+
+You can use the `--target` flag with any dbt command, such as:
+
+```bash
+dbt build --target prod
+dbt test --target dev
+dbt compile --target qa
+```
+
 ### Overriding profiles and targets
 
 When running dbt commands, you can specify which profile and target to use from the CLI using the `--profile` and `--target` [flags](/reference/global-configs/about-global-configs#available-flags). These flags override what’s defined in your `dbt_project.yml` as long as the specified profile and target are already defined in your `profiles.yml` file.
