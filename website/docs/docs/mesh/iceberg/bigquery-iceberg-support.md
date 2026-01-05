@@ -113,8 +113,6 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the [BigQuery docs](https://cloud.google.com/bigquery/docs/iceberg-tables#limitations) for more information. 
 
-<VersionBlock firstVersion="1.9">
-
 ### Base location
 
 <VersionBlock lastVersion="1.99">
@@ -248,5 +246,3 @@ This behavior could result in future technical debt because it will limit the ab
 - Use a crawler pointed at the tables within the external storage to build a new catalog with another tool
 
 To maintain best practices, dbt enforces an input and, by default, writes your tables within a `_dbt/{SCHEMA_NAME}/{TABLE_NAME}` prefix to ensure easier object-store observability and auditability.
-
-</VersionBlock>

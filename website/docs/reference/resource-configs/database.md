@@ -49,7 +49,6 @@ This would result in the generated relation being located in the `staging` datab
 <TabItem value="snapshots" label="Snapshots">
 
 
-<VersionBlock firstVersion="1.9">
 
 Specify a custom database for a snapshot in your `dbt_project.yml`, snapshot.yml file, or config file. 
 
@@ -80,7 +79,6 @@ snapshots:
 
 This results in the generated relation being located in the `snapshots` database so the full relation name would be `snapshots.finance.your_snapshot` instead of the default target database.
 
-</VersionBlock>
 
 </TabItem>
 

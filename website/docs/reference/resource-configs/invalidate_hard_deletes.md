@@ -21,7 +21,6 @@ In <Constant name="cloud" /> release tracks and dbt Core 1.9 and higher, the [`h
 For new snapshots, set the config to `hard_deletes='invalidate'` instead of `invalidate_hard_deletes=true`. For existing snapshots, [arrange an update](/reference/snapshot-configs#snapshot-configuration-migration) of pre-existing tables before enabling this setting. 
 :::
 
-<VersionBlock firstVersion="1.9">
 
 <File name='snapshots/<filename>.yml'>
 
@@ -35,9 +34,6 @@ snapshots:
 ```
 
 </File>
-
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -60,7 +56,6 @@ By default the feature is disabled.
 
 ## Example
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/orders.yml'>
 
 ```yaml
@@ -77,4 +72,3 @@ snapshots:
   ```
 </File>
 
-</VersionBlock>

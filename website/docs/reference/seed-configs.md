@@ -78,8 +78,6 @@ seeds:
 
 <File name='dbt_project.yml'>
 
-<VersionBlock firstVersion="1.9">
-
 ```yaml
 seeds:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -97,7 +95,6 @@ seeds:
     [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
 
 ```
-</VersionBlock>
 </File>
 
 </TabItem>
@@ -106,8 +103,6 @@ seeds:
 <TabItem value="property-yaml">
 
 <File name='seeds/properties.yml'>
-
-<VersionBlock firstVersion="1.9">
 
 ```yaml
 
@@ -128,7 +123,6 @@ seeds:
       [event_time](/reference/resource-configs/event-time): my_time_field
 
 ```
-</VersionBlock>
 
 </File>
 

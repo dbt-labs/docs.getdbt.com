@@ -79,7 +79,6 @@ snapshots:
 ```
 </File>
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/properties.yml'>
 
 ```yml
@@ -89,7 +88,7 @@ snapshots:
       event_time: my_time_field
 ```
 </File>
-</VersionBlock>
+
 </TabItem>
 
 <TabItem value="sources" label="Sources">

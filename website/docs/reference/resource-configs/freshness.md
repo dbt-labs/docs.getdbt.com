@@ -64,12 +64,6 @@ models:
 </TabItem>
 </Tabs>
 
-<VersionBlock lastVersion="1.9">
-
-This configuration is only available for the dbt Fusion engine.
-
-</VersionBlock>
-
 ## Definition
 
 The model `freshness` config powers state-aware orchestration by rebuilding models _only when new source or upstream data is available_, helping you reduce unnecessary rebuilds and optimize spend. This is useful for models that depend on other models but only need to be updated periodically.

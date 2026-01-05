@@ -2,7 +2,6 @@
 description: "Snapshot-name - Read this in-depth guide to learn about configurations in dbt."
 ---
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/<filename>.yml'>
 
 ```yaml
@@ -19,7 +18,6 @@ snapshots:
 ```
 
 </File>
-</VersionBlock>
 
 
 ## Description
@@ -33,7 +31,6 @@ The name does not need to match the file name. As a result, snapshot filenames d
 ## Examples
 ### Name a snapshot `order_snapshot`
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/order_snapshot.yml'>
 
 
@@ -49,8 +46,6 @@ snapshots:
       updated_at: column_name  # Required if strategy is 'timestamp'
 ```
 </File>
-
-</VersionBlock>
 
 
 To select from this snapshot in a downstream model:

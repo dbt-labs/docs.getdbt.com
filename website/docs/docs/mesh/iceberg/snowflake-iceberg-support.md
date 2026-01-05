@@ -292,8 +292,6 @@ For external catalogs, Snowflake only supports `read`, which means it can query 
 
 The syncing experience will be different depending on the catalog you choose. Some catalogs are automatically refreshed, and you can set parameters to do so with your catalog integration. Other catalogs might require a separate job to manage the metadata sync. 
 
-<VersionBlock firstVersion="1.9">
-
 ## Iceberg table format
 
 The dbt-snowflake adapter also supports applying `table_format` as a standalone configuration for dbt-snowflake models. We recommend against using this, as it is a legacy behavior, and you will only be able to write to Snowflake Horizon (not external Iceberg catalogs).
@@ -459,4 +457,3 @@ You should be aware of these limitations to the implementation:
     
     This query may be relatively inefficient and potentially expensive, depending on the size of your Snowflake warehouse. Thus, the ability to run iceberg models is gated behind the `enable_iceberg_materializations` flag.
 
-</VersionBlock>

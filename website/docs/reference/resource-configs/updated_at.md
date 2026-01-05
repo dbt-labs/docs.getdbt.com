@@ -5,8 +5,6 @@ datatype: column_name
 ---
 
 
-<VersionBlock firstVersion="1.9">
-
 <File name="snapshots/snapshots.yml">
 
 ```yaml
@@ -18,7 +16,6 @@ snapshots:
       updated_at: column_name
 ```
 </File>
-</VersionBlock>
 
 
 <File name='dbt_project.yml'>
@@ -33,15 +30,11 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.9">
-
 :::caution
 
 You will get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
 
 :::
-
-</VersionBlock>
 
 ## Description
 A column within the results of your snapshot query that represents when the record row was last updated.
@@ -54,8 +47,6 @@ No default is provided.
 
 ## Examples
 ### Use a column name `updated_at`
-
-<VersionBlock firstVersion="1.9">
 
 <File name="snapshots/orders_snapshot.yml">
 
@@ -71,7 +62,6 @@ snapshots:
 
 ```
 </File>
-</VersionBlock>
 
 
 ### Coalesce two columns to create a reliable `updated_at` column
@@ -79,10 +69,7 @@ Consider a data source that only has an `updated_at` column filled in when a rec
 
 Since the `updated_at` configuration only takes a column name, rather than an expression, you should update your snapshot query to include the coalesced column.
 
-
-<VersionBlock firstVersion="1.9">
-
-1. Create an staging model to perform the transformation.
+1. Create a staging model to perform the transformation.
    In your `models/` directory, create a SQL file that configures an staging model to coalesce the `updated_at` and `created_at` columns into a new column `updated_at_for_snapshot`.
 
     <File name='models/staging_orders.sql'>
@@ -116,7 +103,7 @@ Since the `updated_at` configuration only takes a column name, rather than an ex
 
 Alternatively, you can also create an ephemeral model to performs the required transformations. Then, you reference this model in your snapshot's `relation` key.
 
-</VersionBlock>
+
 
 
 

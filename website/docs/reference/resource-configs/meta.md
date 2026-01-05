@@ -269,30 +269,6 @@ exposures:
 
 Configure `meta` in the your [semantic models](/docs/build/semantic-models) property file or under the `semantic-models` config in the project file (`dbt_project.yml`). 
 
-<VersionBlock lastVersion="1.9">
-
-<File name='models/semantic_models.yml'>
-
-```yml
-semantic_models:
-  - name: semantic_model_name
-    config:
-      meta: {<dictionary>}
-
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-semantic-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +meta: {<dictionary>}
-```
-</File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 

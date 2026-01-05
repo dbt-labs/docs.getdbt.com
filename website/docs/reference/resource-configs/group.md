@@ -97,7 +97,6 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/properties.yml'>
 
 ```yaml
@@ -109,7 +108,6 @@ snapshots:
 ```
 
 </File>
-</VersionBlock>
 
 <File name='snapshots/<filename>.sql'>
 

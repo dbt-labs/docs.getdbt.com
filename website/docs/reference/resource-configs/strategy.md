@@ -13,8 +13,6 @@ datatype: timestamp | check
 }>
 <TabItem value="timestamp">
 
-<VersionBlock firstVersion="1.9">
-
 <File name='snapshots/<filename>.yml'>
   
   ```yaml
@@ -26,7 +24,6 @@ datatype: timestamp | check
       updated_at: column_name
   ```
 </File>
-</VersionBlock>
 
 
 <File name='dbt_project.yml'>
@@ -45,8 +42,6 @@ snapshots:
 
 <TabItem value="check">
 
-<VersionBlock firstVersion="1.9">
-
 <File name='snapshots/<filename>.yml'>
   
   ```yaml
@@ -58,7 +53,6 @@ snapshots:
       check_cols: [column_name] | "all"
   ```
 </File>
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -85,7 +79,6 @@ This is a **required configuration**. There is no default value.
 ## Examples
 ### Use the timestamp strategy
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/timestamp_example.yml'>
 
 ```yaml
@@ -101,12 +94,10 @@ snapshots:
 ```
 
 </File>
-</VersionBlock>
 
 
 ### Use the check strategy
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/check_example.yml'>
 
 ```yaml
@@ -123,7 +114,6 @@ snapshots:
 
 ```
 </File>
-</VersionBlock>
 
 ### Advanced: define and use custom snapshot strategy
 Behind the scenes, snapshot strategies are implemented as macros, named `snapshot_<strategy>_strategy`
@@ -135,7 +125,6 @@ It's possible to implement your own snapshot strategy by adding a macro with the
 1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code as a guide and adjust as needed.
 2. Use this strategy via the `strategy` configuration:
 
-<VersionBlock firstVersion="1.9">
 <File name='snapshots/<filename>.yml'>
 
 ```yaml
@@ -148,5 +137,4 @@ snapshots:
       unique_key: id
 ```
 </File>
-</VersionBlock>
 

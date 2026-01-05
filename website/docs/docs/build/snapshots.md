@@ -43,8 +43,6 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 ## Configuring snapshots
 
-<VersionBlock firstVersion="1.9">
-
 Configure your snapshots in YAML files to tell dbt how to detect record changes. Define snapshots configurations in YAML files, alongside your models, for a cleaner, faster, and more consistent set up. Place snapshot YAML files in the models directory or in a snapshots directory. 
 
 <File name='snapshots/orders_snapshot.yml'>
@@ -158,8 +156,6 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 8.  Snapshots are only useful if you run them frequently &mdash; schedule the `dbt snapshot` command to run regularly.
 
-</VersionBlock>
-
 ### Configuration best practices
 
 <Expandable alt_header="Use the timestamp strategy where possible">
@@ -179,7 +175,7 @@ Why timestamp is the preferred strategy:
 
 <Expandable alt_header="Use dbt_valid_to_current for easier date range queries">
 
-By default, `dbt_valid_to` is `NULL` for current records. However, if you set the [`dbt_valid_to_current` configuration](/reference/resource-configs/dbt_valid_to_current) (available in dbt Core v1.9+), `dbt_valid_to` will be set to your specified value (such as `9999-12-31`) for current records.
+By default, `dbt_valid_to` is `NULL` for current records. However, if you set the [`dbt_valid_to_current` configuration](/reference/resource-configs/dbt_valid_to_current), `dbt_valid_to` will be set to your specified value (such as `9999-12-31`) for current records.
 
 This allows for straightforward date range filtering.
 
@@ -189,8 +185,6 @@ This allows for straightforward date range filtering.
 
 The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/dbt-labs/jaffle_shop/blob/8e7c853c858018180bef1756ec93e193d9958c5b/models/staging/schema.yml#L26)).
 </Expandable>
-
-<VersionBlock firstVersion="1.9">
 
 <Expandable alt_header="Use a schema that is separate to your models' schema">
 
@@ -203,24 +197,22 @@ Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots i
  If you need to clean or transform your data before snapshotting, create an ephemeral model or a staging model that applies the necessary transformations. Then, reference this model in your snapshot configuration. This approach keeps your snapshot definitions clean and allows you to test and run transformations separately.
 
 </Expandable>
-</VersionBlock>
 
 ### How snapshots work
 
 When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 
-- **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null` or the value specified in [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) (available in dbt Core 1.9+) if configured.
+- **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null` or the value specified in [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) if configured.
 - **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
   - The `dbt_valid_to` column will be updated for any existing records that have changed.
-  - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in dbt Core v1.9+).
+  - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current`.
 
-<VersionBlock firstVersion="1.9">
 
 #### Note 
 - These column names can be customized to your team or organizational conventions using the [snapshot_meta_column_names](#snapshot-meta-fields) config.
 - Use the `dbt_valid_to_current` config to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
-- Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track hard deletes by adding a new record when row become "deleted" in source. Supported options are `ignore`, `invalidate`, and `new_record`.
-</VersionBlock>
+- Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track hard deletes by adding a new record when a row becomes "deleted" in source. Supported options are `ignore`, `invalidate`, and `new_record`.
+
 
 Snapshots can be referenced in downstream models the same way as referencing models — by using the [ref](/reference/dbt-jinja-functions/ref) function.
 
@@ -246,8 +238,6 @@ The `timestamp` strategy requires the following configurations:
 
 **Example usage:**
 
-<VersionBlock firstVersion="1.9">
-
 <File name='snapshots/orders_snapshot.yml'>
 
 ```yaml
@@ -261,7 +251,6 @@ snapshots:
       updated_at: updated_at
 ```
 </File>
-</VersionBlock>
 
 ### Check strategy
 The `check` strategy is useful for tables which do not have a reliable `updated_at` column. This strategy works by comparing a list of columns between their current and historical values. If any of these columns have changed, then dbt will invalidate the old record and record the new one. If the column values are identical, then dbt will not take any action.
@@ -280,8 +269,6 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 #### Example usage
 
-<VersionBlock firstVersion="1.9">
-
 <File name='snapshots/orders_snapshot.yml'>
 
 ```yaml
@@ -299,7 +286,6 @@ snapshots:
 
 </File>
 
-</VersionBlock>
 
 ####  Example usage with `updated_at`
 
@@ -332,7 +318,6 @@ In this example:
 
 ### Hard deletes (opt-in)
 
-<VersionBlock firstVersion="1.9">
 
 In dbt v1.9 and higher, the [`hard_deletes`](/reference/resource-configs/hard-deletes) config replaces the `invalidate_hard_deletes` config to give you more control on how to handle deleted rows from the source. The `hard_deletes` config is not a separate strategy but an additional opt-in feature that can be used with any snapshot strategy.
 
@@ -377,13 +362,11 @@ The resulting table will look like this:
 | 1  | deleted | 2024-01-01 11:20 | 2024-01-01 11:20 | 2024-01-01 12:00 | True           |
 | 1  | restored | 2024-01-01 12:00 | 2024-01-01 12:00 |                 | False        |
 
-</VersionBlock>
 
 ## Snapshot meta-fields
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-In <Constant name="core" /> v1.9+ (or available sooner in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.

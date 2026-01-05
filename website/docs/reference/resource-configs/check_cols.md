@@ -4,7 +4,7 @@ description: "Read this guide to understand the check_cols configuration in dbt.
 datatype: "[column_name] | all"
 ---
 
-<VersionBlock firstVersion="1.9">
+
 <File name="snapshots/<filename>.yml">
   
   ```yml
@@ -20,7 +20,7 @@ datatype: "[column_name] | all"
   ```
   
 </File>
-</VersionBlock>
+
 
 <File name='dbt_project.yml'>
 
@@ -48,7 +48,6 @@ No default is provided.
 
 ### Check a list of columns for changes
 
-<VersionBlock firstVersion="1.9">
 
 <File name="snapshots/orders_snapshot_check.yml">
 
@@ -67,11 +66,10 @@ snapshots:
 </File>
 
 To select from this snapshot in a downstream model: `select * from {{ ref('orders_snapshot_check') }}`
-</VersionBlock>
+
 
 ### Check all columns for changes
 
-<VersionBlock firstVersion="1.9">
 
 <File name="orders_snapshot_check.yml">
 
@@ -88,6 +86,6 @@ snapshots:
 </File>
 
 To select from this snapshot in a downstream model: `select * from {{ ref('orders_snapshot_check') }}`
-</VersionBlock>
+
 
 

@@ -49,8 +49,6 @@ This would result in the generated relation being located in the `mappings` sche
 
 <TabItem value="snapshots" label="Snapshots">
 
-<VersionBlock firstVersion="1.9">
-
 Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or property file.
 
 For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
@@ -82,8 +80,6 @@ snapshots:
 </File>
 
 This results in the generated relation being located in the `snapshots` schema so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
-
-</VersionBlock>
 
 </TabItem>
 

@@ -15,9 +15,8 @@ snapshot-paths: [directorypath]
 
 Optionally specify a custom list of directories where [snapshots](/docs/build/snapshots) are located. 
 
-<VersionBlock firstVersion="1.9">
-In <Constant name="core" /> v1.9+, you can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots). 
-</VersionBlock>
+
+You can co-locate your snapshots with models if they are [defined using the latest YAML syntax](/docs/build/snapshots). 
 
 
 ## Default

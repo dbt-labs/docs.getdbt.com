@@ -175,8 +175,6 @@ queries on models, where analysts can “look back in time” at the previous st
 supported by the ClickHouse connector and is configured using the following syntax:
 
 
-<VersionBlock firstVersion="1.9">
-
 <File name='snapshots/<model_name>.sql'>
 
 ```jinja
@@ -192,7 +190,6 @@ supported by the ClickHouse connector and is configured using the following synt
 
 </File>
 
-</VersionBlock>
 
 For more information on configuration, check out the [snapshot configs](/reference/snapshot-configs) reference page.
 

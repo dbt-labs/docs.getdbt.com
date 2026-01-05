@@ -682,8 +682,6 @@ group by 1
 ```
 #### Iceberg Snapshot source code example
 
-<VersionBlock firstVersion="1.9">
-
 ```sql
 
 {% snapshot demosnapshot %}
@@ -701,8 +699,6 @@ select * from {{ ref('customers') }}
 {% endsnapshot %}
 
 ```
-
-</VersionBlock>
 
 ## Monitoring your Glue Interactive Session
 

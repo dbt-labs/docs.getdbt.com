@@ -23,8 +23,6 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over.
 
-<VersionBlock firstVersion="1.9">
-
 Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
@@ -81,8 +79,6 @@ models:
 Supported dbt-adapters use these fields when populated, to render out the foreign key constraint instead of `expression`.
 
 For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/mesh/govern/model-contracts#platform-constraint-support).
-
-</VersionBlock>
 
 ## Platform-specific support
 

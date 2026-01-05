@@ -20,7 +20,6 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-<VersionBlock firstVersion="1.9">
 
 | Parameter          | Type       | Required | Default     | Change Monitoring Support |
 |--------------------|------------|----------|-------------|---------------------------|
@@ -109,8 +108,6 @@ models:
 
 </Tabs>
 
-</VersionBlock>
-
 Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
@@ -120,8 +117,6 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag). Please note that Snowflake supports a target lag of 1 minute or longer.
-
-<VersionBlock firstVersion="1.9">
 
 ### Refresh mode
 
@@ -140,7 +135,6 @@ Snowflake allows two options for initialize:
 
 Learn more about `initialize` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
 
-</VersionBlock>
 
 ### Limitations
 
@@ -690,8 +684,6 @@ Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/in
   >- DML operations (for tables only).
   >- Background maintenance operations on metadata performed by Snowflake.
 
-<VersionBlock firstVersion="1.9">
-
 ## Pagination for object results
 
 By default, when dbt encounters a schema with up to 100,000 objects, it will paginate the results from `show objects` at 10,000 per page for up to 10 pages.
@@ -712,4 +704,3 @@ flags:
 
 ```
 
-</VersionBlock>

@@ -4,11 +4,9 @@ id: "resource-type"
 sidebar: "resource type"
 ---
 
-<VersionBlock firstVersion="1.9">
 
 The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.
 
-</VersionBlock>
 
 This means the flags enable you to specify which types of resources to include or exclude when running the commands, instead of targeting specific resources.
 
@@ -120,7 +118,6 @@ dbt build --resource-type test
 
 </File>
 
-<VersionBlock firstVersion="1.9">
 
 ### Include all data tests during testing
 
@@ -134,7 +131,6 @@ dbt test --resource-type test
 
 </File>
 
-</VersionBlock>
 
 </Expandable>
 <Expandable alt_header="Exclude resource types">
@@ -163,8 +159,6 @@ dbt build --exclude-resource-type unit_test
 
 </File>
 
-<VersionBlock firstVersion="1.9">
-
 ### Exclude all unit tests during testing
 
 Use the following command to exclude unit tests when running tests:
@@ -177,5 +171,4 @@ dbt test --exclude-resource-type unit_test
 
 </File>
 
-</VersionBlock>
 </Expandable>

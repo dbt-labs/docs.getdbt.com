@@ -16,8 +16,6 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 ## Parameters
 
-<VersionBlock firstVersion="1.9">
-
 | Parameter   | <div style={{width:'350px'}}>Description</div>   | Required | Type      |
 |-------------|---------------------------------------------------|----------|-----------|
 | `name`  | The name of the metric.       | Required  | String |
@@ -33,8 +31,6 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 | `cumulative_type_params.window`      | Specifies the accumulation window, such as `1 month`, `7 days`, or `1 year`. Cannot be used with `grain_to_date`.   | Optional  | String |
 | `cumulative_type_params.grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
 | `cumulative_type_params.period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
-
-</VersionBlock>
 
 <Expandable alt_header="Explanation of type_params.measure">
   
@@ -60,8 +56,6 @@ The following displays the complete specification for cumulative metrics, along 
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
-<VersionBlock firstVersion="1.9">
-
 ```yaml
 metrics:
   - name: The metric name # Required
@@ -79,7 +73,6 @@ metrics:
         join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
 
 ```
-</VersionBlock>
 
 </File>
 
@@ -89,19 +82,14 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 The following example shows how to define cumulative metrics in a YAML file:
 
-<VersionBlock firstVersion="1.9">
-
 - `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `type params` to specify the measure `order_total` to be aggregated.
 
 - `cumulative_order_total_l1m`: Calculates the trailing 1-month cumulative order total. Uses `cumulative_type_params` to specify a `window` of 1 month.
 
 - `cumulative_order_total_mtd`: Calculates the month-to-date cumulative order total, respectively. Uses `cumulative_type_params` to specify a `grain_to_date` of `month`.
 
-</VersionBlock>
 
 <File name='models/marts/sem_semantic_model_name.yml'>
-
-<VersionBlock firstVersion="1.9">
 
 ```yaml
 metrics:
@@ -133,7 +121,6 @@ metrics:
       cumulative_type_params:
         grain_to_date: month
 ```
-</VersionBlock>
 
 </File>
 

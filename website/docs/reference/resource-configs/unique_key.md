@@ -57,8 +57,6 @@ models:
 
 <TabItem value="snapshots" label="Snapshots">
 
-<VersionBlock firstVersion="1.9">
-
 For [snapshots](/docs/build/snapshots), configure the `unique_key` in the your `snapshot/filename.yml` file or in your `dbt_project.yml` file.
 
 <File name='snapshots/<filename>.yml'>
@@ -73,7 +71,6 @@ snapshots:
 ```
 
 </File>
-</VersionBlock>
 
 
 <File name='dbt_project.yml'>
@@ -142,8 +139,6 @@ select * from ..
 
 In this example, the `id` column is used as a unique key for a snapshot.
 
-<VersionBlock firstVersion="1.9">
-
 <File name="snapshots/orders_snapshot.yml">
 
 ```yaml
@@ -158,7 +153,6 @@ snapshots:
 
 ```
 </File>
-</VersionBlock>
 
 You can also specify configurations in your `dbt_project.yml` file if multiple snapshots share the same `unique_key`:
 <File name='dbt_project.yml'>
@@ -174,8 +168,6 @@ snapshots:
 
 </TabItem>
 </Tabs>
-
-<VersionBlock firstVersion="1.9">
 
 ### Use multiple unique keys
 
@@ -225,5 +217,4 @@ snapshots:
 </File>
 </TabItem>
 </Tabs>
-</VersionBlock>
 

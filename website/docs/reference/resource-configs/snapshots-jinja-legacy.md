@@ -197,8 +197,6 @@ Configure your snapshot to tell dbt how to detect record changes. Snapshots are 
 
 The following table outlines the configurations available for snapshots:
 
-<VersionBlock firstVersion="1.9">
-
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
 | [database](/reference/resource-configs/database) |Specify a custom database for the snapshot | No | analytics |
@@ -214,8 +212,6 @@ The following table outlines the configurations available for snapshots:
 - Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
 - Before v1.9, `target_schema` (required) and `target_database` (optional) set a fixed schema or database for snapshots, making it hard to separate dev and prod environments. In v1.9, `target_schema` became optional, allowing environment-aware snapshots. By default, snapshots now use `generate_schema_name` or `generate_database_name`, but developers can still specify a custom location using [schema](/reference/resource-configs/schema) and [database](/reference/resource-configs/database), consistent with other resource types.
 
-
-</VersionBlock>
 
 ## Add snapshot to a project
 
@@ -252,7 +248,6 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 5. Add configurations to your snapshot using a `config` block. You can also [configure your snapshot from your `dbt_project.yml` file](/reference/snapshot-configs).
 
-<VersionBlock firstVersion="1.9">
 
 <File name='snapshots/orders_snapshot.sql'>
 
@@ -276,7 +271,6 @@ select * from {{ source('jaffle_shop', 'orders') }}
 ```
 
 </File>
-</VersionBlock>
 
 
 6. Run the `dbt snapshot` [command](/reference/commands/snapshot). For our example, a new table will be created at `analytics.snapshots.orders_snapshot`. You can change the `target_database` configuration, the `target_schema` configuration and the name of the snapshot (as defined in `{% snapshot .. %}`) will change how dbt names this table.
@@ -357,7 +351,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
 
 - #### Using a column name `updated_at`:
 
-  <VersionBlock firstVersion="1.9">
   <File name='snapshots/orders.sql'>
 
   ```sql
@@ -378,7 +371,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
   {% endsnapshot %}
   ```
   </File>
-  </VersionBlock>
 
 - #### Coalescing two columns to create a reliable `updated_at` column:
   
@@ -386,7 +378,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
   
   Since the `updated_at` configuration only takes a column name, rather than an expression, you should update your snapshot query to include the coalesced column.
 
-  <VersionBlock firstVersion="1.9">
   <File name='snapshots/orders.sql'>
 
   ```sql
@@ -411,7 +402,6 @@ The `updated_at` parameter is required if using the timestamp strategy. The `upd
   {% endsnapshot %}
   ```
   </File>
-  </VersionBlock>
 
 
 </Expandable>

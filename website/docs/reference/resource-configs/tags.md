@@ -17,8 +17,6 @@ datatype: string | [string]
 
 <File name='dbt_project.yml'>
 
-<VersionBlock firstVersion="1.9">
-
 ```yml
 
 [models](/reference/model-configs):
@@ -38,7 +36,6 @@ datatype: string | [string]
     +tags: <string> | [<string>]
 
 ```
-</VersionBlock>
 
 
 </File>
@@ -46,10 +43,7 @@ datatype: string | [string]
 
 <TabItem value="other-yaml">
 
-<VersionBlock firstVersion="1.9">
-
 The following examples show how to add tags to dbt resources in YAML files. Replace `resource_type` with `exposures`, `models`, `snapshots`, `seeds`, or `saved_queries` as appropriate.
-</VersionBlock>
 
 <File name='resource_type/properties.yml'>
 

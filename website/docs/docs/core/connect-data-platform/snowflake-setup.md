@@ -29,8 +29,6 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 Snowflake can be configured using basic user/password authentication as shown below.
 
-<VersionBlock firstVersion="1.9">
-
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -96,7 +94,6 @@ my-snowflake-db:
       reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
 ```
 
-</VersionBlock>
 
 **Note:** To avoid receiving Duo push notifications for every model build, enable [MFA token caching](https://docs.snowflake.com/en/user-guide/security-mfa#label-mfa-token-caching) in your Snowflake warehouse by running `alter account set allow_client_mfa_caching = true;` with the ACCOUNTADMIN role.
 
@@ -105,8 +102,6 @@ my-snowflake-db:
 To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt Core versions 1.5 and 1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
 
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
-
-<VersionBlock firstVersion="1.9">
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -203,8 +198,6 @@ my-snowflake-db:
 ```
 
 </File>
-
-</VersionBlock>
 
 **Note**: To avoid authentication prompts for every dbt connection (which can result in dozens of SSO tabs opening), enable [connection caching](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use#using-connection-caching-to-minimize-the-number-of-prompts-for-authentication-optional) in your Snowflake warehouse by running `alter account set allow_id_token = true;` with the ACCOUNTADMIN role.
 

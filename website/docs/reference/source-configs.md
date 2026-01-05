@@ -8,11 +8,8 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 ## Available configurations
 
-<VersionBlock firstVersion="1.9">
+Sources configurations support [`enabled`](/reference/resource-configs/enabled), [`event_time`](/reference/resource-configs/event-time), and [`meta`](/reference/resource-configs/meta).
 
-Sources configurations support [`enabled`](/reference/resource-configs/enabled), [`event_time`](/reference/resource-configs/event-time), and [`meta`](/reference/resource-configs/meta)
-
-</VersionBlock>
 
 ### General configurations
 
@@ -31,8 +28,6 @@ Sources configurations support [`enabled`](/reference/resource-configs/enabled),
 
 <File name='dbt_project.yml'>
 
-<VersionBlock firstVersion="1.9">
-
 ```yaml
 sources:
   [<resource-path>](/reference/resource-configs/resource-path):
@@ -46,7 +41,6 @@ sources:
       key: value
 
 ```
-</VersionBlock>
 
 </File>
 
@@ -56,8 +50,6 @@ sources:
 <TabItem value="property-yaml">
 
 <File name='models/properties.yml'>
-
-<VersionBlock firstVersion="1.9">
 
 ```yaml
 
@@ -82,7 +74,6 @@ sources:
           [meta](/reference/resource-configs/meta): {<dictionary>}
 
 ```
-</VersionBlock>
 
 </File>
 
@@ -101,8 +92,6 @@ You can disable sources imported from a package to prevent them from rendering i
 
   <File name='dbt_project.yml'>
 
-  <VersionBlock firstVersion="1.9">
-
   ```yaml
   sources:
     your_project_name:
@@ -112,8 +101,6 @@ You can disable sources imported from a package to prevent them from rendering i
             +enabled: false
             +event_time: my_time_field
   ```
-
-  </VersionBlock>
   </File>
 
 
@@ -216,7 +203,6 @@ sources:
 
 #### Configure a source with an `event_time`
 
-<VersionBlock firstVersion="1.9">
 
 To configure a source with an `event_time`, specify the `event_time` field in the source configuration. This field is used to represent the actual timestamp of the event, rather than something like a loading date.
 
@@ -234,8 +220,6 @@ sources:
 
 In this example, the `event_time` is set to `event_timestamp`, which has the exact time each clickstream event happened.
 Not only is this required for the [incremental microbatching strategy](/docs/build/incremental-microbatch), but when you compare data across [CI and production](/docs/deploy/advanced-ci#speeding-up-comparisons) environments, dbt will use `event_timestamp` to filter and match data by this event-based timeframe, ensuring that only overlapping timeframes are compared.
-
-</VersionBlock>
 
 #### Configure meta to a source
 

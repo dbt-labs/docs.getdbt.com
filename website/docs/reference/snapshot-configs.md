@@ -39,8 +39,6 @@ course="Snapshots"
 <TabItem value="project-yaml">
 
 
-<VersionBlock firstVersion="1.9">
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -60,13 +58,10 @@ snapshots:
 
 </File>
 
-</VersionBlock>
 
 </TabItem>
 
 <TabItem value="property-yaml">
-
-<VersionBlock firstVersion="1.9">
   
 Refer to [configuring snapshots](/docs/build/snapshots#configuring-snapshots) for the available configurations.
 
@@ -88,8 +83,6 @@ snapshots:
       [dbt_valid_to_current](/reference/resource-configs/dbt_valid_to_current): <string>
 ```
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -175,8 +168,6 @@ If you use one of the latest configs, such as `dbt_valid_to_current`, without mi
 
 <File name='dbt_project.yml'>
 
-<VersionBlock firstVersion="1.9">
-
 
 ```yaml
 snapshots:
@@ -190,15 +181,12 @@ snapshots:
     [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
     [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
 ```
-</VersionBlock>
 
 </File>
 
 </TabItem>
 
 <TabItem value="property-yaml">
-
-<VersionBlock firstVersion="1.9">
 
 <File name='snapshots/properties.yml'>
 
@@ -219,7 +207,6 @@ snapshots:
 ```
 
 </File>
-</VersionBlock>
 
 </TabItem>
 
@@ -234,20 +221,14 @@ snapshots:
 ## Configuring snapshots
 Snapshots can be configured in multiple ways:
 
-<VersionBlock firstVersion="1.9">
 
 1. Defined in YAML files using the `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) or whichever folder you pefer. Available in [the <Constant name="cloud" /> release track](/docs/dbt-versions/cloud-release-tracks), dbt v1.9 and higher.
 2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
-</VersionBlock>
 
 Snapshot configurations are applied hierarchically in the order above with higher taking precedence. You can also apply [data tests](/reference/snapshot-properties) to snapshots using the [`tests` property](/reference/resource-properties/data-tests).
 
 ### Examples
-
-<VersionBlock firstVersion="1.9">
 The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file and a `.yml` file.
-</VersionBlock>
-
 
 - #### Apply configurations to all snapshots
   To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
@@ -280,7 +261,6 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
 
 - #### Apply configurations to one snapshot only
 
-    <VersionBlock firstVersion="1.9">
      <File name='snapshots/postgres_app/order_snapshot.yml'>
 
     ```yaml
@@ -297,7 +277,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     ```
     </File>
    Pro-tip: Use sources in snapshots: `select * from {{ source('jaffle_shop', 'orders') }}`
-    </VersionBlock>
+
 
   You can also use the full resource path (including the project name, and subdirectories) to configure an individual snapshot from your `dbt_project.yml` file.
 
