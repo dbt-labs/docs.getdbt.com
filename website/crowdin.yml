@@ -5,7 +5,7 @@ preserve_hierarchy: true
 files:
   # Temp for testing
   - source: /docs/guides/*.md
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/docs/guides/%original_file_name%
 
   # English documentation markdown files → Crowdin will output to Japanese folder
   # - source: /docs/**/*.md
