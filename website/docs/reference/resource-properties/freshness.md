@@ -112,6 +112,38 @@ If using a non-UTC timestamp, cast it to UTC first:
 loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
+Examples:
+
+```yaml
+sources:
+  - name: raw_ecommerce
+    description: "Raw data from the ecommerce platform"
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: _etl_loaded_at 
+    tables:
+      - name: orders # Inherits config.loaded_at_field from source        
+      - name: customers
+        config:
+          loaded_at_field: last_modified_timestamp # Override with table-specific column
+          freshness:
+            warn_after:
+              count: 6
+              period: hour      
+      - name: events
+        config:
+          loaded_at_query: |
+            SELECT MAX(event_timestamp)
+            FROM {{ this }}
+            WHERE is_valid = true
+```
+
 <VersionBlock firstVersion="1.10">
 
 ## loaded_at_query
