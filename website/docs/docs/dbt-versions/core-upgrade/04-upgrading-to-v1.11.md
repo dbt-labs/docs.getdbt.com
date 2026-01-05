@@ -1,19 +1,15 @@
 ---
-title: "Upgrading to v1.11 (beta)"
+title: "Upgrading to v1.11"
 id: upgrading-to-v1.11
 description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.11 <Lifecycle status="beta" />
-
-:::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in <Constant name="dbt_platform" />), you need to install a beta version of dbt-core. For example, `install --upgrade --pre dbt-core`.
-:::
+# Upgrading to v1.11
 
 ## Resources
 
-- <Constant name="core" /> [v1.11 Beta changelog](https://github.com/dbt-labs/dbt-core/blob/v1.11.0b3/CHANGELOG.md)
+- [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
@@ -33,7 +29,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 New features and functionality available in <Constant name="core" /> v1.11
 
-### User-defined functions (UDFs) <Lifecycle status="beta" />
+### User-defined functions (UDFs)
 
 dbt Core v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
 
@@ -64,7 +60,6 @@ Deprecation warnings from JSON schema validation are now enabled by default when
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
 
 You'll see the following deprecation warnings by default:
-* [ConfigMetaFallbackDeprecation](/reference/deprecations#configmetafallbackdeprecation) 
 * [CustomKeyInConfigDeprecation](/reference/deprecations#customkeyinconfigdeprecation)
 * [CustomKeyInObjectDeprecation](/reference/deprecations#customkeyinobjectdeprecation)
 * [CustomTopLevelKeyDeprecation](/reference/deprecations#customtoplevelkeydeprecation)
@@ -135,4 +130,6 @@ You will find these quick hits in dbt Core v1.11:
 - The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 - Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 - When a model is disabled, unit tests for that model are automatically disabled as well.
+- You can use the new [`config.meta_get()`](/reference/dbt-jinja-functions/config#configmeta_get) and [`config.meta_require()`](/reference/dbt-jinja-functions/config#configmeta_require) functions to access custom configurations stored under `meta`.
+
 

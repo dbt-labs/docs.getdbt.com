@@ -84,7 +84,7 @@ So we’ve found a way to isolate the new rows we need to process. How then do w
 
 Thankfully dbt has some additional configuration and special syntax just for incremental models.
 
-First, let’s look at a config block for incremental materialization:
+First, let's look at a config block for incremental materialization:
 
 ```sql
 {{

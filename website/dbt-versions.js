@@ -25,8 +25,8 @@ exports.versions = [
   },
  {
     version: "1.11",
-    customDisplay: "Core v1.11 Beta",
-    isPrerelease: true,
+    customDisplay: "Core v1.11",
+    EOLDate: "2026-12-18",
   },
   {
     version: "1.10",
