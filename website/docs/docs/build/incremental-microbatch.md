@@ -312,6 +312,24 @@ For now, dbt assumes that all values supplied are in UTC:
 
 While we may consider adding support for custom time zones in the future, we also believe that defining these values in UTC makes everyone's lives easier.
 
+### System timezone behavior
+
+dbt microbatch computes batch boundaries based on your system's local timezone. This means the start and end times for each batch are determined using the timezone configured on the machine or environment where dbt is running. For consistent behavior across different environments, ensure your system timezone is set appropriately (for example, to UTC).
+
+### Source timestamp requirements
+
+For microbatch to work as expected, the `event_time` column in your source data should be stored as a **timezone-aware timestamp** (for example, `TIMESTAMP_TZ` or `TIMESTAMP WITH TIME ZONE`). 
+
+If your source timestamps are stored as timezone-naive types (such as `TIMESTAMP_NTZ` or `TIMESTAMP WITHOUT TIME ZONE`) representing UTC time, dbt cannot automatically determine the correct timezone context for those values. This may lead to unexpected batch filtering behavior, especially if your system timezone differs from UTC.
+
+To work around this:
+- **Convert to timezone-aware timestamps**: If possible, update your upstream data pipeline to store timestamps with timezone information.
+- **Explicitly cast in your model**: Use SQL to cast your timezone-naive column to a timezone-aware type by specifying the appropriate timezone. For example, in Snowflake:
+  
+  ```sql
+  CONVERT_TIMEZONE('UTC', your_timestamp_ntz_column) as event_time
+  ```
+
 ## How microbatch compares to other incremental strategies
 
 As data warehouses roll out new operations for concurrently replacing/upserting data partitions, we may find that the new operation for the data warehouse is more efficient than what the adapter uses for microbatch. In such instances, we reserve the right the update the default operation for microbatch, so long as it works as intended/documented for models that fit the microbatch paradigm.
