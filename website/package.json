@@ -10,9 +10,14 @@
     "prepare": "cd .. && husky install",
     "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js",
     "build:serve": "npm run build && npm run serve",
-    "start:ja": "docusaurus start --locale ja"
+    "start:ja": "docusaurus start --locale ja",
+    "write-translations": "docusaurus write-translations",
+    "crowdin:upload": "crowdin upload sources",
+    "crowdin:download": "crowdin download",
+    "crowdin:sync": "npm run crowdin:upload && npm run crowdin:download"
   },
   "dependencies": {
+    "@crowdin/cli": "^3.19.4",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.7.0",
