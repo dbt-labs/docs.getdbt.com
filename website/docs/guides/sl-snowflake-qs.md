@@ -48,7 +48,7 @@ If you're on different data platforms, you can also follow this guide and will n
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Complete the [Quickstart for <Constant name="cloud" /> and Snowflake](snowflake-qs.md) guide. 
+- Complete the [Quickstart for <Constant name="cloud" /> and Snowflake](/guides/sl-snowflake-qs) guide. 
 - Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 
