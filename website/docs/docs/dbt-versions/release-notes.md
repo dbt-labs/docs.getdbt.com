@@ -16,7 +16,7 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
-## January 2025
+## January 2026
 
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification in the <Constant name="fusion_engine" /> creates an open standard for defining metrics and dimensions that works across multiple platforms. Key changes:
   - Semantic models are now embedded within model YAML entries. This removes the need to manage YAML entries across multiple files.
