@@ -93,7 +93,7 @@ The following table outlines the configurations available for snapshots:
 
 To add a snapshot to your project follow these steps. For users on versions 1.8 and earlier, refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy). 
 
-1. Create a YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your `dbt_project.yml` file ([docs](/reference/snapshot-configs)).
+1. Create a properties YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your project YAML file (`dbt_project.yml`) ([docs](/reference/snapshot-configs)).
 
     <File name='snapshots/orders_snapshot.yml'>
 

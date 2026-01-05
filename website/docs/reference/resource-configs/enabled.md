@@ -98,7 +98,7 @@ snapshots:
 <File name='snapshots/<filename>.sql'>
 
 ```sql
-# Configuring in a SQL file is a legacy method and not recommended. Use the YAML file instead.
+# Configuring in a SQL file is a legacy method and not recommended. Use the property file instead.
 
 {% snapshot [snapshot_name](snapshot_name) %}
 
