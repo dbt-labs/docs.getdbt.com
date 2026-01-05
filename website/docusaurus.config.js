@@ -51,6 +51,18 @@ var siteSettings = {
   i18n: {
     defaultLocale: "en",
     locales: ["en", "ja"],
+    localeConfigs: {
+      en: {
+        label: "English",
+        direction: "ltr",
+        htmlLang: "en-US",
+      },
+      ja: {
+        label: "日本語",
+        direction: "ltr",
+        htmlLang: "ja-JP",
+      },
+    },
   },
   themeConfig: {
     docs: {

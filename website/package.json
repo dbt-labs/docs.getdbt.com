@@ -8,7 +8,9 @@
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
     "prepare": "cd .. && husky install",
-    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js",
+    "build:serve": "npm run build && npm run serve",
+    "start:ja": "docusaurus start --locale ja"
   },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
