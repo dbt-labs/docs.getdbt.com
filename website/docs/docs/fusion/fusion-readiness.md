@@ -45,7 +45,8 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
-- [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />. 
+- [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
+- [ ] Resolve any job failures, jobs must be running successfully for eligibility checks to run. 
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 
