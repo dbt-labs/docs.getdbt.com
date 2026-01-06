@@ -386,7 +386,7 @@ h3 {
   padding-top: 2rem !important;
 }
 
-code {
+:not(pre) > code {
   border: none;
   background-color: rgba(246, 245, 255, 1);
   color: rgba(61, 24, 154, 1);
@@ -410,7 +410,7 @@ code {
   font-size: var(--text-sm);
 }
 
-a code {
+a > code {
   color: rgba(61, 24, 154, 1);
 }
 
