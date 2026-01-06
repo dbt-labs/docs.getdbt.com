@@ -120,7 +120,6 @@ After downloading the extension and installing the <Constant name="fusion_engine
 - This _does not_ require a <Constant name="dbt_platform" /> project — just a dbt account.
 - If a valid `dbt_cloud.yml` file exists on your machine, the extension will automatically use it and skip login.
 - If you already have a dbt account (even from years ago), you will be directed into an OAuth sign-in flow.
-- Make sure you update the VS Code extension to the latest version and restart your editor before beginning the registration process.
 
 <Expandable alt_header="Understanding regions">
 
