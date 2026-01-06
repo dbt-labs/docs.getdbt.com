@@ -7,9 +7,12 @@ Constraints are a feature of many data platforms. When specified, the platform w
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
 
-Constraints require the declaration and enforcement of a model [contract](/reference/resource-configs/contract).
+## Prerequisites
 
-**Constraints are never applied on `ephemeral` models or those materialized as `view`**. Only `table` and `incremental` models support applying and enforcing constraints.
+Before using constraints, ensure the following requirements are met:
+
+- **You use supported materializations** &mdash; Constraints only work on `table` and `incremental` models. Constraints are never applied on `ephemeral` models or those materialized as `view`. 
+- **You enforce a contract** &mdash; To use constraints, your model must declare and enforce a [contract](/reference/resource-configs/contract). This means you need to explicitly define the `data_type` for every column in your model's schema configuration.
 
 ## Defining constraints
 
@@ -44,6 +47,7 @@ models:
     
     # required
     config:
+      materialized: table
       contract: {enforced: true}
     
     # model-level constraints
