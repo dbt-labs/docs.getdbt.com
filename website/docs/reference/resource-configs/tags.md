@@ -543,7 +543,7 @@ Tags accumulate hierarchically. The [earlier example](/reference/resource-config
 
 ### Applying tags to specific columns and tests
 
-Tags can also be applied to specific columns in a resource and to tests.
+You can also apply tags to specific columns in a resource, and to tests.
 
 <File name='models/properties.yml'>
 
