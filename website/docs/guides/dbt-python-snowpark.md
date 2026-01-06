@@ -405,7 +405,7 @@ In this step, we’ll need to create a development branch and set up project lev
 
 dbt Labs has developed a [project structure guide](/best-practices/how-we-structure/1-guide-overview/) that contains a number of recommendations for how to build the folder structure for your project. Do check out that guide if you want to learn more. Right now we are going to create some folders to organize our files:
 
-- Sources &mdash; This is our Formula 1 dataset and it will be defined in a source YAML file.
+- Sources &mdash; This is our Formula 1 dataset and it will be defined in a source properties YAML file.
 - Staging models &mdash; These models have a 1:1 with their source table.
 - Intermediate &mdash; This is where we will be joining some Formula staging models.
 - Marts models &mdash; Here is where we perform our major transformations. It contains these subfolders:
@@ -1215,7 +1215,7 @@ Let’s take a step back before starting machine learning to both review and go 
             # setting configuration
             dbt.config(materialized="table")
         ```
-  - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [YAML file](/reference/resource-properties/config). Learn more about configurations [here](/reference/model-configs).
+  - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [properties YAML file](/reference/resource-properties/config). Learn more about configurations [here](/reference/model-configs).
 
 ## Prepare for machine learning: cleaning, encoding, and splits
 
