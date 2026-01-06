@@ -24,7 +24,7 @@ This cookbook covers the following topics:
 <!-- no toc -->
 - [Prompt best practices](#prompt-best-practices)
 - [Generate SQL queries](#generate-sql-queries)
-- [Create dbt model skeletons](#create-dbt-model-skeletons)
+- [Leveraging external assets](#leveraging-external-assets)
 - [Create semantic models and metrics](#create-semantic-models-and-metrics)
 - [Create reusable macros](#create-reusable-macros)
 - [Troubleshoot errors and issues](#troubleshoot-errors-and-issues)
@@ -32,598 +32,355 @@ This cookbook covers the following topics:
 
 ## Prompt best practices
 
-Every strong prompt should include rich context, be super clear and explicit about the output you want. For example:
+Writing effective prompts is about giving Copilot the right context and clear direction. Follow these three principles:
 
-- **Table and column names** with data types
-- **Relationships**: How tables join together
-- **Sample values**: Especially for categorical fields, for example: status in ('completed', 'pending', 'cancelled')
-- **Business logic**: Clear definitions and rules for example: "Active user = login in last 30 days"
+### 1. Provide rich context
 
-**✅ Strong prompt example:**
+Include table names, column types, and example values. Describe how they relate to each other.
 
-```text
-Context:
-E-commerce subscription business tracking user engagement and churn.
+**What to include:**
 
-Tables:
-- orders (order_id, user_id, order_date timestamp, amount decimal, status string)
-- users (user_id, signup_date timestamp, plan_tier string)
-- sessions (session_id, user_id, session_date timestamp, page_views int)
+- Table relationships (e.g., orders joins to customers on customer_id)
+- Data types (e.g., created_at is a timestamp)
+- Sample values (e.g., status is a string with values like "active" or "pending")
 
-Relationships: 
-- orders.user_id → users.user_id
-- sessions.user_id → users.user_id
+**Example:** Coffee Shop Punch Card
 
-Sample values: 
-- status in ('completed', 'pending', 'cancelled')
-- plan_tier in ('free', 'pro', 'enterprise')
-
-Business question: 
-Calculate monthly active users (users with at least 1 session or order) and 
-monthly recurring revenue (MRR) from completed orders, grouped by plan tier.
-
-Output: month, plan_tier, active_users, mrr, avg_revenue_per_user
-Sort by month descending, plan_tier
-```
-
-**❌ Weak prompt example:**
+You run a neighborhood café. Folks get a free drink after 10 visits.
 
 ```text
-Write a query to calculate MRR and active users.
+We've got customers, their subscriptions, and their app activity. 
+Customers connect to subscriptions, and activity shows what they do week to week.
+
+Help me see weekly regulars and which punch-card folks become subscribers 
+to our 'Beans of the Month.'
 ```
 
-**Why the strong prompt works:**
+**Why it works:** Clear people, clear behavior, clear relationship. Copilot knows what to count and how to connect it.
 
-- Clear context about the business (subscription e-commerce)
-- Specific table relationships (how users connect to orders and sessions)
-- Defined metrics (MAU = at least 1 session or order)
-- Business goal stated (track revenue and engagement by plan tier)
+### 2. State the business question, not just the output
 
-### State the business goal, not just the output
+Describe the decision or insight the query supports. Avoid purely technical prompts.
 
-Frame your request around the business question or decision you're supporting. Copilot anchors its logic to the decision or KPI you care about.
+**Instead of:** "Count users"
 
-**Instead of:** "Write a query using the orders table"  
-**Say:** "Calculate weekly revenue and order counts by product category to identify which products drive repeat purchases for our merchandising team"
+**Say:** "Count active users per week to analyze engagement trends"
 
-### Be explicit about output structure
+**Example:** The Sneaker Drop
 
-Specify:
+You run an online sneaker shop with a new limited-time drop.
 
-- Column names and order
-- Aggregation level (daily, weekly, monthly)
-- Filters and sorting
-- Formatting (percentages, decimals, date formats)
+```text
+We launched a 14-day trial. Did it lift weekly engagement and upgrades? 
+If yes, we'll scale it. If not, we'll tweak the message.
+
+Show me weekly browsers who became buyers, and whether trying the 3D preview 
+led to more purchases.
+```
+
+**Why it works:** You've described the moment, the behavior, and the decision: keep the 3D preview or not.
+
+### 3. Be clear and explicit about the result
+
+Define the expected output clearly. Mention the expected columns in the final result and state whether results should be sorted, limited, or filtered.
+
+**What to specify:**
+
+- Expected column names and formats
+- Sort order and any limits (e.g., "top 10 products by revenue")
+- Output format examples (e.g., "conversion_rate as a percentage")
+
+**Example:** The Fitness Challenge
+
+You run a fitness app with a 2-week challenge.
+
+```text
+Give me a weekly trend with the date, active folks, and a simple 'engagement per person.' 
+Then a summary by launch week with 'trial starts,' 'upgrades in 30 days,' 
+and an 'upgrade rate' as a percentage.
+
+Each week, show active challengers and total workouts. By challenge start week, 
+show how many upgraded to paid within 30 days and what their average workouts looked like.
+```
+
+**Why it works:** Specific metrics that are ready to present.
+
+### Break complex logic into smaller steps
+
+For multi-part queries, write them as a sequence of instructions:
 
 **Example:**
 
 ```text
-Output columns:
-- month (YYYY-MM format)
-- product_category
-- total_revenue (sum of order amounts)
-- order_count (distinct orders)
-- repeat_customer_rate (percentage with 2+ orders, 2 decimals)
-
-Filter: Last 12 months, completed orders only
-Sort: month descending, total_revenue descending
+First, filter the dataset to active users in the last 90 days.
+Then, calculate their average session duration.
+Finally, join to subscription data and group by plan tier.
 ```
+
+Avoid asking for everything at once—iterative prompting yields better results.
 
 ## Generate SQL queries
 
-**Use case:** Track feature adoption in a SaaS product to identify which trial users convert to paid plans.
+**Use case:** Build a customers model for an e-commerce platform.
 
 **What to give Copilot:**
 
-"We've got users, their subscription plans, and their feature usage events. Users connect to subscriptions, and events show which features they use each week."
-
-**What you ask Copilot:**
-
 ```text
 Context:
-- events (event_id int, user_id int, event_date timestamp, 
-         feature_name string, event_type string)
-- users (user_id int, signup_date timestamp, account_type string)
-- subscriptions (subscription_id int, user_id int, plan_name string, start_date timestamp)
+We have customers, orders, and payments tables. 
+- customers (customer_id, first_name, last_name, email)
+- orders (order_id, customer_id, order_date, status)
+- payments (payment_id, order_id, amount, payment_method)
 
 Relationships: 
-- events.user_id → users.user_id
-- subscriptions.user_id → users.user_id
+- orders.customer_id → customers.customer_id
+- payments.order_id → orders.order_id
 
 Sample values: 
-- account_type in ('trial', 'paid', 'churned')
-- plan_name in ('starter', 'professional', 'enterprise')
-- feature_name in ('export', 'collaboration', 'api_access', 'reporting')
+- status in ('completed', 'pending', 'cancelled')
+- payment_method in ('credit_card', 'paypal', 'bank_transfer')
 
 Business question:
-Identify weekly active users (users with 3+ feature usage events that week) and track 
-which trial users convert to paid subscriptions.
+Create a customer summary showing total orders and revenue per customer.
 
 Output:
-- week_start (ISO Monday start)
-- active_trial_users (distinct trial users with 3+ events)
-- active_paid_users (distinct paid users with 3+ events)
-- trial_to_paid_conversions (count of trial users who started paid subscription that week)
-- top_features_used (most common features used by converters)
+- customer_id
+- first_name
+- last_name  
+- first_order_date
+- most_recent_order_date
+- total_orders
+- total_revenue
 
-Filters: Last 12 weeks only, exclude churned accounts
-Sort: week_start descending
+Filter: Only completed orders
+Sort: total_revenue descending
 ```
 
 **Why it works:**
-Clear entities (users, subscriptions), clear behavior (feature usage patterns), clear relationship (trial to paid conversion). Copilot knows what to count and how to connect it.
+You're giving Copilot a clear map of how data connects, what values to expect, and what decision this supports.
 
-**What Copilot generates:**
+**Pro tip:** Start simple, then iterate. If Copilot's first attempt isn't perfect, refine your prompt with more specific details.
 
-- Proper joins on `user_id` across events, users, and subscriptions
-- `date_trunc('week', event_date)` for weekly aggregation
-- Logic to identify active users (3+ events per week)
-- Filters for trial/paid users and conversion tracking
-- Output sorted as requested
+## Leveraging external assets
 
-**Example output:**
+When you have existing documentation, sample data, or business logic definitions, bring them into your prompts. This helps Copilot understand your specific context.
 
-```sql
-with events_filtered as (
-  select 
-    event_id,
-    user_id,
-    event_date,
-    feature_name
-  from events
-  where event_date >= current_date - interval '12 weeks'
-),
+### Surface business logic and transformations
 
-users_active as (
-  select 
-    user_id,
-    account_type
-  from users
-  where account_type != 'churned'
-),
+**Concept:** An "active customer" badge is not a metric definition. The rule behind it is.
 
-weekly_events as (
-  select
-    date_trunc('week', e.event_date)::date as week_start,
-    e.user_id,
-    u.account_type,
-    count(*) as event_count,
-    array_agg(distinct e.feature_name) as features_used
-  from events_filtered e
-  inner join users_active u
-    on e.user_id = u.user_id
-  group by 1, 2, 3
-),
-
-weekly_active_users as (
-  select
-    week_start,
-    user_id,
-    account_type,
-    features_used
-  from weekly_events
-  where event_count >= 3  -- Definition of "active user"
-),
-
-conversions as (
-  select
-    date_trunc('week', s.start_date)::date as week_start,
-    count(distinct s.user_id) as trial_to_paid_conversions,
-    array_agg(distinct wau.features_used) as converter_features
-  from subscriptions s
-  inner join users u
-    on s.user_id = u.user_id
-  left join weekly_active_users wau
-    on s.user_id = wau.user_id
-    and date_trunc('week', s.start_date) = wau.week_start
-  where u.account_type = 'trial'
-    and s.plan_name in ('starter', 'professional', 'enterprise')
-    and s.start_date >= current_date - interval '12 weeks'
-  group by 1
-),
-
-final as (
-  select
-    wau.week_start,
-    count(distinct case when wau.account_type = 'trial' then wau.user_id end) as active_trial_users,
-    count(distinct case when wau.account_type = 'paid' then wau.user_id end) as active_paid_users,
-    coalesce(c.trial_to_paid_conversions, 0) as trial_to_paid_conversions,
-    c.converter_features[1:5] as top_features_used
-  from weekly_active_users wau
-  left join conversions c
-    on wau.week_start = c.week_start
-  group by 1, c.trial_to_paid_conversions, c.converter_features
-)
-
-select * from final
-order by week_start desc
-```
-
-**Troubleshooting:**
-
-- **Wrong joins?** Specify join type: "Use inner join on events.user_id = users.user_id"
-- **Missing definition?** Add explicit rules: "Active user = 3 or more feature usage events in the same week"
-- **Wrong grain?** State clearly: "Aggregate to week level (Monday start), not day"
-
-## Create dbt model skeletons
-
-**Use case:** You need a starter model for a healthcare analytics project that combines patient appointments with provider data.
-
-**Effective prompt:**
+**What to give Copilot:**
 
 ```text
-Create a dbt model skeleton that joins patient appointments with provider information.
-
-Source tables:
-- {{ ref('stg_appointments') }} (appointment_id, patient_id, provider_id, appointment_date, duration_minutes, appointment_type)
-- {{ ref('dim_providers') }} (provider_id, provider_name, specialty, department)
-
-Join: stg_appointments.provider_id = dim_providers.provider_id (inner join)
-
-Output columns:
-- appointment_id
-- patient_id
-- provider_id
-- provider_name
-- specialty
-- appointment_date
-- duration_minutes
-- appointment_type
-- appointments_with_provider (count partitioned by patient and provider)
-
-Add a temporary filter for last 90 days (mark as TEMP for removal later).
-Include a comment block explaining this tracks patient-provider appointment patterns.
+Active customer means at least one paid purchase in the last 90 days, excluding refunds. 
+Net revenue = gross minus discounts and returns.
 ```
 
-**What Copilot generates:**
+**External assets to reference:**
 
-- Proper `{{ ref() }}` syntax for sources
-- Correct join with CTEs
-- Calculated `net_revenue` field
-- Temporary date filter with comment
-- Header comment explaining purpose
+- Metrics glossary or KPI catalog from your wiki
+- Product requirement docs with business rules
+- Data dictionaries with field definitions
 
-**Example output:**
+### Include relevant sample data
 
-```sql
-{#
-  Model: patient_appointment_history
-  Purpose: Tracks patient-provider appointment patterns for healthcare analytics
-  
-  TEMP: Filtered to last 90 days for preview - remove before production
-#}
+Small, representative slices of data illustrate edge cases without overwhelming the prompt.
 
-with appointments as (
-  select
-    appointment_id,
-    patient_id,
-    provider_id,
-    appointment_date,
-    duration_minutes,
-    appointment_type
-  from {{ ref('stg_appointments') }}
-  where appointment_date >= current_date - interval '90 days'  -- TEMP: Remove this filter
-),
+**What to give Copilot:**
 
-providers as (
-  select
-    provider_id,
-    provider_name,
-    specialty,
-    department
-  from {{ ref('dim_providers') }}
-),
-
-final as (
-  select
-    a.appointment_id,
-    a.patient_id,
-    a.provider_id,
-    p.provider_name,
-    p.specialty,
-    a.appointment_date,
-    a.duration_minutes,
-    a.appointment_type,
-    count(*) over (
-      partition by a.patient_id, a.provider_id
-      order by a.appointment_date
-      rows between unbounded preceding and current row
-    ) as appointments_with_provider
-  from appointments a
-  inner join providers p
-    on a.provider_id = p.provider_id
-)
-
-select * from final
+```text
+Sample order statuses we need to handle:
+- 'completed': Paid and fulfilled
+- 'pending': Awaiting payment
+- 'cancelled': Customer cancelled before shipping
+- 'returned': Delivered but customer returned
 ```
 
-**Troubleshooting:**
+**External assets to reference:**
 
-- **Missing `{{ ref() }}`?** Explicitly request: "Use `{{ ref() }}` syntax for all model references"
-- **Wrong join type?** Specify: "Use inner join to keep only appointments with matching providers"
-- **Missing window function?** Add: "Use count() window function to track appointment sequence per patient-provider pair"
+- Data profiling reports showing value distributions
+- QA test datasets with edge cases
+- BI dashboard filters and their definitions
+
+### Capture dependencies and lineage
+
+Source-to-target mappings and upstream model references guide join logic.
+
+**What to give Copilot:**
+
+```text
+This model depends on:
+- {{ ref('stg_orders') }} - raw order data, deduplicated
+- {{ ref('stg_customers') }} - customer master data
+- {{ ref('dim_products') }} - product catalog with current prices
+
+Join orders to customers on customer_id (inner join, every order must have a customer).
+Join orders to products on product_id (left join, some orders have deleted products).
+```
+
+**External assets to reference:**
+
+- dbt lineage graphs or documentation
+- Data warehouse ERD diagrams
+- Data flow documentation
 
 ## Create semantic models and metrics
 
-**Use case:** Define metrics for an e-commerce marketplace to track seller performance and buyer engagement.
+**Use case:** Fast-track your semantic layer strategy with AI-generated YAML.
 
-**Effective prompt:**
+**What to give Copilot:**
 
 ```text
-Create a semantic model for an e-commerce marketplace to track transaction and seller metrics.
+Create a semantic model for order revenue tracking.
 
-Base model: {{ ref('fct_marketplace_transactions') }}
+Base model: {{ ref('fct_orders') }}
 
 Available columns:
-- transaction_date (timestamp)
-- transaction_amount (decimal)
-- seller_id (integer)
-- buyer_id (integer)
-- product_category (string)
-- is_repeat_buyer (boolean - true if buyer has 2+ transactions with this seller)
-- seller_tier (string - 'bronze', 'silver', 'gold')
+- order_date (timestamp)
+- order_amount (decimal)
+- customer_id (integer)
+- product_id (integer)
+- region (string - 'north', 'south', 'east', 'west')
 
-Semantic model requirements:
-- Entities: 
-  * seller (based on seller_id)
-  * buyer (based on buyer_id)
-- Measures:
-  * total_gmv (sum of transaction_amount - Gross Merchandise Value)
-  * transaction_count (count of transactions)
-  * unique_buyers (count distinct buyer_id)
-  * repeat_buyer_count (count distinct buyers where is_repeat_buyer = true)
-- Dimensions:
-  * product_category (categorical)
-  * seller_tier (categorical - bronze/silver/gold)
-  * transaction_date as metric_time (support day, week, month, quarter grains)
+Requirements:
+- Entity: customer
+- Measures: total_revenue (sum of order_amount), order_count
+- Dimensions: region, order_date as metric_time (support day, week, month)
+- Metric: monthly_revenue (total revenue by month)
 
-Create metrics:
-1. monthly_gmv: Total GMV aggregated by month
-2. repeat_buyer_rate: Percentage of buyers who made repeat purchases
-
-Return valid YAML with descriptions for all fields.
+Return valid YAML with descriptions.
 ```
 
 **What Copilot generates:**
 
 - Valid semantic model YAML structure
-- Properly defined entity, measures, and dimensions
+- Properly defined entities, measures, and dimensions
 - Time dimension with multiple grains
-- Metric definition referencing the measure
-- Descriptions for each field
+- Metric definitions
 
-**Example output:**
-
-```yaml
-semantic_models:
-  - name: marketplace_transactions
-    description: Transaction and seller performance metrics for e-commerce marketplace
-    model: ref('fct_marketplace_transactions')
-    
-    entities:
-      - name: seller
-        type: foreign
-        expr: seller_id
-      
-      - name: buyer
-        type: foreign
-        expr: buyer_id
-    
-    measures:
-      - name: total_gmv
-        description: Total Gross Merchandise Value from all transactions
-        agg: sum
-        expr: transaction_amount
-      
-      - name: transaction_count
-        description: Count of all marketplace transactions
-        agg: count
-        expr: transaction_date
-      
-      - name: unique_buyers
-        description: Count of distinct buyers
-        agg: count_distinct
-        expr: buyer_id
-      
-      - name: repeat_buyer_count
-        description: Count of buyers with 2+ transactions with same seller
-        agg: count_distinct
-        expr: case when is_repeat_buyer then buyer_id end
-    
-    dimensions:
-      - name: product_category
-        type: categorical
-        description: Product category for the transaction
-      
-      - name: seller_tier
-        type: categorical
-        description: Seller tier level (bronze, silver, gold)
-      
-      - name: metric_time
-        type: time
-        type_params:
-          time_granularity: day
-        expr: transaction_date
-
-metrics:
-  - name: monthly_gmv
-    description: Total Gross Merchandise Value aggregated by month
-    type: simple
-    type_params:
-      measure: total_gmv
-  
-  - name: repeat_buyer_rate
-    description: Percentage of buyers who made repeat purchases with same seller
-    type: ratio
-    type_params:
-      numerator: repeat_buyer_count
-      denominator: unique_buyers
-```
-
-**Troubleshooting:**
-
-- **YAML errors?** Request: "Validate against dbt semantic layer schema version [X]"
-- **Wrong aggregation?** Specify: "Use count_distinct for buyer counts, sum for GMV"
-- **Missing grain?** State: "Support day, week, month, and quarter grains for transaction_date"
+**Pro tip:** Use Copilot to reduce time spent writing boilerplate YAML. It leverages context from common metrics and dimensions across projects to ensure consistency.
 
 ## Create reusable macros
 
-**Use case:** You need to categorize financial transactions by risk level across multiple compliance models.
+### Use case 1: Turn repetitive code into reusable logic
 
-**Effective prompt:**
+A junior analyst keeps copy-pasting CASE statements across models.
+
+**What to give Copilot:**
 
 ```text
-Convert this CASE statement into a reusable dbt macro for transaction risk categorization:
+Turn this CASE pattern into a reusable macro:
 
 CASE 
-  WHEN transaction_amount >= 10000 THEN 'high_risk'
-  WHEN transaction_amount >= 5000 THEN 'medium_risk'
-  WHEN transaction_amount >= 1000 THEN 'low_risk'
-  ELSE 'minimal_risk'
+  WHEN amount >= 1000 THEN 'high'
+  WHEN amount >= 500 THEN 'medium'
+  ELSE 'low'
 END
 
 Macro requirements:
-- Name: categorize_transaction_risk
-- Parameters:
-  * amount_column (required): column name with transaction amount
-  * high_risk_threshold (optional, default=10000 - triggers additional review)
-  * medium_risk_threshold (optional, default=5000)
-  * low_risk_threshold (optional, default=1000)
-- Null handling: Return 'unknown' for null amounts
-- Include docstring explaining this categorizes financial transaction risk levels
-- Return proper SQL CASE statement
-
-Example usage in model:
-{{ categorize_transaction_risk('transaction_amount') }}
-{{ categorize_transaction_risk('daily_total', high_risk_threshold=15000) }}
+- Name: categorize_amount
+- Parameters: column name, high threshold (default 1000), medium threshold (default 500)
+- Include docstring with usage example
+- Handle null values by returning 'unknown'
 ```
 
-**What Copilot generates:**
+**Why it works:** Clear input (the CASE statement), clear requirements, clear output expectations.
 
-- Macro with `{% macro %}` and `{% endmacro %}` tags
-- Default parameter values
-- Null check at the start
-- Complete docstring
-- Working usage examples
+### Use case 2: Lower the barrier to entry
 
-**Example output:**
+**Scenario:** You need a macro but don't know Jinja syntax well.
 
-```sql
-{% macro categorize_transaction_risk(
-    amount_column,
-    high_risk_threshold=10000,
-    medium_risk_threshold=5000,
-    low_risk_threshold=1000
-) %}
-{#
-  Categorizes financial transactions by risk level for compliance monitoring.
-  High risk transactions (10000+) trigger additional review and approval workflows.
-  
-  Parameters:
-    - amount_column: The column name containing transaction amount
-    - high_risk_threshold: Minimum amount for high_risk tier (default: 10000 - requires review)
-    - medium_risk_threshold: Minimum amount for medium_risk tier (default: 5000)
-    - low_risk_threshold: Minimum amount for low_risk tier (default: 1000)
-  
-  Returns: SQL CASE statement that returns risk category as string
-  
-  Example usage:
-    {{ categorize_transaction_risk('transaction_amount') }}
-    {{ categorize_transaction_risk('daily_total', high_risk_threshold=15000) }}
-#}
+**What to ask Copilot:**
 
-case
-  when {{ amount_column }} is null then 'unknown'
-  when {{ amount_column }} >= {{ high_risk_threshold }} then 'high_risk'
-  when {{ amount_column }} >= {{ medium_risk_threshold }} then 'medium_risk'
-  when {{ amount_column }} >= {{ low_risk_threshold }} then 'low_risk'
-  else 'minimal_risk'
-end
+```text
+I need a macro that calculates the number of days between two date columns, 
+excluding weekends.
 
-{% endmacro %}
+Parameters:
+- start_date_column (required)
+- end_date_column (required)
+
+Include a docstring explaining how to use it.
 ```
 
-**Troubleshooting:**
+**Outcome:** Copilot generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
 
-- **Jinja syntax errors?** Request: "Use valid Jinja2 syntax with proper spacing"
-- **Parameters not working?** Specify: "Use default parameter syntax: `high_risk_threshold=10000`"
-- **Wrong thresholds?** Clarify: "High risk = 10000+ (requires review), medium risk = 5000+"
+### Use case 3: Accelerate complex logic design (for advanced users)
+
+**What to ask Copilot:**
+
+```text
+I need a macro that builds a grouped aggregation with optional filters.
+
+Parameters:
+- relation (the model/table to query)
+- group_by (list of columns to group by)
+- metrics (list of columns to aggregate)
+- where (optional filter condition)
+
+Include defaults and guardrails for empty lists.
+Add a docstring with parameter descriptions and usage example.
+```
+
+**Think of it like:** Writer's room sprint. You pitch the premise, Copilot drafts the scene beats.
+
+**Pro tip:** After generating the macro, ask Copilot to add usage examples and document edge cases. This makes it easier for your team to adopt.
 
 ## Troubleshoot errors and issues
 
-### Debug SQL errors
+Copilot acts as a fast, context-aware reviewer for failing SQL and macros. It reads errors, inspects your query structure, and suggests minimal fixes.
 
-**Use case:** Your retail inventory query fails with a warehouse error and you need to understand why.
+### Why troubleshoot with Copilot?
 
-**Effective prompt:**
+- **Faster diagnosis:** Plain-language translation of errors with likely root causes
+- **Safer fixes:** Bias toward small, targeted changes
+- **Better learning:** Generates explanations you can paste into docs or PR descriptions
+
+### Troubleshoot SQL errors
+
+**Step 1: Decode errors and ambiguity**
+
+Error text is a clue, not the crime. Pair the message with the context that produced it.
+
+**What to give Copilot:**
 
 ```text
-I'm getting this error in Snowflake tracking product inventory:
+Here's the failing SQL, the exact warehouse error, and which line it points to. 
+Explain in plain terms and propose the smallest fix.
 
-"SQL compilation error: error line 8 at position 45
-invalid identifier 'PRODUCT_NAME'"
+Error: "SQL compilation error: Column 'product_name' must appear in GROUP BY"
 
 Query:
 SELECT 
-  i.inventory_id,
-  i.product_id,
-  p.product_name,
-  SUM(i.quantity_on_hand) as total_quantity
-FROM inventory i
-LEFT JOIN products p ON i.product_id = p.id
-GROUP BY 1, 2, 3
+  product_id,
+  product_name,
+  SUM(quantity) as total_quantity
+FROM inventory
+GROUP BY product_id
 
-Expected: Join inventory and products, aggregate quantity by product
-What's wrong and how do I fix it?
+Warehouse: Snowflake
+What's wrong?
 ```
 
 **What Copilot provides:**
 
-- Plain-language explanation (customer_name not in GROUP BY)
-- Minimal fix (add `c.customer_name` to GROUP BY)
-- Why it works (all non-aggregated columns must be grouped)
+- Plain-language explanation
+- Minimal fix
+- Why it works
 
-**Example output:**
+**Step 2: Align assumptions with current schema**
 
-```sql
--- Issue: product_name is in SELECT but not in GROUP BY
--- In SQL, all non-aggregated columns must be included in GROUP BY
+Queries encode assumptions. When the schema shifts, assumptions need a tune-up.
 
--- Fixed query:
-SELECT 
-  i.inventory_id,
-  i.product_id,
-  p.product_name,
-  SUM(i.quantity_on_hand) as total_quantity
-FROM inventory i
-LEFT JOIN products p ON i.product_id = p.product_id  -- Also fixed: was p.id, should be p.product_id
-GROUP BY i.inventory_id, i.product_id, p.product_name  -- Added p.product_name
-
--- Alternative: Use positional references carefully
--- GROUP BY 1, 2, 3 can be fragile if column order changes
-```
-
-### Fix schema changes
-
-**Use case:** Your shipping cost model broke after a schema change.
-
-**Effective prompt:**
+**What to give Copilot:**
 
 ```text
-The insurance_fee column in stg_shipments now contains NULLs (was always populated before).
+The discount_amount column now contains NULLs (was always populated before).
 
 My calculation breaks:
-total_cost = base_rate + insurance_fee
+net_revenue = gross_revenue - discount_amount
 
-Error: "Invalid argument types for function '+'; expecting (NUMBER, NUMBER)"
-
-Sample data showing the issue:
-| shipment_id | carrier_id | base_rate | insurance_fee |
-|-------------|------------|-----------|---------------|
-| 8001        | 201        | 25.00     | 5.00          |
-| 8002        | 202        | 18.00     | NULL          |
-| 8003        | 203        | 32.00     | 8.00          |
-| 8004        | 204        | 22.00     | NULL          |
+Error: "Invalid argument types for function '-'"
 
 What assumptions broke? What guardrails should I add?
 ```
@@ -631,196 +388,146 @@ What assumptions broke? What guardrails should I add?
 **What Copilot provides:**
 
 - Broken assumption identified (assumed non-null)
-- Fix: `coalesce(discount_amount, 0)`
-- Additional safety checks recommended
+- Fix using `coalesce(discount_amount, 0)`
+- Additional safety checks (data tests, documentation)
 
-**Example output:**
+**Step 3: Reproduce with a minimal example**
 
-```sql
--- Broken assumption: insurance_fee was always non-null
--- Fix: Use COALESCE to handle NULLs
+Shrink the surface area. If you can break it down, you can fix it fast.
 
-select
-  shipment_id,
-  carrier_id,
-  base_rate,
-  insurance_fee,
-  base_rate + coalesce(insurance_fee, 0) as total_cost
-from stg_shipments
-
--- Additional guardrails to consider:
--- 1. Add a data test to track NULL rate for insurance_fee
--- 2. Consider if NULL means "no insurance" or "insurance not recorded"
--- 3. Document assumption: NULL insurance_fee defaults to 0 (uninsured shipment)
--- 4. Alert if NULL rate exceeds 10% (may indicate data pipeline issue)
-```
-
-### Reproduce with minimal example
-
-**Use case:** Your ad campaign ROI query fails on production data, and you need to isolate the issue.
-
-**Effective prompt:**
+**What to give Copilot:**
 
 ```text
-My ROI calculation query for ad campaigns fails on some records. Create a minimal reproduction case.
+Create a reduced query using 5-10 sample rows that still triggers the error. 
+Keep columns only if they influence the failure.
 
-Sample rows that trigger the error:
-| campaign_id | advertiser_id | campaign_date | spend       | conversions | conversion_value |
-|-------------|---------------|---------------|-------------|-------------|------------------|
-| 7001        | 301           | 2024-01-15    | 5000.00     | NULL        | 8000.00          |
-| 7002        | 302           | 2024-01-16    | 3200.00     | 45          | NULL             |
-| 7003        | NULL          | 2024-01-17    | 2100.00     | 28          | 4200.00          |
-| 7004        | 304           | NULL          | 1800.00     | 32          | 3600.00          |
+Sample data that breaks:
+| order_id | customer_id | amount  | discount |
+|----------|-------------|---------|----------|
+| 1001     | 501         | 100.00  | NULL     |
+| 1002     | NULL        | 150.00  | 10.00    |
 
-Failed query:
-SELECT 
-  advertiser_id,
-  SUM((conversion_value - spend) / spend) as roi
-FROM campaigns
-GROUP BY advertiser_id
-
-Error: "NULL value in arithmetic operation"
-
-Which rows cause the failure and what's the minimal fix for campaign ROI calculation?
+Failed query calculates net_amount = amount - discount
 ```
 
 **What Copilot provides:**
 
-- Problematic rows identified (NULL discount, NULL customer_id)
-- Minimal reproduction query using only problem rows
-- Root cause analysis for each failure
-- Recommended fixes with COALESCE and filters
+- Minimal reproduction using VALUES clause
+- Root cause analysis
+- Recommended fixes with NULL handling
 
-**Example output:**
+### Troubleshoot macros
 
-```sql
--- Problematic rows identified:
--- Row 7001: conversions is NULL (causes arithmetic issues)
--- Row 7002: conversion_value is NULL (causes arithmetic failure)
--- Row 7003: advertiser_id is NULL (causes GROUP BY issue)
--- Row 7004: campaign_date is NULL (may indicate bad data)
+**Step 1: Validate parameters and defaults**
 
--- Minimal reproduction (using just problem rows):
-select 
-  advertiser_id,
-  sum(
-    case 
-      when spend > 0 and conversion_value is not null 
-      then (conversion_value - spend) / spend 
-      else 0 
-    end
-  ) as roi
-from (
-  values
-    (301, 5000.00, NULL),
-    (302, 3200.00, NULL),
-    (NULL, 2100.00, 4200.00)
-) as campaigns(advertiser_id, spend, conversion_value)
-where advertiser_id is not null  -- Filter out NULL advertiser_ids
-group by advertiser_id
+Most macro bugs start with assumptions about inputs.
 
--- Recommended fixes for campaign ROI:
--- 1. Add NULL check: Only calculate ROI when both spend and conversion_value exist
--- 2. Add zero-spend check: Prevent division by zero when spend = 0
--- 3. Filter out NULL advertiser_ids before aggregation
--- 4. Add data quality test: conversion_value should not be NULL for active campaigns
--- 5. Add test: advertiser_id must be present for all campaign records
-```
-
-### Debug macros
-
-**Use case:** Your macro for calculating business days renders incorrect SQL.
-
-**Effective prompt:**
+**What to give Copilot:**
 
 ```text
-My macro generates wrong SQL for business days calculation:
+List required vs optional parameters. 
+Suggest sensible defaults, type checks, and early error messages. 
+Propose guards for empty lists and nulls.
 
-Macro code:
-{% macro get_business_days_between(start_date, end_date) %}
-  datediff('day', {{ start_date }}, {{ end_date }}) - 
-  (datediff('week', {{ start_date }}, {{ end_date }}) * 2)
+Macro:
+{% macro calculate_discount(amount, rate) %}
+  {{ amount }} * {{ rate }}
 {% endmacro %}
-
-Called as: {{ get_business_days_between('order_date', 'ship_date') }}
-
-Compiled SQL output:
-datediff('day', order_date, ship_date) - 
-(datediff('week', order_date, ship_date) * 2)
-
-Expected: This logic doesn't account for partial weeks correctly.
-How should I fix the business days calculation?
 ```
 
 **What Copilot provides:**
 
-- Identifies current_date() should be current_date
-- Corrected macro code
-- Explanation of the difference
+- Parameter validation suggestions
+- Default values
+- Null/empty guards
 
-**Example output:**
+**Step 2: Confirm what was actually rendered**
 
-```sql
--- Issue: The formula doesn't handle partial weeks correctly
--- It assumes every week has exactly 5 business days, which fails at month/week boundaries
+Compare intent to the SQL your macro produced.
 
--- Corrected macro:
-{% macro get_business_days_between(start_date, end_date) %}
-  -- Calculate total days
-  datediff('day', {{ start_date }}, {{ end_date }}) 
-  -- Subtract full weekends (2 days per complete week)
-  - (datediff('week', {{ start_date }}, {{ end_date }}) * 2)
-  -- Adjust for partial weeks at start/end
-  - case 
-      when dayofweek({{ start_date }}) = 1 then 1  -- Started on Sunday
-      when dayofweek({{ end_date }}) = 7 then 1    -- Ended on Saturday
-      else 0
-    end
+**What to give Copilot:**
+
+```text
+Here's the macro and the rendered SQL side-by-side. 
+Highlight where the SQL diverges from the intended parameters.
+
+Macro call: {{ my_macro('order_date', 'ship_date') }}
+
+Rendered SQL: (check target/compiled)
+...paste rendered SQL here...
+
+Expected behavior: Should calculate days between dates, but getting wrong result
+```
+
+**What Copilot provides:**
+
+- Side-by-side comparison
+- Identifies where macro logic diverges
+- Minimal fix to align output with intent
+
+**Step 3: Sanitize identifiers, quoting, and whitespace**
+
+Jinja often fails quietly when quoting or spacing is off.
+
+**What to give Copilot:**
+
+```text
+Review identifier quoting, string quoting, and whitespace in this macro.
+Replace brittle concatenation with safer helpers.
+
+{% macro filter_by_status(column, status) %}
+  where {{ column }} = '{{ status }}'
 {% endmacro %}
 
--- Compiled output (corrected):
-datediff('day', order_date, ship_date) 
-- (datediff('week', order_date, ship_date) * 2)
-- case 
-    when dayofweek(order_date) = 1 then 1
-    when dayofweek(ship_date) = 7 then 1
-    else 0
-  end
+Warehouse: Snowflake (case-sensitive identifiers)
+```
 
--- Explanation:
--- Business days calculation needs to handle edge cases
--- Must account for partial weeks when date range starts/ends mid-week
--- Consider using a date dimension table for more complex holiday calendars
+**What Copilot provides:**
+
+- Quoting fixes
+- Whitespace corrections
+- Recommendations for using adapter.quote() or other built-in helpers
+
+**Step 4: Make logic testable and documented**
+
+Fix the bug, then add bumpers so it doesn't return.
+
+**What to give Copilot:**
+
+```text
+After the minimal code change, draft a docstring with parameter descriptions, 
+a usage example, and propose two tests: one success case, one edge case.
 ```
 
 ## Conclusion
 
 <ConfettiTrigger>
-Well done! You've now learned how to write effective prompts for dbt Copilot to generate accurate SQL, models, metrics, and macros with realistic examples.
+You've now learned how to use dbt Copilot as your AI co-pilot. You can:
 
-To summarize, when writing prompts for dbt Copilot, you should:
+- **Master SQL prompting** by providing rich context and stating clear business questions
+- **Amplify your workflow** by leveraging existing documentation and project context
+- **Generate Jinja macros** to build more scalable and maintainable systems
+- **Troubleshoot your code** to diagnose issues fast and apply safe, explainable fixes
 
-- Include essential context
-- State the business goal, not just the output
-- Be explicit about output structure
-- Debug SQL errors
-- Fix schema changes
-- Debug macros
+### Quick reference checklist
 
-Here's a quick reference checklist to help you write effective prompts for dbt Copilot:
+When writing prompts for dbt Copilot:
 
-- ✅ **Context**: Table names, columns, data types, join relationships
-- ✅ **Sample values**: Examples for categorical fields (e.g., `status in ('active', 'pending')`)
-- ✅ **Business goal**: What decision or KPI you're supporting, not just technical output
-- ✅ **Output specification**: Column names, aggregation level, sort order, format
-- ✅ **Business rules**: Clear definitions (e.g., "Active user = login in last 30 days")
-- ✅ **Edge cases**: Null handling, exclusions, date ranges
+- ✅ **Provide rich context**: Table names, columns, data types, relationships, sample values
+- ✅ **State the business question**: What decision or insight you're supporting, not just "write a query"
+- ✅ **Be clear and explicit**: Expected columns, sort order, filters, and output format
+- ✅ **Break down complex logic**: Write multi-part queries as a sequence of steps
 
-For troubleshooting, also include:
+For troubleshooting:
 
-- ✅ **Complete error messages**: Full warehouse error with line numbers
-- ✅ **Compiled SQL**: What dbt actually generated (from `target/compiled/`)
-- ✅ **Database context**: Snowflake, BigQuery, Databricks, etc.
+- ✅ **Include complete error messages**: Full warehouse error with line numbers
+- ✅ **Show the failing code**: Both the dbt model and compiled SQL (from `target/compiled/`)
+- ✅ **Provide sample data**: Representative rows that trigger the issue
+- ✅ **State your warehouse**: Snowflake, BigQuery, Databricks, etc.
+
+### Next steps
+
+Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. The more you use Copilot, the more you'll discover ways to accelerate your analytics engineering workflow.
 
 </ConfettiTrigger>
 </div>
