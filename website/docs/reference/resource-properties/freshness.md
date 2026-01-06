@@ -96,53 +96,73 @@ In state-aware orchestration, dbt uses the warehouse metadata by default to chec
 Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.
 <br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
+```yml
+sources:
+  - name: inventory_updates
+    description: |
+      Inventory snapshots with a properly typed timestamp column.
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: updated_at
+
+```
+
 If using a date field, you may have to cast it to a timestamp:
 ```yml
-- name: work_orders
-  description: |
-    Work orders from ERP. The completed_date column is stored as DATE but we need to compare it as a timestamp for freshness checks.
-  config:
-    freshness:
-      warn_after:
-        count: 12
-        period: hour
-      error_after:
-        count: 24
-        period: hour
-    loaded_at_field: "completed_date::timestamp"
+sources:
+  - name: work_orders
+    description: |
+      Work orders from ERP. The completed_date column is stored as DATE but we need to compare it as a timestamp for freshness checks.
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "completed_date::timestamp"
 ```
 
 Or, depending on your SQL variant:
 ```yml
-- name: purchase_orders
-  description: |
-    Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Using CAST for explicit conversion.
-  config:
-    freshness:
-      warn_after:
-        count: 12
-        period: hour
-      error_after:
-        count: 24
-        period: hour
-    loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
+sources:
+  - name: purchase_orders
+    description: |
+      Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Using CAST for explicit conversion.
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 ```
 
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
-- name: customer_transactions
-  description: |
-    Customer transactions recorded in Sydney local time. Converting to UTC for consistent freshness comparison across sources in different timezones.
-  config:
-    freshness:
-      warn_after:
-        count: 12
-        period: hour
-      error_after:
-        count: 24
-        period: hour
-    loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
+sources:
+  - name: customer_transactions
+    description: |
+      Customer transactions recorded in Sydney local time. Converting to UTC for consistent freshness comparison across sources in different timezones.
+    config:
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
 <VersionBlock firstVersion="1.10">
