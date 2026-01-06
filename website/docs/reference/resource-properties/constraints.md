@@ -12,7 +12,7 @@ When enforced, a constraint guarantees that you will never see invalid data in t
 Before using constraints, ensure the following requirements are met:
 
 - **You use supported materializations** &mdash; Constraints only work on `table` and `incremental` models. Constraints are never applied on `ephemeral` models or those materialized as `view`. 
-- **Contract enforcement** &mdash; To use constraints, your model must declare and enforce a [contract](/reference/resource-configs/contract). This means you need to explicitly define the `data_type` for every column in your model's schema configuration.
+- **You enforce a contract** &mdash; To use constraints, your model must declare and enforce a [contract](/reference/resource-configs/contract). This means you need to explicitly define the `data_type` for every column in your model's schema configuration.
 
 ## Defining constraints
 
