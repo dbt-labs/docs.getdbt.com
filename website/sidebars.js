@@ -226,6 +226,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/az-postgres-private-link",
                 "docs/cloud/secure/az-synapse-private-link",
+                "docs/cloud/secure/az-self-hosted-private-link",
                 "docs/cloud/secure/bigquery-psc",
                 "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/gcp-self-hosted-psc",

@@ -38,9 +38,11 @@ dbt Labs has globally connected private networks specifically used to host priva
 - [Databricks](/docs/cloud/secure/databricks-private-link)
 - [Database for Postgres Flexible Server](/docs/cloud/secure/az-postgres-private-link)
 - [Synapse](/docs/cloud/secure/az-synapse-private-link)
+- [Self-hosted services](/docs/cloud/secure/az-self-hosted-private-link)
 
 #### GCP
 - [Snowflake](/docs/cloud/secure/snowflake-psc)
 - [BigQuery](/docs/cloud/secure/bigquery-psc)
+- [Self-hosted services](/docs/cloud/secure/gcp-self-hosted-psc)
 
 <PrivateLinkHostnameWarning features={'/snippets/_private-connection-hostname-restriction.md'}/>

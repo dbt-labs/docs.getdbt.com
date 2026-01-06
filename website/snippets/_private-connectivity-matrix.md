@@ -43,7 +43,7 @@ The following feature charts outline the availability of private connectivity fe
 Private connectivity can be established with self-hosted services, provided they can be integrated with each cloud provider's private connectivity mechanism as a producer:
 
 - **AWS:** [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html)
-- **Azure:** [Azure PrivateLink](https://learn.microsoft.com/en-us/azure/private-link/create-private-link-service-portal?tabs=dynamic-ip)
+- **Azure:** [Azure Private Link](/docs/cloud/secure/az-self-hosted-private-link)
 - **GCP:** [Private Service Connect (Service Attachment)](/docs/cloud/secure/gcp-self-hosted-psc)
 
 :::important
