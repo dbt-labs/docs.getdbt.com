@@ -161,7 +161,7 @@ Use this if you've _never_ created a dbt account before.
 
 Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and `dbt_cloud.yml` file if it exists (no file download needed). Use this to easily work across machines.
 
-1. Update the VS Code extension to the latest version and restart your editor before beginning the registration process.
+1. [Update the VS Code extension](https://code.visualstudio.com/docs/setup/setup-overview#_update-cadence) to the latest version and restart your editor before beginning the registration process.
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
 3. In the browser registration form, select **Sign in** at the bottom of the form.
 4. Enter your email address associated with your dbt account and click **Continue**. If you don't remember your password, see [Recover your login](#recover-your-login) for help.
