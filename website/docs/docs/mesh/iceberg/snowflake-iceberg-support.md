@@ -10,7 +10,7 @@ import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-war
 dbt supports materializing the table in Iceberg table format in two different ways:
 
 - The model configuration field `table_format = 'iceberg'` (legacy)
-- Catalog integration can be configured in the SQL config (inside the `.sql` model file), property file (model folder), or project file ([`dbt_project.yml`](/reference/dbt_project.yml)) 
+- Catalog integration can be configured in a config block (inside the `.sql` model file), properties YAML file (model folder), or project YAML file ([`dbt_project.yml`](/reference/dbt_project.yml)) 
 
 :::info Catalog integration configuration
 
@@ -265,7 +265,7 @@ catalogs:
 
 ```
 
-2. Add the `catalog_name` config parameter in either the SQL config (inside the .sql model file), property file (model folder), or your `dbt_project.yml`. <br />
+2. Add the `catalog_name` config parameter in either a config block (inside the .sql model file), properties YAML file (model folder), or your project YAML file (`dbt_project.yml`). <br />
 <br />An example of `iceberg_model.sql`:
 
 ```sql

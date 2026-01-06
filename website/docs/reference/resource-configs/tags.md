@@ -9,8 +9,8 @@ datatype: string | [string]
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'Config property', value: 'other-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'Property file', value: 'other-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 <TabItem value="project-yaml">
@@ -180,7 +180,7 @@ models:
 
 </File>
 
-To apply tags to a model in your `models/` directory YAML file, you would add the following using the `config` property:
+To apply tags to a model in your `models/` directory YAML property file, you would add the following using the `config` property:
 
 <File name='models/stg_customers.yml'>
 

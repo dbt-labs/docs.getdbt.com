@@ -9,7 +9,7 @@ intro_text: Specify a custom alias for a model, data test, snapshot, or seed and
 <Tabs>
 <TabItem value="model" label="Models">
 
-Specify a custom alias for a model in your `dbt_project.yml` file, `models/properties.yml` file, or config block in a SQL file. 
+Specify a custom alias for a model in your project YAML file (`dbt_project.yml`), properties YAML file (for example, `models/properties.yml`) config, or in a SQl file config block.
 
 For example, if you have a model that calculates `sales_total` and want to give it a more user-friendly alias, you can alias it as shown in the following examples.
 
@@ -55,7 +55,7 @@ This would return `analytics.finance.sales_dashboard` in the database, instead o
 
 <TabItem value="seeds" label="Seeds">
 
-Configure a seed's alias in your `dbt_project.yml` file or a `properties.yml` file. The following examples demonstrate how to `alias` a seed named `product_categories` to `categories_data`.
+Configure a seed's alias in your project file (`dbt_project.yml`) or a properties file config (for example, `seeds/properties.yml`). The following examples demonstrate how to `alias` a seed named `product_categories` to `categories_data`.
 
 In the `dbt_project.yml` file at the project level:
 
@@ -100,7 +100,7 @@ seeds:
 
 <TabItem value="snapshot" label="Snapshots">
 
-Configure a snapshots's alias in your `dbt_project.yml` file, `snapshots/snapshot_name.yml` file, or config block. 
+Configure a snapshots's alias in your project YAML file (`dbt_project.yml` ), properties YAML file (for example, `snapshots/snapshot_name.yml`), or in a SQL file config block for the model.
 
 The following examples demonstrate how to `alias` a snapshot named `your_snapshot` to `the_best_snapshot`.
 
@@ -145,7 +145,7 @@ This would build your snapshot to `analytics.finance.the_best_snapshot` in the d
 
 <TabItem value="test" label="Tests">
 
-Configure a data test's alias in your `dbt_project.yml` file, `properties.yml` file, or config block in the model file. 
+Configure a data test's alias in your project YAML file (`dbt_project.yml` ), properties YAML file (for example, `models/properties.yml`) file, or in a SQL file config block for the model.
 
 The following examples demonstrate how to `alias` a unique data test named `order_id` to `unique_order_id_test` to identify a specific data test.
 

@@ -53,8 +53,9 @@ models:
 
 </File>
 
-The `meta` config can also be defined:
-- under the `models` config block in `dbt_project.yml`
+The `meta` config can be defined:
+- Under the `models` config in the project file (shown in previous 'models/schema.yml' example)
+- Under the `models` config in the project file (`dbt_project.yml`)
 - in a `config()` Jinja macro within a model's SQL file
 
 See [configs and properties](/reference/configs-and-properties) for details.
@@ -126,7 +127,9 @@ seeds:
 
 </File>
 
-The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
+The `meta` config can be defined:
+- Under the `seeds` config in the property file (shown in in previous 'seeds/schema.yml' example) 
+- Under the `seeds` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -159,8 +162,9 @@ snapshots:
 
 </File>
 
-The `meta` config can also be defined:
-- under the `snapshots` config block in `dbt_project.yml`
+The `meta` config can be defined:
+- under the `snapshots` config in the properties file (shown in previous `snapshots/schema.yml` example)
+- under the `snapshots` config in the project file (`dbt_project.yml`)
 - in a `config()` Jinja macro within a snapshot's SQL block
 
 See [configs and properties](/reference/configs-and-properties) for details.
@@ -263,7 +267,7 @@ exposures:
 
 <TabItem value="semantic models">
 
-Configure `meta` in the your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
+Configure `meta` in the your [semantic models](/docs/build/semantic-models) property file or under the `semantic-models` config in the project file (`dbt_project.yml`). 
 
 <VersionBlock lastVersion="1.9">
 
@@ -345,7 +349,9 @@ semantic_models:
 
 </VersionBlock>
 
-The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
+The `meta` config can be defined:
+- Under the `semantic-models` config in the properties file (as showin in previous `models/semantic_models.yml` example) 
+- Under the `semantic-models` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
