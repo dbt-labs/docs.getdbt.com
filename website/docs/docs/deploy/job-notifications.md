@@ -167,13 +167,13 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
     <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
 
 ### Configure Slack notifications
-In this step, you'll configure the Slack channel you want to receive job notifications from.
+Configure the Slack channel you want to receive job notifications from.
 
 1. Select your profile icon and then click on **Notification settings**.
 2. Select **Slack notifications** in the left sidebar.
-3. Select the **Notification channel** you want to receive the job run notifications from the dropdown.
+3. From the first dropdown, select the **Notification channel** you want to receive the job run notifications.
     <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="100%" title="Example of the Notification channel dropdown"/>
-4. Select the **Environment** for the jobs you want to receive notifications about from the dropdown.
+4. From the second dropdown, select the **Environment** for the jobs you want to receive notifications about.
 5. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses for each job you want to receive notifications about.
 6. When you're done with the settings, click **Save**.
    - To send alerts to another Slack channel, select another **Notification channel** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
@@ -193,7 +193,7 @@ In this step, you'll disable the Slack integration and remove the account-level 
 ## Microsoft Teams notifications <Lifecycle status="private_beta" />
 
 :::info
-Configuring Microsoft Teams notifications is currently in private beta. To request access, contact dbt Support or your account manager.
+Configuring Microsoft Teams notifications is currently in private beta. To request access, contact your account manager.
 :::
 
 You can receive Microsoft Teams alerts for your dbt jobs by connecting your Teams account to the <Constant name="dbt_platform" />, and configuring your notification preferences. 
@@ -224,7 +224,7 @@ During the OAuth process, you’ll need to sign in to a Microsoft account to com
 
 
 <Expandable alt_header="Image of the Microsoft account selection popup">
-<Lightbox src="/img/docs/deploy/pick-account.png" width="50%" title="Photo example of the Microsoft account popup"/>
+<Lightbox src="/img/docs/deploy/pick-account.png" width="50%" title="Example of the Microsoft account popup"/>
 </Expandable>
 :::
 
@@ -252,7 +252,7 @@ dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenan
 
 ### Configure Teams notifications
 
-Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can now configure which Teams channels receive job notifications. The **Teams notifications** menu requires that you have an active integration with Teams on the account.
+Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can configure which Teams channels receive job notifications. The **Teams notifications** menu requires that you have an active integration with Teams on the account.
 
 :::info
 Currently, dbt only sends notifications to Teams channels (standard, shared, or private) that you belong to.
@@ -260,9 +260,9 @@ Currently, dbt only sends notifications to Teams channels (standard, shared, or 
 
 1. In the <Constant name="dbt_platform" />, click your profile icon and select **Notification settings**.
 2. Select **Teams notifications** in the left sidebar.
-3. From the dropdown, select the **Notification team** that you want to send notifications to.
-4. Select the **Notification channel** you want to send notifications to.
-   - d<Constant name="dbt_platform" /> only sends notifications to Teams channels (standard, shared, or private) that _you_ belong to.
+3. From the first dropdown, select the **Notification team** that you want to send notifications to.
+4. From the second dropdown, select the **Notification channel** you want to send notifications to.
+   - <Constant name="dbt_platform" /> only sends notifications to Teams channels (standard, shared, or private) that _you_ belong to.
 5. In the dropdown, choose the environment for the jobs you want to receive notifications about. 
 6. Click **Edit** on the top right to configure the Teams job notification settings and customize which job statuses trigger job notifications.
 7. When finished, click **Save**.
