@@ -3,9 +3,6 @@ import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
 
-// Category keywords used to identify category/header rows in tables
-const CATEGORY_ROW_KEYWORDS = ['performance', 'experience', 'governance'];
-
 const stripMarkdown = (text) => {
   if (!text) return '';
   let strippedText = String(text).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
@@ -78,6 +75,7 @@ const parseTableFromDOM = (tableElement) => {
   }
 
   const headers = [];
+  const columnAlignments = [];
   const thead = tableElement.querySelector('thead');
   if (thead) {
     const headerRow = thead.querySelector('tr');
@@ -85,6 +83,12 @@ const parseTableFromDOM = (tableElement) => {
       headerRow.querySelectorAll('th').forEach(th => {
         // Preserve HTML content for headers (like <small>, <br>, etc.)
         headers.push(th.innerHTML || extractTextFromElement(th));
+        
+        // Extract alignment from the th element's style
+        const computedStyle = window.getComputedStyle(th);
+        const textAlign = computedStyle.textAlign || th.style.textAlign || 'left';
+        // Normalize alignment values
+        columnAlignments.push(textAlign === 'start' ? 'left' : textAlign === 'end' ? 'right' : textAlign);
       });
     }
   }
@@ -100,9 +104,8 @@ const parseTableFromDOM = (tableElement) => {
       });
       if (cells.length > 0) {
         const firstCellText = stripMarkdown(extractTextFromElement(tr.querySelector('td, th')));
-        const firstCellLower = firstCellText.toLowerCase();
-        const isCategoryRow = firstCellText.includes('**') || 
-                             CATEGORY_ROW_KEYWORDS.some(keyword => firstCellLower.includes(keyword));
+        // Category rows are identified by ** markdown bold markers
+        const isCategoryRow = firstCellText.includes('**');
         data.push({
           cells,
           isCategoryRow,
@@ -111,9 +114,6 @@ const parseTableFromDOM = (tableElement) => {
       }
     });
   }
-
-  // Default alignments
-  const columnAlignments = headers.map(() => 'left');
   
   return { headers, data, columnAlignments };
 };
@@ -391,7 +391,7 @@ const FilterableTable = ({ children }) => {
 
         {hasActiveFilters && filteredData.length === 0 ? (
           <div className={styles.noResults}>
-            No rows match your search criteria. Try adjusting your filters.
+            DAG, no rows match your search criteria! Why don't you try changing your search or filters.
           </div>
         ) : (
           <table className={styles.filterableTable}>

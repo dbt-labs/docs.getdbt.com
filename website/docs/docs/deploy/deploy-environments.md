@@ -208,7 +208,7 @@ For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#exten
   - **Password**: password for the listed user
 - If **Key Pair**:
   - **Username**: username to use (most likely a service account)
-  - **Private Key**: value of the Private SSH Key (optional)
+  - **Private Key**: value of the Private SSH Key (optional in the user interface, but required for key pair authentication when dbt runs)
   - **Private Key Passphrase**: value of the Private SSH Key Passphrase (optional, only if required)
 - **Schema**: Target Schema for this environment
 

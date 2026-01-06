@@ -37,50 +37,60 @@ Our goal is for the <Constant name="fusion_engine" /> to support all capabilitie
 Note that we have removed some deprecated features and introduced more rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) for details.
 
 ## Features and capabilities
-<!-- table for feature comparison (“What’s available where?”)-->
-- <Constant name="fusion_engine" /> (built on Rust) gives your team up to 30x faster performance and comes with different features depending on where you use it. 
-- It powers both _engine-level_ improvements (like faster compilation and incremental builds) and _editor-level_ features (like IntelliSense, hover info, and inline errors) through the <Term id="lsp"/>.
+<!-- table for feature comparison ("What's available where?")-->
+<Constant name="fusion_engine" /> (built on Rust) gives your team up to 30x faster performance and comes with different features depending on where you use it. 
+- It powers both _engine-level_ improvements (like faster compilation and incremental builds) and _editor-level_ features (like IntelliSense, hover info, and inline errors) through the <Term id="lsp"/> through the dbt VS Code extension.
 - To learn about the <Term id="lsp"/> features supported across the <Constant name="dbt_platform"/>, refer to [About dbt LSP](/docs/about-dbt-lsp).
 - To stay up-to-date on the latest features and capabilities, check out the [Fusion diaries](https://github.com/dbt-labs/dbt-fusion/discussions).
 
-Some features need you to configure [`static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) in order to work. If you're not sure what features are available, check out the following table.  
+<Constant name="core" /> (built on Python) supports <Term id="sql-rendering" /> but lacks SQL parsing and modern editor features powered by <Constant name="fusion_engine" /> and the <Term id="lsp"/>. 
 
-> ✅ = Available | 🟡 = Partial/at compile-time only | ❌ = Not available | Coming soon = Not yet available
+:::tip 
+<Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="cloud_ide"/> and VS Code with the dbt extension. 
 
-| **Category/Capability** | **dbt Core**<br /><small>(self-hosted)</small> | **Fusion CLI**<br/><small>(self-hosted)</small> | **VS Code <br />+ Fusion** | **<Constant name="dbt_platform" />*** | **Requires <br />`static_analysis`** |
-|:--------------|:--------------:|:---------------:|:-------------:|:-------------:|:--------------:|
+<Constant name="dbt_platform" /> [features](/docs/cloud/about-cloud/dbt-cloud-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
+:::
+
+If you're not sure what features are available in <Constant name="fusion" />, the dbt VS Code extension, <Constant name="fusion"/>-CLI, or more, the following table focuses on <Constant name="fusion" />-powered options. 
+
+In this table, self-hosted means it's open-source/source-available and runs on your own infrastructure; <Constant name="dbt_platform" /> is hosted by dbt Labs and includes platform-level features.
+
+> ✅ = Available | 🟡 = Partial/at compile-time only | ❌ = Not available | Coming soon = Not yet available
+
+| **Category/Capability** |<span style={{whiteSpace: 'nowrap'}}>**Fusion CLI**</span><br/><span style={{whiteSpace: 'nowrap'}}><small>(self-hosted)</small></span> | **Fusion + VS Code extension**<br/><span style={{whiteSpace: 'nowrap'}}><small>(self-hosted)</small></span> | <span style={{whiteSpace: 'nowrap'}}>**dbt platform**</span> <br/>** + VS Code extension**<sup>1</sup> | **dbt platform** <span style={{whiteSpace: 'nowrap'}}> ** + Studio IDE** </span><br/><span style={{whiteSpace: 'nowrap'}}> ** + Other dev surfaces**<sup>2</sup> </span> | **Requires <br />[<span style={{whiteSpace: 'nowrap'}}>static analysis</span>](/docs/fusion/new-concepts#principles-of-static-analysis)** |
+|:--------------|:---------------:|:-------------:|:-------------:|:-------------:|:--------------:|
 | **Engine performance** |  |  |  |  |  |
 | <Term id="sql-rendering" /> | ✅ | ✅ | ✅ | ✅ | ❌ |
-| SQL parsing and compilation (SQL understanding) | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Uses the <Constant name="fusion_engine"/> | ❌ <br /><small>(Built on Python)</small> | ✅ | ✅ | ✅ | ❌ |
-| Up to 30x faster parse/compile | ❌ | ✅ | ✅ | ✅ | ❌ |
-| **Editor and development experience** |  |  |  |  |  |
-| IntelliSense/autocomplete/hover info | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Inline errors (on save/in editor) | ❌ | 🟡 | ✅ | ✅ | ✅ |
-| Live CTE previews/compiled SQL view | ❌ | ❌ | ✅ | ✅ | 🟡 <br /><small>(Live CTE previews only)</small> |
-| Refactoring tools (rename model/column) | ❌ | ❌ | ✅ | Coming soon | 🟡 <br /><small>(Column refactoring only)</small> |
-| Go-to definition/references/macro | ❌ | ❌ | ✅ | Coming soon | 🟡 <br /><small>(Column go-to definition only)</small> |
-| Column-level lineage (in editor) | ❌ | ❌ | ✅ | Coming soon | ✅ |
-| Developer compare changes | ❌ | ❌  | Coming soon | Coming soon | ❌ |
+| SQL parsing and compilation <small>(SQL understanding)</small> | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Editor and dev experience** |  |  |  |  |  |
+| IntelliSense/autocomplete/hover info | ❌ | ✅ | ✅ | ✅ | ✅ |
+| Inline errors (on save/in editor) | 🟡 | ✅ | ✅ | ✅ | ✅ |
+| Live CTE previews/compiled SQL view | ❌ | ✅ | ✅ | ✅ | 🟡 <br /><small>(Live CTE previews only)</small> |
+| Refactoring tools (rename model/column) | ❌ | ✅ | ✅ | <small>Coming soon</small> | 🟡 <br /><small>(Column refactor only)</small> |
+| Go-to definition/references/macro | ❌ | ✅ | ✅ | <small>Coming soon</small> | 🟡 <br /><small>(Column go-to definition only)</small> |
+| Column-level lineage (in editor) | ❌ | ✅ | ✅ | <small>Coming soon</small>  | ✅ |
+| Developer compare changes | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ❌ |
 | **Platform and governance** |  |  |  |  |  |
-| Advanced CI compare changes | ❌ | ❌  | ✅ | ✅ | ❌ |
-| dbt Mesh | ❌ | ❌  | ✅ | ✅ | ❌ |
-| Efficient testing | ❌ | ❌ | ❌ | ✅ | ✅ |
-| State-aware orchestration (SAO) | ❌ | ❌ | ❌ | ✅ | ❌ |
-| Governance (PII/PHI tracking) | ❌ | ❌ | ❌ | Coming soon | ✅ |
-| CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | ❌ | Coming soon | ✅ |
+| Advanced CI compare changes | ❌ | ❌ | ✅ | ✅ | ❌ |
+| dbt <Constant name="mesh" /> | ❌ | ❌ | ✅ | ✅ | ❌ |
+| Efficient testing | ❌ | ❌ | ✅ | ✅ | ✅ |
+| State-aware orchestration (SAO) | ❌ | ❌ | ✅ | ✅ | ❌ |
+| Governance (PII/PHI tracking) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
+| CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 
-*Support for other <Constant name="dbt_platform" /> tools, like <Constant name="semantic_layer" /> and <Constant name="explorer" />, is coming soon.
+<sup>1</sup> Support for other <Constant name="dbt_platform" /> and <Term id="lsp"/> features, like <Constant name="visual_editor"/>, <Constant name="semantic_layer" /> or Column-level lineage, is coming soon. See [About LSP](/docs/about-dbt-lsp) for a more detailed comparison of dbt development environments.<br />
+<sup>2</sup> The [dbt VS Code extension](/docs/about-dbt-extension) is usable in VS Code, Cursor, Windsurf, and other VS Code–based editors.
+
 
 #### Additional considerations
 Here are some additional considerations if using the Fusion CLI without the VS Code extension or the VS Code extension without the Fusion CLI:
     - **Fusion CLI** ([binary](/blog/dbt-fusion-engine-components))
       - Free to use and runs on the <Constant name="fusion_engine" /> (distinct from <Constant name="core" />). 
-      - Benefits from Fusion engine’s performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include visual and interactive [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
+      - Benefits from Fusion engine's performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
       - Requires `profiles.yml` only (no `dbt_cloud.yml`).
     - **dbt VS Code extension**
       - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days. 
-      - Benefits from <Constant name="fusion" /> engine’s performance for `parse`, `compile`, `build`, and `run`, and also includes visual and interactive [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
+      - Benefits from <Constant name="fusion" /> engine's performance for `parse`, `compile`, `build`, and `run`, and includes <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
       - Capped at 15 users per organization. See the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup) for more information.
       - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked.  
       - Requires both `profiles.yml` and `dbt_cloud.yml` files.
@@ -110,4 +120,3 @@ import FusionPackages from '/snippets/_fusion-supported-packages.md';
 import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
-

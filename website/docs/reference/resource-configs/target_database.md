@@ -84,7 +84,7 @@ snapshots:
 Leverage the [`generate_database_name` macro](/docs/build/custom-databases) to build snapshots in databases that follow the same naming behavior as your models.
 
 Notes:
-* This macro is not available when configuring from the `dbt_project.yml` file, so it must be configured in a snapshot config block.
+* This macro is not available when configuring from the `dbt_project.yml` file, so it must be configured in a snapshot SQL file config.
 * Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots.
 
 <File name='snapshots/orders_snaphot.sql'>
