@@ -145,7 +145,7 @@ Your dbt VS Code extension registration path depends on your situation. Select t
 
 ### First-time registration
 
-Use this if you've _never_ created a dbt account before. What you'll do: Open the command, enter your name and email, verify the email, and you're done 🎉!
+Use this if you've _never_ created a dbt account before. 
 
 1. Click the registration prompt or open the command palette (Ctrl + Shift + P (Windows/Linux) or Cmd + Shift + P (macOS)) and type: **dbt: Register dbt extension**.
    <Lightbox src="/img/docs/extension/registration-prompt.png" width="70%" title="The extension registration prompt in VS Code."/>
@@ -159,7 +159,7 @@ Use this if you've _never_ created a dbt account before. What you'll do: Open th
 
 ### Existing account sign-in {#existing-dbt-account}
 
-Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and `dbt_cloud.yml` file if it exists (no file download needed). Use to easily work across machines.
+Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and `dbt_cloud.yml` file if it exists (no file download needed). Use this to easily work across machines.
 
 1. Update the VS Code extension to the latest version and restart your editor before beginning the registration process.
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
@@ -195,8 +195,6 @@ To reset your password and sign in through the OAuth flow:
 ### Register with `dbt_cloud.yml` {#register-with-dbt_cloudyml}
 
 Use this if you can't sign in to your dbt account, your org uses a non-default region (`eu1`, `us2`), or your workflow requires a credential file.
-
-What you'll do: Download the `dbt_cloud.yml` file, place it in your `.dbt` directory, and run the registration command.
 
 1. Log in to <Constant name="dbt_platform" /> and open **Account settings** → **VS Code extension**.
 2. In the **Set up your credentials** section, click **Download credentials** to get `dbt_cloud.yml` file.
