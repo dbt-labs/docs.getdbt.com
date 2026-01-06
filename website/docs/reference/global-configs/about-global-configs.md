@@ -45,7 +45,7 @@ dbt run --target prod
 dbt build --target staging
 ```
 
-This allows you to run the same dbt project against different environments without modifying your configuration files. The target must be defined in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/core/connect-data-platform/connection-profiles).
+The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/core/connect-data-platform/connection-profiles#understanding-targets-in-profiles).
 
 <FilterableTable>
 
