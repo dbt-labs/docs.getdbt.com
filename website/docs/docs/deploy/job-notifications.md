@@ -65,10 +65,10 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
 1. Select your profile icon and click on **Notification settings**.
 1. On the **Email notifications** page, click **Unsubscribe from all email notifications**. 
 
-## Slack notifications (user-linked) {#slack-notifications}
+## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
 
-This is the current Slack integration available for all users and not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in private beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the private beta features.
+This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in private beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the private beta features.
 
 
 :::note 
@@ -125,7 +125,7 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
 
-## Slack notifications (account level) <Lifecycle status="private_beta" />  {#slack-notifications-account}
+## Slack notifications (account) <Lifecycle status="private_beta" />  {#slack-notifications-account}
 :::info
 Configuring Slack notifications at the account level is currently available in private beta. To request access, contact your account manager.
 :::
