@@ -112,7 +112,7 @@ This will start the upgrade tool and guide you through the Fusion upgrade with a
 Once the upgrade is completed, you're ready to dive into all the features that the <Constant name="fusion_engine" /> has to offer!
 
 ## Register the extension
-After downloading the extension and installing the <Constant name="fusion_engine" />, you must register the dbt VS Code extension within 14 days of installing it (or re-installing it). 
+After downloading the extension and installing the <Constant name="fusion_engine" />, make sure you’re running the latest version of the dbt VS Code extension and restart VS Code, then register the extension within 14 days of installing (or re-installing) it.
 
 **Key points:**
 - The extension is free for organizations for up to 15 users (see the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup)).
@@ -120,6 +120,7 @@ After downloading the extension and installing the <Constant name="fusion_engine
 - This _does not_ require a <Constant name="dbt_platform" /> project — just a dbt account.
 - If a valid `dbt_cloud.yml` file exists on your machine, the extension will automatically use it and skip login.
 - If you already have a dbt account (even from years ago), you will be directed into an OAuth sign-in flow.
+- Make sure you update the VS Code extension to the latest version and restart your editor before beginning the registration process.
 
 <Expandable alt_header="Understanding regions">
 
