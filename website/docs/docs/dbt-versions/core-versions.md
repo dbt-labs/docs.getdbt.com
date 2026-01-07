@@ -12,7 +12,7 @@ pagination_prev: null
 
 _Did you know that you can always be working with the latest features and functionality?_ 
 
-With <Constant name="cloud" />, you can get early access to new functionality before it becomes available in <Constant name="core" /> and without the need of managing your own version upgrades. Refer to the ["Latest" Release Track](/docs/dbt-versions/cloud-release-tracks) setting for details.
+With <Constant name="cloud" />, you can get early access to new functionality before it becomes available in <Constant name="core" /> and without the need of managing your own version upgrades. Refer to the [**Latest** Release Track](/docs/dbt-versions/cloud-release-tracks) setting for details.
 
 :::
 
