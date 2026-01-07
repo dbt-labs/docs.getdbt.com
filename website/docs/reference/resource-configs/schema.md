@@ -8,7 +8,7 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`) or in a [SQL file config](/reference/resource-configs/schema#models).
  
 For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
@@ -51,7 +51,7 @@ This would result in the generated relation being located in the `mappings` sche
 
 <VersionBlock firstVersion="1.9">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or YAML file.
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or property file.
 
 For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
 
@@ -89,7 +89,7 @@ This results in the generated relation being located in the `snapshots` schema s
 
 <TabItem value="saved-queries" label="Saved queries">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a [saved query](/docs/build/saved-queries#parameters) in your `dbt_project.yml` or YAML file.
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a [saved query](/docs/build/saved-queries#parameters) in your `dbt_project.yml` or property file.
 
 <File name='dbt_project.yml'>
 ```yml

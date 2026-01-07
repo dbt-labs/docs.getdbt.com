@@ -8,7 +8,7 @@ id: "freshness"
 <VersionCallout version="1.10" />
 
 <Tabs>
-<TabItem value="yml" label="Project file">
+<TabItem value="project" label="Project YAML file">
 
 <File name="dbt_project.yml">
   
@@ -25,7 +25,7 @@ models:
 </File>
 </TabItem>
 
-<TabItem value="project" label="Model YAML">
+<TabItem value="property" label="Properties YAML file">
 
 <File name="models/<filename>.yml">
   
@@ -43,7 +43,7 @@ models:
 </File>
 </TabItem>
 
-<TabItem value="sql" label="Config block">
+<TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
   
 ```sql
@@ -199,7 +199,7 @@ If you want to build every hour on just weekdays (Monday to Friday), you can use
 </File>
 </TabItem>
 
-<TabItem value="sql" label="Config block">
+<TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
   
 ```sql

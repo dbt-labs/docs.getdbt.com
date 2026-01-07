@@ -32,12 +32,14 @@ import useHashLink from '../../../utils/use-hash-link';
 import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
 import CopyPage from '@site/src/components/copyPage';
 import StructuredData from '@site/src/components/StructuredData';
+import queryString from 'query-string';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
 function useDocTOC() {
   const {frontMatter, toc, metadata} = useDoc();
+  const location = useLocation();
 
   // dbt Custom: If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
@@ -46,13 +48,30 @@ function useDocTOC() {
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
   const [currentToc, setCurrentToc] = useState(toc)
-  const [tocReady, setTocReady] = useState(true)
+  const [tocReady, setTocReady] = useState(false)
 
   async function fetchElements() {
+    // For guides pages, determine the active step and only show TOC items for that step
+    const isGuidesPage = window.location.pathname.includes('/guides/');
+    let headingsSelector = ".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6";
+    
+    if (isGuidesPage) {
+      // Hide TOC initially until the active step is determined
+      // This prevents the old step TOC from staying in place until the new step TOC is loaded
+      setTocReady(false)
+
+      // Get active step from URL params or localStorage
+      const queryParams = queryString.parse(window.location.search);
+      const locationPath = window.location.pathname;
+      const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
+      const activeStep = queryParams.step ? queryParams.step : activeStepLocal ? activeStepLocal : 1;
+      
+      // Only get headings from the active step wrapper
+      headingsSelector = `[data-step="${activeStep}"] h1, [data-step="${activeStep}"] h2, [data-step="${activeStep}"] h3, [data-step="${activeStep}"] h4, [data-step="${activeStep}"] h5, [data-step="${activeStep}"] h6`;
+    }
+    
     // get html elements
-    const headings = await getElements(
-      ".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6"
-    );
+    const headings = await getElements(headingsSelector);
 
     // Headings to remove from TOC
     const headingsToFilter = document.querySelectorAll(
@@ -134,8 +153,8 @@ function useDocTOC() {
   }
 
   useEffect(() => {
-      fetchElements()
-  }, [toc, dbtVersion])
+    fetchElements();
+  }, [toc, dbtVersion, location.search]);
 
   // end dbt Custom
 

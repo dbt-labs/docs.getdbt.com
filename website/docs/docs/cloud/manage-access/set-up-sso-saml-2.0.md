@@ -3,6 +3,8 @@ title: "Set up SSO with SAML 2.0"
 id: "set-up-sso-saml-2.0"
 ---
 
+import LoginSlug from '/snippets/_login-slug.md';
+
 # Set up SSO with SAML 2.0 <Lifecycle status="managed, managed_plus" />
 
 <Constant name="cloud" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
@@ -39,15 +41,13 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 
 <Snippet path="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
-separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
+<LoginSlug />
 
 When prompted for the SAML 2.0 application configurations, supply the following values:
 
-* Single sign on URL: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
-* Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
-- Relay State: `<login slug>` (Note: Relay state may be shown as optional in the IdP settings; it is _required_ for the dbt SSO configuration.) 
+* Single sign on URL: `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
+* Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login URL slug}`
+- Relay State: `<login URL slug>` (Note: Relay state may be shown as optional in the IdP settings; it is _required_ for the dbt SSO configuration.) 
 
 Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. [SCIM configuration](/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
 
@@ -141,9 +141,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Snippet path="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
-separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
+<LoginSlug />
 
 1. On the **General Settings** page, enter the following details:
 
@@ -163,9 +161,9 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
 
 1. On the **SAML Settings** page, enter the following values:
 
-   * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
-   * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
-   * **Relay State**: `<login slug>`
+   * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
+   * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login URL slug>`
+   * **Relay State**: `<login URL slug>`
    * **Name ID format**: `Unspecified`
    * **Application username**: `Custom` / `user.getInternalProperty("id")`
    * **Update Application username on**: `Create and update`
@@ -246,10 +244,7 @@ Use this section if you are configuring Google as your identity provider.
 
 <Snippet path="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
-can log into your application. Login slugs are typically the lowercased name of your organization
-separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
+<LoginSlug />
 
 1. Sign into your **Google Admin Console** via an account with super administrator privileges.
 2. From the Admin console Home page, go to **Apps** and then click **Web and mobile apps**.
@@ -266,9 +261,9 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
 2. Download the **IDP metadata**.
 3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
 4. Enter the following values on the **Service Provider Details** window:
-   * **ACS URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
-   * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
-   - **Start URL**: `<login slug>`
+   * **ACS URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
+   * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login URL slug>`
+   - **Start URL**: `<login URL slug>`
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.  If your user profile has a unique, stable value that will persist across email address changes, it's best to use that; otherwise, email will work.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
@@ -314,9 +309,7 @@ If you're using Microsoft Entra ID (formerly Azure AD), the instructions below w
 
 <Snippet path="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
-separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
+<LoginSlug />
 
 Follow these steps to set up single sign-on (SSO) with <Constant name="cloud" />:
 
@@ -343,9 +336,9 @@ Follow these steps to set up single sign-on (SSO) with <Constant name="cloud" />
 
    | Field | Value |
    | ----- | ----- |
-   | **Identifier (Entity ID)** | Use `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`. |
-   | **Reply URL (Assertion Consumer Service URL)** | Use `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`. |
-   | **Relay State** | `<login slug>` |
+   | **Identifier (Entity ID)** | Use `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login URL slug>`. |
+   | **Reply URL (Assertion Consumer Service URL)** | Use `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`. |
+   | **Relay State** | `<login URL slug>` |
 
 14.   Click **Save** at the top of the form.
 
@@ -393,9 +386,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 <Snippet path="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
-separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
-Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company.
+<LoginSlug />
 
 1. Log into OneLogin, and add a new SAML 2.0 Application.
 2. Configure the application with the following details:
@@ -408,10 +399,10 @@ Login slugs must be unique across all <Constant name="cloud" /> accounts, so pic
 
 3. Under the **Configuration tab**, input the following values:
 
-   - **RelayState:** `<login slug>`
-   - **Audience (EntityID):** `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
-   - **ACS (Consumer) URL Validator:** `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
-   - **ACS (Consumer) URL:** `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
+   - **RelayState:** `<login URL slug>`
+   - **Audience (EntityID):** `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login URL slug>`
+   - **ACS (Consumer) URL Validator:** `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
+   - **ACS (Consumer) URL:** `https://YOUR_AUTH0_URI/login/callback?connection=<login URL slug>`
 
 4. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you select the **Include in SAML assertion** checkbox.
 
@@ -486,7 +477,7 @@ To complete setup, follow the steps below in <Constant name="cloud" />:
    | Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
-   | Slug | Enter your desired login slug. |
+  
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
         title="Configuring the application in dbt" />
 

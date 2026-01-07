@@ -1,19 +1,15 @@
 ---
-title: "Upgrading to v1.11 (beta)"
+title: "Upgrading to v1.11"
 id: upgrading-to-v1.11
 description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.11 <Lifecycle status="beta" />
-
-:::note Installing Beta v1.11 on the command line 
-When using Core v1.11 on the command line (not in <Constant name="dbt_platform" />), you need to install a beta version of dbt-core. For example, `install --upgrade --pre dbt-core`.
-:::
+# Upgrading to v1.11
 
 ## Resources
 
-- <Constant name="core" /> [v1.11 Beta changelog](https://github.com/dbt-labs/dbt-core/blob/v1.11.0b3/CHANGELOG.md)
+- [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
@@ -33,7 +29,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 New features and functionality available in <Constant name="core" /> v1.11
 
-### User-defined functions (UDFs) <Lifecycle status="beta" />
+### User-defined functions (UDFs)
 
 dbt Core v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
 
@@ -55,6 +51,8 @@ You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`require_unique_project_resource_names`](/reference/global-configs/behavior-changes#unique-project-resource-names). This flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
 
+- (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-changes#package-ref-search-order). This flag is set to `False` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+
 ### Deprecation warnings enabled by default
 
 Deprecation warnings from JSON schema validation are now enabled by default when validating your YAML configuration files (such as `schema.yml` and `dbt_project.yml`) for projects running using the Snowflake, Databricks, BigQuery, and Redshift adapters.
@@ -62,7 +60,6 @@ Deprecation warnings from JSON schema validation are now enabled by default when
 These warnings help you proactively identify and update deprecated configurations (such as misspelled config keys, deprecated properties, or incorrect data types).
 
 You'll see the following deprecation warnings by default:
-* [ConfigMetaFallbackDeprecation](/reference/deprecations#configmetafallbackdeprecation) 
 * [CustomKeyInConfigDeprecation](/reference/deprecations#customkeyinconfigdeprecation)
 * [CustomKeyInObjectDeprecation](/reference/deprecations#customkeyinobjectdeprecation)
 * [CustomTopLevelKeyDeprecation](/reference/deprecations#customtoplevelkeydeprecation)
@@ -114,10 +111,18 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### Snowflake
 
 - The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
+- The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 
 ### BigQuery
 
 - To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
+
+### Spark
+
+- New profile configurations have been added to enhance [retry handling for PyHive connections](/reference/resource-configs/spark-configs#retry-handling-for-pyhive-connections):
+  - `poll_interval`: Controls how frequently the adapter polls the Thrift server to check if an async query has completed.
+  - `query_timeout`: Adds an overall timeout (in seconds) for query execution. If a query exceeds the set duration during polling, it raises a `DbtRuntimeError`. This helps prevent indefinitely hanging queries.
+  - `query_retries`: Handles connection loss during query polling by automatically retrying.
 
 ## Quick hits
 
@@ -125,4 +130,6 @@ You will find these quick hits in dbt Core v1.11:
 - The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 - Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 - When a model is disabled, unit tests for that model are automatically disabled as well.
+- You can use the new [`config.meta_get()`](/reference/dbt-jinja-functions/config#configmeta_get) and [`config.meta_require()`](/reference/dbt-jinja-functions/config#configmeta_require) functions to access custom configurations stored under `meta`.
+
 

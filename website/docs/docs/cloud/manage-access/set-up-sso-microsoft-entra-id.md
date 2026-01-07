@@ -97,9 +97,10 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | API Name | Type | Permission | Required? |
 | --- | --- | --- | --- |
 | Microsoft Graph | Delegated | `User.Read` | Yes |
-| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 100 groups |
+| Microsoft Graph | Delegated | `GroupMember.Read.All` | Yes |
+| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 200 groups |
 
-The default scope only requires `User.Read`. If you assign a user to more than 100 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`.  
+The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`.  
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 
@@ -141,7 +142,6 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
-| **Slug** | Enter your desired login slug. Users will be able to log into <Constant name="cloud" /> by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/manage-access/sso-overview#auth0-uris) for your region and plan. Login slugs must be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely identifies your company. |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 

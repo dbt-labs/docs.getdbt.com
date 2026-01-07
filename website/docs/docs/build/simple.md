@@ -12,7 +12,7 @@ Simple metrics are metrics that directly reference a single measure, without any
  The parameters, description, and type for simple metrics are:
 
 :::tip
-Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
+Note that we use dot notation (`.`) to indicate whether a parameter is nested within another parameter. For example, `measure.name` means the `name` parameter is nested under `measure`.
 :::
 
 
@@ -24,11 +24,11 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
 | `type_params` | The type parameters of the metric. | Required | Dict |
 | `measure` | A list of measure inputs. | Required | List |
-| `measure:name` | The measure you're referencing. | Required | String |
-| `measure:alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the measure. | Optional | String |
-| `measure:filter` | Optional `filter` applied to the measure. | Optional | String |
-| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
-| `measure:join_to_timespine` | Indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
+| `measure.name` | The measure you're referencing. | Required | String |
+| `measure.alias` | Optional [`alias`](/reference/resource-configs/alias) to rename the measure. | Optional | String |
+| `measure.filter` | Optional `filter` applied to the measure. | Optional | String |
+| `measure.fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional | Integer |
+| `measure.join_to_timespine` | Indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional | Boolean |
 
 The following displays the complete specification for simple metrics, along with an example.
 

@@ -4,7 +4,7 @@ description: "Learn how to add user-defined functions (UDFs) to your dbt project
 id: "udfs"
 ---
 
-# User-defined functions <Lifecycle status="beta" />
+# User-defined functions
 
 User-defined functions (UDFs) enable you to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt, such as BI tools, data science notebooks, and more. 
 
@@ -41,9 +41,18 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</TabItem>
 	</Tabs>
 
+:::important UDF support
+When developing UDFs, it's important to understand the following support limitations:
+
+- Python UDFs aren't yet supported in <Constant name="fusion" />.
+- Additional languages (for example, Java, JavaScript, Scala) aren't currently supported.
+
+See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
+:::
+
 ## Defining UDFs in dbt
 
-You can define SQL and Python UDFs in dbt. Note: Python UDFs are currently supported in Snowflake and BigQuery when using <Constant name="core" />. Support for Python UDFs in <Constant name="fusion" /> is not yet available.
+You can define SQL and Python UDFs in dbt. Python UDFs are currently supported in Snowflake and BigQuery when using <Constant name="core" />. 
 
 Follow these steps to define UDFs in dbt:
 
@@ -67,6 +76,7 @@ Follow these steps to define UDFs in dbt:
 
     </File>
 
+
     </TabItem>
     <TabItem value="Python">
     Define a Python UDF in a Python file. 
@@ -83,9 +93,9 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-    **Note**: You can specify configs in the SQL file or in the corresponding YAML file in next step (Step 2). 
+    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in next step (Step 2). 
 
-2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding YAML file. For example:
+2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file. For example:
 
     <Tabs>
     <TabItem value="SQL">
@@ -114,7 +124,7 @@ Follow these steps to define UDFs in dbt:
     <!--other types not yet supported
     <Expandable alt_header="Supported UDF types">
 
-    You can use these values for the `type` property when you define a function in a YAML file.
+    You can use these values for the `type` property when you define a function in a properties YAML file.
 
     - `scalar` - Returns a single value per row
     - `aggregate` - Returns a single value per group, aggregating several rows
@@ -366,7 +376,7 @@ Use the [`build` command](/reference/commands/build#functions) to select UDFs wh
 For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
 
 ## Limitations
-- Creating UDFs in other languages (for example, Java or Scala) is not yet supported. 
+- Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
 - Creating Python UDFs are currently supported in Snowflake and BigQuery only. Other warehouses aren't yet supported.
 - Support for Python UDFs in <Constant name="fusion" /> is not yet available. Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for the latest updates.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).

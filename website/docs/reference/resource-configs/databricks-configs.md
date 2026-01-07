@@ -1028,7 +1028,7 @@ models:
 </File>
 
 
-Alternatively the warehouse can be specified in the config block of a model's SQL file.
+Alternatively the warehouse can be specified in the config of a model's SQL file.
 
 <File name='model.sql'>
 

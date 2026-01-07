@@ -6,6 +6,25 @@ Models properties can be declared in `.yml` files in your `models/` directory (a
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
+## Available top-level model properties
+
+|Property|	Type	|Required	|Description|
+|--------|--------|---------|-----------|
+|[name](/reference/resource-properties/model_name)	|string	|Yes	|The model name (must match the model filename).|
+|[description](/reference/resource-properties/description)|	string	|No	|Documentation for the model.|
+|[columns](/reference/resource-properties/columns) |	array	|No	|List of column definitions.|
+|[config](/reference/resource-properties/config)	|object|	No	|Model configuration (materialization, tags, etc.).|
+|[constraints](/reference/resource-properties/constraints)	|array	|No|	Model-level constraints (primary key, foreign key, etc.).|
+|[data_tests](/reference/resource-properties/data-tests)|	array|	No	|Model-level data tests.|
+|tests|	array|	No	|Legacy alias for data_tests.|
+|[versions](/reference/resource-properties/versions)|	array	|No	|Model version definitions.|
+|[latest_version](/reference/resource-properties/latest_version)|	string/float|	No	|The latest version of the model.|
+|[deprecation_date](/reference/resource-properties/deprecation_date)|	string|	No	|Date when the model is deprecated.|
+|[access](/reference/resource-configs/access)	|string|	No|	Access level: private, protected, or public. Supported at the top-level for backwards compatibility only. |
+|[time_spine](/docs/build/metricflow-time-spine)|	object	|No	|Time spine configuration for semantic layer.|
+
+### Example file
+
 <File name='models/<filename>.yml'>
 
 ```yml

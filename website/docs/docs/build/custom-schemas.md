@@ -183,10 +183,10 @@ Similar to the regular macro, this approach guarantees that schemas from differe
 
 dbt ships with a macro for this use case &mdash; called `generate_schema_name_for_env` &mdash; which is disabled by default. To enable it, add a custom `generate_schema_name` macro to your project that contains the following code:
 
-<File name='macros/get_custom_schema.sql'>
+<File name='macros/generate_schema_name.sql'>
 
 ```sql
--- put this in macros/get_custom_schema.sql
+-- put this in macros/generate_schema_name.sql
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
     {{ generate_schema_name_for_env(custom_schema_name, node) }}

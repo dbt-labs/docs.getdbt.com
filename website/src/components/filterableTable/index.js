@@ -3,9 +3,6 @@ import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
 
-// Category keywords used to identify category/header rows in tables
-const CATEGORY_ROW_KEYWORDS = ['performance', 'experience', 'governance'];
-
 const stripMarkdown = (text) => {
   if (!text) return '';
   let strippedText = String(text).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
@@ -41,6 +38,16 @@ const extractTextFromHTML = (html) => {
     .trim();
 };
 
+// Extract clean text from HTML and Markdown (for display in filter dropdowns)
+const extractCleanText = (content) => {
+  if (!content) return '';
+  // First strip HTML tags, then strip markdown formatting
+  const withoutHTML = extractTextFromHTML(content);
+  const withoutMarkdown = stripMarkdown(withoutHTML);
+  // Replace all whitespace (including non-breaking spaces) with regular spaces and trim
+  return withoutMarkdown.replace(/\s+/g, ' ').trim();
+};
+
 // Get unique values from a column - preserves exact text including underscores
 const getColumnValues = (data, colIndex) => {
   const values = new Set();
@@ -51,8 +58,10 @@ const getColumnValues = (data, colIndex) => {
       const cellText = extractTextFromHTML(cellContent).trim();
       // Only strip markdown formatting, but keep the actual text content
       const cleanText = stripMarkdown(cellText).trim();
-      if (cleanText) {
-        values.add(cleanText);
+      // Normalize whitespace (replace multiple spaces, non-breaking spaces, etc. with single space)
+      const normalizedText = cleanText.replace(/\s+/g, ' ').trim();
+      if (normalizedText) {
+        values.add(normalizedText);
       }
     }
   });
@@ -66,12 +75,20 @@ const parseTableFromDOM = (tableElement) => {
   }
 
   const headers = [];
+  const columnAlignments = [];
   const thead = tableElement.querySelector('thead');
   if (thead) {
     const headerRow = thead.querySelector('tr');
     if (headerRow) {
       headerRow.querySelectorAll('th').forEach(th => {
-        headers.push(extractTextFromElement(th));
+        // Preserve HTML content for headers (like <small>, <br>, etc.)
+        headers.push(th.innerHTML || extractTextFromElement(th));
+        
+        // Extract alignment from the th element's style
+        const computedStyle = window.getComputedStyle(th);
+        const textAlign = computedStyle.textAlign || th.style.textAlign || 'left';
+        // Normalize alignment values
+        columnAlignments.push(textAlign === 'start' ? 'left' : textAlign === 'end' ? 'right' : textAlign);
       });
     }
   }
@@ -87,9 +104,8 @@ const parseTableFromDOM = (tableElement) => {
       });
       if (cells.length > 0) {
         const firstCellText = stripMarkdown(extractTextFromElement(tr.querySelector('td, th')));
-        const firstCellLower = firstCellText.toLowerCase();
-        const isCategoryRow = firstCellText.includes('**') || 
-                             CATEGORY_ROW_KEYWORDS.some(keyword => firstCellLower.includes(keyword));
+        // Category rows are identified by ** markdown bold markers
+        const isCategoryRow = firstCellText.includes('**');
         data.push({
           cells,
           isCategoryRow,
@@ -98,9 +114,6 @@ const parseTableFromDOM = (tableElement) => {
       }
     });
   }
-
-  // Default alignments
-  const columnAlignments = headers.map(() => 'left');
   
   return { headers, data, columnAlignments };
 };
@@ -188,9 +201,9 @@ const FilterableTable = ({ children }) => {
     headers.forEach((_, colIndex) => {
       const values = getColumnValues(initialData, colIndex);
       // Show filter if:
-      // 1. Column has 2-20 unique values (good for dropdown)
+      // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 2 && values.length <= 20) || (colIndex === 0 && values.length >= 2)) {
+      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });
@@ -204,9 +217,15 @@ const FilterableTable = ({ children }) => {
     let filtered = initialData.filter(row => {
       // Handle category rows
       if (row.isCategoryRow) {
+        // If there's a search query, filter category rows by search
         if (searchQuery) {
           const categoryName = stripMarkdown(row.cells[0] || '').toLowerCase();
           return categoryName.includes(searchQuery.toLowerCase());
+        }
+        // If column filters are active, hide category rows to avoid confusion
+        const hasActiveColumnFilters = Object.values(columnFilters).some(values => values.length > 0);
+        if (hasActiveColumnFilters) {
+          return false;
         }
         return true;
       }
@@ -229,7 +248,9 @@ const FilterableTable = ({ children }) => {
           // Extract text from HTML the same way we do for filter options
           const cellText = extractTextFromHTML(row.cells[colIndex] || '').trim();
           const cleanCellText = stripMarkdown(cellText).trim();
-          if (!selectedValues.includes(cleanCellText)) {
+          // Normalize whitespace to match how filter options are created
+          const normalizedText = cleanCellText.replace(/\s+/g, ' ').trim();
+          if (!selectedValues.includes(normalizedText)) {
             return false;
           }
         }
@@ -370,7 +391,7 @@ const FilterableTable = ({ children }) => {
 
         {hasActiveFilters && filteredData.length === 0 ? (
           <div className={styles.noResults}>
-            No rows match your search criteria. Try adjusting your filters.
+            DAG, no rows match your search criteria! Why don't you try changing your search or filters.
           </div>
         ) : (
           <table className={styles.filterableTable}>
@@ -384,17 +405,19 @@ const FilterableTable = ({ children }) => {
                   return (
                     <th 
                       key={index}
-                      onClick={() => handleSort(index)}
                       style={{ 
                         textAlign: columnAlignments[index] || 'left', 
                         padding: '10px',
-                        position: 'relative',
-                        cursor: 'pointer'
+                        position: 'relative'
                       }}
                     >
                       <div className={styles.headerContent}>
                         <div className={styles.headerText}>
-                          <span className={styles.headerMarkdown}>
+                          <span 
+                            className={styles.headerMarkdown}
+                            onClick={() => handleSort(index)}
+                            style={{ cursor: 'pointer' }}
+                          >
                             <Markdown>{header}</Markdown>
                           </span>
                           <div className={styles.headerControls}>
@@ -405,7 +428,7 @@ const FilterableTable = ({ children }) => {
                                   handleFilterToggle(index, e);
                                 }}
                                 className={`${styles.filterButton} ${hasActiveFilter ? styles.filterActive : ''}`}
-                                aria-label={`Filter by ${stripMarkdown(header)}`}
+                                aria-label={`Filter by ${extractCleanText(header)}`}
                                 aria-expanded={isFilterOpen}
                               >
                                 <span className={styles.filterIcon}>˅</span>
@@ -442,7 +465,7 @@ const FilterableTable = ({ children }) => {
                           {isFilterOpen && (
                             <div className={styles.filterDropdown}>
                                 <div className={styles.filterDropdownHeader}>
-                                  <span>Filter by {stripMarkdown(header)}</span>
+                                  <strong>Filter by {extractCleanText(header)}</strong>
                                   {hasActiveFilter && (
                                     <button
                                       onClick={() => clearColumnFilter(index)}

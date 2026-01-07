@@ -39,10 +39,8 @@ There are 3 cases:
 1. The configuration variable exists, it is `None`
 1. The configuration variable does not exist
 
-:::warning Deprecation warning for meta fallback
-Starting in <Constant name="core" /> v1.11, `config.get()` throws a deprecation warning when it finds a value in `config.meta`. This fallback was temporarily introduced when dbt reserved the top-level configs for official framework configuration. This fallback behavior will be removed in a future version.
-
-To access custom configurations stored under `meta`, use [`config.meta_get()`](#configmeta_get) instead. For more information, check out [deprecations](/reference/deprecations#configmetafallbackdeprecation).
+:::info Accessing custom configurations in meta
+`config.get()` doesn't return values from `config.meta`. If a key exists only in `meta`, `config.get()` returns the default value and emits a warning. To access custom configurations stored under `meta`, use [`config.meta_get()`](#configmeta_get).
 :::
 
 Example usage:
@@ -57,8 +55,8 @@ Example usage:
   -- Example w/ default value. Default to 'id' if the 'unique_key' config does not exist
   {%- set unique_key = config.get('unique_key', default='id') -%}
 
-  -- Example of a custom config nested under `meta` as required in v1.10 and higher.
-  {% set my_custom_config = config.get('meta').custom_config_key %}
+  -- For custom configs under `meta`, use config.meta_get()
+  {% set my_custom_config = config.meta_get('custom_config_key') %}
   ...
 ```
 
@@ -69,10 +67,8 @@ __Args__:
 
 The `config.require` function is used to get configurations for a model from the end-user. Configs defined using this function are required, and failure to provide them will result in a compilation error.
 
-:::warning Deprecation warning for meta fallback
-Starting in <Constant name="core" /> v1.11, `config.require()` throws a deprecation warning when it finds a value in `config.meta`. This fallback was temporarily introduced when dbt reserved the top-level configs for official framework configuration. This fallback behavior will be removed in a future version.
-
-To access custom configurations stored under `meta`, use [`config.meta_require()`](#configmeta_require) instead. For more information, check out [deprecations](/reference/deprecations#configmetafallbackdeprecation).
+:::info Accessing custom configurations in meta
+`config.require()` doesn't return values from `config.meta`. If a key exists only in `meta`, `config.require()` raises an error and emits a warning. To access required custom configurations stored under `meta`, use [`config.meta_require()`](#configmeta_require).
 :::
 
 Example usage:
@@ -84,7 +80,7 @@ Example usage:
 
 ## config.meta_get
 
-<VersionBlock lastVersion="1.9">
+<VersionBlock lastVersion="1.10">
 
 This functionality is new in <Constant name="core" /> v1.11 and the <Constant name="fusion_engine" />.
 
@@ -99,7 +95,7 @@ The `config.meta_get` function retrieves custom configurations stored under the 
 
 Use this function when accessing custom configurations that you've defined under `meta` in your model or resource configuration - it's equivalent to writing `config.get('meta').get()`.
 
-
+Note that `config.meta_get` is not yet supported in Python models. In the meantime, Python models should continue using `dbt.config.get("meta").get("<key>")` to access custom meta configurations. `dbt.config.get_meta("<key>")` is an alias for `dbt.config.get("meta").get("<key>")`.
 
 Example usage:
 ```sql
@@ -123,7 +119,7 @@ models:
 
 ## config.meta_require
 
-<VersionBlock lastVersion="1.9">
+<VersionBlock lastVersion="1.10">
 
 This functionality is new in <Constant name="core" /> v1.11 and the <Constant name="fusion_engine" />.
 
@@ -136,6 +132,8 @@ __Args__:
 The `config.meta_require` function retrieves custom configurations stored under the `meta` dictionary. Unlike `config.require()`, this function exclusively checks `config.meta` and won't result in deprecation warnings. If the configuration is not found, dbt raises a compilation error.
 
 Use this function when you need to ensure a custom configuration exists under `meta`.
+
+Note that `config.meta_require` is not yet supported in Python models.
 
 Example usage:
 ```sql
