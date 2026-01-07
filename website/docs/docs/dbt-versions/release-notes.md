@@ -28,4 +28,4 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - A dedicated inline **Commands** tab for history and logs.
   - When you upgrade your development environment to the <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
 
-The remaineder of the 2025 release notes have been archived [here](/docs/dbt-versions/2025-release-notes).
+The remainder of the 2025 release notes have been archived [here](/docs/dbt-versions/2025-release-notes).
