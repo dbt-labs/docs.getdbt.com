@@ -56,7 +56,7 @@ Note, if you bring your own provider, you will incur API calls and associated ch
 To configure the AI integration in your <Constant name="cloud" /> account, a <Constant name="cloud" /> admin can perform the following steps:
 1. Click on your account name and select **Account settings** in the side menu.
 2. Under **Settings**, click **Copilot**.
-3. Under **API Keys**, click on the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
+3. Under **API Keys**, click the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
    <Lightbox src="/img/docs/dbt-cloud/account-integration-ai.png" width="85%" title="Example of the AI integration page" />
 4. Configure the AI integration for either **dbt Labs OpenAI**, **OpenAI**, or **Azure OpenAI**. The following tabs will walk you through the process.
 
