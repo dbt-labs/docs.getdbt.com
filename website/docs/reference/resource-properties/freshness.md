@@ -96,21 +96,17 @@ In state-aware orchestration, dbt uses the warehouse metadata by default to chec
 Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.
 <br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
+Examples:
+
 ```yml
 sources:
   - name: inventory_updates
-    description: |
-      Inventory snapshots with a properly typed timestamp column.
     config:
       freshness:
-        warn_after:
-          count: 12
-          period: hour
         error_after:
           count: 24
           period: hour
       loaded_at_field: updated_at
-
 ```
 
 If using a date field, you may have to cast it to a timestamp:
@@ -121,9 +117,6 @@ sources:
       Work orders from ERP. The completed_date column is stored as DATE but we need to compare it as a timestamp for freshness checks.
     config:
       freshness:
-        warn_after:
-          count: 12
-          period: hour
         error_after:
           count: 24
           period: hour
@@ -135,12 +128,9 @@ Or, depending on your SQL variant:
 sources:
   - name: purchase_orders
     description: |
-      Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Using CAST for explicit conversion.
+      Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Use CAST for explicit conversion.
     config:
       freshness:
-        warn_after:
-          count: 12
-          period: hour
         error_after:
           count: 24
           period: hour
@@ -156,9 +146,6 @@ sources:
       Customer transactions recorded in Sydney local time. Converting to UTC for consistent freshness comparison across sources in different timezones.
     config:
       freshness:
-        warn_after:
-          count: 12
-          period: hour
         error_after:
           count: 24
           period: hour
