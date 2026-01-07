@@ -45,7 +45,7 @@ Configure AI keys using:
 - Your own OpenAI API key
 - Azure OpenAI
 
-## AI integrations
+### AI integrations
 
 Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app).
 
