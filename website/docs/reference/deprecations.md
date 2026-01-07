@@ -460,7 +460,7 @@ Define your MetricFlow timespine in [YAML](/docs/build/metricflow-time-spine#cre
 
 ### MissingArgumentsPropertyInGenericTestDeprecation
 
-dbt has deprecated specifiying keyword arguments as properties on custom generic data tests or data tests that use the [alternative `test_name` format](/docs/reference/resource-properties/data-tests#alternative-format-for-defining-tests). Instead, arguments to tests should be specified under the new `arguments` property.
+dbt has deprecated specifiying keyword arguments as properties on custom generic data tests or data tests that use the [alternative `test_name` format](/reference/resource-properties/data-tests#alternative-format-for-defining-tests). Instead, arguments to tests should be specified under the new `arguments` property.
 
 This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `True`.
 

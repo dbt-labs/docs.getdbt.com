@@ -4,7 +4,7 @@ id: "databricks-changes"
 sidebar: "Databricks"
 ---
 
-The following are the current [behavior change flags](/docs/reference/global-configs/behavior-changes#behavior-change-flags) that are specific to `dbt-databricks`:
+The following are the current [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) that are specific to `dbt-databricks`:
 
 | Flag                          | `dbt-databricks`: Intro | `dbt-databricks`: Maturity | Status |
 | ----------------------------- | ----------------------- | -------------------------- | ------ |
