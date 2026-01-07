@@ -18,8 +18,8 @@ This page explains how to enable <Constant name="copilot" /> in <Constant name="
 - Must have a [<Constant name="cloud" /> Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/pricing).
   - Certain features like [BYOK](#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
-- By default, <Constant name="copilot" /> deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [provide your own OpenAI API key](#bringing-your-own-openai-api-key-byok).
-  - For [BYOK](#bringing-your-own-openai-api-key-byok), make sure to enable the latest text generation models as well as the `text-embedding-3-small` model.
+- By default, <Constant name="copilot" /> deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [bring your own OpenAI API key](#bringing-your-own-openai-api-key-byok)(BYOK).
+  - For BYOK, make sure to enable the latest text generation models as well as the `text-embedding-3-small` model.
 - Opt-in to AI features by following the steps in the next section in your **Account settings**.
 
 ## Enable dbt Copilot
@@ -45,20 +45,20 @@ Configure AI keys using:
 - Your own OpenAI API key
 - Azure OpenAI
 
-## AI integrations
+### AI integrations
 
 Once AI features have been [enabled](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app).
 
 <Constant name="cloud" /> supports AI integrations for dbt Labs-managed OpenAI keys, Self-managed OpenAI keys, or Self-managed Azure OpenAI keys.
 
-Note, if you bring-your-own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />. Bringing your own provider is available for Enterprise or Enterprise+ plans.
+Note, if you bring your own provider, you will incur API calls and associated charges for features used in <Constant name="cloud" />. Bringing your own provider is available for Enterprise or Enterprise+ plans.
 
 To configure the AI integration in your <Constant name="cloud" /> account, a <Constant name="cloud" /> admin can perform the following steps:
-1. Navigate to **Account settings** in the side menu.
-2. Select **Integrations** and scroll to the **AI** section.
-3. Click on the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
+1. Click on your account name and select **Account settings** in the side menu.
+2. Under **Settings**, click **Copilot**.
+3. Under **API Keys**, click the **Pencil** icon to the right of **OpenAI** to configure the AI integration.
    <Lightbox src="/img/docs/dbt-cloud/account-integration-ai.png" width="85%" title="Example of the AI integration page" />
-4. Configure the AI integration for either **dbt Labs OpenAI**, **OpenAI**, or **Azure OpenAI**.
+4. Configure the AI integration for either **dbt Labs OpenAI**, **OpenAI**, or **Azure OpenAI**. The following tabs will walk you through the process.
 
   <Tabs queryString="ai-integration"> 
   <TabItem value="dbtlabs" label="dbt Labs OpenAI">

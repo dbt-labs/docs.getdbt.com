@@ -19,6 +19,7 @@ By moving your environments and jobs to release tracks you can get all the funct
 | **Latest** | Formerly called "Versionless", provides a continuous release of the latest functionality in the dbt platform.<br /><br />Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
+| **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
 To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `latest` (or `versionless`, the old name is still supported)
@@ -30,6 +31,24 @@ To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cl
 Choose the **Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="cloud" />.
 
 Choose the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+
+### Using the Fallback release track
+
+The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. 
+
+1. Enable it by going to **Account settings** 
+2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface, rather than through environment settings. 
+3. Fill in the details in the **Revert to Fallback** pop up to confirm and share any info with dbt Support.
+
+Switching to **Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. You should return to "Extended" or "Compatible" once the issue is resolved.
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="Fallback release track button in dbt platform"/>
+
+<Lightbox src="/img/docs/dbt-versions/rollback-popup.png" width="80%" title="Fallback release track popup in dbt platform"/>
+
+</DocCarousel>
+
 
 ### Common architectures
 
