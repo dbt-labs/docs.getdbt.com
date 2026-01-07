@@ -14,7 +14,7 @@
     "write-translations": "docusaurus write-translations",
     "crowdin:upload": "crowdin upload sources",
     "crowdin:download": "crowdin download",
-    "crowdin:sync": "npm run crowdin:upload && npm run crowdin:download"
+    "crowdin:sync": "npm run write-translations && npm run crowdin:upload && npm run crowdin:download"
   },
   "dependencies": {
     "@crowdin/cli": "^3.19.4",
