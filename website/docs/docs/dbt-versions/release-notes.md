@@ -18,4 +18,4 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
-COMING SOON!
+**Coming soon!**
