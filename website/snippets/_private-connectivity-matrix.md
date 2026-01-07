@@ -1,61 +1,97 @@
-## Private connectivity feature matrix
+The following charts outline private connectivity options across <Constant name="cloud" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) deployments.
 
-The following feature charts outline the availability of private connectivity features across <constant name="dbt_platform" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) instances.
+### Scope of this matrix
+
+This matrix focuses on one question: **can a private endpoint be established between dbt Cloud and the service at the network layer?** Availability (✅) means dbt Cloud supports creating a private endpoint to that service using the cloud platform's private connectivity technology (AWS PrivateLink, Azure Private Link, or GCP Private Service Connect).
+
+Beyond the network layer, the possibilities for application-layer configurations, authentication methods, and custom architectures are extensive. Not every combination has been tested. This matrix does not account for:
+- Application-layer configurations or feature-specific requirements
+- Custom architectures unique to your environment
+- Service-specific limitations that may affect functionality after the private endpoint is established
+
+For detailed setup instructions, refer to the individual configuration guides. If you have a custom configuration and are unsure whether it's supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
 
 **Legend:**
 - ✅ = Available
-- ❌ = Not currently supported
+- ❌ = Not currently available
+- ST = Single-Tenant only
 - \- = Not applicable
 
-### Ingress into dbt Cloud
+## Terminology
 
-| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
-|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
-| Private <Constant name="cloud" /> Ingress | ❌ | ✅ | ❌ | ✅ | ❌ |
-| Dual <Constant name="cloud" /> Ingress | ❌ | ✅ | ❌ | ❌ | ❌ |
+### Parties and roles
 
----
+| Term | Definition |
+|:-----|:-----------|
+| **Cloud platform** | The underlying cloud infrastructure: AWS, Azure, or GCP. |
+| **Service provider** | The party that publishes a service for private access. This can be a third-party vendor (Snowflake, Databricks) or the cloud platform itself (Redshift, Synapse, BigQuery). When dbt Cloud is the service provider, your services connect to dbt Cloud. |
+| **Consumer** | The party that creates a private endpoint to connect to a service. When dbt Cloud is the consumer, it connects to your services. |
 
-### Egress from dbt Cloud to services managed by Cloud Provider or 3rd party
+### Provisioning models
 
-| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
-|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
-| **Amazon Athena** w/ AWS Glue | ❌ | ✅ | - | - | - |
-| **AWS CodeCommit** | ❌ | ✅ | - | - | - |
-| **Azure Database for PostgreSQL Flexible Server** | - | - | ✅ | ✅ | - |
-| **Azure DevOps Repos**<br/>(not supported by Azure) | - | - | ❌ | ❌ | - |
-| **Azure Fabric**<br/>(cross-tenant not supported by Azure) | - | - | ❌ | ❌ | - |
-| **Azure Synapse** | - | - | ✅ | ✅ | - |
-| **Databricks** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Google BigQuery** | - | - | - | - | ✅ |
-| **Redshift (Interface)** | ✅ | ✅ | - | - | - |
-| **Redshift (Managed)** | ✅ | ✅ | - | - | - |
-| **Redshift Serverless (Interface)** | ✅ | ✅ | - | - | - |
-| **Redshift Serverless (Managed)** | ✅ | ✅ | - | - | - |
-| **Snowflake** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| &nbsp;&nbsp;Snowflake Internal Stage | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Teradata** | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Term | Definition |
+|:-----|:-----------|
+| **Native** | The cloud platform provisions the private connectivity infrastructure for its own services (Redshift, Synapse, BigQuery). You obtain the resource ID from the cloud platform and share it with dbt; dbt creates the endpoint. |
+| **Vendor** | A third-party vendor (Snowflake, Databricks, Teradata) provisions the private connectivity infrastructure. You obtain the resource ID from the vendor and share it with dbt; dbt creates the endpoint. |
+| **Customer-provisioned** | You create and manage the private connectivity infrastructure. You generate your own resource ID (endpoint service name, alias, or service attachment URI) and share it with dbt. |
+
+### Endpoint types
+
+| Term | Definition | Isolation model |
+|:-----|:-----------|:----------------|
+| **Dedicated endpoint** | A private endpoint created specifically for your account. Used with Native, Vendor, and Customer-provisioned setups. | Network isolation + access controls (authentication, authorization, etc.) |
+| **Shared endpoint** | A private endpoint maintained by dbt that multiple customers use. Traffic is routed through a common endpoint. | Access controls only (authentication, authorization, etc.) |
 
 ---
 
-### Egress from dbt Cloud to Self-Hosted service
+## Connecting dbt Cloud to your services
 
-Private connectivity can be established with self-hosted services, provided they can be integrated with each cloud provider's private connectivity mechanism as a producer:
+dbt Cloud can establish private connections to your services. The table below shows all supported services with their provisioning model and endpoint type.
 
-- **AWS:** [AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html)
-- **Azure:** [Azure Private Link](/docs/cloud/secure/az-self-hosted-private-link)
-- **GCP:** [Private Service Connect (Service Attachment)](/docs/cloud/secure/gcp-self-hosted-psc)
+| Service | AWS | Azure | GCP | Provisioning | Endpoint |
+|:--------|:---:|:-----:|:---:|:-------------|:---------|
+| **Amazon Athena** w/ AWS Glue | ✅ | - | - | Native | Shared |
+| **Azure Database for PostgreSQL Flexible Server** | - | ✅ | - | Native | Shared |
+| **Databricks** | ✅ | ✅ | - | Vendor | Dedicated |
+| **Google BigQuery** | - | - | ✅ | Native | Shared |
+| **Redshift** | ✅ | - | - | Native | Dedicated |
+| **Redshift Serverless** | ✅ | - | - | Native | Dedicated |
+| **Snowflake** | ✅ | ✅ | ✅ | Vendor | Dedicated |
+| &nbsp;&nbsp;Snowflake Internal Stage | ✅ | ✅ | ❌ | Vendor | Dedicated |
+| **Teradata VantageCloud** | ✅ | ✅ | ✅ | Vendor | Dedicated |
 
-:::important
-Self-hosted services can have a virtually infinite number of configurations and architectures. For this reason, dbt Support can only provide accurate guidance on establishing PrivateLink or Private Service Connect (GCP) connections between your self-hosted service and dbt Cloud. Any network guidance beyond this is provided on a best-effort basis. We highly recommend engaging your vendor's support team and documentation for proper configuration of your self-hosted service.
-:::
+### Customer-provisioned connections
 
-The table below lists some self-hosted services that have been tested.
+For customer-provisioned connectivity, you create and manage the private connectivity infrastructure and share access with dbt. This model supports any service that can be placed behind a load balancer and exposed via the cloud platform's private connectivity technology. All customer-provisioned connections use dedicated endpoints.
 
-| Connectivity type | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
-|:------------------|:------:|:------:|:--------:|:--------:|:--------:|
-| **BitBucket** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **GitHub Enterprise Server** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **GitLab Enterprise** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Postgres** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Trino / Starburst** | ✅ | ✅ | ✅ | ✅ | ✅ |
+**Prerequisites:**
+
+Your service must be exposed via the cloud platform's private connectivity technology:
+
+| Cloud | Load balancer requirement | Resource you create |
+|:------|:--------------------------|:--------------------|
+| **AWS** | Network Load Balancer | VPC Endpoint Service |
+| **Azure** | Standard Load Balancer | Private Link Service |
+| **GCP** | Internal Proxy Load Balancer* | Service Attachment |
+
+*Other GCP load balancer types may be compatible, but Internal Proxy Load Balancer is the only type tested by dbt.
+
+You must be able to grant dbt access to your endpoint.
+
+**Setup guides:**
+- [AWS PrivateLink for self-hosted services](/docs/cloud/secure/vcs-privatelink)
+- [Azure Private Link for self-hosted services](/docs/cloud/secure/az-self-hosted-private-link)
+- [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/gcp-self-hosted-psc)
+
+If you have questions about whether your configuration is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+
+---
+
+## Connecting to dbt Cloud
+
+Your services can connect to dbt Cloud over private connectivity. This is available on Single-Tenant deployments only.
+
+| Connectivity type | AWS ST | Azure ST |
+|:------------------|:------:|:--------:|
+| Private <Constant name="cloud" /> access | ✅ | ✅ |
+| Dual access (public + private) | ✅ | ❌ |
