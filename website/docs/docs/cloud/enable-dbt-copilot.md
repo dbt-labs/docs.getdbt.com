@@ -81,26 +81,11 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   <TabItem value="azure" label="Azure OpenAI">
   Bringing your own Azure OpenAI key is available for Enterprise or Enterprise+ plans.
 
-  To learn about deploying your own OpenAI model on Azure, refer to [Deploy models on Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai). Configure credentials for your Azure OpenAI deployment in <Constant name="cloud" /> in the following two ways:
-    - [From a Target URI](#from-a-target-uri)
-    - [Manually providing the credentials](#manually-providing-the-credentials)
-
-  #### From a Target URI
-
-  1. Locate your Azure OpenAI deployment URI in your Azure Deployment details page.
-  2. In the <Constant name="cloud" /> **Azure OpenAI** section, select the tab **From Target URI**.
-  3. Paste the URI into the **Target URI** field.
-  4. Enter your Azure OpenAI API key.
-  5. Verify the **Endpoint**, **API Version**, and **Deployment Name** are correct.
-  6. Click **Save**.
-  <Lightbox src="/img/docs/dbt-cloud/account-integration-azure-target.png" width="85%" title="Example of Azure OpenAI integration section" />
-
-  #### Manually providing the credentials
+  To learn about deploying your own OpenAI model on Azure, refer to [Deploy models on Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai). Configure credentials for your Azure OpenAI deployment in <Constant name="cloud" /> the following way:
 
   1. Locate your Azure OpenAI configuration in your Azure Deployment details page.
-  2. In the <Constant name="cloud" /> **Azure OpenAI** section, select the tab **Manual Input**.
   2. Enter your Azure OpenAI API key.
-  3. Enter the **Endpoint**, **API Version**, and **Deployment Name**.
+  3. Enter the **Endpoint**, **API Version**, and **Deployment / Model Name**.
   4. Click **Save**.
   <Lightbox src="/img/docs/dbt-cloud/account-integration-azure-manual.png" width="85%" title="Example of Azure OpenAI integration section" />
 
