@@ -4,23 +4,17 @@ preserve_hierarchy: true
 
 files:
   # Temp for testing
-  - source: /docs/guides/*.md
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/docs/guides/%original_file_name%
-
-  # English documentation markdown files → Crowdin will output to Japanese folder
-  # - source: /docs/**/*.md
-  #   translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+  - source: /docs/docs/introduction.md
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/docs/introduction.md
+  - source: /docs/docs/fusion/**/*.md
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/docs/fusion/%original_file_name%
     
-  # - source: /docs/**/*.mdx
+  # # JSON translation files
+  # - source: /i18n/en/**/*
+  #   translation: /i18n/%two_letters_code%/**/%original_file_name%
+  # # Docs Markdown files
+  # - source: /docs/**/*
   #   translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
-  
-  # English pages (homepage, etc.)
-  - source: /src/pages/**/*.js
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-pages/**/%original_file_name%
-
-  # English UI translations (sidebar labels, etc.) - ONLY if you generated them
-  - source: /i18n/en/code.json
-    translation: /i18n/%two_letters_code%/code.json
-    
-  - source: /i18n/en/docusaurus-plugin-content-docs/current.json
-    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current.json
+  # # Blog Markdown files
+  # - source: /blog/**/*
+  #   translation: /i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%
