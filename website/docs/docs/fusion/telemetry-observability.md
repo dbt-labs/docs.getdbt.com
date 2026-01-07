@@ -213,7 +213,7 @@ If you're familiar with <Constant name="core" />'s structured logging, here's ho
 
 Note that <Constant name="core" />'s `fail` status maps to <Constant name="fusion" />'s `node_outcome: success` because <Constant name="fusion" /> distinguishes between "the test ran successfully and found data issues" versus "the test couldn't run." This separation enables more precise alerting and retry logic.
 
-<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/fusion/sao), which has no <Constant name="core" /> equivalent.
+<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/deploy/state-aware-about), which has no <Constant name="core" /> equivalent.
 
 ## Record structure
 
