@@ -271,7 +271,7 @@ By default, everything gets created as a view. You can override that at the dire
       ```
 
       </File>
-    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config block to:
+    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config in the project YAML file to:
 
       <File name='dbt_project.yml'>
 
@@ -492,7 +492,7 @@ Adding [data tests](/docs/build/data-tests) to a project helps validate that you
 
 To add data tests to your project:
 
-1. Create a new YAML file in the `models` directory, named `models/schema.yml`
+1. Create a new properties YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 
     <File name='models/schema.yml'>

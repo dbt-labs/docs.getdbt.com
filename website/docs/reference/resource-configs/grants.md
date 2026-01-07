@@ -5,7 +5,7 @@ default_value: {}
 id: "grants"
 ---
 
-You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
+You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML property file.
 
 The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, dbt ensures that the grants on its view or table match exactly the grants you have configured.
 
@@ -62,7 +62,7 @@ models:
 
 The `grants` config can also be defined:
 
-- under the `models` config block in `dbt_project.yml`
+- under the `models` config in the project file (`dbt_project.yml`)
 - in a `config()` Jinja macro within a model's SQL file
 
 See [configs and properties](/reference/configs-and-properties) for details.
@@ -83,7 +83,7 @@ seeds:
 
 </File>
 
-The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
+The `grants` config can also be defined under the `seeds` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -101,10 +101,11 @@ snapshots:
 
 </File>
 
-The `grants` config can also be defined:
+The `grants` config can be defined:
 
-- under the `snapshots` config block in `dbt_project.yml`
-- in a `config()` Jinja macro within a snapshot's SQL block
+- Under the `snapshots` config in the property file (`snapshots/schema.yml`)
+- Under the `snapshots` config in the project file (`dbt_project.yml`)
+- In a snapshot's SQL file `config()` Jinja macro
 
 See [configs and properties](/reference/configs-and-properties) for details.
 

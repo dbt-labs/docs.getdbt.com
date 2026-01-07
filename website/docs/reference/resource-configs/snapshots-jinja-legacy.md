@@ -68,7 +68,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 </File>
 
 ### General configuration
-Use general configurations for broader operational settings applicable across multiple resource types. Like resource-specific configurations, these can also be set in the project file, property files, or within resource-specific files using a config block.
+Use general configurations for broader operational settings applicable across multiple resource types. Like resource-specific configurations, these can also be set in the project YAML file, properties YAML files, or within resource-specific files using a config block.
 
 <File name='snapshots/snapshot.sql'>
 
