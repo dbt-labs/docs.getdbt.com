@@ -22,10 +22,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Single-Tenant Release Notes – 5 Jan 2026
 
-### New
-- **Orchestrator** – `ORC_STREAM_CONFORMANCE_ARTIFACT` can now stream conformance archives from a bounded 100 MB in-memory buffer straight to object storage, auto-falling back to disk and emitting new metrics so you can monitor rollout while eliminating `/tmp` thrash on large runs.  
-  <!-- PR: https://github.com/dbt-labs/dbt-orc/compare/b396ee3ed6bacdf7830eb068876ae41e238dac53...9f03c42c77eca5f5f25c197df1f85e0f17e53a51 -->
-
 ### Enhancements
 - **dbt platform APIs** – Cloud Config connectivity is now shared, load-balanced, and retry-aware across gRPC handlers, cutting transient `UNAVAILABLE` errors and speeding recovery when pods churn.  
   <!-- PR: https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/a98859c99ca0b03efa465dc26024279322ac12a3...846f78282973348f3e9bb1c75a8a0e547512c37e -->
