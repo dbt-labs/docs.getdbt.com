@@ -76,7 +76,6 @@ details[open] :local(.toggle)::before {
 }
 
 /* Adjusting for Light and Dark Modes */
-/* Removed - conflicted with admonition overrides */
 
 :local(html[data-theme='dark'] .toggle)::before {
     border-color: white; /* White arrow in dark mode */
@@ -108,8 +107,6 @@ details[open] :local(.toggle)::before {
     padding: 5px;
     background-color: transparent;
 }
-
-/* Removed dark mode rules that conflicted with admonition overrides */
 
 :local(.body > p:last-child) {
     margin-bottom: 0px;
