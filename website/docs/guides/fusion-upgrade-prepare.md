@@ -43,17 +43,17 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 ## Upgrade to the latest dbt Core version
 
-Before upgrading to <Constant name="fusion" />, you need to move your environments to the `Latest` [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The `Latest` track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
+Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
 :::tip Test before you deploy
 
-Always test version upgrades in development first. Use the [Override dbt version](#step-1-test-in-development-using-override) feature to safely try the `Latest` release track without affecting your team or production runs.
+Always test version upgrades in development first. Use the [Override dbt version](#step-1-test-in-development-using-override) feature to safely try the **Latest** release track without affecting your team or production runs.
 
 :::
 
 ### Step 1: Test in development (using override)
 
-Test the `Latest` release track for your individual account without changing the environment for your entire team:
+Test the **Latest** release track for your individual account without changing the environment for your entire team:
 
 1. Click your account name in the left sidebar and select **Account settings**.
 2. Select **Credentials** from the sidebar and choose your project.
