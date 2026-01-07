@@ -2,7 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "npm run crowdin:sync && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
     "lint": "eslint --cache",
