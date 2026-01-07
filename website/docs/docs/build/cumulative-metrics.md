@@ -67,8 +67,6 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 | `cumulative_type_params.grain_to_date`   | Sets the accumulation grain, such as `month`, restarting accumulation at the beginning of each specified grain period. Cannot be used with `window`. | Optional  | String |
 | `cumulative_type_params.period_agg`  | Defines how to aggregate the cumulative metric when summarizing data to a different granularity: `first`, `last`, or `average`. Defaults to `first` if `window` is not specified. | Optional  | String |
 
-</VersionBlock>
-
 <Expandable alt_header="Explanation of type_params.measure">
   
 The `type_params.measure` configuration can be written in different ways:
