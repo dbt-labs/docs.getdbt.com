@@ -20,23 +20,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## January 7, 2026
 
-## Single-Tenant Release Notes – 5 Jan 2026
-
-### Enhancements
-- **dbt platform APIs** – Cloud Config connectivity is now shared, load-balanced, and retry-aware across gRPC handlers, cutting transient `UNAVAILABLE` errors and speeding recovery when pods churn.  
-  <!-- PR: https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/a98859c99ca0b03efa465dc26024279322ac12a3...846f78282973348f3e9bb1c75a8a0e547512c37e -->
-- **Studio builds** – Build tasks honor the `PUBLIC_URL` environment variable, allowing Studio assets to resolve correctly when you host behind custom domains or sub-paths without patching the scripts.  
-  <!-- PR: https://github.com/dbt-labs/dbt-cloud-app/commit/47ce4ccdd4dd2c4841335b796d368390a79bdc5e -->
-
-### Fixes
-- **IDE CLI** – Artifact exports now validate every destination path (including dbt package installs), blocking absolute paths, `..` traversal, and symlinks so malicious archives can’t escape the project directory and failed downloads no longer crash runs.  
-  <!-- PR: https://github.com/dbt-labs/ide-server/commit/4608a18aaa83ac11bcab67efd282fc79a04bfced -->
-
-### Behavior Changes
-- **dbt platform APIs** – Account Insights, Generated Exposures, and Model Execution History enforce the caller’s auth token on every Cloud Config lookup, preventing cross-account leakage and ensuring only permissioned environments are returned.  
-  <!-- PR: https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/a98859c99ca0b03efa465dc26024279322ac12a3...846f78282973348f3e9bb1c75a8a0e547512c37e -->
-
-Let me know if you can surface the exact PR numbers for the compare links above and I’ll swap them in.
+No customer-facing changes this week.
 
 ## December 24, 2025
 
