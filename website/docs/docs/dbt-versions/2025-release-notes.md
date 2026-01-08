@@ -1,6 +1,6 @@
 ---
-title: "2025 dbt Cloud release notes"
-description: "2025 dbt Cloud release notes"
+title: "2025 dbt platform release notes"
+description: "2025 dbt platform release notes"
 id: "2025-release-notes"
 sidebar: "2025 release notes"
 pagination_next: null
