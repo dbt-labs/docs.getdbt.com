@@ -100,6 +100,7 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_children`: Gets the children models of a specific model
 - `get_model_health`: Gets health signals for a specific model
 - `get_all_sources`: Gets all source tables with metadata and freshness information
+- `get_lineage`:  Gets complete lineage (ancestors/descendants) for a dbt resource with depth control and type filtering (excludes macros by default).
 - `get_exposures`: Gets all exposures
 - `get_exposure_details`: Gets details for a specific exposure or a list of exposures
 - `keyword_search`: Searches artifacts from <Constant name="dbt_platform"/> runs by using exact string matching against fields such as code, descriptions, and names.
