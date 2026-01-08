@@ -17,7 +17,7 @@ By moving your environments and jobs to release tracks you can get all the funct
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
 | **Latest Fusion** <Lifecycle status="private_preview" /> | The latest build of the new engine for dbt, available to select accounts. | All plans | `latest-fusion` |
-| **Latest** | Provides a continuous release of the latest functionality in the dbt platform.<br /><br />Includes early access to new features of the dbt framework before they're available in final releases of dbt Core. | All plans | `latest` |
+| **Latest** | Provides a continuous release of the latest functionality in the <Constant name="dbt_platform" /> .<br /><br />Includes early access to new features of the dbt framework before they're available in <Constant name="core" />. | All plans | `latest` |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
