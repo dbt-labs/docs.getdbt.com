@@ -66,18 +66,24 @@ my_project_profile:  # Profile name (matches dbt_project.yml)
       schema: 'dev_schema'       
       # Authentication (adapter-specific)
       auth_method: 'username_password'  
-      user_credentials: 'username'
+      username: 'username'
       password_credentials: 'password' 
       # Execution settings (common across adapters)
       threads: 4   # Number of parallel threads
 
 # Multiple profiles (for multiple projects)
-another_project:
-  target: default
+my_second_project_profile:
+  target: dev
   outputs:
-    default:
-      type: adapter_type
-      <connection_fields...>
+    dev:
+      type: snowflake  # Example adapter
+      account: account
+      user: user
+      password: password
+      database: database
+      schema: schema
+      warehouse: warehouse
+      threads: 4
 ```
 
 </File>
