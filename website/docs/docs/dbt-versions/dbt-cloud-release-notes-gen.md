@@ -20,7 +20,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## January 7, 2026
 
-No customer-facing changes this week.
+No changes of note this week.
 
 ## December 24, 2025
 
