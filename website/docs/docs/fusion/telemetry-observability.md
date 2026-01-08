@@ -18,7 +18,7 @@ This uses the same integration that <Constant name="dbt_platform" /> relies on f
 | ----------- | ---------------------------------------------------------------- | -------------------------- |
 | **JSONL**   | Real-time monitoring, streaming to downstream systems.            | Written as events occur.    |
 | **Parquet** | Post-run analysis, querying, and long-term storage               | Written when runs complete |
-| **OTLP**    | Integration with observability platforms (Datadog, Jaeger, and more) | Streamed in real-time  |
+| **OTLP**    | Integration with observability platforms (Datadog, Jaeger, and more). | Streamed in real-time.  |
 
 ### Enabling telemetry output
 
@@ -97,7 +97,7 @@ When a test executes successfully (`node_outcome: success`), it reports the test
 
 | Test outcome | Description                                   |
 | ------------ | --------------------------------------------- |
-| `passed`     | No failures detected .                         |
+| `passed`     | No failures detected.                         |
 | `warned`     | Failures detected, but configured as warnings. |
 | `failed`     | Failures detected (data quality issue).        |
 
@@ -109,7 +109,7 @@ A test with `node_outcome: success` and `test_outcome: failed` means <Constant n
 
 ## Querying telemetry data
 
-Query the telemtry data to gain deeper insights into your dbt runs.
+Query the telemetry data to gain deeper insights into your dbt runs.
 
 ### JSONL examples
 
@@ -255,9 +255,9 @@ Unlike <Constant name="core" />'s structured logging, <Constant name="fusion" />
 
 This makes <Constant name="fusion" /> telemetry a reliable foundation for production integrations, orchestrators, and long-term analytics pipelines.
 
-## Official client library (coming soon)
+## Official client library (coming soon) {#official-client-library}
 
-An official open-source client library is in development. Built in Rust for performance, it will be available as:
+dbt Labs is developing an official open-source client library. Built in Rust for performance, it will be available as:
 
 - A standalone Rust crate and CLI.
 - A fully-typed Python package wrapping the Rust core.
