@@ -37,7 +37,7 @@ Configure your project to use a different dbt version than what's configured in 
 3. In the side panel, click **Edit** and scroll to the **User development settings** section. 
 4. Choose a version from the **dbt version** dropdown and click **Save**.
 
-  An example of overriding the configured version to ["Latest" release track](/docs/dbt-versions/cloud-release-tracks) for the selected project:
+  An example of overriding the configured version to [**Latest** release track](/docs/dbt-versions/cloud-release-tracks) for the selected project:
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
@@ -48,7 +48,7 @@ Configure your project to use a different dbt version than what's configured in 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion), a ground-up rebuild of dbt. This is currently in private preview on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but remember:
 - If you don't see the `Latest Fusion` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the `Latest` release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - Make sure you're using a supported adapter and authentication method:
   <FusionDWH /> 
 - Once you upgrade your development environment(s) to `Latest Fusion`, every user will have to restart the IDE.
@@ -64,7 +64,7 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 #### Prerequisites
 
 To take advantage of the upgrade assistant, you'll need to meet the following prerequisites:
-- Your dbt project must be updated to use the `Latest` release track.
+- Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
 - You must have the <Constant name="Fusion" /> beta enabled for your account. For more information, please contact your account manager. 
 
