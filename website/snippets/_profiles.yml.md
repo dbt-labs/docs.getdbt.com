@@ -44,7 +44,7 @@ Place your `profiles.yml` file in the project root directory for:
 
 The easiest way to create and configure a `profiles.yml` file is to execute `dbt init` after you've installed dbt on your machine. This takes you through the process of configuring an adapter and places the file into the recommended `~/.dbt/` location. 
 
-If an existing profiles.yml file exists, running dbt init will prompt the user to amend or overwrite it. If the user selects the existing adapter for configuration, dbt will automatically populate the existing values.
+If your project has an existing `profiles.yml` file, running `dbt init` will prompt you to amend or overwrite it. If you select the existing adapter for configuration, dbt will automatically populate the existing values.
 
 You can also manually create the file and add it to the proper location. To configure an adapter manually, copy and paste the fields from the adapter setup instructions for [<Constant name="core" />](/docs/core/connect-data-platform/about-core-connections) or [<Constant name="fusion" />](/docs/fusion/connect-data-platform-fusion/profiles.yml) along with the appropriate values for each. 
 
