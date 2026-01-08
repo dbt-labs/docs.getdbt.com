@@ -41,7 +41,7 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the `Latest` release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
+- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
@@ -51,7 +51,7 @@ Before upgrading your development environment, confirm:
 
 ## Upgrade your development environment
 
-With your project prepared and tested on the `Latest` release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
+With your project prepared and tested on the **Latest** release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
 
 :::tip Start with development
 
@@ -268,7 +268,7 @@ If you encounter problems in staging:
 - Test the same models in your development environment to isolate the problem.
 - Contact [dbt Support](/docs/dbt-support) or your account team for assistance.
 
-You can revert the staging environment to `Latest` release track while investigating.
+You can revert the staging environment to **Latest** release track while investigating.
 
 :::
 
@@ -293,7 +293,7 @@ Congratulations! You've successfully upgraded development and staging environmen
 Upgrading production is a critical operation. While <Constant name="fusion" /> is production ready and has been thoroughly tested in your dev and staging environments, follow these best practices:
 - Plan the upgrade during a low-traffic window to minimize impact.
 - Notify stakeholders about the maintenance window.
-- Have a rollback plan ready (reverting to `Latest` release track).
+- Have a rollback plan ready (reverting to **Latest** release track).
 - Monitor closely for the first few job runs after upgrading.
 
 :::
@@ -429,7 +429,7 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 :::info Rollback impact
 
-Rolling back to `Latest` will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
+Rolling back to **Latest** will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
 
 :::
 

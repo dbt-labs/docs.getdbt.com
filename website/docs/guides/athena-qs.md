@@ -112,7 +112,7 @@ To configure the Athena connection in <Constant name="cloud" />:
 To configure the Athena credentials in your environment:
 1. Click **Deploy** on the left-side menu and click **Environments**.
 1. Click **Create environment** and fill out the **General settings**. 
-    - Your **dbt version** must be set to `Versionless` to use the Athena connection. 
+    - Your **dbt version** must be on a [release track](/docs/dbt-versions/cloud-release-tracks) to use the Athena connection. 
 1. Select the Athena connection from the **Connection** dropdown. 
 1. Fill out the `aws_access_key` and `aws_access_id` recorded in previous steps, as well as the `Schema` to write to. 
 1. Click **Test connection** and once it succeeds, **Save** the environment.

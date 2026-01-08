@@ -4,9 +4,9 @@ sidebar_label: "Compatible track changelog"
 description: "The Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
 ---
 
-Select the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Select the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
-Each monthly "Compatible" release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
+Each monthly **Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
 
 For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
 
