@@ -17,7 +17,7 @@ This uses the same integration that <Constant name="dbt_platform" /> relies on f
 | Format      | Use case                                                         | Availability               |
 | ----------- | ---------------------------------------------------------------- | -------------------------- |
 | **JSONL**   | Real-time monitoring, streaming to downstream systems.            | Written as events occur.    |
-| **Parquet** | Post-run analysis, querying, and long-term storage               | Written when runs complete |
+| **Parquet** | Post-run analysis, querying, and long-term storage.               | Written when runs complete. |
 | **OTLP**    | Integration with observability platforms (Datadog, Jaeger, and more). | Streamed in real-time.  |
 
 ### Enabling telemetry output
