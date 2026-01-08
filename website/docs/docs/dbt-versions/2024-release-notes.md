@@ -1,8 +1,8 @@
 ---
-title: "2024 dbt Cloud release notes"
-description: "2024 dbt Cloud release notes"
+title: "2024 dbt platform release notes"
+description: "2024 dbt platform release notes"
 id: "2024-release-notes"
-sidebar: "2024 release notes"
+sidebar_label: "2024 release notes"
 pagination_next: null
 pagination_prev: null
 ---
