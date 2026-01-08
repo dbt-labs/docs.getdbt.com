@@ -14,12 +14,12 @@ const sidebarSettings = {
       items: [
         "docs/fusion/fusion",
         "docs/fusion/about-fusion",
+        "docs/fusion/get-started-fusion",
         "docs/fusion/fusion-availability",
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
         "docs/fusion/telemetry",
-        "docs/fusion/get-started-fusion",
       ],
     },
     {
