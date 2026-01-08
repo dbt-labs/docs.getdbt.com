@@ -11,25 +11,38 @@ import Envvarsecrets from '/snippets/_env-var-secrets.md';
 
 If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
 
-:::info Environment variables for integers and booleans
-When using environment variables for properties that expect an integer or boolean (`True`/`False`), add a filter to the Jinja expression. For example:
+### Converting env_vars
 
-**Integers**  
-Convert the string to a number to avoid errors like `'1' is not of type 'integer'`:  
-`{{ env_var('DBT_THREADS') | int }}` or `{{ env_var('DB_PORT') | as_number }}`
+Environment variables are always strings. When using them for configurations that expect integers or booleans, you must explicitly convert the value to the correct type.
 
-**Booleans**  
-Convert the string to a boolean explicitly:  
-`{{ env_var('SECURE').lower() == 'true' }}`
-:::
+Use a Jinja filter to convert the string to the correct type:
+
+- **Integers** &mdash; Convert the string to a number to avoid errors like `'1' is not of type 'integer'`. For example, `"{{ env_var('DBT_THREADS') | int }}"` or `"{{ env_var('DB_PORT') | as_number }}"`
+
+- **Booleans** &mdash; Convert the string to a boolean explicitly. For example, `"{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"`
+
+For boolean defaults, use capitalized `True` or `False`. Using lowercase `true` or `false` will be treated as a string and can result in unexpected results.
+
+For example, to disable [`persist_docs`](/reference/resource-configs/persist_docs)using environment variables:
+
+<File name='dbt_project.yml'>
+
+```yml
++persist_docs:
+  relation: "{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"
+  columns: "{{ env_var('DBT_PERSIST_DOCS_COLUMNS', False) | as_bool }}"
+```
+</File>
 
 :::caution Quoting, curly brackets, & you
 
-Be sure to quote the entire Jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
+Be sure to quote the entire Jinja string. Otherwise, the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
-`env_var` accepts a second, optional argument for default value, like so:
+### Default values
+
+You can also provide a default value as a second argument:
 
 <File name='dbt_project.yml'>
 
