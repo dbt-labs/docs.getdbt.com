@@ -10,7 +10,7 @@ Before using <Constant name="visual_editor" />, you should:
     - Trino
     - You can access the <Constant name="visual_editor" /> with adapters not listed, but some features may be missing at this time. 
 - Use [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops) as your <Constant name="git" /> provider, connected to dbt via HTTPS. SSH connections are not supported for <Constant name="visual_editor" /> at this time.
-  - Note that <Constant name="visual_editor" /> doesn't support Git integration for on-premises or [single tenant deployments](/docs/cloud/about-cloud/tenancy) at this time.
+  - <Constant name="visual_editor" /> doesn't support Git integration for GitHub self-hosted / on-premises deployments.
 - Have an existing <Constant name="cloud" /> project already created with a Staging or Production run completed.
 - Verify your Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
 - Have read-only access to the [Staging environment](/docs/deploy/deploy-environments#staging-environment) with the data to be able to execute `run` in the <Constant name="visual_editor" />. To customize the required access for the <Constant name="visual_editor" /> user group, refer to [Set up environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup) for more information.
