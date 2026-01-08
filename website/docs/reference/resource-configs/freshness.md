@@ -5,7 +5,11 @@ id: "freshness"
 ---
 # freshness <Lifecycle status="private_preview,managed,managed_plus" />
  
-<VersionCallout version="1.10" />
+<VersionBlock lastVersion="1.99">
+
+Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
+
+</VersionBlock>
 
 <Tabs>
 <TabItem value="project" label="Project YAML file">
@@ -63,12 +67,6 @@ models:
 </File>
 </TabItem>
 </Tabs>
-
-<VersionBlock lastVersion="1.9">
-
-This configuration is only available for the dbt Fusion engine.
-
-</VersionBlock>
 
 ## Definition
 
