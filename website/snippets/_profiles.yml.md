@@ -61,13 +61,13 @@ my_project_profile:  # Profile name (matches dbt_project.yml)
     dev: # Development environment
       type: adapter_type # Required: snowflake, bigquery, databricks, redshift, postgres, etc
       # Connection identifiers (placeholder examples, see adapter-specific pages for supported configs)
-      account: 'abc123'  
-      database: 'docs_team' 
-      schema: 'dev_schema'       
+      account: abc123  
+      database: docs_team 
+      schema: dev_schema       
       # Authentication (adapter-specific)
-      auth_method: 'username_password'  
-      username: 'username'
-      password_credentials: 'password' 
+      auth_method: username_password  
+      username: username
+      password_credentials: password
       # Execution settings (common across adapters)
       threads: 4   # Number of parallel threads
 
