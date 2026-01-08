@@ -23,8 +23,8 @@ The **Latest** track ensures you have up-to-date <Constant name="cloud" /> funct
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
 To upgrade an environment in the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
-- `Latest Fusion` <Lifecycle status="private_preview" /> (available to select accounts)
-- `latest` (formerly called `versionless`; the old name is still supported)
+- `latest-fusion` <Lifecycle status="private_preview" /> (available to select accounts)
+- `latest` (default)
 - `compatible` (available to Starter, Enterprise, Enterprise+ plans)
 - `extended` (available to all Enterprise plans)
 
