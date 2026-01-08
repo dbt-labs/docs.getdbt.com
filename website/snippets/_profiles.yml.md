@@ -18,7 +18,9 @@ The `profile` field in [`dbt_project.yml`](/reference/dbt_project.yml) reference
 
 ## Location of profiles.yml
 
-dbt searches for `profiles.yml` location in a specific order:
+Only one `profiles.yml` file is required and it can manage multiple projects and connections. 
+
+dbt searches for `profiles.yml` location in the following order and uses the first file it finds:
 
 1. `--profiles-dir` flag &mdash; Override for CI/CD or testing. 
 2. Project root directory &mdash; Project-specific credentials.
@@ -30,7 +32,7 @@ dbt searches for `profiles.yml` location in a specific order:
 - **Reusability** &mdash; A single file for all dbt projects on the machine.
 - **Separation** &mdash; Connection details don't travel with project code.
 
-### When to use project root
+#### When should I use project root?
 
 Place your `profiles.yml` file in the project root directory for:
 
@@ -40,11 +42,15 @@ Place your `profiles.yml` file in the project root directory for:
 
 ## Create and configure the `profiles.yml` file
 
-The easiest way to create and configure a `profiles.yml` file is to execute `dbt init` after you've installed dbt on your machine. This takes you through the process of configuring an adapter and places the file into the recommended `~/.dbt/` location.
+The easiest way to create and configure a `profiles.yml` file is to execute `dbt init` after you've installed dbt on your machine. This takes you through the process of configuring an adapter and places the file into the recommended `~/.dbt/` location. 
 
-You can also manually create the file and add it to the proper location. To configure an adapter manually, copy and paste the fields from the [adapter setup instructions](/docs/about-dbt-install) along with the appropriate values for each. 
+If an existing profiles.yml file exists, running dbt init will prompt the user to amend or overwrite it. If the user selects the existing adapter for configuration, dbt will automatically populate the existing values.
+
+You can also manually create the file and add it to the proper location. To configure an adapter manually, copy and paste the fields from the adapter setup instructions for [<Constant name="core" />](/docs/core/connect-data-platform/about-core-connections) or [<Constant name="fusion" />](/docs/fusion/connect-data-platform-fusion/profiles.yml) along with the appropriate values for each. 
 
 ### Example configuration
+
+The following example highlighs the format of the `profiles.yml` file. Note that many of the configs are adapter-specific and their syntax varies. 
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -53,14 +59,15 @@ my_project_profile:  # Profile name (matches dbt_project.yml)
   target: dev  # Default target to use
   outputs:
     dev: # Development environment
-      type: <adapter_type> # Required: snowflake, bigquery, databricks, redshift, postgres, etc
-      # Connection identifiers (adapter-specific)
-      <account_or_host>: '<value>'  
-      <database_field>: '<database>' 
-      <schema_field>: '<schema>'       
+      type: adapter_type # Required: snowflake, bigquery, databricks, redshift, postgres, etc
+      # Connection identifiers (placeholder examples, see adapter-specific pages for supported configs)
+      account: 'abc123'  
+      database: 'docs_team' 
+      schema: 'dev_schema'       
       # Authentication (adapter-specific)
-      <auth_method>: '<method>'  
-      <credentials...>: '<values>' 
+      auth_method: 'username_password'  
+      user_credentials: 'username'
+      password_credentials: 'password' 
       # Execution settings (common across adapters)
       threads: 4   # Number of parallel threads
 
@@ -69,7 +76,7 @@ another_project:
   target: default
   outputs:
     default:
-      type: <adapter_type>
+      type: adapter_type
       <connection_fields...>
 ```
 
@@ -89,13 +96,13 @@ my_profile:
   outputs:
     dev:
       type: ADAPTER_NAME
-      account: '{{ env_var("ADAPTER_ACCOUNT") }}'
-      user: '{{ env_var("ADAPTER_USER") }}'
-      password: '{{ env_var("ADAPTER_PASSWORD") }}'
-      database: '{{ env_var("ADAPTER_DATABASE") }}'
-      schema: '{{ env_var("ADAPTER_SCHEMA") }}'
-      warehouse: '{{ env_var("ADAPTER_WAREHOUSE") }}'
-      role: '{{ env_var("ADAPTER_ROLE") }}'
+      account: "{{ env_var("ADAPTER_ACCOUNT") }}"
+      user: "{{ env_var("ADAPTER_USER") }}"
+      password: "{{ env_var("ADAPTER_PASSWORD") }}"
+      database: "{{ env_var("ADAPTER_DATABASE") }}"
+      schema: "{{ env_var("ADAPTER_SCHEMA") }}"
+      warehouse: "{{ env_var("ADAPTER_WAREHOUSE") }}"
+      role: "{{ env_var("ADAPTER_ROLE") }}"
       threads: 4
 ```
 
