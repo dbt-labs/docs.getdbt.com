@@ -17,13 +17,13 @@ Environment variables are always strings. When using them for configurations tha
 
 Use a Jinja filter to convert the string to the correct type:
 
-- **Integers** &mdash; Convert the string to a number to avoid errors like `'1' is not of type 'integer'`. For example, `"{{ env_var('DBT_THREADS') | int }}"` or `"{{ env_var('DB_PORT') | as_number }}"`
+- **Integers** &mdash; Convert the string to a number using the `int` or [`as_number`](/reference/dbt-jinja-functions/as_number) filter to avoid errors like `'1' is not of type 'integer'`. For example, `"{{ env_var('DBT_THREADS') | int }}"` or `"{{ env_var('DB_PORT') | as_number }}"`
 
-- **Booleans** &mdash; Convert the string to a boolean explicitly. For example, `"{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"`
+- **Booleans** &mdash; Convert the string to a boolean explicitly using the [`as_bool`](/reference/dbt-jinja-functions/as_bool) filter. For example, `"{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"`
 
 For boolean defaults, use capitalized `True` or `False`. Using lowercase `true` or `false` will be treated as a string and can result in unexpected results.
 
-For example, to disable [`persist_docs`](/reference/resource-configs/persist_docs)using environment variables:
+For example, to disable [`persist_docs`](/reference/resource-configs/persist_docs) using environment variables:
 
 <File name='dbt_project.yml'>
 
