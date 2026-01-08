@@ -12,7 +12,7 @@ import Envvarsecrets from '/snippets/_env-var-secrets.md';
 If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
 
 :::info Environment variables for integers and booleans
-When using environment variables for properties that expect an integer or boolean (`true`/`false`), add a filter to the Jinja expression. For example:
+When using environment variables for properties that expect an integer or boolean (`True`/`False`), add a filter to the Jinja expression. For example:
 
 **Integers**  
 Convert the string to a number to avoid errors like `'1' is not of type 'integer'`:  
