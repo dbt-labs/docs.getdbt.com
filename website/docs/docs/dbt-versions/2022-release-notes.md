@@ -1,8 +1,8 @@
 ---
-title: "2022 dbt Cloud release notes"
-description: "dbt Cloud release notes for 2022"
+title: "2022 dbt platform release notes"
+description: "dbt platform release notes for 2022"
 id: "2022-release-notes"
-sidebar: "2022 release notes"
+sidebar_label: "2022 release notes"
 pagination_next: null
 pagination_prev: null
 ---
