@@ -38,7 +38,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
       <th>Azure MT</th>
       <th>Azure ST</th>
       <th>GCP MT</th>
-      <th><Term id="native-provisioned">Provisioning</Term></th>
+      <th>Provisioning</th>
     </tr>
   </thead>
   <tbody>
