@@ -53,7 +53,7 @@ Some configurations are shared between all adapters, while others are adapter-sp
 
 ## Using the --target flag
 
-The active target (and its associated `target.name` value) can be set using the `--target` flag when running dbt commands:
+Use the `--target` flag when running dbt commands to set the active target and its associated `target.name` value:
 
 ```bash
 dbt run --target dev
