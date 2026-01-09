@@ -122,11 +122,6 @@ Watch for errors in real-time:
 tail -f telemetry.jsonl | jq 'select(.severity_text == "ERROR")'
 ```
 
-Find all node execution results
-```bash
-cat telemetry.jsonl | jq 'select(.record_type == "SpanEnd" and .attributes.unique_id)'
-```
-
 List skipped nodes, reasons, and upstream details:
 ```bash
 cat telemetry.jsonl | jq 'select(.attributes.node_outcome == "NODE_OUTCOME_SKIPPED") | {node: .attributes.unique_id, reason: .attributes.node_skip_reason, upstream: .attributes.node_skip_upstream_detail.upstream_unique_id }'
