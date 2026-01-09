@@ -89,7 +89,7 @@ When <Constant name="fusion" /> skips a node, the telemetry includes a reason:
 | Skip reason      | Description                                                      |
 | ---------------- | ---------------------------------------------------------------- |
 | `upstream`       | A dependency failed.                                              |
-| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected). |
+| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected via [state aware orchestration](/docs/deploy/state-aware-about)). |
 | `phase_disabled` | The phase was disabled (for example, `--static-analysis off`).    |
 | `noop`           | Node doesn't perform work in this phase (for example, ephemeral models). |
 
