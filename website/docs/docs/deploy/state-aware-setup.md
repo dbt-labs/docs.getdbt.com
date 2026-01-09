@@ -108,36 +108,7 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
 
 To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
 
-### Handling late-arriving data 
-
-If your incremental models use a lookback window to capture late-arriving data, make sure your freshness logic aligns with that window.
-
-When you use a `loaded_at_field` or `loaded_at_query`, state-aware orchestration uses that value to determine whether new data has arrived. When the `loaded_at` value reflects an event timestamp (for example, `event_date`), late-arriving records may not update this value if the event occurred in the past. In these cases, state-aware orchestration may not trigger a rebuild, even though your incremental model’s lookback window would normally include those rows.
-
-To ensure late-arriving data is detected by state-aware orchestration, your `loaded_at_field` or `loaded_at_query` should align with the same lookback window used in your incremental filter. See the following sample values for `loaded_at_field` and `loaded_at_query`:
-
-
-<Tabs>
-<TabItem value="loaded_at_field" label="loaded_at_field">
-
-```yaml
-loaded_at_field: ingested_at
-```
-</TabItem>
-
-<TabItem value="loaded_at_query" label="loaded_at_query">
-
-```yaml
-loaded_at_query: |
-  select max(ingested_at)
-  from source_table
-  where ingested_at >= current_timestamp - interval '3 days'
-```
-
-</TabItem>
-</Tabs>
-
-## Customizing behavior
+### Customizing behavior
 
 You can optionally configure state-aware orchestration when you want to fine-tune orchestration behavior for these reasons:
 
@@ -170,6 +141,37 @@ You can optionally configure state-aware orchestration when you want to fine-tun
   - `model/properties.yml` at the model level in YAML
   - `model/model.sql` at the model level in SQL
 These configurations are powerful because you can define a sensible default at the project level or for specific model folders, and override it for individual models or model groups that require more frequent updates.
+
+### Handling late-arriving data 
+
+If your incremental models use a lookback window to capture late-arriving data, make sure your freshness logic aligns with that window.
+
+When you use a `loaded_at_field` or `loaded_at_query`, state-aware orchestration uses that value to determine whether new data has arrived. When the `loaded_at` value reflects an event timestamp (for example, `event_date`), late-arriving records may not update this value if the event occurred in the past. In these cases, state-aware orchestration may not trigger a rebuild, even though your incremental model’s lookback window would normally include those rows.
+
+To ensure late-arriving data is detected by state-aware orchestration, your `loaded_at_field` or `loaded_at_query` should align with the same lookback window used in your incremental filter. See the following sample values for `loaded_at_field` and `loaded_at_query`:
+
+
+<Tabs>
+<TabItem value="loaded_at_field" label="loaded_at_field">
+
+```yaml
+loaded_at_field: ingested_at
+```
+</TabItem>
+
+<TabItem value="loaded_at_query" label="loaded_at_query">
+
+```yaml
+loaded_at_query: |
+  select max(ingested_at)
+  from source_table
+  where ingested_at >= current_timestamp - interval '3 days'
+```
+
+</TabItem>
+</Tabs>
+
+
 ## Example
 
 Let's use an example to illustrate how to customize our project so a model and its parent model are rebuilt only if they haven't been refreshed in the past 4 hours &mdash; even if a job runs more frequently than that.
