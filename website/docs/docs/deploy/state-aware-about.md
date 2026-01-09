@@ -40,24 +40,18 @@ For example, you can configure your project so that <Constant name="cloud" /> sk
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
-### Detecting code changes
-
-State-aware orchestration evaluates model changes based on _compiled SQL code_, rather than the pre-rendered code.
-
-- Every macro, variable, or templated logic is resolved before state-aware orchestration checks for changes.
-- If you use dynamic content (for example, `{{ run_started_at }}`), state-aware orchestration may detect that as a change even if the “static” SQL template hasn’t changed. This may result in more frequent model rebuilds.
-- Any change to a macro definition or templated logic will be treated as a code change, even if the underlying data or SQL structure remains the same.
-- If you want to leave comments in your source code but don’t want to trigger rebuilds, it is recommended to use regular SQL comments (for example, `-- This is a single-line comment in SQL`) in your query. State-aware orchestration ignores comment-only changes; such annotations will not force model rebuilds across the DAG.
-
 ### Handling concurrent jobs
 
-If two separate jobs both depend on the same downstream model (for example, `model_ab`), and both jobs detect upstream changes (`updates_on = any`), then `model_ab` may run twice &mdash; once per job.
+If two separate jobs both depend on the same downstream model (for example, `model_ab`), and both jobs detect upstream changes (`updates_on = any`), then `model_ab` may run twice (once per job) because each job detects a change that triggers a rebuild. However, if nothing has changed since the most recent build, neither job needs to rebuild `model_ab`. They will reuse the already built `model_ab` instead of rebuilding it again.
 
-Under state-aware orchestration, each job independently evaluates whether a model needs rebuilding based on the model’s compiled code and upstream data state. It does not enforce a single build per model across different jobs.
+Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaulates whether a model needs rebuilding based on the model’s compiled code and upstream data state.
 
 What happens when jobs overlap:
+
 - If both jobs reach the same model at exactly the same time, one job waits until the other finishes. This is to prevent collisions in the data warehouse when two jobs try to build the same model at the same time.
 - After the first job finishes, the second job still checks whether a rebuild for the model is needed. The job may choose to reuse the existing result or perform another build, depending on changes detected.
+
+If you want to prevent a job from being built too frequently even when the code or data state has changed, you can reduce build frequency by using the `build_after` config. For information on how to use `build_after`, refer to [Model freshness](/reference/resource-configs/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 

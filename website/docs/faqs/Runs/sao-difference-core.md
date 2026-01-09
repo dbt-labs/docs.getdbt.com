@@ -17,4 +17,4 @@ Instead of relying only on these selectors and prior-run artifacts, state-aware 
 - Upstream data changes at runtime and model-level freshness settings
 - Shared state across jobs
 
-This helps avoid unnecessary rebuilds when underlying source files changed without changing the compiled logic, while still rebuilding when upstream data changes require it.
+While <Constant name="core" /> uses selectors like `state:modified+` and `source_status:fresher+` to decide what to build _only for a single run in a single job_, state-aware orchestration with <Constant name="fusion" /> maintains a _shared, real-time model state across every job in the environment_ and uses that state to determine whether a model’s code or upstream data have actually changed before rebuilding. This ensures dbt only rebuilds models when something has changed, no matter which job runs them.

@@ -147,7 +147,27 @@ Our last concern specific to incremental models is what to do when data is inevi
 - 🕐 For example if most of our records for `2022-01-30` come in the raw schema of our warehouse on the morning of `2022-01-31`, but a handful don’t get loaded til `2022-02-02`, how might we tackle that? There will already be `max(updated_at)` timestamps of `2022-01-31` in the warehouse, filtering out those late records. **They’ll never make it to our model.**
 - 🪟 To mitigate this, we can add a **lookback window** to our **cutoff** point. By **subtracting a few days** from the `max(updated_at)`, we would capture any late data within the window of what we subtracted.
 - 👯 As long as we have a **`unique_key` defined in our config**, we’ll simply update existing rows and avoid duplication. We process more data this way, but in a fixed way, and it keeps our model hewing closer to the source data.
-- If you're using state-aware orchestration, make sure its freshness detection logic accounts for late-arriving data. By default, dbt uses warehouse metadata, which is updated whenever new rows arrive, even if their event timestamps are in the past. However, if you configure a `loaded_at_field` or `loaded_at_query` that uses an event timestamp (for example, `event_date`), late-arriving data may not increase the `loaded_at` value. In this case, state-aware orchestration may skip rebuilding the incremental model, even though your lookback window would normally pick up those records. To ensure late-arriving data is detected, configure your `loaded_at_field` or `loaded_at_query` to align with the same lookback window used in your incremental filter.
+
+
+#### Using state-aware orchestration with incremental models
+
+By default, [state-aware orchestration](/docs/deploy/state-aware-about) detects source freshness by checking warehouse metadata for any new rows. This may cause models to run more often than needed.
+
+To avoid this issue, configure a `loaded_at_field` for a specific timestamp column or use a `loaded_at_query` with custom SQL to tell dbt which field to check for freshness. This helps state-aware orchestration to detect only genuinely new data. For information on how to configure `loaded_at_field` and `loaded_at_query`, refer to [Source freshness](/reference/resource-properties/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
+
+Even with a `loaded_at_field` or `loaded_at_query`, late arriving records may have an earlier event timestamp (for example, `event_date`). In this case, state-aware orchestration may skip rebuilding the incremental model, even though your lookback window would normally pick up those records. To ensure late-arriving data is detected, configure your `loaded_at_field` or `loaded_at_query` to align with the same lookback window used in your incremental filter. For example, if your incremental model uses a 3-day lookback window:
+
+```yaml
+sources:
+  - name: raw_orders
+    tables:
+      - name: orders
+        config:
+          loaded_at_query: |
+            select max(ingested_at)
+            from {{ this }}
+            where ingested_at >= current_timestamp - interval '3 days'
+```
 
 ### Long-term considerations
 
