@@ -135,7 +135,7 @@ The following section lists some considerations when using Efficient testing in 
     where: <string>
   ```
 
-- **Efficient testing is available in deploy jobs**. Currently, the option to enable Efficient testing is only available in deploy jobs. 
+- **Efficient testing is available only in deploy jobs**. Continuous integration and merge jobs currently do not have the option to enable this feature. 
 
 ## Related docs
 
