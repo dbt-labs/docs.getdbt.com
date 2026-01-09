@@ -21,7 +21,7 @@ The <Constant name="cloud_ide" /> offers several [keyboard shortcuts](/docs/clou
 - Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
 - Build, test, and run button &mdash; Build, test, and run your project with a button click or by using the <Constant name="cloud_ide" /> command bar.  
 
-These [features](#dbt-cloud-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
+These [features](#studio-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
 
 <DocCarousel slidesPerView={1}>
 
@@ -41,7 +41,7 @@ To improve your experience using <Constant name="cloud" />, we suggest that you 
 - A [<Constant name="cloud" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
-- A [development environment and development credentials](#get-started-with-the-cloud-ide) set up
+- A [development environment and development credentials](#get-started-with-the-studio-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 ## Studio IDE features
@@ -94,7 +94,7 @@ Set up your developer credentials:
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure developer credentials in your profile"/>
 
 6. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
-7. Initialize your project and familiarize yourself with the <Constant name="cloud_ide" /> and its delightful [features](#cloud-ide-features).
+7. Initialize your project and familiarize yourself with the <Constant name="cloud_ide" /> and its delightful [features](#studio-ide-features).
 
 Nice job, you're ready to start developing and building models 🎉!  
 
