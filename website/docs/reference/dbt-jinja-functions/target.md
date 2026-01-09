@@ -12,7 +12,7 @@ The `target` variable contains information about your connection to the warehous
    - **[<Constant name="orchestrator" />](/docs/deploy/job-scheduler)**: `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
    - **[<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)**: These values are defined by your connection and credentials. To edit these values, click on your account name in the left side menu and select **Account settings**. Then, click **Credentials**. Select and edit a project to set up the credentials and target name.
 
-Some configurations are shared between all adapters, while others are adapter-specific.
+Some configurations are shared between all adapters, while others are adapter-specific. You can also use the [`--target` flag](#using-the---target-flag) to set the active target when running dbt commands.
 
 ## Common
 | Variable | Example | Description |
@@ -51,6 +51,20 @@ Some configurations are shared between all adapters, while others are adapter-sp
 | `target.project` | abc-123 | The project specified in the active profile |
 | `target.dataset` | dbt_alice | The dataset the active profile |
 
+## Using the --target flag
+
+The active target (and its associated `target.name` value) can be set using the `--target` flag when running dbt commands:
+
+```bash
+dbt run --target dev
+```
+
+```bash
+dbt run --target prod
+```
+
+You can use the `--target` flag with any dbt command to override the default target specified in your `profiles.yml` file. This is useful for running the same dbt project against different environments (like dev, staging, or prod) without changing your configuration files.
+
 ## Examples
 
 ### Use `target.name` to limit data in dev
@@ -84,15 +98,3 @@ sources:
       {%- endif -%}
     schema: source_schema
 ```
-
-To specify which target to use when running dbt commands, use the `--target` flag:
-
-```bash
-dbt run --target dev
-```
-
-```bash
-dbt run --target prod
-```
-
-You can use the `--target` flag with any dbt command to override the default target specified in your `profiles.yml` file. This is useful for running the same dbt project against different environments (like dev, staging, or prod) without changing your configuration files.
