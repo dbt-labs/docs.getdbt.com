@@ -4,7 +4,7 @@ id: "introduction"
 description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
-intro_text: "dbt transforms raw data in your warehouse into reliable data products. Write simple SQL select statements instead of complex transformation scripts, and dbt turns them into modular, maintainable data models that power analytics, operations, and AI."
+intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI, replacing the need for complex and fragile transformation code."
 ---
 
 <Snippet path="what-is-dbt-intro" />
