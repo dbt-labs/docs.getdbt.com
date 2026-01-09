@@ -8,6 +8,10 @@ The following charts outline private connectivity options across <Constant name=
 - \- = Not applicable
 - \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
 
+:::note What "Available" means
+Availability indicates whether a private endpoint can be established at the network layer. dbt evaluates common configurations, authentication methods, and integration patterns when determining support. However, due to the wide range of customizations possible in customer environments, not every configuration may be covered. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+:::
+
 ---
 
 ### Connecting to dbt Cloud
