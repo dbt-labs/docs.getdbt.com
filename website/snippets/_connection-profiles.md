@@ -93,7 +93,21 @@ A typical profile for an analyst using dbt locally will have a target named `dev
 
 You may also have a `prod` target within your profile, which creates the objects in your production schema. However, since it's often desirable to perform production runs on a schedule, we recommend deploying your dbt project to a separate machine other than your local machine. Most dbt users only have a `dev` target in their profile on their local machine.
 
-If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` option when issuing a dbt command.
+If you do have multiple targets in your profile, and want to use a target other than the default, you can do this using the `--target` flag when running a dbt command.
+
+For example, to run against your `prod` target instead of the default `dev` target:
+
+```bash
+dbt run --target prod
+```
+
+You can use the `--target` flag with any dbt command, such as:
+
+```bash
+dbt build --target prod
+dbt test --target dev
+dbt compile --target qa
+```
 
 ### Overriding profiles and targets
 

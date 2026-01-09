@@ -73,6 +73,8 @@ Efficient testing in state-aware orchestration reduces warehouse costs by avoidi
 - **Test reuse** &mdash; Tests are reused in cases where no logic in the code or no new data could have changed the test's outcome.
 - **Test aggregation** &mdash; When there are multiple tests on a model, dbt combines tests to run as a single query against the warehouse, rather than running separate queries for each test.
 
+Currently, Efficient testing is only available in deploy jobs, not in continuous integration (CI) or merge jobs.
+
 ### Supported data tests
 
 The following tests can be reused when Efficient testing is enabled:
@@ -87,7 +89,7 @@ Before enabling Efficient testing, make sure you have configured [`static_analys
 To enable Efficient testing:
 
 1. From the main menu, go to **Orchestration** > **Jobs**. 
-2. Select your job. Go to your job settings and click **Edit**. 
+2. Select your deploy job. Go to your job settings and click **Edit**. 
 3. Under **Enable Fusion cost optimization features**, expand **More options**.
 4. Select **Efficient testing**. This feature is disabled by default.
 5. Click **Save**.
@@ -129,7 +131,7 @@ select * from joined
 
 - `unique` test: If `orders.order_id` and `customers.customer_id` are unique upstream, uniqueness of `order_id` is preserved and the upstream result can be reused. 
 
-### Limitation
+### Limitations
 
 The following section lists some considerations when using Efficient testing in state-aware-orchestration:
 
@@ -145,6 +147,8 @@ The following section lists some considerations when using Efficient testing in 
     store_failures: true | false
     where: <string>
   ```
+  
+ - **Efficient testing is available only in deploy jobs**. CI and merge jobs currently do not have the option to enable this feature. 
 
 ## Related FAQs
 

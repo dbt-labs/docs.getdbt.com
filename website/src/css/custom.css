@@ -386,7 +386,11 @@ h3 {
   padding-top: 2rem !important;
 }
 
-code {
+/* Inline code styling
+   IMPORTANT: Scoped to :not(pre) > code to prevent styling fenced code blocks.
+   Without this scope, inline code styles can briefly apply to code blocks if
+   Prism/CodeBlock CSS chunks load late during navigation, causing color/background flashes. */
+:not(pre) > code {
   border: none;
   background-color: rgba(246, 245, 255, 1);
   color: rgba(61, 24, 154, 1);
@@ -410,7 +414,7 @@ code {
   font-size: var(--text-sm);
 }
 
-a code {
+a > code {
   color: rgba(61, 24, 154, 1);
 }
 
@@ -461,6 +465,15 @@ ul.table-of-contents .hash-link::before {
 
 pre {
   font-size: 14px !important;
+}
+
+/* Code blocks: Ensure Prism token lines always render as block-level elements.
+   This prevents the "single unwrapped line" flash that can occur on first load or
+   client-side navigation when CodeBlock CSS chunks haven't loaded yet. */
+.theme-code-block .token-line,
+.prism-code .token-line,
+pre[class*="language-"] .token-line {
+  display: block;
 }
 
 a.code-link {

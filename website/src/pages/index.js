@@ -10,12 +10,6 @@ import Link from '@docusaurus/Link';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import StructuredData from '@site/src/components/StructuredData';
 
-const bannerAnimation = require('@site/static/img/banner-white.svg');
-
-function getBanner() {
-  return { __html: bannerAnimation };
-}
-
 function Home() {
   // Use same date formatting as in theme's BlogPostItem component
   const dateTimeFormat = useDateTimeFormat({
@@ -311,11 +305,6 @@ function Home() {
             </div>
           </section>
         </div>
-
-        <div
-          className="banner-animation"
-          dangerouslySetInnerHTML={getBanner()}
-        ></div>
       </Layout>
     </>
   );
