@@ -4,13 +4,12 @@ id: "introduction"
 description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
-intro_text: "dbt is the industry standard for data transformation. Learn how it can help you transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation."
+intro_text: "dbt transforms raw data in your warehouse into reliable data products. Write simple SQL select statements instead of complex transformation scripts, and dbt turns them into modular, maintainable data models that power analytics, operations, and AI."
 ---
 
- 
 <Snippet path="what-is-dbt-intro" />
 
-dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
+dbt brings software engineering best practices like version control, testing, modularity, CI/CD, and documentation to analytics workflows &mdash; helping teams build production-grade data pipelines backed by a 100,000+ member [community](/community/join). 
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
