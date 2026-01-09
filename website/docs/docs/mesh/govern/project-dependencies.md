@@ -9,6 +9,12 @@ keyword: dbt mesh, project dependencies, ref, cross project ref, project depende
 
 # Project dependencies <Lifecycle status='managed,managed_plus'/>
 
+<IntroText>
+
+Available on dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plans.
+
+</IntroText>
+
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
 While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
@@ -44,8 +50,10 @@ name: jaffle_marketing
 </File>
 
 As part of your modeling of marketing data, you need to take a dependency on two other projects:
-- `dbt_utils` as a [package](#packages-use-case): A collection of utility macros you can use while writing the SQL for your own models. This package is open-source public and maintained by dbt Labs.
-- `jaffle_finance` as a [project use-case](#projects-use-case): Data models about the Jaffle Shop's revenue. This project is private and maintained by your colleagues on the Finance team. You want to select from some of this project's final models, as a starting point for your own work.
+- `dbt_utils` as a package: A collection of utility macros you can use while writing the SQL for your own models. This package is open-source public and maintained by dbt Labs.
+- `jaffle_finance` as a project use case: Data models about the Jaffle Shop's revenue. This project is private and maintained by your colleagues on the Finance team. You want to select from some of this project's final models, as a starting point for your own work.
+
+Refer to [Use cases](/docs/mesh/govern/project-dependencies#use-cases) for information on package and project dependencies.
 
 <File name="dependencies.yml">
 

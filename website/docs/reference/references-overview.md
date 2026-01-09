@@ -23,7 +23,7 @@ Learn how to add more configurations to your dbt project or adapter, use propert
 <Card
     title="Platform-specific configurations"
     body="Learn how to optimize performance with data platform-specific configurations in dbt and dbt Core."
-    link="/reference/resource-configs/postgres-configs"
+    link="/reference/resource-configs/resource-configs"
     icon="computer"/>
 
 <Card

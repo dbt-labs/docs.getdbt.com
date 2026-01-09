@@ -11,7 +11,7 @@ datatype: hour | day | month | year
 
 ## Definition
 
-The `batch_size` config determines how large batches are when running a [microbatch incremental model](/docs/build/incremental-microbatch). Accepted values are `hour`, `day`, `month`, or `year`. You can configure `batch_size` for a [model](/docs/build/models) in your `dbt_project.yml` file, property YAML file, or config block.
+The `batch_size` config determines how large batches are when running a [microbatch incremental model](/docs/build/incremental-microbatch). Accepted values are `hour`, `day`, `month`, or `year`. You can configure `batch_size` for a [model](/docs/build/models) in your project YAML file (`dbt_project.yml`), properties YAML file, or config block.
 
 ## Examples
 
@@ -29,7 +29,7 @@ models:
 ```
 </File>
 
-Example in a properties YAML file:
+Example in a property file:
 
 <File name='models/properties.yml'>
 
@@ -42,7 +42,7 @@ models:
 
 </File>
 
-Example in SQL model config block:
+Example in a config block for a model:
 
 <File name="models/user_sessions.sql">
 

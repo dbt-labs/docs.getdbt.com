@@ -5,10 +5,16 @@ id: "freshness"
 ---
 # freshness <Lifecycle status="private_preview,managed,managed_plus" />
  
-<VersionCallout version="1.10" />
+<VersionBlock lastVersion="1.99">
+
+:::note Fusion only
+Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
+:::
+
+</VersionBlock>
 
 <Tabs>
-<TabItem value="yml" label="Project file">
+<TabItem value="project" label="Project YAML file">
 
 <File name="dbt_project.yml">
   
@@ -25,7 +31,7 @@ models:
 </File>
 </TabItem>
 
-<TabItem value="project" label="Model YAML">
+<TabItem value="property" label="Properties YAML file">
 
 <File name="models/<filename>.yml">
   
@@ -43,7 +49,7 @@ models:
 </File>
 </TabItem>
 
-<TabItem value="sql" label="Config block">
+<TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
   
 ```sql
@@ -63,12 +69,6 @@ models:
 </File>
 </TabItem>
 </Tabs>
-
-<VersionBlock lastVersion="1.9">
-
-This configuration is only available for the dbt Fusion engine.
-
-</VersionBlock>
 
 ## Definition
 
@@ -199,7 +199,7 @@ If you want to build every hour on just weekdays (Monday to Friday), you can use
 </File>
 </TabItem>
 
-<TabItem value="sql" label="Config block">
+<TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
   
 ```sql

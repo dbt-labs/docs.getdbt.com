@@ -10,12 +10,6 @@ import Link from '@docusaurus/Link';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import StructuredData from '@site/src/components/StructuredData';
 
-const bannerAnimation = require('@site/static/img/banner-white.svg');
-
-function getBanner() {
-  return { __html: bannerAnimation };
-}
-
 function Home() {
   // Use same date formatting as in theme's BlogPostItem component
   const dateTimeFormat = useDateTimeFormat({
@@ -193,7 +187,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide"
+                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
                   icon="dashboard"
                 />
                 <Card
@@ -311,11 +305,6 @@ function Home() {
             </div>
           </section>
         </div>
-
-        <div
-          className="banner-animation"
-          dangerouslySetInnerHTML={getBanner()}
-        ></div>
       </Layout>
     </>
   );

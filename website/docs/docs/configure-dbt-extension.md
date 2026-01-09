@@ -1,6 +1,6 @@
 ---
-title: "Configure your local setup"
-sidebar_label: "Configure your local setup"
+title: "Configure your local environment"
+sidebar_label: "Configure your local environment"
 id: "configure-dbt-extension"
 description: "Optimize your VS Code extension environment (files, env vars, connectivity)."
 ---
@@ -216,7 +216,7 @@ To configure environment variables in the terminal session:
 
 
 
-## Configure the dbt extension
+## dbt extension settings
 <!-- moved content from website/docs/docs/fusion/install-fusion-cli.md to here -->
 
 After installing the dbt extension and configuring your local setup, you may want to configure it to better fit your development workflow:

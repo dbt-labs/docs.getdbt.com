@@ -26,7 +26,7 @@ To use state-aware orchestration, make sure you meet these prerequisites:
 - You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
-- You must set up a [deployment environment](/docs/deploy/deploy-environments). 
+- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only. 
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
 
 :::info
@@ -152,7 +152,7 @@ To do this, she uses the model `freshness` config. This config helps state-aware
 
 Note that for every `freshness` config, you're required to set values for both `count` and `period`. This applies to all `freshness` types: `freshness.warn_after`, `freshness.error_after`, and `freshness.build_after`.
 
-Refer to the following samples for using the `freshness` config in the model file, in the project file, and in the `config` block of the `model.sql` file:
+Refer to the following examples for using the `freshness` config in the model file, in the project YAML file, and in the config block of the `model.sql` file:
 
 <Tabs>
 <TabItem value="project" label="Model YAML">
@@ -179,7 +179,7 @@ models:
 </File>
 
 </TabItem>
-<TabItem value="yml" label="Project file">
+<TabItem value="yml" label="Project YAML file">
 
 <File name="dbt_project.yml">
   
@@ -195,7 +195,7 @@ models:
 </File>
 
 </TabItem>
-<TabItem value="sql" label="Config block">
+<TabItem value="sql" label="SQL file config">
 
 <File name="models/<filename>.sql">
   
@@ -224,7 +224,7 @@ With this config, dbt:
 
 If any new data is available _and_ at least 4 hours have passed, <Constant name="cloud" /> rebuilds the models.
 
-You can override freshness rules set at higher levels in your dbt project. For example, in the project file, you set:
+You can override freshness rules set at higher levels in your dbt project. For example, in the project YAML file, you set:
 
 <File name="dbt_project.yml">
 ```yml

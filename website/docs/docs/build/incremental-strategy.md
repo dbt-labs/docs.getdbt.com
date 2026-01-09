@@ -22,7 +22,7 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on "Latest" and the feature hasn't been released to the "Compatible" track.  
+This table shows the support of each incremental strategy across adapters available on <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
 
 If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs/resource-configs) for more details.
 
@@ -37,7 +37,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |    |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         | ✅  |    |    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 

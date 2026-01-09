@@ -15,7 +15,7 @@ Saved queries serve as the foundational building block, allowing you to [configu
 To create a saved query, refer to the following table parameters.
 
 :::tip
-Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
+Note that we use dot notation (`.`) to indicate whether a parameter is nested within another parameter. For example, `query_params.metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
 <!-- For versions 1.9 and higher -->
@@ -27,19 +27,19 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `description`     | String      | Required     | A description of the saved query.     |
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
 | `config`     | String      |  Optional     |  Use the [`config`](/reference/resource-properties/config) property to specify configurations for your saved query. Supports `cache`, [`enabled`](/reference/resource-configs/enabled), `export_as`, [`group`](/reference/resource-configs/group), [`meta`](/reference/resource-configs/meta), [`tags`](/reference/resource-configs/tags), and [`schema`](/reference/resource-configs/schema)  configurations.   |
-| `config::cache::enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
+| `config.cache.enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
 | `limit`     | Integer    | Optional     |  The maximum number of rows to return. |
 | `order_by`  | String     | Optional     |  The metrics and group bys to order the query by. |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
-| `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
-| `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
+| `query_params.metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
+| `query_params.group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
+| `query_params.where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
 | `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
-| `exports::name`       | String               | Required     | Name of the export object.      |
-| `exports::config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export.  |
-| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
-| `exports::config::schema`   | String   | Optional    | The [schema](/reference/resource-configs/schema) for creating the table or view. This option cannot be used for caching.   |
-| `exports::config::alias`  | String     | Optional    | The table [alias](/reference/resource-configs/alias) used to write to the table or view.  This option cannot be used for caching.  | 
+| `exports.name`       | String               | Required     | Name of the export object.      |
+| `exports.config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export.  |
+| `exports.config.export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
+| `exports.config.schema`   | String   | Optional    | The [schema](/reference/resource-configs/schema) for creating the table or view. This option cannot be used for caching.   |
+| `exports.config.alias`  | String     | Optional    | The table [alias](/reference/resource-configs/alias) used to write to the table or view.  This option cannot be used for caching.  | 
 
 </VersionBlock>
 

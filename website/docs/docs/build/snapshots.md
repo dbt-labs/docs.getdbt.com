@@ -93,7 +93,7 @@ The following table outlines the configurations available for snapshots:
 
 To add a snapshot to your project follow these steps. For users on versions 1.8 and earlier, refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy). 
 
-1. Create a YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your `dbt_project.yml` file ([docs](/reference/snapshot-configs)).
+1. Create a properties YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your project YAML file (`dbt_project.yml`) ([docs](/reference/snapshot-configs)).
 
     <File name='snapshots/orders_snapshot.yml'>
 
@@ -383,7 +383,7 @@ The resulting table will look like this:
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-In <Constant name="core" /> v1.9+ (or available sooner in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
+In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.

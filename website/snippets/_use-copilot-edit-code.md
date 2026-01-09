@@ -1,4 +1,4 @@
-<Constant name="copilot" /> also allows you to generate SQL code directly within the SQL file in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), using natural language prompts. This means you can rewrite or add specific portions of the SQL file without needing to edit the entire file. 
+<Constant name="copilot" /> also allows you to generate SQL code directly within the SQL file in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), using natural language prompts. This means you can rewrite or add specific portions of the SQL file without needing to edit the entire file. 
 
 This intelligent AI tool streamlines SQL development by reducing errors, scaling effortlessly with complexity, and saving valuable time. <Constant name="copilot" />'s [prompt window](#use-the-prompt-window), accessible by keyboard shortcut, handles repetitive or complex SQL generation effortlessly so you can focus on high-level tasks. 
 

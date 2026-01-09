@@ -26,7 +26,12 @@ The currently available supported features for SCIM are:
 - Group creation and management
 - Importing groups and users
 
-When users are managed by SCIM, functionality like applying default groups and inviting users manually will be disabled by default. 
+When SCIM is enabled, the following functionality will change: 
+- Users are not automatically added to default groups
+- Manual actions such as inviting users, updating user information and updating group memberships are disabled by default
+- SSO group mappings are disabled in favor of SCIM group management
+
+To overwrite these updates to functionality with SCIM enabled, enable manual updates as part of the SCIM configuration (not recommended). 
 
 When users are provisioned, the following attributes are supported
 - Username
@@ -77,6 +82,7 @@ Please complete the [setup SSO with Okta](/docs/cloud/manage-access/set-up-sso-o
     - Push New Users
     - Push Profile Updates
     - Push Groups
+    - Import New Users and Profile Updates  (Optional for users created before SSO/SCIM setup)
 6. From the **Authentication mode** dropdown, select **HTTP Header**.
 7. In the **Authorization** section, paste the token from <Constant name="cloud" /> into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />

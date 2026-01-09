@@ -32,7 +32,7 @@ This quickstart guide will get you from zero to running your first dbt project w
 | Environment | How to use <Constant name="fusion" /> |
 |--------------|-------------------|
 | **<Constant name="cloud_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine). |
-| **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/fusion/install-fusion) locally following this guide. |
+| **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/fusion/install-fusion-cli) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
 To learn more about which tool is best for you, see the [Fusion availability](/docs/fusion/fusion-availability) page. To learn about the <Constant name="fusion_engine" /> and how it works, read more [about the dbt Fusion engine](/docs/fusion/about-fusion).
@@ -68,7 +68,7 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 - You *cannot* use the dbt extension without <Constant name="fusion" /> installed.
 :::
 
-The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/fusion/install-fusion) and [extension](/docs/install-dbt-extension) installation guides:
+The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/fusion/install-fusion-cli) and [extension](/docs/install-dbt-extension) installation guides:
 
 <Tabs queryString="installation">
 <TabItem value="mac-linux" label="macOS & Linux">

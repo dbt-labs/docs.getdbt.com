@@ -12,7 +12,7 @@ The following tips are organized into the following categories:
 - [Package tips](#package-tips) to help you streamline your workflow.
 - [Advanced tips and techniques](#advanced-tips-and-techniques) to help you get the most out of dbt.
 
-If you're developing with the <Constant name="cloud_ide" />, you can refer to the [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
+If you're developing with the <Constant name="cloud_ide" />, you can refer to the [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
 
 ## YAML tips
 

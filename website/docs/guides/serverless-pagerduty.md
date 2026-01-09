@@ -20,7 +20,7 @@ This guide will teach you how to build and host a basic Python app which will mo
 
 ![Screenshot of the PagerDuty UI, showing an alarm created by invalid SQL in a dbt model](/img/guides/orchestration/webhooks/serverless-pagerduty/pagerduty-example-alarm.png)
 
-In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
+In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://ademoverflow.com/en/posts/tutorial-fastapi-aws-lambda-serverless/) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
 ### Prerequisites
 

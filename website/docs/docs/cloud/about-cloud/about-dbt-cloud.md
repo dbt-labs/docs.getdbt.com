@@ -25,7 +25,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <Card
     title="dbt Studio IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
+    link="/docs/cloud/studio-ide/develop-in-studio"
     icon="dbt-bit"/>
 
 <Card
@@ -126,4 +126,4 @@ In addition to providing a hosted architecture for running dbt across your organ
 
 - [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)

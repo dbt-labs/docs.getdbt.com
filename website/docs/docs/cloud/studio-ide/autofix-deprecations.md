@@ -30,4 +30,4 @@ To find and fix deprecations:
 
 - [Quickstart guide](/guides)
 - [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/studio-ide/develop-in-studio)

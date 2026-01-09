@@ -8,6 +8,11 @@ import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
 </Expandable>
 
+<Expandable alt_header="I can't see the lineage tab in Cursor">
+
+If you're using the dbt VS Code extension in Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
+</Expandable>
+
 <Expandable  alt_header="dbt platform configurations">
 
 If you're a cloud-based dbt platform user who has the `dbt-cloud:` config in the `dbt_project.yml` file and are also using dbt Mesh, you must have the project ID configured:
