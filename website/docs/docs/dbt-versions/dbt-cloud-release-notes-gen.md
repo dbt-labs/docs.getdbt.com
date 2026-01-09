@@ -17,6 +17,11 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+
+## January 7, 2026
+
+No changes of note this week.
+
 ## December 24, 2025
 
 ### New

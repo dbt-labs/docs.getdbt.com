@@ -14,11 +14,12 @@ const sidebarSettings = {
       items: [
         "docs/fusion/fusion",
         "docs/fusion/about-fusion",
+        "docs/fusion/get-started-fusion",
         "docs/fusion/fusion-availability",
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/get-started-fusion",
+        "docs/fusion/telemetry",
       ],
     },
     {
@@ -932,6 +933,7 @@ const sidebarSettings = {
         "docs/dbt-versions/dbt-cloud-release-notes",
         "docs/dbt-versions/dbt-cloud-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
+        "docs/dbt-versions/2025-release-notes",
         "docs/dbt-versions/2024-release-notes",
         "docs/dbt-versions/2023-release-notes",
         "docs/dbt-versions/2022-release-notes",

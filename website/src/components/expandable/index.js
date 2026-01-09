@@ -64,10 +64,22 @@ function Expandable({ children, alt_header = null, lifecycle, is_open = false })
 
   // Auto-expand when linked via hash (URL fragment)
   useEffect(() => {
-    if (window.location.hash === `#${anchorId}`) {
-      setIsOpen(true);
-      detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+    const checkHash = () => {
+      if (window.location.hash === `#${anchorId}`) {
+        setIsOpen(true);
+        detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    // Check on mount
+    checkHash();
+
+    // Listen for hash changes (for anchor links on the same page)
+    window.addEventListener('hashchange', checkHash);
+
+    return () => {
+      window.removeEventListener('hashchange', checkHash);
+    };
   }, [anchorId]);
 
   // Observe search highlight and auto-expand
