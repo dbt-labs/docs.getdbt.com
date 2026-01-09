@@ -118,7 +118,7 @@ select * from joined
 
 - `unique` test: If `orders.order_id` and `customers.customer_id` are unique upstream, uniqueness of `order_id` is preserved and the upstream result can be reused. 
 
-### Limitation
+### Limitations
 
 The following section lists some considerations when using Efficient testing in state-aware-orchestration:
 
