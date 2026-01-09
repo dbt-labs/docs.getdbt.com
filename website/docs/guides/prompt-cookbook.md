@@ -13,7 +13,7 @@ level: 'Beginner'
 ## Overview
 
 <IntroText>
-Learn how to write effective prompts for dbt Copilot to generate accurate SQL, models, metrics, and macros. Each recipe is self-contained with its own realistic example.
+Learn how to write effective prompts for dbt <Constant name="copilot" /> to generate accurate SQL, models, metrics, and macros. Each recipe is self-contained with its own realistic example.
 </IntroText>
 
 dbt <Constant name="copilot" /> is an AI assistant that generates SQL, YAML, documentation, tests, semantic models, and macros based on your project's context. The quality of output depends on the clarity of your prompts.
@@ -32,7 +32,7 @@ This cookbook covers the following topics:
 
 ## Prompt best practices
 
-Writing effective prompts is about giving Copilot the right context and clear direction. Follow these principles:
+Writing effective prompts is about giving <Constant name="copilot" /> the right context and clear direction. Follow these principles:
 - [Provide rich context](#1-provide-rich-context)
 - [State the business question, not just the output](#state-the-business-question-not-just-the-output)
 - [Be clear and explicit about the result](#be-clear-and-explicit-about-the-result)
@@ -143,10 +143,10 @@ Finally, join to subscription data and group by plan tier.
 We recommend you avoid asking for everything at once. You can always iterate on your prompt to get better results.
 
 ## Generate SQL queries
-
+<!--idk about this section, might want to tweak-->
 **Use case:** Build a customers model for an e-commerce platform.
 
-**What to give Copilot:**
+**What to give <Constant name="copilot" />:**
 
 ```text
 Context:
@@ -180,13 +180,13 @@ Sort: total_revenue descending
 ```
 
 **Why it works:**
-You're giving Copilot a clear map of how data connects, what values to expect, and what decision this supports.
+You're giving <Constant name="copilot" /> a clear map of how data connects, what values to expect, and what decision this supports.
 
-**Pro tip:** Start simple, then iterate. If Copilot's first attempt isn't perfect, refine your prompt with more specific details.
+**Pro tip:** Start simple, then iterate. If <Constant name="copilot" />'s first attempt isn't perfect, refine your prompt with more specific details.
 
 ## Use what you already have
 
-You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps Copilot understand your specific business context.
+You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="copilot" /> understand your specific business context.
 
 ### Define your business rules
 
@@ -201,7 +201,7 @@ Net revenue = gross sales minus discounts and returns
 
 ### Show sample values
 
-Give Copilot examples of what the data actually looks like, especially edge cases:
+Give <Constant name="copilot" /> examples of what the data actually looks like, especially edge cases:
 
 ```text
 Order statuses:
@@ -228,7 +228,7 @@ on customer_id. Filter to the last 30 days for preview only.
 
 **Use case:** Fast-track your semantic layer strategy with AI-generated YAML.
 
-**What to give Copilot:**
+**What to give <Constant name="copilot" />:**
 
 ```text
 Create a semantic model for order revenue tracking.
@@ -251,14 +251,14 @@ Requirements:
 Return valid YAML with descriptions.
 ```
 
-**What Copilot generates:**
+**What <Constant name="copilot" /> generates:**
 
 - Valid semantic model YAML structure
 - Properly defined entities, dimensions, and metrics
 - Time dimension with multiple grains
 - Metric definitions
 
-**Pro tip:** Use Copilot to reduce time spent writing boilerplate YAML. It leverages context from common metrics and dimensions across projects to ensure consistency.
+**Pro tip:** Use <Constant name="copilot" /> to reduce time spent writing boilerplate YAML. It leverages context from common metrics and dimensions across projects to ensure consistency.
 
 ## Create reusable macros
 
@@ -272,7 +272,7 @@ In this section, we'll look at how to create reusable macros using <Constant nam
 
 A junior analyst keeps copy-pasting CASE statements across models.
 
-**What to give Copilot:**
+**What to give <Constant name="copilot" />:**
 
 ```text
 Turn this CASE pattern into a reusable macro:
@@ -296,7 +296,7 @@ Macro requirements:
 
 **Scenario:** You need a macro but don't know Jinja syntax well.
 
-**What to ask Copilot:**
+**What to ask <Constant name="copilot" />:**
 
 ```text
 I need a macro that calculates the number of days between two date columns, 
@@ -309,13 +309,13 @@ Parameters:
 Include a docstring explaining how to use it.
 ```
 
-**Outcome:** Copilot generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
+**Outcome:** <Constant name="copilot" /> generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
 
 ### Accelerate complex logic design
 
 This is best for advanced users who are comfortable with Jinja.
 
-**What to ask Copilot:**
+**What to ask <Constant name="copilot" />:**
 
 ```text
 I need a macro that builds a grouped aggregation with optional filters.
@@ -332,26 +332,19 @@ Add a docstring with parameter descriptions and usage example.
 
 ## Troubleshoot errors and issues
 
-Copilot acts as a fast, context-aware reviewer for failing SQL and macros. It reads errors, inspects your query structure, and suggests minimal fixes.
+<Constant name="copilot" /> acts as a fast, context-aware reviewer for failing SQL and macros. It reads errors, inspects your query structure, and suggests minimal fixes. Troubleshooting with <Constant name="copilot" /> gives you:
 
-### Why troubleshoot with Copilot?
+- Faster diagnosis by using plain-language translation of errors with likely root causes
+- Safer fixes by biasing toward small, targeted changes
+- Better learning by generating explanations you can paste into docs or PR descriptions
 
-- **Faster diagnosis:** Plain-language translation of errors with likely root causes
-- **Safer fixes:** Bias toward small, targeted changes
-- **Better learning:** Generates explanations you can paste into docs or PR descriptions
+### Troubleshoot errors
 
-### Troubleshoot SQL errors
+When something breaks, give <Constant name="copilot" /> the error message, your code, and what you expected to happen. Here are a couple of examples to show you how to use <Constant name="copilot" /> to troubleshoot errors.
 
-**Step 1: Decode errors and ambiguity**
-
-Error text is a clue, not the crime. Pair the message with the context that produced it.
-
-**What to give Copilot:**
+**Example: SQL error**
 
 ```text
-Here's the failing SQL, the exact warehouse error, and which line it points to. 
-Explain in plain terms and propose the smallest fix.
-
 Error: "SQL compilation error: Column 'product_name' must appear in GROUP BY"
 
 Query:
@@ -363,150 +356,28 @@ FROM inventory
 GROUP BY product_id
 
 Warehouse: Snowflake
-What's wrong?
+Expected: Group by product and show product name. What's wrong and how do I fix it?
 ```
 
-**What Copilot provides:**
-
-- Plain-language explanation
-- Minimal fix
-- Why it works
-
-**Step 2: Align assumptions with current schema**
-
-Queries encode assumptions. When the schema shifts, assumptions need a tune-up.
-
-**What to give Copilot:**
+**Example: Macro not working**
 
 ```text
-The discount_amount column now contains NULLs (was always populated before).
+This macro should calculate discount but returns wrong values:
 
-My calculation breaks:
-net_revenue = gross_revenue - discount_amount
-
-Error: "Invalid argument types for function '-'"
-
-What assumptions broke? What guardrails should I add?
-```
-
-**What Copilot provides:**
-
-- Broken assumption identified (assumed non-null)
-- Fix using `coalesce(discount_amount, 0)`
-- Additional safety checks (data tests, documentation)
-
-**Step 3: Reproduce with a minimal example**
-
-Shrink the surface area. If you can break it down, you can fix it fast.
-
-**What to give Copilot:**
-
-```text
-Create a reduced query using 5-10 sample rows that still triggers the error. 
-Keep columns only if they influence the failure.
-
-Sample data that breaks:
-| order_id | customer_id | amount  | discount |
-|----------|-------------|---------|----------|
-| 1001     | 501         | 100.00  | NULL     |
-| 1002     | NULL        | 150.00  | 10.00    |
-
-Failed query calculates net_amount = amount - discount
-```
-
-**What Copilot provides:**
-
-- Minimal reproduction using VALUES clause
-- Root cause analysis
-- Recommended fixes with NULL handling
-
-### Troubleshoot macros
-
-**Step 1: Validate parameters and defaults**
-
-Most macro bugs start with assumptions about inputs.
-
-**What to give Copilot:**
-
-```text
-List required vs optional parameters. 
-Suggest sensible defaults, type checks, and early error messages. 
-Propose guards for empty lists and nulls.
-
-Macro:
 {% macro calculate_discount(amount, rate) %}
   {{ amount }} * {{ rate }}
 {% endmacro %}
+
+When I call {{ calculate_discount(100, 0.1) }} I expect 10 but get an error.
+Show me the rendered SQL from target/compiled and explain what's wrong.
 ```
 
-**What Copilot provides:**
-
-- Parameter validation suggestions
-- Default values
-- Null/empty guards
-
-**Step 2: Confirm what was actually rendered**
-
-Compare intent to the SQL your macro produced.
-
-**What to give Copilot:**
-
-```text
-Here's the macro and the rendered SQL side-by-side. 
-Highlight where the SQL diverges from the intended parameters.
-
-Macro call: {{ my_macro('order_date', 'ship_date') }}
-
-Rendered SQL: (check target/compiled)
-...paste rendered SQL here...
-
-Expected behavior: Should calculate days between dates, but getting wrong result
-```
-
-**What Copilot provides:**
-
-- Side-by-side comparison
-- Identifies where macro logic diverges
-- Minimal fix to align output with intent
-
-**Step 3: Sanitize identifiers, quoting, and whitespace**
-
-Jinja often fails quietly when quoting or spacing is off.
-
-**What to give Copilot:**
-
-```text
-Review identifier quoting, string quoting, and whitespace in this macro.
-Replace brittle concatenation with safer helpers.
-
-{% macro filter_by_status(column, status) %}
-  where {{ column }} = '{{ status }}'
-{% endmacro %}
-
-Warehouse: Snowflake (case-sensitive identifiers)
-```
-
-**What Copilot provides:**
-
-- Quoting fixes
-- Whitespace corrections
-- Recommendations for using adapter.quote() or other built-in helpers
-
-**Step 4: Make logic testable and documented**
-
-Fix the bug, then add bumpers so it doesn't return.
-
-**What to give Copilot:**
-
-```text
-After the minimal code change, draft a docstring with parameter descriptions, 
-a usage example, and propose two tests: one success case, one edge case.
-```
+**Tip:** Include your warehouse type (Snowflake, BigQuery, Databricks and so on.) &mdash; this is because the syntax can vary across data platforms.
 
 ## Conclusion
 
 <ConfettiTrigger>
-You've now learned how to use dbt Copilot as your AI co-pilot. You can:
+You've now learned how to use dbt <Constant name="copilot" /> as your AI co-pilot. You can:
 
 - **Master SQL prompting** by providing rich context and stating clear business questions
 - **Amplify your workflow** by leveraging existing documentation and project context
@@ -515,7 +386,7 @@ You've now learned how to use dbt Copilot as your AI co-pilot. You can:
 
 ### Quick reference checklist
 
-When writing prompts for dbt Copilot:
+When writing prompts for dbt <Constant name="copilot" />:
 
 - ✅ **Provide rich context**: Table names, columns, data types, relationships, sample values
 - ✅ **State the business question**: What decision or insight you're supporting, not just "write a query"
@@ -530,8 +401,8 @@ For troubleshooting:
 - ✅ **State your warehouse**: Snowflake, BigQuery, Databricks, etc.
 
 ### Next steps
-
-Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. The more you use Copilot, the more you'll discover ways to accelerate your analytics engineering workflow.
+<!--add links-->
+Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. The more you use <Constant name="copilot" />, the more you'll discover ways to accelerate your analytics engineering workflow.
 
 </ConfettiTrigger>
 </div>
