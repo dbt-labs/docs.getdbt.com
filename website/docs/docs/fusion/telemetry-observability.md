@@ -71,7 +71,9 @@ The `trace_id` (also known as `invocation_id`) remains consistent across all tel
 
 ## Node outcome
 
-Every node produces a result for each phase it participates in. The `node_outcome` field indicates whether or not <Constant name="fusion" /> executed the node's operation. 
+Every node produces a result for each phase it participates in. Some phases, such as `parse`, don't involve node-level execution, so they don't produce node spans or node outcomes.
+
+ The `node_outcome` field indicates whether or not <Constant name="fusion" /> executed the node's operation. 
 
 | Outcome    | Description                                                    |
 | ---------- | -------------------------------------------------------------- |
