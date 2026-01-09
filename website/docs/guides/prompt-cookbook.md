@@ -32,33 +32,54 @@ This cookbook covers the following topics:
 
 ## Prompt best practices
 
-Writing effective prompts is about giving Copilot the right context and clear direction. Follow these three principles:
+Writing effective prompts is about giving Copilot the right context and clear direction. Follow these principles:
+- [Provide rich context](#1-provide-rich-context)
+- [State the business question, not just the output](#state-the-business-question-not-just-the-output)
+- [Be clear and explicit about the result](#be-clear-and-explicit-about-the-result)
+- [Break complex logic into smaller steps](#break-complex-logic-into-smaller-steps)
 
-### 1. Provide rich context
+### Provide rich context
 
-Include table names, column types, and example values. Describe how they relate to each other.
+In your prompt, include table names, column types, and example values to describe how they relate to each other.
 
-**What to include:**
+Include the following:
 
-- Table relationships (e.g., orders joins to customers on customer_id)
-- Data types (e.g., created_at is a timestamp)
-- Sample values (e.g., status is a string with values like "active" or "pending")
+- Table relationships (such as `orders` joins to `customers` on `customer_id`)
+- Data types (such as `created_at` is a timestamp)
+- Sample values (such as `status` is a string with values like "active" or "pending")
 
-**Example:** Coffee Shop Punch Card
+**Example: Santi's neighborhood café**
 
-You run a neighborhood café. Folks get a free drink after 10 visits.
+Let's say you run a neighborhood café and folks get a free drink after 10 visits:
 
+**Without rich context** (vague):
 ```text
-We've got customers, their subscriptions, and their app activity. 
-Customers connect to subscriptions, and activity shows what they do week to week.
-
-Help me see weekly regulars and which punch-card folks become subscribers 
-to our 'Beans of the Month.'
+I need a query using customers, subscriptions, and activity tables to see weekly regulars.
 ```
 
-**Why it works:** Clear people, clear behavior, clear relationship. Copilot knows what to count and how to connect it.
+**With rich context** (specific):
 
-### 2. State the business question, not just the output
+```text
+Context: I run a café loyalty program where customers earn a free drink after 10 visits.
+
+Tables and relationships:
+
+- customers (customer_id INT or integer, name STRING, email STRING, signup_date TIMESTAMP)
+- subscriptions (subscription_id INT, customer_id INT, plan_type STRING, start_date DATE, end_date DATE)
+  - Joins to customers on customer_id
+  - plan_type values: "monthly", "annual", null for non-subscribers
+- activity (activity_id INT, customer_id INT, visit_date DATE, visit_count INT)
+  - Joins to customers on customer_id
+  - visit_count tracks cumulative visits (resets after redemption)
+
+Business question: Show me which customers visit weekly (3+ times per week for 4+ weeks) 
+and compare conversion rates: do high-frequency punch-card users convert to our 
+'beans of the month' subscription at a higher rate than casual visitors?
+```
+
+**Why it works:** The AI now knows exact data types, how tables relate, what values to expect, and the specific business logic (3+ visits/week defines "regulars").
+
+### State the business question, not just the output
 
 Describe the decision or insight the query supports. Avoid purely technical prompts.
 
@@ -66,33 +87,35 @@ Describe the decision or insight the query supports. Avoid purely technical prom
 
 **Say:** "Count active users per week to analyze engagement trends"
 
-**Example:** The Sneaker Drop
+**Example: The sneaker drop**
 
-You run an online sneaker shop with a new limited-time drop.
+Let's say you run an online sneaker shop and just launched a new feature: customers can view 3D previews of sneakers before buying.
 
 ```text
-We launched a 14-day trial. Did it lift weekly engagement and upgrades? 
-If yes, we'll scale it. If not, we'll tweak the message.
+We launched a 3D preview feature with our latest limited-edition sneaker drop. 
+Did customers who used the 3D preview convert to buyers at a higher rate than 
+those who only saw photos?
 
-Show me weekly browsers who became buyers, and whether trying the 3D preview 
-led to more purchases.
+Show me weekly conversion rates: browsers who became buyers, segmented by whether 
+they used the 3D preview. If preview users convert 20%+ higher, we'll add 3D 
+to all products. If not, we'll improve the feature before expanding.
 ```
 
-**Why it works:** You've described the moment, the behavior, and the decision: keep the 3D preview or not.
+**Why it works:** You've described the feature, the behavior you're measuring, specific success criteria (20%+ lift), and the decision you'll make based on results.
 
-### 3. Be clear and explicit about the result
+### Be clear and explicit about the result
 
 Define the expected output clearly. Mention the expected columns in the final result and state whether results should be sorted, limited, or filtered.
 
 **What to specify:**
 
 - Expected column names and formats
-- Sort order and any limits (e.g., "top 10 products by revenue")
-- Output format examples (e.g., "conversion_rate as a percentage")
+- Sort order and any limits (for example, "top 10 products by revenue")
+- Output format examples (for example, "`conversion_rate` as a percentage")
 
-**Example:** The Fitness Challenge
+**Example: The fitness challenge**
 
-You run a fitness app with a 2-week challenge.
+In this example, you run a fitness app with a 2-week challenge, Kimiko's kettlebell challenge.
 
 ```text
 Give me a weekly trend with the date, active folks, and a simple 'engagement per person.' 
@@ -117,7 +140,7 @@ Then, calculate their average session duration.
 Finally, join to subscription data and group by plan tier.
 ```
 
-Avoid asking for everything at once—iterative prompting yields better results.
+We recommend you avoid asking for everything at once. You can always iterate on your prompt to get better results.
 
 ## Generate SQL queries
 
@@ -161,68 +184,45 @@ You're giving Copilot a clear map of how data connects, what values to expect, a
 
 **Pro tip:** Start simple, then iterate. If Copilot's first attempt isn't perfect, refine your prompt with more specific details.
 
-## Leveraging external assets
+## Use what you already have
 
-When you have existing documentation, sample data, or business logic definitions, bring them into your prompts. This helps Copilot understand your specific context.
+You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps Copilot understand your specific business context.
 
-### Surface business logic and transformations
+### Define your business rules
 
-**Concept:** An "active customer" badge is not a metric definition. The rule behind it is.
-
-**What to give Copilot:**
+Instead of just saying "active customer," explain the rule:
 
 ```text
-Active customer means at least one paid purchase in the last 90 days, excluding refunds. 
-Net revenue = gross minus discounts and returns.
+Active customer = at least one paid purchase in the last 90 days, excluding refunds
+Net revenue = gross sales minus discounts and returns
 ```
 
-**External assets to reference:**
+**Pull from:** Metrics glossaries, KPI catalogs, product requirement docs, data dictionaries
 
-- Metrics glossary or KPI catalog from your wiki
-- Product requirement docs with business rules
-- Data dictionaries with field definitions
+### Show sample values
 
-### Include relevant sample data
-
-Small, representative slices of data illustrate edge cases without overwhelming the prompt.
-
-**What to give Copilot:**
+Give Copilot examples of what the data actually looks like, especially edge cases:
 
 ```text
-Sample order statuses we need to handle:
-- 'completed': Paid and fulfilled
-- 'pending': Awaiting payment
-- 'cancelled': Customer cancelled before shipping
-- 'returned': Delivered but customer returned
+Order statuses:
+- `customer_id: C-12, created_at: 2025-05-03T090:07:00Z, status: 'completed'`
+- `customer_id: C-14, created_at: 2025-05-03T09:02:00Z, status: 'cancelled'`
+- `customer_id: C-13, created_at: 2020-01-02T06:40:00Z, status: 'pending'`
 ```
 
-**External assets to reference:**
+**Pull from:** Data profiling reports, QA test datasets, BI dashboard filters
 
-- Data profiling reports showing value distributions
-- QA test datasets with edge cases
-- BI dashboard filters and their definitions
+### Start with a draft, refine later
 
-### Capture dependencies and lineage
-
-Source-to-target mappings and upstream model references guide join logic.
-
-**What to give Copilot:**
+Frame your model first, then iterate. Start with a clean outline that gets the basic structure right:
 
 ```text
-This model depends on:
-- {{ ref('stg_orders') }} - raw order data, deduplicated
-- {{ ref('stg_customers') }} - customer master data
-- {{ ref('dim_products') }} - product catalog with current prices
-
-Join orders to customers on customer_id (inner join, every order must have a customer).
-Join orders to products on product_id (left join, some orders have deleted products).
+From stg_orders and dim_customers, draft a minimal model with order_id, customer_id, 
+order_date, net_revenue = gross - coalesce(discount, 0), and join to dim_customers 
+on customer_id. Filter to the last 30 days for preview only.
 ```
 
-**External assets to reference:**
-
-- dbt lineage graphs or documentation
-- Data warehouse ERD diagrams
-- Data flow documentation
+**Pull from:** Source-to-target mapping sheets (join keys and transformations), data dictionaries (primary and foreign keys)
 
 ## Create semantic models and metrics
 
@@ -244,7 +244,7 @@ Available columns:
 
 Requirements:
 - Entity: customer
-- Measures: total_revenue (sum of order_amount), order_count
+- Calculate: total_revenue (sum of order_amount) and order_count
 - Dimensions: region, order_date as metric_time (support day, week, month)
 - Metric: monthly_revenue (total revenue by month)
 
@@ -254,7 +254,7 @@ Return valid YAML with descriptions.
 **What Copilot generates:**
 
 - Valid semantic model YAML structure
-- Properly defined entities, measures, and dimensions
+- Properly defined entities, dimensions, and metrics
 - Time dimension with multiple grains
 - Metric definitions
 
@@ -262,7 +262,13 @@ Return valid YAML with descriptions.
 
 ## Create reusable macros
 
-### Use case 1: Turn repetitive code into reusable logic
+In this section, we'll look at how to create reusable macros using <Constant name="copilot" />.
+
+- [Turn repetitive code into reusable logic](#turn-repetitive-code-into-reusable-logic)
+- [Lower the barrier to entry](#lower-the-barrier-to-entry)
+- [Accelerate complex logic design](#accelerate-complex-logic-design)
+
+### Turn repetitive code into reusable logic
 
 A junior analyst keeps copy-pasting CASE statements across models.
 
@@ -286,7 +292,7 @@ Macro requirements:
 
 **Why it works:** Clear input (the CASE statement), clear requirements, clear output expectations.
 
-### Use case 2: Lower the barrier to entry
+### Lower the barrier to entry
 
 **Scenario:** You need a macro but don't know Jinja syntax well.
 
@@ -305,7 +311,9 @@ Include a docstring explaining how to use it.
 
 **Outcome:** Copilot generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
 
-### Use case 3: Accelerate complex logic design (for advanced users)
+### Accelerate complex logic design
+
+This is best for advanced users who are comfortable with Jinja.
 
 **What to ask Copilot:**
 
@@ -321,10 +329,6 @@ Parameters:
 Include defaults and guardrails for empty lists.
 Add a docstring with parameter descriptions and usage example.
 ```
-
-**Think of it like:** Writer's room sprint. You pitch the premise, Copilot drafts the scene beats.
-
-**Pro tip:** After generating the macro, ask Copilot to add usage examples and document edge cases. This makes it easier for your team to adopt.
 
 ## Troubleshoot errors and issues
 
