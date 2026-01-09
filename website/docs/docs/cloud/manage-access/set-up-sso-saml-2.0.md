@@ -111,7 +111,7 @@ them to complete setup in <Constant name="cloud" />.
 
 ### Finish setup
 
-After creating the application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+After creating the application, follow the instructions in the [<Constant name="cloud" /> setup](#dbt-setup)
 section to complete the integration.
 
 ## Okta integration
@@ -233,7 +233,7 @@ the integration between Okta and <Constant name="cloud" />.
     title="Application setup instructions"
 />
 
-3. After creating the Okta application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+3. After creating the Okta application, follow the instructions in the [<Constant name="cloud" /> setup](#dbt-setup)
 section to complete the integration.
 
 ## Google integration
@@ -299,7 +299,7 @@ Expected **Attributes**:
 
 ### Finish setup
 
-After creating the Google application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+After creating the Google application, follow the instructions in the [<Constant name="cloud" /> setup](#dbt-setup)
 
 ## Microsoft Entra ID (formerly Azure AD) integration
 
@@ -368,7 +368,7 @@ From the Set up Single Sign-On with SAML page:
 
 ### Finish setup
 
-9. After creating the Azure application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in <Constant name="cloud" /> vary from those in the Entra ID app. They're mapped as follows:
+9. After creating the Azure application, follow the instructions in the [<Constant name="cloud" /> setup](#dbt-setup) section to complete the integration. The names for fields in <Constant name="cloud" /> vary from those in the Entra ID app. They're mapped as follows:
 
    | <Constant name="cloud" /> field | Corresponding Entra ID field |
    | ----- | ----- |
@@ -458,10 +458,10 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 
 ### Finish setup
 
-6. After creating the OneLogin application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+6. After creating the OneLogin application, follow the instructions in the [<Constant name="cloud" /> setup](#dbt-setup)
 section to complete the integration.
 
-## dbt Setup
+## dbt setup
 
 ### Providing IdP values to dbt
 
