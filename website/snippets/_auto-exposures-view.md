@@ -18,7 +18,7 @@ View downstream exposures from the **Exposures** menu item under **Resources**. 
    - **Owner email**: The email address of the owner of the exposure.
    - **Integration**: The BI tool that the exposure is integrated with.
    - **Exposure mode**: The type of exposure defined: **Auto** or **Manual**.
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-view-resources.jpg" width="120%" title="View from the dbt Catalog under the 'Resources' menu."/>
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-view-resources.png" width="120%" title="View from the dbt Catalog under the project menu."/>
 
 ### File tree
 Locate directly from within the **File tree** under the **imported_from_tableau** sub-folder. This view integrates exposures seamlessly with your project files, making it easy to find and reference them from your project's structure.
