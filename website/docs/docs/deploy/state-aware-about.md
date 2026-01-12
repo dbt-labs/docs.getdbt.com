@@ -49,7 +49,7 @@ Under state-aware orchestration, all jobs read and write from the same shared st
 What happens when jobs overlap:
 
 - If both jobs reach the same model at exactly the same time, one job waits until the other finishes. This is to prevent collisions in the data warehouse when two jobs try to build the same model at the same time.
-- After the first job finishes, the second job still checks whether a rebuild for the model is needed. The job may choose to reuse the existing result or perform another build, depending on changes detected.
+- After the first job finishes building the model, the second job still checks whether a rebuild is needed. If there are new data or code changes to incorporate, the second job builds the model again. If there are no changes and building the model would produce the same result, the second job reuses the model.
 
 If you want to prevent a job from being built too frequently even when the code or data state has changed, you can reduce build frequency by using the `build_after` config. For information on how to use `build_after`, refer to [Model freshness](/reference/resource-configs/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
