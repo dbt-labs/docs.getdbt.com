@@ -97,13 +97,20 @@ You can use the following optional parameters to customize your state-aware orch
 |Parameter | Description | Allowed values | Supports Jinja |
 |----------|-------------| -------------- | -------------- |
 | `loaded_at_field` | Specifies a specific column to use from the data. | Name of timestamp column. For example, `created_at`, `"CAST(created_at AS TIMESTAMP)"`. | ✅ |
-| `loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string. For example, `"select {{ current_timestamp() }}"`. | ✅ |
+| `loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string. For example, `"select {{ current_timestamp() }}"`. For a multi-line query, see the example after this table.| ✅ |
 | `build_after.count` | Determines how many units of time must pass before a model can be rebuilt to help reduce build frequency. | A positive integer or a Jinja expression. For example, `4` or `"{{ var('build_after_count', 4) }}"`. | ✅ |
 | `build_after.period` | The time unit for the count to define the build interval. | `minute`, `hour`, `day`, or a Jinja expression (for example, `"{{ var('build_after_period', 'day') }}"`). | ✅ |
 | `build_after.updates_on` | Determines whether a model rebuild is triggered when any upstream dependency has fresh data or only when all upstream dependencies are fresh. | <li>`any` (default) &mdash; Use this value when you want a downstream model to rebuild if _any_ of its upstream dependencies receives fresh data, even if others haven’t.</li> <li>`all` &mdash; Use this value when you want to trigger a rebuild only when _all_ upstream dependencies are fresh &mdash; minimizing unnecessary builds and reducing compute cost. Recommended to use in state-aware orchestration.</li> | ❌ |
 
 Some notes when using `loaded_at_field` or `loaded_at_query`:
 - You can either define `loaded_at_field` or `loaded_at_query` but not both.
+- To use a multi-line SQL query for a `loaded_at_query` configuration, include your query as a YAML block so dbt can execute it as the custom freshness query. For example:
+  ```yaml
+  loaded_at_query: |
+    select max(ingested_at)
+    from {{ this }}
+    where ingested_at >= current_timestamp - interval '3 days'
+  ```
 - If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
 To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
