@@ -34,7 +34,7 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | Token | Required | Your personal access token or service token from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+  | Authorization | Required | Your personal access token or service token from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br> Needs to be in the format `Token <token>` or `Bearer <token>`.|
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
 
   **Additional configuration for SQL tools**
