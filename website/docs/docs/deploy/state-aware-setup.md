@@ -151,18 +151,31 @@ These configurations are powerful because you can define a sensible default at t
 
 ### Handling late-arriving data 
 
-If your incremental models use a lookback window to capture late-arriving data, make sure your freshness logic aligns with that window.
+If your incremental models use a lookback window to capture [late-arriving data](/best-practices/materializations/4-incremental-models#late-arriving-facts), make sure your freshness logic aligns with that window.
 
 When you use a `loaded_at_field` or `loaded_at_query`, state-aware orchestration uses that value to determine whether new data has arrived. When the `loaded_at` value reflects an event timestamp (for example, `event_date`), late-arriving records may not update this value if the event occurred in the past. In these cases, state-aware orchestration may not trigger a rebuild, even though your incremental model’s lookback window would normally include those rows.
 
-To ensure late-arriving data is detected by state-aware orchestration, your `loaded_at_field` or `loaded_at_query` should align with the same lookback window used in your incremental filter. See the following sample values for `loaded_at_field` and `loaded_at_query`:
-
+To ensure late-arriving data is detected by state-aware orchestration, use `loaded_at_query` and make sure it aligns with the same lookback window used in your incremental filter. See the following samples of a lookback window and its corresponding `loaded_at_query` value:
 
 <Tabs>
-<TabItem value="loaded_at_field" label="loaded_at_field">
+<TabItem value="Lookback window" label="Lookback window">
 
-```yaml
-loaded_at_field: ingested_at
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='order_id'
+    )
+}}
+
+select * from {{ source('raw_orders', 'orders') }}
+
+{% if is_incremental() %}
+
+where
+  ingested_at > (select max(ingested_at) from {{ this }}) - interval '3 days'
+
+{% endif %}
 ```
 </TabItem>
 
@@ -171,13 +184,11 @@ loaded_at_field: ingested_at
 ```yaml
 loaded_at_query: |
   select max(ingested_at)
-  from source_table
+  from {{ this }}
   where ingested_at >= current_timestamp - interval '3 days'
 ```
-
 </TabItem>
 </Tabs>
-
 
 ## Example
 
