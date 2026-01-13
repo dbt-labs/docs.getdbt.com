@@ -6,7 +6,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [dbt Jinja context](/reference/dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions-context-variables)
 * [Macro properties](/reference/macro-properties)
 
 ## Overview
