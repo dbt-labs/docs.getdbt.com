@@ -68,7 +68,7 @@ The new values for these fields can be found in <Constant name="cloud" /> by nav
 
 1. Replace `<SLUG>` with your organization’s login URL slug. 
 
-2. Locate your <Constant name="cloud" /> SAML2.0 app in the **Enterprise applications** section of Azure. Click **SSO & SCIM** on the left side menu.
+2. Locate your <Constant name="cloud" /> SAML2.0 app in the **Enterprise applications** section of Azure. Click **Single sign-on** on the left side menu.
 
 3. Edit the **Basic SAML configuration** tile and enter the values from your account:
     - Entra ID **Identifier (Entity ID)** = <Constant name="cloud" /> **Audience URI (SP Entity ID)**
@@ -129,7 +129,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 Click **Save** once you are done. 
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="cloud" />_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **SSO & SCIM**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="cloud" />_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **SSO & SCIM**, and then click **Edit** on the right side of the **Single sign-on** pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
 :::warning Domain authorization
 

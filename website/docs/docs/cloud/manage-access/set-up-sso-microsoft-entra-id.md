@@ -151,7 +151,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 
 ### Additional configuration options
 
-The **SSO & SCIM** section also contains additional configuration options which are located after the credentials fields.
+The **Single sign-on** section also contains additional configuration options which are located after the credentials fields.
 
 - **Include all groups:** Retrieve all groups to which a user belongs from your identity provider. If a user is a member of nested groups, it will also include the parent groups. When this option is disabled, only groups where the user has direct membership will be supplied.  This option is enabled by default.
 
