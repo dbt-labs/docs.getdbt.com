@@ -15,7 +15,7 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 
 <Constant name="copilot" /> embeds AI-driven assistance across every stage of the [analytics development life cycle (ADLC)](https://www.getdbt.com/resources/guides/the-analytics-development-lifecycle) and harnesses rich metadata—capturing relationships, lineage, and context  &mdash; so you can deliver refined, trusted data products at speed.
 
-With automatic code generation and using natural language prompts, <Constant name="copilot" /> can [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" />](/docs/explore/dbt-insights). To learn about prompt best practices, check out the [Prompt cookbook](/docs/guides/prompt-cookbook).
+With automatic code generation and using natural language prompts, <Constant name="copilot" /> can [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" />](/docs/explore/dbt-insights). To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
 
 :::tip
 <Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
@@ -40,5 +40,5 @@ With automatic code generation and using natural language prompts, <Constant nam
 - <Constant name="copilot" /> uses a best practice style guide to ensure consistency across teams.
 
 :::tip
-<Constant name="copilot" /> accelerates, but doesn’t replace, your analytics engineer. It helps deliver better data products faster, but always review AI-generated content, as it may be incorrect. To learn about prompt best practices, check out the [Prompt cookbook](/docs/guides/prompt-cookbook).
+<Constant name="copilot" /> accelerates, but doesn’t replace, your analytics engineer. It helps deliver better data products faster, but always review AI-generated content, as it may be incorrect. To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
 :::

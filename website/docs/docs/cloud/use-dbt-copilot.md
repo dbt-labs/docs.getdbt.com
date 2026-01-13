@@ -26,7 +26,7 @@ This page explains how to use <Constant name="copilot" /> to:
 :::tip
 Check out our [dbt Copilot on-demand course](https://learn.getdbt.com/learn/course/dbt-copilot/welcome-to-dbt-copilot/welcome-5-mins) to learn how to use <Constant name="copilot" /> to generate resources, and more!
 
-To learn about prompt best practices, check out the [Prompt cookbook](/docs/guides/prompt-cookbook).
+To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
 :::
 
 ## Generate resources 
