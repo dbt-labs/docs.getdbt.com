@@ -15,7 +15,7 @@ If you have not yet configured SSO in <Constant name="cloud" />, refer instead t
 
 The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Update Required** on the right side of the menu bar, near the settings icon. 
 
-Alternatively, you can start the process by clicking your account name at the bottom left-hand menu and going to **Account settings** > **Single sign-on**. Click the **Begin Migration** button to start.
+Alternatively, you can start the process by clicking your account name at the bottom left-hand menu and going to **Account settings** > **SSO & SCIM**. Click the **Begin Migration** button to start.
 
 :::warning vanity urls
 
@@ -64,11 +64,11 @@ The Entra ID fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection=<SLUG>`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:<SLUG>`
 
-The new values for these fields can be found in <Constant name="cloud" /> by navigating to **Account settting** --> **Single sign-on**.
+The new values for these fields can be found in <Constant name="cloud" /> by navigating to **Account settting** --> **SSO & SCIM**.
 
 1. Replace `<SLUG>` with your organization’s login URL slug. 
 
-2. Locate your <Constant name="cloud" /> SAML2.0 app in the **Enterprise applications** section of Azure. Click **Single sign-on** on the left side menu.
+2. Locate your <Constant name="cloud" /> SAML2.0 app in the **Enterprise applications** section of Azure. Click **SSO & SCIM** on the left side menu.
 
 3. Edit the **Basic SAML configuration** tile and enter the values from your account:
     - Entra ID **Identifier (Entity ID)** = <Constant name="cloud" /> **Audience URI (SP Entity ID)**
@@ -102,7 +102,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the <Constant name="cloud" /> environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Microsoft Entra ID. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the <Constant name="cloud" /> environment and open the **Account Settings**. Click the **SSO & SCIM** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Microsoft Entra ID. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
 :::warning Domain authorization
 
@@ -129,7 +129,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 Click **Save** once you are done. 
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="cloud" />_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in <Constant name="cloud" />_. In <Constant name="cloud" />, navigate to the **Account Settings**, click on **SSO & SCIM**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
 :::warning Domain authorization
 

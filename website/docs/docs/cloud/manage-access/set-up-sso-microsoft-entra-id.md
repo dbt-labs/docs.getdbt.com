@@ -132,7 +132,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 ### Supplying credentials
 
 25. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
-26. Click **Single sign-on** from the menu.
+26. Click **SSO & SCIM** from the menu.
 27. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
@@ -151,7 +151,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 
 ### Additional configuration options
 
-The **Single sign-on** section also contains additional configuration options which are located after the credentials fields.
+The **SSO & SCIM** section also contains additional configuration options which are located after the credentials fields.
 
 - **Include all groups:** Retrieve all groups to which a user belongs from your identity provider. If a user is a member of nested groups, it will also include the parent groups. When this option is disabled, only groups where the user has direct membership will be supplied.  This option is enabled by default.
 
