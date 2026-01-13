@@ -6,7 +6,7 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Install <Constant name="fusion"/>](/docs/fusion/install-fusion). 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion). 
  
 MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/cloud/about-develop-dbt) or [<Constant name="core" />](/docs/core/installation-overview). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
@@ -29,7 +29,7 @@ MetricFlow is a Python library that allows you to define and query metrics in yo
 
 This section applies to <Constant name="dbt_platform" /> users running the <Constant name="fusion_engine" />, where commands and validations execute remotely in <Constant name="dbt_platform" />. 
 
-- Run MetricFlow commands using the `dbt sl` prefix in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or using the [VS Code extension](/docs/install-dbt-extension).
+- Run MetricFlow commands using the `dbt sl` prefix in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or using the [VS Code extension](/docs/install-dbt-extension).
 - For CLI or VS Code/Cursor users, MetricFlow commands are embedded, which means you can immediately run them once you install the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [VS Code extension](/docs/install-dbt-extension) and don't need to install MetricFlow separately. 
 - Using MetricFlow with <Constant name="dbt_platform" /> doesn't require you to manage versioning &mdash; your <Constant name="cloud" /> account will automatically manage the versioning.
 - <Constant name="cloud" /> jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your Git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
@@ -63,7 +63,7 @@ Use MetricFlow commands to retrieve metadata and query metrics. The following ta
 | Open-source <br /> (no <Constant name="dbt_platform" /> project) | <Constant name="fusion" /> (source available) or <br />  <Constant name="core" /> engine | Local machine | `mf` | Install and manage MetricFlow locally. |
 
 - If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a `dbt_cloud.yml` file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
-  - This allows you to interact with metrics that are executed remotely on <Constant name="dbt_platform" /> (for example, from the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation)).
+  - This allows you to interact with metrics that are executed remotely on <Constant name="dbt_platform" /> (for example, from the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation)).
 - If you’re using [<Constant name="fusion" /> CLI](/docs/fusion/install-fusion-cli) ([source available](https://www.getdbt.com/licenses-faq)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
 - If you’re using <Constant name="core" /> locally without <Constant name="fusion" />, run MetricFlow commands using the `mf` prefix.
 
