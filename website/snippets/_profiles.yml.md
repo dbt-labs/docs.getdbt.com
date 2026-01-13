@@ -23,7 +23,7 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 dbt searches for `profiles.yml` location in the following order and uses the first file it finds:
 
 1. `--profiles-dir` flag &mdash; Override for CI/CD or testing. 
-2. Project root directory &mdash; Project-specific credentials.
+2. Current working directory &mdash; Project-specific credentials.
 3. `~/.dbt/profiles.yml` (Recommended location) &mdash; Shared across all projects.
 
 `~/.dbt/profiles.yml` is the recommended location for the following reasons:
