@@ -22,13 +22,13 @@ This cookbook provides independent recipes for common prompting tasks. Jump to a
 
 This cookbook covers the following topics:
 <!-- no toc -->
-- [Prompt best practices](#prompt-best-practices)
-- [Generate SQL queries](#generate-sql-queries)
-- [Leveraging external assets](#leveraging-external-assets)
-- [Create semantic models and metrics](#create-semantic-models-and-metrics)
-- [Create reusable macros](#create-reusable-macros)
-- [Troubleshoot errors and issues](#troubleshoot-errors-and-issues)
-- [Conclusion](#conclusion)
+- [Prompt best practices](https://docs.getdbt.com/guides/prompt-cookbook?step=2)
+- [Generate SQL queries](https://docs.getdbt.com/guides/prompt-cookbook?step=3)
+- [Use what you already have](https://docs.getdbt.com/guides/prompt-cookbook?step=4)
+- [Create semantic models and metrics](https://docs.getdbt.com/guides/prompt-cookbook?step=5)
+- [Create reusable macros](https://docs.getdbt.com/guides/prompt-cookbook?step=6)
+- [Troubleshoot errors and issues](https://docs.getdbt.com/guides/prompt-cookbook?step=7)
+- [Conclusion](https://docs.getdbt.com/guides/prompt-cookbook?step=8)
 
 ## Prompt best practices
 
