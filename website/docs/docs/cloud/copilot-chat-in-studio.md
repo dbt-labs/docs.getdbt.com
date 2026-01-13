@@ -79,4 +79,4 @@ Note, if the file is empty, you'll only see **Add** as an option, since there's 
 </Tabs>
 
 ## Related docs
-- [Prompt cookbook](/docs/guides/prompt-cookbook) &mdash; Learn how to write effective prompts for dbt <Constant name="copilot" />
+- [Prompt cookbook](/guides/prompt-cookbook) &mdash; Learn how to write effective prompts for dbt <Constant name="copilot" />
