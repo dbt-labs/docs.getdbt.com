@@ -92,24 +92,30 @@ import DeleteJob from '/snippets/_delete-job.md';
 
 By default, we use the warehouse metadata to check if sources (or upstream models in the case of Mesh) are fresh. For more advanced use cases, dbt provides other options that enable you to specify what gets run by state-aware orchestration. 
 
-You can customize with:
-- `loaded_at_field`: Specify a specific column to use from the data.
+You can use the following optional parameters to customize your state-aware orchestration:
 
-- `loaded_at_query`: Define a custom freshness condition in SQL to account for partial loading or streaming data.
+|Parameter | Description | Allowed values | Supports Jinja |
+|----------|-------------| -------------- | -------------- |
+| `loaded_at_field` | Specifies a specific column to use from the data. | Name of timestamp column. For example, `created_at`, `"CAST(created_at AS TIMESTAMP)"`. | ✅ |
+| `loaded_at_query` | Defines a custom freshness condition in SQL to account for partial loading or streaming data. | SQL string. For example, `"select {{ current_timestamp() }}"`. For a multi-line query, see the example after this table.| ✅ |
+| `build_after.count` | Determines how many units of time must pass before a model can be rebuilt to help reduce build frequency. | A positive integer or a Jinja expression. For example, `4` or `"{{ var('build_after_count', 4) }}"`. | ✅ |
+| `build_after.period` | The time unit for the count to define the build interval. | `minute`, `hour`, `day`, or a Jinja expression (for example, `"{{ var('build_after_period', 'day') }}"`). | ✅ |
+| `build_after.updates_on` | Determines whether a model rebuild is triggered when any upstream dependency has fresh data or only when all upstream dependencies are fresh. | <li>`any` (default) &mdash; Use this value when you want a downstream model to rebuild if _any_ of its upstream dependencies receives fresh data, even if others haven’t.</li> <li>`all` &mdash; Use this value when you want to trigger a rebuild only when _all_ upstream dependencies are fresh &mdash; minimizing unnecessary builds and reducing compute cost. Recommended to use in state-aware orchestration.</li> | ❌ |
 
-If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
+Some notes when using `loaded_at_field` or `loaded_at_query`:
+- You can either define `loaded_at_field` or `loaded_at_query` but not both.
+- To use a multi-line SQL query for a `loaded_at_query` configuration, include your query as a YAML block so dbt can execute it as the custom freshness query. For example:
+  ```yaml
+  loaded_at_query: |
+    select max(ingested_at)
+    from {{ this }}
+    where ingested_at >= current_timestamp - interval '3 days'
+  ```
+- If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
-:::note 
-You can either define `loaded_at_field` or `loaded_at_query` but not both.
-:::
-You can also customize with:
-- `updates_on`: Change the default from `any` to `all` so it doesn’t build unless all upstreams have fresh data reducing compute even more.
-- `build_after`: Don’t build a model more often than every x period to reduce build frequency when you need data less often than sources are fresh.
+To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
 
-
-To learn more about model freshness and build after, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
-
-## Customizing behavior
+### Customizing behavior
 
 You can optionally configure state-aware orchestration when you want to fine-tune orchestration behavior for these reasons:
 
@@ -142,6 +148,48 @@ You can optionally configure state-aware orchestration when you want to fine-tun
   - `model/properties.yml` at the model level in YAML
   - `model/model.sql` at the model level in SQL
 These configurations are powerful because you can define a sensible default at the project level or for specific model folders, and override it for individual models or model groups that require more frequent updates.
+
+### Handling late-arriving data 
+
+If your incremental models use a lookback window to capture [late-arriving data](/best-practices/materializations/4-incremental-models#late-arriving-facts), make sure your freshness logic aligns with that window.
+
+When you use a `loaded_at_field` or `loaded_at_query`, state-aware orchestration uses that value to determine whether new data has arrived. When the `loaded_at` value reflects an event timestamp (for example, `event_date`), late-arriving records may not update this value if the event occurred in the past. In these cases, state-aware orchestration may not trigger a rebuild, even though your incremental model’s lookback window would normally include those rows.
+
+To ensure late-arriving data is detected by state-aware orchestration, use `loaded_at_query` and make sure it aligns with the same lookback window used in your incremental filter. See the following samples of a lookback window and its corresponding `loaded_at_query` value:
+
+<Tabs>
+<TabItem value="Lookback window" label="Lookback window">
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='order_id'
+    )
+}}
+
+select * from {{ source('raw_orders', 'orders') }}
+
+{% if is_incremental() %}
+
+where
+  ingested_at > (select max(ingested_at) from {{ this }}) - interval '3 days'
+
+{% endif %}
+```
+</TabItem>
+
+<TabItem value="loaded_at_query" label="loaded_at_query">
+
+```yaml
+loaded_at_query: |
+  select max(ingested_at)
+  from {{ this }}
+  where ingested_at >= current_timestamp - interval '3 days'
+```
+</TabItem>
+</Tabs>
+
 ## Example
 
 Let's use an example to illustrate how to customize our project so a model and its parent model are rebuilt only if they haven't been refreshed in the past 4 hours &mdash; even if a job runs more frequently than that.
