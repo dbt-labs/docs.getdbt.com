@@ -203,7 +203,7 @@ limit 10
 You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="copilot" /> understand your specific business context.
 
 :::tip dbt Insights integration
-When using <Constant name="copilot" /> in [<Constant name="query_page" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/collaborate/catalog). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
+When using <Constant name="copilot" /> in [<Constant name="query_page" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/explore/explore-projects). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
 :::
 
 ### Define your business rules
