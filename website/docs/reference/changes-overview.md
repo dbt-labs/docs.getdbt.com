@@ -1,21 +1,14 @@
 ---
 title: "Understanding dbt changes"
 id: "changes-overview"
-sidebar_label: "Changes overview"
+sidebar_label: "Understanding dbt changes"
 description: "Quick reference page to help you understand deprecations, behavior changes, and deprecated flags in dbt"
 hide_table_of_contents: true
 ---
 
-Use this page to understand what type of change you're dealing with and where to find more information. When you see a warning or need to prepare for an upgrade, use this table to identify what you're dealing with:
+When using dbt, you may see warnings or other changes that need your attention. These changes help us move forward with the latest version of dbt and improve the experience for all users. 
 
-| Type | What it affects | Where you see it | Where to fix it | Learn more |
-|------|----------------|------------------|-----------------|------------|
-| **Deprecations** | Features in your project code | Warning logs during dbt runs | Your project files (models, YAML, macros) | [Deprecations](/reference/deprecations) |
-| **Behavior change flags** | How dbt runs and processes your project | Varies (warnings or different behavior) | `flags:` in `dbt_project.yml` | [Behavior changes](/reference/global-configs/behavior-changes) |
-| **Deprecated CLI flags** | Command-line arguments | Command output or ignored flags | Your job commands and scripts | [Fusion upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) |
-
-## What's the difference?
-The following cards explain the difference between deprecations, behavior change flags, and deprecated CLI flags, and where to go to find more info.
+Use this page to understand the different types of changes, what to do, and where to find more information.
 
 <div className="grid--3-col">
 
