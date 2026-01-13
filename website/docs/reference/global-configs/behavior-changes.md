@@ -2,16 +2,29 @@
 title: "Behavior changes"
 id: "behavior-changes"
 sidebar: "Behavior changes"
+intro_text: "Behavior change flags let you control when to adopt new runtime behaviors in dbt. They're configured in your dbt_project.yml file."
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+
+:::info How this relates to other changes
+
+Since behavior change flags are different from other dbt changes, it's important to understand the difference:
+- [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
+- [Deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+
+See the [Changes overview](/reference/commands/changes-overview/changes-overview) for a quick comparison.
+
+If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-fusion), all behavior change flags are removed and the new behavior is always enabled.
+
+:::
 
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
 
 Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension, by:
 - Providing a better, more sensible, and more consistent default behavior for new users/projects.
-- Providing a migration window for existing users/projects &mdash; nothing changes overnight without warning.
-- Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
+- Providing a migration window for existing users/projects &mdash; nothing changes overnight without warning.
+- Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
 1. **Introduction (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
