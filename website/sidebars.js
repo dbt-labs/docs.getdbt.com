@@ -1143,6 +1143,7 @@ const sidebarSettings = {
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
+        "reference/resource-configs/hive-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
