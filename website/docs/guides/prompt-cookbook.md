@@ -24,11 +24,11 @@ This cookbook covers the following topics:
 <!-- no toc -->
 - [Prompt best practices](https://docs.getdbt.com/guides/prompt-cookbook?step=2)
 - [Generate SQL queries](https://docs.getdbt.com/guides/prompt-cookbook?step=3)
-- [Use what you already have](ttps://docs.getdbt.com/guides/prompt-cookbook?step=4)
-- [Create semantic models and metrics](ttps://docs.getdbt.com/guides/prompt-cookbook?step=5)
+- [Use what you already have](https://docs.getdbt.com/guides/prompt-cookbook?step=4)
+- [Create semantic models and metrics](https://docs.getdbt.com/guides/prompt-cookbook?step=5)
 - [Create reusable macros](https://docs.getdbt.com/guides/prompt-cookbook?step=6)
-- [Troubleshoot errors and issues](ttps://docs.getdbt.com/guides/prompt-cookbook?step=7)
-- [Conclusion](ttps://docs.getdbt.com/guides/prompt-cookbook?step=8)
+- [Troubleshoot errors and issues](https://docs.getdbt.com/guides/prompt-cookbook?step=7)
+- [Conclusion](https://docs.getdbt.com/guides/prompt-cookbook?step=8)
 
 ## Prompt best practices
 
