@@ -2,7 +2,7 @@
 title: How to use prompts for dbt Copilot
 description: A cookbook of prompts and real-world examples to use dbt Copilot efficiently.
 id: prompt-cookbook
-icon: 'guides'
+icon: 'dbt-copilot'
 hide_table_of_contents: true
 tags: ['dbt Copilot', 'AI', 'Best practices']
 level: 'Beginner'
@@ -33,10 +33,10 @@ This cookbook covers the following topics:
 ## Prompt best practices
 
 Writing effective prompts is about giving <Constant name="copilot" /> the right context and clear direction. Follow these principles:
-- [Provide rich context](#1-provide-rich-context)
+- [Provide rich context](#provide-rich-context)
+- [Break complex logic into smaller steps](#break-complex-logic-into-smaller-steps)
 - [State the business question, not just the output](#state-the-business-question-not-just-the-output)
 - [Be clear and explicit about the result](#be-clear-and-explicit-about-the-result)
-- [Break complex logic into smaller steps](#break-complex-logic-into-smaller-steps)
 
 ### Provide rich context
 
@@ -44,9 +44,13 @@ In your prompt, include table names, column types, and example values to describ
 
 Include the following:
 
-- Table relationships (such as `orders` joins to `customers` on `customer_id`)
+- Table relationships (such as `orders` connects to `customers` on `customer_id`)
 - Data types (such as `created_at` is a timestamp)
-- Sample values (such as `status` is a string with values like "active" or "pending")
+- Sample values (such as `status` can be "active" or "pending")
+
+:::tip
+The following example uses SQL terminology (like data types and joins) because it's generating a SQL query. However, the principle of providing rich context applies to all <Constant name="copilot" /> tasks—whether you're generating macros, documentation, or YAML configurations.
+:::
 
 **Example: Santi's neighborhood café**
 
@@ -78,6 +82,24 @@ and compare conversion rates: do high-frequency punch-card users convert to our
 ```
 
 **Why it works:** The AI now knows exact data types, how tables relate, what values to expect, and the specific business logic (3+ visits/week defines "regulars").
+
+### Break complex logic into smaller steps
+
+:::tip Common misconception
+Many users try to ask for everything at once in a single prompt. Breaking your request into smaller, sequential steps consistently produces better results.
+:::
+
+For multi-part tasks, write them as a sequence of clear instructions. <Constant name="copilot" /> handles step-by-step logic better than complex, all-in-one requests.
+
+**Example:**
+
+```text
+First, filter the dataset to active users in the last 90 days.
+Then, calculate their average session duration.
+Finally, join to subscription data and group by plan tier.
+```
+
+**Why this works:** Each step is clear and actionable. You can always iterate on your prompt to refine results &mdash; start simple, then build complexity.
 
 ### State the business question, not just the output
 
@@ -128,65 +150,61 @@ show how many upgraded to paid within 30 days and what their average workouts lo
 
 **Why it works:** Specific metrics that are ready to present.
 
-### Break complex logic into smaller steps
-
-For multi-part queries, write them as a sequence of instructions:
-
-**Example:**
-
-```text
-First, filter the dataset to active users in the last 90 days.
-Then, calculate their average session duration.
-Finally, join to subscription data and group by plan tier.
-```
-
-We recommend you avoid asking for everything at once. You can always iterate on your prompt to get better results.
-
 ## Generate SQL queries
-<!--idk about this section, might want to tweak-->
-**Use case:** Build a customers model for an e-commerce platform.
 
-**What to give <Constant name="copilot" />:**
+Let's say you want to build a query to find top-spending customers.
 
 ```text
 Context:
-We have customers, orders, and payments tables. 
-- customers (customer_id, first_name, last_name, email)
-- orders (order_id, customer_id, order_date, status)
-- payments (payment_id, order_id, amount, payment_method)
+I have two tables:
+- customers (customer_id, name, email)
+- orders (order_id, customer_id, order_total, order_date)
 
-Relationships: 
-- orders.customer_id → customers.customer_id
-- payments.order_id → orders.order_id
-
-Sample values: 
-- status in ('completed', 'pending', 'cancelled')
-- payment_method in ('credit_card', 'paypal', 'bank_transfer')
+Relationship: orders.customer_id connects to customers.customer_id
 
 Business question:
-Create a customer summary showing total orders and revenue per customer.
+Show me the top 10 customers by total spending in 2024.
 
 Output:
 - customer_id
-- first_name
-- last_name  
-- first_order_date
-- most_recent_order_date
-- total_orders
-- total_revenue
+- customer_name
+- total_spent
+- order_count
 
-Filter: Only completed orders
-Sort: total_revenue descending
+Sort by total_spent descending, limit to 10 rows.
+```
+
+**What <Constant name="copilot" /> generates:**
+
+```sql
+select
+    c.customer_id,
+    c.name as customer_name,
+    sum(o.order_total) as total_spent,
+    count(o.order_id) as order_count
+from {{ ref('customers') }} c
+inner join {{ ref('orders') }} o
+    on c.customer_id = o.customer_id
+where year(o.order_date) = 2024
+group by c.customer_id, c.name
+order by total_spent desc
+limit 10
 ```
 
 **Why it works:**
-You're giving <Constant name="copilot" /> a clear map of how data connects, what values to expect, and what decision this supports.
+- Clear context about tables and their relationship
+- Specific business question with a defined time period
+- Explicit output requirements and sorting logic
 
-**Pro tip:** Start simple, then iterate. If <Constant name="copilot" />'s first attempt isn't perfect, refine your prompt with more specific details.
+**Pro tip:** Start simple, then iterate. If <Constant name="copilot" />'s first attempt isn't perfect, no worries! Refine your prompt with more specific details and let <Constant name="copilot" /> do its magic, it usually gets there in the end ✨
 
 ## Use what you already have
 
 You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="copilot" /> understand your specific business context.
+
+:::tip dbt Insights integration
+When using <Constant name="copilot" /> in [<Constant name="query_page" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/collaborate/catalog). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
+:::
 
 ### Define your business rules
 
@@ -226,39 +244,29 @@ on customer_id. Filter to the last 30 days for preview only.
 
 ## Create semantic models and metrics
 
-**Use case:** Fast-track your semantic layer strategy with AI-generated YAML.
+Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="copilot" />.
 
-**What to give <Constant name="copilot" />:**
+<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" />](/docs/explore/dbt-insights).
 
-```text
-Create a semantic model for order revenue tracking.
+These features understand your model's structure and generate YAML in the correct location.
 
-Base model: {{ ref('fct_orders') }}
+**How to generate semantic models:**
 
-Available columns:
-- order_date (timestamp)
-- order_amount (decimal)
-- customer_id (integer)
-- product_id (integer)
-- region (string - 'north', 'south', 'east', 'west')
+1. Navigate to the Studio IDE and select a SQL model file in the **File explorer**
+2. In the **Console** section (under the **Editor**), click the **dbt Copilot** icon to view AI options
+3. Select **Semantic model** to create a semantic model based on your SQL model
+4. Review and refine the generated YAML as needed
 
-Requirements:
-- Entity: customer
-- Calculate: total_revenue (sum of order_amount) and order_count
-- Dimensions: region, order_date as metric_time (support day, week, month)
-- Metric: monthly_revenue (total revenue by month)
+You can also use <Constant name="copilot" /> to also generate documentation, tests, and metrics.
 
-Return valid YAML with descriptions.
-```
+These built-in features automatically understand your model's columns, data types, and relationships, which means you don't need to manually describe your schema or copy-paste between file types.
 
-**What <Constant name="copilot" /> generates:**
+**Typical workflow:**
+1. Build your SQL model using <Constant name="copilot" /> conversational prompts
+2. Use built-in buttons to add documentation, tests, and semantic models
+3. Refine the generated YAML as needed
 
-- Valid semantic model YAML structure
-- Properly defined entities, dimensions, and metrics
-- Time dimension with multiple grains
-- Metric definitions
-
-**Pro tip:** Use <Constant name="copilot" /> to reduce time spent writing boilerplate YAML. It leverages context from common metrics and dimensions across projects to ensure consistency.
+For more details, check out the [dbt Copilot](/docs/cloud/use-dbt-copilot) docs.
 
 ## Create reusable macros
 
@@ -377,32 +385,45 @@ Show me the rendered SQL from target/compiled and explain what's wrong.
 ## Conclusion
 
 <ConfettiTrigger>
-You've now learned how to use dbt <Constant name="copilot" /> as your AI co-pilot. You can:
+Congrats, you've now learned some tips on how to create and use prompts for dbt <Constant name="copilot" />  🎉! You can:
 
-- **Master SQL prompting** by providing rich context and stating clear business questions
-- **Amplify your workflow** by leveraging existing documentation and project context
-- **Generate Jinja macros** to build more scalable and maintainable systems
-- **Troubleshoot your code** to diagnose issues fast and apply safe, explainable fixes
+- Boss you prompting skills by providing rich context and stating clear business questions. Applicable for SQL, macros, documentation, tests, metrics, and semantic models.
+- Amplify your workflow by using existing documentation and project context
+- Generate Jinja macros to build more scalable and maintainable systems
+- Troubleshoot your code to diagnose issues fast and apply safe, explainable fixes
 
 ### Quick reference checklist
 
 When writing prompts for dbt <Constant name="copilot" />:
 
-- ✅ **Provide rich context**: Table names, columns, data types, relationships, sample values
-- ✅ **State the business question**: What decision or insight you're supporting, not just "write a query"
-- ✅ **Be clear and explicit**: Expected columns, sort order, filters, and output format
-- ✅ **Break down complex logic**: Write multi-part queries as a sequence of steps
+- ✅ Provide rich context &mdash; Table names, columns, data types, relationships, sample values
+- ✅ Break down complex logic: Write multi-part queries as a sequence of steps
+- ✅ State the business question: What decision or insight you're supporting, not just "write a query"
+- ✅ Be clear and explicit: Expected columns, sort order, filters, and output format
+
 
 For troubleshooting:
 
-- ✅ **Include complete error messages**: Full warehouse error with line numbers
-- ✅ **Show the failing code**: Both the dbt model and compiled SQL (from `target/compiled/`)
-- ✅ **Provide sample data**: Representative rows that trigger the issue
-- ✅ **State your warehouse**: Snowflake, BigQuery, Databricks, etc.
+- ✅ Include complete error messages: Full warehouse error with line numbers
+- ✅ Show the failing code: Both the dbt model and compiled SQL (from `target/compiled/`)
+- ✅ Provide sample data: Representative rows that trigger the issue
+- ✅ State your warehouse: Snowflake, BigQuery, Databricks, etc.
 
 ### Next steps
-<!--add links-->
-Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. The more you use <Constant name="copilot" />, the more you'll discover ways to accelerate your analytics engineering workflow.
+
+Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. 
+
+The more you use <Constant name="copilot" />, the more you'll discover ways to accelerate your analytics engineering workflow.
+
+
+Check out the following docs to learn more about how to use <Constant name="copilot" />:
+
+- [About dbt Copilot](/docs/cloud/dbt-copilot)
+- [Generate resources](/docs/cloud/use-dbt-copilot#generate-resources)
+- [Generate and edit SQL inline](/docs/cloud/use-dbt-copilot#generate-and-edit-sql-inline)
+- [Build visual models](/docs/cloud/use-dbt-copilot#build-visual-models)
+- [Build queries](/docs/cloud/use-dbt-copilot#build-queries)
+
 
 </ConfettiTrigger>
 </div>
