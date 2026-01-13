@@ -1,7 +1,7 @@
 ---
-title: "Understanding dbt changes"
+title: "Deprecation & warnings overview"
 id: "changes-overview"
-sidebar_label: "Understanding dbt changes"
+sidebar_label: "Deprecation & warnings overview"
 description: "Quick reference page to help you understand deprecations, behavior changes, and deprecated flags in dbt"
 hide_table_of_contents: true
 ---

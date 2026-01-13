@@ -1500,7 +1500,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Changes overview",
+          label: "Deprecations & warnings",
           link: {
             type: "doc",
             id: "reference/changes-overview",
