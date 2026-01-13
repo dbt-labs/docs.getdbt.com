@@ -1498,9 +1498,20 @@ const sidebarSettings = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "Deprecations & warnings",
+          link: {
+            type: "doc",
+            id: "reference/changes-overview",
+          },
+          items: [
+            "reference/changes-overview",
+            "reference/deprecations",
+          ],
+        },
         "reference/events-logging",
         "reference/exit-codes",
-        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],
