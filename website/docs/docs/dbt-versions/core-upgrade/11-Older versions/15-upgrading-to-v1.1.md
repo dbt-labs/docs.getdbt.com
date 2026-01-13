@@ -48,7 +48,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 **Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#source_status). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in <Constant name="cloud" />](/docs/deploy/continuous-integration).
 
 
-[**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
+[**dbt-Jinja functions**](/reference/dbt-jinja-functions-context-variables) have a new landing page, and two new members:
 - [`print`](/reference/dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
 - [`selected_resources`](/reference/dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
 
