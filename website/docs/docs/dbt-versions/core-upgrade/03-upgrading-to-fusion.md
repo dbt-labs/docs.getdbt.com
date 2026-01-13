@@ -36,9 +36,9 @@ The following adapters are supported in the dbt Fusion engine:
 
 ### A clean slate
 
-dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality (see the [Changes overview](/reference/commands/changes-overview/changes-overview) for details):
+dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (the new behavior is always enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
 
@@ -100,7 +100,7 @@ This is different from:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code (models, YAML, macros) that need to be updated
 - [Behavior change flags](/reference/global-configs/behavior-changes) &mdash; Flags in `dbt_project.yml` that let you opt in/out of new behaviors
 
-See the [Changes overview](/reference/commands/changes-overview/changes-overview) for a full comparison.
+See the [Changes overview](/reference/changes-overview) for a full comparison.
 
 :::
 
