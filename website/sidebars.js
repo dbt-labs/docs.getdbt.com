@@ -1522,18 +1522,18 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "Jinja reference",
-        description: "The list of Jinja functions available in dbt.",
+        description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
         {
           type: "category",
-          label: "dbt Jinja functions",
+          label: "dbt Jinja context functions",
           link: {
             type: "generated-index",
-            title: "dbt Jinja functions",
+            title: "dbt Jinja functions and context variables",
             description:
               "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
-            slug: "/reference/dbt-jinja-functions",
+            slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
             {

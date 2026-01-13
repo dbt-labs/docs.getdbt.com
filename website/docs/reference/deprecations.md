@@ -602,7 +602,7 @@ instead.
 
 #### ModulesItertoolsUsageDeprecation warning resolution
 
-If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions) and [Jinja methods](/docs/build/jinja-macros) instead.
+If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions-context-variables) and [Jinja methods](/docs/build/jinja-macros) instead.
 
 For example, the following SQL file:
 
