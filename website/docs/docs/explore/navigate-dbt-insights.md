@@ -36,7 +36,7 @@ The Query console menu is located at the top right of the Query editor. It conta
  - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
-## Query Builder <Lifecycle status="beta" />
+## Query Builder
 
 Query Builder in dbt <Constant name="query_page" /> lets you build queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities. With Query Builder, you can:
 
