@@ -297,3 +297,7 @@ Then update your JSON configuration to use the full path:
   }
 }
 ```
+
+### Oauth login not initiating
+
+To avoid re-authentication, dbt MCP uses a lock file. Sometimes, this can cause authentication to never proceed. If this happens, try deleting the local dbt MCP configuration to unstick the authentication flow. For Mac & Linux run `rm -f ~/.dbt/mcp.yml && rm -f ~/.dbt/mcp.lock`.
