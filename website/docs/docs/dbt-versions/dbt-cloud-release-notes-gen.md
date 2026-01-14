@@ -113,8 +113,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Logging
 
-- **More reliable live log viewing for in-progress runs**: In-progress logs now truncate more safely (by line count, and optionally by byte size) with clearer truncation messaging, including a structured “Note” record for structured logs. <!-- PRs: `https://github.com/dbt-labs/scribe/pulls?q=REDIS_BYTE_SIZE_LIMIT` -->
-
 - **Enhanced logging limits for in-progress runs**: Logs for in-progress runs are also limited by memory usage, in addition to the existing 1,000-line limit. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=SCRIBE_REDIS_BYTE_SIZE_LIMIT` -->
 
 ## Behavior Changes
