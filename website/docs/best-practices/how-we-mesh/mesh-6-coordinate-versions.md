@@ -122,7 +122,7 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
 
 :::caution Models with enforced contracts
-If your model has an [enforced contract](/docs/mesh/govern/model-contracts), ensure the deprecation date has passed before attempting to delete the model. dbt will prevent deletion of models with enforced contracts until after their deprecation date to protect downstream consumers.
+If your model has an [enforced contract](/docs/mesh/govern/model-contracts), make sure the deprecation_date has passed before trying to delete the model. dbt will block deleting the model(s) with enforced contracts until after their deprecation_date to protect downstream consumers.
 ::: 
 
 <Tabs>
