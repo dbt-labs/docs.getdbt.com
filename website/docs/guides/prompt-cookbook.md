@@ -103,11 +103,7 @@ Finally, join to subscription data and group by plan tier.
 
 ### State the business question, not just the output
 
-Describe the decision or insight the query supports. Avoid purely technical prompts.
-
-**Instead of:** "Count users"
-
-**Say:** "Count active users per week to analyze engagement trends"
+Describe the decision or insight the query supports, and avoid only technical-like prompts. This means, instead of "count users", you can say "count active users per week to analyze engagement trends".
 
 **Example: The sneaker drop**
 
