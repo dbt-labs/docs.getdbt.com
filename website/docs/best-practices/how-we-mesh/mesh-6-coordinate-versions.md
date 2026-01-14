@@ -66,7 +66,7 @@ After deciding that a change needs a new [version](/reference/resource-propertie
    This notifies downstream consumers and will appear in the `dbt run` logs as a warning that the old version is nearing deprecation and consumers will need to [migrate](#best-practices-for-consumers) to the new version.
    
    :::important
-   If your model has an [enforced contract](/docs/mesh/govern/model-contracts), you **cannot delete the model** until after the deprecation date has passed. This ensures downstream consumers have adequate time to migrate before the model is removed.
+   If your model has an [enforced contract](/docs/mesh/govern/model-contracts), you won't be able to delete the model until after the deprecation date has passed. 
    ::: 
    
     <File name='models/properties.yml'>
