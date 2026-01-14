@@ -46,7 +46,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights experience
 
-- **Query Builder is now generally available (GA)**: The Query Builder UI is no longer marked as beta across entry points and saved-query tabs. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
+- **Semantic Layer querying within dbt Insights is now generally available (GA)**: You can build SQL queries against the Semantic Layer without writing SQL code. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
 
 ### Search and catalog
 
