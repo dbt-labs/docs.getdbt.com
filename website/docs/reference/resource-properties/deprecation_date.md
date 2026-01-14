@@ -42,6 +42,8 @@ Declaring a `deprecation_date` for a dbt model provides a mechanism to communica
 
 Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/mesh/govern/about-model-governance) features like [model versions](/docs/mesh/govern/model-versions), but can also be used independently from them.
 
+If your model has an [enforced contract](/docs/mesh/govern/model-contracts), you won't be able to delete the model until after the `deprecation_date` has passed. This is because dbt won't allow deleting the model(s) with enforced contracts until after their `deprecation_date` to protect downstream consumers.
+
 ### Warning messages
 
 When a project references a model that's slated for deprecation or the deprecation date has passed, a warning is generated. If it's a versioned model, with a newer version available, then the warning says so. This added bit of cross-team communication, from producers to consumers, is an advantage of using dbt's built-in functionality around model versions to facilitate migrations.
