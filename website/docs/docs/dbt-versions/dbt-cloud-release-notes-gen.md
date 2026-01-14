@@ -24,13 +24,11 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform and Studio
 
-- **Salesforce Data 360 connection support (dbt Fusion required)**: Salesforce can now be selected as a connection type, with compatibility checks to ensure the required dbt Fusion + adapter support is present. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=cc-3048` `https://github.com/dbt-labs/cloud-ui/pulls?q=salesforce_v0` `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+- **Salesforce Data 360 connection support (dbt Fusion required)**: Salesforce can now be selected as a connection type, with compatibility checks to ensure the required dbt Fusion + adapter support is present. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=cc-3048` `https://github.com/dbt-labs/cloud-ui/pulls?q=salesforce_v0` `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
 
 ### APIs
 
 - **Fusion migration readiness endpoint**: Added an API endpoint to determine whether a project is eligible for Fusion migration. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+FusionStatusView+is_fusion_eligible` -->
-
-- **Cost Insights API (GraphQL, feature-gated)**: Added an `environment.costInsights` field to retrieve daily aggregated cost/time/compute metrics (including “saved/reused” metrics where available), with filtering and sorting options. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` -->
 
 ## Enhancements
 
@@ -45,12 +43,6 @@ Release notes are grouped by date for single-tenant environments.
 - **More robust OpenAI request parameter handling**: Completion calls now avoid parameter conflicts when providing defaults while still allowing overrides, improving compatibility with custom LLM parameter tuning. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
 
 - **Simplified Azure OpenAI setup in dbt platform**: Azure OpenAI configuration now supports pasting a “Target URI” and automatically parsing endpoint details, reducing setup friction. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=parseAzureTargetUri` `https://github.com/dbt-labs/cloud-ui/pulls?q=azure_target_uri_input` -->
-
-### Cost Insights
-
-- **Cost Insights UX improvements in dbt platform**: Updated the Cost Insights experience across project/job surfaces with richer time-range options, improved deep-linking via URL parameters, and clearer in-product explanations of cost metrics. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=CostInsights` `https://github.com/dbt-labs/cloud-ui/pulls?q=meta5835EnableCostEstimationFrontend` -->
-
-- **Cost Insights and Usage views use real cost insights data**: Cost and usage surfaces now use a shared “cost insights” data source, with improved “without savings” visualization and table UX (date labels, duration formatting, sorting, and loading states). <!-- PRs: `https://github.com/dbt-labs/metadata-ui/compare/692970d29da27b9fe80ad8fec42d00b06ac66b31...4b4c66fbc2e42254de9a183080098dd6c81f8bfd` -->
 
 ### Insights experience
 
