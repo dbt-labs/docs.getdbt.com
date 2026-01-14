@@ -78,14 +78,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Profile creation is more resilient**: Profile creation now explicitly creates dependencies and performs best-effort cleanup on failures to reduce partial/orphaned objects. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=useCreateProfileWithDependencies` -->
 
-### Run orchestration and conformance
-
-- **Conformance artifact uploads are more reliable for large runs**: Conformance artifacts can now be uploaded via an in-memory buffer with a fallback to disk, reducing disk pressure on large runs. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=ORC-3108` -->
-
-- **More reliable repo-cache restores (optional hard reset)**: Added an option to hard reset the working tree after restoring repo cache to reduce checkout issues caused by stale/dirty cached state. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=ORC_RESET_REPO_CACHE_ON_CHECKOUT` -->
-
-- **Improved generation of query metadata artifacts used for cost/resource insights**: Query capture is enabled earlier in step execution, and missing source files now produce clear warnings instead of silently skipping artifact generation. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=resource_queries+run_model_query_data` -->
-
 ## Fixes
 
 ### dbt platform
@@ -114,13 +106,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Exposure “latest run” reporting is more reliable**: Exposure latest-run tracking now consistently populates `account_id` (including a backfill for existing rows) to improve per-account scoping and correctness. <!-- PRs: `https://github.com/dbt-labs/codex/pull/2181` `https://github.com/dbt-labs/codex/pull/2191` -->
 
-- **Query cancellation supports more job types**: The `cancelQuery` mutation can now cancel additional query job types that previously could not be cancelled. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+head%3Apatricky%2Fcancel-query-jobs` -->
-
-### Run orchestration and conformance
-
-- **dbt argument passthrough now preserves `--resource-type`**: Runs that rely on `--resource-type` filtering will no longer have that flag dropped during argument filtering/forwarding. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=%22--resource-type%22` -->
-
-- **Conformance checks no longer fail builds solely due to dbt Python models**: Removed a blanket “non-conformant” outcome when Python models are present, reducing false conformance failures for Python-model projects. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=_conformance_check_for_python_models` -->
 
 ### Visual editor
 
@@ -130,7 +115,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More reliable live log viewing for in-progress runs**: In-progress logs now truncate more safely (by line count, and optionally by byte size) with clearer truncation messaging, including a structured “Note” record for structured logs. <!-- PRs: `https://github.com/dbt-labs/scribe/pulls?q=REDIS_BYTE_SIZE_LIMIT` -->
 
-- **Logging configuration fixes for trace/debug and Redis size limits**: Corrected TRACE/DEBUG log-level mapping and ensured Redis payload size limiting configuration is propagated correctly to logging components. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=SCRIBE_REDIS_BYTE_SIZE_LIMIT` -->
+- **Enhanced logging limits for in-progress runs**: Logs for in-progress runs are also limited by memory usage, in addition to the existing 1,000-line limit. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=SCRIBE_REDIS_BYTE_SIZE_LIMIT` -->
 
 ## Behavior Changes
 
@@ -141,8 +126,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Reduced risk of intermittent permission issues near token expiry**: Cached authorization decisions now use a shorter TTL to reduce edge cases where cached decisions outlive practical token validity under latency. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` -->
 
 ### APIs and client generation
-
-- **MetricFlow validation jobs no longer report a “compiled” phase**: Manifest validation jobs no longer record `compiledAt` / a `COMPILED` phase, which may affect tooling that relied on that field for validation jobs. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+mark_compiled+manifest_validation_job` -->
 
 - **Stricter request validation metadata in gRPC protos**: Some gRPC request fields are now annotated as required; if you generate client stubs from these protos, ensure your build/runtime includes the appropriate `buf.validate` dependencies for your language. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/846f78282973348f3e9bb1c75a8a0e547512c37e...c78b57e73288f12319535f65438b7adf7458c220` -->
 
