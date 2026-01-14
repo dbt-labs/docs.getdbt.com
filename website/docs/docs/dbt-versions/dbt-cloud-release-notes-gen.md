@@ -24,7 +24,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform and Studio
 
-- **Salesforce Data 360 connection support (dbt Fusion required)**: Salesforce can now be selected as a connection type, with compatibility checks to ensure the required dbt Fusion + adapter support is present. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=cc-3048` `https://github.com/dbt-labs/cloud-ui/pulls?q=salesforce_v0` `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+- **Salesforce Data 360 connection support (dbt Fusion required)**: Salesforce can now be selected as a connection type, with compatibility checks to ensure the required dbt Fusion + adapter support is present. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=cc-3048` `https://github.com/dbt-labs/cloud-ui/pulls?q=salesforce_v0` `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
 
 ### APIs
 
