@@ -36,15 +36,15 @@ The Query console menu is located at the top right of the Query editor. It conta
  - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
-## Build a query
+## Semantic Layer querying
 
-Query Builder in dbt <Constant name="query_page" /> lets you build queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities. With Query Builder, you can:
+The Semantic Layer querying in dbt <Constant name="query_page" /> lets you build queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities. With this feature, you can:
 
 - Build analyses from your predefined semantic layer metrics.
 - Have filters, time ranges, and aggregates tailored to the semantic model.
 - View the underlying SQL code for each metric query. 
 
-To create a query in Query Builder:
+To create a query:
 
 1. From the main menu, go to **<Constant name="query_page" />**.
 2. Click **Build a query**. 
@@ -59,7 +59,7 @@ To create a query in Query Builder:
 
     <DocCarousel slidesPerView={1}>
 
-    <Lightbox src="/img/docs/dbt-insights/insights-query-builder-interface.png" title="Query Builder in dbt Insights" />
+    <Lightbox src="/img/docs/dbt-insights/insights-query-builder-interface.png" title="Semantic Layer querying within dbt Insights" />
 
     <Lightbox src="/img/docs/dbt-insights/insights-query-builder.png" title="Results are displayed in the Data tab" />
 
