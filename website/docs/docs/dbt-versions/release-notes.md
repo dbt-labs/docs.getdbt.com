@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
-**Coming soon!**
+- **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/cloud-integrations/downstream-exposures). 
 
 ## December 2025
 - **Enhancement**:  dbt SSO slugs are now system-generated during SSO setup and aren't customizable. SSO slug configurations currently in use will remain valid; they will be read-only and cannot be changed. If you delete your existing SSO configuration and create a new one, you'll be provided with a new system-generated SSO slug. This change enhances security and prevents accounts from setting slugs that "impersonate" other organizations.
