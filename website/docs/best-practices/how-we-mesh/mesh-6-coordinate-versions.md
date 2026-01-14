@@ -63,7 +63,11 @@ After deciding that a change needs a new [version](/reference/resource-propertie
 
 1. In the model's `properties.yml` file, set a [`deprecation_date`](/reference/resource-properties/deprecation_date) for the model's old version. The `deprecation_date` is a date in the future that signifies when the old version will be removed.
    
-   This notifies downstream consumers and will appear in the `dbt run` logs as a warning that the old version is nearing deprecation and consumers will need to [migrate](#best-practices-for-consumers) to the new version. 
+   This notifies downstream consumers and will appear in the `dbt run` logs as a warning that the old version is nearing deprecation and consumers will need to [migrate](#best-practices-for-consumers) to the new version.
+   
+   :::important
+   If your model has an [enforced contract](/docs/mesh/govern/model-contracts), you **cannot delete the model** until after the deprecation date has passed. This ensures downstream consumers have adequate time to migrate before the model is removed.
+   ::: 
    
     <File name='models/properties.yml'>
     ```yaml
@@ -115,7 +119,11 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 
 #### Step 6: Clean up deprecated versions
 
-After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity. 
+After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
+
+:::caution Models with enforced contracts
+If your model has an [enforced contract](/docs/mesh/govern/model-contracts), ensure the deprecation date has passed before attempting to delete the model. dbt will prevent deletion of models with enforced contracts until after their deprecation date to protect downstream consumers.
+::: 
 
 <Tabs>
 <TabItem value="hard-delete" label="Hard delete (cleanest)">
