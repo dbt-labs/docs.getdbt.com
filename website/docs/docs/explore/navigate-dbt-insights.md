@@ -44,7 +44,7 @@ The Semantic Layer querying in dbt <Constant name="query_page" /> lets you build
 - Have filters, time ranges, and aggregates tailored to the semantic model.
 - View the underlying SQL code for each metric query. 
 
-To create a query:
+To build a query in dbt <Constant name="query_page" />:
 
 1. From the main menu, go to **<Constant name="query_page" />**.
 2. Click **Build a query**. 
