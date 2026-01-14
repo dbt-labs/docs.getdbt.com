@@ -46,7 +46,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights experience
 
-- **Query Builder is no longer labeled “Beta”**: The Query Builder UI is no longer marked as beta across entry points and saved-query tabs. <!-- PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
+- **Query Builder is now generally available (GA)**: The **Build a query** button is no longer marked as beta in dbt Insights. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
 
 - **Copilot (if enabled): improved chat handoff, streaming, and navigation**: Copilot chat handoffs are more reliable, streaming message updates are more robust, auto-scroll behavior is improved, and Copilot deep links/routes are more consistent. <!-- PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
 
