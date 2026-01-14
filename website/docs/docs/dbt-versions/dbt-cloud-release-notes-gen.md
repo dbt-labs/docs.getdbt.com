@@ -18,6 +18,157 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## January 14, 2026
+
+## New
+
+### dbt platform and Studio
+
+- **Salesforce Data 360 connection support (dbt Fusion required)**: Salesforce can now be selected as a connection type, with compatibility checks to ensure the required dbt Fusion + adapter support is present. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=cc-3048` `https://github.com/dbt-labs/cloud-ui/pulls?q=salesforce_v0` `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+
+### APIs
+
+- **Fusion migration readiness endpoint**: Added an API endpoint to determine whether a project is eligible for Fusion migration. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+FusionStatusView+is_fusion_eligible` -->
+
+- **Cost Insights API (GraphQL, feature-gated)**: Added an `environment.costInsights` field to retrieve daily aggregated cost/time/compute metrics (including “saved/reused” metrics where available), with filtering and sorting options. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` -->
+
+## Enhancements
+
+### Copilot and AI assistance
+
+- **More resilient agent runs when tools fail**: Copilot/agent tool execution errors are now returned as structured tool-error responses instead of failing the entire run. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
+
+- **Better project context retrieval for agent workflows**: Production agent toolsets now include additional retrieval/search tooling to improve relevance of agent responses. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
+
+- **Improved Azure OpenAI connection verification for GPT‑5 deployments**: Azure OpenAI connection verification now uses GPT‑5-compatible completion parameters for GPT‑5 deployments, reducing false verification failures. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
+
+- **More robust OpenAI request parameter handling**: Completion calls now avoid parameter conflicts when providing defaults while still allowing overrides, improving compatibility with custom LLM parameter tuning. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
+
+- **Simplified Azure OpenAI setup in dbt platform**: Azure OpenAI configuration now supports pasting a “Target URI” and automatically parsing endpoint details, reducing setup friction. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=parseAzureTargetUri` `https://github.com/dbt-labs/cloud-ui/pulls?q=azure_target_uri_input` -->
+
+### Cost Insights
+
+- **Cost Insights UX improvements in dbt platform**: Updated the Cost Insights experience across project/job surfaces with richer time-range options, improved deep-linking via URL parameters, and clearer in-product explanations of cost metrics. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=CostInsights` `https://github.com/dbt-labs/cloud-ui/pulls?q=meta5835EnableCostEstimationFrontend` -->
+
+- **Cost Insights and Usage views use real cost insights data**: Cost and usage surfaces now use a shared “cost insights” data source, with improved “without savings” visualization and table UX (date labels, duration formatting, sorting, and loading states). <!-- PRs: `https://github.com/dbt-labs/metadata-ui/compare/692970d29da27b9fe80ad8fec42d00b06ac66b31...4b4c66fbc2e42254de9a183080098dd6c81f8bfd` -->
+
+### Insights experience
+
+- **Query Builder is no longer labeled “Beta”**: The Query Builder UI is no longer marked as beta across entry points and saved-query tabs. <!-- PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
+
+- **Copilot (if enabled): improved chat handoff, streaming, and navigation**: Copilot chat handoffs are more reliable, streaming message updates are more robust, auto-scroll behavior is improved, and Copilot deep links/routes are more consistent. <!-- PRs: `https://github.com/dbt-labs/insights-ui/compare/e7693d6136f4995444c34255891f3286249f7564...1f5f9f8dc959cee59f2078f5f064953869eaa8ac` -->
+
+### Search and catalog
+
+- **Improved search relevance and highlighting**: Search scoring now prioritizes exact and “most terms match” results more strongly, and highlight selection is more deterministic. Clients may now see column-description matches surfaced distinctly. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` `https://github.com/dbt-labs/metadata-ui/compare/692970d29da27b9fe80ad8fec42d00b06ac66b31...4b4c66fbc2e42254de9a183080098dd6c81f8bfd` -->
+
+- **Saved Queries are more broadly available in Explorer**: Saved Queries and related Explorer navigation/filtering are no longer hidden behind internal-only flags where supported by your account/features. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/compare/692970d29da27b9fe80ad8fec42d00b06ac66b31...4b4c66fbc2e42254de9a183080098dd6c81f8bfd` -->
+
+- **Explorer search and lineage UX improvements**: Search field labels and match wording are more consistent (including column-description matches), and the embedded/non-fullscreen lineage view uses a lighter query path for improved load responsiveness. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/compare/692970d29da27b9fe80ad8fec42d00b06ac66b31...4b4c66fbc2e42254de9a183080098dd6c81f8bfd` -->
+
+### IDE / editing workflows
+
+- **Studio uses a single IDE experience**: Studio now loads a unified IDE package rather than switching between separate “legacy” and “next” IDE modes. <!-- PRs: `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+
+- **Defer-to-production honors `defer-env-id` override (supported dbt versions)**: If your project sets `dbt-cloud.defer-env-id`, Studio will now use it without requiring a feature flag (when the Cloud CLI runtime is supported). <!-- PRs: `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+
+- **Improved log exporting in Studio**: Download/copy behavior for command logs is now applied more consistently (including debug logs), making it easier to export logs for troubleshooting. <!-- PRs: `https://github.com/dbt-labs/studio/compare/47ce4ccdd4dd2c4841335b796d368390a79bdc5e...20c68a3ebce6d171e5240509934446b7d14c09c3` -->
+
+- **More powerful multi-edit support in the IDE**: The IDE `files/replace` API now supports applying multiple explicit edits in one request (including multiline edits) with safer validation and file handling. <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/4608a18aaa83ac11bcab67efd282fc79a04bfced...acd70d6529f606d7b6c7aa115441b7c85f6267c5` -->
+
+- **More actionable errors when starting Cloud CLI sessions**: Cloud CLI session creation now returns clearer HTTP errors and guidance for common setup/permission/config issues (including IDE/LSP flows). <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli/compare/2eb7278c23acdf7e168ecc232ad64e1736abce22...1181ac1885b00fca2380c4f56050e2817b9eba34` -->
+
+- **Invocation metadata includes a globally unique account identifier**: Invocation/session metadata now includes an `account_identifier` (e.g., `act_…`) in addition to numeric `account_id` to improve auditing and supportability. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli/compare/2eb7278c23acdf7e168ecc232ad64e1736abce22...1181ac1885b00fca2380c4f56050e2817b9eba34` -->
+
+### dbt platform administration
+
+- **Settings detail pages moved to a resizable drawer**: Settings detail experiences (users, webhooks, tokens, IP restrictions, audit log details, etc.) now use a Drawer-based UI with improved interaction behavior. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=SettingsSideDrawer` `https://github.com/dbt-labs/cloud-ui/pulls?q=SettingsDrawerContent` -->
+
+- **Profile creation is more resilient**: Profile creation now explicitly creates dependencies and performs best-effort cleanup on failures to reduce partial/orphaned objects. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=useCreateProfileWithDependencies` -->
+
+### Run orchestration and conformance
+
+- **Conformance artifact uploads are more reliable for large runs**: Conformance artifacts can now be uploaded via an in-memory buffer with a fallback to disk, reducing disk pressure on large runs. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=ORC-3108` -->
+
+- **More reliable repo-cache restores (optional hard reset)**: Added an option to hard reset the working tree after restoring repo cache to reduce checkout issues caused by stale/dirty cached state. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=ORC_RESET_REPO_CACHE_ON_CHECKOUT` -->
+
+- **Improved generation of query metadata artifacts used for cost/resource insights**: Query capture is enabled earlier in step execution, and missing source files now produce clear warnings instead of silently skipping artifact generation. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=resource_queries+run_model_query_data` -->
+
+## Fixes
+
+### dbt platform
+
+- **Semantic Layer settings messaging corrected**: Success and warning states are now shown more consistently and with clearer guidance when configuration is missing or removed. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=Semantic+Layer+configuration` -->
+
+### Core application / API
+
+- **Profiles API supports clearing extended attributes**: The Profiles update API now allows unsetting extended attributes by setting `extended_attributes_id` to `null`. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+extended_attributes_id+Set+to+null+to+unset` -->
+
+- **Recently Viewed updates are more reliable (and keeps 5 items)**: Recently Viewed entries now update atomically to reduce duplicates, and the list retains the 5 most recent items. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+RecentlyViewedDjangoModel+update_or_create` -->
+
+- **Run log tailing is more reliable on non-AWS object storage**: “Last chunk” sizing behavior is now applied consistently when fetching only the tail of run logs. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+ObjectStorageReader+LAST_CHUNK_BYTE_SIZE` -->
+
+- **Stricter account scoping for run-step execution**: Starting a run step now validates that the run belongs to the provided `account_id`, preventing cross-account access. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+StartRunStep+not+found+for+account` -->
+
+- **Reduced intermittent feature-flag lookup errors under concurrency**: LaunchDarkly context lookups are now protected with cache locking to reduce race-condition failures under load. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+TTLCache+lock+KeyError+race` -->
+
+### IDE / editing workflows
+
+- **More reliable `show` and `compile` executions**: CLI flags intended to disable cache/JSON/partial parsing are now appended in a CLI-safe position to avoid dbt CLI parsing issues during `show`/`compile`. <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/4608a18aaa83ac11bcab67efd282fc79a04bfced...acd70d6529f606d7b6c7aa115441b7c85f6267c5` -->
+
+### Model/metadata services
+
+- **Model Execution History is now safely tenant-scoped**: Execution history lookups now validate `(account, project, environment)` ownership and return “not found” for mismatches; results are also filtered by `account_id` to prevent cross-tenant leakage. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/846f78282973348f3e9bb1c75a8a0e547512c37e...c78b57e73288f12319535f65438b7adf7458c220` -->
+
+- **Exposure “latest run” reporting is more reliable**: Exposure latest-run tracking now consistently populates `account_id` (including a backfill for existing rows) to improve per-account scoping and correctness. <!-- PRs: `https://github.com/dbt-labs/codex/pull/2181` `https://github.com/dbt-labs/codex/pull/2191` -->
+
+- **Query cancellation supports more job types**: The `cancelQuery` mutation can now cancel additional query job types that previously could not be cancelled. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+head%3Apatricky%2Fcancel-query-jobs` -->
+
+### Run orchestration and conformance
+
+- **dbt argument passthrough now preserves `--resource-type`**: Runs that rely on `--resource-type` filtering will no longer have that flag dropped during argument filtering/forwarding. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=%22--resource-type%22` -->
+
+- **Conformance checks no longer fail builds solely due to dbt Python models**: Removed a blanket “non-conformant” outcome when Python models are present, reducing false conformance failures for Python-model projects. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=_conformance_check_for_python_models` -->
+
+### Visual editor
+
+- **Preview and Source upload/seed are more reliable with `--no-defer`**: Fixed argument ordering so `--no-defer` is interpreted consistently, reducing preview/seed failures caused by CLI flag parsing. <!-- PRs: `https://github.com/dbt-labs/visual-editor/compare/c854a51a529265fd7c1da7be7734d922cec039be...af6fe9d7c16cb9c71217b1f9575d6920d1fda80a` -->
+
+### Logging
+
+- **More reliable live log viewing for in-progress runs**: In-progress logs now truncate more safely (by line count, and optionally by byte size) with clearer truncation messaging, including a structured “Note” record for structured logs. <!-- PRs: `https://github.com/dbt-labs/scribe/pulls?q=REDIS_BYTE_SIZE_LIMIT` -->
+
+- **Logging configuration fixes for trace/debug and Redis size limits**: Corrected TRACE/DEBUG log-level mapping and ensured Redis payload size limiting configuration is propagated correctly to logging components. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=SCRIBE_REDIS_BYTE_SIZE_LIMIT` -->
+
+## Behavior Changes
+
+### Authentication / authorization
+
+- **Catalog requests require identity context**: Catalog authorization now requires identity-header validation; requests missing required identity context may now be rejected where they previously succeeded. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` -->
+
+- **Reduced risk of intermittent permission issues near token expiry**: Cached authorization decisions now use a shorter TTL to reduce edge cases where cached decisions outlive practical token validity under latency. <!-- PRs: `https://github.com/dbt-labs/codex-api/compare/d24b0f0e9b9c8f2f1505a057731dfb171177ebf3...05c1a0924a74c2684baacf4796cb1d4eee126d8a` -->
+
+### APIs and client generation
+
+- **MetricFlow validation jobs no longer report a “compiled” phase**: Manifest validation jobs no longer record `compiledAt` / a `COMPILED` phase, which may affect tooling that relied on that field for validation jobs. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+mark_compiled+manifest_validation_job` -->
+
+- **Stricter request validation metadata in gRPC protos**: Some gRPC request fields are now annotated as required; if you generate client stubs from these protos, ensure your build/runtime includes the appropriate `buf.validate` dependencies for your language. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/846f78282973348f3e9bb1c75a8a0e547512c37e...c78b57e73288f12319535f65438b7adf7458c220` -->
+
+### Operations
+
+- **Upgrade note: additional database constraints/migrations**: This release includes additional account-isolation/support-constraint migrations that may increase upgrade runtime depending on database size. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+account_isolation_batch_6+support_constraints_batch_10` -->
+
+- **Upgrade note: tighter project/environment scoping for Model Execution History**: Model Execution History now enforces stricter `(account, project, environment)` validation; ensure any required migrations/backfills are applied so existing environments are properly scoped after upgrade. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/846f78282973348f3e9bb1c75a8a0e547512c37e...c78b57e73288f12319535f65438b7adf7458c220` -->
+
+- **Feature flag updates can propagate faster (LaunchDarkly streaming)**: Some services no longer force LaunchDarkly streaming off, allowing near real-time flag updates; ensure your environment allows outbound connectivity for long-lived LaunchDarkly streaming connections if you use restrictive egress rules. <!-- PRs: `https://github.com/dbt-labs/scheduler/compare/b6cf66a557d4fafdc5ddf8965243c82e5dcee5ea...5fb1846cf6ce3f0c5783c3cc3b3f47192f3174a3` -->
+
+### UI messaging
+
+- **Updated dbt v1.7 end-of-life labeling**: dbt v1.7 is now labeled as end-of-life in version lifecycle messaging. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=End-of-life+as+of+Nov+2%2C+2024` `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+1.7+End-of-life+Nov` -->
+
+(Also written to `release-notes/final-release-notes-2026-01-14.md`.)
+
+
 ## January 7, 2026
 
 No changes of note this week.
