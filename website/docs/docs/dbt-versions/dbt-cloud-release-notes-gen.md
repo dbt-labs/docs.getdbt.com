@@ -80,10 +80,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Fixes
 
-### dbt platform
-
-- **Semantic Layer settings messaging corrected**: Success and warning states are now shown more consistently and with clearer guidance when configuration is missing or removed. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=Semantic+Layer+configuration` -->
-
 ### Core application / API
 
 - **Profiles API supports clearing extended attributes**: The Profiles update API now allows unsetting extended attributes by setting `extended_attributes_id` to `null`. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+extended_attributes_id+Set+to+null+to+unset` -->
