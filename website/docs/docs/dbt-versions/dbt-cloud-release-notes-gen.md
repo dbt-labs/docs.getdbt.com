@@ -90,7 +90,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Recently Viewed updates are more reliable (and keeps 5 items)**: Recently Viewed entries now update atomically to reduce duplicates, and the list retains the 5 most recent items. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+RecentlyViewedDjangoModel+update_or_create` -->
 
-- **Run log tailing is more reliable on non-AWS object storage**: “Last chunk” sizing behavior is now applied consistently when fetching only the tail of run logs. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+ObjectStorageReader+LAST_CHUNK_BYTE_SIZE` -->
+- **Run log tailing is more reliable on non-AWS object storage**: Debug logs for completed runs now consistently fetch only the tail of the log when requested. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+ObjectStorageReader+LAST_CHUNK_BYTE_SIZE` -->
 
 - **Stricter account scoping for run-step execution**: Starting a run step now validates that the run belongs to the provided `account_id`, preventing cross-account access. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+is%3Amerged+StartRunStep+not+found+for+account` -->
 
