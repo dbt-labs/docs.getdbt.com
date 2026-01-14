@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More robust OpenAI request parameter handling**: Completion calls now avoid parameter conflicts when providing defaults while still allowing overrides, improving compatibility with custom LLM parameter tuning. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/fa7756165da9d3039ca4013b12e7fb264fe565ba...b48536eb201734c6753040ea63beacd4bc41720a` -->
 
-- **Simplified Azure OpenAI setup in dbt platform**: Azure OpenAI configuration now supports pasting a “Target URI” and automatically parsing endpoint details, reducing setup friction. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=parseAzureTargetUri` `https://github.com/dbt-labs/cloud-ui/pulls?q=azure_target_uri_input` -->
+- **BYOK for Azure OpenAI**: Added support for Azure Foundry URLs, with automatic endpoint parsing and validation to reduce setup friction. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=parseAzureTargetUri` `https://github.com/dbt-labs/cloud-ui/pulls?q=azure_target_uri_input` -->
 
 ### Insights experience
 
