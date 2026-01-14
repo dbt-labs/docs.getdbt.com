@@ -49,7 +49,7 @@ If your IdP isn’t on the list, it can be supported using <Constant name="cloud
 To retrieve the necessary <Constant name="cloud" /> configurations for use in Okta or Entra ID:
 
 1. Navigate to your <Constant name="cloud" /> **Account settings**.
-2. Select **SSO & SCIM** from the left-side menu.
+2. Under **Settings**, click **SSO & SCIM**.
 3. Scroll to the bottom of your SSO configuration settings and click **Enable SCIM**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the configuration settings." />
 4. Record the **SCIM base URL** field for use in a later step.
