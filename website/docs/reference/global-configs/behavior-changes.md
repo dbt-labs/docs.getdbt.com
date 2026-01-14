@@ -2,16 +2,29 @@
 title: "Behavior changes"
 id: "behavior-changes"
 sidebar: "Behavior changes"
+intro_text: "Behavior change flags let you control when to adopt new runtime behaviors in dbt. They're configured in your dbt_project.yml file."
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+
+:::info How this relates to other changes
+
+Since behavior change flags are different from other dbt changes, it's important to understand the difference:
+- [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
+- [Deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+
+See the [Changes overview](/reference/changes-overview) for a quick comparison.
+
+If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-fusion), all behavior change flags are removed and the new behavior is always enabled.
+
+:::
 
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
 
 Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension, by:
 - Providing a better, more sensible, and more consistent default behavior for new users/projects.
-- Providing a migration window for existing users/projects &mdash; nothing changes overnight without warning.
-- Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
+- Providing a migration window for existing users/projects &mdash; nothing changes overnight without warning.
+- Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
 1. **Introduction (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
@@ -74,9 +87,9 @@ flags:
 
 #### dbt Core behavior changes
 
-This table outlines which month of the "Latest" release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **Latest** release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag                                                            | <Constant name="cloud" /> "Latest": Intro | <Constant name="cloud" /> "Latest": Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | 
+| Flag                                                            | <Constant name="cloud" /> **Latest**: Intro | <Constant name="cloud" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             |
 | [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             |
@@ -201,7 +214,7 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="cloud" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -214,7 +227,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
 
 ```
 
-If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="cloud" /> "Latest" release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
+If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="cloud" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
 
 ```bash
 
@@ -309,7 +322,7 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 
 dbt supports parsing key-value arguments that are inputs to generic tests when specified under the `arguments` property. In the past, dbt didn't support a way to clearly disambiguate between properties that were inputs to generic tests and framework configurations, and only accepted arguments as top-level properties.
 
-In "Latest", the `require_generic_test_arguments_property` flag is set to `True` by default. In dbt Core versions prior to 1.10.8, the default value is `False`. Using the `arguments` property in test definitions is optional in either case.
+In **Latest**, the `require_generic_test_arguments_property` flag is set to `True` by default. In dbt Core versions prior to 1.10.8, the default value is `False`. Using the `arguments` property in test definitions is optional in either case.
 
 If you do use `arguments` while the flag is `False`, dbt will recognize it but raise the `ArgumentsPropertyInGenericTestDeprecation` warning. This warning lets you know that the flag will eventually default to `True` across all releases and will be parsed as keyword arguments to the data test.
 
@@ -382,7 +395,7 @@ When this error is raised, you should rename one of the resources, or refactor t
 
 The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package. 
 
-The flag is set to `False` by default in "Latest" and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
+The flag is set to `False` by default in **Latest** and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
 
 For example, the following model in the package `my_package` is imported by the project `my_project`:
 

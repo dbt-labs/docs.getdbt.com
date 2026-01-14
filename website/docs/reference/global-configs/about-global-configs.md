@@ -35,7 +35,17 @@ on-run-start:
 ## Available flags
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
+### Common flag examples
 
+Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
+
+```bash
+dbt run --target dev
+dbt run --target prod
+dbt build --target staging
+```
+
+The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/core/connect-data-platform/connection-profiles#understanding-targets-in-profiles).
 
 <FilterableTable>
 

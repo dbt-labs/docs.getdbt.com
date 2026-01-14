@@ -36,9 +36,22 @@ State-aware orchestration does not depend on [static analysis](/docs/fusion/new-
 
 State-aware orchestration uses shared state tracking to determine which models need to be built by detecting changes in code or data every time a job runs. It also supports custom refresh intervals and custom source freshness configurations, so <Constant name="cloud" /> only rebuilds models when they're actually needed.
 
-For example, you can configure your project so that <Constant name="cloud" /> skips rebuilding the dim_wizards model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
+For example, you can configure your project so that <Constant name="cloud" /> skips rebuilding the `dim_wizards` model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
+
+### Handling concurrent jobs
+
+If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
+
+Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaulates whether a model needs rebuilding based on the model’s compiled code and upstream data state.
+
+What happens when jobs overlap:
+
+- If both jobs reach the same model at exactly the same time, one job waits until the other finishes. This is to prevent collisions in the data warehouse when two jobs try to build the same model at the same time.
+- After the first job finishes building the model, the second job still checks whether a rebuild is needed. If there are new data or code changes to incorporate, the second job builds the model again. If there are no changes and building the model would produce the same result, the second job reuses the model.
+
+To prevent a job from being built too frequently even when the code or data state has changed, you can reduce build frequency by using the `build_after` config. For information on how to use `build_after`, refer to [Model freshness](/reference/resource-configs/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
@@ -60,6 +73,8 @@ Efficient testing in state-aware orchestration reduces warehouse costs by avoidi
 - **Test reuse** &mdash; Tests are reused in cases where no logic in the code or no new data could have changed the test's outcome.
 - **Test aggregation** &mdash; When there are multiple tests on a model, dbt combines tests to run as a single query against the warehouse, rather than running separate queries for each test.
 
+Currently, Efficient testing is only available in deploy jobs, not in continuous integration (CI) or merge jobs.
+
 ### Supported data tests
 
 The following tests can be reused when Efficient testing is enabled:
@@ -74,7 +89,7 @@ Before enabling Efficient testing, make sure you have configured [`static_analys
 To enable Efficient testing:
 
 1. From the main menu, go to **Orchestration** > **Jobs**. 
-2. Select your job. Go to your job settings and click **Edit**. 
+2. Select your deploy job. Go to your job settings and click **Edit**. 
 3. Under **Enable Fusion cost optimization features**, expand **More options**.
 4. Select **Efficient testing**. This feature is disabled by default.
 5. Click **Save**.
@@ -116,7 +131,7 @@ select * from joined
 
 - `unique` test: If `orders.order_id` and `customers.customer_id` are unique upstream, uniqueness of `order_id` is preserved and the upstream result can be reused. 
 
-### Limitation
+### Limitations
 
 The following section lists some considerations when using Efficient testing in state-aware-orchestration:
 
@@ -132,6 +147,12 @@ The following section lists some considerations when using Efficient testing in 
     store_failures: true | false
     where: <string>
   ```
+  
+ - **Efficient testing is available only in deploy jobs**. CI and merge jobs currently do not have the option to enable this feature. 
+
+## Related FAQs
+
+<FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
 
