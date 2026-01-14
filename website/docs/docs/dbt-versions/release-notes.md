@@ -18,4 +18,4 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
-- **New:** The [Query Builder](/docs/explore/navigate-dbt-insights#query-builder) in dbt <Constant name="query_page" /> is now generally available (GA). With Query Builder, you can build SQL queries against the Semantic Layer without writing SQL code.
+- **New:** The [query builder](/docs/explore/navigate-dbt-insights#build-a-query) in dbt <Constant name="query_page" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
