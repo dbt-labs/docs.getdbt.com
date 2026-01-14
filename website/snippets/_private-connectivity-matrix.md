@@ -32,7 +32,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 <table>
   <thead>
     <tr>
-      <th>Data platform</th>
+      <th>Service</th>
       <th>AWS MT</th>
       <th>AWS ST</th>
       <th>Azure MT</th>
@@ -115,6 +115,15 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
       <td><Term id="native-provisioned">Native</Term></td>
     </tr>
     <tr>
+      <td>Azure Fabric</td>
+      <td>-</td>
+      <td>-</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td>Google BigQuery*</td>
       <td>-</td>
       <td>-</td>
@@ -137,24 +146,25 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ---
 
-### Connecting dbt Cloud to VCS
+### Connecting dbt Cloud to self-hosted services
 
-<Constant name="cloud" /> can establish private connections to your self-hosted version control systems. All VCS connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
+<Constant name="cloud" /> can establish private connections to your self-hosted services. All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
 
-| VCS | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
-|:----|:------:|:------:|:--------:|:--------:|:------:|
+| Service | AWS MT | AWS ST | Azure MT | Azure ST | GCP MT |
+|:--------|:------:|:------:|:--------:|:--------:|:------:|
 | GitHub Enterprise Server | ✅ | ✅ | ✅ | ✅ | ❌ |
 | GitLab Self-Managed | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Bitbucket Data Center | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Azure DevOps Server | - | - | ✅ | ✅ | - |
 | AWS CodeCommit | ❌ | ✅ | - | - | - |
+| Postgres | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Spark | ✅ | ✅ | - | - | - |
+| Starburst / Trino | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Teradata (self-hosted) | ✅ | ✅ | ✅ | ✅ | ✅ |
 
----
+For services not explicitly listed above, you can establish private connectivity using the same <Term id="customer-provisioned">customer-provisioned</Term> approach. This model supports any service that can be placed behind a load balancer and exposed via your cloud platform's private connectivity technology.
 
-### Self-hosted services
-
-For services not explicitly listed above, you can establish private connectivity using a <Term id="customer-provisioned">customer-provisioned</Term> approach. This model supports any service that can be placed behind a load balancer and exposed via your cloud platform's private connectivity technology.
-
-**Examples:** AWS EMR (Spark, Hive, Presto), self-managed databases (MySQL, PostgreSQL, SQL Server), custom applications, or any service running in your VPC.
+To inquire about private connectivity to additional platforms, contact your account team.
 
 **Prerequisites by cloud platform:**
 
@@ -172,25 +182,3 @@ Once you create the private connectivity resource, share the resource ID (endpoi
 - [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/gcp-self-hosted-psc)
 
 If you have questions about whether your configuration is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
-
----
-
-## Terminology
-
-### Parties
-
-| Term | Definition |
-|:-----|:-----------|
-| **Consumer** | The party that creates a private endpoint to connect to a service. The consumer initiates the connection. |
-| **Service producer** | The party that provisions and manages the service that the consumer connects to. The service producer publishes a resource ID that the consumer uses to finalize and establish the connection. |
-
-### Provisioning models
-
-These models describe who acts as the **service producer** (the party that provisions the service that dbt Cloud connects to or that you connect to).
-
-| Term | Definition |
-|:-----|:-----------|
-| **Native** | The cloud platform (AWS, Azure, GCP) is the service producer for its own services (Redshift, Synapse, BigQuery). You obtain the resource ID from the cloud platform and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **Vendor** | A third-party vendor (Snowflake, Databricks, Teradata) is the service producer. You obtain the resource ID from the vendor and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **Customer-provisioned** | You are the service producer. You generate your own resource ID (endpoint service name, alias, or service attachment URI) and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **dbt-provisioned** | dbt is the service producer. You are the consumer and create the private endpoint in your environment to connect to dbt Cloud. This applies only to connections TO dbt Cloud. |
