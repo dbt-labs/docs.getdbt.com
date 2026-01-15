@@ -5,6 +5,7 @@ hoverSnippet: Learn how to coordinate producers and consumers when introducing m
 intro_text: Coordinating model versions across your mesh is a critical part of the model versioning process. This guide will walk you through the safe best practices for coordinating producers and consumers when introducing model versions.
 ---
 
+import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md'; 
 
 An important part of our dbt <Constant name="mesh" /> workflow is [model versions](/docs/mesh/govern/model-versions). This enables better data model management and is critical in a scenario where multiple teams share models across projects.
 
@@ -64,8 +65,7 @@ After deciding that a change needs a new [version](/reference/resource-propertie
 1. In the model's `properties.yml` file, set a [`deprecation_date`](/reference/resource-properties/deprecation_date) for the model's old version. The `deprecation_date` is a date in the future that signifies when the old version will be removed.
    
    This notifies downstream consumers and will appear in the `dbt run` logs as a warning that the old version is nearing deprecation and consumers will need to [migrate](#best-practices-for-consumers) to the new version.
-   
-   import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md'; 
+
    <DeprecationDateCallout />
    
     <File name='models/properties.yml'>
@@ -86,10 +86,10 @@ After deciding that a change needs a new [version](/reference/resource-propertie
                 exclude: [column_to_remove]   # <— specify which columns were removed in v2
     ```
     </File>
-2. Merge the new version into the main branch.
-3. Run the job to build the new version.
-4. Verify that the new version builds successfully.
-5. Verify that the deprecation date is set correctly in the `dbt run` logs.
+3. Merge the new version into the main branch.
+4. Run the job to build the new version.
+5. Verify that the new version builds successfully.
+6. Verify that the deprecation date is set correctly in the `dbt run` logs.
 
 If you try to reference models (for example, `{{ ref('upstream_project', 'model_name', v=1) }}`) using the `v=1` argument after the deprecation date, the `ref` call will fail once the producer project removes the `v1` version.
 
@@ -120,7 +120,6 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 
 After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
 
-import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md'; 
 <DeprecationDateCallout />
 
 <Tabs>
