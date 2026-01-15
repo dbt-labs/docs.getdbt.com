@@ -23,8 +23,10 @@ Use the <Constant name="copilot" /> chat feature in <Constant name="cloud_ide" /
     - Admins must [enable <Constant name="copilot" />](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot) (and opt-in to AI features, if required) in your dbt Cloud project settings.
 
 ## Copilot chat overview
+This section covers the different ways you can use <Constant name="copilot" /> chat in <Constant name="cloud_ide" />.
 
-<Expandable alt_header="Generate SQL" >
+<Tabs>
+<TabItem value="generate-sql" label="Generate SQL">
 
 Ask <Constant name="copilot" /> to generate SQL queries using natural language, making it faster to build or modify dbt models without manual SQL coding.
 
@@ -41,9 +43,9 @@ To generate SQL queries:
 
 <Lightbox src="/img/docs/dbt-cloud/copilot-chat-generate-sql.png" width="70%" title="SQL option."/> 
 
-</Expandable>
+</TabItem>
 
-<Expandable alt_header="Mention a model in the project" >
+<TabItem value="mention-model" label="Mention a model in the project">
 ⁠​
 This model mention capability is designed to provide a much more project-aware experience than generic code assistants, enabling you to:
 
@@ -57,9 +59,9 @@ This model mention capability is designed to provide a much more project-aware e
 
 </DocCarousel>
 
-</Expandable>
+</TabItem>
 
-<Expandable alt_header="Add and replace buttons" >
+<TabItem value="add-replace-buttons" label="Add and replace buttons">
 
 Add generated code or content into your project, or replace the selected section with the <Constant name="copilot" /> suggestion, all directly from the chat interface. This lets you review and apply changes with a single click for an efficient workflow.⁠
 ⁠​<br />
@@ -73,4 +75,8 @@ Note, if the file is empty, you'll only see **Add** as an option, since there's 
 
 <Lightbox src="/img/docs/dbt-cloud/copilot-chat-add-replace.png" width="70%" title="Add and replace buttons."/> 
 
-</Expandable>
+</TabItem>
+</Tabs>
+
+## Related docs
+- [Prompt cookbook](/guides/prompt-cookbook) &mdash; Learn how to write effective prompts for dbt <Constant name="copilot" />
