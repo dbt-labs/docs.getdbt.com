@@ -48,7 +48,7 @@ If your dbt project relies on models from another project, you can define that r
 5. Commit the changes and ensure the dependency is configured in <Constant name="cloud" />.
 6. dbt will resolve the dependency, ensure upstream projects are built first, and surface cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views.
 
-## Example
+### Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
 
