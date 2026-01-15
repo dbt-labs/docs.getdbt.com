@@ -37,7 +37,7 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 <UseCaseInfo/>
 
-## How do I specify project dependencies?
+## Define project dependencies
 
 If your dbt project relies on models from another project, you can define that relationship using project dependencies. The following steps will walk you through how to specify project dependencies in dbt.
 
