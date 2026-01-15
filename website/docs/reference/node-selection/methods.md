@@ -298,8 +298,9 @@ dbt list --select "+semantic_model:orders"  # list your semantic model named "or
 The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 
-  ```bash
+```bash
 dbt run --select "source:snowplow+"    # run all models that select from Snowplow sources
+dbt run --select "source:snowplow.events+"    # run all models downstream of the events table in the Snowplow source
 ```
 
 ### source_status
