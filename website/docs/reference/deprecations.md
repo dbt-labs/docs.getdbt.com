@@ -1,19 +1,19 @@
 ---
 title: "Deprecations"
+intro_text: "Deprecations are about features in your project code (models, configs, syntax) that will stop working in future versions."
 ---
 
 :::note
 
-Deprecated functionality still works in the v1.10 release, but it is no longer supported and will be removed in a future version.  
+Deprecated functionality still works in the v1.10 release but is no longer supported and will be removed in a future version. Deprecations currently show as warnings but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)), but will cause errors after upgrading if not addressed. 
 
-This means the deprecated features only present a warning but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)). 
+Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-When the functionality is eventually removed, it will cause errors in your dbt runs after you upgrade if the deprecations are not addressed.
-
+Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)? You must resolve all deprecations listed on this page before upgrading.
 
 :::
 
-As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it’s just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
+As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it's just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
 
 ## Identify deprecation warnings
 
