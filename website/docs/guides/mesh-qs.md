@@ -59,8 +59,6 @@ In this section, you'll create two new, empty projects in <Constant name="cloud"
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
 
-<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
-
 To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
