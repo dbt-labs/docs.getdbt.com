@@ -94,9 +94,9 @@ For multi-part tasks, write them as a sequence of clear instructions. <Constant 
 **Example:**
 
 ```text
-First, filter the dataset to active users in the last 90 days.
-Then, calculate their average session duration.
-Finally, join to subscription data and group by plan tier.
+1. Filter the dataset to active users in the last 90 days.
+2. Calculate their average session duration.
+3. Join to subscription data and group by plan tier.
 ```
 
 **Why this works:** Each step is clear and actionable. You can always iterate on your prompt to refine results &mdash; start simple, then build complexity.
