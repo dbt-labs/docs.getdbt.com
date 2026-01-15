@@ -39,7 +39,7 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 ## Define project dependencies
 
-If your dbt project relies on models from another project, you can define that relationship using project dependencies. The following steps will walk you through how to specify project dependencies in dbt.
+If your dbt project relies on models from another project, you can define that relationship using project dependencies. The following steps walk you through specifying project dependencies in dbt:
 
 1. Create a file called `dependencies.yml` at the root of your dbt project.
 2. In the `dependencies.yml`, list the upstream dbt project your project depends on as they appear in the `dbt_projects.yml` file.
