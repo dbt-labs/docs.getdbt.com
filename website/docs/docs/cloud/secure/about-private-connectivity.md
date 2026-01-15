@@ -12,7 +12,7 @@ import PrivateConnectivityMatrix from '/snippets/_private-connectivity-matrix.md
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-Private connections enables secure communication from any <Constant name="cloud" /> environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/) or [Azure](https://azure.microsoft.com/en-us/products/private-link), using that provider’s private connection technology. Private connections allow <Constant name="cloud" /> customers to meet security and compliance controls as it allows connectivity between <Constant name="cloud" /> and your data platform without traversing the public internet. This feature is supported in most regions across North America, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
+Private connections enables secure communication from any <Constant name="cloud" /> environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/) or [Azure](https://azure.microsoft.com/en-us/products/private-link), using that provider's private connection technology. Private connections allow <Constant name="cloud" /> customers to meet security and compliance controls as it allows connectivity between <Constant name="cloud" /> and your data platform without traversing the public internet. This feature is supported in most regions across North America, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
 
 <CloudProviders type='a data platform' />
 
@@ -61,18 +61,52 @@ Some GCP services, such as BigQuery, may have regional restrictions for Private 
 
 ### Parties
 
-| Term | Definition |
-|:-----|:-----------|
-| **Consumer** | The party that creates a private endpoint to connect to a service. The consumer initiates the connection. |
-| **Service producer** | The party that provisions and manages the service that the consumer connects to. The service producer publishes a resource ID that the consumer uses to finalize and establish the connection. |
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Consumer</strong></td>
+      <td>The party that creates a private endpoint to connect to a service. The consumer initiates the connection.</td>
+    </tr>
+    <tr>
+      <td><strong>Service producer</strong></td>
+      <td>The party that provisions and manages the service that the consumer connects to. The service producer publishes a resource ID that the consumer uses to finalize and establish the connection.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Provisioning models
 
 These models describe who acts as the **service producer** (the party that provisions the service that dbt Cloud connects to or that you connect to).
 
-| Term | Definition |
-|:-----|:-----------|
-| **Native** | The cloud platform (AWS, Azure, GCP) is the service producer for its own services (Redshift, Synapse, BigQuery). You obtain the resource ID from the cloud platform and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **Vendor** | A third-party vendor (Snowflake, Databricks, Teradata) is the service producer. You obtain the resource ID from the vendor and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **Customer-provisioned** | You are the service producer. You generate your own resource ID (endpoint service name, alias, or service attachment URI) and share it with dbt; dbt is the consumer and creates the private endpoint. |
-| **dbt-provisioned** | dbt is the service producer. You are the consumer and create the private endpoint in your environment to connect to dbt Cloud. This applies only to connections TO dbt Cloud. |
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Native</strong></td>
+      <td>The cloud platform (AWS, Azure, GCP) is the service producer for its own services (Redshift, Synapse, BigQuery). You obtain the resource ID from the cloud platform and share it with dbt; dbt is the consumer and creates the private endpoint.</td>
+    </tr>
+    <tr>
+      <td><strong>Vendor</strong></td>
+      <td>A third-party vendor (Snowflake, Databricks, Teradata) is the service producer. You obtain the resource ID from the vendor and share it with dbt; dbt is the consumer and creates the private endpoint.</td>
+    </tr>
+    <tr>
+      <td><strong>Customer-provisioned</strong></td>
+      <td>You are the service producer. You generate your own resource ID (endpoint service name, alias, or service attachment URI) and share it with dbt; dbt is the consumer and creates the private endpoint.</td>
+    </tr>
+    <tr>
+      <td><strong>dbt-provisioned</strong></td>
+      <td>dbt is the service producer. You are the consumer and create the private endpoint in your environment to connect to dbt Cloud. This applies only to connections TO dbt Cloud.</td>
+    </tr>
+  </tbody>
+</table>
