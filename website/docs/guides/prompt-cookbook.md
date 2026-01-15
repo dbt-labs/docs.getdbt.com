@@ -22,13 +22,13 @@ This cookbook provides independent recipes for common prompting tasks. Jump to a
 
 This cookbook covers the following topics:
 <!-- no toc -->
-- [Prompt best practices](https://docs.getdbt.com/guides/prompt-cookbook?step=2)
-- [Generate SQL queries](https://docs.getdbt.com/guides/prompt-cookbook?step=3)
-- [Use what you already have](https://docs.getdbt.com/guides/prompt-cookbook?step=4)
-- [Create semantic models and metrics](https://docs.getdbt.com/guides/prompt-cookbook?step=5)
-- [Create reusable macros](https://docs.getdbt.com/guides/prompt-cookbook?step=6)
-- [Troubleshoot errors and issues](https://docs.getdbt.com/guides/prompt-cookbook?step=7)
-- [Conclusion](https://docs.getdbt.com/guides/prompt-cookbook?step=8)
+- [Prompt best practices](/guides/prompt-cookbook?step=2)
+- [Generate SQL queries](/guides/prompt-cookbook?step=3)
+- [Use what you already have](/guides/prompt-cookbook?step=4)
+- [Create semantic models and metrics](/guides/prompt-cookbook?step=5)
+- [Create reusable macros](/guides/prompt-cookbook?step=6)
+- [Troubleshoot errors and issues](/guides/prompt-cookbook?step=7)
+- [Conclusion](/guides/prompt-cookbook?step=8)
 
 ## Prompt best practices
 
@@ -45,8 +45,8 @@ In your prompt, include table names, column types, and example values to describ
 Include the following:
 
 - Table relationships (such as `orders` connects to `customers` on `customer_id`)
-- Data types (such as `created_at` is a timestamp)
-- Sample values (such as `status` can be "active" or "pending")
+- Data types (such as `signup_date` is a timestamp)
+- Sample values (such as `plan_type` can be "monthly" or "annual")
 
 :::tip
 The following example uses SQL terminology (like data types and joins) because it's generating a SQL query. However, the principle of providing rich context applies to all <Constant name="copilot" /> tasks—whether you're generating macros, documentation, or YAML configurations.
@@ -103,7 +103,7 @@ Finally, join to subscription data and group by plan tier.
 
 ### State the business question, not just the output
 
-Describe the decision or insight the query supports, and avoid only technical-like prompts. This means, instead of "count users", you can say "count active users per week to analyze engagement trends".
+Describe the decision or insight the query supports, and avoid only technical-like prompts. This means, instead of "count users", you can say "count active users per week to analyze engagement trends."
 
 **Example: The sneaker drop**
 
@@ -219,7 +219,7 @@ Give <Constant name="copilot" /> examples of what the data actually looks like, 
 
 ```text
 Order statuses:
-- `customer_id: C-12, created_at: 2025-05-03T090:07:00Z, status: 'completed'`
+- `customer_id: C-12, created_at: 2025-05-03T09:07:00Z, status: 'completed'`
 - `customer_id: C-14, created_at: 2025-05-03T09:02:00Z, status: 'cancelled'`
 - `customer_id: C-13, created_at: 2020-01-02T06:40:00Z, status: 'pending'`
 ```
@@ -253,7 +253,7 @@ These features understand your model's structure and generate YAML in the correc
 3. Select **Semantic model** to create a semantic model based on your SQL model
 4. Review and refine the generated YAML as needed
 
-You can also use <Constant name="copilot" /> to also generate documentation, tests, and metrics.
+You can also use <Constant name="copilot" /> to generate documentation, tests, and metrics.
 
 These built-in features automatically understand your model's columns, data types, and relationships, which means you don't need to manually describe your schema or copy-paste between file types.
 
@@ -298,7 +298,7 @@ Macro requirements:
 
 ### Lower the barrier to entry
 
-**Scenario:** You need a macro but don't know Jinja syntax well.
+You need a macro but don't know Jinja syntax well.
 
 **What to ask <Constant name="copilot" />:**
 
@@ -333,6 +333,7 @@ Parameters:
 Include defaults and guardrails for empty lists.
 Add a docstring with parameter descriptions and usage example.
 ```
+**Why this works:** You've outlined the interface (parameters) and edge cases (empty lists), letting <Constant name="copilot" /> handle the Jinja boilerplate while you focus on design. This approach accelerates iteration so you can refine the structure without getting stuck in syntax details.
 
 ## Troubleshoot errors and issues
 
@@ -383,7 +384,7 @@ Show me the rendered SQL from target/compiled and explain what's wrong.
 <ConfettiTrigger>
 Congrats, you've now learned some tips on how to create and use prompts for dbt <Constant name="copilot" />  🎉! You can:
 
-- Boss you prompting skills by providing rich context and stating clear business questions. Applicable for SQL, macros, documentation, tests, metrics, and semantic models.
+- Boost your prompting skills by providing rich context and stating clear business questions. Applicable for SQL, macros, documentation, tests, metrics, and semantic models.
 - Amplify your workflow by using existing documentation and project context
 - Generate Jinja macros to build more scalable and maintainable systems
 - Troubleshoot your code to diagnose issues fast and apply safe, explainable fixes
@@ -392,7 +393,7 @@ Congrats, you've now learned some tips on how to create and use prompts for dbt 
 
 When writing prompts for dbt <Constant name="copilot" />:
 
-- ✅ Provide rich context &mdash; Table names, columns, data types, relationships, sample values
+- ✅ Provide rich context: Table names, columns, data types, relationships, sample values
 - ✅ Break down complex logic: Write multi-part queries as a sequence of steps
 - ✅ State the business question: What decision or insight you're supporting, not just "write a query"
 - ✅ Be clear and explicit: Expected columns, sort order, filters, and output format
