@@ -21,6 +21,10 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 - [Slack (account-level)](#slack-notifications-account)  &mdash; Available in private beta. To request access, contact your account manager.
 - [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, contact your account manager.
 
+:::info Microsoft Teams without the private beta
+Even if you don’t have access to the native Microsoft Teams integration (private beta), you can still send job notifications to a Teams channel by using the channel’s **email address** as an **External Email** in Email notifications.
+:::
+
 ## Email notifications
 
 You can receive email alerts about jobs by configuring the <Constant name="cloud" /> email notification settings.
@@ -63,7 +67,17 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
 
 ### Unsubscribe from email notifications
 1. Select your profile icon and click on **Notification settings**.
-1. On the **Email notifications** page, click **Unsubscribe from all email notifications**. 
+2. On the **Email notifications** page, click **Unsubscribe from all email notifications**.
+
+### Send job notifications to a Microsoft Teams channel (via email)
+
+You can send dbt job notification emails directly to a Microsoft Teams channel by using the channel’s email address.
+
+1. In Microsoft Teams, get the email address for the channel (Send an email to a channel).
+2. In dbt platform, go to **Notification settings** → **Job notifications**.
+3. In **Notification email**, open the dropdown and click **Add external email**.
+4. Paste the Teams channel email address, then click **Add user**.
+5. Select the Teams channel email from the **Notification email** dropdown, choose the environment, click **Edit**, select the job statuses you want, and click **Save**.
 
 ## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
