@@ -31,7 +31,7 @@ An example of a completed run with a configuration for a [job completion trigger
 
 ### Run summary tab
 
-You can view in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently. 
+You can view and download in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently. 
 
 - To download the logs for each step, select the step in the **Run summary** tab and click **Download** > **Download logs**.
 - Note that when viewing debug logs, the log output is truncated. To view and export all debug logs, click **Download** > **Download all debug logs**.
