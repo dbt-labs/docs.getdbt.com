@@ -45,7 +45,7 @@ Then, assign all of these (and only these) to the user license. This step will a
 
 ## SSO enforcement
 
-* **SSO Enforcement:** If SSO is turned on in your organization, <Constant name="cloud" /> will enforce SSO-only logins for all non-admin users. By default, if an Account Admin or Security Admin already has a password, they can continue logging in with a password. To restrict admins from using passwords, turn off **Allow password logins for account administrators** in the **Single sign-on** section of your organization's **Account settings**.
+* **SSO Enforcement:** If SSO is turned on in your organization, <Constant name="cloud" /> will enforce SSO-only logins for all non-admin users. By default, if an Account Admin or Security Admin already has a password, they can continue logging in with a password. To restrict admins from using passwords, turn off **Allow password logins for account administrators** in the **SSO & SCIM** section of your organization's **Account settings**.
 * **SSO Re-Authentication:** <Constant name="cloud" /> will prompt you to re-authenticate using your SSO provider every 24 hours to ensure high security.
 
 ### How should non-admin users log in?

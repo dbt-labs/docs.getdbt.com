@@ -1143,6 +1143,7 @@ const sidebarSettings = {
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
+        "reference/resource-configs/hive-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
@@ -1498,9 +1499,20 @@ const sidebarSettings = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "Deprecations & warnings",
+          link: {
+            type: "doc",
+            id: "reference/changes-overview",
+          },
+          items: [
+            "reference/changes-overview",
+            "reference/deprecations",
+          ],
+        },
         "reference/events-logging",
         "reference/exit-codes",
-        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],
@@ -1511,18 +1523,18 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "Jinja reference",
-        description: "The list of Jinja functions available in dbt.",
+        description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
         {
           type: "category",
-          label: "dbt Jinja functions",
+          label: "dbt Jinja context functions",
           link: {
             type: "generated-index",
-            title: "dbt Jinja functions",
+            title: "dbt Jinja functions and context variables",
             description:
               "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
-            slug: "/reference/dbt-jinja-functions",
+            slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
             {
