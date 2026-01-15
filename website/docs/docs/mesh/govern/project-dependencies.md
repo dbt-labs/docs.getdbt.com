@@ -46,7 +46,7 @@ If your dbt project relies on models from another project, you can define that r
 3. (Optional) Define the specific models you expect from that upstream project to make the dependency explicit.
 4. Use [`ref()`](/reference/dbt-jinja-functions/ref) with the project name to reference upstream models in your SQL.
 5. Commit the changes and ensure the dependency is configured in <Constant name="cloud" />.
-6. dbt will resolve the dependency, build upstream projects first, and show cross-project lineage.
+6. dbt will resolve the dependency, ensure upstream projects are built first, and surface cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views.
 
 ## Example
 
