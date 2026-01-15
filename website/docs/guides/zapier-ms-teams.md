@@ -16,6 +16,12 @@ level: 'Advanced'
 
 This guide will show you how to set up an integration between <Constant name="cloud" /> jobs and Microsoft Teams using [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks) and Zapier, similar to the [native Slack integration](/docs/deploy/job-notifications#slack-notifications). 
 
+:::tip Want Microsoft Teams notifications without Zapier?
+If you only need job status alerts in Microsoft Teams (for example, “job succeeded/failed”) and **don’t** need to process webhook payloads, you can use **Job notifications** instead by sending notifications to a Teams channel email address (External Email).
+
+See **Job notifications**: [Job notifications](https://docs.getdbt.com/docs/deploy/job-notifications)
+:::
+
 When a <Constant name="cloud" /> job finishes running, the integration will:
 
  - Receive a webhook notification in Zapier,
