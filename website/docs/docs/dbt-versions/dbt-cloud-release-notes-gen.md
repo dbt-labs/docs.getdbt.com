@@ -46,9 +46,10 @@ Release notes are grouped by date for single-tenant environments.
   - **Enhanced multi-edit support**: The IDE now supports multiple explicit edits in one request with safer validation.
   - **Clearer Cloud CLI session errors**: Session creation returns clearer error messages and guidance for setup issues.
 
-- **dbt platform administration**
+- **dbt platform**
   - **Settings detail pages in resizable drawer**: Settings detail experiences now use an improved drawer-based UI.
   - **More resilient profile creation**: Profile creation now handles dependencies and failures more gracefully.
+  - **Enhanced logging limits for in-progress runs**: Logs for in-progress runs are also limited by memory usage, in addition to the existing 1,000-line limit.
 
 ### Fixes
 
