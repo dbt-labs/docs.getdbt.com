@@ -53,6 +53,17 @@ What happens when jobs overlap:
 
 To prevent a job from being built too frequently even when the code or data state has changed, you can reduce build frequency by using the `build_after` config. For information on how to use `build_after`, refer to [Model freshness](/reference/resource-configs/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
+### Handling deleted tables
+
+State-aware orchestration detects and rebuilds models when a model's table is deleted in the warehouse, even if there are no code or data changes. Previously, state-aware orchestration did not detect externally deleted tables when neither the model's code nor the data it depends on had changed.
+
+When a table is deleted in the warehouse:
+
+- dbt raises a warning that the expected table is missing.
+- The affected model is queued for rebuild during the current run, even if there are no code or data changes.
+
+This behavior ensures consistency between the dbt state and the actual warehouse state. It also reduces the need to manually clear cache or disable state-aware orchestration when models are modified outside of dbt.
+
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
