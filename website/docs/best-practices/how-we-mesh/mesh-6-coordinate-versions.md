@@ -67,6 +67,8 @@ After deciding that a change needs a new [version](/reference/resource-propertie
    
    :::important
    If your model has an [enforced contract](/docs/mesh/govern/model-contracts), you won't be able to delete the model until after the deprecation date has passed. dbt won't allow deleting the model(s) with enforced contracts until after their deprecation_date to protect downstream consumers.
+
+If you try to delete a versioned model before its `deprecation_date`, dbt will raise an error during development runs and cause jobs to fail.
    ::: 
    
     <File name='models/properties.yml'>
@@ -122,7 +124,9 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
 
 :::info Models with enforced contracts
-If your model has an [enforced contract](/docs/mesh/govern/model-contracts), make sure the deprecation_date has passed before trying to delete the model. dbt won't allow deleting the model(s) with enforced contracts until after their deprecation_date to protect downstream consumers.
+If your model has an [enforced contract](/docs/mesh/govern/model-contracts), make sure the deprecation_date has passed before trying to delete the model. dbt won't allow deleting the model(s) with enforced contracts until after their `deprecation_date` to protect downstream consumers.
+
+If you try to delete a versioned model before its `deprecation_date`, dbt will raise an error during development runs and cause jobs to fail.
 ::: 
 
 <Tabs>
