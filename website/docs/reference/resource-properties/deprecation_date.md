@@ -42,8 +42,8 @@ Declaring a `deprecation_date` for a dbt model provides a mechanism to communica
 
 Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/mesh/govern/about-model-governance) features like [model versions](/docs/mesh/govern/model-versions), but can also be used independently from them.
 
-import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md'; 
-   <DeprecationDateCallout />
+import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md';
+<DeprecationDateCallout />
 
 ### Warning messages
 

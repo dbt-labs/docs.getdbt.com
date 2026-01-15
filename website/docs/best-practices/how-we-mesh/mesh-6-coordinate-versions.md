@@ -121,7 +121,7 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
 
 import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md'; 
-   <DeprecationDateCallout />
+<DeprecationDateCallout />
 
 <Tabs>
 <TabItem value="hard-delete" label="Hard delete (cleanest)">
