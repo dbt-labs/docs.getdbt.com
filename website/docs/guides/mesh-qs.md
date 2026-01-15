@@ -57,7 +57,7 @@ In this section, you'll create two new, empty projects in <Constant name="cloud"
 - **Foundational projects** (or upstream projects) typically contain core models and datasets that serve as the base for further analysis and reporting.
 - **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
 
-For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
+For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
 To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
 
