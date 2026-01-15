@@ -86,10 +86,10 @@ After deciding that a change needs a new [version](/reference/resource-propertie
                 exclude: [column_to_remove]   # <— specify which columns were removed in v2
     ```
     </File>
-3. Merge the new version into the main branch.
-4. Run the job to build the new version.
-5. Verify that the new version builds successfully.
-6. Verify that the deprecation date is set correctly in the `dbt run` logs.
+2. Merge the new version into the main branch.
+3. Run the job to build the new version.
+4. Verify that the new version builds successfully.
+5. Verify that the deprecation date is set correctly in the `dbt run` logs.
 
 If you try to reference models (for example, `{{ ref('upstream_project', 'model_name', v=1) }}`) using the `v=1` argument after the deprecation date, the `ref` call will fail once the producer project removes the `v1` version.
 
