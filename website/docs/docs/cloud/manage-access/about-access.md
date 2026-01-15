@@ -194,7 +194,7 @@ Euclid is limited to the `Analyst` role, the `Jaffle Shop` project, and the `Dev
 
 Euclid takes the following steps to log in: 
 
-1. Access the SSO URL or the <Constant name="cloud" /> app in their Okta account. The URL can be found on the **Single sign-on** configuration page in the **Account settings**. 
+1. Access the SSO URL or the <Constant name="cloud" /> app in their Okta account. The URL can be found on the **SSO & SCIM** configuration page in the **Account settings**. 
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
 
