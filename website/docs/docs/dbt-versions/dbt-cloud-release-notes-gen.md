@@ -60,7 +60,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Studio IDE**
   - **More reliable `show` and `compile`**: CLI flags to disable caching are now positioned correctly to avoid parsing issues.
-  - **Visual editor preview improvements**: Fixed argument ordering so `--no-defer` is interpreted consistently.
+  - **Canvas preview improvements**: Fixed argument ordering so `--no-defer` is interpreted consistently.
 
 
 ### Behavior changes
