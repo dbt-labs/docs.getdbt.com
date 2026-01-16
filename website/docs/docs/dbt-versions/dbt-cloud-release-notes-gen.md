@@ -33,7 +33,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Improved Azure OpenAI verification**: Azure OpenAI connection verification now uses GPT-5-compatible parameters for GPT-5 deployments.
   - **BYOK for Azure OpenAI**: Added support for Azure Foundry URLs with automatic endpoint parsing to reduce setup friction.
 
-- **Insights and Explorer**
+- **Insights and Catalog**
   - **Semantic Layer querying now generally available (GA)**: Build SQL queries against the Semantic Layer without writing SQL code.
   - **Improved search relevance**: Search scoring prioritizes exact and multi-term matches more strongly, with better highlighting and column-description matching.
   - **Saved Queries more broadly available**: Saved Queries and related Explorer features are now available where supported by your account.
