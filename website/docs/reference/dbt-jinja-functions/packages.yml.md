@@ -14,8 +14,32 @@ The following context methods and variables are available when configuring a `pa
 
 **Available context variables:**
 - [builtins](/reference/dbt-jinja-functions/builtins)
+
+```
+packages:
+  - package: dbt-labs/dbt_utils
+    version: "{% if builtins is defined %}0.14.0{% else %}0.13.1{% endif %}"
+
+```
+
 - [dbt_version](/reference/dbt-jinja-functions/dbt_version)
+
+```
+packages:
+  - package: dbt-labs/dbt_utils
+    version: "{% if dbt_version is defined %}0.14.0{% else %}0.13.1{% endif %}"
+
+```
+
 - [target](/reference/dbt-jinja-functions/target)
+
+```
+
+packages:
+  - package: dbt-labs/dbt_utils
+    version: "{% if env_var('DBT_ENV_NAME') == 'prod' %}0.14.0{% else %}0.13.1{% endif %}"
+
+```
 
 ## Related docs
 
