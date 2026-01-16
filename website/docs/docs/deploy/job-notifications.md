@@ -69,21 +69,23 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
 1. Select your profile icon and click on **Notification settings**.
 2. On the **Email notifications** page, click **Unsubscribe from all email notifications**.
 
-### Send job notifications to a Microsoft Teams channel (via email)
+### Send job notifications to a Microsoft Teams channel (email) {#email-job-notification-teams}
 
-You can send dbt job notification emails directly to a Microsoft Teams channel by using the channel’s email address.
+You can send dbt job [notification emails](#configure-email-notifications) directly to a Microsoft Teams channel by using the channel’s email address.
 
-1. In Microsoft Teams, get the email address for the channel (Send an email to a channel).
-2. In dbt platform, go to **Notification settings** → **Job notifications**.
-3. In **Notification email**, open the dropdown and click **Add external email**.
-4. Paste the Teams channel email address, then click **Add user**.
-5. Select the Teams channel email from the **Notification email** dropdown, choose the environment, click **Edit**, select the job statuses you want, and click **Save**.
+1. In Microsoft Teams, get the email address for the channel you want to send notifications to. See [Send an email to a channel](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca).
+2. In <Constant name="dbt_platform"/>, click on your profile in the left sidebar and then click **Notification settings**.
+3. Under **Job notifications**, click the **Notification email** dropdown.
+4. To add an external email address, click **Add external email** at the bottom of the dropdown.
+5. Enter the Teams channel email address, and click **Add user**.
+6. Make sure you select the Teams channel email from the **Notification email** dropdown (it might be selected already).
+7. Then choose the environment for the jobs you want to receive notifications from.
+8. Click **Edit**, select the job statuses you want. Then click **Save** to save.
 
 ## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
 
 This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in private beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the private beta features.
-
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
