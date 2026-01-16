@@ -447,7 +447,7 @@ For example, if your project has a custom `generate_schema_name` macro that retu
 
 With the default behavior, dbt raises a deprecation warning. When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt raises an error.
 
-To resolve this, update your macro to return a valid schema name:
+To resolve this, update your macro to return a valid schema name (`target.schema` in this example):
 
 <File name='macros/get_custom_schema.sql'>
 
