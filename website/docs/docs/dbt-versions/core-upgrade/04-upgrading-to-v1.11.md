@@ -53,7 +53,7 @@ You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-changes#package-ref-search-order). This flag is set to `False` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `True`, dbt searches the package where the model is defined _before_ searching the root project.
 
-- (Introduced, disabled by default) [`require_valid_schema_from_generate_schema_name`](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name). This flag is set to `False` by default. With this setting, dbt raises a [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value. When set to `True`, dbt raises a parsing error.
+- (Introduced, disabled by default) [`require_valid_schema_from_generate_schema_name`](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name). This flag is set to `False` by default. When `False`, dbt raises a [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value. When set to `True`, dbt raises a parsing error.
 
 ### Deprecation warnings enabled by default
 
