@@ -105,7 +105,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* |
-| [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.11.0 | TBD* |
+| [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -425,7 +425,7 @@ The current default behavior is considered a [bug in dbt-core](https://github.co
 
 The `generate_schema_name` macro determines the schema where dbt creates models and other resources. Returning a `null` value from this macro can result in invalid schema names and lead to unpredictable behavior during dbt runs.
 
-The `require_valid_schema_from_generate_schema_name` behavior flag is set to `False` by default. When `False`, dbt raises a deprecation warning when a custom `generate_schema_name` macro returns a `null` value.
+The `require_valid_schema_from_generate_schema_name` behavior flag is set to `False` by default. When `False`, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value.
 
 When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt enforces stricter validation and raises a parsing error.
 
