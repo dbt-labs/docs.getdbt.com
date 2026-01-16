@@ -4,13 +4,7 @@ description: Learn how to achieve near real-time data freshness with dbt through
 hoverSnippet: Learn how to achieve near real-time data freshness with dbt
 ---
 
-## TL;DR for Non-Technical Audiences
-
-**The Challenge:**
-
 dbt isn't designed for instant, real-time data updates (think: stock tickers updating every second). It works more like a scheduled report that runs at set intervals.
-
-**The Solution:**
 
 To get data that's "fresh enough" for business decisions, you combine two things:
 
