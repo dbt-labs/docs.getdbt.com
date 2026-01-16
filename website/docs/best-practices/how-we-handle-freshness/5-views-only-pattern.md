@@ -333,7 +333,7 @@ models:
 **Start with views-only if:**
 - Source is continuously updated
 - Transformations are genuinely lightweight
-- Table is small (<10M rows)
+- Table is small (less than 10M rows)
 - Query patterns are simple and selective
 
 **Migrate to incremental models when:**
