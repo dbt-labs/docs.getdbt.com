@@ -22,7 +22,7 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 - [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, contact your account manager.
 
 :::info Microsoft Teams without the private beta
-Even if you don’t have access to the native Microsoft Teams integration (private beta), you can still send job notifications to a Teams channel by using the channel’s **email address** as an **External Email** in Email notifications.
+If you don’t have access to the native Microsoft Teams integration (private beta), you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section, Email notifications.
 :::
 
 ## Email notifications
