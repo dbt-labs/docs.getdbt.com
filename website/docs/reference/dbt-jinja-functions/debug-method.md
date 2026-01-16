@@ -6,13 +6,18 @@ description: "The `{{ debug() }}` macro will open an iPython debugger."
 ---
 
 
-:::warning Development environment only
+:::warning CLI only - Not available in dbt platform
 
-The `debug` macro is only intended to be used in a development context with dbt. Do not deploy code to production that uses the `debug` macro.
+The `debug()` macro is only available when using <Constant name="core" /> CLI or <Constant name="fusion_engine" /> CLI in a local development environment. It is **not available** in <Constant name="cloud" /> (<Constant name="cloud_ide" />, <Constant name="cloud_cli" />, or <Constant name="orchestrator" />). Do not deploy code to production that uses the `debug` macro.
 
 :::
 
-The `{{ debug() }}` macro will open an iPython debugger in the context of a compiled dbt macro. The `DBT_MACRO_DEBUGGING` environment value must be set to use the debugger.
+The `{{ debug() }}` macro will open an iPython debugger in the context of a compiled dbt macro. The `DBT_MACRO_DEBUGGING` environment variable must be set to use the debugger.
+
+This function requires:
+- Interactive terminal access with iPython debugger (`ipdb`) installed
+- Local development environment running <Constant name="core" /> CLI or <Constant name="fusion_engine" /> CLI
+- `DBT_MACRO_DEBUGGING` environment variable set
 
 ## Usage
 
