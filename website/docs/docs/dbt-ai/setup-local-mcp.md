@@ -302,5 +302,5 @@ Then update your JSON configuration to use the full path:
 
 dbt MCP uses a lock file to avoid repeated authentication. In some cases, this can block authentication entirely. If this happens, close your client (for example, Cursor or Claude) and delete the local dbt MCP config files to reset the auth flow.
 
-On macOS and Linux, run:
-`rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
+- On macOS and Linux, run: `rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
+- On [Windows](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/remove-item?view=powershell-7.5), run: `Remove-Item -Force $env:USERPROFILE\.dbt\mcp.yml, $env:USERPROFILE\.dbt\mcp.lock`
