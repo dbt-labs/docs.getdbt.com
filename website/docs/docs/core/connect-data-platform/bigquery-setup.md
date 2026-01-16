@@ -22,6 +22,14 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+## Required Prerequisites
+
+- Git
+- Google Cloud SDK
+- Python 3.13.x (Python 3.14 is not supported as yet)
+- Access to a GCP Account BigQuery Project
+- Access to a Git Platform (GitHub, AzureDevOps, GitLab, etc) repository.
+
 ## Required permissions
 
 import BigQueryPerms from '/snippets/_bigquery-permissions.md';
