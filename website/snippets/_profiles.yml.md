@@ -20,11 +20,29 @@ The `profile` field in [`dbt_project.yml`](/reference/dbt_project.yml) reference
 
 Only one `profiles.yml` file is required and it can manage multiple projects and connections. 
 
-dbt searches for `profiles.yml` location in the following order and uses the first file it finds:
+<Tabs>
+<TabItem value="fusion" label="dbt Fusion">
 
-1. `--profiles-dir` flag &mdash; Override for CI/CD or testing. 
-2. Project root directory &mdash; Project-specific credentials.
-3. `~/.dbt/profiles.yml` (Recommended location) &mdash; Shared across all projects.
+dbt Fusion searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
+
+1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
+2. Project root directory (current working directory) &mdash; Project-specific credentials.
+3. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
+
+</TabItem>
+<TabItem value="core" label="dbt Core">
+
+dbt Core searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
+
+1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
+2. `DBT_PROFILES_DIR` environment variable &mdash; Set a custom directory.
+3. Project root directory (current working directory) &mdash; Project-specific credentials.
+4. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
+
+**Note:** dbt Core supports the `DBT_PROFILES_DIR` environment variable for setting a custom profiles directory, which is not currently supported in dbt Fusion.
+
+</TabItem>
+</Tabs>
 
 `~/.dbt/profiles.yml` is the recommended location for the following reasons:
 
