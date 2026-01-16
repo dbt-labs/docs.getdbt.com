@@ -303,6 +303,7 @@ dbt run --select "source:snowplow+"    # run all models that select from Snowplo
 dbt run --select "source:snowplow.events+"    # run all models downstream of the events table in the Snowplow source
 ```
 
+Refer to [source FAQs](/docs/build/sources#faqs) for more info. 
 ### source_status
   
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
