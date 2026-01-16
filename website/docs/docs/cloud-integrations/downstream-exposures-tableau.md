@@ -78,13 +78,13 @@ Once configured in both Tableau and [<Constant name="cloud" />](#set-up-in-dbt-c
 ### Set up in dbt
 
 1. In <Constant name="cloud" />, navigate to the **Dashboard** of the project you want to add the downstream exposure to and then select **Settings**.
-2. Under the **Exposures** section, select **Add integration** to add the Tableau connection.
-   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-add-integration.jpg" title="Select Add Integration to add the Tableau connection."/>
+2. Under the **Exposures** section, select **Add lineage integration** to add the Tableau connection.
+   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-add-integration.png" title="Select Add lineage integration to add the Tableau connection."/>
 3. Enter the details for the exposure connection you collected from Tableau in the [previous step](#set-up-in-tableau) and click **Continue**. Note that all fields are case-sensitive.
-   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-integration-details.jpg" title="Enter the details for the exposure connection."/>
+   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-integration-details.png" title="Enter the details for the exposure connection."/>
 4. Select the collections you want to include for the downstream exposures and click **Save**.
 
-   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.jpg" title="Select the collections you want to include for the downstream exposures."/>
+   <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.png" title="Select the collections you want to include for the downstream exposures."/>
 
       :::info
       <Constant name="cloud" /> automatically imports and syncs any workbook within the selected collections. New additions to the collections will appear in the lineage in <Constant name="cloud" /> once per day &mdash; after the daily sync and a job run.

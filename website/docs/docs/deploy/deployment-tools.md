@@ -44,8 +44,6 @@ Integrate <Constant name="cloud" /> and [Azure Data Factory](https://learn.micro
 
 The following video provides you with a detailed overview of how to trigger a <Constant name="cloud" /> job via the API in Azure Data Factory.
 
-<LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
-
 
 To use the dbt API to trigger a job in <Constant name="cloud" /> through ADF:
 
@@ -106,8 +104,6 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 - Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.github.io/prefect-dbt/cloud/jobs/#prefect_dbt.cloud.jobs.trigger_dbt_cloud_job_run_and_wait_for_completion) flow. 
 - As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect user interface (UI)](https://docs.prefect.io/ui/overview/).
 
-
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt job triggered by Prefect"/> 
 
 </TabItem>
 
