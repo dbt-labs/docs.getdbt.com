@@ -36,8 +36,8 @@ Release notes are grouped by date for single-tenant environments.
 - **Insights and Catalog**
   - **Semantic Layer querying now generally available (GA)**: Build SQL queries against the Semantic Layer without writing SQL code.
   - **Improved search relevance**: Search scoring prioritizes exact and multi-term matches more strongly, with better highlighting and column-description matching.
-  - **Saved Queries more broadly available**: Saved Queries and related Explorer features are now available where supported by your account.
-  - **Explorer UX improvements**: Search labels are more consistent, and the embedded lineage view loads more responsively.
+  - **Saved Queries more broadly available**: Saved Queries and related Catalog features are now available where supported by your account.
+  - **Catalog UX improvements**: Search labels are more consistent, and the embedded lineage view loads more responsively.
 
 - **Studio IDE**
   - **Unified Studio IDE**: Studio now loads a single unified IDE package.
