@@ -39,7 +39,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Saved Queries more broadly available**: Saved Queries and related Explorer features are now available where supported by your account.
   - **Explorer UX improvements**: Search labels are more consistent, and the embedded lineage view loads more responsively.
 
-- **Studio and IDE**
+- **Studio IDE**
   - **Unified Studio IDE**: Studio now loads a single unified IDE package.
   - **Defer-to-production honors `defer-env-id` override**: Studio now respects `dbt-cloud.defer-env-id` settings when Cloud CLI runtime is supported.
   - **Improved log exporting**: Download and copy behavior for command logs is more consistent, including debug logs.
@@ -55,10 +55,10 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt platform**
   - **Profiles API clearing extended attributes**: The Profiles API now allows unsetting extended attributes by setting `extended_attributes_id` to null.
-  - **Recently Viewed more reliable**: Recently Viewed entries now update atomically and retain the 5 most recent items.
+  - **Recently viewed more reliable**: Recently viewed entries now update atomically and retain the 5 most recent items.
   - **Run log tailing improvements**: Debug logs for completed runs now consistently fetch only the tail of the log.
 
-- **Studio and IDE**
+- **Studio IDE**
   - **More reliable `show` and `compile`**: CLI flags to disable caching are now positioned correctly to avoid parsing issues.
   - **Visual editor preview improvements**: Fixed argument ordering so `--no-defer` is interpreted consistently.
 
