@@ -23,4 +23,7 @@ export const CONSTANTS = {
   orchestrator: 'Orchestrator',
   copilot: 'Copilot',
   semantic_layer: 'Semantic Layer',
+  starter_plan: 'Starter',
+  enterprise_plan: 'Enterprise',
+  enterprise_plus_plan: 'Enterprise+',
 }
