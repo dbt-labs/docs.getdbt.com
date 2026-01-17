@@ -22,4 +22,5 @@ export const CONSTANTS = {
   mesh: 'Mesh',
   orchestrator: 'Orchestrator',
   copilot: 'Copilot',
+  semantic_layer: 'Semantic Layer',
 }
