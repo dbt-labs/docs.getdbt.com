@@ -10,13 +10,18 @@ The following context methods and variables are available when configuring a `pa
 **Available context methods:**
 - [env_var](/reference/dbt-jinja-functions/env_var)
     - Use `env_var()` in any dbt YAML file that supports Jinja. Only `packages.yml` and `profiles.yml` support environment variables for [secure values](/docs/build/dbt-tips#yaml-tips) (using the `DBT_ENV_SECRET_` prefix).
-```
-"{{ env_var('MY_ENV_VAR') }}"
-```
 - [var](/reference/dbt-jinja-functions/var) (Note: only variables defined with `--vars` are available. Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more information)
 
 **Available context variables:**
 - [builtins](/reference/dbt-jinja-functions/builtins)
+- [dbt_version](/reference/dbt-jinja-functions/dbt_version)
+- [target](/reference/dbt-jinja-functions/target)
+
+## Example usage
+
+The following examples show how to use the different context methods and variables in your `packages.yml`.
+
+Use `builtins` in your `packages.yml`:
 
 ```
 packages:
@@ -25,7 +30,15 @@ packages:
 
 ```
 
-- [dbt_version](/reference/dbt-jinja-functions/dbt_version)
+Use `env_var` in your `packages.yml`:
+
+```
+packages:
+  - package: dbt-labs/dbt_utils
+    version: "{{ env_var('DBT_UTILS_VERSION') }}"
+```
+
+Use `dbt_version` in your `packages.yml`:
 
 ```
 packages:
@@ -34,7 +47,7 @@ packages:
 
 ```
 
-- [target](/reference/dbt-jinja-functions/target)
+Use `target` in your `packages.yml`:
 
 ```
 
