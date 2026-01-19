@@ -185,7 +185,7 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 2. Project root directory
 3. `~/.dbt/` directory
 
-Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_DIR` environment variable or setting the `profiles.yml` at the current working directory. 
+Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_DIR` environment variable or setting the `profiles.yml` in the current working directory. 
 
 </TabItem>
 </Tabs>
