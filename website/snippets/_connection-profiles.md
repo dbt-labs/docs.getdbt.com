@@ -167,17 +167,7 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 ## Advanced: Customizing a profile directory
 
 <Tabs>
-<TabItem value="core" label="dbt Core">
-
-<Constant name="core"/> determines the parent directory for `profiles.yml` using the following precedence:
-
-1. `--profiles-dir` option
-2. `DBT_PROFILES_DIR` environment variable
-3. current working directory
-4. `~/.dbt/` directory
-
-</TabItem>
-<TabItem value="fusion" label="dbt Fusion">
+  <TabItem value="fusion" label="dbt Fusion">
 
 <Constant name="fusion"/> determines the parent directory for `profiles.yml` using the following precedence:
 
@@ -186,6 +176,16 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 3. `~/.dbt/` directory
 
 Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_DIR` environment variable or setting the `profiles.yml` in the current working directory. 
+
+</TabItem>
+<TabItem value="core" label="dbt Core">
+
+<Constant name="core"/> determines the parent directory for `profiles.yml` using the following precedence:
+
+1. `--profiles-dir` option
+2. `DBT_PROFILES_DIR` environment variable
+3. current working directory
+4. `~/.dbt/` directory
 
 </TabItem>
 </Tabs>
