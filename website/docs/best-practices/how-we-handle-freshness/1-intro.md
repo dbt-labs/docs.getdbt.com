@@ -4,7 +4,8 @@ description: Learn how to achieve near real-time data freshness with dbt through
 hoverSnippet: Learn how to achieve near real-time data freshness with dbt
 ---
 
-dbt isn't designed for instant, real-time data updates (think: stock tickers updating every second). It works more like a scheduled report that runs at set intervals.
+dbt is designed for batch-oriented data processing, working more like a scheduled report that runs at set intervals, with a clear defined start and end time. For instant, real-time data updates (think: stock tickers updating every second), we recommend using your data wa
+ designed for true streaming or real-time data processing.
 
 To get data that's "fresh enough" for business decisions, you combine two things:
 
