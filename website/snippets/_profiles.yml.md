@@ -23,23 +23,23 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 <Tabs>
 <TabItem value="fusion" label="dbt Fusion">
 
-dbt Fusion searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
+<Constant name="fusion"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
 1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
-2. Project root directory (current working directory) &mdash; Project-specific credentials.
+2. Project root directory &mdash; Project-specific credentials.
 3. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
 
 </TabItem>
 <TabItem value="core" label="dbt Core">
 
-dbt Core searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
+<Constant name="core"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
-1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
-2. `DBT_PROFILES_DIR` environment variable &mdash; Set a custom directory.
-3. Project root directory (current working directory) &mdash; Project-specific credentials.
-4. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
+1. `--profiles-dir` flag
+2. `DBT_PROFILES_DIR` environment variable 
+3. Current working directory
+4. `~/.dbt/` directory (Recommended location)
 
-**Note:** dbt Core supports the `DBT_PROFILES_DIR` environment variable for setting a custom profiles directory, which is not currently supported in dbt Fusion.
+Note that <Constant name="core"/> supports the `DBT_PROFILES_DIR` environment variable for setting a custom profiles directory, which is not currently supported in <Constant name="fusion"/>.
 
 </TabItem>
 </Tabs>
