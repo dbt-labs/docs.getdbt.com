@@ -216,7 +216,7 @@ If using this method, the `--profiles-dir` option needs to be provided every tim
 
 ### 2. Use the `DBT_PROFILES_DIR` environment variable to change the default location (dbt Core only)
 
-Setting this environment variable tells dbt Core to look for your `profiles.yml` file in the specified directory instead of the default location. You can specify this by running:
+Setting this environment variable tells <Constant name="core" /> to look for your `profiles.yml` file in the specified directory instead of the default location. You can specify this by running:
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
