@@ -12,6 +12,7 @@ However, you may be able to consolidate both into a single `dependencies.yml` fi
 The `dependencies.yml`. file can contain both types of dependencies: "package" and "project" dependencies.
 - [Package dependencies](/docs/build/packages#how-do-i-add-a-package-to-my-project) lets you add source code from someone else's dbt project into your own, like a library.
 - Project dependencies provide a different way to build on top of someone else's work in dbt.
+- Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like <Constant name="cloud" />.
 
 If your dbt project doesn't require the use of Jinja within the package specifications, you can simply rename your existing `packages.yml` to `dependencies.yml`. However, something to note is if your project's package specifications use Jinja, particularly for scenarios like adding an environment variable or a [Git token method](/docs/build/packages#git-token-method) in a private Git package specification, you should continue using the `packages.yml` file name.
 
@@ -23,7 +24,6 @@ Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh
 
 - Use `dependencies.yml` when you need to set up cross-project references between different dbt projects, especially in a dbt Mesh setup.
 - Use `dependencies.yml` when you want to include both projects and non-private dbt packages in your project's dependencies.
-  - Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like <Constant name="cloud" />.
 - Use `dependencies.yml` for organization and maintainability if you're using both [cross-project refs](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) and [dbt Hub packages](https://hub.getdbt.com/). This reduces the need for multiple YAML files to manage dependencies.
 
 </Expandable>

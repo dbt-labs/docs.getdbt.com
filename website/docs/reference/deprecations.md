@@ -407,6 +407,30 @@ dbt-core.
 
 Ensure your exposure names only contain letters, numbers, and underscores. A more human-readable name can be put in the [`label`](/reference/exposure-properties#overview) property of exposures.
 
+### GenerateSchemaNameNullValueDeprecation
+
+dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
+
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `False`. When the flag is set to `True`, dbt raises an error during parsing.
+
+#### GenerateSchemaNameNullValueDeprecation warning resolution
+
+If your project defines a `generate_schema_name` macro, update the macro to return a valid schema name. For example:
+
+<File name='macros/get_custom_schema.sql'>
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ return(target.schema) }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
+
 ### GenericJSONSchemaValidationDeprecation
 
 

@@ -81,6 +81,7 @@ flags:
   require_generic_test_arguments_property: True
   require_unique_project_resource_names: False
   require_ref_searches_node_package_before_root: False
+  require_valid_schema_from_generate_schema_name: False
 ```
 
 </File>
@@ -104,6 +105,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* |
+| [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* |
 
 #### dbt adapter behavior changes
 
@@ -416,5 +418,48 @@ Using the same example, dbt searches for `model_upstream` in this order:
 1. First in `my_package` (where the model is defined)
 2. Then in `my_project` (root project)
 
-The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects. 
+The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects.
+
+
+### Valid schema from `generate_schema_name`
+
+The `generate_schema_name` macro determines the schema where dbt creates models and other resources. Returning a `null` value from this macro can result in invalid schema names and lead to unpredictable behavior during dbt runs.
+
+The `require_valid_schema_from_generate_schema_name` behavior flag is set to `False` by default. When `False`, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value.
+
+When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt enforces stricter validation and raises a parsing error.
+
+For example, if your project has a custom `generate_schema_name` macro that returns `null`:
+
+<File name='macros/get_custom_schema.sql'>
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ return(none) }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
+
+With the default behavior, dbt raises a deprecation warning. When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt raises an error.
+
+To resolve this, update your macro to return a valid schema name (`target.schema` in this example):
+
+<File name='macros/get_custom_schema.sql'>
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ return(target.schema) }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
 
