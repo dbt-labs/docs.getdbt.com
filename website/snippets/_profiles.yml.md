@@ -39,7 +39,7 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 3. Current working directory
 4. `~/.dbt/` directory (Recommended location)
 
-Note that <Constant name="core"/> supports the `DBT_PROFILES_DIR` environment variable for setting a custom profiles directory, which is not currently supported in <Constant name="fusion"/>.
+Note: <Constant name="core"/> supports using the `DBT_PROFILES_DIR` environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
 
 </TabItem>
 </Tabs>
