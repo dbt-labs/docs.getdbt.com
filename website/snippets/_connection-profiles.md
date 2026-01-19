@@ -221,7 +221,7 @@ Specifying this environment variable overrides the directory that dbt Core looks
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
 
-**Note:** This environment variable is not supported in dbt Fusion.
+Note: This environment variable isn't supported in <Constant name="fusion"/>.
 
 ## Advanced: Using environment variables
 
