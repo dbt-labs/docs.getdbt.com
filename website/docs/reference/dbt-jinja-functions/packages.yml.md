@@ -10,6 +10,9 @@ The following context methods and variables are available when configuring a `pa
 **Available context methods:**
 - [env_var](/reference/dbt-jinja-functions/env_var)
     - Use `env_var()` in any dbt YAML file that supports Jinja. Only `packages.yml` and `profiles.yml` support environment variables for [secure values](/docs/build/dbt-tips#yaml-tips) (using the `DBT_ENV_SECRET_` prefix).
+```
+"{{ env_var('MY_ENV_VAR') }}"
+```
 - [var](/reference/dbt-jinja-functions/var) (Note: only variables defined with `--vars` are available. Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more information)
 
 **Available context variables:**
