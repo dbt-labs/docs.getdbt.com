@@ -13,9 +13,9 @@ is_featured: true
 
 ## New engine, who dis?
 
-It’s unlikely that anyone reading this blog has not heard about the new dbt Fusion engine — it’s been the talk of the data town since last January, culminating  Elias’s legendary live Coalesce 2025 demo of the incredible capabilities that native SQL comprehension in dbt can unlock. If you attended Coalesce, or have upgraded your project to fusion already, you’ve likely also heard about the changes we’ve made to the authoring layer of dbt (the literal code you write in your project). As part of the major version upgrade, we took the opportunity to simplify + standardize the configuration language of dbt to be built to scale as we enter the next era of analytics engineering.
+It’s unlikely that anyone reading this blog has not heard about the new dbt Fusion engine — it’s been the talk of the data town since last January, culminating in Elias’s legendary live Coalesce 2025 demo of the incredible capabilities that native SQL comprehension in dbt can unlock. If you attended Coalesce, or have upgraded your project to fusion already, you’ve likely also heard about the changes we’ve made to the authoring layer of dbt (the literal code you write in your project). As part of the major version upgrade, we took the opportunity to simplify + standardize the configuration language of dbt to be built to scale as we enter the next era of analytics engineering.
 
-In particular, we wanted reevaluate how metrics are defined in the dbt Semantic Layer. We’ve heard from numerous community members over the years that defining metrics was *just plain hard*. In conversation with internal + external users, our newest pals from SDF, we’ve come up with a redesigned YAML spec that is simpler, more integrated to the dbt configuration experience we’ve come to know and love, and built for the future. 
+In particular, we wanted to reevaluate how metrics are defined in the dbt Semantic Layer. We’ve heard from numerous community members over the years that defining metrics was *just plain hard*. In conversation with internal + external users, our newest pals from SDF, we’ve come up with a redesigned YAML spec that is simpler, more integrated to the dbt configuration experience we’ve come to know and love, and built for the future. 
 
 <!-- truncate -->
 
@@ -114,7 +114,7 @@ models:
 
 This has a few clear benefits: 
 
-- **DRYer code:** Semantic annotations are now alongside the model’s YAML entry, reducing duplicative work. Now, if a column within is a dimension or entity, you can configure it as such. The properties of the column, like its description, are then reflected as the description of the dimension / entity!
+- **DRYer code:** Semantic annotations are now alongside the model’s YAML entry, reducing duplicative work. Now, if a column within the model is a dimension or entity, you can configure it as such. The properties of the column, like its description, are then reflected as the description of the dimension / entity!
 - **Tidier YAML:** A tidier metric entry is easier to write, easier to read, and easier to share context across your data team. Maintenance of metric code should be as easy as possible!
 
 ### Is this the OSI spec?
@@ -123,8 +123,8 @@ You may have heard some buzz that dbt joined the industry initiative called the 
 
 ### Get started today
 
-This new spec is **live on the Fusion engine today.** If you’ve migrated onto the engine, and are curious about getting started with the dbt Semantic Layer, check out our docs and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the newar future. dbt PLatform users using dbt Core will be able to migrate to the new spec when as soon as they merge into the Latest dbt version later this month!
+This new spec is **live on the Fusion engine today.** If you’ve migrated onto the engine, and are curious about getting started with the dbt Semantic Layer, check out our docs and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the near future. dbt Platform users using dbt Core will be able to migrate to the new spec as soon as they merge into the Latest dbt version!
 
-Additionally, if you’re an existing user of the semantic layer, our `dbt-autofix` script now has support for migrating from the legacy metrics implementation to the new one! Simply run `dbt-autofix deprecations --semantic-layer`, locally or in dbt Studio on the Platform, and the vast majority of the code will be migrated automatically!.
+Additionally, if you’re an existing user of the semantic layer, our `dbt-autofix` script now has support for migrating from the legacy metrics implementation to the new one! Simply run `dbt-autofix deprecations --semantic-layer`, locally or in dbt Studio on the Platform, and the vast majority of the code will be migrated automatically!
 
 We’re eager for feedback! Reach out in dbt Community Slack in the `#dbt-semantic-layer` channel and let us know how your migration / onboarding experience goes!
