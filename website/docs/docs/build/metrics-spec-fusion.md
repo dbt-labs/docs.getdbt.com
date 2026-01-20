@@ -544,7 +544,7 @@ To migrate packages:
 - Update packages by running `dbt-autofix deprecations --semantic-layer` in the package repository.
 - For externally maintained packages, upgrade to a version that supports the latest spec.
 
-After updating packages, re-run:
+After updating packages, run:
 
 ```bash
 dbt parse
