@@ -131,7 +131,7 @@ Warehouse-managed options for freshness (e.g., **Dynamic Tables/materialized vie
 
 ### Lambda view challenges
 
-If you're using the [lambda views pattern](/best-practices/how-we-handle-freshness/4-lambda-views), you face additional complexity:
+If you're using the [lambda views pattern](/best-practices/how-we-handle-real-time-datas/4-lambda-views), you face additional complexity:
 
 **Duplicated logic:**
 - You either centralize SQL in macros (more DRY, less readable)

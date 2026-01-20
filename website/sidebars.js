@@ -1654,6 +1654,22 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How we handle real-time data",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-real-time-data/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-real-time-data/2-incremental-patterns",
+            "best-practices/how-we-handle-real-time-data/3-warehouse-native-features",
+            "best-practices/how-we-handle-real-time-data/4-lambda-views",
+            "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
+            "best-practices/how-we-handle-real-time-data/6-operational-considerations",
+            "best-practices/how-we-handle-real-time-data/7-conclusion",
+          ],
+        },
+        {
+          type: "category",
           label: "Materialization best practices",
           link: {
             type: "doc",

@@ -7,7 +7,7 @@ hoverSnippet: Learn the lambda view pattern for near real-time operational dashb
 A **lambda view** pattern combines a **batch/incremental fact table** with a small near real-time (NRT) slice of very recent data and exposes them through a single view. This is a legacy-but-still-useful pattern some teams have used to deliver near real-time operational dashboards on top of dbt + Snowflake.
 
 :::info Advanced pattern
-This is an advanced pattern with significant operational complexity. For most use cases, consider [Dynamic Tables](/best-practices/how-we-handle-freshness/3-warehouse-native-features) or standard [incremental models](/best-practices/how-we-handle-freshness/2-incremental-patterns) first.
+This is an advanced pattern with significant operational complexity. For most use cases, consider [Dynamic Tables](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features) or standard [incremental models](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns) first.
 :::
 
 ---

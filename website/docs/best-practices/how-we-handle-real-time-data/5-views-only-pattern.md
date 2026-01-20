@@ -9,7 +9,7 @@ For some workloads, the simplest and most "real-time" pattern is to **materializ
 This pattern is essentially a cleaned-up, modernized version of "materialize everything as views" from the original lambda-views blog, with clearer constraints around when it's safe to use.
 
 :::warning Use with caution
-This pattern only works for very specific use cases. For most transformations, use [incremental models](/best-practices/how-we-handle-freshness/2-incremental-patterns) or [warehouse-native features](/best-practices/how-we-handle-freshness/3-warehouse-native-features) instead.
+This pattern only works for very specific use cases. For most transformations, use [incremental models](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns) or [warehouse-native features](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features) instead.
 :::
 
 ---
@@ -169,8 +169,8 @@ If your logic evolves into **large joins, deep view chains, or expensive aggrega
 - Query costs and latency become unpredictable
 
 **When this happens, migrate to:**
-- [Incremental tables](/best-practices/how-we-handle-freshness/2-incremental-patterns) (patterns 1–3), or
-- [Dynamic Tables/materialized views](/best-practices/how-we-handle-freshness/3-warehouse-native-features)
+- [Incremental tables](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns) (patterns 1–3), or
+- [Dynamic Tables/materialized views](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features)
 
 ### ❌ No "frozen" intermediate tables
 
@@ -348,6 +348,6 @@ The views-only pattern is a **gateway pattern**: it's easy to start with, but yo
 
 ## Related patterns
 
-- [Incremental patterns](/best-practices/how-we-handle-freshness/2-incremental-patterns) - For when you need to persist intermediate transformations
-- [Lambda views](/best-practices/how-we-handle-freshness/4-lambda-views) - Combines views with incremental tables
-- [Warehouse-native features](/best-practices/how-we-handle-freshness/3-warehouse-native-features) - For warehouse-managed freshness
+- [Incremental patterns](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns) - For when you need to persist intermediate transformations
+- [Lambda views](/best-practices/how-we-handle-real-time-datas/4-lambda-views) - Combines views with incremental tables
+- [Warehouse-native features](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features) - For warehouse-managed freshness

@@ -68,10 +68,10 @@ You can absolutely get near real-time data with dbt (minutes-fresh, not seconds-
 
 This guide covers multiple patterns for achieving near real-time data freshness with dbt:
 
-1. **[Incremental patterns](/best-practices/how-we-handle-freshness/2-incremental-patterns)** - MERGE strategies, CDC with Snowflake Streams, and microbatch processing
-2. **[Warehouse-native features](/best-practices/how-we-handle-freshness/3-warehouse-native-features)** - When to use Dynamic Tables and Materialized Views instead
-3. **[Lambda views pattern](/best-practices/how-we-handle-freshness/4-lambda-views)** - Combining batch and real-time data in a single view
-4. **[Views-only pattern](/best-practices/how-we-handle-freshness/5-views-only-pattern)** - Maximum freshness for lightweight transformations
-5. **[Operational considerations](/best-practices/how-we-handle-freshness/6-operational-considerations)** - Challenges, risks, and cost management
+1. **[Incremental patterns](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns)** - MERGE strategies, CDC with Snowflake Streams, and microbatch processing
+2. **[Warehouse-native features](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features)** - When to use Dynamic Tables and Materialized Views instead
+3. **[Lambda views pattern](/best-practices/how-we-handle-real-time-datas/4-lambda-views)** - Combining batch and real-time data in a single view
+4. **[Views-only pattern](/best-practices/how-we-handle-real-time-datas/5-views-only-pattern)** - Maximum freshness for lightweight transformations
+5. **[Operational considerations](/best-practices/how-we-handle-real-time-datas/6-operational-considerations)** - Challenges, risks, and cost management
 
 Each pattern includes practical code examples, use cases, and tradeoffs to help you choose the right approach for your requirements.
