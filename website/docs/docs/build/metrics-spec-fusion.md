@@ -545,10 +545,10 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
-  ```bash
-  dbt parse
-  dbt sl validate
-  ```
+    ```bash
+    dbt parse
+    dbt sl validate
+    ```
 
 3. Release a new version of the package with the updated metrics definitions.
 
