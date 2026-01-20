@@ -17,6 +17,7 @@ Private connections enables secure communication from any <Constant name="cloud"
 
 ---
 
+
 ## Choose your cloud platform
 
 Select your cloud platform to view private connectivity options, support matrix, and configuration guides.
