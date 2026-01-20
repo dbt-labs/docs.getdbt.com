@@ -539,10 +539,7 @@ Note that if your project depends on dbt packages that reference metrics or sema
 
 The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) only updates files in the current project and does not modify installed packages. Packages that still use the legacy metrics spec may cause parsing or validation errors after migration.
 
-To migrate packages:
-
-- Update packages by running `dbt-autofix deprecations --semantic-layer` in the package repository.
-- For externally maintained packages, upgrade to a version that supports the latest spec.
+To update packages, run `dbt-autofix deprecations --semantic-layer` in the package repository.
 
 After updating packages, run:
 
