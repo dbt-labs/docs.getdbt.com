@@ -5,11 +5,11 @@ pagination_next: "docs/core/pip-install"
 pagination_prev: null
 ---
 
-[<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is an open sourced project where you can develop from the command line and run your dbt project.
+[<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is an open-source project where you can develop from the command line and run your dbt project.
 
 To use <Constant name="core" />, your workflow generally looks like:
 
-1. **Build your dbt project in a code editor &mdash;** popular choices include VSCode and Atom.
+1. **Build your dbt project in a code editor &mdash;** popular choices include VS Code and Atom.
 
 2. **Run your project from the command line &mdash;** macOS ships with a default Terminal program, however you can also use iTerm or the command line prompt within a code editor to execute dbt commands.
 

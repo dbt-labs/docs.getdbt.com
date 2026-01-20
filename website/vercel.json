@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/reference/dbt-jinja-functions",
+      "destination": "/reference/dbt-jinja-functions-context-variables",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/cost-management",
       "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true

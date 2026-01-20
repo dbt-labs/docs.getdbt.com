@@ -1,8 +1,8 @@
 ---
-title: "2022 dbt Cloud release notes"
-description: "dbt Cloud release notes for 2022"
+title: "2022 dbt platform release notes"
+description: "dbt platform release notes for 2022"
 id: "2022-release-notes"
-sidebar: "2022 release notes"
+sidebar_label: "2022 release notes"
 pagination_next: null
 pagination_prev: null
 ---
@@ -26,8 +26,6 @@ For more information, read [Understanding threads](/docs/running-a-dbt-project/u
 To help save compute time, new jobs will no longer be triggered to run by default. When you create a new job in <Constant name="cloud" />, you can trigger the job to run by selecting **Run on schedule** and completing the desired schedule and timing information.
 
 For more information, refer to [Deploy jobs](/docs/deploy/deploy-jobs).
-
-<Lightbox src="/img/docs/release-notes/new-jobs-default-as-off.png" title="Default for newly created jobs"/>
 
 ### Private packages must be cloned using access tokens provided by environment variables
 
