@@ -552,7 +552,7 @@ To update packages, a package maintainer should:
 
 3. Release a new version of the package with the updated metrics definitions.
 
-After a compatible version is released, update your project to install the new package version. You can then migrate your metrics to the latest spec with the following steps, depending on which tool you're using.
+After a compatible version is released, update your project to [install the new package version](/docs/build/packages). You can then migrate your metrics to the latest spec with the following steps, depending on which tool you're using.
 
 <!--no toc-->
 - [Using the CLI or VS Code extension](#using-the-cli-or-vs-code-extension)
