@@ -25,7 +25,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 ## Prerequisites
 
 - Install [Git](https://git-scm.com/install/)
-- [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk)
+- Install [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk)
 - Use Python versions 3.13.x or older. Python 3.14 is [not supported](/faqs/Core/install-python-compatibility#python-compatibility-matrix) as yet
 - Access to a GCP account BigQuery project
 - Access to a Git platform repository (like GitHub, AzureDevOps, GitLab, and so on)
