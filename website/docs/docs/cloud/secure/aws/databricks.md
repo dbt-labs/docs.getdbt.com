@@ -1,8 +1,8 @@
 ---
 title: "Configuring Databricks and AWS PrivateLink"
-id: databricks-privatelink
+id: aws-databricks
 description: "Configuring AWS PrivateLink for Databricks"
-sidebar_label: "AWS PrivateLink for Databricks"
+sidebar_label: "Databricks"
 pagination_next: null
 ---
 

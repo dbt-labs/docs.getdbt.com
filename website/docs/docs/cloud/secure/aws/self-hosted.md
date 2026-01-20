@@ -1,8 +1,8 @@
 ---
 title: "Configuring PrivateLink for self-hosted cloud version control systems (VCS)"
-id: vcs-privatelink
+id: aws-self-hosted
 description: "Setting up a PrivateLink connection between dbt and an organization’s cloud hosted git server"
-sidebar_label: "PrivateLink for VCS"
+sidebar_label: "Self-hosted services"
 ---
 
 # Configuring PrivateLink for self-hosted cloud VCS <Lifecycle status="managed_plus" />

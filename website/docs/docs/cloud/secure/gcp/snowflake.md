@@ -1,8 +1,8 @@
 ---
 title: "Configuring Snowflake and GCP Private Service Connect"
-id: snowflake-psc
+id: gcp-snowflake
 description: "Configuring GCP Private Service Connect for Snowflake"
-sidebar_label: "GCP Private Service Connect for Snowflake"
+sidebar_label: "Snowflake"
 ---
 
 # Configuring Snowflake Private Service Connect <Lifecycle status="managed_plus" />

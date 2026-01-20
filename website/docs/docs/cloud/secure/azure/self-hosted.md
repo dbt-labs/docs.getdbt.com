@@ -1,8 +1,8 @@
 ---
 title: "Configuring Azure Private Link to your self-hosted service"
-id: az-self-hosted-private-link
+id: azure-self-hosted
 description: "Setting up an Azure Private Link connection between dbt and your self-hosted service."
-sidebar_label: "Azure Private Link for Self-Hosted Service"
+sidebar_label: "Self-hosted services"
 ---
 
 # Configuring Azure Private Link for a self-hosted service <Lifecycle status="managed_plus" />

@@ -1,8 +1,8 @@
 ---
 title: "Configuring Databricks and Azure Private Link"
-id: databricks-private-link
+id: azure-databricks
 description: "Configuring Azure Private Link for Databricks"
-sidebar_label: "Azure Private Link for Databricks"
+sidebar_label: "Databricks"
 pagination_next: null
 ---
 

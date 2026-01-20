@@ -1,8 +1,8 @@
 ---
 title: "Configuring Private Link for Azure Database for Postgres Flexible Server"
-id: az-postgres-private-link
+id: azure-postgres
 description: "Configuring Private Link for Azure Database for Postgres Flexible Server"
-sidebar_label: "Private Link for Azure Database for Postgres Flexible Server"
+sidebar_label: "Database for Postgres Flexible Server"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';

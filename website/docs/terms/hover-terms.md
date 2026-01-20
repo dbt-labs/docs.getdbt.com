@@ -151,6 +151,10 @@ service-provider:
   displayText: Service provider
   hoverSnippet: The party that publishes a service for private access. This can be a third-party vendor (Snowflake, Databricks) or the cloud platform itself (Redshift, BigQuery).
 
+service-producer:
+  displayText: Service producer
+  hoverSnippet: The party that provisions and manages the service that the consumer connects to. The service producer publishes a resource ID that the consumer uses to establish the connection.
+
 consumer:
   displayText: Consumer
   hoverSnippet: The party that creates a private endpoint to connect to a service. When dbt Cloud is the consumer, it connects to your services.

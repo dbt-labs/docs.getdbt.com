@@ -1,8 +1,8 @@
 ---
 title: "Configuring Snowflake and Azure Private Link"
-id: snowflake-private-link
+id: azure-snowflake
 description: "Configuring Azure Private Link for Snowflake"
-sidebar_label: "Azure Private Link for Snowflake"
+sidebar_label: "Snowflake"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';

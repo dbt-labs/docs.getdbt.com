@@ -1,8 +1,8 @@
 ---
 title: "Configuring GCP Private Service Connect to your self-hosted service"
-id: gcp-self-hosted-psc
+id: gcp-self-hosted
 description: "Setting up a GCP Private Service Connect connection between dbt and your self-hosted service."
-sidebar_label: "GCP Private Service Connect for Self-Hosted Service"
+sidebar_label: "Self-hosted services"
 ---
 
 # Configuring GCP Private Service Connect for a self-hosted service <Lifecycle status="managed_plus" />

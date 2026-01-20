@@ -1,8 +1,8 @@
 ---
 title: "Configuring BigQuery and GCP Private Service Connect"
-id: bigquery-psc
+id: gcp-bigquery
 description: "Configuring GCP Private Service Connect for BigQuery"
-sidebar_label: "GCP Private Service Connect for BigQuery"
+sidebar_label: "BigQuery"
 ---
 
 # Configuring BigQuery Private Service Connect <Lifecycle status="managed_plus" />

@@ -1,8 +1,8 @@
 ---
 title: "Configuring Snowflake and AWS PrivateLink"
-id: snowflake-privatelink
+id: aws-snowflake
 description: "Configuring AWS PrivateLink for Snowflake"
-sidebar_label: "AWS PrivateLink for Snowflake"
+sidebar_label: "Snowflake"
 ---
 
 # Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />

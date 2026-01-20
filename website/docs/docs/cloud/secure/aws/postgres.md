@@ -1,8 +1,8 @@
 ---
 title: "Configure AWS PrivateLink for Postgres"
-id: postgres-privatelink
+id: aws-postgres
 description: "Configuring PrivateLink for Postgres"
-sidebar_label: "AWS PrivateLink for Postgres"
+sidebar_label: "Postgres"
 ---
 
 # Configure AWS PrivateLink for Postgres <Lifecycle status="managed_plus" />

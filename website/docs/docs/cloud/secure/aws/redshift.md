@@ -1,8 +1,8 @@
 ---
 title: "Configure AWS PrivateLink for Redshift"
-id: redshift-privatelink
+id: aws-redshift
 description: "Configuring PrivateLink for Redshift"
-sidebar_label: "AWS PrivateLink for Redshift"
+sidebar_label: "Redshift"
 ---
 
 # Configure AWS PrivateLink for Redshift <Lifecycle status="managed_plus" />

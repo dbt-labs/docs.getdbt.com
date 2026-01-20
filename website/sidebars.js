@@ -211,27 +211,51 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "Secure your tenant",
-              link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
+              label: "Network security",
+              link: { type: "doc", id: "docs/cloud/secure/network-security" },
               items: [
-                "docs/cloud/secure/secure-your-tenant",
+                "docs/cloud/secure/network-security",
                 "docs/cloud/secure/ip-restrictions",
                 "docs/cloud/secure/about-private-connectivity",
-                "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/snowflake-private-link",
-                "docs/cloud/secure/snowflake-psc",
-                "docs/cloud/secure/databricks-privatelink",
-                "docs/cloud/secure/databricks-private-link",
-                "docs/cloud/secure/redshift-privatelink",
-                "docs/cloud/secure/postgres-privatelink",
-                "docs/cloud/secure/az-postgres-private-link",
-                "docs/cloud/secure/az-synapse-private-link",
-                "docs/cloud/secure/az-self-hosted-private-link",
-                "docs/cloud/secure/bigquery-psc",
-                "docs/cloud/secure/vcs-privatelink",
-                "docs/cloud/secure/gcp-self-hosted-psc",
+                {
+                  type: "category",
+                  label: "AWS",
+                  link: { type: "doc", id: "docs/cloud/secure/aws/aws-overview" },
+                  items: [
+                    "docs/cloud/secure/aws/aws-overview",
+                    "docs/cloud/secure/aws/aws-snowflake",
+                    "docs/cloud/secure/aws/aws-databricks",
+                    "docs/cloud/secure/aws/aws-redshift",
+                    "docs/cloud/secure/aws/aws-postgres",
+                    "docs/cloud/secure/aws/aws-self-hosted",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Azure",
+                  link: { type: "doc", id: "docs/cloud/secure/azure/azure-overview" },
+                  items: [
+                    "docs/cloud/secure/azure/azure-overview",
+                    "docs/cloud/secure/azure/azure-snowflake",
+                    "docs/cloud/secure/azure/azure-databricks",
+                    "docs/cloud/secure/azure/azure-postgres",
+                    "docs/cloud/secure/azure/azure-synapse",
+                    "docs/cloud/secure/azure/azure-self-hosted",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "GCP",
+                  link: { type: "doc", id: "docs/cloud/secure/gcp/gcp-overview" },
+                  items: [
+                    "docs/cloud/secure/gcp/gcp-overview",
+                    "docs/cloud/secure/gcp/gcp-snowflake",
+                    "docs/cloud/secure/gcp/gcp-bigquery",
+                    "docs/cloud/secure/gcp/gcp-self-hosted",
+                  ],
+                },
               ],
-            }, // PrivateLink
+            }, // Network security
           ],
         },
         {
