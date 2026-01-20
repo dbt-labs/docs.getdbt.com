@@ -27,8 +27,6 @@ To help save compute time, new jobs will no longer be triggered to run by defaul
 
 For more information, refer to [Deploy jobs](/docs/deploy/deploy-jobs).
 
-<Lightbox src="/img/docs/release-notes/new-jobs-default-as-off.png" title="Default for newly created jobs"/>
-
 ### Private packages must be cloned using access tokens provided by environment variables
 
 The supported method for cloning private GitHub packages is the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 
