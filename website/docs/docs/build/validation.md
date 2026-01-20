@@ -21,7 +21,8 @@ You can run validations from the <Constant name="dbt_platform" /> or the command
 # runs parsing, semantic, and (where supported) data platform validations
 dbt sl validate
 
-# dbt Core (open source) users
+# dbt Core (open source) users 
+# Fusion CLI users not connected to dbt platform and using local MetricFlow
 # runs parsing and semantic validations 
 mf validate-configs
 ```

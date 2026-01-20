@@ -547,7 +547,8 @@ To update packages, a package maintainer should:
 
     ```bash
     dbt parse
-    dbt sl validate
+    dbt sl validate  # For dbt platform and Fusion users in IDE / Cloud CLI
+    mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
     ```
 
 3. Release a new version of the package with the updated metrics definitions.
@@ -574,7 +575,7 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 
     ```bash
     dbt parse
-    dbt sl validate
+    mf validate-configs
     ```
 
 ### Using the Studio IDE
