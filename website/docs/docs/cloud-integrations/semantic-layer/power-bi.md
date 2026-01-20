@@ -40,7 +40,7 @@ The <Constant name="semantic_layer" /> Power BI connector consists of a custom `
 
 Note that users on older versions of Power BI may have to [configure the connector](#configure-the-connector) before they can verify the installation. 
 
-To verify they installation:
+To verify the installation:
 
 1. Open **ODBC Data Sources (64-bit)** file on your computer.
 2. Navigate to **System DSN** and verify that the `dbt Labs ODBC DSN` is registered. 
