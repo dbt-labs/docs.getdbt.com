@@ -533,7 +533,25 @@ import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
 <CopilotLimitation />
 
-Refer to the following steps in this section, depending on which tool you use.
+### Package compatibility
+
+Note that if your project depends on dbt packages that reference metrics or semantic models, you must also update those packages to use the latest YAML spec in <Constant name="fusion" />.
+
+The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) only updates files in the current project and does not modify installed packages. Packages that still use the legacy metrics spec may cause parsing or validation errors after migration.
+
+To migrate packages:
+
+- Update packages by running `dbt-autofix deprecations --semantic-layer` in the package repository.
+- For externally maintained packages, upgrade to a version that supports the latest spec.
+
+After updating packages, re-run:
+
+```bash
+dbt parse
+mf validate-configs
+```
+
+To proceed with migrating to the latest spec, refer to the following steps in this section, depending on which tool you use.
 
 <!--no toc-->
 - [Using the CLI or VS Code extension](#using-the-cli-or-vs-code-extension)
