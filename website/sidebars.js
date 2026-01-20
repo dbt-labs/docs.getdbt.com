@@ -836,6 +836,17 @@ const sidebarSettings = {
           ],
     },
     {
+      type: "category",
+      label: "dbt AI and intelligence",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/about-dbt-ai", },
+      items: [
+          "docs/dbt-ai/about-dbt-ai",
+          "docs/dbt-ai/agents-overview",
+          "docs/agents-self-service",
+          ],
+    },
+    {
       type: 'html',
       value: 'Additional tools',
       className: 'sidebar-title',
