@@ -1,36 +1,35 @@
 ---
 title: "Warehouse-native features for real-time data"
-description: Learn when to use Dynamic Tables and Materialized Views instead of incremental models for near real-time data
-hoverSnippet: Use Dynamic Tables and Materialized Views for simplified near real-time data
+id: "3-warehouse-native-features"
+description: Learn when to use dynamic tables and materialized views instead of incremental models for near real-time data
+hoverSnippet: Use dynamic tables and materialized views for simplified near real-time data
 ---
 
 Modern data warehouses offer native features that can simplify near real-time data patterns. Instead of managing incremental logic yourself, you can declare the desired freshness and let the warehouse handle the refresh mechanics.
 
-This page covers when and how to use warehouse-native features like **Dynamic Tables** (Snowflake) and **Materialized Views** instead of custom incremental models.
-
----
-
 ## When to consider warehouse-native features
 
-Use Dynamic Tables or Materialized Views when:
+Use dynamic tables or materialized views when:
 
-- Your requirement is **"data always within X minutes of real time"** and you don't need precise scheduling control
-- You want to **simplify operational complexity** by offloading refresh logic to the warehouse
-- Your transformations are **relatively straightforward** (not highly complex multi-stage incremental logic)
-- You're willing to **trade some control for convenience**
+- Your requirement is "data always within X minutes of real time" and you don't need precise scheduling control
+- You want to simplify operational complexity by offloading refresh logic to the warehouse
+- Your transformations are relatively straightforward
+- You're willing to trade some control for convenience
 
 Stick with incremental models when:
 
-- You need **fine-grained control** over scheduling and refresh logic
-- You have **complex business rules** that require custom incremental strategies
-- You need to **coordinate refreshes** across multiple models in a specific order
-- You want **dbt-managed orchestration** via dbt Cloud or external orchestrators
+- You need fine-grained control over scheduling and refresh logic
+- You have complex business rules requiring custom incremental strategies
+- You need to coordinate refreshes across multiple models in a specific order
+- You want dbt-managed orchestration via dbt Cloud or external orchestrators
 
----
+## Dynamic tables
 
-## Snowflake Dynamic Tables
+:::info Warehouse support
+Dynamic tables are currently supported in Snowflake, with similar features available in other warehouses under different names. Check your warehouse documentation for availability.
+:::
 
-Dynamic Tables are Snowflake's declarative approach to incremental data pipelines. You define the target state with SQL, and Snowflake automatically handles incremental refreshes.
+Dynamic tables let you define the target state with SQL, and the warehouse automatically handles incremental refreshes.
 
 ### Basic example
 
@@ -43,8 +42,8 @@ Dynamic Tables are Snowflake's declarative approach to incremental data pipeline
 
 select
     event_id,
-    event_ts::timestamp_ntz   as event_ts,
-    to_date(event_ts)         as event_date,
+    event_ts::timestamp_ntz as event_ts,
+    to_date(event_ts) as event_date,
     user_id,
     event_type,
     payload
@@ -52,100 +51,39 @@ from {{ source('raw', 'events') }}
 where event_ts >= current_timestamp() - interval '7 days';
 ```
 
-### Key configuration: `target_lag`
+### Key configuration: target_lag
 
-The `target_lag` parameter tells Snowflake how fresh the data should be:
+The `target_lag` parameter tells the warehouse how fresh the data should be:
 
-- `target_lag = '1 minute'` - Data will be refreshed to be within 1 minute of the source
-- `target_lag = '5 minutes'` - Data will be within 5 minutes
-- `target_lag = 'downstream'` - Refresh when downstream Dynamic Tables need it
+- `target_lag = '1 minute'` - Data refreshed to be within 1 minute of the source
+- `target_lag = '5 minutes'` - Data within 5 minutes
+- `target_lag = 'downstream'` - Refresh when downstream tables need it
 
-Snowflake automatically determines:
-- When to refresh the table
-- Whether to do a full refresh or incremental update
-- How to optimize the refresh query
+The warehouse automatically determines when to refresh, whether to do a full or incremental update, and how to optimize the refresh query.
 
-### Dynamic Tables in transformation chains
+### Benefits
 
-You can chain Dynamic Tables together, and Snowflake will coordinate refreshes:
+- Declarative freshness: specify "how fresh" not "when to refresh"
+- Warehouse-managed optimization
+- Cost predictability: refreshes run only when needed to meet `target_lag`
+- Simple setup
 
-```sql
--- Staging layer
-{{ config(
-    materialized = 'dynamic_table',
-    target_lag = '2 minutes',
-    snowflake_warehouse = 'TRANSFORM_WH'
-) }}
+### Limitations
 
-select
-    event_id,
-    event_ts,
-    user_id,
-    event_type
-from {{ source('raw', 'events') }};
-```
+- Less control over exact timing or orchestration logic
+- Cost visibility can be harder to predict than scheduled dbt jobs
+- Less visibility into refresh decisions compared to dbt's explicit incremental logic
+- Currently warehouse-specific (implementation varies by platform)
 
-```sql
--- Mart layer
-{{ config(
-    materialized = 'dynamic_table',
-    target_lag = '5 minutes',
-    snowflake_warehouse = 'TRANSFORM_WH'
-) }}
+## Materialized views
 
-select
-    user_id,
-    count(*) as event_count,
-    max(event_ts) as last_event_ts
-from {{ ref('stg_events') }}
-group by user_id;
-```
-
-Snowflake manages the dependency chain and ensures upstream tables refresh before downstream ones.
-
-### Benefits of Dynamic Tables
-
-- **Declarative freshness**: Specify "how fresh" not "when to refresh"
-- **Warehouse-managed optimization**: Snowflake handles incremental logic automatically
-- **Cost predictability**: Refreshes run only when needed to meet `target_lag`
-- **Simple setup**: No complex incremental strategies to configure
-
-### Limitations and considerations
-
-- **Less control**: You can't control exact timing or orchestration logic
-- **Cost visibility**: Refresh costs can be harder to predict and monitor than scheduled dbt jobs
-- **Debugging**: Less visibility into refresh decisions compared to dbt's explicit incremental logic
-- **Feature maturity**: Some edge cases and complex scenarios may not be well-supported yet
-- **Warehouse-specific**: Currently Snowflake-only (other warehouses have similar features but different implementations)
-
-### When to use Dynamic Tables
-
-✅ **Good fit:**
-- Operational dashboards that need "always fresh within X minutes"
-- Simple transformation logic
-- You want warehouse-managed optimization
-- Cost of constant refresh is acceptable
-
-❌ **Not ideal:**
-- Complex multi-stage transformations with intricate dependencies
-- Need precise scheduling coordination with other jobs
-- Require detailed logging and observability of each refresh
-- Working across multiple data warehouses
-
----
-
-## Materialized Views
-
-Materialized Views are another warehouse-native option available in most modern data warehouses (Snowflake, BigQuery, Redshift, Databricks).
+Materialized views are available in most modern data warehouses and cache query results that automatically refresh when underlying data changes.
 
 ### Basic concept
 
-A Materialized View is a view that caches query results and automatically refreshes when underlying data changes:
-
 ```sql
 {{ config(
-    materialized = 'materialized_view',
-    snowflake_warehouse = 'TRANSFORM_WH'
+    materialized = 'materialized_view'
 ) }}
 
 select
@@ -158,124 +96,88 @@ group by 1, 2;
 
 ### How they work
 
-- **Automatic refresh**: The warehouse detects changes to source tables and refreshes the materialized view
-- **Incremental maintenance**: Many warehouses can incrementally update the view rather than recomputing everything
-- **Query acceleration**: Queries against the materialized view read cached results, not the underlying tables
+- The warehouse detects changes to source tables and refreshes the materialized view
+- Many warehouses can incrementally update the view rather than recomputing everything
+- Queries against the materialized view read cached results, not the underlying tables
 
 ### Platform-specific behavior
 
-Each warehouse implements Materialized Views differently:
+Each warehouse implements materialized views differently:
 
-**Snowflake:**
-- Refreshes automatically when queried (if stale)
-- Can be manually refreshed
-- Supports clustering for performance
+- *Snowflake*: Refreshes automatically when queried (if stale), supports clustering
+- *BigQuery*: Automatically and incrementally refreshes, queries may read slightly stale data
+- *Databricks*: Uses incremental refresh, integrates with Delta Lake
+- *Redshift*: Manual or scheduled refresh, good for aggregations
+- *Postgres*: Manual refresh required, good for read-heavy workloads
 
-**BigQuery:**
-- Automatically and incrementally refreshes
-- Queries may read slightly stale data
-- Best for aggregations and filtered views
+### When to use
 
-**Databricks:**
-- Uses "incremental refresh" for updates
-- Can specify refresh schedule
-- Integrates with Delta Lake
-
-**Redshift:**
-- Manual or scheduled refresh
-- Good for aggregations
-- Can specify sort/dist keys
-
-### When to use Materialized Views
-
-✅ **Good fit:**
+Use materialized views for:
 - Simple aggregations or filters on large tables
 - Read-heavy workloads where query performance is critical
-- Warehouse has good materialized view support
-- Acceptable to let warehouse manage refresh timing
+- When your warehouse has good materialized view support
+- When it's acceptable to let the warehouse manage refresh timing
 
-❌ **Not ideal:**
+Avoid for:
 - Complex multi-stage transformations
-- Need explicit scheduling and orchestration
-- Require dbt's testing, documentation, and lineage features
-- Need fine-grained control over refresh logic
+- When you need explicit scheduling and orchestration
+- When you require dbt's full testing, documentation, and lineage features
 
----
-
-## Rule of thumb: Incremental models vs. warehouse features
+## Rule of thumb
 
 | Requirement | Recommendation |
-|-------------|----------------|
-| **Need fine-grained control / strict scheduling / complex business logic** | Use incremental models (merge or microbatch) |
-| **Need "always fresh within X minutes" with simpler logic** | Consider Dynamic Tables or Materialized Views |
-| **Multi-warehouse compatibility** | Use incremental models (portable across platforms) |
-| **Maximum simplicity and warehouse-native optimization** | Use Dynamic Tables or Materialized Views |
-| **Need dbt's testing, docs, and lineage** | Use dbt materializations (works with all approaches) |
-| **Cost optimization through precise scheduling** | Use incremental models with dbt Cloud scheduling |
-
----
+| ----------- | -------------- |
+| Fine-grained control / strict scheduling / complex logic | Incremental models (merge or microbatch) |
+| "Always fresh within X minutes" with simpler logic | Dynamic tables or materialized views |
+| Multi-warehouse compatibility | Incremental models |
+| Maximum simplicity and warehouse-native optimization | Dynamic tables or materialized views |
 
 ## Combining approaches
 
-You don't have to choose just one approach. A common pattern is:
+You don't have to choose just one. A common pattern:
 
-1. **Use incremental models** for most transformations (staging, marts)
-2. **Use Dynamic Tables/MVs** for the final presentation layer where BI tools query
+1. Use incremental models for most transformations (staging, marts)
+2. Use dynamic tables or materialized views for the final presentation layer where BI tools query
 
-This gives you:
-- Control and observability in dbt for core transformations
-- Warehouse-managed freshness for the last mile to dashboards
-- Best of both worlds
+This gives you control and observability in dbt for core transformations, plus warehouse-managed freshness for the last mile to dashboards.
 
-Example:
+## Resources by warehouse
 
-```sql
--- Incremental model (dbt-managed)
--- models/marts/fct_orders.sql
-{{ config(
-    materialized = 'incremental',
-    incremental_strategy = 'merge',
-    unique_key = 'order_id'
-) }}
+### Snowflake
 
-select * from {{ ref('stg_orders') }}
-{% if is_incremental() %}
-where updated_at > (select max(updated_at) from {{ this }})
-{% endif %};
-```
+- [dbt docs: Dynamic tables configurations](/reference/resource-configs/snowflake-configs#dynamic-tables)
+- [Snowflake docs: Dynamic tables intro](https://docs.snowflake.com/en/user-guide/dynamic-tables-intro)
+- [Snowflake docs: Understanding target lag](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag)
+- [Snowflake docs: Dynamic table limitations](https://docs.snowflake.com/en/user-guide/dynamic-tables-limitations)
+- [Snowflake blog: Dynamic tables for streaming pipelines](https://www.snowflake.com/en/blog/dynamic-tables-delivering-declarative-streaming-data-pipelines/)
+- [dbt docs: Snowflake materialized views](/reference/resource-configs/snowflake-configs#materialized-views)
+- [Snowflake docs: Materialized views](https://docs.snowflake.com/en/user-guide/views-materialized)
 
-```sql
--- Dynamic Table for BI (warehouse-managed)
--- models/bi/orders_dashboard.sql
-{{ config(
-    materialized = 'dynamic_table',
-    target_lag = '2 minutes'
-) }}
+### BigQuery
 
-select
-    order_date,
-    customer_segment,
-    sum(order_amount) as total_revenue,
-    count(*) as order_count
-from {{ ref('fct_orders') }}
-group by 1, 2;
-```
+- [dbt docs: BigQuery materialized views](/reference/resource-configs/bigquery-configs#materialized-views)
+- [BigQuery docs: Materialized views intro](https://cloud.google.com/bigquery/docs/materialized-views-intro)
+- [BigQuery materialized views cheat sheet](https://docs.google.com/document/d/1rEiaXELayPXYDHtICu8ObRt-kr84D-lNr33UGCqJm7M/edit?usp=drive_link)
 
----
+### Databricks
 
-## Helpful resources
+- [dbt docs: Databricks materialized views and streaming tables](/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables-1)
+- [Databricks docs: Materialized views](https://docs.databricks.com/en/views/materialized.html)
+- [Databricks materialized views cheat sheet](https://docs.google.com/document/d/1pnH56CxNLEAv0qWHjb_AAjCnfp3Wi_faFMVkx_vUMOI/edit?usp=sharing)
 
-### Dynamic Tables (Snowflake)
+### Redshift
 
-- [Dynamic Tables: Delivering Declarative Streaming Data Pipelines](https://www.snowflake.com/en/blog/dynamic-tables-delivering-declarative-streaming-data-pipelines/)
-- [Snowflake docs on Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-intro)
-- [Understanding dynamic table initialization and refresh](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag)
-- [Dynamic table limitations](https://docs.snowflake.com/en/user-guide/dynamic-tables-limitations)
-- [Dynamic tables configurations in dbt](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#dynamic-tables)
+- [dbt docs: Redshift materialized views](/reference/resource-configs/redshift-configs#materialized-views)
+- [Redshift docs: Materialized views overview](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
+- [Redshift materialized views cheat sheet](https://docs.google.com/document/d/15NJmvK4zT4Uy87KO1yNpvbmrGnzyyi6exyW5ba9L1YE/edit?usp=sharing)
 
-### Materialized Views
+### Postgres
 
-- [Optimizing Materialized Views with dbt](https://docs.getdbt.com/blog/announcing-materialized-views)
-- [Snowflake Materialized Views](https://docs.snowflake.com/en/user-guide/views-materialized)
-- [BigQuery Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
-- [Databricks Materialized Views](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html)
+- [dbt docs: Postgres materialized views](/reference/resource-configs/postgres-configs#materialized-views)
+- [Postgres docs: Materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
+- [Postgres materialized views cheat sheet](https://docs.google.com/document/d/1UiWGTSLQKiKIkVSuzJkwYpPbhLpvxkKbunWFHatFQTs/edit?usp=sharing)
+
+### General resources
+
+- [dbt blog: Announcing materialized views](/blog/announcing-materialized-views)
+- [dbt blog: Optimizing query run time with materialization schedules](https://www.getdbt.com/blog/optimizing-query-run-time-with-materialization-schedules/)

@@ -1,77 +1,51 @@
 ---
 title: "Near real-time data in dbt"
+id: "1-intro"
 description: Learn how to achieve near real-time data freshness with dbt through streaming ingestion and frequent transformations
 hoverSnippet: Learn how to achieve near real-time data freshness with dbt
 ---
 
-dbt is designed for batch-oriented data processing, working more like a scheduled report that runs at set intervals, with a clear defined start and end time. For instant, real-time data updates (think: stock tickers updating every second), we recommend using your data wa
- designed for true streaming or real-time data processing.
+By design, dbt is batch-oriented with jobs having a defined start and end time (like a scheduled report that runs at set intervals); it doesn't keep long-running streaming processes alive. However, you can use dbt to get near real-time data by combining your data warehouse's continuous ingestion with frequent dbt transformations.
 
-To get data that's "fresh enough" for business decisions, you combine two things:
+#### How dbt achieves near real-time data
+To achieve real-time data with dbt, we recommend using a two-layer architecture:
+1. Ingestion layer &mdash; Continuous data landing using your data warehouse's streaming ingestion features. 
+   
+   Streaming ingestion features like [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), [Snowpipe](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview), or [Storage Write API](https://docs.cloud.google.com/bigquery/docs/write-api-streaming) are a great way to do this. To check streaming ingestion features for your warehouse, check the [additional resources](#additional-resources) section.
+2. dbt transformation layer &mdash; Run dbt transformations every few minutes to transform that data, and you can use materialized views or dynamic tables for the lowest-latency reporting.
 
-1. **Continuous data collection** - Your data warehouse is constantly receiving new information (like customer orders, website clicks, etc.)
-2. **Frequent processing** - dbt runs every few minutes (instead of once a day) to clean and organize that data for reports and dashboards
+Specific approaches include:
+- [Incremental models](/docs/build/incremental-models-overview) with merge or append strategies
+- [Microbatch incremental strategy](/docs/build/incremental-microbatch) for large time-series tables
+- Jobs scheduled very frequently (like every 5 minutes)
+- Use [dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/reference/resource-configs/snowflake-configs#materialized-views) with short refresh intervals
 
-**How Fresh Can You Get?**
+#### Where dbt fits in the near real-time data pipeline
 
-- **Near real-time**: Data updates every 1-15 minutes - good enough for most operational dashboards
-- **True real-time** (sub-second updates): You'll need different tools; dbt isn't the right fit
+There are two main ways to use dbt to get near real-time data:
 
-**The Tradeoffs:**
+- For near real-time* (1-15 minutes) &mdash; Well-suited for most operational dashboards. This is where dbt excels.
+- For true real-time* (sub-second) &mdash; Requires dedicated streaming databases (ClickHouse, Materialize, Rockset, and so on) in front of or alongside dbt; dbt still owns “analytic” tables and history but not the ultra‑low‑latency read path.
 
-- **Fresher data = higher costs** - Running updates every 5 minutes instead of every hour means your data warehouse is working constantly, which costs more
-- **More complexity** - You need to carefully monitor and tune your systems to keep everything running smoothly
-- **Business value question** - Do you really need minute-by-minute data, or would hourly updates work just as well?
+## Key recommendations
 
-**Bottom Line:**
-
-You can absolutely get near real-time data with dbt (minutes-fresh, not seconds-fresh), but it requires more infrastructure cost and operational effort. Make sure the business value of having that fresh data justifies the additional investment.
-
----
-
-## Overview
-
-**dbt does not natively support true streaming or real-time data processing.** Its core paradigm is batch-oriented, with jobs that have a defined start and end, making it a challenging fit for continuous, sub-second streaming use cases. Our core recommendations are: leverage your data warehouse's streaming ingestion (like Snowpipe for Snowflake), use dbt to transform that data with high-frequency scheduled jobs, and consider materialized views or dynamic tables for minimal-latency reporting.
-
-## Key Recommendations for Near Real-Time Data with dbt
-
-- **Ingest Data Continuously:** Use your warehouse's native streaming or micro-batch ingestion (e.g., Snowpipe for Snowflake, Fivetran for batch loads) to land raw data as soon as it arrives. This minimizes latency before dbt transformations even begin.
-- **Transform with dbt on a Frequent Schedule:** Schedule dbt jobs to run as often as your business needs allow (e.g., every 1–15 minutes). The actual frequency should balance data freshness with cost and resource constraints.
-- **Materialized Views & Dynamic Tables:** For the lowest-latency reporting, use materialized views or dynamic tables. These can be refreshed as frequently as every minute, providing "near real-time" access for BI tools.
-- **Incremental Models & Microbatching:** Use dbt's incremental models to process only new or changed data, which is essential for keeping transformations efficient and scalable as data volumes grow.
-- **Decouple Ingestion from Transformation:** Keep data acquisition (ingestion) and transformation (dbt) flows separate. This allows you to optimize each independently and troubleshoot more easily.
-- **Monitor and Test Data Freshness:** Implement data quality checks and freshness monitoring in dbt to ensure your near real-time pipelines are delivering accurate, up-to-date results.
-- **Cost and Complexity Considerations:** Be aware that increasing data freshness (i.e., running dbt jobs more frequently) will drive up compute costs and operational complexity. Always weigh the business value of "real-time" against these trade-offs.
-
----
-
-## How streaming / real-time data fits with dbt
-
-### dbt's role
-
-- dbt runs **discrete jobs** (CLI, dbt Cloud, Airflow, etc.); it does not keep a long-running streaming compute process alive.
-- Teams that need "real-time" usually end up with **two layers**:
-    - **Ingestion / streaming layer** (Snowpipe, Snowpipe Streaming, Kafka → Snowflake, Fivetran, etc.) to land events continuously.
-    - **dbt layer** to do **micro-batch transformations** (e.g. every 1–15 minutes) using incremental or microbatch models, or Snowflake **Dynamic Tables** where appropriate.
-
-### When dbt is a good fit
-
-- **Near real-time (minutes)**:
-    - Incremental models with **merge** or **append**.
-    - Or **microbatch** incremental strategy for large time-series tables.
-    - Jobs scheduled very frequently (e.g. every 5 minutes) or Dynamic Tables with `target_lag` of a few minutes on Snowflake.
-- **True streaming / sub-second** dashboards often use a **streaming database** (ClickHouse, Materialize, Rockset, etc.) in front of or alongside dbt; dbt still owns "analytic" tables and history but not the ultra-low-latency read path.
-
----
+- *Ingest data continuously* &mdash; Use your warehouse's native streaming or micro-batch ingestion to land raw data as soon as it arrives.
+- *Transform with dbt on a frequent schedule* &mdash; Schedule dbt jobs to run as often as your business needs allow (e.g., every 1–15 minutes). Balance freshness with cost and resource constraints.
+- *Materialized views & dynamic tables* &mdash; For the lowest-latency reporting, use materialized views or dynamic tables. These can be refreshed as frequently as every minute.
+- *Incremental models & microbatching* &mdash; Use dbt's incremental models to process only new or changed data, keeping transformations efficient and scalable.
+- *Decouple ingestion from transformation* &mdash; Keep data acquisition and transformation flows separate. This allows you to optimize each independently.
+- *Monitor and test data freshness* &mdash; Implement data quality checks and freshness monitoring to ensure your near real-time pipelines deliver accurate, up-to-date results.
+- *Cost and complexity considerations* &mdash; Running dbt jobs more frequently drives up compute costs and operational complexity. Always weigh the business value against these trade-offs.
 
 ## What's in this guide
 
 This guide covers multiple patterns for achieving near real-time data freshness with dbt:
 
-1. **[Incremental patterns](/best-practices/how-we-handle-real-time-datas/2-incremental-patterns)** - MERGE strategies, CDC with Snowflake Streams, and microbatch processing
-2. **[Warehouse-native features](/best-practices/how-we-handle-real-time-datas/3-warehouse-native-features)** - When to use Dynamic Tables and Materialized Views instead
-3. **[Lambda views pattern](/best-practices/how-we-handle-real-time-datas/4-lambda-views)** - Combining batch and real-time data in a single view
-4. **[Views-only pattern](/best-practices/how-we-handle-real-time-datas/5-views-only-pattern)** - Maximum freshness for lightweight transformations
-5. **[Operational considerations](/best-practices/how-we-handle-real-time-datas/6-operational-considerations)** - Challenges, risks, and cost management
+1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) - MERGE strategies, CDC, and microbatch processing
+2. [Warehouse-native features](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features) - When to use dynamic tables and materialized views
+3. [Lambda views pattern](/best-practices/how-we-handle-real-time-data/4-lambda-views) - Combining batch and real-time data in a single view
+4. [Views-only pattern](/best-practices/how-we-handle-real-time-data/5-views-only-pattern) - Maximum freshness for lightweight transformations
+5. [Operational considerations](/best-practices/how-we-handle-real-time-data/6-operational-considerations) - Challenges, risks, and cost management
+6. [Choosing the right pattern](/best-practices/how-we-handle-real-time-data/7-conclusion) - Decision framework and additional resources
 
-Each pattern includes practical code examples, use cases, and tradeoffs to help you choose the right approach for your requirements.
+Each pattern includes practical code examples, use cases, and tradeoffs to help you choose the right approach.
