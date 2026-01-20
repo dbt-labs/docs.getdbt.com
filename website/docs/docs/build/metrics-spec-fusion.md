@@ -545,7 +545,7 @@ After updating packages, run:
 
 ```bash
 dbt parse
-mf validate-configs
+dbt sl validate
 ```
 
 To proceed with migrating to the latest spec, refer to the following steps in this section, depending on which tool you use.
@@ -570,7 +570,7 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 
     ```bash
     dbt parse
-    mf validate-configs
+    dbt sl validate
     ```
 
 ### Using the Studio IDE
