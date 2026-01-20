@@ -53,7 +53,7 @@ Use `target` in your `packages.yml`:
 
 packages:
   - package: dbt-labs/dbt_utils
-    version: "{% if env_var('DBT_ENV_NAME') == 'prod' %}0.14.0{% else %}0.13.1{% endif %}"
+    version: "{% if target.name == 'prod' %}0.14.0{% else %}0.13.1{% endif %}"
 
 ```
 
