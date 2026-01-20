@@ -16,7 +16,7 @@ The `{{ debug() }}` macro will open an iPython debugger in the context of a comp
 
 This function requires:
 - Interactive terminal access with iPython debugger (`ipdb`) installed
-- Local development environment running <Constant name="core" /> CLI or <Constant name="fusion_engine" /> CLI
+- Local development environment running <Constant name="core" /> CLI
 - `DBT_MACRO_DEBUGGING` environment variable set
 
 ## Usage
