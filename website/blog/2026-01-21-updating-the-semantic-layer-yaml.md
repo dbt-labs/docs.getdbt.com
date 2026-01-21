@@ -27,7 +27,7 @@ There are three major updates to the structure of semantic modeling in dbt:
 - **Reducing nesting:** We removed as much deep dictionary nesting as possible to simplify the look and feel of the code, and renamed keys to more directly describe their behavior.
 - **Standardizing on models YAML entries:** Semantic annotations are embedded within the model’s YAML entry to remove the need to manage many YAML entries across many files to enrich your models with semantic metadata.
 
-### Legacy Implementation
+### Legacy implementation
 
 ```yaml
 models:
@@ -69,7 +69,7 @@ semantic_models:
  
 ```
 
-### New Implementation
+### New implementation
 
 ```yaml
 models:
