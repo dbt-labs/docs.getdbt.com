@@ -26,10 +26,10 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 
 ## Key benefits
 
-- Faster development &mdash; Engineers and analysts ship data products faster with AI assistance
-- Better decisions &mdash; Business users get accurate answers grounded in governed data
-- Auditability &mdash; Every agent action includes transparent SQL, lineage, and policies
-- Scalability &mdash; Automate routine tasks and let teams focus on high-value work
+- Faster development &mdash; Engineers and analysts ship data products faster with AI assistance.
+- Better decisions &mdash; Business users get accurate answers grounded in governed data.
+- Auditability &mdash; Every agent action includes transparent SQL, lineage, and policies.
+- Scalability &mdash; Routine tasks are automated so teams can focus on high-value work.
 
 ## Available agents
 

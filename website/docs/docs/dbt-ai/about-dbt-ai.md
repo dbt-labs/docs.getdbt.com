@@ -10,10 +10,10 @@ tags: [AI, Intelligence]
 # About dbt AI and intelligence <Lifecycle status="private_beta"/>
 
 <IntroText>
-dbt AI and intelligence are a suite of features that help you use AI to accelerate your data analytics and intelligence workflows.
+dbt AI and intelligence is a suite of features that helps you use AI to accelerate your data analytics and intelligence workflows.
 </IntroText>
 
-Whether you're using AI to generate code, test, or documentation, scale your data teams with autonomous agents, or you want to use AI to build your own agents, we have you covered. The following features in dbt can help you optimize your workflows.
+Whether you're using AI to generate code, tests, and documentation, to scale your data teams with autonomous agents, or to build your own custom agents, we have you covered. The following features in dbt can help you optimize your workflows.
 
 <div className="grid--3-col">
 
