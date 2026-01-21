@@ -12,13 +12,15 @@ This guide introduces MetricFlow's fundamental ideas for people new to this feat
 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
 
+
+## Prerequisites
 Before you start, consider the following guidelines:
 
 <VersionBlock lastVersion="1.99">
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- Available on [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion), or [dbt Latest](/docs/dbt-versions/cloud-release-tracks), or [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6+
-- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), Trino, or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 </VersionBlock>
@@ -26,8 +28,8 @@ Before you start, consider the following guidelines:
 <VersionBlock firstVersion="2.0">
 
 - Define metrics in YAML and query them using the [latest metric specifications](/docs/build/semantic-models).
-- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.11 and higher
-- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- Available on the [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion) or [dbt Latest](/docs/dbt-versions/cloud-release-tracks) in the <Constant name="dbt_platform" />.
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), Trino, or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations).
 
 </VersionBlock>
