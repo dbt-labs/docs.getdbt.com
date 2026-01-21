@@ -1,8 +1,8 @@
 ---
-title: "About dbt AI and intelligence"
+title: "dbt AI and intelligence"
 id: "about-dbt-ai"
 description: "Learn about dbt AI and intelligence"
-sidebar_label: "About dbt AI and intelligence"
+sidebar_label: "dbt AI and intelligence"
 hide_table_of_contents: true
 tags: [AI, Intelligence]
 ---
@@ -18,6 +18,12 @@ Whether you're using AI to generate code, test, or documentation, scale your dat
 <div className="grid--3-col">
 
 <Card
+    title="dbt Agents"
+    body="dbt Agents come with a suite of native AI agents that turn structured dbt context into auditable actions that let you build, manage, and consume governed data at scale."
+    link="/docs/dbt-ai/dbt-agents"
+    icon="dbt-copilot"/>
+
+<Card
     title="dbt Copilot"
     body="dbt Copilot is a powerful, AI-powered assistant fully integrated into your dbt platform experience—designed to accelerate your analytics workflows."
     link="/docs/cloud/dbt-copilot"
@@ -28,11 +34,4 @@ Whether you're using AI to generate code, test, or documentation, scale your dat
     body="Build your own custom agents and copilots with the local or remote dbt MCP server today."
     link="/docs/dbt-ai/about-mcp"
     icon="dbt-copilot"/>
-
-<Card
-    title="dbt Agents"
-    body="dbt Agents come with a suite of native AI agents that turn structured dbt context into auditable actions that let you build, manage, and consume governed data at scale."
-    link="/docs/dbt-ai/dbt-agents"
-    icon="dbt-copilot"/>
 </div>
-

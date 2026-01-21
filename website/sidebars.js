@@ -812,9 +812,9 @@ const sidebarSettings = {
       type: "category",
       label: "dbt Agents",
       collapsed: true,
-      link: { type: "doc", id: "docs/dbt-ai/agents-overview" },
+      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
       items: [
-        "docs/dbt-ai/agents-overview",
+        "docs/dbt-ai/dbt-agents",
         "docs/dbt-ai/agents-self-service",
       ],
     },
