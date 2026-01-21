@@ -125,11 +125,17 @@ The following steps will explain how to configure environment variables using Po
 
 #### Configure in the VS Code extension settings
 
-To use the dbt extension menu actions/buttons, you can configure environment variables directly in the [VS Code User Settings](vscode://settings/dbt.environmentVariables) interface or in any `.env` file at the root level. This includes both your custom variables and any automatic [<Constant name="dbt_platform"/> variables](/docs/build/environment-variables) (like `DBT_CLOUD_ENVIRONMENT_NAME`) that your project depends on.
+To use the dbt extension menu actions/buttons, you can configure environment variables directly in the [VS Code User Settings](vscode://settings/dbt.environmentVariables) interface or in a `.env` file in your current working directory. This includes both your custom variables and any automatic [<Constant name="dbt_platform"/> variables](/docs/build/environment-variables) (like `DBT_CLOUD_ENVIRONMENT_NAME`) that your project depends on.
 
-- Configure variables in the VS Code **User Settings** or in any `.env` file to have them recognized by the extension. For example, when using <Term id="lsp" /> -powered features, "Show build menu," and more.
+- Configure variables in the VS Code **User Settings** or in a `.env` file to have them recognized by the extension. For example, when using <Term id="lsp" /> -powered features, "Show build menu," and more.
 - VS Code does not inherit variables set by the VS Code terminal or external shells.
 - The terminal uses system environmental variables, and does not inherit variables set in the dbt VS Code extension config. For example, running a dbt command in the terminal won't fetch or use the dbt VS Code extension variables.
+
+:::info `.env` file support
+Both the <Constant name="fusion"/> CLI and the dbt VS Code extension automatically load environment variables from a `.env` file in your current working directory. The `.env` file provides a convenient way to set environment variables that work across both the CLI and the extension.
+
+**Precedence order**: Environment variables set directly in your shell (such as `export DBT_ENV_VAR=value`) take precedence over values defined in the `.env` file.
+:::
 
 To configure environment variables in VS Code/Cursor:
 
@@ -146,7 +152,7 @@ To configure environment variables in VS Code/Cursor:
 </TabItem>
 
 <TabItem value="env-file" label="Open .env file">
-1. In your dbt project, create a `.env` file at the root level (same level as your `dbt_project.yml` file).
+1. Create a `.env` file in your current working directory. This is typically at the root level of your dbt project (same level as your `dbt_project.yml` file).
 2. Add your environment variables to the file. For example:
     ```env
     DBT_ENV_VAR1=my_value
@@ -155,6 +161,10 @@ To configure environment variables in VS Code/Cursor:
 3. Save the file.
 4. Reload the VS Code extension to apply the changes.
 5. Verify the changes by running a dbt command using the extension menu button on the top right corner and checking the output.
+
+:::tip
+The `.env` file is automatically loaded by both the <Constant name="fusion"/> CLI and the VS Code extension. This means environment variables you define in `.env` will be available when running dbt commands in the terminal as well as when using the extension's menu actions.
+:::
 </TabItem>
 
 <!-- commenting out as this might not be the best way to configure environment variables and we're recommending the .env file instead https://github.com/dbt-labs/dbt-core/issues/12106
