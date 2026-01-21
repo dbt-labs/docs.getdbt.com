@@ -37,7 +37,7 @@ Most agents are currently in private beta or on the waitlist &mdash; [join the w
 
 #### Analyst agent <Lifecycle status="private_beta"/>
 
-Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) Analyst agent. 
+Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 

@@ -815,7 +815,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
       items: [
         "docs/dbt-ai/dbt-agents",
-        "docs/dbt-ai/agents-self-service",
+        "docs/dbt-ai/analyst-agent",
       ],
     },
     {
