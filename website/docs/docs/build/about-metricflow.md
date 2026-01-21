@@ -12,11 +12,13 @@ This guide introduces MetricFlow's fundamental ideas for people new to this feat
 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
 
+
+## Prerequisites
 Before you start, consider the following guidelines:
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
-- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), Trino, or Redshift. 
 - Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 ## MetricFlow
