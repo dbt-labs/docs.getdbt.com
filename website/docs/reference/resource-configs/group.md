@@ -241,6 +241,7 @@ semantic-models:
 
 </File>
 
+<VersionBlock lastVersion="1.99">
 <File name='models/semantic_models.yml'>
 
 ```yaml
@@ -251,6 +252,22 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/file_name.yml'>
+
+```yaml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      group: group_name
+
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 

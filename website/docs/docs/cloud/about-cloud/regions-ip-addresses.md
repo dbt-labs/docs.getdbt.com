@@ -5,24 +5,51 @@ id: "access-regions-ip-addresses"
 description: "Available regions and ip addresses"
 ---
 
-<Constant name="cloud" /> is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions and will always connect to your data platform or git provider from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
+<Constant name="cloud" /> is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions across the following service providers:
+
+- [Amazon Web Services](#AWS)
+- [Google Cloud Platform](#GCP)
+- [Microsoft Azure](#Azure)
+
+Your <Constant name="cloud" /> account will always connect to your data platform or git provider from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 - [<Constant name="cloud" /> Enterprise-tier](https://www.getdbt.com/pricing/) plans can choose to have their account hosted in any of the regions listed in the following table. 
 - Organizations **must** choose a single region per <Constant name="cloud" /> account. To run <Constant name="cloud" /> in multiple regions, we recommend using multiple <Constant name="cloud" /> accounts. 
+
+## Amazon Web Services (AWS) {#AWS}
 
 <FilterableTable>
 
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
-| North America  | AWS us-east-1 (N. Virginia) | **Multi-tenant:**<br />[cloud.getdbt.com](https://cloud.getdbt.com) <br /><br /> **Cell based:** <small>ACCOUNT_PREFIX.us1.dbt.com</small> | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) |
-| North America  | Azure <br /> East US 2 (Virginia) | **Cell based:** <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
-| North America  | GCP (us-central1) | **Cell based:** <small>ACCOUNT_PREFIX.us3.dbt.com</small> | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
-| EMEA  | AWS eu-central-1	(Frankfurt) | **Multi-tenant:**<br />[emea.dbt.com](https://emea.dbt.com) <br /><br /> **Cell based:** <small>ACCOUNT_PREFIX.eu1.dbt.com</small> | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
-| EMEA  | Azure <br /> North Europe (Ireland)  |    **Cell based:** <small>ACCOUNT_PREFIX.eu2.dbt.com</small>  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
-| EMEA  | GCP <br /> (London)  |  [eu3.dbt.com](https://eu3.dbt.com)  |  34.33.2.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
-| EMEA  | GCP <br /> (Frankfurt) | [eu4.dbt.com](https://eu4.dbt.com) | 34.185.244.128/26 | All Enteprise plans | **Coming soon** |
-| APAC  | 	AWS ap-southeast-2  (Sydney)| **Multi-tenant:**<br />[au.dbt.com](https://au.dbt.com) <br /><br /> **Cell based:** <small>ACCOUNT_PREFIX.au1.dbt.com</small> | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
-| Japan | AWS ap-northeast-1 (Tokyo) | [jp1.dbt.com](https://jp1.dbt.com) | 35.76.76.152 <br />  54.238.211.79 <br /> 13.115.236.233 <br /> | All Enterprise plans | [JP Cell 1 AWS](https://status.getdbt.com/jp-cell-1-aws) | 
+| North America  | AWS us-east-1 (N. Virginia) | <small>ACCOUNT_PREFIX.us1.dbt.com</small> | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) |
+| EMEA  | eu-central-1	(Frankfurt) | <small>ACCOUNT_PREFIX.eu1.dbt.com</small> | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
+| APAC  | ap-southeast-2  (Sydney)| <small>ACCOUNT_PREFIX.au1.dbt.com</small> | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
+| Japan | ap-northeast-1 (Tokyo) | <small>ACCOUNT_PREFIX.jp1.dbt.com</small> | 35.76.76.152 <br />  54.238.211.79 <br /> 13.115.236.233 <br /> | All Enterprise plans | [JP Cell 1 AWS](https://status.getdbt.com/jp-cell-1-aws) | 
+| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
+
+</FilterableTable>
+
+## Google Cloud Platform (GCP) {#GCP}
+
+<FilterableTable>
+
+| Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
+|--------|----------|------------|--------------|-------| --------- |
+| North America  | us-central1 | <small>ACCOUNT_PREFIX.us3.dbt.com</small> | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
+| EMEA  | London  |  <small>ACCOUNT_PREFIX.eu3.dbt.com</small> |  34.33.2.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
+| EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enteprise plans | **Coming soon** |
+
+</FilterableTable>
+
+## Microsoft Azure {#Azure}
+
+<FilterableTable>
+
+| Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
+|--------|----------|------------|--------------|-------| --------- |
+| North America  | East US 2 (Virginia) | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
+| EMEA  |  North Europe (Ireland)  |  <small>ACCOUNT_PREFIX.eu2.dbt.com</small>  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
 </FilterableTable>
