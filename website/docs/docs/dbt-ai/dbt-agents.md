@@ -16,6 +16,7 @@ dbt Agents are built on top of dbt's structured context to provide accurate, aud
 - Metadata &mdash; Lineage, tests, documentation, and ownership
 - Governance &mdash; Access policies, data quality rules, and contracts
 
+Having dbt as the standard context layer for agentic analytics means that dbt Agents are built on top of this context to provide accurate results rather than hallucinated or inconsistent answers.
 <div style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VMkRXWkEcKk?si=vPNG0T8w8q3g3ugT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -61,7 +62,7 @@ It helps you understand model logic, predict downstream impact, flag duplicate l
 
 Build your own custom agents and copilots with the local or remote dbt MCP server. The [Model Context Protocol (MCP)](/docs/dbt-ai/about-mcp) makes dbt's structured context available to any AI system.
 
-## Related documentation
+## Related docs
 
 - [About dbt AI and intelligence](/docs/dbt-ai/about-dbt-ai)
 - [dbt Copilot](/docs/cloud/dbt-copilot)
