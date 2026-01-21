@@ -37,7 +37,7 @@ Your <Constant name="cloud" /> account will always connect to your data platform
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
 | North America  | us-central1 | <small>ACCOUNT_PREFIX.us3.dbt.com</small> | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
-| EMEA  | London  |  <small>ACCOUNT_PREFIX.eu3.dbt.com</small> |  34.33.2.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
+| EMEA  | London  |  <small>ACCOUNT_PREFIX.eu3.dbt.com</small> |  34.39.41.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
 | EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enteprise plans | [EU4 Cell 1 GCP](https://status.getdbt.com/eu-4-cell-1-gcp) |
 
 </FilterableTable>
