@@ -22,6 +22,14 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+## Prerequisites
+
+- Install [Git](https://git-scm.com/install/)
+- Install [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk)
+- Use Python versions 3.13.x or older. Python 3.14 is [not supported](/faqs/Core/install-python-compatibility#python-compatibility-matrix) as yet
+- Access to a GCP account BigQuery project
+- Access to a Git platform repository (like GitHub, AzureDevOps, GitLab, and so on)
+
 ## Required permissions
 
 import BigQueryPerms from '/snippets/_bigquery-permissions.md';
@@ -515,7 +523,7 @@ To connect to BigQuery using the `oauth` method, follow these steps:
 2. Activate the application-default account with:
 
 ```shell
-gcloud auth application-default login \           
+gcloud auth application-default login \
   --scopes=https://www.googleapis.com/auth/bigquery,\
 https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test,\

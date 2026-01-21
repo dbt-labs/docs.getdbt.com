@@ -1,5 +1,5 @@
 ---
-title: "dbt Product lifecycles"
+title: "Product lifecycles"
 id: "product-lifecycles"
 description: "Learn about dbt Labs' product lifecycles."
 ---

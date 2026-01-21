@@ -5,7 +5,7 @@ id: "bigquery"
 level: 'Beginner'
 icon: 'bigquery'
 hide_table_of_contents: true
-tags: ['BigQuery', 'platform','Quickstart']
+tags: ['BigQuery', 'Platform', 'Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>

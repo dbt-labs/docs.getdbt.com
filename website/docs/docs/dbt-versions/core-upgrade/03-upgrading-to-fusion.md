@@ -36,8 +36,8 @@ The following adapters are supported in the dbt Fusion engine:
 
 ### A clean slate
 
-dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality:
-- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This included historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
+dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
+- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
@@ -92,7 +92,19 @@ relation_via_api: my_db.my_schema.my_table
 
 #### Deprecated flags
 
-Some historic flags in dbt Core v1 will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
+:::info What are "deprecated flags"?
+
+Deprecated flags are command-line flags (like `--models`, `--print`) that you pass to dbt commands. These are being removed in Fusion.
+
+This is different from:
+- [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code (models, YAML, macros) that need to be updated
+- [Behavior change flags](/reference/global-configs/behavior-changes) &mdash; Flags in `dbt_project.yml` that let you opt in/out of new behaviors
+
+See the [Changes overview](/reference/changes-overview) for a full comparison.
+
+:::
+
+Some historic CLI flags in dbt Core v1 will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
 
 One exception to this rule: The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise an error** in Fusion. Please update your job definitions accordingly.
 
@@ -351,6 +363,31 @@ return('xyzabc')
 
 {% endmacro %}
 ```
+### Accessing custom configurations in meta
+
+`config.get()` and `config.require()` don't return values from the `meta` dictionary. If you try to access a key that only exists in `meta`, dbt emits a warning:
+
+```bash
+warning: The key 'my_key' was not found using config.get('my_key'), but was 
+detected as a custom config under 'meta'. Please use config.meta_get('my_key') 
+or config.meta_require('my_key') instead.
+```
+
+Behavior when a key exists only in meta:
+
+| Method | Behavior |
+|--------|----------|
+| `config.get('my_key')` | Returns the default value and emits a warning. |
+| `config.require('my_key')` | Raises an error and emits a warning. |
+
+To access custom configurations stored under meta, use the explicit methods:
+
+```jinja
+{% set owner = config.meta_get('owner') %}
+{% set has_pii = config.meta_require('pii') %}
+```
+
+For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
 ### Package support
 

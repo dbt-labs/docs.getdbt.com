@@ -298,10 +298,12 @@ dbt list --select "+semantic_model:orders"  # list your semantic model named "or
 The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 
-  ```bash
+```bash
 dbt run --select "source:snowplow+"    # run all models that select from Snowplow sources
+dbt run --select "source:snowplow.events+"    # run all models downstream of the events table in the Snowplow source
 ```
 
+Refer to [source FAQs](/docs/build/sources#faqs) for more info. 
 ### source_status
   
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
@@ -375,6 +377,11 @@ Certain factors can affect how references are used or resolved later on, includi
 - Modifying `deprecation_date`: if a reference or model version is marked  deprecated, new warnings might appear that affect how references are  processed.
 - Modifying `latest_version`: if there's no tie to a specific version, the reference or model will point to the latest version.
   -  If a newer version is released, the reference will automatically resolve to the new version, potentially changing the behavior or output of the system that relies on it.
+
+dbt handles state comparison for seed files differently depending on their size:
+
+- **Seed files smaller than 1 MiB** &mdash; Included in the `state:modified` selector only when the contents change.
+- **Seed files 1 MiB or larger** &mdash; Included in the `state:modified` selector only when the seed file path changes.
 
 #### Overwrites the `manifest.json`
 

@@ -14,11 +14,12 @@ const sidebarSettings = {
       items: [
         "docs/fusion/fusion",
         "docs/fusion/about-fusion",
+        "docs/fusion/get-started-fusion",
         "docs/fusion/fusion-availability",
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/install-fusion",
+        "docs/fusion/telemetry",
       ],
     },
     {
@@ -390,16 +391,16 @@ const sidebarSettings = {
           label: "dbt Studio IDE",
           link: {
             type: "doc",
-            id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+            id: "docs/cloud/studio-ide/develop-in-studio",
           },
           items: [
-            "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-ide/ide-user-interface",
-            "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-            "docs/cloud/dbt-cloud-ide/git-commit-signing",
-            "docs/cloud/dbt-cloud-ide/lint-format",
-            "docs/cloud/dbt-cloud-ide/autofix-deprecations",
-            "docs/cloud/dbt-cloud-ide/develop-copilot",
+            "docs/cloud/studio-ide/develop-in-studio",
+            "docs/cloud/studio-ide/ide-user-interface",
+            "docs/cloud/studio-ide/keyboard-shortcuts",
+            "docs/cloud/studio-ide/git-commit-signing",
+            "docs/cloud/studio-ide/lint-format",
+            "docs/cloud/studio-ide/autofix-deprecations",
+            "docs/cloud/studio-ide/develop-copilot",
           ],
         },
         {
@@ -888,15 +889,6 @@ const sidebarSettings = {
       ],
     },
     {
-      type: "category",
-      label: "Cost management",
-      link: {
-        type: "doc",
-        id: "docs/cloud/cost-management/cost-management",
-      },
-      items: ["docs/cloud/cost-management/cost-management"],
-    },
-    {
       type: 'html',
       value: 'Release information',
       className: 'sidebar-title',
@@ -904,8 +896,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Available dbt versions",
-      link: { type: "doc", id: "docs/dbt-versions/core" },
+      link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
+        "docs/dbt-versions/about-versions",
         "docs/dbt-versions/core",
         "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
@@ -913,11 +906,11 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "category",
-          label: "dbt Core upgrade guides",
+          label: "dbt version upgrade guides",
           link: {
             type: "generated-index",
             title: "Version upgrade guides",
-            description: "Learn what's new in the latest version of dbt Core.",
+            description: "Learn what's new in the latest version of dbt.",
             slug: "/docs/dbt-versions/core-upgrade",
           },
           items: [
@@ -940,6 +933,7 @@ const sidebarSettings = {
         "docs/dbt-versions/dbt-cloud-release-notes",
         "docs/dbt-versions/dbt-cloud-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
+        "docs/dbt-versions/2025-release-notes",
         "docs/dbt-versions/2024-release-notes",
         "docs/dbt-versions/2023-release-notes",
         "docs/dbt-versions/2022-release-notes",
@@ -1149,6 +1143,7 @@ const sidebarSettings = {
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
+        "reference/resource-configs/hive-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
@@ -1458,6 +1453,7 @@ const sidebarSettings = {
               },
               items: [
                 "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/bigquery-changes",
                 "reference/global-configs/databricks-changes",
                 "reference/global-configs/redshift-changes",
                 "reference/global-configs/snowflake-changes",
@@ -1503,9 +1499,20 @@ const sidebarSettings = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "Deprecations & warnings",
+          link: {
+            type: "doc",
+            id: "reference/changes-overview",
+          },
+          items: [
+            "reference/changes-overview",
+            "reference/deprecations",
+          ],
+        },
         "reference/events-logging",
         "reference/exit-codes",
-        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],
@@ -1516,18 +1523,18 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "Jinja reference",
-        description: "The list of Jinja functions available in dbt.",
+        description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
         {
           type: "category",
-          label: "dbt Jinja functions",
+          label: "dbt Jinja context functions",
           link: {
             type: "generated-index",
-            title: "dbt Jinja functions",
+            title: "dbt Jinja functions and context variables",
             description:
               "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
-            slug: "/reference/dbt-jinja-functions",
+            slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
             {
@@ -1641,6 +1648,7 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-2-who-is-dbt-mesh-for",
             "best-practices/how-we-mesh/mesh-3-structures",
             "best-practices/how-we-mesh/mesh-4-implementation",
+            "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
             "best-practices/how-we-mesh/mesh-5-faqs",
           ],
         },

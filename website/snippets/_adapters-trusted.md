@@ -105,10 +105,22 @@
     icon="redshift"/>
 
 <Card
+    title="RisingWave"
+    body="<ul><li><a href='/docs/core/connect-data-platform/risingwave-setup'>Install with dbt Core </a> </li></ul><br /><br /><a href=https://badge.fury.io/py/dbt-risingwave><img src=https://badge.fury.io/py/dbt-risingwave.svg/></a>"
+    pills='["dbt Core"]'
+    icon="risingwave"/>
+
+<Card
     title="Salesforce Data Cloud"
     body="<ul><li><a href='/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
     pills='["dbt Fusion"]'
     icon="salesforce"/>
+
+<Card
+    title="SingleStore"
+    body="<ul><li><a href='/docs/core/connect-data-platform/singlestore-setup'>Install with dbt Core  </a><br /><br /> <a href=https://badge.fury.io/py/dbt-singlestore><img src=https://badge.fury.io/py/dbt-singlestore.svg/></a></li></ul>"
+    pills='["dbt Core"]'
+    icon="singlestore"/>
 
 <Card
     title="Snowflake"

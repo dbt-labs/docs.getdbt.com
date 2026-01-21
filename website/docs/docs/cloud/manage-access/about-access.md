@@ -91,7 +91,7 @@ This setup provides you with the flexibility to determine the level of access us
 
 #### Environment write access
 
-Some permission sets grant users read-only access to environment settings that can be overridden if you assign them to a group with **Environment write access**. They will then be able to create, edit, and delete environment settings, bypassing the read-only restriction.
+Some permission sets grant users read-only access to environment settings that can be overridden if you assign them to a group with **Environment write access**. They will then be able to create, edit, and delete environment settings such as jobs and runs, bypassing the read-only restriction. This elevated access doesn't grant users the ability to create or delete environments.
 
 In the following example, the `analyst` permission set, which by default has read-only access to jobs, is assigned to the group across all projects; however, the **Environment write access** is set to `All Environments`.  This grants all users in this group the ability to create, edit, and delete jobs across all environments and projects. 
 
@@ -194,7 +194,7 @@ Euclid is limited to the `Analyst` role, the `Jaffle Shop` project, and the `Dev
 
 Euclid takes the following steps to log in: 
 
-1. Access the SSO URL or the <Constant name="cloud" /> app in their Okta account. The URL can be found on the **Single sign-on** configuration page in the **Account settings**. 
+1. Access the SSO URL or the <Constant name="cloud" /> app in their Okta account. The URL can be found on the **SSO & SCIM** configuration page in the **Account settings**. 
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
 

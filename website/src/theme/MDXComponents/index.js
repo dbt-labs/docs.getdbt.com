@@ -14,6 +14,7 @@ import Mermaid from '@theme/Mermaid';
  * Imports the following components below for export
  */
 import SortableTable from '@site/src/components/sortableTable';
+import FilterableTable from '@site/src/components/filterableTable';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
@@ -58,6 +59,7 @@ const MDXComponents = {
   Details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
+  table: FilterableTable, // All tables automatically get filtering functionality
   h1: (props) => <MDXHeading as="h1" {...props} />,
   h2: (props) => <MDXHeading as="h2" {...props} />,
   h3: (props) => <MDXHeading as="h3" {...props} />,
@@ -100,6 +102,7 @@ const MDXComponents = {
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
   SortableTable: SortableTable,
+  FilterableTable: FilterableTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,

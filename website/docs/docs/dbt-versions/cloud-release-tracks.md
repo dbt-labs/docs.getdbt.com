@@ -1,6 +1,6 @@
 ---
 title: "Release tracks in dbt platform"
-sidebar_label: "dbt Release Tracks"
+sidebar_label: "About release tracks"
 description: "Learn how to get automatic upgrades to dbt in the dbt platform. Access new features and enhancements as soon as they become available."
 ---
 
@@ -10,43 +10,64 @@ Previously, customers would pin to a minor version of <Constant name="core" />, 
 
 This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
 
-By moving your environments and jobs to release tracks you can get all the functionality in <Constant name="cloud" /> as soon as it's ready. On the "Latest" release track, this includes access to features _before_ they're available in final releases of <Constant name="core" /> OSS.
+By moving your environments and jobs to release tracks you can get all the functionality in <Constant name="cloud" /> as soon as it's ready. On the **Latest** release track, this includes access to features _before_ they're available in final releases of <Constant name="core" /> OSS.
 
 ## Which release tracks are available?
 
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
-| **Latest** | Formerly called "Versionless", provides a continuous release of the latest functionality in the dbt platform.<br /><br />Includes early access to new features of the dbt framework before they're available in open source releases of dbt Core. | All plans | `latest` (or `versionless`) |
+| **Latest Fusion**  | The latest build of the new engine for dbt, available to select accounts. | All plans <br /><Lifecycle status="private_preview" /> | `latest-fusion` |
+| **Latest** | Provides a continuous release of the latest functionality in the <Constant name="dbt_platform" /> .<br /><br />Includes early access to new features of the dbt framework before they're available in <Constant name="core" />. | All plans | `latest` |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
-| **Extended** | The previous month's "Compatible" release. | Enterprise, Enterprise+ | `extended` |
+| **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
+| **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
 To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
-- `latest` (or `versionless`, the old name is still supported)
+- `latest-fusion` <Lifecycle status="private_preview" />
+- `latest`
 - `compatible`
 - `extended`
 
 ## Which release track should I choose?
 
-Choose the "Latest" release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="cloud" />.
+Choose the **Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="cloud" />.
 
-Choose the "Compatible" and "Extended" release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Choose the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+
+### Using the Fallback release track
+
+The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. 
+
+1. Enable it by going to **Account settings** 
+2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface, rather than through environment settings. 
+3. Fill in the details in the **Revert to Fallback** pop up to confirm and share any info with dbt Support.
+
+Switching to **Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. You should return to "Extended" or "Compatible" once the issue is resolved.
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="Fallback release track button in dbt platform"/>
+
+<Lightbox src="/img/docs/dbt-versions/rollback-popup.png" width="80%" title="Fallback release track popup in dbt platform"/>
+
+</DocCarousel>
+
 
 ### Common architectures
 
 **Default** - Majority of customers on all plans
 - Prioritize immediate access to fixes and features
-- Leave all environments on the "Latest" release track (default configuration)
+- Leave all environments on the **Latest** release track (default configuration)
 
 **Hybrid** - Starter, Enterprise, Enterprise+
 - Prioritize ongoing compatibility between <Constant name="cloud" /> and <Constant name="core" /> for development & deployment using both products in the same dbt projects
-- Configure all environments to use the "Compatible" release track
-- Understand that new features will not be available until they are first released in <Constant name="core" /> OSS (several months after the "Latest" release track)
+- Configure all environments to use the **Compatible** release track
+- Understand that new features will not be available until they are first released in <Constant name="core" /> OSS (several months after the **Latest** release track)
 
 **Cautious** - Enterprise, Enterprise+, Business Critical
 - Prioritize "bake in" time for new features & fixes
-- Configure development & test environments to use the "Compatible" release track
-- Configure pre-production & production environments to use the "Extended" release track
-- Understand that new features will not be available until _a month after_ they are first released in <Constant name="core" /> OSS and the Compatible track. Developers (on "Compatible") will get access to new features before they can leverage those capabilities in production (on "Extended"), and must be mindful of the additional delay.
+- Configure development & test environments to use the **Compatible** release track
+- Configure pre-production & production environments to use the **Extended** release track
+- Understand that new features will not be available until _a month after_ they are first released in <Constant name="core" /> OSS and the Compatible track. Developers (on **Compatible**) will get access to new features before they can leverage those capabilities in production (on **Extended**), and must be mindful of the additional delay.
 
 **Virtual Private dbt or Single Tenant**
 - Changes to all release tracks roll out as part of <Constant name="cloud" /> instance upgrades once per week
@@ -77,7 +98,7 @@ If you're running dbt version v1.6 or older, please know that your version of db
 
 dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the "Latest" release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
+Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the **Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
 
 </Expandable>
 
@@ -114,9 +135,9 @@ When we talk about _latest version_, we’re referring to the underlying runtime
 
 If a new version of a dbt package includes a breaking change (for example, a change to one of the macros in `dbt_utils`), you don’t have to immediately use the new version. In your `packages` configuration (in `dependencies.yml` or  `packages.yml`), you can still specify which versions or version ranges of packages you want dbt to install. If you're not already doing so, we strongly recommend [checking `package-lock.yml` into version control](/reference/commands/deps#predictable-package-installs) for predictable package installs in deployment environments and a clear change history whenever you install upgrades.
 
-If you upgrade to the "Latest" release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
+If you upgrade to the **Latest** release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
 
-If you’re already on the "Latest" release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
+If you’re already on the **Latest** release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
 
 If the package you’ve installed relies on _undocumented_ functionality of dbt, it doesn't have the same guarantees as functionality that we’ve documented and tested. However, we will still do our best to avoid breaking them.
 
