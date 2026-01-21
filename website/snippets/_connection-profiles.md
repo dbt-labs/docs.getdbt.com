@@ -166,12 +166,29 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 
 ## Advanced: Customizing a profile directory
 
-The parent directory for `profiles.yml` is determined using the following precedence:
+<Tabs>
+  <TabItem value="fusion" label="dbt Fusion">
+
+<Constant name="fusion"/> determines the parent directory for `profiles.yml` using the following precedence:
+
+1. `--profiles-dir` option
+2. Project root directory
+3. `~/.dbt/` directory
+
+Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_DIR` environment variable or setting the `profiles.yml` in the current working directory. 
+
+</TabItem>
+<TabItem value="core" label="dbt Core">
+
+<Constant name="core"/> determines the parent directory for `profiles.yml` using the following precedence:
 
 1. `--profiles-dir` option
 2. `DBT_PROFILES_DIR` environment variable
 3. current working directory
 4. `~/.dbt/` directory
+
+</TabItem>
+</Tabs>
 
 To check the expected location of your `profiles.yml` file for your installation of dbt, you can run the following:
 
@@ -197,11 +214,14 @@ $ dbt run --profiles-dir path/to/directory
 
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
 
-### 2. Use the `DBT_PROFILES_DIR` environment variable to change the default location
-Specifying this environment variable overrides the directory that dbt looks for your `profiles.yml` file in. You can specify this by running:
+### 2. Use the `DBT_PROFILES_DIR` environment variable to change the default location (dbt Core only)
+
+Setting this environment variable tells <Constant name="core" /> to look for your `profiles.yml` file in the specified directory instead of the default location. You can specify this by running:
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
+
+Note: This environment variable isn't supported in <Constant name="fusion"/>.
 
 ## Advanced: Using environment variables
 
