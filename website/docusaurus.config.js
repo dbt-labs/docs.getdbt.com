@@ -213,7 +213,7 @@ var siteSettings = {
         {
           label: "Install VS Code extension",
           position: "right",
-          to: "https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt",
+          to: "https://docs.getdbt.com/docs/install-dbt-extension",
           id: "nav-install-vs-code-extension",
           className: "nav-install-dbt-extension",
         },
