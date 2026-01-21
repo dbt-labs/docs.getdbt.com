@@ -102,12 +102,11 @@ Replace `<path-to-.env-file>` with the full path to your `.env` file.
 
 <StaticSubdomainRequired />
 
-1. Go to the latest dbt MCP release [here](https://github.com/dbt-labs/dbt-mcp/releases/latest
-) and download the `dbt-mcp.mcpb` file.
-2. After this is downloaded, double-click on this file to open it in Claude Desktop.
-3. Follow the directions to set the `dbt Platform Host`. You can find this in dbt platform by navigating to Dashboard, then Settings.
+1. Go to the [latest dbt MCP release](https://github.com/dbt-labs/dbt-mcp/releases/latest) and download the `dbt-mcp.mcpb` file.
+2.  Double-click the downloaded file to open it in Claude Desktop.
+3. Configure the **dbt Platform Host**. You can find this in your <Constant name="dbt_platform" /> account by navigating to **Dashboard** > **Settings* and scrolling to the **Semantic Layer** section.
 4. Enable the server in Claude Desktop.
-5. Ask Claude a data-related question and observe dbt MCP being utilized.
+5. Ask Claude a data-related question and see dbt MCP in action!
 
 ### Advanced configuration with Claude Desktop
 
