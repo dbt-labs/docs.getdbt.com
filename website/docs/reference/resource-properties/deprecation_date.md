@@ -4,6 +4,8 @@ datatype: deprecation_date
 required: no
 ---
 
+import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md';
+
 <File name='models/<schema>.yml'>
 
 ```yml
@@ -41,6 +43,8 @@ When `deprecation_date` does not include an offset from UTC, then it is interpre
 Declaring a `deprecation_date` for a dbt model provides a mechanism to communicate plans and timelines for long-term support and maintenance and to facilitate change management.
 
 Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/mesh/govern/about-model-governance) features like [model versions](/docs/mesh/govern/model-versions), but can also be used independently from them.
+
+<DeprecationDateCallout />
 
 ### Warning messages
 
