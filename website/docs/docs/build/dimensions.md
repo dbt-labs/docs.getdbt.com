@@ -521,7 +521,9 @@ MetricFlow associates the metric with the earliest available dimension value wit
 MetricFlow supports the following basic structure of an SCD Type II data platform table:
 
 | entity_key | dimensions_1 | dimensions_2 | ... | dimensions_x | valid_from | valid_to |
-|------------|-------------|-------------|-----|-------------|------------|----------|  
+|------------|-------------|-------------|-----|-------------|------------|----------|
+| 123 | value_a | value_x | ... | value_n | 2024-01-01 | 2024-06-30 |
+| 123 | value_b | value_y | ... | value_m | 2024-07-01 | 2024-12-31 |  
 
 * `entity_key` (required): A unique identifier for each row in the table, such as a primary key or another unique identifier specific to the entity.
 * `valid_from`  (required): Start date timestamp for when the dimension is valid. Use `validity_params: is_start: True` in the semantic model to specify this.
