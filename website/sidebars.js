@@ -804,8 +804,19 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI',
+      value: 'dbt AI and intelligence',
       className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Agents",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/agents-overview" },
+      items: [
+        "docs/dbt-ai/agents-overview",
+        "docs/dbt-ai/agents-self-service",
+      ],
     },
     {
       type: "category",
@@ -833,17 +844,6 @@ const sidebarSettings = {
           "docs/dbt-ai/integrate-mcp-vscode",
           "docs/dbt-ai/integrate-mcp-cursor",
           "docs/dbt-ai/integrate-mcp-claude",
-          ],
-    },
-    {
-      type: "category",
-      label: "dbt AI and intelligence",
-      collapsed: true,
-      link: { type: "doc", id: "docs/dbt-ai/about-dbt-ai", },
-      items: [
-          "docs/dbt-ai/about-dbt-ai",
-          "docs/dbt-ai/agents-overview",
-          "docs/agents-self-service",
           ],
     },
     {

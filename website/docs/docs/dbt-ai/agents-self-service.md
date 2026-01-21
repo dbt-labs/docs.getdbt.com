@@ -1,6 +1,6 @@
 ---
 title: "Analyst agent (self-service)"
-id: agents-self-service
+id: "agents-self-service"
 description: "Chat with your data using the Analyst agent powered by the dbt Semantic Layer"
 sidebar_label: "Analyst agent"
 tags: [AI, Agents, Semantic Layer]

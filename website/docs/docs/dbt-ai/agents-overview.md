@@ -1,6 +1,6 @@
 ---
 title: "dbt Agents overview"
-id: agents-overview
+id: "agents-overview"
 description: "Learn about the AI agents available in dbt to automate and accelerate analytics workflows"
 sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
