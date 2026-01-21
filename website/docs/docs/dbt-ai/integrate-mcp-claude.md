@@ -111,6 +111,7 @@ To configure Claude Desktop to use the dbt MCP server:
 
 ### Advanced configuration with Claude Desktop
 
+To add advanced configurations:
 1. Go to the Claude settings and select **Settings…**.
 2. In the Settings window, navigate to the **Developer** tab in the left sidebar. This section contains options for configuring MCP servers and other developer features.
 3. Click the **Edit Config** button and open the configuration file with a text editor.
