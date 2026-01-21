@@ -14,7 +14,7 @@ Do not deploy code to production that uses the `debug` macro.
 
 If developing in <Constant name="dbt_platform"/>, you can also use:
 - [`{{ print() }}`](/reference/dbt-jinja-functions/print) - Print messages to both the log file and standard output (`stdout`).
-- [`{{ log() }}`](reference/dbt-jinja-functions/log) - Structured logging that prints messages during Jinja rendering.
+- [`{{ log() }}`](/reference/dbt-jinja-functions/log) - Structured logging that prints messages during Jinja rendering.
 
 
 :::
