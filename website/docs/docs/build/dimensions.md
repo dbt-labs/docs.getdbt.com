@@ -7,6 +7,7 @@ tags: [Metrics, Semantic Layer]
 ---
 
 <VersionBlock lastVersion="1.99">
+
 Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 </VersionBlock>
@@ -169,10 +170,12 @@ models:
         - name: is_bulk
           type: categorical
           expr: "case when quantity > 10 then true else false end" # Required
+```
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.99">
+
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
 MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. We recommend making these "virtual primary entities" unique across your semantic model. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
@@ -243,6 +246,7 @@ models:
 ## Dimensions types
 This section further explains the dimension definitions, along with examples. Dimensions have the following types:
 
+- [`derived_semantics` in `dimensions`](#derived_semantics-in-dimensions)
 - [Dimensions types](#dimensions-types)
 - [Categorical](#categorical)
 - [Time](#time)
