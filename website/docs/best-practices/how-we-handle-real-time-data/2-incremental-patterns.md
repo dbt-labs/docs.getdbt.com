@@ -9,23 +9,24 @@ hoverSnippet: Learn incremental patterns for near real-time data with dbt
 This page uses Snowflake for code examples. The concepts apply across data warehouses, but syntax and specific features (like Streams) may vary by platform.
 :::
 
-This page covers three core incremental patterns for achieving near real-time data freshness:
+This section covers three core incremental patterns for achieving near real-time data freshness:
 
-1. [Incremental MERGE from append-only tables](#pattern-1-incremental-merge-from-append-only-tables)
-2. [CDC with Snowflake Streams](#pattern-2-cdc-with-snowflake-streams)
-3. [Microbatch for large time-series tables](#pattern-3-microbatch-for-large-time-series-tables)
+1. [Incremental MERGE from append-only tables](#incremental-merge-from-append-only-tables)
+2. [CDC with Snowflake Streams](#cdc-with-snowflake-streams)
+3. [Microbatch for large time-series tables](#microbatch-for-large-time-series-tables)
 
-## Pattern 1: Incremental MERGE from append-only tables
+### Pattern 1: Incremental MERGE from append-only tables {#incremental-merge-from-append-only-tables}
 
 Use this pattern when raw events continuously land into a staging table and you want a near real-time fact table updated every few minutes.
 
-### When to use MERGE
+#### Example model
 
-- Raw events are continuously landed (via streaming ingestion or frequent batch loads)
-- You want a fact table updated every few minutes
-- Source data may contain duplicates or late-arriving updates
+Let's assume:
 
-### Model example
+- Raw events are continuously landing into `raw.events` (Snowpipe or similar).
+- You want a near real‑time fact table `analytics.fct_events` updated every few minutes.
+
+<File name="models/fct_events.sql">
 
 ```sql
 {{ config(
@@ -81,58 +82,45 @@ select
     payload
 from deduped;
 ```
+</File>
 
-### Why this works
+#### Why this works
 
-- The incremental filter only scans rows newer than the latest timestamp already in the target
-- `incremental_strategy='merge'` with `unique_key` gives you idempotent upserts (inserts + updates)
-- Clustering by date helps with query pruning during MERGE operations
-- Running this model every few minutes gives you freshness measured in minutes
+- The incremental filter only scans rows newer than the latest timestamp already in the target.
+- `incremental_strategy='merge'` with `unique_key=event_id` gives you idempotent upserts (inserts + updates).
+- Clustering by date (like `cluster_by=['event_date']`) helps with query pruning during `MERGE` operations.
+- Running this model every few minutes gives you a freshness SLA measured in minutes, depending on ingestion and job scheduling.
 
-### Best practices
+#### Best practices
 
-- Use clustering keys wisely for better MERGE performance
-- Monitor MERGE performance as your table grows
-- Consider adding a lookback window (e.g., `event_ts > max(event_ts) - interval '1 hour'`) to handle late-arriving data
+- Use clustering keys wisely for better `MERGE` performance.
+- Monitor `MERGE` performance as your table grows.
+- Consider adding a lookback window (for example, `event_ts > max(event_ts) - interval '1 hour'`) to handle late-arriving data.
 
-## Pattern 2: CDC with Snowflake Streams
+### Pattern 2: CDC with Snowflake Streams {#cdc-with-snowflake-streams}
 
 :::info Snowflake-specific pattern
-This pattern uses Snowflake Streams, a Snowflake-specific feature. Other warehouses have similar CDC capabilities with different implementations.
+This pattern uses [Snowflake Streams](https://docs.snowflake.com/en/user-guide/streams-intro), a Snowflake-specific feature. Other warehouses have similar change data capture (CDC) capabilities with different implementations.
 :::
 
 This pattern leverages Snowflake's native CDC capabilities through Streams, which track changes (inserts, updates, deletes) to source tables.
 
-### When to use CDC
+#### When to use CDC
 
 - You have source tables that receive frequent updates (not just appends)
 - You need to capture both new records and changes to existing records
 - You want to avoid full table scans on large source tables
 
-### Setup
+#### Setup
 
-First, create the stream (one-time, outside dbt):
+1. Create the stream (one-time, outside dbt):
 
 ```sql
 create or replace stream RAW.EVENTS_STREAM
 on table RAW.EVENTS;
 ```
 
-Define the stream as a source in dbt:
-
-```yaml
-# models/sources.yml
-version: 2
-
-sources:
-  - name: raw
-    schema: raw
-    tables:
-      - name: events_stream
-        description: "Stream tracking changes to RAW.EVENTS"
-```
-
-### Model consuming the stream
+2. Create a model consuming the stream:
 
 ```sql
 {{ config(
@@ -177,30 +165,29 @@ select
 from filtered;
 ```
 
-### Key differences from Pattern 1
+#### Key differences from [pattern 1](#incremental-merge-from-append-only-tables)
 
-- No `is_incremental()` time filter needed - the stream only exposes changed rows
-- Stream offset management happens automatically
-- Captures INSERT, UPDATE, and DELETE operations
+- Streams only return changed rows, so you don’t need an `is_incremental()`. Each run just processes whatever changes are available at the moment.
+- Run the model every few minutes to pull new changes and merge them into `fct_events`.
+- This gives you a CDC-style pipeline: Snowflake Streams capture changes, and dbt handles transformations, tests, and lineage.
 
-### Considerations
+### Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-- Once consumed, data is removed from the stream - handle errors carefully to avoid data loss
-- If multiple processes need the same changes, use separate streams or table clones
-- Streams have minimal latency (typically seconds)
+For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details.
 
-## Pattern 3: Microbatch for large time-series tables
-
-For massive fact tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (dbt Core ≥ 1.9).
-
-### When to use microbatch
+#### When to use microbatch
 
 - You have massive time-series tables (billions of rows)
 - Backfills are slow and risky with traditional incremental approaches
 - You need to reprocess data in manageable chunks
 - Late-arriving data is common
 
-### Model configuration
+:::info microbatch must have event_time
+
+Every upstream model feeding this microbatch model must also be configured with `event_time` so dbt can push time-filters upstream. Otherwise, each batch could re-scan full upstream tables.
+:::
+
+#### Model configuration
 
 ```sql
 {{ config(
@@ -224,39 +211,14 @@ select
 from {{ ref('stg_events') }};
 ```
 
-### Key behavior
-
-- No `is_incremental()` block needed - dbt automatically generates time-based predicates per batch
-- Each run processes multiple smaller queries (one per batch)
-- The `lookback` parameter automatically reprocesses recent batches to catch late-arriving data
-
-### Critical requirement
-
-Every upstream model feeding this microbatch model must also be configured with `event_time` so dbt can push time-filters upstream. Otherwise, each batch could re-scan full upstream tables.
-
-Example upstream staging model:
-
-```sql
-{{ config(
-    materialized = 'view',
-    event_time = 'event_ts'
-) }}
-
-select
-    event_id,
-    event_ts::timestamp_ntz as event_ts,
-    user_id,
-    event_type,
-    payload
-from {{ source('raw', 'events') }};
-```
-
-### Typical usage
+#### Key behavior
 
 - Use microbatch for massive fact tables (clickstream, IoT, point-of-sale) with multi-year history
-- Schedule jobs based on your SLA
-- `lookback` handles late-arriving data automatically
-- Safer backfills - process large historical periods in manageable chunks
+- No `is_incremental() block` needed &mdash; dbt automatically generates the appropriate `WHERE event_ts BETWEEN..` predicates per batch based on `event_time`, `batch_size`, `begin`, `lookback`, and so on.
+- Each run processes multiple smaller queries (one per batch), making larger backfills safer and easier to retry.
+- The `lookback` parameter automatically handles late-arriving data by reprocessing recent batches.
+- Schedule jobs based on your service level agreement (SLA).
+
 
 ## Choosing the right incremental pattern
 
