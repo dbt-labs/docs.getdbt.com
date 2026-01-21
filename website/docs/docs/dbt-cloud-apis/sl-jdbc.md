@@ -125,19 +125,7 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </Expandable>
 
-<Expandable alt_header="Fetch primary time dimension names">
-
-It may be useful in your application to expose the names of the time dimensions that represent metric_time or the common thread across all metrics.
-
-You can first query the metrics() argument to fetch a list of measures, then use the measures() call which will return the name(s) of the time dimensions that make up metric time.
-
-```bash
-select * from {{
-    semantic_layer.measures(metrics=['orders'])
-}}
-```
-
-</Expandable>
+<VersionBlock lastVersion="1.99">
 
 <Expandable alt_header="Fetch metrics by substring search">
 
@@ -150,6 +138,7 @@ select * from {{ semantic_layer.metrics(search='order') }}
 If no substring is provided, the query returns all metrics.
 
 </Expandable> 
+</VersionBlock>
 
 <Expandable alt_header="Paginate metadata calls">
 
@@ -224,7 +213,7 @@ To query values, the following parameters are available. Your query must have _e
 
 ### Note on time dimensions and `metric_time`
 
-You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
+You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for any metric's default aggregation time dimension. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
 You can look at a single metric or hundreds of metrics, and if you group by `metric_time`, it will always give you the correct time series.
 
@@ -342,58 +331,7 @@ Where Filters have a few objects that you can use:
 - `Entity()` &mdash;  Used for entities like primary and foreign keys - `Entity('order_id')`.
 
 
-For `TimeDimension()`, the grain is only required in the `WHERE` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
-
-For example, consider this Semantic model and Metric config, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
-
-```yaml
-semantic_model:
-  name: my_model_source
-
-defaults:
-  agg_time_dimension: created_month
-  measures:
-    - name: measure_0
-      agg: sum
-    - name: measure_1
-      agg: sum
-      agg_time_dimension: order_year
-  dimensions:
-    - name: created_month
-      type: time
-      type_params:
-        time_granularity: month
-    - name: order_year
-      type: time
-      type_params:
-        time_granularity: year
-
-metrics:
-  - name: metric_0
-    description: A metric with a month grain.
-    type: simple
-    type_params:
-      measure: measure_0
-  - name: metric_1
-    description: A metric with a year grain.
-    type: simple
-    type_params:
-      measure: measure_1
-
-```
-
-Assuming the user is querying `metric_0` and `metric_1` together in a single request, a valid `WHERE` filter would be:
-
-  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
-
-Invalid filters would be:
-
-  * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
-
-  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
-
-
-- Use the following example to query using a `where` filter with the string format:
+You can use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
@@ -580,4 +518,3 @@ So for example, if the `time_dimension_name` is `ds` and the granularity level i
 ## Related docs
 
 - [<Constant name="semantic_layer" /> integration best practices](/guides/sl-partner-integration-guide)
-

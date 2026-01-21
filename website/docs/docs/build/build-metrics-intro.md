@@ -21,6 +21,12 @@ MetricFlow allows you to:
 
 <div className="grid--3-col">
 
+  <Card
+    title="Migrate to the latest YAML spec"
+    body="Learn how to migrate from the legacy metrics YAML spec to the latest metrics YAML spec in the dbt Fusion engine."
+    link="/docs/build/metrics-spec-fusion"
+    icon="dbt-bit"/>
+
  <Card
     title="Quickstart for the dbt Semantic Layer"
     body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
@@ -41,7 +47,7 @@ MetricFlow allows you to:
 
   <Card
     title="Metrics"
-    body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
+    body="Define metrics in your dbt project using different metric types in YAML files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
   
