@@ -18,6 +18,122 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## January 21, 2026
+
+Saved to `release-notes/final-release-notes-2026-01-21.md`:
+
+## Single-tenant release notes
+
+## New
+
+### dbt platform (Develop / IDE)
+- **New VS Code–style file explorer (rolling out behind `ve-1921-vscode-explorer`).** Includes improved file-tree rendering and common file actions (create/rename/duplicate/delete) directly from the explorer. <!-- PRs: `https://github.com/dbt-labs/studio/pulls?q=is%3Apr+ve-1921-vscode-explorer` -->
+
+### dbt platform (Explorer)
+- **Favorites are now generally available in Explorer UI.** “Add to favorites” / “Remove from favorites” and the Favorites navigation tree are no longer feature-flagged, so they appear consistently when enabled for an account. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+favorites+generally+available+Explorer` -->
+
+### Connectivity / private networking
+- **New v3 API endpoint to fetch a specific PrivateLink endpoint.** Adds an endpoint to retrieve a single PrivateLink endpoint by ID to support richer automation and troubleshooting workflows. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+private-endpoints+PrivateLink+api%2Fv3` -->
+
+### Warehouse integrations
+- **Salesforce adapter support (beta, Fusion-only; feature-flagged).** Adds support for Salesforce as a warehouse adapter behind a feature flag, including connection/credential handling for eligible environments. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+Salesforce+adapter+cc-3048-enable-salesforce-adapter` -->
+
+### Cost Insights
+- **BigQuery Cost Insights support (BigQuery cost attribution).** Adds BigQuery-specific cost attribution logic used to power Cost Insights for BigQuery-backed projects. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+BigQuery+Cost+Insights+INFORMATION_SCHEMA.JOBS` -->
+
+## Enhancements
+
+### dbt platform (Run visibility & UX)
+- **Run artifacts are now searchable.** Adds an artifacts search box and clearer empty state to make it faster to find specific artifacts in run history. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Run+Details+Artifacts+search` -->
+- **Webhooks editor is more stable during async loads.** Prevents form “reset” behaviors while editing (for example, when job options load), and refreshes after create so server-generated fields display reliably. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+webhook+form+reset+job+options` -->
+- **Fusion onboarding completion card can be dismissed.** After completing the checklist, users can dismiss the card and it stays dismissed for that user/project. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Fusion+checklist+completed+dismiss` -->
+- **Salesforce connection setup flow is clearer.** Better aligns which fields belong to connection details vs credentials, and improves setup validation/prefill behavior. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Salesforce+connection+credentials+client_id+private_key` -->
+- **Cost Insights charts have a clearer grouping control.** Adds a dedicated grouping selector (for example, daily/weekly/monthly) alongside the period selector in Cost Insights views. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Cost+Insights+grouping+selector` -->
+
+### Catalog & Search
+- **Improved Catalog Search relevance, highlighting, and performance.** Updates Elasticsearch-backed search scoring and matching (including better column matching/highlighting) for more accurate results on large catalogs. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+catalog.searchv2+function_score+dbt_columns_nested` -->
+- **Search results are refreshed when column metadata changes.** Indexing now incorporates column name/description changes so updates trigger re-indexing and don’t leave stale search results. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+column+description+reindex+version+hash` -->
+- **Search typeahead includes “View all results”.** Adds a footer action that takes users directly to full search results from the typeahead menu. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+typeahead+%22View+all+results%22` -->
+- **Cleaner environment dropdown behavior.** The environment selector only shows “Staging” when the account actually has projects with a staging environment (including when additional projects load later). <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+environment+dropdown+show+Staging+only+when+exists` -->
+
+### Cost Insights
+- **BigQuery v1 platform metadata credentials.** BigQuery v1 connections can be used for platform metadata credentials, supporting both Service Account JSON and Workload Identity Federation (WIF). <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+bigquery_v1+Workload+Identity+Federation+platform+metadata+credentials` -->
+- **Cost Insights setup diagnostics are tracked.** Adds persistent tracking for Cost Insights connection test status and error details to surface more actionable setup failures. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+Cost+Insights+connection+test+status` -->
+
+### Runs / orchestration
+- **More accurate run reporting via “warehouse time” tracking.** Captures and reports warehouse execution time for `run`/`build`/`snapshot` to improve downstream usage and cost reporting. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+warehouse_time_seconds` -->
+- **Improved reliability when restoring from RepoCache.** Can hard-reset a restored repo before checkout to reduce failures caused by stale or dirty working trees. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+hard+reset+RepoCache+checkout` -->
+- **Optional Fusion “time machine” recordings (when enabled).** Adds an opt-in recording artifact capture/upload for Fusion runs (rate-limited) to improve supportability and troubleshooting. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+ORC_FUSION_RECORDING+time+machine+recording` -->
+- **Run “warehouse wait time” is captured and stored.** Persists warehouse wait time to support more accurate reporting and analysis of run execution. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+warehouse+wait+time+run_warehouse_time` -->
+
+### IDE / developer ergonomics
+- **Clearer, more actionable errors when fetching dev credentials and defer state.** IDE/LSP-related endpoints now return more specific status codes and messages for common customer misconfigurations and timeouts. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli/pulls?q=is%3Apr+profiles+dev+credentials+defer+manifest+error` -->
+- **Improved reliability of idle worker cleanup.** Reduces cleanup thrash by avoiding “double deletion” edge cases that can disrupt dev sessions. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli/pulls?q=is%3Apr+reaper+idle+worker+cleanup` -->
+- **Develop console and command/log viewing improvements.** Updates the command log viewer UX and improves download/error-log viewing consistency. <!-- PRs: `https://github.com/dbt-labs/studio/pulls?q=is%3Apr+command+log+viewer+download+error+logs` -->
+
+### Single-tenant configuration
+- **Custom environment-variable bulk-create limit is now configurable.** Operators can tune the maximum number of custom environment variables created in a single request via configuration (default remains unchanged). <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+ENVIRONMENT_VARIABLE_CREATION_LIMIT` -->
+
+## Fixes
+
+### Docs generation / AI-assisted workflows
+- **Documentation generation more reliably adds missing column descriptions.** Correctly detects column names across more `schema.yml` layouts, adds only missing descriptions, and avoids overwriting existing descriptions. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+schema.yml+column+description+missing` -->
+- **BYOK (OpenAI/Azure OpenAI) misconfiguration errors are handled more cleanly.** Improves classification/handling of common configuration failures, including Azure OpenAI “deployment not found” scenarios. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+Azure+OpenAI+%22deployment+not+found%22+BYOK` -->
+- **Prevents startup/schema generation issues for agent tooling.** Excludes injected runtime arguments from schema generation to avoid recursive schema failures during startup/OpenAPI generation. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+LangGraph+runtime+schema+recursion` -->
+
+### Catalog & lineage
+- **Fixes missing auto-generated exposures in model children lineage.** Normalizes exposure IDs so auto exposures resolve correctly in applied-state lineage results. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+auto+exposure+normalize+unique+id` -->
+- **Catalog search no longer errors when a warehouse connection name is missing.** Safely handles missing connection name values to prevent response/resolver failures. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+warehouseAsset.connectionName+null` -->
+- **Malformed identity headers are rejected cleanly.** Requests with malformed identity JWTs now fail safely instead of erroring during decoding. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+malformed+x-dbt-identity-header+JWT` -->
+
+### Cost Insights
+- **Fixes Cost Insights date accuracy (charts and exports).** Prevents off-by-one-day issues by treating run dates as local dates and aligning CSV formatting accordingly. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+Cost+Insights+off-by-one+CSV+local+date` -->
+- **Cost Insights charts are more resilient.** Avoids UI errors when grouping controls are unavailable. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+Cost+Insights+grouping+control+undefined` -->
+
+### IDE stability
+- **Command status is more reliable when Cloud CLI invocation data expires.** If an invocation can’t be fetched, non-final commands are marked failed instead of remaining stuck “running”. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+invocation+404+mark+failed+command+status` -->
+- **More stable command history syncing under concurrency.** Reduces race conditions when multiple invocations sync at the same time. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+concurrent+sync+command+record+race` -->
+- **Improved LSP (editor) connection resilience.** Better task lifecycle handling and cancellation reduces disconnect/error edge cases. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+LSP+websocket+cancellation+stability` -->
+
+### Semantic layer / MetricFlow
+- **UTF‑8 support for semantic manifest overrides and hashing.** Prevents failures when overrides or hashed strings include non‑ASCII characters. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+UTF-8+ASCII+semantic+manifest+override+checksum` -->
+
+### Runs / artifacts
+- **More robust artifact packaging when symlinks exist.** Preserves symlinks (including broken ones) and includes deferral artifacts when present, reducing run failures in repos with symlinked paths. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+preserve+symlink+deferral+artifacts` -->
+- **Fixes false `NOT_FOUND` failures in Catalog Ingestion.** Disables a warehouse-credentials authorization check that was incorrectly rejecting legitimate requests. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+warehouse+credentials+NOT_FOUND+catalog+ingestion` -->
+
+### APIs
+- **Jobs API deferral validation is stricter and clearer.** Deferring job definition and deferring environment must exist within the same account, with clearer error messaging when they don’t. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+Jobs+API+deferral+same+account+error+message` -->
+
+## Behavior Changes (includes Deprecations/Removals)
+
+### dbt platform (permissions & navigation)
+- **Cost Insights is now permission-gated (not only feature-enabled).** Cost Insights UI appears only when the feature is enabled and the user has `cost_insights_read`. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+cost_insights_read+permission` -->
+- **Lineage: cross-project lineage is no longer gated behind a feature flag.** Cross-project lineage rendering is now enabled where applicable without requiring the previous flag gate. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+cross-project+lineage+feature+flag` -->
+- **Account Insights default page size changed.** The default table page size is now 5 rows. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Account+Insights+default+page+size+5` -->
+
+### APIs (validation & scoping)
+- **Catalog Ingestion APIs enforce required fields more strictly.** Requests missing required fields now return `INVALID_ARGUMENT` instead of proceeding with empty/default values. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+buf.validate+INVALID_ARGUMENT+SetStatusRequest+GetRunStatusRequest` -->
+- **Catalog run status is now scoped by `account_id`.** Run status updates/lookups require matching `account_id`; mismatches will return `NOT_FOUND`. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+scope+by+account_id+run+status+NOT_FOUND` -->
+- **Catalog Ingestion gRPC calls now require `auth-identifier` metadata.** Missing metadata returns `UNAUTHENTICATED`. <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+auth-identifier+UNAUTHENTICATED` -->
+- **PrivateLink endpoint retrieval is more strictly account-scoped.** Requests now enforce account ownership to prevent cross-account access. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+PrivateLink+account+scoping+cross-account` -->
+
+### Security / access controls
+- **IP restrictions now fail closed when client IP can’t be determined (when IP restrictions are configured).** Requests are rejected rather than implicitly allowed if the source IP cannot be resolved. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+IP+restrictions+fail+closed+remote_addr` -->
+- **Authorization decisions may take up to ~4 minutes to reflect permission changes.** Authorization caching reduces latency but can delay the effect of permission grants/revokes. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+cache+authz+TTL+4+minutes` -->
+
+### Webhooks (payload format changes)
+- **Webhook timestamps are now consistently UTC RFC3339 with `Z` (and higher precision).** `run_started_at`/`run_finished_at` are emitted in UTC with `Z`; missing/invalid run timestamps now emit `1970-01-01T00:00:00Z` instead of an empty string; `timestamp` includes nanosecond precision with `Z`. <!-- PRs: `https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+run_started_at+run_finished_at+RFC3339+Z+nanosecond` -->
+- **Webhook `run_status` string changed from `Error` to `Errored`.** If you parse statuses strictly, update downstream consumers accordingly. <!-- PRs: `https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+run_status+Errored` -->
+
+### Runs / ingestion safeguards
+- **Very large exposure sets are guarded during ingestion.** Manifests with more than 5,000 exposures will skip/clear exposure ingestion to prevent memory exhaustion (other ingestion continues). <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+%225000%22+exposures+ingestion+guard` -->
+
+### Removals
+- **Removed the legacy `orc-dequeuer` component.** If your deployment ran `orc-dequeuer`, remove the workload and any related configuration during upgrade. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+orc-dequeuer+remove` -->
+- **Removed node-level started/completed run metrics.** The `dbt_cloud.run.node.started` and `dbt_cloud.run.node.completed` metrics are no longer emitted; update dashboards/alerts if you relied on them. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+dbt_cloud.run.node.started+dbt_cloud.run.node.completed+removed` -->
+
+
 ## January 14, 2026
 
 ### New
