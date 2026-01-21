@@ -27,6 +27,10 @@ There are three major updates to the structure of semantic modeling in dbt:
 - **Reducing nesting:** We removed as much deep dictionary nesting as possible to simplify the look and feel of the code, and renamed keys to more directly describe their behavior.
 - **Standardizing on models YAML entries:** Semantic annotations are embedded within the model’s YAML entry to remove the need to manage many YAML entries across many files to enrich your models with semantic metadata.
 
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', margin: '0 -20px 20px -20px', maxWidth: 'calc(100% + 40px)'}}>
+
+<div style={{padding: '0 12px'}}>
+
 ### Legacy implementation
 
 ```yaml
@@ -69,6 +73,10 @@ semantic_models:
  
 ```
 
+</div>
+
+<div style={{padding: '0 12px'}}>
+
 ### New implementation
 
 ```yaml
@@ -95,7 +103,7 @@ models:
           
       - name: first_ordered_at
         description: The timestamp when a customer placed their first order.
-				
+
         # annotate column as a time dimension
         granularity: day
         dimension:
@@ -110,6 +118,11 @@ models:
         description: Customer's lifetime spend before tax
         label: LTV Pre-tax
         agg: sum
+```
+
+</div>
+
+</div>
 ```
 
 This has a few clear benefits: 
