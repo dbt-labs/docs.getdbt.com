@@ -21,7 +21,6 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VMkRXWkEcKk?si=vPNG0T8w8q3g3ugT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Having dbt as the standard context layer for agentic analytics means that dbt Agents are built on top of this context to provide accurate results rather than hallucinated or inconsistent answers.
 
 ## Key benefits
 
