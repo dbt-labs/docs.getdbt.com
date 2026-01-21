@@ -123,7 +123,6 @@ models:
 </div>
 
 </div>
-```
 
 This has a few clear benefits: 
 
