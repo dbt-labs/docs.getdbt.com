@@ -413,7 +413,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
 
   - Native support for [partial parsing in dbt Cloud](/docs/cloud/account-settings#partial-parsing)
   - Updated guidance on using dots or underscores in the [Best practice guide for models](/best-practices/how-we-style/1-how-we-style-our-dbt-models)
-  - Updated [PrivateLink for VCS docs](/docs/cloud/secure/aws/self-hosted)
+  - Updated [PrivateLink for VCS docs](/docs/cloud/secure/aws/aws-self-hosted)
   - Added a new `job_runner` role in our [Enterprise project role permissions docs](/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
   - Added saved queries to [Metricflow commands](/docs/build/metricflow-commands#list-saved-queries)
   - Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated

@@ -293,8 +293,8 @@ To inquire about private connectivity to additional platforms, contact your acco
 Once you create the private connectivity resource, share the resource ID (endpoint service name, alias, or service attachment URI) with dbt to establish the connection.
 
 **Setup guides:**
-- [AWS PrivateLink for self-hosted services](/docs/cloud/secure/aws/self-hosted)
-- [Azure Private Link for self-hosted services](/docs/cloud/secure/azure/self-hosted)
-- [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/gcp/self-hosted)
+- [AWS PrivateLink for self-hosted services](/docs/cloud/secure/aws/aws-self-hosted)
+- [Azure Private Link for self-hosted services](/docs/cloud/secure/azure/azure-self-hosted)
+- [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/gcp/gcp-self-hosted)
 
 If you have questions about whether your configuration is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).

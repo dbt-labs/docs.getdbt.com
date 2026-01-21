@@ -39,6 +39,76 @@
   ],
   "redirects": [
     {
+      "source": "/docs/cloud/secure/secure-your-tenant",
+      "destination": "/docs/cloud/secure/network-security",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-privatelink",
+      "destination": "/docs/cloud/secure/aws/aws-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-privatelink",
+      "destination": "/docs/cloud/secure/aws/aws-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/redshift-privatelink",
+      "destination": "/docs/cloud/secure/aws/aws-redshift",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/postgres-privatelink",
+      "destination": "/docs/cloud/secure/aws/aws-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/vcs-privatelink",
+      "destination": "/docs/cloud/secure/aws/aws-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-private-link",
+      "destination": "/docs/cloud/secure/azure/azure-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-private-link",
+      "destination": "/docs/cloud/secure/azure/azure-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-postgres-private-link",
+      "destination": "/docs/cloud/secure/azure/azure-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-synapse-private-link",
+      "destination": "/docs/cloud/secure/azure/azure-synapse",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-self-hosted-private-link",
+      "destination": "/docs/cloud/secure/azure/azure-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-psc",
+      "destination": "/docs/cloud/secure/gcp/gcp-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/bigquery-psc",
+      "destination": "/docs/cloud/secure/gcp/gcp-bigquery",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/gcp-self-hosted-psc",
+      "destination": "/docs/cloud/secure/gcp/gcp-self-hosted",
+      "permanent": true
+    },
+    {
       "source": "/reference/dbt-jinja-functions",
       "destination": "/reference/dbt-jinja-functions-context-variables",
       "permanent": true
@@ -4450,76 +4520,6 @@
     {
       "source": "/report-a-problem",
       "destination": "https://www.getdbt.com/report-a-problem",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/secure-your-tenant",
-      "destination": "/docs/cloud/secure/network-security",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/snowflake-privatelink",
-      "destination": "/docs/cloud/secure/aws/snowflake",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/databricks-privatelink",
-      "destination": "/docs/cloud/secure/aws/databricks",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/redshift-privatelink",
-      "destination": "/docs/cloud/secure/aws/redshift",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/postgres-privatelink",
-      "destination": "/docs/cloud/secure/aws/postgres",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/vcs-privatelink",
-      "destination": "/docs/cloud/secure/aws/self-hosted",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/snowflake-private-link",
-      "destination": "/docs/cloud/secure/azure/snowflake",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/databricks-private-link",
-      "destination": "/docs/cloud/secure/azure/databricks",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/az-postgres-private-link",
-      "destination": "/docs/cloud/secure/azure/postgres",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/az-synapse-private-link",
-      "destination": "/docs/cloud/secure/azure/synapse",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/az-self-hosted-private-link",
-      "destination": "/docs/cloud/secure/azure/self-hosted",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/snowflake-psc",
-      "destination": "/docs/cloud/secure/gcp/snowflake",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/bigquery-psc",
-      "destination": "/docs/cloud/secure/gcp/bigquery",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cloud/secure/gcp-self-hosted-psc",
-      "destination": "/docs/cloud/secure/gcp/self-hosted",
       "permanent": true
     }
   ]

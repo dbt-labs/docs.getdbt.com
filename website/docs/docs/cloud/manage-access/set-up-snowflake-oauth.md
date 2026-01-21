@@ -147,7 +147,7 @@ This error might be because of a configuration issue in the Snowflake OAuth flow
 
 <Expandable alt_header="Server error 500">
 
-If you experience a 500 server error when redirected from Snowflake to <Constant name="cloud" />, double-check that you have allow-listed [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/cloud/secure/aws/snowflake#configuring-network-policies), on a Snowflake account level.
+If you experience a 500 server error when redirected from Snowflake to <Constant name="cloud" />, double-check that you have allow-listed [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/cloud/secure/aws/aws-snowflake#configuring-network-policies), on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
 
