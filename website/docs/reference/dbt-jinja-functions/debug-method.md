@@ -6,9 +6,9 @@ description: "The `{{ debug() }}` macro will open an iPython debugger."
 ---
 
 
-:::warning Requires local development environment
+:::warning Requires Core CLI
 
-The `debug()` macro is only available when using <Constant name="core" /> CLI or <Constant name="fusion_engine" /> CLI in a local development environment. It's _not available_ in <Constant name="dbt_platform" />. 
+The `debug()` macro is only available when using <Constant name="core" /> CLI in a local development environment. It's _not available_ in <Constant name="dbt_platform" />. 
 
 Do not deploy code to production that uses the `debug` macro.
 
