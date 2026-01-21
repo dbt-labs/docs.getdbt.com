@@ -59,7 +59,7 @@ The Fusion install automatically includes adapters outlined in the [Fusion requi
          schema: "{{ env_var('DBT_MY_SCHEMA') }}"
    ```
 
-3. Run your dbt commands normally. <Constant name="fusion"/> will automatically load the variables from the `.env` file.
+3. Try running your dbt commands normally, <Constant name="fusion"/> will automatically load the variables from the `.env` file.
 
 ### Precedence order
 
