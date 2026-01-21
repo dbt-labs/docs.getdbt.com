@@ -6,6 +6,7 @@ id: "setup-local-mcp"
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
+import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 
 [The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="cloud_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
@@ -22,11 +23,7 @@ Choose the setup method that best fits your workflow:
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
-:::info Static subdomains required
-
-Only accounts with static subdomains (for example, `abc123` in `abc123.us1.dbt.com`) can use OAuth with MCP servers. To find your account subdomain, navigate to **Account Settings** > **Account** > **Access URL**. If your account does not have a subdomain, contact support for more information.
-
-:::
+<StaticSubdomainRequired />
 
 #### Configuration options
 
@@ -117,15 +114,15 @@ You will need this file for integrating with MCP-compatible tools.
 
 ## API and SQL tool settings
 
-| Environment Variable | Required | Description |
-| --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`. |
-| MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses). |
-| DBT_TOKEN | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.  |
-| DBT_ACCOUNT_ID | Required for Administrative API tools | Your [dbt account ID](/faqs/Accounts/find-user-id) |
-| DBT_PROD_ENV_ID | Required | Your <Constant name="dbt_platform" /> production environment ID |
-| DBT_DEV_ENV_ID | Optional | Your <Constant name="dbt_platform" /> development environment ID |
-| DBT_USER_ID | Optional | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id)) |
+| Environment Variable     | Required                               | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DBT_HOST`               | Required                               | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`.                                                                                    |
+| MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses).                                                                                                 |
+| DBT_TOKEN                | Required                               | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| DBT_ACCOUNT_ID           | Required for Administrative API tools  | Your [dbt account ID](/faqs/Accounts/find-user-id)                                                                                                                                                                                                                                                                          |
+| DBT_PROD_ENV_ID          | Required                               | Your <Constant name="dbt_platform" /> production environment ID                                                                                                                                                                                                                                                             |
+| DBT_DEV_ENV_ID           | Optional                               | Your <Constant name="dbt_platform" /> development environment ID                                                                                                                                                                                                                                                            |
+| DBT_USER_ID              | Optional                               | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id))                                                                                                                                                                                                                                         |
 
 **Multi-cell configuration examples:**
 
@@ -149,11 +146,11 @@ If your full URL is `abc123.us1.dbt.com`, separate it as:
 
 The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
-| Environment Variable | Required | Description | Example |
-| --- | --- | --- | --- |
-| `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
-| DBT_PATH | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
-| DBT_CLI_TIMEOUT | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.  | Defaults to 60 seconds. |
+| Environment Variable | Required | Description                                                                                                                                                          | Example                                                                         |
+| -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `DBT_PROJECT_DIR`    | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file.                              | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame`   |
+| DBT_PATH             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| DBT_CLI_TIMEOUT      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
 
 ### Locating your `DBT_PATH`
 
@@ -183,7 +180,7 @@ Example output: `C:\Python39\Scripts\dbt.exe`
 
 **Additional notes:**
 
-- You can set any environment variable supported by your dbt executable, like [the ones supported in <Constant name="core" />](/reference/global-configs/about-global-configs#available-flags). 
+- You can set any environment variable supported by your dbt executable, like [the ones supported in <Constant name="core" />](/reference/global-configs/about-global-configs#available-flags).
 - dbt MCP respects the standard environment variables and flags for usage tracking mentioned [here](/reference/global-configs/usage-stats).
 - `DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}'` is automatically set so that the MCP server knows if no node is selected when running a dbt command. You can overwrite it if needed, but it provides a better experience when calling dbt from the MCP server, ensuring the tool selects valid nodes.
 
@@ -191,15 +188,15 @@ Example output: `C:\Python39\Scripts\dbt.exe`
 
 You can disable the following tool access on the local `dbt-mcp`:
 
-| Name                     | Default | Description                                                                     |
-| ------------------------ | ------- | ------------------------------------------------------------------------------- |
+| Name                     | Default | Description                                                                                                                          |
+| ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `DISABLE_DBT_CLI`        | `false` | Set this to `true` to disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
-| `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools.                    |
-| `DISABLE_DISCOVERY`      | `false` | Set this to `true` to disable dbt Discovery API MCP tools.                     |
-| `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Administrative API MCP tools.                         |
-| `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools.                                |
-| `DISABLE_DBT_CODEGEN`    | `true`  | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package). |
-| `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools.    |
+| `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools.                                                                          |
+| `DISABLE_DISCOVERY`      | `false` | Set this to `true` to disable dbt Discovery API MCP tools.                                                                           |
+| `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Administrative API MCP tools.                                                                      |
+| `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools.                                                                                         |
+| `DISABLE_DBT_CODEGEN`    | `true`  | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package).          |
+| `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools.                                                       |
 
 #### Using environment variables in your MCP client configuration
 
@@ -268,9 +265,9 @@ After completing your configuration, follow the specific integration guide for y
 ## Debug configurations
 These settings allow you to customize the MCP server’s logging level to help with diagnosing and troubleshooting.
 
-| Name                     | Default | Description                                                                     |
-| ------------------------ | ------- | ------------------------------------------------------------------------------- |
-| `DBT_MCP_LOG_LEVEL`        | `INFO` |  Environment variable to override the MCP server log level. Options are: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.  |
+| Name                | Default | Description                                                                                                              |
+| ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `DBT_MCP_LOG_LEVEL` | `INFO`  | Environment variable to override the MCP server log level. Options are: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. |
 
 To see more detail about what’s happening inside the MCP server and help debug issues, you can temporarily set the log level to `DEBUG`. We recommend setting it temporarily to avoid filling up disk space with logs.
 
