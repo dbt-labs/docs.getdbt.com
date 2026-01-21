@@ -22,7 +22,7 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -108,7 +108,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ### Model with different aggregations
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.99">
 
 ```yaml
 semantic_models:
