@@ -134,7 +134,7 @@ To use the dbt extension menu actions/buttons, you can configure environment var
 - The terminal uses system environmental variables, and does not inherit variables set in the dbt VS Code extension config. For example, running a dbt command in the terminal won't fetch or use the dbt VS Code extension variables.
 
 :::info `.env` file support
-Both the [<Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli) and the dbt VS Code extension will automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run commands from in your terminal), if one exists. This means environment variables you define in `.env` will be available when running dbt commands in the terminal as well as when using the extension's menu actions. 
+The [<Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
 
 Here's some more information about the `.env` file:
 
