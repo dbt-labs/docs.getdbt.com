@@ -31,7 +31,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Enhancements
 
 - **dbt platform**
-  - **Run artifacts are now searchable**: Find specific artifacts faster in run history with the new artifacts search box and improved empty states. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Run+Details+Artifacts+search` -->
+  - **Run artifacts are now searchable**: Find specific artifacts faster in run history with the new artifacts search box and improved empty states. <!-- Reviewed by Bianca PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Run+Details+Artifacts+search` -->
   - **Webhooks editor is more stable**: The webhook form no longer resets while job options are loading, and server-generated fields now display reliably after creation. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+webhook+form+reset+job+options` -->
   - **Fusion onboarding completion card can be dismissed**: After completing the Fusion onboarding checklist, you can now dismiss the card and it will stay dismissed. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Fusion+checklist+completed+dismiss` -->
 
@@ -41,11 +41,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Search results are refreshed when column metadata changes**: Column name and description updates now automatically trigger re-indexing, ensuring search results stay current. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+column+description+reindex+version+hash` -->
   - **Search typeahead includes "View all results"**: Quickly access full search results from the typeahead dropdown with the new footer link. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+typeahead+%22View+all+results%22` -->
   - **Cleaner environment dropdown behavior**: The environment selector now only shows "Staging" when your account has projects with a staging environment configured. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+environment+dropdown+show+Staging+only+when+exists` -->
-
-- **Runs / orchestration**
-  - **More accurate run reporting via warehouse time tracking**: Warehouse execution time is now captured and reported for `run`, `build`, and `snapshot` commands, improving usage and cost reporting accuracy. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+warehouse_time_seconds` -->
-  - **Improved reliability when restoring from RepoCache**: Repository restores are now more reliable, reducing failures caused by stale or uncommitted changes. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+hard+reset+RepoCache+checkout` -->
-  - **Run warehouse wait time is now captured**: Warehouse wait time is now stored to enable more accurate reporting and analysis of run performance. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+warehouse+wait+time+run_warehouse_time` -->
 
 - **Studio IDE**
   - **Clearer error messages when fetching dev credentials and defer state**: IDE-related endpoints now return more specific and helpful error messages for common configuration issues and timeouts. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli/pulls?q=is%3Apr+profiles+dev+credentials+defer+manifest+error` -->
@@ -71,9 +66,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Semantic Layer / MetricFlow**
   - **UTF-8 support for semantic manifest overrides**: Semantic Layer manifests now properly handle non-ASCII characters, preventing failures when using international characters. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+UTF-8+ASCII+semantic+manifest+override+checksum` -->
 
-- **Runs / artifacts**
-  - **More robust artifact packaging when symlinks exist**: Artifact packaging now properly handles symbolic links in your repository, reducing run failures. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+preserve+symlink+deferral+artifacts` -->
-
 - **APIs**
   - **Jobs API deferral validation is stricter and clearer**: Job deferral settings are now validated to ensure the deferring job and environment exist within the same account, with improved error messages. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+Jobs+API+deferral+same+account+error+message` -->
 
@@ -90,7 +82,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Runs / ingestion**
   - **⚠️ Very large exposure sets are now limited during ingestion**: Projects with more than 5,000 exposures will skip exposure ingestion to prevent performance issues. All other artifact ingestion continues normally. Contact support if you need to increase this limit. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+%225000%22+exposures+ingestion+guard` -->
-  - **⚠️ Removed internal node-level run metrics**: The internal metrics `dbt_cloud.run.node.started` and `dbt_cloud.run.node.completed` have been removed. If you have custom monitoring dashboards using these metrics, please contact support for alternatives. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+dbt_cloud.run.node.started+dbt_cloud.run.node.completed+removed` -->
 
 
 ## January 14, 2026
