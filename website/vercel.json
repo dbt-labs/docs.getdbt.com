@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/deploy/state-aware-setup#deleted-tables",
+      "destination": "/docs/deploy/state-aware-about#handling-deleted-tables",
+      "permanent": true
+    },
+    {
       "source": "/reference/dbt-jinja-functions",
       "destination": "/reference/dbt-jinja-functions-context-variables",
       "permanent": true
