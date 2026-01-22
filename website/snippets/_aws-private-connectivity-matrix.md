@@ -1,20 +1,28 @@
-import Lifecycle from '/src/components/lifeCycle';
-
 ## AWS private connectivity matrix
 
 The following charts outline private connectivity options for AWS deployments of <Constant name="cloud" /> ([multi-tenant and single-tenant](/docs/cloud/about-cloud/tenancy)).
 
 **Legend:**
+
+_Availability:_
 - ✅ = Available
 - ❌ = Not currently available
 - \- = Not applicable
-- MT = Multi-tenant
-- ST = Single-tenant
-- \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
-- <Lifecycle status="beta" backgroundColor="#d8d4f0" /> = Reported working but not yet directly tested by dbt
 
-:::note What "Available" means
-Availability indicates whether a private endpoint can be established at the network layer. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+_Endpoint type:_
+- \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
+
+_Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
+
+:::note About the following matrix tables
+These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+:::
+
+:::info Terminology update
+These tables use updated terminology for clarity:
+- **Connecting to dbt Cloud** = previously "Ingress"
+- **Connecting dbt Cloud to managed services** = previously "Egress - DW"
+- **Connecting dbt Cloud to self-hosted services** = previously "Egress - VCS"
 :::
 
 ---
@@ -27,7 +35,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
   <thead>
     <tr>
       <th>Connectivity type</th>
-      <th>AWS ST</th>
+      <th>ST</th>
     </tr>
   </thead>
   <tbody>
@@ -44,7 +52,9 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ---
 
-### Connecting dbt Cloud to data platforms
+### Connecting dbt Cloud to managed services
+
+<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
 
 <table>
   <thead>
@@ -52,7 +62,6 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
       <th>Service</th>
       <th>MT</th>
       <th>ST</th>
-      <th>Provisioning</th>
     </tr>
   </thead>
   <tbody>
@@ -60,48 +69,44 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
       <td>Snowflake</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="vendor-provisioned">Vendor</Term></td>
     </tr>
     <tr>
       <td>&nbsp;&nbsp;Snowflake Internal Stage</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="vendor-provisioned">Vendor</Term></td>
     </tr>
     <tr>
       <td>Databricks</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="vendor-provisioned">Vendor</Term></td>
     </tr>
     <tr>
       <td>Redshift</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="native-provisioned">Native</Term></td>
     </tr>
     <tr>
       <td>Redshift Serverless</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="native-provisioned">Native</Term></td>
     </tr>
     <tr>
       <td>Amazon Athena w/ AWS Glue*</td>
       <td>❌</td>
       <td>✅</td>
-      <td><Term id="native-provisioned">Native</Term></td>
+    </tr>
+    <tr>
+      <td>AWS CodeCommit*</td>
+      <td>❌</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Teradata VantageCloud</td>
       <td>✅</td>
       <td>✅</td>
-      <td><Term id="vendor-provisioned">Vendor</Term></td>
     </tr>
   </tbody>
 </table>
-
-For <Term id="vendor-provisioned">Vendor</Term> and <Term id="native-provisioned">Native</Term> provisioned services, the vendor or cloud platform is the <Term id="service-producer">service producer</Term>. You obtain the resource ID from them and share it with dbt; dbt is the <Term id="consumer">consumer</Term> and creates the VPC endpoint.
 
 ---
 
@@ -135,12 +140,7 @@ For <Term id="vendor-provisioned">Vendor</Term> and <Term id="native-provisioned
     </tr>
     <tr>
       <td>Azure DevOps Server</td>
-      <td>✅ <Lifecycle status="beta" backgroundColor="#d8d4f0" /></td>
-      <td>✅ <Lifecycle status="beta" backgroundColor="#d8d4f0" /></td>
-    </tr>
-    <tr>
-      <td>AWS CodeCommit</td>
-      <td>❌</td>
+      <td>✅</td>
       <td>✅</td>
     </tr>
     <tr>
@@ -166,20 +166,7 @@ For <Term id="vendor-provisioned">Vendor</Term> and <Term id="native-provisioned
   </tbody>
 </table>
 
-For services not explicitly listed above, you can establish private connectivity using the same <Term id="customer-provisioned">customer-provisioned</Term> approach. This model supports any service that can be placed behind a load balancer and exposed via AWS PrivateLink.
+For services not explicitly listed above, you may still be able to establish private connectivity using the same <Term id="customer-provisioned">customer-provisioned</Term> approach. For detailed instructions, see [AWS PrivateLink for self-hosted services](/docs/cloud/secure/aws/aws-self-hosted).
 
-To inquire about private connectivity to additional platforms, contact your account team.
+If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
 
-#### Prerequisites
-
-| Requirement | Value |
-|-------------|-------|
-| Load balancer | Network Load Balancer |
-| Resource you create | VPC Endpoint Service |
-| Resource ID to share with dbt | Endpoint service name |
-
-Once you create the VPC Endpoint Service, share the endpoint service name with dbt to establish the connection.
-
-For detailed setup instructions, see [AWS PrivateLink for self-hosted services](/docs/cloud/secure/aws/aws-self-hosted).
-
-If you have questions about whether your configuration is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
