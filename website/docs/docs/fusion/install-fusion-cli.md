@@ -83,7 +83,7 @@ When the same environment variable is defined in multiple places, <Constant name
 1. Shell environment &mdash; Variables set directly in your shell (for example, `export DBT_MY_VAR=value`)
 2. `.env` file &mdash; Variables defined in the `.env` file in your current working directory
 
-This means shell environment variables always override values from the `.env` file.
+This means environment variables set in your shell always override values from the `.env` file.
 
 :::tip
 Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
