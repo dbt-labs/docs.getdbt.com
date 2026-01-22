@@ -10,7 +10,8 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 # Install Fusion from the CLI <Lifecycle status="preview" />
 
-Fusion can be installed via the command line from our official content delivery network (CDN).
+Fusion can be installed via the command line from our official content delivery network (CDN). <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. To experience <Constant name="fusion"/>'s engine performance _and_ <Term id="lsp"/> features, [install the dbt VS Code extension](/docs/install-dbt-extension). 
+
 
 <FusionManualInstall />
 
