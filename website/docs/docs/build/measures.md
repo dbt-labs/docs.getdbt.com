@@ -6,6 +6,10 @@ sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
 ---
 
+:::tip Measures are deprecated in Fusion
+Heads up, measures have been deprecated in favor of simple metrics under the `metrics:` key. Migrate by converting each measure to a `type: simple` metric. For more info, check out [Migrate to the latest YAML spec in the dbt Fusion engine](/docs/build/metrics-spec-fusion) and [upgrade to dbt Fusion v2.0](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+:::
+
 Measures are aggregations performed on columns in your model. They can be used as final metrics or as building blocks for more complex metrics. 
 
 Measures have several inputs, which are described in the following table along with their field types.
@@ -18,7 +22,7 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -104,7 +108,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ### Model with different aggregations
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.99">
 
 ```yaml
 semantic_models:
