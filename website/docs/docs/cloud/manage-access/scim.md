@@ -165,9 +165,9 @@ To map the attributes that will sync with dbt:
 9. Click **Ok**
     <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
 10. Make sure the following mappings are in place and delete any others:
-    - **UserName:** `userPrincipalName`
+    - **UserName:** `userPrincipalName` or the value you want users to leverage to log in to dbt. 
     - **active:** `Switch([IsSoftDeleted], , "False", "True", "True", "False")`
-    - **emails[type eq "work"].value:** `userPrincipalName`
+    - **emails[type eq "work"].value:** `userPrincipalName` or the same value set for **UserName**. 
     - **name.givenName:** `givenName`
     - **name.familyName:** `surname`
     - **externalid:** `mailNickname`
