@@ -1,8 +1,8 @@
 ---
-title: "2023 dbt Cloud release notes"
-description: "dbt Cloud release notes for 2023"
+title: "2023 dbt platform release notes"
+description: "dbt platform release notes for 2023"
 id: "2023-release-notes"
-sidebar: "2023 release notes"
+sidebar_label: "2023 release notes"
 pagination_next: null
 pagination_prev: null
 ---
@@ -250,8 +250,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     With two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
-    <Lightbox src="/img/docs/release-notes/ci-job-setup.gif" width="60%" title="Example of setting up a CI job"/>
-
     And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the <Constant name="git" /> pull request (PR) code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in <Constant name="cloud" />](/docs/deploy/continuous-integration). 
 
     Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
@@ -276,8 +274,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
         If you used the <Constant name="cloud" /> UI but didn't enable the **Run on Pull Requests** option that was in the **Continuous Integration** (CI) tab, the job was misclassified as a deploy job and you must re-create it as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs).
 
         To check for the job type, review your CI jobs in <Constant name="cloud" />'s [Run History](/docs/deploy/run-visibility#run-history) and check for the **CI Job** tag below the job name. If it doesn't have this tag, it was misclassified and you need to re-create the job.
-
-        <Lightbox src="/img/docs/release-notes/ci-job-tag.png" width="60%" title="Example of a correct CI job type"/>
 
     **CI update phase 3 &mdash; Update: Improved automatic deletion of temporary schemas** 
 
@@ -336,8 +332,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
     Previously, when dbt Labs released a new [version](/docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
 
     To see which version you are currently using and to upgrade, select **Deploy** in the top navigation bar and select **Environments**. Choose the preferred environment and click **Settings**. Click **Edit** to make a change to the current dbt version. dbt Labs recommends always using the latest version whenever possible to take advantage of new features and functionality. 
-
-    <Lightbox src="/img/docs/release-notes/dbt-cloud-versions.png" title="dbt Cloud versions dropdown"/>
 
   </Expandable>
 
@@ -675,8 +669,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     New usability and design improvements to the **Run History** dashboard in dbt Cloud are now available. These updates allow people to discover the information they need more easily by reducing the number of clicks, surfacing more relevant information, keeping people in flow state, and designing the look and feel to be more intuitive to use.   
 
-    <Lightbox src="/img/docs/release-notes/run-history-improvements.gif" title="Improvements to Run History in dbt Cloud" />
-
     Highlights include:
 
     - Usability improvements for CI runs with hyperlinks to the branch, PR, and commit SHA, along with more discoverable temporary schema names
@@ -710,8 +702,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Lazy loading of logs, making the whole run details page load faster and feel more performant
     - Cleaner look and feel with iconography
     - Helpful tool tips
-
-    <Lightbox src="/img/docs/release-notes/run-details-and-logs-improvements.gif" title="Improvements to run details and logs in dbt Cloud" />
 
   </Expandable>
 
@@ -850,7 +840,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## 🎯 Core projects 
 
-    - Clearer descriptions in the [Jinja functions page](/reference/dbt-jinja-functions), that improve content for each card. 
+    - Clearer descriptions in the [Jinja functions page](/reference/dbt-jinja-functions-context-variables), that improve content for each card. 
     - [1.5 Docs](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) have been released as a Release Candidate (RC)! 
     - See the beautiful [work captured in Core v 1.5](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.5%22+is%3Aclosed).
 

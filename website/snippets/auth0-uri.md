@@ -1,7 +1,7 @@
 
 The URI used for SSO connections on multi-tenant <Constant name="cloud" /> instances will vary based on your <Constant name="cloud" /> hosted region. To find the URIs for your environment in <Constant name="cloud" />: 
 
-1. Navigate to your **Account settings** and click **Single sign-on** on the left menu.
+1. Navigate to your **Account settings** and click **SSO & SCIM** on the left menu.
 1. Click **Edit** in the **Single sign-on** pane.
 1. Select the appropriate **Identity provider** from the dropdown and the **Login URL slug** and **Identity provider values** will populate for that provider. 
 

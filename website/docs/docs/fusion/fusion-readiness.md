@@ -15,15 +15,17 @@ Use the following checklist to prepare your projects for the <Constant name="fus
 
 ### 1. Upgrade to the latest dbt version
 
-The `Latest` [release track](/docs/dbt-versions/cloud-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
+The **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
 
-- [ ] Make sure all your projects are on the `Latest` release track across all deployment environments and jobs. This will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
+- [ ] Make sure all your projects are on the **Latest** release track across all deployment environments and jobs. This will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
 
 ### 2. Resolve all deprecation warnings
 
-You must resolve deprecations while your projects are on a <Constant name="core" /> release track, as they result in warnings that will become errors once you upgrade to <Constant name="fusion" />. The autofix tool can automatically resolve many deprecations (such as moving arbitrary configs into the meta dictionary). Start a new branch to begin resolving deprecation warnings using one of the following methods:
+You must resolve deprecations while your projects are on a <Constant name="core" /> release track, as they result in warnings that will become errors once you upgrade to <Constant name="fusion" />. The autofix tool can automatically resolve many deprecations (such as moving arbitrary configs into the meta dictionary). For a full list of deprecations and how to resolve them, refer to [Deprecations](/reference/deprecations). 
 
-- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the `Compatible` or `Latest` release track.
+Start a new branch to begin resolving deprecation warnings using one of the following methods:
+
+- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
 
@@ -45,7 +47,9 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
-- [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />. 
+- [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
+- [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available).
+- [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 

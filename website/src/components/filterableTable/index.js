@@ -75,6 +75,7 @@ const parseTableFromDOM = (tableElement) => {
   }
 
   const headers = [];
+  const columnAlignments = [];
   const thead = tableElement.querySelector('thead');
   if (thead) {
     const headerRow = thead.querySelector('tr');
@@ -82,6 +83,12 @@ const parseTableFromDOM = (tableElement) => {
       headerRow.querySelectorAll('th').forEach(th => {
         // Preserve HTML content for headers (like <small>, <br>, etc.)
         headers.push(th.innerHTML || extractTextFromElement(th));
+        
+        // Extract alignment from the th element's style
+        const computedStyle = window.getComputedStyle(th);
+        const textAlign = computedStyle.textAlign || th.style.textAlign || 'left';
+        // Normalize alignment values
+        columnAlignments.push(textAlign === 'start' ? 'left' : textAlign === 'end' ? 'right' : textAlign);
       });
     }
   }
@@ -107,9 +114,6 @@ const parseTableFromDOM = (tableElement) => {
       }
     });
   }
-
-  // Default alignments
-  const columnAlignments = headers.map(() => 'left');
   
   return { headers, data, columnAlignments };
 };

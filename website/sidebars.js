@@ -14,11 +14,12 @@ const sidebarSettings = {
       items: [
         "docs/fusion/fusion",
         "docs/fusion/about-fusion",
+        "docs/fusion/get-started-fusion",
         "docs/fusion/fusion-availability",
         "docs/fusion/fusion-readiness",
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
-        "docs/fusion/get-started-fusion",
+        "docs/fusion/telemetry",
       ],
     },
     {
@@ -472,6 +473,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/metrics-spec-fusion",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -803,12 +805,23 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI',
+      value: 'dbt AI and intelligence',
       className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Agents",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+      items: [
+        "docs/dbt-ai/dbt-agents",
+        "docs/dbt-ai/analyst-agent",
+      ],
     },
     {
       type: "category",
-      label: "Copilot",
+      label: "dbt Copilot",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/dbt-copilot" },
       items: [
@@ -932,6 +945,7 @@ const sidebarSettings = {
         "docs/dbt-versions/dbt-cloud-release-notes",
         "docs/dbt-versions/dbt-cloud-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
+        "docs/dbt-versions/2025-release-notes",
         "docs/dbt-versions/2024-release-notes",
         "docs/dbt-versions/2023-release-notes",
         "docs/dbt-versions/2022-release-notes",
@@ -1141,6 +1155,7 @@ const sidebarSettings = {
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
+        "reference/resource-configs/hive-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/ibm-netezza-config",
         "reference/resource-configs/materialize-configs",
@@ -1496,9 +1511,20 @@ const sidebarSettings = {
             },
           ],
         },
+        {
+          type: "category",
+          label: "Deprecations & warnings",
+          link: {
+            type: "doc",
+            id: "reference/changes-overview",
+          },
+          items: [
+            "reference/changes-overview",
+            "reference/deprecations",
+          ],
+        },
         "reference/events-logging",
         "reference/exit-codes",
-        "reference/deprecations",
         "reference/parsing",
         "reference/programmatic-invocations",
       ],
@@ -1509,18 +1535,18 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "Jinja reference",
-        description: "The list of Jinja functions available in dbt.",
+        description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
         {
           type: "category",
-          label: "dbt Jinja functions",
+          label: "dbt Jinja context functions",
           link: {
             type: "generated-index",
-            title: "dbt Jinja functions",
+            title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
-            slug: "/reference/dbt-jinja-functions",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+            slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
             {

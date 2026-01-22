@@ -18,6 +18,105 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## January 14, 2026
+
+### New
+
+- **dbt platform**
+  - **Fusion migration readiness endpoint**: Added an API endpoint to determine whether a project is eligible for Fusion migration.
+
+### Enhancements
+
+- **Copilot and AI**
+  - **More resilient agent runs**: Agent tool execution errors now return structured responses instead of failing the entire run.
+  - **Better project context retrieval**: Agent toolsets include additional retrieval and search capabilities for more relevant responses.
+  - **Improved Azure OpenAI verification**: Azure OpenAI connection verification now uses GPT-5-compatible parameters for GPT-5 deployments.
+  - **BYOK for Azure OpenAI**: Added support for Azure Foundry URLs with automatic endpoint parsing to reduce setup friction.
+
+- **Insights and Catalog**
+  - **Semantic Layer querying now generally available (GA)**: Build SQL queries against the Semantic Layer without writing SQL code.
+  - **Improved search relevance**: Search scoring prioritizes exact and multi-term matches more strongly, with better highlighting and column-description matching.
+  - **Catalog UX improvements**: Search labels are more consistent, and the embedded lineage view loads more responsively.
+
+- **Studio IDE**
+  - **Unified Studio IDE**: Studio now loads a single unified IDE package.
+  - **Defer-to-production honors `defer-env-id` override**: Studio now respects `dbt-cloud.defer-env-id` settings when Cloud CLI runtime is supported.
+  - **Improved log exporting**: Download and copy behavior for command logs is more consistent, including debug logs.
+  - **Enhanced multi-edit support**: The IDE now supports multiple explicit edits in one request with safer validation.
+  - **Clearer Cloud CLI session errors**: Session creation returns clearer error messages and guidance for setup issues.
+
+- **dbt platform**
+  - **Settings detail pages in resizable drawer**: Settings detail experiences now use an improved drawer-based UI.
+  - **More resilient profile creation**: Profile creation now handles dependencies and failures more gracefully.
+  - **Enhanced logging limits for in-progress runs**: Logs for in-progress runs are also limited by memory usage, in addition to the existing 1,000-line limit.
+
+### Fixes
+
+- **dbt platform**
+  - **Profiles API clearing extended attributes**: The Profiles API now allows unsetting extended attributes by setting `extended_attributes_id` to null.
+  - **Recently viewed more reliable**: Recently viewed entries now update atomically and retain the 5 most recent items.
+  - **Run log tailing improvements**: Debug logs for completed runs now consistently fetch only the tail of the log.
+
+- **Studio IDE**
+  - **More reliable `show` and `compile`**: CLI flags to disable caching are now positioned correctly to avoid parsing issues.
+  - **Canvas preview improvements**: Fixed argument ordering so `--no-defer` is interpreted consistently.
+
+
+### Behavior changes
+
+- **dbt platform**
+  - **dbt v1.7 end-of-life**: dbt v1.7 is now labeled as end-of-life in version lifecycle messaging.
+
+
+## January 7, 2026
+
+No changes of note this week.
+
+## December 24, 2025
+
+### New
+
+- **AI Codegen**
+  - **File-aware LangGraph agents**: Analysts can now drop `@path` references in the bundled CLI to stream local files into `/private/v1/agents/run`, which are auto-rendered as text inside the run so copilots have the exact config or SQL snippet you referenced.  
+
+
+- **dbt platform**
+  - **Slack Copilot feedback loops**: Copilot replies now carry inline "Did that answer your question?" buttons, so you can rate answers without leaving Slack.  
+
+- **Codex workflows**
+  - **Databricks cost tracking for Model Cost Over Time**: A Databricks history provider and DBU-based cost query now surface daily model cost alongside Snowflake coverage, so Databricks tenants get unified FinOps reporting.  
+
+- **Canvas**
+  - **CSV upload GA**: The CSV upload endpoint is now generally available.
+
+### Enhancements
+
+- **Cloud artifacts**
+  - **Better similar-model suggestions**: Attachment workflows now only recommend meaningfully related models.  
+
+- **dbt platform**
+  - **Unified SSO & SCIM admin**: Settings consolidate SSO + SCIM, add an empty state for auto-generated slugs, and render read-only login URLs so admins can start configuration without touching slug fields.  
+  - **SCIM token management polish**: Token tables gain fixed pagination, inline search, consistent iconography, and clearer deletion warnings to avoid accidental cuts to live integrations.  
+  - **Twice the per-environment custom variables**: The v3 API/UI now allow up to 20 scoped environment variables before enforcing limits, giving larger projects more room for secrets.  
+
+- **Canvas**
+  - **Dialect-aware projection SQL**: SELECT * RENAME/EXCEPT support now respects each warehouse's syntax using schema metadata, so SQL previews and column metadata stay accurate across Snowflake, Databricks, BigQuery, and Redshift.  
+
+### Fixes
+
+- **dbt platform**
+  - **Webhook editor keeps job selections**: Default values are cached after the first render and stop resetting once the user edits the form, eliminating accidental job-list clearing while tabbing through fields.  
+
+- **Codex GraphQL**
+  - **Exposure parents mirror the manifest**: `parentsModels` and `parentsSources` now derive from the manifest's `parents` list, so exposures with mixed upstreams display complete lineage in both the GraphQL API and UI.  
+
+
+### Behavior changes
+
+- **dbt platform**
+  - **Legacy Cost Management UI retired**: All cost management pages and hooks were removed, and platform metadata credentials now only expose catalog ingestion and Cost Insights toggles, eliminating dead-end controls.  
+
+
 ## December 17, 2025
 
 ### New

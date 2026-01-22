@@ -3,7 +3,7 @@
 |                      dbt Core                                 | Initial release |      Support level and end date      |
 |:-------------------------------------------------------------:|:---------------:|:-------------------------------------:|
 | [**v1.11**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.11)| Dec 19, 2025 | <b> Active Support &mdash; Dec 18, 2026</b> |
-| [**v1.10**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10)| Jun 16, 2025   | <b> Active Support &mdash; Jun 15, 2026</b> |
+| [**v1.10**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10)| Jun 16, 2025   | <b> Critical Support &mdash; Jun 15, 2026</b> |
 | [**v1.9**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) | Dec 9, 2024  | Deprecated ⛔️ |
 | [**v1.8**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8) | May 9, 2024   | Deprecated ⛔️  |
 | [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023   | End of Life ⚠️ | 
@@ -18,6 +18,6 @@
 
 All functionality in dbt Core since the v1.7 release is available in [<Constant name="cloud" /> release tracks](/docs/dbt-versions/cloud-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
 
-<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="cloud" />. Accounts using older dbt versions will be migrated to the "Latest" release track.
+<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="cloud" />. Accounts using older dbt versions will be migrated to the **Latest** release track.
 
 For customers of <Constant name="cloud" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/cloud-release-tracks) or a supported version. In 2025, dbt Labs will remove the oldest dbt Core versions from availability in <Constant name="dbt_platform" />, starting with v1.0 -- v1.2.

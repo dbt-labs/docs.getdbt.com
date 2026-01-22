@@ -441,7 +441,7 @@ seeds:
 
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 
-Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
+Configurations made in your project YAML file (`dbt_project.yml`) will override any configurations in a package (either in the project YAML file of the package, or in config blocks).
 
 ### Specifying unpinned Git packages
 If your project specifies an "unpinned" <Constant name="git" /> package, you may see a warning like:
