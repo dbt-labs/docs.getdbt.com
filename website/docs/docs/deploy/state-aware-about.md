@@ -55,7 +55,7 @@ To prevent a job from being built too frequently even when the code or data stat
 
 ### Handling deleted tables
 
-State-aware orchestration detects and rebuilds models when a model's table is deleted in the warehouse, even if there are no code or data changes.
+State-aware orchestration detects and rebuilds models when their tables are deleted in the warehouse, even if there are no code or data changes.
 
 When a table is deleted in the warehouse:
 
