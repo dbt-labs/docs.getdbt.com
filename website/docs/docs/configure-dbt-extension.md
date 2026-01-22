@@ -62,7 +62,7 @@ The following table shows the different options and when to use them:
 If you want to use both the VS Code extension menus and terminal to run dbt commands, define your variables in the `shell` profile and VS Code/Cursor settings so they remain active in the terminal globally and in VS Code/Cursor.
 :::
 
-#### Configure at the OS or shell level
+### Configure at the OS or shell level
 Define variables once at the OS or shell level to ensure they're available to all terminal sessions. Even if you close a terminal window, the variables will remain available to you.
 
 <Tabs>
@@ -134,7 +134,7 @@ Here are some considerations when defining environment variables in the `.env` f
 - Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to your repo.
 - Order of precedence: Environment variables set directly in your shell (such as `export DBT_ENV_VAR=value`) take precedence over values defined in the `.env` file.
 
-#### Configure in the VS Code extension settings
+### Configure in the VS Code extension settings
 
 
 To use the dbt extension menu actions/buttons, you can configure environment variables directly in the [VS Code User Settings](vscode://settings/dbt.environmentVariables) interface or in a `.env` file in your current working directory. This includes both your custom variables and any automatic [<Constant name="dbt_platform"/> variables](/docs/build/environment-variables) (like `DBT_CLOUD_ENVIRONMENT_NAME`) that your project depends on.
@@ -201,7 +201,7 @@ To configure environment variables in VS Code/Cursor:
 -->
 </Tabs>
 
-#### Configure in the terminal session
+### Configure in the terminal session
 
 Configure environment variables in the terminal session using the `export` command. Something to keep in mind:
 - Doing so will make variables visible to commands that run in that terminal session only. 
