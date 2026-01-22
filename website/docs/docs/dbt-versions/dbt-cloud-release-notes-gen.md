@@ -28,9 +28,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Connectivity / private networking**
   - **New v3 API endpoint to fetch a specific PrivateLink endpoint**: You can now retrieve individual PrivateLink endpoints by ID, enabling better automation and troubleshooting workflows. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+private-endpoints+PrivateLink+api%2Fv3` -->
 
-- **Cost Insights**
-  - **BigQuery Cost Insights support**: Cost Insights now supports BigQuery cost attribution, allowing you to track and analyze costs for BigQuery-backed projects. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+BigQuery+Cost+Insights+INFORMATION_SCHEMA.JOBS` -->
-
 ### Enhancements
 
 - **dbt platform**
@@ -38,7 +35,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Webhooks editor is more stable**: The webhook form no longer resets while job options are loading, and server-generated fields now display reliably after creation. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+webhook+form+reset+job+options` -->
   - **Fusion onboarding completion card can be dismissed**: After completing the Fusion onboarding checklist, you can now dismiss the card and it will stay dismissed. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Fusion+checklist+completed+dismiss` -->
   - **Salesforce connection setup flow is clearer**: Connection setup now clearly separates connection details from credentials, with improved field validation and pre-filling. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Salesforce+connection+credentials+client_id+private_key` -->
-  - **Cost Insights charts have a clearer grouping control**: A dedicated grouping selector (daily, weekly, or monthly) is now available alongside the period selector in Cost Insights charts. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Cost+Insights+grouping+selector` -->
 
 - **Catalog & Search**
 
@@ -46,10 +42,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Search results are refreshed when column metadata changes**: Column name and description updates now automatically trigger re-indexing, ensuring search results stay current. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+column+description+reindex+version+hash` -->
   - **Search typeahead includes "View all results"**: Quickly access full search results from the typeahead dropdown with the new footer link. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+typeahead+%22View+all+results%22` -->
   - **Cleaner environment dropdown behavior**: The environment selector now only shows "Staging" when your account has projects with a staging environment configured. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+environment+dropdown+show+Staging+only+when+exists` -->
-
-- **Cost Insights**
-  - **BigQuery v1 platform metadata credentials**: BigQuery v1 connections now support platform metadata credentials with both Service Account JSON and Workload Identity Federation (WIF) authentication methods. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+bigquery_v1+Workload+Identity+Federation+platform+metadata+credentials` -->
-  - **Better Cost Insights setup diagnostics**: Connection test status and error details are now tracked to provide more actionable information when setup issues occur. <!-- PRs: `https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+Cost+Insights+connection+test+status` -->
 
 - **Runs / orchestration**
   - **More accurate run reporting via warehouse time tracking**: Warehouse execution time is now captured and reported for `run`, `build`, and `snapshot` commands, improving usage and cost reporting accuracy. <!-- PRs: `https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+warehouse_time_seconds` -->
@@ -72,10 +64,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Catalog search no longer errors when a warehouse connection name is missing**: Search now handles missing connection names gracefully without causing errors. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+warehouseAsset.connectionName+null` -->
   - **Improved security: malformed identity headers are rejected cleanly**: Requests with invalid authentication tokens now fail safely with clear error messages. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+malformed+x-dbt-identity-header+JWT` -->
 
-- **Cost Insights**
-  - **Fixes Cost Insights date accuracy in charts and exports**: Date handling now correctly accounts for timezones, preventing off-by-one-day errors in charts and CSV exports. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+Cost+Insights+off-by-one+CSV+local+date` -->
-  - **Cost Insights charts are more resilient**: Charts no longer error when grouping controls are temporarily unavailable. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+Cost+Insights+grouping+control+undefined` -->
-
 - **Studio IDE**
   - **Command status is more reliable when Cloud CLI invocation data expires**: Commands that can't be fetched are now properly marked as failed instead of staying in a "running" state. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+invocation+404+mark+failed+command+status` -->
   - **More stable command history syncing**: Improved handling when multiple commands sync simultaneously, reducing potential conflicts. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+concurrent+sync+command+record+race` -->
@@ -93,7 +81,6 @@ Release notes are grouped by date for single-tenant environments.
 ### Behavior changes
 
 - **dbt platform**
-  - **⚠️ Cost Insights now requires explicit permissions**: Cost Insights is now visible only to users with the appropriate read permission, in addition to the feature being enabled for the account. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+cost_insights_read+permission` -->
   - **Cross-project lineage is now generally available**: Cross-project lineage is now enabled for all applicable accounts. <!-- PRs: `https://github.com/dbt-labs/metadata-ui/pulls?q=is%3Apr+cross-project+lineage+feature+flag` -->
   - **Account Insights default page size changed to 5 rows**: Tables in Account Insights now display 5 rows per page by default (previously 10). <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Account+Insights+default+page+size+5` -->
   - **⚠️ IP restrictions now fail closed when client IP can't be determined**: When IP restrictions are configured, requests are now rejected if the source IP cannot be determined, improving security posture. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+IP+restrictions+fail+closed+remote_addr` -->
