@@ -34,7 +34,6 @@ Release notes are grouped by date for single-tenant environments.
   - **Run artifacts are now searchable**: Find specific artifacts faster in run history with the new artifacts search box and improved empty states. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Run+Details+Artifacts+search` -->
   - **Webhooks editor is more stable**: The webhook form no longer resets while job options are loading, and server-generated fields now display reliably after creation. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+webhook+form+reset+job+options` -->
   - **Fusion onboarding completion card can be dismissed**: After completing the Fusion onboarding checklist, you can now dismiss the card and it will stay dismissed. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Fusion+checklist+completed+dismiss` -->
-  - **Salesforce connection setup flow is clearer**: Connection setup now clearly separates connection details from credentials, with improved field validation and pre-filling. <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+Salesforce+connection+credentials+client_id+private_key` -->
 
 - **Catalog & Search**
 
