@@ -79,8 +79,8 @@ The `.env` file is loaded _only_ from your current working directory. It doesn't
 
 When the same environment variable is defined in multiple places, <Constant name="fusion"/> uses the following precedence order (highest to lowest):
 
-1. **Shell environment** &mdash; Variables set directly in your shell (for example, `export DBT_MY_VAR=value`)
-2. **`.env` file** &mdash; Variables defined in the `.env` file in your current working directory
+1. Shell environment &mdash; Variables set directly in your shell (for example, `export DBT_MY_VAR=value`)
+2. `.env` file &mdash; Variables defined in the `.env` file in your current working directory
 
 This means shell environment variables always override values from the `.env` file.
 
