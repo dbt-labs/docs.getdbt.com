@@ -135,7 +135,6 @@ If you've already defined the measure using the `create_metric: true` parameter,
           join_to_timespine: true
           alias: customer_count
           filter: {{ Dimension('customer__customer_total') }} >= 20
-
     - name: large_orders
       description: "Order with order values over 20."
       type: simple
