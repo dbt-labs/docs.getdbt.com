@@ -50,7 +50,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Fixes
 
 - **AI-assisted workflows**
-  - **dbt Copilot documentation generation adds missing column descriptions more accurately**: Copilot generated documentation now correctly detects column names across various `schema.yml` layouts, adds only missing descriptions, and preserves existing ones. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+schema.yml+column+description+missing` -->
+  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 
 - **Catalog & lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+auto+exposure+normalize+unique+id` -->
