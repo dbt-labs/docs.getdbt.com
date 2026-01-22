@@ -103,7 +103,7 @@ While all environment variables are encrypted at rest in <Constant name="cloud" 
 
 ### Special environment variables
 
-<Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed. Consequently, the order of precedence to override environment variables will not apply to the following pre-defined variables.
+<Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed. This means that the order of precedence for overriding environment variables don't apply to these pre-defined variables at the project, environment, or job level.
 
 #### Studio IDE details
 
