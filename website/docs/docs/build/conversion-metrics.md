@@ -391,7 +391,7 @@ metrics:
   - name: visit_to_buy_conversion_rate_7_day_window
     description: "Conversion rate from viewing a page to making a purchase"
     type: conversion
-    label: Visit to user conversion rate (7 day window)
+    label: Visit to buy conversion rate (7 day window)
     entity: user
     calculation: conversions
     base_metric: visits

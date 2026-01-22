@@ -15,20 +15,22 @@ With the new spec, you get simpler configuration without losing flexibility, fas
 
 This section highlights the key updates in the latest metrics spec in Fusion and compares them to the legacy spec.
 
-- [Semantic models](#semantic-models) &mdash; `semantic_model` is nested directly under each model in `models:` instead of being a top-level key.
-- [Entities and dimensions](#entities-and-dimensions) &mdash; Entities and dimensions are defined under columns.
-- [Time dimension](#time-dimension) &mdash; Set `agg_time_dimension` at the model level as the default time dimension for all metrics, with the option to override per metric. `time_granularity` is deprecated in Fusion. Define `granularity` at the column level.
-- [Simple metrics](#simple-metrics) &mdash; Measures are deprecated in Fusion. Use `type: simple` metrics defined directly within the model instead.
-- [Advanced metrics](#advanced-metrics) &mdash; Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
-- [`type_params`](#type_params) &mdash; The `type_params` key is deprecated in Fusion.
+- [Semantic models](#semantic-models): These define the business logic for your metrics by specifying entities, dimensions, and how they relate to your data models. In the new spec, `semantic_model` is nested directly under each model in `models:` instead of being a top-level key.
+- [Entities and dimensions](#entities-and-dimensions): Entities are the people, places, or things you want to group or join your metrics by (like `user_id` or `order_id`), while dimensions are the attributes you use to filter or slice your data (like `status` or `region`). In the new spec, both are defined directly under `columns:`.
+- [Time dimension](#time-dimension): Time dimensions are the date or timestamp columns that let you analyze metrics over time (like `order_date` or `created_at`). In the new spec, set `agg_time_dimension` at the model level as the default time dimension for all metrics, with the option to override per metric. Define `granularity` at the column level instead of using the deprecated `time_granularity`.
+- [Simple metrics](#simple-metrics): Metrics that directly reference a single column expression within a semantic model, without any additional columns involved. Simple metrics replace measures in the new spec. Use `type: simple` metrics defined directly within the model to replace measures.
+- [Advanced metrics](#advanced-metrics): These are metrics that combine or build upon other metrics, such as ratios, conversions, or derived calculations. In the new spec, define simple metrics inside the model, and create cross‑model metrics under a top‑level `metrics` block. Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
+- [`type_params`](#type_params): This is a wrapper key in the legacy spec that contains metric-specific configurations (for example, `expr`, `join_to_timespine`). `type_params` is deprecated in the new spec and these parameters are promoted to top-level keys within each metric definition.
 
 ### Semantic models
 
 The `semantic_model` key is embedded under `models`.
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 models:
@@ -37,10 +39,11 @@ models:
       enabled: true # required
       name: fct_orders_semantic_model # optional override; defaults to value of model.name
 ```
+</div>
 
-</TabItem>
+<div>
 
-<TabItem value="old" label="Legacy spec">
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 semantic_models:
@@ -48,17 +51,19 @@ semantic_models:
      model: ref('orders')
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
+</div>
 
 ### Entities and dimensions
 
 Entities and dimensions are defined directly under columns, creating a 1:1 relationship between the physical columns and their semantic definitions.
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 models:
@@ -89,9 +94,11 @@ models:
           type: categorical
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 semantic_models:
@@ -114,18 +121,21 @@ semantic_models:
         expr: order_status
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
+</div>
+
 
 ### Time dimension
 
 - `agg_time_dimension`: Set once at the model level as the default time dimension for all metrics in that semantic model. You can still override it per metric with `agg_time_dimension`.
 - `time granularity`: Deprecated in Fusion. Define the native grain on the time dimension column with `granularity` (for example, `hour`, `day`).
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 models:
@@ -160,9 +170,11 @@ models:
         agg_time_dimension: created_at # override to use created_at as the time dimension
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 semantic_models:
@@ -193,18 +205,19 @@ metrics:
       measure: active_subscriptions
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
-
+</div>
 
 ### Simple metrics
 
 Measures are deprecated in Fusion and are replaced with simple metrics.
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 models:
@@ -228,9 +241,11 @@ models:
         expr: amount_pretax
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 semantic_models:
@@ -256,17 +271,20 @@ metrics:
       measure: lifetime_spend_pretax
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
+</div>
+
 
 ### Advanced metrics
 
 Define simple metrics inside the model, and create cross‑model metrics under a top‑level `metrics` block. Top-level key is required for any metric that depends on metrics or dimensions defined in a different semantic model.
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 # define simple metrics where the data lives
@@ -298,9 +316,11 @@ metrics:
     denominator: sessions
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 semantic_models:
@@ -323,9 +343,9 @@ metrics:
       denominator: { measure: sessions }
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
+</div>
 
 ### `type_params`
 
@@ -338,9 +358,11 @@ The `type_params` key is deprecated. The following are direct keys on the metric
 - `join_to_timespine`
 - `fill_nulls_with`
 
-<Tabs>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
-<TabItem value="new" label="New spec">
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yml
 models:
@@ -356,9 +378,11 @@ models:
         percentile_type: discrete
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yml
 metrics:
@@ -370,14 +394,17 @@ metrics:
       percentile_type: discrete
 ```
 
-</TabItem>
+</div>
 
-</Tabs>
+</div>
 
 For [derived metrics](/docs/build/derived), `type_params.metrics` is renamed `input_metrics`.
-<Tabs>
 
-<TabItem value="new" label="New spec">
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
+
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yaml
 metrics:
@@ -394,9 +421,11 @@ metrics:
         alias: bookings_7_days_ago
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yaml
 - name: d7_booking_change
@@ -413,13 +442,17 @@ metrics:
         alias: bookings_7_days_ago
 ```
 
-</TabItem>
-</Tabs>
+</div>
+
+</div>
 
 For [ratio metrics](/docs/build/ratio), `numerator` and `denominator` are now direct keys on the metric.
 
-<Tabs>
-<TabItem value="new" label="New spec">
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
+
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yaml
 metrics:
@@ -429,9 +462,11 @@ metrics:
     denominator: sessions
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yaml
 metrics:
@@ -442,15 +477,19 @@ metrics:
       denominator: sessions
 ```
 
-</TabItem>
-</Tabs>
+</div>
+
+</div>
 
 For [cumulative metrics](/docs/build/cumulative):
 - `type_params.measure` is renamed `input_metric` and must reference a metric.
 - `type_params.cumulative_type_params` values are direct keys on the metric: `window`, `grain_to_date`, and `period_agg`.
 
-<Tabs>
-<TabItem value="new" label="New spec">
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
+
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yaml
 metrics:
@@ -462,9 +501,11 @@ metrics:
     period_agg: sum
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yaml
 metrics:
@@ -478,8 +519,9 @@ metrics:
         period_agg: sum
 ```
 
-</TabItem>
-</Tabs>
+</div>
+
+</div>
 
 For [conversion metrics](/docs/build/conversion), the following `type_params.conversion_type_params` values are direct keys on the metric: 
 - `entity`
@@ -488,8 +530,11 @@ For [conversion metrics](/docs/build/conversion), the following `type_params.con
 - `conversion_metric` (previously `conversion_measure`)
 - `constant_properties`
 
-<Tabs>
-<TabItem value="new" label="New spec">
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
+
+<div>
+
+<h4 style={{marginTop: 0}}>New spec</h4>
 
 ```yaml
 metrics:
@@ -500,12 +545,15 @@ metrics:
     base_metric: signups
     conversion_metric: paid_signups
     constant_properties:
-      plan: pro
+      - base_property: plan
+        conversion_property: plan
 ```
 
-</TabItem>
+</div>
 
-<TabItem value="old" label="Legacy spec">
+<div>
+
+<h4 style={{marginTop: 0}}>Legacy spec</h4>
 
 ```yaml
 metrics:
@@ -521,9 +569,9 @@ metrics:
           plan: pro
 ```
 
-</TabItem>
-</Tabs>
+</div>
 
+</div>
 
 ## Migrating to the latest spec
 

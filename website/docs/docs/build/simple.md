@@ -45,7 +45,7 @@ The parameters, description, and type for simple metrics are:
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
-| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`, `count`, `count_distinct`,  `percentile`, and `sum_boolean` (use existing enum from DSI)| Required | String |
+| `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`, `count`, `count_distinct`,  `percentile`, and `sum_boolean`.| Required | String |
 | `expr` | The expression to use, like a column name. Defaults to the metric name. | Optional | String |
 | `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
 | `percentile_type` | The percentile type to use. Use `discrete` or `continuous`. Required for `percentile` metrics. | Optional | String |
@@ -94,7 +94,7 @@ models:
         description: The metric description # Optional
         label: My simple metric label # Optional
         type: simple  # Required
-        agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean (use existing enum from DSI)
+        agg: count_distinct # Required sum | max | min | average | median | count_distinct | percentile, and sum_boolean
         expr: case when is_a then 1 else 0 end # Optional for simple metric, defaults to name of metric
         join_to_timespine: true
         fill_nulls_with: 0
@@ -135,6 +135,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
           join_to_timespine: true
           alias: customer_count
           filter: {{ Dimension('customer__customer_total') }} >= 20
+
     - name: large_orders
       description: "Order with order values over 20."
       type: simple
@@ -151,25 +152,22 @@ If you've already defined the measure using the `create_metric: true` parameter,
 <VersionBlock firstVersion="2.0">
 
 ```yaml
-metrics:
-  - name: customers
-    description: Count of customers
-    type: simple
-    label: Count of customers
-    agg: count
-    expr: customers 
-    fill_nulls_with: 0
-    join_to_timespine: true
-    alias: customer_count
-    filter: "{{ Dimension('customer__customer_total') }} >= 20"
-
-  - name: large_orders
-    description: "Order with order values over 20."
-    type: simple
-    label: Large orders
-    agg: count
-    expr: orders 
-    filter: "{{ Dimension('customer__order_total_dim') }} >= 20"
+  metrics: 
+    - name: customers
+      description: Count of customers
+      type: simple
+      label: Count of customers
+      agg: count     
+      expr: case when customer_total >= 20 then customers end  # filter logic in expr
+      fill_nulls_with: 0 
+      join_to_timespine: true
+      
+    - name: large_orders
+      description: "Order with order values over 20."
+      type: simple
+      label: Large orders
+      agg: count
+      expr: case when order_total_dim >= 20 then orders end
 ```
 
 </VersionBlock>
