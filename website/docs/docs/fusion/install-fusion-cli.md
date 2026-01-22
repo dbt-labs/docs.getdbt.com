@@ -36,9 +36,9 @@ The Fusion install automatically includes adapters outlined in the [Fusion requi
 
 ## Environment variables
 
-<Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory. This provides a convenient way to manage credentials and configuration without hardcoding them in your `profiles.yml` or exposing them in your shell history.
+<Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.
 
-### Using .env files
+### Using `.env` files
 
 1. Create a `.env` file in your current working directory (typically at the root of your dbt project):
    ```env
@@ -59,7 +59,21 @@ The Fusion install automatically includes adapters outlined in the [Fusion requi
          schema: "{{ env_var('DBT_MY_SCHEMA') }}"
    ```
 
-3. Try running your dbt commands normally, <Constant name="fusion"/> will automatically load the variables from the `.env` file.
+3. Run dbt commands normally. <Constant name="fusion"/> will automatically load the variables from the `.env` file. For example, running `dbtf debug` will show your connection using the values from `.env`:
+   ```shell
+   dbtf debug
+   ...
+   Debugging connection:
+   "authenticator": "my_authenticator",
+   "account": "my_account",
+   "user": "my_user",
+   "database": "my_database",        # Loaded from DBT_MY_DATABASE in .env
+   "schema": "my_schema",            # Loaded from DBT_MY_SCHEMA in .env
+   ```
+
+:::note
+The `.env` file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable and doesn't walk up to find your dbt project root. For best results, keep your `.env` file in your project root and run commands from there.
+:::
 
 ### Precedence order
 
@@ -71,11 +85,16 @@ When the same environment variable is defined in multiple places, <Constant name
 This means shell environment variables always override values from the `.env` file.
 
 :::tip
-Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbt init` command automatically includes `.env` in the generated `.gitignore` file.
+Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
 :::
 
-For more details on managing environment variables across different development environments, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).
+For more details on managing environment variables locally, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).
 
+## profiles.yml location
+
+<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
+
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/fusion/connect-data-platform-fusion/profiles.yml#location-of-profilesyml).
 
 ## Troubleshooting
 
