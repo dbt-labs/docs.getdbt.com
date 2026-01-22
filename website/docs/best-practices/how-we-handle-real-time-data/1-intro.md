@@ -5,9 +5,9 @@ description: Learn how to achieve near real-time data freshness with dbt through
 hoverSnippet: Learn how to achieve near real-time data freshness with dbt
 ---
 
-By design, dbt is batch-oriented with jobs having a defined start and end time (like a scheduled report that runs at set intervals); it doesn't keep long-running streaming processes alive. You can also use dbt to get near real-time data by combining your data warehouse's continuous ingestion with frequent dbt transformations.
+By design, dbt is batch-oriented with jobs having a defined start and end time. But did you know that you can also use dbt to get near real-time data by combining your data warehouse's continuous ingestion with frequent dbt transformations?
 
-This is primarily for data engineers and architects who are looking to achieve near real-time data freshness with dbt. This guide covers multiple patterns for achieving near real-time data freshness with dbt:
+No worries, this guide covers multiple patterns for achieving near real-time data freshness with dbt:
 
 1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) - MERGE strategies, CDC, and microbatch processing
 2. [Warehouse-native features](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features) - When to use dynamic tables and materialized views
@@ -18,6 +18,8 @@ This is primarily for data engineers and architects who are looking to achieve n
 
 Each pattern includes practical code examples, use cases, and tradeoffs to help you choose the right approach.
 
+Anyone can check out this guide, but it's primarily for data engineers and architects who are looking to achieve near real-time data freshness with dbt.
+
 ## Where does dbt fit?
 
 There are two main ways to use dbt to get near real-time data:
@@ -25,17 +27,16 @@ There are two main ways to use dbt to get near real-time data:
 - For near real-time (1-15 minutes) &mdash; dbt excels at this and is well-suited for most operational dashboards.
 - For true real-time (sub-second) &mdash; Requires dedicated streaming databases (ClickHouse, Materialize, Rockset, and so on) in front of or alongside dbt; dbt still owns “analytic” tables and history but not the ultra‑low‑latency read path.
 
-
 ## How dbt achieves near real-time data
 To achieve real-time data with dbt, we recommend using a two-layer architecture:
 
-**Ingestion layer**
+#### Ingestion layer
 
 Continuous data landing using your data warehouse's streaming ingestion features. 
    
 Streaming ingestion features like [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), [Snowpipe](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview), or [Storage Write API](https://docs.cloud.google.com/bigquery/docs/write-api-streaming) are a great way to do this. To check streaming ingestion features for your warehouse, check the [additional resources](#additional-resources) section.
 
-**dbt transformation layer**
+#### dbt transformation layer
 
 Run dbt transformations every few minutes to transform that data, and you can use materialized views or dynamic tables for the lowest-latency reporting.
 
