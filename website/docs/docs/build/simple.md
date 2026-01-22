@@ -152,22 +152,25 @@ If you've already defined the measure using the `create_metric: true` parameter,
 <VersionBlock firstVersion="2.0">
 
 ```yaml
-  metrics: 
-    - name: customers
-      description: Count of customers
-      type: simple
-      label: Count of customers
-      agg: count     
-      expr: case when customer_total >= 20 then customers end  # filter logic in expr
-      fill_nulls_with: 0 
-      join_to_timespine: true
-      
-    - name: large_orders
-      description: "Order with order values over 20."
-      type: simple
-      label: Large orders
-      agg: count
-      expr: case when order_total_dim >= 20 then orders end
+metrics:
+  - name: customers
+    description: Count of customers
+    type: simple
+    label: Count of customers
+    agg: count
+    expr: customers 
+    fill_nulls_with: 0
+    join_to_timespine: true
+    alias: customer_count
+    filter: "{{ Dimension('customer__customer_total') }} >= 20"
+
+  - name: large_orders
+    description: "Order with order values over 20."
+    type: simple
+    label: Large orders
+    agg: count
+    expr: orders 
+    filter: "{{ Dimension('customer__order_total_dim') }} >= 20"
 ```
 
 </VersionBlock>
