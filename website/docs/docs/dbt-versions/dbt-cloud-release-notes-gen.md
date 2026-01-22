@@ -51,7 +51,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **AI-assisted workflows**
   - **dbt Copilot documentation generation adds missing column descriptions more accurately**: Copilot generated documentation now correctly detects column names across various `schema.yml` layouts, adds only missing descriptions, and preserves existing ones. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+schema.yml+column+description+missing` -->
-  - **BYOK (OpenAI/Azure OpenAI) misconfiguration errors are handled more cleanly**: Improved error handling for common configuration issues, including clearer messages for Azure OpenAI "deployment not found" errors. <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/pulls?q=is%3Apr+Azure+OpenAI+%22deployment+not+found%22+BYOK` -->
 
 - **Catalog & lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views. <!-- PRs: `https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+auto+exposure+normalize+unique+id` -->
