@@ -473,6 +473,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/metrics-spec-fusion",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -1533,7 +1534,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [

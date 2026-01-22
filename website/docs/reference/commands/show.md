@@ -25,6 +25,10 @@ If previewing a model, dbt will always compile and run the compiled query from s
 - The results of the preview query are only included in dbt's logs and displayed in the terminal and aren't materialized in the data warehouse or stored in any dbt file, except if you use `dbt show --inline`.
 - The `--inline` flags enables you to run ad-hoc SQL, which means dbt can't ensure the query doesn't modify the data warehouse. To ensure no changes are made, use a profile or role with read-only permissions, which are managed directly in your data warehouse. For example: `dbt show --inline "select * from my_table" --profile my-read-only-profile`.
 
+### `--output json` flag
+- The `--output json` flag returns `dbt show` results in JSON format instead of the default human-readable output, which is helpful for scripting and automation.
+- If you want the full terminal output (including logs) to be machine-readable JSON, you can also set `--log-format json`.
+
 ## Example
 
 ```
@@ -83,4 +87,28 @@ $ dbt show -s "unique_my_model_with_duplicates_id"
 | ------------ | --------- |
 |            1 |         2 |
 
+```
+```sh
+dbt show --inline "select 1" --output json --log-format json
+```
+Gives you a result like this:
+
+```json
+{
+  "data": {
+    "is_inline": true,
+    "node_name": "inline_query",
+    "output_format": "json",
+    "preview": "[{\"ID\": 1}]",
+    "quiet": false,
+    "unique_id": "sql_operation.jaffle_shop.inline_query"
+  },
+  "info": {
+    "code": "Q041",
+    "level": "info",
+    "msg": "{\n  \"show\": [\n    {\n      \"ID\": 1\n    }\n  ]\n}\n",
+    "name": "ShowNode",
+    "thread": "MainThread"
+  }
+}
 ```

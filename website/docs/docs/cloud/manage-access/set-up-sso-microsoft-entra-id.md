@@ -132,7 +132,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
 ### Supplying credentials
 
 25. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
-26. Click **Single sign-on** from the menu.
+26. Click **SSO & SCIM** from the menu.
 27. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
