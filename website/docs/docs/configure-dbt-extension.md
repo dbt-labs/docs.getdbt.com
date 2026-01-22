@@ -140,7 +140,7 @@ The [<Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli) and the dbt
 <Expandable alt_header="More information about the .env file">
 
 - The `.env` file provides a convenient way to set environment variables that work across both the CLI and the extension.
-- The `.env` file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable and doesn't walk up to find your dbt project root. For best results, keep your `.env` file in your project root and run commands from there.
+- We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
 - Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control.
 - Order of precedence: Environment variables set directly in your shell (such as `export DBT_ENV_VAR=value`) take precedence over values defined in the `.env` file.
 
