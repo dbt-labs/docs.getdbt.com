@@ -41,7 +41,7 @@ The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_p
 Validate that all user-defined functions (UDFs) you use are supported. If a function isn't supported (results in a deprecation warning `dbt0209: No function <function name>`):
 
 - [ ] **Custom UDF:** Create it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) for the full <Constant name="fusion" /> experience, including `static_analysis: on`.
-- [ ] **Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). You can continue with `static_analysis: off` when on <Constant name="fusion" /> as an interim solution. 
+- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). As a workaround, you can set `static_analysis: off` when running on <Constant name="fusion" />. 
 
 ### Check for known Fusion limitations
 
