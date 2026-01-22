@@ -151,25 +151,26 @@ If you've already defined the measure using the `create_metric: true` parameter,
 <VersionBlock firstVersion="2.0">
 
 ```yaml
-metrics:
-  - name: customers
-    description: Count of customers
-    type: simple
-    label: Count of customers
-    agg: count
-    expr: customers 
-    fill_nulls_with: 0
-    join_to_timespine: true
-    alias: customer_count
-    filter: "{{ Dimension('customer__customer_total') }} >= 20"
+  metrics:
+    - name: customers
+      description: Count of customers
+      type: simple
+      label: Count of customers
+      agg: count
+      expr: customers 
+      fill_nulls_with: 0
+      join_to_timespine: true
+      filter: "{{ Dimension('customer__customer_total') }} >= 20"
+      # alias is not supported on simple metrics 
+      # use alias in input_metrics when referencing this metric in derived, ratio, or conversion metrics
 
-  - name: large_orders
-    description: "Order with order values over 20."
-    type: simple
-    label: Large orders
-    agg: count
-    expr: orders 
-    filter: "{{ Dimension('customer__order_total_dim') }} >= 20"
+    - name: large_orders
+      description: "Order with order values over 20."
+      type: simple
+      label: Large orders
+      agg: count
+      expr: orders 
+      filter: "{{ Dimension('customer__order_total_dim') }} >= 20"
 ```
 
 </VersionBlock>
