@@ -73,7 +73,7 @@ The Fusion install automatically includes adapters outlined in the [Fusion requi
    ```
 
 :::note
-The `.env` file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable and doesn't walk up to find your dbt project root. For best results, keep your `.env` file in your project root and run commands from there.
+We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
 :::
 
 ### Precedence order
