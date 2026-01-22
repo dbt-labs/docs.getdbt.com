@@ -62,9 +62,6 @@ Release notes are grouped by date for single-tenant environments.
   - **More stable command history syncing**: Improved handling when multiple commands sync simultaneously, reducing potential conflicts. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+concurrent+sync+command+record+race` -->
   - **Improved IDE editor connection stability**: Better connection management reduces disconnection and error scenarios in the IDE. <!-- PRs: `https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+LSP+websocket+cancellation+stability` -->
 
-- **Semantic Layer / MetricFlow**
-  - **UTF-8 support for semantic manifest overrides**: Semantic Layer manifests now properly handle non-ASCII characters, preventing failures when using international characters. <!-- PRs: `https://github.com/dbt-labs/metricflow-server/pulls?q=is%3Apr+UTF-8+ASCII+semantic+manifest+override+checksum` -->
-
 - **APIs**
   - **Jobs API deferral validation is stricter and clearer**: Job deferral settings are now validated to ensure the deferring job and environment exist within the same account, with improved error messages. <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+Jobs+API+deferral+same+account+error+message` -->
 
