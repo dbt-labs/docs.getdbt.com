@@ -167,7 +167,7 @@ To map the attributes that will sync with dbt:
 10. Make sure the following mappings are in place and delete any others:
     - **UserName:** `userPrincipalName` or the value you want users to leverage to log in to dbt. 
     - **active:** `Switch([IsSoftDeleted], , "False", "True", "True", "False")`
-    - **emails[type eq "work"].value:** `userPrincipalName` or the same value set for **UserName**. 
+    - **emails[type eq "work"].value:** `userPrincipalName` is the most common, but this value needs to be the same set for **UserName**. 
     - **name.givenName:** `givenName`
     - **name.familyName:** `surname`
     - **externalid:** `mailNickname`
