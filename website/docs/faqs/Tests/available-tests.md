@@ -9,7 +9,7 @@ Out of the box, dbt ships with the following data tests:
 * `unique`
 * `not_null`
 * `accepted_values`
-* `relationships` (i.e. referential integrity)
+* `relationships` (for example, referential integrity)
 
 You can also write your own [custom generic tests](/docs/build/data-tests#generic-data-tests).
 
