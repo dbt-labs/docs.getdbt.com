@@ -21,12 +21,20 @@ There are two reasons why `semantic_manifest.json` exists alongside `manifest.js
 - Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. By trimming down the information printed into `semantic_manifest.json`, the process becomes more efficient and enables faster data handling between `dbt-core` and MetricFlow.
 
 ## Top-level keys
-
+<VersionBlock firstVersion="2.0">
+Top-level keys for the semantic manifest are:
+-  `semantic_models` &mdash; Starting points of data with entities and dimensions, and correspond to models in your dbt project. 
+-  `metrics` &mdash; Functions combining entities, dimensions, and so on to define quantitative indicators.
+- `project_configuration` &mdash; Contains information around your project configurations
+- `saved_queries` &mdash; Saves commonly used queries in MetricFlow
+</VersionBlock>
+<VersionBlock lastVersion="1.9">
 Top-level keys for the semantic manifest are:
 -  `semantic_models` &mdash; Starting points of data with entities, dimensions, and measures, and correspond to models in your dbt project. 
 -  `metrics` &mdash; Functions combining measures, constraints, and so on to define quantitative indicators.
 - `project_configuration` &mdash; Contains information around your project configurations
 - `saved_queries` &mdash; Saves commonly used queries in MetricFlow
+</VersionBlock>
 
 ### Example
 

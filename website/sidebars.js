@@ -473,6 +473,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/metrics-spec-fusion",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -804,12 +805,23 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI',
+      value: 'dbt AI and intelligence',
       className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Agents",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+      items: [
+        "docs/dbt-ai/dbt-agents",
+        "docs/dbt-ai/analyst-agent",
+      ],
     },
     {
       type: "category",
-      label: "Copilot",
+      label: "dbt Copilot",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/dbt-copilot" },
       items: [
