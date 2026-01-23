@@ -8,20 +8,12 @@ description: "Learn how to enable and use global navigation to search, explore, 
 
 # Global navigation <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
 
-<IntroText>Learn how to enable and use global navigation in <Constant name="explorer" /> to search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
+<IntroText>Search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
 
 
 For enterprise plans, <Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account, and the option to discover external metadata. For Starter plans (single project), you’ll still benefit from the new navigation and search experience within your project.
 
 <LoomVideo id="ae93b3d241cd439fbe5f98f5e6872113" />
-
-## Prerequisites
-
-To enable global navigation:
-
-- Have a [developer license with Owner](/docs/cloud/manage-access/about-user-access#role-based-access-control) permissions.
-- Navigate to your [account settings](/docs/cloud/account-settings) in your <Constant name="cloud" /> account and check the box to **Enable dbt Catalog’s (formerly dbt Explorer) New Navigation**.
-
 
 ## About Global navigation
 
