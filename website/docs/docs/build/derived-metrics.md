@@ -228,7 +228,7 @@ models:
         label: customer_retention
         type: derived
         expr: current_active_customers / active_customers_prev_month
-        metric_aliases:
+        input_metrics:
           - name: active_customers
             alias: current_active_customers
           - name: active_customers

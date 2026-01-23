@@ -388,16 +388,27 @@ To return zero in the final data set, you can set the value of a null conversion
 
 ```yaml
 metrics:
+  - name: visits
+    type: simple
+    agg: count
+    expr: visit_id
+    fill_nulls_with: 0 # set null conversion values to zero in a simple metric
+      
+  - name: buys
+    type: simple
+    agg: count
+    expr: purchase_id
+    fill_nulls_with: 0
+      
   - name: visit_to_buy_conversion_rate_7_day_window
     description: "Conversion rate from viewing a page to making a purchase"
     type: conversion
-    label: Visit to user conversion rate (7 day window)
+    label: Visit to buy conversion rate (7 day window)
     entity: user
     calculation: conversions
     base_metric: visits
     conversion_metric: buys
     window: 7 days
-    fill_nulls_with: 0  # Set null conversion values to zero
 ```
 </VersionBlock>
 
