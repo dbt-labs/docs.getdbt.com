@@ -97,7 +97,7 @@ The following are currently known limitations of the dbt extension:
 
 The extension may occasionally conflict with other VS Code extensions that provide similar services (such as code validation). You may need to disable these third-party extensions while working with the dbt extension.
 
-#### YAML by Red Hat
+**YAML by Red Hat:**
 
 The YAML extension by Red Hat may erroneously flag some keys (such as `static_analysis`) in dbt YAML files as invalid in the IDE.
 
