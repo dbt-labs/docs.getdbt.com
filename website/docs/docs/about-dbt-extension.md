@@ -99,7 +99,7 @@ The extension may occasionally conflict with other VS Code extensions that provi
 
 #### YAML by Red Hat
 
-The YAML extension by Red Hat may cause some keys (such as `static_analysis`) in dbt YAML files to be erroneously flagged as invalid in the IDE. 
+The YAML extension by Red Hat may erroneously flag some keys (such as `static_analysis`) in dbt YAML files as invalid in the IDE.
 
 <Lightbox src="/img/docs/extension/false-yaml-error.png" width="60%" title="Static analysis erroneously tagged as invalid"/>
 
