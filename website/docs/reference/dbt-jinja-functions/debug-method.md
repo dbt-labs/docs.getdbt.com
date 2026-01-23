@@ -12,7 +12,7 @@ The `debug()` macro is only available when using <Constant name="core" /> CLI in
 
 Do not deploy code to production that uses the `debug` macro.
 
-If developing in <Constant name="dbt_platform"/>, you can also use:
+If developing in <Constant name="dbt_platform"/> or using <Constant name="fusion"/>, you can instead use:
 - [`{{ print() }}`](/reference/dbt-jinja-functions/print) - Print messages to both the log file and standard output (`stdout`).
 - [`{{ log() }}`](/reference/dbt-jinja-functions/log) - Structured logging that prints messages during Jinja rendering.
 
