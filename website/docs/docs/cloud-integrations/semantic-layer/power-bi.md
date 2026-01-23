@@ -24,17 +24,28 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Install the connector
 
+:::important power bi versions
+
+The Power BI connector may be incompatible with older versions of Power BI desktop. For the best results, we recommend installing the most recent version directly from the [Microsoft Store](https://apps.microsoft.com/detail/9ntxr16hnw1t?hl=en-US&gl=US) or [Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=58494).
+
+:::
+
 The <Constant name="semantic_layer" /> Power BI connector consists of a custom `.pqx` Power BI connector and an ODBC driver. Install both using our Windows installer by following these steps:
 
-#### 1. Download and install the [`.msi` installer](https://github.com/dbt-labs/semantic-layer-powerbi-connector/releases/download/v1.0.0/dbt.Semantic.Layer.for.Power.BI.zip)
-   - Run the installer and follow the on-screen instructions.
-   - This will install the ODBC driver and the connector onto your Power BI Desktop.
+1. Download and install the [`.msi` installer](https://github.com/dbt-labs/semantic-layer-powerbi-connector/releases/download/v1.0.0/dbt.Semantic.Layer.for.Power.BI.zip)
 
-#### 2. Verify installation
-   - Open **ODBC Data Sources (64-bit)** file on your computer.
-   - Navigate to **System DSN** and verify that the `dbt Labs ODBC DSN` is registered. 
-   - Navigate to **Drivers** and verify that the `dbt Labs ODBC Driver` is installed.
-   - Open Power BI Desktop, navigate to **Settings**, then **Data Source Settings**. Verify that the `dbt Semantic Layer` connector is properly loaded.
+2. Run the installer and follow the on-screen instructions to install the ODBC driver and connector onto your Power BI Desktop.
+
+### Verify installation
+
+Note that users on older versions of Power BI may have to [configure the connector](#configure-the-connector) before they can verify the installation. 
+
+To verify the installation:
+
+1. Open **ODBC Data Sources (64-bit)** file on your computer.
+2. Navigate to **System DSN** and verify that the `dbt Labs ODBC DSN` is registered. 
+3. Navigate to **Drivers** and verify that the `dbt Labs ODBC Driver` is installed.
+4. Open Power BI Desktop, navigate to **Settings**, then **Data Source Settings**. Verify that the `dbt Semantic Layer` connector is properly loaded.
 
 To allow published reports in Power BI Service to use the connector. An IT admin in your organization needs to install and configure the connector on an On-premises Data Gateway.
 
@@ -42,25 +53,22 @@ To allow published reports in Power BI Service to use the connector. An IT admin
 
 This section is for IT admins trying to install the ODBC driver and connector into an On-premises Data Gateway.
 
-To allow published reports to use the connector in Power BI Service, an IT Admin must install and configure the connector.
+To allow published reports to use the connector in Power BI Service, an IT Admin must install and configure the connector:
 
-#### 1. Install the ODBC driver and connector into an On-premises Data Gateway
-   - Run the same `.msi` installer used for Power BI Desktop.
-   - Install it on the machine where your gateway is hosted.
-
-#### 2. Copy connector file to Gateway directory
-   - Locate that `.pqx` file: `C:\Users\<YourUser>\Documents\Power BI Desktop\Custom Connectors\dbtSemanticLayer.pqx`.
-   - Copy it to the Power BI On-premises Data Gateway custom connectors directory: `C:\Windows\ServiceProfiles\PBIEgwService\Documents\Power BI Desktop\Custom Connectors`.
-#### 3. Verify installation
-   - Following verification steps from the [install the connector](#3-verify-installation) section.
-#### 4. Enable connector in Power BI Enterprise Gateway
-   - Open the `EnterpriseGatewayConfigurator.exe`.
-   - Navigate to **Connectors**. 
-   - Verify that the `dbt Semantic Layer` connector is installed and active.
+1. Install the ODBC driver and connector into an On-premises Data Gateway. Run the same `.msi` installer used for Power BI Desktop and install it on the machine where your gateway is hosted.
+2. Copy connector file to Gateway directory:
+   1. Locate that `.pqx` file: `C:\Users\<YourUser>\Documents\Power BI Desktop\Custom Connectors\dbtSemanticLayer.pqx`.
+   2. Copy it to the Power BI On-premises Data Gateway custom connectors directory: `C:\Windows\ServiceProfiles\PBIEgwService\Documents\Power BI Desktop\Custom Connectors`.
+3. Verify installation by following the steps from the [install the connector](#verify-installation) section.
+4. Enable connector in Power BI Enterprise Gateway:
+   1. Open the `EnterpriseGatewayConfigurator.exe`.
+   2. Navigate to **Connectors**. 
+   3. Verify that the `dbt Semantic Layer` connector is installed and active.
 
 For more information on how to set up custom connectors in the Power BI On-premises Data Gateway, refer to Power BI’s [official documentation](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
 
 ## Configure the connector
+
 After installing the connector, you’ll have to configure your project credentials to connect to the <Constant name="semantic_layer" /> from a report.
 
 To configure project credentials in Power BI Desktop:
@@ -130,8 +138,7 @@ This allows for very flexible analytics workflows, like drag and drop metrics an
 
 - Use `DirectQuery` mode to ensure compatibility.
 - `Import` mode tries to select an entire table to import into Power BI, which means it'll likely generate SQL that translates to an invalid Semantic Layer query which will try to query all metrics, dimensions and entities at the same time.
-- To import data into a PowerBI report:
-   - Select a valid combination of columns to import, (something that will generate a valid Semantic Layer query)
+- To import data into a PowerBI report, select a valid combination of columns to import, (something that will generate a valid Semantic Layer query).
    - You can use `Table.SelectColumns` for this: `= Table.SelectColumns(Source{[Item="ALL",Schema="METRICS",Catalog=null]}[Data], {"Total Profit", "Metric Time (Day)"})`
    - Be aware that all calculations will happen inside of Power BI and won’t pass through Semantic Layer servers. This could lead to incorrect or diverging results.
    - For example, the Semantic Layer is usually responsible for rolling up cumulative metrics to coarser time granularities. Doing a sum over all the weeks in a year to get a yearly granularity out of a weekly Semantic Layer query will most likely generate incorrect results. Instead, you should query the Semantic Layer directly to get accurate results.
