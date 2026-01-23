@@ -102,7 +102,7 @@ from deduped;
 :::info Snowflake-specific pattern
 This pattern uses [Snowflake Streams](https://docs.snowflake.com/en/user-guide/streams-intro), a Snowflake-specific feature. Other warehouses have similar change data capture (CDC) capabilities with different implementations.
  
-Refer to the [additional resources](/best-practices/how-we-handle-real-time-data/7-conclusion#additional-resources) section for adapter-specific documentation.
+Refer to the [additional resources](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features#resources-by-warehouse) section for adapter-specific documentation.
 :::
 
 This pattern leverages Snowflake's native CDC capabilities through Streams, which track changes (inserts, updates, deletes) to source tables.

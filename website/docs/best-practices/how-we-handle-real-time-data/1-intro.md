@@ -9,12 +9,11 @@ By design, dbt is batch-oriented with jobs having a defined start and end time. 
 
 No worries, this guide covers multiple patterns for achieving near real-time data freshness with dbt:
 
-1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) - MERGE strategies, CDC, and microbatch processing
+1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) - `merge` strategies, CDC, and microbatch processing
 2. [Warehouse-native features](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features) - When to use dynamic tables and materialized views
 3. [Lambda views pattern](/best-practices/how-we-handle-real-time-data/4-lambda-views) - Combining batch and real-time data in a single view
 4. [Views-only pattern](/best-practices/how-we-handle-real-time-data/5-views-only-pattern) - Maximum freshness for lightweight transformations
 5. [Operational considerations](/best-practices/how-we-handle-real-time-data/6-operational-considerations) - Challenges, risks, and cost management
-6. [Choosing the right pattern](/best-practices/how-we-handle-real-time-data/7-conclusion) - Decision framework and additional resources
 
 Each pattern includes practical code examples, use cases, and tradeoffs to help you choose the right approach.
 
