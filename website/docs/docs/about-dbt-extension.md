@@ -93,9 +93,9 @@ The following are currently known limitations of the dbt extension:
 
 - **Using Cursor's Agent mode:** When using the dbt extension in Cursor, lineage visualization works best in Editor mode and doesn't render in Agent mode. If you're working in Agent mode and need to view lineage, switch to Editor mode to access the full lineage tab functionality.
 
-### Known conflicts with other extensions
+### Extension conflicts
 
-The extension may occasionally conflict with other VS Code extensions that provide similar services (such as code validation). You may need to disable these third-party extensions while working with the dbt extension. The following are known conflicts:
+The extension may occasionally conflict with other VS Code extensions that provide similar services (such as code validation). You may need to disable these third-party extensions while working with the dbt extension.
 
 #### YAML by Red Hat
 
