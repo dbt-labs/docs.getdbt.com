@@ -175,7 +175,7 @@ from filtered;
 
 ### Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details.
+For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet, [see the incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
 
 #### When to use microbatch
 
@@ -231,7 +231,7 @@ Here's a table to help you choose the right pattern:
 
 | Pattern | Best for | Key benefit |
 | ------- | -------- | ----------- |
-| MERGE from append-only | Most standard use cases | Simple, widely understood |
+| `merge` from append-only | Most standard use cases | Simple, widely understood |
 | CDC with Streams | Tables with frequent updates | Efficient change capture |
 | Microbatch | Massive time-series tables | Safe backfills, late-data handling |
 
