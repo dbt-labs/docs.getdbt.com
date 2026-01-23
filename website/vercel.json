@@ -40,7 +40,7 @@
   "redirects": [
     {
       "source": "/docs/build/metrics-spec-fusion",
-      "destination": "/docs/build/new-metrics-spec",
+      "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
     },
     {
