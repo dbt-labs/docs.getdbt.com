@@ -61,3 +61,8 @@
   subheader: Join our virtual event on Dec 16/17 to deliver reliable AI with the dbt Semantic Layer and dbt MCP Server
   button_text: Save your seat
   url: https://www.getdbt.com/resources/webinars/delivering-reliable-ai-with-the-dbt-semantic-layer-and-dbt-mcp-server
+- name: state_of_analytics_engineering_survey
+  header: State of Analytics Engineering Survey
+  subheader: Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey
+  button_text: Take the survey
+  url: https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform

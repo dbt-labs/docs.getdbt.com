@@ -473,6 +473,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/latest-metrics-spec",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -804,12 +805,23 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI',
+      value: 'dbt AI and intelligence',
       className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Agents",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+      items: [
+        "docs/dbt-ai/dbt-agents",
+        "docs/dbt-ai/analyst-agent",
+      ],
     },
     {
       type: "category",
-      label: "Copilot",
+      label: "dbt Copilot",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/dbt-copilot" },
       items: [
@@ -1533,7 +1545,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [

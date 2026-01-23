@@ -37,7 +37,18 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 <UseCaseInfo/>
 
-## Example
+## Define project dependencies
+
+If your dbt project relies on models from another project, you can define that relationship using project dependencies. The following steps walk you through specifying project dependencies in dbt:
+
+1. Create a file called `dependencies.yml` at the root of your dbt project.
+2. In the `dependencies.yml`, list the upstream dbt project your project depends on as they appear in the `dbt_projects.yml` file.
+3. (Optional) Define the specific models you expect from that upstream project to make the dependency explicit.
+4. Use [`ref()`](/reference/dbt-jinja-functions/ref) with the project name to reference upstream models in your SQL.
+5. Commit the changes and ensure the dependency is configured in <Constant name="cloud" />.
+6. dbt will resolve the dependency, ensure upstream projects are built first, and surface cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views.
+
+### Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
 
