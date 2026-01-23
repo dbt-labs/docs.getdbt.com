@@ -13,7 +13,7 @@ Near real-time SLAs require premium resources and add significant operational ov
 
 ## Over-scheduled jobs and queue management
 
-If a job's run duration is longer than its schedule frequency, the job becomes over-scheduled. The queue grows faster than the scheduler can process runs, and dbt Cloud will start cancelling queued runs to avoid an ever-expanding backlog.
+If a job's run duration is longer than its schedule frequency, the job becomes over-scheduled. The queue grows faster than the scheduler can process runs, and <Constant name="dbt_platform" /> will start cancelling queued runs to avoid an ever-expanding backlog.
 
 This is easy to hit with near real-time patterns if your incremental build time creeps up (more models, more tests, more data) but the cron schedule stays aggressive (for example, every 2–5 minutes).
 
@@ -21,7 +21,7 @@ This is easy to hit with near real-time patterns if your incremental build time 
 - Your job is scheduled to run every 5 minutes
 - The job typically takes 6-7 minutes to complete
 - New runs queue up while previous runs are still executing
-- dbt Cloud starts cancelling queued runs to prevent infinite backlog
+- <Constant name="dbt_platform" /> starts cancelling queued runs to prevent infinite backlog
 
 When this happens, remediation is non-trivial. You need to either refactor the job to run faster (prune model selection, adjust threads, optimize SQL) or relax the schedule and accept a looser freshness SLA.
 
