@@ -95,7 +95,7 @@ The warehouse automatically determines when to refresh, whether to do a full or 
 
 ## Materialized views
 
-Materialized views are available in most modern data warehouses and cache query results that automatically refresh when underlying data changes. Each warehouse implements materialized views differently, ch
+Materialized views are available in most modern data warehouses and cache query results that automatically refresh when underlying data changes.
 
 Materialized views work like this:
 - The warehouse detects changes to source tables and refreshes the materialized view

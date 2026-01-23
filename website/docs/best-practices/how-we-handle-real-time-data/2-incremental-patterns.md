@@ -225,7 +225,7 @@ from {{ ref('stg_events') }};
 
 You can choose the right incremental pattern based on your use case. 
 
-For example, start with [pattern 1](#incremental-merge-from-append-only-tables) (`MERGE`) for most use cases. Upgrade to [pattern 2](#cdc-with-snowflake-streams) (use your datawarehouse's native CDC features) when you need efficient CDC. Reach for [pattern 3](#microbatch-for-large-time-series-tables) (Microbatch) when dealing with massive scale.
+For example, start with [pattern 1](#incremental-merge-from-append-only-tables) (`MERGE`) for most use cases. Upgrade to [pattern 2](#cdc-with-snowflake-streams) (use your data warehouse's native CDC features) when you need efficient CDC. Reach for [pattern 3](#microbatch-for-large-time-series-tables) (Microbatch) when dealing with massive scale.
 
 Here's a table to help you choose the right pattern:
 

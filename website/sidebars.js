@@ -1666,7 +1666,6 @@ const sidebarSettings = {
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
             "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
             "best-practices/how-we-handle-real-time-data/6-operational-considerations",
-            "best-practices/how-we-handle-real-time-data/7-conclusion",
           ],
         },
         {
