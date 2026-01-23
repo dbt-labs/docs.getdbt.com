@@ -109,6 +109,10 @@ exports.versionedPages = [
     page: "docs/cloud/connect-data-platform/connect-teradata",
     lastVersion: "1.99",
   },
+  {
+    page: "docs/build/measures",
+    lastVersion: "1.99",
+  },
 ];
 
 /**

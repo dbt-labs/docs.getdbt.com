@@ -83,10 +83,6 @@ to authenticate <Constant name="cloud" /> to run queries against Snowflake on be
 
 ### Key pair
 
-
-
-
-
 **Available in:** Development environments,  Deployment environments
 
 The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="cloud" /> project.
@@ -114,6 +110,12 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 ```
 
    <Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
+
+#### Fusion key pair
+
+import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+
+<FusionKeyPair />
 
 ### Snowflake OAuth
 
