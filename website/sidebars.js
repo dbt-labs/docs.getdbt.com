@@ -1654,12 +1654,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "How we handle real-time data",
+          label: "How to handle real-time data",
           link: {
             type: "doc",
             id: "best-practices/how-we-handle-real-time-data/1-intro",
           },
           items: [
+            "best-practices/how-we-handle-real-time-data/1-intro",
             "best-practices/how-we-handle-real-time-data/2-incremental-patterns",
             "best-practices/how-we-handle-real-time-data/3-warehouse-native-features",
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
