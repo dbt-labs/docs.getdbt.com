@@ -22,8 +22,6 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
 
-<VersionBlock firstVersion="1.99">
-
 ```yaml
 semantic_models:
   - name: semantic_model_name
@@ -39,7 +37,6 @@ semantic_models:
         [config](/reference/resource-properties/config): Use the config property to specify configurations for your measure.  ## Optional
           [meta](/reference/resource-configs/meta):  {<dictionary>} Set metadata for a resource and organize resources. Accepts plain text, spaces, and quotes. ## Optional
 ```
-</VersionBlock>
 
 ### Name
 
@@ -107,8 +104,6 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 
 ### Model with different aggregations
-
-<VersionBlock firstVersion="1.99">
 
 ```yaml
 semantic_models:
@@ -194,7 +189,6 @@ semantic_models:
         expr: case when quantity > 10 then true else false end
 
 ```
-</VersionBlock>
 
 
 ### Non-additive dimensions

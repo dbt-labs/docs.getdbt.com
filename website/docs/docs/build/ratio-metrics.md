@@ -81,6 +81,7 @@ metrics:
 models:
   - name: file_name
     semantic_model:
+      - enabled: true # required
       - name: my_semantic_model
       ... rest of config...
     metrics:
