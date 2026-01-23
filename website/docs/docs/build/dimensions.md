@@ -228,7 +228,7 @@ models:
         agg: sum
 ```
 
-If your table doesn't have a physical primary key column, you can still declare a primary entity. Set the model’s grain by declaring a `primary_entity`. <Constant name="fusion"/> supports this and treats the model as being at that entity’s grain.
+If your table doesn't have a physical primary key column, you can still declare a primary entity. Set the model’s grain by declaring a `primary_entity`. The new YAML spec supports this and treats the model as being at that entity’s grain.
 
 ```yaml
 models:
@@ -287,7 +287,7 @@ Time dimensions no longer use `type_params`.
 - For dimensions defined on a column entry, add the column’s `granularity` at the column level. 
 - For derived dimensions, add `granularity` in the dimension configuration. 
 
-A semantic model’s default aggregation time dimension is set with the `agg_time_dimension` property at the model's top level. A metric can override this with its own `agg_time_dimension`. For more information, see [Migrate to the latest YAML spec in the dbt Fusion engine](/docs/build/metrics-spec-fusion).
+A semantic model’s default aggregation time dimension is set with the `agg_time_dimension` property at the model's top level. A metric can override this with its own `agg_time_dimension`. For more information, see [Migrate to the latest YAML spec](/docs/build/new-metrics-spec).
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
 </VersionBlock>

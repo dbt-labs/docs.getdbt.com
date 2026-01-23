@@ -1,19 +1,19 @@
 ---
-title: "Migrate to the latest YAML spec in the dbt Fusion engine"
-id: "metrics-spec-fusion"
-description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec in Fusion."
+title: "Migrate to the latest YAML spec"
+id: "new-metrics-spec"
+description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec."
 sidebar_label: Migrate to the latest YAML spec 
 tags: [Metrics, Semantic Layer, Fusion]
 ---
 
 
-The latest Semantic Layer specification in the <Constant name="fusion_engine" /> creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to top-level keys. 
+The latest Semantic Layer specification creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to top-level keys. 
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization.
 
-## Changes in the latest spec
+## Changes in the latest spec 
 
-This section highlights the key updates in the latest metrics spec in Fusion and compares them to the legacy spec.
+This section highlights the key updates in the latest metrics spec and compares them to the legacy spec.
 
 - [Semantic models](#semantic-models): These define the business logic for your metrics by specifying entities, dimensions, and how they relate to your data models. In the new spec, `semantic_model` is nested directly under each model in `models:` instead of being a top-level key.
 - [Entities and dimensions](#entities-and-dimensions): Entities are the people, places, or things you want to group or join your metrics by (like `user_id` or `order_id`), while dimensions are the attributes you use to filter or slice your data (like `status` or `region`). In the new spec, both are defined directly under `columns:`.
@@ -129,7 +129,7 @@ semantic_models:
 ### Time dimension
 
 - `agg_time_dimension`: Set once at the model level as the default time dimension for all metrics in that semantic model. You can still override it per metric with `agg_time_dimension`.
-- `time granularity`: Deprecated in Fusion. Define the native grain on the time dimension column with `granularity` (for example, `hour`, `day`).
+- `time granularity`: Deprecated in the new spec. Define the native grain on the time dimension column with `granularity` (for example, `hour`, `day`).
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
@@ -211,7 +211,7 @@ metrics:
 
 ### Simple metrics
 
-Measures are deprecated in Fusion and are replaced with simple metrics.
+Measures are deprecated in the new spec and are replaced with simple metrics.
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
 
@@ -583,7 +583,7 @@ import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
 ### Package compatibility
 
-If your project uses dbt packages (listed in `packages.yml`) that define metrics or semantic models, the package maintainer must update those packages to use the latest YAML spec in <Constant name="fusion" />.
+If your project uses dbt packages (listed in `packages.yml`) that define metrics or semantic models, the package maintainer must update those packages to use the latest YAML spec.
 
 The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) only updates files in your current dbt project (like models, marts, and so on) and does not update installed packages under `dbt_packages/`. If an installed package still uses the legacy metrics spec, dbt may raise parsing or validation errors after migration.
 
@@ -609,7 +609,7 @@ After a compatible version is released, update your project to [install the new 
 
 ### Using the CLI or VS Code extension
 
-The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the Fusion format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI or the dbt VS Code extension.
+The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy metrics YAML into the latest format and produces a clear, reviewable diff in version control. Make sure you have installed the latest version of the autofix tool before migrating to the new spec using the CLI or the dbt VS Code extension.
 
 1. In your CLI or in the VS Code extension, run the following command:
 

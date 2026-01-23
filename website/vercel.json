@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/build/metrics-spec-fusion",
+      "destination": "/docs/build/new-metrics-spec",
+      "permanent": true
+    },
+    {
       "source": "/reference/dbt-jinja-functions",
       "destination": "/reference/dbt-jinja-functions-context-variables",
       "permanent": true
