@@ -2,16 +2,12 @@
 title: About dbt platform profiles
 id: about-profiles
 description: "About dbt platform profile configuration."
-sidebar_label: "About profiles"
+sidebar_label: "About profiles."
 pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. You assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment).
-
-Profiles make it easy for you to:
-- Update the connection and credentials used for a deployment environment.
-- Configure multiple connections for an environment to support cross-platform [dbt Mesh](/docs/mesh/about-mesh) (coming soon). 
+<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. You assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment). Profiles make it easy for you to set up and update the connection and credentials used for a deployment environment at the project level.
 
 Profiles are not applicable to development environments.
 
@@ -105,5 +101,7 @@ Any profiles using those settings automatically update with the new information.
 <DetailsToggle alt_header="What if I use APIs to configure project settings?">
 
 Existing APIs continue to work and automatically map to a profile behind the scenes. You won't need to take any manual action unless you use APIs to create a deployment environment with no credentials configured. This is a rare occurrence unique to APIs, but it's the only scenario where dbt wouldn't create a profile.
+
+Profile-specific APIs are available. Check out our [API documentation](/docs/dbt-cloud-apis/overview) for more information.
 
 </DetailsToggle>
