@@ -23,7 +23,7 @@ dbt will automatically create a new project-level profile for each deployment en
 
 :::
 
-You can create profiles from either the project or the environment settings. Profiles you create in one project won't be visible in others. 
+You can create profiles from either the project or the environment settings. No matter which approach you take, the profile is created at the project level. Profiles you create in one project won't be visible in others. 
 
 To create a new profile:
 
@@ -56,7 +56,7 @@ To create a new profile:
 
 The following steps are the same regardless of which approach you take:
 
-1. Give the profile a unique name that's easy to identify and adheres to the naming policy:
+1. Give the profile a name that's unique across the account, easy to identify, and adheres to the naming policy:
     - Starts with a letter
     - Ends with a letter or number
     - Contains only letters, numbers, dashes, or underscores
@@ -72,7 +72,9 @@ Repeat these steps until you've created all the profiles you need for your proje
 
 ## Assign a profile
 
-dbt automatically creates and assigns a default profile for all projects. To assign a different profile, update the deployment environment settings:
+Profiles are configured when a deployment environment is created. For accounts that already have environments configured when profiles are enabled, dbt automatically creates and assigns a default profile to all projects. 
+
+To assign a different profile, update the deployment environment settings:
 
 1. From the main menu, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
