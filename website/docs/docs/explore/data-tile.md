@@ -86,7 +86,27 @@ Follow these steps to set up your data health tile:
 If your analytics tool supports iFrames, you can embed the dashboard tile within it. 
 
 ## Examples
-The following examples show how to embed the data health tile in PowerBI, Tableau, and Sigma.
+The following examples show how to embed the data health tile in Omni, PowerBI, Tableau, and Sigma.
+
+<TabItem value="omni" label="Omni example">
+
+Follow these steps to embed the data health tile in [Omni](https://omni.co/):
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/omni-example.png" width="90%" title="Embed data health tile in Omni"/>
+
+1. Create a dashboard in Omni.
+2. Copy the iFrame snippet available in <Constant name="explorer" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
+3. Add a new Text / Markdown [element](https://docs.omni.co/visualize-present/dashboards/text-markdown) in your Dashboard with the code from step 2, it should be in the following format:
+    ```html/text
+    <iframe src='https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=ENV_ID_NUMBER&token=<YOUR_METADATA_TOKEN>' title='Exposure Status Tile'></iframe>
+    ```
+4. Save the tile and your Omni dashboard should now have a dbt Platform hosted data health tile that is automatically updated based on the state of your dbt environment.
+
+</TabItem>
+
+</Tabs>
+
+
 
 <Tabs>
 
