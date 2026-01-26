@@ -65,11 +65,9 @@ Once enabled, the **dbt compare** option becomes available in the CI job setting
 
 <Lightbox src="/img/docs/deploy/account-settings-advanced-ci.png" width="85%" title="The Enable account access to Advanced CI option" />
 
-### Enabling dbt Catalog <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
+### Enabling external metadata ingestion in dbt Catalog <Lifecycle status='self_service,managed,managed_plus' />
 
 [<Constant name="explorer" />](/docs/explore/explore-projects) allows you to view your project's resources (for example, models, tests, and metrics), their lineage, and model consumption to gain a better understanding of your project's latest production state.
-
-To enable dbt <Constant name="explorer" />, a [developer license with Owner permissions](/docs/cloud/manage-access/about-user-access#role-based-access-control) is required. Enable <Constant name="explorer" /> in your account by selecting the **Enable dbt Catalog’s (formerly dbt Explorer) New Navigation** option from your account settings. For more information, see [Catalog overview](/docs/explore/explore-projects#catalog-overview).
 
 You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="explorer" /> by connecting directly to your warehouse. This enables you to view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
 
