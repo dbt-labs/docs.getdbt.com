@@ -46,6 +46,36 @@ You can perform git tasks with the git button in the [<Constant name="cloud_ide"
 | Rollback to remote | Reset changes to your repository directly from the <Constant name="cloud_ide" />. You can rollback your repository back to an earlier clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the <Constant name="cloud_ide" /> and select **Rollback to remote**. |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
+### Create sub-branches from feature branches
+
+In the <Constant name="cloud_ide" />, you can create sub-branches from any existing feature branch, not just from your base branch. This is useful when you want to:
+
+- Experiment with a new approach while keeping your current feature branch intact
+- Break down large features into smaller, more manageable tasks
+- Collaborate with team members on different aspects of the same feature
+- Test changes in isolation before merging them into your main feature branch
+
+**To create a sub-branch from a feature branch:**
+
+1. In the <Constant name="cloud_ide" />, use the git button to **Change branch** and switch to the feature branch you want to branch from.
+2. Once you're on the desired feature branch, click the git button again and select **Create new branch**.
+3. Enter a descriptive name for your sub-branch (for example, `feature-experiment` or `feature-subtask`).
+4. The new branch will be created based on the current state of your feature branch.
+5. Make your changes, commit them, and push to the remote repository.
+6. When ready, you can open a pull request to merge your sub-branch back into the parent feature branch, or directly into the base branch.
+
+**Example workflow:**
+
+Let's say you're working on a feature branch called `add-new-metrics` and want to experiment with a different calculation method:
+
+1. Switch to the `add-new-metrics` branch
+2. Create a new branch called `add-new-metrics-alternative-calculation`
+3. Make your experimental changes
+4. Commit and push your changes
+5. Open a pull request to merge `add-new-metrics-alternative-calculation` into `add-new-metrics` (or compare the approaches before deciding)
+
+This workflow allows you to maintain a clean history and organize your development process effectively.
+
 ## Merge conflicts
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to determine which change should be kept.
