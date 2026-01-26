@@ -88,6 +88,7 @@ If your analytics tool supports iFrames, you can embed the dashboard tile within
 ## Examples
 The following examples show how to embed the data health tile in Omni, PowerBI, Tableau, and Sigma.
 
+<Tabs>
 <TabItem value="omni" label="Omni example">
 
 Follow these steps to embed the data health tile in [Omni](https://omni.co/):
@@ -106,9 +107,6 @@ Follow these steps to embed the data health tile in [Omni](https://omni.co/):
 
 </Tabs>
 
-
-
-<Tabs>
 
 <TabItem value="powerbi" label="PowerBI example">
 
