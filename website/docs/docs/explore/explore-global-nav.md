@@ -11,7 +11,12 @@ description: "Learn how to enable and use global navigation to search, explore, 
 <IntroText>Search, explore, and analyze data assets across all your dbt projects and connected metadata sources. Discover cross-project lineage, data discovery, and unified analytics governance.</IntroText>
 
 
-For enterprise plans, <Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account, and the option to discover external metadata. For Starter plans (single project), you’ll still benefit from the new navigation and search experience within your project.
+**Plan availability**
+
+Global navigation search varies depending on your [<Constant name="dbt_platform" />](https://www.getdbt.com/pricing) plan:
+- Enterprise plans &mdash; <Constant name="explorer" /> lets you search across all [dbt resources](/docs/build/projects)
+ (models, seeds, snapshots, sources, exposures, and more) in your account, plus discover external metadata.
+ - Starter plans (single project) &mdash; Use global navigation to search and navigate resources within your project 
 
 <LoomVideo id="ae93b3d241cd439fbe5f98f5e6872113" />
 
