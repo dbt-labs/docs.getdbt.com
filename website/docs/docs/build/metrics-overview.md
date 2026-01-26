@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
 ---
 
-After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project
+After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project.
 
 <VersionBlock lastVersion="1.99">
   
