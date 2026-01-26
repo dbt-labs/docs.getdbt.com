@@ -39,11 +39,6 @@
   ],
   "redirects": [
     {
-      "source": "/reference/resource-configs",
-      "destination": "/reference/configs-and-properties",
-      "permanent": true
-    },
-    {
       "source": "/docs/build/metrics-spec-fusion",
       "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
