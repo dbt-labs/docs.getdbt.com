@@ -4,7 +4,7 @@ description: "Configure Python models to enhance your dbt project."
 id: "python-models"
 ---
 
-Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs/resource-configs) to confirm if Python models are supported. 
+Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs) to confirm if Python models are supported. 
 
 We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.

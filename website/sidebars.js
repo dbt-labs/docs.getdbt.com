@@ -1138,7 +1138,7 @@ const sidebarSettings = {
         title: "Platform-specific configs",
         description:
           "Platform-specific configs are used to configure the dbt project for a specific database platform.",
-        slug: "/reference/resource-configs/resource-configs",
+        slug: "/reference/resource-configs",
       },
       items: [
         "reference/resource-configs/azuresynapse-configs",
