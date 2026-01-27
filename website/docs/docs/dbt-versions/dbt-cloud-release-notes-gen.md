@@ -44,7 +44,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Studio IDE**
   - **Clearer error messages when fetching dev credentials and defer state**: IDE-related endpoints now return more specific and helpful error messages for common configuration issues and timeouts.
-  - **Improved reliability of idle worker cleanup**: Background cleanup processes are now more reliable, reducing disruptions to development sessions.
   - **Studio console and command log viewer improvements**: Enhanced command log viewer with improved download capabilities and more consistent error log viewing.
 
 ### Fixes
