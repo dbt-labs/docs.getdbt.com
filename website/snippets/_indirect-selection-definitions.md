@@ -27,5 +27,5 @@ Most exclusive and ensures that tests are executed and models are built only whe
 
 #### Empty mode
 
-No tests and restricts the build to only the selected node and ignores any indirect dependencies, including tests. It doesn't execute any tests, whether they are directly attached to the selected node or not. The empty mode does not include any tests and is automatically used for [interactive compilation](/reference/commands/compile#interactive-compile).
+Empty mode runs no tests and restricts the build to the selected node, ignoring all indirect dependencies. It doesn't execute any tests, whether they are directly attached to the selected node or not. The empty mode doesn't include any tests and is automatically used for [interactive compilation](/reference/commands/compile#interactive-compile).
 
