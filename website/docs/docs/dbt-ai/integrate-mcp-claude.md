@@ -108,7 +108,6 @@ To add advanced configurations:
 
 For debugging, you can find the Claude desktop logs at `~/Library/Logs/Claude` for Mac or `%APPDATA%\Claude\logs` for Windows.
 
-
 ## Claude Code
 
 You can set up Claude Code with both the local and remote `dbt-mcp` server. We recommend using the local `dbt-mcp` for more developer-focused workloads. See the [About MCP](/docs/dbt-ai/about-mcp#server-access) page for more more information about local and remote server features.
@@ -124,7 +123,8 @@ Prerequisites:
 1. Run one of these commands based on your use case. Be sure to update the commands for your specific needs:
 
 <Tabs>
-<TabItem value="CLI only">
+<TabItem value="cli" label="CLI only">
+
 For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" />):
 
 ```shell
@@ -133,10 +133,12 @@ claude mcp add \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
 ```
+
 </TabItem>
-<TabItem value="OAuth with dbt platform">
+<TabItem value="oauth" label="OAuth with dbt platform">
 
 For OAuth authentication (requires static subdomain). Find your static subdomain [these](/docs/cloud/about-cloud/regions-ip-addresses.md#server-access):
+
 ```shell
 claude mcp add dbt \
 -e DBT_HOST=your-host-with-subdoman \
