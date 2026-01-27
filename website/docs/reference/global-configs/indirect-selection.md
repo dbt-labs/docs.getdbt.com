@@ -6,12 +6,12 @@ sidebar: "Indirect selection"
 
 import IndirSelect from '/snippets/_indirect-selection-definitions.md';
 
-**Indirect selection** determines which tests to run when you select models or other resources. It applies to tests that are related to your selected resources through relationships in your DAG &mdash; for example, tests on upstream or downstream models, or tests that reference multiple models.
+Indirect selection determines which tests to run when you select models or other resources. It applies to tests that are related to your selected resources through relationships in your DAG &mdash; for example, tests on upstream or downstream models, or tests that reference multiple models.
 
-Use the `--indirect-selection` flag with `dbt test` or `dbt build` to configure this behavior. You can set this as a CLI flag or an environment variable. In dbt Core, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
+Use the `--indirect-selection` flag with `dbt test` or `dbt build` to configure this behavior. You can set this as a CLI flag or an environment variable. In dbt <Constant name="core"/>, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
 
 :::tip Indirect selection happens by default
-Even without explicitly using the `--indirect-selection` flag, dbt uses indirect selection when you run commands like `dbt test --select "stg_customers+"`. The default mode is `eager`, which runs all tests that reference your selected models. For example, `dbt test --select fct_orders` will run tests on `fct_orders`, but also tests in upstream models like `fct_order_items` if those tests reference `fct_orders`.
+Even without explicitly using the [`--indirect-selection` flag](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection), dbt uses indirect selection when you run commands like `dbt test --select "stg_customers+"`. The default mode is `eager`, which runs all tests that reference your selected models. For example, `dbt test --select fct_orders` will run tests on `fct_orders`, but also tests in upstream models like `fct_order_items` if those tests reference `fct_orders`.
 :::
 
 When all flags are set, the order of precedence is as follows. Refer to [About global configs](/reference/global-configs/about-global-configs) for more details:

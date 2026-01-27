@@ -117,7 +117,7 @@ Setting `indirect_selection` can also be specified in a [yaml selector](/referen
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG.
 
-The examples use _eager_ mode by default for indirect selection, unless you specify another mode (like `--indirect-selection=cautious`).
+The following examples use _eager_ mode by default for indirect selection, unless you specify another mode (like `--indirect-selection=cautious`).
 
 The selection operators (`+`, `tags`, and so on) determine which models are selected; the indirect selection mode determines which tests run for those models.
 
