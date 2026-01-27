@@ -34,6 +34,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Run artifacts are now searchable**: Find specific artifacts faster in run history with the new artifacts search box and improved empty states.
   - **Webhooks editor is more stable**: The webhook form no longer resets while job options are loading, and server-generated fields now display reliably after creation.
   - **Fusion onboarding completion card can be dismissed**: After completing the Fusion onboarding checklist, you can now dismiss the card and it will stay dismissed.
+  - **Cross-project lineage is now generally available**: Cross-project lineage is now enabled for all applicable accounts.
 
 - **Catalog & Search**
 
@@ -65,7 +66,6 @@ Release notes are grouped by date for single-tenant environments.
 ### Behavior changes
 
 - **dbt platform**
-  - **Cross-project lineage is now generally available**: Cross-project lineage is now enabled for all applicable accounts.
   - **Account Insights default page size changed to 5 rows**: Tables in Account Insights now display 5 rows per page by default (previously 10).
 
 - **Webhooks**
