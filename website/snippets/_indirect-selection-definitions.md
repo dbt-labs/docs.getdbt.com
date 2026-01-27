@@ -23,7 +23,7 @@ Middle ground and only runs tests that refer to selected nodes (or their ancesto
 
 #### Cautious mode
 
-Most exclusive and ensures that tests are executed and models are built only when all necessary dependencies of the selected models are met. Restricts tests to only those that exclusively reference selected nodes. Tests will only be executed if all the nodes they depend on are selected, which prevents tests from running if one or more of its parent nodes are unselected and, consequently, unbuilt.
+Cautious is the most exclusive mode and ensures that tests are executed and models are built only when all necessary dependencies of the selected models are met. Restricts tests to only those that exclusively reference selected nodes. Tests will only be executed if all the nodes they depend on are selected, which prevents tests from running if one or more of its parent nodes are unselected and, consequently, unbuilt.
 
 #### Empty mode
 
