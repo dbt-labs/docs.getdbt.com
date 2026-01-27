@@ -73,11 +73,11 @@ Release notes are grouped by date for single-tenant environments.
   - **⚠️ IP restrictions now fail closed when client IP can't be determined**: When IP restrictions are configured, requests are now rejected if the source IP cannot be determined, improving security posture.
 
 - **Webhooks**
-  - **⚠️ Webhook timestamps are now consistently UTC RFC3339 with `Z`**: All webhook timestamp fields (`run_started_at`, `run_finished_at`, `timestamp`) now use UTC with `Z` suffix and higher precision. Missing/invalid timestamps emit `1970-01-01T00:00:00Z` instead of empty strings. Update webhook consumers if needed.
-  - **⚠️ Webhook `run_status` string changed from `Error` to `Errored`**: Update webhook consumers that parse this status value strictly.
+  - **Webhook timestamps are now consistently UTC RFC3339 with `Z`**: All webhook timestamp fields (`run_started_at`, `run_finished_at`, `timestamp`) now use UTC with `Z` suffix and higher precision. Missing/invalid timestamps emit `1970-01-01T00:00:00Z` instead of empty strings. Update webhook consumers if needed.
+  - **Webhook `run_status` string changed from `Error` to `Errored`**: Update webhook consumers that parse this status value strictly.
 
 - **Runs / ingestion**
-  - **⚠️ Very large exposure sets are now limited during ingestion**: Projects with more than 5,000 exposures will skip exposure ingestion to prevent performance issues. All other artifact ingestion continues normally. Contact support if you need to increase this limit.
+  - **Very large exposure sets are now limited during ingestion**: Projects with more than 5,000 exposures will skip exposure ingestion to prevent performance issues. All other artifact ingestion continues normally. Contact support if you need to increase this limit.
 
 
 ## January 14, 2026
