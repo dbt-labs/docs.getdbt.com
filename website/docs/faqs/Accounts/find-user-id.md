@@ -1,5 +1,5 @@
 ---
-title: Where can I find my user id?
+title: Where can I find my user ID?
 description: "Instructions on where to find your user id"
 sidebar_label: 'Where can I find my user ID'
 id: find-user-id
