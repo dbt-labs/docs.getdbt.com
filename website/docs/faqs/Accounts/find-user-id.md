@@ -9,8 +9,8 @@ Knowing your <Constant name="cloud" /> user ID can help with interacting with su
 
 To find your user ID in <Constant name="cloud" />, read the following steps:
 
-1. Go to **Account Settings**, **Team**, and then **Users**,
-2. Select your user, <br />
+1. Navigate to **Account settings** and then **Users**.
+2. Select your user. <br />
 3. In the address bar, the number after `/users` is your user ID. 
 4. Copy that number or save it somewhere safe. <br />
 
