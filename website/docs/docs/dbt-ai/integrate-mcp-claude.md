@@ -128,7 +128,7 @@ Prerequisites:
 For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" />):
 
 ```shell
-claude mcp add \
+claude mcp add dbt \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
