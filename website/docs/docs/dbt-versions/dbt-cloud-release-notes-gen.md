@@ -59,7 +59,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Studio IDE**
   - **Command status is more reliable when Cloud CLI invocation data expires**: Commands that can't be fetched are now properly marked as failed instead of staying in a "running" state.
   - **More stable command history syncing**: Improved handling when multiple commands sync simultaneously, reducing potential conflicts.
-  - **Improved IDE editor connection stability**: Better connection management reduces disconnection and error scenarios in the IDE.
 
 - **APIs**
   - **Jobs API deferral validation is stricter and clearer**: Job deferral settings are now validated to ensure the deferring job and environment exist within the same account, with improved error messages.
