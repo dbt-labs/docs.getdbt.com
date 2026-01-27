@@ -67,7 +67,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt platform**
   - **Cross-project lineage is now generally available**: Cross-project lineage is now enabled for all applicable accounts.
   - **Account Insights default page size changed to 5 rows**: Tables in Account Insights now display 5 rows per page by default (previously 10).
-  - **⚠️ IP restrictions now fail closed when client IP can't be determined**: When IP restrictions are configured, requests are now rejected if the source IP cannot be determined, improving security posture.
 
 - **Webhooks**
   - **Webhook timestamps are now consistently UTC RFC3339 with `Z`**: All webhook timestamp fields (`run_started_at`, `run_finished_at`, `timestamp`) now use UTC with `Z` suffix and higher precision. Missing/invalid timestamps emit `1970-01-01T00:00:00Z` instead of empty strings. Update webhook consumers if needed.
