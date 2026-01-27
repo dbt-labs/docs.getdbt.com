@@ -7,7 +7,7 @@ id: find-user-id
 
 Knowing your <Constant name="cloud" /> user ID can help with interacting with support. 
 
-To find your user ID in <Constant name="cloud" />, read the following steps:
+To find your user ID in the <Constant name="dbt_platform" />, read the following steps:
 
 1. Navigate to **Account settings** and then **Users**.
 2. Select your user. <br />
