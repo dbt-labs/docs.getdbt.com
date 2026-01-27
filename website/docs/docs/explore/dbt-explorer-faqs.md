@@ -46,7 +46,7 @@ Support for development (<Constant name="cloud_cli" /> and <Constant name="cloud
 
 <Expandable alt_header="How do I get started in Catalog? How does it update?" >
 
-Simply select **Explore** from the <Constant name="cloud" /> top navigation bar. <Constant name="explorer" /> automatically updates after each <Constant name="cloud" /> run in the given project’s environment (production, by default). The dbt commands you run within the environment will generate and update the metadata in <Constant name="explorer" />, so make sure to run the correct combination of commands within the jobs of the environment; for more details, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
+Simply select **Catalog** from the <Constant name="cloud" /> top navigation bar. <Constant name="explorer" /> automatically updates after each <Constant name="cloud" /> run in the given project’s environment (production, by default). The dbt commands you run within the environment will generate and update the metadata in <Constant name="explorer" />, so make sure to run the correct combination of commands within the jobs of the environment; for more details, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 
 </Expandable>
 
@@ -180,6 +180,6 @@ The ability to embed and share views is being evaluated as a potential future ca
 
 Yes, you can [access <Constant name="explorer" /> from various <Constant name="cloud" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
 
-While the primary way to access <Constant name="explorer" /> is through the **Explore** link in the navigation, you can also access it from the [<Constant name="cloud_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
+While the primary way to access <Constant name="explorer" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="cloud_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
 
 </Expandable>
