@@ -20,157 +20,102 @@ Release notes are grouped by date for single-tenant environments.
 
 ## January 28, 2026
 
-## Output
+### New
 
-I wrote the finalized single-tenant, customer-facing release notes to `release-notes/final-release-notes-2026-01-26.md`:
-
-## Single-tenant release notes (2026-01-26)
-
-## New
-
-### Visual Editor
-
-- **New two-step “upload source” API for more resilient uploads**: Use `POST /v1/workspaces/{workspace_id}/upload-source` to create an upload, then `PATCH /v1/workspaces/{workspace_id}/upload-source/{file_id}/process` to stream processing progress (SSE).  
+- **Canvas**
+  - **New two-step "upload source" API for more resilient uploads**: Use `POST /v1/workspaces/{workspace_id}/upload-source` to create an upload, then `PATCH /v1/workspaces/{workspace_id}/upload-source/{file_id}/process` to stream processing progress (SSE).  
   <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
-### AI & agents
+### Enhancements
 
-- **New built-in `studio` agent for agent-run APIs** (configured as “Studio - DevAgent”).  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/675 -->
-
-- **LangGraph agent supports client-provided tools**: agent requests can include client tool definitions to support client-side tool execution flows.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/660 -->
-
-## Enhancements
-
-### Cost Insights
-
-- **More accurate Cost Insights baselines**: 7‑day averages and savings now account for all job runs in an environment (weighted by execution count), improving results for newly created or recently changed jobs.  
+- **Cost Insights**
+  - **More accurate Cost Insights baselines**: 7‑day averages and savings now account for all job runs in an environment (weighted by execution count), improving results for newly created or recently changed jobs.  
   <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
-
-- **Richer Cost Insights connection testing**: expanded tests (Snowflake, BigQuery, Databricks) return more actionable errors (for example, missing tables/columns).  
+  - **Richer Cost Insights connection testing**: Expanded tests (Snowflake, BigQuery, Databricks) return more actionable errors (for example, missing tables/columns).  
   <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
-
-- **dbt platform improvements for Cost Insights access and onboarding**:
-  - Tabs and deep links now behave consistently when Cost Insights is disabled or the user lacks permission (including project-scoped permissions).
-  - New in-product banners guide required enablement (Fusion, state-aware orchestration, Cost Insights, and permissions).  
+  - **dbt platform improvements for Cost Insights access and onboarding**: Tabs and deep links now behave consistently when Cost Insights is disabled or the user lacks permission (including project-scoped permissions). New in-product banners guide required enablement (Fusion, state-aware orchestration, Cost Insights, and permissions).  
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-
-- **dbt platform shows Cost Insights connection test status and actionable errors**: when Cost Insights is enabled, connection settings trigger tests on credential changes and display status plus detailed error information.  
+  - **dbt platform shows Cost Insights connection test status and actionable errors**: When Cost Insights is enabled, connection settings trigger tests on credential changes and display status plus detailed error information.  
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-
-- **Support platform metadata credentials for Cost Insights (BigQuery v0, Redshift)**: adds schemas and profile-generation support for separate platform-metadata credentials used by cost and catalog workflows.  
+  - **Support platform metadata credentials for Cost Insights (BigQuery v0, Redshift)**: Adds schemas and profile-generation support for separate platform-metadata credentials used by cost and catalog workflows.  
+  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
+  - **Expanded Cost Insights permissions across standard roles**: `cost_insights_read` is available through more standard role sets, and `cost_insights_write` is available for account admins.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
 
-- **Expanded Cost Insights permissions across standard roles**: `cost_insights_read` is available through more standard role sets, and `cost_insights_write` is available for account admins.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
+- **Catalog & Search**
 
-### Search
-
-- **Improved search relevance and highlighting**: ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
+  - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
   <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
 
-
-### Orchestration (Fusion / state-aware orchestration)
-
-- **Support `dbt build --store-failures` through orchestration**: `--store-failures` is preserved when forwarding dbt build arguments.  
+- **dbt platform**
+  - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.  
+  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
+  - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
+  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
+  - **Support `dbt build --store-failures` through orchestration**: `--store-failures` is preserved when forwarding dbt build arguments.  
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+store-failures -->
-
-- **Cleaner Fusion logs in run output**: reduces internal noise and improves how key errors (including compilation-style errors) are surfaced.  
+  - **Cleaner Fusion logs in run output**: Reduces internal noise and improves how key errors (including compilation-style errors) are surfaced.  
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+RecordMessageStatus -->
 
-### Networking & platform administration
-
-- **Private endpoints details page**: dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-
-- **Fusion-aware default dbt version during setup**: connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-
-### Studio IDE
-
-- **Search + Replace in Files (behind flags)**: adds a dedicated sidebar Search experience and common shortcuts (for example, Cmd/Ctrl+Shift+F).  
+- **Studio IDE**
+  - **Search and Replace in Files (behind flags)**: Adds a dedicated sidebar search experience and common shortcuts (for example, `Cmd/Ctrl+Shift+F`).  
+  <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
+  - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-
-- **Autofix now includes package upgrades**: upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
+  - **Copilot chat user experience improvements**: Improved chat entry points and behavior, including a new alternate "agentic" chat UI behind a flag.  
+  <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
+  - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-
-- **Copilot chat UX improvements**: improved chat entry points and behavior, including a new alternate “agentic” chat UI behind a flag.  
-  <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-
-- **Editor UI polish**: fixes multiple layout/styling issues for a more consistent editor experience.  
-  <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-
-- **Copilot chat mode switching UI**: the chat mode switcher is now a dropdown with short descriptions, and “Agent” is labeled Beta when streaming agents are enabled.  
+  - **Copilot chat mode switching UI improvements**: The chat mode switcher is now a dropdown with short descriptions, and "Agent" is labeled Beta when streaming agents are enabled.  
   <!-- PRs: https://github.com/dbt-labs/insights-ui/pulls?q=is%3Apr+6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4 -->
 
-## Fixes
+### Fixes
 
-### Webhooks & notifications
+- **Webhooks**
+  - **Webhook payload compatibility for errored runs**: Webhook events for errored runs now use `runErroredAt` (instead of `runFinishedAt`) to reduce downstream parsing failures.  
+  <!-- @runleonarun question: is this internal only? PRs: https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+ef0444c1f5f9490fabaca2ffd240c56b0fd0c6e6 -->
 
-- **Webhook payload compatibility for errored runs**: webhook events for errored runs now use `runErroredAt` (instead of `runFinishedAt`) to reduce downstream parsing failures.  
-  <!-- PRs: https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+ef0444c1f5f9490fabaca2ffd240c56b0fd0c6e6 -->
-
-### Developer experience
-
-- **dbt platform run logs render ANSI/structured output more reliably**: improved rendering and cleanup of escape sequences in step logs.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-
-- **CLI project sync no longer fails on broken symlinks**: sync skips missing symlink targets instead of failing the whole sync.  
-  <!-- PR: https://github.com/dbt-labs/dbt-cloud-cli/pull/2012 -->
-
-- **IDE abort is clearer when a command is missing**: aborting a command that no longer exists returns a specific “no-command-found” response.  
-  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
-
-- **More robust inline command results**: malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.  
-  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
-
-### Visual Editor
-
-- **Clearer errors for duplicate uploaded-source names**: creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
-
-- **Failed uploads are now visible via file state**: uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
-
-- **Invocation status streaming reliability**: the invocation status SSE endpoint now correctly awaits the status stream.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
-
-### Orchestration correctness
-
-- **More correct source freshness status in multi-job environments**: freshness status is preserved when a run lacks freshness results but freshness remains configured.  
+- **dbt platform**
+  - **Run logs render ANSI/structured output more reliably**: Improved rendering and cleanup of escape sequences in step logs.  
+  <!-- @runleonarun question: is this internal only?  PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
+  - **More correct source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.  
+  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
+  - **More robust seed artifact ingestion**: Ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
   <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
 
-- **More robust seed artifact ingestion**: ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
+- **Studio IDE**
+  - **CLI project sync no longer fails on broken symlinks**: Sync skips missing symlink targets instead of failing the whole sync.  
+  <!-- @runleonarun question: is this internal only? PR: https://github.com/dbt-labs/dbt-cloud-cli/pull/2012 -->
+  - **IDE abort is clearer when a command is missing**: Aborting a command that no longer exists returns a specific "no-command-found" response.  
+  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
+  - **More robust inline command results**: Malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.  
+  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
 
-## Behavior Changes
+- **Canvas**
+  - **Clearer errors for duplicate uploaded-source names**: Creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.  
+  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
+  - **Failed uploads are now visible via file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.  
+  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
+  - **Invocation status streaming reliability**: The invocation status SSE endpoint now correctly awaits the status stream.  
+  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
-### Search & APIs (deprecations and response-shape changes)
+### Behavior changes
 
-- **Search highlight fields deprecated and highlights shape expanded**:
-  - `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated.
-  - `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
+- **Catalog and Search**
+  - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
   <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
 
-### Platform behavior changes & deprecations
-
-- **Cost Insights connection test APIs now surface timeouts as HTTP 408**.  
+- **dbt platform**
+  - **Cost Insights connection test APIs now surface timeouts as HTTP 408**.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
-
-- **Deprecations**:
-  - The “Adaptive” job type is deprecated.
-  - `last_checked_at` is deprecated and no longer populated in run responses.  
+  - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
+  - **Fusion SAO "panic" failures are now classified as internal errors**: When using Fusion with state-aware orchestration, exit code `2` is now treated as an internal/system error (rather than a user dbt command failure).  
+  <!-- @runleonarun question: is this internal only? PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+CODE_DBT_PANIC -->
 
-- **Existing CSV upload SSE endpoint deprecated**: migrate to the new two-step “upload source” flow.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
-
-
-### Orchestration error classification
-
-- **Fusion SAO “panic” failures are now classified as internal errors**: when using Fusion with state-aware orchestration, exit code `2` is now treated as an internal/system error (rather than a user dbt command failure).  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+CODE_DBT_PANIC -->
+- **Canvas**
+  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step "upload source" flow.  
+  <!-- @runleonarun question: link to the new flow? PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
 ## January 21, 2026
 
