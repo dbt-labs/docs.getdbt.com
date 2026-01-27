@@ -14,5 +14,3 @@ To find your user ID in the <Constant name="dbt_platform" />, read the following
 3. Go to the address bar. The number after `/users` is your user ID. 
 For example, if the URL is `https://YOUR_ACCESS_URL/settings/accounts/12345/users/67891` &mdash; the user ID is `67891`. <br />
 4. Copy that number or save it somewhere safe. <br />
-
-For example, if the URL is `https://YOUR_ACCESS_URL/settings/accounts/12345/users/67891` &mdash; the user ID is `67891`<br /><br />
