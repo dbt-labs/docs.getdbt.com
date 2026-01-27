@@ -10,10 +10,10 @@ The `buildable` and `cautious` modes can be useful when you're only building a s
 
 Most inclusive and runs tests if _any_ of the parent nodes are selected, regardless of whether all dependencies are met. This includes _any_ tests that reference the selected nodes, even if they also reference other unselected nodes. 
 
-For example, if you run `dbt test --select fct_orders`, eager mode will run:
-- Tests directly on `fct_orders`
-- Tests in upstream models (like `fct_order_items`) that reference `fct_orders` 
-- Tests in downstream models that reference `fct_orders`
+For example, if you run `dbt test --select model_b`, eager mode will run:
+- Tests directly on `model_b`
+- Tests in upstream models (like `model_a`) that reference `model_b` 
+- Tests in downstream models that reference `model_b`
 
 dbt builds models that depend on the selected model. In this mode, any tests depending on unbuilt resources will raise an error.
 
