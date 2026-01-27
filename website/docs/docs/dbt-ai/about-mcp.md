@@ -15,13 +15,6 @@ The MCP server provides access to the dbt CLI, [API](/docs/dbt-cloud-apis/overvi
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
-<!--TODO need to create>
-## Architecture
-
-There are two ways to access the dbt-mcp server: locally hosted or remotely hosted on the cloud-based dbt platform.
-
-<-->
-
 ## Server access
 
 You can use the dbt MCP server in two ways: locally or remotely. Choose the setup that best fits your workflow:
