@@ -61,7 +61,7 @@ Update your `models/schema.yml` file to include some descriptions, such as those
    - `dbt docs generate` if you're on <Constant name="core" />
    - `dbt build` if you're on the <Constant name="fusion_engine" />
 2. Click **Catalog** in the navigation menu to launch <Constant name="explorer" />.
-3. In the <Constant name="explorer" /> pane, click the dropdown menu next to your account name and change it from **Production** to **Development**.
+3. In the <Constant name="explorer" /> pane, click the environment selection dropdown menu at the top of the file tree and change it from **Production** to **Development**.
   <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="View your development environment information." />
 4. Select your project from the file tree.
 5. Use the search bar or browse the resource list to find the `customers` model.
