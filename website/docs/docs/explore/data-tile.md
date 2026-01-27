@@ -101,7 +101,7 @@ Follow these steps to embed the data health tile in [Omni](https://omni.co/):
     ```html/text
     <iframe src='https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=ENV_ID_NUMBER&token=<YOUR_METADATA_TOKEN>' title='Exposure Status Tile'></iframe>
     ```
-4. Save the tile and your Omni dashboard should now have a dbt Platform hosted data health tile that is automatically updated based on the state of your dbt environment.
+4. Save the tile and your Omni dashboard should now have a <Constant name="dbt_platform" /> hosted data health tile that is automatically updated based on the state of your dbt environment.
 
 </TabItem>
 
