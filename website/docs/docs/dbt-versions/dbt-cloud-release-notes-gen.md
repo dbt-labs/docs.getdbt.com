@@ -59,42 +59,22 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **dbt platform shows Cost Insights connection test status and actionable errors**: when Cost Insights is enabled, connection settings trigger tests on credential changes and display status plus detailed error information.  
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
 
-- **Cost Insights connection tests: new APIs to trigger tests and check status**.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
-
-- **Cost Insights: filter by resource type**: APIs now support filtering Cost Insights by resource type (defaults remain backward-compatible when omitted).  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+CostInsightsFilter+resourceType -->
-
 - **Support platform metadata credentials for Cost Insights (BigQuery v0, Redshift)**: adds schemas and profile-generation support for separate platform-metadata credentials used by cost and catalog workflows.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
 
 - **Expanded Cost Insights permissions across standard roles**: `cost_insights_read` is available through more standard role sets, and `cost_insights_write` is available for account admins.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
 
-- **Operational controls for Cost Insights backfills**: backfill tooling supports date-range overrides and targeting a single environment to simplify backfills and troubleshooting.  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
-
 ### Search
 
 - **Improved search relevance and highlighting**: ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
   <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
 
-- **Elastic-backed dbt asset search (when enabled)**: the MCP `search` tool now uses Codex’s Elastic-backed search implementation.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/670 -->
-
-- **MCP search resource-type filtering**: the MCP `search` tool accepts optional `resource_types` to narrow results (for example, models only).  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/673 -->
 
 ### Orchestration (Fusion / state-aware orchestration)
 
 - **Support `dbt build --store-failures` through orchestration**: `--store-failures` is preserved when forwarding dbt build arguments.  
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+store-failures -->
-
-- **Expose underlying dbt process exit code in execution metadata**: the dbt process return code is now recorded in execution core data, improving diagnostics and downstream handling.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+core_data.exit_code -->
-
-- **Optional step-level OpenTelemetry artifact upload for Fusion runs** (when enabled): step telemetry artifacts are generated and uploaded as `telemetry-{step}-otel.parquet`.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+orc-3228-fusion-otel-artifact -->
 
 - **Cleaner Fusion logs in run output**: reduces internal noise and improves how key errors (including compilation-style errors) are surfaced.  
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+RecordMessageStatus -->
@@ -131,17 +111,6 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **Webhook payload compatibility for errored runs**: webhook events for errored runs now use `runErroredAt` (instead of `runFinishedAt`) to reduce downstream parsing failures.  
   <!-- PRs: https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+ef0444c1f5f9490fabaca2ffd240c56b0fd0c6e6 -->
 
-- **Reduced PII exposure in logs**: email addresses are now masked in logged summaries of matched dispatch targets.  
-  <!-- PRs: https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+ef0444c1f5f9490fabaca2ffd240c56b0fd0c6e6 -->
-
-### Data quality & correctness
-
-- **Similar Models / Similar Sources are now properly account-scoped**: similarity APIs now scope embeddings/metadata by `account_id` (in addition to environment), improving correctness in multi-account single-tenant setups.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+3b18f6ea1383949f971f58c286ff3c0d6f76caa8 -->
-
-- **Correct `NOT_FOUND` responses for missing catalog run lookups**: catalog run lookups now return `NOT_FOUND` consistently when no record exists.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-artifacts-internal-api/pulls?q=is%3Apr+3b18f6ea1383949f971f58c286ff3c0d6f76caa8 -->
-
 ### Developer experience
 
 - **dbt platform run logs render ANSI/structured output more reliably**: improved rendering and cleanup of escape sequences in step logs.  
@@ -156,12 +125,6 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **More robust inline command results**: malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.  
   <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
 
-- **AI Codegen: invalid client-tool schemas now return 422 (not 500)**.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/662 -->
-
-- **AI Codegen: safer SQL dialect fallback**: if an unknown adapter version is encountered, requests fall back to the `ansi` dialect instead of failing.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/663 -->
-
 ### Visual Editor
 
 - **Clearer errors for duplicate uploaded-source names**: creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.  
@@ -173,11 +136,6 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **Invocation status streaming reliability**: the invocation status SSE endpoint now correctly awaits the status stream.  
   <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
-### Orchestration security
-
-- **Redact auth tokens from URLs in logs**: embedded auth (for example, token-in-URL patterns) is scrubbed before being written to logs.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+x-token-auth -->
-
 ### Orchestration correctness
 
 - **More correct source freshness status in multi-job environments**: freshness status is preserved when a run lacks freshness results but freshness remains configured.  
@@ -186,26 +144,7 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **More robust seed artifact ingestion**: ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
   <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
 
-### Search data isolation
-
-- **Tighter account scoping for Codex-backed queries**: queries now more consistently scope by `account_id` when enabled, improving correctness and isolation.  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+meta-5740-codex-api-cadi https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+META_5740_CODEX_API_CADI -->
-
 ## Behavior Changes
-
-### AI Codegen / MCP (breaking changes & API contract updates)
-
-- **Legacy MCP endpoints removed**: `GET /v1/mcp/tools/list` and `POST /v1/mcp/tools/call` now return 410; migrate to `/v1/mcp/*`.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/664 -->
-
-- **Fusion → LSP toolset rename (and tool name changes)**: the toolset value `fusion_lsp` is now `lsp`, and Fusion-prefixed tool names are simplified (for example, `fusion.compile_sql` → `compile_sql`).  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/664 -->
-
-- **MCP `search` tool is disabled by default**: it won’t appear in tool listings unless explicitly enabled (and requires `account_id` and `user_id`).  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/676 -->
-
-- **Agent playground request shape updated**: the playground now runs via the LangGraph agent implementation and expects the updated message contract used by that agent.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/658 -->
 
 ### Search & APIs (deprecations and response-shape changes)
 
@@ -213,11 +152,6 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
   - `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated.
   - `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
   <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
-
-### Database migrations / operator action required
-
-- **Required DB migration adds `account_id` to `dbt_catalog_applied_state_big`**: if the table is non-empty, plan a backfill so the new required column can be populated safely during migration.  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+dbt_catalog_applied_state_big+account_id https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+resource_account_id+migration.sql -->
 
 ### Platform behavior changes & deprecations
 
@@ -232,18 +166,12 @@ I wrote the finalized single-tenant, customer-facing release notes to `release-n
 - **Existing CSV upload SSE endpoint deprecated**: migrate to the new two-step “upload source” flow.  
   <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
-- **Helm default changed for Codex GraphQL URL**: `codexGqlUrl` now defaults to the internal Codex service name; single-tenant installs may need to override this to match the Codex GraphQL endpoint available in their cluster.  
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/666 -->
 
 ### Orchestration error classification
 
 - **Fusion SAO “panic” failures are now classified as internal errors**: when using Fusion with state-aware orchestration, exit code `2` is now treated as an internal/system error (rather than a user dbt command failure).  
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+CODE_DBT_PANIC -->
 
-### Runtime/container updates
-
-- **Updated Node.js runtime and gateway WAF module**: Codex services update Node.js base images and the Signal Sciences NGINX module version; review if you extend images or rely on specific runtime/WAF behavior.  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+nodejs+24.13.0 https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+SIGSCI_VERSION+1.3.3 -->
 ## January 21, 2026
 
 ### New
