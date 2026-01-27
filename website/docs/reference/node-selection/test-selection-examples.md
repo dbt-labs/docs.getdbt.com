@@ -11,7 +11,7 @@ Test selection works a little differently from other resource selection. This ma
 
 Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.
 
-Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected. [See below](#indirect-selection) for more details.
+Unlike other resource types, tests can also be selected **indirectly** through relationships in your DAG. When you select a model, dbt automatically determines which related tests to run based on how those tests reference models in your project. For example, when you run `dbt test --select fct_orders`, dbt uses **indirect selection** to include tests on upstream models (like `fct_order_items`) that reference `fct_orders`, in addition to tests directly on `fct_orders` itself. [See below](#indirect-selection) for more details on controlling this behavior.
 
 Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 

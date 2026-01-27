@@ -67,11 +67,13 @@ Options:
                 database object in the current environment.
 
  --indirect-selection [eager|cautious|buildable|empty]
-                Choose which tests to select that are
-                adjacent to selected resources. Eager is
-                most inclusive, cautious is most exclusive,
-                and buildable is in between. Empty includes
-                no tests at all.
+                Controls which tests run based on their
+                relationships to selected models in your DAG.
+                Eager (default) is most inclusive and runs
+                tests that reference your selected models.
+                Cautious is most exclusive and only runs tests
+                that exclusively reference selected models.
+                Buildable is in between. Empty runs no tests.
 
  --log-cache-events / --no-log-cache-events
                 Enable verbose logging for relational cache
