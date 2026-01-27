@@ -146,9 +146,9 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 Configuring Slack notifications at the account level is currently available in private beta. To request access, contact your account manager. Only refer to these instructions if you have access to the private beta feature.
 :::
 
-Integrate Slack with <Constant name="dbt_platform" /> at the account level to receive job notifications in Slack. 
+Integrate Slack with <Constant name="dbt_platform" /> at the account level to receive job notifications in Slack. dbt integrates with Slack via OAuth to ensure secure authentication. 
 
-A single <Constant name="dbt_platform" /> account can integrate with one Slack workspace. dbt integrates with Slack via OAuth to ensure secure authentication. 
+A single <Constant name="dbt_platform" /> account can integrate with one Slack workspace. 
 
 ### Prerequisites
 
