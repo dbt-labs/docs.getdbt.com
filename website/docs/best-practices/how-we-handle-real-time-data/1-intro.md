@@ -23,7 +23,7 @@ Anyone can check out this guide, but it's primarily for data engineers and archi
 
 There are two main ways to use dbt to get near real-time data:
 
-- For near real-time (1-15 minutes) &mdash; dbt excels at this and is well-suited for most operational dashboards.
+- For near real-time (5 - 15 minutes) &mdash; dbt excels at this and is well-suited for most operational dashboards.
 - For true real-time (sub-second) &mdash; This requires dedicated streaming databases (ClickHouse, Materialize, Rockset, and so on) in front of or alongside dbt; dbt still owns “analytic” tables and history but not the ultra‑low‑latency read path.
 
 ## How dbt achieves near real-time data
