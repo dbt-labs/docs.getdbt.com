@@ -138,7 +138,7 @@ claude mcp add \
 
 For OAuth authentication (requires static subdomain). Find your static subdomain [these](/docs/cloud/about-cloud/regions-ip-addresses.md#server-access):
 ```shell
-claude mcp add \
+claude mcp add dbt \
 -e DBT_HOST=your-host-with-subdoman \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
