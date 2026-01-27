@@ -84,7 +84,7 @@ Resource search capabilities include using keywords, partial strings (fuzzy sear
 
 <Expandable alt_header="Can I view model execution information for a job that is currently being run?" >
 
-<Constant name="cloud" /> updates the performance charts and metrics after a job run. 
+<Constant name="cloud" /> updates the performance charts and metrics after a job run. However, **Model performance** charts only display data for _completed_ UTC days. This means that runs from the current UTC day won't appear in the charts until the UTC day changes (midnight UTC). For example, if you're in US Pacific time, you won't see the current day's runs reflected until 4:00 PM PT.
 
 </Expandable>
 
