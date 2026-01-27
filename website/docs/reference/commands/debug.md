@@ -72,7 +72,7 @@ Options:
                 Eager (default) is most inclusive and runs
                 tests that reference your selected models.
                 Cautious is most exclusive and only runs tests
-                that exclusively reference selected models.
+                that reference selected models.
                 Buildable is in between. Empty runs no tests.
 
  --log-cache-events / --no-log-cache-events
