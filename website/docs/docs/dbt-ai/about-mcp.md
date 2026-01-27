@@ -92,6 +92,7 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
 - `get_model_health`: Gets health signals for a specific model
+- `get_model_performance`: Gets execution information for models (including tests)
 - `get_all_sources`: Gets all source tables with metadata and freshness information
 - `get_lineage`:  Gets complete lineage (ancestors/descendants) for a dbt resource with depth control and type filtering (excludes macros by default).
 - `get_source_details`: Gets details for a specific source
