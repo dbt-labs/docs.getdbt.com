@@ -118,14 +118,12 @@ Prerequisites:
 - Complete the [local MCP setup](/docs/dbt-ai/setup-local-mcp).
 - Know your configuration method (OAuth <Constant name="dbt_core"/> or environment variables)
 
-### Claude Code setup
-
-1. Run one of these commands based on your use case. Be sure to update the commands for your specific needs:
+In your Claude Code set up, run one of these commands based on your use case. Be sure to update the commands for your specific needs:
 
 <Tabs>
 <TabItem value="cli" label="CLI only">
 
-For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" />):
+For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" /> account):
 
 ```shell
 claude mcp add dbt \
@@ -146,12 +144,23 @@ claude mcp add dbt \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
 ```
+
+Replacing `your-host-with-subdomain`, `path/to/your/dbt/project`, and `path/to/your/dbt/executable` with your actual static subdomain, project path, and dbt executable path.
+
+For example, if your static subdomain is `abc123.us1.dbt.com`, your command would look like this:
+```shell
+claude mcp add dbt \
+-e DBT_HOST=abc123.us1.dbt.com \ ## this is the static subdomain
+-e DBT_PROJECT_DIR=/path/to/your/dbt/project \
+-e DBT_PATH=/path/to/your/dbt/executable \
+-- uvx dbt-mcp
+```
 </TabItem>
 </Tabs>
 
 #### Using an `.env` file
 
-If you prefer to manage environment variables in a separate file you can use the `--env-file` parameter from `uvx`:
+If you prefer to manage environment variables in a separate file, you can use the `--env-file` parameter from `uvx`:
 
 ```bash
 claude mcp add dbt -- uvx --env-file <path-to-.env-file> dbt-mcp
