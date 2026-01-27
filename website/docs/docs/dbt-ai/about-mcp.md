@@ -15,13 +15,6 @@ The MCP server provides access to the dbt CLI, [API](/docs/dbt-cloud-apis/overvi
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
-<!--TODO need to create>
-## Architecture
-
-There are two ways to access the dbt-mcp server: locally hosted or remotely hosted on the cloud-based dbt platform.
-
-<-->
-
 ## Server access
 
 You can use the dbt MCP server in two ways: locally or remotely. Choose the setup that best fits your workflow:
@@ -61,6 +54,7 @@ The dbt MCP server has access to many parts of the dbt experience related to dev
 | SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
 | Administrative API | ✅ | ❌ |
+| Codegen Tools | ✅ | ❌ |
 | Fusion Tools | ✅ | ✅ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
@@ -70,11 +64,13 @@ Note that access to the Discovery API and the Semantic Layer API is limited depe
 - `build`: Executes models, tests, snapshots, and seeds in dependency order
 - `compile`: Generates executable SQL from models, tests, and analyses without running them
 - `docs`: Generates documentation for the dbt project
-- `ls` (list): Lists resources in the dbt project, such as models and tests
-- `parse`: Parses and validates the project’s files for syntax correctness
+- `list`: Lists resources in the dbt project, such as models and tests
+- `parse`: Parses and validates the project's files for syntax correctness
 - `run`: Executes models to materialize them in the database
 - `test`: Runs tests to validate data and model integrity
 - `show`: Runs a query against the data warehouse
+- `get_model_lineage_dev`: Gets the lineage of a model from the local development environment
+- `get_node_details_dev`: Gets details about a specific node from the local development environment
 
 Allowing your client to utilize dbt commands through the MCP tooling could modify your data models, sources, and warehouse objects. Proceed only if you trust the client and understand the potential impact.
 
@@ -84,6 +80,7 @@ Allowing your client to utilize dbt commands through the MCP tooling could modif
 To learn more about the dbt Semantic layer, click [here](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - `list_metrics`: Retrieves all defined metrics
+- `list_saved_queries`: Retrieves all saved queries
 - `get_dimensions`: Gets dimensions associated with specified metrics
 - `get_entities`: Gets entities associated with specified metrics
 - `query_metrics`: Query metrics with optional grouping, ordering, filtering, and limiting
@@ -111,6 +108,7 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_semantic_model_details`: Gets details for a specific semantic model
 - `get_snapshot_details`: Gets details for a specific snapshot
 - `get_test_details`: Gets details for a specific test
+- `search`: Searches for dbt resources using natural language queries
 
 ### Administrative API
 
@@ -118,6 +116,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 
 - `list_jobs`: List all jobs in a dbt account
 - `get_job_details`: Get detailed information for a specific job including configuration and settings
+- `get_project_details`: Get project information for a specific dbt project
 - `trigger_job_run`: Trigger a job run with optional parameter overrides like Git branch, schema, or execution parameters
 - `list_jobs_runs`: List runs in an account with optional filtering by job, status, or other criteria
 - `get_job_run_details`: Get comprehensive run information including execution details, steps, artifacts, and debug logs
@@ -151,6 +150,12 @@ A set of tools that leverage the <Constant name="fusion" /> engine for advanced 
 A set of tools that leverage the <Constant name="fusion" /> engine through a locally running <Constant name="fusion" /> Language Server Protocol (LSP) in VS Code or Cursor with the dbt VS Code extension.
 
 - `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
+
+### MCP server metadata
+
+These tools provide information about the MCP server itself. They are disabled by default. To enable them, set the `DISABLE_MCP_SERVER_METADATA` environment variable to `false`.
+
+- `get_mcp_server_version`: Returns the current version of the dbt MCP server.
 
 ## MCP integrations
 
