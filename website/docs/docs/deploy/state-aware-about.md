@@ -40,7 +40,7 @@ For example, you can configure your project so that <Constant name="cloud" /> sk
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
-**Note:** When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state. This ensures models with unresolved quality issues are re-evaluated.
+**Note:** When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state. This ensures models with unresolved quality issues are reevaluated.
 
 ### Handling concurrent jobs
 
