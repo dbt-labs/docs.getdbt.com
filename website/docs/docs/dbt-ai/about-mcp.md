@@ -151,7 +151,7 @@ A set of tools that leverage the <Constant name="fusion" /> engine through a loc
 
 - `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
 
-### MCP Server Metadata
+### MCP server metadata
 
 These tools provide information about the MCP server itself. They are disabled by default. To enable them, set the `DISABLE_MCP_SERVER_METADATA` environment variable to `false`.
 
