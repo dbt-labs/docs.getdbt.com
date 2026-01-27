@@ -137,11 +137,11 @@ claude mcp add \
 </TabItem>
 <TabItem value="oauth" label="OAuth with dbt platform">
 
-For OAuth authentication (requires static subdomain). Find your static subdomain [these](/docs/cloud/about-cloud/regions-ip-addresses.md#server-access):
+For OAuth authentication (requires static subdomain). Find your static subdomain [here](/docs/cloud/about-cloud/access-regions-ip-addresses):
 
 ```shell
 claude mcp add dbt \
--e DBT_HOST=your-host-with-subdoman \
+-e DBT_HOST=your-host-with-subdomain \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
