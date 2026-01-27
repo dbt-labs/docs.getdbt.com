@@ -63,7 +63,7 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 2. Click **Catalog** in the navigation menu to launch <Constant name="explorer" />.
 3. In the <Constant name="explorer" /> pane, click the dropdown menu next to your account name and change it from **Production** to **Development**.
   <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="View your development environment information." />
-4. Select your project from the project dropdown.
+4. Select your project from the file tree.
 5. Use the search bar or browse the resource list to find the `customers` model.
 6. Click the model to view its details, including the descriptions you added.
 
@@ -80,10 +80,10 @@ Alternatively, you can view docs directly from the IDE. Keep in mind that this i
 1. In the IDE, run one of the following commands:
    - `dbt docs generate` if you're on <Constant name="core" />
    - `dbt build` if you're on the <Constant name="fusion_engine" />
-2. From the navigation bar, click the **documentation icon** located to the right of the **branch name**.
-   <Lightbox src="/img/docs/collaborate/dbt-explorer/docs-icon.png" width="30%" title="The docs icon in the Studio IDE." />
+2. From the navigation bar, click the **View docs** icon located to the right of the **branch name**.
+   <Lightbox src="/img/docs/collaborate/dbt-explorer/docs-icon.png" width="30%" title="The View docs icon in the Studio IDE." />
 3. From **Projects**, select your project name and expand the folders.
-4. Click **models** > **Marts** > **customers**.
+4. Click **models** > **marts** > **customers**.
   <Lightbox src="/img/docs/collaborate/dbt-explorer/legacy-docs-view.png" width="85%" title="View your model's documentation in the legacy docs view." />
 
 </TabItem>
