@@ -15,13 +15,6 @@ The MCP server provides access to the dbt CLI, [API](/docs/dbt-cloud-apis/overvi
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
-<!--TODO need to create>
-## Architecture
-
-There are two ways to access the dbt-mcp server: locally hosted or remotely hosted on the cloud-based dbt platform.
-
-<-->
-
 ## Server access
 
 You can use the dbt MCP server in two ways: locally or remotely. Choose the setup that best fits your workflow:
@@ -99,6 +92,7 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_model_parents`: Gets the parent nodes of a specific model
 - `get_model_children`: Gets the children models of a specific model
 - `get_model_health`: Gets health signals for a specific model
+- `get_model_performance`: Gets execution information for models (including tests)
 - `get_all_sources`: Gets all source tables with metadata and freshness information
 - `get_lineage`:  Gets complete lineage (ancestors/descendants) for a dbt resource with depth control and type filtering (excludes macros by default).
 - `get_source_details`: Gets details for a specific source
