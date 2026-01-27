@@ -97,7 +97,7 @@ Follow these steps to embed the data health tile in [Omni](https://omni.co/):
 
 1. Create a dashboard in Omni.
 2. Copy the iFrame snippet available in <Constant name="explorer" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
-3. Add a new Text / Markdown [element](https://docs.omni.co/visualize-present/dashboards/text-markdown) in your Dashboard with the code from step 2, it should be in the following format:
+3. Add a new Text or Markdown [element](https://docs.omni.co/visualize-present/dashboards/text-markdown) in your Dashboard with the code from step 2, it should be in the following format:
     ```html
     <iframe src='https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=ENV_ID_NUMBER&token=<YOUR_METADATA_TOKEN>' title='Exposure Status Tile'></iframe>
     ```
