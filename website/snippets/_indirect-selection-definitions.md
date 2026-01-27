@@ -19,7 +19,7 @@ dbt builds models that depend on the selected model. In this mode, any tests dep
 
 #### Buildable mode
 
-Middle ground and only runs tests that refer to selected nodes (or their ancestors). This mode is slightly more inclusive than `cautious` by including tests whose references are each within the selected nodes (or their ancestors). This mode is useful when a test depends on a model _and_ a direct ancestor of that model, like confirming an aggregation has the same totals as its input.
+Buildable mode is a middle ground between `cautious` and `eager`, running only tests that reference selected nodes (or their ancestors). This mode is slightly more inclusive than `cautious` by including tests whose references are each within the selected nodes (or their ancestors). This mode is useful when a test depends on a model _and_ a direct ancestor of that model, like confirming an aggregation has the same totals as its input.
 
 #### Cautious mode
 
