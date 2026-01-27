@@ -115,8 +115,11 @@ dbt build --select "orders" --indirect-selection=empty
 
 Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
-The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
+The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG.
 
+The examples use _eager_ mode by default for indirect selection, unless you specify another mode (like `--indirect-selection=cautious`).
+
+The selection operators (`+`, `tags`, and so on) determine which models are selected; the indirect selection mode determines which tests run for those models.
 
   ```bash
   # Run tests on a model (indirect selection) 
@@ -139,6 +142,9 @@ The following examples should feel somewhat familiar if you're used to executing
 
   # Run tests on all models with a particular materialization (indirect selection)
   dbt test --select "config.materialized:table"
+  
+  # To change the indirect selection mode, add the flag:
+  dbt test --select "customers" --indirect-selection=cautious
 
   ```
 
