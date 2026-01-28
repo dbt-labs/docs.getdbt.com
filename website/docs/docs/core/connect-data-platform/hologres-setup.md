@@ -5,7 +5,7 @@ meta:
   maintained_by: Alibaba Cloud Hologres Team
   authors: "Alibaba Cloud Hologres Team"
   github_repo: "aliyun/dbt-hologres"
-  pypi_package: "dbt-hologres"
+  pypi_package: "dbt-alibaba-cloud-hologres"
   min_core_version: "v1.8.0"
   cloud_support: Not Supported
   platform_name: "Hologres"
@@ -146,6 +146,6 @@ Full support for database constraints including:
 
 ## References
 
-- [dbt-hologres GitHub Repository](https://github.com/aliyun/dbt-hologres)
+- [dbt-alibaba-cloud-hologres GitHub Repository](https://github.com/aliyun/dbt-hologres)
 - [Hologres Documentation](https://www.alibabacloud.com/help/en/hologres/)
 - [Hologres Dynamic Table Guide](https://www.alibabacloud.com/help/en/hologres/user-guide/introduction-to-dynamic-table)
