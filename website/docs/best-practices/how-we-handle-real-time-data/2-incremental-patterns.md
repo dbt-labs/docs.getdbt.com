@@ -28,16 +28,16 @@ Use this pattern when raw events continuously land into a staging table and you 
 
 #### Example model
 
-In this example, let's assume you have raw events continuously landing into `raw.events` (using Snowpipe, Databricks Auto Loader, Kafka, or a similar ingestion mechanism) and you're looking for a near real‑time fact table `analytics.fct_events` updated every few minutes.
+In this example, assume you have raw events continuously landing into `raw.events` (using Snowpipe, Databricks Auto Loader, Kafka, or a similar ingestion mechanism) and you're looking for a near real‑time fact table `analytics.fct_events` updated every few minutes.
 
-You'll configure the following sql model to make this work with the following configs:
+Configure the SQL model with the following settings:
 
-- Use `incremental` filter to only scan rows newer than the latest timestamp already in the target.
-- `incremental_strategy='merge'` with `unique_key=event_id` gives you idempotent upserts (inserts + updates).
-- Clustering by date using `cluster_by=['event_date']` helps with query pruning during `MERGE` operations (syntax varies by warehouse).
-- Run this model every few minutes to achieve a freshness SLA measured in minutes, depending on ingestion and job scheduling.
+- Use the `incremental` filter to only scan rows newer than the latest timestamp already in the target.
+- Use `incremental_strategy='merge'` with `unique_key=event_id` gives you idempotent upserts (inserts + updates).
+- Cluster by date using `cluster_by=['event_date']` helps with query pruning during `MERGE` operations (syntax varies by warehouse).
+- Run the model every few minutes to achieve a freshness SLA measured in minutes, depending on ingestion and job scheduling.
 
-The following example uses Snowflake SQL syntax (`::`  type casting, `timestamp_ntz`, `cluster_by` config). Make sure you adapt the sql and clustering syntax for your warehouse.
+The following example uses Snowflake SQL syntax (`::`  type casting, `timestamp_ntz`, `cluster_by` config). Make sure you adapt the SQL and clustering syntax for your warehouse.
 
 <File name="models/fct_events.sql">
 
@@ -96,7 +96,7 @@ from deduped;
 ```
 </File>
 
-#### Best practices
+To ensure the best results:
 
 - Use clustering keys wisely for better `MERGE` performance.
 - Monitor `MERGE` performance as your table grows.
@@ -106,11 +106,11 @@ from deduped;
 
 This pattern leverages Snowflake's native CDC capabilities through [Streams](https://docs.snowflake.com/en/user-guide/streams-intro), a Snowflake-specific feature which tracks changes (inserts, updates, deletes) to source tables.
 
-#### When to use CDC
+Use CDC when:
 
-- You have source tables that receive frequent updates (not just appends)
-- You need to capture both new records and changes to existing records
-- You want to avoid full table scans on large source tables
+- You have source tables that receive frequent updates (not just appends).
+- You need to capture both new records and changes to existing records.
+- You want to avoid full table scans on large source tables.
 
 #### Setup
 To use this pattern, set up the stream in your data warehouse and then create a model to consume the stream.
@@ -170,15 +170,16 @@ from filtered;
 ```
 </File>
 
-#### Key differences from [pattern 1](#incremental-merge-from-append-only-tables)
+### Pattern distinctions
+There are some key differences from [pattern 1](#incremental-merge-from-append-only-tables):
 
-- Streams only return changed rows, so you don’t need an `is_incremental()` time filter. Each run just processes whatever changes are available at the moment.
+- Streams only return changed rows, so you don’t need an `is_incremental()` time filter. Each run processes only the changes available at the moment.
 - Run the model every few minutes to pull new changes and merge them into `fct_events`.
-- This gives you a CDC-style pipeline: Snowflake Streams capture changes, and dbt handles transformations, tests, and lineage.
+- This gives you a CDC-style pipeline. Snowflake Streams captures changes, and dbt handles transformations, tests, and lineage.
 
 ## Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet, [see the incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
+For large `fact` tables where backfills or long lookback windows are challenging, use `iincremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. See [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
 
 :::info microbatch must have event_time
 
@@ -223,7 +224,7 @@ from {{ ref('stg_events') }};
 
 #### Key behavior
 
-- Use microbatch for massive fact tables (clickstream, IoT, point-of-sale) with multi-year history
+- Use microbatch for massive fact tables (clickstream, IoT, point-of-sale) with multi-year history.
 - No `is_incremental() block` needed &mdash; dbt automatically generates the appropriate `WHERE event_ts BETWEEN..` predicates per batch based on `event_time`, `batch_size`, `begin`, `lookback`, and so on.
 - Each run processes multiple smaller queries (one per batch), making larger backfills safer and easier to retry.
 - The `lookback` parameter automatically handles late-arriving data by reprocessing recent batches.
@@ -231,11 +232,10 @@ from {{ ref('stg_events') }};
 
 ## Choosing the right incremental pattern
 
-You can choose the right incremental pattern based on your use case. 
+The pattern you select will depend on your use case. Start with [pattern 1](#incremental-merge-from-append-only-tables) (`MERGE`), it's appropriate for most use cases. Upgrade to [pattern 2](#cdc-with-snowflake-streams) (use your data warehouse's native CDC features) when you need efficient CDC. Reach for [pattern 3](#microbatch-for-large-time-series-tables) (Microbatch) when dealing with massive scale.
 
-For example, start with [pattern 1](#incremental-merge-from-append-only-tables) (`MERGE`) for most use cases. Upgrade to [pattern 2](#cdc-with-snowflake-streams) (use your data warehouse's native CDC features) when you need efficient CDC. Reach for [pattern 3](#microbatch-for-large-time-series-tables) (Microbatch) when dealing with massive scale.
 
-Here's a table to help you choose the right pattern:
+Use the following table to help you choose the right pattern:
 
 | Pattern | Best for | Key benefit |
 | ------- | -------- | ----------- |
@@ -244,7 +244,7 @@ Here's a table to help you choose the right pattern:
 | Microbatch | Massive time-series tables | Safe backfills, late-data handling |
 
 
-For more information, refer to:
+## Related docs
 - [Incremental models](/docs/build/incremental-models-overview)
 - [Microbatch incremental models](/docs/build/incremental-microbatch)
 - [Configuring incremental models in dbt](/docs/build/incremental-models)
