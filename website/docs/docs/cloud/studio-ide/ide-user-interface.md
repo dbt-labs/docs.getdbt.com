@@ -218,7 +218,7 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
 
 #### Global Command Palette
   The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-search-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### <Constant name="cloud_ide" /> Status modal
   The <Constant name="cloud_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="cloud_ide" />. Open this by clicking on the <Constant name="cloud_ide" /> Status button.
