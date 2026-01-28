@@ -12,12 +12,15 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
 
+Contracts give you control over how schemas are enforced, whether that’s on a single model or consistently across many models in a project.
+
 ## Support
 
-At present, model contracts are supported for:
-- SQL models (not yet Python)
-- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns` or `on_schema_change: fail`)
-- The most popular data platforms — though support and enforcement of different [constraint types](/reference/resource-properties/constraints) vary by platform
+import Contractsupport from '/snippets/_contract-support.md'; 
+
+<Contractsupport />
+
+Refer to [Example usage](/reference/resource-configs/contract#example) to see how to apply contracts in your project.
 
 ## Data type aliasing
 
@@ -46,7 +49,7 @@ When dbt compares data types, it will not compare granular details such as size,
 
 Note that you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides a warning if you don't specify precision and scale when providing a numeric data type.
 
-### Example
+### Example usage
 
 <File name='models/dim_customers.yml'>
 
@@ -96,6 +99,70 @@ When you `dbt run` your model, _before_ dbt has materialized it as a table in th
 20:53:45    > in macro assert_columns_equivalent (macros/materializations/models/table/columns_spec_ddl.sql)
 ```
 
+<Tabs>
+  <TabItem value="dbt_project.yml" label="dbt_project.yml">
+
+  Use a contract enforcement in your `dbt_project.yml` to enforce contracts consistently across multiple models:
+
+    ```yml
+
+    models:
+      property_management:  # replace with your dbt project name
+        +contract:
+          enforced: true
+
+    ```
+
+  </TabItem>
+ 
+  <TabItem value="properties.yml" label="properties.yml">
+
+  Define a model’s contract in a `properties.yml` by specifying the expected columns and data types:
+
+  ```yml
+
+version: 2
+
+    models:
+      - name: stg_rental_applications  # example model name — replace with your model
+        config:
+          contract:
+            enforced: true
+        columns:
+          - name: id          # example column — replace with your column name
+            data_type: int    # replace with the column's data type
+          - name: created_at  # example column — replace with your column name
+            data_type: timestamp # replace with the column's data type
+          - name: status      # example column — replace with your column name
+            data_type: string # replace with the column's data type
+
+  ```
+
+    </TabItem>
+ 
+  <TabItem value="SQL model file" label="SQL model file">
+
+  Enforce a contract in a model SQL file when you want to apply it to a single model and maintain fine-grained control: 
+
+  ```sql
+
+  {{ config(
+    contract = { "enforced": true }  -- enable contract enforcement for this model
+  ) }}
+
+  select
+    id,          -- example column — replace with your column
+    created_at,  -- example column — replace with your column
+    status       -- example column — replace with your column
+  from {{ source('property_management', 'rental_applications') }}  -- replace with your source name and table
+
+  ```
+
+  </TabItem>
+
+</Tabs>
+
+Refer to [General configurations](/reference/model-configs#general-configurations) for more information on the supported configs available for model SQL files, `dbt_project.yml` and `properties.yml`.
 
 ### Incremental models and `on_schema_change`
 
