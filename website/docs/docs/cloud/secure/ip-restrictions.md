@@ -1,13 +1,13 @@
 ---
-title: "Configuring IP restrictions"
+title: "Configuring public IP restrictions"
 id: ip-restrictions
-description: "Configuring IP restrictions to outside traffic from accessing your dbt environment"
-sidebar_label: "IP restrictions"
+description: "Restrict public access to dbt Cloud by allowing only specific IP addresses"
+sidebar_label: "Public IP restrictions"
 pagination_next: "docs/cloud/secure/about-private-connectivity"
 pagination_prev: null
 ---
 
-# Configuring IP restrictions <Lifecycle status="managed_plus" />
+# Configuring public IP restrictions <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
 

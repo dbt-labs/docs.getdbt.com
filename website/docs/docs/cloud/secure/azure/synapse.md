@@ -2,7 +2,7 @@
 title: "Configuring Private Link for Azure Synapse"
 id: azure-synapse
 description: "Configuring Private Link for Azure Synapse"
-sidebar_label: "Synapse"
+sidebar_label: "Azure Synapse"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';

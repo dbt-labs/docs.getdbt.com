@@ -213,11 +213,9 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Network security",
-              link: { type: "doc", id: "docs/cloud/secure/network-security" },
+              link: { type: "doc", id: "docs/cloud/secure/about-private-connectivity" },
               items: [
-                "docs/cloud/secure/network-security",
                 "docs/cloud/secure/ip-restrictions",
-                "docs/cloud/secure/about-private-connectivity",
                 {
                   type: "category",
                   label: "AWS",

@@ -31,3 +31,13 @@ For more details, refer to the [AWS PrivateLink documentation](https://docs.aws.
 
 - [Self-hosted services (VCS, databases, and more)](/docs/cloud/secure/aws/aws-self-hosted)
 
+---
+
+## Cross-region private connections
+
+dbt Labs maintains globally connected private networks to host private endpoints across AWS regions. This allows <Constant name="cloud" /> environments to connect to supported regions from any <Constant name="cloud" /> instance within AWS. Access to these endpoints is protected by security groups, network policies, and application connection safeguards, in addition to the authentication and authorization mechanisms provided by each connected platform.
+
+:::caution Environment variables
+Using [Environment variables](/docs/build/environment-variables) when configuring private connection endpoints isn't supported in <Constant name="cloud" />. Instead, use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to dynamically change these values in your <Constant name="cloud" /> environment.
+:::
+

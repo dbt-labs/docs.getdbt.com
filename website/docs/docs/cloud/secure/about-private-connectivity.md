@@ -1,13 +1,36 @@
 ---
-title: "About private connectivity"
+title: "Network security"
 id: about-private-connectivity
-description: "Configuring private connections"
-sidebar_label: "About private connectivity"
+description: "Learn about network security options for dbt Cloud"
+sidebar_label: "Network security"
+pagination_next: "docs/cloud/secure/ip-restrictions"
+pagination_prev: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
-import PrivateLinkHostnameWarning from '/snippets/_private-connection-hostname-restriction.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
+
+## How do you want to connect to dbt Cloud?
+
+<div className="grid--2-col">
+
+<Card
+    title="Over the public internet"
+    body="Control access by restricting connections to specific public IP addresses."
+    link="/docs/cloud/secure/ip-restrictions"
+    icon="dbt-bit"/>
+
+<Card
+    title="Over a private network"
+    body="Connect securely without traversing the public internet using PrivateLink or Private Service Connect."
+    link="#private-connectivity"
+    icon="dbt-bit"/>
+
+</div>
+
+---
+
+## Private connectivity
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
@@ -15,10 +38,7 @@ Private connections enables secure communication from any <Constant name="cloud"
 
 <CloudProviders type='a data platform' />
 
----
-
-
-## Choose your cloud platform
+### Choose your cloud platform
 
 Select your cloud platform to view private connectivity options, support matrix, and configuration guides.
 
@@ -44,10 +64,3 @@ Select your cloud platform to view private connectivity options, support matrix,
 
 </div>
 
----
-
-## Cross-region private connections
-
-dbt Labs has globally connected private networks specifically used to host private endpoints, which are connected to <Constant name="cloud" /> instance environments. This connectivity allows for <Constant name="cloud" /> environments to connect to any supported region from any <Constant name="cloud" /> instance within the same cloud provider network. To ensure security, access to these endpoints is protected by security groups, network policies, and application connection safeguards, in addition to the authentication and authorization mechanisms provided by each of the connected platforms.
-
-<PrivateLinkHostnameWarning features={'/snippets/_private-connection-hostname-restriction.md'}/>

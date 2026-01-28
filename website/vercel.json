@@ -40,7 +40,12 @@
   "redirects": [
     {
       "source": "/docs/cloud/secure/secure-your-tenant",
-      "destination": "/docs/cloud/secure/network-security",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/network-security",
+      "destination": "/docs/cloud/secure/about-private-connectivity",
       "permanent": true
     },
     {
