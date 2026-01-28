@@ -43,7 +43,7 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 
 7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
 
-## Search and commands
+## Search bar and command palette
 
 The <Constant name="cloud_ide" /> provides tools to help you quickly navigate your project's files, find information, run commands, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
 
