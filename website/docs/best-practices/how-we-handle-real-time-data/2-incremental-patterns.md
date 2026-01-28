@@ -176,7 +176,7 @@ There are some key differences from [pattern 1](#incremental-merge-from-append-o
 
 ### Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet, [see the incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
+For large `fact` tables where backfills or long lookback windows are challenging, use `iincremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. See [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
 
 Use microbatch when:
 
@@ -216,7 +216,7 @@ from {{ ref('stg_events') }};
 
 #### Key behavior
 
-- Use microbatch for massive fact tables (clickstream, IoT, point-of-sale) with multi-year history
+- Use microbatch for massive fact tables (clickstream, IoT, point-of-sale) with multi-year history.
 - No `is_incremental() block` needed &mdash; dbt automatically generates the appropriate `WHERE event_ts BETWEEN..` predicates per batch based on `event_time`, `batch_size`, `begin`, `lookback`, and so on.
 - Each run processes multiple smaller queries (one per batch), making larger backfills safer and easier to retry.
 - The `lookback` parameter automatically handles late-arriving data by reprocessing recent batches.
@@ -228,7 +228,7 @@ You can choose the right incremental pattern based on your use case.
 
 For example, start with [pattern 1](#incremental-merge-from-append-only-tables) (`MERGE`) for most use cases. Upgrade to [pattern 2](#cdc-with-snowflake-streams) (use your data warehouse's native CDC features) when you need efficient CDC. Reach for [pattern 3](#microbatch-for-large-time-series-tables) (Microbatch) when dealing with massive scale.
 
-Here's a table to help you choose the right pattern:
+Use the following table to help you choose the right pattern:
 
 | Pattern | Best for | Key benefit |
 | ------- | -------- | ----------- |
@@ -237,7 +237,7 @@ Here's a table to help you choose the right pattern:
 | Microbatch | Massive time-series tables | Safe backfills, late-data handling |
 
 
-For more information, refer to:
+## Related docs
 - [Incremental models](/docs/build/incremental-models-overview)
 - [Microbatch incremental models](/docs/build/incremental-microbatch)
 - [Configuring incremental models in dbt](/docs/build/incremental-models)
