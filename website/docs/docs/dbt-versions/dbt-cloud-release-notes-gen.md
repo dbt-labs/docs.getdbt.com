@@ -51,8 +51,6 @@ Release notes are grouped by date for single-tenant environments.
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-  - **Copilot chat mode switching UI improvements**: The chat mode switcher is now a dropdown with short descriptions, and "Agent" is labeled Beta when streaming agents are enabled.  
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/pulls?q=is%3Apr+6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4 -->
 
 ### Fixes
 
