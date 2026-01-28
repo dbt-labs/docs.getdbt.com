@@ -28,20 +28,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Enhancements
 
-- **Cost Insights**
-  - **More accurate Cost Insights baselines**: 7‑day averages and savings now account for all job runs in an environment (weighted by execution count), improving results for newly created or recently changed jobs.  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
-  - **Richer Cost Insights connection testing**: Expanded tests (Snowflake, BigQuery, Databricks) return more actionable errors (for example, missing tables/columns).  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
-  - **dbt platform improvements for Cost Insights access and onboarding**: Tabs and deep links now behave consistently when Cost Insights is disabled or the user lacks permission (including project-scoped permissions). New in-product banners guide required enablement (Fusion, state-aware orchestration, Cost Insights, and permissions).  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-  - **dbt platform shows Cost Insights connection test status and actionable errors**: When Cost Insights is enabled, connection settings trigger tests on credential changes and display status plus detailed error information.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-  - **Support platform metadata credentials for Cost Insights (BigQuery v0, Redshift)**: Adds schemas and profile-generation support for separate platform-metadata credentials used by cost and catalog workflows.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
-  - **Expanded Cost Insights permissions across standard roles**: `cost_insights_read` is available through more standard role sets, and `cost_insights_write` is available for account admins.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
-
 - **Catalog & Search**
 
   - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
@@ -106,8 +92,6 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
 
 - **dbt platform**
-  - **Cost Insights connection test APIs now surface timeouts as HTTP 408**.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
   - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
   - **Fusion SAO "panic" failures are now classified as internal errors**: When using Fusion with state-aware orchestration, exit code `2` is now treated as an internal/system error (rather than a user dbt command failure).  
