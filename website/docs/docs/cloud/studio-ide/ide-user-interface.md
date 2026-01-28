@@ -64,7 +64,7 @@ The search feature enables you to quickly parse your files for specific terms or
 
 ###  Command palette
 
-The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options.
+The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options. Actions that support keyboard shortcuts will display them to the right of the text.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
 
