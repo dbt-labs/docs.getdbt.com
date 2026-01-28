@@ -42,7 +42,7 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 
 First, be sure to enable [source freshness](/docs/deploy/source-freshness) in the job that generates this exposure.
 
-1. Navigate to <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
+1. Navigate to <Constant name="explorer" /> by clicking on the **Catalog** link in the navigation.
 2. In the main **Overview** page, go to the left navigation.
 3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
