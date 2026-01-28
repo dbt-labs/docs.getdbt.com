@@ -11,7 +11,12 @@ This section covers three core incremental patterns for achieving near real-time
 2. [CDC with Snowflake Streams](#cdc-with-snowflake-streams)
 3. [Microbatch for large time-series tables](#microbatch-for-large-time-series-tables)
 
-### Pattern 1: Incremental MERGE from append-only tables {#incremental-merge-from-append-only-tables}
+
+:::info Snowflake-specific pattern
+Some patterns on this guide uses Snowflake-specific features. Other warehouses have similar features with different implementations.  Refer to the [additional resources](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features#resources-by-warehouse) section for adapter-specific documentation.  
+:::
+
+## Pattern 1: Incremental MERGE from append-only tables {#incremental-merge-from-append-only-tables}
 
 This pattern uses the `merge` incremental strategy to upsert new and updated rows into a target table. Most data platforms support the `merge` strategy. See the [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for details.
 
@@ -97,15 +102,9 @@ from deduped;
 - Monitor `MERGE` performance as your table grows.
 - Consider adding a lookback window (for example, `event_ts > max(event_ts) - interval '1 hour'`) to handle late-arriving data.
 
-### Pattern 2: CDC with Snowflake Streams {#cdc-with-snowflake-streams}
+## Pattern 2: CDC with Snowflake Streams {#cdc-with-snowflake-streams}
 
-:::info Snowflake-specific pattern
-This pattern uses [Snowflake Streams](https://docs.snowflake.com/en/user-guide/streams-intro), a Snowflake-specific feature. Other warehouses have similar change data capture (CDC) capabilities with different implementations.
- 
-Refer to the [additional resources](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features#resources-by-warehouse) section for adapter-specific documentation.
-:::
-
-This pattern leverages Snowflake's native CDC capabilities through Streams, which track changes (inserts, updates, deletes) to source tables.
+This pattern leverages Snowflake's native CDC capabilities through [Streams](https://docs.snowflake.com/en/user-guide/streams-intro), a Snowflake-specific feature which tracks changes (inserts, updates, deletes) to source tables.
 
 #### When to use CDC
 
@@ -114,6 +113,7 @@ This pattern leverages Snowflake's native CDC capabilities through Streams, whic
 - You want to avoid full table scans on large source tables
 
 #### Setup
+To use this pattern, set up the stream in your data warehouse and then create a model to consume the stream.
 
 1. Create the stream (one-time, outside dbt):
 
@@ -123,6 +123,8 @@ on table RAW.EVENTS;
 ```
 
 2. Create a model consuming the stream:
+
+<File name="models/fct_events_cdc.sql">
 
 ```sql
 {{ config(
@@ -166,6 +168,7 @@ select
     payload
 from filtered;
 ```
+</File>
 
 #### Key differences from [pattern 1](#incremental-merge-from-append-only-tables)
 
@@ -173,9 +176,14 @@ from filtered;
 - Run the model every few minutes to pull new changes and merge them into `fct_events`.
 - This gives you a CDC-style pipeline: Snowflake Streams capture changes, and dbt handles transformations, tests, and lineage.
 
-### Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
+## Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
 For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet, [see the incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
+
+:::info microbatch must have event_time
+
+Every upstream model feeding this microbatch model must also be configured with `event_time` so dbt can push time-filters upstream. Otherwise, each batch could re-scan full upstream tables.
+:::
 
 #### When to use microbatch
 
@@ -184,12 +192,11 @@ For large `fact` tables where backfills or long lookback windows are challenging
 - You need to reprocess data in manageable chunks
 - Late-arriving data is common
 
-:::info microbatch must have event_time
-
-Every upstream model feeding this microbatch model must also be configured with `event_time` so dbt can push time-filters upstream. Otherwise, each batch could re-scan full upstream tables.
-:::
-
 #### Model configuration
+
+Let's say you have a `fact_events` table with a `event_ts` column and you want to process it in hourly chunks. You can configure the model as follows:
+
+<File name="models/fct_events_microbatch.sql">
 
 ```sql
 {{ config(
@@ -212,6 +219,7 @@ select
     payload
 from {{ ref('stg_events') }};
 ```
+</File>
 
 #### Key behavior
 
