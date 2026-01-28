@@ -48,7 +48,6 @@ Release notes are grouped by date for single-tenant environments.
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-  - **Copilot chat user experience improvements**: Improved chat entry points and behavior, including a new alternate "agentic" chat UI behind a flag.  
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
