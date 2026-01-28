@@ -10,7 +10,7 @@ The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders on the left, editor on the right an command/console at the bottom"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders and search on the left, editor on the right, search palette at the top, and command/console at the bottom"/>
 
 ## Basic layout
 
@@ -25,7 +25,7 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 
 3. [**Version Control**](#editing-features) &mdash; The <Constant name="cloud_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
-4. **File <Constant name="explorer" /> &mdash;** The File <Constant name="explorer" /> shows the filetree of your repository. You can:
+4. **File explorer &mdash;** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
     - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
@@ -42,6 +42,52 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
 
 7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
+
+## Search your project
+
+The <Constant name="cloud_ide" /> provides tools to help you quickly navigate your project's files, find information, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-command.png" width="90%" title="Use the search bar and search palette to quickly navigate your file tree and open tabs."/>
+
+1. [Search and replace](#search-and-replace)
+2. [Search palette](#search-palette)
+
+### Search and replace
+
+The search feature enables you to quickly parse your files for specific terms or phrases and replace them with the click of a button.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-replace.png" width="50%" title="Search files for specific terms and quickly replace them." />
+
+1. Toggle between the **file tree** and **search** navigation panes.
+2. Search for words or phrases. Enhance the search to match case and/or whole words. You can also input replacement words or phrases. Click the icon next to the **Replace** bar to replace all entries.
+3. Navigate the search results. Click an entry to open the related file and highlight it on the screen. If you've entered replacement text, you'll see a preview of the new syntax. Click the symbol next to an entry to substitute the text with whatever is in the **Replace** bar.
+
+###  Search palette
+
+The search palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the search palette to view the available options.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-palette.png" width="90%" title="The search palette enables you to quickly navigate your project and run commands." />
+
+- **Go to File:** Search for files in your current project and open them in a new tab.
+- **Show and Run Commands:** Opens the [command palette](#additional-editing-features) _The search palette doesn't currently include dbt commands such as `run` or `build`._
+- **Search for Text:** Search for text and open files from results, or send your results to the [search and replace](#search-and-replace) pane.
+- **Go to Symbol in Editor:** Quickly jump to symbols in the current file.
+- **More:** Display advanced features such as **Go to Line/Column**, **Go to Symbol in Workspace**, and search within currently open files only. 
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/go-to-file.png" width="90%" title="Go to File." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/show-and-run-commands.png" width="90%" title="Show and Run Commands." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-for-text.png" width="90%" title="Search for text." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/go-to-symbol.png" width="90%" title="Go to Symbol in Editor." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/more.png" width="90%" title="More." />
+
+
+</DocCarousel>
 
 ## Editing features
 
@@ -172,7 +218,7 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
 
 #### Global Command Palette
   The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-search-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### <Constant name="cloud_ide" /> Status modal
   The <Constant name="cloud_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="cloud_ide" />. Open this by clicking on the <Constant name="cloud_ide" /> Status button.
