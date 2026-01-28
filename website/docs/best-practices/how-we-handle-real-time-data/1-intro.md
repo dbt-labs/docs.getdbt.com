@@ -37,7 +37,7 @@ Streaming ingestion features such as [streaming tables](https://docs.databricks.
 
 #### dbt transformation layer
 
-Run dbt transformations every few minutes to transform that data, and you can use materialized views or dynamic tables for the lowest-latency reporting.
+Run dbt every few minutes to transform the data, and use materialized views or dynamic tables for the lowest-latency reporting.
 
 Specific transformation approaches include:
 - [Incremental models](/docs/build/incremental-models-overview) with merge or append strategies
