@@ -38,10 +38,6 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
   - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
-  - **Support `dbt build --store-failures` through orchestration**: `--store-failures` is preserved when forwarding dbt build arguments.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+store-failures -->
-  - **Cleaner Fusion logs in run output**: Reduces internal noise and improves how key errors (including compilation-style errors) are surfaced.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+RecordMessageStatus -->
 
 - **Studio IDE**
   - **Search and Replace in Files (behind flags)**: Adds a dedicated sidebar search experience and common shortcuts (for example, `Cmd/Ctrl+Shift+F`).  
@@ -91,8 +87,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt platform**
   - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
-  - **Fusion SAO "panic" failures are now classified as internal errors**: When using Fusion with state-aware orchestration, exit code `2` is now treated as an internal/system error (rather than a user dbt command failure).  
-  <!-- @runleonarun question: is this internal only? PRs: https://github.com/dbt-labs/dbt-orc/pulls?q=is%3Apr+CODE_DBT_PANIC -->
 
 - **Canvas**
   - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step "upload source" flow.  
