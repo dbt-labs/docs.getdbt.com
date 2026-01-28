@@ -27,5 +27,5 @@ Cautious is the most exclusive mode and ensures that tests are executed and mode
 
 #### Empty mode
 
-Empty mode runs no tests and restricts the build to the selected node, ignoring all indirect dependencies. It doesn't execute any tests, whether they are directly attached to the selected node or not. The empty mode doesn't include any tests and is automatically used for [interactive compilation](/reference/commands/compile#interactive-compile).
+Empty mode runs no tests and restricts the build to the selected node, ignoring all indirect dependencies. It doesn't execute any tests, whether they are directly attached to the selected node or not. The empty mode is automatically used for [interactive compilation](/reference/commands/compile#interactive-compile).
 
