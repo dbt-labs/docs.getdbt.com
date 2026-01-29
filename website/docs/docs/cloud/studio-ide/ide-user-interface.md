@@ -6,7 +6,7 @@ sidebar_label: User interface
 tags: [IDE]
 ---
 
-The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly -- no command line required!
+The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
 
@@ -54,13 +54,13 @@ The <Constant name="cloud_ide" /> provides tools to help you quickly navigate yo
 
 ### Search and replace
 
-The search feature enables you to quickly parse your files for specific terms or phrases and replace them with the click of a button.
+The search feature enables you to quickly find specific terms or phrases and replace them with the click of a button.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-replace.png" width="50%" title="Search files for specific terms and quickly replace them." />
 
-1. Toggle between the **file tree** and **search** navigation panes.
-2. Search for words or phrases. Enhance the search to match case and/or whole words. You can also input replacement words or phrases. Click the icon next to the **Replace** bar to replace all entries.
-3. Navigate the search results. Click an entry to open the related file and highlight it on the screen. If you've entered replacement text, you'll see a preview of the new syntax. Click the symbol next to an entry to substitute the text with whatever is in the **Replace** bar.
+1. Toggle between **file tree** and **search** navigation.
+2. Search for words or phrases. Enhance the search to match case and/or whole words. You can also input replacement words or phrases. Click the icon next to the **Replace** field to replace all entries.
+3. Navigate the search results. Click an entry to open the related file and highlight it on the screen. If you've entered replacement text, you'll see a preview of the new syntax. Click the symbol next to an entry to substitute the text with whatever is in the **Replace** field.
 
 ###  Command palette
 
