@@ -40,7 +40,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
 
 - **Studio IDE**
-  - **Search and Replace in Files (behind flags)**: Adds a dedicated sidebar search experience and common shortcuts (for example, `Cmd/Ctrl+Shift+F`).  
+  - **Search and replace in files**: Adds a dedicated sidebar search experience. Please contact your account manager to enable.
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
@@ -89,7 +89,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
 
 - **Canvas**
-  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step "upload source" flow.  
+  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/cloud/use-canvas#upload-data-to-canvas) flow.  
   <!-- @runleonarun question: link to the new flow? PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
 ## January 21, 2026
