@@ -18,8 +18,10 @@ This page explains how to enable <Constant name="copilot" /> in <Constant name="
 - Must have a [<Constant name="cloud" /> Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/pricing).
   - Certain features like [BYOK](#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
-- By default, <Constant name="copilot" /> deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [bring your own OpenAI API key](#bringing-your-own-openai-api-key-byok)(BYOK).
-  - For BYOK, make sure to enable the latest text generation models as well as the `text-embedding-3-small` model.
+- By default, <Constant name="copilot" /> deployments use a central OpenAI API key managed by dbt Labs. Alternatively, you can [bring your own OpenAI API key](#bringing-your-own-openai-api-key-byok) (BYOK).
+  - For BYOK, ensure your API key has access to the required models:
+    - **Text generation models**: GPT-4 or later (GPT-4o, GPT-4 Turbo, or o1 models)
+    - **Embedding model**: `text-embedding-3-small`
 - Opt-in to AI features by following the steps in the next section in your **Account settings**.
 
 ## Enable dbt Copilot
@@ -72,23 +74,41 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   <TabItem value="openai" label="OpenAI">
   Bringing your own OpenAI key is available for Enterprise or Enterprise+ plans.
 
+  **Prerequisites**:
+  - Ensure your OpenAI API key has access to the required models:
+    - **Text generation models**: GPT-4 or later (GPT-4o, GPT-4 Turbo, or o1 models)
+    - **Embedding model**: `text-embedding-3-small`
+
   1. Select the toggle for **OpenAI** to use your own OpenAI key.
   2. Enter the API key.
   3. Click **Save**.
-    <Lightbox src="/img/docs/dbt-cloud/account-integration-openai.png" width="85%" title="Example of the OpenAI integration page" />
+  
+  <Lightbox src="/img/docs/dbt-cloud/account-integration-openai.png" width="85%" title="Example of the OpenAI integration page" />
 
   </TabItem>
 
   <TabItem value="azure" label="Azure OpenAI">
   Bringing your own Azure OpenAI key is available for Enterprise or Enterprise+ plans.
 
-  To learn about deploying your own OpenAI model on Azure, refer to [Deploy models on Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai). Configure credentials for your Azure OpenAI deployment in <Constant name="cloud" /> the following way:
+  To learn about deploying your own OpenAI model on Azure, refer to [Deploy models on Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-openai). 
+  
+  **Prerequisites**:
+  - Deploy a text generation model in Azure OpenAI (GPT-4, GPT-4o, GPT-4 Turbo, or o1 models)
+  - Deploy the `text-embedding-3-small` embedding model in Azure OpenAI
+  - Note the deployment names for both models
+  
+  Configure credentials for your Azure OpenAI deployment in <Constant name="cloud" /> the following way:
 
   1. Locate your Azure OpenAI configuration in your Azure Deployment details page.
   2. Enter your Azure OpenAI API key.
-  3. Enter the **Endpoint**, **API Version**, and **Deployment / Model Name**.
-  4. Click **Save**.
+  3. Enter the **Endpoint** (your Azure OpenAI resource endpoint URL).
+  4. Enter the **API Version** (for example, `2024-02-15-preview` or later).
+  5. Enter the **Deployment / Model Name** (the deployment name you created in Azure for your text generation model).
+  6. Click **Save**.
+  
   <Lightbox src="/img/docs/dbt-cloud/account-integration-azure-manual.png" width="85%" title="Example of Azure OpenAI integration section" />
+  
+  **Note**: Currently, you only need to configure the text generation model deployment. The embedding model will be supported in future releases, but ensure you have it deployed and ready in your Azure OpenAI resource.
 
   </TabItem>
   </Tabs>
