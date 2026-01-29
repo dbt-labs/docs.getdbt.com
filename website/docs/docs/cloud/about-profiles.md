@@ -9,7 +9,7 @@ pagination_prev: null
 
 <Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. You assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and can reuse those profiles in other deployment environments within the same project.
 
-Profiles don't apply to development environments.
+Because of the unique configurations and individual credentials applied, profiles don't apply to development environments.
 
 ## Create a profile
 
