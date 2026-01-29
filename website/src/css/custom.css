@@ -527,19 +527,38 @@ a.code-link:hover {
 
 .navbar__link.nav-versioning {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: .80rem !important;
+  white-space: nowrap;
+}
+
+/* Add "Version:" label before the version number */
+.navbar__link.nav-versioning::before {
+  content: "Version:";
+  font-size: .80rem;
+  font-weight: 500;
+  color: var(--ifm-navbar-link-color);
+}
+
+/* Align arrow with text */
+.dropdown--version > .navbar__link.nav-versioning::after {
+  margin-top: -4px !important;
 }
 
 /* Orange border on version dropdown container */
 .dropdown--version {
   border: 1px solid var(--ifm-color-primary) !important;
   border-radius: 6px !important;
+  padding: 2px 8px 2px 10px !important;
 }
 
 .dropdown--version:hover {
   background: transparent !important;
 }
+
 
 /* Checkmark for active version in dropdown */
 .nav-versioning-dropdown__link.dropdown__link--active::after {

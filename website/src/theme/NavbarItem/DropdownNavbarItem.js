@@ -105,7 +105,7 @@ function DropdownNavbarItemDesktop({
         }}
         label={
           className === "nav-versioning"
-            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `${versionContext.version}${versionContext?.isPrerelease ? " (Beta)" : ""}`}`
             : props.children ?? props.label
         }
       >
