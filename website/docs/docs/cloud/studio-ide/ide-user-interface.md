@@ -64,13 +64,13 @@ The search feature enables you to quickly find specific terms or phrases and rep
 
 ###  Command palette
 
-The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options. Actions that support keyboard shortcuts will display them to the right of the text.
+The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options. Actions supporting keyboard shortcuts display to the right of the text.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
 
 - **Go to File:** Search for files in your current project and open them in a new tab.
 - **Show and Run Commands:** View and run commands related to IDE navigation and settings. _The command palette doesn't currently include dbt commands such as `run` or `build`._
-- **Search for Text:** Search for text and open files from results, or send your results to the [search and replace](#search-and-replace) pane.
+- **Search for Text:** Search for text across your project and either open files from the results or send results to the [search and replace](#search-and-replace) section for bulk changes.
 - **Go to Symbol in Editor:** Quickly jump to symbols in the current file.
 - **More:** Display advanced features such as **Go to Line/Column**, **Go to Symbol in Workspace**, and search within currently open files only. 
 
@@ -97,7 +97,7 @@ The <Constant name="cloud_ide" /> features some delightful tools and layouts to 
 
 1. **File editor &mdash;** The file editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
-    * Use intuitive [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) to help develop easier for you and your team.
+    * Use intuitive [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) to make development easier for you and your team.
 
 2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The file editor tab shows a blue icon for unsaved changes.
 
