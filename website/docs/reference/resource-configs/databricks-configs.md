@@ -1125,7 +1125,7 @@ You can set query tags at the connection level in your profile or at the model l
 
 #### Connection-level query tags
 
-To set query tags for all queries in a connection, add the `query_tags` parameter to your profile as a JSON string:
+To set query tags for all queries in a connection, add the `query_tags` parameter to your `profile.yml` file as a JSON string:
 
 <File name='~/.dbt/profiles.yml'>
 
