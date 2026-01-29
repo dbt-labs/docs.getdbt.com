@@ -56,8 +56,6 @@ In the <Constant name="cloud_ide" />, you can create sub-branches from any exist
 
 For example, if you want to create a staging environment and configure the environment to default to the `staging` branch, you can create feature branches _from_ the `staging` branch and open pull requests against it. Once the pull request is approved and merged, the changes in the feature branch will update the `staging` branch.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/staging-branch-workflow.png" width="85%" title="Staging branch workflow showing feature branches merging into staging before production"/>
-
 #### Configure a custom base branch
 Use the **Default to a custom branch** setting in <Constant name="dbt_platform" /> to establish a staging or development branch as your base branch. To configure a custom base branch for your environment:
 
