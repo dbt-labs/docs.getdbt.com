@@ -46,35 +46,46 @@ You can perform git tasks with the git button in the [<Constant name="cloud_ide"
 | Rollback to remote | Reset changes to your repository directly from the <Constant name="cloud_ide" />. You can rollback your repository back to an earlier clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the <Constant name="cloud_ide" /> and select **Rollback to remote**. |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
-### Create sub-branches from feature branches
-
-In the <Constant name="cloud_ide" />, you can create sub-branches from any existing feature branch, not just from your base branch. This is useful when you want to:
+## Create sub-branches 
+In the <Constant name="cloud_ide" />, you can create sub-branches from any existing feature branch, not just from your main branch. This is useful when you want to:
 
 - Experiment with a new approach while keeping your current feature branch intact
 - Break down large features into smaller, more manageable tasks
 - Collaborate with team members on different aspects of the same feature
 - Test changes in isolation before merging them into your main feature branch
 
-**To create a sub-branch from a feature branch:**
+For example, if you want to create a staging environment and configure the environment to default to the `staging` branch, you can create feature branches _from_ the `staging` branch and open pull requests against it. Once the pull request is approved and merged, the changes in the feature branch will update the `staging` branch.
 
-1. In the <Constant name="cloud_ide" />, use the git button to **Change branch** and switch to the feature branch you want to branch from.
-2. Once you're on the desired feature branch, click the git button again and select **Create new branch**.
-3. Enter a descriptive name for your sub-branch (for example, `feature-experiment` or `feature-subtask`).
-4. The new branch will be created based on the current state of your feature branch.
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/staging-branch-workflow.png" width="85%" title="Staging branch workflow showing feature branches merging into staging before production"/>
+
+#### Configure a custom base branch
+Use the **Default to a custom branch** setting in <Constant name="dbt_platform" /> to establish a staging or development branch as your base branch. To configure a custom base branch for your environment:
+
+1. In the <Constant name="dbt_platform" />, click **Orchestration** > **Environments** in the sidebar menu.
+2. Click on the whichever environment you want to configure (development or deployment) and then click **Settings**.
+3. Select the **Default to a custom branch** checkbox and enter the name of the branch you want to use as your base (for example, `staging` or `develop`).
+4. Click **Save** to apply the changes.
+5. Once configured, the environment will default to this custom branch (for example, `staging`) when you open your development environment.
+6. All new feature branches created in this environment will originate from the custom branch (for example, `staging`), not from the default branch (for example, `main`).
+7. Pull requests opened from the environment will automatically compare against the custom branch (for example, `staging`), streamlining your review process.
+
+This workflow allows you to maintain a clean separation between development work and production code, while organizing your development process effectively.
+
+:::tip Branch protection best practices
+When using a custom base branch, we recommend adding branch protection rules to your `main` branch in your Git platform (such as GitHub or GitLab). This provides an extra layer of protection for your production code, since you can only set one protected branch in <Constant name="dbt_platform" />. With branch protections on `main` and <Constant name="dbt_platform" />'s protection on your custom branch, you can ensure both your production and staging environments remain stable.
+:::
+
+#### Create feature branches from your custom base branch
+
+To create feature branches from your custom base branch:
+
+1. Open the <Constant name="cloud_ide" /> for your development environment.
+2. The environment will automatically default to your configured custom branch (for example, `staging`).
+3. Click the git button and select **Create new branch**.
+4. Enter a descriptive name for your feature branch (for example, `feature/add-new-metrics` or `fix/update-calculations`).
 5. Make your changes, commit them, and push to the remote repository.
-6. When ready, you can open a pull request to merge your sub-branch back into the parent feature branch, or directly into the base branch.
-
-**Example workflow:**
-
-Let's say you're working on a feature branch called `add-new-metrics` and want to experiment with a different calculation method:
-
-1. Switch to the `add-new-metrics` branch
-2. Create a new branch called `add-new-metrics-alternative-calculation`
-3. Make your experimental changes
-4. Commit and push your changes
-5. Open a pull request to merge `add-new-metrics-alternative-calculation` into `add-new-metrics` (or compare the approaches before deciding)
-
-This workflow allows you to maintain a clean history and organize your development process effectively.
+6. When ready, open a pull request. The PR will automatically compare your feature branch against the custom base branch (for example, `staging`).
+7. After your PR is reviewed and merged into the custom branch, you can later merge the custom branch into `main` when ready to deploy to production.
 
 ## Merge conflicts
 
