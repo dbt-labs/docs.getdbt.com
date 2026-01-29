@@ -158,9 +158,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 
 After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to a [group](/docs/cloud/manage-access/about-user-access#groups) with **Account Admin**, **Owner**, or **Member** permissions. IT licenses don't have access to configure Slack job notifications.
 
-**Channels supported:**
-  - Public channels are supported by default
-- Private channels are supported if the dbt Slack app is invited to the channel.
+The integration only supports public channels in a slack workspace.
 
 ### Set up the Slack integration
 
