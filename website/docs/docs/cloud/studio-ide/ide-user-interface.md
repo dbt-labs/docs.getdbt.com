@@ -69,7 +69,8 @@ The command palette enhances navigation of your dbt project, enabling you to sea
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
 
 - **Go to File:** Search for files in your current project and open them in a new tab.
-- **Show and Run Commands:** View and run commands related to IDE navigation and settings. _The command palette doesn't currently include dbt commands such as `run` or `build`._
+- **Show and Run Commands:** View and run commands related to IDE navigation and settings. 
+   Note: dbt commands (such as `run` and `build`) are available only in the [Command bar](#console-section) menu in the console; the command palette doesn't currently support them.
 - **Search for Text:** Search for text across your project and either open files from the results or send results to the [search and replace](#search-and-replace) section for bulk changes.
 - **Go to Symbol in Editor:** Quickly jump to symbols in the current file.
 - **More:** Display advanced features such as **Go to Line/Column**, **Go to Symbol in Workspace**, and search within currently open files only. 
