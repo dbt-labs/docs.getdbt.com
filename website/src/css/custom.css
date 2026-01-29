@@ -531,6 +531,32 @@ a.code-link:hover {
   justify-content: center;
 }
 
+/* Orange border on version dropdown container */
+.dropdown--version {
+  border: 1px solid var(--ifm-color-primary) !important;
+  border-radius: 6px !important;
+}
+
+.dropdown--version:hover {
+  background: transparent !important;
+}
+
+/* Checkmark for active version in dropdown */
+.nav-versioning-dropdown__link.dropdown__link--active::after {
+  content: "✓";
+  color: white;
+  background-color: var(--ifm-color-primary);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
 
 
 .navbar-sidebar .menu__link.nav-create-account {

@@ -86,6 +86,7 @@ function DropdownNavbarItemDesktop({
         "dropdown--right": position === "right",
         "dropdown--show": showDropdown,
         "dropdown--version--hide": !showVersionDropdown,
+        "dropdown--version": className === "nav-versioning",
       })}
     >
       <NavbarNavLink
@@ -122,7 +123,10 @@ function DropdownNavbarItemDesktop({
               {className === "nav-versioning" ? (
                 <li>
                   <a
-                    className="dropdown__link nav-versioning-dropdown__link"
+                    className={clsx(
+                      "dropdown__link nav-versioning-dropdown__link",
+                      { "dropdown__link--active": childItemProps.label === versionContext.version }
+                    )}
                     data-dbt-version={childItemProps.label}
                     onClick={(e) => {
                       handleVersionMenuClick();
