@@ -140,7 +140,6 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
 1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
-
 ## Slack notifications (account) <Lifecycle status="private_beta" />  {#slack-notifications-account}
 :::info
 Configuring Slack notifications at the account level is currently available in private beta. To request access, contact your account manager. Only refer to these instructions if you have access to the private beta feature.
@@ -155,10 +154,9 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - You have a Slack workspace that you want to receive job notifications from.
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
+- The integration only supports _public_ channels in the Slack workspace. 
 
 After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to a [group](/docs/cloud/manage-access/about-user-access#groups) with **Account Admin**, **Owner**, or **Member** permissions. IT licenses don't have access to configure Slack job notifications.
-
-The integration only supports public channels in a Slack workspace.
 
 ### Set up the Slack integration
 
