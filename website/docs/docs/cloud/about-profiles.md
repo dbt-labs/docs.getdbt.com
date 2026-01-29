@@ -29,7 +29,7 @@ To create a new profile:
 
 1. From the main menu, navigate to your project's **Dashboard**.
 2. Click **Settings**.
-3. Scroll down to the **Profiles** pane and click **Create new profile**.
+3. Scroll down to the **Profiles** section and click **Create new profile**.
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-project.png" width="60%" title="Creating a profile from project settings." />
 
@@ -41,7 +41,7 @@ To create a new profile:
 1. From the main menu, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
 3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** pane, click the three-dot menu next to an existing profile, and select **Change profile**.
+4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
 5. Click the **Profile** dropdown and select **Create new profile**.
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-environment.png" width="60%" title="Creating a profile from the environment settings." />
@@ -52,7 +52,7 @@ To create a new profile:
 
 The following steps are the same regardless of which approach you take:
 
-1. Give the profile a name that's unique across the account, easy to identify, and adheres to the naming policy:
+1. Give the profile a name that's unique across all projects in the account, easy to identify, and adheres to the naming policy:
     - Starts with a letter
     - Ends with a letter or number
     - Contains only letters, numbers, dashes, or underscores
@@ -75,7 +75,7 @@ To assign a different profile, update the deployment environment settings:
 1. From the main menu, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
 3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** pane, click the three-dot menu next to an existing profile, and select **Change profile**.
+4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
 5. Click the **Profile** dropdown and select the new profile to assign.
 
 ## FAQs
