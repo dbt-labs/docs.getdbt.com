@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Studio IDE**
   - **Search and replace in files**: Adds a dedicated sidebar search experience. Please contact your account manager to enable.
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-  - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
+  - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run. 
   <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
