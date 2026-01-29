@@ -24,73 +24,47 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Canvas**
   - **New two-step "upload source" API for more resilient uploads**: Use `POST /v1/workspaces/{workspace_id}/upload-source` to create an upload, then `PATCH /v1/workspaces/{workspace_id}/upload-source/{file_id}/process` to stream processing progress (SSE).  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
 ### Enhancements
 
 - **Catalog & Search**
-
   - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
-
 - **dbt platform**
   - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
   - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
 
 - **Studio IDE**
   - **Search and replace in files**: Adds a dedicated sidebar search experience. Please contact your account manager to enable.
-  <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
-  <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
-  <!-- @runleonarun question: this is behind a FF? should we cut? PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
   - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
-  <!-- PRs: https://github.com/dbt-labs/studio/pulls?q=is%3Apr+cc94a5db018aa847120630654a28c0127b89f4e4 -->
 
 ### Fixes
 
-- **Webhooks**
-  - **Webhook payload compatibility for errored runs**: Webhook events for errored runs now use `runErroredAt` (instead of `runFinishedAt`) to reduce downstream parsing failures.  
-  <!-- @runleonarun question: is this internal only? PRs: https://github.com/dbt-labs/notifications-system/pulls?q=is%3Apr+ef0444c1f5f9490fabaca2ffd240c56b0fd0c6e6 -->
-
 - **dbt platform**
   - **Run logs render ANSI/structured output more reliably**: Improved rendering and cleanup of escape sequences in step logs.  
-  <!-- @runleonarun question: is this internal only?  PRs: https://github.com/dbt-labs/cloud-ui/pulls?q=is%3Apr+e66be6e69a6429764427d1bcaffc3d6cd69a6848 -->
   - **More correct source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
   - **More robust seed artifact ingestion**: Ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/pulls?q=is%3Apr+04fe0bec086b540d36cbcc4b587211c6579b6183 -->
 
 - **Studio IDE**
   - **CLI project sync no longer fails on broken symlinks**: Sync skips missing symlink targets instead of failing the whole sync.  
-  <!-- @runleonarun question: is this internal only? PR: https://github.com/dbt-labs/dbt-cloud-cli/pull/2012 -->
   - **IDE abort is clearer when a command is missing**: Aborting a command that no longer exists returns a specific "no-command-found" response.  
-  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
   - **More robust inline command results**: Malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.  
-  <!-- PRs: https://github.com/dbt-labs/ide-server/pulls?q=is%3Apr+6fa03b9543e5a8922e18f30b194eac9275e9e5c2 -->
 
 - **Canvas**
   - **Clearer errors for duplicate uploaded-source names**: Creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
   - **Failed uploads are now visible via file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
-  - **Invocation status streaming reliability**: The invocation status SSE endpoint now correctly awaits the status stream.  
-  <!-- PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
+  - **Invocation status streaming reliability**: The invocation status SSE endpoint now correctly awaits the status stream.
 
 ### Behavior changes
 
 - **Catalog and Search**
   - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
-  <!-- PRs: https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+highlightUtils https://github.com/dbt-labs/codex-api/pulls?q=is%3Apr+MODELING_LAYER_WEIGHTS -->
 
 - **dbt platform**
   - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/pulls?q=is%3Apr+4e7b64224cc49a23c3f4167676ec8d8c2c6349cd -->
 
 - **Canvas**
   - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/cloud/use-canvas#upload-data-to-canvas) flow.  
-  <!-- @runleonarun question: link to the new flow? PRs: https://github.com/dbt-labs/visual-editor/pulls?q=is%3Apr+b9e8d1a64a279f3f93c5d9fbbe602a661e2b7596 -->
 
 ## January 21, 2026
 
