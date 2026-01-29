@@ -41,7 +41,7 @@ dbt-hologres: # this needs to match the profile in your dbt_project.yml file
 
 </File>
 
-### Connection Parameters
+### Connection parameters
 
 Currently it supports the following parameters:
 
@@ -60,11 +60,11 @@ Currently it supports the following parameters:
 | `application_name` | Application identifier for connection tracking.                                                    | Optional  | `dbt_hologres_{version}`   | `my_dbt_app`                                    |
 | `retries`          | Number of connection retries.                                                                      | Optional  | `1`                        | `3`                                             |
 
-## Authentication Configuration
+## Authentication configuration
 
 `dbt-hologres` uses the standard PostgreSQL-compatible authentication mechanism with username and password (Access Key). Hologres supports using Alibaba Cloud AccessKey or RAM user credentials for authentication.
 
-### Access Key
+### Access key
 
 You can authenticate using your Alibaba Cloud account credentials. For security reasons, it is recommended to create a RAM sub-account with appropriate permissions rather than using the primary account AccessKey.
 
@@ -85,15 +85,15 @@ jaffle_shop: # this needs to match the profile in your dbt_project.yml file
       sslmode: disable
 ```
 
-### Important Notes
+### Important notes
 
-1. **Case Sensitivity**: Hologres usernames and passwords are case-sensitive. Make sure to enter them exactly as configured.
+1. **Case sensitivity**: Hologres usernames and passwords are case-sensitive. Make sure to enter them exactly as configured.
 
-2. **Default Port**: The default port for Hologres is `80`, which is different from the standard PostgreSQL port `5432`.
+2. **Default port**: The default port for Hologres is `80`, which is different from the standard PostgreSQL port `5432`.
 
-3. **SSL Mode**: SSL is disabled by default for Hologres connections. You can enable it by setting `sslmode` to an appropriate value if required.
+3. **SSL mode**: SSL is disabled by default for Hologres connections. You can enable it by setting `sslmode` to an appropriate value if required.
 
-## Testing Your Connection
+## Testing your connection
 
 After configuring your `profiles.yml`, you can verify your connection by running:
 
@@ -101,13 +101,13 @@ After configuring your `profiles.yml`, you can verify your connection by running
 dbt debug
 ```
 
-This command will test the connection to your Hologres instance and report any configuration issues.
+This [command](/reference/commands/debug) will test the connection to your Hologres instance and report any configuration issues.
 
-## Hologres-Specific Features
+## Hologres-specific features
 
-### Dynamic Tables
+### Dynamic tables
 
-Dynamic Tables are Hologres's implementation of materialized views with automatic refresh. You can configure them in your dbt models:
+Dynamic tables are Hologres's implementation of materialized views with automatic refresh. You can configure them in your dbt models:
 
 ```yaml
 models:
@@ -118,15 +118,15 @@ models:
     computing_resource: serverless
 ```
 
-Supported configurations for Dynamic Tables:
+Supported configurations for Dynamic tables:
 
-| **Configuration**     | **Description**                                                    | **Example Values**                    |
+| **Configuration**     | **Description**                                                    | **Example values**                    |
 | --------------------- | ------------------------------------------------------------------ | ------------------------------------- |
 | `freshness`           | Data freshness requirement.                                        | `"30 minutes"`, `"1 hours"`           |
 | `auto_refresh_mode`   | Refresh mode for the dynamic table.                                | `auto`, `incremental`, `full`         |
 | `computing_resource`  | Computing resource to use for refreshing.                          | `serverless`, `local`, warehouse name |
 
-### Incremental Models
+### Incremental models
 
 `dbt-hologres` supports multiple incremental strategies:
 
@@ -146,6 +146,6 @@ Full support for database constraints including:
 
 ## References
 
-- [dbt-alibaba-cloud-hologres GitHub Repository](https://github.com/aliyun/dbt-hologres)
-- [Hologres Documentation](https://www.alibabacloud.com/help/en/hologres/)
-- [Hologres Dynamic Table Guide](https://www.alibabacloud.com/help/en/hologres/user-guide/introduction-to-dynamic-table)
+- [dbt-alibaba-cloud-hologres GitHub repository](https://github.com/aliyun/dbt-hologres)
+- [Hologres documentation](https://www.alibabacloud.com/help/en/hologres/)
+- [Hologres dynamic table guide](https://www.alibabacloud.com/help/en/hologres/user-guide/introduction-to-dynamic-table)
