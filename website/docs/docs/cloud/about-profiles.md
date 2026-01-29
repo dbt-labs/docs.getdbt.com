@@ -15,7 +15,7 @@ Profiles don't apply to development environments.
 
 :::important new feature rollout
 
-dbt will automatically create a new project-level profile for each deployment environment and populate it with your existing connection, credentials, and extended attributes. You don't need to take any action to create profiles for your existing projects.
+dbt automatically creates a new project-level profile for each deployment environment and populates it with your existing connection, credentials, and extended attributes. You don't need to take any action to create profiles for your existing projects.
 
 :::
 
