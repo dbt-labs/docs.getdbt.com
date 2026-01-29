@@ -225,7 +225,6 @@ const sidebarSettings = {
                     "docs/cloud/secure/aws/aws-snowflake",
                     "docs/cloud/secure/aws/aws-databricks",
                     "docs/cloud/secure/aws/aws-redshift",
-                    "docs/cloud/secure/aws/aws-postgres",
                     "docs/cloud/secure/aws/aws-self-hosted",
                   ],
                 },

@@ -19,6 +19,10 @@ The focus of this guide is not on any particular service or backend architecture
 <!-- TODO: Add architecture diagram showing scope of guide -->
 <Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/scope-of-guide.png" width="90%" title="The scope of this guide" />
 
+:::note Out of scope
+This guide does not cover the configuration or troubleshooting of your self-hosted service, load balancer, or backend pool health, due to the virtually limitless ways these environments can be configured. While dbt Support may assist with such issues on a best-effort basis, we recommend engaging [Azure Support](https://azure.microsoft.com/en-us/support/) to expedite resolution.
+:::
+
 ## Audience
 This guide is intended for cloud network administrators or engineers responsible for configuring and maintaining secure network communications within your organization's Microsoft Azure environment.
 

@@ -20,6 +20,10 @@ The focus of this guide is not on any particular service or [Backend](#terminolo
 
 <Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/scope-of-guide.png" width="90%" title="The scope of this guide" />
 
+:::note Out of scope
+This guide does not cover the configuration or troubleshooting of your self-hosted service, load balancer, or backend health, due to the virtually limitless ways these environments can be configured. While dbt Support may assist with such issues on a best-effort basis, we recommend engaging [Google Cloud Support](https://cloud.google.com/support) to expedite resolution.
+:::
+
 ## Audience
 This guide is intended for cloud network administrators or engineers responsible for configuring and maintaining secure network communications within your organization's Google Cloud Platform (GCP) environment.
 
