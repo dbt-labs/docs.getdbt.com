@@ -6,7 +6,7 @@ sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
 ---
 
-# dbt Agents overview <Lifecycle status="private_beta,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
 
 [dbt Agents](https://www.getdbt.com/product/dbt-agents) are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
