@@ -150,4 +150,47 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
+## Troubleshooting
+
+If the Private Link endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
+
+### Configuration checklist
+
+1. **Private Link Service status**
+
+   In the Azure Portal, navigate to your Private Link Service and verify the **Provisioning state** is **Succeeded**. Check the **Private endpoint connections** tab to confirm dbt's connection shows as **Approved**.
+
+2. **Load balancer backend health**
+
+   Navigate to your Standard Load Balancer and check the **Backend pool** health. At least one backend instance must be **Healthy**. Unhealthy backends could indicate the service is down or that a Network Security Group (NSG) is blocking traffic from the load balancer.
+
+3. **NAT subnet configuration**
+
+   Verify the NAT subnet has sufficient IP addresses available. Azure Private Link Service uses these IPs for SNAT. If the subnet is exhausted, new connections may fail.
+
+4. **Network Security Groups**
+
+   If you have NSGs applied to the NAT subnet or backend subnet, ensure they allow traffic appropriately:
+   - NAT subnet: Recommended to leave NSG as **None** (as noted in the setup instructions)
+   - Backend subnet: Must allow traffic from the load balancer's frontend IP
+
+### Monitoring
+
+To help isolate connection issues, use Azure's monitoring tools:
+
+#### Private Link Service metrics
+
+In the Azure Portal, navigate to your Private Link Service and click **Metrics**. Monitor:
+- **Bytes In/Out** — Confirms traffic is flowing through the service
+- **NAT Port Usage** — High usage may indicate the NAT subnet needs more IPs
+
+#### Load Balancer metrics
+
+Navigate to your Standard Load Balancer and click **Metrics**. Monitor:
+- **Health Probe Status** — Shows backend health over time
+- **Byte Count** — Confirms traffic is reaching the load balancer
+- **SNAT Connection Count** — Tracks outbound connections
+
+For more information, see [Azure Private Link monitoring](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview#monitoring) and [Load Balancer monitoring](https://learn.microsoft.com/en-us/azure/load-balancer/monitor-load-balancer).
+
 

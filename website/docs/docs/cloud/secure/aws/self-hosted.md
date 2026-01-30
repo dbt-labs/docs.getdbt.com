@@ -126,3 +126,49 @@ Subject: New AWS Self-hosted PrivateLink Request
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
+
+## Troubleshooting
+
+If the PrivateLink endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
+
+### Configuration checklist
+
+1. **NLB security group**
+
+   The Network Load Balancer (NLB) associated with the VPC Endpoint Service must either not have an associated security group, or the security group must have a rule that allows requests from dbt's private CIDR(s). See [Security group configuration](#security-group-configuration) for details.
+
+   :::tip Testing tip
+   To test if this is the issue, temporarily adding an allow rule of `10.0.0.0/8` should allow connectivity until the rule can be refined to the dbt-provided CIDR.
+   :::
+
+2. **NLB listener and target group**
+
+   Check that there is a Listener connected to the NLB that matches the port that <Constant name="cloud" /> is trying to connect to. This Listener must have a configured action to forward to a Target Group with targets that point to your service. At least one (but preferably all) of these targets must be **Healthy**. Unhealthy targets could suggest that the service is down or that the service is protected by a security group that doesn't allow requests from the NLB.
+
+3. **Cross-zone load balancing**
+
+   Check that cross-zone load balancing is enabled for your NLB (check the **Attributes** tab of the NLB in the AWS console). If this is disabled, and the zones that dbt is connected to are misaligned with the zones where the service is running, requests may not be able to be routed correctly. See [Cross-zone load balancing](#cross-zone-load-balancing) for details.
+
+4. **Routing tables and ACLs**
+
+   If all the above check out, it may be possible that requests are not routing correctly within the private network. This could be due to a misconfiguration in the VPC's routing tables or access control lists. Review these settings with your network administrator to ensure that requests can be routed from the VPC Endpoint Service to the service and that the response can be returned to the VPC Endpoint Service.
+
+   :::tip Testing tip
+   One way to test this is to create a VPC endpoint in another VPC in your network to verify that connectivity is working independent of dbt's connection.
+   :::
+
+### Monitoring
+
+To help isolate connection issues over a PrivateLink connection from <Constant name="cloud" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. [Contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
+
+#### VPC Endpoint Service monitoring
+
+In the AWS Console, navigate to **VPC** → **Endpoint Services**. Select the Endpoint Service being tested and click the **Monitoring** tab. Update the time selection to include when test connection attempts were sent. If there is activity in the *New connections* and *Bytes processed* graphs, then requests have been received by the Endpoint Service, suggesting that the dbt endpoint is routing properly.
+
+#### NLB monitoring
+
+In the AWS Console, navigate to **EC2** → **Load Balancers**. Select the Network Load Balancer (NLB) being tested and click the **Monitoring** tab. Update the time selection to include when test connection attempts were sent. If there is activity in the *New flow count* and *Processed bytes* graphs, then requests have been received by the NLB from the Endpoint Service, suggesting the NLB Listener, Target Group, and security group are correctly configured.
+
+#### VPC Flow Logs
+
+VPC Flow Logs can provide various helpful information for requests being routed through your VPCs, though they can sometimes be challenging to locate and interpret. Flow logs can be written to either S3 or CloudWatch Logs, so determine the availability of these logs for your VPC and query them accordingly. Flow logs record the Elastic Network Interface (ENI) ID, source and destination IP and port, and whether the request was accepted or rejected by the security group and/or network ACL. This can be useful in understanding if a request arrived at a certain network interface and whether that request was accepted, potentially illuminating overly restrictive rules. For more information on accessing and interpreting VPC Flow Logs, see the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html).

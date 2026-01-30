@@ -128,3 +128,51 @@ Subject: New GCP Self-hosted Private Service Connect Request
     - DNS record:
 - Service Region: (for example, us-east1, us-central1)
 ```
+
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
+
+<PrivateLinkSLA />
+
+## Troubleshooting
+
+If the Private Service Connect endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
+
+### Configuration checklist
+
+1. **Service Attachment status**
+
+   In the Google Cloud Console, navigate to **Network services** → **Private Service Connect** → **Published services**. Select your Service Attachment and verify:
+   - Status is **Active**
+   - dbt's project appears in the **Connected projects** list with status **Accepted**
+
+2. **Load balancer backend health**
+
+   Navigate to **Network services** → **Load balancing** and select your load balancer. Check the **Backend services** tab to confirm at least one backend is **Healthy**. Unhealthy backends could indicate the service is down or that firewall rules are blocking health check probes.
+
+3. **NAT subnet configuration**
+
+   Verify the Private Service Connect subnet has sufficient IP addresses available. GCP uses these IPs for SNAT when routing consumer traffic to your backends.
+
+4. **Firewall rules**
+
+   Ensure your VPC firewall rules allow:
+   - Health check traffic from Google's health check ranges (`35.191.0.0/16` and `130.211.0.0/22`)
+   - Traffic from the proxy-only subnet to your backends (for Proxy Load Balancers)
+
+   For more details, see [Firewall rules for health checks](https://cloud.google.com/load-balancing/docs/health-check-concepts#ip-ranges).
+
+### Monitoring
+
+To help isolate connection issues, use Google Cloud's monitoring tools:
+
+#### Service Attachment metrics
+
+In the Google Cloud Console, navigate to **Monitoring** → **Metrics Explorer**. Search for Private Service Connect metrics:
+- `compute.googleapis.com/nat/nat_connections` — Tracks active NAT connections
+- `compute.googleapis.com/nat/sent_bytes_count` — Confirms traffic is flowing
+
+#### Load Balancer logs
+
+Enable logging on your load balancer's backend service to capture request details. Navigate to your backend service, click **Edit**, and enable **Logging** with a sample rate of 1.0 for troubleshooting.
+
+For more information, see [Private Service Connect monitoring](https://cloud.google.com/vpc/docs/monitor-private-service-connect-connections) and [Load Balancer logging](https://cloud.google.com/load-balancing/docs/https/https-logging-monitoring).
