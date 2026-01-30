@@ -20,13 +20,11 @@ import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
 
 <ModelGovernanceRollback />
 
-## Where are contracts supported?
-
 import Contractsupport from '/snippets/_contract-support.md'; 
 
 <Contractsupport />
 
-## How to define a contract
+## Defining a contract
 
 Let's say you have a model with a query like:
 
