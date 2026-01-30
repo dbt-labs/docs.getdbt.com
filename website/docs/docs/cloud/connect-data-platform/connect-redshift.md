@@ -4,6 +4,8 @@ id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
 ---
+
+# Connect Redshift <Lifecycle status="core" /><Lifecycle status="fusion" />
  
 dbt platform supports connecting to Redshift. 
 

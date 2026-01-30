@@ -5,6 +5,8 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
+# Connect Snowflake <Lifecycle status="core" /><Lifecycle status="fusion" />
+
 :::note
 
 <Constant name="cloud" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.

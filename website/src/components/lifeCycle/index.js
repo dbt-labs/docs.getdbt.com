@@ -29,6 +29,8 @@ const statusColors = {
   ga: '#ff9e5f',
   preview: '#FE6703',
   private_preview: '#FE6703',
+  core: '#E5E7EB',
+  fusion: '#FE6703',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
 };
 
@@ -44,6 +46,8 @@ const fontColors = {
   private: "#030711",
   private_beta: "#030711",
   private_preview: "#030711",
+  fusion: "#030711",
+  core: "#030711",
 };
 
 // Display names for status values
@@ -58,6 +62,8 @@ const statusDisplayNames = {
   ga: 'GA',
   preview: 'Preview',
   private_preview: 'Private preview',
+  fusion: `Fusion`,
+  core: `Core`,
 };
 
 // URL mapping for predefined lifecycle statuses. urls defined in ../lifeCycle/lifecycle-urls.js file so we can update them in one place
