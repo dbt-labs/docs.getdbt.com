@@ -116,6 +116,7 @@ For more details, see [Update the security groups for your Network Load Balancer
 ```
 Subject: New AWS Self-hosted PrivateLink Request
 - Type: Self-hosted PrivateLink
+- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
 - VPC Endpoint Service Name:
 - Custom DNS (if HTTPS/TLS)
     - DNS record:
