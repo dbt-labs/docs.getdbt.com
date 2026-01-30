@@ -32,7 +32,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt platform**
   - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.  
   - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
-
 - **Studio IDE**
   - **Search and replace in files**: Adds a dedicated sidebar search experience. Please contact your account manager to enable.
   - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
@@ -42,7 +41,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt platform**
   - **Run logs render ANSI/structured output more reliably**: Improved rendering and cleanup of escape sequences in step logs.  
-  - **More correct source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.  
+  - **More accurate source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.  
   - **More robust seed artifact ingestion**: Ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
 
 - **Studio IDE**
@@ -57,7 +56,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Behavior changes
 
-- **Catalog and Search**
+- **Catalog & Search**
   - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
 
 - **dbt platform**
