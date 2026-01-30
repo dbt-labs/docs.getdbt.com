@@ -9,6 +9,8 @@ Use dbt <Constant name="copilot" /> to analyze your data and get contextualized 
 
    The agent can loop through these steps multiple times if it hasn't reached a complete answer, allowing for complex, multi-step analysis.⁠
 
+   dbt <Constant name="query_page" /> automatically executes the SQL query suggested by the Analyst agent, and you can preview the SQL results in the **Data** tab.
+
 5. Confirm the results or continue asking the agent for more insights about your data. 
 
 Your conversation with the agent remains even if you switch tabs within dbt <Constant name="query_page" />. However, they disappear when you navigate out of <Constant name="query_page" /> or when you close your browser.
