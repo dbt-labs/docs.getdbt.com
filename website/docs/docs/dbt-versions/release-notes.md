@@ -18,6 +18,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
+- **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
+  - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** When a model fails a data test, [state-aware orchestration](/docs/deploy/state-aware-about) rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
 - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 - **Enhancement:** State-aware orchestration now detects and rebuilds models whose tables are deleted from the warehouse, even when there are no code or data changes. Previously, tables deleted externally were not detected, and therefore not rebuilt, unless code or data had changed. For more information, see [Handling deleted tables](/docs/deploy/state-aware-about#handling-deleted-tables).

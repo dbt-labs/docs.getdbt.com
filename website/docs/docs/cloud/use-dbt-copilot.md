@@ -50,7 +50,7 @@ Use <Constant name="copilot" /> to build queries in [<Constant name="query_page"
 To begin building SQL queries with natural language prompts in <Constant name="query_page" />:
 
 1. Click the **<Constant name="copilot" />** icon in the Query console sidebar menu. 
-2. Click **Generate SQL**.
+2. In the dropdown menu above the <Constant name="copilot" /> prompt box, select **Generate SQL**.
 3. In the dbt Copilot prompt box, enter your prompt in natural language for dbt <Constant name="copilot" /> to build the SQL query you want. <!--You can also reference existing models using the `@` symbol. For example, to build a model that calculates the total price of orders, you can enter `@orders` in the prompt and it'll pull in and reference the `orders` model.-->
 4. Click **↑** to submit your prompt. <Constant name="copilot" /> generates a summary of the SQL query you want to build. To clear the prompt, click on the **Clear** button. To close the prompt box, click the <Constant name="copilot" /> icon again.
 5. <Constant name="copilot" /> will automatically generate the SQL with an explanation of the query. 
@@ -61,7 +61,12 @@ To begin building SQL queries with natural language prompts in <Constant name="q
 
 <Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="95%" title="dbt Copilot in dbt Insights" />
 
-## Analyze data with the Analyst agent <Lifecycle status='private_beta' />
+## Analyze data with the Analyst agent <Lifecycle status='beta' />
+
+Before you begin, make sure: 
+
+- You can [access <Constant name="query_page" />](/docs/explore/access-dbt-insights).
+- You have beta features enabled under **Experimental features** in your account settings. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features).
 
 import AnalystAgentsCopilot from '/snippets/_analyst_agents-copilot.md';
 

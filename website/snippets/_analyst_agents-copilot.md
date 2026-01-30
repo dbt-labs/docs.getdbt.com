@@ -1,9 +1,7 @@
-Use dbt <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) Analyst agent. To request access to the Analyst agent, [join the waitlist](https://www.getdbt.com/product/dbt-agents#dbt-Agents-signup).
-
-Before you begin, make sure you can [access <Constant name="query_page" />](/docs/explore/access-dbt-insights).
+Use dbt <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) Analyst agent. 
 
 1. Click the **<Constant name="copilot" />** icon in the Query console sidebar menu.
-2. Click **Agent**.
+2. In the dropdown menu above the <Constant name="copilot" /> prompt box, select **Agent**.
 3. In the dbt <Constant name="copilot" /> prompt box, enter your question.
 4. Click **↑** to submit your question.
 
