@@ -511,7 +511,9 @@ For more information on using this configuration, refer to [Snowflake's document
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
+The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+
+The `snowflake_warehouse` configuration is also supported for [tests](/docs/build/data-tests). This can be useful when you want to run your tests on a different warehouse than your models, for example, to use a smaller warehouse for lightweight data tests. 
 
 <Tabs
   defaultValue="dbt_project.yml"
@@ -541,13 +543,15 @@ models:
       +snowflake_warehouse: "EXTRA_LARGE"    # override the default Snowflake virtual warehouse for all models under the `clickstream` directory.
 snapshots:
   +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
+data_tests:
+  +snowflake_warehouse: "EXTRA_SMALL"    # all data tests are configured to use the `EXTRA_SMALL` warehouse.
 ```
 
 </File>
 </TabItem>
 <TabItem value="models/my_model.yml">
 
-The following example overrides the Snowflake warehouse for a single model using a config argument in the property file.
+The following example overrides the Snowflake warehouse for a single model and a specific test using a config argument in the property file.
 
 <File name='models/my_model.yml'>
 
@@ -556,6 +560,12 @@ models:
   - name: my_model
     config:
       snowflake_warehouse: "EXTRA_LARGE"    # override the Snowflake virtual warehouse just for this model
+    columns:
+      - name: id
+        data_tests:
+          - unique:
+              config:
+                snowflake_warehouse: "EXTRA_SMALL"    # use a smaller warehouse for this test
 ```
 
 </File>
