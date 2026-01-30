@@ -12,7 +12,7 @@ The Analyst agent lets you chat with your data and get accurate answers powered 
 
 ## Prerequisites 
 
-- Have beta features enabled under **Experimental features** in your account settings. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features).
+- Have beta features enabled under under **Account settings** > **Personal profile** > **Experimental features**. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features).
 - Have access to [dbt Insights](/docs/explore/dbt-insights) and meet those prerequisites.
 - Be on a <Constant name="dbt_platform" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="query_page" />.
 - Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 

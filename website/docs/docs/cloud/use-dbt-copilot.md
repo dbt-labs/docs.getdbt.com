@@ -66,7 +66,7 @@ To begin building SQL queries with natural language prompts in <Constant name="q
 Before you begin, make sure: 
 
 - You can [access <Constant name="query_page" />](/docs/explore/access-dbt-insights).
-- You have beta features enabled under **Experimental features** in your account settings. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features).
+- You have beta features enabled under **Account settings** > **Personal profile** > **Experimental features**. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features).
 
 import AnalystAgentsCopilot from '/snippets/_analyst_agents-copilot.md';
 

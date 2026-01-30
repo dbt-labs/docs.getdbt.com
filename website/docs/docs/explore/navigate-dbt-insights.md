@@ -116,7 +116,7 @@ Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to
 
 - **Agent** <Lifecycle status='beta' /> - Ask questions to the Analyst agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. 
 
-  To enable the Analyst agent, enable beta features under **Experimental features** in your account settings. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
+  To enable the Analyst agent, enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
   Some sample questions you can ask the agent: 
 

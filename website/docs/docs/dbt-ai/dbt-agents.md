@@ -35,7 +35,7 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 
 dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle.
 
-Most agents are currently in private beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access, or [book a demo](https://www.getdbt.com/contact) to learn more about the Analyst agent.
+Most agents are currently in beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access.
 
 #### Analyst agent <Lifecycle status="beta"/>
 
@@ -43,7 +43,7 @@ Use <Constant name="copilot" /> to analyze your data and get contextualized resu
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
-The Analyst agent is a beta feature. To enable this agent, enable beta features under **Experimental features** in your account settings. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
+The Analyst agent is a beta feature. To enable this agent, enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
 #### Discovery agent <Lifecycle status="Waitlist"/>
 
