@@ -6,7 +6,7 @@ sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
 ---
 
-# dbt Agents overview <Lifecycle status="private_beta,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
 
 [dbt Agents](https://www.getdbt.com/product/dbt-agents) are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
@@ -35,15 +35,15 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 
 dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle.
 
-Most agents are currently in private beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access, or [book a demo](https://www.getdbt.com/contact) to learn more about the Analyst agent.
+Most agents are currently in beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access.
 
-#### Analyst agent <Lifecycle status="private_beta"/>
+#### Analyst agent <Lifecycle status="beta"/>
 
 Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
-The Analyst agent is currently available in private beta. [Book a demo](https://www.getdbt.com/product/dbt-agents) to learn more.
+The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
 #### Discovery agent <Lifecycle status="Waitlist"/>
 
