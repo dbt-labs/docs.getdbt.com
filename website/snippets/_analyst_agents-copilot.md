@@ -15,4 +15,4 @@ Use dbt <Constant name="copilot" /> to analyze your data and get contextualized 
 
 Your conversation with the agent remains even if you switch tabs within dbt <Constant name="query_page" />. However, they disappear when you navigate out of <Constant name="query_page" /> or when you close your browser.
 
-<Lightbox src="/img/docs/dbt-insights/insights-copilot-agent.png" width="60%" title="Using the Analyst agent in Insights" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot-agent.png" width="90%" title="Using the Analyst agent in Insights" />
