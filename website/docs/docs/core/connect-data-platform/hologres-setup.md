@@ -16,16 +16,16 @@ import SetUpPages from '/snippets/\_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
-## Connecting to Hologres with **dbt-hologres**
+## Connecting to Hologres with **dbt-alibaba-cloud-hologres**
 
-`dbt-hologres` enables dbt to work with Alibaba Cloud Hologres, a real-time data warehouse compatible with PostgreSQL.
+`dbt-alibaba-cloud-hologres` enables dbt to work with Alibaba Cloud Hologres, a real-time data warehouse compatible with PostgreSQL.
 
 Check out the dbt profile configuration below for details.
 
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
-dbt-hologres: # this needs to match the profile in your dbt_project.yml file
+dbt-alibaba-cloud-hologres: # this needs to match the profile in your dbt_project.yml file
   target: dev
   outputs:
     dev:
@@ -62,7 +62,7 @@ Currently it supports the following parameters:
 
 ## Authentication configuration
 
-`dbt-hologres` uses the standard PostgreSQL-compatible authentication mechanism with username and password (Access Key). Hologres supports using Alibaba Cloud AccessKey or RAM user credentials for authentication.
+`dbt-alibaba-cloud-hologres` uses the standard PostgreSQL-compatible authentication mechanism with username and password (Access Key). Hologres supports using Alibaba Cloud AccessKey or RAM user credentials for authentication.
 
 ### Access key
 
@@ -105,9 +105,11 @@ This [command](/reference/commands/debug) will test the connection to your Holog
 
 ## Hologres-specific features
 
-### Dynamic tables
+### Dynamic tables in Hologres
 
-Dynamic tables are Hologres's implementation of materialized views with automatic refresh. You can configure them in your dbt models:
+Dynamic tables are Hologres's implementation of materialized views with automatic refresh. 
+When refreshing data, multiple modes are supported, including "full" (full mode) and "incremental" (incremental mode). For more information, please refer to the [reference manual](https://www.alibabacloud.com/help/en/hologres/user-guide/introduction-to-dynamic-table).
+You can configure them in your dbt models:
 
 ```yaml
 models:
@@ -126,9 +128,9 @@ Supported configurations for Dynamic tables:
 | `auto_refresh_mode`   | Refresh mode for the dynamic table.                                | `auto`, `incremental`, `full`         |
 | `computing_resource`  | Computing resource to use for refreshing.                          | `serverless`, `local`, warehouse name |
 
-### Incremental models
+### Incremental models with dbt
 
-`dbt-hologres` supports multiple incremental strategies:
+`dbt-alibaba-cloud-hologres` supports multiple incremental strategies:
 
 - `append`: Simply append new records
 - `delete+insert`: Delete matching records and insert new ones
@@ -140,9 +142,26 @@ Supported configurations for Dynamic tables:
 Full support for database constraints including:
 
 - Primary keys
-- Foreign keys
-- Unique constraints
 - Not null constraints
+
+### Table Properties
+
+Supports various table properties in Hologres. For details, please refer to the [manual](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
+
+- orientation
+- distribution_key
+- dictionary_encoding_columns
+- bitmap_columns
+- clustering_key
+- event_time_column
+
+Best Practices for Table Properties:
+1. orientation: Use 'column' for olap, 'row' for key-value queries.
+2. distribution_key: Choose frequently joined or grouped columns (prefer single column)
+3. clustering_key: Use for range queries (max 3 columns, left-match principle)
+4. event_time_column: Set for time-series data (timestamp columns)
+5. bitmap_columns: Use for equality filters
+6. dictionary_encoding_columns: Use for low cardinality string columns
 
 ## References
 
