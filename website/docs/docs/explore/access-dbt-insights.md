@@ -72,25 +72,27 @@ Let's use an example to illustrate how to run queries in <Constant name="query_p
 ### Use dbt Copilot 
 To make things easier, [use <Constant name="copilot" />](/docs/cloud/use-dbt-copilot#build-queries) to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help you quickly update the query or generate a new one based on your prompt.
 
-1. Click the **<Constant name="copilot" />** icon in the Query console sidebar to open the prompt box.  
-2. Enter your prompt in natural language and ask for a yearly breakdown of unique customers and total revenue. Then click **Submit**.
-3. <Constant name="copilot" /> responds with:
+1. Click the **<Constant name="copilot" />** icon in the Query console sidebar.
+2. In the dropdown menu above the <Constant name="copilot" /> prompt box, select **Generate SQL**.
+3. Enter your prompt in natural language and ask for a yearly breakdown of unique customers and total revenue.
+4. Click **↑** to submit your prompt.
+4. <Constant name="copilot" /> responds with:
    - A summary of the query
    - An explanation of the logic
    - The SQL it generated
    - Options to **Add** or **Replace** the existing query with the generated SQL
-4. Review the output and click **Replace** to use the <Constant name="copilot" />-generated SQL in your editor.
-5. Then, click **Run** to preview the results.
+5. Review the output and click **Replace** to use the <Constant name="copilot" />-generated SQL in your editor.
+6. Click **Run** to preview the results.
 
-<Lightbox src="/img/docs/dbt-insights/insights-copilot.png" width="95%" title="dbt Insights with dbt Copilot" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot.png" width="60%" title="dbt Insights with dbt Copilot" />
 
 From here, you can:
-- Continue building or modifying the query using <Constant name="copilot" />
-- Explore the [results](#view-results) in the **Data** tab
-- [View metadata and query details](#view-details) in the **Details** tab
-- [Visualize results](#chart-results) in the **Chart** tab
-- Check the [**Query history**](#query-history) for status and past runs
-- Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context
+- Continue building or modifying the query using <Constant name="copilot" />.
+- Explore the [results](#view-results) in the **Data** tab.
+- [View metadata and query details](#view-details) in the **Details** tab.
+- [Visualize results](#chart-results) in the **Chart** tab.
+- Check the [**Query history**](#query-history) for status and past runs.
+- Use [**<Constant name="explorer" />**](#use-dbt-explorer) to explore model lineage and context.
 - If you want to save the query, you can click **Save Insight** in the [query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?
