@@ -24,7 +24,7 @@ import Contractsupport from '/snippets/_contract-support.md';
 
 <Contractsupport />
 
-## Defining a contract
+## Define a contract
 
 Let's say you have a model with a query like:
 
