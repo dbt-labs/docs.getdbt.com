@@ -37,13 +37,13 @@ dbt offers several specialized agents, each designed for specific workflows in t
 
 Most agents are currently in private beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access, or [book a demo](https://www.getdbt.com/contact) to learn more about the Analyst agent.
 
-#### Analyst agent <Lifecycle status="private_beta"/>
+#### Analyst agent <Lifecycle status="beta"/>
 
 Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
-The Analyst agent is currently available in private beta. [Book a demo](https://www.getdbt.com/product/dbt-agents) to learn more.
+The Analyst agent is a beta feature. To enable this agent, enable beta features under **Experimental features** in your account settings. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
 #### Discovery agent <Lifecycle status="Waitlist"/>
 
