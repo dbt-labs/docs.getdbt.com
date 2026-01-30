@@ -56,6 +56,27 @@ Before you begin, make sure to review the following requirements:
     - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt AWS account ARN. You will need this in order to allow dbt Cloud to connect to your Endpoint Service.
 
 
+## Additional NLB configuration
+
+The following settings are optional but recommended when configuring your Network Load Balancer for PrivateLink connectivity with dbt.
+
+### Cross-zone load balancing
+
+Enable [cross-zone load balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#cross-zone-load-balancing) on your NLB to avoid availability zone mismatches between your service and dbt's VPC endpoint. This ensures traffic is distributed evenly across all healthy targets, regardless of which availability zone the request originates from.
+
+### Security group configuration
+
+If your NLB has an associated [security group](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-security-groups.html), you need to ensure PrivateLink traffic from dbt is allowed. By default, when a security group is associated with an NLB, inbound rules are enforced on all traffic — including PrivateLink traffic.
+
+You have two options:
+
+| Option | Description |
+|--------|-------------|
+| **Disable enforcement** (recommended) | Turn off security group enforcement for PrivateLink traffic. This is the simplest approach and doesn't require knowledge of dbt's internal CIDRs. In the AWS Console: NLB → Security → Edit → Clear **Enforce inbound rules on PrivateLink traffic**. |
+| **Add dbt CIDRs to inbound rules** | If your use case requires security group enforcement on PrivateLink traffic, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the internal CIDR ranges to add to your NLB's security group inbound rules. |
+
+For more details, see [Update the security groups for your Network Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-security-groups.html).
+
 ## Instructions
 1. Log in to the [AWS Console](https://console.aws.amazon.com).
 2. Navigate to the AWS Account and Region where your self-hosted service is located.
