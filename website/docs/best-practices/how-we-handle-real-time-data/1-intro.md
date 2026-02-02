@@ -33,7 +33,7 @@ To achieve real-time data with dbt, we recommend using a two-layer architecture:
 
 Continuous data landing using your data warehouse's streaming ingestion features. 
    
-Streaming ingestion features such as [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), [Snowpipe](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview), or [Storage Write API](https://docs.cloud.google.com/bigquery/docs/write-api-streaming) work well for this. To find streaming ingestion features for your warehouse, refer to the [additional resources](#additional-resources) section.
+Streaming ingestion features such as [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), [Snowpipe](https://docs.snowflake.com/en/user-guide/snowpipe-streaming/data-load-snowpipe-streaming-overview), or [Storage Write API](https://docs.cloud.google.com/bigquery/docs/write-api-streaming) work well for this. To find streaming ingestion features for your warehouse, refer to the [additional resources](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features#resources-by-warehouse) section.
 
 #### dbt transformation layer
 
