@@ -86,12 +86,12 @@ Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> pro
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/1-settings-gear-icon.png" width="100%" title="Navigate to account settings in dbt platform."/>
 
-<Lightbox src="/img/docs/dbt-cloud/connect-to-bigquery.png" width="100%" title="Connect BigQuery account."/>
+<Lightbox src="/img/docs/dbt-cloud/connect-to-bigquery.png" width="90%" title="Connect BigQuery account."/>
 
 </DocCarousel>
 
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" width="50%" title="BigQuery access request" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" width="60%" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to the <Constant name="dbt_platform" />. You are now an authenticated BigQuery user and can begin accessing dbt development tools. 
 
