@@ -77,6 +77,12 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   3. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/account-integration-openai.png" width="85%" title="Example of the OpenAI integration page" />
 
+  :::info Data residency limitation
+  OpenAI projects with US data residency (Project geography set to US) aren’t currently supported with BYOK. Currently you can only the API key in the dbt platform configuration. Specifying custom endpoints required for data residency isn’t yet supported and we’re reviewing a solution to support this in the future. 
+
+  To use BYOK, ensure your OpenAI project doesn’t have data residency enabled. Projects without project geography settings will use the standard OpenAI endpoint (`https://api.openai.com`) and work correctly with BYOK.
+  :::
+
   </TabItem>
 
   <TabItem value="azure" label="Azure OpenAI">

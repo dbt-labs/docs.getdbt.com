@@ -42,6 +42,9 @@ BYOK means users can bring and configure their own OpenAI or Azure OpenAI API ke
 
 - When you use your own API key, your contract with the LLM provider (not dbt Labs') applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt Labs.
 - dbt Labs does not impose usage limits on the user's key, as it does with internally managed keys.
+- OpenAI projects with US data residency (Project geography set to US) aren’t currently supported with BYOK. Currently you can only the API key in the dbt platform configuration. Specifying custom endpoints required for data residency isn’t yet supported and we’re reviewing a solution to support this in the future. 
+
+  To use BYOK, ensure your OpenAI project doesn’t have data residency enabled. Projects without project geography settings will use the standard OpenAI endpoint (`https://api.openai.com`) and work correctly with BYOK.
 
 Currently, BYOK in <Constant name="cloud" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/cloud/account-settings), and requests made by <Constant name="copilot" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
 
