@@ -144,7 +144,7 @@ Full support for database constraints including:
 - Primary keys
 - Not null constraints
 
-### Table Properties
+### Table properties
 
 Supports various table properties in Hologres. For details, please refer to the [manual](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
 
