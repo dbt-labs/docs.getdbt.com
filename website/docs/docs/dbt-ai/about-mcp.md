@@ -108,7 +108,6 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_semantic_model_details`: Gets details for a specific semantic model
 - `get_snapshot_details`: Gets details for a specific snapshot
 - `get_test_details`: Gets details for a specific test
-- `search`: Searches for dbt resources using natural language queries
 
 ### Administrative API
 
@@ -151,7 +150,7 @@ A set of tools that leverage the <Constant name="fusion" /> engine through a loc
 
 - `get_column_lineage`: <Constant name="fusion" /> exclusive! Get column lineage information across a project DAG for a specific column.
 
-### MCP Server Metadata
+### MCP server metadata
 
 These tools provide information about the MCP server itself. They are disabled by default. To enable them, set the `DISABLE_MCP_SERVER_METADATA` environment variable to `false`.
 
