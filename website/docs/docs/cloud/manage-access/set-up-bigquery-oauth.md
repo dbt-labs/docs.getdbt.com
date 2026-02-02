@@ -66,6 +66,12 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/bq-oauth-app-02.png" title="Create an OAuth app in BigQuery" />
 
+:::note
+
+The <Constant name="dbt_platform" /> will request the required BigQuery scopes automatically during the OAuth flow. [Configuring scopes in the OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) is optional and not required for the <Constant name="dbt_platform" /> to connect to BigQuery. Required scopes are requested and approved when users authenticate via OAuth.
+
+:::
+
 ### Configure the Connection in dbt
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to the <Constant name="dbt_platform" />. To do so:
  1. Navigate back to the Connection details page, as described in [Locate the redirect URI value](#locate-the-redirect-uri-value).
