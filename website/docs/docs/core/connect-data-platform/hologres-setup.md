@@ -155,7 +155,7 @@ Supports various table properties in Hologres. For details, please refer to the 
 - clustering_key
 - event_time_column
 
-Best Practices for Table Properties:
+Best practices for table properties:
 1. orientation: Use 'column' for olap, 'row' for key-value queries.
 2. distribution_key: Choose frequently joined or grouped columns (prefer single column)
 3. clustering_key: Use for range queries (max 3 columns, left-match principle)
