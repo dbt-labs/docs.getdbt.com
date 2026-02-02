@@ -9,9 +9,9 @@ Modern data warehouses offer native features that can simplify near real-time da
 
 This section covers when to use dynamic tables and materialized views instead of incremental models for near real-time data. 
 
-- [Dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) is a Snowflake warehouse specific feature that lets the warehouse keep a table up to date for you. You define what the table should look like, and the warehouse keeps the table fresh automatically.
-- [Materialized views](/docs/build/materializations#materialized-view) is a warehouse-specific feature that lets the warehouse save the results of a query so they’re faster to read, and refresh them as the underlying data changes (exact behavior depends on the warehouse).
-- [Incremental models](/docs/build/incremental-models) are a dbt feature that lets dbt update a table by processing only new data. You tell dbt how new data should be added using your incremental logic sql, and dbt runs the right sql when the model is built.
+- [Dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) are a warehouse-specific feature in Snowflake that lets the warehouse keep a table updated for you. You define what the table should look like, and the warehouse keeps the table fresh automatically.
+- [Materialized views](/docs/build/materializations#materialized-view) are a warehouse-specific feature that lets the warehouse save the results of a query so they’re faster to read, and refresh them as the underlying data changes. Note that the exact behavior depends on the warehouse.
+- [Incremental models](/docs/build/incremental-models) are a dbt feature that lets dbt update a table by processing only new data. You tell dbt how new data should be added using your incremental logic SQL, and dbt runs the right SQL when the model is built.
 
 
 #### When to consider warehouse-native features
@@ -47,9 +47,9 @@ This section covers when to use dynamic tables and materialized views instead of
 Dynamic tables are currently supported in Snowflake, with similar features available in other warehouses under different names. Check your warehouse documentation for availability.
 :::
 
-Dynamic tables let you define the target state with sql, and the warehouse automatically handles incremental refreshes.
+With dynamic tables, you can define the target state with SQL, and the warehouse automatically handles incremental refreshes.
 
-For example, the following sql model uses a dynamic table to keep a table up to date for you:
+For example, the following SQL model uses a dynamic table to keep a table up to date for you:
 
 ```sql
 {{ config(
@@ -98,9 +98,9 @@ The warehouse automatically determines when to refresh, whether to do a full or 
 Materialized views are available in most modern data warehouses and cache query results that automatically refresh when underlying data changes.
 
 Materialized views work like this:
-- The warehouse detects changes to source tables and refreshes the materialized view
-- Many warehouses can incrementally update the view rather than recomputing everything
-- Queries against the materialized view read cached results, not the underlying tables
+- The warehouse detects changes to source tables and refreshes the materialized view.
+- Many warehouses can incrementally update the view rather than recomputing everything.
+- Queries against the materialized view read cached results, not the underlying tables.
 
 
 For example, the following sql model uses a materialized view to keep a table up to date for you:

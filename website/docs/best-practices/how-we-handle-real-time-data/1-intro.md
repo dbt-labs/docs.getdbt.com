@@ -9,7 +9,7 @@ By design, dbt is batch-oriented with jobs having a defined start and end time. 
 
 This guide covers multiple patterns for achieving near real-time data freshness with dbt:
 
-1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) &mdash; `merge` strategies, CDC, and microbatch processing
+1. [Incremental patterns](/best-practices/how-we-handle-real-time-data/2-incremental-patterns) &mdash; `merge` strategies, Change Data Capture (CDC), and microbatch processing
 2. [Warehouse-native features](/best-practices/how-we-handle-real-time-data/3-warehouse-native-features) &mdash; When to use dynamic tables and materialized views
 3. [Lambda views pattern](/best-practices/how-we-handle-real-time-data/4-lambda-views) &mdash; Combining batch and real-time data in a single view
 4. [Views-only pattern](/best-practices/how-we-handle-real-time-data/5-views-only-pattern) - Maximum freshness for lightweight transformations
@@ -43,7 +43,7 @@ Specific transformation approaches include:
 - [Incremental models](/docs/build/incremental-models-overview) with merge or append strategies
 - [Microbatch incremental strategy](/docs/build/incremental-microbatch) for large time-series tables
 - Jobs scheduled very frequently (like every 5 minutes)
-- Dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/reference/resource-configs/snowflake-configs#materialized-views) with short refresh intervals
+- [Dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/reference/resource-configs/snowflake-configs#materialized-views) with short refresh intervals
 
 ## Key recommendations
 
