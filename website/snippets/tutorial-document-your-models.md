@@ -75,11 +75,9 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 
 <TabItem value="View in Studio IDE" >
 
-Alternatively, you can view docs directly from the IDE. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="explorer" />.
+You can view docs directly from the IDE if you're on `Latest` or another version of <Constant name="core" />. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="explorer" />.
 
-1. In the IDE, run one of the following commands:
-   - `dbt docs generate` if you're on <Constant name="core" />
-   - `dbt build` if you're on the <Constant name="fusion_engine" />
+1. In the IDE, run `dbt docs generate`.
 2. From the navigation bar, click the **View docs** icon located to the right of the **branch name**.
    <Lightbox src="/img/docs/collaborate/dbt-explorer/docs-icon.png" width="30%" title="The View docs icon in the Studio IDE." />
 3. From **Projects**, select your project name and expand the folders.
