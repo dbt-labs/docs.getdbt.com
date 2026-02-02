@@ -128,6 +128,7 @@ Here are some resources for each warehouse:
 
 - [dbt developer docs: BigQuery materialized views](/reference/resource-configs/bigquery-configs#materialized-views)
 - [BigQuery docs: Materialized views intro](https://cloud.google.com/bigquery/docs/materialized-views-intro)
+- [BigQuery docs: Streaming API](https://docs.cloud.google.com/bigquery/docs/write-api)
 
 #### Databricks
 
@@ -143,6 +144,7 @@ Here are some resources for each warehouse:
 
 - [dbt developer docs: Redshift materialized views](/reference/resource-configs/redshift-configs#materialized-views)
 - [Redshift docs: Materialized views overview](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
+- [Redshift docs: Streaming ingestion to a materialized view](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html)
 
 #### Snowflake
 
