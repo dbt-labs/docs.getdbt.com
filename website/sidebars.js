@@ -342,6 +342,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/yellowbrick-setup",
                 "docs/core/connect-data-platform/ydb-setup",
                 "docs/core/connect-data-platform/maxcompute-setup",
+                "docs/core/connect-data-platform/hologres-setup",
               ],
             },
           ],
