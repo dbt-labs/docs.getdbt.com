@@ -49,10 +49,10 @@ Specific transformation approaches include:
 
 The following are some key recommendations to help you achieve near real-time data freshness with dbt:
 
-- Ingest data continuously &mdash; Use your warehouse's native streaming or micro-batch ingestion to land raw data as soon as it arrives.
-- Transform with dbt on a frequent schedule &mdash; Schedule dbt jobs to run as often as your business needs allow (for example, every 1–15 minutes). Balance freshness with cost and resource constraints.
-- Materialized views and dynamic tables &mdash; For the lowest-latency reporting, use materialized views or dynamic tables. These can be refreshed as frequently as every minute.
-- Incremental models and microbatching &mdash; Use dbt's incremental models to process only new or changed data, keeping transformations efficient and scalable.
-- Decouple ingestion from transformation &mdash; Keep data acquisition and transformation flows separate. This allows you to optimize each independently.
-- Monitor and test data freshness &mdash; Implement data quality checks and freshness monitoring to ensure your near real-time pipelines deliver accurate, up-to-date results.
-- Cost and complexity considerations &mdash; Running dbt jobs more frequently drives up compute costs and operational complexity. Always weigh the business value against these trade-offs.
+- Ingest data continuously: Use your warehouse's native streaming or micro-batch ingestion to land raw data as soon as it arrives.
+- Transform with dbt on a frequent schedule: Schedule dbt jobs to run as often as your business needs allow (for example, every 1–15 minutes). Balance freshness with cost and resource constraints.
+- Materialized views and dynamic tables: For the lowest-latency reporting, use materialized views or dynamic tables. These can be refreshed as frequently as every minute.
+- Incremental models and microbatching: Use dbt's incremental models to process only new or changed data, keeping transformations efficient and scalable.
+- Decouple ingestion from transformation: Keep data acquisition and transformation flows separate. This allows you to optimize each independently.
+- Monitor and test data freshness: Implement data quality checks and freshness monitoring to ensure your near real-time pipelines deliver accurate, up-to-date results.
+- Cost and complexity considerations: Running dbt jobs more frequently drives up compute costs and operational complexity. Always weigh the business value against these trade-offs.
