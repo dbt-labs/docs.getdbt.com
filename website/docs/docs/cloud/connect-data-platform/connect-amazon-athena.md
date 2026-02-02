@@ -5,8 +5,6 @@ description: "Configure the Amazon Athena data platform connection in dbt."
 sidebar_label: "Connect Amazon Athena"
 ---
 
-# Connect Amazon Athena <Lifecycle status="core" />
-
 Your environment(s) must be on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to use the Amazon Athena connection.
 
 Connect <Constant name="cloud" /> to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:

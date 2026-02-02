@@ -6,8 +6,6 @@ sidebar_label: "Connect Apache Spark"
 pagination_next: null
 ---
 
-# Connect Apache Spark <Lifecycle status="core" />
-
 <Snippet path="dbt-databricks-for-databricks" />
 
 :::note

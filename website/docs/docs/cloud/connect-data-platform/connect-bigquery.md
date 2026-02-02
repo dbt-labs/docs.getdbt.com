@@ -5,7 +5,7 @@ description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
 ---
 
-# Connect BigQuery <Lifecycle status="core" /><Lifecycle status="fusion" />
+# Connect BigQuery <ProductCard text="Fusion compatible" />
 
 ## Required permissions
 

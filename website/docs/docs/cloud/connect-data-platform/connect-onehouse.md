@@ -6,8 +6,6 @@ description: "Setup instructions for connecting Onehouse to dbt"
 pagination_next: null
 ---
 
-# Connect Onehouse <Lifecycle status="core" />
-
 <Constant name="cloud" /> supports connecting to [Onehouse SQL](https://www.onehouse.ai/product/quanton) using the Apache Spark Connector with the Thrift method.
 
 :::note

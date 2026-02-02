@@ -5,7 +5,7 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
-# Connect Snowflake <Lifecycle status="core" /><Lifecycle status="fusion" />
+# Connect Snowflake <ProductCard text="Fusion compatible" />
 
 :::note
 

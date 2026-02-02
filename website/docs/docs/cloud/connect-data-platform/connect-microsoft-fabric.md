@@ -4,8 +4,6 @@ description: "Configure Microsoft Fabric connection."
 sidebar_label: "Connect Microsoft Fabric"
 ---
 
-# Connect Microsoft Fabric <Lifecycle status="core" />
-
 ## Supported authentication methods
 The supported authentication methods are: 
 - Microsoft Entra service principal

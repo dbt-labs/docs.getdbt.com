@@ -4,8 +4,6 @@ description: "Configure Starburst or Trino connection."
 sidebar_label: "Connect Starburst or Trino"
 ---
 
-# Connect Starburst or Trino <Lifecycle status="core" />
-
 The following are the required fields for setting up a connection with a [Starburst Enterprise](https://docs.starburst.io/starburst-enterprise/index.html), [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/index.html), or [Trino](https://trino.io/) cluster. Unless specified, "cluster" means any of these products' clusters.
 
 | Field | Description | Examples |
