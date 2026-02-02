@@ -71,7 +71,15 @@ where event_ts >= current_timestamp() - interval '7 days';
 
 #### target_lag config
 
-The [`target_lag` parameter](/reference/resource-configs/snowflake-configs#target-lag) tells the warehouse how fresh the data should be:
+The [`target_lag` parameter](/reference/resource-configs/snowflake-configs#target-lag) tells the warehouse the maximum acceptable staleness of the dynamic table relative to its sources, and helps determine when the table should be refreshed.
+
+For example:
+
+- `target_lag = '1 minute'` - Warehouse keeps the table within one minute of its source data, refreshing automatically as needed.
+
+- `target_lag = '5 minutes'` - Table may lag up to five minutes behind its sources.
+
+- `target_lag = 'downstream'` - Table refreshes only when a downstream table depends on it.
 
 - `target_lag = '1 minute'` - Data refreshed to be within 1 minute of the source
 - `target_lag = '5 minutes'` - Data within 5 minutes
