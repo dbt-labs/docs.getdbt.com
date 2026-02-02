@@ -30,7 +30,7 @@ The examples used in this page assume the following setup:
 
 Downstream BI or dashboards query only the lambda view.
 
-### Base incremental table
+## Base incremental table
 
 You can reuse the incremental `merge` from [Snowflake pattern 1](/best-practices/how-we-handle-real-time-data/2-incremental-patterns#incremental-merge-from-append-only-tables) as your base table; for completeness:
 
@@ -69,7 +69,7 @@ from source_events;
 
 Schedule this model to run, for example, every 5–15 minutes as part of your near real‑time job.
 
-### NRT view: rows more recent than the base table
+## NRT view: rows more recent than the base table
 
 The NRT view returns only events with `event_ts` greater than the maximum timestamp in the base table, so there is no overlap or double counting:
 
