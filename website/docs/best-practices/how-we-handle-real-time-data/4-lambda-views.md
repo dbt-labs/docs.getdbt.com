@@ -15,7 +15,7 @@ A lambda view pattern combines a batch / incremental fact table with a small nea
 
 - You need fresher reads than your normal incremental schedule, but
 - You can't (or don't want to) use [dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/docs/build/materializations#materialized-view), or you want to keep logic entirely in dbt SQL.
-
+The examples used in this page assume the following setup:
 ### Assumptions
 The examples used in this page assume the following setup:
 - Raw events land continuously into `raw.events` using your warehouse's streaming ingestion feature (like Snowpipe, Databricks Auto Loader, Kafka, or a similar ingestion mechanism).

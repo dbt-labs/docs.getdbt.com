@@ -162,5 +162,5 @@ Schema changes in the source table propagate immediately through the view stack,
 
 If the continuously‑updated source is itself a live operational store (not a warehouse landing table), you must be careful not to overload it with analytics queries. In most cases, it is recommended to:
 
-- Replicating into a warehouse table first (Snowflake, BigQuery, Databricks, and so on), then
+1. Replicate into a warehouse table first (Snowflake, BigQuery, Databricks, and so on).
 2. Apply this views‑only pattern within the warehouse, not directly on the Online Transaction Processing system.

@@ -8,7 +8,7 @@ hoverSnippet: Learn about operational challenges and risks for near real-time da
 Teams that implement very high-frequency dbt jobs tend to run into a consistent set of challenges, both at the dbt scheduler layer and in the warehouse itself.
 
 :::info Treat near real-time as a premium service
-Near real-time SLAs require premium resources and add significant operational overhead. Pressure-test whether the business really needs minute-level freshness before committing.
+Near real-time service level agreements (SLAs) require premium resources and add significant operational overhead. Pressure-test whether the business really needs minute-level freshness before committing.
 :::
 
 ## Over-scheduled jobs and queue management
@@ -18,16 +18,16 @@ If a job's run duration is longer than its schedule frequency, the job becomes o
 This is easy to hit with near real-time patterns if your incremental build time creeps up (more models, more tests, more data) but the cron schedule stays aggressive (for example, every 2–5 minutes).
 
 **Example scenario:**
-- Your job is scheduled to run every 5 minutes
-- The job typically takes 6-7 minutes to complete
-- New runs queue up while previous runs are still executing
-- <Constant name="dbt_platform" /> starts cancelling queued runs to prevent infinite backlog
+- Your job is scheduled to run every 5 minutes.
+- The job typically takes 6-7 minutes to complete.
+- New runs queue up while previous runs are still executing.
+- <Constant name="dbt_platform" /> starts cancelling queued runs to prevent infinite backlog.
 
 When this happens, remediation is non-trivial. You need to either refactor the job to run faster (prune model selection, adjust threads, optimize SQL) or relax the schedule and accept a looser freshness SLA.
 
 #### Related scheduler constraints
 
-- Run slots limit how many jobs can run concurrently. Frequent near-real-time jobs can starve other deployment jobs if slot usage isn't planned.
+- Run slots limit how many jobs can run concurrently. Frequent near real-time jobs can starve other deployment jobs if slot usage isn't planned.
 - The scheduler runs distinct executions of the same job serially. If one run is still in progress when the next cron fires, the second run must wait (or be cancelled in an over-scheduled scenario).
 
 ## Warehouse cost and utilization
@@ -49,14 +49,14 @@ The net effect: you should treat near real-time SLAs as a premium service and pr
 
 If you're using the [lambda views pattern](/best-practices/how-we-handle-real-time-data/4-lambda-views), you face additional complexity:
 
-- **Duplicated logic** &mdash; You either centralize SQL in macros (more DRY, less readable) or duplicate the same transformations in both HIST and NRT flows (more readable, more to maintain).
-- **Complex DAGs** &mdash; Every "product" model now has at least three artifacts (HIST table, NRT view, lambda union), plus supporting upstream layers.
-- **Materialization brittleness** &mdash; The pattern depends on specific materializations (views vs incrementals). A seemingly harmless materialization change can break freshness or correctness.
+- **Duplicated logic**: You either centralize SQL in macros (more DRY, less readable) or duplicate the same transformations in both history (HIST) and NRT flows (more readable, more to maintain).
+- **Complex DAGs**: Every "product" model now has at least three artifacts (HIST table, NRT view, lambda union), plus supporting upstream layers.
+- **Materialization brittleness**: The pattern depends on specific materializations (views vs incrementals). A seemingly harmless materialization change can break freshness or correctness.
 
 On top of that, community experience has surfaced timing gaps between HIST and NRT flows:
 
 - Views (NRT) often update much faster than incremental tables. During a run, the NRT side may start filtering on the new `max(event_ts)` before the incremental table has finished loading, producing temporary holes in the unioned lambda view where recent data disappears briefly.
-- One mitigation is to introduce an explicit dependency from NRT to the incremental model (for example, a Manual Dependency on `{{ ref('fct_events') }}` comment), but this is somewhat brittle and increases coupling.
+- One way to mitigate is to introduce an explicit dependency from NRT to the incremental model (for example, a manual dependency on `{{ ref('fct_events') }}` comment), but this is somewhat brittle and increases coupling.
 
 
 ## Job reliability and resource limits
@@ -77,7 +77,7 @@ High-frequency jobs are more likely to surface job-level failures:
 
 ## Ingestion architecture dependencies
 
-Lambda views and near-real-time dbt jobs sit on top of your ingestion architecture:
+Lambda views and NRT dbt jobs sit on top of your ingestion architecture:
 
 - **The dependency**
   - If ingestion latency or throughput degrades (issues in a task/stream pipeline, backlogs in storage, intermittent Snowpipe delays), the lambda view can only union what has already arrived.
@@ -86,7 +86,7 @@ Lambda views and near-real-time dbt jobs sit on top of your ingestion architectu
 - **What you end up tuning**
   - Task cadences and partition strategies in the landing zone
   - Lambda overlap windows and incremental look-backs
-  - Which sources really need to participate in the near-real-time path
+  - Which sources really need to participate in the NRT path
 
 ## Conclusion
 
