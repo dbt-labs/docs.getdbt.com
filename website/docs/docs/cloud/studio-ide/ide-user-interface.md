@@ -6,11 +6,11 @@ sidebar_label: User interface
 tags: [IDE]
 ---
 
-The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly -- no command line required!
+The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders on the left, editor on the right an command/console at the bottom"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders and search on the left, editor on the right, command palette at the top, and command/console at the bottom"/>
 
 ## Basic layout
 
@@ -25,7 +25,7 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 
 3. [**Version Control**](#editing-features) &mdash; The <Constant name="cloud_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
-4. **File <Constant name="explorer" /> &mdash;** The File <Constant name="explorer" /> shows the filetree of your repository. You can:
+4. **File explorer &mdash;** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
     - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
@@ -43,6 +43,53 @@ The <Constant name="cloud_ide" /> streamlines your workflow, and features a popu
 
 7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
 
+## Search bar and command palette
+
+The <Constant name="cloud_ide" /> provides tools to help you quickly navigate your project's files, find information, run commands, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-command.png" width="90%" title="Use the search bar and command palette to quickly navigate your file tree and open tabs."/>
+
+1. [Search and replace](#search-and-replace)
+2. [Command palette](#command-palette)
+
+### Search and replace
+
+The search feature enables you to quickly find specific terms or phrases and replace them with the click of a button.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-replace.png" width="50%" title="Search files for specific terms and quickly replace them." />
+
+1. Toggle between **file tree** and **search** navigation.
+2. Search for words or phrases. Enhance the search to match case and/or whole words. You can also input replacement words or phrases. Click the icon next to the **Replace** field to replace all entries.
+3. Navigate the search results. Click an entry to open the related file and highlight it on the screen. If you've entered replacement text, you'll see a preview of the new syntax. Click the symbol next to an entry to substitute the text with whatever is in the **Replace** field.
+
+###  Command palette
+
+The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options. Actions supporting keyboard shortcuts display to the right of the text.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
+
+- **Go to File:** Search for files in your current project and open them in a new tab.
+- **Show and Run Commands:** View and run commands related to IDE navigation and settings. 
+   Note: dbt commands (such as `run` and `build`) are available only in the [Command bar](#console-section) menu in the console; the command palette doesn't currently support them.
+- **Search for Text:** Search for text across your project and either open files from the results or send results to the [search and replace](#search-and-replace) section for bulk changes.
+- **Go to Symbol in Editor:** Quickly jump to symbols in the current file.
+- **More:** Display advanced features such as **Go to Line/Column**, **Go to Symbol in Workspace**, and search within currently open files only. 
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/go-to-file.png" width="90%" title="Go to File." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/show-and-run-commands.png" width="90%" title="Show and Run Commands." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-for-text.png" width="90%" title="Search for text." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/go-to-symbol.png" width="90%" title="Go to Symbol in Editor." />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/more.png" width="90%" title="More." />
+
+
+</DocCarousel>
+
 ## Editing features
 
 The <Constant name="cloud_ide" /> features some delightful tools and layouts to make it easier for you to write dbt code and collaborate with teammates. 
@@ -51,7 +98,7 @@ The <Constant name="cloud_ide" /> features some delightful tools and layouts to 
 
 1. **File editor &mdash;** The file editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
-    * Use intuitive [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) to help develop easier for you and your team.
+    * Use intuitive [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) to make development easier for you and your team.
 
 2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The file editor tab shows a blue icon for unsaved changes.
 
@@ -70,9 +117,6 @@ The <Constant name="cloud_ide" /> features some delightful tools and layouts to 
 
 - **Minimap &mdash;** A Minimap (code outline) gives you a high-level overview of your source code, which is useful for quick navigation and code understanding. A file's minimap is displayed on the upper-right side of the editor. To quickly jump to different sections of your file, click the shaded area.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-minimap.png" width="90%" title="Use the Minimap for quick navigation and code understanding"/>
-
-- **dbt Editor Command Palette &mdash;** The dbt Editor Command Palette displays text editing actions and their associated keyboard shortcuts. This can be accessed by pressing `F1` or right-clicking in the text editing area and selecting Command Palette.
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editor-command-palette-with-save.png" width="90%" title="Click F1 to access the dbt Editor Command Palette menu for editor shortcuts"/>
 
 - **<Constant name="git" /> Diff View &mdash;** Clicking on a file in the **Changes** section of the **Version Control Menu** will open the changed file with <Constant name="git" /> Diff view. The editor will show the previous version on the left and the in-line changes made on the right.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-git-diff-view-with-save.png" width="90%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
@@ -166,12 +210,8 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
   To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.png" width="90%" title=" Right-click a tab to view the Editor tab menu options"/>
 
-#### File Search
-  You can easily search for and navigate between files using the File Navigation menu, which can be accessed by pressing Command-O or Control-O or clicking on the 🔍 icon in the File <Constant name="explorer" />.
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
-
-#### Global Command Palette
-  The Global Command Palette provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
+#### Global command shortcut
+  The global command shortcut provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### <Constant name="cloud_ide" /> Status modal
