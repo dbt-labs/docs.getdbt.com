@@ -224,7 +224,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable the **Generate docs on run** toggle for this job to update the <Constant name="explorer" />. Once run, you can click Explore from the upper menu bar and see your lineage, tests, and documentation coming through successfully.
+  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="explorer" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 

@@ -11,7 +11,7 @@ Test selection works a little differently from other resource selection. This ma
 
 Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.
 
-Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected. [See below](#indirect-selection) for more details.
+Unlike other resource types, tests can also be selected _indirectly_ through relationships in your DAG. If a selection method or operator includes a model that a test depends on, dbt will also select that test. For example, when you run `dbt test --select model_b`, dbt includes tests defined on `model_b` as well as tests on related models (like `model_b`) that reference `model_b`.[See the next section](#indirect-selection) for more details on controlling this behavior.
 
 Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 
@@ -115,11 +115,13 @@ dbt build --select "orders" --indirect-selection=empty
 
 Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
-The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 
+The following examples use _eager_ mode by default for indirect selection, unless you specify another mode (like `--indirect-selection=cautious`).
+
+The selection operators (`+`, `tags`, and so on) determine which models are selected; the indirect selection mode determines which tests run for those models.
 
   ```bash
-  # Run tests on a model (indirect selection)
+  # Run tests on a model (indirect selection) 
   dbt test --select "customers"
   
   # Run tests on two or more specific models (indirect selection)
@@ -139,6 +141,9 @@ The following examples should feel somewhat familiar if you're used to executing
 
   # Run tests on all models with a particular materialization (indirect selection)
   dbt test --select "config.materialized:table"
+  
+  # To change the indirect selection mode, add the flag:
+  dbt test --select "customers" --indirect-selection=cautious
 
   ```
 

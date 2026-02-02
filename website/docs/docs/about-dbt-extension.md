@@ -87,11 +87,32 @@ The following are currently known limitations of the dbt extension:
 - **Working with YAML files:** Today, the dbt extension has the following limitations with operating on YAML files:
   - Go-to-definition is not supported for nodes defined in YAML files (like snapshots).
   - Renaming models and columns will not update references in YAML files.
-  - Future releases of the dbt extension will address these limitations
+  - Future releases of the dbt extension will address these limitations.
 
-- **Renaming models:** When a model file is renamed, the dbt extension will apply edits to update all `ref()` calls that reference the renamed model. Due to limitations of VS Code's Language Server Client, we are not able to auto-save these edit files. As a result, you may see that renaming a model file results in compiler errors in your project. To fix these errors, you must either manually save each file that was edited by the dbt extension, or click **File** --> **Save All** to save all edited files.
+- **Renaming models:** When you rename a model file, the dbt extension applies edits to update all `ref()` calls that reference the renamed model. Due to limitations of VS Code's Language Server Client, the extension can't auto-save these edited files. As a result, renaming a model file may cause compiler errors in your project. To fix these errors, either manually save each file that the dbt extension edited, or click **File** --> **Save All** to save all edited files.
 
 - **Using Cursor's Agent mode:** When using the dbt extension in Cursor, lineage visualization works best in Editor mode and doesn't render in Agent mode. If you're working in Agent mode and need to view lineage, switch to Editor mode to access the full lineage tab functionality.
+
+### Extension conflicts
+
+The extension may occasionally conflict with other VS Code extensions that provide similar services (such as code validation). You may need to disable these third-party extensions while working with the dbt extension.
+
+**YAML by Red Hat:**
+
+The YAML extension by Red Hat may erroneously flag some keys (such as `static_analysis`) in dbt YAML files as invalid in the IDE.
+
+<Lightbox src="/img/docs/extension/false-yaml-error.png" width="60%" title="Static analysis erroneously tagged as invalid"/>
+
+To solve this issue, do one of the following:
+- (Recommended) Disable the Red Hat YAML extension while working with the dbt extension.
+- Add the following configuration to your VS Code `settings.json` file:
+  ```json
+  "yaml.schemas": {
+      "Core/dbtschema.json": "data/dbt/models/**/schema.yml",
+      "": "data/dbt/dbt_project.yml"
+  },
+  ```
+  This could disable _all_ use of the schema store, resulting in unintended consequences. 
 
 
 ## Support

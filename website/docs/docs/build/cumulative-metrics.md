@@ -37,7 +37,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 | `name`  | The name of the metric.       | Required  | String |
 | `description`       | The description of the metric.     | Optional  | String |
 | `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  | String |  
-| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
+| `label`     | Optional string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
 | `input_metric`     | The name of the metric being referenced. Supports the following nested parameters: `name`, `filter`, and `alias`. | Required  | Dict |
 | `input_metric.name`     | The name of the metric being referenced. | Required  | String |
 | `input_metric.filter`     | The [filter](/docs/build/metrics-overview#filters) to apply to the metric. | Optional  | String |
@@ -56,7 +56,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 | `name`  | The name of the metric.       | Required  | String |
 | `description`       | The description of the metric.     | Optional  | String |
 | `type`    | The type of the metric (cumulative, derived, ratio, or simple).       | Required  | String |  
-| `label`     | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
+| `label`     | Optional string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional  | String |
 | `type_params`    | The type parameters of the metric. Supports nested parameters indicated by dot notation, such as `type_params.measure`.  | Required  | Dict |
 | `type_params.measure`   | The measure associated with the metric. Supports both shorthand (string) and object syntax. The shorthand is used if only the name is needed, while the object syntax allows specifying additional attributes. | Required  | Dict |
 | `measure.name`    | The name of the measure being referenced. Required if using object syntax for `type_params.measure`.  | Optional  | String |
@@ -123,7 +123,7 @@ metrics:
 metrics:
   - name: my_advanced_cumulative_metric # required 
     description: my_description # optional
-    label: my_label # required
+    label: my_label # optional
     type: cumulative # required --  cumulative | ratio | derived | conversion
     # if cumulative, optionally can supply window or grain_to_date, but not both
     window: 1 week # (interval)
