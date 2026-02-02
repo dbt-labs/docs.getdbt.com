@@ -18,7 +18,7 @@ import Contractsupport from '/snippets/_contract-support.md';
 
 <Contractsupport />
 
-Refer to [Example usage](/reference/resource-configs/contract#example) to see how to apply contracts in your project.
+Refer to the [Examples](/reference/resource-configs/contract#examples) to see how to apply contracts in your project.
 
 ## Data type aliasing
 
@@ -117,22 +117,22 @@ When you `dbt run` your model, _before_ dbt has materialized it as a table in th
 
   Define a model’s contract in a `properties.yml` by specifying the expected columns and data types:
 
-  ```yml
+```yml
 
-    models:
-      - name: stg_rental_applications  # replace with your model name
-        config:
-          contract:
-            enforced: true
-        columns:
-          - name: column_1_id  # example id column. Replace with your column
-            data_type: int    # replace with your column's data type
-          - name: column_2_created_at  # example column tracking when something was created
-            data_type: timestamp 
-          - name: column_3_status      # example status column, which typically store text values ("active", "pending", "completed", etc.)
-            data_type: string
+models:
+  - name: stg_rental_applications  # replace with your model name
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: column_1_id  # example id column. Replace with your column
+        data_type: int    # replace with your column's data type
+      - name: column_2_created_at  # example column tracking when something was created
+        data_type: timestamp
+      - name: column_3_status      # example status column, which typically store text values ("active", "pending", "completed", etc.)
+        data_type: string
 
-  ```
+```
 
     </TabItem>
  
