@@ -146,22 +146,17 @@ Full support for database constraints including:
 
 ### Table properties
 
-Supports various table properties in Hologres. For details, please refer to the [manual](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
+Hologres supports the following table properties. For full details, see the
+[manual](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
 
-- orientation
-- distribution_key
-- dictionary_encoding_columns
-- bitmap_columns
-- clustering_key
-- event_time_column
-
-Best practices for table properties:
-1. orientation: Use 'column' for olap, 'row' for key-value queries.
-2. distribution_key: Choose frequently joined or grouped columns (prefer single column)
-3. clustering_key: Use for range queries (max 3 columns, left-match principle)
-4. event_time_column: Set for time-series data (timestamp columns)
-5. bitmap_columns: Use for equality filters
-6. dictionary_encoding_columns: Use for low cardinality string columns
+| Property | Best practices |
+|--------|----------------|
+| `orientation` | Use `column` for olap workloads and `row` for key-value queries |
+| `distribution_key` | Choose frequently joined or grouped columns; prefer a single column |
+| `clustering_key` | Use for range filter columns; max 3 columns; follow the left-match principle |
+| `event_time_column` |  Set for time-series data (timestamp columns) |
+| `bitmap_columns` | Use for equality filters |
+| `dictionary_encoding_columns` | Use for low-cardinality string columns |
 
 ## References
 
