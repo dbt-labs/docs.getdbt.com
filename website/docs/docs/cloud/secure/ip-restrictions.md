@@ -3,7 +3,7 @@ title: "Configuring public IP restrictions"
 id: ip-restrictions
 description: "Restrict public access to dbt Cloud by allowing only specific IP addresses"
 sidebar_label: "Public IP restrictions"
-pagination_next: "docs/cloud/secure/about-private-connectivity"
+pagination_next: "docs/cloud/secure/private-connectivity/private-connectivity"
 pagination_prev: null
 ---
 

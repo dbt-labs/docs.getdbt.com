@@ -1,44 +1,39 @@
+import Lifecycle from '/src/components/lifeCycle';
+
 ## AWS private connectivity matrix
 
 The following charts outline private connectivity options for AWS deployments of <Constant name="cloud" /> ([multi-tenant and single-tenant](/docs/cloud/about-cloud/tenancy)).
 
 **Legend:**
-
-_Availability:_
 - ✅ = Available
 - ❌ = Not currently available
-- \- = Not applicable
+- \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
+- <Lifecycle status="beta" backgroundColor="#d8d4f0" /> = Reported working but not yet directly tested by dbt
 
-_Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
-
-:::note About the following matrix tables
-These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+:::note What "Available" means
+Availability indicates whether a private endpoint can be established at the network layer. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
 :::
-
 
 ---
 
-### Connecting to dbt Cloud (Ingress)
+### Connecting to dbt Cloud (Single-Tenant only)
 
-Your services can connect to <Constant name="cloud" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model. In this case, dbt is the <Term id="service-producer">service producer</Term> and you are the <Term id="consumer">consumer</Term>.
+Your services can connect to <Constant name="cloud" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model.
 
 <table>
   <thead>
     <tr>
       <th>Connectivity type</th>
-      <th>MT</th>
-      <th>ST</th>
+      <th>AWS ST</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Private <Constant name="cloud" /> access</td>
-      <td>❌</td>
       <td>✅</td>
     </tr>
     <tr>
       <td>Dual access (public + private)</td>
-      <td>❌</td>
       <td>✅</td>
     </tr>
   </tbody>
@@ -46,9 +41,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ---
 
-### Connecting dbt Cloud to managed services (Egress)
-
-<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
+### Connecting dbt Cloud to data platforms and native services
 
 <table>
   <thead>
@@ -85,12 +78,12 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
       <td>✅</td>
     </tr>
     <tr>
-      <td>Amazon Athena w/ AWS Glue</td>
+      <td>Amazon Athena w/ AWS Glue*</td>
       <td>❌</td>
       <td>✅</td>
     </tr>
     <tr>
-      <td>AWS CodeCommit</td>
+      <td>AWS CodeCommit*</td>
       <td>❌</td>
       <td>✅</td>
     </tr>
@@ -104,9 +97,9 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ---
 
-### Connecting dbt Cloud to self-hosted services (Egress)
+### Connecting dbt Cloud to self-hosted services
 
-The services in this table are deployed as a [self-hosted PrivateLink service](/docs/cloud/secure/aws/aws-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
+All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
 
 <table>
   <thead>
@@ -134,8 +127,8 @@ The services in this table are deployed as a [self-hosted PrivateLink service](/
     </tr>
     <tr>
       <td>Azure DevOps Server</td>
-      <td>✅</td>
-      <td>✅</td>
+      <td>✅ <Lifecycle status="beta" backgroundColor="#d8d4f0" /></td>
+      <td>✅ <Lifecycle status="beta" backgroundColor="#d8d4f0" /></td>
     </tr>
     <tr>
       <td>Postgres</td>
@@ -160,5 +153,8 @@ The services in this table are deployed as a [self-hosted PrivateLink service](/
   </tbody>
 </table>
 
-If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+**Requirements for self-hosted services:**
+- Network Load Balancer
+- VPC Endpoint Service
 
+For detailed setup instructions, see [AWS PrivateLink for self-hosted services](/docs/cloud/secure/private-connectivity/aws/aws-self-hosted).

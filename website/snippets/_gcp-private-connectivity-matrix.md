@@ -1,23 +1,18 @@
+import Lifecycle from '/src/components/lifeCycle';
+
 ## GCP private connectivity matrix
 
 The following charts outline private connectivity options for GCP deployments of <Constant name="cloud" /> ([multi-tenant](/docs/cloud/about-cloud/tenancy)).
 
 **Legend:**
-
-_Availability:_
 - ✅ = Available
 - ❌ = Not currently available
-- \- = Not applicable
-
-_Endpoint type:_
 - \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
+- <Lifecycle status="beta" backgroundColor="#d8d4f0" /> = Reported working but not yet directly tested by dbt
 
-_Tenancy:_ MT (multi-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
-
-:::note About the following matrix tables
-These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+:::note What "Available" means
+Availability indicates whether a private endpoint can be established at the network layer. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
 :::
-
 
 :::note GCP regional considerations
 Some GCP services, such as BigQuery, may have regional restrictions for Private Service Connect endpoints. Refer to [Google's Private Service Connect documentation](https://cloud.google.com/vpc/docs/private-service-connect) for service-specific regional availability.
@@ -25,9 +20,7 @@ Some GCP services, such as BigQuery, may have regional restrictions for Private 
 
 ---
 
-### Connecting dbt Cloud to managed services (Egress)
-
-<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
+### Connecting dbt Cloud to data platforms and native services
 
 <table>
   <thead>
@@ -42,8 +35,8 @@ Some GCP services, such as BigQuery, may have regional restrictions for Private 
       <td>✅</td>
     </tr>
     <tr>
-      <td>Google BigQuery</td>
-      <td>✅*</td>
+      <td>Google BigQuery*</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Teradata VantageCloud</td>
@@ -54,9 +47,9 @@ Some GCP services, such as BigQuery, may have regional restrictions for Private 
 
 ---
 
-### Connecting dbt Cloud to self-hosted services (Egress)
+### Connecting dbt Cloud to self-hosted services
 
-The services in this table are deployed as a [self-hosted Private Service Connect service](/docs/cloud/secure/gcp/gcp-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
+All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
 
 <table>
   <thead>
@@ -68,19 +61,19 @@ The services in this table are deployed as a [self-hosted Private Service Connec
   <tbody>
     <tr>
       <td>GitHub Enterprise Server</td>
-      <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>GitLab Self-Managed</td>
-      <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Bitbucket Data Center</td>
-      <td>✅</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Azure DevOps Server</td>
-      <td>✅</td>
+      <td>✅ <Lifecycle status="beta" backgroundColor="#d8d4f0" /></td>
     </tr>
     <tr>
       <td>Postgres</td>
@@ -97,5 +90,8 @@ The services in this table are deployed as a [self-hosted Private Service Connec
   </tbody>
 </table>
 
-If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+**Requirements for self-hosted services:**
+- Internal Proxy Load Balancer
+- Service Attachment
 
+For detailed setup instructions, see [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted).
