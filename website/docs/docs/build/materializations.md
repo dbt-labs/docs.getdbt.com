@@ -16,7 +16,7 @@ pagination_next: "docs/build/incremental-models"
 
 You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs. 
 
-For a detailed guide on materializations, refer to [Materializations best practices](/best-practices/materializations/1-guide-overview). To learn how to handle near real-time data, refer to [How to handle real-time data](/best-practices/how-we-handle-real-time-data/1-intro).
+For a detailed guide on materializations, refer to [Materializations best practices](/best-practices/materializations/1-guide-overview). For information about data streaming, refer to [How to handle real-time data](/best-practices/how-we-handle-real-time-data/1-intro).
 
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
