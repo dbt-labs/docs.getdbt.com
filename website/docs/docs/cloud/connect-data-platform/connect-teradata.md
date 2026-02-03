@@ -5,6 +5,8 @@ description: "Configure the Teradata platform connection in dbt."
 sidebar_label: "Connect Teradata"
 ---
 
+# Connect Teradata <Lifecycle status="preview" />
+
 Your environment(s) must be on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to use the Teradata connection.
 
 | Field                         | Description                                                                                   | Type           | Required? | Example |
