@@ -16,6 +16,10 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## February 2026
+
+- **New**: The `immutable_where` configuration is supported in dynamic tables in Snowflake. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+
 ## January 2026
 
 - **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
