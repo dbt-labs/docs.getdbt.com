@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   
-  /* Smaller text size for pill appearance */
-  font-size: 0.75rem;
+  /* Text size for pill appearance */
+  font-size: 1rem;
   font-weight: 500;
   margin-left: 12px;
   margin-top: 3px;
@@ -36,7 +36,7 @@
   text-decoration: none;
 }
 
-/* Animated gradient border - sits behind everything */
+/* Animated gradient border */
 .gradientBorder {
   position: absolute;
   inset: 0;
@@ -63,16 +63,16 @@
   }
 }
 
-/* Inner content area - covers center, leaving border visible */
+/* Inner content area */
 .inner {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 3px 6px;
-  margin: 1.5px; /* Creates the border gap */
-  border-radius: 2.5px; /* Slightly smaller than parent */
-  background: var(--bg-color, #ffffff); /* Light mode default: white */
+  margin: 1.5px; 
+  border-radius: 2.5px; 
+  background: var(--color-white); 
   z-index: 1;
 }
 
@@ -88,5 +88,5 @@
 }
 
 [data-theme='dark'] .inner {
-  background: var(--bg-color, #1b1b1d); /* Dark mode default: dark background */
+  background: var(--color-neutral-primary); 
 }
