@@ -164,6 +164,15 @@ Nothing beats hands on usage and so we've tested each skill to see how it perfor
 
 We developed a [system for rapidly comparing different tool combinations](https://github.com/dbt-labs/dbt-agent-skills/tree/main/evals) (MCP + skills, skills alone, no tools) to understand how they changed an agent's output.
 
+This library allows testing how variations of skills perform for a given scenario and reviewing in detail the skills and tools called by the agent. 
+
+We provide context to Claude Code (e.g. a dbt project or some YAML files) and we ask it to solve a problem with different setups.
+- with different variations of a skill
+- with or without some MCP server connected
+- suggesting or not to the agent to use specific skills
+
+And we can then either manually compare the conversations (which skills were called, what output was produced), or ask Claude Code to rate the different runs automatically.
+
 ### Benchmarking against ADE-bench, the analytics engineering benchmark
 
 We also re-ran ADE-bench, the analytics engineering benchmark to assess performance with and without skills. While not every skill has corresponding tasks in the benchmark (yet!), this provides helpful signal, particular on the primary analytics engineering skill.
