@@ -74,7 +74,6 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 
 
-:::
 
 ### Configure the Connection in dbt
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to the <Constant name="dbt_platform" />. To do so:
