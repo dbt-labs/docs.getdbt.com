@@ -4,6 +4,8 @@ description: "Configure Azure Synapse Analytics connection."
 sidebar_label: "Connect Azure Synapse Analytics"
 ---
 
+# Connect Azure Synapse Analytics
+
 ## Supported authentication methods
 The supported authentication methods are: 
 - Microsoft Entra ID service principal
