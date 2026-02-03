@@ -4,6 +4,8 @@ sidebar_label: "Enable dbt Copilot"
 description: "Enable dbt Copilot, an AI-powered assistant, in dbt to speed up your development." 
 ---
 
+import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
+
 # Enable dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
 <IntroText>
@@ -77,10 +79,9 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   3. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/account-integration-openai.png" width="85%" title="Example of the OpenAI integration page" />
 
-  :::info Data residency limitation
-  OpenAI projects with [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) enabled and configured for the United States (project region set to US) don't currently support BYOK. These projects can only use the API key in the dbt platform configuration. Specifying custom endpoints required for data residency isn’t yet supported, and we’re evaluating a solution for this. 
 
-  To use BYOK, ensure your OpenAI project doesn’t have data residency controls enabled. Projects without project region settings will use the standard OpenAI endpoint (`https://api.openai.com`) and support BYOK.
+  :::info Data residency limitation
+  <OpenAiProjectRegion />
   :::
 
   </TabItem>
