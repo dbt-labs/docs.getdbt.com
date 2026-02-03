@@ -80,7 +80,7 @@ To configure the AI integration in your <Constant name="cloud" /> account, a <Co
   :::info Data residency limitation
   OpenAI projects with [data residency controls](https://platform.openai.com/docs/guides/your-data#data-residency-controls) enabled and configured for the United States (project region set to US) don't currently support BYOK. These projects can only use the API key in the dbt platform configuration. Specifying custom endpoints required for data residency isn’t yet supported, and we’re evaluating a solution for this. 
 
-  To use BYOK, ensure your OpenAI project doesn’t have data residency enabled. Projects without project geography settings will use the standard OpenAI endpoint (`https://api.openai.com`) and work correctly with BYOK.
+  To use BYOK, ensure your OpenAI project doesn’t have data residency controls enabled. Projects without project region settings will use the standard OpenAI endpoint (`https://api.openai.com`) and support BYOK.
   :::
 
   </TabItem>
