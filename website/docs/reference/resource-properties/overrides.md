@@ -4,7 +4,7 @@ datatype: string
 ---
 
 :::warning Deprecation
-The `overrides` property is [deprecated in v1.10](/reference/deprecations#sourceoverridedeprecation-warning-resolution). You can [enable or disable a source](/reference/source-configs#configuring-sources) from a package instead.
+The `overrides` property is [deprecated in v1.10](/reference/deprecations#sourceoverridedeprecation). You can [enable or disable a source](/reference/source-configs#configuring-sources) from a package instead.
 :::
 
 <File name='models/<filename>.yml'>
