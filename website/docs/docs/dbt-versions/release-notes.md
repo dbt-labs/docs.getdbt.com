@@ -16,6 +16,10 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## February 2026
+
+- **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on **Latest** in the <Constant name="dbt_platform" />. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+
 ## January 2026
 
 - **Enhancement:** When a model fails a data test, [state-aware orchestration](/docs/deploy/state-aware-about) rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
