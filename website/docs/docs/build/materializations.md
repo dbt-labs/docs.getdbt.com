@@ -18,7 +18,6 @@ You can also configure [custom materializations](/guides/create-new-materializat
 
 For a detailed guide on materializations, refer to [Materializations best practices](/best-practices/materializations/1-guide-overview). To learn how to handle near real-time data, refer to [How to handle real-time data](/best-practices/how-we-handle-real-time-data/1-intro).
 
-To learn about 
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 
