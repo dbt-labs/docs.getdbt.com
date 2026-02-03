@@ -91,7 +91,7 @@ With that said, you do not have to use the MCP server to get value out of skills
 
 The best way to think of skills is as a layered training manual. If you took a very smart generalist off the street, what would they need to be able to use and implement *your organization's workflows?*
 
-Consider this example from Anthropic. Working with PDF files doesn't require a MCP server because the editing library can be installed locally, you that library to be used in a consistent way instead of the LLM inventing something from first principles every time.
+Consider this example from Anthropic. Working with PDF files doesn't require a MCP server because the editing library can be installed locally, but you want that library to be used in a consistent way instead of the LLM inventing something from first principles every time.
 
 <Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/anthropic-skills-architecture.png" width="85%" title="Anthropic's diagram showing how agent skills use progressive disclosure with YAML frontmatter, markdown content, and reference files" />
 
@@ -150,7 +150,7 @@ Examples of questions you might like to answer in your skills:
 
 ## How we validated the dbt Agent Skills
 
-It can be challenging to assess the performance of AI workflows. There are many different ways to do this and each all of them are imperfect, so we have settled onto a multilayered strategy for ensuring our agent skills are performant.
+It can be challenging to assess the performance of AI workflows. There are many different ways to do this and all of them are imperfect, so we have settled onto a multilayered strategy for ensuring our agent skills are performant.
 
 ### Careful expert generation and curation of skills
 
@@ -175,7 +175,7 @@ And we can then either manually compare the conversations (which skills were cal
 
 ### Benchmarking against ADE-bench, the analytics engineering benchmark
 
-We also re-ran ADE-bench, the analytics engineering benchmark to assess performance with and without skills. While not every skill has corresponding tasks in the benchmark (yet!), this provides helpful signal, particular on the primary analytics engineering skill.
+We also re-ran ADE-bench, the analytics engineering benchmark to assess performance with and without skills. While not every skill has corresponding tasks in the benchmark (yet!), this provides helpful signal, particularly on the primary analytics engineering skill.
 
 It's not all good news though. Today, skill loading can be [a little hit-and-miss](https://scottspence.com/posts/claude-code-skills-dont-auto-activate). But it's early days and we don't think that's going to be a long term issue. We'd also love to see stronger and more reliable cross-skill referencing, such as [what's described here](https://github.com/agentskills/agentskills/issues/90).
 
@@ -189,7 +189,7 @@ We found that in a wide variety of cases, skills notably increase performance. W
 
 This is just the beginning for agent skills and dbt. It's going to take many people from across the Community trying them, testing them on real-world workflows, and building new skills to realize their full potential.
 
-As with everything in AI, things are moving fast. we expect substantial iteration on agent skills themselves in the near future (think versioning and the ability to reference other skills).
+As with everything in AI, things are moving fast. We expect substantial iteration on agent skills themselves in the near future (think versioning and the ability to reference other skills).
 We're also exploring ways to enable tighter integration between dbt and agent skills, as well as making it easier to manage custom skills for your specific dbt project and data.
 
 Steps for staying involved:
