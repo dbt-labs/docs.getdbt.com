@@ -100,7 +100,7 @@ To enhance your discovery, you can view your model query history in various loca
 
 ### View from Performance charts
 
-1. Navigate to <Constant name="explorer" /> by clicking on the **Explore** link in the navigation.
+1. Navigate to <Constant name="explorer" /> by clicking **Catalog** in the navigation.
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 

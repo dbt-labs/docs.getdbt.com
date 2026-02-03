@@ -134,6 +134,16 @@
       "permanent": true
     },
     {
+      "source": "/guides/coalesce-fusion-platform-qs",
+      "destination": "/guides/fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/metrics-spec-fusion",
+      "destination": "/docs/build/latest-metrics-spec",
+      "permanent": true
+    },
+    {
       "source": "/reference/dbt-jinja-functions",
       "destination": "/reference/dbt-jinja-functions-context-variables",
       "permanent": true

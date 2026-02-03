@@ -185,6 +185,7 @@ exposures:
 
 <TabItem value="semantic models">
 
+<VersionBlock lastVersion="1.99">
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -198,6 +199,23 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/<filename>.yml'>
+
+```yml
+models:
+  - name: model_name
+    semantic_model:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      config:
+        [meta](/reference/resource-configs/meta): {dictionary}
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 

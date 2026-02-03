@@ -20,7 +20,7 @@ Use <Constant name="explorer" /> to navigate and manage your projects within <Co
 - You have a <Constant name="cloud" /> account on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
 - You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update <Constant name="explorer" />. 
-- You are on the <Constant name="explorer" /> page. To do this, select **Explore** from the navigation in <Constant name="cloud" />.
+- You are on the <Constant name="explorer" /> page. To do this, select **Catalog** from the top-level navigation in <Constant name="cloud" />.
 
 import Generatemetadata from '/snippets/_generate-metadata.md';
 
@@ -38,7 +38,7 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
+:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' />
 
 <Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 

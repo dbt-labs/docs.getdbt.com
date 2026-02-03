@@ -78,6 +78,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/cloud/about-profiles",
             "docs/cloud/account-settings",
             "docs/cloud/account-integrations",
             "docs/dbt-cloud-environments",
@@ -370,6 +371,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/yellowbrick-setup",
                 "docs/core/connect-data-platform/ydb-setup",
                 "docs/core/connect-data-platform/maxcompute-setup",
+                "docs/core/connect-data-platform/hologres-setup",
               ],
             },
           ],
@@ -501,6 +503,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
+            "docs/build/latest-metrics-spec",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -832,12 +835,23 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI',
+      value: 'dbt AI and intelligence',
       className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Agents",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+      items: [
+        "docs/dbt-ai/dbt-agents",
+        "docs/dbt-ai/analyst-agent",
+      ],
     },
     {
       type: "category",
-      label: "Copilot",
+      label: "dbt Copilot",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/dbt-copilot" },
       items: [
@@ -1154,7 +1168,7 @@ const sidebarSettings = {
         title: "Platform-specific configs",
         description:
           "Platform-specific configs are used to configure the dbt project for a specific database platform.",
-        slug: "/reference/resource-configs/resource-configs",
+        slug: "/reference/resource-configs",
       },
       items: [
         "reference/resource-configs/azuresynapse-configs",
@@ -1561,7 +1575,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1678,6 +1692,22 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-4-implementation",
             "best-practices/how-we-mesh/mesh-6-coordinate-versions",
             "best-practices/how-we-mesh/mesh-5-faqs",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle real-time data",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-real-time-data/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-real-time-data/1-intro",
+            "best-practices/how-we-handle-real-time-data/2-incremental-patterns",
+            "best-practices/how-we-handle-real-time-data/3-warehouse-native-features",
+            "best-practices/how-we-handle-real-time-data/4-lambda-views",
+            "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
+            "best-practices/how-we-handle-real-time-data/6-operational-considerations",
           ],
         },
         {

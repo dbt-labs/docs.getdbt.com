@@ -108,8 +108,14 @@ asyncio.run(main())
 By default, the Python SDK eagerly loads nested lists of objects such as `dimensions`, `entities`, and `measures` for each `Metric` &mdash; even if you don't need them. This is generally convenient, but in large projects, it can lead to slower responses due to the amount of data returned.
 
 To improve performance, you can opt into lazy loading by passing `lazy=True` when creating the client. With lazy loading enabled, the SDK skips fetching large nested fields until you explicitly request them on a per-model basis. 
+<VersionBlock firstVersion="2.0">
+Lazy loading is currently only supported for `dimensions` and `entities` on `Metric` objects.
+</VersionBlock>
+<VersionBlock lastVersion="1.9">
 
 Lazy loading is currently only supported for `dimensions`, `entities`, and `measures` on `Metric` objects.
+
+</VersionBlock>
 
 For example, the following code fetches all available metrics from the metadata API and displays only the dimensions of certain metrics:
 

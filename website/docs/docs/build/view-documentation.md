@@ -19,7 +19,7 @@ The following sections describe how to navigate your documentation in <Constant 
 ### Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
 [<Constant name="explorer" />](/docs/explore/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
-To access <Constant name="explorer" />, navigate to the **Explore** option in the <Constant name="cloud" /> navigation menu.
+To access <Constant name="explorer" />, navigate to the **Catalog** option in the <Constant name="cloud" /> navigation menu.
 
 <DocCarousel slidesPerView={1}>
 

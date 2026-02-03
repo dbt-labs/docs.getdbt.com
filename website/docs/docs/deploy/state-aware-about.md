@@ -40,6 +40,8 @@ For example, you can configure your project so that <Constant name="cloud" /> sk
 
 Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
+**Note:** When a model fails a [data test](/docs/build/data-tests), state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state. This ensures dbt reevaluates models with unresolved data quality issues.
+
 ### Handling concurrent jobs
 
 If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
@@ -52,6 +54,17 @@ What happens when jobs overlap:
 - After the first job finishes building the model, the second job still checks whether a rebuild is needed. If there are new data or code changes to incorporate, the second job builds the model again. If there are no changes and building the model would produce the same result, the second job reuses the model.
 
 To prevent a job from being built too frequently even when the code or data state has changed, you can reduce build frequency by using the `build_after` config. For information on how to use `build_after`, refer to [Model freshness](/reference/resource-configs/freshness) and [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
+
+### Handling deleted tables
+
+State-aware orchestration detects and rebuilds models when their tables are deleted in the warehouse, even if there are no code or data changes.
+
+When a table is deleted in the warehouse:
+
+- dbt raises a warning that the expected table is missing.
+- The affected model is queued for rebuild during the current run, even if there are no code or data changes.
+
+This behavior ensures consistency between the dbt state and the actual warehouse state. It also reduces the need to manually clear cache or disable state-aware orchestration when models are modified outside of dbt.
 
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 

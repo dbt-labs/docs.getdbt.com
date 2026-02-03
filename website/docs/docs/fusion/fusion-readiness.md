@@ -13,13 +13,13 @@ The <Constant name="fusion_engine" /> is here! We currently offer it as a [priva
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
-### 1. Upgrade to the latest dbt version
+### Upgrade to the latest dbt version
 
 The **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
 
 - [ ] Make sure all your projects are on the **Latest** release track across all deployment environments and jobs. This will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
 
-### 2. Resolve all deprecation warnings
+### Resolve all deprecation warnings
 
 You must resolve deprecations while your projects are on a <Constant name="core" /> release track, as they result in warnings that will become errors once you upgrade to <Constant name="fusion" />. The autofix tool can automatically resolve many deprecations (such as moving arbitrary configs into the meta dictionary). For a full list of deprecations and how to resolve them, refer to [Deprecations](/reference/deprecations). 
 
@@ -29,21 +29,30 @@ Start a new branch to begin resolving deprecation warnings using one of the foll
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
 
-### 3. Validate and upgrade your dbt packages
+### Validate and upgrade your dbt packages
 
 The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_project_evaluator`) are already compatible with <Constant name="fusion" />, as are a large number of external and community packages. Review [the dbt package hub](https://hub.getdbt.com) to see verified <Constant name="fusion" />-compatible packages by checking that the `require-dbt-version` configuration includes `2.0.0` or higher. Refer to [package support](/docs/fusion/supported-features#package-support) for more information.
 
 - [ ] Make sure that all of your packages are upgraded to the most recent version, many of which contain enhancements to support <Constant name="fusion" />. 
 - [ ] Check package repositories to make sure they're compatible with <Constant name="fusion" />. If a package you use is not yet compatible, we recommend opening an issue with the maintainer, making the contribution yourself, or removing the package temporarily before you upgrade.
 
-### 4. Check for known Fusion limitations
+### Validate user-defined functions
+
+Check that all user-defined functions (UDFs) in your project are supported by <Constant name="fusion" />. Unsupported functions trigger a deprecation warning: `dbt0209: No function <function name>`.
+
+If you see this warning:
+
+- [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) for the full <Constant name="fusion" /> experience with `static_analysis: on`.
+- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). As a workaround, you can set `static_analysis: off` when running on <Constant name="fusion" />. 
+
+### Check for known Fusion limitations
 
 Your project may implement features that <Constant name="fusion" /> currently [limits](/docs/fusion/supported-features#limitations) or doesn't support. 
 
 - [ ] Remove unnecessary features from your project to make it <Constant name="fusion" /> compatible. 
 - [ ] Monitor progress for critical features, knowing we are working to bring them to <Constant name="fusion" />. You can monitor their progress using the issues linked in the [limitations table](/docs/fusion/supported-features#limitations). 
 
-### 5. Review jobs configured in the dbt platform
+### Review jobs configured in the dbt platform
 
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
@@ -53,7 +62,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 
-### 6. Stay informed about Fusion progress
+### Stay informed about Fusion progress
 
 The <Constant name="fusion_engine" /> remains in private preview and we currently offer it for eligible projects! We will notify you when all your projects are ready for <Constant name="fusion" /> based on our eligibility checks on your deployment jobs. In the meantime, keep up-to-date with these resources: 
 
