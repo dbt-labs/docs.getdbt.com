@@ -147,7 +147,7 @@ Full support for database constraints including:
 ### Table properties
 
 Hologres supports the following table properties. For full details, see the
-[manual](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
+[developer reference documentation](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-tables).
 
 | Property | Best practices |
 |--------|----------------|
