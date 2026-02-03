@@ -343,6 +343,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/yellowbrick-setup",
                 "docs/core/connect-data-platform/ydb-setup",
                 "docs/core/connect-data-platform/maxcompute-setup",
+                "docs/core/connect-data-platform/hologres-setup",
               ],
             },
           ],
@@ -1663,6 +1664,22 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-4-implementation",
             "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
             "best-practices/how-we-mesh/mesh-5-faqs",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle real-time data",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-real-time-data/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-real-time-data/1-intro",
+            "best-practices/how-we-handle-real-time-data/2-incremental-patterns",
+            "best-practices/how-we-handle-real-time-data/3-warehouse-native-features",
+            "best-practices/how-we-handle-real-time-data/4-lambda-views",
+            "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
+            "best-practices/how-we-handle-real-time-data/6-operational-considerations",
           ],
         },
         {

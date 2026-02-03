@@ -69,7 +69,7 @@ After running `dbt docs generate` in the <Constant name="cloud_ide" />, click th
 
 ### View documentation
 
-Once you set up a job to generate documentation for your project, you can click **Explore** in the navigation and then click on **dbt Docs**. Your project's documentation should open. This link will always help you find the most recent version of your project's documentation in <Constant name="cloud" />.
+Once you set up a job to generate documentation for your project, you can click **Catalog** in the navigation and then click on **dbt Docs**. Your project's documentation should open. This link will always help you find the most recent version of your project's documentation in <Constant name="cloud" />.
 
 These generated docs always show the last fully successful run, which means that if you have any failed tasks, including tests, then you will not see changes to the docs by this run. If you don't see a fully successful run, then you won't see any changes to the documentation.
 
