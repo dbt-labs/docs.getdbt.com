@@ -68,7 +68,7 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 :::note
 
-The <Constant name="dbt_platform" /> will request the required BigQuery scopes automatically during the OAuth flow. [Configuring scopes in the OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) is optional and not required for the <Constant name="dbt_platform" /> to connect to BigQuery. Required scopes are requested and approved when users authenticate via OAuth.
+The <Constant name="dbt_platform" /> will request the required BigQuery scopes automatically during the OAuth flow. [Configuring scopes in the BigQuery OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent) is optional and not required for <Constant name="dbt_platform" /> to connect to BigQuery. Required scopes are requested and approved when users authenticate with OAuth.
 
 :::
 
