@@ -4,7 +4,9 @@ title: "Programmatic invocations"
 
 In v1.5, <Constant name="core" /> added support for programmatic invocations. The intent is to expose the existing <Constant name="core" /> CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
-The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
+Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven’t done so already.
+
+The entry point is the `dbtRunner` class, which allows you to `invoke` the same commands available in the <Constant name="cloud" /> CLI.
 
 ```python
 from dbt.cli.main import dbtRunner, dbtRunnerResult
@@ -22,6 +24,8 @@ res: dbtRunnerResult = dbt.invoke(cli_args)
 for r in res.result:
     print(f"{r.node.name}: {r.status}")
 ```
+
+For implementation details, see the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/cli/main.py).
 
 ## Parallel execution not supported
 
