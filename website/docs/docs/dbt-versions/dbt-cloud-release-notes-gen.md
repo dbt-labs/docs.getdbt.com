@@ -99,12 +99,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Insights: More reliable Copilot Agent requests and context handoff**: Standardizes Copilot Agent requests on the v1 agent Application Programming Interface (API) and includes active tab content as context to improve reliability of agent runs and handoff.
   <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
 
-- **Insights: Optional cancel support for Copilot Agent requests**: Adds optional support for aborting in-flight Copilot Agent requests when enabled. (Feature Flag: Required)
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
-
-- **Semantic Layer: Better SQL generation correctness in Copilot**: Improves Structured Query Language (SQL) generation by instructing the analysis agent to retrieve exact model schemas and consistently qualify columns and aliases.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/691 -->
-
 ## Fixes
 
 ### dbt platform
@@ -147,14 +141,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Catalog: Public models return empty list when none exist**: Improves behavior for environments with no public models by returning an empty list instead of falling into follow-on query logic.
   <!-- PRs: https://github.com/dbt-labs/codex-api/compare/43bcb19c27b1d05ad1424052836562fc49039356...2194c791f740b8e92c328b2826517662c743a6e7 -->
-
-### Semantic Layer
-
-- **Semantic Layer: Service authentication credential selection more reliable**: Fixes credential selection and caching for Hash-Based Message Authentication Code (HMAC) and service-auth flows by correctly propagating the `credential-request` header and isolating client caching across credential types.
-  <!-- PRs: https://github.com/dbt-labs/metricflow-server/compare/0f62bba...050ec59 -->
-
-- **Semantic Layer: Compile SQL invocation more reliable**: Fixes Structured Query Language (SQL) compilation by correcting Command Line Interface (CLI) argument ordering in the compile path.
-  <!-- PRs: https://github.com/dbt-labs/metricflow-server/compare/0f62bba...050ec59 -->
 
 ### Copilot and AI Assistant
 
