@@ -30,14 +30,17 @@ Release notes are grouped by date for single-tenant environments.
 - **Studio IDE: Copy Repo-Relative Path Command**: Adds a command to copy a file path relative to your dbt project subdirectory, making it easier to share paths in runbooks and support tickets.
   <!-- PR: https://github.com/dbt-labs/studio/pulls?q=studio.copyRepoRelativePath -->
 
-### Copilot And AI Assistant
+### Copilot and Agents
 
 - **Copilot: Workspace File Read And Edit Tools**: Adds workspace-scoped tools to read files, edit files, and list directories with safety checks for supported Copilot and agent workflows.
   <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/683 -->
 
 - **Copilot: Run dbt Command Tool**: Adds a tool for running dbt Command Line Interface (CLI) commands and returning console output for supported Copilot and agent workflows.
   <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/684 -->
-
+- **Copilot And Agent: New Lineage Retrieval Tool** Retrieve upstream and downstream lineage graphs for dbt resources, with resource-type filters and configurable depth. <!-- Leona question: is this gated or beta? PRs: https://github.com/dbt-labs/ai-codegen-api/compare/54fcfc8bd919c12953141148040985e15a92df92...d6119984f2f750567872a76eb46a3d2c8994bbb6 -->
+  
+- **Copilot And Agent: New Model Performance Tool** Fetch historical model run performance and statuses, with optional related test execution history. <!--  Leona question: is this gated or beta? PRs: https://github.com/dbt-labs/ai-codegen-api/compare/54fcfc8bd919c12953141148040985e15a92df92...d6119984f2f750567872a76eb46a3d2c8994bbb6 -->
+- 
 ## Enhancements
 
 ### dbt platform
@@ -117,6 +120,8 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt platform: Run Warning Emails Render Correctly**: Fixes HyperText Markup Language (HTML) email markup that could break rendering for run warning notifications.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
+
+- **dbt platform: Profiles URLs Moved Under Project Dashboard** Profile create and view routes now live under `/dashboard/:accountId/projects/:projectId/profiles/...`, which may affect bookmarks and direct links. <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...3651e52a842bf377661b303cbaf47851fc6ab2a2 -->
 
 ### Studio IDE
 
