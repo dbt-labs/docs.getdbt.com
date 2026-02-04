@@ -460,11 +460,13 @@ packages:
     warn-unpinned: false
 ```
 
+</File>
+
 ## Troubleshooting
 
-If you encounter errors while working with dbt packages, see the following troubleshooting FAQ pages:
+If you encounter errors while working with dbt packages, see the following FAQs:
 
-- [Why am I receiving a Runtime Error in my packages?](/faqs/Troubleshooting/runtime-packages.yml)
-- [[Error] Could not find my_project package](/faqs/Troubleshooting/dispatch-could-not-find-package)
+- <FAQ path="Troubleshooting/runtime-packages.yml" />
+- <FAQ path="Troubleshooting/dispatch-could-not-find-package" />
 
-</File>
+
