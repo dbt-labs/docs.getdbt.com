@@ -63,16 +63,10 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt platform: Platform Metadata Credentials expanded adapter support**: Expands Platform Metadata Credentials setup to additional adapters, including BigQuery v0 and Amazon Redshift.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
-- **dbt platform: Cost Insights No-Access Experience And Warning Tests**: Improves Cost Insights gating when the feature or permissions are not enabled and supports “success with warnings” for warehouse connection tests.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
-
 - **dbt platform: Job artifacts content types and downloads**: Improves artifact handling for job documentation and run artifacts by strengthening HyperText Markup Language (HTML) detection, defaulting empty paths to `index.html`, and returning clearer `Content-Type` and download filenames.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
 - **dbt platform: Private Endpoints API listing and pagination improvements**: Improves Private Endpoints Application Programming Interface (API) v3 list behavior with validated query parameters, filtering, limit and offset pagination, and `connection_count` in responses.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
-
-- **dbt platform: Cost Insights configuration groundwork**: Introduces Cost Insights configuration schema support to enable warehouse-specific configuration such as pricing inputs.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
 ### Studio IDE
