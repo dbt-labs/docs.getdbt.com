@@ -115,7 +115,7 @@ This upstream project is where you build your core data assets. This project wil
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 
-1. First, navigate to the **Studio** page to verify your setup.
+1. First, navigate to the **<Constant name="cloud_ide"/>** page to verify your setup.
 2. Click **Initialize dbt project** if you’ve started with an empty repo.
 3. Delete the `models/example` folder.  
 4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
