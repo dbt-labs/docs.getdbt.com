@@ -57,11 +57,14 @@ firstname_lastname:
 - **Date**: Default to today + 2 days (YYYY-MM-DD)
 - **Slug**: Suggest SEO-optimized version (short, keywords only, drop filler words)
 - **Description**: Find a compelling sentence from within the article that captures the key value or insight - not just the opening line
+- **Tag**: Select the most appropriate tag based on content (see Tag Selection below)
 - **End of content**: Confirm where the publishable content ends (remove trailing internal notes)
 
 **Slug guidelines**: Keep 2-4 words, include primary keywords, drop "introducing", "a", "the", "how to".
 - "Introducing dbt agent skills" → `dbt-agent-skills`
 - "Getting Started with git Branching Strategies" → `git-branching-strategies-dbt`
+
+**Tag selection**: Check `website/blog/categories.yml` for available tags and their descriptions. Select the most appropriate tag based on the post content. Fall back to `analytics craft` only if no other tag fits.
 
 ### 5. Process Images
 
@@ -99,7 +102,7 @@ slug: seo-optimized-slug
 
 authors: [author_slug]
 
-tags: [analytics craft]
+tags: [appropriate-tag]
 hide_table_of_contents: false
 
 date: YYYY-MM-DD

@@ -28,11 +28,8 @@ for tape in $TAPE_FILES; do
     echo "Generating $name.gif..."
     vhs "$tape"
 
-    echo "Optimizing $name.gif..."
-    gifsicle -O3 --lossy=80 --colors=8 "$name.gif" -o "$name.gif"
-
-    echo "Copying to $DEST_DIR/$name.gif"
-    cp "$name.gif" "$DEST_DIR/$name.gif"
+    echo "Optimizing and copying to $DEST_DIR/$name.gif"
+    gifsicle -O3 --lossy=80 --colors=8 "$name.gif" -o "$DEST_DIR/$name.gif"
 
     echo ""
 done

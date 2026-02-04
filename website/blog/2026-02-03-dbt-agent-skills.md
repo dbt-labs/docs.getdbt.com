@@ -5,7 +5,7 @@ slug: dbt-agent-skills
 
 authors: [joel_labes, jason_ganz]
 
-tags: [analytics craft]
+tags: [ai, data_ecosystem]
 hide_table_of_contents: false
 
 date: 2026-02-03
