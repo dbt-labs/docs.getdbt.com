@@ -2,7 +2,7 @@
 title: "About private connectivity"
 id: private-connectivity
 description: "Configuring private connections."
-sidebar_label: "Overview"
+sidebar_label: "About private connectivity"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';

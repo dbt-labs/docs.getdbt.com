@@ -2,7 +2,7 @@
 title: "GCP private connectivity"
 id: gcp-overview
 description: "Configure private connections for GCP deployments of the dbt platform."
-sidebar_label: "Overview"
+sidebar_label: "About GCP Private Service Connect"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';

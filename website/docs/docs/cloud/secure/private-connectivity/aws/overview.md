@@ -2,7 +2,7 @@
 title: "AWS private connectivity"
 id: aws-overview
 description: "Configure private connections for AWS deployments of the dbt platform."
-sidebar_label: "Overview"
+sidebar_label: "About AWS PrivateLink"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
