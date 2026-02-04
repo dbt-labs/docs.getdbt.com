@@ -28,7 +28,6 @@ You can install <Constant name="core" /> on the command line by using one of the
 - [Use pip to install dbt](/docs/core/pip-install) (recommended)
 - [Use a Docker image to install dbt](/docs/core/docker-install)
 - [Install dbt from source](/docs/core/source-install)
-- After installing <Constant name="core" />, create your first [dbt project](/docs/build/projects) using the [dbt init](/reference/commands/init) command
 - You can also develop locally using the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation). The <Constant name="cloud" /> CLI and <Constant name="core" /> are both command line tools that let you run dbt commands. The key distinction is the <Constant name="cloud" /> CLI is tailored for <Constant name="cloud" />'s infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 ## Upgrading dbt Core
@@ -48,6 +47,10 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 &mdash; `dbt run --help`: Lists the flags available for the `run` command
 
 :::
+
+## Create a project
+
+After installing <Constant name="core" />, create your first [dbt project](/docs/build/projects) using the [dbt init](/reference/commands/init) command. This initializes a new project with the standard dbt directory structure and helps verify that your installation is working as expected.
 
 ## Related content
 
