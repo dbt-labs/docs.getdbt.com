@@ -1,6 +1,6 @@
 ---
-title: "Make your AI better at data work with dbt’s agent skills"
-description: "We built a collection of Skills to make LLMs and coding agents better at using and contributing to dbt projects."
+title: "Make your AI better at data work with dbt's agent skills"
+description: "We built a collection of Agent Skills to make coding agents better at using dbt projects and doing analytics work."
 slug: dbt-agent-skills
 
 authors: [joel_labes, jason_ganz]
@@ -8,7 +8,7 @@ authors: [joel_labes, jason_ganz]
 tags: [ai, data_ecosystem]
 hide_table_of_contents: false
 
-date: 2026-02-03
+date: 2026-02-04
 is_featured: true
 ---
 
@@ -192,6 +192,10 @@ One thing we discovered in this process is that Claude is much less willing to u
 
 We also ran through the <Term id="ade-bench"/> tasks to assess performance with and without skills. While not every skill has corresponding tasks in the benchmark (yet!), this provides helpful signal, particularly on the primary analytics engineering skill.
 
+We saw modest improvements in performance on the benchmark with Skills, rising from a 56% accuracy rate without skills to a 58.5% accuracy rate with Skills. But the bigger story is not the headline numbers, but the individual tasks that were solved with skills that previously had 0% success rates.
+
+Notably, we found **significant benefits in tasks which require iterative work** on top of a dbt DAG, which is one of the most common failure points we've experienced in using coding agents with dbt.
+
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem'}}>
 <div style={{textAlign: 'center'}}>
 
@@ -209,7 +213,7 @@ We also ran through the <Term id="ade-bench"/> tasks to assess performance with 
 </div>
 </div>
 
-We found significant benefits in tasks which require iterative work. For example, when asked to [produce multiple models based on their schema.yml definition](https://github.com/dbt-labs/ade-bench/blob/main/tasks/airbnb007/task.yaml), the baseline agent created 6 models at once and declared victory. The skill-using agent worked iteratively, and successfully completed the task every time.
+For example, when asked to [produce multiple models based on their schema.yml definition](https://github.com/dbt-labs/ade-bench/blob/main/tasks/airbnb007/task.yaml), the baseline agent created 6 models at once and declared victory. The skill-using agent worked iteratively, and successfully completed the task every time.
 
 On the other hand, encouraging DRY principles led to the skill-using agent intermittently reusing a column with a logic bug in [this task](https://github.com/dbt-labs/ade-bench/blob/main/tasks/f1009/task.yaml), where the baseline agent noticed and corrected the bug.
 
@@ -225,4 +229,4 @@ Agent skills have tremendous bang-for-buck for procedural tasks, especially cons
 
 We’re also exploring ways to enable tighter integration between dbt and agent skills, as well as making it easier to manage custom skills for your specific dbt project and data.
 
-The best way to stay involved is to share what you’re discovering in [\#topic-agentic-analytics](https://getdbt.slack.com/archives/C0A1MRWEH8C/p1769918756796829) on Slack.
+The best way to stay involved is to share what you're discovering in [\#topic-agentic-analytics](https://getdbt.slack.com/archives/C0A1MRWEH8C/p1769918756796829) on Slack or to open up issues on the GitHub repo.
