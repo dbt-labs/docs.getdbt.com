@@ -8,7 +8,7 @@ pagination_prev: null
 
 # APIs overview <Lifecycle status="self_service,managed,managed_plus" />
 
-Accounts on the Enterprise and Enterprise+ plans can query the <Constant name="cloud" /> APIs.
+Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Constant name="cloud" /> APIs.
 
 <Constant name="cloud" /> provides the following APIs:
 
