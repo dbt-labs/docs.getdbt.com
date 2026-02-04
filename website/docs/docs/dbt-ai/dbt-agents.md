@@ -45,9 +45,11 @@ Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/d
 
 The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Discovery agent <Lifecycle status="Waitlist"/>
+#### Discovery agent <Lifecycle status="private_beta"/>
 
 Find the right, approved dataset fast in <Constant name="explorer" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
+
+To request access to the Discovery agent, contact your account manager.
 
 #### Observability agent <Lifecycle status="Waitlist"/>
 
