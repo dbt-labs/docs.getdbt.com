@@ -1,5 +1,3 @@
-import Lifecycle from '/src/components/lifeCycle';
-
 ## AWS private connectivity matrix
 
 The following charts outline private connectivity options for AWS deployments of <Constant name="cloud" /> ([multi-tenant and single-tenant](/docs/cloud/about-cloud/tenancy)).
@@ -8,19 +6,28 @@ The following charts outline private connectivity options for AWS deployments of
 - ✅ = Available
 - ❌ = Not currently available
 
-Availability indicates whether a private endpoint can be established at the network layer. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+_Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
 
-### Connecting to dbt single-tenant
+:::note About the following matrix tables
+These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+:::
 
-Your services can connect to <Constant name="cloud" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model.
+---
 
-| Connectivity type | AWS ST |
-|-------------------|--------|
-| Private <Constant name="cloud" /> access | ✅ |
-| Dual access (public + private) | ✅ |
+### Connecting to the dbt platform (Ingress)
 
+Your services can connect to <Constant name="cloud" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model. In this case, dbt is the <Term id="service-producer">service producer</Term> and you are the <Term id="consumer">consumer</Term>.
 
-### Connecting to data platforms and native services
+| Connectivity type | MT | ST |
+|-------------------|-----|-----|
+| Private <Constant name="cloud" /> access | ❌ | ✅ |
+| Dual access (public + private) | ❌ | ✅ |
+
+---
+
+### Connecting the dbt platform to managed services (Egress)
+
+<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
 
 | Service | MT | ST |
 |---------|-----|-----|
@@ -29,31 +36,25 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 | Databricks | ✅ | ✅ |
 | Redshift | ✅ | ✅ |
 | Redshift Serverless | ✅ | ✅ |
-| Amazon Athena w/ AWS Glue* | ❌ | ✅ |
-| AWS CodeCommit* | ❌ | ✅ |
+| Amazon Athena w/ AWS Glue | ❌ | ✅ |
+| AWS CodeCommit | ❌ | ✅ |
 | Teradata VantageCloud | ✅ | ✅ |
 
-*<Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
+---
 
-### Connecting to self-hosted services
+### Connecting the dbt platform to self-hosted services (Egress)
 
-All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
+The services in this table are deployed as a [self-hosted PrivateLink service](/docs/cloud/secure/private-connectivity/aws/aws-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
 
 | Service | MT | ST |
 |---------|-----|-----|
 | GitHub Enterprise Server | ✅ | ✅ |
 | GitLab Self-Managed | ✅ | ✅ |
 | Bitbucket Data Center | ✅ | ✅ |
-| Azure DevOps Server | ✅ <sup>1</sup> | ✅ <sup>1</sup>|
+| Azure DevOps Server | ✅ | ✅ |
 | Postgres | ✅ | ✅ |
 | Spark | ✅ | ✅ |
 | Starburst / Trino | ✅ | ✅ |
 | Teradata (self-hosted) | ✅ | ✅ |
 
-<sup>1</sup> Reported working but not yet validated by dbt Labs
-
-**Requirements for self-hosted services:**
-- Network Load Balancer
-- VPC Endpoint Service
-
-For detailed setup instructions, see [AWS PrivateLink for self-hosted services](/docs/cloud/secure/private-connectivity/aws/aws-self-hosted).
+If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).

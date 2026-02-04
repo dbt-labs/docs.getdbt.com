@@ -1,4 +1,3 @@
-
 ## GCP private connectivity matrix
 
 The following charts outline private connectivity options for GCP deployments of <Constant name="cloud" /> ([multi-tenant](/docs/cloud/about-cloud/tenancy)).
@@ -6,41 +5,42 @@ The following charts outline private connectivity options for GCP deployments of
 **Legend:**
 - ✅ = Available
 - ❌ = Not currently available
+- \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
 
-Availability indicates whether a private endpoint can be established at the network layer. If you have questions about a specific use case, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+_Tenancy:_ MT (multi-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
 
-:::note GCP regional considerations
-Some GCP services, such as BigQuery, may have regional restrictions for Private Service Connect endpoints. Refer to [Google's Private Service Connect documentation](https://cloud.google.com/vpc/docs/private-service-connect) for service-specific regional availability.
+:::note About the following matrix tables
+These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+
+**GCP regional considerations:** Some GCP services, such as BigQuery, may have regional restrictions for Private Service Connect endpoints. Refer to [Google's Private Service Connect documentation](https://cloud.google.com/vpc/docs/private-service-connect) for service-specific regional availability.
 :::
 
-### Connecting to data platforms and native services
+---
+
+### Connecting the dbt platform to managed services (Egress)
+
+<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
 
 | Service | MT |
 |---------|-----|
 | Snowflake | ✅ |
-| Google BigQuery* | ✅ |
+| Google BigQuery | ✅* |
 | Teradata VantageCloud | ✅ |
 
-*<Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
+---
 
-### Connecting to self-hosted services
+### Connecting the dbt platform to self-hosted services (Egress)
 
-All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
+The services in this table are deployed as a [self-hosted Private Service Connect service](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
 
 | Service | MT |
 |---------|-----|
-| GitHub Enterprise Server | ❌ |
-| GitLab Self-Managed | ❌ |
-| Bitbucket Data Center | ❌ |
-| Azure DevOps Server | ✅ <sup>1</sup> |
+| GitHub Enterprise Server | ✅ |
+| GitLab Self-Managed | ✅ |
+| Bitbucket Data Center | ✅ |
+| Azure DevOps Server | ✅ |
 | Postgres | ✅ |
 | Starburst / Trino | ✅ |
 | Teradata (self-hosted) | ✅ |
 
-<sup>1</sup> Reported working but not yet validated by dbt Labs
-
-**Requirements for self-hosted services:**
-- Internal Proxy Load Balancer
-- Service Attachment
-
-For detailed setup instructions, see [GCP Private Service Connect for self-hosted services](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted).
+If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
