@@ -216,6 +216,7 @@ const sidebarSettings = {
               label: "Network security",
               link: { type: "doc", id: "docs/cloud/secure/about-network-security" },
               items: [
+                "docs/cloud/secure/about-network-security",
                 "docs/cloud/secure/ip-restrictions",
                 {
                   type: "category",
