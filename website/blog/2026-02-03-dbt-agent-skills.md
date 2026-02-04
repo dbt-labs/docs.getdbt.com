@@ -12,9 +12,9 @@ date: 2026-02-03
 is_featured: true
 ---
 
-When I started using dbt, ~dbt Labs'~ Fishtown Analytics' [dbt_style_guide.md](https://github.com/dbt-labs/corp/blob/773079cc140e8636403771e0c9f56ab9be528597/dbt_style_guide.md) was invaluable in understanding the dbt mindset. The community-driven creation and curation of best practices for building trustworthy data systems is perhaps _the_ driving factor behind dbt and analytics engineering's rise.
+In the early days of analytics engineering, ~dbt Labs'~ Fishtown Analytics' [dbt_style_guide.md](https://github.com/dbt-labs/corp/blob/773079cc140e8636403771e0c9f56ab9be528597/dbt_style_guide.md) was invaluable in understanding the dbt mindset. The community-driven creation and curation of best practices for building trustworthy data systems is perhaps _the_ driving factor behind dbt and analytics engineering's rise - it's not just about the technical systems, it's about the workflows and process knowledge that enable you to successfully build systems that drive organizational knowledge.
 
-Today we released a series of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) so that <Term id="agents">AI agents</Term> (like Claude Code, OpenAI Codex, Cursor or Factory) can follow the same dbt best practices you would expect of any collaborator in your codebase. This matters because by extending their baseline capabilities, **skills could transform generalist coding agents into highly capable data agents**.
+Today we released a collections of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) so that <Term id="agents">AI agents</Term> (like Claude Code, OpenAI's Codex, Cursor or Factory) can follow the same dbt best practices you would expect of any collaborator in your codebase. This matters because by extending their baseline capabilities, **skills can transform generalist coding agents into highly capable data agents**.
 
 These skills encapsulate a broad swathe of hard-won knowledge from the dbt Community and the dbt Labs Developer Experience team. Collectively, they represent dozens of hours of focused work by dbt experts, backed by years of using dbt.
 
@@ -22,8 +22,8 @@ These skills encapsulate a broad swathe of hard-won knowledge from the dbt Commu
 
 The ecosystem is rapidly evolving for both authors of skills and the agents that consume them. We believe these skills are very useful today, _and_ that they will become more useful over the coming weeks and months as:
 
-- agents get better at triggering at the right times
-- wider community adoption and feedback improves the content of the skills
+- skills become a first class citizen of agent workflows, particularly increasing the rate at which they correctly select the right skills to use at the right time
+- wider community adoption and feedback improves the breadth and depth of available skills
 
 ## What's included
 
@@ -77,7 +77,9 @@ Normal cautions around agentic coding apply. Please take appropriate safeguards,
 
 ## So what is a skill, anyway?
 
-The short, reductive answer: a markdown file with a predefined structure. The venerable `dbt_style_guide.md` of yore would fit right in! It has a bunch of bulleted instructions, some sample code, and links out to other resources when necessary; the new Skills format does the same things. Anthropic introduced Skills in October 2025, and they are now an open standard adopted by [30+ agents](https://github.com/vercel-labs/skills?tab=readme-ov-file#supported-agents).
+You can think of skills as bundles of prompts (and scropts) which LLMs can dynamically string together to gain context or expterise on a given task.
+
+In some ways, a skill is very simple - it's a markdown file with a predefined structure. The venerable `dbt_style_guide.md` of yore would fit right in! It has a bunch of bulleted instructions, some sample code, and links out to other resources when necessary; the new Skills format does the same things. Anthropic introduced Skills in October 2025, and they are now an open standard adopted by [30+ agents](https://github.com/vercel-labs/skills?tab=readme-ov-file#supported-agents).
 
 A better question than _what_ might be _why_. From the [agent skills site](https://agentskills.io/home):
 
@@ -97,6 +99,8 @@ So dbt Agent skills and the [dbt MCP server](/blog/introducing-dbt-mcp-server) a
 
 Consider the PDF example. Working with PDF files doesn't require a MCP server, because the editing library can be installed locally. But you want that library to be used in a consistent way instead of the LLM inventing something from first principles every time.
 
+If you're very smart you might be wondering why the dbt MCP has tools that call the CLI rather than having this live within skills. The short answer is that we've found that being able to bake the specific _way the CLI commands are called_ into the MCP is currently very helpful, but this is a real open question and something we're watching closely.
+
 ### From generalist to specialist
 
 The best way to think of skills is as a layered training manual. If you took a very smart generalist off the street, what would they need to be able to use and implement _your organization's workflows?_
@@ -107,16 +111,16 @@ The best way to think of skills is as a layered training manual. If you took a v
 
 Any experienced dbt practitioner will have a number of intuitions when working with a dbt project:
 
-- You want to poke around a bit and get a sense of the schema and underlying data first. Read some docs, run a couple of `dbt show` queries, that sort of thing.
-- If you're modifying an existing model, you need to look at the data to appreciate the current state of things.
+- You want to poke around a bit and get a sense of the schema and underlying data before making any changes. Read some docs, run a couple of `dbt show` queries, that sort of thing.
+- If you're modifying an existing model, you need to look at the underlying data and get a sense of what columns live in upstream data sources.
 - After making a new model or modifying one, you need to look at the data again, as well as run summary/aggregate statistics to see if it matches your expected shape and output
 
-Coding agents tend to not preview underlying data, to their detriment. Skills fix that by including broad best practices like the ones above, but they can also provide very in-depth and nuanced guidance through supplemental reference materials, such as:
+The current generation of coding agents tends to not do these things by default. Skills fix that by including broad dbt best practices like the ones above, but they can also provide very in-depth and nuanced guidance through supplemental reference materials, such as:
 
 - Warehouse-specific configurations, like avoiding full table scans on BigQuery when discovering data
 - Variations based on the specific dbt version or engine you're using; `dbt compile` can [detect many SQL errors](/blog/the-levels-of-sql-comprehension) when invoked from the dbt Fusion engine, but dbt Core needs to run `dbt build` for the same result.
 
-Skills can also evolve at a faster pace than frontier AI model releases, making it easier to fix misconceptions and adapt to changes in the dbt authoring layer. We recently [revamped the authoring experience for semantic models](/blog/modernizing-the-semantic-layer-spec); by including a skill that knows about the new syntax, we can stop your agent from using the old syntax even though that's the majority of training data online.
+Skills can also evolve at a faster pace than frontier AI model releases, making it easier to update guidance and adapt to changes in the dbt authoring layer. We recently [revamped the authoring experience for semantic models](/blog/modernizing-the-semantic-layer-spec); by including a skill that knows about the new syntax, we can stop your agent from using the old syntax even though that's the majority of training data online.
 
 ### Skills protect against plausible but incorrect output
 
@@ -148,13 +152,15 @@ Examples of questions you might like to answer in your skills:
 - What is my organization's cross-project or cross-platform mesh strategy?
 - What partitioning rules should be applied to new models for a given usage pattern?
 
+More to come soon on how we might support org level skills within dbt projects.
+
 ## How we validated the dbt Agent Skills
 
 It can be challenging to assess the performance of AI workflows. There are many different ways to do this and all of them are imperfect, so we have settled onto a multilayered strategy for ensuring our agent skills behave the way we want them to.
 
 ### Careful expert generation and curation of skills
 
-While we _did_ have some LLM assistance in generating some of the skills, these are very much not "oneshotted outputs". Each skill represents hours of crafting, reviewing and refining by world class dbt experts to ensure that our knowledge has been accurately encoded into the skills.
+While we _did_ have some LLM assistance in generating some of the skills, these are very much not "oneshotted outputs". Each skill represents hours of crafting, reviewing and refining by world class dbt experts to ensure that our knowledge has been accurately encoded into the skills. Data work has a _lot_ of tacit knowledge and edge cases, and this is where skills really shine.
 
 ### Hands on testing of each skill in real life examples
 
