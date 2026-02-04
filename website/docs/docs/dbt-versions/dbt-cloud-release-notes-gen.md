@@ -41,10 +41,10 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
 - **dbt platform: In-progress run logs preserve text selection**: Improves log usability during in-progress runs by preserving text selection while logs auto-refresh and rerender.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
+  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
 - **dbt platform: Job completion trigger job picker search**: Adds server-side search and clearer loading and empty states to the job picker for job-completion triggers.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
+  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
 - **dbt platform: Private Endpoints list search and sorting**: Adds server-side name search and sorting, shows connection counts, and surfaces the Endpoint Identifier on details pages.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
@@ -80,13 +80,13 @@ Release notes are grouped by date for single-tenant environments.
 - **Catalog: Improved cross-project lineage for dbt Mesh**: Improves cross-project lineage (“public ancestors”) computation to better match expected external lineage boundaries in dbt Mesh experiences.
   <!-- PRs: https://github.com/dbt-labs/codex-workflows/compare/04fe0bec086b540d36cbcc4b587211c6579b6183...fc3f3ffce5d885ddbbbf0f9d145ac78b6a879a74 -->
 
-### Insights and Semantic Layer
+### Insights
 
 - **Insights: Copilot Agent availability via release channel setting**: Improves Copilot Agent (Beta) enablement by supporting an external beta release-channel setting alongside feature flags, with a loading state to prevent incorrect redirects while access is being resolved. (Feature Flag: Required)
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
+  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
 
 - **Insights: More reliable Copilot Agent requests and context handoff**: Standardizes Copilot Agent requests on the v1 agent Application Programming Interface (API) and includes active tab content as context to improve reliability of agent runs and handoff.
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
+  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
 
 ## Fixes
 
@@ -183,7 +183,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Orchestration and Run Status
 
 - **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
+  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
   
 ## January 28, 2026
 
