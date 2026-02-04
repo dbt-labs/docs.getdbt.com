@@ -111,7 +111,7 @@ is_featured: true
 
 | Notion | Docusaurus |
 |--------|------------|
-| `![alt](Folder/image.png)` | `<Lightbox src="/img/blog/YYYY-MM-DD-slug/semantic-name.png" width="85%" title="alt text" />` |
+| `![alt](Folder/image.png)` | `<Lightbox src="/img/blog/YYYY-MM-DD-slug/semantic-name.png" width="85%" alt="generated alt text" />` |
 | Image with caption on next line | Merge caption into `title` attribute |
 
 ### Content Cleanup
@@ -124,6 +124,9 @@ is_featured: true
 | Code blocks with language `markdown` | Change to `bash` if shell commands |
 | Notion callouts (`> **Note**`) | Convert to `:::note` admonitions |
 | URL-encoded paths (`%20`) | Decode |
+| asterisks for emphasis (`*emphasised* content`) | Replace with underscores (`_emphasised_ content`) |
+| Internal Notion links (`notion.so`, `notion.site`) | Flag for review - replace with public resource links |
+| Absolute docs site links (`https://docs.getdbt.com/...`) | Convert to relative paths (`/docs/...`, `/reference/...`) |
 
 ### Truncate Marker
 
