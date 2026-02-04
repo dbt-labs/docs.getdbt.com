@@ -27,7 +27,7 @@ To use state-aware orchestration, make sure you meet these prerequisites:
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only.
-- - You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
+- You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
 
 :::info
